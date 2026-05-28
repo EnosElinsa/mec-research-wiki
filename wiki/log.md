@@ -36,3 +36,29 @@
 
 - Curated [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025, *Enhancing Energy Efficiency in WPT-MEC Through Lyapunov-Guided DRL* (IEEE TWC).
 - Added concept pages: [[wireless-power-transfer]], [[binary-vs-partial-offloading]], [[fractional-programming-dinkelbach]].
+
+## 2026-05-28 (curation pass — paper 6/12)
+
+- Curated [[zhang-2025-mcma-task-migration]] — Zhang et al. 2025, *Multi-Agent DRL With Trajectory Prediction for Task Migration-Assisted Computation Offloading*.
+- Added concept pages: [[vehicular-mec]], [[task-migration]], [[informer-trajectory-prediction]], [[centralized-training-decentralized-execution]].
+
+## 2026-05-28 (curation pass — paper 7/12)
+
+- Curated [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025, *Optimizing Spectrum Sharing in UAV Swarms: A Stackelberg Game-Based Incentive Mechanism* (IEEE TVT).
+- Added concept pages: [[stackelberg-game]], [[overlay-underlay-spectrum-access]], [[matching-theory-for-resource-allocation]], [[low-altitude-intelligent-network]].
+- Note: this is the wiki's first **wireless-foundations** track entry, distinct from the compute-offloading track. Future foundations papers should land under similar concept families.
+
+## 2026-05-28 (curation pass — paper 8/12)
+
+- Curated [[zhang-2025-ssac-mgi-heterogeneous-uav]] — Zhang et al. 2025, *Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled MEC*.
+- Added concept pages: [[heterogeneous-uav-fleet]], [[safe-reinforcement-learning]], [[collision-avoidance-mgi]].
+
+## 2026-05-28 (curation pass — paper 9/12)
+
+- Curated [[bi-2025-sg-mapg]] — Bi et al. 2025, *SG-MAPG: A Three-Layer Hierarchical Model for Service Fairness and Cost Optimization in UAV-Assisted MEC*.
+- No new concept pages — reuses [[stackelberg-game]], [[ma-pomdp]], [[hierarchical-aerial-mec]], [[matching-theory-for-resource-allocation]]. Multi-agent policy gradient as a Stackelberg-equilibrium approximator is worth synthesizing if a third source uses it.
+
+## 2026-05-28 (curation pass — paper 10/12)
+
+- Curated [[hao-2025-priority-aware-task-driven-co]] — Hao et al. 2025, *Task-Driven Priority-Aware Computation Offloading Using DRL*.
+- Added concept pages: [[event-driven-vs-slot-driven-offloading]], [[task-priority-in-mec]].
