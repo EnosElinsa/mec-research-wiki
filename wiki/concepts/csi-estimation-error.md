@@ -1,0 +1,24 @@
+---
+type: concept
+title: "CSI Estimation Error"
+tags: [channel-state-information, robust, uncertainty, communication]
+related:
+  - "[[distributionally-robust-optimization]]"
+  - "[[chance-constraint]]"
+  - "[[terrain-aware-channel-model]]"
+  - "[[jia-2025-dro-uav-hap-mec]]"
+created: 2026-05-29
+updated: 2026-05-29
+---
+
+# CSI Estimation Error
+
+The discrepancy between the channel state information (CSI) used in resource-allocation decisions and the **actual** channel realized at transmission time. Sources include pilot noise, channel aging between estimation and use, mobility-induced Doppler, and environmental fluctuation (foliage, rain, sea waves).
+
+Most MEC papers in the wiki **assume perfect CSI** to keep the optimization tractable. The wiki has three explicit responses to imperfect CSI:
+
+- **Distributionally robust** — model errors as drawn from a worst-case distribution within a moment-based ambiguity set. [[jia-2025-dro-uav-hap-mec]].
+- **Side-step via prior knowledge** — use historical / pre-measured CSI from known routes. [[wang-2026-aerial-marine-msar]] (maritime shipping routes), [[liu-2025-haps-uav-maritime-iot]].
+- **Geometric model from terrain** — replace statistical CSI with a deterministic blockage prediction from DEM data. [[wu-2026-terrain-aware-uav-mec]] / [[terrain-aware-channel-model]].
+
+DRL implicitly handles CSI noise by training on noisy environments, but provides no formal guarantees and risks distribution shift at deployment.
