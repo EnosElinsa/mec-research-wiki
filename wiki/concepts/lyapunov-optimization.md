@@ -1,0 +1,31 @@
+---
+type: concept
+title: Lyapunov Optimization (drift-plus-penalty)
+tags: [optimization, queueing, online-control]
+related:
+  - "[[qin-2025-bcuav-masac]]"
+created: 2026-05-28
+updated: 2026-05-28
+---
+
+# Lyapunov Optimization (drift-plus-penalty)
+
+A Neely-style technique for online control under long-term constraints. The recipe:
+
+1. Map every long-term constraint $\bar g \le 0$ into a **virtual queue** $Z(t+1) = \max\{Z(t) + g(t), 0\}$.
+2. Define the Lyapunov function $L(\Theta) = \frac{1}{2}\sum Z_i^2$ over all virtual queues.
+3. At each slot, minimize the **drift-plus-penalty** upper bound:
+   $$\Delta L(\Theta(t)) - V \cdot f(t)$$
+   where $f(t)$ is the per-slot reward / utility and $V$ trades off optimality against constraint slack.
+
+Standard guarantee: under mild conditions, time-averaged constraint violation is $O(1/V)$ and time-averaged optimality gap is $O(V)$ — i.e. tunable.
+
+## Why MEC research keeps reaching for it
+
+- Long-term queue stability constraints are *exactly* what arrive in MEC: per-slot data backlog, per-slot energy budget, per-slot delay caps that the system should respect on average.
+- It decouples the long-term planning from the per-slot decision, making per-slot subproblems tractable (often convex or near-convex).
+- It composes cleanly with DRL — the per-slot subproblem can be solved by an RL agent while Lyapunov's virtual queues take care of the temporal coupling.
+
+## In this wiki
+
+[[qin-2025-bcuav-masac]] uses Lyapunov to split a long-term sensing-rate maximization with queue-delay and block-creation-delay caps into three per-slot subproblems (CVX + MASAC + DOA). Expect more sources to use the same template.
