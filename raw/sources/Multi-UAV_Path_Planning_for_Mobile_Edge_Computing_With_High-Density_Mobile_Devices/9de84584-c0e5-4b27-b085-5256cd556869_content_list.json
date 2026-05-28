@@ -1,0 +1,3763 @@
+[
+    {
+        "type": "text",
+        "text": "Multi-UAV Path Planning for Mobile Edge Computing with High-Density Mobile Devices ",
+        "text_level": 1,
+        "bbox": [
+            122,
+            69,
+            875,
+            140
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Lihan Liu, Hongrui Miao, Chunhui Qu, Zhuwei Wang, Haijun Zhang, Fellow, IEEE, Zhidu Li, Senior Member, IEEE, ",
+        "bbox": [
+            104,
+            147,
+            890,
+            181
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—This paper addresses the challenges of unmanned aerial vehicle (UAV) assisted mobile edge computing (MEC) in high-density user mobility scenarios, a field that has not been extensively explored in current research. We introduce a novel deep reinforcement learning (DRL) framework, named “ $j$ -PPO+EN-ConvNTM”, specifically designed to optimize MEC performance in urban environments with user mobility. The framework integrates spatiotemporal data modeling and spatial transformer network (STN) through an enhance Convolution Neural Turing Machine (EN-ConvNTM) module, which includes a three-dimensional external memory. It also features a joint continuous and discrete action decision-making module, termed joint proximal policy optimization $\\mathrm { ( \\it ) }$ -PPO). This design enables effective handling of the dynamic and complex nature of urban mobility patterns. The proposed approach extends the PPO technique to accommodate joint continuous and discrete action decisions, thereby enhancing UAV adaptability and efficiency in providing MEC services. Extensive simulations demonstrate significant improvements over all baseline models, particularly in terms of equilibrium efficiency and service continuity in highdensity scenarios. Our research addresses a critical gap in existing UAV-assisted MEC studies, which primarily focus on static or low-mobility user scenarios, and supports the development of more robust and efficient smart city applications, meeting the real-world demands of modern urban infrastructures. ",
+        "bbox": [
+            73,
+            234,
+            491,
+            551
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—High-density mobile devices, joint continuous and discrete actions, MEC, path planning, UAV. ",
+        "bbox": [
+            73,
+            556,
+            490,
+            585
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            215,
+            607,
+            351,
+            621
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "HE advent of smart cities and the Internet of Things (IoT) has given rise to an unprecedented increase in data generation, particularly in high-density urban areas where a larger number of IoT devices have the task offloading requirements within a specified geographic area. This surge necessitates robust and efficient computing solutions, especially for applications requiring low latency and high bandwidth. MEC has emerged as a promising paradigm by deploying computational ",
+        "bbox": [
+            73,
+            627,
+            490,
+            750
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "L. Liu is with the School of System Science and Statistics, Beijing Wuzi University, Beijing 101149, China (e-mail: liulihan@bwu.edu.cn). ",
+            "H. Miao is with the Min H. Kao Department of Electrical Engineering and Computer Science, University of Tennessee, Knoxville 37996, USA (e-mail: hmiao1 $@$ vols.utk.edu). ",
+            "C. Qu is with the Aerospace Information Research Institute, Chinese Academy of Sciences, Beijing 100094, China (e-mail: quch@aircas.ac.cn). ",
+            "Z. Wang is with the School of Information Science and Technology, Beijing University of Technology, Beijing 100124, China (e-mail: wangzhuwei@bjut.edu.cn). ",
+            "H. Zhang is with the Beijing Engineering and Technology Research Center for Convergence Networks and Ubiquitous Services, University of Science and Technology Beijing, Beijing 100083, China (e-mail: haijunzhang@ieee.org). ",
+            "Z. Li is with the School of Communications and Information Engineering, Chongqing University of Posts and Telecommunications, Chongqing 400065, China (e-mail: lizd@cqupt.edu.cn). "
+        ],
+        "bbox": [
+            73,
+            761,
+            488,
+            944
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "resources closer to the data source, thereby reducing latency and network congestion [1]. However, the dynamic nature of urban environments, especially with mobility user and IoT devices, presents significant challenges in terms of service continuity and quality of experience. ",
+        "bbox": [
+            501,
+            234,
+            921,
+            309
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "UAVs offer a versatile solution to these challenges. Their mobility and flexibility enable them to deliver on-demand MEC services in various scenarios, especially where user density is high and dynamically changes [2]. UAVs can adaptively adjust their positions to maintain optimal service levels, addressing issues such as signal strength fluctuations and user demand variations [3]. This is particularly relevant in scenarios where ground infrastructure is insufficient or temporarily overloaded, such as during special events or emergencies [4]. ",
+        "bbox": [
+            501,
+            310,
+            921,
+            446
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Although UAVs provide a great potential, integrating UAVs into MEC architectures faces its own set of challenges. These include ensuring reliable and secure communication, efficient resource allocation, and effective integration with existing network infrastructure [5]. Moreover, the mobility of UAVs introduces additional complexities in terms of trajectory optimization and resource management, which are crucial for sustainable operation [6]. Addressing these challenges is essential to fully harness the potential of UAV-assisted MEC in high-density user environments, paving the way for a new era of smart city applications. ",
+        "bbox": [
+            501,
+            446,
+            921,
+            612
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "The integration of UAVs with MEC systems has been widely explored, but most existing research mainly focuses on scenarios with static or low-mobility users, inadequately addressing high-density environments. This limitation is critical because user mobility patterns significantly influence the performance of MEC systems. In high-density scenarios, such as urban centers or during large public events, user movements tend to be highly dynamic and unpredictable. This variability in user movement, in turn, results in significant fluctuations in computational resources demands and network connectivity requirements [7]. Current UAV-assisted MEC solutions can not be optimized for these conditions, typically leading to inefficient resource allocation, increased latency, and degraded overall system performance. ",
+        "bbox": [
+            501,
+            613,
+            921,
+            823
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Moreover, the majority of current research fails to fully investigate the complexities of UAV trajectory control and resource allocation in high-density mobility environments. Efficient UAV trajectory planning is crucial for ensuring optimal coverage and service quality, especially when dealing with a large number of mobile users [8]. Additionally, maintaining stable and secure communication links in such dynamic environments presents significant challenges, requiring innovative ",
+        "bbox": [
+            501,
+            824,
+            921,
+            944
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "1 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            39
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            184,
+            973,
+            883,
+            982
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "approaches to ensure consistent service delivery [9]. ",
+        "bbox": [
+            73,
+            69,
+            429,
+            84
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This paper aims to address these gaps by focusing specifically on UAV-assisted MEC in high-density user mobility scenarios. The objective is to develop an optimized framework that dynamically adapts to user densities and mobility patterns, ensuring efficient resource utilization and maintaining highquality service levels. This involves not only improving UAV trajectory planning and resource management, but also enhancing the integration of UAVs into existing MEC infrastructure to meet the unique demands of mobility user environments. ",
+        "bbox": [
+            73,
+            87,
+            490,
+            223
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Our work presents a deep learning framework, termed “j-PPO+EN-ConvNTM”, designed to address the complexities of UAV-assisted MEC in high-density user mobility scenarios. This framework integrates spatiotemporal data analysis with advanced feature extraction via the “EN-ConvNTM” module, and incorporates a sophisticated decision-making process through the $j$ -PPO module, which handles both continuous and discrete actions. The EN-ConvNTM module features a threedimensional (3-D) external memory and a STN, enabling it to effectively capture and interpret long-term 3-D observational data [10]. This capability is crucial for accurate decisionmaking in dynamic environments, and is supported by a novel read-write mechanism specifically adapted to complex urban mobility patterns. ",
+        "bbox": [
+            73,
+            224,
+            491,
+            436
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To the best of our knowledge, there is currently scant research on algorithmic solutions for multi-UAV path planning in the context of MEC with high-density mobile devices. This study seeks to fill this research gap, and the main contributions are summarized as follows. ",
+        "bbox": [
+            73,
+            438,
+            491,
+            513
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• A multi-UAV-assisted MEC system framework is specifically designed for high-density mobile device scenarios. Detailed analyses are conducted on the device mobility model, channel model, computing model, delay-energy consumption model, and UAV flight model. An optimization problem is then formulated to dynamically control UAV flight trajectories, task offloading strategies, and charging indicators, with the objectives of minimizing energy expenditure, maximizing data collection efficiency, and ensuring fairness. ",
+            "• A novel algorithm framework integrating EN-ConvNTM and DRL is proposed, meticulously designed for scenarios involving multiple UAVs and high-density mobile users, addressing critical challenges of delays and energy consumption. The proposed algorithm framework achieves autonomous learning and intelligent updates through efficient integration of spatiotemporal information and environmental interactions. ",
+            "• By deeply fusing the EN-ConvNTM module with the $j$ -PPO method, the joint $j$ -PPO+EN-ConvNTM algorithm is developed to significantly enhance adaptability to high-density mobile device scenarios. Leveraging two core modules—long-term spatiotemporal information extraction and continuous-discrete DRL algorithm optimization—the algorithm aims to maximize episode rewards while generating optimal UAV flight strategies, task offloading policies, and UAV charging schedules. This approach effectively mitigates multi-time-step errors "
+        ],
+        "bbox": [
+            89,
+            521,
+            491,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "in information processing and significantly improve the equilibrium efficiency of UAV-assisted MEC systems. ",
+        "bbox": [
+            535,
+            69,
+            921,
+            99
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Numerical simulation results demonstrate that the proposed $j$ -PPO+EN-ConvNTM algorithm exhibits robust applicability in high-density mobile device environments with varying numbers of UAVs and charging stations. Compared with existing baseline algorithms, the joint algorithm achieves significantly faster learning convergence and superior system performances. ",
+        "bbox": [
+            521,
+            99,
+            921,
+            205
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The remainder of the paper is structured as follows. Initially, the related literature is explored in Section II. Subsequently, we define the system model and formulate the optimization problem in Section III. The novel algorithm is introduced in Section IV. Performance evaluations are presented in Section V, followed by the concluding remarks in Section VI. ",
+        "bbox": [
+            503,
+            205,
+            921,
+            297
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORKS ",
+        "text_level": 1,
+        "bbox": [
+            635,
+            308,
+            790,
+            321
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The integration of UAVs into MEC, particularly in highdensity user mobility scenarios, has become as a crucial research frontier. This integration aims to address the challenges of limited computing resources and the need for rapid data processing near end-users. Introduced to bring computational resources closer to data sources, MEC significantly reduces latency and network congestion [11]. In this context, UAVs have evolved beyond traditional surveillance roles to serve as mobile computing platforms [12]. ",
+        "bbox": [
+            501,
+            325,
+            919,
+            462
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The evolution of this field highlights a shift from traditional centralized cloud computing models to decentralized edge computing paradigms. Early works like Hu et al. [13] laid the foundation for MEC by proposing architectures for task offloading to edge servers. As demonstrated in studies such as Zeng et al. [14], the introduction of UAVs introduced a new dimension, enabling flexible, dynamic, and on-demand deployment. This transition is particularly crucial in highdensity scenarios where user mobility and service demands fluctuate significantly. Research by Qin et al. [15] and Mohsen et al. [16] further advanced UAV-assisted MEC, exploring optimal deployment and resource allocation strategies. ",
+        "bbox": [
+            501,
+            462,
+            919,
+            643
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "However, recent advancements in UAV-assisted MEC have predominantly focused on scenarios with low user mobility and density [17]. This leaves a significant gap in research for high-density mobility environments, which are increasingly common in urban areas and large-scale events [18]. Current studies often overlook the dynamic nature of user demands and mobility patterns, which are critical factors in optimizing UAVassisted MEC system performance [19]. In recent years, there has been a shift toward optimizing UAV-assisted MEC in highdensity environments. Studies by Wang et al. [20] and Liu et al. [21] have investigated the challenges of resource allocation and task offloading in such scenarios, emphasizing the need for intelligent algorithms to effectively manage dynamic and heterogeneous demands. Addressing these challenges paves the way for the development of more robust, efficient, and scalable UAV-assisted MEC systems that can meet the evolving needs of high-density mobility applications. ",
+        "bbox": [
+            501,
+            643,
+            919,
+            898
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "It is noteworthy that in high-density user mobility scenarios, the primary challenge lies in effectively managing computational resources while environmental dynamic adaptability. ",
+        "bbox": [
+            503,
+            898,
+            921,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            883,
+            982
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Existing frameworks and algorithms, which perform well in low-density environments, may not scale efficiently or adapt dynamically to rapid changes in user demand and mobility [22]. This necessitates the development of new algorithms and models that can predict user movement and adjust resource allocation in real-time. While studies such as those by Chen et al. [23] and McEnroe et al. [24] have started to address these issues, more comprehensive solutions are still required. The current research trend focuses on integrating advanced machine learning approaches into UAV-assisted MEC systems [25]. The intelligent method is expected to enhance the system's ability to adapt to user mobility and manage resources more efficiently in high-density scenarios. For instance, reinforcement learning and deep learning techniques could be utilized to predict user movement patterns and optimize UAV placement and flight trajectories accordingly [26], [27]. Additionally, the integration of 6G or secure technologies with UAV-assisted MEC is expected to further improve communication efficiency and computational capacity, offering new opportunities for high-density user management [28], [29]. ",
+        "bbox": [
+            73,
+            68,
+            491,
+            371
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The research develop of UAV-assisted MEC system illustrates the need for machine learning approaches that not only enable dynamic adjustment to changing user patterns and demands, but also address the challenges posed by high-density user mobility environments. Our work directly addresses this emerging challenge by proposing a novel deep reinforcement learning framework, $j$ -PPO+EN-ConvNTM, specifically designed for high-density user mobility scenarios in UAVassisted MEC systems. The $j$ -PPO+EN-ConvNTM framework represents an advancement, incorporating state-of-the-art deep learning algorithms to optimize UAV flight trajectory and resource allocation. This approach aligns with the current shift towards machine learning in complex dynamic environment optimization. ",
+        "bbox": [
+            73,
+            371,
+            491,
+            582
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "By leveraging $j$ -PPO, EN-ConvNTM, and STN, the framework is well-positioned to handle user movement and optimize the UAV flight trajectory and resource distribution in real-time. $j$ -PPO enables efficient policy learning in complex dynamic environments, a key requirement in high-density user scenarios. EN-ConvNTM, a memory-augmented neural network with STN, enhances its capability by enabling the learning and recall of temporal patterns, essential for handling the user mobility and task offloading requirements [30]. This innovative combination in $j$ -PPO+EN-ConvNTM not only addresses the current challenges in UAV-assisted MEC, but also establishes a new benchmark for future research, particularly in applying advanced machine learning to dynamic resource management. ",
+        "bbox": [
+            73,
+            583,
+            491,
+            780
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "III. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            207,
+            801,
+            361,
+            815
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In the scene of UAV-assisted MEC system shown as in Fig. 1, we examine the scenario involving fundamental costeffective IoT devices, denoted as $\\mathcal { D } \\triangleq \\{ 1 , 2 , . . . , d , . . . , D \\}$ . These IoT devices can autonomously determine their data offloading strategies. Offloaded data is then processed by UAVs, represented as $\\mathcal { U } \\triangleq \\{ 1 , 2 , . . . , u , . . . , U \\}$ . Data that remains unoffloaded is partially processed by the embedded data processors within the IoT devices, depending on their inherent ",
+        "bbox": [
+            73,
+            823,
+            491,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/4e9ed875acd8bf24690e5109245238fd81ca038b0d88e14a98b29dccaeb53c7d.jpg",
+        "image_caption": [
+            "Fig. 1: The UAV-assisted MEC with mobile IoT devices. "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            517,
+            66,
+            911,
+            392
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "processing capabilities. However, potential obstructions, such as high-rise buildings, denoted as $\\mathcal { T } \\triangleq \\{ 1 , 2 , . . . , j , . . . , J \\}$ , exist and must be circumnavigated by the UAVs. Initially, each UAV has an origin energy level, and a series of charging stations, defined as $\\mathcal { Z } \\triangleq \\{ 1 , 2 , . . . , z , . . . , Z \\}$ , are distributed to enable UAVs to recharge their energy reserves.. ",
+        "bbox": [
+            501,
+            441,
+            921,
+            531
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Next, we introduce the UAV-assisted MEC system from five aspects: IoT devices mobility model, channel model, delay and energy consumption, charging model, and UAV flying model. Finally, the optimization problem is formulated. ",
+        "bbox": [
+            503,
+            531,
+            921,
+            592
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. IoT Devices Mobility Model ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            613,
+            720,
+            628
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "It is assumed that all IoT devices are initially distributed randomly within their monitoring area, and the position of each device in the nth time slot is represented by $Q _ { d , n } =$ $( x _ { d , n } , y _ { d , n } )$ . The UAV is modeled as a broadcast MEC unit for computing offloading services, selecting IoT devices within a specified communication range for channel access. This allows devices to offload computational tasks to the UAV's onboard processor for edge processing. ",
+        "bbox": [
+            501,
+            632,
+            921,
+            753
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Due to temporal dependencies in their movement, IoT device mobility adheres to physical motion laws, where current movement is influenced by historical trajectories. According to the Gauss-Markov (GM) mobility model, both the speed and direction of IoT device $d$ can be modeled using two independent Gaussian distributions as [31] ",
+        "bbox": [
+            501,
+            753,
+            921,
+            844
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nv _ {d, n} = \\alpha v _ {d, n - 1} + (1 - \\alpha) \\bar {v} _ {d, n} + \\omega_ {d, n} \\sqrt {1 - \\alpha^ {2}}, \\quad \\tag {1a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            537,
+            851,
+            919,
+            869
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\zeta_ {d, n} = \\beta \\zeta_ {d, n - 1} + (1 - \\beta) \\bar {\\zeta} _ {d, n} + \\varphi_ {d, n} \\sqrt {1 - \\beta^ {2}}. \\tag {1b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            537,
+            872,
+            919,
+            892
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Here, $v _ { d , n }$ and $\\zeta _ { d , n }$ respectively represent the mobility speed and the relative direction of the device at the time slot $n -$ 1, $\\overline { { v } } _ { d , n }$ and $\\overline { { \\zeta } } _ { d , n }$ respectively denote the average speed and ",
+        "bbox": [
+            503,
+            898,
+            921,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            960,
+            901,
+            973
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            184,
+            973,
+            885,
+            982
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "absolute mobility direction, the coefficients $\\alpha$ and $\\beta$ are used to moderate the influence of previous states on the current state, with both values ranging between 0 and 1, and the variables $\\omega _ { d , n }$ and $\\varphi _ { d , n }$ are independent random Gaussian processes that effectively introduce stochastic variability into the device mobility's dynamics. ",
+        "bbox": [
+            73,
+            68,
+            491,
+            159
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Therefore, the position information $Q _ { d , n }$ of the IoT device can be updated based on its dynamically changing speed $v _ { d , n - 1 }$ and direction $\\zeta _ { d , n - 1 }$ . These updates incorporate the calculated values from the GM mobility model, where both speed and direction are adjusted according to the device's previous states and random Gaussian fluctuations. This ensures that the model accurately reflects the realistic mobility of IoT devices. We have ",
+        "bbox": [
+            73,
+            159,
+            491,
+            280
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {d, n} = x _ {d, n - 1} + \\tau v _ {d, n - 1} \\cos \\zeta_ {d, n - 1}, \\tag {2a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            156,
+            289,
+            488,
+            304
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {d, n} = y _ {d, n - 1} + \\tau v _ {d, n - 1} \\sin \\zeta_ {d, n - 1}. \\tag {2b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            158,
+            308,
+            488,
+            323
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\tau$ represents the time slot duration. ",
+        "bbox": [
+            73,
+            330,
+            359,
+            345
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Channel Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            364,
+            207,
+            377
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "It is presumed that the locations of IoT devices are known to the UAV, with the UAV's horizontal position denoted as $Q _ { u , n } ~ = ~ ( x _ { u , n } , y _ { u , n } , h _ { u } )$ , and here $h _ { u }$ is the UAV flight altitude. Given the dynamic nature of the UAV's actual flight environment, it is essential to regularly re-plan a feasible flight trajectory for each time slot. This re-planning strategy should be based on the real-time status and specific tasks of UAVs to enhance performance metrics. In our study, we focus on a scenario with high-density IoT devices. For each UAV, numerous ground devices with Line-of-Sight (LoS) channels are typically available at each time slot. UAVs will prioritize task offloading to ground devices with LoS channels. Thus, it is reasonable to make the assumption of an LoS channel model between the UAV and ground devices. The channel gain can be expressed as ",
+        "bbox": [
+            73,
+            382,
+            491,
+            609
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {u, d, n} = \\frac {\\beta_ {0}}{\\left(x _ {u , n} - x _ {d , n}\\right) ^ {2} + \\left(y _ {u , n} - y _ {d , n}\\right) ^ {2} + \\left(h _ {u}\\right) ^ {2}}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            614,
+            488,
+            648
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\beta _ { 0 }$ represents the channel coefficient at a reference distance of 1 meter. ",
+        "bbox": [
+            73,
+            652,
+            488,
+            681
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, the data transmission rate from a IoT device to the UAV is determined by ",
+        "bbox": [
+            73,
+            683,
+            491,
+            714
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {u, d, n} \\left(p _ {d}\\right) = B \\log_ {2} \\left(1 + \\frac {g _ {u , d , n} p _ {d}}{N _ {0}}\\right), \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            151,
+            719,
+            488,
+            752
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $B$ indicates the bandwidth allocated to the IoT device, $p _ { d }$ denotes the transmit power, and $N _ { 0 }$ represents the noise power level. In our study, the OFDM technique is employed to enable task offloading for individual IoT devices, thereby minimizing the transmission interference among them. For the sake of simplicity, the transmission interference among devices is typically assumed to be ignored as existing works [5], [32]. ",
+        "bbox": [
+            73,
+            755,
+            491,
+            863
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "C. Delay and Energy Consumption ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            880,
+            316,
+            895
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "It is hypothesized that $\\boldsymbol { L } _ { d , n }$ denotes the total data volume for task processing in the nth time slot, and $\\lambda _ { u , d , n }$ signifies the ratio of data offloaded from IoT device $d$ to the UAV $u$ . ",
+        "bbox": [
+            73,
+            898,
+            491,
+            944
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The transmission delay and energy consumption of the IoT device to send data to the UAV are given by ",
+        "bbox": [
+            503,
+            68,
+            919,
+            99
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {u, d, n} ^ {\\text {O f f l o a d}} = \\frac {\\lambda_ {u , d , n} L _ {d , n}}{R _ {u , d , n} (p _ {d})}, \\tag {5a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            633,
+            102,
+            919,
+            133
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {u, d, n} ^ {\\text {O f f l o a d}} = p _ {d} T _ {u, d, n} ^ {\\text {O f f l o a d}}. \\tag {5b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            637,
+            135,
+            919,
+            154
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The delay and energy costs associated with local computing are respectively described by ",
+        "bbox": [
+            503,
+            157,
+            919,
+            188
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {d, n} ^ {\\text {L o c a l}} = \\frac {\\left(1 - \\sum_ {U} \\lambda_ {u , d , n}\\right) L _ {d , n} C _ {d}}{f _ {d}}, \\tag {6a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            190,
+            919,
+            223
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {d, n} ^ {\\text {L o c a l}} = \\eta f _ {d} ^ {3} T _ {d, n} ^ {\\text {L o c a l}}, \\tag {6b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            224,
+            919,
+            243
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $C _ { d }$ represents the CPU cycles necessary to process 1 bit of input data, $f _ { d }$ represent the CPU frequency of the dth IoT device, and $\\eta$ indicates the effective capacitance coefficient. ",
+        "bbox": [
+            503,
+            247,
+            919,
+            292
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, the computation delay experienced by the UAV in processing the tasks offloaded from the IoT device is computed as ",
+        "bbox": [
+            503,
+            292,
+            919,
+            334
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {u, d, n} ^ {\\text {C o m p u t e}} = \\frac {\\lambda_ {u , d , n} L _ {d , n} C _ {u}}{f _ {u}}, \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            620,
+            332,
+            919,
+            364
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $C _ { u }$ and $f _ { u }$ respectively represent the required CPU cycles and frequency of UAV for the offloaded data processing. ",
+        "bbox": [
+            503,
+            364,
+            919,
+            396
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Similarly, the energy consumption incurred by the UAV for offloaded task processing is ",
+        "bbox": [
+            503,
+            396,
+            919,
+            425
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {u, d, n} ^ {\\text {C o m p u t e}} = \\mu f _ {u} ^ {3} T _ {u, d, n} ^ {\\text {C o m p u t e}}. \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            627,
+            428,
+            919,
+            449
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\mu$ indicates the effective capacitance coefficient of UAV. ",
+        "bbox": [
+            503,
+            453,
+            919,
+            468
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Upon completing the task computations, the UAV sends the results back to the respective IoT device. Let $\\tilde { L } _ { d , n }$ represent the number of bits transmitted back the IoT device. Consequently, the transmission delay from the UAV to device $d$ is given by ",
+        "bbox": [
+            503,
+            468,
+            919,
+            527
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {u, d, n} ^ {\\text {T r a n s m i t}} = \\frac {\\lambda_ {u , d , n} \\tilde {L} _ {d , n}}{R _ {u , d , n} \\left(p _ {u}\\right)}. \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            630,
+            531,
+            919,
+            566
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { u }$ is the transmit power. ",
+        "bbox": [
+            504,
+            568,
+            720,
+            583
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The relevant energy consumption can be derived as ",
+        "bbox": [
+            519,
+            583,
+            870,
+            598
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {u, d, n} ^ {\\text {T r a n s m i t}} = p _ {u} T _ {u, d, n} ^ {\\text {T r a n s m i t}}. \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            635,
+            602,
+            919,
+            622
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Thus, the cumulative energy consumption for both the UAV and the IoT device, encompassing data processing, is calculated as ",
+        "bbox": [
+            503,
+            625,
+            919,
+            667
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {d, n} = \\sum_ {U} \\left(p _ {d} T _ {u, d, n} ^ {\\text {O f f l o a d}} + \\mu f _ {u} ^ {3} T _ {u, d, n} ^ {\\text {C o m p u t e}} + p _ {u} T _ {u, d, n} ^ {\\text {T r a n s m i t}}\\right) + \\eta f _ {d} ^ {3} T _ {u, d, n} ^ {\\text {L o c a l}}. \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            671,
+            934,
+            715
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "D. Charging Model ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            728,
+            643,
+            743
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The UAV can decide whether or not to charge. If UAV decides to charge, UAV will fly to an effective area near the charging station (obviously the action will consume energy) and recharge a partial of energy. The energy charging process is given by [10] ",
+        "bbox": [
+            501,
+            744,
+            919,
+            821
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {u, n} ^ {\\text {O l d - L e f t}} = E _ {u, n - 1} ^ {\\text {L e f t}} - E _ {u, n} ^ {\\text {F l y}}, \\tag {12a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            519,
+            825,
+            919,
+            844
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {u, n} ^ {\\text {L e f t}} = E _ {u, n} ^ {\\text {O l d - L e f t}} + E _ {u, n} ^ {\\text {C h a r g e}} = E _ {u, n} ^ {\\text {O l d - L e f t}} + q \\xi_ {u, n} E _ {u, n} ^ {\\max }, \\tag {12b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            845,
+            919,
+            864
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\xi _ { u , n } \\in \\{ 0 , \\ 1 \\}$ is the charging indicator with $\\xi _ { u , n } = 1$ ratio, signifying UAV in charging state, $E _ { u , n } ^ { \\mathrm { O l d - } }$ -Left , $E _ { u , n } ^ { \\mathrm { L e f t } }$ , $E _ { u , n } ^ { \\mathrm { \\overline { { C } } h a r \\overline { { g } } e } }$ , and $E _ { u , n } ^ { \\mathrm { m a x } }$ $q$ represents the charging represent the UAV's energy before charging, after charging, charging energy, and energy capacity, respectively. ",
+        "bbox": [
+            503,
+            868,
+            919,
+            945
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            885,
+            982
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "E. UAV Flying Model ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            68,
+            228,
+            84
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In our study, for simplicity, we assume that the UAVs maintain a constant speed $v _ { u }$ during task offloading and hover when charging. As a result, there are only two scenarios, and the energy consumption of the UAV is directly related to the flying time and flying speed. The energy consumed by the UAV during a single time slot is given by [33] ",
+        "bbox": [
+            73,
+            95,
+            491,
+            188
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {u, n} ^ {\\text {F l y}} = \\left\\{ \\begin{array}{l} P ^ {\\text {C h a r g e}} \\tau , \\text {i f C h a r g i n g}, \\\\ P \\left(v _ {u}\\right) \\tau , \\text {O t h e r s}, \\end{array} \\right. \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            200,
+            491,
+            242
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $P ( v _ { u } )$ and $P ^ { \\mathrm { C h a r g e } }$ respectively denote the UAV's flying power and hovering power when charging. ",
+        "bbox": [
+            73,
+            257,
+            491,
+            289
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "F. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            325,
+            241,
+            340
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Our proposed framework aims to achieve the following objectives: (1) To prioritize energy conservation across the entire task offloading period. It is recommended to utilize nearby UAVs for data acquisition to reduced energy consumption. (2) To efficiently transmit and process data from devices through optimal UAV path planning. (3) To ensure maximum variance in the data collected by all UAVs, thereby achieving a balanced geographical distribution among devices. ",
+        "bbox": [
+            73,
+            352,
+            490,
+            474
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "First, an energy consumption coefficient, $\\kappa _ { n }$ , is defined as ",
+        "bbox": [
+            89,
+            476,
+            486,
+            491
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\kappa_ {n} = \\frac {\\eta_ {u} \\sum_ {U} \\sum_ {i = 1} ^ {n} E _ {u , i} ^ {\\text {F l y}} + \\eta_ {d} \\sum_ {D} \\sum_ {i = 1} ^ {n} E _ {d , i}}{\\eta_ {u} \\sum_ {U} \\sum_ {i = 1} ^ {n} E _ {u , i} ^ {\\text {C h a r g e}} + \\eta_ {u} \\sum_ {U} E _ {u} ^ {\\text {O r i g i n}} + \\eta_ {d} \\sum_ {D} E _ {d} ^ {\\text {O r i g i n}}}, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            73,
+            506,
+            493,
+            556
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\eta _ { u }$ and $\\eta _ { d }$ are energy balance coefficient, $E _ { u } ^ { \\mathrm { { O r i g i n } } }$ and $E _ { d } ^ { \\mathrm { { O r i g i n } } }$ respectively represent the origin energy levels of UAVs and IoT devices. It is obvious that a smaller value of $\\kappa _ { n }$ implies higher energy consumption efficiency. ",
+        "bbox": [
+            73,
+            558,
+            491,
+            619
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "To capture data diversity, the spatial equity index $f _ { n }$ , is introduced to measure the fairness of territorial coverage by UAVs as ",
+        "bbox": [
+            73,
+            621,
+            491,
+            665
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {n} = \\frac {\\left(\\sum_ {D} \\iota_ {d , n}\\right) ^ {2}}{D \\sum_ {D} \\left(\\iota_ {d , n}\\right) ^ {2}}, \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            209,
+            670,
+            488,
+            710
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\boldsymbol { \\iota } _ { d , n }$ represents the total number of times that an IoT device $d$ has been visited by all UAVs till time slot $n$ . Clearly, evenly collecting data from all IoT devices ensures a high level of geographical fairness. ",
+        "bbox": [
+            73,
+            723,
+            491,
+            782
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Additionally, the data collection coefficient $\\psi _ { n }$ is defined as ",
+        "bbox": [
+            91,
+            785,
+            491,
+            801
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\psi_ {n} = \\frac {\\sum_ {D} \\sum_ {U} \\sum_ {i = 1} ^ {n} \\lambda_ {u , d , i} L _ {d , i}}{\\sum_ {D} \\sum_ {i = 1} ^ {n} L _ {d , i}}. \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            169,
+            815,
+            488,
+            851
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A higher data collection coefficient indicates that more data of IoT devices has been collected. ",
+        "bbox": [
+            73,
+            866,
+            488,
+            896
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The objective of optimization problem formulation for UAVassisted MEC is to achieve the minimum energy expenditure coefficient and maximum data collection coefficient and fair-",
+        "bbox": [
+            73,
+            898,
+            491,
+            944
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "ness by optimally designing the UAV trajectory, offloading strategy, and charging indicator, which can be built as ",
+        "bbox": [
+            503,
+            68,
+            919,
+            99
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {P} 1: \\quad \\max  _ {Q, \\lambda , \\xi} \\Omega_ {n} (\\psi_ {n}, f _ {n}, \\kappa_ {n})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            106,
+            715,
+            128
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {s . t .} \\quad \\mathrm {C 1}: \\| Q _ {u, n + 1} - Q _ {u, n} \\| \\leq D _ {\\max }, \\quad \\forall u, \\tag {17a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            132,
+            919,
+            148
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm {C} 2: \\lambda_ {u, d, n} \\in [ 0, 1 ], \\quad \\forall u, \\forall d, \\tag {17b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            151,
+            919,
+            167
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm {C} 3: \\xi_ {u, n} \\in [ 0, 1 ], \\quad \\forall u, \\tag {17c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            170,
+            919,
+            186
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 4: \\sum_ {U} \\lambda_ {u, d, n} \\leq 1, \\quad \\forall d, \\tag {17d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            189,
+            919,
+            212
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm {C} 5: E _ {u, n} ^ {\\text {L e f t}}, E _ {u, n} ^ {\\text {O l d - L e f t}} \\geq 0, \\quad \\forall u, \\tag {17e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            212,
+            919,
+            231
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $Q = \\{ Q _ { u , n } \\}$ , $\\lambda = \\{ \\lambda _ { u , d , n } \\}$ , $\\xi = \\{ \\xi _ { u , n } \\}$ , $D _ { \\mathrm { m a x } }$ is the maximum flight distance of UAV in one time slot, and the overall equilibrium efficiency $\\Omega _ { n } ( \\psi _ { n } , f _ { n } , \\kappa _ { n } )$ can be modeled as a multi-objective-based metric, such as a multiplicationdivision-base cost function $\\Omega _ { n } = \\psi _ { n } f _ { n } / \\kappa _ { n }$ and a weighted cost function $\\Omega _ { n } = \\beta _ { 1 } \\psi _ { n } + \\beta _ { 2 } f _ { n } - \\beta _ { 3 } \\kappa _ { n }$ . These functions are relevant to different application scenarios. Here $\\beta _ { 1 }$ , $\\beta _ { 2 }$ , and $\\beta _ { 3 }$ are weighting factors. ",
+        "bbox": [
+            501,
+            237,
+            921,
+            358
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "IV. $j$ -PPO+EN-CONVNTM FRAMEWORK ",
+        "text_level": 1,
+        "bbox": [
+            562,
+            375,
+            862,
+            388
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In addressing the optimization problem P1, the application of DRL is particularly apt due to several intrinsic characteristics of the problem and the strengths of DRL methodologies. Firstly, the problem presents a high-dimensional action and state space, as evidenced by the multiple variables, such as $Q , \\lambda ,$ , and $\\xi$ , and their inter-dependencies. DRL excels in navigating these complex, multi-variable environments. Secondly, the dynamic nature and sequential decision-making inherent in the problem, as highlighted by the relationship between $Q _ { u , n + 1 }$ and $Q _ { u , n }$ , align well with DRL's proficiency in learning optimal strategies over a series of actions in fluctuating circumstances. Furthermore, the problem's requirement for multi-objective optimization is well-suited to DRL's capability to balance multiple goals through intricate reward function learning. Additionally, the presence of both continuous (like $Q$ ) and discrete variables (such as $\\lambda$ and $\\xi ,$ ) in the problem is well within the purview of DRL, which can handle mixed types of action spaces. Finally, the complexity introduced by the multiple constraints (from C1 to C5) can be effectively managed by DRL, as it can learn policies that not only adhere to these constraints but also optimize performance within their bounds. Therefore, the utilization of DRL in solving this optimization problem is justified by its flexibility and adaptive capabilities in high-dimensional, dynamic environments, and its proficiency in handling complex, multi-objective, and constrained optimization scenarios. ",
+        "bbox": [
+            501,
+            393,
+            921,
+            786
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A. Joint Continuous and Discrete Action Decision: $j$ -PPO ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            805,
+            903,
+            820
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we propose a DRL framework termed “j-PPO+EN-ConvNTM”, which integrates long-sequence spatiotemporal data modeling (referred to as “EN-ConvNTM”) and a joint continuous and discrete action decision-making module (named “ $j$ -PPO”), as illustrated in Fig. 2. Specifically, EN-ConvNTM is designed to encode a 3-D history vector that meticulously tracks the flight paths of UAVs. Utilizing this 3- D history vector, the $j$ -PPO framework actively manages the ",
+        "bbox": [
+            501,
+            823,
+            921,
+            944
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "5 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            885,
+            982
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/523bcf374609dfd2eea7bcc1269b2e0fc8c45281131ae14f75d997500bf52b08.jpg",
+        "image_caption": [
+            "Fig. 2: $j$ -PPO+EN-ConvNTM framework "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            187,
+            66,
+            808,
+            556
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "UAVs’ flight paths while making precise decisions regarding communication and battery recharging. ",
+        "bbox": [
+            73,
+            606,
+            491,
+            637
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Below, we first outline the definition of the partially observed Markov decision process (POMDP) as applied to the UAV-assisted MEC system. Subsequently, the method for long-sequence spatiotemporal data modeling, referred to as “EN-ConvNTM”, is introduced for preprocessing. Finally, the “ $\\cdot _ { j }$ -PPO” module is employed to address the optimization problem through joint continuous and discrete action decisionmaking. ",
+        "bbox": [
+            73,
+            637,
+            490,
+            758
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "B. POMDP Definition ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            786,
+            230,
+            801
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "To tackle the aforementioned optimization problem, it is necessary to develop a POMDP framework instead of a fully observable MDP. This is because the system's dynamics are inherently complex and uncertain. The POMDP approach is particularly suitable for environments where the state information is not fully observable, which is highly relevant to our problem involving interactions between UAVs and IoT devices. Factors such as precise UAV locations or internal states of IoT devices may be partially unknown or obscured. ",
+        "bbox": [
+            73,
+            808,
+            491,
+            945
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, the POMDP can accommodate the inherent uncertainty in action outcomes and observations, which is crucial in unpredictable scenarios such as UAV flight decision-making or IoT data transmission. Unlike MDPs that assume complete state information during decision-making, POMDPs use belief states, a probabilistic representation of the possible states of the environment, to guide decision-making under uncertainty. This approach effectively captures the real-world complexities of partial observability and decision-making under uncertainty, making POMDP a more fitting and realistic framework for optimizing operational strategies in dynamic and partially known environments involving UAV and IoT interactions. ",
+        "bbox": [
+            501,
+            606,
+            921,
+            787
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The POMDP framework is characterized by a tuple $( \\mathcal { S } , \\mathcal { A } , r , \\rho _ { 0 } , \\rho , \\mathcal { O } , P _ { r } , \\gamma )$ , where $s$ represents the set of environment states, $\\mathcal { A }$ is the set of actions, and $\\gamma$ is the discount factor. The reward function is expressed as $r ( \\mathbf { s } _ { n } )$ . The initial state of the environment is given by the distribution function $\\rho _ { 0 } ( \\mathbf { s } _ { 0 } )$ , with $\\rho ( \\mathbf { s } _ { n + 1 } | \\mathbf { s } _ { n } , \\mathbf { a } _ { n } )$ describing the state transition function. In this partially observable setting, the agent receives observations ${ \\bf 0 } _ { n }$ from $\\mathcal { O }$ rather than direct access to state ${ \\bf s } _ { n }$ . The probability of observing $\\mathbf { o } _ { n }$ given ${ \\bf s } _ { n }$ is defined by $P _ { r } ( \\mathbf { o } _ { n } | \\mathbf { s } _ { n } )$ . ",
+        "bbox": [
+            503,
+            792,
+            921,
+            945
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6 ",
+        "bbox": [
+            911,
+            31,
+            919,
+            40
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            184,
+            973,
+            883,
+            983
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Subsequently, based on the system model and the optimal control challenge, further analysis is conducted on the POMDP of the MEC system. The specific observation, action, and reward function are designed as follows. ",
+        "bbox": [
+            73,
+            69,
+            491,
+            128
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1) Observation: The observation $\\mathbf { o } _ { n }$ is conceptualized as a 3-D vector including 3 channels. This vector maps the 2- D real-world locations of obstacles, charging stations, IoT devices, and UAVs into these channels. ",
+        "bbox": [
+            73,
+            128,
+            491,
+            188
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In the first channel, which details the geographical layout, the positions of obstacle are assigned a value of -1, while the positions of IoT devices are filled with values representing their current remaining data. ",
+        "bbox": [
+            73,
+            189,
+            491,
+            250
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\no _ {n} ^ {\\text {1 s t C h .}}: (\\phi (x _ {d, n}), \\phi (y _ {d, n}), 1) = \\left\\{ \\begin{array}{l} L _ {d, n}, \\\\ - 1. \\end{array} \\right. \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            145,
+            253,
+            491,
+            294
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The second channel illustrates the geographic layout of charging stations and UAVs. In this layer, the positions occupied by UAVs indicate their current remaining energy levels, while the positions of charging stations are marked with a value of $- 1$ . ",
+        "bbox": [
+            73,
+            299,
+            491,
+            372
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\no _ {n} ^ {\\text {2 n d C h .}}: (\\phi \\left(x _ {u, n}\\right), \\phi \\left(y _ {u, n}\\right), 2) = \\left\\{ \\begin{array}{l} E _ {u, n} ^ {\\text {L e f t}}, \\\\ - 1. \\end{array} \\right. \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            142,
+            377,
+            490,
+            417
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In the third channel, the grid positions corresponding to IoT devices show the number of visits by all UAVs up to the current time slot, while all other values are set to zero. ",
+        "bbox": [
+            73,
+            422,
+            491,
+            465
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\no _ {n} ^ {\\text {3 r d C h .}}: (\\phi (x _ {d, n}), \\phi (y _ {d, n}), 3) = \\left\\{ \\begin{array}{l} \\iota_ {d, n}, \\\\ 0. \\end{array} \\right. \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            148,
+            470,
+            490,
+            510
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "2) Action: In UAV-assisted MEC problem, the optimization variables include continuous variables such as $Q$ , as well as discrete variables such as $\\lambda$ and $\\xi$ . This belongs to a joint continuous and discrete action decision-making problem. Thus, the action is characterized as a tuple ",
+        "bbox": [
+            73,
+            515,
+            491,
+            590
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {a} _ {n} = \\left(\\mathbf {a} _ {n} ^ {1}, \\mathbf {a} _ {n} ^ {2}, \\dots , \\mathbf {a} _ {n} ^ {U}, \\mathbf {1} _ {n}\\right), \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            187,
+            595,
+            488,
+            614
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where the discrete variables are denoted by an indicator vector function ${ \\bf 1 } _ { n }$ , and the continuous action $\\mathbf { a } _ { n } ^ { u }$ indicates UAV flight trajectories. This action function will control the UAV either to charge or to act as a offloading MEC data collector. ",
+        "bbox": [
+            73,
+            621,
+            491,
+            681
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3) Reward Function: The reward function is defined as ",
+        "bbox": [
+            89,
+            681,
+            472,
+            696
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {n} = \\Omega_ {n} - p _ {u, n}. \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            223,
+            705,
+            488,
+            720
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Here, the reward function is totally determined by the multiobjective-based cost function. Additionally, a penalty $p _ { u , n }$ is typically introduced when the distance between two UAVs is too small, or when a UAV is too close to an obstacle, or when a UAV is close to depleting its energy reserves [6]. ",
+        "bbox": [
+            73,
+            727,
+            491,
+            803
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "C. EN-ConvNTM Module Preprocessing ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            820,
+            352,
+            835
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In the domain of POMDP, an integrator is essential to condense the sequence of observations $\\left( \\mathbf { o } _ { 0 } , \\mathbf { o } _ { 1 } , \\ldots , \\mathbf { o } _ { n - 1 } , \\mathbf { o } _ { n } \\right)$ into a comprehensive representation $\\mathbf { h } _ { n }$ . Each observation encapsulates the positional data of UAVs, obstacles, charging stations, and IoT devices. ",
+        "bbox": [
+            73,
+            838,
+            490,
+            912
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Traditional integrators, such as recurrent neural networks (RNNs) and long short-term memorys (LSTMs), while being ",
+        "bbox": [
+            73,
+            914,
+            491,
+            945
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "quite effective, often struggle to fully capture the structural complexity of the data, particularly when dealing with multidimensional inputs. ConvLSTM represents a viable alternative that preserves structural information; however, its capacity to integrate information over long sequences may be limited. To address these challenges, we introduce an enhanced version of the ConvNTM integrator, EN-ConvNTM, equipped with an external multi-dimensional memory and integrated with a STN. This improved ConvNTM excels at encoding spatiotemporal information across extended sequences, ensuring that the spatial relationships within the data are effectively captured and utilized. ",
+        "bbox": [
+            501,
+            69,
+            921,
+            247
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The EN-ConvNTM module is designed to interpret actions $\\mathbf { a } _ { n }$ from sequences of observations $\\mathbf { o } _ { n }$ and $\\mathbf { o } _ { n + 1 }$ , utilizing 3-D vectors $\\left( \\mathbf { o } _ { 1 } , \\ldots , \\mathbf { o } _ { n } \\right)$ to construct a historical trajectory. When these observations are considered from a temporal perspective, it reveals the UAV trajectories and temporal interactions among all entities. These aspects are as crucial as spatial information for cooperative UAV operations and decisionmaking. The trajectories of UAVs derived from extended spatiotemporal history provide invaluable references for modeling the intricate dynamics within the realistic environment. This approach is augmented with spatial transformation capabilities and an advanced memory mechanism to enrich the spatiotemporal understanding of the data. The EN-ConvNTM module can be expressed as ",
+        "bbox": [
+            503,
+            250,
+            921,
+            462
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {h} _ {n} = \\text {E N - C o n v N T M} (\\operatorname {S T N} (\\phi (\\mathbf {o} _ {n}))). \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            578,
+            469,
+            919,
+            487
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The STN module, denoted as $\\mathrm { S T N } ( \\cdot )$ , applies a spatial transformation to the input $\\phi ( \\mathbf { o } _ { n } )$ before it is processed by the ConvNTM. This ensures that the network focuses on the most relevant spatial features of the observation. The output $\\mathbf { h } _ { n }$ is then a 3-D vector that encapsulates the spatiotemporally relevant information, which has been enhanced through spatial transformation. ",
+        "bbox": [
+            503,
+            494,
+            919,
+            599
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The components and operations of the EN-ConvNTM are described as follows, with each component being differentiable and trainable via gradient descent as ",
+        "bbox": [
+            503,
+            601,
+            919,
+            646
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {m} _ {n} = \\left[ \\mathbf {b} _ {n} ^ {1}, \\mathbf {b} _ {n} ^ {2}, \\dots , \\mathbf {b} _ {n} ^ {L} \\right]. \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            624,
+            652,
+            919,
+            672
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Here, [·] denotes the concatenation of 3-D vectors, where a 3-D block $\\mathbf { b } _ { n } ^ { i }$ represents the memory unit, and the complete memory $\\mathbf { m } _ { n }$ is formed, and $L$ is the length of memory blocks. ",
+        "bbox": [
+            504,
+            680,
+            919,
+            724
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The detailed operations of EN-ConvNTM are as follows. ",
+        "bbox": [
+            519,
+            724,
+            908,
+            739
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {r} _ {n} = \\operatorname {r e a d} \\left(\\mathbf {m} _ {n}\\right), \\tag {25a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            750,
+            919,
+            766
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {c} _ {n} = \\operatorname {c o n t e x t} \\left(\\mathbf {r} _ {n}, \\mathbf {m} _ {n}, \\operatorname {S T N} \\left(\\phi \\left(\\mathbf {o} _ {n}\\right)\\right)\\right), \\tag {25b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            768,
+            919,
+            784
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {w} _ {n} = \\operatorname {w r i t e} \\left(\\mathbf {r} _ {n}, \\mathbf {c} _ {n}, \\operatorname {S T N} \\left(\\phi (\\mathbf {o} _ {n})\\right)\\right), \\tag {25c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            787,
+            919,
+            803
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {e} _ {n} = \\text {e n h a n c e m e n t} \\left(\\mathbf {r} _ {n}, \\mathbf {w} _ {n}, \\operatorname {S T N} \\left(\\phi \\left(\\mathbf {o} _ {n}\\right)\\right)\\right), \\tag {25d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            806,
+            919,
+            823
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {m} _ {n + 1} = \\text {u p d a t e} \\left(\\left(\\mathbf {w} _ {n} + \\mathbf {e} _ {n}\\right), \\mathbf {m} _ {n}\\right), \\tag {25e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            825,
+            919,
+            840
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {h} _ {n} = \\operatorname {o u t p u t} \\left(\\mathbf {r} _ {n}, \\mathbf {c} _ {n}, \\operatorname {S T N} \\left(\\phi \\left(\\mathbf {o} _ {n}\\right)\\right)\\right). \\tag {25f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            844,
+            919,
+            859
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "This EN-ConvNTM structure enables a deeper and more contextually aware representation of the environment, which is critical for making informed decisions in complex and dynamic scenarios. The detailed information for operation about read, context, write, update, and output can be found in [10]. ",
+        "bbox": [
+            503,
+            869,
+            921,
+            945
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "7 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            184,
+            973,
+            885,
+            982
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The enhancement operation within the ConvNTM architecture integrates feature amplification and information distillation to optimize the representation of critical information. ",
+        "bbox": [
+            73,
+            68,
+            491,
+            113
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Feature amplification begins by applying a spatial transformation to the input $\\phi ( \\mathbf { o } _ { n } )$ using STN, which refines the input to highlight operationally significant regions. This is further enriched by integrating contextual embeddings ${ \\bf w } _ { n }$ , which capture the broader dependencies within the dataset, ensuring a more comprehensive understanding of the underlying environment. ",
+        "bbox": [
+            73,
+            114,
+            491,
+            219
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Building on this, information distillation employs an attention mechanism to selectively emphasize elements with the highest informational value, sharpening the model’s focus on the most relevant data segments. Additionally, dimensionality reduction techniques are applied to streamline the feature set, effectively crystallizing the knowledge representation while minimizing redundancy. Together, these processes synthesize an enhanced vector $\\mathbf { e } _ { n }$ that encapsulates salient features and eliminates extraneous details, contributing to a more robust and distilled representation. ",
+        "bbox": [
+            73,
+            220,
+            491,
+            369
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Based on feature amplification and information distillation, the enhancement operational formula is given by ",
+        "bbox": [
+            73,
+            369,
+            491,
+            398
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {e} _ {n} = \\psi^ {E} \\left(\\left[ \\operatorname {S T N} \\left(\\phi (\\mathbf {o} _ {n})\\right), \\mathbf {w} _ {n}, \\text {A t t e n t i o n} \\left(\\mathbf {W} ^ {\\mathrm {a t t}} * [ \\phi (\\mathbf {r} _ {n}), \\mathbf {w} _ {n} ]\\right) \\right]\\right), \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            404,
+            490,
+            433
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where Attention(·) applies a weighted importance to the features, $\\mathbf { W } ^ { \\mathrm { a t t } }$ is the associated weighting matrix, and $\\psi ^ { E } ( \\cdot )$ involves a combination of spatial transformation, contextual embedding, and attention mechanism to refine and amplify the memory representation. ",
+        "bbox": [
+            73,
+            434,
+            491,
+            508
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The computational steps of enhancement operation are as follows. ",
+        "bbox": [
+            73,
+            510,
+            491,
+            539
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "1) Combining spatial transformation and contextual embedding: ",
+        "bbox": [
+            73,
+            540,
+            491,
+            570
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {f} _ {\\text {c o m b i n e d}} = \\left[ \\operatorname {S T N} \\left(\\phi (\\mathbf {o} _ {n})\\right) \\oplus \\mathbf {w} _ {n} \\right]. \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            169,
+            571,
+            488,
+            590
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Here, STN $\\left( \\phi ( \\mathbf { o } _ { n } ) \\right)$ applies a spatial transformation to the input $\\phi ( \\mathbf { o } _ { n } )$ , optimizing its spatial features to highlight operationally critical regions. This output is then concatenated (denoted by $\\bigoplus _ { i = 1 } ^ { \\cdot }$ ) with contextual embedding ${ \\bf w } _ { n }$ , which encapsulate the contextual dependencies within the dataset. ",
+        "bbox": [
+            73,
+            598,
+            491,
+            674
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "2) Applying attention weighting: ",
+        "bbox": [
+            89,
+            675,
+            316,
+            690
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {f} _ {\\text {a t t}} = \\text {A t t e n t i o n} \\left(\\mathbf {W} ^ {\\text {a t t}} * \\mathbf {f} _ {\\text {c o m b i n e d}}\\right). \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            163,
+            699,
+            488,
+            717
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The attention mechanism assesses and amplifies the most important elements within the enhanced dataset by applying a weighted importance using the weight matrix $\\mathbf { W } ^ { \\mathrm { a t t } }$ . The result is $\\mathbf { f } _ { \\mathrm { a t t } }$ , an attention-weighted feature vector that sharpens the focus on segments with maximal informational content. ",
+        "bbox": [
+            73,
+            726,
+            491,
+            801
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "3) Feature fusion and information distillation: ",
+        "bbox": [
+            89,
+            801,
+            403,
+            816
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {e} _ {n} = \\sigma \\left(\\mathbf {W} ^ {e} * \\left[ \\mathbf {f} _ {\\text {a t t}} \\oplus \\mathbf {f} _ {\\text {c o m b i n e d}} \\right] + \\mathbf {b} ^ {e}\\right). \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            827,
+            488,
+            844
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this step, ${ \\bf W } ^ { e }$ and $\\mathbf { b } ^ { e }$ represent the weights and biases of a linear layer, respectively, and $\\sigma$ is a nonlinear activation function, such as ReLU or tanh. The purpose of this step is to further integrate and distill the features, producing the final enhanced vector $\\mathbf { e } _ { n }$ by combining both attention-weighted and spatially-contextually features. ",
+        "bbox": [
+            73,
+            853,
+            491,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "This resulting vector $\\mathbf { e } _ { n }$ equips the EN-ConvNTM with a memory substrate for subsequent operations, reinforcing the system's capacity for insightful data interpretation and complex decision-making. ",
+        "bbox": [
+            501,
+            68,
+            921,
+            130
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "D. Joint Continuous and Discrete Action Decision: $j$ -PPO ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            150,
+            906,
+            165
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "According to the POMDP definition, the long-term cumulative rewards called return is given by ",
+        "bbox": [
+            503,
+            170,
+            919,
+            200
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {n} = \\sum_ {i = 0} ^ {n} \\gamma^ {i} r \\left(\\mathbf {s} _ {i}\\right), \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            648,
+            208,
+            919,
+            246
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $\\gamma \\in ( 0 , 1 )$ is the discount factor, controlling the weight of future rewards in the decision-making process. ",
+        "bbox": [
+            501,
+            253,
+            919,
+            282
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The objective is to develop a policy $\\pi _ { \\boldsymbol { \\theta } } ( \\mathbf { a } _ { n } | \\mathbf { h } _ { n } )$ , where history information is encapsulated in $\\mathbf { h } _ { n }$ . This stochastic policy $\\pi _ { \\boldsymbol { \\theta } } ( \\mathbf { a } _ { n } | \\mathbf { h } _ { n } )$ aims to maximize ",
+        "bbox": [
+            501,
+            284,
+            919,
+            329
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbb {E} _ {\\left(\\mathbf {s} _ {0}, \\mathbf {o} _ {0}, \\mathbf {a} _ {0}, \\dots\\right)} \\left[ R _ {n} \\right], \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            648,
+            344,
+            919,
+            362
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where ${ \\bf s } _ { 0 } \\sim \\rho _ { 0 } ( { \\bf s } _ { 0 } )$ , $\\mathbf { o } _ { n } \\sim P _ { r } ( \\mathbf { o } _ { n } | \\mathbf { s } _ { n } )$ , ${ \\mathbf a } _ { n } \\sim \\pi _ { \\theta } ( { \\mathbf a } _ { n } | { \\mathbf h } _ { n } )$ , and $\\mathbf { s } _ { n + 1 } \\sim \\rho ( \\mathbf { s } _ { n + 1 } | \\mathbf { s } _ { n } , \\mathbf { a } _ { n } )$ . ",
+        "bbox": [
+            503,
+            369,
+            919,
+            400
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Simultaneously, the value function is defined as follows. ",
+        "bbox": [
+            519,
+            400,
+            903,
+            415
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV _ {\\pi_ {\\theta}} (\\mathbf {h} _ {n}) = \\mathbb {E} _ {\\mathbf {s} _ {n} | \\mathbf {h} _ {n}} [ r (\\mathbf {s} _ {n}) ] + \\mathbb {E} _ {(\\mathbf {a} _ {n}, \\mathbf {s} _ {n + 1}, \\mathbf {o} _ {n + 1}, \\mathbf {a} _ {n + 1}, \\dots) | \\mathbf {h} _ {n}} [ G _ {n} ]. \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            422,
+            919,
+            454
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { G _ { n } = \\sum _ { i = 1 } ^ { \\infty } \\gamma ^ { i } r ( \\mathbf { s } _ { n + i } ) } \\end{array}$ ",
+        "bbox": [
+            503,
+            463,
+            710,
+            479
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Typically, policy gradient methods adjust the probabilities of actions to increase those leading to higher returns and decrease those leading to lower returns, converging on an optimal policy. This approach employs a stochastic gradient ascent algorithm, with the gradient estimator derived by differentiating the objective as follows. ",
+        "bbox": [
+            501,
+            479,
+            919,
+            569
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {n} (\\theta) = \\mathbb {E} _ {n} \\left[ \\log \\pi_ {\\theta} \\left(\\mathbf {a} _ {n} \\mid \\mathbf {h} _ {n}\\right) A _ {n} \\right], \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            578,
+            919,
+            595
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Here, $\\mathbb { E } _ { n }$ represents the empirical average computed from a finite batch of samples, and $A _ { n }$ serves as an generalized advantage estimation (GAE) defined as ",
+        "bbox": [
+            503,
+            603,
+            919,
+            650
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nA _ {n} = \\sum_ {i = 0} ^ {\\infty} \\left(\\gamma \\varsigma\\right) ^ {i} \\delta_ {n + i}, \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            640,
+            656,
+            919,
+            695
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $\\varsigma$ is the GAE hyperparameter, and ",
+        "bbox": [
+            503,
+            700,
+            785,
+            715
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\delta_ {n} = r \\left(s _ {n}\\right) + \\gamma V _ {\\theta_ {\\text {o l d}}} \\left(\\mathbf {h} _ {n + 1}\\right) - V _ {\\theta_ {\\text {o l d}}} \\left(\\mathbf {h} _ {n}\\right), \\tag {35}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            571,
+            724,
+            919,
+            742
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "and here $V _ { \\theta }$ represents the value function, which is parameterized by $\\theta$ updated as ",
+        "bbox": [
+            501,
+            750,
+            919,
+            780
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\theta \\leftarrow \\theta + l _ {r} \\nabla_ {\\theta} L _ {n} (\\theta), \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            637,
+            789,
+            919,
+            806
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $l _ { r }$ is the learning rate, and $\\nabla$ is the gradient operator. ",
+        "bbox": [
+            503,
+            814,
+            915,
+            829
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The clipped version of PPO employs a unique clipping mechanism within the objective function to discourage significant deviations from the old policy, rather than incorporating a KL-divergence term and a constraint. The objective of clipped PPO is ",
+        "bbox": [
+            501,
+            829,
+            919,
+            904
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {n} ^ {\\mathrm {C L I P}} (\\theta) = \\mathbb {E} _ {n} \\left[ \\min  \\left(g _ {n} (\\theta) A _ {n}, \\operatorname {c l i p} \\left(g _ {n} (\\theta), 1 - \\varepsilon , 1 + \\varepsilon\\right) A _ {n}\\right) \\right], \\tag {37}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            912,
+            921,
+            944
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "8 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            960,
+            901,
+            973
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            885,
+            982
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            75,
+            69,
+            104,
+            82
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {n} (\\theta) = \\frac {\\pi_ {\\theta} \\left(\\mathbf {a} _ {n} \\mid \\mathbf {h} _ {n}\\right)}{\\pi_ {\\theta_ {\\mathrm {o l d}}} \\left(\\mathbf {a} _ {n} \\mid \\mathbf {h} _ {n}\\right)}. \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            199,
+            78,
+            488,
+            112
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Here, the first term within the $\\operatorname* { m i n } ( \\cdot )$ function acts as a “surrogate” objective, where $g _ { n } ( \\theta )$ represents the probability ratio. The second term adjusts this surrogate by clipping the probability ratio, ensuring that the chosen objective, either clipped or unclipped, is the lower bound of the unclipped version. ",
+        "bbox": [
+            73,
+            116,
+            491,
+            205
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, when leveraging a neural network architecture that shares parameters across both the policy and value function, the clip loss alone is insufficient. To promote adequate exploration, the loss function should integrate the policy surrogate with a term for value function error and an entropy bonus as ",
+        "bbox": [
+            73,
+            205,
+            491,
+            281
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {n} ^ {\\mathrm {C L I P} + \\mathrm {V F} + \\mathrm {S}} (\\theta) = \\mathbb {E} _ {n} \\left[ L _ {n} ^ {\\mathrm {C L I P}} (\\theta) - c _ {1} L _ {n} ^ {\\mathrm {V F}} (\\theta) + c _ {2} S [ \\pi_ {\\theta} ] (s _ {n}) \\right], \\tag {39a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            94,
+            285,
+            488,
+            323
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {n} ^ {\\mathrm {V F}} (\\theta) = \\mathbb {E} _ {n} \\left[ \\left(V _ {\\theta} \\left(\\mathbf {h} _ {n}\\right) - V _ {\\pi_ {\\theta_ {\\text {o l d}}}} \\left(\\mathbf {h} _ {n}\\right)\\right) ^ {2} \\right], \\tag {39b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            94,
+            325,
+            491,
+            354
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $c _ { 1 }$ and $c _ { 2 }$ respectively denote the loss coefficient and entropy coefficient, $S$ represents an entropy bonus, and $L _ { n } ^ { \\mathrm { V F } }$ refers to the error in the value function. ",
+        "bbox": [
+            73,
+            359,
+            491,
+            402
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Given that our scenario includes both continuous actions for UAV flight and discrete actions for data offloading or battery charging, we start with PPO and adapt its loss functions to suit the requirements. This modified version is henceforth referred to as $^ { 6 6 } j$ -PPO”: ",
+        "bbox": [
+            73,
+            405,
+            491,
+            479
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {n} ^ {\\text {h y b r i d} + \\mathrm {V F} + \\mathrm {S}} (\\theta) = \\mathbb {E} _ {n} \\left[ L _ {n} ^ {\\text {h y b r i d}} (\\theta) - c _ {1} L _ {n} ^ {\\mathrm {V F}} (\\theta) + c _ {2} S [ \\pi_ {\\theta} ] (\\mathbf {s} _ {n}) \\right], \\tag {40a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            86,
+            494,
+            488,
+            515
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {n} ^ {\\text {h y b r i d}} (\\theta) = \\mathbb {E} _ {n} \\left[ \\min  \\left(g _ {n} ^ {\\text {h y b r i d}} (\\theta) A _ {n}, \\operatorname {c l i p} \\left(g _ {n} ^ {\\text {h y b r i d}} (\\theta), 1 - \\varepsilon , 1 + \\varepsilon\\right) A _ {n}\\right) \\right], \\tag {40b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            86,
+            516,
+            500,
+            546
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {n} ^ {\\text {h y b r i d}} (\\theta) = c _ {3} \\frac {\\pi_ {\\theta} \\left(\\mathbf {a} _ {n} ^ {1 : U} \\mid \\mathbf {h} _ {n}\\right)}{\\pi_ {\\theta_ {o l d}} \\left(\\mathbf {a} _ {n} ^ {1 : U} \\mid \\mathbf {h} _ {n}\\right)} + (1 - c _ {3}) \\frac {\\pi_ {\\theta} \\left(\\mathbf {l} _ {n} \\mid \\mathbf {h} _ {n}\\right)}{\\pi_ {\\theta_ {o l d}} \\left(\\mathbf {l} _ {n} \\mid \\mathbf {h} _ {n}\\right)}. \\tag {40c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            86,
+            547,
+            488,
+            580
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Here, $c _ { 3 } ~ \\in ~ ( 0 , 1 )$ serves as a weighting factor. In “j-PPO”, the original probability ratio $\\pi _ { \\boldsymbol { \\theta } } ( \\mathbf { a } _ { n } | \\mathbf { h } _ { n } ) / \\pi _ { \\boldsymbol { \\theta } _ { \\mathrm { o l d } } } ( \\mathbf { a } _ { n } | \\mathbf { h } _ { n } )$ used in PPO is substituted by a hybrid formulation. Notably, as detailed in Eqn. (40c), the hybrid probability ratio ghybridn (θ) merges the continuous action probability ratio ${ \\dot { g } } _ { n } ^ { \\mathrm { h y b r i d } } ( \\theta )$ $\\pi _ { \\boldsymbol { \\theta } } ^ { \\mathrm { c o n t } } ( \\mathbf { a } _ { n } ^ { 1 : U } | \\mathbf { h } _ { n } ) / \\pi _ { \\boldsymbol { \\theta } _ { \\mathrm { o l d } } } ^ { \\mathrm { c o n t } } ( \\mathbf { a } _ { n } ^ { 1 : U } | \\mathbf { h } _ { n } )$ with the discrete action probability ratio hybrid $\\pi _ { \\boldsymbol { \\theta } } ^ { \\mathrm { d i s c } } ( \\widetilde { \\mathbf { 1 } } _ { n } | \\mathbf { h } _ { n } ) / \\pi _ { \\boldsymbol { \\theta } _ { \\mathrm { o l d } } } ^ { \\mathrm { d i s c } } ( \\mathbf { 1 } _ { n } | \\mathbf { h } _ { n } )$ . Directly maximizing g n (θ) could result in overly large policy updates, hence $g _ { n } ^ { \\mathrm { h y b r i d } } ( \\theta )$ the introduction of the $\\mathrm { c l i p } ( g _ { n } ^ { \\mathrm { h y b r i d } } ( { \\bar { \\theta } } ) , \\bar { 1 } - \\bar { \\varepsilon } , 1 { \\bar { + } } \\varepsilon )$ term to temper the surrogate objective by clipping the probability ratio. Furthermore, by taking the minimum of both the clipped and unclipped objectives, we ensure that the final objective remains a lower bound on the unclipped objective as shown in Eqn. (40b). ",
+        "bbox": [
+            73,
+            585,
+            491,
+            797
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Therefore, the policy and expected value derived from the $j$ -PPO algorithm can be summarized as ",
+        "bbox": [
+            73,
+            799,
+            491,
+            829
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\pi_ {\\theta} ^ {\\text {c o n t}} \\left(\\mathbf {a} _ {n} ^ {1: U} \\mid \\mathbf {h} _ {n}\\right) = \\mathrm {j} - \\mathrm {P P O} _ {\\theta} ^ {\\text {c o n t}} \\left(\\mathbf {h} _ {n}\\right), \\tag {41a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            158,
+            834,
+            488,
+            854
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\pi_ {\\theta} ^ {\\text {d i s c}} \\left(\\mathbf {1} _ {n} \\mid \\mathbf {h} _ {n}\\right) = \\mathrm {j} - \\mathrm {P P O} _ {\\theta} ^ {\\text {d i s c}} \\left(\\mathbf {h} _ {n}\\right), \\tag {41b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            854,
+            488,
+            873
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV _ {\\theta} \\left(\\mathbf {h} _ {n}\\right) = \\mathrm {j} - \\mathrm {P P O} _ {\\theta} \\left(\\mathbf {h} _ {n}\\right). \\tag {41c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            875,
+            488,
+            892
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The $j$ -PPO functions utilize this enriched representation for decision-making, mapping the 3-D historical data to decisions and value assessments. ",
+        "bbox": [
+            73,
+            898,
+            491,
+            944
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1: The j-PPO+EN-ConvNTM Algorithm "
+        ],
+        "code_body": "1: for iteration $= 1,2,\\ldots$ do   \n2: for $i = 1,2,\\dots ,\\tilde{N}$ do   \n3: for $n = 1,2,\\dots ,N$ do   \n4: Obtain observation $\\mathbf{o}_{n,i}$ from environment i.   \n5: Calculate continuous and discrete action distributions $\\pi_{\\theta_{\\mathrm{old}}}^{\\mathrm{cont}}(\\mathbf{a}_{n,i}^{1:U}|\\mathbf{h}_{n,i})$ and $\\pi_{\\theta_{\\mathrm{old}}}^{\\mathrm{disc}}(\\mathbf{1}_{n,i}|\\mathbf{h}_{n,i})$ using Eqns. (23), (41a), (41b).   \n6: Sample a combined action $\\mathbf{a}_{n,i} = (\\mathbf{a}_{n,i}^{1:U},\\mathbf{1}_{n,i})$ from the above distributions.   \n7: Execute $\\mathbf{a}_{n,i}$ to obtain the reward $r_n,i$ 8: Derive advantage estimates $A_{1:N,i}$ using Eqns. (32), (34), (35), (39b), and (41c).   \n9: Assemble trajectory $\\chi_{1:N,i}$ 10: end for   \n11: end for   \n12: Segment trajectories $\\chi_{1:N,1:\\tilde{N}}$ into $\\mathcal{T} = \\{\\chi_{1:K,1:\\tilde{N}},\\chi_{2:(K + 1),1:\\tilde{N}},\\dots ,\\chi_{(N - K):N,1:\\tilde{N}}\\}$ 13: Optimize $L_{n}^{\\mathrm{hybrid + VF + S}}$ according to Eqns. (40a), (40b), and (40c) with respect to $\\theta$ for $K$ epochs, using the mini-batch of size $M\\leq N(N - K)$ and a learning rate $l_{r}$ 14: Update $\\theta_{\\mathrm{old}}$ to $\\theta$ : $\\theta_{\\mathrm{old}}\\gets \\theta$ 15: end for ",
+        "bbox": [
+            527,
+            87,
+            937,
+            438
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "E. j-PPO+EN-ConvNTM Algorithm ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            482,
+            753,
+            498
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "As detailed in proposed $j$ -PPO+EN-ConvNTM as algorithm, each training iteration begins by running $\\tilde { N }$ episodes with the parameters set to $\\theta _ { \\mathrm { o l d } }$ (Line 2). These episodes consist of $N$ time steps each (Line 3). At every time step $n$ , the agent acquires an observation $\\mathbf { o } _ { n , i }$ from environment (Line 4). Utilizing Eqns. (23), (41a), and (41b), the contand crete action distributions, , are determined (Line 5 $\\pi _ { \\theta _ { \\mathrm { o l d } } } ^ { \\mathrm { c o n t } } ( \\mathbf { a } _ { n , i } ^ { 1 : U } | \\mathbf { h } _ { n , i } )$ $\\pi _ { \\theta _ { \\mathrm { o l d } } } ^ { \\mathrm { d i s c } } ( \\mathbf { 1 } _ { n , i } | \\mathbf { h } _ { n , i } )$ then sampled from these distributions (Line 6), and executed within environment $i$ to earn a corresponding reward (Line 7). Following by this, the advantage estimates $A _ { 1 : n , i }$ are calculated using Eqns. (32), (34), (35), (39b), and (41c) (Line 8). Subsequently, a complete trajectory for episode $i$ , defined as $\\chi _ { 1 : N , i } = ( \\mathbf { o } _ { 1 : N , i } , \\mathbf { a } _ { 1 : N , i } , V _ { \\pi _ { \\theta _ { \\mathrm { o l d } } } } ( \\mathbf { h } _ { 1 : N , i } ) , \\pi _ { \\theta _ { \\mathrm { o l d } } } ^ { \\mathrm { c o n t } } ( \\mathbf { a } _ { n , i } ^ { 1 : U } \\mid$ $\\mathbf { h } _ { 1 : N , i } )$ $\\pi _ { \\theta _ { \\mathrm { o l d } } } ^ { \\mathrm { d i s c } }$ $( \\mathbf { 1 } _ { 1 : N , i } \\mid \\mathbf { h } _ { 1 : N , i } ) , A _ { 1 : N , i } , \\mathbf { m } _ { 0 : N - 1 , i } )$ old , is collected ",
+        "bbox": [
+            503,
+            516,
+            921,
+            758
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Importantly, when integrating an on-policy DRL framework with EN-ConvNTM, the sequential use of samples is required, greatly enhancing their correlation. To mitigate this, we divide the extended sample sequences $\\chi _ { 1 : N , 1 : \\tilde { N } }$ into smaller segments $\\left\\{ \\chi _ { 1 : K , 1 : \\tilde { N } } , \\chi _ { 2 : ( K + 1 ) , 1 : \\tilde { N } } , \\ldots , \\chi _ { ( N - K ) : N , 1 : \\tilde { N } } \\right\\} .$ , where each segment is of length $K$ (Line 12). In the loss function, $M$ segments are randomly chosen to refine the surrogate $L _ { n } ^ { \\mathrm { h y b r i d 7 - V F } + S }$ at each time step $n$ (Line 13). This method not only reduces sample correlation and accelerates training but also preserves the full historical trajectory for later analysis during testing. Ultimately, we update $\\theta _ { \\mathrm { o l d } }$ to $\\theta$ (Line 14) before proceeding to the next iteration. ",
+        "bbox": [
+            503,
+            763,
+            921,
+            944
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "9 ",
+        "bbox": [
+            911,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            883,
+            982
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/e13af825e148d42016567b04a36c03924988dccb282bdfe012b354412c8c2368.jpg",
+        "image_caption": [
+            "(a) 1 UAV with 2 charging stations "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            89,
+            68,
+            357,
+            273
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/b1d535aa21ef84cb364b4c7bda32befb2e2e7b9b949e550929a0211ef3a5d67b.jpg",
+        "image_caption": [
+            "(b) 2 UAV with 2 charging stations "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            364,
+            69,
+            630,
+            273
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/7b37621970228e8e3c0346b0b08d7bc8d5c6dd6cb3d1ccb689178ba9b7355396.jpg",
+        "image_caption": [
+            "(c) 3 UAV with 3 charging stations ",
+            "Fig. 3: After executing 500 time steps, the flight traces of the UAVs are depicted, with lines of different colors indicating individual UAVs. Each charging station is positioned at the center of a red circle, while small dots in various colors illustrate the locations of devices and their Gaussian movements. In the coordinates, 1 unit = 10m. "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            638,
+            69,
+            905,
+            273
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "F. Complexity and Convergence Analysis ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            369,
+            354,
+            383
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The proposed $j$ -PPO+EN-ConvNTM algorithm is built upon the foundation of PPO, with a particular focus on its convergence behavior and computational complexity in practical application scenarios. Theoretical studies have demonstrated that, under certain conditions, PPO can converge to a neighborhood of the global optimum with high probability. Specifically, if the reward function is smooth and the policy space is compact, PPO achieves a sublinear convergence rate, typically characterized as follows [34] ",
+        "bbox": [
+            73,
+            388,
+            490,
+            525
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbb {E} \\left[ \\left| \\theta_ {k} - \\theta^ {*} \\right| ^ {2} \\right] \\leq \\frac {F}{k}, \\tag {42}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            214,
+            530,
+            488,
+            560
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "where $\\theta ^ { * }$ denotes the optimal policy parameter, $F$ is a constant depending on the dimensionality of the problem and the smoothness of the functions involved, and $k$ is the number of policy updates. This relation reflects how the policy parameters gradually approach the optimum as the number of iterations increases. ",
+        "bbox": [
+            73,
+            565,
+            491,
+            655
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Additionally, In the context of our proposed multi-UAV path planning problem, the high dimensionality of both the state and action spaces imposes stricter requirements on the convergence rate and stability of the algorithm. Given the hybrid nature of continuous and discrete action decisions in the $j$ -PPO algorithm, particularly the formulation of the hybrid probability ratio $g _ { n } ^ { \\mathrm { h y b r i d } } ( \\theta )$ , we place special emphasis on the selection of the clipping parameter $\\varepsilon$ during implementation. This ensures that each policy update remains within a moderate range, thereby promoting the stable convergence. ",
+        "bbox": [
+            73,
+            656,
+            490,
+            806
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In the case of linear MDP, if the policy update magnitude is properly controlled (i.e., through a suitable choice of the clipping parameter $\\varepsilon$ ), the complexity of PPO can be typically bounded by a polynomial function as [34] ",
+        "bbox": [
+            73,
+            806,
+            491,
+            868
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nO \\left(\\frac {d _ {s} a ^ {2} N _ {h} ^ {3}}{\\varepsilon^ {2}}\\right), \\tag {43}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            227,
+            875,
+            488,
+            907
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "where $d _ { s a }$ represents the effective dimensionality of the stateaction space, $N _ { h }$ is the episode horizon. ",
+        "bbox": [
+            73,
+            914,
+            488,
+            945
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "V. PERFORMANCE EVALUATION ",
+        "text_level": 1,
+        "bbox": [
+            598,
+            369,
+            826,
+            383
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "A. Setup and Evaluation Metrics ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            402,
+            732,
+            417
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The implementation of our proposed model $\\scriptstyle j \\mathbf { - P P O + E N - }$ $j$ ConvNTM is conducted using PyTorch 2.1.0. All experiments are performed on an Ubuntu 20.04 server equipped with two NVIDIATM GeForce $\\mathbf { R } \\mathbf { T } \\mathbf { X } ^ { \\mathbf {  } }$ 4090 graphics cards. We organize four sets of experiments to comprehensively evaluate the proposed model: the first focuses on the impact of critical hyperparameters, the subsequent two involve performance comparisons against four baseline models, namely $j$ -PPO, $j$ -PPO+ConvNTM, $j$ -PPO+ConvLSTM, and $j$ -PPO+NeuralMap, and the final one conducts extensive comparisons with existing state-of-the-art DRL algorithms. To fulfill the objectives outlined in Section III, we utilize four metrics: the data collection coefficient $\\psi _ { n }$ , spatial equity index $f _ { n }$ , energy expenditure coefficient $\\kappa _ { n }$ , and the equilibrium efficiency metric $\\Omega _ { n }$ . Notably, $\\Omega _ { n }$ serves as a comprehensive evaluation criterion for selecting hyperparameters and determining the superior solution, and the multiplication-divisionbase cost function $\\Omega _ { n } = \\psi _ { n } f _ { n } / \\kappa _ { n }$ is employed. ",
+        "bbox": [
+            501,
+            429,
+            919,
+            700
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In the experiments, 256 mobile IoT devices are deployed within a $1 6 0 \\mathrm { m } \\times 1 6 0 \\mathrm { m }$ area to simulate high user density scenarios. Additionally, penalties are introduced when the distance between two UAVs is too small, when a UAV is too close to an obstacle, or when the UAV's battery is about to be depleted. As detailed in Algorithm 1, we conduct training over 3000 iterations with an update horizon $\\tilde { N } { = } 8$ (resulting in 3000 models), selecting the most equilibrium efficiency model for further testing. During the training phase, we evaluate every model with 500 time steps per episodes, and results from the final time step are adopted as the reward. The hyperparameters are directly follow the standard PPO implementation as reported in [35] with $K = 5$ , $\\gamma { = } 0 . 9 9$ , $l _ { r } { = } 0 . 0 0 0 2 5$ , $M = 4 0 0$ The remaining parameters are set as follows: The UAV flight altitude $h _ { u } = 3 5 m$ , flight speed $v _ { u } = 1 0 m / s$ , weighting factors $\\eta _ { u } = 0 . 1$ and $\\eta _ { d } = 1$ , and the charging ratio $q = 0 . 2 5$ . ",
+        "bbox": [
+            501,
+            702,
+            919,
+            945
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            186,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "10 ",
+        "bbox": [
+            906,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            883,
+            983
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "table",
+        "img_path": "images/6ad93c407698985d10e6aea5ffa851665bb74f982268e00920a17685a020ea85.jpg",
+        "table_caption": [
+            "TABLE I: The influence of loss coefficient $c _ { 1 }$ , entropy coefficient $c _ { 2 }$ , and weight factor $c _ { 3 }$ "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td colspan=\"7\">Loss coefficient (c1)</td><td colspan=\"6\">Entropy coefficient (c2)</td><td colspan=\"5\">Weight factor (c3)</td></tr><tr><td></td><td>0.001</td><td>0.01</td><td>0.1</td><td>0.3</td><td>0.5</td><td>0.7</td><td>0.9</td><td>0</td><td>0.001</td><td>0.01</td><td>0.1</td><td>0.3</td><td>0.5</td><td>0.1</td><td>0.3</td><td>0.5</td><td>0.7</td><td>0.9</td></tr><tr><td>Ω</td><td>0.8133</td><td>0.6619</td><td>0.9849</td><td>0.7371</td><td>0.8725</td><td>0.6313</td><td>0.7032</td><td>0.6178</td><td>0.8312</td><td>0.9891</td><td>0.6489</td><td>0.7561</td><td>0.7904</td><td>0.7683</td><td>0.7847</td><td>0.9827</td><td>0.6148</td><td>0.8472</td></tr><tr><td>κ</td><td>0.7316</td><td>0.7282</td><td>0.7329</td><td>0.7245</td><td>0.7294</td><td>0.7330</td><td>0.7314</td><td>0.7276</td><td>0.7262</td><td>0.7298</td><td>0.7216</td><td>0.7299</td><td>0.7259</td><td>0.7351</td><td>0.7215</td><td>0.7347</td><td>0.7201</td><td>0.7223</td></tr><tr><td>ψ</td><td>0.8973</td><td>0.9103</td><td>0.9449</td><td>0.9054</td><td>0.8533</td><td>0.8916</td><td>0.8917</td><td>0.8776</td><td>0.8131</td><td>0.9449</td><td>0.8464</td><td>0.8270</td><td>0.8059</td><td>0.8856</td><td>0.8981</td><td>0.9449</td><td>0.8742</td><td>0.8328</td></tr><tr><td>f</td><td>0.6631</td><td>0.5295</td><td>0.7639</td><td>0.5898</td><td>0.7458</td><td>0.5190</td><td>0.5768</td><td>0.5122</td><td>0.7424</td><td>0.7639</td><td>0.5532</td><td>0.6673</td><td>0.7119</td><td>0.6377</td><td>0.6304</td><td>0.7641</td><td>0.5064</td><td>0.7348</td></tr></table>",
+        "bbox": [
+            99,
+            85,
+            897,
+            176
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "B. Illustrative Flight Trajectory ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            204,
+            294,
+            219
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Matplotlib 3.8.4 is employed to develop a realistic UAV simulation environment, into which all model data are integrated. Observations reveal that the simulations demonstrate that UAVs effectively learn to navigate to designated charging stations for recharging, followed by resuming their MEC communication missions. As illustrated in Fig. 3 (a, b, c), the flight patterns of UAVs evolve dynamically with an increase in their numbers. This adaptation is attributed to our proposed approach, which successfully assigns each UAV a distinct and minimally overlapping operational zone. This strategy enhances data collection efficiency while minimizing energy consumption associated with flight. Additionally, Fig. 3 (b, c) highlights that increasing the number of charging stations significantly influences the overall flight patterns. UAVs tend to select closer charging stations to further reduce travel energy costs. ",
+        "bbox": [
+            73,
+            222,
+            491,
+            464
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "C. Impact of Hyperparameters ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            481,
+            287,
+            496
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "For the EN-ConvNTM and $j$ -PPO models, we meticulously select hyperparameters $c _ { 1 }$ , $c _ { 2 }$ , and $c _ { 3 }$ while maintaining the numbers of UAVs and charging stations at $U = 2$ and $Z = 1$ , respectively. The specific configurations are as follows: when tuning $c _ { 1 }$ , we set $c _ { 2 } = 0 . 0 1$ and $c _ { 3 } = 0 . 5$ ; when tuning $c _ { 2 }$ , we set $c _ { 1 } = 0 . 1$ and $c _ { 3 } = 0 . 5$ ; when tuning $c _ { 3 }$ , we set $c _ { 1 } = 0 . 1$ and $c _ { 2 } = 0 . 0 1$ . The corresponding results are presented in Tables I. ",
+        "bbox": [
+            73,
+            500,
+            490,
+            604
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "For the $j$ -PPO model, the loss coefficient $c _ { 1 }$ and the entropy coefficient $c _ { 2 }$ play crucial roles in the loss function, as detailed in Eqn. (40a). If either $c _ { 1 }$ or $c _ { 2 }$ is set relatively high, these terms will dominate the loss function, potentially overshadowing other essential components. Conversely, if these coefficients are set too low, their corresponding terms in the loss function may become negligible, further degrading the model's performance. We have determined the optimal settings for these parameters to be $c _ { 1 } = 0 . 1$ and $c _ { 2 } = 0 . 0 1$ . Similarly, an inappropriate value for the weight factor $c _ { 3 }$ can lead to an imbalance in the hybrid probability ratio described in Eqn. (40c), where either the continuous or discrete action probability ratio becomes overly dominant. This imbalance can result in unstable policy behaviors and reduced energy efficiency. In our experiments, the optimal setting for $c _ { 3 }$ is determined to be 0.5, which effectively can balance the contributions of different action probability ratios. ",
+        "bbox": [
+            73,
+            606,
+            491,
+            863
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "D. Comparisons with Other Baselines ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            880,
+            336,
+            895
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Our findings are presented as performance comparisons in Fig. 4, Fig. 5, and Fig. 6. The number of charging stations is set to $Z = 2$ in Fig. 4 and Fig. 6 (a), and the number of ",
+        "bbox": [
+            73,
+            898,
+            491,
+            946
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "UAVs is kept at $U = 2$ in Fig. 5 and Fig. 6 (b). It should be noted that different initial conditions in simulations typically lead to performance fluctuations. To better represent the performance comparison, we use boxplots (also known as boxand-whisker plots) to illustrate the distribution of algorithm performance across multiple simulation runs. Specifically, the boxplot includes comprehensive statistical data, such as the minimum, first quartile, median, third quartile, and maximum, to provide a holistic overview of the algorithm's performance. Additionally, since adjacent boxplots may overlap with each other, causing ambiguity in the display, we have slightly adjusted the horizontal coordinates corresponding to each algorithm (the actual horizontal coordinates remain as 1, 2, 3, 4, and 5) to avoid overlap and better display the performance curves. ",
+        "bbox": [
+            501,
+            203,
+            921,
+            428
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "From Fig. 4, Fig. 5, and Fig. 6, the following conclusions can be derived: ",
+        "bbox": [
+            503,
+            430,
+            921,
+            459
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "1) Equilibrium Efficiency Comparisons: The proposed $j$ - PPO+EN-ConvNTM outperforms all baseline models in terms of equilibrium efficiency. In our experimental setup, UAVs actively navigate within the target area, thus necessitating a robust spatiotemporal module to fully extract geographical and trajectory information from the data for optimal decisionmaking. The standard $j$ -PPO algorithm lacks mechanisms to effectively consider the locations of charging stations, which limits its ability to strategically balance charging and data collection, thereby leading to suboptimal performance. The $j$ -PPO+NeuralMap performs inadequately because it simply stores a 1-D vector in a 2-D map based on a real-world 2- D position. However, in our scenario, where a single agent controls multiple UAVs, the $j$ -PPO+NeuralMap results in identical vectors being stored for different UAVs. For example, when the number of UAVs is two, the equilibrium efficiency of our proposed algorithm is $7 6 . 2 \\%$ higher than that of $j$ - PPO+NeuralMap. This likely arises from the potential loss of critical spatial information by NeuralMap during the compression of 3-D observations into 1-D vectors. Additionally, $j$ -PPO+ConvLSTM relies solely on current observations without integrating historical data, which is crucial for informed decision-making, leading to performance degradation. ",
+        "bbox": [
+            501,
+            460,
+            921,
+            808
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Both $j$ -PPO+EN-ConvNTM and $j$ -PPO+ConvNTM address this issue by effectively modeling spatial and temporal correlations. However, with the incorporation of STN and attention mechanism, EN-ConvNTM handles longer sequences more efficiently than ConvNTM, making $j$ -PPO+EN-ConvNTM consistently more effective. For instance, as illustrated in Fig. 4, as the number of UAVs increases from 1 to 5, $j$ - PPO+EN-ConvNTM achieves energy efficiency improvements by $9 . 9 1 \\%$ , $8 . 0 6 \\%$ , $1 7 . 6 0 \\%$ , $1 4 . 9 5 \\%$ , and $2 1 . 2 1 \\%$ , compared ",
+        "bbox": [
+            501,
+            808,
+            921,
+            944
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "11 ",
+        "bbox": [
+            906,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            88,
+            960,
+            901,
+            973
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            184,
+            973,
+            883,
+            982
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/6a848437d33e003b79f0981cb9b30963c99b0b794424ff27b53b920b11f9fbeb.jpg",
+        "image_caption": [
+            "(a) Data collection coefficient "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            86,
+            70,
+            287,
+            281
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/f1bd86b95bfc98fd77413465429e8e15b49f9f53802afe1f3081a95484b0a2fe.jpg",
+        "image_caption": [
+            "(b) Energy expenditure coefficient "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            295,
+            70,
+            495,
+            280
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/26b97aa1153cabf20c19186ee297131c4680bde5781d957ea417880bee4c0a05.jpg",
+        "image_caption": [
+            "(c) Spatial equity index "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            503,
+            70,
+            702,
+            280
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/ff207d25c26f9c6ef540b18ece14c155a181d76ee57e94524ae59a14c15af5b7.jpg",
+        "image_caption": [
+            "(d) Equilibrium efficiency "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            709,
+            70,
+            910,
+            280
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/8729bf5cf7e02d2c0fddd963d7cde6cfb66c9f7d4fc7e4d64ce838b7a616cd6e.jpg",
+        "image_caption": [
+            "Fig. 4: The results of increasing the number of UAVs from 1 to 5, while maintaining the presence of 2 charging stations. ",
+            "(a) Data collection coefficient "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            86,
+            338,
+            287,
+            547
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/78d8f6ea2343a7080ec6c4158a33c38160c403345a8812117db552f91b753216.jpg",
+        "image_caption": [
+            "(b) Energy expenditure coefficient "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            295,
+            338,
+            493,
+            547
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/6dfb983fe5da3725fbbea9d6a3a0bf73cba311d43757dbe3d726e1389670515e.jpg",
+        "image_caption": [
+            "(c) Spatial equity index "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            501,
+            338,
+            702,
+            547
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/aebe81f0e0ee89edcf786ede8e6978d8909e13a08b894f3816dd7aafd8b60967.jpg",
+        "image_caption": [
+            "(d) Equilibrium efficiency ",
+            "Fig. 5: The results of increasing the number of charging stations from 1 to 5, while maintaining the presence of 2 UAVs. "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            709,
+            338,
+            910,
+            547
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "to $j$ -PPO+ConvNTM, respectively. Similarly, as depicted in Fig. 5, as the number of charging stations increases from 1 to 5, $j$ -PPO+EN-ConvNTM respectively boosts equilibrium efficiency by $7 . 3 4 \\%$ , $1 1 . 3 0 \\%$ , $7 . 6 2 \\%$ , $1 1 . 6 5 \\%$ , and $6 . 1 4 \\%$ compared to $j$ -PPO+ConvNTM. ",
+        "bbox": [
+            73,
+            616,
+            490,
+            691
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "2) Impact of UAV Numbers: As depicted in Fig. 4, the number of UAVs significantly affects four key metrics. $j$ -PPO, $j$ -PPO+ConvNTM, $j$ -PPO+ConvLSTM, $j$ -PPO+NeuralMap, and $j$ -PPO+EN-ConvNTM exhibit an convergence trend in equilibrium efficiency, fairness, and data collection ratio, which eventually stabilizes with minor fluctuations. In contrast, the energy expenditure coefficient generally follows an inverted U-shaped trend, initially decreasing and then increasing as the number of UAVs increases. This trend indicates that an optimal number of UAVs can effectively assign the data collection tasks more fairly, thereby reducing overall energy consumption. However, with a fixed number of charging stations, an excessive number of UAVs may increase energy consumption. This is because UAVs may need to flight longer distances to reach the charging stations or to collect data from remote areas, potentially degrade the energy efficiency. ",
+        "bbox": [
+            73,
+            702,
+            491,
+            945
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "3) Impact of Charging Station Numbers: Fig. 5 investigates how variations in charging station numbers affect the same four metrics. As the number of charging stations increases, improvements are generally observed in equilibrium efficiency, fairness, and data collection ratio. For the energy expenditure coefficient, a reduction is typically derived. These findings indicate that an increase in the number of charging stations has a positive impact on overall performance. This can be attributed to reduced flight distances required for UAVs to recharge. Such adjustments allow UAVs to operate within closer to their activity areas, which is also reflected by the benefit in equilibrium efficiency. ",
+            "4) Comparisons with Existing DRL Algorithms: Fig. 6 presents a comprehensive performance comparison between the proposed $j$ -PPO+EN-ConvNTM algorithm and state-ofthe-art DRL algorithms, including DDPG, A2C, TD3, and DQN. Through rigorous empirical analysis, the proposed intelligent PPO-based scheme demonstrates distinctive superiority in equilibrium efficiency compared to existing DRLbased approaches. Notably, the proposed algorithm consistently achieves the highest equilibrium efficiency, followed "
+        ],
+        "bbox": [
+            501,
+            616,
+            921,
+            945
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "12 ",
+        "bbox": [
+            906,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            883,
+            982
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/5b656c130de1f6885bfee213d7381ff802df65921097246039eccc7942d15d44.jpg",
+        "image_caption": [
+            "(a) Different UAVs "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            83,
+            71,
+            277,
+            273
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/056e80f234bc5fc54d5342f1fcfcd5c262f376c761d9d66aebbbe72145210fd2.jpg",
+        "image_caption": [
+            "(b) Different charging stations ",
+            "Fig. 6: Performance comparisons with existing DRL algorithms. "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            290,
+            71,
+            483,
+            273
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "by the A2C-based algorithm, across varying numbers of UAVs and charging stations. In contrast, DDPG, TD3, and DQN exhibit substantial convergence challenges and severe performance degradation. This divergence can be attributed to the inherent limitations of most existing DRL algorithms in addressing joint continuous-discrete action decision-making under high-density user mobility scenarios. Specifically, such environments require simultaneous optimization of continuous control variables (e.g., UAV trajectory planning) and discrete decision variables (e.g., offloading strategy and charging indicator), which exceeds the capability of algorithms relying on continuous or discrete action space frameworks. ",
+        "bbox": [
+            73,
+            354,
+            491,
+            535
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "VI. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            217,
+            546,
+            346,
+            558
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In this study, we tackle the challenge of path planning for multiple UAVs in high-density mobile device environments with multiple charging stations available. The optimization problem is structured using a POMDP, and an innovative deep reinforcement learning framework named $j$ -PPO+EN-ConvNTM is proposed. This framework integrates $j$ -PPO, a modified version of the PPO algorithm supporting both continuous and discrete action controls. Additionally, it incorporates a novel sequential module, EN-ConvNTM, which leverages a STN to process and utilize extensive spatiotemporal sequences. Comprehensive experiments are conducted to evaluate UAV flight trajectory design, hyperparameter settings, and performance comparisons with four baseline models and existing DRL algorithms. The results strongly demonstrate the superior efficacy and performance improvements of our proposed solution. It is essential to recognize that the proposed $\\scriptstyle j - \\mathrm { P P O + E N } .$ $j$ - ConvNTM algorithm has undergone numerical simulations to demonstrate its effectiveness. Future work should involve testing the $j$ -PPO+EN-ConvNTM algorithm on a real-world UAVassisted MEC system to validate its practical performance, and other challenges, such as hardware limitations and uplink interferences, require further investigated. ",
+        "bbox": [
+            73,
+            564,
+            491,
+            896
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            235,
+            904,
+            330,
+            917
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "ref_text",
+        "text": "[1] P. Porambage, J. Okwuibe, M. Liyanage, M. Ylianttila, and T. Taleb, “Survey on multi-access edge computing for internet of things realiza-",
+        "bbox": [
+            81,
+            922,
+            488,
+            946
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "tion,” IEEE Communications Surveys & Tutorials, vol. 20, no. 4, pp. 2961–2991, 2018. ",
+            "[2] N. Cheng, F. Lyu, W. Quan, C. Zhou, H. He, W. Shi, and X. Shen, “Space/aerial-assisted computing offloading for iot applications: A learning-based approach,” IEEE Journal on Selected Areas in Communications, vol. 37, no. 5, pp. 1117–1129, 2019. ",
+            "[3] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Mobile unmanned aerial vehicles (uavs) for energy-efficient internet of things communications,” IEEE Transactions on Wireless Communications, vol. 16, no. 11, pp. 7574–7589, 2017. ",
+            "[4] Z. Wei, M. Zhu, N. Zhang, L. Wang, Y. Zou, Z. Meng, H. Wu, and Z. Feng, “Uav-assisted data collection for internet of things: A survey,” IEEE Internet of Things Journal, vol. 9, no. 17, pp. 15 460–15 483, 2022. ",
+            "[5] Y. Xu, T. Zhang, Y. Liu, D. Yang, L. Xiao, and M. Tao, “Uav-assisted mec networks with aerial and ground cooperation,” IEEE Transactions on Wireless Communications, vol. 20, no. 12, pp. 7712–7727, 2021. ",
+            "[6] G. Chen, X. B. Zhai, and C. Li, “Joint optimization of trajectory and user association via reinforcement learning for uav-aided data collection in wireless networks,” IEEE Transactions on Wireless Communications, vol. 22, no. 5, pp. 3128–3143, 2023. ",
+            "[7] L. Wang, Y. Li, Y. Chen, T. Li, and Z. Yin, “Air-ground coordinated mec: Joint task, time allocation and trajectory design,” IEEE Transactions on Vehicular Technology, vol. 74, no. 3, pp. 4728–4743, 2025. ",
+            "[8] Y. Zhang, Z. Kuang, Y. Feng, and F. Hou, “Task offloading and trajectory optimization for secure communications in dynamic user multi-uav mec systems,” IEEE Transactions on Mobile Computing, vol. 23, no. 12, pp. 14 427–14 440, 2024. ",
+            "[9] K. Tange, M. De Donno, X. Fafoutis, and N. Dragoni, “A systematic survey of industrial internet of things security: Requirements and fog computing opportunities,” IEEE Communications Surveys & Tutorials, vol. 22, no. 4, pp. 2489–2520, 2020. ",
+            "[10] C. H. Liu, C. Piao, and J. Tang, “Energy-efficient uav crowdsensing with multiple charging stations by deep learning,” in IEEE INFOCOM 2020 - IEEE Conference on Computer Communications. IEEE, 2020, pp. 199–208. ",
+            "[11] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “A survey on mobile edge computing: The communication perspective,” IEEE Communications Surveys & Tutorials, vol. 19, no. 4, pp. 2322–2358, 2017. ",
+            "[12] M. Mozaffari, W. Saad, M. Bennis, M. Debbah, and Y.-H. Nam, “A tutorial on uavs for wireless networks: Applications, challenges, and open problems,” IEEE Communications Surveys & Tutorials, vol. 21, no. 3, pp. 2334–2360, 2019. ",
+            "[13] Y. Hu, M. Patel, D. Sabella, N. Sprecher, and V. Young, “Mobile edge computing-a key technology towards 5g,” ETSI White Paper, vol. 11, no. 11, 2015. ",
+            "[14] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Communications Magazine, vol. 54, no. 5, pp. 36–42, 2016. ",
+            "[15] Q. Zhen, H. Shoushuai, W. Hai, Q. Yuben, D. Haipeng, X. Fei, W. Zhenhua, and L. Hailong, “Air-ground collaborative mobile edge computing: Architecture, challenges, and opportunities,” China Communications, vol. 21, no. 5, pp. 1–16, 2024. ",
+            "[16] M. Darchini-Tabrizi, A. Pakdaman-Donyavi, R. Entezari-Maleki, and L. Sousa, “Performance enhancement of uav-enabled mec systems through intelligent task offloading and resource allocation,” Computer Networks, vol. 264, p. 111280, 2025. ",
+            "[17] M. H. Adnan, Z. A. Zukarnain, and O. A. Amodu, “Fundamental design aspects of uav-enabled mec systems: A review on models, challenges, and future opportunities,” Computer Science Review, vol. 51, p. 100615, 2024. ",
+            "[18] S. A. Ullah, S. A. Hassan, H. Abou-Zeid, H. K. Qureshi, H. Jung, A. Mahmood, M. Gidlund, M. A. Imran, and E. Hossain, “Convergence of mec and drl in non-terrestrial wireless networks: Key innovations, challenges, and future pathways,” IEEE Communications Surveys & Tutorials, 2025. ",
+            "[19] Y. Gao, X. Yuan, D. Yang, Y. Hu, Y. Cao, and A. Schmeink, “Uavassisted mec system with mobile ground terminals: Drl-based joint terminal scheduling and uav 3d trajectory design,” IEEE Transactions on Vehicular Technology, vol. 73, no. 7, pp. 10 164–10 180, 2024. ",
+            "[20] L. Wang, B. Shen, L. Ma, Y. Zhang, Y. Zhao, H. Guo, Z. Yu, and B. Guo, “Joint task offloading and migration optimization in uav-enabled dynamic mec networks,” IEEE Transactions on Services Computing, 2025. "
+        ],
+        "bbox": [
+            506,
+            71,
+            921,
+            907
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            186,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "13 ",
+        "bbox": [
+            906,
+            30,
+            919,
+            40
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            883,
+            982
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[21] Z. Wang, H. Wang, L. Liu, E. Sun, H. Zhang, Z. Li, C. Fang, and M. Li, “Dynamic trajectory design for multi-uav-assisted mobile edge computing,” IEEE Transactions on Vehicular Technology, vol. 74, no. 3, pp. 4684–4697, 2025. ",
+            "[22] J. Zhang, L. Zhou, F. Zhou, B.-C. Seet, H. Zhang, Z. Cai, and J. Wei, “Computation-efficient offloading and trajectory scheduling for multiuav assisted mobile edge computing,” IEEE Transactions on Vehicular Technology, vol. 69, no. 2, pp. 2114–2125, 2020. ",
+            "[23] M. Chen, U. Challita, W. Saad, C. Yin, and M. Debbah, “Artificial neural networks-based machine learning for wireless networks: A tutorial,” IEEE Communications Surveys & Tutorials, vol. 21, no. 4, pp. 3039– 3071, 2019. ",
+            "[24] P. McEnroe, S. Wang, and M. Liyanage, “A survey on the convergence of edge computing and ai for uavs: Opportunities and challenges,” IEEE Internet of Things Journal, vol. 9, no. 17, pp. 15 435–15 459, 2022. ",
+            "[25] Z. Ning, H. Hu, X. Wang, L. Guo, S. Guo, G. Wang, and X. Gao, “Mobile edge computing and machine learning in the internet of unmanned aerial vehicles: A survey,” ACM Computing Surveys, vol. 56, no. 1, pp. 1–31, 2023. ",
+            "[26] H. Peng and X. Shen, “Multi-agent reinforcement learning based resource management in mec-and uav-assisted vehicular networks,” IEEE Journal on Selected Areas in Communications, vol. 39, no. 1, pp. 131– 141, 2020. ",
+            "[27] A. A. Al-Bakhrani, M. Li, M. S. Obaidat, and G. A. Amran, “Moalfuav-mec: Adaptive multi-objective optimization for uav-assisted mobile edge computing in dynamic iot environments,” IEEE Internet of Things Journal, vol. 12, no. 12, pp. 20 736–20 756, 2025. ",
+            "[28] M. Hevesli, A. M. Seid, A. Erbad, and M. Abdallah, “Task offloading optimization in digital twin assisted mec-enabled air-ground iiot 6g "
+        ],
+        "bbox": [
+            76,
+            70,
+            491,
+            401
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "networks,” IEEE Transactions on Vehicular Technology, vol. 73, no. 11, pp. 17 527–17 542, 2024. ",
+            "[29] Y. Chen, H. Kang, J. Li, G. Sun, B. Wang, J. Wang, C. Liang, S. Liang, and D. Niyato, “Joint resource management for energy-efficient uavassisted swipt-mec: A deep reinforcement learning approach,” IEEE Internet of Things Journal, 2025. ",
+            "[30] A. Graves, G. Wayne, M. Reynolds et al., “Hybrid computing using a neural network with dynamic external memory,” Nature, vol. 538, no. 7626, pp. 471–476, 2016. ",
+            "[31] Q. Liu, L. Shi, L. Sun, J. Li, M. Ding, and F. Shu, “Path planning for uav-mounted mobile edge computing with deep reinforcement learning,” IEEE Transactions on Vehicular Technology, vol. 69, no. 5, pp. 5723– 5728, 2020. ",
+            "[32] G. Zheng, C. Xu, M. Wen, and X. Zhao, “Service caching based aerial cooperative computing and resource allocation in multi-uav enabled mec systems,” IEEE Transactions on Vehicular Technology, vol. 71, no. 10, pp. 10 934–10 947, 2022. ",
+            "[33] M. Asim, M. ELAffendi, and A. A. Abd El-Latif, “Multi-irs and multiuav-assisted mec system for $5 \\mathrm { g } / 6 \\mathrm { g }$ networks: Efficient joint trajectory optimization and passive beamforming framework,” IEEE Transactions on Intelligent Transportation Systems, vol. 24, no. 4, pp. 4553–4564, 2023. ",
+            "[34] H. Zhong and T. Zhang, “A theoretical analysis of optimistic proximal policy optimization in linear markov decision processes,” Advances in Neural Information Processing Systems, vol. 36, pp. 73 666–73 690, 2023. ",
+            "[35] I. Kostrikov, “Pytorch implementations of asynchronous advantage actor critic (a3c), proximal policy optimization (ppo) and more,” https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail, 2019. "
+        ],
+        "bbox": [
+            506,
+            70,
+            919,
+            401
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "This article has been accepted for publication in IEEE Transactions on Mobile Computing. This is the author's version which has not been fully edited and content may change prior to final publication. Citation information: DOI 10.1109/TMC.2026.3664419 ",
+        "bbox": [
+            184,
+            0,
+            854,
+            20
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "14 ",
+        "bbox": [
+            906,
+            31,
+            919,
+            40
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on May 05,2026 at 13:19:43 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            89,
+            962,
+            901,
+            973
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "$\\circledcirc$ 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted, ",
+        "bbox": [
+            186,
+            973,
+            883,
+            982
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            267,
+            984,
+            849,
+            994
+        ],
+        "page_idx": 13
+    }
+]
