@@ -1,0 +1,27 @@
+---
+type: concept
+title: NOMA (Non-Orthogonal Multiple Access)
+tags: [wireless, multiple-access, spectrum]
+related:
+  - "[[qin-2025-bcuav-masac]]"
+created: 2026-05-28
+updated: 2026-05-28
+---
+
+# NOMA (Non-Orthogonal Multiple Access)
+
+A multiple-access scheme where multiple users share the *same* time-frequency resource, separated in the **power domain**. Receivers use successive interference cancellation (SIC) to peel off users in order of channel quality.
+
+## Why MEC papers use it
+
+- In dense scenarios — many IoT devices per UAV cell — orthogonal multiple access (OFDMA) wastes spectrum on guard bands and rigid resource grids. NOMA squeezes more devices into a cluster at the cost of inter-user interference modeled by SINR.
+- The **SINR formula** $\gamma_{j,k} = \frac{p_{j,k} g_{j,k}}{\sum_{i\ne j} p_{i,k} g_{i,k} + \sigma^2}$ becomes a non-convex term that pulls power allocation into the optimization variables — which is exactly what most UAV-MEC papers want to design.
+
+## In this wiki
+
+[[qin-2025-bcuav-masac]] uses NOMA across devices within each UAV's cluster (orthogonal between UAVs). The transmission power $p_{j,k}(t)$ becomes a per-slot decision variable jointly optimized with UAV trajectories under the resulting interference structure.
+
+## Caveats
+
+- NOMA's SIC ordering assumes accurate channel estimation; in mobile UAV scenarios this is a non-trivial assumption.
+- SIC error propagation can dominate at high user counts.
