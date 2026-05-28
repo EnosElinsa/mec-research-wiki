@@ -1,0 +1,28 @@
+# LLM Wiki local indices and runtime state (machine-specific, not for VCS)
+.llm-wiki/
+
+# Obsidian workspace state (per-user)
+.obsidian/workspace*
+.obsidian/cache
+.obsidian/plugins-data/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+.vscode/
+.idea/
+
+# Python / venv (in case any analysis scripts get added)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (in case of tooling)
+node_modules/

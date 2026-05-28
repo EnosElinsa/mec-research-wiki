@@ -1,0 +1,32 @@
+---
+type: concept
+title: Gauss-Markov Mobility Model
+tags: [mobility, simulation, iot]
+related:
+  - "[[high-density-mobile-device-scenarios]]"
+  - "[[liu-2026-jppo-en-convntm]]"
+created: 2026-05-28
+updated: 2026-05-28
+---
+
+# Gauss-Markov (GM) Mobility Model
+
+A stochastic mobility model where each device's speed and direction are smoothed first-order Markov chains driven by Gaussian noise:
+
+$$
+v_{d,n} = \alpha v_{d,n-1} + (1-\alpha)\bar v_{d,n} + \omega_{d,n}\sqrt{1-\alpha^2}
+$$
+
+$$
+\zeta_{d,n} = \beta \zeta_{d,n-1} + (1-\beta)\bar\zeta_{d,n} + \varphi_{d,n}\sqrt{1-\beta^2}
+$$
+
+with positions updated by
+
+$$
+x_{d,n} = x_{d,n-1} + \tau v_{d,n-1}\cos\zeta_{d,n-1}, \quad y_{d,n} = y_{d,n-1} + \tau v_{d,n-1}\sin\zeta_{d,n-1}
+$$
+
+The coefficients $\alpha, \beta \in [0,1]$ control the *memory* of the model — at $\alpha=0$ devices move IID, at $\alpha=1$ they move deterministically. GM is preferred over Random Walk and Random Waypoint in MEC simulations because it produces smooth, physically plausible trajectories without sudden direction reversals.
+
+[[liu-2026-jppo-en-convntm]] uses GM to drive the 256 IoT devices in the simulation arena (see Section III-A and reference [31]).

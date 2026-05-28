@@ -1,0 +1,26 @@
+---
+type: concept
+title: Task Offloading
+tags: [mec, computation, decision]
+related:
+  - "[[mobile-edge-computing]]"
+  - "[[multi-uav-assisted-mec]]"
+  - "[[liu-2026-jppo-en-convntm]]"
+created: 2026-05-28
+updated: 2026-05-28
+---
+
+# Task Offloading
+
+The decision of how much of a task an IoT device computes locally versus ships to an edge server (here, a UAV). Parameterized by a per-device-per-UAV ratio $\lambda_{u,d,n} \in [0,1]$, with $\sum_u \lambda_{u,d,n} \le 1$ enforcing that no more than 100% of the workload is offloaded.
+
+## Cost components per task
+
+- **Uplink transmission:** $T^{\text{Offload}}_{u,d,n} = \lambda_{u,d,n} L_{d,n} / R_{u,d,n}(p_d)$
+- **Edge compute:** $T^{\text{Compute}}_{u,d,n} = \lambda_{u,d,n} L_{d,n} C_u / f_u$
+- **Result downlink:** $T^{\text{Transmit}}_{u,d,n} = \lambda_{u,d,n} \tilde L_{d,n} / R_{u,d,n}(p_u)$
+- **Local compute:** $T^{\text{Local}}_{d,n} = (1 - \sum_u \lambda_{u,d,n}) L_{d,n} C_d / f_d$
+
+Energy follows a cubic-frequency rule on both ends ($\eta f^3 T$ for the device, $\mu f_u^3 T$ for the UAV, plus $p_d T$ and $p_u T$ on the radio side).
+
+In [[liu-2026-jppo-en-convntm]] the offloading ratios are part of the discrete action vector $\mathbf{1}_n$ (quantized via the policy network), jointly optimized with UAV trajectories.
