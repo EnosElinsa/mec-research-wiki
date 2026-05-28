@@ -1,0 +1,3171 @@
+[
+    {
+        "type": "text",
+        "text": "Terrain-Aware UAV-Enabled Mobile Edge Computing in Urban Environments: A Constrained Multi-Objective Approach With Task-Adaptive Mechanism ",
+        "text_level": 1,
+        "bbox": [
+            159,
+            71,
+            846,
+            212
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Zexiong Wu , Qiqi Xie , Zhuoran Wang, Xumin Huang , Chaoda Peng , Member, IEEE, and Yuan Wu , Senior Member, IEEE ",
+        "bbox": [
+            149,
+            219,
+            855,
+            252
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—With the increasing and multifaceted demands for wireless communication in smart cities, uncrewed aerial vehicle (UAV)-enabled mobile edge computing (MEC) systems have garnered substantial interest due to their potential to enhance connectivity and computational capabilities. In these systems, UAVs are deployed to predetermined locations to establish communication with nearby user devices (UDs), thereby providing network coverage and computational offloading services. Nevertheless, the presence of complex urban terrains, including rough topographies and dense buildings, results in significant path loss in UAV-to-UD communication links and increases the risk of collisions during UAV navigation, ultimately degrading the quality of service (QoS) and compromising UAV operational safety. To mitigate these challenges, this study introduces a terrain-aware channel model capable of precisely evaluating the effects of terrain characteristics on UAVto-UD link performance. To improve QoS for UDs while ensuring UAV flight safety, we formulate a constrained multi-objective optimization problem (CMOP) to jointly optimize UAV trajectory, destination, and resource allocation, aiming to minimize task completion time and enhance UAV flight safety. To solve this CMOP, we propose a multi-task constrained multi-objective evolutionary algorithm with a task-adaptive mechanism, promoting the search for Pareto optimal solutions. Numerical results indicate that the proposed method outperforms baseline algorithms in achieving a well-converged set of feasible solutions with enhanced diversity. ",
+        "bbox": [
+            63,
+            289,
+            498,
+            608
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Received 17 December 2024; revised 25 April 2025; accepted 22 August 2025. Date of publication 29 August 2025; date of current version 13 February 2026. This work was supported in part by the National Natural Science Foundation of China under Grant 62202177 and Grant 62001125, in part by Guangdong Basic and Applied Basic Research Foundation under Grant 2025A1515010178, in part by Guangzhou Basic Research Program under Grant 2025A04J5508, and in part by the Science and Technology Development Fund of Macau SAR under Grant 0021/2025/RIA1 and Grant 0158/2022/A. The review of this article was coordinated by Prof. Yu Cheng. (Corresponding authors: Chaoda Peng; Yuan Wu.) ",
+        "bbox": [
+            65,
+            641,
+            494,
+            755
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Zexiong Wu, Qiqi Xie, Zhuoran Wang, and Chaoda Peng are with the College of Mathematics and Informatics, South China Agricultural University, Guangzhou 510642, China (e-mail: zexiongwu@stu.scau.edu.cn; qiqixie@ stu.scau.edu.cn; wangzhuoran@stu.scau.edu.cn; ChaodaPeng@scau.edu.cn). ",
+        "bbox": [
+            65,
+            755,
+            494,
+            801
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Xumin Huang is with the School of Automation, Guangdong University of Technology, Guangzhou 510006, China (e-mail: huangxu\\_min@163.com). ",
+        "bbox": [
+            65,
+            801,
+            494,
+            823
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yuan Wu is with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macau, SAR, China, and also with the Department of Computer and Information Science, University of Macau, Macau, SAR, China (e-mail: yuanwu@um.edu.mo). ",
+        "bbox": [
+            65,
+            823,
+            494,
+            868
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "This article has supplementary downloadable material available at https://doi.org/10.1109/TVT.2025.3604250, provided by the authors. ",
+        "bbox": [
+            65,
+            868,
+            494,
+            891
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TVT.2025.3604250 ",
+        "bbox": [
+            80,
+            891,
+            372,
+            902
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—UAV-enabled MEC, communication, terrainaware channel model, constrained multi-objective evolutionary algorithm. ",
+        "bbox": [
+            506,
+            290,
+            937,
+            330
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            659,
+            354,
+            787,
+            367
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "W ITH the emergence of smart cities, uncrewed aerialvehicle (UAV)-enabled mobile edge computing (MEC) vehicle (UAV)-enabled mobile edge computing (MEC) has attracted considerable attention due to its unique advantages, such as high mobility, flexibility, and an increased likelihood of establishing line-of-sight (LoS) links [1], [2]. These attributes enable UAVs to perform critical tasks in urban environments, particularly where traditional ground-based infrastructures are prone to failure or inefficiency [3]. For instance, UAVs can rapidly establish temporary communication networks in areas with poor connectivity [4]. Moreover, they can be deployed across various urban zones to collect real-time data, assisting in traffic management [5], air quality monitoring [6], and public safety surveillance [7]. In these scenarios, ensuring optimal quality-of-service (QoS) and effective path planning becomes crucial, since they directly impact the efficiency and reliability of UAV-enabled services in smart cities. ",
+        "bbox": [
+            506,
+            375,
+            937,
+            616
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Enhancing the QoS for user devices (UDs) is a critical issue in UAV-enabled MEC systems within smart cities [8]. Task transmission delay depends on the signal strength of UAV-to-UD links and is a key determinant of QoS [9]. Therefore, accurate modeling of the signal strength is crucial in urban environments. Numerous studies have proposed various path loss channel models for evaluating UAV-to-UD links, which can be broadly categorized into three types, including statistical-based, radio map-based, and geographic information-based models [10], [11], [12], [13], [14]. The statistical-based models rely on empirical parameters to estimate the average signal strength, offering a computationally efficient and simplified approach [10], [11], [12]. However, they are practically inaccurate because they do not explicitly model the signal strength under the blockage of buildings and other urban structures, resulting in an inability to accurately account for non-line-of-sight (NLoS) conditions [15]. The radio map-based models utilize offline measurement data to train predictors, effectively estimating the impact of obstacles on UAV-to-UD links [13]. Despite their potential to capture detailed ",
+        "bbox": [
+            506,
+            616,
+            937,
+            904
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "0018-9545 © 2025 IEEE. All rights reserved, including rights for text and data mining, and training of artificial intelligence and similar technologies. Personal use is permitted, but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            60,
+            915,
+            939,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "3160 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 75, NO. 2, FEBRUARY 2026 ",
+        "bbox": [
+            466,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "blockage effects, these models are constrained by the timeconsuming and labor-intensive data collection process, making their implementation in large-scale smart city applications challenging [14]. The geographic information-based models leverage geometric relationships to infer LoS/NLoS conditions and directly estimate the average signal strength. While these models provide a more detailed representation by considering spatial relationships, they rely on the assumption of flat topography, neglecting natural variations in urban environments such as elevation differences. This oversimplification results in inaccurate signal strength estimates and ultimately compromises QoS. ",
+        "bbox": [
+            57,
+            79,
+            488,
+            244
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Another critical issue in UAV-enabled MEC scenarios within smart cities is enhancing UAV flight safety [16]. Ensuring flight safety is essential to prevent potential injuries to personnel and damage to equipment resulting from collisions [17]. To achieve collision-free trajectories, extensive research has focused on developing UAV flight models. One common approach involves restricting UAV flight areas, such as limiting the flight altitudes above buildings [18]. While effective, these restrictions can limit the availability of collision-free paths outside designated zones. Moreover, during urgent missions, UAVs need to navigate through high-risk areas where such restrictions are impractical [19]. Another group of studies have concentrated on designing and optimizing metrics to identify the safest UAV flight paths [20]. However, these studies typically assume predetermined initial and final positions while designing collision-free trajectories between them. It is important to note that there have been several research efforts focusing on optimizing the destination position to improve communication efficiency between UAVs and UDs [21]. Nevertheless, these works overlook safety considerations. In practical urban scenarios, optimizing the final position itself can significantly enhance flight safety. ",
+        "bbox": [
+            60,
+            246,
+            488,
+            561
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To address the two issues of accurately estimating the path loss on complex urban terrains and ensuring UAV flight safety, we propose a terrain-aware channel model. The model can estimate the signal strength under the blockage of urban terrains, including topographies and buildings, by utilizing data such as digital elevation model (DEM) data. By identifying topography and buildings near a UD, our terrain-aware channel model enables the division of space into two regions, namely, the region where the UAV-to-UD link is visible, and the blocked region where the UAV-to-UD link is obscured by the terrain. The blocked region is defined by a series of vectors shaped by the terrain around the UD, where the vectors are extending from the UD position to surrounding terrain points. This vector-based representation enables the propagation conditions and signal strength of the UAV-to-UD link to be inferred based on the Euclidean distance between the UAV and the blocked region. To develop an optimal solution for addressing the two issues, we formulate a constrained multi-objective optimization problem (CMOP) by jointly optimizing UAV trajectory, UAV destination, and resource allocation, aiming at improving QoS for UDs while ensuring UAV flight safety. We formulate a CMOP by jointly optimizing UAV trajectory, UAV destination, and resource allocation, aiming at improving QoS for UDs while ensuring UAV flight safety. ",
+        "bbox": [
+            60,
+            563,
+            488,
+            924
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Solving a CMOP requires effective algorithms capable of finding a set of Pareto optimal solutions while satisfying all constraints [22]. Evolutionary algorithms are popular choices for addressing various CMOPs and have been widely applied across numerous domains due to their inherent advantages, such as ease of implementation and robust global optimization capabilities [23]. The overall performance of these algorithms significantly depends on the selection of genetic operators, since these operators are crucial for effectively finding Pareto optimal solutions [24]. To tackle the CMOP studied in this paper, we propose a multi-tasking constrained multi-objective evolutionary algorithm (CMOEA) with a task-adaptive mechanism to seek superior solutions. The main contributions of this paper are summarized as follows: ",
+        "bbox": [
+            58,
+            925,
+            488,
+            955
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            79,
+            930,
+            258
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "We propose a UAV-enabled MEC system tailored for complex urban terrains. In this system, a UAV departs from an initial position and flies to a final destination, providing offloading services to nearby UDs. To accurately estimate the signal strength, we design a terrain-aware channel model. Unlike existing blockage-aware channel models that assume simple terrains with flat topographies, our proposed model can identify blockages caused by complex terrains. This capability makes it applicable to a wider range of urban environments, offering greater flexibility and broader applicability. ",
+            "- We study a CMOP by jointly optimizing UAV flight trajectory, destination, and resource allocation. This joint optimization ensures reduced task completion time while enhancing safety on complex urban terrains. ",
+            "We propose a multi-tasking CMOEA with a task-adaptive mechanism. This mechanism can retain historically effective genetic operators and adaptively assigns different genetic operators to individuals based on their specific tasks during the evolution process, thereby enhancing the search capability and convergence performance of the proposed algorithm. Numerical results demonstrate that our algorithm significantly outperforms baseline algorithms in terms of solution diversity and convergence. "
+        ],
+        "bbox": [
+            516,
+            261,
+            930,
+            622
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The rest of this paper is organized as follows. Section II provides a comprehensive overview of recent works. Section III presents the system model and formulates a CMOP for the UAV-enabled MEC system. Section IV introduces the proposed algorithm to solve the CMOP. Section V shows the simulations and performance evaluations. Section VI concludes this paper. ",
+        "bbox": [
+            500,
+            623,
+            930,
+            713
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORK ",
+        "text_level": 1,
+        "bbox": [
+            646,
+            729,
+            786,
+            743
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this section, we present a review of two fundamental aspects in UAV-enabled MEC systems, namely, the path loss channel models and UAV trajectory design for flight safety. We conclude by identifying critical challenges in current research, which motivate our proposed solution. ",
+        "bbox": [
+            500,
+            751,
+            930,
+            827
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. Path Loss Channel Models ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            843,
+            710,
+            857
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this subsection, existing path loss channel models are classified into three distinct categories based on their methodological approaches for inferring propagation conditions and estimating average signal strength. ",
+        "bbox": [
+            500,
+            864,
+            929,
+            925
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Statistical models are commonly used to assess the average performance of communication channels [14]. These models characterize propagation conditions using empirical channel parameters obtained from statistical measurements. Given specific channel parameters and a UAV-UD position pair, they can directly estimate the average signal strength. For example, probabilistic LoS channel models that incorporate parameters related to LoS and NLoS conditions have been utilized to predict the average signal strength of UAV-to-UD links [11], [25]. These models are widely applied in hierarchical computing frameworks, where the next-generation wireless networks (6G) are leveraged to aggregate substantial computational resources to process the time-varying multi-modal data uploaded by UDs [26], [27]. However, these simplified statistical channel models are only suitable for analyzing average performance and may fail to provide satisfactory results for specific user equipments (UEs) in real-world environments [13]. In practice, terrain conditions such as buildings and other obstacles can obstruct air-to-ground (A2G) signals, significantly degrading the propagation environment, particularly in densely built urban areas [13]. ",
+        "bbox": [
+            500,
+            925,
+            930,
+            955
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "WU et al.: TERRAIN-AWARE UAV-ENABLED MOBILE EDGE COMPUTING IN URBAN ENVIRONMENTS: A CONSTRAINED MULTI-OBJECTIVE ",
+        "bbox": [
+            58,
+            39,
+            811,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "3161 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            494,
+            364
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Radio map-based channel models can accurately assess the impact of obstacles on signals and describe the average strength of UAV-to-UD signals [14]. These models require extensive channel measurement data to create a radio map using machine learning techniques. The goal is to train a channel predictor that determines the propagation conditions and estimates the signal strength for the UAV-to-UD link [13], [28]. In [28], a predictor for radio map reconstruction is developed by employing the K-Nearest Neighbor algorithm to learn segments. Given a specific UAV-to-UD position pair, the trained predictor utilizes the radio map to determine the propagation conditions and estimate the signal strength. However, due to the difficulty of obtaining sufficiently accurate channel quality assessments for possible combinations of UAV-UE 3-D positions, practical applications of radio maps are challenging [14]. ",
+        "bbox": [
+            63,
+            366,
+            496,
+            592
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Geographic information-based channel models can identify LoS/NLoS conditions and predict the average signal strength by evaluating A2G links obstructed by buildings [14]. These models can construct a blocked region for a UD by using basic geometric principles and geographic information [15]. By computing the distance between UAV and blocked region, the propagation conditions and signal strength can be inferred. Particularly, when a UAV hovers outside the blocked region, the distance between UAV and blocked region is positive, which can judge the propagation conditions as LoS. In [29], a distance-based weighted sum method is designed to improve the estimation performance of blockage-aware channel models by exploiting the fine-grained structure of propagation conditions. However, these studies typically assume a simple urban terrain with flat topography. In practical urban scenarios, rough topography can significantly affect the signal strength of UAV-to-UD links [30]. ",
+        "bbox": [
+            63,
+            593,
+            494,
+            835
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. Trajectory Design for UAV Flight Safety ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            858,
+            365,
+            875
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In this subsection, we categorize the existing methods for designing UAV flight trajectories into two distinct groups based on their approaches to achieving safe flight paths. ",
+        "bbox": [
+            65,
+            878,
+            494,
+            924
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Several studies have focused on obtaining collision-free UAV flight trajectories by restricting the UAV flight area [15], [31]. In [32], an optimization problem is formulated to minimize task completion time while satisfying the minimum data demand of each user, under the assumption that the minimum flight altitude of the UAV exceeds the height of the tallest buildings. In [33], the flight area was predefined to ensure UAV flight safety near buildings. Following this, a joint optimization of transmission power, computation frequency, and duration is performed to minimize UAV energy consumption and task completion time. However, the assumption of a restricted UAV flight region in these studies can sacrifice potential low-altitude collision-free flight trajectories. ",
+        "bbox": [
+            65,
+            925,
+            494,
+            955
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            79,
+            937,
+            244
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Some research incorporates UAV flight safety as an optimization objective or constraint to achieve collision-free UAV flight paths [34]. In [16], [34], collision avoidance constraints are used to ensure that the distance between the UAV and buildings is greater than a predefined value, resulting in a safe UAV flight trajectory. In [20], an optimization objective that represents the number of potential threatening terrain points near the UAV is constructed. By optimizing this objective while considering UAV dynamic constraints regarding turning angle, feasible solutions can be obtained to form safe and smooth UAV flight trajectories. However, these studies typically assume predefined initial and final positions for the UAV flight. In practical urban scenarios, the location of the UAV destination can also affect flight safety. ",
+        "bbox": [
+            506,
+            246,
+            937,
+            457
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "C. Critical Analysis of the Literature Review ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            481,
+            818,
+            494
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Based on the above analyses of existing research, we identify two critical challenges in current UAV-enabled MEC systems. First, existing path loss channel models exhibit limited applicability in complex urban environments due to their reliance on extensive data collection or oversimplified terrain assumptions. Second, while various approaches have been proposed for UAV trajectory optimization, the impact of destination selection on both communication performance and flight safety remains largely unexplored. To address these challenges, we propose a comprehensive solution framework. For accurate signal strength estimation, we develop a terrain-aware approach utilizing real-world data, which systematically constructs blocked regions through an iterative integration process. To enhance both communication efficiency and operational safety, we design a safety-enhanced flight model based on the B-spline curve, enabling joint optimization of UAV trajectory and destination. These innovations lay the foundation for our subsequent problem formulation and algorithm design, which will be detailed in the following sections. ",
+        "bbox": [
+            506,
+            502,
+            937,
+            789
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "III. SYSTEM MODEL AND PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            547,
+            813,
+            897,
+            827
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "As illustrated in Fig. 1, we consider a UAV-enabled MEC system that operates under the control of a ground base station. The ground station performs global trajectory planning where a UAV navigates from an initial position to an optimized destination while maintaining collision-free trajectory. Upon reaching its destination, the UAV establishes a hovering position to receive and process computational tasks from nearby UDs according to the pre-planned resource allocation scheme. Based on the above operational scenario, the system model in our considered UAVenabled MEC framework consists of three fundamental components, namely, a safety-enhanced flight model, a communication model, and a computing model. To accurately capture the impact of complex urban environments on signal propagation, we further design a terrain-aware channel model for estimating channel gains in UAV-to-UD links. This enhanced channel model, detailed in Section III-D, enables reliable communication by considering the effects of both terrain variations and urban structures. Due to the space limitation, the key notations in the system model are presented in Section S-I of the supplementary document. This document can be accessed at the following link: https://github.com/Deusans/Supplementary-document. ",
+        "bbox": [
+            506,
+            834,
+            937,
+            955
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3162 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 75, NO. 2, FEBRUARY 2026 ",
+        "bbox": [
+            466,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/a1dff7b2f6e2f1ad9ab09d11aa6b827983d8b89137657001613a910d19175880.jpg",
+        "image_caption": [
+            "Fig. 1. Illustration of the considered UAV-enabled MEC system. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Device 1\"] --> B[\"Device 2\"]\n    B --> C[\"Device 3\"]\n    C --> D[\"Device 4\"]\n    D --> E[\"Device 5\"]\n    E --> F[\"Destination\"]\n    F --> G[\"Path planning\"]\n    G --> H[\"Task Offloading\"]\n    H --> I[\"UAV\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#f9f,stroke:#333\n    style C fill:#f9f,stroke:#333\n    style D fill:#f9f,stroke:#333\n    style E fill:#f9f,stroke:#333\n    style F fill:#f9f,stroke:#333\n    style G fill:#f9f,stroke:#333\n    style H fill:#f9f,stroke:#333\n    style I fill:#f9f,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            89,
+            80,
+            462,
+            250
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            295,
+            489,
+            492
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. Safety-Enhanced Flight Model ",
+        "text_level": 1,
+        "bbox": [
+            57,
+            508,
+            294,
+            523
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We employ the B-spline curve to construct the UAV flight trajectory, leveraging their capability to model a smooth and complex path with a small set of control points, denoted as $\\mathbf { U } _ { 1 } =$ $( x _ { 1 } , y _ { 1 } , z _ { 1 } ) , \\textbf { U } _ { 2 } = ( x _ { 2 } , y _ { 2 } , z _ { 2 } ) , . . . , \\textbf { U } _ { \\lambda } = ( x _ { \\lambda } , y _ { \\lambda } , z _ { \\lambda } )$ =. Subse-( ) = ( ) = ( )quently, the flight trajectory consisting of a sequence of path points, denoted as ${ \\bf B } \\bar { \\bf P } _ { 1 } = ( x _ { 1 } ^ { \\prime } , y _ { 1 } ^ { \\prime } , z _ { 1 } ^ { \\prime } ) , { \\bf \\bar { B } P } _ { 2 } = ( \\bar { x } _ { 2 } ^ { \\prime } , y _ { 2 } ^ { \\prime } , z _ { 2 } ^ { \\prime } ) , \\dots ,$ $\\mathbf { B P } _ { S } = ( x _ { S } ^ { \\prime } , y _ { S } ^ { \\prime } , z _ { S } ^ { \\prime } )$ = ( ) = ( ), is generated. The details of generating = ( )the flight trajectory are presented in Section S-II of the supplementary document. In this paper, the λ control points serve as decision variables in our optimization framework. The first and last control points determine the start point and destination of the UAV flight trajectory, respectively. While the first control point is fixed at the initial position, the last control point $\\mathbf { U } _ { \\lambda }$ representing the UAV’s destination is optimizable. This design enables an algorithm to jointly optimize both the flight trajectory and its destination, thereby finding a proper terminal position that ensures flight safety. ",
+        "bbox": [
+            60,
+            530,
+            488,
+            787
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "After constructing a UAV flight trajectory, we can express the flying time of the UAV as: ",
+        "bbox": [
+            58,
+            787,
+            486,
+            818
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT ^ {\\mathrm{F}} = \\frac {L}{v}, \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            237,
+            825,
+            486,
+            854
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where v is a constant representing the flight velocity of the UAV, and L is the length of the constructed B-spline curve, given by: ",
+        "bbox": [
+            58,
+            861,
+            488,
+            892
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL = \\sum_ {s = 1} ^ {S} \\left\\| \\mathbf {B P} _ {s - 1} - \\mathbf {B P} _ {s} \\right\\|, \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            175,
+            900,
+            486,
+            941
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where \u0003 · \u0003 represents the Euclidean norm. ",
+        "bbox": [
+            500,
+            80,
+            792,
+            95
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "To ensure UAV flight safety, we construct a detailed representation of the flying environment. Specifically, we discretize the terrain into grid cells based on DEM data. As shown in Fig. 2, each grid cell is characterized by four meshing points. To determine a collision-free path, we consider an objective function that prioritizes the UAV flight safety based on the approach in [20]. By projecting the path points and mesh points onto the horizontal plane, the mesh points of the terrain are identified within a safe distance, denoted as $d _ { \\mathrm { s a f e } }$ . This ensures that the UAV avoids known terrains. The objective function for the safe path is defined as follows: ",
+        "bbox": [
+            500,
+            95,
+            930,
+            261
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nG _ {1} (\\mathbf {x}) = \\sum_ {m = 1} ^ {M} \\sum_ {k = 1} ^ {K} \\frac {d _ {\\text { safe }}}{d _ {m , k}}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            629,
+            268,
+            930,
+            310
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where K represents the number of mesh points within the safe distance, and $d _ { m , k }$ refers to the Euclidean distance between the m-th mesh point and the k-th path point. Our goal is to minimize $G _ { 1 }$ , as a smaller value of $G _ { 1 }$ indicates a lower risk of UAV collision with the terrain. To ensure the UAV flight safety while considering kinetic constraints, we introduce the following five constraints, i.e., $C _ { 1 } , C _ { 2 } , C _ { 3 } , C _ { 4 } ,$ , and $C _ { 5 }$ . The constraint $C _ { 1 }$ restricts the minimum flight altitude of the UAV: ",
+        "bbox": [
+            500,
+            316,
+            930,
+            436
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {1}: h ^ {\\min} - z _ {s} ^ {\\prime} \\leq 0, \\forall s, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            634,
+            444,
+            930,
+            462
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $h ^ { \\mathrm { m i n } }$ is the minimum height. The constraint $C _ { 2 }$ restricts the upper flight altitude of the UAV: ",
+        "bbox": [
+            500,
+            469,
+            930,
+            500
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {2}: z _ {s} ^ {\\prime} - h ^ {\\max} \\leq 0, \\forall s, \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            632,
+            507,
+            930,
+            525
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $h ^ { \\mathrm { m a x } }$ is the maximum height. The constraint $C _ { 3 }$ limits the UAV’s turning angle along the path not to exceed the maximum allowable value: ",
+        "bbox": [
+            500,
+            531,
+            930,
+            575
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {3}: \\cos^ {- 1} \\left(\\frac {\\mathbf {B V} _ {s , s - 1} \\cdot \\mathbf {B V} _ {s + 1 , s}}{\\| \\mathbf {B V} _ {s , s - 1} \\| \\| \\mathbf {B V} _ {s + 1 , s} \\|}\\right) \\leq \\theta^ {\\max}, \\forall s, \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            580,
+            930,
+            614
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\theta ^ { \\mathrm { m a x } }$ is the maximum allowable value. $\\mathbf { B V } _ { s + 1 , s }$ is a vector from $\\mathbf { B P } _ { s }$ to $\\mathbf { B P } _ { s + 1 }$ . The constraint $C _ { 4 }$ prevents the UAV from colliding with the terrain: ",
+        "bbox": [
+            500,
+            619,
+            930,
+            666
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {4}: \\left[ \\left(\\mathbf {t} _ {2} - \\mathbf {t} _ {1}\\right) \\times \\left(\\mathbf {t} _ {3} - \\mathbf {t} _ {1}\\right) \\right] \\cdot \\left(\\mathbf {B P} _ {s} - \\mathbf {t} _ {1}\\right) \\geq 0, \\forall s, \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            672,
+            930,
+            691
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { t } _ { 1 } , \\mathbf { t } _ { 2 } .$ , and $\\mathbf { t } _ { 3 }$ represent the three mesh points whose horizontal projections are nearest to the horizontal projection of the location of the s-th path point BPs regarding the Euclidean distance. $C _ { 4 }$ employs the cross product $\\left( \\mathbf { t } _ { 2 } - \\mathbf { t } _ { 1 } \\right) \\times \\left( \\mathbf { t } _ { 3 } - \\mathbf { t } _ { 1 } \\right)$ to ( ) (obtain a normal vector of the triangular surface formed by $\\mathbf { t } _ { 1 } .$ , $\\mathbf { t } _ { 2 } .$ , and $\\mathbf { t } _ { 3 } .$ The dot product between this normal vector and the vector $\\left( \\mathbf { B } \\mathbf { P } _ { s } - \\mathbf { t } _ { 1 } \\right)$ determines the relative position of path point $\\mathbf { B P } _ { s }$ ( )with respect to the terrain surface. When $C _ { 4 }$ is satisfied, the path point $\\mathbf { B P } _ { s }$ lies upon the terrain. The constraint $C _ { 5 }$ ensures that UAV flies in a given area D: ",
+        "bbox": [
+            500,
+            698,
+            930,
+            849
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {5}: \\mathbf {B P} _ {s} \\in \\mathbb {D}, \\forall s. \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            648,
+            857,
+            930,
+            873
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            888,
+            686,
+            902
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "After arriving at the destination, the UAV hovers and receives the computational tasks from nearby I UDs. The hovering ",
+        "bbox": [
+            500,
+            910,
+            930,
+            940
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "WU et al.: TERRAIN-AWARE UAV-ENABLED MOBILE EDGE COMPUTING IN URBAN ENVIRONMENTS: A CONSTRAINED MULTI-OBJECTIVE ",
+        "bbox": [
+            58,
+            37,
+            811,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "3163 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/0ec1dd3cb9c4250f855785469b288ea138516820c708a803c7ace6a0f17e61e0.jpg",
+        "image_caption": [
+            "Step 1: Grouping the Meshing Points "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph LR\n    A[\"3D Meshing\"] --> B[\"Mapping to the horizontal plane\"]\n    B --> C[\"A grid cell with highlighted cells n1, T2\"]\n    C --> D[\"Mapping to 3D space\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            117,
+            84,
+            890,
+            181
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/660fb5992f867b45b94073616d97d1b12817f7870a0f0eee656ccefcd25ff5cc.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"The 1-st group\"] --> B[\"The 2-nd group\"]\n    B --> C[\"Merging\"]\n    C --> D[\"Operation 1: V_q, V_{q+1}, V_{i,j,p+1}\"]\n    C --> E[\"Operation 2: V_{q+1}, V_{i,j,r}\"]\n    D --> F[\"Adding the intersecting vectors\"]\n    E --> F\n    F --> G[\"Final Output\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            117,
+            193,
+            888,
+            344
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/f852cade2167dacbc7c6fa174c9cf3716a0bf6233002d0efb76f342d7347922d.jpg",
+        "image_caption": [
+            "Step 2:Construction and Integration of Group-Wise Blocked Regions ",
+            "Step 3: Calculating the Distance from the UAV to the Blocked Region of thei-th UD "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Calculate the distances from the UAV to planes\"] --> B[\"Object: UAV-Plane with shaded 3D surface\"]\n    B --> C[\"Obtaining the shortest distance from UAV to the blocked region\"]\n    C --> D[\"Object: UAV-Plane with shaded 3D surface\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fcc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            117,
+            359,
+            890,
+            460
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/1472bdf86a20af501faa449d21a748e11067eecfc7d5eaeee452ef65087c045d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            153,
+            487,
+            183,
+            508
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "i-th UD ",
+        "bbox": [
+            198,
+            491,
+            259,
+            506
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/bac79896c935811ca4de51152bdd3c2babefb868704375b66a769d57a4aedf54.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            154,
+            513,
+            185,
+            534
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "UAV ",
+        "bbox": [
+            196,
+            518,
+            237,
+            531
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/00587413fec3348b016e4ab260a5f11d1dfd78c1d4771ae344984de784836b87.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            149,
+            542,
+            191,
+            559
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "vector from the UD to the UAV ",
+        "bbox": [
+            196,
+            542,
+            422,
+            556
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/b41205261f882f8a77607d1001eb889c4bdc595bc7b7617214d97ebc363361f8.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            151,
+            566,
+            191,
+            582
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "intersecting vector ",
+        "bbox": [
+            196,
+            566,
+            331,
+            582
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/ede0112444a1d61fc26a38f1a19d430a7735c6188158c0dc74bca4a390540345.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            501,
+            487,
+            530,
+            507
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "meshing point in the 1-st group ",
+        "bbox": [
+            545,
+            491,
+            767,
+            507
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/c423a3d9c25dad10ba51005ed4f767daf3e5164d23a8982807918b6a9c22d907.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            501,
+            513,
+            530,
+            532
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "meshing point in the 2-nd group ",
+        "bbox": [
+            545,
+            517,
+            772,
+            532
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/67de82f1679c4775f9fab832fabb36d584bb24452efef56522d53fa11d2868ee.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            496,
+            542,
+            535,
+            559
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "vector from the UD to the 1-st group ",
+        "bbox": [
+            547,
+            544,
+            806,
+            560
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/177a8a45652b879300cdf9c60be196e574981906a76a3242a225adcd4d4521f7.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            496,
+            568,
+            537,
+            584
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "vector from the UD to the 2-nd group ",
+        "bbox": [
+            547,
+            568,
+            811,
+            585
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Fig. 2. Illustration of calculating the distance from the UAV to the blocked region of the i-th UD. ",
+        "bbox": [
+            63,
+            601,
+            604,
+            614
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "position of the UAV, denoted as ${ \\bf q } ^ { \\mathrm { U } } = ( x ^ { \\mathrm { U } } , y ^ { \\mathrm { U } } , z ^ { U } )$ , corresponds to its destination point $\\mathbf { U } _ { \\lambda }$ = ( ). The location of the i-th UD is given by $\\mathbf { q } _ { i } ^ { \\mathrm { D } } = ( x _ { i } ^ { \\mathrm { D } } , y _ { i } ^ { \\mathrm { D } } , z _ { i } ^ { D } )$ . The computational task of the i-th = ( )UD can be described as a tuple $\\{ D _ { i } , W _ { i } \\}$ , where $D _ { i }$ and $W _ { i }$ denote the task input size and workload, respectively. Based on the orthogonal frequency division multiple access (OFDMA) protocol and Shannon’s theorem [29], the transmission rate of the i-th UD can be expressed as follows: ",
+        "bbox": [
+            63,
+            638,
+            494,
+            760
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {i} ^ {\\mathrm{UL}} = B _ {i} \\log \\left(1 + \\frac {P _ {i} ^ {\\mathrm{tr}} g _ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right)}{\\sum_ {n \\in I \\setminus \\{i \\}} P _ {n} ^ {\\mathrm{tr}} g _ {n} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right) + \\sigma^ {2}}\\right), \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            775,
+            494,
+            816
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $B _ { i }$ denotes the available bandwidth for the i-th UD, $P _ { i } ^ { \\mathrm { t r } }$ is the transmission power of the i-th UD, $g _ { i } ( \\mathbf { q } ^ { \\mathrm { U } } )$ represents the ( )channel gain of the UAV-to-the i-th UD link, and $\\sigma ^ { 2 }$ is the noise power spectral density. The term $\\begin{array} { r } { \\sum _ { n \\in I \\backslash \\{ i \\} } P _ { n } ^ { \\mathrm { t r } } g _ { n } ( \\mathbf { q } ^ { \\mathrm { U } } ) } \\end{array}$ represents the total interference power. Particularly, $g _ { i } ( \\mathbf { q } ^ { \\mathrm { U } } )$ can be obtained ( )according to the terrain-aware channel model described in Section III-D. Consequently, the data transmission time for the i-th UD can be expressed as follows: ",
+        "bbox": [
+            65,
+            830,
+            496,
+            940
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            508,
+            638,
+            732,
+            652
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {i} ^ {\\mathrm{TX}} = \\frac {D _ {i}}{r _ {i} ^ {\\mathrm{UL}}}. \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            676,
+            657,
+            936,
+            691
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "C. Computing Model ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            705,
+            661,
+            720
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Upon receiving the task from the i-th UD, the UAV allocates computing resources to process the task. The processing time for the task of the i-th UD can be expressed as follows: ",
+        "bbox": [
+            506,
+            726,
+            937,
+            771
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {i} ^ {\\mathrm{CMP}} = \\frac {W _ {i}}{f _ {i}}, \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            673,
+            776,
+            936,
+            810
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { i }$ is the allocated computing resource for the task of the i-th UD. To provide high QoS for UDs, we consider an objective function that prioritizes the maximum task completion time, which is defined as follows: ",
+        "bbox": [
+            506,
+            814,
+            937,
+            875
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nG _ {2} (\\mathbf {x}) = \\max _ {i} \\left(T ^ {\\mathrm{F}} + T _ {i} ^ {\\mathrm{TX}} + T _ {i} ^ {\\mathrm{CMP}}\\right). \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            595,
+            880,
+            936,
+            902
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Our goal is to minimize $G _ { 2 }$ , as a smaller value of $G _ { 2 }$ indicates a higher QoS of UDs. Due to the limited computing resource of the UAV, the following constraint is introduced: ",
+        "bbox": [
+            506,
+            910,
+            937,
+            940
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "3164 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 75, NO. 2, FEBRUARY 2026 ",
+        "bbox": [
+            466,
+            37,
+            936,
+            49
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            58,
+            79,
+            385,
+            94
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {6}: \\sum_ {i = 1} ^ {I} f _ {i} \\leq F ^ {\\max}, \\forall i, \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            190,
+            101,
+            486,
+            142
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $F ^ { \\mathrm { m a x } }$ is the maximum computing capacity of the UAV. ",
+        "bbox": [
+            58,
+            148,
+            474,
+            164
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "D. Proposed Terrain-Aware Channel Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            179,
+            365,
+            194
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "During data transmission, uplink signals from the i-th UD can be obstructed by rough topographies and dense buildings, significantly affecting the signal strength of the UAV-to-UD link. Following the approach in [29], [35], for the i-th UD positioned at location $\\mathbf { q } _ { i } ^ { \\mathrm { D } }$ , the channel gain between this UD and the UAV (located at $\\mathbf { q } ^ { \\mathrm { U } } )$ is characterized by a dual-segment model that accounts for both LoS and NLoS propagation conditions as follows: ",
+        "bbox": [
+            57,
+            199,
+            486,
+            319
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right) = \\frac {\\beta_ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right)}{\\left\\| \\mathbf {q} ^ {\\mathrm{U}} - \\mathbf {q} _ {i} ^ {\\mathrm{D}} \\right\\| ^ {\\alpha_ {i} (\\mathbf {q} ^ {\\mathrm{U}})}}, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            168,
+            323,
+            486,
+            364
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "with ",
+        "bbox": [
+            58,
+            369,
+            95,
+            383
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} \\alpha_ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right) = \\left(\\alpha_ {1} - \\alpha_ {2}\\right) s _ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right) + \\alpha_ {2}, \\\\ \\beta_ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right) = \\left(\\beta_ {1} - \\beta_ {2}\\right) s _ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right) + \\beta_ {2}, \\end{array} \\right. \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            143,
+            387,
+            486,
+            422
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\alpha _ { 1 }$ and $\\beta _ { 1 }$ are the path loss exponents for LoS, and $\\alpha _ { 2 }$ and $\\beta _ { 2 }$ are the path loss exponents for NLoS. $\\alpha _ { i } ( \\mathbf { q } ^ { \\mathrm { U } } )$ and $\\beta _ { i } ( { \\bf q } ^ { \\mathrm { U } } )$ are functions of the UAV position ${ \\bf q } ^ { \\mathrm { U } }$ ( ) ( ), characterizing the specific propagation conditions of the UAV-to-UD link. The $s _ { k } ( \\mathbf { q } ^ { \\mathrm { U } } )$ is a ( )sigmoid function that approximates the step function, which is given by ",
+        "bbox": [
+            58,
+            426,
+            486,
+            518
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns _ {i} \\left(\\mathbf {q} ^ {\\mathrm{U}}\\right) = \\frac {1}{1 + \\exp \\left(- \\eta \\frac {d _ {i}}{\\left\\| \\mathbf {q} _ {i} ^ {\\mathrm{D}} - \\mathbf {q} ^ {\\mathrm{U}} \\right\\|}\\right)}, \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            146,
+            523,
+            486,
+            573
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\eta$ is a smooth parameter that can control the scale of the approximation. $d _ { i }$ is the distance between UAV position ${ \\bf q } ^ { \\mathrm { U } }$ and the blocked region of the i-th UD. To this end, it is necessary to obtain $d _ { i }$ for the calculation of $g _ { i } ( \\mathbf { q } ^ { \\mathrm { U } } )$ . ",
+        "bbox": [
+            57,
+            578,
+            486,
+            638
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "To accurately determine $d _ { i } ,$ ( ) we propose a methodology that characterizes the communication blockage between the UAV and a UD by jointly considering the direct and compound effects of topographies and buildings. For the i-th UD, we construct a comprehensive blocked region represented by a set of vectors extending from the UD position to discretized terrain mesh points. These vectors collectively define a three-dimensional boundary that partitions the space into two distinct regions: an obstructed zone where topographies and buildings impair UAV communications, and an unobstructed zone conducive to establishing reliable communication links. The implementation of this methodology comprises three sequential steps. As illustrated in Fig. 2, we first classify the mesh points surrounding the i-th UD into groups based on the relative positions of $\\mathbf { q } _ { i } ^ { \\mathrm { D } }$ and ${ \\bf q } ^ { \\mathrm { U } }$ . Due to the space limitation, we present the meshing process in Section S-III of the supplementary document. Subsequently, we construct and merge blocked regions for each group to establish a complete blocked region for the i-th UD. Finally, we compute the distance between the UAV and the resulting blocked region. The detailed procedure of these steps is presented as follows: ",
+        "bbox": [
+            60,
+            638,
+            488,
+            940
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Step 1. Grouping the Meshing Points: To identify the environment surrounding the i-th UD, we partition the mesh points into multiple groups through an iterative process, where the mesh points represent the terrain surface. As illustrated in Fig. 2, the first group comprises four mesh points of the grid cell containing $\\mathbf { q } _ { i } ^ { \\mathrm { D } }$ (depicted as red points). The mesh points on the surrounding grid cells that share at least one vertex with the first group form the second group (shown as blue points). This iterative grouping process continues for each subsequent group until the next grid cell to be grouped would contain the horizontal projection of the UAV. The total number of groups is determined by: ",
+        "bbox": [
+            500,
+            80,
+            930,
+            247
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nN _ {i} = \\min \\left[ \\frac {\\left\\| x _ {i} ^ {\\mathrm{D}} - x ^ {\\mathrm{U}} \\right\\|}{r _ {1}}, \\frac {\\left\\| y _ {i} ^ {\\mathrm{D}} - y ^ {\\mathrm{U}} \\right\\|}{r _ {2}} \\right], \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            252,
+            930,
+            294
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $r _ { 1 }$ and $r _ { 2 }$ represent the length and width of a grid cell, respectively. To facilitate subsequent computations, we organize the mesh points in each group in a counterclockwise order. For the j-th group, we select an initial mesh point $\\mathbf { t } _ { i , j , 1 }$ and label the subsequent points as $\\mathbf { t } _ { i , j , k _ { j } }$ following this counterclockwise sequence, where $k _ { j } \\in \\{ 2 , 3 , \\ldots , K _ { j } \\}$ and $K _ { j }$ denotes the total number of mesh points in the j-th group. Based on this ordered arrangement, we define a vector set $\\mathbb { V } _ { i , j } = \\{ \\mathbf { v } _ { i , j , 1 } , \\mathbf { v } _ { i , j , 2 } , \\dots , \\mathbf { v } _ { i , j , K _ { j } } \\}$ , where each vector $\\mathbf { v } _ { i , j , k _ { j } } =$ $\\mathbf { t } _ { i , j , k _ { j } } - \\mathbf { q } _ { i } ^ { \\mathrm { D } }$ =represents the vector from the UD position to the corresponding mesh point. ",
+        "bbox": [
+            500,
+            299,
+            930,
+            465
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Step 2. Construction and Integration of Group-Wise Blocked Regions: We construct the complete blocked region through an iterative process that progressively integrates vectors from each group. Initially, we create an empty set $\\mathbb { W } _ { i }$ to store the boundary vectors of the blocked region. For the first group $( j = 1 )$ , we directly set $\\mathbb { W } _ { i } = \\mathbb { V } _ { i , 1 }$ as the initial blocked region. For subsequent groups $( j > 1 )$ , the merging process includes two operations by considering the interaction between the existing blocked region constructed by $\\mathbb { W } _ { i } = \\{ \\mathbf { v } _ { 1 } ^ { * } , \\mathbf { v } _ { 2 } ^ { * } , \\ldots , \\mathbf { v } _ { \\parallel \\mathbb { W } _ { i } \\parallel } ^ { * } \\}$ , and the new group of vectors Vi,j : $\\mathbb { V } _ { i , j } \\colon$ ",
+        "bbox": [
+            500,
+            465,
+            930,
+            618
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Operation 1. Identification of Intersecting Vectors: When merging regions, we must identify the intersection lines between their boundaries. Consider two planes $\\mathcal { P } _ { 1 }$ and $\\mathcal { P } _ { 2 }$ , where $\\mathcal { P } _ { 1 }$ is spanned by the adjacent vectors $\\mathbf { v } _ { q } ^ { * }$ and $\\mathbf { v } _ { q + 1 } ^ { * }$ in $\\mathbb { W } _ { i }$ , and $\\mathcal { P } _ { 2 }$ is spanned by the adjacent vectors $\\mathbf { v } _ { i , j , p }$ and $\\mathbf { v } _ { i , j , p + 1 }$ in $\\mathbb { V } _ { i , j }$ , their intersecting vector $\\mathbf { v } ^ { \\mathrm { c } }$ is computed by: ",
+        "bbox": [
+            500,
+            617,
+            930,
+            708
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {v} ^ {\\mathrm{c}} = \\left(\\mathbf {v} _ {i, j, p} \\times \\mathbf {v} _ {i, j, p + 1}\\right) \\times \\left(\\mathbf {v} _ {q} ^ {*} \\times \\mathbf {v} _ {q + 1} ^ {*}\\right), \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            715,
+            930,
+            734
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where the notation × denotes the vector cross product operation, and $\\mathbf { v } _ { q } ^ { * } \\times \\mathbf { v } _ { q + 1 } ^ { * }$ and $\\mathbf { v } _ { i , j , p } \\times \\mathbf { v } _ { i , j , p + 1 }$ represent the normal vectors of $\\mathcal { \\hat { P } } _ { 1 }$ and $\\mathcal { P } _ { 2 }$ , respectively. To validate an intersecting vector, we must ensure it lies within both triangular regions. This validation is performed by comparing the angular relationships between the intersecting vector and the boundary vectors of each triangular region: ",
+        "bbox": [
+            500,
+            739,
+            930,
+            847
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} \\left\\langle \\mathbf {v} ^ {c}, \\mathbf {v} _ {q} ^ {*} \\right\\rangle + \\left\\langle \\mathbf {v} ^ {c}, \\mathbf {v} _ {q + 1} ^ {*} \\right\\rangle = \\left\\langle \\mathbf {v} _ {q} ^ {*}, \\mathbf {v} _ {q + 1} ^ {*} \\right\\rangle , \\\\ \\left\\langle \\mathbf {v} ^ {c}, \\mathbf {v} _ {i, j, p} \\right\\rangle + \\left\\langle \\mathbf {v} ^ {c}, \\mathbf {v} _ {i, j, p + 1} \\right\\rangle = \\left\\langle \\mathbf {v} _ {i, j, p}, \\mathbf {v} _ {i, j, p + 1} \\right\\rangle , \\end{array} \\right. \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            531,
+            853,
+            930,
+            888
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\left. \\mathbf { a } _ { 1 } , \\mathbf { a } _ { 2 } \\right.$ throughout the paper denotes the angle between vectors a1 and $\\mathbf { a } _ { 2 }$ . These inequalities ensure that the intersecting vector $\\mathbf { v } ^ { c }$ is contained within both the triangular region bounded by $\\mathbf { v } _ { q } ^ { * }$ and $\\mathbf { v } _ { q + 1 } ^ { * }$ , and the triangular region bounded by $\\mathbf { v } _ { i , j , p }$ and $\\mathbf { v } _ { i , j , p + 1 }$ (see Step 1 in Fig. 2). All valid intersecting vectors identified between the existing blocked region and the j-th group are collected into a vector set $\\mathbb { I } _ { i , j }$ . ",
+        "bbox": [
+            500,
+            893,
+            930,
+            940
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "WU et al.: TERRAIN-AWARE UAV-ENABLED MOBILE EDGE COMPUTING IN URBAN ENVIRONMENTS: A CONSTRAINED MULTI-OBJECTIVE ",
+        "bbox": [
+            58,
+            37,
+            811,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "3165 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            494,
+            140
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Operation 2. Removal of Interior Vectors: For an accurate representation of the blocked region’s boundary, we perform a bidirectional check: we identify and remove vectors in $\\mathbb { W } _ { i }$ that lie inside the region constructed by $\\mathbb { V } _ { i , j }$ , while also removing vectors in $\\mathbb { V } _ { i , j }$ that lie inside the region defined by $\\mathbb { W } _ { i }$ . Following Step 2 in Fig. 2, the blocked region is bounded by a set of vectors, where any two adjacent vectors $\\mathbf { v } _ { q } ^ { * }$ and $\\mathbf { v } _ { q + 1 } ^ { * }$ in $\\mathbb { W } _ { i }$ , define a triangular region. A vector lying inside the blocked region must be beneath one of these triangular regions. To determine whether a vector $\\mathbf { v } _ { i , j , r }$ in $\\mathbb { V } _ { i , j }$ lies beneath a triangular region bounded by $\\mathbf { v } _ { q } ^ { * }$ and $\\mathbf { v } _ { q + 1 } ^ { * }$ v∗q+1, we first compute: ",
+        "bbox": [
+            63,
+            140,
+            496,
+            308
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nd ^ {\\mathrm{B}} \\left(\\mathbf {v} _ {i, j, r}\\right) = \\left(\\mathbf {v} _ {q} ^ {*} \\times \\mathbf {v} _ {q + 1} ^ {*}\\right) \\cdot \\mathbf {v} _ {i, j, r}. \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            315,
+            494,
+            335
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "If $d ^ { \\mathrm { B } } ( \\mathbf { v } _ { i , j , r } ) < 0$ , then $\\mathbf { v } _ { i , j , r }$ lies beneath the plane spanned by $\\mathbf { v } _ { q } ^ { * }$ ( and $\\mathbf { v } _ { q + 1 } ^ { * }$ . However, this condition alone is insufficient to confirm that $\\mathbf { v } _ { i , j , i }$ r lies beneath the triangular region. For a precise determination, we construct a vertical plane spanned by $\\mathbf { v } _ { i , j , i }$ and a vertical vector 0, 0, 1 , and examine its intersection ( )with the triangular region. The vector $\\mathbf { v } _ { i , j , r }$ lies beneath the triangular region and should be removed if both conditions are satisfied: $d ^ { \\mathrm { B } } ( \\mathbf { v } _ { i , j , r } ) < 0$ and the vertical plane intersects with ( )the triangular region according to Eqs. (18)–(20). Using the same procedure, we identify vectors in $\\mathbb { W } _ { i }$ that lie beneath the blocked region constructed by $\\mathbb { V } _ { i , j }$ . All vectors identified for removal from both $\\mathbb { W } _ { i }$ and $\\mathbb { V } _ { i , j }$ are collected in a set $\\mathbb { R } \\mathbb { E } _ { i , j }$ . After processing both the intersection identification and interior vector removal, we update $\\mathbb { W } _ { i }$ by incorporating the valid vectors from $\\mathbb { V } _ { i , j }$ , expressed as $\\mathbb { W } _ { i } = ( \\mathbb { W } _ { i } \\cup \\mathbb { V } _ { i , j } \\cup \\mathbb { I } _ { i , j } ) \\setminus \\mathbb { R } \\mathbb { E } _ { i , j }$ . = ( )This iterative process continues until all groups are integrated, resulting in the final blocked region for the i-th UD. ",
+        "bbox": [
+            63,
+            340,
+            496,
+            598
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Step 3. Calculating the Distance from the UAV to the Blocked Region of the i-th UD: Having the constructed blocked region, we determine the minimum distance $d _ { i }$ between the UAV and this blocked region. Based on the final group of boundary vectors $\\mathbb { W } _ { i } ,$ we define the vector from the i-th UD to the UAV as ${ \\bf v } _ { i } ^ { \\mathrm { D U } } = { \\bf q } ^ { \\mathrm { U } } - { \\bf q } _ { i } ^ { \\mathrm { D } }$ . Following Step 3 in Fig. 2, the calculationxamining the distance between the UAV and $d _ { i }$ each triangular region bounded by adjacent vectors in $\\mathbb { W } _ { i }$ . For a triangular region bounded by vectors $\\mathbf { v } _ { t } ^ { * }$ and $\\mathbf { v } _ { t + 1 } ^ { * }$ , we consider three distinct cases: ",
+        "bbox": [
+            63,
+            598,
+            494,
+            748
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Case 1. Opposite Direction: When both boundary vectors use angles with , it indicates th $\\mathbf { v } _ { i } ^ { \\mathrm { D U } } \\ \\left( \\mathrm { i . e . , \\ } \\mathbf { v } _ { t } ^ { \\ast } \\cdot \\mathbf { v } _ { i } ^ { \\mathrm { D U } } < 0 \\right.$ U < 0 v∗t+1 · and  lies $\\mathbf { v } _ { t + 1 } ^ { * }$ $\\mathbf { v } _ { i } ^ { \\mathrm { { D U } } } < 0 )$ opposite side of the UD relative to the UAV. In this case, we can skip the distance calculation as other triangular regions will inevitably provide shorter distances to the UAV. ",
+        "bbox": [
+            63,
+            750,
+            494,
+            839
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Case 2. Perpendicular Distance to Triangle: When the projection of $\\mathbf { v } _ { i } ^ { \\mathrm { { D U } } }$ falls within the triangular region, the shortest distance is the perpendicular distance to the plane. We compute the projection: ",
+        "bbox": [
+            63,
+            839,
+            494,
+            900
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {v} _ {i, t} ^ {\\mathrm{P}} = \\mathbf {v} _ {i} ^ {\\mathrm{DU}} - \\frac {\\mathbf {v} _ {i} ^ {\\mathrm{DU}} \\cdot \\mathbf {v} _ {t} ^ {\\mathrm{N}}}{\\left\\| \\mathbf {v} _ {t} ^ {\\mathrm{N}} \\right\\|}, \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            193,
+            905,
+            494,
+            944
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { v } _ { t } ^ { \\mathrm { N } } = \\mathbf { v } _ { t } ^ { * } \\times \\mathbf { v } _ { t + 1 } ^ { * }$ is the plane’s normal vector. To verify that $\\mathbf { v } _ { i , t } ^ { \\mathrm { P } }$ =lies within the triangular region, we check: ",
+        "bbox": [
+            506,
+            79,
+            937,
+            112
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\langle \\mathbf {v} _ {i, t} ^ {\\mathrm{P}}, \\mathbf {v} _ {t} ^ {*} \\right\\rangle + \\left\\langle \\mathbf {v} _ {i, t} ^ {\\mathrm{P}}, \\mathbf {v} _ {t + 1} ^ {*} \\right\\rangle = \\left\\langle \\mathbf {v} _ {t} ^ {*}, \\mathbf {v} _ {t + 1} ^ {*} \\right\\rangle . \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            585,
+            118,
+            937,
+            138
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "If this condition is satisfied, the perpendicular distance is given by $d _ { i , t } ^ { \\mathrm { P } } = \\| \\mathbf { v } _ { i } ^ { \\mathrm { D U } } \\| \\sin \\big \\langle \\mathbf { v } _ { i , t } ^ { \\mathrm { P } } , \\mathbf { v } _ { i } ^ { \\mathrm { D U } } \\big \\rangle$ . ",
+        "bbox": [
+            506,
+            142,
+            937,
+            172
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "= sinCase 3. Distance to Triangle Boundary: When the projection falls outside the triangular region, the minimum distance is from the UAV to either boundary vector $\\mathbf { v } _ { t } ^ { * }$ or $\\mathbf { v } _ { t + 1 } ^ { * } .$ . For example, the distance to vector $\\mathbf { v } _ { t } ^ { * }$ is calculated as $d _ { i , t } ^ { \\mathrm { V } } =$ $\\| \\mathbf { v } _ { i } ^ { \\mathrm { { D U } } } \\|$ sin $\\left. \\mathbf { v } _ { t } ^ { * } , \\mathbf { v } _ { i } ^ { \\mathrm { { D U } } } \\right.$ . ",
+        "bbox": [
+            506,
+            172,
+            937,
+            251
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "sinAfter evaluating all triangular regions in the three cases, the minimum distance is selected as $d _ { i }$ . This distance is then used to calculate the channel gain of the UAV-to-UD link according to Eqs. (14)–(16), which subsequently determines both the task transmission time and completion time for the i-th UD. ",
+        "bbox": [
+            506,
+            251,
+            937,
+            325
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "E. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            340,
+            683,
+            354
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this study, we focus on optimizing the performance of UAV-enabled MEC in smart cities by addressing two critical challenges: ensuring accurate signal strength estimation in complex urban environments and maintaining UAV flight safety. We formulate a joint optimization framework that considers both UAV trajectory planning and computational offloading decisions. Specifically, we aim to simultaneously minimize two objectives: the UAV flight safety risk (denoted as $G _ { 1 } )$ and the maximum task completion time of UDs (denoted as $G _ { 2 } )$ . ",
+        "bbox": [
+            506,
+            361,
+            937,
+            497
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "It is worth noting that there is a conflict between optimizing $G _ { 1 }$ and $G _ { 2 }$ as improving the latter requires the UAV to hover near the UD which, in turn, brings it close to the surrounding terrain and reduces flight safety. To handle different tradeoffs between these two conflicting objectives, we model the joint optimization of UAV trajectory planning and computational offloading as a CMOP, where we optimize the UAV trajectory, destination selection, and computational resource allocation while satisfying constraints on UAV flight safety, UAV kinetics, and computational resources. We define a decision variable vector as $\\mathbf { x } = \\{ \\mathbf { U } _ { 1 } , \\mathbf { U } _ { 2 } , \\ldots , \\mathbf { U } _ { \\lambda } , f _ { 1 } , f _ { 2 } , \\ldots , f _ { I } \\}$ . As a result, we =formulate a CMOP as follows: ",
+        "bbox": [
+            506,
+            498,
+            937,
+            678
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min \\left\\{ \\begin{array}{l} G _ {1} (\\mathbf {x}), \\\\ G _ {2} (\\mathbf {x}), \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            668,
+            681,
+            769,
+            715
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } C _ {1} \\sim C _ {6}, \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            668,
+            720,
+            936,
+            738
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $C _ { 1 }$ and $C _ { 2 }$ denote the constraints that respectively limit the upper bound $h ^ { \\mathrm { m a x } }$ and lower bound $h ^ { \\mathrm { m i n } }$ of the UAV’s flight altitude; $C _ { 3 }$ represents a flight dynamics and flexibility constraint, which restricts the UAV’s turning angle; $C _ { 4 }$ is a safety constraint designed to prevent the UAV from colliding with the surrounding terrain formed by the nearest three mesh points; $C _ { 5 }$ is a constraint that ensures the UAV remains within the given area during flight D. Collectively, these constraints guarantee that the UAV can fly safely and smoothly from its initial position to a destination, impacting the distance between UAV to each UD and leading to varying signal strength of UAV-to-UD links. Additionally, $C _ { 6 }$ is the maximum computing resource constraint. This constraint ensures that the UAV has an upper bound of computing resource $F ^ { \\mathrm { m a x } }$ and allocates its limited computing resources to each UD, resulting in varying computational performance for the UAV-to-UD links. ",
+        "bbox": [
+            506,
+            743,
+            937,
+            939
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "3166 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 75, NO. 2, FEBRUARY 2026 ",
+        "bbox": [
+            466,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/400dc796419ae798f531803ec116e2aff74a55db893b9d0e0015894c03cc7441.jpg",
+        "image_caption": [
+            "Fig. 3. Illustration of the genetic encoding scheme. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"x₁\"] --> B[\"y₁\"] --> C[\"z₁\"] --> D[\"...\"]\n    E[\"x_λ\"] --> F[\"y_λ\"] --> G[\"z_λ\"] --> H[\"f₁\"] --> I[\"...\"] --> J[\"f_I\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#f9f,stroke:#333\n    style C fill:#f9f,stroke:#333\n    style D fill:#ccf,stroke:#333\n    style E fill:#ccf,stroke:#333\n    style F fill:#ccf,stroke:#333\n    style G fill:#ccf,stroke:#333\n    style H fill:#fff,stroke:#333\n    style I fill:#fff,stroke:#333\n    style J fill:#fff,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            67,
+            80,
+            479,
+            130
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            174,
+            488,
+            219
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "IV. CONSTRAINED MULTI-OBJECTIVE EVOLUTIONARY FRAMEWORK WITH TASK-ADAPTIVE MECHANISM ",
+        "text_level": 1,
+        "bbox": [
+            87,
+            238,
+            457,
+            267
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this section, we present a comprehensive framework of the proposed algorithm. First, we review the fundamental concepts of constrained multi-objective optimization to establish the necessary background. Due to the space limitation, we present the preliminary study in Section S-IV of the supplementary document. Subsequently, we elaborate on the genetic encoding scheme for representing decision variables in our algorithm. Finally, we present the proposed algorithm along with the taskadaptive mechanism. ",
+        "bbox": [
+            57,
+            273,
+            488,
+            411
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "A. Representation of the Genetic Encoding Scheme ",
+        "text_level": 1,
+        "bbox": [
+            57,
+            426,
+            410,
+            441
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The solution to Problem (23) is encoded as a float individual, as shown in Fig. 3. An individual is divided into two parts. The first part (denoted as $u n i t _ { 1 } )$ is $\\{ \\mathbf { U } _ { 1 } , \\mathbf { U } _ { 2 } , \\dots , \\mathbf { U } _ { \\lambda } \\}$ , where $\\mathbf { U } _ { l }$ is a float variable representing the l-th control point of the constructed B-spline curve that determines the UAV trajectory. The second part (denoted as unit2) is $\\{ f _ { 1 } , f _ { 2 } , \\ldots , f _ { I } \\}$ , where $f _ { i }$ is a float variable representing the computing resource assigned from UAV to task of the i-th UD. To this end, the decision variable to Problem (23) is represented as $\\mathbf { x } = \\{ \\mathbf { U } _ { 1 } , \\mathbf { U } _ { 2 } , \\ldots , \\mathbf { U } _ { \\lambda } , f _ { 1 } , f _ { 2 } , \\ldots , f _ { I } \\}$ . ",
+        "bbox": [
+            57,
+            448,
+            486,
+            602
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "B. Core Algorithm Design ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            617,
+            245,
+            632
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "To obtain the Pareto optimal solutions for Problem (23), we propose a multi-tasking CMOEA. The proposed algorithm serves as a global trajectory planning and resource allocation mechanism, which is executed at the ground base station before the UAV’s mission starts. Given the comprehensive environmental information including DEM data and UD distributions as inputs, our algorithm generates a complete flight trajectory from the initial position to an optimized destination, along with the corresponding resource allocation scheme for computational tasks. When the UAV destination $\\mathbf { U } _ { \\lambda }$ is positioned in close proximity to the UDs, the signal gain $g _ { i } ( \\mathbf { q } ^ { \\mathrm { U } } )$ of the UAV-to-UD ( )links can be significantly enhanced, thereby reducing the task completion duration. However, this proximity to UDs inherently brings the UAV closer to surrounding terrain features. Such positioning introduces potential hazards to UAV flight safety and increases the probability of UAV-to-UD links experiencing NLoS conditions, which consequently diminishes communication efficiency. In response to these challenges, our algorithm is meticulously designed to ensure the UAV can navigate safely and smoothly from its initial position to an optimal destination, maintain position near UDs while preserving LoS propagation conditions, and efficiently allocate limited computing resources across UDs to achieve superior computational performance. This comprehensive global planning methodology seamlessly integrates terrain-related constraints, safety requirements, and QoS objectives throughout the optimization process. As a result, it delivers highly efficient and reliable UAV operations in the urban environments. ",
+        "bbox": [
+            60,
+            638,
+            488,
+            940
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            80,
+            930,
+            199
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The proposed algorithm operates with two cooperative populations to enhance its search capability: a main population and an auxiliary population. The main population focuses on identifying feasible non-dominated solutions to enhance convergence towards feasibility, while the auxiliary population explores promising solutions to facilitate the evolution of the main population. To further improve the search capability and convergence performance, We design a task-adaptive mechanism that preserves historically effective genetic operators and dynamically allocates different genetic operators to individuals based on their roles in either feasibility search or promising solution exploration. These genetic operators include both crossover and mutation operators, which are characterized by two crucial parameters: the differential evolution (DE) control parameter $F ^ { \\mathrm { b } }$ for crossover and the mutation operator type $M ^ { \\mathrm { b } }$ for mutation, both of which are detailed in Section IV-C. ",
+        "bbox": [
+            500,
+            200,
+            930,
+            440
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The procedure of the proposed algorithm is outlined in Algorithm 1. The initialization phase consists of two key steps. First, the main population ${ \\mathbb { M P } } _ { 1 }$ and auxiliary population $\\mathbb { A P } _ { 1 }$ , each containing $\\mathcal { N } / 2$ individuals, are randomly initialized in the search space and evaluated (see Lines 1-2). Second, two record queues $\\mathbb { M } \\mathbb { R } _ { 1 }$ and $\\mathbb { A } \\mathbb { R } _ { 1 }$ , each with $\\mathcal { N } / 2$ entries, are initialized to store effective genetic operators for their respective populations (see Lines 3-4). Each record $\\mathbf { r } ^ { \\mathrm { { b } } }$ in these queues contains a tuple $\\{ \\mathbf { x } ^ { \\mathrm { b } } , \\mathbf { c } ^ { \\mathrm { b } } , \\mathbf { v } ^ { \\mathrm { b } } , F ^ { \\mathrm { b } } , M ^ { \\mathrm { b } } \\}$ , where $\\mathbf { c } ^ { \\mathrm { { b } } }$ represents the constraint violation degrees, denoted as $( c v _ { 1 } ( { \\bf x } ^ { \\flat } ) , c v _ { 2 } ( { \\bf x } ^ { \\flat } ) , \\ldots , c v _ { P + Q } ( { \\bf x } ^ { \\flat } ) )$ , where $c v _ { i } ( { \\bf x } ^ { \\mathrm { b } } )$ ( ( ) ( ) ( ))is defined in Section S-III of the supplementary ( )document, and $\\mathbf { v } ^ { \\mathrm { { b } } }$ denotes the objective values, expressed as $( G _ { 1 } ( { \\bf x } ^ { \\flat } ) , G _ { 2 } ( { \\bf x } ^ { \\flat } ) , \\ldots , G _ { m } ( { \\bf x } ^ { \\flat } ) )$ . ",
+        "bbox": [
+            500,
+            441,
+            929,
+            638
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "( ) ( ) ( ))For each generation, Algorithm 2 is applied to both populations to generate their respective offspring populations, each containing $\\mathcal { N } / 2$ individuals, while simultaneously updating the record queues MRt and $\\mathbb { A } \\mathbb { R } _ { t }$ (Lines 8-9). These offspring populations, $\\mathbb { M } \\mathbb { O } _ { t }$ and $\\mathbb { A } \\mathbb { O } _ { t }$ , are subsequently combined into the main and auxiliary populations MPt and $\\mathbb { A P } _ { t }$ (see Lines 11-12). The main population $\\mathbb { M P } _ { t }$ employs the constrained dominance principle (CDP) to select solutions, with a focus on feasibility. This method helps the main population identify feasible nondominated solutions (see Line 13). The CDP is used to compare two solutions x and y as follows: ",
+        "bbox": [
+            500,
+            638,
+            930,
+            803
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If x is feasible and y is infeasible, x is preferred. ",
+            "- If both x and y are feasible, x is preferred if it has smaller fitness. ",
+            "- If both x and y are infeasible, x is preferred if it has smaller constraint violation. "
+        ],
+        "bbox": [
+            516,
+            805,
+            929,
+            877
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Notably, the fitness of an individual x in this study is defined by using the non-dominated sorting scheme and crowded distance [36]. The details of calculating the fitness can be found in Section S-IV of the supplementary document. For the auxiliary population, an \u0007-constraint method is adopted to select solutions, allowing for the relaxation of constraints, thereby helping explore non-dominated solutions without taking the constraint violation into account (see Line 14). In this method, x is preferred over y if one of the following conditions holds: ",
+        "bbox": [
+            500,
+            878,
+            930,
+            940
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "WU et al.: TERRAIN-AWARE UAV-ENABLED MOBILE EDGE COMPUTING IN URBAN ENVIRONMENTS: A CONSTRAINED MULTI-OBJECTIVE ",
+        "bbox": [
+            58,
+            37,
+            811,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "3167 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1: Framework of the proposed algorithm. "
+        ],
+        "code_body": "Input: The population size: N\nOutput: The final population $P_{t}$ 1 Initialize a main population $MP_{1}$ with size N/2;\n2 Initialize an auxiliary population $AP_{1}$ with size N/2;\n3 Initialize a record queue $MR_{1}$ with size N/2 for main population;\n4 Initialize a record queue $AR_{1}$ with size N/2 for auxiliary population;\n5 $t \\leftarrow 1$ ;\n6 while $t \\leq T_{max}$ do\n7    /* Produce offspring populations $MO_{t}$ and $AO_{t}$ according to Algorithm 2. */\n8    ( $MP_{t}, MO_{t}, MR_{t}$ ) ← Algorithm 2( $MP_{t}, MR_{t}$ );\n9    ( $AP_{t}, AO_{t}, AR_{t}$ ) ← Algorithm 2( $AP_{t}, AR_{t}$ );\n10    /* Perform cooperation between the main and auxiliary populations. */\n11 $MP_{t} \\leftarrow MP_{t} \\cup MO_{t} \\cup AO_{t}$ ;\n12 $AP_{t} \\leftarrow AP_{t} \\cup MO_{t} \\cup AO_{t}$ ;\n13 $MP_{t} \\leftarrow$ the best N/2 individuals in $MP_{t}$ according to CDP;\n14 $AP_{t} \\leftarrow$ the best N/2 individuals in $AP_{t}$ according to the $\\epsilon$ method;\n15 $t \\leftarrow t + 1$ ;\n16 end\n17 $P_{t} \\leftarrow MP_{t} \\cup AP_{t}$ ;\n18 return $P_{t}$ ",
+        "bbox": [
+            69,
+            102,
+            474,
+            496
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            523,
+            494,
+            598
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $\\mathrm { I f } ~ C V ( \\mathbf { x } ) \\le \\epsilon _ { t }$ and $C V ( \\mathbf { y } ) > \\epsilon _ { t }$ ",
+            "- If $C V ( \\mathbf { x } ) , C V ( \\mathbf { y } ) \\leq \\epsilon _ { t }$ ( )and x has smaller fitness, ",
+            "- I $\\cdot C V ( \\mathbf { x } ) , C V ( \\mathbf { y } ) > \\epsilon _ { t }$ and x has smaller constraint violation. "
+        ],
+        "bbox": [
+            80,
+            599,
+            494,
+            657
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\epsilon_ {t} = \\epsilon_ {0} \\left(1 - \\frac {t}{T _ {\\max}}\\right) ^ {\\frac {- \\log (\\epsilon_ {0}) - 6}{\\log (1 - p p)}}, \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            191,
+            662,
+            494,
+            702
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $T _ { \\mathrm { m a x } }$ is the maximum number of generations, pp is a parameter controlling the rate of descent, set to 0.5 as suggested in [37], and $\\epsilon _ { 0 }$ is the initial constraint violation degree, equal to the maximum violation degree of both the initial main and auxiliary populations. When the generation number t reaches the maximum generation number $T _ { \\mathrm { m a x } } .$ the proposed algorithm terminates and outputs all feasible non-dominated solutions in $\\mathbb { P } _ { t }$ as the Pareto optimal solutions (see Lines 17-18). Otherwise, the process loops back to Line 6. ",
+        "bbox": [
+            65,
+            707,
+            494,
+            843
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "C. Proposed Task-Adaptive Mechanism ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            858,
+            340,
+            873
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "As mentioned in Section IV-B, the task-adaptive mechanism plays a crucial role in enhancing the proposed algorithm’s search capability and convergence performance. In this subsection, we present the detailed design of this mechanism, which enhances the evolutionary search process by leveraging historical information. This mechanism maintains a record of successful genetic operators and dynamically adapts them based on individual characteristics during the evolution. The key idea is to identify and reuse effective genetic operators from similar individuals in the solution space, thereby improving the search efficiency for both feasible and infeasible regions. We first describe the genetic operator selection process based on similarity measures, followed by the detailed genetic operators. ",
+        "bbox": [
+            65,
+            878,
+            494,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            79,
+            936,
+            214
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The pseudo-code for the proposed mechanism is outlined in Algorithm 2. Initially, if the value $1 \\mathrm { ~ - ~ } \\frac { t } { T _ { \\operatorname* { m a x } } }$ is smaller than a ran-Tmax dom value rand $\\in [ 0 , 1 ]$ , the values of $F ^ { \\mathrm { b } }$ and $M ^ { \\mathrm { b } }$ are randomly [ ]generated to explore potentially effective genetic operators (see Lines 3-5). Otherwise, the record $\\mathbf { r } ^ { \\mathrm { { b } } }$ is identified where the individual $\\mathbf { x } ^ { \\mathrm { { b } } }$ has the maximum cosine similarity with $\\mathbf { x } ^ { i }$ (see Lines 6-10). ",
+        "bbox": [
+            506,
+            215,
+            936,
+            321
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The offspring generation process employs both DE and mutation operators. Specifically, the DE/current-to-rand/1 operator is selected for its proven effectiveness in solving CMOPs. This operator generates a new individual $\\mathbf { x } ^ { * }$ by combining information from three randomly selected parent individuals $\\mathbf { x } ^ { c 1 } , \\mathbf { x } ^ { c 2 }$ , and $\\mathbf { x } ^ { c 3 }$ from $\\mathbb { P } _ { t }$ as follows (see Lines 11-12): ",
+        "bbox": [
+            506,
+            323,
+            936,
+            412
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {x} ^ {*} = \\mathbf {x} ^ {i} + F ^ {\\mathrm{b}} (\\mathbf {x} ^ {c 1} - \\mathbf {x} ^ {i}) + F ^ {\\mathrm{b}} (\\mathbf {x} ^ {c 2} - \\mathbf {x} ^ {c 3}), \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            572,
+            419,
+            936,
+            438
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $F ^ { \\mathrm { b } }$ is the DE control parameter, and it lies within the range $[ 0 , 1 ]$ . After performing the DE operation, if any element of $\\mathbf { x } ^ { i }$ [ ]exceeds the boundary constraints, it is adjusted to lie within the valid boundary (see Line 13). ",
+        "bbox": [
+            506,
+            444,
+            936,
+            505
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "After the DE operation, we apply a mutation to $\\mathbf { x } ^ { * }$ using a mutation operator selected from the mutation pool PL. To enhance different aspects of the evolutionary process, we incorporate three distinct mutation operators in this pool (see Line 14): ",
+        "bbox": [
+            506,
+            506,
+            936,
+            565
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "\\- The first operator in the pool focuses on generating feasible and safe trajectories for $\\mathbf { x } ^ { * }$ by utilizing constraint information. As shown in $\\mathrm { F i g } . \\ 3 , \\ \\mathbf { x } ^ { * }$ can be represented as $\\left\\{ \\mathbf { U } _ { 1 } ^ { * } , \\mathbf { U } _ { 2 } ^ { * } , \\ldots , \\mathbf { U } _ { \\lambda } ^ { * } , f _ { 1 } ^ { * } , \\ldots , f _ { I } ^ { * } \\right\\}$ . In this operation, a control point $\\mathbf { U } _ { l } ^ { * } = \\{ x _ { l } ^ { * } , y _ { l } ^ { * } , z _ { l } ^ { * } \\}$ is selected randomly, and the following mutation operation is applied: ",
+        "bbox": [
+            523,
+            566,
+            936,
+            657
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} x _ {l} ^ {*} = n _ {1} x _ {l - 1} ^ {*} + (1 - n _ {1}) x _ {l + 1} ^ {*}, \\\\ y _ {l} ^ {*} = n _ {2} y _ {l - 1} ^ {*} + (1 - n _ {2}) y _ {l + 1} ^ {*}, \\\\ z _ {l} ^ {*} = n _ {3} z _ {l - 1} ^ {*} + (1 - n _ {3}) z _ {l + 1} ^ {*}, \\end{array} \\right. \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            629,
+            662,
+            936,
+            712
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $n _ { 1 } , n _ { 2 }$ , and $n _ { 3 }$ are random values uniformly sampled from the interval 0, 1 . This mutation enhances the similarity between $\\mathbf { U } _ { l } ^ { * }$ [ ]and its neighboring control points, resulting in smoother UAV trajectories. ",
+        "bbox": [
+            540,
+            717,
+            936,
+            776
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "\\- The second mutation operation focuses on exploring potential feasible UAV trajectories. For a randomly selected control point $\\mathbf { U } _ { l } ^ { * }$ , a new control point is generated as follows: ",
+        "bbox": [
+            525,
+            777,
+            936,
+            835
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{c} x _ {l} ^ {*} = m _ {1} x ^ {\\max}, \\\\ y _ {l} ^ {*} = m _ {2} y ^ {\\max}, \\\\ z _ {l} ^ {*} = m _ {3} h ^ {\\min} + (1 - m _ {3}) h ^ {\\max}, \\end{array} \\right. \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            624,
+            840,
+            936,
+            888
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $m _ { 1 } , m _ { 2 }$ , and $m _ { 3 }$ are random values uniformly sampled from the interval $[ 0 , 1 ] . ~ x ^ { \\mathrm { m a x } }$ and $y ^ { \\mathrm { m a x } }$ are the length [ ]and the width of the flying region of the UAV, respectively. ",
+        "bbox": [
+            542,
+            895,
+            936,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "3168 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 75, NO. 2, FEBRUARY 2026 ",
+        "bbox": [
+            466,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "\\- The third mutation operation applies a polynomial mutation operator [22] to further explore the solution space, notable for its distinctive probability distribution that enables controlled perturbation of solutions and provides an adjustable parameter that effectively balances exploration and exploitation behaviors. The k-th element $\\chi _ { k } ^ { * }$ of $\\mathbf { x } ^ { * }$ undergoes mutation with a probability $C R ,$ as given by: ",
+        "bbox": [
+            74,
+            79,
+            488,
+            186
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\chi_ {k} ^ {*} = \\left\\{ \\begin{array}{l l} \\chi_ {k} ^ {*} + \\sigma_ {k} (U _ {k} - L _ {k}), & \\text { if   } p r <   C R, \\\\ y _ {k}, & \\text { otherwise }, \\end{array} \\right. \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            194,
+            486,
+            226
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {k} = \\left\\{ \\begin{array}{l l} (2 * r a n d) ^ {\\frac {1}{\\mu + 1}} - 1, & \\text { if   } p r <   0. 5, \\\\ 1 - (2 - 2 * r a n d) ^ {\\frac {1}{\\mu + 1}}, & \\text { otherwise }, \\end{array} \\right. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            111,
+            233,
+            486,
+            273
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "where $U _ { k }$ and $L _ { k }$ are the k-th upper and lower bounds of $\\mathbf { x } ^ { * }$ , respectively, pr is a random number in 0, 1 , and $\\mu$ is [ ]the distribution index that is set to 20 as suggested in [38]. ",
+        "bbox": [
+            92,
+            281,
+            488,
+            327
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "After mutation, if any element of $\\mathbf { x } ^ { * }$ violates boundary constraints, it is randomly replaced by a value within the valid boundaries (see Line 15). Subsequently, $\\mathbf { x } ^ { * }$ is evaluated to obtain the vector regarding the constraint violation degrees $\\mathbf { c } ^ { * }$ and the vector regarding the objective values $\\mathbf { v } ^ { * }$ (see Line 16). Finally, after fixing and evaluating $\\mathbf { x } ^ { * }$ , the record queue $\\mathbb { P } _ { t }$ is updated by $\\mathbf { r } ^ { * } = \\{ \\mathbf { x } ^ { * } , \\mathbf { c } ^ { * } , \\mathbf { v } ^ { * } , F ^ { \\mathrm { b } } , M ^ { \\mathrm { b } } \\}$ based on the comparison between $\\mathbf { x } ^ { i }$ =and $\\mathbf { x } ^ { * }$ (see Lines 17-18). The comparison method varies depending on the population type: for the main population $\\mathbb { M P } _ { t } ,$ , we employ the CDP method (Lines 19-20), while for the auxiliary population $\\mathbb { A P } _ { t } ,$ , we utilize the \u0007-constraint method. When $\\mathbf { x } ^ { * }$ demonstrates superior performance compared to $\\mathbf { x } ^ { i }$ , we add $\\mathbf { r } ^ { * }$ to the record queue $\\mathbb { P } _ { t }$ and remove the least useful record following the First-In-First-Out (FIFO) principle. ",
+        "bbox": [
+            57,
+            327,
+            488,
+            540
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "V. EXPERIMENTAL STUDIES ",
+        "text_level": 1,
+        "bbox": [
+            176,
+            556,
+            370,
+            569
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In this section, we present a series of experiments to validate the effectiveness of the proposed terrain-aware channel model and proposed CMOEA based on the task-adaptive mechanism. The experiments are organized as follows: ",
+        "bbox": [
+            57,
+            578,
+            488,
+            637
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The first experiment is designed to directly validate the overall performance of the proposed algorithm against four compared algorithms in terms of finding Pareto optimal solutions for Problem (23), as presented in Section V-B. ",
+            "- The second experiment is designed to evaluate the effectiveness of the proposed task-adaptive mechanism in solving Problem (23), as presented in Section V-C. ",
+            "- The third experiment is designed to investigate the sensitivity of the parameters, including $T _ { \\mathrm { m a x } }$ and ${ \\mathcal { N } } .$ ",
+            "- The fourth experiment is designed to demonstrate the effectiveness of the proposed terrain-aware channel model in accurately characterizing signal propagation within complex urban environments. ",
+            "- The fifth experiment is designed to quantify the practical benefits of integrating terrain awareness into UAV mission planning systems by analyzing algorithm performance with different channel models in urban environments. "
+        ],
+        "bbox": [
+            74,
+            638,
+            486,
+            893
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, we also conduct a theoretical analysis of the time complexity for the five compared algorithms. Owing to space constraints, the presentation of the time complexity analysis, ",
+        "bbox": [
+            57,
+            895,
+            486,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 2: Proposed task-adaptive mechanism. "
+        ],
+        "code_body": "Input: An inputted population: $\\mathbb{IP}_t$ , an inputted record queue: $\\mathbb{IR}_t$ Output: The inputted population: $\\mathbb{IP}_t$ , the offspring population: $\\mathbb{IO}_t$ , the updated record set: $\\mathbb{IR}_t$ 1. $\\mathbb{IO}_t = \\emptyset$ ;\n\n2 for $i \\leftarrow 1$ to $\\|\\mathbb{IP}_t\\|$ do\n\n3 if $1 - \\frac{t}{T_{max}} < rand$ then\n\n4 $F^b \\leftarrow$ a value regarding the DE control parameter randomly generated from [0, 1];\n\n5 $M^b \\leftarrow$ a mutation type randomly selected from PL;\n\n6 else\n\n7 $r^b \\leftarrow$ a record with the maximum cosine value with $x^i$ ;\n\n8 $F^b \\leftarrow$ the value regarding the DE control parameter in $r^i$ ;\n\n9 $M^b \\leftarrow$ the mutation type in $r^i$ ;\n\n10 end\n\n11 $x^{c1}, x^{c2}, x^{c3} \\leftarrow$ three randomly selected individuals from $\\mathbb{IP}_t$ ;\n\n12 $x^* \\leftarrow$ a new individual generated by $x^i, x^{c1}, x^{c2}$ , and $x^{c3}$ with $F^b$ according to Eq.(25);\n\n13 Fix $x^*$ back to the boundary constraints;\n\n14 $x^* \\leftarrow$ the individual obtained by performing the $M^b$ -th mutation operation to $x^*$ according to Eqs .(26)-(29);\n\n15 Fix $x^*$ back to the boundary constraints;\n\n16 $c^*, v^* \\leftarrow$ the constraint violation degree of $x^*$ and the objectives value of $x^*$ ;\n\n17 $\\mathbb{IO}_t \\leftarrow \\mathbb{IO}_t \\cup x^*$ ;\n\n18 $r^* \\leftarrow \\{x^*, c^*, v^*, F^b, M^b\\}$ ;\n\n19 if $x^*$ is better than $x^i$ then\n\n20 $\\mathbb{IR}_t \\leftarrow$ the updated record obtained by adding $r^*$ into $\\mathbb{IR}_t$ while removing a record from it according to FIFO;\n\n21 end\n\n22 end\n\n23 return $\\mathbb{IP}_t, \\mathbb{IO}_t, \\mathbb{IR}_t$ ",
+        "bbox": [
+            508,
+            99,
+            929,
+            694
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "along with the details of the third, fourth, and fifth experiments, is provided in the supplementary document. ",
+        "bbox": [
+            500,
+            720,
+            929,
+            752
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "A. Parameter Settings and Test Instances ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            767,
+            786,
+            782
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "We conduct comprehensive simulation experiments in the proposed UAV-enabled MEC scenario1 through three distinct case studies, each representing a unique CMOP. Table I summarizes the common parameter settings for the UAV and the i-th UD across all three cases, while Table II details the specific configurations for each CMOP. To prevent terrain collision, each UD’s height is set to the maximum elevation of mesh points within its corresponding grid cell containing coordinates $\\mathsf { \\bar { \\Phi } } ( x ^ { \\mathrm { D } _ { i } } , y ^ { \\mathrm { D } _ { i } } )$ . ",
+        "bbox": [
+            500,
+            789,
+            930,
+            880
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "WU et al.: TERRAIN-AWARE UAV-ENABLED MOBILE EDGE COMPUTING IN URBAN ENVIRONMENTS: A CONSTRAINED MULTI-OBJECTIVE ",
+        "bbox": [
+            58,
+            37,
+            811,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "3169 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_footnote",
+        "text": "1We consider a complex urban area of Bordeaux Metropole in three distinct cases, where the DEM data is obtained from Atelier Open Data de Bordeaux Metropole (https://data.opendatasoft.com/explore/dataset). ",
+        "bbox": [
+            500,
+            902,
+            930,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "table",
+        "img_path": "images/6070b0e053624f0a6860ed609be8cd42ea083e86382919be75a77464f200293b.jpg",
+        "table_caption": [
+            "TABLE ICOMMONLY UTILIZED SIMULATION PARAMETERS AMONG THE THREE CMOPS"
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>Description</td><td>Setting</td></tr><tr><td> $I$ </td><td>Number of UDs</td><td>5</td></tr><tr><td> $w$ </td><td>Smooth parameter of the B-spline curve</td><td>8</td></tr><tr><td> $v$ </td><td>Flying velocity of the UAV</td><td>10 m/s</td></tr><tr><td> $\\mathbf{U}_{1}$ </td><td>Initial position of the UAV</td><td>[25, 25, 40] m</td></tr><tr><td> $d_{safe}$ </td><td>Safe distance of the UAV</td><td>12.5 m</td></tr><tr><td> $h^{\\min}$ </td><td>Minimum flight altitude</td><td>10 m</td></tr><tr><td> $h^{\\max}$ </td><td>Maximum flight altitude</td><td>50 m</td></tr><tr><td> $\\theta^{\\max}$ </td><td>Maximum turning angle of the UAV</td><td> $\\frac{2\\pi}{3}$ </td></tr><tr><td> $P_{i}^{\\text{tr}}$ </td><td>Transmit power of the  $i$ -th UD</td><td>100 mW</td></tr><tr><td> $\\sigma^{2}$ </td><td>Noisy power at the UAV</td><td>-114 dBm</td></tr><tr><td> $D_{i}$ </td><td>Input data size of task  $i$ </td><td>[500, 1500] Kilobytes</td></tr><tr><td> $W_{i}$ </td><td>Computational workload of task  $i$ </td><td>[1,1.5] Giga CPU cycles</td></tr><tr><td> $f_{i}$ </td><td>Allocated computing speed for the task of the  $i$ -th UD</td><td>[0,20] GHz</td></tr><tr><td> $F^{\\max}$ </td><td>Maximum computing speed of the UAV</td><td>20 GHz</td></tr><tr><td> $\\alpha_{1}$ </td><td>Channel gain exponent for LoS path</td><td>2</td></tr><tr><td> $\\alpha_{2}$ </td><td>Channel gain exponent for NLoS path</td><td>3.3</td></tr><tr><td> $\\beta_{1}$ </td><td>Channel gain at the reference distance of 1 m for LoS path</td><td>-46.43 dB</td></tr><tr><td> $\\beta_{2}$ </td><td>Channel gain at the reference distance of 1 m for NLoS path</td><td>-56.43 dB</td></tr><tr><td> $\\eta$ </td><td>Smooth parameter of the channel model</td><td>1000</td></tr><tr><td> $r_{1}$ </td><td>Length of a grid cell</td><td>10 m</td></tr><tr><td> $r_{2}$ </td><td>Width of a grid cell</td><td>10 m</td></tr></table>",
+        "bbox": [
+            77,
+            112,
+            486,
+            383
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "table",
+        "img_path": "images/7757f064242f0b23cc80c22c26156d73d439ef5e7cf03261559643996078dda4.jpg",
+        "table_caption": [
+            "TABLE IISIMULATION PARAMETERS AMONG THE THREE CMOPS"
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td rowspan=\"2\">Parameters</td><td rowspan=\"2\">Description</td><td colspan=\"3\">Suggested Value</td></tr><tr><td>CMOP1</td><td>CMOP2</td><td>CMOP3</td></tr><tr><td> $S$ </td><td>Number of control points</td><td>5</td><td>6</td><td>7</td></tr><tr><td> $x^{\\max} \\times y^{\\min}$ </td><td>Size of the region</td><td>300  $m \\times 300$   $m$ </td><td>500  $m \\times 500$   $m$ </td><td>700  $m \\times 700$   $m$ </td></tr><tr><td> $(x_{i}^{D} \\times y_{i}^{D})$ </td><td>Horizontal position of UD</td><td>[150, 300]  $m \\times [150, 300]$   $m$ </td><td>[250, 500]  $m \\times [250, 500]$   $m$ </td><td>[350, 700]  $m \\times [350, 700]$   $m$ </td></tr></table>",
+        "bbox": [
+            75,
+            430,
+            484,
+            486
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            508,
+            494,
+            554
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": ")To validate the effectiveness of our proposed algorithm, we conduct comparative experiments against four CMOEAs: CMOEMT [38], URCMO [39], ICMA [40], and DPPPS [41]. These algorithms are selected for their proven capabilities in handling complex optimization tasks [42]. For fair comparison, all algorithms implement with the same population size N taking value 100 and execute for $T _ { \\mathrm { m a x } }$ taking value 500 generations. The parameter configurations for the baseline algorithms follow their respective original papers. For the proposed algorithm, we configure the polynomial mutation operator with parameters CR and $\\mu$ taking value 0.1 and 20, respectively. The performance comparison utilizes two widely-adopted metrics: inverted generational distance (IGD) [20] and hypervolume (HV) [22], with both mean values and standard deviations (STD) calculated across 100 solutions from the final population. The reference points in HV for all the three cases set to 80, 40 , 200, 40 , [ ] [ ]and 200, 50 , respectively. Due to the space limitation, we [ ]introduce the four baseline algorithms and these two metrics in Section S-VII and S-V of the supplementary document, respectively. ",
+        "bbox": [
+            65,
+            555,
+            494,
+            857
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "B. Overall Performance Comparison ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            875,
+            324,
+            888
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Table III presents the performance comparison of five algorithms across the three CMOPs. For each algorithm, we evaluate both the mean values and STD of IGD and HV. These two complementary metrics provide comprehensive insights into the algorithms’ convergence capabilities and solution distribution quality. ",
+        "bbox": [
+            65,
+            893,
+            494,
+            925
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ec7c2c84b0467fdb2d2f74664a6793b328fd8031dea80dbcf560a4cec2560e21.jpg",
+        "content": "| Algorithm   | G2  | G1  |\n|-------------|-----|-----|\n| CXOEMT      | 60  | 22.5|\n| LRCMO       | 60  | 22.5|\n| ICMA        | 60  | 22.5|\n| DPPPS       | 60  | 22.5|\n| Our algorithm| 60  | 22.5|",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            523,
+            80,
+            643,
+            169
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e474c8c2bc6d881e50560e4c7e7934fe3c4fc7150f999a74d6f04fe9c6adb2b9.jpg",
+        "content": "CMOP2\n| Algorithm | G2 | C1 |\n|---|---|---|\n| CXOEMT | 83 | 30 |\n| CXOEMT | 92 | 25 |\n| CXOEMT | 101 | 28 |\n| CXOEMT | 110 | 26 |\n| CXOEMT | 119 | 24 |\n| CXOEMT | 128 | 23 |\n| UROMO | 83 | 37 |\n| UROMO | 92 | 35 |\n| UROMO | 101 | 30 |\n| UROMO | 110 | 28 |\n| UROMO | 119 | 26 |\n| UROMO | 128 | 25 |\n| ICMA | 83 | 30 |\n| ICMA | 92 | 28 |\n| ICMA | 101 | 26 |\n| ICMA | 110 | 24 |\n| ICMA | 119 | 23 |\n| ICMA | 128 | 22 |\n| DPYPS | 83 | 37 |\n| DPYPS | 92 | 30 |\n| DPYPS | 101 | 28 |\n| DPYPS | 110 | 26 |\n| DPYPS | 119 | 24 |\n| DPYPS | 128 | 23 |\n| Our algorithm | 83 | 30 |\n| Our algorithm | 92 | 25 |\n| Our algorithm | 101 | 23 |\n| Our algorithm | 110 | 22 |\n| Our algorithm | 119 | 21 |\n| Our algorithm | 128 | 20 |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            664,
+            80,
+            782,
+            169
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/92ada359f47908007fed5e8ca774b6816f46c0f2df18984067412a989e0f9ad2.jpg",
+        "content": "| Method       | G2   | G1   |\n| ------------ | ---- | ---- |\n| CMOEMT       | 100  | 69.2 |\n| UROMO        | 100  | 55.4 |\n| ICMA         | 100  | 41.6 |\n| DPPPS        | 100  | 27.8 |\n| Our algorithm | 100  | 14.0 |\n| Our algorithm | 100  | 14.0 |\n| Our algorithm | 100  | 14.0 |\n| Our algorithm | 100  | 14.0 |\n| Our algorithm | 100  | 14.0 |\n| Our algorithm | 100  | 14.0 |\n| Our algorithm | 100  | 14.0 |\n| Our algorithms | 100  | 14.0 |\n| Our algorithms | 100  | 14.0 |\n| Our algorithms | 100  | 14.0 |\n| Our algorithms | 100  | 14.0 |\n| Our algorithms | 100  | 14.0 |\n| Our algorithms | 100  | 14.0 |\n| Our algorithms | 125  | 69.2 |\n| Our algorithms | 125  | 55.4 |\n| Our algorithms | 125  | 41.6 |\n| Our algorithms | 125  | 27.8 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithm | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 125  | 14.0 |\n| Our algorithms | 150  | 69.2 |\n| Our algorithms | 150  | 55.4 |\n| Our algorithms | 150  | 41.6 |\n| Our algorithms | 150  | 27.8 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithm | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 150  | 14.0 |\n| Our algorithms | 175  | 69.2 |\n| Our algorithms | 175  | 55.4 |\n| Our algorithms | 175  | 41.6 |\n| Our algorithms | 175  | 27.8 |\n| Our algorithms | 175  | 14.0 |\n| Our algorithms | 175  | 14.0 |\n| Our algorithms | 175  | 14.0 |\n| Our algorithms | 175  | 14.0 |\n| Our algorithms | 175  | 14.0 |\n| Our algorithms | 175  | 14.0 |\n| Our algorithms | 175  | 14.0 |\n| Our algorithm | 175  | 14.0 |\n| Our algorithms | 200  | 69.2 |\n| Our algorithms | 200  | 55.4 |\n| Our algorithms | 200  | 41.6 |\n| Our algorithms | 200  | 27.8 |\n| Our algorithms | 200  | 14.0 |\n| Our algorithms | 200  | 14.0 |\n| Our algorithms | 200  | 14.0 |\n| Our algorithms | 200  | 14.0 |\n| Our algorithms | 200  | 14.0 |\n| Our algorithms | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   | -    | -    |\n| Our algorithm   (with no label) | -    | -    |\n| This is a scatter plot with data points labeled as \"G2\" on the x-axis and \"G1\" on the y-axis, but the labels are not explicitly provided in the image; the data points are colored differently from the legend: \"CMOEMT\", \"UROMO\", \"ICMA\", \"DPPPS\", and \"Our algorithm\". The chart is saved as a PNG file named \"cmop3\".",
+        "chart_caption": [
+            "（c）"
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            801,
+            80,
+            925,
+            169
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/938939901859df365f1b4ecf1381e24c9f5112e14940306a9e7f5c40f1bad141.jpg",
+        "content": "| FEs (x10^4) | CKDMET | CKDMO | EMA | DPPS | Our Algorithm |\n|-------------|--------|-------|-----|------|--------------|\n| 0           | 0      | 0     | 0   | 0    | 0            |\n| 1           | 300    | 200   | 100 | 400  | 800          |\n| 2           | 500    | 400   | 200 | 600  | 1000         |\n| 3           | 600    | 500   | 300 | 700  | 1100         |\n| 4           | 650    | 600   | 400 | 750  | 1150         |\n| 5           | 700    | 650   | 500 | 800  | 1200         |",
+        "chart_caption": [
+            "Fig. 4. Obtained feasible non-dominated solutions of CMOP1-3. (a) CMOP1. (b) CMOP2. (c) CMOP3. ",
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            523,
+            234,
+            639,
+            321
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e50b32f449718d3bbed27cc47f2def5cdd18c18cae0d45a1417cc3e69fd1d017.jpg",
+        "content": "| FEs (×10⁵) | HV value |\n| ---------- | -------- |\n| 0          | 0        |\n| 1          | 1000     |\n| 2          | 2000     |\n| 3          | 2500     |\n| 4          | 2600     |\n| 5          | 2700     |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            664,
+            234,
+            782,
+            321
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ab08a3e8eb96ab8dd667b96bab3383aac8c20cd17a581a6fa640f8007aefc9c2.jpg",
+        "content": "",
+        "chart_caption": [
+            "",
+            "Fig. 5. Convergence graphs of the five algorithms on the three CMOPs at the median run in terms of HV. (a) CMOP1. (b) CMOP2. (c) CMOP3. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            804,
+            234,
+            922,
+            321
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            396,
+            936,
+            455
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "The experimental results demonstrate the superior performance of our proposed algorithm across all test scenarios. Specifically, compared to ICMA, our algorithm achieves remarkable improvements with approximately a 70.2% reduction in mean IGD and a 77.5% increase in mean HV. Furthermore, our algorithm consistently outperforms all baseline methods across all three CMOPs, achieving the highest mean HV and the lowest mean IGD values. These results indicate that our algorithm effectively identifies feasible non-dominated solutions with superior convergence and distribution characteristics, enabling the UAV to obtain diverse high-quality trajectory solutions while maintaining enhanced QoS for UDs. ",
+        "bbox": [
+            506,
+            457,
+            936,
+            637
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 depicts the feasible non-dominated solutions obtained by all five algorithms at the median run, where $G _ { 1 }$ and $G _ { 2 }$ represent the vertical and horizontal axes, respectively. The comparative results demonstrate the superior convergence and diversity of the final population obtained by our algorithm across all test instances. For CMOP1 and CMOP2, our algorithm consistently identifies better-converged feasible non-dominated solutions compared to baseline algorithms, showing enhanced performance on Problem (23). In CMOP3, although URCMO achieves similar $G _ { 1 }$ values for some solutions, our algorithm generates a more comprehensive approximation of the Pareto front, offering improved trade-offs between UAV flight safety and maximum task completion time. This comprehensive coverage enables more flexible decision-making in UAV trajectory planning while maintaining enhanced QoS for UDs. ",
+        "bbox": [
+            506,
+            638,
+            936,
+            864
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "To further investigate the algorithmic behavior throughout the evolution process, Fig. 5 presents the convergence trajectories of all five algorithms across three CMOPs at the median run in terms of HV. The horizontal axis of Fig. 5 represents Function ",
+        "bbox": [
+            506,
+            864,
+            936,
+            925
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "3170 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 75, NO. 2, FEBRUARY 2026 ",
+        "bbox": [
+            466,
+            39,
+            936,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "table",
+        "img_path": "images/3f66218e6458ac054fa78c810a5265cdf5109d193e970d0f17c6e503732ffef1.jpg",
+        "table_caption": [
+            "TABLE III COMPARISON RESULTS OF FIVE COMPARED ALGORITHMS BASED ON THE MEAN VALUES AND STD (SHOWN IN PARENTHESES) OF IGD AND HV "
+        ],
+        "table_footnote": [
+            "The best average value is highlighted with dark-gray shading. "
+        ],
+        "table_body": "<table><tr><td rowspan=\"2\">Algorithm</td><td colspan=\"2\">CMOP1</td><td colspan=\"2\">CMOP2</td><td colspan=\"2\">CMOP3</td></tr><tr><td>IGD</td><td>HV</td><td>IGD</td><td>HV</td><td>IGD</td><td>HV</td></tr><tr><td>CMOEMT</td><td>25.24(22.94)</td><td>595.76(175.68)</td><td>4013.11(21702.34)</td><td>1862.80(404.21)</td><td>116537.55(379931.93)</td><td>126.54(65.07)</td></tr><tr><td>URCMO</td><td>17.51(3.14)</td><td>679.14(103.72)</td><td>20536.86(69239.31)</td><td>2317.90(207.50)</td><td>498306(832894.01)</td><td>239.52(103.89)</td></tr><tr><td>ICMA</td><td>18.68(3.13)</td><td>631.44(96.91)</td><td>50.35(10.12)</td><td>1753.04(419.90)</td><td>144.24(13.09)</td><td>120.91(82.91)</td></tr><tr><td>DPPPS</td><td>18.73(3.87)</td><td>640.45(116.31)</td><td>46.54(4.05)</td><td>1880.39(292.27)</td><td>150.97(14.84)</td><td>35.22(41.36)</td></tr><tr><td>Our Algorithm</td><td>5.54(0.16)</td><td>1124.89(11.07)</td><td>34.28(1.21)</td><td>2673.50(56.61)</td><td>55.38(1.57)</td><td>3091.98(108.83)</td></tr></table>",
+        "bbox": [
+            111,
+            114,
+            878,
+            275
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "table",
+        "img_path": "images/6c84e7541b6119b431fb0ff1183e7152233913c3f018104b29bb6b2a2598e65e.jpg",
+        "table_caption": [
+            "TABLE IV COMPARISON OF OUR ALGORITHM WITH AND WITHOUT THE TASK-ADAPTIVE MECHANISM BASED ON THE MEAN VALUES AND STD (SHOWN IN PARENTHESES) OF IGD AND HV "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>IGD</td><td>HV</td></tr><tr><td>Yes</td><td>34.28(1.21)</td><td>2673.50(56.61)</td></tr><tr><td>No</td><td>40.28(1.83)</td><td>2017.41(135.01)</td></tr></table>",
+        "bbox": [
+            109,
+            377,
+            437,
+            450
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Evaluations (FEs), which refer to the total number of solution evaluations performed during the entire evolutionary search process. This metric is crucial as it reflects the computational effort invested in exploring the solution space. In CMOP1 and CMOP2, despite the confined UAV path planning area, our algorithm achieves consistent improvements over the baseline methods. The advantage becomes more pronounced in CMOP3, where the larger flying region and more stringent constraints present greater challenges. This enhanced performance can be attributed to our task-adaptive mechanism, which effectively leverages constraint information to accelerate convergence. The impact is particularly evident in CMOP2, where our algorithm achieves approximately 26% improvement in mean HV value, demonstrating its superior capability in handling complex constrained optimization scenarios. ",
+        "bbox": [
+            57,
+            474,
+            486,
+            702
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "C. Investigation of the Task-Adaptive Mechanism ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            722,
+            398,
+            738
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "To evaluate the effectiveness of our proposed task-adaptive mechanism, we conduct comparative experiments on CMOP2 using two algorithm configurations: one incorporating the taskadaptive mechanism (denoted as “Yes”) and another using the original genetic operators (denoted as “No”). The original genetic operators utilize the DE/current-to-rand/1 operator and polynomial mutation. Table IV presents the comparative results, demonstrating the significant impact of the task-adaptive mechanism. ",
+        "bbox": [
+            57,
+            744,
+            486,
+            878
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Our task-adaptive mechanism significantly enhances algorithm performance through genetic operator coordination. This mechanism intelligently selects and applies genetic operators based on historical performance data, dynamically matching operators to specific solution characteristics. Through experimental validation, we demonstrate its effectiveness with a 19.0% reduction in mean IGD value and a 32.2% increase in mean HV value compared to the original genetic operators. The mechanism achieves an optimal balance between exploration and exploitation through three complementary mutation operators: the first creates smoother trajectories by enhancing similarity between control points, the second explores potential feasible trajectories through strategic randomized control point generation, and the third applies polynomial mutation with precisely controlled perturbations to navigate the solution space efficiently. By recording and reapplying effective genetic operators that worked well on similar individuals, the proposed algorithm effectively balances between discovering promising solution regions and refining solutions in these areas, thereby enhancing its capabilities in balancing flight safety and communication efficiency requirements. ",
+        "bbox": [
+            57,
+            878,
+            486,
+            925
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            318,
+            930,
+            590
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "VI. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            653,
+            617,
+            779,
+            630
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In this study, we investigated a UAV-enabled MEC system operating in complex urban environments, where rough topographies and dense buildings pose significant challenges to both UAV-to-UD communication links and flight safety. Our contributions are threefold: First, we proposed a terrain-aware channel model that effectively evaluates the impact of complex urban terrain on UAV communication performance by systematically constructing blocked regions through an iterative integration process. Second, we formulated a CMOP that jointly optimizes UAV trajectory, destination position, and resource allocation to balance QoS enhancement and flight safety. Third, we developed a multi-tasking CMOEA with a task-adaptive mechanism that dynamically assigns genetic operators based on solution characteristics. ",
+        "bbox": [
+            500,
+            637,
+            929,
+            847
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Our comprehensive experimental results demonstrated the superior performance of the proposed algorithm across three test scenarios of increasing complexity, achieving approximately 70.2% reduction in mean IGD and 77.5% increase in mean HV compared to baseline algorithms. The ablation studies validated the effectiveness of our task-adaptive mechanism, which improved performance by 19.0% in IGD and 32.2% in HV by intelligently leveraging historical information about effective genetic operators. Additionally, our terrain-aware channel model proved significantly more accurate than the probabilistic LoS channel model, achieving practical LoS probabilities of 95.63% compared to 63.45% with traditional approaches. ",
+        "bbox": [
+            500,
+            849,
+            930,
+            925
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "WU et al.: TERRAIN-AWARE UAV-ENABLED MOBILE EDGE COMPUTING IN URBAN ENVIRONMENTS: A CONSTRAINED MULTI-OBJECTIVE ",
+        "bbox": [
+            58,
+            37,
+            811,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "3171 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            494,
+            186
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            250,
+            207,
+            341,
+            220
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] Y. Liu, S. Xie, and Y. Zhang, “Cooperative offloading and resource management for UAV-Enabled mobile edge computing in power IoT system,” IEEE Trans. Veh. Technol., vol. 69, no. 10, pp. 12229–12239, Oct. 2020. ",
+            "[2] B. Liu, Y. Wan, F. Zhou, Q. Wu, and R. Q. Hu, “Resource allocation and trajectory design for MISO UAV-Assisted MEC networks,” IEEE Trans. Veh. Technol., vol. 71, no. 5, pp. 4933–4948, May 2022. ",
+            "[3] S. Khairy, P. Balaprakash, L. X. Cai, and Y. Cheng, “Constrained deep reinforcement learning for energy sustainable multi-UAV based random access IoT networks with NOMA,” IEEE J. Sel. Areas Commun., vol. 39, no. 4, pp. 1101–1115, Apr. 2021. ",
+            "[4] Q. Xu, Z. Su, D. Fang, and Y. Wu, “BASIC: Distributed task assignment with auction incentive in UAV-Enabled crowdsensing system,” IEEE Trans. Veh. Technol., vol. 73, no. 2, pp. 2416–2430, Feb. 2024. ",
+            "[5] L. Zhu, M. M. Karim, K. Sharif, C. Xu, and F. Li, “Traffic flow optimization for UAVs in multi-layer information-centric software-defined FANET,” IEEE Trans. Veh. Technol., vol. 72, no. 2, pp. 2453–2467, Feb. 2023. ",
+            "[6] J. Gao, Z. Hu, K. Bian, X. Mao, and L. Song, “AQ 360: UAV-Aided air quality monitoring by 360-Degree aerial panoramic images in urban areas,” IEEE Internet Things J., vol. 8, no. 1, pp. 428–442, Jan. 2021. ",
+            "[7] K. Li, R. C. Voicu, S. S. Kanhere, W. Ni, and E. Tovar, “Energy efficient legitimate wireless surveillance of UAV communications,” IEEE Trans. Veh. Technol., vol. 68, no. 3, pp. 2283–2293, Mar. 2019. ",
+            "[8] R. Chen, Y. Sun, L. Liang, and W. Cheng, “Joint power allocation and placement scheme for UAV-Assisted IoT with QoS guarantee,” IEEE Trans. Veh. Technol., vol. 71, no. 1, pp. 1066–1071, Jan. 2022. ",
+            "[9] P. Chen, X. Zhou, J. Zhao, F. Shen, and S. Sun, “Energy-efficient resource allocation for secure D2D communications underlaying UAV-enabled networks,” IEEE Trans. Veh. Technol., vol. 71, no. 7, pp. 7519–7531, Jul. 2022. ",
+            "[10] R. Han, Y. Wen, L. Bai, J. Liu, and J. Choi, “Age of information aware UAV deployment for intelligent transportation systems,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 3, pp. 2705–2715, Mar. 2022. ",
+            "[11] L. Wang, Q. Zhou, and Y. Shen, “Computation efficiency maximization for UAV-Assisted relaying and MEC networks in urban environment,” IEEE Trans. Green Commun. Netw., vol. 7, no. 2, pp. 565–578, Jun. 2023. ",
+            "[12] M.-J. Youssef, J. Farah, C. A. Nour, and C. Douillard, “Full-duplex and backhaul-constrained UAV-Enabled networks using NOMA,” IEEE Trans. Veh. Technol., vol. 69, no. 9, pp. 9667–9681, Sep. 2020. ",
+            "[13] J. Chen, U. Yatnalli, and D. Gesbert, “Learning radio maps for UAV-aided wireless networks: A segmented regression approach,” in Proc. IEEE Int. Conf. Commun., 2017, pp. 1–6. ",
+            "[14] P. Yi, L. Zhu, L. Zhu, Z. Xiao, Z. Han, and X.-G. Xia, “Joint 3-D positioning and power allocation for UAV relay aided by geographic information,” IEEE Trans. Wireless Commun., vol. 21, no. 10, pp. 8148–8162, Oct. 2022. ",
+            "[15] P. Yi, L. Zhu, Z. Xiao, R. Zhang, Z. Han, and X.-G. Xia, “Trajectory design and resource allocation for Multi-UAV communications under blockage-aware channel model,” IEEE Trans. Commun., vol. 72, no. 4, pp. 2324–2338, Apr. 2024. ",
+            "[16] S. Ouahouah, M. Bagaa, J. Prados-Garzon, and T. Taleb, “Deepreinforcement-learning-based collision avoidance in UAV environment,” IEEE Internet Things J., vol. 9, no. 6, pp. 4015–4030, Mar. 2022. ",
+            "[17] Z. Wei, Z. Meng, M. Lai, H. Wu, J. Han, and Z. Feng, “Anti-collision technologies for unmanned aerial vehicles: Recent advances and future trends,” IEEE Internet Things J., vol. 9, no. 10, pp. 7619–7638, May 2022. ",
+            "[18] A. Meng, X. Gao, Y. Zhao, and Z. Yang, “Three-dimensional trajectory optimization for energy-constrained UAV-Enabled IoT system in probabilistic LoS channel,” IEEE Internet Things J., vol. 9, no. 2, pp. 1109–1121, Jan. 2022. ",
+            "[19] Y. Gao, X. Yuan, D. Yang, Y. Hu, Y. Cao, and A. Schmeink, “UAV-Assisted MEC system with mobile ground terminals: DRL-based joint terminal scheduling and UAV 3D trajectory design,” IEEE Trans. Veh. Technol., vol. 73, no. 7, pp. 10164–10180, Jul. 2024. "
+        ],
+        "bbox": [
+            65,
+            224,
+            496,
+            945
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[20] C. Peng, X. Huang, Y. Wu, and J. Kang, “Constrained multi-objective optimization for UAV-Enabled mobile edge computing: Offloading optimization and path planning,” IEEE Wireless Commun. Lett., vol. 11, no. 4, pp. 861–865, Apr. 2022. ",
+            "[21] T. Zhang, Y. Xu, J. Loo, D. Yang, and L. Xiao, “Joint computation and MEC design for UAV-Assisted mobile edge computing in IoT,” IEEE Trans. Ind. Informat., vol. 16, no. 8, pp. 5505–5516, Aug. 2020. ",
+            "[22] C. Peng et al., “Joint energy and completion time difference minimization for UAV-Enabled intelligent transportation systems: A constrained multiobjective optimization approach,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 10, pp. 14040–14053, Oct. 2024. ",
+            "[23] Y. Xiang, X. Yang, H. Huang, and J. Wang, “Balancing constraints and objectives by considering problem types in constrained multiobjective optimization,” IEEE Trans. Cybern., vol. 53, no. 1, pp. 88–101, Jan. 2023. ",
+            "[24] Z. Cui, Y. Wu, T. Zhao, W. Zhang, and J. Chen, “A two-stage accelerated search strategy for large-scale multi-objective evolutionary algorithm,” Inf. Sci., vol. 686, 2025, Art. no. 121347. ",
+            "[25] Z. Yang, S. Bi, and Y.-J. A. Zhang, “Online trajectory and resource optimization for stochastic UAV-Enabled MEC systems,” IEEE Trans. Wireless Commun., vol. 21, no. 7, pp. 5629–5643, Jul. 2022. ",
+            "[26] J. Du, C. Jiang, A. Benslimane, S. Guo, and Y. Ren, “SDN-Based resource allocation in edge and cloud computing systems: An evolutionary Stackelberg differential game approach,” IEEE/ACM Trans. Netw., vol. 30, no. 4, pp. 1613–1628, Aug. 2022. ",
+            "[27] J. Du, T. Lin, C. Jiang, Q. Yang, C. F. Bader, and Z. Han, “Distributed foundation models for multi-modal learning in 6G wireless networks,” IEEE Wireless Commun., vol. 31, no. 3, pp. 20–30, Jun. 2024. ",
+            "[28] A. Liu and V. K. N. Lau, “Optimization of Multi-UAV-Aided wireless networking over a ray-tracing channel model,” IEEE Trans. Wireless Commun., vol. 18, no. 9, pp. 4518–4530, Sep. 2019. ",
+            "[29] Z. Chang, H. Deng, L. You, G. Min, S. Garg, and G. Kaddoum, “Trajectory design and resource allocation for Multi-UAV networks: Deep reinforcement learning approaches,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 5, pp. 2940–2951, Sep./Oct., 2023. ",
+            "[30] Z. Lou, R. Wang, B. E. Y. Belmekki, M. A. Kishk, and M.-S. Alouini, “Exploring UAV networking from the terrain information completeness perspective: A tutorial,” IEEE Open J. Veh. Technol., vol. 5, pp. 620–631, 2024. ",
+            "[31] Z. Yang, S. Bi, and Y.-J. A. Zhang, “Dynamic offloading and trajectory control for UAV-Enabled mobile edge computing system with energy harvesting devices,” IEEE Trans. Wireless Commun., vol. 21, no. 12, pp. 10515–10528, Dec. 2022. ",
+            "[32] C. Zhan and Y. Zeng, “Completion time minimization for multi-UAVenabled data collection,” IEEE Trans. Wireless Commun., vol. 18, no. 10, pp. 4859–4872, Oct. 2019. ",
+            "[33] Y. Zeng, J. Xu, and R. Zhang, “Energy minimization for wireless MEC with rotary-wing UAV,” IEEE Trans. Wireless Commun., vol. 18, no. 4, pp. 2329–2345, Apr. 2019. ",
+            "[34] D. Huo, L. Dai, R. Chai, R. Xue, and Y. Xia, “Collision-free model predictive trajectory tracking control for UAVs in obstacle environment,” IEEE Trans. Aerosp. Electron. Syst., vol. 59, no. 3, pp. 2920–2932, Jun. 2023. ",
+            "[35] Z. Lin, L. Wang, J. Ding, Y. Xu, and B. Tan, “Tracking and transmission design in terahertz V2I networks,” IEEE Trans. Wireless Commun., vol. 22, no. 6, pp. 3586–3598, Jun. 2023. ",
+            "[36] W. Deng et al., “An enhanced fast non-dominated solution sorting genetic algorithm for multi-objective problems,” Inf. Sci., vol. 585, pp. 441–453, 2022. ",
+            "[37] C. Peng, H.-L. Liu, and E. D. Goodman, “A cooperative evolutionary framework based on an improved version of directed weight vectors for constrained multiobjective optimization with deceptive constraints,” IEEE Trans. Cybern., vol. 51, no. 11, pp. 5546–5558, Nov. 2021. ",
+            "[38] F. Ming, W. Gong, L. Wang, and L. Gao, “Constrained multiobjective optimization via multitasking and knowledge transfer,” IEEE Trans. Evol. Comput., vol. 28, no. 1, pp. 77–89, Feb. 2024. ",
+            "[39] J. Liang et al., “Utilizing the relationship between unconstrained and constrained Pareto fronts for constrained multiobjective optimization,” IEEE Trans. Cybern., vol. 53, no. 6, pp. 3873–3886, Jun. 2023. ",
+            "[40] J. Yuan, H.-L. Liu, Y.-S. Ong, and Z. He, “Indicator-based evolutionary algorithm for solving constrained multiobjective optimization problems,” IEEE Trans. Evol. Comput., vol. 26, no. 2, pp. 379–391, Apr. 2022. ",
+            "[41] F. Ming, W. Gong, L. Wang, and C. Lu, “A tri-population based Co-evolutionary framework for constrained multi-objective optimization problems,” Swarm Evol. Computation, vol. 70, 2022, Art. no. 101055. ",
+            "[42] F. Mou et al., “Adaptive digital twin migration in vehicular edge computing and networks,” IEEE Trans. Veh. Technol., vol. 74, no. 3, pp. 4839–4854, Mar. 2025. "
+        ],
+        "bbox": [
+            505,
+            77,
+            939,
+            944
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "3172 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 75, NO. 2, FEBRUARY 2026 ",
+        "bbox": [
+            466,
+            39,
+            937,
+            50
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            119,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/69c4c9d9d50745c6ace4f734cdcebe4f6fda248cb519e69af65f617cdeac063e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man with short dark hair wearing a gray top (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            84,
+            186,
+            200
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Zexiong Wu is currently working toward the B.S. degree in mathematics and applied mathematics with South China Agricultural University, Guangzhou, China. His research interests include mobile edge computing, evolutionary computation, and multiobjective optimization. ",
+        "bbox": [
+            198,
+            80,
+            488,
+            151
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/af2cd3689f7fa771b637e67e175363f71c052b30c8bf0ce6e24ff8ca608b92b7.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in a white collared shirt against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            82,
+            627,
+            199
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Xumin Huang received the Ph.D. degree from the Guangdong University of Technology, Guangzhou, China, in 2019. He is currently an Associate Professor with the School of Automation, Guangdong University of Technology. He is also a Macau Young Scholar with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macao, SAR, China. His research interests include resource and service optimizations for connected vehicles, Internet of Things, blockchain and edge intelligence. ",
+        "bbox": [
+            641,
+            80,
+            930,
+            196
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/f95126a02cd56854e15a4b46a5423ed173fbd6ad6eccc65ac6023d0e7e50b734.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a woman with long dark hair wearing a white collared shirt and dark tie (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            258,
+            186,
+            375
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Qiqi Xie is currently working toward the master’s degree in computer science and technology with South China Agricultural University, Guangzhou, China. Her research interests include UAV path planning, evolutionary computation, and dynamic constrained multi-objective optimization. ",
+        "bbox": [
+            198,
+            256,
+            488,
+            325
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/0599b91369b2ba162e3f75862574d29b236518df49ac0b717701826016f77856.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in a blue collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            227,
+            627,
+            340
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Chaoda Peng (Member, IEEE) received the Ph.D. degree from the School of Automation, Guangdong University of Technology, Guangzhou, China, in 2019. He was a Visiting Ph.D. Student with the Department of Electrical and Computer Engineering, Michigan State University, East Lansing, MI, USA. He is currently with the College of Mathematics and Informatics, South China Agricultural University, Guangzhou. His current research interests include constrained evolutionary multiobjective optimization, UAV path planning, and mobile edge computing. ",
+        "bbox": [
+            641,
+            223,
+            930,
+            361
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/63b461f46f2bcf7c7eabd2b25b868ae3672329f3fa37ac98dcf3380b37dd79d2.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in a black collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            435,
+            186,
+            549
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Zhuoran Wang is currently working toward the B.S. degree in software engineering with South China Agricultural University, Guangzhou, China. His research interests include evolutionary algorithms, deep learning, and multimodal fusion. ",
+        "bbox": [
+            198,
+            431,
+            488,
+            489
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/896a3a7ecca3258e873784a526eefb8bfa57697bc5a709362a8e688231b08f30.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man wearing glasses and a striped shirt against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            378,
+            627,
+            494
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Yuan Wu (Senior Member, IEEE) is currently a Full Professor with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macau, SAR, China, and also with the Department of Computer and Information Science, University of Macau. His research interests include resource management for wireless networks, mobile edge computing and edge intelligence, integrated sensing and communications. He was the recipient of the Best Paper Award from the IEEE ICC’2016, IEEE TCGCC’2017, IWCMC’2021, and ",
+        "bbox": [
+            641,
+            378,
+            930,
+            503
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "IEEE WCNC’2023. Dr. Wu is on the editorial board of IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, IEEE TRANSACTIONS ON NETWORK SCIENCE AND ENGINEERING, and IEEE INTERNET OF THINGS JOURNAL. He is the Distinguished Lecturer of IEEE Vehicular Technology Society. ",
+        "bbox": [
+            501,
+            503,
+            930,
+            550
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "WU et al.: TERRAIN-AWARE UAV-ENABLED MOBILE EDGE COMPUTING IN URBAN ENVIRONMENTS: A CONSTRAINED MULTI-OBJECTIVE ",
+        "bbox": [
+            58,
+            39,
+            811,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "3173 ",
+        "bbox": [
+            902,
+            40,
+            930,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Tsinghua University. Downloaded on March 14,2026 at 08:16:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            121,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 13
+    }
+]

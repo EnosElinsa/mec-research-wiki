@@ -1,0 +1,1281 @@
+[
+    {
+        "type": "text",
+        "text": "Integrated Sensing and Communication for Low Altitude Economy: Opportunities and Challenges ",
+        "text_level": 1,
+        "bbox": [
+            131,
+            81,
+            866,
+            187
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yihang Jiang, Xiaoyang Li, Guangxu Zhu, Hang Li, Jing Deng, Kaifeng Han, Chao Shen, Qingjiang Shi, and Rui Zhang ",
+        "bbox": [
+            88,
+            201,
+            907,
+            219
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstra ct ",
+        "text_level": 1,
+        "bbox": [
+            377,
+            275,
+            439,
+            293
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Driven by the prosperous vision of a low-altitude economy (LAE), the low-altitude airspace is expected to be exploited for commercial and social flying activities. The network architectures for supporting LAE are first introduced in this article, including the localized statistical channel modeling and performance analysis based on stochastic geometry. Then, the technological prerequisites for ground-to-air sensing and communication are discussed, including cellular access, spectrum sharing, three-dimensional beamforming, and interference cancellation, as well as cooperative active sensing and non-cooperative passive sensing. The aircraft-assisted sensing and communication functionalities for LAE are further reviewed, including terrestrial and non-terrestrial target sensing, ubiquitous coverage, relaying, and traffic offloading. Finally, several future directions are identified, including aircraft collaboration, energy efficiency, and artificial intelligence-enabled LAE. ",
+        "bbox": [
+            241,
+            295,
+            574,
+            551
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Introducti on ",
+        "text_level": 1,
+        "bbox": [
+            365,
+            556,
+            452,
+            572
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "As a new economic form, low-altitude economy (LAE) utilizes low-altitude airspace (generally referring to the space within 1000 meters above the ground) to carry out various flying activities, creating commercial and social values. The flying activities are conducted by various manned and unmanned aircraft, enabling a variety of applications, including transportation, logistics, tourism, agriculture, and disaster monitoring [1]. However, many practical challenges to LAE deployment remain. As a large-scale economic activity, LAE necessarily involves a wide spatial range and a large number of aircraft. According to Statista, the number of aircraft is expected to reach 9.6 million in 2030 [2]. Moreover, the existing controlling method of aircraft primarily relies on simple pointto-point non-payload communication signals in unlicensed frequency bands, which is difficult to realize uniform monitoring and regulation [3]. The information exchange between multiple aircraft and their control centers results in a heavy burden on communication overheads [4]. ",
+        "bbox": [
+            241,
+            575,
+            574,
+            856
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "To tackle these challenges, the aircrafts are expected to be connected by the cellular networks, which are known as cellular-connected aircrafts [5]. In this case, the integration of aircraft with conventional terrestrial networks would result in an integrated air-ground network (IAGN). As shown in Fig. 1, the components of IAGN include base stations (BSs), aircrafts, as well as the infrastructures including take-off and landing platforms. In addition, the typical working paradigms involved in IAGN can be categorized into the following main groups. ",
+        "bbox": [
+            264,
+            856,
+            574,
+            869
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            600,
+            280,
+            931,
+            424
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Control and Non-Payload Communication (CNPC): As a bidirectional communication link, CNPC plays a key role in IAGN in ensuring the control and navigation of aircraft. CNPC typically operates at low data rates but demands exceptionally high levels of reliability, stringent security measures, and minimal latency for continuous connectivity. Specifically, for non/semi-autonomous aircraft, the control station needs to transmit control commands in real-time or periodically to guide the aircraft’s flights. In turn, the aircraft need to report their flight status (such as the flight altitude and velocity) as well as position information via the uplink CNPC so that the control station can safely regulate their flights. ",
+        "bbox": [
+            600,
+            422,
+            931,
+            614
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Payload Communication (PC): PC refers to mission-related communications, depending on the application scenarios, that is, data collected by sensors. Compared with CNPC, PC usually has higher tolerance of latency and security requirements. The PC links of aircrafts could reuse the existing spectrum such as the 5G new-radio band for cellular coverage, or use new spectrum such as millimeter wave and even terahertz band for high-capacity wireless backhaul. ",
+        "bbox": [
+            600,
+            614,
+            931,
+            742
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Sensing: In addition to communications, the robust sensing capability is another key technology in IAGN. There are two sensing types, depending on the purpose. One is known as control-related sensing, which contains information about the aircraft’s motion status and position. Another is known as mission-related sensing, which contains task-specific information such as photos and videos. Intuitively, sensing can be performed based on the radar echo signals. Besides ",
+        "bbox": [
+            600,
+            742,
+            931,
+            869
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier: 10.1109/MCOM.001.2400685 ",
+        "bbox": [
+            64,
+            920,
+            211,
+            931
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yihang Jiang, Xiaoyang Li (corresponding author), Guangxu Zhu, Hang Li, Chao Shen, and Rui Zhang are with the Shenzhen Research Institute of Big Data (SRIBD), The Chinese University of Hong Kong-Shenzhen, China; Chao Shen is also with Shenzhen International Center for Industrial and Applied Mathematics, China; Rui Zhang is also with National University of Singapore, Singapore; Jing Deng is with Wireless Center of China Mobile, China; Kaifeng Han is with China Academy of Information and Communication Technology, China; Qingjiang Shi is with Tongji University, China, and also with SRIBD, China. ",
+        "bbox": [
+            242,
+            882,
+            931,
+            934
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "INTEGRATED SENSING AND COMMUNICATIONS ",
+        "bbox": [
+            357,
+            37,
+            641,
+            54
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "72 ",
+        "bbox": [
+            64,
+            966,
+            78,
+            975
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "0163-6804/25/\\$25.00 © 2025 IEEE ",
+        "bbox": [
+            302,
+            966,
+            514,
+            977
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "IEEE Communications Magazine • December 2025 ",
+        "bbox": [
+            658,
+            966,
+            931,
+            977
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on March 24,2026 at 12:40:56 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            35,
+            984,
+            895,
+            997
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/d461bc4460194e81df740408fda88737b633f91c3df32a6df503254cb97ec82d.jpg",
+        "image_caption": [
+            "FIGURE 1. IAGN for supporting LAE. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Non-cooperative Aircrafts\"] --> B[\"Aerial Sensor\"]\n    B --> C[\"Aerial Base Station\"]\n    C --> D[\"Aerial Delivery\"]\n    D --> E[\"Charging Station\"]\n    E --> F[\"Aerial User Equipment\"]\n    F --> G[\"Relay\"]\n    G --> H[\"Terrestrial User Equipment\"]\n    H --> I[\"Terrestrial Base Station\"]\n    I --> J[\"Aerial Taxis\"]\n    J --> K[\"Aerial Base Station\"]\n    K --> L[\"Aerial Delivery\"]\n    L --> M[\"Aerial User Equipment\"]\n    M --> N[\"Terrestrial Base Station\"]\n    N --> O[\"Aerial Delivery\"]\n    O --> P[\"Aerial Base Station\"]\n    P --> Q[\"Aerial Delivery\"]\n    Q --> R[\"Aerial Base Station\"]\n    R --> S[\"Aerial Delivery\"]\n    S --> T[\"Aerial Base Station\"]\n    T --> U[\"Aerial Delivery\"]\n    U --> V[\"Aerial Base Station\"]\n    V --> W[\"Aerial Delivery\"]\n    W --> X[\"Aerial Base Station\"]\n    X --> Y[\"Aerial Delivery\"]\n    Y --> Z[\"Aerial Base Station\"]\n    Z --> AA[\"Aerial Delivery\"]\n    AA --> AB[\"Aerial Base Station\"]\n    AB --> AC[\"Aerial Delivery\"]\n    AC --> AD[\"Aerial Base Station\"]\n    AD --> AE[\"Aerial Delivery\"]\n    AE --> AF[\"Aerial Base Station\"]\n    AF --> AG[\"Aerial Delivery\"]\n    AG --> AH[\"Aerial Base Station\"]\n    AH --> AI[\"Aerial Delivery\"]\n    AI --> AJ[\"Aerial Base Station\"]\n    AJ --> AK[\"Aerial Delivery\"]\n    AK --> AL[\"Aerial Base Station\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            80,
+            45,
+            914,
+            415
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "radio frequency sensing, the aircraft’s onboard sensors also provide multimodal sensing information. These technologies provide accurate environmental information and also greatly assist LAE in its various business activities. ",
+        "bbox": [
+            63,
+            461,
+            394,
+            524
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "As a revolutionary technology for the next generation of networks, integrated sensing and communication (ISAC) is expected to utilize the same hardware and spectrum for realizing simultaneous sensing and communication [6]. The existing studies have already investigated the deployments of ISAC in Internet of Things (IoT) networks [7], vehicular networks [8], and unmanned aerial vehicle (UAV) networks [9]. However, the specific requirements of ISAC technologies for LAE remain uncharted, which is the main focus of this article. In IAGN, the distributed ISAC BSs deployed in existing network frameworks are connected to a central server via cables for data collection and centralized processing for aircraft, while aircraft can act as both communication users and sensing targets (STs), as well as airborne BSs/relays or sensors to enhance the communication and sensing (C&S) performances of the network, thus enabling a mutually beneficial symbiosis between the aircraft and the conventional network architectures. ",
+        "bbox": [
+            63,
+            524,
+            394,
+            791
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This article introduces the IAGN components, ground-to-air C&S technologies, aircraft-assisted C&S functionalities, and future directions of LAE. To the best of the authors’ knowledge, this article is the first to present a comprehensive overview of ISAC for LAE. ",
+        "bbox": [
+            63,
+            793,
+            394,
+            869
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Archi tecture of IAGN ",
+        "text_level": 1,
+        "bbox": [
+            158,
+            874,
+            302,
+            892
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The key architectures of IAGN include channel modeling and network construction, which are introduced in this section. ",
+        "bbox": [
+            64,
+            895,
+            394,
+            934
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Locali zed Sta ti sti cal Cha nnel Modeli ng ",
+        "text_level": 1,
+        "bbox": [
+            480,
+            453,
+            692,
+            468
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Due to the unpredictable impact of network parameters and estimation errors, network performance prediction is very challenging. To this end, the simulated reality of communication networks (SRCON) has been proposed to provide a precise and effective offline network simulator for real-world communication networks [10]. Based on SRCON, a multi-beam localized channel modeling (MBCM) is proposed to model the channel angular power spectrum (APS) based on the measured reference signal received power (RSRP) [11]. The modeled channel APS is then utilized to predict the signal-to-interference ratios (SIRs) of ISAC signals after the parameter adjustment of the BS, as shown in Fig. 2. Based on MBCM, the tilt and azimuth angles of BS (indicated by blue dots) antennas are optimized to improve the ISAC performance in IAGN. It can be observed that the RSRP of ISAC signals in the whole network has been significantly improved after optimization, which illustrates the effectiveness of MBCM. ",
+        "bbox": [
+            418,
+            473,
+            753,
+            742
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Stocha sti c Geom etry-Ba sed Network Performa nce Anal ysi s ",
+        "text_level": 1,
+        "bbox": [
+            427,
+            749,
+            745,
+            763
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To support the development of LAE, network-level performance analysis is needed to provide an essential guide on the network design. In [12], a downlink ISAC network consisting of terrestrial BSs, terrestrial communication users (CUs), and aerial STs is considered, where each BS is equipped with a vertically placed half-wavelength uniform linear array as shown in Fig. 2. The ISAC signals are used for serving single-antenna CUs and sensing the non-cooperative aerial STs simultaneously. The locations of BSs are randomly distributed according to the two-dimensional (2D) homogeneous Poisson point process, while CUs and STs are located according to independent stationary point processes. The C&S performances are evaluated using various metrics, including the area communication coverage probability (ACCP) under the SIR criterion and the area radar detection coverage probability (ARDCP) under the constant false alarm rate (CFAR) criterion. These metrics serve as network-level performance indicators, characterizing the density of successfully covered CUs and the density of successfully detected STs, respectively. ",
+        "bbox": [
+            418,
+            767,
+            753,
+            934
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "IEEE Communications Magazine • December 2025 ",
+        "bbox": [
+            64,
+            965,
+            338,
+            978
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "73 ",
+        "bbox": [
+            917,
+            966,
+            931,
+            977
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on March 24,2026 at 12:40:56 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            35,
+            984,
+            895,
+            997
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/f8431f3d27c4962a6ddfcc9f924520a1bdc497c169f678fd7ac7e0809b84f5c2.jpg",
+        "image_caption": [
+            "FIGURE 2. Architecture of IAGN. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Localized Statistical Channel Modelling\"] --> B[\"Measured RSRP\"]\n    B --> C[\"ST (t_k)\"]\n    C --> D[\"h_T\"]\n    D --> E[\"PPP Modelling\"]\n    E --> F[\"Stochastic Geometry based Network\"]\n    F --> G[\"C&S metrics\"]\n    \n    H[\"Network Parameters Optimization\"] --> I[\"Before optimization\"]\n    H --> J[\"After optimization\"]\n    \n    K[\"Network Performance Analysis\"] --> L[\"Communication performance\"]\n    K --> M[\"Sensing performance\"]\n    \n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fcc,stroke:#333\n    style E fill:#cff,stroke:#333\n    style F fill:#ffc,stroke:#333\n    \n    subgraph \"Network Parameters Optimization\"\n        H1[\"Before optimization\"] --> H2[\"After optimization\"]\n        H2 --> H3[\"Network Parameters Optimization\"]\n        H3 --> H4[\"Network Parameters Optimization\"]\n        H4 --> H5[\"Network Parameters Optimization\"]\n        H5 --> H6[\"Network Parameters Optimization\"]\n        H6 --> H7[\"Network Parameters Optimization\"]\n        H7 --> H8[\"Network Parameters Optimization\"]\n        H8 --> H9[\"Network Parameters Optimization\"]\n        H9 --> H10[\"Network Parameters Optimization\"]\n        H10 --> H11[\"Network Parameters Optimization\"]\n        H11 --> H12[\"Network Parameters Optimization\"]\n        H12 --> H13[\"Network Parameters Optimization\"]\n        H13 --> H14[\"Network Parameters Optimization\"]\n        H14 --> H15[\"Network Parameters Optimization\"]\n        H15 --> H16[\"Network Parameters Optimization\"]\n        H16 --> H17[\"Network Parameters Optimization\"]\n        H17 --> H18[\"Network Parameters Optimization\"]\n        H18 --> H19[\"Network Parameters Optimization\"]\n        H19 --> H20[\"Network Parameters Optimization\"]\n        H20 --> H21[\"Network Parameters Optimization\"]\n        H21 --> H22[\"Network Parameters Optimization\"]\n        H22 --> H23[\"Network Parameters Optimization\"]\n        H23 --> H24[\"Network Parameters Optimization\"]\n        H24 --> H25[\"Network Parameters Optimization\"]\n        H25 --> H26[\"Network Parameters Optimization\"]\n        H26 --> H27[\"Network Parameters Optimization\"]\n        H27 --> H28[\"Network Parameters Optimization\"]\n        H28 --> H29[\"Network Parameters Optimization\"]\n        H29 --> H30[\"Network Parameters Optimization\"]\n        H30 --> H31[\"Network Parameters Optimization\"]\n        H31 --> H32[\"Network Parameters Optimization\"]\n        H32 --> H33[\"Network Parameters Optimization\"]\n        H33 --> H34[\"Network Parameters Optimization\"]\n        H34 --> H35[\"Network Parameters Optimization\"]\n        H35 --> H36[\"Network Parameters Optimization\"]\n        H36 --> H37[\"Network Parameters Optimization\"]\n        H37 --> H38[\"Network Parameters Optimization\"]\n        H38 --> H39[\"Network Parameters Optimization\"]\n        H39 --> H40[\"Network Parameters Optimization\"]\n        H40 --> H41[\"Network Parameters Optimization\"]\n        H41 --> H42[\"Network Parameters Optimization\"]\n        H42 --> H43[\"Network Parameters Optimization\"]\n        H43 --> H44[\"Network Parameters Optimization\"]\n        H44 --> H45[\"Network Parameters Optimization\"]\n        H45 --> H46[\"Network Parameters Optimization\"]\n        H46 --> H47[\"Network Parameters Optimization\"]\n        H47 --> H48[\"Network Parameters Optimization\"]\n        H48 --> H49[\"Network Parameters Optimization\"]\n        H49 --> H50[\"Network Parameters Optimization\"]\n        H50 --> H51[\"Network Parameters Optimization\"]\n        H51 --> H52[\"Network Parameters Optimization\"]\n        H52 --> H53[\"Network Parameters Optimization\"]\n        H53 --> H54[\"Network Parameters Optimization\"]\n        H54 --> H55[\"Network Parameters Optimization\"]\n        H55 --> H56[\"Network Parameters Optimization\"]\n        H56 --> H57[\"Network Parameters Optimization\"]\n        H57 --> H58[\"Network Parameters Optimization\"]\n        H58 --> H59[\"Network Parameters Optimization\"]\n        H59 --> H60[\"Network Parameters Optimization\"]\n        H60 --> H61[\"Network Parameters Optimization\"]\n        H61 --> H62[\"Network Parameters Optimization\"]\n        H62 --> H63[\"Network Parameters Optimization\"]\n        H63 --> H64[\"Network Parameters Optimization\"]\n        H64 --> H65[\"Network Parameters Optimization\"]\n        H65 --> H66[\"Network Parameters Optimization\"]\n        H66 --> H67[\"Network Parameters Optimization\"]\n        H67 --> H68[\"Network Parameters Optimization\"]\n        H68 --> H69[\"Network Parameters Optimization\"]\n        H69 --> H70[\"Network Parameters Optimization\"]\n        H70 --> H71[\"Network Parameters Optimization\"]\n        H71 --> H72[\"Network Parameters Optimization\"]\n        H72 --> H73[\"Network Parameters Optimization\"]\n        H73 --> H74[\"Network Parameters Optimization\"]\n        H74 --> H75[\"Network Parameters Optimization\"]\n        H75 --> H76[\"Network Parameters Optimization\"]\n        H76 --> H77[\"Network Parameters Optimization\"]\n        H77 --> H78[\"Network Parameters Optimization\"]\n        H78 --> H79[\"Network Parameters Optimization\"]\n        H79 --> H80[\"Network Parameters Optimization\"]\n    end\n    \n    subgraph \"Sensing Performance\"\n        K1[\"Communication performance\"] & K2[\"Sensing performance\"] & K3[\"Sensing performance\"] & K4[\"Sensing performance\"] & K5[\"Sensing performance\"] & K6[\"Sensing performance\"] & K7[\"Sensing performance\"] & K8[\"Sensing performance\"] & K9[\"Sensing performance\"] & K10[\"Sensing performance\"] & K11[\"Sensing performance\"] & K12[\"Sensing performance\"] & K13[\"Sensing performance\"] & K14[\"Sensing performance\"] & K15[\"Sensing performance\"] & K16[\"Sensing performance\"] & K17[\"Sensing performance\"] & K18[\"Sensing performance\"] & K19[\"Sensing performance\"] & K20[\"Sensing performance\"] & K21[\"Sensing performance\"] & K22[\"Sensing performance\"] & K23[\"Sensing performance\"] & K24[\"Sensing performance\"] & K25[\"Sensing performance\"] & K26[\"Sensing performance\"] & K27[\"Sensing performance\"] & K28[\"Sensing performance\"] & K29[\"Sensing performance\"] & K30[\"Sensing performance\"] & K31[\"Sensing performance\"] & K32[\"Sensing performance\"] & K33[\"Sensing performance\"] & K34[\"Sensing performance\"] & K35[\"Sensing performance\"] & K36[\"Sensing performance\"] & K37[\"Sensing performance\"] & K38[\"Sensing performance\"] & K39[\"Sensing performance\"] & K40[\"Sensing performance\"] & K41[\"Sensing performance\"] & K42[\"Sensing performance\"] & K43[\"Sensing performance\"] & K44[\"Sensing performance\"] & K45[\"Sensing performance\"] & K46[\"Sensing performance\"] & K47[\"Sensing performance\"] & K48[\"Sensing performance\"] & K49[\"Sensing performance\"] & K50[\"Sensing performance\"] & K51[\"Sensing performance\"] & K52[\"Sensing performance\"] & K53[\"Sensing performance\"] & K54[\"Sensing performance\"] & K55[\"Sensing performance\"] & K56[\"Sensing performance\"] & K57[\"Sensing performance\"] & K58[\"Sensing performance\"] & K59[\"Sensing performance\"] & K60[\"Sensing performance\"] & K61[\"Sensing performance\"] & K62[\"Sensing performance\"] & K63[\"Sensing performance\"] & K64[\"Sensing performance\"] & K65[\"Sensing performance\"] & K66[\"Sensing performance\"] & K67[\"Sensing performance\"] & K68[\"Sensing performance\"] & K69[\"Sensing performance\"] & K70[\"Sensing performance\"] & K71[\"Sensing performance\"] & K72[\"Sensing performance\"] & K73[\"Sensing performance\"] & K74[\"Sensing performance\"] & K75[\"Sensing performance\"] & K76[\"Sensing performance\"] & K77[\"Sensing performance\"] & K78[\"Sensing performance\"] & K79[\"Sensing performance\"] & K80[\"Sensing performance\"] & K81[\"Sensing performance\"] & K82[\"Sensing performance\"] & K83[\"Sensing performance\"] & K84[\"Sensing performance\"] & K85[\"Sensing performance\"] & K86[\"Sensing performance\"] & K87[\"Sensing performance\"] & K88[\"Sensing performance\"] & K89[\"Sensing performance\"] & K90[\"Sensing performance\"] & K91[\"Sensing performance\"] & K92[\"Sensing performance\"] & K93[\"Sensing performance\"] & K94[\"Sensing performance\"] & K95[\"Sensing performance\"] & K96[\"Sensing performance\"] & K97[\"Sensing performance\"] & K98[\"Sensing performance\"] & K99[\"Sensing performance\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            244,
+            39,
+            929,
+            330
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            241,
+            371,
+            574,
+            513
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "It can be observed that the ACCP decreases with both the increasing BS height and SIR criterion, while first increases and then decreases with the increasing BS density. Moreover, the ARDCP decreases with increasing ST height and CFAR criterion, while first increases and then decreases with the increasing BS density. The above findings vividly illustrate the influences of network parameters on the C&S performances. ",
+        "bbox": [
+            241,
+            512,
+            574,
+            628
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Ground-to-Ai r C&S ",
+        "text_level": 1,
+        "bbox": [
+            343,
+            632,
+            475,
+            648
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The ground-to-air C&S technologies that support LAE are discussed in this section, as shown in Fig. 3. ",
+        "bbox": [
+            242,
+            652,
+            574,
+            680
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Ground-to-Ai r Comm uni ca ti on ",
+        "text_level": 1,
+        "bbox": [
+            326,
+            685,
+            490,
+            699
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "To improve the communication performance of the aircraft, it is expected that the aircraft will be connected to the cellular network [5]. Cellular-connected aircraft is an appealing solution for practical implementation, and it only needs to reuse the existing cellular architecture and facilities. However, the performance of the existing terrestrial users in cellular networks will be affected. A series of efforts need to be made to resolve the communication problem for low-altitude aircraft. ",
+        "bbox": [
+            241,
+            704,
+            574,
+            831
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Cellular Access: For initial cellular access, BSs regularly transmit synchronization signal blocks (SSBs) that facilitate the cell search and selection for aircraft. Based on the received SSBs, the aircraft selects the best cell to access, where the channel conditions between the best cell and the aircraft have the strongest reference signal received power. Note that, unlike traditional terrestrial cellular communications, the strong air-toground line-of-sight (LoS) channels allow aircraft to connect more BSs, which makes the aircraft less inclined to access their physically nearest BS. Moreover, as the high mobility of aircraft would introduce frequent cell switches, the multicell cooperation may bring larger macro-diversity gain than conventional single-cell access. Since multicell cooperation will inevitably entail more resource overhead for information exchange as well as higher computational complexity for joint processing, further investigation is needed to evaluate its practical performance. ",
+        "bbox": [
+            241,
+            831,
+            574,
+            934
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            600,
+            371,
+            931,
+            537
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Spectrum Sharing: The spectrum sensing capabilities of aircraft can also be utilized to sense the network conditions and ensure efficient spectrum allocation for communication. By defining the priorities of different CUs/tasks, cognitive radio can allocate free/less-interfering physical resource blocks (PRBs) to different CUs/tasks via spectrum sensing methods such that reliable connections with less interference can be achieved. Existing classical spectrum sensing methods include energy detection, matched filter detection, and periodicity detection. Combining these existing spectrum sensing methods and based on the network data collected by the aircraft, effective PRB allocation can be realized through the collaboration between the aircraft and the BSs to reduce the spectrum burden. ",
+        "bbox": [
+            598,
+            538,
+            931,
+            754
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3D Beamforming: The BSs in existing cellular networks are typically equipped with a full-dimensional large-scale antenna array, which enables fine-grained 3D beamforming with a high degree of configurability. Unlike the traditional 2D beamforming with fan-shaped beams for terrestrial communications, 3D beamforming can better mitigate the interference among high-altitude aircraft and terrestrial CUs with the fine-grained beams in both the azimuth and elevation dimensions and thus leads to better communication performance. Note that the performance of most beamforming techniques depends heavily on accurate channel state information. Therefore, accurate beam tracking techniques are required due to frequent channel variations arising from the high mobility of aircraft. ",
+        "bbox": [
+            598,
+            754,
+            931,
+            934
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "",
+        "bbox": [
+            66,
+            966,
+            78,
+            975
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "IEEE Communications Magazine • December 2025 ",
+        "bbox": [
+            656,
+            965,
+            931,
+            978
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on March 24,2026 at 12:40:56 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            35,
+            984,
+            895,
+            997
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/b78d1d450e0f124ba6da774a4d515355bad8b729106fbb9fafea8e14f3f0b4b7.jpg",
+        "image_caption": [
+            "FIGURE 3. Ground-to-air C&S technologies supporting LAE. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    subgraph Ground-to-Air Communication\n        A1[\"Aerial UE\"] --> B1[\"Priority access\"]\n        B1 --> C1[\"Terrestrial BS\"]\n        C1 --> D1[\"Cellular Access\"]\n        D1 --> E1[\"Aerial UE\"]\n        E1 --> F1[\"Terrestrial BS\"]\n        F1 --> G1[\"2D beamforming\"]\n        G1 --> H1[\"3D beamforming\"]\n        H1 --> I1[\"Aerial UE\"]\n        I1 --> J1[\"Terrestrial BS\"]\n        J1 --> K1[\"Secondary UE\"]\n        K1 --> L1[\"Regular PRB\"]\n        L1 --> M1[\"Primary UE\"]\n        M1 --> N1[\"Free/less-interference PRB\"]\n        N1 --> O1[\"Spectrum Sharing\"]\n        P1[\"Aerial UE\"] --> Q1[\"Desired Signal\"]\n        Q1 --> R1[\"Terrestrial UE\"]\n        R1 --> S1[\"Interference\"]\n        S1 --> T1[\"Aerial UE\"]\n        T1 --> U1[\"Interference\"]\n        U1 --> V1[\"Terrestrial BS\"]\n        W1[\"Swarms\"] --> X[\"Sensing Request\"]\n        X --> Y[\"CNPC Link\"]\n        Y --> Z[\"Cooperative Active Sensing\"]\n        AA[\"Aerial Sensor\"] --> AB[\"Sensed Information Feedback\"]\n        AB --> AC[\"Non-cooperative Passive Sensing\"]\n        AD[\"Sensing signal\"] --> AE[\"Terrestrial BS\"]\n        AF[\"Echo signal\"] --> AG[\"Bird\"]\n    end\n\n    subgraph Spectrum Sharing\n        AH[\"Aerial UE\"] --> AI[\"Desired Signal\"]\n        AI --> AJ[\"Terrestrial UE\"]\n        AJ --> AK[\"Interference\"]\n        AK --> AL[\"Aerial UE\"]\n        AL --> AM[\"Interference\"]\n        AM --> AN[\"Aerial UE\"]\n        AN --> AO[\"Terrestrial BS\"]\n        AP[\"Swarms\"] --> AQ[\"Sensing Request\"]\n        AQ --> AR[\"CNPC Link\"]\n        AR --> AS[\"Cooperative Active Sensing\"]\n        AT[\"Aerial Sensor\"] --> AU[\"Sensed Information Feedback\"]\n        AU --> AV[\"CNPC Link\"]\n        AW[\"Aerial UE\"] --> AX[\"Sensed Information Feedback\"]\n        AX --> AY[\"CNPC Link\"]\n        AZ[\"Aerial UE\"] --> BA[\"Sensed Information Feedback\"]\n        BB[\"Aerial UE\"] --> BC[\"Sensed Information Feedback\"]\n        BD[\"Aerial UE\"] --> BE[\"Sensed Information Feedback\"]\n        BF[\"Aerial UE\"] --> BG[\"Sensed Information Feedback\"]\n        BH[\"Aerial UE\"] --> BI[\"Sensed Information Feedback\"]\n        BJ[\"Aerial UE\"] --> BK[\"Sensed Information Feedback\"]\n        BL[\"Aerial UE\"] --> BL[\"Sensed Information Feedback\"]\n        BN[\"Aerial UE\"] --> BO[\"Sensed Information Feedback\"]\n        BP[\"Aerial UE\"] --> BP[\"Sensed Information Feedback\"]\n        BQ[\"Aerial UE\"] --> BR[\"Sensed Information Feedback\"]\n        BS[\"Aerial UE\"] --> BS[\"Sensed Information Feedback\"]\n        BT[\"Aerial UE\"] --> BT[\"Sensed Information Feedback\"]\n        BU[\"Aerial UE\"] --> BU[\"Sensed Information Feedback\"]\n        BV[\"Aerial UE\"] --> BV[\"Sensed Information Feedback\"]\n        BW[\"Aerial UE\"] --> BX[\"Sensed Information Feedback\"]\n        BYA[\"Aerial UE\"] --> BYA[\"Sensed Information Feedback\"]\n        BZ[\"Aerial UE\"] --> BZ[\"Sensed Information Feedback\"]\n        CA[\"Aerial UE\"] --> CA[\"Sensed Information Feedback\"]\n        CB[\"Aerial UE\"] --> CB[\"Sensed Information Feedback\"]\n        CC[\"Aerial UE\"] --> CC[\"Sensed Information Feedback\"]\n        DD[\"Aerial UE\"] --> DD[\"Sensed Information Feedback\"]\n        DEA[\"Aerial UE\"] --> DEA[\"Sensed Information Feedback\"]\n        DF[\"Aerial UE\"] --> DF[\"Sensed Information Feedback\"]\n        DG[\"Aerial UE\"] --> DG[\"Sensed Information Feedback\"]\n        DH[\"Aerial UE\"] --> DH[\"Sensed Information Feedback\"]\n        DI[\"Aerial UE\"] --> DI[\"Sensed Information Feedback\"]\n        DJ[\"Aerial UE\"] --> DJ[\"Sensed Information Feedback\"]\n        DK[\"Aerial UE\"] --> DK[\"Sensed Information Feedback\"]\n        DL[\"Aerial UE\"] --> DL[\"Sensed Information Feedback\"]\n        DV[\"Aerial UE\"] --> DV[\"Sensed Information Feedback\"]\n    end\n\n    subgraph Interference Cancellation\n        DW[\"Aerial UE\"] --> DX[\"Desired Signal\"]\n        DX --> DXA[\"Terrestrial UE\"]\n        DXA --> DXB[\"Interference\"]\n        DXB --> DXC[\"Aerial UE\"]\n    end\n\n    subgraph Cooperative Active Sensing\n        DB[\"SWarms\"] --> DBA[\"CNPC Link\"]\n        DBA --> DBB[\"Terrestrial BS\"]\n    end\n\n    subgraph Cooperative Passive Sensing\n        DC[\"Non-cooperative Aircraft\"] --> DCA[\"Sensing signal\"]\n        DCA --> DCB[\"Echo signal\"]\n        DCB --> DCC[\"Bird\"]\n    end\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            71,
+            40,
+            741,
+            461
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            499,
+            398,
+            537
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Interference Cancellation: Compared to terrestrial equipment, the relatively high altitude of aircraft results in more dominant LoS links and, thus, wider coverage. However, the LoS links also introduce severe interference. In terrestrial cellular networks, adjacent BSs can dynamically allocate PRBs to their respective CUs based on the shared control information so as to avoid inter-cell interference. However, for cellular-connected airto-ground and air-to-air communications that are dominated by LoS paths, there are a much larger number of BSs with effective co-channel signals. The control information exchange between these BSs can be difficult or even infeasible at the same time due to the severe co-channel interference. Therefore, interference cancellation deserves further research in order to guarantee the performance of cellular-connected aircraft communication in LAE. ",
+        "bbox": [
+            63,
+            538,
+            398,
+            781
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Ground-to-Ai r Sensi ng ",
+        "text_level": 1,
+        "bbox": [
+            167,
+            787,
+            294,
+            803
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Depending on whether the aircrafts participate in the sensing process or not, the technologies for aircrafts sensing can be generally divided into two categories, namely cooperative active sensing and non-cooperative passive sensing. ",
+        "bbox": [
+            63,
+            805,
+            396,
+            869
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Cooperative Active Sensing: Conventional sensing relies on the aircraft’s onboard sensors, including video cameras for visual sensing and environment recognition, inertial measurement units for estimating acceleration and angular velocity, global navigation satellite system for localization, and radar for detection. Reliable surveillance can be achieved by making full use of such multimodal sensing information. However, considering the limited power supply of the aircraft in practice, the multimodal sensing information is not easy to process. An alternative surveillance scheme is to actively sense the aircraft from the BS through cooperation. Specifically, a sensing request is initiated by the BS and accepted by the aircraft, and the sensing information is fed back to the BS, which can be data from multimodal sensors and/or channel estimation based on the pilot signal. Based on the feedback, the BS can better direct the aircraft’s flight from a global perspective. ",
+        "bbox": [
+            63,
+            869,
+            398,
+            936
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            418,
+            499,
+            755,
+            692
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Non-Cooperative Passive Sensing: Non-cooperative passive sensing is mainly used to detect illegal aircraft. The activities of illegal aircraft result in obstructing the movement and interfering with the communication of legal aircraft. To resolve this issue, radar sensing based on echoed/scattered signals can be utilized to detect, classify, and track illegal aircraft to ensure the safety of the legal aircraft. However, low-altitude aircraft are relatively smaller in size and thus have lower radar cross sections compared to conventional high-altitude aircraft, which poses a great challenge for detection and tracking. In addition, their slower flight speeds and hovering capabilities make it difficult to distinguish them from the static clutters and birds. Accounting for this problem, the micro-Doppler signatures of small aircraft’ movements need to be captured to classify the small aircraft and birds. ",
+        "bbox": [
+            418,
+            692,
+            755,
+            934
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "IEEE Communications Magazine • December 2025 ",
+        "bbox": [
+            64,
+            966,
+            338,
+            978
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "75 ",
+        "bbox": [
+            917,
+            966,
+            931,
+            977
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on March 24,2026 at 12:40:56 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            35,
+            984,
+            895,
+            997
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/5e097863db3b38a9bd797cc65dc9c9224f1c5a047897ffbfcb3d4e3784448bc8.jpg",
+        "image_caption": [
+            "FIGURE 4. Aircraft-assisted sensing and communication. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    subgraph Aircraft-assisted Sensing\n        A[\"Swarms\"] --> B[\"Aerial Sensor\"]\n        C[\"...\"] --> D[\"Aerial Sensor\"]\n        E[\"Bird\"] --> F[\"Intruder\"]\n        G[\"Non-terrestrial Targets Sensing\"] --> H[\"Aerial Sensor\"]\n        I[\"Aerial Sensor\"] --> J[\"Cooperation\"]\n        K[\"Car\"] --> L[\"×\"]\n        M[\"Terrestrial Targets Sensing\"] --> N[\"Satellite\"]\n    end\n\n    subgraph Aircraft-assisted Communication\n        O[\"Aerial BS\"] --> P[\"Aerial Relay\"]\n        Q[\"Aircraft-assisted Ubiquitous Coverage\"] --> R[\"Aircraft-assisted Relaying\"]\n        S[\"Aircraft-assisted Traffic Offloading\"] --> T[\"Aerial BS\"]\n        U[\"Aircraft-assisted Relaying\"] --> V[\"Aerial Relay\"]\n        W[\"Aircraft-assisted Ubiquitous Coverage\"] --> X[\"Aircraft-assisted Relaying\"]\n        Y[\"Aircraft-assisted Relaying\"] --> Z[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AA[\"Aircraft-assisted Relaying\"] --> AB[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AC[\"Aircraft-assisted Relaying\"] --> AD[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AE[\"Aircraft-assisted Relaying\"] --> AF[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AG[\"Aircraft-assisted Relaying\"] --> AH[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AI[\"Aircraft-assisted Relaying\"] --> AJ[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AK[\"Aircraft-assisted Relaying\"] --> AL[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AM[\"Aircraft-assisted Relaying\"] --> AN[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AO[\"Aircraft-assisted Relaying\"] --> AP[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AQ[\"Aircraft-assisted Relaying\"] --> AR[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AS[\"Aircraft-assisted Relaying\"] --> AT[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AU[\"Aircraft-assisted Relaying\"] --> AV[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AW[\"Aircraft-assisted Relaying\"] --> AX[\"Aircraft-assisted Ubiquitous Coverage\"]\n        AY[\"Aircraft-assisted Relaying\"] --> AZ[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BA[\"Aircraft-assisted Relaying\"] --> BB[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BC[\"Aircraft-assisted Relaying\"] --> BD[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BE[\"Aircraft-assisted Relaying\"] --> BF[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BG[\"Aircraft-assisted Relaying\"] --> BH[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BI[\"Aircraft-assisted Relaying\"] --> BJ[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BK[\"Aircraft-assisted Relaying\"] --> BL[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BM[\"Aircraft-assisted Relaying\"] --> BN[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BO[\"Aircraft-assisted Relaying\"] --> BP[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BQ[\"Aircraft-assisted Relaying\"] --> BR[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BS[\"Aircraft-assisted Relaying\"] --> BT[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BU[\"Aircraft-assisted Relaying\"] --> BV[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BW[\"Aircraft-assisted Relaying\"] --> BX[\"Aircraft-assisted Ubiquitous Coverage\"]\n        BYA[\"Aircraft-assisted Relaying\"] --> BZ[\"Aircraft-assisted Ubiquitous Coverage\"]\n        CA[\"Hotspot Area\"] --> CB[\"Terrestrial BS\"]\n    end\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            249,
+            40,
+            924,
+            321
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Ai rcra ft-Assi sted C&S ",
+        "text_level": 1,
+        "bbox": [
+            333,
+            358,
+            485,
+            376
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this section, the C&S assisted by aircraft in LAE, as depicted in Fig. 4, are discussed. ",
+        "bbox": [
+            242,
+            384,
+            574,
+            411
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Ai rcra ft-a ssi sted Sensi ng ",
+        "text_level": 1,
+        "bbox": [
+            338,
+            418,
+            478,
+            432
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Unlike ground-based sensing, which relies on the deployment of a large number of distributed terrestrial BSs, thanks to high maneuverability and flexibility, aircraft can provide more degrees of freedom (DoFs) to support cost-effective and seamless sensing. Aircraft-assisted sensing for terrestrial and non-terrestrial targets is discussed in the following. ",
+        "bbox": [
+            242,
+            435,
+            574,
+            526
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Non-Terrestrial Target Sensing: Non-terrestrial target sensing mainly refers to the detection of other aircraft and birds. For a typical aircraft, other aircraft can be cooperators in a specific task or non-cooperative intruders. The cooperative aircraft form a swarm, in which aircraft can detect each other and establish reliable coordination for safe flight even when the swarm loses the remote control. The distances and angles of the non-cooperative intruders can also be detected by the aircraft to avoid collision. Accounting for the mobility of non-terrestrial targets, beam tracking is needed to perceive the desired target in realtime. However, the flight stability of the aircraft is affected by the bumpy airflow, which increases the difficulty of beam tracking. ",
+        "bbox": [
+            242,
+            526,
+            574,
+            730
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Terrestrial Targets Sensing: The aircraft can also be deployed to sense terrestrial targets in a cooperative manner. By sharing the sensed information of different aircraft, more extensive sensing coverage and more accurate target parameter estimation can be achieved. Moreover, the multimodal sensors equipped on aircraft can collect different types of target information. The integration of these features can further improve the sensing performance. However, it should be noted that only the LoS links of aircraft are exploited for sensing, while the non-LoS (NLoS) links are treated as unfavorable interference. To mitigate the interference, the beamforming design, power control, and trajectory planning of aircraft need to be investigated. ",
+        "bbox": [
+            242,
+            730,
+            574,
+            934
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Ai rcra ft-Assi sted Sensi ng ",
+        "text_level": 1,
+        "bbox": [
+            695,
+            358,
+            835,
+            372
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The flexibility and mobility of aircraft can be exploited to support different communication tasks. The typical application scenarios are discussed below. ",
+        "bbox": [
+            600,
+            384,
+            931,
+            434
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Aircraft-Assisted Ubiquitous Coverage: For areas where basic communication facilities are not available, aircraft can be used as aerial BSs (ABSs) to enhance the coverage and performance of communication networks. The deployment of ABSs still faces several challenges. First, the horizontal/vertical placement of multiple ABSs should be investigated to cover CUs in wider areas. Second, the endurance of aerial BSs is constrained by the limited battery that is equipped on aircraft, which needs to be considered for ABS deployment design. Moreover, when multiple ABSs are deployed, the effect of their potential interference should be considered. ",
+        "bbox": [
+            600,
+            435,
+            931,
+            601
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Aircraft-Assisted Relaying: In the absence of reliable communication links between BSs and CUs, aircraft can serve as relays. With LoS-dominant links, aircraft can capture, amplify, and relay communication signals to target locations, thereby improving wireless connectivity quality in long-distance communication scenarios. It is worth noting that, unlike ABSs, utilizing aircraft as aerial relays can reduce the burden on the onboard equipment. For the network consisting of multiple aerial relays, the optimal assignment of UAV relays to different tasks to maximize the overall utility needs to be investigated in future work. ",
+        "bbox": [
+            600,
+            602,
+            931,
+            768
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Aircraft-Assisted Traffic Offloading: In conventional terrestrial cellular systems, it is difficult for the BSs to provide effective support for CUs at cell edges or hotspot areas. By exploiting the mobility and enhanced communication capability of LoS links, aircraft-assisted cellular offloading provides a promising solution. It is worth noting that hotspots tend to have higher CU densities compared to non-hotspots. To guarantee communication performance in hotspot areas, the flight trajectory of aircraft and radio resource allocation need to be jointly designed, given the constraints on the total system bandwidth and aircraft transmit power. ",
+        "bbox": [
+            600,
+            768,
+            931,
+            934
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "",
+        "bbox": [
+            66,
+            966,
+            78,
+            975
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "IEEE Communications Magazine • December 2025 ",
+        "bbox": [
+            658,
+            966,
+            931,
+            978
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on March 24,2026 at 12:40:56 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            35,
+            984,
+            895,
+            997
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/94bd52bf1018112dc0501f3ee33e0f24fb4533907b47b02f7cbfc090fa7a76f1.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Potential targets\"] --> B[\"Drone\"]\n    B --> C[\"Communication\"]\n    C --> D[\"Sensing\"]\n    D --> E[\"θ\"]\n    E --> F[\"y\"]\n    F --> G[\"z\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fcc,stroke:#333\n    style E fill:#cff,stroke:#333\n    style F fill:#ffc,stroke:#333\n    style G fill:#cfc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            66,
+            40,
+            490,
+            307
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "chart",
+        "img_path": "images/de795d5d18434b39a34e29e338660cf8300f649b9db21aa311ea20114d5d7d39.jpg",
+        "content": "| x(m) | User | Sensing area | Communication only | Sensing only | ISAC(Γ=-13dBm) | ISAC(Γ=-40dBm) |\n|------|------|--------------|---------------------|--------------|----------------|----------------|\n| 350  | 400  |              |                     |              |                |                |\n| 400  | 340  |              |                     |              |                |                |\n| 450  | 320  |              |                     |              |                |                |\n| 500  | 280  |              |                     | 600          |                |                |\n| 550  | 320  |              |                     |              |                |                |\n| 600  | 340  |              |                     |              |                |                |\n| 650  | 400  |              |                     |              |                |                |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            492,
+            40,
+            926,
+            307
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/5274e1e74d195c41e1bb8e5784347274e3a99b0ddf3f441a8519c3569148a159.jpg",
+        "image_caption": [
+            "FIGURE 5. Aircraft-assisted ISAC. ",
+            "FIGURE 6. Future directions of LAE. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    subgraph Aircrafts_Collaboration\n        A[\"Swarms\"] --> B[\"AirComp\"]\n        B --> C[\"Terrestrial BS\"]\n        D[\"Local Models\"] --> E[\"FL\"]\n        E --> F[\"Terrestrial BS\"]\n        G[\"Global Model\"] --> H[\"Local Models\"]\n        I[\"Travjectory\"] --> J[\"Aircrafts\"]\n        K[\"Energy Efficiency\"] --> L[\"Power Beacon\"]\n        M[\"AirCP\"] --> N[\"Lorem Ipsum\"]\n    end\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            71,
+            335,
+            926,
+            496
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Ai rcra ft-Assi sted ISAC",
+        "text_level": 1,
+        "bbox": [
+            167,
+            528,
+            294,
+            542
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "To improve spectrum efficiency, the aircraft can transmit ISAC signals to communicate with multiple UEs and sense targets simultaneously. Aiming to improve communication performance while guaranteeing sensing performance, the flight trajectories and beamforming of the aircraft were jointly designed [13]. The flight trajectories of aircraft under different designs are plotted in Fig. 5. It can be observed that if only sensing is considered, the aircraft directly flies to the sensing target. If only communication is considered, the aircraft approaches the UEs as closely as possible under realistic flight constraints. As for the ISAC case, the aircraft moves between the sensing target and UEs. When the sensing beam-pattern gain threshold is relatively large (–13 dBm), the flight trajectory of the aircraft is closer to the sensing target. In contrast, when the sensing beam-pattern gain threshold is relatively small (–40 dBm), the flight trajectory of the aircraft is closer to the UEs. ",
+        "bbox": [
+            63,
+            550,
+            398,
+            808
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Future Di recti ons of LAE ",
+        "text_level": 1,
+        "bbox": [
+            147,
+            810,
+            314,
+            828
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "As depicted in Fig. 6, there are multiple future directions in LAE worthy of further investigation. ",
+        "bbox": [
+            64,
+            831,
+            396,
+            859
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Ai rcra ft Colla bora ti on ",
+        "text_level": 1,
+        "bbox": [
+            165,
+            865,
+            294,
+            879
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In LAE, multiple aircraft need to share their sensed information with BS for collaboration. The messages delivered by different aircraft will compete for the radio resource in conventional multi-access schemes, which will result in transmission latency that is intolerable for delay-sensitive tasks such as collision avoidance. To facilitate the information-sharing process, over-the-air computation (AirComp) has been proposed to utilize the waveform superposition property of wireless signals to aggregate the data simultaneously transmitted by multiple aircraft [14]. However, the mobility of the aircraft makes it harder to balance the channels for guaranteeing computation accuracy. Therefore, the information-sharing process for aircraft collaboration in LAE deserves further study. ",
+        "bbox": [
+            63,
+            882,
+            398,
+            934
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            418,
+            537,
+            755,
+            693
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "AI-Ena bl ed LAE ",
+        "text_level": 1,
+        "bbox": [
+            543,
+            698,
+            632,
+            713
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The development of artificial intelligence (AI) is expected to support more intelligent tasks in LAE, such as smart logistics and auto-driving. The AI models are trained based on the data sensed by the aircraft. However, the limited computation capabilities of aircraft might fail to support the training process of sophisticated AI models, while offloading the raw data to a central server for computation will cause privacy leakage. To deal with this problem, federated learning (FL) enables each aircraft to update its local model based on the sensed data and send the locally updated results to the central server for the global model update [15]. In LAE, the parameters relevant to aircraft, such as trajectory and velocity, might have significant effects on FL performance, which warrants further investigation. ",
+        "bbox": [
+            418,
+            716,
+            755,
+            936
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "IEEE Communications Magazine • December 2025 ",
+        "bbox": [
+            64,
+            965,
+            338,
+            978
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "77 ",
+        "bbox": [
+            919,
+            966,
+            931,
+            977
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on March 24,2026 at 12:40:56 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            35,
+            984,
+            895,
+            997
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The AI models are trained based on the data sensed by the aircraft. However, the limited computation capabilities of aircraft might fail to support the training process of sophisticated AI models, while offloading the raw data to a central server for computation will cause privacy leakage. ",
+        "bbox": [
+            76,
+            51,
+            206,
+            245
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Energ y Effi ci ency ",
+        "text_level": 1,
+        "bbox": [
+            362,
+            38,
+            456,
+            53
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Aircraft are often energy-constrained devices, and therefore, energy allocation for different tasks needs to be considered. For example, transmit power and flight trajectories need to be optimized to carry out activities in an energy-efficient manner, thereby reducing the frequency of battery charging/replacement. Also, the location of charging stations, such as UAVs and air taxis, can be optimized to improve the efficiency of charging the vehicles in the IAGN. Notably, wireless power transfer (WPT) has been widely used in various systems to power devices over short distances. The application of WPT in LAE is a potential solution to enable automatic charging of aircraft, while its impact on energy efficiency needs to be further investigated. ",
+        "bbox": [
+            241,
+            65,
+            576,
+            270
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Concl usi on ",
+        "text_level": 1,
+        "bbox": [
+            370,
+            275,
+            447,
+            291
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "This article provides a comprehensive overview of the IAGN architectures, the ground-to-air C&S technologies, and the aircraft-assisted C&S functionalities for supporting LAE. Several future directions are also identified, including aircrafts collaboration, energy efficiency, and artificial intelligence enabled LAE. ",
+        "bbox": [
+            242,
+            295,
+            574,
+            385
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Acknowl edgm ent ",
+        "text_level": 1,
+        "bbox": [
+            360,
+            392,
+            456,
+            406
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "This work is supported by National Key Research and Development Program of China (2022YFA1003900, 2024YFA1014200), Guangdong Major Project of Basic and Applied Basic Research (2023B0303000001), National Natural Science Foundation of China (62331022, 62371313, 62031008, 62271081), 2022 Stable Research Program of Higher Education of China (20220817144726001), Guangdong Provincial Key Laboratory of Big Data Computing, Hetao Shenzhen-Hong Kong Science and Technology Innovation Cooperation Zone Project (HZQSWS-KC-CYB-2024016), Shenzhen Science and Technology Program (JCYJ20220530113017039, JCYJ20241202124934046), Young Elite Scientists Sponsorship Program by CAST (2022QNRC001). ",
+        "bbox": [
+            242,
+            409,
+            574,
+            615
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "References ",
+        "text_level": 1,
+        "bbox": [
+            379,
+            620,
+            437,
+            634
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] Y. Zeng, Q. Wu, and R. Zhang, “Accessing from the Sky: A Tutorial on UAV Communications for 5G and Beyond,” Proc. IEEE, vol. 107, no. 12, 2019, pp. 2327–75. ",
+            "[2] L. Gupta, R. Jain, and G. Vaszkun, “Survey of Important Issues in UAV Communication Networks,” IEEE Commun. Surveys Tuts., vol. 18, no. 2, 2015, pp. 1123–52. ",
+            "[3] Z. Fei et al., “Air-Ground Integrated Sensing and Communications: Opportunities and Challenges,” IEEE Commun. Mag., vol. 61, no. 5, 2023, pp. 55–61. ",
+            "[4] K. Meng et al., “UAV-Enabled Integrated Sensing and Communication: Opportunities and Challenges,” IEEE Wireless Commun., vol. 31, no. 2, 2024, pp. 97–104. ",
+            "[5] Y. Zeng, J. Lyu, and R. Zhang, “Cellular-Connected UAV: Potential, Challenges, and Promising Technologies,” IEEE Wireless Commun., vol. 26, no. 1, 2018, pp. 120–27. ",
+            "[6] F. Liu et al., “Integrated Sensing and Communications: Toward Dual-Functional Wireless Networks for 6G and Beyond,” IEEE J. Sel. Areas Commun., vol. 40, no. 6, 2022, pp. 1728–67. ",
+            "[7] X. Li et al., “Over-the-Air Integrated Sensing, Communication, and Computation in IoT Networks,” IEEE Wireless Commun., vol. 30, no. 1, 2023, pp. 32–38. ",
+            "[8] W. Yuan et al., “Bayesian Predictive Beamforming for Vehic-"
+        ],
+        "bbox": [
+            241,
+            634,
+            576,
+            874
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "ular Networks: A Low-Overhead Joint Radar-Communication Approach,” IEEE Trans. Wireless Commun., vol. 20, no. 3, 2020, pp. 1442–56. ",
+            "[9] Y. Cui et al., “Toward Trusted and Swift UAV Communication: ISAC-Enabled Dual Identity Mapping,” IEEE Wireless Commun., vol. 30, no. 1, 2023, pp. 58–66. ",
+            "[10] Z.-Q. Luo et al., “SRCON: A Data-Driven Network Performance Simulator for Real-World Wireless Networks,” IEEE Commun. Mag., vol. 61, no. 6, 2023, pp. 96–102. ",
+            "[11] S. Zhang et al., “A Physics-Based and Data-Driven Approach for Localized Statistical Channel Modeling,” IEEE Trans. Wireless Commun., 2023, pp. 1–1. ",
+            "[12] Y. Jiang et al., “Coverage Analysis for Air-Ground Integrated-Sensing-And-Communication Networks,” Proc. IEEE Int’l. Conf. Ubiquitous Commun., Xi’an, China, 2024. ",
+            "[13] Z. Lyu, G. Zhu, and J. Xu, “Joint Maneuver and Beamforming Design for UAV-Enabled Integrated Sensing and Communication,” IEEE Trans. Wireless Commun., vol. 22, no. 4, 2022, pp. 2424–40. ",
+            "[14] X. Li et al., “Integrated Sensing, Communication, and Computation Over-the-Air: MIMO Beamforming Design,” IEEE Trans. Wireless Commun., vol. 22, no. 8, 2023, pp. 5383–98. ",
+            "[15] Y. Tang et al., “Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning,” IEEE Trans. Wireless Commun., early access, 2025. "
+        ],
+        "bbox": [
+            601,
+            35,
+            935,
+            295
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Bi og rap hi es ",
+        "text_level": 1,
+        "bbox": [
+            736,
+            300,
+            794,
+            312
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Yihang Jiang (yihangjiang1@link.cuhk.edu.cn) is currently pursuing a Ph.D. degree at the School of Science and Engineering and the Shenzhen Research Institute of Big Data (SRIBD) at the Chinese University of Hong Kong-Shenzhen (CUHK-SZ). His research interests include integrated sensing and communication (ISAC) and WiFi sensing. ",
+        "bbox": [
+            600,
+            315,
+            931,
+            378
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Xiaoy ang Li (lixiaoyang@sribd.cn) is a research scientist at SRIBD, CUHK-SZ. He received the PhD degree from The University of Hong Kong (HKU) in 2020. His research interests include integrated sensing-communication-computation and low-altitude economy. ",
+        "bbox": [
+            600,
+            386,
+            931,
+            439
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Guangx u Zhu (gxzhu@sribd.cn) is a senior research scientist at SRIBD, CUHK-SZ. He received his PhD degree from HKU in 2019. His research interests include edge intelligence, semantic communications, and ISAC. ",
+        "bbox": [
+            600,
+            448,
+            931,
+            490
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Hang Li (hangdavidli@sribd.cn) is a research scientist at SRIBD, CUHK-SZ. He received his PhD degree from Texas A&M University in 2016. His research interests include wireless networks, the Internet of Things, stochastic optimization, and applications of machine learning. ",
+        "bbox": [
+            600,
+            499,
+            931,
+            551
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Jing Deng (dengjing@jx.chinamobile.com) is an engineer at the Wireless Center of China Mobile Communications Group Jiangxi Co., Ltd. His research interests include wireless networks and low-altitude economy. ",
+        "bbox": [
+            600,
+            561,
+            931,
+            602
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Kaifeng Han (hankaifeng@caict.ac.cn) is a senior engineer in the China Academy of Information and Communications Technology. He received the PhD degree from HKU in 2019. His research interests focus on integrated sensing and communications, wireless AI for 6G. ",
+        "bbox": [
+            600,
+            611,
+            931,
+            664
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Chao Shen (chaoshen@sribd.cn) is a senior research scientist at Shenzhen International Center for Industrial and Applied Mathematics, SRIBD, CUHK-SZ. He received his PhD degree from Beijing Jiaotong University in 2012. His research interests include large-scale network optimization and integrated sensing and communication. ",
+        "bbox": [
+            600,
+            673,
+            931,
+            735
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Qingj iang Shi (shiqj@tongji.edu.cn) is a full professor at Tongji University and also with SRIBD. He received his PhD degree from Shanghai Jiaotong University in 2011. His research interests include algorithm design with applications in signal processing and wireless networks. ",
+        "bbox": [
+            600,
+            745,
+            931,
+            796
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Rui Zhang [F] (rzhang@cuhk.edu.cn) is an X. Q. Deng Presidential Chair Professor with the School of Science and Engineering and SRIBD, CUHK-SZ. He is also a professor at the National University of Singapore, Singapore. He received a PhD degree from Stanford University. His research interests include UAV communications and optimization methods. ",
+        "bbox": [
+            600,
+            805,
+            931,
+            869
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "",
+        "bbox": [
+            66,
+            966,
+            78,
+            975
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "IEEE Communications Magazine • December 2025 ",
+        "bbox": [
+            658,
+            966,
+            931,
+            978
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: National Institute of Technology- Delhi. Downloaded on March 24,2026 at 12:40:56 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            35,
+            984,
+            895,
+            997
+        ],
+        "page_idx": 6
+    }
+]
