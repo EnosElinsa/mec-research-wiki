@@ -154,3 +154,4 @@
 
 - [[design-recipe-multi-uav-mec]] — 10-step recipe for DRL-controlled UAV-MEC
 - [[drl-backbones-across-uav-mec-sources]] — Cross-corpus look at DRL backbone choices
+- [[maddpg-vs-masac-in-mec]] — When entropy beats determinism in cooperative MEC
