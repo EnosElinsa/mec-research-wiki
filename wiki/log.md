@@ -74,3 +74,9 @@
 - Curated [[xie-2026-uav-multisource-fusion]] — Xie et al. 2026, *UAV-Enabled Multi-Source Data Fusion in Vehicular Networks* (IEEE TWC).
 - Added concept pages: [[cooperative-perception]], [[dynamic-constrained-multi-objective-optimization]].
 - All 12 raw sources are now curated. Refreshing index/overview next.
+
+## 2026-05-29 (cross-source synthesis pass)
+
+- Added [[drl-backbones-across-uav-mec-sources]] — cross-corpus synthesis covering 9 of 12 sources, mapping action-space shape → backbone choice, single vs multi-agent, memory/prediction patterns, and DRL-vs-classical composition. Distills 6 practical recommendations.
+- Added [[bcsa-frl-vs-bc-uav-masac]] — head-to-head comparison of the two blockchain-integrated MEC sources. Where they agree, where they disagree, and a hypothetical composition.
+- Updated `wiki/index.md` so both pages are reachable from the type-grouped directory.
