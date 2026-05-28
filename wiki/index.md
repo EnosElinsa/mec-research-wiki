@@ -148,7 +148,9 @@
 
 - [[ddpg-vs-jppo]]
 - [[j-ppo-baselines]]
+- [[bcsa-frl-vs-bc-uav-masac]] — Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
 
 ## Synthesis
 
 - [[design-recipe-multi-uav-mec]] — 10-step recipe for DRL-controlled UAV-MEC
+- [[drl-backbones-across-uav-mec-sources]] — Cross-corpus look at DRL backbone choices
