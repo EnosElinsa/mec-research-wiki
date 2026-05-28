@@ -13,22 +13,30 @@ related:
   - "[[hao-2025-priority-aware-task-driven-co]]"
   - "[[mao-2025-bcsa-frl]]"
   - "[[xie-2026-uav-multisource-fusion]]"
+  - "[[ma-2025-pdqn-vehicular-mec]]"
+  - "[[bao-2025-ddpg-video-offloading]]"
+  - "[[nabi-2025-jour-hierarchical-aerial]]"
+  - "[[hsu-2025-drl-hues-hap-noma]]"
   - "[[ppo]]"
   - "[[j-ppo]]"
   - "[[masac]]"
   - "[[ddqn]]"
+  - "[[ddpg]]"
+  - "[[parameterized-dqn]]"
+  - "[[prioritized-experience-replay]]"
   - "[[hybrid-action-decision-making]]"
   - "[[centralized-training-decentralized-execution]]"
   - "[[lyapunov-optimization]]"
   - "[[ma-pomdp]]"
   - "[[design-recipe-multi-uav-mec]]"
+  - "[[drl-vs-evolutionary-vs-classical-solvers]]"
 created: 2026-05-29
 updated: 2026-05-29
 ---
 
 # DRL backbone choices across the UAV-MEC corpus
 
-A cross-cutting look at *how* the curated sources actually do reinforcement learning. Pulls together the algorithmic choices made in 9 of the 12 curated sources (the 3 outliers — [[wang-2025-uav-swarm-stackelberg]] uses pure game theory, [[xie-2026-uav-multisource-fusion]] uses an evolutionary multi-objective solver, and [[wang-2025-lae-network-survey]] is a survey).
+A cross-cutting look at *how* the curated sources actually do reinforcement learning. Originally drafted on 9 of the first 12 curated sources; **extended on 2026-05-29** to cover the four additional DRL sources from the second batch — [[ma-2025-pdqn-vehicular-mec]], [[bao-2025-ddpg-video-offloading]], [[nabi-2025-jour-hierarchical-aerial]], [[hsu-2025-drl-hues-hap-noma]] — bringing the DRL roster to 12. (The corpus also has six [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary]] sources and four classical-solver sources; this page does not analyze those, see [[drl-vs-evolutionary-vs-classical-solvers]] for the cross-family view.)
 
 The goal is to make the design space legible: which backbone, which framing, which architectural augmentations, and *why* each choice was made.
 
@@ -45,6 +53,10 @@ The goal is to make the design space legible: which backbone, which framing, whi
 | [[zhu-2025-lycnn-drl-wpt-mec]] | CNN actor-critic | Single | Per-slot via Lyapunov + fractional programming | Binary offload + continuous resources | [[fractional-programming-dinkelbach|Fractional programming]] for EE objective |
 | [[hao-2025-priority-aware-task-driven-co]] | Hybrid actor (DDPG-style + Q-head) | Single | Event-driven MDP | Hybrid binary + continuous | Dependence-aware **latent space** for variable-size action sets |
 | [[mao-2025-bcsa-frl]] | [[ddqn|Double DQN]] | Federated (per-satellite) | MDP (per-satellite local) + FRL aggregation | Discrete (offload destination) | [[ccvm-correction-voting|CCVM]] + [[csra-cold-start-reputation-aggregation|CSRA]] over consensus |
+| [[ma-2025-pdqn-vehicular-mec]] | [[parameterized-dqn|P-DQN]] | Single (per-vehicle) | MDP | Hybrid (M+2 destinations × continuous tx power) | Native hybrid-action handling without joint-space discretization |
+| [[bao-2025-ddpg-video-offloading]] | [[ddpg\|DDPG]] | Single (per-UAV) | MDP | Continuous (offloading + transcoding ratios + HAP CPU split) | [[qoe-modeling-mec\|QoE]] reward folding bitrate-accuracy curve |
+| [[nabi-2025-jour-hierarchical-aerial]] | ESAC (SAC + [[prioritized-experience-replay\|PER]]) | Single (UAV-side controller) | MDP after Stage-1 [[gale-shapley-matching\|matching]] | Continuous (η_u^h + UAV CPU + HAP CPU) | Two-stage decomposition w/ classical Stage 1 |
+| [[hsu-2025-drl-hues-hap-noma]] | PPO (single-agent) | Single (HAP scheduler) | MDP | Continuous (α, β) | NOMA-aware reward (binary scale satisfaction) |
 
 ## Backbone choice as a function of action space
 
@@ -127,6 +139,47 @@ If you're building a UAV-MEC controller from scratch, the corpus suggests:
 6. **Reserve safe-RL machinery for hard constraints.** Reward penalties don't guarantee safety. Use [[collision-avoidance-mgi|MGI]]-style asymmetric intervention or shielding when collisions / energy depletion are catastrophic.
 
 These compound into the [[design-recipe-multi-uav-mec|design recipe]] — extended now with the cross-source evidence above.
+
+## What the 2026-05-29 batch changes about this analysis
+
+The four new DRL sources don't overturn the previous synthesis — they *refine* it on three specific points.
+
+### 1. Hybrid-action design space now has a clear three-way split
+
+Before this batch, the wiki had one canonical hybrid-action handler ([[liu-2026-jppo-en-convntm|j-PPO]]) plus two indirect approaches (latent-space sidesteps in [[hao-2025-priority-aware-task-driven-co]], two-stage decompositions in [[zhang-2025-mcma-task-migration]]). The new batch gives the design space a clean three-way taxonomy:
+
+| Approach | Example | Mechanism |
+|---|---|---|
+| **Native hybrid policy** (joint stage) | [[liu-2026-jppo-en-convntm]] (j-PPO), [[ma-2025-pdqn-vehicular-mec]] (P-DQN) | Single network outputs (discrete head, per-discrete-action continuous head) jointly. |
+| **Latent-space encoding** | [[hao-2025-priority-aware-task-driven-co]] | Heterogeneous-size action sets compressed into a learned latent; standard DRL on the latent. |
+| **Stage-separated** | [[nabi-2025-jour-hierarchical-aerial]] (Gale-Shapley + ESAC), [[zhang-2025-mcma-task-migration]] (Q-head + policy-grad), [[wang-2026-aerial-marine-msar]] (matching + convex) | Discrete decided up front by classical method; continuous decided separately by DRL or convex. |
+
+[[liu-2026-jppo-en-convntm|j-PPO]] vs [[ma-2025-pdqn-vehicular-mec|P-DQN]] is now a real comparison ([[ddpg-vs-jppo]] should eventually be supplemented by a `j-ppo-vs-pdqn` page). Key contrast: PPO is on-policy with stochastic exploration; P-DQN is off-policy with replay-buffer sample efficiency. The wiki has no head-to-head, so picking one over the other is currently a problem-shape decision rather than empirical preference.
+
+### 2. DDPG has a niche after all
+
+The pre-batch synthesis read DDPG as "underperforms vs stochastic alternatives" — based on [[liu-2026-jppo-en-convntm]]'s baselines and the [[maddpg-vs-masac-in-mec]] thesis. [[bao-2025-ddpg-video-offloading]] complicates this: DDPG works *fine* when:
+
+- The action space is **purely continuous** (no hybrid decisions).
+- The objective is **scalar QoE** rather than a multi-objective Pareto front.
+- The system is **single-agent** (no MARL non-stationarity).
+
+This recovers DDPG's original design profile. The earlier negative findings stand for **multi-agent + multi-objective + hybrid-action** problems; DDPG remains a reasonable starting point for narrow, single-agent continuous control.
+
+### 3. PER and SAC's ecosystem now have explicit wiki entries
+
+[[nabi-2025-jour-hierarchical-aerial]]'s ESAC pulls together SAC + [[prioritized-experience-replay|PER]] — each piece useful elsewhere too:
+
+- **PER** is an off-policy speedup that works with DDPG, TD3, SAC, and DQN. It's a free win for any source using off-policy backbones; surprising it isn't standard across the corpus.
+- **SAC's entropy regularization** is what drives the [[masac|MASAC]] > MADDPG result in cooperative MEC. ESAC extends that pattern to single-agent + matching pre-stage.
+
+The combination — PER + entropy-regularized stochastic policy — is the strongest practical baseline in the wiki for off-policy continuous control. Future sources should treat it as the default.
+
+### 4. SAGIN-tier scheduling is structurally different from UAV-MEC
+
+[[hsu-2025-drl-hues-hap-noma]] is the wiki's first **HAP-energy-constrained** DRL source. Most HAP entries treat HAP energy as unbounded; this one scopes the scheduler around the HAP's battery budget. The optimization shape (long-term BSS subject to battery dynamics) is closer to the **wireless-power** family ([[zhu-2025-lycnn-drl-wpt-mec]]) than to the **trajectory + offloading** family. PPO suffices because the action space is two-dimensional continuous (transmit-vs-harvest ratio, transmit power) — no need for j-PPO machinery.
+
+This points to a sub-track in the wiki: **resource-constrained aerial scheduling** (energy-aware HAP scheduling, energy-aware UAV-WPT, charging UAVs from fixed stations in [[liu-2026-jppo-en-convntm]]). A future synthesis would consolidate these.
 
 ## Open question for the next pass
 
