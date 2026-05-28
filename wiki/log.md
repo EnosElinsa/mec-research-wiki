@@ -62,3 +62,15 @@
 
 - Curated [[hao-2025-priority-aware-task-driven-co]] — Hao et al. 2025, *Task-Driven Priority-Aware Computation Offloading Using DRL*.
 - Added concept pages: [[event-driven-vs-slot-driven-offloading]], [[task-priority-in-mec]].
+
+## 2026-05-28 (curation pass — paper 11/12)
+
+- Curated [[wang-2025-lae-network-survey]] — Wang et al. 2025, *Toward Realization of Low-Altitude Economy Networks* (IEEE TCCN).
+- Added concept pages: [[generative-ai-for-mec]] (placeholder for future GAI-MEC sources).
+- This is a survey/architecture paper — anchors the wiki's LAE thread and provides the panoramic frame for narrower curated sources.
+
+## 2026-05-28 (curation pass — paper 12/12 — corpus complete)
+
+- Curated [[xie-2026-uav-multisource-fusion]] — Xie et al. 2026, *UAV-Enabled Multi-Source Data Fusion in Vehicular Networks* (IEEE TWC).
+- Added concept pages: [[cooperative-perception]], [[dynamic-constrained-multi-objective-optimization]].
+- All 12 raw sources are now curated. Refreshing index/overview next.
