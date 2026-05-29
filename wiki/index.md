@@ -6,8 +6,36 @@
 
 - [[liu-2026-jppo-en-convntm]] — Liu et al. 2026. Multi-UAV path planning for MEC under high-density mobility. *j-PPO+EN-ConvNTM* (hybrid-action PPO + memory-augmented encoder).
 - [[hao-2025-priority-aware-task-driven-co]] — Hao et al. 2025. Task-driven priority-aware computation offloading via DRL.
+- [[hao-2024-clp-multiuav-priority-offloading]] — Hao et al. 2024. Multi-UAV cooperative MEC with task priority. *CLP* (TD3 + hybrid-action latent space).
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Long-term EE in WPT-MEC via Lyapunov-guided CNN actor + KKT sub-problem.
 - [[ma-2025-pdqn-vehicular-mec]] — Ma et al. 2025. Hybrid-action **P-DQN** for binary-offloading + power allocation in three-tier vehicular MEC.
+- [[song-2024-mol-aoi-energy]] — Song et al. 2024. AoI-vs-energy aerial-ground MEC via **multi-objective RL** (MOL-AET: multi-objective PPO + evolutionary phase).
+
+### SAGIN / satellite offloading
+
+- [[gao-2024-sagin-perception-offloading]] — Gao et al. 2024. **Perception-aided** SAGIN offloading (mmWave radar + YOLOv7 → DRL state); Lyapunov + DDPG + DQN + SGHS.
+- [[chen-2024-thoas-traffic-aware-sagin]] — Chen et al. 2024. **THOAS** — traffic-aware slicing-enabled SAGIN; probsparse-attention prediction + lightweight distilled PPO.
+- [[chen-2024-ulse-game]] — Chen et al. 2024. Multi-user UAV-LEO offloading as a **potential game** (LUTO-Game / JULTO distributed best-response).
+- [[han-2024-sagin-fl-handover]] — Han et al. 2024. **Federated learning** across SAGIN with adaptive inter-layer data offloading + satellite seamless handover.
+
+### IRS / THz / energy
+
+- [[wu-2025-iopo-irs-uav-thz-mec]] — Wu et al. 2025. **IRS-assisted** multi-UAV THz MEC; two-stage IOPO (order-preserving offloading + WOA phases).
+- [[shao-2024-drl-antijamming-mec]] — Shao et al. 2024. **Anti-jamming** UAV-MEC resource management; PER-MATD3 (hardware-validated).
+
+### Joint trajectory / caching / migration
+
+- [[zhao-2025-traj-offload-cache-migration]] — Zhao et al. 2025. Joint trajectory + offloading + migration + **computational-task caching**; Lyapunov + BCD + QCQP-SDR.
+- [[gao-2024-service-experience-cache-uav]] — Gao & Zhai 2024. Fairness-aware cache-enabled UAV-MEC; **service-experience ratio** (Jain's index / delay); Dinkelbach + 4-stage AO.
+
+### UAV-swarm collaborative computing
+
+- [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
+- [[li-2025-stochastic-game-uav-swarm]] — Li et al. 2025. Energy-efficient UAV-swarm MEC as five **stochastic games** with dynamic clustering; RLDC multi-agent Q-learning.
+
+### Generative-AI MEC
+
+- [[ye-2025-aigc-diffusion-contract]] — Ye et al. 2025. Edge AIGC services via **contract theory** + prompt engineering; generative diffusion model as the contract-item optimizer.
 
 ### Multi-agent UAV-MEC
 
@@ -66,6 +94,7 @@
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
+- [[hao-hao]] — first author of the two priority-aware offloading sources ([[hao-2024-clp-multiuav-priority-offloading]], [[hao-2025-priority-aware-task-driven-co]]).
 
 ### Tools
 
@@ -80,21 +109,32 @@
 - [[mobile-edge-computing]]
 - [[task-offloading]]
 - [[task-migration]]
+- [[computational-task-caching]]
 - [[binary-vs-partial-offloading]]
 - [[event-driven-vs-slot-driven-offloading]]
 - [[task-priority-in-mec]]
+- [[priority-based-delay-utility]]
+- [[intra-swarm-task-delegation]]
+- [[anti-jamming-mec]]
 - [[wireless-power-transfer]]
 - [[rf-energy-harvesting]]
 - [[noma]]
 - [[cooperative-perception]]
+- [[perception-aided-offloading]]
 - [[multi-source-data-fusion]]
 - [[video-analytics-offloading]]
 - [[video-transcoding-tradeoff]]
 - [[qoe-modeling-mec]]
 - [[service-caching-mec]]
+- [[network-slicing]]
+- [[traffic-aware-offloading]]
 - [[parallel-vs-serial-processing]]
 - [[task-redundancy-for-reliability]]
 - [[dispersed-computing]]
+- [[collaborative-dl-inference]]
+- [[generative-ai-for-mec]]
+- [[aigc-service-provider]]
+- [[prompt-engineering]]
 
 ### Aerial / network architectures
 
@@ -106,6 +146,8 @@
 - [[air-ground-integrated-network]]
 - [[low-altitude-intelligent-network]]
 - [[leo-satellite-edge-computing]]
+- [[leo-satellite-coverage-time]]
+- [[walker-star-constellation]]
 - [[space-air-ground-integrated-network]]
 - [[vehicular-mec]]
 - [[uav-enabled-its]]
@@ -113,11 +155,14 @@
 - [[post-disaster-mec]]
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
+- [[intelligent-reflecting-surface]]
+- [[terahertz-communication]]
 
 ### UAV control & decisions
 
 - [[uav-trajectory-control]]
 - [[uav-charging-scheduling]]
+- [[dynamic-uav-clustering]]
 - [[gauss-markov-mobility-model]]
 - [[hybrid-action-decision-making]]
 - [[b-spline-trajectory]]
@@ -126,15 +171,26 @@
 
 - [[ppo]] · [[j-ppo]]
 - [[ddqn]]
+- [[deep-q-network]]
 - [[ddpg]]
+- [[td3]] · [[multi-agent-td3]]
 - [[masac]]
 - [[parameterized-dqn]]
+- [[multi-agent-q-learning]]
 - [[gae]]
 - [[pomdp]] · [[ma-pomdp]]
 - [[centralized-training-decentralized-execution]]
 - [[adaptive-entropy-priority-replay]]
 - [[prioritized-experience-replay]]
 - [[safe-reinforcement-learning]]
+- [[hybrid-action-representation]]
+- [[dynamic-confidence-interval-clipping]]
+- [[knowledge-distillation-for-drl]]
+- [[multi-objective-reinforcement-learning]]
+- [[multi-objective-mdp-vectorial-reward]]
+- [[evolutionary-reinforcement-learning]]
+- [[generative-diffusion-model]]
+- [[diffusion-model-as-optimizer]]
 
 ### Memory / encoders
 
@@ -142,16 +198,22 @@
 - [[convlstm]]
 - [[stn]]
 - [[informer-trajectory-prediction]]
+- [[probsparse-self-attention-prediction]]
 
 ### Optimization techniques (classical & evolutionary)
 
 - [[lyapunov-optimization]]
 - [[fractional-programming-dinkelbach]]
 - [[stackelberg-game]]
+- [[potential-game]]
+- [[stochastic-game]]
+- [[nash-equilibrium]]
+- [[contract-theory]]
 - [[matching-theory-for-resource-allocation]]
 - [[gale-shapley-matching]]
 - [[overlay-underlay-spectrum-access]]
 - [[unicast-multicast-cooperation]]
+- [[mixed-integer-nonlinear-programming]]
 - [[dynamic-constrained-multi-objective-optimization]]
 - [[constrained-multi-objective-evolutionary-algorithm]]
 - [[cmoea-d-cdp]]
@@ -161,7 +223,11 @@
 - [[local-search-evolutionary]]
 - [[two-stage-decomposition]]
 - [[alternating-optimization-sdr-sca]]
+- [[qcqp-sdr-probabilistic-mapping]]
+- [[order-preserving-quantization]]
 - [[binary-whale-optimization]]
+- [[whale-optimization-algorithm]]
+- [[self-adaptive-global-best-harmony-search]]
 - [[multi-verse-optimizer]]
 - [[weighted-kmeans-uav-deployment]]
 - [[chance-constraint]]
@@ -178,17 +244,24 @@
 ### Sensing & security
 
 - [[integrated-sensing-and-communication]]
+- [[mmwave-radar-sensing]]
+- [[yolov7-object-detection]]
+- [[spectrum-sensing-channel-selection]]
 - [[physical-layer-security]]
 - [[friendly-jamming-uav]]
 
 ### Security / trust / federation
 
 - [[zero-trust-architecture]]
+- [[federated-learning]]
 - [[federated-reinforcement-learning]]
 - [[blockchain-for-fl-aggregation]]
 - [[ccvm-correction-voting]]
 - [[csra-cold-start-reputation-aggregation]]
 - [[fl-poisoning-attacks]]
+- [[privacy-sensitive-data-partitioning]]
+- [[seamless-handover]]
+- [[adaptive-inter-layer-data-offloading]]
 
 ### Metrics & fairness
 
@@ -196,10 +269,25 @@
 - [[spatial-equity-index]]
 - [[energy-expenditure-coefficient]]
 - [[theil-fairness-index]]
+- [[jains-fairness-index]]
+- [[service-experience-ratio]]
 - [[completion-time-difference]]
 - [[makespan-minimization]]
 - [[energy-balancing-uav]]
 - [[load-balancing-uav-mec]]
+- [[energy-latency-tradeoff]]
+- [[age-of-information]]
+- [[aoi-energy-tradeoff]]
+
+### Distributed inference
+
+- [[collaborative-dl-inference]]
+- [[dnn-model-partition]]
+- [[data-partition-parallel-inference]]
+- [[pipeline-parallel-inference]]
+- [[dl-inference-latency-prediction]]
+- [[adaptive-intermediate-data-compression]]
+- [[elastic-task-scheduling]]
 
 ### Scheduling
 

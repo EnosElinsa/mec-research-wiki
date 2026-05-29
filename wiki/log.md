@@ -355,3 +355,158 @@ Read each new synthesis page paragraph by paragraph and cross-checked every fact
 
 - 26 source pages, 103 concept pages, 11 entity pages, 6 synthesis pages — all schema-clean.
 - 3 dangling wikilinks remain (hp-mobility-models, fairness-metrics-in-mec, purpose) — all pre-existing, none introduced or worsened by the audit.
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.pdf-41f8372c-e5ff-489a-884c-bb9e2e6212c8/fbb58c1a-07f7-4252-9763-a3a929187767_origin.pdf
+- A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.pdf-41f8372c-e5ff-489a-884c-bb9e2e6212c8/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.pdf-644368d2-45ce-4d10-9d8c-5072eac62adf/59a5c499-4de5-4693-94d8-c8bb910236f5_origin.pdf
+- AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.pdf-644368d2-45ce-4d10-9d8c-5072eac62adf/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.pdf-9d8450b7-ab1d-4821-933f-ec94a1c3b84d/f0eb5d57-dc3b-4515-85dc-cf2fd20577c0_origin.pdf
+- Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.pdf-9d8450b7-ab1d-4821-933f-ec94a1c3b84d/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.pdf-afd0b75a-b16e-4e44-97a0-18bbc9ace47e/5f395380-8451-4fc0-8981-b70a16f3bab0_origin.pdf
+- Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.pdf-afd0b75a-b16e-4e44-97a0-18bbc9ace47e/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.pdf-45b00363-1481-4a12-bdd8-08fa0d873bdb/ca44e888-13c5-4031-abd4-7f82f289aab3_origin.pdf
+- Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.pdf-45b00363-1481-4a12-bdd8-08fa0d873bdb/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems.pdf-b25ba9cf-0e9d-48a8-aacb-34b513a0d19b/6c4973d7-6eea-4a44-a471-8abc8b4bfeff_origin.pdf
+- Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems.pdf-b25ba9cf-0e9d-48a8-aacb-34b513a0d19b/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.pdf-a4214f62-8d31-49a9-9cf8-c47d49e7a7c1/ea57119f-657f-4e9c-a621-1d58cc99cfe3_origin.pdf
+- Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.pdf-a4214f62-8d31-49a9-9cf8-c47d49e7a7c1/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC.pdf-562be632-7b42-4948-a346-f9ecb7b00005/45f67a08-199f-481d-bf29-def86d9ae977_origin.pdf
+- Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC.pdf-562be632-7b42-4948-a346-f9ecb7b00005/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Task_Offloading_Resource_Allocation_and_Trajectory_Design_for_Multi-UAV_Cooperative_Edge_Computing_With_Task_Priority.pdf-84f5e53a-ade3-41c5-a94b-9ddf5067c206/262c8c5f-9f79-487f-90c8-f7fe10c7a86e_origin.pdf
+- Joint_Task_Offloading_Resource_Allocation_and_Trajectory_Design_for_Multi-UAV_Cooperative_Edge_Computing_With_Task_Priority.pdf-84f5e53a-ade3-41c5-a94b-9ddf5067c206/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach.pdf-cfeae031-cf38-4e54-b0f5-5320171ef1dc/4f64765d-6919-4fa8-ac26-98022dfb6780_origin.pdf
+- Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach.pdf-cfeae031-cf38-4e54-b0f5-5320171ef1dc/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- All-Sky_Autonomous_Computing_in_UAV_Swarm.pdf-2db13480-58a0-4e50-b698-927a64f05df4/5bbeb0cb-515b-49cf-a0d5-cc2274e3e0b3_origin.pdf
+- All-Sky_Autonomous_Computing_in_UAV_Swarm.pdf-2db13480-58a0-4e50-b698-927a64f05df4/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Deep_Reinforcement_Learning-Based_Resource_Management_for_UAV-Assisted_Mobile_Edge_Computing_Against_Jamming.pdf-0945dec6-2a96-4ba6-a135-4b97bcf692cb/61d1a406-15d3-42b7-9873-b406053311ee_origin.pdf
+- Deep_Reinforcement_Learning-Based_Resource_Management_for_UAV-Assisted_Mobile_Edge_Computing_Against_Jamming.pdf-0945dec6-2a96-4ba6-a135-4b97bcf692cb/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks.pdf-acace601-ee7b-4913-b1e3-1364faa6d96b/22637016-68ae-4571-8474-b4efeba95c79_origin.pdf
+- Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks.pdf-acace601-ee7b-4913-b1e3-1364faa6d96b/full.md
+
+## 2026-05-29 (curation pass — 13 new sources, batch 3)
+
+User dropped 13 new folders into `raw/sources/` and asked to construct the wiki from them. Curated all 13 in one pass (4 had pre-existing extraction drafts in `.curation-out/`; the remaining 9 were extracted by sub-agents against `.curation-context.md`). Corpus grows **26 → 39 curated sources**.
+
+**SAGIN / satellite offloading (4 new):**
+- [[gao-2024-sagin-perception-offloading]] — Gao et al. 2024 (JSAC). Perception-aided SAGIN offloading; mmWave radar + YOLOv7 feed a Lyapunov + DDPG + DQN + SGHS pipeline. **First perception-driven offloading entry.**
+- [[chen-2024-thoas-traffic-aware-sagin]] — Chen et al. 2024 (JSAC). THOAS: traffic-aware slicing-enabled SAGIN; probsparse-attention prediction + lightweight distilled PPO.
+- [[chen-2024-ulse-game]] — Chen et al. 2024 (TMC). Multi-user UAV-LEO offloading as a potential game (LUTO-Game / JULTO).
+- [[han-2024-sagin-fl-handover]] — Han et al. 2024 (JSAC). Federated learning across SAGIN with adaptive inter-layer data offloading + satellite seamless handover. **First plain-FL entry.**
+
+**UAV-swarm collaborative computing (2 new):**
+- [[sun-2024-asap-uav-swarm]] — Sun et al. 2024 (TMC). ASAP: in-swarm collaborative DL inference (model + data partition, pipeline-parallel). **Hardware-validated** (24 Jetson computers + 5 real UAVs).
+- [[li-2025-stochastic-game-uav-swarm]] — Li et al. 2025 (TGCN). Energy-efficient UAV-swarm MEC as five stochastic games with dynamic clustering; RLDC multi-agent Q-learning.
+
+**IRS / THz / anti-jamming (2 new):**
+- [[wu-2025-iopo-irs-uav-thz-mec]] — Wu et al. 2025 (TMC). IRS-assisted multi-UAV THz MEC; two-stage IOPO (order-preserving offloading + WOA phases). **First IRS/THz entry.**
+- [[shao-2024-drl-antijamming-mec]] — Shao et al. 2024 (TMC). Anti-jamming UAV-MEC; PER-MATD3. **Hardware-validated** (Raspberry Pi/USRP). **First anti-jamming entry.**
+
+**Trajectory / caching / fairness / priority / AoI / AIGC (5 new):**
+- [[hao-2024-clp-multiuav-priority-offloading]] — Hao et al. 2024 (TMC). Multi-UAV priority offloading; CLP (TD3 + hybrid-action latent space). Companion to [[hao-2025-priority-aware-task-driven-co]].
+- [[zhao-2025-traj-offload-cache-migration]] — Zhao et al. 2025 (TMC). Joint trajectory + offloading + migration + computational-task caching; Lyapunov + BCD + QCQP-SDR.
+- [[gao-2024-service-experience-cache-uav]] — Gao & Zhai 2024 (TMC). Fairness-aware cache-enabled UAV-MEC; service-experience ratio (Jain / delay); Dinkelbach + 4-stage AO.
+- [[song-2024-mol-aoi-energy]] — Song et al. 2024 (TMC). AoI-vs-energy aerial-ground MEC via multi-objective RL (MOL-AET). **First AoI / MORL entry.**
+- [[ye-2025-aigc-diffusion-contract]] — Ye et al. 2025 (TVT). Edge AIGC via contract theory + prompt engineering; generative diffusion model as the contract-item optimizer.
+
+### Concept pages added (55)
+
+- **DRL / learning:** [[td3]], [[multi-agent-td3]], [[deep-q-network]], [[multi-agent-q-learning]], [[hybrid-action-representation]], [[knowledge-distillation-for-drl]], [[dynamic-confidence-interval-clipping]], [[multi-objective-reinforcement-learning]], [[multi-objective-mdp-vectorial-reward]], [[evolutionary-reinforcement-learning]], [[generative-diffusion-model]], [[diffusion-model-as-optimizer]].
+- **Game theory / optimization:** [[stochastic-game]], [[potential-game]], [[nash-equilibrium]], [[contract-theory]], [[mixed-integer-nonlinear-programming]], [[whale-optimization-algorithm]], [[self-adaptive-global-best-harmony-search]], [[order-preserving-quantization]], [[qcqp-sdr-probabilistic-mapping]].
+- **Communication / sensing / channel:** [[anti-jamming-mec]], [[spectrum-sensing-channel-selection]], [[mmwave-radar-sensing]], [[yolov7-object-detection]], [[perception-aided-offloading]], [[intelligent-reflecting-surface]], [[terahertz-communication]], [[network-slicing]], [[traffic-aware-offloading]], [[probsparse-self-attention-prediction]].
+- **Distributed inference (ASAP):** [[collaborative-dl-inference]], [[dnn-model-partition]], [[data-partition-parallel-inference]], [[pipeline-parallel-inference]], [[dl-inference-latency-prediction]], [[adaptive-intermediate-data-compression]], [[elastic-task-scheduling]].
+- **Federation / satellite:** [[federated-learning]], [[seamless-handover]], [[adaptive-inter-layer-data-offloading]], [[privacy-sensitive-data-partitioning]], [[walker-star-constellation]], [[leo-satellite-coverage-time]].
+- **Scheduling / caching / swarm:** [[computational-task-caching]], [[priority-based-delay-utility]], [[intra-swarm-task-delegation]], [[dynamic-uav-clustering]].
+- **Metrics / freshness / fairness / AIGC:** [[age-of-information]], [[aoi-energy-tradeoff]], [[energy-latency-tradeoff]], [[jains-fairness-index]], [[service-experience-ratio]], [[prompt-engineering]], [[aigc-service-provider]].
+
+### Entity pages added (1)
+
+- [[hao-hao]] — first author of [[hao-2024-clp-multiuav-priority-offloading]] and [[hao-2025-priority-aware-task-driven-co]] (identical co-author roster), anchoring the task-priority + hybrid-action thread.
+
+### What this changes about the corpus
+
+- **Corpus size:** 26 → 39 curated sources.
+- **New tracks:** SAGIN/satellite offloading (4), UAV-swarm collaborative computing (2), game-theoretic offloading (now spans potential/stochastic/Stackelberg games), generative-AI MEC (2), anti-jamming security-DRL (1).
+- **First hardware-validated sources** enter the corpus: [[sun-2024-asap-uav-swarm]] and [[shao-2024-drl-antijamming-mec]]. The "0 hardware-validated sources" caveat in earlier syntheses is now obsolete.
+- **New formulation families:** potential/stochastic games + Nash-equilibrium analysis, multi-objective RL (vectorial reward), contract theory, IRS/THz channels, in-swarm collaborative DL inference, federated learning over SAGIN.
+- **Diffusion-as-optimizer** now has two sources ([[ye-2025-aigc-diffusion-contract]], [[peng-2025-drudm-cfg]]) — a real synthesis opportunity.
+
+### Issues flagged for follow-up
+
+- **Synthesis refresh overdue.** The synthesis/findings/thesis pages still reflect the 26-source view. The DRL-backbones synthesis should add TD3/MATD3, multi-agent Q-learning, and MORL; the solver-family synthesis should add the game-theoretic and diffusion-as-optimizer families; a dedicated SAGIN-offloading synthesis is now warranted.
+- **Author entities to consider:** Xuemin Sherman Shen and Jiwei Huang (on [[chen-2024-ulse-game]]; Jiwei Huang may match the existing huang-* sources — verify identity), Dusit Niyato / Hongyang Du (generative-AI line, on [[ye-2025-aigc-diffusion-contract]]), Fuhong Song (evolutionary-MORL line, on [[song-2024-mol-aoi-energy]]). None created this pass pending recurrence confirmation.
+- **Figure-derived numbers:** several magnitudes in [[li-2025-stochastic-game-uav-swarm]] and [[han-2024-sagin-fl-handover]] were read from MinerU-parsed figure tables with unlabeled axes — treat as indicative trends; verify against the PDFs before citing exactly.
+- **Cross-references not yet bidirectional:** new sources link to older ones, but a few older source pages (e.g. [[peng-2025-drudm-cfg]], [[hao-2025-priority-aware-task-driven-co]]) could gain back-links to the new companions. Deferred to a link-tidy pass.
+
+## 2026-05-29 (audit pass — batch-3 verification)
+
+Correctness-first audit of the 13 new source pages and refreshed navigation:
+
+- **DOIs verified against parses.** All 13 new source DOIs cross-checked against `Digital Object Identifier` lines in their `full.md`. Two needed manual confirmation because a regex first-match picked up a precursor/reference DOI: [[li-2025-stochastic-game-uav-swarm]] (parse confirms `10.1109/TGCN.2024.3424449`; the WCNC 2024 `10570678` is a conference precursor) and [[shao-2024-drl-antijamming-mec]] (parse confirms `10.1109/TMC.2024.3432491`; the GLOBECOM 2023 hit was a reference). Both page DOIs are correct.
+- **Frontmatter valid** on all 39 source pages (`type/title/authors/year/venue/tags/related/created/updated` + H1 present).
+- **Wikilink integrity:** no NEW dangling links introduced by this batch. The only unresolved targets remain the three pre-existing ones (`fairness-metrics-in-mec`, `hp-mobility-models`, `purpose`).
+- **Counts reconciled:** 39 sources, 158 concepts, 12 entities — matches `overview.md`.
+- Created a reusable workspace agent `.kiro/agents/mec-wiki-curator.md` to standardize this curate-then-audit workflow for future raw-paper drops.
