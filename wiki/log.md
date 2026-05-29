@@ -295,3 +295,26 @@ Each page lists their roster and notes which methodological knobs they're associ
 - **Findings / methodology / thesis pages** still anchored to the original 12-source corpus. They were not touched in this pass — claims like [[hybrid-action-memory-augmented-drl-wins-uav-mec]] are framed as *theses about [[liu-2026-jppo-en-convntm]]'s framework*, not corpus-wide. Refreshing them under the 26-source view would be a separate dedicated pass with new findings derived from the new sources, not just a re-link.
 - **No `evolutionary-design-recipe`** companion to [[design-recipe-multi-uav-mec]]. The lineage synthesis page covers the methodological choices but doesn't yet distill them into a checklist. Future work.
 - **No fresh queries** raised in this pass. Several open questions are flagged inside the new synthesis pages — they should be promoted to formal `query-*` pages when one accumulates enough signal to be worth tracking.
+
+## 2026-05-29 (audit pass — three corrections)
+
+Reviewed all 14 new source pages against the parsed papers. Three issues found, all fixed:
+
+### bao-2025-ddpg-video-offloading
+
+- **Venue was wrong.** I had marked it as "Journal of Supercomputing / Cluster Computing (Springer; preprint, accepted Sep 2025)" because the MinerU parse didn't capture publication metadata. The actual venue is **Complex & Intelligent Systems** (Springer), DOI `10.1007/s40747-025-02106-1`. Confirmed via web search of the title; updated frontmatter and citation.
+- **Findings claim was wrong.** I wrote "DDPG converges faster than PPO baselines on this problem". The actual paper compares DDPG against **AC** and **DQN** baselines (no PPO baseline in the paper). DQN explicitly fails to converge in continuous action space; AC trains but is unstable. Updated the Findings section and added a note that the wiki's broader [[ddpg-vs-jppo]] comparison should be read as cross-source rather than internal to this paper.
+
+### huang-2025-cmop-dispersed-computing
+
+- **Venue was wrong.** I had marked it as "IEEE / preprint (Huang/Peng group, 2025)". The actual venue is **IEEE Transactions on Evolutionary Computation**, DOI `10.1109/TEVC.2025.3569722`. Confirmed by grepping the parsed full.md for the DOI. Updated frontmatter and citation.
+
+### Other checks that passed
+
+- Cross-checked DOIs for the 12 other new source pages against their parsed papers — all match.
+- Schema lint: 26 source pages, 103 concept pages, 11 entity pages, 6 synthesis pages all have valid frontmatter (`type`, `title`, `tags`, h1 heading, etc.).
+- Method/findings claims spot-checked for: JCORA (wang-2026, two-stage matching+convex+PGD), EMOMVO-CGD/JCCPAPO (liu-2025), ESAC=SAC+PER (nabi-2025), three-tier+binary-offloading+P-DQN (ma-2025), DEM+B-spline+multi-tasking (wu-2026), repair-CHT (peng-2024), dual-population+repair (huang-2025), I≥J standby UAVs (peng-2024), ACCP/ARDCP/MBCM/SRCON (jiang-2025). All consistent with the papers.
+- Three dangling wikilinks remain (`hp-mobility-models`, `fairness-metrics-in-mec`, `purpose`) — all pre-existing, not introduced by either the curation or audit pass.
+- Graph: 161 nodes, 1073 edges (LLM Wiki API).
+
+The cross-source synthesis pages and concept stubs were not re-audited paragraph-by-paragraph in this pass; they should be reviewed in a future synthesis-refresh pass when new evidence comes in.

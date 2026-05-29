@@ -3,8 +3,8 @@ type: source
 title: "Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing: A Multi-Objective Optimization Approach"
 authors: ["Xumin Huang", "Zexiong Wu", "Chaoda Peng", "Yuan Wu", "Weifeng Zhong", "Jiawen Kang", "Shengli Xie"]
 year: 2025
-url: ""
-venue: "IEEE / preprint (Huang/Peng group, 2025)"
+url: "https://doi.org/10.1109/TEVC.2025.3569722"
+venue: "IEEE Transactions on Evolutionary Computation"
 tags: [dispersed-computing, cmop, evolutionary-algorithm, task-redundancy, dual-population, parallel-vs-serial]
 related:
   - "[[dispersed-computing]]"
@@ -23,7 +23,7 @@ updated: 2026-05-29
 
 ## Citation
 
-Huang, X., Wu, Z., Peng, C., Wu, Y., Zhong, W., Kang, J., & Xie, S. (2025). *Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing: A Multi-Objective Optimization Approach*. (Huang/Peng group preprint, 2025.)
+Huang, X., Wu, Z., Peng, C., Wu, Y., Zhong, W., Kang, J., & Xie, S. (2025). *Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing: A Multi-Objective Optimization Approach*. **IEEE Transactions on Evolutionary Computation**. DOI: 10.1109/TEVC.2025.3569722.
 
 ## TL;DR
 
