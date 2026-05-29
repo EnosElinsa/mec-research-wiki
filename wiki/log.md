@@ -1136,3 +1136,49 @@ Deleted 2 source files and 0 wiki pages.
 Sources:
 - Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf/fd834c11-797d-4d59-af05-b36b8e770e1f_origin.pdf
 - Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf/full.md
+
+## [2026-05-29] follow-up cleanup pass — dangling links + author identities + references commit
+
+Scoped cleanup pass (no new sources curated). Three tasks:
+
+### Task 1 — dangling wikilink resolution (now ZERO real dangling links)
+
+- **`[[hp-mobility-models]]`** in [[liu-2026-jppo-en-convntm]] (System model table, IoT-mobility Reference cell) → replaced with **`[31]`**. Grounded in the parse (`raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/full.md`, "Gauss-Markov (GM) mobility model … as [31]"), matching the bracketed-cite style of the other rows (`[5], [32]`, `[10]`, `[33]`). No `hp-mobility-models` page was invented.
+- **`[[fairness-metrics-in-mec]]`** in [[peng-2025-drudm-cfg]] → **created** `wiki/concepts/fairness-metrics-in-mec.md` as a synthesis concept tying together the existing fairness vocabulary ([[jains-fairness-index]], [[theil-fairness-index]], [[spatial-equity-index]], [[service-experience-ratio]], [[energy-balancing-uav]]) and grounded in how the corpus uses them (liu-2026 Jain-style f_n in [[equilibrium-efficiency-metric]]; peng-2025 Theil regularizer; he-2023 fairness-among-UAVs; gao-2024 service-experience ratio). Dropped the "when that page exists" qualifier in the peng-2025 sentence.
+- **`[[purpose]]`** in [[high-density-mobile-device-scenarios]] — **FALSE POSITIVE, left as-is.** Verified `purpose.md` exists at repo root and is indexed in `.llm-wiki/file-snapshot.json` (`purpose.md`, size 816). Obsidian resolves `[[purpose]]` by basename to the root file, so the link is valid. The earlier "dangling" report came from a `wiki/`-scoped integrity checker that does not index repo-root files.
+- **Integrity re-check:** the naive `wiki/`-only checker still flags `[[purpose]]` (root file, out of its scope) and a `[[hp-mobility-models]]`/`[[purpose]]` mention inside back-tick code spans in this very log (not rendered as links by Obsidian). An Obsidian-faithful re-check (root indexed + inline-code spans stripped) reports **NO DANGLING LINKS**. Net: the two real dangling links are fixed; the third was never real.
+
+### Task 2 — deferred author identities confirmed (21 created, 5+ deferred)
+
+Computed author recurrence across all 82 source pages and verified affiliations against each paper's parse (first ~40 lines). **Created 21 entity pages** for recurring authors whose identity is unambiguous and affiliation-consistent across their sources (schema mirrors [[geng-sun]]):
+
+- Jilin-University / NTU aerial-MEC cluster: [[zemin-sun]], [[jiahui-li]] (Jilin Univ), [[jiacheng-wang]], [[dusit-niyato]] (NTU), [[qingqing-wu]] (Shanghai Jiao Tong Univ).
+- NUAA aerial-computing cluster: [[ziye-jia]], [[chao-dong]], [[qihui-wu]] (NUAA), [[zhu-han]] (Univ of Houston / Kyung Hee).
+- Dalian-Maritime-University maritime cluster: [[bin-lin]] (DMU), [[zhen-wang]] (DMU / Dalian Neusoft — same email `wangzhen_jsj@neusoft.edu.cn` across all 3 papers confirms one identity despite the common name), [[qiang-ye]] (Univ of Calgary).
+- NWPU non-terrestrial-network cluster: [[bomin-mao]], [[hongzhi-guo]], [[jiajia-liu]] (Northwestern Polytechnical Univ, `@nwpu.edu.cn`).
+- NCEPU aerial-edge cluster: [[peng-qin]], [[yang-fu]] (North China Electric Power Univ, `qinpeng@ncepu.edu.cn`); [[jingjing-wang]] (Beihang Univ, `drwangjj@buaa.edu.cn` — shared email confirms one identity).
+- SCAU evolutionary UAV-MEC cluster: [[zexiong-wu]] (South China Agricultural Univ).
+- Cross-cutting seniors: [[chunxiao-jiang]] (Tsinghua, `jchx@tsinghua.edu.cn`), [[tony-q-s-quek]] (SUTD, `tonyquek@sutd.edu.sg`).
+
+Updated [[geng-sun]] to note its previously-deferred co-authors now have confirmed pages.
+
+**Deferred — needs human confirmation** (not created):
+- **Yong Wang** (wang-2019-todetas, wang-acve) — common name; the ACVE paper is an evolutionary-computation work, wang-2019 is a different topic/affiliation; no shared affiliation in the parses.
+- **Nan Zhao** (zhao-2022-matd3, zhang-2025-gan-td3-isac) — zhao-2022's Nan Zhao is at Hubei Univ of Technology; the zhang-2025 Nan Zhao affiliation is not confirmed identical → namesake risk.
+- **Wei Zhang** (hao-2024, hao-2025) — extremely common name; affiliation not verified.
+- **Ying Chen** (chen-2023-dotora, chen-2024-ulse-game) — common name; affiliation not verified this pass.
+- **Jie Xu** (meng-2024-uav-isac-overview, yao-2025-secure-isac) — common name; both point to CUHK-Shenzhen + ISAC (likely same person) but only one parse gives a disambiguating email; held for human confirmation.
+- Lower-priority 2-source co-authors with consistent affiliation (candidates for a future pass, not ambiguous): Qiqi Xie (SCAU), Yijie Xun / Jiadai Wang / Yangbo Liu (NWPU), Nei Kato (Tohoku).
+
+Cross-linking convention: entity→source links live in each entity page's `related` + roster (Obsidian auto-generates the backlinks); existing source pages do not embed author-entity links, so none were added, matching the established [[geng-sun]] pattern.
+
+### Task 3 — references files committed
+
+Staged and committed the prior reference-scout outputs: `wiki/references/recommendations.md`, `wiki/references/reference-database.json`, `wiki/references/reference-database.md`. Scanned for secrets/tokens — none present. Added a **References** section to `wiki/index.md` linking [[reference-database]] and [[recommendations]].
+
+### Audit
+
+- **Frontmatter:** validated `type`/`title`/`tags`/dates/H1 on all touched pages (1 concept + 21 entities + 2 sources + index + overview) via diagnostics — no issues.
+- **Wikilink integrity:** Obsidian-faithful check = **NO DANGLING LINKS**. Pre-existing dangling links eliminated: `hp-mobility-models` (fixed) and `fairness-metrics-in-mec` (created); `purpose` confirmed as a valid root-file link.
+- **Counts reconciled:** 82 sources, 176 concepts, 34 entity pages (33 authors + pytorch) — matches `overview.md`.
+- **LLM Wiki API:** not queried this pass (headless shell); graph stats unavailable — not required for correctness.

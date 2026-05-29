@@ -3,7 +3,7 @@
  "parses_mined": 41,
  "distinct_papers": 39,
  "reference_strings": 1929,
- "unique_references": 1590,
+ "unique_references": 1567,
  "records": [
   {
    "key": "yang-2022-online-trajectory-and-resource-optimization-for",
@@ -28,6 +28,33 @@
     "wu-2026-terrain-aware-uav-mec",
     "xie-2026-uav-multisource-fusion",
     "zhao-2025-traj-offload-cache-migration"
+   ],
+   "cited_count": 8,
+   "curated_as": null
+  },
+  {
+   "key": "zhao-2022-multi-agent-deep-reinforcement-learning-for",
+   "authors": "Nan Zhao, Zhiyang Ye, Yiyang Pei, Ying-Chang Liang, and Dusit Niyato",
+   "title": "Multi-agent deep reinforcement learning for task offloading in uav-assisted mobile edge computing",
+   "venue": "IEEE Transactions on Wireless Communications",
+   "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
+   "venue_tier": "Q1",
+   "year": "2022",
+   "vol": "21",
+   "no": "9",
+   "pp": "6949–6960",
+   "url": null,
+   "doi": "10.1109/TWC.2022.3153316",
+   "scope": "in",
+   "cited_by": [
+    "bi-2025-sg-mapg",
+    "hao-2024-clp-multiuav-priority-offloading",
+    "jia-2025-dro-uav-hap-mec",
+    "nabi-2025-jour-hierarchical-aerial",
+    "peng-2025-drudm-cfg",
+    "xie-2026-uav-multisource-fusion",
+    "zhang-2025-mcma-task-migration",
+    "zhang-2025-ssac-mgi-heterogeneous-uav"
    ],
    "cited_count": 8,
    "curated_as": null
@@ -59,29 +86,28 @@
    "curated_as": null
   },
   {
-   "key": "zhao-2022-multi-agent-deep-reinforcement-learning-for",
-   "authors": "N. Zhao, Z. Ye, Y. Pei, Y.-C. Liang, and D. Niyato",
-   "title": "Multi-agent deep reinforcement learning for task offloading in UAV-assisted mobile edge computing",
-   "venue": "IEEE Trans. Wireless Commun",
+   "key": "guo-2024-multiuav-cooperative-task-offloading-and-resource",
+   "authors": "Hongzhi Guo, Yutao Wang, Jiajia Liu, and Chang Liu",
+   "title": "Multiuav cooperative task offloading and resource allocation in 5g advanced and beyond",
+   "venue": "IEEE Transactions on Wireless Communications",
    "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
    "venue_tier": "Q1",
-   "year": "2022",
-   "vol": "21",
-   "no": "9",
-   "pp": "6949–6960",
+   "year": "2024",
+   "vol": "23",
+   "no": "1",
+   "pp": "347–359",
    "url": null,
-   "doi": "10.1109/TWC.2022.3153316",
+   "doi": "10.1109/TWC.2023.3277801",
    "scope": "in",
    "cited_by": [
-    "bi-2025-sg-mapg",
     "hao-2024-clp-multiuav-priority-offloading",
     "jia-2025-dro-uav-hap-mec",
     "nabi-2025-jour-hierarchical-aerial",
-    "xie-2026-uav-multisource-fusion",
+    "peng-2025-drudm-cfg",
     "zhang-2025-mcma-task-migration",
-    "zhang-2025-ssac-mgi-heterogeneous-uav"
+    "zhao-2025-traj-offload-cache-migration"
    ],
-   "cited_count": 7,
+   "cited_count": 6,
    "curated_as": null
   },
   {
@@ -129,30 +155,6 @@
     "qin-2025-bcuav-masac",
     "wu-2026-terrain-aware-uav-mec",
     "xie-2026-uav-multisource-fusion"
-   ],
-   "cited_count": 5,
-   "curated_as": null
-  },
-  {
-   "key": "guo-2024-multi-uav-cooperative-task-offloading-and",
-   "authors": "H. Guo, Y. Wang, J. Liu, and C. Liu",
-   "title": "Multi-UAV cooperative task offloading and resource allocation in 5G advanced and beyond",
-   "venue": "IEEE Trans. Wireless Commun",
-   "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": "23",
-   "no": "1",
-   "pp": "347–359",
-   "url": null,
-   "doi": "10.1109/TWC.2023.3277801",
-   "scope": "in",
-   "cited_by": [
-    "hao-2024-clp-multiuav-priority-offloading",
-    "jia-2025-dro-uav-hap-mec",
-    "nabi-2025-jour-hierarchical-aerial",
-    "zhang-2025-mcma-task-migration",
-    "zhao-2025-traj-offload-cache-migration"
    ],
    "cited_count": 5,
    "curated_as": null
@@ -230,6 +232,30 @@
    "curated_as": null
   },
   {
+   "key": "song-2023-evolutionary-multi-objective-reinforcement-learning-based",
+   "authors": "F. Song et al.",
+   "title": "Evolutionary multi-objective reinforcement learning based trajectory control and task offloading in UAV-assisted mobile edge computing",
+   "venue": "IEEE Trans. Mobile Comput",
+   "venue_normalized": "IEEE Trans. Mobile Comput. (TMC)",
+   "venue_tier": "Q1",
+   "year": "2023",
+   "vol": "22",
+   "no": "12",
+   "pp": "7387–7405",
+   "url": null,
+   "doi": "10.1109/TMC.2022.3208457",
+   "scope": "in",
+   "cited_by": [
+    "hao-2024-clp-multiuav-priority-offloading",
+    "jia-2025-dro-uav-hap-mec",
+    "peng-2025-drudm-cfg",
+    "song-2024-mol-aoi-energy",
+    "zhang-2025-ssac-mgi-heterogeneous-uav"
+   ],
+   "cited_count": 5,
+   "curated_as": null
+  },
+  {
    "key": "fan-2019-push-and-pull-search-for-solving",
    "authors": "Z. Fan et al.",
    "title": "Push and pull search for solving constrained multiobjective optimization problems",
@@ -258,7 +284,7 @@
    "title": "Addressing function approximation error in actor-critic methods",
    "venue": "in Pro. Int. Conf. Mach. Learn",
    "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_tier": "low",
    "year": "2018",
    "vol": null,
    "no": null,
@@ -271,6 +297,29 @@
     "hao-2024-clp-multiuav-priority-offloading",
     "hao-2025-priority-aware-task-driven-co",
     "shao-2024-drl-antijamming-mec"
+   ],
+   "cited_count": 4,
+   "curated_as": null
+  },
+  {
+   "key": "kang-2023-cooperative-uav-resource-allocation-and-task",
+   "authors": "H. Kang, X. Chang, J. Miši´c, V. B. Miši´c, J. Fan, and Y. Liu",
+   "title": "Cooperative UAV resource allocation and task offloading in hierarchical aerial computing systems: A MAPPO based approach",
+   "venue": "IEEE Internet Things J",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2023",
+   "vol": "10",
+   "no": "12",
+   "pp": "10497–10509",
+   "url": null,
+   "doi": "10.1109/JIOT.2023.3240173",
+   "scope": "in",
+   "cited_by": [
+    "jia-2025-dro-uav-hap-mec",
+    "nabi-2025-jour-hierarchical-aerial",
+    "peng-2025-drudm-cfg",
+    "song-2024-mol-aoi-energy"
    ],
    "cited_count": 4,
    "curated_as": null
@@ -299,23 +348,46 @@
    "curated_as": null
   },
   {
-   "key": "song-2023-evolutionary-multi-objective-reinforcement-learning-based",
-   "authors": "F. Song et al.",
-   "title": "Evolutionary multi-objective reinforcement learning based trajectory control and task offloading in UAV-assisted mobile edge computing",
+   "key": "sun-2024-joint-task-offloading-and-resource-allocation",
+   "authors": "G. Sun et al.",
+   "title": "Joint task offloading and resource allocation in aerialterrestrial UAV networks with edge and fog computing for post-disaster rescue",
    "venue": "IEEE Trans. Mobile Comput",
    "venue_normalized": "IEEE Trans. Mobile Comput. (TMC)",
    "venue_tier": "Q1",
-   "year": "2023",
-   "vol": "22",
-   "no": "12",
-   "pp": "7387–7405",
+   "year": "2024",
+   "vol": "23",
+   "no": "9",
+   "pp": "8582–8600",
    "url": null,
-   "doi": "10.1109/TMC.2022.3208457",
+   "doi": null,
    "scope": "in",
    "cited_by": [
-    "hao-2024-clp-multiuav-priority-offloading",
+    "peng-2025-drudm-cfg",
+    "wang-2025-lae-network-survey",
+    "wang-2026-aerial-marine-msar",
+    "zhu-2025-lycnn-drl-wpt-mec"
+   ],
+   "cited_count": 4,
+   "curated_as": null
+  },
+  {
+   "key": "wang-2020-joint-deployment-and-task-scheduling-optimization",
+   "authors": "Yong Wang, Zhi-Yang Ru, Kezhi Wang, and Pei-Qiu Huang",
+   "title": "Joint deployment and task scheduling optimization for large-scale mobile users in multi-uav-enabled mobile edge computing",
+   "venue": "IEEE Transactions on Cybernetics",
+   "venue_normalized": "IEEE Trans. Cybern. (Q1)",
+   "venue_tier": "Q1",
+   "year": "2020",
+   "vol": "50",
+   "no": "9",
+   "pp": "3984–3997",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "huang-2023-mu-aec-task-energy",
     "jia-2025-dro-uav-hap-mec",
-    "song-2024-mol-aoi-energy",
+    "peng-2025-drudm-cfg",
     "zhang-2025-ssac-mgi-heterogeneous-uav"
    ],
    "cited_count": 4,
@@ -340,6 +412,52 @@
     "han-2024-sagin-fl-handover",
     "liu-2025-haps-uav-maritime-iot",
     "xie-2026-uav-multisource-fusion"
+   ],
+   "cited_count": 4,
+   "curated_as": null
+  },
+  {
+   "key": "yang-2020-multi-uav-enabled-loadbalance-mobile-edge",
+   "authors": "Lei Yang, Haipeng Yao, Jingjing Wang, Chunxiao Jiang, Abderrahim Benslimane, and Yunjie Liu",
+   "title": "Multi-uav-enabled loadbalance mobile-edge computing for iot networks",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2020",
+   "vol": "7",
+   "no": "8",
+   "pp": "6898–6908",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "gao-2024-service-experience-cache-uav",
+    "huang-2023-mu-aec-task-energy",
+    "peng-2025-drudm-cfg",
+    "shao-2024-drl-antijamming-mec"
+   ],
+   "cited_count": 4,
+   "curated_as": null
+  },
+  {
+   "key": "zhang-2020-joint-computation-and-communication-design-for",
+   "authors": "Tiankui Zhang, Yu Xu, Jonathan Loo, Dingcheng Yang, and Lin Xiao",
+   "title": "Joint computation and communication design for uavassisted mobile edge computing in iot",
+   "venue": "IEEE Transactions on Industrial Informatics",
+   "venue_normalized": "IEEE Trans. Ind. Informat. (TII)",
+   "venue_tier": "Q1",
+   "year": "2020",
+   "vol": "16",
+   "no": "8",
+   "pp": "5505–5516",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "gao-2024-service-experience-cache-uav",
+    "peng-2025-drudm-cfg",
+    "shao-2024-drl-antijamming-mec",
+    "zhang-2025-ssac-mgi-heterogeneous-uav"
    ],
    "cited_count": 4,
    "curated_as": null
@@ -456,6 +574,50 @@
    "curated_as": null
   },
   {
+   "key": "du-2024-maddpg-based-joint-service-placement-and",
+   "authors": "Jianbo Du, Ziwen Kong, Aijing Sun, Jiawen Kang, Dusit Niyato, Xiaoli Chu, and F. Richard Yu",
+   "title": "Maddpg-based joint service placement and task offloading in mec empowered air–ground integrated networks",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2024",
+   "vol": "11",
+   "no": "6",
+   "pp": "10600–10615",
+   "url": null,
+   "doi": "10.1109/JIOT.2023.3326820",
+   "scope": "in",
+   "cited_by": [
+    "bi-2025-sg-mapg",
+    "nabi-2025-jour-hierarchical-aerial",
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 3,
+   "curated_as": null
+  },
+  {
+   "key": "gong-2023-dependent-tasks-offloading-in-mobile-edge",
+   "authors": "Y. Gong, K. Bian, F. Hao, Y. Sun, and Y. Wu",
+   "title": "Dependent tasks offloading in mobile edge computing: A multi-objective evolutionary optimization strategy",
+   "venue": "Future Gener. Comput. Syst",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2023",
+   "vol": "148",
+   "no": null,
+   "pp": "314–325",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "huang-2025-cmop-dispersed-computing",
+    "peng-2025-drudm-cfg",
+    "song-2024-mol-aoi-energy"
+   ],
+   "cited_count": 3,
+   "curated_as": null
+  },
+  {
    "key": "guo-2019-energy-efficient-dynamic-computation-offloading-and",
    "authors": "S. Guo, J. Liu, Y. Yang, B. Xiao, and Z. Li",
    "title": "Energy-efficient dynamic computation offloading and cooperative task scheduling in mobile cloud computing",
@@ -522,23 +684,23 @@
    "curated_as": null
   },
   {
-   "key": "kang-2023-cooperative-uav-resource-allocation-and-task",
-   "authors": "H. Kang, X. Chang, J. Miši´c, V. B. Miši´c, J. Fan, and Y. Liu",
-   "title": "Cooperative UAV resource allocation and task offloading in hierarchical aerial computing systems: A MAPPO based approach",
+   "key": "lakew-2023-intelligent-offloading-and-resource-allocation-in",
+   "authors": "D. S. Lakew, A.-T. Tran, N.-N. Dao, and S. Cho",
+   "title": "Intelligent offloading and resource allocation in heterogeneous aerial access IoT networks",
    "venue": "IEEE Internet Things J",
    "venue_normalized": "IEEE Internet Things J. (IoTJ)",
    "venue_tier": "Q1",
    "year": "2023",
    "vol": "10",
-   "no": "12",
-   "pp": "10497–10509",
+   "no": "7",
+   "pp": "5704–5718",
    "url": null,
-   "doi": "10.1109/JIOT.2023.3240173",
+   "doi": "10.1109/JIOT.2022.3161571",
    "scope": "in",
    "cited_by": [
-    "jia-2025-dro-uav-hap-mec",
     "nabi-2025-jour-hierarchical-aerial",
-    "song-2024-mol-aoi-energy"
+    "peng-2025-drudm-cfg",
+    "wang-2026-aerial-marine-msar"
    ],
    "cited_count": 3,
    "curated_as": null
@@ -768,8 +930,8 @@
    "authors": "Y. Miao, K. Hwang, D. Wu, Y. Hao, and M. Chen",
    "title": "Drone swarm path planning for mobile edge computing in Industrial Internet of Things",
    "venue": "IEEE Trans. Ind. Inf",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Trans. Ind. Informat. (TII)",
+   "venue_tier": "Q1",
    "year": "2023",
    "vol": "19",
    "no": "5",
@@ -834,8 +996,8 @@
    "authors": "C. Peng, X. Huang, Y. Wu, and J. Kang",
    "title": "Constrained multi-objective optimization for UAV-enabled mobile edge computing: Offloading optimization and path planning",
    "venue": "IEEE Wireless Communications Letters",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Wireless Commun. (mag/lett)",
+   "venue_tier": "Q1",
    "year": "2022",
    "vol": "11",
    "no": "4",
@@ -896,28 +1058,6 @@
    "curated_as": null
   },
   {
-   "key": "sun-2024-joint-task-offloading-and-resource-allocation",
-   "authors": "G. Sun et al.",
-   "title": "Joint task offloading and resource allocation in aerialterrestrial UAV networks with edge and fog computing for post-disaster rescue",
-   "venue": "IEEE Trans. Mobile Comput",
-   "venue_normalized": "IEEE Trans. Mobile Comput. (TMC)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": "23",
-   "no": "9",
-   "pp": "8582–8600",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "wang-2025-lae-network-survey",
-    "wang-2026-aerial-marine-msar",
-    "zhu-2025-lycnn-drl-wpt-mec"
-   ],
-   "cited_count": 3,
-   "curated_as": null
-  },
-  {
    "key": "sun-2024-bargain-match-a-game-theoretical-approach",
    "authors": "Z. Sun, G. Sun, Y. Liu, J. Wang, and D. Cao",
    "title": "BARGAIN-MATCH: A game theoretical approach for resource allocation and task offloading in vehicular edge computing networks",
@@ -935,28 +1075,6 @@
     "shao-2024-drl-antijamming-mec",
     "wang-2025-lae-network-survey",
     "wang-2026-aerial-marine-msar"
-   ],
-   "cited_count": 3,
-   "curated_as": null
-  },
-  {
-   "key": "wang-2020-joint-deployment-and-task-scheduling-optimization",
-   "authors": "Y. Wang, Z.-Y. Ru, K. Wang, and P.-Q. Huang",
-   "title": "Joint deployment and task scheduling optimization for large-scale mobile users in multi-UAVenabled mobile edge computing",
-   "venue": "IEEE Trans. Cybern",
-   "venue_normalized": "IEEE Trans. Cybern. (Q1)",
-   "venue_tier": "Q1",
-   "year": "2020",
-   "vol": "50",
-   "no": "9",
-   "pp": "3984–3997",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "huang-2023-mu-aec-task-energy",
-    "jia-2025-dro-uav-hap-mec",
-    "zhang-2025-ssac-mgi-heterogeneous-uav"
    ],
    "cited_count": 3,
    "curated_as": null
@@ -1006,23 +1124,45 @@
    "curated_as": null
   },
   {
-   "key": "yang-2020-multi-uav-enabled-load-balance-mobile",
-   "authors": "L. Yang, H. Yao, J. Wang, C. Jiang, A. Benslimane, and Y. Liu",
-   "title": "Multi-UAV-enabled load-balance mobile-edge computing for IoT networks",
-   "venue": "IEEE Internet Things J",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "key": "wang-2022-task-offloading-for-post-disaster-rescue",
+   "authors": "Y. Wang et al.",
+   "title": "Task offloading for post-disaster rescue in unmanned aerial vehicles networks",
+   "venue": "IEEE/ACM Trans. Netw",
+   "venue_normalized": "IEEE/ACM Trans. Netw. (ToN)",
    "venue_tier": "Q1",
-   "year": "2020",
-   "vol": "7",
-   "no": "8",
-   "pp": "6898–6908",
+   "year": "2022",
+   "vol": "30",
+   "no": "4",
+   "pp": "1525–1539",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2024-energy-time-uav-its",
+    "peng-2025-drudm-cfg",
+    "wang-2026-aerial-marine-msar"
+   ],
+   "cited_count": 3,
+   "curated_as": null
+  },
+  {
+   "key": "wang-2022-deep-reinforcement-learning-based-dynamic-trajectory",
+   "authors": "Liang Wang, Kezhi Wang, Cunhua Pan, Wei Xu, Nauman Aslam, and Arumugam Nallanathan",
+   "title": "Deep reinforcement learning based dynamic trajectory control for uav-assisted mobile edge computing",
+   "venue": "IEEE Transactions on Mobile Computing",
+   "venue_normalized": "IEEE Trans. Mobile Comput. (TMC)",
+   "venue_tier": "Q1",
+   "year": "2022",
+   "vol": "21",
+   "no": "10",
+   "pp": "3536–3550",
    "url": null,
    "doi": null,
    "scope": "in",
    "cited_by": [
     "gao-2024-service-experience-cache-uav",
-    "huang-2023-mu-aec-task-energy",
-    "shao-2024-drl-antijamming-mec"
+    "jia-2025-dro-uav-hap-mec",
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 3,
    "curated_as": null
@@ -1094,28 +1234,6 @@
    "curated_as": null
   },
   {
-   "key": "zhang-2020-joint-computation-and-communication-design-for",
-   "authors": "T. Zhang, Y. Xu, J. Loo, D. Yang, and L. Xiao",
-   "title": "Joint computation and communication design for UAV-assisted mobile edge computing in IoT",
-   "venue": "IEEE Trans. Ind. Inf",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2020",
-   "vol": "16",
-   "no": "8",
-   "pp": "5505–5516",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "gao-2024-service-experience-cache-uav",
-    "shao-2024-drl-antijamming-mec",
-    "zhang-2025-ssac-mgi-heterogeneous-uav"
-   ],
-   "cited_count": 3,
-   "curated_as": null
-  },
-  {
    "key": "zhou-2022-computation-bits-maximization-in-uav-assisted",
    "authors": "X. Zhou, L. Huang, T. Ye, and W. Sun",
    "title": "Computation bits maximization in UAV-assisted MEC networks with fairness constraint",
@@ -1142,8 +1260,8 @@
    "authors": "R. Zhou, X. Wu, H. Tan, and R. Zhang",
    "title": "Two time-scale joint service caching and task offloading for UAV-assisted mobile edge computing",
    "venue": "IEEE Conf. Comput. Commun",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "INFOCOM",
+   "venue_tier": "top-conf",
    "year": "2022",
    "vol": null,
    "no": null,
@@ -1560,27 +1678,6 @@
    "curated_as": null
   },
   {
-   "key": "du-2023-maddpg-based-joint-service-placement-and",
-   "authors": "J. Du et al.",
-   "title": "MADDPG-based joint service placement and task offloading in MEC empowered air-ground integrated networks",
-   "venue": "IEEE Internet Things J",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2023",
-   "vol": "11",
-   "no": "6",
-   "pp": "10600–10615",
-   "url": null,
-   "doi": "10.1109/JIOT.2023.3326820",
-   "scope": "in",
-   "cited_by": [
-    "bi-2025-sg-mapg",
-    "nabi-2025-jour-hierarchical-aerial"
-   ],
-   "cited_count": 2,
-   "curated_as": null
-  },
-  {
    "key": "duan-2024-moto-mobility-aware-online-task-offloading",
    "authors": "S. Duan et al.",
    "title": "MOTO: Mobility-aware online task offloading with adaptive load balancing in small-cell MEC",
@@ -1644,12 +1741,33 @@
    "curated_as": null
   },
   {
+   "key": "gao-2024-joint-computing-pushing-and-caching-optimization",
+   "authors": "Xiangyu Gao, Yaping Sun, Hao Chen, Xiaodong Xu, and Shuguang Cui",
+   "title": "Joint computing, pushing, and caching optimization for mobile-edge computing networks via soft actor–critic learning",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2024",
+   "vol": "11",
+   "no": "6",
+   "pp": "9269–9281",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "chen-2024-ulse-game",
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
    "key": "gao-2024-uavassisted-mec-system-with-mobile-ground",
    "authors": "Y. Gao, X. Yuan, D. Yang, Y. Hu, Y. Cao, and A. Schmeink",
    "title": "Uavassisted mec system with mobile ground terminals: Drl-based joint terminal scheduling and uav 3d trajectory design",
    "venue": "IEEE Transactions on Vehicular Technology",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
+   "venue_tier": "Q1",
    "year": "2024",
    "vol": "73",
    "no": "7",
@@ -1669,8 +1787,8 @@
    "authors": "Y. Gong, H. Yao, Z. Xiong, S. Guo, F. R. Yu, and D. Niyato",
    "title": "Computation offloading and energy harvesting schemes for sum rate maximization in space-air-ground networks",
    "venue": "- IEEE Global Commun. Conf",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "GLOBECOM",
+   "venue_tier": "conf",
    "year": "2022",
    "vol": null,
    "no": null,
@@ -1681,27 +1799,6 @@
    "cited_by": [
     "chen-2024-thoas-traffic-aware-sagin",
     "zhu-2025-lycnn-drl-wpt-mec"
-   ],
-   "cited_count": 2,
-   "curated_as": null
-  },
-  {
-   "key": "gong-2023-dependent-tasks-offloading-in-mobile-edge",
-   "authors": "Y. Gong, K. Bian, F. Hao, Y. Sun, and Y. Wu",
-   "title": "Dependent tasks offloading in mobile edge computing: A multi-objective evolutionary optimization strategy",
-   "venue": "Future Gener. Comput. Syst",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2023",
-   "vol": "148",
-   "no": null,
-   "pp": "314–325",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "huang-2025-cmop-dispersed-computing",
-    "song-2024-mol-aoi-energy"
    ],
    "cited_count": 2,
    "curated_as": null
@@ -1795,8 +1892,8 @@
    "authors": "E. E. Haber, H. A. Alameddine, C. Assi, and S. Sharafeddine",
    "title": "Uavaided ultra-reliable low-latency computation offloading in future iot networks",
    "venue": "IEEE Transactions on Communications",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Trans. Commun. (TCOM)",
+   "venue_tier": "Q1",
    "year": "2021",
    "vol": "69",
    "no": "10",
@@ -1954,6 +2051,48 @@
    "cited_by": [
     "shao-2024-drl-antijamming-mec",
     "ye-2025-aigc-diffusion-contract"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
+   "key": "he-2022-multi-hop-task-offloading-with-on",
+   "authors": "Xiaofan He, Richeng Jin, and Huaiyu Dai",
+   "title": "Multi-hop task offloading with on-the-fly computation for multi-uav remote edge computing",
+   "venue": "IEEE Transactions on Communications",
+   "venue_normalized": "IEEE Trans. Commun. (TCOM)",
+   "venue_tier": "Q1",
+   "year": "2022",
+   "vol": "70",
+   "no": "2",
+   "pp": "1332–1344",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "gao-2024-service-experience-cache-uav",
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
+   "key": "he-2025-fairnessbased-3-d-multi-uav-trajectory",
+   "authors": "Yejun He, Youhui Gan, Haixia Cui, and Mohsen Guizani",
+   "title": "Fairnessbased 3-d multi-uav trajectory optimization in multi-uav-assisted mec system",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2025",
+   "vol": "10",
+   "no": "13",
+   "pp": "11383–11395",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg",
+    "zhao-2025-traj-offload-cache-migration"
    ],
    "cited_count": 2,
    "curated_as": null
@@ -2190,27 +2329,6 @@
    "curated_as": null
   },
   {
-   "key": "lakew-2023-intelligent-offloading-and-resource-allocation-in",
-   "authors": "D. S. Lakew, A.-T. Tran, N.-N. Dao, and S. Cho",
-   "title": "Intelligent offloading and resource allocation in heterogeneous aerial access IoT networks",
-   "venue": "IEEE Internet Things J",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2023",
-   "vol": "10",
-   "no": "7",
-   "pp": "5704–5718",
-   "url": null,
-   "doi": "10.1109/JIOT.2022.3161571",
-   "scope": "in",
-   "cited_by": [
-    "nabi-2025-jour-hierarchical-aerial",
-    "wang-2026-aerial-marine-msar"
-   ],
-   "cited_count": 2,
-   "curated_as": null
-  },
-  {
    "key": "li-2019-uav-communications-for-5g-and-beyond",
    "authors": "B. Li, Z. Fei, and Y. Zhang",
    "title": "UAV communications for 5G and beyond: Recent advances and future trends",
@@ -2341,8 +2459,8 @@
    "authors": "K. Li, X. Wang, Q. He, J. Wang, J. Li, S. Zhan, G. Lu, and S. Dustdar",
    "title": "Computation offloading in resource-constrained multi-access edge computing",
    "venue": "IEEE Transactions on Mobile Computing",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Trans. Mobile Comput. (TMC)",
+   "venue_tier": "Q1",
    "year": "2024",
    "vol": "23",
    "no": "11",
@@ -2521,6 +2639,27 @@
    "cited_by": [
     "benaya-2025-aerial-isac-haps",
     "jiang-2025-isac-lae-overview"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
+   "key": "liu-2022-rl-drl-meets-vehicular-task-offloading",
+   "authors": "J. Liu et al.",
+   "title": "RL/DRL meets vehicular task offloading using edge and vehicular cloudlet: A survey",
+   "venue": "IEEE Internet Things J",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2022",
+   "vol": "9",
+   "no": "11",
+   "pp": "8315–8338",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "ma-2025-pdqn-vehicular-mec",
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 2,
    "curated_as": null
@@ -2862,6 +3001,27 @@
    "curated_as": null
   },
   {
+   "key": "qi-2024-minimizing-maximum-latency-of-task-offloading",
+   "authors": "S. Qi, B. Lin, Y. Deng, X. Chen, and Y. Fang",
+   "title": "Minimizing maximum latency of task offloading for multi-UAV-assisted maritime search and rescue",
+   "venue": "IEEE Trans. Veh. Technol",
+   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
+   "venue_tier": "Q1",
+   "year": "2024",
+   "vol": "73",
+   "no": "9",
+   "pp": "13625–13638",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg",
+    "wang-2026-aerial-marine-msar"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
    "key": "qian-2023-joint-multi-domain-resource-allocation-and",
    "authors": "L. P. Qian, H. Zhang, Q. Wang, Y. Wu, and B. Lin",
    "title": "Joint multi-domain resource allocation and trajectory optimization in UAV-assisted maritime IoT networks",
@@ -2878,6 +3038,27 @@
    "cited_by": [
     "gao-2024-service-experience-cache-uav",
     "huang-2023-mu-aec-task-energy"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
+   "key": "qin-2022-optimal-task-offloading-and-resource-allocation",
+   "authors": "P. Qin, Y. Fu, X. Zhao, K. Wu, J. Liu, and M. Wang",
+   "title": "Optimal task offloading and resource allocation for C-NOMA heterogeneous airground integrated power Internet of Things networks",
+   "venue": "IEEE Trans. Wireless Commun",
+   "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
+   "venue_tier": "Q1",
+   "year": "2022",
+   "vol": "21",
+   "no": "11",
+   "pp": "9276–9292",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg",
+    "qin-2025-bcuav-masac"
    ],
    "cited_count": 2,
    "curated_as": null
@@ -2904,6 +3085,27 @@
    "curated_as": null
   },
   {
+   "key": "sacco-2021-sustainable-task-offloading-in-uav-networks",
+   "authors": "A. Sacco, F. Esposito, G. Marchetto, and P. Montuschi",
+   "title": "Sustainable task offloading in UAV networks via multi-agent reinforcement learning",
+   "venue": "IEEE Trans. Veh. Technol",
+   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
+   "venue_tier": "Q1",
+   "year": "2021",
+   "vol": "70",
+   "no": "5",
+   "pp": "5003–5015",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg",
+    "sun-2024-asap-uav-swarm"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
    "key": "schulman-2015-trust-region-policy-optimization",
    "authors": "J. Schulman, S. Levine, P. Abbeel, M. Jordan, and P. Moritz",
    "title": "Trust region policy optimization",
@@ -2920,6 +3122,27 @@
    "cited_by": [
     "hsu-2025-drl-hues-hap-noma",
     "zhang-2025-ssac-mgi-heterogeneous-uav"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
+   "key": "seid-2021-multiagent-drl-for-task-offloading-and",
+   "authors": "A. M. Seid, G. O. Boateng, B. Mareri, G. Sun, and W. Jiang",
+   "title": "Multiagent DRL for task offloading and resource allocation in multi-UAV enabled IoT edge network",
+   "venue": "IEEE Trans. Netw. Serv. Manage",
+   "venue_normalized": "IEEE/ACM Trans. Netw. (ToN)",
+   "venue_tier": "Q1",
+   "year": "2021",
+   "vol": "18",
+   "no": "4",
+   "pp": "4531–4547",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "li-2025-stochastic-game-uav-swarm",
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 2,
    "curated_as": null
@@ -2992,8 +3215,8 @@
    "authors": "G. Sun, Y. Wang, Z. Sun, Q. Wu, J. Kang, D. Niyato, and V. C. M. Leung",
    "title": "Multi-objective optimization for multi-uav-assisted mobile edge computing",
    "venue": "IEEE Transactions on Mobile Computing",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Trans. Mobile Comput. (TMC)",
+   "venue_tier": "Q1",
    "year": "2024",
    "vol": "23",
    "no": "12",
@@ -3135,48 +3358,6 @@
    "curated_as": null
   },
   {
-   "key": "wang-2022-task-offloading-for-post-disaster-rescue",
-   "authors": "Y. Wang et al.",
-   "title": "Task offloading for post-disaster rescue in unmanned aerial vehicles networks",
-   "venue": "IEEE/ACM Trans. Netw",
-   "venue_normalized": "IEEE/ACM Trans. Netw. (ToN)",
-   "venue_tier": "Q1",
-   "year": "2022",
-   "vol": "30",
-   "no": "4",
-   "pp": "1525–1539",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "peng-2024-energy-time-uav-its",
-    "wang-2026-aerial-marine-msar"
-   ],
-   "cited_count": 2,
-   "curated_as": null
-  },
-  {
-   "key": "wang-2022-deep-reinforcement-learning-based-dynamic-trajectory",
-   "authors": "L. Wang, K. Wang, C. Pan, W. Xu, N. Aslam, and A. Nallanathan",
-   "title": "Deep reinforcement learning based dynamic trajectory control for UAV-assisted mobile edge computing",
-   "venue": "IEEE Trans. Mobile Comput",
-   "venue_normalized": "IEEE Trans. Mobile Comput. (TMC)",
-   "venue_tier": "Q1",
-   "year": "2022",
-   "vol": "21",
-   "no": "10",
-   "pp": "3536–3550",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "gao-2024-service-experience-cache-uav",
-    "jia-2025-dro-uav-hap-mec"
-   ],
-   "cited_count": 2,
-   "curated_as": null
-  },
-  {
    "key": "wang-2023-joint-uav-placement-optimization-resource-allocation",
    "authors": "H. Wang, H. Zhang, X. Liu, K. Long, and A. Nallanathan",
    "title": "Joint UAV placement optimization, resource allocation, and computation offloading for THz band: A DRL approach",
@@ -3286,8 +3467,8 @@
    "authors": "Y. Xu, T. Zhang, Y. Liu, D. Yang, L. Xiao, and M. Tao",
    "title": "Uav-assisted mec networks with aerial and ground cooperation",
    "venue": "IEEE Transactions on Wireless Communications",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
+   "venue_tier": "Q1",
    "year": "2021",
    "vol": "20",
    "no": "12",
@@ -3412,8 +3593,8 @@
    "authors": "Y. Zeng, Q. Wu, and R. Zhang",
    "title": "Accessing from the Sky: A Tutorial on UAV Communications for 5G and Beyond",
    "venue": "Proc. IEEE",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "Proc. IEEE",
+   "venue_tier": "Q1",
    "year": "2019",
    "vol": "107",
    "no": "12",
@@ -3450,12 +3631,33 @@
    "curated_as": null
   },
   {
+   "key": "zhang-2020-uav-enabled-secure-communications-by-multi",
+   "authors": "Yu Zhang, Zhiyu Mou, Feifei Gao, Jing Jiang, Ruijin Ding, and Zhu Han",
+   "title": "Uav-enabled secure communications by multi-agent deep reinforcement learning",
+   "venue": "IEEE Transactions on Vehicular Technology",
+   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
+   "venue_tier": "Q1",
+   "year": "2020",
+   "vol": "69",
+   "no": "10",
+   "pp": "11599–11611",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg",
+    "shao-2024-drl-antijamming-mec"
+   ],
+   "cited_count": 2,
+   "curated_as": null
+  },
+  {
    "key": "zhang-2020-computation-efficient-offloading-and-trajectory-scheduling",
    "authors": "J. Zhang, L. Zhou, F. Zhou, B.-C. Seet, H. Zhang, Z. Cai, and J. Wei",
    "title": "Computation-efficient offloading and trajectory scheduling for multiuav assisted mobile edge computing",
    "venue": "IEEE Transactions on Vehicular Technology",
-   "venue_normalized": null,
-   "venue_tier": "other",
+   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
+   "venue_tier": "Q1",
    "year": "2020",
    "vol": "69",
    "no": "2",
@@ -4241,6 +4443,26 @@
    "curated_as": null
   },
   {
+   "key": "alsadik-na-the-rise-in-uav-inspections-for",
+   "authors": "B. Alsadik and F. Nex. (2021)",
+   "title": "The Rise in UAV Inspections for Civil Infrastructure. [Online]",
+   "venue": "Available: https://www.gim-international. com/content/article/the-rise-in-uav-inspections-for-civil-infrastructure",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": null,
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://www.gim-international",
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "wang-2025-lae-network-survey"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "alsharoa-2020-improvement-of-the-global-connectivity-using",
    "authors": "A. Alsharoa and M.-S. Alouini",
    "title": "Improvement of the global connectivity using integrated satellite-airborne-terrestrial networks with resource optimization",
@@ -4601,26 +4823,6 @@
    "curated_as": null
   },
   {
-   "key": "anon-2018-tian-wang-yang-li-weiwei-fan",
-   "authors": null,
-   "title": null,
-   "venue": "Tian Wang, Yang Li, Weiwei Fang, Wenzheng ${ \\mathrm { X u } } ,$ Junbin Liang, Yewang Chen, and Xuxun Liu. A comprehensive trustworthy data collection approach in sensor-cloud systems. IEEE transactions on big data, 8(1):140–151",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2018",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "anon-2020-technical-specification-group",
    "authors": null,
    "title": null,
@@ -4656,106 +4858,6 @@
    "scope": "in",
    "cited_by": [
     "benaya-2025-aerial-isac-haps"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2020-yong-wang-zhi-yang-ru-kezhi",
-   "authors": null,
-   "title": null,
-   "venue": "Yong Wang, Zhi-Yang Ru, Kezhi Wang, and Pei-Qiu Huang. Joint deployment and task scheduling optimization for large-scale mobile users in multi-uav-enabled mobile edge computing. IEEE Transactions on Cybernetics, 50(9):3984–3997",
-   "venue_normalized": "IEEE Trans. Cybern. (Q1)",
-   "venue_tier": "Q1",
-   "year": "2020",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2020-tiankui-zhang-yu-xu-jonathan",
-   "authors": null,
-   "title": null,
-   "venue": "Tiankui Zhang, Yu Xu, Jonathan Loo, Dingcheng Yang, and Lin Xiao. Joint computation and communication design for uavassisted mobile edge computing in iot. IEEE Transactions on Industrial Informatics, 16(8):5505–5516",
-   "venue_normalized": "IEEE Trans. Ind. Informat. (TII)",
-   "venue_tier": "Q1",
-   "year": "2020",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2020-lei-yang-haipeng-yao-jingjin",
-   "authors": null,
-   "title": null,
-   "venue": "Lei Yang, Haipeng Yao, Jingjing Wang, Chunxiao Jiang, Abderrahim Benslimane, and Yunjie Liu. Multi-uav-enabled loadbalance mobile-edge computing for iot networks. IEEE Internet of Things Journal, 7(8):6898–6908",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2020",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2020-jingjing-cui-yuanwei-liu-and",
-   "authors": null,
-   "title": null,
-   "venue": "Jingjing Cui, Yuanwei Liu, and Arumugam Nallanathan. Multiagent reinforcement learning-based resource allocation for uav networks. IEEE Transactions on Wireless Communications, 19(2):729– 743",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2020",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2020-yu-zhang-zhiyu-mou-feifei-ga",
-   "authors": null,
-   "title": null,
-   "venue": "Yu Zhang, Zhiyu Mou, Feifei Gao, Jing Jiang, Ruijin Ding, and Zhu Han. Uav-enabled secure communications by multi-agent deep reinforcement learning. IEEE Transactions on Vehicular Technology, 69(10):11599–11611",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2020",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -4801,106 +4903,6 @@
    "curated_as": null
   },
   {
-   "key": "anon-2021-tian-wang-yaxin-mei-xuxun-li",
-   "authors": null,
-   "title": null,
-   "venue": "Tian Wang, Yaxin Mei, Xuxun Liu, Jin Wang, Hong-Ning Dai, and Zhijian Wang. Edge-based auditing method for data security in resource-constrained internet of things. Journal of Systems Architecture, 114:101971",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2021-demeke-shumeye-lakew-anh-tien",
-   "authors": null,
-   "title": null,
-   "venue": "Demeke Shumeye Lakew, Anh-Tien Tran, Nhu-Ngoc Dao, and Sungrae Cho. Intelligent offloading and resource allocation in hap-assisted mec networks. In",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2021-alessio-sacco-flavio-esposito",
-   "authors": null,
-   "title": null,
-   "venue": "Alessio Sacco, Flavio Esposito, Guido Marchetto, and Paolo Montuschi. Sustainable task offloading in uav networks via multiagent reinforcement learning. IEEE Transactions on Vehicular Technology, 70(5):5003–5015",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2021-abegaz-mohammed-seid-gordon-o",
-   "authors": null,
-   "title": null,
-   "venue": "Abegaz Mohammed Seid, Gordon Owusu Boateng, Bruce Mareri, Guolin Sun, and Wei Jiang. Multi-agent drl for task offloading and resource allocation in multi-uav enabled iot edge network. IEEE Transactions on Network and Service Management, 18(4):4531–4547",
-   "venue_normalized": "IEEE Trans. Netw. Serv. Manag. (TNSM)",
-   "venue_tier": "Q1",
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2021-dawei-wei-jianfeng-ma-linbo",
-   "authors": null,
-   "title": null,
-   "venue": "Dawei Wei, Jianfeng Ma, Linbo Luo, Yunbo Wang, Lei He, and Xinghua Li. Computation offloading over multi-uav mec network: A distributed deep reinforcement learning approach. Computer Networks, 199:108439",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "anon-2021-ieee-standard-for-a-framework",
    "authors": null,
    "title": null,
@@ -4936,246 +4938,6 @@
    "scope": "uncertain",
    "cited_by": [
     "wang-2025-lae-network-survey"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2021-b-alsadik-and-f-nex-2021",
-   "authors": null,
-   "title": null,
-   "venue": "B. Alsadik and F. Nex. (",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://www.gim-international",
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "wang-2025-lae-network-survey"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-jinshi-liu-manzoor-ahmed-muh",
-   "authors": null,
-   "title": null,
-   "venue": "Jinshi Liu, Manzoor Ahmed, Muhammad Ayzed Mirza, Wali Ullah Khan, Dianlei Xu, Jianbo Li, Abdul Aziz, and Zhu Han. Rl/drl meets vehicular task offloading using edge and vehicular cloudlet: A survey. IEEE Internet of Things Journal, 9(11):8315–8338",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-yuntao-wang-weiwei-chen-tom",
-   "authors": null,
-   "title": null,
-   "venue": "Yuntao Wang, Weiwei Chen, Tom H. Luan, Zhou Su, Qichao Xu, Ruidong Li, and Nan Chen. Task offloading for post-disaster rescue in unmanned aerial vehicles networks. IEEE/ACM Transactions on Networking, 30(4):1525–1539",
-   "venue_normalized": "IEEE/ACM Trans. Netw. (ToN)",
-   "venue_tier": "Q1",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-nan-zhao-zhiyang-ye-yiyang-p",
-   "authors": null,
-   "title": null,
-   "venue": "Nan Zhao, Zhiyang Ye, Yiyang Pei, Ying-Chang Liang, and Dusit Niyato. Multi-agent deep reinforcement learning for task offloading in uav-assisted mobile edge computing. IEEE Transactions on Wireless Communications, 21(9):6949–6960",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-xiaofan-he-richeng-jin-and-h",
-   "authors": null,
-   "title": null,
-   "venue": "Xiaofan He, Richeng Jin, and Huaiyu Dai. Multi-hop task offloading with on-the-fly computation for multi-uav remote edge computing. IEEE Transactions on Communications, 70(2):1332–1344",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-peng-qin-yang-fu-xiongwen-zh",
-   "authors": null,
-   "title": null,
-   "venue": "Peng Qin, Yang Fu, Xiongwen Zhao, Kui Wu, Jiayan Liu, and Miao Wang. Optimal task offloading and resource allocation for c-noma heterogeneous air-ground integrated power internet of things networks. IEEE Transactions on Wireless Communications, 21(11):9276–9292",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-tolga-ovatman-gunes-karabulut",
-   "authors": null,
-   "title": null,
-   "venue": "Tolga Ovatman, Gunes Karabulut Kurt, and Halim Yanikomeroglu. An accurate model for computation offloading in 6g networks and a haps-based case study. IEEE Open Journal of the Communications Society, 3:",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-feng-wang-jie-xu-vincent-k",
-   "authors": null,
-   "title": null,
-   "venue": "Feng Wang, Jie Xu, Vincent K. N. Lau, and Shuguang Cui. Amplify-and-forward relaying for hierarchical over-theair computation. IEEE Transactions on Wireless Communications, 21(12):10529–10543",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-bin-gao-zhi-zhou-fangming-li",
-   "authors": null,
-   "title": null,
-   "venue": "Bin Gao, Zhi Zhou, Fangming Liu, Fei Xu, and Bo Li. An online framework for joint network selection and service placement in mobile edge computing. IEEE Transactions on Mobile Computing, 21(11):3836–3851",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-hongli-lu-guangping-xu-chi-w",
-   "authors": null,
-   "title": null,
-   "venue": "Hongli Lu, Guangping Xu, Chi Wan Sung, Salwa Mostafa, and Yulei Wu. A game theoretical balancing approach for offloaded tasks in edge datacenters. In",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-liang-wang-kezhi-wang-cunhua",
-   "authors": null,
-   "title": null,
-   "venue": "Liang Wang, Kezhi Wang, Cunhua Pan, Wei Xu, Nauman Aslam, and Arumugam Nallanathan. Deep reinforcement learning based dynamic trajectory control for uav-assisted mobile edge computing. IEEE Transactions on Mobile Computing, 21(10):3536–3550",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2022-huawei-2022-ubiquitous-comp",
-   "authors": null,
-   "title": null,
-   "venue": "Huawei.(",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "http://www-file.huawei.com/",
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "hao-2025-priority-aware-task-driven-co"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -5221,166 +4983,6 @@
    "curated_as": null
   },
   {
-   "key": "anon-2023-preferred-characteristics-of-s",
-   "authors": null,
-   "title": null,
-   "venue": "Preferred Characteristics of Systems in the Fixed Service Using High Altitude Platform Stations in the Frequency Bands 47.2-47.5 GHz and 47.9-48.2 GHz. Accessed:",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://www.itu.int/rec/R-REC-F.1500/en/",
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "hsu-2025-drl-hues-hap-noma"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2023-python-accessed-aug-1-2023",
-   "authors": null,
-   "title": null,
-   "venue": "Python. Accessed:",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://www",
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "hsu-2025-drl-hues-hap-noma"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2023-tensorflow-accessed-aug-1",
-   "authors": null,
-   "title": null,
-   "venue": "Tensorflow. Accessed:",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://www",
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "hsu-2025-drl-hues-hap-noma"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2023-binayak-kar-widhi-yahya-ying",
-   "authors": null,
-   "title": null,
-   "venue": "Binayak Kar, Widhi Yahya, Ying-Dar Lin, and Asad Ali. Offloading using traditional optimization and machine learning in federated cloud–edge–fog systems: A survey. IEEE Communications Surveys & Tutorials, 25(2):1199–1226",
-   "venue_normalized": "IEEE Commun. Surveys Tuts. (COMST)",
-   "venue_tier": "Q1",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2023-yanqi-gong-kun-bian-fei-hao",
-   "authors": null,
-   "title": null,
-   "venue": "Yanqi Gong, Kun Bian, Fei Hao, Yifei Sun, and Yulei Wu. Dependent tasks offloading in mobile edge computing: A multi-objective evolutionary optimization strategy. Future generation computer systems, 148:314–325",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2023-fuhong-song-huanlai-xing-xin",
-   "authors": null,
-   "title": null,
-   "venue": "Fuhong Song, Huanlai Xing, Xinhan Wang, Shouxi Luo, Penglin Dai, Zhiwen Xiao, and Bowen Zhao. Evolutionary multi-objective reinforcement learning based trajectory control and task offloading in uav-assisted mobile edge computing. IEEE Transactions on Mobile Computing, 22(12):7387–7405",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2023-hongyue-kang-xiaolin-chang-j",
-   "authors": null,
-   "title": null,
-   "venue": "Hongyue Kang, Xiaolin Chang, Jelena Misiˇ c, Vojislav B. Mi ´ siˇ c,´ Junchao Fan, and Yating Liu. Cooperative uav resource allocation and task offloading in hierarchical aerial computing systems: A mappo-based approach. IEEE Internet of Things Journal, 10(12):10497–10509",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2023-yuya-cui-honghu-li-degan-zha",
-   "authors": null,
-   "title": null,
-   "venue": "Yuya Cui, Honghu Li, Degan Zhang, Aixi Zhu, Yang Li, and Hao Qiang. Multiagent reinforcement learning-based cooperative multitype task offloading strategy for internet of vehicles in b5g/6g network. IEEE Internet of Things Journal, 10(14):12248–12260",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "anon-2023-ieee-trial-use-standard-for-ae",
    "authors": null,
    "title": null,
@@ -5396,246 +4998,6 @@
    "scope": "uncertain",
    "cited_by": [
     "wang-2025-lae-network-survey"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-technical-specification-group",
-   "authors": null,
-   "title": null,
-   "venue": "Technical Specification Group Services and System Aspects; Study on Using Satellite Access in 5G; Stage 1; (Release 16), document 22.822 V16.0.0, 3rd Generation Partnership Project (3GPP)",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "hsu-2025-drl-hues-hap-noma"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-wenchao-liu-hao-wang-xuhui-z",
-   "authors": null,
-   "title": null,
-   "venue": "Wenchao Liu, Hao Wang, Xuhui Zhang, Huijun Xing, Jinke Ren, Yanyan Shen, and Shuguang Cui. Joint trajectory design and resource allocation in uav-enabled heterogeneous mec systems. IEEE Internet of Things Journal, 11(19):30817–30832",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-siqi-zhang-na-yi-and-yi-ma",
-   "authors": null,
-   "title": null,
-   "venue": "Siqi Zhang, Na Yi, and Yi Ma. A survey of computation offloading with task types. IEEE Transactions on Intelligent Transportation Systems, 25(8):8313–8333",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-tan-deng-yanping-wang-jin-li",
-   "authors": null,
-   "title": null,
-   "venue": "Tan Deng, Yanping Wang, Jin Li, Ronghui Cao, Yongtong Gu, Jinming Hu, Xiaoyong Tang, Mingfeng Huang, Wenzheng Liu, and Shixue Li. Entropy normalization sac-based task offloading for uav-assisted mobile-edge computing. IEEE Internet of Things Journal, 11(15):26220–26233",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-hongzhi-guo-yutao-wang-jiaji",
-   "authors": null,
-   "title": null,
-   "venue": "Hongzhi Guo, Yutao Wang, Jiajia Liu, and Chang Liu. Multiuav cooperative task offloading and resource allocation in 5g advanced and beyond. IEEE Transactions on Wireless Communications, 23(1):347–359",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-shuang-qi-bin-lin-yiqin-deng",
-   "authors": null,
-   "title": null,
-   "venue": "Shuang Qi, Bin Lin, Yiqin Deng, Xianhao Chen, and Yuguang Fang. Minimizing maximum latency of task offloading for multiuav-assisted maritime search and rescue. IEEE Transactions on Vehicular Technology, 73(9):13625–13638",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-geng-sun-long-he-zemin-sun",
-   "authors": null,
-   "title": null,
-   "venue": "Geng Sun, Long He, Zemin Sun, Qingqing Wu, Shuang Liang, Jiahui Li, Dusit Niyato, and Victor C. M. Leung. Joint task offloading and resource allocation in aerial-terrestrial uav networks with edge and fog computing for post-disaster rescue. IEEE Transactions on Mobile Computing, 23(9):8582–8600",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-fan-zhang-guangjie-han-li-li",
-   "authors": null,
-   "title": null,
-   "venue": "Fan Zhang, Guangjie Han, Li Liu, Yu Zhang, Yan Peng, and Chao Li. Cooperative partial task offloading and resource allocation for iiot based on decentralized multiagent deep reinforcement learning. IEEE Internet of Things Journal, 11(3):5526–5544",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-jianbo-du-ziwen-kong-aijing",
-   "authors": null,
-   "title": null,
-   "venue": "Jianbo Du, Ziwen Kong, Aijing Sun, Jiawen Kang, Dusit Niyato, Xiaoli Chu, and F. Richard Yu. Maddpg-based joint service placement and task offloading in mec empowered air–ground integrated networks. IEEE Internet of Things Journal, 11(6):10600– 10615",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-juan-zhang-yulei-wu-geyong-m",
-   "authors": null,
-   "title": null,
-   "venue": "Juan Zhang, Yulei Wu, Geyong Min, and Keqin Li. Neural network-based game theory for scalable offloading in vehicular edge computing: A transfer learning approach. IEEE Transactions on Intelligent Transportation Systems, 25(7):7431–7444",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-bizheng-liang-rongfei-fan-ha",
-   "authors": null,
-   "title": null,
-   "venue": "Bizheng Liang, Rongfei Fan, Han Hu, Hai Jiang, Jie Xu, and Ning Zhang. Joint task offloading and resource allocation in multi-user mobile edge computing with continuous spectrum sharing. IEEE Transactions on Vehicular Technology, 73(5):7234–7249",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2024-xiangyu-gao-yaping-sun-hao-c",
-   "authors": null,
-   "title": null,
-   "venue": "Xiangyu Gao, Yaping Sun, Hao Chen, Xiaodong Xu, and Shuguang Cui. Joint computing, pushing, and caching optimization for mobile-edge computing networks via soft actor–critic learning. IEEE Internet of Things Journal, 11(6):9269–9281",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -5676,66 +5038,6 @@
    "scope": "uncertain",
    "cited_by": [
     "wang-2025-lae-network-survey"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2025-haosheng-chen-haixia-cui-jia",
-   "authors": null,
-   "title": null,
-   "venue": "Haosheng Chen, Haixia Cui, Jiahuan Wang, Peng Cao, Yejun He, and Mohsen Guizani. Computation offloading optimization for uav-based cloud-edge collaborative task scheduling strategy. IEEE Transactions on Cognitive Communications and Networking, pages 1– 1",
-   "venue_normalized": null,
-   "venue_tier": "other",
-   "year": "2025",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2025-junna-zhang-guoxian-zhang-xi",
-   "authors": null,
-   "title": null,
-   "venue": "Junna Zhang, Guoxian Zhang, Xinxin Wang, Xiaoyan Zhao, Peiyan Yuan, and Hu Jin. Uav-assisted task offloading in edge computing. IEEE Internet of Things Journal, 12(5):5559–5574",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2025",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "anon-2025-yejun-he-youhui-gan-haixia-c",
-   "authors": null,
-   "title": null,
-   "venue": "Yejun He, Youhui Gan, Haixia Cui, and Mohsen Guizani. Fairnessbased 3-d multi-uav trajectory optimization in multi-uav-assisted mec system. IEEE Internet of Things Journal, 10(13):11383–11395",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2025",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "scope": "uncertain",
-   "cited_by": [
-    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -7661,6 +6963,26 @@
    "curated_as": null
   },
   {
+   "key": "chen-2025-computation-offloading-optimization-for-uav-based",
+   "authors": "Haosheng Chen, Haixia Cui, Jiahuan Wang, Peng Cao, Yejun He, and Mohsen Guizani",
+   "title": "Computation offloading optimization for uav-based cloud-edge collaborative task scheduling strategy",
+   "venue": "IEEE Transactions on Cognitive Communications and Networking",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2025",
+   "vol": null,
+   "no": null,
+   "pp": "1–1",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "cheng-2022-integrated-sensing-and-communications-isac-for",
    "authors": "X. Cheng, D. Duan, S. Gao, and L. Yang",
    "title": "Integrated sensing and communications (ISAC) for vehicular communication networks (VCN)",
@@ -8061,6 +7383,26 @@
    "curated_as": null
   },
   {
+   "key": "cui-2020-multiagent-reinforcement-learning-based-resource-allocation",
+   "authors": "Jingjing Cui, Yuanwei Liu, and Arumugam Nallanathan",
+   "title": "Multiagent reinforcement learning-based resource allocation for uav networks",
+   "venue": "IEEE Transactions on Wireless Communications",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2020",
+   "vol": "19",
+   "no": "2",
+   "pp": "729–743",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "cui-2022-latency-optimization-for-hybrid-geo-leo",
    "authors": "G. Cui, P. Duan, L. Xu, and W. Wang",
    "title": "Latency optimization for hybrid GEO–LEO satellite-assisted IoT networks",
@@ -8076,6 +7418,26 @@
    "scope": "in",
    "cited_by": [
     "chen-2024-thoas-traffic-aware-sagin"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "cui-2023-multiagent-reinforcement-learning-based-cooperative-multitype",
+   "authors": "Yuya Cui, Honghu Li, Degan Zhang, Aixi Zhu, Yang Li, and Hao Qiang",
+   "title": "Multiagent reinforcement learning-based cooperative multitype task offloading strategy for internet of vehicles in b5g/6g network",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2023",
+   "vol": "10",
+   "no": "14",
+   "pp": "12248–12260",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -8556,6 +7918,26 @@
    "scope": "in",
    "cited_by": [
     "gao-2024-service-experience-cache-uav"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "deng-2024-entropy-normalization-sac-based-task-offloading",
+   "authors": "Tan Deng, Yanping Wang, Jin Li, Ronghui Cao, Yongtong Gu, Jinming Hu, Xiaoyong Tang, Mingfeng Huang, Wenzheng Liu, and Shixue Li",
+   "title": "Entropy normalization sac-based task offloading for uav-assisted mobile-edge computing",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2024",
+   "vol": "11",
+   "no": "15",
+   "pp": "26220–26233",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -10201,6 +9583,26 @@
    "curated_as": null
   },
   {
+   "key": "gao-2022-an-online-framework-for-joint-network",
+   "authors": "Bin Gao, Zhi Zhou, Fangming Liu, Fei Xu, and Bo Li",
+   "title": "An online framework for joint network selection and service placement in mobile edge computing",
+   "venue": "IEEE Transactions on Mobile Computing",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2022",
+   "vol": "21",
+   "no": "11",
+   "pp": "3836–3851",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "gao-2022-hydrogen-powered-aircraft-hydrogen-electric-hybrid",
    "authors": "Y. Gao, C. Jausseme, Z. Huang, and T. Yang",
    "title": "Hydrogen-powered aircraft: Hydrogen–electric hybrid propulsion for aviation",
@@ -10296,26 +9698,6 @@
    "scope": "in",
    "cited_by": [
     "gao-2024-service-experience-cache-uav"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "gao-2024-joint-computing-pushing-and-caching-optimization",
-   "authors": "X. Gao, Y. Sun, H. Chen, X. Xu, and S. Cui",
-   "title": "Joint computing, pushing, and caching optimization for mobile edge computing networks via soft actorcritic learning",
-   "venue": "IEEE Internet Things J",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": "11",
-   "no": "6",
-   "pp": "9269–9281",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "chen-2024-ulse-game"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -10561,6 +9943,26 @@
    "curated_as": null
   },
   {
+   "key": "ghz-na-accessed-aug-1-2023-online",
+   "authors": "Preferred Characteristics of Systems in the Fixed Service Using High Altitude Platform Stations in the Frequency Bands 47.2-47.5 GHz and 47.9-48.2 GHz",
+   "title": "Accessed: Aug. 1, 2023. [Online]",
+   "venue": "Available: https://www.itu.int/rec/R-REC-F.1500/en/",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": null,
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://www.itu.int/rec/R-REC-F.1500/en/",
+   "doi": null,
+   "scope": "uncertain",
+   "cited_by": [
+    "hsu-2025-drl-hues-hap-noma"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "gl-2019-achieving-near-optimal-fairness-in-energy",
    "authors": "Ö. M. Gül",
    "title": "Achieving near-optimal fairness in energy harvesting wireless sensor networks",
@@ -10765,8 +10167,8 @@
    "authors": "S. Goudarzi, S. A. Soleymani, W. Wang, and P. Xiao",
    "title": "UAV-enabled mobile edge computing for resource allocation using cooperative evolutionary computation",
    "venue": "IEEE Trans. Aerosp. Electron. Syst",
-   "venue_normalized": "IEEE Trans. Evol. Comput. (TEVC)",
-   "venue_tier": "Q1",
+   "venue_normalized": null,
+   "venue_tier": "other",
    "year": "2023",
    "vol": "59",
    "no": "5",
@@ -11541,26 +10943,6 @@
    "curated_as": null
   },
   {
-   "key": "he-2022-multi-hop-task-offloading-with-on",
-   "authors": "X. He, R. Jin, and H. Dai",
-   "title": "Multi-hop task offloading with on-the-fly computation for multi-UAV remote edge computing",
-   "venue": "IEEE Trans. Commun",
-   "venue_normalized": "IEEE Trans. Commun. (TCOM)",
-   "venue_tier": "Q1",
-   "year": "2022",
-   "vol": "70",
-   "no": "2",
-   "pp": "1332–1344",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "gao-2024-service-experience-cache-uav"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "he-2022-physics-and-ai-based-digital-twin",
    "authors": "D. He et al.",
    "title": "Physics and AI-based digital twin of multi-spectrum propagation characteristics for communication and sensing in 6G and beyond",
@@ -11596,26 +10978,6 @@
    "scope": "in",
    "cited_by": [
     "li-2025-stochastic-game-uav-swarm"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "he-2023-fairness-based-3-d-multi-uav",
-   "authors": "Y. He, Y. Gan, H. Cui, and M. Guizani",
-   "title": "Fairness-based 3-D Multi-UAV trajectory optimization in multi-UAV-assisted MEC system",
-   "venue": "IEEE Internet Things J",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2023",
-   "vol": "10",
-   "no": "13",
-   "pp": "11383–11395",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "zhao-2025-traj-offload-cache-migration"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -12616,6 +11978,26 @@
    "scope": "uncertain",
    "cited_by": [
     "wang-2026-aerial-marine-msar"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "huawei-na-ubiquitous-computing-power-the-cornerstone-of",
+   "authors": "Huawei.(2022)",
+   "title": "Ubiquitous Computing Power: The Cornerstone of Intelligent Society. [Online]",
+   "venue": "Available: http://www-file.huawei.com/ media/corporate/pdf/publicolicy/ubiquitous",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": null,
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "http://www-file.huawei.com/",
+   "doi": null,
+   "scope": "uncertain",
+   "cited_by": [
+    "hao-2025-priority-aware-task-driven-co"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -13641,6 +13023,26 @@
    "curated_as": null
   },
   {
+   "key": "kar-2023-offloading-using-traditional-optimization-and-machine",
+   "authors": "Binayak Kar, Widhi Yahya, Ying-Dar Lin, and Asad Ali",
+   "title": "Offloading using traditional optimization and machine learning in federated cloud–edge–fog systems: A survey",
+   "venue": "IEEE Communications Surveys & Tutorials",
+   "venue_normalized": "IEEE Commun. Surveys Tuts. (COMST)",
+   "venue_tier": "Q1",
+   "year": "2023",
+   "vol": "25",
+   "no": "2",
+   "pp": "1199–1226",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "karumanchi-2023-autonomous-uav-navigation-in-complex-environments",
    "authors": "S. H. Karumanchi, R. B. Diddigi, K. J. Prabuchandran, and S. Bhatnagar",
    "title": "Autonomous UAV navigation in complex environments using human feedback",
@@ -14316,6 +13718,26 @@
    "scope": "uncertain",
    "cited_by": [
     "chen-2024-ulse-game"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "lakew-2021-intelligent-offloading-and-resource-allocation-in",
+   "authors": "Demeke Shumeye Lakew, Anh-Tien Tran, Nhu-Ngoc Dao, and Sungrae Cho",
+   "title": "Intelligent offloading and resource allocation in hap-assisted mec networks",
+   "venue": "2021 International Conference on Information and Communication Technology Convergence (ICTC)",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2021",
+   "vol": null,
+   "no": null,
+   "pp": "1582–1587",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -15801,6 +15223,26 @@
    "curated_as": null
   },
   {
+   "key": "liang-2024-joint-task-offloading-and-resource-allocation",
+   "authors": "Bizheng Liang, Rongfei Fan, Han Hu, Hai Jiang, Jie Xu, and Ning Zhang",
+   "title": "Joint task offloading and resource allocation in multi-user mobile edge computing with continuous spectrum sharing",
+   "venue": "IEEE Transactions on Vehicular Technology",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2024",
+   "vol": "73",
+   "no": "5",
+   "pp": "7234–7249",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "liang-2024-multiobjective-optimization-approach-for-reducing-hovering",
    "authors": "S. Liang, M. Yin, G. Sun, and J. Li",
    "title": "Multiobjective optimization approach for reducing hovering and motion energy consumptions in UAV-assisted collaborative beamforming",
@@ -16861,26 +16303,6 @@
    "curated_as": null
   },
   {
-   "key": "liu-2022-rl-drl-meets-vehicular-task-offloading",
-   "authors": "J. Liu et al.",
-   "title": "RL/DRL meets vehicular task offloading using edge and vehicular cloudlet: A survey",
-   "venue": "IEEE Internet Things J",
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
-   "venue_tier": "Q1",
-   "year": "2022",
-   "vol": "9",
-   "no": "11",
-   "pp": "8315–8338",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "ma-2025-pdqn-vehicular-mec"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "liu-2022-joint-communication-and-trajectory-optimization-for",
    "authors": "X. Liu, B. Lai, B. Lin, and V. C. M. Leung",
    "title": "Joint communication and trajectory optimization for multi-UAV enabled mobile Internet of Vehicles",
@@ -17281,6 +16703,26 @@
    "curated_as": null
   },
   {
+   "key": "liu-2024-joint-trajectory-design-and-resource-allocation",
+   "authors": "Wenchao Liu, Hao Wang, Xuhui Zhang, Huijun Xing, Jinke Ren, Yanyan Shen, and Shuguang Cui",
+   "title": "Joint trajectory design and resource allocation in uav-enabled heterogeneous mec systems",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2024",
+   "vol": "11",
+   "no": "19",
+   "pp": "30817–30832",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "liu-2024-optimizing-mobile-edge-ai-generated-everything",
    "authors": "Y. Liu et al.",
    "title": "Optimizing mobile-edge ai-generated everything (AIGX) services by prompt engineering: Fundamental, framework, and case study",
@@ -17596,6 +17038,26 @@
    "scope": "uncertain",
    "cited_by": [
     "sun-2024-asap-uav-swarm"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "lu-2022-a-game-theoretical-balancing-approach-for",
+   "authors": "Hongli Lu, Guangping Xu, Chi Wan Sung, Salwa Mostafa, and Yulei Wu",
+   "title": "A game theoretical balancing approach for offloaded tasks in edge datacenters",
+   "venue": "2022 IEEE 42nd International Conference on Distributed Computing Systems (ICDCS)",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2022",
+   "vol": null,
+   "no": null,
+   "pp": "526–536",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -19764,7 +19226,7 @@
    "key": "nie-2023-offloading-strategy-for-uav-assisted-mobile",
    "authors": "J. Nie, J. Mu, Q. Zhou, and X. Jing",
    "title": "Offloading strategy for uav-assisted mobile edge computing with computation rate maximization",
-   "venue": "in",
+   "venue": "2023 IEEE International Symposium on Broadband Multimedia Systems and Broadcasting (BMSB), IEEE",
    "venue_normalized": null,
    "venue_tier": "other",
    "year": "2023",
@@ -20116,6 +19578,26 @@
    "scope": "in",
    "cited_by": [
     "benaya-2025-aerial-isac-haps"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "ovatman-2022-an-accurate-model-for-computation-offloading",
+   "authors": "Tolga Ovatman, Gunes Karabulut Kurt, and Halim Yanikomeroglu",
+   "title": "An accurate model for computation offloading in 6g networks and a haps-based case study",
+   "venue": "IEEE Open Journal of the Communications Society",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2022",
+   "vol": "3",
+   "no": null,
+   "pp": "1963–1977",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -20921,26 +20403,6 @@
    "curated_as": null
   },
   {
-   "key": "qi-2024-minimizing-maximum-latency-of-task-offloading",
-   "authors": "S. Qi, B. Lin, Y. Deng, X. Chen, and Y. Fang",
-   "title": "Minimizing maximum latency of task offloading for multi-UAV-assisted maritime search and rescue",
-   "venue": "IEEE Trans. Veh. Technol",
-   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
-   "venue_tier": "Q1",
-   "year": "2024",
-   "vol": "73",
-   "no": "9",
-   "pp": "13625–13638",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "wang-2026-aerial-marine-msar"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "qian-2020-leveraging-dynamic-stackelberg-pricing-game-for",
    "authors": "B. Qian et al.",
    "title": "Leveraging dynamic Stackelberg pricing game for multimode spectrum sharing in 5G-VANET",
@@ -21056,26 +20518,6 @@
    "scope": "in",
    "cited_by": [
     "wang-2025-uav-swarm-stackelberg"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
-   "key": "qin-2022-optimal-task-offloading-and-resource-allocation",
-   "authors": "P. Qin, Y. Fu, X. Zhao, K. Wu, J. Liu, and M. Wang",
-   "title": "Optimal task offloading and resource allocation for C-NOMA heterogeneous airground integrated power Internet of Things networks",
-   "venue": "IEEE Trans. Wireless Commun",
-   "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
-   "venue_tier": "Q1",
-   "year": "2022",
-   "vol": "21",
-   "no": "11",
-   "pp": "9276–9292",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "qin-2025-bcuav-masac"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -21861,26 +21303,6 @@
    "curated_as": null
   },
   {
-   "key": "sacco-2021-sustainable-task-offloading-in-uav-networks",
-   "authors": "A. Sacco, F. Esposito, G. Marchetto, and P. Montuschi",
-   "title": "Sustainable task offloading in UAV networks via multi-agent reinforcement learning",
-   "venue": "IEEE Trans. Veh. Technol",
-   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
-   "venue_tier": "Q1",
-   "year": "2021",
-   "vol": "70",
-   "no": "5",
-   "pp": "5003–5015",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "sun-2024-asap-uav-swarm"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "sadeeq-2021-iot-and-cloud-computing-issues-challenges",
    "authors": "M. M. Sadeeq, N. M. Abdulkareem, S. R. M. Zeebaree, D. M. Ahmed, A. S. Sami, and R. R. Zebari",
    "title": "IoT and cloud computing issues, challenges and opportunities: A review",
@@ -22261,26 +21683,6 @@
    "curated_as": null
   },
   {
-   "key": "seid-2021-multiagent-drl-for-task-offloading-and",
-   "authors": "A. M. Seid, G. O. Boateng, B. Mareri, G. Sun, and W. Jiang",
-   "title": "Multiagent DRL for task offloading and resource allocation in multi-UAV enabled IoT edge network",
-   "venue": "IEEE Trans. Netw. Serv. Manage",
-   "venue_normalized": "IEEE/ACM Trans. Netw. (ToN)",
-   "venue_tier": "Q1",
-   "year": "2021",
-   "vol": "18",
-   "no": "4",
-   "pp": "4531–4547",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "li-2025-stochastic-game-uav-swarm"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "seid-2021-collaborative-computation-offloading-and-resource-allocation",
    "authors": "A. M. Seid, G. O. Boateng, S. Anokye, T. Kwantwi, G. Sun, and G. Liu",
    "title": "Collaborative computation offloading and resource allocation in multi-UAV-assisted IoT networks: A deep reinforcement learning approach",
@@ -22376,6 +21778,26 @@
    "scope": "uncertain",
    "cited_by": [
     "jia-2025-dro-uav-hap-mec"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "services-2024-he-was-a-post-doctoral-research",
+   "authors": "Technical Specification Group Services and System Aspects; Study on Using Satellite Access in 5G; Stage 1; (Release 16), document 22.822 V16.0.0, 3rd Generation Partnership Project (3GPP), Jun. 2018. ![](images/9a03108184610dde8c11f4de6f582a1eed1a9c2cb3748e823919ad1474662dcf.jpg) <details> <summary>natural_image</summary> Portrait photo of a man in a black shirt (no text or symbols visible) </details> Yi-Huai Hsu (Member, IEEE) received the Ph.D. degree in computer science and engineering from National Chiao Tung University, Hsinchu, Taiwan, in 2016",
+   "title": "He was a Post-Doctoral Research Fellow with the IoT Research Center, National Taiwan University, Taipei, Taiwan, from 2019 to 2020",
+   "venue": "He was an Engineer with Information and Communications Research Laboratories, Industrial Technology Research Institute, Hsinchu, from",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2024",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "scope": "uncertain",
+   "cited_by": [
+    "hsu-2025-drl-hues-hap-noma"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -24681,6 +24103,26 @@
    "curated_as": null
   },
   {
+   "key": "wang-2018-a-comprehensive-trustworthy-data-collection-approach",
+   "authors": "Tian Wang, Yang Li, Weiwei Fang, Wenzheng ${ \\mathrm { X u } } ,$ Junbin Liang, Yewang Chen, and Xuxun Liu",
+   "title": "A comprehensive trustworthy data collection approach in sensor-cloud systems",
+   "venue": "IEEE transactions on big data",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2018",
+   "vol": "8",
+   "no": "1",
+   "pp": "140–151",
+   "url": null,
+   "doi": null,
+   "scope": "uncertain",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "wang-2018-a-computation-offloading-strategy-in-satellite",
    "authors": "Y. Wang, J. Zhang, X. Zhang, P. Wang, and L. Liu",
    "title": "A computation offloading strategy in satellite terrestrial networks with double edge computing",
@@ -24961,6 +24403,26 @@
    "curated_as": null
   },
   {
+   "key": "wang-2021-edge-based-auditing-method-for-data",
+   "authors": "Tian Wang, Yaxin Mei, Xuxun Liu, Jin Wang, Hong-Ning Dai, and Zhijian Wang",
+   "title": "Edge-based auditing method for data security in resource-constrained internet of things",
+   "venue": "Journal of Systems Architecture",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2021",
+   "vol": "114",
+   "no": null,
+   "pp": "101971",
+   "url": null,
+   "doi": null,
+   "scope": "uncertain",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "wang-2021-distributed-reinforcement-learning-based-framework-for",
    "authors": "W. Wang, Z. Lv, X. Lu, Y. Zhang, and L. Xiao",
    "title": "Distributed reinforcement learning based framework for energy-efficient UAV relay against jamming",
@@ -25116,6 +24578,26 @@
    "scope": "in",
    "cited_by": [
     "benaya-2025-aerial-isac-haps"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "wang-2022-amplify-and-forward-relaying-for-hierarchical",
+   "authors": "Feng Wang, Jie Xu, Vincent K. N. Lau, and Shuguang Cui",
+   "title": "Amplify-and-forward relaying for hierarchical over-theair computation",
+   "venue": "IEEE Transactions on Wireless Communications",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2022",
+   "vol": "21",
+   "no": "12",
+   "pp": "10529–10543",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -26176,6 +25658,26 @@
    "scope": "in",
    "cited_by": [
     "chen-2024-thoas-traffic-aware-sagin"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "wei-2021-computation-offloading-over-multi-uav-mec",
+   "authors": "Dawei Wei, Jianfeng Ma, Linbo Luo, Yunbo Wang, Lei He, and Xinghua Li",
+   "title": "Computation offloading over multi-uav mec network: A distributed deep reinforcement learning approach",
+   "venue": "Computer Networks",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2021",
+   "vol": "199",
+   "no": null,
+   "pp": "108439",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
@@ -29581,26 +29083,6 @@
    "curated_as": null
   },
   {
-   "key": "zhang-2020-uav-enabled-secure-communications-by-multi",
-   "authors": "Y. Zhang, Z. Mou, F. Gao, J. Jiang, R. Ding, and Z. Han",
-   "title": "UAV-enabled secure communications by multi-agent deep reinforcement learning",
-   "venue": "IEEE Trans. Veh. Technol",
-   "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
-   "venue_tier": "Q1",
-   "year": "2020",
-   "vol": "69",
-   "no": "10",
-   "pp": "11599–11611",
-   "url": null,
-   "doi": null,
-   "scope": "in",
-   "cited_by": [
-    "shao-2024-drl-antijamming-mec"
-   ],
-   "cited_count": 1,
-   "curated_as": null
-  },
-  {
    "key": "zhang-2020-a-competitive-mechanism-based-multi-objective",
    "authors": "X. Zhang, X. Zheng, R. Cheng, J. Qiu, and Y. Jin",
    "title": "A competitive mechanism based multi-objective particle swarm optimizer with fast convergence",
@@ -30321,6 +29803,66 @@
    "curated_as": null
   },
   {
+   "key": "zhang-2024-a-survey-of-computation-offloading-with",
+   "authors": "Siqi Zhang, Na Yi, and Yi Ma",
+   "title": "A survey of computation offloading with task types",
+   "venue": "IEEE Transactions on Intelligent Transportation Systems",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2024",
+   "vol": "25",
+   "no": "8",
+   "pp": "8313–8333",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "zhang-2024-cooperative-partial-task-offloading-and-resource",
+   "authors": "Fan Zhang, Guangjie Han, Li Liu, Yu Zhang, Yan Peng, and Chao Li",
+   "title": "Cooperative partial task offloading and resource allocation for iiot based on decentralized multiagent deep reinforcement learning",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2024",
+   "vol": "11",
+   "no": "3",
+   "pp": "5526–5544",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "zhang-2024-neural-network-based-game-theory-for",
+   "authors": "Juan Zhang, Yulei Wu, Geyong Min, and Keqin Li",
+   "title": "Neural network-based game theory for scalable offloading in vehicular edge computing: A transfer learning approach",
+   "venue": "IEEE Transactions on Intelligent Transportation Systems",
+   "venue_normalized": null,
+   "venue_tier": "other",
+   "year": "2024",
+   "vol": "25",
+   "no": "7",
+   "pp": "7431–7444",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
    "key": "zhang-2024-aoi-energy-tradeoff-for-data-collection",
    "authors": "X. Zhang, Z. Chang, T. Hämäläinen, and G. Min",
    "title": "AoI-energy tradeoff for data collection in UAV-assisted wireless networks",
@@ -30636,6 +30178,26 @@
    "scope": "in",
    "cited_by": [
     "wang-2026-aerial-marine-msar"
+   ],
+   "cited_count": 1,
+   "curated_as": null
+  },
+  {
+   "key": "zhang-2025-uav-assisted-task-offloading-in-edge",
+   "authors": "Junna Zhang, Guoxian Zhang, Xinxin Wang, Xiaoyan Zhao, Peiyan Yuan, and Hu Jin",
+   "title": "Uav-assisted task offloading in edge computing",
+   "venue": "IEEE Internet of Things Journal",
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1",
+   "year": "2025",
+   "vol": "12",
+   "no": "5",
+   "pp": "5559–5574",
+   "url": null,
+   "doi": null,
+   "scope": "in",
+   "cited_by": [
+    "peng-2025-drudm-cfg"
    ],
    "cited_count": 1,
    "curated_as": null
