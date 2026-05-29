@@ -32,11 +32,11 @@ The 2026-05-29 batch nearly doubled the corpus and rebalanced the solver-family 
 | Family | Sources | Size |
 |---|---|---|
 | **DRL** (PPO/SAC/DQN/DDPG/MADDPG/MASAC etc.) | [[liu-2026-jppo-en-convntm]], [[peng-2025-drudm-cfg]], [[zhang-2025-ssac-mgi-heterogeneous-uav]], [[zhang-2025-mcma-task-migration]], [[zhu-2025-lycnn-drl-wpt-mec]], [[hao-2025-priority-aware-task-driven-co]], [[mao-2025-bcsa-frl]], [[qin-2025-bcuav-masac]], [[ma-2025-pdqn-vehicular-mec]], [[bao-2025-ddpg-video-offloading]], [[nabi-2025-jour-hierarchical-aerial]], [[hsu-2025-drl-hues-hap-noma]] | **12** |
-| **Evolutionary / metaheuristic** (CMOEA, MVO, BWOA) | [[peng-2022-cmop-uav-path-planning]], [[huang-2023-mu-aec-task-energy]], [[peng-2024-energy-time-uav-its]], [[huang-2025-cmop-dispersed-computing]], [[xie-2026-uav-multisource-fusion]], [[wu-2026-terrain-aware-uav-mec]], [[liu-2025-haps-uav-maritime-iot]] (EMOMVO-CGD), [[jia-2025-dro-uav-hap-mec]] (BWOA stage) | **8** (6 lineage + 2 metaheuristic) |
-| **Classical** (convex / Stackelberg / matching / AO+SDR+SCA) | [[wang-2025-uav-swarm-stackelberg]], [[bi-2025-sg-mapg]], [[wang-2026-aerial-marine-msar]], [[benaya-2025-aerial-isac-haps]], [[jia-2025-dro-uav-hap-mec]] (CVX stage) | **4** (+ overlap) |
+| **Evolutionary / metaheuristic** | 6-paper [[cmop-evolutionary-uav-mec-lineage\|CMOP-evolutionary lineage]] (peng-2022, huang-2023, peng-2024, huang-2025, xie-2026, wu-2026) + [[liu-2025-haps-uav-maritime-iot]] (EMOMVO-CGD as whole-MOP solver) | **7 main**, plus BWOA stage in [[jia-2025-dro-uav-hap-mec]] (counted in Classical) |
+| **Classical** (convex / Stackelberg / matching / AO+SDR+SCA / DRO+CVaR) | [[wang-2025-uav-swarm-stackelberg]], [[bi-2025-sg-mapg]], [[wang-2026-aerial-marine-msar]], [[benaya-2025-aerial-isac-haps]], [[jia-2025-dro-uav-hap-mec]] | **5** |
 | **Surveys / overviews** (no solver) | [[wang-2025-lae-network-survey]], [[jiang-2025-isac-lae-overview]] | 2 |
 
-**Note on overlap.** Several sources fit multiple families. [[jia-2025-dro-uav-hap-mec]] uses both CVX (classical) and BWOA (metaheuristic). [[wang-2026-aerial-marine-msar]] uses matching (classical) + quasi-convex (classical) + PGD (classical) but in a multi-stage decomposition. The "family" label here means *primary* solver responsibility for the non-trivial sub-problem.
+**Note on overlap.** Several sources fit multiple families. [[jia-2025-dro-uav-hap-mec]] is *primarily* classical (DRO + CVaR + primal decomposition + CVX) but uses BWOA (a metaheuristic) for the binary subproblem after decomposition. [[wang-2026-aerial-marine-msar]] uses matching (classical) + quasi-convex (classical) + PGD (classical) but in a multi-stage decomposition. The "family" label here means *primary* solver responsibility for the non-trivial sub-problem.
 
 ## Family characteristics
 
@@ -72,7 +72,10 @@ Evolutionary dominates when the decision is **one-shot for a mission**, the obje
 
 The Peng/Huang [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary lineage]] is the largest cluster: six sources that all use [[constrained-multi-objective-evolutionary-algorithm|CMOEA]] on UAV-MEC sub-problems and refine one methodological knob per paper.
 
-Two evolutionary entries are *metaheuristics* rather than CMOEA: [[liu-2025-haps-uav-maritime-iot]]'s EMOMVO-CGD and [[jia-2025-dro-uav-hap-mec]]'s BWOA. Both used to handle binary subproblems after a convex relaxation — different role from full-CMOEA.
+Two evolutionary entries use *metaheuristic* optimizers in distinct roles:
+
+- [[liu-2025-haps-uav-maritime-iot]]'s **EMOMVO-CGD** (multi-verse + chaos + grey-wolf + discrete-update) solves the *whole* multi-objective problem — same role as a CMOEA, just a different population-based algorithm family.
+- [[jia-2025-dro-uav-hap-mec]]'s **BWOA** is used only for the **binary subproblem** after primal decomposition (the continuous resource allocation stage uses CVX). So in this case the metaheuristic is a sub-block solver, not the whole pipeline.
 
 ### Classical: provable structure, decomposable problems
 
@@ -159,7 +162,7 @@ No source in the wiki runs both a DRL controller and a CMOEA on the same UAV-MEC
 
 ### When DRO is worth its conservatism
 
-[[jia-2025-dro-uav-hap-mec]] reports ~10–20% energy overhead vs nominal solutions. Whether that's a worthwhile tax depends on how often nominal solutions actually fail at deployment — a number the corpus doesn't have. A DRL-vs-DRO ablation under realistic CSI noise would clarify this dramatically.
+[[jia-2025-dro-uav-hap-mec]] reports that DRO/CVaR-reformulated solutions cost more energy than nominal solutions but maintain feasibility under realistic CSI errors. The paper's simulations validate the robustness benefit but don't pin down a precise overhead percentage that's representative across scenarios. Whether the energy tax is worthwhile depends on how often nominal solutions actually fail at deployment — a number the corpus doesn't have. A DRL-vs-DRO ablation under realistic CSI noise would clarify this dramatically.
 
 ### Evolutionary lineage scaling
 

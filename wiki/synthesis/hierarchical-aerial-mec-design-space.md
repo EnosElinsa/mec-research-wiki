@@ -55,12 +55,12 @@ The split matters because coordinator-HAP designs scale worse — every offloadi
 
 ## Solver-family split
 
-Two of five (`bao-2025`, `nabi-2025`, `peng-2025`) use DRL; two (`jia-2025`, `wang-2026`) are classical / metaheuristic. The split correlates with what they care most about:
+Three of five (`bao-2025`, `nabi-2025`, `peng-2025`) use DRL; two (`jia-2025`, `wang-2026`) use classical / metaheuristic methods. The split correlates with what they care most about:
 
 - **DRL** wins when the optimization is **online, recurring, scalar-reward** with stable channel statistics. Train once, deploy fast.
 - **Classical** wins when **provable robustness** matters ([[jia-2025-dro-uav-hap-mec]]'s DRO under uncertain CSI), or when the structure is **highly decomposable** ([[wang-2026-aerial-marine-msar]]'s clean four-subproblem split).
 
-[[two-stage-decomposition]] cuts across both — `nabi-2025` (DRL second stage), `jia-2025` (classical second stage), `wang-2026` (classical both stages). The two-stage frame seems to be the most portable design pattern in the track.
+[[two-stage-decomposition]] cuts across both — `nabi-2025` (DRL second stage), `jia-2025` (classical second stage with BWOA on the binary), `wang-2026` (classical both stages). The two-stage frame seems to be the most portable design pattern in the track.
 
 ## Common objective shapes
 
@@ -71,7 +71,7 @@ Every source minimizes some weighted combination of latency + energy. They diffe
 | [[peng-2025-drudm-cfg]] | ✓ | ✓ | Theil fairness |
 | [[nabi-2025-jour-hierarchical-aerial]] | ✓ | ✓ | UAV-load variance ([[load-balancing-uav-mec]]) |
 | [[bao-2025-ddpg-video-offloading]] | ✓ | (implicit) | **Video bitrate** ([[qoe-modeling-mec]]) |
-| [[jia-2025-dro-uav-hap-mec]] | (chance-constraint) | ✓ | (none) |
+| [[jia-2025-dro-uav-hap-mec]] | ✓ (chance constraint) | ✓ (sole objective: total energy) | (none) |
 | [[wang-2026-aerial-marine-msar]] | ✓ | ✓ | (none beyond CO weighted sum) |
 
 Nothing surprising in the latency + energy core. The third-axis choices are workload-specific: fairness for disaster relief, load balance for swarm longevity, bitrate for video analytics. None of the third-axis choices transfers cleanly across workloads.
@@ -80,7 +80,7 @@ Nothing surprising in the latency + energy core. The third-axis choices are work
 
 ### When to put trajectory in the action space
 
-Three of five sources hold UAV trajectories *fixed* during the planning window (`bao-2025`, `nabi-2025`, `wang-2026` — the UAV-MASS positions). Two optimize trajectory *jointly* with offloading (`peng-2025`, `jia-2025` via WKD pre-stage).
+Three of five sources hold UAV positions *fixed* during the planning window: [[bao-2025-ddpg-video-offloading]] (UAVs fly fixed circular paths), [[nabi-2025-jour-hierarchical-aerial]] (static UAV positions), and [[wang-2026-aerial-marine-msar]] (UAV positions and MASS positions both static-per-slot). One source ([[peng-2025-drudm-cfg]]) puts UAV trajectory directly in the DRL action vector (flight angle θ, flight speed ϑ). [[jia-2025-dro-uav-hap-mec]] is in between: it computes a *one-shot UAV deployment* (placement) via Weighted K-means before the per-slot offloading optimization, but the UAVs are quasi-stationary after deployment — so it has placement, not trajectory.
 
 The argument for joint trajectory: UAV position determines channel quality, which determines optimal offloading, which determines optimal trajectory — the loop is real. The argument for fixed trajectory: in many deployments (post-disaster, search-and-rescue) the trajectory is operationally constrained and not a free decision variable anyway.
 
@@ -96,20 +96,20 @@ If a future source documents materially different HAP-link dynamics (e.g. weathe
 
 Only [[benaya-2025-aerial-isac-haps]] and [[qin-2025-bcuav-masac]] put physical-layer security on this kind of stack — and neither is in this synthesis's main roster (Benaya is ISAC, Qin is multi-agent UAV-MEC, neither is hierarchical-aerial-MEC strictly). The hierarchical-aerial-MEC track currently has **no source** that puts security/trust on the UAV → HAP path. That's a real gap given how much sensitive data flows through the HAP tier.
 
-## Practical guidance distilled from the four sources
+## Practical guidance distilled from the five sources
 
-If you're designing a hierarchical-aerial-MEC system and choosing between the four canonical patterns:
+If you're designing a hierarchical-aerial-MEC system and choosing between the canonical patterns:
 
 1. **Start with two-stage decomposition.** Gale-Shapley or many-to-one matching for user-UAV / UAV-HAP association; then optimize the continuous resource allocations conditional on the matching. This is the most reliable scaffold.
 2. **Default to DRL only for the continuous stage.** The discrete stage benefits from the determinism of classical methods. [[nabi-2025-jour-hierarchical-aerial]] is the cleanest demonstration of this pattern.
 3. **Add a third objective only when it's load-bearing for the use case.** Latency + energy is the universal core. Adding fairness for disaster relief, load balance for swarm longevity, bitrate for video — pick at most one beyond the core, and tie it to a real operational concern.
-4. **Don't assume HAP energy is unbounded.** The four-source roster does, but [[hsu-2025-drl-hues-hap-noma]] shows the assumption breaks at HAP scale. If your deployment is multi-day or solar-powered, model HAP energy explicitly.
+4. **Don't assume HAP energy is unbounded.** The five-source roster does, but [[hsu-2025-drl-hues-hap-noma]] shows the assumption breaks at HAP scale. If your deployment is multi-day or solar-powered, model HAP energy explicitly.
 5. **If CSI uncertainty is operationally real, don't paper over it.** Either go DRO ([[jia-2025-dro-uav-hap-mec]]) or pre-measure ([[wang-2026-aerial-marine-msar]] for shipping routes). Pretending CSI is exact is a recipe for QoS violations at deployment time.
 
 ## Open questions
 
 - **Three-tier extension.** [[wang-2026-aerial-marine-msar]] adds MASSs. The terrestrial analog (RSU + UAV + HAP) and the dense-urban analog (small cell + UAV + HAP) are unstudied in the wiki. Would the matching-based server selection re-emerge naturally?
-- **Online tuning of the HAP-vs-UAV split.** All four sources fix the offloading-tier-selection rule by training once. A continual-learning variant that tracks demand drift would be welcome; the wiki has no example.
+- **Online tuning of the HAP-vs-UAV split.** All five sources fix the offloading-tier-selection rule by training once. A continual-learning variant that tracks demand drift would be welcome; the wiki has no example.
 - **Joint trajectory + offloading + DRO.** [[jia-2025-dro-uav-hap-mec]] handles the latter two, [[peng-2025-drudm-cfg]] handles the former two, no source handles all three. The intersection is operationally important and methodologically open.
 
 ## See also

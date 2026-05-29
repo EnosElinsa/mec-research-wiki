@@ -47,11 +47,11 @@ Every paper in the lineage instantiates the same five-step pattern:
 
 1. **Identify a UAV/MEC sub-problem** with at least two genuinely conflicting objectives (energy vs safety, energy vs time, latency vs charge, etc.).
 2. **Cast as a constrained multi-objective optimization problem (CMOP)** with mixed-integer + continuous decision variables.
-3. **Build a [[constrained-multi-objective-evolutionary-algorithm|CMOEA]]** on top of the [[cmoea-d-cdp]] framework — decomposition for diversity, constrained-domination for feasibility.
+3. **Build a [[constrained-multi-objective-evolutionary-algorithm|CMOEA]]** — most lineage entries (peng-2022, huang-2023, peng-2024, huang-2025) build on the [[cmoea-d-cdp]] framework; [[xie-2026-uav-multisource-fusion]] extends a constrained NSGA-II for the dynamic CMOO setting; [[wu-2026-terrain-aware-uav-mec]] uses a multi-tasking dual-population scheme with the constrained-domination principle but is not strictly CMOEA/D-CDP. The framework family is shared even when the specific backbone shifts.
 4. **Contribute one methodological knob** that's reusable across the lineage (a constraint-handling technique, a population structure, a genetic operator, a local search, a multi-tasking scheme).
-5. **Compare against the previous lineage entry plus 1-2 external baselines** (typically ToP, PPS, NSGA-II, NSGA-III).
+5. **Compare against external CMOEA baselines** of the relevant generation: ToP and PPS for the early entries; CMOEMT/URCMO/ICMA/DPPPS for the most recent. The lineage entries do *not* run head-to-head against each other on a common benchmark — they share an authorial network but extend the methodology rather than directly compete.
 
-The result: a connected research program where each paper *picks up* the previous paper's knobs and *adds* one of its own.
+The result: a connected research program where each paper *picks up* the previous paper's knobs and *adds* one of its own — primarily through methodological inheritance via shared authors, not through systematic head-to-head benchmarking.
 
 ## The methodological knobs
 
@@ -70,34 +70,35 @@ A reader who needs *one* technique gets the corresponding paper. A reader who wa
 
 ## What stays constant across the lineage
 
-Three structural choices repeat in every paper:
+Two structural choices repeat reliably:
 
-- **[[b-spline-trajectory]]** for any UAV path. λ control points + spline interpolation makes the path differentiable and parameter-frugal.
-- **CMOEA/D-CDP backbone**. Decomposition into N weight-vector subproblems + Constrained-Domination Principle for ranking.
-- **Two genuinely conflicting objectives.** Single-objective scalarizations are explicitly rejected — the program's whole pitch is that the decision-maker should see the front.
+- **CMOEA family backbone.** All six entries are population-based constrained multi-objective evolutionary algorithms — even where the specific framework shifts (CMOEA/D-CDP for the first four, NSGA-II-extension for [[xie-2026-uav-multisource-fusion]], multi-tasking CDP for [[wu-2026-terrain-aware-uav-mec]]).
+- **Two genuinely conflicting objectives.** Single-objective scalarizations are explicitly rejected — the program's whole pitch is that the decision-maker should see the front. (Peng-2024 has G₁ + G₂; the rest are similar.)
+
+A third element — **[[b-spline-trajectory|B-spline trajectory]]** — appears in the lineage's *trajectory-optimization* entries ([[peng-2022-cmop-uav-path-planning]] and [[wu-2026-terrain-aware-uav-mec]]) but not in the others, because not every entry has a UAV path to plan. Treat B-spline as the trajectory-subset's shared tool, not a lineage-wide constant.
 
 The *application* changes — path planning → DAG → ITS → dispersed → fusion → urban — but the *machinery* stays close enough that techniques port across without re-engineering.
 
 ## Cross-referencing: what each new entry inherits
 
-Reading the lineage as a graph rather than a list:
+Reading the lineage as a graph rather than a list. **Caveat**: this graph is interpretive — it traces methodological inheritance through shared authors and shared techniques, not all edges correspond to explicit citations. Verified citations: [[peng-2024-energy-time-uav-its]] cites [[peng-2022-cmop-uav-path-planning]]; [[huang-2025-cmop-dispersed-computing]] cites [[peng-2022-cmop-uav-path-planning]] but does not cite [[peng-2024-energy-time-uav-its]] directly.
 
 ```
 peng-2022 (seed: infeasibility-utilization)
    ├──→ huang-2023 (+ local search, DAG)
    ├──→ peng-2024 (+ repair CHT, data-type operator, service caching)
-   │       └──→ huang-2025 (+ dual-population, parallel/serial, redundancy)
+   │       ↘── (technique reuse, not direct citation) ──→ huang-2025 (+ dual-population, parallel/serial, redundancy)
    ├──→ xie-2026 (+ dynamic CMOO, cooperative perception)
    └──→ wu-2026 (+ multi-tasking, terrain-aware channel)
 ```
 
-`huang-2025` builds explicitly on `peng-2024`'s repair technique; `wu-2026` is a parallel branch that picks up the data-type operator and adds multi-tasking on top.
+`huang-2025` reuses [[peng-2024-energy-time-uav-its]]'s repair-CHT technique and operates in the same authorial network, but the paper itself only cites the lineage seed [[peng-2022-cmop-uav-path-planning]]. `wu-2026` is a parallel branch that picks up the data-type operator and adds multi-tasking on top.
 
 ## Working theses
 
 > **The CMOP-evolutionary lineage occupies a niche the wiki's DRL track does not fill: problems with truly conflicting objectives, brittle non-differentiable constraints (turning angle, terrain, redundancy threshold), and decision-makers who want to see the *whole* Pareto front rather than commit to a single scalar reward.**
 
-Confidence: **high**. Six independent papers across four years, all reporting Pareto-front improvements over both DRL-style and prior-CMOEA baselines on UAV-MEC sub-problems, is strong evidence the niche is real.
+Confidence: **medium-high**. Six independent papers across four years, all reporting Pareto-front improvements over prior CMOEA baselines on UAV-MEC sub-problems, is strong evidence the niche is real. Caveat: none of them runs against a DRL controller on the same problem, so the *DRL-vs-CMOEA* boundary is inferred from problem shape rather than measured directly.
 
 > **The lineage's incremental contribution model — one new knob per paper — is itself a transferable research strategy.** Each knob is reusable, each comparison is anchored to the previous entry, and the cumulative methodological contribution is larger than any single paper would suggest.
 
@@ -123,8 +124,8 @@ The lineage's [[xie-2026-uav-multisource-fusion]] and [[wu-2026-terrain-aware-ua
 ## Limitations of the lineage as a whole
 
 - **No hardware validation.** Every entry is simulation-only — same caveat as the rest of the wiki.
-- **Computational cost is high.** All entries run 10⁴–10⁵ function evaluations. Real-time replanning is not in the scope.
-- **No DRL ablation in the same paper.** The lineage compares against other evolutionary baselines (ToP, PPS, NSGA family) but doesn't run a fair head-to-head against a DRL controller on the same problem. This makes the "DRL-vs-evolutionary" question harder than it should be — see [[drl-vs-evolutionary-vs-classical-solvers]] for the cross-corpus take.
+- **Computational cost is high.** Where reported, the function-evaluation budget is large — [[peng-2022-cmop-uav-path-planning]] explicitly stops after 3×10⁴ FE; the others scale with population size × generations × runs and likely sit in the same order. Real-time replanning is not in the scope of any entry.
+- **No DRL ablation in the same paper.** The lineage compares against other evolutionary baselines (ToP, PPS, NSGA family for the early entries; CMOEMT/URCMO/ICMA/DPPPS for the recent ones) but doesn't run a fair head-to-head against a DRL controller on the same problem. This makes the "DRL-vs-evolutionary" question harder than it should be — see [[drl-vs-evolutionary-vs-classical-solvers]] for the cross-corpus take.
 - **Group homogeneity.** All six papers come from the same network of authors. Independent replication on a different group's benchmark would strengthen the external validity claim.
 
 ## Open questions
