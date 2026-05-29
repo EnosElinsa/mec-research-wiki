@@ -3,8 +3,8 @@ type: source
 title: "Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing: A Multi-Objective Optimization Approach"
 authors: ["Xumin Huang", "Zexiong Wu", "Chaoda Peng", "Yuan Wu", "Weifeng Zhong", "Jiawen Kang", "Shengli Xie"]
 year: 2025
-url: "https://doi.org/10.1109/TEVC.2025.3569722"
-venue: "IEEE Transactions on Evolutionary Computation"
+url: ""
+venue: ""
 tags: [dispersed-computing, cmop, evolutionary-algorithm, task-redundancy, dual-population, parallel-vs-serial]
 related:
   - "[[dispersed-computing]]"
@@ -16,14 +16,16 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-31
 ---
 
 # Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing
 
 ## Citation
 
-Huang, X., Wu, Z., Peng, C., Wu, Y., Zhong, W., Kang, J., & Xie, S. (2025). *Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing: A Multi-Objective Optimization Approach*. **IEEE Transactions on Evolutionary Computation**. DOI: 10.1109/TEVC.2025.3569722.
+Huang, X., Wu, Z., Peng, C., Wu, Y., Zhong, W., Kang, J., & Xie, S. (2025). *Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing: A Multi-Objective Optimization Approach*. (Venue / DOI `not in parse`.)
+
+> **Metadata note (2026-05-31 audit):** an earlier version of this page carried the DOI `10.1109/TEVC.2025.3569722` / venue *IEEE Trans. Evolutionary Computation*. That DOI is **not** this paper's — it belongs to **reference [8]** in this paper's own reference list (Wang, Guo, Liu & Wang, *An Adaptive Constraint Violation Evaluation Framework…*, see [[wang-acve-constraint-violation-cmop]]). The misattributed DOI was removed; this paper's own parse contains no `Digital Object Identifier` line, so venue/DOI are `not in parse`.
 
 ## TL;DR
 

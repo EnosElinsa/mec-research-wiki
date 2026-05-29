@@ -14,7 +14,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-29
-updated: 2026-05-30
+updated: 2026-05-31
 ---
 
 # ACBFT: Adaptive Chained Byzantine Fault-Tolerant Consensus Protocol for UAV Ad Hoc Networks
@@ -45,7 +45,9 @@ UAV networks are open wireless, mobile ad hoc systems without a central authorit
 
 ## Key findings
 
-- The chain-propagation design trades a small latency increase under typical network conditions for **higher throughput** than broadcast-based BFT, and the PSO-based chain ordering reduces communication overhead. The paper's Fig. 6 reports throughput-vs-node-count curves where ACBFT leads the compared BFT protocols (BChain and others) at `N = 3f + 1`. (A specific "96.2%" headline figure is **not in the parse** — the comparative throughput/overhead advantage is read from the figures and is indicative, not an exact parsed number.)
+- The paper's contribution list states ACBFT **"achieves an increase in throughput of up to 96.2%, while simultaneously reducing communication overhead compared to existing chaining protocols"** (parse L35). The chain-propagation design trades a small latency increase under typical network conditions for higher throughput than broadcast-based BFT, and the PSO-based chain ordering reduces communication overhead. Fig. 6 reports throughput-vs-node-count curves where ACBFT leads the compared BFT protocols (BChain and others) at `N = 3f + 1`.
+
+> **Metadata note (2026-05-31 audit):** a prior pass had flagged the "96.2%" throughput figure as *not in parse* and softened this section. That was incorrect — the figure **is** stated verbatim in the paper's contributions list (parse L35, quoted above). The claim has been restored as a grounded, paper-stated headline number (the per-node-count curves in Fig. 6 remain indicative).
 
 ## Limitations / future work
 
