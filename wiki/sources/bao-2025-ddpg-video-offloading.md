@@ -3,8 +3,8 @@ type: source
 title: "HAP-UAV-Assisted Hierarchical Aerial Computing Framework for Video Offloading: A Deep Reinforcement Learning Approach"
 authors: ["Yifei Bao", "Jinghui Zhang", "Yi Cheng", "Dengyin Zhang", "Rongguo Fu"]
 year: 2025
-url: ""
-venue: "Journal of Supercomputing / Cluster Computing (Springer; preprint, accepted Sep 2025)"
+url: "https://doi.org/10.1007/s40747-025-02106-1"
+venue: "Complex & Intelligent Systems (Springer)"
 tags: [hap, uav, video-offloading, video-transcoding, ddpg, qoe, post-disaster, hierarchical-aerial-mec]
 related:
   - "[[hierarchical-aerial-mec]]"
@@ -23,7 +23,7 @@ updated: 2026-05-29
 
 ## Citation
 
-Bao, Y., Zhang, J., Cheng, Y., Zhang, D., & Fu, R. (2025). *HAP-UAV-Assisted Hierarchical Aerial Computing Framework for Video Offloading: A Deep Reinforcement Learning Approach*. (Accepted Sep 2025; published online Oct 2025.)
+Bao, Y., Zhang, J., Cheng, Y., Zhang, D., & Fu, R. (2025). *HAP-UAV-Assisted Hierarchical Aerial Computing Framework for Video Offloading: A Deep Reinforcement Learning Approach*. **Complex & Intelligent Systems** (Springer). DOI: 10.1007/s40747-025-02106-1.
 
 ## TL;DR
 
@@ -53,7 +53,7 @@ This is the wiki's first **video-analytics workload** entry. Earlier offloading 
 ## Findings
 
 - Adaptive transcoding **dominates** fixed-rate transmission. Rather than transcoding everything to a fixed low bitrate, the policy raises bitrate when the channel is good and the offloaded fraction is small.
-- DDPG converges faster than PPO baselines on this problem, attributed to the deterministic policy and replay buffer.
+- DDPG outperforms the AC and DQN baselines used in the paper. DQN explicitly fails to converge because the continuous action space is intractable for value-iteration; AC trains but is unstable in the dynamic disaster environment. (No PPO baseline in the paper — the wiki's [[ddpg-vs-jppo]] comparison should be read as cross-source, not internal to this paper.)
 - The QoE-shaped reward avoids the "always offload" failure mode that pure-delay rewards trigger when compute on the HAP is cheap.
 
 ## Limitations
