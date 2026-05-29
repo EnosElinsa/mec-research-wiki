@@ -85,6 +85,25 @@
 
 - Added [[maddpg-vs-masac-in-mec]] — synthesis on the recurring "MASAC beats MADDPG" pattern in the cooperative-MEC corpus. Working thesis at medium confidence based on direct evidence from [[qin-2025-bcuav-masac]] and [[zhang-2025-ssac-mgi-heterogeneous-uav]], indirect support from [[peng-2025-drudm-cfg]] and [[liu-2026-jppo-en-convntm]]. Documents the mechanism, when MADDPG is still preferable, and what would promote the thesis to high confidence.
 - Updated `wiki/index.md` synthesis section.
+
+## 2026-05-29 (curation pass — batch 4: 43 new sources + audit)
+
+Curated all 43 newly-ingested raw papers (corpus 39 → 82 sources). Metadata extracted faithfully from each MinerU parse; DOIs/venues verified against the parse text. Year convention follows the existing wiki (DOI-embedded year).
+
+- **New source pages (43):** [[he-2019-euagame-user-allocation]], [[mao-2017-mec-survey-communication]], [[wang-2025-acbft-uav-consensus]], [[wang-acve-constraint-violation-cmop]], [[sun-2023-bargain-match-vec]], [[faisal-2025-cgan-ris-isac-channel]], [[kang-2023-mappo-hierarchical-aerial]], [[du-2024-distributed-foundation-models-6g]], [[wang-2025-double-edge-samin]], [[chen-2023-dotora-air-ground-online]], [[zhang-2025-three-tier-maritime-offloading]], [[song-2022-emorl-tcto-uav]], [[he-2023-fairness-3d-multiuav-maddpg]], [[zhai-2023-fedleo-decentralized-fl]], [[zhang-2025-gan-td3-isac-active-ris]], [[khoramnejad-2025-gai-wireless-optimization-survey]], [[jia-2022-hierarchical-aerial-matching]], [[wang-2024-hybrid-oma-noma-sagin]], [[tang-2024-iscc-uav-feel]], [[you-2025-uncertain-maritime-hasac]], [[zhang-2019-uav-iot-comp-comm]], [[zhao-2024-caching-service-placement-uav]], [[wang-2019-todetas-deployment-scheduling]], [[chen-2025-swipt-mec-sac]], [[sun-2024-mvtora-postdisaster-vfc]], [[yu-2020-uav-ec-collaborative-offloading]], [[qin-2025-matd3-noma-queue-sagin]], [[du-2023-maddpg-service-placement-agin]], [[albakhrani-2025-moalf-uav-mec]], [[zhang-2024-dlrl-maritime-usv]], [[zhao-2022-matd3-multiuav-ec-offloading]], [[zhang-2024-gdmtd3-aerial-secure-cb]], [[guo-2023-mccco-multiuav-5g-offloading]], [[mao-2024-ntn-hierarchical-caching-cav]], [[yang-2022-stochastic-uav-mec-lyapunov]], [[fu-2025-otae-inference-lae-batching]], [[liu-2022-miso-uav-mec-trajectory]], [[chang-2022-marl-multiuav-trajectory]], [[li-2025-twohop-airground-drl-offloading]], [[wang-2024-twotier-satellite-marine]], [[zhang-2024-uav-task-offloading-ddpg]], [[meng-2024-uav-isac-overview]], [[yao-2025-secure-isac-dual-eavesdropping]].
+- **New concept stubs (17):** [[edge-user-allocation]], [[byzantine-fault-tolerant-consensus]], [[particle-swarm-optimization]], [[constraint-violation-evaluation]], [[bargaining-game]], [[conditional-gan]], [[generative-adversarial-network]], [[mappo]], [[decentralized-federated-learning]], [[integrated-sensing-computation-communication]], [[heterogeneous-agent-rl]], [[differential-evolution]], [[vehicle-fog-computing]], [[non-terrestrial-network]], [[ant-colony-optimization]], [[over-the-air-computation]], [[distributed-foundation-models]]. All other referenced concepts reused existing slugs.
+- **New entity (1):** [[geng-sun]] — Jilin University, confirmed consistent across 5 sources. Other recurring batch-4 authors (Zhen Wang / Bin Lin maritime cluster, Ziye Jia / Chao Dong / Zhu Han aerial cluster, Peng Qin / Yang Fu) deferred for human identity confirmation rather than minting/merging entities.
+- **Navigation:** refreshed `wiki/index.md` (new groupings: Foundational surveys & overviews, Classical/convex optimization UAV-MEC, Game-theoretic offloading & allocation, Multi-UAV cooperative computing & deployment, Pure optimization methods, ISAC/sensing/PLS; plus GAI / maritime / hierarchical additions and the 17 new concepts) and `wiki/overview.md` (counts 39 → 82, expanded track table, corrected hardware-validated count).
+
+### Audit (correctness-first)
+
+- **DOI / venue / year:** verified against each parse's `Digital Object Identifier` line; year set to the DOI-embedded year per existing wiki convention.
+- **`not in parse` handling:** [[wang-acve-constraint-violation-cmop]] — venue, year, and DOI genuinely absent from the parse and unconfirmable by web search (author homepage lists no matching publication); left blank / `not in parse` rather than guessed. [[du-2024-distributed-foundation-models-6g]] — DOI absent from parse; venue "IEEE Wireless Communications" web-confirmed; DOI left empty.
+- **Claims:** headline numbers reproduced only where explicit in the parse (e.g. ACBFT "up to 96.2% throughput increase", FedLEO "up to 41% delay / 9.39% accuracy", three-tier maritime "39.3% energy saving"). Figure/abstract-derived numbers (e.g. MOALF percentages) flagged as indicative.
+- **Wikilink integrity:** wiki-wide check shows **no NEW dangling links**. Pre-existing dangling links remain and are reported: `[[fairness-metrics-in-mec]]` (in [[peng-2025-drudm-cfg]]), `[[hp-mobility-models]]` (in [[liu-2026-jppo-en-convntm]]), `[[purpose]]` (in [[high-density-mobile-device-scenarios]]).
+- **Frontmatter:** `type` / `title` / `tags` / dates / H1 validated on touched pages via diagnostics (no issues).
+- **LLM Wiki API:** not queried this pass (headless shell); graph stats unavailable — not required for correctness.
+
 ## [2026-05-28] external batch delete | 2 source files
 
 Deleted 2 source files and 0 wiki pages.
@@ -510,3 +529,610 @@ Correctness-first audit of the 13 new source pages and refreshed navigation:
 - **Wikilink integrity:** no NEW dangling links introduced by this batch. The only unresolved targets remain the three pre-existing ones (`fairness-metrics-in-mec`, `hp-mobility-models`, `purpose`).
 - **Counts reconciled:** 39 sources, 158 concepts, 12 entities — matches `overview.md`.
 - Created a reusable workspace agent `.kiro/agents/mec-wiki-curator.md` to standardize this curate-then-audit workflow for future raw-paper drops.
+## [2026-05-29] external batch delete | 108 source files
+
+Deleted 108 source files and 0 wiki pages.
+
+Sources:
+- ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.pdf-bea3bbdb-b210-4313-bfeb-c98d7e4f95b2/51f1dd7a-88b5-4325-80ed-9c8336415dc9_origin.pdf
+- ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.pdf-bea3bbdb-b210-4313-bfeb-c98d7e4f95b2/full.md
+- A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/5805eb5a-c860-435a-a363-c7e08e58d364_origin.pdf
+- A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/full.md
+- A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective.pdf-38308eaa-ccf0-4fd8-abc2-904d6e06df92/a4df4525-9548-41ce-848a-b64ff3be183c_origin.pdf
+- A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective.pdf-38308eaa-ccf0-4fd8-abc2-904d6e06df92/full.md
+- An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization.pdf-09d5418e-dc62-4524-bc97-f89ba95dfc7e/1058f15e-3289-44ba-a46f-79175aa42220_origin.pdf
+- An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization.pdf-09d5418e-dc62-4524-bc97-f89ba95dfc7e/full.md
+- BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.pdf-35b8645f-ec67-4bc8-a322-f2d67eb162f1/04bff10e-4497-45a2-a8ac-d649dc9ccda9_origin.pdf
+- BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.pdf-35b8645f-ec67-4bc8-a322-f2d67eb162f1/full.md
+- Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.pdf-92c33306-3b00-4a98-b7c0-b613ac6e3565/d17bf5a0-218d-4917-b746-6fc2a408824f_origin.pdf
+- Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.pdf-92c33306-3b00-4a98-b7c0-b613ac6e3565/full.md
+- Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.pdf-680ca83e-ffea-41f9-bc61-85b9b15a2b82/a6533d10-e97c-4756-a27b-ce396e62927d_origin.pdf
+- Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.pdf-680ca83e-ffea-41f9-bc61-85b9b15a2b82/full.md
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks (1).pdf-37e49c9e-f1cf-45f8-b0ad-c274f146debb/52184245-a588-46d7-8436-664582f236ae_origin.pdf
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks (1).pdf-37e49c9e-f1cf-45f8-b0ad-c274f146debb/full.md
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks.pdf-cd5196f5-a52f-4b9d-82ad-c1b50996a79e/17b265eb-d64b-4b6d-9e41-bc3f6577f29b_origin.pdf
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks.pdf-cd5196f5-a52f-4b9d-82ad-c1b50996a79e/full.md
+- Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks (1).pdf-101d96ec-b13f-4bc2-81ba-f99b04be10eb/3d74f158-5928-492f-a341-867a10312574_origin.pdf
+- Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks (1).pdf-101d96ec-b13f-4bc2-81ba-f99b04be10eb/full.md
+- Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.pdf-98452b41-2b96-41cd-9223-132cf959a545/51a15428-6640-4700-b016-4294726d6ad3_origin.pdf
+- Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.pdf-98452b41-2b96-41cd-9223-132cf959a545/full.md
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (1).pdf-e9ad5584-e837-47c7-8889-5491ce20b0ad/a7af4c61-064d-406a-8b3b-f4408286873c_origin.pdf
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (1).pdf-e9ad5584-e837-47c7-8889-5491ce20b0ad/full.md
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (2).pdf-0e2c9ca7-5f3c-4ede-a338-873da62ae161/69f11249-178f-489a-99dd-6013be4a2178_origin.pdf
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (2).pdf-0e2c9ca7-5f3c-4ede-a338-873da62ae161/full.md
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.pdf-a0ebded2-6b19-49ef-82a8-a60fe98bd9a3/1bf62391-2d01-4b85-a2dd-44c3f6bfa9e9_origin.pdf
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.pdf-a0ebded2-6b19-49ef-82a8-a60fe98bd9a3/full.md
+- Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network (1).pdf-c507d9c3-154e-4854-a5ce-4dd59d952c35/1d881528-e07b-4227-bdd8-2c2bfcaecc08_origin.pdf
+- Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network (1).pdf-c507d9c3-154e-4854-a5ce-4dd59d952c35/full.md
+- Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network.pdf-226bcccd-9b0e-49f9-b0c1-cba631461523/05cc59c4-a99e-447a-9f94-9002dcc71c45_origin.pdf
+- Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network.pdf-226bcccd-9b0e-49f9-b0c1-cba631461523/full.md
+- Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-01e5dcd4-c51d-4f14-9188-54506cc73225/6d675f02-2610-41f9-8d08-e81e2f69eb79_origin.pdf
+- Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-01e5dcd4-c51d-4f14-9188-54506cc73225/full.md
+- Fairness-Based_3-D_Multi-UAV_Trajectory_Optimization_in_Multi-UAV-Assisted_MEC_System.pdf-bf127b65-b284-404b-8ac3-337dd3a7759a/c0f2255d-e21b-42aa-8b98-d86bd3126819_origin.pdf
+- Fairness-Based_3-D_Multi-UAV_Trajectory_Optimization_in_Multi-UAV-Assisted_MEC_System.pdf-bf127b65-b284-404b-8ac3-337dd3a7759a/full.md
+- FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.pdf-7cbb1edb-d3d9-4aaa-bc82-b01707e227e1/c2b3ff92-9440-484e-82ac-7c26f755903f_origin.pdf
+- FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.pdf-7cbb1edb-d3d9-4aaa-bc82-b01707e227e1/full.md
+- Generative-Adversarial-Network-Enhanced_DRL_for_ISAC_With_Double_Active_RISs.pdf-e50024c1-4074-48e8-95c0-fc9d69153fec/54556004-5e12-446c-a020-2ca85e5d4fb8_origin.pdf
+- Generative-Adversarial-Network-Enhanced_DRL_for_ISAC_With_Double_Active_RISs.pdf-e50024c1-4074-48e8-95c0-fc9d69153fec/full.md
+- Generative_AI_for_the_Optimization_of_Next-Generation_Wireless_Networks_Basics_State-of-the-Art_and_Open_Challenges.pdf-4f7173f3-facc-4451-819d-5e1664d5c20a/c848f928-34e9-426d-8306-3e39ef4ce670_origin.pdf
+- Generative_AI_for_the_Optimization_of_Next-Generation_Wireless_Networks_Basics_State-of-the-Art_and_Open_Challenges.pdf-4f7173f3-facc-4451-819d-5e1664d5c20a/full.md
+- Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.pdf-56b387f7-58b9-4a52-906e-813134bf5ffd/8011c826-f2ac-4903-afb0-d781ea9b50bb_origin.pdf
+- Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.pdf-56b387f7-58b9-4a52-906e-813134bf5ffd/full.md
+- Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.pdf-679ce336-ee6a-48b7-8df7-01515bfabee4/44d6771e-2771-4368-ad1b-636d2251d8a8_origin.pdf
+- Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.pdf-679ce336-ee6a-48b7-8df7-01515bfabee4/full.md
+- Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning.pdf-a47cc7d0-89bb-4754-8dc3-e8116278c74c/bcf028aa-c5a5-4a9e-81e0-ab8face915e1_origin.pdf
+- Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning.pdf-a47cc7d0-89bb-4754-8dc3-e8116278c74c/full.md
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels (1).pdf-91e3b716-7360-422e-b8b9-c393677b81a2/d4cfd60c-844d-4200-9959-58e733b9dd24_origin.pdf
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels (1).pdf-91e3b716-7360-422e-b8b9-c393677b81a2/full.md
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.pdf-eaebb535-0215-4986-9ecb-d10ab9636d34/fbddd1eb-b302-42d7-9ec3-3b79705ca118_origin.pdf
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.pdf-eaebb535-0215-4986-9ecb-d10ab9636d34/full.md
+- Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.pdf-44a43a9a-f78a-4bc7-8866-5a427dc2dd84/714dbdf1-14f0-4aa1-8086-94d182a61c42_origin.pdf
+- Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.pdf-44a43a9a-f78a-4bc7-8866-5a427dc2dd84/full.md
+- Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks.pdf-8bf88458-f2fd-409d-aeb8-95bbf7d99e02/2c7d63cc-6301-492b-b241-9d8cbb676fd1_origin.pdf
+- Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks.pdf-8bf88458-f2fd-409d-aeb8-95bbf7d99e02/full.md
+- Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing.pdf-b84a7da9-4775-4ce7-8476-a53afe2ac3a2/318c32ce-1de4-4b6e-933c-1dde4fe0af26_origin.pdf
+- Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing.pdf-b84a7da9-4775-4ce7-8476-a53afe2ac3a2/full.md
+- Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach (1).pdf-b7660096-a03d-41f1-95b4-6cf4ccd43277/89454a4b-6d60-4db8-bebf-117cc611ef74_origin.pdf
+- Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach (1).pdf-b7660096-a03d-41f1-95b4-6cf4ccd43277/full.md
+- Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.pdf-47bc5eef-5351-4750-9de7-0a501e06f744/27aace2d-fd3d-44e6-ac23-4a2386878e16_origin.pdf
+- Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.pdf-47bc5eef-5351-4750-9de7-0a501e06f744/full.md
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue (1).pdf-fd9cea19-1e6e-485e-aca0-aee959424be4/c83b18ed-ed3b-4ee8-98d0-5f04b355c25e_origin.pdf
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue (1).pdf-fd9cea19-1e6e-485e-aca0-aee959424be4/full.md
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.pdf-74335d9f-9e06-4894-8e8a-6509dab133ea/df69a884-40cb-4350-90d6-a800db943b8d_origin.pdf
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.pdf-74335d9f-9e06-4894-8e8a-6509dab133ea/full.md
+- Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf-0322be8a-07c0-4a06-99bd-187903ec0903/fd834c11-797d-4d59-af05-b36b8e770e1f_origin.pdf
+- Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf-0322be8a-07c0-4a06-99bd-187903ec0903/full.md
+- Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.pdf-05cffc33-d988-4317-b3b9-40599b4925c3/f675e19d-5e65-4eca-b496-6ddf8afa66dc_origin.pdf
+- Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.pdf-05cffc33-d988-4317-b3b9-40599b4925c3/full.md
+- MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.pdf-499bca38-d55d-47d6-800d-2457617637c7/391ad469-1677-4a96-9d65-31fc8fd0b258_origin.pdf
+- MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.pdf-499bca38-d55d-47d6-800d-2457617637c7/full.md
+- MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.pdf-c51ce6bd-3435-4f83-8376-d3afa6c27e23/5563cba4-a83a-4c1c-bf33-64bf581d6168_origin.pdf
+- MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.pdf-c51ce6bd-3435-4f83-8376-d3afa6c27e23/full.md
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks (1).pdf-b3cdff5e-bcb5-4b06-ab64-2c8528425226/5a91bf50-456a-46ea-b877-ad1927709055_origin.pdf
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks (1).pdf-b3cdff5e-bcb5-4b06-ab64-2c8528425226/full.md
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.pdf-0e509116-0716-49db-9a8c-8435b2013eda/3de33e2c-c9c8-4276-8fd4-b9b6e4892eec_origin.pdf
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.pdf-0e509116-0716-49db-9a8c-8435b2013eda/full.md
+- Multi-Agent_Deep_Reinforcement_Learning_for_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-f9e8af62-f654-406f-9d05-6a55d82e4b59/53b68eba-b73b-4572-9649-7095ccf72806_origin.pdf
+- Multi-Agent_Deep_Reinforcement_Learning_for_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-f9e8af62-f654-406f-9d05-6a55d82e4b59/full.md
+- Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.pdf-452e90cd-f3b0-4b86-ae3f-ec827a203c88/70a23b38-a360-4605-bd30-d5ae14ccd915_origin.pdf
+- Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.pdf-452e90cd-f3b0-4b86-ae3f-ec827a203c88/full.md
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond (1).pdf-4b5ae9c1-7ea7-47cf-83c6-eb115da18d1b/49030327-45e9-40f6-9943-aad25ec486d1_origin.pdf
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond (1).pdf-4b5ae9c1-7ea7-47cf-83c6-eb115da18d1b/full.md
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.pdf-7d6296bb-d664-4cbc-b5bc-15464d88f8b6/3e1c946c-3aca-4e6e-90a9-dad57bf77441_origin.pdf
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.pdf-7d6296bb-d664-4cbc-b5bc-15464d88f8b6/full.md
+- On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.pdf-c776380e-4794-4255-a9d3-8f3f6e7cac8c/f75a75c7-9364-4126-8bd3-c62492c2f272_origin.pdf
+- On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.pdf-c776380e-4794-4255-a9d3-8f3f6e7cac8c/full.md
+- Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.pdf-20fd4e85-7fb0-4689-b4ce-161e6bf84a78/30cc749a-4be7-47fe-8892-b46a5f122267_origin.pdf
+- Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.pdf-20fd4e85-7fb0-4689-b4ce-161e6bf84a78/full.md
+- Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.pdf-71716721-2d3b-4111-95d2-a6af53e729df/6d668a50-906d-42d0-9e25-2095ab35fd4a_origin.pdf
+- Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.pdf-71716721-2d3b-4111-95d2-a6af53e729df/full.md
+- Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.pdf-e50d30a0-5766-49c1-abc6-e1f69c842cc8/2baa483c-d5f2-4cc5-8924-3e5795ef84c3_origin.pdf
+- Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.pdf-e50d30a0-5766-49c1-abc6-e1f69c842cc8/full.md
+- Trajectory_Design_and_Resource_Allocation_for_Multi-UAV_Networks_Deep_Reinforcement_Learning_Approaches.pdf-0c90fd1c-4973-4db5-b6ad-ec795389037d/a578795f-48fe-44c7-8b8a-905efa289a02_origin.pdf
+- Trajectory_Design_and_Resource_Allocation_for_Multi-UAV_Networks_Deep_Reinforcement_Learning_Approaches.pdf-0c90fd1c-4973-4db5-b6ad-ec795389037d/full.md
+- Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.pdf-ab2d992d-223a-4d34-b728-342bef620ffa/6228b26c-2629-40a4-824a-8ab71fafd31c_origin.pdf
+- Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.pdf-ab2d992d-223a-4d34-b728-342bef620ffa/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (1).pdf-7e7c4eae-df09-4eba-8cf6-7cbd2c0ddb48/b895da1a-b0ce-46d1-9277-80d80bba8c58_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (1).pdf-7e7c4eae-df09-4eba-8cf6-7cbd2c0ddb48/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (2).pdf-526772e9-23ae-4033-a337-92c254254ba5/16d5d3d1-67b2-4dd9-b065-9e963d14a649_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (2).pdf-526772e9-23ae-4033-a337-92c254254ba5/full.md
+- UAV-Assisted_Task_Offloading_in_Edge_Computing.pdf-7b5a37ae-a1c8-45b0-b75f-43d8e45259fb/29225c6d-e56f-4b9d-8974-8a76c9df34b5_origin.pdf
+- UAV-Assisted_Task_Offloading_in_Edge_Computing.pdf-7b5a37ae-a1c8-45b0-b75f-43d8e45259fb/full.md
+- UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.pdf-c4dc78f8-13e6-4e67-89e0-b02a0e841e4b/a8642c8e-2515-4841-8dc0-6d98cbff3be7_origin.pdf
+- UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.pdf-c4dc78f8-13e6-4e67-89e0-b02a0e841e4b/full.md
+- UAV-Enabled_Secure_ISAC_Against_Dual_Eavesdropping_Threats_Joint_Beamforming_and_Trajectory_Design.pdf-1f6af962-48a0-426f-a0db-ee2a8aa1b454/b189403a-de1d-405c-839d-7c4db1c48c4b_origin.pdf
+- UAV-Enabled_Secure_ISAC_Against_Dual_Eavesdropping_Threats_Joint_Beamforming_and_Trajectory_Design.pdf-1f6af962-48a0-426f-a0db-ee2a8aa1b454/full.md
+## [2026-05-29] external batch delete | 108 source files
+
+Deleted 108 source files and 0 wiki pages.
+
+Sources:
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-01e5dcd4-c51d-4f14-9188-54506cc73225/6d675f02-2610-41f9-8d08-e81e2f69eb79_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-01e5dcd4-c51d-4f14-9188-54506cc73225/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0322be8a-07c0-4a06-99bd-187903ec0903/fd834c11-797d-4d59-af05-b36b8e770e1f_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0322be8a-07c0-4a06-99bd-187903ec0903/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-05cffc33-d988-4317-b3b9-40599b4925c3/f675e19d-5e65-4eca-b496-6ddf8afa66dc_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-05cffc33-d988-4317-b3b9-40599b4925c3/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-09d5418e-dc62-4524-bc97-f89ba95dfc7e/1058f15e-3289-44ba-a46f-79175aa42220_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-09d5418e-dc62-4524-bc97-f89ba95dfc7e/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0c90fd1c-4973-4db5-b6ad-ec795389037d/a578795f-48fe-44c7-8b8a-905efa289a02_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0c90fd1c-4973-4db5-b6ad-ec795389037d/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0e2c9ca7-5f3c-4ede-a338-873da62ae161/69f11249-178f-489a-99dd-6013be4a2178_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0e2c9ca7-5f3c-4ede-a338-873da62ae161/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0e509116-0716-49db-9a8c-8435b2013eda/3de33e2c-c9c8-4276-8fd4-b9b6e4892eec_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-0e509116-0716-49db-9a8c-8435b2013eda/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-101d96ec-b13f-4bc2-81ba-f99b04be10eb/3d74f158-5928-492f-a341-867a10312574_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-101d96ec-b13f-4bc2-81ba-f99b04be10eb/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-1f6af962-48a0-426f-a0db-ee2a8aa1b454/b189403a-de1d-405c-839d-7c4db1c48c4b_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-1f6af962-48a0-426f-a0db-ee2a8aa1b454/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-20fd4e85-7fb0-4689-b4ce-161e6bf84a78/30cc749a-4be7-47fe-8892-b46a5f122267_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-20fd4e85-7fb0-4689-b4ce-161e6bf84a78/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-226bcccd-9b0e-49f9-b0c1-cba631461523/05cc59c4-a99e-447a-9f94-9002dcc71c45_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-226bcccd-9b0e-49f9-b0c1-cba631461523/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-35b8645f-ec67-4bc8-a322-f2d67eb162f1/04bff10e-4497-45a2-a8ac-d649dc9ccda9_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-35b8645f-ec67-4bc8-a322-f2d67eb162f1/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-37e49c9e-f1cf-45f8-b0ad-c274f146debb/52184245-a588-46d7-8436-664582f236ae_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-37e49c9e-f1cf-45f8-b0ad-c274f146debb/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-38308eaa-ccf0-4fd8-abc2-904d6e06df92/a4df4525-9548-41ce-848a-b64ff3be183c_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-38308eaa-ccf0-4fd8-abc2-904d6e06df92/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-44a43a9a-f78a-4bc7-8866-5a427dc2dd84/714dbdf1-14f0-4aa1-8086-94d182a61c42_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-44a43a9a-f78a-4bc7-8866-5a427dc2dd84/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-452e90cd-f3b0-4b86-ae3f-ec827a203c88/70a23b38-a360-4605-bd30-d5ae14ccd915_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-452e90cd-f3b0-4b86-ae3f-ec827a203c88/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-47bc5eef-5351-4750-9de7-0a501e06f744/27aace2d-fd3d-44e6-ac23-4a2386878e16_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-47bc5eef-5351-4750-9de7-0a501e06f744/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-499bca38-d55d-47d6-800d-2457617637c7/391ad469-1677-4a96-9d65-31fc8fd0b258_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-499bca38-d55d-47d6-800d-2457617637c7/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-4b5ae9c1-7ea7-47cf-83c6-eb115da18d1b/49030327-45e9-40f6-9943-aad25ec486d1_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-4b5ae9c1-7ea7-47cf-83c6-eb115da18d1b/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-4f7173f3-facc-4451-819d-5e1664d5c20a/c848f928-34e9-426d-8306-3e39ef4ce670_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-4f7173f3-facc-4451-819d-5e1664d5c20a/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-526772e9-23ae-4033-a337-92c254254ba5/16d5d3d1-67b2-4dd9-b065-9e963d14a649_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-526772e9-23ae-4033-a337-92c254254ba5/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-56b387f7-58b9-4a52-906e-813134bf5ffd/8011c826-f2ac-4903-afb0-d781ea9b50bb_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-56b387f7-58b9-4a52-906e-813134bf5ffd/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-679ce336-ee6a-48b7-8df7-01515bfabee4/44d6771e-2771-4368-ad1b-636d2251d8a8_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-679ce336-ee6a-48b7-8df7-01515bfabee4/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-680ca83e-ffea-41f9-bc61-85b9b15a2b82/a6533d10-e97c-4756-a27b-ce396e62927d_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-680ca83e-ffea-41f9-bc61-85b9b15a2b82/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/5805eb5a-c860-435a-a363-c7e08e58d364_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-71716721-2d3b-4111-95d2-a6af53e729df/6d668a50-906d-42d0-9e25-2095ab35fd4a_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-71716721-2d3b-4111-95d2-a6af53e729df/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-74335d9f-9e06-4894-8e8a-6509dab133ea/df69a884-40cb-4350-90d6-a800db943b8d_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-74335d9f-9e06-4894-8e8a-6509dab133ea/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7b5a37ae-a1c8-45b0-b75f-43d8e45259fb/29225c6d-e56f-4b9d-8974-8a76c9df34b5_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7b5a37ae-a1c8-45b0-b75f-43d8e45259fb/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7cbb1edb-d3d9-4aaa-bc82-b01707e227e1/c2b3ff92-9440-484e-82ac-7c26f755903f_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7cbb1edb-d3d9-4aaa-bc82-b01707e227e1/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7d6296bb-d664-4cbc-b5bc-15464d88f8b6/3e1c946c-3aca-4e6e-90a9-dad57bf77441_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7d6296bb-d664-4cbc-b5bc-15464d88f8b6/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7e7c4eae-df09-4eba-8cf6-7cbd2c0ddb48/b895da1a-b0ce-46d1-9277-80d80bba8c58_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-7e7c4eae-df09-4eba-8cf6-7cbd2c0ddb48/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-8bf88458-f2fd-409d-aeb8-95bbf7d99e02/2c7d63cc-6301-492b-b241-9d8cbb676fd1_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-8bf88458-f2fd-409d-aeb8-95bbf7d99e02/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-91e3b716-7360-422e-b8b9-c393677b81a2/d4cfd60c-844d-4200-9959-58e733b9dd24_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-91e3b716-7360-422e-b8b9-c393677b81a2/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-92c33306-3b00-4a98-b7c0-b613ac6e3565/d17bf5a0-218d-4917-b746-6fc2a408824f_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-92c33306-3b00-4a98-b7c0-b613ac6e3565/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-98452b41-2b96-41cd-9223-132cf959a545/51a15428-6640-4700-b016-4294726d6ad3_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-98452b41-2b96-41cd-9223-132cf959a545/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-a0ebded2-6b19-49ef-82a8-a60fe98bd9a3/1bf62391-2d01-4b85-a2dd-44c3f6bfa9e9_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-a0ebded2-6b19-49ef-82a8-a60fe98bd9a3/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-a47cc7d0-89bb-4754-8dc3-e8116278c74c/bcf028aa-c5a5-4a9e-81e0-ab8face915e1_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-a47cc7d0-89bb-4754-8dc3-e8116278c74c/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-ab2d992d-223a-4d34-b728-342bef620ffa/6228b26c-2629-40a4-824a-8ab71fafd31c_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-ab2d992d-223a-4d34-b728-342bef620ffa/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-b3cdff5e-bcb5-4b06-ab64-2c8528425226/5a91bf50-456a-46ea-b877-ad1927709055_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-b3cdff5e-bcb5-4b06-ab64-2c8528425226/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-b7660096-a03d-41f1-95b4-6cf4ccd43277/89454a4b-6d60-4db8-bebf-117cc611ef74_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-b7660096-a03d-41f1-95b4-6cf4ccd43277/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-b84a7da9-4775-4ce7-8476-a53afe2ac3a2/318c32ce-1de4-4b6e-933c-1dde4fe0af26_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-b84a7da9-4775-4ce7-8476-a53afe2ac3a2/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-bea3bbdb-b210-4313-bfeb-c98d7e4f95b2/51f1dd7a-88b5-4325-80ed-9c8336415dc9_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-bea3bbdb-b210-4313-bfeb-c98d7e4f95b2/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-bf127b65-b284-404b-8ac3-337dd3a7759a/c0f2255d-e21b-42aa-8b98-d86bd3126819_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-bf127b65-b284-404b-8ac3-337dd3a7759a/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c4dc78f8-13e6-4e67-89e0-b02a0e841e4b/a8642c8e-2515-4841-8dc0-6d98cbff3be7_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c4dc78f8-13e6-4e67-89e0-b02a0e841e4b/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c507d9c3-154e-4854-a5ce-4dd59d952c35/1d881528-e07b-4227-bdd8-2c2bfcaecc08_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c507d9c3-154e-4854-a5ce-4dd59d952c35/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c51ce6bd-3435-4f83-8376-d3afa6c27e23/5563cba4-a83a-4c1c-bf33-64bf581d6168_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c51ce6bd-3435-4f83-8376-d3afa6c27e23/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c776380e-4794-4255-a9d3-8f3f6e7cac8c/f75a75c7-9364-4126-8bd3-c62492c2f272_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-c776380e-4794-4255-a9d3-8f3f6e7cac8c/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-cd5196f5-a52f-4b9d-82ad-c1b50996a79e/17b265eb-d64b-4b6d-9e41-bc3f6577f29b_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-cd5196f5-a52f-4b9d-82ad-c1b50996a79e/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-e50024c1-4074-48e8-95c0-fc9d69153fec/54556004-5e12-446c-a020-2ca85e5d4fb8_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-e50024c1-4074-48e8-95c0-fc9d69153fec/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-e50d30a0-5766-49c1-abc6-e1f69c842cc8/2baa483c-d5f2-4cc5-8924-3e5795ef84c3_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-e50d30a0-5766-49c1-abc6-e1f69c842cc8/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-e9ad5584-e837-47c7-8889-5491ce20b0ad/a7af4c61-064d-406a-8b3b-f4408286873c_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-e9ad5584-e837-47c7-8889-5491ce20b0ad/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-eaebb535-0215-4986-9ecb-d10ab9636d34/fbddd1eb-b302-42d7-9ec3-3b79705ca118_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-eaebb535-0215-4986-9ecb-d10ab9636d34/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-f9e8af62-f654-406f-9d05-6a55d82e4b59/53b68eba-b73b-4572-9649-7095ccf72806_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-f9e8af62-f654-406f-9d05-6a55d82e4b59/full.md
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-fd9cea19-1e6e-485e-aca0-aee959424be4/c83b18ed-ed3b-4ee8-98d0-5f04b355c25e_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-fd9cea19-1e6e-485e-aca0-aee959424be4/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.pdf-c4dc78f8-13e6-4e67-89e0-b02a0e841e4b/a8642c8e-2515-4841-8dc0-6d98cbff3be7_origin.pdf
+- UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.pdf-c4dc78f8-13e6-4e67-89e0-b02a0e841e4b/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- UAV-Enabled_Secure_ISAC_Against_Dual_Eavesdropping_Threats_Joint_Beamforming_and_Trajectory_Design.pdf-1f6af962-48a0-426f-a0db-ee2a8aa1b454/b189403a-de1d-405c-839d-7c4db1c48c4b_origin.pdf
+- UAV-Enabled_Secure_ISAC_Against_Dual_Eavesdropping_Threats_Joint_Beamforming_and_Trajectory_Design.pdf-1f6af962-48a0-426f-a0db-ee2a8aa1b454/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.pdf-92c33306-3b00-4a98-b7c0-b613ac6e3565/d17bf5a0-218d-4917-b746-6fc2a408824f_origin.pdf
+- Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.pdf-92c33306-3b00-4a98-b7c0-b613ac6e3565/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.pdf-680ca83e-ffea-41f9-bc61-85b9b15a2b82/a6533d10-e97c-4756-a27b-ce396e62927d_origin.pdf
+- Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.pdf-680ca83e-ffea-41f9-bc61-85b9b15a2b82/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks (1).pdf-37e49c9e-f1cf-45f8-b0ad-c274f146debb/52184245-a588-46d7-8436-664582f236ae_origin.pdf
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks (1).pdf-37e49c9e-f1cf-45f8-b0ad-c274f146debb/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks (1).pdf-101d96ec-b13f-4bc2-81ba-f99b04be10eb/3d74f158-5928-492f-a341-867a10312574_origin.pdf
+- Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks (1).pdf-101d96ec-b13f-4bc2-81ba-f99b04be10eb/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Generative-Adversarial-Network-Enhanced_DRL_for_ISAC_With_Double_Active_RISs.pdf-e50024c1-4074-48e8-95c0-fc9d69153fec/54556004-5e12-446c-a020-2ca85e5d4fb8_origin.pdf
+- Generative-Adversarial-Network-Enhanced_DRL_for_ISAC_With_Double_Active_RISs.pdf-e50024c1-4074-48e8-95c0-fc9d69153fec/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (2).pdf-526772e9-23ae-4033-a337-92c254254ba5/16d5d3d1-67b2-4dd9-b065-9e963d14a649_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (2).pdf-526772e9-23ae-4033-a337-92c254254ba5/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (2).pdf-0e2c9ca7-5f3c-4ede-a338-873da62ae161/69f11249-178f-489a-99dd-6013be4a2178_origin.pdf
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (2).pdf-0e2c9ca7-5f3c-4ede-a338-873da62ae161/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Generative_AI_for_the_Optimization_of_Next-Generation_Wireless_Networks_Basics_State-of-the-Art_and_Open_Challenges.pdf-4f7173f3-facc-4451-819d-5e1664d5c20a/c848f928-34e9-426d-8306-3e39ef4ce670_origin.pdf
+- Generative_AI_for_the_Optimization_of_Next-Generation_Wireless_Networks_Basics_State-of-the-Art_and_Open_Challenges.pdf-4f7173f3-facc-4451-819d-5e1664d5c20a/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.pdf-44a43a9a-f78a-4bc7-8866-5a427dc2dd84/714dbdf1-14f0-4aa1-8086-94d182a61c42_origin.pdf
+- Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.pdf-44a43a9a-f78a-4bc7-8866-5a427dc2dd84/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels (1).pdf-91e3b716-7360-422e-b8b9-c393677b81a2/d4cfd60c-844d-4200-9959-58e733b9dd24_origin.pdf
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels (1).pdf-91e3b716-7360-422e-b8b9-c393677b81a2/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.pdf-452e90cd-f3b0-4b86-ae3f-ec827a203c88/70a23b38-a360-4605-bd30-d5ae14ccd915_origin.pdf
+- Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.pdf-452e90cd-f3b0-4b86-ae3f-ec827a203c88/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network (1).pdf-c507d9c3-154e-4854-a5ce-4dd59d952c35/1d881528-e07b-4227-bdd8-2c2bfcaecc08_origin.pdf
+- Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network (1).pdf-c507d9c3-154e-4854-a5ce-4dd59d952c35/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing.pdf-b84a7da9-4775-4ce7-8476-a53afe2ac3a2/318c32ce-1de4-4b6e-933c-1dde4fe0af26_origin.pdf
+- Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing.pdf-b84a7da9-4775-4ce7-8476-a53afe2ac3a2/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach (1).pdf-b7660096-a03d-41f1-95b4-6cf4ccd43277/89454a4b-6d60-4db8-bebf-117cc611ef74_origin.pdf
+- Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach (1).pdf-b7660096-a03d-41f1-95b4-6cf4ccd43277/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks (1).pdf-b3cdff5e-bcb5-4b06-ab64-2c8528425226/5a91bf50-456a-46ea-b877-ad1927709055_origin.pdf
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks (1).pdf-b3cdff5e-bcb5-4b06-ab64-2c8528425226/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond (1).pdf-4b5ae9c1-7ea7-47cf-83c6-eb115da18d1b/49030327-45e9-40f6-9943-aad25ec486d1_origin.pdf
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond (1).pdf-4b5ae9c1-7ea7-47cf-83c6-eb115da18d1b/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-01e5dcd4-c51d-4f14-9188-54506cc73225/6d675f02-2610-41f9-8d08-e81e2f69eb79_origin.pdf
+- Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-01e5dcd4-c51d-4f14-9188-54506cc73225/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.pdf-20fd4e85-7fb0-4689-b4ce-161e6bf84a78/30cc749a-4be7-47fe-8892-b46a5f122267_origin.pdf
+- Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.pdf-20fd4e85-7fb0-4689-b4ce-161e6bf84a78/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.pdf-e50d30a0-5766-49c1-abc6-e1f69c842cc8/2baa483c-d5f2-4cc5-8924-3e5795ef84c3_origin.pdf
+- Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.pdf-e50d30a0-5766-49c1-abc6-e1f69c842cc8/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (1).pdf-e9ad5584-e837-47c7-8889-5491ce20b0ad/a7af4c61-064d-406a-8b3b-f4408286873c_origin.pdf
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach (1).pdf-e9ad5584-e837-47c7-8889-5491ce20b0ad/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.pdf-56b387f7-58b9-4a52-906e-813134bf5ffd/8011c826-f2ac-4903-afb0-d781ea9b50bb_origin.pdf
+- Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.pdf-56b387f7-58b9-4a52-906e-813134bf5ffd/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue (1).pdf-fd9cea19-1e6e-485e-aca0-aee959424be4/c83b18ed-ed3b-4ee8-98d0-5f04b355c25e_origin.pdf
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue (1).pdf-fd9cea19-1e6e-485e-aca0-aee959424be4/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Multi-Agent_Deep_Reinforcement_Learning_for_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-f9e8af62-f654-406f-9d05-6a55d82e4b59/53b68eba-b73b-4572-9649-7095ccf72806_origin.pdf
+- Multi-Agent_Deep_Reinforcement_Learning_for_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.pdf-f9e8af62-f654-406f-9d05-6a55d82e4b59/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Trajectory_Design_and_Resource_Allocation_for_Multi-UAV_Networks_Deep_Reinforcement_Learning_Approaches.pdf-0c90fd1c-4973-4db5-b6ad-ec795389037d/a578795f-48fe-44c7-8b8a-905efa289a02_origin.pdf
+- Trajectory_Design_and_Resource_Allocation_for_Multi-UAV_Networks_Deep_Reinforcement_Learning_Approaches.pdf-0c90fd1c-4973-4db5-b6ad-ec795389037d/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (1).pdf-7e7c4eae-df09-4eba-8cf6-7cbd2c0ddb48/b895da1a-b0ce-46d1-9277-80d80bba8c58_origin.pdf
+- Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach (1).pdf-7e7c4eae-df09-4eba-8cf6-7cbd2c0ddb48/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective.pdf-38308eaa-ccf0-4fd8-abc2-904d6e06df92/a4df4525-9548-41ce-848a-b64ff3be183c_origin.pdf
+- A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective.pdf-38308eaa-ccf0-4fd8-abc2-904d6e06df92/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.pdf-bea3bbdb-b210-4313-bfeb-c98d7e4f95b2/51f1dd7a-88b5-4325-80ed-9c8336415dc9_origin.pdf
+- ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.pdf-bea3bbdb-b210-4313-bfeb-c98d7e4f95b2/full.md
+## [2026-05-29] external delete | Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-06d6b36c-df8c-4a15-b409-1bb529f57e89/870fe0f8-bcb9-4139-95ef-9aecd3daea78_origin.pdf
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external delete | Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.pdf-98452b41-2b96-41cd-9223-132cf959a545/51a15428-6640-4700-b016-4294726d6ad3_origin.pdf
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external delete | Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.pdf-98452b41-2b96-41cd-9223-132cf959a545/full.md
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external delete | Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.pdf-06d6b36c-df8c-4a15-b409-1bb529f57e89/full.md
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning.pdf-a47cc7d0-89bb-4754-8dc3-e8116278c74c/bcf028aa-c5a5-4a9e-81e0-ab8face915e1_origin.pdf
+- Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning.pdf-a47cc7d0-89bb-4754-8dc3-e8116278c74c/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks.pdf-8bf88458-f2fd-409d-aeb8-95bbf7d99e02/2c7d63cc-6301-492b-b241-9d8cbb676fd1_origin.pdf
+- Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks.pdf-8bf88458-f2fd-409d-aeb8-95bbf7d99e02/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.pdf-c776380e-4794-4255-a9d3-8f3f6e7cac8c/f75a75c7-9364-4126-8bd3-c62492c2f272_origin.pdf
+- On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.pdf-c776380e-4794-4255-a9d3-8f3f6e7cac8c/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- UAV-Assisted_Task_Offloading_in_Edge_Computing.pdf-7b5a37ae-a1c8-45b0-b75f-43d8e45259fb/29225c6d-e56f-4b9d-8974-8a76c9df34b5_origin.pdf
+- UAV-Assisted_Task_Offloading_in_Edge_Computing.pdf-7b5a37ae-a1c8-45b0-b75f-43d8e45259fb/full.md
+## [2026-05-29] external delete | Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network.pdf-226bcccd-9b0e-49f9-b0c1-cba631461523/05cc59c4-a99e-447a-9f94-9002dcc71c45_origin.pdf
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external delete | Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network.pdf-226bcccd-9b0e-49f9-b0c1-cba631461523/full.md
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.pdf-eaebb535-0215-4986-9ecb-d10ab9636d34/fbddd1eb-b302-42d7-9ec3-3b79705ca118_origin.pdf
+- Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.pdf-eaebb535-0215-4986-9ecb-d10ab9636d34/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf-0322be8a-07c0-4a06-99bd-187903ec0903/fd834c11-797d-4d59-af05-b36b8e770e1f_origin.pdf
+- Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf-0322be8a-07c0-4a06-99bd-187903ec0903/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.pdf-ab2d992d-223a-4d34-b728-342bef620ffa/6228b26c-2629-40a4-824a-8ab71fafd31c_origin.pdf
+- Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.pdf-ab2d992d-223a-4d34-b728-342bef620ffa/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.pdf-499bca38-d55d-47d6-800d-2457617637c7/391ad469-1677-4a96-9d65-31fc8fd0b258_origin.pdf
+- MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.pdf-499bca38-d55d-47d6-800d-2457617637c7/full.md
+## [2026-05-29] external delete | Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.pdf-47bc5eef-5351-4750-9de7-0a501e06f744/27aace2d-fd3d-44e6-ac23-4a2386878e16_origin.pdf
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external delete | Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.pdf-47bc5eef-5351-4750-9de7-0a501e06f744/full.md
+
+Deleted 1 source file and 0 wiki pages.
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.pdf-7cbb1edb-d3d9-4aaa-bc82-b01707e227e1/c2b3ff92-9440-484e-82ac-7c26f755903f_origin.pdf
+- FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.pdf-7cbb1edb-d3d9-4aaa-bc82-b01707e227e1/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks.pdf-cd5196f5-a52f-4b9d-82ad-c1b50996a79e/17b265eb-d64b-4b6d-9e41-bc3f6577f29b_origin.pdf
+- Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks.pdf-cd5196f5-a52f-4b9d-82ad-c1b50996a79e/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.pdf-a0ebded2-6b19-49ef-82a8-a60fe98bd9a3/1bf62391-2d01-4b85-a2dd-44c3f6bfa9e9_origin.pdf
+- Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.pdf-a0ebded2-6b19-49ef-82a8-a60fe98bd9a3/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization.pdf-09d5418e-dc62-4524-bc97-f89ba95dfc7e/1058f15e-3289-44ba-a46f-79175aa42220_origin.pdf
+- An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization.pdf-09d5418e-dc62-4524-bc97-f89ba95dfc7e/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.pdf-35b8645f-ec67-4bc8-a322-f2d67eb162f1/04bff10e-4497-45a2-a8ac-d649dc9ccda9_origin.pdf
+- BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.pdf-35b8645f-ec67-4bc8-a322-f2d67eb162f1/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Fairness-Based_3-D_Multi-UAV_Trajectory_Optimization_in_Multi-UAV-Assisted_MEC_System.pdf-bf127b65-b284-404b-8ac3-337dd3a7759a/c0f2255d-e21b-42aa-8b98-d86bd3126819_origin.pdf
+- Fairness-Based_3-D_Multi-UAV_Trajectory_Optimization_in_Multi-UAV-Assisted_MEC_System.pdf-bf127b65-b284-404b-8ac3-337dd3a7759a/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.pdf-679ce336-ee6a-48b7-8df7-01515bfabee4/44d6771e-2771-4368-ad1b-636d2251d8a8_origin.pdf
+- Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.pdf-679ce336-ee6a-48b7-8df7-01515bfabee4/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.pdf-74335d9f-9e06-4894-8e8a-6509dab133ea/df69a884-40cb-4350-90d6-a800db943b8d_origin.pdf
+- Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.pdf-74335d9f-9e06-4894-8e8a-6509dab133ea/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.pdf-05cffc33-d988-4317-b3b9-40599b4925c3/f675e19d-5e65-4eca-b496-6ddf8afa66dc_origin.pdf
+- Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.pdf-05cffc33-d988-4317-b3b9-40599b4925c3/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.pdf-c51ce6bd-3435-4f83-8376-d3afa6c27e23/5563cba4-a83a-4c1c-bf33-64bf581d6168_origin.pdf
+- MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.pdf-c51ce6bd-3435-4f83-8376-d3afa6c27e23/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.pdf-0e509116-0716-49db-9a8c-8435b2013eda/3de33e2c-c9c8-4276-8fd4-b9b6e4892eec_origin.pdf
+- Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.pdf-0e509116-0716-49db-9a8c-8435b2013eda/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.pdf-7d6296bb-d664-4cbc-b5bc-15464d88f8b6/3e1c946c-3aca-4e6e-90a9-dad57bf77441_origin.pdf
+- Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.pdf-7d6296bb-d664-4cbc-b5bc-15464d88f8b6/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.pdf-71716721-2d3b-4111-95d2-a6af53e729df/6d668a50-906d-42d0-9e25-2095ab35fd4a_origin.pdf
+- Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.pdf-71716721-2d3b-4111-95d2-a6af53e729df/full.md
+## [2026-05-29] external batch delete | 2 source files
+
+Deleted 2 source files and 0 wiki pages.
+
+Sources:
+- Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf/fd834c11-797d-4d59-af05-b36b8e770e1f_origin.pdf
+- Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.pdf/full.md
