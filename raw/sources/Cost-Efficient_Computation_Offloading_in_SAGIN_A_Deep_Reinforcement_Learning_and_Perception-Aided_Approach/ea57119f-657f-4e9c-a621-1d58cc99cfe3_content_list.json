@@ -1,0 +1,3519 @@
+[
+    {
+        "type": "text",
+        "text": "Cost-Efficient Computation Offloading in SAGIN: A Deep Reinforcement Learning and Perception-Aided Approach ",
+        "text_level": 1,
+        "bbox": [
+            94,
+            71,
+            903,
+            176
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yulan Gao , Member, IEEE, Ziqiang Ye , and Han Yu , Senior Member, IEEE ",
+        "bbox": [
+            196,
+            190,
+            800,
+            209
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract— The Space-Air-Ground Integrated Network (SAGIN), crucial to the advancement of sixth-generation (6G) technology, plays a key role in ensuring universal connectivity, particularly by addressing the communication needs of remote areas lacking cellular network infrastructure. This paper delves into the role of unmanned aerial vehicles (UAVs) within SAGIN, where they act as a control layer owing to their adaptable deployment capabilities and their intermediary role. Equipped with millimeter-wave (mmWave) radar and vision sensors, these UAVs are capable of acquiring multi-source data, which helps to diminish uncertainty and enhance the accuracy of decision-making. Concurrently, UAVs collect tasks requiring computing resources from their coverage areas, originating from a variety of mobile devices moving at different speeds. These tasks are then allocated to ground base stations (BSs), low-earth-orbit (LEO) satellite, and local processing units to improve processing efficiency. Amidst this framework, our study concentrates on devising dynamic strategies for facilitating task hosting between mobile devices and UAVs, offloading computations, managing associations between UAVs and BSs, and allocating computing resources. The objective is to minimize the time-averaged network cost, considering the uncertainty of device locations, speeds, and even types. To tackle these complexities, we propose a deep reinforcement learning and perception-aided online approach (DRL-and-Perception-aided Approach) for this joint optimization in SAGIN, tailored for an environment filled with uncertainties. The effectiveness of our proposed approach is validated through extensive numerical simulations, which quantify its performance relative to various network parameters. ",
+        "bbox": [
+            73,
+            241,
+            491,
+            619
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms— Space-air-ground integrated network (SAGIN), deep reinforcement learning, perception, computation offloading, vision sensor. ",
+        "bbox": [
+            73,
+            626,
+            491,
+            664
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            215,
+            676,
+            351,
+            690
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "ADVANCES in wireless communication technologies andthe miniaturization of electronic components have driven the widespread adoption of smart devices, including wearables, ",
+        "bbox": [
+            75,
+            693,
+            490,
+            739
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received 15 January 2024; revised 29 June 2024; accepted 5 August 2024. Date of publication 12 September 2024; date of current version 22 November 2024. This work was supported in part by the National Research Foundation, Singapore; and in part by DSO National Laboratories through the AI Singapore Programme under Award AISG2-RP-2020-019. (Corresponding author: Han Yu.) ",
+        "bbox": [
+            73,
+            748,
+            491,
+            816
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yulan Gao and Han Yu are with the College of Computing and Data Science, Nanyang Technological University, Singapore 639798 (e-mail: yulangaomath@163.com; han.yu@ntu.edu.sg). ",
+        "bbox": [
+            73,
+            816,
+            491,
+            851
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Ziqiang Ye is with the National Key Laboratory of Wireless Communications, University of Electronic Science and Technology of China, Chengdu 611731, China (e-mail: yysxiaoyu@hotmail.com). ",
+        "bbox": [
+            73,
+            851,
+            491,
+            885
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Color versions of one or more figures in this article are available at https://doi.org/10.1109/JSAC.2024.3459073. ",
+        "bbox": [
+            73,
+            885,
+            491,
+            906
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/JSAC.2024.3459073 ",
+        "bbox": [
+            86,
+            906,
+            377,
+            919
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "smartphones, home appliances, and environmental monitoring sensors, across both urban and remote areas [1]. These applications require not only broad network coverage but also the capability to store and process large amounts of realtime data. This situation places considerable strain on network infrastructures and service provisions, significantly increasing the demands on these systems. Devices involved often face limitations due to their low power and computing capabilities, yet they are tasked with executing computation-intensive operations, which presents significant challenges [2]. Furthermore, the availability of fifth-generation and beyond (5G and B5G) networks is virtually absent in remote areas [3]. This lack of coverage complicates the ability of devices in these areas to establish connections through current stand-alone terrestrial networks, becoming a major hurdle in the efficient acquisition and transmission of real-time data [4]. By leveraging the complementary strengths of space, air, and ground network segments, Space-Air-Ground Integrated Networks (SAGIN), along with Mobile Edge Computing (MEC), offer effective solutions for achieving high-quality, ubiquitous communications and meeting computing demand [5], [6]. ",
+        "bbox": [
+            501,
+            241,
+            921,
+            558
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "SAGIN embodies a sophisticated, multi-layered network architecture, intricately woven through three distinct yet interconnected segments: space, air, and ground. The space component of this network is categorized by altitude into geostationary-earth-orbit (GEO), medium-earth-orbit (MEO), and low-earth-orbit (LEO) satellites. Each category serves distinct purposes, offering always-on and high-capacity cloud computing services along with varying coverage areas. In the aerial domain, networks are divided by altitude into high altitude platforms (HAPs) and low altitude platforms (LAPs), covering various vehicles like unmanned aerial vehicles (UAVs), balloons, airplanes, and airships [7], [8]. These components are crucial for closing connectivity gaps in areas with scarce terrestrial infrastructure. They serve as on-demand relays or edge processors to support ground communications. The quality of the air-to-ground communication channel is more likely to be better due to direct line-of-sight communications, which significantly reduces the power and energy requirements of ground-based devices, thereby extending their service life. Furthermore, deploying communication systems in the aerial layer offers both flexibility and cost efficiency, making it an advantageous strategy for expanding network reach and capacity. On the terrestrial front, the ground network encompasses established communication infrastructures like cellular networks and wireless local area networks (WLAN). This layer forms the foundation of traditional connectivity, supporting the seamless integration with the aerial and space segments to enhance overall network performance and reliability, especially in challenging environments where conventional infrastructure may fall short. ",
+        "bbox": [
+            503,
+            559,
+            921,
+            921
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "3462 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "0733-8716 © 2024 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            197,
+            925,
+            795,
+            936
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            290,
+            936,
+            705,
+            949
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            159
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Although existing studies ( [9], [10], [11], [12]) have extensively examined the performance of merging MEC with SAGIN, there are still several open issues. First, the majority of these studies have concentrated on the short-term performance of SAGIN by joint task offloading and resource allocation. Yet, the actual dynamics of device task arrivals, transmissions, and processing in SAGIN exhibit random fluctuations over time. Additionally, there is uncertainty in the behavior of users and the environment. This randomness becomes particularly problematic when ground devices move rapidly, potentially leading to task execution failures. Therefore, there is a crucial need for designing dynamic computation offloading and resource scheduling strategies that focus on the long-term performance, aiming to boost both success rates and sustainability. Additionally, some studies [13], [14], [15] have sought to optimize long-term network performance through resource scheduling across various layers, demonstrating the importance of strategic long-term planning in enhancing network efficiency and reliability. However, these studies are conducted based on the assumption that the channel information from air to ground is perfectly known and that the ground devices remain stationary. While this assumption helps to create theoretical models and initial frameworks for understanding SAGIN, practical implementations need to consider the inherent unpredictability and dynamics of real-world scenarios. ",
+        "bbox": [
+            73,
+            162,
+            491,
+            537
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To bridge these important gaps, in this paper, we consider a scenario where a large number of ground devices that move at different speeds as they travel between urban areas, which have cellular network coverage, and remote areas lacking such coverage. Within the SAGIN architecture, UAVs are outfitted with millimeter-wave (mmWave) radar and vision sensors. Visual sensors are deployed to capture real-time imagery, which is then processed by the YOLOv7 algorithm [16], [17], specifically designed to enhance the detection capabilities of the accompanying radar system. This equips the UAVs with the capability to gather multisource data, thereby reducing uncertainty and enhancing the accuracy of decision-making processes. Additionally, these UAVs are tasked with gathering computing-intensive tasks from within their coverage areas, originating from various mobile devices moving at different velocities. These tasks are subsequently offloaded to nearby base stations (BSs), LEOs, and local processing units, aiming to minimize the time-averaged network cost and ensure the stability of all task queues. To tackle the challenges posed by the undertain distribution of user behaviors, as well as the time-varibale and complex environment of SAGIN, we propose a deep reinforcement learning and perception-aided approach (DRLand-Perception-aided Approach). This approach is designed to optimize task hosting, computation offloading, and the control of associations between UAVs and BSs, as well as the allocation of computational resources between BSs and UAVs. The objective is to adapt effectively to the aforementioned dynamics, striving to establish a sustainable and cost-effective SAGIN network. The novelty and contributions of this paper are summarized in the following aspects. ",
+        "bbox": [
+            73,
+            540,
+            493,
+            948
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            70,
+            921,
+            131
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• We propose a novel framework that integrates visual recognition with mmWave radar detection into the joint optimization process in SAGIN. Specifically, when subjects are initially detected by the mmWave radar, visual capture devices are activated to further classify the detected objects and recognize their behaviors. This integration of visual recognition and radar detection markedly enhances the decision-making process. It ensures that the combined strategies for task offloading, resource allocation, and association control are finely tuned, effectively accommodating the complexities of an environment marked by uncertain entity behaviors and a dynamically changing user base. ",
+        "bbox": [
+            521,
+            133,
+            921,
+            329
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• To tackle the problem of minimizing time-averaged network costs while ensuring network stability, we initially transform the problem, which is inherently linked over time, into a sequential online joint optimization problem (JOP) by Lyapunov drift-plus-penalty algorithm. Subsequently, the JOP is segmented into three subproblems, each resolved independently using the Deep Deterministic Policy Gradient (DDPG) and the self-adaptive global best harmony search (SGHS) algorithms. ",
+        "bbox": [
+            521,
+            330,
+            921,
+            465
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Numerical simulations are used to validate the analysis and evaluate the performance of the proposed DRLand-Perception-aided Approach as a function of the SAGIN parameters. Detailed results are first presented for the convergence and effectiveness of the proposed algorithms, specifically DDPG and SGHS, which address subproblems P1 and P3. Following this, the effectiveness of the complete DRL-and-Perception-aided Approach process is thoroughly evaluated. To gain insight into the proposed DRL-and-Perception-aided Approach, subsequent analysis focuses on the performance of both UAV and BS queue backlogs, noting that shorther queue backlogs indicate greater network stability. Further simulation results demonstrate that DRL-and-Perception-aided Approach not only achieves the lowest system operation cost but also ensures network stability. ",
+        "bbox": [
+            521,
+            465,
+            921,
+            708
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The rest of the paper is organized as follows. The related works are briefly summarized in Section II. System model and computation offloading model are presented in Section III and IV, respectively. Section V present the problem formulation and algorithm design. Section VI reports the simulation setup and results analysis. Finally, we conclude this paper in Section VII. ",
+        "bbox": [
+            503,
+            710,
+            921,
+            814
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORKS ",
+        "text_level": 1,
+        "bbox": [
+            635,
+            834,
+            790,
+            847
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. Computation Offloading and Resource Allocation in SAGIN ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            854,
+            879,
+            882
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In the landscape of computation offloading and resource allocation, SAGIN stands as a complex framework that incorporates various critical aspects. These dimensions include hybrid edge-cloud computing, subject to maximum delay constraints, the intricacies of multi-hop satellite communications, optimization of UAV trajectories, the intricacies of parallel offloading control, as well as sophisticated strategies for user association-scheduling and rigorous admission control mechanisms. ",
+        "bbox": [
+            503,
+            888,
+            921,
+            950
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "GAO et al.: COST-EFFICIENT COMPUTATION OFFLOADING IN SAGIN ",
+        "bbox": [
+            75,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "3463 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            71,
+            491,
+            145
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The research community has delved into various dimensions of this field. For instance, [10] focused on jointly optimizing task scheduling and computation resource allocation, aiming to minimize the expected latency within a network featuring multiple satellites and UAVs with predefined flight trajectories. Moreover, the broader realm of computation offloading, which includes parallel task processing across mobile devices, MEC, and cloud servers, has been thoroughly investigated in works by [18], [19], [20], and [21]. Specifically, [18] targeted the minimization of the maximum delay encountered by mobile devices by co-optimizing various elements, including UAV-device association and power and bandwidth allocation, alongside computation resources and UAV placement. Reference [20] embarked on reducing the average latency within a multi-user MEC setup, emphasizing the optimization of user association and task segmentation for tasks that are both independent and interconnected. Reference [21] considered a SAGIN scenario with a single satellite, UAV, and multiple small cells, with the goal of maximizing the sum rate through the collective optimization of user connections, sub-channel assignments, and power distribution, constrained by maximum delay constraint. More recently, [22] presented a novel deep reinforcement learning (DRL)-based framework for optimizing task offloading and resource allocation in a hybrid cloud and multi-access edge computing environment within SAGINs. By incorporating multiple satellites, clouds, and unmanned aerial vehicles, the proposed system effectively reduces energy consumption and latency, demonstrating superior performance and potential for practical applications in dynamic and complex communication scenarios. Reference [23] presented a Service-Oriented SAGIN with Pervasive Intelligence, focusing on resource-constrained users within 6G communication networks. It introduced a system architecture that integrates Edge Intelligence (EI) by combining AI with MEC, enhancing the capabilities for communication, computing, sensing, and storage. The research proposes a DRL-based algorithm for resource allocation and computation offloading, demonstrating significant system cost reductions compared to existing methods, and efficiently managing resources in dynamic service environments. ",
+        "bbox": [
+            73,
+            145,
+            491,
+            750
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. Perception and Communication Integration ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            763,
+            388,
+            777
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The existing literature on traditional sensing technologies is vast, covering a wide range of fields including radar sensing [24], wireless localization [25], [26], as well as WiFi and mobile sensing [27], [28], [29]. These studies present a comprehensive collection of methods and applications relevant to the field. ",
+        "bbox": [
+            73,
+            782,
+            490,
+            872
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The growing interest in combining communication and perception has led to key developments in joint sensingcommunication (JSC) technology. Sturm et al. [30] pioneered a method using Orthogonal Frequency Division Multiplexing (OFDM) symbols for JSC signal processing, enhancing radar signal processing while supporting both radar ranging and communication. Moghaddasi and Wu [31] introduced a reconfigurable receiver that combines radar sensing and radio communication on a time-division basis, although this method limits simultaneous radar and communication functions. Zhang et al. [32] proposed a JSC system for mobile communication using multibeam-forming in a Time-Division-Duplex (TDD) setup. Significant efforts have also been made in developing the Cooperative Sensing Unmanned Aerial Vehicle Network (CSUN), with studies like Causa et al. [33] focusing on cooperative navigation and Kanellakis et al. [34] on large infrastructure sensing. Hildmann et al. [35] explored a CSUN using separate devices for radar and communication. However, these approaches, focusing on CSUN, often overlook the integrated potential of JSC techniques, missing out on the opportunity for full spectrum reuse between radar and communication, a limitation this paper refers to as conventional CSUN. ",
+        "bbox": [
+            73,
+            873,
+            491,
+            950
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            71,
+            921,
+            328
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The integration of perception/sensing and communication technologies, particularly through radar systems, has been a subject of extensive research, leading to significant advancements and insights in the field. Wang et al. [24] reviewed radar target detection methods, shedding light on modern radar system complexities. Win et al. [25] delved into the fundamentals and challenges of Time-Of-Arrival (TOA) wireless localization, analyzing practical estimation algorithms. Paul et al. [36] discussed the applications, topologies, integration levels, and current advances in joint radar-communication systems, offering insights into future directions. Liu et al. [37] reviewed radar-communication coexistence and dual-functional system research, while Zhang et al. [38] focused on the coexistence strategies of radar and communication systems, covering signal models, waveform design, and processing techniques. Together, these studies advance the understanding of sensing and communication technology integration, setting the stage for future breakthroughs. ",
+        "bbox": [
+            503,
+            329,
+            921,
+            599
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The integration of radar sensing and communication has been extensively explored, yet the integration of visual capture devices into this realm has not been as thoroughly investigated. Leveraging insights from our prior research in smart healthcare [39], which explored the synergy between visual and sensory data, this study breaks new ground. To our knowledge, the specific use of image recognition to boost communication efficiency remains largely untapped. This paper adopts camera data to refine computation scheduling and resource distribution in the SAGIN, inspired by our previous methodologies. By merging visual with mmWave data, we aim to not only broaden the spectrum of sensing information, providing deeper environmental understanding, but also to enhance the decision-making process within the system. This innovation proves particularly valuable in the dynamic and often unpredictable SAGIN environment, improving both computation offloading and resource allocation efficiency. ",
+        "bbox": [
+            503,
+            601,
+            921,
+            858
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "III. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            637,
+            877,
+            790,
+            891
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. Network Settings ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            898,
+            643,
+            912
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "This section outlines the network formulation and problem statement. As shown in Figure 1, the SAGIN is envisioned as a comprehensive platform that integrates all principal communication networks to provide seamless connectivity. This paper proposes deploying SAGIN as a solution to service requests in areas inaccessible to conventional cellular networks. It acknowledges that, even in remote locations, there can be periods of high user density, such as during special events or in temporarily populated areas, which require robust service management. The proposed SAGIN system is structured around three primary layers: ground, air, and space, each designed to effectively handle service demands from mobile devices, regardless of their location’s network infrastructure. The space component is represented by multiple LEO satellites, tasked with delivering cloud computing services for the targeted area. The aerial segment incorporates M UAVs that serve as mobile edge nodes, offsetting the lack of ground BS coverage. These UAVs are deployed to provide edge computing and caching services to terrestrial mobile devices and are outfitted with solar panels for prolonged operation without the necessity for frequent recharging. Although the path followed by UAVs significantly impacts the efficiency of task offloading, our research does not delve into optimizing UAV flight paths. We proceed with an established trajectory for the UAVs, ensuring they adequately cover the designated area throughout this paper. Additionally, the UAVs are equipped with mmWave and vision sensors, as detailed in Section III-D. ",
+        "bbox": [
+            504,
+            917,
+            921,
+            950
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3464 ",
+        "bbox": [
+            76,
+            36,
+            102,
+            45
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            71,
+            491,
+            446
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We introduce a configuration of potential surrounding BSs labeled as $\\begin{array} { r } {  { \\mathcal { N } } ~ = ~ \\{ 1 , 2 , \\dots , n , \\dots , N \\} } \\end{array}$ , and define $\\kappa \\_ =$ $\\{ 1 , 2 , \\ldots , k , \\ldots , K \\}$ as the index set for K mobile devices located within the targeted areas. These devices navigate using a random walk model, moving at a velocity of $v _ { g } .$ . Their direction of movement periodically changes at a random angle $\\mathrm { s i n } _ { g } ,$ , yet the velocity remains constant. The group of UAVs is marked as $\\mathcal { M } = \\{ 1 , 2 , \\dotsc , m , \\dotsc , M \\}$ . Given the finite battery capacity of mobile devices, they can offload computing tasks not just to the UAVs but also to the LEO satellite, facilitating computational tasks. A list of mathematical symbols and functions most frequently used in this paper is available in Table I. ",
+        "bbox": [
+            73,
+            449,
+            491,
+            643
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Task Model ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            657,
+            179,
+            671
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In the SAGIN system, we utilize a discrete time-slotted framework. The series of time slots is denoted as $\\boldsymbol { \\mathcal { T } } =$ $\\{ 1 , 2 , \\ldots , t , \\ldots , T \\}$ , with the duration of each slot is $\\tau .$ The computation tasks generated by each device $k \\in \\mathcal { K }$ during time slot t are represented by $D _ { k } ( t )$ . The average task arrival rate for device k in time slot t is denoted as $\\lambda _ { k } = \\mathbb { E } \\{ D _ { k } ( t ) \\}$ . Each device, depending on the application it runs, requires $\\gamma _ { k }$ CPU cycles to process one bit of data. The approach to computation offloading significantly hinges on the computing task model selected. The two main models, binary and partial offloading, cater to different task complexities. Binary offloading treats tasks as whole units for either local or server processing, suitable for simple or integrated tasks. Conversely, partial offloading splits tasks into independent parts for concurrent processing, fitting complex applications in mobile devices in remote areas with sparse ground BS coverage. This study specifically employs the partial offloading model at the UAV layer to facilitate intermediary connectivity. ",
+        "bbox": [
+            73,
+            676,
+            491,
+            950
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "table",
+        "img_path": "images/44c866f3ca010213fbcb017e0943848858d74ee8880d2a1ca9336006cf4bed2d.jpg",
+        "table_caption": [
+            "TABLE I LIST OF NOTATIONS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td> $\\mathcal{M}$ </td><td>set of UAVs</td><td> $\\mathcal{N}$ </td><td>set of BSs</td></tr><tr><td> $\\mathcal{K}$ </td><td>set of ground devices</td><td> $\\mathcal{T}$ </td><td>set of time slots</td></tr><tr><td> $\\tau$ </td><td colspan=\"3\">duration of each time slot</td></tr><tr><td> $\\triangle$ </td><td colspan=\"3\">duration of Phase 1</td></tr><tr><td> $L_{k,m}^{ud}(t)$ </td><td colspan=\"3\">transmission latency from ground device  $k$  to its corresponding UAV  $m$  in time slot  $t$ </td></tr><tr><td> $\\mathcal{C}_{m}(t)$ </td><td colspan=\"3\">subset of ground devices within the coverage area of UAV  $m$  in time slot  $t$ </td></tr><tr><td> $\\mathcal{BS}_{m}(t)$ </td><td colspan=\"3\">subset of BSs within the coverage area of UAV  $m$  in time slot  $t$ </td></tr><tr><td> $\\text{Loc}_{k}(t)$ </td><td colspan=\"3\">Location of ground device  $k$  in time slot  $t$ </td></tr><tr><td> $\\boldsymbol{x}(t)$ </td><td colspan=\"3\">task hosting decision associated all UAVs in time slot  $t, \\boldsymbol{x}(t) = \\{\\boldsymbol{x}_{m}\\}_{m \\in \\mathcal{M}}$ </td></tr><tr><td> $\\boldsymbol{Q}(t)$ </td><td colspan=\"3\">computation offloading decision in time slot  $t, \\boldsymbol{Q}(t) = \\{[Q_{m}^{u,loc}(t), Q_{m}^{u,b}(t), Q_{m}^{u,s}(t)]\\}_{m \\in \\mathcal{M}}$ </td></tr><tr><td> $\\boldsymbol{f}^{u}(t)$ </td><td colspan=\"3\">computation resource allocation of UAVs in time slot  $t, \\boldsymbol{f}^{u}(t) = (f_{1}^{u}(t), \\ldots, f_{M}^{u}(t))$ </td></tr><tr><td> $\\boldsymbol{f}^{bs}(t)$ </td><td colspan=\"3\">computation resource allocation of BSs in time slot  $t, \\boldsymbol{f}^{bs}(t) = (f_{m,n}^{bs}(t), m \\in \\mathcal{M}, n \\in \\mathcal{N})$ </td></tr><tr><td> $\\boldsymbol{H}(t)$ </td><td colspan=\"3\">state of SAGIN in time slot  $t, \\boldsymbol{H} = \\{H_{m}^{u}(t), H_{m,n}^{u,b}(t)\\}_{m \\in \\mathcal{M}, n \\in \\mathcal{N}}$ </td></tr><tr><td> $J_{m}^{u,\\star}(t)$ </td><td colspan=\"3\">quantities of tasks processed in time slot  $t$  for  $Q_{m}^{u,\\star}, \\forall \\star \\in \\{loc, b, s\\}$ </td></tr><tr><td> $C_{m}^{u,\\star}(t)$ </td><td colspan=\"3\">cost of computation models 1, 2, and 3, with 1  $\\leftrightarrow$   $loc, 2 \\leftrightarrow b, 3 \\leftrightarrow s, \\forall \\star \\in \\{loc, b, s\\}$ </td></tr><tr><td> $E_{m}^{\\star,cmp}(t)$ </td><td colspan=\"3\">energy consumed at  $\\star, \\forall \\star \\in \\{loc, b, s\\}$  in time slot  $t$ , where the computation offloading is assigned by UAV  $m$ </td></tr><tr><td> $E_{m}^{u,\\star,tran}(t)$ </td><td colspan=\"3\">energy consumed for UAV  $m$  to offload tasks via UAV- $\\star$  link, with  $\\star \\in \\{b, s\\}$ </td></tr><tr><td> $C_{k}^{d,s,dir}(t)$ </td><td colspan=\"3\">cost of direct offloading to the LEO satellite</td></tr></table>",
+        "bbox": [
+            506,
+            103,
+            921,
+            470
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "C. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            501,
+            684,
+            515
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Given the volume of tasks it receives and its limited computational capacity, the UAV determines whether to offload tasks to LEO for cloud server processing or to a nearby BS. As it selects the offloading destination, the UAV simultaneously determines how to segment the tasks, aiming for an optimal distribution of the workload. The process involves two transmission links, air-to-ground and air-to-satellite. We proceed to detail these communication channel models, emphasizing the UAV layer’s pivotal role as the central control layer within SAGIN. ",
+        "bbox": [
+            501,
+            523,
+            921,
+            672
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "1) Communication Rate Between Air and Ground: Building on the work [10], we assume that the communication link between UAV m and BS n operates within the C-band frequency spectrum. The channel coefficient $h _ { m , n } ^ { u b } ( t )$ , representing this connection at any given time slot $t ,$ is defined as ",
+        "bbox": [
+            503,
+            675,
+            921,
+            763
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nh _ {m, n} ^ {u b} (t) = \\epsilon_ {m, n} ^ {u b} (t) \\beta \\sqrt {1 / P L (d _ {m , n} ^ {u b} (t))}, \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            580,
+            775,
+            921,
+            800
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "$\\epsilon _ { m , n } ^ { u b } ( t )$ is the small-scale fading between UAV m and BS n at time slot t, which adheres to a Rayleigh distribution, specifically $\\epsilon _ { m , n } ^ { u b } ( t ) \\sim \\mathcal { C N } ( 0 , 1 )$ . The term $\\beta$ represents shadow fading, and $d _ { m , n } ^ { u b } ( t )$ indicates the distance between UAV m and BS n at time slot t. The function $P L ( d _ { m , n } ^ { u b } ( t ) )$ quantifies the large-scale path loss. Although the distance between the UAV and the BS varies over time, for simplicity, we assume that the UAV’s position remains constant within a single time slot, using its location at the beginning of the slot. ",
+        "bbox": [
+            501,
+            811,
+            921,
+            949
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "GAO et al.: COST-EFFICIENT COMPUTATION OFFLOADING IN SAGIN ",
+        "bbox": [
+            75,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "3465 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            45
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/d444548612dc90c12860b3459f0ce418466ba27a84ffb3af97c64b58441b1490.jpg",
+        "image_caption": [
+            "Fig. 1. Architecture of SAGIN and the entire process of deep reinforcement learning and perception-aided approach for SAGIN. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Decision maker\"] --> B[\"Result\"]\n    B --> C[\"AI model\"]\n    C --> D[\"Offloading strategy\"]\n    D --> E[\"Resource allocation\"]\n    F[\"Image recognition engine\"] --> G[\"Mobile type\"]\n    G --> H[\"Velocity\"]\n    G --> I[\"Angle\"]\n    G --> J[\"Distance\"]\n    H --> K[\"Sensing algorithms\"]\n    I --> K\n    J --> K\n    K --> L[\"UAV\"]\n    M[\"mmWave antenna\"] --> N[\"Vision camera\"]\n    O[\"Transmitted & received signal\"] --> P[\"Raw picture\"]\n    Q[\"Base station\"] --> R[\"Camera\"]\n    S[\"Remote area\"] --> T[\"Mobile devices\"]\n    U[\"LEO Satellite\"] --> V[\"Robot\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            91,
+            64,
+            915,
+            368
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, the transmission rates in bits/second for links from UAV m to BS n and from BS n to UAV m at time slot t are specified as follows: ",
+        "bbox": [
+            73,
+            419,
+            491,
+            463
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {m, n} ^ {u b} (t) = B _ {m, n} ^ {u b} \\log_ {2} \\left(1 + \\frac {P _ {m , n} ^ {u b} | h _ {m , n} ^ {u b} (t) | ^ {2}}{N _ {0} B _ {m , n} ^ {u b}}\\right), \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            467,
+            490,
+            508
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {n, m} ^ {u b} (t) = B _ {m, n} ^ {u b} \\log_ {2} \\left(1 + \\frac {P _ {n , m} ^ {b u} \\left| h _ {m , n} ^ {u b} (t) \\right| ^ {2}}{N _ {0} B _ {m , n} ^ {u b}}\\right), \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            510,
+            490,
+            550
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "$P _ { m , n } ^ { u b }$ Bub $B _ { m , n } ^ { u b }$ represents the bandwidth allocated to the lis the transmission power from UAV m to BS $n ,$ and P ub $P _ { n , m } ^ { u b }$ indicates the transmission power from the BS to the UAV. Furthermore, $N _ { 0 }$ refers to the Gaussian noise power spectral density within the terrestrial network. ",
+        "bbox": [
+            73,
+            554,
+            491,
+            630
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Define $\\mathcal { C } _ { m } ( t ) = \\{ k \\in \\mathcal { K } \\mid \\mathrm { L o c } _ { k } ( t ) \\in \\mathbb { R } _ { m } ( t ) \\} , m \\in \\mathcal { M } .$ be the subset of devices in the coverage area $\\mathbb { R } _ { m } ( t )$ of UAV m at time slot t, such that $\\cap _ { m \\in \\mathcal { M } } \\mathcal { C } _ { m } ( t ) = \\emptyset . \\operatorname { L o c } _ { k } ( t )$ represents the location of ground device k at time slot t. It is noted that this paper does not emphasize meeting the condition $\\cup _ { m \\in \\mathcal { M } } \\mathcal { C } _ { m } ( t ) = \\mathcal { K }$ . In other words, user mobility results in a fluctuating presence within the area, leading to temporal variations in the number of users serviced by all UAVs. At time slot t, the transmission rate from UAV m to its covered ground device k is indicated as $R _ { m , k } ^ { u d } ( t )$ , while the transmission rate from the k to UAV m is represented as $R _ { k , m } ^ { u d } ( t )$ . These rates can be derived using Eqs. (2) and (3). It’s important to note that the distance between UAV m and the ground device k it serves during the time slot is calculated using mmWave perception technology, denoted as $d _ { m , k } ^ { u d } ( t )$ . The specifics of this calculation process are detailed in Section III-D. ",
+        "bbox": [
+            73,
+            631,
+            491,
+            872
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "2) Communication Rate Between Air and Satellite: The UAV to satellite link primarily features a clear Line of Sight (LoS) path, complemented by minor Non-Line of Sight (NLoS) scattered components. This configuration leads us to model the UAV-Satellite channel as Rician [40], [41]. Consequently, the channel gain, integrating both LoS and NLoS elements, is shown as ",
+        "bbox": [
+            73,
+            873,
+            491,
+            950
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            419,
+            919,
+            448
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nh _ {0, m} ^ {u s} (t) = \\sqrt {\\frac {F}{1 + F}} h _ {0, m} ^ {u s, L o S} (t) + \\sqrt {\\frac {(d _ {0 , m} ^ {u s} (t)) ^ {- \\alpha_ {1}}}{1 + F}} h _ {0, m} ^ {u s, N L o S} (t), \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            455,
+            919,
+            513
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where expres $h _ { 0 , m } ^ { u s , L o S } ( t )$ denotes the channel gain for LoS scenario, ",
+        "bbox": [
+            503,
+            521,
+            919,
+            555
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nh _ {0, m} ^ {u s, L o S} (t) = \\sqrt {(d _ {0 , m} ^ {u s} (t)) ^ {- \\alpha_ {2}}} e ^ {- j \\frac {2 \\pi}{\\lambda} d _ {0, m} ^ {u s} (t)}. \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            566,
+            561,
+            919,
+            588
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Here, $d _ { 0 , m } ^ { u s } ( t )$ represents the distance between UAV m and the satellite during time slot t, with $\\alpha _ { 2 }$ indicating the pathloss exponent for LoS communication and λ being the wavelength in the Ka-band. Given that the satellite’s orbit is predetermined, its longitudinal, latitudinal, and altitudinal coordinates are known for each time slot, and it is assumed that these coordinates remain stable throughout the duration. $\\alpha _ { 1 }$ reile pathloss exponent for NLoS transmission, denotes the associated small-scale channel $h _ { 0 , m } ^ { u s , N L o S } ( t )$ gain, adhering to the distribution F $h _ { 0 , m } ^ { u s , N L o S } ( t ) \\sim \\mathcal { C N } ( 0 , 1 )$ ",
+        "bbox": [
+            501,
+            593,
+            921,
+            761
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Subsequently, the transmission rates achievable for communications from UAV m to the satellite, denoted by $R _ { m , 0 } ^ { u s } ( t )$ , and for communications from the satellite to UAV m, represented by $R _ { 0 , m } ^ { u s } ( t )$ , are determined as follows: ",
+        "bbox": [
+            503,
+            762,
+            921,
+            823
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {m, 0} ^ {u s} (t) = B _ {0, m} ^ {u s} \\log_ {2} \\left(1 + \\frac {P _ {m , 0} ^ {u s} G _ {0} | h _ {0 , m} ^ {u s} (t) | ^ {2}}{N _ {0} B _ {0 , m} ^ {u s}}\\right), \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            544,
+            830,
+            919,
+            872
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {0, m} ^ {u s} (t) = B _ {0, m} ^ {u s} \\log_ {2} \\left(1 + \\frac {P _ {0 , m} ^ {u s} G _ {0} | h _ {0 , m} ^ {u s} (t) | ^ {2}}{N _ {0} B _ {0 , m} ^ {u s}}\\right), \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            545,
+            873,
+            919,
+            914
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $B _ { 0 , m } ^ { u s }$ refers to the bandwidth available in the Ka-band, $G _ { 0 }$ is the fixed antenna gain, while $P _ { m , 0 } ^ { u s }$ and $P _ { 0 , m } ^ { u s }$ specify the transmission powers from UAV m to the satellite and from the satellite back to UAV m, respectively. ",
+        "bbox": [
+            503,
+            917,
+            921,
+            950
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "3466 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            99
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, the transmission rates from any ground device k to the satellite, denoted as $R _ { k , 0 } ^ { d s } ( t )$ , along with the rates from the satellite back to ground device k, denoted as $R _ { 0 , k } ^ { d s } ( t )$ , are calculated based on Eqs. (6) and (7). Following this, the next section delves into the development of a dynamic state perception model, which leverages both visual and mmWave data to enhance computation offloading decision-making process. ",
+        "bbox": [
+            73,
+            101,
+            491,
+            208
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "D. Dynamic State Perception Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            229,
+            323,
+            244
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We propose a dynamic state perception model that integrates cameras with millimeter-wave radar, effectively compensating for the radar’s limitations in capturing target shape and texture information. In this setting, UAVs are equipped with an array of cameras and mmWave sensor systems. This equipment significantly enhances their ability to detect and identify the movements and behaviors of various entities, including pedestrians, cyclists, and vehicles, especially in remote areas where conventional surveillance and data collection techniques are constrained or non-existent. These vision sensors are tasked with capturing real-time imagery, which is then processed by an YOLOv7 [16], [17] designed to complement the radar’s detection capabilities. As illustrated in Fig. 1, once subjects are detected by mmWave radar, visual capture devices are deployed to further classify and analyze the categories and behaviors of the detected objects, including their state, movement speed, and direction. This integration of visual recognition and radar detection significantly refines the decision-making process. It ensures that the combined efforts in task offloading, resource allocation, and association control are optimized, accommodating the complex environment characterized by uncertain entity behaviors and a fluctuating user base. The overall goal of this Dynamic Status Perception Model is to leverage cutting-edge AI methodologies for the nuanced interpretation of environment dynamics, thereby refining network operations and resource distribution within the SAGIN infrastructure. ",
+        "bbox": [
+            73,
+            250,
+            491,
+            655
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "mmWave radar utilizes high-frequency waveforms to achieve precise location tracking and accurate distance estimation. At the heart of this technology is the transmission of a specific waveform type, known as a linear Frequency-Modulated Continuous Wave (FMCW). This waveform is distinguished by a frequency that increases linearly over time, offering a robust method for measuring both the distance and relative speed of objects within its detection range. Inspired by [42], the transmitted signal can be expressed as ",
+        "bbox": [
+            73,
+            657,
+            491,
+            806
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns _ {T} (t) = A _ {T} \\cos [ 2 \\pi (f _ {0} t + S t ^ {2} / 2) + t _ {0} ], \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            148,
+            816,
+            488,
+            835
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $A _ { T }$ is the amplitude of the transmitted signal, $f _ { 0 }$ is the center frequency, S is the modulation frequency and $S =$ B/T . B is the transmitted signal sweep bandwidth, T is signal frequency raising cycle. $t _ { 0 }$ is the initial phase. ",
+        "bbox": [
+            73,
+            843,
+            488,
+            902
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "To elucidate the mechanism by which mmWave radar systems ascertain the distance to a device, consider a device $k \\in \\mathcal { K }$ positioned at a distance $d _ { m , k } ^ { u d }$ from radar m (i.e., UAV m). As electromagnetic waves travel through the air at the constant speed of light, c, the signal that reflects back to the radar’s receiving antenna after encountering the device can be mathematically modeled. This returned signal retains the characteristics of the initial transmission but exhibits a time delay that corresponds to the distance traveled, detailed as follows: ",
+        "bbox": [
+            73,
+            904,
+            491,
+            950
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            70,
+            921,
+            175
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns _ {R} (t) = A _ {R} \\cos \\{2 \\pi [ f _ {0} (t - \\tau_ {0}) + S (t - \\tau_ {0}) ^ {2} / 2 ] + t _ {0} \\}, \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            519,
+            184,
+            919,
+            202
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $A _ { R }$ is the amplitude of the received signal, $\\tau _ { 0 } =$ 2dudm,kc is the fixed delay of the received signal relative to the $\\frac { 2 d _ { m , k } ^ { u d } } { c }$ transmitted signal. Upon reception, the radar system mixes the transmitted signal with this received signal to derive an intermediate frequency (IF) signal. This process effectively isolates the delay-induced frequency shift, which is directly tied to the distance of interest. The IF signal is represented as: ",
+        "bbox": [
+            503,
+            209,
+            921,
+            330
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns _ {I F} = \\frac {1}{2} A _ {T} A _ {R} \\cos (2 \\pi f _ {0} \\tau_ {0} + 2 \\pi S \\tau_ {0} t - \\pi S \\tau_ {0} ^ {2}), \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            535,
+            335,
+            919,
+            364
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "and the frequency of the intermediate frequency signal is ",
+        "bbox": [
+            503,
+            369,
+            893,
+            383
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {m, k} = S \\cdot \\tau_ {0} = \\frac {S 2 d _ {m , k} ^ {u d}}{c} = \\frac {2 B d _ {m , k} ^ {u d}}{c T}. \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            584,
+            388,
+            919,
+            422
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We can estimate the distance based on the frequency information of the echo signal ",
+        "bbox": [
+            503,
+            426,
+            919,
+            455
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nd _ {m, k} ^ {u d} = \\frac {c T f _ {m , k}}{2 B}. \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            653,
+            460,
+            919,
+            491
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In a scenario where device k continuously emits signals from a fixed distance relative to the radar, the returned echo signals exhibit phase variations. These variations are attributed to the Doppler effect, which arises from the motion of the device. By meticulously analyzing the phase differences between consecutive echo signals, the velocity of the device can be precisely calculated. The velocity $v _ { m , k }$ is derived by ",
+        "bbox": [
+            501,
+            496,
+            921,
+            602
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nv _ {m, k} = \\frac {\\lambda \\omega_ {m , k}}{4 \\pi T _ {s}}, \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            656,
+            608,
+            919,
+            638
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\omega _ { m , k }$ is the angular frequency of echo signal, λ is echo wavelength and $T _ { s }$ the interval between two adjacent echo signals. ",
+        "bbox": [
+            503,
+            643,
+            919,
+            688
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The angular displacement $\\theta _ { m , k }$ is related to the distance differential between device k and the individual antennas of UAV m, which induces a phase difference that can be translated into an angle through the equation: ",
+        "bbox": [
+            503,
+            689,
+            921,
+            750
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\theta_ {m, k} = \\sin^ {- 1} \\left(\\frac {\\lambda \\omega_ {m , k}}{2 \\pi d _ {m , k} ^ {u d}}\\right). \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            755,
+            919,
+            796
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "IV. MODELS FOR COMPUTATION OFFLOADING AND ASSOCIATED COST ANALYSIS ",
+        "text_level": 1,
+        "bbox": [
+            529,
+            809,
+            895,
+            837
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In this study, we designate the UAV layer as the control layer, primarily due to its pivotal role in minimizing latency within the SAGIN. We structure each time slot to encompass two phases, reflecting the computational scheduling process. This division is essential for smoothly coordinating the transfer and processing of data, making sure that UAVs efficiently direct the exchange of information and computing tasks between ground devices and either the satellite or BSs. This approach not only streamlines operations but also significantly enhances the overall efficiency and responsiveness of the network, particularly in remote areas where conventional communication infrastructures might be lacking. In particular, Phase 1 focuses on deciding if the tasks $D _ { k } ( t )$ from ground device $k \\in \\mathcal { C } _ { m } ( t )$ can be hosted by its associated UAV m at time slot t. During this initial phase, UAVs leverage their onboard vision and mmWave radar sensors to accurately assess the condition of ground devices, including distance, behaviors, and movement speed and direction, etc. The duration of Phase 1 is denoted by $\\triangle$ . Following this, Phase 2 focuses on refining the offloading decisions by the UAVs, drawing from the results of task hosting established in Phase 1. ",
+        "bbox": [
+            501,
+            843,
+            921,
+            949
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "GAO et al.: COST-EFFICIENT COMPUTATION OFFLOADING IN SAGIN ",
+        "bbox": [
+            75,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "3467 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            282
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A. Computation Offloading Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            305,
+            310,
+            320
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "During Phase 1, an indicator function $x _ { k , m } ( t )$ , as defined in (15), is used for each ground device k within $\\mathcal { C } _ { m } ( t )$ . This function is set to 1 if UAV m can host the task $D _ { k } ( t )$ from ground device k, and it is set to 0 if not. ",
+        "bbox": [
+            73,
+            325,
+            491,
+            387
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {k, m} (t) = \\left\\{ \\begin{array}{l l} 1, & \\text { if   } L _ {k, m} ^ {u d} (t) \\leq \\triangle \\& \\& v _ {k} ^ {d} (t) \\leq \\bar {v} ^ {d}, \\\\ 0, & \\text { otherwise }, \\end{array} \\right. \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            98,
+            393,
+            491,
+            434
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { L _ { k , m } ^ { u d } ( t ) \\ = \\ \\frac { D _ { k } ( t ) } { R _ { k , m } ^ { u d } ( t ) } } \\end{array}$ denotes the transmission latency from ground device k to its corresponding UAV m during time slot t, while ${ \\bar { v } } ^ { d }$ represents the maximum speed threshold for the movement of ground devices. ",
+        "bbox": [
+            73,
+            441,
+            491,
+            508
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "When $x _ { k , m } ( t ) = 1$ , this indicates that the task $D _ { k } ( t )$ from ground device $k \\in \\mathcal { C } _ { m } ( t )$ is hosted by UAV m during time slot t. As a result, within this offloading framework, the total volume of tasks hosted by UAV m is ",
+        "bbox": [
+            73,
+            507,
+            491,
+            569
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD _ {m} ^ {u} (t) = \\sum_ {k \\in \\mathcal {C} _ {m} (t)} x _ {k, m} (t) D _ {k} (t). \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            577,
+            490,
+            601
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Based on (16), we introduce the following three offloading models. It is assumed that each UAV possesses a sufficient task buffer. For a given UAV $m \\in \\mathcal { M }$ during time slot t, we identify three key parameters: $Q _ { m } ^ { u , l o c } ( t )$ , which represents the tasks processed locally by UAV m; $Q _ { m } ^ { u , b } ( t )$ , the tasks offloaded to neighboring BSs; and $Q _ { m } ^ { u , s } ( t )$ , the tasks offloaded to the LEO satellite. The quantities of tasks processed in time slot t for $Q _ { m } ^ { u , l o c } ( t ) , Q _ { m } ^ { u , b } ( t )$ , and $Q _ { m } ^ { u , s } ( t )$ are $J _ { m } ^ { u , l o c } ( t ) , J _ { m } ^ { u , b } ( t )$ , and $J _ { m } ^ { u , s } ( t )$ , respectively. These offloading models are defined from the UAVs’ viewpoint, indicating that tasks from ground devices are hosted by UAVs. ",
+        "bbox": [
+            73,
+            608,
+            491,
+            773
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\textcircled  \\scriptsize { \\textrm {  } } \\frac { \\scriptsize { \\textrm {  } } { \\textrm { \\scriptsize { U A V } } } } { \\scriptsize { \\it { x } } _ { k , m } ( t ) = 1 }$ UAV. Given the finite computational resources of UAVs, it’s crucial to manage the queue backlog when tasks are hosted to UAV. We denote the computation queue of UAV m during time slot t as $H _ { m } ^ { u } ( t )$ . To enhance system performance, UAVs utilize a frequency scaling technique [43], allowing for the dynamic adjustment of the CPU cycle frequency. Theis indicated by $f _ { m } ^ { u } ( t )$ cycle frequency for UAV m at ti, subject to a maximum limit of $f _ { m , \\mathrm { m a x } } ^ { u } .$ This approach ensures that UAVs can adapt their processing capabilities within their operational constraints to efficiently handle the incoming tasks. As a result, the queuing dynamics of $H _ { m } ^ { u } ( t )$ and the volume of tasks processed, denoted by $J _ { m } ^ { u , l o c } ( t )$ , are modeled as follows: ",
+        "bbox": [
+            73,
+            773,
+            491,
+            950
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            70,
+            919,
+            102
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nH _ {m} ^ {u} (t + 1) = \\max \\left\\{H _ {m} ^ {u} (t) - J _ {m} ^ {u, l o c} (t), 0 \\right\\}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            535,
+            109,
+            821,
+            128
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- Q _ {m} ^ {u, b} (t) - Q _ {m} ^ {u, s} (t) + D _ {m} ^ {u} (t), \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            630,
+            131,
+            919,
+            147
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nJ _ {m} ^ {u, l o c} (t) = \\min \\left\\{H _ {m} ^ {u} (t), f _ {m} ^ {u} (t) (\\tau - \\triangle) / \\gamma_ {m} ^ {u} \\right\\}, \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            550,
+            148,
+            919,
+            167
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\gamma _ { m } ^ { u }$ represents the quantity of CPU cycles required to process one bit of data. ",
+        "bbox": [
+            503,
+            176,
+            919,
+            205
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "UAV BS. Let BSm(t) = {n ∈ N |Locn ∈ Rm(t)}, xk,m(t)=1 denote the subset of BSs within the coverage area of $\\mathbb { R } _ { m } ( t )$ of UAV m during time slot t. Let $y _ { m , n } ( t )$ represent the link establishment between UAV m and a BS $n \\in B S _ { m } ( t )$ , where $y _ { m , n } ( t ) \\in \\{ 0 , 1 \\}$ . A value of $y _ { m , n } ( t ) = 1$ signifies that UAV m has selected BS $n \\in B S _ { m } ( t )$ for task offloading during time slot t; otherwise, $y _ { m , n } ( t ) = 0$ indicates no offloading to BS n. Consequently, the volume of tasks processed at the nearby BS is determined by ",
+        "bbox": [
+            503,
+            205,
+            921,
+            352
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {m} ^ {u, b} (t) = \\sum_ {n \\in \\mathcal {B S} _ {m} (t)} y _ {m, n} (t) \\min \\left\\{\\tilde {H} _ {m} ^ {u} (t), (\\tau - \\triangle) R _ {m, n} ^ {u b} (t) \\right\\}, \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            359,
+            919,
+            412
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\tilde { H } _ { m } ^ { u } ( t ) ~ = ~ \\operatorname* { m a x } { \\{ H _ { m } ^ { u } ( t ) - Q _ { m } ^ { u , l o c } ( t ) , 0 \\} } - Q _ { m } ^ { u , b } ( t ) ~ -$ $Q _ { m } ^ { u , s } ( t ) + D _ { m } ^ { u } ( t )$ . ",
+        "bbox": [
+            503,
+            422,
+            919,
+            455
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We assume that each BS is equipped with task buffers of sufficient capacity to accommodate tasks from M UAVs. Here, denote $H _ { m , n } ^ { u , b } ( t )$ as the computation queue at BS $n \\in B S _ { m } ( t )$ , for tasks sent by UAV m within time slot t. The tasks executed from $H _ { m , n } ^ { u , b } ( t )$ in this period are represented by $J _ { m . n } ^ { u , b } ( t )$ . We note the computational power assigned by BS $n \\in B \\dot { S } _ { m } ( t )$ to UAV m as $f _ { m , n } ^ { u , b } ( t )$ , which is constrained by $f _ { n , \\mathrm { m a x } } ^ { b } ( t )$ . Therefore, we explore the dynamics of the queue $H _ { m , n } ^ { u , b } ( t )$ and the processed tasks $J _ { m , n } ^ { u , b } ( t )$ in our forthcoming analysis, detailed as follows: ",
+        "bbox": [
+            501,
+            454,
+            921,
+            604
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nH _ {m, n} ^ {u, b} (t + 1) = \\max \\left\\{H _ {m, n} ^ {u, b} (t) - J _ {m, n} ^ {u, b} (t), 0 \\right\\}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            514,
+            614,
+            821,
+            633
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ y _ {m, n} (t) Q _ {m} ^ {u, b} (t), \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            622,
+            635,
+            919,
+            652
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nJ _ {m, n} ^ {u, b} (t) = \\min \\left\\{H _ {m, n} ^ {u, b} (t), (\\tau - \\triangle) f _ {m, n} ^ {b s} (t) / \\gamma_ {m} ^ {u} \\right\\}. \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            549,
+            654,
+            919,
+            672
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\textcircled { 3 } \\xrightarrow [ x _ { k , m } ( t ) = 1 ] { \\mathbf { U A V } }$ Satellite. Similar to task processing at the BSs, the quantity of tasks successfully completed is determined as follows: ",
+        "bbox": [
+            503,
+            681,
+            919,
+            736
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nJ _ {m} ^ {u, s} (t) = \\min \\left\\{H _ {m} ^ {u} (t), (\\tau - \\triangle) R _ {m, 0} ^ {u s} (t) \\right\\}. \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            566,
+            747,
+            919,
+            766
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Commonly, the cloud server on the LEO satellite is equipped with a multi-core CPU. We assume that tasks directed to the LEO satellite are processed instantly, eliminating any queue backlogs and queueing delays. ",
+        "bbox": [
+            501,
+            773,
+            919,
+            833
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "⃝4 Ground Device $\\xrightarrow { \\mathrm { d i r e c t } }$ Satellite: When $x _ { k , m } ( t ) =$ 0, it signifies that ground device $k \\in \\mathcal { C } _ { m } ( t )$ is scheduled to offload its tasks to the satellite during time slot t. Consequently, in this offloading scenario, the volume of tasks directed to the satellite is ",
+        "bbox": [
+            503,
+            834,
+            921,
+            917
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {0} ^ {s, d i r} (t) = \\sum_ {m \\in \\mathcal {M}} \\sum_ {k \\in \\mathcal {C} _ {m} (t)} [ 1 - x _ {k, m} (t) ] D _ {k} (t). \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            519,
+            925,
+            919,
+            950
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "3468 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. Cost Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            70,
+            179,
+            84
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The primary goals of computation offloading and resource scheduling in the SAGIN are centered on minimizing the network’s operational cost. To this end, we have developed corresponding cost models for the four computation offloading models, considering both the energy consumption and server usage costs involved. In the following, we will initially explore the three cost models associated with the computation offloading models, viewed from the UAV’s perspective. Specifically, when $x _ { k , m } ( t ) = 1$ , it indicates that the UAV undertakes the management and hosting of tasks originating from devices. ",
+        "bbox": [
+            73,
+            92,
+            490,
+            243
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "1) Cost of Computation Offloading Model ⃝1 : During time slot t, the energy consumed by UAV m for local computation, denoted as $E _ { m } ^ { u , c m p } ( t )$ , is ",
+        "bbox": [
+            73,
+            244,
+            491,
+            291
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} ^ {u, c m p} (t) = \\kappa [ f _ {m} ^ {u} (t) ] ^ {3} \\frac {\\gamma_ {m} ^ {u} H _ {m} ^ {u} (t)}{f _ {m} ^ {u} (t)}, \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            300,
+            490,
+            335
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where κ represents the effective switching capacitance of the CPU, a factor determined by the CPU’s hardware architecture. Since local computing bypasses the need for BSs or LEO satellites, there is no server usage cost involved. Consequently, the cost associated with local computation for UAV m is ",
+        "bbox": [
+            73,
+            343,
+            491,
+            419
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {m} ^ {u, l o c} (t) = E _ {m} ^ {u, c m p} (t). \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            202,
+            430,
+            490,
+            449
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "2) Cost of Computation Offloading Model ⃝2 : In time slot t, the energy required for UAV m to offload tasks to nearby BSs is derived by ",
+        "bbox": [
+            73,
+            460,
+            491,
+            506
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} ^ {u, b, t r a n} (t) = \\sum_ {n \\in \\mathcal {B S} _ {m} (t)} y _ {m, n} (t) P _ {m, n} ^ {u b} (t) \\frac {Q _ {m} ^ {u , b} (t)}{R _ {m , n} ^ {u b} (t)}. \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            516,
+            490,
+            556
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The energy consumed at BSs associated with UAV m in time slot is ",
+        "bbox": [
+            73,
+            566,
+            488,
+            595
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} ^ {u, b, c m p} (t) = \\sum_ {n \\in \\mathcal {B S} _ {m} (t)} \\kappa y _ {m, n} (t) \\left| f _ {m, n} ^ {b s} (t) \\right| ^ {3} \\frac {\\gamma_ {m} ^ {u} \\cdot H _ {m , n} ^ {u , b} (t)}{f _ {m , n} ^ {b s} (t)}. \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            86,
+            604,
+            488,
+            665
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Thus, the cost of computation offloading model ⃝2 is ",
+        "bbox": [
+            75,
+            678,
+            437,
+            694
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {m} ^ {u, b} (t) = E _ {m} ^ {u, b, t r a n} + E _ {m} ^ {u, b, c m p} (t). \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            704,
+            490,
+            724
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "3) Cost of Computation Offloading Model ⃝3 : Similarly, the energy consumed for UAV m to offload tasks via UAV-satellite link is ",
+        "bbox": [
+            73,
+            734,
+            491,
+            779
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} ^ {u, s, t r a n} (t) = P _ {m, 0} ^ {u s} (t) \\frac {Q _ {m} ^ {u , s} (t)}{R _ {m , 0} ^ {u s} (t)}. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            787,
+            490,
+            821
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Drawing inspiration from [15], the computation resource usage of LEO satellite by UAV m is quantified by ",
+        "bbox": [
+            73,
+            833,
+            488,
+            863
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} ^ {u, s, c m p} (t) = Q _ {m} ^ {u, s} (t) \\gamma_ {m} ^ {u}. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            192,
+            875,
+            488,
+            893
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Thus, the cost of computation offloading model ⃝3 is ",
+        "bbox": [
+            75,
+            905,
+            437,
+            921
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {m} ^ {u, s} (t) = E _ {m} ^ {u, s, t r a n} (t) + E _ {m} ^ {u, s, c m p} (t). \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            151,
+            931,
+            490,
+            950
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "4) Cost of Computation Offloading Model ⃝4 : Define $P _ { k , 0 } ^ { d s } ( t )$ as the transmission power for ground device k. The energy consumed to offload tasks from device k to the satellite via the device-to-satellite link is given by $E _ { k } ^ { d , s , t r a n } ( t ) \\ =$ $P _ { k , 0 } ^ { d s } D _ { k } ( t ) / R _ { k , 0 } ^ { d s } ( t )$ k. Likewise, the computation resource usage of the SAGIN satellite by ground device k, denoted as $E _ { k } ^ { d , s , c m p } ( t )$ , is quantified by $\\bar { E } _ { k } ^ { d , s , c m p } ( t ) = D _ { k } ( t ) \\cdot \\gamma _ { k }$ . ",
+        "bbox": [
+            504,
+            70,
+            919,
+            176
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Therefore, the cost of direct offloading to the LEO satellite is determined as follows: ",
+        "bbox": [
+            503,
+            176,
+            919,
+            205
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {k} ^ {d, s, d i r} (t) = E _ {k} ^ {d, s, t r a n} (t) + E _ {k} ^ {d, s, c m p} (t). \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            573,
+            212,
+            919,
+            232
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Additionally, in the Phase 1 of each time slot t, the energy consumed by UAV m for collecting tasks via the Device-UAV link is represented as $E _ { m } ^ { d , u , c o l } ( t )$ , which is calculated as ",
+        "bbox": [
+            501,
+            238,
+            919,
+            284
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {m} ^ {d, u, c o l} (t) = \\sum_ {k \\in \\mathcal {C} _ {m} (t)} x _ {k, m} (t) P _ {k, m} ^ {d, u} (t) \\frac {D _ {k} (t)}{R _ {k , m} ^ {d , u} (t)}. \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            290,
+            919,
+            329
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "To conclude, for time slot t, considering UAV m and its coverage area $\\mathcal { C } _ { m } ( t )$ , the operational cost attributed to UAV m can be described as ",
+        "bbox": [
+            503,
+            334,
+            919,
+            378
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} C _ {m} ^ {u} (t) = C _ {m} ^ {d, u, c o l} (t) + C _ {m} ^ {u, l o c} (t) + C _ {m} ^ {u, b} (t) + C _ {m} ^ {u, s} (t) \\tag {34} \\\\ + \\sum_ {k \\in \\mathcal {C} _ {m} (t)} (1 - x _ {k, m} (t)) C _ {k} ^ {d, s, d i r} (t). \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            517,
+            385,
+            919,
+            431
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "V. PROBLEM FORMULATION AND ALGORITHM DESIGN ",
+        "text_level": 1,
+        "bbox": [
+            517,
+            444,
+            906,
+            457
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "This section starts by presenting the formulation of the problem. It then proceeds to reformulate the problem using Lyapunov optimization for easier resolution. ",
+        "bbox": [
+            503,
+            463,
+            919,
+            508
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "A. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            527,
+            671,
+            541
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "This section is dedicated to reducing the long-term average network operational cost, while also maintaining the stability of the SAGIN. We formulate the joint optimization of task hosting $\\begin{array} { r c l } { \\pmb { x } ( t ) } & { = } & { \\{ \\pmb { x } _ { m } ( t ) \\} } \\end{array}$ , where $\\begin{array} { r l r } { { \\pmb x } _ { m } ( t ) } & { = } & { \\left( x _ { k _ { 1 } , m } ( t ) , x _ { k _ { 2 } , m } ( t ) , \\hdots , x _ { k _ { \\vert { \\mathcal { C } } _ { m } ( t ) \\vert } , m } ( t ) \\right) } \\end{array}$ , ∀m ∈ M, optimization of computation offloading $\\begin{array} { r l } { \\pmb { Q } ( t ) } & { { } = } \\end{array}$ $\\{ Q _ { m } ^ { u , l o c } ( t ) , Q _ { m } ^ { u , b } ( t ) , Q _ { m } ^ { u , s } ( t ) \\} , \\forall m \\ \\in \\ { \\mathcal { M } } .$ association control (in the perspective of UAVs) ${ \\pmb y } ( t ) = \\{ y _ { m , n } ( t ) \\} , n \\in \\mathcal { N }$ ∪ {0}, where 0 representing LEO satellite; computing resource allocation of UAVs $\\pmb { f } ^ { u } ( t ) = ( f _ { 1 } ^ { u } ( t ) , \\dots , f _ { M } ^ { u } ( t ) )$ , and BS computing resource allocation $\\pmb { f } ^ { b s } ( t ) = ( f _ { m , n } ^ { b s } ( t ) ) , m \\in \\mathcal { M } , n \\in$ N . The optimization problem is formulated as follows. ",
+        "bbox": [
+            503,
+            547,
+            921,
+            728
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\boldsymbol {x} (t), \\boldsymbol {y} (t), \\boldsymbol {Q} (t), \\boldsymbol {f} ^ {u} (t), \\boldsymbol {f} ^ {b s} (t)} \\lim _ {T \\rightarrow \\infty} \\frac {1}{T} \\sum_ {t \\in \\mathcal {T}} \\sum_ {m \\in \\mathcal {M}} C _ {m} ^ {u} (t) \\tag {35a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            519,
+            734,
+            919,
+            770
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } Q _ {m} ^ {u, l o c} (t) + Q _ {m} ^ {u, b} (t) + Q _ {m} ^ {u, s} (t) \\leq H _ {m} ^ {u} (t), \\tag {35b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            583,
+            775,
+            919,
+            816
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {m} ^ {u} (t) \\leq f _ {m, \\max} ^ {u} (t), \\forall m \\in \\mathcal {M}, \\tag {35c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            599,
+            824,
+            919,
+            842
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m \\in \\mathcal {M}} f _ {m, n} ^ {b s} (t) \\leq f _ {n, \\max} ^ {b s} (t), \\forall n \\in \\mathcal {N}, \\tag {35d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            602,
+            849,
+            919,
+            872
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {k, m} (t) \\in \\{0, 1 \\}, \\forall k \\in \\mathcal {K}, m \\in \\mathcal {M}, \\tag {35e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            599,
+            878,
+            919,
+            895
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m \\in \\mathcal {M}} x _ {k, m} (t) \\leq 1, \\forall k \\in \\mathcal {K}, \\tag {35f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            602,
+            902,
+            919,
+            926
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {m, n} (t) \\in \\{0, 1 \\}, \\forall m \\in \\mathcal {M}, n \\in \\mathcal {N}, \\tag {35g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            599,
+            933,
+            919,
+            950
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "GAO et al.: COST-EFFICIENT COMPUTATION OFFLOADING IN SAGIN ",
+        "bbox": [
+            75,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "3469 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {N}} y _ {m, n} (t) \\leq 1, \\forall m \\in \\mathcal {M}, \\tag {35h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            169,
+            66,
+            490,
+            92
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\bar {H} _ {m} ^ {u} (t) <   \\infty , \\bar {H} _ {m, n} ^ {u, b} (t) <   \\infty , \\forall m \\in \\mathcal {M}, n \\in \\mathcal {N}, \\tag {35i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            169,
+            97,
+            488,
+            133
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "(35b) indicates that the limit of the task hosting for each UAV. (35c) specifies the maximum computational capacity of a UAV. (35d) outlines that the computational capability offloaded to a BS is constrained by its available computing resource. (35e)- (35h) depict the condition where each ground device can select only one UAV or satellite for task hosting, and every chosen UAV can connect with only one ground BS in any given time slot. (35i) ensures the network stability. ",
+        "bbox": [
+            73,
+            141,
+            491,
+            263
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "B. Problem Transformation by Lyapunov Optimization ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            280,
+            444,
+            295
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The challenge presented by problem (35) stems from its nature as a stochastic optimization problem, complicated by the interdependencies among task hosting, computation offloading, association control, and resource distribution. To address this, we employ the Lyapunov optimization algorithm, which simplifies the complexity by breaking down the overarching multi-slot stochastic problem into tractable one-slot problems, tackled sequentially. Assuming the SAGIN’s state at the current time slot t is represented by $\\pmb { H } ( t ) = \\{ H _ { m } ^ { u } ( t ) , H _ { m , n } ^ { u , b } ( t ) \\}$ , we define the Lyapunov function as ",
+        "bbox": [
+            73,
+            299,
+            491,
+            463
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {L} (\\boldsymbol {H} (t)) = \\frac {1}{2} \\sum_ {m \\in \\mathcal {M}} \\left[ H _ {m} ^ {u} (t) ^ {2} + \\sum_ {n \\in \\mathcal {N}} H _ {m, n} ^ {u, b} (t) ^ {2} \\right]. \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            91,
+            468,
+            490,
+            503
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "A decrease in $ { \\mathcal { L } } ( H ( t ) )$ signifies a reduction in the task queue backlog, indicating that tasks have been processed locally by UAVs or offloaded during time slot t. Following this, we introduce the definition of the Lyapunov drift function. ",
+        "bbox": [
+            73,
+            508,
+            491,
+            571
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\triangle \\mathcal {L} (\\boldsymbol {H} (t)) = \\mathbb {E} \\{\\mathcal {L} (\\boldsymbol {H} (t + 1)) - \\mathcal {L} (\\boldsymbol {H} (t)) \\mid \\boldsymbol {H} (t) \\}. \\tag {37}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            93,
+            577,
+            488,
+            594
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Here, a small absolute value of $\\triangle \\mathcal { L } ( H ( t ) )$ indicates minimal variation in the data queue backlogs across successive time slots. Achieving minimization of $\\triangle \\mathcal { L } ( H ( t ) ) ,$ ) within each time slot ensures adherence to constraints (35i). Furthermore, to reduce operational costs, we derive the drift-plus-penalty by ",
+        "bbox": [
+            73,
+            599,
+            491,
+            676
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {F} (\\boldsymbol {H} (t)) = \\triangle \\mathcal {L} (\\boldsymbol {H} (t)) + V \\cdot \\mathbb {E} \\{\\mathcal {G} (t) \\mid \\boldsymbol {H} (t) \\}, \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            683,
+            488,
+            700
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $V \\geq 0$ serves as the balancing parameter, and $\\mathcal { G } ( t ) =$ $\\textstyle \\sum _ { m \\in { \\mathcal { M } } } C _ { m } ^ { u } ( t )$ denotes the operational cost linked to UAV m within the SAGIN in time slot t. Minimizing $\\mathcal { F } ( H ( t ) )$ directly poses challenges. As a result, Theorem 1 is utilized to establish its theoretical upper limit. By focusing on reducing the upper bound of $\\mathcal { F } ( H ( t ) )$ to the greatest extent possible, instead of attempting to directly minimize the function itself, we can approach an optimal operational cost for the network. ",
+        "bbox": [
+            73,
+            707,
+            491,
+            827
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Theorem 1: Given that $V \\geq 0$ and considering the network state in time slot t, represented by H(t), then ",
+        "bbox": [
+            73,
+            828,
+            491,
+            859
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {F} (\\boldsymbol {H} (t)) \\\\ \\leq \\Pi + \\sum_ {m \\in \\mathcal {M}} \\mathbb {E} \\left\\{H _ {m} ^ {u} (t) \\left[ D _ {m} ^ {u} (t) - J _ {m} ^ {u, l o c} (t) - Q _ {m} ^ {u, b} (t) \\right. \\right. \\\\ - Q _ {m} ^ {u, s} (t) ] | \\boldsymbol {H} (t) \\} + \\sum_ {m \\in \\mathcal {M}} \\sum_ {n \\in \\mathcal {N}} \\mathbb {E} \\{H _ {m, n} ^ {u, b} (t) [ y _ {m, n} (t) Q _ {m} ^ {u, b} (t) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            73,
+            864,
+            488,
+            950
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. - J _ {m, n} ^ {u, b} (t) \\right] | \\boldsymbol {H} (t) \\} + V \\mathbb {E} \\{\\mathcal {G} (\\boldsymbol {H} (t)) | \\boldsymbol {H} (t) \\}, \\tag {39}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            524,
+            68,
+            919,
+            88
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where Π is a positive constant. ",
+        "bbox": [
+            504,
+            95,
+            718,
+            109
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Moreover, by applying Lyapunov optimization, we can ease the stability constraints. Ignoring the variations of random variables across distinct time slots, our focus shifts towards optimizing the upper limit of $\\mathcal { F } ( H ( t ) )$ in each time slot. ",
+        "bbox": [
+            503,
+            109,
+            919,
+            171
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "C. DRL-and-Perception-Aided Approach ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            191,
+            781,
+            207
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Based on Theorem 1, we introduce three distinct subproblems aimed at minimizing the right-hand side of (39). These include P1, focusing on the joint optimization of computation offloading and local computing resource allocation from the UAVs’ viewpoint; P2, dedicated to optimizing the association control between UAVs and BSs, denoted as $y _ { m , n } ( t ) ;$ and P3, concerning the allocation of computing resources at ground BSs. We proceed to address these subproblems sequentially. ",
+        "bbox": [
+            501,
+            210,
+            919,
+            330
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "1) Jointly Optimization of Task Offloading and UAV Computing Resource Distribution: ",
+        "bbox": [
+            503,
+            332,
+            919,
+            362
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "P1 : ",
+        "bbox": [
+            504,
+            371,
+            542,
+            385
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\boldsymbol {Q} (t), \\boldsymbol {f} ^ {u} (t)} \\sum_ {m \\in \\mathcal {M}} H _ {m} ^ {u} (t) \\left[ D _ {m} ^ {u} (t) - Q _ {m} ^ {u, b} (t) - Q _ {m} ^ {u, s} (t) \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            506,
+            388,
+            852,
+            422
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- f _ {m} ^ {u} (t) (\\tau - \\triangle) / \\gamma_ {m} ^ {u} ] + \\sum_ {m \\in \\mathcal {M}} V \\left[ C _ {m} ^ {d, u, c o l} (t) \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            422,
+            874,
+            462
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. + \\sum_ {k \\in \\mathcal {C} _ {m} (t)} (1 - x _ {k, m} (t)) C _ {k} ^ {d, s, d i r} (t) \\right]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            465,
+            838,
+            501
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\sum_ {m \\in \\mathcal {M}} V \\kappa | f _ {m} ^ {u} (t) | ^ {3} \\gamma_ {m} ^ {u} H _ {m} ^ {u} (t) / f _ {m} ^ {u} (t)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            505,
+            846,
+            531
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\sum_ {m \\in \\mathcal {M}} V \\bigg [ P _ {m, 0} ^ {u, s} (t) \\frac {Q _ {m} ^ {u , s} (t)}{R _ {m , 0} ^ {u s} (t)} + \\kappa | f _ {m, 0} ^ {u, s} (t) | ^ {3} \\frac {\\gamma_ {m} ^ {u} Q _ {m} ^ {u , s} (t)}{f _ {m , 0} ^ {u , s} (t)} \\bigg ]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            535,
+            919,
+            578
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\sum_ {m \\in \\mathcal {M}} V P _ {m} ^ {u b} (t) \\frac {Q _ {m} ^ {u , b} (t)}{R _ {m} ^ {u b} (t)} + \\sum_ {m \\in \\mathcal {M}} V \\kappa | f _ {m} ^ {b s} (t) | ^ {3} (\\tau - \\triangle) \\tag {40}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            584,
+            919,
+            640
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } Q _ {m} ^ {u, l o c} (t) + Q _ {m} ^ {u, b} (t) + Q _ {m} ^ {u, s} (t) = H _ {m} ^ {u} (t), \\tag {41}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            647,
+            919,
+            667
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {m} ^ {u} (t) \\leq f _ {m, \\max} ^ {u} (t), \\forall m \\in \\mathcal {M}, \\tag {42}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            672,
+            919,
+            691
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {m} ^ {u} (t) (\\tau - \\triangle) / \\gamma_ {m} ^ {u} \\leq H _ {m} ^ {u} (t) \\forall m \\in \\mathcal {M}. \\tag {43}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            696,
+            919,
+            715
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "To tackle P1, we utilize the DDPG algorithm, a modelfree, off-policy actor-critic method embedded within a deep learning framework. DDPG is particularly well-suited for continuous action spaces, making it an effective solution for problems characterized by high-dimensional, continuous action domains. This approach ensures precise optimization of task offloading and computing resource allocation among UAVs. We denote the state space of P1 at time slot t as ${ \\mathbf { } } S ( t ) =$ $\\{ R ^ { u b } ( t ) , R ^ { u s } ( t ) , D ^ { u } ( t ) , { \\bf C } { \\bf T } ( t ) \\}$ , where CT(t) represents the recognition results of ground device types via mmWave radar and visual sensors. The action space is denoted as $a ( t ) =$ $\\{ Q ( t ) , f ^ { u } ( t ) \\}$ }. The reward is set as $r ( t ) = - \\mathrm { E q . } ( 4 0 )$ . ",
+        "bbox": [
+            503,
+            720,
+            921,
+            902
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "2) Optimization of Association Control $y _ { m , n } ( t ) .$ In this section, we determine the UAVs and the ground BSs association control $( \\mathrm { i } . \\mathrm { e } . , y _ { m , n } ( t ) )$ by minimizing P2. P2 is formulated ",
+        "bbox": [
+            503,
+            904,
+            921,
+            950
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "3470 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "as follows. ",
+        "bbox": [
+            73,
+            71,
+            151,
+            84
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "P2 : ",
+        "bbox": [
+            78,
+            106,
+            112,
+            119
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {y _ {m, n} (t)} \\sum_ {m \\in \\mathcal {M}} \\sum_ {n \\in \\mathcal {B S} _ {m}} \\left\\{H _ {m, n} ^ {u, b} (t) [ y _ {m, n} (t) Q _ {m} ^ {u, b} (t) - J _ {m, n} ^ {u, b} (t) ] \\right\\}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            91,
+            125,
+            478,
+            157
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\sum_ {m \\in \\mathcal {M}} \\sum_ {n \\in \\mathcal {B S} _ {m}} V y _ {m, n} (t) \\left[ P _ {m, n} ^ {u, b} \\frac {Q _ {m} ^ {u , b} (t)}{R _ {m , n} ^ {u b} (t)} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            156,
+            164,
+            433,
+            205
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. \\left. + \\kappa \\left| f _ {m, n} ^ {b s} (t) \\right| ^ {3} \\frac {\\gamma_ {m} ^ {u} \\cdot H _ {m , n} ^ {u , b} (t)}{f _ {m , n} ^ {b s}} \\right] \\right. \\tag {44}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            158,
+            212,
+            490,
+            253
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } y _ {m, n} (t) \\in \\{0, 1 \\}, \\forall m \\in \\mathcal {M}, n \\in \\mathcal {N}, \\tag {45}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            104,
+            258,
+            491,
+            276
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {B S} _ {m} (t)} y _ {m, n} (t) \\leq 1, \\forall m \\in \\mathcal {M}. \\tag {46}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            282,
+            490,
+            309
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "P2 is a mixed integer nonlinear problem. When $f _ { m , n } ^ { b s } ( t )$ is fixed, the optimal $\\{ y _ { m , n } ( t ) \\} _ { m \\in \\mathcal { M } , n \\in \\mathcal { N } }$ can be derived by Deep Q-Network (DQN). In our investigation of P2, we utilized the DQN algorithm, a cutting-edge reinforcement learning technique that integrates deep neural networks with a Qlearning framework. The DQN algorithm is particularly adept at handling high-dimensional state spaces, which makes it a suitable choice for complex decision-making tasks that are characterized by substantial state representations. ",
+        "bbox": [
+            73,
+            325,
+            491,
+            462
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Similarly, we denote the state space of P2 at time slot t as $s ( t ) = \\{ D ^ { u } ( t ) , { \\cal Q } ( t ) , f ^ { u } ( t ) \\}$ }. The action space is denoted as $a ( t ) = \\{ y ( t ) \\}$ . The reward is set as $r ( t ) = - \\mathrm { E q . } ( 4 4 )$ . ",
+        "bbox": [
+            73,
+            463,
+            491,
+            508
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "3) Optimization of BS Computing Resource Allocation: In this section, we determine the BS computing resource allocation by minimizing P3. P3 is formulated as follows. ",
+        "bbox": [
+            73,
+            510,
+            491,
+            555
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {P 3}: \\min _ {f _ {m, n} ^ {b s} (t)} \\sum_ {m \\in \\mathcal {M}} \\sum_ {n \\in \\mathcal {B S} _ {m} (t)} \\left[ - \\frac {H _ {m , n} ^ {u , b} (t) (\\tau - \\triangle) f _ {m , n} ^ {b s} (t)}{\\gamma_ {m} ^ {u}} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            94,
+            571,
+            468,
+            614
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. + \\kappa \\left| f _ {m, n} ^ {b s} (t) \\right| ^ {3} \\frac {\\gamma_ {m} ^ {u} H _ {m , n} ^ {u , b} (t)}{f _ {m , n} ^ {b s} (t)} \\right] \\tag {47}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            617,
+            490,
+            657
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\sum_ {m \\in \\mathcal {M}} f _ {m, n} ^ {b s} (t) \\leq f _ {n, \\max} ^ {b s} (t), \\forall n, \\tag {48}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            132,
+            659,
+            488,
+            683
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(\\tau - \\triangle) f _ {m, n} ^ {b s} (t) / \\gamma_ {m} ^ {u} \\leq H _ {m, n} ^ {u, b} (t), \\forall m, n. \\tag {49}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            158,
+            684,
+            488,
+            702
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Here, we employ the SGHS algorithm to address problem P3. Following [44], the adjustment of the bandwidth (BW) is demonstrated by Eq. (50), where the preset minimum and maximum search scopes of the SGHS algorithm are $ { \\mathrm { B W } _ { \\mathrm { m i n } } }$ and $\\mathrm { B W } _ { \\mathrm { m a x } }$ , respectively. Harmony Search is a music-inspired optimization algorithm that mimics the improvisation process of musicians. In our context, the algorithm starts by initializing the parameters, including Harmony Memory Size (HMS), Harmony Memory Considering Rate (HMCR), Pitch Adjusting Rate (PAR), and Number of Iterations (NI). In this paper, without losing geneality, we let HMCR and PAR obey normal distribution [45], i.e., HMCR $\\sim \\mathcal { N } ( \\mu _ { \\mathrm { H M C R } } , \\sigma _ { \\mathrm { H M C R } } ^ { 2 } )$ and PAR $\\sim \\mathcal { N } ( \\mu _ { \\mathrm { P A R } } , \\sigma _ { \\mathrm { P A R } } ^ { 2 } )$ , respectively. The Harmony Memory (HM) is also initialized with feasible solutions, defined by the minimum and maximum values of the harmonies. More ",
+        "bbox": [
+            73,
+            720,
+            491,
+            949
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1 SGHS Algorithm for BS Computing Resoruce Allocation ",
+            "Require: BS’s CPU frequency, datasize for each BS, the queue for BS. ",
+            "Input: Initialize the algorithm parameters (HMS, HMCR, PAR, NI, $ { \\mathbf { B } }  { \\mathbf { W } } _ { \\mathrm { m i n } } ,  { \\mathbf { B } }  { \\mathbf { W } } _ { \\mathrm { m a x } } ) ;$ Initialize the HM, minimum value and maximum value of harmony "
+        ],
+        "code_body": "while iter ≤ NI do\n    Update the BW by Eq. (50);\n    if rand ∈ (0,1) ≤ HMCR then\n    choose a value from HM for i\n    if rand ∈ (0,1) ≤ PAR then\n    adjust the value of i by: $a_{i,\\text{new}} = a_{i,\\text{old}} + \\text{rand} \\in (0,1) \\times \\text{BW}$ end\n    else\n    choose a random variable: $a_i = \\min + \\text{rand} \\in (0,1) \\times (\\max - \\min)$ end\n    if P3(new harmony solution) ≤ worst (P3(HM))\n    then\n    accept the new harmony and replace the worst in HM with it.\n    end\n    iter = iter + 1 ",
+        "bbox": [
+            522,
+            193,
+            890,
+            446
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "end ",
+        "bbox": [
+            522,
+            446,
+            552,
+            455
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "best = find the current best solution. ",
+        "bbox": [
+            522,
+            459,
+            769,
+            472
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Output: The BS computing resource allocation results. ",
+        "bbox": [
+            522,
+            474,
+            895,
+            489
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "details of the SGHS is shown in Algorithm 1. ",
+        "bbox": [
+            504,
+            525,
+            818,
+            540
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{BW} (t) = \\left\\{ \\begin{array}{l l} \\mathrm{BW} _ {\\max} - \\frac {\\mathrm{BW} _ {\\max} - \\mathrm{BW} _ {\\min}}{\\mathrm{NI}} 2 t & \\text { if   } \\operatorname{iter} <   \\frac {\\mathrm{NI}}{2}, \\\\ \\mathrm{BW} _ {\\min} & \\text { if   } \\operatorname{iter} \\geqslant \\frac {\\mathrm{NI}}{2}, \\end{array} \\right. \\tag {50}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            545,
+            921,
+            625
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 2 encapsulates the comprehensive optimization process for addressing problem (35), under the proposed DRLand-Perception-aided Approach. The initial phase involves employing DRL-and-Perception-aided Approach, as described in Algorithm 2, to obtain optimal solutions for task hosting, computation offloading, and managing interactions between UAVs and BSs. This step also includes determining the optimal distribution of computing resources among UAVs. Following this, Algorithm 1 is applied to fine-tune the computing resource allocation at the BSs, completing the optimization cycle. This systematic approach guarantees the achievement of optimal outcomes for task hosting, computation offloading, and computing resource distribution, encompassing the entire optimization scope proposed by DRL-and-Perception-aided Approach. ",
+        "bbox": [
+            501,
+            633,
+            921,
+            859
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "VI. SIMULATION SETUP AND RESULTS ANALYSIS ",
+        "text_level": 1,
+        "bbox": [
+            535,
+            878,
+            888,
+            893
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "A. Simulation Setup ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            898,
+            643,
+            914
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "1) SAGIN System Settings: We consider the SAGIN system, which comprises a cluster of one LEO satellite cluster, 5 ",
+        "bbox": [
+            504,
+            917,
+            921,
+            949
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "GAO et al.: COST-EFFICIENT COMPUTATION OFFLOADING IN SAGIN ",
+        "bbox": [
+            75,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "3471 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/7f9e3d6d6c2512922d38f2a3476d1a546ec6629f14ba013d4045633fbc24078c.jpg",
+        "image_caption": [
+            "Algorithm 2 DRL-and-Perception-aided Approach Proposed for Joint Task Hosting, Computation Offloading, Association Control, and Computing Resource Allocation in SAGIN "
+        ],
+        "image_footnote": [],
+        "content": "Require: UAV, BS, Cloud server's CPU frequency,\ndatasize for each mobile device, the returned signal for\neach device sR (by perception).\nInput: Initialize the DDPG model for jointly\noptimizing computation offloading and UAVs\ncomputing resource allocation, initialize the\nDQN model for the optimization of the UAVs\nand ground BSs association control, initialize\nthe harmony search algorithm for optimization\nBS computing resource allocation;",
+        "sub_type": "text_image",
+        "bbox": [
+            91,
+            132,
+            467,
+            281
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/29b37f7031357c66a9274f72002258d4b646f2bb146d81e3192bbb5f0dec3d83.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "for time slot t = 1 to T do\n    Estimate the distance, velocity and angle based on\n    the radar.\n    if User is about to leave the coverage area then\n    | Leave the device to the satellite",
+        "sub_type": "text_image",
+        "bbox": [
+            91,
+            282,
+            467,
+            353
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/a682d393500be37cf741cebb5aad538f3100eef7d275200b50e4bb38f7bdc120.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "else\n| UAV collects the task and obtain the amount of\n  tasks by (16)",
+        "sub_type": "text_image",
+        "bbox": [
+            117,
+            354,
+            468,
+            398
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/7e13a093b732fd54e876bb1ecf7f262897825a00ca7fafd95318d51d02f7e0e2.jpg",
+        "image_caption": [
+            "end Output: Adaptively task offloading strategy and resource allocation solution. "
+        ],
+        "image_footnote": [],
+        "content": "end\nfor iteration number iter = 1 to ITER do\n    Send state space to the DDPG model to get\n        Q(t), fu(t) for minimize the Problem P1;\n    Send state space to the DQN model to get the\n        ym,n(t) for minimize the Problem P2;\n    Obtain the fbs(m,n)(t) by Algorithm 1;\n    if The new solution is no better than the\n        previous one then\n            break;\n    end\nend",
+        "sub_type": "text_image",
+        "bbox": [
+            117,
+            398,
+            457,
+            571
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "UAVs, 2 BSs, and 10 mobile users randomly distributed in remote areas. To keep the complexity of the simulations tractable while considering a significantly loaded system, the satellite is positioned at an altitude of 780 km, with the UAVs operating at an altitude of 100 m. The UAVs fly along a circular trajectory centered at (1000, 0, 100) m and with a radius of 1000 m. All UAVs are uniformly distributed in the on the flight trajectory and maintain a fly speed of 16.67 m/s. The BSs are assumed to be fixed at the location (500, 0, 0) m and (1500, 0, 0) m, respectively. Based on the communication model described in Section III-C, it is necessary to carefully configure the simulation parameters. We consider the communication between UAVs and ground units, utilizing a carrier frequency of 4 GHz and a bandwidth of 400 MHz. Following [10], we set the noise spectral density $N _ { 0 }$ as −174 dBm/Hz. Additionally, the Rician factor F is established at 7, and the fixed antenna gain $G _ { 0 }$ at 43.3 dBi. For simplicity, each task is assumed to have an average size of 10 MB. All UAVs operate with the same maximum CPU frequency, ",
+        "bbox": [
+            73,
+            661,
+            493,
+            950
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/8b877f21171a57cf0b4d3ceb242ca03bd4dba8f92b57ec162bd1586808267cb9.jpg",
+        "content": "| Epoch(×10³) | DRL-and-Perception-aided approach | Simulated annealing | Perception free | CVX toolbox | Complete offloading |\n| ----------- | ---------------------------------- | ------------------- | --------------- | ----------- | ------------------- |\n| 0           | 60                                 | 145                 | 50              | 30          | 225                 |\n| 1           | 30                                 | 65                  | 50              | 30          | 225                 |\n| 2           | 30                                 | 30                  | 50              | 30          | 225                 |",
+        "chart_caption": [
+            "(a) Convergence of DDPG algorithm for problem P1. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            65,
+            883,
+            277
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/821ccd1acdf67103d9adefb4e7ef2552b34b406390ba957544b1aec4a34ccac1.jpg",
+        "content": "| Iteration | HMCR=0.9,PAR=0.1 | HMCR=0.4,PAR=0.1 | HMCR=0.9,PAR=0.4 | HMCR=0.4,PAR=0.4 |\n| --------- | ---------------- | ---------------- | ---------------- | ---------------- |\n| 0         | 250              | 450              | 400              | 250              |\n| 500       | 60               | 50               | 200              | 30               |\n| 1000      | 50               | 30               | 150              | 20               |\n| 1500      | 40               | 20               | 100              | 15               |\n| 2000      | 30               | 15               | 50               | 10               |\n| 2500      | 25               | 10               | 25               | 5                |\n| 3000      | 20               | 5                | 10               | 5                |\n| 3500      | 15               | 5                | 5                | 5                |\n| 4000      | 10               | 5                | 5                | 5                |\n| 4500      | 5                | 5                | 5                | 5                |\n| 5000      | 5                | 5                | 5                | 5                |",
+        "chart_caption": [
+            "(b) Convergence of the SGHS algorithm. ",
+            "Fig. 2. Effectiveness of the proposed algorithms for subproblems. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            301,
+            893,
+            515
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "designated as $f _ { m , \\mathrm { m a x } } ^ { u } ~ = ~ f _ { \\mathrm { m a x } } ^ { u } ~ = ~ 3 ~ \\times ~ 1 0 ^ { 8 } ~ \\mathrm { H z }$ . The CPU frequency of the server deployed on the satellite is set at $1 0 \\times 1 0 ^ { 9 } ~ \\mathrm { H z }$ . Furthermore, both BSs are equipped with a CPU frequency of $5 \\times 1 0 ^ { 9 }$ Hz. The transmission power for devices communicating with the satellite is set at 5 dBm. For communications from UAVs to the base stations, the transmission power is set at 1.6 dBm, and from UAVs to the satellite, it is also established at 5 dBm. ",
+        "bbox": [
+            501,
+            585,
+            921,
+            705
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "2) Algorithm Parameter Settings: The setup of the DDPG algorithm is defined by a particular group of hyperparameters, outlined as follows: The learning rates for the actor and critic networks are uniformly established at 0.001. This rate strikes a balance, promoting steady learning while maintaining the stability of the updates. The discount factor is set at 0.99, underscoring the emphasis on future rewards in the optimization process. A soft update coefficient for target networks is determined to be 0.005, promoting a smooth transition of weights from the learning networks to the target networks, aiding in the learning process’s stability. The size of the replay buffer is chosen as 10, 000, offering a vast pool of previous interactions for training, thereby broadening the range of learning instances and mitigating the potential for overfitting recent data. Both the Actor and Critic networks are structured with two fully connected layers. ",
+        "bbox": [
+            501,
+            707,
+            921,
+            949
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "3472 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In the implementation of the SGHS algorithm in our paper, tailored a set of hyperparameters to enhance the optimization effectiveness. The HMS is determined to be 30. The number of iterations, which defines the termination condition of the algorithm, is configured to be 10, 000. The maximum and minimum distance bandwidth, $\\mathrm { B W } _ { \\mathrm { m a x } }$ and $ { \\mathrm { B W } _ { \\mathrm { m i n } } }$ are set as 0.5 and $5 \\times 1 0 ^ { - 4 }$ , respectively. The mean values for HMCR and PAR, denoted as µHMCR and µPAR, are established at 0.95 and 0.3, respectively. Concurrently, the variances for HMCR and PAR, represented as σHMCR and $\\sigma _ { \\mathrm { P A R } }$ , are set at 0.01 and 0.05, respectively. Additionally, the number of new solutions to be generated is set at 20. ",
+        "bbox": [
+            73,
+            70,
+            491,
+            251
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "3) Comparison Baselines: In order to gain insight into the proposed DRL-and-Perception-aided Approach, we select the following four baseline methods for comparison. ",
+        "bbox": [
+            73,
+            252,
+            491,
+            297
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Random Method: both computation offloading and resource allocation are randomly determined. ",
+            "• Complete Offloading Method: In our proposed DRLand-Perception-aided Approach, the offloading model is adapted to binary offloading, where tasks are treated as indivisible units that are entirely processed either by a UAV, a nearby BS, or a satellite. ",
+            "• Perception Free Method: without using the mmWave radar and visual sensors. ",
+            "• Simulated Annealing Algorithm: a heuristic optimization algorithm used for allocating computing resources at BSs. "
+        ],
+        "bbox": [
+            89,
+            300,
+            491,
+            467
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "B. DRL-and-Perception-Aided Approach Verification ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            489,
+            429,
+            506
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "1) Convergence Verification of DDPG: Fig. 2(a) illustrates the convergence and effectiveness performance of the DDPG algorithm for problem P1. From the results, we observe that our proposed DRL-and-Perception-aided Approach converges rapidly to the solution provided by the CVX Toolbox, which represents the optimal solution for problem P1. The cost performance gap between the DRL-and-Perception-aided Approach and both the Perception Free Method and Complete Offloading Method is more significant than that observed with the Simulated Annealing Algorithm. By contrast, the Simulated Annealing Algorithm provides a close-to-optimal performance as the DRL-and-Perception-aided Approach, albeit at the expense of significantly increased processing time. Overall, DRL-and-Perception-aided Approach demonstrates superior performance over the other methods in terms of both reduced cost and shorter processing time. ",
+        "bbox": [
+            73,
+            511,
+            491,
+            751
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "2) Verification of Effectiveness and Stability of SGHS: We identify the characteristics of the SGHS (Alg. 1) with respect to parameters HMCR and PAR. For the given parameter $V =$ 1 in problem P3, Fig. 2(b) illustrates how the values of HMCR and PAR impact the convergence and effectiveness of SGHS. Accordingly, we conducted four simulation scenarios with combinations of the following values: $\\mathrm { H M C R } \\in \\{ 0 . 4 , 0 . 9 \\}$ and $\\operatorname { P A R } \\in \\{ 0 . 1 , 0 . 4 \\}$ . Fig. 2(b) demonstrates that a higher HMCR value, notably at 0.9, leads to a rapid reduction in costs, highlighting its effectiveness in utilizing existing harmonies in the memory to address this particular problem. Conversely, a lower HMCR of 0.4 shows a more gradual decrease in costs, suggesting that the generation of new random harmonies may not be ",
+        "bbox": [
+            73,
+            752,
+            491,
+            949
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/719ec713c1e986fbfcc0aebd3c5736f90593aaf2f74f826540ec03dc97da6f61.jpg",
+        "content": "| Iteration | DRL-and-Perception-aided approach | Simulated annealing | Complete offloading | Random | Perception free | CVX toolbox |\n| --------- | ---------------------------------- | ------------------- | ------------------- | ------ | --------------- | ----------- |\n| 0         | 40                                 | 40                  | 135                 | 80     | 95              | 40          |\n| 10        | 38                                 | 38                  | 120                 | 75     | 60              | 38          |\n| 20        | 37                                 | 37                  | 120                 | 75     | 50              | 37          |\n| 30        | 37                                 | 37                  | 120                 | 75     | 55              | 37          |\n| 40        | 37                                 | 37                  | 120                 | 75     | 55              | 37          |\n| 50        | 37                                 | 37                  | 120                 | 75     | 60              | 37          |",
+        "chart_caption": [
+            "Fig. 3. Convergence of the overall optimization process combining three subproblems (P1, P2, P3), i.e., Algorithm 2. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            537,
+            64,
+            890,
+            284
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/aed946d6679a3ca4cd0bbafe0cf944c6c219fa4481d45af7367d9f1635a9acc6.jpg",
+        "content": "| Time slot | DRL-and-Perception-aided approach | Simulated annealing | Complete offloading | Random | Perception free |\n| --------- | ---------------------------------- | ------------------- | ------------------- | ------ | --------------- |\n| 0         | 70                                 | 0                   | 130                 | 0      | 130             |\n| 5         | 40                                 | 30                  | 80                  | 40     | 60              |\n| 10        | 35                                 | 40                  | 75                  | 50     | 55              |\n| 15        | 32                                 | 42                  | 78                  | 52     | 53              |\n| 20        | 31                                 | 41                  | 79                  | 51     | 52              |\n| 25        | 30                                 | 40                  | 79                  | 50     | 51              |\n| 30        | 30                                 | 40                  | 79                  | 50     | 51              |\n| 35        | 30                                 | 40                  | 79                  | 50     | 51              |\n| 40        | 30                                 | 40                  | 79                  | 50     | 51              |\n| 45        | 30                                 | 40                  | 79                  | 50     | 51              |\n| 50        | 30                                 | 40                  | 79                  | 50     | 51              |",
+        "chart_caption": [
+            "Fig. 4. Performance of time-averaged network cost. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            537,
+            328,
+            890,
+            542
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/3a7a6aabb2f021133975b85e05d1021299f03d964acbe24ff393c74612792dc2.jpg",
+        "content": "| Time slot | DRL-and-Perception-aided approach | Simulated annealing | Complete offloading | Random | Perception free | BS Queue (× 10⁸) |\n| --------- | ---------------------------------- | ------------------- | ------------------- | ------ | --------------- | ---------------- |\n| 0         | 0                                  | 0                   | 0                   | 0      | 0               | 0                |\n| 20        | 3                                  | 3                   | 4                   | 5      | 3               | 200              |\n| 40        | 4                                  | 5                   | 6                   | 6      | 3               | 250              |\n| 60        | 4                                  | 5                   | 6                   | 6      | 3               | 300              |\n| 80        | 4                                  | 5                   | 6                   | 6      | 3               | 350              |\n| 100       | 4                                  | 5                   | 6                   | 6      | 3               | 400              |",
+        "chart_caption": [
+            "Fig. 5. Performance of time-averaged queue backlogs at UAVs and BSs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            524,
+            580,
+            901,
+            790
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "as advantageous. Additionally, the influence of increasing the PAR from 0.1 to 0.4 varies with the HMCR setting; with a high HMCR of 0.9, an elevated PAR initiates a more aggressive search strategy, yet it converges to a similar endpoint as that observed with a lower PAR. In contrast, at a lower HMCR of 0.4, a rise in PAR slightly hinders the convergence process, indicating a critical balance between exploring new solutions and exploiting existing ones. Despite these differences in convergence trajectories, all parameter configurations achieve similar cost reductions, underscoring the Harmony Search algorithm’s robustness across diverse parameter settings in reaching convergence. This reflects the algorithm’s capacity to consistently find stable solutions, although the path and speed of convergence can vary significantly based on the chosen hyperparameters. ",
+        "bbox": [
+            501,
+            843,
+            921,
+            949
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "GAO et al.: COST-EFFICIENT COMPUTATION OFFLOADING IN SAGIN ",
+        "bbox": [
+            75,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "3473 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f0f8eea9188fff6a2dffb9e9b8b9ab342e78bce288013cdcf6b4422dcf1c368d.jpg",
+        "content": "| Average datasize(× 10⁷)bit | DRL-and-Perception-aided approach | Simulated annealing | Complete offloading | Random | Perception free |\n| -------------------------- | ---------------------------------- | ------------------- | ------------------- | ------ | --------------- |\n| 0                          | 37                                 | 37                  | 65                  | 58     | 47              |\n| 2                          | 38                                 | 38                  | 66                  | 72     | 49              |\n| 4                          | 42                                 | 42                  | 68                  | 65     | 52              |\n| 6                          | 50                                 | 50                  | 85                  | 72     | 60              |\n| 8                          | 58                                 | 58                  | 100                 | 98     | 75              |\n| 10                         | 70                                 | 70                  | 112                 | 112    | 82              |",
+        "chart_caption": [
+            "(@) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            78,
+            66,
+            357,
+            237
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "chart",
+        "img_path": "images/7c50ffc62f310ebba0de50129a01f855058f9fb34c4d6085bf06d390313fc424.jpg",
+        "content": "| UAV CPU frequency(× 10^8) | DRL-and-Perception-aided approach | Simulated annealing | Complete offloading | Random | Perception free |\n| ------------------------- | ---------------------------------- | ------------------- | ------------------- | ------ | --------------- |\n| 1                         | 48                                 | 50                  | 52                  | 55     | 50              |\n| 2                         | 50                                 | 52                  | 55                  | 58     | 53              |\n| 3                         | 52                                 | 55                  | 60                  | 63     | 56              |\n| 4                         | 55                                 | 58                  | 65                  | 70     | 60              |\n| 5                         | 60                                 | 63                  | 72                  | 78     | 65              |\n| 6                         | 65                                 | 68                  | 80                  | 85     | 70              |\n| 7                         | 70                                 | 73                  | 88                  | 92     | 75              |\n| 8                         | 75                                 | 78                  | 95                  | 100    | 80              |\n| 9                         | 80                                 | 83                  | 102                 | 110    | 85              |",
+        "chart_caption": [
+            "(b）"
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            359,
+            66,
+            638,
+            237
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "chart",
+        "img_path": "images/28b7fd27cfea3e9eab6df787b8a4f5c6c528f4df3996a518a5ce843af8280c7f.jpg",
+        "content": "| BS CPU frequency(× 10⁹) | DRL-and-Perception-aided approach | Simulated annealing | Complete offloading | Random | Perception free |\n| ------------------------ | ---------------------------------- | ------------------- | ------------------- | ------ | --------------- |\n| 1                        | 35                                 | 36                  | 54                  | 60     | 43              |\n| 2                        | 37                                 | 37                  | 55                  | 61     | 44              |\n| 3                        | 39                                 | 39                  | 58                  | 64     | 46              |\n| 4                        | 43                                 | 44                  | 67                  | 75     | 52              |\n| 5                        | 50                                 | 52                  | 81                  | 90     | 65              |\n| 6                        | 58                                 | 60                  | 90                  | 100    | 73              |",
+        "chart_caption": [
+            "(c）",
+            "Fig. 6. Time-averaged cost as a function of (a) average datasize, (b) UAV CPU frequency, and (c) BS CPU frequency. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            640,
+            66,
+            919,
+            236
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            301,
+            491,
+            421
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "3) Effectiveness $o f \\_ T h e$ DRL-and-Perception-aided Approach: In Fig. 3, we evaluate and compare the time-averaged cost performance of the proposed DRLand-Perception-aided Approach and aforementioned methods under the same mentioned system settings. As expected, our proposed DRL-and-Perception-aided Approach outperforms the other baselines significantly. By contrast, it is difficult to distinguish the curves for the DRL-and-Perception-aided Approach and the CVX Method. We solve P1 using CVX and then address P2 and P3 using DQN and SGHS, respectively, under the aforementioned system settings. Notably, the time-averaged cost associated with DRL-and-Perceptionaided Approach is marginally lower than that of the CVX Method. This advantage primarily stems from the inherent ability of DRL algorithms to effectively manage time-varying environments. From the results we notice furthermore that the Simulated Annealing Algorithm towards lower costs slowly and consistently. However, it does not achieve the efficiency levels of our proposed approach. ",
+        "bbox": [
+            73,
+            422,
+            491,
+            709
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "C. Performance Analyse in Dynamic Scenarios ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            733,
+            397,
+            750
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 illustrates the performance of various algorithms, emphasizing their capability to minimize time-averaged costs amidst the constantly changing conditions of user mobility, location, and task arrival. We present a detailed classification of user behaviors, categorizing them into a comprehensive set of 60 distinct types. The AVA dataset [46] focuses on spatiotemporal localization of human actions. The data is taken from 437 movies. These activities range from run/jog, swim, dance to kick, hug, fight. As seen in Fig. 4, the proposed DRL-and-Perception-aided Approach demonstrates a rapid and significant reduction in costs, swiftly stabilizing at a low level across various time slots. This behavior highlights its rapid adaptability and consistent performance in dynamic environments, characterized by minimal cost fluctuations, underscoring its stability. In addition to the overall findings in Fig. 4, the Perception Free Method exhibits the second poorest performance in terms of time-averaged cost. This underperformance is primarily attributed to its inability to effectively respond to environmental changes. Regarding the Simulated Annealing Algorithm, although it shows a decreasing trend in costs, it underperforms relative to the proposed DRL-and-Perception-aided Approach because of its slower responsiveness to changes in the environment. ",
+        "bbox": [
+            73,
+            753,
+            491,
+            950
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            301,
+            921,
+            465
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 5, we assess the network stability by examining the UAV average queue $H _ { m } ^ { u } ( t )$ and the BS average queue $H _ { m , n } ^ { u , b } ( t )$ across various time slots. From the results, we observe that for the DRL-and-Perception-aided Approach on UAV queue, the value of $H _ { m } ^ { u } ( t )$ asymptotically stabilizes at a relatively low level. However, both the Random Method and the Complete Offloading Method, due to their failure to account for the limited local computing resources of UAVs and association control, result in poorer performance of queue backlogs $H _ { m } ^ { u } ( t )$ . The computation offloading decisions in the Perception Free Method are made without access to perfect state information, which results in larger queue backlogs, denoted as $H _ { m } ^ { u } ( t )$ , compared to those generated by the Simulated Annealing Algorithm. Notably, the queue backlog associated with the proposed DRL-and-Perception-aided Approach progressively stabilizes and approaches a constant value over increasing time slots. In addition to our observations in Fig. 5 with respect to the UAV queue, similar trends are observed for the BS queue, albeit with distinct nuances. It is evident that both the Random Method and the Complete Offloading Method result in poorer performance and higher fluctuations in the BS queue backlog, $H _ { m , n } ^ { b s } ( t )$ . This outcome can be attributed to the fact that the Random Method indiscriminately offloads tasks with equal probability, while the Complete Offloading Method allocates tasks in their entirety without considering the computational capacities of the UAVs and BSs. By contrast, as illustrated in Fig. 5, the performance curves for the BS queue of the proposed DRL-and-Perception-aided Approach and the Simulated Annealing Algorithm become indistinguishable when the time slot exceeds 80. The Perception Free Method fails to obtain dynamic environment information, resulting in a queue backlog, $H _ { m , n } ^ { b s } .$ that is not as short as those observed with the DRL-and-Perception-aided Approach and the Simulated Annealing Algorithm. ",
+        "bbox": [
+            503,
+            467,
+            921,
+            950
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "3474 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            102
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "D. Performance Demonstration of The Proposed Approach ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            122,
+            475,
+            137
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "1) Performance Comparison Versus Datasize: Fig. 6(a) shows the time-averaged cost achieved by all above methods versus the average datasize. From the results, we observe that the average cost achieved by the proposed DRLand-Perception-aided Approach and Simulated Annealing Algorithm increases as the datasize increases, and outperform the other three methods. It is attributed to the proposed algorithm more effective data handling and resource management strategies, which scale more adeptly with increasing loads compared to alternative methods. Its consistently lower costs across all data size increments signify a robust methodology that optimizes underlying processes more effectively than other methods, such as Simulated Annealing, Complete Offloading, Random, and Perception Free. These latter methods exhibit greater sensitivity to rising data volumes, as evidenced by their steeper cost curves. ",
+        "bbox": [
+            73,
+            141,
+            491,
+            382
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "2) Performance Comparison Versus UAV/BS CPU Frequency: In Figs. 6(b) and 6(c), we evaluate and compare the average costs incurred by all aforementioned methods against the maximum CPU frequencies of UAVs, $f _ { \\operatorname* { m a x } } ^ { u } ,$ , and BSs, $f _ { \\mathrm { m a x } } ^ { b s } ,$ , respectively. The results demonstrate that for both UAV and BS CPU frequencies, the average cost associated with each method increases as the CPU frequencies of the UAVs and BSs increase. This essentially reflects the fact that increases in CPU frequency, indicative of enhanced processing capabilities, result in higher operational costs for each method. Additionally, it is observed that the proposed DRLand-Perception-aided Approach consistently outperforms the other methods, with the performance gap widening as the maximum CPU frequencies of the UAVs and BSs increase. This superior performance is primarily due to DRL-and-Perceptionaided Approach’s ability to optimally design dynamic task assignments, compute resource allocations, and association controls based on multi-source data, unlike the other methods. ",
+        "bbox": [
+            73,
+            383,
+            493,
+            654
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "VII. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            214,
+            672,
+            351,
+            686
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "This paper underscored the significant role of the SAGIN in the development of 6G telecommunications, especially in enhancing connectivity in remote areas. We emphasized the crucial function of UAVs within SAGIN, equipped with mmWave radar and vision sensors, for reducing uncertainty and improving decision-making through multi-source data collection. Our paper introduced the DRL-and-Perception-aided Approach designed to jointly optimize task hosting between ground mobile devices and UAVs, computation offloading, association control between UAVs and BSs, and computing resource allocation in real-time within SAGIN. This approach focuses on minimizing the time-averaged network cost while maintaining queue stability. Demonstrated through extensive simulations, our proposed approach outperforms existing benchmarks, highlighting its efficiency and potential for future advancements in 6G network operations. This research paves the way for further exploration into optimizing integrated network systems, contributing significantly to the evolution of telecommunications infrastructure. ",
+        "bbox": [
+            73,
+            691,
+            491,
+            950
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            70,
+            921,
+            102
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            665,
+            122,
+            761,
+            135
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] M. Agiwal, A. Roy, and N. Saxena, “Next generation 5G wireless networks: A comprehensive survey,” IEEE Commun. Surveys Tuts., vol. 18, no. 3, pp. 1617–1655, 3rd Quart., 2016. ",
+            "[2] F. Tang, H. Hofner, N. Kato, K. Kaneko, Y. Yamashita, and M. Hangai, “A deep reinforcement learning-based dynamic traffic offloading in space-air-ground integrated networks (SAGIN),” IEEE J. Sel. Areas Commun., vol. 40, no. 1, pp. 276–289, Jan. 2022. ",
+            "[3] A. M. Cavalcante, M. V. Marquezini, L. Mendes, and C. S. Moreno, “5G for remote areas: Challenges, opportunities and business modeling for Brazil,” IEEE Access, vol. 9, pp. 10829–10843, 2021. ",
+            "[4] N. Smirnov and S. Tomforde, “Real-time data transmission optimization on 5G remote-controlled units using deep reinforcement learning,” in Proc. Int. Conf. Archit. Comput. Syst. Cham, Switzerland: Springer, 2023, pp. 281–295. ",
+            "[5] Y. Liu, L. Jiang, Q. Qi, K. Xie, and S. Xie, “Online computation offloading for collaborative space/aerial-aided edge computing toward 6G system,” IEEE Trans. Veh. Technol., vol. 73, no. 2, pp. 2495–2505, Feb. 2024. ",
+            "[6] M. D. Nguyen, L. B. Le, and A. Girard, “Computation offloading, UAV placement, and resource allocation in SAGIN,” in Proc. IEEE Globecom Workshops (GC Wkshps). Rio de Janeiro, Brazil: IEEE, Dec. 2022, pp. 1413–1418. ",
+            "[7] J. Gonzalo, D. López, D. Domínguez, A. García, and A. Escapa, “On the capabilities and limitations of high altitude pseudo-satellites,” Prog. Aerosp. Sci., vol. 98, pp. 37–56, 2018. ",
+            "[8] V. V. Klemas, “Coastal and environmental remote sensing from unmanned aerial vehicles: An overview,” J. Coastal Res., vol. 315, pp. 1260–1267, Sep. 2015. ",
+            "[9] J. Wang, C. Jiang, Z. Han, Y. Ren, R. G. Maunder, and L. Hanzo, “Taking drones to the next level: Cooperative distributed unmannedaerial-vehicular networks for small and mini drones,” IEEE Veh. Technol. Mag., vol. 12, no. 3, pp. 73–82, Sep. 2017. ",
+            "[10] Y. Chen, B. Ai, Y. Niu, H. Zhang, and Z. Han, “Energy-constrained computation offloading in space-air-ground integrated networks using distributionally robust optimization,” IEEE Trans. Veh. Technol., vol. 70, no. 11, pp. 12113–12125, Nov. 2021. ",
+            "[11] Y. Liu, L. Jiang, Q. Qi, and S. Xie, “Energy-efficient space–air–ground integrated edge computing for Internet of Remote Things: A federated DRL approach,” IEEE Internet Things J., vol. 10, no. 6, pp. 4845–4856, Mar. 2023. ",
+            "[12] H. Liao, Z. Zhou, X. Zhao, and Y. Wang, “Learning-based queue-aware task offloading and resource allocation for space–air–ground-integrated power IoT,” IEEE Internet Things J., vol. 8, no. 7, pp. 5250–5263, Apr. 2021. ",
+            "[13] C. Qiu, H. Yao, F. R. Yu, F. Xu, and C. Zhao, “Deep Q-learning aided networking, caching, and computing resources allocation in softwaredefined satellite-terrestrial networks,” IEEE Trans. Veh. Technol., vol. 68, no. 6, pp. 5871–5883, Jun. 2019. ",
+            "[14] C. Zhou et al., “Deep reinforcement learning for delay-oriented IoT task scheduling in SAGIN,” IEEE Trans. Wireless Commun., vol. 20, no. 2, pp. 911–925, Feb. 2020. ",
+            "[15] J. Liu, X. Zhao, P. Qin, S. Geng, and S. Meng, “Joint dynamic task offloading and resource scheduling for WPT enabled space-air-ground power Internet of Things,” IEEE Trans. Netw. Sci. Eng., vol. 9, no. 2, pp. 660–677, Mar. 2022. ",
+            "[16] C.-Y. Wang, H.-Y. M. Liao, and I.-H. Yeh, “Designing network design strategies through gradient path analysis,” J. Inf. Sci. Eng., vol. 39, no. 4, pp. 975–995, Jul. 2023. ",
+            "[17] C.-Y. Wang, A. Bochkovskiy, and H.-Y.-M. Liao, “YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR), Vancouver, BC, Canada, Jun. 2023, pp. 7464–7475. ",
+            "[18] S. Mao, S. He, and J. Wu, “Joint UAV position optimization and resource scheduling in space-air-ground integrated networks with mixed cloud-edge computing,” IEEE Syst. J., vol. 15, no. 3, pp. 3992–4002, Sep. 2021. ",
+            "[19] H. Yu, C. Miao, B. An, Z. Shen, and C. Leung, “Reputation-aware task allocation for human trustees,” in Proc. Int. Conf. Auto. Agents Multi-Agent Syst. (AAMAS), May 2014, pp. 357–364. "
+        ],
+        "bbox": [
+            503,
+            142,
+            924,
+            950
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "GAO et al.: COST-EFFICIENT COMPUTATION OFFLOADING IN SAGIN ",
+        "bbox": [
+            75,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "3475 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[20] M. Feng, M. Krunz, and W. Zhang, “Joint task partitioning and user association for latency minimization in mobile edge computing networks,” IEEE Trans. Veh. Technol., vol. 70, no. 8, pp. 8108–8121, Aug. 2021. ",
+            "[21] Y. Liu, H. Zhang, H. Zhou, K. Long, and V. C. M. Leung, “User association, subchannel and power allocation in space-air-ground integrated vehicular network with delay constraints,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 3, pp. 1203–1213, May 2023. ",
+            "[22] C. Huang, G. Chen, P. Xiao, Y. Xiao, Z. Han, and J. A. Chambers, “Joint offloading and resource allocation for hybrid cloud and edge computing in SAGINs: A decision assisted hybrid action space deep reinforcement learning approach,” IEEE J. Sel. Areas Commun., vol. 42, no. 5, pp. 1029–1043, May 2024. ",
+            "[23] M. Jia, J. Wu, Q. Guo, and Y. Yang, “Service-oriented SAGIN with pervasive intelligence for resource-constrained users,” IEEE Netw., vol. 38, no. 2, pp. 79–86, Mar. 2024. ",
+            "[24] F. Wang, P. Wang, X. Zhang, H. Li, and B. Himed, “An overview of parametric modeling and methods for radar target detection with limited data,” IEEE Access, vol. 9, pp. 60459–60469, 2021. ",
+            "[25] M. Z. Win, Y. Shen, and W. Dai, “A theoretical foundation of network localization and navigation,” Proc. IEEE, vol. 106, no. 7, pp. 1136–1165, Jul. 2018. ",
+            "[26] C. Laoudias, A. Moreira, S. Kim, S. Lee, L. Wirola, and C. Fischione, “A survey of enabling technologies for network localization, tracking, and navigation,” IEEE Commun. Surveys Tuts., vol. 20, no. 4, pp. 3607–3644, 4th Quart., 2018. ",
+            "[27] A. Yassin et al., “Recent advances in indoor localization: A survey on theoretical approaches and applications,” IEEE Commun. Surveys Tuts., vol. 19, no. 2, pp. 1327–1346, 2nd Quart., 2016. ",
+            "[28] H. Yu, S. Liu, A. C. Kot, C. Miao, and C. Leung, “Dynamic witness selection for trustworthy distributed cooperative sensing in cognitive radio networks,” in Proc. IEEE 13th Int. Conf. Commun. Technol., Jinan, China, Sep. 2011, pp. 1–6. ",
+            "[29] B. Tan, Q. Chen, K. Chetty, K. Woodbridge, W. Li, and R. Piechocki, “Exploiting WiFi channel state information for residential healthcare informatics,” IEEE Commun. Mag., vol. 56, no. 5, pp. 130–137, May 2018. ",
+            "[30] C. Sturm, T. Zwick, and W. Wiesbeck, “An OFDM system concept for joint radar and communications operations,” in Proc. IEEE 69th Veh. Technol. Conf. (VTC Spring), Barcelona, Spain, Jun. 2009, pp. 1–5. ",
+            "[31] J. Moghaddasi and K. Wu, “Multifunctional transceiver for future radar sensing and radio communicating data-fusion platform,” IEEE Access, vol. 4, pp. 818–838, 2016. ",
+            "[32] J. A. Zhang, X. Huang, Y. J. Guo, J. Yuan, and R. W. Heath Jr., “Multibeam for joint communication and radar sensing using steerable analog antenna arrays,” IEEE Trans. Veh. Technol., vol. 68, no. 1, pp. 671–685, Jan. 2019. ",
+            "[33] F. Causa, A. Rodi Vetrella, G. Fasano, and D. Accardo, “Multi-UAV formation geometries for cooperative navigation in GNSSchallenging environments,” in Proc. IEEE/ION Position, Location Navigat. Symp. (PLANS), Monterey, CA, USA, Apr. 2018, pp. 775–785. ",
+            "[34] C. Kanellakis, S. S. Mansouri, E. Fresk, D. Kominiak, and G. Nikolakopoulos, “Cooperative UAVs as a tool for aerial inspection of large scale aging infrastructure,” in Proc. IEEE/RSJ Int. Conf. Intell. Robots Syst. (IROS). Madrid, Spain: IEEE, Oct. 2018, p. 5040. ",
+            "[35] H. Hildmann and E. Kovacs, “Review: Using unmanned aerial vehicles (UAVs) as mobile sensing platforms (MSPs) for disaster response, civil security and public safety,” Drones, vol. 3, no. 3, p. 59, Jul. 2019. ",
+            "[36] B. Paul, A. R. Chiriyath, and D. W. Bliss, “Survey of RF communications and sensing convergence research,” IEEE Access, vol. 5, pp. 252–270, 2016. ",
+            "[37] F. Liu, C. Masouros, A. P. Petropulu, H. Griffiths, and L. Hanzo, “Joint radar and communication design: Applications, state-of-the-art, and the road ahead,” IEEE Trans. Commun., vol. 68, no. 6, pp. 3834–3862, Jun. 2020. ",
+            "[38] J. A. Zhang et al., “Enabling joint communication and radar sensing in mobile networks—A survey,” IEEE Commun. Surveys Tuts., vol. 24, no. 1, pp. 306–345, 1st Quart., 2022. ",
+            "[39] Z. Ye, Y. Gao, Y. Xiao, Z. Xiong, and D. Niyato, “Deep reinforcement learning empowered activity-aware dynamic health monitoring systems,” 2024, arXiv:2401.10794. ",
+            "[40] B. Di, L. Song, Y. Li, and H. V. Poor, “Ultra-dense LEO: Integration of satellite access networks into 5G and beyond,” IEEE Wireless Commun., vol. 26, no. 2, pp. 62–69, Apr. 2019. "
+        ],
+        "bbox": [
+            71,
+            68,
+            495,
+            950
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[41] A. Abdi, W. C. Lau, M.-S. Alouini, and M. Kaveh, “A new simple model for land mobile satellite channels: First-and second-order statistics,” IEEE Trans. Wireless Commun., vol. 2, no. 3, pp. 519–528, May 2003. ",
+            "[42] X. Gao, S. Roy, and G. Xing, “MIMO-SAR: A hierarchical highresolution imaging algorithm for mmWave FMCW radar in autonomous driving,” IEEE Trans. Veh. Technol., vol. 70, no. 8, pp. 7322–7334, Aug. 2021. ",
+            "[43] J. Xu, Y. Zeng, and R. Zhang, “UAV-enabled wireless power transfer: Trajectory design and energy optimization,” IEEE Trans. Wireless Commun., vol. 17, no. 8, pp. 5092–5106, Aug. 2018. ",
+            "[44] M. G. H. Omran and M. Mahdavi, “Global-best harmony search,” Appl. Math. Comput., vol. 198, no. 2, pp. 643–656, May 2008. ",
+            "[45] Z. Woo Geem, J. Hoon Kim, and G. V. Loganathan, “A new heuristic optimization algorithm: Harmony search,” Simulation, vol. 76, no. 2, pp. 60–68, Feb. 2001. ",
+            "[46] C. Gu et al., “AVA: A video dataset of spatio-temporally localized atomic visual actions,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., Salt Lake City, UT, USA, Jun. 2018, pp. 6047–6056. "
+        ],
+        "bbox": [
+            504,
+            68,
+            924,
+            284
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/910618b4e68ff4e38e0d79585ac93a0593a0332a574911b9ffe98af5847843cf.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a woman with glasses and shoulder-length brown hair, wearing a light pink collared shirt (no visible text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            353,
+            627,
+            470
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Yulan Gao (Member, IEEE) received the M.Sc. degree in mathematics and the Ph.D. degree in communication and information systems from the National Key Laboratory of Wireless Communications, University of Electronic Science and Technology of China (UESTC), in 2016 and 2021, respectively. From April 2022 to April 2024, she was a Research Fellow with the School of Computer Science and Engineering, Nanyang Technological University (NTU), Singapore. She is currently a Post-Doctoral Researcher with the Division of Infor-",
+        "bbox": [
+            638,
+            353,
+            921,
+            477
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "mation Science and Engineering, KTH Royal Institute of Technology, Sweden. Her research interests include optimization and machine learning in B5G/6G networks. ",
+        "bbox": [
+            504,
+            478,
+            921,
+            512
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/1940a85ea2a6c19030b41dd94059b5116a33e5db7ed70259bea86d02ce49729f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in formal attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            582,
+            627,
+            699
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Ziqiang Ye received the B.S. degree in network engineering from Southwest Jiaotong University, Chengdu, China, in 2022. He is currently pursuing the master’s degree in cybersecurity with the University of Electronic Science and Technology of China (UESTC), Chengdu. ",
+        "bbox": [
+            638,
+            580,
+            921,
+            648
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "His main research interests include machine learning in wireless communication. ",
+        "bbox": [
+            638,
+            650,
+            921,
+            672
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/66ba45e891ae8d15e9a028fb5129a954c4a47e410847ba37458b2f7a068bcce1.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses, suit, and red tie (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            767,
+            627,
+            883
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Han Yu (Senior Member, IEEE) received the Ph.D. degree from the School of Computer Engineering, Nanyang Technological University (NTU), Singapore, in 2014. From 2018 to 2024, he was a Nanyang Assistant Professor (NAP) with the College of Computing and Data Science (CCDS), NTU, where he is currently an Associate Professor. He held the prestigious Lee Kuan Yew Post-Doctoral Fellowship (LKY PDF) from 2015 to 2018. He has published over 300 research papers and book chapters in leading international conferences and ",
+        "bbox": [
+            638,
+            765,
+            921,
+            891
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "journals. He is the co-author of the book Federated Learning-the first monograph on the topic of federated learning. His research interests include federated learning and algorithmic fairness. He is a Distinguished Member of CCF and a Senior Member of AAAI. His research works have won multiple awards from conferences and journals. ",
+        "bbox": [
+            503,
+            892,
+            921,
+            949
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "page_number",
+        "text": "3476 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            46
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, VOL. 42, NO. 12, DECEMBER 2024 ",
+        "bbox": [
+            403,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 04:10:02 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 14
+    }
+]

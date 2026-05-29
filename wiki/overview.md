@@ -15,24 +15,30 @@ A long-running research wiki on **mobile edge computing (MEC)** broadly construe
 
 ## Snapshot
 
-- **Curated sources:** 26 (12 initial + 14 from the 2026-05-29 batch) — see `wiki/index.md` for the type-grouped directory.
-- **Concepts:** ~100 across MEC fundamentals, aerial architectures, DRL backbones, optimization techniques (classical + evolutionary + DRO), channel modeling, ISAC + security, fairness/sync metrics, and safety.
+- **Curated sources:** 39 (12 initial + 14 from the first 2026-05-29 batch + 13 from the second 2026-05-29 batch) — see `wiki/index.md` for the type-grouped directory.
+- **Concepts:** ~158 across MEC fundamentals, aerial architectures, DRL backbones, game theory, optimization techniques (classical + evolutionary + DRO), channel modeling, sensing + security, distributed inference, federation, generative-AI, and fairness/freshness metrics.
+- **Hardware-validated sources:** 2 ([[sun-2024-asap-uav-swarm]] on 24 Jetson computers + 5 real UAVs; [[shao-2024-drl-antijamming-mec]] on Raspberry Pi/USRP). The rest are simulation-only.
 - **Methodology / findings / thesis / synthesis pages** still anchored in the original UAV-MEC + DRL track ([[liu-2026-jppo-en-convntm]] follow-ups). Most synthesis pages are due for a refresh under the expanded corpus — see Open questions below.
 
 ## Tracks emerging from the corpus
 
 | Track | Representative sources | Status |
 |---|---|---|
-| UAV-MEC + DRL | [[liu-2026-jppo-en-convntm]], [[peng-2025-drudm-cfg]], [[zhang-2025-ssac-mgi-heterogeneous-uav]], [[bi-2025-sg-mapg]] | Working thesis: [[hybrid-action-memory-augmented-drl-wins-uav-mec]] |
-| Hierarchical aerial MEC (UAV+HAP) | [[nabi-2025-jour-hierarchical-aerial]], [[bao-2025-ddpg-video-offloading]], [[jia-2025-dro-uav-hap-mec]], [[peng-2025-drudm-cfg]] | Now 4+ sources, ready for a synthesis page |
-| **CMOP / evolutionary UAV-MEC** (Peng/Huang lineage) | [[peng-2022-cmop-uav-path-planning]] (seed), [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]] | 6 sources — ready for a lineage synthesis |
+| UAV-MEC + DRL | [[liu-2026-jppo-en-convntm]], [[peng-2025-drudm-cfg]], [[zhang-2025-ssac-mgi-heterogeneous-uav]], [[bi-2025-sg-mapg]], [[hao-2024-clp-multiuav-priority-offloading]] | Working thesis: [[hybrid-action-memory-augmented-drl-wins-uav-mec]] |
+| Hierarchical aerial MEC (UAV+HAP) | [[nabi-2025-jour-hierarchical-aerial]], [[bao-2025-ddpg-video-offloading]], [[jia-2025-dro-uav-hap-mec]], [[peng-2025-drudm-cfg]], [[song-2024-mol-aoi-energy]] | 5+ sources; synthesis page exists |
+| **SAGIN / satellite offloading** | [[gao-2024-sagin-perception-offloading]], [[chen-2024-thoas-traffic-aware-sagin]], [[chen-2024-ulse-game]], [[han-2024-sagin-fl-handover]] | 4 sources, new in this batch — ready for a synthesis |
+| **CMOP / evolutionary UAV-MEC** (Peng/Huang lineage) | [[peng-2022-cmop-uav-path-planning]] (seed), [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]] | 6 sources — lineage synthesis exists |
 | Vehicular-MEC | [[zhang-2025-mcma-task-migration]], [[ma-2025-pdqn-vehicular-mec]], [[xie-2026-uav-multisource-fusion]] | 3 sources, no thesis yet |
-| **Maritime MEC** | [[wang-2026-aerial-marine-msar]], [[liu-2025-haps-uav-maritime-iot]] | 2 sources, new in this batch |
-| Trust / security / federation | [[mao-2025-bcsa-frl]], [[qin-2025-bcuav-masac]] | 2 sources, no thesis yet |
-| **ISAC** | [[benaya-2025-aerial-isac-haps]], [[jiang-2025-isac-lae-overview]] | 2 sources, new in this batch |
+| Maritime MEC | [[wang-2026-aerial-marine-msar]], [[liu-2025-haps-uav-maritime-iot]] | 2 sources |
+| Trust / security / federation | [[mao-2025-bcsa-frl]], [[qin-2025-bcuav-masac]], [[han-2024-sagin-fl-handover]] | 3 sources; FL-over-SAGIN added |
+| **Anti-jamming / security-DRL** | [[shao-2024-drl-antijamming-mec]] | 1 source, new — hardware-validated |
+| **UAV-swarm collaborative computing** | [[sun-2024-asap-uav-swarm]], [[li-2025-stochastic-game-uav-swarm]] | 2 sources, new in this batch |
+| ISAC | [[benaya-2025-aerial-isac-haps]], [[jiang-2025-isac-lae-overview]] | 2 sources |
 | Spectrum / governance / architecture | [[wang-2025-uav-swarm-stackelberg]], [[wang-2025-lae-network-survey]], [[hsu-2025-drl-hues-hap-noma]] | Foundation papers; anchor the LAE / SAGIN umbrella |
-| Energy efficiency & WPT | [[zhu-2025-lycnn-drl-wpt-mec]] | Single-source so far |
-| Generic offloading techniques | [[hao-2025-priority-aware-task-driven-co]] | Single-source so far |
+| **Game-theoretic offloading** | [[chen-2024-ulse-game]], [[li-2025-stochastic-game-uav-swarm]], [[wang-2025-uav-swarm-stackelberg]], [[bi-2025-sg-mapg]] | 4 sources spanning potential / stochastic / Stackelberg games |
+| **Generative-AI MEC** | [[ye-2025-aigc-diffusion-contract]], [[peng-2025-drudm-cfg]] | 2 sources using diffusion models as decision generators |
+| Energy efficiency & WPT | [[zhu-2025-lycnn-drl-wpt-mec]], [[wu-2025-iopo-irs-uav-thz-mec]] | 2 sources; IRS/THz added |
+| Generic offloading techniques | [[hao-2025-priority-aware-task-driven-co]], [[zhao-2025-traj-offload-cache-migration]], [[gao-2024-service-experience-cache-uav]] | Priority, caching/migration, fairness |
 
 ## Cross-cutting observations
 
