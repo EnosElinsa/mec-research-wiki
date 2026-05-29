@@ -2,6 +2,48 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-05-31 — Audit & coverage pass (no new raw papers)
+
+Maintenance pass over the existing 82-source corpus. No new papers were curated. Focus: re-verify correctness end-to-end (DOIs/venues, ungrounded numbers, link integrity), broaden the analytical layer where the corpus already supports it, and reconcile a stale derived count in the meta-docs.
+
+### Correctness audit
+
+- **Misattributed DOI fixed (the pass's main correctness find).** [[huang-2025-cmop-dispersed-computing]] carried `url`/`venue` = `10.1109/TEVC.2025.3569722` / *IEEE Trans. Evolutionary Computation*. That DOI is **not** this paper's — it is the DOI of **reference [8]** in huang-2025's own reference list, namely the Wang/Guo/Liu/Wang **ACVE** paper (verbatim title + all four authors match; cross-checked against Bing-Chuan Wang's publication record by web search, verification-only). huang-2025's own parse has **no `Digital Object Identifier` line**, so its venue/DOI were reset to `not in parse` with a corrective note.
+- **ACVE metadata now grounded within the corpus.** As a consequence, [[wang-acve-constraint-violation-cmop]] — whose own parse also lacks a DOI line and was previously `not in parse` for venue/year/DOI — is now grounded by huang-2025's reference [8]: *IEEE Transactions on Evolutionary Computation*, early access, `doi:10.1109/TEVC.2025.3569722`, 2025. Frontmatter + citation updated with a provenance note.
+- **3 genuinely-missing DOIs added**, each grounded in its own parse's `Digital Object Identifier` line: [[hao-2025-priority-aware-task-driven-co]] (`10.1109/TWC.2025.3564356`, IEEE TWC), [[zhang-2025-mcma-task-migration]] (`10.1109/TMC.2025.3539945`, IEEE TMC), [[zhang-2025-ssac-mgi-heterogeneous-uav]] (`10.1109/TMC.2025.3632884`, IEEE TMC). Venues follow the wiki's DOI-prefix → journal convention (TWC/TMC), consistent with sibling pages.
+- **ACBFT "96.2% throughput" restored as grounded (prior-pass correction).** The 2026-05-30 pass had softened [[wang-2025-acbft-uav-consensus]] and flagged the 96.2% figure as *not in parse*. That was wrong: the figure is stated verbatim in the paper's contributions list (parse L35 — *"ACBFT achieves an increase in throughput of up to 96.2%…"*). Restored the claim with the L35 quote + a metadata note explaining the correction.
+- **Headline numbers re-verified.** The 4 findings added in the prior pass were re-checked against their parses and all hold: maritime 39.3% energy saving (L165), FedLEO 41% delay / 9.39% accuracy (L39), ASAP 92.66% latency cut (L161, hardware-validated), MASAC +15.41% sensing / −30.73% queue-delay vs MADDPG (L725/L709 — the MADDPG-vs-PSO ordering confirmed correct). Note: MinerU renders some percentages with intra-number spaces (`1 5 . 4 1 %`), which can fool naive grep — verified by reading the parse lines directly.
+- **Remaining no-DOI source pages confirmed legitimately blank:** [[bi-2025-sg-mapg]], [[peng-2025-drudm-cfg]], [[liu-2026-jppo-en-convntm]], [[du-2024-distributed-foundation-models-6g]] — none has a `Digital Object Identifier` line in its parse; left `not in parse`.
+- **Wikilink integrity:** Obsidian-faithful wiki-wide check (root `purpose.md` indexed; inline-code spans + table-escaped `\|` aliases stripped) = **ZERO dangling links** after the pass. Orphans = only `README.md` and `schema.md` (repo-root structural docs with no wikilinks — expected, not errors).
+- **Frontmatter:** `type`/`title`/`tags`/dates/H1 + `related` validated on every touched/new page; no self-references, no duplicate `related` entries.
+- **Graph stats (file-derived):** 346 nodes / 5071 resolved edges (up from 336 / 4932 at the start of the pass). The LLM Wiki API was **not** reachable for authoritative graph stats — `GET /health` returned `authConfigured:true, allowUnauthenticated:false` and the graph endpoint returned **401** in this headless shell (no `LLM_WIKI_API_TOKEN`), the documented headless case. Fell back to the local file/search tools throughout; correctness grounded in the parses and committed files.
+
+### Meta-doc reconciliation
+
+- **Stale reference count fixed.** `index.md` and `overview.md` both said the reference DB held **1567** unique refs; the scout-owned [[reference-database]] now reports **2981** (its `Generated: 2026-05-30` summary). Updated both meta-docs to 2981. The scout's `wiki/references/**` files were **not** modified.
+- **Counts reconciled to exact verified numbers:** 82 sources / 176 concepts / **47 entities** (46 authors + [[pytorch]]) / **12 findings** / **10 synthesis** / 4 comparisons / 2 methodology / 4 queries / 1 thesis. `index.md` and `overview.md` agree; every page on disk is indexed and every index link has a backing page.
+- **`log.md`** already consolidated in the prior pass (the 89 automated "external batch delete" events live under [Raw-source housekeeping](#raw-source-housekeeping)); this pass only prepended this entry. Verified mojibake-free at the byte level (em-dashes/curly quotes intact) — meta-docs were edited with the file tools, never PowerShell redirection.
+
+### Coverage added (analytical layer)
+
+- **Findings (+1 → 12):** [[acbft-throughput-increase]] — up to 96.2% consensus-throughput increase vs existing chaining protocols, grounded at [[wang-2025-acbft-uav-consensus]] parse L35 (the finding deferred in the prior pass, now mintable because the number is confirmed in-parse).
+- **Synthesis (+1 → 10):** [[blockchain-on-edge-trust-layer]] — maps the 3 blockchain-on-edge sources ([[mao-2025-bcsa-frl]], [[qin-2025-bcuav-masac]], [[wang-2025-acbft-uav-consensus]]) by **which layer the chain defends** (consensus-protocol / aggregation / audit). Complements the existing pairwise [[bcsa-frl-vs-bc-uav-masac]] comparison by adding the consensus-layer source.
+
+### Entity coverage (+8 → 47)
+
+Computed author recurrence across all 82 source pages and verified affiliations against the parses (author-bio + correspondence lines). **Created 8 entity pages** where the identity is unambiguous and affiliation-consistent:
+
+- [[shuang-liang]] — Northeast Normal Univ.; identical email `liangshuang@nenu.edu.cn` across all 3 sources ([[chen-2025-swipt-mec-sac]], [[sun-2024-mvtora-postdisaster-vfc]], [[wang-2025-lae-network-survey]]); [[geng-sun]] aerial-MEC/LAE cluster.
+- [[weifeng-zhong]] & [[shengli-xie]] — Guangdong Univ. of Technology, School of Automation (`wfzhongs@gdut.edu.cn` / `shlxie@gdut.edu.cn`); CMOP-evolutionary lineage with [[xumin-huang]] / [[jiawen-kang]] / [[chaoda-peng]].
+- [[qiqi-xie]] — South China Agricultural Univ., College of Mathematics & Informatics; both sources ([[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]]); previously a lower-priority candidate, now confirmed.
+- [[nei-kato]] (Tohoku Univ., identical email), [[jiadai-wang]], [[yijie-xun]], [[yangbo-liu]] (all Northwestern Polytechnical Univ., the integrated aero-space-ground-ocean lab) — the [[bomin-mao]] NTN cluster, stable across [[mao-2024-ntn-hierarchical-caching-cav]] + [[mao-2025-bcsa-frl]].
+
+**Still deferred (not created):** "Nan Zhao" (genuine namesake — Hubei Univ. of Technology vs Dalian Univ. of Technology, different emails). Lower-priority cross-cutting seniors with topically-divergent 2-source pairs (Mohsen Guizani, Dong In Kim) and tight-cluster 2-source co-authors (Hongbin Chen / Fangqing Tan, Guangxu Zhu) left as candidates for a future pass — affiliation-plausible but not minted this pass to avoid over-linking.
+
+### Raw-folder reconciliation
+
+84 raw folders vs 82 source pages. The 2 unmatched folders are again confirmed **duplicate MinerU ingests** (space-named variants) of already-curated papers — `Optimizing Spectrum Sharing in UAV Swarms…` (= [[wang-2025-uav-swarm-stackelberg]]) and `UAV-Enabled Multi-Source Data Fusion…` (= [[xie-2026-uav-multisource-fusion]]); byte-identical titles/abstracts. No uncurated paper exists, so nothing was routed to `mec-wiki-curator`.
+
 ## 2026-05-30 — Audit, refinement & coverage-expansion pass
 
 Full audit + refinement pass on the existing 82-source corpus (no new raw papers). Focus: tidy the meta-docs, broaden the analytical layer, resolve deferred author identities, and re-verify correctness end-to-end.

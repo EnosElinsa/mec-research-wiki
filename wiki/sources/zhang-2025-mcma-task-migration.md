@@ -3,8 +3,8 @@ type: source
 title: "Multi-Agent Deep Reinforcement Learning With Trajectory Prediction for Task Migration-Assisted Computation Offloading"
 authors: ["Xinyi Zhang", "Chunyang Wang", "Yanmin Zhu", "Jian Cao", "Tong Liu"]
 year: 2025
-url: ""
-venue: ""
+url: "https://doi.org/10.1109/TMC.2025.3539945"
+venue: "IEEE Transactions on Mobile Computing"
 tags: [vehicular-mec, task-migration, multi-agent, drl, trajectory-prediction, informer, ctde]
 related:
   - "[[mobile-edge-computing]]"
@@ -17,14 +17,14 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-05-31
 ---
 
 # Multi-Agent DRL With Trajectory Prediction for Task Migration-Assisted Computation Offloading
 
 ## Citation
 
-Zhang, X., Wang, C., Zhu, Y., Cao, J., & Liu, T. (2025). *Multi-Agent Deep Reinforcement Learning With Trajectory Prediction for Task Migration-Assisted Computation Offloading*.
+Zhang, X., Wang, C., Zhu, Y., Cao, J., & Liu, T. (2025). *Multi-Agent Deep Reinforcement Learning With Trajectory Prediction for Task Migration-Assisted Computation Offloading*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2025.3539945.
 
 ## TL;DR
 
