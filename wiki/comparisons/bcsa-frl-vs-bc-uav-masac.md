@@ -18,7 +18,7 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[air-ground-integrated-network]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-30
 ---
 
 # Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
@@ -37,7 +37,7 @@ The wiki's two blockchain-integrated MEC sources — [[mao-2025-bcsa-frl]] and [
 | RL backbone | Per-satellite [[ddqn]] under FRL aggregation | Multi-agent [[masac]] (UAVs + terminals as agents) |
 | Per-slot decomposition | None — full FRL round per aggregation | [[lyapunov-optimization\|Lyapunov]] decoupling → 3 sub-problems (CVX + MASAC + DOA) |
 | Headline contribution | [[ccvm-correction-voting\|CCVM]] + [[csra-cold-start-reputation-aggregation\|CSRA]] mechanisms | AGIN-MASAC + DOA pipeline within Lyapunov framework |
-| Headline result | Tolerates ~50% malicious satellites at flat ≈5% drop / ≈6 ms delay | +13.16% sensing rate, –29.47% queue delay vs strongest baseline |
+| Headline result | Tolerates ~50% malicious satellites at flat ≈5% drop / ≈6 ms delay | +15.41% sensing rate / –30.73% queue delay vs MADDPG (vs PSO: +13.16% / –29.47%) |
 
 ## What each one actually solves
 

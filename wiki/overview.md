@@ -16,12 +16,13 @@ A long-running research wiki on **mobile edge computing (MEC)** broadly construe
 ## Snapshot
 
 - **Curated sources:** 82 (12 initial + 14 from the first 2026-05-29 batch + 13 from the second 2026-05-29 batch + 43 from the third 2026-05-29 batch) — see `wiki/index.md` for the type-grouped directory.
-- **Concepts:** ~176 across MEC fundamentals, aerial architectures, DRL backbones, game theory, optimization techniques (classical + evolutionary + DRO), channel modeling, sensing + security, distributed inference, federation, generative-AI, and fairness/freshness metrics — now including a [[fairness-metrics-in-mec]] synthesis hub.
-- **Entities:** 33 author pages + [[pytorch]] (34 entity pages total). The 2026-05-29 follow-up pass confirmed 21 recurring batch-4 authors (NUAA, Jilin/NTU, Dalian-Maritime, NWPU, NCEPU, SCAU clusters + cross-cutting seniors); namesake-risk authors remain deferred (see `wiki/log.md`).
+- **Concepts:** 176 across MEC fundamentals, aerial architectures, DRL backbones, game theory, optimization techniques (classical + evolutionary + DRO), channel modeling, sensing + security, distributed inference, federation, generative-AI, and fairness/freshness metrics — including a [[fairness-metrics-in-mec]] synthesis hub.
+- **Entities:** 38 author pages + [[pytorch]] (39 entity pages total). The 2026-05-30 pass added 5 confirmed authors ([[ying-chen]], [[jie-xu]], [[fuhong-song]], [[yong-wang]], [[wei-zhang]]); one recurring "Nan Zhao" name remains deferred as a genuine namesake (two different institutions). Earlier passes confirmed the 21 batch-4 authors (NUAA, Jilin/NTU, Dalian-Maritime, NWPU, NCEPU, SCAU clusters + cross-cutting seniors).
+- **Analytical layer:** 11 findings, 9 synthesis pages, 4 comparisons, 4 queries, 2 methodology pages, 1 thesis — expanded in the 2026-05-30 pass with SAGIN / ISAC / maritime synthesis, a game-theoretic-formulations comparison, the AO+SDR+SCA methodology, and DRO-vs-DRL / rich-media-offloading queries.
 - **References:** mined citation database ([[reference-database]], 1567 unique refs) + scout [[recommendations]] for not-yet-curated papers.
 - **Hardware-validated sources:** 2 ([[sun-2024-asap-uav-swarm]] on 24 Jetson computers + 5 real UAVs; [[shao-2024-drl-antijamming-mec]] on Raspberry Pi/USRP). The rest are simulation-only.
 - **Earliest sources:** the corpus now reaches back to foundational works — the 2017 MEC communication survey [[mao-2017-mec-survey-communication]] and the 2019 EUAGame [[he-2019-euagame-user-allocation]] / ToDeTaS [[wang-2019-todetas-deployment-scheduling]] papers anchor the historical baseline.
-- **Methodology / findings / thesis / synthesis pages** still anchored in the original UAV-MEC + DRL track ([[liu-2026-jppo-en-convntm]] follow-ups). Most synthesis pages are due for a refresh under the much-expanded corpus — see Open questions below.
+- **Analytical layer now spans the whole corpus.** The 2026-05-30 pass broadened the derived pages beyond the original UAV-MEC + DRL track: track-level synthesis for SAGIN/satellite ([[sagin-satellite-offloading-landscape]]), ISAC/sensing ([[isac-sensing-in-aerial-mec]]), and maritime ([[maritime-mec-architectures]]); a game-theoretic-formulations comparison ([[game-theoretic-offloading-formulations]]); the cross-source AO+SDR+SCA methodology ([[ao-sdr-sca-convex-pipeline]]); and findings tied to specific parses across maritime, satellite-FL, swarm-inference, and secure-MEC sources. The [[liu-2026-jppo-en-convntm]]-anchored thesis ([[hybrid-action-memory-augmented-drl-wins-uav-mec]]) remains scoped to that framework, as intended.
 
 ## Tracks emerging from the corpus
 
@@ -62,7 +63,8 @@ A long-running research wiki on **mobile edge computing (MEC)** broadly construe
 
 - [[query-real-world-validation-of-jppo-en-convntm]] — sim-to-real transfer.
 - [[query-does-en-convntm-generalize-beyond-uav-mec]] — generalization of memory-augmented encoders.
-- (More to come as additional sources highlight new gaps. The expanded corpus opens questions like "when DRO beats DRL for CSI uncertainty," "video vs cooperative-perception offloading shape," and "the right granularity for the discrete-then-continuous decomposition" — pending synthesis.)
+- [[query-when-does-dro-beat-drl-for-csi-uncertainty]] — DRO vs DRL vs structural side-step for CSI uncertainty (promoted from the SAGIN/robustness synthesis in the 2026-05-30 pass).
+- [[query-video-vs-cooperative-perception-offloading-shape]] — whether video-analytics and cooperative-perception offloading share one fidelity-vs-cost optimization shape.
 
 ## Where to go next
 
