@@ -167,8 +167,15 @@
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
 - [[hao-hao]] — first author of the two priority-aware offloading sources ([[hao-2024-clp-multiuav-priority-offloading]], [[hao-2025-priority-aware-task-driven-co]]).
 - [[geng-sun]] — recurring (co-)author across the Jilin-University aerial/maritime cluster (5 sources): [[sun-2023-bargain-match-vec]], [[sun-2024-mvtora-postdisaster-vfc]], [[chen-2025-swipt-mec-sac]], [[zhang-2024-gdmtd3-aerial-secure-cb]], [[wang-2025-lae-network-survey]].
+- **Jilin-University / NTU aerial-MEC cluster:** [[zemin-sun]], [[jiahui-li]] (Jilin University), [[jiacheng-wang]], [[dusit-niyato]] (NTU), [[qingqing-wu]] (Shanghai Jiao Tong University) — confirmed in the 2026-05-29 follow-up pass.
+- **NUAA aerial-computing cluster:** [[ziye-jia]], [[chao-dong]], [[qihui-wu]] (NUAA), [[zhu-han]] (Univ of Houston / Kyung Hee).
+- **Dalian-Maritime-University maritime cluster:** [[bin-lin]] (DMU), [[zhen-wang]] (DMU / Dalian Neusoft), [[qiang-ye]] (Univ of Calgary).
+- **NWPU non-terrestrial-network cluster:** [[bomin-mao]], [[hongzhi-guo]], [[jiajia-liu]] (Northwestern Polytechnical University).
+- **NCEPU aerial-edge cluster:** [[peng-qin]], [[yang-fu]] (North China Electric Power University); [[jingjing-wang]] (Beihang University) links the blockchain-UAV thread.
+- **South-China-Agricultural-University evolutionary UAV-MEC cluster:** [[zexiong-wu]] (with [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]]).
+- **Cross-cutting seniors:** [[chunxiao-jiang]] (Tsinghua), [[tony-q-s-quek]] (SUTD).
 
-(More authors recur in the 2026-05-29 batch-4 set — e.g. "Zhen Wang"/Bin Lin in the maritime cluster, Ziye Jia / Chao Dong / Zhu Han in the aerial cluster, Peng Qin / Yang Fu, and several others. These are deferred for human confirmation of identity before minting entity pages.)
+(Several additional authors recur exactly twice with as-yet-unverified or namesake-risk identities — e.g. "Yong Wang", "Nan Zhao", "Wei Zhang", "Ying Chen", "Jie Xu" — and are deferred for human confirmation before minting entity pages. See the 2026-05-29 log entry for the specific reasons.)
 
 ### Tools
 
@@ -357,6 +364,7 @@
 
 ### Metrics & fairness
 
+- [[fairness-metrics-in-mec]] — hub tying together the corpus's fairness measures (Jain / spatial-equity / Theil / service-experience / energy-balancing).
 - [[equilibrium-efficiency-metric]]
 - [[spatial-equity-index]]
 - [[energy-expenditure-coefficient]]
@@ -430,3 +438,8 @@
 - [[cmop-evolutionary-uav-mec-lineage]] — Peng/Huang group's 6-paper CMOP-evolutionary lineage (2022-2026).
 - [[hierarchical-aerial-mec-design-space]] — Cross-comparison of the 5 UAV+HAP hierarchical-MEC sources.
 - [[drl-vs-evolutionary-vs-classical-solvers]] — Solver-family analysis across all 26 sources.
+
+## References
+
+- [[reference-database]] — master citation-mining database (1567 unique references mined from the corpus parses; centrality ranking by in-corpus `cited_count`).
+- [[recommendations]] — reference-scout recommendations: cited-but-not-yet-curated papers ranked by recency, venue, in-corpus citation frequency, and track coverage.

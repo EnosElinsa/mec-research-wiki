@@ -26,4 +26,4 @@ Co-authored 5 sources in this wiki, spanning vehicular, post-disaster, energy-ef
 
 ## Contributions to this wiki
 
-- A recurring (co-)author in the Jilin-University / NTU aerial-MEC cluster, contributing across game-theoretic resource allocation, DRL/generative-AI for UAV systems, and the low-altitude-economy survey thread. The recurring co-author set around these papers (Zemin Sun, Jiahui Li, Jiacheng Wang, Dusit Niyato, Qingqing Wu) suggests a tightly-collaborating group; only Geng Sun's identity is confidently consolidated here, others are deferred for human confirmation.
+- A recurring (co-)author in the Jilin-University / NTU aerial-MEC cluster, contributing across game-theoretic resource allocation, DRL/generative-AI for UAV systems, and the low-altitude-economy survey thread. The tightly-collaborating co-author set around these papers now has confirmed entity pages: [[zemin-sun]], [[jiahui-li]] (Jilin University), [[jiacheng-wang]], [[dusit-niyato]] (NTU), and [[qingqing-wu]] (Shanghai Jiao Tong University) — each affiliation-verified against the parses in the 2026-05-29 follow-up pass.

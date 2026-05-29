@@ -24,7 +24,7 @@ related:
   - "[[charging-stations-improve-efficiency]]"
   - "[[uav-count-inverted-u-energy]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-05-29
 ---
 
 # Multi-UAV Path Planning for Mobile Edge Computing with High-Density Mobile Devices
@@ -51,7 +51,7 @@ Optimization objective is the multi-objective [[equilibrium-efficiency-metric]] 
 
 | Submodel | Key assumption | Reference |
 |---|---|---|
-| IoT mobility | [[gauss-markov-mobility-model]] for speed and direction | [[hp-mobility-models]] |
+| IoT mobility | [[gauss-markov-mobility-model]] for speed and direction | [31] |
 | Channel | LoS UAV→ground, OFDMA, no inter-device interference | [5], [32] |
 | Compute | Local + offloaded split, cubic-frequency energy model | standard MEC |
 | Charging | UAV hovers at station, adds $q\xi_{u,n} E_{u,n}^{\max}$ per step | [10] |

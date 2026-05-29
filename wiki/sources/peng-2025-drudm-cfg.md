@@ -19,7 +19,7 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-05-29
 ---
 
 # DRUDM-CFG: A Fairness-Aware Multi-Agent DRL Algorithm for AMEC-Assisted Task Offloading in Post-Disaster Scenarios
@@ -83,7 +83,7 @@ A custom prioritized replay variant that scores transitions by a combination of 
 ## Cross-link with related sources
 
 - Shares **multi-UAV trajectory + DRL** thread with [[liu-2026-jppo-en-convntm]] and [[qin-2025-bcuav-masac]].
-- Introduces a *non-Jain* fairness metric ([[theil-fairness-index|Theil]]) that future comparisons across this wiki should consider — see [[fairness-metrics-in-mec]] when that page exists.
+- Introduces a *non-Jain* fairness metric ([[theil-fairness-index|Theil]]) that future comparisons across this wiki should consider — see [[fairness-metrics-in-mec]].
 - Adds the **hierarchical aerial MEC** motif ([[hierarchical-aerial-mec]]) which paper #8 (SG-MAPG) and the low-altitude-economy paper will probably extend.
 
 ## Raw artifacts
