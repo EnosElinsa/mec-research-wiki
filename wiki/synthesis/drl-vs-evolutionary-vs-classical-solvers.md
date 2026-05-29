@@ -20,14 +20,16 @@ related:
   - "[[cmop-evolutionary-uav-mec-lineage]]"
   - "[[hierarchical-aerial-mec-design-space]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-30
 ---
 
 # DRL vs evolutionary vs classical solvers across the MEC corpus
 
-The 2026-05-29 batch nearly doubled the corpus and rebalanced the solver-family distribution. With 26 sources now curated, three solver families coexist in roughly comparable size, and the choice between them has become a real design decision rather than a default. This page maps the families and gives operating guidance.
+> **Scope note (2026-05-30):** the family roster below is a **26-source snapshot** taken right after the second 2026-05-29 batch. The corpus has since grown to 82 sources; the *qualitative* operating guidance still holds (and is reinforced by the later [[sagin-satellite-offloading-landscape]], [[isac-sensing-in-aerial-mec]], and [[maritime-mec-architectures]] track syntheses), but the exact family counts here are not a current census. A full 82-source re-tally is future work.
 
-## Family roster (26 sources, 2026-05-29)
+The 2026-05-29 batch nearly doubled the corpus and rebalanced the solver-family distribution. With 26 sources curated at the time, three solver families coexist in roughly comparable size, and the choice between them has become a real design decision rather than a default. This page maps the families and gives operating guidance.
+
+## Family roster (26-source snapshot, 2026-05-29)
 
 | Family | Sources | Size |
 |---|---|---|

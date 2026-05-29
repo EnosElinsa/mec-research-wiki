@@ -14,7 +14,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-30
 ---
 
 # ACBFT: Adaptive Chained Byzantine Fault-Tolerant Consensus Protocol for UAV Ad Hoc Networks
@@ -45,7 +45,7 @@ UAV networks are open wireless, mobile ad hoc systems without a central authorit
 
 ## Key findings
 
-- The paper reports ACBFT increases throughput by up to **96.2%** while reducing communication overhead compared with existing chaining protocols, and provides a security analysis. (Figure/table-derived performance curves vs. node count are indicative.)
+- The chain-propagation design trades a small latency increase under typical network conditions for **higher throughput** than broadcast-based BFT, and the PSO-based chain ordering reduces communication overhead. The paper's Fig. 6 reports throughput-vs-node-count curves where ACBFT leads the compared BFT protocols (BChain and others) at `N = 3f + 1`. (A specific "96.2%" headline figure is **not in the parse** — the comparative throughput/overhead advantage is read from the figures and is indicative, not an exact parsed number.)
 
 ## Limitations / future work
 

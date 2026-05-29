@@ -18,9 +18,10 @@
 
 ### Game-theoretic offloading & allocation
 
-- [[chen-2024-ulse-game]] — Chen et al. 2024 (also under SAGIN). UAV-LEO offloading as a **potential game** (LUTO-Game / JULTO).
 - [[he-2019-euagame-user-allocation]] — He et al. 2019. **EUAGame** — edge user allocation as a potential game with a decentralized NE algorithm.
 - [[sun-2024-mvtora-postdisaster-vfc]] — Sun et al. 2024. Post-disaster aerial-terrestrial MEC + **vehicle fog computing**; game theory + convex + evolutionary (MVTORA).
+
+> [[chen-2024-ulse-game]] (UAV-LEO offloading as a potential game) is also game-theoretic; it is filed under **SAGIN / satellite offloading** below as its primary architectural home.
 
 ### Multi-UAV cooperative computing & deployment
 
@@ -36,7 +37,6 @@
 - [[liu-2026-jppo-en-convntm]] — Liu et al. 2026. Multi-UAV path planning for MEC under high-density mobility. *j-PPO+EN-ConvNTM* (hybrid-action PPO + memory-augmented encoder).
 - [[hao-2025-priority-aware-task-driven-co]] — Hao et al. 2025. Task-driven priority-aware computation offloading via DRL.
 - [[hao-2024-clp-multiuav-priority-offloading]] — Hao et al. 2024. Multi-UAV cooperative MEC with task priority. *CLP* (TD3 + hybrid-action latent space).
-- [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Long-term EE in WPT-MEC via Lyapunov-guided CNN actor + KKT sub-problem.
 - [[ma-2025-pdqn-vehicular-mec]] — Ma et al. 2025. Hybrid-action **P-DQN** for binary-offloading + power allocation in three-tier vehicular MEC.
 - [[song-2024-mol-aoi-energy]] — Song et al. 2024. AoI-vs-energy aerial-ground MEC via **multi-objective RL** (MOL-AET: multi-objective PPO + evolutionary phase).
 - [[song-2022-emorl-tcto-uav]] — Song et al. 2022. Trajectory control + offloading via **evolutionary multi-objective RL** (EMORL-TCTO); multi-policy Pareto set in one run.
@@ -65,15 +65,10 @@
 - [[zhai-2023-fedleo-decentralized-fl]] — Zhai et al. 2023. **FedLEO** — server-free decentralized FL over LEO constellations + offloading vs stragglers.
 - [[mao-2024-ntn-hierarchical-caching-cav]] — Mao et al. 2024. Hierarchical content caching for CAVs over NTN (LEO+UAV); DM-ACO + MADRL-HCAU.
 
-### IRS / THz / energy
+### IRS / THz / anti-jamming
 
 - [[wu-2025-iopo-irs-uav-thz-mec]] — Wu et al. 2025. **IRS-assisted** multi-UAV THz MEC; two-stage IOPO (order-preserving offloading + WOA phases).
 - [[shao-2024-drl-antijamming-mec]] — Shao et al. 2024. **Anti-jamming** UAV-MEC resource management; PER-MATD3 (hardware-validated).
-
-### Joint trajectory / caching / migration
-
-- [[zhao-2025-traj-offload-cache-migration]] — Zhao et al. 2025. Joint trajectory + offloading + migration + **computational-task caching**; Lyapunov + BCD + QCQP-SDR.
-- [[gao-2024-service-experience-cache-uav]] — Gao & Zhai 2024. Fairness-aware cache-enabled UAV-MEC; **service-experience ratio** (Jain's index / delay); Dinkelbach + 4-stage AO.
 
 ### UAV-swarm collaborative computing
 
@@ -153,11 +148,8 @@
 
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
-- [[wu-2025-iopo-irs-uav-thz-mec]] — Wu et al. 2025. IRS-assisted multi-UAV THz MEC; two-stage IOPO.
 
-### Generic offloading techniques
-
-- [[hao-2025-priority-aware-task-driven-co]] — Hao et al. 2025. Task-driven priority-aware offloading via DRL.
+> [[wu-2025-iopo-irs-uav-thz-mec]] (IRS-assisted THz energy optimization) also targets energy efficiency; it is filed under **IRS / THz / anti-jamming** above as its primary home.
 
 ## Entities
 
@@ -174,8 +166,9 @@
 - **NCEPU aerial-edge cluster:** [[peng-qin]], [[yang-fu]] (North China Electric Power University); [[jingjing-wang]] (Beihang University) links the blockchain-UAV thread.
 - **South-China-Agricultural-University evolutionary UAV-MEC cluster:** [[zexiong-wu]] (with [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]]).
 - **Cross-cutting seniors:** [[chunxiao-jiang]] (Tsinghua), [[tony-q-s-quek]] (SUTD).
+- **Newly confirmed (2026-05-30):** [[ying-chen]] (Beijing Information Sci. & Tech. Univ. — online + game-theoretic offloading), [[jie-xu]] (CUHK-Shenzhen — ISAC), [[fuhong-song]] (SWJTU → Guizhou Univ. of Finance & Economics — evolutionary MORL), [[yong-wang]] (Central South Univ. — constrained/evolutionary optimization), [[wei-zhang]] (Shandong Computer Science Center — task-priority offloading, [[hao-hao]] group).
 
-(Several additional authors recur exactly twice with as-yet-unverified or namesake-risk identities — e.g. "Yong Wang", "Nan Zhao", "Wei Zhang", "Ying Chen", "Jie Xu" — and are deferred for human confirmation before minting entity pages. See the 2026-05-29 log entry for the specific reasons.)
+(One recurring author remains deferred for human confirmation as a genuine **namesake**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so they are not merged. See the 2026-05-30 log entry.)
 
 ### Tools
 
@@ -212,7 +205,6 @@
 - [[parallel-vs-serial-processing]]
 - [[task-redundancy-for-reliability]]
 - [[dispersed-computing]]
-- [[collaborative-dl-inference]]
 - [[generative-ai-for-mec]]
 - [[aigc-service-provider]]
 - [[prompt-engineering]]
@@ -285,6 +277,7 @@
 ### Memory / encoders
 
 - [[ntm]] · [[en-convntm]]
+- [[j-ppo-en-convntm]] — composite j-PPO + EN-ConvNTM framework page
 - [[convlstm]]
 - [[stn]]
 - [[informer-trajectory-prediction]]
@@ -302,7 +295,6 @@
 - [[contract-theory]]
 - [[matching-theory-for-resource-allocation]]
 - [[gale-shapley-matching]]
-- [[edge-user-allocation]]
 - [[overlay-underlay-spectrum-access]]
 - [[unicast-multicast-cooperation]]
 - [[mixed-integer-nonlinear-programming]]
@@ -397,13 +389,10 @@
 
 - [[collision-avoidance-mgi]]
 
-### Adjacent / forward-looking
-
-- [[generative-ai-for-mec]] — now backed by multiple sources (diffusion-as-optimizer + GAN-enhanced); see the Generative-AI MEC source groups above.
-
 ## Methodology
 
 - [[drl-simulation-with-pomdp-formulation]] — POMDP simulation protocol used in [[liu-2026-jppo-en-convntm]]
+- [[ao-sdr-sca-convex-pipeline]] — the AO + SDR + SCA convex pipeline recurring across the ISAC/secure-beamforming sources
 
 ## Findings
 
@@ -414,6 +403,10 @@
 - [[hybrid-action-beats-pure-drl]]
 - [[finding-optimal-loss-entropy-weight-coefs]]
 - [[bcsa-frl-tolerates-up-to-half-malicious-satellites]]
+- [[maritime-three-tier-energy-saving]] — 39.3% system-energy saving ([[zhang-2025-three-tier-maritime-offloading]])
+- [[fedleo-delay-accuracy-tradeoff]] — up to 41% delay / 9.39% accuracy ([[zhai-2023-fedleo-decentralized-fl]])
+- [[asap-swarm-inference-speedup]] — up to 92.66% latency cut, hardware-validated ([[sun-2024-asap-uav-swarm]])
+- [[masac-beats-maddpg-sensing-queue]] — +15.41% sensing / −30.73% queue delay vs MADDPG ([[qin-2025-bcuav-masac]])
 
 ## Thesis
 
@@ -423,21 +416,27 @@
 
 - [[query-does-en-convntm-generalize-beyond-uav-mec]]
 - [[query-real-world-validation-of-jppo-en-convntm]]
+- [[query-when-does-dro-beat-drl-for-csi-uncertainty]] — DRO vs DRL vs structure for CSI uncertainty
+- [[query-video-vs-cooperative-perception-offloading-shape]] — do rich-media offloading workloads share an optimization shape?
 
 ## Comparisons
 
 - [[ddpg-vs-jppo]]
 - [[j-ppo-baselines]]
 - [[bcsa-frl-vs-bc-uav-masac]] — Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
+- [[game-theoretic-offloading-formulations]] — potential vs Stackelberg vs bargaining vs matching
 
 ## Synthesis
 
 - [[design-recipe-multi-uav-mec]] — 10-step recipe for DRL-controlled UAV-MEC.
-- [[drl-backbones-across-uav-mec-sources]] — Cross-corpus DRL-backbone analysis (12 sources).
+- [[drl-backbones-across-uav-mec-sources]] — Cross-corpus DRL-backbone analysis.
 - [[maddpg-vs-masac-in-mec]] — When entropy beats determinism in cooperative MEC.
 - [[cmop-evolutionary-uav-mec-lineage]] — Peng/Huang group's 6-paper CMOP-evolutionary lineage (2022-2026).
 - [[hierarchical-aerial-mec-design-space]] — Cross-comparison of the 5 UAV+HAP hierarchical-MEC sources.
-- [[drl-vs-evolutionary-vs-classical-solvers]] — Solver-family analysis across all 26 sources.
+- [[drl-vs-evolutionary-vs-classical-solvers]] — Solver-family analysis (DRL / evolutionary / classical).
+- [[sagin-satellite-offloading-landscape]] — The 8 SAGIN / satellite-offloading sources mapped by satellite role + solver shape.
+- [[isac-sensing-in-aerial-mec]] — How sensing enters the 7 ISAC/sensing sources.
+- [[maritime-mec-architectures]] — Tiering + solver families across the 7 maritime sources.
 
 ## References
 

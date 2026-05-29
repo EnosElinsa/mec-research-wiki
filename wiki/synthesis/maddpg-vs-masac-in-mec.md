@@ -14,7 +14,7 @@ related:
   - "[[hybrid-action-decision-making]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-30
 ---
 
 # MADDPG vs MASAC in cooperative MEC: when entropy beats determinism
@@ -39,7 +39,7 @@ Qin et al.'s ablation includes MADDPG as one of four benchmark methods. They exp
 - **Better multi-objective handling** — the long-term sensing-rate / queue-delay / block-creation-delay reward stack gets noisier value estimates under MADDPG.
 - **Faster wall-clock training** — a side-effect of avoiding the unstable deterministic-gradient regime; MADDPG took meaningfully longer to converge to a comparable utility level.
 
-Their final result (+13.16% sensing rate, –29.47% queue delay vs strongest baseline) attributes a non-trivial chunk of the gap to the MASAC choice over MADDPG.
+Their final results report improvements over MADDPG specifically: **+15.41% sensing rate and –30.73% queue delay vs MADDPG** at task data scale 8×10⁵ bit (the corresponding figures vs the PSO baseline are +13.16% / –29.47%). A non-trivial chunk of the gap is attributed to the MASAC choice over MADDPG.
 
 ### [[zhang-2025-ssac-mgi-heterogeneous-uav]] — SSAC beats MADDPG (and even vanilla MASAC) on heterogeneous UAVs
 
