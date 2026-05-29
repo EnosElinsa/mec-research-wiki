@@ -1,0 +1,3539 @@
+[
+    {
+        "type": "text",
+        "text": "Energy Oriented Three-Tier Computation Offloading Scheme in Maritime Edge Computing Network ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            73,
+            930,
+            142
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Hongxia Zhang , Shiyu Xi , Bodong Shang , Member, IEEE, Peiying Zhang , Member, IEEE, Sheng Wu , Member, IEEE, and Chunxiao Jiang , Fellow, IEEE ",
+        "bbox": [
+            129,
+            148,
+            875,
+            184
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—With the development of maritime continuing to grow, large-scale maritime wireless devices (MWDs) are being deployed for various maritime applications. The rapid development of maritime Internet of Things (IoT) and growing demand for these applications have led to an increasing number of computation-intensive and resource-sensitive tasks. Considering the limited computing capacity and energy of MWDs, it is challenging to transmit and process massive maritime computing tasks in an energy efficient manner. In this paper, we propose a three-tier maritime edge computing system in which low earth orbit (LEO) satellite and offshore base station (OBS) support to provide communication and computing services for MWDs. The system optimizes association variable, task partitioning, transmission power, and computing resource allocation to reduce system energy consumption under latency constraints. The optimization problem is formulated as a mixed integer non-linear programming (MINLP) optimization problem. We decompose the original problem into four subproblems and design algorithms to solve them. Firstly, the association variable optimization subproblem is solved by slack variable method. Then, we adopt quadratic transformation and design a difference of convex algorithm to solve transmission power optimization subproblem. Further, task partitioning subproblem is solved by obtaining upper and lower bounds of offloading task size by strict deduction, and then solved by the standard convex method. Finally, Lagrangian dual method is utilized to deal with joint computing resource optimization subproblem of LEO satellite and OBS. In simulation results, the proposed algorithm saves 39.3% of system energy consumption compared to benchmark schemes. ",
+        "bbox": [
+            63,
+            220,
+            498,
+            585
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Maritime network, edge computing, LEO satellite network, computation offloading. ",
+        "bbox": [
+            65,
+            595,
+            496,
+            622
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Received 12 September 2024; revised 21 November 2024; accepted 29 December 2024. Date of publication 6 January 2025; date of current version 20 May 2025. This work was supported in part by the National Natural Science Foundation of China under Grant 62341131, Grant 62325108, Grant 62471493, and Grant 62101587, and in part by the Natural Science Foundation of Shandong Province under Grant ZR2023LZH017 and Grant ZR2024MF066. The review of this article was coordinated by Dr. Zehui Xiong. (Corresponding authors: Hongxia Zhang; Chunxiao Jiang.) ",
+        "bbox": [
+            63,
+            666,
+            494,
+            758
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Hongxia Zhang, Shiyu Xi, and Peiying Zhang are with the Qingdao Institute of Software, College of Computer Science and Technology, China University of Petroleum (East China), Qingdao 266580, China (e-mail: zhanghx@upc.edu.cn; xsy5059@163.com; zhangpeiying@upc.edu.cn). ",
+        "bbox": [
+            65,
+            758,
+            494,
+            803
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Bodong Shang is with the Eastern Institute for Advanced Study, Eastern Institute of Technology, Ningbo 315200, China (e-mail: bdshang@eitech.edu.cn). ",
+        "bbox": [
+            65,
+            803,
+            494,
+            825
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Sheng Wu is with the School of Information and Communication Engineering, Beijing University of Posts and Telecommunications, Beijing 100876, China (e-mail: thuraya@bupt.edu.cn). ",
+        "bbox": [
+            65,
+            825,
+            494,
+            859
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Chunxiao Jiang is with the Beijing National Research Center for Information Science and Technology, Tsinghua University, Beijing 100084, China (e-mail: jchx@tsinghua.edu.cn). ",
+        "bbox": [
+            65,
+            859,
+            494,
+            893
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TVT.2025.3526213 ",
+        "bbox": [
+            79,
+            893,
+            370,
+            905
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            659,
+            220,
+            787,
+            234
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "W ITH the gradual popularization of 5 G mobile com-munications, it has facilitated the continuous and pros- munications,it has facilitated the continuous and prosperous development of maritime applications such as maritime transportation, maritime exploration, and environmental monitoring [1]. Meanwhile, the development of maritime Internet of Things (IoT) has driven the massive deployment of maritime wireless devices (MWDs) and the rapid growth in demand for mobile applications. The emergence of large-scale resourceintensive and latency-sensitive tasks has posed great challenges to the limited computing capacity of MWDs. Furthermore, MWDs have limited battery capacity, which significantly reduces battery life for long-term execution of overloaded and energy-intensive computing tasks [2]. Therefore, it is significant how to utilize the limited network resources in maritime communication systems to improve computing performance. ",
+        "bbox": [
+            506,
+            242,
+            937,
+            468
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Maritime communication systems and terrestrial communication systems have obvious differences in terms of network architecture and network resources. In terrestrial communication systems, network infrastructures, such as base stations and cloud computing centers, have been widely deployed, providing beneficial conditions for ready access to IoT devices. Maritime communication is usually based on shore-based communication facilities, such as maritime weather stations, which are located on offshore islands or isolated islands. However, space and geographical factors restrict the deployment of shore-based communication facilities, which makes it difficult to install and deploy computationally capable servers. On the other hand, shore-based communications have limited coverage areas and suffer from disadvantages such as high communication costs and low bandwidth. Moreover, long-distance transmission results in long latency and high energy consumption, which cannot meet the rapidly growing demand for communication and computation [3]. In recent years, the rapid development of low earth orbit (LEO) satellites has provided a new solution to the above challenges. ",
+        "bbox": [
+            506,
+            469,
+            937,
+            770
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "The development of space communication networks has brought unprecedented attention to LEO satellites. LEO satellite communication has made great strides in commercial, civil, and military applications. SpaceX, Amazon, and other companies are making great efforts to build LEO satellite constellations to achieve seamless global coverage. Benefiting from the multiaccess edge computing (MEC), satellite edge computing (SEC) serves as an emerging computing paradigm [4]. Deploying edge servers on LEO satellites, rich computing capacity is gathered ",
+        "bbox": [
+            506,
+            771,
+            937,
+            907
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "0018-9545 © 2025 IEEE. All rights reserved, including rights for text and data mining, and training of artificial intelligence and similar technologies. Personal use is permitted, but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            60,
+            915,
+            939,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "8126 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "at satellite edge. As a complement to the terrestrial network, the LEO satellite provides high-quality computing services for maritime IoT devices. Therefore, maritime IoT devices can offload tasks to LEO satellite for processing, alleviating the computational and energy burden. ",
+        "bbox": [
+            57,
+            79,
+            488,
+            155
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Partial offloading is recognized in MEC as a computational paradigm. The communication and computing resources of the LEO satellites are still limited, making it impractical to offload all tasks to the LEO satellites for processing. On the other hand, MWDs offload massive task size, generates additional transmission energy and latency. LEO satellites and OBS can utilize solar energy as an energy supply, but communication and daily operation consume a large amount of energy. Therefore, it is crucial to reduce unnecessary energy waste through energy consumption optimization to improve the life cycle and operational efficiency of LEO satellites and OBS. Thus, partial offloading is more meaningful in reducing system energy consumption while satisfying latency constraints. ",
+        "bbox": [
+            57,
+            155,
+            488,
+            351
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. Related Works ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            375,
+            183,
+            388
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "MEC technology provides a promising solution for computation offloading. Qin et al. [5] investigated the perceptual computation offloading scheme, which considered the stochastic nature of the UAV task generation sequence and server load to optimize offloading strategy and resource assignment. Chen et al. [6] researched task offloading in distributed networks, where device associations, offloading decisions, and trajectories are optimized to maximize the quality of experience. Liu et al. [7] proposed a multivariate nonlinear coupled latency minimization problem to reduce latency by optimizing cache resource assignment. Gao et al. [8] optimized offloading strategy for devices using attention-weighted graph recurrent networks, which improved the generalization ability of offloading scheme. Pham et al. [9] studied a vehicle assisted computing system, where devices offload partial task to servers or nearby vehicles for maximizing offloading utility of mobile devices. Shen et al. [10] investigated a UAV-assisted computing system, where UAVs can process tasks for IoT devices to minimize energy consumption. Jiang et al. [11] explored network slicing, resource allocation, and introducing a two-level slicing model to maximize successful processing rate. ",
+        "bbox": [
+            60,
+            397,
+            486,
+            712
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The research on satellite edge computing has yielded many significant achievements. Lakew et al. [12] studied a LEOenabled network model where multiple LEO satellites provide computing services to resource-constrained energy harvesting UAVs. Nguyen et al. [13] investigated a hybrid computing system, which optimizes offloading decision and resource optimization to reduce weighted computing energy consumption. Wang et al. [14] proposed a computation offloading scheme by optimizing offloading selection and resource allocation to minimize weighted energy consumption. Cheng et al. [15] proposed a satellite dynamic offloading strategy to minimize the overall mission completion time by optimizing task offloading and resource allocation. Gao et al. [16] studied the multi-user computation offloading problem, which minimizes the system overhead by optimizing offloading strategy and transmission power. Ding et al. [17] proposed the satellite-terrestrial assisted multi-tier computing network to reduce computing energy consumption. Zhang et al. [18] proposed a distributed offloading scheme that employs a counterfactual multi-agent policy gradient scheme to minimize latency. Zhang et al. [19] studied task scheduling problem in SAGIN, in which IoT devices offload computing tasks to UAVs. The offloading strategy is optimized to minimize the energy consumption of UAVs. Zhou et al. [20] designed a distributed algorithm for efficiently solving the computation offloading problem in satellite networks. Tang et al. [21] investigated a LEO satellite-supported edge system, in which user association and computing resource are jointly optimized to reduce energy consumption. ",
+        "bbox": [
+            60,
+            713,
+            486,
+            954
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            80,
+            929,
+            260
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To efficiently perform computing tasks for MWDs, many studies have explored computation offloading schemes in maritime communication networks. Dai et al. [22] presented a offshore and airborne computing scheme, which minimizes latency by optimizing offloading decisions and computing resource allocation. Dai et al. [23] proposed a maritime offloading scheme, where UAVs and surface sink nodes provide computing services for MWD. Li et al. [24] studied a maritime computation offloading by optimizing position and transmission power of unmanned surface vehicles (USVs) to reduce energy consumption. Dai et al. [25] investigated a UAV-assisted computation offloading by optimizing offloading strategy to achieve minimum energy consumption. Dai et al. [26] proposed a UAV-assisted offloading scheme with the goal of increasing the system benefits of maritime edge computing networks. Xu et al. [27] proposed a UAVbased marine offloading scheme to minimize overall latency by optimizing user scheduling and UAV trajectories, and resource allocation. Zeng et al. [28] proposed a USV computation offloading scheme and a joint task and resource allocation scheme to minimize energy consumption of USVs. Lyu et al. [29] studied a marine task offloading problem by introducing a coalitional game method to achieve a Nash equilibrium in order to minimize the system overhead. ",
+        "bbox": [
+            500,
+            261,
+            930,
+            607
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In summary, energy consumption is typically a critical criterion for performance evaluation in SEC. However, the importance of LEO satellites for maritime communication and computation has been neglected in the past studies on computation offloading for maritime networks. Therefore, we consider the characteristics of LEO satellite and OBS and design a maritime computation scheme based on OBS and LEO satellite to provide services for MWDs. Existing works on computation offloading are summarized in Table I . ",
+        "bbox": [
+            500,
+            608,
+            929,
+            742
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "B. Our Contributions ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            782,
+            654,
+            797
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We introduce LEO satellite and an OBS into maritime edge computing network, which jointly provide communication and computing services for MWDs. Considering the strict latency constraints of tasks, we present a LEO satellite and OBS-assisted partial offloading scheme. MWDs split computing task into three parts, which are processed in local, LEO satellite, and OBS, respectively. Eventually, we optimize association variable, task partitioning, transmission power, and computing resource allocation to minimize system energy consumption. The main contributions of the paper are as follows. ",
+        "bbox": [
+            500,
+            804,
+            929,
+            955
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "ZHANG et al.: ENERGY ORIENTED THREE-TIER COMPUTATION OFFLOADING SCHEME ",
+        "bbox": [
+            58,
+            39,
+            531,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "8127 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/3bf9b4e806aa73e7b1e7f54737d6b5cccab3acc782573b2e6e54e4c11d28a02e.jpg",
+        "table_caption": [
+            "TABLE I SUMMARY OF RELATED WORKS ON COMPUTATION OFFLOADING "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"5\">Computation Offloading Works</td></tr><tr><td></td><td>Air</td><td colspan=\"2\">Ground</td><td>Marine</td></tr><tr><td>Scenario</td><td>[12],[14]</td><td colspan=\"2\">[5]-[11],[13]-[21]</td><td>[1],[2],[22]-[29]</td></tr><tr><td colspan=\"5\"></td></tr><tr><td></td><td>Space-Terrestrial</td><td>Air-Terrestrial</td><td>Space-Air-Terrestrial</td><td>Terrestrial</td></tr><tr><td>Network Architecture</td><td>[15]-[18],[20]</td><td>[1],[2],[5],[6],[10],[21]-[29]</td><td>[12]-[14],[19]</td><td>[7]-[9],[11]</td></tr><tr><td colspan=\"5\"></td></tr><tr><td></td><td colspan=\"2\">Local-Edge</td><td colspan=\"2\">Local-Edge-Could</td></tr><tr><td>Computation Framework</td><td colspan=\"2\">[1],[2],[5]-[12],[14]-[16],[18],[19],[21]-[29]</td><td colspan=\"2\">[13],[17],[20]</td></tr><tr><td colspan=\"5\"></td></tr><tr><td></td><td colspan=\"2\">Binary Offloading</td><td colspan=\"2\">Partial Offloading</td></tr><tr><td>Offloading Strategy</td><td colspan=\"2\">[5]-[8],[11],[14],[16],[19],[20]-[24],[26]</td><td colspan=\"2\">[1],[2],[9],[10],[12],[13],[15],[17],[18],[25],[27]-[29]</td></tr></table>",
+        "bbox": [
+            126,
+            113,
+            878,
+            258
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/677b923f2c588ad693cd6bdebf4e43aac7d21ab45eb4147122c53aafd39a2cbe.jpg",
+        "image_caption": [
+            "Fig. 1. An illustration of hybrid offshore and LEO maritime computing system. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Offshore base-station\"] --> B[\"Sea surface\"]\n    B --> C[\"MWD\"]\n    C --> D[\"LEO satellite\"]\n    D --> E[\" Orbit 1,2,3\"]\n    E --> F[\" Orbit 1,2,3\"]\n    F --> G[\" Orbit 2,2,3\"]\n    G --> H[\" Orbit 2,2,3\"]\n    H --> I[\" Orbit 3\"]\n    I --> J[\" Hybrid offshore and LEO computing \"]\n    J --> K[\" Offshore computing \"]\n    K --> L[\" LEO computing \"]\n    L --> M[\" Hybrid offshore and LEO computing \"]\n    M --> N[\" Orbit 3,3\"]\n    N --> O[\" Orbit 3,3\"]\n    O --> P[\" Orbit 3,3\"]\n    P --> Q[\" Orbit 3,3\"]\n    Q --> R[\" Orbit 3,3\"]\n    R --> S[\" Orbit 3,3\"]\n    S --> T[\" Orbit 3,3\"]\n    T --> U[\" Orbit 3,3\"]\n    U --> V[\" Orbit 3,3\"]\n    V --> W[\" Orbit 3,3\"]\n    W --> X[\" Orbit 3,3\"]\n    X --> Y[\" Orbit 3,3\"]\n    Y --> Z[\" Orbit 3,3\"]\n    Z --> AA[\" Orbit 3,3\"]\n    AA --> AB[\" Orbit 3,3\"]\n    AB --> AC[\" Orbit 3,3\"]\n    AC --> AD[\" Orbit 3,3\"]\n    AD --> AE[\" Orbit 3,3\"]\n    AE --> AF[\" Orbit 3,3\"]\n    AF --> AG[\" Orbit 3,3\"]\n    AG --> AH[\" Orbit 3,3\"]\n    AH --> AI[\" Orbit 3,3\"]\n    AI --> AJ[\" Orbit 3,3\"]\n    AJ --> AK[\" Orbit 3,3\"]\n    AK --> AL[\" Orbit 3,3\"]\n    AL --> AM[\" Orbit 3,3\"]\n    AM --> AN[\" Orbit 3,3\"]\n    AN --> AO[\" Orbit 3,3\"]\n    AO --> AP[\" Orbit 3,3\"]\n    AP --> AQ[\" Orbit 3,3\"]\n    AQ --> AR[\" Orbit 3,3\"]\n    AR --> AS[\" Orbit 3,3\"]\n    AS --> AT[\" Orbit 3,3\"]\n    AT --> AU[\" Orbit 3,3\"]\n    AU --> AV[\" Orbit 3,3\"]\n    AV --> AW[\" Orbit 3,3\"]\n    AW --> AX[\" Orbit 3,3\"]\n    AX --> AY[\" Orbit 3,3\"]\n    AY --> AZ[\" Orbit 3,3\"]\n    AZ --> BA[\" Orbit 3,3\"]\n    BA --> BB[\" Orbit 3,3\"]\n    BB --> BC[\" Orbit 3,3\"]\n    BC --> BD[\" Orbit 3,3\"]\n    BD --> BE[\" Orbit 3,3\"]\n    BE --> BF[\" Orbit 3,3\"]\n    BF --> BG[\" Orbit 3,3\"]\n    BG --> BH[\" Orbit 3,3\"]\n    BH --> BI[\" Orbit 3,3\"]\n    BI --> BJ[\" Orbit 3,3\"]\n    BJ --> BK[\" Orbit 3,3\"]\n    BK --> BL[\" Orbit 3,3\"]\n    BL --> BM[\" Orbit 3,3\"]\n    BM --> BN[\" Orbit 3,3\"]\n    BN --> BO[\" Orbit 3,3\"]\n    BO --> BP[\" Orbit 3,3\"]\n    BP --> BQ[\" Orbit 3,3\"]\n    BQ --> BR[\" Orbit 3,3\"]\n    BR --> BS[\" Orbit 3,3\"]\n    BS --> BT[\" Orbit 3,3\"]\n    BT --> BU[\" Orbit 3,3\"]\n    BU --> BV[\" Orbit 3,3\"]\n    BV --> BW[\" Orbit 3,3\"]\n    BW --> BX[\" Orbit 3,3\"]\n    BX --> BY[\" Orbit 3,3\"]\n    BY --> BZ[\" Orbit 3,3\"]\n    BZ --> CA[\" Orbit 3,3\"]\n    CA --> CB[\" Orbit 3,3\"]\n    CB --> CC[\" Orbit 3,3\"]\n    CC --> CD[\" Orbit 3,3\"]\n    CD --> CE[\" Orbit 3,3\"]\n    CE --> CF[\" Orbit 3,3\"]\n    CF --> CG[\" Orbit 3,3\"]\n    CG --> CH[\" Orbit 3,3\"]\n    CH --> CI[\" Orbit 3,3\"]\n    CI --> CJ[\" Orbit 3,3\"]\n    CJ --> CK[\" Orbit 3,3\"]\n    CK --> CR[\" Orbit 3,3\"]\n    CR --> CS[\" Orbit 3,3\"]\n    CS --> CT[\" Orbit 3,3\"]\n    CT --> CU[\" Orbit 3,3\"]\n    CU --> CV[\" Orbit 3,3\"]\n    CV --> CW[\" Orbit 3,3\"]\n    CW --> CX[\" Orbit 3,3\"]\n    CX --> CY[\" Orbit 3,3\"]\n    CY --> CZ[\" Orbit 3,3\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            127,
+            277,
+            875,
+            503
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Maritime edge computing system design: We design a maritime edge computing system with a three-tier computing architecture, in which LEO satellites and OBS can provide computing services for MWDs. For satisfying task latency requirements and reducing energy consumption, we adopt a partial offloading scheme to process computing tasks in parallel. MWDs can offload partial task to be processed at the LEO, and can also offload a portion of tasks to be processed at the OBS through the LEO, with the remaining tasks being processed locally. ",
+            "- Problem formulation and solutions: The system energy consumption minimization problem is decomposed into four subproblems and design optimization algorithms to solve them. Specifically, we use slack variable and convex optimization methods to solve association variable. The transmission power optimization subproblem is an non-convex problem. Therefore, we transform it into a convex problem using a quadratic transformation and then solve it using a difference of convex algorithm. Then, task partitioning subproblem is solved by deriving upper and lower bounds of offloading task size based on constraints. Afterwards, the computing resource allocation subproblem is solved by using Lagrangian dual method. Finally, we design a joint iterative optimization algorithm to achieve global optimization. "
+        ],
+        "bbox": [
+            80,
+            546,
+            494,
+            924
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "System design insights: We verify the performance and effectiveness of the proposed scheme in various environments using system energy consumption as a criterion. Simulation results show that our proposed scheme has a significant advantage in reducing the system energy consumption, with savings 39.3% of the system energy consumption compared to the benchmark schemes. ",
+        "bbox": [
+            523,
+            546,
+            937,
+            651
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The remainder of the paper is organized as follows. Section II presents the system model and defines the optimization objective. In Section III, we design an iterative algorithm to solve the system energy minimization problem. Section IV validates the performance of the proposed scheme. Finally, Section V concludes this paper. ",
+        "bbox": [
+            506,
+            652,
+            937,
+            742
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "II. MARITIME EDGE COMPUTING SYSTEM DESIGN AND PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            533,
+            760,
+            910,
+            789
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. Network Model Description ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            797,
+            725,
+            813
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Fig. 1 shows a hybrid offshore and LEO maritime computing system. Maritime communication network consists of multiple LEO satellites deployed with MEC, OBS, and multiple MWDs. We consider that MWDs can offload part of task to LEO satellite and OBS for processing, respectively. The OBS is positioned in the offshore land, and its coverage area is too limited to directly provide computing service to the MWDs. Therefore, ",
+        "bbox": [
+            506,
+            819,
+            937,
+            925
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "8128 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            39,
+            936,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "LEO satellite needs to provide trunk service that transfer partial task of MWDs to OBS for processing. Consequently, computing tasks of MWDs can be processed by local, LEO satellite and OBS in parallel. ",
+        "bbox": [
+            57,
+            79,
+            488,
+            138
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In network model, a set of LEO satellites and MWDs are considered, where MWDs and LEO satellites are denoted as $\\mathcal { K } = \\{ 1 , \\dots , k , \\dots , K \\} , \\mathcal { M } = \\{ 1 , \\dots , m , \\dots , M \\}$ , respec-= =tively. The position of MWD, LEO satellite, and OBS can be denoted as $( x _ { k } , y _ { k } , z _ { k } ) , ( x _ { m } , y _ { m } , h _ { m } )$ and $( x _ { n } , y _ { n } , h _ { n } )$ , respec-( ) (tively. We denote the k-th MWD as $M W D _ { k }$ )and the m-th LEO as $L E O _ { m }$ . Furthermore, the offloading mode of computing task is denoted using ${ { a } _ { k , m } } ,$ , i.e. ",
+        "bbox": [
+            57,
+            140,
+            486,
+            261
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {k, m} = \\left\\{ \\begin{array}{l l} 1, & M W D _ {k} \\text {   's   partial   task   offloads   to   } L E O _ {m}, \\\\ & \\forall k, m \\in \\mathcal {K}, \\mathcal {M} \\\\ 0, & \\text { otherwise. } \\end{array} \\right. \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            63,
+            267,
+            486,
+            316
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            327,
+            244,
+            340
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Continuous motion of LEO satellite leads to constantly changing channel states, and the effect of environmental changes on channel is unpredictable. The free space path loss model usually assumes that the communication link is a direct path, which is not sufficient to accurately describe the real channel state. In fact, there are usually various objects in the communication link that act as scatterers or obstacles (e.g., curvature of the earth, ocean waves). Therefore, we model the channel as a probabilistic channel model [30], [31]. The communication channel is categorized into two cases, i.e., line-of-sight (LOS) and non-line-of-sight (NLOS) channels. The probability of LOS and NLOS depends on elevation angle of LEO satellites [32]. Distance and elevation angle of $M W D _ { k }$ and LEO satellite $L E O _ { m }$ can be obtained by ",
+        "bbox": [
+            57,
+            349,
+            486,
+            545
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} d _ {k, m} = \\sqrt {(x _ {k} - x _ {m}) ^ {2} + (y _ {k} - y _ {m}) ^ {2} + (z _ {k} - h _ {m}) ^ {2}}, \\\\ \\theta_ {k, m} = (1 8 0 / \\pi) \\cdot \\arcsin \\left(h _ {m} / d _ {k, m}\\right). \\end{array} \\right. \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            77,
+            551,
+            486,
+            590
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The LOS and NLOS channel probabilities for LEO satellites $L E O _ { m }$ and $M W D _ { k }$ are given by ",
+        "bbox": [
+            58,
+            595,
+            486,
+            626
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} \\mathbb {P} _ {\\mathrm{LoS}} ^ {k, m} = \\frac {1}{1 + a \\exp (- b (\\theta_ {k , m} - a))}, \\\\ \\mathbb {P} _ {\\mathrm{NLoS}} ^ {k, m} = 1 - \\mathbb {P} _ {\\mathrm{LoS}} ^ {k, m}, \\end{array} \\right. \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            631,
+            486,
+            671
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where a and b denote the different transmission environments parameters obtained by using surface fitting method. Thus, the path loss can be expressed as ",
+        "bbox": [
+            57,
+            676,
+            486,
+            722
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {\\xi} ^ {k, m} = \\eta_ {\\xi} \\left(4 \\pi f _ {c} d _ {k, m} / c\\right) ^ {\\alpha}, \\quad \\xi \\in \\{\\text { LoS }, \\text { NLoS } \\}, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            104,
+            727,
+            486,
+            747
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\eta _ { \\xi }$ represents the excessive path loss under different channel modes, $f _ { c }$ is the communication carrier center frequency, c is the speed of light, and α denotes the path loss coefficient. We adopt the average value of path loss under different channels to represent the path loss of communication channel, thus the channel gain is given by ",
+        "bbox": [
+            57,
+            751,
+            488,
+            843
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nh _ {k, m} = \\left(\\mathbb {P} _ {\\mathrm{LoS}} ^ {k, m} L _ {\\mathrm{LoS}} ^ {k, m} + \\mathbb {P} _ {\\mathrm{NLoS}} ^ {k, m} L _ {\\mathrm{NLoS}} ^ {k, m}\\right) ^ {- 1}. \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            134,
+            848,
+            486,
+            875
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "1) MWD-LEO Communication: To efficiently utilize satellite spectrum resources, NOMA technology is used for LEO satellite communication. MWDs use omni-directional antenna. One LEO satellite can serve multiple MWDs. ",
+        "bbox": [
+            57,
+            878,
+            486,
+            940
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "For satellite communication, LEO satellite’s orbit is preplanned. Therefore, we consider a quasi-static communication model in which MWDs communicate with LEO satellites via uplink and offload part of its computing tasks. The satellite receiver receives the transmitted signals from MWDs in the power domain using successive interference cancellation (SIC) techniques. Depending on uplink channel quality, SIC technique adopts fixed decoding order. According to priority decoding principle for high power signals in SIC, high-power transmission signals are received first to reduce communication interference. Thus, the signal $y _ { k , m }$ of $M W D _ { k }$ received by $L E O _ { m }$ is represented as ",
+        "bbox": [
+            500,
+            79,
+            930,
+            258
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} y _ {k, m} = \\underbrace {h _ {k , m} \\sqrt {p _ {k}} s _ {k , m}} _ {\\text { Desired   Signal }} \\\\ + h _ {k, m} \\underbrace {\\sum_ {i \\in \\mathcal {K} \\backslash \\{k \\}} \\left(a _ {i , m} \\sqrt {p _ {i}} s _ {i , m}\\right)} _ {\\text { Intra - cell   Interference }} + N _ {k, m}, \\tag {6} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            548,
+            268,
+            929,
+            367
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $h _ { k , m } , p _ { k }$ and $s _ { k , m }$ denote channel gain, uplink transmission power and $M W D _ { k }$ to $L E O _ { m }$ transmission signal, respectively. $N _ { k , m }$ denotes Gaussian white noise that follows normal distribution with variance $\\sigma _ { m } ^ { 2 }$ . Thus, $M W D _ { k }$ transmits signal-to-noise ratio to $L E O _ { m }$ as is given by ",
+        "bbox": [
+            500,
+            373,
+            930,
+            449
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\gamma_ {k, m} = \\frac {h _ {k , m} p _ {k}}{h _ {k , m} \\sum_ {i \\in \\mathcal {K} \\backslash \\{k \\}} (a _ {i , m} p _ {i}) + \\sigma_ {m} ^ {2}}, \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            577,
+            455,
+            929,
+            491
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\sigma _ { m } ^ { 2 }$ represents the Gaussian white noise power and $\\{ k \\}$ denotes the set from $M W D _ { 1 }$ to $M W D _ { k } , \\mathrm { e . g . } 1 , 2 , \\ldots , k .$ The achievable uplink transmission rate from $M W D _ { k }$ to $L E O _ { m }$ is expressed as ",
+        "bbox": [
+            500,
+            497,
+            930,
+            558
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {k, m} = B _ {m} \\log_ {2} \\left(1 + \\gamma_ {k, m}\\right), \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            612,
+            566,
+            929,
+            584
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $B _ { m }$ denotes the satellite’s bandwidth. ",
+        "bbox": [
+            500,
+            590,
+            804,
+            604
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "2) LEO-OBS Communication: For LEO satellites, the position of OBS is known and kept constant. Orthogonal frequency division multiple access technique (OFDMA) is adopted in the LEO-OBS communication for avoiding signal transmission interference between the LEO satellites. Therefore, the signal received by OBS from LEO satellite can be expressed as ",
+        "bbox": [
+            500,
+            606,
+            929,
+            696
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {m} ^ {B} = h _ {m, b} \\sqrt {p _ {m}} s _ {m, b} + N _ {m, b}, \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            611,
+            703,
+            929,
+            722
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $h _ { m , b } , p _ { m }$ and $s _ { m , b }$ denote transmission channel, transmission power and transmission signal between the LEO satellites and OBS, respectively. The $N _ { m , b }$ denotes Gaussian white noise with the variance of $\\sigma _ { b } ^ { 2 }$ . Furthermore, $h _ { m , b }$ can be represented as ",
+        "bbox": [
+            500,
+            729,
+            930,
+            805
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nh _ {m, b} = \\left(\\mathbb {P} _ {\\mathrm{LoS}} ^ {m, b} L _ {\\mathrm{LoS}} ^ {m, b} + \\mathbb {P} _ {\\mathrm{NLoS}} ^ {m, b} L _ {\\mathrm{NLoS}} ^ {m, b}\\right) ^ {- 1}, \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            579,
+            811,
+            929,
+            840
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "wher e Pm,b $\\mathbb { P } _ { \\mathrm { L o S } } ^ { m , b }$ and Pm,bNLoS $\\mathbb { P } _ { \\mathrm { N L o S } } ^ { m , b }$ denote the LOS and NLOS channel probabilities. $L _ { \\mathrm { L o S } } ^ { m , b }$ LLoS m,b and Lm,b $L _ { \\mathrm { N L o S } } ^ { m , b }$ denotes path loss. Thus, LEO satellites to OBS achievable transmission rate can be given by ",
+        "bbox": [
+            500,
+            847,
+            929,
+            897
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {m} ^ {B} = \\frac {B _ {b}}{K _ {b}} \\log_ {2} \\left(1 + \\frac {p _ {m} h _ {m , b}}{\\sigma_ {b} ^ {2}}\\right), \\forall m \\in \\mathcal {M}, \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            902,
+            929,
+            938
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "ZHANG et al.: ENERGY ORIENTED THREE-TIER COMPUTATION OFFLOADING SCHEME ",
+        "bbox": [
+            58,
+            37,
+            531,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "8129 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $B _ { b }$ and $K _ { b }$ denote OBS’s total bandwidth and number of connections, respectively. ",
+        "bbox": [
+            65,
+            79,
+            496,
+            109
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "C. Hybrid Computing Model ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            125,
+            272,
+            140
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The maritime edge computing network includes local computing, OBS computing and LEO satellite computing. Without losing generality, a partial offloading model is considered for parallel processing, where a part of the task can be processed locally, a part of it can be offloaded to OBS for processing, and LEO satellite processes the remaining task. We use a tuple $\\left( L _ { k } , T _ { k } , X _ { k } \\right)$ to denote the MWD’s task information, where $L _ { k }$ (represents $M W D _ { k } \\mathrm { ' s }$ task size in $M B ; T _ { k }$ denotes task latency constraint in $s ; X _ { k }$ denotes how many CPU cycles are required to compute each bit MWD’s task. $l _ { k } ^ { S }$ and $l _ { k } ^ { \\dot { B } }$ denote task size offloaded to LEO satellite and OBS, respectively. Computing latency and energy consumption are calculated based on task partitioning and computing resource allocation. ",
+        "bbox": [
+            65,
+            146,
+            496,
+            343
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "1) Local Computing: According to the partial offloading model, $( L _ { k } - l _ { k } ^ { S } - l _ { k } ^ { B } )$ bit tasks are processed locally. Using $f _ { k } ^ { L }$ ( )to denote the MWD’s computing capacity, thus the computing latency can be expressed as ",
+        "bbox": [
+            65,
+            343,
+            496,
+            404
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {L} = (L _ {k} - l _ {k} ^ {S} - l _ {k} ^ {B}) X _ {k} (f _ {k} ^ {L}) ^ {- 1}, \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            407,
+            494,
+            428
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "therefore, the corresponding local computing energy consumption of $M W D _ { k }$ can be obtained by ",
+        "bbox": [
+            65,
+            434,
+            494,
+            464
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\ne _ {k} ^ {L} = k ^ {L} (L _ {k} - l _ {k} ^ {S} - l _ {k} ^ {B}) X _ {k} (f _ {k} ^ {L}) ^ {2}, \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            469,
+            494,
+            488
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $k ^ { L }$ denotes energy conversion factor. ",
+        "bbox": [
+            65,
+            494,
+            365,
+            510
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "2) LEO Satellite Computing: LEO satellite processes $l _ { k } ^ { S }$ bits task of $M W D _ { k }$ , latency consists of two parts, i.e., offloading latency and LEO computing latency. In which offloading latency includes transmission latency and propagation latency. The calculation results are relatively small compared to original task size. Thlatency. $f _ { k , m } ^ { S }$ e current model ignores the downlink trdenotes computing capacity used by $L E O _ { m }$ process $l _ { k } ^ { S }$ . The computation offloading latency of LEO satellite is written as ",
+        "bbox": [
+            65,
+            511,
+            496,
+            648
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k, m} ^ {S} = \\frac {l _ {k} ^ {S}}{R _ {k , m}} + \\frac {l _ {k} ^ {S} X _ {k}}{f _ {k , m} ^ {S}} + 2 t _ {k, m} ^ {p}, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            651,
+            494,
+            688
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { t _ { k , m } ^ { p } = \\frac { d _ { k , m } } { c } } \\end{array}$ k , dk,m c is the propagation latency between the $M W D _ { k }$ =and $L E O _ { m } , d _ { k , m }$ denotes the distance between the $M W D _ { k }$ and $L E O _ { m }$ , and c represents the speed of light. Accordingly, the computation offloading energy consumption of LEO satellite can be obtained by ",
+        "bbox": [
+            65,
+            696,
+            496,
+            773
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\ne _ {k, m} ^ {S} = p _ {k} \\frac {l _ {k} ^ {S}}{R _ {k , m}} + k ^ {S} l _ {k} ^ {S} X _ {k} (f _ {k, m} ^ {S}) ^ {2}, \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            779,
+            494,
+            813
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { k }$ denotes $M W D _ { k }$ to $L E O _ { m }$ uplink transmission power, and $k ^ { S }$ denotes the energy coefficient determined by the satellite CPU computing chip. ",
+        "bbox": [
+            65,
+            819,
+            494,
+            864
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3) Offshore Computing: The MWD establishes transmission links with LEO satellites, and LEO satellite as a relay platform offloads $l _ { k } ^ { B }$ bits task to OBS for processing. Assume that OBS allocates $f _ { k } ^ { \\tilde { B } }$ HZ computational capacity for processing $M W D _ { k } \\mathrm { ' }$ s computing task. The computing offloading latency and the corresponding energy consumption of OBS are expressed as respectively ",
+        "bbox": [
+            65,
+            864,
+            496,
+            941
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            79,
+            937,
+            109
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {B} = \\frac {l _ {k} ^ {B}}{R _ {k , m}} + \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} + \\frac {l _ {k} ^ {B} X _ {k}}{f _ {k} ^ {B}} + 2 (t _ {k, m} ^ {p} + t _ {m, b} ^ {p}), \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            545,
+            114,
+            937,
+            152
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\ne _ {k} ^ {B} = p _ {k} \\frac {l _ {k} ^ {B}}{R _ {k , m}} + p _ {m} ^ {B} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} + k ^ {B} l _ {k} ^ {B} X _ {k} (f _ {k} ^ {B}) ^ {2}, \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            543,
+            156,
+            937,
+            191
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "$\\begin{array} { r } { t _ { m , b } ^ { p } = \\frac { d _ { m , b } } { c } } \\end{array}$ t pm,b dm,b is then which agation latency between thedenotes the transmission dis-$L E O _ { m }$ $d _ { m , b } ^ { p }$ tance between $L E O _ { m }$ and OBS, and $k ^ { B }$ denotes the energy factor associated with the CPU chip. ",
+        "bbox": [
+            506,
+            199,
+            937,
+            266
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "D. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            281,
+            685,
+            294
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In maritime network edge computing system, tasks can be processed in parallel at local, LEO satellites and OBS. Therefore, computing offloading latency and energy consumption consists of three parts: local computing, LEO satellite computing and OBS computing. Considering the association relationship between LEO satellites and ${ \\bf M W D s } ,$ computing offloading latency and energy consumption of LEO satellites and OBS are rewritten as respectively ",
+        "bbox": [
+            506,
+            301,
+            937,
+            424
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {S} = \\sum_ {m \\in \\mathcal {M}} \\left(\\frac {a _ {k , m} l _ {k} ^ {S}}{R _ {k , m}} + \\frac {a _ {k , m} l _ {k} ^ {S} X _ {k}}{f _ {k , m} ^ {S}} + 2 a _ {k, m} t _ {k, m} ^ {p}\\right), \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            531,
+            430,
+            937,
+            470
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {B} = \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {k , m}} + \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            530,
+            477,
+            809,
+            516
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\frac {l _ {k} ^ {B} X _ {k}}{f _ {k} ^ {B}} + 2 \\sum_ {m \\in \\mathcal {M}} a _ {k, m} (t _ {k, m} ^ {p} + t _ {m, b} ^ {p}). \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            520,
+            936,
+            560
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Thus, the energy consumption of MW Dk’s task is expressed as ",
+        "bbox": [
+            506,
+            566,
+            937,
+            595
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} e _ {k} = w ^ {L} k ^ {L} (L _ {k} - l _ {k} ^ {S} - l _ {k} ^ {B}) X _ {k} (f _ {k} ^ {L}) ^ {2} \\\\ + \\sum_ {m \\in \\mathcal {M}} \\frac {w ^ {L} a _ {k , m} p _ {k} (l _ {k} ^ {S} + l _ {k} ^ {B})}{R _ {k , m}} \\\\ + w ^ {S} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} k ^ {S} l _ {k} ^ {S} X _ {k} (f _ {k, m} ^ {S}) ^ {2} \\\\ + w ^ {S} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} p _ {m} ^ {B} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} + w ^ {B} k ^ {B} l _ {k} ^ {B} X _ {k} (f _ {k} ^ {B}) ^ {2}, \\tag {20} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            602,
+            936,
+            750
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $w ^ { L } , w ^ { S }$ and $w ^ { B }$ denote the weighting coefficient of energy consumption for local computing, LEO satellite computing and OBS computing, respectively. $\\textstyle E = \\sum _ { k \\in K } e _ { k }$ is represented system energy consumption. ",
+        "bbox": [
+            506,
+            756,
+            937,
+            818
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "According to the above equations, by considering user association, transmission power, offloading task size, and computing resource allocation of LEO satellites and OBS, the current optimization problem can be described as ",
+        "bbox": [
+            506,
+            818,
+            937,
+            878
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\left\\{\\mathbf {A}, \\mathbf {P} _ {\\mathbf {k}}, \\mathbf {P} _ {\\mathbf {m}}, \\mathbf {L} _ {\\mathbf {S}}, \\mathbf {L} _ {\\mathbf {B}}, \\mathbf {F} _ {\\mathbf {S}}, \\mathbf {F} _ {\\mathbf {B}} \\right\\}} \\sum_ {k \\in \\mathcal {K}} e _ {k} \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            548,
+            885,
+            936,
+            917
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } a _ {k, m} = \\{0, 1 \\}, \\forall k \\in \\mathcal {K}, \\forall m \\in \\mathcal {M}, \\tag {21a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            585,
+            924,
+            936,
+            941
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "8130 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            960,
+            863,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\leq 1, \\forall k \\in \\mathcal {K}, \\tag {21b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            163,
+            80,
+            486,
+            113
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {k} \\leq P _ {k} ^ {\\text { max }}, \\forall k \\in \\mathcal {K}, \\tag {21c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            119,
+            486,
+            136
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {m} \\leq P _ {m} ^ {\\max}, \\forall m \\in \\mathcal {M}, \\tag {21d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            141,
+            486,
+            159
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {S} + l _ {k} ^ {B} \\leq L _ {k}, \\forall k \\in \\mathcal {K}, \\tag {21e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            164,
+            486,
+            183
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {S} \\geq 0, \\forall k \\in \\mathcal {K}, \\tag {21f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            189,
+            486,
+            208
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {B} \\geq 0, \\forall k \\in \\mathcal {K}, \\tag {21g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            213,
+            486,
+            232
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k \\in \\mathcal {K}} a _ {k, m} f _ {k, m} \\leq f _ {S} ^ {\\max}, \\forall m \\in \\mathcal {M}, \\tag {21h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            163,
+            239,
+            486,
+            271
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k \\in \\mathcal {K}} f _ {k} ^ {B} \\leq f _ {B} ^ {\\max}, \\tag {21i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            163,
+            277,
+            486,
+            310
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k, m} \\geq 0, \\forall k \\in \\mathcal {K}, \\forall m \\in \\mathcal {M}, \\tag {21j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            316,
+            486,
+            334
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k} ^ {B} \\geq 0, \\forall k \\in \\mathcal {K}, \\tag {21k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            340,
+            486,
+            358
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {L} \\leq T _ {k}, \\forall k \\in \\mathcal {K}, \\tag {211}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            364,
+            486,
+            383
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {S} \\leq T _ {k}, \\forall k \\in \\mathcal {K}, \\tag {21m}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            388,
+            486,
+            407
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {B} \\leq T _ {k}, \\forall k \\in \\mathcal {K}, \\tag {21n}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            412,
+            486,
+            431
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { A } = \\{ a _ { k , m } \\} _ { k \\in \\mathcal { K } , m \\in \\mathcal { M } } .$ , $\\mathbf { P _ { k } } = \\{ p _ { k } \\} _ { k \\in \\mathcal { K } } .$ , $\\mathbf { P _ { m } } =$ $\\{ p _ { m } \\}$ m∈M, $\\mathbf { L } _ { \\mathbf { S } } = \\{ l _ { k } ^ { S } \\} _ { k \\in \\mathcal { K } } ,$ $\\mathbf { L } _ { \\mathbf { B } } = \\{ l _ { k } ^ { B } \\} _ { k \\in \\mathcal { K } }$ , $\\mathbf { F _ { S } } =$ $\\{ f _ { k , m } ^ { S } \\} _ { k \\in \\mathcal { K } , m \\in \\mathcal { M } } , \\mathbf { F _ { B } } = \\{ f _ { k } ^ { B } \\} _ { k \\in \\mathcal { K } }$ B =  =. (21a) and (21b) denotes that =the user association is binary variable and maximum number of LEO satellites associated with MWDs, respectively. (21c) and (21d) represent that the maximum transmission power of MWDs and LEO satellites. (21e), (21f), and (21g) limit task size processed by LEO satellites and OBS. (21h), (21i), (21j), and (21k) establish a relationship between the sum of computing resource that LEO satellites and OBS allocate to MWDs and their maximum computing capacity. (21l), (21m) and (21n) restricts tasks’ maximum tolerable latency. ",
+        "bbox": [
+            58,
+            440,
+            486,
+            622
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "III. ALGORITHM DESIGN FOR MARITIME EDGE COMPUTING ",
+        "text_level": 1,
+        "bbox": [
+            67,
+            638,
+            476,
+            652
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "A. Solution Roadmap ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            662,
+            213,
+            678
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Due to parameter coupling, binary constraints, etc., P0 is a mixed integer nonlinear problem [33]. Therefore, in order to facilitate solution, problem P0 is decomposed into four subproblems, i.e., associated variable, transmission power optimization, task partitioning, and joint computing resource allocation of LEO satellites and OBS. The problem decomposition and solution roadmap are given in Fig. 2. Subproblems are transformed into convex problems using convex optimization method, and then iterative algorithms are designed to solve them. Finally, a joint iterative algorithm is designed to obtain near-optimal solution of problem P0. In first iteration, we initialize transmission power, task partitioning, computing resource allocation to solve association variable subproblem. After obtaining association variable, the initialized task partitioning and computing resource allocation are input into transmission power optimization subproblem to solve transmission power of MWDs and LEO satellites. The solved association variable, ",
+        "bbox": [
+            60,
+            683,
+            489,
+            940
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/6461454175862821602db7d2c856bf6be8de91d537b4712c9416302c3b0bfbc8.jpg",
+        "image_caption": [
+            "Fig. 2. Problem decomposition and solution roadmap. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Original problem (P0)<br>(Solving P0 using Alg. 5)\"] --> B[\"Problem decomposition\"]\n    B --> C[\"Iterative Optimization Approach\"]\n    C --> D[\"Subproblem 1 (P1)<br>Association variable optimization {A}<br>(Solving P1 using Alg. 1)\"]\n    C --> E[\"Subproblem 4 (P4)<br>Joint computing resource allocation {F^S, F^B}<br>(Solving P4 using Alg. 4)\"]\n    C --> F[\"Subproblem 2 (P2)<br>Transmission power optimization {P_k, P_m}<br>(Solving P2a using Alg. 2)\"]\n    C --> G[\"Subproblem 3 (P3)<br>Task partitioning optimization {L^S, L^B}<br>(Solving P3a using Alg. 3)\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            535,
+            82,
+            898,
+            292
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "transmission power and fixed computing resource are input into task partitioning subproblem to obtain task offloading size of MWDs. Afterwards, computing resource allocation subproblem is solved using solved association variable, transmission power, and task partitioning. Finally, the solved four subproblems are used as initialization parameters for the second iteration. Repeat the above process until the algorithm converges to obtain the optimal solution of problem P0. The specific process of solving the problem using alternating optimization is discussed in the following. ",
+        "bbox": [
+            500,
+            347,
+            930,
+            498
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In problem P0, LEO satellites and OBS in constraints (21l), (21m) and (21n) can be substituted for (12), (14) and (16) in computing offloading latency. Thus, the problem P0 is rewritten as ",
+        "bbox": [
+            500,
+            498,
+            930,
+            556
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {P} 0: \\min _ {\\left\\{\\mathbf {A}, \\mathbf {P} _ {\\mathrm{k}}, \\mathbf {P} _ {\\mathrm{m}}, \\mathbf {L} _ {\\mathrm{S}}, \\mathbf {L} _ {\\mathrm{B}}, \\mathbf {F} _ {\\mathrm{S}}, \\mathbf {F} _ {\\mathrm{B}} \\right\\}} \\sum_ {k \\in \\mathcal {K}} e _ {k} \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            573,
+            929,
+            604
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } (2 1 \\mathrm{a}) - (2 1 \\mathrm{k}), \\tag {22a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            587,
+            612,
+            929,
+            627
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {(L _ {k} - l _ {k} ^ {S} - l _ {k} ^ {B}) X _ {k}}{f _ {k} ^ {L}} \\leq T _ {k}, \\forall k \\in \\mathcal {K}, \\tag {22b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            557,
+            633,
+            929,
+            670
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {S}}{R _ {k , m}} + \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {S} X _ {k}}{f _ {k , m} ^ {S}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            558,
+            675,
+            806,
+            714
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ 2 \\sum_ {m \\in \\mathcal {M}} a _ {k, m} t _ {k, m} ^ {p} \\leq T _ {k}, \\forall k \\in \\mathcal {K}, \\tag {22c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            574,
+            720,
+            929,
+            752
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {k , m}} + \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} + \\frac {l _ {k} ^ {B} X _ {k}}{f _ {k} ^ {B}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            558,
+            758,
+            856,
+            797
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ 2 \\sum_ {m \\in \\mathcal {M}} a _ {k, m} (t _ {k, m} ^ {p} + t _ {m, b} ^ {p}) \\leq T _ {k}, \\forall k \\in \\mathcal {K}. \\tag {22d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            574,
+            803,
+            929,
+            835
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "B. Association Variable Optimization ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            858,
+            760,
+            875
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The association variable and transmission power are coupled with each other in the optimization objective and constraints of problem P0. Therefore, association variable is difficult to optimize. In order to reduce the solution difficulty, association variable optimization subproblem is decomposed from problem P0. The association variable optimization subproblem is written as ",
+        "bbox": [
+            500,
+            878,
+            930,
+            940
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "ZHANG et al.: ENERGY ORIENTED THREE-TIER COMPUTATION OFFLOADING SCHEME ",
+        "bbox": [
+            58,
+            37,
+            531,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "8131 ",
+        "bbox": [
+            902,
+            39,
+            927,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1: Association Variable Optimization. "
+        ],
+        "code_body": "Initialize: Association variable A, fixed $P_{k}$ , $P_{m}$ , $L_{S}$ , $L_{B}$ , $F_{S}$ , and $F_{B}$ , set t = 0 and maximum iterative count $T_{max}$ 1: repeat\n\n2: Calculate $R_{k,m}$ and $R_{m}^{B}$ according to (8) and (11) $\\forall k, m \\in K, M;$ 3: Given $P_{k}$ , $P_{m}$ , $L_{S}$ , $L_{B}$ , $F_{S}$ , and $F_{B}$ , solve (23) to obtain A;\n\n4: Update $t = t + 1;$ 5: until Objective function converges or $t = T_{max}$ .\n\nOutput: Optimal association variable A ",
+        "bbox": [
+            77,
+            99,
+            486,
+            251
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            282,
+            494,
+            328
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {P} 1: \\min _ {\\{\\mathbf {A} \\}} \\sum_ {k \\in \\mathcal {K}} \\sum_ {m \\in \\mathcal {M}} w ^ {L} p _ {k} \\frac {\\left(l _ {k} ^ {S} + l _ {k} ^ {B}\\right)}{R _ {k , m}} a _ {k, m} \\\\ + \\sum_ {k \\in \\mathcal {K}} \\sum_ {m \\in \\mathcal {M}} w ^ {S} k ^ {S} l _ {k} ^ {S} X _ {k} \\left(f _ {k, m} ^ {S}\\right) ^ {2} a _ {k, m} \\\\ + \\sum_ {k \\in \\mathcal {K}} \\sum_ {m \\in \\mathcal {M}} w ^ {S} p _ {m} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} a _ {k, m} (23) \\\\ \\text { s.t. } (2 1 \\mathrm{a}), (2 1 \\mathrm{b}), (2 2 \\mathrm{c}), (2 2 \\mathrm{d}) (23a) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            116,
+            335,
+            494,
+            483
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The association variable is binary, thus the optimization problem P1 is non-convex. Slack variable method is applied to extend feasible domain of association variable ${ a } _ { k , m }$ to a continuous space [0,1]. At this point, P1 is a one-dimensional optimization Initialize the transmission and computing resource of ${ a } _ { k , m }$ pk, pm, task partitionDs and LEO satellites $l _ { k } ^ { S } , l _ { k } ^ { B }$ $f _ { k , m } ^ { \\bar { S } } , f _ { k } ^ { \\bar { B } } .$ then solve for the association variable using the CVX toolbox. ",
+        "bbox": [
+            65,
+            492,
+            494,
+            613
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "C. Transmission Power Optimization ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            633,
+            324,
+            647
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "With fixed association variable, task partitioning, and computing resource allocation, the transmission power optimization subproblem can be formulated as ",
+        "bbox": [
+            65,
+            654,
+            494,
+            699
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {P} 2: \\min _ {\\{\\mathbf {P} _ {\\mathbf {k}}, \\mathbf {P} _ {\\mathbf {m}} \\}} \\sum_ {k \\in \\mathcal {K}} w ^ {L} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} p _ {k} \\frac {\\left(l _ {k} ^ {S} + l _ {k} ^ {B}\\right)}{R _ {k , m}} \\\\ + \\sum_ {k \\in \\mathcal {K}} w ^ {S} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} p _ {m} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} (24) \\\\ \\text { s.t. } (2 1 \\mathrm{c}), (2 1 \\mathrm{d}), (2 2 \\mathrm{c}), (2 2 \\mathrm{d}). (24a) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            121,
+            708,
+            494,
+            815
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The Problem P2 is a fractional programming and the sum of rates problem, the objective function is of the form $f ( x ) =$ $\\frac { x } { l o g _ { 2 } ( 1 + x ) }$ ( ) =. The second-order derivative with respect to x is $\\begin{array} { r } { \\frac { \\partial ^ { 2 } \\bar { f } } { \\partial x ^ { 2 } } = - \\frac { \\ln ( 2 ) ( ( x + 2 ) \\ln ( x + 1 ) - 2 x ) } { ( x + 1 ) ^ { 2 } \\ln ^ { 3 } ( x + 1 ) } } \\end{array}$ ln(2)((x+2) ln(x+1)−2x) . When x > 0, $\\begin{array} { r } { x > 0 , \\ \\frac { \\partial ^ { 2 } f } { \\partial x ^ { 2 } } < 0 } \\end{array}$ . Thus, the optimization problem P2 is a nonconvex problem. According to [34], the sum of rates problem can be transformed using quadratic transformation method. ",
+        "bbox": [
+            65,
+            825,
+            494,
+            940
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 2: Transmission Power Optimization. "
+        ],
+        "code_body": "Initialize: $P_{k}$ and $P_{m}$ with optimized A, fixed $L_{S}$ , $L_{B}$ , $F_{S}$ , and $F_{B}$ , set l = 0 and maximum iterative count $L_{max}$ 1: repeat\n\n2: Calculate $R_{k,m}$ and $R_{m}^{B}$ according to (8) and (11) $\\forall k, m \\in K, M;$ 3: Given A, $L_{S}$ , $L_{B}$ , $F_{S}$ , and $F_{B}$ , solve (31) to obtain $P_{k}$ and $P_{m}$ ;\n\n4: Update $e_{k,m}$ and $r_{m,b}$ by (27) and (28);\n\n5: Update $l = l + 1;$ 6: until Objective function converges or $l = L_{max}$ .\n\nOutput: Optimal transmission power of MWDs and LEO satellites $P_{k}$ and $P_{m}$ ",
+        "bbox": [
+            516,
+            99,
+            929,
+            281
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proposition 1: According to quadratic transformation method, the fractional parts of the optimization objective $\\frac { p _ { k } } { R _ { k , m } }$ Rk,m and $\\frac { p _ { m } } { R _ { m } ^ { B } }$ can be transformed into respectively ",
+        "bbox": [
+            506,
+            311,
+            937,
+            364
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k, m} (p _ {k}) = 2 e _ {k, m} \\sqrt {p _ {k}} - e _ {k, m} ^ {2} R _ {k, m}, \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            595,
+            372,
+            937,
+            392
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {m, b} (p _ {m}) = 2 r _ {m, b} \\sqrt {p _ {m}} - r _ {m, b} ^ {2} R _ {m} ^ {B}, \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            397,
+            936,
+            417
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$e _ { k , m }$ $r _ { m , b }$ re au and bserving, both of $( 2 e _ { k , m } \\sqrt { p _ { k } } - e _ { k , m } ^ { 2 } R _ { k , m } )$ $( 2 r _ { m , b } \\sqrt { p _ { m } } - r _ { m , b } ^ { 2 } \\dot { R } _ { m } ^ { B } )$ them consist of the difference of two concave functions, which do not meet the conditions for the use of the difference of convex (DC) methoformed into√ $( - e _ { k , m } ^ { 2 } R _ { k , m } - ( - 2 e _ { k , m } \\sqrt { p _ { k } } ) )$ quati) and $( - r _ { m , b } ^ { 2 } R _ { m } ^ { B } -$ $( - 2 r _ { m , b } \\sqrt { p _ { m } } ) )$ ( ) respectively. Currently, the optimization objec-( )tive is transformed into the difference of convex, and DC method is efficient in solving this problem. After n iterations of updating, the optimal $e _ { k , m }$ and $r _ { m , b }$ are represented as respectively ",
+        "bbox": [
+            506,
+            425,
+            937,
+            577
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ne _ {k, m} ^ {(n) *} = \\sqrt {p _ {k} ^ {(n)}} \\left(R _ {k, m} (p _ {k} ^ {(n)})\\right) ^ {- 1}, \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            607,
+            585,
+            936,
+            614
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {m, b} ^ {(n) *} = \\sqrt {p _ {m} ^ {(n)}} \\left(R _ {m} ^ {B} (p _ {m} ^ {(n)})\\right) ^ {- 1}, \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            607,
+            621,
+            936,
+            650
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "(25) and (26) can be rewritten as respectively ",
+        "bbox": [
+            508,
+            657,
+            816,
+            672
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k, m} ^ {(n) *} = p _ {k} ^ {(n)} \\left(R _ {k, m} (p _ {k} ^ {(n)})\\right) ^ {- 1}, \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            681,
+            936,
+            710
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {m, b} ^ {(n) *} = p _ {m} ^ {(n)} \\left(R _ {m} ^ {B} (p _ {m} ^ {(n)})\\right) ^ {- 1}. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            717,
+            936,
+            744
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The problem P2 is rewritten as ",
+        "bbox": [
+            525,
+            752,
+            740,
+            767
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {P} 2 a: \\min _ {\\{\\mathbf {P} _ {\\mathbf {k}}, \\mathbf {P} _ {\\mathbf {m}} \\}} \\sum_ {k \\in \\mathcal {K}} \\sum_ {m \\in \\mathcal {M}} \\frac {\\left(2 e _ {k , m} \\sqrt {p _ {k}} - e _ {k , m} ^ {2} R _ {k , m} (p _ {m})\\right)}{\\left(a _ {k , m} w ^ {L} \\left(l _ {k} ^ {S} + l _ {k} ^ {B}\\right)\\right) ^ {- 1}} \\\\ + \\sum_ {k \\in \\mathcal {K}} \\sum_ {m \\in \\mathcal {M}} \\frac {\\left(2 r _ {m , b} \\sqrt {p _ {m}} - r _ {m , b} ^ {2} R _ {m} ^ {B} (p _ {m})\\right)}{\\left(a _ {k , m} w ^ {S} l _ {k} ^ {B}\\right) ^ {- 1}}, (31) \\\\ \\text { s.t. } (2 1 \\mathrm{c}), (2 1 \\mathrm{d}), (2 2 \\mathrm{c}), (2 2 \\mathrm{d}). (31a) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            523,
+            776,
+            936,
+            898
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Therefore, problem P2a can be solved using the DC algorithm. The detailed steps are shown in Algorithm 2. ",
+        "bbox": [
+            508,
+            909,
+            936,
+            940
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "8132 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "D. Task Partitioning Optimization ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            79,
+            297,
+            95
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "After solving the association variable optimization and transmission power optimization subproblems, we can solve the task partitioning subproblem by fixing the computing resource allocation. According to user association A, transmission power of MWDs and LEO satellites $\\{ \\mathbf { P _ { k } } , \\mathbf { P _ { m } } \\}$ , and computing resource allocation $\\{ \\mathbf { F _ { S } } , \\mathbf { F _ { B } } \\}$ , task partitioning optimization subproblem is written as ",
+        "bbox": [
+            57,
+            101,
+            489,
+            205
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {P 3}: \\min _ {\\{\\mathbf {L} _ {\\mathbf {S}}, \\mathbf {L} _ {\\mathbf {B}} \\}} \\sum_ {k \\in \\mathcal {K}} w ^ {L} k ^ {L} (L _ {k} - l _ {k} ^ {S} - l _ {k} ^ {B}) X _ {k} (f _ {k} ^ {L}) ^ {2} \\\\ + \\sum_ {k \\in \\mathcal {K}} w ^ {L} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} p _ {k} \\frac {\\left(l _ {k} ^ {S} + l _ {k} ^ {B}\\right)}{R _ {k , m}} \\\\ + \\sum_ {k \\in \\mathcal {K}} w ^ {S} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} k ^ {S} l _ {k} ^ {S} X _ {k} (f _ {k, m} ^ {S}) ^ {2} \\\\ + \\sum_ {k \\in \\mathcal {K}} w ^ {S} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} p _ {m} ^ {B} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} \\\\ + \\sum_ {k \\in \\mathcal {K}} w ^ {B} k ^ {B} l _ {k} ^ {B} X _ {k} (f _ {k} ^ {B}) ^ {2}, \\tag {32} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            104,
+            217,
+            486,
+            417
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } (2 1 \\mathrm{e}), (2 1 \\mathrm{f}), (2 1 \\mathrm{g}), (2 2 \\mathrm{b}), (2 2 \\mathrm{c}), (2 2 \\mathrm{d}). \\tag {32a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            116,
+            424,
+            486,
+            440
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Obviously, the optimization objective is a linear function with respect to $\\bar { l _ { k } ^ { S } }$ and $\\bar { l } _ { k } ^ { B }$ . The constraints (21l), (21m), and (21n) define the domain of $l _ { k } ^ { S }$ and $l _ { k } ^ { B }$ . According to (21l), we can obtain ",
+        "bbox": [
+            57,
+            453,
+            488,
+            513
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {S} + l _ {k} ^ {B} \\geq L _ {k} - \\frac {T _ {k} f _ {k} ^ {L}}{X _ {k}}. \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            188,
+            523,
+            486,
+            558
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Similarly, we can conclude from (21m) and (21n) respectively as follows ",
+        "bbox": [
+            58,
+            569,
+            486,
+            598
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {S} \\leq (T _ {k} - 2 t _ {k, m} ^ {p}) \\left(\\frac {1}{R _ {k , m}} + \\frac {X _ {k}}{f _ {k , m} ^ {S}}\\right) ^ {- 1}, \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            131,
+            609,
+            486,
+            652
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {B} \\leq \\frac {T _ {k} - 2 \\left(t _ {k , m} ^ {p} + t _ {m , b} ^ {p}\\right)}{\\frac {1}{R _ {k , m}} + \\frac {1}{R _ {m} ^ {B}} + \\frac {X _ {k}}{f _ {k} ^ {B}}}. \\tag {35}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            129,
+            657,
+            486,
+            708
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 3: Task Partitioning Optimization. ",
+        "text_level": 1,
+        "bbox": [
+            511,
+            83,
+            823,
+            97
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Initialize: LS and LB with optimized A, $\\mathbf { P _ { k } } .$ and $\\mathbf { P _ { m } } .$ , fixed $\\mathbf { F _ { S } }$ and $\\mathbf { F _ { B } }$ , set $z = 0$ and maximum iterative count $Z _ { \\mathrm { m a x } }$ ",
+        "bbox": [
+            511,
+            99,
+            920,
+            130
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1: repeat ",
+            "2: Calculate $R _ { k , m }$ and $R _ { m } ^ { B }$ according to (8) and (11) $\\forall k , m \\in \\mathcal { K } , \\dot { \\mathcal { M } } ;$ ",
+            "3: Given $\\mathbf { A } , \\mathbf { P _ { k } } , \\mathbf { P _ { m } } , \\mathbf { F _ { S } }$ and $\\mathbf { F _ { B } }$ , solve (39) to obtain LS and $\\mathbf { L } _ { \\mathbf { B } } ;$ ",
+            "4: Update $z = z + 1$ ; ",
+            "= +5: until Objective function converges or $z = Z _ { \\mathrm { m a x } } .$ "
+        ],
+        "bbox": [
+            518,
+            131,
+            915,
+            236
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Output: Optimal task partitioning $\\mathbf { L } _ { \\mathbf { S } }$ and $\\mathbf { L _ { B } }$ ",
+        "bbox": [
+            511,
+            237,
+            828,
+            251
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Thus, we can obtain the upper bound of $l _ { k } ^ { S }$ ",
+        "bbox": [
+            516,
+            282,
+            809,
+            299
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {S} \\leq \\min \\left\\{L _ {k}, \\frac {T _ {k} - 2 t _ {k , m} ^ {p}}{\\frac {1}{R _ {k , m}} + \\frac {X _ {k}}{f _ {k , m} ^ {S}}} \\right\\}, \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            599,
+            306,
+            929,
+            354
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "the lower bound and upper bound of $l _ { k } ^ { B }$ can be respectively given by ",
+        "bbox": [
+            500,
+            363,
+            930,
+            393
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {B} \\geq \\max \\left\\{0, L _ {k} - l _ {k} ^ {S} - \\frac {T _ {k} f _ {k} ^ {L}}{X _ {k}} \\right\\}, \\tag {37}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            535,
+            400,
+            929,
+            436
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {B} \\leq \\min \\left\\{L _ {k} - l _ {k} ^ {S}, \\frac {T _ {k} - 2 \\left(t _ {k , m} ^ {p} + t _ {m , b} ^ {p}\\right)}{\\frac {1}{R _ {k , m}} + \\frac {1}{R _ {m} ^ {B}} + \\frac {X _ {k}}{f _ {k} ^ {B}}} \\right\\}. \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            535,
+            441,
+            929,
+            491
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The problem P3 can be rewritten as (39) shown at the bottom of this page. Obviously, problem P3a can be solved with CVX toolbox, since it is a convex problem. The detailed solution steps are shown in Algorithm 3. ",
+        "bbox": [
+            500,
+            497,
+            930,
+            556
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "$E .$ Joint Computing Resource Optimization of LEO Satellite and OBS ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            574,
+            912,
+            603
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Fixing association variable A, transmission power of MWDs and LEO satellites $\\{ \\mathbf { P _ { k } } , \\mathbf { P _ { m } } \\}$ , and the task partitioning $\\{ \\mathbf { L } _ { \\mathbf { S } } , \\mathbf { L } _ { \\mathbf { B } } \\}$ , the joint computing resource allocation of LEO Satellites and OBS subproblem is written as ",
+        "bbox": [
+            500,
+            609,
+            930,
+            671
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {P} 4: \\min _ {\\{\\mathbf {F} _ {\\mathbf {S}}, \\mathbf {F} _ {\\mathbf {B}} \\}} \\sum_ {k \\in \\mathcal {K}} w ^ {S} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} k ^ {S} l _ {k} ^ {S} X _ {k} \\left(f _ {k, m} ^ {S}\\right) ^ {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            548,
+            678,
+            882,
+            712
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {P} 3 a: \\min _ {\\{\\mathbf {L} _ {\\mathbf {S}}, \\mathbf {L} _ {\\mathbf {B}} \\}} \\sum_ {k \\in \\mathcal {K}} w ^ {L} k ^ {L} L _ {k} X _ {k} (f _ {k} ^ {L}) ^ {2} + \\sum_ {k \\in \\mathcal {K}} \\sum_ {m \\in \\mathcal {M}} l _ {k} ^ {S} \\left(\\frac {a _ {k , m} w ^ {L} p _ {k}}{R _ {k , m}} + a _ {k, m} k ^ {S} w ^ {S} X _ {k} (f _ {k, m} ^ {S}) ^ {2} - w ^ {L} k ^ {L} X _ {k} (f _ {k} ^ {L}) ^ {2}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            732,
+            875,
+            771
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\sum_ {k \\in \\mathcal {K}} l _ {k} ^ {B} \\left(w ^ {B} k ^ {B} X _ {k} \\left(f _ {k} ^ {B}\\right) ^ {2} + w ^ {L} \\sum_ {m \\in \\mathcal {M}} \\frac {a _ {k , m} p _ {k}}{R _ {k , m}} + w ^ {S} \\sum_ {m \\in \\mathcal {M}} \\frac {a _ {k , m} p _ {m}}{R _ {m} ^ {B}} - w ^ {L} k ^ {L} X _ {k} \\left(f _ {k} ^ {L}\\right) ^ {2}\\right) \\tag {39}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            156,
+            776,
+            929,
+            818
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad 0 \\leq l _ {k} ^ {S} \\leq \\min \\left\\{L _ {k}, \\frac {T _ {k} - 2 t _ {k , m} ^ {p}}{\\frac {1}{R _ {k , m}} + \\frac {X _ {k}}{f _ {k , m} ^ {S}}} \\right\\}, \\tag {39a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            132,
+            824,
+            929,
+            873
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max \\left\\{0, L _ {k} - l _ {k} ^ {S} - \\frac {T _ {k} f _ {k} ^ {L}}{X _ {k}} \\right\\} \\leq l _ {k} ^ {B} \\leq \\min \\left\\{L _ {k} - l _ {k} ^ {S}, \\frac {T _ {k} - 2 \\left(t _ {k , m} ^ {p} + t _ {m , b} ^ {p}\\right)}{\\frac {1}{R _ {k , m}} + \\frac {1}{R _ {m} ^ {B}} + \\frac {X _ {k}}{f _ {k} ^ {B}}} \\right\\}, \\tag {39b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            878,
+            929,
+            929
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "ZHANG et al.: ENERGY ORIENTED THREE-TIER COMPUTATION OFFLOADING SCHEME ",
+        "bbox": [
+            58,
+            37,
+            531,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "8133 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            960,
+            863,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\sum_ {k \\in \\mathcal {K}} w ^ {B} k ^ {B} l _ {k} ^ {B} X _ {k} \\left(f _ {k} ^ {B}\\right) ^ {2} \\tag {40}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            191,
+            79,
+            494,
+            113
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "$\\mathrm { s . t . } ( 2 1 \\mathrm { h } ) - ( 2 1 \\mathrm { k } ) , ( 2 2 \\mathrm { c } ) , ( 2 2 \\mathrm { d } ) .$ (40a) ",
+        "bbox": [
+            176,
+            119,
+            493,
+            135
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "By analyzing the optimization objective, we observe that problem P4 is a convex problem with respect to ${ \\bf { F } } _ { \\bf { S } }$ and $\\mathbf { F _ { B } }$ . We utilize the Lagrangian dual method to obtain solution of problem P4, and Lagrangian objective function is given by (41) shown at the bottom of the page, where $\\lambda , \\mu , \\upsilon ,$ and ω are Lagrange multipliers. The coordinate rotation method is utilized to solve optimal $\\mathbf { F _ { S } }$ and $\\mathbf { F _ { B } }$ . Specifically, in n-th iteration, first, input $f _ { k } ^ { B }$ after the update of $( n - 1 )$ -th iteration, and solve the optimal $f _ { k , m } ^ { S }$ ( )of n-th iteration. Then, input the optimal $f _ { k , m } ^ { S }$ of the n-th iteration, and solve the optimal $f _ { k } ^ { B }$ of n-th iteration. The iterative solution method can be formulated as ",
+        "bbox": [
+            65,
+            150,
+            496,
+            316
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k, m} ^ {S (n)} = \\underset {f _ {k, m} ^ {S}} {\\arg \\min} \\mathcal {L} \\left(f _ {k, m} ^ {S}, f _ {k} ^ {B (n - 1)}, \\lambda , \\mu , v, \\omega\\right), \\tag {42}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            101,
+            327,
+            494,
+            362
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k} ^ {B (n)} = \\underset {f _ {k} ^ {B}} {\\arg \\min} \\mathcal {L} \\left(f _ {k, m} ^ {S (n)}, f _ {k} ^ {B}, \\lambda , \\mu , v, \\omega\\right), \\tag {43}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            369,
+            494,
+            402
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where f k,m $f _ { k , m } ^ { S ( n ) }$ and $f _ { k } ^ { B ( n ) }$ denote the optimal $F _ { S } , F _ { B }$ obtained in the n-th iteration, respectively. ",
+        "bbox": [
+            65,
+            416,
+            494,
+            450
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Proposition 2: Given user association A, transmission power of MWDs and LEO satellites $\\{ \\mathbf { P _ { k } } , \\mathbf { P _ { m } } \\}$ , task partitioning $\\{ \\mathbf { L } _ { \\mathbf { S } } , \\mathbf { L } _ { \\mathbf { B } } \\}$ , computing resourcnge multipliers of the tion -th i $\\{ \\mathbf { F _ { S } ^ { ( n - 1 ) } } , \\mathbf { F _ { B } ^ { ( n - 1 ) } } \\}$ ,g $( n - 1 )$ ( )to the first-order derivative optimality condition of the convex function, when $\\begin{array} { r } { \\frac { \\partial \\mathcal { L } } { \\partial f _ { k , m } } = 0 } \\end{array}$ and $\\begin{array} { r } { \\frac { \\partial \\mathcal { L } } { \\partial f _ { k } ^ { B } } = 0 } \\end{array}$ 0, the optimal F(n)S $\\mathbf { F _ { S } ^ { ( n ) } }$ and ∂fk,m $\\mathbf { F _ { B } ^ { ( n ) } }$ can be given by ",
+        "bbox": [
+            65,
+            450,
+            496,
+            568
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} f _ {k, m} ^ {S} = - \\frac {\\lambda_ {m}}{6 \\eta} \\\\ + \\sqrt [ 3 ]{\\frac {1 0 8 v _ {k} \\eta^ {2} \\varphi - 2 \\lambda_ {m} ^ {3}}{4 3 2 \\eta^ {3}} + \\sqrt {\\left(\\frac {2 \\lambda_ {m} ^ {3} - 1 0 8 \\eta^ {2} v _ {k} \\varphi}{4 3 2 \\eta^ {3}}\\right) ^ {2} + \\left(\\frac {- \\lambda_ {m} ^ {2}}{3 6 \\eta^ {2}}\\right) ^ {3}}} \\\\ + \\sqrt [ 3 ]{\\frac {1 0 8 v _ {k} \\eta^ {2} \\varphi - 2 \\lambda_ {m} ^ {3}}{4 3 2 \\eta^ {3}} - \\sqrt {\\left(\\frac {2 \\lambda_ {m} ^ {3} - 1 0 8 \\eta^ {2} v _ {k} \\varphi}{4 3 2 \\eta^ {3}}\\right) ^ {2} + \\left(\\frac {- \\lambda_ {m} ^ {2}}{3 6 \\eta^ {2}}\\right) ^ {3}}}, \\tag {44} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            65,
+            580,
+            494,
+            736
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k} ^ {B} = - \\frac {\\mu_ {b}}{6 \\xi}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            65,
+            743,
+            149,
+            771
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} + \\sqrt [ 3 ]{\\frac {1 0 8 \\omega_ {k} \\xi^ {2} \\delta - 2 \\mu_ {b} ^ {3}}{4 3 2 \\xi^ {3}} + \\sqrt {\\left(\\frac {2 \\mu_ {b} ^ {3} - 1 0 8 \\xi^ {2} \\omega_ {k} \\delta}{4 3 2 \\xi^ {3}}\\right) ^ {2} + \\left(\\frac {- \\mu_ {b} ^ {2}}{3 6 \\xi^ {2}}\\right) ^ {3}}} \\\\ + \\sqrt [ 3 ]{\\frac {1 0 8 \\omega_ {k} \\xi^ {2} \\delta - 2 \\mu_ {b} ^ {3}}{4 3 2 \\xi^ {3}} + \\sqrt {\\left(\\frac {2 \\mu_ {b} ^ {3} - 1 0 8 \\xi^ {2} \\omega_ {k} \\delta}{4 3 2 \\xi^ {3}}\\right) ^ {2} + \\left(\\frac {- \\mu_ {b} ^ {2}}{3 6 \\xi^ {2}}\\right) ^ {3}}}, \\tag {45} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            510,
+            80,
+            939,
+            198
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "and where $\\delta = l _ { k } ^ { B } X _ { k }$ $\\eta = a _ { k , m } w ^ { S } k ^ { S } X _ { k } l _ { k } ^ { S } , \\varphi = a _ { k , m } l _ { k } ^ { S } X _ { k } , \\xi = w ^ { B } k ^ { B } X _ { k } l _ { k } ^ { B }$ m k  k   = k,m k k  . The closed-form solutions of $f _ { k , m } ^ { S }$ and $f _ { k } ^ { B }$ k  k are obtained by using the optimality condition for the first-order derivative of convex function. ",
+        "bbox": [
+            506,
+            210,
+            937,
+            272
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "After obtaining the optimal $f _ { k , m } ^ { S }$ and $f _ { k } ^ { B }$ during each iteration, we update the Lagrange multipliers as follows ",
+        "bbox": [
+            506,
+            272,
+            937,
+            305
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda_ {m} ^ {(n)} = \\lambda_ {m} ^ {(n - 1)} + \\theta_ {\\lambda} \\left(\\sum_ {k \\in \\mathcal {K}} f _ {k, m} ^ {S} - f _ {S} ^ {\\max}\\right), \\tag {46}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            316,
+            937,
+            357
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu_ {b} ^ {(n)} = \\mu_ {b} ^ {(n - 1)} + \\theta_ {\\mu} \\left(\\sum_ {k \\in \\mathcal {K}} f _ {k} ^ {B} - f _ {B} ^ {\\max}\\right), \\tag {47}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            364,
+            937,
+            405
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} v _ {k} ^ {(n)} = v _ {k} ^ {(n - 1)} + \\theta_ {v} \\sum_ {m \\in \\mathcal {M}} \\left(a _ {k, m} \\frac {l _ {k} ^ {S}}{R _ {k , m}} + a _ {k, m} \\frac {l _ {k} ^ {S} X _ {k}}{f _ {k , m} ^ {S}}\\right) \\\\ + \\theta_ {v} \\left(2 \\sum_ {m \\in \\mathcal {M}} a _ {k, m} t _ {k, m} ^ {p} - T _ {k}\\right), \\tag {48} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            412,
+            937,
+            500
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\omega_ {k} ^ {(n)} = \\omega_ {k} ^ {(n - 1)} + \\theta_ {\\omega} \\sum_ {m \\in \\mathcal {M}} \\left(a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {k , m}} + a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            505,
+            873,
+            544
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\theta_ {\\omega} \\left(\\frac {l _ {k} ^ {B} X _ {k}}{f _ {k} ^ {B}} + 2 \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\left(t _ {k, m} ^ {p} + t _ {m, b} ^ {p}\\right) - T _ {k}\\right), \\tag {49}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            572,
+            551,
+            937,
+            606
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where the La $\\theta _ { \\lambda } , \\theta _ { \\mu } , \\theta _ { v }$ , and ltiplie $\\theta _ { \\omega }$ denote the iterative Finally, the optimal th ofand $f _ { k , m } ^ { S ^ { \\sum } } , \\ : f _ { k } ^ { \\sum }$ Lagrange multipliers are obtained by updating through many iterations. The Algorithm 4 summarizes the specific solution to problem P4. ",
+        "bbox": [
+            506,
+            619,
+            937,
+            696
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "F. Joint Iterative Algorithm Design and Complexity Analysis ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            717,
+            924,
+            733
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "We design an iterative algorithm to jointly optimize the association variable, transmission power, task partitioning, and ",
+        "bbox": [
+            506,
+            738,
+            937,
+            770
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {L} \\left(f _ {k, m}, f _ {k} ^ {B}, \\lambda , \\mu , v, \\omega\\right) = \\sum_ {k \\in \\mathcal {K}} \\sum_ {m \\in \\mathcal {M}} a _ {k, m} w ^ {S} k ^ {S} X _ {k} l _ {k} ^ {S} \\left(f _ {k, m}\\right) ^ {2} + \\sum_ {k \\in \\mathcal {K}} w ^ {B} k ^ {B} X _ {k} l _ {k} ^ {B} \\left(f _ {k} ^ {B}\\right) ^ {2} + \\lambda \\left(\\sum_ {k \\in \\mathcal {K}} f _ {k, m} - f _ {S} ^ {\\max}\\right) \\\\ + \\mu \\left(\\sum_ {k \\in K} f _ {k} ^ {B} - f _ {B} ^ {\\max}\\right) + v \\left(\\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {S}}{R _ {k , m}} + \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {S} X _ {k}}{f _ {k , m} ^ {S}} + 2 \\sum_ {m \\in \\mathcal {M}} a _ {k, m} t _ {k, m} ^ {p} - T _ {k}\\right) \\\\ + \\omega \\left(\\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {k , m}} + \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\frac {l _ {k} ^ {B}}{R _ {m} ^ {B}} + \\frac {l _ {k} ^ {B} X _ {k}}{f _ {k} ^ {B}} + 2 \\sum_ {m \\in \\mathcal {M}} a _ {k, m} \\left(t _ {k, m} ^ {p} + t _ {m, b} ^ {p}\\right) - T _ {k}\\right), \\tag {41} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            87,
+            791,
+            937,
+            929
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "8134 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            960,
+            863,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 4: Joint Computing Resource Optimization of LEO Satellites and OBS Algorithm. "
+        ],
+        "code_body": "Initialize: $F_{S}$ , $F_{B}$ , $\\lambda$ , $\\mu$ , v, $\\omega$ , $\\theta_{\\lambda}$ , $\\theta_{\\mu}$ , $\\theta_{v}$ , and $\\theta_{\\omega}$ with optimized A, $P_{k}$ , $P_{m}$ , $L_{S}$ and $L_{B}$ , set d = 0 and maximum iterative count $D_{max}$ 1: repeat\n\n2: Given A, $P_{k}$ , $P_{m}$ , $L_{S}$ and $L_{B}$ , solve (40) to obtain $F_{S}$ and $F_{B}$ ;\n\n3: Update $\\lambda$ , $\\mu$ , v, and $\\omega$ using (46), (47), (48), and (49);\n\n4: Update $d = d + 1$ ;\n\n5: until Objective function converges or $d = D_{max}$ .\n\nEnsure: Optimal computing resource allocation $F_{S}$ and $F_{B}$ ",
+        "bbox": [
+            67,
+            114,
+            479,
+            267
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 5: Joint Iterative Optimization Algorithm. "
+        ],
+        "code_body": "Initialize: A, $P_{k}$ , $P_{m}$ , $L_{S}$ , $L_{B}$ , $F_{S}$ , $F_{B}$ , $T_{k}$ , $X_{k}$ , $f_{k}^{L}$ , $w^{L}$ , $w^{S}$ , $w^{B}$ , $\\epsilon$ , maximum iterative count $I_{max}$ , and i = 0.\n\n1: Calculate $R_{k,m}^{(0)}$ and $R_{m}^{B(0)}$ according to (8) and (11);\n\n2: Calculate $\\{\\sum_{k\\in\\mathcal{K}}e_{k}^{(0)}\\}$ according to (20);\n\n3: while $i \\leq I_{max}$ or $|\\sum_{k\\in\\mathcal{K}}e_{k}^{(i+1)} - \\sum_{k\\in\\mathcal{K}}e_{k}^{(i)}| \\geq \\epsilon$ do\n\n4: Calculate $A^{(i)}$ according to Algorithm 1;\n\n5: Given optimized $A^{(i)}$ , obtain $P_{k}^{(i)}$ and $P_{m}^{(i)}$ according to Algorithm 2;\n\n6: Given optimized $A^{(i)}$ , $P_{k}^{(i)}$ , and $P_{m}^{(i)}$ , obtain $L_{S}^{(i)}$ and $L_{B}^{(i)}$ according to Algorithm 3;\n\n7: Given $A^{(i)}$ , $P_{k}^{(i)}$ , $P_{m}^{(i)}$ , $L_{S}^{(i)}$ , and $L_{B}^{(i)}$ , obtain $F_{S}^{(i)}$ and $F_{B}^{(i)}$ according to Algorithm 4;\n\n8: Update $i = i + 1$ ;\n\n9: end while\n\n10: Return the optimal association variable $\\{A\\}$ , transmission power $\\{P_{k}, P_{m}\\}$ , task partitioning $\\{L_{S}, L_{B}\\}$ , and computing resource allocation $\\{F_{S}, F_{B}\\}$ .\n\nOutput: Optimal A, $P_{k}$ , $P_{m}$ , $L_{S}$ , $L_{B}$ , $F_{S}$ , and $F_{B}$ ",
+        "bbox": [
+            67,
+            311,
+            479,
+            609
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "computing resource allocation. The specific steps are in Algorithm 5. Then, we give an analysis of the algorithm complexity. The number of MWDs and LEO satellites affects complexity of Algorithm 1. We obtain the association variable by solving (23), assuming that convergence requires $L _ { 1 }$ steps. Therefore, the complexity of Algorithm 1 is $\\mathcal { O } ( L _ { 1 } K M + K M + M )$ . The ( + + )same loop as Algorithm 1 is used in Algorithm 2. Assuming that $L _ { 2 }$ iterations are required by solving (31), the complexity of Algorithm 2 is $\\mathcal { O } ( 2 L _ { 2 } ( K + M ) + K M + M )$ . Assuming that $L _ { 3 }$ ( ( + ) + + )iterations are required in Algorithm 3, the complexity of Algorithm 3 is $\\mathcal { O } ( 2 K L _ { 3 } + K M + M )$ . The complexity of Algorithm 4 is $\\mathcal { O } ( L _ { 4 } ( 4 K + M ) )$ +, where $L _ { 4 }$ denotes that solving (40) required iterations. Therefore, the complexity of Algorithm 5 is $\\mathcal { O } ( L _ { 1 } K M + 2 L _ { 2 } ( K + M ) + 2 K L _ { 3 } + 3 ( K M +$ $M ) + L _ { 4 } ( 4 K + M ) )$ . ",
+        "bbox": [
+            57,
+            642,
+            486,
+            869
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "IV. SIMULATION RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            181,
+            888,
+            363,
+            902
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In this section, we evaluate the effectiveness of our proposed scheme in maritime edge computing system using Matlab. We ",
+        "bbox": [
+            58,
+            910,
+            488,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "table",
+        "img_path": "images/7e3615dabaa21655ade58ce294cf484705374764af95b1c3e66529a47f978378.jpg",
+        "table_caption": [
+            "TABLE II SIMULATION PARAMETERS SETTING "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameters</td><td>Values</td></tr><tr><td>Maximum transmit power of MWDs,  $p_{k}^{max}$ </td><td>2.5 W</td></tr><tr><td>Maximum transmit power of LEO satellites,  $p_{m}^{max}$ </td><td>5 W</td></tr><tr><td>Maximum tolerable latency,  $T_{k}$ </td><td>1.5 s</td></tr><tr><td>MWDs&#x27; task size,</td><td>2 MB</td></tr><tr><td>The altitude of LEO satellites,</td><td>[400, 500] km</td></tr><tr><td>CPU cycles for processing one bit,  $X_{k}$ </td><td>100</td></tr><tr><td>MWDs&#x27; computational capacity,  $f_{k}^{L}$ </td><td>1 GHz</td></tr><tr><td>LEO satellites&#x27; maximum computational capacity,  $f_{S}^{max}$ </td><td>10 GHz</td></tr><tr><td>OBS&#x27;s maximum computational capacity,  $f_{B}^{max}$ </td><td>20 GHz</td></tr><tr><td>Energy switched factor,  $k^{L}, k^{S}, k^{B}$ </td><td> $10^{-26}$ </td></tr></table>",
+        "bbox": [
+            508,
+            113,
+            925,
+            243
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d7a89648f6daedbc1370b17de257ea322942dbe03d606c9210adf87baedd9133.jpg",
+        "content": "| Number of iterations | L = 1 MB | L = 2 MB | L = 3 MB |\n| -------------------- | -------- | -------- | -------- |\n| 1                    | 17       | 32       | 41       |\n| 2                    | 6        | 15       | 30       |\n| 3                    | 6        | 15       | 29       |\n| 4                    | 6        | 15       | 28       |\n| 5                    | 6        | 15       | 28       |\n| 6                    | 6        | 15       | 28       |\n| 7                    | 6        | 15       | 28       |\n| 8                    | 6        | 15       | 28       |\n| 9                    | 6        | 15       | 28       |\n| 10                   | 6        | 15       | 28       |",
+        "chart_caption": [
+            "Fig. 3. Convergence of the proposed algorithm. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            547,
+            276,
+            885,
+            486
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "consider that LEO satellites are randomly deployed in a 10km × 10km square area. In addition, the altitude of LEO satellites is [400, 500] km. Computing task size of MWDs is 2MB, servers compute a bit computing task requires 100 cycles [33], and the maximum tolerable latency of tasks is 1.5 s. The noise power spectral density of the satellite-terrestrial communication link is −203 dBm [33]. The computational capacities of MWDs, LEO satellites and OBS are 1 GHz, 10 GHz, and 20 GHz, respectively [17], [32], [35]. Table II lists the key simulation parameters of the maritime edge computing system [17], [33], [36], [37], [38], [39], [40]. ",
+        "bbox": [
+            500,
+            547,
+            930,
+            712
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 3 verifies that the proposed algorithm converges at different task sizes. System energy consumption is shown to be decreasing and eventually stabilizes to reach convergence. Moreover, with the task size is increasing, system energy consumption increases. The proposed scheme achieves good convergence under different task sizes. ",
+        "bbox": [
+            500,
+            713,
+            930,
+            801
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 depicts the association between LEO satellites and MWDs. In the proposed scheme, we consider the effect of user association on intra-cell interference and system energy consumption. The impact of intra-cell interference is reduced by optimizing user association to avoid aggregation of MWDs, which improves the link transmission rate between MWDs and LEO satellites and reduces system energy consumption. We will further discuss the performance of the proposed scheme in the following comparison. ",
+        "bbox": [
+            500,
+            804,
+            930,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "ZHANG et al.: ENERGY ORIENTED THREE-TIER COMPUTATION OFFLOADING SCHEME ",
+        "bbox": [
+            58,
+            37,
+            531,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "8135 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/4e20d1ab6149db581362017318f0a54838411ec422525073e2e9b24f2e632c35.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 4. The association between LEO satellites and MWDs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            107,
+            80,
+            454,
+            297
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/943c38d59223735a01c39a81f780464bdbb8e7808a8bd0fbd893d9177f38b01a.jpg",
+        "content": "| Task size [MB] | PLC  | TTCO | Max-Gain | SACO | TTMCO |\n| -------------- | ---- | ---- | -------- | ---- | ----- |\n| 1.0            | 42   | 7    | 7        | 14   | 6     |\n| 1.5            | 60   | 11   | 11       | 26   | 11    |\n| 2.0            | 80   | 20   | 16       | 38   | 15    |\n| 2.5            | 100  | 29   | 23       | 50   | 20    |\n| 3.0            | 120  | 43   | 31       | 60   | 27    |\n| 3.5            | 140  | 54   | 39       | 64   | 36    |",
+        "chart_caption": [
+            "Fig. 5. System energy consumption versus the bits of MWDs’ task. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            117,
+            337,
+            444,
+            545
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "We consider a comparison with the following schemes to validate the performance of the proposed scheme: 1) Pure local computation (PLC): MWDs process tasks locally without offloading [36]. 2) Average LEO computing resource (ACR): LEO satellites’ computing resource are equally divided among the associated MWDs [40]. 3) Two-tier computation offloading (TTCO): LEO satellites and OBS are used to collaborate in the computation offloading, and the tasks cannot be processed locally [33]. 4) Maximum channel gain (Max-Gain): MWDs select LEO satellites with maximum channel gain, and the task can be processed locally, LEO satellite and OBS in parallel [33]. 5) Simulated annealing computation offloading scheme (SACO): Optimizing task partitioning using simulated annealing algorithm [41]. 6) Three-tier maritime computation offloading scheme (TTMCO): The proposed LEO satellite and OBS-supported computation offloading scheme in this paper. ",
+        "bbox": [
+            63,
+            593,
+            493,
+            834
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 5 illustrates system energy consumption versus the bits of MWDs’ task. The system energy consumption of all the schemes shows an increasing trend as the task size continues to increase. Furthermore, the energy-saving advantage of TTMCO expands compared to benchmark schemes. This is because TTMCO adjusts task partitioning and computing resource allocation according to changes in task size. When tasks become too large, the computing resource of MWDs may fail to satisfy the maximum tolerable latency constraint. Consequently, when the task size exceeds 1.5 MB, PLC is unable to meet the processing requirements of tasks. To adhere to the limit of maximum tolerable latency, MWD offloads a larger portion of the task to the LEO satellite and OBS for processing, resulting in increased transmission latency. Therefore, the LEO satellites and OBS need to allocate additional computing resource to process the tasks, which leads to an increase regarding system energy consumption in the TTCO and Max-Gain schemes. On the other hand, energy consumption of TTCO gradually exceeds Max-Gain. The unreasonable task partitioning dramatically increases system energy consumption in the SACO scheme. In the ACR scheme, the computational capacity allocated to tasks by the LEO satellite is much higher than that required for processing tasks, leading to a significant increase in the system energy consumption. ",
+        "bbox": [
+            63,
+            834,
+            494,
+            941
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/fba46c15650c735ec9ce2aa41fce40491e60e3c68bdafdac13667c6b9d4fc0e9.jpg",
+        "content": "| The number of MWDs | ACR  | TTCO | Max-Gain | SACO | TTMCO |\n| ------------------ | ---- | ---- | -------- | ---- | ----- |\n| 2                  | 120  | 10   | 10       | 15   | 10    |\n| 4                  | 75   | 15   | 15       | 30   | 15    |\n| 6                  | 70   | 20   | 20       | 45   | 20    |\n| 8                  | 75   | 25   | 25       | 60   | 25    |\n| 10                 | 80   | 30   | 30       | 75   | 30    |\n| 12                 | 90   | 40   | 35       | 90   | 35    |\n| 14                 | 100  | 50   | 40       | 105  | 40    |\n| 16                 | 110  | 60   | 45       | 120  | 45    |\n| 18                 | 120  | 75   | 50       | 135  | 50    |",
+        "chart_caption": [
+            "Fig. 6. System energy consumption versus MWD’s number. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            553,
+            80,
+            893,
+            290
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            335,
+            937,
+            592
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 6 verifies the correlation among the number of MWDs and system energy consumption. The increase in the number of MWDs leads to an increase in the total task size of the system, which in turn leads to an upward trend in the system energy consumption of TTCO, Max-Gain, SACO, and TTMCO. TTMCO has the lowest system energy consumption compared to the benchmark scenario. This is because TTMCO considers the effect of interference and reduces energy consumption by optimizing the user association. Max-Gain adjusts the user association based on the channel gain and ignores the effect of intra-cell interference on the transmission rate, resulting in an increase in the system energy consumption. In the ACR scheme, the number of MWDs associated with LEO satellites is small at the initial stage, and the average computational capacity far exceeds the task processing requirement, resulting in high system energy consumption. As the number of MWDs increases, the average computational capacity of LEO satellites decreases. The computational capacity used for task processing is gradually reasonable, and the system energy consumption is gradually reduced. Then, the increase in the number of MWDs affects the increase in the system task size, resulting in a continued rise in system energy consumption. Compared to TTCO and SACO, the performance gap between the two schemes continues to widen. Tasks cannot be computed locally, and the increase in task size leads to an increase in the transmission latency and energy consumption of MWDs. However, the increase in transmission latency drives the need for LEO satellites or OBS to allocate more computational capacity to process tasks to satisfy latency constraints. ",
+        "bbox": [
+            506,
+            593,
+            937,
+            941
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "8136 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/dfca4e44b3b89317f8d84763d2808a79d6c2944a21d6babe545fcb72bd0b93e9.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 7. System energy consumption versus LEO satellites’ altitude. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            107,
+            80,
+            439,
+            289
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            351,
+            486,
+            439
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Fig. 7 compares the performance of computation offloading schemes at different LEO satellite altitudes. System energy consumption of all schemes shows an increasing trend as LEO satellite orbit altitude increases. The increase in satellite altitude leads to a larger transmission distance and more energy is consumed for task offloading. Furthermore, LEO satellites need to allocate more computing resource to meet the maximum tolerable latency constraint. Compared to ACR, TTCO, Max-Gain, and SACO, TTMCO has the lowest system energy consumption. This can be attributed to TTMCO can adjust the task partitioning, user association and resource allocation according to LEO satellites’ altitude, providing a more reasonable and flexible offloading strategy to optimize the system energy consumption. In ACR scheme, the equalization strategy of computational capacity allocated by LEO satellite to associated MWDs exceeds the task processing requirements and consumes more system energy. In Max-Gain scheme, the user association is determined by channel gain, which tends to cause MWDs aggregations. The limited bandwidth of LEO satellites affects the transmission rate between MWDs and LEO satellites, thus increasing energy consumption. The increase in LEO satellite altitude affects the transmission latency for task offloading. In TTCO and SACO schemes, more tasksize are usually processed on the LEO satellites to meet the latency constraints. LEO satellites allocate more computing resource to process tasks resulting in increased energy consumption. It’s crucial to employ reasonable user association, task partitioning, and resource allocation strategies to mitigate system energy consumption. ",
+        "bbox": [
+            60,
+            441,
+            488,
+            878
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Fig. 8 compares number of LEO satellites and system energy consumption at different computational capacities of MWDs. The computational capability of MWDs and the number of LEO satellites have an impact on system energy consumption. System energy consumption is decreasing along with the deployment scale of LEO satellites. LEO satellites have limited communication resource. The growing number of LEO satellites provides more access possibilities to MWDs, which reduces the possibility of MWDs aggregation. Additionally, there exists a positive correlation between the computational capability of MWDs and system energy consumption. This is particularly significant in scenarios where tasks cannot be entirely offloaded to LEO satellites or OBS for processing due to the necessity of meeting maximum tolerable latency requirements. Moreover, the augmentation of local computational capacity results in heightened computing energy consumption. The results indicate that TTMCO adapts to changes in the computational capacity of MWDs and the scale of satellites deployment, enabling superior energy savings through the adjustment of computation offloading and resource allocation strategies. ",
+        "bbox": [
+            57,
+            880,
+            488,
+            941
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/72bbae40d44a185328b6bf7346e40d3cf895d432a558e2eccafe194abe48906e.jpg",
+        "content": "| The number of LEO satellites | f_k^L = 0.8 GHz | f_k^L = 0.9 GHz | f_k^L = 1.0 GHz | f_k^L = 1.1 GHz | f_k^L = 1.2 GHz |\n| ---------------------------- | --------------- | --------------- | --------------- | --------------- | --------------- |\n| 3                            | 14.8            | 14.85           | 14.9            | 14.95           | 14.95           |\n| 5                            | 14.75           | 14.8            | 14.85           | 14.9            | 14.9            |\n| 7                            | 14.65           | 14.75           | 14.8            | 14.85           | 14.8            |\n| 9                            | 14.6            | 14.65           | 14.7            | 14.75           | 14.7            |\n| 11                           | 14.5            | 14.55           | 14.6            | 14.65           | 14.6            |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            547,
+            82,
+            885,
+            290
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/43f2fc8e77a1d081e4788b9ab9dbb9d2e8465f13bab79c19ecbb73a13cafaa21.jpg",
+        "content": "| The altitude of LEO satellites [km] | System energy consumption [Joule] (Tk = 1.7s) | System energy consumption [Joule] (Tk = 1.6s) | System energy consumption [Joule] (Tk = 1.5s) |\n| :--- | :--- | :--- | :--- |\n| [300, 400] | 13.2 | 13.8 | 14.5 |\n| [400, 500] | 13.5 | 14.2 | 14.8 |\n| [500, 600] | 13.8 | 14.8 | 15.5 |\n| [600, 700] | 14.2 | 15.2 | 15.6 |\n| [700, 800] | 14.5 | 15.5 | 15.7 |",
+        "chart_caption": [
+            "Fig. 8. System energy consumption versus LEO satellites’ number. ",
+            "Fig. 9. System energy consumption versus maximum tolerable latency. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            550,
+            325,
+            880,
+            534
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            578,
+            930,
+            819
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Fig. 9 shows LEO satellite’s altitude and system energy consumption at different maximum tolerable latency. When comparing LEO satellite orbital altitudes, there is a notable increase in system energy consumption as the altitude rises. This trend stems from the positive correlation between orbital altitude and transmission distance to MWDs. The elongated transmission distance results in higher transmission latency for task offloading, necessitating greater computational capacity allocation by satellites to meet latency requirements. Consequently, this leads to a significant rise in computing energy consumption. Moreover, the maximum tolerable latency of tasks has a positive impact on reducing the system energy consumption. With a higher maximum tolerable latency, MWDs can offload more tasks to LEO satellites and OBS for processing, thereby mitigating computing energy consumption. On the other hand, LEO satellites can meet the task processing latency requirements by allocating fewer computing resource. ",
+        "bbox": [
+            500,
+            819,
+            930,
+            941
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "ZHANG et al.: ENERGY ORIENTED THREE-TIER COMPUTATION OFFLOADING SCHEME ",
+        "bbox": [
+            58,
+            37,
+            531,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "8137 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            496,
+            217
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "V. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            220,
+            250,
+            340,
+            262
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "This paper designs a maritime edge computing system which aims to provide communication and computing services for MWDs. We formulate a non-convex energy consumption minimization problem. Specifically, to solve the MINLP problem, we decompose original problem into four subproblems and design algorithms to solve the corresponding subproblems. First, for the associated variable subproblem, we use slack variable method to transform the subproblem into a convex problem for solving. We solve joint transmission power optimization of MWDs and LEO satellites subproblem using quadratic transformation method. Then, the upper and lower bounds of offloading task size are obtained by deducing constraints, which are utilized for solving task partitioning subproblem. We solve joint computing resource optimization of LEO satellites and OBS subproblem using Lagrangian dual method and coordinate transformation method to obtain computing resource allocation. Thereafter, we design an iterative algorithm to jointly optimize the association variable, transmission power, task partitioning and computing resource allocation to obtain optimal variables to minimize system energy consumption. Finally, the performance of the proposed scheme in multiple environments is verified by simulation results. In the future, we will explore the complexity of the proposed scheme, challenges, and the key factors (e.g., spectrum resources) for scaling and deploying the scheme in real-world scenarios. In addition, we will study satellite-marine computing schemes in dynamic scenarios and consider designing UAV-assisted maritime edge computing systems. ",
+        "bbox": [
+            63,
+            270,
+            496,
+            680
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "APPENDIX A PROOF OF PROPOSITION 1 ",
+        "text_level": 1,
+        "bbox": [
+            191,
+            710,
+            367,
+            739
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In Subproblem P2a, let $f _ { 1 } ( p _ { k } ) = 2 e _ { k , m } \\sqrt { p _ { k } }$ , The second order derivative of pkfor $f _ { 1 } ( \\boldsymbol { p } _ { k } )$ ( ) =yields that ",
+        "bbox": [
+            65,
+            747,
+            496,
+            777
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial^ {2} f _ {1} \\left(p _ {k}\\right)}{\\partial p _ {k} ^ {2}} = - e _ {k, m} 2 p _ {k} ^ {- \\frac {3}{2}} <   0, \\tag {50}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            175,
+            801,
+            494,
+            837
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "where $e _ { k , m } ^ { 2 } R _ { k , m }$ is a function of the form $l o g _ { 2 } ( 1 + x )$ , thus $e _ { k , m } ^ { 2 } R _ { k , m }$ is nonconvex. Therefore, $- e _ { k , m } ^ { 2 } R _ { k , m }$ ( +and $- 2 e _ { k , m }$ $\\sqrt { p _ { k } }$ are both convex functions. $- e _ { k , m } ^ { 2 } { R _ { k , m } } - \\left( - 2 e _ { k , m } \\sqrt { p _ { k } } \\right)$ ( )is the difference between the two convex functions, which can be solved by the convex difference algorithm. ",
+        "bbox": [
+            65,
+            859,
+            496,
+            941
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "PROOF OF PROPOSITION 2 ",
+        "text_level": 1,
+        "bbox": [
+            634,
+            80,
+            811,
+            92
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Calculating the second order derivative of (40), ",
+        "bbox": [
+            525,
+            101,
+            848,
+            116
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial^ {2} \\Lambda (f)}{\\partial f _ {k , m} ^ {2}} = \\frac {2 a _ {k , m} l _ {k} ^ {S}}{(w ^ {S} k ^ {S} X _ {k}) ^ {- 1}} > 0, \\forall k, m \\in \\mathcal {K}, \\mathcal {M}, \\tag {51}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            562,
+            123,
+            937,
+            161
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial^ {2} \\Lambda (f)}{\\partial f _ {k , m} \\partial f _ {i , m}} = 0, \\forall i \\in \\mathcal {K}, \\forall m \\in \\mathcal {M}, i \\neq k. \\tag {52}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            533,
+            165,
+            937,
+            200
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "The Hessian matrix is strictly greater than zero, thus the objective function (40) is convex. ",
+        "bbox": [
+            508,
+            207,
+            937,
+            237
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "PROOF OF THE CONVERGENCE ",
+        "text_level": 1,
+        "bbox": [
+            619,
+            255,
+            826,
+            268
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Assume that $( \\mathbf { A } , \\mathbf { P _ { k } } , \\mathbf { P _ { m } } , \\mathbf { L _ { S } } , \\mathbf { L _ { B } } , \\mathbf { F _ { S } } , \\mathbf { F _ { B } } )$ is the optimal ( )solution obtained after i iterations, and prove the convergence of Algorithm 5. ",
+        "bbox": [
+            506,
+            275,
+            937,
+            321
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k \\in \\mathcal {K}} e _ {k} ^ {(i - 1)} =\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            328,
+            602,
+            359
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k \\in \\mathcal {K}} e _ {k} \\left(\\mathbf {A} ^ {(\\mathbf {i} - \\mathbf {1})}, \\mathbf {P} _ {\\mathbf {k}} ^ {(i - 1)}, \\mathbf {P} _ {\\mathbf {m}} ^ {(i - 1)}, \\mathbf {L} _ {\\mathbf {S}} ^ {(i - 1)}, \\mathbf {L} _ {\\mathbf {B}} ^ {(i - 1)}, \\mathbf {F} _ {\\mathbf {S}} ^ {(i - 1)}, \\mathbf {F} _ {\\mathbf {B}} ^ {(i - 1)}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            367,
+            934,
+            400
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\geq \\sum_ {k \\in \\mathcal {K}} e _ {k} \\left(\\mathbf {A} ^ {(\\mathbf {i})}, \\mathbf {P} _ {\\mathbf {k}} ^ {(i - 1)}, \\mathbf {P} _ {\\mathbf {m}} ^ {(i - 1)}, \\mathbf {L} _ {\\mathbf {S}} ^ {(i - 1)}, \\mathbf {L} _ {\\mathbf {B}} ^ {(i - 1)}, \\mathbf {F} _ {\\mathbf {S}} ^ {(i - 1)}, \\mathbf {F} _ {\\mathbf {B}} ^ {(i - 1)}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            407,
+            929,
+            440
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\geq \\sum_ {k \\in \\mathcal {K}} e _ {k} \\left(\\mathbf {A} ^ {(\\mathbf {i})}, \\mathbf {P} _ {\\mathbf {k}} ^ {(i)}, \\mathbf {P} _ {\\mathbf {m}} ^ {(i)}, \\mathbf {L} _ {\\mathbf {S}} ^ {(i - 1)}, \\mathbf {L} _ {\\mathbf {B}} ^ {(i - 1)}, \\mathbf {F} _ {\\mathbf {S}} ^ {(i - 1)}, \\mathbf {F} _ {\\mathbf {B}} ^ {(i - 1)}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            448,
+            900,
+            479
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\geq \\sum_ {k \\in \\mathcal {K}} e _ {k} \\left(\\mathbf {A} ^ {(\\mathbf {i})}, \\mathbf {P} _ {\\mathbf {k}} ^ {(i)}, \\mathbf {P} _ {\\mathbf {m}} ^ {(i)}, \\mathbf {L} _ {\\mathbf {S}} ^ {(i)}, \\mathbf {L} _ {\\mathbf {B}} ^ {(i)}, \\mathbf {F} _ {\\mathbf {S}} ^ {(i - 1)}, \\mathbf {F} _ {\\mathbf {B}} ^ {(i - 1)}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            487,
+            870,
+            520
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\geq \\sum_ {k \\in \\mathcal {K}} e _ {k} \\left(\\mathbf {A} ^ {(i)}, \\mathbf {P} _ {\\mathbf {k}} ^ {(i)}, \\mathbf {P} _ {\\mathbf {m}} ^ {(i)}, \\mathbf {L} _ {\\mathbf {S}} ^ {(i)}, \\mathbf {L} _ {\\mathbf {B}} ^ {(i)}, \\mathbf {F} _ {\\mathbf {S}} ^ {(i)}, \\mathbf {F} _ {\\mathbf {B}} ^ {(i)}\\right) = \\sum_ {k \\in \\mathcal {K}} e _ {k} ^ {(i)}. \\tag {53}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            527,
+            936,
+            575
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "The system energy consumption of i − 1 -th iteration is greater than the system energy consumption of the i-th iteration, and each iteration reduces the objective value of the problem. Therefore, the system energy consumption keeps decreasing and gradually tends to converge. ",
+        "bbox": [
+            506,
+            585,
+            939,
+            662
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            693,
+            679,
+            784,
+            691
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] X. Wang, Y. Zhao, C. Qiu, Z. Liu, J. Nie, and V. C. M. Leung, “InFEDge: A blockchain-based incentive mechanism in hierarchical federated learning for end-edge-cloud communications,” IEEE J. Sel. Areas Commun., vol. 40, no. 12, pp. 3325–3342, Dec. 2022. ",
+            "[2] C. Qiu, Z. Chen, X. Ren, Z. Dai, C. Zhang, and X. Wang, “Aimers-6G: AI-driven region-temporal resource provisioning for 6G immersive services,” IEEE Wireless Commun., vol. 30, no. 3, pp. 196–203, Jun. 2023. ",
+            "[3] Z. Shao, H. Yang, L. Xiao, W. Su, Y. Chen, and Z. Xiong, “Deep reinforcement learning-based resource management for UAV-assisted mobile edge computing against jamming,” IEEE Trans. Mobile Comput., vol. 23, no. 12, pp. 13358–13374, Dec. 2024. ",
+            "[4] X. Zhang et al., “Energy-efficient computation peer offloading in satellite edge computing networks,” IEEE Trans. Mobile Comput., vol. 23, no. 4, pp. 3077–3091, Apr. 2024. ",
+            "[5] X. Qin et al., “Timeliness-oriented asynchronous task offloading in UAVedge-computing systems,” IEEE Trans. Netw. Sci. Eng., vol. 11, no. 1, pp. 900–912, Jan./Feb. 2024. ",
+            "[6] J. Chen, P. Yang, S. Ren, Z. Zhao, X. Cao, and D. Wu, “Enhancing AIoT device association with task offloading in aerial MEC networks,” IEEE Internet Things J., vol. 11, no. 1, pp. 174–187, Jan. 2024. "
+        ],
+        "bbox": [
+            511,
+            696,
+            939,
+            941
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "8138 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[7] L. Liu and Z. Chen, “Joint optimization of multiuser computation offloading and wireless-caching resource allocation with linearly related requests in vehicular edge computing system,” IEEE Internet Things J., vol. 11, no. 1, pp. 1534–1547, Jan. 2024. ",
+            "[8] Z. Gao, L. Yang, and Y. Dai, “Fast adaptive task offloading and resource allocation in large-scale MEC systems via multiagent graph reinforcement learning,” IEEE Internet Things J., vol. 11, no. 1, pp. 758–776, Jan. 2024. ",
+            "[9] X.-Q. Pham, T. Huynh-The, and D.-S. Kim, “Joint partial offloading and resource allocation for parked vehicle-assisted multi-access edge computing,” IEEE Trans. Emerg. Topics Comput., vol. 12, no. 3, pp. 918–923, Jul./Sep. 2024. ",
+            "[10] S. Shen, H. Yang, K. Yang, K. Wang, and G. Zhang, “AoI-aware joint resource allocation in multi-UAV aided multi-access edge computing systems,” IEEE Trans. Netw. Sci. Eng., vol. 11, no. 3, pp. 2596–2609, May/Jun. 2024. ",
+            "[11] S. Jiang, J. Zheng, F. Yan, and S. Zhao, “Reinforcement-learning based network slicing and resource allocation for multi-access edge computing networks,” IEEE Trans. Cogn. Commun. Netw., vol. 10, no. 3, pp. 1132–1145, Jun. 2024. ",
+            "[12] D. S. Lakew, A.-T. Tran, N.-N. Dao, and S. Cho, “Intelligent selfoptimization for task offloading in LEO-MEC-assisted energy-harvesting-UAV systems,” IEEE Trans. Netw. Sci. Eng., vol. 11, no. 6, pp. 5135–5148, Nov./Dec. 2024. ",
+            "[13] M. D. Nguyen, L. B. Le, and A. Girard, “Integrated computation offloading, UAV trajectory control, edge-cloud and radio resource allocation in SAGIN,” IEEE Trans. Cloud Comput., vol. 12, no. 1, pp. 100–115, Jan./Mar. 2024. ",
+            "[14] Q. Wang, X. Chen, and Q. Qi, “Energy-efficient design of satelliteterrestrial computing in 6G wireless networks,” IEEE Trans. Commun., vol. 72, no. 3, pp. 1759–1772, Mar. 2024. ",
+            "[15] L. Cheng, G. Feng, Y. Sun, S. Qin, F. Wang, and T. Q. S. Quek, “Energyconstrained satellite edge computing for satellite-terrestrial integrated networks,” IEEE Trans. Veh. Technol., vol. 74, no. 2, pp. 3359–3374, Feb. 2025. ",
+            "[16] Y. Gao, Z. Ji, K. Zhao, T. de Cola, and W. Li, “Game-based computation offloading and power allocation for LEO constellation networks in distributed and dynamic environment,” IEEE Internet Things J., vol. 11, no. 4, pp. 7040–7058, Feb. 2024. ",
+            "[17] C. Ding et al., “Satellite-terrestrial assisted multi-tier computing networks with MIMO precoding and computation optimization,” IEEE Trans. Wireless Commun., vol. 23, no. 4, pp. 3763–3779, Apr. 2024. ",
+            "[18] H. Zhang, H. Zhao, R. Liu, A. Kaushik, X. Gao, and S. Xu, “Collaborative task offloading optimization for satellite mobile edge computing using multi-agent deep reinforcement learning,” IEEE Trans. Veh. Technol., vol. 73, no. 10, pp. 15483–15498, Oct. 2024. ",
+            "[19] S. Zhang, A. Liu, C. Han, X. Liang, X. Xu, and G. Wang, “Multiagent reinforcement learning-based orbital edge offloading in SAGIN supporting Internet of Remote Things,” IEEE Internet Things J., vol. 10, no. 23, pp. 20472–20483, Dec. 2023. ",
+            "[20] J. Zhou, Q. Yang, L. Zhao, H. Dai, and F. Xiao, “Mobility-aware computation offloading in satellite edge computing networks,” IEEE Trans. Mobile Comput., vol. 23, no. 10, pp. 9135–9149, Oct. 2024. ",
+            "[21] Z. Tang, K. Yu, G. Yang, L. X. Cai, and H. Zhou, “New bridge to cloud: An ultra-dense LEO assisted green computation offloading approach,” IEEE Trans. Green Commun. Netw., vol. 7, no. 2, pp. 552–564, Jun. 2023. ",
+            "[22] M. Dai et al., “Latency minimization oriented hybrid offshore and aerial-based multi-access computation offloading for marine communication networks,” IEEE Trans. Commun., vol. 71, no. 11, pp. 6482–6498, Nov. 2023. ",
+            "[23] M. Dai, Z. Luo, Y. Wu, L. Qian, B. Lin, and Z. Su, “Incentive oriented two-tier task offloading scheme in marine edge computing networks: A hybrid Stackelberg-auction game approach,” IEEE Trans. Wireless Commun., vol. 22, no. 12, pp. 8603–8619, Dec. 2023. ",
+            "[24] M. Li, L. P. Qian, X. Dong, B. Lin, Y. Wu, and X. Yang, “Secure computation offloading for marine IoT: An energy-efficient design via cooperative jamming,” IEEE Trans. Veh. Technol., vol. 72, no. 5, pp. 6518–6531, May 2023. ",
+            "[25] M. Dai, Y. Wu, L. Qian, Z. Su, B. Lin, and N. Chen, “UAV-assisted multi-access computation offloading via hybrid NOMA and FDMA in marine networks,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 1, pp. 113–127, Jan./Feb. 2023. "
+        ],
+        "bbox": [
+            58,
+            78,
+            491,
+            920
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[26] M. Dai, C. Dou, Y. Wu, L. Qian, R. Lu, and T. Q. S. Quek, “Multi-UAV aided multi-access edge computing in marine communication networks: A joint system-welfare and energy-efficient design,” IEEE Trans. Commun., vol. 72, no. 9, pp. 5517–5531, Sep. 2024. ",
+            "[27] W. Xu, Z. Song, Z. Gao, L. Lai, Y. Sun, and W. Luo, “Latencyaware MIoT service strategy in UAV-assisted dynamic MMEC environment,” IEEE Internet Things J., vol. 11, no. 12, pp. 22220–22231, Jun. 2024. ",
+            "[28] H. Zeng et al., “USV fleet-assisted collaborative computation offloading for smart maritime services: An energy-efficient design,” IEEE Trans. Veh. Technol., vol. 73, no. 10, pp. 14718–14733, Oct. 2024. ",
+            "[29] T. Lyu, H. Xu, F. Liu, M. Li, L. Li, and Z. Han, “Computing offloading and resource allocation of NOMA based UAV emergency communication in the marine Internet of Thing,” IEEE Internet Things J., vol. 11, no. 9, pp. 15571–15586, May 2024. ",
+            "[30] J. Wang et al., “Doppler shift estimation for space-based AIS signals over satellite-to-ship links,” IEEE Access, vol. 7, pp. 76250–76262, 2019. ",
+            "[31] Y. Huo, X. Dong, and S. Beatty, “Cellular communications in ocean waves for maritime Internet of Things,” IEEE Internet Things J., vol. 7, no. 10, pp. 9965–9979, Oct. 2020. ",
+            "[32] X. Zhang, J. Zhang, J. Xiong, L. Zhou, and J. Wei, “Energyefficient multi-UAV-enabled multiaccess edge computing incorporating NOMA,” IEEE Internet Things J., vol. 7, no. 6, pp. 5613–5627, Jun. 2020. ",
+            "[33] Y. Zhang, H. Zhang, K. Sun, J. Huo, N. Wang, and V. C. M. Leung, “Partial computation offloading in satellite-based three-tier cloud-edge integration networks,” IEEE Trans. Wireless Commun., vol. 23, no. 2, pp. 836–847, Feb. 2024. ",
+            "[34] K. Shen and W. Yu, “Fractional programming for communication systems– Part I: Power control and beamforming,” IEEE Trans. Signal Process., vol. 66, no. 10, pp. 2616–2630, May 2018. ",
+            "[35] Y. Gao, K. Zhao, T. de Cola, W. Li, Y. Cui, and P. Hu, “Multi-user computation offloading in dynamic environment for LEO constellation networks,” IEEE Trans. Veh. Technol., vol. 73, no. 3, pp. 4453–4458, Mar. 2024. ",
+            "[36] X. Cao et al., “Edge-assisted multi-layer offloading optimization of LEO satellite-terrestrial integrated networks,” IEEE J. Sel. Areas Commun., vol. 41, no. 2, pp. 381–398, Feb. 2023. ",
+            "[37] X. Lin, A. Liu, C. Han, X. Liang, K. Pan, and Z. Gao, “LEO satellite and UAVs assisted mobile edge computing for tactical Ad-Hoc network: A game theory approach,” IEEE Internet Things J., vol. 10, no. 23, pp. 20560–20573, Dec. 2023. ",
+            "[38] Z. Zhai, S. Yu, F. Zhang, and X. Chen, “An on-orbit computation offloading framework for satellite edge computing,” in Proc. 2022 IEEE/CIC Int. Conf. Commun. China, 2022, pp. 1062–1067. ",
+            "[39] C. Ding, J.-B. Wang, M. Cheng, M. Lin, and J. Cheng, “Dynamic transmission and computation resource optimization for dense LEO satellite assisted mobile-edge computing,” IEEE Trans. Commun., vol. 71, no. 5, pp. 3087–3102, May 2023. ",
+            "[40] R. Wang et al., “Collaborative computation offloading and resource allocation in satellite edge computing,” in Proc. 2022 IEEE Glob. Commun. Conf., 2022, pp. 5625–5630. ",
+            "[41] L. Liu, X. Yuan, D. Chen, N. Zhang, H. Sun, and A. Taherkordi, “Multi-user dynamic computation offloading and resource allocation in 5G MEC heterogeneous networks with static and dynamic subchannels,” IEEE Trans. Veh. Technol., vol. 72, no. 11, pp. 14924–14938, Nov. 2023. "
+        ],
+        "bbox": [
+            503,
+            80,
+            929,
+            750
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/5a6461292cb54f06b4ded5621d6a5f28a59a3a4724b0ffe81e0d5450272a0ba9.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a woman wearing glasses and a business suit against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            782,
+            627,
+            898
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Hongxia Zhang received the bachelor’s and master’s degrees from the College of Computer and Science and Technology, China University of Petroleum (East China), Beijing, China, in 2003 and 2006, respectively, and the Ph.D. degree from the State Key Laboratory of Networking and Switching, Beijing University of Posts and Telecommunications, Beijing, China, in 2013. She is currently an Associate Professor with the College of Computer Science and Technology, China University of Petroleum (East China). Her research interests include cloud comput-",
+        "bbox": [
+            641,
+            781,
+            929,
+            906
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "ing, mobile edge computing, and artificial intelligence for networking. ",
+        "bbox": [
+            501,
+            906,
+            883,
+            917
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "ZHANG et al.: ENERGY ORIENTED THREE-TIER COMPUTATION OFFLOADING SCHEME ",
+        "bbox": [
+            58,
+            39,
+            531,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "8139 ",
+        "bbox": [
+            902,
+            40,
+            930,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/9f7c63971d22e6a66f8da4b3ff8972ba67c37792d6fbd425441d4b650caed33a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            82,
+            193,
+            199
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Shiyu Xi is currently pursuing the master’s degree with Qingdao Institute of Software, College of Computer Science and Technology, China University of Petroleum (East China), Qingdao, China. His research interests include edge computing, nonterrestrial networks, and Space-Air-Ground integrated network. ",
+        "bbox": [
+            205,
+            80,
+            494,
+            161
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/311ba18d584ea479d5492744aee762f5a3624d2d8f74a58a76f56fa4bdacdd98.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses, suit, and red tie (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            241,
+            193,
+            358
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Bodong Shang (Member, IEEE) received the B.Eng. degree from the School of Information Science and Technology, Northwest University, Xi’an, China, in 2015, the M.S. degree from the School of Telecommunications Engineering, Xidian University, Xi’an, in 2018, and the Ph.D. degree from the Department of Electrical and Computer Engineering, Virginia Tech, Blacksburg, VA, USA, in 2021. He is currently a Post-Doctoral Research Associate with the Department of Engineering and Public Policy, Carnegie Mellon University, Pittsburgh, PA, USA. He held an internship ",
+        "bbox": [
+            205,
+            239,
+            496,
+            364
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "position at Nokia Bell Labs, USA. His current research interests include vehicleto-everything, non-terrestrial networks, reconfigurable intelligent surfaces, and edge computing. He was a recipient of the Chinese Government Award for Outstanding Self-Financed Students Abroad in 2021. He received the National Scholarship for graduate students in 2016 and 2017. ",
+        "bbox": [
+            65,
+            364,
+            494,
+            422
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/e48146e8f2b1a8b8a45e10d74adf59ef6e250dadb17abcdb5d5b644f95abcaf8.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man in formal attire with glasses against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            501,
+            193,
+            618
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Peiying Zhang (Member, IEEE) is currently an Associate Professor with the College of Computer Science and Technology, China University of Petroleum (East China). He received his Ph.D. in the School of Information and Communication Engineering at University of Beijing University of Posts and Telecommunications in 2019. He has published multiple IEEE/ACM TRANS./JOURNAL/MAGAZINE papers since 2016, such as IEEE TII, IEEE T-ITS, IEEE TVT, IEEE TNSE, IEEE TNSM, IEEE TETC, IEEE NETWORK and etc. He served as the Technical ",
+        "bbox": [
+            205,
+            500,
+            494,
+            625
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Program Committee of AAAI’25, AAAI’24, AAAI’23, IEEE ICC’23, IEEE ICC’22, and INFOCOM Wireless-Sec 2023. He is the Leading Guest Editor of Drones, Mathematics, Electronics, Wireless Communications and Mobile Computing, and etc. He is the editorial board of Drones, CMC-Computers, Materials & Continua, Mobile Information Systems, International Journal of Computational Intelligence Systems and Artificial Intelligence and Applications (AIA). His research interests include semantic computing, future internet architecture, network virtualization, and artificial intelligence for networking. ",
+        "bbox": [
+            65,
+            625,
+            494,
+            717
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/583f14ebc25d2fa32d9b2723db5aa8f752f6b7f9cb520df4bdcc25519918ef54.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            82,
+            636,
+            199
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Sheng Wu (Member, IEEE) received the B.S. and M.S. degrees from the Beijing University of Posts and Telecommunications, Beijing, China, in 2004 and 2007, respectively, and the Ph.D. degree in electronic engineering from Tsinghua University, Beijing, in 2014. He was a Post-Doctoral Researcher with the Tsinghua Space Center, Tsinghua University. He is currently a Professor with the Beijing University of Posts and Telecommunications. Prof. Wu has published over 100 journals and conference papers, such as IEEE JOURNAL ON SELECTED AREAS IN COM-",
+        "bbox": [
+            648,
+            80,
+            937,
+            207
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "MUNICATIONS, IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, IEEE TRANSACTIONS ON COMMUNICATIONS, etc. He also holds over 30 granted patents. His research interests are mainly in iterative detection and decoding, channel estimation, massive MIMO, and satellite communications. He has received the First Prize from the Science and Technology Award of Chinese Institute of Electronics in 2017, the Silver Medal from the 46th Geneva International Exhibition of Inventions in 2018, and the Second Prize from the National Technological Invention Award of China in 2018, and the Natural Science Foundation of China Excellent Young Scientists Fund Award in 2020. ",
+        "bbox": [
+            506,
+            207,
+            937,
+            309
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/bef9a344f9b1606d1728919242f779128b434e648db23cfa3fe0d8ee1778343e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            363,
+            636,
+            479
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Chunxiao Jiang (Fellow, IEEE) is an associate professor in School of Information Science and Technology, Tsinghua University. He received the B.S. degree in information engineering from Beihang University, Beijing in 2008 and the Ph.D. degree in electronic engineering from Tsinghua University, Beijing in 2013, both with the highest honors. His research interests include application of game theory, optimization, and statistical theories to communication, networking, and resource allocation problems, in particular space networks and heterogeneous networks. ",
+        "bbox": [
+            648,
+            362,
+            937,
+            487
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Dr. Jiang has served as an Editor of IEEE INTERNET OF THINGS JOURNAL, IEEE NETWORK, IEEE COMMUNICATIONS LETTERS, and a Guest Editor of IEEE COMMUNICATIONS MAGAZINE, IEEE TRANSACTIONS ON NETWORK SCIENCE AND ENGINEERING, and IEEE TRANSACTIONS ON COGNITIVE COMMUNICA-TIONS AND NETWORKING. He has also served as a member of the technical program committee as well as the Symposium Chair for a number of international conferences, including IEEE CNS 2020 PUBLICATION CHAIR, IEEE WCSP 2019 SYMPOSIUM CHAIR, IEEE ICC 2018 SYMPOSIUM CO-CHAIR, IWCMC 2020/19/18 Symposium Chair, WiMob 2018 Publicity Chair, ICCC 2018 Workshop Co-Chair, and ICC 2017 Workshop Co-Chair. Dr. Jiang is the recipient of the Best Paper Award from IEEE GLOBECOM in 2013, the Best Student Paper Award from IEEE GLOBALSIP in 2015, IEEE COMMUNICATIONS SOCIETY YOUNG AUTHOR BEST PAPER AWARD in 2017, the Best Paper Award IWCMC in 2017, IEEE COMSOC TC BEST JOURNAL PAPER AWARD of the IEEE COMSOC TC ON GREEN COMMUNICATIONS & COMPUTING 2018, IEEE COMSOC TC BEST JOURNAL PAPER AWARD of the IEEE COMSOC TC ON COMMUNICATIONS SYSTEMS INTEGRATION AND MODELING 2018, the Best Paper Award from ICC 2019. He received the Chinese National Second Prize in Technical Inventions Award in 2018 and Natural Science Foundation of China Excellent Young Scientists Fund Award in 2019. ",
+        "bbox": [
+            506,
+            487,
+            937,
+            714
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "page_number",
+        "text": "8140 ",
+        "bbox": [
+            67,
+            40,
+            95,
+            49
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 5, MAY 2025 ",
+        "bbox": [
+            501,
+            39,
+            937,
+            50
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 29,2026 at 12:23:42 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            129,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 14
+    }
+]

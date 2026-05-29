@@ -1,0 +1,2957 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "UAV-Enabled Secure ISAC Against Dual Eavesdropping Threats: Joint Beamforming and Trajectory Design "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                125,
+                71,
+                872,
+                119
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Jianping Yao , Member, IEEE, Zeyu Yang , Zai Yang ， , Senior Member, IEEE, Jie Xu , Fellow, IEEE, and Tony Q. S. Quek , Fellow, IEEE "
+                    }
+                ]
+            },
+            "bbox": [
+                102,
+                127,
+                892,
+                162
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstract—In this letter, we study an uncrewed aerial vehicle (UAV)-enabled secure integrated sensing and communication (ISAC) system, where a UAV serves as an aerial base station (BS) to simultaneously perform communication with a user and detect a target on the ground, while a dual-functional eavesdropper attempts to intercept the signals for both sensing and communication. Facing the dual eavesdropping threats, we aim to enhance the average achievable secrecy rate for the communication user by jointly designing the UAV trajectory together with the transmit information and sensing beamforming, while satisfying the requirements on sensing performance and sensing security, as well as the UAV power and flight constraints. To address the non-convex nature of the optimization problem, we employ the alternating optimization (AO) strategy, jointly with the successive convex approximation (SCA) and semidefinite relaxation (SDR) methods. Numerical results validate the proposed approach, demonstrating its ability to achieve a high secrecy rate while meeting the required sensing and security constraints. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                185,
+                491,
+                425
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Index Terms—Integrated sensing and communication (ISAC), uncrewed aerial vehicle (UAV), physical-layer security (PLS), sensing security. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                431,
+                491,
+                470
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "I. INTRODUCTION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                215,
+                496,
+                351,
+                508
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "NTEGRATED sensing and communication (ISAC) is I regarded as a promising cornerstone technology for future sixth-generation (6G) wireless networks [1], in which base stations (BSs) can transmit unified ISAC signals and perform ISAC signal processing over shared hardware platforms, thus significantly enhancing the utilization efficiency of spectrum, "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                515,
+                490,
+                604
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Received 27 May 2025; accepted 9 July 2025. Date of publication 15 July 2025; date of current version 9 October 2025. This work was supported in part by the Basic Research Project of Hetao Shenzhen-HK S&T Cooperation Zone under Grant HZQB-KCZYZ-2021067; in part by the National Natural Science Foundation of China under Grant 62471424, Grant 92267202, and Grant 12371464; and in part by the Guangdong Provincial Key Laboratory of Future Networks of Intelligence under Grant 2022B1212010001. The associate editor coordinating the review of this article and approving it for publication was C. Y. Leow. (Corresponding author: Jie Xu.) "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                618,
+                491,
+                731
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Jianping Yao and Zeyu Yang are with the School of Information Engineering, Guangdong University of Technology, Guangzhou 510006, China, and also with the Guangdong Provincial Key Laboratory of Future Networks of Intelligence, The Chinese University of Hong Kong at Shenzhen, Shenzhen 518172, China (e-mail: yaojp@gdut.edu.cn; yangzeyugdut@qq.com). "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                732,
+                491,
+                800
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Zai Yang is with the School of Mathematics and Statistics, Xi’an Jiaotong University, Xi’an 710049, China (e-mail: yangzai@xjtu.edu.cn). "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                800,
+                491,
+                823
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Jie Xu is with the School of Science and Engineering, Shenzhen Future Network of Intelligence Institute, and the Guangdong Provincial Key Laboratory of Future Networks of Intelligence, The Chinese University of Hong Kong at Shenzhen, Shenzhen 518172, China (e-mail: xujie@cuhk.edu.cn). "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                823,
+                491,
+                878
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Tony Q. S. Quek is with the Information Systems Technology and Design Pillar, Singapore University of Technology and Design, Singapore 487372 (e-mail: tonyquek@sutd.edu.sg). "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                878,
+                491,
+                912
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Digital Object Identifier 10.1109/LWC.2025.3588758 hardware, and energy resources. However, in remote regions, such as rural macro areas, or during emergency situations like post-earthquake scenarios or maritime incidents, deploying ground-based BSs can be challenging or even infeasible due to infrastructural limitations and accessibility issues. With recent advancements in uncrewed aerial vehicle (UAV) technology, the exploitation of UAVs has attracted growing interests to provide ISAC services from the sky, in which the UAVs’ controllable mobility in the three-dimensional (3D) space is utilized, such that UAVs can approach sensing targets and communication users to enhance the ISAC performance (see, e.g., [2], [3], [4], [5]). "
+                    }
+                ]
+            },
+            "bbox": [
+                86,
+                912,
+                377,
+                925
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                501,
+                184,
+                921,
+                361
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nevertheless, owing to the inherent broadcast characteristics of wireless transmissions, communication and sensing signals in ISAC systems are susceptible to interception, which poses significant security challenges for both functionalities. To address communication security concerns, physical-layer security (PLS) has been proposed as an effective approach by leveraging the wireless channel properties [6]. The core idea of these works is to propose an ISAC design to leverage artificial noise (AN) for not only interfering with the eavesdropper but also performing the target sensing, thus enhancing the communication security (see, e.g., [7], [8], [9]). "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                362,
+                921,
+                523
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "On the other hand, there have been only a handful of prior works addressing the sensing security issue in ISAC systems. For instance, the work [10] considered a communication user acting as a sensing eavesdropper, in which the mutual information (MI) of the authorized sensing receiver is maximized via the joint beamforming design, while ensuring that the MI of the eavesdropper remains below a given threshold. Furthermore, the paper [11] was the first to jointly consider both PLS and sensing security by focusing on a secure cell-free ISAC system, where several ISAC transmitters collaboratively transmit confidential data to several legitimate communication receivers while conducting target detection under the threat of both communication and sensing eavesdroppers. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                523,
+                921,
+                715
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Different from prior works that focus on communication secrecy or treat sensing and communication eavesdroppers separately, this letter studies a new UAV-enabled secure ISAC system. In this system, an aerial dual-functional BS delivers secure data to a legitimate communication receiver while simultaneously performing target sensing, and an eavesdropper attempts to intercept both the communication and sensing signals. In contrast to the conventional secure ISAC designs (e.g., [10], [11]), we exploit the UAV trajectory optimization together with the transmit information and sensing beamforming for enhancing the security performance. In particular, we maximize the average secrecy rate at the legitimate communication receiver, while ensuring the sensing performance requirements, subject to the UAV power and practical flight constraints, as well as the sensing security constraints. Notably, while the radar signal serves as undesired interference for the eavesdropper from a communication security perspective, it becomes the desired sensing signal for the eavesdropper that can be exploited for sensing interception. This thus introduces a trade-off between communication and sensing security, which distinguishes our model from prior studies that primarily focus on communication secrecy or treat sensing and communication eavesdroppers separately. To tackle the formulated non-convex problem, we develop an effective approach that leverages a combination of alternating optimization (AO), successive convex approximation (SCA), and semidefinite relaxation (SDR). Lastly, we provide numerical results to demonstrate the efficiency of the proposed method. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                717,
+                921,
+                924
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 14, NO. 10, OCTOBER 2025 "
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                34,
+                504,
+                46
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3199 "
+                    }
+                ]
+            },
+            "bbox": [
+                893,
+                35,
+                921,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "2162-2345 -c 2025 IEEE. All rights reserved, including rights for text and data mining, and training of artificial intelligence and similar technologies. Personal use is permitted, but republication/redistribution requires IEEE permission. "
+                    }
+                ]
+            },
+            "bbox": [
+                158,
+                931,
+                836,
+                955
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "See https://www.ieee.org/publications/rights/index.html for more information. "
+                    }
+                ]
+            },
+            "bbox": [
+                290,
+                955,
+                705,
+                965
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 29,2026 at 12:42:23 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                124,
+                963,
+                870,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                73,
+                69,
+                491,
+                277
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "II. SYSTEM MODEL "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                210,
+                292,
+                356,
+                305
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We focus on a fixed-wing UAV-enabled secure ISAC system, where an aerial BS simultaneously transmits data to a legitimate communication user (denoted as u) and conducts wireless sensing towards a target (designated as t) on the ground, in the presence of a dual-functional eavesdropper (referred to as e) intercepting both communication and sensing information. We assume that the UAV is equipped with a uniform linear array (ULA) consisting of M antennas, arranged in a vertical orientation with respect to the horizontal plane with a constant altitude D. In contrast, all other nodes each have only one antenna. We consider a 3D Cartesian coordinate system, where the user, the target, and the eavesdropper on the ground with altitude 0 are fixed at horizontal locations "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\pmb { \\mathscr { s } } _ { u } = ( x _ { u } , y _ { u } ) , \\pmb { \\mathscr { s } } _ { t } = ( x _ { t } , y _ { t } ) } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\pmb { s } _ { e } = ( x _ { e } , y _ { e } ) } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", respectively. s s sWe assume that the UAV has precise prior knowledge of the positions of both the legitimate ground nodes and the eavesdropper.1 This assumption simplifies the joint design of UAV trajectory and beamforming to offer valuable design insights. In practical scenarios, the UAV can acquire the ground nodes’ locations through direct reporting from the nodes themselves. As for the eavesdropper, its position may be inferred by detecting its signal emissions (if it operates outside the UAV’s network) or obtained from a centralized network controller (when it is part of the same network infrastructure).2 "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                310,
+                491,
+                665
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We consider a service duration T divided into N equal time slots, each with a duration of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "t _ { s } ~ = ~ T / N"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The time slot length is sufficiently short to ensure that the motion states of the UAV remain unchanged within each slot. Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { N }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "- "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ 1 , \\ldots , N \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote the collection of slots. Therefore, at slot 1Note that our proposed framework can be extended to accommodate scenarios where the UAV has only partial or imperfect knowledge of the locations of GRs and/or eavesdroppers. This can be achieved by incorporating robust optimization techniques that account for location uncertainties. Specifically, bounded location error models can be employed, where the actual positions of the nodes are assumed to lie within known uncertainty regions around their estimated locations. Such models have been effectively utilized in prior works to design robust UAV trajectories and transmission strategies that ensure performance guarantees even in the presence of location estimation errors (see, e.g., [6]). "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                666,
+                491,
+                741
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                73,
+                750,
+                491,
+                864
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2Even if an eavesdropper operates passively, detection remains feasible since passive receivers inevitably leak minimal radio frequency (RF) energy from their local oscillators [12]. Additionally, the UAVs can leverage the onboard optical cameras and synthetic aperture radar systems to facilitate the detection and localization of potential eavesdroppers through advanced image processing and pattern recognition techniques [13]. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                864,
+                491,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "equation_inline",
+                        "content": "n \\in \\mathcal N ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", we assume that the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { U A V } \\mathbf { \\dot { s } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "horizontal coordinate is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\pmb \\rho [ n ] = ( x [ n ] , y [ n ] )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\pmb \\rho } _ { \\mathrm { I } } = ( x _ { \\mathrm { I } } , y _ { \\mathrm { I } } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\pmb \\rho } _ { \\mathrm { F } } = ( x _ { \\mathrm { F } } , y _ { \\mathrm { F } } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "signify the starting and ending horizontal locations of the UAV. Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "v _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "V _ { \\operatorname* { m a x } } = v _ { \\operatorname* { m a x } } t _ { s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represent the maximum UAV speed and the maximum displacement within a single time slot, respectively. Consequently, we impose the following UAV flight constraints, given as "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                69,
+                921,
+                172
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\boldsymbol {\\rho} [ 1 ] = \\boldsymbol {\\rho} _ {\\mathrm{I}}, \\boldsymbol {\\rho} [ N ] = \\boldsymbol {\\rho} _ {\\mathrm{F}}, \\tag {1}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/e1f8b81dcd2c45a4653c205b28738661754c563fe1ac5b6861c2e735ec3853c7.jpg"
+                }
+            },
+            "bbox": [
+                583,
+                176,
+                919,
+                193
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\left\\| \\boldsymbol {\\rho} [ n + 1 ] - \\boldsymbol {\\rho} [ n ] \\right\\| \\leq V _ {\\max}, \\forall n \\in \\mathcal {N}. \\tag {2}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/0d70044b3a81133642e5c4ed3083837a7d017da556424d0edc28ec5f71e60e9a.jpg"
+                }
+            },
+            "bbox": [
+                584,
+                195,
+                919,
+                212
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "a _ { i } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represent the intended communication signal for the user at slot n, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\pmb { b } [ n ] \\in \\mathbb { C } ^ { M \\times 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote the associated transmit bbeamforming vector, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\pmb { a } _ { s } [ n ] \\in \\mathbb { C } ^ { M \\times 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote the specific awireless sensing signal at slot n, which simultaneously serves as AN to interfere with the eavesdropper. We assume that the communication signal "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "a _ { i } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is independently drawn from a circularly symmetric complex Gaussian (CSCG) distribution. Additionally, the wireless sensing signal "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\pmb a } _ { s } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is treated as aan independent random vector with a mean of zero and a covariance matrix "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\pmb { A _ { s } } [ n ] = \\mathbb { E } \\big ( \\pmb { a _ { s } } [ n ] \\pmb { a } _ { s } ^ { \\mathrm { H } } [ n ] \\big ) \\succeq \\mathbf { 0 } \\ [ 2 ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where A a aE(·) denotes the expectation operator and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\pmb a } _ { s } ^ { \\mathrm { H } } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represents its conjugate transpose. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                214,
+                921,
+                391
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "At each slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "n \\in \\mathcal N ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", we denote "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Phi _ { o } ( \\pmb { \\rho } [ n ] ) , o \\in \\{ u , e , t \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", as the steering vector associated with the UAV at location "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\pmb \\rho } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "towards ground node o as "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                391,
+                921,
+                436
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Phi_ {o} (\\boldsymbol {\\rho} [ n ]) = \\left[ \\phi_ {o 1} [ n ], \\dots \\phi_ {o m} [ n ], \\dots , \\phi_ {o M} [ n ] \\right] ^ {\\mathrm{T}}, \\tag {3}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/0e7ea1ae5231f993c9c25e8631a6cb678c8f566577e889eba0de78f5e65fb506.jpg"
+                }
+            },
+            "bbox": [
+                542,
+                436,
+                919,
+                458
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { l l l } { { \\phi _ { o m } [ n ] _ { _ { \\Sigma } } \\ = \\ } } & { { e ^ { j 2 \\pi { \\frac { k } { \\lambda } } ( m - 1 ) \\cos \\theta _ { o } ( \\rho [ n ] ) } ; } } & { { \\theta _ { o } ( \\pmb { \\rho [ n ] } ) } } \\end{array} \\ ="
+                    },
+                    {
+                        "type": "text",
+                        "content": "arccos "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\overline { { \\sqrt { | | \\pmb { \\rho } [ n ] - \\pmb { s } _ { o } | | ^ { 2 } + { \\cal D } ^ { 2 } } } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denotes the angle of departure (AoD) sassociated with the location "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "s _ { o } ; \\lambda"
+                    },
+                    {
+                        "type": "text",
+                        "content": "refers to the carrier wavelength; "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "k ~ = ~ \\lambda / 2"
+                    },
+                    {
+                        "type": "text",
+                        "content": "sindicates the distance between two adjacent antennas. Based on the empirical findings reported in [14] and the standardized models in Third Generation Partnership Project (3GPP) TR 36.777 [15], we assume that the UAV operates at a sufficiently high altitude such that the A2G links are predominantly LoS. Accordingly, we adopt a channel model characterized by LoS path loss combined with a directional steering vector. Then, the channel vector between the UAV and node "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "o \\in \\{ u , e , t \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "at slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "n \\in \\mathcal N"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is given as "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                459,
+                921,
+                647
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\boldsymbol {g} _ {o} (\\boldsymbol {\\rho} [ n ]) = \\sqrt {\\beta_ {0} d _ {o} ^ {- 2} (\\boldsymbol {\\rho} [ n ])} \\Phi_ {o} (\\boldsymbol {\\rho} [ n ]), \\tag {4}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/2dc65e6c8658e54ddad75190fe310a38c7e4cec434250c0ed82c5a48aa862471.jpg"
+                }
+            },
+            "bbox": [
+                578,
+                650,
+                919,
+                672
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represents the channel power gain at a reference distance of 1 meter, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "d _ { o } ( \\pmb { \\rho } [ n ] ) = \\sqrt { | | \\pmb { \\rho } [ n ] - \\pmb { s } _ { o } | | ^ { 2 } + D ^ { 2 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the distance from the UAV to the location "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\pmb s } _ { o } ."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                674,
+                919,
+                718
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "sAccordingly, the received signal at location "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { \\Sigma } _ { { \\pmb { s } } _ { o } , o } \\in \\Sigma ^ { }"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ u , e , t \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", at slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "n \\in \\mathcal N"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is expressed as "
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                719,
+                919,
+                750
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "z _ {o} [ n ] = \\boldsymbol {g} _ {o} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) (\\boldsymbol {b} [ n ] a _ {i} [ n ] + \\boldsymbol {a} _ {s} [ n ]) + v _ {o} [ n ], \\tag {5}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/b295bb8dc616eeb0cd2ce20e70d06d7718d285084cb81ef24d04f1ff226183cc.jpg"
+                }
+            },
+            "bbox": [
+                550,
+                750,
+                919,
+                768
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "v _ { o } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represents the additive white Gaussian noise "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\mathrm { A W G N } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "at the location "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "s _ { o } \\gamma _ { s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "receiver, characterized as a CSCG srandom variable with a mean of zero and a variance of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sigma ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                771,
+                919,
+                815
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The received signal-to-interference-plus-noise ratio (SINR) at the user and the eavesdropper at slot n are respectively given as "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                816,
+                921,
+                859
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\boldsymbol {\\gamma} _ {u} [ n ] = \\frac {\\left| \\boldsymbol {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {b} [ n ] \\right| ^ {2}}{\\boldsymbol {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {A} _ {s} [ n ] \\boldsymbol {g} _ {u} (\\boldsymbol {\\rho} [ n ]) + \\sigma^ {2}}, \\tag {6}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/bb5f7fd13eec11905ce66c171ada264e1e69af1c7f832c3791da95f937a9437c.jpg"
+                }
+            },
+            "bbox": [
+                570,
+                861,
+                919,
+                896
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\boldsymbol {\\gamma} _ {e} [ n ] = \\frac {\\left| \\boldsymbol {g} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {b} [ n ] \\right| ^ {2}}{\\boldsymbol {g} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {A} _ {s} [ n ] \\boldsymbol {g} _ {e} (\\boldsymbol {\\rho} [ n ]) + \\sigma^ {2}}. \\tag {7}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/9cab926b08ea1e387e0c72a272a325129a30308975aed06d258d80edbcdc55b5.jpg"
+                }
+            },
+            "bbox": [
+                571,
+                897,
+                919,
+                933
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3200 "
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                35,
+                104,
+                45
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 14, NO. 10, OCTOBER 2025 "
+                    }
+                ]
+            },
+            "bbox": [
+                495,
+                34,
+                921,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 29,2026 at 12:42:23 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                122,
+                962,
+                870,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Then, the achievable rates from the UAV to the user and the eavesdropper (in bps/Hz) at slot n are formulated as "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                69,
+                491,
+                113
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R _ {u} [ n ] = \\log_ {2} (1 + \\boldsymbol {\\gamma} _ {u} [ n ]), \\tag {8}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/a1a40df6eec5e13a915f83989ea67c3e6c229f45081b038295a1d019c6ec3521.jpg"
+                }
+            },
+            "bbox": [
+                191,
+                117,
+                488,
+                133
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R _ {e} [ n ] = \\log_ {2} (1 + \\boldsymbol {\\gamma} _ {e} [ n ]). \\tag {9}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/ebfe304b40f27d945102ed094275afafb27995395b6fb2cbdb78da683cbd8d78.jpg"
+                }
+            },
+            "bbox": [
+                194,
+                136,
+                488,
+                152
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Consequently, the secrecy rate from the UAV to the user at slot n is [6] "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                155,
+                491,
+                184
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R _ {s} [ n ] = \\left[ \\log_ {2} (1 + \\boldsymbol {\\gamma} _ {u} [ n ]) - \\log_ {2} (1 + \\boldsymbol {\\gamma} _ {e} [ n ]) \\right] ^ {+}, \\tag {10}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/0ff19766f24aa9082a3470079e24bb0a5f5ffb5f0b58b19ff17e645383ea7200.jpg"
+                }
+            },
+            "bbox": [
+                114,
+                186,
+                488,
+                205
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "[ u ] ^ { + } \\triangleq \\operatorname* { m a x } ( u , 0 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". "
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                205,
+                250,
+                222
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In the considered ISAC system, the UAV intends to detect the target. To properly illuminate the target, the transmit beampattern gain "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\zeta _ { t } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "at the specified sensing location must meet a threshold "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma _ { t } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which is proportional to the square of the distance between the UAV and the target, given as [2], [16] "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                220,
+                491,
+                296
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\zeta_ {t} [ n ] = \\mathbb {E} \\left[ | \\Phi_ {t} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) (\\boldsymbol {b} [ n ] a _ {i} [ n ] + \\boldsymbol {a} _ {s} [ n ]) | ^ {2} \\right] \\\\ = \\Phi_ {t} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\left(\\boldsymbol {b} [ n ] \\boldsymbol {b} ^ {\\mathrm{H}} [ n ] + \\boldsymbol {A} _ {s} [ n ]\\right) \\Phi_ {t} (\\boldsymbol {\\rho} [ n ]) \\\\ \\geq \\Gamma_ {t} d _ {t} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}. \\tag {11} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/c5d9f0b466cdb0970b5f94dc34cce830107f42060948274c8f103908603abe82.jpg"
+                }
+            },
+            "bbox": [
+                112,
+                297,
+                488,
+                368
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Similarly, to ensure sensing security, the transmit beampattern gain "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\zeta _ { e } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "at the eavesdropper should not exceed a specific threshold "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma _ { e } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "which is proportional to the square of the distance between the UAV and the eavesdropper, given as [2], [16] "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                369,
+                491,
+                444
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\zeta_ {e} [ n ] = \\mathbb {E} \\left[ \\left| \\Phi_ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) (\\boldsymbol {b} [ n ] a _ {i} [ n ] + \\boldsymbol {a} _ {s} [ n ]) \\right| ^ {2} \\right] \\\\ = \\Phi_ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\left(\\boldsymbol {b} [ n ] \\boldsymbol {b} ^ {\\mathrm{H}} [ n ] + \\boldsymbol {A} _ {s} [ n ]\\right) \\Phi_ {e} (\\boldsymbol {\\rho} [ n ]) \\\\ \\leq \\Gamma_ {e} d _ {e} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}. \\tag {12} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/e598e031d3f576e922559feb196563a5e2860053368e42bd28137f20e137d1fb.jpg"
+                }
+            },
+            "bbox": [
+                112,
+                445,
+                488,
+                516
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This letter focuses on the joint optimization of the communication beamforming vectors "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ b [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", the sensing covariance matrices "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ A _ { s } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "b, and the UAV trajectory "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ \\pmb { \\rho } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "to maximize Athe average secrecy rate, subject to sensing security constraints, sensing constraints, power constraints, and UAV trajectory constraints. The problem is formulated as "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                518,
+                491,
+                607
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text {(P1)} \\colon \\max _ {\\{\\boldsymbol {b} [ n ], \\boldsymbol {A} _ {s} [ n ], \\boldsymbol {\\rho} [ n ] \\}} \\frac {1}{N} \\sum_ {n = 1} ^ {N} R _ {s} [ n ]",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/9fb30a20c7ce916a4e0c5924a3162e04ae2e9a3ae1f9992e41cd8b45e77c2f02.jpg"
+                }
+            },
+            "bbox": [
+                122,
+                609,
+                369,
+                651
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text { s.t. } \\quad \\boldsymbol {\\rho} [ 1 ] = \\boldsymbol {\\rho} _ {\\mathrm{I}}, \\quad \\boldsymbol {\\rho} [ N ] = \\boldsymbol {\\rho} _ {\\mathrm{F}}, \\tag {13a}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/7502082a5f1e5eb55098c3303ca1d163ba83a89c82b466ff221b82c680bf796a.jpg"
+                }
+            },
+            "bbox": [
+                137,
+                652,
+                488,
+                667
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\left\\| \\boldsymbol {\\rho} [ n + 1 ] - \\boldsymbol {\\rho} [ n ] \\right\\| \\leq V _ {\\max}, \\forall n \\in \\mathcal {N}, \\tag {13b}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/13eb2e17b7e704e5c99d8f90a6e25b3fa177b9ed254e777e50191bee8f7e2515.jpg"
+                }
+            },
+            "bbox": [
+                169,
+                670,
+                488,
+                686
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\zeta_ {t} [ n ] \\geq \\Gamma_ {t} d _ {t} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}, \\tag {13c}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/7443139c9b559cafd237bef97bad239e121ad5f926d231c78a5aeaadc287524a.jpg"
+                }
+            },
+            "bbox": [
+                169,
+                688,
+                488,
+                705
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\zeta_ {e} [ n ] \\leq \\Gamma_ {e} d _ {e} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}, \\tag {13d}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/8c782df145ac630a825831263adc73235cfd003af5925d32be710c83394b9c37.jpg"
+                }
+            },
+            "bbox": [
+                169,
+                707,
+                488,
+                724
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\left| \\left| \\boldsymbol {b} [ n ] \\right| \\right| ^ {2} + \\operatorname{tr} (\\boldsymbol {A} _ {s} [ n ]) \\leq P _ {\\max}, \\forall n \\in \\mathcal {N}, \\tag {13e}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/ce675c559158b752e31afcc8b59217c4dd1137586b78fad9f617cfad2b4d4f57.jpg"
+                }
+            },
+            "bbox": [
+                169,
+                726,
+                488,
+                743
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represents the UAV’s maximum allowable power level. Since the objective function, along with constraints (13c) and (13d) are non-convex, problem (P1) is inherently challenging to be solved directly. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                744,
+                491,
+                805
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "III. PROPOSED SOLUTION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                189,
+                819,
+                377,
+                832
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This section presents an effective approach for solving problem (P1) by leveraging convex optimization, SDR, and SCA techniques. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                838,
+                491,
+                882
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A. Optimization of Information and Sensing Beamforming "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                896,
+                470,
+                912
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We first address the optimization of the communication beamforming vectors "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ b [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and the sensing covariance matrices "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ A _ { s } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "while keeping the UAV trajectory "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ \\pmb { \\rho } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Afixed. Under this consideration, problem (P1) is simplified to "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                915,
+                491,
+                946
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                503,
+                68,
+                919,
+                99
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text {(P2)} \\colon \\max _ {\\{\\boldsymbol {b} [ n ], \\boldsymbol {A} _ {s} [ n ] \\}} \\frac {1}{N} \\sum_ {n = 1} ^ {N} R _ {s} [ n ], \\text {   s.t.   (13c)   ,   (13d)   ,   and   (13e)   }.",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/a0bab87ec269a4129075253b0a656ab1be7dd7dc0f3de2468ea91e2b3f2c1d7e.jpg"
+                }
+            },
+            "bbox": [
+                517,
+                102,
+                897,
+                138
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We define "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { B [ n ] = b [ n ]  { b ^ { \\mathrm { H } } } [ n ] } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "such that rank "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( B [ n ] ) \\leq 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "B [ n ] \\succeq \\mathbf { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "B b b B. Then problem (P2) is equivalently transformed as "
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                140,
+                919,
+                172
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text {(P3)} \\colon \\max _ {\\{\\boldsymbol {b} [ n ], \\boldsymbol {A} _ {s} [ n ] \\}} \\frac {1}{N} \\sum_ {n = 1} ^ {N} (R _ {u} [ n ] - R _ {e} [ n ]) \\tag {P3}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/451425675dba773ed2aaaf4045304c312d1ab157141b3f46fa246d252fd53994.jpg"
+                }
+            },
+            "bbox": [
+                517,
+                174,
+                761,
+                205
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text { s.t. } \\quad \\operatorname{rank} (B [ n ]) \\leq 1, B [ n ] \\succeq \\mathbf {0}, \\forall n \\in \\mathcal {N}, \\tag {14a}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/d29fc9dd3e3a291acad45633c0df7772d45accf762bd86ea67a22bee6419998b.jpg"
+                }
+            },
+            "bbox": [
+                527,
+                208,
+                919,
+                222
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Phi_ {t} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) (B [ n ] + \\boldsymbol {A} _ {s} [ n ]) \\Phi_ {t} (\\boldsymbol {\\rho} [ n ]) \\geq \\Gamma_ {t} d _ {t} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}, \\tag {14b}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/8be8631744ad0c3bc3cda51576f721dd983a07dee8736a98405ad89d470c3798.jpg"
+                }
+            },
+            "bbox": [
+                557,
+                224,
+                919,
+                242
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Phi_ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) (B [ n ] + \\boldsymbol {A} _ {s} [ n ]) \\Phi_ {e} (\\boldsymbol {\\rho} [ n ]) \\leq \\Gamma_ {e} d _ {e} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}, (1 4 c)",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/1e71139d56c31fcd6c123aef68bd6b2815ff0c7017ddc09b1c2bd6deaab330de.jpg"
+                }
+            },
+            "bbox": [
+                557,
+                244,
+                919,
+                261
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\operatorname{tr} (\\boldsymbol {B} [ n ]) + \\operatorname{tr} (\\boldsymbol {A} _ {s} [ n ]) \\leq P _ {\\max}, \\forall n \\in \\mathcal {N}. \\tag {14d}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/6d2c17220fd30893deddcd3c83223e83e521e890edb099c0938d1cbf8a972f88.jpg"
+                }
+            },
+            "bbox": [
+                557,
+                265,
+                919,
+                279
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Problem (P3) remains non-convex due to the non-concave objective function and the rank-one constraint. To address this, we apply the SDR approach by omitting the rank-one constraint in (14a). Subsequently, we handle the non-concave objective function of problem (P3) by applying the SCA technique to achieve a convergent solution iteratively. At each iteration "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "l \\ \\geq \\ 1 ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", we derive a lower bound of the objective function under given local point "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "B ^ { ( l ) } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "A _ { s } ^ { ( l ) } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "through Bthe first-order Taylor expansion, given as "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                282,
+                921,
+                417
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\hat {R} ^ {(l)} [ n ] \\triangleq \\log_ {2} \\left(\\operatorname{tr} \\left(\\boldsymbol {g} _ {u} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {B} [ n ]\\right) \\right. \\\\ + \\operatorname{tr} \\left(\\boldsymbol {g} _ {u} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {A} _ {s} [ n ]\\right) + \\sigma^ {2}) \\\\ + \\log_ {2} \\left(\\operatorname{tr} \\left(\\boldsymbol {g} _ {e} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {A} _ {s} [ n ]\\right) + \\sigma^ {2}\\right) \\\\ \\left. - \\left(\\delta_ {u} ^ {(l)} [ n ] + \\operatorname{tr} \\left(\\Lambda_ {u} ^ {(l)} [ n ] \\left(\\boldsymbol {A} _ {s} [ n ] - \\boldsymbol {A} _ {s} ^ {(l)} [ n ]\\right)\\right)\\right) \\right. \\\\ - \\left(\\delta_ {e} ^ {(l)} [ n ] + \\operatorname{tr} \\left(\\Lambda_ {e} ^ {(l)} [ n ] (\\boldsymbol {B} [ n ] - \\boldsymbol {B} ^ {(l)} [ n ])\\right) \\right. \\\\ + \\operatorname{tr} \\left(\\Lambda_ {e} ^ {(l)} [ n ] (\\boldsymbol {A} _ {s} [ n ] - \\boldsymbol {A} _ {s} ^ {(l)} [ n ])\\right), \\tag {15} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/9d69bd6e5f25f8cda9af5df9b3de6c442bf3698d7ab6a257ad24f18afdb70e6d.jpg"
+                }
+            },
+            "bbox": [
+                521,
+                419,
+                919,
+                577
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                577,
+                549,
+                589
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\delta_ {u} ^ {(l)} [ n ] = \\log_ {2} \\left(\\operatorname{tr} \\left(\\boldsymbol {g} _ {u} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {A} _ {s} ^ {(l)} [ n ]\\right) + \\sigma^ {2}\\right), \\tag {16}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/85c88df55145072040602e659e16f33b2941ed0d654f949eb2c71c79114cf169.jpg"
+                }
+            },
+            "bbox": [
+                521,
+                590,
+                919,
+                614
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Lambda_ {u} ^ {(l)} [ n ] = \\frac {\\log_ {2} e \\mathbf {g} _ {u} (\\boldsymbol {\\rho} [ n ]) \\mathbf {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ])}{\\operatorname{tr} \\left(\\mathbf {g} _ {u} (\\boldsymbol {\\rho} [ n ]) \\mathbf {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\mathbf {A} _ {s} ^ {(l)} [ n ]\\right) + \\sigma^ {2}}, \\tag {17}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/8e3c6a4429bbd1ead0fd6a83d8e17c5dfee5d222ac8bb49e97ea07e4fde35bcd.jpg"
+                }
+            },
+            "bbox": [
+                519,
+                617,
+                919,
+                656
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\delta_ {e} ^ {(l)} [ n ] = \\log_ {2} \\left(\\operatorname{tr} \\left(\\boldsymbol {g} _ {e} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {B} ^ {(l)} [ n ]\\right) \\right.",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/e7d9fceef3e258f366a8b4e4be5de8c6c0b4b09a767464c7029a9501b298fd22.jpg"
+                }
+            },
+            "bbox": [
+                522,
+                657,
+                834,
+                683
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "+ \\operatorname{tr} \\left(\\boldsymbol {g} _ {e} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {A} _ {s} ^ {(l)} [ n ]\\right) + \\sigma^ {2}), \\tag {18}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/64ae74f8ae1b22d38f86f9fed706b8c78b7f5b63bddbe97735f0ae6b953d587c.jpg"
+                }
+            },
+            "bbox": [
+                601,
+                684,
+                919,
+                709
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\Lambda_ {e} ^ {(l)} [ n ] = \\left(\\log_ {2} e \\mathbf {\\rho} _ {e} (\\boldsymbol {\\rho} [ n ]) \\mathbf {\\rho} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ])\\right) \\\\ \\div \\left(\\operatorname{tr} \\left(\\boldsymbol {g} _ {e} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {B} ^ {(l)} [ n ]\\right) \\right. \\\\ + \\operatorname{tr} \\left(\\boldsymbol {g} _ {e} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {g} _ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {A} _ {s} ^ {(l)} [ n ]\\right) + \\sigma^ {2}). \\tag {19} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/edef1b338298638bb83aeaf1a7a6850e04b096ee60087a97f6c328b4b778ba30.jpg"
+                }
+            },
+            "bbox": [
+                519,
+                710,
+                919,
+                784
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Consequently, we approximate problem (P3) as a convex problem and solve it iteratively. Note that with the converged solution "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "B ^ { * } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "A _ { s } ^ { * } [ n ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "obtained by the SCA technique, we B Acan always construct an alternative rank-one solution achieving the same optimal objective, given by "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                786,
+                919,
+                859
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\boldsymbol {b} [ n ] = \\frac {\\boldsymbol {B} ^ {*} [ n ] \\boldsymbol {g} _ {u} (\\boldsymbol {\\rho} [ n ])}{\\sqrt {\\boldsymbol {g} _ {u} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {B} ^ {*} [ n ] \\boldsymbol {g} _ {u} (\\boldsymbol {\\rho} [ n ])}}, \\tag {20}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/51bea64f12af33cbbbc79affedae0b5c4d0df107e5e1a9666d5c73527b93b202.jpg"
+                }
+            },
+            "bbox": [
+                589,
+                859,
+                919,
+                896
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\bar {\\boldsymbol {B}} [ n ] = \\overline {{{\\boldsymbol {b}}}} [ n ] \\overline {{{\\boldsymbol {b}}}} ^ {\\mathrm{H}} [ n ], \\tag {21}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/d94895a5507b254f3d90e9f05d85a6d4baf221cfba501d636d2972cac557f56b.jpg"
+                }
+            },
+            "bbox": [
+                589,
+                898,
+                919,
+                919
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\bar {\\boldsymbol {A}} _ {s} [ n ] = \\boldsymbol {B} ^ {*} [ n ] + \\boldsymbol {A} _ {s} ^ {*} [ n ] - \\bar {\\boldsymbol {B}} [ n ], \\tag {22}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/ed038946c14bd85ebd8e5adaa70026cfe86802346d3b44603b4cae27af997165.jpg"
+                }
+            },
+            "bbox": [
+                583,
+                922,
+                919,
+                941
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "YAO et al.: UAV-ENABLED SECURE ISAC AGAINST DUAL EAVESDROPPING THREATS "
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                34,
+                531,
+                46
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3201 "
+                    }
+                ]
+            },
+            "bbox": [
+                893,
+                35,
+                919,
+                45
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 29,2026 at 12:42:23 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                122,
+                962,
+                869,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where rank "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\bar { B } [ n ] ) ~ = ~ 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Owing to space restrictions, the Bequivalence of such a solution can be referred to in the online technical report at https://arxiv.org/abs/2412.19748. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                69,
+                491,
+                114
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "B. UAV Trajectory Optimization "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                138,
+                297,
+                154
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "With the information and sensing beamforming "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ b [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ A _ { s } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "bfixed, we proceed to optimize the UAV trajectory "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ \\pmb { \\rho } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", for which problem (P1) is reduced to "
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                157,
+                491,
+                203
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text {(P4)} \\colon \\max _ {\\{\\boldsymbol {\\rho} [ n ] \\}} \\frac {1}{N} \\sum_ {n = 1} ^ {N} R _ {s} [ n ]",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/2ab58900dd39f34f744d6da447984be16397559e22db84ed6ce0a8c1c4873b56.jpg"
+                }
+            },
+            "bbox": [
+                119,
+                205,
+                279,
+                239
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text { s.t. } \\Phi_ {t} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {E} [ n ] \\Phi_ {t} (\\boldsymbol {\\rho} [ n ]) \\geq \\Gamma_ {t} d _ {t} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}, \\tag {23a}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/45ac50a788093bb12ab4bdd0613b4f386ef5712a91197d51b1b981991f510477.jpg"
+                }
+            },
+            "bbox": [
+                133,
+                241,
+                488,
+                258
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Phi_ {e} ^ {\\mathrm{H}} (\\boldsymbol {\\rho} [ n ]) \\boldsymbol {E} [ n ] \\Phi_ {e} (\\boldsymbol {\\rho} [ n ]) \\leq \\Gamma_ {e} d _ {e} ^ {2} (\\boldsymbol {\\rho} [ n ]), \\forall n \\in \\mathcal {N}, \\tag {23b}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/f503654a29646b0900045cb4aaa699751987c70c7ae8dea830ad484619cd8c6d.jpg"
+                }
+            },
+            "bbox": [
+                161,
+                260,
+                488,
+                276
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "(1) \\text {   and   } (2),",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/1c053c749b32f32c6c3602a4e47a75ca44d9792248a32fd2ac83a1751ab43d8c.jpg"
+                }
+            },
+            "bbox": [
+                163,
+                280,
+                233,
+                294
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\pmb { { \\cal E } } \\big [ n \\big ] = { \\pmb { b } } \\big [ n \\big ] { \\pmb { b } } ^ { \\mathrm { H } } \\big [ n \\big ] + { \\pmb { A } } _ { s } \\big [ n \\big ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is introduced for notational E b b Aconvenience. Problem (P4) is non-convex due to the nonconvexity of the objective function in (P4), constraint (23a), and constraint (23b). To address this, we introduce the trustregion-based SCA method, which is executed iteratively. Considering a specific iteration l with a local trajectory point "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\pmb { \\rho } ^ { ( l ) } [ \\bar { n } ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", we approximate the objective function in (P4), constraint (23a), and constraint (23b) applying the standard first-order Taylor expansion similarly to that in Section III-A, for which the details are omitted and can be found in the online technical report at https://arxiv.org/abs/2412.19748. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                296,
+                491,
+                460
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To maintain the accuracy of the approximation, we introduce a set of trust region constraints as "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                460,
+                491,
+                489
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\left| \\left| \\boldsymbol {\\rho} ^ {(l)} [ n ] - \\boldsymbol {\\rho} ^ {(l - 1)} [ n ] \\right| \\right| \\leq \\psi^ {(l)}, \\forall n \\in \\mathcal {N}, \\tag {24}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/6c226a8d92ba4c1f46fcbec342e14020ae5342d0160eacf8adfbad49a6ab5ad9.jpg"
+                }
+            },
+            "bbox": [
+                142,
+                491,
+                488,
+                511
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\psi ^ { ( l ) }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represents the trust region’s radius. Notably, theoretically, reduce the radius "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\psi ^ { ( l ) }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "to a sufficiently small value, which guarantees the convergence of the iterative procedure. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                512,
+                488,
+                558
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Ultimately, by substituting the non-concave objective function of problem (P4) and the non-convex constraints (23a) and (23b) with their respective approximate forms and incorporating the trust region constraints in (24), we derive the convex approximation of problem (P4), which can be efficiently solved using CVX. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                558,
+                491,
+                647
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To sum up, we solve for the communication beamforming vectors "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ b [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", the sensing covariance matrices "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ A _ { s } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and bthe UAV trajectory "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ \\pmb { \\rho } [ n ] \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Ain an alternating manner. Since both subproblems can be guaranteed to converge, we finally obtain an efficient solution to problem (P1), which has a total computation complexity "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\bar { \\mathbb { O } } ( L _ { \\mathrm { A L T } } ( L _ { \\mathrm { S C A 1 } } M ^ { 3 . 5 } N ^ { 3 . 5 } \\ +"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "L _ { \\mathrm { S C A 2 } } N ^ { 3 . 5 } ) ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "), where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "L _ { \\mathrm { A L T } } , L _ { \\mathrm { S C A 1 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and LSCA2 represent the iteration numbers for problem (P1), SCA for problem (P3), and SCA for problem (P4), respectively. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                647,
+                491,
+                781
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "IV. NUMERICAL RESULTS "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                187,
+                808,
+                377,
+                821
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, we present numerical results to assess the effectiveness of the proposed algorithm. Unless stated otherwise, the simulation settings are as follows: "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r l r } { \\rho _ { I } } & { = } & { [ 3 0 0 , 4 0 0 , 2 0 0 ] ^ { \\mathrm { T } } ~ \\mathrm { m } , ~ \\rho _ { F } ~ = ~ [ \\bar { 3 } 0 0 , 6 0 0 , 2 0 0 ] ^ { \\mathrm { T } } ~ \\mathrm { m } , } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r c l c r } { { \\dot { s _ { t } } ~ = ~ [ \\dot { 2 } 5 0 , 4 8 0 , 0 ] ^ { \\mathrm { T } } ~ \\mathrm {  ~ m ~ } , ~ s _ { u } ~ = ~ [ 2 5 0 , \\dot { 5 } 2 0 , 0 ] ^ { \\mathrm { T } } ~ \\mathrm {  ~ m ~ } , ~ s _ { e } ~ = ~ } } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "[ 3 5 0 , 5 0 \\dot { 0 } , 0 ] ^ { \\mathrm { T } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "m, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "T = 1 2 \\mathrm { ~ s , ~ } t _ { s } = 0 . 5 \\mathrm { ~ s , ~ } N = 2 4 \\mathrm { , ~ } v _ { \\operatorname* { m a x } } ="
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "2 5 \\mathrm { ~ \\ m / s } , \\bar { M } \\ = \\ 4 , \\ \\Gamma _ { t } \\ = \\ \\Gamma _ { e } \\ = \\ 1 0 ^ { - 6 } , P _ { \\mathrm { m a x } } \\ = \\ 1 \\mathrm { ~ W ~ }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 0 } = - 3 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "dBm, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sigma ^ { 2 } = - 9 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "dBm. To facilitate comparison, we evaluate three baseline approaches as follows. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                827,
+                491,
+                960
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/661913f11a4383c42624586cec5ace6068c1ed7697a79b617230f392931412cc.jpg"
+                },
+                "content": "| x(m) | Initial Inspection | Proposed scheme | Benchmark without sensing security |\n|------|-------------------|-----------------|------------------------------------|\n| 200  | 540               | 540             | 540                                |\n| 250  | 560               | 560             | 560                                |\n| 300  | 600               | 420             | 420                                |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. Trajectories obtained by our proposed design and the benchmark without sensing security. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                633,
+                64,
+                795,
+                162
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/baaa2c81b5b5db73b413e322913a136fcfd69cbbb0d5ea1699ce8dde441bbbe1.jpg"
+                },
+                "content": "| Time slot n | Proposed scheme (W) | Without sensing security (W) |\n|---|---|---|\n| 2 | 0.15 | 0.6 |\n| 4 | 0.05 | 0.5 |\n| 6 | 0.0 | 0.3 |\n| 8 | 0.0 | 0.1 |\n| 10 | 0.0 | 0.0 |\n| 12 | 0.0 | 0.0 |\n| 14 | 0.0 | 0.0 |\n| 16 | 0.0 | 0.0 |\n| 18 | 0.0 | 0.0 |\n| 20 | 0.0 | 0.1 |\n| 22 | 0.1 | 0.3 |\n| 24 | 0.2 | 0.5 |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. Power allocation between sensing and communication signals over time by our proposed design and the benchmark without sensing security. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                630,
+                213,
+                795,
+                315
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "1) Straight-flight trajectory with beamforming optimization: The UAV adopts the straight-flight trajectory, traveling at a uniform speed "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "| | \\pmb { \\rho } _ { I } - \\pmb { \\rho } _ { F } | | / T"
+                    },
+                    {
+                        "type": "text",
+                        "content": "from the starting position to the destination. Based on the straight-flight trajectory, the UAV dynamically adjusts the transmit information and sensing beamforming by solving problem (P2). "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                368,
+                921,
+                457
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2) Trajectory design with maximum ratio transmission (MRT) beamforming: The UAV optimizes the trajectory by solving problem (P4) by considering the simple MRT information beamforming with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r l } { \\pmb { b } [ n ] } & { { } = } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sqrt { \\operatorname* { m i n } \\left( P _ { \\operatorname* { m a x } } , P _ { c } \\right) } \\pmb { g } _ { u } ( \\pmb { \\rho } [ n ] ) / | | \\pmb { g } _ { u } ( \\pmb { \\rho } [ n ] ) | |"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\forall n \\in { \\mathcal { N } } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": "b, in which "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { c }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "g gis the maximum transmission power that satisfies the sensing security threshold at the eavesdropper. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                458,
+                921,
+                561
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "3) Benchmark without sensing security: The UAV jointly optimizes its trajectory and the beamforming in problem (P1) by ignoring the sensing security constraint (13d). "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                561,
+                921,
+                604
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1 compares the trajectory obtained by our proposed design and the benchmark without sensing security. In both schemes, the UAV is observed to follow arc-like paths that move towards the legitimate user and target while avoiding the eavesdropper, in order to prevent information and sensing leakage. It is also observed that the trajectory obtained by the proposed design is closer to the legitimate nodes. This is because when sensing security is considered, most of the power is concentrated in the communication signal and reused for target sensing as shown in Fig. 2. Compared to the benchmark without sensing security, the beam is not as focused, so the UAV needs to be closer to the two legitimate nodes in order to cover both. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                606,
+                921,
+                796
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3 illustrates the relationship between the antenna number M and the average secrecy rate over 100 Monte Carlo runs, where the locations of the eavesdropper and ground nodes are randomly generated within the desirable region [200, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "4 0 0 ] \\times [ 4 0 0 , 6 0 0 ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". It is observed that the average secrecy rate achieved by all four schemes increases as the antenna number grows, since additional antennas provide more degrees of freedom and array gains. By directing energy more accurately toward intended receivers and minimizing leakage to potential eavesdroppers, the system’s overall security performance is significantly bolstered. It is also observed that our proposed scheme significantly outperforms the straight-flight trajectory with beamforming optimization scheme and trajectory design with MRT beamforming scheme. This superiority stems from the synergistic integration of trajectory planning and beamforming design, which allows the UAV to adapt its path and signal transmission dynamically in response to environmental conditions and potential threats. By jointly optimizing these parameters, the system can maintain stronger legitimate links while effectively mitigating the risk of eavesdropping, which leads to enhanced secrecy rates compared to schemes that optimize these aspects in isolation. Additionally, the observed disparity in secrecy rate between our proposed design and the benchmark without sensing security highlights the trade-off between achieving high secrecy rates and ensuring robust protection against sensing eavesdropping. Incorporating sensing security measures necessitates additional resource allocation and system constraints, which can limit the maximum achievable secrecy rate. However, this trade-off is essential to safeguard sensitive information against adversaries attempting to exploit sensing mechanisms for eavesdropping. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                797,
+                921,
+                960
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3202 "
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                35,
+                104,
+                45
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 14, NO. 10, OCTOBER 2025 "
+                    }
+                ]
+            },
+            "bbox": [
+                495,
+                34,
+                921,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 29,2026 at 12:42:23 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                120,
+                962,
+                870,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/fb227c65a7cc56881e08938e21d2630537187e77cb872f062e8044ad18f6aadb.jpg"
+                },
+                "content": "| Antenna number M | Proposed scheme | Benchmark without sensing security | Straight-light trajectory with beamforming optimization |\n|---|---|---|---|\n| 4 | 3.0 | 2.5 | 2.0 |\n| 6 | 4.5 | 4.0 | 3.5 |\n| 8 | 5.5 | 5.0 | 4.5 |\n| 10 | 6.0 | 5.5 | 5.0 |\n| 12 | 6.5 | 6.0 | 5.5 |\n| 14 | 7.0 | 6.5 | 6.0 |\n| 16 | 7.5 | 7.0 | 6.5 |\n| 18 | 8.0 | 7.5 | 7.0 |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. Average secrecy rate versus the antenna number M. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                202,
+                65,
+                366,
+                167
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/758e289f2e87ac6e0350d4a09fe4b4aee228b18edd975c311e16d72597ca856d.jpg"
+                },
+                "content": "| Point Type | Value       |\n|------------|-------------|\n| Gain       | 0.88543     |\n| Gain       | 0.0027994   |\n| SINR       | 17.4772     |\n| SINR       | 0.027372    |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(a) Proposed scheme "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "heatmap",
+            "bbox": [
+                183,
+                205,
+                385,
+                329
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/113a289949d95f8703943ccc89b5598d8e6daafdbfb89828419bd5e284749aaa.jpg"
+                },
+                "content": "| Point Type | x(m) | y(m) | SINR     |\n|------------|------|------|----------|\n| Blue X     | 240  | 520  | 20.2598  |\n| Red X      | 250  | 480  | 1.112    |\n| Diamond    | 350  | 400  | 0.017508 |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(b) Benchmark without sensing security "
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. Achieved beampattern gain at time slot 10. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "scatter",
+            "bbox": [
+                183,
+                345,
+                383,
+                470
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                73,
+                523,
+                491,
+                819
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4 presents the beampattern gain at time slot 10 in space by our proposed design and the benchmark without sensing security. It is observed that both the user and target are within the high-gain region, while the eavesdropper is located in the lowgain region, thus ensuring communication and sensing security. It is also observed that by comparing the two sub-figures, the SINR and beampattern gain of the user and eavesdropper under the benchmark without sensing security are higher than those of the proposed design. When sensing security is not considered, the primary objective focuses on enhancing the disparity in "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                820,
+                491,
+                965
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "the rate between the legitimate and eavesdropping channels to enhance the secrecy rate. This results in a higher secrecy rate but also introduces potential sensing security vulnerabilities, which aligns with the findings in Fig. 1. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                70,
+                919,
+                128
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "V. CONCLUSION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                651,
+                138,
+                774,
+                152
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This letter considered a UAV-enabled secure ISAC system, where an aerial dual-functional BS simultaneously performs secure communication with a communication user and performs radar sensing of a target, in the presence of an eavesdropper intercepting both information and sensing. We focused on maximizing the average achievable secrecy rate through the optimization of the UAV trajectory, as well as the transmit information and sensing beamforming. To extend our approach to other configurations (e.g., with multiple users over complex dynamic environments) presents promising avenues for future research. This includes developing real-time adaptive algorithms to handle dynamic environments, incorporating robust optimization techniques to address uncertainties in CSI, and accounting for realistic UAV mobility and energy constraints. Furthermore, exploring the integration of multiple antennas and pursuing global optimality solutions could enhance system performance. These directions aim to improve the practical applicability and theoretical robustness of UAV-enabled secure ISAC systems. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                157,
+                921,
+                439
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "REFERENCES "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                665,
+                450,
+                761,
+                462
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] F. Liu et al., “Integrated sensing and communications: Toward dualfunctional wireless networks for 6G and beyond,” IEEE J. Sel. Areas Commun., vol. 40, no. 6, pp. 1728–1767, Mar. 2022. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Z. Lyu et al., “Joint maneuver and beamforming design for UAV-enabled integrated sensing and communication,” IEEE Trans. Wireless Commun., vol. 22, no. 4, pp. 2424–2440, Apr. 2023. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] K. Meng et al., “UAV-enabled integrated sensing and communication: Opportunities and challenges,” IEEE Wireless Commun., vol. 31, no. 2, pp. 97–104, Apr. 2024. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] A. Khalili et al., “Efficient UAV hovering, resource allocation, and trajectory design for ISAC with limited backhaul capacity,” IEEE Trans. Wireless Commun., vol. 23, no. 11, pp. 17635–17650, Nov. 2024. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] A. Khalili et al., “Energy-aware resource allocation and trajectory design for UAV-enabled ISAC,” in Proc. IEEE Global Commun. Conf. (GLOBECOM), Dec. 2023, pp. 4193–4198. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] C. Zhong et al., “Secure UAV communication with cooperative jamming and trajectory control,” IEEE Commun. Lett., vol. 23, no. 2, pp. 286–289, Feb. 2019. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] J. Wu et al., “When UAVs meet ISAC: Real-time trajectory design for secure communications,” IEEE Trans. Veh. Technol., vol. 72, no. 12, pp. 16766–16771, Dec. 2023. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] Z. Ren et al., “Robust transmit beamforming for secure integrated sensing and communication,” IEEE Trans. Commun., vol. 71, no. 9, pp. 5549–5564, Sep. 2023. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Y. Liu et al., “Secure rate maximization for ISAC-UAV assisted communication amidst multiple eavesdroppers,” IEEE Trans. Veh. Technol., vol. 73, no. 10, pp. 15843–15847, Oct. 2024. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] J. Zou et al., “Securing the sensing functionality in ISAC networks: An artificial noise design,” IEEE Trans. Veh. Tech., vol. 73, no. 11, pp. 17800–17805, Nov. 2024. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Z. Ren et al., “Secure cell-free integrated sensing and communication in the presence of information and sensing eavesdroppers,” IEEE J. Sel. Areas Commun., vol. 42, no. 11, pp. 3217–3231, Nov. 2024. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] A. Mukherjee and A. L. Swindlehurst, “Detecting passive eavesdroppers in the MIMO wiretap channel,” in Proc. IEEE Int. Conf. Acoustics, Speech, Signal Process., Mar. 2012, pp. 2809–2812. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] B. Shang et al., “Unmanned aerial vehicle meets vehicle-to-everything in secure communications,” IEEE Commun. Mag., vol. 57, no. 10, pp. 98–103, Oct. 2019. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] X. Lin et al., “The sky is not the limit: LTE for unmanned aerial vehicles,” IEEE Commun. Mag., vol. 56, no. 4, pp. 204–210, Apr. 2018. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] “Study on enhanced LTE support for aerial vehicles; (Release 15),” 3GPP, Sophia Antipolis, France, Rep. TR 36.777, Dec. 2017. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] X. Liu et al., “Joint transmit beamforming for multiuser MIMO communications and MIMO radar,” IEEE Trans. Signal Process., vol. 68, pp. 3929–3944, 2020. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                465,
+                923,
+                974
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "YAO et al.: UAV-ENABLED SECURE ISAC AGAINST DUAL EAVESDROPPING THREATS "
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                34,
+                532,
+                46
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3203 "
+                    }
+                ]
+            },
+            "bbox": [
+                893,
+                35,
+                919,
+                45
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 29,2026 at 12:42:23 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                122,
+                963,
+                870,
+                974
+            ]
+        }
+    ]
+]

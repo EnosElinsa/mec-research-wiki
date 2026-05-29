@@ -1,0 +1,1180 @@
+# Over-the-Air Edge Inference for Low-Altitude Airspace: Generative AI-Aided Multi-Task Batching and Beamforming Design
+
+Yang Fu , Peng Qin , Member, IEEE, Yifei Wang, Liming Chen, Mengyao Li iD and Xiongwen Zhao , Senior Member, IEEE
+
+Abstract—The exploitation of low-altitude (LA) airspace is advancing globally, boosting the sensing demands for heterogenous flying aircraft. To fulfill an accurate and intelligent sensing, the future 6G base station (BS) requires to aggregate features of multiple sensors’ views, then perform edge inference via loading the artificial intelligence (AI) model. However, this process confronts communication and computation bottlenecks owing to high-dimensional feature uploading as well as frequent memory access. To overcome these bottlenecks, we propose a multi-task over-the-air edge inference system for LA airspace, where feature aggregation is efficiently achieved employing overthe-air computation, and multiple inference tasks arriving at the BS are processed in batches to reduce memory access. Under this arrangement, we formulate a joint batching and beamforming design problem to maximize the number of completed tasks, constrained by completion latency and inference accuracy requirements. To address this intractable problem, we first examine the case with synchronous task arrivals and single batch. A spatial correlation-aware beamforming design approach is proposed to effectively suppress feature aggregation error and ensure inference accuracy. Next, we delve into the general asynchronous task arrival case. An AI-generated online policy is developed, which innovatively utilizes diffusion model to output batching decisions, thereby adapting to the dynamic and uncertain nature of task arrivals. Simulation results obtained on real-world dataset corroborate the importance of capturing the spatial correlation among sensors. In addition, the proposed approach realizes outstanding performance compared to benchmark batching, beamforming, and learning methods, and the completed task amount is close to offline optimization with prior task information.
+
+Index Terms—Low-altitude airspace, edge inference, batching, over-the-air computation, multi-antenna beamforming, diffusion model.
+
+Received 17 December 2024; revised 16 March 2025; accepted 18 April 2025. Date of publication 23 April 2025; date of current version 20 October 2025. This work was supported in part by the National Natural Science Foundation of China under Grant 62201212, 62271201, in part by the Natural Science Foundation of Hebei Province under Grant F2022502017, in part by the Fundamental Research Funds for the Central Universities under Grant 2023JC003, and in part by the Science and Technology Projects of China Southern Power Grid under Grant SEPRI-K24B018. The associate editor coordinating the review of this article and approving it for publication was M. Chen. (Corresponding author: Peng Qin.)
+
+Yang Fu, Peng Qin, Yifei Wang, Mengyao Li, and Xiongwen Zhao are with the State Key Laboratory of Alternate Electrical Power System with Renewable Energy Sources, School of Electrical and Electronic Engineering, North China Electric Power University, Beijing 102206, China (e-mail: qinpeng@ncepu.edu.cn).
+
+Liming Chen is with the Electric Power Research Institute, China Southern Power Grid, Guangzhou 510663, China.
+
+Digital Object Identifier 10.1109/TCOMM.2025.3563657
+
+# I. INTRODUCTION
+
+# A. Background
+
+L that accommodates the flight operations of various aircraft, including electric vertical take-off and landing, OW-altitude (LA) airspace refers to the physical space autonomous aerial vehicles (AAVs) and so on [1]. In recent years, the exploitation of LA airspace is advancing globally, with the aim of promoting substantial economic growth and unlocking new commercial applications, e.g., air transport, AAV delivery, and city monitoring [2]. As predicted by the Federal Aviation Administration of USA, advanced air mobility will be officially commercialized between 2025 and 2027, and the number of flights will increase to 3.9 million per year by 2030 [3]. However, the ever-increasing of flying aircraft calls for not only full coverage, but also high-precision and intelligent sensing, fulfilling the safety supervision of LA airspace [4]. This necessitates the paradigm shift from conventional communication systems to multi-functional information networks.
+
+As a milestone in the development of communication systems, the Recommendation for IMT-2030 defines two new functions of 6G, i.e., sensing and artificial intelligence (AI) [5]. The former leverages edge devices as distributed sensors to achieve collaborative sensing, offering multi-view observations of surrounding environment. For the latter, advanced AI models are deployed at network edge in order to empower ubiquitous inference on sensing data. The natural integration of these two new functions, which combines the advantages of collaborative sensing and the powerful inference abilities of AI models, gives birth to an intelligent platform for performing diversified inference tasks of LA airspace, incorporating aircraft recognition, auto-pilot and autonomous control [6], [7].
+
+Such an intelligent platform builds on the popular split inference architecture, in which a pre-trained AI model is partitioned into two sub-models [8]. Each LA sensor utilizes the lightweight sub-model to extract local features from its raw observation, then wirelessly uploads the features to a base station (BS) for aggregation and inference via loading the edge sub-model. Evidently, this inference architecture allows the resource-limited sensors to access the high-performance edge AI model, while improving inference accuracy through aggregating features extracted from various sensors’ views. Despite these strengths, realizing efficient edge inference in practical LA airspace still confronts two major bottlenecks. Specifically, communication bottleneck stems from the transmission of high-dimensional features from numerous LA sensors to the BS. Meanwhile, computation bottleneck is caused by the timeconsuming memory access for AI model loading, enlarging the edge inference latency [9]. To tackle these bottlenecks, related studies start to explore the power of emerging techniques, e.g., over-the-air computation (Air-Comp) and batching.
+
+# B. Related Works and Motivation
+
+1) Work in Over-the-Air Edge Inference: AirComp allows multiple sensors to simultaneously upload analog signals over the same wireless medium, then the BS can directly receive aggregated signals thanks to the wave superposition property [10]. As such, rapid and scalable feature aggregation can be achieved, thereby overcoming the communication bottleneck. Considering an edge inference system that aggregates multiview observations via AirComp, paper [11] constructed a theoretical framework for characterizing the inference uncertainty. The analysis results unveiled an exponential decrease of inference uncertainty as the number of observations ascends. The authors of [12] proposed a generalized configuration scheme to calculate various aggregation functions, e.g., max and average, based on AirComp. Subsequently, configuration parameter and sensor power were jointly designed to minimize the aggregation error. In [13], a task-oriented optimization approach for over-the-air edge inference was developed, in which an approximate and tractable inference accuracy metric, namely discriminant gain, was derived. Afterwards, the authors systematically designed data sensing, feature extraction and aggregation to maximize the discriminant gain. Literature [14] investigated an edge inference architecture building on cloud radio access network, where the local features were first aggregated at multiple remote radio heads (RRHs) using AirComp, then further transmitted to a central processor, enhancing the network coverage and inference accuracy. However, the aforementioned studies all concentrate on the case of single inference task, which implies that only one common target can be sensed. This encounters difficulties in fulfilling the connected intelligence for LA airspace, since a large number of aircrafts operate simultaneously, resulting in the co-existence of multiple inference tasks. The consideration of multi-task edge inference triggers the first open question motivating our research Q1: How to carry out reasonable transceiver design for AirComp-based feature aggregation, suppressing the inevitable inter-task interference?
+
+2) Work in Multi-Task Batching: Batching serves as an effective technique for breaking the computation bottleneck, designed to process multiple inference tasks in parallel by assembling them into one batch, thereby amortizing the memory access time and boosting the completed task amount [15]. Under the context of cloud computing, the authors of [16] designed an elastic batch scheduling policy, which dynamically configured the batch size and waiting time to enhance task responsiveness. Work in [17] elaborated an edge inference system with batching capable BS, for which an energy minimization problem was formulated subject to task latency constraints. To solve this problem, the authors first optimized task offloading and computational resource allocation, then batched tasks with similar latency constraints. Literature [18] designed multi-task batching together with early exiting, which allowed each batched task to traverse an adaptive depth of AI model according to its accuracy demand. Under this arrangement, a tree-search algorithm with online pruning was developed to jointly determine batching and bandwidth assignment. Considering the heterogenous arrivals of various inference tasks, [19] proposed to form multiple batches and appropriately design the task-batch association as well as batch starting instants, thereby maximizing the inference throughput while respecting the completion deadline and radio resource restraints. In spite of these advancements, a common limitation in these works is that they rely on the precise prediction of task information (containing arrival time and deadline). In practice, such information may not be obtained prior to the batching design, necessitating an online policy that maintains a good balance between immediate task processing and resource reserved for uncertain future arrivals. This gives rise to the second research question Q2: How to coordinate multi-task batching under information uncertainty, meeting the distinct inference accuracy and completion latency requirements?
+
+3) Work in Generative AI-Aided Resource Allocation: The emergence of generative AI has underscored its creative and versatile content generation capabilities, enabling highly intelligent human-computer interactions [20]. As a representative technology in the realm of generative AI, diffusion model notably excels in modeling complex distributions and generating high-quality data [21]. These unique characteristics make the applications of diffusion model go beyond the original image generation field and extend to network resource allocation. Study [22] employed diffusion model in closed-box optimization scenarios, in which the denoising process of diffusion model was exploited to iteratively generate solutions. In [23], diffusion model was integrated with deep reinforcement learning (DRL), forming an effective decisionmaking approach to solve the dynamic task assignment problem. Literature [24] investigated the transmitter resource allocation issue in semantic communication scenarios, and applied diffusion model to characterize the importance of user semantic information whilst generating power allocation decisions, improving the reliability of semantic information transmissions. The authors of [25] formulated a joint AI model splitting, task offloading, and resource allocation problem in intelligent vehicular network, for which a multi-agent DRL algorithm was enhanced by diffusion model, achieving precise action value estimation. Nonetheless, the study on diffusion model-aided resource allocation is still in its nascent stage. Different from previous works, we explore a new application of diffusion model in multi-task batching for edge inference system, entailing judicious Markov decision process (MDP) formulation and diffusion-based actor network design. Additionally, we examine the performance gap between diffusion model-based online policy and mathematical optimization with prior task information, offering insights into the implementation of diffusion model in dynamic and uncertain environment.
+
+# C. Contributions
+
+In this paper, we put forward an edge inference system for LA airspace, where sensors monitor the behaviors of heterogenous aircraft and generate multiple inference tasks. An edge
+
+BS aggregates the features extracted from various sensors’ views via AirComp, then reconstructs global features for different tasks. Employing the batching technique, the global features are strategically assembled and fed into the edge AI model for parallel inference. We formulate a joint batching (incorporating number of batches, task-batch association, and batch starting time) and beamforming (for AirComp-based feature aggregation) design problem to maximize the number of completed tasks, constrained by completion latency and inference accuracy requirements. Considering the stochastic arrivals and distinct requirements of inference tasks, we tackle this intractable problem by sequentially treating two cases with incremental complexity, namely one presumes synchronous task arrivals and single batch, and the other considers general asynchronous task arrivals. This allows the former’s method for reducing the feature aggregation error to be a cornerstone for the batching design in the latter. Our contributions are summarized below.
+
+• To answer Q1, we propose to exploit the multipleinput multiple-output (MIMO) technology for inter-task interference suppression in over-the-air edge inference, where the LA sensors and BS are equipped with multiple antennas. After relating the inference accuracy and feature aggregation error, we derive a closed-form expression for the latter to facilitate MIMO beamforming design. Particularly, our beamforming design captures the feature correlation among sensors, bringing performance gain in reducing the aggregation error. Moreover, batching for synchronous arrivals is optimized by finding the completable task subset with maximum cardinality.   
+• To answer $Q 2 ,$ we develop an AI-generated online batching policy to adapt to the dynamic and uncertain nature of task arrivals. First, the coordination of multitask batching is reformulated as an MDP, in which the action is designed to balance the completed task amount, waiting latency, and BS’s busy time. Second, we construct an actor network to generate action based on diffusion model, enabling progressive action refinement through the denoising process. Finally, the diffusion-based actor network is trained to yield batching decisions, in response to asynchronous task arrivals and distinct completion deadlines.   
+• Comprehensive simulations are conducted to evaluate the proposed algorithms. Leveraging real-world dataset and AI model architecture, we verify the existence of feature correlation among sensors, demonstrating the effectiveness of the proposed correlation-aware beamforming design. In addition, we compare the training convergence of our approach with standard DRL methods, showcasing the superiority of diffusion-based actor network in handling the stochastic and uncertain task arrivals. Besides, numerical results unveil that our online batching policy achieves comparable task completion performance with much lower implementation time, compared to the baseline optimization relying on prior task information.
+
+Notations: The conjugate transpose, transpose, and conjugate operation are denoted by superscripts H, T, and $^ { \dagger , }$ respectively. For a vector f, kf k represents its norm, $f [ m ]$ is the m-th element, and $\mathbf { f } \left[ 1 : m \right]$ indicates a sub-vector with
+
+TABLE I SUMMARY OF MAIN NOTATIONS 
+
+<table><tr><td>Notation</td><td>Description</td></tr><tr><td> $N$ </td><td>Number of inference tasks</td></tr><tr><td> $K_{n}$ </td><td>Number of LA sensors associated with task  $n$ </td></tr><tr><td> $T$ </td><td>Number of communication rounds</td></tr><tr><td> $\mathbf{f}_{n,k},\tilde{\mathbf{f}}_{n,k}$ </td><td>Original and normalized feature vector of sensor  $\langle n,k\rangle$ </td></tr><tr><td> $2Q$ </td><td>Number of feature elements</td></tr><tr><td> $M^{\text{tx}},M^{\text{rx}}$ </td><td>Number of antennas at LA sensor and BS</td></tr><tr><td> $\mathbf{w}_{n,k}$ </td><td>Transmission beamforming vector of sensor  $\langle n,k\rangle$ </td></tr><tr><td> $\mathbf{H}_{n,k}$ </td><td>MIMO channel between sensor  $\langle n,k\rangle$  and the BS</td></tr><tr><td> $\mathbf{v}_{n}$ </td><td>Receiving beamforming vector for task  $n$ </td></tr><tr><td> $\eta_{n}$ </td><td>Normalizing factor for task  $n$ </td></tr><tr><td> $\xi_{n,i}$ </td><td>Signal overlapping indicator for task  $n$  and task  $i$ </td></tr><tr><td> $\hat{\mathbf{f}}_{n},\mathbf{f}_{n}$ </td><td>Reconstructed and ideal global feature for task  $n$ </td></tr><tr><td> $\mathbf{e}_{n}$ </td><td>Feature aggregation error for task  $n$ </td></tr><tr><td> $T_{n},D_{n}$ </td><td>Arrival instant and completion deadline of task  $n$ </td></tr><tr><td> $B$ </td><td>Number of batches</td></tr><tr><td> $y_{n,b}$ </td><td>Batching decision that determines whether to assemble task  $n$  in batch  $b$ </td></tr><tr><td> $t_{b},l_{b}$ </td><td>Starting time and processing latency of batch  $b$ </td></tr><tr><td> $A_{n}$ </td><td>Inference accuracy requirement of task  $n$ </td></tr><tr><td> $\mathbf{C}_{n}$ </td><td>Feature correlation matrix of task  $n$ </td></tr><tr><td> $\zeta,\zeta^{\max}$ </td><td>Index and total number of time slots</td></tr><tr><td> $U$ </td><td>Number of denoising steps</td></tr><tr><td> $\theta,\varphi$ </td><td>Parameters of diffusion-based actor and critic networks</td></tr></table>
+
+elements indexed from 1 to m. For a matrix $\mathbf { F } , f \left[ m , n \right]$ and f [m] are the $( m , n )$ -th element and m-th column, respectively. $\mathbb { R } ^ { \mathbf { \bar { M } } \mathbf { \times } N }$ and $\dot { \mathbb { C } } ^ { M \times N }$ respectively specify the space of $M \times N$ real and complex matrices. ${ \bf 0 } _ { M \times N }$ and ${ \bf 1 } _ { M \times N }$ denote the $M \times N$ all-zero and all-one matrices, and ${ \mathbf { I } } _ { M }$ is the $M \times M$ identity matrix.
+
+# II. SYSTEM MODEL
+
+As depicted in Fig. 1, we consider a multi-task overthe-air edge inference model for LA airspace. There are K LA sensors responsible for monitoring the behaviors of heterogenous aircraft, whilst generating data samples for AI inference. A typical sensing task supported by the considered system is LA object recognition,1 where the BS analyzes the image or video clip to identify the type of object, e.g., suspicious AAV. Let ${ \cal K } _ { n } = \{ 1 , \dots , K _ { n } \}$ represent the set of $K _ { n } \ L \mathbf { A }$ sensors, which collaboratively perform inference task ${ \mathfrak { n } } , { \mathfrak { n } } \in { \mathcal { N } } = \{ 1 , \dots , N \}$ by perceiving a common aircraft from multiple views, and $\textstyle K = \sum _ { n \in { \mathcal { N } } } K _ { n }$ . To complete the inference tasks, each sensor first utilizes its local AI model to extract a feature vector from raw data, thereby reducing communication overhead and protecting privacy. Afterwards, leveraging the AirComp technique, all features are aggregated at a BS to reconstruct global features for different tasks. Finally, N global features are input into the edge model equipped by BS to derive the inference results, during which batching is exploited to enhance the inference efficiency. Table I summarizes the main notations used throughout the paper Detailed models and metrics are illustrated in the sequel.
+
+# A. Over-the-Air Feature Aggregation Model
+
+For LA sensor k associated with task n (which is indexed by $\langle n , k \rangle$ in the remainder paper for brevity), the feature
+
+1A straightforward way to extend the considered system to other types of inference tasks is deploying the corresponding AI models. This does not affect our primary focus, i.e., feature transmission and batched inference.
+
+![](images/2f3f866730eb3a3bf0cb91065a3ac554a40248f48825b0aaee8b07fa750a91b4.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Low-altitude (LA) sensor"] --> B["Feature transmission"]
+    B --> C["Sensor/edge-side AI model"]
+    C --> D["Drone"]
+    D --> E["Cityscape with traffic light"]
+    E --> F["Bus"]
+    E --> G["Car"]
+    E --> H["Truck"]
+    E --> I["Wheel"]
+    E --> J["Building"]
+    E --> K["Applifier"]
+    style A fill:#f9f,stroke:#333
+    style B fill:#ccf,stroke:#333
+    style C fill:#cfc,stroke:#333
+    style D fill:#fcc,stroke:#333
+    style E fill:#cff,stroke:#333
+    style F fill:#ffc,stroke:#333
+    style G fill:#cfc,stroke:#333
+    style H fill:#fcc,stroke:#333
+    style I fill:#ffc,stroke:#333
+    style J fill:#fcc,stroke:#333
+    style K fill:#ffc,stroke:#333
+```
+</details>
+
+![](images/e4fd7246fc13f27a64f40fd78d2a0a91a9273a20127a21a47f42cd403ab12dd1.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    subgraph Inference task 1
+        A1["f_{1,1}"] --> B1["~f̃_{1,1}"] --> C1["s_{1,1}"] --> D1["X_{1,1}"]
+        A2["f_{1,2}"] --> B2["~f̃_{1,2}"] --> C2["s_{1,2}"] --> D2["X_{1,2}"]
+        A3["..."] --> B3["~f̂_{1,K_1}"] --> C3["s_{1,K_1}"] --> D3["X_{1,K_1}"]
+    end
+    subgraph Inference task N
+        E1["f_{N,1}"] --> F1["~f̃_{N,1}"] --> G1["s_{N,1}"] --> H1["X_{N,1}"]
+        E2["f_{N,2}"] --> F2["~f̃_{N,2}"] --> G2["s_{N,2}"] --> H2["X_{N,2}"]
+        E3["..."] --> F3["~f̂_{N,K_2}"] --> G3["s_{N,K_2}"] --> H3["X_{N,K_2}"]
+    end
+    subgraph MIMO channel
+        I1{H_{n,k}} --> J["+"]
+        J --> K["N"]
+        K --> L["ŷ_s^1"] --> M["MIMO"]
+        L --> M
+        M --> N["ŷ_N"] --> M
+    end
+    style Inference task 1 fill:#f9f,stroke:#333
+    style Inference task N fill:#bbf,stroke:#333
+    style MIMO channel fill:#dfd,stroke:#333
+```
+</details>
+
+![](images/56defdd5928f991a13d251c1a1e788a75489e04237900c05dbf6d94149123cc1.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph LR
+    A["Server"] --> B["Batch"]
+    B --> C["Cluster Node"]
+    C --> D["Inference result"]
+    D --> E["Delivery UAV"]
+    D --> F["Suspicious UAV"]
+    D --> G["Monitoring UAV"]
+```
+</details>
+
+![](images/883013219ab12b48985c90331be976574b6855acf40b5e4c76b43bb395b74851.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Task generation"] --> B["Feature extraction"]
+    B --> C["Inference requesting"]
+    C --> D["Beamforming and batching design"]
+    D --> E["Control"]
+    E --> F["Feature uploading"]
+    F --> G["Batched inference"]
+    G --> H["Exected by LA sensor"]
+    G --> I["Executed by BS"]
+```
+</details>
+
+Fig. 1. Multi-task over-the-air edge inference model for LA airspace.
+
+vector $\mathbf { f } _ { n , k } \in \mathbb { R } ^ { 2 Q \times 1 }$ is pre-processed to generate transmission signals, where $2 Q$ denotes the number of feature elements. Specifically, $\mathbf { f } _ { n , k }$ is normalized as
+
+$$
+\tilde {\mathbf {f}} _ {n, k} = \left(\mathbf {f} _ {n, k} - f _ {n, k} ^ {\text { ave }} \mathbf {1} _ {2 Q \times 1}\right) / \sqrt {v _ {n , k}}, \tag {1}
+$$
+
+where $\begin{array} { r l r } { f _ { n , k } ^ { \mathrm { a v e } } } & { { } = } & { \frac { 1 } { 2 Q } \sum _ { q = 1 } ^ { 2 Q } f _ { n , k } \left[ q \right] } \end{array}$ and $\begin{array} { r l } { v _ { n , k } \quad } & { { } = } \end{array}$ $\begin{array} { r l } { \frac { 1 } { 2 Q } \sum _ { q = 1 } ^ { 2 Q } { \left( { f } _ { n , k } \left[ q \right] - { f } _ { n , k } ^ { \mathrm { a v e } } \right) } ^ { \tilde { 2 } } } \end{array}$ are the mean and variance of $2 Q ^ { ' }$ elements in $\mathbf { f } _ { n , k } ,$ , respectively, and these small-sized scalars can be transmitted to the BS in advance for feature receiving [26]. Then, $\tilde { \mathbf { f } } _ { n , k }$ is modulated into analog symbols, i.e.,
+
+$$
+\mathbf {s} _ {n, k} = \tilde {\mathbf {f}} _ {n, k} [ 1: Q ] + j \tilde {\mathbf {f}} _ {n, k} [ Q + 1: 2 Q ] \in \mathbb {C} ^ {Q \times 1}. \tag {2}
+$$
+
+By utilizing transmission beamforming vector $\mathbf { w } _ { n , k } ,$ , the transmitted signal of sensor $\langle n , k \rangle$ is given by
+
+$$
+\mathbf {X} _ {n, k} = \mathbf {w} _ {n, k} \mathbf {s} _ {n, k} ^ {\mathrm{T}} \in \mathbb {C} ^ {M ^ {\mathrm{tx}} \times Q}, \tag {3}
+$$
+
+where $M ^ { \mathrm { t x } }$ is the number of antennas at LA sensors. Moreover, the BS is outfitted with $M ^ { \mathrm { { r x } } }$ antennas.
+
+Thereafter, $\{ \mathbf { X } _ { n , k } : \forall n , k \}$ is transmitted over a MIMO channel and received by the BS. Particularly, the receiving beamforming vector $\mathbf { v } _ { n }$ is invoked to aggregate all symbols $\{ \mathbf { s } _ { n , k } : \forall k \in K _ { n } \}$ for task n, yielding
+
+$$
+\begin{array}{l} \hat {\mathbf {s}} _ {n} = \eta_ {n} \mathbf {v} _ {n} ^ {\mathrm{H}} \bigg (\sum_ {k \in \mathcal {K} _ {n}} \mathbf {H} _ {n, k} \mathbf {w} _ {n, k} \mathbf {s} _ {n, k} ^ {\mathrm{T}} \\ \left. + \sum_ {i \in \mathcal {N} \backslash \{n \}} \xi_ {n, i} \sum_ {j \in \mathcal {K} _ {i}} \mathbf {H} _ {i, j} \mathbf {w} _ {i, j} \mathbf {s} _ {i, j} ^ {\mathrm{T}} + \mathbf {N}\right) \in \mathbb {C} ^ {1 \times Q}, \tag {4} \\ \end{array}
+$$
+
+where $\eta _ { n }$ denotes the normalizing factor, which is applied to scale the received signal for computing the average of sensors’ signals. Hn,k = qυd−αn,kH˜ n,k ∈ CMrx×Mtx denotes the MIMO $\mathbf { H } _ { n , k } = \sqrt { v d _ { n , k } ^ { - \alpha } } \tilde { \mathbf { H } } _ { n , k } \in \mathbb { C } ^ { M ^ { \mathrm { r x } } \times M ^ { \mathrm { t x } } }$ channel between sensor $\langle n , k \rangle$ and the BS, where υ is the channel gain at reference distance of 1 m, $d _ { n , k }$ represents the transmission distance, α indicates the pathloss exponent. $\tilde { \mathbf { H } } _ { n , k }$ is the Rayleigh fading component, where each element obeys the circularly symmetric complex Gaussian (CSCG)
+
+distribution with unit variance $. ^ { 2 } \ \xi _ { n , i } \ \in \ \{ 0 , 1 \}$ is the signal overlapping indicator, where $\xi _ { n , i } = 1$ implies that the sensors associated with task $i , \mathrm { i . e . , } \kappa _ { i }$ , simultaneously transmit features with $\kappa _ { n } .$ , leading to inter-task interference at the BS, otherwise $\xi _ { n , i } = 0 . \textbf { N } = \left[ \mathbf { n } \left[ 1 \right] , \dots , \mathbf { n } \left[ Q \right] \right] \in \mathbb { C } ^ { M ^ { \mathrm { n } } \times Q }$ is the channel noise with power $\sigma ^ { 2 }$ .
+
+Based on $\hat { \mathbf { s } } _ { n } ,$ the BS reconstructs the global feature vector for task n as follows
+
+$$
+\hat {\mathbf {f}} _ {n} = \frac {1}{K _ {n}} \left[ \operatorname{Re} \left\{\hat {\mathbf {s}} _ {n} \right\}, \operatorname{Im} \left\{\hat {\mathbf {s}} _ {n} \right\} \right] ^ {\mathrm{T}} + \frac {\sum_ {k \in \mathcal {K} _ {n}} f _ {n , k} ^ {\text {ave}}}{K _ {n}} \mathbf {1} _ {2 Q \times 1}. \tag {5}
+$$
+
+To promote further analysis, it is necessary to define the ideal error-free version of $\hat { \mathbf { f } } _ { n } ^ { \phantom { \dagger } }$ as $\begin{array} { r } { \textbf { f } _ { n } ~ = ~ \frac { 1 } { K _ { n } } \sum _ { k \in \mathcal { K } _ { n } } \mathbf { f } _ { n , k } } \end{array}$ Kn Pk∈K fn,k. Consequently, the error caused by over-the-air feature aggregation for task n is denoted as $\mathbf { e } _ { n } = \hat { \mathbf { f } } _ { n } - \mathbf { f } _ { n }$ .
+
+# B. Multi-Task Batched Inference Model
+
+Due to the high mobility and dynamics of aircraft, inference tasks arrive at LA sensors at random time instants with distinct latency requirements. Let $T _ { n } ^ { \prime }$ and $D _ { n }$ denote the arrival instant and completion deadline of task $n ,$ respectively. The total latency of each task comprises of 1) feature extraction latency at the sensor, 2) feature transmission latency, and 3) edge inference latency, where the first two parts are constants determined by sensor computing hardware as well as analog symbol transmission.3 Therefore, we can focus on the time instant that each task n arrives at the BS, denoted by $T _ { n }$ .
+
+In the edge inference phase, the BS divides N arriving tasks into B batches (whose set is $B = \{ 1 , \ldots , b , \ldots , B \} )$ and sequentially processes them. The batching decision is indicated by binary variable $y _ { n , b } \in \{ 0 , 1 \}$ , where $y _ { n , b } = 1$ means task
+
+2We utilizes the Rayleigh channel model to characterize the non-line-ofsight (NLoS) signal propagation. Please note that our following analysis and proposed approach can be directly extend to other channel models, which will be illustrated in the experiments.   
+3The transmission latency is $\frac { Q } { W }$ regardless of the number of sensors, where W denotes the bandwidth. Besides, time synchronization in feature transmission can be realized by existing mechanism, e.g., timing advance in 4G Long Term Evolution [26].
+
+n is included in batch b, otherwise $y _ { n , b } = 0$ . Since each task can only be executed once, we have constraint
+
+$$
+\sum_ {b \in \mathcal {B}} y _ {n, b} \leq 1, \forall n, b, \tag {6}
+$$
+
+and $\begin{array} { r } { \sum _ { b \in \{ 1 , b \} } y _ { n , b } \ = \ 0 } \end{array}$ implies that task n is not responded. Meanwhile, the BS determines the starting time of each batch b, denoted by $t _ { b } .$ .
+
+To process batch b, the BS assembles the global feature vectors $\left\{ \hat { \mathbf { f } } _ { n } \right\}$ with $y _ { n , b } = 1$ as a high-dimensional tensor [15], which is then fed into the edge AI model for parallel inference. According to [17] and [19], the edge inference latency can be modeled as a linear increasing function with respect to the batch size, i.e.,
+
+$$
+l _ {b} = \rho_ {1} + \rho_ {2} \sum_ {n \in \mathcal {N}} y _ {n, b}, \tag {7}
+$$
+
+where $\rho _ { 1 }$ and $\rho _ { 2 }$ are positive constants, then the completion instant of batch b is given by $t _ { b } + l _ { b }$ . Since a batch can start after the arrivals of all contained tasks, as well as the completion of its previous batch, we have
+
+$$
+t _ {b} \geq \max \left\{\max _ {n \in \mathcal {N}} \left\{y _ {n, b} T _ {n} \right\}, t _ {b - 1} + l _ {b - 1} \right\}, \forall b. \tag {8}
+$$
+
+# C. Performance Metrics
+
+We consider two main performance metrics of AI inference, i.e., completion latency and inference accuracy.
+
+1) Completion Latency:Each inference task n is deemed successful only if the completion time does not exceed its deadline $D _ { n }$ . As a consequence, we impose the following completion latency constraint:
+
+$$
+y _ {n, b} \left(t _ {b} + l _ {b}\right) \leq D _ {n}, \forall n, b. \tag {9}
+$$
+
+2) Inference Accuracy: The well-trained AI model possesses inference accuracy of $A _ { 0 }$ , which may be degraded due to the over-the-air feature aggregation. To theoretically characterize this, we introduce the classification margin $\gamma$ that describes model robustness [27]. Concretely, if the feature aggregation error satisfies $\left\| \mathbf { e } _ { n } \right\| ^ { 2 } <$ < $\gamma ^ { 2 }$ , then the correct inference result can also be derived. Thus, the inference accuracy of task n is lower bounded as
+
+$$
+A _ {0} \operatorname * {P r} \left\{\| \mathbf {e} _ {n} \| ^ {2} <   \gamma^ {2} \right\} \overset {(a)} {\geq} A _ {0} \left(1 - \mathbb {E} \left[ \| \mathbf {e} _ {n} \| ^ {2} \right] / \gamma^ {2}\right), \tag {10}
+$$
+
+where (a) follows the Markov’s inequality. Suppose that the accuracy requirement of task n is $A _ { n } .$ , then we can obtain the following constraint on feature aggregation error:
+
+$$
+\sum_ {b \in \mathcal {B}} y _ {n, b} \mathbb {E} \left[ \| \mathbf {e} _ {n} \| ^ {2} \right] \leq \gamma^ {2} \left(1 - \frac {A _ {n}}{A _ {0}}\right), \forall n. \tag {11}
+$$
+
+To glean design insights for the considered edge inference system, we first investigate the case with synchronous task arrivals and single batch in Section III, i.e., $T _ { 1 } = T _ { 2 } = \cdot \cdot \cdot =$ $T _ { N } = T$ and $B = 1$ , which simplifies the batching design and facilitates inference accuracy analysis in terms of over-the-air feature aggregation. Building on the preceding analysis, we further extend to the general asynchronous task arrival case in Section IV, where a total of N tasks consecutively arrives at the BS at different time instances.
+
+Remark 1 (Relationship Between Synchronous and Asynchronous Task Arrivals as well as Their Practical Applications): Mathematically, the solution for synchronous task arrivals can be regarded as a special case of the asynchronous scenario, with a simplified assumption on $T _ { n }$ . Nevertheless, both of them can be mapped to practical applications in LA systems. Synchronous task arrivals correspond to timetriggered sensing, where all LA sensors detect objects and generate inference tasks at uniform time intervals. Asynchronous arrivals align with event-triggered sensing, where edge inference is triggered by specific events, such as a sensing scheduling, resulting in dynamic and stochastic task generation [28]. Therefore, we develop efficient solutions for both cases.
+
+Remark 2 (Operation of the Considered Edge Inference System): As illustrated in Fig. 1 (d), when a task is generated, the LA sensor first sends an inference request to the BS, including the task’s arrival time, deadline, and accuracy requirements. Based on the received task information, the BS implements the beamforming and batching design algorithm in Section III-IV. The resulting decisions are then applied to control the subsequent feature uploading and batched inference processes.
+
+# III. EDGE INFERENCE WITH SYNCHRONOUS TASKARRIVALS AND SINGLE BATCH
+
+In this section, we concentrate on the synchronous task arrivals, where all LA sensors simultaneously transmit features to the BS, and the BS assembles as many tasks as possible into a single batch for edge inference. For this case, an inference throughput maximization problem is formulated, followed by a designed algorithm that achieves efficient batching design and spatial-correlation aware beamforming.
+
+# A. Problem Formulation
+
+Our objective is to maximize the inference throughput, i.e., number of completed tasks, under the latency and accuracy requirements. The designed variables are batching $\mathrm { s t r a t e g y } ^ { \dot { 4 } }$ $\textbf { y } = \{ y _ { n } : \forall n \}$ as well as beamforming for transmission $\mathbf { w } = \{ \mathbf { w } _ { n , k } : \forall n , k \}$ and receiving vector $\mathbf { v } = \{ \eta _ { n } , \mathbf { v } _ { n } : \forall n \}$ . Consequently, the optimization problem is formulated as
+
+$$
+\mathbf {P 1}: \max _ {\mathbf {y}, \mathbf {w}, \mathbf {v}} \sum_ {n \in \mathcal {N}} y _ {n}, \tag {12a}
+$$
+
+$$
+\text { s.t. } y _ {n} \left(\rho_ {1} + \rho_ {2} \sum_ {n \in \mathcal {N}} y _ {n}\right) \leq D _ {n} - T, \forall n, \tag {12b}
+$$
+
+$$
+y _ {n} \mathbb {E} \left[ \| \mathbf {e} _ {n} \| ^ {2} \right] \leq \gamma^ {2} \left(1 - \frac {A _ {n}}{A _ {0}}\right), \forall n. \tag {12c}
+$$
+
+$$
+y _ {n} \in \{0, 1 \}, \forall n, \tag {12d}
+$$
+
+$$
+\left\| \mathbf {w} _ {n, k} \right\| ^ {2} \leq P, \left\| \mathbf {v} _ {n} \right\| = 1, \forall n, k, \tag {12e}
+$$
+
+where constraints (12b) and (12c) follow (9) and (11), respectively. (12d) indicates that the batching variables are binary. In (12e), the transmission power of each sensor is restrained by P, while the receiving beamforming vectors are normalized.
+
+4Since there is one batch, index b is omitted and starting time $t _ { b } = T$ in this section.
+
+![](images/a4bd50957db58ab0ed2162943c0d51ea95fd23c6358f1137ec6467d0426a79b1.jpg)
+
+<details>
+<summary>text_image</summary>
+
+N
+2Q
+zTn,q
+fTn,k
+Kn
+Calculate the
+correlation matrix
+</details>
+
+Fig. 2. Statiscalculated by $\begin{array} { r } { \frac { 1 } { 2 Q } \sum _ { q = 1 } ^ { 2 Q } \tilde { f } _ { n , k } \left[ \stackrel { . . } { q } \right] \tilde { f } _ { n , j } \left[ q \right] } \end{array}$ $\mathbf { C } _ { n }$ odelNet dataset, where . $c _ { n } \left[ k , j \right]$ is
+
+Proposition 1: Problem P1 is NP-hard.
+
+Proof: Please refer to Appendix $\mathbf { A } ^ { 5 } .$ .
+
+Therefore, P1 is intractable due to the coupling between binary batching variables and high-dimensional beamforming vectors, and the expectation contained in $\mathbb { E } \left\lceil \left. \mathbf { e } _ { n } \right. ^ { 2 } \right\rceil$ further complicates the problem. To this end, we first convert P1 into a series of feasibility issues, then determine batching and beamforming by addressing these issues sequentially.
+
+# B. Problem Transformation and Batching Design
+
+To tackle P1, we find that the $\textstyle \sum _ { n \in { \mathcal { N } } } y _ { n }$ in (12a) and (12b) only depends on the number of the batched tasks. This motivates us to define $\mathcal { S } = \left\{ \boldsymbol { n } | \boldsymbol { n } \in \mathcal { N } , y _ { n } = 1 \right\} , | \mathcal { S } | =$ $\textstyle \sum _ { n \in { \mathcal { N } } } y _ { n }$ , and transform P1 into finding subset $\mathcal { S } \subseteq \mathcal { N }$ that meets the latency and accuracy constraints with given |S|. Mathematically,
+
+$\mathbf { P 2 } : { \mathrm { f i n d } } \ S \subseteq { \mathcal { N } } ,$ (13a)
+
+$$
+\text { s.t. } y _ {n} \left(\rho_ {1} + \rho_ {2} | \mathcal {S} |\right) \leq D _ {n} - T, \forall n,
+$$
+
+$$
+(1 2 c) \sim (1 2 e). \tag {13b}
+$$
+
+As such, we sequentially address P2 for $| S | = 1 , 2 , . . .$ . until the largest $| S | ^ { * }$ is found, which makes $\left| S \right| ^ { * } + 1$ an infeasible solution of P2.
+
+In order to determine the batching result with given |S|, we can easily derive the set T = $\{ n | n \in \mathcal { N } , ( \rho _ { 1 } + \rho _ { 2 } \left| S \right| ) \le D _ { n } - T \}$ that satisfies (13b). $\mathrm { I f } \ | \mathcal T | < | S |$ , then P2 is infeasible. For $\lvert \tau \rvert \geq \lvert s \rvert$ , we sort the tasks in T in ascending order based on the accuracy requirement $\left\{ A _ { n } \right\}$ since the tasks with lower $A _ { n }$ are more likely to be completed, and batch the first |S| tasks in T to obtain S. Accordingly, the remaining difficulty lies in optimizing the beamforming vectors, as elaborated in the next subsection.
+
+# C. Spatial-Correlation Aware Beamforming Design
+
+Note that in previous works [11], [13], the features of various sensors associated to a common task are assumed to be independent, thereby simplifying the beamforming design. Nevertheless, since the features are extracted from different sensor views of the same target, their spatial correlation may not be ignored. To corroborate this, Fig. 2 shows the statistical results of feature correlation matrix using ModelNet dataset, where $K _ { n } \ = \ 1 2 \ \mathrm { L A }$ sensors adopt the local submodel to extract features from 12 views of a common aircraft,
+
+5The appendix is available in our online supplemental material at https:// pan.baidu.com/s/1yvVKBfPehdowmYdBhYnRJQ?pwd=ii7t
+
+and more detailed experiment setup will be presented in Section V. In this figure, features from two sensors have strong spatial correlation when the corresponding pixel is light. We examine most of the aircraft in the dataset (only four examples are shown), and spatial correlation exists in general.
+
+To theoretically capture this, define the q-th column of matrix $\left| \tilde { \mathbf { f } } _ { n , 1 } , \ldots , \tilde { \mathbf { f } } _ { n , K _ { n } } \right] ^ { \mathrm { T } }$ as ${ \bf z } _ { n , q } ,$ as illustrated in Fig. $^ { 2 , }$ and we make the following common assumptions [12]: for each task n, the sensors associated to the task have identical feature variance $v _ { n , 1 } \ = \ \cdot \cdot \cdot \ = \ v _ { n , K _ { n } } \ = \ v _ { n }$ , and different feature dimensions $\{ \mathbf { z } _ { n , q } : \forall q \}$ are independent and identically distributed. Then, the feature correlation matrix of task n is given by
+
+$$
+\mathbf {C} _ {n} = \mathbb {E} \left[ \mathbf {z} _ {n, q} \mathbf {z} _ {n, q} ^ {\mathrm{T}} \right] \in R ^ {K _ {n} \times K _ {n}}, \forall q, \tag {14}
+$$
+
+where the $( k , j )$ -th entry of $\mathbf { C } _ { n }$ is represented by $c _ { n } \left[ k , j \right]$ , measuring the spatial correlation between sensors $\langle n , k \rangle$ and $\langle n , j \rangle$ . Subsequently, we have the following theorem to characterize $\mathbb { E } \left\lceil \| \mathbf { e } _ { n } \| ^ { 2 } \right\rceil$ .
+
+Theorem 1: The mean square feature aggregation error of task n is jointly caused the misalignment of intra-task feature aggregation, inter-task interference, and channel noise, i.e.
+
+$$
+\begin{array}{l} \mathbb {E} \left[ \left\| \mathbf {e} _ {n} \right\| ^ {2} \right] \\ = \frac {1}{K _ {n} ^ {2}} \sum_ {q = 1} ^ {Q} \left\{\underbrace {\mathbb {E} \left[ \left| \sum_ {k \in \mathcal {K} _ {n}} \left(\eta_ {n} \mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {n , k} \mathbf {w} _ {n , k} - \sqrt {v _ {n}}\right) s _ {n , k} [ q ] \right| ^ {2} \right]} _ {\text { Misalignment   error }} \right. \\ + \underbrace {\mathbb {E} \left[ \left| \eta_ {n} \mathbf {v} _ {n} ^ {\mathrm{H}} \sum_ {i \in \mathcal {N} \backslash \{n \}} \xi_ {n , i} \sum_ {j \in \mathcal {K} _ {i}} \mathbf {H} _ {i , j} \mathbf {w} _ {i , j} s _ {i , j} [ q ] \right| ^ {2} \right]} _ {\text { Inter - task   interference }} \\ \left. + \underbrace {\mathbb {E} \left[ \left| \eta_ {n} \mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {n} [ q ] \right| ^ {2} \right]} _ {\text {Noise}} \right\} \overset {(a)} {\geq} \frac {Q v _ {n}}{K _ {n} ^ {2}} \left\{2 \sum_ {k, j \in \mathcal {K} _ {n}} c _ {n} [ k, j ] \right. \\ \left. - \frac {\left[ \sum_ {k , j \in \mathcal {K} _ {n}} c _ {n} [ k , j ] \left(\mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {n , k} \mathbf {w} _ {n , k} + \left(\mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {n , j} \mathbf {w} _ {n , j}\right) ^ {\mathrm{H}}\right) \right] ^ {2}}{2 \sum_ {i \in \mathcal {N}} \xi_ {n , i} \sum_ {k , j \in \mathcal {K} _ {i}} c _ {i} [ k , j ] \mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {i , k} \mathbf {w} _ {i , k} \left(\mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {i , j} \mathbf {w} _ {i , j}\right) ^ {\mathrm{H}} + \sigma^ {2}} \right\}, \tag {15} \\ \end{array}
+$$
+
+where (a) is deduced by substituting the following optimal $\eta _ { n } ^ { * }$ into $\mathbb { E } \left[ \left. \mathbf { e } _ { n } \right. ^ { 2 } \right]$ :
+
+$$
+\eta_ {n} ^ {*} = \frac {\sqrt {v _ {n}} \sum_ {k , j \in \mathcal {K} _ {n}} c _ {n} [ k , j ] \left(\mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {n , k} \mathbf {w} _ {n , k} + \left(\mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {n , j} \mathbf {w} _ {n , j}\right) ^ {\mathrm{H}}\right)}{2 \sum_ {i \in \mathcal {N}} \xi_ {n , i} \sum_ {k , j \in \mathcal {K} _ {i}} c _ {i} [ k , j ] \mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {i , k} \mathbf {w} _ {i , k} \left(\mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {i , j} \mathbf {w} _ {i , j}\right) ^ {\mathrm{H}} + \sigma^ {2}}. \tag {16}
+$$
+
+Proof: Please refer to Appendix B.
+
+Theorem 1 facilitates the beamforming design in two key aspects. First, it establishes a direct link between the expected feature aggregation error and the beamforming vectors w, v by providing a closed-form expression. Second, it derives the optimal normalizing factor $\eta _ { n } ^ { * }$ for receiving resultant information uncertainty makes beamforming.
+
+With given S and let $\xi _ { n , i } \ = \ y _ { n } y _ { i }$ i, we recast P2 as the following beamforming problem with an explicit objective:
+
+$$
+\mathbf {P 3}: \max _ {\mathbf {w}, \mathbf {v}, \{\chi_ {n} \geq 0: \forall n \in \mathcal {S} \}} \sum_ {n \in \mathcal {S}} \chi_ {n}, \tag {17a}
+$$
+
+$$
+\text { s.t. } f _ {n} - \delta_ {n} g _ {n} \geq \chi_ {n}, \forall n \in \mathcal {S},
+$$
+
+$$
+(1 2 \mathrm{e}). \tag {17b}
+$$
+
+By substituting (15) into (12c), (17b) is deduced as a more tractable form of the accuracy constraint, where $\begin{array} { r l } { f _ { n } } & { { } = } \end{array}$ $\begin{array} { r } { \biggl [ \sum _ { k , j \in { \mathcal K } _ { n } } c _ { n } \left[ k , j \right] \Bigl ( { \mathbf v } _ { n } ^ { \mathrm { H } } { \mathbf H } _ { n , k } { \mathbf w } _ { n , k } + \bigl ( { \mathbf v } _ { n } ^ { \mathrm { H } } { \mathbf H } _ { n , j } { \mathbf w } _ { n , j } \bigr ) ^ { \mathrm { H } } \Bigr ) \biggr ] ^ { 2 } , } \end{array}$
+
+$$
+g _ {n} = 2 \sum_ {i \in \mathcal {N}} \xi_ {n, i} \sum_ {k, j \in \mathcal {K} _ {i}} c _ {i} [ k, j ] \mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {i, k} \mathbf {w} _ {i, k} \left(\mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {H} _ {i, j} \mathbf {w} _ {i, j}\right) ^ {\mathrm{H}}
+$$
+
+$$
+\sigma^ {2}, \quad \delta_ {n} \quad = \quad 2 \sum_ {k, j \in \mathcal {K} _ {n}} c _ {n} [ k, j ] - \frac {K _ {n} ^ {2}}{Q v _ {n}} \gamma^ {2} \left(1 - \frac {A _ {n}}{A _ {0}}\right).
+$$
+
+$\{ \chi _ { n } : \forall n \in S \}$ are slack variables that facilitate the inference accuracy of the batched tasks to be higher than their requirements. However, constraint (17b) is still non-convex due to the coupling between w and v, we optimize them in an alternative manner to derive the sub-optimal solution as follows.
+
+1) Transmission Beamforming Optimization: For sensors associated to unbatched task n $\notin S ,$ , we directly set ${ \bf w } _ { n , k } =$ ${ \bf 0 } _ { M ^ { \mathrm { u } } \times 1 } , \forall k \in \mathcal { K } _ { n }$ . Then P3 reduces to
+
+$$
+\mathbf {P 4}: \max _ {\mathbf {w} _ {n, k}, \{\chi_ {n} \geq 0: \forall n \in \mathcal {S} \}} \sum_ {n \in \mathcal {S}} \chi_ {n}, \tag {18a}
+$$
+
+$$
+\text { s.t. } f _ {n} - \delta_ {n} g _ {n} \geq \chi_ {n}, \forall n \in \mathcal {S}, \tag {18b}
+$$
+
+$$
+\left\| \mathbf {w} _ {n, k} \right\| ^ {2} \leq P, \tag {18c}
+$$
+
+where (18b) can be recast as
+
+$$
+- \mathbf {w} _ {n, k} ^ {\mathrm{H}} \mathbf {A} _ {n, n, k} \mathbf {w} _ {n, k} + \underbrace {\left[ 2 \mathrm{Re} \left\{\mathbf {b} _ {n , k} ^ {\mathrm{H}} \mathbf {w} _ {n , k} \right\} + \omega_ {n , k} ^ {\langle 1 \rangle} \right] ^ {2}} _ {\triangleq \psi_ {n, k} (\mathbf {w} _ {n, k})}
+$$
+
+$$
+- 2 \operatorname{Re} \left\{\mathbf {c} _ {n, n, k} ^ {\mathrm{H}} \mathbf {w} _ {n, k} \right\} - \omega_ {n, k} ^ {\langle 2 \rangle} \geq \chi_ {n}, \tag {19a}
+$$
+
+$$
+- \xi_ {l, n} \mathbf {w} _ {n, k} ^ {\mathrm{H}} \mathbf {A} _ {l, n, k} \mathbf {w} _ {n, k} - 2 \mathrm{Re} \left\{\xi_ {l, n} \mathbf {c} _ {l, n, k} ^ {\mathrm{H}} \mathbf {w} _ {n, k} \right\}
+$$
+
+$$
+- \omega_ {l, n, k} ^ {\langle 3 \rangle} \geq \chi_ {l}, \forall l \in \mathcal {S} \backslash \{n \}, \tag {19b}
+$$
+
+where Al,n,k , bn,k , cl,n,k , ωh1in,k , ωh2in,k , ${ \bf A } _ { l , n , k } , \ { \bf b } _ { n , k } , \ { \bf c } _ { l , n , k } , \ \omega _ { n , k } ^ { \langle 1 \rangle } , \ \omega _ { n , k } ^ { \langle 2 \rangle }$ and $\omega _ { l , n , k } ^ { \left. 3 \right. }$ are intermediate variables that do not related to ${ \bf w } _ { n , k } ,$ whose specific expressions are given in Appendix C, and the variables with bar are obtained from the previous iteration. Notice that constraint (19a) is non-convex due to $\psi _ { n , k } \left( \mathbf { w } _ { n , k } \right)$ is a quadratic function, thus we can leverage the Taylor expansion to approximate it as
+
+$$
+\psi_ {n, k} \left(\mathbf {w} _ {n, k}\right) \geq \psi_ {n, k} \left(\bar {\mathbf {w}} _ {n, k}\right)
+$$
+
+$$
++ 4 \mathrm{Re} \left\{\nabla \psi_ {n, k} \left(\mathbf {w} _ {n, k} - \bar {\mathbf {w}} _ {n, k}\right) \right\} \triangleq \psi_ {n, k} ^ {\text { low }} \left(\mathbf {w} _ {n, k}\right), \tag {20}
+$$
+
+where $\nabla \psi _ { n , k } = \left( 2 \mathrm { R e } \left\{ \mathbf { b } _ { n , k } ^ { \mathrm { H } } \bar { \mathbf { w } } _ { n , k } \right\} + \omega _ { n , k } ^ { \left. 1 \right. } \right) \mathbf { b } _ { n , k } ^ { \mathrm { H } }$ . By replacing $\psi _ { n , k } \left( \mathbf { w } _ { n , k } \right)$ with $\dot { \psi } _ { n , k } ^ { \mathrm { l o w } } \left( \mathbf { w } _ { n , k } \right)$ in (19a) (equivalent to (18b)), P4 becomes a convex optimization issue that can be solved by interior-point method (IPM).
+
+2) Receiving Beamforming Optimization: Similarly, we set ${ \bf v } _ { n } = { \bf 0 } _ { M ^ { \mathrm { x } } \times 1 }$ for $n \not \in { \cal S } .$ and re-express P3 as
+
+$$
+\mathbf {P 5}: \max _ {\mathbf {v} _ {n}, \chi_ {n} \geq 0} \chi_ {n}, \tag {21a}
+$$
+
+$$
+\text { s.t. } f _ {n} - \delta_ {n} g _ {n} \geq \chi_ {n}, \tag {21b}
+$$
+
+$$
+\left\| \mathbf {v} _ {n} \right\| = 1, \tag {21c}
+$$
+
+where (21b) is further derived as
+
+$$
+- \mathbf {v} _ {n} ^ {\mathrm{H}} \mathbf {A} _ {n} \mathbf {v} _ {n} + \underbrace {\left[ 2 \operatorname{Re} \left\{\mathbf {b} _ {n} ^ {\mathrm{H}} \mathbf {v} _ {n} \right\} \right] ^ {2}} _ {\triangleq \psi_ {n} (\mathbf {v} _ {n})} \geq \chi_ {n}, \tag {22}
+$$
+
+where $\begin{array} { r } { { \bf A } _ { n } = 2 \delta _ { n } \sum _ { i \in \mathcal { N } } \xi _ { n , i } \sum _ { k , j \in \mathcal { K } _ { i } } ( c _ { i } \left[ k , j \right] { \bf H } _ { i , k } { { \overline { { \mathbf { w } } } } } _ { i , k } { { \overline { { \mathbf { w } } } } } _ { i , j } ^ { \mathrm { H } } { \bf H } _ { i , j } ^ { \mathrm { H } } + } \end{array}$ $\delta _ { n } \sigma ^ { 2 } \mathbf { I } _ { M ^ { \mathrm { r x } } } )$ , and $\begin{array} { r l r } { \mathbf { b } _ { n } } & { { } = } & { \sum _ { k , j \in { \mathcal { K } } _ { n } } c _ { n } \left[ k , j \right] \mathbf { H } _ { n , j } \bar { \mathbf { w } } _ { n , j } . } \end{array}$ Analogously, we approximate the convex term $\psi _ { n } \left( \mathbf { v } _ { n } \right)$ using its Taylor expansion below:
+
+$$
+\psi_ {n} \left(\mathbf {v} _ {n}\right) \geq \psi_ {n} \left(\bar {\mathbf {v}} _ {n}\right) + 4 \operatorname{Re} \left\{\nabla \psi_ {n} \left(\mathbf {v} _ {n} - \bar {\mathbf {v}} _ {n}\right) \right\} \triangleq \psi_ {n} ^ {\text {low}} (\mathbf {v} _ {n}), \tag {23}
+$$
+
+where $\nabla \psi _ { n } = 2 \mathrm { R e } \left\{ \mathbf { b } _ { n } ^ { \mathrm { H } } \bar { \mathbf { v } } _ { n } \right\} \mathbf { b } _ { n } ^ { \mathrm { H } }$ . By substituting (23) into (22) (equivalent to (21b)) while omitting (21c), P5 is convex. After solving P5, we normalize the attained $\mathbf { v } _ { n }$ to a unit vector via ${ \bf v } _ { n } = { \bf v } _ { n } / \| { \bf v } _ { n } \|$ , so as to satisfy (21c).
+
+# D. Overall Solution
+
+Algorithm 1 Joint Batching and Beamforming Algorithm for P1 (JB2-Synchronous)   
+1 Input: Task set N, performance requirements $\{D_{n}, A_{n}\}$ , MIMO channel $\{H_{n,k}\}$ , correlation matrix $\{C_{n}\}$ .
+2 Initialize: $S^{(0)} = \varnothing$ , $\bar{w}$ , $\bar{v}$ , $I^{max}$ .
+3 Sort the tasks in N in ascending order based on $\{A_{n}\}$ .
+4 for $r \in \{1, 2, \ldots, N\}$ do
+5 $|S| = r$ , $T = \{n | n \in N, (\rho_{1} + \rho_{2} | S|) \leq D_{n} - T, \}$ .
+6    if $|T| < |S|$ then
+7    Batching result is $S^{(r-1)}$ .
+8    else
+9    Batch the first $|S|$ tasks in T to obtain S.
+10    for $i \in \{1, 2, \ldots, I^{max}\}$ do
+11    Optimize $w_{n,k}$ for each $n \in S$ , $k \in K_{n}$ by solving P4.
+12    Optimize $v_{n}$ for each $n \in S$ by solving P5.
+13    Update $\bar{w} = w$ , $\bar{v} = v$ .
+14    end for
+15    if P3 is infeasible then
+16    Batching result is $S^{(r-1)}$ .
+17    else
+18 $S^{(r)} = S$ .
+19    end if
+20    end if
+21 end for
+22 Output: $\{y, w, v\}$ .
+
+The overall solution for P1 is summarized in Algorithm 1 $( \mathrm { J } \mathrm { B } ^ { 2 } { \cdot } \mathrm { S } \mathrm { y }$ nchronous). In this algorithm, we sequentially construct P2 by traversing all possible batch size and determine the batching result. Then we optimize transmission and receiving beamforming via alternatively solving P4 and P5, whilst checking the feasibility of P3. Finally, we find the appropriate batch size as well as derive the corresponding batching and beamforming decisions. The convergence of $\mathbf { J } \bar { \mathbf { B } ^ { 2 } }$ -Synchronous is guaranteed by the following proposition.
+
+Proposition 2: The beamforming optimization converges within a finite number of iterations, and the objective value of
+
+P1 increases monotonically until the optimal batching decision is reached.
+
+Proof: Please refer to Appendix D.
+
+The complexity of Algorithm 1 is analyzed below. Denote Imax as the number of alternative optimization iterations, then beamforming design has the complexity of $\mathcal { O } \left( I ^ { \operatorname* { m a x } } \left( K + N \right) M ^ { 3 . 5 } \right)$ , where $\begin{array} { r c l } { { M } } & { { = } } & { { \operatorname* { m a x } \left\{ \bar { M } ^ { \mathrm { t x } } , \bar { M } ^ { \mathrm { r x } } \right\} } } \end{array}$ . Since the loop related to r is repeated N times in the worst case, the total complexity is $\mathcal { O } \left( \bar { N } I ^ { \operatorname* { m a x } } \left( K + N \right) M ^ { 3 . 5 } \right)$ .
+
+# IV. AI-GENERATED SOLUTION FOR EDGE INFERENCE WITH ASYNCHRONOUS TASK ARRIVALS
+
+In this part, we delve into the general asynchronous task arrival case, where the inference tasks generated by LA sensors are featured by stochastic arrival instants, and the BS should form multiple batches to satisfy their distinct completion deadlines. Unlike previous works [17], [19] that rely on precise prediction of future arrival instants, we focus on designing an AI-generated online batching policy to adapt to the dynamic and uncertain nature of task arrivals. The problem formulation and MDP modeling is first illustrated.
+
+# A. Problem Formulation and MDP Modeling
+
+For asynchronous task arrivals, we aim to maximize the inference throughput by jointly optimizing number of batches B, batching strategy $\textbf { y } = \{ y _ { n , b } : \forall n , b \}$ , batch starting time $\textbf { t } = ~ \{ t _ { b } : \forall b \}$ , and beamforming $\{ \mathbf { w } , \mathbf { v } \}$ . The problem is formulated as
+
+$$
+\mathbf {P 6}: \max _ {B, \mathbf {y}, \mathbf {t}, \mathbf {w}, \mathbf {v}} \sum_ {n \in \mathcal {N}} \sum_ {b \in \mathcal {B}} y _ {n, b}, \tag {24a}
+$$
+
+$$
+\text { s.t. } B \in \{1, 2, \dots , N \}, y _ {n, b} \in \{0, 1 \}, \forall n, b,
+$$
+
+$$
+(6), (8), (9), (1 1), (1 2 \mathrm{e}) \tag {24b}
+$$
+
+When an arbitrary task n is generated, we can design the beamforming $\left\{ \mathbf { w } _ { n , k } , \eta _ { n } , \mathbf { v } _ { n } : k \in K _ { n } \right\}$ according to Section III-C, thereby judging whether the task meets its inference accuracy constraint, while discarding the violated task. Note that even with given $\{ \mathbf { w } , \mathbf { v } \}$ , it is still non-trivial to solve the NP-hard issue P6, where the number of optimization variables in y and t varies with B. Additionally, we consider a practical yet challenging scenario, i.e., the arrival instant $T _ { n }$ and deadline $D _ { n }$ of each task n are not known a prior, and the resultant information uncertainty makes P6 more intractable.6
+
+Towards this end, we propose to determine $\{ B , \mathbf { y } , \mathbf { t } \}$ in an online fashion. Specifically, the whole inference time period is divided into a number of slots $\zeta \in \{ 1 , \dots , \zeta ^ { \mathrm { m a x } } \}$ with equal slot duration τ , then we model P6 as an MDP below.
+
+1) State: In each slot $\zeta ,$ the state includes the remaining time to the completion deadline of each task n, i.e., $o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) = D _ { n } - \zeta \tau$ (if there is no task n then $o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) = 0 .$ and define set $\mathcal { N } \left( \zeta \right) = \left\{ n | n \in \mathcal { N } , o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) > 0 \right\} )$ , the number of unprocessed tasks $o ^ { \mathrm { n u \bar { m } } } \left( \zeta \right) = \left| \mathcal { N } \left( \zeta \right) \right|$ , and the busy time of
+
+6With prior knowledge, we can invoke traditional optimization technique to solve P6 after sophisticated mathematical transformation. This serves as a baseline in our simulation.
+
+BS for processing the previous batch $o ^ { \mathrm { b u s } } \left( \zeta \right)$ . Then the state is written $\mathrm { a s } ^ { 7 }$
+
+$$
+\mathbf {o} (\zeta) = \left\{o _ {n} ^ {\mathrm{ddl}} (\zeta), o ^ {\mathrm{num}} (\zeta), o ^ {\mathrm{bus}} (\zeta): \forall n \right\}. \tag {25}
+$$
+
+2) Action: The BS takes actions to balance a two-fold tradeoff. First, if the BS does not start a batch, the inference throughput potentially increases owing to more tasks can be batched, whereas the waiting latency ascends. Let $a ^ { \mathrm { s t a } } \left( \zeta \right) \in$ {0, 1} denote the first action dimension, where $a ^ { \mathrm { s t a } } \left( \zeta \right) = 1$ indicates batching starts, and $a ^ { \mathrm { s t a } } \left( \zeta \right) ~ = ~ 0$ means waiting. If the BS is busy with $o ^ { \mathrm { b u s } } \left( \zeta \right) ~ > ~ 0 , ~ a ^ { \mathrm { s t a } } \left( \zeta \right)$ is forced to be 0. Second, batching many tasks concurrently can enlarge the inference throughput, while raising the BS’s busy time and sacrificing the ability for processing future tasks. The BS employs $a _ { n } ^ { \mathrm { b a t } } \bar { ( \zeta ) }$ to select batched tasks among $\mathcal { N } \left( \zeta \right)$ , where $a _ { n } ^ { \mathrm { b a t } } \left( \zeta \right) = \widetilde { 1 }$ means processing task n in the current batch, otherwise $a _ { n } ^ { \mathrm { b a t } } \left( \zeta \right) = 0$ . Note that $a _ { n } ^ { \mathrm { b a t } } \left( \zeta \right) = 1$ only takes effect when $a ^ { \mathrm { s t a } } \left( \zeta \right) = 1$ and $o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) ~ > ~ 0 .$ . Then we express the action as
+
+$$
+\mathbf {a} (\zeta) = \left\{a ^ {\text { sta }} (\zeta), a _ {n} ^ {\text { bat }} (\zeta): \forall n \right\}. \tag {26}
+$$
+
+Given ${ \bf { a } } \left( \zeta \right)$ in all time slots, we can reconstruct $\{ B , \mathbf { y } , \mathbf { t } \}$ .
+
+3) Reward: We design a reward function to evaluate the inference throughput whilst penalizing the violation of deadline requirements, i.e., $\begin{array} { r c l } { r \left( \zeta \right) } & { = } & { \sum _ { n \in \mathcal { N } \left( \zeta \right) } r _ { n } \left( \zeta \right) } \end{array}$ with
+
+$$
+r _ {n} (\zeta)
+$$
+
+$$
+= \left\{ \begin{array}{l l} I _ {n} (\zeta) - \varsigma (1 - I _ {n} (\zeta)), & \text { if } a ^ {\mathrm{sta}} (\zeta) = 1, a _ {n} ^ {\mathrm{bat}} (\zeta) = 1, \\ - \varsigma \mathbb {I} \left\{o _ {n} ^ {\mathrm{ddl}} (\zeta) \leq \tau \right\}, & \text { otherwise. } \end{array} \right. \tag {27}
+$$
+
+where $\begin{array} { r l r } { I _ { n } \left( \zeta \right) } & { { } = } & { \mathbb { I } \left\{ \rho _ { 1 } + \rho _ { 2 } \sum _ { i \in \mathcal { N } \left( \zeta \right) } a _ { i } ^ { \mathrm { b a t } } \left( \zeta \right) \leq o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) \right\} } \end{array}$ denotes whether task n is completed before its deadline, $\mathbb { I } \left\{ x \right\} = 1 { \mathrm { i f ~ } } x$ is true, otherwise $\mathbb { I } \left\{ x \right\} = 0$ . If a batched task violates the latency constraint $( I _ { n } \left( \zeta \right) ^ { \cdot } = 0 , a _ { n } ^ { \mathrm { b a t } } \left( \zeta \right) = 1 )$ , or an unbatched task will reach its deadline $( o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) \leq \tau , a _ { n } ^ { \mathrm { b a t } } \left( \zeta \right) =$ 0), we add negative penalty with ς representing the penalty parameter.
+
+4) State Transition: ake the transition from ${ \bf o } \left( \zeta \right)$ to $\mathbf { o } \left( \zeta + 1 \right)$ as an example. For $o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) \quad > \quad 0 ,$ we have
+
+$$
+o _ {n} ^ {\mathrm{ddl}} (\zeta + 1)
+$$
+
+$$
+= \left\{ \begin{array}{l l} 0, & \text { if   } a ^ {\mathrm{sta}} (\zeta) = 1, a _ {n} ^ {\mathrm{bat}} (\zeta) = 1, \\ \left\{o _ {n} ^ {\mathrm{ddl}} (\zeta) - \tau \right\} ^ {+}, & \text { otherwise }, \end{array} \right. \tag {28}
+$$
+
+which implies that a task is removed when it is processed or reaches the deadline, where $\{ x \} ^ { + } ~ = ~ \operatorname* { m a x } { \{ \bar { x } , 0 \} }$ . For $o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) = 0$ , we set $o _ { n } ^ { \mathrm { d d l } } \left( \zeta + 1 \right) = { \mathrm { ~ \bar { 0 } ~ } }$ when task n has been removed or has not arrived yet; if it is a newly arriving task in slot ζ + 1 with $T _ { n } = ( \zeta + 1 ) \tau$ , then $o _ { n } ^ { \mathrm { d d l } } \left( \zeta + 1 \right) = D _ { n } - T _ { n } .$ .
+
+7Note that the overlapping indicator $\xi _ { n , i }$ is objective and independent of the batching variables in the asynchronous case. For instance, if two tasks n and i are generated at slot ζ, we optimize the beamforming with $\xi _ { n , i } = 1$ . If but task , we set $\mathbb { E } [ \| \mathbf { e } _ { n } \| ^ { 2 } ] \leq$ γ 2  1 − A nA 0  $\begin{array} { r } { \gamma ^ { 2 } \left( 1 - \frac { \dot { A _ { n } } } { A _ { 0 } } \right) , \mathbb { E } [ \left. \mathbf { e } _ { i } \right. ^ { 2 } ] > \gamma ^ { 2 } \left( 1 - \frac { \dot { A _ { i } } } { A _ { 0 } } \right) } \end{array}$ $o _ { n } ^ { \mathrm { d d l } } \left( \zeta \right) = D _ { n } - T _ { n }$ $o _ { i } ^ { \mathrm { d d l } } { \dot { ( \zeta ) } } = { \stackrel { \mathrm { o } } { 0 } } .$ before executing the batching action through DRL.
+
+Accordingly, we can obtain $\mathcal { N } ( \zeta + 1 )$ and $o ^ { \mathrm { n u m } } \left( \zeta + 1 \right)$ . Moreover, the busy time $o ^ { \mathrm { b u s } } \left( \zeta \right)$ is updated by
+
+$$
+o ^ {\text { bus }} (\zeta + 1) = \left\{ \begin{array}{l l} \left\{o ^ {\text { bus }} (\zeta) - \tau \right\} ^ {+}, & \text { if   } o ^ {\text { bus }} (\zeta) > 0, \\ \rho_ {1} + \rho_ {2} \sum_ {n \in \mathcal {N} (\zeta)} a _ {n} ^ {\text { bat }} (\zeta) - \tau , & \text { if   } a ^ {\text { sta }} (\zeta) = 1, \\ 0, & \text { otherwise. } \end{array} \right. \tag {29}
+$$
+
+Notice that the above MDP possesses discrete action space and intricate state transition, which cannot be handled by traditional dynamic programming. This necessitates the development of AI-generated solution, as delineated in the sequel.
+
+# B. Preliminaries of Diffusion Model
+
+Recently, DRL has emerged as a promising solution to solve optimization issues, with the capability of making sequential decisions in dynamic network environments [29], [30], [31]. However, existing DRL architecture typically adopts fully-connected deep neural networks (DNNs), which fall short in deducing complex mapping between state and action spaces. To this end, diffusion model [21], as a representative generative AI model, presents compelling advantages in data modeling and sample generation, which have paramount potential in enhancing DRL [32]. This motivates us to develop a diffusion model-based solution, so as to generate batching decisions for asynchronous task arrivals.
+
+To be specific, diffusion model aims to infer the optimized action distribution $\mathbf { x } _ { 0 } \left( \zeta \right)$ under environment state ${ \bf o } \left( \zeta \right)$ , denoted by $\mathbf { a } \left( \zeta \right) \mathbf { \Omega } \sim \mathbf { \Omega } \mathbf { x } _ { 0 } \left( \zeta \right) \mathbf { \Omega } = \mathbf { \Omega } \pi _ { \pmb { \theta } } \left( \mathbf { o } \left( \zeta \right) \right)$ , where θ is the parameters of diffusion model, and π indicates the policy. To achieve this, two critical processes are comprised, in which the forward process adds noise to ${ \bf x } _ { 0 } \left( \zeta \right)$ for U steps until an indistinguishable standard Gaussian noise $\mathbf { x } _ { U } \left( \zeta \right)$ is attained; while the reverse process gradually denoises xU (ζ) to recover $\mathbf { x } _ { 0 } \left( \zeta \right)$ , and leverages a DNN with parameter θ to predict the removed noise $\varepsilon _ { \theta } \left( \mathbf { x } _ { u } \left( \zeta \right) , u , \mathbf { o } \left( \zeta \right) \right)$ at each denoising step u. Note that state ${ \bf o } \left( \zeta \right)$ serves as the conditioning information for guiding the reverse process, enabling adaptive decisionmaking in dynamic environment. Mathematically, the forward and reverse processes at adjacent steps u − 1 to u can be respectively characterized by [33]
+
+$$
+\mathbf {x} _ {u} (\zeta) = \sqrt {1 - \Gamma_ {u}} \mathbf {x} _ {u - 1} (\zeta) + \sqrt {\Gamma_ {u}} \bar {\varepsilon}, \tag {30}
+$$
+
+$$
+\mathbf {x} _ {u - 1} (\zeta) = \mu_ {\boldsymbol {\theta}} \left(\mathbf {x} _ {u} (\zeta), u, \mathbf {o} (\zeta)\right) + \sqrt {\bar {\Gamma} _ {u}} \bar {\varepsilon}, \tag {31}
+$$
+
+where $\Gamma _ { u }$ represents the diffusion rate at step $u ,$ which is a predetermined constant, ε¯ is sampled from standard Gaussian distribution, and
+
+$$
+\begin{array}{l} \mu_ {\boldsymbol {\theta}} \left(\mathbf {x} _ {u} (\zeta), u, \mathbf {o} (\zeta)\right) = \frac {1}{\sqrt {\Lambda_ {u}}} \left[ \mathbf {x} _ {u} (\zeta) \right. \\ \left. - \frac {\Gamma_ {u}}{\sqrt {1 - \bar {\Lambda} _ {u}}} \varepsilon_ {\boldsymbol {\theta}} \left(\mathbf {x} _ {u} (\zeta), u, \mathbf {o} (\zeta)\right) \right], \tag {32} \\ \end{array}
+$$
+
+where $\begin{array} { r } { \Lambda _ { * } = - 1 - \Gamma _ { u } , \bar { \Lambda } _ { * } = \prod _ { \iota = 1 } ^ { u } \Lambda _ { \iota , * } } \end{array}$ and $\begin{array} { r } { \bar { \Gamma } _ { u } = \frac { 1 - \bar { \Lambda } _ { u - 1 } } { 1 } \Gamma _ { u } } \end{array}$ 1−Λ¯ u−1 Γ u   u u  ι=1 ι u  1−Λ¯ u ucan be directly calculated. Consequently, our subsequent goal is to train the DNN parametrized by θ to adapt to the above MDP, thereby recovering the optimized action from a random noise $\mathbf { x } _ { U } \left( \zeta \right)$ via the reverse process.
+
+![](images/dd944ed10d002167fddf9de853fa01db0fd0a54ff82ee071bd37d37288b1b188.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Target actor network π̂θ̂"] --> B["Diffusion-based actor network πθ̂"]
+    B --> C["Forward process"]
+    C --> D["Reverse process"]
+    D --> E["Environment"]
+    E --> F["Replay buffer"]
+    F --> G["Sample Loss function Lπ(θ)"]
+    F --> H["Sample Loss function LQ(φ)"]
+    G --> I["Critic network Qφ"]
+    H --> J["Target critic Q̂φ"]
+    I --> K["Action distribution"]
+    J --> K
+    K --> L["Batching Task start selection"]
+    L --> M["Pr{a(ζ)=1}"]
+    M --> N["State o(ζ)"]
+    N --> O["Action a(ζ)"]
+    O --> P["Action a(ζ)"]
+    P --> Q["State o(ζ)"]
+    Q --> R["Action a(ζ)"]
+    R --> S["State o(ζ)"]
+    S --> T["Action a(ζ)"]
+    T --> U["State o(ζ)"]
+    U --> V["Action a(ζ)"]
+    V --> W["State o(ζ)"]
+    W --> X["Action a(ζ)"]
+    X --> Y["State o(ζ)"]
+    Y --> Z["Action a(ζ)"]
+    Z --> AA["State o(ζ)"]
+    AA --> AB["Action a(ζ)"]
+    AB --> AC["State o(ζ)"]
+    AC --> AD["Action a(ζ)"]
+    AD --> AE["State o(ζ)"]
+    AE --> AF["Action a(ζ)"]
+    AF --> AG["State o(ζ)"]
+    AG --> AH["Action a(ζ)"]
+    AH --> AI["State o(ζ)"]
+    AI --> AJ["Action a(ζ)"]
+    AJ --> AK["State o(ζ)"]
+    AK --> AL["Action a(ζ)"]
+    AL --> AM["State o(ζ)"]
+    AM --> AN["Action a(ζ)"]
+    AN --> AO["State o(ζ)"]
+    AO --> AP["Action a(ζ)"]
+    AP --> AQ["State o(ζ)"]
+    AQ --> AR["Action a(ζ)"]
+    AR --> AS["State o(ζ)"]
+    AS --> AT["Action a(ζ)"]
+    AT --> AU["State o(ζ)"]
+    AU --> AV["Action a(ζ)"]
+    AV --> AW["State o(ζ)"]
+    AW --> AX["Action a(ζ)"]
+    AX --> AY["State o(ζ)"]
+```
+</details>
+
+Fig. 3. Training framework design.   
+![](images/4383a41655d2de4b63a1e0f977fc99c453f22176f0d75ffa9d2dbb5e135d3815.jpg)
+
+<details>
+<summary>line</summary>
+
+| Feature aggregation error (dB) | ModelNet 10-Shaded | ModelNet 10-Depth | ModelNet 40-Shaded | ModelNet 40-Depth |
+| ------------------------------ | ------------------ | ----------------- | ------------------ | ----------------- |
+| -2                             | 0.95               | 0.93              | 0.92               | 0.88              |
+| 0                              | 0.94               | 0.92              | 0.91               | 0.87              |
+| 2                              | 0.93               | 0.91              | 0.90               | 0.86              |
+| 4                              | 0.91               | 0.89              | 0.87               | 0.83              |
+| 6                              | 0.87               | 0.84              | 0.81               | 0.76              |
+| 8                              | 0.82               | 0.78              | 0.73               | 0.68              |
+</details>
+
+Fig. 4. Inference accuracy versus feature aggregation error.
+
+# C. Training Framework Design
+
+In the original applications of diffusion model such as image generation, the DNN is trained using labeled data. Nevertheless, it is difficult to collect the label, i.e., optimal solution, in our MDP by exhaustive search. Fortunately, DRL provides an efficient training paradigm for diffusion model, enabling DNN update through environment interaction. On the other side, diffusion model serves as the actor network of DRL agent to output actions, outperforming the conventional fullyconnected structure in adapting to complicated environment.
+
+As shown in Fig. 3, the training framework incorporates a diffusion-based actor network $\pi _ { \theta }$ to generate actions, and a critic network $Q _ { \varphi }$ parametrized by $\varphi$ to evaluate actions. In addition, two target networks denoted by $\hat { \boldsymbol { \pi } } _ { \hat { \boldsymbol { \theta } } }$ and $\hat { Q } _ { \hat { \varphi } }$ are introduced to prevent training oscillation.
+
+In order to train the above networks, we leverage the experience replay technique [34]. In each time slot ζ, the DRL agent collects experience transition $\left( \mathbf { o } \left( \zeta \right) , \mathbf { a } \left( \zeta \right) , r \left( \zeta \right) , \mathbf { o } \left( \zeta + 1 \right) \right)$ via interacting with the environment, and stores the transition in a replay buffer. In each training step, a number of transitions are sampled to update the DNNs. Specifically, the training objective of the actor network is to maximize the evaluation value output by the critic, hence the loss function is
+
+$$
+L _ {\pi} (\boldsymbol {\theta}) = - \mathbb {E} \left[ Q _ {\varphi} (\mathbf {o} (\zeta), \pi_ {\boldsymbol {\theta}} (\mathbf {o} (\zeta))) \right]. \tag {33}
+$$
+
+To calculate $L _ { \pi } \left( \pmb { \theta } \right)$ , we execute the diffusion-based actor network to output action a $( \zeta )$ following the reverse process in (31), during which the DNN with parameter θ generates denoising noise in each step conditioned on state ${ \bf o } \left( \zeta \right)$ , as in (32). Subsequently, ${ \bf o } \left( \zeta \right)$ and ${ \bf a } \left( \zeta \right)$ are input into the critic network for yielding evaluation value $Q _ { \varphi }$ . We then compute the gradient of $L _ { \pi } \left( \theta \right)$ with respect to θ, and update the actor network as ${ \textbf { \theta } } $ $\pmb { \theta } + l r \mathbb { E } \left[ \nabla \pmb { \theta } \pi _ { \pmb { \theta } } \left( \mathbf { o } \left( \zeta \right) \right) \cdot \nabla \mathbf { a } ( \zeta ) Q _ { \varphi } \left( \mathbf { o } \left( \zeta \right) , \mathbf { a } \left( \zeta \right) \right) \right]$ , where lr denotes the learning rate. Since the critic network aims to minimize the error between the predicted and actual accumulative rewards, its loss is
+
+$$
+L _ {Q} (\boldsymbol {\varphi}) = \mathbb {E} \left[ Q _ {\boldsymbol {\varphi}} (\mathbf {o} (\zeta), \mathbf {a} (\zeta)) - Q ^ {\operatorname{tar}} (\zeta) \right] ^ {2}, \tag {34}
+$$
+
+where $Q ^ { \mathrm { t a r } } \left( \zeta \right) ~ = ~ r \left( \zeta \right) + \omega \hat { Q } _ { \hat { \varphi } } \left( \mathbf { o } \left( \zeta + 1 \right) , \hat { \pi } _ { \hat { \theta } } \left( \mathbf { o } \left( \zeta + 1 \right) \right) \right)$ , and $\omega$ denotes the discount factor. Moreover, target network parameters are updated through tardily following the actor and critic networks, i.e.,
+
+$$
+\hat {\boldsymbol {\theta}} \leftarrow \kappa \boldsymbol {\theta} + (1 - \kappa) \hat {\boldsymbol {\theta}},
+$$
+
+$$
+\hat {\varphi} \leftarrow \kappa \varphi + (1 - \kappa) \hat {\varphi}, \tag {35}
+$$
+
+where $\kappa \ll 1$ denotes the update rate.
+
+# D. Overall Solution
+
+Algorithm 2 Diffusion Model-Based AI-Generated Solution Algorithm for P6 (GAI-Asynchronous)   
+1 Training Stage:
+2 Initialize: DNN parameters of diffusion-based actor network and critic network $\theta$ , $\varphi$ , $\hat{\theta}$ , $\hat{\varphi}$ , replay buffer.
+3 for each episode do
+4    for $\zeta \in \{1, \ldots, \zeta^{\max}\}$ do
+5    Initialize a Gaussian random variable $\mathbf{x}_{U}(\zeta)$ .
+6    Generate $\mathbf{x}_{0}(\zeta)$ based on the reverse process in (31).
+7    Execute action $\mathbf{a}(\zeta) \sim \mathbf{x}_{0}(\zeta) = \pi_{\theta}(\mathbf{o}(\zeta))$ .
+8    Calculate reward $r(\zeta)$ and transit to $\mathbf{o}(\zeta + 1)$ .
+9    Store the experience in replay buffer.
+10    end for
+11    Sample experiences from the replay buffer.
+12    Update the diffusion-based actor network by minimizing (33).
+13    Update the critic network by minimizing (34).
+14    Update the target networks using (35).
+15 end for
+16 Implementation stage:
+17 Optimize beamforming $\{w, v\}$ according to Section III-C.
+18 for $\zeta \in \{1, \ldots, \zeta^{\max}\}$ do
+19    LA sensors transmit features and form state $\mathbf{o}(\zeta)$ .
+20    Generate batching decision $\mathbf{a}(\zeta)$ using the trained diffusion-based actor network.
+21 end for
+22 Output: $\{B, y, t, w, v\}$ .
+
+Algorithm 2 (GAI-Asynchronous) outlines our AI-generated solution to solve P6 for asynchronous task arrivals. During the training stage, the algorithm leverages the diffusion-based actor network to output action under each environment state, then it calculates reward and performs state transition. By sampling experiences from the replay buffer, we update actor and critic networks as well as two target networks. In the implementation stage, after optimizing the beamforming, we invoke the well-trained actor network to generate batching decisions in response to real-time task arrivals. Given the challenge of theoretically proving the convergence performance of DRL, particularly for the DRL enhanced by the diffusion model [23], [24], [25], we will instead verify the
+
+TABLE II SIMULATION PARAMETERS 
+
+<table><tr><td>Parameter</td><td>Value</td><td>Parameter</td><td>Value</td></tr><tr><td> $K_n$ </td><td>12</td><td>Q</td><td>12544</td></tr><tr><td> $M^{\text{tx}}$ </td><td>4</td><td> $M^{\text{rx}}$ </td><td>16</td></tr><tr><td> $\sigma^2$ </td><td>-80 dBm</td><td>v</td><td>-30 dB</td></tr><tr><td>α</td><td>3.8</td><td> $\rho_1, \rho_2$ </td><td>1.502, 0.3051 ms</td></tr><tr><td> $A_0$ </td><td>0.95</td><td>γ</td><td> $\sqrt{3Q}$ </td></tr><tr><td> $A_n$ </td><td>[0.8, 0.9]</td><td>P</td><td>1 W</td></tr><tr><td> $\zeta^{\text{max}}$ </td><td>200</td><td>τ</td><td>0.5 ms</td></tr><tr><td>U</td><td>5</td><td>Learning rate of actor and critic</td><td> $1\times 10^{-3}, 1\times 10^{-4}$ </td></tr><tr><td> $\varsigma$ </td><td>2</td><td> $\Gamma_u$ </td><td>Controlled by variational posterior scheduler [33]</td></tr><tr><td>ω</td><td>0.99</td><td>κ</td><td>0.005</td></tr></table>
+
+TABLE III COMPARISON OF ALGORITHM IMPLEMENTATION TIME
+
+<table><tr><td rowspan="2">Methods</td><td colspan="3">Number of inference tasks</td></tr><tr><td>N=30</td><td>N=40</td><td>N=50</td></tr><tr><td>Proposed (U=3)</td><td>0.466 s</td><td>0.557 s</td><td>0.608 s</td></tr><tr><td>Proposed (U=5)</td><td>0.744 s</td><td>0.792 s</td><td>0.802 s</td></tr><tr><td>Proposed (U=7)</td><td>1.083 s</td><td>1.136 s</td><td>1.336 s</td></tr><tr><td>SAC/TD3</td><td>0.239 s</td><td>0.306 s</td><td>0.343 s</td></tr><tr><td>MINLP-Prior</td><td>47.79 s</td><td>80.01 s</td><td>174.32 s</td></tr></table>
+
+convergence through numerical experiments, as shown in Fig. 8. Considering that the diffusion model loads DNN for U denoising steps, the implementation complexity is given by $\mathcal { O } \left( I ^ { \mathrm { m a x } } \left( K + N \right) M ^ { 3 . 5 } + \zeta ^ { \mathrm { m a x } } U N ^ { 2 } \right)$ . This presents the computational load that our approach puts into the BS.
+
+# V. PERFORMANCE EVALUATION
+
+This part conducts comprehensively simulations to evaluate the performance of our proposed JB2-Synchronous and GAI-Asynchronous algorithms. In the simulation scenario, the BS is located at the center of a circle with radius 100 m, and all LA sensors are randomly distributed in the circle. To execute multi-task edge inference, we adopt ModelNet dataset8 to train a multi-view convolutional neural network (MVCNN) [35]. Specifically, ModelNet captures 12 images for each object sample, and its subsets ModelNet 40 and ModelNet 10 contain 40 and 10 popular object classes, respectively. Besides, the images in ModelNet can be rendered in shaded and depth styles, resulting in different combinations, e.g., ModelNet 40-Shaded and ModelNet 10-Depth. The MVCNN splits its VGG16 backbone before the linear classifier, and the preceding layers are deployed at each sensor for extracting feature with dimension $5 1 2 \times 7 \times 7 .$ . Afterwards, 12 feature vectors are aggregated into a global feature vector using average pooling, which is then fed into the edge classifier. Our subsequent results are derived based on the well-trained MVCNN, and the classification of different object samples corresponds to different inference task. Other default simulation parameters9 are listed in Table II [19], [23], [26].
+
+8The choice of ModelNet is due to its status as a classical open-source dataset for multi-view intelligent sensing, as well as its inclusion of the aircraft class, which contains over 700 samples of common LA objects.   
+9In our parameter settings, A0 is estimated as the test accuracy of the well-trained MVCNN on ModelNet 10-Shaded dataset. For γ, we introduce Gaussian noises with varying variances into the global feature $\mathbf { f } _ { n } ,$ and $\gamma ^ { 2 }$ is set as the largest variance that does not degrade the test accuracy.
+
+# A. Results for Synchronous Task Arrivals and Single Batch
+
+In this subsection, we provide numerical results for synchronous task arrivals and single batch case, where the default number of inference tasks N is 20, and the latency requirements $D _ { n } \mathrm { ~ - ~ } T$ are randomly sampled from [5, 20] ms. To investigate the impact of the aforementioned spatial correlation, the feature correlation matrix is approximated employing the following manners:
+
+1) Approximation 1: We calculate $\begin{array} { r } { { \bf C } _ { n } = \frac { 1 } { 2 Q } \sum _ { q = 1 } ^ { 2 Q } { \bf z } _ { n , q } { \bf z } _ { n , q } ^ { \mathrm { T } } } \end{array}$ based on the knowledge of sensors’ feature vectors. However, this is impractical since the knowledge cannot be obtained before feature transmission. Thus, Approximation 1 provides a performance baseline.   
+2) Approximation $2 \colon \mathbf { C } _ { n } = \epsilon \mathbf { 1 } _ { K _ { n } \times K _ { n } } + \left( 1 - \epsilon \right) \mathbf { I } _ { M ^ { \mathrm { r x } } }$ , where  represents an empirical value to estimate the degree of correlation.
+
+Additionally, the developed JB2-Synchronous algorithm is compared with benchmark methods below
+
+1) Spatial Correlation-Unawareness $\begin{array} { l l } { { I I I J , } } & { { I I 3 J ; } } \end{array}$ This method ignores the potential correlation among feature vectors from the same inference task, and sets ${ \bf C } _ { n } = { \bf I } _ { M ^ { \mathrm { n } } }$ to optimize beamforming. Hence, it can be regarded as a special case of Approximation 2 with $\epsilon = 0$ .   
+2) Zero-Forcing (ZF)-Based Power Control [10]: This method is widely used in AirComp to minimize the computation distortion, in which the phases of transmission beamforming are determined by ZF precoding, and the power control can be optimized by convex programming. Moreover, the receiving beamforming and batching are designed via our approach.   
+3) Static Batching [36]: The BS selects a fixed batch size in advance, and it starts parallel inference when the number of batched tasks reaches the batch size. A task is discarded if the completion time exceeds its deadline. We search an appropriate batch size catering for all possible N considered in the simulations.   
+4) Sequential Inference [37]: The BS carries out edge inference without batching capability. Therefore, all the tasks are processed in a sequential fashion according to their arrival order, and the inference latency of each task is $l _ { n } = \rho _ { 1 } +$ $\rho _ { 2 } , \forall n$ .
+
+Fig. 4 depicts the relation between inference accuracy and feature aggregation error. As the error becomes large, the global feature $\hat { \mathbf { f } } _ { n }$ attained by over-the-air aggregation deviates more significantly from the error-free version $\mathbf { f } _ { n } .$ , reducing the inference accuracy of edge AI model. Furthermore, the MVCNN model can achieve higher inference accuracy on ModelNet 10 and shaded images, as compared to ModelNet 40 and depth images. This is because the discrimination of 10 object classes is easier than 40 classes, while the shaded images offer additional information related to shadow and texture. Particularly, this figure confirms that the feature aggregation error can be utilized as a tractable accuracy performance metric to facilitate beamforming design.
+
+In Fig. 5, we assess the feature aggregation error versus the number of receiving antennas at the BS $M ^ { \mathrm { { r x } } }$ . It can be observed that the growth of $M ^ { \mathrm { { r x } } }$ reduces the feature aggregation error, since more antennas can provide higher spatial multiplexing gains to suppress the misalignment error as well as inter-task interference. In addition, we find that
+
+![](images/570ab5fd85e701c0282949daf0d199e843df58ac870ffd6c2217024e20f6c888.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of receiving antennas at the BS | Approximation 1 (dB) | Approximation 2, ε = 0.9 (dB) | Approximation 2, ε = 0.3 (dB) | Approximation 2, ε = 0.5 (dB) | Approximation 2, ε = 0.7 (dB) | Spatial correlation-unawareness (dB) | ZF-based power control (dB) |
+|---|---|---|---|---|---|---|---|
+| 8 | 3.0 | 7.0 | 6.5 | 6.0 | 6.0 | 7.0 | 9.0 |
+| 12 | 2.0 | 6.5 | 6.0 | 4.5 | 4.5 | 7.0 | 8.0 |
+| 16 | 1.0 | 6.0 | 5.5 | 3.5 | 3.5 | 7.0 | 7.0 |
+| 20 | -0.5 | 5.0 | 4.5 | 2.5 | 2.5 | 1.0 | 5.0 |
+| 24 | -1.0 | 4.5 | 4.0 | 1.5 | 1.5 | -1.0 | 4.5 |
+</details>
+
+Fig. 5. Feature aggregation error versus $M ^ { \mathrm { { r x } } }$ .
+
+the performance of Approximation 2 with $\epsilon = 0 . 5$ is close to Approximation 1, and the increase or decrease of  diminishes the performance, implying that $\epsilon \ : \ : = \ : \ : 0 . 5$ is a reasonable estimation of spatial correlation degree. In the remainder of the simulations, the proposed approach adopts Approximation 2 with $\epsilon = 0 . 5$ to optimize beamforming.
+
+For spatial correlation-unawareness, an interesting phenomenon is that it suffers from serious performance degradation when $M ^ { \mathrm { { r x } } } ~ \leq ~ 1 6 ,$ whereas the feature aggregation error significantly declines when $M ^ { \mathrm { { r x } } }$ further ascends. The rationale is that when the BS is equipped with a large receiving array, the symbols transmitted by different LA sensors can be distinguished exploiting the sufficient spatial degree of freedom (DoF). In this case, the influence of overlooking the feature correlation in beamforming design is unremarkable. This result reveals that the selection of  should be coordinated with receiving array size in practical systems.
+
+Fig. 6 showcases the comparison of our proposed $\mathbf { J B } ^ { 2 } \cdot$ - Synchronous and benchmark methods, in which the normalized inference throughput is given by 1N Pn∈N Pb∈B yn,b. $\begin{array} { r } { \frac { 1 } { N } \sum _ { n \in \mathcal N } \sum _ { b \in \mathcal B } y _ { n , b } . } \end{array}$ Fig. 6 (a) displays that the normalized inference throughput monotonically descends as the number of tasks becomes large. This is owing to the inference latency grows linearly with the batch size, and inter-task interference exacerbates the aggregation error, hence only finite tasks can be batched to meet their deadline and accuracy requirements. Furthermore, the proposed algorithm outperforms four benchmark methods by 29.89%, 24.85%, 22.44%, and 49.61% in enhancing the inference throughput, respectively. Since spatial correlationunawareness neglects the feature correlation, and ZF-based power control directly minimizes computation distortion instead of our analytical feature aggregation error in (15), and the resultant beamforming is not conducive to guaranteeing inference accuracy. For static batching, fixing batch size for all N restricts the improvement of inference throughput, thus its performance is lower than the proposed algorithm with adaptive batch size and task selection design. Sequential inference performs worse due to it prolongs the waiting time for task processing, and the inference latency is also high thanks to the omission of batching.
+
+In Fig. 6 (b), we plot the normalized inference throughput versus average latency requirement. On can see that all curves ascend as the latency requirement relaxes. This can be explained by that the BS has more time to execute edge inference, increasing the number of tasks that can be batched. Moreover, the inference throughputs obtained by spatial correlation-unawareness and ZF-based power control are bounded when loosening the latency requirement, task completion. Numerical results indicate that the proposed $\mathbf { J B } ^ { 2 } .$ -Synchronous achieves outstanding performance, i.e., the normalized inference throughput is 34.08%, 29.07%, 24.79%, and 45.03% higher than benchmark methods.
+
+![](images/3132945f95af1449423d80ecd6a58a78b67382cbaccf244f698aca61688b8e27.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of tasks | JB²-Synchronous, proposed | Spatial correlation-unawareness | ZF-based power control | Static batching | Sequential inference |
+| --------------- | ------------------------ | -------------------------------- | ---------------------- | --------------- | -------------------- |
+| 15              | 0.95                     | 0.62                             | 0.68                   | 0.68            | 0.58                 |
+| 20              | 0.90                     | 0.60                             | 0.65                   | 0.67            | 0.48                 |
+| 25              | 0.85                     | 0.58                             | 0.63                   | 0.65            | 0.42                 |
+| 30              | 0.80                     | 0.55                             | 0.60                   | 0.62            | 0.38                 |
+| 35              | 0.75                     | 0.52                             | 0.57                   | 0.58            | 0.34                 |
+| 40              | 0.70                     | 0.50                             | 0.54                   | 0.55            | 0.31                 |
+| 45              | 0.65                     | 0.48                             | 0.51                   | 0.52            | 0.28                 |
+| 50              | 0.60                     | 0.45                             | 0.48                   | 0.49            | 0.25                 |
+</details>
+
+(a） Normalized inference throughput versusnumber of tasks N.
+
+![](images/0512984655ec68e3f239bf5b72acfeff445598fe214d998c5a1aa29f98962e66.jpg)
+
+<details>
+<summary>line</summary>
+
+| Average latency requirement (ms) | IB²-Synchronous, proposed | Spatial correlation-unawareness | ZF-based power control | Static batching | Sequential inference |
+| -------------------------------- | ------------------------ | ------------------------------- | ---------------------- | --------------- | -------------------- |
+| 7.5                              | 0.62                     | 0.48                            | 0.50                   | 0.50            | 0.38                 |
+| 8.75                             | 0.70                     | 0.52                            | 0.55                   | 0.55            | 0.40                 |
+| 10                               | 0.78                     | 0.58                            | 0.60                   | 0.60            | 0.42                 |
+| 11.25                            | 0.85                     | 0.62                            | 0.65                   | 0.65            | 0.45                 |
+| 12.5                             | 0.90                     | 0.65                            | 0.70                   | 0.70            | 0.48                 |
+| 13.75                            | 0.95                     | 0.68                            | 0.72                   | 0.72            | 0.50                 |
+| 15                               | 1.00                     | 0.70                            | 0.75                   | 0.75            | 0.52                 |
+</details>
+
+(b） Normalized inference throughput versus average latency requirement.
+
+![](images/896149c35f1f3efec856041120e90597deec3b9121ad7fef7c05a27d21914bbc.jpg)
+
+<details>
+<summary>line</summary>
+
+| Average accuracy requirement | JB³-Synchronous, proposed | Static batching | Spatial correlation-unawareness | Sequential inference |
+| ---------------------------- | ------------------------ | --------------- | ------------------------------- | -------------------- |
+| 0.775                        | 0.9                      | 0.68            | 0.6                             | 0.45                 |
+| 0.8                          | 0.9                      | 0.68            | 0.6                             | 0.45                 |
+| 0.825                        | 0.9                      | 0.68            | 0.6                             | 0.45                 |
+| 0.85                         | 0.9                      | 0.68            | 0.6                             | 0.45                 |
+| 0.875                        | 0.9                      | 0.68            | 0.6                             | 0.45                 |
+| 0.9                          | 0.8                      | 0.68            | 0.55                            | 0.45                 |
+| 0.925                        | 0.7                      | 0.68            | 0.5                             | 0.45                 |
+</details>
+
+(c） Normalized inference throughput versus average accuracy requirement.
+
+Fig. 6. Inference throughput for synchronous task arrivals.   
+![](images/4a223809ad82c9a3de7db497777cd8330bb1376d3679db0f4537d9c7cf39b168.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time slot | Task arrival time and deadline (blue) | Batch start time (red) | Batch completion time (green) |
+| :--- | :--- | :--- | :--- |
+| 0 | 3 | 3 | 3 |
+| 20 | 4 | 4 | 4 |
+| 40 | 5 | 5 | 5 |
+| 60 | 7 | 7 | 7 |
+| 80 | 10 | 10 | 10 |
+| 100 | 13 | 13 | 13 |
+| 120 | 16 | 16 | 16 |
+| 140 | 19 | 19 | 19 |
+| 160 | 22 | 22 | 22 |
+| 180 | 25 | 25 | 25 |
+| 200 | 28 | 28 | 28 |
+</details>
+
+(a) Results of GAI-Asynchronous (all tasks complete with $\dot { B } = 1 7 )$
+
+![](images/093a28223d1bdd11917bab6b5298634ab97c723a2e74862b70ad35f9dd7ff64f.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time slot | Task arrival time and deadline (min) | Batch start time (min) | Batch completion time (min) |
+| :--- | :--- | :--- | :--- |
+| 0 | 3 | 4 | 1 |
+| 20 | 4 | 5 | 1 |
+| 40 | 6 | 7 | 2 |
+| 60 | 8 | 9 | 3 |
+| 80 | 10 | 11 | 4 |
+| 100 | 12 | 13 | 5 |
+| 120 | 14 | 15 | 6 |
+| 140 | 16 | 17 | 7 |
+| 160 | 18 | 19 | 8 |
+| 180 | 20 | 21 | 9 |
+| 200 | 22 | 23 | 10 |
+</details>
+
+(b)Results of MINLP-Prior (all tasks complete with $B = 1 4 )$
+
+Fig. 7. Illustration of batching strategy for asynchronous task arrivals.   
+![](images/598fd178044d744986a13424074206160e906c650dad8cddd4ca4b85b7f9c8a4.jpg)
+
+<details>
+<summary>line</summary>
+
+| Training episode | Number of denoising steps is 3 | Number of denoising steps is 5 | Number of denoising steps is 7 | MINLP-Prior |
+| ---------------- | ------------------------------ | ------------------------------ | ------------------------------ | ----------- |
+| 0                | -25                            | -25                            | -25                            | -25         |
+| 50               | 15                             | 25                             | 15                             | 25          |
+| 100              | 25                             | 25                             | 25                             | 25          |
+| 150              | 25                             | 25                             | 25                             | 25          |
+| 200              | 25                             | 25                             | 25                             | 25          |
+| 250              | 25                             | 25                             | 25                             | 25          |
+| 300              | 25                             | 25                             | 25                             | 25          |
+| 350              | 25                             | 25                             | 25                             | 25          |
+| 400              | 25                             | 25                             | 25                             | 25          |
+| 450              | 25                             | 25                             | 25                             | 25          |
+</details>
+
+(a) Comparison of different U.
+
+![](images/007d603b7beea5b1baedc0bc4fa00f5e5e7d79a083177df38beec0bf37ee5698.jpg)
+
+<details>
+<summary>line</summary>
+
+| Training episode | GAL-Asynchronous, proposed | SAC | TD3 | MINLP-Prior |
+| ---------------- | ------------------------- | --- | --- | ----------- |
+| 0                | 35                        | 35  | 35  | 35          |
+| 50               | 25                        | 25  | 25  | 25          |
+| 100              | 25                        | 25  | 25  | 25          |
+| 150              | 25                        | 25  | 25  | 25          |
+| 200              | 25                        | 25  | 25  | 25          |
+| 250              | 25                        | 25  | 25  | 25          |
+| 300              | 25                        | 25  | 25  | 25          |
+| 350              | 25                        | 25  | 25  | 25          |
+| 400              | 25                        | 25  | 25  | 25          |
+| 450              | 25                        | 25  | 25  | 25          |
+</details>
+
+(b） Comparison of different training algorithms.   
+Fig. 8. Convergence performance evaluation.
+
+Fig. 6 (c) validates the performance of the proposed approach under varying average accuracy requirements. It is seen that the inference throughput of $\mathbf { J B } ^ { 2 } .$ -Synchronous remains stable initially and then decreases as the accuracy requirement tightens. The rationale is that stricter accuracy constraints impose more stringent limits on feature aggregation errors, reducing the number of completed tasks under finite spatial DoFs. Consistent with the aforementioned results, we can further observe the superiority of $\mathbf { J B } ^ { 2 } .$ -Synchronous over baselines.
+
+# B. Results for Asynchronous Task Arrivals
+
+This subsection presents results for asynchronous task arrivals, where N = 30 tasks arrive randomly in time period [0, 100] ms (which is divided into 200 slots with slot duration 0.5 ms), and latency requirements $D _ { n } - T _ { n }$ are within [2, 10] ms. The DNN of the diffusion model possesses two hidden layers with 256 neurons, and the input includes Sinusoidal position embedding to encode denoising steps. In addition to the above-mentioned benchmark methods, the following schemes are compared to demonstrate the effectiveness of our proposed GAI-Asynchronous algorithm:
+
+1) Mixed Integer Nonlinear Programming (MINLP)-Prior [19]: This method assumes that task arrival time $T _ { n }$ , ∀n and deadline $D _ { n } , \forall n$ are known a prior, such that P6 can be transformed into a series of MINLP issues, as detailed in Appendix E. Since this method employs prior information that is difficult to acquire in practice, it provides a performance baseline for our online policy.   
+2) Soft Actor-Critic (SAC) [29]: We invoke SAC as a DRL benchmark for comparing the learning efficiency. This method uses fully-connected DNN to yield action distribution, and promotes exploration by reaping the benefit of maximum entropy objective.   
+3) Twin Delayed Deep Deterministic Policy Gradient (TD3): TD3 is another DRL benchmark, which maps each state to a deterministic action, and applies some tricks to facilitate training. Its actor network is also a fully-connected DNN.
+
+The batching strategy obtained by the proposed algorithm and MINLP-Prior is illustrated in Fig. 7, where the yellow region shows the arrival time and deadline of each task, and the blue region portrays the batched inference time. If the blue region of a task is fully covered by the yellow region, the task is completed before the deadline. Moreover, if the blue regions of several tasks are aligned, these tasks are assembled into the same batch. One can observe that both GAI-Asynchronous and MINLP-Prior complete all the 30 inference tasks, indicating that our approach can effectively learn the online batching strategy, and achieve comparable inference throughput compared to the benchmark with prior task information. Additionally, owing to the uncertainty of future task arrivals, GAI-Asynchronous tends to start batched inference as early as possible. Another important observation is that MINLP-Prior completes all tasks with few batches (B = 14) than GAI-Asynchronous $( B = 1 7 )$ . The reason is that in online implementation without prior information, our proposed approach should appropriately control the waiting latency and the BS’s busy time, thereby ensuring the ability for processing future tasks.
+
+Fig. 8 shows the training convergence of the proposed GAI-Asynchronous. It can be seen that the accumulative reward curves ascend over the training episode, and the final performance is close to the upper bound given by MINLP-Prior. This is because the proposed algorithm learns from the environmental rewards, and continuously improves the policy yielded by diffusion-based actor network. More specifically, Fig. 8 (a) studies the impact of denoising steps on the training convergence, and we find that the accumulative reward first increases then decreases as the number of denoising steps U ascends. On the one hand, enlarging U means that the action can be refined with more steps in the generation process, stabilizing network outputs and reducing training oscillations. On the other hand, when U becomes very large, the diffusion model losses its exploration ability because of the excessing denoising, degrading the convergence performance in complicated environment. As a result, we choose U = 5 to strike a good balance.
+
+![](images/74e3b7a42e79b6287eaf2cf518c9fef965427a6127f50cab412a68cf321141ba.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of tasks | GAL-Asynchronous, proposed | MINLP-Prior | Spatial correlation-unawareness | ZF-based power control | Static batching | Sequential inference |
+| --------------- | ------------------------- | ----------- | ------------------------------- | ---------------------- | --------------- | -------------------- |
+| 30              | 1.0                       | 1.0         | 0.6                             | 0.7                    | 0.8             | 0.9                  |
+| 35              | 0.95                      | 0.98        | 0.6                             | 0.7                    | 0.8             | 0.8                  |
+| 40              | 0.9                       | 0.95        | 0.6                             | 0.65                   | 0.75            | 0.7                  |
+| 45              | 0.85                      | 0.9         | 0.55                            | 0.6                    | 0.7             | 0.6                  |
+| 50              | 0.8                       | 0.85        | 0.5                             | 0.55                   | 0.65            | 0.5                  |
+| 55              | 0.75                      | 0.8         | 0.45                            | 0.5                    | 0.6             | 0.4                  |
+| 60              | 0.7                       | 0.75        | 0.4                             | 0.45                   | 0.5             | 0.3                  |
+</details>
+
+(a）Normalized inference throughput versus number of tasks N
+
+![](images/f934bfd8eaa6bf33e0d86d6d624684ee16e07d0d98f4535baaddb876897b707d.jpg)
+
+<details>
+<summary>line</summary>
+
+| Average latency requirement (ms) | GAI-Asynchronous, proposed | MINLP-Prior | Spatial correlation-unawareness | ZF-based power control | Static batching | Sequential inference |
+| -------------------------------- | -------------------------- | ----------- | ------------------------------- | ---------------------- | --------------- | -------------------- |
+| 2                                | 0.6                        | 0.7         | 0.4                             | 0.5                    | 0.2             | 0.3                  |
+| 3                                | 0.7                        | 0.8         | 0.5                             | 0.6                    | 0.4             | 0.5                  |
+| 4                                | 0.8                        | 0.9         | 0.6                             | 0.7                    | 0.5             | 0.6                  |
+| 5                                | 0.9                        | 0.95        | 0.65                            | 0.75                   | 0.6             | 0.7                  |
+| 6                                | 0.95                       | 1.0         | 0.7                             | 0.8                    | 0.7             | 0.8                  |
+| 7                                | 1.0                        | 1.0         | 0.7                             | 0.8                    | 0.8             | 0.9                  |
+| 8                                | 1.0                        | 1.0         | 0.7                             | 0.8                    | 0.9             | 0.95                 |
+</details>
+
+(b） Normalized inference throughput versus average latency requirement.
+
+![](images/b2566a628a4201fc342558bc0ab589202e2239e31ccffd30d77b120ad5d5862a.jpg)
+
+<details>
+<summary>line</summary>
+
+| Average accuracy requirement | GAI-Asynchronous, proposed | MINLP-Prior | Spatial correlation-unawareness | ZF-based power control | Static batching | Sequential inference |
+| ---------------------------- | ------------------------- | ----------- | ------------------------------- | ---------------------- | --------------- | -------------------- |
+| 0.775                        | 1.0                       | 1.0         | 0.6                             | 0.9                    | 0.8             | 0.9                  |
+| 0.8                          | 1.0                       | 1.0         | 0.6                             | 0.8                    | 0.8             | 0.9                  |
+| 0.825                        | 1.0                       | 1.0         | 0.6                             | 0.8                    | 0.8             | 0.9                  |
+| 0.85                         | 1.0                       | 1.0         | 0.6                             | 0.8                    | 0.8             | 0.9                  |
+| 0.875                        | 1.0                       | 1.0         | 0.6                             | 0.8                    | 0.8             | 0.9                  |
+| 0.9                          | 0.9                       | 0.9         | 0.6                             | 0.7                    | 0.7             | 0.8                  |
+| 0.925                        | 0.7                       | 0.7         | 0.5                             | 0.6                    | 0.6             | 0.6                  |
+</details>
+
+(c） Normalized inference throughput versus average accuracy requirement.   
+Fig. 9. Inference throughput for asynchronous task arrivals.
+
+Fig. 8 (b) compares the training procedure of GAI-Asynchronous and DRL benchmarks. We observe that the proposed approach achieves superior performance, and the accumulative reward is 38.63% and 56.43% higher than SAC and TD3, respectively. This performance improvement is attributed to the diffusion-based actor network, which utilizes multiple denoising steps to generate the precise mapping from state to action spaces, outperforming the fully-connected DNN used by DRL benchmarks. This result unveils that the relationship between diffusion model and DRL are complementary and mutually beneficial, providing critical opportunities for developing high-performance decision-making approaches.
+
+Thereafter, we provide the algorithm implementation time in Table II. As can be observed, all the learning-based methods load the trained actor network, and consume about 1 second to make real-time batching actions. Meanwhile, the increment of the time consumption is negligible when the number of tasks grows. Nevertheless, MINLP-Prior requires to iteratively solve the MINLP issues to acquire the offline decisions, resulting in a much higher implementation time than our proposal. Besides, with the increase of $U ,$ the time consumption of GAI-Asynchronous also ascends since the DNN for denoising are executed more times. SAC and TD3 only need to execute the actor networks once, hence they have the lowest implementation time.
+
+Fig. 9 delineates the inference throughput performance for asynchronous task arrivals. Similar to the discussion of Fig. 6, the normalized inference throughput decreases with task amount as well as average accuracy requirement, and increases with average latency requirement. Furthermore, it is seen that the proposed GAI-Asynchronous achieves comparable performance to MINLP-Prior, and outperforms other benchmark methods. Numerical results demonstrate that the normalized inference throughput of our algorithm is only 4% lower than MINLP-Prior, and 40.25%, 31.46%, 21.18%, and 29.88% higher than spatial correlation-unawareness, ZF-based power control, static batching, sequential inference, respectively.
+
+# C. Validation of Algorithm Extensibility
+
+Fig. 10 demonstrates the effectiveness of the proposed approach in an advanced real-world drone detection task. In this experiment, we fine-tune a pre-trained YOLOv8 model using the Drone Dataset [38]. The first convolutional layer is deployed on LA sensors for feature extraction, while the remaining components of YOLOv8 are deployed at the BS to perform detection. The detection results show a strong correspondence with the ground truth labels, i.e., all drones are accurately detected with correct positions. In contrast, the benchmark ZF-based power control method exhibits instances of missed or falsely detected drones. This improvement is attributed to the proper design of MIMO beamforming in our approach, which effectively mitigates feature aggregation errors caused by over-the-air transmission, thereby maintaining the model’s detection performance.
+
+In Fig. 11, we extend the proposed approach to the Rician channel model. The MIMO channel between sensor hn, ki and BS is $\begin{array} { r } { \mathbf { H } _ { n , k } = \sqrt { v d _ { n , k } ^ { - \alpha } } \left( \sqrt { \frac { K _ { f } } { 1 + K _ { f } } } \mathbf { H } _ { n , k } ^ { \mathrm { L o S } } + \sqrt { \frac { 1 } { 1 + K _ { f } } } \tilde { \mathbf { H } } _ { n , k } \right) } \end{array}$ Hn,k 1 f H˜ n,k, where $\mathbf { H } _ { n , k } ^ { \mathrm { L o S } }$ and $\tilde { \mathbf { H } } _ { n , k }$ are the line-of-sight (LoS) component and NLoS component, respectively, and $K _ { f }$ denotes the Rician factor. We can see that the feature aggregation error initially decreases and then stabilizes as $K _ { f }$ increases. This is due to that the enhanced LoS propagation is beneficial for feature uploading, whereas further reduction in feature aggregation error is constrained by inter-task interference. Additionally, the proposed approach (adopting Approximation 2 with  = 0.5) demonstrates significant performance improvement over baseline beamforming methods, confirming the extensibility of our approach for different channel models.
+
+Fig. 12 examines the impact of ζmax on the performance of GAI-asynchronous, where time period [0, 100] ms is divided into various number of time slots, with slot duration τ determined accordingly. We observe that the inference throughput ascends as ζmax grows, though the rate of increase diminishes once ζmax reaches a sufficiently large value, i.e., 200. A larger ζmax allows the agent to make more accurate batching decisions over shorter time intervals. However, extremely short action intervals are unnecessary, since the inference throughout is bounded by delay and accuracy constraints. Given that the algorithm implementation time scales approximately linearly with $\zeta ^ { \mathrm { m a x } }$ , it is proper to choose a slot duration near the turning point where the throughput gain starts to level off.
+
+![](images/ca49e473f8794023e48f886c3281cd36508c4970cf0b75509d39468179377d34.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Six-panel collage showing drone operations: urban skyline, waterfront, city skyline, airport, and construction site (no text or symbols visible)
+</details>
+
+(a) Label images.
+
+![](images/6cf128aadff461bcef4fc3b7ad067cba2a34d494c84c7fc050fba1b2132f80f0.jpg)
+
+<details>
+<summary>text_image</summary>
+
+Composite image showing drone surveillance and safety tracking with labeled drones and city skyline, including a person monitoring the drone.
+</details>
+
+(b) Proposed approach.
+
+![](images/cff0f5e95b5ebb96ec648432083088236dcacececcb8bc8ee9f9aec01454a701.jpg)
+
+<details>
+<summary>text_image</summary>
+
+Composite image showing drone surveillance and delivery operations with labeled drone models and cityscape background
+</details>
+
+(c) ZF-based power control.
+
+Fig. 10. Performance on drone detection task using YOLOv8 model and Drone Dataset.   
+![](images/6e079fa765879e83e16ff8db077ff7d79c123851b432bf1b993216cb77daf60e.jpg)
+
+<details>
+<summary>line</summary>
+
+| Rician factor | Proposed approach | Spatial correlation-unawareness | ZF-based power control |
+| ------------- | ----------------- | ------------------------------- | ---------------------- |
+| 0             | 4.0               | 7.0                             | 6.0                    |
+| 1             | 3.0               | 5.5                             | 5.8                    |
+| 2             | 2.5               | 4.5                             | 5.7                    |
+| 3             | 2.0               | 3.8                             | 5.6                    |
+| 4             | 1.8               | 3.2                             | 5.5                    |
+| 5             | 1.7               | 2.8                             | 5.4                    |
+| 6             | 1.6               | 2.5                             | 5.3                    |
+| 7             | 1.6               | 2.4                             | 5.2                    |
+| 8             | 1.6               | 2.3                             | 5.1                    |
+| 9             | 1.6               | 2.2                             | 5.0                    |
+</details>
+
+Fig. 11. Extension to Rician channel model.   
+![](images/43f9a565091f00d2174e565988032dd88e031c5f5ea1fcfe9b5389219e5d1e50.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of time slots | Normalized inference throughput | Algorithm implementation time (s) |
+| -------------------- | ------------------------------- | --------------------------------- |
+| 100                  | 0.65                            | 0.5                               |
+| 150                  | 0.8                             | 0.6                               |
+| 200                  | 0.87                            | 0.8                               |
+| 250                  | 0.88                            | 1.0                               |
+| 300                  | 0.88                            | 1.1                               |
+</details>
+
+Fig. 12. Impact of various number of time slots $\zeta ^ { \mathrm { m a x } }$
+
+# VI. CONCLUSION
+
+In this work, we proposed a multi-task over-the-air edge inference system to achieve high-precision and intelligent sensing for LA airspace. To unleash the full potential of this system, batching and beamforming were jointly optimized to maximize the inference throughput, satisfying the completion deadline and inference accuracy constraints. Since the inference tasks possess stochastic arrival instants and distinct completion requirements, our solution sequentially handled two cases. In the case with synchronous task arrivals and single batch, JB2-Synchronous algorithm was developed to design transceiver beamforming by considering the spatial correlation among sensors, whilst batching was optimized by finding the maximum feasible batch size. In the synchronous task arrival case, we proposed the GAI-Asynchronous algorithm, which innovatively incorporated a diffusion-based actor network to generate batching actions in an online manner, judiciously balancing the completed task amount, waiting latency, and
+
+BS’s busy time. Through numerical results, we showcased the importance of capturing the feature correlation among sensors, especially when the spatial DoF is insufficient. Compared to offline batching optimization with prior task information, our online policy achieved comparable performance with higher implementation efficiency. Moreover, the proposed algorithms outperformed benchmark methods in terms of inference throughput and training convergence. Future work will delve into more complex LA applications, such as video analysis, and develop sophisticated beamforming designs by exploring both spatial and dynamic temporal correlations.
+
+# REFERENCES
+
+[1] Y. Fu, P. Qin, J. Zhang, and Z. Lu, “Joint AI inference and target tracking at network edge: A hybrid offline-online design for UAVenabled network,” IEEE Trans. Wireless Commun., vol. 23, no. 12, pp. 17959–17973, Dec. 2024.   
+[2] H.-J. Moon and C.-B. Chae, “Cooperative ground-satellite scheduling and power allocation for urban air mobility networks,” IEEE J. Sel. Areas Commun., vol. 43, no. 1, pp. 218–233, Jan. 2025.   
+[3] Federal Aviation Admin. (Apr. 2024). FAA Aerospace Forecast Fiscal Years 2024-2044. [Online]. Available: https://www.faa.gov/dataresearch/ aviation/aerospaceforecasts/faa-aerospace-forecast-fy-2024-2044   
+[4] B.-H. Liao, C.-Y. Lee, and L.-C. Wang, “Aerodynamics-based collisionfree control of connected drones in complex urban low-altitude airspace using distributional reinforcement learning,” IEEE Trans. Veh. Technol., vol. 73, no. 7, pp. 9763–9775, Jul. 2024.   
+[5] ITU-R. (2023). Framework and Overall Objectives of the Future Development of IMT for 2030 and Beyond. [Online]. Available: https://www.itu.int/en/ITU-R/study-groups/rsg5/rwp5d/imt-2030/Pages/ default.aspx   
+[6] F. Liu et al., “Integrated sensing and communications: Toward dualfunctional wireless networks for 6G and beyond,” IEEE J. Sel. Areas Commun., vol. 40, no. 6, pp. 1728–1767, Jun. 2022.   
+[7] S. Duan et al., “Distributed artificial intelligence empowered by endedge-cloud computing: A survey,” IEEE Commun. Surveys Tuts., vol. 25, no. 1, pp. 591–624, 1st Quart., 2023.   
+[8] J. Shao, Y. Mao, and J. Zhang, “Task-oriented communication for multidevice cooperative edge inference,” IEEE Trans. Wireless Commun., vol. 22, no. 1, pp. 73–87, Jan. 2023.   
+[9] P. R. Sutradhar et al., “Look-up-table based processing-in-memory architecture with programmable precision-scaling for deep learning applications,” IEEE Trans. Parallel Distrib. Syst., vol. 33, no. 2, pp. 263–275, Feb. 2022.   
+[10] X. Shi, J. Du, J. Wang, K. Huang, and T. Q. S. Quek, “Beamforming design for massive MIMO-aided over-the-air computation: A mutual information perspective,” IEEE Trans. Wireless Commun., vol. 23, no. 10, pp. 14335–14349, Oct. 2024.   
+[11] X. Chen, K. B. Letaief, and K. Huang, “On the view-and-channel aggregation gain in integrated sensing and edge AI,” IEEE J. Sel. Areas Commun., vol. 42, no. 9, pp. 2292–2305, Sep. 2024.   
+[12] Z. Liu, Q. Lan, A. E. Kalør, P. Popovski, and K. Huang, “Over-the-Air multi-view pooling for distributed sensing,” IEEE Trans. Wireless Commun., vol. 23, no. 7, pp. 7652–7667, Jul. 2024.
+
+[13] Z. Zhuang, D. Wen, Y. Shi, G. Zhu, S. Wu, and D. Niyato, “Integrated sensing-communication-computation for over-the-air edge AI inference,” IEEE Trans. Wireless Commun., vol. 23, no. 4, pp. 3205–3220, Apr. 2024.   
+[14] P. Zhang, D. Wen, G. Zhu, Q. Chen, K. Han, and Y. Shi, “Collaborative edge AI inference over cloud-RAN,” IEEE Trans. Commun., vol. 72, no. 9, pp. 5641–5656, Sep. 2024.   
+[15] NVIDIA.(2022). NVIDIA TensorRT Documentation. [Online]. Available: https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/   
+[16] W. Cui, Q. Chen, H. Zhao, M. Wei, X. Tang, and M. Guo, “E2Bird: Enhanced elastic batch for improving responsiveness and throughput of deep learning services,” IEEE Trans. Parallel Distrib. Syst., vol. 32, no. 6, pp. 1307–1321, Jun. 2021.   
+[17] W. Shi, S. Zhou, Z. Niu, M. Jiang, and L. Geng, “Multiuser coinference with batch processing capable edge server,” IEEE Trans. Wireless Commun., vol. 22, no. 1, pp. 286–300, Jan. 2023.   
+[18] Z. Liu, Q. Lan, and K. Huang, “Resource allocation for multiuser edge inference with batching and early exiting,” IEEE J. Sel. Areas Commun., vol. 41, no. 4, pp. 1186–1200, Apr. 2023.   
+[19] Y. Cang, M. Chen, and K. Huang, “Joint batching and scheduling for high-throughput multiuser edge AI with asynchronous task arrivals,” IEEE Trans. Wireless Commun., vol. 23, no. 10, pp. 13782–13795, Oct. 2024.   
+[20] M. Xu et al., “Unleashing the power of edge-cloud generative AI in mobile networks: A survey of AIGC services,” IEEE Commun. Surveys Tuts., vol. 26, no. 2, pp. 1127–1170, 2nd Quart., 2024.   
+[21] J. Sohl-Dickstein, E. Weiss, N. Maheswaranathan, and S. Ganguli, “Deep unsupervised learning using nonequilibrium thermodynamics,” in Proc. ICML, 2015, pp. 2256–2265.   
+[22] S. Krishnamoorthy, S. M. Mashkaria, and A. Grover, “Diffusion models for black-box optimization,” in Proc. Int. Conf. Mach. Learn., Jan. 2023, pp. 17842–17857.   
+[23] H. Du et al., “Diffusion-based reinforcement learning for edge-enabled AI-generated content services,” IEEE Trans. Mobile Comput., vol. 23, no. 9, pp. 8902–8918, Sep. 2024.   
+[24] B. Du et al., “YOLO-based semantic communication with generative AIaided resource allocation for digital twins construction,” IEEE Internet Things J., vol. 11, no. 5, pp. 7664–7678, Mar. 2024.   
+[25] Z. Liu et al., “DNN partitioning, task offloading, and resource allocation in dynamic vehicular networks: A Lyapunov-guided diffusion-based reinforcement learning approach,” IEEE Trans. Mobile Comput., vol. 24, no. 3, pp. 1945–1962, Mar. 2025.   
+[26] C. Zhong, H. Yang, and X. Yuan, “Over-the-air federated multi-task learning over MIMO multiple access channels,” IEEE Trans. Wireless Commun., vol. 22, no. 6, pp. 3853–3868, Jun. 2023.   
+[27] J. Sokolic, R. Giryes, G. Sapiro, and M. R. D. Rodrigues, “Robust large margin deep neural networks,” IEEE Trans. Signal Process., vol. 65, no. 16, pp. 4265–4280, Aug. 2017.   
+[28] Y. Chen, Z. Chang, G. Min, S. Mao, and T. Ham¨ al¨ ainen, “Joint¨ optimization of sensing and computation for status update in mobile edge computing systems,” IEEE Trans. Wireless Commun., vol. 22, no. 11, pp. 8230–8243, Nov. 2023.   
+[29] P. Qin, Y. Fu, Z. Yu, J. Zhang, and X. Zhao, “URLLC-aware trajectory plan and beamforming design for NOMA-aided UAV integrated sensing, communication, and computation networks,” IEEE Trans. Veh. Technol., vol. 74, no. 1, pp. 1610–1625, Jan. 2025.   
+[30] P. Qin, Y. Fu, R. Ding, and H. He, “Competition-awareness partial task offloading and UAV deployment for multitier parallel computational Internet of Vehicles,” IEEE Syst. J., vol. 18, no. 3, pp. 1753–1764, Sep. 2024.   
+[31] P. Qin, Y. Fu, Y. Xie, K. Wu, X. Zhang, and X. Zhao, “Multiagent learning-based optimal task offloading and UAV trajectory planning for AGIN-power IoT,” IEEE Trans. Commun., vol. 71, no. 7, pp. 4005–4017, Jul. 2023.   
+[32] H. Du et al., “Enhancing deep reinforcement learning: A tutorial on generative diffusion models in network optimization,” IEEE Commun. Surveys Tuts., vol. 26, no. 4, pp. 2611–2646, 4th Quart., 2024.   
+[33] J. Ho, A. Jain, and P. Abbeel, “Denoising diffusion probabilistic models,” in Proc. Adv. Neural Inf. Process. Syst., vol. 33, 2020, pp. 6840–6851.   
+[34] P. Qin, M. Fu, Y. Fu, R. Ding, and X. Zhao, “Collaborative edge computing and program caching with routing plan in C-NOMA-Enabled space-air-ground network,” IEEE Trans. Wireless Commun., vol. 23, no. 12, pp. 18302–18315, Dec. 2024.   
+[35] J.-C. Su, M. Gadelha, R. Wang, and S. Maji, “A deeper look at 3D shape classifiers,” 2018, arXiv:1809.02560.   
+[36] A. Ali, R. Pinciroli, F. Yan, and E. Smirni, “BATCH: Machine learning inference serving on serverless platforms with adaptive batching,” in Proc. Int. Conf. High Perform. Comput. Netw. Stor. Anal., 2020, Authorized licensed use limited to: Inner Mongolia University. Downloade pp. 1– 5.
+
+[37] Y. Xu, P. Cheng, Z. Chen, M. Ding, Y. Li, and B. Vucetic, “Task offloading for large-scale asynchronous mobile edge computing: An index policy approach,” IEEE Trans. Signal Process., vol. 69, pp. 401–416, 2021.   
+[38] M. Ozel. ¨ Drone Dataset (UAV). Accessed: 2025. [Online]. Available: https://www.kaggle.com/datasets/dasmehdixtr/drone-dataset-uav
+
+![](images/e8f2f357e264e52eabbb9af0835d7ccefafa462afc0a31048935c08b60159452.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a young man wearing glasses and a collared shirt (no text or symbols visible)
+</details>
+
+Yang Fu received the B.S. degree from North China Electric Power University in 2022, where he is currently pursuing the Ph.D. degree with the School of Electrical and Electronic Engineering. His research interests include resource allocation in smart grid communications, space-air-ground integrated networks, vehicular networks, and the Internet of Things.
+
+![](images/5dcd75501fb5b09bf5d7f3051ff443bc4ce3eec63347f723f527a07d7513fba2.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a suit against a blue background (no text or symbols visible)
+</details>
+
+Peng Qin (Member, IEEE) received the B.S. and Ph.D. degrees in information and communication engineering from the Huazhong University of Science and Technology, Wuhan, China, in 2009 and 2014, respectively. From 2012 to 2013, he was a Visiting Scholar with the University of Victoria, Victoria, BC, Canada. He is currently an Associate Professor with the School of Electrical and Electronic Engineering, North China Electric Power University. His research interests include resource allocation in the Internet of Things, network intelli-
+
+gence, smart grid communications, space-air-ground integrated networks, and vehicular networks. He was a recipient of the International Communications Signal Processing and Systems Conference Best Paper Award; and the International Conference on Artificial Intelligence in China Best Paper Award in 2019, 2020, 2021, and 2022.
+
+![](images/1e4dd5732202da0356f4452012e2d7572ed0ced07a3f1c37c458f5c646df957c.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in formal attire (no text or symbols visible)
+</details>
+
+Yifei Wang is currently pursuing the M.S. degree with the School of Electrical and Electronic Engineering, North China Electric Power University. His research interests include resource allocation in smart grid communications, space-air-ground integrated networks, vehicular networks, and the Internet of Things.
+
+![](images/4b7ba350291a071f16a5a0b0fc4a2d0d815bd1c35df331afa2910eff2c0671c4.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in formal attire (no text or symbols visible)
+</details>
+
+Liming Chen received the B.S., M.S., and Ph.D. degrees in electrical engineering from Harbin Institute of Technology, Harbin, China, in 2008, 2010 and 2014, respectively. He is currently a Researcher with the Electric Power Research Institute, China Southern Power Grid, China. His research interests include power distribution wireless communication, the IoT, cyber security, and smart distribution terminals.
+
+![](images/8726ddf0433539201f615db55874a6f6a123d8b4228fb7ada22d8a3f22ff221b.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man against a solid blue background (no text or symbols visible)
+</details>
+
+Mengyao Li received the B.S. degree from North China Electric Power University in 2023, where he is currently pursuing the M.S. degree with the School of Electrical and Electronic Engineering. His research interests include space-air-ground integrated networks and wireless communication network resource optimization.

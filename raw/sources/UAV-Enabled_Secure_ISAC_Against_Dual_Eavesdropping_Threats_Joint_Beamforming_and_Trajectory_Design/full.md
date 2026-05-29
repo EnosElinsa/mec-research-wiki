@@ -1,0 +1,378 @@
+# UAV-Enabled Secure ISAC Against Dual Eavesdropping Threats: Joint Beamforming and Trajectory Design
+
+Jianping Yao , Member, IEEE, Zeyu Yang , Zai Yang ， , Senior Member, IEEE, Jie Xu , Fellow, IEEE, and Tony Q. S. Quek , Fellow, IEEE
+
+Abstract—In this letter, we study an uncrewed aerial vehicle (UAV)-enabled secure integrated sensing and communication (ISAC) system, where a UAV serves as an aerial base station (BS) to simultaneously perform communication with a user and detect a target on the ground, while a dual-functional eavesdropper attempts to intercept the signals for both sensing and communication. Facing the dual eavesdropping threats, we aim to enhance the average achievable secrecy rate for the communication user by jointly designing the UAV trajectory together with the transmit information and sensing beamforming, while satisfying the requirements on sensing performance and sensing security, as well as the UAV power and flight constraints. To address the non-convex nature of the optimization problem, we employ the alternating optimization (AO) strategy, jointly with the successive convex approximation (SCA) and semidefinite relaxation (SDR) methods. Numerical results validate the proposed approach, demonstrating its ability to achieve a high secrecy rate while meeting the required sensing and security constraints.
+
+Index Terms—Integrated sensing and communication (ISAC), uncrewed aerial vehicle (UAV), physical-layer security (PLS), sensing security.
+
+# I. INTRODUCTION
+
+NTEGRATED sensing and communication (ISAC) is I regarded as a promising cornerstone technology for future sixth-generation (6G) wireless networks [1], in which base stations (BSs) can transmit unified ISAC signals and perform ISAC signal processing over shared hardware platforms, thus significantly enhancing the utilization efficiency of spectrum,
+
+Received 27 May 2025; accepted 9 July 2025. Date of publication 15 July 2025; date of current version 9 October 2025. This work was supported in part by the Basic Research Project of Hetao Shenzhen-HK S&T Cooperation Zone under Grant HZQB-KCZYZ-2021067; in part by the National Natural Science Foundation of China under Grant 62471424, Grant 92267202, and Grant 12371464; and in part by the Guangdong Provincial Key Laboratory of Future Networks of Intelligence under Grant 2022B1212010001. The associate editor coordinating the review of this article and approving it for publication was C. Y. Leow. (Corresponding author: Jie Xu.)
+
+Jianping Yao and Zeyu Yang are with the School of Information Engineering, Guangdong University of Technology, Guangzhou 510006, China, and also with the Guangdong Provincial Key Laboratory of Future Networks of Intelligence, The Chinese University of Hong Kong at Shenzhen, Shenzhen 518172, China (e-mail: yaojp@gdut.edu.cn; yangzeyugdut@qq.com).
+
+Zai Yang is with the School of Mathematics and Statistics, Xi’an Jiaotong University, Xi’an 710049, China (e-mail: yangzai@xjtu.edu.cn).
+
+Jie Xu is with the School of Science and Engineering, Shenzhen Future Network of Intelligence Institute, and the Guangdong Provincial Key Laboratory of Future Networks of Intelligence, The Chinese University of Hong Kong at Shenzhen, Shenzhen 518172, China (e-mail: xujie@cuhk.edu.cn).
+
+Tony Q. S. Quek is with the Information Systems Technology and Design Pillar, Singapore University of Technology and Design, Singapore 487372 (e-mail: tonyquek@sutd.edu.sg).
+
+Digital Object Identifier 10.1109/LWC.2025.3588758 hardware, and energy resources. However, in remote regions, such as rural macro areas, or during emergency situations like post-earthquake scenarios or maritime incidents, deploying ground-based BSs can be challenging or even infeasible due to infrastructural limitations and accessibility issues. With recent advancements in uncrewed aerial vehicle (UAV) technology, the exploitation of UAVs has attracted growing interests to provide ISAC services from the sky, in which the UAVs’ controllable mobility in the three-dimensional (3D) space is utilized, such that UAVs can approach sensing targets and communication users to enhance the ISAC performance (see, e.g., [2], [3], [4], [5]).
+
+Nevertheless, owing to the inherent broadcast characteristics of wireless transmissions, communication and sensing signals in ISAC systems are susceptible to interception, which poses significant security challenges for both functionalities. To address communication security concerns, physical-layer security (PLS) has been proposed as an effective approach by leveraging the wireless channel properties [6]. The core idea of these works is to propose an ISAC design to leverage artificial noise (AN) for not only interfering with the eavesdropper but also performing the target sensing, thus enhancing the communication security (see, e.g., [7], [8], [9]).
+
+On the other hand, there have been only a handful of prior works addressing the sensing security issue in ISAC systems. For instance, the work [10] considered a communication user acting as a sensing eavesdropper, in which the mutual information (MI) of the authorized sensing receiver is maximized via the joint beamforming design, while ensuring that the MI of the eavesdropper remains below a given threshold. Furthermore, the paper [11] was the first to jointly consider both PLS and sensing security by focusing on a secure cell-free ISAC system, where several ISAC transmitters collaboratively transmit confidential data to several legitimate communication receivers while conducting target detection under the threat of both communication and sensing eavesdroppers.
+
+Different from prior works that focus on communication secrecy or treat sensing and communication eavesdroppers separately, this letter studies a new UAV-enabled secure ISAC system. In this system, an aerial dual-functional BS delivers secure data to a legitimate communication receiver while simultaneously performing target sensing, and an eavesdropper attempts to intercept both the communication and sensing signals. In contrast to the conventional secure ISAC designs (e.g., [10], [11]), we exploit the UAV trajectory optimization together with the transmit information and sensing beamforming for enhancing the security performance. In particular, we maximize the average secrecy rate at the legitimate communication receiver, while ensuring the sensing performance requirements, subject to the UAV power and practical flight constraints, as well as the sensing security constraints. Notably, while the radar signal serves as undesired interference for the eavesdropper from a communication security perspective, it becomes the desired sensing signal for the eavesdropper that can be exploited for sensing interception. This thus introduces a trade-off between communication and sensing security, which distinguishes our model from prior studies that primarily focus on communication secrecy or treat sensing and communication eavesdroppers separately. To tackle the formulated non-convex problem, we develop an effective approach that leverages a combination of alternating optimization (AO), successive convex approximation (SCA), and semidefinite relaxation (SDR). Lastly, we provide numerical results to demonstrate the efficiency of the proposed method.
+
+# II. SYSTEM MODEL
+
+We focus on a fixed-wing UAV-enabled secure ISAC system, where an aerial BS simultaneously transmits data to a legitimate communication user (denoted as u) and conducts wireless sensing towards a target (designated as t) on the ground, in the presence of a dual-functional eavesdropper (referred to as e) intercepting both communication and sensing information. We assume that the UAV is equipped with a uniform linear array (ULA) consisting of M antennas, arranged in a vertical orientation with respect to the horizontal plane with a constant altitude D. In contrast, all other nodes each have only one antenna. We consider a 3D Cartesian coordinate system, where the user, the target, and the eavesdropper on the ground with altitude 0 are fixed at horizontal locations $\begin{array} { r } { \pmb { \mathscr { s } } _ { u } = ( x _ { u } , y _ { u } ) , \pmb { \mathscr { s } } _ { t } = ( x _ { t } , y _ { t } ) } \end{array}$ , and $\begin{array} { r } { \pmb { s } _ { e } = ( x _ { e } , y _ { e } ) } \end{array}$ , respectively. s s sWe assume that the UAV has precise prior knowledge of the positions of both the legitimate ground nodes and the eavesdropper.1 This assumption simplifies the joint design of UAV trajectory and beamforming to offer valuable design insights. In practical scenarios, the UAV can acquire the ground nodes’ locations through direct reporting from the nodes themselves. As for the eavesdropper, its position may be inferred by detecting its signal emissions (if it operates outside the UAV’s network) or obtained from a centralized network controller (when it is part of the same network infrastructure).2
+
+We consider a service duration T divided into N equal time slots, each with a duration of $t _ { s } ~ = ~ T / N$ . The time slot length is sufficiently short to ensure that the motion states of the UAV remain unchanged within each slot. Let $\mathcal { N }$ - $\{ 1 , \ldots , N \}$ denote the collection of slots. Therefore, at slot 1Note that our proposed framework can be extended to accommodate scenarios where the UAV has only partial or imperfect knowledge of the locations of GRs and/or eavesdroppers. This can be achieved by incorporating robust optimization techniques that account for location uncertainties. Specifically, bounded location error models can be employed, where the actual positions of the nodes are assumed to lie within known uncertainty regions around their estimated locations. Such models have been effectively utilized in prior works to design robust UAV trajectories and transmission strategies that ensure performance guarantees even in the presence of location estimation errors (see, e.g., [6]).
+
+2Even if an eavesdropper operates passively, detection remains feasible since passive receivers inevitably leak minimal radio frequency (RF) energy from their local oscillators [12]. Additionally, the UAVs can leverage the onboard optical cameras and synthetic aperture radar systems to facilitate the detection and localization of potential eavesdroppers through advanced image processing and pattern recognition techniques [13].
+
+$n \in \mathcal N ,$ , we assume that the $\mathrm { U A V } \mathbf { \dot { s } }$ horizontal coordinate is $\pmb \rho [ n ] = ( x [ n ] , y [ n ] )$ . Let ${ \pmb \rho } _ { \mathrm { I } } = ( x _ { \mathrm { I } } , y _ { \mathrm { I } } )$ and ${ \pmb \rho } _ { \mathrm { F } } = ( x _ { \mathrm { F } } , y _ { \mathrm { F } } )$ signify the starting and ending horizontal locations of the UAV. Let $v _ { \mathrm { m a x } }$ and $V _ { \operatorname* { m a x } } = v _ { \operatorname* { m a x } } t _ { s }$ represent the maximum UAV speed and the maximum displacement within a single time slot, respectively. Consequently, we impose the following UAV flight constraints, given as
+
+$$
+\boldsymbol {\rho} [ 1 ] = \boldsymbol {\rho} _ {\mathrm{I}}, \boldsymbol {\rho} [ N ] = \boldsymbol {\rho} _ {\mathrm{F}}, \tag {1}
+$$
+
+$$
+\left\| \boldsymbol {\rho} [ n + 1 ] - \boldsymbol {\rho} [ n ] \right\| \leq V _ {\max}, \forall n \in \mathcal {N}. \tag {2}
+$$
+
+Let $a _ { i } [ n ]$ represent the intended communication signal for the user at slot n, $\pmb { b } [ n ] \in \mathbb { C } ^ { M \times 1 }$ denote the associated transmit bbeamforming vector, and $\pmb { a } _ { s } [ n ] \in \mathbb { C } ^ { M \times 1 }$ denote the specific awireless sensing signal at slot n, which simultaneously serves as AN to interfere with the eavesdropper. We assume that the communication signal $a _ { i } [ n ]$ is independently drawn from a circularly symmetric complex Gaussian (CSCG) distribution. Additionally, the wireless sensing signal ${ \pmb a } _ { s } [ n ]$ is treated as aan independent random vector with a mean of zero and a covariance matrix $\pmb { A _ { s } } [ n ] = \mathbb { E } \big ( \pmb { a _ { s } } [ n ] \pmb { a } _ { s } ^ { \mathrm { H } } [ n ] \big ) \succeq \mathbf { 0 } \ [ 2 ]$ , where A a aE(·) denotes the expectation operator and ${ \pmb a } _ { s } ^ { \mathrm { H } } [ n ]$ represents its conjugate transpose.
+
+At each slot $n \in \mathcal N .$ , we denote $\Phi _ { o } ( \pmb { \rho } [ n ] ) , o \in \{ u , e , t \}$ , as the steering vector associated with the UAV at location ${ \pmb \rho } [ n ]$ towards ground node o as
+
+$$
+\Phi_ {o} (\boldsymbol {\rho} [ n ]) = \left[ \phi_ {o 1} [ n ], \dots \phi_ {o m} [ n ], \dots , \phi_ {o M} [ n ] \right] ^ {\mathrm{T}}, \tag {3}
+$$
+
+where $\begin{array} { l l l } { { \phi _ { o m } [ n ] _ { _ { \Sigma } } \ = \ } } & { { e ^ { j 2 \pi { \frac { k } { \lambda } } ( m - 1 ) \cos \theta _ { o } ( \rho [ n ] ) } ; } } & { { \theta _ { o } ( \pmb { \rho [ n ] } ) } } \end{array} \ =$ arccos $\overline { { \sqrt { | | \pmb { \rho } [ n ] - \pmb { s } _ { o } | | ^ { 2 } + { \cal D } ^ { 2 } } } }$ denotes the angle of departure (AoD) sassociated with the location $s _ { o } ; \lambda$ refers to the carrier wavelength; $k ~ = ~ \lambda / 2$ sindicates the distance between two adjacent antennas. Based on the empirical findings reported in [14] and the standardized models in Third Generation Partnership Project (3GPP) TR 36.777 [15], we assume that the UAV operates at a sufficiently high altitude such that the A2G links are predominantly LoS. Accordingly, we adopt a channel model characterized by LoS path loss combined with a directional steering vector. Then, the channel vector between the UAV and node $o \in \{ u , e , t \}$ at slot $n \in \mathcal N$ is given as
+
+$$
+\boldsymbol {g} _ {o} (\boldsymbol {\rho} [ n ]) = \sqrt {\beta_ {0} d _ {o} ^ {- 2} (\boldsymbol {\rho} [ n ])} \Phi_ {o} (\boldsymbol {\rho} [ n ]), \tag {4}
+$$
+
+where $\beta _ { 0 }$ represents the channel power gain at a reference distance of 1 meter, $d _ { o } ( \pmb { \rho } [ n ] ) = \sqrt { | | \pmb { \rho } [ n ] - \pmb { s } _ { o } | | ^ { 2 } + D ^ { 2 } }$ is the distance from the UAV to the location ${ \pmb s } _ { o } .$
+
+sAccordingly, the received signal at location $\mathbf { \Sigma } _ { { \pmb { s } } _ { o } , o } \in \Sigma ^ { }$ $\{ u , e , t \}$ , at slot $n \in \mathcal N$ is expressed as
+
+$$
+z _ {o} [ n ] = \boldsymbol {g} _ {o} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) (\boldsymbol {b} [ n ] a _ {i} [ n ] + \boldsymbol {a} _ {s} [ n ]) + v _ {o} [ n ], \tag {5}
+$$
+
+where $v _ { o } [ n ]$ represents the additive white Gaussian noise $( \mathrm { A W G N } )$ at the location $s _ { o } \gamma _ { s }$ receiver, characterized as a CSCG srandom variable with a mean of zero and a variance of $\sigma ^ { 2 }$ .
+
+The received signal-to-interference-plus-noise ratio (SINR) at the user and the eavesdropper at slot n are respectively given as
+
+$$
+\boldsymbol {\gamma} _ {u} [ n ] = \frac {\left| \boldsymbol {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {b} [ n ] \right| ^ {2}}{\boldsymbol {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {A} _ {s} [ n ] \boldsymbol {g} _ {u} (\boldsymbol {\rho} [ n ]) + \sigma^ {2}}, \tag {6}
+$$
+
+$$
+\boldsymbol {\gamma} _ {e} [ n ] = \frac {\left| \boldsymbol {g} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {b} [ n ] \right| ^ {2}}{\boldsymbol {g} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {A} _ {s} [ n ] \boldsymbol {g} _ {e} (\boldsymbol {\rho} [ n ]) + \sigma^ {2}}. \tag {7}
+$$
+
+Then, the achievable rates from the UAV to the user and the eavesdropper (in bps/Hz) at slot n are formulated as
+
+$$
+R _ {u} [ n ] = \log_ {2} (1 + \boldsymbol {\gamma} _ {u} [ n ]), \tag {8}
+$$
+
+$$
+R _ {e} [ n ] = \log_ {2} (1 + \boldsymbol {\gamma} _ {e} [ n ]). \tag {9}
+$$
+
+Consequently, the secrecy rate from the UAV to the user at slot n is [6]
+
+$$
+R _ {s} [ n ] = \left[ \log_ {2} (1 + \boldsymbol {\gamma} _ {u} [ n ]) - \log_ {2} (1 + \boldsymbol {\gamma} _ {e} [ n ]) \right] ^ {+}, \tag {10}
+$$
+
+where $[ u ] ^ { + } \triangleq \operatorname* { m a x } ( u , 0 )$ .
+
+In the considered ISAC system, the UAV intends to detect the target. To properly illuminate the target, the transmit beampattern gain $\zeta _ { t } [ n ]$ at the specified sensing location must meet a threshold $\Gamma _ { t } .$ , which is proportional to the square of the distance between the UAV and the target, given as [2], [16]
+
+$$
+\begin{array}{l} \zeta_ {t} [ n ] = \mathbb {E} \left[ | \Phi_ {t} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) (\boldsymbol {b} [ n ] a _ {i} [ n ] + \boldsymbol {a} _ {s} [ n ]) | ^ {2} \right] \\ = \Phi_ {t} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \left(\boldsymbol {b} [ n ] \boldsymbol {b} ^ {\mathrm{H}} [ n ] + \boldsymbol {A} _ {s} [ n ]\right) \Phi_ {t} (\boldsymbol {\rho} [ n ]) \\ \geq \Gamma_ {t} d _ {t} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}. \tag {11} \\ \end{array}
+$$
+
+Similarly, to ensure sensing security, the transmit beampattern gain $\zeta _ { e } [ n ]$ at the eavesdropper should not exceed a specific threshold $\Gamma _ { e } ,$ which is proportional to the square of the distance between the UAV and the eavesdropper, given as [2], [16]
+
+$$
+\begin{array}{l} \zeta_ {e} [ n ] = \mathbb {E} \left[ \left| \Phi_ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) (\boldsymbol {b} [ n ] a _ {i} [ n ] + \boldsymbol {a} _ {s} [ n ]) \right| ^ {2} \right] \\ = \Phi_ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \left(\boldsymbol {b} [ n ] \boldsymbol {b} ^ {\mathrm{H}} [ n ] + \boldsymbol {A} _ {s} [ n ]\right) \Phi_ {e} (\boldsymbol {\rho} [ n ]) \\ \leq \Gamma_ {e} d _ {e} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}. \tag {12} \\ \end{array}
+$$
+
+This letter focuses on the joint optimization of the communication beamforming vectors $\{ b [ n ] \}$ , the sensing covariance matrices $\{ A _ { s } [ n ] \}$ b, and the UAV trajectory $\{ \pmb { \rho } [ n ] \}$ to maximize Athe average secrecy rate, subject to sensing security constraints, sensing constraints, power constraints, and UAV trajectory constraints. The problem is formulated as
+
+$$
+\text {(P1)} \colon \max _ {\{\boldsymbol {b} [ n ], \boldsymbol {A} _ {s} [ n ], \boldsymbol {\rho} [ n ] \}} \frac {1}{N} \sum_ {n = 1} ^ {N} R _ {s} [ n ]
+$$
+
+$$
+\text { s.t. } \quad \boldsymbol {\rho} [ 1 ] = \boldsymbol {\rho} _ {\mathrm{I}}, \quad \boldsymbol {\rho} [ N ] = \boldsymbol {\rho} _ {\mathrm{F}}, \tag {13a}
+$$
+
+$$
+\left\| \boldsymbol {\rho} [ n + 1 ] - \boldsymbol {\rho} [ n ] \right\| \leq V _ {\max}, \forall n \in \mathcal {N}, \tag {13b}
+$$
+
+$$
+\zeta_ {t} [ n ] \geq \Gamma_ {t} d _ {t} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}, \tag {13c}
+$$
+
+$$
+\zeta_ {e} [ n ] \leq \Gamma_ {e} d _ {e} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}, \tag {13d}
+$$
+
+$$
+\left| \left| \boldsymbol {b} [ n ] \right| \right| ^ {2} + \operatorname{tr} (\boldsymbol {A} _ {s} [ n ]) \leq P _ {\max}, \forall n \in \mathcal {N}, \tag {13e}
+$$
+
+where $P _ { \mathrm { m a x } }$ represents the UAV’s maximum allowable power level. Since the objective function, along with constraints (13c) and (13d) are non-convex, problem (P1) is inherently challenging to be solved directly.
+
+# III. PROPOSED SOLUTION
+
+This section presents an effective approach for solving problem (P1) by leveraging convex optimization, SDR, and SCA techniques.
+
+# A. Optimization of Information and Sensing Beamforming
+
+We first address the optimization of the communication beamforming vectors $\{ b [ n ] \}$ and the sensing covariance matrices $\{ A _ { s } [ n ] \}$ while keeping the UAV trajectory $\{ \pmb { \rho } [ n ] \}$ Afixed. Under this consideration, problem (P1) is simplified to
+
+$$
+\text {(P2)} \colon \max _ {\{\boldsymbol {b} [ n ], \boldsymbol {A} _ {s} [ n ] \}} \frac {1}{N} \sum_ {n = 1} ^ {N} R _ {s} [ n ], \text {   s.t.   (13c)   ,   (13d)   ,   and   (13e)   }.
+$$
+
+We define $\begin{array} { r } { B [ n ] = b [ n ]  { b ^ { \mathrm { H } } } [ n ] } \end{array}$ such that rank $( B [ n ] ) \leq 1$ and $B [ n ] \succeq \mathbf { 0 }$ B b b B. Then problem (P2) is equivalently transformed as
+
+$$
+\text {(P3)} \colon \max _ {\{\boldsymbol {b} [ n ], \boldsymbol {A} _ {s} [ n ] \}} \frac {1}{N} \sum_ {n = 1} ^ {N} (R _ {u} [ n ] - R _ {e} [ n ]) \tag {P3}
+$$
+
+$$
+\text { s.t. } \quad \operatorname{rank} (B [ n ]) \leq 1, B [ n ] \succeq \mathbf {0}, \forall n \in \mathcal {N}, \tag {14a}
+$$
+
+$$
+\Phi_ {t} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) (B [ n ] + \boldsymbol {A} _ {s} [ n ]) \Phi_ {t} (\boldsymbol {\rho} [ n ]) \geq \Gamma_ {t} d _ {t} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}, \tag {14b}
+$$
+
+$$
+\Phi_ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) (B [ n ] + \boldsymbol {A} _ {s} [ n ]) \Phi_ {e} (\boldsymbol {\rho} [ n ]) \leq \Gamma_ {e} d _ {e} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}, (1 4 c)
+$$
+
+$$
+\operatorname{tr} (\boldsymbol {B} [ n ]) + \operatorname{tr} (\boldsymbol {A} _ {s} [ n ]) \leq P _ {\max}, \forall n \in \mathcal {N}. \tag {14d}
+$$
+
+Problem (P3) remains non-convex due to the non-concave objective function and the rank-one constraint. To address this, we apply the SDR approach by omitting the rank-one constraint in (14a). Subsequently, we handle the non-concave objective function of problem (P3) by applying the SCA technique to achieve a convergent solution iteratively. At each iteration $l \ \geq \ 1 .$ , we derive a lower bound of the objective function under given local point $B ^ { ( l ) } [ n ]$ and $A _ { s } ^ { ( l ) } [ n ]$ through Bthe first-order Taylor expansion, given as
+
+$$
+\begin{array}{l} \hat {R} ^ {(l)} [ n ] \triangleq \log_ {2} \left(\operatorname{tr} \left(\boldsymbol {g} _ {u} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {B} [ n ]\right) \right. \\ + \operatorname{tr} \left(\boldsymbol {g} _ {u} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {A} _ {s} [ n ]\right) + \sigma^ {2}) \\ + \log_ {2} \left(\operatorname{tr} \left(\boldsymbol {g} _ {e} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {A} _ {s} [ n ]\right) + \sigma^ {2}\right) \\ \left. - \left(\delta_ {u} ^ {(l)} [ n ] + \operatorname{tr} \left(\Lambda_ {u} ^ {(l)} [ n ] \left(\boldsymbol {A} _ {s} [ n ] - \boldsymbol {A} _ {s} ^ {(l)} [ n ]\right)\right)\right) \right. \\ - \left(\delta_ {e} ^ {(l)} [ n ] + \operatorname{tr} \left(\Lambda_ {e} ^ {(l)} [ n ] (\boldsymbol {B} [ n ] - \boldsymbol {B} ^ {(l)} [ n ])\right) \right. \\ + \operatorname{tr} \left(\Lambda_ {e} ^ {(l)} [ n ] (\boldsymbol {A} _ {s} [ n ] - \boldsymbol {A} _ {s} ^ {(l)} [ n ])\right), \tag {15} \\ \end{array}
+$$
+
+where
+
+$$
+\delta_ {u} ^ {(l)} [ n ] = \log_ {2} \left(\operatorname{tr} \left(\boldsymbol {g} _ {u} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {A} _ {s} ^ {(l)} [ n ]\right) + \sigma^ {2}\right), \tag {16}
+$$
+
+$$
+\Lambda_ {u} ^ {(l)} [ n ] = \frac {\log_ {2} e \mathbf {g} _ {u} (\boldsymbol {\rho} [ n ]) \mathbf {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ])}{\operatorname{tr} \left(\mathbf {g} _ {u} (\boldsymbol {\rho} [ n ]) \mathbf {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \mathbf {A} _ {s} ^ {(l)} [ n ]\right) + \sigma^ {2}}, \tag {17}
+$$
+
+$$
+\delta_ {e} ^ {(l)} [ n ] = \log_ {2} \left(\operatorname{tr} \left(\boldsymbol {g} _ {e} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {B} ^ {(l)} [ n ]\right) \right.
+$$
+
+$$
++ \operatorname{tr} \left(\boldsymbol {g} _ {e} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {A} _ {s} ^ {(l)} [ n ]\right) + \sigma^ {2}), \tag {18}
+$$
+
+$$
+\begin{array}{l} \Lambda_ {e} ^ {(l)} [ n ] = \left(\log_ {2} e \mathbf {\rho} _ {e} (\boldsymbol {\rho} [ n ]) \mathbf {\rho} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ])\right) \\ \div \left(\operatorname{tr} \left(\boldsymbol {g} _ {e} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {B} ^ {(l)} [ n ]\right) \right. \\ + \operatorname{tr} \left(\boldsymbol {g} _ {e} (\boldsymbol {\rho} [ n ]) \boldsymbol {g} _ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {A} _ {s} ^ {(l)} [ n ]\right) + \sigma^ {2}). \tag {19} \\ \end{array}
+$$
+
+Consequently, we approximate problem (P3) as a convex problem and solve it iteratively. Note that with the converged solution $B ^ { * } [ n ]$ and $A _ { s } ^ { * } [ n ]$ obtained by the SCA technique, we B Acan always construct an alternative rank-one solution achieving the same optimal objective, given by
+
+$$
+\boldsymbol {b} [ n ] = \frac {\boldsymbol {B} ^ {*} [ n ] \boldsymbol {g} _ {u} (\boldsymbol {\rho} [ n ])}{\sqrt {\boldsymbol {g} _ {u} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {B} ^ {*} [ n ] \boldsymbol {g} _ {u} (\boldsymbol {\rho} [ n ])}}, \tag {20}
+$$
+
+$$
+\bar {\boldsymbol {B}} [ n ] = \overline {{{\boldsymbol {b}}}} [ n ] \overline {{{\boldsymbol {b}}}} ^ {\mathrm{H}} [ n ], \tag {21}
+$$
+
+$$
+\bar {\boldsymbol {A}} _ {s} [ n ] = \boldsymbol {B} ^ {*} [ n ] + \boldsymbol {A} _ {s} ^ {*} [ n ] - \bar {\boldsymbol {B}} [ n ], \tag {22}
+$$
+
+where rank $\bar { B } [ n ] ) ~ = ~ 1$ . Owing to space restrictions, the Bequivalence of such a solution can be referred to in the online technical report at https://arxiv.org/abs/2412.19748.
+
+# B. UAV Trajectory Optimization
+
+With the information and sensing beamforming $\{ b [ n ] \}$ and $\{ A _ { s } [ n ] \}$ bfixed, we proceed to optimize the UAV trajectory $\{ \pmb { \rho } [ n ] \}$ , for which problem (P1) is reduced to
+
+$$
+\text {(P4)} \colon \max _ {\{\boldsymbol {\rho} [ n ] \}} \frac {1}{N} \sum_ {n = 1} ^ {N} R _ {s} [ n ]
+$$
+
+$$
+\text { s.t. } \Phi_ {t} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {E} [ n ] \Phi_ {t} (\boldsymbol {\rho} [ n ]) \geq \Gamma_ {t} d _ {t} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}, \tag {23a}
+$$
+
+$$
+\Phi_ {e} ^ {\mathrm{H}} (\boldsymbol {\rho} [ n ]) \boldsymbol {E} [ n ] \Phi_ {e} (\boldsymbol {\rho} [ n ]) \leq \Gamma_ {e} d _ {e} ^ {2} (\boldsymbol {\rho} [ n ]), \forall n \in \mathcal {N}, \tag {23b}
+$$
+
+$$
+(1) \text {   and   } (2),
+$$
+
+where $\pmb { { \cal E } } \big [ n \big ] = { \pmb { b } } \big [ n \big ] { \pmb { b } } ^ { \mathrm { H } } \big [ n \big ] + { \pmb { A } } _ { s } \big [ n \big ]$ is introduced for notational E b b Aconvenience. Problem (P4) is non-convex due to the nonconvexity of the objective function in (P4), constraint (23a), and constraint (23b). To address this, we introduce the trustregion-based SCA method, which is executed iteratively. Considering a specific iteration l with a local trajectory point $\pmb { \rho } ^ { ( l ) } [ \bar { n } ]$ , we approximate the objective function in (P4), constraint (23a), and constraint (23b) applying the standard first-order Taylor expansion similarly to that in Section III-A, for which the details are omitted and can be found in the online technical report at https://arxiv.org/abs/2412.19748.
+
+To maintain the accuracy of the approximation, we introduce a set of trust region constraints as
+
+$$
+\left| \left| \boldsymbol {\rho} ^ {(l)} [ n ] - \boldsymbol {\rho} ^ {(l - 1)} [ n ] \right| \right| \leq \psi^ {(l)}, \forall n \in \mathcal {N}, \tag {24}
+$$
+
+where $\psi ^ { ( l ) }$ represents the trust region’s radius. Notably, theoretically, reduce the radius $\psi ^ { ( l ) }$ to a sufficiently small value, which guarantees the convergence of the iterative procedure.
+
+Ultimately, by substituting the non-concave objective function of problem (P4) and the non-convex constraints (23a) and (23b) with their respective approximate forms and incorporating the trust region constraints in (24), we derive the convex approximation of problem (P4), which can be efficiently solved using CVX.
+
+To sum up, we solve for the communication beamforming vectors $\{ b [ n ] \}$ , the sensing covariance matrices $\{ A _ { s } [ n ] \}$ and bthe UAV trajectory $\{ \pmb { \rho } [ n ] \}$ Ain an alternating manner. Since both subproblems can be guaranteed to converge, we finally obtain an efficient solution to problem (P1), which has a total computation complexity $\bar { \mathbb { O } } ( L _ { \mathrm { A L T } } ( L _ { \mathrm { S C A 1 } } M ^ { 3 . 5 } N ^ { 3 . 5 } \ +$ $L _ { \mathrm { S C A 2 } } N ^ { 3 . 5 } ) ,$ ), where $L _ { \mathrm { A L T } } , L _ { \mathrm { S C A 1 } }$ , and LSCA2 represent the iteration numbers for problem (P1), SCA for problem (P3), and SCA for problem (P4), respectively.
+
+# IV. NUMERICAL RESULTS
+
+In this section, we present numerical results to assess the effectiveness of the proposed algorithm. Unless stated otherwise, the simulation settings are as follows: $\begin{array} { r l r } { \rho _ { I } } & { = } & { [ 3 0 0 , 4 0 0 , 2 0 0 ] ^ { \mathrm { T } } ~ \mathrm { m } , ~ \rho _ { F } ~ = ~ [ \bar { 3 } 0 0 , 6 0 0 , 2 0 0 ] ^ { \mathrm { T } } ~ \mathrm { m } , } \end{array}$ $\begin{array} { r c l c r } { { \dot { s _ { t } } ~ = ~ [ \dot { 2 } 5 0 , 4 8 0 , 0 ] ^ { \mathrm { T } } ~ \mathrm {  ~ m ~ } , ~ s _ { u } ~ = ~ [ 2 5 0 , \dot { 5 } 2 0 , 0 ] ^ { \mathrm { T } } ~ \mathrm {  ~ m ~ } , ~ s _ { e } ~ = ~ } } \end{array}$ $[ 3 5 0 , 5 0 \dot { 0 } , 0 ] ^ { \mathrm { T } }$ m, $T = 1 2 \mathrm { ~ s , ~ } t _ { s } = 0 . 5 \mathrm { ~ s , ~ } N = 2 4 \mathrm { , ~ } v _ { \operatorname* { m a x } } =$ $2 5 \mathrm { ~ \ m / s } , \bar { M } \ = \ 4 , \ \Gamma _ { t } \ = \ \Gamma _ { e } \ = \ 1 0 ^ { - 6 } , P _ { \mathrm { m a x } } \ = \ 1 \mathrm { ~ W ~ }$ , $\beta _ { 0 } = - 3 0$ dBm, and $\sigma ^ { 2 } = - 9 0$ dBm. To facilitate comparison, we evaluate three baseline approaches as follows.
+
+![](images/661913f11a4383c42624586cec5ace6068c1ed7697a79b617230f392931412cc.jpg)
+
+<details>
+<summary>line</summary>
+
+| x(m) | Initial Inspection | Proposed scheme | Benchmark without sensing security |
+|------|-------------------|-----------------|------------------------------------|
+| 200  | 540               | 540             | 540                                |
+| 250  | 560               | 560             | 560                                |
+| 300  | 600               | 420             | 420                                |
+</details>
+
+Fig. 1. Trajectories obtained by our proposed design and the benchmark without sensing security.
+
+![](images/baaa2c81b5b5db73b413e322913a136fcfd69cbbb0d5ea1699ce8dde441bbbe1.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time slot n | Proposed scheme (W) | Without sensing security (W) |
+|---|---|---|
+| 2 | 0.15 | 0.6 |
+| 4 | 0.05 | 0.5 |
+| 6 | 0.0 | 0.3 |
+| 8 | 0.0 | 0.1 |
+| 10 | 0.0 | 0.0 |
+| 12 | 0.0 | 0.0 |
+| 14 | 0.0 | 0.0 |
+| 16 | 0.0 | 0.0 |
+| 18 | 0.0 | 0.0 |
+| 20 | 0.0 | 0.1 |
+| 22 | 0.1 | 0.3 |
+| 24 | 0.2 | 0.5 |
+</details>
+
+Fig. 2. Power allocation between sensing and communication signals over time by our proposed design and the benchmark without sensing security.
+
+1) Straight-flight trajectory with beamforming optimization: The UAV adopts the straight-flight trajectory, traveling at a uniform speed $| | \pmb { \rho } _ { I } - \pmb { \rho } _ { F } | | / T$ from the starting position to the destination. Based on the straight-flight trajectory, the UAV dynamically adjusts the transmit information and sensing beamforming by solving problem (P2).
+
+2) Trajectory design with maximum ratio transmission (MRT) beamforming: The UAV optimizes the trajectory by solving problem (P4) by considering the simple MRT information beamforming with $\begin{array} { r l } { \pmb { b } [ n ] } & { { } = } \end{array}$ $\sqrt { \operatorname* { m i n } \left( P _ { \operatorname* { m a x } } , P _ { c } \right) } \pmb { g } _ { u } ( \pmb { \rho } [ n ] ) / | | \pmb { g } _ { u } ( \pmb { \rho } [ n ] ) | |$ , $\forall n \in { \mathcal { N } } .$ b, in which $P _ { c }$ g gis the maximum transmission power that satisfies the sensing security threshold at the eavesdropper.
+
+3) Benchmark without sensing security: The UAV jointly optimizes its trajectory and the beamforming in problem (P1) by ignoring the sensing security constraint (13d).
+
+Fig. 1 compares the trajectory obtained by our proposed design and the benchmark without sensing security. In both schemes, the UAV is observed to follow arc-like paths that move towards the legitimate user and target while avoiding the eavesdropper, in order to prevent information and sensing leakage. It is also observed that the trajectory obtained by the proposed design is closer to the legitimate nodes. This is because when sensing security is considered, most of the power is concentrated in the communication signal and reused for target sensing as shown in Fig. 2. Compared to the benchmark without sensing security, the beam is not as focused, so the UAV needs to be closer to the two legitimate nodes in order to cover both.
+
+Fig. 3 illustrates the relationship between the antenna number M and the average secrecy rate over 100 Monte Carlo runs, where the locations of the eavesdropper and ground nodes are randomly generated within the desirable region [200, $4 0 0 ] \times [ 4 0 0 , 6 0 0 ]$ . It is observed that the average secrecy rate achieved by all four schemes increases as the antenna number grows, since additional antennas provide more degrees of freedom and array gains. By directing energy more accurately toward intended receivers and minimizing leakage to potential eavesdroppers, the system’s overall security performance is significantly bolstered. It is also observed that our proposed scheme significantly outperforms the straight-flight trajectory with beamforming optimization scheme and trajectory design with MRT beamforming scheme. This superiority stems from the synergistic integration of trajectory planning and beamforming design, which allows the UAV to adapt its path and signal transmission dynamically in response to environmental conditions and potential threats. By jointly optimizing these parameters, the system can maintain stronger legitimate links while effectively mitigating the risk of eavesdropping, which leads to enhanced secrecy rates compared to schemes that optimize these aspects in isolation. Additionally, the observed disparity in secrecy rate between our proposed design and the benchmark without sensing security highlights the trade-off between achieving high secrecy rates and ensuring robust protection against sensing eavesdropping. Incorporating sensing security measures necessitates additional resource allocation and system constraints, which can limit the maximum achievable secrecy rate. However, this trade-off is essential to safeguard sensitive information against adversaries attempting to exploit sensing mechanisms for eavesdropping.
+
+![](images/fb227c65a7cc56881e08938e21d2630537187e77cb872f062e8044ad18f6aadb.jpg)
+
+<details>
+<summary>line</summary>
+
+| Antenna number M | Proposed scheme | Benchmark without sensing security | Straight-light trajectory with beamforming optimization |
+|---|---|---|---|
+| 4 | 3.0 | 2.5 | 2.0 |
+| 6 | 4.5 | 4.0 | 3.5 |
+| 8 | 5.5 | 5.0 | 4.5 |
+| 10 | 6.0 | 5.5 | 5.0 |
+| 12 | 6.5 | 6.0 | 5.5 |
+| 14 | 7.0 | 6.5 | 6.0 |
+| 16 | 7.5 | 7.0 | 6.5 |
+| 18 | 8.0 | 7.5 | 7.0 |
+</details>
+
+Fig. 3. Average secrecy rate versus the antenna number M.
+
+![](images/758e289f2e87ac6e0350d4a09fe4b4aee228b18edd975c311e16d72597ca856d.jpg)
+
+<details>
+<summary>heatmap</summary>
+
+| Point Type | Value       |
+|------------|-------------|
+| Gain       | 0.88543     |
+| Gain       | 0.0027994   |
+| SINR       | 17.4772     |
+| SINR       | 0.027372    |
+</details>
+
+(a) Proposed scheme
+
+![](images/113a289949d95f8703943ccc89b5598d8e6daafdbfb89828419bd5e284749aaa.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| Point Type | x(m) | y(m) | SINR     |
+|------------|------|------|----------|
+| Blue X     | 240  | 520  | 20.2598  |
+| Red X      | 250  | 480  | 1.112    |
+| Diamond    | 350  | 400  | 0.017508 |
+</details>
+
+(b) Benchmark without sensing security   
+Fig. 4. Achieved beampattern gain at time slot 10.
+
+Fig. 4 presents the beampattern gain at time slot 10 in space by our proposed design and the benchmark without sensing security. It is observed that both the user and target are within the high-gain region, while the eavesdropper is located in the lowgain region, thus ensuring communication and sensing security. It is also observed that by comparing the two sub-figures, the SINR and beampattern gain of the user and eavesdropper under the benchmark without sensing security are higher than those of the proposed design. When sensing security is not considered, the primary objective focuses on enhancing the disparity in
+
+the rate between the legitimate and eavesdropping channels to enhance the secrecy rate. This results in a higher secrecy rate but also introduces potential sensing security vulnerabilities, which aligns with the findings in Fig. 1.
+
+# V. CONCLUSION
+
+This letter considered a UAV-enabled secure ISAC system, where an aerial dual-functional BS simultaneously performs secure communication with a communication user and performs radar sensing of a target, in the presence of an eavesdropper intercepting both information and sensing. We focused on maximizing the average achievable secrecy rate through the optimization of the UAV trajectory, as well as the transmit information and sensing beamforming. To extend our approach to other configurations (e.g., with multiple users over complex dynamic environments) presents promising avenues for future research. This includes developing real-time adaptive algorithms to handle dynamic environments, incorporating robust optimization techniques to address uncertainties in CSI, and accounting for realistic UAV mobility and energy constraints. Furthermore, exploring the integration of multiple antennas and pursuing global optimality solutions could enhance system performance. These directions aim to improve the practical applicability and theoretical robustness of UAV-enabled secure ISAC systems.
+
+# REFERENCES
+
+[1] F. Liu et al., “Integrated sensing and communications: Toward dualfunctional wireless networks for 6G and beyond,” IEEE J. Sel. Areas Commun., vol. 40, no. 6, pp. 1728–1767, Mar. 2022.   
+[2] Z. Lyu et al., “Joint maneuver and beamforming design for UAV-enabled integrated sensing and communication,” IEEE Trans. Wireless Commun., vol. 22, no. 4, pp. 2424–2440, Apr. 2023.   
+[3] K. Meng et al., “UAV-enabled integrated sensing and communication: Opportunities and challenges,” IEEE Wireless Commun., vol. 31, no. 2, pp. 97–104, Apr. 2024.   
+[4] A. Khalili et al., “Efficient UAV hovering, resource allocation, and trajectory design for ISAC with limited backhaul capacity,” IEEE Trans. Wireless Commun., vol. 23, no. 11, pp. 17635–17650, Nov. 2024.   
+[5] A. Khalili et al., “Energy-aware resource allocation and trajectory design for UAV-enabled ISAC,” in Proc. IEEE Global Commun. Conf. (GLOBECOM), Dec. 2023, pp. 4193–4198.   
+[6] C. Zhong et al., “Secure UAV communication with cooperative jamming and trajectory control,” IEEE Commun. Lett., vol. 23, no. 2, pp. 286–289, Feb. 2019.   
+[7] J. Wu et al., “When UAVs meet ISAC: Real-time trajectory design for secure communications,” IEEE Trans. Veh. Technol., vol. 72, no. 12, pp. 16766–16771, Dec. 2023.   
+[8] Z. Ren et al., “Robust transmit beamforming for secure integrated sensing and communication,” IEEE Trans. Commun., vol. 71, no. 9, pp. 5549–5564, Sep. 2023.   
+[9] Y. Liu et al., “Secure rate maximization for ISAC-UAV assisted communication amidst multiple eavesdroppers,” IEEE Trans. Veh. Technol., vol. 73, no. 10, pp. 15843–15847, Oct. 2024.   
+[10] J. Zou et al., “Securing the sensing functionality in ISAC networks: An artificial noise design,” IEEE Trans. Veh. Tech., vol. 73, no. 11, pp. 17800–17805, Nov. 2024.   
+[11] Z. Ren et al., “Secure cell-free integrated sensing and communication in the presence of information and sensing eavesdroppers,” IEEE J. Sel. Areas Commun., vol. 42, no. 11, pp. 3217–3231, Nov. 2024.   
+[12] A. Mukherjee and A. L. Swindlehurst, “Detecting passive eavesdroppers in the MIMO wiretap channel,” in Proc. IEEE Int. Conf. Acoustics, Speech, Signal Process., Mar. 2012, pp. 2809–2812.   
+[13] B. Shang et al., “Unmanned aerial vehicle meets vehicle-to-everything in secure communications,” IEEE Commun. Mag., vol. 57, no. 10, pp. 98–103, Oct. 2019.   
+[14] X. Lin et al., “The sky is not the limit: LTE for unmanned aerial vehicles,” IEEE Commun. Mag., vol. 56, no. 4, pp. 204–210, Apr. 2018.   
+[15] “Study on enhanced LTE support for aerial vehicles; (Release 15),” 3GPP, Sophia Antipolis, France, Rep. TR 36.777, Dec. 2017.   
+[16] X. Liu et al., “Joint transmit beamforming for multiuser MIMO communications and MIMO radar,” IEEE Trans. Signal Process., vol. 68, pp. 3929–3944, 2020.

@@ -1,0 +1,1167 @@
+# BARGAIN-MATCH: A Game Theoretical Approach for Resource Allocation and Task Offloading in Vehicular Edge Computing Networks
+
+Zemin Sun, Student Member, IEEE, Geng Sun , Member, IEEE, Yanheng Liu , Jian Wang , Member, IEEE, and Dongpu Cao, Senior Member, IEEE
+
+Abstract—Vehicular edge computing (VEC) is emerging as a promising architecture of vehicular networks (VNs) by deploying the cloud computing resources at the edge of the VNs. However, efficient resource management and task offloading in the VEC network is challenging. In this work, we first present a hierarchical framework that coordinates the heterogeneity among tasks and servers to improve the resource utilization for servers and service satisfaction for vehicles. Moreover, we formulate a joint resource allocation and task offloading problem (JRATOP), aiming to jointly optimize the intra-VEC server resource allocation and inter-VEC server load-balanced offloading by stimulating the horizontal and vertical collaboration among vehicles, VEC servers, and cloud server. Since the formulated JRATOP is NP-hard, we propose a cooperative resource allocation and task offloading algorithm named BARGAIN-MATCH, which consists of a bargaining-based incentive approach for intra-server resource allocation and a matching method-based horizontal-vertical collaboration approach for interserver task offloading. Besides, BARGAIN-MATCH is proved to be stable, weak Pareto optimal, and polynomial complex. Simulation results demonstrate that the proposed approach achieves superior system utility and efficiency compared to the other methods, especially when the system workload is heavy.
+
+Index Terms—Game theory, resource allocation, task offloading, vehicular edge computing, vehicular network.
+
+# I. INTRODUCTION
+
+W ITH the development of vehicular networks (VNs)and the ever-increasing number of vehicles on the and the ever-increasing number of vehicles on the road, various and explosive applications are emerging such as
+
+Manuscript received 7 October 2022; revised 14 January 2023; accepted 19 January 2023. Date of publication 23 January 2023; date of current version 8 January 2024. This work was supported in part by the National Natural Science Foundation of China under Grants 62172186, 62002133, 61872158, and 62272194, in part by the Science and Technology Development Plan Project of Jilin Province under Grants 20210101183JC and 20210201072GX, and in part by the Young Science and Technology Talent Lift Project of Jilin Province under Grant QT202013. Recommended for acceptance by D. Niyato. (Corresponding author: Geng Sun.)
+
+Zemin Sun, Geng Sun, Yanheng Liu, and Jian Wang are with the College of Computer Science and Technology, Jilin University, Changchun 130012, China, and also with the Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University, Changchun 130012, China (e-mail: sunzemin@jlu.edu.cn; sungeng@jlu.edu.cn; yhliu@jlu.edu.cn; wangjian591@jlu.edu.cn).
+
+Dongpu Cao is with the School of Vehicle and Mobility, Tsinghua University, Beijing 100190, China (e-mail: dongpu.cao@ieee.org).
+
+This article has supplementary downloadable material available at https://doi.org/10.1109/TMC.2023.3239339, provided by the authors.
+
+Digital Object Identifier 10.1109/TMC.2023.3239339
+
+autonomous driving, auto navigation, and augmented reality. These vehicular applications usually require extensive computation resources and low or ultra-low latency. However, fulfilling the computation-intensive and delay-sensitive tasks is challenging due to the limited computation resources of vehicles. To overcome this challenge, mobile edge computing or multi-access edge computing (MEC) [1] is emerging as a promising technology by shifting the cloud computing resources in close proximity to mobile terminals, leading to the new paradigm of vehicular edge computing (VEC) [1], [2], [3]. The VEC migrates the lightweight and ubiquitous resources from cloud servers to the road side units (RSUs) equipped with VEC servers to extend the computation capabilities of the conventional VNs [4]. By offloading the tasks to the VEC servers, the communication latency between the vehicles and the cloud server can be reduced, and the computation overloads on vehicles can be relieved.
+
+However, compared to cloud computing and wireless networks, the VEC network is characterized by the typical features of both edge computing and VNs, i.e., the limited resources of edge servers and highly dynamic of VNs. Therefore, the joint optimization of resource management and task offloading for VEC network is essential, which however confronts several challenges.
+
+First, various tasks of vehicles generally arrive dynamically and have stringent requirements on the offloading service. Internally, for a certain VEC server, the limited computational resource of the VEC server and the stringent requirements of requesting vehicles could result in resource competition inside the VEC server, especially in peak hours. Therefore, it is challenging for a VEC server to decide efficient resource allocation policy to satisfy the heterogeneous and stringent requirements of different tasks under the resource constraint. Second, high mobility of vehicles and random generation of tasks lead to the spatio-temporally uneven distribution of tasks among VEC servers. Externally, the heterogeneous computational capacity among VEC servers or between VEC server and cloud server further incurs load imbalance and resource under-utilization among the servers. For example, some VEC servers could be overloaded or congested while the others could be underloaded or idle when tasks are randomly offloaded. Therefore, the spatiotemporal heterogeneity among tasks and the computational heterogeneity among servers pose a significant challenge in designing the efficient task offloading scheme to provide service satisfaction for vehicles and load balance among servers. Third, the unique features of VNs, such as the dynamic of channel and mobility of vehicles, add complexity to integrating these features into the optimization for the VEC network.
+
+This work presents a cooperative resource allocation and task offloading approach for VEC network to optimize the resource allocation for servers and offloading satisfaction for vehicles. The main contributions are summarized as follows:
+
+We employ a hierarchical architecture of resource allocation and task offloading for VEC network to coordinate both the space-time-requirement heterogeneity among tasks and the computational heterogeneity among servers. Specifically, the regional software-defined networking (SDN) [5], which separates the data and control planes, is integrated for efficient resource allocation and task offloading. Under the coordination of the controller, the intra-server resource allocation and inter-server loadbalanced offloading are optimized by stimulating horizontal and vertical collaborations among vehicle, edge, and cloud layers.   
+We formulate a joint resource allocation and task offloading problem (JRATOP) by jointly optimizing the strategies of resource allocation and pricing, and task offloading, with the aim of maximizing the system utility that is theoretically modeled by synthesizing the unique features of VN channels, nonorthogonal multiple access (NOMA) [6], mobility of vehicles, spatiotemporal heterogeneity of tasks, computational heterogeneity of servers, and energy consumption of nodes.   
+Due to the NP-hardness of JRATOP, we propose a cooperative resource allocation and task offloading algorithm BARGAIN-MATCH that consists of two components. For intra-server resource allocation, a bargaining game-based incentive approach is proposed to stimulate collaboration between the task (of a vehicle) and a VEC/cloud server for resource allocation and pricing. For inter-server task offloading, a many-to-one matching is constructed between tasks and severs to stimulate edge-edge collaboration for horizontal task offloading and edge-cloud collaboration for vertical task offloading.   
+- The performance of BARGAIN-MATCH is verified through theoretical analysis and simulation. Specifically, BARGAIN-MATCH is proved to be stable, weak Pareto optimal, and polynomial complex. Furthermore, simulation results show that BARGAIN-MATCH can achieve superior system utility and system efficiency, especially when the workload is heavy.
+
+The remaining of this paper is organized as follows. Section II reviews the related work. Section III presents the models and preliminaries. The problem formulation is given in Section IV. Section V elaborates the proposed BARGAIN-MATCH. Section VI shows the simulation results and discussions. In Section VII-A, we extend the investigation to the scenario with the real-world vehicle applications. This work is concluded in Section VIII. Furthermore, for the sake of readability, all notations are listed in Table I.
+
+# II. RELATED WORK
+
+In recent years, MEC has emerged as a promising paradigm to provide cloud-computing capabilities at the network edges by deploying lightweight MEC servers ubiquitously in close proximity to end users [1], [7]. Delay-sensitive, computationintensive, and energy-consuming computation tasks can be offloaded to the MEC severs to improve the quality of service for mobile users. The task offloading and/or resource management for MEC networks has attracted increasing research attempts. Several studies [8], [9], [10] focus on the joint task offloading and resource allocation in the single (or double)-user and single-server MEC system, which may not be applicable to the real-world scenarios, especially those with heavy or bursty workloads.
+
+To overcome the above challenge, more studies focus on the multi-user and multi-server MEC environment regarding the task offloading and resource allocation. For example, in [11], a new scheme is proposed to guarantee the efficiency and reliability of mission-critical task offloading and resource allocation by imposing probabilistic and statistical constraints to the task queue length based on extreme value theory. Apostolopoulos et al. [12] present a novel risk-aware data offloading approach where the risk-seeking offloading behavior of users and the resource over-exploitation of MEC servers are jointly considered by using the prospect theory and tragedy of the commons. Zhang et al. [13] employs Lyapunov optimization theory to optimize the task offloading and resource allocation in the MEC-based cloud radio access network, aiming at maximizing the network energy efficiency. Tan et al. [14] construct a two-level framework for energy-efficient task offloading and resource allocation in OFDMA-based MEC networks. However, these studies mainly focus on MEC networks, which may be not applicable for VNs with highly dynamic vehicles and wireless channels, and uneven distributed nodes and workloads.
+
+In recent years, considerable efforts have been made to improve the performance of VEC network, especially focusing on task offloading to mitigate the competition among vehicles [15], [16], to balance the workload [4], [17], and to explore the available resources of vehicles [18], [19], [20]. Sun et al. [15] propose an adaptive learning based task offloading algorithm based on the multi-armed bandit theory to minimize the average offloading delay. Wang et al. [16] propose a multi-user noncooperative computation offloading game, where each vehicle decides whether to offload its task to the VEC server according to the traffic density. An SDN-based VEC architecture is introduced in [17] to provide centralized network management to balance the workload of task offloading. Dai et al. [4] construct a cooperative task offloading mechanism based on the queuing theory to minimize the task completion delay and balance the workload at edges. Qin et al. [18] focus on exploiting vehicles’ idle and redundant resources for energy efficient task offloading in VNs under information uncertainty. Liu et al. [19] propose a task offloading scheme by exploiting multi-hop vehicle computation resources in VEC networks. Wang et al. [20] consider the available neighboring VEC clusters and propose an imitation learning-based task scheduling approach to minimize
+
+TABLE I   
+SUMMARY OF NOTATIONS 
+
+<table><tr><td>Symbol</td><td>Description</td><td>Symbol</td><td>Description</td></tr><tr><td> $a \in \{0, \mathcal{E}, o\}$ </td><td>The offloading destination of a task</td><td> $\alpha_i$ </td><td>The effective switched capacitance of vehicle  $i's/server j's CPU$ </td></tr><tr><td> $\beta^L/\beta^{NL}$ </td><td>The path loss exponent for LoS/NLoS communication</td><td> $B_{i,j}$ </td><td>The bandwidth</td></tr><tr><td> $c_{j,i}(t) \in [c_{j,i}^{\min}(t), c_{j,i}^{\max}(t)]$ </td><td>The unit price of resources by server  $j$ </td><td> $c$ </td><td>The speed of light</td></tr><tr><td> $\mathcal{C}_i(t)$ </td><td>The computation resources required by per bit of task</td><td> $\mathcal{C}_i^{\text{req}}(t)$ </td><td>The amount of computation resources</td></tr><tr><td> $C_i^a(t)/C_j^i(t)$ </td><td>The normalized cost of vehicle  $i/server j$ </td><td> $C_i^{\text{max}}/C_j^{\text{max}}$ </td><td>The maximum budget of vehicle  $i/server j$ </td></tr><tr><td> $\Delta c_{j,i}(t)$ </td><td>Bid-spread ask</td><td> $\Delta d_{i,j}(t)$ </td><td>The horizontal distance difference between the current and previous time epochs</td></tr><tr><td> $d_{i,j}(t)$ </td><td>The distance between  $i$  and  $j$ </td><td> $d_0$ </td><td>The reference distance</td></tr><tr><td> $\mathcal{D}_i^{\text{in}}(t)$ </td><td>The size of the computation task</td><td> $\mathcal{D}_{i}^{\text{out}}(t)$ </td><td>The size of the computation result</td></tr><tr><td> $\delta_i^{*}(t)/\delta_j^{*}(t)$ </td><td>The optimal partitions when vehicle  $i$  makes a proposal</td><td> $\delta_i^{*}(t)/\delta_j^{*}(t)$ </td><td>The optimal partitions when server  $j$  makes a proposal</td></tr><tr><td> $D_j$ </td><td>The set of less preferred tasks of server  $j$ </td><td> $E_i^0(t)/E_j^i(t)$ </td><td>The energy consumption of vehicle  $i/server j$ </td></tr><tr><td> $E_i^{\text{max}}/E_j^{\text{max}}$ </td><td>The energy constraint of vehicle  $i/server j$ </td><td> $\epsilon_i(t)/\epsilon_j(t)$ </td><td>The discount factor of vehicle  $i/server j$ </td></tr><tr><td> $\mathcal{E} = \{1, \dots, E\}$ </td><td>The set of VEC servers</td><td> $f_c$ </td><td>The carrier frequency</td></tr><tr><td> $F(var_1, c_{j,i}(t))$ </td><td>The function in Eq. (24)</td><td> $f_i(t)$ </td><td>The available computation capacity of vehicle  $i$ </td></tr><tr><td> $f_i^{\text{max}}/f_j^{\text{max}}$ </td><td>The computation capability of vehicle  $i/server j$ </td><td> $f_{j,i}(t)/f_{o,i}(t)$ </td><td>The computation resources provided by VEC server  $j/$  cloud server  $o$  to vehicle  $i$ </td></tr><tr><td> $g_{i,j}^L(t)/g_{i,j}^{NL}(t)$ </td><td>The channel power gain between vehicle  $i$  and VEC server  $j$ </td><td> $g_{i,j}(t)/g_{I,j}(t)$ </td><td>The channel power gain between vehicle  $i/I$  and VEC server  $j$ </td></tr><tr><td> $h_{i,j}^L(t)/h_{i,j}^{NL}(t)$ </td><td>The small-scale fading for LoS/NLoS communication</td><td> $i \in \mathcal{V}$ </td><td>The index of vehicle  $i$ </td></tr><tr><td> $j \in \mathcal{E}/j \in \{\mathcal{E}, o\}$ </td><td>The index of server  $j$ </td><td> $\chi_\sigma^L/\chi_\sigma^{NL}$ </td><td>The shadowing for LoS/NLoS communication</td></tr><tr><td> $L_{i,j}^L(t)/L_{i,j}^{NL}(t)$ </td><td>The pathloss for LoS/NLoS communication</td><td> $m^L/m^{NL}$ </td><td>The fading parameter for LoS/NLoS communication</td></tr><tr><td> $N_i^{\text{core}}/N_j^{\text{core}}$ </td><td>The number of vehicle  $i/server j's CPU cores$ </td><td> $N_0$ </td><td>The noise power</td></tr><tr><td> $\Omega_k^j/\Omega_j^k$ </td><td>The preference of task  $k/server j towards server k/task k$ </td><td> $o$ </td><td>Cloud server</td></tr><tr><td> $P_i(t) = (X_i(t), Y_i(t), 0)$ </td><td>The position of vehicle  $i$ </td><td> $p_i^{\text{gen}}(t)$ </td><td>The indicator of vehicle  $i's task generation$ </td></tr><tr><td> $P_j = (X_j, Y_j, 0)$ </td><td>The position of VEC server  $j$ </td><td> $P_i(t)/P_I(t)$ </td><td>The transmit power of vehicle  $i/I$ </td></tr><tr><td> $p_{i,j}^L$ </td><td>The probability of LoS transmission between vehicle  $i$  and VEC server  $j$ </td><td> $\Phi$ </td><td>Matching result</td></tr><tr><td> $(\mathcal{P}_B, \mathcal{S}_B, \mathcal{U}_B)$ </td><td>The triplet of bargaining</td><td> $(\mathcal{P}_M, \Omega, \Phi)$ </td><td>The triplet of matching</td></tr><tr><td> $r_c$ </td><td>The data rate between edge and cloud</td><td> $r_f$ </td><td>The data rate of fiber link</td></tr><tr><td> $\rho_k(j)/\rho_j(k)$ </td><td>The preference of task  $k/server j$  on server  $j/task k$ </td><td> $\Phi(k)/\Phi(j')$ </td><td>The matching list of task  $k/server j'$ </td></tr><tr><td> $R_j(j \in \mathcal{E})$ </td><td>The coverage radius of VEC server  $j$ </td><td> $\mathcal{R}_j^i(t)$ </td><td>The normalized revenue of server  $j$ </td></tr><tr><td> $r_{i,j}(t)$ </td><td>The data transmission rate between vehicle  $i$  and VEC server  $j$ </td><td> $SW$ </td><td>Social welfare</td></tr><tr><td> $s_i^a(t)$ </td><td>The offloading strategy of task  $\mathcal{T}_i$ </td><td> $\sigma^L/\sigma^{NL}$ </td><td>The standard deviation of shadowing for LoS/NLoS transmission</td></tr><tr><td> $s_{j,i}^*(t) = (f_{j,i}^*(t), c_{j,i}^*(t))$ </td><td>The optimal resource allocation and pricing</td><td> $S_{\text{off}}^*(t)/S_{\text{all}}^*(t)$ </td><td>The optimal strategy of offloading/resource allocation</td></tr><tr><td> $t \in T = \{0, \dots, T-1\}$ </td><td>System timeline</td><td> $\Delta t$ </td><td>Each slot duration</td></tr><tr><td> $T(t_0)$ </td><td>Time epoch</td><td> $T_0$ </td><td>Each time epoch duration</td></tr><tr><td> $T_{i,j}^{\text{soj}}$ </td><td>The sojourn time of vehicle  $i$  in the coverage of VEC server  $j$ </td><td> $\tau > 0$ </td><td>CPU parameter</td></tr><tr><td> $\mathcal{T}_i(t)$ </td><td>The task generated by vehicle  $i$  at time  $t$ </td><td> $T_i^{\text{max}}(t)$ </td><td>The maximum tolerable delay of task  $i$ </td></tr><tr><td> $T_i^0(t)/T_i^j(t)/T_i^o(t)$ </td><td>The total delay for offloading task  $\mathcal{T}_i(t)$  locally/on edge server  $j/on cloud server o$ </td><td> $T_{i,j^{\text{tran}}}^{\text{tr}}(t)$ </td><td>The delay for vehicle  $i$  to transmit the task to VEC  $j^{\text{cur}}$ </td></tr><tr><td> $T_{i,j}^{\text{comp}}(t)/T_{i,o}^{\text{comp}}(t)$ </td><td>The computation delay that the task is processed by VEC server  $j/cloud server o$ </td><td> $\tau > 0$ </td><td>CPU parameter</td></tr><tr><td> $T_{j^{\text{air}},j}^{\text{hand}}(t)/T_{j^{\text{cur}},o}^{\text{hand}}(t)$ </td><td>The horizontal/vertical task handover delay</td><td> $\mathcal{T}_{i}^{\text{rel}}(t)$ </td><td>The tasks that are rejected</td></tr><tr><td> $T_{j,j^{\text{air}}}^{\text{hand}}(t)/T_{o,j^{\text{air}}}^{\text{hand}}(t)$ </td><td>The horizontal/vertical result handover delay</td><td> $\Psi_i^a(t)$ </td><td>The normalized satisfaction level of task completion delay</td></tr><tr><td> $\mathcal{V}_j = \{1, \dots, V_j\}$ </td><td>The set of interference vehicles within the range of VEC server  $j$ </td><td> $U_i^a(t)/U_j^i(t)$ </td><td>The utility obtained by vehicle  $i/server j/from offloading task \mathcal{T}_i(t)$ </td></tr><tr><td> $\mathcal{V} = \{1, \dots, V\}$ </td><td>The set of vehicles</td><td> $\mathcal{V}^{req}(t)$ </td><td>The requesting vehicle set</td></tr><tr><td> $v_i(t) \in [v^{\text{min}}, v^{\text{max}}]$ </td><td>The velocity of vehicle  $i \in \mathcal{V}$ </td><td> $w_i/w_j$ </td><td>The weight coefficient of vehicle  $i/server j$ </td></tr><tr><td> $\zeta_i(t)$ </td><td>The indicator for the movement direction of vehicle  $i$ </td><td> $P(\zeta_i(t))$ </td><td>The general model for the movement of vehicles</td></tr></table>
+
+the system energy consumption. However, these studies mainly focus on optimizing the offloading strategies with insufficient consideration for the resource allocation of VEC servers. Besides, most of them consider the single-server scenario [15], [16], [18], [19], [20].
+
+Considering the limited resources of edge servers, some studies target on resource management for VEC networks, including spectrum sharing [21], computation resource allocation [22], mult-dimensional resource management [23], and the exploitation of under-utilized vehicular resources [20], [24]. For example, Peng et al. [23] employ a deep learning approach to manage the resources of VEC servers for the delay-sensitive applications of vehicles. Zhu et al. [22] adopt a Stackelberg game to model the interaction between vehicles and VEC servers to obtain the price and amount of computation resources to be allocated. In [24], the authors focus on the power-aware resource management to jointly optimize the resource utilization and energy efficiency of VEC servers. However, these studies do not consider the offloading strategies from the perspective of vehicles.
+
+Since the problems of resource allocation and task offloading are coupled with each other, several research efforts have been devoted to joint resource allocation and task offloading, aiming at delay-driven system utility optimization [4], [25], [26], [27], spectrum efficiency improvement [28], or energy efficiency improvement [29], [30]. For instance, Dai et al. [4] propose a task offloading and resource allocation scheme for VEC networks to minimize the task processing delay under the permissible latency constraint. In [25], the task offloading is optimized by maximizing the task completion probability, and the resource allocation is determined by performing a mobilityaware greedy algorithm. Zhou et al. [26] propose an incentive mechanism based on contract-match mechanism to leverage the under-utilized computation resources for task offloading of nearby vehicles. In [27], the optimal offloading decision and the resource allocation are achieved by using the game theory. Li et al. [28] consider the influence of time-varying channel on the time-varying spectrum efficiency of task offloading, which is solved by using the branch and bound algorithm. Considering the limited energy of vehicles, Huang et al. [29], [30] propose an energy efficiency-driven approach to reduce the energy costs of vehicles under the constraint of computation resources of VEC servers.
+
+Although the above-mentioned work has significantly improve the performance of the VEC network, there are still some problems to be addressed. The heterogeneity among tasks and servers, the load imbalance among servers, and the unique features of VN such as the mobility of vehicles, the dynamic of vehicular channel, and the energy consumption of task execution have not been jointly explored for task offloading and resource allocation. Distinguished from the previous works, this work studies cooperative resource allocation and task offloading in the VEC network, where the stringent requirements of tasks, the heterogeneity among tasks and servers, the load imbalance, the unique features of VNs, and the energy limitation of the VEC networks, are jointly considered.
+
+# III. MODELS AND PRELIMINARIES
+
+In this section, a VEC-enabled VN architecture is first introduced, followed by the traffic and mobility model, communication model, computation model, and energy consumption model.
+
+# A. System Model
+
+1) System Overview: As shown in Fig. 1, in the spatial domain, we consider an SDN-based hierarchical architecture for VEC network that consists of a vehicle layer with V vehicles $\mathcal { V } = \{ 1 , \dots , i , \dots , V \}$ , an edge layer with E VEC servers $\mathcal { E } =$ $\{ 1 , \ldots , j , \ldots , E \}$ =that are mounted on RSUs,1 a control layer 1with a regional SDN controller, and a remote cloud layer with a cloud server o. For simplicity but without loss of generality, we assume that the vehicles and VEC-mounted RSUs in the system model are equipped with single antenna [31], [32]. At the vehicle layer, vehicles distribute randomly on the multi-lane bi-directional road, run in either direction, and could generate tasks at any time. Each vehicle independently decides whether to process the task locally or upload it to the connected VEC server2 by using NOMA. At the edge layer, VEC servers are mounted on RSUs that are deployed alongside the road with non-overlapping coverage radius $R _ { j } , j \in \mathcal { E }$ , and the service area of each VEC server is defined as the wireless coverage of the RSU. Moreover, the VEC servers are connected to the regional SDN controller [33], [34] and to each other via high-speed fiber links [13], [20], [35] and mobile access gateways (MAGs) [36]. Besides, each VEC server is responsible to collect the local information on its own states, vehicles’ states, and the channel state information (CSI), and uploads the information to the control layer. At the control layer, the regional SDN controller, on which our algorithm runs, is responsible for decision making and handover management with the support of MAG. For decision making, the following cooperative decisions are performed by our algorithm under the coordination of the controller, i.e., intra-VEC server resource allocation and inter-server task offloading that includes the horizontal task migration among servers and vertical task migration from the VEC server and the cloud server. For handover management, it is incorporated into the task migration to guarantee the connectivity for moving vehicles [36], [37]. With the SDN technology, the controller only needs the knowledge acquired from the edge layer, and makes accordingly decisions by performing the proposed algorithm. At the cloud layer, the tasks can be vertically offloaded from the edge layer to the cloud layer under the guidance of the controller.
+
+In the temporal domain, the VEC system operates in a discrete time-slotted manner. Specifically, the system timeline is equally divided into T time slots, i.e., $t \in \mathbf { T } = \{ 0 , \ldots , T - 1 \}$ , where = 0 1each slot duration t is consistent with the coherence block Δof the wireless channel [38]. Every $T _ { 0 }$ consecutive slots are grouped into a time epoch $t _ { 0 } \in \mathbb { Z } ^ { + }$ 0, where $\mathbf { T } ( t _ { 0 } ) = \{ ( t _ { 0 } -$
+
+1In this work, the RSU and VEC server are used interchangeably unless otherwise indicated.   
+2A vehicle directly uploads the tasks to the VEC server within the current service area since it is unaware of the servers out of the service area [20].
+
+![](images/7a39be90c7d54adf451d3b2fcc1a72cb23c8e1732a012838d67af3d248a90997.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    subgraph_Cloud_Layer["Cloud Layer"]
+        A["Cloud server"] --> B["Regional Switch SDN Controller"]
+        B --> C["Vertical collaboration"]
+        D["Control Layer"] --> E["Vertical collaboration"]
+        E --> F["Vehicle Layer"]
+    end
+
+    subgraph_Edge_Layer["Edge Layer"]
+        G["VEC server 1 ... VEC server j ... VEC server E"] --> H["Horizontal collaboration"]
+        H --> I["Horizontal collaboration"]
+        I --> J["Local Execution"]
+        J --> K["Task upload"]
+    end
+
+    subgraph_Vehicle_Layer["Vehicle Layer"]
+        L["Vehicle Layer R₁"] --> M["Local Execution"]
+        M --> N["Task upload"]
+        N --> O["Local Execution"]
+        O --> P["Task upload"]
+        P --> Q["Local Execution"]
+        Q --> R["Task upload"]
+        R --> S["Local Execution"]
+        S --> T["Task upload"]
+        T --> U["Local Execution"]
+        U --> V["Task upload"]
+        V --> W["Local Execution"]
+        W --> X["Task upload"]
+        X --> Y["Local Execution"]
+        Y --> Z["Task upload"]
+    end
+
+    style Cloud_Layer fill:#f9f,stroke:#333
+    style Edge_Layer fill:#ccf,stroke:#333
+    style Vehicle_Layer fill:#cfc,stroke:#333
+```
+</details>
+
+![](images/637186663f04a871b364a252fd0bd848a40dfa1005fbe1450003f7c1049a8708.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Information/state update"] --> B["Long Time Scale"]
+    B --> C["Vehicle mobility"]
+    C --> D["Epoch"]
+    D --> E["t"]
+    E --> F["Slot"]
+    F --> G["Short Time Scale"]
+    G --> H["CSI; Offloading requirements; VEC server states"]
+    I["BARGAIN-MATCH"] --> J["Intra-server Strategy Resource Allocation"]
+    J --> K["Inter-server Strategy Task Offloading"]
+    K --> L["Vehicle-side Independent Decision"]
+    L --> M["Local execution or upload"]
+    
+    style A fill:#f9f,stroke:#333
+    style I fill:#ccf,stroke:#333
+    style L fill:#cfc,stroke:#333
+    
+    subgraph "Information/state update"
+        A
+        B
+        C
+        D
+        E
+        F
+        G
+        H
+        I
+    end
+    
+    subgraph "BARGAIN-MATCH"
+        J
+        K
+        L
+    end
+    
+    note1["NOMA-based communication link"]
+    note2["Control message: decision distribution"]
+    note3["Control message: information upload"]
+```
+</details>
+
+Fig. 1. The cooperative architecture of resource allocation and task offloading in VEC network.
+
+$1 ) T _ { 0 } , \ldots , t _ { 0 } \cdot T _ { 0 } - 1 \}$ . Moreover, the CSI and states of VEC 1) 0 0 0 1servers and vehicles are captured and updated in different time scales. Specifically, in the short timescale, the information on CSI, offloading requirements of vehicles, and states of VEC servers are captured and updated. In the long timescale, the mobility of vehicles is captured and updated.3 This is because CSI keeps constant in a time slot and varies across different time slots, while the mobility of a vehicle keeps approximately constant during a few consecutive slots [38].
+
+2) Basic Models: The basic models for the nodes in the system is illustrated in the following.
+
+Mobility Model. The mobility of vehicle $i \in \mathcal V$ is denoted as $( \mathbf { P } _ { i } ( t ) , v _ { i } ( t ) )$ , where ${ \bf P } _ { i } ( t ) = ( X _ { i } ( t ) , Y _ { i } ( t ) , 0 )$ and $v ^ { \mathrm { m i n } } \leq$ $v _ { i } ( t ) \leq v ^ { \operatorname* { m a x } }$ ( )) ( ) = ( ( ) ( ) 0)denote the position and velocity of vehicle i at ( )time t, respectively. Suppose that vehicle i is located in the service range of VEC server j at time t, the moving direction of vehicle i is denoted as $\zeta _ { i } ( t )$ is the indicator function of ( )vehicle i’s movement direction towards VEC server $j . \zeta _ { i } ( t )$ ( )can be estimated based on the difference of the horizontal distance (between i and j) between the current time epoch and the previous time epoch, i.e., $\Delta d _ { i , j } ( t ) = \left| X _ { i } ( \left\lfloor t / T _ { 0 } \right\rfloor ) - X _ { j } \right| -$ $| X _ { i } ( | t / T _ { 0 } \rfloor - 1 ) - X _ { j } ) |$ Δ ( ) = ( 0 ). According to [39], we consider the ( 0 1) )following two cases. i) If the previous location of the vehicle is known, $\zeta _ { i } ( t )$ can be given as an integral indicator, i.e., $\zeta _ { i } ( t ) = \left\{ \begin{array} { l l } { 1 , \Delta d _ { i , j } ( t ) > 0 } \\ { - 1 , \Delta d _ { i , j ^ { \mathrm { c u r } } } ( t ) < 0 } \end{array} \right.$ to indicate the vehicle is moving toward $( \zeta _ { i } ( t ) = 1 )$ ( ) 0 or moving away from $( \zeta _ { i } ( t ) = - 1 )$ VEC ( ) = 1 ( ) = 1server j. ii) If vehicle’s mobility is not fully known and should be predicted for the future time, i.e., $t = 0$ or $\Delta d _ { i , j } ( t ) = 0$ , $\zeta _ { i } ( t ) = \pm P ( \zeta _ { i } ( t ) )$ = 0 Δ ( ) = 0is defined as a continuous variable in [-1,1]
+
+3The position and velocity of vehicles can be estimated from the GPS data that is known to the RSUs [26].
+
+to indicate the probability of vehicle’s movement direction, where $P ( \zeta _ { i } ( t ) )$ is a general model to represent the movement ( ( ))of vehicles which can be set as a typical mobility model, e.g., Markovian mobility [40]. Therefore, $\zeta _ { i } ( t )$ can be concluded as:
+
+$$
+\zeta_ {i} (t) = \left\{ \begin{array}{l l} 1, & t > 0, \quad \Delta d _ {i, j ^ {\text { cur }}} (t) > 0, \\ - 1, & t > 0, \quad \Delta d _ {i, j ^ {\text { cur }}} (t) <   0, \\ \pm P (\zeta_ {i} (t)), & t = 0 \text {   or   } \Delta d _ {i, j ^ {\text { cur }}} (t) = 0. \end{array} \right. \tag {1}
+$$
+
+Given that vehicle i is located within the coverage of VEC server $j ^ { \mathrm { c u r } }$ currently, the remaining sojourn time of vehicle i before leaving the coverage of VEC server j can be obtained as:
+
+$$
+T _ {i, j} ^ {\mathrm{soj}} = \frac {R _ {j} + \zeta_ {i} (t) \cdot | X _ {i} (t) - X _ {j} ^ {\mathrm{cur}} |}{v _ {i} (t)}. \tag {2}
+$$
+
+where $R _ { j }$ is the communication radius of VEC server $j , | X _ { i } ( t ) -$ $X _ { j }$ ( )| is the horizontal distance between vehicle i and VEC server $j .$
+
+Furthermore, the VEC server jarr that vehicle i will be attached after time $T _ { i } ^ { \mathrm { m o v e } }$ can be estimated as:
+
+$$
+j ^ {\text { arr }} = j + \zeta_ {i} (t) \cdot \left\lceil \frac {v _ {i} (t) \cdot T _ {i} ^ {\text { move }} - \left(R _ {j} + \zeta_ {i} (t) \cdot | X _ {i} (t) - X _ {j} |\right)}{v _ {i} (t)} \right\rceil . \tag {3}
+$$
+
+Vehicle Model. Each vehicle $i \in \mathcal V$ is characterized by $( \mathbf { P } _ { i } ( t ) , v _ { i } ( t ) , f _ { i } ^ { \operatorname* { m a x } } , p _ { i } ^ { \mathrm { g e n } } ( t ) )$ , where ${ \bf P } _ { i } ( t ) = ( X _ { i } ( t ) , Y _ { i } ( t ) , 0 )$ (and $v _ { i } ( t )$ ( ) ( )) ( ) = ( ( ) ( ) 0)denote the position and the velocity of vehicle i at time ( )t, respectively, and $f _ { i } ^ { \mathrm { m a x } }$ is the computation capability of vehicle i. Moreover, each vehicle can generate multiple tasks during the system timeline, where in each time slot the vehicle could generate one task or not. The task generation of vehicle i in time slot t is denoted by a binary indicator $p _ { i } ^ { \mathrm { g e n } } ( t ) \in \{ 0 , 1 \}$ , where $p _ { i } ^ { \mathrm { g e n } } ( t ) = 1$ ( ) 0 1means that vehicle i generates a task. Considering ( ) = 1the resource limitation, each vehicle is assumed to be equipped with one CPU core [4].
+
+Task Model. The task generated by vehicle i in time slot t is denoted as $\mathscr { T } _ { i } ( t ) = ( \mathscr { D } _ { i } ^ { \mathrm { i n } } ( t ) , \mathscr { D } _ { i } ^ { \mathrm { o u t } } ( t ) , \mathscr { C } _ { i } ( t ) , \mathscr { C } _ { i } ^ { \mathrm { r e q } } ( t ) , T _ { i } ^ { \mathrm { m a x } } ( t ) )$ , where $\mathcal { D } _ { i } ^ { \mathrm { i n } } ( t )$ ( ) = ( ( ) ( ) ( ) ( )is the size of the input computation task, $\mathcal { D } _ { i } ^ { \mathrm { o u t } } ( t )$ ( )is the size of the computation result, $\mathcal { C } _ { i } ( t )$ ( )is the computation ( )resources (CPU cycles/s) required by per bit of task (i.e., the computation intensity) , $\mathcal { C } _ { i } ^ { \mathrm { r e q } } ( t ) = \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) \cdot \mathcal { C } _ { i } ( t )$ is the amount ( ) = ( ) ( )of computation resources that is required to fulfill the task, and $T _ { i } ^ { \mathrm { m a x } }$ is the maximum tolerable delay of the task.
+
+Server Model. First, the local of each edge server $j \in \{ \mathcal { E } \}$ is denoted as $\mathbf { P } _ { j } = ( X _ { j } , Y _ { j } , 0 )$ . Furthermore, the heterogeneous = ( 0)computational capabilities of edge and cloud servers are characterized by different numbers of CPU cores and different amounts of computation resources of each CPU core, i.e., $j \in \{ \mathcal { E } , o \}$ is characterized by $( f _ { j } ^ { \operatorname* { m a x } } , N _ { j } ^ { \mathrm { c o r e } } )$ , where $N _ { j } ^ { \mathrm { c o r e } }$ denotes the number ( )of CPU cores of server j and $f _ { j } ^ { \operatorname* { m a x } }$ (cycles/s) denotes the maximal computational resource of server j. We consider that the servers are equipped with multi-core CPUs [4], [41] so that multiple tasks can be processed by a server in parallel, and each CPU core is dedicated to at most one task in each time slot [41].
+
+Strategy Variables. The following strategies are determined jointly. For task $\tau _ { i } ( t )$ , the offloading strategy is defined as a binary variant $s _ { i } ^ { a } ( t ) \in \{ 0 , 1 \} , a \in \{ 0 , \mathcal { E } , o \}$ , where a denotes ( ) 0 1 0the offloading destination of the task. Specifically, the task $\tau _ { i } ( t )$ could be executed on vehicle $\textit { i } \left( s _ { i } ^ { 0 } ( t ) = 1 \right)$ , on VEC server $j \in \mathcal { E } \left( s _ { i } ^ { j } ( t ) = 1 \right)$ , or on cloud server o $( s _ { i } ^ { o } ( t ) = 1 )$ . For server $j \in \{ \mathcal { E } , o \}$ , the resource allocation strategy is denoted as $\{ ( f _ { j , i } ( t ) , c _ { j , i } ( t ) ) \}$ , where $f _ { j , i } ( t )$ is the amount of computation resources provided by server $j$ to vehicle i at time t, and $c _ { j , i } ( t )$ ( )is the unit price of computation resources charged to vehicle i for executing task $\tau _ { i } ( t )$ .
+
+# B. Communication Model
+
+This work mainly focuses on the task uploading from vehicles to edge servers, and the task downloading from edge servers to vehicles is omitted since the size of the computation outcome is generally much smaller than that of the computation input for most mobile applications [42], [43], [44]. For task uploading, the power-domain NOMA is employed to support multiple requesting vehicles to simultaneously transmit their tasks to the RSU with which they are currently attached, considering the following reasons. In terms of the advantage of the powerdomain NOMA, it has been recognized as a promising technique to achieve the capacity region for multi-user uplink communications in MEC networks [45], [46], [47], vehicular networks [48], unmanned aerial vehicle (UAV) networks [49], etc. Specifically, in the power-domain NOMA, multiple vehicles are able to share the same bandwidth resources, and they are distinguished in the power domain with the aid of the key technique of successive interference cancellation (SIC) [50], [51]. In terms of the practicality of task uploading, when performing SIC, the SIC receiver decodes the stronger signals sequentially from the superimposed signals by treating the weaker signals as noise, implying that the performance of the power-domain NOMA is directly influenced by the capability of the SIC receivers [31]. Specifically, in the power-domain NOMA system, the SIC implementation has a linear computational complexity in the number of users [52]. For the downlink scenario, the linear complexity may be a bottleneck since it requires the implementation of a sophisticated SIC scheme at each receiver with limited processing capabilities. However, for the uplink scenario that is mainly considered in this work, it is relatively more convenient and affordable for the RSU equipped with more powerful VEC servers when the capability of SIC receivers is taken into careful consideration.
+
+In the considered NOMA-based VEC network, the details of employing the SIC for multi-vehicle task uploading is illustrated as follows. First, to capture the capability of the SIC receiver at the RSU side, we consider that each RSU j is equipped with an $S _ { j } – S \mathrm { I C }$ receiver [31], [53], [54], where $S _ { j }$ means that the SIC receiver at RSU j is capable of successively decoding the signals that are simultaneously transmitted by at most $S _ { j }$ vehicles within its service range.4 Furthermore, by using SIC, the channel gains of the uploading vehicles $\mathcal { V } _ { j } ( t ) = \{ 1 , \ldots , V _ { j } ( t ) \} ( V _ { j } ( t ) \leq S _ { j } )$ ( ) = 1 ( )within the range of VEC server j are first ordered as $g _ { 1 , j } ( t ) \geq$ $\cdot \cdot \cdot g _ { i , j } ( t ) \cdot \cdot \cdot \geq g _ { V _ { j } , j } ( t ) , \forall i \in \mathcal { V } _ { j } ( t ) [ 5 6 ]$ 1 ( ). To decode the signal ( ) ( ) ( )of vehicle i, VEC server j first decodes the stronger signals of vehicles $I ^ { \prime } < i ,$ , then subtracts them from the superposed signal, and treats the weaker signals of vehicles $V _ { j } ( t ) \geq I \geq i + 1$ as ( ) + 1interference. Therefore, the data transmission rate from vehicle i to VEC server j using NOMA can be calculated as:
+
+$$
+r _ {i, j} (t) = B _ {i, j} \cdot \log_ {2} \left(1 + \frac {P _ {i} (t) \cdot g _ {i , j} (t)}{N _ {0} + \sum_ {I = i + 1} ^ {V _ {j} (t)} P _ {I} (t) \cdot g _ {I , j} (t)}\right), \tag {4}
+$$
+
+where $B _ { i , j }$ is the bandwidth, $P _ { i } ( t )$ is the transmit power of vehicle $i , g _ { i , j } ( t )$ ( )is the channel power gain between vehicle i and (VEC server j, $N _ { 0 }$ is the noise power, $P _ { I } ( t )$ is the transmit power of interference vehicle $I \in \mathcal { V } _ { j } ( t )$ , and $g _ { I , j } ( t )$ is the channel ( ) ( )power gain between the interference vehicle and the VEC server.
+
+The channel power gain is calculated by incorporating the probabilistic LoS and NLoS transmissions into both small-scale and large-scale fading [57]. For uplink communication, the channel power gain between vehicle i and VEC server j at time t can be given as:
+
+$$
+g _ {i, j} (t) = p _ {i, j} ^ {L} \cdot g _ {i, j} ^ {L} (t) + (1 - p _ {i, j} ^ {L}) \cdot g _ {i, j} ^ {N L} (t), \tag {5}
+$$
+
+where $p ^ { L }$ denotes the probability of LoS transmission and $g _ { i , j } ^ { L } ( t ) / \bar { g } _ { i , j } ^ { N L } ( t )$ denotes the channel power gain between vehicle ( ) ( )i and VEC server $j$ for LoS / NLoS transmission, which is calculated as:
+
+$$
+\left\{ \begin{array}{l l} g _ {i, j} ^ {L} (t) = | h _ {i, j} ^ {L} (t) | ^ {2} \cdot \left(L _ {i, j} ^ {L} (t)\right) ^ {- 1} \cdot 1 0 ^ {\frac {- \chi_ {\sigma} ^ {L}}{1 0}}, & \text {(6a)} \\ g _ {i, j} ^ {N L} (t) = | h _ {i, j} ^ {N L} (t) | ^ {2} \cdot \left(L _ {i, j} ^ {N L} (t)\right) ^ {- 1} \cdot 1 0 ^ {\frac {- \chi_ {\sigma} ^ {N L}}{1 0}}, & \text {(6b)} \end{array} \right.
+$$
+
+where $h _ { i , j } ^ { L } ( t ) / h _ { i , j } ^ { N L } ( t ) , ~ L _ { i , j } ^ { L } ( t ) / L _ { i , j } ^ { n L } ( t )$ , and $\chi _ { \sigma } ^ { L } / \chi _ { \sigma } ^ { N L }$ denote ( ) ( ) ( ) ( )the components of small-scale fading, pathloss, and shadowing, respectively for LoS/NLoS communication. For LoS communication, these components are detailed as follows. i) The small-scale fading characteristic of the channel is captured by using a parametric-scalable and good-fitting generalized fading model, i.e., Nakagami-m fading [58]. Specifically,
+
+4The value of $S _ { j }$ depends on the architecture types of SIC receivers (e.g., hard-based or soft-based SIC) in practical systems, which further relies on the capability of the RSU [55].
+
+$h _ { i , j } ^ { L } ( t ) / h _ { i , j } ^ { N L } ( t )$ follows a Nakagami distribution with fading parameter $m ^ { L } / m ^ { N L }$ , i.e., $\int h _ { i , j } ^ { L } ( t ) \sim f _ { A } ( h _ { i , j } ^ { L } ( t ) , m ^ { L } )$ $\{ h _ { i , j } ^ { \ ' \tilde { N } L } ( t ) \sim f _ { A } ( h _ { i , j } ^ { \ ' \tilde { N } L } ( t ) , m ^ { \tilde { N } L } )$
+
+fA h, m 2(m) m·h2m−1·e m pm $\begin{array} { r } { f _ { A } ( h , m ) = \frac { 2 ( m ) ^ { m } \cdot h ^ { 2 m - 1 } \cdot e ^ { ( - \frac { m \cdot h ^ { 2 } } { \overline { { p } } } ) } } { \Gamma ( m ) \cdot \overline { { p } } ^ { m } } } \end{array}$ (− m·h2 ) , where $0 . 5 \leq m \leq 5$ denotes T(m).pm ( ) = Γ( ) 0 5 5the Nakagami fading parameter, p is the average received power in the fading envelope, and $\Gamma ( m )$ is the Gamma Γ( )function. ii) The path loss between vehicle i and VEC server j for $\mathrm { L o S / N L o S }$ communication can be calculated as $\textstyle \int L _ { i , j } ^ { L } ( \bar { t } ) = \frac { ( 4 \pi \cdot d _ { 0 } \cdot f _ { c } ) ^ { 2 } } { c ^ { 2 } } \cdot \bigl ( \frac { d _ { i , j } ( t ) } { d _ { 0 } } \bigr ) ^ { \beta ^ { L } }$ $\begin{array}{c} \begin{array} { r } { \left\{ L _ { i , j } ^ { N L } ( t ) = \frac { ( 4 \pi \cdot d _ { 0 } \cdot f _ { c } ) ^ { 2 } } { c ^ { 2 } } \cdot \Big ( \frac { d _ { i , j } ( t ) } { d _ { 0 } } \Big ) ^ { \beta ^ { N L } } \right.} \end{array}   \end{array}$ c2 (d0 ) )t βNL , where fc is the carrier $f _ { c }$ ( ) = ( )frequency, c is the speed of light, $d _ { 0 }$ is the reference distance, $d _ { i , j } ( t )$ 0is the distance between i and j, and $\beta ^ { L } / \beta ^ { N L }$ is the path ( )loss exponent for LoS/NLoS communication. iii) The shadowing captures the signal attenuation caused by shadowing in transmission, which is a zero-mean Gaussian distributed random variable, i.e., $\left\{ \chi _ { \sigma } ^ { L } ( t ) \sim \mathcal { N } ( 0 , ( \sigma ^ { L } ) ^ { 2 } ) \right.$ χσ (t) ∼ N (0, (σ )2)χNLσ t ∼ N , σNL 2 , where variance σL/σNL $\sigma ^ { L } / \sigma ^ { N L }$ ( ) (0 ( ) )denotes the standard deviation of shadowing for LoS/NLoS transmission [57]. Similarly, the channel power gain $g _ { I , i } ( t )$ ( )between interference vehicle I and VEC server j can be easily obtained by replacing the corresponding parameters.
+
+# C. Offloading Delay and Energy Consumption
+
+1) Offloading Delay: For task $\tau _ { i } ( t )$ generated by vehicle i at ( )time slot t, the service delay of completing the task depends on the offloading strategy $s _ { i } ^ { a }$ .
+
+Local Offloading. When task $\tau _ { i } ( t )$ is processed by vehicle i locally, the delay is given as:
+
+$$
+T _ {i} ^ {0} (t) = \frac {\mathcal {C} _ {i} ^ {\mathrm{req}} (t)}{f _ {i (t)}}, \tag {7}
+$$
+
+where $f _ { i } ( t )$ is the available computation capacity of vehicle i at time t.
+
+Edge Offloading. When task $\tau _ { i } ( t )$ is processed by VEC server $j ,$ the offloading delay mainly consists of transmission delay, computation delay and horizontal migration delay,5 i.e.,
+
+$$
+T _ {i} ^ {j} (t) = \underbrace {T _ {i , j ^ {\text { cur }}} ^ {\text { tran }} (t)} _ {\text { Transmission }} + \underbrace {T _ {i , j} ^ {\text { comp }} (t)} _ {\text { Computation }}
+$$
+
+$$
++ \underbrace {T _ {j ^ {\text { cur }} , j} ^ {\text { hand }} (t) \mathbb {I} _ {(j \neq j ^ {\text { cur }})}} _ {\text { Task   handover }} + \underbrace {T _ {j , j ^ {\text { arr }}} ^ {\text { hand }} (t) \mathbb {I} _ {(j \neq j ^ {\text { arr }})}} _ {\text { Result   handover }}. \tag {8}
+$$
+
+$\begin{array} { r } { i ) \ T _ { i , j ^ { \mathrm { c u r } } } ^ { \mathrm { t r a n } } ( t ) = \frac { \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) } { r _ { i , j } ( t ) } } \end{array}$ is the delay for vehicle i to transmit the task to $\mathrm { V E C } ~ j ^ { \mathrm { c u i } }$ ( )where the vehicle is within the service area. $\begin{array} { r } { i i ) \ T _ { i , j } ^ { \mathrm { c o m p } } ( t ) = \frac { \mathcal { C } _ { i } ^ { \mathrm { r e q } } ( t ) } { f _ { j , i } ( t ) } } \end{array}$ is the execution delay of the task, where $f _ { j , i } ( t )$ ( )is the computation resources that is allocated by VEC server j to the task. iii) Similarly to [37], the horizontal migration delay incorporates task handover delay and result handover delay, i.e., $\begin{array} { r } { T _ { j ^ { \mathrm { c u r } } , j } ^ { \mathrm { h a n d } } ( t ) = \frac { 2 { \mathcal D } _ { i } ^ { \mathrm { i n } } ( t ) } { r _ { f } } } \end{array}$ (rf and $\begin{array} { r } { T _ { j , j ^ { \mathrm { a n d } } } ^ { \mathrm { h a n d } } ( t ) = \frac { 2 { \cal D } _ { i } ^ { \mathrm { o u t } } ( t ) } { r _ { f } } } \end{array}$ Tj,jarr (rf , where rf $r _ { f }$
+
+5The delay of result feedback is omitted for horizontal migration as mentioned in Section III-B.
+
+is the data rate of fiber link. On the one hand, when task is offloaded to the VEC server in whose coverage the vehicle is currently located, the task handover is used to forward the task first from the source VEC server $j ^ { \mathrm { c u r } }$ to the controller, and then from the controller to the selected VEC server $j .$ . On the other hand, when the result is not generated by the VEC server where the vehicle will arrive, the result handover is used to forward the result from VEC server j to the controller, and from the controller to the destination VEC server $j ^ { \mathrm { a r r } }$ with which the vehicle will be attached. Note that $j ^ { \mathrm { a r r } }$ can be estimated by (3). Therefore, the total delay of edge offloading can be obtained as:
+
+$$
+\begin{array}{l} T _ {i} ^ {j} (t) = \frac {\mathcal {D} _ {i} ^ {\text { in }} (t)}{r _ {i , j} (t)} + \frac {2 \mathcal {D} _ {i} ^ {\text { in }} (t)}{r _ {f}} \cdot \mathbb {I} _ {(j \neq j ^ {\text { cur }})} + \frac {\mathcal {C} _ {i} ^ {\text { req }} (t)}{f _ {j , i} (t)} \\ + \frac {2 \mathcal {D} _ {i} ^ {\mathrm{out}} (t)}{r _ {f}} \cdot \mathbb {I} _ {(j \neq j ^ {\mathrm{arr}})}. \tag {9} \\ \end{array}
+$$
+
+Cloud Offloading. When task $\tau _ { i } ( t )$ is processed by cloud server $^ { O , }$ ( ) the offloading delay mainly includes transmission delay, computation delay and vertical migration delay, i.e.,
+
+$$
+T _ {i} ^ {o} (t) = \underbrace {T _ {i , j ^ {\text { cur }}} ^ {\text { tran }} (t)} _ {\text { Transmission }} + \underbrace {T _ {i , o} ^ {\text { comp }} (t)} _ {\text { Computation }} + \overbrace {\underbrace {T _ {j ^ {\text { cur }} , o} ^ {\text { hand }} (t)} _ {\text { Task   handover }} + \underbrace {T _ {o , j ^ {\text { arr }}} ^ {\text { hand }} (t)} _ {\text { Result   handover }}} ^ {\text { Vertical   migration }}. \tag {10}
+$$
+
+$\begin{array} { r } { i ) T _ { i , j ^ { \mathrm { c u r } } } ^ { \mathrm { t r a n } } ( t ) = \frac { \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) } { r _ { i , j } ( t ) } } \end{array}$ is the delay for vehicle i to trithin the current service area. $j ^ { \mathrm { c u r } }$ $i i ) T _ { i , o } ^ { \mathrm { c o m p } } ( t ) =$ $\frac { { \mathcal C } _ { i } ^ { \mathrm { r e q } } ( t ) } { f _ { o , i } ( t ) }$ is the computing delay of the task, wherein $f _ { o , i } ( t )$ ( ) =is the ( )computation resources that is allocated to the task. iii) similarly to edge offloading, the vertical migration delay consists of task handover delay and result handover delay, i.e., $\begin{array} { r } { T _ { j ^ { \mathrm { c u r } } , o } ^ { \mathrm { h a n d } } ( t ) = \frac { \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) } { r _ { c } } } \end{array}$ 三 ,o rc and $\begin{array} { r } { T _ { o , j ^ { \mathrm { a r r } } } ^ { \mathrm { h a n d } } ( t ) = \frac { \mathcal { D } _ { i } ^ { \mathrm { o u t } } ( t ) } { r _ { c } } } \end{array}$ rc , where $r _ { c }$ is the data rate between the ( ) = VEC server and the cloud [35]. Therefore, the total delay of cloud offloading can be obtained as:
+
+$$
+T _ {i} ^ {o} (t) = \frac {\mathcal {D} _ {i} ^ {\mathrm{in}} (t)}{r _ {i , j} (t)} + \frac {\mathcal {C} _ {i} ^ {\mathrm{req}} (t)}{f _ {o , i} (t)} + \frac {\mathcal {D} _ {i} ^ {\mathrm{in}} (t) + \mathcal {D} _ {i} ^ {\mathrm{out}} (t)}{r _ {c}}. \tag {11}
+$$
+
+2) Energy Consumption: Completing task $\tau _ { i } ( t )$ could incur ( )additional costs for vehicle i, VEC server j or cloud server o.
+
+Local Offloading. The energy consumption of vehicle $j$ to execute task $\tau _ { i } ( t )$ locally is widely formulated as:
+
+$$
+E _ {i} ^ {0} (t) = \alpha_ {i} \cdot (f _ {i} (t)) ^ {\tau - 1} \cdot \mathcal {C} _ {i} ^ {\mathrm{req}} (t), \tag {12}
+$$
+
+where $\alpha _ { i } \geq 0$ is the effective switched capacitance of vehicle i’s 0CPU that depends on the CPU chip architecture [59], and $\tau > 0$ is the constant that is typically set as 2 or 3 [60].
+
+Edge/Cloud Offloading. The energy consumption of server $j \in \{ \mathcal { E } , o \}$ to execute task $\tau _ { i } ( t )$ can be given as:
+
+$$
+E _ {j} ^ {i} (t) = \alpha_ {j} \cdot (f _ {j, i} (t)) ^ {\tau - 1} \cdot \mathcal {C} _ {i} ^ {\mathrm{req}} (t), \tag {13}
+$$
+
+where $\alpha _ { j } \geq 0$ denotes the effective switched capacitance of server $j ^ { \cdot } \mathrm { s } \mathrm { C P U }$ .
+
+# D. Utility Model
+
+When task $\tau _ { i } ( t )$ is completed by using the offloading strategy $s _ { i } ^ { a } ( t )$ ( )at time t, the utilities of vehicle i, VEC server j, and cloud server o are formulated as follows.
+
+1) Vehicle Utility: The utility obtained by vehicle $i \in \mathcal V$ from offloading task $\tau _ { i } ( t )$ is formulated as:
+
+$$
+U _ {i} ^ {a} (t) = w _ {i} \cdot \Psi_ {i} ^ {a} (t) - (1 - w _ {i}) C _ {i} ^ {a} (t), \tag {14}
+$$
+
+where $\Psi _ { i } ^ { a } ( t )$ and $C _ { i } ^ { a } ( t )$ are the normalized satisfaction level of Ψ ( ) ( )task completion delay and the normalized cost of task execution, respectively, when selecting offloading strategy $^ { a , }$ and $w _ { i }$ is the weight coefficient of the satisfaction level.
+
+First, the satisfaction function is a term that is widely used in economics, which is formulated as a logarithmic function that is convex and starts from zero. It has been employed to quantify the satisfaction level of task offloading [17], [27]. Based on these studies, the normalized satisfaction level can be calculated as:
+
+$$
+\Psi_ {i} ^ {a} (t) = \frac {\log \left(1 + (T _ {i} ^ {\max} - T _ {i} ^ {a} (t))\right)}{\log \left(1 + T _ {i} ^ {\max}\right)}, \tag {15}
+$$
+
+where $T _ { i } ^ { a } ( t )$ is the total delay for completing task $\tau _ { i } ( t )$ , which ( )can be obtained based on (7), (9) and (11).
+
+Second, the normalized cost of vehicle i can be computed based on the energy consumption for local offloading or the payment for remote offloading, i.e.,
+
+$$
+C _ {i} ^ {a} (t) = \left\{ \begin{array}{l l} \frac {E _ {i} ^ {0} (t)}{E _ {i} ^ {\max}}, & a = 0, \\ \frac {c _ {j , i} (t) \cdot f _ {j , i} (t)}{C _ {i} ^ {\max}}, & a = j,   j \in \{\mathcal {E}, o \}, \end{array} \right. \tag {16a}
+$$
+
+where $E _ { i } ^ { 0 } ( t )$ (given by (12)) is the computation energy consump-( )tion of vehicle i and $E _ { i } ^ { \mathrm { m a x } }$ is the energy constraint of vehicle i [61], $c _ { j , i } ( t )$ is the unit price of the computation resources ( )charged by the VEC server or cloud server, and $f _ { j , i } ( t )$ is the ( )computation resources allocated to vehicle i by server $j ,$ , and $C _ { i } ^ { \mathrm { m a x } }$ is the budget of vehicle i for the costs payed to the servers.
+
+Therefore, $U _ { i } ^ { a } ( t )$ can be obtained based on (12), (14) and (16) as:
+
+$$
+U _ {i} ^ {a} (t) = w _ {i} \cdot \frac {\log \left(1 + (T _ {i} ^ {\max} - T _ {i} ^ {a} (t))\right)}{\log \left(1 + T _ {i} ^ {\max}\right)} - (1 - w _ {i})
+$$
+
+$$
+\left(\frac {\alpha_ {i} \cdot (f _ {i} (t)) ^ {\tau - 1} \cdot \mathcal {C} _ {i} ^ {\mathrm{req}} (t)}{E _ {i} ^ {\max}} \cdot \mathbb {I} _ {(a = 0)} + \frac {c _ {j , i} (t) \cdot f _ {j , i} (t)}{C _ {i} ^ {\max}} \cdot \mathbb {I} _ {(a = j)}\right). \tag {17}
+$$
+
+2) Server Utility: The utility of server $j \in \{ \mathcal { E } , o \}$ obtained by executing task $\tau _ { i } ( t )$ is formulated as the revenue of task ( )processing subtracting the cost of energy consumption:
+
+$$
+U _ {j} ^ {i} (t) = w _ {j} \cdot \mathcal {R} _ {j} ^ {i} (t) - (1 - w _ {j}) C _ {j} ^ {i} (t), \tag {18}
+$$
+
+where $\mathcal { R } _ { j } ^ { i } ( t )$ and $C _ { j } ^ { i } ( t )$ are the normalized revenue and normal-( ) ( )ized cost of server j, respectively, and wj is the weight coefficient of revenue.
+
+First, the normalized revenue of server j to process task $\tau _ { i } ( t )$ can be given as:
+
+$$
+\mathcal {R} _ {j} ^ {i} (t) = \frac {c _ {j , i} (t) \cdot f _ {j , i} (t)}{C _ {j} ^ {\max} \cdot f _ {j} ^ {\max}}, \tag {19}
+$$
+
+where $C _ { j } ^ { \mathrm { m a x } }$ is the maximum unit price of server j’s computation resources.
+
+Second, the normalized energy consumption of server $j$ to process task $\tau _ { i } ( t )$ can be given as:
+
+$$
+C _ {j} ^ {i} (t) = \frac {E _ {j} ^ {i} (t)}{E _ {j} ^ {\max}}, \tag {20}
+$$
+
+where $E _ { j } ^ { i } ( t )$ (given by (13)) is the computation energy con-( )sumption of server j and $E _ { j } ^ { \mathrm { m a x } }$ is the energy constraint of server $j .$ .
+
+Therefore, $U _ { j } ^ { i } ( t )$ can be obtained based on (18), (19), (20), and (13) as:
+
+$$
+U _ {j} ^ {i} (t) = w _ {j} \cdot \frac {c _ {j , i} (t) \cdot f _ {j , i} (t)}{C _ {j} ^ {\max} \cdot f _ {j} ^ {\max}} - (1 - w _ {j}) \cdot \frac {\alpha_ {j} \cdot \left(f _ {j , i} (t)\right) ^ {\tau - 1} \cdot c _ {i} ^ {\operatorname{req}} (t)}{E _ {j} ^ {\max}}. \tag {21}
+$$
+
+3) Social Welfare: Social welfare is employed in this work to quantify the system performance of computation resource allocation and task offloading for the servers and vehicles in the VEC network. Therefore, the social welfare at time t can be given as follows:
+
+$$
+\begin{array}{l} S W (t) = \underbrace {\sum_ {i \in \mathcal {V}} \sum_ {a \in \mathcal {A}} p _ {i} ^ {\text { gen }} (t) s _ {i} ^ {a} (t) U _ {i} ^ {a} (t)} _ {\text { The   total   utility   of   vehicles }} \\ + \underbrace {\sum_ {j \in \{\mathcal {E} , o \}} \sum_ {i \in \mathcal {V}} s _ {i} ^ {j} (t) p _ {i} ^ {\text { gen }} (t) U _ {j} ^ {i} (t)} _ {\text { The   total   utility   of   servers }} \\ = \sum_ {i \in \mathcal {V}} \sum_ {a \in \mathcal {A}} p _ {i} ^ {\text { gen }} (t) \cdot s _ {i} ^ {a} (t) \cdot \left(U _ {i} ^ {a} (t) + U _ {a} ^ {i} (t)\right). \tag {22} \\ \end{array}
+$$
+
+Note that (22) incorporates the local, edge, and cloud offloading strategies. If vehicle i offloads the task locally at time t, i.e., $a = 0$ , then the utility of server $j$ to provide service for vehicle = 0i is 0, i.e., $U _ { 0 } ^ { i } ( t ) = 0$ .
+
+# IV. PROBLEM FORMULATION
+
+The objective of this work can be transformed to maximize the social welfare over T slots by jointly optimizing the task offloading strategy $S _ { t } = \{ s _ { i } ^ { a } ( t ) \} _ { i \in \mathcal { V } , a \in \mathcal { A } , t \in \mathbf { T } }$ , and the = ( )computation resource allocation and pricing strategy $S _ { c } = $ $\{ f _ { j } ^ { i } ( t ) , c _ { j } ^ { i } ( t ) \} _ { j \in \{ \mathscr { E } , o \} , i \in \mathscr { V } , t \in \mathbf { T } }$ =. Therefore, JRATOP can be formu-( ) ( )lated as follows:
+
+$$
+\mathbf {P}: \quad \max _ {S _ {t}, S _ {c}} \sum_ {t = t _ {0}} ^ {\mathbf {T}} S W (t)
+$$
+
+$$
+\text { s.t. } \quad \mathrm{C1}: s _ {i} ^ {a} (t) \in \{0, 1 \}, \forall i \in \mathcal {V} a \in \mathcal {A}
+$$
+
+$$
+\mathrm{C} 2: \sum_ {a \in \mathcal {A}} s _ {i} ^ {a} (t) \leq 1, \forall i \in \mathcal {V}, a \in \mathcal {A}
+$$
+
+$$
+\mathrm{C} 3: p _ {i} ^ {\text { gen }} (t) = \{0, 1 \}, \forall i \in \mathcal {V}
+$$
+
+$$
+\mathrm{C} 4: s _ {i} ^ {a} (t) \cdot T _ {i} ^ {a} (t) \leq T _ {i} ^ {\max} (t), \forall i \in \mathcal {V}, \forall j \in \{\mathcal {E}, o \}, a \in \mathcal {A}
+$$
+
+$$
+\mathrm{C} 5: s _ {i} ^ {a} (t) \cdot T _ {i, j ^ {\text { cur }}} ^ {\text { tran }} (t) \leq T _ {i, j ^ {\text { cur }}} ^ {\text { soj }}, \forall i \in \mathcal {V}, \forall j ^ {\text { cur }}, a \in \{\mathcal {E}, o \},
+$$
+
+${ \mathrm { C } } 6 : s _ { i } ^ { a } \cdot T _ { j , j ^ { \mathrm { a r r } } } ^ { \mathrm { h a n d } } ( t ) \leq T _ { i , j ^ { \mathrm { a r r } } } ^ { \mathrm { s o j } } , \ \forall i \in \mathcal { V } , \forall j \in \{ \mathcal { E } , o \} , \forall a \in \{ \mathcal { E } , o \}$ Tj,jarr   
+$\mathbf { C } 7 : v ^ { \operatorname* { m i n } } \leq v _ { i } ( t ) \ \leq v ^ { \operatorname* { m a x } } , \forall i \in \mathcal { V }$   
+$\mathbf { C 8 } : \sum _ { i \in \mathcal { V } } s _ { i } ^ { j } ( t ) \cdot f _ { j , i } ( t ) \leq f _ { j } ^ { \operatorname* { m a x } } , \forall j \in \{ \mathcal { E } , o \}$   
+$\mathbf { C 9 } : \sum _ { i \in \mathcal { V } } s _ { i } ^ { j } ( t ) \leq N _ { j } ^ { \mathrm { c o r e } } , \forall j \in \{ \mathcal { E } , o \}$   
+${ \mathrm { C 1 0 } } : s _ { i } ^ { 0 } ( t ) \cdot E _ { i } ^ { 0 } ( t ) \leq E _ { i } ^ { \operatorname* { m a x } } , \forall i \in \mathcal { V }$   
+$\mathbf { C } 1 1 : \sum _ { i \in \mathcal { V } } s _ { i } ^ { j } ( t ) \cdot E _ { j } ^ { i } ( t ) \leq E _ { j } ^ { \operatorname* { m a x } } , \forall j \in \{ \mathcal { E } , o \}$   
+${ \mathrm { C 1 2 : ~ } } s _ { i } ^ { a } ( t ) \cdot c _ { a , i } ( t ) \cdot f _ { a , i } ( t ) \leq C _ { i } ^ { \operatorname* { m a x } } , \forall i \in \mathcal { V } , \forall a \in \{ \mathcal { E } , o \}$ (23)
+
+where $T _ { i , j \mathrm { c u r } } ^ { \mathrm { s o j } }$ and T soji,jarr $T _ { i , j ^ { \mathrm { a r r } } } ^ { \mathrm { s o j } }$ can be obtained by (2), and $j ^ { \mathrm { a r r } }$ can be obtained by (3). Constraints C1 and C2 are the values of offloading strategies of vehicles, which indicates that the vehicle can only select one strategy as its offloading decision. Constraint C3 represents each vehicle generates at mos time slot. Constraint C4 is the delay constraint of the task, which guarantees that the task is completed before the deadline. Constraint C5 ensures that the task uploading is completed before vehicle i moving out of the coverage of the connected VEC server $j ^ { \mathrm { c u r } }$ . Constraint C6 guarantees that the result dispatch is completed before vehicle i moving out of the coverage of VEC server $j ^ { \mathrm { a r r } }$ with which it will bstituting $T _ { i } ^ { \mathrm { m o v e } } = T _ { i , j ^ { \mathrm { c u r } } } ^ { \mathrm { t r a n } } ( t ) + T _ { j ^ { \mathrm { c u r } } , j } ^ { \mathrm { h a n d } } ( t ) \mathbb { I } _ { ( j \neq j ^ { \mathrm { c u r } } ) } + T _ { i , j } ^ { \mathrm { c o m p } } ( \dot { t } )$ $j ^ { \mathrm { a r r } }$ sub-into (3), where $T _ { i } ^ { \mathrm { m o v e } } ( j \in \{ \mathcal { E } , o \} )$ ( ) ( = ) + ( )is the moving duration before the result of task is generated. Constraint C7 poses constraints on the velocity of each vehicle. Constraints C8 and C9 limit the computation resources and the number of CPU cores, respectively, for each server. Constraints C10 and C11 constrain the energy budgets of vehicles and servers, respectively. Constraint C12 represents a vehicle’s maximum payment for the computational resources provided by servers.
+
+Theorem 1. The problem P formulated in (23) is NP-hard.
+
+Proof. The detailed proof is given in Appendix A of the supplemental material, available online.
+
+# V. BARGAIN-MATCH
+
+To solve problem P, the algorithm of BARGAIN-MATCH is proposed for resource allocation and task offloading by using the bargaining and matching schemes. BARGAIN-MATCH mainly consists of the following two parts. i) For intra-server resource allocation, the bargaining game is used to stimulate the negotiation between the requesting vehicle and server on resource allocation and price in Section V-A. ii) For inter-server task offloading, the many-to-one matching is constructed between tasks and servers to stimulate both edge-edge collaboration for horizontal task migration and edge-cloud collaboration for vertical task migration.
+
+# A. Resource Allocation and Pricing: A Bargaining Game-Based Scheme
+
+1) Fundamentals: Denote the set of requesting vehicles that have tasks to upload at time t as $\mathcal { V } ^ { \mathrm { r e q } } ( t ) \stackrel { - } { = } \{ i | i \stackrel { - } { \in } \mathcal { V } , p _ { i } ^ { \mathrm { g e n } } ( t ) =$ $1 , s _ { i } ^ { 0 } ( t ) = 0 \}$ ( ) = ( ) =. A finite-time bargaining game is constructed to 1 ( ) = 0stimulate the negotiation between the requesting vehicle and its expected server on the decisions of resource allocation and pricing in period t. The bargaining game is defined as a triplet of $\left( \mathcal { P } _ { B } , \boldsymbol { S } _ { B } , \mathcal { U } _ { B } \right)$ Δ, which is as follows:
+
+(- $\mathcal { P } _ { B } = \{ i \in \mathcal { V } ^ { \mathrm { r e q } } ( t ) , j \in \{ \mathcal { E } , o \}$ denotes the parties, i.e., a = ( )seller and a buyer. Vehicle i acts as a buyer that aims to offload its task by buying the required computation resources from the server. Moreover, server j acts as a seller who aims to execute the task of the vehicle by allocating the computation resources and charging from the vehicle.
+
+${ \cal S } _ { B } = \{ f _ { j , i } ( t ) , c _ { j , i } ( t ) \}$ denotes the set of strategies. The strategy of vehicle i is to request the satisfactory amount of computation resources from the server, and the strategy of server j is to decide the satisfactory price of the computation resources that are sold to vehicle i.
+
+\- $\mathcal { U } _ { B } = \{ U _ { i } ^ { j } ( t ) , U _ { j } ^ { i } ( t ) \}$ } denotes the utilities of vehicle i and server j, wherein $U _ { i } ^ { j } ( t )$ and $U _ { j } ^ { i } ( t )$ are given in (17) and (21), respectively.
+
+2) Resource Allocation and Pricing: In this section, the optimal resource allocation and pricing strategies are presented.
+
+Theorem 2. For vehicle i, the expected optimal amount of computation resources it intends to request from target server j to offload task $\tau _ { i } ( t )$ is obtained as: $f _ { j , i } ^ { * } ( t ) =$ wi·Cmax 2 iF var1,cj,i t − T maxi t ·cj,i t · −wi , where F var , $\begin{array} { r } { \overline { { F ( v a r _ { 1 } , c _ { j , i } ( t ) ) - \log ( 1 + T _ { i } ^ { \operatorname* { m a x } } ( t ) ) \cdot c _ { j , i } ( t ) \cdot ( 1 - w _ { i } ) } } . } \end{array}$ $F ( v a r _ { 1 }$ $c _ { j , i } ( t ) )$ ( )) log(1+ ( )) ( ) (1 )is given by (24) shown at the bottom of next ( ))page, which is the function of variables var and $c _ { j , i } ( t )$ . $\begin{array} { r } { v a r _ { 1 } = \frac { \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) } { r _ { i , j } ( t ) } + \frac { 2 \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) } { r _ { f } } \cdot \mathbb { I } _ { ( j \ne j ^ { \mathrm { c u r } } ) } + \frac { 2 \mathcal { D } _ { i } ^ { \mathrm { o u t } } ( t ) } { r _ { f } } \cdot \mathbb { I } _ { ( j \ne j ^ { \mathrm { a r r } } ) } } \end{array}$ 2Dini (t)rf · I j
+ jcur rf 1 ( )2Douti (t)r · I j
+ jarr for edge f 1server $j \in \mathcal E$ ( ) +, and $\begin{array} { r } { v a \dot { r } _ { 1 } = \frac { \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) } { r _ { i , j } ( t ) } + \frac { \mathcal { D } _ { i } ^ { \mathrm { i n } } ( t ) + \mathcal { D } _ { i } ^ { \mathrm { o u t } } ( t ) } { r _ { c } } } \end{array}$ + ( = )Dini (t)+Douti (t)r for cloud server $j = o$ .
+
+=Proof. The detailed proof is given in Appendix B of the supplemental material, available online.
+
+Lemma 1. When the controller decides to offload task $\tau _ { i } ( t )$ to server $j \in \{ \mathcal { E } , o \}$ ( )at time slot t, there exist a lower bound and an upper bound for the unit price of the computation resources that are allocated to the task, i.e., $c _ { j , i } ^ { \operatorname* { m i n } } ( t ) \leq c _ { j , i } ( t ) \leq$ $c _ { j , i } ^ { \operatorname* { m a x } } ( t )$ , where $\begin{array} { r } { c _ { j , i } ^ { \mathrm { m i n } } ( t ) = \frac { ( 1 - w _ { j } ) \alpha _ { j } \cdot ( f _ { j , i } ( t ) ) ^ { \top - 2 } \cdot \mathcal { C } _ { i } ^ { \mathrm { r e q } } ( t ) \cdot \mathcal { C } _ { j } ^ { \mathrm { m a x } } \cdot f _ { j } ^ { \mathrm { m a x } } } { w _ { j } \cdot E _ { \cdot } ^ { \mathrm { m a x } } } } \end{array}$ and $\begin{array} { r } { c _ { j , i } ^ { \operatorname* { m a x } } ( t ) = \frac { w _ { i } \log \left( 1 + T _ { i } ^ { \operatorname* { m a x } } - T _ { i } ^ { j } ( t ) \right) \cdot C _ { i } ^ { \operatorname* { m a x } } } { ( 1 - w _ { i } ) \cdot f _ { i , i } ( t ) \cdot \log \left( 1 + T _ { i } ^ { \operatorname* { m a x } } \right) } } \end{array}$ .
+
+(1 ) ( ) log(1+ )Proof. The detailed proof is given in Appendix C of the supplemental material, available online.
+
+According to Lemma 1, the bid-ask spread can be obtained as $\Delta c _ { j , i } ( t ) = c _ { j , i } ^ { \operatorname* { m a x } } ( t ) - c _ { j , i } ^ { \operatorname* { m i n } } ( t )$ . The trade on the computation process of two players bargaining over the pie of size $\Delta c _ { j , i } ( t )$ Δ ( )according to [62]. Obviously, both bargainers desire to reach an agreement on the proposal of the partition earlier because their utilities will be discounted over time. Therefore, the discount factor is introduced in the bargaining game to describe the discount of the partition in the future. The discount factor captures the patience levels of the bargainers. In other words, the smaller discount factor indicates that the players are impatient with the delay of the negotiation. Accordingly, the discount factors of vehicle i and server j are formulated as follows:
+
+$$
+\epsilon_ {i} (t) = 1 - \frac {T _ {i , j} ^ {\mathrm{tran}} (t)}{T _ {i} ^ {\mathrm{max}} (t)}, \tag {25}
+$$
+
+$$
+\epsilon_ {j} (t) = 1 - \frac {T _ {i , j} ^ {\mathrm{comp}} (t)}{T _ {i} ^ {\mathrm{max}} (t)}. \tag {26}
+$$
+
+For vehicle i, it is more impatient if it takes longer time to upload the task to the VEC server, leading to the lower value of $\epsilon _ { i } ( t )$ . ( )For VEC server j, it is more impatient if it takes longer time to execute the task. Besides, the larger task deadline $T _ { i } ^ { \operatorname* { m a x } } ( t )$ ( )indicates that the players have higher endurance to the delay, leading to higher values of $\epsilon _ { i } ( t )$ and $\epsilon _ { j } ( t )$ .
+
+# Lemma 2.
+
+The bargaining game has an unique perfect partition. In the period $T ^ { b } \in T ( n )$ in which vehicle i makes a proposal, the optimal partitions are given as:
+
+$$
+\left\{ \begin{array}{l} \delta_ {i} ^ {i ^ {*}} (t) = \epsilon_ {i} (t) - \frac {(1 - \epsilon_ {i} (t)) \Big (1 - (\epsilon_ {i} (t) \epsilon_ {j} (t)) ^ {\lceil \frac {T ^ {b}}{2} \rceil} \Big)}{1 - \epsilon_ {i} (t) \epsilon_ {j} (t)}, \\ \delta_ {j} ^ {i ^ {*}} (t) = \frac {(1 - \epsilon_ {i} (t)) \Big (2 - \epsilon_ {i} (t) \epsilon_ {j} (t) - (\epsilon_ {i} (t) \epsilon_ {j} (t)) ^ {\lceil \frac {T ^ {b}}{2} \rceil} \Big)}{1 - \epsilon_ {i} (t) \epsilon_ {j} (t)}. \end{array} \right.
+$$
+
+In the period $T ^ { b } \in T ( n )$ when server $j$ makes a proposal, the ( )optimal partitions are given as:
+
+$$
+\left\{ \begin{array}{l} \delta_ {i} ^ {j ^ {*}} (t) = \frac {(1 - \epsilon_ {j} (t)) \Big (1 - (\epsilon_ {i} (t) \epsilon_ {j} (t)) ^ {\lceil \frac {T ^ {b}}{2} \rceil} \Big)}{1 - \epsilon_ {i} (t) \epsilon_ {j} (t)}, \\ \delta_ {j} ^ {j ^ {*}} (t) = \frac {\epsilon_ {j} (t) (1 - \epsilon_ {i} (t)) - (1 - \epsilon_ {j} (t)) (\epsilon_ {i} (t) \epsilon_ {j} (t)) ^ {\lceil \frac {T ^ {b}}{2} \rceil}}{1 - \epsilon_ {i} (t) \epsilon_ {j} (t)}. \end{array} \right.
+$$
+
+Proof. The detailed proof is given in Appendix D of the supplemental material, available online.
+
+Theorem 3. The optimal price of computation resource $c _ { j , i } ^ { * } ( t )$ ( )that the VEC server j charges vehicle i is obtained as: 1) in the period in which vehicle i makes a proposal, $c _ { j , i } ^ { * } ( t ) = c _ { j , i } ^ { \operatorname* { m a x } } ( t ) -$ $\Delta c _ { j , i } ( t ) \cdot \delta _ { i } ^ { i ^ { * } } ( t ) ; 2 )$ in the period in which VEC server j makes Δ ( )a proposal, $c _ { j , i } ^ { * } ( t ) = c _ { j , i } ^ { \operatorname* { m a x } } ( t ) - \Delta c _ { j , i } ( t ) \cdot \delta _ { i } ^ { j ^ { * } } ( t )$ .
+
+( ) = ( ) Δ ( ) ( )Proof. The detailed proof is given in Appendix E of the supplemental material, available online.
+
+Corollary 1. It can be concluded that a deal on the optimal computation resource allocation $f _ { j , i } ^ { * } ( t )$ and pricing $c _ { j , i } ^ { * } ( t )$ can be ( )achieved by (27) and (28), respectively, when $f _ { j , i } ^ { * } ( t )$ ( )and $c _ { j , i } ^ { * } ( t )$ satisfy Theorems 2 and 3 simultaneously.
+
+$$
+f _ {j, i} ^ {*} (t) = \frac {2 w _ {i} \cdot C _ {i} ^ {\max}}{F \left(v a r _ {1} , c _ {j , i} ^ {*} (t)\right) - \log \left(1 + T _ {i} ^ {\max} (t)\right) \cdot c _ {j , i} (t) \cdot \left(1 - w _ {i}\right)}, \tag {27}
+$$
+
+$$
+c _ {j, i} ^ {*} (t) = \left\{ \begin{array}{l l} c _ {j, i} ^ {\max} (t) - \Delta c _ {j, i} (t) \cdot \delta_ {i} ^ {i ^ {*}} (t), & \text {(28a)} \\ c _ {j, i} ^ {\max} (t) - \Delta c _ {j, i} (t) \cdot \delta_ {i} ^ {j ^ {*}} (t). & \text {(28b)} \end{array} \right.
+$$
+
+Algorithm 1: Resource Allocation and Pricing.   
+Input: Vehicle i, VEC server j
+Output: The optimal resource allocation and pricing strategy $s_{j,i}^{*}$ between i and j
+
+1 Initialization: $U_{i}^{j}(t) = 0$ ; $U_{j}^{i}(t) = 0$ ;
+
+2 VEC server j sets the optimal allocation as $f_{j,i}^{*}(t) = f_{j}^{avl}$ ;
+
+3 Calculate the optimal price $c_{j,i}^{*}(t)$ based on Eq. (28);
+
+4 Calculate $U_{i}^{j}(t)$ for vehicle i based on Eq. (17);
+
+5 Calculate $U_{j}^{i}(t)$ for VEC server j based on Eq. (21);
+
+6 if $U_{i}^{j}(t) > 0$ && $U_{j}^{i}(t) > 0$ then
+
+    // An agreement is reached.
+
+7 return $s_{j,i}^{*}(t) = (f_{j,i}^{*}(t), c_{j,i}^{*}(t))$ ;
+
+8 else if $U_{i}^{j}(t) > 0$ && $U_{j}^{i}(t) < 0$ then
+
+9 Vehicle i proposes the optimal price $c_{j,i}^{*}(t)$ based on Eq. (28a);
+
+10 else if $U_{i}^{j}(t) < 0$ && $U_{j}^{i}(t) > 0$ then
+
+11 VEC server j proposes the optimal price $c_{j,i}^{*}(t)$ based on Eq. (28b);
+
+12 else
+
+13 Either of the players can propose the optimal price $c_{j,i}^{*}(t)$ based on Eq. (28);
+
+14 return $s_{j,i}^{*} = (f_{j,i}^{*}(t), c_{j,i}^{*}(t))$ ;
+
+Based on the result of optimal resource allocation and pricing, a negotiation approach between vehicle i and VEC server j that intend to conclude a transaction for task offloading is presented in Algorithm 1. The negotiation is mainly based on the pricing rule, which is defined as follows.
+
+Definition 1. Pricing Rule. Before the transaction, VEC server j initially sets the optimal resource allocation $f _ { j , i } ^ { * } ( t )$ as ( )its available computation resource. Then, the resource price is updated based on the following rules.
+
+- If $U _ { i } ^ { j } ( t ) > 0 \& \& U _ { j } ^ { i } ( t ) > 0$ , an agreement on the optimal ( ) 0 && ( ) 0resource allocation and pricing is reached.   
+- If $\cdot U _ { i } ^ { j } ( t ) > 0 \& \& U _ { j } ^ { i } ( t ) < 0$ , vehicle i proposes the optimal ( ) 0 && (price based on (28a).   
+- If $U _ { i } ^ { j } ( t ) < 0 \ \& \& \ U _ { j } ^ { i } ( t ) > 0$ , VEC server j proposes the ( ) 0 && ( ) 0optimal price based on (28b).   
+- I $: U _ { i } ^ { j } ( t ) < 0 \& \& U _ { j } ^ { i } ( t ) < 0 ,$ either VEC server j or vehicle i can propose the optimal price.
+
+# B. Offloading Strategy Selection: A Matching-Based Scheme
+
+Denote the tasks that have not been decided where to offload as ${ \mathcal { T } } ^ { \mathrm { r e q } } ( t ) = \{ { \mathcal { T } } _ { i } ( t ) | i \in { \mathcal { V } } \}$ . Then the offloading strategy of (each task $k \in \mathcal { T } ^ { \mathrm { r e q } } ( t )$ is decided using a many-to-one matching ( )scheme. Specifically, if task k is matched with VEC server $j \in \mathcal E .$ , it will be offloaded horizontally from VEC server $j ^ { \mathrm { c u r } }$ to VEC
+
+$$
+F (v a r _ {1}, c _ {j, i} (t)) = \sqrt {\frac {c _ {j , i} (t) \log (1 + T _ {i} ^ {\max} (t)) (1 - w _ {i}) \left(c _ {j , i} (t) \cdot \mathcal {C} _ {i} ^ {\mathrm{req}} (t) \cdot \log (1 + T _ {i} ^ {\max} (t)) (1 - w _ {i}) + 4 \mathcal {C} _ {i} ^ {\mathrm{max}} w _ {i} \left(1 + T _ {i} ^ {\max} (t) - v a r _ {1}\right)\right)}{\mathcal {C} _ {i} ^ {\mathrm{req}} (t)}} \tag {24}
+$$
+
+server $j ;$ if it is matched with server $^ { O , }$ it will be offloaded vertically from VEC server $j ^ { \mathrm { c u r } }$ to the cloud.
+
+1) Fundamentals: The matching is described as a triplet of $( \mathcal { P } _ { M } , \Omega , \Phi )$ :
+
+- $\mathcal { P } _ { M } = ( \mathcal { T } ^ { \mathrm { r e q } } ( t ) , \{ \mathcal { E } , o \} )$ denotes two disjoint sets of play-= (ers where $\mathcal { T } ^ { \mathrm { r e q } } ( t ) = \{ \mathcal { T } _ { i } ( t ) | i \in \mathcal { V } \}$ is the set of tasks that ( ) = ( )have not been decided where to offload currently, and $\{ \mathcal { E } , o \}$ is the set of servers.   
+- $\dot { \boldsymbol \Omega } = \dot { ( \Omega _ { k } ^ { j } , \Omega _ { j } ^ { k } ) }$ denotes the preference lists of the tasks and Ω = (Ω Ω )servers. Each task $k \in \mathcal { T } ^ { \mathrm { r e q } } ( t )$ has a descending ordered ( )preferences on the servers, i.e., $\Omega _ { k } ^ { j } = \{ j | j \in \{ \mathcal { E } , o \} , j \succ _ { i }$ $j ^ { \prime } \}$ , where $\succ _ { k }$ Ω =denotes the preference of task k towards the servers. Furthermore, each server $j \in \{ \mathcal { E } , o \}$ has a descending ordered preference list over the tasks, i.e., $\Omega _ { i } ^ { k } = \{ k \in \mathcal { T } ^ { \mathrm { r e q } } ( t ) , \bar { k } \succ _ { j } k ^ { \prime } .$ .   
+- $\Phi ^ { ^ { \prime } } \subseteq \{ k | k \in { \mathcal { T } } ^ { \mathrm { r e q } } ( t ) \} \times \{ { \mathcal { E } } , o \}$ is the many-to-one match-Φ ( )ing between the tasks and servers. Each task k $\in \mathcal { T } ^ { \mathrm { r e q } } ( t )$ can be matched with at most one server, i.e., $\Phi ( k ) \in \{ \mathcal { E } , o \}$ ), and each server $j \in \{ \mathcal { E } , o \}$ Φ( )can be matched with multiple tasks, i.e., $\Phi ( j ) \subseteq \{ k | k \in { \mathcal { T } } ^ { \mathrm { r e q } } ( t ) \}$ .
+
+Φ( ) ( )2) Preference List Construction: The preference lists are constructed as follows.
+
+a) Predict the optimal resource allocation $f _ { j , i } ^ { * } ( t )$ and price $c _ { j , i } ^ { * } ( t )$ allocated by server $j$ to each task $k = \mathcal { T } _ { i } ( t ) \in$ $\check { T } ^ { \mathrm { r e q } } ( t )$ based on Algorithm 1. Note that $k = \mathcal { T } _ { i } ( t )$ ( )means ( ) =that task k is generated by vehicle i at time t.   
+b) Calculate the values of preference for each server $j \in$ $\{ \mathcal { E } , o \}$ on tasks $k \in \mathcal { T } ^ { \mathrm { r e q } } ( t )$ as:
+
+$$
+\rho_ {j} (k) = U _ {j} ^ {i} (t), k = \mathcal {T} _ {i} (t), \tag {29}
+$$
+
+where $U _ { j } ^ { i } ( t )$ is the utility of server $j$ to process task k of ( )vehicle i (in (18)).
+
+c) Construct the matching list for each server $j \in \{ \mathcal { E } , o \}$ by ranking the preference values as a descending order:
+
+$$
+\rho_ {j} (k) > \rho_ {j} (k ^ {\prime}) \Leftrightarrow k \succ_ {j} k ^ {\prime}, \Omega_ {j} ^ {k} = \{k, k ^ {\prime} \} \tag {30}
+$$
+
+d) Calculate the preference values of each task $k \in \mathcal { T } ^ { \mathrm { r e q } } ( t )$ on each server $j \in \{ \mathcal { E } , o \}$ as:
+
+$$
+\rho_ {k} (j) = U _ {i} ^ {j} (t), k = \mathcal {T} _ {i} (t) \tag {31}
+$$
+
+where $U _ { i } ^ { j } ( t )$ is the utility obtained by vehicle i when its ( )task k is processed by server $j$ at time t.
+
+e) Construct the matching list for each task $k \in \mathcal { T } ^ { \mathrm { r e q } } ( t )$ by (ranking the preference values as a descending order:
+
+$$
+\rho_ {k} (j) > \rho_ {k} (j ^ {\prime}) \Leftrightarrow j \succ_ {i} j ^ {\prime}, \Omega_ {k} ^ {j} = \{j, j ^ {\prime} \}. \tag {32}
+$$
+
+3) Matching Construction: The matching scheme is implemented as follows.
+
+a) The rejected set is initialized as ${ \mathcal { T } } ^ { \mathrm { r e j } } ( t ) = { \mathcal { T } } ^ { \mathrm { r e q } } ( t )$ .   
+b) Select the most preferred server $j ^ { \prime } = \Omega _ { k } ^ { j } [ 0 ]$ ( )for each task $k \in \mathcal { T } ^ { \mathrm { r e j } }$ , and adds $j ^ { \prime }$ = Ω [0]to the matching list of each task temporarily:
+
+$$
+\Phi (k) = \Phi (k) \cup j ^ {\prime}. \tag {33}
+$$
+
+Algorithm 2: Matching Algorithm for Tasks and Servers in Time Slot t.   
+Input: The requesting vehicle set $\mathcal{V}^{req}(t)$ , task set $\mathcal{T}^{\mathrm{req}}(t)=\{\mathcal{T}_{i}(t)|i\in\mathcal{V}^{\mathrm{req}}(t),\text{and server set}\{\mathcal{E},o\}$ Output: The optimal matching list $\Phi(t)$ , the offloading strategy $S_{\mathrm{off}}^{*}(t)$ , and the resource allocation strategy $S_{\mathrm{all}}^{*}(t)$ .
+
+1 Initialization: $\mathcal{T}^{\mathrm{rej}}(t)=\mathcal{T}^{\mathrm{req}}(t),\mathcal{E}'=\emptyset,\Phi^{*}=\emptyset;$ // Preference lists construction
+
+2 for $k\in\mathcal{T}^{\mathrm{req}}(t)$ do
+
+3    for $j\in\{\mathcal{E},o\}$ do
+
+4    Call Algorithm 1 for $s_{j,i}^{*}(t)=\left(f_{j,i}^{*}(t),c_{j,i}^{*}(t)\right)$ ;
+
+5    Calculate the preference values of server j on task k as Eq. (29);
+
+6    Construct the matching list of server j based on Eq. (30);
+
+7    Calculate the preference values of task k on server j as Eq. (31);
+
+8    Construct the matching list of task k as Eq. (32);
+
+9    end
+
+10 end
+
+// Matching construction
+
+11 while There exists do
+
+12    for task $k=\mathcal{T}_{i}(t)\in\mathcal{T}^{\mathrm{rej}}(t)$ do
+
+13    Select the most preferred server $j'$ ;
+
+14    Update the preference list of k as Eq. (33);
+
+15    Update the preference list of $j'$ as Eq. (34);
+
+16    end
+
+17    for server $j\in\{\mathcal{E}',o\}$ that receives new requests do
+
+18    Update matching list based on Eq. (35);
+
+19    Update $\mathcal{T}^{\mathrm{rej}}(t)$ based on (36);
+
+20    if $D_{j}\neq\emptyset$ then
+
+21    for task $k\in D_{j}$ do
+
+22    Update the preference list as Eq. (37a);
+
+23    Update the matching list as Eq. (37b);
+
+24    end
+
+25    end
+
+26    end
+
+27 end
+
+28 return $\Phi(t)$ , $S_{\mathrm{off}}^{*}(t)=\{s_{i}^{a*}(t)|a^{*}=\Phi^{*}(k),k=\mathcal{T}_{i}(t)\in\mathcal{T}^{\mathrm{req}}(t)\}$ , $S_{\mathrm{all}}^{*}(t)=\{s_{j,i}^{*}(t)|j\in\{\mathcal{E},o\},k=\mathcal{T}_{i}(t)\in\Phi^{*}(j)\}$ ;
+
+c) If task k prefers server $j ^ { \prime } \in \{ \mathcal { E } , o \}$ , add task k to the matching list of server $j ^ { \prime }$ temporarily:
+
+$$
+\Phi (j ^ {\prime}) = \Phi (j ^ {\prime}) \cup k. \tag {34}
+$$
+
+d) Update the matching list $\Phi ( j )$ of each server $j \in \{ \mathcal { E } , o \}$ Φ( )by remaining the top-n most preferred tasks and removing
+
+the less preferred tasks:
+
+$$
+\left\{ \begin{array}{l l} | \Phi (j) | \leq n \leq N _ {j} ^ {\text { core }}, \\ \sum_ {k \in \Phi (j)} f _ {j, i} ^ {*} (t) \leq f _ {j} ^ {\max}, k = \mathcal {T} _ {i} (t), & \text {(35a)} \\ \Phi (j) = \Phi (j) \setminus D _ {j} & \text {(35b)}, \end{array} \right.
+$$
+
+where n is the number of server j’s CPU cores that are idle at the current time, $N _ { i } ^ { \mathrm { c o r e } }$ is the total number of server $j ^ { \cdot } \mathrm { s } \mathrm { C P U }$ cores, and $D _ { j }$ is the set of less preferred tasks of server $j .$
+
+e) Add the tasks in $D _ { j }$ to the rejected set:
+
+$$
+\mathcal {T} ^ {\text { rej }} (t) = \mathcal {T} ^ {\text { rej }} (t) \cup D _ {j}. \tag {36}
+$$
+
+f) Update the preference list and matching list of each deleted task $k \in D _ { j } \colon$
+
+$$
+\left\{ \begin{array}{l l} \Omega_ {k} ^ {j} = \Omega_ {k} ^ {j} \setminus \{j \}, & (3 7 \mathrm{a}) \\ \Phi (k) = \Phi (k) \setminus \{j \}, & (3 7 \mathrm{b}) \end{array} \right.
+$$
+
+g) For the tasks $k = \mathcal T _ { i } ( t ) \in \mathcal T ^ { \mathrm { r e j } } ( t )$ that are deleted in the = ( ) ( )last iteration, repeat the steps b) to d) until all tasks have been matched with a server, or the unmatched tasks have been rejected by all servers.
+
+# C. Main Steps of BARGAIN-MATCH and Analysis
+
+In this section, the main steps of BARGAIN-MATCH is shown in Algorithm 3, and the corresponding stability, optimality, and computational complexity are presented.
+
+1) Stability: Definition 2. Blocking pair. Assuming that k ∈ $\tau ^ { \mathrm { { r e q } } } ( t )$ and $j \in \{ \mathcal { E } , o \}$ are not matched with each other under ( )matching , i.e., $i \neq \Phi ( j )$ and $j \neq \Phi ( i )$ ,  is blocked by the Φblocking pair $( i , j )$ = Φ( ) = Φ( ) Φif and only if i and j prefer each other to $j ^ { \prime } = \Phi ( i )$ and $i ^ { \prime } = \Phi ( j )$ , respectively.
+
+= Φ( ) = Φ( )Definition 3. Stable matching. A matching is stable if and only if there exists no blocking pair [63].
+
+Theorem 4. The matching  proposed by this work is stable for every $k \in \mathcal { T } ^ { \mathrm { r e q } } ( t )$ and $j \in \{ \mathcal { E } , o \}$ .
+
+( )Proof. The detailed proof is given in Appendix F of the supplemental material, available online.
+
+2) Optimality: Theorem 5. The matching  proposed by this work is weak Pareto optimal for each $k \in \mathcal { T } ^ { \mathrm { r e q } }$ and $j \in \{ \mathcal { E } , o \}$ .
+
+Proof. The detailed proof is given in Appendix G of the supplemental material, available online.
+
+3) Complexity Analysis: Theorem 6. BARGAIN-MATCH has a polynomial worst-case complexity in each time slot, i.e., $\mathcal { O } ( ( | \mathcal { E } | + 1 ) \cdot ( 2 | \mathcal { V } | + \operatorname* { m i n } \{ | \mathcal { E } | + 1 , | \mathcal { V } | \} ) )$ , where |V | and |E | (( + 1) (2 + min + 1 ))are the number of vehicles and VEC servers, respectively.
+
+Proof. The detailed proof is given is Appendix H of the supplemental material, available online.
+
+# VI. SIMULATION RESULTS AND ANALYSIS
+
+# A. Simulation Setup
+
+In this section, the proposed approach is evaluated by simulations implemented in MATLAB(R) 9.9 (R2020b) in a 2.70 GHz Intel Core i7 processor. The road scenario is generated by the Automated Driving Toolbox 3.2, where 30 VEC servers are placed on a 10 km 6-lane bidirectional road and 100 vehicles are randomly located on the road initially. Moreover, the vehicles run at the speed ranges of [2, 30] m/s in either direction. The default values of the simulation parameters are listed in Table II.
+
+Algorithm 3: BARGAIN-MATCH.   
+Input: V, E, T
+Output: SW
+
+1 Initialization: Initialize time t = 0, social welfare
+SW = 0, initial positions of vehicles Pi, i ∈ V, and
+positions of servers Pj, j ∈ {E};
+
+2 while t ≤ T do
+
+3 Create a list Treq(t) for the tasks that have not
+been determined where to be offloaded;
+
+4 Call Algorithm 2 to obtain Φ*(t), S*off(t), and
+S*all(t);
+
+5 if Φ ≠ ∅ then
+
+6    for j ∈ Φ do
+    // Resource trading
+    Allocate resource fj,i(t) to i;
+    Charge cj,i(t) for per unit of resource on
+    vehicle i;
+    // Task offloading
+    Add the task k ∈ Φ(j) to the task list of
+    server j;
+    // social welfare calculation
+    Calculate the current social welfare SW(t)
+    based on Eq. (22);
+    // State update
+    Update the task processing list of server j;
+    Update the available computation
+    resources of server j;
+    end
+
+14 end
+
+15 Calculate the social welfare SW = SW + SW(t);
+16 if t % T0 == 0 then
+17    Update the mobility of vehicles;
+18 end
+
+19 Update time t = t + Δt;
+
+20 end
+
+21 return SW;
+
+This work evaluates the proposed BARGAIN-MATCH in comparison with three benchmark schemes, i.e., the entire local offloading (ELO), exhaustive offloading (EXO), nearest VEC offloading (NVO), and entire cloud offloading (ECO). Besides, the non-cooperative game-based offloading (NCO) [16] and One-to-one matching and price-rising-based offloading and resource allocation (OPORA) [26] are tailored to be suited to the approach in this paper since there is no feasible solution that can be directly applied to this problem. These approaches are described as follows.
+
+- ELO: all vehicles execute their tasks locally.   
+- EXO: the tasks of each vehicle are exhaustively offloaded using the optimal offloading strategy.   
+- NVO: the tasks of each vehicle are offloaded to the nearest VEC server with which the vehicle is currently attached.
+
+TABLE II SIMULATION PARAMETERS 
+
+<table><tr><td>Symbol</td><td>Meaning</td><td>Default value</td></tr><tr><td> $\alpha$ </td><td>CPU parameters</td><td>7.8-21[60]</td></tr><tr><td> $B_{i,j}$ </td><td>Bandwidth between vehicle i and VEC server j</td><td>40 MHz [17]</td></tr><tr><td> $\beta^{L}/\beta^{NL}$ </td><td>Path loss exponent for LoS/NLoS communication</td><td>3/4 [64]</td></tr><tr><td>c</td><td>Speed of light</td><td>3 × 108m/s</td></tr><tr><td> $C_{i}^{\max}$ </td><td>The budget of vehicle i for the costs payed to the servers</td><td>20 $</td></tr><tr><td> $C_{j}^{\max}$ </td><td>The maximum unit price of server j&#x27;s computation resources</td><td>1 ($/GHz)· $f_{j}^{\max}$ </td></tr><tr><td> $\mathcal{C}_{i}^{\text{req}}(t)$ </td><td>Required computation resources of each bit</td><td>[500, 1500] cycles/bit [65]</td></tr><tr><td> $d_{0}$ </td><td>Reference distance</td><td>1 m</td></tr><tr><td> $\mathcal{D}_{i}^{\text{in}}(t)$ </td><td>Task size</td><td>[400, 1000] KB [17]</td></tr><tr><td> $\mathcal{D}_{i}^{\text{out}}(t)$ </td><td>Task result</td><td>[0.1, 1] KB [66]</td></tr><tr><td> $E_{i}^{\max}$ </td><td>Energy constraint of vehicle i</td><td>1 (W.h/GHz)· $f_{i}^{\max}$ [61]</td></tr><tr><td> $E_{j}^{\max}$ </td><td>Energy constraint of server j</td><td>1 (W.h/GHz)· $f_{j}^{\max}$ [61]</td></tr><tr><td> $f_{c}$ </td><td>Carrier frequency</td><td>5.9 GHZ [67]</td></tr><tr><td> $f_{i}^{\max}$ </td><td>Computation resources of vehicle i</td><td>[0.5, 1] GHz [68]</td></tr><tr><td> $f_{j}^{\max}$ </td><td>Computation resources of VEC server j</td><td>[2, 10] GHz [17]</td></tr><tr><td> $f_{o}^{\max}$ </td><td>Computation resources of cloud server o</td><td>30 GHz [20]</td></tr><tr><td> $m^{L}/m^{NL}$ </td><td>Nakagami fading parameter for LoS/NLoS communication</td><td>2/1 [64]</td></tr><tr><td> $N_{i}^{\text{core}}$ </td><td>The CPU core of vehicle i</td><td>1</td></tr><tr><td> $N_{j}^{\text{core}}$ </td><td>The CPU core of VEC server j</td><td>[2, 8]</td></tr><tr><td> $N_{o}$ </td><td>Noise power</td><td>-98 dBm</td></tr><tr><td> $P_{i}(t)$ </td><td>Transmit power</td><td>[-85, 44.8] dBm [67]</td></tr><tr><td> $r_{f}$ </td><td>Data rate of fiber link</td><td>4 Gb/s [69]</td></tr><tr><td> $r_{c}$ </td><td>Data rate between the edge and cloud</td><td>100 Mb/s [35]</td></tr><tr><td> $\theta^{L}/\theta^{NL}$ </td><td>Standard deviation of shadowing for LoS/NLoS communication</td><td>3 dB/4 dB [57]</td></tr><tr><td> $\tau$ </td><td>CPU parameters</td><td>3 [60]</td></tr><tr><td> $T_{i}^{\text{max}}(t)$ </td><td>The maximum permissible delay</td><td>[0.1, 5] s [70]</td></tr><tr><td> $w_{i}/w_{j}$ </td><td>The weight coefficient of vehicle i/server j</td><td>[0, 1]</td></tr></table>
+
+- ECO: all tasks are offloaded to the cloud server.   
+- NCO: each vehicle competitively decides the optimal offloading probability by playing a distributed noncooperative game. Since NCO is designed for the single-VEC server scenario and single-time decision in [16], it is adjusted in this paper to adapt to the multi-VEC server and period-time scenario.   
+OPORA: each task of the vehicle is assigned to a VEC server based on the one-to-one matching scheme, and each VEC server is stimulated to allocate the resource using the price-rising scheme.
+
+# A. System Performance
+
+In this section, we evaluate the impacts of different system parameters on the performance of social welfare, vehicle utility, and server utility.
+
+1) Effect of Time: Fig. 2(a), (b), and (c) show the comparative results of the social welfare, the total utility of vehicles, and the total utility of VEC servers among the seven algorithms in terms of time. It can be observed from Fig. 2 that as time elapses, the social welfare, total utility of vehicles and total utility of servers for all schemes increase. This is because more tasks of vehicles are executed successfully along with time. Moreover, it can be observed that BARGAIN-MATCH outperforms ELO, EMO, NVO, NCO and OPORA in terms of social welfare, vehicle utility and server utility. The reasons are as follows. First, ELO, EMO, NVO and NCO mainly focus on optimizing the task offloading strategy for vehicles but do not consider the resource allocation strategy for VEC servers. The entire local offloading of ELO, the exhaustive offloading of EXO, the nearest VEC server offloading of NVO, the entire cloud offloading of ECO, and the competitive offloading of NCO could lead to congestion and resource over-use at certain vehicles or VEC servers. Furthermore, although OPORA achieves superior VEC utility than ELO, EMO, NVO and NCO schemes due to the price incentive strategy, it is inferior to BARGAIN-MATCH because it adopts the one-to-one matching strategy and the incentive of random raising pricing, which are less efficient compared to the many-to-one matching strategy and the bargaining incentive. On the one hand, the many-to-one matching of BARGAIN-MATCH improves both the amount of offloaded tasks and the utilization of computation resource by horizontally or vertically offloading the tasks to the VEC servers or cloud server. On the other hand, the bargaining incentive scheme of BARGAIN-MATCH facilitates the negotiation between the servers and requesting vehicles on the optimal decisions of computation resource allocation and pricing. Consequently, this set of simulation results shows that BARGAIN-MATCH has the overall superior performance on social welfare, vehicle utility, and VEC server utility among the seven algorithms.
+
+2) Effect of Vehicle Numbers: Fig. 3(a), (b), and (c) compare the impact of the number of vehicles on the performance of social welfare, the total utility of vehicles, and the total utility of servers for different schemes. First, ELO shows the worst performance in terms of social welfare, vehicle utility, and server utility, which is mainly because all tasks are executed locally on vehicles. Furthermore, the social welfare, vehicle utility, and server utility of NVO and ECO exhibit initial upward and then downward tendencies as the number of vehicles grows. This is mainly due to the aggregated amount of tasks with increasing vehicles, which could lead to the possible overload of the nearest VEC servers when adopting EVO and the increasing unfulfilled tasks when adopting ECO. Moreover, with the increase of vehicles, the social welfare and vehicle utility for OPORA show the initial increase and subsequent decrease trends, and the server utility for it rises at a diminishing rate, which is mainly due to the one-to-one offloading strategy and the random increasing price incentive. Additionally, NCO has some random fluctuations in social welfare and vehicle utility and increases slightly in server utility with increasing vehicles. Although the variation tendency of NCO is not statistically significant, it shows inferior performance compared to most of the other schemes (except for ELO). This could be attributed to the probabilistic offloading strategy and the increased competition among vehicles. Besides, EXO shows initial increasing trends in social welfare, vehicle utility, and server utility with the increasing number of vehicles, and the trends slow down gradually or exhibit a decreasing trend. As explained before, although tasks can be offloaded to the optimal server, the exhaustive offloading strategy of EXO could lead to possible congestion or resource shortage for certain VEC servers, as the vehicles continuously increase. Last, it can be observed that BARGAIN-MATCH exhibits progressively increasing trends in the performance of social welfare, vehicle utility, and server utility, maintaining a relatively superior level among the seven schemes. The set of simulation results indicates the better scalability of the proposed BARGAIN-MATCH with an increasing number of vehicles.
+
+![](images/88a9d6575ca1bc6be220217d637fe1b8e4dc0cee3275f03a580dc7e24651ff17.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time (s) | ELO  | EXO  | NVO  | BARGAIN-MATCH | NCO  | OPORA |
+| -------- | ---- | ---- | ---- | ------------- | ---- | ----- |
+| 0        | 0    | 0    | 0    | 0             | 0    | 0     |
+| 1        | 0    | 8    | 6    | 18            | 7    | 3     |
+| 2        | 0    | 10   | 8    | 22            | 9    | 5     |
+| 3        | 0    | 12   | 10   | 23            | 11   | 7     |
+| 4        | 0    | 14   | 11   | 24            | 12   | 8     |
+| 5        | 0    | 15   | 12   | 24            | 12   | 8     |
+</details>
+
+(a) Social welfare
+
+![](images/912d25dd846e687d80a46628b3ca1acd741150efeb4cc8bdc1dc6673b45fef20.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time (s) | ELO  | ECO  | BARGAIN-MATCH | EXO  | NCO  | NVO  | OPORA |
+| -------- | ---- | ---- | ------------- | ---- | ---- | ---- | ----- |
+| 0        | 0    | 0    | 0             | 0    | 0    | 0    | 0     |
+| 1        | 0    | 7    | 18            | 8    | 7    | 7    | 2     |
+| 2        | 0    | 8    | 21            | 10   | 9    | 9    | 4     |
+| 3        | 0    | 9    | 21            | 12   | 10   | 10   | 5     |
+| 4        | 0    | 10   | 21            | 13   | 11   | 11   | 6     |
+| 5        | 0    | 10   | 21            | 14   | 12   | 12   | 6     |
+</details>
+
+(b) The total utility of vehicles
+
+![](images/dd9059eebde2cef40204550c6b619f3941a637324e708dcf5e8689ef356f85d0.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time (s) | ELO   | NCO   | EXO   | OPORA | NVO   | BARGAIN-MATCH | ECO   |
+| -------- | ----- | ----- | ----- | ----- | ----- | ------------- | ----- |
+| 0        | 0.0   | 0.0   | 0.0   | 0.0   | 0.0   | 0.0           | 0.0   |
+| 1        | 0.1   | 0.1   | 0.3   | 0.4   | 0.2   | 0.8           | 0.0   |
+| 2        | 0.2   | 0.2   | 0.6   | 0.7   | 0.3   | 1.2           | 0.0   |
+| 3        | 0.3   | 0.3   | 0.8   | 0.9   | 0.4   | 1.2           | 0.0   |
+| 4        | 0.4   | 0.4   | 1.0   | 1.0   | 0.5   | 1.2           | 0.0   |
+| 5        | 0.5   | 0.5   | 1.1   | 1.1   | 0.6   | 1.2           | 0.0   |
+</details>
+
+(c) The total utility of servers   
+Fig. 2. System performance with respect to time. (a) Social welfare. (b) Vehicle utility. (c) Server utility.
+
+![](images/7d13c633876c7aa0560cfc405b3111c7c65c6fd8ee70bb1cbfcbc309176d5605.jpg)
+
+<details>
+<summary>line</summary>
+
+| The number of vehicles | ELO  | EXO  | NVO  | ECO  | NCO  | OPORA | BARGAIN-MATCH |
+| ---------------------- | ---- | ---- | ---- | ---- | ---- | ----- | ------------- |
+| 0                      | 0    | 0    | 0    | 0    | 0    | 0     | 0             |
+| 50                     | 2    | 15   | 8    | 13   | 8    | 10    | 20            |
+| 100                    | 3    | 28   | 5    | 17   | 4    | 13    | 31            |
+| 150                    | 2    | 31   | 6    | 9    | 8    | 11    | 38            |
+</details>
+
+(a) Social welfare
+
+![](images/9077110a5bba20abc1d1a14959c79a891a66d45d8855e89244eb39ad8ff06b2e.jpg)
+
+<details>
+<summary>line</summary>
+
+| The number of vehicles | ELO  | EXO  | NVO  | ECO  | NCO  | OPORA | BARGAIN-MATCH |
+| ---------------------- | ---- | ---- | ---- | ---- | ---- | ----- | ------------- |
+| 20                     | 1    | 3    | 2    | 4    | 3    | 2     | 5             |
+| 40                     | 1    | 8    | 6    | 10   | 7    | 4     | 10            |
+| 60                     | 1    | 15   | 8    | 13   | 9    | 6     | 18            |
+| 80                     | 1    | 20   | 7    | 14   | 8    | 7     | 25            |
+| 100                    | 1    | 25   | 5    | 17   | 6    | 11    | 30            |
+| 120                    | 1    | 28   | 4    | 16   | 5    | 10    | 35            |
+| 140                    | 1    | 30   | 5    | 10   | 8    | 9     | 35            |
+| 160                    | 1    | 32   | 6    | 9    | 9    | 8     | 35            |
+</details>
+
+(b) The total utility of vehicles
+
+![](images/2814132c388716beba76053ceb886b5cc3e95e32cc0061743de85b7a32b9678c.jpg)
+
+<details>
+<summary>line</summary>
+
+| The number of vehicles | ELO   | EXO   | NVO   | ECO   | NCO   | OPORA | BARGAIN-MATCH |
+| ---------------------- | ----- | ----- | ----- | ----- | ----- | ----- | ------------- |
+| 0                      | 0.0   | 0.4   | 0.3   | 0.2   | 0.2   | 0.8   | 1.0           |
+| 50                     | 0.0   | 1.0   | 0.3   | 0.2   | 0.3   | 0.9   | 1.7           |
+| 100                    | 0.0   | 1.4   | 0.8   | 0.3   | 0.3   | 2.1   | 2.4           |
+| 150                    | 0.0   | 1.4   | 0.4   | 0.3   | 0.6   | 2.6   | 2.8           |
+</details>
+
+(c) The total utility of servers   
+Fig. 3. System performance with respect to time. (a) Social welfare. (b) Vehicle utility. (c) Server utility.
+
+![](images/efbe818b85ff9926a4d51e1efc6d3ddd40140ecf79943ed3e98a61d45beec7aa.jpg)
+
+<details>
+<summary>line</summary>
+
+| The average speed of vehicles (km/h) | ELO  | NVO  | NCO  | BARGAIN-MATCH | EXO  | ECO  | OPORA |
+| ------------------------------------ | ---- | ---- | ---- | ------------- | ---- | ---- | ----- |
+| 40                                   | 1.0  | 20.0 | 22.0 | 32.0          | 29.0 | 18.0 | 17.0  |
+| 60                                   | 1.0  | 18.0 | 20.0 | 31.0          | 25.0 | 15.0 | 12.0  |
+| 80                                   | 1.0  | 17.0 | 19.0 | 31.0          | 24.0 | 14.0 | 11.0  |
+| 100                                  | 1.0  | 15.0 | 18.0 | 30.0          | 21.0 | 13.0 | 10.0  |
+| 120                                  | 1.0  | 13.0 | 16.0 | 28.0          | 17.0 | 10.0 | 7.0   |
+</details>
+
+(a) Social welfare
+
+![](images/355a09e6480493916bf793ce5cf20d223f2434d7522740e88f587de1a2eed38b.jpg)
+
+<details>
+<summary>line</summary>
+
+| The average speed of vehicles (km/h) | ELO  | NVO  | NCO  | BARGAIN-MATCH | EXO  | ECO  | OPORA |
+| ------------------------------------ | ---- | ---- | ---- | ------------- | ---- | ---- | ----- |
+| 40                                   | 1.0  | 20.0 | 28.0 | 28.0          | 18.0 | 15.0 | 14.0  |
+| 60                                   | 1.0  | 17.0 | 27.0 | 27.0          | 15.0 | 14.0 | 9.0   |
+| 80                                   | 1.0  | 16.0 | 27.0 | 27.0          | 14.0 | 13.0 | 8.0   |
+| 100                                  | 1.0  | 15.0 | 26.0 | 26.0          | 13.0 | 12.0 | 7.0   |
+| 120                                  | 1.0  | 12.0 | 25.0 | 25.0          | 10.0 | 9.0  | 6.0   |
+</details>
+
+(b) The total utility of vehicles
+
+![](images/e408426e1026e5b21a0e9f9507c4eca6646dee1e3d3ce68ce1fb888ec320b32b.jpg)
+
+<details>
+<summary>line</summary>
+
+| The average speed of vehicles (km/h) | ELO   | NVO   | NCO   | BARGAIN-MATCH | EXO   | ECO   | OPORA |
+| ------------------------------------ | ----- | ----- | ----- | ------------- | ----- | ----- | ----- |
+| 40                                   | 0.0   | 1.5   | 1.8   | 3.8           | 1.0   | 0.9   | 2.8   |
+| 60                                   | 0.0   | 1.0   | 1.0   | 3.5           | 0.9   | 0.7   | 2.5   |
+| 80                                   | 0.0   | 1.0   | 1.0   | 3.4           | 0.8   | 0.6   | 2.4   |
+| 100                                  | 0.0   | 1.0   | 1.0   | 3.3           | 0.7   | 0.5   | 2.2   |
+| 120                                  | 0.0   | 0.8   | 0.8   | 3.2           | 0.6   | 0.4   | 1.0   |
+</details>
+
+(c) The total utility of servers   
+Fig. 4. System performance with respect the average speed of vehicles. (a) Social welfare. (b) Vehicle utility. (c) Server utility.
+
+3) Effect of Vehicle Speed: Fig. 4(a), (b), and (c) compare the social welfare, the total utility of vehicles, and the total utility of servers among the comparative algorithms, respectively. First, it can be observed from Fig. 4 that the ELO shows the invariant but the worst performance in terms of social welfare, vehicle utility, and server utility with respect to the average speed of vehicles. This is obvious since the tasks of vehicles are executed locally without communicating with the VEC servers. Furthermore, for the algorithms of EXO, NVO, ECO, NCO, OPORA and BARGAIN-MATCH, the curves of social welfare, vehicle utility, and server utility show overall downward trends with the increasing speed of vehicles. This is mainly because the high mobility of vehicles indicates that the vehicles could move out of the service range of the VEC server during the task uploading or task computing more frequently, leading to more repetitive handovers or even service interruptions. Therefore, the high mobility of vehicles could cause increased service delay and more task failures, which further results in the degraded satisfaction level of vehicles and the decreased revenues of servers. Specifically, the performances of EXO, NVO, ECO, NCO, and OPORA degrade significantly when the average speed exceeds 100 km/h. Finally, it can be observed that the performances of the proposed BARGAIN-MATCH exhibit relatively steady downward trends as the average speed of vehicles increases, maintaining superior levels among the seven schemes. The reason is that the proposed BARGAIN-MATCH performs cooperative decisions of task offloading by considering both horizontal and vertical task migrations, where the handover delay is incorporated to improve the connectivity for moving vehicles. In conclusion, this set of simulation results demonstrates that the proposed BARGAIN-MATCH can achieve relatively stable and superior performance in terms the social welfare, vehicle utility, and server utility against varying speeds of vehicles.
+
+4) Effect of Task Size: The effect of the initial price of the computation resources on the system performance for the comparative algorithms is presented in Appendix I.1.1 of the supplementary material, available online, due to the page limitation.   
+5) Effect of the Computation Resources of VEC Servers: The effect of the initial price of the computation resources on the system performance for the comparative algorithms is presented in Appendix I.1.2 of the supplementary material, available online, due to the page limitation.   
+6) Effect of the Initial Price of Computation Resources: The effect of the initial price of the computation resources on the system performance for the comparative algorithms is presented in Appendix I.1.3 of the supplementary material, available online, due to the page limitation.
+
+# C. System Efficiency
+
+For performance evaluation, the following statistics are collected: the generation time of each task $t _ { i } ^ { \mathrm { r e q } } ( t ) , \forall i \in \mathcal { V } , t \in \mathbf { T } ;$ the successful completion time of each task $t _ { i } ^ { \mathrm { c o m } } ( t ) , \forall i \in \mathcal { V } , t \in$ ( )T; the number of successfully completed tasks during the considered timeline, which is denoted as $N ^ { \mathrm { s u c c } }$ . Based on these statistics, the following performance metrics are defined.
+
+\- Average processing rate (APR) is defined as the average amount of task (in bits) that is processed per unit time, which is given as:
+
+$$
+\mathrm{APR} = \frac {\sum_ {t \in \mathbf {T}} \sum_ {i \in \mathcal {V}} p _ {i} ^ {\text { gen }} (t) \cdot \mathcal {C} _ {i} ^ {\text { req }} (t)}{\sum_ {t \in \mathbf {T}} \sum_ {i \in \mathcal {V}} p _ {i} ^ {\text { gen }} (t) \cdot \left(t _ {i} ^ {\text { cmp }} (t) - t _ {i} ^ {\text { req }} (t)\right)}. \tag {38}
+$$
+
+\- Average completion delay (ACD) is defined as the average delay of completing a task successfully:
+
+$$
+\mathrm{ACD} = \frac {\sum_ {t \in \mathbf {T}} \sum_ {i \in \mathcal {V}} p _ {i} ^ {\text { gen }} (t) \cdot \left(t _ {i} ^ {\text { cmp }} (t) - t _ {i} ^ {\text { req }} (t)\right)}{\sum_ {t \in \mathbf {T}} \sum_ {i \in \mathcal {V}} p _ {i} ^ {\text { gen }} (t)}. \tag {39}
+$$
+
+\- Average completion ratio (ACR) is defined as the ratio of tasks that are successfully completed to the total number of tasks generated during the considered duration, which is as follows:
+
+$$
+\mathrm{ACR} = \frac {N ^ {\text { succ }}}{\sum_ {t \in \mathbf {T}} \sum_ {i \in \mathcal {V}} p _ {i} ^ {\text { gen }} (t)}. \tag {40}
+$$
+
+1) Effect of Task Size: Fig. 5(a), (b), and (c) compare the APR, ACD, and ACR of the seven algorithms under different task sizes, respectively. First, both the APR and ACD of ELO, EXO, NVO, ECO, and NCO show overall upward trends with the increasing of task size, and the ACR of them show the opposite trends with the task size increases. Obviously, this is because the workloads of vehicles or servers become heavier with the increasing of task sizes, leading to the increased amount of task processing per unit time, the increased delay of task completion, and the decreased task completion ratio. Besides, it can be observed that the proposed BARGAIN-MATCH shows a significant rising trend in APR, a slight upward trend in ACD, and a slight downward trend in ACR with the increasing of task size. This implies that the processing rate of BARGAIN-MATCH increases significantly with relatively low costs of delay and task failure as the workload increases. Furthermore, BARGAIN-MATCH achieves the highest APR, the lowest ACD, and the highest ACR compared to the other schemes with the increasing of task size. BARGAIN-MATCH tries to stimulate cooperation among servers for inter-server task offloading and cooperation between servers and vehicles for intra-server resource allocation according to the varying works and the available resources of servers. In conclusion, the result set in Fig. 5 demonstrates the efficiency of BARGAIN-MATCH in terms of the APR, ACD, and ACR under varying task sizes.
+
+2) Effect of the Computation Resources of VEC Servers: The effect of the computation resources on the system efficiency for the comparative algorithms is given in Appendix I.2.1 of the supplementary material, available online, due to the page limitation.
+
+3) Effect of the Initial Price of Computation Resources: The effect of the initial price of the computation resources on the system efficiency for the comparative algorithms is given in Appendix I.2.2 of the supplementary material, available online, due to the page limitation.
+
+# D. Algorithm Running Time
+
+To evaluate the execution time of different approaches, Fig. 6 shows the average running time versus the number of vehicles for the seven algorithms. To show the impact of the processors, the proposed approach is implemented on a relative strong device $( D _ { s } )$ equipped with Intel Core i7-12700H, 2.70 GHz processor, 16.0 GB RAM memory and on a relative weak device $( D _ { w } )$ equipped with Intel Core i7-9750H, 2.60GHz processor, 16.0 GB RAM memory, respectively. From the perspective of the comparative approaches, it can be observed from Fig. 6 that the average running time increases for each algorithm with increasing number of vehicles. Specifically, the algorithms of ELO, NVO, ECO, and NCO have lower time complexity compared to EXO, OPOPRA, and BARGAIN-MATCH. This is because these approaches make offloading decisions directly, which however have relative inferior system performance and efficiency compared to the other approaches, as shown in Figs. 2, 3, 4, and 5. Furthermore, OPOPRA shows significantly higher time complexity among the seven schemes, which is mainly attributed to the time-consuming strategies of one-to-one matching and the random price rising incentive. Moreover, it can be observed that the average execution time of BARGAIN-MATCH increases linearly with increasing number of vehicles, which is consistent with the theoretical analysis. Besides, EXO takes less execution time then BARGAIN-MATCH when the number of vehicles is relative small (≤ ), while it is more time-consuming when 75the network becomes denser, and the difference enlarges gradually. From the perspective of the capability of devices, it can be observed that the average running time decreases approximately 19.28% to 52.02% when the simulation runs on $D _ { s }$ . Concluding from Fig. 6, BARGAIN-MATCH achieves superior performance in social welfare, vehicle utility, and server utility with the time complexity higher than the schemes that adopt direct decision making and lower than EXO in relative dense networks. Furthermore, the proposed approach can be completed in polynomial time with linearly increased complexity over the number of vehicles. Besides, the execution time of the proposed approach could be further reduced when it runs in the real VEC node with stronger processing capability than the device we used.
+
+![](images/8b4924cc857eec248e08c9e5071b5cba26c9c81cc2b1ee9612dac588caf36d10.jpg)
+
+<details>
+<summary>bar</summary>
+
+| Task size (KB) | ELO   | NVO   | NCO   | BARGAIN-MATCH | EXO   | ECO   | OPORA |
+| -------------- | ----- | ----- | ----- | ------------- | ----- | ----- | ----- |
+| 100            | 0.7   | 0.8   | 0.8   | 1.0           | 0.8   | 0.8   | 0.6   |
+| 300            | 0.9   | 2.3   | 1.2   | 3.5           | 1.7   | 1.2   | 1.0   |
+| 500            | 1.3   | 3.6   | 1.3   | 6.0           | 3.1   | 1.4   | 1.2   |
+| 700            | 1.8   | 3.6   | 1.5   | 7.0           | 4.3   | 1.8   | 1.6   |
+| 900            | 2.3   | 5.5   | 2.1   | 8.0           | 4.9   | 2.1   | 1.9   |
+</details>
+
+(a)APR
+
+![](images/2eabdad621b904adde605237b284f5af32b537e7425161ad0c22e91503dd6eec.jpg)
+
+<details>
+<summary>bar</summary>
+
+| Task size (KB) | ELO   | NVO   | NCO   | BARGAIN-MATCH | EXO   | ECO   | OPORA |
+| -------------- | ----- | ----- | ----- | ------------- | ----- | ----- | ----- |
+| 100            | 1.2   | 1.1   | 1.0   | 0.8           | 1.0   | 1.3   | 1.3   |
+| 300            | 2.7   | 1.1   | 2.1   | 0.7           | 1.5   | 2.1   | 2.4   |
+| 500            | 3.0   | 1.2   | 3.4   | 0.6           | 1.3   | 2.7   | 3.0   |
+| 700            | 3.1   | 1.6   | 3.8   | 0.7           | 1.3   | 3.1   | 3.5   |
+| 900            | 3.2   | 1.3   | 4.0   | 0.9           | 1.5   | 3.5   | 3.8   |
+</details>
+
+(b) ACD
+
+![](images/78014e064063caa5604178a5dac1910b0ec36d7f52377bc9f63f28dd64b87f5b.jpg)
+
+<details>
+<summary>bar</summary>
+
+| Task size (KB) | ELO   | NVO   | NCO   | BARGAIN-MATCH | EXO   | ECO   | OPORA |
+| -------------- | ----- | ----- | ----- | ------------- | ----- | ----- | ----- |
+| 100            | 0.85  | 0.75  | 0.82  | 1.0           | 0.95  | 0.9   | 0.98  |
+| 300            | 0.33  | 0.62  | 0.68  | 1.0           | 0.85  | 0.75  | 0.78  |
+| 500            | 0.1   | 0.35  | 0.42  | 1.0           | 0.9   | 0.62  | 0.52  |
+| 700            | 0.28  | 0.28  | 0.33  | 0.95          | 0.85  | 0.53  | 0.37  |
+| 900            | 0.23  | 0.23  | 0.3   | 0.92          | 0.83  | 0.45  | 0.3   |
+</details>
+
+(c) ACR
+
+Fig. 5. System efficiency with respect to the average size of tasks. (a) APR. (b) ACD. (c) ACR.   
+![](images/7004528173ec04fbe7c35e107ee3869a4632800651a2128b41badca08f733955.jpg)
+
+<details>
+<summary>line</summary>
+
+| The number of vehicles | ELO (D_s) | ELO (D_w) | EXO | EXO | NVO | NCO | ECO | NCO | OPORA | OPORA | BARGAIN-MATCH | BARGAIN-MATCH |
+| ---------------------- | --------- | --------- | --- | --- | --- | --- | --- | --- | ----- | ----- | ------------- | ------------- |
+| 20                     | ~0.0      | ~0.0      | ~0.0 | ~0.0 | ~0.0 | ~0.0 | ~0.0 | ~0.0 | ~0.0  | ~0.0  | ~0.0          | ~0.0          |
+| 40                     | ~0.0      | ~0.0      | ~0.0 | ~0.0 | ~0.0 | ~0.0 | ~0.0 | ~0.0 | ~0.2  | ~0.2  | ~0.1          | ~0.1          |
+| 60                     | ~0.0      | ~0.0      | ~0.1 | ~0.1 | ~0.1 | ~0.1 | ~0.1 | ~0.1 | ~0.4  | ~0.4  | ~0.2          | ~0.2          |
+| 100                    | ~0.0      | ~0.1      | ~0.5 | ~0.7 | ~0.3 | ~0.1 | ~0.1 | ~0.1 | ~1.1  | ~1.1  | ~0.4          | ~0.4          |
+| 140                    | ~0.0      | ~0.2      | ~0.9 | ~1.1 | ~0.5 | ~0.2 | ~0.1 | ~0.1 | ~1.3  | ~1.3  | ~0.6          | ~0.6          |
+| 150                    | ~0.0      | ~0.3      | ~1.2 | ~1.3 | ~0.7 | ~0.3 | ~0.1 | ~0.1 | ~1.5  | ~1.5  | ~0.8          | ~0.8          |
+</details>
+
+Fig. 6. Average running time with respect to the number of vehicles.
+
+# VII. DISCUSSION
+
+# A. The Case of Vehicular Applications
+
+Based on the standards of 5G Automotive Association (5GAA) [71] and ETSI MEC [72], [73], we consider the following vehicular applications, i.e., i) vehicle collision warning, ii) emergency break warning, iii) traffic jam warning, iv) hazardous location warning, and v) speed harmonization. The characteristics of each application that are mapped to the task model in Section III-A are given as follows. First, the task size and maximum acceptable delay for applications i)-v) are given as: i) [300, 1000] B and 100 ms, ii) [200, 400] B and 120 ms, iii) 300 B and 2000 ms, iv) [300, 1000] B and [1000, 2000] ms (safety) or $[ 1 0 ^ { 4 } , 2 \times 1 0 ^ { 5 } ]$ ms (route obstruction), and v) [300, [10 2 10 ]1000] B and [400, 1500] ms, respectively [71]. Furthermore, the computational intensity and the result of the above applications are given as 3, 4 cycles/bit and [0.1, 1] KB, respectively [10 10 ][73]. We evaluate the performance of the proposed approach for these vehicular applications in Appendix J of the supplementary material, available online.
+
+# B. The Impact of Multiple Access Schemes
+
+In this sub-section, we discuss the impact of the employed multiple access schemes on the performance. Specifically, in Appendix K of the supplementary martial, available online, we evaluate the performance of the proposed BARGAIN-MATCH in the scenario where the network employs the OFDMA, followed by the discussion on the extensibility of the proposed approach for more complicated scenarios.
+
+# VIII. CONCLUSION
+
+In this work, we investigate the computation allocation and task offloading for VEC servers and vehicles in VEC networks. First, to coordinate the space-time-requirement heterogeneity among tasks and the computational heterogeneity among servers, this work employs a hierarchical framework where the intra-server resource allocation and inter-server offloading are decided through the horizontal and vertical collaboration among vehicle, edge, and cloud layers under the coordination of the controller. Furthermore, JRATOP is formulated to maximize the system utility by jointly optimizing the strategies of resource allocation, resource pricing, and task offloading. To solve the NP-hard problem, we propose the BARGAIN-MATCH that consists of the bargaining-based trading model for intraserver resource allocation and a matching-based collaboration approach for inter-server task offloading. Besides, the proposed BARGAIN-MATCH is proved to be stable, weak Pareto optimal, and polynomial complex. Simulation results demonstrate that BARGAIN-MATCH achieves superior performance in terms of the system utility, vehicle utility and server utility compared to the conventional approaches. Moreover, it can improve the task processing rate and task processing delay significantly, especially when the system workload is heavy.
+
+# REFERENCES
+
+[1] P. Porambage, J. Okwuibe, M. Liyanage, M. Ylianttila, and T. Taleb, “Survey on multi-access edge computing for Internet of Things realization,” IEEE Commun. Surv. Tut., vol. 20, no. 4, pp. 2961–2991, Fourth Quarter 2018.   
+[2] D. Sabella, A. Vaillant, P. Kuure, U. Rauschenbach, and F. Giust, “Mobileedge computing architecture: The role of MEC in the Internet of Things,” IEEE Consum. Electron. Mag., vol. 5, no. 4, pp. 84–91, Oct. 2016.   
+[3] W. Duan, J. Gu, M. Wen, G. Zhang, Y. Ji, and S. Mumtaz, “Emerging technologies for 5G-IoV networks: Applications, trends and opportunities,” IEEE Netw., vol. 34, no. 5, pp. 283–289, Sep./Oct. 2020.   
+[4] Y. Dai, D. Xu, S. Maharjan, and Y. Zhang, “Joint load balancing and offloading in vehicular edge computing and networks,” IEEE Internet Things J., vol. 6, no. 3, pp. 4377–4387, Jun. 2019.   
+[5] S.-C. Lin, K.-C. Chen, and A. Karimoddini, “SDVEC: Software-defined vehicular edge computing with ultra-low latency,” IEEE Commun. Mag., vol. 59, no. 12, pp. 66–72, Dec. 2021.   
+[6] L. Dai, B. Wang, Z. Ding, Z. Wang, S. Chen, and L. Hanzo, “A survey of non-orthogonal multiple access for 5G,” IEEE Commun. Surv. Tut., vol. 20, no. 3, pp. 2294–2323, Third Quarter 2018.   
+[7] T. Taleb, K. Samdanis, B. Mada, H. Flinck, S. Dutta, and D. Sabella, “On multi-access edge computing: A survey of the emerging 5G network edge cloud architecture and orchestration,” IEEE Commun. Surv. Tut., vol. 19, no. 3, pp. 1657–1681, Third Quarter 2017.   
+[8] Z. Kuang, L. Li, J. Gao, L. Zhao, and A. Liu, “Partial offloading scheduling and power allocation for mobile edge computing systems,” IEEE Internet Things J., vol. 6, no. 4, pp. 6774–6785, Aug. 2019.   
+[9] S. Bi, L. Huang, and Y.-J. A. Zhang, “Joint optimization of service caching placement and computation offloading in mobile edge computing systems,” IEEE Trans. Wireless Commun., vol. 19, no. 7, pp. 4947–4963, Jul. 2020.   
+[10] H. Yu, Z. Zhou, Z. Jia, X. Zhao, L. Zhang, and X. Wang, “Multi-timescale multi-dimension resource allocation for NOMA-edge computing-based power IoT with massive connectivity,” IEEE Trans. Green Commun. Netw., vol. 5, no. 3, pp. 1101–1113, Sep. 2021.   
+[11] C. Liu, M. Bennis, M. Debbah, and H. V. Poor, “Dynamic task offloading and resource allocation for ultra-reliable low-latency edge computing,” IEEE Trans. Commun., vol. 67, no. 6, pp. 4132–4150, Jun. 2019.   
+[12] P. A. Apostolopoulos, E. Tsiropoulou, and S. Papavassiliou, “Risk-aware data offloading in multi-server multi-access edge computing environment,” IEEE/ACM Trans. Netw., vol. 28, no. 3, pp. 1405–1418, Jun. 2020.   
+[13] Q. Zhang, L. Gui, F. Hou, J. Chen, S. Zhu, and F. Tian, “Dynamic task offloading and resource allocation for mobile-edge computing in dense cloud RAN,” IEEE Internet Things J., vol. 7, no. 4, pp. 3282–3299, Apr. 2020.   
+[14] L. Tan, Z. Kuang, L. Zhao, and A. Liu, “Energy-efficient joint task offloading and resource allocation in OFDMA-based collaborative edge computing,” IEEE Trans. Wireless Commun., vol. 21, no. 3, pp. 1960–1972, Mar. 2022.   
+[15] Y. Sun et al., “Adaptive learning-based task offloading for vehicular edge computing systems,” IEEE Trans. Veh. Technol., vol. 68, no. 4, pp. 3061–3074, Apr. 2019.
+
+[16] Y. Wang et al., “A game-based computation offloading method in vehicular multiaccess edge computing networks,” IEEE Internet Things J., vol. 7, no. 6, pp. 4987–4996, Jun. 2020.   
+[17] J. Zhang, H. Guo, J. Liu, and Y. Zhang, “Task offloading in vehicular edge computing networks: A load-balancing solution,” IEEE Trans. Veh. Technol., vol. 69, no. 2, pp. 2092–2104, Feb. 2020.   
+[18] P. Qin, Y. Fu, G. Tang, X. Zhao, and S. Geng, “Learning based energy efficient task offloading for vehicular collaborative edge computing,” IEEE Trans. Veh. Technol., vol. 71, no. 8, pp. 8398–8413, Aug. 2022.   
+[19] L. Liu, M. Zhao, M. Yu, M. A. Jan, D. Lan, and A. Taherkordi, “Mobilityaware multi-hop task offloading for autonomous driving in vehicular edge computing and networks,” IEEE Trans. Intell. Transp. Syst., early access, Jan. 19, 2022, doi: 10.1109/TITS.2022.3142566.   
+[20] X. Wang, Z. Ning, S. Guo, and L. Wang, “Imitation learning enabled task scheduling for online vehicular edge computing,” IEEE Trans. Mobile Comput., vol. 21, no. 2, pp. 598–611, Feb. 2022.   
+[21] L. Liang, H. Ye, and G. Y. Li, “Spectrum sharing in vehicular networks based on multi-agent reinforcement learning,” IEEE J. Sel. Areas Commun., vol. 37, no. 10, pp. 2282–2292, Oct. 2019.   
+[22] X. Zhu, Y. Luo, A. Liu, N. N. Xiong, M. Dong, and S. Zhang, “A deep reinforcement learning-based resource management game in vehicular edge computing,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 3, pp. 2422– 2433, Mar. 2022.   
+[23] H. Peng and X. Shen, “Deep reinforcement learning based resource management for multi-access edge computing in vehicular networks,” IEEE Trans. Netw. Sci. Eng., vol. 7, no. 4, pp. 2416–2428, Fourth Quarter 2020.   
+[24] W. Duan, X. Gu, M. Wen, Y. Ji, J. Ge, and G. Zhang, “Resource management for intelligent vehicular edge computing networks,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 7, pp. 9797–9808, Jul. 2022.   
+[25] S. Choo, J. Kim, and S. Pack, “Optimal task offloading and resource allocation in software-defined vehicular edge computing,” in Proc. Int. Conf. Inf. Commun. Technol. Convergence, 2018, pp. 251–256.   
+[26] Z. Zhou, P. Liu, J. Feng, Y. Zhang, S. Mumtaz, and J. Rodriguez, “Computation resource allocation and task assignment optimization in vehicular fog computing: A contract-matching approach,” IEEE Trans. Veh. Technol., vol. 68, no. 4, pp. 3113–3125, Apr. 2019.   
+[27] J. Zhao, Q. Li, Y. Gong, and K. Zhang, “Computation offloading and resource allocation for cloud assisted mobile edge computing in vehicular networks,” IEEE Trans. Veh. Technol., vol. 68, no. 8, pp. 7944–7956, Aug. 2019.   
+[28] S. Li, S. Lin, L. Cai, W. Li, and G. Zhu, “Joint resource allocation and computation offloading with time-varying fading channel in vehicular edge computing,” IEEE Trans. Veh. Technol., vol. 69, no. 3, pp. 3384–3398, Mar. 2020.   
+[29] X. Huang, L. He, and W. Zhang, “Vehicle speed aware computing task offloading and resource allocation based on multi-agent reinforcement learning in a vehicular edge computing network,” in Proc. IEEE Int. Conf. Edge Comput., 2020, pp. 1–8.   
+[30] X. Huang, L. He, X. Chen, L. Wang, and F. Li, “Revenue and energy efficiency-driven delay constrained computing task offloading and resource allocation in a vehicular edge computing network: A deep reinforcement learning approach,” IEEE Internet Thing J., vol. 9, no. 11, pp. 8852–8868, Jun. 2022.   
+[31] C. Xu, M. Wu, Y. Xu, and Y. Fang, “Uplink low-power scheduling for delay-bounded industrial wireless networks based on imperfect powerdomain NOMA,” IEEE Syst. J., vol. 14, no. 2, pp. 2443–2454, Jun. 2020.   
+[32] Q. Luo et al., “An error rate comparison of power domain non-orthogonal multiple access and sparse code multiple access,” IEEE Open J. Commun. Soc., vol. 2, pp. 500–511, Mar. 2021.   
+[33] M. Chen and Y. Hao, “Task offloading for mobile edge computing in software defined ultra-dense network,” IEEE J. Sel. Areas Commun., vol. 36, no. 3, pp. 587–597, Mar. 2018.   
+[34] H. Wu et al., “Resource management in space-air-ground integrated vehicular networks: SDN control and AI algorithm design,” IEEE Wireless Commun., vol. 27, no. 6, pp. 52–60, Dec. 2020.   
+[35] L. P. Qian, Y. Wu, B. Ji, L. Huang, and D. H. K. Tsang, “HybridIoT: Integration of hierarchical multiple access and computation offloading for IoTbased smart cities,” IEEE Netw., vol. 33, no. 2, pp. 6–13, Mar./Apr. 2019.   
+[36] Z. Zhou, J. Feng, Z. Chang, and X. Shen, “Energy-efficient edge computing service provisioning for vehicular networks: A consensus ADMM approach,” IEEE Trans. Veh. Technol., vol. 68, no. 5, pp. 5087–5099, May 2019.   
+[37] A. W. Malik, T. Qayyum, A. U. Rahman, M. A. Khan, O. Khalid, and S. U. Khan, “xFogSim: A distributed fog resource management framework for sustainable IoT services,” IEEE Trans. Sustain. Comput., vol. 6, no. 4, pp. 691–702, Fourth Quarter 2021.
+
+[38] H. Liao et al., “Learning-based intent-aware task offloading for air-ground integrated vehicular edge computing,” IEEE Trans. Intell. Transp. Syst., vol. 22, no. 8, pp. 5127–5139, Aug. 2021.   
+[39] T. Kim et al., “MoDEMS: Optimizing edge computing migrations for user mobility,” in Proc. IEEE Conf. Comput. Commun., 2022, pp. 1159–1168.   
+[40] S. Wang, R. Urgaonkar, T. He, K. Chan, M. Zafer, and K. K. Leung, “Dynamic service placement for mobile micro-clouds with predicted future costs,” IEEE Trans. Parallel Distrib. Syst., vol. 28, no. 4, pp. 1002–1016, Apr. 2017.   
+[41] C.-F. Liu, M. Bennis, M. Debbah, and H. V. Poor, “Dynamic task offloading and resource allocation for ultra-reliable low-latency edge computing,” IEEE Trans. Commun., vol. 67, no. 6, pp. 4132–4150, Jun. 2019.   
+[42] H. Guo and J. Liu, “Collaborative computation offloading for multiaccess edge computing over fiber–wireless networks,” IEEE Trans. Veh. Technol., vol. 67, no. 5, pp. 4514–4526, May 2018.   
+[43] C. Yi, J. Cai, and Z. Su, “A multi-user mobile computation offloading and transmission scheduling mechanism for delay-sensitive applications,” IEEE Trans. Mobile Comput., vol. 19, no. 1, pp. 29–43, Jan. 2020.   
+[44] D. Xu, Q. Li, and H. Zhu, “Energy-saving computation offloading by joint data compression and resource allocation for mobile-edge computing,” IEEE Commun. Lett., vol. 23, no. 4, pp. 704–707, Apr. 2019.   
+[45] F. Fang, K. Wang, Z. Ding, and V. C. M. Leung, “Energy-efficient resource allocation for NOMA-MEC networks with imperfect CSI,” IEEE Trans. Commun., vol. 69, no. 5, pp. 3436–3449, May 2021.   
+[46] Y. Pan, M. Chen, Z. Yang, N. Huang, and M. Shikh-Bahaei, “Energyefficient NOMA-based mobile edge computing offloading,” IEEE Commun. Lett., vol. 23, no. 2, pp. 310–313, Feb. 2019.   
+[47] L. Qian, Y. Wu, F. Jiang, N. Yu, W. Lu, and B. Lin, “NOMA assisted multi-task multi-access mobile edge computing via deep reinforcement learning for industrial Internet of Things,” IEEE Trans. Ind. Informat., vol. 17, no. 8, pp. 5688–5698, Aug. 2021.   
+[48] D. K. Patel et al., “Performance analysis of NOMA in vehicular communications over i.n.i.d Nakagami-m fading channels,” IEEE Trans. Wireless Commun., vol. 20, no. 10, pp. 6254–6268, Oct. 2021.   
+[49] X. Liu et al., “Placement and power allocation for NOMA-UAV networks,” IEEE Wireless Commun. Lett., vol. 8, no. 3, pp. 965–968, Jun. 2019.   
+[50] Y. Liu et al., “Evolution of NOMA toward next generation multiple access (NGMA) for 6G,” IEEE J. Sel. Areas Commun., vol. 40, no. 4, pp. 1037– 1071, Apr. 2022.   
+[51] Y. Liu, W. Yi, Z. Ding, X. Liu, O. A. Dobre, and N. Al-Dhahir, “Developing NOMA to next generation multiple access: Future vision and research opportunities,” IEEE Trans. Wireless Commun., vol. 29, no. 6, pp. 120–127, Dec. 2022.   
+[52] Q. Luo et al., “An error rate comparison of power domain non-orthogonal multiple access and sparse code multiple access,” IEEE Open J. Commun. Soc., vol. 2, pp. 500–511, Mar. 2021.   
+[53] F. Fang, Y. Xu, Z. Ding, C. Shen, M. Peng, and G. K. Karagiannidis, “Optimal resource allocation for delay minimization in NOMA-MEC networks,” IEEE Trans. Commun., vol. 68, no. 12, pp. 7867–7881, Dec. 2020.   
+[54] B. Makki, K. Chitti, A. Behravan, and M. Alouini, “A survey of NOMA: Current status and open research challenges,” IEEE Open J. Commun. Soc., vol. 1, pp. 179–189, Feb. 2020.   
+[55] 3GPP, “Technical specification group radio access network; study on nonorthogonal multiple access (NOMA) for NR (Release 16),” 3GPP Sophia Antipolis Valbonne, France, Tech. Rep. TR 38.812, 2018.   
+[56] Y. Liu, F. R. Yu, X. Li, H. Ji, and V. C. Leung, “Distributed resource allocation and computation offloading in fog and cloud networks with nonorthogonal multiple access,” IEEE Trans. Veh. Technol., vol. 67, no. 12, pp. 12 137–12 151, Dec. 2018.   
+[57] B. Yang, G. Mao, M. Ding, X. Ge, and X. Tao, “Dense small cell networks: From noise-limited to dense interference-limited,” IEEE Trans. Veh. Technol., vol. 67, no. 5, pp. 4262–4277, May 2018.   
+[58] A. Boumaalif and O. Zytoune, “Power distribution of device-to-device communications under Nakagami fading channel,” IEEE Trans. Mobile Comput., vol. 21, no. 6, pp. 2158–2167, Jun. 2022.   
+[59] Y. Pan, C. Pan, K. Wang, H. Zhu, and J. Wang, “Cost minimization for cooperative computation framework in MEC networks,” IEEE Trans. Wireless Commun., vol. 20, no. 6, pp. 3670–3684, Jun. 2021.   
+[60] G. Zhang, W. Zhang, Y. Cao, D. Li, and L. Wang, “Energy-delay tradeoff for dynamic offloading in mobile-edge computing system with energy harvesting devices,” IEEE Trans. Ind. Informat., vol. 14, no. 10, pp. 4642– 4655, Oct. 2018.   
+[61] Z. Ning et al., “Intelligent edge computing in internet of vehicles: A joint computation offloading and caching solution,” IEEE Trans. Intell. Transp. Syst., vol. 22, no. 4, pp. 2212–2225, Apr. 2021.
+
+[62] A. Rubinstein, “Perfect equilibrium in a bargaining model,” Econometrica: J. Econometric Soc., vol. 50, pp. 97–109, 1982.   
+[63] D. Gusfield and R. W. Irving, The Stable Marriage Problem: Structure and Algorithms. Cambridge, MA, USA: MIT Press, 1989.   
+[64] Z. Zhang and R. Q. Hu, “Dense cellular network analysis with LoS/NLoS propagation and bounded path loss model,” IEEE Commun. Lett., vol. 22, no. 11, pp. 2386–2389, Nov. 2018.   
+[65] C. Liu, K. Li, J. Liang, and K. Li, “COOPER-MATCH: Job offloading with a cooperative game for guaranteeing strict deadlines in MEC,” IEEE Trans. Mobile Comput., early access, Jun. 11, 2019, doi: 10.1109/TMC.2019.2921713.   
+[66] Y. Hui, Z. Su, T. H. Luan, C. Li, G. Mao, and W. Wu, “A game theoretic scheme for collaborative vehicular task offloading in 5G HetNets,” IEEE Trans. Veh. Technol., vol. 69, no. 12, pp. 16 044–16 056, Dec. 2020.   
+[67] A. Bazzi, B. M. Masini, A. Zanella, and I. Thibault, “On the performance of IEEE 802.11 p and LTE-V2V for the cooperative awareness of connected vehicles,” IEEE Trans. Veh. Technol., vol. 66, no. 11, pp. 10 419–10 432, Nov. 2017.   
+[68] X. Lyu, H. Tian, W. Ni, Y. Zhang, P. Zhang, and R. P. Liu, “Energyefficient admission of delay-sensitive tasks for mobile edge computing,” IEEE Trans. Commun., vol. 66, no. 6, pp. 2603–2616, Jun. 2018.   
+[69] H. Guo, J. Liu, and H. Qin, “Collaborative mobile edge computation offloading for IoT over fiber-wireless networks,” IEEE Netw., vol. 32, no. 1, pp. 66–71, Jan./Feb. 2018.   
+[70] S. A. Kazmi et al., “A novel contract theory-based incentive mechanism for cooperative task-offloading in electrical vehicular networks,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 7, pp. 8380–8395, Jul. 2022.   
+[71] G. A. Association et al., “C-V2X use cases, methodology, examples and service level requirements,” White Paper, Jun. 2019.   
+[72] M. E. ISG, “Multi-access edge computing (MEC); study on MEC support for V2X use cases,” ETSI, Sophia-Antipolis, France, Tech. Rep. GR MEC, vol. 22, 2018.   
+[73] F. Spinelli and V. Mancuso, “Toward enabled industrial verticals in 5G: A survey on MEC-based approaches to provisioning and flexibility,” IEEE Commun. Surv. Tut., vol. 23, no. 1, pp. 596–630, First Quarter 2021.
+
+![](images/162a14862fbf25a148d4947decf9800c51f6673d6e8d3686e60326914103b518.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman with long dark hair wearing a black top (no text or symbols visible)
+</details>
+
+Zemin Sun (Student Member, IEEE) received the BS degree in software engineering, and the MS and PhD degrees in computer science and technology from Jilin University, Changchun, China, in 2015, 2018, and 2022, respectively. Her research interests include vehicular networks, edge computing, and game theory.
+
+![](images/501fc6e8f3d4c6af3a5a46ebe175df85a0de2646f372080c6dd96b95b03631fc.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in formal attire against a blue background (no text or symbols visible)
+</details>
+
+Geng Sun (Member, IEEE) received the BS degree in communication engineering from Dalian Polytechnic University, in 2011, and the PhD degree in computer science and technology from Jilin University, in 2018. He was a visiting researcher with the School of Electrical and Computer Engineering, Georgia Institute of Technology, USA. He is an associate professor with the College of Computer Science and Technology, Jilin University, and His research interests include wireless networks, UAV communications, collaborative beamforming, and optimizations.
+
+![](images/5980607ef73938ce7e3489d5ce997c72857781bc5d7a6f1b45d7c79e3b9d29fc.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a dark shirt and collared shirt (no text or symbols visible)
+</details>
+
+Yanheng Liu received the MSc and PhD degrees in computer science from Jilin University, People’s Republic of China. He is currently a professor with Jilin University, People’s Republic of China. His primary research interests include network security, network management, mobile computing network theory and applications, etc. He has co-authored more than 90 research publications in peer reviewed journals and international conference proceedings of which one has won “best paper” awards. Prior to joining Jilin University, he was visiting scholar with the University
+
+of Hull, England, University of British Columbia, Canada and Alberta University, Canada.
+
+![](images/70edf485f63a0f0d35c39008b037184991e77bc5d59ce7325ae2e723daf8c7e5.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a collared shirt (no text or symbols visible)
+</details>
+
+Jian Wang (Member, IEEE) received the BSc, MSc, and PhD degrees in computer science from Jilin University, Changchun, China, in 2004, 2007, and 2011, respectively. He is currently a professor with the College of Computer Science and Technology, Jilin University. He is interested in topics related to wireless communication and vehicular networks, especially for network security and privacy protection. He has published more than 40 articles in international journals.
+
+![](images/f7bb01b0830d978d900c41e00ff9f0fbe66827b0c528969ee481f16df9d67e7e.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a black shirt (no text or symbols visible)
+</details>
+
+Dongpu Cao (Senior Member, IEEE) received the PhD degree from Concordia University, Canada, in 2008. He is a professor with Tsinghua University. His current research focuses on driver cognition, automated driving, and social cognitive autonomous driving. He has contributed more than 200 papers and 3 books. He received the SAE Arch T. Colwell Merit Award in 2012, IEEE VTS 2020 Best Vehicular Electronics Paper Award and more than 10 Best Paper Awards from international conferences. He has served as deputy editor-in-chief of the IET Intelligent
+
+Transport Systems Journal, and an associate editor of IEEE Transactions on Vehicular Technology, IEEE Transactions on Intelligent Transportation Systems, IEEE/ASME Transactions on Mechatronics, IEEE Transactions on Industrial Electronics, IEEE/CAA Journal of Automatica Sinica, IEEE Transactions on Computational Social Systems, and ASME Journal of Dynamic Systems, Measurement and Control. He is an IEEE VTS distinguished lecturer.

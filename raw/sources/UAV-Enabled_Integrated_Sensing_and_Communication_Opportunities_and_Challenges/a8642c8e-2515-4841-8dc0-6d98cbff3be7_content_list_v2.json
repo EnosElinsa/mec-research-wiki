@@ -1,0 +1,2065 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "UAV-Enabled Integrated Sensing and Communication: Opportunities and Challenges "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                75,
+                111,
+                922,
+                173
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Kaitao Meng, Qingqing Wu, Jie Xu, Wen Chen, Zhiyong Feng, Robert Schober, and A. Lee Swindlehurst "
+                    }
+                ]
+            },
+            "bbox": [
+                136,
+                184,
+                859,
+                200
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstra ct "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                198,
+                246,
+                261,
+                265
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Unmanned aerial vehicle (UAV)-enabled integrated sensing and communication (ISAC) has attracted growing research interests in the context of sixth-generation (6G) wireless networks, in which UAVs will be exploited as aerial wireless platforms to provide better coverage and enhanced sensing and communication (S&C) services. However, due to the size, weight, and power (SWAP) constraints of UAVs, their controllable mobility, and the line-ofsight (LoS) air-ground channels, UAV-enabled ISAC introduces new opportunities and challenges. This article provides an overview of UAV-enabled ISAC and proposes various solutions for optimizing the S&C performance. In particular, we first introduce UAV-enabled joint S&C and discuss UAV motion control, wireless resource allocation, and interference management for ISAC systems employing single and multiple UAVs. Then, we present two application scenarios for exploiting the synergy between S&C, namely sensing-assisted UAV communication and communication-assisted UAV sensing. Finally, we highlight several interesting research directions to guide and motivate future work. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                268,
+                398,
+                565
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Introducti on "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                184,
+                570,
+                275,
+                588
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Integrated sensing and communication (ISAC) has recently emerged as a candidate technology for sixth-generation (6G) wireless networks, in which wireless infrastructure and spectrum resources are shared to provide both sensing and communication (S&C) services. By leveraging advanced multiple-input and multiple-output (MIMO) and millimeter-wave (mmWave)/ terahertz (THz) technology, ISAC is expected to provide high-throughput, ultra-reliable, and low-latency wireless communications, as well as ultra-accurate and high-resolution wireless sensing for 6G [1, 2]. This thus offers new opportunities for realizing environment- and location-aware applications for smart cities, smart manufacturing, autonomous driving, and so on. However, conventional terrestrial ISAC networks can only provide sensing services within a fixed and limited range, as surrounding obstacles may block the line-of-sight (LoS) links to long-range targets, which leads to a seriously degraded sensing performance [3, 4]. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                588,
+                398,
+                870
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Motivated by the success of pilot projects on unmanned aerial vehicle (UAV)-enabled communications, such as AT&T’s flying COW and Nokia’s F-cell [5], there is a growing interest in employing UAVs as cost-effective aerial platforms to provide enhanced ISAC services supporting traffic accident rescue, non-authorized eavesdropper monitoring, and service enhancement in temporary hot spot areas, as illustrated in Fig. 1. By exploiting the high mobility of UAVs in three-dimensional (3D) space and their strong air-ground LoS channels, UAV-enabled ISAC is expected to provide better S&C coverage, more flexible surveillance, and enhanced S&C performance compared to terrestrial ISAC. However, such a new aerial ISAC paradigm also introduces new design challenges. First, both fixedwing and rotary-wing UAVs have to meet stringent constraints regarding their size, weight, and power, which limits their communication, sensing, and endurance capabilities. Second, strong air-ground LoS links inevitably incur severe interference in ISAC networks [6], which however can be exploited to extract rich target information such as location, velocity, and direction. Third, the flexible UAV placement/trajectory introduces new degrees-offreedom (DoFs) for optimization, which makes the system design more complicated. Last but not least, unlike conventional UAV-enabled communications focusing on rate maximization, UAV-enabled ISAC systems need to incorporate (radar) sensing performance metrics (e.g., detection probability and estimation/recognition accuracy), sensing signal processing (e.g., echo signal processing and clutter interference suppression) [7], and efficient cooperative mechanisms. As such, how to design UAV-enabled ISAC to achieve high S&C performance and effective coordination among the UAVs is a new and challenging problem to address. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                255,
+                755,
+                742
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Given the above considerations, there is an urgent need to investigate joint S&C design for UAV-enabled ISAC systems for improving spectrum efficiency, enabling hardware reuse, and reducing power consumption. Specifically, proper trajectory planning and resource allocation are needed to meet the distinct S&C performance requirements and balance the performance-cost trade-off. For example, communication services are usually continuously provided for a period of "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                742,
+                755,
+                872
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Kaitao Meng is with the University of Macau, China; Qingqing Wu (corresponding author) and Wen Chen are with Shanghai Jiao Tong University, China; Jie Xu is with The Chinese University of Hong Kong (Shenzhen), China; Zhiyong Feng is with Beijing University of Posts and Telecommunications, China; Robert Schober is with Friedrich-Alexander University Erlangen-Nürnberg (FAU), Germany; A. Lee Swindlehurst is with the University of California, Irvine, USA. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                890,
+                753,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Digital Object Identifier: 10.1109/MWC.131.2200442 "
+                    }
+                ]
+            },
+            "bbox": [
+                784,
+                921,
+                931,
+                933
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ACCEPTED FROM OPEN CALL "
+                    }
+                ]
+            },
+            "bbox": [
+                393,
+                24,
+                604,
+                47
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                964,
+                309,
+                978
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "1536-1284/24/$25.00 © 2024 IEEE "
+                    }
+                ]
+            },
+            "bbox": [
+                482,
+                966,
+                693,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "97 "
+                    }
+                ]
+            },
+            "bbox": [
+                914,
+                965,
+                929,
+                976
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/018ca93e150a02217c7a5e945062c30791f5ecfa60009a3d7b0897e709ab3513.jpg"
+                },
+                "content": "```mermaid\ngraph TD\n    subgraph_InterferenceManagement[\"Interference management\"]\n        A[\"Hot spot\"] --> B[\"User\"]\n        B --> C[\"Target\"]\n        D[\"Error bar\"] --> E[\"Error signal\"]\n        F[\"Error signal\"] --> G[\"Error signal\"]\n        H[\"Error signal\"] --> I[\"Error signal\"]\n        J[\"Error signal\"] --> K[\"Error signal\"]\n        L[\"Error signal\"] --> M[\"Error signal\"]\n        N[\"Error signal\"] --> O[\"Error signal\"]\n        P[\"Error signal\"] --> Q[\"Error signal\"]\n        R[\"Error signal\"] --> S[\"Error signal\"]\n        T[\"Error signal\"] --> U[\"Error signal\"]\n        V[\"Error signal\"] --> W[\"Error signal\"]\n        X[\"Error signal\"] --> Y[\"Error signal\"]\n        Z[\"Error signal\"] --> AA[\"Error signal\"]\n        AB[\"Error signal\"] --> AC[\"Error signal\"]\n        AD[\"Error signal\"] --> AE[\"Error signal\"]\n        AF[\"Error signal\"] --> AG[\"Error signal\"]\n        AH[\"Error signal\"] --> AI[\"Error signal\"]\n        AJ[\"Error signal\"] --> AK[\"Error signal\"]\n        AL[\"Error signal\"] --> AM[\"Error signal\"]\n        AN[\"Error signal\"] --> AO[\"Error signal\"]\n        AP[\"Error signal\"] --> AQ[\"Error signal\"]\n        AR[\"Error signal\"] --> AS[\"Error signal\"]\n        AT[\"Error signal\"] --> AU[\"Error signal\"]\n        AV[\"Error signal\"] --> AW[\"Error signal\"]\n        AX[\"Error signal\"] --> AY[\"Error signal\"]\n        AZ[\"Error signal\"] --> BA[\"Error signal\"]\n        BB[\"Error signal\"] --> BC[\"Error signal\"]\n        BD[\"Error signal\"] --> BE[\"Error signal\"]\n        BF[\"Error signal\"] --> BG[\"Error signal\"]\n        BH[\"Error signal\"] --> BI[\"Error signal\"]\n        BJ[\"Error signal\"] --> BK[\"Error signal\"]\n        BL[\"Error signal\"] --> BM[\"Error signal\"]\n        BN[\"Error signal\"] --> BO[\"Error signal\"]\n        BP[\"Error signal\"] --> BQ[\"Error signal\"]\n        BR[\"Error signal\"] --> BS[\"Error signal\"]\n        BT[\"Error signal\"] --> BU[\"Error signal\"]\n        BV[\"Error signal\"] --> BW[\"Error signal\"]\n        BX[\"Error signal\"] --> BY[\"Error signal\"]\n        BZ[\"Error signal\"] --> CA[\"Error signal\"]\n        CB[\"Error signal\"] --> DA[\"Error signal\"]\n        DB[\"Error signal\"] --> DBQ[\"Error signal\"]\n        DC[\"Error signal\"] --> DBX[\"Error signal\"]\n        DBT[\"Error signal\"] --> DBU[\"X/A\"]\n        DBU[\"X/A\"] --> DBV[\"X/A\"]\n        DBV[\"X/A\"] --> DBW[\"X/A\"]\n        DBW[\"X/A\"] --> DBX[\"X/A\"]\n        DBX[\"X/A\"] --> DBY[\"X/A\"]\n    end\n\n    subgraph_CooperativeISAC[\"Cooperative ISAC\"]\n        BZ\n        BC\n        BW\n        BA\n        BB\n        BW\n        BA\n        BB\n        BW\n    end\n\n    style InterferenceManagement fill:#f9f,stroke:#333\n    style CooperativeISAC fill:#bbf,stroke:#333\n    style User fill:#dfd,stroke:#333\n    style Target fill:#dfd,stroke:#333\n    style CooperativeISAC fill:#dfd,stroke:#333\n    style User fill:#dfd,stroke:#333\n    style Target fill:#dfd,stroke:#333\n    style CooperativeISAC fill:#dfd,stroke:#333\n    style User fill:#dfd,stroke:#333\n    style Target fill:#dfd,stroke:#333\n    style CooperativeISAC fill:#dfd,stroke:#333\n    style User fill:#dfd,stroke:#386\n    style Target fill:#dfd,stroke:#386\n    style CooperativeISAC fill:#dfd,stroke:#386\n    style User fill:#dfd,stroke:#386\n    style Target fill:#dfd,stroke:#386\n    style CooperativeISAC fill:#dfd,stroke:#386\n    style User fill:#dfd,stroke:#386\n    style Target fill:#dfd,stroke:#386\n    style CooperativeISAC fill:#dfd,stroke:#386\n    style User fill:#dfd,stroke:#386\n    style Targetfill fill:#dfd,stroke:#386\n```",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 1. Application scenarios for UAV-enabled ISAC. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "flowchart",
+            "bbox": [
+                68,
+                39,
+                573,
+                283
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "time determined by the data volume, while sensing tasks tend to be performed with a certain sensing frequency depending on the targets’ position and velocity, and the task’s timeliness requirement. On the other hand, enforcing continuous sensing along with communication at all times may inevitably lead to higher energy consumption, a waste of spectrum resources, and stronger interference to communication users [8]. Moreover, the use of multiple UAVs to collaboratively provide ISAC services is an effi cient solution to further enhance the S&C coverage and increase the integration gain, but such systems demand more sophisticated interference management [6]. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                320,
+                575,
+                500
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Besides the integration gain obtained by the joint design of S&C, mutual assistance of S&C off ers the potential to achieve a coordination gain in UAV-enabled ISAC, which enables sensing-assisted UAV communication and communication-assisted UAV sensing. For example, UAVs equipped with (radar) sensing capabilities can design their real-time trajectories and allocate communication resources based on their sensing results while incurring only a small signaling overhead. In turn, wireless communication provides an efficient means for UAVs to enhance their sensing data processing capabilities via, for example, sensory data off loading and over-the-air computation [9]. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                500,
+                575,
+                677
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In view of the above discussion, this article aims to provide a state-of-the-art overview of UAV-enabled ISAC, by identifying the related key challenges, discussing potential solutions, and presenting interesting directions for future research. To this end, the following section proposes new ISAC protocols and discusses UAV-enabled joint S&C design for single- and multi-UAV systems, respectively. We then present novel concepts for sensing-assisted UAV communication and communication-assisted UAV sensing. Following that we provide promising research directions for the integration of ISAC and UAVs. Finally, we conclude the article. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                677,
+                575,
+                845
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "uAV-enAbled JoInt sensIng And communIcAtIon "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                241,
+                850,
+                573,
+                868
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This section discusses UAV-enabled joint S&C, where UAVs serve ground communication users while concurrently detecting or estimating ground targets in relevant sensing areas. We distinguish between single- and multi-UAV systems. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                869,
+                573,
+                934
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "sIngle-uAV-enAbled IsAc "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                688,
+                35,
+                842,
+                54
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "While sensing and communication functionalities could be time multiplexed, improved performance is expected if both services can operate as needed, and possibly simultaneously. Therefore, in this subsection, we present new transmission protocols, novel resource allocation strategies, and UAV trajectory designs for UAV-Enabled joint S&C. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                63,
+                931,
+                154
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ISAC Frame Protocol Design: Suppose that unified ISAC waveforms or beams are employed to sense multiple targets, for which the received sensing signal-to-clutter-and-noise ratio (SCNR) [4] or the sensing beampattern [10] are adopted as performance metrics. Since communication is generally continuously required while sensing tasks are often performed periodically, specifi c ISAC frames should be designed to facilitate the resource allocation and trajectory optimization, as shown in the top subfigure of Fig. 2. During each ISAC frame, diff erent targets may be sensed simultaneously or separately at least once. Accordingly, the ISAC frame protocols can be classifi ed into the following three categories. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                154,
+                931,
+                346
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Co-ISAC: During each ISAC frame, all targets are sensed simultaneously at least once, and thus the ISAC beams need to be radiated divergently to cover all targets and users at the same time, as shown in the top subfigure of Fig. 2. Due to the potentially stringent sensing requirements for all targets, the UAV trajectory design in this case is less flexible since the transmit power has to be divided into multiple directions for both S&C. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                346,
+                931,
+                461
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "TDM-ISAC: Multi-target sensing is performed in a time division multiplexing (TDM) manner along with communication functions, that is, in each time instant unified waveforms/beams only cover one intended target (instead of all targets in Co-ISAC) together with one communication user. In this case, echo signals from other targets become clutter/interference for the intended target sensing. On the other hand, a target and users with small angular separation tend to be jointly served to improve energy effi ciency, since the leakage power of the sensing beam toward a user can be utilized for information transmission [2, 10]. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                461,
+                931,
+                627
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Hybrid-ISAC: This protocol is a combination of Co-ISAC and TDM-ISAC. In this design, multiple targets are grouped based on their locations. Accordingly, Co-ISAC is performed within each group to improve intra-group sensing efficiency while TDM-ISAC is implemented among different groups to avoid inter-group interference. By properly optimizing the target grouping, this hybrid protocol is expected to outperform the Co-ISAC and TDM-ISAC protocols in terms of effi ciency and cost. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                627,
+                931,
+                768
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The three above protocol designs have advantages and disadvantages, and their relative performance depends on various factors such as the S&C quality-of-service (QoS) requirements, the locations of users/targets, and their mobility [11]. How to optimize the protocol design to enhance the S&C performance needs further investigation. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                767,
+                931,
+                856
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Joint Resource Allocation, Waveform, and Deployment/Trajectory Design: Unlike conventional terrestrial ISAC systems, in UAV-enabled ISAC systems, optimal resource allocation and waveform design are deeply infl uenced by the UAV deployment/trajectory, since the angular separations between users/targets change with the UAV location. Therefore, to achieve high S&C performance, user association, transmit beamforming, and the UAV trajectory must be jointly designed to maximize communication performance while ensuring the required sensing power and sensing frequency [8]. Solutions to this problem can be generally divided into optimization-based and learning-based methods [5]. However, fi nding the optimal solution to the resulting joint optimization problem is challenging, since the beamforming design and UAV trajectory are closely coupled in multiple nested transcendental functions and integer optimization is required, for example, for user association and target allocation [8]. To tackle this issue, a two-layer penalty-based algorithm was proposed to decompose the involved coupled integer optimization variables for fi nding high-quality solutions [8]. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                856,
+                931,
+                934
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "98 "
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                965,
+                80,
+                976
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                686,
+                964,
+                931,
+                978
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                63,
+                39,
+                398,
+                269
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To demonstrate the effectiveness of the algorithm outlined above, the middle subfi gure of Fig. 2 illustrates various UAV trajectory designs and the corresponding achievable communication rates under the TDM-ISAC protocol, for a scenario with four users and four targets. The parameters are set based on practical system requirements and related references [5]. In particular, the number of antennas at the UAV is 16, and the UAV’s maximum horizontal fl ight speed is 30 m/s with a fl ight altitude of 40 m and a flight duration of 40 s. In addition, the channel gain at a reference distance of 1 m and the noise power at each user are set to –30 dB and –70 dBm, respectively. The maximum transmit power is 0.1 W, and the length of the time slots is 0.25 s. In the middle subfi gure of Fig. 2, two benchmarks are considered: "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                269,
+                398,
+                485
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Straight fl ight (SF): The UAV fl ies from the initial location to the final location along a straight line at a constant speed of 6 m/s. Flight-hover-fl ight (FHF): The UAV fl ies directly at its maximum speed from the initial location to the optimal location, where the UAV can transmit with the maximum achievable rate, hovers at the optimal location for a certain period of time, and then fl ies straight to the fi nal location. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                485,
+                397,
+                601
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Our proposed scheme for a high (low) required sensing frequency is referred as to Proposed-L (Proposed-H), similar to the benchmark schemes. Here, the high (low) sensing frequency is 0.2 Hz (0.025 Hz). Specifically, the sensing frequency refers to the reciprocal of the interval between two sensing times. It is observed that as the sensing frequency increases, the UAV’s trajectory gradually shrinks from a longer arc toward the users to several turn-back sub-trajectories between the targets and the users. The bottom subfi gure of Fig. 2 unveils a fundamental trade-off between sensing frequency and communication rate in UAV-enabled ISAC systems. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                601,
+                397,
+                780
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The complexity of the above trajectory design methods may become intractable for long flying periods. In fact, how to design a low-complexity trajectory achieving satisfactory performance is an open problem of high practical interest. A possible solution for this challenge is to partition the whole period into a number of ISAC frames with limited duration. In this manner, for periodic sensing tasks, we can obtain the trajectory for one ISAC frame, based on which the trajectories for the other ISAC frames can be constructed, thereby reducing the algorithmic complexity [8]. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                780,
+                398,
+                936
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/52ffd5f80fe8817c549fb4e4c34d250773868ff4802d52df5b1055cd89f6256c.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 2. Illustration of ISAC protocols and comparisons of UAV trajectory and achievable rate. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                424,
+                39,
+                751,
+                631
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "multI-uAV-enAbled IsAc "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                513,
+                670,
+                662,
+                687
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In single-UAV-enabled ISAC, the achievable S&C performance may be low for geographically distributed and time-critical tasks, due to the limited sensing range and communication rate of a single UAV. This thus motivates the development of eff ective multi-UAV collaboration schemes to further improve resource effi ciency. Compared to the single-UAV scenario, multi-UAV-enabled ISAC requires mitigation of the potentially severe inter-UAV interference caused by the strong LoS-dominant airground channels. To allow for different levels of cooperation among UAVs, we consider two cases, namely coordinated interference management and cooperative ISAC. Their respective advantages and weaknesses are compared in Table 1. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                690,
+                755,
+                882
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Coordinated Interference Management: In this case, each UAV serves the users and targets assigned to it, and different UAVs serve different users and targets. The UAVs may cause strong "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                883,
+                755,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In single-UAV-enabled ISAC, the achievable S&C performance may be low for geographically distributed and time-critical tasks, due to the limited sensing range and communication rate of a single UAV. "
+                    }
+                ]
+            },
+            "bbox": [
+                787,
+                35,
+                933,
+                187
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                964,
+                309,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "99 "
+                    }
+                ]
+            },
+            "bbox": [
+                916,
+                965,
+                931,
+                976
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/7478556acc996b8222e8eb23c43b79b86568f544268ba3136128eebf0ed46a91.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "TABLE 1. Comparison between single-UAV-enabled ISAC and multi-UAV-enabled ISAC. "
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td colspan=\"2\">Classification</td><td>Advantages</td><td>Weaknesses</td></tr><tr><td colspan=\"2\">Single-UAV-enabled ISAC</td><td>Low-cost, less interference</td><td>Small coverage, high latency</td></tr><tr><td rowspan=\"2\">Multi-UAV-enabled ISAC</td><td>Coordinated interference management</td><td>Large coverage, low complexity, less overhead</td><td>Under-utilized echo, strong interference in open space</td></tr><tr><td>Cooperative ISAC</td><td>Multi-directional observation, richer target information, deep coordination, more flexibility</td><td>Large overhead, high complexity, strict time synchronization</td></tr></table>",
+                "table_type": "complex_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                66,
+                35,
+                931,
+                147
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "interference to adjacent unassociated users/targets, thus limiting the S&C range and performance [12]. It is therefore of paramount importance to develop advanced countermeasures for managing such interference. One viable solution is to exploit the mobility of the UAV together with beamforming design and power control for reducing inter-UAV interference. Intuitively, sufficiently separated users/targets (i.e., the users’/targets’ angular separations exceed the angular resolution of the antenna array installed on one UAV), are preferably served simultaneously by different UAVs, especially in poor scattering environments. The main reasons for this are that the interference among UAVs caused by the side lobes of communication beams is greatly reduced due to the low correlation of the user channels and that the received signals reflected from more separated targets are distinguishable by one UAV. Furthermore, obstacles in the surrounding environment can even be utilized for interference reduction through proper deployment/trajectory design. As illustrated in Fig. 1, each UAV tends to hover at an optimized location that has LoS links to its associated users/targets but blocked LoS links to unassociated users/targets, thus enhancing the S&C performance while minimizing the interference. This thus leads to a multi-UAV collaboration gain. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                179,
+                575,
+                537
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Cooperative ISAC: In cooperative ISAC, multiple UAVs perform distributed radar sensing and coordinated wireless communications with a higher degree of collaboration, thus enabling the combination of distributed MIMO radar and aerial coordinated multi-point (CoMP) transmission/reception compared to coordinated interference management. In this case, UAVs are also allowed to act as dedicated transmitters/receivers and send/receive correlated signals for collaborative S&C. From the sensing perspective, by sharing or fusing the sensing results of different UAVs, larger sensing coverage, more diverse observation angles, and more accurate target parameter estimates are obtained. In addition, the received signals of all UAVs can be collected and fused at a central UAV or at on-ground base stations (BSs), and then the sensing results can be fed back to the different UAVs. Note that, for cooperative ISAC, the overhead required for information exchange is larger than that for coordinated interference management described earlier. Furthermore, for cooperative ISAC, the geometric dilution of precision (GDOP), as an important factor of positional measurement precision [6], needs to be optimized to realize a large distributed MIMO gain. From the communication perspective, by exploiting the benefits of the adjustable distributed antenna array created by multi-UAV systems, high spectrum efficiency can be achieved with the help of CoMP. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                538,
+                575,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "It is worth noting that NLoS links are exploitable for communication with the served users, whereas typically only LoS links are exploited for sensing and NLoS links are treated as unfavorable interference. Accordingly, UAVs at higher altitudes and in more open environments are more likely to have strong LoS links to the targets sensed by neighboring UAVs, and thus more reflected signals can be utilized for collaborative sensing; on the contrary, multi-user communications may suffer from more potentially harmful interference and channels with fewer DoFs due to LoS-dominated links. Therefore, UAV deployments with strong LoS links to the intended targets as well as a sufficiently large number of NLoS links to communication users to create high-rank MIMO channels are preferable, leading to a fundamental trade-off between S&C performance. Furthermore, the ground BSs can assist in radar signal processing and interference cancellation for communication signals in multi-UAV-enabled ISAC networks, as shown in Fig. 1. Nonetheless, such distributed multi-static ISAC systems pose several new challenges that need to be addressed, including the high signaling overhead and strict time synchronization requirements. Therefore, more in-depth studies are needed to unveil the most suitable approach for realizing efficient and distributed multi-UAV-enabled ISAC. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                179,
+                933,
+                537
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Sensi ng-Assi sted UAV Communi ca ti on "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                633,
+                544,
+                897,
+                562
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Sensing can provide the capability to see the physical world for future wireless networks, which in turn can potentially enhance their communication performance [13]. For instance, instead of relying on sending pilots to the receivers and feeding back channel estimates to the transmitter (or performing channel estimation at the BS based on the pilots sent by users), tVhe signals reflected by the served ISAC users with sensing and communication requirements can be directly utilized for localization and/or channel estimation. This thus helps to reduce the signaling overhead and yields a performance improvement, which gives rise to a new type of sensing gain. However, it remains an open problem how to quantitatively measure such sensing gain and how to fully exploit it for maximization of the communication performance by optimizing the UAV trajectory and/or beamforming. To find answers to these questions, we consider the UAVto-ground vehicle communication scenario shown in Fig. 3, where the communication performance improvement introduced by sensing is analyzed. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                563,
+                933,
+                846
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Sensi ng Gai n "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                724,
+                852,
+                806,
+                869
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Instead of downlink pilots or uplink feedback, the served ground vehicle’s information, for example, location, velocity, and angle, can be extracted from the reflected ISAC signals for use in beam tracking and beam alignment. To shed some light on the communication performance improvement achieved via sensing, the rate gain realized by ISAC prediction over conventional beam training is analyzed as follows. First, for ISAC prediction, the estimated vehicle location error may lead to beam misalignment, and the corresponding impact on the received communication signal-to-noise ratio (SNR) decreases exponentially with respect to (w.r.t.) the ratio of the angle estimation error l (rad) and the equivalent beamwidth L (rad) [14]. For comparison, for conventional beam training (c.f. the top subfi gure in Fig. 3), the achievable rate of the served user is the product of two terms: the time ratio 1 – a, which accounts for the overhead introduced by the downlink pilots, and the communication rate, which accounts for the SNR loss bt caused by beam misalignment. The communication performance improvement gained with sensing, namely the sensing gain, can thus by characterized as the diff erence between the achievable rate of the proposed ISAC prediction scheme and that of the conventional beam training scheme. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                869,
+                931,
+                934
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "100 "
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                965,
+                85,
+                976
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                686,
+                964,
+                931,
+                978
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                63,
+                39,
+                398,
+                333
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Based on the above discussion, the more (less) accurate the target (channel) estimation, the larger the sensing gain that can be achieved. For LoS-dominated channels, the location estimation error l is generally a function of the fourth power of the link distance between the UAV and the ground vehicle due to the round-trip path loss of the reflected signals, while the SNR loss of conventional beam training schemes depends on the received signal power at the ground vehicle. Thus, the rate gain realized by sensing-assisted communication is expected to decrease as the link distance increases. This is illustrated in Fig. 4, where the end-to-end spectrum effi ciency of conventional beam training and ISAC prediction are plotted for a setup, where the ground vehicle moves along the x-axis and the UAV is hovering at x = 700 m with a fl ight altitude of 80 m and a constant beam width. Figure 4 reveals that a higher sensing gain is achieved when the ground vehicle is closer to the UAV, as the accuracy of ISAC prediction decreases and begins to fluctuate as the echo signal power becomes weaker. As a result, exploiting the UAV’s mobility to shorten the link distance not only reduces the large-scale path loss but also strengthens the performance improvement gained from sensing. We note that joint beamwidth and UAV trajectory design is a promising approach to further improve ISAC performance. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                333,
+                397,
+                704
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "For general multi-UAV scenarios, collaborative sensing potentially leads to signifi cant communication performance improvement but requires sophisticated cooperation schemes. In particular, how to realize effi cient and reliable sensing data exchange and fusion among multiple UAVs for high-quality and seamless communication coverage is an open problem that requires further investigation. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                704,
+                397,
+                808
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "sensIng-AssIsted beAm trAckIng "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                133,
+                815,
+                325,
+                831
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "How to achieve precise target tracking and a high beamforming gain for communication is also an open problem. Specifically, for long-distance users that can be modeled as point-like objects, the sensing/radar beam should be designed as narrow as possible to accurately point toward its receive antennas, thereby providing both high beamforming gain for communication and excellent angular resolution for sensing. On the other hand, nearby users are not points but rather angularly extended objects, and in this case, a wider beam is preferred to cover the extended object while a narrower beam toward the receiver antennas can realize potentially higher communication performance. One possible approach to achieve an effi cient balance between S&C is to employ a dynamic waveform to adjust the width and center of the ISAC beam in real time according to the relative position of the receive antennas w.r.t. the estimated contour of the object. For example, in the S&C stage, the beamwidth may be designed to cover the entire object to guarantee sensing accuracy with relatively low communication performance [13], while in the communication-only stage, a narrower beam can be adopted to align with the receive antennas based on the prior knowledge of the antennas’ locations. In addition, for users with high mobility, it is advantageous for UAVs to use wide beams to provide reliable and effective target tracking at a possibly large distance to the target, while the communication performance can be improved by adopting narrow beams close to the target. This leads to a fundamental trade-off between communication throughput and sensing reliability for joint beamwidth and UAV trajectory design. Therefore, how to provide reliable beam tracking and enhanced communication performance by exploiting the mobility of UAVs and beamwidth design is a new and practically important problem. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                831,
+                398,
+                936
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/ee023a83da8a5ca36c2490280f535f2422b39f5c2fbcdaf6e0618fa7389c0acd.jpg"
+                },
+                "content": "```mermaid\ngraph TD\n    A[\"Real location\"] --> B[\"Estimated location\"]\n    B --> C[\"ISAC signal\"]\n    C --> D[\"Beam training\"]\n    D --> E[\"Uplink feedback\"]\n    E --> F[\"Beam prediction\"]\n    F --> G[\"Data blocks\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#ffc,stroke:#333\n    style D fill:#cfc,stroke:#333\n    style E fill:#fcc,stroke:#333\n    style F fill:#ffc,stroke:#333\n    style G fill:#fcc,stroke:#333\n```",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 3. Sensing-assisted UAV communication. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "flowchart",
+            "bbox": [
+                424,
+                38,
+                751,
+                237
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                419,
+                269,
+                755,
+                680
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "sensIng-AssIsted predIctIVe resource AllocAtIon "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                443,
+                687,
+                729,
+                703
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Although multi-UAV-enabled ISAC is promising for performance and coverage extension, it causes several practical challenges for resource allocation and user scheduling at the network level, such as dynamic load balancing and seamless coverage. For example, in multi-UAV networks, some UAVs may suffer from heavy S&C traffic loads while others may have only light loads, due to the uneven distribution and mobility of the users. This thus seriously degrades the service time and quality due to the limited energy and resources of each UAV. One possible solution is to allow the UAVs to actively/passively monitor the served users’ state (e.g., position and velocity) by analyzing their reflected signals, and then predict their trajectories based on the measured information. Then, these results can be further exploited to optimize the network resource "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                704,
+                755,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Although multi-UAVenabled ISAC is promising for performance and coverage extension, it causes several practical challenges for resource allocation and user scheduling at the network level, such as dynamic load balancing and seamless coverage. "
+                    }
+                ]
+            },
+            "bbox": [
+                779,
+                35,
+                934,
+                205
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                964,
+                309,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": []
+            },
+            "bbox": [
+                912,
+                965,
+                929,
+                976
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "One challenging issue related to UAV sensing arises from environmental obstacles, which could either block LoS sensing links or cause clutter interference. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                37,
+                215,
+                141
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/864a4ff814161987fdcd9f9894db4b4802eae0925e0cc73cce6430c58cadb37f.jpg"
+                },
+                "content": "| Vehicle location at x-axis (m) | Ideal channel | ISAC prediction | Beam training |\n| ------------------------------ | ------------- | --------------- | ------------- |\n| 0                              | 4.0           | 2.0             | 3.0           |\n| 200                            | 5.5           | 4.5             | 3.5           |\n| 400                            | 7.0           | 6.0             | 4.5           |\n| 600                            | 9.0           | 8.5             | 6.0           |\n| 800                            | 10.5          | 10.0            | 8.0           |\n| 1000                           | 9.0           | 8.5             | 6.5           |\n| 1200                           | 7.0           | 6.5             | 5.0           |\n| 1400                           | 5.0           | 4.0             | 3.0           |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 4. Sensing gain achieved by ISAC prediction over conventional beam training. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                246,
+                39,
+                573,
+                237
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/2f4d46b8c84c2a713963b502980c294a738e6f13167cf4dfa772a2c02ff9247c.jpg"
+                },
+                "content": "```mermaid\ngraph TD\n    A[\"Auxiliary information\"] --> B[\"Information sharing\"]\n    B --> C[\"Target information\"]\n    C --> D[\"Offloading\"]\n    D --> E[\"Clutter interference\"]\n    E --> F[\"3D map\"]\n    F --> G[\"Truck\"]\n    G --> H[\"Truck\"]\n    H --> I[\"Truck\"]\n    I --> J[\"Truck\"]\n    J --> K[\"Truck\"]\n    K --> L[\"Truck\"]\n    L --> M[\"Truck\"]\n    M --> N[\"Truck\"]\n    N --> O[\"Truck\"]\n    O --> P[\"Truck\"]\n    P --> Q[\"Truck\"]\n    Q --> R[\"Truck\"]\n    R --> S[\"Truck\"]\n    S --> T[\"Truck\"]\n    T --> U[\"Truck\"]\n    U --> V[\"Truck\"]\n    V --> W[\"Truck\"]\n    W --> X[\"Truck\"]\n    X --> Y[\"Truck\"]\n    Y --> Z[\"Truck\"]\n    Z --> AA[\"Truck\"]\n    AA --> AB[\"Truck\"]\n    AB --> AC[\"Truck\"]\n    AC --> AD[\"Truck\"]\n    AD --> AE[\"Truck\"]\n    AE --> AF[\"Truck\"]\n    AF --> AG[\"Truck\"]\n    AG --> AH[\"Truck\"]\n    AH --> AI[\"Truck\"]\n    AI --> AJ[\"Truck\"]\n    AJ --> AK[\"Truck\"]\n    AK --> AL[\"Truck\"]\n    AL --> AM[\"Truck\"]\n    AM --> AN[\"Truck\"]\n    AN --> AO[\"Truck\"]\n    AO --> AP[\"Truck\"]\n    AP --> AQ[\"Truck\"]\n    AQ --> AR[\"Truck\"]\n    AR --> AS[\"Truck\"]\n    AS --> AT[\"Truck\"]\n    AT --> AU[\"Truck\"]\n    AU --> AV[\"Truck\"]\n    AV --> AW[\"Truck\"]\n    AW --> AX[\"Truck\"]\n    AX --> AY[\"Truck\"]\n    AY --> AZ[\"Truck\"]\n    AZ --> BA[\"Truck\"]\n    BA --> BB[\"Truck\"]\n    BB --> BC[\"Truck\"]\n    BC --> BD[\"Truck\"]\n    BD --> BE[\"Truck\"]\n    BE --> BF[\"Truck\"]\n    BF --> BG[\"Truck\"]\n    BG --> BH[\"Truck\"]\n    BH --> BI[\"Truck\"]\n    BI --> BJ[\"Truck\"]\n    BJ --> BK[\"Truck\"]\n    BK --> BL[\"Truck\"]\n    BL --> BM[\"Truck\"]\n    BM --> BN[\"Truck\"]\n    BN --> BO[\"Truck\"]\n    BO --> BP[\"Truck\"]\n    BP --> BQ[\"Truck\"]\n    BQ --> BR[\"Truck\"]\n    BR --> BS[\"Truck\"]\n    BS --> BT[\"Truck\"]\n    BT --> BU[\"Truck\"]\n    BU --> BV[\"Truck\"]\n    BV --> BW[\"Truck\"]\n    BW --> BX[\"Truck\"]\n    BX --> BY[\"Truck\"]\n    BY --> BZ[\"Truck\"]\n    BZ --> CA[\"Truck\"]\n    CA --> CB[\"Truck\"]\n    CB --> CC[\"Truck\"]\n    CC --> CD[\"Truck\"]\n    CD --> CE[\"Truck\"]\n    CE --> CF[\"Truck\"]\n    CF --> CG[\"Truck\"]\n    CG --> CH[\"Truck\"]\n    CH --> CI[\"Truck\"]\n    CI --> CJ[\"Truck\"]\n    CJ --> CK[\"Truck\"]\n    CK --> CR[\"Truck\"]\n    CR --> CS[\"Truck\"]\n    CS --> CT[\"Truck\"]\n    CT --> CU[\"Truck\"]\n    CU --> CV[\"Truck\"]\n    CV --> CW[\"Truck\"]\n    CW --> CX[\"Truck\"]\n    CX --> CY[\"Truck\"]\n    CY --> CZ[\"Truck\"]\n    CZ --> DA[\"Truck\"]\n    DA --> DB[\"Truck\"]\n    DB --> DC[\"Truck\"]\n    DC --> DD[\"Truck\"]\n    DD --> DE[\"Truck\"]\n    DE --> DF[\"Truck\"]\n    DF --> DG[\"Truck\"]\n    DG --> DH[\"Truck\"]\n    DH --> DI[\"Truck\"]\n    DI --> DJ[\"Truck\"]\n    DJ --> DK[\"Truck\"]\n    DK --> DL[\"Truck\"]\n    DL --> DJ\n```",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 5. Communication-assisted UAV sensing. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "flowchart",
+            "bbox": [
+                244,
+                277,
+                573,
+                413
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "allocation and user scheduling, thus achieving high-quality service by reserving resources and communication data for the users in advance. There are still many open and challenging issues for seamless coverage and connectivity in multi-UAV networks, especially in urban environments with many potential obstructions. Specifically, how to jointly design the dynamic UAV deployment and resource allocation to provide seamless service is a crucial challenge. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                447,
+                575,
+                576
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "communIcAtIon-AssIsted uAV sensIng "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                277,
+                581,
+                541,
+                601
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Besides sensing-assisted UAV communication, the communication functionality can also assist sensing to enhance the sensing robustness, effi ciency, and accuracy. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                601,
+                575,
+                654
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "dAtA oFFloAdIng "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                359,
+                661,
+                457,
+                677
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "As the sensing results are generally needed for subsequent processes, two challenges for UAVs performing sensing tasks in practice are their limited computational capabilities and the low latency requirements for data processing. For example, processing all the received echoes locally at the UAV may be too time-consuming to meet the latency requirements of delay-sensitive ISAC missions, such as target tracking. To tackle this problem, one viable solution is to offload some computationally-intensive sensing tasks (e.g., in form of raw data or processed data) to nearby edge servers (e.g., at ground BSs or a central UAV with powerful computing capabilities), as shown in Fig. 5. By judiciously selecting the computing nodes (e.g., those with strong LoS links to the UAV) and scheduling multi-dimensional resources (e.g., communication resource allocation and computation offloading optimization), ISAC services can be provided more efficiently ensuring better timeliness. However, how to balance the associated energy consumption and transmission/processing latency requires further study. Moreover, due to the potentially large amounts of sensory data and limited link capacity, advanced compression methods may be applied to pre-process the sensing results and reduce the transmission burden. Alternatively, multiple UAVs may form multi-hop links for collaboratively relaying and off loading sensing tasks. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                677,
+                575,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                599,
+                39,
+                933,
+                168
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "InFormAtIon shArIng And FusIon "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                669,
+                175,
+                861,
+                191
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Considering the limited sensing range and performance of a single UAV, another solution to improve the sensing performance is to allow multiple UAVs to share and integrate their information for joint processing. For example, individually estimated information regarding the users’ positions and velocities may be shared among UAVs, and thus the sensing mission assignment can be made more efficient in the next ISAC frame. By sharing the users’ direction of motion and changes in the surrounding environment, a multi-UAV system with maneuverability can collaboratively provide seamless coverage and tracking. In addition, through information sharing, the waste of resources caused by repetitive target detection and excessive target searching is avoided. Furthermore, a UAV or a ground BS can serve as a data center for the collection and fusion of sensing results, thus improving the sensing accuracy and obtaining richer target information. However, information sharing/ exchange also introduces transmission latency and consumes communication resources. Hence, how to design a low-cost and highly-effi cient data sharing/fusion strategy to improve the network sensing performance is an open and challenging issue. Since in practice the communication rates are often severely limited, it may be difficult to meet the stringent sensing latency requirements, especially for wireless data aggregation in swarm UAV scenarios. A promising approach for improving data fusion efficiency is to apply over-the-air computation [9], which exploits the waveform superposition property of wireless channels to realize over-the-air aggregation of data simultaneously transmitted by multiple UAVs, without the need for separate data demodulation and fusion processes. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                193,
+                931,
+                654
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3d mAp AssIstAnce "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                708,
+                659,
+                821,
+                677
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "One challenging issue related to UAV sensing arises from environmental obstacles, which could either block LoS sensing links or cause clutter interference. For example, when a UAV flies to an unknown area to perform an ISAC mission, the UAV-ground channels may be occasionally blocked by high-rise buildings in urban areas, which degrades the S&C performance. To overcome this issue, one possible solution is to employ an environment map constructed based on historical measurements. For example, nearby BSs or edge servers may transmit a stored 3D map of the surrounding environment to the UAV, and based on this map, the states of the links between the UAV and the targets can be predicted. In turn, the map can be further updated based on the current sensing results. However, relying on map information only does not allow to address the dynamics of the environment. To tackle this problem, one viable method is to combine the offline LoS modeling and online sensing information (e.g., positions of the UAV and obstacles) to more accurately determine whether there exists an LoS link between the UAV and a given target location. This enables the UAV to design its real-time trajectory to ensure LoS links to the served users for providing enhanced and reliable ISAC services. Furthermore, it is also possible to extract auxiliary information for sensing based on a 3D environment map, such as the features of the explored/served areas and potential clutter. With such information, the UAV is able to create awareness of the environment around it and reduce/cancel clutter interference for facilitating target sensing, as illustrated in Fig. 5. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                677,
+                931,
+                934
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "102 "
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                965,
+                85,
+                976
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                686,
+                964,
+                931,
+                978
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                63,
+                39,
+                398,
+                232
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Di recti ons For Future Resea rch "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                116,
+                237,
+                344,
+                255
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Some open issues and challenges related to the integration of ISAC and UAVs are discussed in the following sections. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                255,
+                397,
+                296
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "ISAC f or UAVs "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                184,
+                303,
+                275,
+                319
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ISAC networks can also be utilized to monitor and manage network-connected UAVs, especially UAVs at low altitudes. For network-connected UAVs, ISAC signals emitted by ground BSs can be used for tracking the UAVs and thus enhancing the communication performance through efficient beam prediction. By exploiting the UAVs’ reflected signals, a more reliable cellular connection can be realized by proper resource allocation and trajectory design. However, the strong UAVground LoS links inevitably increase the interference to terrestrial users/BSs [4]. This motivates the development of new techniques for cooperative interference management and cancellation for heterogeneous ISAC networks. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                320,
+                398,
+                512
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "IRS -Assi sted UAV-Ena bled ISAC "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                136,
+                520,
+                325,
+                537
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Intelligent reflecting surface (IRS) is a promising technology to reconfigure wireless channels by exploiting smart reflections by massive low-cost reflecting elements. By exploiting an IRS, a virtual LoS link between a UAV and blocked users can be established to enlarge the UAV’s coverage area. This in turn provides higher flexibility for UAV deployment/trajectory design to achieve better S&C performance. Thus, IRS and UAV can synergistically improve S&C performance by proactively jointly altering the wireless communication channel via phase shift and trajectory design, respectively. However, the signaling overhead required for channel estimation is expected to be significant and the joint system design may entail high complexity. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                537,
+                398,
+                731
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Secure UAV ISAC "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                176,
+                737,
+                282,
+                754
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "UAV-enabled ISAC systems increase the risk of eavesdropping and jamming attacks due to the LoS-dominated air-ground channels. In addition, unauthorized malicious UAVs pose a new security threat to ground ISAC networks. As such, how to effectively safeguard the legitimate S&C users (e.g., preventing the target location and user information from being eavesdropped) and how to efficiently protect the S&C services (e.g., accurate sensing and reliable communication) against malicious attacks are new and challenging problems to address. Combining information signals with artificial noise is a promising approach for target/ eavesdropper tracking [15], but providing secure ISAC services is still challenging due to the difficulty in determining the locations and channels of the eavesdroppers. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                754,
+                398,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                419,
+                39,
+                755,
+                79
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "UAV ISAC Meets Artifi cia l Intelli gence "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                472,
+                86,
+                702,
+                103
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Artificial intelligence (AI)-based designs are promising options for coping with such highly dynamic scenarios while avoiding the time-consuming iterations of traditional optimization algorithms [15]. By integrating sensing information, such as the states of the environment, into the AI algorithm, future network states can be predicted, which allows UAVs to adjust their actions in an online manner. In turn, ISAC can provide training data for new AI-enabled applications via wireless network sensing. To properly train AI models using ISAC data from distributed UAVs while preserving their privacy, federated learning (FL) can be an efficient solution, where each participating UAV updates its local AI model based on its own local ISAC data, and then sends the updated parameters to a central server for updating the global AI model. However, how to efficiently integrate the training algorithm and the ISAC process is an interesting open problem. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                103,
+                755,
+                347
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Conclusi ons "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                542,
+                352,
+                633,
+                370
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this article, we have discussed UAV-enabled ISAC to realize an integration gain and facilitate mutual support between S&C. New design considerations and key challenges have been highlighted for UAV-enabled ISAC networks. Coordinated interference management and cooperative ISAC have been proposed for performance improvement in multi-UAV-enabled ISAC networks. Two representative examples for ISAC coordination gains, that is, sensing-assisted UAV communication and communication-assisted UAV sensing, have been presented to demonstrate the complementary nature of S&C. Furthermore, the presented representative simulation results have verified the benefits of the proposed methods. As UAV-enabled ISAC remains largely unexplored, it is hoped that this article will provide a useful initial guide and motivation for future research. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                370,
+                755,
+                603
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgment "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                537,
+                609,
+                638,
+                626
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Jie Xu’s work was supported in part by the National Natural Science Foundation of China under grants No. U2001208, 92267202, the Shenzhen Fundamental Research Program under grant No. JCYJ20210324133405015. Wen Chen’s work was supported by National key project 2020YFB1807700. Robert Schober’s work was supported in part by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) GRK 2680 – Project-ID 437847244. A. Lee Swindlehurst’ work was supported by the U.S. National Science Foundation by grant CCF-2225575. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                627,
+                755,
+                782
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Ref erences "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                556,
+                787,
+                619,
+                801
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] J. A. Zhang et al., “An Overview of Signal Processing Techniques for Joint Communication and Radar Sensing,” IEEE J. Sel. Top. Signal Process., vol. 15, no. 6, Nov. 2021, pp. 1295–1315. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] F. Liu et al., “Joint Radar and Communication Design: Applications, State-of-the-Art, and the Road Ahead,” IEEE Trans. Commun., vol. 68, no. 6, June 2020, pp. 3834–62. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] J. A. Zhang et al., “Enabling Joint Communication and Radar Sensing in Mobile Networks — A Survey,” IEEE Commun. Surveys Tuts., vol. 24, no. 1, 1st Quart. 2022, pp. 306–45. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] F. Liu et al., “Integrated Sensing and Communications: Towards Dual-Functional Wireless Networks for 6G and Beyond,” IEEE JSAC, vol. 40, no. 6, June 2022, pp. 1728–67. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                421,
+                803,
+                755,
+                938
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "One challenging issue related to UAV sensing arises from environmental obstacles, which could either block LoS sensing links or cause clutter interference. For example, when a UAV flies to an unknown area to perform an ISAC mission, the UAV-ground channels may be occasionally blocked by high-rise buildings in urban areas, which degrades the S&C performance. To overcome this issue, one possible solution is to employ an environment map constructed based on historical measurements. "
+                    }
+                ]
+            },
+            "bbox": [
+                779,
+                37,
+                934,
+                388
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                964,
+                309,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": []
+            },
+            "bbox": [
+                912,
+                965,
+                931,
+                976
+            ]
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Y. Zeng, Q. Wu, and R. Zhang, “Accessing from the Sky: A Tutorial on UAV Communications for 5G and Beyond,” Proc. IEEE, vol. 107, no. 12, Dec. 2019, pp. 2327–75. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] X. Wang et al., “Constrained Utility Maximization in Dual-Functional Radar-Communication Multi-UAV Networks,” IEEE Trans. Commun., vol. 69, no. 4, Apr. 2020, pp. 2660–72. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] A. Liu et al., “A Survey on Fundamental Limits of Integrated Sensing and Communication,” IEEE Commun. Surveys Tuts., vol. 24, no. 2, 2nd Qtr. 2022, pp. 994–1034. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] K. Meng et al., “Throughput Maximization for UAV-Enabled Integrated Periodic Sensing and Communication,” IEEE Trans. Wireless Commun., vol. 22, no. 1, Jan. 2023, pp. 671–87. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] G. Zhu et al., “Over-the-Air Computing for Wireless Data Aggregation in Massive IoT,” IEEE Wireless Commun., vol. 28, no. 4, Aug. 2021, pp. 57–65. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] X. Liu et al., “Joint Transmit Beamforming for Multiuser MIMO Communications and MIMO Radar,” IEEE Trans. Signal Process., vol. 68, 2020, pp. 3929–44. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] M. F. Keskin, H. Wymeersch, and V. Koivunen, “MIMO-OFDM Joint Radar-Communications: Is ICI Friend or Foe?” IEEE J. Sel. Top. Signal Process., vol. 15, no. 6, Nov. 2021, pp. 1393–1408. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] X. Chen et al., “Performance of Joint Sensing-Communication Cooperative Sensing UAV Network,” IEEE Trans. Veh. Technol., vol. 69, no. 12, Dec. 2020, pp. 15,545–56. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] F. Liu et al., “Radar-Assisted Predictive Beamforming for Vehicular Links: Communication Served by Sensing,” IEEE Trans. Wireless Commun., vol. 19, no. 11, Nov. 2020, pp. 7704–19. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] B. Chang et al., “Integrated Scheduling of Sensing, Communication, and Control for mmWave/THz Communications in Cellular Connected UAV Networks,” IEEE JSAC, vol. 40, no. 7, July 2022, pp. 2103–13. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] X. Lu et al., “UAV-Aided Cellular Communications With Deep Reinforcement Learning Against Jamming,” IEEE Wirel. Commun., vol. 27, no. 4, Aug. 2020, pp. 48–53. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                239,
+                34,
+                577,
+                418
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Bi ogra phi es "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                376,
+                423,
+                441,
+                438
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Kaitao Meng is currently a Post-Doctoral Researcher with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macau, China. His current research interests include integrated sensing and communication, multi-UAV collaboration, and intelligent reflecting surface. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                439,
+                575,
+                491
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Qingq ing Wu is currently an Associate Professor with the Department of Electronic Engineering, Shanghai Jiao Tong University, China. He was listed as the Clarivate ESI Highly Cited Researcher since 2021, the Most Influential Scholar Award in AI-2000 by Aminer since 2021, and World’s Top 2% Scientist by Stanford University since 2020. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                500,
+                575,
+                542
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                599,
+                35,
+                933,
+                58
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Jie Xu is currently an Associate Professor with the School of Science and Engineering, The Chinese University of Hong Kong, Shenzhen, China. His research interests include wireless communications, wireless information and power transfer, UAV communications, edge computing and intelligence, and integrated sensing and communication (ISAC). He served or is serving as an Editor of IEEE Trans. Wireless Communications, IEEE Trans. Communications, and IEEE Wireless Commun. Letters. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                67,
+                933,
+                150
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Wen Chen is a tenured Professor with the Department of Electronic Engineering, Shanghai Jiao Tong University, China, where he is the director of Broadband Access Network Laboratory. He is a fellow of Chinese Institute of Electronics and the distinguished lecturers of IEEE Communications Society and IEEE Vehicular Technology Society. He is the Shanghai Chapter Chair of IEEE Vehicular Technology Society, Editors of IEEE Trans. Wireless Communications, IEEE Trans. Communications, IEEE Access, and IEEE Open J. Vehicular Technology. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                159,
+                933,
+                253
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Zhiyong Feng is a professor at Beijing University of Posts and Telecommunications (BUPT), and the director of the Key Laboratory of the Universal Wireless Communications, Ministry of Education, P.R.China. Currently, she is serving as Associate Editors-in-Chief for China Communications. Her main research interests include wireless network architecture design and radio resource management in mobile networks, spectrum sensing and dynamic spectrum management in cognitive wireless networks, and integrated sensing and communications. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                260,
+                933,
+                355
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Rober t Sc hober is an Alexander von Humboldt Professor and the Chair for Digital Communication at Friedrich-Alexander University of Erlangen-Nuremberg (FAU), Germany. His research interests fall into the broad areas of Communication Theory, Wireless and Molecular Communications, and Statistical Signal Processing. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                364,
+                933,
+                427
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A. Lee Sw indl ehurs t [F] received the B.S. and M.S. degrees in Electrical Engineering from BYU, and the Ph.D. degree in Electrical Engineering from Stanford. He was with the ECE Department at BYU from 1990-2007, then on leave from during 2006-07 working as VP of Research for ArrayComm LLC. Since 2007 he has been a Professor in the EECS Department at UC Irvine. During 2014-17 he was also a Hans Fischer Senior Fellow at the Technical University of Munich. He is an IEEE Fellow, and in 2016 he was elected as a Foreign Member of the Royal Swedish Academy of Engineering Sciences. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                434,
+                933,
+                539
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "104 "
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                965,
+                85,
+                976
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • April 2024 "
+                    }
+                ]
+            },
+            "bbox": [
+                686,
+                964,
+                931,
+                978
+            ]
+        }
+    ]
+]

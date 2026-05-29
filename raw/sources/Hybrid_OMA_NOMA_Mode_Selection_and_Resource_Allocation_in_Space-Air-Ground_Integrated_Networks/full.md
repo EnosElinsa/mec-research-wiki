@@ -1,0 +1,1046 @@
+# Hybrid OMA/NOMA Mode Selection and Resource Allocation in Space-Air-Ground Integrated Networks
+
+Xun Wang , Hongbin Chen , and Fangqing Tan
+
+Abstract—Ground networks are facing severe challenges posed by the conflict between the increasing number of terminals and limited coverage and network resources. The space-air-ground integrated network (SAGIN) is a promising solution due to its global coverage and multi-dimensional heterogeneous resources. In this paper, we investigate a scenario, where the terminals are served by networks in SAGIN with hybrid orthogonal multiple access (OMA)/non-OMA (NOMA) transmission. According to the network characteristics in SAGIN, such as communication link, movement, and communication resources, we build up an utility function. We further formulate the problem of joint hybrid OMA/NOMA mode selection and resource allocation to maximize the system utility. Due to the non-convexity of the formulated problem, we decompose the original problem into two subproblems, which can be solved by the successive convex approximation, Lagrange dual method, and deep Q-network (DQN) learning, respectively. Moreover, to guarantee the constraints, an efficient reward function is further designed in DQN. Finally, simulation results show that compared with the benchmark schemes, the proposed algorithm can achieve better performance in terms of the achievable sum rate, the average achievable rate, and outage probability. Compared with the existing algorithms, the proposed algorithm can always facilitate terminals to flexibly select the suitable transmission mode according to the characteristics of the connected network, achieving better system performance.
+
+Index Terms—Hybrid OMA/NOMA mode selection, non-OMA (NOMA), orthogonal multiple access (OMA), resource allocation, space-air-ground integrated network (SAGIN).
+
+# I. INTRODUCTION
+
+W ITH the rapid development of mobile communicationnetworks, the terminal’s demand for ubiquitous ac- networks, the terminal's demand for ubiquitous accessing increases exponentially [1]. Although advanced fifthgeneration techniques [2] bring much convenience to ground networks, they still cannot support access in sparsely populated regions (such as mountains, oceans, suburbs, and rural regions)
+
+Received 8 January 2024; revised 21 May 2024; accepted 27 August 2024. Date of publication 30 August 2024; date of current version 16 January 2025. This work was supported in part by the National Natural Science Foundation of China under Grant 62061009 and Grant 62261013, in part by the Opening Project of Guangxi Wireless Broadband Communication and Signal Processing Key Laboratory under Grant GXKL06200218 and Grant GXKL06230108, in part by the Guangxi University Young and middle-aged teachers’ basic ability improvement under Grant 2020KY0054 and Grant 2023KY0226, and in part by the Innovation Project of Guangxi Graduate Education under Grant YCBZ2023131. The review of this article was coordinated by Dr. Dinh-Thuan Do. (Corresponding author: Fangqing Tan.)
+
+The authors are with the School of Information and Communication, Guilin University of Electronic Technology, Guilin 541004, China (e-mail: 709398868@qq.com; chbscut@guet.edu.cn; tfqing@guet.edu.cn).
+
+Digital Object Identifier 10.1109/TVT.2024.3452477
+
+due to limited coverage, while it is not cost-effective to build a large number of ground networks to meet the growing access requirements for sparsely populated regions. In addition, in densely populated regions, ground networks also faces some challenges due to limited network resources. Thus, building a global and collaborative network has been recognized as a global consensus and researchers have paid much attention in recent years [3].
+
+The satellites (i.e., geostationary earth orbit (GEO), medium earth orbit (MEO), and low earth orbit (LEO)) can provide global access for various terminals, but due to long-distance communications, it will bring out high transmission delay, low data rates, and high packet loss probability and transmit power [4]. By contrast, the ground networks (such as base stations (BSs)) have good coverage in densely populated regions (i.e., urban), which can support high-speed and low-latency access. However, the network capacity is limited. To this end, the unmanned aerial vehicle (UAV) can join in as a communication facility [5]. Due to its flexible mobility, the UAV can provide more flexible coverage for the terrestrial terminals [6]. However, mobility can lead to time-varying transmission links, and the service quality of the network cannot be guaranteed [7]. Thus, the space-air-ground integrated network (SAGIN) [8] composed of satellites, UAVs, and BSs has been proposed, which can enhance the network capacity and improve coverage located outside the BS coverage region. In SAGIN, terminals can achieve more flexible endto-end access via various links due to different networks can provide different transmission qualities [9], [10]. However, to guarantee the reliable access, there still exist challenges that need to be overcome in terms of transmission strategies and wireless resource allocation due to the heterogeneous resources, time-varying links, and dynamic environment of SAGINs.
+
+As a wireless access technology, non-orthogonal multiple access (NOMA) allows multiple terminals to share the same time-frequency resource by multiplexing them in the power domain [11] or code domain [12]. In this paper, the NOMA scheme refers to the power domain. At the receiver, successive interference cancellation (SIC) is adopted to eliminate the co-channel interference resulting from the other terminals and decode the target signal [13]. Compared with orthogonal multiple access (OMA) that serves multiple terminals through different orthogonal resources (e.g., frequency and time), such as, orthogonal frequency division multiple access (OFDMA), time division multiple access (TDMA), NOMA has been regarded as an effective solution to improve the spectrum efficiency and support massive access.
+
+Motivated by the benefits of NOMA, increasing research attention has been paid to combine NOMA with SAGINs. The prior works are categorized into downlink transmission and uplink transmission. For the downlink transmission, [14] developed a spectrum sharing model based on the overlay mode to improve the spectrum efficiency of SAGIN. The authors of [15] investigated the power allocation factors issues of the NOMAbased space-ground integrated networks with the objective of maximizing the sum rate. For the uplink transmission, the authors in [16] investigated the three-dimensional location of UAV and power allocation in NOMA based heterogeneous system, and solved it by the proposed joint algorithms. The authors in [17] considered a NOMA-based hybrid SAGIN and optimized power allocation. [18] proposed a framwork integration of NOMA and SAGIN for delay-sensitive data collection to minimize the maximum energy consumption among all internet of remote things devices. However, the existing works focused on NOMA transmission, while the hybrid OMA/NOMA transmission strategy for SAGIN, which can adapt to the time-variation of channel conditions and adaptively adjust according to the differences in network characteristics, has not been considered.
+
+Although NOMA-assisted SAGINs improves the spectrum efficiency and enhances the system performance by appropriate resource allocation, the achievable rate demands of terminals in each NOMA group may not be guaranteed due to the effects of network characteristics, such as communication link, movement, communication resources, etc. In this case, it is challenging for all networks in SAGIN to adopt only NOMA for signal transmission. This motivates the development of hybrid OMA/NOMA solutions that can dynamically switch between OMA and NOMA. To reduce the co-channel interference among users, in [19], a priority-based transmission scheme was proposed, where a threshold was set to separate users for NOMA and OFDMA. The authors in [20] studied a dynamic NOMA/OMA transmission strategy in which OMA is selected when applying NOMA has negligible gain to enhance infrastructure utilization. A maximum matching-based method was proposed for the selection of OMA/near and far users in [21]. To handle inter-cell interference, [22] proposed a TDMA-based hybrid NOMA and OMA scheme, which consists of round-robin scheduling and time resource allocation.
+
+The hybrid OMA/NOMA transmission strategy mentionedabove enhances the reliability of access and system capacity, but these methods are mainly used for non-SAGIN such as ground and UAV networks. Due to the varying network characteristics in different layers, these methods often cannot be directly applied to SAGIN, and even if it can be used, the system performance cannot be guaranteed. For this reason, some studies have explored possible hybrid OMA/NOMA transmission strategies in SAGIN. A semi-grant-free based transmission strategy was developed in [23], where the UAVs and multiple earth stations access satellite networks via NOMA, while the UAVs serves multiple mobile terminals through space division multiple access (SDMA). The authors in [24] proposed hybrid OMA/NOMA rule-based method for the aerial BS, with the objective of improving the quality of service (QoS) required by the users. In [25], a hybrid multiple access scheme was proposed to provide reliable connectivity for heterogeneous users in SAGIN. Here, multiple devices access a aerial platform through SDMA, while the aerial platform and the earth station communicate with the satellite using NOMA. Different from the works in [23] and [25], the transmission scheme between links is fixed, while the transmission schemes between different links are different. Due to the fixed transmission scheme, it cannot effectively adapt to the time-variation environment of SAGIN. To this end, our study focuses on the dynamic switching of transmission schemes at each subchannel of the network in each layer, while the transmission schemes between networks cross layers can be adjusted according to the network characteristics.
+
+Moreover, due to the heterogeneous resources, time-varying links, and dynamic environment of SAGIN, it is very challenging to design an efficient adaptive transmission strategy by traditional optimization tools. Machine learning, especially deep reinforcement learning (DRL), has been proven as an effective approach to solve decision-making problems in complex and time-varying networks [26]. For example, the work in [27] investigated the joint optimization problem of transmission mode selection and resource allocation through DRL. The authors in [28] adopted long short-term memory and DRL for the multiple access optimization problem. To make the DRL controller intelligently select the access mode, the authors in [29] proposed a multi-agent-DRL-based scheme. However, developing a deep Q-network (DQN)-based method to solve the transmission mode selection in hybrid OMA/NOMA-enabled SAGIN is a new research direction and few works have been done so far. Moreover, how to design a suitable reward function for the specific performance indicators under the constraints remains an open issue. Moreover, since the system performance is affected by highly coupled transmission mode selection and power resource allocation, a joint optimization problem should be investigated to make optimal decisions.
+
+Motivated by the above considerations, we propose a hybrid OMA/NOMA transmission scheme for SAGIN, which allows satellites, UAVs, and ground BSs to provide reliable access services to various ground terminals through a hybrid OMA/NOMA scheme, which is adopted at each network in SAGIN. For each available transmission link, when the NOMA mode is not available, or when considering the special characteristics of satellites, UAVs, and BSs, the available NOMA mode is not the optimal selection, the networks in SAGIN can switch to OMA mode to reduce the outage probability. Our contributions are summarized as follows.
+
+1) In the hybrid OMA/NOMA-based SAGIN, we establish an utility function according to the network characteristics, such as communication link, movement, and communication resources, and formulate a joint optimization problem of power allocation and hybrid OMA/NOMA mode selection, with the objective of maximizing the system utility.   
+2) Due to the non-convexity of the formulated problem, it is challenging to directly solve it. We decompose it into two subproblems. The power allocation subproblem is solved by the successive convex approximation (SCA) and Lagrange dual method. We propose an algorithm based on DQN to solve the hybrid OMA/NOMA mode selection subproblem. Moreover, to guarantee the constraints, an efficient reward function is further designed in DQN.
+
+![](images/31d809cb4a59f0d4f19ca9013fa09301e1c976fe21ae300e8599a10330c57ebb.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Subchannel 1"] --> B["Ground terminals"]
+    B --> C["Subchannel M"]
+    C --> D["Satellite coverage"]
+    D --> E["UAV coverage"]
+    E --> F["Satellite"]
+    F --> G["T2S"]
+    G --> H["T2U"]
+    H --> I["T2B"]
+    I --> J["Space layer"]
+    J --> K["Air layer"]
+    K --> L["Ground layer"]
+    L --> M["Satellite"]
+    M --> N["T2S"]
+    N --> O["T2U"]
+    O --> P["T2B"]
+    P --> Q["Subchannel 1"]
+    Q --> R["UAV coverage"]
+    R --> S["Satellite"]
+    S --> T["T2S"]
+    T --> U["T2U"]
+    U --> V["T2B"]
+    V --> W["Subchannel M"]
+    W --> X["UAV coverage"]
+    X --> Y["Satellite"]
+    Y --> Z["T2S"]
+    Z --> AA["T2U"]
+    AA --> AB["T2B"]
+    AB --> AC["Subchannel 1"]
+    AC --> AD["UAV coverage"]
+    AD --> AE["Satellite"]
+    AE --> AF["T2S"]
+    AF --> AG["T2U"]
+    AG --> AH["T2B"]
+    AH --> AI["Subchannel M"]
+    AI --> AJ["UAV coverage"]
+    AJ --> AK["Satellite"]
+    AK --> AL["T2S"]
+    AL --> AM["T2U"]
+    AM --> AN["T2B"]
+    AN --> AO["Subchannel 1"]
+    AO --> AP["UAV coverage"]
+    AP --> AQ["Satellite"]
+    AQ --> AR["T2S"]
+    AR --> AS["T2U"]
+    AS --> AT["T2B"]
+    AT --> AU["UAV coverage"]
+    AU --> AV["Satellite"]
+    AV --> AW["T2S"]
+    AW --> AX["T2U"]
+    AX --> AY["T2B"]
+    AY --> AZ["UAV coverage"]
+    AZ --> BA["Satellite"]
+    BA --> BB["T2S"]
+    BB --> BC["T2U"]
+    BC --> BD["T2B"]
+    BD --> BE["UAV coverage"]
+    BE --> BF["Satellite"]
+    BF --> BG["T2S"]
+    BG --> BH["T2U"]
+    BH --> BI["T2B"]
+    BI --> BJ["UAV coverage"]
+    BJ --> BK["Satellite"]
+    BK --> BL["T2S"]
+    BL --> BM["T2U"]
+    BM --> BN["T2B"]
+    BN --> BO["UAV coverage"]
+    BO --> BP["Satellite"]
+    BP --> BQ["T2S"]
+    BQ --> BR["T2U"]
+    BR --> BS["T2B"]
+    BS --> BT["UAV coverage"]
+    BT --> BU["Satellite"]
+    BU --> BV["T2S"]
+    BV --> BW["T2U"]
+    BW --> BX["T2B"]
+    BX --> BY["UAV coverage"]
+    BY --> BZ["Satellite"]
+    BZ --> CA["T2S"]
+    CA --> CB["T2U"]
+    CB --> CC["T2B"]
+```
+</details>
+
+Fig. 1. The architecture of the space-air-ground integrated network.
+
+3) Simulation results demonstrate that the proposed algorithm can always facilitate terminals to flexibly select the suitable transmission strategy according to the connected network characteristics. Compared to other benchmark schemes, our proposed algorithm can further improve system performance in terms of the achievable sum rate, the average achievable rate, and outage probability.
+
+The rest of this paper is organized as follows. Section II introduces the system model. Section III describes the formulated problem. In Section IV, an alternate iteration approach is proposed. Simulation results are presented in Section V. Finally, Section VI concludes this paper.
+
+# II. SYSTEM MODEL
+
+In this section, we consider a SAGIN architecture with hybrid OMA/NOMA transmission. As shown in Fig. 1, the SAGIN consists of three layers, i.e., the space layer S with I LEO1 satellites, the air layer V with J UAVs, and the ground layer B with K BSs, which respectively operate on Ku-band, V-band, and C-band [30]. They are connected to the central controller via dedicated links. The central controller is responsible for collecting the network status information and coordinating resource allocation for heterogeneous networks, achieving the information interaction in the same layer or cross layers. U terminals are distributed in a geographical region, which is composed of urban regions, suburb regions, and remote regions, and the distribution density of terminals varies among different regions. The set of satellites, UAVs, BSs, and terminals are defined as I, J, K, and U, respectively. Furthermore, we assume that the terminal is equipped with multi-mode antennas. Terminals can access each network operating in different bands by switching operating frequencies. Assuming that each terminal can be served by multiple networks in a specific layer of SAGIN, but it can access at most one subchannel of each network at each time to reduce the complexity of analysis. Moreover, we assume that the capacity of networks in each layer is limited, which cannot provide access services for all ground terminals. When the network is overloaded, the central controller will coordinate
+
+1Since GEO or MEO satellites have long communication distances and transmission latency, LEO satellites are considered to provide the efficient and reliable transmission for the terminals.
+
+with other networks in the same layer or cross layers to provide access for the terminal.
+
+Without loss of generality, a three-dimensional Cartesian coordinate system is considered. The coordinate of BS $k \in \mathbb { K }$ is fixed at $( \hat { x _ { k } ^ { B } } , y _ { k } ^ { B } , H _ { k } ^ { B } )$ , where $H _ { k } ^ { B }$ is the height of BS k. The UAV $j \in \mathbb { J }$ ( )flies along a designed trajectory at a fixed altitude $H _ { j } ^ { V }$ , and its maximum speed is $V _ { \mathrm { m a x } } .$ At each period, the coordinate of UAV j and satellite i are given as $( x _ { j } ^ { V } , y _ { j } ^ { V } , H _ { j } ^ { V } )$ and $( x _ { i } ^ { S } , y _ { i } ^ { S } , H _ { i } ^ { S } )$ , respectively, where $H _ { i } ^ { S }$ ( )is the height of satellite ( )i. To provide reliable services and avoid overlap, the positions between UAVs are generally placed far enough so that their mutual interference can be ignored.
+
+Moreover, we assume that the available spectrum of each network in each layer is divided into M orthogonal subchannels to avoid intra-cell interference, and that each subchannel can be allocated to one or multiple terminals. To improve system performance and provide reliable access services, we assume that each subchannel of the network can switch between OMA (e.g., OFDMA) mode and NOMA mode in a short period of time. For each subchannel of the network cross layers, if it serves multiple terminals, then the transmission operates in NOMA mode, otherwise, it works with OMA mode.
+
+Due to the heterogeneity of SAGINs, the links from terminals to networks in each layer are diverse and influenced by different physical mechanisms. We can divide the links into three categories: 1) the terminal to satellite (T2S) link, 2) the terminal to UAV (T2U) link, and 3) the terminal to BS (T2B) link.
+
+# A. T2B Link Transmission
+
+The channel estimation method in [31] is used to model the T2B link. Considering the effects of reflection and scattering, signals may experience channel fading and path loss. Both Line-of-Sight (LoS) propagation and non-LoS (NLoS) propagation are considered in the modeling of average path loss. The probabilities of LoS and NLoS respectively are formulated as [17], [32]
+
+$$
+\Psi_ {u, k} ^ {\mathrm{LO}} = \frac {1}{1 + \varphi e x p \left(- \vartheta \left(\frac {1 8 0}{\pi} \theta_ {u , k} - \varphi\right)\right)}, \tag {1}
+$$
+
+$$
+\Psi_ {u, k} ^ {\mathrm{NL}} = 1 - \Psi_ {u, k} ^ {\mathrm{LO}}, \tag {2}
+$$
+
+where $\theta _ { u , k }$ is the elevation angle between terminal u to BS k and is calculated by $\begin{array} { r } { \theta _ { u , k } = \arcsin ( \frac { H _ { k } ^ { B } } { d _ { u , k } } ) } \end{array}$ . ϕ and ϑ are parameters du,k of Sigmoid function. The path loss of LoS and NLoS between terminal u to BS k can be respectively expressed as
+
+$$
+\Phi_ {u, k} ^ {\mathrm{LO}} = \frac {\nu^ {2} \eta^ {\mathrm{LO}}}{(4 \pi f _ {\nu} ^ {\mathrm{B}} d _ {u , k}) ^ {2}}, \tag {3}
+$$
+
+$$
+\Phi_ {u, k} ^ {\mathrm{NL}} = \frac {\nu^ {2} \eta^ {\mathrm{NL}}}{(4 \pi f _ {\nu} ^ {\mathrm{B}} d _ {u , k}) ^ {2}}, \tag {4}
+$$
+
+where $\eta ^ { \mathrm { L O } }$ and $\eta ^ { \mathrm { N L } }$ are the attenuation factors for LoS and NLoS. ν is the light velocity. $f _ { \nu } ^ { \mathrm { B } }$ is the carrier frequency in layer B. $d _ { u , k }$ is the Euclidean distance between terminal u and BS k, which is given as
+
+$$
+d _ {u, k} = \sqrt {(x _ {k} ^ {B} - x _ {u}) ^ {2} + (y _ {k} ^ {B} - y _ {u}) ^ {2} + (H _ {k} ^ {B}) ^ {2}}, \tag {5}
+$$
+
+where $( x _ { u } , y _ { u } )$ are the coordinate of terminal u. Thus, the ( )average path loss of terminal u to BS k is calculated as follows
+
+$$
+\Phi_ {u, k} = \Psi_ {u, k} ^ {\mathrm{LO}} \Phi_ {u, k} ^ {\mathrm{LO}} + \Psi_ {u, k} ^ {\mathrm{NL}} \Phi_ {u, k} ^ {\mathrm{NL}}. \tag {6}
+$$
+
+Therefore, the channel coefficient between terminal u to BS k can be expressed as
+
+$$
+h _ {u, k} ^ {\mathrm{B}} = h _ {0} ^ {\mathrm{B}} \sqrt {\Phi_ {u , k}}. \tag {7}
+$$
+
+where $h _ { 0 } ^ { \mathrm { B } }$ is the fading coefficient following the Nakagami-m model, which has been widely applied to various terrestrial services in various frequency bands.
+
+If the signal from terminal u are transmitted to subchannel m of BS k via OMA, then the received signal can be expressed as
+
+$$
+y _ {u, k, m} ^ {\mathrm{O,B}} = h _ {u, k} ^ {\mathrm{B}} \sqrt {P _ {u , k , m} ^ {\mathrm{O,B}}} x _ {u, k, m} + n _ {k, m}, \tag {8}
+$$
+
+where $x _ { u , k , m }$ denotes the transmit signal from terminal u to subchannel m of BS k, which satisfies $E [ | x _ { u , k , m } | ^ { 2 } ] = 1 . n _ { k , m }$ BS [ ] =denotes the additive white Gaussian noise on subchannel m of $k ,$ which satisfies $C N ( 0 , \sigma _ { 0 } ^ { 2 } ) . P _ { u , k , m } ^ { \mathrm { O , B } }$ is the transmit power of ( ) terminal u via subchannel m of BS k, satisfying $P _ { u , k , m } ^ { \mathrm { O , B } } \leq P _ { \operatorname* { m a x } } ,$ where $P _ { \mathrm { m a x } }$ is the maximum transmit power. Accordingly, the received signal-to-noise ratio (SNR) on subchannel m of BS k can be computed by
+
+$$
+\gamma_ {u, k, m} ^ {\mathrm{O}, \mathrm{B}} = \frac {P _ {u , k , m} ^ {\mathrm{O} , \mathrm{B}} | h _ {u , k} ^ {\mathrm{B}} | ^ {2}}{\sigma_ {0} ^ {2}}. \tag {9}
+$$
+
+Thus, the achievable rate between terminal u and BS k via subchannel m can be given as
+
+$$
+R _ {u, k, m} ^ {\mathrm{O}, \mathrm{B}} = D \log_ {2} (1 + \gamma_ {u, k, m} ^ {\mathrm{O}, \mathrm{B}}), \tag {10}
+$$
+
+where D represents the bandwidth of each subchannel.
+
+When the transmission operates in the NOMA mode, each subchannel can accommodate multiple terminals. We assume the same subchannel is shared by two terminals [17], i.e., one near terminal $u ^ { \prime }$ and one far terminal $u ^ { \prime \prime } .$ , where $u ^ { \prime } \ne u ^ { \prime \prime }$ . Then, for terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ =in a NOMA group, the received signal at subchannel m of BS k is expressed as
+
+$$
+\begin{array}{l} y _ {k, m} ^ {\mathrm{N,B}} = h _ {u ^ {\prime}, k} ^ {\mathrm{B}} \sqrt {P _ {u ^ {\prime} , k , m} ^ {\mathrm{N,B}}} x _ {u ^ {\prime}, k, m} \\ + h _ {u ^ {\prime \prime}, k} ^ {\mathrm{B}} \sqrt {P _ {u ^ {\prime \prime} , k , m} ^ {\mathrm{N} , \mathrm{B}}} x _ {u ^ {\prime \prime}, k, m} + n _ {k, m}, \tag {11} \\ \end{array}
+$$
+
+where $P _ { u ^ { \prime } , k , m } ^ { \mathrm { N } , \mathrm { B } }$ and P N,B $P _ { u ^ { \prime \prime } , k , m } ^ { \mathrm { N , B } }$ are the transmit power of terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ via subchannel m of BS k, respectively.
+
+At the receiver, $\mathrm { S I C } ^ { 2 }$ decodes the signals from different terminals according to the decoding order. For ease of exposition, we assume that channel gain of terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ served 2In this paper, perfect SIC is assumed. The case of imperfect SIC [33] is also considered. Imperfect SIC is caused by the incomplete elimination of co-channel interference in the process of decoding signals. Thus, the SINR of terminal u is similar to (12), while the SINR of terminal u is γN,Bu,k,m $u ^ { \prime \prime }$ $\gamma _ { u ^ { \prime } , k , m } ^ { \mathrm { { N } , B } } =$ B N,B $\frac { P _ { u ^ { \prime } , k , m } ^ { \mathrm { N } , \mathrm { B } } | h _ { u ^ { \prime } , k } ^ { \mathrm { B } } | ^ { 2 } } { \iota ^ { \mathrm { B } } P _ { u ^ { \prime \prime } . k . m } ^ { \mathrm { N } , \mathrm { B } } | \overline { { h } } _ { k } ^ { \mathrm { B } } | ^ { 2 } + \sigma _ { 0 } ^ { 2 } }$ P N,B Pu,k,m |hB |h k | , where $\overline { { h } } _ { k } ^ { \mathrm { B } } \sim C N ( 0 , \iota ^ { \mathrm { B } } d _ { u , k } ^ { - 2 } )$ is a interference term, where $\iota ^ { \mathrm { B } } ( 0 \leq \iota ^ { \mathrm { B } } \leq 1 )$ represents the level of residual interference at the ground layer B. We can see that the SINR of terminal u decreases with the increase $\mathrm { o f } \ i ^ { \mathrm { B } }$ .
+
+by subchannel m of BS k can be arranged in the following order $| h _ { u ^ { \prime \prime } , k } ^ { \mathrm { B } } | ^ { 2 } > | h _ { u ^ { \prime } , k } ^ { \mathrm { B } } | ^ { 2 }$ . The signal $x _ { u ^ { \prime \prime } , k , m }$ is firstly decoded by treating the signal $x _ { u ^ { \prime } , k , m }$ as interference. Afterwards, the signal $x _ { u ^ { \prime \prime } , k , m }$ is eliminated from $y _ { k , m } ^ { \mathrm { N , B } }$ and then the signal $x _ { u ^ { \prime } , k , m }$ can be decoded. Thus, the received SNR and signal-to-interferenceplus-noise ratio (SINR) of terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ via subchannel m of BS k are respectively given by
+
+$$
+\gamma_ {u ^ {\prime}, k, m} ^ {\mathrm{N,B}} = \frac {P _ {u ^ {\prime} , k , m} ^ {\mathrm{N,B}} | h _ {u ^ {\prime} , k} ^ {\mathrm{B}} | ^ {2}}{\sigma_ {0} ^ {2}},
+$$
+
+$$
+\gamma_ {u ^ {\prime \prime}, k, m} ^ {\mathrm{N}, \mathrm{B}} = \frac {P _ {u ^ {\prime \prime} , k , m} ^ {\mathrm{N} , \mathrm{B}} \left| h _ {u ^ {\prime \prime} , k} ^ {\mathrm{B}} \right| ^ {2}}{P _ {u ^ {\prime} , k , m} ^ {\mathrm{N} , \mathrm{B}} \left| h _ {u ^ {\prime} , k} ^ {\mathrm{B}} \right| ^ {2} + \sigma_ {0} ^ {2}}. \tag {12}
+$$
+
+Thus, the achievable rate between terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ and BS k via subchannel m can be respectively denoted as
+
+$$
+R _ {u ^ {\prime}, k, m} ^ {\mathrm{N,B}} = D \log_ {2} (1 + \gamma_ {u ^ {\prime}, k, m} ^ {\mathrm{N,B}}),
+$$
+
+$$
+R _ {u ^ {\prime \prime}, k, m} ^ {\mathrm{N}, \mathrm{B}} = D \log_ {2} (1 + \gamma_ {u ^ {\prime \prime}, k, m} ^ {\mathrm{N}, \mathrm{B}}). \tag {13}
+$$
+
+# B. T2U Link Transmission
+
+The geometry-based stochastic method [34] is used to model the UAV channel. Since the altitude of UAVs is normally higher than most ground scattering objects, the T2U link may have little obstruction. Besides, since UAVs operate at low speed when serving terminal, Doppler shifts caused by the mobility of UAVs is assumed to be well compensated with existing mature estimation techniques [35]. Thus, the signal transmission between the terminal and the UAV can be modeled as channel fading and path loss. LoS propagation is considered in the modeling of path loss. According to [14], [36], the channel coefficient between terminal u and UAV j can be expressed as
+
+$$
+h _ {u, j} ^ {\mathrm{V}} = \frac {\nu^ {2} G _ {u} G _ {j} h _ {0} ^ {\mathrm{V}}}{(4 \pi f _ {\nu} ^ {\mathrm{V}} d _ {u , j}) ^ {2}}, \tag {14}
+$$
+
+where $G _ { j }$ and $G _ { u }$ denote antenna gains of UAV j and terminal u, respectively. $f _ { \nu } ^ { \mathrm { V } }$ is the carrier frequency in layer V. $h _ { 0 } ^ { \mathrm { V } }$ denotes the fading coefficient, which are modeled as Rician fading distribution. $d _ { u , j }$ is the Euclidean distance from terminal u to UAV j.
+
+If subchannel m of UAV j receives the signal from terminal u through OMA mode, then the achievable rate can be expressed as
+
+$$
+R _ {u, j, m} ^ {\mathrm{O}, \mathrm{V}} = D \log_ {2} (1 + \gamma_ {u, j, m} ^ {\mathrm{O}, \mathrm{V}}), \tag {15}
+$$
+
+$\begin{array} { r } { \gamma _ { u , j , m } ^ { \mathrm { O , V } } = \frac { P _ { u , j , m } ^ { \mathrm { O , V } } | h _ { u , j } ^ { \mathrm { V } } | ^ { 2 } } { \sigma _ { 0 } ^ { 2 } } } \end{array}$ P O,V 2 where γ O Vu,j,m σ 20 denotes the received SNR at subchannel m of UAV j. P O,Vu,j,m $\mathrm { U A V } \ j . \ \hat { P } _ { u , j , m } ^ { \mathrm { O , V } }$ is the transmit power of terminal u via subchannel m of UAV j.
+
+When the transmission works with NOMA mode, we assume that the decoding order of two signals in a NOMA group is denoted by a permutation $\Omega _ { j , m } = \bar { \{ | h _ { u ^ { \prime \prime } , j } ^ { \mathrm { V } } | ^ { 2 } > | h _ { u ^ { \prime } , j } ^ { \mathrm { V } } | ^ { 2 } \} }$ , which is part of set $\Pi _ { j }$ Ω =which is defined as the set of all possible decoding orders of signals from terminals on the same subchannel. By applying SIC scheme, we can respectively obtain the achievable
+
+rate of terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ as
+
+$$
+R _ {u ^ {\prime}, j, m} ^ {\mathrm{N}, \mathrm{V}} = D \log_ {2} (1 + \gamma_ {u ^ {\prime}, j, m} ^ {\mathrm{N}, \mathrm{V}}),
+$$
+
+$$
+R _ {u ^ {\prime \prime}, j, m} ^ {\mathrm{N}, \mathrm{V}} = D \log_ {2} (1 + \gamma_ {u ^ {\prime \prime}, j, m} ^ {\mathrm{N}, \mathrm{V}}), \tag {16}
+$$
+
+where γ N Vu ,j,m $\begin{array} { r } { \gamma _ { u ^ { \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } } = \frac { P _ { u ^ { \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } } | h _ { u ^ { \prime } , j } ^ { \mathrm { V } } | ^ { 2 } } { \sigma _ { 0 } ^ { 2 } } } \end{array}$ P N,V is the received SNR of terminal u at subchannel m of UAV j. γ N,Vu,j,m $u ^ { \prime }$ $\begin{array} { r } { j . \gamma _ { u ^ { \prime \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } } = \frac { P _ { u ^ { \prime \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } } | h _ { u ^ { \prime \prime } , j } ^ { \mathrm { V } } | ^ { 2 } } { P _ { u ^ { \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } } | h _ { u ^ { \prime } , j } ^ { \mathrm { V } } | ^ { 2 } + \sigma _ { 0 } ^ { 2 } } } \end{array}$ P N,V P N,V |hV is the received SINR of terminal $u ^ { \prime \prime }$ at subchannel m of UAV $j . P _ { u ^ { \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } }$ and $P _ { u ^ { \prime \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } }$ P N,Vu,j,m are the transmit power of terminals u and u via $u ^ { \prime }$ $u ^ { \prime \prime }$ subchannel m of UAV j, respectively.
+
+Due to movements of UAVs, the channel coefficients between terminals and UAVs is changing fast, and hence, the decoding order of the signals at the receiver is quickly switched. The quick switching of decoding order causes more complexity costs for UAVs. To tradeoff the two transmission modes, a threshold parameter $\lambda _ { t h }$ is defined. When the achievable sum rate difference between NOMA mode and OMA mode is greater than the threshold $\lambda _ { t h }$ , i.e.,
+
+$$
+\left(R _ {u ^ {\prime}, j, m} ^ {\mathrm{N}, \mathrm{V}} + R _ {u ^ {\prime \prime}, j, m} ^ {\mathrm{N}, \mathrm{V}}\right) - R _ {u, j, m} ^ {\mathrm{O}, \mathrm{V}} > \lambda_ {t h}, \tag {17}
+$$
+
+the transmission operates in NOMA mode. Although the movement of the UAV will not affect the value of RO,Vu,j,m $R _ { u , j , m } ^ { \mathrm { O , V } } .$ , it will affect the value of RN,Vu ,j,m $( R _ { u ^ { \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } } + R _ { u ^ { \prime \prime } , j , m } ^ { \mathrm { N } , \mathrm { V } } )$ RNu, due to $\Omega _ { j , m }$ is no longer fixed. (The parameter $\lambda _ { t h }$ + ) Ωcan be selected based on the priorities of the network operator between the complexity costs and achievable sum rate [37]. To simplify the analysis, it is assumed that the priority of complexity cost is higher than the achievable sum rate.
+
+# C. T2S Link Transmission
+
+The dynamic channel tracking method in [1] is applied to the T2S link. Generally, the channel condition between terminals and satellites is mainly affected by the communication distance and the rain fading [38]. We regard the rain fading during terminal and satellite communication as a random process based on Weibull distribution [17]. Thus, the channel coefficient between terminal u and satellite i can be expressed as
+
+$$
+h _ {u, i} ^ {\mathrm{S}} = \frac {\nu^ {2} G _ {u} G _ {i}}{(4 \pi f _ {\nu} ^ {\mathrm{S}} d _ {u , i}) ^ {2}} 1 0 ^ {- \frac {F _ {\text { rain }}}{1 0}}, \tag {18}
+$$
+
+where $G _ { i }$ denotes directional antenna gains of satellite i. $f _ { \nu } ^ { \mathrm { S } }$ is the carrier frequency in layer S. Parameter $F _ { \mathrm { r a i n } }$ denotes the rain fading factor. $d _ { u , i }$ is the Euclidean distance from terminal u to satellite i. It is assumed that the Doppler Shift, caused by the mobility of the satellite, can be compensated through carrier frequency shift and correction [39]. 3
+
+3Besides, we also analyze the impact of Doppler effect on resource allocation. When considering the Doppler effect, the channel coefficient between terminal u and satellite i can be expressed as $\overline { { h } } _ { u , i } ^ { \mathrm { S } } = h _ { u , i } ^ { \mathrm { S } } e ^ { j 2 \pi \delta _ { u , i } }$ [40], where $\delta _ { u , i }$ denotes the frequency shift caused by the relative movement of both terminal u and satellite i. Due to the frequency shift causing inter-carrier interference, the OMA transmission scheme (OFDMA) is sensitive to Doppler effect. Since multiple terminals use the same time-frequency resource, the NOMA transmission scheme is not sensitive to Doppler effect. Therefore, when Doppler shift exists, the performance of OMA transmission mode will be affected, and the NOMA transmission mode may be selected in the subchannel resources.
+
+If the OMA mode can be applied to transmit the signal from terminal u to subchannel m of satellite i, then the achievable rate can be expressed as
+
+$$
+R _ {u, i, m} ^ {\mathrm{O}, \mathrm{S}} = D \log_ {2} (1 + \gamma_ {u, i, m} ^ {\mathrm{O}, \mathrm{S}}), \tag {19}
+$$
+
+where γ O Su,i,m $\begin{array} { r } { \gamma _ { u , i , m } ^ { \mathrm { O , S } } = \frac { P _ { u , i , m } ^ { \mathrm { O , S } } | h _ { u , i } ^ { \mathrm { S } } | ^ { 2 } } { \sigma _ { 0 } ^ { 2 } } } \end{array}$ P O,S σ 20 denotes the received SNR at subchannel m of satellite i. P O,Su,i,m $P _ { u , i , m } ^ { \mathrm { O , S } }$ is the transmit power of terminal u via subchannel m of satellite i.
+
+When the transmission operates in NOMA mode, the signals for terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ can be transmitted simultaneously, and the corresponding channel gains satisfy $| h _ { u ^ { \prime \prime } , i } ^ { \mathrm { S } } | ^ { 2 } > | h _ { u ^ { \prime } , i } ^ { \mathrm { S } } | ^ { 2 }$ . After applying SIC, the achievable rate of terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ can be respectively denoted as
+
+$$
+R _ {u ^ {\prime}, i, m} ^ {\mathrm{N,S}} = D \log_ {2} (1 + \gamma_ {u ^ {\prime}, i, m} ^ {\mathrm{N,S}}),
+$$
+
+$$
+R _ {u ^ {\prime \prime}, i, m} ^ {\mathrm{N,S}} = D \log_ {2} (1 + \gamma_ {u ^ {\prime \prime}, i, m} ^ {\mathrm{N,S}}), \tag {20}
+$$
+
+where γ u ,i,m $\begin{array} { r } { \gamma _ { u ^ { \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } = \frac { P _ { u ^ { \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } | h _ { u ^ { \prime } , i } ^ { \mathrm { S } } | ^ { 2 } } { \sigma _ { 0 } ^ { 2 } } } \end{array}$ P N,S denotes the received SNR of terminal u at subchannel m of satellite i. γ N,Su,i,m $u ^ { \prime }$ $\begin{array} { r l } { i . } & { { } \gamma _ { u ^ { \prime \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } = } \end{array}$ P N,S $\frac { P _ { u ^ { \prime \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } | h _ { u ^ { \prime \prime } , i } ^ { \mathrm { S } } | ^ { 2 } } { P _ { u ^ { \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } | h _ { u ^ { \prime } , i } ^ { \mathrm { S } } | ^ { 2 } + \sigma _ { 0 } ^ { 2 } }$ P N,S is the received SINR of terminal $u ^ { \prime \prime }$ at subchannel m of satellite $i . P _ { u ^ { \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } }$ and P N,S $P _ { u ^ { \prime \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } }$ are the transmit power of terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ via subchannel m of satellite i, respectively.
+
+Due to the relatively higher high-altitude of satellites, the nearfar effect between terminals may not be sufficiently significant, and resource allocation may become invalid. In such conditions, when the NOMA mode is selected, the receiver for SIC suffers from a more complexity design to guarantee the requested bit error rate, which can be considered as the complexity cost of using this mode. In traditional SIC receivers, the bit error rate corresponding to the detection of a desired signal in the presence of interference induced from other terminals, is inversely proportional to the experienced SNR/SINR [41]. In [42], it is shown that the complexity cost is an increasing function of the requested bit error rate for SIC. Thus, an increasing function $G ( \cdot )$ is defined, ( )which represents the complexity cost to alleviate the bit error rate to a desired level. Taking into account both the achievable sum rate and complexity cost, when the transmission operates in NOMA mode, the difference between the achievable sum rate and the increasing function should be larger than a specific lower bound, i.e.,
+
+$$
+\left. \left(R _ {u ^ {\prime}, i, m} ^ {\mathrm{N}, \mathrm{S}} + R _ {u ^ {\prime \prime}, i, m} ^ {\mathrm{N}, \mathrm{S}}\right) - G \left(\max \left\{\frac {1}{\gamma_ {u ^ {\prime} , i , m} ^ {\mathrm{N} , \mathrm{S}}}, \frac {1}{\gamma_ {u ^ {\prime \prime} , i , m} ^ {\mathrm{N} , \mathrm{S}}} \right\}\right) > 0. \right. \tag {21}
+$$
+
+In terms of tractability, we consider a concave increasing logarithmic function for $G ( x )$ such that $G ( x ) = w \log _ { 2 } ( x )$ , ( ) ( ) = log ( )where w is a positive scalar and can be selected based on the priorities of the network operator between the complexity costs and achievable sum rate [41]. To simplify the analysis, it is assumed that the priority of complexity cost is higher than the achievable sum rate.
+
+# D. Hybrid OMA/NOMA Transmission Scheme
+
+For each available link, when the NOMA mode is not available, or available NOMA mode is not the optimal selection when considering the special characteristics of satellites, UAVs, and BSs, the access point $( \mathrm { A P } ) ^ { 4 }$ in SAGIN can switch to OMA mode to obtain reliable access services. The indicator for switching between NOMA and OMA transmission modes is the near-far effect between terminals and minimum rate requirements. To be specific, for both NOMA mode and OMA mode, if the $R _ { u , l , m } ^ { \mathrm { O , L } } \geq R _ { l , \operatorname* { m i n } }$ f terminaland $\{ R _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \} < R _ { l , \mathrm { m i n } }$ satisfies, where $l \in \{ i , j , k \}$ maxdenotes a typical network, $\bar { L } \in \{ S , V , B \}$ denotes a typical layer, the OMA mode has superior rate performance in comparison to the NOMA mode. $R _ { l , \mathrm { m i n } }$ represents the minimum terminal rate achieved by AP l. In addition, we assume that the rate thresholds for all APs in the same layer are the same, and the rate thresholds of APs in different layers are different. If the fies $R _ { u , l , m } ^ { \mathrm { O , L } } < R _ { l , \mathrm { m i n } }$ f terminaland min $\{ R _ { u ^ { \prime } , l , m } ^ { \mathrm { { \tilde { N } } , L } } , R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { { N } , L } } \} \geq R _ { l , \operatorname* { m i n } }$ atis-, the NOMA mode is the optimal selection in available transmission link. If the achievable rate of terminals via subchannel m of $\mathrm { \bf A P } l$ satisfies we disc $R _ { u , l , m } ^ { \mathrm { O , L } } \geq R _ { l , \operatorname* { m i n } }$ and minmission $\{ R _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \} \geq R _ { l }$ ,min,link, respectively. For the T2B link, if u and $u ^ { \prime }$ or $u ^ { \prime \prime }$ are the same e same suand $R _ { u ^ { \prime } , l , m } ^ { \mathrm { { N , L } } } = R _ { u , l , m } ^ { \mathrm { { O , L } } }$ $R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { { N , L } } } = R _ { u , l , m } ^ { \mathrm { { O , L } } }$ $\{ R _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \} \geq R _ { l , \operatorname* { m i n } } ,$ min $\{ R _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \} \geq R _ { u , l , m } ^ { \mathrm { O , L } }$ is satisfied, the NOMA mode has better performance than OMA mode, else OMA mode is more likely to be selected. For the T2U link, if u and u or $u ^ { \prime \prime }$ are the same terminal, the result of mode selection is similar to the T2B link. When the achievable sum rate difference between NOMAλth, i.e., $( R _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } + R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } ) - R _ { u , l , m } ^ { \mathrm { O , L } } > \lambda _ { t h }$ an threshold value, the NOMA mode ( + )is more likely to be selected, otherwise, the transmission link operates in OMA mode. For the T2S link, for u and $u ^ { \prime } \mathrm { o r } u ^ { \prime \prime }$ are $\begin{array} { r } { ( R _ { u ^ { \prime } , i , m } ^ { \mathrm { N , L } } + R _ { u ^ { \prime \prime } , i , m } ^ { \mathrm { N , L } } ) - w \log _ { 2 } ( \operatorname* { m a x } \{ \frac { 1 } { \gamma _ { \scriptscriptstyle { x ^ { \prime \prime } } , i \ldots } ^ { \mathrm { N , L } } } , \frac { 1 } { \gamma _ { \scriptscriptstyle { x ^ { \prime \prime } } , i \ldots } ^ { \mathrm { N , L } } } \} ) > 0 , } \end{array}$ { γN,L isfies, the u,i,m u,i,m system can obtain higher achievable rate under NOMA mode, else OMA mode is more likely to be selected.
+
+# E. Utility Design
+
+Due to differences in network specific characteristics, the transmission links from terminals to APs in SAGIN are different in many aspects, such as achievable rate, the complexity of receiver design, and power consumption. To adapt to different transmission links, we build up an utility function, which is represented as the weight of some related factors under different transmission modes. Different from other existing works that only consider achievable rate, we choose three relevant factors that are easy to be quantified in our system model, which are the achievable rate, the complexity of applying NOMA mode, and the QoS requirements of terminals. Then, the utility function of
+
+4We refer to AP as satellite, UAV, or BS [43]. According to the operating band and the layer located, satellites, UAVs, or BSs can be distinguished as different APs. Specifically, an AP operating in the Ku band of the space layer is considered a satellite. The AP operating in the V-band of the air layer is considered a UAV. The AP operating in the C-band of the ground layer is considered BS.
+
+AP l can be represented as following
+
+$$
+\begin{array}{l} F _ {l} = \sum_ {u \in \mathbb {U} ^ {l}} \sum_ {m} ^ {M} ((1 - \beta_ {u, l, m}) R _ {u, l, m} ^ {\mathrm{O,L}} c _ {l, m} ^ {\mathrm{O}} \\ + \beta_ {u, l, m} (R _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}} + R _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}}) c _ {l, m} ^ {\mathrm{N}}), \tag {22} \\ \end{array}
+$$
+
+where $\mathbb { U } ^ { l }$ is the set of terminals associated with AP l, and $\mathbb { U } ^ { l } \cap$ $\mathbb { U } ^ { l ^ { \prime } } = \emptyset , l \neq l ^ { \prime } \in \{ i , j , k \} . \beta _ { u , l , m }$ indicates whether OMA mode = =or NOMA mode is selected by subchannel m at $\ A \mathrm { P } l . \mathrm { I f } \beta _ { u , l , m } =$ 0, then OMA mode is selected, else mode is used for signal transmission. $\beta _ { u , l , m } = 1$ , the NOMAccess request $c _ { l , m } ^ { \mathrm { O } }$ that satisfies OMA mode, which is defined as
+
+$$
+c _ {l, m} ^ {\mathrm{O}} = \sum_ {u \in \mathbb {U} ^ {l}} \Upsilon (R _ {u, l, m} ^ {\mathrm{O,L}} \geq R _ {l, \min}), \tag {23}
+$$
+
+where $\Upsilon ( \cdot )$ is an indicator function that returns 1 when the Υ( )condition is true and 0 when it is false. $c _ { l , m } ^ { \mathrm { N } }$ denotes an access request that satisfies NOMA mode, which is defined as
+
+$$
+c _ {l, m} ^ {\mathrm{N}} = \sum_ {u \in \mathbb {U} ^ {l}} \Upsilon ((R _ {u ^ {\prime}, j, m} ^ {\mathrm{N,V}} + R _ {u ^ {\prime \prime}, j, m} ^ {\mathrm{N,V}}) - R _ {u, j, m} ^ {\mathrm{O,V}} > \lambda_ {t h},
+$$
+
+$$
+(R _ {u ^ {\prime}, i, m} ^ {\mathrm{N,S}} + R _ {u ^ {\prime \prime}, i, m} ^ {\mathrm{N,S}}) - w \log_ {2} \left(\max \left\{\frac {1}{\gamma_ {u ^ {\prime} , i , m} ^ {\mathrm{N,S}}}, \frac {1}{\gamma_ {u ^ {\prime \prime} , i , m} ^ {\mathrm{N,S}}} \right\}\right) > 0 |
+$$
+
+$$
+\min \left\{R _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}}, R _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}} \right\} \geq R _ {l, \min}), \tag {24}
+$$
+
+$( R _ { u ^ { \prime } , j , m } ^ { \mathrm { N , V } } + R _ { u ^ { \prime \prime } , j , m } ^ { \mathrm { N , V } } ) - R _ { u , j , m } ^ { \mathrm { O , V } } > \lambda _ { t h }$ R u ,j,m − s witand $( R _ { u ^ { \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } + R _ { u ^ { \prime \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } )$ $\begin{array} { r } { - w \log _ { 2 } ( \operatorname* { m a x } \{ \frac { 1 } { \gamma _ { n ^ { \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } } , \frac { 1 } { \gamma _ { n ^ { \prime \prime } , i , m } ^ { \mathrm { N } , \mathrm { S } } } \} ) > 0 } \end{array}$ under the condition min u,i,m γ u ,i,m )and thus . Conversely, $\{ R _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , R _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \} \geq R _ { l , \operatorname* { m i n } }$ $c _ { l , m } ^ { \mathrm { N } } > 0$ $c _ { l , m } ^ { \mathrm { N } } = 0 .$ .
+
+# III. PROBLEM FORMULATION
+
+The objective of designing hybrid OMA/NOMA transmission in SAGIN is to maximize the system utility by optimizing power allocation and hybrid OMA/NOMA mode selection while other optimization variables related to system performance are fixed. Based on the above models, the optimization problem can be formulated as
+
+$$
+\text {(P0)} \quad \max _ {\boldsymbol {\beta}, \boldsymbol {P}} \sum_ {l} F _ {l} (\boldsymbol {\beta}, \boldsymbol {P})
+$$
+
+$$
+\text { s.t. } \mathrm{C1}: \beta_ {u, l, m} \in \{0, 1 \}; \tag {25a}
+$$
+
+$$
+\mathrm{C} 2: \sum_ {u = 1} ^ {U} \beta_ {u, l, m} \leq 2; \tag {25b}
+$$
+
+$$
+\mathrm{C} 3: \sum_ {m = 1} ^ {M} \beta_ {u, l, m} \leq 1; \tag {25c}
+$$
+
+$$
+\mathrm{C} 4: P _ {u, l, m} ^ {\mathrm{E}, \mathrm{L}} \geq 0; \tag {25d}
+$$
+
+$$
+\mathrm{C5}: P _ {u, l, m} ^ {\mathrm{E}, \mathrm{L}} \leq P _ {\max}; \tag {25e}
+$$
+
+$$
+\mathrm{C} 6: P _ {u, l, m} ^ {\mathrm{N}, \mathrm{L}} \left| h _ {u, l} ^ {\mathrm{L}} \right| ^ {2} - \sum_ {s \in \mathbb {U} ^ {l} \backslash u} P _ {U _ {s} ^ {l}, l, m} ^ {\mathrm{N}, \mathrm{L}} \left| h _ {s, l} ^ {\mathrm{L}} \right| ^ {2} \geq \Delta \Gamma , \tag {25f}
+$$
+
+E,L $P _ { u , l , m } ^ { \mathrm { E , L } } \in \{ \bar { P } _ { u , l , m } ^ { \mathrm { O , L } } , \bar { P } _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , P _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \}$ $\mathrm { E } \in \{ \mathrm { O } , \mathrm { N } \}$ A or NOansmit p of terminal u via subchannel m of $\mathbf { A P } \ l \in L$ via E. $P =$ $\{ \cdots , P _ { u , l , m } ^ { \mathrm { E , L } } , \cdots \}$ , P E,L =u,l,m, · · · } is the power set allocated by the terminals for transmitted signals. $\beta = \{ \cdot \cdot \cdot , \beta _ { u , l , m } , \cdot \cdot \cdot \}$ is the set of =transmission modes selected by the subchannels of the APs.
+
+In problem P0 , C1 denotes the transmission mode selection ( )of each AP. C2 denotes that the maximum number of multiplexed terminal for subchannel m of AP l is 2. C3 is given to ensure that each terminal can be served by one transmission mode on one subchannel at most. C4 and C5 are used to limit the transmit power of terminals. C6 is given to ensure the performance of NOMA transmission scheme, i.e, the allocated power difference between the far terminal and near terminal should be larger than a specific lower bound [44], such that the SIC at the receiver can successfully decode the terminal’s information and eliminate the inter-terminal interference.
+
+Unfortunately, problem P0 is a non-convex optimization ( )problem due to the non-convexity of the formulated problem, which is challenging to directly solve.
+
+# IV. PROBLEM SOLUTION
+
+In this section, problem P0 is decomposed into two sub-( )problems, i.e., hybrid OMA/NOMA mode selection and power allocation, and then an alternating optimization method is proposed to solve it.
+
+# A. Power Allocation Subproblem
+
+In this subsection, we solve the sub-problem P1 of P0 to ( ) ( )get optimal values of power allocation under different transmission modes. For the fixed value of $\beta ^ { * }$ , the original problem P0 can be transformed into P1 as
+
+$$
+\text {(P1)} \quad \max _ {\boldsymbol {P}} \sum_ {l} F _ {l} (\boldsymbol {\beta} ^ {*}, \boldsymbol {P})
+$$
+
+$$
+\text { s   .   t   . } \mathrm{C} 4 - \mathrm{C} 6. \tag {26}
+$$
+
+Note that the objective function of P1 is non-convex with respect to $P ,$ ( ), which makes this problem difficult to tackle. To tackle this problem, the SCA method is adopted. The SCA method has been proven to converge and satisfies the Karush Kuhn Tucher (KKT) condition in each iteration. We provide a convex approximation of the rate by logarithmic approximation to convert it into a convex form [41], which gives the lower bound of the rate
+
+$$
+\log_ {2} (1 + \gamma) \geq \frac {1}{\ln 2} (\hat {q} \ln (\gamma) + \hat {g}), \tag {27}
+$$
+
+which is tight at $\gamma = \widetilde { \gamma }$ when approximation parameters - - $\hat { q }$ and g are chosen as
+
+$$
+\left\{ \begin{array}{l} \hat {q} = \frac {\widetilde {\gamma}}{1 + \widetilde {\gamma}}, \\ \hat {g} = \ln (1 + \widetilde {\gamma}) - \frac {\widetilde {\gamma}}{1 + \widetilde {\gamma}} \ln (\widetilde {\gamma}). \end{array} \right. \tag {28}
+$$
+
+$\{ \hat { q } _ { u , l , m } ^ { \mathrm { O , L } } , \hat { q } _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , \hat { q } _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \}$ andore-$\{ \hat { g } _ { u , l , m } ^ { \mathrm { O , L } } , \hat { g } _ { u ^ { \prime } , l , m } ^ { \mathrm { N , L } } , \hat { g } _ { u ^ { \prime \prime } , l , m } ^ { \mathrm { N , L } } \}$ ˆ ˆ ˆover, changing the variable $P$ ˆby applying transformations of $P = e ^ { \widetilde { P } }$ , the objective function of problem P1 can be approx-- =imated by
+
+$$
+\begin{array}{l} F _ {l} (\pmb {\beta} ^ {*}, \pmb {P}) \geq F _ {l} (\pmb {\beta} ^ {*}, e ^ {\widetilde {\pmb {P}}}) ^ {\prime} \\ = \sum_ {u \in \mathbb {U} ^ {l}} \sum_ {m} ^ {M} \frac {D}{\ln 2} ((1 - \beta_ {u, l, m} ^ {*}) c _ {l, m} ^ {\mathrm{O}} (\hat {q} _ {u, l, m} ^ {\mathrm{O,L}} \ln (\gamma (e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{O,L}}})) \\ + \hat {g} _ {u, l, m} ^ {\mathrm{O,L}})) + \beta_ {u, l, m} ^ {*} c _ {l, m} ^ {\mathrm{N}} (\hat {q} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}} \ln (\gamma (e ^ {\widetilde {P} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}}}) \\ + \hat {g} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}} + \hat {q} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}} \ln (\gamma (e ^ {\widetilde {P} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}}}) + \hat {g} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}})). \tag {29} \\ \end{array}
+$$
+
+Thus, a suboptimal solution can be achieved by maximizing the lower bound of $F _ { l } ( \beta ^ { * } , P )$ . The transformed power allocation optimization problem is described as follows
+
+$$
+\text {(P2)} \quad \max _ {e ^ {\widetilde {P}}} \sum_ {l} F _ {l} (\boldsymbol {\beta} ^ {*}, e ^ {\widetilde {P}}) ^ {\prime}
+$$
+
+$$
+\text { s.t. } \mathrm{C5} ^ {\prime}: e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{E}, \mathrm{L}}} \leq P _ {\max}; \tag {30a}
+$$
+
+$$
+\mathrm{C} 6 ^ {\prime}: e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{N}, \mathrm{L}}} \left| h _ {u, l} ^ {\mathrm{L}} \right| ^ {2} - \sum_ {s \in \mathbb {U} ^ {l} \backslash u} e ^ {\widetilde {P} _ {s, l, m} ^ {\mathrm{N}, \mathrm{L}}} \left| h _ {s, l} ^ {\mathrm{L}} \right| ^ {2} <   \Delta \Gamma . \tag {30b}
+$$
+
+Problem P2 is a standard convex optimization problem in terms of $e ^ { \tilde { P } }$ ( )under the listed constraints. In the following, the Lagrange dual method is employed to obtain the optimal solutionto problem P2 . By introducing the Lagrange multipliers $\mu _ { u , l , m }$ ( )and ζ for constraints in (30a) and (30b), we obtain the Lagrangian- - - function $L ( e ^ { \tilde { P } } , \mu , \zeta )$ of problem P2 as follows
+
+$$
+L \left(e ^ {\widetilde {P}}, \boldsymbol {\mu}, \zeta\right) = - \sum_ {l} F _ {l} \left(\boldsymbol {\beta} ^ {*}, e ^ {\widetilde {P}}\right) ^ {\prime} + \zeta \left(e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{E,L}}} - P _ {\max}\right) +
+$$
+
+$$
+\sum_ {l} \sum_ {m} \sum_ {u \in \mathbb {U} ^ {l}} \mu_ {u, l, m} \left(e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{N}, \mathrm{L}}} \left| h _ {u, l} ^ {\mathrm{L}} \right| ^ {2} - \sum_ {s \in \mathbb {U} ^ {l} \backslash u} e ^ {\widetilde {P} _ {s, l, m} ^ {\mathrm{N}, \mathrm{L}}} \left| h _ {s, l} ^ {\mathrm{L}} \right| ^ {2} - \Delta \Gamma\right). \tag {31}
+$$
+
+The Lagrangian dual function is calculated by
+
+$$
+L (\boldsymbol {\mu}, \zeta) = i n f _ {e ^ {\widetilde {P}}} L (e ^ {\widetilde {P}}, \boldsymbol {\mu}, \zeta). \tag {32}
+$$
+
+The Lagrangian dual function is convex, which satisfies the KKT condition. Thus, we apply the Lagrange multiplier method as an alternative and drive the closed-form solution of the power allocation problem in Theorem 1.
+
+Theorem 1: Given the hybrid transmission mode for subchannel m of AP l, the closed-form solution of optimal power allocation for terminal u is given by-
+
+$$
+\text { If } \beta_ {u, l, m} = 1,
+$$
+
+$$
+\begin{array}{l} P _ {u, l, m} ^ {\mathrm{N,L}} [ t + 1 ] = e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{N,L}} [ t + 1 ]} \\ = \left[ \frac {b _ {u , l , m} ^ {\mathrm{N}}}{d _ {u , l , m} ^ {\mathrm{N}} - \left| h _ {u , l} ^ {\mathrm{L}} \right| ^ {2} \left(\sum_ {v = 1} ^ {u - 1} \frac {b _ {v , l , m} ^ {\mathrm{N}}}{F _ {v , l} ^ {\mathrm{N}} [ t ]}\right)} \right] ^ {+}, \tag {33} \\ \end{array}
+$$
+
+where $[ x ] ^ { + } = \operatorname* { m a x } \{ \mathrm { x } , 0 \}$ $\begin{array} { r } { b _ { u , l , m } ^ { \mathrm { N } } = \frac { D } { \ln 2 } \hat { q } _ { u , l , m } ^ { \mathrm { N , L } } c _ { l , m } ^ { \mathrm { N } } . } \end{array}$ $d _ { u , l , m } ^ { \mathrm { N } } =$ $\zeta + \mu _ { u , l , m } F _ { u , l } ^ { \prime }$ max x 0, and we let
+
+$$
+F _ {u, l} ^ {\prime} [ t ] = \sum_ {u \in \mathbb {U} ^ {l}} \left(| h _ {u, l} ^ {\mathrm{L}} | ^ {2} - \sum_ {s \in \mathbb {U} ^ {l} \backslash u} | h _ {s, l} ^ {\mathrm{L}} | ^ {2}\right), \tag {34}
+$$
+
+$$
+F _ {v, l} ^ {\mathrm{N}} [ t ] = e ^ {\widetilde {P} _ {v, l, m} ^ {\mathrm{N,L}}} | h _ {v, l} ^ {\mathrm{L}} | ^ {2} + \sigma_ {0} ^ {2}, \tag {35}
+$$
+
+which are calculated using the results obtained in the t-th iteration.
+
+$$
+\text {   If   } \beta_ {u, l, m} = 0,
+$$
+
+$$
+P _ {u, l, m} ^ {\mathrm{O}, \mathrm{L}} = e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{O}, \mathrm{L}}} = \left[ \frac {b _ {u , l , m} ^ {\mathrm{O}}}{d _ {u , l , m} ^ {\mathrm{O}} - \left| h _ {u , l} ^ {\mathrm{L}} \right| ^ {2} \left(\sum_ {v = 1} ^ {u - 1} \frac {b _ {v , l , m} ^ {\mathrm{O}}}{F _ {v , l} ^ {\mathrm{O}}}\right)} \right] ^ {+}, \tag {36}
+$$
+
+where bOu,l,m  l $\begin{array} { r } { b _ { u , l , m } ^ { \mathrm { O } } = \frac { D } { \ln 2 } \hat { q } _ { u , l , m } ^ { \mathrm { O , L } } c _ { l , m } ^ { \mathrm { O } } , d _ { u , l , m } ^ { \mathrm { O } } = \zeta , F _ { u , l } ^ { \mathrm { O } } = \sigma _ { 0 } ^ { 2 } . } \end{array}$
+
+= ˆProof: See Appendix A.
+
+The Lagrangian multipliers are updated iteratively by the subgradient method [32] as follows
+
+$$
+\zeta [ \Xi_ {t} + 1 ] = \left[ \zeta [ \Xi_ {t} ] - \delta [ \Xi_ {t} + 1 ] (P _ {\max} - e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{E,L}} [ t ]}) \right] ^ {+}, \tag {37}
+$$
+
+$$
+\mu_ {u, l, m} [ \Xi_ {t} + 1 ] = [ \mu_ {u, l, m} [ \Xi_ {t} ] - \delta [ \Xi_ {t} + 1 ] (\Delta \Gamma
+$$
+
+$$
+- e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{N}, \mathrm{L}} [ t ]} | h _ {u, l} ^ {\mathrm{L}} | ^ {2} + \sum_ {s \in \mathbb {U} ^ {l} \backslash u} e ^ {\widetilde {P} _ {s, l, m} ^ {\mathrm{N}, \mathrm{L}} [ t ]} | h _ {s, l} ^ {\mathrm{L}} | ^ {2}) ] ^ {+}, \tag {38}
+$$
+
+where $\Xi _ { t }$ and $\delta [ \Xi _ { t } + 1 ]$ denote the iteration step and the step Ξ [Ξ + ]size in each iteration, respectively.
+
+The pseudo-code of power allocation Algorithm is presented in Algorithm 1. The optimal solutions can be obtained after finite iterations. So far, problem P1 has been solved.
+
+# B. Hybrid OMA/NOMA Mode Selection Subproblem
+
+In this subsection, we aim to optimize the mode selection and adjust transmission strategies according to obtained information in an online manner. With the optimized transmit power $P ^ { * }$ from solving problem P1 , problem P0 can be simplified as
+
+$$
+\text {(P3)} \quad \max _ {\boldsymbol {\beta}} \sum_ {l} F _ {l} (\boldsymbol {\beta}, \boldsymbol {P} ^ {*})
+$$
+
+$$
+\text { s.t.   } \mathrm{C1} - \mathrm{C3}. \tag {39}
+$$
+
+There are two transmission modes in SAGIN, which causes the variability of the solved model. Moreover, problem P0 ( )requires a joint optimization of continuous and binary variables. The relative movement of terminals and APs leads to the time-variation of SAGIN environment. The above factors make problem P3 still non-convex. At this time, the traditional optimization tools (such as CVX) are no longer applicable due to the drawbacks of high complexity or limited performance. While DQN has the non-linear and adaptive ability, it has been proven to be suitable for a wide range of decision problems.
+
+1) Markov Decision Process Model: The basic theoretical framework of RL is a Markov Decision Process (MDP), which consists of the agent, the environment, state space, action space,
+
+Algorithm 1: Power Allocation Algorithm.   
+Input: $\beta_{u,l}$ and stopping threshold $\epsilon$ Output: $P^{*}$ 1: Initialization: $t = 0$ , $\hat{q}_{u,l,m}^{E,L}[0] = 1$ , $\hat{g}_{u,l,m}^{E,L}[0] = 0$ , $\delta = 1$ , $\Xi_{t} = 1$ , and $P_{u,l,m}^{E,L}[0] = P_{\max}/U$ .
+
+2: while $P_{u,l,m}^{E,L}[t + 1] - P_{u,l,m}^{E,L}[t] \leq \epsilon$ do
+
+3: while $\zeta$ and $\mu_{u,l,m}$ converge do
+
+4: for $u \in U^{l}$ do
+
+5: for $m = 1, 2, \ldots, M$ do
+
+6: if $\beta_{u,l,m}$ then
+
+7: Calculate $F_{u,l}^{N}[t]$ based on (35).
+
+8: Calculate $F_{u,l}^{\prime}[t]$ based on (34).
+
+9: Calculate $P_{u,l,m}^{N,L}[t]$ based on (33).
+
+10: else
+
+11: Calculate $P_{u,l,m}^{O,L}[t]$ based on (36).
+
+12: end if
+
+13: end for
+
+14: end for
+
+15: Calculate $\zeta[\Xi_{t} + 1]$ based on (37).
+
+16: Calculate $\mu_{u,l,m}[\Xi_{t} + 1]$ based on (38).
+
+17: Update $\Xi_{t} = \Xi_{t} + 1$ .
+
+18: end while
+
+19: Update $P_{u,l,m}^{E,L}[t + 1]$ by $P_{u,l,m}^{E,L}[t]$ .
+
+20: Update $t = t + 1$ .
+
+21: Calculate $\hat{q}_{u,l,m}^{E,L}$ and $\hat{g}_{u,l,m}^{E,L}$ based on (28).
+
+22: end while
+
+and reward space. Each AP in SAGIN is regarded as an agent, which is responsible for making decisions for the hybrid transmission mode, that is, the agent decides whether to use NOMA mode or use OMA mode. The environment is the physical environment of SAGIN. The APs are evenly distributed in the environment. Since all APs are connected to the central controller, the agent can obtain the received information of other agents at the same time. According to the considered SAGIN, the state space, action space, and reward space are described below.
+
+State space S: We define the state in time slot t as $s _ { t } ,$ representing all terminals’ current channel coefficients. Then the state is given by
+
+$$
+s _ {t} = \{s _ {1} (t), s _ {2} (t), \dots , s _ {l} (t), \dots , s _ {L} (t) \}, \tag {40}
+$$
+
+where $s _ { l } ( t )$ is the state of AP l, which can be expressed as
+
+$$
+s _ {l} (t) = \left\{s _ {1, l, 1} (t), s _ {2, l, 1} (t), s _ {3, l, 2} (t), \dots , s _ {u, l, m} (t), \dots \right\}, \tag {41}
+$$
+
+where $s _ { u , l , m } ( t )$ denotes the channel coefficient on subchannel m of AP l to terminal u.
+
+Action space A: We denote the action in time slot t as $a _ { t } .$ , which represents the selection of OMA/NOMA for the transmission. Then the action is defined as
+
+$$
+a _ {t} = \{a _ {1} (t), a _ {2} (t), \dots , a _ {l} (t), \dots , a _ {L} (t) \}, \tag {42}
+$$
+
+$$
+a _ {l} (t) = \left\{a _ {1, l, 1} (t), a _ {2, l, 1} (t), a _ {3, l, 2} (t), \dots , a _ {u, l, m} (t), \dots \right\}, \tag {43}
+$$
+
+where $a _ { l } ( t )$ is the action of $\mathrm { A P } l . a _ { u , l , m } ( t ) = \beta _ { u , l , m }$ denotes the ( ) ( ) =selection of transmission mode for each subchannel. If only one terminal is allocated to subchannel m of AP l, it is OMA mode. Otherwise, the NOMA mode is used for the two terminals.
+
+Reward space R: In SAGINs, since our goal is to maximize the system utility, the reward which is defined as whether the appropriate transmission mode is selected can be expressed as
+
+$$
+r _ {t} = \{r _ {1} (t), r _ {2} (t), \dots , r _ {l} (t), \dots , r _ {L} (t) \}, \tag {44}
+$$
+
+$$
+r _ {l} (t) = \left\{r _ {1, l, 1} (t), r _ {2, l, 1} (t), r _ {3, l, 2} (t), \dots , r _ {u, l, m} (t), \dots \right\}, \tag {45}
+$$
+
+where $r _ { u , l , m } ( t )$ indicates that based on the current status $s _ { u , l , m } ( t )$ and action $a _ { u , l , m } ( t )$ , the agent obtains timely rewards ( ) ( )from the environment. We consider giving a positive bonus as the reward if the appropriate transmission mode scheme is selected, otherwise, negative rewards are considered.
+
+2) DQN-Based Hybrid OMA/NOMA Algorithm: DQN is a value-based RL method. It combines Q-learning with neural network and learns an optimal policy $\pi ^ { * }$ that maps the current state to a series of action values, i.e.,
+
+$$
+\pi^ {*} (a | s) = \left\{ \begin{array}{l} 1, \text {   if   } a = \max _ {a ^ {\prime} \in A} Q _ {\pi} (s, a ^ {\prime}), \\ 0, \text {   if   } a \neq \max _ {a ^ {\prime} \in A} Q _ {\pi} (s, a ^ {\prime}), \end{array} \right. \tag {46}
+$$
+
+where $\begin{array} { r } { Q _ { \pi } ( s , a ) = E [ r _ { 1 } ( t ) + \lambda \operatorname* { m a x } _ { a ^ { \prime } } Q ( s , a ^ { \prime } ) | s _ { 1 } ( t ) = s , a _ { 1 } ( t ) } \end{array}$ $= a ]$ ( ) = [ ( ) + mis the value of state-action $( s , a )$ ( ) ( ) = under policy π. $E [ \cdot ]$ = ]denotes the expectation function. $\lambda \in ( 0 , 1 ]$ [ ]denotes the discount factor.
+
+At the beginning of time slot t, agent l observes current state $s _ { l } ( t )$ , and then it takes action $a _ { l } ( t )$ by adopting the ε-greedy ( ) ( )strategy to choose its optimal action from a set of actions, where the possibility of action $\begin{array} { r } { a _ { l } ( t ) = \operatorname* { m a x } _ { a } Q ( s _ { l } ( t ) , a , \theta ) } \end{array}$ is $1 - \varepsilon .$ ( ) = maxand the possibility of random action is $\varepsilon . \varepsilon \in ( 0 , 1 )$ )is a small ( )positive value. a is the action that needs to be decided. Next, after updating the policy, the environment will give a new state $s _ { l } ( t + 1 )$ and a reward $r _ { l } ( t )$ as feedback to the agent. Then, the ( + ) ( )agent forms these elements as an experience $( s _ { 1 } ( t ) , a _ { 1 } ( t ) , r _ { 1 } ( t )$ , $s _ { 1 } ( t + 1 ) ,$ ( ) ( ), and is stored at an experience replay buffer $\varrho .$ ( ) In ( + )the beginning, the replay buffer $\varrho$ is initialized with no stored elements. If sufficient experiences have been stored in $\varrho ,$ a mini batch  of experiences is randomly selected from  and sent to the DQN networks to guarantee the training process.
+
+A DQN consists of two sub-networks, i.e., a deep neural network with parameter θ and a target network with parameter $\theta ^ { \prime } .$ . They have the same architecture, but operate with different sets of parameters. In addition, we assume that all agents have the same DQN and adopt the same parameter update process. In the deep neural network, its input is randomly shuffled a mini batch from $\varrho$ to break the relevance that inherently exists in the data, and its output is the approximate Q-values for different actions, i.e., $Q ( s _ { l } ( t ) , a _ { l } ( t ) , \theta ) \approx Q ( s _ { l } ( t ) , a _ { l } ( t ) )$ , where $Q ( s _ { l } ( t ) , a _ { l } ( t ) , \theta )$ ( ( ) ( ) ) ( ( ) ( ))is the approximated Q-value. θ is a parameter to be updated, which is given by [16]
+
+$$
+\theta = \theta + \ell (Y _ {l} - Q (s _ {l} (t), a _ {l} (t), \theta)) \frac {\partial Q (s _ {l} (t) , a _ {l} (t) , \theta)}{\partial \theta}, \tag {47}
+$$
+
+where $\ell \in ( 0 , 1 ]$ is the learning rate. $Y _ { l }$ denotes the output of ( ]the target network based on the experience $( s _ { 1 } ( t ) , a _ { 1 } ( t ) , r _ { 1 } ( t )$ , $s _ { 1 } ( t + 1 ) )$ , which is represented as
+
+Algorithm 2: The DQN-Based Hybrid OMA/NOMA Algorithm.   
+Input: Discount factor $\lambda$ , learning rate $\ell$ , greedy policy factor $\varepsilon$ , memory size $\varrho$ , step C, and mini-batch size $\varpi$ Output: Optimal mode selection strategy
+
+1: Initialization: $\theta$ , $\theta = \theta'$ , Q-network $Q(s, a, \theta)$ , and target network $Q(s, a, \theta')$ .
+
+2: repeat
+
+3: Observe state $s_l(t)$ .
+
+4: if random number $p < \varepsilon$ then
+
+5: Randomly select action $a_l(t)$ in $\{0, 1\}$ .
+
+6: else
+
+7: Select action $a_l(t)$ with $\max_{a'} Q(s_l(t), a', \theta)$ .
+
+8: end if
+
+9: Get the reward $r_l(t)$ and the next state $s_l(t + 1)$ .
+
+10: Store $\{s_l(t), a_l(t), r_l(t), s_l(t + 1)\}$ in $\varrho$ .
+
+11: Randomly select mini batch $\varpi$ from $\varrho$ .
+
+12: Calculate the target value $Q(s, a, \theta')$ .
+
+13: Calculate the loss $L(\theta)$ according to (49).
+
+14: Update $\theta$ according to (47).
+
+15: Replace $\theta'$ with $\theta$ every C steps.
+
+16: until convergence
+
+$$
+Y _ {l} = r _ {1} (t) + \lambda (\max _ {a} Q (s _ {1} (t + 1), a, \theta^ {\prime})), \tag {48}
+$$
+
+where a $Q ( s _ { 1 } ( t + 1 ) , a , \theta ^ { \prime } )$ is the largest action value. $\theta ^ { \prime }$ is updated to the latest θ every $C$ time steps, while $\theta$ is updated every time step, i.e., the parameters are copied every $C$ steps from the neural network to the target network so that we have $\theta ^ { \prime } = \theta$ . The objective of this process is to break the correlation =between data samples and make the training converge.
+
+To minimize the prediction error (or loss), the loss function based on the difference between $Y _ { l }$ and the approximated Qvalue is given for the current mini batch $\varpi$
+
+$$
+L (\theta , \theta^ {\prime}) = E [ (Y _ {l} - Q (s _ {l} (t), a _ {l} (t), \theta)) ^ {2} ]. \tag {49}
+$$
+
+The DQN-based hybrid OMA/NOMA algorithm is described in detail in Algorithm 2.
+
+# C. Iterative Power Allocation and Hybrid OMA/NOMA Transmission
+
+In this subsection, an alternate iteration approach is proposed to solve problem P0 . At each iteration, we first optimize ( )the power allocation subproblem. Then, using this result, we optimize the hybrid OMA/NOMA mode selection subproblem. Finally, we can obtain the final near-optimal result by iterating alternately one of the two variables while keeping the other variable fixed until the difference between the two iterations reaches the stopping threshold . The associated algorithm is summarized in Algorithm 3.
+
+Algorithm 3: An Alternate Iterative Algorithm. 
+
+<table><tr><td colspan="2">Input: Satellites I, UAVs J, BSs K, U, Rl,min, and Pmax</td></tr><tr><td colspan="2">Output: β* and P*</td></tr><tr><td>1:</td><td>Initialization: Stopping threshold ε, β[0] = 0, and P[0] = Pmax/U.</td></tr><tr><td>2:</td><td>while Fl[t+1] - Fl[t] ≤ ε do</td></tr><tr><td>3:</td><td>Solve problem (P1) by Algorithm 1.</td></tr><tr><td>4:</td><td>Solve problem (P3) by Algorithm 2.</td></tr><tr><td>5:</td><td>Calculate Fl[t+1].</td></tr><tr><td>6:</td><td>Update t=t+1.</td></tr><tr><td>7:</td><td>end while</td></tr></table>
+
+# D. Convergence Analysis
+
+Next, the convergence of the proposed algorithm is analyzed. Specifically, in the n-th iteration of Algorithm $^ { 3 , }$ the objective value of problem P0 is defined as $\begin{array} { r } { \sum _ { l } F _ { l } ( \beta [ n ] , P [ n ] ) } \end{array}$ . For ( )problem P1 with fixed $\beta$ ( [ ] [ ])in step 3 of Algorithm 3, we have $\begin{array} { r } { \sum _ { l } F _ { l } ( \beta [ n ] , \mathbf { \dot { P } } [ n ] ) \leq \sum _ { l } F _ { l } ( \beta [ n ] , \mathbf { \dot { P } } [ n + \dot { 1 } ] ) } \end{array}$ . This indicates ( [ ] [ ]) ( [ ] [ + ])that the objective value of problem P1 monotonically ( )increases as P increases after each iteration. Then, assuming that the policy after one training is defined as $\pi ^ { \prime } ( a | s ) =$ $\operatorname* { m a x } _ { a \in A } Q _ { \pi } ( s , a )$ , we have $v _ { \pi } ( s ) = Q _ { \pi } ( s , a ) \leq \operatorname* { m a x } _ { a \in A }$ $Q _ { \pi } ( s , a ) = Q _ { \pi } ( s , \pi ^ { \prime } ( a | s ) )$ , where $v _ { \pi } ( s )$ ( ) maxis a value function ( ) = ( ( )) ( )in state s. For state s and obtaining the optimal action based on $Q _ { \pi } ( s , a )$ , we have $v _ { \pi } ( s ) \leq Q _ { \pi } ( s , \pi ^ { \prime } ( a | s ) ) = E [ r _ { 1 } ( t ) +$ $\lambda v _ { \pi } ( s _ { l } ( t + 1 ) ) | s _ { 1 } ( t ) = s , a _ { 1 } ( t ) = \pi ^ { \prime } ( a | s ) | = E _ { \pi ^ { \prime } } [ r _ { 1 } ( t ) + \lambda v _ { \pi }$ + $( s _ { l } ( t + 1 ) ) | s _ { 1 } ( t ) { = } s | { \leq } { E } _ { \pi ^ { \prime } } [ r _ { 1 } ( t ) { + } \lambda Q _ { \pi } ( s _ { l } ( t { + } 1 ) , \pi ^ { \prime } ( a | s _ { l } ( t { + } 1 ) ) ) $ $| s _ { 1 } ( t ) = s | \le E _ { \pi ^ { \prime } } [ r _ { 1 } ( t ) + \lambda r _ { 1 } ( t + 1 ) + \lambda ^ { 2 } Q _ { \pi } ( s _ { l } ( t + 2 ) , \pi ^ { \prime } ( a | s _ { l }$ ) $( t + 2 ) ) | s _ { 1 } ( t ) = s ] = v _ { \pi ^ { \prime } } ( s )$ ( + ) + ( ( + ) (. This indicates that the new ( + ))) ( ) = ] = ( )policy will be superior to or equal to the original policy. Due to the limited transmit power at terminals, the system utility is lower bounded by a finite value, as well as a finite state space and action space, hence Algorithm 3 converges.
+
+# E. Complexity Analysis
+
+In the following, we analyze the complexity of the proposed algorithm. It includes the complexity of solving problems P1 ( )and P3 . In each iteration of Algorithm 3, the computational ( )complexity of calculating parameters in Algorithm $1 \ F , \ F ^ { \prime }$ $\zeta , \mu$ and parameters $\hat { q } , ~ \hat { g } , ~ P$ are $\mathcal { O } ( L ^ { \prime } M U )$ and $\mathcal { O } ( L ^ { \prime } M )$ , respectively. Thus, the complexity of solving P1 can be given as $\mathcal { O } ( L ^ { \prime } M U T _ { 1 } + L ^ { \prime } M T _ { 2 } )$ , where $T _ { 1 }$ and $T _ { 2 }$ ( )are the maximum ( + )allowed numbers of iterations for parameters $F , F ^ { \prime } , \zeta , \mu$ and $\hat { q } ,$ ${ \hat { g } } , P$ ˆ, respectively. Similarly, assuming that Algorithm 2 needs $T _ { 3 }$ iterations to converge, and the corresponding complexity is given by $\mathcal { O } ( \varpi \chi T _ { 3 } )$ , where $\begin{array} { r } { \chi = \mathcal { O } ( \sum _ { i = 2 } ^ { \Delta - 1 } ( \aleph _ { i - 1 } \aleph _ { i } + \aleph _ { i } \aleph _ { i + 1 } ) ) } \end{array}$ , $\Delta$ ( ) =is the total number of layers, $\aleph _ { i }$ ( + ))denotes the number of Δneurons in the i-th layer of DQN. Thus, the total complexity of Algorithm 3 is $\mathcal { O } ( ( L ^ { \prime } M U T _ { 1 } + L ^ { \prime } M T _ { 2 } + \varpi \chi T _ { 3 } ) T _ { 4 } )$ , where $T _ { 4 }$ (( + + ) )denotes the maximum allowed numbers of iterations. Due to the transmission scheme between links is fixed, the complexities of OMA in [5], NOMA in [16], and hybrid OMA/NOMA in [25] with resource allocation only algorithms are given by $\mathcal { O } ( L ^ { \prime } M )$ ,
+
+TABLE I SIMULATION PARAMETER SETTING 
+
+<table><tr><td>Symbol</td><td>Value</td><td>Symbol</td><td>Value</td><td>Symbol</td><td>Value</td></tr><tr><td> $D$ </td><td>10 MHz</td><td> $C$ </td><td>16</td><td> $\epsilon$ </td><td> $10^{-6}$ </td></tr><tr><td> $M$ </td><td>10</td><td> $\ell$ </td><td>0.8</td><td> $\lambda$ </td><td>0.9</td></tr><tr><td> $\varrho$ </td><td>5000</td><td> $\varpi$ </td><td>256</td><td> $\varepsilon$ </td><td>0.5</td></tr></table>
+
+$\mathcal { O } ( L ^ { \prime } M U ) , \mathcal { O } ( L ^ { \prime } M ( U + 1 ) )$ , respectively. While the complex-( ) ( ( + ))ities of hybrid OMA/NOMA in [19] and [20] with joint mode selection and resource allocation are given by $\mathcal { O } ( L ^ { \prime } M ( U + 1 ) +$ L  M and $\begin{array} { r } { \mathcal { O } ( U \log \bigl ( \frac { L ^ { \prime } M U } { \epsilon } \bigr ) ) } \end{array}$ ( ( + ) +, respectively. From the above log ) ( log( ))analysis, it can be inferred that the proposed algorithm has the same level of complexity as the OMA in [5], NOMA in [16], and hybrid OMA/NOMA in [25], while the hybrid OMA/NOMA in [19] and [20] have a higher complexity than the proposed algorithm. Moreover, the proposed algorithm outperforms the compared algorithms in terms of the achievable sum rate and average achievable rate, as demonstrated in Section V.
+
+# V. SIMULATION RESULTS
+
+In this section, we provide numerical results to demonstrate the effectiveness of the proposed algorithm. A geographical region of 180 Km × 180 Km is used in the simulations. U terminals are distributed in three different subregion (i.e., subregion 1, subregion 2, and subregion 3) with different density distributions. Subregion 1 can be considered as an urban region with five BSs and a UAV, and contains 70 of the total number %of terminals. Subregion 2 can be considered a suburb region with a UAV, and contains 20 of the total number of terminals. %While subregion 3 can be considered as a remote region, and contains $1 0 \%$ of the total number of terminals, where subregion %1, subregion 2, and subregion 3 are covered by a LEO satellite. The altitude of LEO satellite is set as 2000 Km [10]. The coordinates of five BSs are fixed at (15, 15, 0.005) Km, (15, 45, 0.005) Km, (30, 30, 0.005) Km, (45, 15, 0.005) Km, and (45, 45, 0.005) Km, respectively. The UAV in each subregion starts and ends its flight at the same location. The maximum speed limitation for the UAV is $V _ { \mathrm { m a x } } = 3 0 ~ \mathrm { m / s }$ , and the UAV flies at fixed altitude $H _ { j } ^ { V } = 0 . 1$ = Km [5]. Moreover, according =to [8], [14], the antenna gains of terminals, satellites, and UAVs are set as 3 dB, 63 dB, and 53 dB, respectively. According to [32], the values of variables $( \varphi , \vartheta , \eta ^ { \mathrm { L O } } , \eta ^ { \mathrm { N L } } )$ are set as (4.88, 0.43, 0.1, 21). In our simulation setup, we consider threshold −27 dBm. The rain fading factor $F _ { \mathrm { r a i n } }$ ΔΓis set as 6 dB [17]. =The minimum rates $( R _ { i , \operatorname* { m i n } } , R _ { j , \operatorname* { m i n } } , R _ { k , \operatorname* { m i n } } )$ are set as (0.004, 0.1, 0.5) Mbit/s. The carrier frequencys $( f _ { \nu } ^ { \mathrm { B } } , f _ { \nu } ^ { \mathrm { V } } , f _ { \nu } ^ { \mathrm { S } } )$ are set as (1.8, 3.0, 5.0) GHz. The coefficients of Nakagami-m fading and Rician fading model are set as 2 and 15 dB [30]. The noise power is $\sigma _ { 0 } ^ { 2 } { = } - 1 7 4$ dBm. Unless otherwise specified, the remaining =parameter values are given in Table I [7], [10], [11].
+
+In addition, to verify the effectiveness of the proposed algorithm, the following schemes are selected as comparison benchmarks: Benchmark I: The signals from multi-terminals are transmitted to the APs in SAGIN via NOMA mode, as proposed in [16]. Benchmark II: The APs in SAGIN receives the signals from multi-terminals through OMA mode, as proposed in [5]. Benchmark III: The APs in SAGIN receives the signals from multi-terminals, where T2S link via NOMA mode transmission, while T2U and T2B link through OMA mode transmission, as proposed in [25]. Benchmark IV: The proposed algorithm in [19] is adopted to solve the hybrid OMA/NOMA transmission problem in SAGIN. Benchmark V: Multiple terminals are served by the APs in SAGIN via the proposed algorithm in [20]. In order to facilitate comparison, we assume that benchmark I satisfies the NOMA mode selection constraint in the proposed algorithm, while benchmark II satisfies the OMA mode selection constraint in the proposed algorithm.
+
+![](images/cd156d7672c581d0657ca38a1f0fdeb66316afd0c11d5339dd9176cc4956ff81.jpg)
+
+<details>
+<summary>line</summary>
+
+| Speed of UAVs (m/s) | NOMA λ_th=0.4 | OMA λ_th=0.6 | NOMA λ_th=0.6 | OMA λ_th=0.4 |
+| ------------------- | ------------- | ------------ | ------------- | ------------ |
+| 5                   | 100           | 10           | 100           | 10           |
+| 10                  | 85            | 25           | 80            | 25           |
+| 15                  | 75            | 35           | 70            | 35           |
+| 20                  | 70            | 45           | 65            | 40           |
+| 25                  | 65            | 50           | 60            | 45           |
+| 30                  | 60            | 55           | 55            | 50           |
+</details>
+
+Fig. 2. The percentage of transmission modes versus the speed of UAVs for w = 0.3, P = 30 dBm, $U = 3 0 0$ , and $M = 1 0$ .
+
+Fig. 2 shows the impact of the speed of UAVs on the percentage of transmission modes when $w { = } 0 . 3 , P _ { \mathrm { m a x } } = 3 0$ dBm, $U =$ 300, and $M = 1 0$ =. Based on Fig. 2, for $\lambda _ { t h } = 0 . 4$ = and $\lambda _ { t h } = 0 . 6$ = = =we can see that with the speed of UAVs increase, the percentage of NOMA mode decreases, while that of OMA mode increases. The main reason for this is with a larger speed of UAVs, the SIC decoding order is quickly switched, and the complexity costs for UAVs increases, resulting in a lower percentage of NOMA mode. In addition, we can also see that under the same speed condition, the percentage of NOMA mode at parameter $\lambda _ { t h } =$ 0.4 is higher than that of parameter $\lambda _ { t h } = 0 . 6$ =. This means that the smaller parameter $\lambda _ { t h }$ =, the higher percentage of NOMA mode, while the higher the percentage of NOMA mode, the higher the achievable sum rate. Furthermore, based on (17), we can see that by increasing parameter $\lambda _ { t h }$ , OMA mode is more likely to be selected, which means that the receiver needs less complexity costs. In order to keep the complexity costs of applying NOMA mode as little as possible, threshold $\lambda _ { t h }$ is selected as 0.6 Mbit/s in the following simulation.
+
+In Fig. 3, we evaluate the impact of maximum transmit power $P _ { \mathrm { m a x } }$ on the percentage of transmission modes when $\lambda _ { t h } { = } 0 . 6$ Mbit/s, $U = 3 0 0$ , and M 10. It is observed that for $w = 0 . 3$ = and $w = 1$ = =, with the increase of $P _ { \mathrm { m a x } } .$ =, the percentage of NOMA mode =increases, while that of OMA mode begins to decrease. This is reasonable since when $P _ { \mathrm { m a x } }$ is high, the near-far effect between terminals may be sufficiently significant, thus the proposed algorithm with flexible transmission mode selection chooses more the NOMA mode. Moreover, we can also see that under the same transmit power condition, the percentage of NOMA mode at parameter $w = 0 . 3$ is higher than that of parameter $w = 1$ , and = =a higher percentage of NOMA mode means a higher achievable sum rate. Furthermore, based on (21), since the complexity cost is an increasing function, the larger the value of w, the higher the complexity cost. To keep the complexity costs of applying NOMA mode as little as possible, w is set as 0.3 in the following simulation.
+
+![](images/1c740b9485448859b5bda477257511e48dc9933c2f0392b46207216d748389bc.jpg)
+
+<details>
+<summary>line</summary>
+
+| Maximum transmit power (dBm) | NOMA w=0.3 | OMA w=1 | NOMA w=1 | OMA w=0.3 |
+| ---------------------------- | ---------- | ------- | -------- | --------- |
+| 5                            | 0.2        | 0.8     | 0.15     | 1.0       |
+| 10                           | 0.4        | 0.7     | 0.3      | 0.8       |
+| 15                           | 0.5        | 0.6     | 0.4      | 0.6       |
+| 20                           | 0.55       | 0.55    | 0.45     | 0.5       |
+| 25                           | 0.6        | 0.5     | 0.5      | 0.4       |
+| 30                           | 0.65       | 0.45    | 0.5      | 0.35      |
+</details>
+
+Fig. 3. The percentage of transmission modes versus the maximum transmit power $P _ { \mathrm { m a x } }$ for $\lambda _ { t h } = 0 . 6$ Mbit/s, $U = 3 0 0 ,$ , and $M = 1 0$ .
+
+![](images/54bd8f920ed0ec6add8027954f5cdb55c29fae611eee0bd9a9d6522fd75dd90a.jpg)
+
+<details>
+<summary>bar_line</summary>
+
+| Episodes | Number of switches | Average achievable rate (Mbit/s) |
+| -------- | ------------------ | ------------------------------- |
+| 0        | 9                  | 0.2                             |
+| 50       | 6                  | 0.8                             |
+| 100      | 4                  | 1.4                             |
+| 150      | 3                  | 1.6                             |
+| 200      | 2                  | 1.6                             |
+| 250      | 2                  | 1.6                             |
+| 300      | 2                  | 1.6                             |
+| 350      | 2                  | 1.6                             |
+| 400      | 2                  | 1.6                             |
+| 450      | 2                  | 1.6                             |
+| 500      | 2                  | 1.6                             |
+</details>
+
+Fig. 4. The impact of switching on the system performance for $P _ { \mathrm { m a x } } =$ 30 dBm, $U = 3 0 { \dot { 0 } }$ , and $M = 1 0$ .
+
+In Fig. 4, we investigate the impact of switching on the system performance when $P _ { \mathrm { m a x } } = 3 0 \mathrm { d B m }$ , $U = 3 0 0$ , and $M =$ = = =10. The histogram in Fig. 4 refers to the y-axis on the left, it shows that before 50 episodes, the number of switches changes rapidly within each episodes. As episodes increase, the trend of the number of switches tendes to stabilize and the value is relatively small. The line chart in Fig. 4 refers to the y-axis on the right, which shows that as episodes increase, the average achievable rate of the terminal first increases rapidly and then tends to stabilize. These results indicate that during the process of learning transmission strategies by trial and error, the agent has higher number of switching in a short period of time, and the average rate of the terminal changes rapidly. After learning the suitable transmission strategy, the agent has a lower number of switching in a short period of time, and the average achievable rate tends to stabilize. Therefore, the frequent switching over a period of time is beneficial for learning suitable transmission strategies by trial and error processes during switching process, and it can also provide better system performance under different transmission link conditions.
+
+![](images/7c6ff03d0f5f300b58ed528fe4484f22bbce3f6b68c266177ef1556b91d2ef98.jpg)
+
+<details>
+<summary>line</summary>
+
+| The number of terminals | Perfect SIC with ℓ^L = 0 | Imperfect SIC with ℓ^L = 0.1 | Imperfect SIC with ℓ^L = 0.9 |
+| ----------------------- | ------------------------- | ----------------------------- | ----------------------------- |
+| 150                     | 350                       | 345                           | 330                           |
+| 200                     | 430                       | 405                           | 380                           |
+| 250                     | 480                       | 450                           | 410                           |
+| 300                     | 510                       | 470                           | 420                           |
+</details>
+
+Fig. 5. The impact of the perfect and imperfect SIC on the achievable sum rate for $P _ { \mathrm { m a x } } = \bar { 3 } 0$ dBm and $M = 1 0$ .
+
+![](images/d538e4a4be37cf803483b64e0506b2c8073677738f6983b34e69c58feb513584.jpg)
+
+<details>
+<summary>bar</summary>
+
+| The number of terminals | Benchmark I | Benchmark II | Benchmark III | Benchmark IV | Benchmark V | The proposed algorithm |
+| ----------------------- | ----------- | ------------ | ------------- | ------------ | ----------- | ---------------------- |
+| 150                     | 2.2         | 2.15         | 2.2           | 2.25         | 2.3         | 2.35                   |
+| 200                     | 1.95        | 1.9          | 1.95          | 2.05         | 2.0         | 2.15                   |
+| 250                     | 1.75        | 1.65         | 1.7           | 1.85         | 1.8         | 1.9                    |
+| 300                     | 1.5         | 1.4          | 1.45          | 1.65         | 1.6         | 1.7                    |
+</details>
+
+Fig. 6. The average achievable rate versus the number of terminals for $\bar { P _ { \mathrm { m a x } } } = 3 0$ dBm and $M = 1 0$ .
+
+Fig. 5 investigates the impact of the perfect and imperfect SIC on the achievable sum rate when $P _ { \mathrm { m a x } } = 3 0$ dBm and $M = 1 0$ . = =We can observe that under the same number of terminals, the achievable sum rate decreases with the increase of the level of residual interference $( \mathrm { i } . \mathrm { e } . , \iota ^ { \mathrm { L } } )$ . This result indicates that different levels of residual interference in imperfect SIC have different effects on the achievable sum rate, and the higher levels of residual interference, the worse the performance of the achievable sum rate. In addition, the gap between perfect SIC and imperfect SIC increases with the increase of the number of terminals. This may be due to the fact that imperfect SIC can affect the selection of NOMA transmission mode under limited resources.
+
+In Fig. 6, we study the influence of the number of terminals on the average achievable rate when $P _ { \mathrm { m a x } } = 3 0$ dBm and $M =$ = =10. We can observe that due to the resource limitation, the average achievable rate of all schemes has a descending trend with the increase of the number of terminals. Moreover, it is also seen that, when the number of terminals is small (e.g., 150 terminals), the performance gap between benchmark I and benchmarks II and III is not significant. However, when the number of terminals becomes relatively large, the performance of benchmark I is better than that of benchmarks II and III. This means that NOMA has higher spectral efficiency compared to OMA. Compared to benchmark I, benchmarks IV and V with joint mode selection and resource allocation can achieve higher average achievable rates. However, compared to all benchmark schemes, the proposed algorithm can always flexibly select appropriate transmission modes based on the differences in the characteristics of APs in SAGIN, achieving better system performance.
+
+![](images/91b69533069f593a744bd0be3f4496b665aa0a53878c44fa3816aac0d7b614aa.jpg)
+
+<details>
+<summary>line</summary>
+
+| The number of subchannels | Benchmark I | Benchmark II | Benchmark III | Benchmark IV | Benchmark V | The proposed algorithm |
+| ------------------------- | ----------- | ------------ | ------------- | ------------ | ----------- | ---------------------- |
+| 6                         | 1.7         | 1.6          | 1.7           | 1.9          | 1.8         | 1.9                    |
+| 8                         | 2.0         | 1.9          | 1.95          | 2.1          | 2.05        | 2.15                   |
+| 10                        | 2.2         | 2.15         | 2.2           | 2.3          | 2.25        | 2.35                   |
+| 12                        | 2.4         | 2.3          | 2.35          | 2.45         | 2.4         | 2.5                    |
+| 14                        | 2.45        | 2.35         | 2.4           | 2.55         | 2.5         | 2.6                    |
+</details>
+
+Fig. 7. The average achievable rate versus the number of subchannels for $U = 1 5 0$ and $P _ { \mathrm { m a x } } = 3 0 ~ \mathrm { d B m }$ .   
+![](images/e8f9f6d1f239c44b8085379ef0c607d51819598645941ee1fa1924c781f2e015.jpg)
+
+<details>
+<summary>line</summary>
+
+| Maximum transmit power (dBm) | Benchmark I | Benchmark II | Benchmark III | Benchmark IV | Benchmark V | The proposed algorithm |
+| ---------------------------- | ----------- | ------------ | ------------- | ------------ | ----------- | ---------------------- |
+| 10                           | 240         | 220          | 230           | 245          | 250         | 255                    |
+| 14                           | 320         | 300          | 310           | 330          | 340         | 350                    |
+| 20                           | 400         | 360          | 380           | 410          | 420         | 430                    |
+| 26                           | 440         | 400          | 420           | 470          | 480         | 490                    |
+| 30                           | 460         | 420          | 430           | 500          | 510         | 520                    |
+</details>
+
+Fig. 8. The achievable sum rate versus the maximum transmit power $P _ { \mathrm { m a x } }$ for $U = 3 0 0$ and $M = 1 0 .$ .
+
+Fig. 7 depicts the impact of the number of subchannels versus the average achievable rate when $U = 1 5 0$ and $P _ { \mathrm { m a x } }$ $= 3 0 ~ \mathrm { d B m }$ =. It shows that for all schemes, as the number of =subchannels increases, the average achievable rate increases due to the increase in available resources. However, due to the fixed number of terminals, the trend of increasing gradually slows down. In addition, we can also see that the performance of benchmarks IV and V with joint mode selection and resource allocation is better than that of benchmarks I, II, and III with resource allocation only. Compared with benchmarks V and IV, the proposed algorithm can obtain a higher average achievable rate. This is mainly because that when the characteristics of APs in SAGIN are different, the transmission scheme can always be selected to fit the AP characteristics, thereby achieving better performance than other benchmark schemes.
+
+In Fig. 8, we investigate the influence of the maximum transmit power $P _ { \mathrm { m a x } }$ on the achievable sum rate when $U =$ 300 and $M = 1 0 .$ . As can be seen from Fig. 8, at high $P _ { \mathrm { m a x } } ,$ =the performance of benchmark I is superior to benchmark II.
+
+![](images/026c97bd95300a772d100144e5f1b366fb71a688838d653f18704c0886781d94.jpg)
+
+<details>
+<summary>line</summary>
+
+| Maximum transmit power (dBm) | Benchmark I | Benchmark II | Benchmark III | Benchmark IV | Benchmark V | The proposed algorithm |
+| ---------------------------- | ----------- | ------------ | ------------- | ------------ | ----------- | ---------------------- |
+| 0                            | 1.0         | 1.0          | 1.0           | 1.0          | 1.0         | 1.0                    |
+| 5                            | 0.1         | 0.1          | 0.1           | 0.1          | 0.1         | 0.1                    |
+| 10                           | 0.01        | 0.01         | 0.01          | 0.01         | 0.01        | 0.01                   |
+| 15                           | 0.001       | 0.001        | 0.001         | 0.001        | 0.001       | 0.001                  |
+| 20                           | 0.0001      | 0.0001       | 0.0001        | 0.0001       | 0.0001      | 0.0001                 |
+| 25                           | 0.00001     | 0.00001      | 0.00001       | 0.00001      | 0.00001     | 0.00001                |
+| 30                           | 0.000001    | 0.000001     | 0.000001      | 0.000001     | 0.000001    | 0.000001               |
+</details>
+
+Fig. 9. The outage probability versus the maximum transmit power for $U = 3 0 0$ and $M = \bar { 1 } 0 .$ .
+
+This is because the channels with high $P _ { \mathrm { m a x } }$ will facilitate the near-far effect between terminals, resulting in high achievable sum rate. On the contrary, at low $P _ { \mathrm { m a x } }$ , the performance of benchmark I is still better than that of benchmarks III and II, which means that based on the constraint C6, benchmark I can still coordinate power allocation between terminals and achieve higher performance. Moreover, for any $P _ { \mathrm { m a x } } .$ , benchmarks V and IV achieve a higher achievable sum rate than benchmarks I, II, and III, due to benchmarks V and IV have greater degrees of flexibility in mode selection and resource allocation than benchmarks I, II, and III. However, compared to benchmarks V and IV, our proposed algorithm achieves higher performance as it can select the optimal transmission scheme for APs in SAGIN.
+
+Next, we evaluate the impact of $P _ { \mathrm { m a x } }$ on the outage probability when $U = 3 0 0$ and $M = 1 0$ . In each available transmission = =link, the outage occurs when the terminal cannot be served by APs in SAGIN. The outage probability is defined as the probability that the servicwhich is given by $P _ { o u t } ( R _ { l , \operatorname* { m i n } } ) = \mathrm { P r } \{ \mathrm { R } _ { \mathrm { u , l , m } } ^ { \mathrm { E , L } } < \mathrm { R } _ { \mathrm { l , m i n } } \}$ eshold,. As we ( ) = Pr R Rcan see from Fig. 9, the outage probability of all schemes decreases with the growth of $P _ { \mathrm { m a x } }$ due to the increase in the available power resources. Compared to benchmarks I, II, and III, benchmarks V and IV have a lower outage probability. It can be explained that the joint mode selection and resource allocation contributes to better performance, thereby improving service rates. Moreover, we can also observe that the outage probability of the proposed algorithm decreases more quickly than benchmarks V and IV. The reason is that satellites, UAVs, and BSs choose the most suitable transmission mode according to the characteristics of the transmission link, resulting in a lower outage probability.
+
+Finally, the convergence of the proposed algorithm and benchmarks IV and V with joint mode selection and resource allocation is studied when $P _ { \mathrm { m a x } } = 3 0$ dBm, U  300, and $M = 1 0$ . = = =As shown in Fig. 10, the achievable sum rate of the proposed algorithm and benchmarks V and IV rapidly increase when the iteration starts, and gradually slow until the algorithms converges to a stable value. The proposed algorithm converges within 110 iterations, while benchmarks V and IV need approximately 250 iterations, indicating that the proposed algorithm can converge faster. Fig. 10 further implies that the achievable sum rate by our proposed algorithm is higher than the benchmark schemes without considering the characteristics of APs in SAGIN.
+
+![](images/88465c3613e4983514ce87dad2ec4ad20d6b256397db3c94097c4cdc81b82af8.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of iterations | The proposed algorithm | Benchmark IV | Benchmark V |
+| -------------------- | ---------------------- | ------------ | ----------- |
+| 0                    | 0                      | 0            | 0           |
+| 50                   | 470                    | 320          | 200         |
+| 100                  | 510                    | 440          | 330         |
+| 150                  | 510                    | 480          | 400         |
+| 200                  | 510                    | 490          | 450         |
+| 250                  | 510                    | 495          | 470         |
+| 300                  | 510                    | 495          | 480         |
+| 350                  | 510                    | 495          | 485         |
+| 400                  | 510                    | 495          | 485         |
+| 450                  | 510                    | 495          | 485         |
+| 500                  | 510                    | 495          | 485         |
+| 550                  | 510                    | 495          | 485         |
+| 600                  | 510                    | 495          | 485         |
+</details>
+
+Fig. 10. The convergence speed against the number of iterations for $\tilde { P _ { \mathrm { m a x } } } = 3 0$ dBm, $U = { \overline { { 3 } } } 0 0 ^ { \circ }$ , and $M = \overset { \sim } { 1 0 }$ .
+
+# VI. CONCLUSION
+
+In this paper, we have investigated the uplink SAGIN with hybrid OMA/NOMA transmission. An utility function was defined according to the differences in network characteristics, such as communication link, movement, and communication resources. To maximize the system utility, we have formulated a joint optimization problem of power allocation and hybrid OMA/NOMA mode selection. Considering the non-convex optimization problem is difficult to solve directly, we decomposed it into two subproblems. In particular, the power allocation subproblem is solved by the SCA and Lagrange dual method, while the hybrid OMA/NOMA mode selection subproblem is solved by exploiting DQN-based algorithms. To guarantee the constraints, a reward function is further designed in DQN. Afterward, an alternate iterative algorithm has been proposed by integrating the solutions of the two subproblems. Simulation results verified that the proposed algorithm can always flexibly select the suitable transmission strategy based on the connected network characteristics. Compared to other benchmark schemes, our proposed algorithm has better performance in terms of the achievable sum rate, the average achievable rate, and outage probability. In our future work, we will extend the hybrid OMA/NOMA transmission scheme to the downlink and uplink SAGIN to further enlarge the system capacity.
+
+# APPENDIX A PROOF OF THEOREM 1
+
+The Lagrange function $L ( e ^ { \tilde { P } } , \mu , \zeta )$ with Lagrange multiplier $\pmb { \mu }$ ( )and ζ for problem P2 is represented as
+
+$$
+L \left(e ^ {\widetilde {P}}, \boldsymbol {\mu}, \zeta\right) = - \sum_ {l} F _ {l} \left(\boldsymbol {\beta} ^ {*}, e ^ {\widetilde {P}}\right) ^ {\prime} + \zeta \left(e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{E,L}}} - P _ {\max}\right) +
+$$
+
+$$
+\sum_ {l} \sum_ {m} \sum_ {u \in \mathbb {U} ^ {l}} \mu_ {u, l, m} (e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{N,L}}} | h _ {u, l} ^ {\mathrm{L}} | ^ {2} - \sum_ {s \in \mathbb {U} ^ {l} \setminus u} e ^ {\widetilde {P} _ {s, l, m} ^ {\mathrm{N,L}}} | h _ {s, l} ^ {\mathrm{L}} | ^ {2} - \Delta \Gamma). \tag {A.1}
+$$
+
+where
+
+$$
+\begin{array}{l} F _ {l} (\boldsymbol {\beta} ^ {*}, e ^ {\widetilde {\boldsymbol {P}}}) ^ {\prime} \\ = \sum_ {u \in \mathbb {U} ^ {l}} \sum_ {m} ^ {M} \frac {D}{\ln 2} ((1 - \beta_ {u, l, m} ^ {*}) c _ {l, m} ^ {\mathrm{O}} (\hat {q} _ {u, l, m} ^ {\mathrm{O,L}} \ln (\gamma (e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{O,L}}})) \\ + \hat {g} _ {u, l, m} ^ {\mathrm{O,L}})) + \beta_ {u, l, m} ^ {*} c _ {l, m} ^ {\mathrm{N}} (\hat {q} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}} \ln (\gamma (e ^ {\widetilde {P} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}}}) \\ + \hat {g} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}} + \hat {q} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}} \ln (\gamma (e ^ {\widetilde {P} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}}}) + \hat {g} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}})). \tag {A.2} \\ \end{array}
+$$
+
+Since the APs in SAGIN can switch between OMA and NOMA for each subchannel, we consider the power allocation of terminals under different transmission modes, respectively. For subchannel m of AP l, when the NOMA mode is selected, wehave $\beta _ { u , l , m } = 1$ . Due to the channel gain of terminals $u ^ { \prime }$ and $u ^ { \prime \prime }$ =satisfying the order $| h _ { u ^ { \prime \prime } , l } ^ { \mathrm { L } } | ^ { 2 } > | h _ { u ^ { \prime } , l } ^ { \mathrm { L } } | ^ { 2 }$ , the signal from terminal $u ^ { \prime \prime }$ is decoded first. By solving the derivative of - $L ( e ^ { \tilde { P } } , \mu , \zeta )$ with respect to - $e ^ { \tilde { P } }$ , we get
+
+$$
+\frac {\partial L (e ^ {\widetilde {P}} , \boldsymbol {\mu} , \zeta)}{\partial e ^ {\widetilde {P} _ {u ^ {\prime \prime} , l , m} ^ {\mathrm{N,L}}}} = b _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N}} + d _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N}} e ^ {\widetilde {P} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}}}, \tag {A.3}
+$$
+
+$$
+\begin{array}{l} \frac {\partial L (e ^ {\widetilde {P}} , \boldsymbol {\mu} , \zeta)}{\partial e ^ {\widetilde {P} _ {u ^ {\prime} , l , m} ^ {\mathrm{N,L}}}} = b _ {u ^ {\prime}, l, m} ^ {\mathrm{N}} + d _ {u ^ {\prime}, l, m} ^ {\mathrm{N}} e ^ {\widetilde {P} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}}} - b _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N}} \frac {e ^ {\widetilde {P} _ {u ^ {\prime} , l , m} ^ {\mathrm{N,L}}} | h _ {u ^ {\prime} , l} ^ {\mathrm{L}} | ^ {2}}{F _ {u ^ {\prime \prime} , l} ^ {\mathrm{N}}} \\ = b _ {u ^ {\prime}, l, m} ^ {\mathrm{N}} + e ^ {\widetilde {P} _ {u ^ {\prime}, l, m} ^ {\mathrm{N}, \mathrm{L}}} \left(d _ {u ^ {\prime}, l, m} ^ {\mathrm{N}} - | h _ {u ^ {\prime}, l} ^ {\mathrm{L}} | ^ {2} \frac {b _ {u ^ {\prime \prime} , l , m} ^ {\mathrm{N}}}{F _ {u ^ {\prime \prime} , l} ^ {\mathrm{N}}}\right), \tag {A.4} \\ \end{array}
+$$
+
+$$
+\begin{array}{l} \text { where } b _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N}} = \frac {D}{\ln 2} \hat {q} _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N,L}} c _ {l, m} ^ {\mathrm{N}}, d _ {u ^ {\prime \prime}, l, m} ^ {\mathrm{N}} = \zeta + F _ {u ^ {\prime \prime}, l} ^ {\prime}, F _ {u ^ {\prime \prime}, l} ^ {\prime} = \\ \sum_ {u ^ {\prime \prime} \in \mathbb {U} ^ {l}} (| h _ {u ^ {\prime \prime}, l} ^ {\mathrm{L}} | ^ {2} - \sum_ {s \in \mathbb {U} ^ {l} \setminus u ^ {\prime \prime}} | h _ {s, l} ^ {\mathrm{L}} | ^ {2}), b _ {u ^ {\prime}, l, m} ^ {\mathrm{N}} = \frac {D}{\ln 2} \hat {q} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}} c _ {l, m} ^ {\mathrm{N}}, \\ d _ {u ^ {\prime}, l, m} ^ {\mathrm{N}} = \zeta + F _ {u ^ {\prime}, l} ^ {\prime}, F _ {u ^ {\prime}, l} ^ {\prime} = \sum_ {u ^ {\prime} \in \mathbb {U} ^ {l}} (| h _ {u ^ {\prime}, l} ^ {\mathrm{L}} | ^ {2} - \sum_ {s \in \mathbb {U} ^ {l} \setminus u ^ {\prime}} | h _ {s, l} ^ {\mathrm{L}} | ^ {2}), \\ F _ {u ^ {\prime \prime}, l} ^ {\mathrm{N}} = e ^ {\widetilde {P} _ {u ^ {\prime}, l, m} ^ {\mathrm{N,L}}} | h _ {u ^ {\prime}, l} ^ {\mathrm{L}} | ^ {2} + \sigma_ {0} ^ {2}. \\ \end{array}
+$$
+
+= +Based on (A.3)–(A.4), for any terminal u, we have-
+
+$$
+\frac {\partial L (e ^ {\widetilde {P} , \boldsymbol {\mu} , \zeta})}{\partial e ^ {\widetilde {P} _ {u , l , m} ^ {\mathrm{N,L}}}} = b _ {u, l, m} ^ {\mathrm{N}} + e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{N,L}}} \left(d _ {u, l, m} ^ {\mathrm{N}} - | h _ {u, l} ^ {\mathrm{L}} | ^ {2} \left(\sum_ {v = 1} ^ {u - 1} \frac {b _ {v , l , m} ^ {\mathrm{N}}}{F _ {v , l} ^ {- \mathrm{N}}}\right)\right). \tag {A.5}
+$$
+
+By checking the KKT conditions, we can obtain
+
+$$
+\widetilde {P} _ {u, l, m} ^ {\mathrm{N}, \mathrm{L}} = \ln \left(\frac {b _ {u , l , m} ^ {\mathrm{N}}}{d _ {u , l , m} ^ {\mathrm{N}} - | h _ {u , l} ^ {\mathrm{L}} | ^ {2} \left(\sum_ {v = 1} ^ {u - 1} \frac {b _ {v , l , m} ^ {\mathrm{N}}}{F _ {v , l} ^ {\mathrm{N}}}\right)}\right). \tag {A.6}
+$$
+
+Note that $\boldsymbol { F } _ { v , l } ^ { \mathrm { N } }$ contains the previous iteration value of variable $\mathcal { \widetilde { P } } _ { u , l , m } ^ { \mathrm { N , L } }$ . Thus, $\mathcal { \widetilde { P } } _ { u , l , m } ^ { \mathrm { N , L } }$ needs to be updated iteratively until t convergences. As such, we have
+
+$$
+\widetilde {P} _ {u, l, m} ^ {\mathrm{N}, \mathrm{L}} [ t + 1 ] = \ln \left(\frac {b _ {u , l , m} ^ {\mathrm{N}}}{d _ {u , l , m} ^ {\mathrm{N}} - | h _ {u , l} ^ {\mathrm{L}} | ^ {2} \left(\sum_ {v = 1} ^ {u - 1} \frac {b _ {v , l , m} ^ {\mathrm{N}}}{F _ {v , l} ^ {\mathrm{N}} [ t ]}\right)}\right). \tag {A.7}
+$$
+
+According to (A.7), the optimal solution for power allocation is obtained as
+
+$$
+P _ {u, l, m} ^ {\mathrm{N,L}} [ t + 1 ] = e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{N,L}} [ t + 1 ]}
+$$
+
+$$
+= \left[ \frac {b _ {u , l , m} ^ {\mathrm{N}}}{d _ {u , l , m} ^ {\mathrm{N}} - | h _ {u , l} ^ {\mathrm{L}} | ^ {2} \left(\sum_ {v = 1} ^ {u - 1} \frac {b _ {v , l , m} ^ {\mathrm{N}}}{F _ {v , l} ^ {\mathrm{N}} [ t ]}\right)} \right] ^ {+}, \tag {A.8}
+$$
+
+where $[ x ] ^ { + } = \operatorname* { m a x } \{ \mathrm { x } , 0 \}$ .
+
+[ ] = max x 0If the OMA mode is selected for subchannel m of AP l andterminal u uses it, we have $\beta _ { u , l , m } = 0$ . Similar to the NOMA mode, by solving the derivative of $L ( e ^ { \tilde { P } } , \mu , \zeta )$ with respect to $e ^ { \tilde { P } }$ ( ), the power of terminal u via subchannel m of AP l is obtained as
+
+$$
+P _ {u, l, m} ^ {\mathrm{O}, \mathrm{L}} = e ^ {\widetilde {P} _ {u, l, m} ^ {\mathrm{O}, \mathrm{L}}} = \left[ \frac {b _ {u , l , m} ^ {\mathrm{O}}}{d _ {u , l , m} ^ {\mathrm{O}} - | h _ {u , l} ^ {\mathrm{L}} | ^ {2} (\sum_ {v = 1} ^ {u - 1} \frac {b _ {v , l , m} ^ {\mathrm{O}}}{F _ {v , l} ^ {\mathrm{O}}})} \right] ^ {+}, \tag {A.9}
+$$
+
+where $\begin{array} { r } { d _ { u , l , m } ^ { \mathrm { O } } = \zeta , b _ { u , l , m } ^ { \mathrm { O } } = \frac { D } { \ln 2 } \hat { q } _ { u , l , m } ^ { \mathrm { O , L } } c _ { l , m } ^ { \mathrm { O } } , F _ { v , l } ^ { \mathrm { O } } = \sigma _ { 0 } ^ { 2 } . } \end{array}$ O
+
+= =The proof is completed.
+
+# REFERENCES
+
+[1] J. Yu, X. Liu, Y. Gao, and X. Shen, “3D channel tracking for UAV-satellite communications in space-air-ground integrated networks,” IEEE J. Sel. Areas Commun., vol. 38, no. 12, pp. 2810–2823, Dec. 2020.   
+[2] J. Ye, S. Dang, B. Shihada, and M. -S. Alouini, “Space-air-ground integrated networks: Outage performance analysis,” IEEE Trans. Wireless Commun., vol. 19, no. 12, pp. 7897–7912, Dec. 2020.   
+[3] S. Ji, D. Zhou, M. Sheng, and J. Li, “Mega satellite constellation system optimization: From a network control structure perspective,” IEEE Trans. Wireless Commun., vol. 21, no. 2, pp. 913–927, Feb. 2022.   
+[4] Q. Xu, Z. Su, D. Fang, and Y. Wu, “Hierarchical bandwidth allocation for social community-oriented multicast in space-air-ground integrated networks,” IEEE Trans. Wireless Commun., vol. 22, no. 3, pp. 1915–1930, Mar. 2023.   
+[5] S. Mao, S. He, and J. Wu, “Joint UAV position optimization and resource scheduling in space-air-ground integrated networks with mixed cloud-edge computing,” IEEE Syst. J., vol. 15, no. 3, pp. 3992–4002, Sep. 2021.   
+[6] Z. Zhou, J. Feng, C. Zhang, Z. Chang, Y. Zhang, and K. M. S. Huq, “SAGE-CELL: Software-defined space-air-ground integrated moving cells,” IEEE Commun. Mag., vol. 56, no. 8, pp. 92–99, Aug. 2018.   
+[7] Q. Chen, W. Meng, S. Han, C. Li, and H. H. Chen, “Effect of intelligent multi-association in civil aircraft-augmented SAGIN,” IEEE Trans. Cogn. Commun. Netw., vol. 9, no. 1, pp. 223–238, Feb. 2023.   
+[8] Q. Chen, W. Meng, T. Q. S. Quek, and S. Chen, “Multi-tier hybrid offloading for computation-aware IoT applications in civil aircraft-augmented SAGIN,” IEEE J. Sel. Areas Commun., vol. 41, no. 2, pp. 399–417, Feb. 2023.   
+[9] M. Liu, G. Feng, L. Cheng, and S. Qin, “A deep reinforcement learning based adaptive transmission strategy in space-air-ground integrated networks,” in Proc. IEEE Int. Conf. Commun., Seoul, South Korea, 2022, pp. 4697–4702.   
+[10] S. Yu, X. Gong, Q. Shi, X. Wang, and X. Chen, “EC-SAGINs: Edgecomputing-enhanced space-air-ground-integrated networks for internet of vehicles,” IEEE Internet Things J., vol. 9, no. 8, pp. 5742–5754, Apr. 2022.   
+[11] N. Jaiswal and N. Purohit, “Performance of downlink NOMA-enabled vehicular communications over double Rayleigh fading channels,” IEEE Trans. Veh. Technol., vol. 70, no. 12, pp. 12725–12741, Dec. 2021.   
+[12] A. Yadav, C. Quan, P. K. Varshney, and H. V. Poor, “On performance comparison of multi-antenna HD-NOMA, SCMA, and PD-NOMA schemes,” IEEE Wireless Commun. Lett., vol. 70, no. 12, pp. 12725–12741, Dec. 2021.   
+[13] Z. Ding, X. Lei, G. K. Karagiannidis, R. Schober, J. Yuan, and V. K. Bhargava, “A survey on non-orthogonal multiple access for 5G networks: Research challenges and future trends,” IEEE J. Sel. Areas Commun., vol. 35, no. 10, pp. 2181–2195, Oct. 2017.   
+[14] N. Yang, D. Guo, Y. Jiao, G. Ding, and T. Qu, “Lightweight blockchainbased secure spectrum sharing in space-air-ground-integrated IoT network,” IEEE Internet Things J., vol. 10, no. 23, pp. 20511–20527, Dec. 2023.
+
+[15] Q. Gao, M. Jia, Q. Guo, X. Gu, and L. Hanzo, “Jointly optimized beamforming and power allocation for full-duplex cell-free NOMA in space-ground integrated networks,” IEEE Trans. Commun., vol. 71, no. 5, pp. 2816–2830, May 2023.   
+[16] P. Qin, Y. Zhu, X. Zhao, X. Feng, J. Liu, and Z. Zhou, “Joint 3D-location planning and resource allocation for XAPS-enabled C-NOMA in 6G heterogeneous Internet of Things,” IEEE Trans. Veh. Technol., vol. 70, no. 10, pp. 10594–10609, Oct. 2021.   
+[17] X. Fang et al., “NOMA-based hybrid satellite-UAV-terrestrial networks for 6G maritime coverage,” IEEE Trans. Wireless Commun., vol. 22, no. 1, pp. 138–152, Jan. 2023.   
+[18] C. Zhou, S. Shi, C. Wu, and Z. Xu, “NOMA empowered energy efficient data collection and wireless power transfer in space-air-ground integrated networks,” China Commun., vol. 20, no. 8, pp. 17–31, Aug. 2023.   
+[19] M. A. Hossain and N. Ansari, “Hybrid multiple access for network slicing aware mobile edge computing,” IEEE Trans. Cloud Comput., vol. 11, no. 3, pp. 2910–2921, Third Quarter 2023.   
+[20] O. Abbasi, H. Yanikomeroglu, A. Ebrahimi, and N. M. Yamchi, “Trajectory design and power allocation for drone-assisted NR-V2X network with dynamic NOMA/OMA,” IEEE Trans. Wireless Commun., vol. 19, no. 11, pp. 7153–7168, Nov. 2020.   
+[21] H. Shao, H. Zhang, L. Sun, and Y. Qian, “Resource allocation and hybrid OMA/NOMA mode selection for non-coherent joint transmission,” IEEE Trans. Wireless Commun., vol. 21, no. 4, pp. 2695–2709, Apr. 2022.   
+[22] S. Feng, R. Zhang, W. Xu, and L. Hanzo, “Multiple access design for ultra-dense VLC networks: Orthogonal vs non-orthogonal,” IEEE Trans. Commun., vol. 67, no. 3, pp. 2218–2232, Mar. 2019.   
+[23] H. Kong, M. Lin, L. Han, W. Zhu, Z. Ding, and M. Alouini, “Uplink multiple access with semi-grant-free transmission in integrated satelliteaerial-terrestrial networks,” IEEE J. Sel. Areas Commun., vol. 41, no. 6, pp. 1723–1736, Jun. 2023.   
+[24] M. Karavolos, L. Tsipi, P. S. Bithas, D. Vouyioukas, and P. T. Mathiopoulos, “Satellite aerial terrestrial hybrid NOMA scheme in 6G networks: An unsupervised learning approach,” in Proc. IEEE 1st Int. Conf. 6 G Netw., Paris, France, 2022, pp. 1–5.   
+[25] H. Kong, M. Tan, M. Lin, M. Cheng, W.-P. Zhu, and T. de Cola, “Hybrid multiple access transmission in satellite-aerial-terrestrial networks,” IEEE Commun. Lett., vol. 26, no. 9, pp. 2146–2150, Sep. 2022.   
+[26] Y. Yu, S. C. Liew, and T. Wang, “Multi-agent deep reinforcement learning multiple access for heterogeneous wireless networks with imperfect channels,” IEEE Trans. Mobile Comput., vol. 21, no. 10, pp. 3718–3730, Oct. 2022.   
+[27] X. Zhang, M. Peng, S. Yan, and Y. Sun, “Deep-reinforcement-learningbased mode selection and resource allocation for cellular V2X communications,” IEEE Internet Things J., vol. 7, no. 7, pp. 6380–6391, Jul. 2020.   
+[28] Y. Liu, X. Wang, J. Mei, G. Boudreau, H. Abou-Zeid, and A. B. Sediq, “Situation-aware resource allocation for multi-dimensional intelligent multiple access: A proactive deep learning framework,” IEEE J. Sel. Areas Commun., vol. 39, no. 1, pp. 116–130, Jan. 2021.   
+[29] X. Wang, Y. Zhang, H. Wu, T. Liu, and Y. Xu, “Deep transfer reinforcement learning for resource allocation in hybrid multiple access systems,” Phys. Commun., vol. 55, no. 101923, pp. 1–13, Dec. 2022.   
+[30] Q. Chen, W. Meng, S. Han, and C. Li, “Service-oriented fair resource allocation and auction for civil aircrafts augmented space-airground integrated networks,” IEEE Trans. Veh. Technol., vol. 69, no. 11, pp. 13658–13672, Nov. 2020.   
+[31] H. Yin, D. Gesbert, M. Filippou, and Y. Liu, “A coordinated approach to channel estimation in large-scale multiple-antenna systems,” IEEE J. Sel. Areas Commun., vol. 31, no. 2, pp. 264–273, Feb. 2013.   
+[32] Y. Shi, Y. Xia, and Y. Gao, “Joint gateway selection and resource allocation for cross-tier communication in space-air-ground integrated IoT networks,” IEEE Access, vol. 9, pp. 4303–4314, Dec. 2021.   
+[33] M. F. Kader and S. Y. Shin, “Coordinated direct and relay transmission using uplink NOMA,” IEEE Wireless Commun. Lett., vol. 7, no. 3, pp. 400–403, Jun. 2018.   
+[34] Z. Ma, B. Ai, R. He, Z. Zhong, and M. Yang, “A non-stationary geometrybased MIMO channel model for millimeter-wave UAV networks,” IEEE J. Sel. Areas Commun., vol. 39, no. 10, pp. 2960–2974, Oct. 2021.   
+[35] N. Wang, F. Li, D. Chen, L. Liu, and Z. Bao, “NOMA-based energyefficiency optimization for UAV enabled space-air-ground integrated relay networks,” IEEE Trans. Veh. Technol., vol. 71, no. 4, pp. 4129–4141, Apr. 2022.   
+[36] X. Zhang, B. Zhang, K. An, G. Zheng, S. Chatzinotas, and D. Guo, “Stochastic geometry-based analysis of cache-enabled hybrid satelliteaerial-terrestrial networks with non-orthogonal multiple access,” IEEE Trans. Wireless Commun., vol. 71, no. 4, pp. 4129–4141, Apr. 2022.
+
+[37] A. Agrawal, J. G. Andrews, J. M. Cioffi, and T. Meng, “Iterative power control for imperfect successive interference cancellation,” IEEE Trans. Wireless Commun., vol. 4, no. 3, pp. 878–884, May 2005.   
+[38] F. Tang, C. Wen, L. Luo, M. Zhao, and N. Kato, “Blockchain-based trusted traffic offloading in space-air-ground integrated networks (SAGIN): A federated reinforcement learning approach,” IEEE J. Sel. Areas Commun., vol. 40, no. 12, pp. 3501–3516, Dec. 2022.   
+[39] L. You, K. -X. Li, J. Wang, X. Gao, X. -G. Xia, and B. Ottersten, “Massive MIMO transmission for LEO satellite communications,” IEEE J. Sel. Areas Commun., vol. 38, no. 8, pp. 1851–1865, Aug. 2020.   
+[40] Z. Gao, A. Liu, and X. Liang, “The performance analysis of downlink NOMA in LEO satellite communication system,” IEEE Access, vol. 8, pp. 93723–93732, 2020.   
+[41] M. Baghani, S. Parsaeefard, M. Derakhshani, and W. Saad, “Dynamic non-orthogonal multiple access and orthogonal multiple access in 5G wireless networks,” IEEE Trans. Commun., vol. 67, no. 9, pp. 6360–6373, Sep. 2019.   
+[42] B. Ling, C. Dong, J. Dai, and J. Lin, “Multiple decision aided successive interference cancellation receiver for NOMA systems,” IEEE Wireless Commun. Lett., vol. 6, no. 4, pp. 498–501, Aug. 2017.   
+[43] A. Alsharoa and M. Alouini, “Improvement of the global connectivity using integrated satellite-airborne-terrestrial networks with resource optimization,” IEEE Trans. Wireless Commun., vol. 19, no. 8, pp. 5088–5100, Aug. 2020.   
+[44] M. S. Ali, H. Tabassum, and E. Hossain, “Dynamic user clustering and power allocation for uplink and downlink non-orthogonal multiple access (NOMA) systems,” IEEE Access, vol. 4, pp. 6325–6343, 2016.
+
+![](images/9357dbe7b415651cedfabb6ae22c3b9058ccf21e857c0e39cd90a4943acc3477.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a suit against a blue background (no text or symbols visible)
+</details>
+
+Xun Wang received the M.S. degree in electronic and communication engineering from Guangxi Normal University, Guilin, China, in 2016. He is currently working toward the Ph.D. degree with Information and Communication Engineering Department, Guilin University of Electronic Technology, Guilin. His research interests include the space-air-ground integrated network, wireless resource allocation, multiple access, and machine learning.
+
+![](images/7d9507e8bc8382a84cbe47dd21af01509c83ef56eeca13cf4b2d6615bbe3e8da.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a dark jacket (no text or symbols visible)
+</details>
+
+Hongbin Chen received the B.Eng. degree in electronic and information engineering from the Nanjing University of Posts and Telecommunications, Nanjing, China, in 2004, and the Ph.D. degree in circuits and systems from the South China University of Technology, Guangzhou, China, in 2009. From 2006 to 2008, he was a Research Assistant with the Department of Electronic and Information Engineering, Hong Kong Polytechnic University, Hong Kong. From March to April 2014, he was a Research Associate with the Department of Electronic and Informa-
+
+tion Engineering, Hong Kong Polytechnic University. From 2015 to 2016, he was a Visiting Scholar with the Department of Electrical and Computer Engineering, National University of Singapore, Singapore. He is currently a Professor with the School of Information and Communication, Guilin University of Electronic Technology, Guilin, China. His research focuses on energy-efficient wireless communications.
+
+![](images/610aded01d1e6871193c3e88cc442c67536e7ee5f66db149d87fe3ed618d7e03.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a checkered shirt against a red background (no text or symbols visible)
+</details>
+
+Fangqing Tan received the M.S. degree in communication and information system from the Chongqing University of Post and Telecommunications, Chongqing, China, in 2012, and the Ph.D. degree from the Beijing University of Post and Telecommunications, Beijing, China, in 2017. Since 2017, he has been a Lecturer with the Guilin University of Electronic Technology, Guilin, China. He is also a Postdoctoral Fellow with the School of Electronics and Information Technology, Sun Yat-sen University, Guangzhou, China. His research interests include
+
+5G/6G wireless communications and Internet of Things.
