@@ -11,15 +11,18 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
+  - "[[wang-2025-sac-tma-mec-dc]]"
+  - "[[sun-2025-emoppo-vlh-aerial-cb]]"
+  - "[[li-2024-emodrl-ground-space-cb]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-31
 ---
 
 # Dusit Niyato
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 8 sources spanning generative-AI/diffusion methods, multi-agent DRL, aerial/edge resource allocation, and surveys:
+The most frequently recurring author in the corpus, co-authoring 11 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -29,6 +32,9 @@ The most frequently recurring author in the corpus, co-authoring 8 sources spann
 - [[ye-2025-aigc-diffusion-contract]] — AIGC services via generative diffusion + contract theory.
 - [[zhang-2024-gdmtd3-aerial-secure-cb]] — UAV-swarm secure collaborative beamforming via diffusion-enhanced TD3.
 - [[zhao-2022-matd3-multiuav-ec-offloading]] — MATD3 multi-UAV edge-computing offloading.
+- [[wang-2025-sac-tma-mec-dc]] — joint AAV MEC + data collection via SAC-TMA.
+- [[sun-2025-emoppo-vlh-aerial-cb]] — aerial collaborative beamforming to mobile users via EMOPPO-VLH.
+- [[li-2024-emodrl-ground-space-cb]] — distributed collaborative beamforming for ground-space communications via EMODRL.
 
 ## Contributions to this wiki
 
