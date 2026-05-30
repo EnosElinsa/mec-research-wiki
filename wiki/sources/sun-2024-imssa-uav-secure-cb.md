@@ -16,8 +16,9 @@ related:
   - "[[sun-2025-emoppo-vlh-aerial-cb]]"
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
+  - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # UAV-Enabled Secure Communications via Collaborative Beamforming With Imperfect Eavesdropper Information

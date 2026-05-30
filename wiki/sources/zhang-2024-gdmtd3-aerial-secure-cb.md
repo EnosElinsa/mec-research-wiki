@@ -16,8 +16,9 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Multi-Objective Aerial Collaborative Secure Communication Optimization via Generative Diffusion Model-Enabled Deep Reinforcement Learning

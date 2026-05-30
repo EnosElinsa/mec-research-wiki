@@ -513,6 +513,7 @@
 - [[asap-swarm-inference-speedup]] — up to 92.66% latency cut, hardware-validated ([[sun-2024-asap-uav-swarm]])
 - [[masac-beats-maddpg-sensing-queue]] — +15.41% sensing / −30.73% queue delay vs MADDPG ([[qin-2025-bcuav-masac]])
 - [[acbft-throughput-increase]] — up to 96.2% consensus-throughput increase vs existing chaining protocols ([[wang-2025-acbft-uav-consensus]])
+- [[dcb-cuts-satellite-handover-frequency]] — ~30% fewer LEO handovers at similar uplink rate ([[li-2024-emodrl-ground-space-cb]])
 
 ## Thesis
 
@@ -544,6 +545,7 @@
 - [[isac-sensing-in-aerial-mec]] — How sensing enters the 7 ISAC/sensing sources.
 - [[maritime-mec-architectures]] — Tiering + solver families across the 7 maritime sources.
 - [[blockchain-on-edge-trust-layer]] — Which layer the blockchain defends (consensus / aggregation / audit) across the 3 blockchain-on-edge sources.
+- [[collaborative-beamforming-in-aerial-mec]] — Target / objectives / solver split across the 5 collaborative-beamforming sources.
 
 ## References
 
