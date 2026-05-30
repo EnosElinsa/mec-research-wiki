@@ -2,6 +2,58 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-05-31 — Curation pass (batch 5/8: 7 new sources + audit)
+
+Fifth batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned batch-5 folders; the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **110 → 117 curated sources**. (Clean retry: a prior attempt was cancelled before writing; confirmed none of the 7 already had a source page.)
+
+### New source pages (7)
+
+- [[duan-2023-moto-smallcell-offloading]] — Duan et al. 2023 (**IEEE TMC**, `10.1109/TMC.2022.3220720`). **MOTO** — mobility-aware online task offloading + adaptive load balancing in terrestrial **small-cell MEC**; decomposes the intractable TOO problem into Task offloading Control (LSTM) + Server Grouping (Dueling Double DQN); trace-driven on a real WiFi dataset. DOI pub 8 Nov 2022 / current version 5 Dec 2023 → year 2023.
+- [[qi-2024-msar-minmax-latency]] — Qi et al. 2024 (**IEEE TVT**, `10.1109/TVT.2024.3384570`). Multi-UAV maritime **search & rescue** (S-UAVs + R-UAV); minimizes the **maximum total latency** among S-UAVs over offloading + R-UAV deployment + S-UAV–target association; iterative decomposition: linearization + **SCA** + **Branch-and-Bound**. DOI pub 3 Apr 2024 / current version 19 Sep 2024 → year 2024.
+- [[seid-2021-madrl-multiuav-iot-edge]] — Seid et al. 2021 (**IEEE TNSM**, `10.1109/TNSM.2021.3096673`). Clustered multi-UAV IoT-edge offloading + resource allocation as a **stochastic game**; **MADDPG** (MADRL) minimizing energy+delay cost. Reports (verbatim) cost ↓ 38.643% / 55.621% and reward ↑ 58.289% / 85.289% vs single-agent DRL / heuristic. DOI pub 12 Jul 2021 / current version 9 Dec 2021 → year 2021.
+- [[wang-2021-maddpg-multiuav-trajectory]] — Wang et al. 2021 (**IEEE TCCN**, `10.1109/TCCN.2020.3027695`). **MADDPG** per-UAV trajectory planning for multi-UAV MEC; jointly optimizes geographical fairness + UE-load fairness + UE energy; low-complexity offloading step given trajectories. DOI pub 29 Sep 2020 / current version 8 Mar 2021 → year 2021.
+- [[peng-2020-maddpg-uav-vehicular]] — Peng & Shen 2020 (**IEEE JSAC**, `10.1109/JSAC.2020.3036962`). **MADDPG** multi-dimensional resource management (vehicle association + allocation) for MEC- and UAV-assisted vehicular networks; converges within ~200 episodes (verbatim), higher delay/QoS satisfaction than SADDPG/random. DOI pub 10 Nov 2020 / current version 16 Dec 2020 → year 2020.
+- [[sun-2024-mfris-semantic-antijamming]] — Sun et al. 2024 (**IEEE JSAC**, `10.1109/JSAC.2024.3459028`). **Multi-functional RIS** + **semantic** anti-jamming communication and computing for an MEC integrated aerial-ground network; worst-case imperfect-jammer-CSI; semantic-computation-rate maximization via a fast-converging **monotonic optimization + decoupling SOCP (MO-DSOCP)** (global optimum) + low-complexity **GPI**. DOI pub 12 Sep 2024 / current version 22 Nov 2024 → year 2024 (earlier WCSP 2024 version noted).
+- [[li-2024-emssa-uav-swarm-vaa]] — Li et al. 2024 (**IEEE TMC**, `10.1109/TMC.2023.3298888`). **Virtual antenna arrays** for UAV-swarm-assisted IoT data harvesting/dissemination; introduces collaborative beamforming into *both* sensors (GVAA) and UAVs (AVAA); multi-objective (completion time / eavesdropper signal / UAV energy) proven NP-hard, solved by the **enhanced multi-objective salp swarm algorithm (EMSSA)**. DOI pub 26 Jul 2023 / current version 4 Apr 2024 → year 2024.
+
+### New concept stubs (7)
+
+- [[maddpg]] — the standalone Multi-Agent Deep Deterministic Policy Gradient backbone page (deterministic-policy CTDE), distinct from [[multi-agent-td3]] / [[masac]]; grounds the three batch-5 MADDPG papers plus the pre-existing [[he-2023-fairness-3d-multiuav-maddpg]] / [[du-2023-maddpg-service-placement-agin]].
+- [[small-cell-mec]] — MEC integrated with small-cell SBS networks; uneven spatio-temporal load + mobility challenges (grounds MOTO).
+- [[mobility-aware-offloading]] — offloading control that accounts for user mobility / unknown future loads via online prediction.
+- [[semantic-communication]] — 6G key-information (vs bit) transmission; robustness + data compression for MEC.
+- [[multi-functional-ris]] — RIS with reflection + refraction + amplification + energy harvesting (full-space, self-sustaining).
+- [[monotonic-optimization]] — global-optimization framework exploiting monotonicity (the MO-DSOCP solver behind the MF-RIS source).
+- [[salp-swarm-algorithm]] — leader/follower swarm-intelligence metaheuristic; EMSSA multi-objective variant grounds the VAA source.
+
+All other referenced concepts reused existing slugs (e.g. [[mobile-edge-computing]], [[task-offloading]], [[multi-uav-assisted-mec]], [[vehicular-mec]], [[maritime-mec]], [[centralized-training-decentralized-execution]], [[stochastic-game]], [[ddqn]], [[deep-q-network]], [[ddpg]], [[collaborative-beamforming]], [[uav-data-collection]], [[physical-layer-security]], [[intelligent-reflecting-surface]], [[anti-jamming-mec]], [[air-ground-integrated-network]], [[csi-estimation-error]], [[mixed-integer-nonlinear-programming]], [[multi-objective-reinforcement-learning]], [[fairness-metrics-in-mec]], [[jains-fairness-index]], [[two-stage-decomposition]], [[uav-trajectory-control]], [[binary-vs-partial-offloading]], [[load-balancing-uav-mec]], [[dynamic-qos-constraints]], [[uav-enabled-its]], [[video-analytics-offloading]]).
+
+### Entities — 4 new + roster updates (no deferrals this batch)
+
+- **Created (4):** [[kezhi-wang]] (Northumbria University, `kezhi.wang@northumbria.ac.uk`; 3 sources — [[wang-2022-cat-rat-fmec-trajectory]] + [[wang-2021-maddpg-multiuav-trajectory]] + [[wang-2019-todetas-deployment-scheduling]], frequently corresponding author, anchors the Northumbria UAV-MEC group); [[xuemin-shen]] (University of Waterloo, `sshen@uwaterloo.ca`; 2 sources — [[peng-2020-maddpg-uav-vehicular]] + [[duan-2023-moto-smallcell-offloading]]); [[yuguang-fang]] (City University of Hong Kong, `my.fang@cityu.edu.hk`; 2 sources — [[wang-2024-maritime-eh-jcora]] + [[qi-2024-msar-minmax-latency]], in the [[bin-lin]] maritime cluster); [[haixia-peng]] (University of Waterloo → Xi'an Jiaotong University; 2 sources — [[peng-2020-maddpg-uav-vehicular]] + [[wang-2024-twotier-satellite-marine]], the affiliation move is documented in both parses so treated as one researcher, not a namesake).
+- **Roster updates (existing entities):** [[geng-sun]] (8→9 sources, +VAA), [[jiahui-li]] (7→8, +VAA as lead author), [[qingqing-wu]] (5→6, +VAA — **confirms the SJTU [[qingqing-wu]]** `qingqingwu@sjtu.edu.cn` on this paper, unrelated to the deferred NUS namesake), [[bin-lin]] (6→7, +MSAR min-max-latency).
+- No author-entity links were embedded in source-page bodies (matching the established house convention).
+
+### Duplicate / near-duplicate check (the assigned watch item)
+
+The brief warned that several already-curated "Multi-Agent … Multi-UAV … MEC" papers could be confused with these. Verified each batch-5 paper is **genuinely new** and distinct:
+- [[wang-2021-maddpg-multiuav-trajectory]] (*…Trajectory Planning…*, **IEEE TCCN 2021**, MADDPG, dual-fairness + energy) is **distinct** from the same group's already-curated [[wang-2022-cat-rat-fmec-trajectory]] (*Dynamic Trajectory Control…*, **IEEE TMC 2022**, CAT/RAT single twin-DQN agent) — different venue, DOI, year, and single-vs-multi-agent method — and from [[chang-2022-marl-multiuav-trajectory]] (TNSE).
+- [[seid-2021-madrl-multiuav-iot-edge]] (UESTC/DFKI, **TNSM 2021**, MADDPG, clustered IoT-edge) is **distinct** from [[zhao-2022-matd3-multiuav-ec-offloading]] (MATD3, TWC 2022) and [[he-2023-fairness-3d-multiuav-maddpg]] (MADDPG fairness 3D) — different authors, venue, year.
+- [[peng-2020-maddpg-uav-vehicular]] (Peng/Shen, **JSAC 2020**) is a new vehicular-MEC entry distinct from the corpus's other vehicular papers ([[ma-2025-pdqn-vehicular-mec]], [[zhang-2025-mcma-task-migration]], [[sun-2023-bargain-match-vec]]).
+- [[qi-2024-msar-minmax-latency]] (S-UAV/R-UAV min-max latency, TVT 2024) is **distinct** from [[wang-2026-aerial-marine-msar]] (UAV+HAPS+MASS three-tier JCORA, matching+convex+PGD) despite both being Bin-Lin-group maritime SAR papers — different architecture, objective, method, venue, year.
+- [[li-2024-emssa-uav-swarm-vaa]] (salp-swarm CB virtual antenna arrays, TMC) is **distinct** from [[sun-2025-emoppo-vlh-aerial-cb]] / [[li-2024-emodrl-ground-space-cb]] (evolutionary-RL CB) — pure swarm-intelligence optimizer, IoT data-harvesting framing.
+- No same-paper/different-UUID duplicate ingests were found among the 7.
+
+### Audit (correctness-first)
+
+- **DOI / venue / year** — all 7 carry an explicit `Digital Object Identifier` line in their own parse; every DOI, venue, and year above is grounded in the parse (manuscript date-of-publication / date-of-current-version lines). **Zero `not in parse` metadata fields this batch** — all 7 source pages have full title/authors/year/url/venue. **Year convention:** for the TMC/TVT/TCCN/JSAC/TNSM papers whose publication vs current-version dates straddle two years, year follows date-of-current-version (the wiki's established convention), with both dates recorded in each citation.
+- **Grounded headline claims only:** Seid MADRL percentages (38.643% / 55.621% cost, 58.289% / 85.289% reward) and Peng "converges within 200 episodes" are verbatim from the abstracts; MOTO load-balancing/cost advantage, MSAR effectiveness, MF-RIS superiority, and EMSSA "reduce time and energy costs significantly" are stated **qualitatively** as the papers state them (no figure-only magnitudes asserted as exact). The MOTO dataset scale (29,284,966 records / 21,725 users / 4,045 APs) and the >80%-under-600 s CDF observation are from the parse (CDF flagged as read-from-figure).
+- **Wikilink integrity:** wiki-wide Obsidian-faithful link check after the pass = **ZERO dangling links** (verified — see below). All wikilinks introduced this batch target existing slugs or pages created in this same batch (7 sources + 7 concepts + 4 entities). Pre-existing dangling-link status unchanged (none).
+- **Frontmatter:** `type`/`title`/`authors`/`year`/`url`/`venue`/`tags`/`related`/dates/H1 validated on all 7 source pages; `type`/`title`/`tags`/dates/H1 on the 7 concept stubs and 4 entity pages. No diagnostics issues; no self-references or duplicate `related` entries.
+- **Counts reconciled:** **117 sources / 197 concepts / 54 author entities (+[[pytorch]] = 55 entity pages)**. `index.md` and `overview.md` updated to agree.
+- **LLM Wiki API:** not queried this batch (headless shell); not required for correctness.
+- **Raw-folder scope:** only the 7 assigned batch-5 folders were curated; other untracked `raw/sources/**` folders were intentionally left for their own batch runs.
+
 ## 2026-05-31 — Curation pass (batch 4/8: 7 new sources + audit)
 
 Fourth batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned `batch4` folders (per `.curation-out/batches.json`); the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **103 → 110 curated sources**.

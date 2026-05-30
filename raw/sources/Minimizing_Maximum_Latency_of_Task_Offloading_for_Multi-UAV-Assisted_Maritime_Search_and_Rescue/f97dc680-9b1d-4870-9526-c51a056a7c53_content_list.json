@@ -1,0 +1,3453 @@
+[
+    {
+        "type": "text",
+        "text": "Minimizing Maximum Latency of Task Offloading for Multi-UAV-Assisted Maritime Search and Rescue ",
+        "text_level": 1,
+        "bbox": [
+            62,
+            73,
+            927,
+            138
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Shuang Qi , Student Member, IEEE, Bin Lin , Senior Member, IEEE, Yiqin Deng , Member, IEEE, Xianhao Chen , Member, IEEE, and Yuguang Fang , Fellow, IEEE ",
+        "bbox": [
+            109,
+            148,
+            878,
+            184
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—Unmanned Aerial Vehicles (UAVs) play a crucial role in Maritime Search and Rescue (MSAR), contributing to the improvement of rescue efficiency and reduction of casualties. Typically, UAVs equipped with cameras collect data from disaster areas and transmit it to the shore-based rescue command centers. By deploying Mobile Edge Computing (MEC) servers, UAVs can pre-process video footage to reduce data transmission volume, thus reducing transmission delays. However, the limited computational capacity and energy of UAVs pose significant challenges to the efficiency of UAV-assisted MSAR systems. To address these problems, in this paper, we investigate a multi-UAV assisted MSAR system consisting of multiple Surveillance UAVs (S-UAVs) and a Relay UAV (R-UAV). Then, we formulate a joint optimization problem to minimize the maximum total latency among all S-UAVs via jointly making the computing offloading decisions, R-UAV deployment, and the association between a S-UAV and rescue targets while ensuring that all targets are monitored by S-UAVs. Since the formulated optimization problem is typically hard to solve due to its non-convexity, we propose an effective iterative algorithm by breaking it into three sub-problems. Numerical simulation results show the effectiveness of the proposed algorithm with various performance parameters. ",
+        "bbox": [
+            60,
+            220,
+            488,
+            500
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—UAV, computing offloading, disaster area surveillance, edge computing. ",
+        "bbox": [
+            58,
+            506,
+            486,
+            532
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            208,
+            556,
+            336,
+            569
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "T HE increasing number of maritime activities and ships atsea have led to a significant increase in maritime accidents sea have led to a significant increase in maritime accidents ",
+        "bbox": [
+            58,
+            577,
+            486,
+            608
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received 5 December 2023; revised 1 March 2024; accepted 27 March 2024. Date of publication 3 April 2024; date of current version 19 September 2024. The work of Bin Lin was supported in part by the National Natural Science Foundation of China under Grant 62371085 and Grant 51939001, and in part by the Fundamental Research Funds for the Central Universities under Grant 3132023514. The work of Yiqin Deng was supported in part by the National Natural Science Foundation of China under Grant 62301300. The work of Yuguang Fang was supported in part by the Hong Kong SAR Government through the Global STEM Professorship and in part by the Hong Kong Jockey Club through JC STEM Lab of Smart City. The review of this article was coordinated by Dr. Qiang John Ye. (Corresponding author: Bin Lin.) ",
+        "bbox": [
+            57,
+            627,
+            486,
+            753
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Shuang Qi and Bin Lin are with the Information Science and Technology College, Dalian Maritime University, Dalian 116026, China (e-mail: qishuang\\_0315@163.com; binlin@dlmu.edu.cn). ",
+        "bbox": [
+            57,
+            752,
+            486,
+            786
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yiqin Deng is with the School of Control Science and Engineering, Shandong University, Jinan 250061, China, and also with the Shandong Key Laboratory of Wireless Communication Technologies, Jinan 250061, China (e-mail: yiqin.deng@email.sdu.edu.cn). ",
+        "bbox": [
+            57,
+            786,
+            486,
+            832
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Xianhao Chen is with the Department of Electrical and Electronic Engineering and HKU Musketeers Foundation Institute of Data Science, University of Hong Kong, Hong Kong SAR, China (e-mail: xchen@eee.hku.hk). ",
+        "bbox": [
+            57,
+            830,
+            486,
+            866
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yuguang Fang is with the Department of Computer Science, City University of Hong Kong, Hong Kong SAR, China (e-mail: my.fang@cityu.edu.hk). ",
+        "bbox": [
+            57,
+            864,
+            484,
+            888
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TVT.2024.3384570 ",
+        "bbox": [
+            72,
+            888,
+            363,
+            900
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "such as collisions and groundings. According to the Annual Overview of Maritime Casualties and Incidents in 2022 published by the European Maritime Safety Agency (EMSA), in the period from 2014 to 2021, the total number of reported fatalities and injuries in marine casualties and incidents is 563 and 6155, respectively [1]. In order to mitigate human casualties, Maritime Search and Rescue (MSAR) operations have been conducted worldwide. These operations take place at sea, involving the search for distressed individuals and providing assistance to maritime authorities and coordination centers, such as coast guards [2]. However, relying solely on manpower for search and rescue in the complex maritime environment and volatile weather conditions is highly inefficient and risky. Establishing a temporary MSAR system to provide shore-based Rescue Coordination Center (RCC) with real-time video information from a disaster area is an effective measure to determine more effective search and rescue strategies, thereby enhancing MSAR efficiency. ",
+        "bbox": [
+            500,
+            220,
+            930,
+            492
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Traditional MSAR systems mainly consist of satellite communication networks and shore-based communication networks. For example, the Global Maritime Distress and Safety System (GMDSS) for maritime distress and rescue operations, safety, and routine communications was established by International Maritime Organization (IMO) in 1988 [3]. However, for delay-sensitive tasks such as MSAR tasks, the long delay and limited bandwidth of the satellite communication and the limited distance of the shore-based communication pose serious challenges, especially for real-time video transmissions. ",
+        "bbox": [
+            500,
+            492,
+            930,
+            643
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Unmanned Aerial Vehicles (UAVs) are considered to provide significant advantages in public safety, search and rescue, and disaster management at sea due to their high flexibility [4]. On the one hand, the lack of high-definition cameras capable of video recording for maritime missions makes it hard to acquire real-time video information from disaster areas. UAVs equipped with sensors and cameras can be deployed to track and monitor target areas [5], [6], [7], [8]. On the other hand, UAVs have the ability to establish temporary emergency communication systems, allowing for real-time transmissions of surveillance video and other data from a disaster area to a Base Station (BS) at shore, or providing communication services to users in that particular area [9], [10], [11], [12]. ",
+        "bbox": [
+            500,
+            643,
+            930,
+            840
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Minimizing transmission latency is crucial for improving the efficiency of video transmissions in MSAR. Due to the high volume of video data, one way is to reduce the transmission volumes for a specific MSAR mission, which attempts to make trade-off between transmission and computing. Thus, Mobile Edge Computing (MEC) is considered to be a promising technology to beef up the computational capabilities at the proximity of terminal devices with computation-demanding applications, such as video processing [13], [14]. By pre-processing video data at UAVs equipped with MEC server, the amount of data to be transmitted can be significantly reduced, thereby reducing transmission latency. Meanwhile, in MSAR system, each UAV is responsible for monitoring a part of the area. To develop an efficient and fair search and rescue strategy, RCC needs to assess the overall situation of the disaster area based on the surveillance footage of each UAV. Therefore, the objective is to minimize the maximum latency, so that the delay of surveillance videos among all S-UAVs should be as small as possible to assist RCC in making quick decisions. ",
+        "bbox": [
+            500,
+            840,
+            930,
+            900
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            58,
+            37,
+            537,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "13625 ",
+        "bbox": [
+            897,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "0018-9545 © 2024 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            193,
+            914,
+            794,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            284,
+            926,
+            705,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            494,
+            305
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Based on the above observations, multiple rotary-wing UAVs installed with Edge Servers (ESs) are dispatched to a disaster area for a search and rescue mission. Multiple rotary-wing UAVs have different types. Compared to larger rotary-wing UAVs, smaller rotary-wing UAVs are more flexible but have less load capacities. For example, the H20 UAV developed by United Aircraft Corporation is a large rotary-wing UAV suitable for search and rescue. Therefore, in this paper, multiple small rotary-wing UAVs are used for monitoring and computing due to the advantage of flexible and a large rotary-wing UAV is used for relaying and computing due to the greater load capacities. Specifically, multiple rotary-wing UAVs equipped with cameras for video surveillance are responsible for monitoring drowning people in the sea disaster area. Such UAVs are called Surveillance UAVs (S-UAVs), which have limited payload capacity due to practical considerations. To overcome this limitation, we introduce an additional UAV with a larger payload, referred to as Relay UAV (R-UAV), to serve as a relay for data transmissions and enhance computational capabilities. Videos can be computed on S-UAVs or offloaded to the R-UAV to reduce data volume by removing redundant video frames, thereby reducing latency. In scenarios involving multiple UAVs for video transmissions, we aim to minimize the maximum latency among all S-UAVs, so that the surveillance video of each UAV is successfully transmitted with the least possible delay difference to improve decision-making efficiency. Therefore, how to reduce the processing latency for a multi-UAV assisted MSAR system by optimizing the positions of UAVs and task offloading is the focus of this paper. We summarize our contributions as follows. ",
+        "bbox": [
+            63,
+            306,
+            496,
+            742
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- A multi-UAV assisted MSAR system is designed, which consists of a R-UAV and multiple S-UAVs. To capture the condition of drowning people more accurately, we adjust the positions of S-UAVs based on the association between the S-UAV and rescue targets. By ensuring monitoring integrity, it can observe drowning people at a closer distance and keep the drowning people in the center of the monitoring area. ",
+            "We formulate a joint optimization problem for the computing offloading decisions, R-UAV deployment, and the association between the S-UAV and rescue targets, with the goal of minimizing the maximum total latency among all S-UAVs under the energy constraints of R-UAV and S-UAVs. "
+        ],
+        "bbox": [
+            80,
+            744,
+            494,
+            954
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "\\- An iterative optimization algorithm is designed by decomposing the original problem into three tractable sub-problems to find the near optimal solution. Specifically, linearization and Successive Convex Approximation (SCA) are used to solve the offloading optimization subproblem and R-UAV position optimization sub-problem, respectively. Branch and Bound (BnB) algorithm is used to solve the association optimization sub-problem. ",
+        "bbox": [
+            525,
+            79,
+            937,
+            200
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The remainder of this paper is organized as follows. Section II reviews the related works. Section III introduces the MSAR architecture. In Section IV, we present the system model. In Section V, we present the problem formulation. In Sections VI and VII, the proposed algorithm and its evaluation are given, respectively. Finally, Section VII concludes this paper. ",
+        "bbox": [
+            506,
+            200,
+            937,
+            292
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORKS ",
+        "text_level": 1,
+        "bbox": [
+            649,
+            306,
+            797,
+            321
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this section, we review the research efforts on computing offloading in MEC systems. Then, we overview the works related to this paper in the applications of UAVs in two scenarios, i.e., video transmission and emergency communication. ",
+        "bbox": [
+            506,
+            329,
+            937,
+            390
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. Computing Offloading in MEC ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            405,
+            745,
+            420
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "MEC was proposed, for computing offloading from the user perspective as it focuses on sending tasks to edge nodes (e.g., BSs) where ESs are deployed, allowing the edge nodes to assist users in processing the applications and relieve the burden from user equipments for computing and power conservation [15]. Since the delay is one of the most important factors for MSAR tasks, we focus on the related works of MEC in reducing delay. ",
+        "bbox": [
+            506,
+            426,
+            937,
+            532
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Deng et al. [16] presented a brief overview on computing offloading. Computing offloading includes binary offloading [17], [18], [19] and partial offloading [20], [21], [22]. Tang et al. [23] studied the computational task offloading with non-divisible and delay-sensitive tasks in a MEC system. Aiming to minimize the delay of tasks, the offloading decision was optimized. Yang et al. [24] considered a MEC system with multi-server multi-users, which formulated the optimization problem of joint offloading decision and computation resource allocation, with the goal of minimizing the total latency delay and energy consumption of mobile users. If the terminal equipment has strong computing abilities, partial offloading is an effective strategy to allow users to offload parts of tasks on MEC servers, to achieve lower latency than binary offloading. Zhao et al. [25] investigated a collaborative MEC system with multi-UAV where task offloading is addressed to minimize the sum of execution delays and energy consumption by jointly designing the UAVs’ position, task partition ratios, and transmit power. Chen et al. [26] considered delay-sensitive tasks offloading in emergency communication scenarios and proposed a latency minimization problem by jointly optimizing the offloading decision, offloading ratio, and UAV trajectory. Nonetheless, these works mainly focus on minimizing the MEC systems latency, while in this paper, we attempt to limit the video transmission delay and make the video transmission delay of each S-UAV as close as possible by minimizing the maximum latency, in order to reduce the difference in video transmission time with the hope that the jitter can be mitigated as well. ",
+        "bbox": [
+            506,
+            532,
+            937,
+            955
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "13626 ",
+        "bbox": [
+            67,
+            39,
+            101,
+            49
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            459,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "B. Application of UAVs in Video Transmissions ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            79,
+            385,
+            95
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "UAVs can monitor specific areas through equipped highdefinition cameras and deliver data over an ad-hoc network. Medeiros et al. [27] studied the path planning and deployment of multiple UAVs in a flood scenario to search for moving targets and deliver real-time video streams. Since communication resource is limited, a reasonable resource allocation scheme must be designed for effective video delivery to improve data transmission rate. Unfortunately, the video transmissions of UAVs impose significant pressure on wireless spectrum. ",
+        "bbox": [
+            57,
+            101,
+            488,
+            236
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "By utilizing MEC technology and implementing video preprocessing, substantial savings in wireless spectrum can be achieved. Wang et al. [14] proposed a bandwidth-efficient architecture based on MEC to enable real-time video analysis of UAVs. They demonstrated how MEC can significantly reduce the bandwidth requirements for video analysis in UAVs without compromising the timeliness or accuracy of the results. Sun et al. [28] proposed a flexible cloud-edge collaborative scheduling strategy based on a UAV for mobile edge video analysis. They jointly optimized task assignments and the position of UAV to minimize the weighted sum of execution time and energy consumption. Deng et al. [29] developed an energy-efficient UAV-assisted target tracking system to offload video processing tasks from the UAV to edge nodes along its flight trajectory. By jointly optimizing the UAV’s transmission power and edge node selection strategy, a trade-off between UAV transmission energy consumption and processing time is achieved. Li et al. [30] focused on edge-aided maritime UAV systems and investigated the impact of video frame resolution on the size of computational tasks and detection accuracy, as well as their effects on task latency and energy consumption. They optimized the UAV’s transmission power, local CPU frequency, offloading ratio, and bandwidth allocation among UAVs. The UAV tracking system was modeled as an energy optimization problem with task latency constraints. ",
+        "bbox": [
+            60,
+            238,
+            488,
+            613
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "C. Application of UAVs in Emergency Communications ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            647,
+            439,
+            662
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Emergency communications often require sending real-time videos or images to remote command centers. UAVs can provide an alternative solution for emergency coverage of users. Therefore, determining the optimal position or flight trajectory of UAVs with efficient wireless resource allocation to improve communication efficiency is a crucial issue. Do-Duy et al. [31] employed UAVs as flying BSs for real-time recovery and maintenance of network connectivity in disaster and post-disaster scenarios. They proposed a user clustering model with Quality-of-Service (QoS) constraints to form multiple distributed ground user clusters within the disaster area, guiding the real-time deployment of UAVs, aiming to maximize the energy efficiency. Hu et al. [9] formulated a joint design problem to optimize bandwidth, transmission power, and UAV altitude in a UAV-enabled uplink emergency communication scenario under the urban environment. Lin et al. [32] proposed an adaptive UAV deployment scheme to solve the coverage problem of UAV-aided ground communications. The objective is to optimize the location of UAVs to cover as many ground nodes as possible to reduce communication energy consumption. ",
+        "bbox": [
+            60,
+            667,
+            488,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            80,
+            927,
+            109
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "By pre-processing video data on an MEC server equipped with a UAV, the amount of transmitted data can be significantly reduced, thus reducing transmission latency [33]. Yang et al. [34] designed a seaborne region exploration architecture based on UAVs and joint grouping of Unmanned Surface Vehicles (USVs), and used MEC to complete the exploration mission in an accident area. To maximize the system throughput, the transmission power of UAV was optimized. However, the optimization of computation resources was not taken into consideration. Zhan et al. [35] considered a UAV-enabled MEC architecture, where IoT devices were at fixed locations to conduct certain sensing tasks with computation requirements. Aiming to minimize the completion time, the UAV trajectory, offloading scheduling and resource allocation were jointly optimized. All aforementioned works, though bearing some similarity in sensing or communications, have not touched upon the rescue missions, which is the target of our paper. ",
+        "bbox": [
+            500,
+            109,
+            930,
+            367
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "III. MARITIME SEARCH AND RESCUE PROCEDURE ",
+        "text_level": 1,
+        "bbox": [
+            543,
+            390,
+            885,
+            404
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "MSAR aims to search and rescue the distressed objects caused by maritime accidents, such as fire, collision, explosion and abandonment. MSAR operations usually consist of two phases of maritime search and rescue [36]. In maritime environment, only relying on human participation has the disadvantages of low efficiency and long response time. In addition, traditional search and rescue equipment (e.g., helicopter and rescue ships) lacks flexibility. Therefore, flexible, low-cost and intelligent unmanned systems, such as UAVs, USVs and Underwater Unmanned Vehicles (UUVs) [37], [38], are applied to MASR operations to perform maritime disaster area search missions and establish the emergency communication to provide data transmissions with low latency and high reliability. These unmanned systems significantly improve the efficiency and security of MSAR operations. Fig. 1 shows the MSAR procedure. ",
+        "bbox": [
+            500,
+            411,
+            930,
+            637
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Firstly, when a wrecked accident occurs, the Distress Alerts Messages (DAMs) can be transmitted to the RCC through the equipped GMDSS, including the identification of ships, the position of wrecked ship, time and other information that may be useful for search and rescue [39]. If the distance between the wrecked ship and the coastal station exceeds 150 n miles, DAMs can be transmitted to RCC by maritime satellites. Otherwise, by using Very High Frequency (VHF) band and Medium Frequency (MF) band, the wrecked ship can transmit DAMs directly or through other ships to relay DAMs to the coastal station [3]. The coastal station transmits DAMs to RCC by the terrestrial communication networks. ",
+        "bbox": [
+            500,
+            638,
+            930,
+            818
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Then, RCC receives the alarm messages and forwards DAMs to other vessels in close proximity to the wrecked ship. Meanwhile, RCC evaluates the accident situation and formulates the search and rescue plan. Using the location of the wreckage as a reference point, unmanned systems are dispatched to the disaster area rapidly to search, monitor, and track the drowning objects. Additionally, unmanned systems equipped sensors and cameras can collect image and video data, and transmit to rescue ships and RCC. For long-distance transmissions, UAVs and USVs can form a multi-hop relay communication system to assist data transmissions. Therefore, the real-time videos can be shown on the monitoring screen in RCC. Furthermore, rescuers arrive at the disaster area by rescue ships and operate search and rescue missions with unmanned systems cooperatively. For instance, once UAVs find the drowning objects, they can throw a life buoy to the drowning objects and send the information (e.g., locations and physical conditions) for rescuers to conduct rescue operations. ",
+        "bbox": [
+            500,
+            819,
+            930,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "QI et al.: MINIMIZING MAXIMUM LATENCY OF TASK OFFLOADING FOR MULTI-UAV-ASSISTED MARITIME SEARCH AND RESCUE ",
+        "bbox": [
+            58,
+            37,
+            762,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "13627 ",
+        "bbox": [
+            897,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/680b5e723d3363c7f791e420f38614b3831394b7de8e07d732d0bf5e426d19d1.jpg",
+        "image_caption": [
+            "Fig. 1. MSAR procedure. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Maritime satellite\"] -->|Signal| B[\"UAV\"]\n    A -->|Signal| C[\"USV\"]\n    A -->|Signal| D[\"Rescue vessel\"]\n    A -->|Signal| E[\"Land station\"]\n    B --> F[\"Wrecked ship\"]\n    C --> G[\"USV\"]\n    D --> H[\"coastal station\"]\n    E --> I[\"RCC\"]\n    F --> J[\"Information collection nodes\"]\n    G --> K[\"Monitoring screen\"]\n    H --> L[\"Terestrial communication\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#ccf,stroke:#333\n    style D fill:#ccf,stroke:#333\n    style E fill:#ccf,stroke:#333\n    style F fill:#cfc,stroke:#333\n    style G fill:#cfc,stroke:#333\n    style H fill:#cfc,stroke:#333\n    style I fill:#fcc,stroke:#333\n    style J fill:#ffc,stroke:#333\n    style K fill:#ffc,stroke:#333\n    style L fill:#ffc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            151,
+            84,
+            853,
+            402
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            455,
+            494,
+            606
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In summary, the MSAR system, which integrates various communication resources to provide emergency assistance and necessary information exchange, provides a crucial guarantee for the efficiency of a search and rescue mission. ",
+        "bbox": [
+            63,
+            607,
+            494,
+            667
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "IV. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            207,
+            685,
+            351,
+            698
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. Network Model ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            707,
+            200,
+            720
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "For illustrative purpose, we adopt a simplified model in this paper. As shown in Fig. 2, we present a multi-UAV assisted MSAR system, consisting of a R-UAV and N S-UAVs. The set of S-UAVs is $\\mathcal { N } = \\{ 1 , 2 , . . . , N \\}$ . Each UAV is equipped =with an ES, and each S-UAV is equipped with a single antenna. R-UAV is equipped with two independent directional antennas for communication with BS and S-UAVs, respectively [5]. Due to the high transmission power and reliable communication mechanism employed by R-UAV, we focus on video transmissions between S-UAVs and R-UAV. We assume that all S-UAVs transmit videos to R-UAV with Time Division Multiple Access (TDMA) scheme. We discretize the total search and rescue time T into K  1 equal time slots, i.e., $k \\in \\mathcal { K } = \\{ 0 , 1 , 2 , . . . , K \\}$ , + =and each time slot is chosen to be small enough such that UAVs and targets can be considered to be stationary within each time slot. We denote the 3-D coordinates of R-UAV by $\\pmb q _ { M } ( k ) = ( x _ { M } ( k ) , y _ { M } ( k ) , H _ { M } ( k ) )$ . ",
+        "bbox": [
+            63,
+            729,
+            494,
+            940
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/c83a5d61f9e37bc23574ed060cb1868c3562810ec1b6848a18ea275ca2700140.jpg",
+        "image_caption": [
+            "Fig. 2. Multi-UAV assisted MSAR system. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Relay UAV\"] --> B[\"Surveillance UAV\"]\n    B --> C[\"HFOV\"]\n    C --> D[\"VFOV\"]\n    D --> E[\"Disaster Area\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#f9f,stroke:#333\n    style C fill:#ccf,stroke:#333\n    style D fill:#ccf,stroke:#333\n    style E fill:#dfd,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            521,
+            458,
+            927,
+            684
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            729,
+            937,
+            773
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "( ) = ( ( ) ( ) ( ))Assuming that each S-UAV arrives at the disaster area according to a pre-set flight route and conducts search at a pre-set hovering point, which means that S-UAV’s initial position is known, denote as ${ \\pmb q } _ { n } ( 0 ) = ( x _ { n } ( 0 ) , y _ { n } ( 0 ) , H _ { n } ( 0 ) )$ . The setting ( ) = ( ( ) ( ) ( ))of the initial position needs to ensure that the entire disaster area is covered and overlapping areas are allowed. ",
+        "bbox": [
+            506,
+            773,
+            937,
+            864
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The surveillance video is captured by a camera installed on S-UAV. For analysis simplicity, the Field-of-View (FOV) of a camera is assumed to be a rectangle, where the length $H _ { \\mathrm { F O V } }$ of the rectangle is the Horizontal FOV (HFOV) and the width VFOV is the Vertical FOV (VFOV). The horizontal and vertical angles of a camera are denoted as $\\phi _ { h }$ and $\\phi _ { v } .$ , respectively. Therefore, the HFOV and VFOV at time slot k can be expressed as [40]: ",
+        "bbox": [
+            506,
+            864,
+            937,
+            940
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "13628 ",
+        "bbox": [
+            69,
+            39,
+            99,
+            49
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            459,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            488,
+            109
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nH _ {\\mathrm{FOV}} (k) = 2 H _ {n} (k) \\tan \\left(\\frac {\\phi_ {h}}{2}\\right), \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            117,
+            486,
+            151
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV _ {\\mathrm{FOV}} (k) = 2 H _ {n} (k) \\tan \\left(\\frac {\\phi_ {v}}{2}\\right), \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            164,
+            156,
+            486,
+            190
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "then, the area covered by S-UAV n is ",
+        "bbox": [
+            58,
+            196,
+            316,
+            212
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} L _ {n} (k) \\times W _ {n} (k) \\\\ = \\left[ x _ {n} (k) - H _ {n} (k) \\tan \\left(\\frac {\\phi_ {h}}{2}\\right), x _ {n} (k) + H _ {n} (k) \\tan \\left(\\frac {\\phi_ {h}}{2}\\right) \\right] \\\\ \\times \\left[ y _ {n} (k) - H _ {n} (k) \\tan \\left(\\frac {\\phi_ {v}}{2}\\right), y _ {n} (k) + H _ {n} (k) \\tan \\left(\\frac {\\phi_ {v}}{2}\\right) \\right]. \\tag {3} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            60,
+            220,
+            484,
+            332
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Assuming that search targets are randomly distributed in the disaster area, the set of targets is represented as $\\mathcal { T } =$ $\\{ 1 , 2 , . . . , i , . . . , I \\}$ , where $N \\leq I .$ =. The location of target i at time slot k is $\\mathbf { q } _ { i } ( k ) = ( x _ { i } ( k ) , y _ { i } ( k ) , 0 )$ . As we allow multiple ( ) = ( ( ) ( ) )S-UAVs monitoring ranges to overlap, the selection of S-UAVs for monitoring targets within the coverage of multiple S-UAVs will affect the positions of the S-UAVs. To this end, we introduce a binary variable $\\alpha _ { i , n } ( k ) \\in \\{ 0 , 1 \\}$ to indicate whether a target ( )i is monitored by S-UAV n during time slot k. If target i is monitored by S-UAV n, $\\alpha _ { i , n } ( k ) = 1 ;$ ; Otherwise, $\\alpha _ { i , n } ( k ) = 0$ , i.e., ",
+        "bbox": [
+            58,
+            340,
+            488,
+            505
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {i, n} (k) = \\left\\{ \\begin{array}{l l} 1 & \\text { if   target } i \\text { is   monitored   by   S - UAV } n, \\\\ 0 & \\text { otherwise. } \\end{array} \\right. \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            75,
+            513,
+            486,
+            556
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "If target i is not within the coverage of S-UAV $n ,$ i.e., $( x _ { i } ( 0 ) , y _ { i } ( 0 ) ) \\not \\in L _ { n } ( 0 ) \\times W _ { n } ( 0 )$ , then $\\alpha _ { i , n } ( 0 ) = 0$ . Moreover, $\\alpha _ { i , n } ( k )$ ( )) ( ) ( ) ( )should meet the constraint as follows: ",
+        "bbox": [
+            58,
+            559,
+            486,
+            604
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {N}} \\alpha_ {i, n} (k) \\geq 1, \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            613,
+            486,
+            646
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "which means that every target should be monitored by at least one S-UAV. ",
+        "bbox": [
+            57,
+            652,
+            486,
+            681
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "When search and rescue targets are identified in the monitoring area, and the association between S-UAV and a target is determined according to the initial position of S-UAV and targets. Then, S-UAVs need to adjust their position according to the location of the associated search and rescue targets in order to obtain a clearer video effect. Therefore, the location of S-UAV n at time slot k is denoted as $\\mathbf { q } _ { n } ( k ) = ( x _ { n } ( k ) , y _ { n } ( k ) , H _ { n } ( k ) )$ . ",
+        "bbox": [
+            57,
+            683,
+            486,
+            789
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "( ) = ( ( ) ( ) ( ))To ensure the distribution is relatively uniform within the monitoring area, we select the midpoint of the two points furthest apart in horizontal coordinates as the abscissa of the S-UAV. Similarly, the midpoint of the two points furthest apart in vertical coordinates as the ordinate of the S-UAV. Furthermore, to ensure that targets are always within the monitoring area of the S-UAV, the altitude of the S-UAV is adjusted depending on the locations of the two points furthest apart. Let $\\begin{array} { r } { \\mathcal { I } ( n ) = \\{ i | \\alpha _ { i , n } ( k ) = } \\end{array}$ $1 , \\forall i \\in \\mathcal { T } \\}$ ( ) = ( ) =denote the set of targets that are monitored by S-UAV n. If $| { \\mathcal { T } } ( n ) | \\geq 2$ , the horizontal coordinate of S-UAV n can be expressed as ",
+        "bbox": [
+            57,
+            789,
+            488,
+            940
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/8ef7bc5988695f8dea7eca3d621e92e91c2037d56ed321361c6ec4dad6864e73.jpg",
+        "image_caption": [
+            "Fig. 3. Illustration of the position of S-UAV adjustment process. "
+        ],
+        "image_footnote": [],
+        "content": "HFOV\nφh\nφv\nHb(0)\n(xn(0),yn(0))\nVFOV",
+        "sub_type": "text_image",
+        "bbox": [
+            560,
+            82,
+            870,
+            266
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            311,
+            590,
+            325
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {n} (k) = \\frac {\\max _ {i \\in \\mathcal {I} (n)} \\left\\{x _ {i} (k) \\right\\} + \\min _ {i \\in \\mathcal {I} (n)} \\left\\{x _ {i} (k) \\right\\}}{2}, \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            572,
+            330,
+            929,
+            371
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {n} (k) = \\frac {\\max _ {i \\in \\mathcal {I} (n)} \\left\\{y _ {i} (k) \\right\\} + \\min _ {i \\in \\mathcal {I} (n)} \\left\\{y _ {i} (k) \\right\\}}{2}, \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            577,
+            375,
+            930,
+            415
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "and the altitude of S-UAV n is ",
+        "bbox": [
+            501,
+            419,
+            712,
+            433
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nH _ {n} (k) = \\max \\left\\{\\frac {\\max _ {i \\in \\mathcal {I} (n)} \\{x _ {i} (k) \\} - \\min _ {i \\in \\mathcal {I} (n)} \\{x _ {i} (k) \\}}{2 \\tan \\left(\\frac {\\phi_ {h}}{2}\\right)}, \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            543,
+            436,
+            883,
+            489
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. \\frac {\\max _ {i \\in \\mathcal {I} (n)} \\left\\{y _ {i} (k) \\right\\} - \\min _ {i \\in \\mathcal {I} (n)} \\left\\{y _ {i} (k) \\right\\}}{2 \\tan (\\frac {\\phi_ {v}}{2})} \\right\\} + \\gamma , \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            493,
+            929,
+            544
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\gamma$ is a constant to avoid targets falling on the boundary of the monitoring area. When $| { \\mathcal { T } } ( n ) | = 1$ , the 3D-coordinate of S-UAV n are $x _ { n } ( k ) = x _ { i \\in \\mathbb { Z } ( n ) } ( k ) , y _ { n } ( k ) = y _ { i \\in \\mathbb { Z } ( n ) } ( k ) , H _ { n } ( k ) =$ γ. When $| { \\mathcal { T } } ( n ) | = 0$ ( ) ( ) = ( ), the 3D-coordinate of S-UAV n is $\\mathbf { q } _ { n } ( k ) =$ $( x _ { n } ( 0 ) , y _ { n } ( 0 ) , H _ { n } ( 0 ) )$ ( ) =, i.e., the location of S-UAV n is not ( ( ) ( ) ( ))changed. Fig. 3 illustrates the position of S-UAV adjustment process. The white rectangular area is the adjusted monitoring area of an S-UAV. ",
+        "bbox": [
+            500,
+            549,
+            930,
+            669
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            686,
+            686,
+            699
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The communication link from an S-UAV to R-UAV is considered to be Line-of-Sight (LoS), and the channel attenuation mainly depends on the distance between S-UAV and R-UAV. Therefore, the channel gain between S-UAV n and R-UAV M can be obtained by the following formula (free-space model): ",
+        "bbox": [
+            500,
+            705,
+            930,
+            782
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {n} (k) = \\rho_ {0} d _ {n} ^ {- 2} (k) = \\frac {\\rho_ {0}}{\\left\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\right\\| ^ {2}}, \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            567,
+            787,
+            929,
+            820
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $d _ { n } ( k )$ denotes the distance between S-UAV n and R-UAV ( )at time slot k, and ρ0 is the channel gain at the reference distance of $d _ { 0 } = 1 \\mathrm { m }$ . Let $\\begin{array} { r } { \\dot { \\Gamma _ { 1 } } = \\frac { \\rho _ { 0 } p _ { n } ( k ) } { \\sigma ^ { 2 } } } \\end{array}$ σ2 , then the transmission rate from = Γ =S-UAV n to R-UAV can be computed by the Shannon capacity for illustrative purpose: ",
+        "bbox": [
+            500,
+            825,
+            930,
+            902
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {n} (k) = B \\log_ {2} \\left(1 + \\frac {p _ {n} (k) g _ {n} (k)}{\\sigma^ {2}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            907,
+            796,
+            943
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "QI et al.: MINIMIZING MAXIMUM LATENCY OF TASK OFFLOADING FOR MULTI-UAV-ASSISTED MARITIME SEARCH AND RESCUE ",
+        "bbox": [
+            58,
+            37,
+            762,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "13629 ",
+        "bbox": [
+            897,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n= B \\log_ {2} \\left(1 + \\frac {\\Gamma_ {1}}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\| ^ {2}}\\right), \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            154,
+            80,
+            494,
+            121
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where B is the bandwidth, $p _ { n } ( k )$ is the transmission power of S-UAV n at time slot k, and $\\sigma ^ { 2 }$ ( )is the noise power at the receiver. ",
+        "bbox": [
+            65,
+            131,
+            496,
+            161
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "C. Computing Model ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            181,
+            220,
+            196
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Define $\\beta _ { n } ( k ) \\in \\{ 0 , 1 \\}$ as the offloading indicator variable of ( )S-UAV n at time slot k, where $\\beta _ { n } ( k ) = 1 \\mathrm { i f } \\mathrm { S \\mathrm { - } U A V } n$ offloads a video processing task to R-UAV for computing at time slot k and $\\beta _ { n } ( k ) = 0$ if S-UAV n executes the video task locally at ( ) =time slot k, i.e., ",
+        "bbox": [
+            65,
+            200,
+            496,
+            277
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\beta_ {n} (k) = \\left\\{ \\begin{array}{l l} 1 & \\text { if   S - UAV } \\quad n \\quad \\text { offloads   task   to   R - UAV }, \\\\ 0 & \\text { otherwise }. \\end{array} \\right. \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            77,
+            287,
+            494,
+            321
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "a) Computing on S-UAV: Let $f _ { n } ( k )$ and $S _ { n } ( k )$ denote the ( ) ( )computation capability and the size of a video chunk (task) of S-UAV n at time slot k, respectively. If there is no target in the coverage of S-UAV n at time slot k, the video of S-UAV n does not need to deliver, i.e., $\\begin{array} { r } { \\operatorname* { i f } \\sum _ { i \\in \\mathcal { T } } \\alpha _ { i , n } ( K ) = 0 , S _ { n } ( k ) = 0 ; } \\end{array}$ Otherwise, if $\\textstyle \\sum _ { i \\in { \\mathcal { T } } } \\alpha _ { i , n } ( K ) \\geq 1 , { \\bar { S } } _ { n } ( k ) > 0$ = ( ) =. The size of the processed video chunk is ${ \\hat { S } } _ { n } ( k ) = \\mu _ { n } S _ { n } ( k )$ , and $\\mu _ { n } \\in ( 0 , 1 )$ is ( ) = ( ) ( )the ratio of the processed size and original size of a video chunk. Therefore, the local computing time is ",
+        "bbox": [
+            65,
+            330,
+            496,
+            469
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {n} ^ {\\text { loc }} = \\frac {S _ {n} (k) f _ {0}}{f _ {n} (k)}, \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            220,
+            479,
+            494,
+            513
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { 0 }$ is the computation resource cost to process per bit data. Then, the transmission latency of S-UAV n to R-UAV after computing is ",
+        "bbox": [
+            65,
+            521,
+            496,
+            568
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {n, M} ^ {\\mathrm{loc}} = \\frac {\\mu_ {n} S _ {n} (k)}{B \\log_ {2} \\left(1 + \\frac {\\Gamma_ {1}}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\| ^ {2}}\\right)}. \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            144,
+            577,
+            494,
+            621
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "b) Computing on R-UAV: At time slot $k ,$ the offloading time from S-UAV n to R-UAV is ",
+        "bbox": [
+            65,
+            628,
+            494,
+            657
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {n, M} ^ {\\text { off }} = \\frac {S _ {n} (k)}{B \\log_ {2} \\left(1 + \\frac {\\Gamma_ {1}}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\| ^ {2}}\\right)}, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            144,
+            667,
+            494,
+            710
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "and the computing time on R-UAV for S-UAV n’s video is ",
+        "bbox": [
+            65,
+            719,
+            464,
+            734
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {M} ^ {\\text { off }} = \\frac {S _ {n} (k) f _ {0}}{f _ {M} (k) / \\sum_ {n \\in \\mathcal {N}} \\beta_ {n} (k)}, \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            176,
+            744,
+            494,
+            779
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { M } ( k )$ is the CPU cycle frequency of R-UAV at time slot $k ,$ , then $\\frac { f _ { M } ( k ) } { \\sum _ { n \\in N } \\beta _ { n } ( k ) }$ implies that R-UAV allocates computing resources to S-UAVs fairly.In this paper, since we assume that each S-UAV needs to process the same amount of video data at the same time, we do not take into account the time required for transmission from R-UAV to BS. Therefore, the total latency of the S-UAV n can be expressed as ",
+        "bbox": [
+            65,
+            787,
+            496,
+            898
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {n} ^ {\\text { total }} = \\left(1 - \\beta_ {n} (k)\\right) \\left(t _ {n} ^ {\\text { loc }} + t _ {n, M} ^ {\\text { loc }}\\right) + \\beta_ {n} (k) \\left(t _ {n, M} ^ {\\text { off }} + t _ {M} ^ {\\text { off }}\\right). \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            79,
+            907,
+            494,
+            939
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "table",
+        "img_path": "images/22abb6e529bec9b50e279deb09fc3ed999a858e59d3f83fe702c1777a0edf5a8.jpg",
+        "table_caption": [
+            "TABLE I KEY NOTATIONS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Notations</td><td>Descriptions</td></tr><tr><td> $\\mathcal{N}$ </td><td>The set of S-UAVs</td></tr><tr><td> $\\mathcal{I}$ </td><td>The set of rescue targets</td></tr><tr><td> $\\alpha_{i,n}(k)$ </td><td>The indicator of a target monitored by S-UAV</td></tr><tr><td> $B$ </td><td>Signal bandwidth</td></tr><tr><td> $p_n(k)$ </td><td>The transmit power of S-UAV  $n$  at time slot  $k$ </td></tr><tr><td> $\\beta_n(k)$ </td><td>The offloading decision of S-UAV  $n$  at time slot  $k$ </td></tr><tr><td> $S_n(k)$ </td><td>The data size of S-UAV  $n$  at time slot  $k$ </td></tr><tr><td> $f_0$ </td><td>The number of CPU cycles required for computing 1-bit of data</td></tr><tr><td> $f_n(k)$ </td><td>The CPU frequency of S-UAV  $n$  at time slot  $k$ </td></tr><tr><td> $f_M(k)$ </td><td>The CPU frequency of R-UAV at time slot  $k$ </td></tr><tr><td> $E_n^{\\text{hover}}(k)$ </td><td>The basic operational energy consumption of S-UAV  $n$  at time slot  $k$ </td></tr><tr><td> $E_M^{\\text{hover}}(k)$ </td><td>The basic operational energy consumption of R-UAV at time slot  $k$ </td></tr></table>",
+        "bbox": [
+            531,
+            114,
+            915,
+            359
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "D. UAV Energy Consumption Model ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            383,
+            765,
+            400
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In addition, due to the limited energy of UAVs, we consider the energy consumption constraints for both S-UAVs and R-UAV. In this section, we consider the basic operational energy consumption of UAVs (i.e., flying and hovering), as well as communication and computation energy consumption. ",
+        "bbox": [
+            506,
+            405,
+            937,
+            479
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "a) S-UAV energy consumption: The communication energy consumption of S-UAV n completes one transmission at time slot k is ",
+        "bbox": [
+            506,
+            481,
+            937,
+            525
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {n} ^ {\\mathrm{com}} (k) = p _ {n} (k) [ (1 - \\beta_ {n} (k)) t _ {n, M} ^ {\\mathrm{loc}} + \\beta_ {n} (k) t _ {n, M} ^ {\\mathrm{off}} ]. \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            533,
+            534,
+            936,
+            554
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The computation energy consumption of S-UAV n is calculated as ",
+        "bbox": [
+            506,
+            561,
+            937,
+            589
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {n} ^ {\\mathrm{comp}} (k) = \\left(1 - \\beta_ {n} (k)\\right) f _ {n} ^ {2} (k) \\zeta S _ {n} (k) f _ {0}, \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            580,
+            599,
+            936,
+            618
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where ζ denotes the effective switched capacitance of CPU, and its value is relevant to the clip architecture [41]. ",
+        "bbox": [
+            506,
+            627,
+            937,
+            656
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Therefore, the total energy consumption of S-UAV n is ",
+        "bbox": [
+            523,
+            657,
+            900,
+            672
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {n} (k) = E _ {n} ^ {\\mathrm{com}} (k) + E _ {n} ^ {\\mathrm{comp}} (k) + E _ {n} ^ {\\mathrm{hover}} (k), \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            572,
+            680,
+            936,
+            699
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $E _ { n } ^ { \\mathrm { h o v e r } } ( k )$ is the basic operational energy consumption of $\\mathbf { S } \\mathbf { - } \\mathbf { U } \\mathbf { A } \\mathbf { V } \\mathbf { \\Lambda } n ,$ . ",
+        "bbox": [
+            506,
+            707,
+            937,
+            734
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "b) R-UAV energy consumption: The computation energy consumption of R-UAV at time slot k is given by ",
+        "bbox": [
+            508,
+            737,
+            937,
+            767
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {M, n} ^ {\\mathrm{comp}} (k) = \\sum_ {n \\in \\mathcal {N}} \\beta_ {n} (k) f _ {M} ^ {2} (k) \\zeta f _ {0} S _ {n} (k). \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            584,
+            776,
+            936,
+            808
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Therefore, the total energy consumption of R-UAV at time slot k is ",
+        "bbox": [
+            506,
+            816,
+            937,
+            844
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {M} (k) = \\sum_ {n \\in \\mathcal {N}} \\beta_ {n} (k) E _ {M, n} ^ {\\mathrm{comp}} (k) + E _ {M} ^ {\\mathrm{hover}} (k), \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            572,
+            852,
+            936,
+            885
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where R-UA $E _ { M } ^ { \\mathrm { h o v e r } } ( k )$ is the basic operational energy consumption ofy notations of this paper and their descriptions are listed in Table I. ",
+        "bbox": [
+            506,
+            893,
+            937,
+            939
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "13630 ",
+        "bbox": [
+            67,
+            39,
+            101,
+            49
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            459,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "V. PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            175,
+            79,
+            370,
+            92
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In MSAR, ensuring the real-time surveillance of all distressed individuals by UAVs is of utmost importance. Additionally, to design efficient rescue strategies, the command personnel needs to have knowledge of the status of all drowning people. Therefore, the objective is to minimize the maximum total execution latency among all S-UAVs while satisfying the constraints of computing resources, energy consumption, and coverage requirements. We formulate a problem optimizing the computation offloading decision $\\beta = \\{ \\beta _ { n } ( k ) , \\forall n \\in \\mathcal { N } , k \\in \\mathcal { K } \\}$ , the location of ${ \\mathfrak { L } } { \\mathrm { - U A V } } { \\mathbf { q } } _ { M } = ( x _ { M } ( k ) , y _ { M } ( k ) , H _ { M } ( k ) )$ , and the asso-= ( ( )ciation between S-UAV and target $\\pmb { \\alpha } = \\{ \\alpha _ { i , n } ( k ) , \\forall n \\in \\mathcal { N } , i \\in$ ${ \\mathcal { T } } , k \\in { \\mathcal { K } } \\}$ = ( ). The optimization problem P1 can be formulated as ",
+        "bbox": [
+            57,
+            99,
+            486,
+            282
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {P 1}: \\min _ {\\alpha , \\beta , \\mathbf {q} _ {M}} \\quad \\max _ {n \\in \\mathcal {N}} T _ {n} ^ {\\text { total }} \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            62,
+            292,
+            486,
+            319
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad \\beta_ {n} (k) \\in \\{0, 1 \\} \\quad \\forall n, k \\tag {22a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            127,
+            327,
+            486,
+            343
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {N}} \\beta_ {n} (k) \\leq N _ {0} \\quad \\forall k \\tag {22b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            349,
+            486,
+            382
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\psi_ {M} ^ {\\mathrm{l}} \\leq \\mathbf {q} _ {M} (k) \\leq \\psi_ {M} ^ {\\mathrm{u}} \\tag {22c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            388,
+            486,
+            406
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {i, n} (k) \\in \\{0, 1 \\} \\quad \\forall i, n, k \\tag {22d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            412,
+            486,
+            429
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {N}} \\alpha_ {i, n} (k) \\geq 1 \\quad \\forall i, k \\tag {22e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            436,
+            486,
+            467
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {i, n} (k) = 0 \\quad \\forall (x _ {i} (0), y _ {i} (0) \\notin L _ {n} (0) \\times W _ {n} (0) \\tag {22f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            474,
+            484,
+            505
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {n} (k) \\leq E _ {n} ^ {\\mathrm{re}} (k) \\quad \\forall n, k \\tag {22g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            513,
+            484,
+            530
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {M} (k) \\leq E _ {M} ^ {\\mathrm{re}} (k) \\quad \\forall k, \\tag {22h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            537,
+            486,
+            553
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where constraint (22a) and (22b) show that offloading decision variable is a binary variable and R-UAV can execute the computation tasks of at most $N _ { 0 } \\leq N \\mathrm { S – U A V s }$ simultaneously. R-UAV is restricted in the considered area, as indicated by (22c). Constraint (22d) and (22e) show that the association variable is a binary variable and every target should be monitored by at least one S-UAV. Constraint (22f) indicates that when the target is not within the FOV of the S-UAV, $\\alpha _ { i , n } ( k ) = 0$ . Constraint (22g) ( ) =and (22h) are the energy limitation, where $E _ { n } ^ { \\mathrm { r e } } ( k )$ and $E _ { M } ^ { \\mathrm { r e } } ( k )$ ( ) (are the residual energy of S-UAV n and R-UAV, respectively. ",
+        "bbox": [
+            57,
+            565,
+            486,
+            715
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In P1, the offloading decision variable $\\beta$ and the association variable α are binary, while the position of R-UAV $\\mathbf { q } _ { M } ( k )$ is ( )continuous. Furthermore, the positions of R-UAV and S-UAVs are coupled, where α affects the positions of S-UAVs. When the position of S-UAV changes, the position of R-UAV and offloading decision are affected. These features make a Mixed-Integer Nonlinear Programming (MINLP) problem, which is typically hard to find the optimal solution. Thus, heuristic algorithm is needed to find suboptimal solution. ",
+        "bbox": [
+            57,
+            715,
+            486,
+            852
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "VI. ALGORITHMIC DESIGN ",
+        "text_level": 1,
+        "bbox": [
+            178,
+            875,
+            367,
+            887
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this section, we attempt to find approximate solutions to P1. We reformulate the problem into a more tractable form by adding slack variables and decompose the reformulated problem into three sub-problems, namely, the offloading decision optimization, the position optimization of R-UAV, and the association optimization of S-UAVs and targets. We further develop an iterative algorithm to obtain the solution. Specifically, in the r-th iteration, we use the position of R-UAV and the association obtained in the last iteration to solve the offloading decision optimization problem, then use the known offloading decision and the association to solve the position optimization problem of R-UAV, and finally get the optimized association in a similar manner. ",
+        "bbox": [
+            58,
+            895,
+            486,
+            940
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            79,
+            930,
+            229
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A. Problem Reformulation ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            246,
+            690,
+            261
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "By introducing a slack variable $s = \\mathrm { m a x } _ { n \\in \\mathcal { N } } T _ { n } ^ { \\mathrm { t o t a l } }$ T , P1 can be re-written as P2 [42], i.e., ",
+        "bbox": [
+            500,
+            267,
+            930,
+            297
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {P 2}: \\min _ {\\beta , \\alpha , \\mathbf {q} _ {M}, s} s \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            592,
+            306,
+            929,
+            330
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s   .   t   . } (2 2 \\mathrm{a}) - (2 2 \\mathrm{h})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            668,
+            338,
+            796,
+            353
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns \\geq T _ {n} ^ {\\text { total }}, \\forall n \\in \\mathcal {N}. \\tag {23a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            700,
+            361,
+            927,
+            378
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Obviously, the problem is still a multi-variable non-convex problem. In the following, we propose an iterative algorithm to solve the problem P2. Specifically, problem P2 is divided into three sub-problems. In the first sub-problem, the offloading decision is optimized with given R-UAV’s position $\\mathbf { q } _ { M }$ and the association α. In the second sub-problem, the R-UAV’s position is optimized with given offloading decision $\\beta$ and the association α. For any feasible $( \\mathbf { q } _ { M } , \\beta )$ , the third sub-problem ( )is the association optimization problem. These sub-problems are solved in the following subsections. Afterward, we provide the overall iterative algorithm, and examine its convergence and complexity. ",
+        "bbox": [
+            500,
+            385,
+            930,
+            566
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. Offloading Optimization ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            583,
+            693,
+            598
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In the first sub-problem SP1, the offloading decision is optimized by giving the R-UAV’s position $\\mathbf { q } _ { M }$ and the association $\\alpha .$ Then the offloading decision optimization sub-problem SP1 can be expressed as follows: ",
+        "bbox": [
+            500,
+            603,
+            930,
+            664
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { SP1 }: \\min _ {\\beta , s} \\quad s\n$$",
+        "text_format": "latex",
+        "bbox": [
+            560,
+            672,
+            664,
+            695
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad (2 2 \\mathrm{a}), (2 2 \\mathrm{b}), (2 2 \\mathrm{g}), (2 2 \\mathrm{h}), (2 3 \\mathrm{a}). \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            619,
+            703,
+            929,
+            719
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In SP1, due to the non-linearity of constraint (23a) with respect to variable $\\beta ,$ we define a variable $\\xi _ { n } =$ $\\begin{array} { r } { \\beta _ { n } ( k ) \\sum _ { n \\in \\mathcal { N } } \\beta _ { n } ( k ) } \\end{array}$ =, then according to the constraints (22a) and ( )(22b), $\\xi _ { n }$ ( )should meet following constraints: ",
+        "bbox": [
+            500,
+            726,
+            930,
+            787
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\xi_ {n} \\leq N _ {0} \\beta_ {n} (k), \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            696,
+            795,
+            927,
+            811
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\xi_ {n} \\leq \\sum_ {n \\in \\mathcal {N}} \\beta_ {n} (k), \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            686,
+            819,
+            927,
+            849
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\xi_ {n} \\geq \\sum_ {n \\in \\mathcal {N}} \\beta_ {n} (k) - N _ {0} (1 - \\beta_ {n} (k)), \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            592,
+            857,
+            929,
+            888
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "thus, SP1 is equivalent to SP1-1, i.e., ",
+        "bbox": [
+            500,
+            895,
+            755,
+            910
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {S P 1} - \\mathbf {1}: \\min _ {\\beta , s, \\xi} \\quad s \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            531,
+            917,
+            929,
+            941
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "QI et al.: MINIMIZING MAXIMUM LATENCY OF TASK OFFLOADING FOR MULTI-UAV-ASSISTED MARITIME SEARCH AND RESCUE ",
+        "bbox": [
+            58,
+            37,
+            762,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "13631 ",
+        "bbox": [
+            897,
+            39,
+            927,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "s.t. (22a), (22b), (22g) ",
+        "bbox": [
+            186,
+            80,
+            348,
+            97
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(2 5), (2 6), (2 7)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            218,
+            104,
+            323,
+            119
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns \\geq \\hat {T} _ {n} ^ {\\text { total }}, \\forall n \\in \\mathcal {N}, \\tag {28a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            218,
+            126,
+            494,
+            145
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {N}} \\xi_ {n} f _ {M} ^ {2} (k) \\zeta f _ {0} S _ {n} (k) + E _ {M} ^ {\\text { total }} (k)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            222,
+            152,
+            462,
+            184
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\leq E _ {M} ^ {\\mathrm{re}} (k), \\tag {28b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            225,
+            191,
+            494,
+            208
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where, ",
+        "bbox": [
+            65,
+            217,
+            116,
+            229
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\hat {T} _ {n} ^ {\\text { total }} = \\left(1 - \\beta_ {n} (k)\\right) \\left(t _ {n} ^ {\\text { loc }} + t _ {n, M} ^ {\\text { loc }}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            149,
+            238,
+            387,
+            258
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\beta_ {n} (k) t _ {n, M} ^ {\\text { off }} + \\xi_ {n} \\frac {S _ {n} (k) f _ {0}}{f _ {M} (k)}. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            213,
+            263,
+            494,
+            297
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Obviously, (16) and (29) are equivalent. However, SP1-1 is non-convex due to the binary variable $\\beta _ { n } ( k )$ . To make the problem more tractable, we relax the variable $\\beta _ { n } ( k )$ to be a continuous variable, $\\mathrm { i . e . , } 0 \\leq \\beta _ { n } ( k ) \\leq 1$ . Therefore, SP1-1 is transformed into SP1-2, ",
+        "bbox": [
+            65,
+            303,
+            496,
+            378
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {S P 1} - \\mathbf {2}: \\min _ {\\beta , s, \\xi} \\quad s \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            121,
+            387,
+            494,
+            411
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad 0 \\leq \\beta_ {n} (k) \\leq 1 \\quad \\forall n \\tag {30a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            417,
+            494,
+            435
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(2 2 \\mathrm{b}), (2 2 \\mathrm{g})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            244,
+            441,
+            329,
+            455
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(2 5), (2 6), (2 7), (2 8 a), (2 8 b).\n$$",
+        "text_format": "latex",
+        "bbox": [
+            244,
+            463,
+            437,
+            479
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "This relaxation process means that the optimal value of problem SP1-2 is a lower bound on the optimal value of problem SP1-1. It can be shown that SP1-2 is a convex optimization problem, and then standard convex optimization tools such as CVX can be utilized to solve it efficiently. ",
+        "bbox": [
+            65,
+            488,
+            496,
+            565
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "C. R-UAV’s Position Optimization ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            580,
+            304,
+            595
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In the second sub-problem, the position of R-UAV is optimized with given offloading decision $\\beta$ and the association α. Then, the sub-problem SP2 can be expressed as follows: ",
+        "bbox": [
+            65,
+            602,
+            494,
+            648
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {S P 2}: \\min _ {\\mathbf {q} _ {M}, s} s\n$$",
+        "text_format": "latex",
+        "bbox": [
+            168,
+            657,
+            279,
+            679
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad (2 2 c), (2 2 g), (2 3), \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            232,
+            686,
+            494,
+            703
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "since constraints $( 2 2 \\mathrm { g } )$ and (23) are non-convex with respect to $\\mathbf { q } _ { M } ( k )$ , SP2 is a non-convex problem. In the following, we ( )introduce the slack variable $\\lambda _ { M }$ and transform SP2 into problem SP2-1, ",
+        "bbox": [
+            65,
+            710,
+            494,
+            771
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {S P 2} - \\mathbf {1}: \\min _ {\\mathbf {q} _ {M}, s, \\lambda_ {M}} s \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            781,
+            494,
+            805
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "s.t. (22c)",
+        "bbox": [
+            188,
+            811,
+            260,
+            825
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {p _ {n} (k) S _ {n} (k) [ (1 - \\beta_ {n} (k)) \\mu + \\beta_ {n} (k) ]}{\\lambda_ {M}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            220,
+            833,
+            473,
+            867
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\leq E _ {n} ^ {\\mathrm{re}} (k) - E _ {n} ^ {\\text { hover }} (k) - E _ {n} ^ {\\text { comp }} (k), \\forall n \\tag {32a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            227,
+            871,
+            493,
+            902
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {(\\mu + \\beta_ {n} (k) (1 - \\mu)) S _ {n} (k)}{\\lambda_ {M}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            222,
+            910,
+            407,
+            943
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\left[ (1 - \\beta_ {n} (k)) t _ {n} ^ {\\mathrm{loc}} + \\beta_ {n} (k) t _ {M} ^ {\\mathrm{off}} \\right]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            668,
+            79,
+            883,
+            98
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\leq s, \\forall n \\tag {32b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            670,
+            104,
+            937,
+            119
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nB \\log_ {2} \\left(1 + \\frac {\\Gamma_ {1}}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\| ^ {2}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            664,
+            126,
+            905,
+            167
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\geq \\lambda_ {M}, \\forall n. \\tag {32c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            670,
+            175,
+            936,
+            190
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Theorem 1: Problem SP2-1 is equivalent to problem SP2. ",
+        "bbox": [
+            523,
+            210,
+            920,
+            224
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Proof: It can be shown that at the optimal solution to problem SP2-1, the equality of constraints in (32c) holds. Otherwise, the slack variable $\\lambda _ { M }$ can always be increased with other variables fixed, then the objective value of SP2 keeps unchanged and all other constraints are still satisfied. Therefore, there always exists an optimal solution to SP2-1 such that all constraints in (32c) are met with equality. Therefore, problem SP2-1 is equivalent to problem SP2, which concludes the proof. - ",
+        "bbox": [
+            506,
+            226,
+            937,
+            345
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Obvirously, the problem SP2-1 is still non-convex due to the non-convex constraints in (32c). To tackle this issue, the SCA technique can be applied, where the original function is approximated by a more tractable function at a given local point in each iteration [35], [42]. Note that although the (32c) is non-convex with respect to $\\mathbf { q } _ { M } ( k )$ , it is convex in $\\| \\mathbf { q } _ { n } ( k ) - \\mathbf { q } _ { M } ( k ) \\| ^ { 2 }$ . ( ) ( ) ( )Hence, we can consider norm squared as a single term. As a result, with given local point $\\mathbf { q } _ { M } ^ { r } ( k )$ , we obtain the following ( )lower bound for the left-hand side in (32c) by applying the first-order Taylor expansion on logarithm function, i.e., ",
+        "bbox": [
+            506,
+            345,
+            937,
+            497
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} R _ {n} (k) \\\\ = B \\log_ {2} \\left(1 + \\frac {\\Gamma_ {1}}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\| ^ {2}}\\right) \\\\ \\geq B \\log_ {2} \\left(1 + \\frac {\\Gamma_ {1}}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\| ^ {2}}\\right) \\\\ - \\frac {B \\Gamma_ {1} \\log_ {2} e (\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\| ^ {2} - \\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\| ^ {2})}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\| ^ {2} (\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\| ^ {2} + \\Gamma_ {1})} \\\\ = A _ {n} ^ {r} (k) - I _ {n} ^ {r} (k) \\left(\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} (k) \\| ^ {2} \\right. \\\\ \\left. - \\left\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\right\\| ^ {2}\\right), \\\\ = \\hat {R} _ {n} (k) \\tag {33} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            525,
+            516,
+            934,
+            758
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where, ",
+        "bbox": [
+            508,
+            777,
+            558,
+            791
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nA _ {n} ^ {r} (k) = B \\log_ {2} \\left(1 + \\frac {\\Gamma_ {1}}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\| ^ {2}}\\right),\n$$",
+        "text_format": "latex",
+        "bbox": [
+            599,
+            810,
+            917,
+            852
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI _ {n} ^ {r} (k) = \\frac {B \\Gamma_ {1} \\log_ {2} e}{\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\| ^ {2} (\\| \\mathbf {q} _ {n} (k) - \\mathbf {q} _ {M} ^ {r} (k) \\| ^ {2} + \\Gamma_ {1})}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            857,
+            917,
+            892
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "At the local point $\\mathbf { q } _ { M } ( k ) = \\mathbf { q } _ { M } ^ { r } ( k )$ , the equality of (33) holds. ( )With any given local point $\\mathbf { q } _ { M } ^ { r }$ ( )and the lower bound expression in (33), problem SP2-1 is approximated as follows: ",
+        "bbox": [
+            508,
+            909,
+            937,
+            941
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "13632 ",
+        "bbox": [
+            67,
+            39,
+            101,
+            49
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            459,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1: SCA for SP2. "
+        ],
+        "code_body": "1: Initialization: $\\mathbf{q}_M^r (k)$ , and let $r = 0$ ;  \n2: repeat  \n3: Solve the convex problem SP2-2 for given local point $\\mathbf{q}_M^r (k)$ , and denote the optimal solution as $\\mathbf{q}_M^* (k)$ ;  \n4: Update the local point $\\mathbf{q}_M^{r + 1}(k) = \\mathbf{q}_M^* (k)$ ;  \n5: Update $r = r + 1$ ;  \n6: Until The minimum maximum latency $s$ converges within a prescribed accuracy. ",
+        "bbox": [
+            77,
+            99,
+            473,
+            222
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 2: Overall Iterative Algorithm for P2. "
+        ],
+        "code_body": "1: Initialization: $\\mathbf{q}_M^r (k)$ , $\\alpha^r$ , and let $r = 0$ , the maximum number of iterations $r_{\\mathrm{max}}$ ;\n2: repeat\n3: With given $\\mathbf{q}_M^r (k)$ and $\\alpha^r$ , obtain the optimal solution $\\beta^{r + 1}$ by solving convex problem SP1-2;\n4: With given $\\beta^{r + 1}$ and $\\alpha^r$ , obtain the optimal solution $\\mathbf{q}_M^{r + 1}(k)$ by using Algorithm 1;\n5: For given $\\beta^{r + 1}$ and $\\mathbf{q}_M^{r + 1}(k)$ , obtain the optimal solution $\\alpha^{r + 1}$ by using the BnB algorithm;\n6: Update $r = r + 1$ ;\n7: Until The minimum maximum latency $s$ of P2 converges or the iteration time $r = r_{\\mathrm{max}}$ . ",
+        "bbox": [
+            77,
+            262,
+            476,
+            444
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            58,
+            473,
+            407,
+            489
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {S P 2} - \\mathbf {2}: \\min _ {\\mathbf {q} _ {M}, s, \\lambda_ {M}} s \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            97,
+            497,
+            486,
+            518
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "s.t. (22c), (32a), (32b) ",
+        "bbox": [
+            213,
+            527,
+            373,
+            542
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\hat {R} _ {n} (k) \\geq \\lambda_ {M}, \\forall n \\in \\mathcal {N}. \\tag {34a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            247,
+            551,
+            486,
+            569
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Therefore, SP2-2 is a standard convex optimization problem, which can be directly solved using CVX. The details of SCA algorithm is summarized in Algorithm 1. ",
+        "bbox": [
+            58,
+            575,
+            486,
+            622
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "D. Association Optimization of S-UAVs and Targets ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            638,
+            414,
+            652
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In the third sub-problem, the association of S-UAVs and targets is optimized for any feasible $( \\mathbf { q } _ { M } , \\beta )$ , and thus, the ( )sub-problem SP3 can be expressed as follows: ",
+        "bbox": [
+            57,
+            659,
+            488,
+            705
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { SP3 }: \\min _ {s, \\alpha} s\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            712,
+            227,
+            734
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad (2 2 \\mathrm{d}), (2 2 \\mathrm{e}), (2 2 \\mathrm{f}), (2 2 \\mathrm{g}), (2 3). \\tag {35}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            181,
+            743,
+            486,
+            758
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Due to the 0-1 variable α, we use BnB algorithm to solve the sub-problem SP3 directly. ",
+        "bbox": [
+            58,
+            766,
+            486,
+            796
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "E. Overall Iterative Algorithm, Convergence, and Complexity ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            813,
+            481,
+            828
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Based on the results obtained in the previous three subsections, we design an iterative algorithm to solve P2 for sub-optimal solutions, by applying SCA and alternating optimization. The details are summarized in Algorithm 2. The offloading decision, R-UAV locations and the association variable are optimized alternately in each iteration, by solving SP1-2, SP2-2, and SP3, correspondingly. ",
+        "bbox": [
+            57,
+            834,
+            488,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Convergence Analysis: To prove the convergence of Algorithm 2, it is sufficient to prove that the objective value is non-increasing after the set of optimized variables is updated in each iteration. According to Algorithm 2, we have ",
+        "bbox": [
+            500,
+            80,
+            930,
+            140
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns ^ {r - 1} = s \\left(\\boldsymbol {\\beta} ^ {r - 1}, \\mathbf {q} _ {M} ^ {r - 1}, \\boldsymbol {\\alpha} ^ {r - 1}\\right) \\stackrel {{\\text {(a)}}} {{\\geq}} s \\left(\\boldsymbol {\\beta} ^ {r}, \\mathbf {q} _ {M} ^ {r - 1}, \\boldsymbol {\\alpha} ^ {r - 1}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            152,
+            867,
+            179
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\stackrel {\\text {(b)}} {\\geq} s \\left(\\boldsymbol {\\beta} ^ {r}, \\mathbf {q} _ {M} ^ {r}, \\boldsymbol {\\alpha} ^ {r - 1}\\right) \\stackrel {\\text {(c)}} {\\geq} s \\left(\\boldsymbol {\\beta} ^ {r}, \\mathbf {q} _ {M} ^ {r}, \\boldsymbol {\\alpha} ^ {r}\\right) = s ^ {r}. \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            572,
+            184,
+            929,
+            210
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Giving the position of R-UAV $\\mathbf { q } _ { M } ^ { r - 1 }$ and the association relationship $\\pmb { \\alpha } ^ { r - 1 }$ of S-UAVs and targets, $\\beta ^ { r }$ is the sub-optimal solution to problem SP1-2 in the r-th iteration, thus satisfying inequality (a). Similarly, with R-UAV’s position optimization based SCA with given $\\beta ^ { r }$ and $\\pmb { \\alpha } ^ { r - 1 }$ , the inequality (b) holds apparently. For the variable $\\alpha ^ { r }$ , BnB algorithm solves the sub-problem SP3 with given $\\beta ^ { r }$ and $\\mathbf { q } _ { M } ^ { r }$ . The lower bound of the problem can be obtained in each iteration, so that the inequality (c) holds. In conclusion, it can be observed that after optimizing the set of variables in each iteration, the objective value is non-increasing and lower bounded. Therefore, Algorithm 2 is convergent. ",
+        "bbox": [
+            500,
+            222,
+            930,
+            388
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Complexity Analysis: The complexity of the overall iterative algorithm includes the complexity of solving the problem SP1-2 and Algorithm 1, and solving SP3 with the BnB algorithm. Firstly, problem SP1-2 is a standard convex optimization problem and can be solved by using the convex solver CVX with interior-point method, whose complexity are given by $\\mathcal { O } ( ( N K ) ^ { 3 . 5 } \\log ( 1 / \\epsilon ) )$ with given solution accuracy (( ) log( ))[43], since the number of optimization variables depends on N and K. The complexity of problem SP2 solved by SCA algorithm is $\\mathcal { O } ( L _ { \\mathrm { S } } K ^ { 3 } )$ , where $L _ { \\mathrm { S } }$ is the number of iterations for ( )Algorithm 1 to converge. The complexity of BnB algorithm for solving the sub-problem SP3 is $\\mathcal { O } ( 2 ^ { d } I N )$ . Due to the binary ( )variable α, then the number of branches per node is 2, the size of the problem is IN, and $d$ is the search depth. Therefore, the computational complexity of Algorithm 2 is given as $\\mathcal { O } ( L _ { \\mathrm { O I A } } ( ( N \\bar { K } ) ^ { 3 . 5 } \\log ( 1 / \\epsilon ) \\bar { + } L _ { s } \\bar { K ^ { 3 } } + 2 ^ { d } \\bar { I } N ) )$ , where $L _ { \\mathrm { O I A } }$ is ( (( ) log( ) + + ))the number of iterations for Algorithm 2 to converge. ",
+        "bbox": [
+            500,
+            388,
+            930,
+            647
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "VII. PERFORMANCE EVALUATION ",
+        "text_level": 1,
+        "bbox": [
+            599,
+            666,
+            833,
+            679
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In this section, we conduct extensive experiments to evaluate the performance of our proposed algorithm. ",
+        "bbox": [
+            500,
+            686,
+            930,
+            717
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "A. Parameter Settings ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            738,
+            659,
+            753
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The disaster sea area is 1 km×1 km, which refers to the area that S-UAVs can monitor targets and capture videos. The number of S-UAVs and search and rescue targets are 8 and 20, respectively. The bandwidth is 10 MHz. The maximum transmit power of S-UAV is 1 W. The computational capabilities of S-UAV and R-UAV are set to $f _ { n } = 0 . 2$ GHz and $f _ { M } = 2 \\mathrm { G H z } ,$ , respectively. = =Assuming that the surveillance video of each S-UAV is divided into multiple video chunks, and the size of each video chunk is randomly generated between [200,300] KB. Additionally, we set $\\phi _ { h } = 5 8 . 4 ^ { \\circ } , N _ { 0 } = 4 , p _ { n } = 0 . 8 \\mathrm { W } , \\phi _ { v } = 4 0 ^ { \\circ } , f _ { 0 } = 1 0 0 0$ cycles, $\\rho _ { 0 } = - 6 0$ dB, $\\sigma ^ { 2 } = - 1 1 4$ dBm, $\\gamma = 3 0$ = m, and $\\zeta = 1 0 ^ { - 2 8 }$ =[26], [30]. ",
+        "bbox": [
+            500,
+            758,
+            930,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "QI et al.: MINIMIZING MAXIMUM LATENCY OF TASK OFFLOADING FOR MULTI-UAV-ASSISTED MARITIME SEARCH AND RESCUE ",
+        "bbox": [
+            58,
+            37,
+            762,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "13633 ",
+        "bbox": [
+            897,
+            39,
+            929,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/3acd4ed62c2295337625b2e8e2538cf51654350ad4fbfd04d53a551183988341.jpg",
+        "content": "",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            87,
+            80,
+            287,
+            220
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ea638de33072c04a2ea9105c7f3596ec31489f8a833e053d5cb1700afbb05de3.jpg",
+        "content": "| x (m) | y (m) | Target |\n|---|---|---|\n| -500 | -500 | A3 |\n| -400 | 300 | A2 |\n| -200 | 100 | A1 |\n| -100 | 350 | A7 |\n| 200 | 350 | A5 |\n| 300 | 0 | A4 |\n| 400 | -100 | A6 |\n| -250 | 150 | A8 |\nThe chart displays a single data point for each target position on a Cartesian plane. The x-axis is labeled 'x (m)' and the y-axis is labeled 'y (m)'. The legend indicates 'Targets' as blue dots and 'Adjusted S-UAV positions' as gray squares.",
+        "chart_caption": [
+            "Fig. 4. Distribution of S-UAVs, R-UAV and rescue targets. (a) locations of S-UAVs, R-UAV and rescue targets; (b) top view. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            294,
+            80,
+            474,
+            220
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/bde1d79df42e5344247de991a0a4c2664d263f371dd9f6f5ef609dba417194e3.jpg",
+        "content": "| The number of video chunks | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| -------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0                          | 0                 | 0                       | 0                        | 0             |\n| 30                         | 5                 | 6                       | 6                        | 5             |\n| 60                         | 10                | 12                      | 12                       | 10            |\n| 90                         | 14                | 18                      | 18                       | 15            |\n| 120                        | 20                | 24                      | 25                       | 20            |\n| 150                        | 24                | 30                      | 31                       | 26            |",
+        "chart_caption": [
+            "Fig. 5. Minimum maximum latency versus the number of video chunks. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            109,
+            284,
+            449,
+            489
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The search and rescue targets are randomly distributed and S-UAVs are evenly distributed over the top of the monitoring area. Fig. 4 shows the location distribution of S-UAVs, R-UAVs and rescue targets after an experiment. In Fig. 4(a), the initial altitude of S-UAVs is set to 500 m. To capture video of drowning people, S-UAVs optimize positions. Accordingly, Fig. 4(b) shows the coverage relationship between S-UAVs and targets in a top view, where gray rectangles are the FOV of S-UAVs. It satisfies the requirement of covering all targets. ",
+        "bbox": [
+            65,
+            537,
+            496,
+            674
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "B. Numerical Results ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            691,
+            218,
+            705
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "To demonstrate the performance improvement achieved by the proposed solution, we compare our proposed scheme with three benchmark schemes. These benchmark schemes include Computing on S-UAVs only, Computing on R-UAV only, and Static S-UAVs. The Static S-UAVs scheme means that when S-UAVs arrive at initial positions, regardless of the locations of rescue targets they are monitoring, S-UAVs remain in the initial positions and do not adjust their positions. ",
+        "bbox": [
+            65,
+            713,
+            494,
+            834
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "1) Minimum Maximum Latency: In Figs. 5–8, we evaluate the effects of various factors on the objective value, i.e., the minimum maximum latency. It can be observed that the minimum maximum latency obtained with our proposed solution is significantly lower than Computing on S-UAVs only scheme and Computing on R-UAV only scheme. In addition, the minimum maximum latency obtained by our proposed scheme is always ",
+        "bbox": [
+            65,
+            834,
+            494,
+            941
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/2d8348354e6970170d03dba777df4fb3ded327f0341f27077c5e3c07d373ac91.jpg",
+        "content": "| Transmit power of S-UAVs (W) | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| ----------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0.2                           | 20.5              | 31.0                    | 37.0                     | 21.5          |\n| 0.4                           | 20.0              | 30.0                    | 36.0                     | 21.0          |\n| 0.6                           | 19.0              | 29.5                    | 35.0                     | 20.5          |\n| 0.8                           | 18.5              | 28.0                    | 34.0                     | 20.0          |\n| 1.0                           | 18.0              | 26.0                    | 33.0                     | 19.5          |",
+        "chart_caption": [
+            "Fig. 6. Minimum maximum latency versus the transmit power of S-UAVs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            553,
+            80,
+            890,
+            287
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/2f9fa08655ca7d4194db326857c44a45ca4174cdbe203807d7d8e3b391abdbc3.jpg",
+        "content": "| N₀ | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n|----|-------------------|--------------------------|--------------------------|---------------|\n| 1  | 26.5              | 30.0                     | 37.0                     | 28.0          |\n| 2  | 24.0              | 30.0                     | 37.0                     | 26.0          |\n| 3  | 20.0              | 30.0                     | 37.0                     | 22.0          |\n| 4  | 18.5              | 30.0                     | 37.0                     | 19.5          |\n| 5  | 18.0              | 30.0                     | 37.0                     | 19.0          |\n| 6  | 18.0              | 30.0                     | 37.0                     | 18.5          |",
+        "chart_caption": [
+            "Fig. 7. Minimum maximum latency varies with N0. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            553,
+            335,
+            890,
+            544
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/203a0981b5f4574614488ce3e66b7c43691e381756265fe281063a5948a98bab.jpg",
+        "content": "| The CPU capacity of S-UAVs (GHz) | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| -------------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0.1                              | 35                | 30                      | 72                       | 38            |\n| 0.2                              | 18                | 30                      | 37                       | 22            |\n| 0.3                              | 14                | 30                      | 25                       | 14            |\n| 0.4                              | 11                | 30                      | 19                       | 11            |\n| 0.5                              | 8                 | 30                      | 14                       | 8             |\n| 0.6                              | 7                 | 30                      | 12                       | 7             |",
+        "chart_caption": [
+            "Fig. 8. Minimum maximum latency varies with the CPU capacity of S-UAVs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            553,
+            593,
+            890,
+            799
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "lower than that of the Static S-UAVs scheme, although the gap between them is very small. However, our proposed scheme adjusts the locations of S-UAVs according to the locations of the monitoring targets, which can photograph the rescue targets more closely, so as to obtain a clearer situation. ",
+        "bbox": [
+            506,
+            864,
+            937,
+            941
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "13634 ",
+        "bbox": [
+            69,
+            39,
+            99,
+            49
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            459,
+            39,
+            937,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 5, we compare the relationship between the minimum maximum latency and the number of video chunks. According to the actual size of the high definition video, the video is divided into multiple video chunks for transmission. As the number of video chunks increases, the objective value of each scheme increases. Moreover, the gap between the Satic S-UAVs and our proposed solution is gradually widening. Unless otherwise specified, the number of video chunks is set to three. In Fig. 6, we compare the relationship between the minimum maximum latency and the transmit power of S-UAVs.As the transmit power of S-UAVs increases from 0.2 W to 1 W, the minimum maximum latency of each scheme decreases. Additionally, the gap between each scheme is relatively stable. ",
+        "bbox": [
+            57,
+            79,
+            488,
+            273
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 7, we compare the minimum maximum latency for different schemes by varying $N _ { 0 }$ . Computing on R-UAV only scheme and Computing on S-UAVs only scheme are independent of changes in $N _ { 0 }$ . As $N _ { 0 }$ increases, the number of tasks that R-UAV can execute also increases. Since R-UAV has stronger computing capacity than S-UAVs, more tasks are offloaded to R-UAV, resulting in reduced delays. Therefore, the minimum maximum latency of our proposed solution and Static S-UAVs scheme decrease with $N _ { 0 }$ increases. Additionally, when the value of $N _ { 0 }$ exceeds four, the variation of the objective value is stable, indicating that when the number of S-UAVs selected to offload the computing task is four, better performance can be obtained. ",
+        "bbox": [
+            57,
+            276,
+            488,
+            470
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 8 shows the trend of the minimum maximum latency as the CPU capacity of S-UAVs increases. Obviously, the change in the CPU capacity of the S-UAV has no effect on Computing on R-UAV only scheme. The objective value decreases as the CPU capacity increases for other three schemes. Additionally, the gap between our proposed solution and the Computing on S-UAVs only scheme decreases with the increase of CPU capacity of S-UAVs. The reason is when the computing power of the S-UAV increases, the computing latency of the S-UAV video processing can be reduced. This allows for a greater inclination towards executing computing tasks locally, resulting in a reduction of data volume and consequently, transmission delay. ",
+        "bbox": [
+            57,
+            472,
+            488,
+            652
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "2) Energy Consumption of S-UAVs: In Fig. 9, we compare the relationship between energy consumption of S-UAVs and the number of video chunks when the transmit power of S-UAVs is 0.2 W and 0.8 W, respectively. Due to the assumption that the basic operational energy consumption is identical, we only compare the execution energy consumption of S-UAVs, i.e., communication and computation energy consumption. When the transmit power is 0.2 W., it can be observed that our proposed solution achieves lower energy consumption compared to the scheme that for Computing on S-UAVs only. Compared with the Computing on R-UAV only and Static S-UAVs scheme, our proposed solution consumes more energy. As the transmit power grows from 0.2 W to 0.8 W, the energy consumption of all schemes increase. Moreover, the energy consumption of Computing on R-UAVs only is higher then other three schemes when the transmit power is 0.8 W. The reason is the increase of the transmit power of S-UAVs lead to the growth of communication energy consumption. However, since latency is of utmost importance in MSAR scenarios, even if energy consumption is not the lowest, it is still within an acceptable range. ",
+        "bbox": [
+            57,
+            652,
+            488,
+            925
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/085a620fc02b78323a957b0f54f5fa9ac9f0ad12d483a01b2c694586e21acb33.jpg",
+        "content": "| The number of video chunks | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| -------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0                          | 0.0               | 0.0                     | 0.0                      | 0.0           |\n| 3                          | 0.2               | 0.15                    | 0.25                     | 0.2           |\n| 6                          | 0.4               | 0.3                     | 0.45                     | 0.4           |\n| 9                          | 0.6               | 0.5                     | 0.7                      | 0.55          |\n| 12                         | 0.85              | 0.7                     | 0.95                     | 0.8           |\n| 15                         | 1.15              | 0.85                    | 1.25                     | 0.95          |",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            540,
+            80,
+            890,
+            286
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0a356ab0d927b591d1665851aa6c1774e12027291c031f1bd8f0d2f9829f4728.jpg",
+        "content": "| The number of video chunks | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| -------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0                          | 0.0               | 0.0                     | 0.0                      | 0.0           |\n| 3                          | 0.4               | 0.6                     | 0.3                      | 0.4           |\n| 6                          | 1.2               | 1.3                     | 0.9                      | 1.1           |\n| 9                          | 1.7               | 1.8                     | 1.4                      | 1.6           |\n| 12                         | 2.2               | 2.5                     | 1.7                      | 2.0           |\n| 15                         | 2.6               | 3.1                     | 2.1                      | 2.5           |",
+        "chart_caption": [
+            "(b) ",
+            "Fig. 9. Execution energy consumption of all S-UAVs versus the number of video chunks. (a) $p _ { n } = 0 . 2 \\mathrm { W } ;$ ; (b) $p _ { n } = 0 . 8 \\mathrm { W }$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            540,
+            328,
+            887,
+            536
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            625,
+            929,
+            655
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "3) Delay Difference: We verify that our proposed solution has a lower latency than the other three benchmarks in the previous analysis. In this part, we aim to make it clear that our proposed solution also has a great effect in reducing the delay difference. The delay difference is defined as the standard deviation of the minimum maximum latency of all S-UAVs. As shown in Figs. 10–13, the delay difference of our proposed solution is notably lower then that of the Computing on S-UAVs only scheme and Computing on R-UAV only scheme. In addition, the delay difference achieved by our proposed solution closely and lower to that of the Static S-UAVs scheme. In addition, the variation trend of delay difference is the same as that of minimum maximum latency. ",
+        "bbox": [
+            500,
+            655,
+            930,
+            851
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 10 reveals that the delay difference increases with the growth of the number of video chunks. As the number of video chunks increases, the communication delay and computing delay of each S-UAV increase, resulting in increase in the delay difference. Obviously, our proposed solution is more stable. ",
+        "bbox": [
+            500,
+            852,
+            930,
+            928
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "QI et al.: MINIMIZING MAXIMUM LATENCY OF TASK OFFLOADING FOR MULTI-UAV-ASSISTED MARITIME SEARCH AND RESCUE ",
+        "bbox": [
+            58,
+            37,
+            762,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "13635 ",
+        "bbox": [
+            897,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/13bc0c8bccd2b497e5c27965cff6a3e53f9c174fa26e2f511b60c7021236fad3.jpg",
+        "content": "| The number of video chunks | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| -------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0                          | 0.0               | 0.0                     | 0.0                      | 0.0           |\n| 3                          | 0.0               | 1.0                     | 1.0                      | 0.0           |\n| 6                          | 0.0               | 2.0                     | 2.3                      | 0.0           |\n| 9                          | 0.0               | 2.8                     | 3.1                      | 0.0           |\n| 12                         | 0.0               | 3.5                     | 4.2                      | 0.0           |\n| 15                         | 0.0               | 5.0                     | 5.7                      | 0.0           |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            65,
+            82,
+            272,
+            353
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/40c8e3d53cd32459fa7292451eaae85dd5ad2b1a6b7f2d97d56e4172f20f9a1d.jpg",
+        "content": "| The number of video chunks | Proposed solution | Static S-UAVs |\n| -------------------------- | ----------------- | ------------- |\n| 0                          | 0                 | 0             |\n| 3                          | 2.5e-4            | 3.5e-4        |\n| 6                          | 3.0e-4            | 5.5e-4        |\n| 9                          | 4.5e-4            | 7.5e-4        |\n| 12                         | 6.0e-4            | 9.5e-4        |\n| 15                         | 7.0e-4            | 14.0e-4       |",
+        "chart_caption": [
+            "Fig. 10. Delay difference versus the number of video chunks. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            282,
+            80,
+            494,
+            351
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d2c60d253b5909aa08f40f645e81ec37867550c2b89c2c142bbf73010d7d2da9.jpg",
+        "content": "| N₀ | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n|----|-------------------|--------------------------|---------------------------|---------------|\n| 1  | 0.0               | 0.9                      | 1.1                       | 0.0           |\n| 2  | 0.0               | 0.9                      | 1.1                       | 0.0           |\n| 3  | 0.0               | 0.9                      | 1.1                       | 0.0           |\n| 4  | 0.0               | 0.9                      | 1.1                       | 0.0           |\n| 5  | 0.0               | 0.9                      | 1.1                       | 0.0           |\n| 6  | 0.0               | 0.9                      | 1.1                       | 0.0           |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            506,
+            80,
+            717,
+            349
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/9613d17a85954ff3f36388ff3d24341f121ddc74bc90710d332e260a5b892487.jpg",
+        "content": "| N₀ | Proposed solution (s ×10⁻⁴) | Static S-UAVs (s ×10⁻⁴) |\n|----|-----------------------------|--------------------------|\n| 1  | 3.1                         | 4.8                      |\n| 2  | 2.9                         | 4.3                      |\n| 3  | 2.85                        | 3.8                      |\n| 4  | 2.8                         | 3.3                      |\n| 5  | 2.75                        | 3.0                      |\n| 6  | 2.65                        | 2.95                     |",
+        "chart_caption": [
+            "Fig. 12. Delay difference varies with $N _ { 0 } .$ "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            734,
+            80,
+            937,
+            349
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/3d832aeb0fcdb5b551f85683acf2d07d097ff1a523fbb2a8411ef5c7ca2dc358.jpg",
+        "content": "| Transmit power of S-UAVs (W) | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| ---------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0.2                          | 0.0               | 1.15                    | 1.6                      | 0.0           |\n| 0.4                          | 0.0               | 1.0                     | 1.3                      | 0.0           |\n| 0.6                          | 0.0               | 0.8                     | 0.95                     | 0.0           |\n| 0.8                          | 0.0               | 0.7                     | 0.85                     | 0.0           |\n| 1.0                          | 0.0               | 0.6                     | 0.8                      | 0.0           |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            65,
+            404,
+            274,
+            669
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/fa1f7fee9fc2330959a2ef4b81a8e396ab8d86c54d60257b044d785bb0521f82.jpg",
+        "content": "| Transmit power of S-UAVs (W) | Proposed solution | Static S-UAVs |\n| ---------------------------- | ----------------- | ------------- |\n| 0.2                          | 4.5e-4            | 6.0e-4        |\n| 0.4                          | 3.0e-4            | 5.0e-4        |\n| 0.6                          | 2.5e-4            | 4.0e-4        |\n| 0.8                          | 1.8e-4            | 3.5e-4        |\n| 1.0                          | 1.5e-4            | 2.8e-4        |",
+        "chart_caption": [
+            "Fig. 11. Delay difference versus the transmit power of S-UAVs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            292,
+            402,
+            494,
+            669
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/fb1e84a1d431b2e65ca8f1999a4a84b99608c8582220457f042080b732ebaa1a.jpg",
+        "content": "| The CPU capacity of S-UAVs (GHz) | Proposed solution | Computing on R-UAV only | Computing on S-UAVs only | Static S-UAVs |\n| -------------------------------- | ----------------- | ----------------------- | ------------------------ | ------------- |\n| 0.1                              | 0.0               | 1.0                     | 2.0                      | 0.0           |\n| 0.2                              | 0.0               | 1.0                     | 1.3                      | 0.0           |\n| 0.3                              | 0.0               | 1.0                     | 0.7                      | 0.0           |\n| 0.4                              | 0.0               | 1.0                     | 0.5                      | 0.0           |\n| 0.5                              | 0.0               | 1.0                     | 0.4                      | 0.0           |\n| 0.6                              | 0.0               | 1.0                     | 0.3                      | 0.0           |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            516,
+            402,
+            720,
+            657
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/55ab0cd591fb6335208d261c0c77ee046ef1949e1821392be94ae15e5baabca9.jpg",
+        "content": "| The CPU capacity of S-UAVs (GHz) | Proposed solution | Static S-UAVs |\n| -------------------------------- | ----------------- | ------------- |\n| 0.1                              | 1.6e-4            | 4.5e-4        |\n| 0.2                              | 1.5e-4            | 3.7e-4        |\n| 0.3                              | 1.45e-4           | 3.6e-4        |\n| 0.4                              | 1.4e-4            | 3.5e-4        |\n| 0.5                              | 1.35e-4           | 3.3e-4        |\n| 0.6                              | 1.3e-4            | 2.9e-4        |",
+        "chart_caption": [
+            "Fig. 13. Delay difference varies with the CPU capacity of S-UAVs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            734,
+            402,
+            927,
+            657
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Fig. 11 shows that the delay difference decreases with the growth of the transmit power of S-UAVs. Each S-UAV’s communication delay decreases as transmit power increases, which also reduces the delay difference. ",
+        "bbox": [
+            63,
+            728,
+            494,
+            787
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "As shown in Fig. 12, the setting of $N _ { 0 }$ has no effect on Computing on S-UAVs only scheme and Computing on R-UAV only scheme. When $N _ { 0 }$ is changed, the delay difference of Computing on S-UAVs only scheme and Computing on R-UAV only scheme remain unchanged. The delay difference of our proposed solution and Static S-UAVs decreases with the increase of $N _ { 0 }$ . Similarly, the CPU capacity of S-UAV has no effect on Computing on R-UAV only scheme, when the CPU capacity of S-UAV changes, the delay difference of Computing on R-UAV only scheme remain unchanged. When the CPU capacity of S-UAV improves, the delay difference of the other three schemes reduce, and the delay difference obtained by our proposed solution is the smallest, as shown in Fig. 13. ",
+        "bbox": [
+            63,
+            789,
+            494,
+            941
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            700,
+            937,
+            744
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "VIII. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            654,
+            767,
+            791,
+            781
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we have considered the problem of minimizing the maximum total latency among all S-UAVs for the multi-UAV assisted MSAR system. Our approach involves optimizing the position of R-UAV, the association between S-UAVs and rescue targets, and the offloading decisions to achieve this goal. Unlike existing works, we have taken into account the S-UAV position adjustment process to achieve the monitoring integrity and fairness for rescue targets. Since the formulated problem is an MINLP problem, we have decomposed it into three sub-problems and developed an overall iterative algorithm to find the sub-optimal solutions. We have conducted extensive numerical simulations to validate the effectiveness of the proposed algorithm. The numerical results have demonstrated that our proposed solution achieves a lower latency and a smaller delay difference compared to baseline schemes. For future work, the energy efficiency optimization scheme for MSAR systems can be further investigated by considering the limited energy of UAVs. Besides, the multi-hop transmission scheme for MSAR systems can be further considered. ",
+        "bbox": [
+            506,
+            787,
+            937,
+            941
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "13636 ",
+        "bbox": [
+            69,
+            39,
+            99,
+            49
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            459,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            489,
+            215
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            242,
+            253,
+            333,
+            266
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] EMSA, “EMSA: Annual overview of marine casualties and incidents 2022.” 2022. Accessed: Sep. 2023. [Online]. Available: https://safety4sea. com/emsa-annual-overview-of-marine-casualties-and-incidents-2022/ ",
+            "[2] S. W. Cho, H. J. Park, H. Lee, D. H. Shim, and S. Y. Kim, “Coverage path planning for multiple unmanned aerial vehicles in maritime search and rescue operations,” Comput. Ind. Eng., vol. 161, 2021, Art. no. 107612. ",
+            "[3] B. Lin, J. Duan, M. Han, and L. X. Cai, Next Generation Marine Wireless Communication Networks. Berlin, Germany: Springer, 2022. ",
+            "[4] H. Shakhatreh et al., “Unmanned aerial vehicles (UAVs): A survey on civil applications and key research challenges,” IEEE Access, vol. 7, pp. 48572–48634, 2019. ",
+            "[5] M. Jouhari et al., “Distributed CNN inference on resource-constrained UAVs for surveillance systems: Design and optimization,” IEEE Internet Things J., vol. 9, no. 2, pp. 1227–1242, Jan. 2022. ",
+            "[6] S. Hu, W. Ni, X. Wang, A. Jamalipour, and D. Ta, “Joint optimization of trajectory, propulsion, and thrust powers for covert UAV-on-UAV video tracking and surveillance,” IEEE Trans. Inf. Forensics Secur., vol. 16, pp. 1959–1972, 2021. ",
+            "[7] J. Yu, A. Vandanapu, C. Qu, S. Wang, and P. Calyam, “Energy-aware dynamic computation offloading for video analytics in multi-UAV systems,” in Proc. Int. Conf. Comput., Netw. Commun., 2020, pp. 641–647. ",
+            "[8] Y. Jin, Z. Qian, and W. Yang, “UAV cluster-based video surveillance system optimization in heterogeneous communication of smart cities,” IEEE Access, vol. 8, pp. 55654–55664, 2020. ",
+            "[9] B. Hu, L. Wang, S. Chen, J. Cui, and L. Chen, “An uplink throughput optimization scheme for UAV-enabled urban emergency communications,” IEEE Internet Things J., vol. 9, no. 6, pp. 4291–4302, Mar. 2022. ",
+            "[10] X. Chen et al., “Vehicle as a service (VaaS): Leverage vehicles to build service networks and capabilities for smart cities,” IEEE Commun. Surv. Tut., early access, Feb. 27, 2024, doi: 10.1109/COMST.2024.3370169. ",
+            "[11] Y. Deng, Z. Haixia, X. Chen, and Y. Fang, “UAV-assisted multiaccess edge computing with altitude-dependent computing power,” IEEE Trans. Wireless Commun., early access, Feb. 13, 2024, doi: 10.1109/TWC.2024.3362375. ",
+            "[12] M. Dai, N. Huang, Y. Wu, J. Gao, and Z. Su, “Unmanned-aerial-vehicleassisted wireless networks: Advancements, challenges, and solutions,” IEEE Internet Things J., vol. 10, no. 5, pp. 4117–4147, Mar. 2023. ",
+            "[13] Z. Yang, C. Pan, K. Wang, and M. Shikh-Bahaei, “Energy efficient resource allocation in UAV-enabled mobile edge computing networks,” IEEE Trans. Wireless Commun., vol. 18, no. 9, pp. 4576–4589, Sep. 2019. ",
+            "[14] J. Wang et al., “Bandwidth-efficient live video analytics for drones via edge computing,” in Proc. IEEE/ACM Symp. Edge Comput., 2018, pp. 159–173. ",
+            "[15] W. Lu and X. Zhang, “Computation offloading for partitionable applications in dense networks: An evolutionary game approach,” IEEE Internet Things J., vol. 9, no. 21, pp. 20985–20996, Nov. 2022. ",
+            "[16] Y. Deng, X. Chen, G. Zhu, Y. Fang, Z. Chen, and X. Deng, “Actions at the edge: Jointly optimizing the resources in multi-access edge computing,” IEEE Wireless Commun., vol. 29, no. 2, pp. 192–198, Apr. 2022. ",
+            "[17] S. Jošilo and G. Dán, “Joint management of wireless and computing resources for computation offloading in mobile edge clouds,” IEEE Trans. Cloud Comput., vol. 9, no. 4, pp. 1507–1520, Oct.-Dec. 2021. ",
+            "[18] P. Zhou, K. Shen, N. Kumar, Y. Zhang, M. M. Hassan, and K. Hwang, “Communication-efficient offloading for mobile-edge computing in 5G heterogeneous networks,” IEEE Internet Things J., vol. 8, no. 13, pp. 10237–10247, Jul. 2021. ",
+            "[19] H. Jiang, X. Dai, Z. Xiao, and A. Iyengar, “Joint task offloading and resource allocation for energy-constrained mobile edge computing,” IEEE Trans. Mobile Comput., vol. 22, no. 7, pp. 4000–4015, Jul. 2023. "
+        ],
+        "bbox": [
+            57,
+            273,
+            491,
+            935
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[20] X. He, R. Jin, and H. Dai, “Multi-hop task offloading with on-the-fly computation for multi-UAV remote edge computing,” IEEE Trans. Commun., vol. 70, no. 2, pp. 1332–1344, Feb. 2022. ",
+            "[21] T. Wang, Y. Li, and Y. Wu, “Energy-efficient UAV assisted secure relay transmission via cooperative computation offloading,” IEEE Trans. Green Commun. Netw., vol. 5, no. 4, pp. 1669–1683, Dec. 2021. ",
+            "[22] Z. Ning et al., “Partial computation offloading and adaptive task scheduling for 5G-enabled vehicular networks,” IEEE Trans. Mobile Comput., vol. 21, no. 4, pp. 1319–1333, Apr. 2022. ",
+            "[23] M. Tang and V. W. Wong, “Deep reinforcement learning for task offloading in mobile edge computing systems,” IEEE Trans. Mobile Comput., vol. 21, no. 6, pp. 1985–1997, Jun. 2022. ",
+            "[24] B. Yang, X. Cao, J. Bassey, X. Li, and L. Qian, “Computation offloading in multi-access edge computing: A multi-task learning approach,” IEEE Trans. Mobile Comput., vol. 20, no. 9, pp. 2745–2762, Sep. 2021. ",
+            "[25] N. Zhao, Z. Ye, Y. Pei, Y.-C. Liang, and D. Niyato, “Multi-agent deep reinforcement learning for task offloading in UAV-assisted mobile edge computing,” IEEE Trans. Wireless Commun., vol. 21, no. 9, pp. 6949–6960, Sep. 2022. ",
+            "[26] C. Chen, T. Zhang, W. Xu, X. Yang, and Y. Wang, “Multi-UAV cooperation based edge computing offloading in emergency communication networks,” in Proc. IEEE Wireless Commun. Netw. Conf., 2023, pp. 1–6. ",
+            "[27] I. Medeiros, A. Boukerche, and E. Cerqueira, “Swarm-based and energyaware unmanned aerial vehicle system for video delivery of mobile objects,” IEEE Trans. Veh. Technol., vol. 71, no. 1, pp. 766–779, Jan. 2022. ",
+            "[28] H. Sun, B. Zhang, X. Zhang, Y. Yu, K. Sha, and W. Shi, “FlexEdge: Dynamic task scheduling for a UAV-based on-demand mobile edge server,” IEEE Internet Things J., vol. 9, no. 17, pp. 15983–16005, Sep. 2022. ",
+            "[29] X. Deng, J. Li, P. Guan, and L. Zhang, “Energy-efficient UAV-aided target tracking systems based on edge computing,” IEEE Internet Things J., vol. 9, no. 3, pp. 2207–2214, Feb. 2022. ",
+            "[30] H. Li, S. Wu, J. Jiao, X.-H. Lin, N. Zhang, and Q. Zhang, “Energy-efficient task offloading of edge-aided maritime UAV systems,” IEEE Trans. Veh. Technol., vol. 72, no. 1, pp. 1116–1126, Jan. 2023. ",
+            "[31] T. Do-Duy, L. D. Nguyen, T. Q. Duong, S. R. Khosravirad, and H. Claussen, “Joint optimisation of real-time deployment and resource allocation for UAV-aided disaster emergency communications,” IEEE J. Sel. Areas Commun., vol. 39, no. 11, pp. 3411–3424, Nov. 2021. ",
+            "[32] N. Lin, Y. Liu, L. Zhao, D. O. Wu, and Y. Wang, “An adaptive UAV deployment scheme for emergency networking,” IEEE Trans. Wireless Commun., vol. 21, no. 4, pp. 2383–2398, Apr. 2022. ",
+            "[33] Y. Deng, Z. Chen, and X. Chen, “Resource allocation for multi-user mobile-edge computing systems with delay constraints,” in GLOBECOM IEEE Glob. Commun. Conf., 2020, pp. 1–6. ",
+            "[34] T. Yang, Z. Jiang, R. Sun, N. Cheng, and H. Feng, “Maritime search and rescue based on group mobile computing for unmanned aerial vehicles and unmanned surface vehicles,” IEEE Trans. Ind. Informat., vol. 16, no. 12, pp. 7700–7708, Dec. 2020. ",
+            "[35] C. Zhan, H. Hu, X. Sui, Z. Liu, and D. Niyato, “Completion time and energy optimization in the UAV-enabled mobile-edge computing system,” IEEE Internet Things J., vol. 7, no. 8, pp. 7808–7822, Aug. 2020. ",
+            "[36] J. Li, G. Zhang, C. Jiang, and W. Zhang, “A survey of maritime unmanned search system: Theory, applications and future directions,” Ocean Eng., vol. 285, 2023, Art. no. 115359. ",
+            "[37] P. Q. Jorge, R. Jenni, N. G. Tuan, P. Nikolaos, and W. Tomi, “AutoSOS: Towards multi-UAV systems supporting maritime search and rescue with lightweight AI and edge computing,” 2020, arXiv:2005.03409. ",
+            "[38] S.-W. Cho, J. Park, H.-J. Park, and S. Kim, “Multi-UAV coverage path planning based on hexagonal grid decomposition in maritime search and rescue,” Mathematics, vol. 10, 2021, Art. no. 245551422. [Online]. Available: https://api.semanticscholar.org/CorpusID ",
+            "[39] B. Lin and Q. Yan, Maritime Emergency Communications. Dalian, China: Dalian Maritime University Press, 2021. ",
+            "[40] N. V. Cuong, Y.-W. P. Hong, and J.-P. Sheu, “UAV trajectory optimization for joint relay communication and image surveillance,” IEEE Trans. Wireless Commun., vol. 21, no. 12, pp. 10177–10192, Dec. 2022. ",
+            "[41] X. Hu, K.-K. Wong, K. Yang, and Z. Zheng, “UAV-assisted relaying and edge computing: Scheduling and trajectory optimization,” IEEE Trans. Wireless Commun., vol. 18, no. 10, pp. 4738–4752, Oct. 2019. ",
+            "[42] C. Zhan and Y. Zeng, “Completion time minimization for multi-UAVenabled data collection,” IEEE Trans. Wireless Commun., vol. 18, no. 10, pp. 4859–4872, Oct. 2019. ",
+            "[43] C. Zhan, H. Hu, Z. Liu, Z. Wang, and S. Mao, “Multi-UAV-enabled mobileedge computing for time-constrained IoT applications,” IEEE Internet Things J., vol. 8, no. 20, pp. 15553–15567, Oct. 2021. "
+        ],
+        "bbox": [
+            500,
+            78,
+            934,
+            933
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "QI et al.: MINIMIZING MAXIMUM LATENCY OF TASK OFFLOADING FOR MULTI-UAV-ASSISTED MARITIME SEARCH AND RESCUE ",
+        "bbox": [
+            58,
+            39,
+            762,
+            50
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "13637 ",
+        "bbox": [
+            897,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            863,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/4605e7c18a8d2713046e2aa03c09b496d7995003dfb17268dc7be9a961e57999.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a woman with long dark hair against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            82,
+            193,
+            199
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Shuang Qi (Student Member, IEEE) received the B.S. and M.S. degrees from Liaoning Normal University, Dalian, China, in 2017 and 2020, respectively. She is currently working toward the Ph.D. degree with the College of Information Science and Technology, Dalian Maritime University, Dalian, China. Her research interests include maritime communication networks, mobile edge computing, and resource management. ",
+        "bbox": [
+            205,
+            80,
+            494,
+            185
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/a0fb4da3c8378eccce490d27253e9de0ae452a703970afa0b30970f53944520d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a young man wearing glasses and a blue collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            82,
+            636,
+            199
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Xianhao Chen (Member, IEEE) received the B.Eng. degree in electronic information from Southwest Jiaotong University, Chengdu, China, in 2017, and the Ph.D. degree in electrical and computer engineering from the University of Florida, Gainesville, FL, USA, in 2022. He is currently an Assistant Professor with the Department of Electrical and Electronic Engineering, the University of Hong Kong, Hong Kong. His research interests include wireless networking, edge intelligence, and machine learning. He is an Associate Editor of ACM Computing Surveys. He was the recipient of the 2022 ECE Graduate Excellence Award for research from the University of Florida. ",
+        "bbox": [
+            648,
+            80,
+            937,
+            207
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            508,
+            207,
+            937,
+            229
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/5aac08d25eae89c6c1582d1d606a627be8c1f596ba13b64235c315263a34ef79.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a woman wearing a black collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            251,
+            193,
+            368
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Bin Lin (Senior Member, IEEE) received the B.S. and M.S. degrees from Dalian Maritime University, Dalian, China, in 1999 and 2003, respectively, and the Ph.D. degree from the Broadband Communications Research Group, Department of Electrical and Computer Engineering, University of Waterloo, Waterloo, ON, Canada, in 2009. She is currently a Full Professor and the Dean of Communication Engineering with the College of Information Science and Technology, Dalian Maritime University. She was a Visiting Scholar with George Washington University, ",
+        "bbox": [
+            205,
+            250,
+            494,
+            375
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Washington, DC, USA, from 2015 to 2016. Her current research interests include wireless communications, network dimensioning and optimization, resource allocation, artificial intelligence, maritime communication networks, and Internet of Things. Prof. Lin is an Associate Editor for IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY and IEEE INTERNET OF THINGS JOURNAL. ",
+        "bbox": [
+            65,
+            375,
+            494,
+            431
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/7e2a129e3f430e6522121ba0e0125bad7fc6849bbd06f95eb146334dceff3d67.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a smiling man wearing glasses and a light blue shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            321,
+            636,
+            436
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Yuguang Fang (Fellow, IEEE) received the M.S. degree from Qufu Normal University, China, the Ph.D. degree from Case Western Reserve University, Cleveland, OH, USA, and the second Ph.D. degree from Boston University, Boston, MA, USA. In 2000, he joined the Department of Electrical and Computer Engineering, University of Florida, Gainesville, FL, USA, as an Assistant Professor, then was promoted to Associate Professor, Full Professor, and Distinguished Professor, respectively. Since 2022, he has been a Global STEM Scholar and the Chair Professor ",
+        "bbox": [
+            648,
+            320,
+            937,
+            445
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/438e7f1ce04cd01c443ec55572929dca5bd5fa8d06f842681f6d383896952760.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a woman in formal attire against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            473,
+            193,
+            590
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Yiqin Deng (Member, IEEE) received the M.S. degree in software engineering and the Ph.D. degree in computer science and technology from Central South University, Changsha, China, in 2017 and 2022, respectively. She is currently a Postdoctoral Research Fellow with the School of Control Science and Engineering, Shandong University, Jinan, China. She was a Visiting Researcher with the University of Florida, Gainesville, FL, USA, from 2019 to 2021. Her research interests include edge/fog computing, Internet of Vehicles, and resource management. ",
+        "bbox": [
+            205,
+            472,
+            494,
+            599
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "of Internet of Things with the Department of Computer Science, City University of Hong Kong, Hong Kong. Dr. Fang was the recipient of many awards including the US NSF CAREER Award, US ONR Young Investigator Award, 2018 IEEE Vehicular Technology Outstanding Service Award, and IEEE Communications Society AHSN Technical Achievement Award, CISTC Technical Recognition Award, and WTC Recognition Award. He was the Editor-in-Chief of IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY and IEEE WIRELESS COMMU-NICATIONS. He is a Fellow of ACM and AAAS. ",
+        "bbox": [
+            506,
+            445,
+            937,
+            537
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "13638 ",
+        "bbox": [
+            69,
+            39,
+            99,
+            49
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 9, SEPTEMBER 2024 ",
+        "bbox": [
+            459,
+            39,
+            937,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 30,2026 at 11:06:21 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 13
+    }
+]
