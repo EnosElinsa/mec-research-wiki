@@ -15,8 +15,9 @@ related:
   - "[[mixed-integer-nonlinear-programming]]"
   - "[[sun-2025-emoppo-vlh-aerial-cb]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
+  - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Multi-Objective Optimization for UAV Swarm-Assisted IoT With Virtual Antenna Arrays

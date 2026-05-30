@@ -16,8 +16,9 @@ related:
   - "[[song-2022-emorl-tcto-uav]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
+  - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Aerial Reliable Collaborative Communications for Terrestrial Mobile Users via Evolutionary Multi-Objective Deep Reinforcement Learning

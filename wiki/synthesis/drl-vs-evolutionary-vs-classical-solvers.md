@@ -19,8 +19,9 @@ related:
   - "[[drl-backbones-across-uav-mec-sources]]"
   - "[[cmop-evolutionary-uav-mec-lineage]]"
   - "[[hierarchical-aerial-mec-design-space]]"
+  - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-29
-updated: 2026-05-30
+updated: 2026-06-01
 ---
 
 # DRL vs evolutionary vs classical solvers across the MEC corpus

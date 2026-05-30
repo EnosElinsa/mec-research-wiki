@@ -16,8 +16,10 @@ related:
   - "[[seamless-handover]]"
   - "[[sun-2025-emoppo-vlh-aerial-cb]]"
   - "[[song-2022-emorl-tcto-uav]]"
+  - "[[collaborative-beamforming-in-aerial-mec]]"
+  - "[[dcb-cuts-satellite-handover-frequency]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Collaborative Ground-Space Communications via Evolutionary Multi-Objective Deep Reinforcement Learning

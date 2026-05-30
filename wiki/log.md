@@ -2,6 +2,35 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Synthesis pass (collaborative-beamforming track: +1 synthesis, +1 finding, cross-links; no new papers)
+
+No-new-papers coverage-growth pass over the **collaborative-beamforming (CB)** cluster. Phase 0 confirmed the corpus is fully curated: `curation_status.py --dupes` reports **0 genuinely-new** folders (the two space-vs-underscore re-ingests — *Optimizing Spectrum Sharing…* and *UAV-Enabled Multi-Source Data Fusion…* — remain correctly classified as duplicate MinerU ingests, no page needed). Tree clean at `f3c67fb`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **446 nodes / 3717 edges** → **448 / 3751** after this pass.
+
+The CB track had a [[collaborative-beamforming]] concept page and 5 source pages but **no synthesis page** and an under-counted track row in `overview.md` (4 of 5 sources) — the highest-leverage, cleanly-bounded gap. Each claim was grounded in the source parses before writing (GVAA+AVAA dual-array framing verified in the EMSSA parse; "save 30% handover frequency" verified verbatim in the EMODRL ground-space parse abstract).
+
+### New derived pages (2)
+
+- **Synthesis** [[collaborative-beamforming-in-aerial-mec]] — maps the 5 CB sources ([[sun-2025-emoppo-vlh-aerial-cb]], [[li-2024-emodrl-ground-space-cb]], [[li-2024-emssa-uav-swarm-vaa]], [[sun-2024-imssa-uav-secure-cb]], [[zhang-2024-gdmtd3-aerial-secure-cb]]) by array→receiver geometry (aerial-to-ground / ground-to-space / dual GVAA+AVAA), multi-objective trade (rate/secrecy vs flight energy, with SLL + leakage axes for the secure variants), and solver family (pure swarm-intelligence salp-swarm vs evolutionary-MORL vs diffusion-DRL) — a tidy microcosm of the [[drl-vs-evolutionary-vs-classical-solvers]] debate. Notes the gaps: no CB source carries a compute/offloading objective; single author cluster ([[geng-sun]] group); uneven eavesdropper threat models.
+- **Finding** [[dcb-cuts-satellite-handover-frequency]] — distributed CB cuts LEO handover frequency ~30% at matched uplink rate ([[li-2024-emodrl-ground-space-cb]], `confidence: medium`, parse abstract); the clearest quantified CB result in the corpus.
+
+### Refreshed / cross-linked pages
+
+- [[collaborative-beamforming]] concept — added the dual GVAA+AVAA flavor row (was missing [[li-2024-emssa-uav-swarm-vaa]]) and a pointer to the new synthesis.
+- 5 CB source pages — added `[[collaborative-beamforming-in-aerial-mec]]` to `related` (and the new finding to the EMODRL source); bumped `updated`.
+- [[drl-vs-evolutionary-vs-classical-solvers]] synthesis — added the CB microcosm to `related`.
+- `overview.md` — analytical-layer tally 12→13 findings / 10→11 synthesis; CB track row corrected 4→5 sources and linked to the synthesis; new finding listed in Open/analytical layer narrative.
+- `index.md` — new finding under Findings, new synthesis under Synthesis.
+
+### Entities
+
+None created. The CB cluster authors ([[geng-sun]], [[jiahui-li]], [[zemin-sun]], [[qingqing-wu]], [[dusit-niyato]], [[jiawen-kang]], [[victor-c-m-leung]]) already have entity pages; no new clearly-recurring author surfaced in this slice.
+
+### Self-check
+
+- `linkcheck.py` — **NO DANGLING LINKS** (Obsidian-faithful). `process_refs.py` — **0 files / 0 hits** (no process-narration leaked outside this log). `corpus_counts.py` — sources 134, concepts 213, entities 65, findings 13, synthesis 11, comparisons 4, methodology 2, queries 4, thesis 1.
+- Frontmatter validated on both new pages (no diagnostics). Counts in `overview.md`/`index.md` reconciled to the tool output.
+- Toolkit unchanged this pass — the existing scripts covered every check; nothing warranted a new flag or script.
+
 ## 2026-05-31 — Curation pass (batch 8/8: 3 new sources + audit; multi-batch run complete)
 
 Eighth and final batch of the deliberately-split 8-batch curation run over the 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 3 assigned batch-8 folders. Corpus grows **131 → 134 curated sources**, completing the 52-paper run (the two space-vs-underscore re-ingests — *Optimizing Spectrum Sharing…* and *UAV-Enabled Multi-Source Data Fusion…* — were correctly identified as duplicates of already-curated sources and skipped). (Confirmed none of the 3 already had a source page before writing.)
