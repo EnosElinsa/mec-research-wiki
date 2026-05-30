@@ -1,0 +1,24 @@
+---
+type: concept
+title: "Penalty Dual Decomposition (PDD)"
+tags: [optimization, non-convex, augmented-lagrangian, mixed-integer, classical-solver]
+related:
+  - "[[alternating-optimization-sdr-sca]]"
+  - "[[mixed-integer-nonlinear-programming]]"
+  - "[[two-stage-decomposition]]"
+  - "[[hu-2019-pdd-uav-mec-offloading]]"
+created: 2026-05-31
+updated: 2026-05-31
+---
+
+# Penalty Dual Decomposition (PDD)
+
+A solver framework for non-convex problems with **coupling (equality) constraints**, useful when a problem mixes discrete binary variables with continuous ones. The recipe:
+
+1. **Reformulate** discrete/coupling constraints as a set of **equality constraints** by introducing auxiliary variables.
+2. **Dualize + penalize** those equalities into the objective as **augmented-Lagrangian (AL)** terms.
+3. Solve with a **two-layer iteration**: the inner loop optimizes the AL problem (e.g. via a concave-convex procedure, CCCP), and the outer loop updates the AL multipliers and the penalty factor.
+
+PDD converges to a KKT/stationary point of the original non-convex problem under mild conditions. It is a counterpart to the [[alternating-optimization-sdr-sca|AO+SDR+SCA]] pipeline — both attack non-convex coupled problems, but PDD specifically handles equality-constraint coupling and binary-to-equality conversion.
+
+In the wiki, [[hu-2019-pdd-uav-mec-offloading]] uses PDD (inner CCCP, outer multiplier/penalty update) to jointly optimize UAV trajectory, per-user offloading ratio, and binary user scheduling for min-max-delay UAV-MEC, plus a lower-complexity l0-norm variant.

@@ -2,6 +2,57 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-05-31 — Curation pass (batch 4/8: 7 new sources + audit)
+
+Fourth batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned `batch4` folders (per `.curation-out/batches.json`); the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **103 → 110 curated sources**.
+
+### New source pages (7)
+
+- [[wang-2024-maritime-eh-jcora]] — Wang et al. 2024 (**IEEE IoT-J**, `10.1109/JIOT.2024.3371049`). Energy-harvesting maritime MEC: a two-tier sea-lane-monitoring network (CBS + solar/ocean-wave-powered maritime information stations / buoys serving vessels); maximizes long-term throughput under queue-stability + energy constraints via **Lyapunov** drift-plus-penalty decomposition → **JCORA**. Beats FRA/LRA/PRA/TRA benchmarks (curves read from Figs. 7–12, reported qualitatively). DOI pub 28 Feb 2024 / current version 23 May 2024 → year 2024.
+- [[hu-2019-pdd-uav-mec-offloading]] — Hu et al. 2019 (**IEEE IoT-J**, `10.1109/JIOT.2018.2878876`). Single-UAV MEC; minimizes the sum of per-slot **max delay** by jointly optimizing offloading ratio + UAV trajectory + binary user scheduling via **penalty dual decomposition (PDD)** (inner CCCP, outer AL-multiplier/penalty update) + a simplified l0-norm variant. DOI pub 31 Oct 2018 / current version 8 May 2019 → year 2019.
+- [[niazmand-2025-jopa-dnn-pruning-iiot]] — Niazmand & Ye 2025 (**IEEE TCCN**, `10.1109/TCCN.2025.3529688`). Joint task offloading + **DNN model pruning** + edge resource allocation (JOPA) for industrial-washing-machine fault detection; maximizes long-term resource utilization under **time-varying delay/accuracy QoS**; formulated as a **Markov reward process**, solved with a hybrid-action **SAC**. Highest utilization + lowest task-dropping (<1%) vs JOPAV1/AGDM (Figs. 9–12, qualitative). DOI pub 14 Jan 2025 / current version 8 Oct 2025 → year 2025.
+- [[wu-2018-multiuav-minrate-trajectory]] — Wu, Zeng & Zhang 2018 (**IEEE TWC**, `10.1109/TWC.2017.2789293`, 17(3):2109–2121). Foundational multi-UAV-as-base-station **max-min-rate** design; joint scheduling/association + trajectory + power via **BCD + SCA** with circle-packing initialization; reveals throughput-access-delay tradeoff. DOI pub 5 Jan 2018 / current version 8 Mar 2018 → year 2018. (Vol/issue/pages from in-parse reference list entry [9].)
+- [[dai-2023-hybrid-marine-mmwl]] — Dai et al. 2023 (**IEEE TCOMM**, `10.1109/TCOMM.2023.3306581`). Hybrid offshore (FDMA) + aerial-UAV (NOMA) multi-access offloading; **Minimize Maximum Workloads Latency (MMWL)** via a layered 3-subproblem decomposition. Within ~3% of LINGO's global optimum with >90% time saving (verbatim). DOI pub 18 Aug 2023 / current version 20 Nov 2023 → year 2023.
+- [[wu-2024-urllc-uav-mec-latency]] — Wu et al. 2024 (**IEEE TWC**, `10.1109/TWC.2023.3307154`). First UAV-MEC study to drop the infinite-blocklength assumption: **URLLC / finite-blocklength** offloading under angle-dependent **Rician fading**; min-max latency via **BCD + SCA** over UAV 3D location + bandwidth + CPU frequency (semi-closed-form). DOI pub 28 Aug 2023 / current version 11 Apr 2024 → year 2024.
+- [[zhang-2025-vnf-sgin-dql]] — Zhang et al. 2025 (**IEEE TVT**, `10.1109/TVT.2024.3454438`). **NFV/SDN service-function-chaining** for 6G satellite-ground integrated networks; dynamic VNF selection + chaining (DDVSC) via **deep Q-learning** with load-clustered greedy action space; maximizes long-term network profit (provisioning + migration cost vs performance). DOI pub 30 Sep 2024 / current version 16 Jan 2025 → year 2025.
+
+### New concept stubs (7)
+
+- [[energy-harvesting-mec]] — MEC powered by harvested renewable energy (solar/wind/ocean-wave), distinct from RF-harvesting/WPT; grounds the maritime-EH source.
+- [[penalty-dual-decomposition]] — the PDD framework (binary→equality reformulation + augmented-Lagrangian + two-layer CCCP iteration) for non-convex coupled problems.
+- [[markov-reward-process]] — MDP variant with action-independent state transitions; the formulation behind the IIoT DNN-pruning source.
+- [[dynamic-qos-constraints]] — time-varying per-task delay/accuracy requirements tied to changing criticality levels.
+- [[finite-blocklength-urllc]] — short-packet URLLC where the Shannon formula overstates rate; the angle-dependent-Rician finite-blocklength rate of the URLLC source.
+- [[network-function-virtualization]] — NFV/SDN substrate (VNFs on commodity servers) for the SGIN VNF-chaining source.
+- [[service-function-chaining]] — ordered VNF chains (SFC) + VSCP selection/mapping, with satellite-movement-driven VNF migration.
+
+All other referenced concepts reused existing slugs (e.g. [[maritime-mec]], [[lyapunov-optimization]], [[task-offloading]], [[task-migration]], [[noma]], [[mixed-integer-nonlinear-programming]], [[two-stage-decomposition]], [[alternating-optimization-sdr-sca]], [[uav-trajectory-control]], [[multi-uav-assisted-mec]], [[binary-vs-partial-offloading]], [[soft-actor-critic]], [[hybrid-action-decision-making]], [[dnn-model-partition]], [[knowledge-distillation-for-drl]], [[deep-q-network]], [[leo-satellite-edge-computing]], [[non-terrestrial-network]], [[space-air-ground-integrated-network]], [[fairness-metrics-in-mec]], [[network-slicing]]).
+
+### Entities — roster updates + 2 deferrals (no new entity pages)
+
+- **Roster updates (existing entities):** [[qiang-ye]] (3→6 sources — the **cross-cutting thread of batch 4**, on 4 of the 7 papers: maritime-EH, IIoT DNN-pruning, VNF/SGIN; University of Calgary, `qiang.ye@ucalgary.ca`), [[bin-lin]] (4→6, +maritime-EH +hybrid-marine; Dalian Maritime Univ.), [[zhen-wang]] (3→4, +maritime-EH; same Dalian Maritime/Neusoft dual affiliation + `wangzhen_jsj@neusoft.edu.cn`), [[yuan-wu]] (6→7, +hybrid-marine; Univ. of Macau, corresponding author), [[qingqing-wu]] (4→5, +URLLC; **SJTU** `qingqingwu@sjtu.edu.cn`-matched).
+- **Deferred — Qingqing Wu namesake (again).** The batch-4 [[wu-2018-multiuav-minrate-trajectory]] is **first-authored** by a "Qingqing Wu" at the **National University of Singapore** (`elewuqq@nus.edu.sg`), not the SJTU [[qingqing-wu]] entity (`qingqingwu@sjtu.edu.cn`). Consistent with the batch-1 deferral on the 2019 NUS tutorial, this 2018 NUS paper was **not** added to the SJTU roster — noted on the entity page; plausibly the same person earlier in his career, flagged for human confirmation.
+- **Deferred — Yong Zeng / Rui Zhang entity creation.** "Yong Zeng" now recurs in 3 sources ([[wu-2018-multiuav-minrate-trajectory]], [[zeng-2019-uav-comm-tutorial-5g]], [[zeng-2019-rotary-wing-energy-min]]) and "Rui Zhang" likewise, both NUS-affiliated. They clear the recurrence bar for entity pages, but affiliation verification across all three parses was not completed this pass, so no entity was minted — flagged for a future pass / human confirmation rather than created hastily.
+- No author-entity links were embedded in source-page bodies (matching the established house convention — three accidental author wikilinks introduced during drafting were caught and converted to plain text before the audit).
+
+### Duplicate / near-duplicate check (the assigned watch item)
+
+The batch brief warned that several already-curated "Joint … UAV … MEC" papers could be confused with these. Verified each batch-4 paper is **genuinely new** and distinct from existing pages:
+- [[hu-2019-pdd-uav-mec-offloading]] (Hu/Cai/Yu, *Joint Offloading and Trajectory Design …*, IoT-J 2018/2019, PDD) is **distinct** from the already-curated [[yu-2020-uav-ec-collaborative-offloading]] (Yu/Gong, *Joint Task Offloading and Resource Allocation …*, IoT-J 2020, SCA) — different authors, DOI, year, method.
+- [[wu-2018-multiuav-minrate-trajectory]] (*Joint Trajectory and Communication Design for Multi-UAV …*, TWC 2018, BCD+SCA, communications/max-min-rate) is **distinct** from [[chang-2022-marl-multiuav-trajectory]] (*Trajectory Design and Resource Allocation for Multi-UAV …*, TNSE 2022, DRL) — different title, authors, venue, year, method.
+- [[wang-2024-maritime-eh-jcora]] and [[dai-2023-hybrid-marine-mmwl]] are new maritime sources distinct from the existing 8 maritime pages (different architectures: EH-buoys+Lyapunov vs FDMA/NOMA hybrid offshore+aerial).
+- No same-paper/different-UUID duplicate ingests were found among the 7.
+
+### Audit (correctness-first)
+
+- **DOI / venue / year** — all 7 carry an explicit `Digital Object Identifier` line in their own parse; every DOI, venue, and year above is grounded in the parse (manuscript date-of-publication / date-of-current-version lines). **Zero `not in parse` metadata fields this batch** — all 7 source pages have full title/authors/year/url/venue. **Year convention:** for the five TVT/TWC/TCOMM/IoT-J papers whose publication vs current-version dates straddle two years, year follows date-of-current-version (the wiki's established convention), with both dates recorded in each citation.
+- **Grounded headline claims only:** maritime-EH JCORA throughput/latency advantages stated qualitatively (Figs. 7–12 are MinerU-rendered tables, not verbatim text); hybrid-marine "≤3% from LINGO global optimum" + ">90% time saving" verbatim from the parse abstract/contributions; URLLC bottleneck insight + "finite-blocklength necessary" from the conclusion; IIoT JOPA "<1% dropping" + "p=0.7 balances" from Sec. V; PDD/min-max-rate/VNF-DQL results stated as the papers state them ("significantly outperform", "approaches the upper bound"). No figure-only magnitudes asserted as exact.
+- **Wikilink integrity:** wiki-wide Obsidian-faithful check after the pass = **ZERO dangling links** (`.curation-out/linkcheck2.py`). All wikilinks introduced this batch target existing slugs or pages created in this same batch (7 sources + 7 concepts). Pre-existing dangling-link status unchanged (none).
+- **Frontmatter:** `type`/`title`/`authors`/`year`/`url`/`venue`/`tags`/`related`/dates/H1 validated on all 7 source pages; `type`/`title`/`tags`/dates/H1 on the 7 concept stubs. No diagnostics issues; no self-references or duplicate `related` entries.
+- **Counts reconciled:** **110 sources / 190 concepts / 50 author entities (+[[pytorch]] = 51 entity pages)**. `index.md` and `overview.md` updated to agree.
+- **LLM Wiki API:** not queried this batch (headless shell); not required for correctness.
+- **Raw-folder scope:** only the 7 assigned `batch4` folders were curated; other untracked `raw/sources/**` folders were intentionally left for their own batch runs.
+
 ## 2026-05-31 — Curation pass (batch 3/8: 7 new sources + audit)
 
 Third batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned `batch3` folders (per `.curation-out/batches.json`); the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **96 → 103 curated sources**.
