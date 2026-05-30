@@ -17,6 +17,7 @@ related:
   - "[[du-2024-d2sac-aigc-asp-selection]]"
   - "[[du-2024-gdm-network-optimization-tutorial]]"
   - "[[wang-gai-isac-physical-layer]]"
+  - "[[sun-2025-tjcct-twotimescale-uav-mec]]"
 created: 2026-05-29
 updated: 2026-05-31
 ---
@@ -25,7 +26,7 @@ updated: 2026-05-31
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 14 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, and surveys:
+The most frequently recurring author in the corpus, co-authoring 15 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -41,6 +42,7 @@ The most frequently recurring author in the corpus, co-authoring 14 sources span
 - [[du-2024-d2sac-aigc-asp-selection]] — diffusion-based RL (D2SAC) for edge AIGC service-provider selection.
 - [[du-2024-gdm-network-optimization-tutorial]] — tutorial on generative diffusion models in network optimization.
 - [[wang-gai-isac-physical-layer]] — generative AI for ISAC from the physical-layer perspective.
+- [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale joint resource-allocation / offloading / trajectory-control UAV-MEC (TJCCT).
 
 ## Contributions to this wiki
 
