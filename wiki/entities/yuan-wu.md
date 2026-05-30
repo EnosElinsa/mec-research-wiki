@@ -32,4 +32,4 @@ Email: yuanwu@um.edu.mo
 
 ## Contributions to this wiki
 
-- Senior co-author across the entire [[constrained-multi-objective-evolutionary-algorithm|CMOP-evolutionary]] lineage. The lineage's recurring application focus on UAV-MEC (path planning, dispersed computing, urban environments, vehicular V2X fusion) overlaps with his broader research on edge computing and resource allocation — extended in batch 4 to maritime multi-access (FDMA/NOMA) offloading and in batch 6 to the marine double-auction and USV cooperative-jamming designs (the University of Macau marine line with [[liping-qian]] and [[minghui-dai]]).
+- Senior co-author across the entire [[constrained-multi-objective-evolutionary-algorithm|CMOP-evolutionary]] lineage. The lineage's recurring application focus on UAV-MEC (path planning, dispersed computing, urban environments, vehicular V2X fusion) overlaps with his broader research on edge computing and resource allocation — extending into maritime multi-access (FDMA/NOMA) offloading and the marine double-auction and USV cooperative-jamming designs (the University of Macau marine line with [[liping-qian]] and [[minghui-dai]]).

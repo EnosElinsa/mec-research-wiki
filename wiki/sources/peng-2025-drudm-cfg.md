@@ -72,7 +72,7 @@ A custom prioritized replay variant that scores transitions by a combination of 
 - **Average delay** — lowered by the urgency-weighted admission (DRUDM) and the UAV→HAS overflow path.
 - **Sparse-region service** — explicitly improves under CFG; without CFG, UAVs concentrate on dense pockets.
 
-(Specific percentage figures not pulled from the paper for this curation pass — see the simulation section of the raw markdown if needed.)
+(Specific percentage figures are not transcribed here — see the simulation section of the raw markdown if needed.)
 
 ## Limitations / future work
 

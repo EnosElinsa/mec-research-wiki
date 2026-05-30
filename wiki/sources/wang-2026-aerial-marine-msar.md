@@ -66,7 +66,7 @@ The MASS model is novel for the wiki: **historical / pre-measured CSI** is assum
 
 ## Cross-link with related sources
 
-- **Maritime track:** opens a new track in the wiki. Related to [[liu-2025-haps-uav-maritime-iot]] (HAP-UAV maritime IoT, also new in this batch).
+- **Maritime track:** a core member of the maritime MEC track. Related to [[liu-2025-haps-uav-maritime-iot]] (HAP-UAV maritime IoT).
 - **Hierarchical aerial MEC:** alongside [[peng-2025-drudm-cfg]], [[nabi-2025-jour-hierarchical-aerial]], [[bao-2025-ddpg-video-offloading]].
 - **Solver:** classical decomposition (matching + convex + PGD) rather than DRL — same family as [[bi-2025-sg-mapg]] and [[wang-2025-uav-swarm-stackelberg]].
 

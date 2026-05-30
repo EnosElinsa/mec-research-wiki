@@ -58,7 +58,7 @@ Downlink only, fixed altitude, 2D trajectory. Future work (stated): co-existence
 
 ## Relation to the corpus
 
-A canonical **multi-UAV-as-base-station** trajectory/scheduling/power paper from the Wu/Zeng/Zhang group — a **communications** (max-min rate) framing rather than compute offloading, so it is a methodological ancestor to the offloading-centric multi-UAV work and pairs naturally with the same group's UAV-comm tutorial [[zeng-2019-uav-comm-tutorial-5g]] and rotary-wing energy paper [[zeng-2019-rotary-wing-energy-min]]. Its BCD+SCA + min-rate fairness machinery recurs in the DRL multi-UAV trajectory study [[chang-2022-marl-multiuav-trajectory]]. Distinct from the within-batch single-UAV **MEC offloading** paper [[hu-2019-pdd-uav-mec-offloading]] (different author group, offloading objective). This is the most-cited anchor of the UAV-communications track.
+A canonical **multi-UAV-as-base-station** trajectory/scheduling/power paper from the Wu/Zeng/Zhang group — a **communications** (max-min rate) framing rather than compute offloading, so it is a methodological ancestor to the offloading-centric multi-UAV work and pairs naturally with the same group's UAV-comm tutorial [[zeng-2019-uav-comm-tutorial-5g]] and rotary-wing energy paper [[zeng-2019-rotary-wing-energy-min]]. Its BCD+SCA + min-rate fairness machinery recurs in the DRL multi-UAV trajectory study [[chang-2022-marl-multiuav-trajectory]]. Distinct from the single-UAV **MEC offloading** paper [[hu-2019-pdd-uav-mec-offloading]] (different author group, offloading objective). This is the most-cited anchor of the UAV-communications track.
 
 ## Raw artifacts
 

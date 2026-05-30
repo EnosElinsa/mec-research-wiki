@@ -55,7 +55,7 @@ The parse's introduction states future work is directed at the end of the paper;
 
 ## Relation to the corpus
 
-A **non-UAV, terrestrial small-cell** MEC entry — distinct from the corpus's UAV-MEC bulk — that nonetheless shares the **DRL-for-offloading** machinery. Its [[ddqn|Double-DQN]] lineage connects to the [[wang-2022-cat-rat-fmec-trajectory|RAT (twin-DQN + PER)]] approach, while its **mobility-aware** framing and **adaptive load balancing** theme give the corpus its first dedicated [[small-cell-mec]] and [[mobility-aware-offloading]] pages; the load-balancing objective parallels the UAV-side [[load-balancing-uav-mec]] notion. Co-author Xuemin Shen also anchors the batch-5 vehicular paper [[peng-2020-maddpg-uav-vehicular]].
+A **non-UAV, terrestrial small-cell** MEC entry — distinct from the corpus's UAV-MEC bulk — that nonetheless shares the **DRL-for-offloading** machinery. Its [[ddqn|Double-DQN]] lineage connects to the [[wang-2022-cat-rat-fmec-trajectory|RAT (twin-DQN + PER)]] approach, while its **mobility-aware** framing and **adaptive load balancing** theme anchor the [[small-cell-mec]] and [[mobility-aware-offloading]] pages; the load-balancing objective parallels the UAV-side [[load-balancing-uav-mec]] notion. Co-author Xuemin Shen also anchors the vehicular paper [[peng-2020-maddpg-uav-vehicular]].
 
 ## Raw artifacts
 

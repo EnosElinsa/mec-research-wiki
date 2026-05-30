@@ -54,7 +54,7 @@ No explicit quantitative future-work targets are grounded in the captured parse 
 
 ## Relation to the corpus
 
-An early (2020) **vehicular MEC + UAV** MADDPG entry by the Waterloo group (Haixia Peng; Xuemin Shen). It complements the corpus's vehicular-MEC track ([[zhang-2025-mcma-task-migration]], [[ma-2025-pdqn-vehicular-mec]], [[sun-2023-bargain-match-vec]]) by adding a **UAV-assisted** twist, and joins the MADDPG multi-agent family with [[seid-2021-madrl-multiuav-iot-edge]] and [[wang-2021-maddpg-multiuav-trajectory]] (grounding the shared [[maddpg]] page). Co-author Xuemin Shen also appears on the batch-5 [[duan-2023-moto-smallcell-offloading]]; co-author Haixia Peng recurs in the already-curated maritime [[wang-2024-twotier-satellite-marine]] / [[wang-2024-maritime-eh-jcora]] (Xi'an Jiaotong University in those papers).
+An early (2020) **vehicular MEC + UAV** MADDPG entry by the Waterloo group (Haixia Peng; Xuemin Shen). It complements the corpus's vehicular-MEC track ([[zhang-2025-mcma-task-migration]], [[ma-2025-pdqn-vehicular-mec]], [[sun-2023-bargain-match-vec]]) by adding a **UAV-assisted** twist, and joins the MADDPG multi-agent family with [[seid-2021-madrl-multiuav-iot-edge]] and [[wang-2021-maddpg-multiuav-trajectory]] (grounding the shared [[maddpg]] page). Co-author Xuemin Shen also appears on [[duan-2023-moto-smallcell-offloading]]; co-author Haixia Peng recurs in the maritime [[wang-2024-twotier-satellite-marine]] / [[wang-2024-maritime-eh-jcora]] (Xi'an Jiaotong University in those papers).
 
 ## Raw artifacts
 

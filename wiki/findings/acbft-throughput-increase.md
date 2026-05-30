@@ -34,4 +34,4 @@ The number is the headline evaluation result for the protocol's chain-propagatio
 
 This is the consensus-layer member of the wiki's **trust / blockchain-on-edge** thread. It complements the aggregation-layer result in [[bcsa-frl-tolerates-up-to-half-malicious-satellites]] ([[mao-2025-bcsa-frl]]) and the secure-aerial-MEC result in [[masac-beats-maddpg-sensing-queue]] ([[qin-2025-bcuav-masac]]) — three different blockchain-on-edge mechanisms (consensus ordering / correction-voting + reputation aggregation / Lyapunov-coupled MASAC), each validated on its own metric.
 
-> Note: this finding was deferred in the 2026-05-30 pass because the 96.2% figure was then believed to be absent from the parse. The 2026-05-31 audit located it verbatim at parse L35 and restored it; this finding records the now-grounded result.
+> Grounding note: the "96.2%" headline is stated verbatim in the paper's contributions list (parse L35); the per-node-count Fig. 6 curves are the indicative shape behind it.

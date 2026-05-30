@@ -103,7 +103,7 @@ Curating these turns implicit shared ancestry into explicit wiki nodes and would
 **Breadth (open/grow thin tracks).** The overview's smallest tracks and the recent, in-scope candidates that would grow them:
 
 - **Anti-jamming / security-DRL (1 src)** — e.g. Secure computation offloading for marine IoT: An energy-efficient desi (IEEE Trans. Veh. Technol. (TVT) 2023, cited 5×).
-- **Post-disaster MEC (2 src)** — no strong not-yet-curated candidate surfaced in this pass; watch for new parses.
+- **Post-disaster MEC (2 src)** — no strong not-yet-curated candidate currently identified; watch for new parses.
 - **UAV-swarm collaborative computing (3 src)** — e.g. Multi-objective optimization for UAV swarm-assisted IoT with virtual a (IEEE Trans. Mobile Comput. (TMC) 2024, cited 2×).
 
 **Suggested next curation batch (highest leverage):** the top depth anchors above (the most-cited not-yet-curated works, all Q1 venues), plus the strongest breadth candidate for the thinnest classifiable track. None are currently curated; none are yet parsed in `raw/sources/`.

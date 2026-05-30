@@ -54,7 +54,7 @@ The captured parse does not enumerate explicit quantitative future-work targets 
 
 ## Relation to the corpus
 
-A **MADDPG cooperative multi-UAV MEC** entry that sits with [[zhao-2022-matd3-multiuav-ec-offloading]] (MATD3), [[he-2023-fairness-3d-multiuav-maddpg]] (fairness MADDPG), [[chang-2022-marl-multiuav-trajectory]] (MARL trajectory), and the batch-5 [[wang-2021-maddpg-multiuav-trajectory]] (MADDPG trajectory) in the multi-agent UAV-MEC family. It is one of the **earlier** (2021) examples of casting multi-UAV offloading as a [[stochastic-game]] and grounds the standalone [[maddpg]] concept page. Distinct from the other batch-5 MADDPG papers by venue, authors (UESTC/DFKI), and its clustered-IoT-edge framing.
+A **MADDPG cooperative multi-UAV MEC** entry that sits with [[zhao-2022-matd3-multiuav-ec-offloading]] (MATD3), [[he-2023-fairness-3d-multiuav-maddpg]] (fairness MADDPG), [[chang-2022-marl-multiuav-trajectory]] (MARL trajectory), and [[wang-2021-maddpg-multiuav-trajectory]] (MADDPG trajectory) in the multi-agent UAV-MEC family. It is one of the **earlier** (2021) examples of casting multi-UAV offloading as a [[stochastic-game]] and grounds the standalone [[maddpg]] concept page. Distinct from the other MADDPG papers by venue, authors (UESTC/DFKI), and its clustered-IoT-edge framing.
 
 ## Raw artifacts
 

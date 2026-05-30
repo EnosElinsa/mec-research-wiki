@@ -30,4 +30,4 @@ Co-authored 6 sources in this wiki, spanning maritime/space-air-marine edge comp
 
 ## Contributions to this wiki
 
-- A recurring co-author in the Dalian-Maritime-University maritime-MEC cluster with [[bin-lin]] and [[zhen-wang]], and the **cross-cutting thread of batch 4** — four of the seven batch-4 sources carry his name (maritime-EH, hybrid-marine, IIoT DNN-pruning, and VNF/SGIN), broadening his footprint from maritime offloading into IIoT and NFV/SDN service chaining.
+- A recurring co-author in the Dalian-Maritime-University maritime-MEC cluster with [[bin-lin]] and [[zhen-wang]], and a **cross-cutting author** across several tracks — his name appears on the maritime-EH, hybrid-marine, IIoT DNN-pruning, and VNF/SGIN sources, broadening his footprint from maritime offloading into IIoT and NFV/SDN service chaining.

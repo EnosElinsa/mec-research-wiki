@@ -58,7 +58,7 @@ Simulation-based, specific to the washing-machine fault-detection service; the p
 
 ## Relation to the corpus
 
-A rare **DNN-pruning-aware** MEC entry that pairs **DNN model compression** with offloading and resource allocation — adjacent to the model-partition theme of [[dnn-model-partition]] but optimizing pruning rate rather than split point. Methodologically it joins the **SAC + hybrid-action** family ([[soft-actor-critic]], [[hybrid-action-decision-making]]), and its **MRP** formulation and **dynamic time-varying QoS** are new vocabulary. Shares author Qiang Ye (University of Calgary) with three other batch-4 sources ([[wang-2024-maritime-eh-jcora]], [[zhang-2025-vnf-sgin-dql]]) — Qiang Ye is the cross-cutting thread of this batch. Anchors the new [[dynamic-qos-constraints]] and [[markov-reward-process]] concepts.
+A rare **DNN-pruning-aware** MEC entry that pairs **DNN model compression** with offloading and resource allocation — adjacent to the model-partition theme of [[dnn-model-partition]] but optimizing pruning rate rather than split point. Methodologically it joins the **SAC + hybrid-action** family ([[soft-actor-critic]], [[hybrid-action-decision-making]]), and its **MRP** formulation and **dynamic time-varying QoS** are distinctive vocabulary. Shares author Qiang Ye (University of Calgary) with [[wang-2024-maritime-eh-jcora]] and [[zhang-2025-vnf-sgin-dql]] — the Qiang-Ye cross-cutting thread. Anchors the [[dynamic-qos-constraints]] and [[markov-reward-process]] concepts.
 
 ## Raw artifacts
 
