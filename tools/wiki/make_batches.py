@@ -1,9 +1,8 @@
 """Split a list of papers (or the genuinely-new uncurated folders) into
 context-window-sized batches for a multi-invocation curation/synthesis run.
 
-Replaces the hardcoded make_batches.py one-off (which assumed exactly 52 papers
-and a fixed skip-list). Batch size is a parameter; the input defaults to the
-genuinely-new folders reported by curation_status.py.
+Batch size is a parameter; the input defaults to the genuinely-new folders
+reported by curation_status.py.
 
 Usage:
   # derive the new-paper list itself, then split into batches of 7

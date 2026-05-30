@@ -5,8 +5,7 @@ dated-run references) belongs only in wiki/log.md and git commit messages; all
 other pages must read as evergreen reference material. This tool finds leaks so
 the auditor can rewrite them.
 
-Promoted from the ad-hoc .curation-out/find_process_refs.py into the maintained
-toolkit. Genuine domain uses of "batch" (ML mini-batch sizes, a paper's own
+Genuine domain uses of "batch" (ML mini-batch sizes, a paper's own
 batch-processing method) are deliberately NOT flagged.
 
 Usage:
