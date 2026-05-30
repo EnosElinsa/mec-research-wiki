@@ -65,13 +65,29 @@ Every page other than `log.md` — sources, concepts, entities, findings, synthe
   - `wiki/log.md` — reverse-chronological activity log.
   - `wiki/references/` — **owned by `mec-reference-scout`** (reference DB + recommendations). Read it if useful, but do **not** rewrite or clobber it.
 - `purpose.md` (repo root) — the project's purpose statement. Note that Obsidian resolves `[[purpose]]` to this root file, so it is a **valid** link target (see wikilink integrity below).
-- `.gitignore` excludes `.llm-wiki/` (local indices/runtime state), `.curation-out/` (curation scratch), and `.curation-context.md` (transient brief). **Never commit those** and never `git add -f` them.
+- `tools/wiki/` — the **git-tracked, maintained toolkit** of parameterized Python CLIs shared by all four MEC-wiki agents (link integrity, raw/curated reconciliation, dedup detection, batch planning, count reconciliation, process-narration scanning). Read its `README.md` and reuse these scripts instead of hand-writing ad-hoc equivalents (see "Toolkit & tooling discipline").
+- `.gitignore` excludes `.llm-wiki/` (local indices/runtime state), `.curation-out/` (curation scratch — transient state/reports only, never reusable logic), and `.curation-context.md` (transient brief). **Never commit those** and never `git add -f` them.
 
 ## Shell environment
 
 The shell is **Windows PowerShell**. Chain commands with `;`, not `&&`. Use `curl.exe` (not the `curl` alias) for HTTP calls. Quote paths that contain spaces — the `raw/sources/` folder names do. Prefer dedicated file/search tools over `cat`/`grep`/`find`.
 
 > **UTF-8 warning (critical for meta-doc rewrites).** PowerShell's default ANSI codepage can corrupt UTF-8 em-dashes (`—`), en-dashes (`–`), and curly quotes (`"` `"` `'`) when a file is rewritten through shell redirection (`>`, `Out-File`, `Set-Content`), turning them into mojibake (`â€"` etc.). When you rewrite `log.md`, `index.md`, or `overview.md`, use the **dedicated file tools**, never PowerShell redirection, and verify the result is mojibake-free at the byte level before committing.
+
+## Toolkit & tooling discipline
+
+A maintained, version-controlled toolkit lives at the git-tracked path `tools/wiki/`. It is the shared home for the reconciliation/checking logic that used to be re-written as throwaway one-offs in `.curation-out/` every session. The audit leans on it heavily — it is exactly the kind of repeatable correctness/consistency checking these scripts exist for.
+
+- **Use the maintained toolkit first.** Before doing a wikilink-integrity check, count reconciliation, raw/curated reconciliation, duplicate-ingest detection, or process-narration scanning, **read `tools/wiki/README.md`** and run the existing script. Do **not** hand-write an ad-hoc PowerShell/Python equivalent when a tool already covers it. The scripts import a shared `wikilib` (which auto-discovers the repo root) and run from the repo root as `python tools/wiki/<script>.py`; `--json PATH` writes a machine-readable report (a relative PATH lands in `.curation-out/`). The current set:
+  - `linkcheck.py` — Obsidian-faithful wikilink integrity / zero-dangling check (`--orphans` to also list orphan pages, `--json`); exit 1 if any dangling link. It already applies the Obsidian resolution rules (basename match including root files like `[[purpose]]`, code-span / table-escaped-alias stripping), so prefer it over re-deriving those rules by hand.
+  - `process_refs.py` — find curation process-narration (batch/pass labels) leaked into any page except `log.md` (`--json`); exit 1 if any found. This is your first-pass scanner for the wording/evergreen audit.
+  - `curation_status.py` — reconcile `raw/sources/` vs curated pages, list uncurated folders, detect duplicate MinerU ingests (`--dupes`, `--near-ratio`, `--json`); exit 1 if genuinely-new papers remain.
+  - `corpus_counts.py` — exact page counts per wiki type + `raw/sources` count + `log.md` size, for reconciling the `overview.md` Snapshot and `index.md` (`--json`).
+  - `make_batches.py` — split a worklist into context-window-sized batches (`--size` required, `--input`, `--json`); useful for tracking which pages an audit batch covers.
+- **Extend, don't fork.** If an existing tool is close but insufficient (e.g. you need a new orphan/consistency report), **add a flag or generalize it** rather than writing a new variant. If a genuinely new reusable need arises, **add a new parameterized script to `tools/wiki/`** (import `wikilib`, argparse CLI, no hardcoded paths/counts/batch numbers, print a human summary, support `--json`), update `tools/wiki/README.md`, and commit it **with** the audit work that motivated it.
+- **Reusable code is tracked; state is scratch.** Reusable scripts live in the git-tracked `tools/wiki/` **only**. `.curation-out/` is gitignored and may hold **only** transient state/report files (JSON reports, decision notes, grounding dumps) — never reusable logic. Never leave reusable logic behind in `.curation-out/`, and never `git add -f` a gitignored scratch path.
+- **Accumulate experience every session (the ratchet).** Each invocation should leave the toolkit at least as capable as it found it: promote any one-off you were tempted to write into a maintained tool, refine an existing tool's robustness/flags, and improve the README. Treat the toolkit as **append/refine-only** so the workflow converges toward a fixed, stable, trusted set over time rather than being re-derived each session. Once a tool is stable, prefer reusing it unchanged.
+- **Exit codes gate commits.** `linkcheck.py` (dangling links) and `process_refs.py` (leaked process-narration) return non-zero on the exact defects this audit must drive to zero — a clean run on both is a precondition for committing.
 
 ## LLM Wiki local API (read-only verification backbone)
 
@@ -151,10 +167,10 @@ This is a repeatable **no-new-papers quality pass** built on two pillars: **refi
 ### Phase 0 — Detect state & confirm no new papers
 
 - Run `git status` and `git log --oneline` to confirm a clean tree and to see recent passes (so you don't redo finished work).
-- Enumerate the `raw/sources/` folder count and the `wiki/sources/*.md` page count, then **reconcile them**:
-  - If counts match, good.
-  - If there are **more raw folders than source pages** (e.g. 84 raw folders vs 82 source pages), identify the unmatched folders. **Expect duplicate MinerU ingests** — the same paper re-parsed under a different UUID, byte-identical title/abstract. Confirm each is a true duplicate and note it; it needs no new page.
-  - If an unmatched folder is a **genuinely uncurated paper** (a real paper with no wiki page and no duplicate), **STOP**: tell the user this is a job for `mec-wiki-curator` and do **not** curate it here.
+- Reconcile `raw/sources/` against the `wiki/sources/*.md` pages with `python tools/wiki/curation_status.py --dupes` rather than counting folders and pages by hand:
+  - If everything matches, good.
+  - The tool flags **duplicate MinerU ingests** — the same paper re-parsed under a different UUID, byte-identical title/abstract. Confirm each is a true duplicate and note it; it needs no new page.
+  - If it reports a **genuinely uncurated paper** (a real paper with no wiki page and no duplicate — the tool exits non-zero while any remain), **STOP**: tell the user this is a job for `mec-wiki-curator` and do **not** curate it here.
 - Probe `GET /api/v1/health`; resolve the project (default `current`); pull `GET /api/v1/graph` for **baseline node/edge counts** to compare against at wrap-up.
 
 ### Phase A — Meta-doc cleanup (highest priority)
@@ -175,7 +191,7 @@ The user cares most about neat, well-formulated meta docs. Fix these first.
 - Tighten section organization.
 
 **`wiki/overview.md`:**
-- Reconcile the **Snapshot counts to EXACT verified numbers** (sources / concepts / entities / etc.).
+- Reconcile the **Snapshot counts to EXACT verified numbers** (sources / concepts / entities / etc.) using `python tools/wiki/corpus_counts.py`, which prints the exact per-type page counts plus the `raw/sources` count and `log.md` size — don't tally them by hand.
 - Fix derived phrasing (e.g. "N author pages + pytorch").
 - Verify each **track-table row's source list** against the real pages.
 - Rewrite any **process-narration** into evergreen statements (see "Wording") and flag stale caveats that reason over an older, smaller corpus — fixing the wording yourself, but leaving the actual *broadening* of coverage to `mec-wiki-synthesizer`.
@@ -184,13 +200,13 @@ The user cares most about neat, well-formulated meta docs. Fix these first.
 
 - **DOI / venue / year.** Spot-check a reasonable sample of source pages against the `Digital Object Identifier` line and the header of each parse; fix mismatches. Where a regex first-match grabbed a **precursor/reference DOI**, confirm the real one from the parse. **Web search is verification-only** — confirm a venue / quartile / abbreviation when the parse is silent or ambiguous; **never override** what the paper itself states, and never invent.
 - **Ungrounded-number hunt.** Scan source / finding / synthesis / comparison pages for **headline numeric claims** and verify each against the parse; soften or correct any number not actually in the parse. Two cautionary patterns seen in this repo: a **"96.2% throughput"** claim that wasn't in the parse, and a **comparison that quoted a PSO baseline's margin as if it were the MADDPG margin**. Mark figure-/abstract-derived numbers as **indicative**.
-- **Wikilink integrity.** Use `GET /graph` AND a file-level check to confirm **ZERO dangling links**. Apply Obsidian's resolution rules so you don't re-flag false positives:
+- **Wikilink integrity.** Run `python tools/wiki/linkcheck.py --orphans` as the authoritative file-level check — it confirms **ZERO dangling links** (exit non-zero if any remain) and lists orphan pages, and it already encodes Obsidian's resolution rules so you don't re-flag false positives. Cross-check against `GET /graph` when the API is reachable. The rules the tool applies (so you can reason about its output):
   - Links resolve by **basename, including root files** — e.g. `[[purpose]]` → root `purpose.md` is **VALID**.
-  - **Strip code-span / inline-code targets** and **table-escaped `\|` aliases** before flagging anything.
-  - Report **orphan pages** (no links in/out) as candidates for cross-linking, **not as errors**.
+  - **Code-span / inline-code targets** and **table-escaped `\|` aliases** are stripped before anything is flagged.
+  - **Orphan pages** (no links in/out) are reported as candidates for cross-linking, **not as errors**.
 - **Frontmatter validity.** Validate `type` / `title` / `tags` / dates / `H1` (and the type-specific keys) via diagnostics on every touched or new page.
 - **Consistency.** Check slug conventions; that `related:` lists contain **no self-references**; and that tag vocabulary is **reused rather than fragmented**.
-- **Wording / evergreen audit.** Scan every page **except `log.md`** for process-narration — batch numbers, run labels, "this/prior/next pass", dated-run references, "newly confirmed (batch N)", "within-batch" — and rewrite each into an evergreen statement of fact (see "Wording"). This is a first-class audit defect, on par with a wrong DOI: the published pages must not narrate the curation process. Leave genuine domain uses of "batch" (ML mini-batch sizes, a paper's batch-processing method) untouched.
+- **Wording / evergreen audit.** Run `python tools/wiki/process_refs.py` first — it scans every page **except `log.md`** for process-narration (batch numbers, run labels, "this/prior/next pass", dated-run references, "newly confirmed (batch N)", "within-batch") and exits non-zero naming the offending pages. Then rewrite each flagged instance into an evergreen statement of fact (see "Wording"). This is a first-class audit defect, on par with a wrong DOI: the published pages must not narrate the curation process. The tool aims to leave genuine domain uses of "batch" (ML mini-batch sizes, a paper's batch-processing method) untouched; if it false-positives or misses a pattern, **extend `process_refs.py`** rather than working around it by hand (see "Toolkit & tooling discipline").
 
 ### Phase C — Record coverage gaps (route to the synthesizer; do NOT fill them)
 
@@ -218,7 +234,7 @@ A large wiki will not fit in one context window, and a saturated context is wher
 
 - **Phase A (meta-doc cleanup)** is a coherent unit — do it once in its own invocation (the three meta docs are interdependent), then commit.
 - **Phase B (correctness/consistency)** scales with the number of pages: process the source/derived pages in **batches**, one batch per fresh invocation, each ending in its own commit. **Determine the batch size from the context window, not a fixed number** — size each batch so the parses you must open to verify claims + the pages you audit fit with generous headroom (leave roughly a third of the window free). On a typical large context window that lands around **10–20 pages per batch** (audit reads are lighter than curation writes, since you usually open a parse only to verify a specific claim); on a smaller window, fewer. When unsure, prefer a smaller batch.
-- **One batch = one fresh invocation = one commit.** Track which pages have been audited (e.g. a checklist in the log or commit messages) so successive invocations cover the wiki exhaustively without re-doing finished work.
+- **One batch = one fresh invocation = one commit.** Track which pages have been audited (e.g. a checklist in the log or commit messages, or an explicit batch plan from `python tools/wiki/make_batches.py --size <N> --json batches.json` written to scratch) so successive invocations cover the wiki exhaustively without re-doing finished work.
 - The audit is **idempotent** — re-running over an already-clean batch should converge (find nothing to change), not churn.
 - If a run was interrupted, reconcile state (`git status`, `git log`) before resuming.
 
@@ -235,7 +251,7 @@ You **edit** existing pages (meta docs, and corrections to sources/derived pages
 You own the repository's hygiene for maintenance work. Once a pass verifies clean (meta docs tidy and mojibake-free, frontmatter valid, **zero** new dangling links, DOIs/venues confirmed), stage, commit, and push **without waiting to be asked** — mirroring `mec-wiki-curator`'s and `mec-reference-scout`'s safe posture.
 
 - **Branch.** The repo's established pattern is committing batches directly to `main` (confirm with `git log --oneline`). Stay on `main` unless the user has set up a different branch. Never force-push, hard-reset, or rewrite published history.
-- **Stage deliberately.** Stage the tidied meta docs (`log.md` / `index.md` / `overview.md`) and any corrected source/derived pages. **Do not clobber `wiki/references/**`** — that belongs to the scout. Confirm `.gitignore` is excluding scratch/transient paths (`.llm-wiki/`, `.curation-out/`, `.curation-context.md`); never `git add -f` a gitignored path. Run `git status --short` and review the staged set before committing.
+- **Stage deliberately.** Stage the tidied meta docs (`log.md` / `index.md` / `overview.md`) and any corrected source/derived pages, plus **any `tools/wiki/` changes you made this pass** (an extended or new toolkit script plus its `README.md` update belong in the same commit as the audit work that motivated them). **Do not clobber `wiki/references/**`** — that belongs to the scout. Confirm `.gitignore` is excluding scratch/transient paths (`.llm-wiki/`, `.curation-out/`, `.curation-context.md`); never `git add -f` a gitignored path. Run `git status --short` and review the staged set before committing.
 - **Commit message.** Write a concise, descriptive message in the repo's style: a summary line naming the pass (e.g. `Audit wiki: tidy meta docs, fix DOIs/wording, reconcile counts`), followed by body lines covering the meta-doc cleanups, correctness/wording fixes, count reconciliation, the audit result (DOIs verified, dangling-link status = zero, graph node/edge stats), and any coverage gaps routed to `mec-wiki-synthesizer`. Mirror the tone of prior commits in `git log`.
 - **One coherent commit per pass/batch by default.** Bundle a meta-doc cleanup or an audit batch into a single commit unless the user asks for granular commits.
 - **Push.** `git push` to the tracking remote. On **Windows PowerShell**, git writes progress to **stderr**, so a non-zero `$LASTEXITCODE` with a `to <remote>` line can still be **success** — verify with `git status -sb` and by comparing `git rev-parse --short HEAD` against `origin/main`, not the exit code alone.
@@ -251,6 +267,7 @@ You own the repository's hygiene for maintenance work. Once a pass verifies clea
 - **Keep every page except `log.md` evergreen.** Actively remove process-narration (batch numbers, run labels, "this/prior/next pass", dated-run references) from sources, concepts, entities, findings, synthesis, `index.md`, and `overview.md`, rewriting it into statements of fact about the corpus (see "Wording"). Per-run bookkeeping lives in `log.md` and the commit message only. Leave genuine domain uses of "batch" untouched.
 - **Don't clobber the scout's files.** `wiki/references/**` is owned by `mec-reference-scout`.
 - **Idempotent.** Re-running is safe: the pass converges (de-dups, reorders, reconciles) rather than duplicating.
+- **Use the maintained toolkit first, and ratchet it forward.** Reach for the `tools/wiki/` scripts (`linkcheck.py`, `process_refs.py`, `corpus_counts.py`, `curation_status.py`) before hand-writing ad-hoc checks; their exit codes gate the commit. Extend an existing tool (add a flag, broaden a pattern) rather than forking it, and promote any genuinely-new reusable one-off into a parameterized `tools/wiki/` script (with a README update, committed alongside the audit) instead of leaving logic in `.curation-out/` (see "Toolkit & tooling discipline").
 - **Batch large audits.** Don't audit a big wiki in one invocation; work in context-window-sized batches across multiple invocations, one commit each (see "Batching large audits").
 - **The LLM Wiki API is read-only except `sources/rescan`**, and is an optimization that must **gracefully degrade** to local file tools when unreachable or unauthenticated. **Never leak the API token.**
 - **Match the house style** — plain, grounded, generously cross-linked, skimmable — and reuse existing vocabulary before inventing new pages.

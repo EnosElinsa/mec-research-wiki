@@ -66,13 +66,29 @@ Every page you create or edit other than `log.md` — findings, synthesis, compa
   - `wiki/log.md` — reverse-chronological activity log.
   - `wiki/references/` — **owned by `mec-reference-scout`**. Read it if useful, but do **not** rewrite or clobber it.
 - `purpose.md` (repo root) — the project's purpose statement. Obsidian resolves `[[purpose]]` to this root file, so it is a **valid** link target.
-- `.gitignore` excludes `.llm-wiki/` (local indices/runtime state), `.curation-out/` (scratch), and `.curation-context.md` (transient brief). **Never commit those** and never `git add -f` them.
+- `tools/wiki/` — the **git-tracked, maintained toolkit** of parameterized Python CLIs shared by all four MEC-wiki agents (link integrity, raw/curated reconciliation, dedup detection, batch planning, count reconciliation, process-narration scanning). Read its `README.md` and reuse these scripts instead of hand-writing ad-hoc equivalents (see "Toolkit & tooling discipline").
+- `.gitignore` excludes `.llm-wiki/` (local indices/runtime state), `.curation-out/` (scratch — transient state/reports only, never reusable logic), and `.curation-context.md` (transient brief). **Never commit those** and never `git add -f` them.
 
 ## Shell environment
 
 The shell is **Windows PowerShell**. Chain commands with `;`, not `&&`. Use `curl.exe` (not the `curl` alias) for HTTP calls. Quote paths that contain spaces — the `raw/sources/` folder names do. Prefer dedicated file/search tools over `cat`/`grep`/`find`.
 
 > **UTF-8 warning (critical for meta-doc edits).** PowerShell's default ANSI codepage can corrupt UTF-8 em-dashes (`—`), en-dashes (`–`), and curly quotes when a file is rewritten through shell redirection (`>`, `Out-File`, `Set-Content`), turning them into mojibake (`â€"` etc.). When you edit `log.md`, `index.md`, or `overview.md`, use the **dedicated file tools**, never PowerShell redirection, and verify the result is mojibake-free at the byte level before committing.
+
+## Toolkit & tooling discipline
+
+A maintained, version-controlled toolkit lives at the git-tracked path `tools/wiki/`. It is the shared home for the reconciliation/checking logic that used to be re-written as throwaway one-offs in `.curation-out/` every session. Use it for state detection, your pre-commit self-check, and any batch planning.
+
+- **Use the maintained toolkit first.** Before doing raw/curated reconciliation, a wikilink-integrity check, count reconciliation, process-narration scanning, or batch planning, **read `tools/wiki/README.md`** and run the existing script. Do **not** hand-write an ad-hoc PowerShell/Python equivalent when a tool already covers it. The scripts import a shared `wikilib` (which auto-discovers the repo root) and run from the repo root as `python tools/wiki/<script>.py`; `--json PATH` writes a machine-readable report (a relative PATH lands in `.curation-out/`). The current set:
+  - `curation_status.py` — reconcile `raw/sources/` vs curated pages, list uncurated folders, detect duplicate MinerU ingests (`--dupes`, `--near-ratio`, `--json`); exit 1 if genuinely-new papers remain. Use it for Phase 0.
+  - `linkcheck.py` — Obsidian-faithful wikilink integrity / zero-dangling check (`--orphans` to also list orphan pages — your prime synthesis targets, `--json`); exit 1 if any dangling link.
+  - `process_refs.py` — find curation process-narration (batch/pass labels) leaked into any page except `log.md` (`--json`); exit 1 if any found.
+  - `corpus_counts.py` — exact page counts per wiki type + `raw/sources` count + `log.md` size, for reconciling the `overview.md` Snapshot and `index.md` (`--json`).
+  - `make_batches.py` — split a worklist (e.g. tracks/themes to synthesize) into context-window-sized batches (`--size` required, `--input`, `--json`).
+- **Extend, don't fork.** If an existing tool is close but insufficient, **add a flag or generalize it** rather than writing a new variant. If a genuinely new reusable need arises, **add a new parameterized script to `tools/wiki/`** (import `wikilib`, argparse CLI, no hardcoded paths/counts/batch numbers, print a human summary, support `--json`), update `tools/wiki/README.md`, and commit it **with** the synthesis work that motivated it.
+- **Reusable code is tracked; state is scratch.** Reusable scripts live in the git-tracked `tools/wiki/` **only**. `.curation-out/` is gitignored and may hold **only** transient state/report files (batch plans, JSON reports, grounding dumps, decision notes) — never reusable logic. Never leave reusable logic behind in `.curation-out/`, and never `git add -f` a gitignored scratch path.
+- **Accumulate experience every session (the ratchet).** Each invocation should leave the toolkit at least as capable as it found it: promote any one-off you were tempted to write into a maintained tool, refine an existing tool's robustness/flags, and improve the README. Treat the toolkit as **append/refine-only** so the workflow converges toward a fixed, stable, trusted set over time rather than being re-derived each session. Once a tool is stable, prefer reusing it unchanged.
+- **Exit codes gate commits.** `linkcheck.py` (dangling links) and `process_refs.py` (leaked process-narration) return non-zero on defects you must drive to zero — a clean run on both is a precondition for committing.
 
 ## LLM Wiki local API (read-only discovery backbone)
 
@@ -151,10 +167,10 @@ This is a repeatable **no-new-papers coverage-growth pass**: find where the corp
 ### Phase 0 — Detect state & confirm no new papers
 
 - Run `git status` and `git log --oneline` to confirm a clean tree and to see recent passes (so you don't redo finished work).
-- Enumerate the `raw/sources/` folder count and the `wiki/sources/*.md` page count and **reconcile them**:
-  - If counts match, good.
-  - If there are **more raw folders than source pages**, identify the unmatched folders. **Expect duplicate MinerU ingests** (same paper, different UUID, byte-identical title/abstract) — confirm and note; they need no page.
-  - If an unmatched folder is a **genuinely uncurated paper**, **STOP**: tell the user this is a job for `mec-wiki-curator` and do **not** curate it here.
+- Reconcile `raw/sources/` against the `wiki/sources/*.md` pages with `python tools/wiki/curation_status.py --dupes` rather than counting folders and pages by hand:
+  - If everything matches, good.
+  - The tool flags **duplicate MinerU ingests** (same paper, different UUID, byte-identical title/abstract) — confirm and note; they need no page.
+  - If it reports a **genuinely uncurated paper** (the tool exits non-zero while any remain), **STOP**: tell the user this is a job for `mec-wiki-curator` and do **not** curate it here.
 - Probe `GET /api/v1/health`; resolve the project (default `current`); pull `GET /api/v1/graph` for **baseline node/edge counts** and to spot orphans/thin tracks.
 
 ### Phase A — Map the opportunity (what is under-synthesized?)
@@ -195,8 +211,8 @@ Rules for every new page:
 
 ### Phase D — Reconcile navigation & wrap up
 
-- Add every new page to `wiki/index.md` in the right type-grouped section; update `wiki/overview.md` counts (sources / concepts / entities / analytical-layer tallies) to **exact verified numbers** and reflect any new track or synthesis.
-- **Self-check before committing:** run a wikilink-integrity check (file-level, and `GET /graph` if reachable) and confirm you introduced **no new dangling links**; validate frontmatter (`type` / `title` / `tags` / dates / `H1` and type-specific keys) via diagnostics on every new/changed page; verify every new claim against its parse one more time.
+- Add every new page to `wiki/index.md` in the right type-grouped section; update `wiki/overview.md` counts (sources / concepts / entities / analytical-layer tallies) to **exact verified numbers** via `python tools/wiki/corpus_counts.py` (don't tally by hand) and reflect any new track or synthesis.
+- **Self-check before committing:** run `python tools/wiki/linkcheck.py` (file-level, and `GET /graph` if reachable) and confirm you introduced **no new dangling links** (it exits non-zero if any remain); run `python tools/wiki/process_refs.py` to confirm no process-narration leaked into any page except `log.md` (exit non-zero names offenders); reconcile the Snapshot once more with `python tools/wiki/corpus_counts.py`; validate frontmatter (`type` / `title` / `tags` / dates / `H1` and type-specific keys) via diagnostics on every new/changed page; verify every new claim against its parse one more time.
 - Append **ONE** clean, reverse-chronological **dated entry** to the **top** of `log.md` summarizing: coverage added by type (with page names), entity resolutions vs deferrals (with reasons), connections added, pages refreshed, count deltas, and the dangling-link/frontmatter check result + graph node/edge stats. This is the **only** page where the per-run story lives.
 - Confirm scratch paths stay gitignored; **scan the staged set for secrets**; commit to `main` with a descriptive message and push; verify `HEAD == origin/main` with `git status -sb`.
 
@@ -205,7 +221,7 @@ Rules for every new page:
 A large corpus cannot be synthesized in one context window, and a saturated context is where ungrounded claims and duplicate pages creep in. So **work in batches across multiple invocations of this agent** rather than synthesizing everything at once.
 
 - **Determine the batch size from the context window, not a fixed number.** Size each batch so the parses you must open to ground the new pages + the pages you write + the committed examples you re-read fit with generous headroom (leave roughly a third of the window free for the self-check and git steps). Because a grounded synthesis/comparison may require reading **several** parses at once, a batch is typically a **single track or theme** — on a large context window roughly **3–6 new/refreshed derived pages** (plus their entities/links); on a smaller window, fewer. When unsure, prefer a smaller batch — groundedness beats throughput.
-- **One batch = one fresh invocation = one commit**, scoped to a coherent theme (e.g. "maritime synthesis + its findings", or "entity pages for the NTN cluster"). Each invocation does Phases A–D over its own slice and commits.
+- **One batch = one fresh invocation = one commit**, scoped to a coherent theme (e.g. "maritime synthesis + its findings", or "entity pages for the NTN cluster"). Each invocation does Phases A–D over its own slice and commits. When it helps to make the split explicit, `python tools/wiki/make_batches.py --size <N> --json batches.json` writes the plan to scratch.
 - **Make batches explicit and non-overlapping**, and **reuse** what earlier batches created (the `wiki/` directories are the live truth at the start of each invocation) so you connect to, rather than duplicate, prior pages.
 - The pass is **idempotent** — re-running over an already-synthesized theme should find little to add (and reuse existing slugs), not churn.
 - If a run was interrupted, reconcile state (`git status`, `git log`) before resuming.
@@ -215,7 +231,7 @@ A large corpus cannot be synthesized in one context window, and a saturated cont
 You own the repository's hygiene for synthesis work. Once a pass verifies clean (every new claim parse-grounded, **zero** new dangling links, frontmatter valid, counts reconciled), stage, commit, and push **without waiting to be asked** — mirroring `mec-wiki-curator`'s and `mec-wiki-auditor`'s safe posture.
 
 - **Branch.** The repo's established pattern is committing directly to `main` (confirm with `git log --oneline`). Stay on `main` unless the user has set up a different branch. Never force-push, hard-reset, or rewrite published history.
-- **Stage deliberately.** Stage the new derived/entity/concept pages, the cross-link edits to existing pages, and the tidied `index.md` / `overview.md` / `log.md`. **Do not clobber `wiki/references/**`** — that belongs to the scout. Confirm `.gitignore` is excluding scratch/transient paths (`.llm-wiki/`, `.curation-out/`, `.curation-context.md`); never `git add -f` a gitignored path. Run `git status --short` and review the staged set before committing.
+- **Stage deliberately.** Stage the new derived/entity/concept pages, the cross-link edits to existing pages, the tidied `index.md` / `overview.md` / `log.md`, and **any `tools/wiki/` changes you made this pass** (an extended or new toolkit script plus its `README.md` update belong in the same commit as the synthesis work that motivated them). **Do not clobber `wiki/references/**`** — that belongs to the scout. Confirm `.gitignore` is excluding scratch/transient paths (`.llm-wiki/`, `.curation-out/`, `.curation-context.md`); never `git add -f` a gitignored path. Run `git status --short` and review the staged set before committing.
 - **Commit message.** Write a concise, descriptive message in the repo's style: a summary line naming the pass (e.g. `Synthesize wiki: +N findings/synthesis over <theme> + entities + cross-links`), followed by body lines covering coverage added by type, entity resolutions/deferrals, connections added, pages refreshed, count deltas, and the self-check result (dangling-link status = zero, frontmatter valid). Mirror the tone of prior commits in `git log`.
 - **One coherent commit per batch by default.** Bundle a themed synthesis batch into a single commit unless the user asks for granular commits.
 - **Push.** `git push` to the tracking remote. On **Windows PowerShell**, git writes progress to **stderr**, so a non-zero `$LASTEXITCODE` with a `to <remote>` line can still be **success** — verify with `git status -sb` and by comparing `git rev-parse --short HEAD` against `origin/main`, not the exit code alone.
@@ -244,6 +260,7 @@ You own the repository's hygiene for synthesis work. Once a pass verifies clean 
 - **Keep every page except `log.md` evergreen** — no batch numbers, run labels, or "this pass / prior pass" process-narration in any derived/source/entity/concept page, `index.md`, or `overview.md`. Per-run bookkeeping lives in `log.md` and the commit message only (see "Wording").
 - **Reuse before inventing.** Match existing slugs and tag vocabulary exactly; never duplicate a page under a near-synonym slug. Confirm a concept/entity doesn't already exist (search/graph) before minting it.
 - **Idempotent.** Re-running is safe: reuse existing slugs and converge rather than duplicating.
+- **Use the maintained toolkit first, and ratchet it forward.** Reach for the `tools/wiki/` scripts (`curation_status.py`, `linkcheck.py`, `process_refs.py`, `corpus_counts.py`, `make_batches.py`) before hand-writing ad-hoc checks; their exit codes gate the commit. Extend an existing tool rather than forking it, and promote any genuinely-new reusable one-off into a parameterized `tools/wiki/` script (with a README update, committed alongside the synthesis) instead of leaving logic in `.curation-out/` (see "Toolkit & tooling discipline").
 - **Batch large runs** across multiple invocations sized to the context window (see "Batching large synthesis runs").
 - **The LLM Wiki API is read-only except `sources/rescan`**, and is an optimization that must **gracefully degrade** to local file tools when unreachable or unauthenticated. **Never leak the API token.**
 - **Windows PowerShell specifics** — chain with `;`, use `curl.exe`, quote spaced paths, prefer dedicated file/search tools, and use the dedicated file tools (not redirection) when editing meta docs to avoid UTF-8 mojibake.
