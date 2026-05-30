@@ -1,0 +1,1063 @@
+# A Three-Party Hierarchical Game for Physical Layer Security Aware Wireless Communications With Dynamic Trilateral Coalitions
+
+Ruoyang Chen , Changyan Yi , Member, IEEE, Kun Zhu , Member, IEEE, Bing Chen , Jun Cai , Senior Member, IEEE, and Mohsen Guizani , Fellow, IEEE
+
+Abstract— In this paper, a novel hierarchical game framework for physical layer security (PLS) aware wireless communications with dynamic trilateral coalitions is studied. In the considered system, legitimate users (LUs) aim to transmit secret data to associated base stations (BSs) via uplink communications under the threat of eavesdroppers (EVs), while there also exist jammers (JAs) which may choose to form coalitions with either LUs for increasing their secrecy transmission rates or EVs for increasing their eavesdropping rates in exchange for potential rewards. Different from the existing work, we explore such complicated while dynamic coalition relationships under uncertainties of wireless systems (e.g., time-varying channel conditions), and formulate a hierarchical game integrated with a dynamic trilateral coalition formation game to model strategic interactions among LUs, JAs and EVs. Particularly, we first analyze stability requirements of the trilateral coalitions and propose a hedonic coalition selection and formation algorithm for reaching a stable coalition partition in each time slot. In addition, we propose a deep reinforcement learning (DRL) based solution, which can achieve the equilibrium with long-term performance guarantees for the hierarchical game running over multiple time slots with dynamic evolutions. Simulations evaluate the proposed solution and show its superiority over its counterparts.
+
+Index Terms— Physical layer security, hierarchical game, dynamic triliateral coalitions, deep reinforcement learning.
+
+# I. INTRODUCTION
+
+HE security of wireless communications has become a major concern in recent years due to the increasing prevalence of open signal propagation environments. Traditional
+
+Manuscript received 18 April 2023; revised 13 July 2023 and 12 September 2023; accepted 2 October 2023. Date of publication 16 October 2023; date of current version 10 May 2024. This work was supported in part by the China National Key Research and Development Program under Grant 2022YFB2901600, in part by the National Natural Science Foundation of China (NSFC) under Grant 62002164, and in part by the Postgraduate Research and Practice Innovation Program of Nanjing University of Aeronautics and Astronautics (NUAA) under Grant xcxjh20221614. An earlier version of this paper was presented in part at the IEEE ICC 2023 [1]. The associate editor coordinating the review of this article and approving it for publication was K. Zhang. (Corresponding author: Changyan Yi.)
+
+Ruoyang Chen, Changyan Yi, Kun Zhu, and Bing Chen are with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing 211106, China (e-mail: ruoyangchen@nuaa.edu.cn; changyan.yi@nuaa.edu.cn; zhukun@nuaa.edu.cn; cb\_china@nuaa.edu.cn).
+
+Jun Cai is with the Department of Electrical and Computer Engineering, Concordia University, Montréal, QC H3G 1M8, Canada (e-mail: jun.cai@concordia.ca).
+
+Mohsen Guizani is with the Machine Learning Department, Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI), Abu Dhabi, United Arab Emirates (e-mail: mguizani@ieee.org).
+
+Color versions of one or more figures in this article are available at https://doi.org/10.1109/TWC.2023.3322776.
+
+Digital Object Identifier 10.1109/TWC.2023.3322776
+
+approaches to secure wireless communications, such as cryptography-based methods implemented in the network or application layers, suffer from the high computational complexity and resource consumptions associated with message encryptions and decryptions, as well as key managements [2], [3]. As a powerful supplement or even an alternative, physical layer security (PLS), due to its capability of exploiting the intrinsic physical properties of wireless channels against eavesdropping attacks, has been proposed as an effective way to protect secure transmissions in various wireless applications with high confidentiality requirements, e.g., autonomous driving, remote surgery, and smart manufacturing [2], [3].
+
+Although PLS has been widely studied in different aspects [4], most existing works did not fully explore the potential selfishness of all three parties in PLS, i.e., legitimate users (LUs), eavesdroppers (EVs) and jammers (JAs). Specifically, in practice, LUs, EVs and JAs may behave strategically and selfishly for maximizing their own utilities, while their strategies may not always be in conflict with each other but sometimes mutually beneficial. On one hand, LUs and JAs may form an alliance (or coalition) against EVs, in which LUs can offer incentives (e.g., monetary rewards or other profits) to JAs in exchange for their help to increase jamming power on EVs so as to protect secrecy. Examples include but not limited to the cooperative jamming with seller-buyer relationships between JAs and LUs [5] and the incentive jamming based secure routing in decentralized Internet of Things (IoT) [6]. On the other hand, EVs and JAs may form coalition against LUs, in which EVs can also incentivize JAs to jam LUs, forcing them to increase their data transmission power and making them vulnerable to eavesdropping. For instance, by enabling energy harvesting, EVs’ friendly JAs can be encouraged to jam LUs if they receive the wireless power transferred from EVs as the compensation [7].
+
+Despite that some pioneering works have discussed the strategic coalition formations of different parties in PLS [8], [9]. These works were mainly limited to fixed allyadversary relationships, i.e., JAs can only unilaterally assist LUs or EVs from the beginning to the end. However, such relationships (i.e., coalition formations) among the three parties in PLS may not be pre-defined or fixed, and the resulted impact to PLS requires careful modeling and analysis. These are of great importance, but has not yet been studied in the literature (to the best of our knowledge) and are very challenging due to the following reasons.
+
+1) For the sake of own interests in PLS, besides the possible coalition formations, LUs may strategically determine their base station associations and data transmission power, EVs may choose to be active and inactive at different locations, and based on these JAs may allocate different jamming powers on different links for better rewards. This necessitates a hierarchical game with multi-dimensional strategies integrating with a trilateral coalition formation game (CFG).
+
+2) Due to the uncertainties of wireless systems, e.g., time-varying channel conditions [10], all three parties’ strategies in PLS mentioned above may dynamically evolve, and a long-term performance optimization requires the investigation of dynamic games. In particular, the underlying CFG is also dynamic, meaning that any two of the three parties may temporarily form coalitions and dynamically adjust, i.e., merge and split over time [11].
+
+In this paper, we propose a novel hierarchical game framework with dynamic trilateral coalitions to characterize the strategic interactions among all three parties, i.e., LUs, JAs and EVs, in PLS-aware wireless communications. We first formulate a long-term optimization problem for respectively maximizing the utility of each party in terms of their potential strategies under system uncertainties. Then, we construct a hierarchical game to model the decision sequence and correlations of these problems. Specifically, EVs first decide to be whether active or inactive at different locations and the unit incentive for stimulating JAs’ help. Then LUs decide their BS associations, transmission power allocations and determine the unit incentive for competing with EVs in acquiring JAs’ help. Afterwards, JAs decide their ally, i.e., LUs or EVs, to form the coalition, and determine their jamming power allocations to help their ally. For analyzing such relationships, an underlying CFG is introduced, and the stability conditions for dynamic coalition changes over multiple time slots are given. On top of this, a novel hierarchical game framework is constructed and analyzed. After that, by proving the existence of stable coalition partition for the underlying CFG, we propose a hedonic coalition selection and formation (HCSF) algorithm for reaching stable coalition partition among LUs, JAs and EVs in each time slot. Furthermore, we theoretically show that, by applying such algorithm, the overall hierarchical game can eventually converge to an equilibrium. Finally, taking into account the dynamic nature of strategic evolutions (especially the dynamic coalition formation), we investigate the interdependence among multiple time slots, and develop a deep reinforcement learning (DRL) based solution for deriving the equilibrium solution with long-term performance guarantees.
+
+The main contributions of this paper are summarized as follows.
+
+• To characterize strategic interactions among LUs, JAs and EVs in PLS under system uncertainties, a hierarchical game integrated with a dynamic trilateral CFG is formulated.   
+• Considering the selfishness of all three parties in PLS, we propose an HCSF algorithm to derive the optimal coalition partition, and prove its feasibility. Moreover, the
+
+equilibrium of the overall hierarchical game is defined and theoretically analyzed.
+
+• With the objective of maximizing the long-term utilities in the given game, a DRL-based solution is proposed, which can produce the optimal strategic decisions (i.e., equilibrium) of each party in the PLS over multiple time slots in dynamic evolutions.   
+• Numerical simulations are conducted to evaluate the proposed framework along with the corresponding solution, and demonstrate its superiority over its counterparts.
+
+The rest of this paper is organized as follows: Section II reviews the related work and highlights the novelties of this paper. Section III introduces the system model and problem formulation of the three-party hierarchical game for PLS-aware wireless communications. In Section IV, the underlying CFG and the overall hierarchical game are analyzed, and then an HCSF algorithm and a DRL-based solution are proposed. Simulation results are given in Section V, followed by the conclusion in Section VI.
+
+# II. RELATED WORK
+
+Due to the great potential in improving the secrecy performance of wireless communications, the PLS has attracted increasing research attentions. For instance, Xu et al. in [12] developed a block coordinate descent based algorithm for resource management in secure ground-to-air communication assisted by LUs friendly JAs deployed on unmanned aerial vehicles (UAVs). Sun and Tian in [13] applied the stochastic geometry theory to artificial noise aided LUs’ joint feedback rate and power allocation optimization for maximizing LUs’ ergodic secrecy rate in multi-antenna cellular systems. Guo et al. in [14] leveraged the multi-agent DRL in making the proactive eavesdropping aided EVs’ power allocations in multiple-input multiple-output (MIMO) systems. However, these papers only studied the PLS from a centralized optimization perspective without considering the selfishness of LUs, EVs and JAs.
+
+Some researchers have started investigating the selfish behavior of JAs in particular. For example, Zhang et al. in [8] first introduced the seller-buyer relationship between JAs and LUs to ensure secrecy in cooperative jamming against untrusted relays by solving the optimal LUs’ asking prices and JAs’ jamming power allocation problem. In [6], Xu et al. extended the work in [8] by designing an incentive jamming scheme for stimulating JAs to aid LUs in multiple relay systems, where a Stackelberg game framework was developed to determine the optimal secure routing, LUs’ payment and power allocations. In [9], the authors discussed the selfish jamming for wireless-powered communication systems, in which energy-harvesting JAs were incentivized by wireless power transferred from LUs or EVs in exchange for their help. Nevertheless, these research attempts mainly focused on the fixed ally formation that JAs can only cooperate with either LUs or EVs unilaterally. However, owing to unpredictable channel conditions in real-world wireless communication systems [15], such cooperative relationships (i.e., the coalition partition) may change over time among LUs, JAs and EVs in PLS.
+
+Coalition formation game (CFG) as a technique for analyzing the cooperations among strategic participants, has been widely employed in wireless communication systems. For instance, in [15], Chen et al. formulated a CFG for multiple UAVs’ optimal task assignment and bandwidth allocation, where cooperative UAVs can form coalitions to perform different tasks while compete for bandwidth resources. In [16], Qi et al. extended the model in [15] by allowing UAVs with different resources to simultaneously join several coalitions to complete different tasks, so that resources of some UAVs can be shared among different coalitions, resulting in overlapped coalitions. In [17], Han et al. proposed a two-stage hierarchical game with an anti-jamming CFG as a subgame for LUs’s choosing allies to decrease their energy consumptions. It is worth noting that, in these papers, the coalition partitions generated by CFG-based approaches maintained static after achieving the optimal outcomes, ignoring that coalition partitions may evolve slot by slot due to system dynamics.
+
+Some recent efforts have been devoted to studying the interdependence of coalition partitions over different time slots in CFG. In [18], a dynamic Bayesian CFG was formulated for cooperative UAV delivery planning considering the uncertainties of UAV breakdowns, in which the coalition selection of each UAV was varied according to its observation of other cooperative UAV’s behaviors in previous time slots. In [19], a shapley value based CFG was employed in cooperative content caching, in which the coalition formation among fixed and mobile cache providers were dynamically updated according to time-varying shapley values. However, the solutions in these works (e.g„ merge and split, hedonic shift, dynamic programming, etc.) lack the exploration of unpredictable environment states and have high computational complexities, which may not be applicable for PLS-aware wireless communication systems.
+
+In summary, this work differs from existing literature by the following aspects: i) unlike the fixed relations employed in existing works, a dynamic trilateral CFG is exploited to formulate the dynamic ally-adversary relationships among the three parties in PLS; ii) a novel dynamic hierarchical game framework is developed to model the three parties’ longterm strategic interactions in dynamic wireless network system rather than the static one; and iii) instead of the model-based algorithms with limited flexibility and adaptability to system dynamics, a DRL-based solution with strong exploration capability and training efficiency is proposed.
+
+# III. SYSTEM MODEL AND PROBLEM FORMULATION
+
+In this section, the network model of a PLS-aware wireless uplink communication system involved by LUs, EVs and JAs, is first described. Then, after defining the strategies and utility functions of all three parties, i.e., LUs, EVs and JAs, we respectively formulate each party’s strategy optimization problem with long-term performance guarantees. Finally, a novel hierarchical game is proposed to model the interactions among all three parties in each time slot, and consequently a repeated decision-making process over multiple time slots is constructed. For convenience, Table I lists some important notations used in this paper.
+
+TABLE I IMPORTANT NOTATIONS IN THIS PAPER 
+
+<table><tr><td>Symbol</td><td>Explanation</td></tr><tr><td> $\mathcal{N},\mathcal{M},\mathcal{K},\mathcal{J}$ </td><td>set of LUs, BSs, EVs or JAs</td></tr><tr><td> $P_{n}^{T}(t)$ </td><td>transmission power of LU n</td></tr><tr><td> $P_{j}^{J}(t)$ </td><td>jamming power of JA j</td></tr><tr><td> $g_{nm}(t),g_{nk}(t)$ </td><td>channel gain from LU n to BS m and EV k</td></tr><tr><td> $g_{jm}(t),g_{jk}(t)$ </td><td>channel gain from JA j to BS m and EV k</td></tr><tr><td> $SINR_{nm}(t)$ </td><td>SINR for the link from LU n to BS m</td></tr><tr><td> $SINR_{nk}(t)$ </td><td>SINR for the link from LU n to EV k</td></tr><tr><td> $n_{m}^{2},n_{k}^{2}$ </td><td>AWGN at BS m or EV k</td></tr><tr><td> $R_{nm}^{T}(t)$ </td><td>uplink transmission rate of LU n</td></tr><tr><td> $R_{min}^{T}$ </td><td>minimum transmission rate</td></tr><tr><td> $R_{nk}^{E}(t)$ </td><td>eavesdropping rate of EV k on LU n</td></tr><tr><td> $R_{nm}^{S}(t)$ </td><td>secrecy transmission rate of LU n</td></tr><tr><td> $x_{k}^{sw}(t)$ </td><td>EV k&#x27;s activation decision</td></tr><tr><td> $x_{nm}^{T}(t)$ </td><td>LU n&#x27;s base station association</td></tr><tr><td> $x_{\{LJ\}}(t),x_{\{EJ\}}(t)$ </td><td>indicator of JAs&#x27; aiding LUs or EVs</td></tr><tr><td> $\mu_{L}(t),\mu_{E}(t)$ </td><td>unit incentive from LUs or EVs</td></tr><tr><td> $\pi_{\mathcal{N}}(t),\pi_{\mathcal{K}}(t),\pi_{\mathcal{J}}(t)$ </td><td>strategy of LUs, EVs and JAs</td></tr><tr><td> $c_{conf}$ </td><td>configuration cost of JAs</td></tr><tr><td> $c_{k}$ </td><td>activation cost of each EV</td></tr><tr><td> $\xi_{n},\eta_{j}$ </td><td>unit power cost of each LU n and JA j</td></tr><tr><td> $\mathcal{G}^{H},\mathcal{G}^{C}$ </td><td>formulated hierarchical game and CFG</td></tr><tr><td>G</td><td>all three parties, i.e., LUs, EVs and JAs</td></tr><tr><td> $C_{a}$ </td><td>a single coalition a</td></tr><tr><td> $C_{-a}$ </td><td>all existing coalitions except coalition a</td></tr><tr><td> $\Delta$ </td><td>all possible coalitions</td></tr><tr><td> $\mathcal{M}_{i}$ </td><td>MDP for party i</td></tr><tr><td> $\mathcal{CP}(t)$ </td><td>coalition partition at time slot t</td></tr><tr><td> $\delta_{i}(t)$ </td><td>coalition choice of party i in time slot t</td></tr><tr><td> $U_{\mathcal{N}}(t),U_{\mathcal{K}}(t),U_{\mathcal{J}}(t)$ </td><td>utility function of LUs, EVs or JAs</td></tr><tr><td> $\pi_{i}^{H},\pi_{i}^{C}$ </td><td>strategies of party i in  $\mathcal{G}^{H}$  or  $\mathcal{G}^{C}$ </td></tr></table>
+
+# A. Network Model
+
+Consider a PLS-aware wireless uplink communication system, as illustrated in Fig. 1, which consists of a group of LUs, denoted as $\mathcal { N } = \{ 1 , 2 , \dots , N \}$ , aiming to transmit secret data to a set of base stations (BSs), denoted as $\mathcal { M } = \{ 1 , 2 , \dots , M \}$ . For simplicity, similar to [9], we assume that each LU occupies an orthogonal channel for its uplink transmission, and thus the set of uplink channels can also be represented by N . There exists a group of EVs, denoted as ${ \cal K } = \{ 1 , 2 , \dots , K \}$ , which may be active or inactive at different locations, and multiple JAs, denoted as $\mathcal { I } = \{ 1 , 2 , \ldots , J \}$ , which are capable of jamming any link in this system [17].
+
+To depict time-varying uncertainties, a time-slotted operation framework is studied, where $t \in \{ 0 , 1 , \ldots , T - 1 \}$ denotes the index of time slots. Due to the existance of JAs, the signal to interference plus noise ratio (SINR) of uplink transmission from any $\mathrm { L U } \ n \in \mathcal N$ to any BS $m \in \mathcal { M }$ in time slot t can be written as
+
+$$
+S I N R _ {n m} (t) = \frac {g _ {n m} (t) P _ {n} ^ {T} (t)}{n _ {m} ^ {2} + \sum_ {j \in \mathcal {J}} g _ {j m} (t) P _ {j} ^ {J} (t)}, \tag {1}
+$$
+
+where $g _ { n m } ( t )$ and $g _ { j m } ( t )$ stand for the instantaneous channel gains of LU n and JA j at BS m, respectively, and (AWGN) a $n _ { m } ^ { 2 }$ represS m, noise and $P _ { n } ^ { T } ( t ) ~ \in ~ \{ P _ { n , 0 } ^ { T } , P _ { n , 1 } ^ { T } , . . , P _ { n , l - 1 } ^ { T } \}$
+
+![](images/2d00cb72d38eb21290095c76e897524d364a316efe6e27a70027a9b9a31fc232.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Base Station"] --> B["Jammers"]
+    A --> C["Active Eavesdroppers"]
+    A --> D["Inactive Eavesdroppers"]
+    B --> E["Base Station"]
+    C --> F["Active Eavesdroppers"]
+    D --> G["Inactive Eavesdroppers"]
+    E --> H["Jammers"]
+    F --> I["Active Eavesdroppers"]
+    G --> J["Inactive Eavesdroppers"]
+    H --> K["Uplink Transmission Links"]
+    I --> K
+    J --> K
+    K --> L["Base Station"]
+    style A fill:#f9f,stroke:#333
+    style B fill:#ccf,stroke:#333
+    style C fill:#ccf,stroke:#333
+    style D fill:#ccf,stroke:#333
+    style E fill:#ffc,stroke:#333
+    style F fill:#ffc,stroke:#333
+    style G fill:#ffc,stroke:#333
+    style H fill:#cfc,stroke:#333
+    style I fill:#cfc,stroke:#333
+    style J fill:#cfc,stroke:#333
+    style K fill:#fcc,stroke:#333
+```
+</details>
+
+Fig. 1. Uplink communication system with LUs, EVs and JAs.
+
+$P _ { j } ^ { J } ( t ) \in \{ P _ { j , 0 } ^ { J } , P _ { j , 1 } ^ { J } , . . , P _ { j , l - 1 } ^ { J } \}$ are transmission powers of LUt sets with l-leveled possible values.1 Similarly, the SINR to EV $k \in \mathcal { K }$ with regard to LU $n \in \mathcal N$ in time slot t can be written as
+
+$$
+S I N R _ {n k} (t) = \frac {g _ {n k} (t) P _ {n} ^ {T} (t)}{n _ {k} ^ {2} + \sum_ {j \in \mathcal {J}} g _ {j k} (t) P _ {j} ^ {J} (t)}, \tag {2}
+$$
+
+where $g _ { n k } ( t )$ and $g _ { j k } ( t )$ stand for the instantaneous channel gains of LU n and JA j at EV k, respectively, and $n _ { k } ^ { 2 }$ represents the AWGN at EV k. Let W denote the frequency bandwidth of each uplink channel, then the uplink transmission rate from LU $n \in \mathcal N$ to BS $m \in \mathcal { M }$ in time slot t can be expressed as
+
+$$
+R _ {n m} ^ {T} (t) = W \log (1 + S I N R _ {n m} (t)). \tag {3}
+$$
+
+Correspondingly, the eavesdropping rate of EV $k \in \mathcal { K }$ on channel $n \in \mathcal N$ in time slot t can be expressed as
+
+$$
+R _ {n k} ^ {E} (t) = W \log (1 + S I N R _ {n k} (t)). \tag {4}
+$$
+
+According to Wyner’s definition of secrecy transmission rate in PLS [23], the secrecy transmission rate refers to an LU’s transmission rate of data that can be securely delivered to its associated BS, which is calculated as the difference between LU’s transmission rate and the highest eavesdropping rate on its uplink channel. Therefore, in each time slot t, the secrecy transmission rate of LU $n \in \mathcal N$ can be obtained as
+
+$$
+R _ {n m} ^ {S} (t) = [ R _ {n m} ^ {T} (t) - \max _ {k \in \mathcal {K}} R _ {n k} ^ {E} (t) ] ^ {+}, \forall m \in \mathcal {M}, \tag {5}
+$$
+
+where function $[ x ] ^ { + } = m a x ( x , 0 )$ .
+
+Considering that the performance gain (e.g., secrecy transmission rate and eavesdropping rate) and the latent cost (e.g., power consumption and reward payment) play important roles for practical operations of all three parties, i.e., LUs, EVs and JAs in PLS, in the following subsection, we introduce the utility function and the corresponding strategic decisions of each party in detail, and explore their interactions with resulted impacts in both short and long runs.
+
+# B. Problem Formulation
+
+For EVs, to improve their long-term eavesdropping performance by successfully intercepting LU’s confidential signals
+
+1This indicates that each LU or JA takes discretized transmission or jamming power in each time slot. Note that such settings are more suitable for practical implementations [20], and has been widely adopted in the literature [21], [22].
+
+and reducing their own cost from eavesdropping, in each time slot t, they have to determine i) the activation of each EV $k \in \mathcal { K }$ at different locations, denoted as $x _ { k } ^ { s w } ( t ) = 1$ or 0, indicating whether EV k is active or inactive; and ii) the unit incentive2 to attract JAs’s cooperation, denoted as $\mu _ { E } ( t ) \ \in $ $[ 0 , \mu _ { E } ^ { m a x } ]$ . Note that the actual reward that JAs can get from EVs in time slot t is the product of $\mu _ { E } ( t )$ and $\mathrm { E V s } ^ { \prime }$ performance gain with $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ help in this certain slot. Such performance gain can be expressed as the difference between the gain of EVs from reducing LUs’ secrecy transmission rate with JAs’ help, i.e.,
+
+$$
+V _ {\mathcal {K}} (t) = - \sum_ {k \in \mathcal {K}} x _ {k} ^ {s w} (t) \sum_ {n \in \mathcal {N}} \sum_ {m \in \mathcal {M}} (R _ {n m} ^ {T} (t) - \max _ {k \in \mathcal {K}} R _ {n k} ^ {E} (t)), \tag {6}
+$$
+
+and the gain of EVs from reducing $\mathrm { L U s } ^ { \prime }$ secrecy transmission rate without $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ help, i.e.,
+
+$$
+\begin{array}{l} V _ {\mathcal {K}} ^ {0} (t) = - \sum_ {k \in \mathcal {K}} x _ {k} ^ {s w} (t) \sum_ {n \in \mathcal {N}} \sum_ {m \in \mathcal {M}} W \frac {\log (1 + (g _ {n m} (t) P _ {n} ^ {T} (t)}{n _ {m} ^ {2}} \\ - \max _ {k \in \mathcal {K}} (\log (1 + (g _ {n k} (t) P _ {n} ^ {T} (t))) / (n _ {k} ^ {2}))). \tag {7} \\ \end{array}
+$$
+
+Then, EVs’ utility function in slot t can be expressed as
+
+$$
+\begin{array}{l} U _ {\mathcal {K}} (t) = V _ {\mathcal {K}} (t) - x _ {\{E J \}} (t) \mu_ {E} (t) [ V _ {\mathcal {K}} (t) - V _ {\mathcal {K}} ^ {0} (t) ] ^ {+} \\ - c _ {k} \sum_ {k \in \mathcal {K}} x _ {k} ^ {s w} (t), \tag {8} \\ \end{array}
+$$
+
+where $x _ { \{ E J \} } ( t ) = 1$ or 0 indicates whether JAs choose to form an alliance with EVs or not in time slot t, and $c _ { k }$ is the activation cost of each single EV $k \in \mathcal { K }$ in different locations.
+
+With $\mathrm { E V s } ^ { \prime }$ strategies denoted as $\pi _ { \mathcal { K } } = \{ x _ { k } ^ { s w } ( t ) , \mu _ { E } ( t ) \} _ { \forall t } ,$ $\mathrm { E V } \mathbf { \bar { s } }$ long-term optimization problem can be formulated as
+
+$$
+[ \mathcal {E P} ]: \arg \max _ {\pi_ {\mathcal {K}}} \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t \in [ 0, T ]} U _ {\mathcal {K}} (t) \tag {9}
+$$
+
+$$
+s. t., x _ {k} ^ {s w} (t) \in \{0, 1 \}, \forall k \in \mathcal {K}, \tag {10}
+$$
+
+$$
+0 \leq \mu_ {E} (t) \leq \mu_ {E} ^ {\max}. \tag {11}
+$$
+
+For LUs, to improve their long-term secrecy transmission performance, in each time slot t, they need to determine i) the uplink transmission power allocation $P _ { n } ^ { T } ( t ) , \forall n \ \in \ N ;$ ii) the BS association $x _ { n m } ^ { \bar { T } } ( t ) , \forall n \in \mathcal { N } , \forall m \in \mathcal { M }$ , where $x _ { n m } ^ { T } ( t ) = 1$ or 0 signifies that LU n chooses BS m as the target receiver or not; and iii) the unit incentive $\mu _ { L } ( t ) \ \in$ $[ 0 , \mu _ { L } ^ { m a x } ]$ for stimulating $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ help. Similar to that of EVs, the actual reward that JAs can get from LUs in time slot t is the product of $\mu _ { L } ( t )$ and $\mathrm { L U s } ^ { \prime }$ performance gain with $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ help in time slot t, which can be calculated as the difference between LUs’ secrecy transmission rates with JAs’ help, i.e.,
+
+$$
+V _ {\mathcal {N}} (t) = \sum_ {n \in \mathcal {N}} \sum_ {m \in \mathcal {M}} x _ {n m} ^ {T} (t) R _ {n m} ^ {S} (t), \tag {12}
+$$
+
+and such rates without JAs’ help, i.e.,
+
+$$
+\begin{array}{l} V _ {\mathcal {N}} ^ {0} (t) = \sum_ {n \in \mathcal {N}} \sum_ {m \in \mathcal {M}} x _ {n m} ^ {T} (t) W [ \log (1 + (g _ {n m} (t) P _ {n} ^ {T} (t)) / n _ {m} ^ {2}) \\ \left. - \max _ {k \in \mathcal {K}} \log (1 + \left(g _ {n k} (t) P _ {n} ^ {T} (t)\right) / n _ {k} ^ {2}) \right] ^ {+}. \tag {13} \\ \end{array}
+$$
+
+2This setting has been widely employed in the literature on PLS [6], [24] and edge computing [25]. However, unlike these studies which commonly assumed that such unit incentive was fixed, we consider it as a strategic decision.
+
+Then, LUs’ utility function in time slot t can be expressedas
+
+$$
+\begin{array}{l} U _ {\mathcal {N}} (t) = V _ {\mathcal {N}} (t) - x _ {\{L J \}} (t) \mu_ {L} (t) [ V _ {\mathcal {N}} (t) - V _ {\mathcal {N}} ^ {0} (t) ] ^ {+} \\ - \xi_ {n} \sum_ {n \in \mathcal {N}} P _ {n} ^ {T} (t), \tag {14} \\ \end{array}
+$$
+
+where $x _ { \{ L J \} } ( t ) = 1$ or 0 indicates that whether JAs choose to ally with LUs or not in time slot t, and $\xi _ { n }$ is the unit transmission power cost of each single LU $n \in \mathcal N$ .
+
+Note that the reason why $( ) ^ { + }$ is used in equation (13) but not in equation (7) is that, in equation (13), the term $W [ \cdot ] ^ { + }$ represents the secrecy transmission rate of LUs without $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ help, and this rate must be non-negative, however, in equation (7), $V _ { \mathcal { K } } ^ { 0 } ( t )$ represents the benefit of EVs from intercepting LUs’ confidential signals. Since EVs can obtain a positive benefit by successfully intercepting the LUs’ confidential signals, the term $\begin{array} { r } { W ( \log ( 1 + ( g _ { n m } ( t ) P _ { n } ^ { T } ( t ) ) / n _ { m } ^ { 2 } ) - \operatorname* { m a x } _ { k \in \mathcal K } \log ( 1 + } \end{array}$ $( g _ { n k } ( t ) P _ { n } ^ { T } ( t ) ) / \bar { n _ { k } ^ { 2 } } ) )$ does not need to be non-negative. Similar formulation has been widely employed in the literature [26], [27], [28].
+
+Denoting LUs’ strategies as $\begin{array} { r c l } { \pi _ { \mathcal { N } } } & { = } & { \{ P _ { n } ^ { T } ( t ) , x _ { n m } ^ { T } ( t ) } \end{array}$ , $\mu _ { L } ( t ) \} _ { \forall t }$ , LUs’ long-term optimization problem can be formulated as
+
+$$
+[ \mathcal {L P} ]: \underset {\pi_ {\mathcal {N}}} {\arg \max} \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t \in [ 0, T ]} U _ {\mathcal {N}} (t) \tag {15}
+$$
+
+$$
+s. t., R _ {n m} ^ {T} (t) \geq R _ {m i n} ^ {T}, \forall n \in \mathcal {N}, \forall m \in \mathcal {M} \tag {16}
+$$
+
+$$
+x _ {n m} ^ {T} (t) \in \{0, 1 \}, \forall n \in \mathcal {N}, \forall m \in \mathcal {M} \tag {17}
+$$
+
+$$
+\sum_ {m \in \mathcal {M}} x _ {n m} ^ {T} (t) = 1, \forall n \in \mathcal {N}, \tag {18}
+$$
+
+$$
+0 \leq \mu_ {L} (t) \leq \mu_ {L} ^ {\max}, \tag {19}
+$$
+
+$$
+P _ {n} ^ {T} (t) \in \left\{P _ {n, 0} ^ {T}, P _ {n, 1} ^ {T},.., P _ {n, l - 1} ^ {T} \right\}, \forall n \in \mathcal {N}, \tag {20}
+$$
+
+where constraint (16) states that the transmission rate of each LU in any time slot t should not be smaller than a minimum value for guaranteeing its quality of service $( \mathrm { Q o S } ) ;$ constraints (17), (18) refer to the many-to-one association between LUs and BSs in any time slot t; and constraint (20) stands for the set of l-leveled transmission powers of LUs.
+
+For JAs, given $\mu _ { E } ( t )$ and $\mu _ { L } ( t )$ , in each time slot t, they have to determine i) the jamming power allocation $P _ { i } ^ { J } ( t ) , \forall j \in \mathcal { I } ;$ and ii) the coalition selection $x _ { \{ E J \} } ( t ) \in$ $\{ \breve { 0 } , 1 \}$ and $x _ { \{ L J \} } ( t ) \in \{ 0 , 1 \}$ to maximize their total reward while reducing their total jamming power consumption, where $x _ { \{ E J \} } ( t ) = 1$ or 0 and $x _ { \{ L J \} } ( t ) = 1$ or 0 mean that JAs choose to form the coalition with EVs or not and with JAs or not, respectively. Intuitively, $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ reward stems from the incentives obtained from EVs or LUs in each time slot t, denoted as
+
+$$
+\begin{array}{l} V _ {\mathcal {J}} (t) = x _ {\{E J \}} (t) \mu_ {E} (t) (V _ {\mathcal {K}} (t) - V _ {\mathcal {K}} ^ {0} (t)) \\ + x _ {\{L J \}} (t) \mu_ {L} (t) (V _ {\mathcal {N}} (t) - V _ {\mathcal {N}} ^ {0} (t)). \tag {21} \\ \end{array}
+$$
+
+Then, $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ utility in each time slot t can be expressed as
+
+$$
+U _ {\mathcal {J}} (t) = V _ {\mathcal {J}} (t) - \eta_ {j} \sum_ {j \in \mathcal {J}} P _ {j} ^ {J} (t) - c _ {c o n f} \mathcal {F} (t), \tag {22}
+$$
+
+where $\eta _ { j }$ is the unit jamming power cost of each single JA $j \in \{ \ u _ { 1 } \} _ { \ d } \in \partial _ { c o n f }$ denotes the potential configuration cost caused by the additional connection established by JAs to notify the coalition changes if JAs choose to change allies over two consecutive time slots,3 and function $\begin{array} { r l } { \mathcal { F } ( t ) } & { { } = } \end{array}$ $\begin{array} { r l } { \left( x _ { \{ E J \} } ( t ) , x _ { \{ L J \} } ( t ) \right) } & { { } \oplus \left( x _ { \{ E J \} } ( t - 1 ) , x _ { \{ L J \} } ( t - 1 ) \right) } \end{array}$ indicates whether the coalitions in time slot t change or not compared to those in previous time slot $t - 1$ .
+
+With JAs’ strategy denoted as $\pi _ { \mathcal { I } } ~ = ~ \{ P _ { j } ^ { J } ( t ) , x _ { \{ E J \} } ( t )$ , $x _ { \{ L J \} } ( t ) \} _ { \forall t }$ , the long-term optimization problem for JAs can be formulated as
+
+$$
+[ \mathcal {J P} ]: \underset {\pi_ {\mathcal {J}}} {\arg \max} \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t \in [ 0, T ]} U _ {\mathcal {J}} (t) \tag {23}
+$$
+
+$$
+s. t., x _ {\{E J \}} (t), x _ {\{L J \}} (t) \in \{0, 1 \}, \tag {24}
+$$
+
+$$
+x _ {\{E J \}} (t) + x _ {\{L J \}} (t) \leq 1 \tag {25}
+$$
+
+$$
+P _ {j} ^ {J} (t) \in \{P _ {j, 0} ^ {J}, P _ {j, 1} ^ {J},.., P _ {j, l - 1} ^ {J} \}, \forall j \in \mathcal {J} \tag {26}
+$$
+
+where constraints (24), (25) signify that JAs can only cooperate unilaterally with either LUs or EVs in each time slot; and constraint (26) represents the l-leveled jamming powers of JAs.
+
+Obviously, problems [EP], [LP] and $[ \mathcal { T P } ]$ are tightly coupled. In each time slot, we can allow EVs to first determine $x _ { k } ^ { s w } ( t )$ and $\mu _ { E } ( t )$ , and then as the response, LUs can determine $P _ { n } ^ { T } ( t ) , x _ { n m } ^ { T } ( t )$ and $\mu _ { L } ( t )$ , and finally given the strategies of EVs and LUs, JAs in turn can determine $P _ { j } ^ { J } ( t )$ , $x _ { \{ L J \} } ( t )$ and $x _ { \{ E J \} } ( t )$ . The decision-making sequence of these three parties in each time slot is inspired from the fact that LUs tend to respond to EVs’ decisions for increasing their secrecy transmission rate, and JAs tend to make decisions of choosing the side to assist in exchange for a higher reward. Similar decision-making structure has been widely investigated in [26] and [29]. Formally, the strategic interactions among EVs, LUs and JAs in PLS can be modeled by a three-stage hierarchical game $\mathcal { G } ^ { H }$ , defined as
+
+$$
+\mathcal {G} ^ {H} = \{\mathcal {K}, \mathcal {N}, \mathcal {J}, \pi_ {\mathcal {K}}, \pi_ {\mathcal {N}}, \pi_ {\mathcal {J}}, U _ {\mathcal {K}}, U _ {\mathcal {N}}, U _ {\mathcal {J}} \}, \tag {27}
+$$
+
+where $\kappa , \mathcal { N } , \mathcal { I }$ refer to EVs, LUs and JAs, respectively, $\pi _ { \mathsf { K } } , \pi _ { \mathcal { N } } , \pi _ { \mathcal { I } }$ denote the aforementioned strategies of these three parties, respectively, and $U _ { \mathcal { K } } , U _ { \mathcal { N } } , U _ { \mathcal { I } }$ represent the utility functions of these three parties, respectively. Note that our proposed dynamic hierarchical game $\mathcal { G } ^ { H }$ not only repeats over different time slots, but also iterates the decision sequence of LUs, EVs and JAs within one time slot until the convergence. Although we state that LUs make decision after EVs and JAs are the last to make decisions, this is only an initial sequence in a single round, and has to iterate multiple rounds until the convergence. Due to this back-and-forth iterations, there is actually no unique sequence for the decisions of the three parties, and making decisions following any sequence will have the same performance.
+
+Fig. 2 illustrates such repeated decision-making process of $\mathcal { G } ^ { H }$ and the leader-follower relationships among them in each time slot, of which the stage 1, stage 2 and stage 3 refer to the decision-making rounds of EVs, LUs and JAs, respectively.
+
+3Note that, in this paper, coalitions are only required to be stable within a certain time slot, and can vary dynamically over different time slots, while an additional configuration cost has to be introduced whenever a coalition change occurs. This further implies that the coalition states among multiple time slots are interdependent.
+
+![](images/68dd52be1d0b594316296d39edfcb7c4373a96fdd5db4f41bc8756f94be9754d.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    subgraph "time slot t"
+        A["Eavesdroppers"] --> B["Stage 1: x_k^w(t), μ_E(t)"]
+        B --> C["Stage 2: P^T(t), x_nm^T(t), μ_L(t)"]
+        C --> D["Stage 3: P^J(t), x_{EJ}(t), x_{LJ}(t)"]
+    end
+
+    subgraph "time slot t + 1"
+        E["Eavesdroppers"] --> F["Stage 1: x_k^w(t+1), μ_E(t+1)"]
+        F --> G["Stage 2: P^T(t+1), x_nm^T(t+1), μ_L(t+1)"]
+        G --> H["Stage 3: Jammers"]
+        H --> I["..."]
+    end
+
+    A --> J["Legitimate Users"]
+    J --> K["Stage 2: x_nm^T(t+1), μ_L(t+1)"]
+    K --> L["Stage 3: Jammers"]
+    L --> M["..."]
+    E --> N["Legitimate Users"]
+    N --> O["Stage 1: x_nm^T(t+1), μ_E(t+1)"]
+    O --> P["Stage 2: P^T(t+1), x_nm^T(t+1), μ_L(t+1)"]
+    P --> Q["Stage 3: Jammers"]
+    Q --> R["..."]
+    style A fill:#f9f,stroke:#333
+    style E fill:#f9f,stroke:#333
+    style N fill:#f9f,stroke:#333
+    style O fill:#f9f,stroke:#333
+```
+</details>
+
+Fig. 2. Repeated decision-making process of the proposed $\mathcal { G } ^ { H }$ .
+
+Moreover, it can be observed that the formulated hierarchical game $\mathcal { G } ^ { H }$ actually involves dynamic trilateral coalitions among three parties (i.e., EVs, LUs and JAs) in PLS, i.e., LUs and JAs may form the coalition to against EVs in one time slot, while EVs and JAs may form the coalition to against LUs in another, making it very difficult to be solved directly. Specifically, the coalition selection of these three parties are mutually and dynamically decided by each party, and the study on how each party decide the coalition it belongs to and how such coalition selection changes over different time slots with the strong interdependence are of great significance. In the following section, by first introducing the underlying trilateral coalition formation game, we analyze the stability and equilibrium conditions, and then propose a DRL-based solution for deriving the equilibrium of $\dot { \mathcal { G } } ^ { H }$ in dynamic evolutions with long-term performance guarantees.
+
+# IV. GAME ANALYSIS AND DRL-BASED SOLUTION
+
+In this section, we first define the underlying CFG among all three parties (i.e., EVs, LUs and JAs) in PLS, along with the conditions for a single party to join a certain coalition. Then, $\mathcal { G } ^ { H }$ formulated in Section III is re-defined and analyzed. Afterwards, we propose an HCSF algorithm for deriving the stable coalition partition in each time slot, while ensuring the existence of $\mathcal { G } ^ { H } \bar { \mathbf { \Sigma } } _ { \mathbf { S } }$ equilibrium in the repeated decision-making process. Finally, a DRL-based solution is developed to produce the optimal strategies for all three parties in every time slot with long-term performance guarantees.
+
+# A. Trilateral Coalition Formation Game
+
+To better describe the dynamic coalition formation among LUs, EVs and JAs in PLS, we particularly design a trilateral CFG, defined as
+
+$$
+\mathcal {G} ^ {C} = \{G, \Delta , U _ {\mathcal {K}}, U _ {\mathcal {N}}, U _ {\mathcal {J}} \}, \tag {28}
+$$
+
+where $G = \{ \mathcal { K } , \mathcal { N } , \mathcal { I } \}$ denotes the set of players, i.e., three parties (EVs, LUs and JAs) in $ { \mathrm { P L S } } , U _ { K } , U _ {  { N } } , U _ {  { \mathcal { I } } }$ respectively denote their utility functions, as described in the previous section, and $\Delta = \{ \{ \mathcal { K } \} , \{ \mathcal { N } \} , \{ \mathcal { I } \} , \{ \mathcal { K } , \mathcal { I } \} , \{ \mathcal { N } , \mathcal { I } \} \}$ represents all possible coalitions among them.
+
+Each party has different preferences for joining different potential coalitions. Specifically, the condition under which party $i \in G$ prefers to join a possible coalition $C _ { a } \in \Delta \cup \{ \emptyset \}$ rather than another one $C _ { b } \in \Delta \cup \{ \emptyset \}$ in time slot t can be expressed as
+
+$$
+C _ {a} \succ_ {i} ^ {t} C _ {b} \text {   if   and   only   if   } U _ {i} ^ {C _ {a} \cup i} (t) > U _ {i} ^ {C _ {b} \cup i} (t),
+$$
+
+$$
+\forall C _ {a}, C _ {b} \in \Delta \cup \{\varnothing \}, C _ {a} \neq C _ {b}, \tag {29}
+$$
+
+where symbol $\succ _ { i } ^ { t }$ denotes the coalition preference order [11], [30] for each party $i \in G$ in time slot t, and $U _ { i } ^ { C _ { a } \cup i } ( t )$ and $U _ { i } ^ { \bar { C } _ { b } \bar { \cup } i } ( t )$ represent party i’s utilities after joining coalition $C _ { a }$ and $C _ { b } ,$ respectively.
+
+Although the above preference order may guide each party (i.e., LUs, EVs and JAs) to choose the most beneficial coalition to join, since this order has to be applied to all three parties, any coalition partitions formed without considering all allies’ selfishness within the coalition is unstable. For example, if J selfishly choose to form a coalition with LUs, i.e., join $\{ \mathcal { N } \}$ in time slot t in case that $\{ \mathcal { N } \} \ \succ _ { \mathcal { I } } ^ { t } \ \{ \mathcal { K } \}$ , but LUs’ utility decreases due to JAs’ joining, such coalition partition $\{ \{ \mathcal { I } , \mathcal { N } \} , \{ \mathcal { K } \} \}$ does not hold because the preference order for LUs becomes $\emptyset \ \succ _ { \mathcal { N } } ^ { t } \ \{ \mathcal { I } \}$ . Thus, we call a coalition partition is stable if and only if no subset of players in G would secede from its original coalition and form any other coalitions (with higher utility gains). Accordingly, the coalition switch rule [17] for describing the condition of each single party’s leaving its original coalition $C _ { a } \in \Delta$ and joining in another new coalition $C _ { b } \in \Delta$ in time slot t can be expressed as
+
+$$
+C _ {a} \rightarrow_ {i} ^ {t} C _ {b} \text {   if   and   only   if   } C _ {b} \succ_ {i} ^ {t} C _ {a} \backslash i \&C _ {b} \cup i \backslash i ^ {\prime} \succ_ {i ^ {\prime}} ^ {t} C _ {b} \backslash i ^ {\prime},
+$$
+
+$$
+\forall i \in C _ {a}, \forall i ^ {\prime} \in C _ {b}, \forall C _ {a}, C _ {b} \in \Delta , C _ {a} \neq C _ {b}, \tag {30}
+$$
+
+where $ _ { i } ^ { t }$ indicates party $i \ ' s$ coalition switch in time slot t. Besides, as a special case, if party i’s utility after joining any coalition is smaller than that of being alone, then it will choose to not ally with any other parties, which can be written as
+
+$$
+C _ {a} \rightarrow_ {i} ^ {t} \varnothing \text {   if   and   only   if   } \varnothing \succ_ {i} ^ {t} C _ {a} \backslash i, \forall i \in C _ {a}, \forall C _ {a} \in \Delta . \tag {31}
+$$
+
+Based on these, we are now able to re-define the hierarchical game $\mathcal { G } ^ { H }$ formulated in (27) as follows.
+
+Definition $\textit { I } ( \mathcal { G } ^ { H }$ Integrated With ${ \mathcal { G } } ^ { C } ) .$ : With the underlying CFG $\mathcal { G } ^ { C } = \{ G , \Delta , \mathcal { V } _ { \kappa } , U _ { N } , U _ { \mathcal { I } } \}$ defined in (28), game $\mathcal { G } ^ { \mathbf { \widecheck { H } } }$ can be reformulated as $\dot { \mathcal { G } } ^ { H } = \{ G , \Pi ^ { H } , \Pi ^ { C } , \mathcal { U } \}$ , where $\Pi ^ { H } ~ = ~ \{ \pi _ { i } ^ { H } \} _ { \forall i \in G }$ , in which $\begin{array} { r l r } { \pi _ { K } ^ { H } } & { = } & { \{ x _ { k } ^ { s w } ( t ) , \mu _ { E } ( t ) \} _ { \forall t } , } \end{array}$ , $\pi _ { \mathcal { N } } ^ { H } = \{ x _ { n m } ^ { T } ( t ) , P _ { n } ^ { T } ( t ) , \mu _ { L } ( t ) \} _ { \forall t }$ and $\pi _ { \mathcal { T } } ^ { H } = \{ P _ { j } ^ { J } ( t ) \} _ { \forall t } ; \Pi ^ { C } =$ $\{ \bar { \pi } _ { i } ^ { C } \} , \forall i \in G .$ , in which $\pi _ { i } ^ { C } ~ = ~ \{ \delta _ { i } ( \bar { t } ) \} _ { \forall t }$ , and $\delta _ { i } ( t ) \in \Delta$ signifies the coalition selection decision of each party $i \in G$ in time slot t; and $\mathcal { U } = \{ U _ { \mathcal { K } } , U _ { \mathcal { N } } , U _ { \mathcal { I } } \}$ .
+
+# B. Analysis on Hierarchical Game
+
+In this subsection, we analyze the equilibrium of the formulated game $\mathcal { G } ^ { H }$ and show its existence. For each party $i \in G ,$ , let $( \pi _ { i } ^ { \overline { { H } } * } , \pi _ { i } ^ { C * } )$ be its best response in hierarchical game $\mathcal { G } ^ { H }$ indicating its optimal strategies, which are also equivalent to the solution of $[ \mathcal { E P } ] , [ \mathcal { L P } ]$ and [J P]. Then, the equilibrium of game $\mathcal { G } ^ { H }$ can be defined as follows.
+
+Definition 2 (Equilibrium of $\cdot \mathcal { G } ^ { H }$ ): In the proposed game $\mathcal { G } ^ { H }$ , a strategy profile $( \pi _ { i } ^ { H * } , \bar { \pi } _ { i } ^ { C * } ) , \forall i \in G$ , is the equilibrium if for every party $i \in G$ , we have
+
+$$
+\frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) | \pi_ {i} ^ {H *}, \pi_ {i} ^ {C *}, \pi_ {- i} ^ {H *}, \pi_ {- i} ^ {C *}
+$$
+
+$$
+\geq \frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) | \pi_ {i} ^ {H}, \pi_ {i} ^ {C}, \pi_ {- i} ^ {H *}, \pi_ {- i} ^ {C *}, \tag {32}
+$$
+
+where πH∗−i $\pi _ { - i } ^ { H * }$ and $\pi _ { - i } ^ { C * }$ denote the equilibrium strategies of all other parties except i. Obviously, when such equilibrium is reached, the long-term utility of each party can be maximized, and no party will deviate this equilibrium unilaterally.
+
+Observe that in the above definition, the equilibrium of game $\mathcal { G } ^ { H }$ highly depends on $\pi _ { i } ^ { C * } , \forall i \ \in \ G$ , which is the equilibrium of the underlying CFG $\mathcal { G } ^ { C }$ . Therefore, we are required to explore the equilibrium condition of game $\mathcal { G } ^ { C }$ , also known as its stability condition. In time slot t, let $\mathcal { C P } ( t ) =$ $\textstyle \bigcup _ { i \in G } \{ \delta _ { i } ( t ) \}$ represent the coalition partition that LUs, EVs and JAs choose to form. Then, the equilibrium of $\mathcal { G } ^ { C }$ , i.e., the stable coalition partition, is defined as follows.
+
+Definition 3 (Stable coalition partition $o f \mathcal { G } ^ { C } ) \colon$ In each time slot t, a coalition partition $\begin{array} { r } { \mathcal { C P } ^ { * } ( t ) = \bigcup _ { i \in G } \{ \delta _ { i } ^ { * } ( t ) \} } \end{array}$ is stable if no party can improve its utility by changing its coalition unilaterally (i.e., leaving its original coalition and joining the others), meaning that
+
+$$
+U _ {i} ^ {C _ {a}} (t) \geq U _ {i} ^ {C _ {b} \cup i} (t), \forall C _ {a}, C _ {b} \in \mathcal {C P} ^ {*} (t), C _ {a} \neq C _ {b}, \forall i \in C _ {a}.
+$$
+
+It is worth noting that this definition mainly focuses on describing the stability requirement for a coalition partition in each time slot, while does not prohibit the dynamic changes of coalition partitions over different time slots. Next, we show that the proposed CFG $\mathcal { G } ^ { C }$ is an exact potential game (EPG) [15], and thus there exists at least one pure Nash equilibrium or equivalently a stable coalition partition.
+
+Theorem 1 (Existence of the Stable Coalition Partition): The proposed CFG $\mathcal { G } ^ { C }$ exists a stable coalition partition in each time slot t.
+
+Proof: Similar to those in [15] and [17], for game $\mathcal { G } ^ { C }$ , we define the system utility of each party i of joining coalition $C _ { a }$ as
+
+$$
+u _ {i} ^ {t} (C _ {a}, C _ {- a}) = U ^ {t} (C _ {a}) - U ^ {t} (C _ {a} \backslash i), \forall i \in G, \tag {33}
+$$
+
+where $\begin{array} { r } { U ^ { t } ( C _ { a } ) = \sum _ { i \in C _ { a } } U _ { i } ( t ) } \end{array}$ stands for the total utility of all members in $C _ { a }$ and $\breve { U } ^ { t } ( C _ { a } \backslash i )$ denotes the total utility of all members in $C _ { a }$ except i, so that $u _ { i } ^ { t } ( C _ { a } , C _ { - a } )$ calculates the contribution of party i to the system utility by choosing to join coalition $C _ { a }$ . Then, we can design a corresponding potential function as
+
+$$
+\zeta^ {t} (C _ {a}, C _ {- a}) = \sum_ {\forall i \in G} u _ {i} ^ {t} (C _ {a}, C _ {- a}), i \in C _ {a}. \tag {34}
+$$
+
+Suppose that a party $i \in G$ chooses to switch from coalition $C _ { a }$ to $C _ { a ^ { \prime } }$ , the difference brought to the potential function can be derived as
+
+$$
+\begin{array}{l} \zeta^ {t} (C _ {a}, C _ {- a}) - \zeta^ {t} (C _ {a ^ {\prime}}, C _ {- a ^ {\prime}}) \\ = U ^ {t} (C _ {a}) + U ^ {t} (C _ {a ^ {\prime}} \backslash i) + U ^ {t} (C _ {o t h e r s}) - U ^ {t} (C _ {a ^ {\prime}}) \\ - U ^ {t} (C _ {a} \backslash i) - U ^ {t} (C _ {o t h e r s}) \\ = u _ {i} (C _ {a}, C _ {- a}) - u _ {i} (C _ {a ^ {\prime}}, C _ {- a ^ {\prime}}), \tag {35} \\ \end{array}
+$$
+
+where $C _ { o t h e r s }$ stands for the other coalitions formed by parties except those in $C _ { a }$ or $C _ { a ^ { \prime } }$ . Obviously, the difference on potential functions equals the difference on system utilities owing to i’s coalition switching. Therefore, following the literature [15], [17], the proposed CFG $\mathcal { G } ^ { C }$ is an EPG. Moreover, since it is widely proved that EPG has at least one pure Nash equilibrium, we can conclude that the equilibrium of $\mathcal { G } ^ { C }$ in
+
+Algorithm 1 Hedonic Coalition Selection and Formation Algorithm (HCSF)   
+Input: Observed EVs' decision $\mu_E(t)$ , observed LUs' decisions $P_n^T(t)$ and $\mu_L(t)$ , channel gains $\{g_{ij}(t)\}_{\forall i,\forall j}$ , coalition partition $x_{\{EJ\}}(t-1)$ and $x_{\{LJ\}}(t-1)$ .
+
+Output: Final coalition partition $\mathcal{CP}(t)$ , $x_{\{EJ\}}(t)$ and $x_{\{LJ\}}(t)$ .
+
+1 Initialize: $x_{\{EJ\}}(t) = x_{\{EJ\}}(t-1)$ and $x_{\{LJ\}}(t) = x_{\{LJ\}}(t-1)$ ;
+
+2 while $\mathcal{CP}(t)$ is different from it in the previous loop do
+
+3 for party $i \in \{\mathcal{K}, \mathcal{N}, \mathcal{J}\}$ do
+
+4 for $\mathcal{C}o_b, i \notin \mathcal{C}o_b, \mathcal{C}o_b \in \mathcal{CP}(t) \cup \{\varnothing\}$ do
+
+5 Player $i$ belongs to coalition $\mathcal{C}o_a$ , calculate $U_i^{\mathcal{C}o_a}(t), U_i^{\mathcal{C}o_b}(t)$ according to (8), (14) or (22);
+
+6 Player $i$ choose to i) leaves its current coalition and join a new coalition; or ii) stays in its current coalition according to single player's switch rules (30), (31) and its preference order (29);
+
+7 Adjust the coalition partition $\mathcal{CP}(t)$ ;
+
+8 Update the $x_{\{EJ\}}(t)$ and $x_{\{LJ\}}(t)$ according to $\mathcal{CP}(t)$ .
+
+each time slot exists (i.e., $_ { \mathcal { G } } C \bullet$ s stable coalition partition in each time slot exists).
+
+Further inspired by [11] and [17], we propose an HCSF algorithm based on the introduced switch rules (30), (31) to derive such stable coalition partition in each time slot. Specifically, given the coalition partition inherited from the previous time slot, i.e., $\mathcal { C P } ( t - 1 )$ , in each existing coalition $C _ { a } \in \mathcal { C P } ( t - 1 )$ , each party $i \in C _ { a }$ first calculates its utility, and then decides to potentially switch its coalition according to switch rules (30), (31). This process repeats for all parties in every coalition until the coalition partition is stabilized. We denote such stable coalition partition as $\mathcal { C P } ( t )$ and its corresponding solution as $x _ { \{ L J \} } ( t )$ and $x _ { \{ E J \} } ( t )$ . Algorithm 1 summarizes the detailed procedure of the proposed HCSF algorithm.
+
+It is worth noting that, different from the conventional coalition partition or formation approaches in [11], [16], and [31], following the definition in [32], the proposed coalition selection and formation algorithm HCSF is hedonic, namely, i) the stable coalition partition in each time slot is formed based on each party’s preference order and the coalition switch rules defined in (29)-(31); and ii) the utility of each party depends on not only itself but also its allies. Therefore, a low computational complexity can be achieved by the proposed HCSF algorithm. To be more specific, the computational complexity of the proposed HCSF algorithm is $O ( | C o _ { i } | * | \Delta | )$ , which is lower that those of the centralized merge-and-split algorithm [11] and epsilon core based algorithm [31], with computational complexities being $O ( | G | ^ { 3 } )$ and ${ \bar { O } } ( | { \bar { G } } | ^ { | \Delta | } )$ , respectively.
+
+Theorem 2 (Convergence of HCSF Algorithm): By adopting the proposed HCSF algorithm summarized in Algorithm 1, all three parties in $\mathrm { P L S } \left( \mathrm { i . e . , } \mathcal { K } , \mathcal { N } , \mathcal { T } \right)$ will eventually converge to a hedonic coalition partition $\mathcal { C P } ^ { * } ( t )$ in each time slot t.
+
+Proof: Defining the utility of any coalition $C _ { a } \in \mathcal { C P } ( t )$ as v(Ca) = P∀i∈Ca $\begin{array} { r } { v ( C _ { a } ) = \sum _ { \forall i \in C _ { a } } U _ { i } ^ { C _ { a } } ( t ) } \end{array}$ , it is shown in literature [33] that a coalition partition $\mathcal { C P } ( t )$ is stable if and only if the following two conditions are satisfied:
+
+1) the utility of coalition $C _ { a }$ in $\mathcal { C P } ( t )$ is larger than or equal to the total utility of all sub-coalitions in any possible partition of $C _ { a }$ , denoted as
+
+$$
+v \left(C _ {a}\right) \geq \sum_ {b} v \left(C _ {b} ^ {\prime}\right), \forall C _ {a} \in \mathcal {C P} (t), \bigcup_ {b} C _ {b} ^ {\prime} = C _ {a}; \tag {36}
+$$
+
+2) the total utility of all coalitions $\mathcal { C } P ( t )$ is larger than or equal to the utility of the grand coalition of all parties, expressed as
+
+$$
+\sum_ {a} v (C _ {a}) \geq v (\bigcup_ {i \in G} \{i \}). \tag {37}
+$$
+
+For $\mathbf { \boldsymbol { \mathcal { C P } } ^ { * } } ( t )$ obtained by the proposed HCSF algorithm, there are three possible cases, and in each case, we can prove that the above stability conditions hold.
+
+Case 1: All three parties choose to not form any coalition with the others in time slot $t , \ \mathrm { i . e . , } \ \mathcal { C P } ^ { * } ( t ) \ = \ \{ \mathcal { I } , \mathcal { K } , \mathcal { N } \}$ . In this case, all elements in $\mathbf { \boldsymbol { \mathcal { C P } } ^ { * } ( \boldsymbol { t } ) }$ are singletons, and thus inequality (36) must be satisfied;
+
+Case 2: JAs and LUs choose to form a coalition in time slot $t , \mathrm { i . e . , } \mathcal { C P } ( t ) = \{ ( \mathcal { I } , \mathcal { N } ) , \mathcal { K } \}$ . In this case, according to switch rules (30) and (31), there are two subcases described as follows.
+
+- Subcase 2.1: JAs originally cooperated with EVs, but now switch to aid LUs at time slot t, $\mathrm { i . e . , ~ } ( \mathcal { I } , \mathcal { K } )  _ { \mathcal { I } } ^ { t } \mathcal { N }$ . In this subcase, $\textit { J } \succ _ { \mathcal { N } } ^ { t }$ ∅ and $\mathcal { N } \succ _ { \mathcal { I } } ^ { t } \mathcal { K }$ both hold and according to (30). Then, we have $U _ { \mathcal { T } } ^ { \mathcal { T } , \mathcal { N } } ( t ) > U _ { \mathcal { T } } ^ { \mathcal { T } , \mathcal { K } } ( t )$ N   N  according to (29). Since the $U _ { \mathcal { N } } ^ { \mathcal { I } , N } ( t ) > U _ { \mathcal { N } } ^ { N } ( t )$ coalition $( \mathcal { I } , \kappa )$ exists in the coalition formation process, inequality ${ \mathcal { K } } \succ _ { \mathcal { I } } ^ { t }$ ∅ is satisfied, which means $U _ { \mathcal { I } } ^ { \mathcal { I } , \mathcal { K } } ( t ) >$ $U _ { \mathcal { I } } ^ { \mathcal { I } } ( t )$ $U _ { N } ^ { \mathcal { I } , N } ( t ) + U _ { \mathcal { I } } ^ { \mathcal { I } , N } ( t ) ~ >$ $U _ { \mathcal { T } } ^ { \mathcal { I } , \mathcal { K } } ( t ) + U _ { \mathcal { N } } ^ { \mathcal { N } } ( t ) > U _ { \mathcal { T } } ^ { \mathcal { I } } ( t ) + U _ { \mathcal { N } } ^ { \mathcal { N } } ( t )$ to $v ( \mathcal { I } , \mathcal { N } ) > v ( \mathcal { I } ) \overset {  } { + } v ( \mathcal { N } )$ , and hence inequality (36) must be satisfied.   
+- Subcase 2.2: JAs and LUs were both non-cooperative, but now mutually switch to form a coalition at time slot t, i.e., $\mathcal { I } \ \to _ { \mathcal { I } } ^ { t } \ \mathcal { N }$ and $\mathcal { N } \ \to _ { \mathcal { N } } ^ { t } \ \mathcal { I }$ both hold. In this subcase, $\check { \mathcal { N } } \succ _ { \mathcal { I } } ^ { t } \varnothing$ and $\mathcal { I } \ \succ _ { \mathcal { N } } ^ { t } \mathcal { O }$ both hold according to (30). Then, we have $U _ { \mathcal { T } } ^ { \mathcal { I } , \mathcal { N } } ( t ) > U _ { \mathcal { T } } ^ { \mathcal { I } } ( t )$ and we $U _ { \mathcal { N } } ^ { \mathcal { I } , N } ( t ) > U _ { \mathcal { N } } ^ { N } ( t )$ erefore,, which $U _ { \mathcal { N } } ^ { \mathcal { I } , \mathcal { N } } ( t ) + U _ { \mathcal { I } } ^ { \mathcal { I } , \mathcal { N } } ( t ) > U _ { \mathcal { I } } ^ { \mathcal { I } } ( t ) + U _ { \mathcal { N } } ^ { \mathcal { N } } ( t )$ is equivalent to $v ( \mathcal { I } , \breve { \mathcal { N } } ) > v ( \mathcal { I } ) + v ( \mathcal { N } )$ , and hence inequality (36) must be satisfied.
+
+Case 3: JAs and EVs choose to form a coalition in time slot t, i.e., $\mathcal { C P } ( t ) = \{ ( \mathcal { I } , \mathcal { K } ) , \mathcal { N } \}$ . In this case, we can apply the similar argument as in the proof for Case 2 to show that inequality (36) holds. The only difference is that K is replaced with ${ \mathcal { N } } .$ .
+
+Note that the grand coalition, i.e., $\{ ( \mathcal { I } , \mathcal { N } , \mathcal { K } ) \}$ does not exist in the formulated problem because LUs and EVs inherently conflict with each other, and thus condition (37) always holds in all three cases.
+
+To sum up, $\mathcal { C P } ^ { * } ( t )$ formed by the proposed HCSF algorithm satisfies both (36) and (37). This completes the proof.
+
+Since a pure-strategy equilibrium for hierarchical game $\mathcal { G } ^ { H }$ may not always exist or is difficult if not impossible to be obtained [17], we consider a more general solution by defining the mixed strategies of EVs, LUs and JAs in game $\mathcal { G } ^ { H }$ as $Z _ { { \mathcal K } } = \Gamma ( \{ x _ { k } ^ { s w } ( t ) , \mu _ { E } ( t ) \} ) ~ Z _ { { \mathcal K } } = \Theta ( \{ x _ { n m } ^ { T } ( t ) , P _ { n } ^ { \bar { T } } ( t ) , \mu _ { L } ( t ) \} )$ and $Z _ { \mathcal { T } } = \Lambda ( \{ P _ { j } ^ { J } ( t ) \} )$ , where $\Gamma ( \cdot ) , \Theta ( \cdot )$ and $\Lambda ( \cdot )$ denote the probability distribution over EVs’, LUs, and JAs’ deterministic $\mathcal { G } ^ { H }$ tegies, respectively. Correspondefined in Definition 2 (i.e., $\pi _ { \mathcal { K } } ^ { \breve { H } * } , \ \pi _ { \mathcal { N } } ^ { H * }$ equi and $\pi _ { . 7 } ^ { H * } )$ m of can be converted to a probability form $( \mathrm { i } . { \bf e } . , Z _ { \kappa } ^ { \ast } , Z _ { \mathcal { N } } ^ { \ast }$ and $Z _ { \mathcal { I } } ^ { * } )$ .
+
+Theorem 3 (Existence of the Mixed Strategy Equilibrium for $\mathcal { G } ^ { H } )$ : In the proposed hierarchical game $\check { \mathcal { G } } ^ { \check { H } }$ , there exists at least one mixed strategy equilibrium $( Z _ { i } ^ { * } , \pi _ { i } ^ { C * } )$ , where $Z _ { i } ^ { * } , \forall i \in G$ is the mixed strategy form of $\{ \pi _ { i } \} _ { \forall i }$ , and $\pi _ { i } ^ { C * }$ is the equilibrium strategy of dynamic coalition formation in all time slots of $\mathcal { G } ^ { H }$ . Mathematically, such mixd strategy equilibrium $( Z _ { i } ^ { * } , \pi _ { i } ^ { C * } )$ satisfies
+
+$$
+\begin{array}{l} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) | Z _ {i} ^ {*}, Z _ {- i} ^ {*}, \pi_ {i} ^ {C *}, \pi_ {- i} ^ {C *} \\ \geq \frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) | Z _ {i}, Z _ {- i} ^ {*}, \pi_ {i} ^ {C}, \pi_ {- i} ^ {C *}, \tag {38} \\ \end{array}
+$$
+
+where $Z _ { - i } ^ { * }$ denotes the equilibrium mixed strategies of all other parties except i.
+
+Proof: First, we prove that, given the strategy $\{ \pi _ { i } ^ { H } \} _ { \forall i \in G } ,$ the stable coalition partition $\mathbf { \boldsymbol { \mathcal { C P } } ^ { * } } ( t )$ generated by the proposed HCSF algorithm is also the subgame perfect equilibrium (SPE) of $\mathcal { G } ^ { H }$ . Denoting $\{ \pi _ { i , t } ^ { C * } \} _ { \forall i \in G }$ as all three parties’ local equilibrium strategy which is equivalent to $\mathit { { ^ { C P ^ { * } } } ( t ) }$ , then according to Definition 3, given the strategy $( \pi _ { i } ^ { H } , \pi _ { - i } ^ { H } )$ for hierarchical game $\mathcal { G } ^ { H }$ without CFG $\mathcal { G } ^ { C }$ , we have
+
+$$
+\begin{array}{l} U _ {i} (t) | \pi_ {i} ^ {H}, \pi_ {- i} ^ {H}, \pi_ {i, t} ^ {C *}, \pi_ {- i, t} ^ {C *} \geq U _ {i} (t) | \pi_ {i} ^ {H}, \pi_ {- i} ^ {H}, \pi_ {i, t} ^ {C}, \pi_ {- i, t} ^ {C *}, \\ \forall i \in G, \forall t \in [ 0, 1, \dots , T - 1 ], \tag {39} \\ \end{array}
+$$
+
+where $\pi _ { - i , t } ^ { C * }$ is the local equilibrium strategy for $\mathcal { G } ^ { C }$ of other parties except i in time slot t, and $\pi _ { i , t } ^ { C }$ is a non-equilibrium strategy for $\mathcal { G } ^ { C }$ of party i in time slot t.
+
+Denoting the subgame of $\mathcal { G } ^ { H }$ from time slot $\tau \_ { \in }$ $\{ 0 , 1 , \ldots , T - 1 \}$ to T − 1 as $\mathcal { G } ^ { H } [ \tau ]$ . By using the backward induction [34], in any subgame $\tilde { \mathcal { G } ^ { H } [ \tau ] } , \forall \tau \in \{ 0 , 1 , \dotsc , T - 1 \}$ , the following inequality must hold:
+
+$$
+\begin{array}{l} \frac {1}{T - \tau} \sum_ {t = \tau} ^ {T - 1} U _ {i} (t) | \pi_ {i} ^ {H}, \pi_ {- i} ^ {H}, \pi_ {i, t} ^ {C *}, \pi_ {- i, t} ^ {C *} \\ \geq \frac {1}{T - \tau} \sum_ {t = \tau} ^ {T - 1} U _ {i} (t) | \pi_ {i} ^ {H}, \pi_ {- i} ^ {H}, \pi_ {i, t} ^ {C}, \pi_ {- i, t} ^ {C *}, \forall i \in G. \tag {40} \\ \end{array}
+$$
+
+The above inequality indicates that, given the strategy $( \pi _ { i } ^ { H } , \pi _ { - i } ^ { H } )$ , in any subgame $\mathcal { G } ^ { H } [ \tau ] , \forall \tau \in \bar { \{ 0 , 1 , \ldots , T - 1 \} }$ , the average utility of each pcoalition formation strategy $i \in G$ achieved by obtained by $\mathcal { G } ^ { H } [ \tau ] ^ { * } \mathrm { { s } }$ $\{ \pi _ { i , t } ^ { C * } \} _ { t = \tau } ^ { T - 1 }$ posed HCSF algorithm is higher thother coalition formation strategy $\{ \pi _ { i , t } ^ { C } \} _ { t = \tau } ^ { T - 1 }$ hieved by any, and thereby $\{ \pi _ { i , t } ^ { C * } , \pi _ { - i , t } ^ { C * } \} _ { t = \tau } ^ { T - 1 }$ is the equilibrium strategy of $\mathcal G ^ { H } [ \tau ]$ . In other words, given the strategy $( \pi _ { i } ^ { H } , \pi _ { - i } ^ { H } )$ , the strategy profile $\{ \pi _ { i , t } ^ { C * } , \pi _ { - i , t } ^ { \check { C } * } \} _ { \forall t }$ constitutes the SPE of the overall $\mathcal { G } ^ { H }$ in all time slots [34], [35]. Therefore, $\{ \pi _ { i , t } ^ { C * } \} _ { \forall t }$ becomes equivalent t o πC∗i $\pi _ { i } ^ { C * }$ as defined in Definition 2. By replacing $\{ \pi _ { i , t } ^ { C * } \}$ ∀t with $\cdot \pi _ { i } ^ { C * }$ , since $\pi _ { i } ^ { C * }$ is the SPE of $\mathcal { G } ^ { H }$ given the strategy $\{ \pi _ { i } ^ { H } \} _ { \forall i \in G }$ , the following inequality must hold:
+
+$$
+\begin{array}{l} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) | \pi_ {i} ^ {H}, \pi_ {- i} ^ {H}, \pi_ {i} ^ {C *}, \pi_ {- i} ^ {C *} \\ \geq \frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) \left| \pi_ {i} ^ {H}, \pi_ {- i} ^ {H}, \pi_ {i} ^ {C}, \pi_ {- i} ^ {C *}, \forall i \in G. \right. \tag {41} \\ \end{array}
+$$
+
+From inequality (41), we can observe that the existence of hierarchical game $\mathcal { G } ^ { H } \mathbf { \bar { s } }$ equilibrium also depends on the existence of equilibrium strategy of $( \pi _ { i } ^ { H } , \pi _ { - i } ^ { H } )$ . Hence, the remaining problem is to prove that the equilibrium solution exists in the proposed hierarchical game $\mathbf { \bar { \nabla } } _ { \mathcal { G } ^ { H } }$ without $\mathcal { G } ^ { C }$ . This is intuitive because i) the number of all parties is finite; ii) the strategies of all three parties (i.e., all decision variables in $\{ \pi _ { i } \} _ { \forall i \in G }$ are discrete and limited) are finite; and iii) the number of time slots $( \mathrm { i . e . , ~ } t \in [ 0 , 1 , \ldots , T ] )$ can be set as finite, meaning that the proposed hierarchical game $\mathcal { G } ^ { H }$ without $\mathcal { G } ^ { C }$ is a finite game which must have a mixed strategy equilibrium according to [17] and $[ 3 6 ]$ . Denoting the mixed strategy equilibrium of $\mathcal { G } ^ { H }$ without $\mathcal { G } ^ { C }$ as $( Z _ { i } ^ { * } , Z _ { - i } ^ { * } )$ , where $Z _ { i } ^ { * }$ is the mixed strategy of party, and $Z _ { i } ^ { * }$ is the mixed strategy of other parties except i.
+
+With the equilibrium strategy $( \pi _ { i } ^ { C * } , \pi _ { - i } ^ { C * } )$ achieved by the proposed HCSF algorithm, inequality (41) can be further derived as
+
+$$
+\begin{array}{l} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) | Z _ {i} ^ {*}, Z _ {- i} ^ {*}, \pi_ {i} ^ {C *}, \pi_ {- i} ^ {C *} \\ \geq \frac {1}{T} \sum_ {t = 0} ^ {T - 1} U _ {i} (t) | Z _ {i}, Z _ {- i} ^ {*}, \pi_ {i} ^ {C}, \pi_ {- i} ^ {C *}, \forall i \in G. \tag {42} \\ \end{array}
+$$
+
+This completes the proof.
+
+# C. DRL-Based Solution for Hierarchical Game
+
+Owing to the observations that the strategies of each party, i.e., LUs, EVs and JAs in PLS in each time slot only depend on those strategies and resulted system states, e.g., the coalition states and channel states in the previous time slot (meaning that state transitions satisfy the Markov property), we can characterize the strategy making problems for LUs, EVs and JAs by three respective Markov decision processes (MDPs). On top of this, we propose a DRL-based solution for sequentially training all three parties to obtain the mixed strategy equilibrium $Z _ { i } ^ { * } , \forall i \in G$ of game $\mathcal { G } ^ { H }$ , as defined in Theorem 3.
+
+MDP for Each Party in PLS: For each party $i \in G =$ $\{ \mathcal { K } , \mathcal { N } , \mathcal { I } \}$ in PLS, its corresponding MDP is expressed as $\mathcal { M } _ { i } = \{ \boldsymbol { S } _ { i } , \mathcal { A } _ { i } , \Xi _ { i } , \mathcal { R } _ { i } \}$ .
+
+1) Environment State for Each Party in PLS: For each party $i \in G$ in time slot t, its environment state can be expressed as $s _ { i } ^ { t } = \{ \mathcal { C P } ( t ) , \mathcal { G } ( t ) , A _ { - i } ( t ) \}$ , where $\mathcal { C P } ( t )$ is i’s current available coalition partition, $\begin{array} { r } { \mathcal { G } ( t ) ~ = ~ \{ g _ { x y } ( t ) \} _ { \forall x \in \mathcal { N } \cup \mathcal { I } , \forall y \in \mathcal { M } \cup \mathcal { K } } } \end{array}$ denotes channel gains of all possible links, and $A _ { - i } ( t ) ~ =$ $\{ a _ { - i } \} _ { \forall a _ { - i } \in \mathcal { A } . }$ −i indicates all other parties’ actions except i (which will be defined later). Let ${ \cal S } _ { i } ~ = ~ \{ s _ { i } ^ { t } \} _ { \forall t }$ stand for
+
+Algorithm 2 DRL-Based Solution for Game $\overline { { { \mathcal { G } } ^ { H } } }$   
+Input: Initial locations of all devices.
+Output: The equilibrium, i.e., $Z_{K}^{*}, Z_{N}^{*}, Z_{J}^{*}$ .
+
+1 Initialize: NT(0), actor and critic networks of all agents, and $\mathcal{CP}(0) = \{x_{\{EJ\}}(0), x_{\{LJ\}}(0)\} = \{0, 0\}$ ;
+
+2 for training step = 0, 1, 2, …, max do
+
+3    for $t = 1, 2, \ldots, T$ do
+
+4 $\mathcal{CP}(t) = \mathcal{CP}^{*}(t - 1)$ ;
+
+5 $s_{0} = s = \{NT(t), \mathcal{CP}(t)\}$ ;
+
+6 $agt_{sw}^{K}$ generates action $x_{k}^{sw}(t)$ based on s;
+
+7    Update NT(t) by $x_{k}^{sw}(t)$ ;
+
+8 $agt_{\mu}^{K}$ generates action $\mu_{E}(t)$ based on s;
+
+9    for $n = 1, 2, \ldots, N$ do
+
+10 $agt_{i}^{N}$ generates $P_{n}^{T}(t)$ and $x_{nm}^{T}(t)$ based on s;
+
+11    Update NT(t) by $P_{n}^{T}(t)$ and $x_{nm}^{T}(t)$ ;
+
+12 $agt_{\mu}^{N}$ generates action $\mu_{L}(t)$ based on s;
+
+13 $agt_{P}^{J}$ generates action $P_{j}^{J}$ based on s, $\mu_{E}(t), \mu_{L}(t)$ ;
+
+14    for each coalition $C_{a} \in \mathcal{CP}(t)$ do
+
+15    for each party $i \in C_{a}$ do
+
+16    Call Algorithm 1 to get $\mathcal{CP}^{*}(t)$ ;
+
+17    Update $\mathcal{CP}(t)$ ;
+
+18 $s = \{NT(t), \mathcal{CP}(t)\}$ ;
+
+19    Calculate each party's rewards $r_{i}^{t}, \forall i \in G$ ;
+
+20    for each agent $e \in AGT$ do
+
+21    Store $s_{0}, a_{e}^{t}, r_{e}^{t} = r_{i}^{t}$ and s in e's replay buffer, where i is e's corresponding party;
+
+22    if replay buffers reach maximum capacity then
+
+23    for each agent $e \in AGT$ do
+
+24    Calculate e's rewards-to-go
+
+25 $J_{t}^{e} = \sum_{t=0}^{T-1} \gamma^{t} r_{t}^{e}$ ;
+
+26    Calculate e's advantage $A_{t}^{e} = J_{t}^{e} - V_{\phi_{e}}^{e}(s_{t}^{e})$ ;
+
+27    Generate the loss for e's actor network: $L_{\theta}^{e} = \sum_{t=0}^{T-1} \min(\frac{p_{\theta_{e}}(a_{t}^{e}|s_{t}^{e})}{p_{\theta_{e}'}(a_{t}^{e}|s_{t}^{e})}) A_{t}^{e}, clip(\frac{p_{\theta_{e}}(a_{t}^{e}|s_{t}^{e})}{p_{\theta_{e}'}(a_{t}^{e}|s_{t}^{e})}, 1 - \epsilon, 1 + \epsilon) A_{t}^{e})$ ;
+
+28    Generate the loss for e's critic network:
+
+29 $L_{\phi_{e}}^{e} = \sum_{t=0}^{T-1}(V_{\phi_{e}}^{e}(s_{t}^{e}) - J_{t}^{e})^{2}$ ;
+
+30    Update $\epsilon_{e}$ and $\phi_{e}$ via Adam Optimizer.
+
+party i’s state space. It is obvious that such state space is multi-dimensional, and thus may lead to a potential curse of dimensionality. To reduce dimensions, we define that $s _ { i } ^ { t } ~ = ~ \{ N T ( t ) , \stackrel { \cdot } { \mathcal { C } } \mathcal { P } ^ { * } ( t - 1 ) \} , \forall i ~ \in ~ \{ \mathcal { N } , K \}$ , and $s _ { \mathcal { T } } ^ { t } ~ =$ $\{ N T ( t ) , \mathcal { C P } ^ { * } ( t - 1 ) , \mu _ { E } ( t ) , \mu _ { L } ( t ) \}$ , in which $N T ( t )$ is an adjacency matrix defined as follows.
+
+$$
+N T (t) = \left[ \begin{array}{c c} x _ {n m} ^ {T} (t) P _ {n} ^ {T} (t) g _ {n m} (t) & x _ {k} ^ {s w} (t) P _ {n} ^ {T} (t) g _ {n k} (t) \\ P _ {j} ^ {J} (t) g _ {j m} (t) & x _ {k} ^ {s w} (t) P _ {j} ^ {J} (t) g _ {j k} (t) \end{array} \right]. \tag {43}
+$$
+
+It is worth noting that the environmental state represents the state information available to each party, and such information can be acquired because of the practical wireless network settings. Specifically, i) $x _ { k } ^ { s w } ( t )$ can be obtained by LUs and JAs based on local oscillator power leaked by activated $\mathrm { E V s } ^ { \prime }$ RF front-end using the detection/location method developed in [37] and [38]; ii) transmission/jamming power of LUs/JAs, i.e., $P _ { n } ^ { T } ( t )$ and $P _ { j } ^ { J } ( t )$ , can be estimated by EVs, LUs and JAs according to the received signal strength based on compressive sensing [39] or kalman filtering [40]; iii) the global channel gains $g _ { n m } ( t ) , g _ { n k } ( t ) , g _ { j m } ( t ) , g _ { j k } ( t )$ are observable to all parties by utilizing techniques based on the well-known pilot information [41] or torch method [42]; and iv) the unit incentive $\mu _ { E } ( t )$ and $\mu _ { L } ( t )$ should be broadcasted by EVs and LUs respectively for attracting JA’s alliance, which are available to JAs. Moreover, owning to the inherent adversary relationship (i.e., LUs and EVs are always mutually conflict with each other), the grand coalition $\{ ( \mathcal { K } , \mathcal { N } , \mathcal { I } ) \}$ never exists. Therefore, each party should and will be willing to broadcast whether it is a singleton to attract other parties’ cooperation at the beginning of each time slot. Based on the broadcasted singleton status of each party at time slot t and the prior knowledge of their possible coalition formation at time slot t − 1 with other parties, each party can calculate $\mathcal { C P } ^ { * } ( t - 1 )$ at time slot t.
+
+2) Action for Each Party in PLS: In time slot t, each party i’s action is exactly its strategic decisions.4 Hence, we have the action space $\mathcal { A } _ { i } = \{ \pi _ { i } ^ { H } \} _ { \forall i \in G }$ .   
+3) State Transition Probabilities of Each Party in PLS: The state transition probability from state $s \in S _ { i }$ to state $s ^ { \prime } \in S _ { i }$ by taking action $a _ { i } \in { \mathcal { A } } _ { i }$ is expressed as $\Xi _ { i } ^ { s , s ^ { \prime } } = P r ( s ^ { \prime } | s , a _ { i } )$ .   
+4) Reward for Each Party in PLS: In time slot t, the immediate reward of $\kappa , \mathcal { N }$ and $\mathcal { I }$ is respectively defined as
+
+$$
+r _ {i} ^ {t} = U _ {i} (t), \forall i \in \{\mathcal {K}, \mathcal {J} \},
+$$
+
+$$
+r _ {\mathcal {N}} ^ {t} = U _ {\mathcal {N}} (t) - \psi \sum_ {n \in \mathcal {N}} (R _ {n m} ^ {T} - R _ {m i n} ^ {T}). \tag {44}
+$$
+
+where ψ is the penalty for violating the QoS constraint. For conciseness, let $\mathcal { R } _ { i } = \{ r _ { i } ^ { t } \} _ { \forall t }$ denote the reward set of each party $i \in G$ .
+
+Note that MDPs for three parties in PLS are inherently coupled [43]. Particularly, i) EVs’ decision of activation $x _ { k } ^ { s w } ( t )$ affects LUs’ secrecy transmission rate $R _ { n m } ^ { S } ( t )$ , which consequently influences LUs’s power allocation $P _ { n } ^ { T } ( t )$ and ii) both $\mathrm { L U s } ^ { \prime }$ and $\mathrm { E V s } ^ { \prime }$ unit incentive decision $\mu _ { L } ( t )$ and $\mu _ { E } ( t )$ in time slot t affect the coalition formation process, which consequently influence JAs’s power allocation $P _ { J } ^ { J } ( t )$ . Besides, the hierarchy in these three MDPs, $\mathrm { i . e . , } \ M _ { K } , \ M _ { \mathcal { N } }$ and $\mathcal { M } _ { \mathcal { I } }$ , mainly lies in the fact that their decision-making process can be divided into three iterative stages in each time slot, in which $\mathcal { M } _ { \mathcal { K } } , \mathcal { M } _ { \mathcal { N } }$ and $\mathcal { M } _ { \mathcal { I } }$ sequentially generate their decisions in the first, second and third stage based on each $\mathrm { { \mathbf { M D P } \mathrm { { \mathbf { s } } } } }$ observation, and such process iterates in a back-andforth manner within each time slot until the convergence.
+
+DRL-Based Solution: Considering the unpredictable channel conditions and the considerably high computational
+
+4In this paper, we delegate the decision-making of LUs, EVs and JAs to three distinct controllers, which can be three specific network device with sufficient computational and sensing capabilities, and their solutions can then be implemented by all corresponding party members for a long-run with longterm performance guarantees. Similar settings are also adopted in [19], [25], and [29].
+
+complexity due to the large action space, we introduce a DRL method based on proximal policy optimization (PPO) to solve the above MDPs, where an actor-critic scheme (AC) [14] is also employed to improve the training efficiency. Specifically, for party $i \in G .$ , AC includes i) a critic network with parameter $\phi$ to estimate party i’s state-value $V _ { \phi } ^ { i } ( s ) \approx V ^ { i } ( s )$ , where the state value $\begin{array} { r } { V ^ { i } ( s ) = \mathbb { E } \{ \sum _ { t = 0 } ^ { T } \gamma ^ { t } r _ { i } ^ { t } | s _ { 0 } = s , \pi _ { i } \} } \end{array}$ with discount factor $\gamma ^ { t } ;$ ; ii) an actor network with parameter θ to approximate party i’s optimal mixed strategy $Z _ { i } ^ { * }$ ; and iii) a replay buffer to store states, actions and rewards during the training process.
+
+Further notice that for each party in the PLS, its decisions are multi-dimensional, and thus it is very challenging to explore all actions within such a massive space. To circumvent this difficulty, we assign the actions of each single party to multiple virtual agents to increase both exploration probability and training rate. In particular, we set agent $a g t _ { s w } ^ { \mathcal { K } }$ and $a g t _ { \mu } ^ { \dot { K } }$ to generate $x _ { i } ^ { s w } ( t )$ and $\mu _ { E } ( t )$ for EVs, N agents $a g t _ { n } ^ { \mathcal { N } }$ to generate $P _ { n } ^ { T } ( i )$ and $x _ { n m } ^ { T } ( t )$ for each LU $n , \forall n \in \mathcal { N }$ , agent $\overline { { a g t _ { \mu } ^ { \mathcal { N } } } }$ to generate $\mu _ { L } ( t )$ for LUs, and agent $a g t _ { P } ^ { \mathcal { I } }$ to generate $P _ { j } ^ { J } ( t )$ for JAs. We denote the set of all virtual agents as AGT, and enable each agent to adopt the AC with its own actor network, critic network and replay buffer. Note that the mixed strategy of each party $i \in G$ is parameterized by the actor networks of i’s agents. With the update of actor network’s parameters of i’s agents (i.e., the policy gradient descent), the mixed strategy of party i can be optimized.
+
+Here, we explain the interactions among all agents in set AGT. In every training step, all agents interact within time slots $t \in [ 0 , T ]$ , following their corresponding parties’ decision sequence defined in the proposed hierarchical game $\mathcal { G } ^ { H }$ . In each time slot t, after generating each agent’s action via its actor network, $N T ( t )$ is updated as the next agent’s state observation. Note that $N T ( t )$ includes the decisions of EVs, LUs and JAs, except for unit incentives which only affect the coalition formation. Then, we ask all three parties to iteratively apply the proposed HCSF algorithm to form the stable coalition partition $\mathcal { C P } ^ { * } ( t )$ , and calculate their rewards $r _ { i } ^ { t } , \forall i \in G$ . The reward of party i’s agents is the same as i’s reward $r _ { i } ^ { t }$ . Afterwards, the replay buffer stores the previous state $s _ { e } ^ { t - \bar { 1 } }$ , the action $a _ { e } ^ { t } ,$ subsequent state $s _ { e } ^ { t }$ and reward $r _ { e } ^ { t }$ for each agent $e , \forall e \in \mathbb { A } \mathbb { G } \mathbb { T }$ .
+
+Such hierarchical game guilded DRL-based training structure has also been employed in [44] and [45]. Fig. 3 illustrates an overview of our proposed DRL-based solution, consisting of the interactions of all agents, the detailed AC framework of each agent and the update process of both the environment and network parameters $( \mathrm { i . e . , } \theta _ { e }$ of agent e’s actor network and $\phi _ { e }$ of agent e’s critic network). In this hierarchical game $\mathcal { G } ^ { H }$ , both the action-generating process and the update process repeat in each training step, and all agents have to run in a back-andforth manner for achieving long-term performance guarantees.
+
+On top of the above, the network parameters of each agent have to be updated at a certain frequency. The updating process is mainly inspired by the PPO method, namely when the replay buffers of all agents reach the total capacity, we update the actor network and critic network of all agents. For each agent $e \in \mathbb { A } \mathbb { G T }$ , this update process includes i) the calculation of e’s rewards-to-go, i.e., the discounted rewards $\begin{array} { r } { J _ { t } ^ { e } = \sum _ { t = 0 } ^ { T - 1 } \gamma ^ { t } r _ { t } ^ { e } } \end{array}$ where $\gamma ^ { t }$ stands for the discount factor in time slot t; ii) the calculation of $e \mathrm { { s } }$ advantage function $A _ { t } ^ { e } = J _ { t } ^ { e } - V _ { \phi } ^ { e } ( s _ { t } ^ { e } )$ ; iii) the calculation of the loss function of $e \mathrm { { s } }$ actor network: $\begin{array} { r } { L _ { \theta } ^ { \ ' } = \sum _ { t = 0 } ^ { T - 1 } \operatorname* { m i n } ( \frac { p _ { \theta } ( a _ { t } ^ { e } | s _ { t } ^ { e } ) } { p _ { \theta ^ { \prime } } ( a _ { t } ^ { e } | s _ { t } ^ { e } ) } A _ { t } ^ { e } , c l i p ( \frac { p _ { \theta } ( a _ { t } ^ { e } | s _ { t } ^ { e } ) } { p _ { \theta ^ { \prime } } ( a _ { t } ^ { e } | s _ { t } ^ { e } ) } , 1 - \epsilon , 1 + \epsilon ) A _ { t } ^ { e } ) } \end{array}$ p( pθ (aet |set )pθ′ (aet |set ) , 1 − ϵ, 1 + ϵ)Aet ), where $p _ { \theta } \big ( a _ { t } ^ { e } | s _ { t } ^ { e } \big )$ is the probability of $e \mathbf { \hat { s } }$ actor network with parameter θ choosing action $a _ { t } ^ { e }$ at state $s _ { t } ^ { e } , \theta ^ { \prime }$ is the original parameter of $e \mathrm { { s } }$ actor network; and iv) the calculation of the loss function of e’s critic network: Leϕ = $\begin{array} { r } { L _ { \phi } ^ { e } = \sum _ { t = 0 } ^ { T - 1 } ( V _ { \phi } ^ { e } ( s _ { t } ^ { e } ) - } \end{array}$ PT −1t=0 (V eϕ (set ) − $J _ { t } ^ { e } ) ^ { 2 }$ . Then, parameters θ and $\phi$ can be updated for minimizing their corresponding loss function via random gradient decedent methods, e.g. Adam optimizer [46]. Algorithm 2 summarizes all detailed steps of the proposed solution.
+
+![](images/bf0d193a0481c09747d101cf19c69f93b80d26c8529b6fbe94623eb5018acd4a.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    subgraph_LUs_LU1["ENVs"]
+        A["NT(t), CP(t)"] --> B["agtK_sw"]
+        B --> C["x_i^sw(t)"]
+        C --> D["agtK_μ"]
+        D --> E["μ_E(t)"]
+        E --> F["NT(t), CP(t)"]
+        F --> G["agtN_N"]
+        G --> H["agtN"]
+        H --> I["N agents"]
+        I --> J["agtN_μ"]
+        J --> K["P_n^T(t), x_nm^T(t)"]
+        K --> L["μ_L(t)"]
+        L --> M["AGT_P^J"]
+        M --> N["P_j^J(t)"]
+        N --> O["JAs"]
+    end
+
+    subgraph_LUs_LU2["ENVs"]
+        P["NT(t), CP(t)"] --> Q["agtN_N"]
+        Q --> R["agtN"]
+        R --> S["agtN"]
+        S --> T["agtP_N"]
+        T --> U["P_j^J(t)"]
+        U --> V["AGT_P^J"]
+        V --> W["P_n^T(t), x_nm^T(t)"]
+        W --> X["μ_E(t)"]
+        X --> Y["AGT_P^J"]
+    end
+
+    subgraph_LUs_LU3["ENVs"]
+        Z["NT(t), CP(t), μ_E(t), μ_L(t)"] --> AA["AGT_P^J"]
+        AA --> AB["P_j^J(t)"]
+        AB --> AC["AGT_P^J"]
+        AC --> AD["P_n^T(t), x_nm^T(t)"]
+        AD --> AE["μ_E(t)"]
+        AE --> AF["AGT_P^J"]
+        AF --> AG["P_j^J(t)"]
+        AG --> AH["JAs"]
+    end
+
+    subgraph_LUs_LU4["ENVs"]
+        AI["old state"] --> AJ["critic network"]
+        AJ --> AK["update φ by L_φ^e"]
+        AK --> AL["update θ by L_θ^e"]
+        AL --> AM["Action Network"]
+        AM --> AN["aCTION"]
+        AN --> AO["Replay Buffer"]
+    end
+
+    subgraph_LUs_LU5["ENVs"]
+        AP["UPDATE"] --> AQ["new state"]
+    end
+
+    style LUs_LU1 fill:#f9f,stroke:#333
+    style LUs_LU2 fill:#ccf,stroke:#333
+    style LUs_LU3 fill:#cfc,stroke:#333
+    style LUs_LU4 fill:#fcc,stroke:#333
+```
+</details>
+
+Fig. 3. Overview of the proposed DRL-based solution.
+
+By running Algorithm 2, all parameters of the actor network and critic network of all agents can be optimized, and thus the mixed strategy equilibrium solution of $\dot { \mathcal { G } } ^ { H }$ (i.e., three parties’ optimal mixed strategies parameterized by actor networks of their agents) can be obtained accordingly.
+
+# V. SIMULATION RESULTS
+
+In this section, simulations are conducted to evaluate the performance of the proposed DRL-based solution for solving the formulated hierarchical game with dynamic coalitions in the PLS-aware wireless uplink communication system. All simulation results are obtained by taking average over 1000 runs with various system parameters.
+
+# A. Simulation Settings
+
+We consider an uplink communication system in a 1000 m × 1000 m geographic area. There exists $N = 2 0$ LUs, $M \ = \ 5 \ \mathrm { \ B S s } , \ K \ = \ 5 \ \mathrm { \ E V s }$ and $J ~ = ~ 2$ JAs randomly scattered in the target area. The l-leveled transmission power of both LUs and JAs is set within a range of [0, 20] dBm with $l ~ = ~ 1 0$ . The frequency bandwidth W is set as
+
+TABLE II NEURAL NETWORK SETTINGS 
+
+<table><tr><td colspan="3">Actor Network</td></tr><tr><td colspan="3">Linear (input size =  $D_e^0$ , hidden size = 64)</td></tr><tr><td colspan="3">Linear (input size = 64, hidden size = 64)</td></tr><tr><td colspan="3">Linear (input size = 64, hidden size =  $D_e^1$ )</td></tr><tr><td colspan="3">Critic Network</td></tr><tr><td colspan="3">Linear (input size =  $D_e^0$ , hidden size = 64)</td></tr><tr><td colspan="3">Linear (input size = 64, hidden size = 64)</td></tr><tr><td colspan="3">Linear (input size = 64, hidden size = 1)</td></tr><tr><td>Agent e</td><td>Input Size  $D_e^0$ </td><td>Output Size  $D_e^1$ </td></tr><tr><td> $agt_{sw}^{\mathcal{K}}$ </td><td>(N+J)*(M+K)+2</td><td> $2^K$ </td></tr><tr><td> $agt_{\mu}^{\mathcal{K}}, agt_{\mu}^{\mathcal{N}}$ </td><td>(N+J)*(M+K)+2</td><td>10</td></tr><tr><td> $\{agt_n^{\mathcal{N}}\}_{\forall n \in \mathcal{N}}$ </td><td>(N+J)*(M+K)+2</td><td>l*M</td></tr><tr><td> $agt_P^{\mathcal{J}}$ </td><td>(N+J)*(M+K)+4</td><td>10</td></tr></table>
+
+$W = 1 M H z \ [ 1 7 ] .$ , [47]. Furthermore, we assume that $\xi _ { n } =$ $[ 5 , 1 5 ] , \eta _ { j } \ = \ [ 5 , 1 5 ] , \psi \ = \ [ 0 . 1 , 0 . 9 ] , c _ { k } \ = \ [ 0 . 1 , 0 . 5 ] , c _ { c o n f } \ =$ $[ 0 . 3 , 0 . 7 ] , R _ { m i n } ^ { T } ~ = ~ 4 b p s / H z , \mu _ { L } ^ { m a x } ~ = ~ 1 0 $ and $\mu _ { E } ^ { m a x } \ : = \ : 1 0 .$ . Note that similar settings have also been employed in [17] and [26]. Besides, the uncertainty of channel gains is modeled with three states, i.e.,“Good” with $E \{ g _ { n m } ( t ) \} =$ $0 . 6 ,$ “Normal” with $E \{ g _ { n m } ( t ) \} ~ = ~ 0 . 4$ and $\mathrm { \bf \ddot { B } a d \vec { \mu } } $ with $E \{ g _ { n m } ( t ) \} = 0 . 2$ , while their switching probabilities are set following [10]. Besides, the structure of each agent’s actor network and critic network, and hyper-parameter settings for the proposed DRL-based solution is presented in Table II. Note that some parameters may vary for different evaluation purposes.
+
+We compare our proposed DRL-based solution with the following benchmarks:
+
+• EF J-DRL: EV’s friendly jamming based on DRL, in which JAs always and unilaterally choose to aid EVs in eavesdropping by jamming the uplink communication links, while the other decisions are made by the DRL-based algorithm [48].   
+• $L F J { \mathrm { - } } D R L \colon { \mathrm { ~ L U s } } ^ { \prime }$ friendly jamming based on DRL, in which JAs always and unilaterally choose to aid LUs in improving secrecy transmission rates by jamming the eavesdropping links, while the other decisions are made by the DRL-based algorithm [9].   
+• EF J-P SO: EV’s friendly jamming based on particle swarm optimization algorithm (PSO), in which JAs always and unilaterally choose to aid EVs in eavesdropping by jamming the uplink communication links, while the other decisions are made by PSO-based algorithm [49].   
+• LF J-P SO: LUs’ friendly jamming based on PSO, in which JAs always and unilaterally choose to aid LUs in improving secrecy transmission rates by jamming the eavesdropping links, while the other decisions are made by PSO-based algorithm [49].   
+• $R ^ { T } { \cdot } M a x !$ LUs greedily maximize $\{ R _ { n m } ^ { T } ( t ) \} _ { \forall n }$ in each time slot when determining the transmission power allocation $\{ P _ { n } ^ { T } ( t ) \} _ { \forall n }$ and BS association $\{ x _ { n m } ^ { T } ( t ) \} _ { \forall n }$ .   
+• $R ^ { S } { - } M a x { : }$ LUs greedily maximize $\{ R _ { n m } ^ { S } ( \dot { t } ) \} _ { \forall n }$ in each time slot when determining the transmission power allocation $\{ P _ { n } ^ { T } ( t ) \} _ { \forall n }$ and BS association $\{ x _ { n m } ^ { T } ( t ) \} _ { \forall n } \ [ 2 2 ]$ .
+
+![](images/538e629c5370b6c580a99fc133aefa7e41433f5010f063fd1feee23d984c77b5.jpg)
+
+<details>
+<summary>line</summary>
+
+| Training Rounds (×10⁴) | EVs   | LUs   | JAs   |
+| ---------------------- | ----- | ----- | ----- |
+| 2                      | -10   | -180  | 70    |
+| 4                      | -30   | -60   | 30    |
+| 6                      | -40   | -20   | 20    |
+| 8                      | -45   | 0     | 10    |
+| 10                     | -45   | 10    | 5     |
+| 12                     | -45   | 10    | 5     |
+| 14                     | -45   | 10    | 5     |
+| 16                     | -45   | 10    | 5     |
+| 18                     | -45   | 10    | 5     |
+| 20                     | -45   | 10    | 5     |
+</details>
+
+Fig. 4. Convergence of the proposed DRL-based solution.   
+![](images/c3d2fd3cc92dde62fb9afc969ebcc6f06be410927bd11f0a77f3ad0ce30da6cd.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slots (0.5s) | c_conf = 0.3 | c_conf = 0.4 | c_conf = 0.5 | c_conf = 0.6 | c_conf = 0.7 |
+| ----------------- | ------------ | ------------ | ------------ | ------------ | ------------ |
+| 0                 | 0            | 0            | 0            | 0            | 0            |
+| 25                | 250          | 100          | 50           | 100          | 50           |
+| 50                | 300          | 150          | 100          | 150          | 100          |
+| 75                | 600          | 200          | 200          | 200          | 150          |
+| 100               | 800          | 300          | 500          | 300          | 200          |
+| 125               | 900          | 400          | 800          | 350          | 250          |
+| 150               | 1200         | 500          | 1100         | 400          | 300          |
+| 175               | 1400         | 600          | 1300         | 450          | 350          |
+| 200               | 1600         | 700          | 1500         | 500          | 400          |
+</details>
+
+![](images/d82dcc80ebbeab306e0c7d4a25d6b9911497f3e62793824f3e017c36f6f860a3.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slots (0.5s) | ηj = 5 | ηj = 7 | ηj = 9 | ηj = 11 | ηj = 13 | ηj = 15 |
+| ----------------- | ------ | ------ | ------ | ------- | ------- | ------- |
+| 0                 | 0      | 0      | 0      | 0       | 0       | 0       |
+| 25                | 0      | 0      | 0      | 0       | 0       | 0       |
+| 50                | 700    | 700    | 500    | 450     | 300     | 250     |
+| 75                | 800    | 750    | 550    | 450     | 350     | 250     |
+| 100               | 800    | 750    | 550    | 450     | 350     | 250     |
+| 125               | 800    | 750    | 550    | 450     | 350     | 250     |
+| 150               | 800    | 750    | 550    | 450     | 350     | 250     |
+| 175               | 800    | 750    | 550    | 450     | 350     | 250     |
+| 200               | 1400   | 1200   | 1000   | 800     | 650     | 500     |
+</details>
+
+Fig. 5. JAs’ performance with different $c _ { c o n f }$ and $\eta _ { j }$
+
+• $R ^ { E _ { - } } M a x \colon$ EVs greedily maximize $\{ R _ { n k } ^ { E } ( t ) \} _ { \forall k }$ in each time slot when determining the activation of each EV in different geographical locations, i.e., $\{ x _ { k } ^ { s w } ( t ) \} _ { \forall k }$ [50].   
+• $V _ { \mathcal { I } ^ { - } } M a x \colon$ JAs greedily maximize their total incentive $V _ { \mathcal { I } } ( t )$ in each time slot when deciding the jamming power allocation $\{ P _ { j } ^ { J } ( t ) \} _ { \forall j }$ [6].
+
+# B. Performance Evaluation
+
+Fig. 4 examines the convergence of the proposed DRLbased solution. It is shown that, the utilities of all three parties converge very quickly, which implies that the mixed strategies $( Z _ { \kappa } ^ { * } , Z _ { \mathcal { N } } ^ { * } , Z _ { \mathcal { T } } ^ { * } )$ can quickly converge to the equilibrium of the formulated hierarchical game $\bar { \mathcal { G } } ^ { H }$ . This is owing to the adjacency matrix and virtual agents designed for reducing the complexity of both state and action spaces for improving the training efficiency, and the adoption of PPO in the strategy exploration for accelerating the convergence. Such convergence results well match the theoretical analyses provided in Section IV, and verify the feasibility of our proposed solution.
+
+Fig 5 depicts the performance of JAs using the proposed DRL-based solution, and shows how $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ cumulative utility is affected by the configuration cost $c _ { c o n f }$ and the unit jamming power cost $\eta _ { j }$ . In Fig 5(a), the curve of JA’s cumulative utility exhibits a step-wise pattern, where each upward segment represents a change in the coalition partition of all three parties. It can be observed that, as $c _ { c o n f }$ increases, the number of upward segments in the curve decreases. This is because when $c _ { c o n f }$ is sufficiently large, JAs become less willing to change the coalition partition and may even choose to not assist either LUs or EVs. In Fig 5(b), we can observe that the slope of the curve for JA’s cumulative utility decreases more gradually as $\eta _ { j }$ increases, compared to that in Fig 5(a). This is because the proposed DRL-based solution trains JAs to achieve a stable and optimal power allocation strategy, such that the jamming power allocations under different settings of $\eta _ { j }$ are similar. In other words, the increment in $\eta _ { j }$ only leads to a slight increase in the total power cost, resulting in a gradual decrement of JA’s cumulative utility, and has little impact on the coalition formation process.
+
+![](images/727ada355203443fa277f267c3a71079209676af7436286d87d35eab36089fcf.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slots (0.5s) | R_min^T = 2 | R_min^T = 3 | R_min^T = 4 | R_min^T = 5 | R_min^T = 6 |
+| ----------------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 0                 | 0           | 0           | 0           | 0           | 0           |
+| 25                | ~300        | ~250        | ~200        | ~150        | ~100        |
+| 50                | ~600        | ~450        | ~350        | ~250        | ~150        |
+| 75                | ~900        | ~650        | ~500        | ~350        | ~200        |
+| 100               | ~1200       | ~850        | ~650        | ~450        | ~250        |
+| 125               | ~1500       | ~1050       | ~800        | ~550        | ~300        |
+| 150               | ~1800       | ~1250       | ~950        | ~650        | ~350        |
+| 175               | ~2100       | ~1450       | ~1100       | ~750        | ~400        |
+| 200               | ~2400       | ~1650       | ~1250       | ~850        | ~450        |
+</details>
+
+(a)
+
+![](images/42b9288fb3be8ea04803da67f13a251ac6416ca98a1e8395e3b29cca417a293e.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slots (0.5s) | ξn = 5 | ξn = 7 | ξn = 9 | ξn = 11 | ξn = 13 | ξn = 15 |
+| ----------------- | ------ | ------ | ------ | ------- | ------- | ------- |
+| 0                 | 0      | 0      | 0      | 0       | 0       | 0       |
+| 25                | ~200   | ~180   | ~160   | ~140    | ~120    | ~100    |
+| 50                | ~400   | ~360   | ~320   | ~280    | ~240    | ~200    |
+| 75                | ~600   | ~540   | ~480   | ~420    | ~360    | ~300    |
+| 100               | ~800   | ~720   | ~640   | ~560    | ~480    | ~400    |
+| 125               | ~1000  | ~920   | ~760   | ~680    | ~600    | ~500    |
+| 150               | ~1200  | ~1120  | ~940   | ~840    | ~760    | ~600    |
+| 175               | ~1400  | ~1320  | ~1120  | ~1020   | ~940    | ~760    |
+| 200               | ~1600  | ~1520  | ~1300  | ~1220   | ~1120   | ~960    |
+</details>
+
+Fig. 6. LUs’ performance with different $R _ { m i n } ^ { T }$ and $\xi _ { n }$
+
+Fig. 6 evaluates the performance of LUs using the proposed DRL-based solution, and demonstrates the impact of the minimum transmission rate $R _ { m i n } ^ { T }$ and the unit transmission power cost $\xi _ { n }$ on LUs’ cumulative utility. In Fig. 6(a), it can be observed that $\mathrm { L U s } '$ performance decreases with increasing $R _ { m i n } ^ { T }$ . This is because when $R _ { m i n } ^ { T }$ increases, LUs need to increase their transmission powers and choose the target BSs that are geographically closer but more vulnerable to eavesdropping to satisfy the QoS constraint. In Fig. 6(b), it is obvious that $\mathrm { L U s } ^ { \prime }$ performance decreases with increasing $\xi _ { n } .$ . The reason for this is that if $\xi _ { n }$ increases, LUs will reduce their transmission powers to lower the total power consumption. Furthermore, it can be observed in Fig. 6(a) that $R _ { m i n } ^ { T }$ varying from $2 b p s / H z$ to $6 b p s / H z$ results in a decline of over 400% in $\mathrm { L U s } ^ { \prime }$ utility, but such a dramatic decline does not occur when $\xi _ { n }$ increases in Fig. 6(b). The reason is that $R _ { m i n } ^ { T }$ affects both the BS association and power allocation of LUs, whereas $\xi _ { n }$ does not actually influence the BS association.
+
+![](images/f3501f1aaa90aa92c8641278564b8cfafa131130415cb72b7c6ae47b15399578.jpg)
+
+<details>
+<summary>line</summary>
+
+| Unit Power Cost of Single LU (ξₙ) | Proposed Solution | R^T-Max | R^S-Max |
+| --------------------------------- | ----------------- | ------- | ------- |
+| 5                                 | 300               | 2000    | 1800    |
+| 7                                 | 400               | 2800    | 2400    |
+| 9                                 | 500               | 3600    | 3000    |
+| 11                                | 600               | 4400    | 3600    |
+| 13                                | 700               | 5200    | 4200    |
+| 15                                | 800               | 6000    | 5000    |
+</details>
+
+(a)
+
+![](images/e1310cf4e164eeae98f70af279816aba4ee28803b18ecba1597e2e86146985f2.jpg)
+
+<details>
+<summary>line</summary>
+
+| Activation Cost of Single EV (cₖ) | Proposed Solution | R^E-Max |
+| -------------------------------- | ----------------- | ------- |
+| 0.1                              | 30                | 50      |
+| 0.2                              | 60                | 100     |
+| 0.3                              | 90                | 150     |
+| 0.4                              | 120               | 200     |
+| 0.5                              | 150               | 250     |
+</details>
+
+(b)
+
+![](images/d09acf705e6aa5a88616a9fb69bb94cbba4884d5552c6e462c46a7bef95398ed.jpg)
+
+<details>
+<summary>line</summary>
+
+| Unit Jamming Power Cost of Single JA (ηj) | Proposed Solution | V_J - Max |
+| ------------------------------------------ | ----------------- | --------- |
+| 5                                          | 15                | 25        |
+| 7                                          | 17                | 30        |
+| 9                                          | 19                | 35        |
+| 11                                         | 21                | 40        |
+| 13                                         | 23                | 45        |
+| 15                                         | 25                | 50        |
+</details>
+
+Fig. 7. Performance comparison among different approaches by varying $\xi _ { n } , c _ { k }$ and $\eta _ { j }$   
+![](images/cbb068eb779f346bee5562ea322a8c5907e3d7ba579712492beff7444131444d.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slots (0.5s) | Proposed Solution | LFJ-DRL | LFJ-PSO |
+| ----------------- | ----------------- | ------- | ------- |
+| 0                 | 0                 | 0       | 0       |
+| 25                | -1500             | -1800   | -2000   |
+| 50                | -3000             | -3500   | -4000   |
+| 75                | -4500             | -5000   | -6000   |
+| 100               | -6000             | -6500   | -8000   |
+| 125               | -7500             | -8000   | -10000  |
+| 150               | -9000             | -9500   | -12000  |
+| 175               | -10500            | -11000  | -14000  |
+| 200               | -12000            | -12500  | -16000  |
+</details>
+
+(a)
+
+![](images/f8be2c968c6870948fc2220482cb1bb3c065142a8effa716d644db7d2a728d51.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slots (0.5s) | Proposed Solution | EFJ-DRL | EFJ-PSO |
+| ----------------- | ----------------- | ------- | ------- |
+| 0                 | 0                 | 0       | 0       |
+| 25                | ~500              | ~-500   | ~-1000  |
+| 50                | ~1000             | ~-1000  | ~-1500  |
+| 75                | ~1250             | ~-1250  | ~-2000  |
+| 100               | ~1500             | ~-1500  | ~-2500  |
+| 125               | ~1750             | ~-1750  | ~-3000  |
+| 150               | ~2000             | ~-2000  | ~-3500  |
+| 175               | ~2250             | ~-2250  | ~-4000  |
+| 200               | ~2500             | ~-2500  | ~-4500  |
+</details>
+
+(b)
+
+![](images/a87ebab6a110866987e7655a5c35633f588d642efe99a99f8236e4c80f643af5.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slots (0.5s) | Proposed Solution | EFJ-DRL | LFJ-DRL | EFJ-PSO | LFJ-PSO |
+| ----------------- | ----------------- | ------- | ------- | ------- | ------- |
+| 0                 | 0                 | 0       | 0       | 0       | 0       |
+| 25                | 50                | 50      | 50      | 0       | 0       |
+| 50                | 150               | 150     | 150     | 0       | 0       |
+| 75                | 300               | 200     | 200     | 0       | 0       |
+| 100               | 450               | 250     | 250     | 0       | 0       |
+| 125               | 600               | 300     | 300     | 0       | 0       |
+| 150               | 750               | 400     | 350     | 0       | 0       |
+| 175               | 900               | 500     | 400     | 0       | 0       |
+| 200               | 1000              | 650     | 450     | 0       | 400     |
+</details>
+
+Fig. 8. Performance comparison in terms of EVs’, LUs’ and JAs’ cumulative utilities.
+
+Fig. 7 presents a comparison of the performance of the proposed DRL-based solution with $R ^ { T } \mathrm { - } M a x , R ^ { S } \mathrm { - } M a x$ , $R ^ { E _ { - } } M \bar { a } x$ , and $V _ { \mathcal { I } ^ { - } } M a x$ , by varying the costs of $\mathrm { L U s } ^ { \prime }$ unit transmission power $\xi _ { n } , \ \mathrm { E V s } ^ { , }$ activation $c _ { k } .$ , and $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ unit jamming power $\eta _ { j }$ . As shown in Fig. 7(a), the proposed solution achieves significantly lower total cost for all LUs compared to $R ^ { T } { - } M a x$ and $R ^ { S } { - } M a x$ . Similarly, Fig. 7(b) demonstrates that the proposed solution outperforms $R ^ { E _ { - } } M a x$ in terms of the total cost for all EVs, while in Fig. 7(c), the total cost for all JAs is considerably lower than that obtained by $V _ { \mathcal { I } ^ { - } } M a x .$ . These results indicate that the proposed DRL-based solution is superior in minimizing the total cost for all parties over all benchmarks. This is because that existing approaches $( \mathrm { i . e . , } R ^ { T } \mathrm { - } M a x , R ^ { S } \mathrm { - } M a x , R ^ { E } \mathrm { - } M a x ,$ and $V _ { \mathcal { I } ^ { - } } M a x )$ solely maximize their respective physical quantities (i.e., $R _ { n m } ^ { T } ( t ) , \ : \dot { R } _ { n m } ^ { S } ( t ) , \ : R _ { n k } ^ { E } ( t )$ , and $V _ { \mathcal { I } } ( t ) )$ while neglecting the costs incurred by higher $\dot { P } _ { n } ^ { T } ( t )$ of LUs, number of activated devices of EVs (i.e., $\textstyle \sum _ { \forall k \in K } x _ { k } ^ { s w } ( t ) )$ , and $P _ { j } ^ { J } ( t )$ of JAs, respectively. In contrast, the proposed solution considers all possible factors that impact the performance of all parties by formulating their utility functions more comprehensively and well addresses the dynamic strategic interactions among them.
+
+Fig. 8 demonstrates the superiority of the proposed solution with dynamic coalition in terms of EVs’, LUs’ and $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ cumulative utilities. It can be observed that i) in Fig. 8(a), the proposed solution outperforms LFJ-DRL and LFJ-PSO in terms of EVs’ utility; ii) in Fig. 8(b), the proposed solution outperforms EFJ-DRL and EFJ-PSO in terms of LUs’ utility; and iii) in Fig.8(c), the proposed solution outperforms the others in terms of $\mathbf { J } \mathbf { A } \mathbf { s } ^ { \prime }$ utility. This is because the proposed solution allows JAs to dynamically form coalitions with either LUs or EVs based on the time-varying system states, which helps them earn more rewards for their services in either secrecy transmission or eavesdropping. In other words, unlike the fixed relationships among EVs, LUs and JAs imposed in either EVs’ Friendly Jamming or LUs’ Friendly Jamming based on either DRL or PSO, the dynamic trilateral coalitions considered by the proposed solution provides higher flexibility and adaptability to the practical PLS-aware wireless networks. Moreover, it is shown in Fig. 8 that the DRL-based solutions outperform the PSO-based solutions. This is because DRL-based solutions have stronger exploration capabilities than PSO-based ones in dynamic wirelss communications, reducing the possibility of falling into the local optima.
+
+# VI. CONCLUSION
+
+In this paper, we propose a novel hierarchical game framework for PLS-aware wireless communications. To be more specific, with the aim of modeling the strategic interactions among EVs, LUs and JAs under the dynamic nature of the wireless system and their potential coalition relationships. We then formulate a hierarchical game integrating with a trilateral CFG. By analyzing stability conditions of the underlying trilateral coalitions, we propose an HCSF algorithm for stable coalition partition in each time slot. Then, after analyzing the existence of the overall hierarchical game’s equilibrium, we propose a DRL-based solution which can converge to a mixed-strategy equilibrium for the formulated hierarchical game with long-term performance guarantees. Simulation results verify the feasibility of the proposed solution and demonstrate its superiority over its counterparts. in increasing the cumulative utilities of EVs, LUs and JAs.
+
+# REFERENCES
+
+[1] R. Chen, C. Yi, K. Zhu, B. Chen, and J. Cai, “A DRL-based hierarchical game for physical layer security with dynamic trilateral coalitions,” in Proc. IEEE ICC, May 2023, pp. 1–6.
+
+[2] Q. Wu, W. Wang, Z. Li, B. Zhou, Y. Huang, and X. Wang, “Spectrum-Chain: A disruptive dynamic spectrum-sharing framework for 6G,” Sci. China Inf. Sci., vol. 66, no. 3, pp. 1–14, Mar. 2023.   
+[3] Z. Yin et al., “Multi-domain resource multiplexing based secure transmission for satellite-assisted IoT: AO-SCA approach,” IEEE Trans. Wireless Commun., early access, Mar. 6, 2023, doi: 10.1109/TWC.2023.3250227.   
+[4] Z. Yin, N. Cheng, T. H. Luan, Y. Hui, and W. Wang, “Green interference based symbiotic security in integrated satellite-terrestrial communications,” IEEE Trans. Wireless Commun., vol. 21, no. 11, pp. 9962–9973, Nov. 2022.   
+[5] N. Zhang, N. Cheng, N. Lu, X. Zhang, J. W. Mark, and X. Shen, “Partner selection and incentive mechanism for physical layer security,” IEEE Trans. Wireless Commun., vol. 14, no. 8, pp. 4265–4276, Aug. 2015.   
+[6] Y. Xu, J. Liu, Y. Shen, X. Jiang, Y. Ji, and N. Shiratori, “QoS-aware secure routing design for wireless networks with selfish jammers,” IEEE Trans. Wireless Commun., vol. 20, no. 8, pp. 4902–4916, Aug. 2021.   
+[7] D. Xu, H. Zhu, and Q. Li, “Jammer-assisted legitimate eavesdropping in wireless powered suspicious communication networks,” IEEE Access, vol. 7, pp. 20363–20380, 2019.   
+[8] R. Zhang, L. Song, Z. Han, and B. Jiao, “Physical layer security for two-way untrusted relaying with friendly jammers,” IEEE Trans. Veh. Technol., vol. 61, no. 8, pp. 3693–3704, Oct. 2012.   
+[9] G. Zhang, J. Xu, Q. Wu, M. Cui, X. Li, and F. Lin, “Wireless powered cooperative jamming for secure OFDM system,” IEEE Trans. Veh. Technol., vol. 67, no. 2, pp. 1331–1346, Feb. 2018.   
+[10] W. Wu, P. Yang, W. Zhang, C. Zhou, and X. Shen, “Accuracy-guaranteed collaborative DNN inference in industrial IoT via deep reinforcement learning,” IEEE Trans. Ind. Informat., vol. 17, no. 7, pp. 4988–4998, Jul. 2021.   
+[11] L. Militano, A. Orsino, G. Araniti, A. Molinaro, and A. Iera, “A constrained coalition formation game for multihop D2D content uploading,” IEEE Trans. Wireless Commun., vol. 15, no. 3, pp. 2012–2024, Mar. 2016.   
+[12] Y. Xu, T. Zhang, D. Yang, Y. Liu, and M. Tao, “Joint resource and trajectory optimization for security in UAV-assisted MEC systems,” IEEE Trans. Commun., vol. 69, no. 1, pp. 573–588, Jan. 2021.   
+[13] L. Sun and X. Tian, “Physical layer security in multi-antenna cellular systems: Joint optimization of feedback rate and power allocation,” IEEE Trans. Wireless Commun., vol. 21, no. 9, pp. 7165–7180, Sep. 2022.   
+[14] D. Guo, H. Ding, L. Tang, X. Zhang, L. Yang, and Y.-C. Liang, “A proactive eavesdropping game in MIMO systems based on multiagent deep reinforcement learning,” IEEE Trans. Wireless Commun., vol. 21, no. 11, pp. 8889–8904, Nov. 2022.   
+[15] J. Chen et al., “Joint task assignment and spectrum allocation in heterogeneous UAV communication networks: A coalition formation game-theoretic approach,” IEEE Trans. Wireless Commun., vol. 20, no. 1, pp. 440–452, Jan. 2021.   
+[16] N. Qi, Z. Huang, F. Zhou, Q. Shi, Q. Wu, and M. Xiao, “A task-driven sequential overlapping coalition formation game for resource allocation in heterogeneous UAV networks,” IEEE Trans. Mobile Comput., vol. 22, no. 8, pp. 4439–4455, Aug. 2023.   
+[17] C. Han, A. Liu, H. Wang, L. Huo, and X. Liang, “Dynamic anti-jamming coalition for satellite-enabled army IoT: A distributed game approach,” IEEE Internet Things J., vol. 7, no. 11, pp. 10932–10944, Nov. 2020.   
+[18] S. Sawadsitang, D. Niyato, P. S. Tan, P. Wang, and S. Nutanong, “Shipper cooperation in stochastic drone delivery: A dynamic Bayesian game approach,” IEEE Trans. Veh. Technol., vol. 70, no. 8, pp. 7437–7452, Aug. 2021.   
+[19] R. Wu, G. Tang, T. Chen, D. Guo, L. Luo, and W. Kang, “A profitaware coalition game for cooperative content caching at the network edge,” IEEE Internet Things J., vol. 9, no. 2, pp. 1361–1373, Jan. 2022.   
+[20] Intelligent Transport Systems (ITS); Decentralized Congestion Control Mechanisms for Intelligent Transport Systems Operating in the 5 GHz Range; Access Layer Part, European Telecommunications Standards Institute, Technical Specification, ETSI TS 102 687, V1.1.1, Jul. 2011.   
+[21] Y. Liu, X. Fang, and M. Xiao, “Discrete power control and transmission duration allocation for self-backhauling dense mmWave cellular networks,” IEEE Trans. Commun., vol. 66, no. 1, pp. 432–447, Jan. 2018.   
+[22] C. Zhang, F. Jia, Z. Zhang, J. Ge, and F. Gong, “Physical layer security designs for 5G NOMA systems with a stronger near-end internal eavesdropper,” IEEE Trans. Veh. Technol., vol. 69, no. 11, pp. 13005–13017, Nov. 2020.   
+[23] A. D. Wyner, “The wire-tap channel,” Bell Syst. Tech. J., vol. 54, no. 8, pp. 1355–1387, Oct. 1975.
+
+[24] K. Wang, L. Yuan, T. Miyazaki, S. Guo, and Y. Sun, “Antieavesdropping with selfish jamming in wireless networks: A Bertrand game approach,” IEEE Trans. Veh. Technol., vol. 66, no. 7, pp. 6268–6279, Jul. 2017.   
+[25] C. Yi, J. Cai, T. Zhang, K. Zhu, B. Chen, and Q. Wu, “Workload reallocation for edge computing with server collaboration: A cooperative queueing game approach,” IEEE Trans. Mobile Comput., vol. 22, no. 5, pp. 3095–3111, May 2023.   
+[26] H. Fang, L. Xu, Y. Zou, X. Wang, and K. R. Choo, “Three-stage Stackelberg game for defending against full-duplex active eavesdropping attacks in cooperative communication,” IEEE Trans. Veh. Technol., vol. 67, no. 11, pp. 10788–10799, Nov. 2018.   
+[27] N. Qi et al., “Two birds with one stone: Simultaneous jamming and eavesdropping with the Bayesian-Stackelberg game,” IEEE Trans. Commun., vol. 69, no. 12, pp. 8013–8027, Dec. 2021.   
+[28] K. Wang, L. Yuan, T. Miyazaki, Y. Chen, and Y. Zhang, “Jamming and eavesdropping defense in green cyber-physical transportation systems using a Stackelberg game,” IEEE Trans. Ind. Informat., vol. 14, no. 9, pp. 4232–4242, Sep. 2018.   
+[29] H. Fang, L. Xu, and X. Wang, “Coordinated multiple-relays based physical-layer security improvement: A single-leader multiple-followers Stackelberg game scheme,” IEEE Trans. Inf. Forensics Security, vol. 13, no. 1, pp. 197–209, Jan. 2018.   
+[30] J. Ding and J. Cai, “Two-side coalitional matching approach for joint MIMO-NOMA clustering and BS selection in multi-cell MIMO-NOMA systems,” IEEE Trans. Wireless Commun., vol. 19, no. 3, pp. 2006–2021, Mar. 2020.   
+[31] R. Mochaourab and E. A. Jorswieck, “Coalitional games in MISO interference channels: Epsilon-core and coalition structure stable set,” IEEE Trans. Signal Process., vol. 62, no. 24, pp. 6507–6520, Dec. 2014.   
+[32] D. Wu, Y. Cai, R. Q. Hu, and Y. Qian, “Dynamic distributed resource sharing for mobile D2D communications,” IEEE Trans. Wireless Commun., vol. 14, no. 10, pp. 5417–5429, Oct. 2015.   
+[33] J. Cao, T. Peng, Z. Qi, R. Duan, Y. Yuan, and W. Wang, “Interference management in ultradense networks: A user-centric coalition formation game approach,” IEEE Trans. Veh. Technol., vol. 67, no. 6, pp. 5188–5202, Jun. 2018.   
+[34] C. Wang, Y. Hou, and C.-W. Ten, “Determination of Nash equilibrium based on plausible attack-defense dynamics,” IEEE Trans. Power Syst., vol. 32, no. 5, pp. 3670–3680, Sep. 2017.   
+[35] Z. Xiong, J. Zhao, Y. Zhang, D. Niyato, and J. Zhang, “Contract design in hierarchical game for sponsored content service market,” IEEE Trans. Mobile Comput., vol. 20, no. 9, pp. 2763–2778, Sep. 2021.   
+[36] Z. Han, D. Niyato, W. Saad, T. Basar, and A. Hjørungnes, Game Theory in Wireless and Communication Networks: Theory, Models, and Applications. Cambridge, U.K.: Cambridge Univ. Press, 2012.   
+[37] A. Chaman, J. Wang, J. Sun, H. Hassanieh, and R. R. Choudhury, “Ghostbuster: Detecting the presence of hidden eavesdroppers,” in Proc. 24th Annu. Int. Conf. Mobile Comput. Netw., Oct. 2018, pp. 337–351.   
+[38] A. Mukherjee and A. L. Swindlehurst, “Detecting passive eavesdroppers in the MIMO wiretap channel,” in Proc. IEEE Int. Conf. Acoust., Speech Signal Process. (ICASSP), Mar. 2012, pp. 2809–2812.   
+[39] P. Qian, Y. Guo, N. Li, and B. Sun, “Multiple target localization and power estimation in wireless sensor networks using compressive sensing,” in Proc. Int. Conf. Wireless Commun. Signal Process. (WCSP), Oct. 2015, pp. 1–5.   
+[40] T. Jiang, N. D. Sidiropoulos, and G. B. Giannakis, “Kalman filtering for power estimation in mobile communications,” IEEE Trans. Wireless Commun., vol. 2, no. 1, pp. 151–161, Jan. 2003.   
+[41] X. Tian, M. Li, G. Ti, W. Liu, and Q. Liu, “Random-training-aided pilot spoofing detection,” in Proc. 8th Int. Conf. Wireless Commun. Signal Process. (WCSP), Oct. 2016, pp. 1–5.   
+[42] Y. Choi and D. Kim, “Performance analysis with and without torch node in secure communications,” in Proc. Int. Conf. Adv. Technol. Commun. (ATC), Oct. 2015, pp. 84–87.   
+[43] J. Li, C. Yi, J. Chen, K. Zhu, and J. Cai, “Joint trajectory planning, application placement and energy renewal for UAV-assisted MEC: A triple-learner based approach,” IEEE Internet Things J., vol. 10, no. 15, pp. 13622–13636, Aug. 2023.   
+[44] D. Shi, L. Li, T. Ohtsuki, M. Pan, Z. Han, and H. V. Poor, “Make smart decisions faster: Deciding D2D resource allocation via Stackelberg game guided multi-agent deep reinforcement learning,” IEEE Trans. Mobile Comput., vol. 21, no. 12, pp. 4426–4438, Dec. 2022.
+
+[45] X. Zhu, Y. Luo, A. Liu, N. N. Xiong, M. Dong, and S. Zhang, “A deep reinforcement learning-based resource management game in vehicular edge computing,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 3, pp. 2422–2433, Mar. 2022.   
+[46] J. Chen, C. Yi, R. Wang, K. Zhu, and J. Cai, “Learning aided joint sensor activation and mobile charging vehicle scheduling for energy-efficient WRSN-based industrial IoT,” IEEE Trans. Veh. Technol., vol. 72, no. 4, pp. 5064–5078, Apr. 2023.   
+[47] Y. Shi, C. Yi, R. Wang, Q. Wu, B. Chen, and J. Cai, “Service migration or task rerouting: A two-timescale online resource optimization for MEC,” IEEE Trans. Wireless Commun., early access, Jul. 5, 2023, doi: 10.1109/TWC.2023.3290005.   
+[48] J. Moon, H. Lee, C. Song, S. Kang, and I. Lee, “Relay-assisted proactive eavesdropping with cooperative jamming and spoofing,” IEEE Trans. Wireless Commun., vol. 17, no. 10, pp. 6958–6971, Oct. 2018.   
+[49] J. Du, C. Jiang, H. Zhang, X. Wang, Y. Ren, and M. Debbah, “Secure satellite-terrestrial transmission over incumbent terrestrial networks via cooperative beamforming,” IEEE J. Sel. Areas Commun., vol. 36, no. 7, pp. 1367–1382, Jul. 2018.   
+[50] J. Moon, S. H. Lee, H. Lee, and I. Lee, “Proactive eavesdropping with jamming and eavesdropping mode selection,” IEEE Trans. Wireless Commun., vol. 18, no. 7, pp. 3726–3738, Jul. 2019.
+
+![](images/2fd1a7ae11221103004f792510735dbfa1bee13a47050bfe0636f0009061ad35.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a young man wearing a hoodie with a landscape painting in the foreground (no visible text or symbols)
+</details>
+
+Ruoyang Chen received the B.S. degree from the School of Computer Science, Nanjing University of Information Science and Technology, Jiangsu, China, in 2021. He is currently pursuing the M.S. degree with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics (NUAA), Nanjing, China. His current research interests include human-centric digital twins, game theory, reinforcement learning for resource management, and decision-making in mobile edge computing and physical layer security.
+
+![](images/c71585817bf4cbb74c4cc6676ee3b379bbe9929be8c3be970579380e9cea4d4a.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a suit (no text or symbols visible)
+</details>
+
+Changyan Yi (Member, IEEE) received the Ph.D. degree from the Department of Electrical and Computer Engineering, University of Manitoba, MB, Canada, in 2018. From September 2018 to August 2019, he was a Research Associate with the University of Manitoba. He is currently a Professor with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics (NUAA), Nanjing, China. His current research interests include stochastic optimization, mechanism design, game theory, queueing schedul-
+
+ing, and machine learning with applications in resource management and decision-making for various networking systems and services.
+
+![](images/1a4862301aed44b4e4e313ec0475861f9bf3693def7f548b5559f700aef17836.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man wearing a pink polo shirt (no text or symbols visible)
+</details>
+
+Kun Zhu (Member, IEEE) received the Ph.D. degree from the School of Computer Engineering, Nanyang Technological University, Singapore, in 2012. He was a Research Fellow with the Wireless Communications Networks and Services Research Group, University of Manitoba, Canada, from 2012 to 2015. He is currently a Professor with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics (NUAA), and the Collaborative Innovation Center of Novel Software Technology and Industrializa-
+
+tion, Nanjing, China. He is also a Jiangsu Specially Appointed Professor. He has published more than 50 technical articles. His current research interests include resource allocation in 5G, wireless virtualization, and selforganizing networks. He won several research awards, including the IEEE WCNC 2019 Best Paper Award and the ACM China Rising Star Chapter Award. He has served in TPC for several conferences.
+
+![](images/4b50c7b7100d526bb14981456db5d600ffb01922a1ff82e4acd20b02696e73b2.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a striped sweater (no text or symbols visible)
+</details>
+
+Bing Chen received the B.S. and M.S. degrees in computer engineering from the Nanjing University of Aeronautics and Astronautics (NUAA), Nanjing, China, in 1992 and 1995, respectively, and the Ph.D. degree from the College of Information Science and Technology, NUAA, in 2008. He has been with NUAA since 1998, where he is currently a Professor with the Computer Science and Technology Department. His current research interests include cloud computing, wireless communications, and cognitive radio networks.
+
+![](images/c33f744cadf1a704617f77a526cc3cd0cc873be5e0584b9d2a85429c30b01cbb.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a light blue shirt (no visible text or symbols)
+</details>
+
+Jun Cai (Senior Member, IEEE) received the Ph.D. degree from the University of Waterloo, ON, Canada, in 2004. From June 2004 to April 2006, he was with McMaster University, Canada, as a Natural Sciences and Engineering Research Council of Canada (NSERC) Post-Doctoral Fellow. From July 2006 to December 2018, he was with the Department of Electrical and Computer Engineering, University of Manitoba, Canada, where he was a Full Professor and the NSERC Industrial Research Chair. Since January 2019, he has been with the Department of Electrical and Computer Engineering, Concordia University, Canada, as a Full Professor and the PERFORM Centre Research Chair. His current research interests include edge/fog computing, ehealth, radio resource management in wireless communication networks, and performance analysis. He received the Best Paper Award from Chinacom in 2013, the RH Award from the University of Manitoba, and the Outstanding Service Award from IEEE Globecom 2010 for outstanding contributions to research in applied sciences in 2012. He served as the Technical Program Committee (TPC) Co-Chair for IEEE GreenCom 2018; the Track/Symposium TPC Co-Chair for the IEEE VTC-Fall 2019, IEEE CCECE 2017, IEEE VTC-Fall 2012, IEEE Globecom 2010, and IWCMC 2008; the Publicity Co-Chair for IWCMC 2010, 2011, 2013, 2014, 2015, 2017, 2020; and the Registration Chair for QShine 2005.
+
+![](images/1b9a852ca74d26d5994d0bfaf7702f107d850c110dd898c600bccfea56245eff.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man in business attire (no text or symbols visible)
+</details>
+
+Mohsen Guizani (Fellow, IEEE) received the B.S. (Hons.) and M.S. degrees in electrical engineering and the M.S. and Ph.D. degrees in computer engineering from Syracuse University, Syracuse, NY, USA, in 1984, 1986, 1987, and 1990, respectively. He served in different academic and administrative positions at the University of Idaho, Western Michigan University, the University of West Florida, the University of Missouri–Kansas City, the University of Colorado at Boulder, and Syracuse University. He is currently a Professor with the CSE Department, Qatar University, Qatar. He has authored nine books and more than 500 publications in refereed journals and conferences. His current research interests include wireless communications and mobile computing, computer networks, mobile cloud computing, security, and smart grids. He is a Senior Member of ACM. He also served as a member, the chair, and the general chair for several international conferences. Throughout his career, he received three teaching awards and four research awards. He also received the 2017 IEEE Communications Society WTC Recognition Award and the 2018 AdHoc Technical Committee Recognition Award for his contribution to outstanding research in wireless communications and ad-hoc sensor networks. He was the Chair of the IEEE Communications Society Wireless Technical Committee and the TAOS Technical Committee. He served as the IEEE Computer Society Distinguished Speaker. He is currently the IEEE ComSoc Distinguished Lecturer. He was the guest editor of several special issues in IEEE journals and magazines. He is currently the Editor-in-Chief of IEEE Network Magazine, serves on the editorial boards of several international technical journals, and the Founder and Editor-in-Chief of Wireless Communications and Mobile Computing (Wiley).

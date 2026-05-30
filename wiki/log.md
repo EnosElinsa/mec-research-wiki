@@ -2,6 +2,46 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-05-31 — Curation pass (batch 1/8: 7 new sources + audit)
+
+First batch of a deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned folders; the other 45 uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **82 → 89 curated sources**.
+
+### New source pages (7)
+
+- [[zhou-2018-uav-wireless-powered-mec]] — Zhou et al. 2018 (**IEEE JSAC**, `10.1109/JSAC.2018.2864426`). Computation-rate maximization in UAV-enabled wireless-powered MEC; partial + binary offloading; two-stage / three-stage closed-form optimization. Classical-optimization + WPT anchor.
+- [[fujimoto-2018-td3-actor-critic]] — Fujimoto, van Hoof & Meger 2018 (**ICML / PMLR 80**; **no DOI in parse**). Origin paper for **TD3** (clipped double-Q, delayed policy updates, target smoothing). Foundational DRL-method entry that grounds the wiki's TD3/MATD3 lineage.
+- [[zeng-2019-uav-comm-tutorial-5g]] — Zeng, Wu & Zhang 2019 (**Proceedings of the IEEE**, `10.1109/JPROC.2019.2952892`). Tutorial on UAV communications for 5G+; UAV-assisted-comms vs cellular-connected-UAV taxonomy. Foundational survey anchor.
+- [[wang-2025-sac-tma-mec-dc]] — Wang et al. 2025 (**IEEE IoT-J**, `10.1109/JIOT.2025.3542025`). Joint multi-AAV MEC + data collection; SAC + two-phase matching-based association (SAC-TMA). Geng Sun / Jilin-NTU cluster.
+- [[chen-2024-three-party-hierarchical-game-pls]] — Chen et al. (**IEEE TWC**, `10.1109/TWC.2023.3322776`; date of publication 16 Oct 2023, date of current version 10 May 2024). Three-party hierarchical game for PLS with dynamic trilateral coalitions; HCSF + DRL.
+- [[sun-2025-emoppo-vlh-aerial-cb]] — Sun et al. 2025 (**IEEE TMC**, `10.1109/TMC.2025.3536093`). AAV-swarm collaborative beamforming to a terrestrial mobile user; evolutionary multi-objective PPO (EMOPPO-VLH). Geng Sun / Jilin cluster.
+- [[li-2024-emodrl-ground-space-cb]] — Li et al. 2024 (**IEEE JSAC**, `10.1109/JSAC.2024.3459029`). Distributed collaborative beamforming for ground-space (terminal-to-LEO) uplink; EMODRL; saves 30% handover frequency. Geng Sun / Jilin cluster.
+
+### New concept stubs (4)
+
+- [[collaborative-beamforming]] — virtual-antenna-array beamforming (aerial UVAA / distributed DCB / secure CB), tying together the 3 CB sources.
+- [[coalition-formation-game]] — cooperative/hedonic coalition games, grounded in the PLS three-party source.
+- [[cellular-connected-uav]] — the "UAV as network user" paradigm from the Zeng tutorial, distinct from UAV-as-edge-server.
+- [[uav-data-collection]] — UAV-as-data-sink mission pattern, paired with the MEC-DC joint source.
+
+All other referenced concepts reused existing slugs (e.g. [[masac]], [[td3]], [[matching-theory-for-resource-allocation]], [[wireless-power-transfer]], [[binary-vs-partial-offloading]], [[multi-objective-reinforcement-learning]], [[evolutionary-reinforcement-learning]], [[physical-layer-security]], [[gauss-markov-mobility-model]]).
+
+### New entities (2) + roster updates
+
+- **Created:** [[boxiong-wang]] and [[hui-kang]] — both **College of Computer Science and Technology, Jilin University**; each recurs in 2 sources ([[wang-2025-sac-tma-mec-dc]] + the already-curated [[chen-2025-swipt-mec-sac]]) with identical email (`wangbx0320@163.com` / `kanghui@jlu.edu.cn`). Unambiguous, affiliation-consistent.
+- **Roster updates (existing entities):** [[geng-sun]] (5→8 sources), [[jiahui-li]] (4→7), [[dusit-niyato]] (8→11), [[jiacheng-wang]] (3→5), [[jiawen-kang]] (4→6), [[zemin-sun]] (3→4), [[qingqing-wu]] (+[[li-2024-emodrl-ground-space-cb]], SJTU-email-matched).
+- **Deferred (human confirmation):** a "Qingqing Wu" in [[zeng-2019-uav-comm-tutorial-5g]] is listed at **NUS** (`elewuqq@nus.edu.sg`), while the [[qingqing-wu]] entity is **SJTU** (`qingqingwu@sjtu.edu.cn`). Plausibly the same person earlier in his career, but the affiliation/email differ, so the tutorial was **not** added to his roster — noted on the entity page. No author-entity links were embedded in source pages (matching the established house convention).
+
+### Audit (correctness-first)
+
+- **DOI / venue / year** verified against each parse's `Digital Object Identifier` line (or, for Fujimoto, the ICML/PMLR proceedings line — that parse has no DOI, left as "not in parse"). Years follow the wiki's DOI/publication-year convention. The TWC paper's DOI embeds 2023 but its date-of-current-version is May 2024; year set to 2024 per the current-version convention, with the publication dates noted in the citation.
+- **Algorithm-name inconsistency flagged, not hidden:** [[sun-2025-emoppo-vlh-aerial-cb]]'s parse names the method **EMOPPO-VLH** throughout (title/abstract/algorithm/complexity), but one intro sentence calls it "MOPPO-PLE". The page uses EMOPPO-VLH (dominant in-parse name) and notes the discrepancy rather than inventing a reconciliation.
+- **Grounded headline numbers only:** the ground-space CB "saves 30% handover frequency" is stated verbatim in [[li-2024-emodrl-ground-space-cb]]'s abstract; CB received-power "∝ square of the number of AAVs" is from [[sun-2025-emoppo-vlh-aerial-cb]]; the Zeng tutorial's 3GPP link figures (60–100 kb/s CNPC, up to 50 Mbps payload, $10^{-3}$ PER, 50 ms) are from its Table 1. No figure-only numbers were stated as exact.
+- **Wikilink integrity:** all wikilinks introduced this batch target existing slugs or pages created in this same batch; no NEW dangling links introduced. (Full wiki-wide Obsidian-faithful check run after writing — see verification below.)
+- **Frontmatter:** `type` / `title` / `authors` / `year` / `venue` / `tags` / `related` / dates / H1 present on all 7 source pages; `type`/`title`/`tags`/dates/H1 on the 4 concepts + 2 entities.
+- **Counts reconciled:** 89 sources / 180 concepts / 48 author entities (+[[pytorch]] = 49 entity pages). `index.md` and `overview.md` updated to agree.
+- **LLM Wiki API:** not queried this batch (headless shell); not required for correctness.
+- **Raw-folder scope:** only the 7 assigned folders were curated; the other 45 untracked `raw/sources/**` folders were intentionally left for their own batch runs.
+
 ## 2026-05-31 — Audit & coverage pass (no new raw papers)
 
 Maintenance pass over the existing 82-source corpus. No new papers were curated. Focus: re-verify correctness end-to-end (DOIs/venues, ungrounded numbers, link integrity), broaden the analytical layer where the corpus already supports it, and reconcile a stale derived count in the meta-docs.
