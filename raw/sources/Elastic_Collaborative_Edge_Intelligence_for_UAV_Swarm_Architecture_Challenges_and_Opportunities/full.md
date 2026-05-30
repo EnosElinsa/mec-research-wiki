@@ -1,0 +1,421 @@
+# Elastic Collaborative Edge Intelligence for UAV Swarm: Architecture, Challenges, and Opportunities
+
+Yuben Qu, Hao Sun, Chao Dong, Jiawen Kang, Haipeng Dai, Qihui Wu, and Song Guo
+
+The authors propose a novel architecture based on an observation, orientation, decision, and action loop, called elastic collaborative edge intelligence, which could fully utilize the resources of computation and storage in a unmanned aerial vehicles swarm, and enable the swarm to collaboratively perform deep neural network inference tasks in an elastic manner in the face of any lost links.
+
+# Abstra ct
+
+Unmanned aerial vehicles (UAVs) have been widely used in military and civilian fields by carrying out intelligent applications with deep learning technologies, such as battlefield search and rescue; intelligence, surveillance, and reconnaissance (ISR); and smart city monitoring. Due to deeper and more complex models of deep neural networks (DNNs) and limited on-board resources in UAVs, most existing works either rely on cloud-based intelligence by transmitting original data to remote powerful cloud servers and running DNNs inference therein, or involve edge intelligence by executing lightweight DNN models on-board. Unfortunately, the former is faced with unacceptable long transmission latency and possible network instability over airto-ground links, while the latter is restricted to relatively low accuracy via lightweight models. Although a few recent works propose to collaboratively run complex DNNs inference within a swarm of UAVs to achieve both high accuracy and low latency, they seldom consider the strong confrontation environment of the battlefield, the unreliable air-to-air links among UAVs as well as likely hardware/software breakdowns in UAV airborne computers, which could result in the failure of collaborative inference. This article proposes a novel architecture based on an observation, orientation, decision, and action (OODA) loop, called elastic collaborative edge intelligence (eCoEI), which could fully utilize the resources of computation and storage in a UAV swarm, and enable the swarm to collaboratively perform DNN inference tasks in an elastic manner in the face of any lost links. This article also designs a prototype system of the proposed eCoEI and conducts a proof-of-concept evaluation to validate its feasibility as well as effectiveness. Experimental results show that the eCoEI has an outstanding ability to deal with single point of failure and network fluctuations within a UAV swarm for collaborative edge intelligence. Finally, the main technical challenges are pointed out in the eCoEI, and an outlook on future research directions is provided.
+
+# Introducti on
+
+Over the last decade, due to the flexibility, maneuverability, and wide coverage, unmanned aerial vehicles (UAVs) have been employed as an excellent alternative to traditional technologies in a number of critical applications in both military and civil fields: battlefield search and rescue, ISR (Intelligence, Surveillance, and Reconnaissance), and smart city monitoring [1], to name a few. With the huge success of artificial intelligence (AI) and machine learning (ML), it is an inevitable trend to carry out the aforementioned applications by some advanced ML algorithms, such as deep neural networks (DNNs), in order to automatically and accurately obtain the desired results. For instance, DNNs have been widely used in object detection and recognition of UAVs. Since DNNs are toward deeper and more complex models and thus usually computation-intensive, it is challenging to run complex DNNs’ inference on resource-constrained UAVs directly [2].
+
+To resolve the contradiction between great resource demand of DNNs and limited resource supply of UAVs, there exist two main solutions: cloud-based intelligence, that is, transmitting all original data to the remote powerful cloud servers for running the corresponding DNN inference tasks therein; and edge intelligence, for example, using lightweight DNN models and running them directly on-board. Nevertheless, the former brings high accuracy but would be faced with unbearable long transmission latency and potentially network instability over the air-to-ground links, while the latter provides low latency but is restricted to relatively low accuracy because of using lightweight models [3]. Therefore, simultaneously maintaining the high accuracy and low latency of DNNs inference becomes extremely difficult in the context of UAVs.
+
+To address the aforementioned problem, instead of relying on the cloud entirely or a single edge device (e.g., UAV) purely, some recent works have paid attention to leveraging the strength of both the external powerful cloud and edge servers, and resource-constrained edge devices to collaboratively execute the inference of complex DNN models. Specifically, it can be generally classified into three kinds of collaborative edge intelligence (CoEI), that
+
+Digital Object Identifier: 10.1109/MCOM.002.2300129
+
+Yuben Qu, Hao Sun (corresponding author), Chao Dong (corresponding author), and Qihui Wu are with Nanjing University of Aeronautics and Astronautics and Key Laboratory of Dynamic Cognitive System of Electromagnetic Spectrum Space, Ministry of Industry and Information Technology, China; Haipeng Dai is with State Key Laboratory for Novel Software Technology, Nanjing University, China; Jiawen Kang is with Guangdong University of Technology, China; Song Guo is with Hong Kong University of Science and Technology, China.
+
+![](images/713ad51ad81fbf7bc46b3d481fcc3e32456a2c8068b2f63c6b1a6a9e56cd68e8.jpg)  
+Cloud
+
+![](images/408a5a9cc9f4d67e4caa1d34634c75f604e80aed85f36e8f7329b3544b887e79.jpg)
+
+![](images/3122ba5368fb9e50c61ab78f6c7ccb49dd746fca79378b8e4c6d73a4be5a0fe3.jpg)  
+Edge
+
+![](images/4fa2673137a957f36456aee463d3d7a427056a102741092f86276814ed86733e.jpg)
+
+![](images/537eb23e323d624ab80b3e0cc985b5bab32846f451f3f61f2e0690c1a6ae334e.jpg)  
+Device
+
+![](images/2ed6c7786c543de60bd2488570eefba08043aa87b4eecc7f57b7561d9aaa343d.jpg)
+
+![](images/6b4e4ea9e0a3eb9bd8847c62ad94d965db7f5f8847654d02e325dcbaf2657c2b.jpg)  
+Cloud
+
+![](images/0343d170de94fae934fab1b79a92a1ac25cfc9a91845a126d98932168f3fd9cd.jpg)  
+Edge
+
+![](images/693d70990c7af95f6e19e1487bc7435250aa9dc4e486a9a7a83adfc4b501b934.jpg)  
+Device
+
+![](images/69a70824a748e1271ac44c7b95fefed5364481cad2176885c812440f06bb5d54.jpg)
+
+![](images/6b60b0f344ab2d569b63b8e140583b876c55512416ac30830cd7aa0d9901921e.jpg)
+
+![](images/1918999bd278517ad27286656619589020758dc9d35dfb57c6defc4afb3e925d.jpg)
+
+![](images/4bf364fdc94cb5ff7dca85a592610e1ad91ecd8b0a627de82b627675ef7daa20.jpg)  
+Cloud
+
+![](images/141ac7f413cbe03819df56cf08305e300f5ecf6c59382c25e6075dd49cbb0c88.jpg)  
+Edge
+
+![](images/c5dbe3a68f06ee33005d5b2b69d6d54c3aa65f2be9c3740590bcd218430707fa.jpg)  
+Device
+
+![](images/4b2e857b398e68fb08f5b2d1b918b523540ba960cf9bc7176b233f5a220293a2.jpg)
+
+![](images/eb5ed241edd3341623a492925ed0eb215a22515f2fe8cca8c118051bf691a8a8.jpg)
+
+![](images/60dde7a0265890d017a2a3285558b2ff02fd965cb07f56bf839b74ce9ace81a2.jpg)
+
+![](images/9fd3286da6ab0cb3ab681410727d386355bc4fce2f74464d04f3634bfa2d018f.jpg)
+
+![](images/131ba33a9d98b89a3ab6f93de15ad0aada9c682c7428459f786974cbc1eaa092.jpg)
+
+![](images/7498a5677065d098a19ab25c587baa96d9630edff18ca2b02192dff6a55a1696.jpg)  
+Cloud
+
+![](images/9d8ffc966823c82b7f610eb84dca58af2236c4795b46521cce949fd4ceaa742d.jpg)  
+Edge
+
+![](images/91dad56b58c654da55e933041196011ca91b7d30c17760dd18e55e8791f8f010.jpg)
+
+![](images/adbfb45966ac8a655c6416b4fa9629e78f25bdfa7edc247f60b8dd9d34d6e9f1.jpg)  
+Device 1
+
+![](images/96db2fe5752313fca1d64d4aae462abe65f65670d010456b26ca430f8eab4114.jpg)
+
+![](images/d92db06a5782e215ef62d6952a7304feee281607f560a16022438a40446ffde7.jpg)  
+Device N
+
+<table><tr><td colspan="4">Characteristics</td></tr><tr><td>High latency</td><td>Low latency</td><td>High resource utilization</td><td>Lower latency, Server-independent</td></tr></table>
+
+<table><tr><td colspan="4">Applicable scenario</td></tr><tr><td>Weak mobility</td><td>Weak mobility</td><td>Long-periodic task</td><td>High mobility, Privacy concerned</td></tr></table>
+
+(a)
+
+(b)
+
+(c)
+
+FIGURE 1. An illustration of four conventional CoEI paradigms: a) Cloud-device CoEI;; b) Edge-device CoEI; c) Cloud-edge-device CoEI; d) Device-device CoEI.
+
+is, Cloud-Device CoEI [4, 5], Edge-Device CoEI [6–8], and Cloud-Edge-Device CoEI [9, 10]. Although the above CoEI paradigms could avoid large amounts of original data transmission to reduce the latency while maintaining high accuracy, it may still result in long process delay and even failure when applying to UAVs owing to the unstable air-to-ground links, especially for real-time applications in the battlefi eld.
+
+With resources getting more abundant at the edge, some works put their eyes on conducting collaborative DNN inference over multiple edge devices (e.g., UAVs in our focused scenario) independent of edge servers and cloud, that is Device-Device CoEI [11–13]. This fi ts well with UAVs as they always execute tasks in a swarm consisting multiple UAVs. Even though the resources of a single UAV are limited, with the power of the swarm, the inference tasks with complex DNN models could be efficiently performed within the swarm, and the intermediate data can be transmitted with a lower delay than the aforementioned three CoEI paradigms. Despite all the benefi ts, due to the high mobility of UAVs and unpredictable transmission channels in the battlefield environment, the air-to-air (A2A) links in a UAV swarm are inevitably unreliable, and UAVs may also breakdown for hardware/software errors, resulting in the problem of single point failure.
+
+This article proposes the eCoEI (elastic collaborative edge intelligence) for UAV swarm networks, a brand new architecture based on OODA (i.e., Observation, Orientation, Decision and Action) loop that enables a UAV swarm to collaboratively conduct the inference of complex DNN models in the air in an elastic manner and reduces the computing and memory burden of each individual UAV. Besides maintaining high accuracy by executing complex DNN models, three prominent advantages exist in the proposed eCoEI as follows. The first is high utilization, that is, the eCoEI could make full use of the computation and storage resources in the UAV swarm, through collaboratively performing the DNN inference in a pipeline. The second is high robustness, that is, even in the situation that some UAVs are unavailable abruptly when performing tasks, other UAVs can well undertake their unfinished tasks. The third is high flexibility, that is, the subtask of any UAV could be adaptively adjusted on-demand as long as its onboard resource is enough. The main contributions of this article are as follows:
+
+• To the best of our knowledge, it is the first work that proposes an elastic collaborative DNN inference architecture (i.e., eCoEI) for UAV swarm networks. It distributes the computing and memory load of inference tasks to multiple UAVs to achieve high utilization, and unlike existing studies without considering the unreliability of UAV networks, the eCoEI guarantees both high robustness and high fl exibility in the collaborative edge intelligence for UAV swarm.   
+• A proof-of-concept system of the eCoEI is built based on several popular airborne computing and communication devices. Practical experimental results evaluate both the feasibility and effectiveness, for example, the eCoEI achieves considerable inference performance improvement when the available UAVs change, by the self-adaptive adjustment of task assignment.   
+• This article highlights several critical technical challenges in the proposed eCoEI, for example, how to optimize the distribution of a collaborative DNN inference task within the current available UAVs, as well as some promising research directions, for example, the scheduling of multiple collaborative DNN inference fl ows.
+
+# conVEntIonAL coLLAborAtIVE EdgE IntELLIgEncE And Its LImItAtIons for uAV swArms
+
+# oVErVIEw of conVEntIonAL coEI PArAdIgms
+
+Cloud-Device CoEI: To avoid sending the signifi cant amount of data to the cloud over wireless links by the cloud-only approach and efficiently leverage abundant computational resources in end devices, Kang et al. [4] proposed “Neurosurgeon,” a collaborative intelligence framework between the cloud and mobile edge. Specifi cally, Neurosurgeon partitions a DNN inference task consisting of the execution of multiple layers into two parts, one executed locally on the device and the other one on the cloud, as shown in Fig. 1a. By identifying the
+
+Under the cloud-edge-device CoEI, the small model at end devices could quickly perform preliminary feature extraction, as well as classification if the model is pretty confident; otherwise, further processing and eventual classification could be performed by the larger model in the edge and could.
+
+![](images/912ac20a3134974f2de2098a6345709d5724d9a4bed959c046eed8c40a3f7ca5.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Observe"] --> B["Inference task"]
+    A --> C["UAV resources"]
+    A --> D["Network condition"]
+    A --> E["App requirements"]
+    F["Orient"] --> G["Network condition"]
+    F --> H["Connection Determine"]
+    H --> I["Latency Estimation"]
+    I --> J["Latency of distinct UAVs combination"]
+    K["Act"] --> L["Inference task"]
+    K --> M["Selected UAVs"]
+    N["Decide"] --> O["Selected UAVs"]
+    P["eCoEI (OODA of collaborative edge intelligence for UAV swarm)"] --> Q["Subtasks"]
+    Q --> R["Task partition"]
+    R --> S["Allocate tasks"]
+    T["Judgment"] --> U["Keep strategy"]
+    U --> V["Strategy update"]
+    V --> W["Selected UAVs"]
+    X["Available UAVs"] --> Y["Latency information"]
+    Y --> Z["App requirements"]
+    AA["Network condition"] --> AB["Connection Determine"]
+    AC["Latency Estimation"] --> AD["Latency of distinct UAVs combination"]
+    AE["Judgment"] --> AF["New strategy"]
+    AF --> AG["Strategy update"]
+```
+</details>
+
+FIGURE 2. The main procedures of the proposed eCoEI architecture for UAV swarms. (The “elastic” in the eCoEI implies it can adaptively adjust the collaborative inference strategy according to the current available UAV swarm resources and environment based on the OODA loop cycle.)
+
+optimal partition point in DNN and effectively distributing the computation between the cloud and device, it achieves end-to-end latency improvement, device energy consumption reduction, and cloud data center throughput improvement. Following [4], Zhang et al. [5] also studied how to achieve low-latency inference by cloud-device CoEI.
+
+Edge-Device CoEI: With the emergence of edge computing, to avoid the uncontrolled large wide-area network latency for cloud access, Li et al. [6] proposed “Edgent,” an on-demand DNN co-inference framework with edge-device CoEI. As illustrated in Fig. 1b, Edgent adaptively partitions the DNN computation between the edge server (usually co-located with the cellular base stations (BSs) or local wireless access points (APs)) and mobile devices in light of the available bandwidth, which exploits the computation power of the nearby edge server while reducing the data transfer latency. Note that Edgent considers a simple edge-device CoEI scenario consisting of one mobile device and one edge server. Some recent works such as [7, 8] further study the edge-device CoEI under the case with multi-edge server and multi-end devices. Compared to the cloud-device CoEI, the advantage of edge-device CoEI is similar to that of edge computing, that is, relatively low end-to-end latency and energy consumption.
+
+Cloud-Edge-Device CoEI: To enhance sensor fusion, data privacy, and system fault tolerance for DNN applications, as illustrated in Fig. 1c, [9, 10] proposed to partition DNN models over a distributed computing hierarchy from cloud, edge, and end device, that is, cloud-edge-device CoEI. Specifically, the complete DNN model is sliced into multiple partitions, where some partitions in the front are processed locally on end devices, and the remaining partitions are further processed on edge and cloud servers, respectively. In addition to more kinds of involved computing nodes, this cloud-edge-device CoEI allows fast inference at local running some shallow portions of the DNN at end devices and the edge, by designing several early exit points in the DNN. Under the cloud-edge-device CoEI, the small model at end devices could quickly perform preliminary feature extraction, as well as classification if the model is pretty confident; otherwise, further processing and eventual classification could be performed by the larger model in the edge and could.
+
+Device-Device CoEI: Although the above CoEI paradigms make full use of the computing power of edge and cloud, the issues of latency-significant and unreliable wide-area network links between end devices and the remote cloud, and users’ privacy concerns (e.g., real-time inspection and warning in a smart home) still exist. Thus, [13] proposed to conduct cooperative DNN inference over multiple heterogeneous edge end devices independent of both edge servers and remote cloud. As described in Fig. 1d, all layers of a complete DNN inference task are partitioned and distributed among those resource-constrained end devices. Recently, few preliminary works [11, 12] studied how to leverage device-device CoEI in UAV swarm networks for UAV-enabled applications such as borders monitoring, surveillance, and forest fires detection, which, however, seldom consider the intrinsic unreliability of UAV swarm networks.
+
+# Li mi ta ti ons for UAV Swa rms i n Mili ta ry
+
+The aforementioned CoEI paradigms have made great efforts to shift from traditional cloud-onlybased intelligence to cloud/edge/device collaboration-based edge intelligence, to adapt to the fast and accurate intelligence required by end devices. Nevertheless, owing to the specific harsh military environment where UAVs usually flow, such as military border zones, offshore oil reserves, and forests, the communication link between UAVs and remote ground edge or cloud servers is generally unreliable and unstable, which limits the applicability of the first three CoEI paradigms. What’s more, both nodes and links within a UAV swarm are also unreliable in the battlefield, that is, any UAV could be unavailable due to intermittent air-to-air (A2A)
+
+![](images/17c00857a9b09c107de46e433e63380e20489e07c5d63ef683162155a5dadc8b.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    subgraph_Time_t["Time t"]
+        UAV1["UAV 1"] --> UAV2["UAV 2"]
+        UAV3["UAV 3"] --> UAV4["UAV 4"]
+        UAV6["UAV 6"] --> UAV8["UAV 8"]
+        UAV7["UAV 7"] --> UAV5["UAV 5"]
+        UAV4 --> UAV6
+        UAV8 --> UAV7
+    end
+    
+    subgraph Time_t+Δt["Time t + Δt"]
+        UAV1_UAV 1 --> UAV2_UAV 2
+        UAV1_UAV 1 --> UAV6_UAV 6
+        UAV2_UAV 2 --> UAV4_UAV 4
+        UAV2_UAV 2 --> UAV5_UAV 5
+        UAV6_UAV 6 --> UAV3_UAV 3
+        UAV6_UAV 6 --> UAV7_UAV 7
+        UAV7_UAV 7 --> UAV8_UAV 8
+    
+    A["Δt"] --> B["Time t"]
+    style A fill:#f9f,stroke:#333
+    style B fill:#ccf,stroke:#333
+```
+</details>
+
+FIGURE 3. A toy example of how the eCoEI works: a) At time t, UAV#1 and UAV#3 are unavailable, the other six UAVs are selected to process the DNN inference task collaboratively; b) At time t + Dt , UAV#3 becomes available but UAV#1, UAV#5 and UAV#8 are unavailable, which leads to the variation of DNN collaborative inference strategy.
+
+links and breakdown of the UAV by hardware/software errors, attacks, or being out of on-board battery power. This could result in the uncertain failure of collaborative DNN inference among the swarm, even if applying the device-device CoEI. That is, it is faced with an inevitable single point of failure.
+
+# Ela sti c Colla bora tive Edge Intelli ge nce for UAV Swa rms: Archi te cture , Adva nta ge s, a nd Novel ty
+
+# Archi te cture Ove rvie w
+
+In general, the proposed eCoEI architecture enables a UAV swarm to collaboratively perform a DNN inference task in an on-demand and flexible manner, in the face of probably unavailable UAVs due to node failure or A2A link failure, which is so-called “loosely-coupled collaboration.” The “on-demand” means that all available UAVs in a swarm could be dynamically assembled together to contribute to the DNN inference task. The “flexible” implies that not only any available UAV could help execute any part of the DNN within its capability, but also the inference task distribution could be adaptively adjusted when some predetermined UAVs becomes unavailable. Under the guidance of the above thought, the main procedures of the proposed eCoEI architecture for UAV swarms are shown in Fig. 2.
+
+The eCoEI architecture is designed based on the OODA loop (i.e., Observation, Orientation, Decision, and Action). Specifically, in the observation period, the information of the UAV swarm and inference task (i.e., network topology, inference task, UAV resources, network condition, and application requirements) should be sensed and collected at regular times, which is fundamental for the real-time decision of DNN task distribution. The network topology information can be obtained from the Hello message, which is periodically broadcast to all surrounding nodes to discover the surrounding neighbors at runtime. And the information of each UAV’s available resources could also be embedded into the Hello message without adding extra bits, for example, there exists 16 bits reserved space in the OLSR hello message (96 bits), and 7 bits is enough to represent the ratio in percentage of the available computation or memory resource, which is 14 bits in total. And the information is sent only when the resources of UAV change to further reduce the communication overhead.
+
+In the orientation stage, the currently available UAVs can be acquired by analyzing the network condition information. The inference latency of distinct UAVs combination can be estimated according to the current inference task and UAV resources. The information including available UAVs, latency information, and application requirements are comprehensively utilized in the decision stage to determine a new schedule if necessary. When the network quality becomes too bad to achieve performance improvement or there are few tasks to be executed, the task is conducted by a single UAV.
+
+In the action stage, the chosen DNN inference task is partitioned over the UAVs selected in the decision period with task allocation. Note that since every UAV has stored the full DNN model in advance, there is no need to transmit the partial DNN models. Following the allocation, each selected UAV executes its corresponding part of the DNN in parallel. Consider there exists a single DNN inference flow consisting of multiple DNN inference tasks to be sequentially completed in a UAV swarm, and the UAV resources as well as network condition may change dynamically. The entire OODA loop will be conducted continuously when UAVs perform tasks in the air. If some selected UAVs become unavailable during the execution, the partition strategy will be updated for the remaining unfinished parts of the task. The DNN inference task will eventually be finished, regardless of whether the UAV availability changes during the collaboration. The next task will be executed according to the above process until no unfinished DNN inference task exists. To better interpret the eCoEI, a toy example is also constructed in Fig. 3.
+
+In general, the proposed eCoEI architecture enables a UAV swarm to collaboratively perform a DNN inference task in an on-demand and flexible manner, in the face of probably unavailable UAVs due to node failure or A2A link failure, which is so-called “loosely-coupled collaboration.”
+
+![](images/7873aadccb2ff0784e3063aa1a26813b0494337d077eecfa81557b6568579494.jpg)
+
+<details>
+<summary>text_image</summary>
+
+Display of collaborative inference results
+</details>
+
+UAV#1   
+Airborne computing and communication module   
+![](images/f7e83ca47c2b72091e7014ea9ecd1b10a867d059fee344855430edace75e8c04.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Close-up of electronic components including a CPU socket, resistors, and a circuit board (no visible text or symbols)
+</details>
+
+Jetson Nano #1   
+Airborne computing unit   
+Airborne communi-  
+cation module #1
+
+UAV#2   
+![](images/ad8a523c4658bed7e85012c4b5e93012f2d1102ef0f0cf81c32e72bc078f0404.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Close-up of a computer motherboard with red LED indicators and circuit components, placed on a green surgical drape (no visible text or symbols)
+</details>
+
+Jetson TX2   
+Airborne computing unit
+
+Airborne computing and communication module   
+![](images/00f3d869e292788be1d60363b8dc0adaceecd92cfd348a00b07eef8b10c035af.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Close-up of a green circuit board with electronic components and wires, no visible text or symbols
+</details>
+
+Airborne communi-  
+cation module #2
+
+UAV#3   
+![](images/bd2f030cf74ec6f6a715764cde9e361c6d0bbac60741f8e4f6897f19cd9a4b2b.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Two electronic circuit boards with visible components and wiring, placed on a green surface (no text or symbols)
+</details>
+
+Jetson Nano #2   
+Airborne computing unit
+
+Airborne computing and communication module   
+![](images/b1b6e575d52c93aeb7ca1ea06dad215d50005620c76df4a8a488b041b3eff352.jpg)  
+Airborne communi-  
+cation module #3
+
+UAV#4   
+![](images/272896f957022db20f752582dc62411313b2e9549d43b2f757c8be52c6820f90.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Two electronic circuit boards with visible components and wiring, no text or symbols present.
+</details>
+
+Jetson Nano #3   
+Airborne computing unit
+
+Airborne computing and communication module   
+![](images/42e900cc711381eff4374c4295901adf8ee593144270cdba9d6798eb3b22d837.jpg)  
+Airborne communi-  
+cation module #4   
+FIGURE 4. An illustration of the eCoEI prototype system setup.
+
+Note that the management of UAV swarm network topology is also crucial for the effectiveness of the proposed eCoEI in the context of instable military environment, since it requires the network topology information for the collaboration, which could be efficiently resolved by existing techniques such as information-centric networking (ICN) and software-defined networking (SDN) [14].
+
+# Adva nta ge s a nd Novel ty
+
+The proposed eCoEI architecture could adapt well to UAV swarms with high dynamics in both network topology and A2A wireless links. This features two main advantages when boosting the urgently needed edge intelligence for UAV swarms:
+
+• The eCoEI can enable collaborated intelligence with strong invulnerability over UAV networks, compared to most existing CoEI paradigms. Specifically, the collaborative DNN inference will not terminate if any previously selected UAV becomes unavailable, since the partition distribution strategy could always be updated based on the current network status.   
+• The eCoEI provides high agility and flexibility for collaborative AI within UAV swarms. No matter how the UAV network changes owing to the dynamic availability of partial UAVs, the CoEI can be self-organized among the remaining UAVs. In a nutshell, the novelty of the proposed eCoEI lies in that, it proposes a new CoEI framework perfectly matching the unique characteristics of UAV swarm networks, which is generally independent of specific CoEI participants.
+
+Note that although each DNN inference task is executed sequentially by multiple edge devices, multiple DNN inference tasks could indeed be executed in parallel in the proposed eCoEI. The reason is that since each involved device is responsible for the execution of a submodel only, it can process the next task without break once completing the inference of the submodel for the current task, despite the current one has not been fully completed. In this pipeline manner, it can be equivalent to perform the inference of multiple tasks at the same time, thus achieving higher inference efficiency and higher utilization of the resources in the swarm. In addition, the computing and memory burden of each UAV can be relieved by distributing the entire task to multiple UAVs.
+
+# Pe rforma nce Eval ua ti on
+
+In this section, a proof-of-concept evaluation is conducted to validate the feasibility and the effectiveness of the proposed eCoEI architecture. A prototype system has been designed based on the proposed eCoEI architecture and deployed on a set of typical airborne embedded devices.
+
+These devices comply with UAV payload limitation and the power consumption is much lower than the UAV dynamical system.
+
+# Expe ri me nt Se tup
+
+As Fig. 4 illustrates, the system is composed of two kinds of UAVs, UAV#1 is responsible for planning collaborative inference strategy (i.e., tasks for each UAV and connection relationship of them), UAV#2 to UAV#4 are the ones which perform inference together with UAV#1. Each UAV contains an airborne computing unit and an airborne communication module. The computing unit is in charge of executing inference or scheduling tasks, and the communication module is used to support data transmission among different UAVs. This prototype system contains four UAVs, an NVIDIA Jetson Nano developer kit is set on UAV#1 as computing unit, and an NVIDIA Jetson TX2 as well as two Jetson Nanos are deployed on other three UAVs respectively. For the inference task, Faster R-CNN is selected as the target algorithm, which is an object detection application. A video stream is transferred to the system, and the position, as well as the classification of targets can be obtained by the algorithm. In the experiment, the tasks are rescheduled when the set of available UAVs varies according to the UAV selection/ scheduling strategies set in advance. In the evaluation, we utilize static UAV selection strategy as the scale of the UAV swarm is not large. In practical, the scheduling and UAV selection algorithms can be designed according to application requirements and diff erent optimization objectives.
+
+# EffEct of numbEr of uAVs
+
+To better reflect the system’s performance, the average frame rate of the inference result was measured, which is a video containing targets’ classifications and positions. As shown in Fig. 5, with the increment of participating UAV number, the average frame rate of inference result increases gradually. The reason is that more UAVs perform inference collaboratively, the less workload every UAV is assigned, which reduces the computing and memory usage of each UAV, and more tasks can be completed within the same duration, achieving higher utilization.
+
+# EffEct of uAV unAVAILAbILIty
+
+First, four UAVs (i.e., UAV#1 to UAV#4) were selected to perform inference collaboratively, as Fig. 6 illustrated, the CoEI system can process the video stream at a speed of  3 FPS. Second, the communication program of UAV#3 was disabled. This UAV is not an available node to the system in this situation. For the conventional CoEI paradigm, the process of collaborative inference will be terminated, because the workloads belonging to the unavailable UAV cannot be processed anymore. However, the eCoEI prototype system performed in a different way. The inference process was not interrupted, but at a lower speed,  2 FPS, in the experiment. Note that after UAV#3 goes down, the eCoEI updates the partition strategy for the remaining unfi nished parts and the previously assigned part in UAV#3 is conducted by other UAVs. Third, the communication program of the UAV mentioned above was recovered. The collaborative inference speed reverted to the previous level in the first stage. This is because the information of the currently available UAVs can be sensed at the regular time by UAV#1, and when some UAVs become unavailable, the scheduling strategy for the remaining tasks will be updated.
+
+# chALLEngEs And rEsEArch dIrEctIons
+
+# mAIn tEchnIcAL chALLEngEs
+
+How to Accurately and Timely Discover the Status of UAV Swarm Networks? The current status of a UAV swarm, including available UAVs and their resources, is fundamental to the proposed eCoEI, since it cannot make correct decisions without such information. In practice, UAV networks exhibit high dynamics because of various factors, for example, UAVs’ 3D mobility, unstable A2A wireless links, limited battery supply, harsh environments in specifi c applications such as battlefield, and so on. The status of such networks could be sensed by existing sensing techniques, which inevitably bring non-negligible overhead to resource-constrained UAVs. Therefore, how to accurately and timely discover the status of UAV swarm networks with extra controllable overhead needs to be solved in advance.
+
+How to Timely Respond to the Unavailability of Selected UAVs During Execution? In the proposed eCoEI architecture, it is envisioned that when a chosen UAV becomes unavailable during execution, the predetermined partition strategy will be updated immediately. Note that this unavailable UAV may be several hops away, which implies large transmission latency. Accordingly, a fast and effi cient feedback scheme should be designed to inform that information eff ectively and effi ciently. Besides, similar to backups in multi-hop routing, there should be backups for the DNN inference task partition to avoid unexpected unavailability and respond quickly. Considering the huge search space of the NP-hard partition problem, it is nontrivial to design such backups.
+
+![](images/38b48234ddd885701c53f17ff0fe0284b9b73999bbf4d5366d65b57ea6d34668.jpg)
+
+<details>
+<summary>bar</summary>
+
+| Jetson Model              | Average Frame Rate (FPS) |
+| ------------------------- | ------------------------ |
+| Jetson Nano×1             | 0.8                      |
+| Jetson Nano×1 Jetson TX2*1 | 1.8                      |
+| Jetson Nano×2 Jetson TX2*1 | 2.1                      |
+| Jetson Nano×3 Jetson TX2*1 | 2.9                      |
+</details>
+
+FIGURE 5. Performance of eCoEI under diff erent number of UAVs.
+
+![](images/edd3a7cd65224eb24122c64365a9b2da894744297e1f7542dd9ef92f6cf2ebef.jpg)
+
+<details>
+<summary>line</summary>
+
+| Frame | Frame Rate (FPS) |
+|-------|------------------|
+| 0     | 3.0              |
+| 50    | 4.0              |
+| 100   | 2.0              |
+| 150   | 5.0              |
+| 200   | 4.0              |
+| 250   | 4.5              |
+</details>
+
+FIGURE 6. Performance of eCoEI under UAV unavailability.
+
+# PotEntIAL rEsEArch dIrEctIons
+
+Management of Collaboration for eCoEI in Hierarchical/Clustering Military UAV Swarms: In practice, military UAV swarms usually consist of thousands of individuals, and are organized in a hierarchical or clustering manner instead of purely ad hoc, where some UAVs compose a small group with a leading UAV in charge of the remaining UAVs. In such UAV swarms, the scope of collaboration for the eCoEI should be subordinated to the upper organizational structure of the UAVs. The management of collaboration in the eCoEI might borrow a solution from vehicular ad hoc network (VANET), for example, utilizing mobility-based clustering strategies to make the collaboration more effi cient and stable. Furthermore, whether a collaboration inference task could employ those UAVs outside the current cluster or not, may depend on the collective behavior of the UAV swarm as well as the elastic QoS requirement of the task, which deserves further study.
+
+Collaborative DNN Inference-Driven UAV Swarm Network Protocols Design: In the envisioned eCoEI, there mainly exist two types of data to be transmitted in the network. One is the intermediate data of DNN inference, that is, the output of some layer in the DNN, which is characterized by large volume and has a relatively low
+
+In practice, military UAV swarms usually consist of thousands of individuals, and are organized in a hierarchical or clustering manner instead of purely ad hoc, where some UAVs compose a small group with a leading UAV in charge of the remaining UAVs.
+
+Unlike common device-device collaborative DNN inference working in a relatively stable network environment, the failure or unavailability of the participating nodes (i.e., UAVs) in the battlefield environment should be paid more attention to in the eCoEI.
+
+requirement on latency and reliability. The other is some control necessary information about network topology, available resources, and routing, which has small data quantities and demands low latency and high reliability. Traditional network protocols such as routing do not differentiate their diverse characteristics and requirements, which thus calls for novel network protocol design for the eCoEI.
+
+Scheduling of Multiple Collaborative DNN Inference Flows: Most existing studies about CoEI focus on optimizing the scheduling of a single DNN inference flow in collaboration. In practice, there usually exist multiple DNN inference flows at a UAV or multiple UAVs to be scheduled, for example, to obtain a comprehensive battlefield situation, a swarm of several UAVs is in charge of monitoring a target area via capturing images at different angles, thereby bringing about several object detection-oriented DNN inference flows. In light of multiple DNN inference flows in the eCoEI, for the desired elasticity, the optimization of various network resources, including participated UAVs and computation/communication resources, together with the execution sequence, is much more complicated than that in the single inference flow case.
+
+Dedicated DNN Structure Design and Efficient Training for eCoEI: Unlike common device-device collaborative DNN inference working in a relatively stable network environment, the failure or unavailability of the participating nodes (i.e., UAVs) in the battlefield environment should be paid more attention to in the eCoEI. Specifically, the predetermined UAVs involved in the participation may be unavailable due to attacks/interference, hardware/software failures, and low battery, which happens with high probability in UAV swarms, while how to design a proper DNN against the sudden but frequent node unavailability is less explored. Some recent studies [15] propose the so-called “early exit” mechanism in the design of some particular DNNs to timely output useful results. Nevertheless, they mainly focus on avoiding the cloud’s unavailability in the cloud-device CoEI case. Additionally, how to efficiently train that dedicated DNN is also an interesting problem.
+
+# Concl usi on
+
+This article proposed eCoEI, an invulnerable distributed CoEI architecture for UAV swarm networks based on the OODA loop, which improves the efficiency of computing and resource utilization, and considers the unstable A2A communication links and UAVs’ software/hardware breakdown. Compared with most existing CoEI architectures without considering the single point of failure and network fluctuations common for UAV swarms, the eCoEI architecture could well handle with those problems by elastically executing the collaboration based on the OODA cycle. The preliminary evaluation over the self-built airborne embedded system demonstrated the effectiveness and feasibility of our proposed eCoEI framework.
+
+# Acknowle dgme nts
+
+This work is supported in part by the National Natural Science Foundation of China under Grants 61931011 and 62072303, in part by the National Key R&D Program of China under Grant 2022YFB3104500. Jiawen Kang’s work is supported by the National Natural Science Foundation of China under Grant 62102099. Haipeng Dai’s work is supported by the National Natural Science Foundation of China under Grants 62272223 and U22A2031. Song Guo’s work is supported by fundings from the Key-Area Research and Development Program of Guangdong Province (No. 2021B0101400003), Hong Kong RGC Research Impact Fund (No. R5060-19, No. R5034-18), Areas of Excellence Scheme (AoE/E-601/22-R), General Research Fund (No. 152203/20E, 152244/21E, 152169/22E, 152228/23E), Shenzhen Science and Technology Innovation Commission (JCYJ20200109142008673).
+
+# Re fe re nce s
+
+[1] A. Giyenko et al., “Intelligent UAV in Smart Cities Using IoT,” Proc. IEEE ICCAS, 2016, pp. 207–10.   
+[2] S. Hayat et al., “Edge Computing in 5G for Drone Navigation: What to Offload?” IEEE Robotics and Automation Letters, vol. 6, no. 2, 2021, pp. 2571–78.   
+[3] C. Zhang et al., “Accelerating Convolutional Neural Networks with Dynamic Channel Pruning,” Proc. IEEE DCC, 2019, p. 563.   
+[4] Y. Kang et al., “Neurosurgeon: Collaborative Intelligence Between the Cloud and Mobile Edge,” Proc. ACM ASPLOS, 2017, pp. 615–29.   
+[5] S. Zhang et al., “Towards Real-Time Cooperative Deep Inference Over the Cloud and Edge End Devices,” Proc. ACM Ubicomp, vol. 4, no. 2, 2020, pp. 69:1–24.   
+[6] E. Li, Z. Zhou, and X. Chen, “Edge Intelligence: On-Demand Deep Learning Model Co-Inference with Device-Edge Syner gy,” Proc. MECOMM, 2018, pp. 31–36.   
+[7] X. Tang et al., “Joint Multiuser DNN Partitioning and Computational Resource Allocation for Collaborative Edge Intelligence,” IEEE Internet of Things J., vol. 8, no. 12, 2021, pp. 9511–22.   
+[8] N. Li, A. Iosifidis, and Q. Zhang, “Collaborative Edge Com puting for Distributed CNN Inference Acceleration Using Receptive Field-Based Segmentation,” IEEE Computer Net works, vol. 214, 2022.   
+[9] G. Liu et al., “An Adaptive DNN Inference Acceleration Framework with End–Edge–Cloud Collaborative Computing,” Future Generation Computer Systems, vol. 140, 2023, pp. 422–35.   
+[10] J. Wang et al., “PCNNCEC: Efficient and Privacy-Preserving Convolutional Neural Network Inference Based on Cloud Edge-Client Collaboration,” IEEE Trans. Network Science and Engineering, vol. 10, no. 5, 2023, pp. 2906–23.   
+[11] Y. Huang et al., “Toward Decentralized and Collaborative Deep Learning Inference for Intelligent IoT Devices,” IEEE Network, vol. 36, no. 1, 2022, pp. 59–68.   
+[12] M. Dhuheir et al., “Efficient Real-Time Image Recognition Using Collaborative Swarm of UAVs and Convolutional Networks,” Proc. IEEE IWCMC, 2021, pp. 1954–59.   
+[13] M. Jouhari et al., “Distributed CNN Inference on Resource-Constrained UAVs for Surveillance Systems: Design and Optimization,” IEEE Internet of Things J., vol. 9, no. 2, 2022, pp. 1227–42.   
+[14] G. M. Leal et al., “Empowering Command and Control Through a Combination of Information-Centric Networking and Software Defined Networking,” IEEE Commun. Mag., vol. 57, no. 8, 2019, pp. 48–55.   
+[15] Y. Matsubara et al., “Split Computing and Early Exiting for Deep Learning Applications: Survey and Research Challenges,” ACM Computing Surveys, vol. 55, no. 90, 2022, pp. 1–30.
+
+# Bi ograp hie s
+
+Yuben Qu (quyuben@nuaa.edu.cn) is an associate professor in Nanjing University of Aeronautics and Astronautics, China.
+
+Hao Sun (sunhaosn@nuaa.edu.cn) is a Master student in Nan jing University of Aeronautics and Astronautics, China.
+
+Ch ao Dong (dch@nuaa.edu.cn) is a full professor in Nanjing University of Aeronautics and Astronautics, China.
+
+Jiawen Kang (kavinkang@gdut.edu.cn) is a full professor in Guangdong University of Technology, China.
+
+Haipeng Dai (haipengdai@nju.edu.cn) is an associate professor in Nanjing University, China.
+
+Qih ui Wu [F] (wuqihui@nuaa.edu.cn) is a full professor in Nanjing University of Aeronautics and Astronautics, China.
+
+Song Guo [F] (songguo@cse.ust.hk) is a full professor in Hong Kong University of Science and Technology, China. He is a fellow of the Canadian Academy of Engineering.
