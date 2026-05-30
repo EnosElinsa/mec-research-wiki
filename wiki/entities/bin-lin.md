@@ -32,4 +32,4 @@ Co-authored 8 sources in this wiki, all in the maritime/space-air-marine edge-co
 
 ## Contributions to this wiki
 
-- The anchor of the Dalian-Maritime-University maritime-MEC cluster, supervising the recurring [[zhen-wang]] (Zhen Wang) papers and working with [[qiang-ye]] on aerial-marine task offloading. Batch 4 added two marine sources (the energy-harvesting JCORA scheme and the hybrid offshore+aerial MMWL scheme); batch 6 adds the USV cooperative-jamming secure-offloading paper.
+- The anchor of the Dalian-Maritime-University maritime-MEC cluster, supervising the recurring [[zhen-wang]] (Zhen Wang) papers and working with [[qiang-ye]] on aerial-marine task offloading. His maritime footprint spans the energy-harvesting JCORA scheme, the hybrid offshore+aerial MMWL scheme, and the USV cooperative-jamming secure-offloading paper.

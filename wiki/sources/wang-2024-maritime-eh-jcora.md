@@ -59,7 +59,7 @@ Simulation-based, low-vessel-mobility assumption. Future work (stated): resource
 
 ## Relation to the corpus
 
-A **maritime MEC** entry whose distinguishing feature is **renewable energy harvesting** powering the edge tier — complementing the LEO+OBS three-tier MINLP scheme of [[zhang-2025-three-tier-maritime-offloading]] and the UAV+LEO double-edge scheme of [[wang-2025-double-edge-samin]]. Methodologically it sits in the **Lyapunov-online** family alongside [[zhu-2025-lycnn-drl-wpt-mec]]. Shares Dalian-Maritime-University co-authors Bin Lin and lead author Zhen Wang with the maritime cluster, and co-author Qiang Ye (University of Calgary). Bin Lin also co-authors the within-batch marine paper [[dai-2023-hybrid-marine-mmwl]]. Anchors the new [[energy-harvesting-mec]] concept.
+A **maritime MEC** entry whose distinguishing feature is **renewable energy harvesting** powering the edge tier — complementing the LEO+OBS three-tier MINLP scheme of [[zhang-2025-three-tier-maritime-offloading]] and the UAV+LEO double-edge scheme of [[wang-2025-double-edge-samin]]. Methodologically it sits in the **Lyapunov-online** family alongside [[zhu-2025-lycnn-drl-wpt-mec]]. Shares Dalian-Maritime-University co-authors Bin Lin and lead author Zhen Wang with the maritime cluster, and co-author Qiang Ye (University of Calgary). Bin Lin also co-authors the marine paper [[dai-2023-hybrid-marine-mmwl]]. Anchors the [[energy-harvesting-mec]] concept.
 
 ## Raw artifacts
 

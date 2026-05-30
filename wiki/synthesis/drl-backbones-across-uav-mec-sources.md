@@ -36,7 +36,7 @@ updated: 2026-05-29
 
 # DRL backbone choices across the UAV-MEC corpus
 
-A cross-cutting look at *how* the curated sources actually do reinforcement learning. Originally drafted on 9 of the first 12 curated sources; **extended on 2026-05-29** to cover the four additional DRL sources from the second batch — [[ma-2025-pdqn-vehicular-mec]], [[bao-2025-ddpg-video-offloading]], [[nabi-2025-jour-hierarchical-aerial]], [[hsu-2025-drl-hues-hap-noma]] — bringing the DRL roster to 12. (The corpus also has six [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary]] sources and four classical-solver sources; this page does not analyze those, see [[drl-vs-evolutionary-vs-classical-solvers]] for the cross-family view.)
+A cross-cutting look at *how* the curated sources actually do reinforcement learning, covering a DRL roster of 12 sources — [[liu-2026-jppo-en-convntm]], [[qin-2025-bcuav-masac]], [[peng-2025-drudm-cfg]], [[zhang-2025-ssac-mgi-heterogeneous-uav]], [[zhang-2025-mcma-task-migration]], [[zhu-2025-lycnn-drl-wpt-mec]], [[hao-2025-priority-aware-task-driven-co]], [[mao-2025-bcsa-frl]], [[ma-2025-pdqn-vehicular-mec]], [[bao-2025-ddpg-video-offloading]], [[nabi-2025-jour-hierarchical-aerial]], and [[hsu-2025-drl-hues-hap-noma]]. (The corpus also has a [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary]] family and classical-solver sources; this page does not analyze those — see [[drl-vs-evolutionary-vs-classical-solvers]] for the cross-family view.)
 
 The goal is to make the design space legible: which backbone, which framing, which architectural augmentations, and *why* each choice was made.
 
@@ -138,15 +138,15 @@ If you're building a UAV-MEC controller from scratch, the corpus suggests:
 5. **Consider classical sub-solvers for convex sub-blocks.** A KKT solver for the continuous resource allocation is more reliable than asking DRL to learn convexity from scratch.
 6. **Reserve safe-RL machinery for hard constraints.** Reward penalties don't guarantee safety. Use [[collision-avoidance-mgi|MGI]]-style asymmetric intervention or shielding when collisions / energy depletion are catastrophic.
 
-These compound into the [[design-recipe-multi-uav-mec|design recipe]] — extended now with the cross-source evidence above.
+These compound into the [[design-recipe-multi-uav-mec|design recipe]] — extended with the cross-source evidence above.
 
-## What the 2026-05-29 batch changes about this analysis
+## Refinements from the broader DRL roster
 
-The four new DRL sources don't overturn the previous synthesis — they *refine* it on three specific points.
+The wider set of DRL sources doesn't overturn the core synthesis — it *refines* it on three specific points.
 
-### 1. Hybrid-action design space now has a clear three-way split
+### 1. Hybrid-action design space has a clear three-way split
 
-Before this batch, the wiki had one canonical hybrid-action handler ([[liu-2026-jppo-en-convntm|j-PPO]]) plus two indirect approaches (latent-space sidesteps in [[hao-2025-priority-aware-task-driven-co]], two-stage decompositions in [[zhang-2025-mcma-task-migration]]). The new batch gives the design space a clean three-way taxonomy:
+The hybrid-action design space splits cleanly three ways: a canonical native hybrid-action handler ([[liu-2026-jppo-en-convntm|j-PPO]]) alongside latent-space sidesteps ([[hao-2025-priority-aware-task-driven-co]]) and two-stage decompositions ([[zhang-2025-mcma-task-migration]]):
 
 | Approach | Example | Mechanism |
 |---|---|---|
@@ -158,13 +158,13 @@ Before this batch, the wiki had one canonical hybrid-action handler ([[liu-2026-
 
 ### 2. DDPG has a niche after all
 
-The pre-batch synthesis read DDPG as "underperforms vs stochastic alternatives" — based on [[liu-2026-jppo-en-convntm]]'s baselines and the [[maddpg-vs-masac-in-mec]] thesis. [[bao-2025-ddpg-video-offloading]] complicates this: DDPG works *fine* when:
+The naive reading of DDPG as "underperforms vs stochastic alternatives" — based on [[liu-2026-jppo-en-convntm]]'s baselines and the [[maddpg-vs-masac-in-mec]] thesis — is complicated by [[bao-2025-ddpg-video-offloading]]: DDPG works *fine* when:
 
 - The action space is **purely continuous** (no hybrid decisions).
 - The objective is **scalar QoE** rather than a multi-objective Pareto front.
 - The system is **single-agent** (no MARL non-stationarity).
 
-This recovers DDPG's original design profile. The earlier negative findings stand for **multi-agent + multi-objective + hybrid-action** problems; DDPG remains a reasonable starting point for narrow, single-agent continuous control.
+This recovers DDPG's original design profile. The negative findings stand for **multi-agent + multi-objective + hybrid-action** problems; DDPG remains a reasonable starting point for narrow, single-agent continuous control.
 
 ### 3. PER and SAC's ecosystem now have explicit wiki entries
 
@@ -181,6 +181,6 @@ The combination — PER + entropy-regularized stochastic policy — is the stron
 
 This points to a sub-track in the wiki: **resource-constrained aerial scheduling** (energy-aware HAP scheduling, energy-aware UAV-WPT, charging UAVs from fixed stations in [[liu-2026-jppo-en-convntm]]). A future synthesis would consolidate these.
 
-## Open question for the next pass
+## Open question
 
 The corpus has zero **transformer-as-policy** sources. Recent literature outside the corpus uses transformer-based actors with success on long-horizon multi-agent control. A curated transformer-policy paper would let us answer [[query-does-en-convntm-generalize-beyond-uav-mec]] more directly — does the explicit external memory in EN-ConvNTM still beat a parameter-matched transformer once both are tuned?

@@ -55,7 +55,7 @@ Simulation-based. The parse's conclusion section was not reached in the read ran
 
 ## Relation to the corpus
 
-A distinctive **NFV/SDN service-function-chaining** entry in the SGIN/satellite track — it optimizes **VNF placement + chaining + migration** rather than task offloading, complementing the slicing-based SAGIN scheme [[chen-2024-thoas-traffic-aware-sagin]] and connecting to [[leo-satellite-edge-computing]] and [[task-migration]]. Shares author Qiang Ye (University of Calgary) with three other batch-4 sources (the Qiang-Ye cross-cutting thread; see [[niazmand-2025-jopa-dnn-pruning-iiot]]). Anchors the new [[network-function-virtualization]] and [[service-function-chaining]] concepts.
+A distinctive **NFV/SDN service-function-chaining** entry in the SGIN/satellite track — it optimizes **VNF placement + chaining + migration** rather than task offloading, complementing the slicing-based SAGIN scheme [[chen-2024-thoas-traffic-aware-sagin]] and connecting to [[leo-satellite-edge-computing]] and [[task-migration]]. Shares author Qiang Ye (University of Calgary) with [[niazmand-2025-jopa-dnn-pruning-iiot]] and [[wang-2024-maritime-eh-jcora]] (the Qiang-Ye cross-cutting thread). Anchors the [[network-function-virtualization]] and [[service-function-chaining]] concepts.
 
 ## Raw artifacts
 

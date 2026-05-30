@@ -54,7 +54,7 @@ No explicit quantitative future-work targets are grounded in the captured parse 
 
 ## Relation to the corpus
 
-A **MADDPG multi-UAV trajectory** entry by the Northumbria/QMUL/Southeast group ([[kezhi-wang]] corresponding). It is the **same research group** as the already-curated [[wang-2022-cat-rat-fmec-trajectory]] (CAT/RAT, single twin-DQN agent) but is a **distinct earlier paper** — different venue (TCCN vs TMC), different DOI, a *multi-agent* MADDPG design, and an explicit **dual-fairness + energy** objective rather than pure energy minimization. Its dual fairness formulation links it to the [[fairness-metrics-in-mec]] hub and [[jains-fairness-index]], and it sits with [[he-2023-fairness-3d-multiuav-maddpg]] and the batch-5 [[seid-2021-madrl-multiuav-iot-edge]] in the MADDPG multi-UAV family.
+A **MADDPG multi-UAV trajectory** entry by the Northumbria/QMUL/Southeast group ([[kezhi-wang]] corresponding). It is the **same research group** as [[wang-2022-cat-rat-fmec-trajectory]] (CAT/RAT, single twin-DQN agent) but is a **distinct earlier paper** — different venue (TCCN vs TMC), different DOI, a *multi-agent* MADDPG design, and an explicit **dual-fairness + energy** objective rather than pure energy minimization. Its dual fairness formulation links it to the [[fairness-metrics-in-mec]] hub and [[jains-fairness-index]], and it sits with [[he-2023-fairness-3d-multiuav-maddpg]] and [[seid-2021-madrl-multiuav-iot-edge]] in the MADDPG multi-UAV family.
 
 ## Raw artifacts
 
