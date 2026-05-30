@@ -27,8 +27,9 @@ related:
   - "[[qin-2025-bcuav-masac]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[zhang-2025-mcma-task-migration]]"
+  - "[[li-2024-rldc-uav-swarm-clustering]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-31
 authors:
   - Jialiuyuan Li
   - Changyan Yi
@@ -79,7 +80,7 @@ UAV-swarm-assisted MEC is attractive for terrain-limited and emergency scenarios
 Simulation-only (no hardware); small scale (3 leaders / 9 followers / 500 devices in 1 km²); IoT positions assumed static; tabular Q-learning over discretized states with sizes exponential in M, N, C (scalability concern); fixed UAV altitudes; relies on a dedicated control channel with negligible Q-value exchange delay and a central Q-value distributor; collisions/constraints enforced only through reward penalties. Reported magnitudes are extracted from MinerU-parsed figure tables and should be read as trends.
 
 ## Relation to the corpus
-This paper sits at the intersection of UAV-swarm MEC and game theory. It is the closest sibling to [[wang-2025-uav-swarm-stackelberg]], which also drives UAV-swarm decisions with a game-theoretic equilibrium (Stackelberg vs. this paper's [[stochastic-game]]/[[nash-equilibrium]]); both contrast with the [[chen-2024-ulse-game|potential-game]] formulation of multi-user LEO offloading. The depot→leader→follower structure echoes [[nabi-2025-jour-hierarchical-aerial]] ([[hierarchical-aerial-mec]]). Its decentralized [[multi-agent-q-learning]] coordination relates to the multi-agent RL approaches in [[qin-2025-bcuav-masac]] and [[zhang-2025-ssac-mgi-heterogeneous-uav]]. Its [[intra-swarm-task-delegation]] decision is a useful contrast to the [[task-migration]] formulation in [[zhang-2025-mcma-task-migration]]. Shared building blocks with the wider corpus include [[multi-uav-assisted-mec]], [[mobile-edge-computing]], [[task-offloading]], [[uav-trajectory-control]], [[uav-charging-scheduling]], [[wireless-power-transfer]], [[service-caching-mec]], and [[load-balancing-uav-mec]].
+This paper sits at the intersection of UAV-swarm MEC and game theory. It is the extended **journal version** of the IEEE WCNC 2024 conference paper [[li-2024-rldc-uav-swarm-clustering]] (this version adds the Nash-equilibrium existence proof, the convergence/complexity analysis, and consolidates the six conference games into five). It is the closest sibling to [[wang-2025-uav-swarm-stackelberg]], which also drives UAV-swarm decisions with a game-theoretic equilibrium (Stackelberg vs. this paper's [[stochastic-game]]/[[nash-equilibrium]]); both contrast with the [[chen-2024-ulse-game|potential-game]] formulation of multi-user LEO offloading. The depot→leader→follower structure echoes [[nabi-2025-jour-hierarchical-aerial]] ([[hierarchical-aerial-mec]]). Its decentralized [[multi-agent-q-learning]] coordination relates to the multi-agent RL approaches in [[qin-2025-bcuav-masac]] and [[zhang-2025-ssac-mgi-heterogeneous-uav]]. Its [[intra-swarm-task-delegation]] decision is a useful contrast to the [[task-migration]] formulation in [[zhang-2025-mcma-task-migration]]. Shared building blocks with the wider corpus include [[multi-uav-assisted-mec]], [[mobile-edge-computing]], [[task-offloading]], [[uav-trajectory-control]], [[uav-charging-scheduling]], [[wireless-power-transfer]], [[service-caching-mec]], and [[load-balancing-uav-mec]].
 
 ## Raw artifacts
 - `raw/sources/A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/full.md`

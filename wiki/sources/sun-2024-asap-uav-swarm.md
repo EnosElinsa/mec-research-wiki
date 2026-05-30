@@ -19,13 +19,14 @@ related:
   - "[[heterogeneous-uav-fleet]]"
   - "[[post-disaster-mec]]"
   - "[[huang-2025-cmop-dispersed-computing]]"
+  - "[[qu-ecoei-uav-swarm]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-31
 authors:
   - Hao Sun
   - Yuben Qu
