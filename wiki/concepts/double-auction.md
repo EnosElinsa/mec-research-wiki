@@ -1,0 +1,20 @@
+---
+type: concept
+title: "Double Auction"
+tags: [game-theory, auction, market-mechanism, resource-allocation]
+related:
+  - "[[bargaining-game]]"
+  - "[[matching-theory-for-resource-allocation]]"
+  - "[[stackelberg-game]]"
+  - "[[dai-2024-multiuav-marine-welfare]]"
+created: 2026-05-31
+updated: 2026-05-31
+---
+
+# Double Auction
+
+A **double auction** is a market mechanism with multiple buyers **and** multiple sellers who submit bids and asks; a controller matches them and sets transaction prices. Unlike a single-sided auction (one seller, many buyers), both sides are strategic, and the design must respect **individual rationality** (buyers never pay above their valuation; sellers never accept below their cost) while clearing many-to-many supply-demand.
+
+## In this wiki
+
+- [[dai-2024-multiuav-marine-welfare]] uses a double-auction game for **OBS selection** in marine multi-access MEC: UAVs are buyers of computing service, ocean beacon stations (OBSs) are sellers, and a leader OBS is the auction controller. It defines valuation, bidding, and K-payment rules plus a dynamic bidding-adjustment strategy to raise the transaction success ratio. It sits alongside the wiki's other market/negotiation mechanisms — [[bargaining-game]], [[stackelberg-game]], and [[matching-theory-for-resource-allocation]].

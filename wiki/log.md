@@ -2,6 +2,64 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-05-31 — Curation pass (batch 6/8: 7 new sources + audit)
+
+Sixth batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned batch-6 folders; the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **117 → 124 curated sources**. (Clean retry: a prior attempt was cancelled before writing; confirmed none of the 7 already had a source page.)
+
+### New source pages (7)
+
+- [[yang-2020-loadbalance-multiuav-iot]] — Yang et al. 2020 (**IEEE IoT-J**, `10.1109/JIOT.2020.2971645`). Multi-UAV **load-balance** MEC for IoT: **differential-evolution** UAV deployment + **generalized-assignment-problem** node assignment (LP-relax + bipartite rounding) + single-agent **DQN** task scheduling minimizing average slowdown. DOI pub 4 Feb 2020 / current version 12 Aug 2020 → year 2020.
+- [[dai-2024-multiuav-marine-welfare]] — Dai et al. 2024 (**IEEE TCOMM**, `10.1109/TCOMM.2024.3388501`). Multi-UAV multi-access marine MEC (UAVs + **ocean beacon stations**); maximizes **system revenue** (system welfare − energy) by jointly optimizing OBS selection, offloading ratio, transmission duration; vertical 3-layer decomposition with a **double-auction** OBS-selection game. Reported trade-off: higher revenue **and** higher energy vs DOS/ROS benchmarks (Figs. 7–9, qualitative). DOI pub 15 Apr 2024 / current version 18 Sep 2024 → year 2024.
+- [[al-hourani-2014-optimal-lap-altitude]] — Al-Hourani, Kandeepan & Lardner 2014 (**IEEE WCL**, `10.1109/LWC.2014.2342736`). Foundational **air-to-ground channel** letter: closed-form sigmoid **LoS-probability vs elevation angle** (ITU P.1410 parameters) + **optimal LAP altitude** maximizing ground coverage. *Not an MEC paper* — curated as a channel-model anchor. DOI pub 24 Jul 2014 / current version 17 Dec 2014 → year 2014.
+- [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024 (**IEEE TCOMM**, `10.1109/TCOMM.2024.3372877`). Secure UAV-**RIS**-MEC-IoT partial offloading vs **aerial + ground eavesdroppers**; UAV is both aerial MEC server and DF relay to a MEC-AP; derives **SOP** over Nakagami-m and maximizes **min secure computation efficiency** via Dinkelbach + BCD + bisection. UAV trajectory **not** optimized (fixed straight-line). DOI pub 1 Mar 2024 / current version 19 Jul 2024 → year 2024.
+- [[zhang-2020-response-delay-uav-swarm]] — Zhang et al. 2020 (**IEEE TVT**, `10.1109/TVT.2020.2964821`). **Response-delay** optimization for a MEC-enabled UAV swarm (MEC top-UAV + bottom-UAVs); **stochastic geometry** (3-D PPP) + **queueing theory** closed-form delay. **Hardware-validated** on 2 DJI M100 UAVs + 5G NR mmWave (28 GHz). Reports 10–20% response-delay cut vs no-MEC; 89.9% fewer transmitted packets via on-T-UAV video key-frame extraction (verbatim). DOI pub 8 Jan 2020 / current version 12 Mar 2020 → year 2020.
+- [[li-2024-robust-bmappo-multiuav-mec]] — Li et al. 2024 (**IEEE IoT-J**, `10.1109/JIOT.2023.3300718`). **Robust** multi-UAV-MEC offloading under joint communication (imperfect CSI) + computation (task-complexity error) uncertainty; weighted-energy min via **MAPPO with a Beta-distribution actor policy (b-MAPPO)**; beats Pure-MAPPO/MADDPG/Greedy, tracks DRL+CVX (avg UE reward ≈ −3.05 verbatim). DOI pub 1 Aug 2023 / current version 24 Jan 2024 → year 2024.
+- [[li-2023-secure-marine-iot-jamming]] — Li et al. 2023 (**IEEE TVT**, `10.1109/TVT.2022.3231295`). **Secure** marine-IoT offloading: **USVs** upload to a **HAP** via NOMA then provide **cooperative jamming** (PLS); system-energy min via layered decomposition — **monotonic-optimization (Polyblock) + bisection (PAS)** for the bottom problem and **cross-entropy (CASE)** for USV positions. Reduces energy by **27.32%** on average vs fixed jamming (verbatim). DOI pub 22 Dec 2022 / current version 18 May 2023 → year 2023.
+
+### New concept stubs (10)
+
+- [[generalized-assignment-problem]] — capacity-constrained NP-hard task-to-agent assignment (the GAP behind the load-balance node-assignment of [[yang-2020-loadbalance-multiuav-iot]]).
+- [[double-auction]] — many-to-many buyer/seller market mechanism (the OBS-selection game of [[dai-2024-multiuav-marine-welfare]]).
+- [[air-to-ground-channel-model]] — the LoS/NLoS mixture ATG model + sigmoid LoS-probability-vs-elevation-angle, anchored by [[al-hourani-2014-optimal-lap-altitude]].
+- [[secure-computation-efficiency]] — securely-computed bits per weighted energy (the SCE objective of [[michailidis-2024-secure-ris-uav-mec-iot]]).
+- [[secrecy-outage-probability]] — probability that the secrecy rate falls below target (the SOP analysis of the secure-RIS source).
+- [[queueing-theory]] — delay/queue-length analysis backbone of [[zhang-2020-response-delay-uav-swarm]].
+- [[beta-policy-drl]] — Beta-distribution actor output for bounded actions (the b-MAPPO refinement).
+- [[robust-offloading]] — bounded-uncertainty robust offloading (scheduling/channel/computation robustness).
+- [[cooperative-jamming]] — reusing network nodes as helper jammers for PLS (the USV jamming of [[li-2023-secure-marine-iot-jamming]]).
+- [[cross-entropy-method]] — sampling-based stochastic metaheuristic (the CASE algorithm of the secure-marine source).
+
+All other referenced concepts reused existing slugs (e.g. [[mobile-edge-computing]], [[task-offloading]], [[multi-uav-assisted-mec]], [[maritime-mec]], [[load-balancing-uav-mec]], [[differential-evolution]], [[deep-q-network]], [[noma]], [[physical-layer-security]], [[intelligent-reflecting-surface]], [[monotonic-optimization]], [[fractional-programming-dinkelbach]], [[alternating-optimization-sdr-sca]], [[rotary-wing-propulsion-energy-model]], [[mappo]], [[csi-estimation-error]], [[centralized-training-decentralized-execution]], [[stochastic-geometry-network-analysis]], [[mmwave-radar-sensing]], [[two-stage-decomposition]], [[high-altitude-platform-station]], [[low-altitude-intelligent-network]], [[blockage-aware-channel-model]], [[terrain-aware-channel-model]], [[post-disaster-mec]], [[energy-latency-tradeoff]], [[uav-trajectory-control]]).
+
+### Entities — 3 new + roster updates + 1 namesake deferral
+
+- **Created (3):** [[liping-qian]] (Zhejiang Univ. of Technology, `lpqian@zjut.edu.cn`; 3 sources — [[dai-2024-multiuav-marine-welfare]] + [[dai-2023-hybrid-marine-mmwl]] + [[li-2023-secure-marine-iot-jamming]]); [[minghui-dai]] (Univ. of Macau, `minghuidai@um.edu.mo`; first author of 2 — [[dai-2024-multiuav-marine-welfare]] + [[dai-2023-hybrid-marine-mmwl]]); [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications, `fengzy@bupt.edu.cn`; 2 — [[zhang-2020-response-delay-uav-swarm]] + [[meng-2024-uav-isac-overview]], affiliation confirmed in both parses).
+- **Roster updates (existing entities):** [[bin-lin]] (7→8, +secure-marine-jamming), [[yuan-wu]] (7→9, +marine-welfare +secure-marine-jamming), [[tony-q-s-quek]] (4→5, +marine-welfare), [[chunxiao-jiang]] (3→4, +load-balance IoT), [[zhu-han]] (5→6, +UAV-swarm response delay).
+- **Deferred — Jingjing Wang namesake.** The "Jingjing Wang" co-authoring [[yang-2020-loadbalance-multiuav-iot]] is at **Tsinghua University** (`chinaeephd@gmail.com`, Shuimu Tsinghua Scholar), **not** the existing **Beihang** [[jingjing-wang]] entity (`drwangjj@buaa.edu.cn`). Different institution + email ⇒ treated as a genuine namesake and **not** merged; the Beihang entity roster was left unchanged and no Tsinghua entity was minted (the Tsinghua Jingjing Wang has only this one corpus source).
+- The "Chunxiao Jiang" on [[yang-2020-loadbalance-multiuav-iot]] **is** the existing Tsinghua entity (`jchx@tsinghua.edu.cn`-matched) — roster bumped.
+- No author-entity links were embedded in source-page bodies (matching the established house convention).
+
+### Duplicate / near-duplicate check
+
+Verified each batch-6 paper is **genuinely new** and distinct from existing pages:
+- [[yang-2020-loadbalance-multiuav-iot]] (load-balance via DE+GAP+DQN, IoT-J 2020) is distinct from the other multi-UAV-MEC sources ([[seid-2021-madrl-multiuav-iot-edge]] MADDPG clustered IoT-edge, [[zhao-2022-matd3-multiuav-ec-offloading]] MATD3) — different method (classical metaheuristic + single-agent DQN), objective (load balance), authors, year.
+- [[dai-2024-multiuav-marine-welfare]] (double-auction system-welfare, TCOMM 2024) and [[dai-2023-hybrid-marine-mmwl]] (hybrid FDMA/NOMA MMWL, TCOMM 2023, already curated in batch 4) are the **same group** (Minghui Dai / Yuan Wu / Liping Qian) but **distinct papers** — different objective (system-revenue vs min-max-latency), mechanism (double auction vs layered convex), year, DOI.
+- [[li-2023-secure-marine-iot-jamming]] (USV cooperative jamming, TVT 2023) is distinct from the other maritime sources — unique NOMA-via-HAP + cooperative-jamming PLS framing.
+- [[michailidis-2024-secure-ris-uav-mec-iot]] (secure UAV-RIS-MEC, TCOMM 2024) is distinct from [[yao-2025-secure-isac-dual-eavesdropping]] (ISAC dual-eavesdropping) — RIS + MEC + SOP-over-Nakagami-m vs ISAC secrecy/sensing.
+- [[zhang-2020-response-delay-uav-swarm]] (stochastic-geometry/queueing response delay, TVT 2020) is distinct from the DRL/game-theoretic UAV-swarm sources — analytical PPP + queueing backbone, hardware-validated.
+- [[li-2024-robust-bmappo-multiuav-mec]] (robust b-MAPPO, IoT-J 2024) is distinct from the other MAPPO/MADDPG UAV-MEC sources by its joint communication+computation uncertainty robustness + Beta policy.
+- No same-paper/different-UUID duplicate ingests were found among the 7.
+
+### Audit (correctness-first)
+
+- **DOI / venue / year** — all 7 carry an explicit `Digital Object Identifier` line in their own parse; every DOI, venue, and year above is grounded in the parse (manuscript date-of-publication / date-of-current-version lines). **Zero `not in parse` metadata fields this batch** — all 7 source pages have full title/authors/year/url/venue. **Year convention:** for papers whose publication vs current-version dates straddle two years, year follows date-of-current-version (the wiki's established convention), with both dates recorded in each citation.
+- **Grounded headline claims only:** the verbatim figures — Zhang 10–20% response-delay cut + 89.9% packet reduction (52 s/7.84 Mbit → 9 key frames/775.9 kbit), Li b-MAPPO avg UE reward ≈ −3.05, Li secure-marine 27.32% energy reduction vs fixed jamming — are quoted from the parse text. Dai marine-welfare revenue/energy trade-off, Michailidis SCE/SOP behavior (element-count thresholds ~57/~60), Yang DRL-vs-FCFS/SJF/RR advantage, and Al-Hourani altitude/elevation-angle results are stated **qualitatively** as the papers state them, with figure-only magnitudes flagged as indicative.
+- **Wikilink integrity:** wiki-wide link check after the pass = **ZERO dangling links** (verified — see below). All wikilinks introduced this batch target existing slugs or pages created in this same batch (7 sources + 10 concepts + 3 entities). Pre-existing dangling-link status unchanged (none). Two drafting-time fragmentations were caught before audit (an over-split `line-of-sight-probability-model` folded into [[air-to-ground-channel-model]]; a `response-delay-optimization-uav-swarm` finding reference removed since no finding page was created; a stray `qixun-zhang` author wikilink converted to plain text).
+- **Frontmatter:** `type`/`title`/`authors`/`year`/`url`/`venue`/`tags`/`related`/dates/H1 validated on all 7 source pages; `type`/`title`/`tags`/dates/H1 on the 10 concept stubs and 3 entity pages. No diagnostics issues; no self-references or duplicate `related` entries.
+- **Counts reconciled:** **124 sources / 207 concepts / 57 author entities (+[[pytorch]] = 58 entity pages)**. `index.md` and `overview.md` updated to agree.
+- **LLM Wiki API:** not queried this batch (headless shell); not required for correctness.
+- **Raw-folder scope:** only the 7 assigned batch-6 folders were curated; other untracked `raw/sources/**` folders were intentionally left for their own batch runs.
+
 ## 2026-05-31 — Curation pass (batch 5/8: 7 new sources + audit)
 
 Fifth batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned batch-5 folders; the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **110 → 117 curated sources**. (Clean retry: a prior attempt was cancelled before writing; confirmed none of the 7 already had a source page.)

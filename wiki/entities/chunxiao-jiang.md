@@ -6,20 +6,22 @@ related:
   - "[[du-2024-distributed-foundation-models-6g]]"
   - "[[wang-2025-acbft-uav-consensus]]"
   - "[[zhang-2025-three-tier-maritime-offloading]]"
+  - "[[yang-2020-loadbalance-multiuav-iot]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-31
 ---
 
 # Chunxiao Jiang
 
 IEEE Fellow. Affiliated with the **Beijing National Research Center for Information Science and Technology (BNRist), Tsinghua University** (Beijing, China; email `jchx@tsinghua.edu.cn`) — consistent across his papers in this wiki.
 
-Co-authored 3 sources in this wiki, spanning 6G foundation models, UAV consensus, and maritime offloading:
+Co-authored 4 sources in this wiki, spanning 6G foundation models, UAV consensus, maritime offloading, and load-balance UAV-MEC:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[wang-2025-acbft-uav-consensus]] — adaptive chained Byzantine fault-tolerant consensus for UAV ad hoc networks.
 - [[zhang-2025-three-tier-maritime-offloading]] — energy-oriented three-tier computation offloading in maritime edge computing.
+- [[yang-2020-loadbalance-multiuav-iot]] — multi-UAV-enabled load-balance MEC for IoT networks (DE deployment + GAP + DQN scheduling).
 
 ## Contributions to this wiki
 
-- A senior collaborator (satellite / space-air-ground networks) appearing across the 6G-foundation-models, UAV-consensus, and maritime-MEC threads of the corpus.
+- A senior collaborator (satellite / space-air-ground networks) appearing across the 6G-foundation-models, UAV-consensus, maritime-MEC, and load-balance-UAV-MEC threads of the corpus.
