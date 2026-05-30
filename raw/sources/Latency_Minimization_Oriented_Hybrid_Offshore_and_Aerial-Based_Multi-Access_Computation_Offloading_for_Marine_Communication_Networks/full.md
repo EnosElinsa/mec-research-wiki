@@ -1,0 +1,1132 @@
+# Latency Minimization Oriented Hybrid Offshore and Aerial-Based Multi-Access Computation Offloading for Marine Communication Networks
+
+Minghui Dai , Ning Huang , Yuan Wu , Senior Member, IEEE, Liping Qian , Senior Member, IEEE, Bin Lin , Senior Member, IEEE, Zhou Su , Senior Member, IEEE, and Rongxing Lu , Fellow, IEEE
+
+Abstract— The explosively increasing development of marine communication networks will improve the quality of service (QoS) of marine applications (e.g., ocean farm and marine tourism), which has attracted much attention from both academia and industrial in recent years. However, real-time data processing for diverse marine tasks (especially those computing-intensive and latency-sensitive tasks) is still challenging due to the limited marine communication and computing resources. Mobile edge computing (MEC) driven by powerful computing capability is envisioned as a promising solution to address the issue for resource-constrained marine services. In this paper, we propose a hybrid offshore and aerial-based multi-access edge computing scheme in marine communication networks to improve the QoS of marine applications. Specifically, we consider a scenario that both offshore base-station and unmanned aerial vehicles (UAVs) are equipped with edge-servers, and the computation workloads of unmanned surface vehicle (USV) can be simultaneously offloaded to offshore base-station and UAVs via multi-access manner. To minimize the latency of completing USV’s workloads and reduce USV’s energy consumption, we formulate a joint optimization problem to optimize the offloading decision, trans-
+
+Manuscript received 13 March 2023; revised 16 July 2023; accepted 8 August 2023. Date of publication 18 August 2023; date of current version 20 November 2023. This work was supported in part by Intergovernmental International Cooperation in Science and Technology Innovation Program under Grant 2019YFE0111600, in part by FDCT-MOST Joint Project under Grant 0066/2019/AMJ, in part by National Natural Science Foundation of China under Grants 62122069, 62072490, and 62071431, in part by Science and Technology Development Fund of Macau SAR under Grant 0158/2022/A, and in part by FDCT SKL-IOTSC(UM)-2021-2023, in part by the Guangdong Basic and Applied Basic Research Foundation (2022A1515011287). The associate editor coordinating the review of this article and approving it for publication was C. Li. (Corresponding author: Yuan Wu.)
+
+Minghui Dai and Ning Huang are with the State Key Laboratory of Internet of Things for Smart City, Department of Computer and Information Science, University of Macau, Macau, China (e-mail: minghuidai@um.edu.mo; yc07427@um.edu.mo).
+
+Yuan Wu is with the State Key Laboratory of Internet of Things for Smart City, Department of Computer and Information Science, University of Macau, Taipa, Macau, China, and also with the Zhuhai–UM Science and Technology Research Institute, Zhuhai 519031, China (e-mail: yuanwu@um.edu.mo).
+
+Liping Qian is with the College of Information Engineering, Zhejiang University of Technology, Hangzhou 310023, China (e-mail: lpqian@zjut.edu.cn). Bin Lin is with the Department of Communication Engineering, Dalian Maritime University, Dalian 116026, China (e-mail: binlin@dlmu.edu.cn).
+
+Zhou Su is with the School of Cyber Science and Engineering, Xi’an Jiaotong University, Xi’an 710049, China (e-mail: zhousu@ieee.org).
+
+Rongxing Lu is with the Faculty of Computer Science, University of New Brunswick, Fredericton, NB E3B 5A3, Canada (e-mail: rlu1@unb.ca).
+
+Color versions of one or more figures in this article are available at https://doi.org/10.1109/TCOMM.2023.3306581.
+
+Digital Object Identifier 10.1109/TCOMM.2023.3306581
+
+mission time, and computing-rate allocation, with the objective of Minimizing the Maximum Workloads Latency (MMWL). Exploiting the features of the formulated problem, we present a layered structure approach and decompose it into three subproblems. We propose efficient algorithms to obtain the optimal solutions and validate the optimality of the proposed algorithms. Finally, we provide simulation results and analysis to demonstrate the effectiveness and efficiency of the proposed scheme and algorithms in comparison with benchmark algorithms.
+
+Index Terms— Multi-access mobile edge computing, hybrid offshore and aerial-based computing offloading, resource allocation, NOMA, FDMA.
+
+# I. INTRODUCTION
+
+ocean-associated economic development such as marine fishery, marine tourism. In recent years, in order to improve the efficiency of ocean resources exploration, lots of marine wireless devices (e.g., underwater sensors and autonomous underwater vehicles) have been deployed for diverse marine activities like marine environmental sensing, water quality monitoring, and seafloor oil perception [1]. The rapid growth of these activities results in the emergence of more and more computing-intensive and delay-sensitive tasks in marine environment. Therefore, real-time data sensing, communication, and computing for various marine tasks are of great significance for improving the quality of service (QoS) of marine applications. However, due to the limited network resources (e.g., communication and computing capacities) in marine environment, it is necessary to exploit efficient marine communication and computing schemes to improve data processing performance, which has received much attention from academia and industry from the aspects of network architecture design, transmission scheme design, information processing, etc [2], [3].
+
+However, the development of marine networks faces new challenges due to the fact that marine communications are different from terrestrial communications in terms of wireless channel, network resources, transmission medium, etc. Specifically, in terrestrial networks, mobile devices can be readily accessed to infrastructures (e.g., base-stations and edge-servers) through various types of communication protocols. While in marine communication networks, marine devices mainly use offshore base-station cellular networks, unmanned aerial vehicle (UAV)-assisted communication and satellite communication systems for ship-to-ship or ship-toshore communications [4], [5]. On the other hand, in underwater transmission, the acoustic channels are adopted for ocean data transmission, which suffers from severe packet loss and low data rate. Furthermore, the limited channel bandwidth in marine environment will lead to significant communication overload, long transmission delay and high energy consumption when transmitting large streams of data. Therefore, it is of practical importance to investigate marine communication and computing schemes to improve the resource utilization of marine networks.
+
+In this context, mobile edge computing (MEC) is envisioned as an efficient approach to provide computing capability and low latency for resource-constrained marine devices [6], [7], [8]. In the paradigm of MEC, edge-servers can be deployed close to the ship terminals such that the workloads can be offloaded to edge-servers for processing. Multi-access edge computing paradigm can improve the offloading and computing efficiency by dividing computation requirements into multiple parts and then offloading different parts of workloads to different edge-servers [9], [10]. Existing works have proposed two transmission modes for data offloading in marine communication networks. First, ships can transmit data via the frequency division multiple access (FDMA) for avoiding the co-channel interference. Second, ships can use the non-orthogonal multiple access (NOMA) to simultaneously offload different tasks to multiple edge-servers for improving the channel utilization [11]. Based on the above two transmission modes, how to design efficient multi-access edge computing schemes in marine communication networks should be exploited.
+
+Recently, the combination of UAV and MEC has been studied to improve edge computing performance [12], [13], which enjoys the following advantages. First, the cost-effective and high-flexibility enable UAVs to realize rapid deployment in marine environment. By equipping edge-servers in UAVs, UAVs are able to assist in computing offloading for ships as mobile aerial computing servers [14], [15]. Second, flexibly deployed UAVs can adjust the altitude to establish line-of-sight (LoS) links with ships to boost communication throughput. Therefore, the design of multi-access edge computing with the assistance of UAVs is promising to improve computing efficiency in marine communication networks.
+
+Based on the above discussions and motivated by previous researches, in this work, we present a hybrid offshore and aerial-based multi-access MEC framework, in which USV’s computing tasks can be simultaneously offloaded to offshore base-station and UAVs via multi-access manner. We aim at minimizing the maximum workloads latency to satisfy the QoS requirement of marine applications. The main contributions of this work can be summarized as follows.
+
+• Multi-access Marine MEC Framework. We propose a hybrid offshore and aerial-based multi-access computation offloading framework to improve marine offloading efficiency. We consider that both offshore base-station and UAVs are equipped edge-servers. The computing
+
+workloads of USV can be partially offloaded to offshore base-station via FDMA transmission. Multiple UAVs hovering in the air act as MEC servers, and USV adopts NOMA to simultaneously offload different parts of workloads to respective UAVs.
+
+• Optimality of the Proposed Algorithms. To reduce the latency of completing USV’s workloads, we formulate a joint optimization problem to Minimize the Maximum Workloads Latency (MMWL), by jointly optimizing USV’s offloading decision, FDMA transmission duration, NOMA transmission duration, and the computing-rate allocation at the USV, UAV, and offshore base-station. Despite the non-convexity of the formulated problem, we exploit the feature of formulated problem and propose a layered structure to decompose it into three subproblems. We design efficient algorithms to obtain the optimal solutions.   
+• Performance Effectiveness. We conduct simulations to verify the performance of our proposed algorithms. The numerical results demonstrate that our proposed algorithms can attain the optimal value of latency very close to the global optimal solution from LINGO with the average difference no greater than 3%. The computation time of our proposed algorithms can be significantly reduced, and the average saving time is above 90% compared with LINGO. The proposed scheme is also compared to other benchmark schemes, which validates the effectiveness of our proposed scheme for reducing the task completion time.
+
+The remainder of this paper is organized as follows. Section II discusses the literature review. Section III presents the system model and problem formulation. Section IV proposes algorithms for solving the joint optimization problem. Numerical results are shown in Section V. Section VI closes this paper with conclusion and future work.
+
+# II. LITERATURE REVIEW
+
+This section reviews the related studies from the aspects of MEC framework in marine communication networks and multi-access computation offloading scheme.
+
+Many works have proposed approaches to optimize the MEC communication and computing performance [16]. In [17], Liu et al. investigated a latency minimization problem for both communication and computation in UAV-assisted networks, in which deep reinforcement learning is adopted to optimize the system variables. In [18], Yang et al. proposed a fog-based marine environmental information monitoring architecture and designed an improved D-S algorithm for multi-sensor information fusion to reduce the data capacity. In [19], Ai et al. presented an intelligent reflecting surface-enabled MEC architecture in marine networks, with the objective of minimizing the network energy consumption. In [20], Yang et al. investigated the computation task offloading problem for vessel terminals to minimize the energy consumption and latency of vessel terminals. In [21], Zeng et al. formulated a systematic USV kinetics and information transmission model to optimize the trajectory and communication resource allocation. In [22], Dai et al. investigated the
+
+UAV-assisted multi-access computation offloading via hybrid NOMA and FDMA to minimize the energy consumption. In [23], Cheng et al. proposed a space-air-ground integrated edge/cloud computing framework to process the computationintensive applications. In [24], Wu et al. studied an agile and secured software-defined edge computing system for resilient access management to guarantee the network traffic balance. In [25], Bozorgchenani et al. formulated the task offloading in MEC as a constrained multi-objective optimization problem, with the objective of minimizing both the energy consumption and task processing delay of mobile devices. In [26], Yi et al. proposed a multi-user computing offloading and transmission scheduling scheme for delay-sensitive applications.
+
+In recent years, multi-access computation offloading has been envisioned as a promising approach to improve the end devices’ computing efficiency [27], and there have been several works investigating multi-access edge computing schemes. In [28], a power minimization problem for mobile devices’ data offloading was exploited in multi-cell multi-user MEC networks. In [29], Wu et al. designed a NOMA enabled multi-access computation offloading by jointly optimizing the offloaded workloads and the transmission-time to minimize the overall latency. In [30], Elgendy et al. proposed a multiuser multi-task computation offloading model to guarantee the tradeoff among latency, energy, and security for MEC. In [31], Yang et al. studied an offloading framework for the multi-server MEC network and formulated the computation resource allocation problem as a regression problem. In [32], a vehicle-assisted multi-access edge computing scheme was exploited, in which the system utility maximization problem is proposed to jointly optimize the offloading decisions, offloading ratio, and resource allocation. In [33], Song et al. presented task offloading and resource allocation algorithms for the special single-user and general multi-user cases to minimize the weighted sum energy of users. In [34], a multirelay assisted computation offloading framework was proposed in multi-access edge computing systems to minimize the average execution cost. In [35], a heterogeneous multi-users and multi-MEC servers system was exploited to maximize each user’s satisfaction utility. In [36], Zhang et al. proposed a three-layer distributed multi-access edge computing network to reduce the task processing latency. In [37], a multi-access computation offloading was modeled as a deep reinforcement learning scheme to minimize the weighted average cost.
+
+Different from these-mentioned works, in this paper, we consider a hybrid computing offloading framework in which a cluster of UAVs hovering in the air provide on-demand aerial computing. The offshore base-station equipped with powerful computing capacity offers low computing latency. The workloads of USV can be simultaneously offloaded to aerial computing via NOMA transmission for improving channel utilization and to offshore computing via FDMA transmission for avoiding channel interference. Considering the delay sensitive of marine information, we formulate a joint optimization problem to minimize the maximum workloads latency by optimizing the offloading decision, transmission duration and computing-rate allocation.
+
+![](images/0ed9b61a975d66811ad49d9aa24abed47ea872fe31491aaf26d93284e5832bd2.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["UAV Cluster"] --> B["UGU 1"]
+    A --> C["UAV 2"]
+    A --> D["UAV 3"]
+    E["Hybrid offshore and aerial computing"] --> F["FDMA transmission"]
+    G["Offshore base-station"] --> H["Sea surface"]
+    I["Edge-servers"] --> J["USV u"]
+    K["NOMA transmission"] --> L["Task 1 Task 2 Task 3"]
+    M["Overall duration: t_n^ove"] --> N["Stage I: duration t_u,n"]
+    M --> O["Stage II: duration t_u,B"]
+    M --> P["Stage III: duration t_tran"]
+    Q["Local computing {β_n}_{vne,N}|"] --> R["Offshore computing {α_n,B}_{vne,K}|"]
+    S["Air computing {α_n,k}_{vne,N,vke,K}|"] --> T["Set of tasks of USV"]
+    U["h_u,B"] --> V["Edge-servers"]
+```
+</details>
+
+Fig. 1. An illustration of the proposed hybrid offshore and aerial-based multi-access computation offloading in marine communication networks.
+
+# III. SYSTEM MODEL AND PROBLEM FORMULATION
+
+In this section, we first introduce the system model for the proposed hybrid offshore and aerial-based multi-access computation offloading in marine communication networks. Then, the offloading model is provided, followed by the problem formulation. The important notations used in this paper are provided in Table I.
+
+# A. System Model
+
+As shown in Fig. 1, we consider a hybrid offshore and aerial-based multi-access computation offloading in marine communication networks, which consists of three stages. Stage I is the local computing duration of USV. Stage II is the offshore transmission and computing duration of the base-station. Stage III is the aerial transmission and computing duration of UAVs. Specifically, a USV (denoted by u) sails on the sea for monitoring marine environment. The marine data (e.g., ocean climatological data and seabed resources) collected by USV are needed to be processed, and the set of tasks of USV u is denoted by $\mathcal { N } = \{ 1 , 2 , \dots , N \}$ . We denote the total workloads of task n as $S _ { n } ^ { \mathrm { t o t } }$ . Considering the flexibility, a cluster of UAVs equipped with edge-servers hover in the air for providing aerial computing. We denote the set of UAVs as ${ \cal K } = \{ 1 , 2 , \dots , K \}$ . On one hand, owing to the short distance between USV and UAV, the connection can be established between USV and UAV through LoS links, which leads to low transmission latency. Thanks to the successive interference cancellation (SIC) [38], USV can offload partial workloads to multiple UAVs via NOMA transmission for improving the spectrum efficiency. However, due to the limited computing capacities of UAVs, aerial computing will suffer from high computing delay. On the other hand, the USV can communicate with offshore base-station (denoted by B) located at the remote ground. We consider that the USV can offload partial workloads to the base-station via FDMA transmission for avoiding co-channel interference. The base-station equipped with edge-servers has powerful computing capacity, which can reduce the computing delay. However, when the USV offloads workloads to the basestation, it will lead to high transmission delay.
+
+TABLE I THE IMPORTANT NOTATIONS USED IN THIS PAPER 
+
+<table><tr><td>Notation</td><td>Definition</td></tr><tr><td> $S_{n}^{\text{tot}}$ </td><td>Total workloads of task n.</td></tr><tr><td> $\alpha_{n,\mathcal{B}}$ </td><td>Offloading ratio to offshore base-station  $\mathcal{B}$ .</td></tr><tr><td> $\alpha_{n,k}$ </td><td>Offloading ratio to UAV k.</td></tr><tr><td> $\beta_{n}$ </td><td>Local computing ratio by USV u.</td></tr><tr><td> $h_{u,\mathcal{B}}$ </td><td>Channel power gain between USV u and base-station  $\mathcal{B}$ .</td></tr><tr><td> $g_{u,k}$ </td><td>Channel power gain between USV u and UAV k.</td></tr><tr><td>W</td><td>Transmission bandwidth for UAVs.</td></tr><tr><td> $W_{\mathcal{B}}$ </td><td>Transmission bandwidth for offshore base-station  $\mathcal{B}$ .</td></tr><tr><td> $t_{u,n}^{\text{loc}}$ </td><td>Local processing time of USV u.</td></tr><tr><td> $t_{n,k}$ </td><td>Processing time by UAV k.</td></tr><tr><td> $t^{\text{tran}}$ </td><td>NOMA transmission duration of USV u.</td></tr><tr><td> $t_{u,\mathcal{B}}$ </td><td>FDMA transmission duration of USV u.</td></tr><tr><td> $t_{n}^{\text{ove}}$ </td><td>Overall latency for completing workloads.</td></tr><tr><td> $q_{u,n}^{\text{tot}}$ </td><td>NOMA transmission power of USV u for offloading task n.</td></tr><tr><td> $p_{u,\mathcal{B}}$ </td><td>FDMA transmission power of USV u for offloading task n.</td></tr><tr><td> $E_{u,n}^{\text{loc}}$ </td><td>Local energy consumption of USV u for processing task n.</td></tr><tr><td> $E_{u,n}^{\text{off}}$ </td><td>Energy consumption of USV u for NOMA transmission.</td></tr><tr><td> $E_{n,\mathcal{B}}$ </td><td>Energy consumption of USV u for FDMA transmission.</td></tr><tr><td> $E_{u,n}^{\text{tot}}$ </td><td>Total energy consumption of USV u for completing task n.</td></tr></table>
+
+Let $\alpha _ { n , B } \left( 0 \leq \alpha _ { n , B } \leq 1 \right) , \forall n \in \mathrm { ~  ~ \beta ~ } \ N$ express the offloading ratio of task n to base-station B. We use $\alpha _ { n , k } \left( 0 \leq \alpha _ { n , k } \leq 1 \right) , \forall n \in \mathcal { N } , \forall k \in \mathcal { K }$ to denote the offloading ratio of task n to UAV k. The total offloading ratio of task n to UAVs can be expressed as $\textstyle \sum _ { k = 1 } ^ { K } \alpha _ { n , k }$ . We consider that the USV equipped with computing capacities can execute local task computing. We denote the local computation ratio of task n by the USV as $\beta _ { n } \left( 0 \leq \beta _ { n } \leq 1 \right) , \forall n \in \mathcal { N }$ . Thesfies $\begin{array} { r } { \sum _ { k = 1 } ^ { K } \alpha _ { n , k } + \alpha _ { n , B } + \beta _ { n } = 1 } \end{array}$ $\in \mathcal { N } ,$ As a summary, the total workloads $S _ { n } ^ { \mathrm { t o t } }$ of task n can be divided into the following three parts.
+
+$$
+S _ {n} ^ {\text { tot }} = \underbrace {\beta_ {n} S _ {n} ^ {\text { tot }}} _ {\text { Local   computing }} + \underbrace {\sum_ {k = 1} ^ {K} \alpha_ {n , k} S _ {n} ^ {\text { tot }}} _ {\text { Aerial   computing }} + \underbrace {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\text { tot }}} _ {\text { Offshore   computing }}, \forall n \in \mathcal {N}. \tag {1}
+$$
+
+We consider a three-dimensional (3D) Cartesian coordinate to describe the positions of UAVs and USV. The distance between USV and UAV/base-station will influence the channel link quality. We consider that the positions of USV and UAVs remain unchanged during data transmission. The coordinate of base-station B is denoted as $\mathbf { q } _ { B } = [ x _ { B } , y _ { B } , 0 ] \in \mathbb { R } ^ { 3 \times 1 }$ . The coordinate of USV u is denoted as $\mathbf { q } _ { u } = [ x _ { u } , y _ { u } , z _ { u } ] \in \mathbb { R } ^ { 3 \times 1 }$ . Similarly, we express the coordinate of UAV k as $\begin{array} { r l } { \mathbf { q } _ { k } } & { { } = } \end{array}$ $[ x _ { k } , y _ { k } , z _ { k } ] \in \mathbb { R } ^ { 3 \times 1 } , \forall k \in \mathcal { K }$ . To guarantee the channel link quality during data transmission, we consider that the distance between USV u and UAV k and base-station B cannot exceed the maximum communication distance $\mathcal { D } ^ { \mathrm { m a x } }$ , which can be expressed as
+
+$$
+\left\{ \begin{array}{l} \| \mathbf {q} _ {u} - \mathbf {q} _ {\mathcal {B}} \| \leq \mathcal {D} ^ {\max}, \\ \| \mathbf {q} _ {u} - \mathbf {q} _ {k} \| \leq \mathcal {D} ^ {\max}, \forall k \in \mathcal {K}. \end{array} \right. \tag {2}
+$$
+
+We consider the LoS propagation between USV and UAV/base-station for hybrid multi-access computation offloading. The channel power gain between USV u and base-station $\boldsymbol { B }$ can be expressed as
+
+$$
+h _ {u, \mathcal {B}} = \frac {\chi}{\left[ (x _ {u} - x _ {\mathcal {B}}) ^ {2} + (y _ {u} - y _ {\mathcal {B}}) ^ {2} + z _ {u} ^ {2} \right] ^ {\mu}}, \tag {3}
+$$
+
+where parameter $\chi$ is the channel power gain associated with a reference distance such as 1m. Parameter $\mu$ is the path loss exponent depending on the environment.
+
+Similarly, the channel power gain between USV u and UAV k can be expressed as
+
+$$
+g _ {u, k} = \frac {\chi}{\left[ \left(x _ {u} - x _ {k}\right) ^ {2} + \left(y _ {u} - y _ {k}\right) ^ {2} + \left(z _ {u} - z _ {k}\right) ^ {2} \right] ^ {\mu}}, \forall k \in \mathcal {K}. \tag {4}
+$$
+
+# B. Offloading Model
+
+1) Aerial Computing by UAVs: UAVs equipped with computing capacities can provide computing services for USV. The workloads of USV u can be offloaded to multiple UAVs via NOMA transmission for improving channel utilization. Considering the operations of SIC in NOMA transmission [39], the data reception at UAVs requires to order the channel power gains from USV to all UAVs. Therefore, we use the index-set K to order the channel gains from USV u to all UAVs as follows
+
+$$
+g _ {u, 1} > g _ {u, 2} > \dots > g _ {u, K}. \tag {5}
+$$
+
+We use $q _ { u , k }$ to denote the transmission power of USV u to UAV k. The achievable transmission rate between USV u and UAV k can be expressed as
+
+$$
+r _ {u, k} = W \log_ {2} \left(1 + \frac {q _ {u , k} g _ {u , k}}{g _ {u , k} \sum_ {i \in \mathcal {K} , i <   k} q _ {u , i} + n _ {0}}\right), \forall k \in \mathcal {K}, \tag {6}
+$$
+
+where parameter W denotes the transmission bandwidth for UAVs. Parameter $n _ { 0 }$ is the background noise at the side of UAVs. Let $t ^ { \mathrm { t r a n } }$ denote the NOMA transmission time, which means that workloads PKk=1 αn,kStotn $\textstyle \sum _ { k = 1 } ^ { K } \alpha _ { n , k } S _ { n } ^ { \mathrm { t o t } }$ should be offloaded to UAVs within the duration $t ^ { \mathrm { { f r a n } } }$ . Furthermore, for the sake of simplicity, we assume that the USV can offload its divided workloads to different UAVs in parallel, e.g., via a virtual multi-radio interface transmission. Thus, the required $\textstyle \sum _ { k = 1 } ^ { K } \alpha _ { n , k } S _ { n } ^ { \mathrm { t o t } }$ ion power for USV u to offload workloadsof task n can be expressed as
+
+$$
+\begin{array}{l} q _ {u, n} ^ {\mathrm{tot}} = n _ {0} \sum_ {k = 1} ^ {K} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right) 2 ^ {\frac {1}{W t ^ {\mathrm{tran}}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\mathrm{tot}}} \\ - \frac {n _ {0}}{g _ {u , K}}, \quad \forall n \in \mathcal {N}. \tag {7} \\ \end{array}
+$$
+
+The energy consumption of USV u for offloading workloads $\textstyle \sum _ { k = 1 } ^ { K } \alpha _ { n , k } S _ { n } ^ { \mathrm { t o t } }$ of task n to multiple UAVs can be expressed as
+
+$$
+\begin{array}{l} E _ {u, n} ^ {\mathrm{off}} = q _ {u, n} ^ {\mathrm{tot}} t ^ {\mathrm{tran}} \\ = t ^ {\text { tran }} n _ {0} \sum_ {k = 1} ^ {K} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right) 2 ^ {\frac {1}{W t ^ {\text { tran }}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\text { tot }}} \\ - \frac {t ^ {\text { tran }} n _ {0}}{g _ {u , K}}, \quad \forall n \in \mathcal {N}. \tag {8} \\ \end{array}
+$$
+
+We use $\psi _ { k }$ to denote the number of CPU cycles for processing one bit of data by UAV $k ,$ and use $\varrho _ { k }$ to indicate the computing-rate of UAV k in CPU cycles per second. The processing time for executing workloads $\alpha _ { n , k } S _ { n } ^ { \mathrm { t o t } }$ of task n by UAV k can be expressed as
+
+$$
+t _ {n, k} = \psi_ {k} \frac {\alpha_ {n , k} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {k}}, \forall k \in \mathcal {K}, \forall n \in \mathcal {N}. \tag {9}
+$$
+
+2) Edge Computing by Offshore Base-Station: The workloads of USV u can be offloaded to the base-station via FDMA transmission. The achievable transmission rate between USV u and base-station B can be expressed as
+
+$$
+r _ {u, \mathcal {B}} = W _ {\mathcal {B}} \log_ {2} \left(1 + \frac {p _ {u , \mathcal {B}} h _ {u , \mathcal {B}}}{n _ {\mathcal {B}}}\right), \tag {10}
+$$
+
+where parameter $W _ { B }$ is the transmission bandwidth for basestation B. Parameter $p _ { u , B }$ expresses the transmission power for offloading workloads between USV u and base-station B. Parameter nB is the background noise at the side of basestation B.
+
+We use $\boldsymbol { t } _ { u , B }$ to denote the transmission time between USV u and base-station B for offloading workloads $\alpha _ { n , B } S _ { n } ^ { \mathrm { t o t } }$ . It means that workloads $\alpha _ { n , B } S _ { n } ^ { \mathrm { t o t } }$ should be offloaded to the base-station within the duration $\scriptstyle t _ { u , B }$ , which leads to the following condition.
+
+$$
+t _ {u, \mathcal {B}} = \frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{r _ {u , \mathcal {B}}}, \quad \forall n \in \mathcal {N}. \tag {11}
+$$
+
+Based on (10) and (11), we can obtain the transmission power of USV u for offloading workloads $\alpha _ { n , B } S _ { n } ^ { \mathrm { t o t } }$ to base-station B as follows
+
+$$
+p _ {u, \mathcal {B}} = \frac {n _ {\mathcal {B}}}{h _ {u , \mathcal {B}}} \left(2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{W _ {\mathcal {B}} t _ {n , \mathcal {B}}}} - 1\right), \quad \forall n \in \mathcal {N}. \tag {12}
+$$
+
+Therefore, the energy consumption of USV for offloading workloads $\alpha _ { n , B } S _ { n } ^ { \mathrm { t o t } }$ of task n to base-station B can be expressed as
+
+$$
+E _ {n, \mathcal {B}} = p _ {u, \mathcal {B}} t _ {u, \mathcal {B}} = \frac {t _ {u , \mathcal {B}} n _ {\mathcal {B}}}{h _ {u , \mathcal {B}}} \left(2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\text {tot}}}{W _ {\mathcal {B}} t _ {n , \mathcal {B}}}} - 1\right), \quad \forall n \in \mathcal {N}. \tag {13}
+$$
+
+The offshore base-station equipped with edge-servers can execute task computing. The processing time for executing workloads $\alpha _ { n , B } S _ { n } ^ { \mathrm { t o t } }$ of task n by base-station B can be expressed as
+
+$$
+t _ {n, \mathcal {B}} = \psi_ {\mathcal {B}} \frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {\mathcal {B}}}, \quad \forall n \in \mathcal {N}, \tag {14}
+$$
+
+where $\psi _ { B }$ denotes the number of CPU cycles for processing one bit of data by base-station B. ϱB means the computing-rate of base-station B in CPU cycles per second.
+
+3) Local Computing of USV: USV can execute task computing locally. We use $\psi _ { u }$ to denote the number of CPU cycles for processing one bit of data by USV u, and use $\varrho _ { u }$ to denote the computing-rate of USV u in CPU cycles per second. The local computing time for USV u to process workloads $\beta _ { n } S _ { n } ^ { \mathrm { t o t } }$ of task n can be expressed as
+
+$$
+t _ {u, n} ^ {\mathrm{loc}} = \psi_ {u} \frac {\beta_ {n} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {u}}, \quad \forall n \in \mathcal {N}. \tag {15}
+$$
+
+The local energy consumption of USV u for processing workloads $\beta _ { n } S _ { n } ^ { \mathrm { t o t } }$ of task n can be expressed as
+
+$$
+E _ {u, n} ^ {\mathrm{loc}} = \epsilon_ {u} \varrho_ {u} ^ {3} t _ {n} ^ {\mathrm{loc}} = \epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} \beta_ {n} S _ {n} ^ {\mathrm{tot}}, \quad \forall n \in \mathcal {N}, \tag {16}
+$$
+
+where parameter $\epsilon _ { u }$ is the power consumption coefficient of USV u.
+
+Therefore, the overall latency for USV u to complete its task n can be expressed as
+
+$$
+\begin{array}{l} t _ {n} ^ {\mathrm{ove}} = \max \left\{\psi_ {u} \frac {\beta_ {n} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {u}}, t _ {u, \mathcal {B}} + \psi_ {\mathcal {B}} \frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {\mathcal {B}}}, \right. \\ t ^ {\text { tran }} + \max _ {\forall k \in \mathcal {K}} \left\{\psi_ {k} \frac {\alpha_ {n , k} S _ {n} ^ {\text { tot }}}{\varrho_ {k}} \right\}, \quad \forall n \in \mathcal {N}. \tag {17} \\ \end{array}
+$$
+
+The overall latency $t _ { n } ^ { \mathrm { o v e } }$ can be explained as follows. The first part is the local processing time $( \mathrm { i } . \mathrm { e } . , t _ { u , n } ^ { \mathrm { l o c } } )$ 100 by the USV. The second part is the FDMA transmission time $( \mathrm { i } . \mathrm { e } . , t _ { u , B } )$ by USV u and the processing time by base-station $B \ ( \mathrm { i } . \mathrm { e } . , \ t _ { n , B } )$ . The third part is the NOMA transmission time $( \mathrm { i } . \mathrm { e } . , t ^ { \mathrm { t r a n } } )$ and the processing time by UAVs (i.e., max∀k∈K {tn,k}).
+
+The total energy consumption of USV u for completing the workloadssumption $S _ { n } ^ { \mathrm { t o t } }$ k n consists of the local computing con-, the FDMA transmission consumption $( \mathrm { i } . { \mathsf { e } } . , \ E _ { u , n } ^ { \mathrm { l o c } } )$ $( \mathrm { i } . { \mathsf { e } } . , \ E _ { n , B } )$ and the NOMA transmission consumption (i.e., $E _ { u , n } ^ { \mathrm { o f f } } )$ , which can be expressed as
+
+$$
+\begin{array}{l} E _ {u, n} ^ {\mathrm{tot}} = E _ {u, n} ^ {\mathrm{loc}} + E _ {n, \mathcal {B}} + E _ {u, n} ^ {\mathrm{off}} \\ = \epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} \beta_ {n} S _ {n} ^ {\mathrm{tot}} + \frac {t _ {u , \mathcal {B}} n _ {\mathcal {B}}}{h _ {u , \mathcal {B}}} \left(2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{W _ {\mathcal {B}} t _ {u , \mathcal {B}}}} - 1\right) \\ + t ^ {\mathrm{tran}} n _ {0} \sum_ {k = 1} ^ {K} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right) 2 ^ {\frac {1}{W t ^ {\mathrm{tran}}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\mathrm{tot}}} \\ - \frac {t ^ {\text { tran }} n _ {0}}{g _ {u , K}}, \forall n \in \mathcal {N}. \tag {18} \\ \end{array}
+$$
+
+# C. Problem Formulation
+
+Based on the above modelings, we aim to formulate a joint optimization problem for optimizing USV’s offloading decisions $\alpha _ { n , B } , \alpha _ { n , k }$ , NOMA transmission time $t ^ { \mathrm { t r a n } }$ , FDMA transmission time $t _ { u , B } .$ , and the computing-rate allocations of USV $\varrho _ { u } .$ , that of offshore base-station ϱB and those of UAVs $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \boldsymbol { K } }$ . We consider that the delay for completing all tasks of USV is influenced by the maximum workloads. The objective of the formulated problem is to Minimize the Maximum Workloads Latency (MMWL), which can be expressed as
+
+$$
+\text {(MMWL)}: \min \max _ {\forall n \in \mathcal {N}} \left\{t _ {n} ^ {\text {ove}} \right\}
+$$
+
+subject to : $0 \leq \alpha _ { n , B } \leq 1$ , ∀n ∈ N , (19)
+
+$$
+0 \leq \alpha_ {n, k} \leq 1, \forall n \in \mathcal {N}, \quad \forall k \in \mathcal {K}, \tag {20}
+$$
+
+$$
+0 \leq \beta_ {n} \leq 1, \quad \forall n \in \mathcal {N}, \tag {21}
+$$
+
+$$
+0 \leq t _ {u, \mathcal {B}} \leq T _ {\mathcal {B}} ^ {\max}, \quad \forall n \in \mathcal {N}, \tag {22}
+$$
+
+$$
+0 \leq t ^ {\text { tran }} \leq T ^ {\max}, \tag {23}
+$$
+
+$$
+0 \leq p _ {u, \mathcal {B}} \leq P ^ {\max}, \quad \forall n \in \mathcal {N}, \tag {24}
+$$
+
+$$
+0 \leq q _ {u, n} ^ {\text { tot }} \leq Q ^ {\max}, \quad \forall n \in \mathcal {N}, \tag {25}
+$$
+
+$$
+0 \leq E _ {u, n} ^ {\mathrm{tot}} \leq E ^ {\max}, \quad \forall n \in \mathcal {N}, \tag {26}
+$$
+
+$$
+0 \leq \varrho_ {\mathcal {B}} \leq \varrho_ {\mathcal {B}} ^ {\max}, \tag {27}
+$$
+
+$$
+0 \leq \varrho_ {u} \leq \varrho_ {u} ^ {\max}, \tag {28}
+$$
+
+$$
+0 \leq \varrho_ {k} \leq \varrho^ {\max}, \quad \forall k \in \mathcal {K}, \tag {29}
+$$
+
+constraint (1),
+
+$$
+\text { variables }: \left\{\alpha_ {n, \mathcal {B}} \right\} _ {\forall n \in \mathcal {N}}, \left\{\alpha_ {n, k} \right\} _ {\forall n \in \mathcal {N}, \forall k \in \mathcal {K}}, t ^ {\text { tran }},
+$$
+
+$$
+t _ {u, \mathcal {B}}, \varrho_ {\mathcal {B}}, \varrho_ {u}, \text {   and   } \{\varrho_ {k} \} _ {\forall k \in \mathcal {K}}.
+$$
+
+In Problem (MMWL), constraint (19) ensures that the offloading ratio for the base-station cannot exceed the total workloads of task n. Constraint (20) ensures that the offloading ratio for UAVs cannot exceed the total workloads of task n. Constraint (21) guarantees that the local computation ratio cannot exceed the total workloads of task n. Constraint (22) ensures that the FDMA transmission time to the base-station cannot exceed the maximum $T _ { B } ^ { \mathrm { m a x } }$ . Constraint (23) guarantees that the NOMA transmission time to UAVs cannot exceed the maximum $T ^ { \mathrm { m a x } }$ . Constraint (24) ensures that the transmission power to the base-station cannot exceed the maximum $P ^ { \mathrm { m a x } }$ . Constraint (25) ensures that the transmission power to UAVs cannot exceed the maximum $Q ^ { \mathrm { m a x } }$ . Constraint (26) guarantees that the total energy consumption of USV cannot exceed the maximum $E ^ { \mathrm { m a x } }$ . Constraint (27) guarantees that the computing-rate of the base-station cannot exceed the maximum $\varrho _ { B } ^ { \mathrm { m a x } }$ . Constraint (28) ensures that the computing-rate of USV for local computing cannot exceed the maximum $\varrho _ { u } ^ { \mathrm { m a x } }$ . Constraint (29) ensures that the computing-rates of UAVs cannot exceed the maximum $\varrho ^ { \mathrm { m a x } }$ . The objective function of Problem (MMWL) is strictly nonconvex [40], which is computational challenging to solve it. In the next section, we will exploit a layered structure and propose algorithms to obtain the optimal solutions.
+
+# IV. PROPOSED ALGORITHMS FOR SOLVING THE JOINT OPTIMIZATION PROBLEM
+
+This section proposes algorithms to solve the formulated joint optimization problem. It can be identified that the objective function of Problem (MMWL) is strictly nonconvex, and it is challenging to solve it. We aim at exploiting the feature of Problem (MMWL) and proposing a layered approach to solve it.
+
+# A. Equivalent Form of Problem (MMWL)
+
+In Problem (MMWL), we introduce an auxiliary variable $T ^ { \mathrm { t o t } }$ to denote the maximum latency, which is expressed as
+
+$$
+T ^ {\text { tot }} = \max _ {\forall n \in \mathcal {N}} \left\{t _ {n} ^ {\text { ove }} \right\}. \tag {30}
+$$
+
+With $T ^ { \mathrm { t o t } }$ , we can obtain the following constraints:
+
+$$
+0 \leq \alpha_ {n, \mathcal {B}} \leq \min \left\{\frac {\left(T ^ {\mathrm{tot}} - t _ {u , B}\right) \varrho_ {\mathcal {B}}}{\psi_ {\mathcal {B}} S _ {n} ^ {\mathrm{tot}}}, 1 \right\}, \forall n \in \mathcal {N}, \tag {31}
+$$
+
+$$
+0 \leq \alpha_ {n, k} \leq \min \left\{\frac {\left(T ^ {\text {tot}} - t ^ {\text {tran}}\right) \varrho_ {k}}{\psi_ {k} S _ {n} ^ {\text {tot}}}, 1 \right\}, \forall n \in \mathcal {N}, \forall k \in \mathcal {K}, \tag {32}
+$$
+
+$$
+\max \left\{1 - \frac {T ^ {\mathrm{tot}} \varrho_ {u}}{\psi_ {u} S _ {n} ^ {\mathrm{tot}}}, 0 \right\} \leq \sum_ {k = 1} ^ {K} \alpha_ {n, k} + \alpha_ {n, \mathcal {B}} \leq 1, \forall n \in \mathcal {N}. \tag {33}
+$$
+
+Constraints (31), (32) and (33) come from the previous constraints (1), (17) and (30). Based on the above equivalent transformation, Problem (MMWL) can be equivalently rewritten as follows
+
+$$
+(\text { MMWL - E }): \min T ^ {\text { tot }}
+$$
+
+$$
+\text { subject   to:   constraints } (2 2) - (2 9), (3 1) - (3 3)
+$$
+
+$$
+\text { variables }: \left\{\alpha_ {n, \mathcal {B}} \right\} _ {\forall n \in \mathcal {N}}, \left\{\alpha_ {n, k} \right\} _ {\forall n \in \mathcal {N}, \forall k \in \mathcal {K}}, t ^ {\text { tran }}, t _ {u, \mathcal {B}},
+$$
+
+$$
+\varrho_ {\mathcal {B}}, \varrho_ {u}, \left\{\varrho_ {k} \right\} _ {\forall k \in \mathcal {K}}, \text {   and   } T ^ {\mathrm{tot}}.
+$$
+
+Exploiting the characteristic of Problem (MMWL-E), we propose a layered structure to solve Problem (MMWL-E) as follows.
+
+• Given the values of $t ^ { \mathrm { t r a n } } , t _ { u , B } , \varrho _ { B } , \varrho _ { u }$ and $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \mathcal { K } } .$ , subproblem optimizes the offloading decision $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } } ,$ $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ and obtains the minimum auxiliary variable $\bar { T } ^ { \mathrm { { f o i } } }$ . This leads to the sub-problem as follows.
+
+$$
+(\text { MMWL - E - Sub }): \min T ^ {\text { tot }}
+$$
+
+$$
+\text { subject   to }: \text { constraints } (2 6), (3 1), (3 2), (3 3)
+$$
+
+$$
+\begin{array}{c} \text {variables:} \{\alpha_ {n, \mathcal {B}} \} _ {\forall n \in \mathcal {N}}, \{\alpha_ {n, k} \} _ {\forall n \in \mathcal {N}, \forall k \in \mathcal {K}}, \\ \text {and} T ^ {\mathrm{tot}}. \end{array}
+$$
+
+• After obtaining $T ^ { \mathrm { t o t } }$ for the given values of $t ^ { \mathrm { t r a n } } , ~ t _ { u , B } ,$ $\varrho _ { B } , \varrho _ { u }$ and $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \mathcal { K } } ,$ we continue to minimize $T ^ { \mathrm { t o t } }$ by adjusting the values of $^ { t _ { u , B } }$ and $t ^ { \mathrm { t r a n } }$ . Given the values of $\varrho B , \varrho _ { u }$ and $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \mathcal { K } } ,$ , middle problem optimizes the FDMA transmission time $\boldsymbol { t } _ { u , B }$ and the NOMA transmission time $t ^ { \mathrm { t r a n } }$ . This leads to the mid-problem as follows.
+
+$$
+(\text { MMWL - E - Mid }): \min T ^ {\text { tot }}
+$$
+
+$$
+\text { subject   to }: \text { constraints } (2 2), (2 3)
+$$
+
+$$
+\text { variables }: t _ {u, \mathcal {B}}, t ^ {\text { tran }}.
+$$
+
+• Based on the obtained value of $T ^ { \mathrm { t o t } }$ in Problem (MMWL-E-Mid), we continue to minimize $T ^ { \mathrm { t o t } }$ by adjusting USV’s computing-rate allocation $\varrho _ { u } ,$ , offshore base-station’s computing-rate allocation $\varrho _ { B } ,$ , and $\mathrm { U A V s } '$ computing-rate allocations $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \mathcal { K } }$ . This leads to the top problem as follows.
+
+![](images/2fbdcce02e687ee2e2df33447e7aea712ce2a9de1d830961f8fd3a8c793f62e5.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Problem (MMDL) to optimize {αₙ,ᵢ, αₙ,ₖ, tᵗʳᵃⁿ, tₙ,ᵢ, ρᵢ, ρᵤ, ρₖ}"]
+    B["Problem (MMDL-E) to optimize {αₙ,ᵢ, αₙ,ₖ, tᵗʳᵃⁿ, tₙ,ᵢ, ρᵢ, ρᵤ, ρₖ}"]
+    C["Problem (MMDL-E-Top) to optimize {ρᵢ, ρᵤ, ρₖ}"]
+    D["Problem (MMDL-E-Mid) to optimize {tᵗʳᵃⁿ, tₙ,ᵢ"]
+    E["Problem (MMDL-E-Sub) to optimize {αₙ,ᵢ, αₙ,ₖ}"]
+    F["Problem (MMDL-E-Sub) to optimize {αₙ,ᵢ, αₙ,ₖ}"]
+    G["Equivalent transformation"] --> A
+    G --> B
+    G --> C
+    G --> D
+    G --> E
+    G --> F
+    H["T^tot-mid"] --> C
+    I["T^tot-sub"] --> D
+    J["Solved by Top-algorithm in Section IV-D"] --> C
+    K["Solved by Mid-algorithm in Section IV-C"] --> D
+    L["Solved by Sub-algorithm in Section IV-B"] --> E
+```
+</details>
+
+Fig. 2. Illustration of our proposed layered approach for solving Problem (MMWL).
+
+$$
+(\text { MMWL - E - Top }): \min T ^ {\text { tot }}
+$$
+
+subject to :constraints (27), (28), (29),
+
+$\mathrm { v a r i a b l e s : } \varrho B , \varrho _ { u } , \mathrm { a n d } \{ \varrho _ { k } \} _ { \forall k \in \mathcal { K } } .$
+
+The above layered method enables us to efficiently address Problem (MMWL-E). Specifically, we first exploit the feature of Problem (MMWL-E-Sub) and propose efficient approach to obtain the optimal offloading decisions and the corresponding value of $T ^ { \mathrm { t o t } }$ in Section IV-B. Then, based on the obtained solutions in Problem (MMWL-E-Sub), in Problem (MMWL-E-Mid), we find that $\boldsymbol { t } _ { u , B }$ and $t ^ { \mathrm { t r a n } }$ fall within the interval $[ 0 , T _ { B } ^ { \mathrm { m a x } } ]$ and $[ 0 , T ^ { \mathrm { m a x } } ]$ based on constraints (22) and (23), respectively. By enumerating the values of $^ { t _ { u , B } }$ and $t ^ { \mathrm { t r a n } }$ , we can obtain the optimal FDMA and NOMA transmission time and the corresponding value of $T ^ { \mathrm { t o t } }$ in Section IV-C. Last, according to the obtained solutions in Problem (MMWL-E-Mid), in Problem (MMWL-E-Top), we can enumerate the values of ϱB, $\varrho _ { u }$ and $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \boldsymbol { K } }$ based on constraints (27), (28) and (29) to find the optimal solutions in Section IV-D. The proposed layered approach for solving Problem (MMWL) is shown in Fig. 2.
+
+# B. Proposed Algorithm for Solving Problem (MMWL-E-Sub)
+
+In Problem (MMWL-E-Sub), we aim at minimizing the value of T tot to obtain the feasible region of {αn,B}∀n∈N $T ^ { \mathrm { t o t } }$ $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ under constraints (26), (31), (32) and (33). Problem (MMWL-E-Sub) can be regarded as finding a minimum $T ^ { \mathrm { t o t } }$ such that the feasible regions of $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ are non-empty. Therefore, based on constraint (26), we rewrite Problem (MMWL-E-Sub) to obtain an equivalent optimization problem to check whether constraints (31), (32) and (33) can output the non-empty regions or not, i.e.,
+
+$$
+(\text { MMWL - E - SubCheck }): \min E ^ {\mathrm{tot}} =
+$$
+
+$$
+\epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} S _ {n} ^ {\text { tot }} \left(1 - \sum_ {k = 1} ^ {K} \alpha_ {n, k} - \alpha_ {n, \mathcal {B}}\right)
+$$
+
+$$
++ t ^ {\text { tran }} n _ {0} \sum_ {k = 1} ^ {K} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right)
+$$
+
+$$
+\times 2 ^ {\frac {1}{W t ^ {\mathrm{tran}}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\mathrm{tot}}}
+$$
+
+$$
++ \frac {t _ {u , \mathcal {B}} n _ {\mathcal {B}}}{h _ {u , \mathcal {B}}} \left(2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{W _ {\mathcal {B}} t _ {u , \mathcal {B}}}} - 1\right)
+$$
+
+$$
+- \frac {t ^ {\mathrm{tran}} n _ {0}}{g _ {u , K}} - E ^ {\mathrm{max}}.
+$$
+
+subject to :constraints (31), (32), (33)
+
+${ \mathrm { v a r i a b l e s : ~ } } \{ \alpha _ { n , B } \} _ { \forall n \in N } { \mathrm { ~ a n d ~ } } \{ \alpha _ { n , k } \} _ { \forall n \in N , \forall k \in \mathcal { N } }$
+
+If Problem (MMWL-E-SubCheck) yields a negative value, $\mathrm { i . e . }$ , the energy consumption constraint is satisfied, Problem (MMWL-E-Sub) is feasible and can output the non-empty regions under the given value of $T ^ { \mathrm { t o t } }$ . Otherwise, Problem (MMWL-E-Sub) is infeasible. Moreover, based on constraints (31), (32) and (33), we can obtain that when the value of $T ^ { \mathrm { t o t } }$ increases, the feasible regions $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ will increase. The maximum value of $T ^ { \mathrm { t o t } }$ is given by
+
+$$
+\hat {T} ^ {\max} = \max \left\{\psi_ {u} \frac {\beta_ {n} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {u}}, T _ {\mathcal {B}} ^ {\max} + \psi_ {\mathcal {B}} \frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {\mathcal {B}}}, \right.
+$$
+
+$$
+T ^ {\max} + \max _ {\forall k \in \mathcal {K}} \left\{\psi_ {k} \frac {\alpha_ {n , k} S _ {n} ^ {\mathrm{tot}}}{\varrho_ {k}} \right\} \Bigg \}. \tag {34}
+$$
+
+In Problem (MMWL-E-SubCheck), an important feature is that the objective function is non-increasing with the value of $T ^ { \mathrm { t o t } }$ . This feature enables us to solve Problem (MMWL-E-Sub) by using the bisection searching method within the interval $[ 0 , \hat { T } ^ { \mathrm { m a x } } ]$ . Specifically, if the given value of $T ^ { \mathrm { t o t } }$ leads to a negative value for Problem (MMWL-E-SubCheck), we will decrease the value of $T ^ { \mathrm { t o t } }$ . Otherwise, we will increase the value of T tot. $T ^ { \mathrm { t o t } }$
+
+Proposition 1: Given the values of $t ^ { t r a n } , ~ t _ { u , B } , ~ \varrho _ { B } , ~ \varrho _ { u }$ and $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \mathcal { K } } ,$ , the objective function of Problem (MMWL-E-SubCheck) is strictly convex with respect to $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } \} _ { \forall n \in N , \forall k \in K } .$ {αn,k}∀n∈N,∀k∈K.
+
+Proof: We denote the objective function of Problem (MMWL-E-SubCheck) as $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ .
+
+$$
+\mathcal {F} \left(\alpha_ {n, k}, \alpha_ {n, \mathcal {B}}\right) = \epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} S _ {n} ^ {\mathrm{tot}} \left(1 - \sum_ {k = 1} ^ {K} \alpha_ {n, k} - \alpha_ {n, \mathcal {B}}\right) + t ^ {\mathrm{tran}} n _ {0}
+$$
+
+$$
+\times \sum_ {k = 1} ^ {K} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right) 2 ^ {\frac {1}{W t ^ {\text { tran }}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\text { tot }}}
+$$
+
+$$
++ \frac {t _ {u , \mathcal {B}} n _ {\mathcal {B}}}{h _ {u , \mathcal {B}}} \left(2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{W _ {\mathcal {B}} t _ {u , \mathcal {B}}}} - 1\right)
+$$
+
+$$
+- \frac {t ^ {\text { tran }} n _ {0}}{g _ {u , K}} - E ^ {\text { max }}. \tag {35}
+$$
+
+It can be observed that $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ is continuous and differentiable with respect to $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ and $\alpha _ { n , B }$ , respectively. The Hessian matrix ${ \bf H } ^ { ( K + 1 ) \times ( K + 1 ) }$ of $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ is a square matrix defined as follows [41]
+
+$$
+\mathbf {H} ^ {(K + 1) \times (K + 1)} =
+$$
+
+$$
+\left[ \begin{array}{c c c c c} \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} ^ {2}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} \partial \alpha_ {n , 2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} \partial \alpha_ {n , K}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} \partial \alpha_ {n , \mathcal {B}}} \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} \partial \alpha_ {n , 1}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} ^ {2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} \partial \alpha_ {n , K}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} \partial \alpha_ {n , \mathcal {B}}} \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} \partial \alpha_ {n , 1}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} \partial \alpha_ {n , 2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} ^ {2}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} \partial \alpha_ {n , \mathcal {B}}} \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , B} \partial \alpha_ {n , 1}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , B} \partial \alpha_ {n , 2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , B} \partial \alpha_ {n , K}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , B} ^ {2}} \end{array} \right].
+$$
+
+Since $\alpha _ { n , k }$ and $\alpha _ { n , B }$ are not coupled with each other in $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ , we can obtain the following results
+
+$$
+\left\{ \begin{array}{l l} \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , k} \partial \alpha_ {n , \mathcal {B}}} = 0 \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , \mathcal {B}} \partial \alpha_ {n , k}} = 0 \end{array} , k = 1, 2, \dots , K. \right. \tag {37}
+$$
+
+The second derivative of $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ with respect to $\alpha _ { n , B }$ can be calculated by
+
+$$
+\frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , \mathcal {B}} ^ {2}} = \frac {n _ {\mathcal {B}} (S _ {n} ^ {\mathrm{tot}} \ln 2) ^ {2}}{W _ {\mathcal {B}} ^ {2} h _ {u , \mathcal {B}} t _ {u , \mathcal {B}}} 2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{W _ {\mathcal {B}} t _ {u , \mathcal {B}}}} > 0. \tag {38}
+$$
+
+Based on (37), the Hessian matrix ${ \bf H } ^ { ( K + 1 ) \times ( K + 1 ) }$ of $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ can be rewritten as follows
+
+$$
+\mathbf {H} ^ {(K + 1) \times (K + 1)} =
+$$
+
+$$
+\left[ \begin{array}{c c c c c} \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} ^ {2}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} \partial \alpha_ {n , 2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} \partial \alpha_ {n , K}} & 0 \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} \partial \alpha_ {n , 1}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} ^ {2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} \partial \alpha_ {n , K}} & 0 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} \partial \alpha_ {n , 1}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} \partial \alpha_ {n , 2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} ^ {2}} & 0 \\ 0 & 0 & \dots & 0 & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , B} ^ {2}} \end{array} \right]. \tag {39}
+$$
+
+The Hessian matrix $\mathbf { H } ^ { ( K + 1 ) \times ( K + 1 ) }$ can be decomposed as follows
+
+$$
+\mathbf {H} ^ {(K + 1) \times (K + 1)} = \left[ \begin{array}{c c} \mathbf {C} ^ {K \times K} & 0 \\ 0 & \mathbf {D} ^ {1 \times 1} \end{array} \right]. \tag {40}
+$$
+
+The matrix $\mathbf { D } ^ { 1 \times 1 }$ is expressed as $\begin{array} { r l r } { { \bf D } ^ { 1 \times 1 } = } & { { } \Big [ \frac { \partial ^ { 2 } { \mathcal F } } { \partial \alpha _ { n , B } ^ { 2 } } \Big ] } \end{array}$ . The square matrix $\mathbf { C } ^ { K \times K }$ is defined as follows
+
+$$
+\mathbf {C} ^ {K \times K} = \left[ \begin{array}{c c c c} \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} ^ {2}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} \partial \alpha_ {n , 2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 1} \partial \alpha_ {n , K}} \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} \partial \alpha_ {n , 1}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} ^ {2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , 2} \partial \alpha_ {n , K}} \\ \vdots & \vdots & \ddots & \vdots \\ \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} \partial \alpha_ {n , 1}} & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} \partial \alpha_ {n , 2}} & \dots & \frac {\partial^ {2} \mathcal {F}}{\partial \alpha_ {n , K} ^ {2}} \end{array} \right]. (4 1)
+$$
+
+From (35), it can be observed that $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ is strictly convex with respect to $\left\{ \alpha _ { n , k } \right\} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } } \left[ 2 9 \right]$ . Therefore, the determinant of each order of matrix $\breve { \mathbf { C } } ^ { \tilde { K } \times K }$ is positive, i.e., det $\left( { \bf C } ^ { K \times K } \right) ~ > ~ 0$ . Based on the operation of determinant, we can obtain the determinant of each order of matrix as follows
+
+$$
+\left| \begin{array}{c c} \mathbf {C} ^ {K \times K} & 0 \\ 0 & \mathbf {D} ^ {1 \times 1} \end{array} \right| = \det \left(\mathbf {C} ^ {K \times K}\right) \det \left(\mathbf {D} ^ {1 \times 1}\right) > 0. \tag {42}
+$$
+
+Therefore, the Hessian matrix $\mathbf { H } ^ { ( K + 1 ) \times ( K + 1 ) }$ is a positive definite matrix. Problem (MMDL-E-SubCheck) is strictly convex with respect to $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in K } .$ This completes our proof.
+
+Exploiting Proposition 1, we can solve Problem (MMDL-E-SubCheck) by using Karush-Kuhn-Tucker (KKT) conditions. By introducing the Lagrangian multipliers (i.e., λ and $\gamma )$ with respect to constraint (33), the Lagrangian function can be expressed as
+
+$$
+\begin{array}{l} \mathcal {L} \left(\alpha_ {n, k}, \alpha_ {n, \mathcal {B}}, \lambda , \gamma\right) = \epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} S _ {n} ^ {\text { tot }} \left(1 - \sum_ {k = 1} ^ {K} \alpha_ {n, k} - \alpha_ {n, \mathcal {B}}\right) \\ + t ^ {\mathrm{tran}} n _ {0} \sum_ {k = 1} ^ {K} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right) \\ \times 2 ^ {\frac {1}{W t ^ {\text { tran }}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\text { tot }}} + \frac {t _ {u , \mathcal {B}} n _ {\mathcal {B}}}{h _ {u , \mathcal {B}}} \\ \times \left(2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{W _ {\mathcal {B}} t _ {u , \mathcal {B}}}} - 1\right) - \frac {t ^ {\mathrm{tran}} n _ {0}}{g _ {u , K}} - E ^ {\mathrm{max}} \\ + \gamma \left(\sum_ {k = 1} ^ {K} \alpha_ {n, k} + \alpha_ {n, \mathcal {B}} - 1\right) \\ + \lambda \left(1 - \frac {T ^ {\text { tot }} \varrho_ {u}}{\psi_ {u} S _ {n} ^ {\text { tot }}} - \sum_ {k = 1} ^ {K} \alpha_ {n, k} - \alpha_ {n, \mathcal {B}}\right). \tag {43} \\ \end{array}
+$$
+
+We can obtain the first derivative of $\mathcal { L } \left( \alpha _ { n , k } , \alpha _ { n , B } , \lambda , \gamma \right)$ with respect to $\alpha _ { n , B }$ as follows
+
+$$
+\begin{array}{l} \frac {\partial \mathcal {L} (\alpha_ {n , k} , \alpha_ {n , \mathcal {B}} , \lambda , \gamma)}{\partial \alpha_ {n , \mathcal {B}}} = \frac {n _ {\mathcal {B}} S _ {n} ^ {\mathrm{tot}} \ln 2}{W _ {\mathcal {B}} h _ {u , \mathcal {B}}} 2 ^ {\frac {\alpha_ {n , \mathcal {B}} S _ {n} ^ {\mathrm{tot}}}{W _ {\mathcal {B}} t _ {u , \mathcal {B}}}} - \epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} S _ {n} ^ {\mathrm{tot}} \\ + \gamma - \lambda . \tag {44} \\ \end{array}
+$$
+
+By setting (44) to be zero, we can obtain the offloading ratio $\alpha _ { n , B }$ to base-station $\boldsymbol { B }$ as follows
+
+$$
+\alpha_ {n, \mathcal {B}} = \frac {W _ {\mathcal {B}} t _ {u , \mathcal {B}}}{S _ {n} ^ {\mathrm{tot}}} \log_ {2} \frac {W _ {\mathcal {B}} h _ {u , \mathcal {B}}}{n _ {\mathcal {B}} S _ {n} ^ {\mathrm{tot}} \ln 2} \left(\epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} S _ {n} ^ {\mathrm{tot}} + \lambda - \gamma\right). \tag {45}
+$$
+
+For $\begin{array} { r l r l } { k } & { { } = } & { 1 } \end{array}$ , we can obtain the first derivative of $\mathcal { L } \left( \alpha _ { n , k } , \alpha _ { n , B } , \lambda , \gamma \right)$ with respect to $\alpha _ { n , k }$ as follows
+
+$$
+\begin{array}{l} \frac {\partial \mathcal {L} (\alpha_ {n , k} , \alpha_ {n , \mathcal {B}} , \lambda , \gamma)}{\partial \alpha_ {n , k}} = \frac {n _ {0} S _ {n} ^ {\mathrm{tot}} \ln 2}{W g _ {u , k}} 2 ^ {\frac {1}{W t ^ {\mathrm{tran}}} \alpha_ {n, k} S _ {n} ^ {\mathrm{tot}}} \\ - \epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} S _ {n} ^ {\mathrm{tot}} + \gamma - \lambda . \tag {46} \\ \end{array}
+$$
+
+For $2 \leq k \leq K$ , the first derivative of $\mathcal { L } \left( \alpha _ { n , k } , \alpha _ { n , B } , \lambda , \gamma \right)$ with respect to $\alpha _ { n , k }$ can be expressed as follows
+
+$$
+\begin{array}{l} \frac {\partial \mathcal {L} (\alpha_ {n , k} , \alpha_ {n , \mathcal {B}} , \lambda , \gamma)}{\partial \alpha_ {n , k}} = \frac {\partial \mathcal {L} (\alpha_ {n , k - 1} , \alpha_ {n , \mathcal {B}} , \lambda , \gamma)}{\partial \alpha_ {n , k}} \\ + \frac {n _ {0} S _ {n} ^ {\mathrm{tot}} \ln 2}{W} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right) \\ \times 2 ^ {\frac {1}{W t ^ {\text { tran }}}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\text { tot }}. \tag {47} \\ \end{array}
+$$
+
+Based on (46) and (47), the first derivative of $\mathcal { L } \left( \alpha _ { n , k } , \alpha _ { n , B } , \lambda , \gamma \right)$ with respect to $\alpha _ { n , k }$ can be denoted as
+
+$$
+\frac {\partial \mathcal {L} (\alpha_ {n , k} , \alpha_ {n , \mathcal {B}} , \lambda , \gamma)}{\partial \alpha_ {n , k}} =
+$$
+
+$$
+\left\{ \begin{array}{l} \frac {n _ {0} S _ {n} ^ {\text {tot}} \ln 2}{W g _ {u , k}} 2 ^ {\frac {1}{W t ^ {\text {tran}}} \alpha_ {n, k} S _ {n} ^ {\text {tot}}} - \epsilon_ {u} \varrho_ {u} ^ {2} \psi_ {u} S _ {n} ^ {\text {tot}} - \lambda + \gamma , \quad k = 1, \\ \frac {n _ {0} S _ {n} ^ {\text {tot}} \ln 2}{W} \left(\frac {1}{g _ {u , k}} - \frac {1}{g _ {u , k - 1}}\right) 2 ^ {\frac {1}{W t ^ {\text {tran}}} \sum_ {i = k} ^ {K} \alpha_ {n, i} S _ {n} ^ {\text {tot}}} \\ + \frac {\partial \mathcal {L} (\alpha_ {n , k - 1} , \alpha_ {n , \mathcal {B}} , \lambda , \gamma)}{\partial \alpha_ {n , k - 1}}, 2 \leq k \leq K. \end{array} \right. \tag {48}
+$$
+
+According to (48), we can find that the first derivative of $\mathcal { L } \left( \alpha _ { n , k } , \alpha _ { n , B } , \lambda , \gamma \right)$ is increasing with the index K. As a result, there at most exists one UAV (the index is denoted by $l \in \mathcal { K } )$ making ∂L(αn,l,αn,B,λ,γ) = 0. In particular, for each $\begin{array} { r } { \frac { \partial \mathcal { L } ( \alpha _ { n , l } , \alpha _ { n , l } , \boldsymbol { s } , \lambda , \gamma ) } { \partial \alpha _ { n , l } } = 0 } \end{array}$ ∂αn,l UAV $k \left( k < l \right)$ , we can obtain ∂L(αn,k,αn,B,λ,γ) < 0. For each $\frac { \partial \mathcal { L } ( \alpha _ { n , k } , \alpha _ { n , B } , \lambda , \gamma ) } { \partial \alpha _ { n , k } } < 0$ ∂αn,k UAV $k \left( k > l \right)$ , we have ∂L(αn,k,αn,B,λ,γ) > 0. This feature $\begin{array} { r } { \frac { \partial \mathcal { L } ( \alpha _ { n , k } , \alpha _ { n , \ell } , \ell , \lambda , \gamma ) } { \partial \alpha _ { n } \ \ i } > 0 . } \end{array}$ ∂αn,k enables us to derive the optimal offloading ratio $( \mathrm { i } . \mathrm { e } . , \ \alpha _ { n , k } )$ for UAVs. Let $\alpha _ { n , k } ^ { * } , \forall n \ \in \ N , \forall k \ \in \ K$ denote the optimal offloading ratio to UAVs. We have the following proposition.
+
+Proposition 2: For each $U A V k \in { \mathcal { K } } ,$ , the optimal offloading ratio is given by
+
+$$
+\alpha_ {n, k} ^ {*} = \left\{ \begin{array}{l l} \min \left\{\frac {\left(T ^ {\text { tot }} - t ^ {\text { tran }}\right) \varrho_ {k}}{\psi_ {k} S _ {n} ^ {\text { tot }}}, 1 \right\}, & \text { if   } 1 \leq k <   l, \\ \min \left\{\max \left\{\alpha_ {n, l} ^ {l b}, \hat {\alpha} _ {n, l} \right\}, \alpha_ {n, l} ^ {u b} \right\}, & \text { if   } k = l, \\ 0, & \text { if   } l <   k \leq K, \end{array} \right. \tag {49}
+$$
+
+where the value of $\hat { \alpha } _ { n , l }$ is given by ∂L( ˆαn,l,αn,B,λ,γ) = 0. The $\begin{array} { r } { \frac { \partial \mathcal { L } ( \hat { \alpha } _ { n , l } , \alpha _ { n , \ell } , s , \lambda , \gamma ) } { \partial \alpha } = 0 . } \end{array}$ ∂αn,l lower bound $\alpha _ { n , l } ^ { l b }$ and the upper bound α ub $\alpha _ { n , l } ^ { u b ^ { \ast } }$ are separately given by
+
+$$
+\begin{array}{l} \alpha_ {n, l} ^ {l b} = \max \left\{1 - \frac {T ^ {\mathrm{tot}} \varrho_ {u}}{\psi_ {u} S _ {n} ^ {\mathrm{tot}}} - \alpha_ {n, \mathcal {B}} - \sum_ {k = 1} ^ {l - 1} \alpha_ {n, k} ^ {*} \right. \\ \left. - \sum_ {k = l + 1} ^ {K} \alpha_ {n, k} ^ {*}, 0 \right\}, (50) \\ \alpha_ {n, l} ^ {u b} = \min \left\{1 - \alpha_ {n, \mathcal {B}} - \sum_ {k = 1} ^ {l - 1} \alpha_ {n, k} ^ {*} - \sum_ {k = l + 1} ^ {K} \alpha_ {n, k} ^ {*}, \right. \\ \left. \frac {\left(T ^ {\mathrm{tot}} - t ^ {\mathrm{tran}}\right) \varrho_ {k}}{\psi_ {k} S _ {n} ^ {\mathrm{tot}}} \right\}. (51) \\ \end{array}
+$$
+
+where the value $o f \alpha _ { n , l } ^ { l b }$ comes from constraint (33). The value of $\alpha _ { n , l } ^ { u b }$ comes from constraint (32).
+
+In the boundary case, we can express the optimal solution as follows
+
+$$
+\begin{array}{l} \alpha_ {n, k} ^ {*} = \\ \left\{ \begin{array}{l} \min \left\{\frac {\left(T ^ {\text { tot }} - t ^ {\text { tran }}\right) \varrho_ {k}}{\psi_ {k} S _ {n} ^ {\text { tot }}}, 1 \right\}, \text {   if   constraint   (33)   is   satisfied }, \\ 0, \text {   if   } \frac {T ^ {\text { tot }} \varrho_ {u}}{\psi_ {u} S _ {n} ^ {\text { tot }}} + \alpha_ {n, \mathcal {B}} = 1. \end{array} \right. \tag {52} \\ \end{array}
+$$
+
+Proof: According to (48), the first derivative of $\mathcal { L } \left( \alpha _ { n , k } , \alpha _ { n , B } , \lambda , \gamma \right)$ increases with the index K. For the index $1 \leq k < l ,$ , it can be obtained that ∂L(αn,k,αn,B,λ,γ) < 0, which $\begin{array} { r } { \frac { \partial \mathcal { L } ( \alpha _ { n , k } , \alpha _ { n , k } , \boldsymbol { s } , \lambda , \gamma ) } { \partial \alpha _ { n , k } } < 0 } \end{array}$ ∂αn,k means that $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ is decreasing with $\alpha _ { n , k }$ . Therefore, to obtain the minimum $E _ { u , n } ^ { \mathrm { t o t } }$ and further reduce $T ^ { \mathrm { t o t } } , \alpha _ { n , k }$ should be the upper bound in (32). For the index $l < k \le K$ , we can obtain that $\begin{array} { r } { \frac { \partial \mathcal { L } ( \alpha _ { n , k } , \alpha _ { n , k } , s , \dot { \lambda } , \gamma ) } { \partial \alpha _ { n , k } } > 0 } \end{array}$ ∂αn,k , which means that $\mathcal { F } \left( \alpha _ { n , k } , \alpha _ { n , B } \right)$ is increasing with $\alpha _ { n , k }$ . Therefore, $\alpha _ { n , k }$ should be the lower bound in (32) such tthe minimum value. For the index $E _ { u , n } ^ { \mathrm { t o t } }$ and he lo $T ^ { \mathrm { t o t } }$ can abound $k = l ,$ $\alpha _ { n , l } ^ { \mathrm { l b } }$ is calculated by $1 - \frac { T ^ { \mathrm { t o t } } \varrho _ { u } } { \psi _ { u } S _ { n } ^ { \mathrm { t o t } } } - \alpha _ { n , B } - \sum _ { k = 1 } ^ { l - 1 } \alpha _ { n , k } ^ { * } - \sum _ { k = l + 1 } ^ { K } \alpha _ { n , k } ^ { * }$ T totϱ α∗n,k based on the left inequality of constraint (33). The upper bound $\alpha _ { n , l } ^ { \mathrm { u b } }$ is computed by $1 - \alpha _ { n , B } - \sum _ { k = 1 } ^ { l - 1 } \alpha _ { n , k } ^ { * } - \sum _ { k = l + 1 } ^ { K } \alpha _ { n , k } ^ { * }$ α∗n,k α∗n,k according to the right inequality of constraint (33). In the boundary case, if constraint (33) is satisfied, the optimal offloading ratio $\alpha _ { n , k } ^ { * }$ can be obtained by the upper bound of constraint (32). If T totϱ $\begin{array} { r } { \frac { T ^ { \mathrm { t o t } } \varrho _ { u } } { \psi _ { * } S ^ { \mathrm { t o t } } } + \alpha _ { n , B } = 1 } \end{array}$ , the optimal offloading ratio will be $\alpha _ { n , k } ^ { * } = ^ { n } .$ . This completes our proof.
+
+Based on Proposition 2, we propose a subroutine-algorithm to solve Problem (MMWL-E-SubCheck) and obtain E tot ∗ $E ^ { \mathrm { t o t } ^ { * } }$ and the corresponding solutions $\{ \alpha _ { n , B } ^ { * } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } ^ { * } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ , which is shown in Algorithm 1. The key steps in Algorithm 1 are explained as follows.
+
+• Step 1-Step 2: We first give the values of ${ t ^ { \mathrm { t r a n } } , t _ { u , B } , \varrho _ { B } }$ $\varrho _ { u }$ and $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \boldsymbol { K } }$ . Then, we initialize the current best solutions as $\{ \alpha _ { n , k } ^ { * } \} _ { \forall n \in N , \forall k \in \mathcal { K } } = \emptyset$ and $\{ \alpha _ { n , B } ^ { * } \} _ { \forall n \in { \cal N } } =$ $\varnothing ,$ and set the current best value of $E ^ { \mathrm { t o t } }$ as $\dot { E } ^ { \mathrm { b e s t } } = \infty$ .   
+• Step 3-Step 18: We enumerate the index $l \in \mathcal { K }$ from 1 to K to obtain the current values of $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ and $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } }$ . We calculate the current value of $E ^ { \mathrm { t o t ^ { * } } }$ based on (35). If the current value of $E ^ { \mathrm { t o t ^ { * } } }$ is lower than $E ^ { \mathrm { b e s t } }$ , we set $E ^ { \mathrm { b e s t } } = E ^ { \mathrm { t o t } ^ { * } }$ and update $\{ \alpha _ { n , k } ^ { * } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ and $\{ \alpha _ { n , B } ^ { * } \} _ { \forall n \in \mathcal { N } }$ .   
+• Step 19-Step 24: In the boundary case, if 1, the optimal offloading ratio to UAVs will be ψuStotn T totϱ $\begin{array} { r l } {  { \frac { { T ^ { \mathrm { t o t } } } \varrho u } { \psi _ { u } S _ { \infty } ^ { \mathrm { t o t } } } + \alpha _ { n , B } ^ { * } = } } \end{array}$ $\alpha _ { n , k } ^ { * } = 0$ +α∗n,B   
+• Step 25-Step 30: In the boundary case, if constraint (33) is satisfied, the optimal offloading ratio to UAVs is determined by the upper bound of constraint (32).
+
+Exploiting Problem (MMWL-E-SubCheck), we find that if the given value $T ^ { \mathrm { t o t } }$ yields $E ^ { \mathrm { t o t ^ { * } } } < 0 .$ , we then decrease the value of $T ^ { \mathrm { t o t } }$ . Otherwise, we should increase the value of $T ^ { \mathrm { t o t } }$ t . The objective function $E ^ { \mathrm { t o t } }$ is non-increasing with the value of $T ^ { \mathrm { t o t } }$ . This feature enables us to propose a bisection search algorithm to solve Problem (MMWL-E-Sub), which is shown in Algorithm 2. The key steps in Algorithm 2 are explained as follows.
+
+Algorithm 1 Subroutine-Algorithm to Obtain the Values of $\{\alpha_{n,\mathcal{B}}^{*}\}_{\forall n\in\mathcal{N}}$ and $\{\alpha_{n,k}^{*}\}_{\forall n\in\mathcal{N},\forall k\in\mathcal{K}}$ 1 Input: $t^{\text{tran}}$ , $t_{u,\mathcal{B}}$ , $\varrho_{\mathcal{B}}$ , $\varrho_{u}$ and $\{\varrho_{k}\}_{\forall k\in\mathcal{K}}$ .
+
+2 Initialization: Set the current best solutions of $\{\alpha_{n,k}^{*}\}_{\forall n\in\mathcal{N},\forall k\in\mathcal{K}}=\emptyset$ and $\{\alpha_{n,\mathcal{B}}^{*}\}_{\forall n\in\mathcal{N}}=\emptyset$ , set the current best value of the objective function $E^{\text{best}}=\infty$ .
+
+3 for $l=1;l\leq K;l++$ do
+
+4 Compute $\alpha_{n,k}^{*}$ and $\alpha_{n,\mathcal{B}}^{*}$ based on (49) and (45), respectively.
+
+5Compute $\alpha_{n,k}^{\text{lb}}$ and $\alpha_{n,k}^{\text{ub}}$ based on (50) and (51), respectively.
+
+6 if $\frac{\partial\mathcal{L}(\alpha_{n,l}^{\text{lb}},\alpha_{n,\mathcal{B}},\lambda,\gamma)}{\partial\alpha_{n,l}^{\text{lb}}} >0$ then
+
+7 $\alpha_{l,k}^{*}=\alpha_{n,k}^{\text{lb}}$ .
+
+8 else
+
+9 if $\frac{\partial\mathcal{L}(\alpha_{n,l}^{\text{ub}},\alpha_{n,\mathcal{B}},\lambda,\gamma)}{\partial\alpha_{n,l}^{\text{ub}}} <0$ then
+
+10 $\alpha_{l,k}^{*}=\alpha_{n,k}^{\text{ub}}$ .
+
+11 else
+
+12 Calculate $\alpha_{l,k}^{*}\in[\alpha_{n,k}^{\text{lb}},\alpha_{n,k}^{\text{ub}}]$ using bisection search method such that $\frac{\partial\mathcal{L}(\alpha_{n,l}^{*},\alpha_{n,\mathcal{B}},\lambda,\gamma)}{\partial\alpha_{n,l}^{*}}=0$ .
+
+13 end
+
+14 end
+
+15 if $E^{\text{tot}*}<E^{\text{best}}$ then
+
+16 Set $E^{\text{best}}=E^{\text{tot}*}$ and update $\{\alpha_{n,k}^{*}\}_{\forall n\in\mathcal{N},\forall k\in\mathcal{K}}$ and $\{\alpha_{n,\mathcal{B}}^{*}\}_{\forall n\in\mathcal{N}}$ .
+
+17 end
+
+18 end
+
+19 if $\frac{T^{\text{tot}}\varrho_{u}}{\psi_{u}S_{n}^{\text{tot}}}+\alpha_{n,\mathcal{B}}^{*}=1$ then
+
+20 Set $\alpha_{n,k}^{*}=0$ .
+
+21 if $E^{\text{tot}*}<E^{\text{best}}$ then
+
+22 Set $E^{\text{best}}=E^{\text{tot}*}$ and update $\{\alpha_{n,k}^{*}\}_{\forall n\in\mathcal{N},\forall k\in\mathcal{K}}$ and $\{\alpha_{n,\mathcal{B}}^{*}\}_{\forall n\in\mathcal{N}}$ .
+
+23 end
+
+24 end
+
+25 if constraint (33) is satisfied then
+
+26 Set $\alpha_{n,k}^{*}=\min \left\{\frac{(T^{\text{tot}}-t^{\text{tran}})\varrho_{k}}{\psi_{k}S_{n}^{\text{tot}}},1\right\}$ .
+
+27 if $E^{\text{tot}*}<E^{\text{best}}$ then
+
+28 Set $E^{\text{best}}=E^{\text{tot}*}$ and update $\{\alpha_{n,k}^{*}\}_{\forall n\in\mathcal{N},\forall k\in\mathcal{K}}$ and $\{\alpha_{n,\mathcal{B}}^{*}\}_{\forall n\in\mathcal{N}}$ .
+
+29 end
+
+30 end
+
+31 Output: The optimal value $E^{\text{tot}*}=E^{\text{best}}$ and the corresponding solutions $\{\alpha_{n,\mathcal{B}}^{*}\}_{\forall n\in\mathcal{N}}$ and $\{\alpha_{n,k}^{*}\}_{\forall n\in\mathcal{N},\forall k\in\mathcal{K}}$ .
+
+• Step 1-Step 2: We first set the computation-error as $\varepsilon ,$ and then initialize the lower bound as $T ^ { \mathrm { l b } } = 0$ and the upper bound as T ub = Tˆmax. $T ^ { \mathrm { u b } } = \hat { T } ^ { \mathrm { m a x } }$
+
+Algorithm 2 Sub-Algorithm to Obtain the Value of $T^{\text{tot-sub}^*}$ 1 Input: Given the computation-error $\varepsilon$ .
+
+2 Initialization: Initialize the lower bound $T^{\text{lb}} = 0$ , the upper bound $T^{\text{ub}} = \hat{T}^{\text{max}}$ .
+
+3 while $\varepsilon < |T^{\text{ub}} - T^{\text{lb}}|$ do
+
+4 Compute the current value of $T^{\text{cur}} = \frac{T^{\text{lb}} + T^{\text{ub}}}{2}$ .
+
+5 Invoke Algorithm 1 to obtain the value of $E^{\text{tot}}(\alpha_{n,k}^{*}, \alpha_{n,\mathcal{B}}^{*})$ .
+
+6 if $E^{\text{tot}}(\alpha_{n,k}^{*}, \alpha_{n,\mathcal{B}}^{*}) < 0$ then
+
+7 Set the upper bound as $T^{\text{ub}} = T^{\text{cur}}$ .
+
+8 else
+
+9 Set the lower bound as $T^{\text{lb}} = T^{\text{cur}}$ .
+
+10 end
+
+11 end
+
+12 Output: The optimal value of $T^{\text{tot-sub}^*} = T^{\text{cur}}$ and the corresponding values of $\{\alpha_{n,\mathcal{B}}^{*}\}_{\forall n \in \mathcal{N}}$ and $\{\alpha_{n,k}^{*}\}_{\forall n \in \mathcal{N}, \forall k \in \mathcal{K}}$ .
+
+Algorithm 3 Mid-Algorithm to Obtain the Values of ttran∗ $t ^ { \mathrm { { t r a n } ^ { * } } }$ and $\boldsymbol { t _ { u , B } } ^ { * }$   
+1 Input: The lower bound and upper bound of $t^{tran}$ as $t^{lb}=0$ and $t^{ub}=T^{max}$ . The lower bound and upper bound of $t_{u,B}$ as $t_{u,B}^{lb}=0$ and $t_{u,B}^{ub}=T_{B}^{max}$ . The step size of $t^{tran}$ as $\varsigma_{1}$ . The step size of $t_{u,B}$ as $\varsigma_{2}$ .
+2 Initialization: Initialize the current best value as $T^{best}=\infty$ , set the current best solution as $t^{tran*}=\emptyset$ and $t_{u,B}^{*}=\emptyset$ .
+3 for $t^{lb};t^{lb}\leq t^{ub};t^{lb}+\varsigma_{1}$ do
+4    for $t_{u,B}^{lb};t_{u,B}^{lb}\leq t_{u,B}^{ub};t_{u,B}^{lb}+\varsigma_{2}$ do
+5    Invoke Algorithm 2 to compute the value of $T^{tot-sub*}$ .
+6    if $T^{tot-sub*}<T^{best}$ then
+7    Update $T^{best}=T^{tot-sub*},t^{tran*}=t^{lb}$ , and
+8    end
+9    end
+10 end
+11 Output: The optimal value as $T^{tot-mid*}=T^{best}$ , the corresponding solution as $t^{tran*}$ and $t_{u,B}^{*}$ .
+
+• Step 3-Step 11: We first calculate the middle value as $\begin{array} { r } { T ^ { \mathrm { c u r } } = \frac { { T ^ { \mathrm { l b } } } ^ { \star } + { T ^ { \mathrm { u b } } } } { 2 } } \end{array}$ . Then, we invoke Algorithm 1 to compute 2the value of $E ^ { \mathrm { t o t } } ( \alpha _ { n , k } ^ { * } , \alpha _ { n , B } ^ { * } )$ . If $E ^ { \mathrm { t o t } } ( \alpha _ { n , k } ^ { * } , \alpha _ { n , B } ^ { * } )$ is lower than zero, we set the upper bound as $T ^ { \mathrm { u b } } \ = \ T ^ { \mathrm { c u r } } .$ . Otherwise, we set the lower bound as $T ^ { \mathrm { l b } } = T ^ { \mathrm { c u r } }$ . The process will be ended until the difference between $T ^ { \mathrm { l b } }$ and $T ^ { \mathrm { u b } }$ is lower than the computation-error. As a result, we can obtain the optimal values of $\{ \alpha _ { n , B } ^ { * } \} _ { \forall n \in \mathcal { N } }$ and {α∗n,k}∀n∈N ,∀k∈K and the corresponding value T tot-sub∗. $\{ \alpha _ { n , k } ^ { * } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ $T ^ { \mathrm { t o t - s u b } ^ { * } }$
+
+C. Proposed Algorithm for Solving Problem (MMWL-E-Mid) With the proposed Subroutine-algorithm and Sub-algorithm, we can find the optimal values of $\{ \alpha _ { n , B } ^ { * } \} _ { \forall n \in \mathcal { N } }$ and {α∗n,k}∀n∈N ,∀k∈K and the corresponding value T tot-sub∗ $\{ \alpha _ { n , k } ^ { * } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ in Problem (MMWL-E-Sub). In Problem (MMWL-E-Mid), we continue to optimize the value of $T ^ { \mathrm { t o t } }$ by adjusting the values of $^ { t _ { u , B } }$ and $t ^ { \mathrm { t r a n } }$ . However, the difficulty for solving Problem (MMWL-E-Mid) is that we cannot express the objective function of $T ^ { \mathrm { t o t } }$ analytically. Since the values of $t ^ { \mathrm { t r a n } }$ and $^ { t _ { u , B } }$ are varied within the interval of $[ 0 , T ^ { \mathrm { m a x } } ]$ and $[ 0 , T _ { B } ^ { \mathrm { m a x } } ] ,$ respectively, this feature enables us to find the minimum value of $T ^ { \mathrm { t o t } }$ via a two-dimensional linear-searching method, which is illustrated in Algorithm 3. We explain the key steps in Algorithm 3 as follows.
+
+• Step 1-Step 2: We first set the step size of $t ^ { \mathrm { t r a n } }$ as $\varsigma _ { 1 }$ , and set the step size of $\boldsymbol { t } _ { u , B }$ as $\varsigma _ { 1 }$ . Based on constraints (22) and (23), we set the lower bound and upper bound of $t ^ { \mathrm { t r a n } }$ as $t ^ { \left. \mathrm { b } \right. } = 0$ and $t ^ { \mathrm { u b } } = T ^ { \mathrm { m a x } }$ . The lower bound and upper bound of $\scriptstyle t _ { u , B }$ are set as $t _ { u , B } ^ { \mathrm { l b } } = 0$ = 0 and tubu, $t _ { u , B } ^ { \mathrm { u b } } = T _ { B } ^ { \mathrm { m a x } } .$ B = T maxB . The current best value is initialized as $T ^ { \mathrm { b e s t } } = \infty ,$ , and the current best solutions are initialized as $t ^ { \mathrm { t r a n } ^ { * } } = \varnothing$ and ${ t _ { u , B } } ^ { * } = \varnothing$ .   
+• Step 3-Step 4: Two-dimensional linear-searching is conducted, in which both the values of $t ^ { \mathrm { t r a n } }$ and $\boldsymbol { t } _ { u , B }$ are changed from the minimum to the maximum via the step size.   
+• Step 5-Step 11: Algorithm 2 is invoked to calculate the value of $\bar { T } ^ { \mathrm { t o t - s u b ^ { * } } }$ . If the value of $T ^ { \mathrm { t o t - s u b ^ { * } } }$ is lower than $T ^ { \mathrm { b e s t } } .$ , we update the current best value as $T ^ { \mathrm { b e s t } } = T ^ { \mathrm { t o t - s u b } ^ { * } }$ and update the current solutions as $t ^ { \mathrm { t r a n } ^ { * } } ~ = ~ t ^ { \mathrm { l b } }$ = tlb and $t _ { u , B } { } ^ { * } = t _ { u , B } ^ { \mathrm { l b } } .$ . At last, the optimal value is set as $T ^ { \mathrm { t o t - m i d } ^ { * } }$ , and the corresponding solutions are $t ^ { \mathrm { t r a n } ^ { * } }$ and ${ { t } _ { u , B } } ^ { * }$ .
+
+# D. Proposed Algorithm for Solving Problem (MMWL-E-Top)
+
+With the proposed Mid-algorithm, we can obtain the optimal value of T tot-mid∗ $T ^ { \mathrm { t o t - m i d } ^ { * } }$ and the corresponding solutions as $t ^ { \mathrm { { t r a \bar { n } ^ { * } } } }$ and $\boldsymbol { t _ { u , B } } ^ { * }$ . In Problem (MMWL-E-Top), we can further reduce the value of $T ^ { \mathrm { t o t } }$ by optimizing the values of $\varrho _ { B } , \varrho _ { u }$ and $\{ \varrho _ { k } \} _ { \forall k \in K } .$ However, the difficulty for solving Problem (MMWL-E-Top) is that we cannot express the objective function analytically. The conventional gradient-based approaches cannot be adopted to characterize the optimality condition for Problem (MMWL-E-Top). Nevertheless, constraint (27) guarantees that $\varrho B \in [ 0 , \varrho _ { B } ^ { \mathrm { m a x } } ]$ , constraint (28) ensures that $\varrho _ { u } \in [ 0 , \varrho _ { u } ^ { \mathrm { m a x } } ]$ , and constraint (29) guarantees that $\varrho _ { k } \in [ 0 , \varrho ^ { \mathrm { m a x } } ] .$ . It is noticed that the values of $\varrho B , \varrho _ { u }$ and $\varrho _ { k }$ fall within the given intervals independent on other parameters. As a result, this feature enables us to adopt a three-layered linear search method to solve Problem (MMWL-E-Top) numerically. Algorithm 4 shows the proposed Top-algorithm, which outputs the minimum $T ^ { \mathrm { t o t } }$ and the optimal values of $\varrho _ { B } ^ { * } , \varrho _ { u } ^ { * }$ and $\{ \varrho _ { \boldsymbol { k } } ^ { * } \} _ { \forall \boldsymbol { k } \in \boldsymbol { K } }$ . The key steps of Algorithm 4 are explained as follows.
+
+• Step 1-Step 2: We first input the lower bound and upper bound of computing-rate for base-station B, USV $u ,$ and UAV k based on constraints (27), (28) and (29). The step size is set as ℓ. The current best value is set as $T ^ { \mathrm { b e s t } } = \infty$ . The current best solutions are set as $\varrho _ { B } ^ { * } = \varnothing , \varrho _ { u } ^ { * } = \varnothing$ and $\varrho _ { k } ^ { * } = \varnothing , \forall k \in \mathcal { K }$ .   
+• Step 3-Step 5: We conduct three dimensional linear-searching to find the best value of $T ^ { \mathrm { b e s t } }$ and
+
+Algorithm 4 Top-Algorithm to Obtain the Values of ϱ ∗B , $\varrho _ { u } ^ { * }$ and $\{ \varrho _ { \boldsymbol { k } } ^ { * } \} _ { \forall \boldsymbol { k } \in \boldsymbol { \mathcal { K } } }$   
+1 Input: The lower bound and upper bound of $\varrho_{\mathcal{B}}$ as $\varrho_{\mathcal{B}}^{\mathrm{lb}} = 0$ and $\varrho_{\mathcal{B}}^{\mathrm{ub}} = \varrho_{\mathcal{B}}^{\mathrm{max}}$ . The lower bound and upper bound of $\varrho_u$ as $\varrho_u^{\mathrm{lb}} = 0$ and $\varrho_u^{\mathrm{ub}} = \varrho_u^{\mathrm{max}}$ . The lower bound and upper bound of $\varrho_k$ as $\varrho_k^{\mathrm{lb}} = 0$ and $\varrho_k^{\mathrm{ub}} = \varrho^{\mathrm{max}}, \forall k \in \mathcal{K}$ . The step size $\ell$ .
+
+2 Initialization: Initialize the current best value as $T^{\mathrm{best}} = \infty$ , set the current best solutions as $\varrho_{\mathcal{B}}^{*} = \emptyset$ , $\varrho_u^{*} = \emptyset$ and $\varrho_k^{*} = \emptyset, \forall k \in \mathcal{K}$ .
+
+3 while $\varrho_{\mathcal{B}}^{\mathrm{lb}} < \varrho_{\mathcal{B}}^{\mathrm{ub}}$ do
+
+4    while $\varrho_u^{\mathrm{lb}} < \varrho_u^{\mathrm{ub}}$ do
+
+5    while $\varrho_k^{\mathrm{lb}} < \varrho_k^{\mathrm{ub}}$ do
+
+6    Invoke Algorithm 3 to compute the value of $T^{\mathrm{tot - mid}^*}$ .
+
+7    if $T^{\mathrm{tot - mid}^*} < T^{\mathrm{best}}$ then
+
+8    Update $T^{\mathrm{best}} = T^{\mathrm{tot - mid}^*}$ , $\varrho_{\mathcal{B}}^{*} = \varrho_{\mathcal{B}}^{\mathrm{lb}}$ , $\varrho_u^{*} = \varrho_u^{\mathrm{lb}}$ , and $\varrho_k^{*} = \varrho_k^{\mathrm{lb}}$ .
+
+9    end
+10    Update $\varrho_{\mathcal{B}}^{\mathrm{lb}} \leftarrow \varrho_{\mathcal{B}}^{\mathrm{lb}} + \ell$ .
+
+11    end
+12    Update $\varrho_u^{\mathrm{lb}} \leftarrow \varrho_u^{\mathrm{lb}} + \ell$ .
+
+13    end
+14    Update $\varrho_k^{\mathrm{lb}} \leftarrow \varrho_k^{\mathrm{lb}} + \ell$ .
+
+15 end
+
+16 Output: The optimal value as $T^{\mathrm{tot - top}^*} = T^{\mathrm{best}}$ , the corresponding solutions as $\varrho_{\mathcal{B}}^{*}$ , $\varrho_u^{*}$ and $\{\varrho_k^{*}\}_{\forall k \in \mathcal{K}}$ .
+
+the best solutions of $\varrho _ { B } ^ { * } , \varrho _ { u } ^ { * }$ and $\varrho _ { k } ^ { * } , \forall k \in \mathcal { K }$ , in which the values of $\varrho _ { B } , \varrho _ { u }$ and $\varrho _ { k } , \forall k \in \mathcal { K }$ are varied from the minimum to the maximum.
+
+• Step 6-Step 16: We invoke Algorithm 3 to derive the value of $\bar { T ^ { \mathrm { t o t - m i d } ^ { * } } }$ . If $T ^ { \mathrm { t o t - m i d } ^ { * } }$ is lower than $T ^ { \mathrm { b e s t } }$ , we then update the current best value as $T ^ { \mathrm { b e s t } } = T ^ { \mathrm { t o t - m i d } ^ { * } }$ , and update the current solutions as $\varrho _ { B } ^ { * } = \varrho _ { B } ^ { \mathrm { l b } } , \varrho _ { u } ^ { * } = \varrho _ { u } ^ { \mathrm { l b } }$ and $\varrho _ { k } ^ { * } = \varrho _ { k } ^ { \mathrm { l b } } , \forall k \in \mathcal { K }$ . Finally, we can obtain the optimal value of $T ^ { \mathrm { t o t - t o p } ^ { * } } = T ^ { \mathrm { b e s t } }$ , and the corresponding solutions as $\varrho _ { B } ^ { * } , \varrho _ { u } ^ { * }$ and $\{ \varrho _ { k } ^ { * } \} _ { \forall k \in \mathcal { K } } .$
+
+# E. The Optimality and Complexity Analysis of the Proposed Algorithm
+
+As mentioned before, to solve Problem (MMWL), we propose a layered structure approach and decompose the original problem into three subproblems, i.e., Problem (MMWL-E-Sub) optimizes the offloading decisions $\{ \alpha _ { n , B } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ , Problem (MMWL-E-Mid) optimizes the transmission time $t ^ { \mathrm { t r a n } }$ and $t _ { u , B } ,$ and Problem (MMWL-E-Top) optimizes the computing-rate allocations $\varrho _ { B } , \varrho _ { u }$ and $\{ \varrho _ { \boldsymbol { k } } \} _ { \forall \boldsymbol { k } \in \mathcal { K } } .$ . Specifically, to solve Problem (MMWL-E-Sub), given a value of $T ^ { \mathrm { t o t } }$ , we propose a subroutine-algorithm to check whether Problem (MMWL-E-SubCheck) can yield a negative value or not. Regarding the complexity of subroutinealgorithm, Algorithm 1 contains K rounds iterations. The complexity of Algorithm 1 is $\mathcal O \left( K \right)$ . We next propose a Sub-algorithm to find the value of $\scriptstyle { \dot { T } } ^ { \mathrm { t o t - s u b } ^ { * } }$ and the corresponding values of $\{ \alpha _ { n , B } ^ { * } \} _ { \forall n \in \mathcal { N } }$ and $\{ \alpha _ { n , k } ^ { * } \} _ { \forall n \in \mathcal { N } , \forall k \in \mathcal { K } }$ via a bisection-search approach. Therefore, the Sub-algorithm can find the optimal solution of Problem (MMWL-E-Sub). Regarding the complexity of Problem (MMWL-E-Sub), with the given computation-error ε, Algorithm 2 requires a total number of $\begin{array} { r } { K \mathrm { l o g } _ { 2 } \left( \frac { T ^ { \mathrm { u b } } - T ^ { \mathrm { l b } } } { \varepsilon } \right) } \end{array}$ iterations. The complexity of Problem (MMWL-E-Sub) is $\begin{array} { r } { \stackrel { \prime } { \mathcal { O } } \left( K \log _ { 2 } \left( \frac { T ^ { \mathrm { u b } } - T ^ { \mathrm { l b } } } { \varepsilon } \right) \right) } \end{array}$ . To solve Problem (MMWL-E-Mid), we propose a two-dimensional linear-searching approach to find the optimal value of T tot-mid∗ and the corresponding solutions of $\bar { t ^ { \mathrm { { t r a n } ^ { * } } } }$ and $\boldsymbol { t _ { u , B } } ^ { * }$ . Therefore, the Mid-algorithm can attain the optimal solution of Problem (MMWL-E-Mid). Regarding the complexity of Probς2, a total number of lem (MMWL-E-Mid), with the given step size of $\begin{array} { r l r } { \Theta } & { { } = } & { \frac { t ^ { \mathrm { u b } } - t ^ { \mathrm { l b } } } { c _ { * } } \frac { t _ { u , B } ^ { \mathrm { u b } } - t _ { u , B } ^ { \mathrm { l b } } } { c _ { \infty } } } \end{array}$ 1  iterations $\varsigma _ { 1 }$ and are required. The complexity of Problem (MMWL-E-Mid) is $\begin{array} { r } { \mathcal { O } \left( \dot { K } \Theta \mathrm { l o g } _ { 2 } \left( \frac { T ^ { \mathrm { u b } } - T ^ { \mathrm { i b } } } { \varepsilon } \right) \right) } \end{array}$ . To solve Problem (MMWL-E-Top), we adopt a three-dimensional linear-searching approach to obtain the optimal value of $T ^ { \mathrm { t o t - t o p ^ { * } } }$ and the corresponding solutions of $\varrho _ { B } ^ { * } , ~ \varrho _ { u } ^ { * }$ and $\{ \varrho _ { k } ^ { * } \} _ { \forall k \in \kappa } .$ . Therefore, the Top-algorithm can obtain the optimal solution of Problem (MMWL-E-Top). Regarding the complexity of Problem (MMWL-E-Top), with the given small step size ℓ, threedimensional linear-search approach requires no more than $\Xi = \textstyle { \frac { 1 } { \ell ^ { 3 } } } \left( \varrho _ { B } ^ { \mathrm { u b } } - \varrho _ { B } ^ { \mathrm { l b } } \right) \left( \varrho _ { u } ^ { \mathrm { u b } } - \widehat { \varrho } _ { u } ^ { \mathrm { l b } } \right) \left( \varrho _ { k } ^ { \mathrm { u b } } - \widehat { \varrho } _ { k } ^ { \mathrm { l b } } \right)$ rounds of iterations. As a result, the complexity of Problem (MMWL-E-Top) can be expressed as $\begin{array} { r } { \mathcal { O } \left( \dot { K } \Theta \Xi \mathrm { l o g } _ { 2 } \left( \frac { T ^ { \mathrm { u b } } - T ^ { \mathrm { l b } } } { \varepsilon } \right) \right) } \end{array}$ . In summary, the proposed algorithms can derive the optimal solutions for Problem (MMWL).
+
+TABLE II PARAMETERS USED IN OUR SIMULATIONS 
+
+<table><tr><td>Parameters</td><td>Values</td></tr><tr><td>The channel power gain associated with a reference distance 1m,  $\chi$ </td><td> $10^{-4}$ </td></tr><tr><td>The path loss exponent in marine environment,  $\mu$ </td><td>1</td></tr><tr><td>The background noise at the side of UAVs,  $n_0$ </td><td> $10^{-6}$ dBm</td></tr><tr><td>The background noise at the side of offshore base-station,  $n_B$ </td><td> $10^{-7}$ dBm</td></tr><tr><td>The transmission bandwidth for UAVs,  $W$ </td><td>1kHz</td></tr><tr><td>The transmission bandwidth for base-station,  $W_B$ </td><td>1kHz</td></tr><tr><td>The power consumption coefficient of USV  $u$ ,  $\epsilon_u$ </td><td> $10^{-18}$ </td></tr><tr><td>The number of CPU cycles for processing one bit of data by USV  $u$ ,  $\psi_u$ </td><td> $10^6$ cycles</td></tr><tr><td>The number of CPU cycles for processing one bit of data by base-station  $\mathcal{B}$ ,  $\psi_{\mathcal{B}}$ </td><td> $10^9$ cycles</td></tr><tr><td>The number of CPU cycles for processing one bit of data by UAV  $k$ ,  $\psi_k$ </td><td> $10^6$ cycles</td></tr></table>
+
+# V. NUMERICAL RESULTS AND ANALYSIS
+
+This section provides the numerical results and analysis to validate the effectiveness and efficiency of our proposed scheme and algorithms. The simulation setup is first introduced, followed by the performance analysis.
+
+# A. Simulation Setup
+
+In the simulation scenario, we consider a marine environment with a 3D Cartesian coordinate of 1km × 1km × 0.5km. Fig. 3 shows the simulation scenario of 3D coordinate for USV, UAVs and offshore base-station in marine communication networks, in which one USV locates at (0, 0, 0) m, the base-station locates at the shore-side with the position of (1000, 520, 0) m, and five UAVs hovering in the air with the positions of (0, 0, 100) m, (−50, 50, 100) m, (−50, −100, 100) m, (100, 100, 100) m, (100, −150, 100) m, respectively. The workloads of USV for computation offloading are within the interval [4, 14] Mbits. The maximum computing-rates of USV, offshore base-station, and UAVs in CPU cycles per second are set as 106cycles/s, 109cycles/s, and $1 0 ^ { 6 } \mathrm { c y c l e s / s } ,$ respectively [22]. The parameters used in the simulation are provided in Table II. Other relevant parameters will be specified in the corresponding results. The simulation results are obtained with a PC of Intel(R) Core(TM) i7-9700 CPU3.00GHz. To evaluate the efficiency and effectiveness of the proposed scheme and algorithms, we compare our proposal with the benchmark schemes and algorithm as follows.
+
+![](images/77f27cd8eb364d5ee0b30706fed0087e1146100e89f3413bd59f7966b25496c2.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| UAV ID | X-distance (m) | Y-distance (m) | Z-distance (m) |
+|--------|----------------|----------------|----------------|
+| USV 1  | -200           | -200           | 0              |
+| USV 2  | 0              | 0              | 80             |
+| USV 3  | 0              | 0              | 70             |
+| USV 4  | 0              | 0              | 60             |
+| USV 5  | 0              | 0              | 60             |
+| Offshore station 1 | 200            | 200            | 30             |
+| NOMA   | -200           | -200           | 0              |
+| FDMA   | -200           | -200           | 0              |
+</details>
+
+Fig. 3. Simulation scenario of 3D coordinate for USV, UAVs and offshore base-station in marine communication networks.
+
+• FDMA-based Offloading Scheme (FOS). In this scheme, USV offloads its workloads to multiple UAVs via FDMA to avoid co-channel interference, in which the channel bandwidth is uniformly allocated to UAVs for task offloading. The optimal offloading ratio to each part is determined by the proposed algorithms.   
+• Equal-division Scheme (EDS). In this scheme, USV adopts the proposed hybrid NOMA and FDMA transmission to offload its workloads, while the workloads of USV are uniformly offloaded to the base-station and multiple UAVs.   
+• LINGO Global-Solver Algorithm. The LINGO global-solver solves the nonconvexity of the optimization problem through classic algorithm [42], which provides the optimal solution for solving Problem (MMWL) as a benchmark algorithm.
+
+# B. Performance Evaluation and Analysis
+
+Table III shows an example of the proposed algorithms for solving the offloading ratios $( \mathrm { i } . \mathrm { e } . , \ \alpha _ { n , B }$ and $\alpha _ { n , k } )$ by fixing
+
+TABLE IIIAN EXAMPLE OF THE PROPOSED ALGORITHMS FOR SOLVING THE OFFLOADING RATIOS BY FIXING $E ^ { \mathrm { m a x } } = 5 \mathrm { J }$ 
+
+<table><tr><td>Total workloads</td><td> $\alpha_{n,\mathcal{B}}$ </td><td> $\alpha_{n,1}$ </td><td> $\alpha_{n,2}$ </td><td> $\alpha_{n,3}$ </td><td> $\alpha_{n,4}$ </td><td> $\alpha_{n,5}$ </td><td> $\beta_n$ </td><td> $\sum_{k=1}^{5}\alpha_{n,k}+\alpha_{n,B}+\beta_n$ </td></tr><tr><td> $S_n^{\text{tot}} = 8\text{Mbits}$ </td><td>0.2294</td><td>0.0258</td><td>0.0284</td><td>0.0310</td><td>0.0336</td><td>0.3345</td><td>0.3685</td><td> $\triangleq 1$ </td></tr><tr><td> $S_n^{\text{tot}} = 10\text{Mbits}$ </td><td>0.1835</td><td>0.0731</td><td>0.0804</td><td>0.0877</td><td>0.0950</td><td>0.2848</td><td>0.1955</td><td> $\triangleq 1$ </td></tr><tr><td> $S_n^{\text{tot}} = 12\text{Mbits}$ </td><td>0.1529</td><td>0.0991</td><td>0.1090</td><td>0.1189</td><td>0.1288</td><td>0.2603</td><td>0.1309</td><td> $\triangleq 1$ </td></tr><tr><td> $S_n^{\text{tot}} = 14\text{Mbits}$ </td><td>0.1311</td><td>0.1178</td><td>0.1296</td><td>0.1414</td><td>0.1531</td><td>0.2426</td><td>0.0844</td><td> $\triangleq 1$ </td></tr></table>
+
+![](images/a57643e339ee9a6a8a7804e17ba3f8e94f7e318304785b0bfb1900d3c651c767.jpg)
+
+<details>
+<summary>line</summary>
+
+| Iteration index | T_tot (sec) | E_tot (J) |
+| --------------- | ----------- | --------- |
+| 0               | 2.5         | -8        |
+| 2               | 1.3         | -8        |
+| 4               | 0.7         | -5        |
+| 6               | 0.3         | -3        |
+| 8               | 0.2         | -2.5      |
+| 10              | 0.1         | -2.2      |
+| 12              | 0.1         | -2.2      |
+| 14              | 0.1         | -2.2      |
+</details>
+
+(a)Illustration of our proposed algorithms for solving Problem (MMWL） when $S _ { n } ^ { \mathrm { t o t } } = 4 \mathrm { { \dot { M } b i t s } } .$
+
+![](images/c7e08a0fa81e6795e511f6f1f2b2884932a92c5faee794c3dc0e14d7c72f1c4b.jpg)
+
+<details>
+<summary>line</summary>
+
+| Iteration index | T_tot (sec) | E_tot (J) |
+| --------------- | ----------- | --------- |
+| 0               | 2.5         | -8        |
+| 2               | 1.0         | -5        |
+| 4               | 0.5         | -2        |
+| 6               | 0.2         | 0         |
+| 8               | 0.1         | 0         |
+| 10              | 0.05        | 0         |
+| 12              | 0.02        | 0         |
+| 14              | 0.01        | 0         |
+</details>
+
+(b)Illustration of our proposed algorithms for solving Problem (MMWL) when $S _ { n } ^ { \mathrm { t o t } } = 6 \mathrm { \AA } { \mathrm { \hat { M } b i t s } } .$
+
+Fig. 4. The effectiveness of our proposed algorithms for solving Problem (MMWL) with fixed $E ^ { \mathrm { m a x } } = 5 \mathrm { J }$ .   
+![](images/9bb8204a4b3e8564dae1f98f53dffbb69ea19e318284c0699d7536d86f2d485a.jpg)
+
+<details>
+<summary>line</summary>
+
+| t_u,B (sec) | Energy consumption (J) | Minimum latency (sec) |
+| ----------- | ---------------------- | --------------------- |
+| 0           | 3.8                    | 5.5                   |
+| 2           | 3.6                    | 2.5                   |
+| 4           | 3.55                   | 1.0                   |
+| 6           | 3.53                   | 0.5                   |
+| 8           | 3.52                   | 0.3                   |
+| 10          | 3.51                   | 0.2                   |
+| 12          | 3.51                   | 0.1                   |
+| 14          | 3.51                   | 0.1                   |
+| 16          | 3.51                   | 0.1                   |
+| 18          | 3.51                   | 0.1                   |
+</details>
+
+(a) Illustration of USV's energy consumption and minimum latency under different values of ${ { t } _ { u , B } }$ and iteration index.
+
+![](images/73e969993cdaa0eb93a9efdde5ab74ffa242a0302d6a383b636670db09b85fd1.jpg)
+
+<details>
+<summary>line</summary>
+
+| t_u,B (sec) | S_n^tot=4Mbits | S_n^tot=6Mbits | S_n^tot=8Mbits |
+|-------------|----------------|----------------|----------------|
+| 0           | 3.5            | 5.5            | 8.0            |
+| 1.4         | 3.5            | 5.2893         | 7.0555         |
+| 1.6         | 3.5            | 5.246         | 7.0            |
+</details>
+
+(b） Comparison of USV's energy consumption under different values of $S _ { n } ^ { \mathrm { t o t } }$ .   
+Fig. 5. Illustration of USV’s energy consumption of our proposed algorithms by fixing the value of $E ^ { \mathrm { m a x } } = 8 \mathbf { J } .$
+
+$E ^ { \mathrm { m a x } } \ = \ 5 \mathrm { J } .$ It can be identified from Table III that our proposed algorithms can obtain the solutions for multi-access offloading, which verifies the effectiveness of the proposed algorithms. Moreover, it can be derived that under the given maximum energy consumption $E ^ { \mathrm { m a x } }$ , the offloading ratio to the base-station $( \mathrm { i } . \mathrm { e } . , \alpha _ { n , B } )$ and local computing $( \mathrm { i } . \mathrm { e } . , \beta _ { n } )$ is decreasing when increasing the total workloads $S _ { n } ^ { \mathrm { t o t } }$ . It can be explained as follows. Due to the long transmission distance between USV and the base-station, USV will consume more energy for offloading workloads such that less workloads will be offloaded to the base-station. Meanwhile, it will consume more energy of USV for local computing, resulting in that less workloads will be computed by USV locally. Therefore, the offloading ratios to UAVs are increasing when the total workloads increase.
+
+Fig. 4 illustrates the performance of our proposed algorithms for solving Problem (MMWL) by fixing the maximum energy consumption as $E ^ { \mathrm { m a x } } \ : = \ : 5 \mathrm { J } _ { \mathrm { } }$ , in which the total workloads $S _ { n } ^ { \mathrm { t o t } }$ Sn of USV are set as 4Mbits and 6Mbits, respectively. From Fig. 4(a) and Fig. 4(b), it can be seen that the minimum latency for completing USV’s workloads is converged by checking whether Problem (MMWL-E-Sub) can yield a negative value or not. Moreover, the proposed algorithms finally converge to a constant, which proves that our proposed algorithms can find the optimal minimum latency $T ^ { \mathrm { t o t } }$ within the constraint of USV’s energy consumption $E ^ { \mathrm { m a x } }$ . The results in Fig. 4 validate the feasibility and effectiveness of our proposed algorithms.
+
+Fig. 5 shows an illustration of USV’s energy consumption of our proposed algorithms by fixing the value of $E ^ { \mathrm { m a x } } = 8 \mathrm { J }$ .
+
+![](images/6ec2cae97b76174fd16552bd10b1256259d93e724a82147a7d17eb5cd5fa1f34.jpg)
+
+<details>
+<summary>bar</summary>
+
+| S_n^tot (Mbits) | Proposed algorithms | LINGO |
+|---|---|---|
+| 6 | 0.10 | 0.095 |
+| 8 | 0.175 | 0.17 |
+| 10 | 0.25 | 0.245 |
+| 12 | 0.255 | 0.255 |
+Ave.Diff=2.27%
+</details>
+
+(a) Accuracy of our proposed algorithms for solving Problem (MMWL).
+
+![](images/c616aa37071dc94e76adb4f7fbb8d1b3c963475cefee7aa49807923120735968.jpg)
+
+<details>
+<summary>bar</summary>
+
+| S_tot (Mbits) | Proposed algorithms | LINGO |
+| ------------- | ------------------- | ----- |
+| 6             | 0.03                | 1.0   |
+| 8             | 0.04                | 1.0   |
+| 10            | 0.04                | 1.0   |
+| 12            | 0.02                | 1.0   |
+</details>
+
+(b) Computation efficiency of our proposed algorithms for solving Problem (MMWL).
+
+Fig. 6. The accuracy and computation efficiency of our proposed algorithms in comparison with LINGO by changing the total workloads of USV.   
+![](images/85c28c224311b5612a1af60dbec5732e187bdcfd7c58f2c7e024afb7b94b5a3f.jpg)
+
+<details>
+<summary>bar</summary>
+
+| S_tot (Mbits) | 5 UAVs for NOMA-based offloading (J) | 5 UAVs for FDMA-based offloading (J) | 3 UAVs for FDMA-based offloading (J) |
+|---|---|---|---|
+| 4 | 1.0 | 4.0 | 9.0 |
+| 6 | 3.0 | 7.0 | 9.0 |
+| 8 | 5.0 | 9.0 | 18.0 |
+| 10 | 7.0 | 16.0 | 32.0 |
+| 12 | 9.0 | 24.0 | 52.0 |
+</details>
+
+(a) Performance of USV's energy consumption under different offloading workloads.
+
+![](images/ff279d23bc70ae3f11a11ea1ecc6120a1a775f8c1e21c97353403ce7c8404fa0.jpg)
+
+<details>
+<summary>bar</summary>
+
+| t^tran (sec) | 5 UAVs for NOMA-based offloading (J) | 3 UAVs for FDMA-based offloading (J) | 5 UAVs for FDMA-based offloading (J) |
+|---|---|---|---|
+| 0.02 | 3.5 | 12.5 | 27 |
+| 0.03 | 3.6 | 11.0 | 27 |
+| 0.04 | 3.8 | 11.0 | 27 |
+| 0.05 | 3.9 | 10.8 | 22 |
+| 0.06 | 4.0 | 10.8 | 22 |
+| 0.07 | 4.0 | 10.8 | 22 |
+| 0.08 | 4.1 | 10.8 | 22 |
+| 0.09 | 4.2 | 10.8 | 22 |
+| 0.1 | 4.3 | 10.8 | 22 |
+</details>
+
+(b） Performance of USV's energy consumption under different NOMA transmission time.
+
+![](images/f962fd7a2562c8f07c94ff491741e6ef65ed374ffbd4c6d067047534042599f8.jpg)
+
+<details>
+<summary>bar</summary>
+
+| t_u,B (sec) | 5 UAVs for NOMA-based offloading (J) | 3 UAVs for FDMA-based offloading (J) | 5 UAVs for FDMA-based offloading (J) |
+|---|---|---|---|
+| 0.5 | 3.5 | 10.8 | 21.4 |
+| 1 | 3.5 | 10.8 | 21.4 |
+| 1.5 | 3.5 | 10.8 | 21.4 |
+| 2 | 3.5 | 10.8 | 21.4 |
+| 2.5 | 3.5 | 10.8 | 21.4 |
+</details>
+
+(c) Performance of USV's energy consumption under different FDMA transmission time.
+
+Fig. 7. Illustration of USV’s energy consumption for our proposed NOMA-based offloading scheme in comparison with the FDMA-based offloading scheme under different parameters.   
+![](images/e0ebfa5a8dee10b914a8f13859ce9ce0dbc84ce7dc5f8bebcecd6cbf9db47817.jpg)
+
+<details>
+<summary>bar</summary>
+
+| S_tot_n (Mbits) | Proposed scheme | NOMA+EDS | FDMA+EDS | FOS |
+|---|---|---|---|---|
+| 6 | 3.0 | 5.2 | 5.4 | 7.5 |
+| 8 | 5.0 | 7.1 | 7.2 | 9.2 |
+| 10 | 7.3 | 8.9 | 8.8 | 15.8 |
+| 12 | 9.0 | 10.6 | 10.5 | 23.8 |
+</details>
+
+(a) Comparison of USV's energy consumption on difrent scemes with $S _ { n } ^ { \mathrm { t o t } }$
+
+![](images/3bcc4465879cec52b8d29a8d9f4bf77fec7fd020a81300aa96643f64cab6164e.jpg)
+
+<details>
+<summary>bar</summary>
+
+| t^tran (sec) | Proposed scheme | NOMA+EDS | FDMA+EDS | FOS |
+|---|---|---|---|---|
+| 0.04 | 3.5 | 9.0 | 8.8 | 21.5 |
+| 0.05 | 3.7 | 9.0 | 8.8 | 21.5 |
+| 0.06 | 3.8 | 9.0 | 8.8 | 21.5 |
+| 0.07 | 3.9 | 9.0 | 8.8 | 21.5 |
+| 0.08 | 4.0 | 9.0 | 8.8 | 21.5 |
+| 0.09 | 4.1 | 9.0 | 8.8 | 21.5 |
+| 0.1 | 4.2 | 9.0 | 8.8 | 21.5 |
+</details>
+
+(b) Comparison of USV's energy consumption on different schemes with $t ^ { \mathrm { t r a n } }$
+
+![](images/af2050f93bb79dc64a7f83345ec9613660930dcc804152109c4a193c1f962320.jpg)
+
+<details>
+<summary>bar</summary>
+
+| t_u,B (sec) | Proposed scheme | NOMA+EDS | FDMA+EDS | FOS |
+| ----------- | --------------- | -------- | -------- | --- |
+| 0.8         | 3.5             | -        | -        | -   |
+| 1.0         | -               | 8.5      | 8.5      | 21.5 |
+| 1.2         | -               | -        | -        | -   |
+| 1.4         | 3.5             | 8.5      | 8.5      | -   |
+| 1.6         | -               | -        | -        | 21.5 |
+| 1.8         | 3.5             | -        | -        | -   |
+| 2.0         | -               | 8.5      | 8.5      | 21.5 |
+| 2.2         | -               | -        | -        | -   |
+| 2.4         | 3.5             | 8.5      | 8.5      | -   |
+| 2.6         | -               | -        | -        | 21.5 |
+</details>
+
+(c) Comparison of USV's energy consumption on different schemes with $\boldsymbol { t } _ { u , B }$   
+Fig. 8. Performance comparison of our proposed scheme, NOMA with EDS, FDMA with EDS, and FOS under different parameters $( \mathrm { i . e . , } S _ { n } ^ { \mathrm { t o t } } , t ^ { \mathrm { t r a n } } , t _ { u , B } )$
+
+From Fig. 5(a), it can be seen that the energy consumption of USV is reducing with the transmission duration $t _ { u , B }$ , and the minimum latency can converge to a fixed value with the iteration index. The results also validate the effectiveness of the proposed algorithms. From Fig. 5(b), we can find that USV’s energy consumption is increasing with the total workloads $S _ { n } ^ { \mathrm { t o t } }$ of USV because the USV should consume high energy for local computing and offloading computing.
+
+Fig. 6 shows the accuracy and computation efficiency of our proposed algorithms in comparison with LINGO by changing the total workloads of USV $( \mathrm { i } . \mathrm { e } . , S _ { n } ^ { \mathrm { t o t } } )$ . From Fig. 6(a), it can be observed that our proposed algorithms can attain the optimal value of latency very close to the global optimal solution from LINGO with the average difference no greater than 3%. In Fig. 6(b), thanks to the proposed layered structure for solving Problem (MMWL), the computation time for finding the minimum latency is significantly reduced with the average saving time above 90% compared with LINGO. The results in Fig. 6(a) and Fig. 6(b) demonstrate the effectiveness and efficiency of our proposed algorithms for solving Problem (MMWL) in comparison with LINGO.
+
+Fig. 7 depicts the comparison of USV’s energy consumption for our proposed NOMA-based offloading scheme and the FDMA-based offloading scheme under different metrics in terms of the total workloads $( \mathrm { i } . \mathrm { e } . , \ S _ { n } ^ { \mathrm { t o t } } )$ , the NOMA transmission time $( \mathrm { i } . \mathrm { e } . , \ t ^ { \mathrm { t r a n } } )$ , and the FDMA transmission time $( \mathrm { i } . \mathrm { e } . , \ t _ { u , B } )$ . As shown in Fig. 7, the proposed NOMA-based offloading scheme can obtain the lower energy consumption than the FDMA-based offloading scheme. The reason is as follows. Thanks to the high spectrum-efficiency and transmission throughput of NOMA-based offloading scheme, it allows USV to reuse the same resource block for data transmission, which improves the offloading efficiency and reduces the energy consumption. The results in Fig. 7(a), Fig. 7(b) and Fig. 7(c) illustrate the advantages of our proposed NOMA-based offloading scheme, which can significantly decrease the energy consumption of USV $( \mathrm { i } . \mathrm { e } . , E _ { u , n } ^ { \mathrm { t o t } } )$ tot .
+
+Fig. 8 illustrates the performance comparison of our proposed scheme, NOMA with EDS, FDMA with EDS, and FOS under different parameters $( \mathrm { i . e . , ~ } S _ { n } ^ { \mathrm { t o t } } , t ^ { \mathrm { t r a n } } , t _ { u , B } )$ . It can be seen that the USV’s energy consumption in our proposed scheme outperforms other benchmark schemes. The reasons can be explained as follows. First, the proposed scheme takes into account of the offloading decision of USV, and the optimal offloading decision will reduce the local computing consumption of USV. Second, the proposed NOMA-based offloading scheme can improve the offloading efficiency, which leads to the low energy consumption of USV. The results in Fig. 8(a), Fig. 8(b) and Fig. 8(c) also validate the advantages of our proposed scheme to minimize the energy consumption of USV.
+
+# VI. CONCLUSION
+
+In this work, we have presented a hybrid offshore and aerial-based multi-access computation offloading in marine communication networks to improve the QoS of marine applications. Specifically, we considered that both offshore base-station and UAVs equipped with edge-servers can process marine computing tasks. The computation workloads of USV can be partially offloaded to the base-station via FDMA transmission for avoiding interference. Meanwhile, USV can partially offload workloads to multiple UAVs via NOMA transmission for improving the channel utilization. We aimed at minimizing the maximum workloads latency, by jointly optimizing USV’s offloading decision, FDMA transmission duration, NOMA transmission duration, and computing-rate allocation. To solve the formulated optimization problem, we exploited a layered structure to decompose the original problem into three subproblems and proposed efficient algorithms to solve it. Simulation results have demonstrated the efficiency and effectiveness of our proposed scheme and algorithms compared with the benchmark algorithms. For the future work, we will investigate the underwater acoustic communication system from the aspects of channel attenuation, time-varying multipath propagation to further enhance the throughput of underwater communication system.
+
+# REFERENCES
+
+[1] Y. Li, S. Wang, C. Jin, Y. Zhang, and T. Jiang, “A survey of underwater magnetic induction communications: Fundamental issues, recent advances, and challenges,” IEEE Commun. Surveys Tuts., vol. 21, no. 3, pp. 2466–2487, 3rd Quart., 2019.   
+[2] Z. Gong, C. Li, F. Jiang, and J. Zheng, “AUV-aided localization of underwater acoustic devices based on Doppler shift measurements,” IEEE Trans. Wireless Commun., vol. 19, no. 4, pp. 2226–2239, Apr. 2020.
+
+[3] X. Li, W. Feng, Y. Chen, C.-X. Wang, and N. Ge, “Maritime coverage enhancement using UAVs coordinated with hybrid satellite-terrestrial networks,” IEEE Trans. Commun., vol. 68, no. 4, pp. 2355–2369, Apr. 2020.   
+[4] T. Wei, W. Feng, Y. Chen, C.-X. Wang, N. Ge, and J. Lu, “Hybrid satellite-terrestrial communication networks for the maritime Internet of Things: Key technologies, opportunities, and challenges,” IEEE Internet Things J., vol. 8, no. 11, pp. 8910–8934, Jun. 2021.   
+[5] L. Wu et al., “UAV-assisted maritime legitimate surveillance: Joint trajectory design and power allocation,” IEEE Trans. Veh. Technol., early access, May 16, 2023, doi: 10.1109/TVT. 2023.3276323.   
+[6] X. Huang, B. Zhang, and C. Li, “Platform profit maximization on service provisioning in mobile edge computing,” IEEE Trans. Veh. Technol., vol. 70, no. 12, pp. 13364–13376, Dec. 2021.   
+[7] A. Ndikumana et al., “Joint communication, computation, caching, and control in big data multi-access edge computing,” IEEE Trans. Mobile Comput., vol. 19, no. 6, pp. 1359–1374, Jun. 2020.   
+[8] T. Zhang, G. Li, S. Wang, G. Zhu, G. Chen, and R. Wang, “ISACaccelerated edge intelligence: Framework, optimization, and analysis,” IEEE Trans. Green Commun. Netw., vol. 7, no. 1, pp. 455–468, Mar. 2023.   
+[9] T. K. Rodrigues, J. Liu, and N. Kato, “Offloading decision for mobile multi-access edge computing in a multi-tiered 6G network,” IEEE Trans. Emerg. Topics Comput., vol. 10, no. 3, pp. 1414–1427, Jul. 2022.   
+[10] M. Wu, D. Ye, J. Ding, Y. Guo, R. Yu, and M. Pan, “Incentivizing differentially private federated learning: A multidimensional contract approach,” IEEE Internet Things J., vol. 8, no. 13, pp. 10639–10651, Jul. 2021.   
+[11] B. Zhu, K. Chi, J. Liu, K. Yu, and S. Mumtaz, “Efficient offloading for minimizing task computation delay of NOMA-based multiaccess edge computing,” IEEE Trans. Commun., vol. 70, no. 5, pp. 3186–3203, May 2022.   
+[12] E. E. Haber, H. A. Alameddine, C. Assi, and S. Sharafeddine, “UAVaided ultra-reliable low-latency computation offloading in future IoT networks,” IEEE Trans. Commun., vol. 69, no. 10, pp. 6838–6851, Oct. 2021.   
+[13] J. Ji, K. Zhu, and D. Niyato, “Joint communication and computation design for UAV-enabled aerial computing,” IEEE Commun. Mag., vol. 59, no. 11, pp. 73–79, Nov. 2021.   
+[14] Z. Yang, C. Pan, K. Wang, and M. Shikh-Bahaei, “Energy efficient resource allocation in UAV-enabled mobile edge computing networks,” IEEE Trans. Wireless Commun., vol. 18, no. 9, pp. 4576–4589, Sep. 2019.   
+[15] F. Cheng, G. Gui, N. Zhao, Y. Chen, J. Tang, and H. Sari, “UAV-relaying-assisted secure transmission with caching,” IEEE Trans. Commun., vol. 67, no. 5, pp. 3140–3153, May 2019.   
+[16] C. Kai, H. Zhou, Y. Yi, and W. Huang, “Collaborative cloud-edgeend task offloading in mobile-edge computing networks with limited communication capability,” IEEE Trans. Cogn. Commun. Netw., vol. 7, no. 2, pp. 624–634, Jun. 2021.   
+[17] Y. Liu, J. Yan, and X. Zhao, “Deep reinforcement learning based latency minimization for mobile edge computing with virtualization in maritime UAV communication network,” IEEE Trans. Veh. Technol., vol. 71, no. 4, pp. 4225–4236, Apr. 2022.   
+[18] J. Yang, J. Wen, Y. Wang, B. Jiang, H. Wang, and H. Song, “Fogbased marine environmental information monitoring toward ocean of things,” IEEE Internet Things J., vol. 7, no. 5, pp. 4238–4247, May 2020.   
+[19] Q. Ai, X. Qiao, Y. Liao, and Q. Yu, “Joint optimization of USVs communication and computation resource in IRS-aided wireless inland ship MEC networks,” IEEE Trans. Green Commun. Netw., vol. 6, no. 2, pp. 1023–1036, Jun. 2022.   
+[20] T. Yang, H. Feng, C. Yang, Y. Wang, J. Dong, and M. Xia, “Multivessel computation offloading in maritime mobile edge computing network,” IEEE Internet Things J., vol. 6, no. 3, pp. 4063–4073, Jun. 2019.   
+[21] C. Zeng, J.-B. Wang, C. Ding, H. Zhang, M. Lin, and J. Cheng, “Joint optimization of trajectory and communication resource allocation for unmanned surface vehicle enabled maritime wireless networks,” IEEE Trans. Commun., vol. 69, no. 12, pp. 8100–8115, Dec. 2021.
+
+[22] M. Dai, Y. Wu, L. Qian, Z. Su, B. Lin, and N. Chen, “UAV-assisted multi-access computation offloading via hybrid NOMA and FDMA in marine networks,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 1, pp. 113–127, Jan. 2023.   
+[23] N. Cheng et al., “Space/aerial-assisted computing offloading for IoT applications: A learning-based approach,” IEEE J. Sel. Areas Commun., vol. 37, no. 5, pp. 1117–1129, May 2019.   
+[24] D. Wu, X. Huang, X. Xie, X. Nie, L. Bao, and Z. Qin, “LEDGE: Leveraging edge computing for resilient access management of mobile IoT,” IEEE Trans. Mobile Comput., vol. 20, no. 3, pp. 1110–1125, Mar. 2021.   
+[25] A. Bozorgchenani, F. Mashhadi, D. Tarchi, and S. A. S. Monroy, “Multiobjective computation sharing in energy and delay constrained mobile edge computing environments,” IEEE Trans. Mobile Comput., vol. 20, no. 10, pp. 2992–3005, Oct. 2021.   
+[26] C. Yi, J. Cai, and Z. Su, “A multi-user mobile computation offloading and transmission scheduling mechanism for delay-sensitive applications,” IEEE Trans. Mobile Comput., vol. 19, no. 1, pp. 29–43, Jan. 2020.   
+[27] T. M. Ho and K.-K. Nguyen, “Joint server selection, cooperative offloading and handover in multi-access edge computing wireless network: A deep reinforcement learning approach,” IEEE Trans. Mobile Comput., vol. 21, no. 7, pp. 2421–2435, Jul. 2022.   
+[28] M. Masoudi and C. Cavdar, “Device vs edge computing for mobile services: Delay-aware decision making to minimize power consumption,” IEEE Trans. Mobile Comput., vol. 20, no. 12, pp. 3324–3337, Dec. 2021.   
+[29] Y. Wu, K. Ni, C. Zhang, L. P. Qian, and D. H. K. Tsang, “NOMAassisted multi-access mobile edge computing: A joint optimization of computation offloading and time allocation,” IEEE Trans. Veh. Technol., vol. 67, no. 12, pp. 12244–12258, Dec. 2018.   
+[30] I. A. Elgendy, W.-Z. Zhang, Y. Zeng, H. He, Y.-C. Tian, and Y. Yang, “Efficient and secure multi-user multi-task computation offloading for mobile-edge computing in mobile IoT networks,” IEEE Trans. Netw. Service Manage., vol. 17, no. 4, pp. 2410–2422, Dec. 2020.   
+[31] B. Yang, X. Cao, J. Bassey, X. Li, and L. Qian, “Computation offloading in multi-access edge computing: A multi-task learning approach,” IEEE Trans. Mobile Comput., vol. 20, no. 9, pp. 2745–2762, Sep. 2021.   
+[32] X.-Q. Pham, T. Huynh-The, E.-N. Huh, and D.-S. Kim, “Partial computation offloading in parked vehicle-assisted multi-access edge computing: A game-theoretic approach,” IEEE Trans. Veh. Technol., vol. 71, no. 9, pp. 10220–10225, Sep. 2022.   
+[33] Z. Song, Y. Liu, and X. Sun, “Joint task offloading and resource allocation for NOMA-enabled multi-access mobile edge computing,” IEEE Trans. Commun., vol. 69, no. 3, pp. 1548–1564, Mar. 2021.   
+[34] M. Li, X. Zhou, T. Qiu, Q. Zhao, and K. Li, “Multi-relay assisted computation offloading for multi-access edge computing systems with energy harvesting,” IEEE Trans. Veh. Technol., vol. 70, no. 10, pp. 10941–10956, Oct. 2021.   
+[35] P. A. Apostolopoulos, E. E. Tsiropoulou, and S. Papavassiliou, “Riskaware data offloading in multi-server multi-access edge computing environment,” IEEE/ACM Trans. Netw., vol. 28, no. 3, pp. 1405–1418, Jun. 2020.   
+[36] Y. Zhang, B. Di, Z. Zheng, J. Lin, and L. Song, “Distributed multicloud multi-access edge computing by multi-agent reinforcement learning,” IEEE Trans. Wireless Commun., vol. 20, no. 4, pp. 2565–2578, Apr. 2021.   
+[37] H. Ke, H. Wang, W. Sun, and H. Sun, “Adaptive computation offloading policy for multi-access edge computing in heterogeneous wireless networks,” IEEE Trans. Netw. Service Manage., vol. 19, no. 1, pp. 289–305, Mar. 2022.   
+[38] M. Liu, T. Song, and G. Gui, “Deep cognitive perspective: Resource allocation for NOMA-based heterogeneous IoT with imperfect SIC,” IEEE Internet Things J., vol. 6, no. 2, pp. 2885–2894, Apr. 2019.   
+[39] Y. Wu, L. P. Qian, H. Mao, X. Yang, H. Zhou, and X. Shen, “Optimal power allocation and scheduling for non-orthogonal multiple access relay-assisted networks,” IEEE Trans. Mobile Comput., vol. 17, no. 11, pp. 2591–2606, Nov. 2018.   
+[40] S. Boyd, S. P. Boyd, and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004.   
+[41] H. Shima, The Geometry of Hessian Structures. World Scientific, 2007.   
+[42] L. E. Schrage, Optimization Modeling With LINGO. Chicago, IL, USA: Lindo System, 2006.
+
+![](images/f96dfb69b18a11322437fcac2c7916c1818d14496b8eefc01ad9e86855f9b9fe.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a young man in formal attire (no text or symbols visible)
+</details>
+
+Minghui Dai received the Ph.D. degree from Shanghai University, Shanghai, China, in 2021. He is currently a Postdoctoral Fellow with the State Key Laboratory of Internet of Things for Smart City, University of Macau, China. His research interests include wireless network architecture and vehicular networks.
+
+![](images/52f6b625540c7ca665210f3ba05b4a28086eed30536de1d2b7d514dc97d272b1.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man with short dark hair wearing a light-colored collared shirt (no text or symbols visible)
+</details>
+
+Ning Huang received the B.Sc. degree in electronic science and technology and the M.S. degree in optical engineering from the University of Electronic Science and Technology of China, Chengdu, China, in 2009 and 2012, respectively. He is currently pursuing the Ph.D. degree with the Department of Computer and Information Science, University of Macau, Macau, China. His current research interests include intelligent reflecting surface, mobile edge computing, and federated learning.
+
+![](images/2bd7104dabab7f7e14c14f7d9b31567048b01d9e3c5da45915d310710cecf479.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a light blue shirt (no text or symbols visible)
+</details>
+
+Yuan Wu (Senior Member, IEEE) received the Ph.D. degree in electronic and computer engineering from The Hong Kong University of Science and Technology in 2010. He is currently an Associate Professor with the State Key Laboratory of Internet of Things for Smart City, Department of Computer and Information Science, University of Macau. From 2016 to 2017, he was a Visiting Scholar with the Department of Electrical and Computer Engineering, University of Waterloo. His research interests include resource management for wireless
+
+networks, green communications and computing, mobile edge computing, and edge intelligence. He was a recipient of the Best Paper Award from the IEEE International Conference on Communications in 2016 and the Best Paper Award from IEEE Technical Committee on Green Communications and Computing in 2017. He is on the Editorial Boards of IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, IEEE TRANSACTIONS ON NETWORK SCIENCE AND ENGINEERING, IEEE INTERNET OF THINGS JOURNAL, and IEEE OPEN JOURNAL OF THE COMMUNICATIONS SOCIETY.
+
+![](images/6227489c20f9b6e2725030c3e7afe6e8f24702f149be3e67549d88ca84090b73.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a woman with glasses and dark hair, wearing a collared shirt (no visible text or symbols)
+</details>
+
+Liping Qian (Senior Member, IEEE) received the Ph.D. degree in information engineering from The Chinese University of Hong Hong in 2010. She was a Post-Doctoral Research Associate with The Chinese University of Hong Kong, from 2010 to 2011. Since 2011, she has been with the College of Information Engineering, Zhejiang University of Technology, Hangzhou, China, where she is currently a Full Professor. From 2016 to 2017, she was a Visiting Scholar with the Broadband Communications Research Group, ECE Department, University
+
+of Waterloo. Her research interests include wireless communication and networking, resource management in wireless networks, massive IoTs, mobile edge computing, emerging multiple access techniques, and machine learning oriented toward wireless communications. She was a co-recipient of the IEEE Marconi Prize Paper Award in Wireless Communications in 2011, the Best Paper Award from IEEE ICC 2016, and the Best Paper Award from IEEE Communication Society GCCTC 2017. She is on the Editorial Board of IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING.
+
+![](images/ae903a6c1cef5d044b04c8f1674a339bef0bb918919f93b258ebada167ab7a34.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman in a black collared shirt (no text or symbols visible)
+</details>
+
+Bin Lin (Senior Member, IEEE) received the B.S. and M.S. degrees from Dalian Maritime University, Dalian, China, in 1999 and 2003, respectively, and the Ph.D. degree from the Broadband Communications Research Group, Department of Electrical and Computer Engineering, University of Waterloo, Waterloo, ON, Canada, in 2009. She is currently a Full Professor with the Department of Information Science and Technology, Dalian Maritime University. She was a Visiting Scholar with George Washington University, Washington, DC, USA, from 2015 to 2016. Her current research interests include wireless communications, network dimensioning and optimization, resource allocation, artificial intelligence, maritime communication networks, edge/cloud computing, wireless sensor networks, and the Internet of Things. She is an Associate Editor of IET Communications.
+
+![](images/38c4482f9ddd1692d6494641dd83292a5d732c840c88540f9e76d3459b004cbf.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a white shirt with black tie (no text or symbols visible)
+</details>
+
+Rongxing Lu (Fellow, IEEE) received the Ph.D. degree from the Department of Electrical and Computer Engineering, University of Waterloo, Canada, in 2012. He was a Post-Doctoral Fellow with the University of Waterloo, from May 2012 to April 2013. He is currently a Mastercard IoT Research Chair, a University Research Scholar, and a Professor with the Faculty of Computer Science (FCS), University of New Brunswick (UNB), Canada. Before that, he was an Assistant Professor with the School of Electrical and Electronic Engineering, Nanyang Technological University (NTU), Singapore, from April 2013 to August 2016. His research interests include applied cryptography, privacy enhancing technologies, and IoT-big data security and privacy. He serves as the Chair for IEEE Communications and Information Security Technical Committee (ComSoc CISTC) and the Founding Co-Chair for IEEE TEMS Blockchain and Distributed Ledgers Technologies Technical Committee (BDLT-TC).
+
+![](images/3ee912bfd2f3517775bf54c07089487744196771b2eda629c24dcd7999996233.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man wearing glasses and a light blue shirt (no text or symbols visible)
+</details>
+
+Zhou Su (Senior Member, IEEE) received the Ph.D. degree from Waseda University, Tokyo, Japan, in 2003. He has published technical papers, including top journals and top conferences, such as IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS, IEEE TRANSACTIONS ON INFORMATION FORENSICS AND SECURITY, IEEE TRANSACTIONS ON DEPENDABLE AND SECURE COMPUTING, IEEE TRANSACTIONS ON MOBILE COMPUTING, IEEE/ACM TRANSACTIONS ON NETWORKING, and Infocom. His research interests include multimedia communication, wireless communication, and network traffic. He received the Best Paper Award of International Conference IEEE ICC2020, IEEE BigdataSE2019, and IEEE CyberSciTech 2017. He is an Associate Editor of IEEE INTERNET OF THINGS JOURNAL, IEEE OPEN JOURNAL OF COMPUTER SOCIETY, and IET Communications.

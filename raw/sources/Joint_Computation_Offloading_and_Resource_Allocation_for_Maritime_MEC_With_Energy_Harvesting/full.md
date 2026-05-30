@@ -1,0 +1,1004 @@
+# Joint Computation Offloading and Resource Allocation for Maritime MEC With Energy Harvesting
+
+Zhen Wang , Graduate Student Member, IEEE, Bin Lin , Senior Member, IEEE, Qiang $\mathrm { Y e } ^ { \mathbb { \oplus } }$ , Senior Member, IEEE, Yuguang Fang , Fellow, IEEE, and Xiaoling Han , Student Member, IEEE
+
+Abstract—In this article, we establish a multiaccess edge computing (MEC)-enabled sea lane monitoring network (MSLMN) architecture with energy harvesting (EH) to support dynamic ship tracking, accident forensics, and anti-fouling through real-time maritime traffic scene monitoring. Under this architecture, the computation offloading and resource allocation are jointly optimized to maximize the long-term average throughput of MSLMN. Due to the dynamic environment and unavailable future network information, we employ the Lyapunov optimization technique to tackle the optimization problem with large state and action spaces and formulate a stochastic optimization program subject to queue stability and energy consumption constraints. We transform the formulated problem into a deterministic one and decouple the temporal and spatial variables to obtain asymptotically optimal solutions. Under the premise of queue stability, we develop a joint computation offloading and resource allocation (JCORA) algorithm to maximize the long-term average throughput by optimizing task offloading, subchannel allocation, computing resource allocation, and task migration decisions. Simulation results demonstrate the effectiveness of the proposed scheme over existing approaches.
+
+Index Terms—Energy harvesting (EH), Lyapunov optimization, maritime multiaccess edge computing (MEC), resource allocation.
+
+# I. INTRODUCTION
+
+N OWADAYS, more than 80% of the total internationalcargo transportation is carried over the sea. The increas- cargo transportation is carried over the sea. The increasing maritime activities, such as maritime transportation, sea
+
+Manuscript received 20 October 2023; revised 18 December 2023 and 26 January 2024; accepted 16 February 2024. Date of publication 28 February 2024; date of current version 23 May 2024. This work was supported in part by the National Key Research and Development Program of China under Grant 2019YFE0111600; in part by the National Natural Science Foundation of China under Grant 61971083, Grant 51939001, and Grant 62371085; in part by the Liaoning Revitalization Talents Program under Grant XLYC2002078; and in part by the Fundamental Research Funds for the Central Universities under Grant 3132023514. (Corresponding author: Bin Lin.)
+
+Zhen Wang is with the Department of Information Science and Technology, Dalian Maritime University, Dalian 116026, China, and also with the Communication Engineering, Dalian Neusoft University of Information, Dalian 116024, China (e-mail: wangzhen\_jsj@neusoft.edu.cn).
+
+Bin Lin and Xiaoling Han are with the Department of Information Science and Technology, Dalian Maritime University, Dalian 116026, China (e-mail: binlin@dlmu.edu.cn; xiaolinghan@dlmu.edu.cn).
+
+Qiang Ye is with the Department of Electrical and Software Engineering, Schulich School of Engineering, University of Calgary, Calgary, AB T2N 1N4, Canada (e-mail: qiang.ye@ucalgary.ca).
+
+Yuguang Fang is with the Department of Computer Science, City University of Hong Kong, Hong Kong (e-mail: my.fang@cityu.edu.hk).
+
+Digital Object Identifier 10.1109/JIOT.2024.3371049
+
+lane monitoring, and marine resource extraction, lead to high demand for maritime information exchange [1], [2], [3], [4], [5]. On one hand, the density of marine vessels (especially the ones near big harbors) is increasing tremendously, which puts forward higher requirements for intervessel connections through advanced wireless communication technologies [e.g., long term evolution (LTE)] for information dissemination. On the other hand, the information sharing from diversified applications to realize the “smart ocean” often requires high-data rates and low-transmission latency. For example, in the sea lane monitoring scenario, it is necessary to quickly analyze and process the collected images/videos of sea lanes, to make real-time prediction on vessel behaviors and provide accurate navigation assistance and efficient navigation services for vessels. Generally, to achieve more intelligent and responsive event monitoring, video perception, and dynamic tracking, a large amount of data needs to be sensed/collected and processed promptly which inevitably increases the on-vessel computation burden. However, due to geographical restrictions, the allocation of communication and computing resources from terrestrial networks to support maritime services is often limited, which poses significant challenges when supporting massive communication and computing demands. It is imperative to develop a more efficient networking and computing solution to achieve better performance for massive maritime data transmission and task processing.
+
+Multiaccess edge computing (MEC) technology remains an effective solution, with which the computation-intensive tasks can be offloaded, through wireless communication networks, to onshore/offshore more powerful edge servers for processing with high efficiency [6], [7], [8], [9]. In traditional cellular systems, such as 5G and beyond (5G+), a multitier networking architecture, consisting of a macro cell base station (MBS) underlaid by multiple small cell base stations (SBSs), has been proposed to cope with the massive data and enhance the communication coverage [10], [11], [12]. Both SBSs and MBSs are deployed with MEC servers and the data traffic can be scheduled toward the MBS and SBS flexibly. Due to such attractive features, the applications of MEC to maritime network scenarios have also attracted great attention from academia. An MEC-based space-air-ground integrated maritime communication network is proposed to support various maritime applications [13]. For computation-intensive applications at sea, a voyage-based computation offloading scheme is proposed with edge nodes deployed on vessels to provide MEC services for nearby users [14]. A computation offloading scheme based on an improved Hungarian algorithm for multivessels [15] and a reinforcement learning (RL)- based intelligent task offloading algorithm [16] have been proposed to enhance the maritime MEC performance, such as on delay and energy consumption. Many existing proposals consider a single layer of MEC platform and optimize the computation offloading efficiency between local and edge processing various performance indicators (such as latency and energy consumption). However, the impact of communication and computing resource scheduling on computation offloading performance still needs further research, especially in maritime MEC with dynamic environment and limited resources, and how to efficiently leverage MEC to support the sea lane monitoring requirements still demands further investigation.
+
+Meanwhile, considering limited accessibility to the ground power grid for maritime communication networks, how to resolve energy supply for communications and computing for long term operations is highly challenging and energy harvesting (EH) still remains a promising solution [17], [18]. Most existing studies mainly focus on the energy management for EH-enabled end devices. The use of EH to power SBSs has also been proposed to jointly optimize caching and user-base station association issues [19]. Considering the characteristics of a marine communication environment, most maritime communication infrastructures are away from the sea shore, without direct connections to the power grid through wired cables [20]. The EH technology provides an effective approach for energy supply of maritime networks. Offshore energy sources, such as wind, solar, and ocean waves, can be harvested to power the network equipment to support communication and computing services [21], [22]. For example, ocean-wave harvested buoys anchored to the seafloor can help ensure network stability. It has been observed that one buoy is predicted to continuously generate electrical power in tens or hundreds of watts from ocean waves [21], [23], [24]. An experimental research shows that the power at the level of approximately 25 W to 45 W can be acquired within the wave harvesting periods between 1.1 s to 1.3 s [25] while the Google’s Edge tensor processing unit (TPU) computing board is capable of performing 4 trillion operations (tera-operations) per-second (TOPS) with only 2 Watts of power [26], [27]. Thus, the energy generated by ocean waves may potentially meet the demands of edge computing. It is energy effective to deploy EH-enabled base stations with edge computing in offshore areas to fulfill the maritime communication and computing requirements, such as the processing of images/videos, collected from sea lane monitoring applications. However, due to the uncertainty and variability of harvested energy, how to effectively allocate communication and computing resources and make offloading decisions for EH-enabled maritime MEC is a difficult problem. The resource allocation must be performed by considering the utilization of harvested energy to achieve a sustainable system.
+
+In this article, we study the joint optimization of task scheduling and resource allocation in an EH-enabled sea lane monitoring network based on MEC. Since the channel states, vessel mobility, task arrivals, and energy charging and discharging vary over time, it is difficult to accurately acquire these dynamic network information. Given that the performance optimization is challenging in a highly dynamic environment, we consider optimizing the long-term task scheduling and resource allocation strategies to maximize the long-term average network throughput. The key contributions in this article mainly include the following aspects.
+
+1) We present a two-tier MEC-based network for a sea lane monitoring scenario, which is modeled under the dual constraints on energy consumption and queue stability by considering the time-varying task arrivals, channel qualities, and available computing resources.   
+2) To capture the dynamics of network state transitions and model the interactions between states and policies, we establish a stochastic optimization problem to maximize the time averaged network throughput under the constraints on queue stability and energy budget. We adopt the Lyapunov optimization framework to achieve a tradeoff between network throughput and queue stability.   
+3) Based on stochastic optimization, the formulated problem is decomposed into independent subproblems with low complexity by minimizing the upper bound of Lyapunov drift plus penalty function, which are then solved in a distributed manner, leading to an effective suboptimal solution.   
+4) We analyze the system performance and verify the asymptotic optimality of the proposed schemes.
+
+The remainder of this article is organized as follows. Section II provides a review of related works. The system model is presented in Section III. The problem formulation and performance evaluation are given in Sections IV and V, respectively, and the conclusion is drawn and future work is discussed in Section VI. Table I lists the key notations according to the order in which they first appear in this article.
+
+# II. RELATED WORKS
+
+# A. Maritime MEC
+
+As one of the key technologies in next-generation networks, MEC is considered to be leveraged in different maritime application scenarios to support the increasing computing services. Yang et al. [28] mainly focused on proposing a cognitive network based on MEC for cooperative search and rescue through unmanned aerial vehicles (UAVs) and unmanned ships. Distributed RL was used to identify the channel state and perform mobile computing to optimize the data throughput in the communication group. Zeng et al. [29] studied the communications, computing, and caching technologies for the maritime networks based on MEC and proposed a response-based offloading algorithm to optimize task offloading. Yang et al. [30] studied a dynamic computation offloading problem to balance the tradeoff between energy and delay in offshore communication networks and proposed a twostage joint optimal offloading algorithm (JOOA) to optimize the computation and communication resource allocation under limited energy and delay constraints. Dai et al. [31] focused on the UAVs assisted multiaccess computation offloading via Hybrid NOMA and FDMA in Marine Networks, aiming at minimizing the energy consumption of ocean devices.
+
+TABLE I LIST OF KEY NOTATIONS 
+
+<table><tr><td>Symbol</td><td>Meaning</td></tr><tr><td> $M_{k}$ </td><td>The numbedr of TUs under MIS  $k$ </td></tr><tr><td> $\tau$ </td><td>Slot time</td></tr><tr><td> $g_{i}(t)$ </td><td>The number of tasks generated at TU  $i$  at time slot  $t$ </td></tr><tr><td>Y</td><td>Task size</td></tr><tr><td> $g^{max}$ </td><td>Maximum number of task arrivals</td></tr><tr><td> $\alpha$ </td><td>Number of CPU cycles for 1 bit data</td></tr><tr><td> $T_{i}^{th}$ </td><td>Latency requirement of each task generated by TU  $i$ </td></tr><tr><td> $\overline{g}_{i}$ </td><td>The average task arrival rate of TU  $i$ </td></tr><tr><td> $y_{i,k}(t)$ </td><td>Offloading decision variable from MIS  $k$  for TU  $i$ </td></tr><tr><td> $z_{i,k}^{n}(t)$ </td><td>Subchannel allocation decision variable</td></tr><tr><td> $r_{i,k}(t)$ </td><td>The uplink achievable rate at MIS  $k$  from TU  $i$ </td></tr><tr><td> $p_{i,k}^{n}$ </td><td>Transmission power of TU  $i$  on the  $n$ -th subchannel</td></tr><tr><td> $h_{i,k}^{n}(t)$ </td><td>The small-scale fading factor</td></tr><tr><td>W</td><td>Subchannel bandwidth of each MIS</td></tr><tr><td> $\sigma^{2}$ </td><td>Noise power</td></tr><tr><td> $\beta_{i,k}^{n}(t)$ </td><td>The largescale attenuation coefficient</td></tr><tr><td> $d_{i,k}(t)$ </td><td>the distance between TU  $i$  and MIS  $k$  at time slot  $t$ </td></tr><tr><td> $\lambda_{k,n}$ </td><td>WaveLength of MIS  $k$ </td></tr><tr><td> $h_{i}$ </td><td>The antenna heights above sea level of TU  $i$ </td></tr><tr><td> $h_{k}$ </td><td>The antenna heights above sea level of MIS  $k$ </td></tr><tr><td> $R_{k}$ </td><td>The radius of the optimal coverage area of MIS  $k$ </td></tr><tr><td> $d_{i}^{0}(t)$ </td><td>The initial location TU  $i$ </td></tr><tr><td> $v_{i}$ </td><td>The moving speed TU  $i$ </td></tr><tr><td> $R_{k}(t)$ </td><td>The achievable transmission rate from MIS  $k$  to CBS</td></tr><tr><td> $\rho_{k}$ </td><td>The radio resource allocation ratio</td></tr><tr><td> $p_{k}$ </td><td>Transmission power of MIS  $k$ </td></tr><tr><td> $W_{c}$ </td><td>Channel bandwidth of CBS</td></tr><tr><td> $\lambda_{c,k}$ </td><td>WaveLength of CBS</td></tr><tr><td> $\beta_{k,c}^{n}(t)$ </td><td>The attenuation coefficient from MIS  $k$  to CBS</td></tr><tr><td> $Q_{i}(t)$ </td><td>The length of task transmission queue of TU  $i$ </td></tr><tr><td> $\theta_{i}(t)$ </td><td>The number of tasks offloaded in time slot  $t$ </td></tr><tr><td> $F_{k}$ </td><td>The computing frequency of MIS  $k$ </td></tr><tr><td> $f_{i,k}(t)$ </td><td>The ratio of computing resources allocated to TU  $i$ </td></tr><tr><td> $Q_{i,k}(t)$ </td><td>The buffer length of MIS  $k$  for TU  $i$ </td></tr><tr><td> $\mu_{i}(t)$ </td><td>The number of tasks processed in time slot  $t$ </td></tr><tr><td> $m_{i}(t)$ </td><td>The number of tasks migrated to CBS in time slot  $t$ </td></tr><tr><td> $T_{i}$ </td><td>The average task latency of TU  $i$ </td></tr><tr><td> $e_{k}(t)$ </td><td>The charging rate at MIS  $k$  in time slot  $t$ </td></tr><tr><td> $e_{k}^{max}$ </td><td>The maximum charging rate at MIS  $k$ </td></tr><tr><td> $E_{k}(t)$ </td><td>The instantaneous energy level at MIS  $k$  in time slot  $t$ </td></tr><tr><td> $E_{max}$ </td><td>The maximum energy storage at MIS  $k$ </td></tr><tr><td> $c_{k}(t)$ </td><td>The energy consumption of MIS  $k$  in time slot  $t$ </td></tr><tr><td> $\epsilon$ </td><td>The power coefficient of each MIS</td></tr><tr><td> $p_{k,i}(t)$ </td><td>Processing power of MIS  $k$  for TU  $i$ </td></tr></table>
+
+Existing works often focus on computation offloading or resource allocation based on one-shot optimization instead of long-term network performance maximization. In maritime MEC, the design of computation offloading strategies should consider the real-time changing environmental dynamics, such as time-varying channel quality and task arrivals at mobile terminals. In addition, maritime communication and computation resources are often limited due to geographical constraints, which poses challenges for resource allocation and task offloading in maritime MEC. To improve the performance of massive ocean data transmission and task processing, it is necessary to develop a more efficient network architecture and computing solutions for maritime MEC.
+
+# B. EH-Enabled MEC
+
+Due to the technological advances in EH, off-grid renewable energy, such as solar and wind, has become promising power supply for various communication and computing networks [32], [33]. Most research works on EH-enabled MEC mainly focused on the EH-enabled end devices. Hu et al. [34] proposed an online mobility-aware offloading and resource allocation (OMORA) algorithm for EH-enabled IoT. Zhang et al. [35] proposed online dynamic task offloading based on the Lyapunov optimization to investigate the tradeoff between energy consumption and execution delay for a MEC system with EH. Xu et al. [36] first studied the resource allocation problems for EH-enabled MEC and proposed an efficient RL-based resource management algorithm to improve the system performance. Besides, Chen et al. [37] focused on a hybrid energy supply for powering base stations, including renewable energy and stable energy from the grid, to optimize task scheduling and energy management strategies. Mohd et al. [38] demonstrated that a hybrid system consisting of solar energy and ocean waves can be an effective way to power offshore equipment.
+
+Inspired by the aforementioned studies, we combine solar and ocean wave energies to provide hybrid energy support for maritime facilities by considering that they can compensate each other in light of the seasonal factors [39]. In maritime scenarios, the intelligent buoys powered by hybrid solar and ocean wave energies can provide a stable energy supply for maritime MEC. However, the sustainability of green energy and the energy limitation of EH-powered devices do affect the performance of maritime MEC. It is nontrivial to conduct both the task scheduling and resource allocation judiciously to prevent network performance degradation caused by limited resources and network dynamics.
+
+# C. Lyapunov Optimization in MEC
+
+Lyapunov optimization has been widely applied in solving stochastic network optimization problems with “time coupling” property in task offloading and EH to avoid the prediction of dynamic variables [40], [41], [42], [43], [44], [45]. Applying the Lyapunov optimization, Tong et al. [40] proposed a Lyapunov online energy consumption optimization algorithm (LOECOA) to balance the system’s queue backlog and energy consumption. Guo et al. [41] proposed Lyapunov-optimization-based partial computation offloading for multiuser (LOMUCO) to minimize the energy consumption of all the MDs while satisfying the constraint of time delay. Mao et al. [42] exploited an online resource allocation approach in a multidevices MEC system, using Gauss Seidel theory to analyze the best transmit power, but this study did not consider EH. Mei et al. [43] focused on the task offloading problem for multiple EH devices and designed a maximum task offloading algorithm to maximize the system throughput based on Lyapunov optimization. However, they only simulated the performance analysis of offloading strategy and computation allocation without considering communication resource allocation. Bi et al. [44] designed an online offloading scheme to combine the Lyapunov optimization and deep RL (DRL) method together to maximize the network data processing capability. However, they just considered one MEC server which may not be applicable for multiple users. Ma et al. [45] proposed a linear time complexity algorithm based on Lyapunov optimization and DRL to maximize the long-term average throughput under different constraints.
+
+![](images/39c2d3fb78843f86495a09dd7edc193abbb391c49ec4cda882e3945617f7ddb7.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Core network"] --> B["CBS"]
+    B --> C["Main server"]
+    C --> D["Coastal port"]
+    C --> E["Land"]
+    D --> F["Ship route 1"]
+    D --> G["Ship route 2"]
+    E --> H["Coastal port"]
+    style A fill:#f9f,stroke:#333
+    style B fill:#ccf,stroke:#333
+    style C fill:#cfc,stroke:#333
+    style D fill:#fcc,stroke:#333
+    style E fill:#cff,stroke:#333
+    style F fill:#ffc,stroke:#333
+    style G fill:#cfc,stroke:#333
+    style H fill:#fcc,stroke:#333
+    subgraph Sea
+        I["MIS"]
+        J["TU"]
+        K["WiFi link"]
+        L["LTE link"]
+        M["THE link"]
+    end
+    I --> N["Wireless Link"]
+    J --> O["Wireless Link"]
+    K --> P["Wireless Link"]
+    L --> Q["Wireless Link"]
+    M --> R["Wireless Link"]
+```
+</details>
+
+Fig. 1. Network model.
+
+However, most existing Lyapunov optimization task offloading strategies only consider communication resource allocation or computing resource allocation during the task offloading process, and there are few studies that consider both aspects in joint optimization of task offloading, especially in EH-enabled MEC. In this article, we leverage the Lyapunov optimization method to jointly optimize the communication and computation resources and maximize the network throughput in maritime MEC, considering the mobility of vessels, dynamic channel conditions and limited computing resources in specific marine scenarios.
+
+# III. SYSTEM MODEL
+
+# A. Network Model
+
+We consider a two-tier MEC-enabled sea lane monitoring network (MSLMN), as illustrated in Fig. 1. In the first network tier, a single coastal base station (CBS) centered macrocell is deployed along the coastline to provide a wide area communication coverage for maritime information stations (MISs) near the sea lanes. In the second network tier, a set, ${ \mathcal { K } } \ = \ \{ 1 , 2 , . . . , K \}$ , of MISs (e.g., green energy powered intelligent buoys) are anchored in advance on both sides of sea lanes within the CBS coverage area. Each MIS is preinstalled with solar panels and wave energy converters (WECs) to provide energy supply for communication and computing [38]. All the MISs have nonoverlapping communication coverages. Each MIS, say MIS $k ,$ equipped with a local MEC server, is to provide communication and computing services for terminal units (TUs) (e.g., vessels) under its coverage, the number of which is denoted by $M _ { k } .$ . All the MISs are powered by solar and ocean wave energies to maintain normal operation. The communications between CBS and MISs are based on LTE while WiFi is adopted for transmissions between an MIS and its associated TUs. All the TUs are randomly distributed and sailing around potentially. Each TU consistently collects the sea lane state information through captured images/videos which are further processed or computed, for the purpose of surveillance, object tracking, and monitoring.
+
+A two-layer edge computing infrastructure is adopted to provide near-the-TU computing capabilities. In the upper layer, a main server with abundant computation resources is connected to CBS to provide highly efficient task processing. The resources on the server are also virtualized to host different softwarized network and control functions, such as centralized radio resource control and baseband processing. Also, it can share some task processing load with different MISs through wireless transmissions especially when their energy and computation capacities are in shortage. In the lower layer, each MIS is connected with a local MEC server to provide lightweight computation and each local MEC sever hosts small-timescale virtualized network functions mainly for TUs under its coverage, e.g., task scheduling and resource management.
+
+We consider two timescales of system operations where the average number of TUs are assumed stationary within each large time interval (e.g., minutes to hours) for networklevel radio resource reservation under the consideration of a low-vessel mobility scenario. Each large time interval is discretized into a sequence of scheduling time slots and the length of each slot is denoted as τ . The task offloading and resource allocation decisions are made by the MISs at the beginning of each small time slot according to the dynamic task generation and the reservation of existing resources. We assume that each TU has limited computing capability and the generated tasks in each time slot are either offloaded to an MIS or migrated to main server connected to CBS for processing (some TUs may not be covered by CBS). The task processing results are fed back to corresponding TUs and transmitted to CBS simultaneously, which is helpful to achieve navigation efficiency and safety.
+
+# B. Task Arrival Model
+
+The number of tasks generated at the ith TU at time slot t is assumed an independent and identically distributed random variable denoted by $g _ { i } ( t )$ . In each time slot, $g _ { i } ( t )$ is randomly drawn within $[ 0 , g ^ { \mathrm { m a x } } ]$ to capture the temporal variations in task arrival. We assume that each task has the same size of Y (in bits) and processing 1 bit of task requires α CPU cycles. Additionally, each task generated by TU i must be completed within its latency requirement $T _ { i } ^ { t h }$ . Considering randomness of task arrivals, we characterize the probability density function of $g _ { i } ( t )$ at each slot t as
+
+$$
+\operatorname * {P r} \left[ g _ {i} (t) = g \right] = p _ {g} \tag {1}
+$$
+
+where $g$ is a nonnegative integer, $g \in \mathcal { G } = \{ 0 , 1 , 2 , \dots , g ^ { \mathrm { m a x } } \}$ , and $p _ { g } ~ \in ~ [ 0 , 1 ] . ~ g ^ { \mathrm { m a x } }$ is the upper bound of the number of arriving tasks. The average task arrival rate of TU i is calculated as
+
+$$
+\overline {{{{g _ {i}}}}} = \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T} g _ {i} (t) = \sum_ {g = 0} ^ {g ^ {\max}} g \cdot p _ {g}. \tag {2}
+$$
+
+# C. Communication Model
+
+Before network operation begins, CBS is preconfigured with a set of orthogonal radio spectrum resources for uplink data transmission, the amounts of which is denoted by $W _ { c } .$ . We assume that each MIS has N orthogonal subchannels, each with the radio bandwidth of W. Due to the nonoverlapping communication coverages, all the MISs reuse the same portion of radio resources to exploit the resource multiplexing gain with controlled inter-MIS interference.
+
+At the beginning of each time slot, each MIS makes decisions on radio resource allocation among TUs under its coverage. Denote binary indicator $y _ { i , k } ( t )$ as the offloading decision from MIS k for TU i at slot t, which equals to 1 when the task is offloaded to MIS k and 0, otherwise. Denote binary indicator $z _ { i , k } ^ { n } ( t )$ as the subchannel allocation decision, which equals to 1 when the subchannel n is allocated to TU i under MIS k and 0, otherwise. According to the Shannon capacity theorem, the uplink achievable rate at MIS k from TU i is given by following the channel model in [39]:
+
+$$
+r _ {i, k} (t) = y _ {i, k} (t) \sum_ {n = 0} ^ {N} z _ {i, k} ^ {n} (t) W \log_ {2} \left(1 + \frac {p _ {i , k} ^ {n} \beta_ {i , k} ^ {n} (t) \left| h _ {i , k} ^ {n} (t) \right| ^ {2}}{\gamma + \sigma^ {2}}\right). \tag {3}
+$$
+
+Considering the offshore environment is relatively open with stronger direct signals and the main factors affecting the oversea radio channels are the multipath effect caused by sea volatility and the effect of extreme weather, we employ Rician fading channels to capture the small-scale fading characteristics of air-to-sea channels in rough sea conditions [46], [47]. In (3), $p _ { i , k } ^ { n }$ is the transmission power at TU i on the nth subchannel of MIS k and $h _ { i . k } ^ { n } ( t )$ indicates the small-scale fading factor which follows the Rician distribution with $\tilde { h } _ { i , k } ^ { n } ( t ) \ = \ \sqrt { ( K _ { r } / 1 + K _ { r } ) } + \sqrt { ( 1 / 1 + K _ { r } ) } s _ { i . k } ^ { n } ( t )$ where $K _ { r }$ is the Rician factor and $s _ { i . k } ^ { n } ( t ) \ \in \ \mathcal { C N } ( 0 , 1 ) . ^ { \mathrm { ~ i ~ } } \sigma ^ { 2 }$ is the noise power and $\gamma$ is the intercell interference power calculated as $\begin{array} { r } { \gamma = \sum _ { q \in \mathcal { K } } \sum _ { j \in M _ { q } \backslash q \neq k } y _ { j , q } ( t ) p _ { j , q } ^ { n } \beta _ { j , q } ^ { n } ( t ) } \end{array}$ , and $\beta _ { i , k } ^ { n } ( t )$ is the large-scale attenuation coefficient of maritime communication expressed as [39]
+
+$$
+\beta_ {i, k} ^ {n} (t) = \left(\frac {\lambda_ {k , n}}{4 \pi d _ {i , k} (t)}\right) ^ {2} \left[ \sin \left(\frac {2 \pi h _ {i} h _ {k}}{\lambda_ {k , n} d _ {i , k} (t)}\right) \right] ^ {2} \tag {4}
+$$
+
+where $\lambda _ { k , n }$ is the wavelength of the nth subchannel of MIS k, $h _ { i }$ and hk represent the antenna heights above sea level of TU i and MIS k, respectively, and $d _ { i , k } ( t )$ denotes the distance between TU i and MIS k at the tth time slot, given by
+
+$$
+d _ {i, k} (t) = \left\{ \begin{array}{l l} \sqrt {h _ {k} ^ {2} + \left[ \frac {R _ {k}}{2} - d _ {i} ^ {0} (t) - v _ {i} t \right] ^ {2}}, & \text { if } d _ {i} ^ {0} (t) \leq \frac {R _ {k}}{2} \\ \sqrt {h _ {k} ^ {2} + \left[ \frac {R _ {k}}{2} - d _ {i} ^ {0} (t) + v _ {i} t \right] ^ {2}}, & \text { if } d _ {i} ^ {0} (t) > \frac {R _ {k}}{2} \end{array} \right. \tag {5}
+$$
+
+where $R _ { k }$ is the radius of the optimal coverage area of MIS k, and $d _ { i } ^ { 0 } ( t )$ and $\nu _ { i }$ denote the initial location and moving speed of TU i, respectively.
+
+1CN (0, 1) is a complex Gaussian distribution.
+
+When the available computing resources of an MIS is insufficient, portions of tasks are migrated to CBS through wireless transmissions for processing. The ratio of radio resource allocated to MIS k from CBS, denoted as $\rho _ { k } , 0 \le \rho _ { k } \le 1$ , is determined by CBS according to the amount of migrated tasks from different MISs. The achievable transmission rate from MIS k to CBS is given by
+
+$$
+R _ {k} (t) = \rho_ {k} W _ {c} \log_ {2} \left(1 + \frac {p _ {k} \beta_ {k , c} (t)}{\sigma^ {2}}\right) \tag {6}
+$$
+
+where $p _ { k }$ is the transmission power of MIS k and $\beta _ { k , c } ( t )$ is the attenuation coefficient from MIS k to CBS.
+
+# D. Communication and Computation Queueing Models
+
+The length (i.e., the number of tasks) of task transmission queue of each TU at time slot t is denoted by $Q _ { i } ( t ) ( \leq Q _ { i } ^ { \operatorname* { m a x } } )$ , where $Q _ { i } ^ { \operatorname* { m a x } }$ is the buffer size of the ith TU. The total number of tasks that can be offloaded in time slot t is determined as $\theta _ { i } ( t ) = \lfloor r _ { i , k } ( t ) \cdot \tau / Y \rfloor , 0 \leq \theta _ { i } ( t ) \leq \theta _ { i } ^ { \mathrm { m a x } }$ , and the dynamics of Qi(t) is given by
+
+$$
+Q _ {i} (t + 1) = \max \left[ Q _ {i} (t) - \theta_ {i} (t), 0 \right] + g _ {i} (t). \tag {7}
+$$
+
+The computation capacity of MIS k (in the unit of CPU cycles per second) is denoted as $F _ { k }$ . The ratio of computing resources allocated to TU i is $f _ { i , k } ( t ) \in [ 0 , 1 ]$ , and we have $\mathbf { F } ( \mathbf { t } ) = \{ f _ { i , k } ( t ) _ { i \in M _ { k } } \}$ , where $\begin{array} { r } { \sum _ { i = 1 } ^ { M _ { k } } \dot { f } _ { i , k } ( t ) \le 1 } \end{array}$ .
+
+Suppose each MIS has a number of processing buffers for the associated TUs, which are used to accommodate offloaded tasks to be processed. The buffer length of MIS k for the ith TU is denoted as $Q _ { i , k } ( t ) ( \leq Q _ { i , k } ^ { \operatorname* { m a x } } )$ , where $Q _ { i , k } ^ { \mathrm { m a x } }$ is the buffer size allocated to the ith TU at MIS k [34]. The total number of tasks processed in the tth time slot is expressed as $\mu _ { i } ( t ) =$ $\lvert f _ { i , k } ( t ) F _ { k } \cdot \tau / \alpha Y \rvert ( 0 \leq \mu _ { i } ( t ) \leq \mu _ { i } ^ { \mathrm { m a x } } )$ . The number of tasks migrated to CBS is denoted as mi(t) $( 0 \leq m _ { i } ( t ) \leq \theta _ { i } ( t ) )$ , and the dynamics of $Q _ { i , k } ( t )$ is given by
+
+$$
+Q _ {i, k} (t + 1) = \max \left[ Q _ {i, k} (t) - \mu_ {i} (t) - m _ {i} (t), 0 \right] + \theta_ {i} (t). \tag {8}
+$$
+
+The average queue length of the ith TU is given by
+
+$$
+Q _ {i} ^ {\text {   a   v   a   }} = \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T} \left\{Q _ {i} (t) + Q _ {i, k} (t) \right\}. \tag {9}
+$$
+
+According to Little’s Law, the average queuing latency is proportional to the average queue length [35], i.e., $T _ { i } ^ { a \nu a } =$ $( [ Q _ { i } ^ { a \nu a } ] / [ \overline { { g _ { i } } } ] )$ , where $\overline { { g _ { i } } }$ denotes the task arrival rate. Furthermore, the average task latency of TU i mainly consists of the average queuing delay and the average task execution delay (i.e., a constant Tc) [48], [49], given by
+
+$$
+T _ {i} = \frac {Q _ {i} ^ {a v a}}{\overline {{g _ {i}}}} + T ^ {c}. \tag {10}
+$$
+
+In this work, we mainly focused on uplink computation offloading and communication resource allocation and assume that the downlink transmission time can be neglected considering each computing result is usually small in size, which is also a common assumption made in [6], [48], and [49].
+
+# E. Energy Model
+
+Considering that in a long run (e.g., over consecutive days) the energy collection behavior can follow a periodic pattern, we model the dynamic energy changing process over smalltimescale scheduling slots as a stochastic process to reflect the dynamics of energy input, where the changing rate at each slot fluctuates due to the intermittent energy sources, such as the intensity of solar radiation or wave heights in different geographic locations. We assume each MIS is equipped with an energy queue with finite capacity for storing the renewable energy generated from ocean waves and solar energy. The energy charging rate of each MIS changes over time depending on the features of energy sources, such as the intensity of solar radiation or wave heights in different geographic locations. We model the energy charging process at each MIS as a stochastic process where the charging rate at MIS k in the tth time slot is assumed to be an independent random variable $e _ { k } ( t )$ , uniformly distributed within the interval of $[ 0 , e _ { k } ^ { \mathrm { m a x } } ] ~ [ 5 0 ]$ . The maximum energy storage of each MIS is denoted by $E _ { \mathrm { m a x } } ,$ then the instantaneous energy level at the tth time slot is represented by $E _ { k } ( t )$ , which is updated over consecutive time slots, given by [50]
+
+$$
+E _ {k} (t + 1) = \min \left[ \max (0, E _ {k} (t) + e _ {k} (t) - c _ {k} (t)), E _ {\max} \right] \tag {11}
+$$
+
+where $E _ { k } ( 0 ) ~ = ~ 0 . ~ c _ { k } ( t )$ is the energy consumption of the MIS at the tth time slot, for equipment maintenance, task transmission, and computation, i.e., given by
+
+$$
+c _ {k} (t) = c _ {k} ^ {\text { bas }} (t) + c _ {k} ^ {\text { tra }} (t) + c _ {k} ^ {\text { com }} (t). \tag {12}
+$$
+
+We use a widely adopted power consumption model for computing $p _ { k , i } ( t ) = \epsilon [ f _ { i , k } ( t ) F _ { k } ] ^ { 3 }$ [28], where  is a constant power coefficient which depends on the chip structure of MIS. Then the computation energy consumption is given by
+
+$$
+c _ {k} ^ {\mathrm{com}} (t) = \sum_ {i \in M _ {k}} p _ {k, i} (t) \tau = \sum_ {i \in M _ {k}} \epsilon [ f _ {i, k} (t) F _ {k} ] ^ {3} \tau . \tag {13}
+$$
+
+As CBS has high-computation capacity, the processing delay for each migrated task at an MIS is too small to be negligible [51]. Then, the transmission energy consumption mainly refers to the energy consumed by task migration from an MIS to CBS given by
+
+$$
+c _ {k} ^ {t r a} (t) = p _ {k} \cdot \frac {\sum_ {i \in M _ {k}} m _ {i} (t) Y}{R _ {k} (t)}. \tag {14}
+$$
+
+# IV. PROBLEM FORMULATION
+
+We consider the average network throughput as the optimization objective, which is calculated as the expected aggregate transmission rate of the whole system in each time slot, given by
+
+$$
+\mathcal {H} (t) = \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} r _ {i, k} (t) \tag {15}
+$$
+
+and the statistical average of H(t) over T time slots is given by
+
+$$
+\overline {{{{\mathcal {H} (t)}}}} = \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} \mathbb {E} \{\mathcal {H} (t) \}. \tag {16}
+$$
+
+Mathematically, the problem is formulated as
+
+$$
+(\mathbf {P 1}): \max _ {y _ {i, k} (t), z _ {i, k} ^ {n} (t), f _ {i, k} (t), m _ {i} (t)} \overline {{\mathcal {H} (t)}}
+$$
+
+s.t.
+
+(C1) : $0 \leq c _ { k } ( t ) \leq E _ { k } ( t ) \forall k \in \mathcal { K } , t$   
+(C2) : $T _ { i } \leq T _ { i } ^ { t h } \forall i$   
+(C3) : i∈Mk $\sum _ { i \in M _ { k } } f _ { i , k } ( t ) \leq 1 \forall k , t$   
+(C4) $: f _ { i , k } ( t ) \in [ 0 , 1 ] \forall i , k , t$   
+(C5) : $y _ { i , k } ( t ) \in \{ 0 , 1 \} \forall i , k , t$   
+(C6) : $\sum _ { i \in M _ { k } } z _ { i , k } ^ { n } ( t ) \leq 1 \forall k , n , t$ i∈Mk   
+(C7) : $: z _ { i , k } ^ { n } ( t ) \in \{ 0 , 1 \} \forall i , k , n , t$   
+(C8) : $: 0 \le \rho _ { k } \le 1$ ∀k   
+(C9) : $0 \leq \theta _ { i } ( t ) \leq \theta _ { i } ^ { \operatorname* { m a x } } \forall i , t$   
+(C10) $: 0 \leq \mu _ { i } ( t ) \leq \mu _ { i } ^ { \operatorname* { m a x } } \forall i , t$   
+(C11) $: 0 \leq m _ { i } ( t ) \leq \theta _ { i } ( t ) - \mu _ { i } ( t ) \forall i , t .$ (17)
+
+In (17), C1 and C2 are the energy and average latency constraints. Constraint C3 implies that the per-slot computation load on each MIS cannot exceed its capacity. Constraint C6 indicates that a subchannel on MIS k can be occupied by at most one TU in each time slot. Constraint C11 means that the number of migrated tasks of each TU under MIS k cannot exceed the number of arrivals in each time slot.
+
+Problem P1 is a stochastic optimization problem with large state and action spaces, where the per-time-slot problem is also a mixed-integer nonlinear program (MINLP) since it involves binary variables determining task offloading and communication/computation resource allocation. The major challenge in deriving the optimal solution of P1 is the lack of future information (e.g., task arrivals and dynamic channel states), which varies over time and is difficult to predict in advance. In addition, the queue stability constraint C2 incurs the coupling of system variables over time. We leverage the Lyapunov optimization framework to address this challenge by decomposing P1 into a series of deterministic optimization problems at each time slot and obtaining the asymptotic optimal solutions at the premise of ensuring the system stability [52].
+
+In P1, the energy constraint C1 is a typical temporal coupling problem, which couples the peer task offloading decisions across different time slots. Since C1 is to ensure that the energy of MIS k at the tth time slot meets the energy consumption requirements in the time slot, we construct a virtual energy queue [denoted as $Z _ { k } ( t ) ]$ for C1 and transform it into a queue stability problem by employing Lyapunov optimization method. The dynamics of the virtual queue is given by
+
+$$
+Z _ {k} (t + 1) = \max \left[ Z _ {k} (t) + c _ {k} (t) - E _ {k} (t), 0 \right]. \tag {18}
+$$
+
+Obviously, the queue length cannot keep increasing with time if the energy consumption requirements is satisfied. Then, P1 can be transformed to jointly stabilize the queue and maximize the average network throughput, which make it more tractable.
+
+Theorem 1: If lim ${ \cal T } {  } { \infty } ( { \mathbb E } \{ Z _ { k } ( t ) \} / t ) = 0$ , the virtual queue is stable with the constraint, $c _ { k } ( t ) \leq E _ { k } ( t )$ , being satisfied.
+
+The proof of Theorem 1 is provided in Appendix A.
+
+Let $\Theta ( t ) ~ = ~ [ Q _ { i } ( t ) , Q _ { i , k } ( t ) , Z _ { k } ( t ) ]$ . Define the Lyapunov function as
+
+$$
+\mathbf {L} (\Theta (t)) = \frac {1}{2} \sum_ {k \in \mathcal {K}} \left\{Z _ {k} ^ {2} (t) + \sum_ {i \in M _ {k}} [ Q _ {i} ^ {2} (t) + Q _ {i, k} ^ {2} (t) ] \right\}. \tag {19}
+$$
+
+Then, the Lyapunov drift function can be used to push the Lyapunov function to a stable state and maintain stability of all queues [53], i.e., to make the queues stable by minimizing the upper bound of the Lyapunov drift function, which is defined as
+
+$$
+\begin{array}{l} \Delta (\Theta (t)) = \mathbb {E} \{\mathbf {L} (\Theta (t + 1)) - \mathbf {L} (\Theta (t)) | \Theta (t) \} \\ \stackrel {\leq} {(*)} C + \sum_ {k \in \mathcal {K}} Z _ {k} (t) [ c _ {k} (t) - E _ {k} (t) ] \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i} (t) [ g _ {i} (t) - \theta_ {i} (t) ] \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i, k} (t) [ \theta_ {i} (t) - \mu_ {i} (t) - m _ {i} (t) ] \tag {20} \\ \end{array}
+$$
+
+where C is a constant. The proof of inequality (\*) is given in Appendix B.
+
+The objective of P1 is to maximize the total throughput of the system. When $r _ { i , k } ( t )$ increases, the transmitted tasks and system energy consumption will also increase due to (8) and (12), which in turn increases the queue length. Therefore, the two objectives of maintaining queue stability and maximizing the average network throughput are incompatible and cannot be optimized at the same time. An alternative solution to this problem is to merge the two objectives into a single objective with a utility function, i.e., drift plus penalty function, which is expressed as
+
+$$
+\begin{array}{l} \Gamma (\Theta (t)) = \Delta (\Theta (t)) - V \cdot \mathbb {E} \{\mathcal {H} (t) | \Theta (t) \} \\ \leq C - V \mathbb {E} \{\mathcal {H} (t) | \Theta (t) \} + \sum_ {k \in \mathcal {K}} Z _ {k} (t) \mathbb {E} [ c _ {k} (t) - E _ {k} (t) ] \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i} (t) \mathbb {E} [ g _ {i} (t) - \theta_ {i} (t) ] \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i, k} (t) \mathbb {E} [ \theta_ {i} (t) - \mu_ {i} (t) - m _ {i} (t) ] \tag {21} \\ \end{array}
+$$
+
+where ((t)) indicates the average drift of the Lyapunov function value and the tradeoff between throughput and queue length in consecutive time slots, which is used to measure the stability of the system. The parameter V is a nonnegative constant used to control the weight between queue length and throughput. By adjusting the value of V, the tradeoff between queue stability and time average throughput can be achieved.
+
+In this way, the long-term queue stability constraint and the long-term network throughput can be integrated into one optimization objective. Then the original problem P1 is transformed into a new optimization problem which only relies on the information of current time slot and next time slot. To further eliminate the dependence on the next time slot information, we found the upper bound of ((t)) and shifted toward minimizing the upper bound instead of minimizing ((t)). Then, our optimization objective is transformed into minimizing the upper bound of $\Gamma ( \Theta ( t ) )$ in each time slot. According to the concept of opportunistically minimizing an expectation, minimizing f (x) can ensure that $\mathbb { E } [ f ( x ) ]$ is minimized [54], we minimize the supremum of $\Gamma ( \Theta ( t ) )$ in P2 by removing the conditional expectation of (21)
+
+$$
+\begin{array}{l} \text {(P2)}: \min _ {y _ {i, k} (t), z _ {i, k} ^ {n} (t), f _ {i, k} (t), m _ {i} (t)} \sum_ {k \in \mathcal {K}} Z _ {k} (t) [ c _ {k} (t) - E _ {k} (t) ] \\ - V \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} r _ {i, k} (t) + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ Q _ {i, k} (t) - Q _ {i} (t) ] \theta_ {i} (t) \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ Q _ {i} (t) g _ {i} (t) - Q _ {i, k} (t) \mu_ {i} (t) - Q _ {i, k} (t) m _ {i} (t) ] \\ \text { s.t. } (C 1) - (C 1 1). \tag {22} \\ \end{array}
+$$
+
+In (22), the terms $Q _ { i } ( t ) g _ { i } ( t )$ and $Z _ { k } ( t ) E _ { k } ( t )$ are independent of the decision variables and hence can be ignored in this optimization problem. We decompose P2 into P2.1 and P2.2 with the consideration of task transmission and task processing independently. In P2.1, $y _ { i , k } ( t )$ and $z _ { i , k } ^ { n } ( t )$ are task offloading and subchannel allocation decision variables, respectively. In P2.2, $f _ { i , k } ( t )$ and $m _ { i } ( t )$ are task migration and computing resource allocation decision variables, respectively
+
+$$
+\begin{array}{l} \text {(P2.1)}: \min _ {y _ {i, k} (t), z _ {i, k} ^ {n} (t)} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} \left\{\left[ Q _ {i, k} (t) - Q _ {i} (t) \right] \theta_ {i} (t) - V r _ {i, k} (t) \right\} \\ \text { s.t. } (\mathrm{C5}), (\mathrm{C6}), (\mathrm{C7}), (\mathrm{C9}). \tag {23} \\ \end{array}
+$$
+
+# A. Task Offloading
+
+By substituting $\theta _ { i } ( t )$ with $\lfloor ( r _ { i , k } ( t ) \cdot \tau / Y ) \rfloor$ in P2.1, we have
+
+$$
+\begin{array}{l} \min _ {y _ {i, k} (t), z _ {i, k} ^ {\eta} (t)} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} \left\{\left[ Q _ {i, k} (t) - Q _ {i} (t) \right] \left\lfloor \frac {r _ {i , k} (t) \cdot \tau}{Y} \right\rfloor - V r _ {i, k} (t) \right\} \\ \text { s.t. } (\mathrm{C5}), (\mathrm{C6}), (\mathrm{C7}), (\mathrm{C9}). \tag {24} \\ \end{array}
+$$
+
+For brevity, we let
+
+$$
+G (t) = \sum_ {n = 0} ^ {N} z _ {i, k} ^ {n} (t) W \log_ {2} \left(1 + \frac {p _ {i , k} ^ {n} \beta_ {i , k} ^ {n} (t)}{\gamma + \sigma^ {2}}\right) \tag {25}
+$$
+
+and then we have
+
+$$
+r _ {i, k} (t) = y _ {i, k} (t) G (t). \tag {26}
+$$
+
+By substituting (26) into (24), we transform P2.1 into
+
+$$
+\begin{array}{l} \min _ {y _ {i, k} (t)} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} \left\{\left[ Q _ {i, k} (t) - Q _ {i} (t) \right] \right. \\ \left. \left\lfloor \frac {y _ {i , k} (t) G (t) \cdot \tau}{Y} - V y _ {i, k} (t) G (t) \right\rfloor \right\} \\ \text { s   .   t   . } (\mathrm{C} 5). \tag {27} \\ \end{array}
+$$
+
+We observe that (27) is a linear function of $y _ { i , k } ( t )$ , then we obtain the optimal solution of the offloading decision as
+
+$$
+y _ {i, k} ^ {*} (t) = \left\{ \begin{array}{l l} 1, & \frac {[ Q _ {i , k} (t) - Q _ {i} (t) ] G (t) \cdot \tau}{Y} - V G (t) \leq 0 \\ 0, & \text { otherwise. } \end{array} \right. \tag {28}
+$$
+
+# Algorithm 1 Subchannel Allocation Algorithm
+
+# 1: Input:
+
+At the beginning of each time slot t, obtain $\beta _ { i , k } ^ { n } ( t ) .$ , $A _ { i , k } ( t )$ and $B _ { k } ( t )$ .
+
+2: while $B _ { k } ( t ) \neq \emptyset$ do
+
+3: for int $k = 0 , k \le M _ { k } , k + + d o$
+
+4: Calculate $W _ { i , k } ^ { n } ( t )$ with formula (30).
+
+5: endfor
+
+6: obtain the optimal i∗ from formula (31).
+
+7: let $z _ { i ^ { * } , k } ^ { n } { } ^ { * } ( t ) = 1 \ i f i = \mathrm { a r g m i n } W _ { i , k } ^ { n } ( t ) .$
+
+8: update: $\mathsf { \cdot } A _ { i , k } ( t ) = A _ { i , k } ( t ) \cup \{ n ^ { * } \} ,$
+
+$$
+B _ {k} (t) = B _ {k} (t) - \{n ^ {*} \}.
+$$
+
+9: endwhile
+
+# B. Subchannel Allocation
+
+When $y _ { i , k } ( t )$ is determined, we rewrite (24) as
+
+$$
+\min _ {z _ {i, k} ^ {n} (t)} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} \sum_ {n = 0} ^ {N} \left\{\frac {[ Q _ {i , k} (t) - Q _ {i} (t) ] \cdot \tau}{Y} - V \right\}
+$$
+
+$$
+z _ {i, k} ^ {n} (t) W \log_ {2} \left(1 + \frac {p _ {i , k} \beta_ {i , k} ^ {n} (t)}{\gamma + \sigma^ {2}}\right)
+$$
+
+$$
+\text { s.t. } (\mathrm{C6}), (\mathrm{C7}). \tag {29}
+$$
+
+For all $k \in \mathcal { K } , i \in M _ { k }$ and $n \in N ,$ we let
+
+$$
+W _ {i, k} ^ {n} (t) = \left\{\frac {[ Q _ {i , k} (t) - Q _ {i} (t) ] \cdot \tau}{Y} - V \right\} \cdot W \log_ {2}
+$$
+
+$$
+\left(1 + \frac {p _ {i , k} ^ {n} \beta_ {i , k} ^ {n} (t)}{\sum_ {q \in \mathcal {K}} \sum_ {j \in M _ {q} (t) \backslash q \neq k} y _ {j , q} (t) p _ {j , q} ^ {n} (t) \beta_ {j , q} ^ {n} (t) + \sigma^ {2}}\right) \tag {30}
+$$
+
+which represents the weight of TU i on subchannel n. Then, for the nth subchannel, we get the subchannel allocation indicator $z _ { i , k } ^ { n } ( t )$ as
+
+$$
+z _ {i, k} ^ {n} (t) = \left\{ \begin{array}{l l} 1, & i = \arg \min W _ {i, k} ^ {n} (t) \\ 0, & \text { otherwise. } \end{array} \right. \tag {31}
+$$
+
+Based on this observation, we design a subchannel allocation scheme to meet the communication requirements of different TUs, as shown in Algorithm 1. We use $A _ { i , k } ( t )$ to represent the set of subchannels allocated to each TU, and $B _ { k } ( t )$ to denote the remaining available subchannel resources of MIS k.
+
+After solving P2.1, we attempt to find the optimal solution to P2.2, which is expressed as
+
+(P2.2):
+
+$$
+\begin{array}{l} \min _ {f _ {i, k} (t), m _ {i} (t)} \left\{Z _ {k} (t) c _ {k} (t) - \sum_ {i \in M _ {k}} Q _ {i, k} (t) [ \mu_ {i} (t) + m _ {i} (t) ] \right\} \\ \text { s.t. } (C 3), (C 4), (C 8), (C 1 0), (C 1 1). \tag {32} \\ \end{array}
+$$
+
+By substituting $\mu _ { i } ( t )$ and $c _ { k } ( t )$ with $\begin{array} { r l r l } { \mu _ { i } ( t ) } & { { } } & { = } \end{array}$ $\lfloor [ f _ { i , k } ( t ) F _ { k } \cdot \tau ] / \alpha Y \rfloor$ and (12), we transform P2.2 into
+
+$$
+\min _ {f _ {i, k} (t), m _ {i} (t)} Z _ {k} (t) \left\{c _ {k} ^ {\text { bas }} (t) + p _ {k} \frac {\sum_ {i \in M _ {k}} m _ {i} (t) Y}{R _ {k} (t)} \right.
+$$
+
+$$
+\left. + \sum_ {i \in M _ {k}} \epsilon (f _ {i, k} (t) F _ {k}) ^ {3} \tau \right\}
+$$
+
+$$
+- \sum_ {i \in M _ {k}} \left\{Q _ {i, k} (t) \left\lfloor \frac {f _ {i , k} (t) F _ {k} \cdot \tau}{\alpha Y} \right\rfloor + Q _ {i, k} (t) m _ {i} (t) \right\}
+$$
+
+$$
+= \min _ {f _ {i, k} (t), m _ {i} (t)} \sum_ {i \in M _ {k}} \left\{\frac {Z _ {k} (t) p _ {k} Y}{R _ {k} (t)} m _ {i} (t) - Q _ {i, k} (t) m _ {i} (t) \right\}
+$$
+
+$$
++ \sum_ {i \in M _ {k}} \left\{Z _ {k} (t) \epsilon \left(f _ {i, k} (t) F _ {k}\right) ^ {3} \tau - Q _ {i, k} (t) \left\lfloor \frac {f _ {i , k} (t) F _ {k} \cdot \tau}{\alpha Y} \right\rfloor \right\}
+$$
+
+$$
++ Z _ {k} (t) c _ {k} ^ {\text { bas }} (t)
+$$
+
+$$
+\text { s.t. } (C 3), (C 4), (C 8), (C 1 0), (C 1 1). \tag {33}
+$$
+
+In (33), $Z _ { k } ( t ) c _ { k } ^ { \mathrm { b a s } } ( t )$ is independent of decision variable in this optimization and hence can be ignored. The remaining items of (33) can be divided into two major problems, i.e., task migration and computing resource allocation, respectively.
+
+# C. Task Migration
+
+$$
+\min _ {m _ {i} (t)} \sum_ {i \in M _ {k}} \left\{\frac {Z _ {k} (t) p _ {k} Y}{R _ {k} (t)} m _ {i} (t) - Q _ {i, k} (t) m _ {i} (t) \right\}
+$$
+
+$$
+\text { s.t. } (C 8), (C 1 1). \tag {34}
+$$
+
+We observe that (34) is a linear program which can be optimized at each time slot. The optimal solution is
+
+$$
+m _ {i} ^ {*} (t) = \left\{ \begin{array}{l l} \theta_ {i} (t) - \mu_ {i} (t), & \frac {Z _ {k} (t) p _ {k} Y}{R _ {k} (t)} - Q _ {i, k} (t) \leq 0 \\ 0, & \text { otherwise. } \end{array} \right. \tag {35}
+$$
+
+When $( Z _ { k } ( t ) p _ { k } Y / R _ { k } ( t ) ) - Q _ { i , k } ( t ) \leq 0 .$ , the task buffer of TU i at MIS k is large and the channel condition from MIS k to CBS is better with larger $R _ { k } ( t )$ . In this case, the best way is to migrate all the tasks to CBS for computing. Otherwise, it is preferable to process all the tasks from TU i at MIS k when the queue length $Q _ { i , k } ( t )$ is short.
+
+# D. Computing Resource Allocation
+
+$$
+\min _ {f _ {i, k} (t)} \sum_ {i \in M _ {k}} \left\{Z _ {k} (t) \epsilon \left(f _ {i, k} (t) F _ {k}\right) ^ {3} \tau - Q _ {i, k} (t) \left\lfloor \frac {f _ {i , k} (t) F _ {k}}{\alpha Y} \right\rfloor \right\}
+$$
+
+$$
+\text { s.t. } (C 3), (C 4). \tag {36}
+$$
+
+The objective function in (36) is convex which can be proved by the second-order derivative. Since each $f _ { i , k } ( t )$ is mutually independent under one MIS, we can easily obtain the optimal value for each TU under C4. However, sometimes if all the TUs take the optimal value of $f _ { i , k } ( t )$ , C3 cannot be satisfied. In this case, we evenly allocate the computing resources under the MIS. Then, the optimal computing resource allocation variable $f _ { i , k } ( t )$ for MIS k to process the computing task of TU i is given by
+
+Algorithm 2 Computational Resource Allocation Algorithm   
+1: Input: $\alpha$ , Y, $\tau$ , $\epsilon$ .
+2: Initialization: $t \leftarrow 0$ , $Q_{k}(0)=0, Q_{i,k}(0)=0, Z_{k}(0)=0.$ 3: while $t \leq T$ do
+4: At the beginning of each time slot t, obtain $Q_{k}(t)$ , $Q_{i,k}(t), Z_{k}(t).$ 5: Determine $f_{i,k}^{*}(t)$ with formula (36) and (37).
+6: endwhile
+
+Algorithm 3 JCORA Algorithm   
+1: Initialization: $t \leftarrow 0$ , $Q_k(0) = 0, Q_{i,k}(0) = 0, Z_k(0) = 0$ .  
+2: while $t \leq T$ do  
+3: At the beginning of each time slot $t$ , obtain $Q_k(t)$ $Q_{i,k}(t), Z_k(t)$ .  
+4: Obtain $z_{i,k}^n(t)$ by calling Algorithm 1.  
+5: Determine $y_{i,k}(t)$ with formula (28).  
+6: Calculate $\theta_i(t)$ by $\theta_i(t) = \lfloor \frac{r_{i,k}(t)\cdot\tau}{Y} \rfloor$ .  
+7: Calculate (34) and get $m_i(t)$ with (35).  
+8: Run Algorithm 2 to determine the computational resource allocation policy $f_{i,k}^*(t)$ .  
+9: endwhile  
+10: Update the queues and $t \leftarrow t + 1$ .
+
+$$
+f _ {i, k} ^ {*} (t) = \left\{ \begin{array}{l l} \sqrt {\frac {Q _ {i , k} (t)}{3 \alpha Y Z _ {k} (t) \in F _ {k} ^ {2}}}, & \sum_ {i \in M _ {k}} f _ {i, k} (t) \leq 1 \\ \frac {\sqrt {Q _ {i , k} (t)}}{\sum_ {i \in M _ {k}} \sqrt {Q _ {i , k} (t)}}, & \sum_ {i \in M _ {k}} f _ {i, k} (t) > 1. \end{array} \right. \tag {37}
+$$
+
+On this basis, we propose a computing resource allocation algorithm to solve (36), which is described in Algorithm 2.
+
+By optimizing task offloading, subchannel resource allocation, task migration and computing resource allocation, we propose a joint computation offloading and resource allocation (JCORA) algorithm for the optimization objective. The whole process is described in Algorithm 3.
+
+Next, we rigorously analyze the performance of JCORA theoretically. Specifically, we demonstrate that the average network throughput achieved by JCORA can arbitrarily approximate the optimal solution and that there exists a supremum bound for the expected average queue length, which are summarized in Theorem 2.
+
+Theorem 2: For any $V > 0 ,$ , the performance gap between the optimal solution of the original problem P1 (denoted as $\overline { { \mathcal { H } ^ { * } ( t ) } } )$ and the result of JCORA is represented by
+
+$$
+\overline {{{{\mathcal {H} ^ {*} (t)}}}} - \overline {{{{\mathcal {H} (t)}}}} \leq \frac {C}{V} \tag {38}
+$$
+
+and the average queue length is upper bounded by
+
+$$
+\overline {{{Q}}} \leq \frac {1}{\xi} \left\{C + V \cdot [ \mathcal {H} (t) ^ {\max} - \mathcal {H} (t) ^ {\min} ] \right\} \tag {39}
+$$
+
+where $\mathcal { H } ( t ) ^ { \mathrm { m a x } }$ and $\mathcal { H } ( t ) ^ { \mathrm { m i n } }$ represent the maximum and minimum values of the original problem, respectively, ξ is a real number greater than 0.
+
+The proof of Theorem 2 is provided in Appendix C.
+
+Theorem 2 sheds light on an [O(1/V), O(V)] tradeoff between average network throughput and queue length (or, latency). Equation (38) demonstrates that the gap between the network throughput of JCORA and the optimal solution is upper bounded by $( C / V )$ . If V is sufficiently large, the average network throughput of JCORA can be asymptotically close to the optimum value. In (39), the average queue length of JCORA is proved to be upper bounded, which illustrates that JCORA can always maintain the stability of all the queues. Intuitively, the performance of JCORA depends on the control parameter V, which can be tuned flexibly to improve the network throughput, but at the price of a larger delay since the average queue length increases linearly with V. Thus, by adjusting the control parameter V, we can dexterously reap the balance between the average network throughput and queue length.
+
+Then, we give the computational complexity of the proposed JCORA algorithm which mainly consists of five parts, i.e., lines 2–8 in Algorithm 3. Since the task offloading decision is made by each MIS, its computation overhead is linear with the number of MIS s, i.e., O(KMk). In Algorithm 1, we first obtain the computation overhead of subchannel allocation of which is $O ( N M _ { k } )$ . Thus, the computation overhead of subchannel allocation is O(KNMk). The Task migration is calculated with (35) and the computation overhead of which is liner with the number of TUs, i.e., O(KMk). Similar to the subchannel allocation, the computation overhead of computation resource allocation at one MIS is also $O ( M _ { k } )$ since each MIS calculates the CPU-cycle frequency $f _ { i , k } ( t )$ via (37). Therefore, the computational complexity of the proposed JCORA algorithm is $O ( K M _ { k } ) + O ( N M _ { k } ) + O ( K N M _ { k } ) +$ $O ( K M _ { k } ) = O ( K N M _ { k } )$ .
+
+# V. PERFORMANCE EVALUATION
+
+In this section, we evaluate the performance of the proposed JCORA algorithm through simulations, which is done under different parameters of V, and compared with other three resource allocation schemes in terms of average throughput and average latency. As we mentioned earlier, We consider the average network throughput as the optimization objective, which is calculated as the expected aggregate transmission rate of the whole system in each time slot.
+
+# A. Simulation Setup
+
+All the simulations are conducted using MATLAB on a PC configured with a Core i7-10510U 1.80-GHz CPU and 8 GB of RAM. We consider an offshore network consisting of 1 CBS and 5 MISs which are deployed in a $4 0 0 \times 4 0 0 ~ \mathrm { m } ^ { 2 }$ area, together with 5-30 random sailing TUs. In this system, MIS is responsible for making resource allocation decisions for each TU, so as to maximize the network throughput under the constraints of average latency and power consumption. The overall spectrum bandwidth of CBS is 100 MHz and each MIS has 30 subchannels for computation offloading of its associated TUs. The bandwidth of each subchannel is 1 MHz. The power spectral density of the additive white Gaussian noise is −174 dBm/Hz. The antenna heights above sea level of TU i and MIS k are 10 and 50 m, respectively. We assume each MIS communicates with the CBS over LTE and with its associated TUs over WiFi. All the TUs are randomly distributed and sailing around potentially. We assume all the MISs reuse the same portion of radio resources to exploit the resource multiplexing gain with controlled inter-MIS interference. Other simulation parameters are shown in Table II.
+
+TABLE II SIMULATION PARAMETER SETTINGS 
+
+<table><tr><td>Parameters</td><td>Values</td></tr><tr><td>Subchannel bandwidth,  $W$ </td><td>1MHz</td></tr><tr><td>Noise power,  $\sigma^{2}$ </td><td> $-174dBm/Hz$ </td></tr><tr><td>Transmission power of TU,  $p_{i,k}^{n}$ </td><td>0.1W</td></tr><tr><td>Transmission power of MIS  $k$ ,  $p_{k}$ </td><td>1W</td></tr><tr><td>The maximum energy storage of each MIS,  $E_{max}$ </td><td>20J</td></tr><tr><td>The computing frequency of MIS,  $F_{k}$ </td><td>1G cycles/s</td></tr><tr><td>Slot time,  $\tau$ </td><td>0.05s</td></tr><tr><td>The power coefficient of each MIS, $\epsilon$ </td><td>1e-25</td></tr><tr><td>WaveLength of MIS  $k$ ,  $\lambda_{k,n}$ </td><td>0.125m</td></tr><tr><td>WaveLength of CBS,  $\lambda_{c,k}$ </td><td>0.02m</td></tr><tr><td>Number of CPU cycles for 1 bit data,  $\alpha$ </td><td>1000cycles/bit</td></tr><tr><td>Task size,  $Y$ </td><td>1000bit</td></tr><tr><td>The radio resource allocation ratio,  $\rho_{k}$ </td><td>0.1</td></tr><tr><td>Maximum number of task arrivals,  $g^{max}$ </td><td>300</td></tr></table>
+
+![](images/cfd26ad6743fc552a6a8c850d8c555f622924e38479648fe9b38535c7ea4cbdb.jpg)  
+Fig. 2. Average throughput and average latency versus V.
+
+# B. Performance Evaluation
+
+1) Throughput-Latency Tradeoff: Fig. 2 illustrates the effect of control parameter V on the performance of JCORA algorithm. As V increases, the average network throughput becomes high, which is consistent with our theoretical analysis. For a larger V, the algorithm emphasizes on the network throughput more than on the queue stability, and thus the maximum network capacity can be reached when V approaches to 1. JCORA dynamically tunes resource allocation decisions to improve the average throughput. In addition, the
+
+![](images/dab59a25a3df31eb3f38b4ddcba896b06e58d00e14e71b168d2570d6e07520f7.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time slot | V=0.05 | V=0.1  | V=0.5  |
+| --------- | ------ | ------ | ------ |
+| 20        | 45     | 45     | 45     |
+| 40        | 85     | 80     | 80     |
+| 60        | 145    | 125    | 125    |
+| 80        | 200    | 180    | 170    |
+| 100       | 265    | 240    | 220    |
+</details>
+
+Fig. 3. Energy queue length versus time slot.
+
+![](images/77a1a44aa41bb74b7daa9bc2a354eda78900d4ed39ede1e804f165b44a7c643c.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time slot | Energy consumption | Energy queue length |
+| --------- | ------------------ | ------------------- |
+| 20        | 40                 | 40                  |
+| 40        | 80                 | 80                  |
+| 60        | 110                | 130                 |
+| 80        | 150                | 180                 |
+| 100       | 180                | 240                 |
+</details>
+
+Fig. 4. Average energy consumption versus energy queue length.
+
+latency increases with control parameter V, because a large V implies a heavy weight on achieving high throughput, which leads to the increase of average queue length and queuing delay. From Fig. 2, we can see that the proposed algorithm balances throughput with latency by adjusting the value of V. 2) Energy Queue Length and Energy Consumption: Fig. 3 shows the change of energy queue length under different control parameter V. We observe that the energy queue length tends to decrease with the increase of V. This is because when V increases, the average throughput of the system becomes larger, resulting in the increase of system energy consumption and the decrease of energy queue length. Fig. 4 illustrates the average energy consumption and the corresponding energy queue length with respect to different number of time slots. The results show that the average energy consumption is always lower than the energy queue length in different time slots, which satisfies C1 in (17). In this way, the long-term energy constraints of MISs is satisfied.
+
+3) Effect of the Number of TUs: Figs. 5 and 6 illustrate the average throughput and average latency of the system with respect to different number of TUs under different values of control parameter V. When the number of TUs increases, the average throughput is improved at the expense of increased latency. As seen in Figs. 5 and 6, JCORA can adapt to different number of TUs and improve the average network throughput at a tolerable latency.
+
+![](images/7c2ef51befb93dc18b35ae5a16510b47bde9c9f97f65c72b2dd4f493e8885713.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of TUs | V=0.05 | V=0.1  | V=0.5  |
+| ------------- | ------ | ------ | ------ |
+| 5             | 9.0    | 9.5    | 10.0   |
+| 10            | 16.5   | 18.5   | 21.5   |
+| 15            | 18.0   | 20.5   | 22.0   |
+| 20            | 20.0   | 22.0   | 24.5   |
+| 25            | 21.5   | 23.5   | 25.5   |
+| 30            | 22.5   | 24.0   | 26.5   |
+</details>
+
+Fig. 5. Average throughput versus number of TUs.
+
+![](images/328af1abf78e57aa592a514764c4a96ef6ab7c17e0fe17e9fbd6282f590696c7.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of TUs | JCORA | FRA  | LRA  | PRA  | TRA  |
+| ------------- | ----- | ---- | ---- | ---- | ---- |
+| 5             | 9.0   | 8.0  | 8.0  | 7.5  | 8.5  |
+| 10            | 19.0  | 16.5 | 16.0 | 14.0 | 17.0 |
+| 15            | 20.5  | 18.0 | 18.5 | 15.0 | 19.5 |
+| 20            | 22.5  | 19.0 | 19.5 | 16.5 | 21.0 |
+| 25            | 23.5  | 20.5 | 22.0 | 17.5 | 23.0 |
+| 30            | 24.0  | 21.0 | 23.0 | 18.5 | 23.5 |
+</details>
+
+Fig. 7. Average throughput versus number of TUs.
+
+![](images/ac5a4b922d09d3eac9b32f07cd1ddfac6f43f955c469b7d5e1c83b743324e274.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of TUs | V=0.05 | V=0.1  | V=0.5  |
+| ------------- | ------ | ------ | ------ |
+| 5             | 0.21   | 0.21   | 0.23   |
+| 10            | 0.24   | 0.26   | 0.28   |
+| 15            | 0.32   | 0.33   | 0.34   |
+| 20            | 0.35   | 0.36   | 0.37   |
+| 25            | 0.36   | 0.37   | 0.38   |
+| 30            | 0.38   | 0.39   | 0.40   |
+</details>
+
+Fig. 6. Average latency versus number of TUs.
+
+![](images/cd253c9172b8ad763068a8f2e5ddca6f11d800e5a6cf0f1c3516a405e64c407c.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of TUs | JCORA  | FRA    | LRA    | PRA    | TRA    |
+| ------------- | ------ | ------ | ------ | ------ | ------ |
+| 5             | 0.21   | 0.26   | 0.25   | 0.31   | 0.24   |
+| 10            | 0.26   | 0.30   | 0.29   | 0.33   | 0.27   |
+| 15            | 0.32   | 0.38   | 0.36   | 0.40   | 0.34   |
+| 20            | 0.35   | 0.40   | 0.39   | 0.43   | 0.37   |
+| 25            | 0.37   | 0.44   | 0.43   | 0.45   | 0.40   |
+| 30            | 0.39   | 0.45   | 0.44   | 0.47   | 0.42   |
+</details>
+
+Fig. 8. Average latency versus number of TUs.
+
+# C. Performance Comparison
+
+We further compare the performance of JCORA (V is set to 0.1) with four benchmark algorithms listed as follows.
+
+1) First-in-First-Out (FIFO)-Based Resource Allocation Algorithm (FRA) [30]: The communication and computation resources of MIS k are allocated to the first packet arrival sequence of TUs, and the other TUs wait in line following the M/M/1 queuing process.   
+2) Latency-Based Resource Allocation Algorithm (LRA): Under the energy limitation of MIS in each time slot, $f _ { i , k } ( t )$ is determined by the latency constraint of each TU under MIS k. If $f _ { i , k } ( t )$ exceeds the maximum computing frequency that MIS k can provide, the optimal resource allocation solution is the maximum $f _ { i , k } ( t )$ for each TU under the maximum tolerance time of TU i [55].   
+3) Priority-Based Resource Allocation Algorithm (PRA): Each TU under MIS k is prioritized by the task arrival rate $g _ { i } ( t )$ . The higher the task arrival rate, the higher the priority obtained, and the more advantageous the resource allocation, then the communication and computation resources are allocated according to the obtained priority [56].   
+4) Time Division Multiple Access (TDMA)-Based Resource Allocation Algorithm (TRA): Multiple TUs can access a
+
+subchannel under one MIS at different times in a time slot [57].
+
+Fig. 7 demonstrates the average throughput with respect to the number of TUs for five different algorithms. We observe that the average throughput of JCORA is the highest compared with FRA, LRA, PRA, and TRA. The reason is that JCORA can adjust the decisions of task offloading and resource allocation according to the changes of channel state, real-time energy state and random task arrivals, etc. In contrast, LRA, PRA and TRA do not consider the network dynamics when making resource allocation decisions while FRA allocate resources to only one TU at a time. Fig. 8 shows a comparison of average latency with respect to the number of TUs achieved by different algorithms. We observe that the latency of JCORA is lower than that of FRA, LRA, PRA, and TRA. The latency of FRA is the largest, because FRA can only process tasks for one TU at a time slot. The more the TUs, the longer the queueing delay. In Figs. 7 and 8, we observe the advantages of JCORA in improving the average network throughput and stabilizing the queue length.
+
+We further compare the average throughput and average latency of the five algorithms under different task arrival rates in Figs. 9 and 10. We observe that both the average throughput and average latency are in a positive correlation with task arrival rate. Among them the average throughput of JCORA outperforms the others, because JCORA makes resource allocation and computation offloading decisions by adapting to the dynamic network environment. The performance of TRA is also superior to the other three algorithms, as the adopt of TDMA can also achieve better relatively allocation of communication resources.
+
+![](images/fd0ab490f324b0116eb836c95554403a654d60d1a55b098d495c432e885a80ec.jpg)
+
+<details>
+<summary>line</summary>
+
+| Task arrival rate | JCORA | FRA  | LRA  | PRA  | TRA  |
+| ----------------- | ----- | ---- | ---- | ---- | ---- |
+| 100               | 21.5  | 17.2 | 19.3 | 18.1 | 20.0 |
+| 150               | 22.1  | 17.8 | 20.0 | 18.6 | 20.9 |
+| 200               | 22.5  | 18.4 | 20.7 | 19.7 | 21.4 |
+| 250               | 22.8  | 19.0 | 21.5 | 20.8 | 22.1 |
+| 300               | 23.0  | 20.0 | 21.9 | 21.3 | 22.5 |
+</details>
+
+Fig. 9. Average throughput versus task arrival rate.
+
+![](images/dd8044383a6b8aa73fe33eedfdea286541e46f6d7f4f7f48e9a40e798fc577e9.jpg)
+
+<details>
+<summary>line</summary>
+
+| Task arrival rate | JCORA  | FRA    | LRA    | PRA    | TRA    |
+| ----------------- | ------ | ------ | ------ | ------ | ------ |
+| 100               | 0.35   | 0.40   | 0.36   | 0.375  | 0.36   |
+| 150               | 0.37   | 0.43   | 0.40   | 0.41   | 0.385  |
+| 200               | 0.39   | 0.44   | 0.42   | 0.425  | 0.405  |
+| 250               | 0.405  | 0.46   | 0.43   | 0.44   | 0.42   |
+| 300               | 0.415  | 0.465  | 0.44   | 0.45   | 0.43   |
+</details>
+
+Fig. 10. Average latency versus task arrival rate.
+
+Finally, we compare the average throughput of the five algorithms under different maximal energy charging rates in Figs. 11 and 12. We observe that the performance of JCORA outperforms the others, and the average throughput increases when the maximal energy charging rate is larger while the latency is just the opposite, due to the fact that the greater the energy obtained by the MIS, the more tasks can be processed, and the processing speed will also be improved.
+
+# VI. CONCLUSION AND FUTURE WORK
+
+In this article, we have considered a sea lane monitoring network with MEC and EH and investigated a throughputqueue stability tradeoff for dynamic computation offloading. With stable task and energy queues, we have proposed a JCORA algorithm based on the Lyapunov optimization to obtain the JCORA decisions. We transform the original problem into a deterministic program, which is decoupled into multiple independent subproblems for optimization. The performance analysis is carried out to reveal the asymptotic optimality of the proposed algorithms and demonstrate the superiority over other benchmark schemes. Our study provides a feasible approach to design future offshore MEC-enabled networks with renewable energy powered edge servers. For future work, we will study resource allocation and computation offloading problems for more complex and dynamic marine scenarios (e.g., environment monitoring) by exploring machine learning techniques (e.g., DRL) for decision making.
+
+![](images/c7ea3c50a7f7703cedc57816cbba86bd2459f9dff0629393b232b6da22ef3c25.jpg)
+
+<details>
+<summary>line</summary>
+
+| Maximal energy charging rate (J) | JCORA | FRA  | LRA  | PRA  | TRA  |
+| -------------------------------- | ----- | ---- | ---- | ---- | ---- |
+| 2                                | 8.0   | 5.0  | 6.0  | 4.5  | 7.0  |
+| 4                                | 15.0  | 9.0  | 12.5 | 7.5  | 13.0 |
+| 6                                | 22.5  | 19.0 | 20.0 | 16.5 | 20.5 |
+| 8                                | 27.5  | 21.0 | 23.5 | 19.5 | 26.5 |
+| 10                               | 30.5  | 24.5 | 26.0 | 23.0 | 29.0 |
+| 12                               | 32.5  | 26.5 | 28.0 | 25.0 | 30.5 |
+</details>
+
+Fig. 11. Average throughput versus maximal energy charging rate.
+
+![](images/fc42b742576860f0945bb8defac53f0e1f7417afd5318488f8f4a0832a3e93e6.jpg)
+
+<details>
+<summary>line</summary>
+
+| Maximal energy charging rate (J) | JCORA  | FRA    | LRA    | PRA    | TRA    |
+| -------------------------------- | ------ | ------ | ------ | ------ | ------ |
+| 2                                | 0.405  | 0.420  | 0.440  | 0.475  | 0.415  |
+| 4                                | 0.385  | 0.400  | 0.425  | 0.450  | 0.395  |
+| 6                                | 0.355  | 0.375  | 0.390  | 0.425  | 0.365  |
+| 8                                | 0.330  | 0.345  | 0.365  | 0.395  | 0.340  |
+| 10                               | 0.315  | 0.335  | 0.350  | 0.370  | 0.325  |
+| 12                               | 0.305  | 0.320  | 0.335  | 0.355  | 0.315  |
+</details>
+
+Fig. 12. Average latency versus maximal energy charging rate.
+
+# APPENDIX A PROOF OF THEOREM 1
+
+Proof:
+
+$$
+Z _ {k} (t + 1) = \max \left[ Z _ {k} (t) + c _ {k} (t) - E _ {k} (t), 0 \right]
+$$
+
+$$
+\geq Z _ {k} (t) + c _ {k} (t) - E _ {k} (t) \tag {40}
+$$
+
+$$
+\frac {Z _ {k} (t)}{t} \geq \frac {Z _ {k} (0)}{t} + \frac {1}{t} \sum_ {s = 0} ^ {t - 1} [ c _ {k} (x) - E _ {k} (x) ] \tag {41}
+$$
+
+$$
+\frac {\mathbb {E} \{Z _ {k} (t) \} - Z _ {k} (0)}{t} \geq \frac {1}{t} \sum_ {s = 0} ^ {t - 1} \mathbb {E} \{c _ {k} (x) - E _ {k} (x) \} \tag {42}
+$$
+
+$$
+\lim _ {t \to \infty} \frac {\mathbb {E} \{Z _ {k} (t) \}}{t} \geq \lim _ {t \to \infty} \frac {1}{t} \sum_ {s = 0} ^ {t - 1} \mathbb {E} \{c _ {k} (x) - E _ {k} (x) \}. \tag {43}
+$$
+
+If $Z _ { k } ( t )$ is stable, li $1 _ { T  \infty } ( [ \mathbb { E } \{ Z _ { k } ( t ) \} ] / t ) = 0 \mathrm { . }$ , which means that the constraint $( c _ { k } ( t ) \leq E _ { k } ( t ) )$ is satisfied.
+
+# APPENDIX B PROOF OF (\*) IN (20)
+
+Proof:
+
+$$
+\begin{array}{l} \mathbf {L} (\Theta (t + 1)) - \mathbf {L} (\Theta (t)) = \frac {1}{2} \sum_ {k \in \mathcal {K}} [ Z _ {k} ^ {2} (t + 1) - Z _ {k} ^ {2} (t) ] \\ + \frac {1}{2} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ Q _ {i} ^ {2} (t + 1) - Q _ {i} ^ {2} (t) ] \\ + \frac {1}{2} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ Q _ {i, k} ^ {2} (t + 1) - Q _ {i, k} ^ {2} (t) ]. \tag {44} \\ \end{array}
+$$
+
+Based on the inequality
+
+$$
+[ \max (X - Y, 0) + A ] ^ {2} \leq X ^ {2} + Y ^ {2} + A ^ {2} + 2 X (A - Y) \tag {45}
+$$
+
+we can obtain
+
+$$
+\begin{array}{l} Z _ {k} ^ {2} (t + 1) - Z _ {k} ^ {2} (t) = [ Z _ {k} (t) + c _ {k} (t) - E _ {k} (t) ] ^ {2} - [ Z _ {k} (t) ] ^ {2} \\ = \left[ c _ {k} (t) \right] ^ {2} + \left[ E _ {k} (t) \right] ^ {2} + 2 Z _ {k} (t) \left[ c _ {k} (t) - E _ {k} (t) \right] - 2 c _ {k} (t) E _ {k} (t) \\ \leq \left[ c _ {k} (t) \right] ^ {2} + \left[ E _ {k} (t) \right] ^ {2} + 2 Z _ {k} (t) \left[ c _ {k} (t) - E _ {k} (t) \right]. \tag {46} \\ \end{array}
+$$
+
+Similarly, we have
+
+$$
+\begin{array}{l} Q _ {i} ^ {2} (t + 1) - Q _ {i} ^ {2} (t) \\ \leq [ \theta_ {i} (t) ] ^ {2} + [ g _ {i} (t) ] ^ {2} + 2 Q _ {i} (t) [ g _ {i} (t) - \theta_ {i} (t) ] \tag {47} \\ \end{array}
+$$
+
+and
+
+$$
+\begin{array}{l} Q _ {i, k} ^ {2} (t + 1) - Q _ {i, k} ^ {2} (t) \leq [ \theta_ {i} (t) ] ^ {2} + [ \mu_ {i} (t) ] ^ {2} + [ m _ {i} (t) ] ^ {2} \\ + 2 Q _ {i, k} (t) \left[ \theta_ {i} (t) - \mu_ {i} (t) - m _ {i} (t) \right]. \tag {48} \\ \end{array}
+$$
+
+Combining (46)–(48), we have
+
+$$
+\begin{array}{l} \mathbf {L} (\Theta (t + 1)) - \mathbf {L} (\Theta (t)) \leq C + \sum_ {k \in \mathcal {K}} Z _ {k} (t) [ c _ {k} (t) - E _ {k} (t) ] \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i} (t) [ g _ {i} (t) - \theta_ {i} (t) ] \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i, k} (t) [ \theta_ {i} (t) - \mu_ {i} (t) - m _ {i} (t) ] \tag {49} \\ \end{array}
+$$
+
+where C can be described as:
+
+$$
+\begin{array}{l} C = \frac {1}{2} \sum_ {k \in \mathcal {K}} c _ {k} (t) ] ^ {2} + [ E _ {k} (t) ] ^ {2} + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ \theta_ {i} (t) ] ^ {2} + [ g _ {i} (t) ] ^ {2} ] \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ \theta_ {i} (t) ] ^ {2} + [ \mu_ {i} (t) ] ^ {2} + [ m _ {i} (t) ] ^ {2} ] \\ \leq \sum_ {k \in \mathcal {K}} \left\{E _ {\max} ^ {2} + \sum_ {i \in M _ {k}} \left[ \left(\theta_ {i} ^ {\max}\right) ^ {2} + (g _ {i}) ^ {\max}) ^ {2} + \frac {1}{2} \left(\mu_ {i} ^ {\max}\right) ^ {2} \right] \right\}. \tag {50} \\ \end{array}
+$$
+
+# APPENDIX C PROOF OF THEOREM 2
+
+Proof: According to Caratheodory’s theorem [53], there always exists an optimal policy π1, which satisfies
+
+$$
+\begin{array}{l} \mathbb {E} \{\mathcal {H} (t) | \pi_ {1} \} = \overline {{\mathcal {H} ^ {*} (t)}} \\ \mathbb {E} \{c _ {k} (t) | \pi_ {1} \} \leq \mathbb {E} \{E _ {k} (t) | \pi_ {1} \} \\ \mathbb {E} \{g _ {i} (t) | \pi_ {1} \} \leq \mathbb {E} \{\theta_ {i} (t) | \pi_ {1} \} \\ \mathbb {E} \{\theta_ {i} (t) | \pi_ {1} \} \leq \mathbb {E} \{\mu_ {i} (t) + m _ {i} (t) | \pi_ {1} \}. \tag {51} \\ \end{array}
+$$
+
+By substituting (51) into (21), we have
+
+$$
+\begin{array}{l} \Delta (\Theta (t)) - V \cdot \mathbb {E} \{\mathcal {H} (t) | \Theta (t) \} \\ \leq C - V \overline {{{{\mathcal {H} ^ {*} (t)}}}} + \sum_ {k \in \mathcal {K}} Z _ {k} (t) \mathbb {E} \left\{\left[ c _ {k} (t) - E _ {k} (t) \right] \mid \pi_ {1} \right\} \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i} (t) \mathbb {E} \left\{\left[ g _ {i} (t) - \theta_ {i} (t) \right] \mid \pi_ {1} \right\} \\ + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i, k} (t) \mathbb {E} \left\{\left[ \theta_ {i} (t) - \mu_ {i} (t) - m _ {i} (t) \right] \mid \pi_ {1} \right\} \\ \leq C - V \overline {{{\mathcal {H} ^ {*} (t)}}} + 0. \tag {52} \\ \end{array}
+$$
+
+Then for a stable system, we have
+
+$$
+\Delta (\Theta (t)) - V \cdot \mathbb {E} \{\mathcal {H} (t) | \Theta (t) \} \leq C - V \overline {{\mathcal {H} ^ {*} (t)}} \tag {53}
+$$
+
+and
+
+$$
+\sum_ {t = 0} ^ {T - 1} \Delta (\Theta (t)) = \mathbf {L} (\Theta (T)) <   \infty . \tag {54}
+$$
+
+Combining (53) and (54), we have
+
+$$
+\begin{array}{l} \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} \Delta (\Theta (t)) - V \cdot \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} \mathbb {E} \{\mathcal {H} (t) \} \\ = 0 - V \cdot \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} \mathbb {E} \left\{\mathcal {H} (t) \right\} \leq C - V \overline {{{\mathcal {H} ^ {*} (t)}}}. \tag {55} \\ \end{array}
+$$
+
+Dividing (55) by V, we can obtain
+
+$$
+\overline {{{{\mathcal {H} ^ {*} (t)}}}} - \overline {{{{\mathcal {H} (t)}}}} \leq \frac {C}{V} \tag {56}
+$$
+
+$\begin{array} { r } { \overline { { \mathcal { H } ( t ) } } = \operatorname* { l i m } _ { T  \infty } ( 1 / T ) \sum _ { t = 0 } ^ { T - 1 } } \end{array}$
+
+We assume that for TU $i \ \in \ M _ { k }$ , there exists some real number $\xi > 0$ under policy π2, satisfying
+
+$$
+\begin{array}{l} \mathbb {E} \{\mathcal {H} (t) | \pi_ {2} \} = \mathcal {H} ^ {\xi} (t) \\ \mathbb {E} \left\{\left[ c _ {k} (t) - E _ {k} (t) \right] \mid \pi_ {2} \right\} \leq - \xi \\ \mathbb {E} \{[ g _ {i} (t) - \theta_ {i} (t) ] | \pi_ {2} \} \leq - \xi \\ \mathbb {E} \{[ \theta_ {i} (t) - \mu_ {i} (t) - m _ {i} (t) ] | \pi_ {2} \} \leq - \xi . \tag {57} \\ \end{array}
+$$
+
+According to (52), we have
+
+$$
+\begin{array}{l} \Delta (\Theta (t)) - V \cdot \mathbb {E} \{\mathcal {H} (t) | \Theta (t) \} \\ \leq C - V \mathcal {H} ^ {\xi} (t) + \mathbb {E} \sum_ {k \in \mathcal {K}} Z _ {k} (t) \left\{\left[ c _ {k} (t) - E _ {k} (t) \right] | \pi \right\} \\ + \mathbb {E} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i} (t) \left\{\left[ g _ {i} (t) - \theta_ {i} (t) \right] | \pi \right\} \\ \end{array}
+$$
+
+$$
+\mathbb {E} \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} Q _ {i, k} (t) \left\{\left[ \theta_ {i} (t) - \mu_ {i} (t) - m _ {i} (t) \right] | \pi \right\}
+$$
+
+$$
+\leq C - V \mathcal {H} ^ {\xi} (t) - \xi \mathbb {E} \left\{\sum_ {k \in \mathcal {K}} Z _ {k} (t) + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ Q _ {i} (t) + Q _ {i, k} (t) ] \right\}. \tag {58}
+$$
+
+Combining (54) and (58), we have
+
+$$
+\begin{array}{l} \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {s = 0} ^ {T - 1} \Delta (\Theta (t)) - V \cdot \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} \mathbb {E} \{\mathcal {H} (t) \} \\ = 0 - V \cdot \overline {{\mathcal {H} (t)}} \leq C - V \mathcal {H} ^ {\xi} (t) \\ - \xi \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} \left\{\sum_ {k \in \mathcal {K}} Z _ {k} (t) + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} \left[ Q _ {i} (t) + Q _ {i, k} (t) \right]\right\}. \tag {59} \\ \end{array}
+$$
+
+Dividing (59) by ξ , we can obtain
+
+$$
+\begin{array}{l} \overline {{Q}} \leq \frac {1}{\xi} \left\{C + V \cdot [ \overline {{{{\mathcal {H} (t)}}}} - \mathcal {H} ^ {\xi} (t) ] \right\} \\ \leq \frac {1}{\xi} \left\{C + V \cdot [ \mathcal {H} (t) ^ {\max} - \mathcal {H} (t) ^ {\min} ] \right\} \tag {60} \\ \end{array}
+$$
+
+where
+
+$$
+\overline {{{Q}}} = \lim _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 0} ^ {T - 1} \left\{\sum_ {k \in \mathcal {K}} Z _ {k} (t) + \sum_ {k \in \mathcal {K}} \sum_ {i \in M _ {k}} [ Q _ {i} (t) + Q _ {i, k} (t) ] \right\}. \tag {61}
+$$
+
+# REFERENCES
+
+[1] X. Dou, T. Lyu, B. Fan, and D. Liang, “A single-carrier delayand-superposition based high spectral efficiency differential chaos shift keying for maritime Internet of Vessels,” IEEE Access, vol. 10, pp. 128456–128468, 2022.   
+[2] X. Fang et al., “NOMA-based hybrid satellite-UAV-terrestrial networks for 6G maritime coverage,” IEEE Trans. Wireless Commun., vol. 22, no. 1, pp. 138–152, Jan. 2023.   
+[3] N. Nomikos, P. K. Gkonis, P. S. Bithas, and P. Trakadas, “A survey on UAV-aided maritime communications: Deployment considerations, applications, and future challenges,” IEEE. Open J. Commun. Soc., vol. 4, pp. 56–78, 2023.   
+[4] T. Yang et al., “Multi-armed bandits learning for task offloading in maritime edge intelligence networks,” IEEE Trans. Veh. Technol., vol. 71, no. 4, pp. 4212–4224, Apr. 2022.   
+[5] R. W. Liu, J. Nie, S. Garg, Z. Xiong, Y. Zhang, and M. S. Hossain, “Data-driven trajectory quality improvement for promoting intelligent vessel traffic services in 6g-enabled maritime IoT systems,” IEEE Internet Things J., vol. 8, no. 7, pp. 5374–5385, Apr. 2021.   
+[6] Y. Chen, J. Zhao, J. Hu, S. Wan, and J. Huang, “Distributed task offloading and resource purchasing in NOMA-enabled mobile edge computing: Hierarchical game theoretical approaches,” ACM Trans. Embed. Comput. Syst., vol. 23, no. 1, p. 2, 2024.   
+[7] Q. Ye, W. Shi, K. Qu, H. He, W. Zhuang, and X. Shen, “Joint RAN slicing and computation offloading for autonomous vehicular networks: A learning-assisted hierarchical approach,” IEEE. Open J. Veh. Technol., vol. 2, pp. 272–288, Aug. 2021.   
+[8] Y. Chen, K. Li, Y. Wu, J. Huang, and L. Zhao, “Energy efficient task offloading and resource allocation in air-ground integrated MEC systems: A distributed online approach,”IEEE Trans. Mobile Comput., early access, Dec. 25, 2023, doi: 10.1109/TMC.2023.3346431.   
+[9] W. Zhuang, Q. Ye, F. Lyu, N. Cheng, and J. Ren, “SDN/NFVempowered future IoV with enhanced communication, computing, and caching,” Proc. IEEE, vol. 108, no. 2, pp. 274–291, Feb. 2020.   
+[10] L. Yang, S. Guo, L. Yi, Q. Wang, and Y. Yang, “NOSCM: A novel offloading strategy for NOMA-enabled hierarchical small cell mobile-edge computing,” IEEE Internet Things J., vol. 8, no. 10, pp. 8107–8118, May 2021.   
+[11] Y. Li, Y. Wu, M. Dai, B. Lin, W. Jia, and X. Shen, “Hybrid NOMA-FDMA assisted dual computation offloading: A latency minimization approach,” IEEE Trans. Netw. Sci. Eng., vol. 9, no. 5, pp. 3345–3360, Oct. 2022.   
+[12] F. Li, H. Yao, J. Du, C. Jiang, Z. Han, and Y. Liu, “Auction design for edge computation offloading in SDN-based ultra dense networks,” IEEE. Trans. Mobile Comput., vol. 21, no. 5, pp. 1580–1595, May 2022.
+
+[13] Y. Pang, D. Wang, D. Wang, L. Guan, C. Zhang, and M. Zhang, “A space-air-ground integrated network assisted maritime communication network based on mobile edge computing,” in Proc. IEEE World Congr. Services, Oct. 2020, pp. 269–274.   
+[14] A. Xiao, H. Chen, S. Wu, P. Zhang, H. Li, and L. Ma, “Voyage-based computation offloading for secure maritime edge networks,” in Proc. IEEE GC Wkshps., Dec. 2020, pp. 1–6.   
+[15] T. Yang, H. Feng, C. Yang, Y. Wang, J. Dong, and M. Xia, “Multivessel computation offloading in maritime mobile edge computing network,” IEEE Internet Things J., vol. 6, no. 3, pp. 4063–4073, Jun. 2019.   
+[16] Z. Wang, B. Lin, L. Sun, and Y. Wang, “Intelligent task offloading for 6G-enabled maritime IoT based on reinforcement learning,” in Proc. Int. Conf. SPAC, Jun. 2021, pp. 566–570.   
+[17] B. Mao, Y. Kawamoto, and N. Kato, “AI-based joint optimization of QoS and security for 6G energy harvesting Internet of Things,” IEEE Internet Things J., vol. 7, no. 8, pp. 7032–7042, Aug. 2020.   
+[18] B. Mao, Y. Kawamoto, J. Liu, and N. Kato, “Harvesting and threat aware security configuration strategy for IEEE 802.15.4 based IoT networks,” IEEE Commun. Lett., vol. 23, no. 11, pp. 2130–2134, Nov. 2019.   
+[19] F. Guo, H. Zhang, X. Li, H. Ji, and V. C. M. Leung, “Joint optimization of caching and association in energy-harvesting-powered small-cell networks,” IEEE Trans. Veh. Technol., vol. 67, no. 7, pp. 6469–6480, Jul. 2018.   
+[20] T. Yang, Z. Zheng, H. Liang, R. Deng, N. Cheng, and X. Shen, “Green energy and content-aware data transmissions in maritime wireless communication networks,” IEEE Trans. Intell. Transp. Syst., vol. 16, no. 2, pp. 751–762, Apr. 2015.   
+[21] A. Hosseini-Fahraji et al., “Energy harvesting long-range marine communication,” in Proc. IEEE INFOCOM, Jul. 2020, pp. 2036–2045.   
+[22] S. Chandrasekaran and V. V. S. Sricharan, “Numerical analysis of a new multi-body floating wave energy converter with a linear power take-off system,” Renew. Energy, vol. 159, pp. 250–271, Oct. 2020.   
+[23] H. Joe, H. Roh, H. Cho, and S.-C. Yu, “Development of a flap-type mooring-less wave energy harvesting system for sensor buoy,” Energy, vol. 133, pp. 851–863, Aug. 2017.   
+[24] L. Xiao, Y.-G. You, Z.-P. Wang, Y.-Q. Zhang, S. Huang, and W.-S. Wang, “Single mode simulation calculation of oscillating buoy wave energy converter with a slider,” China Ocean Eng., vol. 34, no. 4, pp. 547–557, Jul. 2020.   
+[25] F.-P. Huang, K. Gong, Z.-S. Liu, J.-H. Chen, and Y.-C. Huang, “Experimental research on a new type of floating breakwater for waveabsorbing and energy-capturing,” China Ocean Eng., vol. 34, no. 6, pp. 817–827, Nov. 2020.   
+[26] “Advanced neural network processing forlow-power devices.” Google. 2020. [Online]. Available: https://coral.ai/technology   
+[27] S. Hosseininoorbin, S. Layeghy, B. Kusy, R. Jurdak, and M. Portmann, “Scaling spectrogram data representation for deep learning on edge TPU,” in Proc. IEEE Int. Conf. PerCom. Wkshps., Mar. 2021, pp. 572–578.   
+[28] T. Yang, Z. Jiang, R. Sun, N. Cheng, and H. Feng, “Maritime search and rescue based on group mobile computing for unmanned aerial vehicles and unmanned surface vehicles,” IEEE Trans. Ind. Informat., vol. 16, no. 12, pp. 7700–7708, Dec. 2020.   
+[29] J. Zeng, J. Sun, B. Wu, and X. Su, “Mobile edge communications, computing, and caching (MEC3) technology in the maritime communication network,” China Commun., vol. 17, no. 5, pp. 223–234, May 2020.   
+[30] T. Yang et al., “Two-Stage offloading optimization for energy– latency tradeoff with mobile edge computing in maritime Internet of Things,” IEEE Internet Things J., vol. 7, no. 7, pp. 5954–5963, Jul. 2020.   
+[31] M. Dai, Y. Wu, L. Qian, Z. Su, B. Lin, and N. Chen, “UAV-assisted multi-access computation offloading via hybrid NOMA and FDMA in marine networks,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 1, pp. 113–127, 1 Jan./Feb. 2023.   
+[32] S. Ulukus et al., “Energy harvesting wireless communications: A review of recent advances,” IEEE J. Sel. Areas Commun., vol. 33, no. 3, pp. 360–381, Mar. 2015.   
+[33] G. Zhang, Y. Chen, Z. Shen, and L. Wang, “Distributed energy management for multiuser mobile-edge computing systems with energy harvesting devices and QoS constraints,” IEEE Internet Things J., vol. 6, no. 3, pp. 4035–4048, Jun. 2019.   
+[34] H. Hu, Q. Wang, R. Q. Hu, and H. Zhu, “Mobility-aware offloading and resource allocation in an MEC-enabled IoT network with energy harvesting,” IEEE Internet Things J., vol. 8, no. 24, pp. 17541–17556, Dec. 2021.
+
+[35] G. Zhang, W. Zhang, Y. Cao, D. Li, and L. Wang, “Energy-delay tradeoff for dynamic offloading in mobile-edge computing system with energy harvesting devices,” IEEE Trans. Ind. Informat., vol. 14, no. 10, pp. 4642–4655, Oct. 2018.   
+[36] J. Xu, L. Chen, and S. Ren, “Online learning for offloading and autoscaling in energy harvesting mobile edge computing,” IEEE Trans. Cogn. Commun. Netw., vol. 3, no. 3, pp. 361–373, Sep. 2017.   
+[37] Y. Chen, Y. Zhang, Y. Wu, L. Qi, X. Chen, and X. Shen, “Joint task scheduling and energy management for heterogeneous mobile edge computing with hybrid energy supply,” IEEE Internet Things J., vol. 7, no. 9, pp. 8419–8429, Sep. 2020.   
+[38] A. Mohd et al., “Small-scale renewable energy converters for battery charging,” J. Mar. Sci. Eng., vol. 6, no. 3, pp. 26–37, Mar. 2018.   
+[39] T. Wei, W. Feng, J. Wang, N. Ge, and J. Lu, “Exploiting the shipping lane information for energy-efficient maritime communications,” IEEE Trans. Veh. Technol., vol. 68, no. 7, pp. 7204–7208, Jul. 2019.   
+[40] Z. Tong, J. Cai, J. Mei, K. Li, and K. Li, “Dynamic energysaving offloading strategy guided by Lyapunov optimization for IoT devices,” IEEE Internet Things J., vol. 9, no. 20, pp. 19903–19915, Oct. 2022.   
+[41] M. Guo, W. Wang, X. Huang, Y. Chen, L. Zhang, and L. Chen, “Lyapunov-based partial computation offloading for multiple mobile devices enabled by harvested energy in MEC,” IEEE Internet Things J., vol. 9, no. 11, pp. 9025–9035, Jun. 2022.   
+[42] Y. Mao, J. Zhang, S. H. Song, and K. B. Letaief, “Stochastic joint radio and computational resource management for multi-user mobileedge computing systems,” IEEE Trans. Wireless Commun., vol. 16, no. 9, pp. 5994–6009, Sep. 2017.   
+[43] J. Mei, L. Dai, Z. Tong, X. Deng, and K. Li, “Throughput-aware dynamic task offloading under resource constant for MEC with energy harvesting devices,” IEEE Trans. Netw.Service Manag., vol. 20, no. 3, pp. 3460–3473, Sep. 2023.   
+[44] S. Bi, L. Huang, H. Wang, and Y.-J. A. Zhang, “Lyapunov-guided deep reinforcement learning for stable online computation offloading in mobileedge computing networks,” IEEE Trans. Wireless Commun., vol. 20, no. 11, pp. 7519–7537, Nov. 2021.   
+[45] G. Ma, X. Wang, M. Hu, W. Ouyang, X. Chen, and Y. Li, “DRL-based computation offloading with queue stability for vehicular-cloud-assisted mobile edge computing systems,” IEEE Trans. Intell. Veh., vol. 8, no. 4, pp. 2797–2809, Apr. 2023.   
+[46] Z. Gao, B. Liu, Z. Cheng, C. Chen, and L. Huang, “Marine mobile wireless channel modeling based on improved spatial partitioning ray tracing,” China Commun., vol. 17, no. 3, pp. 1–11, Mar. 2020.   
+[47] J. Wang et al., “Wireless channel models for maritime communications,” IEEE Access, vol. 6, pp. 68070–68088, 2018.   
+[48] Y. Deng, Z. Chen, X. Chen, and Y. Fang, “Throughput maximization for multiedge multiuser edge computing systems,” IEEE Internet Things J., vol. 9, no. 1, pp. 68–79, Jan. 2022.   
+[49] Y. Mao, J. Zhang, S. H. Song, and K. B. Letaief, “Power-delay tradeoff in multi-user mobile-edge computing systems,” in Proc. IEEE GLOBECOM, Feb. 2016, pp. 1–6.   
+[50] L. X. Cai, Y. Liu, T. H. Luan, X. S. Shen, J. W. Mark, and H. V. Poor, “Sustainability analysis and resource management for wireless mesh networks with renewable energy supplies,” IEEE J. Sel. Areas Commun., vol. 32, no. 2, pp. 345–355, Feb. 2014.   
+[51] D. Han, W. Chen, and Y. Fang, “Joint channel and queue aware scheduling for latency sensitive mobile edge computing with power constraints,” IEEE Trans. Wireless Commun., vol. 19, no. 6, pp. 3938–3951, Jun. 2020.   
+[52] Z. Chang, L. Liu, X. Guo, and Q. Sheng, “Dynamic resource allocation and computation offloading for IoT fog computing system,” IEEE Trans. Ind. Informat., vol. 17, no. 5, pp. 3348–3357, May 2021.   
+[53] S. Pan and Y. Chen, “Energy-optimal scheduling of mobile cloud computing based on a modified Lyapunov optimization method,” IEEE Trans. Green Commun. Netw., vol. 3, no. 1, pp. 227–235, Mar. 2019.   
+[54] M. J. Neely, Stochastic Network Optimization with Application to Communication and Queueing Systems. San Rafael, CA, USA: Morgan Claypool, 2010.   
+[55] H. Li, H. Xu, C. Zhou, X. Lü, and Z. Han, “Joint optimization strategy of computation offloading and resource allocation in multi-access edge computing environment,” IEEE Trans. Veh. Technol., vol. 69, no. 9, pp. 10214–10226, Sep. 2020.   
+[56] X. Lyu et al., “Optimal schedule of mobile edge computing for Internet of Things using partial information,” IEEE J. Sel. Areas Commun., vol. 35, no. 11, pp. 2606–2615, Nov. 2017.
+
+[57] H. Wu, J. Chen, T. N. Nguyen, and H. Tang, “Lyapunov-guided delayaware energy efficient offloading in IIoT-MEC systems,” IEEE Trans. Ind. Informat., vol. 19, no. 2, pp. 2117–2128, Feb. 2023.
+
+![](images/af4d80a9619a7550d5b09f38a48b31eeac3110fa98ccaf9cd1aa24544c4519a0.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman in formal attire against a blue background (no text or symbols visible)
+</details>
+
+Zhen Wang (Graduate Student Member, IEEE) received the B.S. degree in communication engineering from Tianjin University, Tianjin, China, in 2010, and the M.S. degree in communication and information systems from Beijing University of Posts and Telecommunications, Beijing, China, in 2015. She is currently pursuing the Ph.D. degree in information and communication engineering with Dalian Maritime University, Dalian, China.
+
+She is also a Lecturer with the Department of Communication Engineering, Dalian Neusoft
+
+University of Information, Dalian. Her research interests include maritime communication, edge/fog computing, resource allocation, and artificial intelligence.
+
+![](images/1ccc0f0810b953f6a939ed5721eb2826db23cc6de207e9cf229680f270e3ce2d.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman in a black collared shirt (no text or symbols visible)
+</details>
+
+Bin Lin (Senior Member, IEEE) received the B.S. and M.S. degrees from Dalian Maritime University, Dalian, China, in 1999 and 2003, respectively, and the Ph.D. degree from the Broadband Communications Research Group, Department of Electrical and Computer Engineering, University of Waterloo, Waterloo, ON, Canada, in 2009.
+
+She is currently a Full Professor and the Dean of Communication Engineering Department, School of Information Science and Technology, Dalian Maritime University. She has been a Visiting Scholar
+
+with George Washington University, Washington, DC, USA, from 2015 to 2016. Her current research interests include wireless communications, network dimensioning and optimization, resource allocation, artificial intelligence, maritime communication networks, edge/cloud computing, wireless sensor networks, and Internet of Things.
+
+Dr. Lin is an Associate Editor of IEEE TRANSACTION ON VEHICULAR TECHNOLOGY and IET Communications.
+
+![](images/1051dd0508eebbb524e07243456a3ff8824b8df21bd54cd866a0b1548b0e6660.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a light blue shirt (no text or symbols visible)
+</details>
+
+Qiang (John) Ye (Senior Member, IEEE) received the Ph.D. degree in electrical and computer engineering from the University of Waterloo, Waterloo, ON, Canada, in 2016.
+
+Since September 2023, he has been an Assistant Professor with the Department of Electrical and Software Engineering, Schulich School of Engineering, University of Calgary, Calgary, AB, Canada. Before joining UCalgary, he was an Assistant Professor with the Department of Computer Science, Memorial University of
+
+Newfoundland, St. John’s, NL, Canada, from September 2021 to August 2023 and with the Department of Electrical and Computer Engineering and Technology, Minnesota State University, Mankato, MN, USA, from September 2019 to August 2021, respectively. He was with the Department of Electrical and Computer Engineering, University of Waterloo as a Postdoctoral Fellow and then a Research Associate from December 2016 to September 2019. He has published over 70 research articles on top-ranked journals and conference proceedings.
+
+Dr. Ye serves/served as an Associate Editor for IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, IEEE OPEN JOURNAL OF THE COMMUNICATIONS SOCIETY, Peer-to-Peer Networking and Applications, ACM/Wireless Networks, and International Journal of Distributed Sensor Networks. He also served as the IEEE Vehicular Technology Society Regions 1–7 Chapters Coordinator (2022–2023). He is/was the General, the Publication, the Program Co-Chair for different reputable international conferences and workshops, such as IEEE ICCC’23, CANAI’23, IEEE VTC’22, IEEE INFOCOM’22, and IEEE IPCCC’21.
+
+![](images/c3a719cceb13ac6fe891f8c7446429b07da95b7357b83b3edbb6a9f2e3b8b4f1.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man wearing glasses and a light blue shirt (no text or symbols visible)
+</details>
+
+Yuguang Fang (Fellow, IEEE) received the M.S. degree from Qufu Normal University, Jining, China, in 1987, the Ph.D. degree from Case Western Reserve University, Cleveland, OH, USA, in 1994, and the Ph.D. degree from Boston University, Boston, MA, USA, in 1997.
+
+He was an Assistant Professor with the Department of Electrical and Computer Engineering, University of Florida, Gainesville, FL, USA, in 2000, then was promoted to an Associate Professor in 2003, a Full Professor in 2005, and a
+
+Distinguished Professor in 2019, respectively. Since August 2022, he has been the Chair Professor of Internet of Things with the Department of Computer Science, City University of Hong Kong, Hong Kong.
+
+Dr. Fang received many awards, including the U.S. NSF CAREER Award in 2001, the U.S. ONR Young Investigator Award in 2002, the 2018 IEEE Vehicular Technology Outstanding Service Award, the IEEE Communications Society AHSN Technical Achievement Award in 2019, the CISTC Technical Recognition Award in 2015, the WTC Recognition Award in 2014, and the 2010–2011 UF Doctoral Dissertation Advisor/Mentoring Award. He held multiple professorships, including the Changjiang Scholar Chair Professorship from 2008 to 2011, the Tsinghua University Guest Chair Professorship from 2009 to 2012, the University of Florida Foundation Preeminence Term Professorship from 2019 to 2022, and the University of Florida Research Foundation Professorship from 2017 to 2020 and from 2006 to 2009. He served as the Editor-in-Chief for IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY from 2013 to 2017 and IEEE WIRELESS COMMUNICATIONS from 2009 to 2012 and serves/served on several editorial boards for journals, including Proceedings of the IEEE since 2018, ACM Computing Surveys since 2017, ACM Transactions on Cyber-Physical Systems since 2020, IEEE TRANSACTIONS ON MOBILE COMPUTING from 2003 to 2008, from 2011 to 2016, and since 2019, IEEE TRANSACTIONS ON COMMUNICATIONS from 2000 to 2011, and IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS from 2002 to 2009. He served as the Technical Program Co-Chair for IEEE INFOCOM’2014. He is a Member-at-Large of the Board of Governors of IEEE Communications Society from 2022 to 2024 and the Director of Magazines of IEEE Communications Society from 2018 to 2019. He is a Fellow of ACM and AAAS.
+
+![](images/52108caeea43636b6a1f0de1f53727e7c3fb4061ae9f5abfdcaecb8c91f73cd2.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman in formal attire against a blue background (no text or symbols visible)
+</details>
+
+Xiaoling Han (Student Member, IEEE) received the B.S. degree in electronic information engineering from Dalian Maritime University, Dalian, China, in 2020. She is currently pursuing the Ph.D. degree with the Department of Information Science and Technology, Dalian Maritime University under the supervision of Prof. B. Lin.
+
+Her research interests include maritime communication networks, semantic communications, and deep learning-based communications.

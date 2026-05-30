@@ -7,6 +7,7 @@ related:
   - "[[sun-2024-mvtora-postdisaster-vfc]]"
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
+  - "[[wu-2024-urllc-uav-mec-latency]]"
 created: 2026-05-29
 updated: 2026-05-31
 ---
@@ -15,14 +16,15 @@ updated: 2026-05-31
 
 IEEE Senior Member. Affiliated with the **Department of Electronic Engineering, Shanghai Jiao Tong University** (Shanghai, China; email `qingqingwu@sjtu.edu.cn`) — consistent across these papers in this wiki.
 
-Co-authored 4 sources in this wiki, spanning UAV ISAC, aerial MEC, and collaborative beamforming:
+Co-authored 5 sources in this wiki, spanning UAV ISAC, aerial MEC, collaborative beamforming, and URLLC-based UAV-MEC:
 
 - [[meng-2024-uav-isac-overview]] — overview of UAV-enabled integrated sensing and communication.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
 - [[zhang-2024-gdmtd3-aerial-secure-cb]] — UAV-swarm secure collaborative beamforming via diffusion-enhanced TD3.
 - [[li-2024-emodrl-ground-space-cb]] — distributed collaborative beamforming for ground-space communications via EMODRL.
+- [[wu-2024-urllc-uav-mec-latency]] — latency minimization for UAV-enabled URLLC-based MEC (finite-blocklength; SJTU-email-matched).
 
-> Note: a "Qingqing Wu" also appears in the 2019 tutorial [[zeng-2019-uav-comm-tutorial-5g]] but is listed there at the **National University of Singapore** (`elewuqq@nus.edu.sg`), not SJTU. This is plausibly the same researcher at an earlier career stage, but the affiliation/email differ, so that source is **not** added to this roster pending human confirmation.
+> Note: a "Qingqing Wu" also appears in two **earlier** papers but listed at the **National University of Singapore** (`elewuqq@nus.edu.sg`), not SJTU — the 2019 tutorial [[zeng-2019-uav-comm-tutorial-5g]] and the 2018 multi-UAV min-rate paper [[wu-2018-multiuav-minrate-trajectory]] (both first-authored by him at NUS). These are plausibly the same researcher at an earlier career stage, but the affiliation/email differ, so those two sources are **not** added to this SJTU roster pending human confirmation.
 
 ## Contributions to this wiki
 

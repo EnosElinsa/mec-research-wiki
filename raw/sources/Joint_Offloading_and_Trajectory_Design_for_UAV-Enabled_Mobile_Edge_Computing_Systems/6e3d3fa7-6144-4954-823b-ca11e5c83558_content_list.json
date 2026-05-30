@@ -1,0 +1,3744 @@
+[
+    {
+        "type": "text",
+        "text": "Joint Offloading and Trajectory Design for UAV-Enabled Mobile Edge Computing Systems ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            71,
+            883,
+            140
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Qiyu Hu, Yunlong Cai , Senior Member, IEEE, Guanding Yu , Senior Member, IEEE, Zhijin Qin , Member, IEEE, Minjian Zhao, Member, IEEE, and Geoffrey Ye Li, Fellow, IEEE ",
+        "bbox": [
+            142,
+            145,
+            851,
+            184
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—Unmanned aerial vehicles (UAVs) have been considered in wireless communication systems to provide high-quality services for their low cost and high maneuverability. This paper addresses a UAV-aided mobile edge computing system, where a number of ground users are served by a moving UAV equipped with computing resources. Each user has computing tasks to complete, which can be separated into two parts: one portion is offloaded to the UAV and the remaining part is implemented locally. The UAV moves around above the ground users and provides computing service in an orthogonal multiple access manner over time. For each time period, we aim to minimize the sum of the maximum delay among all the users in each time slot by jointly optimizing the UAV trajectory, the ratio of offloading tasks, and the user scheduling variables, subject to the discrete binary constraints, the energy consumption constraints, and the UAV trajectory constraints. This problem has highly nonconvex objective function and constraints. Therefore, we equivalently convert it into a better tractable form based on introducing the auxiliary variables, and then propose a novel penalty dual decomposition-based algorithm to handle the resulting problem. Furthermore, we develop a simplified l0-norm algorithm with much reduced complexity. Besides, we also extend our algorithm to minimize the average delay. Simulation results illustrate that the proposed algorithms significantly outperform the benchmarks. ",
+        "bbox": [
+            73,
+            232,
+            491,
+            547
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Internet of Things, low-delay control, mobile edge computing (MEC), trajectory optimization, unmanned aerial vehicle (UAV) communications. ",
+        "bbox": [
+            73,
+            554,
+            490,
+            592
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received April 29, 2018; revised September 30, 2018; accepted October 24, 2018. Date of publication October 31, 2018; date of current version May 8, 2019. The work of Y. Cai was supported in part by the National Natural Science Foundation of China under Grant 61471319 and in part by the Fundamental Research Funds for the Central Universities. The work of G. Yu was supported in part by the Open Research Fund of State Key Laboratory of Integrated Services Networks, Xidian University under Grant ISN18-13. The work of M. Zhao was supported in part by the National Natural Science Foundation of China under Grant 91538103 and in part by the Fundamental Research Funds for the Central Universities under Grant 2018FZA5006. (Corresponding author: Yunlong Cai.) ",
+        "bbox": [
+            73,
+            640,
+            491,
+            766
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Q. Hu and G. Yu are with the College of Information Science and Electronic Engineering, Zhejiang University, Hangzhou 310027, China, and also with the State Key Laboratory of Integrated Services Networks, Xidian University, Xi’an 710071, China (e-mail: qiyhu@zju.edu.cn; yuguanding@zju.edu.cn). ",
+        "bbox": [
+            73,
+            766,
+            488,
+            811
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Y. Cai and M. Zhao are with the College of Information Science and Electronic Engineering, Zhejiang University, Hangzhou 310027, China (e-mail: ylcai@zju.edu.cn; mjzhao@zju.edu.cn). ",
+        "bbox": [
+            73,
+            811,
+            488,
+            845
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Z. Qin is with the School of Electronic Engineering and Computer Science, Queen Mary University of London, London E1 4NS, U.K. (e-mail: z.qin@qmul.ac.uk). ",
+        "bbox": [
+            73,
+            845,
+            488,
+            878
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "G. Y. Li is with the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA 30062 USA (e-mail: liye@ece.gatech.edu). ",
+        "bbox": [
+            73,
+            878,
+            488,
+            912
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/JIOT.2018.2878876 ",
+        "bbox": [
+            86,
+            912,
+            375,
+            925
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            645,
+            231,
+            779,
+            244
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "R ECENTLY, the increasing number of mobile devices,e.g., smart phones and Google glasses, makes the computation-intensive applications, e.g., video calls, virtual reality, and online games pervasive [1]. However, the limited computation resources and battery budget make it difficult for mobile devices to provide satisfactory quality of experience (QoE) [2]. Although feeding the computing tasks to a centralized server can mitigate this problem, it leads to congestion and high delay in networks. By equipping the base station (BS) with computing resources, the centralized server is gradually replaced with network edge servers recently. Mobile edge computing (MEC) appeared as a prospective solution has received great attention [3]. By offloading the computing tasks to the nearby BS, the network overhead and execution latency can be significantly reduced. ",
+        "bbox": [
+            501,
+            250,
+            921,
+            474
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "There have been a number of studies on MEC techniques [4]–[9]. They aim at minimizing the device latency and energy consumption by optimizing the computing resources allocation scheme between mobile users and MEC servers [4]. Wang et al. [5] have proposed an ADMM-based algorithm to optimize the computing resource allocation and data uploading in wireless networks with MEC. You et al. [6] have investigated resource allocation policies for orthogonal frequencydivision multiple access-based MEC systems. Mao et al. [7] have proposed a resource allocation algorithm for multitasking MEC systems to minimize the execution delay under the given transmit power. Zhang et al. [8] have developed an offloading strategy to reduce the energy consumption under the delay constraints. To handle the energy-delay tradeoff problem, Liu et al. [9] have proposed a random arrival model for data offloading in multiuser MEC systems. The tradeoff problem with different kinds of computing tasks in MEC systems has been discussed in [10] and [11]. However, the existing MEC techniques cannot handle the scenario that the communication facilities are sparsely distributed or the number of mobile users increases dramatically.1 ",
+        "bbox": [
+            501,
+            477,
+            921,
+            792
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "In the past decade, people have paid much attention to unmanned aerial vehicles (UAVs) due to their mobility, flexibility, and maneuverability [12]. To seize the growing opportunity, extensive studies have been dedicated to applying UAVs to various kinds of communication platforms [13]. The main ",
+        "bbox": [
+            503,
+            794,
+            921,
+            869
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "1In the scenario of sparsely distributed BSs and dramatically increasing mobile users, the UAVs equipped with the computing resources can help improve the users’ computing efficiency due to their mobility. ",
+        "bbox": [
+            503,
+            888,
+            921,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            76,
+            34,
+            431,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "1879 ",
+        "bbox": [
+            893,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "2327-4662 -c 2018 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            197,
+            931,
+            797,
+            944
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See http://www.ieee.org/publications\\_standards/publications/rights/index.html for more information. ",
+        "bbox": [
+            230,
+            944,
+            764,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "applications can be roughly divided into two categories: 1) static-UAV networks, e.g., aerial BSs [14], [15] and UAV-aided coverage [16], [17] and 2) mobile-UAV networks, e.g., flying computing cloudlets [18],2 UAV-aided data collection [19], [20], and mobile relays [21]. In static-UAV networks, UAVs are usually applied to support the ground communications and provide seamless coverage for their serving areas [22]. Generally, UAVs always keep stationary and act as aerial BSs, which is especially useful when infrastructures are damaged or communication traffics are congested [23]. Besides, it is a prospective idea to apply UAVs as aerial BSs to improve the efficiency of current communication systems. In mobile UAV-networks, the high mobility of UAVs can be fully exploited and the communication performance is improved based on user scheduling and UAV trajectory design [24]–[26], [28]. In [24], UAV flies to collect the required data reliably from sensor nodes with minimum energy consumption. Wu et al. [25] have developed a joint trajectory and user scheduling algorithm to maximize the minimum user throughput for multi-UAV enabled systems. Zeng and Zhang [26] have studied an energy-efficient UAV-aided communication system, where the communication efficiency and the energy consumption constraints of the UAV are considered. Liu et al. [27] have investigated the multi-UAV enabled multiuser system, where each UAV forwards its received signals from all ground users to a central processor for joint decoding. Zhan et al. [28] have applied UAVs as mobile relays, which provide reliable wireless connectivity among several distant users in adversarial environments, such as military operations. More recently, instead of using UAVs as BSs, they are treated as users and [29] has considered the trajectory design for cellular-connected UAVs. ",
+        "bbox": [
+            73,
+            69,
+            491,
+            553
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Despite the ample researches and applications, there are many challenges in UAV-aided communication systems. Due to the limited battery capacity and the multiuser interference, the performance of UAVs are quite limited. Thus, trajectory design and user scheduling within a given time period are very important. Moreover, to the best of our knowledge, UAV-enabled MEC systems has not been well investigated. ",
+        "bbox": [
+            73,
+            553,
+            491,
+            657
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we consider a UAV-aided MEC system, in which a number of ground users are served by a moving UAV equipped with computing resources. Each user has separable computing tasks to complete, which can be separated into two parts: one portion is offloaded to the UAV for processing, and the remaining part is implemented locally. The UAV can move around above the ground users and provide computing service in an orthogonal multiple access manner over time. For each time period, we aim at minimizing the sum of the maximum delay among all the users in each time slot by jointly optimizing the ratio of offloading tasks, the scheduling variables of users, and the UAV trajectory, subject to the discrete binary constraints of scheduling variables, the energy consumption constraints, and the UAV trajectory constraints. ",
+        "bbox": [
+            73,
+            657,
+            491,
+            869
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "As most of optimization problems in wireless networks, this optimization problem is complicated and with discrete binary variables and highly coupling nonconvex constraints. To deal with the mixed-integer nonconvex problem, we involve a set of equality constraints and auxiliary variables, and then transform the problem into a tractable formulation. In particular, the discrete binary constraints are equivalently converted to a number of equality constraints. Inspired by the penalty dual decomposition (PDD) optimization framework [30], we develop a novel PDD-based algorithm to handle the resulting problem and jointly optimize the ratio of offloading tasks, the binary user scheduling variables, and the UAV trajectory. In particular, we dualize and penalize the equality constraints into the objective function as augmented Lagrangian (AL) items. Then, the AL problem can be solved by the proposed PDD-based algorithm, which contains two-layer iteration. In the inner loop, we adopt a concave-convex procedure (CCCP) [32] algorithm to update the optimized variables. In the outer loop, we update the AL multipliers and the penalty factor. Furthermore, we propose a simplified $l _ { 0 } .$ -norm algorithm, which has much lower computational complexity. Besides, we also extend our algorithm to a different objective function, which minimizes the average delay among all the users in one period. ",
+        "bbox": [
+            501,
+            69,
+            921,
+            416
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The rest of this paper is structured as follows. Section II briefly depicts the system model for UAV-aided MEC systems and formulates the optimization problem. Section III demonstrates the PDD-based algorithm. Section IV develops a simplified l0-norm algorithm with much reduced complexity and provides detailed computational complexity analysis. The extension to a different objective function with average delay is shown in Section V. The simulation results are shown in Section VI, which validate the superiority of the proposed algorithms. Finally, the conclusions are drawn in Section VII. ",
+        "bbox": [
+            503,
+            417,
+            921,
+            568
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Notations: In this paper, scalars are denoted by lower case or italic letters, vectors are denoted by boldface lower case, and matrices are denoted by boldface upper case letters. An all zero vector is denoted by 0. For a vector $\\mathbf { a } , \\ \\mathbf { a } ^ { \\mathrm { T } }$ denotes its transpose, and \u0003a\u0003 denotes its Euclidean norm. The space of m × n real matrices is expressed as Rm×n, and the set of positive (negative) real numbers is denoted by R+ (R−). ",
+        "bbox": [
+            503,
+            568,
+            921,
+            674
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL AND PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            531,
+            693,
+            893,
+            707
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this section, we first introduce the system model for UAVaided MEC systems. Afterward, the optimization problem is formulated. ",
+        "bbox": [
+            503,
+            710,
+            921,
+            756
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. System Model ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            775,
+            627,
+            789
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We consider a UAV-aided MEC system as illustrated in Fig. 1, which consists of a UAV-mounted cloudlet and K ground users denoted as ${ \\mathcal { K } } \\triangleq \\{ 1 , 2 , \\ldots , K \\}$ . The UAV flies around above the ground users to provide computing service. Each user offloads a portion of its computing tasks to the UAV and carries out the rest locally. The MEC server on the UAV has more powerful computing capability than the users, thus these K users tend to offload the computing tasks to the UAV in order to obtain low latency. In the considered network, the ground users have the following two models. ",
+        "bbox": [
+            501,
+            794,
+            921,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "2The study of [18] aims at minimizing the mobile energy consumption while satisfying the QoE. The UAV provides offloading service by the frequency division duplex (FDD) method in [18]. Besides, the user scheduling is not considered in [18], and the successive convex approximation (SCA) strategy can be applied to deal with the optimization problem. ",
+        "bbox": [
+            73,
+            885,
+            491,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "1880 ",
+        "bbox": [
+            78,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            566,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/3baf68c9996642c222fad80f75920358583104be1d01f210922546b63d73b884.jpg",
+        "image_caption": [
+            "Fig. 1. UAV-aided MEC system. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"User 1\"] --> B[\"User 2\"]\n    B --> C[\"User 3\"]\n    C --> D[\"User 4\"]\n    D --> E[\"User 5\"]\n    E --> F[\"User 6\"]\n    F --> G[\"Offloading: α_k[i\"]ρ_k[\"i\"]L_k[\"i\"] bits]\n    G --> H[\"Data: L_k[i\"] bits]\n    H --> I[\"Local computing: (1−α_k[i\"]ρ_k[\"i\"])L_k[\"i\"] bits]\n    I --> J[\"Data segment\"]\n    J --> K[\"UAV\"]\n    K --> A\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            215,
+            68,
+            781,
+            330
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1) Communication Model: These K users offload their computing tasks to the UAV using the periodic time-division multiple access. The period T contains $N > K$ time slots, which is indexed by $i \\in \\mathcal { T } \\triangleq \\{ 1 , \\dots , N \\}$ . The value of T significantly affects the system performance. A large value of T offers more time resources for the UAV to fly closer to its serving user, which leads to better channel quality and higher transmission rate. ",
+        "bbox": [
+            73,
+            366,
+            491,
+            484
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Without loss of generality, we construct a 3-D Cartesian coordinate system model, in which the horizon coordinate of ground user k is given by ${ \\bf w } _ { k } = [ x _ { k } , y _ { k } ] ^ { \\mathrm { T } } \\in \\mathbb { R } ^ { 2 \\times 1 } , k \\in \\mathcal { K }$ . We assume that the UAV flies at a fixed height H above the ground. Its horizon trajectory q[i] over time slot i can be characterized by the discrete time locations $\\mathbf { q } [ i ] = [ x [ i ]$ , $y [ i ] ] ^ { \\mathrm { T } } \\in \\mathbb { R } ^ { 2 \\times 1 } , i \\in \\mathcal { T }$ . Suppose that the ground users’ locations can be detected by the UAV via a synthetic aperture radar or an optical camera on the UAV. Let us assume that $\\Delta \\triangleq ( T / N )$ denotes the time slot length, which should be sufficiently small. Since the UAV moves a small distance within each time slot, the channel gain can be approximately sampled within each time slot. The maximum speed of the UAV is denoted as $V _ { \\mathrm { m a x } }$ . Then the UAV’s trajectory constraints are given by ",
+        "bbox": [
+            73,
+            487,
+            491,
+            715
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {q} [ 1 ] = \\mathbf {q} [ N ] \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            261,
+            720,
+            488,
+            734
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\| \\mathbf {q} [ i + 1 ] - \\mathbf {q} [ i ] \\|}{\\Delta} \\leq V _ {\\max}, i \\in \\mathcal {T} \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            174,
+            736,
+            488,
+            765
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where (1) indicates that the UAV should go back to its initial position at the end of period T for providing the computing service to the users in cycles. Constraint (2) denotes that the flying speed of the UAV cannot exceed its maximum speed. The energy consumption of the UAV caused by flying is related to its speed. Thus, at each time slot i, we construct the energy consumption model for UAV flight as ",
+        "bbox": [
+            73,
+            767,
+            491,
+            873
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE ^ {\\text { fly }} [ i ] \\triangleq \\kappa \\| v [ i ] \\| ^ {2} \\quad \\forall i \\in \\mathcal {T} \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            184,
+            876,
+            488,
+            895
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\| \\nu [ i ] \\| \\triangleq [ ( \\| \\mathbf { q } [ i + 1 ] - \\mathbf { q } [ i ] \\| ) / \\Delta ]$ denotes the flying speed of the UAV at time slot $i , \\ \\kappa = 0 . 5 M \\Delta$ and M is relevant to the UAV’s payload [18]. ",
+        "bbox": [
+            73,
+            898,
+            491,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "For the UAV-aided networks, as the altitude of the UAV is much higher than that of the ground users, the line-of-sight channels of the UAV communication links are much more predominant than other channel impairments, such as small scale fading or shadowing. Moreover, the Doppler frequency shift caused by the UAV mobility is assumed to be compensated at the receivers. Therefore, the channel gain from the UAV to user k at given time slot i can be described as the free-space path loss model ",
+        "bbox": [
+            501,
+            366,
+            921,
+            502
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nh _ {k} [ i ] \\triangleq \\mu_ {0} d _ {k} ^ {- 2} [ i ] = \\frac {\\mu_ {0}}{H ^ {2} + \\| \\mathbf {q} [ i ] - \\mathbf {w} _ {k} \\| ^ {2}} \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            573,
+            510,
+            921,
+            541
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\mu _ { 0 }$ represents the channel gain at the reference distance $d _ { 0 } = 1$ m and $d _ { k } [ i ]$ denotes the distance between user k and the UAV at time slot i. It is assumed that the UAV is able to serve up to one user at a time slot to avoid interference and data crosstalk. Therefore, we introduce discrete binary user scheduling variables $\\{ \\alpha _ { k } [ i ] , k \\in \\mathcal { K } , i \\in \\mathcal { T } \\}$ to indicate the status of the UAV, namely, $\\alpha _ { k } [ i ] = 1$ denotes that the UAV provides computing service for user k at time slot i; otherwise, $\\alpha _ { k } [ i ] = 0$ . It yields the following constraints for the user scheduling variables: ",
+        "bbox": [
+            501,
+            546,
+            921,
+            699
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k = 1} ^ {K} \\alpha_ {k} [ i ] \\leq 1 \\quad \\forall i \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            627,
+            705,
+            919,
+            748
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] \\in \\{0, 1 \\} \\quad \\forall k, i. \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            656,
+            750,
+            919,
+            765
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Then, the transmission rate of user k at time slot i is expressed as ",
+        "bbox": [
+            503,
+            773,
+            919,
+            805
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {k} [ i ] = \\log_ {2} \\left(1 + \\frac {P h _ {k} [ i ]}{\\sigma^ {2}}\\right) \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            616,
+            811,
+            919,
+            845
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\sigma ^ { 2 }$ denotes the noise power at the UAV. As the UAV offers computing service for up to one user at each time slot, the interference among different channels could be ignored. We assume that the ground user always transmits at its maximum power to improve the signal-to-noise ratio, which is denoted as P. ",
+        "bbox": [
+            501,
+            854,
+            921,
+            944
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "HU et al.: JOINT OFFLOADING AND TRAJECTORY DESIGN FOR UAV-ENABLED MEC SYSTEMS ",
+        "bbox": [
+            76,
+            34,
+            584,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "1881 ",
+        "bbox": [
+            895,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2) Computing Model: We define variables $\\{ 0 ~ \\le ~ \\rho _ { k } [ i ] ~ \\le$ $1 , k \\in \\mathcal { K } , i \\in \\mathcal { T } \\}$ to indicate the ratio of data offloaded to the UAV in time slot i. Whereas, $1 - \\rho _ { k } [ i ]$ represents the ratio of data for user k to process locally in time slot i. We characterize the computation tasks at user k in each time slot i by $L _ { k } [ i ]$ bits and assume that $s _ { k }$ denotes the required number of CPU cycles for each user k in order to execute each bit. In each time slot, the UAV chooses a user to provide computing service according to the fairness among users. Note that $^ { c _ { 1 , k } }$ and $^ { c _ { 2 , k } }$ represent the computing capability of the UAV when serving user k and the local computing capability at user $k ,$ respectively, and B stands for the transmission bandwidth. In the considered networks, we have the following two computing models. ",
+        "bbox": [
+            73,
+            69,
+            491,
+            280
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "a) Local computing: For the local computing approach, the computational tasks are performed locally at ground users. The computation tasks in local CPU of user k at time slot i are denoted by $( 1 - \\alpha _ { k } [ i ] \\rho _ { k } [ i ] ) L _ { k }$ . As in [33], we model the power consumption of CPU in user k as $P _ { k } ^ { \\mathrm { l o c a l } } [ i ] = r c _ { 2 , k } ^ { 3 } ,$ , where r denotes the coefficient depending on the chip architecture that is decided by the practical measurement [7]. The local computation execution time $t _ { k } ^ { \\mathrm { l o c a l } } [ i ]$ is denoted as ",
+        "bbox": [
+            73,
+            281,
+            491,
+            404
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {\\text { local }} [ i ] = \\frac {(1 - \\alpha_ {k} [ i ] \\rho_ {k} [ i ]) L _ {k} [ i ] s _ {k}}{c _ {2 , k}}. \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            163,
+            407,
+            490,
+            441
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The energy consumption of local computation $E _ { k } ^ { \\mathrm { l o c a l } } [ i ]$ is ",
+        "bbox": [
+            73,
+            448,
+            491,
+            479
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k} ^ {\\text { local }} [ i ] = P _ {k} ^ {\\text { local }} [ i ] t _ {k} ^ {\\text { local }} [ i ] = r (1 - \\alpha_ {k} [ i ] \\rho_ {k} [ i ]) L _ {k} [ i ] s _ {k} c _ {2, k} ^ {2}. \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            89,
+            484,
+            488,
+            506
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "b) UAV-aided edge computing: Based on the communication model mentioned above, the delay and the energy consumption for offloading the tasks of user k at time slot i are given by ",
+        "bbox": [
+            73,
+            512,
+            491,
+            571
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {\\text { trans }} [ i ] = \\frac {\\alpha_ {k} [ i ] \\rho_ {k} [ i ] L _ {k} [ i ]}{R _ {k} [ i ] B} \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            192,
+            577,
+            488,
+            609
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            73,
+            614,
+            106,
+            627
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k} ^ {\\text { trans }} [ i ] = P t _ {k} ^ {\\text { trans }} [ i ] = P \\frac {\\alpha_ {k} [ i ] \\rho_ {k} [ i ] L _ {k} [ i ]}{R _ {k} [ i ] B} \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            145,
+            631,
+            488,
+            664
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "respectively. The UAV would execute the computation tasks after offloading. The computing time of the UAV is shown ",
+        "bbox": [
+            73,
+            667,
+            488,
+            698
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {k} ^ {\\mathrm{UAV}} [ i ] = \\frac {\\alpha_ {k} [ i ] \\rho_ {k} [ i ] L _ {k} [ i ] s _ {k}}{c _ {1 , k}}. \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            183,
+            702,
+            488,
+            734
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Similarly, the energy consumption caused by the computation of the UAV’s CPU is expressed as ",
+        "bbox": [
+            73,
+            741,
+            488,
+            771
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k} ^ {\\mathrm{UAV}} [ i ] = P _ {k} ^ {\\mathrm{UAV}} [ i ] t _ {k} ^ {\\mathrm{UAV}} [ i ] = r ^ {\\prime} \\alpha_ {k} [ i ] \\rho_ {k} [ i ] L _ {k} [ i ] s _ {k} c _ {1, k} ^ {2} \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            776,
+            488,
+            797
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $r ^ { \\prime }$ denotes the coefficient depending on the chip architecture of the UAV. ",
+        "bbox": [
+            73,
+            803,
+            488,
+            832
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            851,
+            243,
+            864
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "According to the UAV-aided system model mentioned above, we formulate the problem in this section. We assume that the local computing and the UAV computing can process simultaneously. The delay of the user served by the UAV depends on the maximum value of the following two items: 1) the offloading time plus the computing time of the UAV, which is denoted as $t _ { k } ^ { \\mathrm { t r a n s } } [ i ] + t _ { k } ^ { \\mathrm { U A V } } [ $ [i] and 2) the local computing time $t _ { k } ^ { \\mathrm { l o c a l } } [ i ]$ . The UAV sends the computation results back to its serving user in the same time slot, then it leaves for the next location. Since the data size of the computing results is much smaller as compared to the offloaded data, the delay, and energy consumption caused by sending results back to user k can be negligible. Obviously, the delay of the user that is not served by the UAV is the local computing time. To ensure fairness and timeliness, we aim to minimize the sum of the maximum delay among all the users in each time slot during a period T by jointly optimizing the ratio of offloading tasks, the user scheduling variables, and the trajectory of the UAV. Therefore, the optimization problem is expressed in (14), shown at the bottom of the next page. ",
+        "bbox": [
+            73,
+            869,
+            491,
+            946
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            69,
+            921,
+            296
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Constraint (14g) ensures the communication quality for offloading. Constraints (14h) and (14i) guarantee that the energy consumption of the users and the UAV cannot exceed the energy stored in the battery in one period, where $\\epsilon _ { 1 }$ and $\\epsilon _ { 2 }$ denote the battery energy budget of each user and the UAV, respectively. Problem (14) is a mixed integer nonconvex problem, which is challenging since it contains discrete binary variables $\\alpha _ { k } [ i ]$ and the highly coupling constraints. ",
+        "bbox": [
+            503,
+            297,
+            921,
+            417
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "III. PENALTY DUAL DECOMPOSITION-BASED ALGORITHM ",
+        "text_level": 1,
+        "bbox": [
+            550,
+            444,
+            875,
+            472
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In this part, we apply the PDD framework, as presented in Appendix A, to handle problem (14). First, we introduce a set of auxiliary variables and equality constraints to deal with the highly coupling constraints and the discrete binary variables $\\alpha _ { k } [ i ]$ , where an alternative formulation to (14) is achieved. Moreover, we combine the set of AL terms into the objective function. Then the effective CCCP algorithm is applied to deal with the AL problem in the inner loop. Particularly, we employ the linearization technique to approximate the nonconvex constraints and convert the AL problem into a better tractable form. Afterward, the optimized variables in the AL problem are divided into two blocks, which can be optimized successively. Furthermore, the AL multipliers and the penalty factor are updated in the outer loop. ",
+        "bbox": [
+            501,
+            478,
+            921,
+            690
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. Augmented Lagrangian Problem ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            713,
+            750,
+            728
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The original problem is intractable since there are many discrete binary variables αk[i] and highly coupling constraints. First, we can equivalently transform constraint (14c) into the equality constraints by introducing auxiliary variables $\\{ \\tilde { \\alpha } _ { k } [ i ] , k \\in \\mathcal { K } , i \\in \\mathcal { T } \\}$ as ",
+        "bbox": [
+            503,
+            732,
+            919,
+            808
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] (\\tilde {\\alpha} _ {k} [ i ] - 1) = 0 \\quad \\forall k, i \\tag {15a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            821,
+            919,
+            837
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ] = 0 \\quad \\forall k, i. \\tag {15b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            638,
+            840,
+            919,
+            856
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, we introduce a number of auxiliary variables $\\{ t _ { k } [ i ] , \\hat { t } _ { k } [ i ] , \\phi _ { k } [ i ] , \\gamma _ { k } [ i ] , \\beta _ { k } [ i ] , \\tilde { t } [ i ] , k \\in \\mathcal { K } , i \\in \\mathcal { T } \\}$ to deal with the coupling constraints. Problem (14) can be equivalently converted into (16), where $\\mathcal { Z } \\quad \\triangleq$ $\\begin{array} { r l } { \\{ \\alpha _ { k } [ i ] , { \\bf q } [ i ] , \\rho _ { k } [ i ] , \\tilde { \\alpha } _ { k } [ i ] , t _ { k } [ i ] , \\gamma _ { k } [ i ] , \\tilde { t } [ i ] , \\beta _ { k } [ i ] , \\hat { t } _ { k } [ i ] , \\phi _ { k } [ i ] , k } & { { } \\in \\mathcal { C } . } \\end{array}$ ",
+        "bbox": [
+            503,
+            869,
+            921,
+            946
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "1882 ",
+        "bbox": [
+            78,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            566,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            120,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {K}, i \\in \\mathcal {T} \\}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            75,
+            69,
+            143,
+            85
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\mathcal {Z}} \\sum_ {i = 1} ^ {N} \\tilde {t} [ i ] \\tag {16a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            97,
+            490,
+            138
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\alpha_ {k} [ i ] t _ {k} [ i ] \\leq \\tilde {t} [ i ] \\quad \\forall k, i \\tag {16b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            141,
+            488,
+            156
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {1}{B} \\rho_ {k} [ i ] L _ {k} [ i ] \\hat {t} _ {k} [ i ] + \\frac {\\rho_ {k} [ i ] L _ {k} [ i ] s _ {k}}{c _ {1 , k}} \\leq t _ {k} [ i ] \\quad \\forall k, i \\tag {16c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            157,
+            488,
+            189
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\beta_ {k} [ i ] \\hat {t} _ {k} [ i ] \\geq 1 \\quad \\forall k, i \\tag {16d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            190,
+            488,
+            205
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] \\rho_ {k} [ i ] \\geq \\gamma_ {k} [ i ] \\quad \\forall k, i \\tag {16e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            210,
+            488,
+            224
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {(1 - \\gamma_ {k} [ i ]) L _ {k} [ i ] s _ {k}}{c _ {2 , k}} \\leq \\tilde {t} [ i ] \\quad \\forall k, i \\tag {16f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            138,
+            224,
+            488,
+            257
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\log \\left(1 + \\frac {1}{\\phi_ {k} [ i ]}\\right) \\geq \\beta_ {k} [ i ] \\quad \\forall k, i \\tag {16g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            135,
+            258,
+            488,
+            292
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {H ^ {2} + \\| \\mathbf {q} [ i ] - \\mathbf {w} _ {k} \\| ^ {2}}{\\phi_ {k} [ i ]} \\leq \\frac {P \\mu_ {0}}{\\sigma^ {2}} \\quad \\forall k, i \\tag {16h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            292,
+            488,
+            327
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] \\nu \\leq \\beta_ {k} [ i ] \\quad \\forall k, i \\tag {16i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            328,
+            488,
+            343
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i = 1} ^ {N} \\left(\\frac {1}{B} P \\gamma_ {k} [ i ] \\hat {t} _ {k} [ i ] L _ {k} [ i ] \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            344,
+            285,
+            386
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. + r \\left(1 - \\gamma_ {k} [ i ]\\right) L _ {k} [ i ] s _ {k} c _ {2, k} ^ {2}\\right) \\leq \\epsilon_ {1} \\quad \\forall k \\tag {16j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            388,
+            488,
+            412
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} r ^ {\\prime} \\alpha_ {k} [ i ] \\rho_ {k} [ i ] L _ {k} [ i ] s _ {k} c _ {1, k} ^ {2} + \\sum_ {i = 1} ^ {N} \\kappa \\| v [ i ] \\| ^ {2} \\leq \\epsilon_ {2} \\tag {16k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            414,
+            488,
+            472
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] \\left(\\tilde {\\alpha} _ {k} [ i ] - 1\\right) = 0, \\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ] = 0 \\quad \\forall k, i \\tag {16l}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            135,
+            474,
+            488,
+            491
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(1 4 \\mathrm{b}) - (1 4 \\mathrm{f}). \\tag {16m}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            142,
+            494,
+            488,
+            510
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The detailed steps of the problem transformation are presented in Appendix B. The equality constraints (16l) can be dualized and penalized into the objective function as the AL terms. In this way, the AL problem is reformulated in (17), shown at the bottom of the next page. ",
+        "bbox": [
+            73,
+            525,
+            491,
+            599
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "We augment the objective function with AL multiplier $\\{ \\lambda _ { 1 , k , i } , \\lambda _ { 2 , k , i } \\} , k \\in \\mathcal { K } , i \\in \\mathcal { T }$ and a penalty factor $\\varrho ~ \\in ~ \\mathbb { R } _ { + }$ . ",
+        "bbox": [
+            75,
+            601,
+            491,
+            632
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Problems (16) and (17) are equivalent when $\\varrho \\to 0 .$ . The PDDbased algorithm has a double-loop structure. The inner loop optimizes the variables by handling problem (17) with fixed AL multipliers and the penalty factor while the outer loop updates the AL multipliers and the penalty factor. ",
+        "bbox": [
+            503,
+            69,
+            921,
+            146
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Proposed CCCP Algorithm in the Inner Loop ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            165,
+            839,
+            181
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "It is difficult to handle problem (17) directly due to the highly nonconvex constraints and the objective function. We approximate the nonconvex constraints with the aid of linearization. ",
+        "bbox": [
+            503,
+            184,
+            921,
+            243
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Let us first deal with constraint (16k). It can be expressed by ",
+        "bbox": [
+            519,
+            244,
+            919,
+            260
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sum_ {i = 1} ^ {N} \\kappa \\| v [ i ] \\| ^ {2} \\\\ + \\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} r ^ {\\prime} \\left(\\left(\\frac {\\alpha_ {k} [ i ] + \\rho_ {k} [ i ]}{2} \\sqrt {L _ {k} [ i ]}\\right) ^ {2} \\right. \\\\ \\left. - \\left(\\frac {\\alpha_ {k} [ i ] - \\rho_ {k} [ i ]}{2} \\sqrt {L _ {k} [ i ]}\\right) ^ {2}\\right) s _ {k} c _ {1, k} ^ {2} \\leq \\epsilon_ {2}. \\tag {18} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            524,
+            268,
+            919,
+            412
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "We define $u ( \\mathbf { z } _ { k } [ i ] ) \\triangleq ( [ ( \\alpha _ { k } [ i ] - \\rho _ { k } [ i ] ) / 2 ] \\sqrt { L _ { k } [ i ] } ) ^ { 2 } , w ( \\mathbf { z } _ { k } [ i ] ) \\triangleq$ $( [ ( \\alpha _ { k } [ i ] ~ + ~ \\rho _ { k } [ i ] ) / 2 ] \\sqrt { L _ { k } [ i ] } ) ^ { 2 }$ and $\\begin{array} { r l r } { x [ i ] } & { { } \\triangleq } & { [ ( \\kappa \\Vert \\nu [ i ] \\Vert ^ { 2 } - } \\end{array}$ $\\epsilon _ { 2 } ) / ( r ^ { \\prime } s _ { k } c _ { 1 , k } ^ { 2 } ) ] .$ , where $\\begin{array} { r l r } { { \\bf z } _ { k } [ i ] } & { { } \\triangleq } & { [ \\alpha _ { k } [ i ] , \\rho _ { k } [ i ] ] ^ { \\mathrm { T } } \\quad \\in \\quad \\mathbb { R } ^ { 2 \\times 1 } } \\end{array}$ . Thus, (18) can be rewritten as a difference of convex constraint ",
+        "bbox": [
+            504,
+            422,
+            921,
+            484
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} (w (\\mathbf {z} _ {k} [ i ]) - u (\\mathbf {z} _ {k} [ i ])) + \\sum_ {i = 1} ^ {N} x [ i ] \\leq 0. \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            493,
+            919,
+            535
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, we use its first order Taylor expansion around the current point $\\mathbf { z } _ { k } ^ { m } [ i ]$ , denoted as $\\hat { u } ( { \\mathbf { z } _ { k } ^ { m } [ i ] } , { \\mathbf { z } _ { k } [ i ] } )$ , to approximate the differentiable function $u ( { \\bf z } _ { k } [ i ] )$ in the mth iteration. According to [32], $\\hat { u } ( \\mathbf { z } _ { k } ^ { m } [ i ] , \\mathbf { z } _ { k } [ i ] )$ can be rewritten as ",
+        "bbox": [
+            503,
+            542,
+            919,
+            604
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\hat {u} \\left(\\mathbf {z} _ {k} ^ {m} [ i ], \\mathbf {z} _ {k} [ i ]\\right) = u \\left(\\mathbf {z} _ {k} ^ {m} [ i ]\\right) + \\nabla u ^ {\\mathrm{T}} \\left(\\mathbf {z} _ {k} ^ {m} [ i ]\\right) \\left(\\mathbf {z} _ {k} [ i ] - \\mathbf {z} _ {k} ^ {m} [ i ]\\right) \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            516,
+            614,
+            919,
+            633
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\left\\{\\alpha_ {k} [ i ], \\mathbf {q} [ i ], \\rho_ {k} [ i ] \\right\\}} \\sum_ {i = 1} ^ {N} \\max _ {\\forall k} \\left\\{\\max \\left\\{\\left(t _ {k} ^ {\\text { trans }} [ i ] + t _ {k} ^ {\\mathrm{UAV}} [ i ]\\right), t _ {k} ^ {\\text { local }} [ i ] \\right\\} \\right\\} \\tag {14a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            300,
+            660,
+            919,
+            703
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\sum_ {k = 1} ^ {K} \\alpha_ {k} [ i ] \\leq 1 \\quad \\forall i \\tag {14b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            366,
+            705,
+            919,
+            747
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] \\in \\{0, 1 \\} \\quad \\forall k, i \\tag {14c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            395,
+            748,
+            919,
+            763
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\rho_ {k} [ i ] \\leq 1 \\quad \\forall k, i \\tag {14d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            395,
+            766,
+            919,
+            782
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {q} [ 1 ] = \\mathbf {q} [ N ] \\tag {14e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            395,
+            785,
+            919,
+            801
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\| \\mathbf {q} [ i + 1 ] - \\mathbf {q} [ i ] \\|}{\\Delta} \\leq V _ {\\max}, i \\in \\mathcal {T} \\tag {14f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            395,
+            801,
+            919,
+            830
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {k} [ i ] \\geq \\alpha_ {k} [ i ] \\nu \\quad \\forall k, i \\tag {14g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            395,
+            830,
+            919,
+            845
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i = 1} ^ {N} \\left(E _ {k} ^ {\\text { trans }} [ i ] + E _ {k} ^ {\\text { local }} [ i ]\\right) \\leq \\epsilon_ {1} \\quad \\forall k \\tag {14h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            395,
+            847,
+            919,
+            888
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} E _ {k} ^ {\\mathrm{UAV}} [ i ] + \\sum_ {i = 1} ^ {N} E ^ {\\text { fly }} [ i ] \\leq \\epsilon_ {2} \\tag {14i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            395,
+            891,
+            919,
+            934
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "HU et al.: JOINT OFFLOADING AND TRAJECTORY DESIGN FOR UAV-ENABLED MEC SYSTEMS ",
+        "bbox": [
+            75,
+            34,
+            584,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "1883 ",
+        "bbox": [
+            895,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\nabla u ^ { \\mathrm { T } } ( \\mathbf { z } _ { k } ^ { m } [ i ] )$ denotes the derivative of $u ^ { \\mathrm { T } } ( \\mathbf { z } _ { k } ^ { m } [ i ] )$ as ",
+        "bbox": [
+            75,
+            66,
+            455,
+            87
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\bigtriangledown u ^ {\\mathrm{T}} \\left(\\mathbf {z} _ {k} ^ {m} [ i ]\\right) = \\left[ \\left(\\frac {\\left(\\alpha_ {k} ^ {m} [ i ] - \\rho_ {k} ^ {m} [ i ]\\right) L _ {k} [ i ]}{2}\\right) \\right. \\\\ \\left. \\times \\left(- \\frac {\\left(\\alpha_ {k} ^ {m} [ i ] - \\rho_ {k} ^ {m} [ i ]\\right) L _ {k} [ i ]}{2}\\right) \\right]. \\tag {21} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            90,
+            490,
+            175
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Here, we skip the details of the computation for $\\hat { u } ( { \\mathbf { z } _ { k } ^ { m } [ i ] } , { \\mathbf { z } _ { k } [ i ] } )$ . It should be noted that $\\hat { u } ( \\mathbf { z } _ { k } ^ { m } [ i ] , \\mathbf { z } _ { k } [ i ] )$ is an affine function of ${ \\mathbf z } _ { k } [ i ]$ . We define h as ",
+        "bbox": [
+            73,
+            179,
+            491,
+            224
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} h \\triangleq \\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} \\frac {\\left(\\alpha_ {k} ^ {m} [ i ] - \\rho_ {k} ^ {m} [ i ]\\right) \\left(\\alpha_ {k} [ i ] - \\rho_ {k} [ i ]\\right)}{2} L _ {k} [ i ] \\\\ + \\frac {\\epsilon_ {2}}{r ^ {\\prime} s _ {k} c _ {1 , k} ^ {2}} \\quad \\forall k, i. \\tag {22} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            120,
+            229,
+            490,
+            306
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Then, we can rewrite the constraint (16k) as the SOCP form in (23), as shown at the bottom of the next page. ",
+        "bbox": [
+            73,
+            311,
+            491,
+            340
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Other nonconvex constraints (16b)–(16e) and (16j) can be dealt with similarly. In this way, problem (17) can be transformed into (24), shown at the bottom of the next page, where ",
+        "bbox": [
+            73,
+            342,
+            491,
+            388
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nJ _ {k} [ i ] \\triangleq \\frac {\\left(\\alpha_ {k} ^ {m} [ i ] - t _ {k} ^ {m} [ i ]\\right) \\left(\\alpha_ {k} [ i ] - t _ {k} [ i ]\\right)}{2} + \\tilde {t} [ i ] \\quad \\forall k, i \\tag {25a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            83,
+            405,
+            490,
+            436
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} d _ {k} [ i ] \\triangleq \\frac {t _ {k} [ i ] B}{L _ {k} [ i ]} - \\frac {\\rho_ {k} [ i ] s _ {k} B}{c _ {1 , k}} \\\\ + \\frac {\\left(\\rho_ {k} ^ {m} [ i ] - \\hat {t _ {k}} ^ {m} [ i ]\\right) \\left(\\rho_ {k} [ i ] - \\hat {t _ {k}} [ i ]\\right)}{2} \\quad \\forall k, i \\tag {25b} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            84,
+            438,
+            490,
+            503
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ne _ {k} [ i ] \\triangleq \\frac {\\left(\\beta_ {k} ^ {m} [ i ] + \\hat {t} _ {k} ^ {m} [ i ]\\right) \\left(\\beta_ {k} [ i ] + \\hat {t} _ {k} [ i ]\\right)}{2} - 1 \\quad \\forall k, i \\tag {25c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            84,
+            503,
+            490,
+            537
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k} [ i ] \\triangleq \\frac {\\left(\\alpha_ {k} ^ {m} [ i ] + \\rho_ {k} ^ {m} [ i ]\\right) \\left(\\alpha_ {k} [ i ] + \\rho_ {k} [ i ]\\right)}{2} - \\gamma_ {k} [ i ] \\quad \\forall k, i \\tag {25d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            84,
+            537,
+            488,
+            570
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} g _ {k} \\triangleq \\sum_ {i = 1} ^ {N} \\left(\\frac {\\left(\\gamma_ {k} ^ {m} [ i ] - \\hat {t _ {k}} ^ {m} [ i ]\\right) \\left(\\gamma_ {k} [ i ] - \\hat {t _ {k}} [ i ]\\right)}{2} \\right. \\\\ \\left. - \\frac {B r (1 - \\gamma_ {k} [ i ]) s _ {k} c _ {2 , k} ^ {2}}{P}\\right) L _ {k} [ i ] + \\frac {\\epsilon_ {1} B}{P} \\quad \\forall k. \\tag {25e} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            98,
+            571,
+            488,
+            670
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Note that (24h) is added to speed up the convergence while without affecting the optimality of this problem. Then, we divide the optimized variables of problem (24) into two blocks. In the first block, we fix the other variables to optimize { ˜αk[i]}. Then the subproblem of the first block is given by ",
+        "bbox": [
+            73,
+            679,
+            491,
+            755
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\min _ {\\{\\tilde {\\alpha} _ {k} [ i ] \\}} \\frac {1}{2 \\varrho} \\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} \\left(\\| \\alpha_ {k} [ i ] (\\tilde {\\alpha} _ {k} [ i ] - 1) + \\varrho \\lambda_ {1, k, i} \\| ^ {2} \\right. \\\\ \\left. + \\left\\| \\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ] + \\varrho \\lambda_ {2, k, i} \\right\\| ^ {2}\\right). \\tag {26} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            125,
+            761,
+            488,
+            830
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "table",
+        "img_path": "images/1b579627167ae0c11bb2ae813a31c00cb9a3ac15dde788e53e289ad3063797f4.jpg",
+        "table_caption": [
+            "Algorithm 1 Proposed CCCP Algorithm in the Inner Loop "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Initialize</td><td>original</td><td>variables</td><td> $\\mathcal{Z}^{0}$ </td><td>=</td></tr><tr><td colspan=\"5\"> $\\{\\tilde{i}[i], \\alpha_{k}[i], \\mathbf{q}[i], \\rho_{k}[i], \\beta_{k}[i], t_{k}[i], \\hat{t}_{k}[i], \\phi_{k}[i], \\gamma_{k}[i], k \\in \\mathcal{K}, i \\in \\mathcal{T}\\}$ , set the tolerance of accuracy  $\\varsigma_{1}$ , the maximum iteration number  $N_{\\text{max}}$ , and the current iteration number  $m = 0$ .</td></tr></table>",
+        "bbox": [
+            519,
+            85,
+            921,
+            160
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "repeat ",
+        "text_level": 1,
+        "bbox": [
+            521,
+            162,
+            571,
+            175
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Update $\\tilde { \\alpha } _ { k } ^ { m } [ i ]$ based on (27); ",
+            "2. Update ${ \\dot { \\mathcal { Z } } } ^ { m }$ based on solving (28); ",
+            "3. $m = m + 1 .$ "
+        ],
+        "bbox": [
+            537,
+            176,
+            792,
+            220
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "until the difference between consecutive values of the objective function (24a) is under $\\varsigma _ { 1 }$ or $m \\geq N _ { \\mathrm { m a x } } .$ . ",
+        "bbox": [
+            519,
+            222,
+            919,
+            252
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The closed-form solution of (26) is denoted as ",
+        "bbox": [
+            504,
+            287,
+            823,
+            303
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tilde {\\alpha} _ {k} [ i ] = \\frac {\\alpha_ {k} ^ {2} [ i ] + \\alpha_ {k} [ i ] - \\varrho \\lambda_ {1 , k , i} \\alpha_ {k} [ i ] + \\varrho \\lambda_ {2 , k , i}}{\\alpha_ {k} ^ {2} [ i ] + 1} \\quad \\forall k, i. \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            529,
+            311,
+            919,
+            349
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In the second block, we optimize the rest variables by fixing $\\{ \\tilde { \\alpha } _ { k } [ i ] \\}$ , then we have the subproblem shown in (28) as shown at the bottom of the next page. Problem (28) is in convex form and can be solved by using the CVX solver [37]. In the iterative process of each inner loop, we alternately optimize the variables in the two blocks. The details of the proposed CCCP algorithm are presented in Algorithm 1. ",
+        "bbox": [
+            503,
+            358,
+            921,
+            464
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "C. Proposed PDD-Based Algorithm ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            484,
+            751,
+            500
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In the outer loop of the PDD-based algorithm, the AL multipliers $\\{ \\lambda _ { 1 , k , i } , \\lambda _ { 2 , k , i } \\} , k \\in \\mathcal { K } , i \\in \\mathcal { T }$ are updated by the following expressions: ",
+        "bbox": [
+            503,
+            503,
+            919,
+            549
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda_ {1, k, i} ^ {n + 1} = \\lambda_ {1, k, i} ^ {n} + \\frac {1}{\\varrho^ {n}} (\\alpha_ {k} [ i ] (\\tilde {\\alpha} _ {k} [ i ] - 1)) \\quad \\forall k, i \\tag {29a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            556,
+            919,
+            589
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda_ {2, k, i} ^ {n + 1} = \\lambda_ {2, k, i} ^ {n} + \\frac {1}{\\varrho^ {n}} (\\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ]) \\quad \\forall k, i \\tag {29b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            590,
+            919,
+            622
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where superscript n indicates the number of outer iteration. We introduce the constraint violation indicator $\\mathbf { h } ( \\mathcal { Z } ^ { n } )$ , which is shown below to measure the violation of the equality constraints and indicate the termination of the algorithm ",
+        "bbox": [
+            503,
+            631,
+            919,
+            691
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {h} \\left(\\mathcal {Z} ^ {n}\\right) = \\max \\left\\{\\| \\alpha_ {k} [ i ] \\left(\\tilde {\\alpha} _ {k} [ i ] - 1\\right) \\| ^ {2}, \\| \\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ] \\| ^ {2} \\right\\} \\quad \\forall k, i. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            700,
+            919,
+            741
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The details of the PDD-based algorithm to handle problem (17) are shown in Algorithm 2. The inner loop algorithm “optimize $( P ( \\varrho ^ { n } , \\lambda ^ { n } ) , \\mathbf { x } ^ { n - 1 } , \\varsigma _ { 2 } ^ { n } ) ^ { , , }$ is replaced with the algorithm shown in Algorithm 1, which means starting from $\\mathbf { x } ^ { n - 1 }$ , it calls an iterative optimization process to handle the ",
+        "bbox": [
+            503,
+            752,
+            921,
+            828
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\min _ {\\mathcal {Z}} \\sum_ {i = 1} ^ {N} \\tilde {t} [ i ] + \\frac {1}{2 \\varrho} \\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} \\left(\\left\\| \\alpha_ {k} [ i ] (\\tilde {\\alpha} _ {k} [ i ] - 1) + \\varrho \\lambda_ {1, k, i} \\right\\| ^ {2} + \\left\\| \\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ] + \\varrho \\lambda_ {2, k, i} \\right\\| ^ {2}\\right) (17a) \\\\ \\text { s.t. } 0 \\leq \\alpha_ {k} [ i ] \\leq 1 \\quad \\forall k, i (17b) \\\\ (1 4 \\mathrm{b}), (1 4 \\mathrm{d}) - (1 4 \\mathrm{f}), (1 6 \\mathrm{b}) - (1 6 \\mathrm{k}) (17c) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            857,
+            919,
+            935
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "1884 ",
+        "bbox": [
+            78,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            566,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "AL problem (24) to some accuracy $S _ { 2 } ^ { n } .$ . Based on the discussion of [30], the PDD-based algorithm has a guaranteed convergence to a KKT (stationary) point of problem (16). ",
+        "bbox": [
+            73,
+            69,
+            491,
+            116
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "IV. SIMPLIFIED ALGORITHM ",
+        "text_level": 1,
+        "bbox": [
+            178,
+            131,
+            387,
+            145
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "To reduce the computational complexity, we propose a simplified algorithm based on $l _ { 0 } .$ -norm approximation to solve problem (16). Furthermore, the computational complexity of the proposed algorithms is also analyzed. ",
+        "bbox": [
+            73,
+            150,
+            491,
+            210
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A. Simplified Algorithm ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            227,
+            240,
+            242
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Note that the most difficult and time-consuming part in the algorithm design is how to deal with binary constraints (14b) and (14c). In the PDD-based algorithm, we introduce a set of equality constraints to handle the binary constraints, which leads to its double-loop structure. In this section, we design a simplified algorithm by applying l0-norm to approximate the binary constraints, which has a single-loop structure. ",
+        "bbox": [
+            73,
+            246,
+            491,
+            351
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We define the variables $\\{ { \\pmb { \\alpha } } [ i ] \\in \\mathbb { R } ^ { k \\times 1 } \\} , i \\in \\mathcal { T }$ as α[i] - $[ \\alpha _ { 1 } [ i ] , \\alpha _ { 2 } [ i ] , \\ldots , \\alpha _ { k } [ i ] ] ^ { \\mathrm { T } }$ , and use l0-norm of α[i], i.e.,\u0003α[i]\u00030, to denote the number of nonzero elements in vector α[i]. The binary constraints (14b) and (14c) indicate that no more than one user is served by the UAV at a time slot, which means $\\| { \\pmb { \\alpha } } [ i ] \\| _ { 0 }$ should be less than or equal to 1. Furthermore, we relax the set of binary variables $\\alpha _ { k } [ i ]$ into a set of continuous variables between 0 and 1 in the real domain. Thus, constraints (14b) and (14c) can be approximated as ",
+        "bbox": [
+            503,
+            68,
+            921,
+            205
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\| \\boldsymbol {\\alpha} [ i ] \\| _ {0} \\leq 1 \\quad \\forall i \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            653,
+            224,
+            919,
+            239
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\alpha_ {k} [ i ] \\leq 1 \\quad \\forall k, i. \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            640,
+            243,
+            919,
+            258
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Constraints (31) and (32) guarantee that the UAV serves no more than one user at a time slot. According to [35] and [36], the $l _ { 0 } { \\mathrm { - n o r m } }$ can be approximated as $l _ { 1 } { \\mathrm { - n o r m } }$ , i.e., \u0003α[i]\u00031. ",
+        "bbox": [
+            503,
+            276,
+            919,
+            321
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Based on the CCCP technique and the auxiliary variables as illustrated in Section III, the original problem can be ",
+        "bbox": [
+            503,
+            321,
+            921,
+            352
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\| \\left[ \\frac {(\\alpha_ {1} [ 1 ] + \\rho_ {1} [ 1 ]) \\sqrt {L _ {1} [ 1 ]}}{2}, \\frac {\\left(\\alpha_ {1} ^ {m} [ 1 ] - \\rho_ {1} ^ {m} [ 1 ]\\right) \\sqrt {L _ {1} [ 1 ]}}{2}, \\dots , \\frac {(\\alpha_ {K} [ N ] + \\rho_ {K} [ N ]) \\sqrt {L _ {K} [ N ]}}{2} \\right. \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            212,
+            378,
+            772,
+            421
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. \\frac {\\left(\\alpha_ {K} ^ {m} [ N ] - \\rho_ {K} ^ {m} [ N ]\\right) \\sqrt {L _ {K} [ N ]}}{2}, \\sqrt {\\frac {\\kappa}{r ^ {\\prime} s _ {k} c _ {1 , k} ^ {2}}} v (1), \\dots , \\sqrt {\\frac {\\kappa}{r ^ {\\prime} s _ {k} c _ {1 , k} ^ {2}}} v (N), \\frac {h - 1}{2} \\right] \\| \\leq \\frac {h + 1}{2} \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            243,
+            422,
+            919,
+            470
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\mathcal {Z}} \\sum_ {i = 1} ^ {N} \\tilde {t} [ i ] + \\frac {1}{2 \\varrho} \\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} \\left(\\left\\| \\alpha_ {k} [ i ] (\\tilde {\\alpha} _ {k} [ i ] - 1) + \\varrho \\lambda_ {1, k, i} \\right\\| ^ {2} + \\left\\| \\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ] + \\varrho \\lambda_ {2, k, i} \\right\\| ^ {2}\\right) \\tag {24a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            212,
+            500,
+            919,
+            542
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\left\\| \\left[ \\frac {\\alpha_ {k} [ i ] + t _ {k} [ i ]}{2}, \\frac {\\alpha_ {k} ^ {m} [ i ] - t _ {k} ^ {m} [ i ]}{2}, \\frac {J _ {k} [ i ] - 1}{2} \\right] \\right\\| \\leq \\frac {J _ {k} [ i ] + 1}{2} \\quad \\forall k, i \\tag {24b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            220,
+            544,
+            919,
+            577
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\| \\left[ \\frac {\\rho_ {k} [ i ] + \\hat {t} _ {k} [ i ]}{2}, \\frac {\\rho_ {k} ^ {m} [ i ] - \\hat {t} _ {k} ^ {m} [ i ]}{2}, \\frac {d _ {k} [ i ] - 1}{2} \\right] \\right\\| \\leq \\frac {d _ {k} [ i ] + 1}{2} \\quad \\forall k, i \\tag {24c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            251,
+            579,
+            919,
+            619
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\| \\left[ \\frac {\\beta_ {k} [ i ] - \\hat {t} _ {k} [ i ]}{2}, \\frac {\\beta_ {k} ^ {m} [ i ] + \\hat {t} _ {k} ^ {m} [ i ]}{2}, \\frac {e _ {k} [ i ] - 1}{2} \\right] \\right\\| \\leq \\frac {e _ {k} [ i ] + 1}{2} \\quad \\forall k, i \\tag {24d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            251,
+            619,
+            919,
+            661
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\| \\left[ \\frac {\\alpha_ {k} [ i ] - \\rho_ {k} [ i ]}{2}, \\frac {\\alpha_ {k} ^ {m} [ i ] + \\rho_ {k} ^ {m} [ i ]}{2}, \\frac {f _ {k} [ i ] - 1}{2} \\right] \\right\\| \\leq \\frac {f _ {k} [ i ] + 1}{2} \\quad \\forall k, i \\tag {24e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            251,
+            661,
+            919,
+            694
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\| \\left[ \\frac {g _ {k} - 1}{2}, \\frac {\\big (\\gamma_ {k} [ 1 ] + \\hat {t} _ {k} [ 1 ] \\big) \\sqrt {L _ {k} [ 1 ]}}{2}, \\frac {\\big (\\gamma_ {k} ^ {m} [ 1 ] - \\hat {t} _ {k} ^ {m} [ 1 ] \\big) \\sqrt {L _ {k} [ 1 ]}}{2}, \\dots \\right. \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            251,
+            696,
+            673,
+            736
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. \\frac {\\left(\\gamma_ {k} [ N ] + \\hat {t} _ {k} [ N ]\\right) \\sqrt {L _ {k} [ N ]}}{2}, \\frac {\\left(\\gamma_ {k} ^ {m} [ N ] - \\hat {t} _ {k} ^ {m} [ N ]\\right) \\sqrt {L _ {k} [ N ]}}{2} \\right] \\| \\leq \\frac {g _ {k} + 1}{2} \\quad \\forall k \\tag {24f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            287,
+            737,
+            919,
+            777
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\log (1 + \\phi_ {k} [ i ]) - \\left(\\log \\left(\\phi_ {k} ^ {m} [ i ]\\right) + \\left(\\frac {1}{\\phi_ {k} ^ {m} [ i ] \\ln 2}\\right) \\left(\\phi_ {k} [ i ] - \\phi_ {k} ^ {m} [ i ]\\right)\\right) \\geq \\beta_ {k} [ i ] \\quad \\forall k, i \\tag {24g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            248,
+            779,
+            919,
+            811
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\alpha_ {k} [ i ] \\leq 1 \\quad \\forall k, i \\tag {24h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            248,
+            813,
+            919,
+            828
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(1 4 \\mathrm{b}), (1 4 \\mathrm{d}) - (1 4 \\mathrm{f}), (1 6 \\mathrm{f}), (1 6 \\mathrm{h}), (1 6 \\mathrm{i}) (2 3) \\tag {24i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            254,
+            830,
+            919,
+            847
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\mathcal {Z} \\backslash \\tilde {\\alpha} _ {k} [ i ]} \\sum_ {i = 1} ^ {N} \\tilde {t} [ i ] + \\frac {1}{2 \\varrho} \\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {K} \\left(\\left\\| \\alpha_ {k} [ i ] (\\tilde {\\alpha} _ {k} [ i ] - 1) + \\varrho \\lambda_ {1, k, i} \\right\\| ^ {2} + \\left\\| \\alpha_ {k} [ i ] - \\tilde {\\alpha} _ {k} [ i ] + \\varrho \\lambda_ {2, k, i} \\right\\| ^ {2}\\right) \\tag {28a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            204,
+            876,
+            919,
+            917
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s   .   t   . } (2 4 \\mathrm{b}) - (2 4 \\mathrm{i}) \\tag {28b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            227,
+            920,
+            919,
+            935
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "HU et al.: JOINT OFFLOADING AND TRAJECTORY DESIGN FOR UAV-ENABLED MEC SYSTEMS ",
+        "bbox": [
+            75,
+            34,
+            584,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "1885 ",
+        "bbox": [
+            895,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 2 Proposed PDD-Based Algorithm "
+        ],
+        "code_body": "Initialize $x^{0}$ , AL multipliers $\\lambda^{0}$ , penalty factor $\\varrho^{0} > 0$ , and set $\\varsigma_{2}$ , $\\varsigma_{3}$ , 0 < c < 1, $\\eta^{0} > 0$ , the current iteration number in the outer loop n = 0, and the maximum iteration number $N_{max}$ .\nrepeat\n    1. Update $\\mathbf{x}^{n}=optimize(P(\\varrho^{n},\\boldsymbol{\\lambda}^{n}),\\mathbf{x}^{n-1},\\varsigma_{2}^{n})$ ;\n    if $\\|\\mathbf{h}(\\mathbf{x}^{n})\\|_{\\infty}\\leq\\eta^{n}$ then\n    Update AL multipliers according to (29), $\\varrho^{n+1}=\\varrho^{n}$ . // case1: AL method, and $\\mathbf{h}(\\mathbf{x}^{n})$ are the equation constraints here.\n    else $\\lambda^{n+1}=\\lambda^{n}$ , update $\\varrho^{n+1}$ by decreasing $\\varrho^{n}:\\varrho^{n+1}=c\\varrho^{n}$ . // case2: penalty method.\n    end if\n    2. $\\eta^{n+1}=0.7\\|\\mathbf{h}(\\mathbf{x}^{n})\\|_{\\infty}$ ;\n    3. $n=n+1;$ until the termination criterion is met: $\\|h(x^{n})\\|_{\\infty}<\\varsigma_{3}$ or $n\\geq N_{max}$ . ",
+        "bbox": [
+            89,
+            85,
+            923,
+            270
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "converted to ",
+        "bbox": [
+            73,
+            301,
+            161,
+            315
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\mathcal {Z} \\backslash \\tilde {\\alpha} _ {k} [ i ]} \\sum_ {i = 1} ^ {N} \\tilde {t} [ i ] \\tag {33a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            200,
+            321,
+            491,
+            364
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad \\| \\boldsymbol {\\alpha} [ i ] \\| _ {1} \\leq 1 \\quad \\forall i \\tag {33b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            225,
+            364,
+            490,
+            380
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(2 4 \\mathrm{b}) - (2 4 \\mathrm{i}). \\tag {33c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            259,
+            383,
+            490,
+            398
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Problem (33) can be solved by the CVX solver [37]. Although this approximation ensures that most of elements in the column vector α[i] to be zero, it can not guarantee all the optimized elements in α[i] to be 0 or 1. So we select the maximum element in column vector α[i] and set the value to 1 while setting the remaining elements to zero. The details of the simplified algorithm are shown in Algorithm 3. ",
+        "bbox": [
+            73,
+            407,
+            491,
+            513
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "B. Computational Complexity Analysis ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            534,
+            341,
+            549
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this section, the computational complexity of the proposed algorithms is analyzed [34]. ",
+        "bbox": [
+            73,
+            553,
+            490,
+            583
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The complexity of the PDD-based algorithm is determined by handling problem (28) $I _ { 1 } I _ { 2 }$ times, where $I _ { 1 }$ and $I _ { 2 }$ represent the numbers of iterations in the inner loop and outer loop, respectively. The SoC constraints dominate the main complexity and the complexity on dealing with problem (26) is negligible as it recognizes a closed-form solution. Note that problem (28) contains $4 K N + K + 1$ SoC constraints, which involves 4KN SoCs with dimension 4, K SoCs with dimension 2N + 2, and 1 SoC with dimension $2 K N + N + 2$ . It involves 6KN + 2N variables, thus the number of variables $n _ { 1 }$ can be approximated by O(6KN). Taking the SoC constraints (24c) as an example, here we have KN SoC constraints and the dimension of each constraint is 4. Thus, according to [34], the complexity on dealing with (24c) is given by $4 ^ { 2 } K N$ . The complexity of the remaining part can be obtained by following the same approach, which is shown in Table I. ",
+        "bbox": [
+            73,
+            583,
+            491,
+            824
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The complexity of the simplified l0-norm algorithm is determined by handling problem (33) $I _ { 3 }$ times, where $I _ { 3 }$ represents the number of iterations. Problem (33) involves $4 K N + K + 1$ SoC constraints, which contains 4KN SoCs with dimension 4, K SoCs with dimension 2N + 2, and 1 SoC with dimension $2 K N + N + 2$ . It involves 6KN + 2N variables, thus the number of variables $n _ { 2 }$ is approximated by O(6KN). Similarly, we can obtain the complexity for the simplified algorithm shown in Table I. It is worth noting that the complexity of the simplified algorithm is much lower than that of the proposed PDD-based algorithm.3 ",
+        "bbox": [
+            73,
+            824,
+            491,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            301,
+            921,
+            345
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "V. EXTENSION TO THE AVERAGE DELAY ",
+        "text_level": 1,
+        "bbox": [
+            566,
+            367,
+            857,
+            380
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this section, we extend the proposed PDD-based algorithm and the simplified l0-norm algorithm in Sections III and IV to optimize the delay in each time slot to the scenario of the average delay. Let us consider the following objective function: ",
+        "bbox": [
+            501,
+            385,
+            921,
+            460
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\left\\{\\alpha_ {k} [ i ], \\mathbf {q} [ i ], \\rho_ {k} [ i ] \\right\\}} \\max _ {\\forall k} \\sum_ {i = 1} ^ {N} \\max \\left\\{\\left(t _ {k} ^ {\\text { trans }} [ i ] + t _ {k} ^ {\\mathrm{UAV}} [ i ]\\right), t _ {k} ^ {\\text { local }} [ i ] \\right\\}. \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            519,
+            470,
+            921,
+            527
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The difference between (14a) and (34) is that (14a) aims at minimizing the sum of maximum delay among all the users in each time slot, while (34) minimizes the maximum delay among all the users in one period, $\\mathrm { i . e . , }$ the average delay. By introducing auxiliary variables {t, ˜t[i], $\\beta _ { k } [ i ] , t _ { k } [ i ] , \\hat { t } _ { k } [ i ] , \\phi _ { k } [ i ] , \\gamma _ { k } [ i ] , k \\in \\mathcal { K } , i \\in \\mathcal { T } \\}$ , the problem with objective function (34) can be converted into (35) as shown ",
+        "bbox": [
+            503,
+            537,
+            921,
+            657
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\mathcal {X}} t \\tag {35a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            586,
+            669,
+            919,
+            691
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\sum_ {i = 1} ^ {N} \\tilde {t} _ {k} [ i ] \\leq t \\quad \\forall k \\tag {35b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            694,
+            919,
+            736
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] t _ {k} [ i ] \\leq \\tilde {t} _ {k} [ i ] \\quad \\forall k, i \\tag {35c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            624,
+            738,
+            919,
+            753
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {(1 - \\gamma_ {k} [ i ]) L _ {k} [ i ] s _ {k}}{c _ {2 , k}} \\leq \\tilde {t} _ {k} [ i ] \\quad \\forall k, i \\tag {35d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            625,
+            753,
+            919,
+            785
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(1 6 \\mathrm{c}) - (1 6 \\mathrm{e}), (1 6 \\mathrm{g}) - (1 6 \\mathrm{m}) \\tag {35e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            630,
+            786,
+            919,
+            801
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where ${ \\mathcal { X } } \\ \\triangleq \\ \\{ t , \\alpha _ { k } [ i ] , \\mathbf { q } [ i ] , \\rho _ { k } [ i ] , { \\tilde { \\alpha } } _ { k } [ i ] , t _ { k } [ i ] , \\gamma _ { k } [ i ] , { \\tilde { t } } _ { k } [ i ] , \\beta _ { k } [ i ] , $ , $\\hat { t } _ { k } [ i ] , \\phi _ { k } [ i ] , k \\in \\mathcal { K } , i \\in \\mathcal { T } \\}$ . The problem (35) can be solved similarly by following the proposed PDD-based and simplified $l _ { 0 } .$ -norm algorithms shown in Sections III and IV. ",
+        "bbox": [
+            503,
+            810,
+            921,
+            871
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "3According to the simulation results, when the UAV serves eight ground users, and the number of time slots are set to be 600, we obtain $I _ { 1 } = 3 0 ,$ , $I _ { 2 } = 1 0 ,$ and $I _ { 3 } = 4 0 ,$ , respectively. When the UAV serves four ground users, and the number of time slots are set to be 200, we obtain $I _ { 1 } = 2 0 , I _ { 2 } = 5 ,$ , and $I _ { 3 } = 2 5 ,$ , accordingly. ",
+        "bbox": [
+            503,
+            885,
+            921,
+            945
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "1886 ",
+        "bbox": [
+            78,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            566,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 3 Proposed Simplified l0-Norm Algorithm ",
+        "text_level": 1,
+        "bbox": [
+            76,
+            66,
+            442,
+            82
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Initialize original variables $\\mathcal { Z } ^ { 0 } \\ = \\ \\{ \\tilde { t } [ i ] , \\alpha _ { k } [ i ] , \\mathbf { q } [ i ] , \\rho _ { k } [ i ] , \\beta _ { k } [ i ] , t _ { k } [ i ] , \\hat { t } _ { k } [ i ] , \\phi _ { k } [ i ] , \\gamma _ { k } [ i ] \\} , k \\in \\mathcal { K } , i \\ \\in \\ \\mathcal { T }$ , set the tolerance of accuracy $\\varsigma _ { 4 }$ , the maximum iteration number $N _ { \\mathrm { m a x } }$ , and the current iteration number $m = 0 .$ . ",
+        "bbox": [
+            89,
+            85,
+            921,
+            116
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "repeat ",
+        "text_level": 1,
+        "bbox": [
+            91,
+            118,
+            140,
+            130
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Update ${ \\mathcal { Z } } ^ { m }$ based on solving (33); ",
+            "2. $m = m + 1 .$ "
+        ],
+        "bbox": [
+            107,
+            132,
+            361,
+            159
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "until the difference between consecutive values of the objective function (33a) is under ${ \\zeta } 4 ~ \\mathrm { { o r } } ~ m \\ge { N _ { \\mathrm { { m a x } } } }$ . Then we pick the maximum element in the column vector α[i] and set the value to be 1, while the remaining elements are set to be zero. ",
+        "bbox": [
+            89,
+            162,
+            919,
+            191
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/715b49c962ef3996afdbab46783a3a3391ebe81a363a920991ccc61e4f14fa1c.jpg",
+        "table_caption": [
+            "TABLE I COMPLEXITY ANALYSIS FOR THE PROPOSED ALGORITHMS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Algorithms</td><td>Complexity Order</td></tr><tr><td>PDD-based algorithm</td><td> $I_1I_2O\\left(n_1\\sqrt{2(4KN+K+1)}\\cdot(64KN+4K(N+1)^2+(2KN+N+2)^2+n_1^2)\\right), \\ n_1 = O(6KN)$ </td></tr><tr><td>Simplified algorithm</td><td> $I_3O\\left(n_2\\sqrt{2(4KN+K+1)}\\cdot(64KN+4K(N+1)^2+(2KN+N+2)^2+n_2^2)\\right), \\ n_2 = O(6KN)$ </td></tr></table>",
+        "bbox": [
+            122,
+            243,
+            874,
+            296
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "These two objective functions lead to different system performance. The average delay of a user during a period in (34) is smaller than that in (14a) while the delay jitter of each user in a period in (34) is larger than that in (14a). It is mainly because (34) aims at minimizing the average delay of each user in one period, whereas that in (14a) ensures the delay in each time slot. When the users’ requirement of the timeliness is high, such as video conference and video surveillance, applying (14a) is more reasonable. In the scenes with low real-time requirements but high requirements of the average delay, such as watching the online video, applying (34) is better. ",
+        "bbox": [
+            73,
+            325,
+            491,
+            489
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "VI. NUMERICAL RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            187,
+            518,
+            377,
+            532
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In this section, we present simulation results to evaluate the performance and efficiency of the proposed algorithms. We consider a UAV-aided MEC system, where $K = 8$ ground users are distributed in a 2-D area of $2 \\times 2 \\mathrm { k m } ^ { 2 }$ randomly [25]. The channel power gain is set to be $\\mu _ { 0 } = - 5 0$ dB at the reference distance $d _ { 0 } = 1$ m. The receiver noise power is assumed to be $\\sigma ^ { 2 } = - 1 0 0$ dBm. For each user, the task size $L _ { k }$ follows the uniform distribution over $[ 1 \\times 1 0 ^ { 7 } , 5 \\times 1 0 ^ { 7 } ]$ (bits). We set $s _ { k } = 1 0 ^ { 3 }$ cycles/bit and $r = r ^ { \\prime } = 1 0 ^ { - 2 7 }$ . The computing capability of the UAV $c _ { 1 , k } = 1 2 0 0$ MHz, $k = 1 , 2 , \\ldots , 8$ while that of each user $_ { c _ { 2 , k } }$ is randomly distributed within [300, 400] MHz. The maximum transmission power of the users and the maximum speed of the UAV are $P = 3 0$ dBm and $V _ { \\mathrm { m a x } } = 5 0$ m/s, respectively. The transmission bandwidth is assumed to be $B = 1$ MHz. The battery energy of the UAV is $\\epsilon _ { 1 } = 0 . 0 1 k W { \\cdot } h$ while that of each user is $\\epsilon _ { 2 } = 0 . 0 0 1$ kW · h. Here, we assume that the UAV flies at a fixed height $H = 1 0 0$ m. The threshold in the PDD-based algorithm is assumed to be $\\varsigma _ { 3 } = 1 0 ^ { - 8 }$ . The initial circular trajectory of the UAV q[i] is given in [25]. ",
+        "bbox": [
+            73,
+            537,
+            491,
+            839
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 2 shows an example of the UAV’s flying trajectories optimized by the proposed PDD-based algorithm with different values of period, T. The inflight range of the UAV is small when T is short, e.g., T = 30 s, and the UAV is far away from the ground users when offloading data. As T grows, the radius of the trajectory increases and the communication quality improves due to shorter distance between the UAV and its ",
+        "bbox": [
+            73,
+            839,
+            491,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/4ac87c1153ab012342037d2888cd2c82648cc584d5198b4e31d1eda6aec92331.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 2. Illustration of the optimal UAV trajectories with different values of period T. The trajectory of $\\bar { T = 3 0 }$ s is sampled every $2 . 5 \\ \\mathrm { s } ,$ while the others are sampled every 5 s. The sampled points of the UAV locations are marked with - while the locations of ground users are marked with ◦. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            320,
+            893,
+            539
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "serving user. When T is sufficiently large, the UAV can access all users in sequence, even keeps stationary above its serving user for several time slots. Meanwhile, the UAV’s trajectory is a large closed loop that connects all the users’ locations. From Fig. 2, better performance can be achieved if the UAV can fly in a larger period of time to provide more freedom for the UAV to adjust its trajectory and location. ",
+        "bbox": [
+            501,
+            613,
+            919,
+            718
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "To give a more detailed illustration, we show the speed of the UAV in a period of time for $T = 1 2 0 ~ \\mathrm { s }$ in Fig. 3. From the figure, the speed of UAV would reduce to zero in some time slots. The UAV is exactly located above its serving user during these time intervals, and it would keep stationary to gather more data in better channel condition. On the other hand, when the UAV leaves one user for the next, it will not fly with the maximum speed since there is a tradeoff between the flying speed and the energy consumption. ",
+        "bbox": [
+            501,
+            719,
+            921,
+            854
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In what follows, we analyze a special scenario, where the UAV serves a group of ground users with the same size of computing tasks but different computing capabilities. We assume $K = 8$ ground users randomly located within a 2-D area of $2 \\times 2 ~ \\mathrm { k m } ^ { 2 }$ . Each of them has the same size of computing tasks as $L _ { k } \\ = \\ 1 \\times 1 0 ^ { 7 }$ bits, $k = 1 , 2 , \\ldots , 8 .$ They have different computing capabilities, i.e., $c _ { 2 , 1 } = c _ { 2 , 8 } = 2 0 0$ MHz, $c _ { 2 , 2 } = c _ { 2 , 3 } = 4 0 0$ MHz, $c _ { 2 , 4 } = c _ { 2 , 5 } = 6 0 0$ MHz, and $c _ { 2 , 6 } = c _ { 2 , 7 } = 1 2 0 0 \\ : \\mathrm { M H z }$ . The other parameters are same as the parameters mentioned above. In Table II, we show the number of time slots served by the UAV and the ratio of offloading data for each user. From the table, users 1 and 8 are allocated with the most time slots while users 6 and 7 are allocated with the least time slots. Meanwhile, the ratio of the offloading data has the same trends as that of the allocated number of time slots. This is very intuitive since users with smaller local computing capability may offload more data to the UAV and correspondingly requires more time slots for transmission. ",
+        "bbox": [
+            501,
+            854,
+            921,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "HU et al.: JOINT OFFLOADING AND TRAJECTORY DESIGN FOR UAV-ENABLED MEC SYSTEMS ",
+        "bbox": [
+            76,
+            34,
+            584,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "1887 ",
+        "bbox": [
+            895,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/976abc35c852ff234a8f931aac31515fcd5c21ca9b75eb23df64be2cda22262f.jpg",
+        "table_caption": [
+            "TABLE IISIMULATION RESULTS OF THE SPECIAL CASE"
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>User index</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr><tr><td>Number of time slots served by the UAV</td><td>82</td><td>37</td><td>37</td><td>16</td><td>16</td><td>5</td><td>5</td><td>82</td></tr><tr><td>Ratio of the offloading data</td><td>61.33%</td><td>26.67%</td><td>26.67%</td><td>10.33%</td><td>10.33%</td><td>2.78%</td><td>2.78%</td><td>61.33%</td></tr></table>",
+        "bbox": [
+            132,
+            98,
+            867,
+            138
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/212ef799e2582d91c52251274d2e13b37f3dfeb61b758969bee75af03a4e8653.jpg",
+        "content": "| Time (s) | UAV speed (m/s) |\n| -------- | --------------- |\n| 0        | 47              |\n| 10       | 0               |\n| 15       | 47              |\n| 20       | 47              |\n| 30       | 0               |\n| 35       | 41              |\n| 40       | 0               |\n| 45       | 33              |\n| 50       | 33              |\n| 60       | 0               |\n| 65       | 36              |\n| 70       | 36              |\n| 75       | 0               |\n| 80       | 30              |\n| 85       | 0               |\n| 90       | 30              |\n| 95       | 0               |\n| 100      | 47              |\n| 105      | 0               |\n| 110      | 47              |\n| 115      | 0               |\n| 120      | 47              |",
+        "chart_caption": [
+            "Fig. 3. Speed of UAV in a period for $T = 1 2 0 ~ \\mathrm { s }$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            107,
+            159,
+            460,
+            397
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f94204e75310e0545caae20414c2fcc7bedb51a446c074bf07a1d2c6bf57f7ab.jpg",
+        "content": "| Number of iterations | PDD-based algorithm | L0-norm algorithm |\n| -------------------- | ------------------- | ----------------- |\n| 0                    | 40.0                | 40.0              |\n| 2                    | 32.0                | 38.0              |\n| 4                    | 25.0                | 35.0              |\n| 6                    | 17.0                | 30.0              |\n| 8                    | 14.0                | 27.0              |\n| 10                   | 13.5                | 25.0              |\n| 12                   | 13.5                | 24.0              |\n| 14                   | 13.5                | 23.0              |\n| 16                   | 13.5                | 22.0              |\n| 18                   | 13.5                | 21.5              |\n| 20                   | 13.5                | 21.0              |\n| 22                   | 13.5                | 20.5              |\n| 24                   | 13.5                | 20.0              |\n| 26                   | 13.5                | 19.5              |\n| 28                   | 13.5                | 19.0              |\n| 30                   | 13.5                | 18.5              |\n| 32                   | 13.5                | 18.0              |\n| 34                   | 13.5                | 17.5              |\n| 36                   | 13.5                | 17.0              |\n| 38                   | 13.5                | 16.5              |\n| 40                   | 13.5                | 16.0              |",
+        "chart_caption": [
+            "Fig. 4. Time delay simulated by PDD and l0-norm algorithm with $T = 2 4 0 \\mathrm { s } .$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            537,
+            159,
+            890,
+            397
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            462,
+            491,
+            643
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 4, we compare the optimal time delay achieved by the PDD-based algorithm with the simplified l0-norm algorithm. The lower bound in the figure is achieved by setting T and $V _ { \\mathrm { m a x } }$ as sufficiently large so that the UAV’s flying time between users can be neglected, and it can provide offloading service for the ground users sequentially when it is exactly above its serving user. From the figure, we see that the PDD-based algorithm converges at around ten iterations while the l0-norm algorithm converges after 40 iterations. However, the PDD-based algorithm contains two nested loops, whereas the l0-norm algorithm only has one loop. Besides, the PDDbased algorithm achieves a lower optimized delay than the l0-norm algorithm, which demonstrates its superiority. ",
+        "bbox": [
+            73,
+            643,
+            491,
+            839
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 5 shows the relationship between the value of constraint violation indicator, $\\mathbf { h } ( \\mathcal { Z } ^ { n } )$ in (30), and the number of iterations in the proposed PDD-based algorithm. From the $\\mathrm { f i g \\mathrm { - } }$ ure, $\\mathbf { h } ( \\mathcal { Z } ^ { n } )$ decreases to $1 0 ^ { - 1 0 }$ after 20 iterations, which shows the fast convergence rate of the penalty items. It validates the efficiency of the proposed PDD-based algorithm when dealing with the equality constraints. At the beginning, the penalty ",
+        "bbox": [
+            73,
+            839,
+            491,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/4d160cbc96cc8e548503d160777628ac7e9273c2cd449b9e338acbf5a04259cd.jpg",
+        "content": "| Number of iterations | Constraint Violation |\n| -------------------- | -------------------- |\n| 1                    | 1.0                  |\n| 2                    | 0.5                  |\n| 3                    | 0.1                  |\n| 4                    | 0.01                 |\n| 5                    | 0.001                |\n| 6                    | 0.0001               |\n| 7                    | 0.00001              |\n| 8                    | 0.000001             |\n| 9                    | 0.0000001            |\n| 10                   | 0.00000001           |\n| 11                   | 0.000000001          |\n| 12                   | 0.0000000001         |\n| 13                   | 0.00000000001        |\n| 14                   | 0.000000000001       |\n| 15                   | 0.0000000000001      |\n| 16                   | 0.00000000000001     |\n| 17                   | 0.000000000000001    |\n| 18                   | 0.0000000000000001   |\n| 19                   | 0.00000000000000001  |\n| 20                   | 0.00000000000000001  |",
+        "chart_caption": [
+            "Fig. 5. Penalty of constraints violation with $T = 1 2 0$ s. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            445,
+            893,
+            700
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "value is high since the initial value of each variable violates the equality constraints a lot. With the increase of the iteration number, the AL multiplier, λ, increases while the penalty coefficient \r decreases, which causes that the weight of penalty item increases with the objective function item ˜t[i]. Therefore, the results would not violate the equality constraints too much. After about 20 iterations, the penalty value is less than $1 0 ^ { - 1 0 }$ , which means that the discrete binary variables $\\alpha _ { k } [ i ]$ are very close to 0 or 1, and all the equality constraints penalized into the objective function are well satisfied. ",
+        "bbox": [
+            501,
+            763,
+            921,
+            912
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In what follows, we compare the optimized delay performance achieved by the following schemes. ",
+        "bbox": [
+            503,
+            915,
+            921,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "1888 ",
+        "bbox": [
+            78,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            566,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/7f537db98bbba08280db8a0b5e4e9242a8d0d121d9f969757338416e7590c751.jpg",
+        "content": "| Computing capability of the UAV (MHz) | Lower bound | PDD-based algorithm | L0-norm algorithm | Circular trajectory | UAV fixed |\n| ------------------------------------- | ----------- | ------------------- | ----------------- | ------------------- | --------- |\n| 200                                   | 10          | 78                  | 78                | 78                  | 81        |\n| 400                                   | 10          | 51                  | 51                | 53                  | 57        |\n| 600                                   | 10          | 34                  | 34                | 37                  | 40        |\n| 800                                   | 10          | 24                  | 26                | 28                  | 32        |\n| 1000                                  | 10          | 19                  | 21                | 23                  | 26        |\n| 1200                                  | 10          | 16                  | 17                | 20                  | 23        |\n| 1400                                  | 10          | 15                  | 16                | 19                  | 22        |\n| 1600                                  | 10          | 14                  | 15                | 18                  | 21        |",
+        "chart_caption": [
+            "Fig. 6. Time delay versus computing capability of the UAV with $T = 1 2 0 ~ \\mathrm { s }$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            107,
+            64,
+            459,
+            281
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) The proposed PDD-based algorithm optimizing all variables including user scheduling variables $\\alpha _ { k } [ i ]$ , the trajectory of the UAV q[i], and the ratio of offloading data $\\rho _ { k } [ i ]$ . ",
+            "2) The proposed simplified l0-norm algorithm. ",
+            "3) The PDD-based algorithm optimizing αk[i] and $\\rho _ { k } [ i ] ,$ where the trajectory of the UAV is a circle [25]. ",
+            "4) The PDD-based algorithm optimizing αk[i] and $\\rho _ { k } [ i ]$ while keeping UAV fixed at a stationary point, e.g., the geometry center of the users. "
+        ],
+        "bbox": [
+            91,
+            340,
+            491,
+            492
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 6 illustrates the time delay versus computing capability of the UAV with $T = 1 2 0 ~ \\mathrm { s }$ and P = 30 dBm. The lower bound in the figure is calculated when the computing capability of the UAV is sufficiently large. With the increase of the $\\mathrm { U A V } _ { \\mathrm { \\Delta } }$ computing capability, the users would offload more data to the UAV, which leads to the decrease on the optimal time delay. Both the PDD-based algorithm and the simplified l0-norm algorithm outperform the other two schemes, i.e., the UAV with circular trajectory and fixed location. When the UAV flies in a circular trajectory, the users that are not located along the circle have worse channel conditions. Thus, more time slots would be allocated to these users, which leads to low efficiency. By contrast, the PDD-based algorithm shows the best performance. However, as discussed before, the computational complexity of the PDD-based algorithm is relatively high since it requires two nested loops of iterations. In this sense, the simplified l0-norm algorithm achieves a good balance between the delay performance and the computational complexity. ",
+        "bbox": [
+            73,
+            492,
+            491,
+            779
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 7 shows the time delay versus transmission power of the users with the time period $T = 1 2 0$ s and the UAV’s computing capability $c _ { 1 , k } = 1 2 0 0$ MHz. When the transmission power is small, e.g., 21 dBm, the transmission rate is low, thus the users prefer to compute locally no matter how fast the UAV’s computing capability is. In this case, the delay is large in all four schemes. When the transmission power increases, the transmission rate also increases, which leads to the time delay decreases monotonically since the users would offload more data to the UAV. The lower bound is computed when the transmission power is sufficiently large. From the figure, the superiority of the proposed PDD-based algorithm and the l0-norm algorithm is demonstrated once again. ",
+        "bbox": [
+            73,
+            779,
+            491,
+            946
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/9925504109435fa88cb8de49a161972ca320d2fd3b566619774f6eaaaa4a47e2.jpg",
+        "content": "| Transmission power P (dBm) | Lower bound | PDD-based algorithm | L0-norm algorithm | Circular trajectory | UAV fixed |\n| -------------------------- | ----------- | ------------------- | ----------------- | ------------------- | --------- |\n| 21                         | 8           | 38                  | 46                | 56                  | 70        |\n| 24                         | 8           | 24                  | 34                | 44                  | 52        |\n| 27                         | 8           | 18                  | 23                | 33                  | 42        |\n| 30                         | 8           | 14                  | 18                | 25                  | 33        |\n| 33                         | 8           | 12                  | 15                | 21                  | 26        |\n| 36                         | 8           | 10                  | 13                | 18                  | 21        |\n| 39                         | 8           | 10                  | 12                | 16                  | 19        |\n| 42                         | 8           | 10                  | 12                | 16                  | 18        |",
+        "chart_caption": [
+            "Fig. 7. Time delay versus transmission power of the users with $T = 1 2 0$ s. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            540,
+            64,
+            887,
+            281
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/97d7fe6948f91f918a07c36615226dcce3b09135a06b24273c7f49f4932182d6.jpg",
+        "content": "| Period T (s) | Lower bound | PDD-based algorithm | L0-norm algorithm | Circular trajectory | UAV fixed |\n| ------------ | ----------- | ------------------- | ----------------- | ------------------- | --------- |\n| 0            | 12.0        | 18.5                | 18.5              | 18.5                | 19.0      |\n| 50           | 12.0        | 16.0                | 16.8              | 17.5                | 19.0      |\n| 100          | 12.0        | 14.5                | 15.5              | 17.0                | 19.0      |\n| 150          | 12.0        | 13.8                | 14.8              | 16.5                | 19.0      |\n| 200          | 12.0        | 13.2                | 14.0              | 16.0                | 19.0      |\n| 250          | 12.0        | 12.8                | 13.5              | 15.8                | 19.0      |\n| 300          | 12.0        | 12.5                | 13.2              | 15.7                | 19.0      |\n| 350          | 12.0        | 12.3                | 13.1              | 15.6                | 19.0      |\n| 400          | 12.0        | 12.2                | 13.0              | 15.5                | 19.0      |",
+        "chart_caption": [
+            "Fig. 8. Time delay with different values of period T. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            540,
+            323,
+            887,
+            539
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            598,
+            919,
+            628
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 8 illustrates the time delay with different values of period, T, where the transmission power $P = 3 0$ dBm and the UAV’s computing capability $c _ { 1 , k } = 1 2 0 0$ MHz. When the period T is small, the UAV would hover in a small range, which is far away from the served users. In this situation, the delay would be very large since users would offload small portion of data to the UAV due to low transmission rate. When the period T increases, the UAV would have more freedom to fly near its serving user to obtain better channel conditions, and more data could be offloaded to the UAV, leading to the decrease of the delay performance. As T goes large enough, the optimized delay of all algorithms converges. The lower bound is calculated when T is sufficiently large. Nevertheless, the PDD-based algorithm still achieves the best performance, and the l0-norm algorithm performs better than the benchmark schemes, i.e., UAV with circular trajectory or fixed location. ",
+        "bbox": [
+            501,
+            628,
+            921,
+            869
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 9, we compare each user’s time delay in one period for schemes corresponding to different objective functions. The red full line stands for objective function (14a) while the blue dotted line corresponds to objective function (34). It is obvious that the user’s average delay in (34) is lower than that in (14a), while each user’s delay jitter corresponding to (34) is larger than that in (14a) within one period. ",
+        "bbox": [
+            501,
+            869,
+            921,
+            946
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "HU et al.: JOINT OFFLOADING AND TRAJECTORY DESIGN FOR UAV-ENABLED MEC SYSTEMS ",
+        "bbox": [
+            76,
+            34,
+            584,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "1889 ",
+        "bbox": [
+            895,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/5dc93c31d3fe288a2ee5194eac0a92a786b8a1b2d4428b8d4654cbc81293e3a5.jpg",
+        "content": "| t (s) | Minimization of average delay (s) | Minimization of delay in each time slot (s) |\n|-------|-----------------------------------|---------------------------------------------|\n| 0     | 0.5                               | 0.5                                         |\n| 10    | 0.4                               | 0.5                                         |\n| 20    | 0.6                               | 0.5                                         |\n| 30    | 0.7                               | 0.5                                         |\n| 40    | 0.3                               | 0.5                                         |\n| 50    | 0.6                               | 0.5                                         |\n| 60    | 0.5                               | 0.5                                         |\n| 70    | 0.4                               | 0.5                                         |\n| 80    | 0.3                               | 0.5                                         |\n| 90    | 0.2                               | 0.5                                         |\n| 100   | 0.1                               | 0.5                                         |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            104,
+            64,
+            464,
+            282
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e3d5b26b1e5fc5f7031b558406dcb764ab46cc107e80400d61dea90e11251cbf.jpg",
+        "content": "| Transmission power P (dBm) | Lower bound | PDD-based algorithm | L0-norm algorithm | Circular trajectory | UAV fixed |\n| -------------------------- | ----------- | ------------------- | ----------------- | ------------------- | --------- |\n| 21                         | 7           | 28                  | 33                | 43                  | 58        |\n| 24                         | 7           | 19                  | 23                | 34                  | 45        |\n| 27                         | 7           | 14                  | 17                | 25                  | 37        |\n| 30                         | 7           | 12                  | 14                | 19                  | 29        |\n| 33                         | 7           | 10                  | 12                | 16                  | 23        |\n| 36                         | 7           | 9                   | 11                | 14                  | 19        |\n| 39                         | 7           | 9                   | 10                | 13                  | 18        |\n| 42                         | 7           | 9                   | 10                | 13                  | 17        |",
+        "chart_caption": [
+            "Fig. 9. Time delay of each user in one period for different schemes. ",
+            "Fig. 10. Time delay versus the transmission power in the case of $T = 1 2 0 ~ \\mathrm { { s } }$ s for objective function (34). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            109,
+            321,
+            457,
+            537
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            603,
+            488,
+            633
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Fig. 10 shows the average time delay versus the transmission power in the case of time period $T = 1 2 0 ~ \\mathrm { s }$ for objective function (34), where we set the UAV’s computing capability $c _ { 1 , k } = 1 2 0 0 ~ \\mathrm { M H z }$ . When the transmission power is small, e.g., 21 dBm, the transmission rate is low, thus the users prefer to compute locally. In this case, the delay is large in all the analyzed algorithms. The transmission rate increases with transmission power, which leads to the time delay decreases monotonically since the users would offload more data to the UAV. From the figure, the superiority of the proposed PDDbased algorithm and the $l _ { 0 } { \\mathrm { - n o r m } }$ algorithm is demonstrated once again. The trend of the curves is similar to that of objective function (14a). It is apparent that the average delay of the system corresponding to objective function (34) is smaller than that of (14a). ",
+        "bbox": [
+            73,
+            633,
+            491,
+            859
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "VII. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            214,
+            881,
+            352,
+            895
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we have investigated a UAV-aided MEC system, where a number of ground users are served by a moving UAV equipped with computing resources. We aim at minimizing the sum of the maximum delay among all the users in each time slot by jointly optimizing the ratio of offloading tasks, trajectory of the UAV, and user scheduling variables. To handle this challenging problem with coupling constraints and discrete binary variables, a number of auxiliary variables are introduced to convert the original problem into a mathematically tractable form. Then, we develop a novel PDD-based algorithm by leveraging the AL method and the CCCP algorithm. Furthermore, we have developed a simplified l0-norm algorithm with much lower computational complexity. Besides, we also extend our algorithm to minimize the average delay. Our simulation results have validated that the computation performance of users can be effectively improved with the help of a moving UAV. Moreover, the delay performance and convergence rate of the proposed PDD-based algorithm have also been verified. ",
+        "bbox": [
+            73,
+            898,
+            491,
+            946
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            69,
+            921,
+            311
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "APPENDIX A ",
+        "text_level": 1,
+        "bbox": [
+            665,
+            347,
+            761,
+            359
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "BRIEF REVIEW OF PROPOSED PDD APPROACH",
+        "text_level": 1,
+        "bbox": [
+            547,
+            366,
+            877,
+            378
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In this Appendix, we briefly review the general framework of the PDD method. It is an algorithmic framework that can solve nonconvex problems with coupling constraints. Consider the following problem: ",
+        "bbox": [
+            503,
+            383,
+            921,
+            445
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\mathbf {x} \\in \\boldsymbol {\\mathcal {X}}} f (\\mathbf {x}) \\tag {36a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            663,
+            464,
+            919,
+            487
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad \\mathbf {h} (\\mathbf {x}) = \\mathbf {0} \\tag {36b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            671,
+            488,
+            919,
+            502
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {g} (\\mathbf {x}) \\leq \\mathbf {0} \\tag {36c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            700,
+            506,
+            919,
+            522
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "where the feasible set $\\pmb { \\mathcal { X } } \\in \\mathbb { R } ^ { n }$ is a closed convex set, and f (x) is a scalar continuously differentiable function. As for the constraints, h(x) $\\in \\mathbb { R } ^ { p \\times 1 }$ is a vector of p continuously differentiable functions; $\\mathbf { g } ( \\mathbf { x } ) \\in \\mathbb { R } ^ { q \\times 1 }$ is a vector of $q$ continuously differentiable but possibly nonconvex functions. In order to deal with the equality constraints, we handle the AL problem as shown below iteratively ",
+        "bbox": [
+            501,
+            540,
+            921,
+            647
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP \\left(\\varrho^ {n}, \\boldsymbol {\\lambda} ^ {n}\\right): \\min _ {\\mathbf {x} \\in \\boldsymbol {\\chi}} \\left\\{L _ {n} (\\mathbf {x}) \\triangleq f (\\mathbf {x}) + \\boldsymbol {\\lambda} ^ {n T} \\mathbf {h} (\\mathbf {x}) + \\frac {1}{2 \\varrho^ {n}} \\| \\mathbf {h} (\\mathbf {x}) \\| ^ {2} \\right\\} \\tag {37a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            506,
+            662,
+            919,
+            710
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad \\mathbf {g} (\\mathbf {x} ^ {n}) \\leq \\mathbf {0} \\tag {37b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            713,
+            919,
+            731
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "where $L _ { n } ( \\mathbf { x } )$ is the AL function with AL multiplier $\\mathsf { \\lambda } ^ { \\lambda ^ { n } }$ and penalty factor $\\varrho ^ { n }$ , and n denotes the current iteration number. In particular, solving problem (37) produces an identical solution to the problem (36) when $\\varrho \\to 0$ [30]. ",
+        "bbox": [
+            501,
+            750,
+            919,
+            808
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "The framework of the PDD method is shown in Algorithm 2, which shows a double-loop structure. The inner loop deals with the AL problem (37) while the outer loop aims at updating the AL multiplier or the penalty factor according to the value of the constraint violation indicator. The detailed discussion about the convergence can be found in [30] and [31], which demonstrates that the solution obtained by the PDD method can guarantee to converge to a KKT (stationary) point of problem (36) ultimately. ",
+        "bbox": [
+            501,
+            809,
+            921,
+            946
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "1890 ",
+        "bbox": [
+            78,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            566,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "APPENDIX B ",
+        "text_level": 1,
+        "bbox": [
+            236,
+            70,
+            330,
+            83
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "PROOF THE EQUIVALENCY BETWEEN (14) AND (16) ",
+        "text_level": 1,
+        "bbox": [
+            101,
+            89,
+            464,
+            104
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "The objective function in (14) is difficult to couple with due to the maximization. So we introduce the auxiliary variables ˜t[i] to convert the objective function into ",
+        "bbox": [
+            73,
+            108,
+            490,
+            154
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\left\\{\\alpha_ {k} [ i ], q [ i ], \\rho_ {k} [ i ], \\tilde {t} [ i ] \\right\\}} \\sum_ {i = 1} ^ {N} \\tilde {t} [ i ]. \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            161,
+            488,
+            202
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Meanwhile, we add the following constraints: ",
+        "bbox": [
+            75,
+            209,
+            387,
+            224
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] \\left(\\frac {\\rho_ {k} [ i ] L _ {k} [ i ]}{R _ {k} [ i ] B} + \\frac {\\rho_ {k} [ i ] L _ {k} [ i ] s _ {k}}{c _ {1 , k}}\\right) \\leq \\tilde {t} [ i ] \\quad \\forall k, i \\tag {39a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            125,
+            229,
+            490,
+            263
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {(1 - \\alpha_ {k} [ i ] \\rho_ {k} [ i ]) L _ {k} [ i ] s _ {k}}{c _ {2 , k}} \\leq \\tilde {t} [ i ] \\quad \\forall k, i. \\tag {39b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            265,
+            488,
+            297
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Constraint (39a) has coupling variables and the denominator contains variables $R _ { k } [ i ]$ . By introducing the auxiliary variables $t _ { k } [ i ]$ , constraint (39a) can be equivalently transformed into ",
+        "bbox": [
+            73,
+            301,
+            491,
+            349
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\rho_ {k} [ i ] L _ {k} [ i ]}{R _ {k} [ i ] B} + \\frac {\\rho_ {k} [ i ] L _ {k} [ i ] s _ {k}}{c _ {1 , k}} \\leq t _ {k} [ i ] \\quad \\forall k, i \\tag {40a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            151,
+            353,
+            488,
+            386
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {k} [ i ] t _ {k} [ i ] \\leq \\tilde {t} [ i ] \\quad \\forall k, i. \\tag {40b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            258,
+            388,
+            488,
+            402
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "We further introduce the auxiliary variables $t _ { k } [ i ] , \\beta _ { k } [ i ]$ to convert constraint (40a) into ",
+        "bbox": [
+            73,
+            412,
+            491,
+            441
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\beta_ {k} [ i ] \\leq R _ {k} [ i ] \\quad \\forall k, i \\tag {41}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            218,
+            452,
+            488,
+            468
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(1 6 \\mathrm{c}) \\text {   and   } (1 6 \\mathrm{d}). \\tag {42}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            222,
+            470,
+            488,
+            486
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "To deal with the coupling variables $\\alpha _ { k } [ i ] \\rho _ { k } [ i ]$ , we introduce auxiliary variables γk[i] to convert constraint (39b) into (16e) and (16f). Constraint (41) still contains variables in the denominator according to (7), we can utilize φk[i] to transform constraint (41) into (16g) and (16h) in a similar way. Furthermore, constraints (16i)–(16k) can be obtained similarly. ",
+        "bbox": [
+            73,
+            496,
+            491,
+            585
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            235,
+            606,
+            331,
+            618
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] J. Gubbi, R. Buyya, S. Marusic, and M. Palaniswami, “Internet of Things (IoT): A vision, architectural elements, and future directions,” Future Generat. Comput. Syst., vol. 29, no. 7, pp. 1645–1660, 2013. ",
+            "[2] A. R. Khan, M. Othman, S. A. Madani, and S. U. Khan, “A survey of mobile cloud computing application models,” IEEE Commun. Surveys Tuts., vol. 16, no. 1, pp. 393–413, 1st Quart., 2014. ",
+            "[3] K. Kumar, J. Liu, Y.-H. Lu, and B. Bhargava, “A survey of computation offloading for mobile systems,” Mobile Netw. Appl., vol. 18, no. 1, pp. 129–140, Feb. 2013. ",
+            "[4] X. Chen, L. Jiao, W. Li, and X. Fu, “Efficient multi-user computation offloading for mobile-edge cloud computing,” IEEE Trans. Netw., vol. 24, no. 5, pp. 2795–2808, Oct. 2016. ",
+            "[5] C. Wang, C. Liang, F. Richard Yu, Q. Chen, and L. Tang, “Computation offloading and resource allocation in wireless cellular networks with mobile edge computing,” IEEE Trans. Wireless Commun., vol. 16, no. 8, pp. 4924–4938, Aug. 2017. ",
+            "[6] C. You, K. Huang, H. Chae, and B.-H. Kim, “Energy-efficient resource allocation for mobile-edge computation offloading,” IEEE Trans. Wireless Commun., vol. 16, no. 3, pp. 1397–1411, Mar. 2017. ",
+            "[7] Y. Mao, J. Zhang, and K. B. Letaief, “Dynamic computation offloading for mobile-edge computing with energy harvesting devices,” IEEE J. Sel. Areas Commun., vol. 34, no. 12, pp. 3590–3605, Dec. 2016. ",
+            "[8] W. Zhang et al., “Energy-optimal mobile cloud computing under stochastic wireless channel,” IEEE Trans. Wireless Commun., vol. 12, no. 9, pp. 4569–4581, Sep. 2013. ",
+            "[9] J. Liu, Y. Mao, J. Zhang, and K. B. Letaief, “Delay-optimal computation task scheduling for mobile-edge computing systems,” in Proc. IEEE Int. Symp. Inf. Theory (ISIT), Barcelona, Spain, Jul. 2016, pp. 1451–1455. "
+        ],
+        "bbox": [
+            80,
+            623,
+            493,
+            946
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[10] J. Kwak, Y. Kim, J. Lee, and S. Chong, “DREAM: Dynamic resource and task allocation for energy minimization in mobile cloud systems,” IEEE J. Sel. Areas Commun., vol. 33, no. 12, pp. 2510–2523, Dec. 2015. ",
+            "[11] Z. Jiang and S. Mao, “Energy delay trade-off in cloud offloading for mutli-core mobile devices,” in Proc. IEEE Glob. Commun. Conf. (GLOBECOM), San Diego, CA, USA, Dec. 2015, pp. 1–6. ",
+            "[12] LTE Unmanned Aircraft Systems-Trial Report, Qualcomm Technol., Inc., San Diego, CA, USA, May 2017. ",
+            "[13] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Commun. Mag., vol. 54, no. 5, pp. 36–42, May 2016. ",
+            "[14] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Unmanned aerial vehicle with underlaid device-to-device communications: Performance and tradeoffs,” IEEE Trans. Wireless Commun., vol. 15, no. 6, pp. 3949–3963, Jun. 2016. ",
+            "[15] L. Liu, S. Zhang, and R. Zhang, “Multi-beam UAV communication in cellular uplink: Cooperative interference cancellation and sum-rate maximization,” IEEE Trans. Wireless Commun., submitted for publication. [Online]. Available: https://arxiv.org/abs/1808.00189 ",
+            "[16] J. Lyu, Y. Zeng, R. Zhang, and T. J. Lim, “Placement optimization of UAV-mounted mobile base stations,” IEEE Commun. Lett., vol. 21, no. 3, pp. 604–607, Mar. 2017. ",
+            "[17] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Efficient deployment of multiple unmanned aerial vehicles for optimal wireless coverage,” IEEE Commun. Lett., vol. 20, no. 8, pp. 1647–1650, Aug. 2016. ",
+            "[18] S. Jeong, O. Simeone, and J. Kang, “Mobile edge computing via a UAVmounted cloudlet: Optimization of bit allocation and path planning,” IEEE Trans. Veh. Technol., vol. 67, no. 3, pp. 2049–2063, Mar. 2018. [Online]. Available: arXiv preprint arXiv:1609.05362 ",
+            "[19] J. Lyu, Y. Zeng, and R. Zhang, “Cyclical multiple access in UAV-aided communications: A throughput-delay tradeoff,” IEEE Wireless Commun. Lett., vol. 5, no. 6, pp. 600–603, Dec. 2016. ",
+            "[20] F. Cui, Y. Cai, Z. Qin, M. Zhao, and G. Y. Li, “Multiple access for mobile-UAV enabled networks: Joint trajectory design and resource allocation,” IEEE Trans. Commun., submitted for publication. ",
+            "[21] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016. ",
+            "[22] M. Kobayashi, “Experience of infrastructure damage caused by the great east Japan earthquake and countermeasures against future disasters,” IEEE Commun. Mag., vol. 52, no. 3, pp. 23–29, Mar. 2014. ",
+            "[23] A. Merwaday and I. Guvenc, “UAV assisted heterogeneous networks for public safety communications,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), New Orleans, LA, USA, Mar. 2015, pp. 329–334. ",
+            "[24] C. Zhan, Y. Zeng, and R. Zhang, “Energy-efficient data collection in UAV enabled wireless sensor network,” IEEE Wireless Commun. Lett., vol. 7, no. 3, pp. 328–331, Jun. 2018. [Online]. Available: https://arxiv.org/abs/1708.00221 ",
+            "[25] Q. Wu, Y. Zeng, and R. Zhang, “Joint trajectory and communication design for multi-UAV enabled wireless networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2109–2121, Mar. 2018. [Online]. Available: arXiv preprint arXiv: 1705.02723 ",
+            "[26] Y. Zeng and R. Zhang, “Energy-efficient UAV communication with trajectory optimization,” IEEE Trans. Wireless Commun., vol. 16, no. 6, pp. 3747–3760, Jun. 2017. ",
+            "[27] L. Liu, S. Zhang, and R. Zhang, “CoMP in the sky: UAV placement and movement optimization for multi-user communication,” IEEE Trans. Wireless Commun., submitted for publication. [Online]. Available: https://arxiv.org/abs/1802.10371 ",
+            "[28] P. Zhan, K. Yu, and A. L. Swindlehurst, “Wireless relay communications with unmanned aerial vehicles: Performance and optimization,” IEEE Trans. Aerosp. Electron. Syst., vol. 47, no. 3, pp. 2068–2085, Jul. 2011. ",
+            "[29] S. Zhang, Y. Zeng, and R. Zhang, “Cellular-enabled UAV communication: A connectivity constrained trajectory optimization perspective,” IEEE Trans. Commun., submitted for publication. [Online]. Available: https://arxiv.org/abs/1805.07182 ",
+            "[30] Q. Shi, M. Hong, X. Fu, and T.-H. Chang, “Penalty dual decomposition method for nonsmooth nonconvex optimization.” [Online]. Available: https://arxiv.org/abs/1712.04767 ",
+            "[31] Q. Shi and M. Hong, “Penalty dual decomposition method with application in signal processing,” in Proc. Int. Conf. Acoust. Speech Signal Process. (ICASSP), Mar. 2017, pp. 4059–4063. ",
+            "[32] A. L. Yuille and A. Rangarajan, “The concave-convex procedure,” Neural Comput., vol. 15, no. 4, pp. 915–936, Apr. 2003. ",
+            "[33] Y. Wang, M. Sheng, X. Wang, L. Wang, and J. Li, “Mobile-edge computing: Partial computation offloading using dynamic voltage scaling,” IEEE Trans. Commun., vol. 64, no. 10, pp. 4268–4282, Oct. 2016. "
+        ],
+        "bbox": [
+            504,
+            68,
+            924,
+            946
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "HU et al.: JOINT OFFLOADING AND TRAJECTORY DESIGN FOR UAV-ENABLED MEC SYSTEMS ",
+        "bbox": [
+            76,
+            34,
+            584,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "1891 ",
+        "bbox": [
+            895,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[34] K.-Y. Wang, A. M.-C. So, T.-H. Chang, W.-K. Ma, and C.-Y. Chi, “Outage constrained robust transmit optimization for multiuser MISO downlinks: Tractable approximations by conic optimization,” IEEE Trans. Signal Process., vol. 62, no. 21, pp. 5690–5705, Nov. 2014. ",
+            "[35] R. C. de Lamare and R. Sampaio-Neto, “Sparsity-aware adaptive algorithms based on alternating optimization and shrinkage,” IEEE Signal Process. Lett., vol. 21, no. 2, pp. 225–229, Feb. 2014. ",
+            "[36] Z. Qin, Y. Gao, M. D. Plumbley, and C. G. Parini, “Wideband spectrum sensing on real-time signals at sub-Nyquist sampling rates in single and cooperative multiple nodes,” IEEE Trans. Signal Process., vol. 64, no. 12, pp. 3106–3117, Jun. 2016. ",
+            "[37] CVXR Inc. (Sep. 2012). CVX: MATLAB Software for Disciplined Convex Programming. [Online]. Available: http://cvxr.com/cvx ",
+            "[38] S. P. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004. ",
+            "[39] A. Ruszczynski, Nonlinear Optimization. Princeton, NJ, USA: Princeton Univ. Press, 2011. "
+        ],
+        "bbox": [
+            76,
+            71,
+            491,
+            263
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/0d58c6425521cb812e8ebc649af09caf11d61d10d8eec70eb5680c0cf414859e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a young woman with long hair and a bow tie (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            73,
+            627,
+            189
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Zhijin Qin (S’13–M’16) received the B.S. degree from the Queen Mary University of London (QMUL), London, U.K., and the Beijing University of Posts and Telecommunications, Beijing, China, in 2012, and the Ph.D. degree in electronic engineering from QMUL, in 2016. ",
+        "bbox": [
+            638,
+            71,
+            919,
+            140
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "She has been a Lecturer (an Assistant Professor) with the School of Electronic Engineering and Computer Science, QMUL since 2018. She was with Imperial College London, London, as a Post-Doctoral Research Associate from 2016 to ",
+        "bbox": [
+            638,
+            140,
+            919,
+            196
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "2017. She was with Lancaster University, Lancashire, as a Lecturer from 2017 to 2018. Her current research interest includes machine learning and compressive sensing in wireless communications and Internet of Things networks. ",
+        "bbox": [
+            504,
+            196,
+            919,
+            231
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Dr. Qin was a recipient of the Best Paper Award from IEEE GLOBECOM 2017. She is an Associate Editor of IEEE COMMUNICATIONS LETTERS. ",
+        "bbox": [
+            504,
+            231,
+            919,
+            253
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/c867bfb01cbfaec9ee0a8eb8cbb51aa2035902af089749ff2000dfd176afc7fd.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in a collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            291,
+            197,
+            407
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Qiyu Hu received the B.S.E. degree in information engineering from Zhejiang University, Hangzhou, China, in 2018, where he is currently pursuing the Ph.D. degree at the College of Information Science and Electronic Engineering. ",
+        "bbox": [
+            207,
+            290,
+            491,
+            347
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "His current research interests include unmanned aerial vehicle communications, machine learning, and mobile edge computing. ",
+        "bbox": [
+            207,
+            347,
+            491,
+            382
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/0f351f274322f2b3e613f7aaf97cf12889edcd011625743007b14a8346f4b0a5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a striped shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            436,
+            197,
+            550
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Yunlong Cai (S’07–M’10–SM’16) received the Ph.D. degree in electronic engineering from the University of York, York, U.K., in 2010. ",
+        "bbox": [
+            207,
+            433,
+            491,
+            467
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "From 2010 to 2011, he was a Post-Doctoral Fellow with the Electronics and Communications Laboratory, Conservatoire National des Arts et Métiers, Paris, France. Since 2011, he has been with the College of Information Science and Electronic Engineering, Zhejiang University, Hangzhou, China, where he is currently an Associate Professor. From 2016 to 2017, he was a Visiting Scholar with ",
+        "bbox": [
+            207,
+            467,
+            491,
+            558
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, USA. His current research interests include transceiver design for multiple-antenna systems, sensor array processing, adaptive filtering, full-duplex communications, cooperative and relay communications, and wireless information and energy transfer. ",
+        "bbox": [
+            73,
+            558,
+            490,
+            614
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Dr. Cai is an Associate Editor of IEEE SIGNAL PROCESSING LETTERS. ",
+        "bbox": [
+            86,
+            614,
+            483,
+            626
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/67f5a5f4fe8d6136bd705d5ec3964b169501301dcf74bac33ed7a8dd42919021.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a smiling man wearing glasses, outdoors with mountainous background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            651,
+            197,
+            767
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Guanding Yu (S’05–M’07–SM’13) received the B.E. and Ph.D. degrees in communication engineering from Zhejiang University, Hangzhou, China, in 2001 and 2006, respectively. ",
+        "bbox": [
+            207,
+            648,
+            491,
+            695
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "In 2006, he joined Zhejiang University, where is currently a Professor with the College of Information and Electronic Engineering. From 2013 to 2015, he was also a Visiting Professor with the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, USA. His current research interests include 5G communications ",
+        "bbox": [
+            207,
+            695,
+            491,
+            773
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "and networks, mobile edge computing, and machine learning for wireless networks. ",
+        "bbox": [
+            73,
+            773,
+            490,
+            796
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Dr. Yu was a recipient of the 2016 IEEE ComSoc Asia–Pacific Outstanding Young Researcher Award. He regularly sits on the Technical Program Committee (TPC) boards of prominent IEEE conferences such as ICC, GLOBECOM, and VTC. He also serves as the Symposium Co-Chair for IEEE Globecom 2019 and the Track Chair for IEEE VTC 2019’Fall. He has served as a Guest Editor of IEEE Communications Magazine’s “Special Issue on Full-Duplex Communications,” an Editor of the IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS Series on Green Communications and Networking, and a lead Guest Editor of the IEEE Wireless Communications Magazine’s “Special Issue on LTE in Unlicensed Spectrum,” and an Editor of IEEE ACCESS. He is currently serving as an Editor of the IEEE TRANSACTIONS ON GREEN COMMUNICATIONS AND NETWORKING and IEEE WIRELESS COMMUNICATIONS LETTERS. ",
+        "bbox": [
+            73,
+            796,
+            491,
+            944
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/7fae921070f8adc837a79fa220d33b290ad2fd2bf71109b2a39935798d9139a1.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a zip-up sweater (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            310,
+            627,
+            426
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Minjian Zhao (M’10) received the M.Sc. and Ph.D. degrees in communication and information systems from Zhejiang University, Hangzhou, China, in 2000 and 2003, respectively. ",
+        "bbox": [
+            638,
+            309,
+            919,
+            354
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "He was a Visiting Scholar with the University of York, York, U.K., in 2010. He is currently a Professor and the Deputy Director of the College of Information Science and Electronic Engineering, Zhejiang University. His current research interests include modulation theory, channel estimation and equalization, MIMO, signal processing for wire-",
+        "bbox": [
+            638,
+            354,
+            919,
+            435
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "less communications, antijamming technology for wireless transmission and networking, and communication SoC chip design. ",
+        "bbox": [
+            504,
+            435,
+            919,
+            458
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/bf705bfbc690fe3260606b135968ed74adf3bb70a2f2291aff9a80bbada49c92.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man in formal attire with a tie (no visible text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            515,
+            627,
+            630
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Geoffrey Ye Li (S’93–M’95–SM’97–F’06) received the B.S.E. and M.S.E. degrees from the Department of Wireless Engineering, Nanjing Institute of Technology, Nanjing, China, in 1983 and 1986, respectively, and the Ph.D. degree from the Department of Electrical Engineering, Auburn University, Auburn, AL, USA, in 1994. ",
+        "bbox": [
+            638,
+            513,
+            919,
+            593
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "He was a Teaching Assistant and then a Lecturer with Southeast University, Nanjing, from 1986 to 1991, a Research and Teaching Assistant with Auburn University, from 1991 to 1994, and a Post-",
+        "bbox": [
+            638,
+            593,
+            919,
+            638
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Doctoral Research Associate with the University of Maryland at College Park, College Park, MD, USA, from 1994 to 1996. He was with AT&T Labs— Research, Red Bank, NJ, USA, as a Senior and then a Principal Technical Staff Member from 1996 to 2000. Since 2000, he has been with the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, USA, as an Associate Professor and then a Full Professor. His current research interests include statistical signal processing and machine learning for wireless communications. He has authored or co-authored over 200 journal papers in addition to over 40 granted patents and many conference papers in the above areas. His publications have been cited over 33 000 times and he has been recognized as the World’s Most Influential Scientific Mind. ",
+        "bbox": [
+            503,
+            638,
+            921,
+            773
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Dr. Li was a recipient of the Awarded IEEE Fellow for his contributions to signal processing for wireless communications in 2005 and the Highly Cited Researcher Award by Thomson Reuters almost every year, the 2010 IEEE ComSoc Stephen O. Rice Prize Paper Award, the 2013 IEEE VTS James Evans Avant Garde Award, the 2014 IEEE VTS Jack Neubauer Memorial Award, the 2017 IEEE ComSoc Award for Advances in Communication, the 2017 IEEE SPS Donald G. Fink Overview Paper Award, the 2015 Distinguished Faculty Achievement Award from the School of Electrical and Computer Engineering, Georgia Institute of Technology. He has been involved in editorial activities for over 20 technical journals for the IEEE, including being the Founding Editor-in-Chief of IEEE 5G Tech Focus. He has organized and chaired many international conferences, including as the Technical Program Vice-Chair of IEEE ICC’03, the Technical Program Co-Chair of IEEE SPAWC’11, the General Chair of IEEE GlobalSIP’14, and the Technical Program Co-Chair of IEEE VTC’16 (Spring). ",
+        "bbox": [
+            503,
+            773,
+            921,
+            945
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "1892 ",
+        "bbox": [
+            78,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 6, NO. 2, APRIL 2019 ",
+        "bbox": [
+            566,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:21:45 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 13
+    }
+]
