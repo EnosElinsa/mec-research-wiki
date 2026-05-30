@@ -1,9 +1,6 @@
 """Exact page counts per wiki type + meta-doc health, for reconciling the
 Snapshot in overview.md and the directory in index.md.
 
-Replaces the counts.ps1 one-off with a cross-platform Python version (the
-PowerShell variant remains available but this is the canonical one).
-
 Usage:
   python tools/wiki/corpus_counts.py
   python tools/wiki/corpus_counts.py --json counts.json

@@ -1,9 +1,5 @@
 """Reconcile raw/sources/ against the curated wiki and detect duplicate ingests.
 
-Consolidates the former check.py / check_dup.py / check_dupes.py /
-check_missed.py / check_overmatch.py / check_spacematch.py / find_uncurated.py
-one-offs into one parameterized tool.
-
 It answers, in one place:
   * which raw-source folders are NOT yet curated (no wiki page references them);
   * which curated references point at no existing raw folder (renames/typos);

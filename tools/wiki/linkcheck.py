@@ -1,8 +1,5 @@
 """Obsidian-faithful wikilink integrity check across the whole wiki.
 
-Consolidates the former linkcheck.py / linkcheck2.py / linkcheck_b5.py /
-linkcheck_b7.py one-offs into one parameterized tool.
-
 Resolution rules (match Obsidian):
   * links resolve by BASENAME, including root files (``[[purpose]]`` -> purpose.md is valid);
   * inline code spans and ``\\|`` table-escaped aliases are ignored;
