@@ -1,0 +1,35 @@
+---
+type: concept
+title: "Soft Actor-Critic (SAC)"
+tags: [drl, actor-critic, off-policy, maximum-entropy, continuous-action]
+related:
+  - "[[masac]]"
+  - "[[ddpg]]"
+  - "[[td3]]"
+  - "[[ppo]]"
+  - "[[xiang-sac-mapless-robot-navigation]]"
+  - "[[du-2024-d2sac-aigc-asp-selection]]"
+  - "[[chen-2025-swipt-mec-sac]]"
+created: 2026-05-31
+updated: 2026-05-31
+---
+
+# Soft Actor-Critic (SAC)
+
+An off-policy, **maximum-entropy** actor-critic algorithm for (originally continuous) control. It augments the standard reward objective with a policy-entropy bonus
+
+$$
+J(\pi) = \mathbb{E}\Big[\textstyle\sum_t \gamma^t\big(r(s_t,a_t,s_{t+1}) + \alpha\,H(\pi(\cdot|s_t))\big)\Big]
+$$
+
+so the optimal policy maximizes return **and** stays as stochastic as possible at each state, which improves exploration and robustness. SAC combines off-policy learning, an actor-critic structure, and maximum entropy; it uses **twin Q-networks** (clipped double-Q to curb overestimation), a replay buffer, soft target updates (Polyak averaging $\rho$), and — through the inherent policy stochasticity — benefits from something like target-policy smoothing. The temperature $\alpha$ trades off reward vs entropy and can be auto-tuned.
+
+## Relationship to other backbones
+
+- Bridges stochastic-policy optimization and **[[ddpg|DDPG]]**-style deterministic methods; shares the clipped double-Q trick with **[[td3|TD3]]**.
+- More exploration-stable than DDPG/TD3 on many tasks; off-policy + replay makes it more sample-efficient than on-policy **[[ppo|PPO]]**.
+- Its multi-agent extension is **[[masac|MASAC]]** (decentralized actors + centralized critic).
+
+## In this wiki
+
+[[xiang-sac-mapless-robot-navigation]] uses single-agent SAC (with LSTM value/Q networks) for mapless robot navigation — a foundational continuous-control grounding for the SAC vocabulary. [[du-2024-d2sac-aigc-asp-selection]] hosts a diffusion-policy actor inside SAC (D2SAC) for discrete ASP selection. [[chen-2025-swipt-mec-sac]] uses an improved SAC (SAC-SK) for SWIPT-MEC. The cooperative-MEC multi-agent variant appears in [[qin-2025-bcuav-masac]] and [[you-2025-uncertain-maritime-hasac]] (see [[masac]]).

@@ -1,0 +1,1709 @@
+[
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.126,
+                0.073,
+                0.873,
+                0.138
+            ],
+            "angle": 0,
+            "content": "Continuous Control with Deep Reinforcement Learning for Mobile Robot Navigation"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.306,
+                0.155,
+                0.731,
+                0.172
+            ],
+            "angle": 0,
+            "content": "Jiaqi Xiang \\( ^{1} \\) , Qingdong Li \\( ^{1} \\) , Xiwang Dong \\( ^{1*} \\) , Zhang Ren \\( ^{2} \\)",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.181,
+                0.177,
+                0.852,
+                0.203
+            ],
+            "angle": 0,
+            "content": "1. School of Automation Science and Electrical Engineering, Beihang University, Beijing, 100191, P.R. China\nE-mail: xwdong@buaa.edu.cn",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.139,
+                0.209,
+                0.893,
+                0.222
+            ],
+            "angle": 0,
+            "content": "2. Beijing Advanced Innovation Center for Big Data and Brain Computing, Beihang University, Beijing 100191, P.R. China",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.242,
+                0.484,
+                0.401
+            ],
+            "angle": 0,
+            "content": "Abstract—Autonomous navigation is one of the focuses in the field of mobile robot research. The traditional method usually consists of two parts: building the map of environment, localization of mobile robot and path planning. However, these traditional methods usually rely on high-precision sensor information. At the same time, mobile robots have no intelligent understanding of autonomous navigation. In this article, a deep reinforcement learning method, i.e. soft actor critic, is used to navigate in a mapless environment. It takes laser scanning data and information of the target as input, outputs linear velocity and angular velocity in continuous space. The simulation shows that this learning-based end-to-end autonomous navigation method can accomplish tasks as well as traditional methods.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.416,
+                0.485,
+                0.44
+            ],
+            "angle": 0,
+            "content": "Keywords—Mobile Robot, Deep Reinforcement Learning, Soft Actor Critic, Autonomous navigation",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.217,
+                0.455,
+                0.342,
+                0.467
+            ],
+            "angle": 0,
+            "content": "I. INTRODUCTION"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.476,
+                0.485,
+                0.812
+            ],
+            "angle": 0,
+            "content": "The use of mobile robots has been well popularized, such as delivery and rescue. Being able to navigate autonomously in a complex environment is a prerequisite for completing these tasks. In the traditional method, autonomous navigation can be divided into two parts. The first part is the localization and mapping of mobile robots. Mobile robots rely on various sensors to sense the external environment and their own postures. This process is called Simultaneous Localization and Mapping(SLAM) [1]. It uses the information of laser or camera sensor to build an obstacle map. The second part is path planning. The purpose of path planning is to plan a path from the starting point to the target point without collision. The main methods of path planning include heuristic search methods such as A-star algorithm [2], random sampling-based methods such as Rapidly-exploring Random Tree(RRT) [3] and the methods based control theory such as dynamic window approach [4]. Today, the traditional methods have matured. However, most of these methods are dependent on obstacle map, and the mobile robot does not have an intelligent understanding of the navigation problem. In addition, the traditional method is very dependent on high-precision sensors. Nowadays, there are already many indoor localization methods, such as UWB localization [5]. So the position of the mobile robot and the position of the target point can be got easily. In this case, it is important to propose a mapless navigation method.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.819,
+                0.484,
+                0.871
+            ],
+            "angle": 0,
+            "content": "Learning-based methods have been successfully applied to autonomous navigation. Imitate learning [6] and supervised learning [7] can get good results. This type of method works by training human-labeled data through deep neural networks.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.514,
+                0.24,
+                0.925,
+                0.265
+            ],
+            "angle": 0,
+            "content": "Its drawback is obvious because it is limited by the amount of data.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.514,
+                0.273,
+                0.924,
+                0.558
+            ],
+            "angle": 0,
+            "content": "Reinforcement learning is different from traditional supervised learning and unsupervised learning. It is a process in which an agent learns by interacting with the environment. It does not require human-labeled data. In 2011, Mohammad proposed using the Q-learning algorithm to solve the problem of robot navigation in an unknown environment [8]. However, limited to the size of the Q-learning state space, this method is not suitable for complex environments. In 2013, Mnih et al. proposed the basic method of deep reinforcement learning, Deep Q-Network (DQN) model [9]. Deep reinforcement learning deals with higher dimensional state spaces by introducing deep neural network to fitting value functions. Deep reinforcement learning is currently used in a variety of robot control applications. Tung-Cheng Wu et al. use depth images as input to complete the autonomous obstacle avoidance of drones [10]. Kendall et al. successfully applies deep reinforcement learning to autonomous driving, outputting continuous steering and speed commands [11]. Y. Zhu et al. proposed a target-driven deep reinforcement learning visual navigation method [12]. All of this work proves the effectiveness of deep reinforcement learning on robot autonomous navigation.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.514,
+                0.566,
+                0.925,
+                0.838
+            ],
+            "angle": 0,
+            "content": "In recent years, lots of methods for deep reinforcement learning have been proposed. The DQN is a value-based method, so it can't satisfy the continuous action space. Lillicrap et al. combined the DQN method with the Actor-Critic policy gradient method and proposed the Deep Deterministic Policy Gradient (DDPG), which extends it to the continuous action space[13]. Policy gradient based methods such as Trust region policy optimization (TRPO) [14] and Proximal Policy Optimization (PPO) [15] can achieve better stability. Soft Actor Critic (SAC) [16] is an algorithm which optimizes a stochastic policy in an off-policy way, forming a bridge between stochastic policy optimization and DDPG-style approaches. It incorporates the clipped double-Q trick. And due to the inherent stochasticity of the policy in SAC, it also winds up benefiting from something like target policy smoothing. Therefore, SAC algorithm was chosen as the training algorithm in this paper. At the same time, the Robot Operating System (ROS) and Gazebo were used to simulate the virtual environment. Experiments show that the mobile robot can quickly learn the autonomous navigation and obstacle avoidance policy.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.538,
+                0.845,
+                0.881,
+                0.858
+            ],
+            "angle": 0,
+            "content": "The main contributions of this paper are as follows:",
+            "merge_prev": false
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.049,
+                0.966,
+                0.88,
+                0.977
+            ],
+            "angle": 0,
+            "content": "978-1-728 Author 4034 License 9$3.150 @ 2019 IEEE Mongolia University. Downloaded on May 30, 2026 at 11:22:49 UTC from IEEE Xplore. Restrictions apply."
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "bbox": [
+                0.096,
+                0.065,
+                0.486,
+                0.198
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.096,
+                0.065,
+                0.486,
+                0.104
+            ],
+            "angle": 0,
+            "content": "- An continuous control method for autonomous navigation of mobile robots in mapless environment based on SAC algorithm is proposed.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.096,
+                0.111,
+                0.486,
+                0.151
+            ],
+            "angle": 0,
+            "content": "- Inputs are low-dimensional laser scan data and target information. By this way, it can effectively reduce the resource required for calculation.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.096,
+                0.158,
+                0.487,
+                0.198
+            ],
+            "angle": 0,
+            "content": "- In order to make full use of the previously observed states, actions and rewards, the LSTM [17] neural network is used to fit the value function and Q function.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.204,
+                0.486,
+                0.258
+            ],
+            "angle": 0,
+            "content": "The remainder of this paper is organized as follows: Section II presents the details of the algorithm. Section III is the description of the simulation experiment and the result. Section IV is a summary and conclusion of this article.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.138,
+                0.278,
+                0.42,
+                0.291
+            ],
+            "angle": 0,
+            "content": "II. MOTION PLANNER IMPLEMENTATION"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.296,
+                0.487,
+                0.336
+            ],
+            "angle": 0,
+            "content": "A system to learning the continuous control was designed so that the mobile robot can reach the target position quickly without collision.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.35,
+                0.24,
+                0.364
+            ],
+            "angle": 0,
+            "content": "A. Problem description"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.366,
+                0.487,
+                0.407
+            ],
+            "angle": 0,
+            "content": "The goal of this paper is to provide a continuous control strategy for autonomous navigation of mobile robots. This problem can be described by the function:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.212,
+                0.427,
+                0.486,
+                0.443
+            ],
+            "angle": 0,
+            "content": "\\[\nv _ {t} = f (l _ {t}, p _ {t}, a _ {t - 1}, r _ {t - 1}) \\tag {1}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.458,
+                0.487,
+                0.57
+            ],
+            "angle": 0,
+            "content": "Where  \\( l_{t} \\)  is the laser scanning data,  \\( p_{t} \\)  is the relative position and angle of target,  \\( a_{t-1} \\)  is the action in the last time step (the velocity in the last time step), and  \\( r_{t-1} \\)  is the reward in the last time step. The above four items can be regarded as the state  \\( s_{t} \\)  of the mobile robot. The model trained by the reinforcement learning method will fit the function f to control the velocity of the robot.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.584,
+                0.214,
+                0.597
+            ],
+            "angle": 0,
+            "content": "B. Soft Actor Critic"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.6,
+                0.487,
+                0.654
+            ],
+            "angle": 0,
+            "content": "Soft Actor Critic (SAC) is an off-policy algorithm. It is the first RL algorithm that combines off-policy, actor critic and maximum entropy. SAC algorithm is an entropy-regularization reinforcement learning method.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.659,
+                0.487,
+                0.711
+            ],
+            "angle": 0,
+            "content": "In entropy regularization reinforcement learning, an entropy term is added to the standard reinforcement learning objective, so that the optimal policy will maximize its entropy at each visited state:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.075,
+                0.734,
+                0.486,
+                0.768
+            ],
+            "angle": 0,
+            "content": "\\[\n\\pi^ {*} = \\arg \\max _ {\\pi} E _ {\\tau \\sim \\pi} \\left[ \\sum_ {t = 0} ^ {\\infty} \\gamma^ {t} \\left(R (s _ {t}, a _ {t}, s _ {t + 1}) + \\alpha H (\\pi (\\cdot | s _ {t}))\\right) \\right] \\tag {2}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.784,
+                0.487,
+                0.88
+            ],
+            "angle": 0,
+            "content": "Where  \\( \\pi^{*} \\)  is the optimal policy.  \\( \\tau \\)  is a trajectory sampled in an episode.  \\( \\gamma \\)  is discounted rate that determines how importance of the future rewards.  \\( R(s_{t}, a_{t}, s_{t+1}) \\)  is the reward while choosing action  \\( a_{t} \\)  and making state  \\( s_{t} \\)  to  \\( s_{t+1} \\) .  \\( H(\\pi(\\cdot|s_{t})) \\)  is the entropy of  \\( \\pi(\\cdot|s_{t}) \\) ,  \\( \\alpha \\)  is the trade-off coefficient.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.096,
+                0.886,
+                0.422,
+                0.901
+            ],
+            "angle": 0,
+            "content": "Similarly, the state value function is changed to:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.513,
+                0.065,
+                0.926,
+                0.099
+            ],
+            "angle": 0,
+            "content": "\\[\nV ^ {\\pi} (s) = E _ {\\tau \\sim \\pi} \\left[ \\sum_ {t = 0} ^ {\\infty} \\gamma^ {t} \\left(R (s _ {t}, a _ {t}, s _ {t + 1}) + \\alpha H (\\pi (\\cdot | s _ {t}))\\right) | s _ {0} = s \\right] \\tag {3}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.535,
+                0.113,
+                0.842,
+                0.128
+            ],
+            "angle": 0,
+            "content": "The action state value function is changed to:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.513,
+                0.149,
+                0.926,
+                0.184
+            ],
+            "angle": 0,
+            "content": "\\[\nQ ^ {\\pi} (s, a) = E _ {\\tau \\sim \\pi} \\left[ \\sum_ {t = 0} ^ {\\infty} \\gamma^ {t} R + \\alpha \\sum_ {t = 1} ^ {\\infty} \\gamma^ {t} H (\\pi (\\cdot | s _ {t})) | s _ {0} = s, a _ {0} = a \\right] \\tag {4}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.512,
+                0.198,
+                0.926,
+                0.233
+            ],
+            "angle": 0,
+            "content": "SAC algorithm learning a policy  \\( \\pi_{\\theta} \\) , a state value function  \\( V_{\\psi} \\) , and two action value functions  \\( Q_{\\phi_{1}} \\) ,  \\( Q_{\\phi_{2}} \\) .",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.241,
+                0.926,
+                0.307
+            ],
+            "angle": 0,
+            "content": "For faster and more stable training, the author introduced two Q networks and then selected one with a smaller Q value as the target Q value each time. The two action value functions update the Bellman equation through the target value network. The loss function is as follows:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.513,
+                0.328,
+                0.926,
+                0.359
+            ],
+            "angle": 0,
+            "content": "\\[\nL (\\phi_ {i}, D) = \\underset {(s, a, r, s ^ {\\prime}, d) \\sim D} {E} \\left[ \\left(Q _ {\\phi_ {i}} (s, a) - (r + \\gamma (1 - d) V _ {\\psi_ {t \\arg}} (s ^ {\\prime}))\\right) ^ {2} \\right] \\tag {5}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.535,
+                0.374,
+                0.916,
+                0.39
+            ],
+            "angle": 0,
+            "content": "With definitions, \\( V^{\\pi}(s) \\) and \\( Q^{\\pi}(s,a) \\) are connected by:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.601,
+                0.415,
+                0.926,
+                0.482
+            ],
+            "angle": 0,
+            "content": "\\[\n\\begin{array}{l} V ^ {\\pi} (s) = \\underset {a \\sim \\pi} {E} \\left[ Q ^ {\\pi} (s, a) \\right] + \\alpha H (\\pi (\\cdot | s)) \\\\ = E _ {a \\sim \\pi} \\left[ Q ^ {\\pi} (s, a) - \\alpha \\log \\pi (a | s) \\right] \\tag {6} \\\\ \\approx Q ^ {\\pi} (s, a) - \\alpha \\log \\pi (a | s) \\\\ \\end{array}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.495,
+                0.926,
+                0.549
+            ],
+            "angle": 0,
+            "content": "SAC algorithm uses minimum Q-value between the two approximators while updating the value function, and it does not use the actions in the experience replay buffer, but samples from the current policy:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.513,
+                0.57,
+                0.926,
+                0.607
+            ],
+            "angle": 0,
+            "content": "\\[\nL (\\psi , D) = \\underset { \\begin{array}{c} s \\sim D \\\\ a \\sim \\pi_ {\\theta} \\end{array} } {E} \\left[ \\left(V _ {\\psi} (s) - \\left(\\min _ {i = 1, 2} Q _ {\\phi_ {i}} (s, a) - \\alpha \\log \\pi_ {\\theta} (a | s)\\right)\\right) ^ {2} \\right] \\tag {7}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.621,
+                0.926,
+                0.681
+            ],
+            "angle": 0,
+            "content": "Policy should maximize the expected return and entropy. In other words, it needs to maximize  \\( V^{\\pi}(s) \\) . In the SAC algorithm, squashed Gaussian policy is usually adopted, which means that actions are sampled as:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.57,
+                0.701,
+                0.925,
+                0.717
+            ],
+            "angle": 0,
+            "content": "\\[\na _ {\\theta} (s, \\xi) = \\tanh (\\mu_ {\\theta} (s) + \\sigma_ {\\theta} (s) \\odot \\xi), \\xi \\sim N (0, I) \\tag {8}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.731,
+                0.926,
+                0.772
+            ],
+            "angle": 0,
+            "content": "The tanh activation function in the SAC policy ensures that the action generated by the policy is within the effective action space.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.777,
+                0.927,
+                0.831
+            ],
+            "angle": 0,
+            "content": "A trick was used to improve exploration at the start of training. In the first few steps, the agent selects an action from a uniform random distribution. After that, it will sample from the SAC policy.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.535,
+                0.836,
+                0.887,
+                0.851
+            ],
+            "angle": 0,
+            "content": "The pseudocode of the SAC algorithm is as follows:",
+            "merge_prev": false
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.113,
+                0.964,
+                0.881,
+                0.977
+            ],
+            "angle": 0,
+            "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded 102 May 30, 2026 at 11:22:49 UTC from IEEE Xplore. Restrictions apply."
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.084,
+                0.065,
+                0.292,
+                0.078
+            ],
+            "angle": 0,
+            "content": "Algorithm 1 Soft Actor Critic"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.089,
+                0.08,
+                0.43,
+                0.098
+            ],
+            "angle": 0,
+            "content": "1. initial policy  \\( \\pi_{\\theta} \\) , Q function  \\( Q_{\\phi_{i}} \\) , V-function  \\( V_{\\psi} \\)",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.091,
+                0.1,
+                0.305,
+                0.114
+            ],
+            "angle": 0,
+            "content": "2. initial empty replay buffer \\(D\\)",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.091,
+                0.115,
+                0.154,
+                0.127
+            ],
+            "angle": 0,
+            "content": "3.repeat"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.091,
+                0.129,
+                0.399,
+                0.142
+            ],
+            "angle": 0,
+            "content": "4. Observe state \\(s\\) and select action \\(a \\sim \\pi_{\\theta}\\)",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.091,
+                0.145,
+                0.325,
+                0.158
+            ],
+            "angle": 0,
+            "content": "5. Execute \\( a \\) in the environment",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.091,
+                0.161,
+                0.426,
+                0.174
+            ],
+            "angle": 0,
+            "content": "6. Observe next state \\( s' \\), reward \\( r \\), and done \\( d \\)",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.091,
+                0.176,
+                0.315,
+                0.19
+            ],
+            "angle": 0,
+            "content": "7. Store \\((s, a, r, s', d)\\) in buffer",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.091,
+                0.194,
+                0.308,
+                0.207
+            ],
+            "angle": 0,
+            "content": "8. If \\( s' \\) is terminal, reset state",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.091,
+                0.21,
+                0.297,
+                0.223
+            ],
+            "angle": 0,
+            "content": "9. if it's time to update then",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.224,
+                0.432,
+                0.238
+            ],
+            "angle": 0,
+            "content": "10. for j in range (however many updates) do",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.254,
+                0.418,
+                0.268
+            ],
+            "angle": 0,
+            "content": "11. Randomly sample a batch from buffer \\(D\\)",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.281,
+                0.407,
+                0.295
+            ],
+            "angle": 0,
+            "content": "12. Compute targets for Q and V functions:",
+            "merge_prev": false
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.084,
+                0.254,
+                0.418,
+                0.295
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.086,
+                0.296,
+                0.305,
+                0.314
+            ],
+            "angle": 0,
+            "content": "\\[\ny _ {q} (r, s ^ {\\prime}, d) = r + \\gamma (1 - d) V _ {\\psi_ {\\text { t   a   r   g }}} (s ^ {\\prime})\n\\]"
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.097,
+                0.316,
+                0.428,
+                0.338
+            ],
+            "angle": 0,
+            "content": "\\[\ny _ {v} (s) = \\min _ {i = 1, 2} Q _ {\\phi_ {i}} (s, \\tilde {a}) - \\alpha \\log \\pi_ {\\theta} (\\tilde {a} | s), \\tilde {a} \\sim \\pi_ {\\theta} (\\cdot | s)\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.355,
+                0.41,
+                0.369
+            ],
+            "angle": 0,
+            "content": "13. Update Q-functions by gradient descent",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.126,
+                0.371,
+                0.466,
+                0.403
+            ],
+            "angle": 0,
+            "content": "\\[\n\\nabla_ {\\phi_ {i}} \\frac {1}{| B |} \\sum_ {(s, a, s ^ {\\prime}, r, d) \\in B} (Q _ {\\phi_ {i}} (s, a) - y _ {q} (r, s ^ {\\prime}, d)) ^ {2}, \\text { for } i = 1, 2\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.406,
+                0.403,
+                0.42
+            ],
+            "angle": 0,
+            "content": "14. Update V-function by gradient descent",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.084,
+                0.422,
+                0.258,
+                0.454
+            ],
+            "angle": 0,
+            "content": "\\[\n\\nabla_ {\\psi} \\frac {1}{| B |} \\sum_ {s \\in B} (V _ {\\psi} (s) - y _ {v} (s)) ^ {2}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.457,
+                0.371,
+                0.471
+            ],
+            "angle": 0,
+            "content": "15. Update policy by gradient descent",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.135,
+                0.474,
+                0.43,
+                0.506
+            ],
+            "angle": 0,
+            "content": "\\[\n\\nabla_ {\\theta} \\frac {1}{| B |} \\sum_ {s \\in B} (Q _ {\\phi_ {1}} (s, \\widetilde {a _ {\\theta}} (s)) - \\alpha \\log \\pi_ {\\theta} (\\widetilde {a _ {\\theta}} (s) | s))\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.509,
+                0.366,
+                0.522
+            ],
+            "angle": 0,
+            "content": "16. Update target value network with",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.105,
+                0.524,
+                0.278,
+                0.54
+            ],
+            "angle": 0,
+            "content": "\\[\n\\psi_ {\\text { t   a   r   g }} \\leftarrow \\rho \\psi_ {\\text { t   a   r   g }} + (1 - \\rho) \\psi\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.542,
+                0.193,
+                0.554
+            ],
+            "angle": 0,
+            "content": "17. end for",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.556,
+                0.166,
+                0.568
+            ],
+            "angle": 0,
+            "content": "18. end if",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.084,
+                0.571,
+                0.23,
+                0.584
+            ],
+            "angle": 0,
+            "content": "19. until convergence",
+            "merge_prev": false
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.084,
+                0.542,
+                0.23,
+                0.584
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.592,
+                0.304,
+                0.606
+            ],
+            "angle": 0,
+            "content": "C. State Space And Action Space"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.609,
+                0.487,
+                0.75
+            ],
+            "angle": 0,
+            "content": "1) State Space: In order to complete the task, the state space was defined as three parts. The first part is 10-dimensional laser scanning data with scanning angle 360 degrees. The second is the angle and distance between robot and target position. The third is the action selected at the last moment and the reward. The laser scanning data can help the robot learn to avoid obstacles, the information of the target point informs the goal of the robot navigation. The action and reward of the previous moment can more effectively make the robot learn the correctness of the current action.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.752,
+                0.487,
+                0.838
+            ],
+            "angle": 0,
+            "content": "2) Action Space: The action space consists of two dimensions, one for linear velocity and one for angular velocity. All of these velocity command is represented by a squashed Gaussian policy. A clip function is used to ensure the linear velocity is limited to  \\( [0, 0.2] \\)  m/s, and the angular velocity is limited to  \\( [-1, 1] \\)  m/s.",
+            "merge_prev": false
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.609,
+                0.487,
+                0.838
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.537,
+                0.061,
+                0.945,
+                0.191
+            ],
+            "angle": 0,
+            "content": "```mermaid\ngraph TD\n    A[\"Laser/target information/Last action and reward\"] --> B[\"Robot Agent\"]\n    B --> C[\"squashed Gaussian policy\"]\n    C --> D[\"Environment\"]\n    D --> E[\"Observation\"]\n    E --> A\n    D --> F[\"action\"]\n    F --> C\n    C --> G[\"Reward\"]\n    G --> D\n```",
+            "sub_type": "flowchart"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.51,
+                0.2,
+                0.926,
+                0.223
+            ],
+            "angle": 0,
+            "content": "Figure 1. Process of continuous control with deep reinforcement learning for mobile robot navigation."
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.511,
+                0.242,
+                0.658,
+                0.254
+            ],
+            "angle": 0,
+            "content": "D. Reward Function"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.258,
+                0.926,
+                0.337
+            ],
+            "angle": 0,
+            "content": "In order to let the agent better understand the goal to learn, that is, to reach the target position as soon as possible without collision. The reward function of this paper is defined as follows: when the mobile robot collides, a negative reward of -100 is given. If the mobile robot reaches target position, a positive reward of +500 is provided.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.343,
+                0.926,
+                0.397
+            ],
+            "angle": 0,
+            "content": "When the mobile robot moves freely in the environment, the reward depends on the difference from the target position compared with last time step. For reaching the target as fast as possible, a reward of -3 is given for every time step.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.51,
+                0.402,
+                0.926,
+                0.428
+            ],
+            "angle": 0,
+            "content": "Combined with the above four parts, the reward function is defined as:",
+            "merge_prev": false
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.604,
+                0.452,
+                0.926,
+                0.505
+            ],
+            "angle": 0,
+            "content": "\\[\nr _ {t} \\left(s _ {t}, a _ {t}\\right) = \\left\\{ \\begin{array}{l l} 5 0 0 & \\text { if   arrive } \\\\ - 1 0 0 & \\text { if   collided } \\\\ - 3 + k \\cdot \\left(d _ {t - 1} - d _ {t}\\right) \\end{array} \\right. \\tag {9}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.535,
+                0.519,
+                0.743,
+                0.533
+            ],
+            "angle": 0,
+            "content": "Where \\(k\\) is a hyperparameter.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.511,
+                0.548,
+                0.665,
+                0.56
+            ],
+            "angle": 0,
+            "content": "E. Network Structure"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.51,
+                0.564,
+                0.926,
+                0.595
+            ],
+            "angle": 0,
+            "content": "In the SAC algorithm, it is necessary to define three neural network structures for  \\( \\pi_{\\theta} \\) ,  \\( V_{\\psi} \\)  and  \\( Q_{\\phi_{i}} \\) .",
+            "merge_prev": false
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.586,
+                0.605,
+                0.887,
+                0.871
+            ],
+            "angle": 0,
+            "content": "```mermaid\ngraph TD\n    A[\"Input(s)|15\"] --> B[\"LSTM|512|Relu\"]\n    B --> C[\"LSTM|512|Relu\"]\n    C --> D[\"LSTM|512|Relu\"]\n    D --> E[\"Dense(V)|1\"]\n    \n    F[\"Input(s)|15\"] --> G[\"Concatenate|17\"]\n    G --> H[\"LSTM|512|Relu\"]\n    H --> I[\"LSTM|512|Relu\"]\n    I --> J[\"LSTM|512|Relu\"]\n    J --> K[\"Dense(Q)|1\"]\n    \n    L[\"Input(s)|15\"] --> M[\"Dense|512|Relu\"]\n    M --> N[\"Dense|512|Relu\"]\n    N --> O[\"Dense(μ)|2\"]\n    N --> P[\"Dense(σ)|2\"]\n    O --> Q[\"Output(a)|2|Tanh, Clip\"]\n    P --> Q\n```",
+            "sub_type": "flowchart"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.51,
+                0.881,
+                0.925,
+                0.904
+            ],
+            "angle": 0,
+            "content": "Figure 2. The Network of the SAC model. Each layer includes its type, dimension, and activation function information."
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.113,
+                0.965,
+                0.881,
+                0.977
+            ],
+            "angle": 0,
+            "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded 103 May 30, 2026 at 11:22:49 UTC from IEEE Xplore. Restrictions apply."
+        }
+    ],
+    [
+        {
+            "type": "text",
+            "bbox": [
+                0.07,
+                0.064,
+                0.488,
+                0.199
+            ],
+            "angle": 0,
+            "content": "As shown in Fig. 2, the input of value network is a 15-dimensional vector that includes laser scanning data(10-dimensional), target position(2-dimensional, distance and angle), the action of last time step(2-dimensional) and reward(1-dimensional). In order to make the network have the memory of the previous observations and can learn the prediction of the motion, LSTM is chosen as the hidden layer with 512 nodes. After three hidden layers, the output is a state value function  \\( V_{\\psi} \\) , which is used to evaluate the quality of the state.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.206,
+                0.487,
+                0.273
+            ],
+            "angle": 0,
+            "content": "Q network is used to fit the Q value, which evaluate the quality of the action is taken in a certain state. The input consists of a state vector and an action vector, which we merge into a 17-dimensional vector. Similar to the value network, the final output is a one-dimensional Q value.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.07,
+                0.278,
+                0.487,
+                0.388
+            ],
+            "angle": 0,
+            "content": "The policy network is used to generate a Gaussian distribution. After processing the input state vector through two fully connected layers, the mean and standard deviation are generated respectively. Then the action (2-dimensional velocity command) is generated according to the Gaussian distribution. The tanh activation function and clip operation are used to constrain the linear velocity in  \\( [0, 0.2] \\)  m/s, and the angular velocity is limited to  \\( [-1, 1] \\)  m/s.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.213,
+                0.41,
+                0.345,
+                0.423
+            ],
+            "angle": 0,
+            "content": "III. SIMULATIONS"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.427,
+                0.487,
+                0.466
+            ],
+            "angle": 0,
+            "content": "The training environment was implemented in Gazebo and ROS. An open source mobile robot model Turtlebot3 was used.",
+            "merge_prev": false
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.083,
+                0.481,
+                0.249,
+                0.495
+            ],
+            "angle": 0,
+            "content": "A. Training procedure"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.174,
+                0.497,
+                0.387,
+                0.645
+            ],
+            "angle": 0,
+            "content": "Top-down view of a blue umbrella placed on a grid background with wooden bars and white spheres (no text or symbols)",
+            "sub_type": "natural_image"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.071,
+                0.648,
+                0.484,
+                0.662
+            ],
+            "angle": 0,
+            "content": "Figure 3. The virtual environment named Turtlebot3_stage_4 in Gazebo."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.671,
+                0.487,
+                0.743
+            ],
+            "angle": 0,
+            "content": "The virtual environment is shown as Fig. 3. It is a  \\( 5 \\times 5 m^{2} \\)  square area with 8 obstacles. The initial position of the mobile robot is  \\( (0, -0.6) \\) . At each episode, the position of the mobile robot is initialized and the position of the target point are generated randomly.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.749,
+                0.487,
+                0.842
+            ],
+            "angle": 0,
+            "content": "The hyperparameters for reinforcement learning training are as follows. The learning rates for policy ,value and Q network are 0.0003. Adam optimizer is used to perform gradient descent. The size of experience replay buffer is 50000. The maximum episode is 1300. The maximum step for each episode is 1000. The batch size is 128. The discounted rate  \\( \\gamma \\)  is 0.99.",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.848,
+                0.487,
+                0.902
+            ],
+            "angle": 0,
+            "content": "The model was trained on a PC with Nvidia GeForce RTX 2070 GPU, 3.70 GHz eight core AMD Ryzen 7 2700X processor and 16 GB memory. The environment is speeded up 10 times to train. The training procedure took three hours.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.511,
+                0.064,
+                0.589,
+                0.077
+            ],
+            "angle": 0,
+            "content": "F. Results"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.508,
+                0.081,
+                0.927,
+                0.251
+            ],
+            "angle": 0,
+            "content": "The simulation results is shown in Fig. 4. It can be seen that the mobile robot always hits obstacles at the beginning and get a negative reward. With constant trial and error, the mobile robot learned the policy to complete the autonomous navigation task and approached convergence. For comparison, the LSTM layers in the value and Q network were replaced with fully-connected layer while other parameters remained unchanged. It can be seen that the mean reward of LSTM network has increased faster than fully-connected networks. The success rate is shown in Fig. 5. It can be seen that the success rate was increasing with the convergence of policy. Of course, as training time increases, the success rate will become higher and higher.",
+            "merge_prev": false
+        },
+        {
+            "type": "chart",
+            "bbox": [
+                0.541,
+                0.266,
+                0.922,
+                0.432
+            ],
+            "angle": 0,
+            "content": "| episodes | sac     | sac_lstm |\n| -------- | ------- | -------- |\n| 0        | -600    | -600     |\n| 200      | -200    | -100     |\n| 400      | 100     | 150      |\n| 600      | 200     | 250      |\n| 800      | 250     | 300      |\n| 1000     | 300     | 350      |\n| 1200     | 350     | 375      |\n| 1400     | 375     | 400      |",
+            "sub_type": "line"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.509,
+                0.441,
+                0.926,
+                0.476
+            ],
+            "angle": 0,
+            "content": "Figure 4. The mean reward over episodes in training procedure. The solid line is the result of using the LSTM network structure, and the dashed line is the result of the fully connected layer network."
+        },
+        {
+            "type": "chart",
+            "bbox": [
+                0.53,
+                0.496,
+                0.898,
+                0.661
+            ],
+            "angle": 0,
+            "content": "| episodes | sac    | sac_lstm |\n| -------- | ------ | ------- |\n| 0        | 0.2    | 0.0     |\n| 200      | 0.4    | 0.4     |\n| 400      | 0.5    | 0.5     |\n| 600      | 0.6    | 0.6     |\n| 800      | 0.65   | 0.65    |\n| 1000     | 0.7    | 0.7     |\n| 1200     | 0.7    | 0.7     |\n| 1400     | 0.7    | 0.7     |",
+            "sub_type": "line"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.509,
+                0.664,
+                0.926,
+                0.698
+            ],
+            "angle": 0,
+            "content": "Figure 5. The success rate over episodes in training procedure. The solid line is the result of using the LSTM network structure, and the dashed line is the result of the fully connected layer network."
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.511,
+                0.717,
+                0.615,
+                0.73
+            ],
+            "angle": 0,
+            "content": "G. Evaluation"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.508,
+                0.734,
+                0.927,
+                0.848
+            ],
+            "angle": 0,
+            "content": "1) Baseline: In order to evaluate the effectiveness of the proposed method, traditional methods are implemented for comparison. First, a map of simulation environment was built by the gmapping package, which is a package contains a ROS wrapper for OpenSlam's gmapping. The package provides laser-based SLAM. The occupancy grid map can be built from laser and odometer data of mobile robots. The occupancy grid map of the virtual environment in this article is as follows.",
+            "merge_prev": false
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.113,
+                0.964,
+                0.881,
+                0.977
+            ],
+            "angle": 0,
+            "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded 104 May 30, 2026 at 11:22:49 UTC from IEEE Xplore. Restrictions apply."
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "bbox": [
+                0.174,
+                0.062,
+                0.411,
+                0.222
+            ],
+            "angle": 0,
+            "content": "Pixelated map layout with rectangular and rectangular elements on a grid background (no text or labels)",
+            "sub_type": "natural_image"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.071,
+                0.233,
+                0.426,
+                0.246
+            ],
+            "angle": 0,
+            "content": "Figure 6. The occupancy grid map of the virtual environment."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.07,
+                0.256,
+                0.488,
+                0.336
+            ],
+            "angle": 0,
+            "content": "The real time position was provided by amcl package in ROS. It uses particle filter to track the position of mobile robot in a map. The move_base package is used for path planning. It can provide a global and local planner for navigation task by using the A-star algorithm for global path planning and the DWA algorithm for local path planning.",
+            "merge_prev": false
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.166,
+                0.34,
+                0.419,
+                0.512
+            ],
+            "angle": 0,
+            "content": "Floor plan diagram with numbered zones and a red path marked with arrows, showing layout and layout details.",
+            "sub_type": "text_image"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.071,
+                0.522,
+                0.316,
+                0.535
+            ],
+            "angle": 0,
+            "content": "Figure 7. The path planed by move_base."
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.169,
+                0.543,
+                0.414,
+                0.713
+            ],
+            "angle": 0,
+            "content": "Floor plan diagram with numbered zones and a red route line indicating movement or path",
+            "sub_type": "text_image"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.071,
+                0.723,
+                0.415,
+                0.736
+            ],
+            "angle": 0,
+            "content": "Figure 8. The path planed by reinforcement learning model."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.07,
+                0.747,
+                0.489,
+                0.904
+            ],
+            "angle": 0,
+            "content": "2) Evaluation: As shown in Fig. 7 and Fig. 8, seven targets were set for mobile robot. The robot's goal is to arrive these target points in turn. It is worth noting that for move_base, building a map is a prerequisite for path planning. But for reinforcement learning methods, maps are only used for visualization of paths. As shown in the figure, both methods can accomplish the task well, and the trajectory of move_base planning is better in some places. But it needs to be explained that move_base uses 360-dimensional laser scanning data, while the reinforcement learning model uses only 10-dimensional sparse laser scanning data. The result",
+            "merge_prev": false
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.51,
+                0.065,
+                0.925,
+                0.093
+            ],
+            "angle": 0,
+            "content": "proves the effectiveness and superiority of the navigation method based on reinforcement learning.",
+            "merge_prev": true
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.654,
+                0.107,
+                0.783,
+                0.12
+            ],
+            "angle": 0,
+            "content": "IV. CONCLUSION"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.125,
+                0.927,
+                0.281
+            ],
+            "angle": 0,
+            "content": "In this article, a reinforcement learning method based on Soft Actor Critic was presented for mobile robot navigation in mapless environment. Continuous control of mobile robots was achieved by using 10-dimensional laser scanning data, target information, actions and rewards from the last time step as input. After a few hours of training, the method can achieve similar results to the traditional method. In addition, this continuous control method based on reinforcement learning can accomplish other more complex tasks. Of course, although it has achieved good results in the simulation environment, the application of virtual to real world still needs to be carried out in future work.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.647,
+                0.303,
+                0.79,
+                0.315
+            ],
+            "angle": 0,
+            "content": "ACKNOWLEDGMENT"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.509,
+                0.32,
+                0.929,
+                0.478
+            ],
+            "angle": 0,
+            "content": "This work was supported by the National Natural Science Foundation of China under Grants 61873011 and 61803014, the Beijing Natural Science Foundation under Grant 4182035, the Young Elite Scientists Sponsorship Program by CAST under Grant 2017QNRC001, the Aeronautical Science Foundation of China under Grants 2016ZA51005 and 20170151001, the Special Research Project of Chinese Civil Aircraft, the State Key Laboratory of Intelligent Control and Decision of Complex Systems, and the Fundamental Research Funds for the Central Universities under Grant YWF-18-BJ-Y-73.",
+            "merge_prev": false
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.673,
+                0.494,
+                0.765,
+                0.506
+            ],
+            "angle": 0,
+            "content": "REFERENCES"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.506,
+                0.507,
+                0.93,
+                0.908
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.511,
+                0.51,
+                0.925,
+                0.543
+            ],
+            "angle": 0,
+            "content": "[1] H. Durrant-Whyte, T. Bailey, “Simultaneous localization and mapping (SLAM),” IEEE Robotics & Automation Magazine, vol. 13, no. 2, pp. 99-110, 2006."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.512,
+                0.545,
+                0.926,
+                0.578
+            ],
+            "angle": 0,
+            "content": "[2] J. Peng, Y. Huang, G. Luo, “Robot path planning based on improved A* Algorithm,” Cybernetics & Information Technologies, vol. 15, no. 2, pp. 171-180, 2015."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.58,
+                0.926,
+                0.613
+            ],
+            "angle": 0,
+            "content": "[3] S. Chakravorty, S. Kumar, “Generalized sampling-based motion planners,” IEEE Transaction on Systems Man & Cybernetics, vol. 41, no. 3, 2011."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.615,
+                0.926,
+                0.648
+            ],
+            "angle": 0,
+            "content": "[4] D. Fox, W. Burgard, S. Thrun, “The dynamic window approach to collision avoidance,” IEEE Robotics & Automation Magazine, vol. 4, no. 1, pp. 23-33, 1997."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.65,
+                0.926,
+                0.684
+            ],
+            "angle": 0,
+            "content": "[5] S. Krishnan, P. Sharma, Z. Guoping, O. H. Woon, “A UWB based localization system for indoor robot navigation,” in Proceedings of the IEEE International Conference on Ultra-Wideband, 2007, pp. 77-82."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.686,
+                0.926,
+                0.729
+            ],
+            "angle": 0,
+            "content": "[6] S. Ross, N. Melik-Barkhudarov, K. S. Shankar, A. Wendel, D. Dey, \"Learning monocular reactive UAV control in cluttered natural environments,\" in Proceedings of the IEEE International Conference on Robotics and Automation, 2012."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.731,
+                0.926,
+                0.775
+            ],
+            "angle": 0,
+            "content": "[7] N. Smolyanskiy, A. Kamenev, J. Smith, S. Birchfield, “Toward low-flying autonomous MAV trail navigation using deep neural networks for environmental awareness,” in Proceedings of the IEEE International Conference on Intelligent Robots and Systems, 2017."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.777,
+                0.926,
+                0.81
+            ],
+            "angle": 0,
+            "content": "[8] M. A. K. Jaradat, M. Al-Rousan, L. Quadan, “Reinforcement based mobile robot navigation in dynamic environment,” Robotics and Computer-Integrated Manufacturing, vol. 27, no. 1, pp. 135-149, 2011."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.812,
+                0.926,
+                0.845
+            ],
+            "angle": 0,
+            "content": "[9] V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou, D. Wierstra, M. Riedmiller, “Playing atari with deep reinforcement learning,” arXiv preprint arXiv:1312.5602, 2013."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.847,
+                0.926,
+                0.88
+            ],
+            "angle": 0,
+            "content": "[10] T. C. Wu, S. Y. Tseng, C. F. Lai, C. Y. Ho, Y. H. Lai, “Navigating assistance system for quadcopter with deep reinforcement learning,” arXiv preprint arXiv:1811.04584, 2018."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.513,
+                0.882,
+                0.926,
+                0.905
+            ],
+            "angle": 0,
+            "content": "[11] A. Kendall, J. Hawke, D. Janz, “Learning to Drive in a Day,” arXiv preprint arXiv:1807.00412, 2018."
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.113,
+                0.964,
+                0.881,
+                0.977
+            ],
+            "angle": 0,
+            "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded 105 May 30, 2026 at 11:22:49 UTC from IEEE Xplore. Restrictions apply."
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "bbox": [
+                0.073,
+                0.063,
+                0.489,
+                0.273
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.074,
+                0.063,
+                0.486,
+                0.107
+            ],
+            "angle": 0,
+            "content": "[12] Y. Zhu, R. Mottaghi, E. Kolve, J. J. Lim, A. Gupta, L. Fei-Fei, A. Farhadi, “Target-driven visual navigation in indoor scenes using deep reinforcement learning,” in Proceedings of the IEEE International Conference on Robotics and Automation, 2017, pp. 3357-3364."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.074,
+                0.109,
+                0.486,
+                0.142
+            ],
+            "angle": 0,
+            "content": "[13] T. P. Lillicrap, J. J. Hunt, A. Pritzel, N. Heess, T. Erez, Y. Tassa, \"Continuous control with deep reinforcement learning,\" Computer Science, vol. 8, no. 6, 2015."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.074,
+                0.144,
+                0.485,
+                0.178
+            ],
+            "angle": 0,
+            "content": "[14] J. Schulman, S. Levine, P. Abbeel, M. Jordan, P. Moritz, “Trust region policy optimization,” International Conference on Machine Learning, 2015, pp. 1889-1897."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.074,
+                0.179,
+                0.485,
+                0.212
+            ],
+            "angle": 0,
+            "content": "[15] J. Schulman, F. Wolski, P. Dhariwal, A. Radford, O. Klimov, \"Proximal policy optimization algorithms,\" arXiv preprint arXiv:1707.06347, 2017."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.074,
+                0.214,
+                0.485,
+                0.248
+            ],
+            "angle": 0,
+            "content": "[16] T. Haarnoja, A. Zhou, P. Abbeel, S. Levine, “Soft actor-critic: off-policy maximum entropy deep reinforcement learning with a stochastic actor,” arXiv preprint arXiv:1801.01290, 2018."
+        },
+        {
+            "type": "ref_text",
+            "bbox": [
+                0.074,
+                0.249,
+                0.485,
+                0.273
+            ],
+            "angle": 0,
+            "content": "[17] S. Hochreiter, Schmidhuber, Jürgen, “Long Short-Term Memory,” Neural Computation, vol. 9, no. 8, pp. 1735-1780, 1997."
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.114,
+                0.965,
+                0.88,
+                0.977
+            ],
+            "angle": 0,
+            "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded May 30, 2026 at 11:22:49 UTC from IEEE Xplore. Restrictions apply."
+        }
+    ]
+]

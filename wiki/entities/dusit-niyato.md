@@ -14,6 +14,7 @@ related:
   - "[[wang-2025-sac-tma-mec-dc]]"
   - "[[sun-2025-emoppo-vlh-aerial-cb]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
+  - "[[du-2024-d2sac-aigc-asp-selection]]"
 created: 2026-05-29
 updated: 2026-05-31
 ---
@@ -22,7 +23,7 @@ updated: 2026-05-31
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 11 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, and surveys:
+The most frequently recurring author in the corpus, co-authoring 12 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -35,6 +36,7 @@ The most frequently recurring author in the corpus, co-authoring 11 sources span
 - [[wang-2025-sac-tma-mec-dc]] — joint AAV MEC + data collection via SAC-TMA.
 - [[sun-2025-emoppo-vlh-aerial-cb]] — aerial collaborative beamforming to mobile users via EMOPPO-VLH.
 - [[li-2024-emodrl-ground-space-cb]] — distributed collaborative beamforming for ground-space communications via EMODRL.
+- [[du-2024-d2sac-aigc-asp-selection]] — diffusion-based RL (D2SAC) for edge AIGC service-provider selection.
 
 ## Contributions to this wiki
 
