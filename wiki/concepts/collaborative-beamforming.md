@@ -6,6 +6,7 @@ related:
   - "[[sun-2025-emoppo-vlh-aerial-cb]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
+  - "[[sun-2024-imssa-uav-secure-cb]]"
   - "[[physical-layer-security]]"
   - "[[multi-objective-reinforcement-learning]]"
 created: 2026-05-31
@@ -22,7 +23,8 @@ A technique where multiple distributed transmitters (AAVs/UAVs, or ground termin
 |---|---|---|---|
 | Aerial CB (UVAA) | A swarm of AAVs | Terrestrial mobile user | [[sun-2025-emoppo-vlh-aerial-cb]] |
 | Distributed CB (DCB) | Energy-limited ground terminals | LEO satellite (uplink) | [[li-2024-emodrl-ground-space-cb]] |
-| Secure CB | UAV swarm | Remote base station, vs eavesdroppers | [[zhang-2024-gdmtd3-aerial-secure-cb]] |
+| Secure CB (diffusion-DRL) | UAV swarm | Remote base station, vs eavesdroppers | [[zhang-2024-gdmtd3-aerial-secure-cb]] |
+| Secure CB (swarm-intelligence) | UVAA of UAVs | Cluster of base stations, vs imperfect/unknown eavesdroppers | [[sun-2024-imssa-uav-secure-cb]] |
 
 ## Design tension
 

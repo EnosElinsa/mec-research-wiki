@@ -6,6 +6,7 @@ related:
   - "[[bargaining-game]]"
   - "[[matching-theory-for-resource-allocation]]"
   - "[[stackelberg-game]]"
+  - "[[reverse-auction-incentive]]"
   - "[[dai-2024-multiuav-marine-welfare]]"
 created: 2026-05-31
 updated: 2026-05-31
@@ -17,4 +18,4 @@ A **double auction** is a market mechanism with multiple buyers **and** multiple
 
 ## In this wiki
 
-- [[dai-2024-multiuav-marine-welfare]] uses a double-auction game for **OBS selection** in marine multi-access MEC: UAVs are buyers of computing service, ocean beacon stations (OBSs) are sellers, and a leader OBS is the auction controller. It defines valuation, bidding, and K-payment rules plus a dynamic bidding-adjustment strategy to raise the transaction success ratio. It sits alongside the wiki's other market/negotiation mechanisms — [[bargaining-game]], [[stackelberg-game]], and [[matching-theory-for-resource-allocation]].
+- [[dai-2024-multiuav-marine-welfare]] uses a double-auction game for **OBS selection** in marine multi-access MEC: UAVs are buyers of computing service, ocean beacon stations (OBSs) are sellers, and a leader OBS is the auction controller. It defines valuation, bidding, and K-payment rules plus a dynamic bidding-adjustment strategy to raise the transaction success ratio. It sits alongside the wiki's other market/negotiation mechanisms — [[bargaining-game]], [[stackelberg-game]], [[matching-theory-for-resource-allocation]], and the single-buyer [[reverse-auction-incentive]] (used by [[zeng-2024-usv-fleet-collaborative-offloading]]).
