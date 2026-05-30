@@ -2,6 +2,44 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-05-31 — Curation pass (batch 2/8: 7 new sources + audit)
+
+Second batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned `batch2` folders (per `.curation-out/batches.json`); the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **89 → 96 curated sources**.
+
+### New source pages (7)
+
+- [[lyu-2023-noma-marine-emergency-offloading]] — Lyu et al. 2023 (**IEEE IoT-J**, `10.1109/JIOT.2023.3348164`). NOMA-based UAV emergency communication for marine IoT; MINLP minimizing device computation overhead (time + energy), decomposed into quasi-convex/convex resource allocation + a **coalition formation game** offloading algorithm (CGTO) reaching a Nash-stable solution.
+- [[xiang-sac-mapless-robot-navigation]] — Xiang, Li, Dong & Ren (Beihang Univ.). Mapless mobile-robot navigation via **Soft Actor-Critic** with LSTM value/Q networks; laser+target→continuous velocity; Gazebo/ROS Turtlebot3. **Venue / year / DOI: not in parse** (parse has no publication line; an IEEE Xplore record exists for the title but its venue/year are not stated in the parse, so left blank rather than guessed). Foundational SAC entry.
+- [[apostolopoulos-2021-prospect-theory-uav-offloading]] — Apostolopoulos et al. 2021 (**IEEE TMC**, `10.1109/TMC.2021.3069911`). Risk-aware partial data offloading across local / ground-MEC / UAV-MEC servers via **prospect theory**; non-cooperative game with proven unique Pure Nash Equilibrium. DOI grounded from an in-parse appendix link + web-confirmed (no header DOI line).
+- [[wang-2022-cat-rat-fmec-trajectory]] — Wang et al. 2022 (**IEEE TMC**, `10.1109/TMC.2021.3059691`). Flying-MEC UAV trajectory + user association + resource allocation to minimize total UE energy; **CAT** (BCD convex) and **RAT** (twin-DQN actor-critic + Prioritized Experience Replay + matching). DOI publication 16 Feb 2021, current version 31 Aug 2022 → year 2022 per the current-version convention.
+- [[bai-2024-delay-aware-cooperative-edge-cloud]] — Bai et al. 2024 (**IEEE TMC**, `10.1109/TMC.2022.3232375`). Delay-minimizing **cooperative** multi-UAV edge-cloud offloading; convex approximation + Lyapunov online decisions; cooperative-parallel-computing (slowest-node) delay model; model verified on a real UAV-edge platform. DOI publication 27 Dec 2022, current version 8 Jan 2024 → year 2024.
+- [[du-2024-d2sac-aigc-asp-selection]] — Du et al. 2024 (**IEEE TMC**, `10.1109/TMC.2024.3356178`). Edge AIGC-as-a-Service provider selection; diffusion decision generator (AGOD) embedded in SAC → **D2SAC**; outperforms 7 DRL baselines. DOI publication 19 Jan 2024, current version 6 Aug 2024 → year 2024.
+- [[miao-2022-gaglpp-drone-swarm-iiot]] — Miao et al. 2023 (**IEEE TII**, `10.1109/TII.2022.3196392`). Drone-swarm path planning for Industrial-IoT MEC; ground-station global + onboard local path planning (**GAGLPP**); priority/residual-energy/distance scheduling. DOI publication 4 Aug 2022, current version 4 May 2023 → year 2023.
+
+### New concept stubs (2)
+
+- [[soft-actor-critic]] — base single-agent **SAC** (maximum-entropy off-policy actor-critic), distinct from the existing multi-agent [[masac]]; grounds the navigation, D2SAC, and SAC-SK sources.
+- [[prospect-theory]] — risk-aware decision-making under uncertainty (gain/loss value function, loss aversion), grounding the prospect-theoretic offloading game.
+
+All other referenced concepts reused existing slugs (e.g. [[noma]], [[coalition-formation-game]], [[lyapunov-optimization]], [[deep-q-network]], [[prioritized-experience-replay]], [[diffusion-model-as-optimizer]], [[generative-diffusion-model]], [[nash-equilibrium]], [[two-stage-decomposition]], [[matching-theory-for-resource-allocation]], [[load-balancing-uav-mec]], [[parallel-vs-serial-processing]], [[mixed-integer-nonlinear-programming]]).
+
+### Entities — roster updates + 1 deferral (no new entity pages)
+
+- **Roster updates (existing entities):** [[dusit-niyato]] (11→12 sources, +[[du-2024-d2sac-aigc-asp-selection]]), [[jiawen-kang]] (6→7, +d2sac), [[zhu-han]] (4→5, +[[lyu-2023-noma-marine-emergency-offloading]]).
+- **Deferred (human confirmation):** **Hongyang Du**, lead/equal-first author of [[du-2024-d2sac-aigc-asp-selection]], recurs in [[ye-2025-aigc-diffusion-contract]], but the two parses list **different affiliations** — d2sac: School of Computer Science and Engineering, **NTU** (`hongyang001@e.ntu.edu.sg`); ye-2025: Department of EEE, **University of Hong Kong** (`duhy@eee.hku.hk`, with a PhD-from-NTU bio). Plausibly the same person after a move, but to stay faithful to the house convention no entity page was minted; flagged here for human confirmation.
+- No author-entity links were embedded in source pages (matching the established house convention).
+
+### Audit (correctness-first)
+
+- **DOI / venue / year** verified against each parse. Five of the seven carry a `Digital Object Identifier` line (Lyu/JIOT, Wang/TMC, Bai/TMC, Du/TMC, Miao/TII). [[apostolopoulos-2021-prospect-theory-uav-offloading]] has **no header DOI**, but an in-parse appendix link gives `10.1109/TMC.2021.3069911` (IEEE TMC), web-confirmed against the authors' record. [[xiang-sac-mapless-robot-navigation]] has **no venue/year/DOI in the parse at all**, web search did not authoritatively reveal the venue name/year → left **blank / not in parse** (year field empty, url/venue empty strings), with the absence noted in the citation.
+- **Year convention:** for the four TMC/TII papers whose date-of-publication and date-of-current-version straddle two years, the year follows the date-of-current-version (the wiki's established convention), with both dates recorded in each citation line.
+- **Grounded headline claims only:** CGTO "lowest computation overhead vs LC/OCG/HOCO/IOJRA/DDPG" (parse Section V); D2SAC "outperforms seven DRL algorithms" with the seven named (DQN/DRQN/Prioritized-DQN/Rainbow/REINFORCE/PPO/SAC) verbatim from the parse; RAT "≈ CAT, generalizes to any take-off point" (parse abstract/Sec. 7); GAGLPP "more offloading services + shorter path + greater energy efficiency" (parse abstract); Bai "near-optimal delay, platform-verified model" (parse abstract/contributions). No figure-only magnitudes were stated as exact.
+- **Wikilink integrity:** all wikilinks introduced this batch target existing slugs or pages created in this same batch; two accidental self-referential `related` entries were caught and removed during writing. No NEW dangling links introduced (full wiki-wide check below).
+- **Frontmatter:** `type`/`title`/`authors`/`year`/`venue`/`tags`/`related`/dates/H1 present on all 7 source pages (the navigation page's `year` is intentionally empty and `url`/`venue` empty strings = not in parse); `type`/`title`/`tags`/dates/H1 on the 2 concepts.
+- **Counts reconciled:** 96 sources / 182 concepts / 48 author entities (+[[pytorch]] = 49 entity pages). `index.md` and `overview.md` updated to agree.
+- **LLM Wiki API:** not queried this batch (headless shell); not required for correctness.
+- **Raw-folder scope:** only the 7 assigned `batch2` folders were curated; other untracked `raw/sources/**` folders were intentionally left for their own batch runs.
+
 ## 2026-05-31 — Curation pass (batch 1/8: 7 new sources + audit)
 
 First batch of a deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned folders; the other 45 uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **82 → 89 curated sources**.

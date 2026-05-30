@@ -7,20 +7,22 @@ related:
   - "[[jia-2022-hierarchical-aerial-matching]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[you-2025-uncertain-maritime-hasac]]"
+  - "[[lyu-2023-noma-marine-emergency-offloading]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-31
 ---
 
 # Zhu Han
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 4 sources in this wiki, spanning aerial MEC, maritime cooperation, and 6G foundation models:
+Co-authored 5 sources in this wiki, spanning aerial MEC, maritime cooperation, and 6G foundation models:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
 - [[jia-2025-dro-uav-hap-mec]] — distributionally robust optimization for aerial MEC via UAV-HAP cooperation.
 - [[you-2025-uncertain-maritime-hasac]] — uncertain maritime MEC via cooperation of AAVs and vessels (HASAC).
+- [[lyu-2023-noma-marine-emergency-offloading]] — NOMA-based UAV emergency communication for marine IoT; coalition-game offloading (CGTO).
 
 ## Contributions to this wiki
 
