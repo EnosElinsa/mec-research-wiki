@@ -1,0 +1,2627 @@
+[
+    {
+        "type": "text",
+        "text": "Multi-UAV-Enabled Load-Balance Mobile-Edge Computing for IoT Networks ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            71,
+            883,
+            140
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Lei Yang D Haipeng Yao Member, IEEE, Jingjing Wang Member, IEEE, Chunxiao Jiang Senior Member, IEEE, Abderrahim Benslimane , Senior Member, IEEE, and Yunjie Liu ",
+        "bbox": [
+            96,
+            143,
+            898,
+            185
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—Unmanned aerial vehicles (UAVs) have been widely used to provide enhanced information coverage as well as relay services for ground Internet-of-Things (IoT) networks. Considering the substantially limited processing capability, the IoT devices may not be able to tackle with heavy computing tasks. In this article, a multi-UAV-aided mobile-edge computing (MEC) system is constructed, where multiple UAVs act as MEC nodes in order to provide computing offloading services for ground IoT nodes which have limited local computing capabilities. For the sake of balancing the load for UAVs, the differential evolution (DE)-based multi-UAV deployment mechanism is proposed, where we model the access problem as a generalized assignment problem (GAP), which is then solved by a near-optimal solution algorithm. Based on this, we are capable of achieving the load balance of these drones while guaranteeing the coverage constraint and satisfying the quality of service (QoS) of IoT nodes. Furthermore, a deep reinforcement learning (DRL) algorithm is conceived for the task scheduling in a certain UAV, which improves the efficiency of the task execution in each UAV. Finally, sufficient simulation results show the feasibility and superiority of our proposed load-balance-oriented UAV deployment scheme as well as the task scheduling algorithm. ",
+        "bbox": [
+            73,
+            231,
+            491,
+            511
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Load balance, mobile-edge computing (MEC), multi-UAV deployment, task scheduling, unmanned aerial vehicles (UAVs). ",
+        "bbox": [
+            73,
+            516,
+            491,
+            555
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received November 4, 2019; revised January 15, 2020; accepted January 30, 2020. Date of publication February 4, 2020; date of current version August 12, 2020. This work was supported in part by the Director Foundation Project of the National Engineering Laboratory for Public Safety Risk Perception and Control by Big Data, in part by the National Key Research and Development Plan under Grant 018YFB1800805, and in part by the Future Intelligent Networking and Intelligent Transportation Joint Laboratory (BUPT-CTTIC). The work of Jingjing Wang was supported by the Shuimu Tsinghua Scholar Program. (Corresponding author: Haipeng Yao.) ",
+        "bbox": [
+            73,
+            662,
+            491,
+            766
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Lei Yang is with the Beijing Advanced Innovation Center for Future Internet Technology, Beijing University of Technology, Beijing 100124, China (e-mail: ylkino.xiao5@gmail.com). ",
+        "bbox": [
+            73,
+            766,
+            491,
+            800
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Haipeng Yao and Yunjie Liu are with the State Key Laboratory of Networking and Switching Technology, Beijing University of Posts and Telecommunications, Beijing 100876, China (e-mail: yaohaipeng@bupt.edu.cn; liuyj@chinaunicom.cn). ",
+        "bbox": [
+            73,
+            800,
+            491,
+            845
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Jingjing Wang is with the Department of Electronic Engineering, Tsinghua University, Beijing 100084, China (e-mail: chinaeephd@gmail.com). ",
+        "bbox": [
+            73,
+            845,
+            491,
+            868
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Chunxiao Jiang is with the Tsinghua Space Center, Tsinghua University, Beijing 100084, China (e-mail: jchx@tsinghua.edu.cn). ",
+        "bbox": [
+            73,
+            868,
+            491,
+            891
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abderrahim Benslimane is with LIA/CERI, Avignon University, 84911 Avignon, France (e-mail: abderrahim.benslimane@univ-avignon.fr). ",
+        "bbox": [
+            73,
+            891,
+            491,
+            912
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/JIOT.2020.2971645 ",
+        "bbox": [
+            88,
+            912,
+            375,
+            925
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            645,
+            231,
+            779,
+            244
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "U NMANNED aerial vehicle (UAV) has witnessed itssubstantial success in both military and civilian appli- substantial success in both military and civilian applications due to its easy deployment, low cost, and feasible mobility [1]–[4]. Moreover, given the line-of-sight (LoS) channel, UAVs can be configured in a range of scenarios without ground infrastructures. Considering the large-scale deployment as well as the limited communication capability of Internet-of-Things (IoT) devices, applying UAVs in IoT ecosystems has gained much attention [5]–[7]. In multi-UAV-aided IoT scenarios, drones can both collect data from IoT devices and transmit the data to the ground center [8], [9]. Since IoT devices generally have severely limited power supply and low computing capability, they cannot be able to complete their tasks requiring high-complexity computing [10]. However, the emergence of a variety of mobile applications, such as augmented reality, face recognition, mobile online games, etc., impose great challenges on computing capability as well as requirements on the low latency. Fortunately, the mobile-edge computing (MEC) has been recognized as a promising technology to address these challenges [11]–[13], which provides cloud computing services for the edge networks, where ground IoT nodes can assign certain computing tasks to edge networks. Unlike mobile-cloud computing (MCC), the edge devices, such as access points in the MEC, can be deployed very close to the ground IoT nodes. Hence, MEC is characterized in terms of low-energy consumption, low latency, and relatively high security. Meanwhile, the UAVs can be well equipped with MEC devices to provide mobile-edge services in the largescale IoT scenarios for the sake of improving users’ quality of service (QoS), where the ground IoT nodes can offload heavy computing tasks to the mobile cloudlet via uplink/downlink communication with the UAVs. ",
+        "bbox": [
+            501,
+            250,
+            924,
+            743
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "In this article, we propose a UAV-aided MEC system as shown in Fig. 1, where multiple UAVs cooperate to provide MEC services for ground IoT nodes. In this case, some tasks in IoT nodes may be offloaded to the UAVs for the sake of satisfying their QoS requirement. Considering the nonuniform distribution of the ground IoT nodes, both the communication performance and the load balance of the tasks from the ground IoT nodes can be substantially affected by the deployment of UAVs [14]. Since computing resources on a UAV are also limited due to its constrained carrying capacity, some of the UAVs may overload, while others are free [15]. Hence, it is necessary for these UAVs to conduct an efficient task scheduling scheme in order to tackle with a large number of tasks offloaded for the sake of reducing the overall task processing time. ",
+        "bbox": [
+            501,
+            744,
+            923,
+            925
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "6898 ",
+        "bbox": [
+            76,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 7, NO. 8, AUGUST 2020 ",
+        "bbox": [
+            553,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "2327-4662 -c 2020 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            197,
+            931,
+            799,
+            944
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            290,
+            944,
+            705,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/920109288b587092f40a28908ab15870cd8d1414153ee83669b251798a4b4789.jpg",
+        "image_caption": [
+            "Fig. 1. Multi-UAV-aided IoT scenario. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"UAV\"] --> B[\"IoT node\"]\n    C[\"H\"] --> D[\"Global Coverage Zone\"]\n    E[\"Robot\"] --> F[\"Global Coverage Zone\"]\n    G[\"Laptop\"] --> H[\"Global Coverage Zone\"]\n    I[\"Robot\"] --> J[\"Global Coverage Zone\"]\n    K[\"Robot\"] --> L[\"Global Coverage Zone\"]\n    style A fill:#f9f,stroke:#333\n    style C fill:#f9f,stroke:#333\n    style E fill:#f9f,stroke:#333\n    style G fill:#ccf,stroke:#333\n    style I fill:#ccf,stroke:#333\n    style K fill:#ccf,stroke:#333\n    style B fill:#ffc,stroke:#333\n    style D fill:#ffc,stroke:#333\n    style F fill:#ffc,stroke:#333\n    style H fill:#ffc,stroke:#333\n    style J fill:#ffc,stroke:#333\n    style L fill:#ffc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            89,
+            63,
+            480,
+            281
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            325,
+            491,
+            356
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Therefore, both multi-UAV deployment as well as task scheduling impose a severe impact on the efficiency of the MEC network. Specifically, a proper drone’s deployment is capable of reducing the transmission delay and of balancing the load of UAVs. In addition, the effective task scheduling strategy among the UAVs is able to reduce the waiting time of tasks and improve the processing efficiency. Hence, this article aims at the load-balancing deployment and the effective task scheduling in the multi-UAV-aided MEC system. The main contributions of this article are summarized as follows. ",
+        "bbox": [
+            73,
+            357,
+            490,
+            507
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) We propose a multi-UAV-aided MEC architecture for IoT networks, where the deployment and the task scheduling of UAVs are concerned considering both the load balance as well as the task processing efficiency. ",
+            "2) In order to guarantee the load balance of multiple UAVs, we propose a differential evolution (DE)-based UAV deployment algorithm. Moreover, a generalized assignment problem (GAP) is exploited to find the nearoptimal IoT node assignment solution. Furthermore, a deep reinforcement learning (DRL)-aided task scheduling method is proposed for the sake of improving the task execution efficiency of each UAV. ",
+            "3) Extensive simulations evaluate the effectiveness and superiority of our proposed DE-based deployment strategy and the DRL-aided task scheduling scheme. The simulations results show that our proposed multi-UAVaided MEC network can achieve load-balance task offload and improve the QoS of ground IoT nodes. Furthermore, comparison with other benchmark schemes indicates the better performance of our proposed scheme. "
+        ],
+        "bbox": [
+            89,
+            508,
+            491,
+            821
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The remainder of this article is organized as follows. The related work is presented in Section II. In Section III, the channel model is defined. Moreover, the load-balance multi-UAV deployment and the latency-aware task scheduling optimization problem are formulated. In Section IV, the DEbased multi-UAV deployment algorithm and the DRL-based task schedule algorithm are elaborated. Section V shows our simulation results, followed by conclusions in Section VI. ",
+        "bbox": [
+            73,
+            824,
+            491,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/76c96efe22e525815b38b19a58519777c1736539b8f87b4d29524044d7304339.jpg",
+        "image_caption": [
+            "Fig. 2. Network architecture. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"UAV plane\"] --> B[\"User plane\"]\n    B --> C[\"Data to be processed\"]\n    C --> D[\"Offloading\"]\n    D --> E[\"MEC\"]\n    style A fill:#cce5ff,stroke:#333\n    style B fill:#e6f7ff,stroke:#333\n    style C fill:#e6f7ff,stroke:#333\n    style D fill:#e6f7ff,stroke:#333\n    style E fill:#e6f7ff,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            550,
+            64,
+            875,
+            236
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORK ",
+        "text_level": 1,
+        "bbox": [
+            640,
+            277,
+            785,
+            290
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Currently, a range of literature concerns the deployment of UAVs with the objective of improving the performance of the communication system, where UAVs play the role as airborne relays [16]–[18] or as flying base stations [19]–[21]. To elaborate a little further, in [16], by optimizing the source and relay transmission power along with the relay trajectory in mobile relaying systems, the throughput maximization problem was studied with relay nodes mounted on UAVs. Furthermore, Johansen et al. [17] used a UAV to operate as a wireless communication relay for the sake of downloading date from an underwater vehicle to a ground station. Kim et al. [18] proposed a trajectory planning algorithm and used small UAVs as communication relay nodes. In this way, the communication links were expanded and communication quality for a fleet of naval vessels was improved. Moreover, Mozaffari et al. [19] investigated the downlink coverage performance of drone small cells and the optimal drone small cell altitude. Hence, both maximum ground coverage and minimum required transmission power were guaranteed. In [20], through UAV’s trajectory optimization, an energy-efficient UAV communication architecture with a ground terminal was built, where the communication throughput and the energy consumption of UAV were considered. Wu et al. [21] proposed a multi-UAV-enabled wireless-communication system, where fair performance among users was achieved. In this case, a group of ground users was served by multiple UAVmounted aerial base. Meanwhile, the authors optimized the multiuser communication scheduling and association, as well as the minimum throughput over all ground users in downlink communication. ",
+        "bbox": [
+            501,
+            296,
+            921,
+            748
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "With the development of MEC, some researchers have combined UAV with MEC [22]–[27]. Loke [22] put forward an idea of fog calculation on UAVs and outlined some scenarios with using such airborne fog computing architecture. Moreover, Jeong et al. [23] used a moving UAV to offer computing offloading services to mobile users, which aimed at minimizing the total mobile energy consumption and satisfying the QoS requirements. In [24], UAV-enabled wireless powered MEC system was studied, with computing bits as well as harvesting causality requirement satisfied. Furthermore, Zhou et al. [25] studied a UAV-enabled wireless-powered system, where the energy-harvesting causal as well as the UAV speed constraint were considered. Then, the objective of maximizing computing rate under both partial and binary computing offloading modes was achieved. In [26], for the sake of improving coverage and increasing rate, Zhao et al. used UAVs to help small-cell base stations offload traffic via wireless backhaul. In spite of the limited capacity of wireless backhaul, UAVs and small-cell base stations can both store video caches at off-peak time. In [27], a UAV-aided MEC system with a three-layer integrated architecture was established over the social Internet of vehicles. By jointly optimizing the transmit power of the vehicle and the UAV, an optimization framework for total utility maximization was proposed. ",
+        "bbox": [
+            501,
+            750,
+            921,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "YANG et al.: MULTI-UAV-ENABLED LOAD-BALANCE MOBILE-EDGE COMPUTING FOR IoT NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            624,
+            45
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "6899 ",
+        "bbox": [
+            893,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            69,
+            491,
+            251
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "III. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            207,
+            266,
+            359,
+            279
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. Network Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            285,
+            207,
+            297
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "An MEC system model is illustrated in Fig. 2, which consists of K IoT nodes and N UAVs. Meanwhile, IoT nodes on the ground can offload their tasks to the UAVs. Let $\\psi ~ = ~ \\{ m _ { 1 } , m _ { 2 } , . ~ . ~ . , m _ { \\mathrm { K } } \\}$ denote the set of IoT nodes and $\\eta = \\{ u _ { 1 } , u _ { 2 } , \\ldots , u _ { N } \\}$ be the set of the UAVs. In our system, the IoT nodes are constituted by heterogeneous types of devices with different offloading levels. We assume that there are Z types of IoT nodes represented by $e ~ = ~ \\{ \\varepsilon _ { 1 } , \\varepsilon _ { 2 } , . . . , \\varepsilon _ { Z } \\} .$ , where the corresponding offloading level is denoted by $\\tilde { e } =$ $\\{ \\tilde { \\varepsilon } _ { 1 } , \\tilde { \\varepsilon } _ { 2 } , \\dots , \\tilde { \\varepsilon } _ { Z } \\}$ . Without loss of generality, we assume all IoT nodes are fixed on the ground and all UAVs fly at a fixed altitude $H \\left( H > 0 \\right)$ . The position of the kth IoT node is denoted by $m _ { k } = [ x _ { k } ^ { m } , y _ { k } ^ { m } , 0 ]$ , and the position of the nth UAV is denoted by $\\displaystyle u _ { n } = [ x _ { n } ^ { u } , y _ { n } ^ { u } , H ]$ . Let $\\alpha _ { n , k }$ indicate the connection between UAV and IoT node, where $\\alpha _ { n , k } = 1$ means the kth IoT node is connected to the nth UAV. Considering that each IoT node can only connect to one UAV simultaneously, we have ",
+        "bbox": [
+            73,
+            303,
+            491,
+            561
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n = 1} ^ {N} \\alpha_ {n, k} = 1 \\quad \\forall k = 1, 2 \\dots , K. \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            169,
+            569,
+            488,
+            611
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Moreover, the distance between $u _ { n }$ and mk can be calculated by $d ( u _ { n } , m _ { k } ) = [ H ^ { 2 } + ( x _ { n } ^ { u } - x _ { k } ^ { m } ) ^ { 2 } + ( y _ { n } ^ { u } - y _ { k } ^ { m } ) ^ { 2 } ] ^ { ( 1 / 2 ) }$ . For an offloaded task $F _ { z } ( u _ { n } , m _ { k } ) \\ \\forall z = 1 , 2 , . . . , Z$ between $m _ { k }$ and $u _ { n } ,$ given the required computing resource $c _ { z } ( u _ { n } , m _ { k } )$ , the required execution time $t _ { z } ( u _ { n } , m _ { k } )$ and the required communication traffic $h _ { z } ( u _ { n } , m _ { k } )$ , we define $F _ { z } ( u _ { n } , m _ { k } ) ~ =$ $[ c _ { z } ( u _ { n } , m _ { k } ) , t _ { z } ( u _ { n } , m _ { k } ) , h _ { z } ( u _ { n } , m _ { k } ) ]$ . ",
+        "bbox": [
+            73,
+            619,
+            491,
+            726
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            744,
+            256,
+            758
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Fig. 1 shows the multi-UAV-aided IoT scenario. Every UAV has a fixed coverage with radius $R _ { c }$ . Moreover, ground IoT nodes can access the UAV via orthogonal frequency-division multiple access, hence the interference among the UAV-node links is neglected. We assume that the communication channels from UAVs to IoT nodes are dominated by the LOS channel, and thus the channel gain between $m _ { k }$ and $u _ { n }$ can be derived as ",
+        "bbox": [
+            73,
+            763,
+            491,
+            883
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} g (u _ {n}, m _ {k}) = \\beta_ {0} d (u _ {n}, m _ {k}) ^ {- 2} \\\\ = \\frac {\\beta_ {0}}{H ^ {2} + \\left(x _ {n} ^ {u} - x _ {k} ^ {m}\\right) ^ {2} + \\left(y _ {n} ^ {u} - y _ {k} ^ {m}\\right) ^ {2}} \\tag {2} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            133,
+            892,
+            488,
+            949
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/1c44b6197db7e7c52917e45a5599d3c9ce2aeafc614781858da8a311d08a3dd1.jpg",
+        "image_caption": [
+            "Fig. 3. Toy example for explaining the task scheduling scheme. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Resource capacity (for example, CPU and memory)\"] --> B[\"CPU\"]\n    A --> C[\"Memory\"]\n    D[\"Resource requirement\"] --> E[\"CPU\"]\n    D --> F[\"Memory\"]\n    G[\"Task scheduling\"] --> H[\"Task 1\"]\n    G --> I[\"Task 2\"]\n    G --> J[\"Task 3\"]\n    G --> K[\"Task 4\"]\n    G --> L[\"Task 5\"]\n    M[\"Required execution time\"] --> N[\"Required amounts of CPU\"]\n    M --> O[\"Required amounts of memory\"]\n    P[\"Time axis\"] --> Q[\"Time axis\"]\n    Q --> R[\"Time axis\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            545,
+            64,
+            880,
+            465
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\beta _ { 0 }$ denotes the channel gain at the reference distance of 1 m. Let $\\tilde { p } ( u _ { n } )$ represent the transmission power of $u _ { n } .$ Then, the uplink data rate between $u _ { n }$ and $m _ { k }$ can be formulated by ",
+        "bbox": [
+            503,
+            503,
+            923,
+            549
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\tilde {v} (u _ {n}, m _ {k}) = B \\log_ {2} \\left(1 + \\frac {\\tilde {p} (u _ {n}) g (u _ {n} , m _ {k})}{\\sigma^ {2}}\\right) \\\\ = B \\log_ {2} \\left(1 + \\frac {\\beta_ {0} \\tilde {p} (u _ {n})}{\\sigma^ {2} \\left(H ^ {2} + \\left(x _ {n} ^ {u} - x _ {k} ^ {m}\\right) ^ {2} + \\left(y _ {n} ^ {u} - y _ {k} ^ {m}\\right) ^ {2}\\right)}\\right) \\tag {3} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            511,
+            553,
+            921,
+            652
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\sigma ^ { 2 }$ denotes the white Gaussian noise variance, and B denotes the channel bandwidth. ",
+        "bbox": [
+            503,
+            660,
+            919,
+            690
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The transmission delay between $m _ { k }$ and $u _ { n }$ for task $F _ { z } ( u _ { n } , m _ { k } )$ can be shown as ",
+        "bbox": [
+            503,
+            691,
+            921,
+            722
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {z} ^ {T} (u _ {n}, m _ {k}) = \\frac {h _ {z} (u _ {n} , m _ {k})}{\\tilde {\\nu} (u _ {n} , m _ {k})}. \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            620,
+            727,
+            919,
+            760
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Let $\\phi ( u _ { n } )$ represent the set of IoT nodes connected to $u _ { n } .$ so it follows: ",
+        "bbox": [
+            503,
+            763,
+            919,
+            792
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\bigcup_ {n = 1} ^ {N} \\phi (u _ {n}) = \\psi . \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            655,
+            797,
+            919,
+            840
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Then, the total offloading level of $u _ { n }$ can be denoted by ",
+        "bbox": [
+            504,
+            845,
+            885,
+            861
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Omega_ {n} = \\sum_ {k = 1} ^ {K} \\tilde {\\varepsilon} (m _ {k}) \\alpha_ {n, k} \\quad \\forall n = 1, 2, \\dots , N \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            573,
+            866,
+            919,
+            909
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\tilde { \\varepsilon } ( m _ { k } )$ represents the offloading level of $m _ { k }$ and $\\tilde { \\varepsilon } ( m _ { k } ) ~ \\in ~ \\tilde { e } .$ ",
+        "bbox": [
+            503,
+            915,
+            919,
+            945
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "6900 ",
+        "bbox": [
+            76,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 7, NO. 8, AUGUST 2020 ",
+        "bbox": [
+            555,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "C. Computation Model ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            70,
+            236,
+            84
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In our system, P types of resources in UAV are concerned, such as CPU, memory, hard disk, etc., Fig. 3 shows an example of task scheduling. For the task $F _ { z } ( u _ { n } , m _ { k } )$ , its ideal completion time is $t _ { z } ( u _ { n } , m _ { k } )$ , so we calculate the total execution time of task $F _ { z } ( u _ { n } , m _ { k } )$ according to ",
+        "bbox": [
+            73,
+            89,
+            491,
+            165
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {z} ^ {A} (u _ {n}, m _ {k}) = t _ {z} (u _ {n}, m _ {k}) + t _ {z} ^ {\\text { delay }} (u _ {n}, m _ {k}) \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            142,
+            170,
+            491,
+            191
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where t z $t _ { z } ^ { \\mathrm { d e l a y } } \\left( u _ { n } , m _ { k } \\right)$ delay denotes the delay time of task $F _ { z } ( u _ { n } , m _ { k } )$ . Hence, t z $t _ { z } ^ { \\mathrm { d e l a y } } \\left( u _ { n } , m _ { k } \\right)$ delay is 0 when task $F _ { z } ( u _ { n } , m _ { k } )$ is executed immediately, or more than 0 when the current processing queue of UAV is full and task needs to wait. ",
+        "bbox": [
+            73,
+            196,
+            491,
+            260
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "D. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            277,
+            246,
+            291
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In this article, we aim at optimizing the average slowdown for offloaded tasks, where the load balance for UAVs is guaranteed. Since the distribution of IoT nodes is generally nonuniform, the deployment strategy of UAVs will have a substantial impact on the performance of the MEC system. Generally, UAVs need to be as close to the IoT nodes as possible to reduce transmission cost. Furthermore, excessive load in the UAV will increase the number of tasks in the processing queue, which will increase the total processing time of the tasks and further affect the system performance. Therefore, for the multi-UAV MEC system, it is necessary to achieve load balance, in order to avoid the overall system performance degradation when some of the UAVs take too many tasks and others are free of tasks. ",
+        "bbox": [
+            73,
+            297,
+            490,
+            507
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Specifically, our problem concerns two aspects, namely, the load-balancing multi-UAV deployment and the latencyaware task scheduling on the UAVs. As for the load-balancing multi-UAV deployment, our objective is to achieve the load balance for all UAVs, where the degree of load balance can be expressed as ",
+        "bbox": [
+            73,
+            508,
+            491,
+            599
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS _ {O} (\\Omega) = \\sqrt {\\frac {1}{N} \\sum_ {i = 1} ^ {N} \\left(\\Omega_ {i} - \\overline {{\\Omega}}\\right) ^ {2}} \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            179,
+            604,
+            490,
+            654
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            75,
+            657,
+            120,
+            671
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\overline {{\\Omega}} = \\frac {1}{N} \\sum_ {i = 1} ^ {N} (\\Omega_ {i}). \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            218,
+            676,
+            490,
+            719
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Note that $S _ { O } ( \\Omega ) \\geq 0$ . Hence, the larger $S _ { O } ( \\Omega )$ is, the more nonuniform the distribution of tasks among UAVs is. Meanwhile, the average transmission cost between UAVs and IoT nodes is considered, and we aim at minimizing the average transmission cost according to (4), which can be calculated by ",
+        "bbox": [
+            73,
+            724,
+            491,
+            801
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {c} (u _ {n}, m _ {k}) = \\frac {1}{K} \\sum_ {k = 1} ^ {K} \\sum_ {n = 1} ^ {N} t _ {z} ^ {T} (u _ {n}, m _ {k}) \\alpha_ {n, k}. \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            147,
+            806,
+            490,
+            849
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "As for the latency-aware task scheduling, according to $( 7 )$ we can get the task slowdown, which can be calculated by ",
+        "bbox": [
+            75,
+            854,
+            488,
+            883
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {d} (u _ {n}, m _ {k}) = \\frac {t _ {z} ^ {A} (u _ {n} , m _ {k})}{t _ {z} (u _ {n} , m _ {k})} \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            194,
+            890,
+            490,
+            926
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $t _ { d } ( u _ { n } , m _ { k } ) \\ge 1 _ { }$ . ",
+        "bbox": [
+            75,
+            931,
+            225,
+            945
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, according to (8), (10), and (11), the load-balancing multi-UAV deployment as well as latency-aware task scheduling optimization problem can be formulated as ",
+        "bbox": [
+            503,
+            69,
+            919,
+            114
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\text { P1 }: \\min _ {(x _ {n} ^ {u}, y _ {n} ^ {u})} \\frac {1}{K} \\sum_ {k = 1} ^ {K} \\sum_ {n = 1} ^ {N} t _ {d} (u _ {n}, m _ {k}) \\alpha_ {n, k} \\\\ + \\ell_ {1} [ S _ {O} (\\Omega) ] + \\ell_ {2} [ t _ {c} (u _ {n}, m _ {k}) ] \\\\ \\text { s.t. } d (u _ {n}, m _ {k}) \\leq R _ {c} \\\\ m _ {k} \\in \\psi \\quad \\forall k = 1, 2, \\dots , K \\\\ u _ {n} \\in \\eta \\quad \\forall n = 1, 2, \\dots , N \\\\ \\alpha_ {n, k} \\in \\{0, 1 \\} \\quad \\forall k = 1, 2, \\dots , K, n = 1, 2, \\dots , N \\\\ \\sum_ {n = 1} ^ {N} \\alpha_ {n, k} = 1 \\quad \\forall k = 1, 2, \\dots , K \\tag {12} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            506,
+            123,
+            919,
+            303
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\ell _ { 1 }$ and $\\ell _ { 2 }$ denote the weight factors for load balancing requirement and average transmission cost, respectively. Specifically, $\\ell _ { 1 } = 0$ means that the influence of load balance for UAVs is not considered, and $\\ell _ { 2 } = 0$ means that the influence of average transmission cost is not considered. ",
+        "bbox": [
+            503,
+            309,
+            919,
+            385
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "IV. JOINT MULTI-UAV DEPLOYMENT AND TASK SCHEDULING OPTIMIZATION ",
+        "text_level": 1,
+        "bbox": [
+            539,
+            407,
+            885,
+            436
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In this section, we will elaborate on the proposed multi-UAV deployment algorithm and task scheduling schema. The multi-UAV deployment problem is an NP-hard problem [7]. In order to find a satisfactory solution, we propose a DE-aided multi-UAV deployment algorithm to solve this problem. Initially, all UAVs are randomly positioned, and then we assign the maximum load for each UAV based on the location of UAVs and IoT nodes. In this way, the access problem between UAVs and IoT nodes can be modeled into a GAP. After that, we use an approximation algorithm to determine all the connections between UAVs and IoT nodes. Meanwhile, a deep reinforcement learning algorithm is used to schedule tasks for incoming tasks. Finally, the near-optimal positions of UAVs are obtained through iterations of the DE algorithm. ",
+        "bbox": [
+            501,
+            441,
+            921,
+            652
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. Load Balance for UAVs ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            672,
+            691,
+            686
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Since there are total Z types of IoT nodes represented by $e ~ = ~ \\{ \\varepsilon _ { 1 } , \\varepsilon _ { 2 } , . . . , \\varepsilon _ { Z } \\}$ and the corresponding offloading level is $\\tilde { e } = \\{ \\tilde { \\varepsilon } _ { 1 } , \\tilde { \\varepsilon } _ { 2 } , \\dots , \\tilde { \\varepsilon } _ { Z } \\}$ , the total offloading level $E _ { t }$ can be formulated as ",
+        "bbox": [
+            503,
+            691,
+            919,
+            751
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {t} = \\sum_ {k = 1} ^ {K} \\tilde {\\varepsilon} (m _ {k}) \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            653,
+            758,
+            919,
+            801
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\tilde { \\varepsilon } ( m _ { k } )$ represents the offloading level of $m _ { k }$ ",
+        "bbox": [
+            503,
+            809,
+            846,
+            824
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Ideally, each UAV carries a task load of $E _ { \\mathrm { a v g } } = E _ { t } / N$ to achieve load balance. However, since the distribution of IoT nodes is generally nonuniform, balancing load for all UAVs will lead to excessive transmission consumption of these IoT nodes when some nodes are far from connected UAV, thus failing to achieve the optimization goal of (12). Hence, according to the location of all UAVs and IoT nodes, let $e l b ( u _ { n } )$ be the lower bound of the set of IoT nodes, in which the IoT nodes can only be connected to $u _ { n }$ due to the distance. The total offloading level of $e l b  ( u _ { n } )$ can be formulated as ",
+        "bbox": [
+            501,
+            824,
+            921,
+            945
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "YANG et al.: MULTI-UAV-ENABLED LOAD-BALANCE MOBILE-EDGE COMPUTING FOR IoT NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            624,
+            45
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "6901 ",
+        "bbox": [
+            893,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            69,
+            491,
+            99
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tilde {e} _ {l b} (u _ {n}) = \\sum_ {m _ {k} \\in e _ {l b} (u _ {n})} \\tilde {\\varepsilon} (m _ {k}) \\quad \\forall k = 1, 2, \\dots , K. \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            125,
+            109,
+            491,
+            143
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Similarly, let $e _ { u b } ( u _ { n } )$ be the upper bound of the set of IoT nodes which $u _ { n }$ can cover. The total offloading level of $e _ { u b } ( u _ { n } )$ can be formulated as ",
+        "bbox": [
+            73,
+            152,
+            491,
+            198
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tilde {e} _ {u b} (u _ {n}) = \\sum_ {m _ {k} \\in e _ {u b} (u _ {n})} \\tilde {\\varepsilon} (m _ {k}) \\quad \\forall k = 1, 2, \\dots , K. \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            208,
+            491,
+            242
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, let the reference load of UAV $u _ { n }$ be $\\tilde { E } ( u _ { n } )$ , we can achieve ",
+        "bbox": [
+            73,
+            253,
+            491,
+            282
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tilde {e} _ {l b} (u _ {n}) \\leq \\tilde {E} (u _ {n}) \\leq \\tilde {e} _ {u b} (u _ {n}). \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            184,
+            295,
+            491,
+            313
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Considering $E _ { \\mathrm { a v g } } , \\tilde { e } _ { l b } ( u _ { n } )$ , and $\\tilde { e } _ { u b } ( u _ { n } )$ , if $E _ { \\mathrm { a v g } } \\geq \\tilde { e } _ { u b } ( u _ { n } )$ , the best setting for $\\tilde { E } ( u _ { n } )$ is $\\tilde { E } ( u _ { n } ) = \\tilde { e } _ { u b } ( u _ { n } )$ for satisfying the total load requirement of $u _ { n }$ . Similarly if $E _ { \\mathrm { a v g } } \\leq \\tilde { e } _ { l b } ( u _ { n } )$ , the best setting for $\\tilde { E } ( u _ { n } )$ is $\\tilde { E } ( u _ { n } ) = \\tilde { e } _ { l b } ( u _ { n } )$ . In the case of $\\tilde { e } _ { l b } ( u _ { n } ) \\leq$ $E _ { \\mathrm { a v g } } \\leq \\tilde { e } _ { u b } ( u _ { n } ) , u _ { n }$ has more exclusive IoT nodes when $E _ { \\mathrm { a v g } }$ is close to $\\tilde { e } _ { l b }$ , where $\\tilde { E } ( u _ { n } )$ needs to be appropriately increased. When $E _ { \\mathrm { a v g } }$ is close to $\\tilde { e } _ { u b }$ , more IoT nodes covered with $u _ { n }$ will also be covered by other UAVs, where $\\tilde { E } ( u _ { n } )$ needs to be appropriately reduced. Hence, we can get ",
+        "bbox": [
+            73,
+            324,
+            491,
+            462
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\tilde {E} (u _ {n}) = E _ {\\text { avg }} + \\lambda_ {1} \\left(\\tilde {e} _ {u b} (u _ {n}) - E _ {\\text { avg }}\\right) \\\\ - \\lambda_ {2} \\left(E _ {\\text { avg }} - \\tilde {e} _ {l b} (u _ {n})\\right) \\\\ = (1 - \\lambda_ {1} - \\lambda_ {2}) E _ {\\mathrm{avg}} + \\lambda_ {1} \\tilde {e} _ {u b} (u _ {n}) + \\lambda_ {2} \\tilde {e} _ {l b} (u _ {n}) \\tag {17} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            89,
+            472,
+            491,
+            529
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\lambda _ { 1 }$ and $\\lambda _ { 2 }$ indicate the influence factors of $\\tilde { e } _ { u b } ( u _ { n } )$ and $\\tilde { e } _ { l b } ( u _ { n } )$ , respectively. Then, the reference load $\\tilde { E } ( u _ { n } )$ can be expressed by ",
+        "bbox": [
+            73,
+            539,
+            491,
+            585
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tilde {E} (u _ {n}) = \\left\\{ \\begin{array}{l l} \\tilde {e} _ {l b}, & E _ {\\text { avg }} \\leq \\tilde {e} _ {l b} (u _ {n}) \\\\ \\tilde {e} _ {u b}, & E _ {\\text { avg }} \\geq \\tilde {e} _ {u b} (u _ {n}) \\\\ (1 - \\lambda_ {1} - \\lambda_ {2}) E _ {\\text { avg }} + \\lambda_ {1} \\tilde {e} _ {u b} (u _ {n}) \\\\ & + \\lambda_ {2} \\tilde {e} _ {l b} (u _ {n}), \\quad \\text { otherwise. } \\end{array} \\right. \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            114,
+            594,
+            491,
+            657
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, the sum of all reference load can be expressed as $\\tilde { E } _ { t } =$ $\\textstyle \\sum _ { i = 1 } ^ { N } \\tilde { E } ( u _ { n } )$ . Sometimes, it can be aware of that a gap exists between ${ \\tilde { E } } _ { t }$ and $E _ { t }$ in the case of $\\tilde { E } _ { t } < E _ { t }$ , which needs to be filled. Hence, in the case of $\\tilde { E } _ { l b } ( u _ { n } ) \\le E _ { \\mathrm { a v g } } \\le \\tilde { E } _ { u b } ( u _ { n } )$ , we fill the gap by adding ${ \\tilde { E } } _ { \\mathrm { g a p } }$ to $\\tilde { E } ( u _ { n } )$ , and the reference load remains unchanged otherwise. Then, we have ",
+        "bbox": [
+            73,
+            667,
+            491,
+            760
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tilde {E} _ {\\text {gap}} = \\frac {E _ {t} - \\tilde {E} _ {t}}{n ^ {*}} \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            223,
+            770,
+            491,
+            804
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $n ^ { * }$ is the number of UAVs that under the case of $\\tilde { E } _ { l b } ( u _ { n } ) < E _ { \\mathrm { a v g } } < \\tilde { E } _ { u b } ( u _ { n } )$ . Finally, we rewrite (18), and get the final reference load of all UAVs ",
+        "bbox": [
+            73,
+            811,
+            491,
+            856
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tilde {E} \\left(u _ {n}\\right) = \\left\\{ \\begin{array}{l} \\tilde {e} _ {l b}, \\quad E _ {\\text {avg}} \\leq \\tilde {e} _ {l b} \\left(u _ {n}\\right) \\\\ \\tilde {e} _ {u b}, \\quad E _ {\\text {avg}} \\geq \\tilde {e} _ {u b} \\left(u _ {n}\\right) \\\\ \\left(1 - \\lambda_ {1} - \\lambda_ {2}\\right) E _ {\\text {avg}} + \\lambda_ {1} \\tilde {e} _ {u b} \\left(u _ {n}\\right) \\\\ + \\lambda_ {2} \\tilde {e} _ {l b} \\left(u _ {n}\\right) + \\tilde {E} _ {\\text {gap}}, \\quad \\text {otherwise.} \\end{array} \\right. \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            96,
+            864,
+            491,
+            943
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. GAP-Based Node Assignment ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            69,
+            732,
+            85
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this section, we aim at optimizing the node assignment among UAVs according to the reference load in the previous section. Given the known position of all UAVs, the node assignment problem can be formulated as a kind of GAP. In the GAP, both tasks and agents have sizes, where the size of each task is different with different agent [28]. ",
+        "bbox": [
+            501,
+            89,
+            921,
+            178
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this article, each UAV can be seen as an agent, and each IoT node has a kind of task. Define $w _ { n , k }$ as the cost of the task offloaded from the kth IoT node to the nth UAV, where $w _ { n , k }$ is determined only by the type of the task. As a result, $w _ { n , k } = \\tilde { \\varepsilon } ( m _ { k } )$ ). Furthermore, let $f _ { n , k }$ be the profit of the task, which is primarily affected by the distance between $u _ { n }$ and mk and the required communication traffic $h _ { z } ( u _ { n } , m _ { k } )$ . According to (4), we can get ",
+        "bbox": [
+            503,
+            179,
+            921,
+            300
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {n, k} = \\left\\{ \\begin{array}{l} \\varphi t _ {z} ^ {T} (u _ {n}, m _ {k}), d (u _ {n}, m _ {k}) \\leq R _ {c} \\\\ - \\infty , d (u _ {n}, m _ {k}) > R _ {c} \\end{array} \\right. \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            578,
+            305,
+            919,
+            339
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\varphi > 0$ denotes the influence factor. In general, the closer the distance between $u _ { n }$ and $m _ { k }$ , the bigger the $f _ { n , k }$ is. When the distance between $u _ { n }$ and $m _ { k }$ exceeds the service radius $R _ { c } ,$ , $f _ { n , k }$ will close to −∞. ",
+        "bbox": [
+            501,
+            343,
+            919,
+            402
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In order to maximize the total profit, we formulated this assignment problem as a integer-programming (IP) problem, which can be written as ",
+        "bbox": [
+            503,
+            404,
+            921,
+            448
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathrm{P2}: \\min _ {x _ {n, k}} \\sum_ {n = 1} ^ {N} \\sum_ {k = 1} ^ {K} - f _ {n, k} x _ {n, k} \\\\ \\text { s.t. } \\sum_ {k = 1} ^ {K} w _ {n, k} x _ {n, k} \\leq \\tilde {E} (u _ {n}) \\quad \\forall n = 1, 2, \\dots , N \\\\ \\sum_ {n = 1} ^ {N} x _ {n, k} = 1 \\quad \\forall k = 1, 2, \\dots , K \\\\ x _ {n, k} \\in \\{0, 1 \\} \\quad \\forall n = 1, 2, \\dots , N, k = 1, 2, \\dots , K. \\tag {22} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            509,
+            452,
+            921,
+            619
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Since the problem P2 is a GAP, problem P2 is NP-hard. Here, we propose an approximate algorithm to find its nearoptimal solution, which is described as three steps. ",
+        "bbox": [
+            503,
+            626,
+            919,
+            671
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Step 1) Linear Programming (LP) Relaxation: Convert the IP problem into the following LP relaxation: ",
+        "bbox": [
+            519,
+            671,
+            921,
+            702
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathrm{P3}: \\min _ {x _ {n, k}} \\sum_ {n = 1} ^ {N} \\sum_ {k = 1} ^ {K} - f _ {n, k} x _ {n, k} \\\\ \\text { s.t. } \\sum_ {k = 1} ^ {K} w _ {n, k} x _ {n, k} \\leq \\tilde {E} (u _ {n}) \\quad \\forall n = 1, 2, \\dots , N \\\\ \\sum_ {n = 1} ^ {N} x _ {n, k} = 1 \\quad \\forall k = 1, 2, \\dots , K \\\\ x _ {n, k} \\geq 0 \\quad \\forall n = 1, 2, \\dots , N, k = 1, 2, \\dots , K. \\tag {23} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            576,
+            705,
+            921,
+            862
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, solving this LP gives us a fractional solution. Step 2) Bipartite Graph Construction: Convert the fractional solution to a bipartite graph with fractional edge weights where one side represents IoT nodes and the other side represents slots in UAVs. Define a bipartite graph $C = ( \\hat { K } , \\hat { B } )$ , where $\\hat { K } = [ K ]$ and $\\hat { B } ~ = ~ \\{ ( n ^ { \\prime } , s ^ { \\prime } ) | n ^ { \\prime } ~ \\in ~ [ N ] , s ^ { \\prime } ~ \\in ~ [ s _ { n } ^ { \\prime } ] \\}$ . We illustrate the edges in the bipartite graph by only looking at the case $n ^ { \\prime } = 1$ . For $n ^ { \\prime } \\ = \\ 1 ,$ consider only the IoT node $m _ { k }$ such that $x _ { 1 , k } > 0$ and assume this is [K] without loss of generality. Assume that $f _ { 1 , 1 } \\geq f _ { 1 , 2 } \\geq \\cdot \\cdot \\cdot f _ { 1 , K }$ and sort them if necessary. For each $k ^ { \\prime } \\in [ K ] .$ , we track the partial sum $\\scriptstyle \\sum _ { k = 1 } ^ { k ^ { \\prime } } x _ { 1 , k } .$ . $\\begin{array} { r } { \\mathrm { I f } \\sum _ { k = 1 } ^ { k ^ { \\prime } } x _ { 1 , k } \\le s ^ { \\prime } . } \\end{array}$ k , and $\\begin{array} { r } { \\sum _ { k = 1 } ^ { k ^ { \\prime } - 1 } x _ { 1 , k } \\geq s ^ { \\prime } - \\bar { 1 } } \\end{array}$ , then add $( k ^ { \\prime } , ( 1 , s ^ { \\prime } ) )$ $x _ { 1 , k ^ { \\prime } }$ Otherwise, if then add an $\\textstyle \\sum _ { k = 1 } ^ { k ^ { \\prime } } x _ { 1 , k } > s ^ { \\prime } ,$ $\\begin{array} { r } { \\sum _ { k = 1 } ^ { k ^ { \\prime } - 1 } x _ { 1 , k } < s ^ { \\prime } , } \\end{array}$ an edge edge $( k ^ { \\prime } , ( 1 , s ^ { \\prime } - 1 ) )$ $( k ^ { \\prime } , ( 1 , s ^ { \\prime } ) )$ with weight with weight $s ^ { \\prime } - \\sum _ { k = 1 } ^ { k ^ { \\prime } - 1 } x _ { 1 , k }$ $\\scriptstyle \\sum _ { k = 1 } ^ { k ^ { \\prime } } x _ { 1 , k } - s ^ { \\prime }$ and . ",
+        "bbox": [
+            519,
+            869,
+            921,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "6902 ",
+        "bbox": [
+            76,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 7, NO. 8, AUGUST 2020 ",
+        "bbox": [
+            555,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            145,
+            68,
+            491,
+            275
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Step 3) Deterministic Rounding: Note that the bipartite graph is a fractional min-cost perfect matching of the underlying cost function $C ( k ^ { \\prime } , ( n ^ { \\prime } , s ^ { \\prime } ) ) = - f _ { n , k } .$ It can be shown that all extreme points of the polytope are integral. Through finding a cycle or augmenting path in the previous bipartite graph, we can convert the fractional solution into an integral one within polynomial time, without increasing the objective value. Call all the edges with weight in the range (0, 1) unsaturated and {0, 1} saturated. We represent an iterative method such that after one loop, the number of unsaturated edges decreases by at least 1, and the sum of weights attached to a left vertex is preserved as 1. Since at the end there is no unsaturated edge left and each left vertex is attached to edges with weights summing up to 1, each left vertex is mapped to a right vertex via the unique edge with weight 1. We will see shortly that this map is also injective, proving that it is a perfect matching on the left side. Consider the following two cases. ",
+        "bbox": [
+            91,
+            276,
+            491,
+            590
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Case 1: If there is a cycle of unsaturated edges, color them by blue and red alternately. By increasing the weights of all red edges by a small amount δ and decreasing the weights of blue ones by δ, no LP constraints are violated provided that δ is sufficiently small. We can thus move δ toward that direction until one of the red edges comes to 1 or one of the blue edges comes to 0. Either way, we decreased the number of unsaturated edges by at least 1. ",
+        "bbox": [
+            91,
+            592,
+            491,
+            742
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Case 2: Call a vertex single if it is only attached to a unsaturated edge, then the weight on the vertex is easily seen as equal to the weight of the edge. Note that no left vertex can be single since they all have weight exactly 1. Suppose now there is no cycle of unsaturated edge left, then each maximum path of unsaturated edge must start and end at single vertices. Choose a maximum path and color the edges by blue and red alternatively. Similar to case 1, perturbing the weight of all blue and red edges by a small amount δ does not violate any of the LP constraints, and we can freely move δ until one red edge reaches 1 or one blue edge reaches 0. It should be noted that, after deterministic rounding, ",
+        "bbox": [
+            91,
+            743,
+            491,
+            954
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "the actual offloading level of a few UAVs may be slightly higher than the reference load, but it will not cause negative effects because it will not exceed the maximum processing capacity of the UAV. ",
+        "bbox": [
+            576,
+            69,
+            921,
+            131
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "C. Deep-Reinforcement-Learning-Aided Task Scheduling ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            147,
+            888,
+            162
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In this section, we study the task scheduling scheme for incoming tasks relying on the DRL algorithm. The DRL combines deep learning and reinforcement learning in order to achieve end-to-end learning from perception to action. The agent, first of all, senses the state from the environment and then performs an action. The environment may move to another state with time. At the same time, the agent can obtain feedback according to the reward function. It can be seen that DRL is a model of human–environment interaction [29]–[31]. It can be seen that DRL is a model of human–environment interaction. The Q-learning algorithm is a classical reinforcement learning algorithm, and it can find the near-optimal action by interacting with the environment. Moreover, for the step t, the states can be represented as $S _ { t } ,$ and the the policy space can be defined as $\\pi ,$ , then the accumulated rewards $V ^ { \\pi } ( S _ { t } )$ can be calculated as ",
+        "bbox": [
+            501,
+            166,
+            921,
+            406
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV ^ {\\pi} (S _ {t}) = R _ {t} + \\gamma R _ {t + 1} + \\gamma^ {2} R _ {t + 2} + \\dots \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            580,
+            414,
+            919,
+            431
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $R _ { t }$ is the instant reward in step t, and $\\gamma ( 0 < \\gamma < 1 )$ represents the discount factor, which reflects the influence of the future reward. In Q-learning algorithm, the Q-value is the function of states $S _ { t }$ and action $A _ { t } ,$ which can be formulated as ",
+        "bbox": [
+            501,
+            439,
+            921,
+            500
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {t} (S _ {t}, A _ {t}) = R _ {t} + \\gamma V ^ {\\pi} (S _ {t + 1}). \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            606,
+            507,
+            919,
+            525
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Q-learning is a kind of algorithm with the iteration of value. Since we can only get a limited series of samples and only limited samples can be used for operation, we update the Q-value according to ",
+        "bbox": [
+            503,
+            531,
+            919,
+            590
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} Q _ {t + 1} (S _ {t}, A _ {t}) = (1 - \\vartheta) Q _ {t} (S _ {t}, A _ {t}) \\\\ + \\vartheta \\big [ R _ {t} + \\gamma \\max Q _ {t} (S _ {t + 1}, A _ {t + 1}) \\big ] \\tag {26} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            549,
+            599,
+            919,
+            636
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where the learning rate $\\vartheta \\ : \\left( 0 < \\vartheta < 1 \\right)$ controls the learning speed. ",
+        "bbox": [
+            503,
+            642,
+            919,
+            670
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Deep Q-network (DQN) combines convolutional neural network (CNN) with Q-learning, which uses the target function of Q-learning to construct deep learning tags [32]. In addition, DQN uses an experience replay mechanism to solve data correlation problems. At the same time, a CNN (MainNet) is used to generate the current Q-value, and another CNN (Target) is used to generate the Target Q-value. Furthermore, the loss function of DQN can be given by ",
+        "bbox": [
+            501,
+            672,
+            921,
+            792
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL (\\theta) = E \\left[ \\left(\\mathrm{Q} ^ {T} - Q (S _ {t}, A _ {t}; \\theta)\\right) ^ {2} \\right] \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            797,
+            919,
+            824
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where the target function $Q ^ { T }$ can be formulated as ",
+        "bbox": [
+            503,
+            830,
+            849,
+            845
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ ^ {T} = R _ {t} + \\gamma \\max Q (S _ {t + 1}, A _ {t + 1}; \\theta) \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            589,
+            852,
+            919,
+            869
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where θ is the parameter of the neural network. ",
+        "bbox": [
+            503,
+            877,
+            830,
+            892
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In this article, we exploit the DRL algorithm shown as Algorithm 1 to solve the task scheduling problem, for the sake of minimizing the average slowdown of tasks in UAVs. Considering that a set of $\\phi ( u _ { n } )$ IoT nodes have been accessed ",
+        "bbox": [
+            503,
+            893,
+            921,
+            952
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "YANG et al.: MULTI-UAV-ENABLED LOAD-BALANCE MOBILE-EDGE COMPUTING FOR IoT NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            624,
+            45
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6903 ",
+        "bbox": [
+            893,
+            35,
+            919,
+            44
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 1 DRL-Based Task Scheduling ",
+        "text_level": 1,
+        "bbox": [
+            76,
+            66,
+            366,
+            82
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Input: states, S; maximum number of iteration, $t _ { m a x } ;$ ",
+        "bbox": [
+            76,
+            84,
+            439,
+            99
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Output: action-value function, Q(S, A); ",
+        "bbox": [
+            76,
+            99,
+            349,
+            113
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1: initialize action-value function Q with random weights; ",
+            "2: for $t = 1 ; t < t _ { m a x } ; t + +$ do: ",
+            "3: divide step t into $b _ { t }$ sub-steps; ",
+            "4: select a random sub-action in each sub-step, and all sub-actions make up action $a _ { t } ;$ ",
+            "5: execute action $^ { a _ { t } , }$ then obtain the reward $r _ { t } ,$ and arrive at the next state $s _ { t + 1 } ;$ ",
+            "6: calculate target Q-value according to Eq. (28); ",
+            "7: update the deep Q-network by minimizing the loss $L _ { \\theta }$ according to Eq. (27); ",
+            "8: end for "
+        ],
+        "bbox": [
+            84,
+            114,
+            478,
+            277
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "to the nth UAV according to (5), three key factors of the DQN are given as follows. ",
+        "bbox": [
+            73,
+            325,
+            491,
+            354
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) State Space: The resources states of UAV include the current allocated computing resources and the required computing resources of the possible scheduled tasks as shown in Fig. 3. We assume that the resource demand of task $F _ { z } ( u _ { n } , m _ { k } ) = [ c _ { z } ( u _ { n } , m _ { k } ) , t _ { z }$ $( u _ { n } , m _ { k } ) , ~ h _ { z } ( u _ { n } , m _ { k } ) ]$ is given, where $c _ { z } ( u _ { n } , \\ m _ { k } ) \\ =$ $[ c _ { z , 1 } ( u _ { n } , \\ m _ { k } ) , c _ { z , 2 } \\ \\left( u _ { n } , m _ { k } \\right) , \\ldots , c _ { z , p } ( u _ { n } , \\ m _ { k } ) ]$ and the $c _ { z , p } ( u _ { n } , m _ { k } ) , p = 1 , 2 , . . . , P$ indicates the pth type of resources. Furthermore, the current allocated computing resources of the nth UAV are $G _ { n , z }$ . Hence, the system states with total N UAVs can be given by $\\bar { \\Gamma } ~ = ~ [ S _ { 1 } ^ { S } , S _ { 2 } ^ { S } , \\ldots , S _ { n } ^ { S } , n ~ = ~ 1 , 2 , \\ldots , N ] .$ , where $S _ { n } ^ { S } ~ =$ $\\{ \\bigcup _ { k = 1 } ^ { K } F _ { z } ( u _ { n } , m _ { k } ) \\alpha _ { n , k } , G _ { n , z } , z = 1 , 2 , \\ldots , Z \\}$ . "
+        ],
+        "bbox": [
+            89,
+            356,
+            491,
+            553
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "2) Action Space: Assuming in the tth step, a number of $M _ { n , t }$ tasks are queued in the nth UAV. Then, the size of the action space in the nth UAV can be represented by $2 ^ { M _ { n , t } }$ , which make challenges on the DRL. In order to simplify the action space, we redefine the action space as $A _ { n , t } = \\{ \\emptyset , 1 , 2 , \\dots , M _ { n , t } \\}$ , and divide each step into $b _ { n , t }$ substeps, where $b _ { n , t }$ denotes the total number of subactions that will be scheduled in the tth step. Then, in each substep, only one subaction will be scheduled, and the size of the action space is reduced to M+1. Since a task is scheduled in the cluster as shown in Fig. 3, this task will be removed from the waiting queue. The agent then observes a state transition, where the scheduled task is moved to the appropriate position. Once the agent picks ∅ or an invalid subaction, it indicates that the agent does not wish to schedule further tasks in the current step, and the time actually proceeds, in other words, go to the next step t + 1. ",
+        "bbox": [
+            91,
+            554,
+            491,
+            824
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3) Reward: The reward function is designed for directing the agent to minimize the average slowdown in the UAVs. Specifically, we set the reward in each timestep as $\\textstyle \\sum _ { M _ { n } } [ - 1 / ( t _ { \\zeta } ( u _ { n } , m _ { k } ) ) ]$ , where $M _ { n }$ is the set of tasks currently in the nth UAV. ",
+        "bbox": [
+            91,
+            824,
+            491,
+            898
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "As for the complexity of our proposed DRL-aided task scheduling algorithm, in the training process, the time complexity is $O ( E * D / B * T )$ , which mainly depends on the CNN training complexity of DQN, where E represents the epochs, D denotes the data set size, B denotes the batch size, and T represents the time complexity of a single iteration. Moreover, the execution time complexity of the algorithm is O(n) relying on it is mainly matrix operation. ",
+        "bbox": [
+            73,
+            900,
+            491,
+            946
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            69,
+            921,
+            146
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "D. Differential-Evolution-Based Multi-UAV Deployment ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            162,
+            883,
+            178
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "DE is a random model that simulates biological evolution. Through repeated iterations, the populations who are adapted to the environment are preserved. In this article, the dimension of each population is 2N, which is twice as much as the number of UAVs. Let $X _ { d } ( i ) , d = 1 , 2 , \\dotsc , D$ indicate the deployment location of the ith generation of UAVs, where D is the total number of populations. At the beginning of the algorithm, we randomly determine the deployment position of UAVs in all populations as $X _ { d } ( 1 ) , d = 1 , 2 , \\dotsc , D$ . In the gth iteration, each population $X _ { d } ( g )$ mutates and generates a mutation vector $H _ { d } ( g )$ by randomly selecting three other populations from the generation, for example, $X _ { d a } ( g ) , X _ { d b } ( g )$ , and $X _ { d c } ( g )$ while da $\\neq$ db $\\neq d c \\neq d .$ Then, we have ",
+        "bbox": [
+            501,
+            181,
+            921,
+            378
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nH _ {d} (g) = X _ {d a} (g) + \\xi (X _ {d b} (g) - X _ {d c} (g)) \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            578,
+            387,
+            919,
+            404
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\xi$ indicates the factor used to control the influence of difference vectors. Then, the crossover vector $V _ { d } ( g )$ can be caculated by ",
+        "bbox": [
+            501,
+            411,
+            921,
+            455
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI _ {d} (g) = \\left\\{ \\begin{array}{l l} H _ {d} (g), & \\text { rand } (0, 1) <   P _ {c r} \\\\ X _ {d} (g), & \\text { else } \\end{array} \\right. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            584,
+            463,
+            919,
+            496
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $P _ { c r }$ is the crossover probability. Finally, according to the value of fitness function, we select the best population between crossover vector $V _ { d } ( g )$ and the original vector $X _ { d } ( g )$ as the next generation, which can be formulated as ",
+        "bbox": [
+            501,
+            501,
+            919,
+            561
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {d} (g + 1) = \\left\\{ \\begin{array}{l} I _ {d} (g), f (I _ {d} (g)) > f (X _ {d} (g)) \\\\ X _ {d} (g), \\text { else }, \\end{array} \\right. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            565,
+            566,
+            919,
+            601
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where function f (∗) is the objective function of (12). ",
+        "bbox": [
+            503,
+            606,
+            866,
+            621
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "According to the characteristics of DE, after a certain number of iterations, we can get the converged populations, from which we can get the near-optimal deployment of all UAVs. As for the complexity of our proposed DE-based multi-UAV deployment algorithm, in each decision round, we have to update the generation of each population according to (31). Hence, the complexity of each decision round is on the order of O(n). The flow of our proposed DE-based multi-UAV deployment algorithm is shown in Algorithm 2. ",
+        "bbox": [
+            501,
+            622,
+            921,
+            758
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "V. SIMULATION RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            620,
+            775,
+            805,
+            789
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In our simlulations, a 400 × 400-m rectangular area is considered, where the ground IoT nodes are randomly distributed. The channel bandwidth is B = 1 MHz and the transmission power is $\\tilde { p } = 0 . 5 \\mathrm { ~ W } .$ . The variance of the white Gaussian noise is $\\sigma ^ { 2 } = \\bar { 5 } \\times 1 0 ^ { - 1 5 }$ . All UAVs fly at a fixed altitude $H = 1 0 0$ m with a maximum coverage $R _ { c } = 1 0 0 \\mathrm { m }$ . The channel gain is set as $\\beta _ { 0 } = \\eta _ { l o s } ( 4 \\pi f / c ) ^ { 2 }$ , where $\\eta _ { \\mathrm { l o s } } = 1$ is the attenuation factor corresponding of LOS [33], the carrier frequency is $f = 2 . 4$ GHz, and c is the velocity of light. There are total 100 IoT nodes and five UAVs. ",
+        "bbox": [
+            501,
+            794,
+            921,
+            944
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "6904 ",
+        "bbox": [
+            76,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 7, NO. 8, AUGUST 2020 ",
+        "bbox": [
+            553,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            120,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 2 DE-Based Multi-UAV Deployment ",
+        "text_level": 1,
+        "bbox": [
+            76,
+            66,
+            406,
+            83
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Input: the set of (IoT nodes), φ; objective function; the number of UAVs, N; maximum number of iteration, lmax; ",
+        "bbox": [
+            76,
+            85,
+            491,
+            114
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Output: deployment of UAVs, $[ x _ { n } ^ { u } , y _ { n } ^ { u } ] , n = 1 , 2 , . . . , N ;$ best IoT node assignment, φ(u(n)); ",
+        "bbox": [
+            76,
+            114,
+            491,
+            143
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1: randomly initialize populations $X _ { d } ( 1 )$ ; ",
+            "2: for $i = 1 ; i < l _ { m a x } ; i + + { \\bf d o } \\mathrm { . }$ ",
+            "3: obtain mutation populations through differential strategy according to Eq. (29); ",
+            "4: obtain crossover populations according to Eq. (30); ",
+            "5: determine reference load for multiple UAVs according to Eq. (20); ",
+            "6: get the fractional solution of node assignment problem in Eq. (23); ",
+            "7: construct the bipartite graph based on the fractional solution; ",
+            "8: deterministic round the fractional solution; ",
+            "9: find the optimal task scheduling scheme according to Algorithm 1; ",
+            "10: calculate the fitness for all populations according to the objective function of Eq. (12); ",
+            "11: get the next generation of DE according to Eq. (31); ",
+            "12: end for "
+        ],
+        "bbox": [
+            84,
+            145,
+            491,
+            414
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/1c85ffccea654ac9c370e920d0a062287e65d5ee0d4439af2eef3447fb0be694.jpg",
+        "content": "| Node       | X-axis (m) | Y-axis (m) |\n|------------|------------|------------|\n| IoT node   | ~100       | ~230       |\n| UAV_1      | ~170       | ~130       |\n| UAV_2      | ~150       | ~250       |\n| UAV_3      | ~280       | ~260       |\n| UAV_4      | ~290       | ~160       |\n| UAV_5      | ~230       | ~180       |",
+        "chart_caption": [
+            "Fig. 4. Simulation result of the multi-UAV deployment in the context of N = 5 and K = 100. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            76,
+            431,
+            488,
+            670
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 shows an example of near-optimal result for the multi-UAV deployment. There are some different colors of UAVs, and the smaller pointers indicate the IoT nodes while each IoT node is connected to the UAV of the same color. Explicitly, given a total of N = 5 UAVs and K = 100 IoT nodes, we arrive at a near-optimal multi-UAV deployment strategy associated with the coordinates of [171.41, 126.49], [149.50, 245.87], [270.68, 253.43], [284.26, 152.94], and [227.91, 181.27] for each UAV. ",
+        "bbox": [
+            73,
+            733,
+            490,
+            868
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "As for the task scheduling, we use a neural network to construct our deep Q-learning network with a learning rate of 0.0025. The task generation of IoT nodes follows the Poisson distribution while the arrival rate is λ. There is a total of three kinds of tasks and two kinds of resources required for each task in the system. Meanwhile, the ideal completion time and resource requirement of each task are randomly generated from [1, 15] and [1, 10]. Figs. 5 and 6 plot the reward and the average slowdown, respectively, at each iteration. As expected, both values increase with iterations improve. It clearly shows in Fig. 5 that as the iterations increase, the total reward of DRL will gradually get bigger and converge to an ideal value. Fig. 6 shows that as the iterations increase, UAVs have learned to better schedule incoming tasks, so the average slowdown will gradually approach the minimum value. Figs. 7 and 8 indicate the influence of the quantity of tasks on the scheduling performance of UAVs. Since the task generation of IoT nodes follows the Poisson distribution, we can obtain that with the increase of the task arrival rate, the average slowdown increases and reward decreases owing to the limited processing capability of each UAV. ",
+        "bbox": [
+            73,
+            869,
+            491,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/34f4c60838532813fbc48174f611cf8a25ca29fdaad90de1938a8c55b3b72b77.jpg",
+        "content": "| Number of epochs | UAV_1  | UAV_2  | UAV_3  | UAV_4  | UAV_5  |\n| ----------------- | ------ | ------ | ------ | ------ | ------ |\n| 0                 | -75    | -98    | -100   | -100   | -85    |\n| 5                 | -50    | -60    | -70    | -70    | -65    |\n| 10                | -45    | -55    | -55    | -60    | -55    |\n| 15                | -45    | -50    | -50    | -55    | -50    |\n| 20                | -40    | -50    | -45    | -55    | -45    |\n| 25                | -38    | -50    | -45    | -55    | -42    |\n| 30                | -38    | -48    | -42    | -55    | -40    |\n| 35                | -38    | -48    | -42    | -55    | -38    |\n| 40                | -38    | -48    | -40    | -55    | -36    |\n| 45                | -32    | -48    | -38    | -55    | -36    |\n| 50                | -32    | -48    | -38    | -55    | -36    |",
+        "chart_caption": [
+            "Fig. 5. Reward for task scheduling the UAV network. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            526,
+            64,
+            898,
+            277
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/b8b28724e25107b8f359c0e9022054069fc280500a66d8cdc0cff61d436851f2.jpg",
+        "content": "| Number of epochs | UAV_1 | UAV_2 | UAV_3 | UAV_4 | UAV_5 |\n| ----------------- | ----- | ----- | ----- | ----- | ----- |\n| 0                 | 5.7   | 6.9   | 6.8   | 6.8   | 6.2   |\n| 5                 | 3.7   | 4.3   | 4.1   | 4.9   | 4.2   |\n| 10                | 3.2   | 4.0   | 3.6   | 4.2   | 3.9   |\n| 15                | 3.2   | 3.9   | 3.4   | 3.8   | 3.6   |\n| 20                | 2.9   | 3.6   | 3.3   | 3.6   | 3.3   |\n| 25                | 2.8   | 3.5   | 3.4   | 3.7   | 3.1   |\n| 30                | 2.8   | 3.4   | 3.2   | 3.7   | 3.0   |\n| 35                | 2.7   | 3.4   | 3.2   | 3.7   | 2.9   |\n| 40                | 2.6   | 3.4   | 3.1   | 3.7   | 2.8   |\n| 45                | 2.4   | 3.4   | 3.0   | 3.7   | 2.7   |\n| 50                | 2.5   | 3.4   | 3.0   | 3.6   | 2.6   |",
+        "chart_caption": [
+            "Fig. 6. Average slowdown of offloaded tasks of the UAV network. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            315,
+            890,
+            529
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            582,
+            919,
+            824
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "We compare our proposed DRL-aided task scheduling algorithm against three classic task scheduling algorithms, i.e., first-come-first-serve (FCFS) algorithm, shortest job first (SJF) algorithm, and round robin (RR) algorithm, as shown in Fig. 9. Specifically, SJF schedules the smaller tasks first in comparison to both FCFS and RR. The performance of the RR algorithm largely depends on the choice of the length of the time quantum. If the time slot is longer, it tends to exhibit the same behavior as FCFS. However, if the time slot is shorter than it needed, more task switching can reduce the efficiency of task scheduling. In contrast, the DRL-aided task scheduling algorithm can learn from experience and can reserve the network resources. Hence, the recent arriving small tasks can be dealt with at once, and the average slowdown is minimized. ",
+        "bbox": [
+            501,
+            824,
+            921,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "YANG et al.: MULTI-UAV-ENABLED LOAD-BALANCE MOBILE-EDGE COMPUTING FOR IoT NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            624,
+            45
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "6905 ",
+        "bbox": [
+            893,
+            35,
+            919,
+            44
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/a963a51304f9a386adc994200e7903442b3ee2319e328f3c5f448407ca233f55.jpg",
+        "content": "| Possion arrival rate | UAV_1 | UAV_2 | UAV_3 | UAV_4 | UAV_5 |\n| -------------------- | ----- | ----- | ----- | ----- | ----- |\n| 0.3                  | 1.8   | 1.6   | 1.7   | 1.6   | 1.5   |\n| 0.5                  | 2.5   | 2.6   | 2.3   | 2.4   | 2.5   |\n| 0.7                  | 2.5   | 3.4   | 3.0   | 3.2   | 2.7   |\n| 0.9                  | 4.2   | 3.7   | 3.8   | 3.5   | 3.5   |",
+        "chart_caption": [
+            "Fig. 7. Average slowdown versus Possion arrival rates in the context of $\\lambda \\overset { \\smile } { = } ( 0 . 3 , 0 . 5 , 0 . \\breve { 7 } , 0 . 9 )$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            101,
+            64,
+            472,
+            277
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/2988fc37c2e59cfbaea2d8e153934ea729677208a967f8b81238b3585ce40fb2.jpg",
+        "content": "| UAVs   | (l₁,l₂)=(0.06,0.0015) | (l₁,l₂)=(0.03,0.0015) | (l₁,l₂)=(0.09,0.0015) | (l₁,l₂)=(0.06,0.00075) | (l₁,l₂)=(0.06,0.00225) |\n|--------|------------------------|------------------------|------------------------|-------------------------|-------------------------|\n| UAV_1  | 2.2                    | 2.55                   | 2.85                   | 2.6                     | 2.65                    |\n| UAV_2  | 2.3                    | 2.7                    | 2.95                   | 2.9                     | 2.7                     |\n| UAV_3  | 2.5                    | 2.75                   | 3.0                    | 3.05                    | 2.75                    |\n| UAV_4  | 3.0                    | 3.0                    | 3.15                   | 3.15                    | 2.85                    |\n| UAV_5  | 3.05                   | 3.35                   | 3.25                   | 3.2                     | 2.95                    |",
+        "chart_caption": [
+            "Fig. 10. Average slowdown versus weight factors $( \\ell _ { 1 } , \\ell _ { 2 } )$ for the DE algorithm. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            531,
+            64,
+            897,
+            277
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f3c7f976024c2aec38b59e0bf0002fd4907e220593cd305b3ab33cc44f1aa399.jpg",
+        "content": "| Possion arrival rate | UAV_1  | UAV_2  | UAV_3  | UAV_4  | UAV_5  |\n| -------------------- | ------ | ------ | ------ | ------ | ------ |\n| 0.3                  | -10.0  | -10.0  | -10.0  | -10.0  | -10.0  |\n| 0.5                  | -25.0  | -25.0  | -25.0  | -25.0  | -25.0  |\n| 0.7                  | -35.0  | -40.0  | -40.0  | -50.0  | -35.0  |\n| 0.9                  | -75.0  | -60.0  | -65.0  | -60.0  | -60.0  |",
+        "chart_caption": [
+            "Fig. 8. Reward versus Possion arrival rates in the context of λ = (0.3, 0.5, 0.7, 0.9). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            98,
+            330,
+            472,
+            542
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/18915a3248c14e774ed52e935d9c93da70c73dd7a06521726d639e71e264026a.jpg",
+        "content": "| UAVs  | (I₁,I₂)=(0.06.0.0015) | (I₁,I₂)=(0.03.0.0015) | (I₁,I₂)=(0.09.0.0015) | (I₁,I₂)=(0.06.0.00075) | (I₁,I₂)=(0.06.0.00225) |\n|-------|------------------------|------------------------|------------------------|-------------------------|-------------------------|\n| UAV_1 | -45.0                  | -50.0                  | -48.0                  | -49.0                   | -44.0                   |\n| UAV_2 | -40.0                  | -43.0                  | -46.0                  | -46.0                   | -40.0                   |\n| UAV_3 | -33.0                  | -36.0                  | -44.0                  | -43.0                   | -36.0                   |\n| UAV_4 | -29.0                  | -35.0                  | -42.0                  | -40.0                   | -36.0                   |\n| UAV_5 | -27.0                  | -33.0                  | -41.0                  | -35.0                   | -36.0                   |",
+        "chart_caption": [
+            "Fig. 11. Reward versus weight factors $( \\ell _ { 1 } , \\ell _ { 2 } )$ for the DE algorithm. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            527,
+            327,
+            897,
+            539
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0a96231ece79ef3a5aac6762796781fa8f18f8c7b9a652a7ed2f166a4b28bef1.jpg",
+        "content": "| UAVs   | DRL  | FCFS | SJF  | RR   |\n| ------ | ---- | ---- | ---- | ---- |\n| UAV_1  | 2.5  | 10.3 | 2.8  | 4.5  |\n| UAV_2  | 3.0  | 9.2  | 3.5  | 4.6  |\n| UAV_3  | 3.0  | 13.7 | 4.6  | 7.3  |\n| UAV_4  | 3.5  | 12.7 | 5.0  | 7.0  |\n| UAV_5  | 3.5  | 14.0 | 4.8  | 5.9  |",
+        "chart_caption": [
+            "Fig. 9. Average slowdown comparison among DRL, FCFS, SJF, and RR. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            102,
+            595,
+            465,
+            808
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            854,
+            491,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Figs. 10 and 11 show the influence of different weight factors $\\ell _ { 1 }$ and $\\ell _ { 2 }$ according to (12). Since $\\ell _ { 1 }$ and $\\ell _ { 2 }$ denote the weight factors for load-balancing requirement and average transmission cost, respectively, appropriate $\\ell _ { 1 }$ and $\\ell _ { 2 }$ will give the MEC system better performance. It can be seen in Figs. 10 and 11 that, when $\\ell _ { 1 } = 0 . 0 6$ and $\\ell _ { 2 } = 0 . 0 0 1 5$ , it will get the best overall performance in our system. Furthermore, whether $\\ell _ { 1 }$ and $\\ell _ { 2 }$ are too small or too large, the average slowdown will increase and the reward will decrease. This is because, underestimating $\\ell _ { 1 }$ will lead to an unbalanced load among UAVs while sometimes some MEC nodes cannot meet the QoS requirements, as well as overestimating $\\ell _ { 1 }$ will lead to an increase in transmission cost of UAVs. In the same way, underestimating $\\ell _ { 2 }$ will result in high transmission cost, and overestimating $\\ell _ { 2 }$ will result in an unbalanced load. ",
+        "bbox": [
+            501,
+            583,
+            921,
+            808
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 12 shows the comparison to the classic genetic algorithm (GA) and particle swarm optimization (PSO) in Algorithm 2. In the DE, the population size is 10, and the crossover probability as well as the mutation probability of DE are set as 0.7 and 0.2, respectively. In the PSO, the particle number is 10, which is the same as DE. Moreover, the weight factors of velocity, best position, and globally optimal position are 0.2, 0.5, and 0.5, respectively. In the GA, the population size is 64, and one population is eliminated per generation, where the crossover probability as well as the mutation probability are the same as DE. Obviously, as iterations increase, the DE algorithm has the best fitness in comparison to the other two algorithms. ",
+        "bbox": [
+            501,
+            809,
+            921,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "6906 ",
+        "bbox": [
+            76,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 7, NO. 8, AUGUST 2020 ",
+        "bbox": [
+            555,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/09ddf8df99ff5605c8f8d4159a4ae17e6f25d8eaed5101c7a25e112844292929.jpg",
+        "content": "| Iterations | DE    | PSO   | GA    |\n| ---------- | ----- | ----- | ----- |\n| 0          | -5.7  | -7.4  | -8.5  |\n| 5          | -5.7  | -6.0  | -6.8  |\n| 10         | -5.6  | -5.8  | -6.3  |\n| 15         | -5.4  | -5.5  | -6.0  |\n| 20         | -5.3  | -5.4  | -5.7  |\n| 25         | -5.1  | -5.3  | -5.6  |\n| 30         | -5.0  | -5.2  | -5.4  |\n| 35         | -4.9  | -5.1  | -5.3  |\n| 40         | -4.8  | -5.0  | -5.0  |\n| 45         | -4.7  | -4.9  | -4.9  |\n| 50         | -4.6  | -4.8  | -4.8  |",
+        "chart_caption": [
+            "Fig. 12. Fitness comparison among DE, PSO, and GA. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            98,
+            65,
+            472,
+            277
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            330,
+            491,
+            391
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "VI. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            217,
+            415,
+            349,
+            429
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The development of the UAV technology has provided a new solution for the task offloading of IoT devices. Compared with fixed ground base stations, UAVs can approach ground IoT devices efficiently due to its easy deployment, low cost, and feasible mobility. In this article, we aim for designing a multiple UAVs-aided MEC system with the goal of global load balance and slowdown minimization. We introduced the DE algorithm to search for near-optimal locations of UAVs. Besides, the GAP-aided approximation algorithm is conceived to determine each connection between UAV and IoT nodes. Moreover, a DRL-based task scheduling scheme is used to schedule offloaded tasks effectively. Finally, simulation results verify the effectiveness and superiority of our proposed algorithm. ",
+        "bbox": [
+            73,
+            434,
+            491,
+            647
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            235,
+            670,
+            331,
+            683
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] L. Gupta, R. Jain, and G. Vaszkun, “Survey of important issues in UAV communication networks,” IEEE Commun. Surveys Tuts., vol. 18, no. 2, pp. 1123–1152, 2nd Quart., 2015. ",
+            "[2] S. Hayat, E. Yanmaz, and R. Muzaffar, “Survey on unmanned aerial vehicle networks for civil applications: A communications viewpoint,” IEEE Commun. Surveys Tuts., vol. 18, no. 4, pp. 2624–2661, 4th Quart., 2016. ",
+            "[3] J. Zhang et al., “Aeronautical ad hoc networking for the Internet-abovethe-clouds,” Proc. IEEE, vol. 107, no. 5, pp. 868–911, May 2019. ",
+            "[4] X. Li, H. Yao, J. Wang, S. Wu, C. Jiang, and Y. Qian, “Rechargeable multi-UAV aided seamless coverage for QoS-guaranteed IoT networks,” IEEE Internet Things J., vol. 6, no. 6, pp. 10902–10914, Dec. 2019. ",
+            "[5] N. H. Motlagh, M. Bagaa, and T. Taleb, “UAV-based IoT platform: A crowd surveillance use case,” IEEE Commun. Mag., vol. 55, no. 2, pp. 128–134, Feb. 2017. ",
+            "[6] W. Feng, J. Wang, Y. Chen, X. Wang, N. Ge, and J. Lu, “UAVaided MIMO communications for 5G Internet of Things,” IEEE Internet Things J., vol. 6, no. 2, pp. 1731–1740, Apr. 2019. ",
+            "[7] N. H. Motlagh, T. Taleb, and O. Arouk, “Low-altitude unmanned aerial vehicles-based Internet of Things services: Comprehensive survey and future perspectives,” IEEE Internet Things J., vol. 3, no. 6, pp. 899–922, Dec. 2016. "
+        ],
+        "bbox": [
+            78,
+            686,
+            493,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[8] J. Wang, C. Jiang, Z. Wei, C. Pan, H. Zhang, and Y. Ren, “Joint UAV hovering altitude and power control for space-air-ground IoT networks,” IEEE Internet Things J., vol. 6, no. 2, pp. 1741–1753, Apr. 2019. ",
+            "[9] N. Zhao et al., “UAV-assisted emergency networks in disasters,” IEEE Wireless Commun., vol. 26, no. 1, pp. 45–51, Feb. 2019. ",
+            "[10] M. Chiang and T. Zhang, “Fog and IoT: An overview of research opportunities,” IEEE Internet Things J., vol. 3, no. 6, pp. 854–864, Dec. 2016. ",
+            "[11] N. Abbas, Y. Zhang, A. Taherkordi, and T. Skeie, “Mobile edge computing: A survey,” IEEE Internet Things J., vol. 5, no. 1, pp. 450–465, Feb. 2018. ",
+            "[12] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “A survey on mobile edge computing: The communication perspective,” IEEE Commun. Surveys Tuts., vol. 19, no. 4, pp. 2322–2358, 4th Quart., 2017. ",
+            "[13] P. Mach and Z. Becvar, “Mobile edge computing: A survey on architecture and computation offloading,” IEEE Commun. Surveys Tuts., vol. 19, no. 3, pp. 1628–1656, 3rd Quart., 2017. ",
+            "[14] X. Li, H. Yao, J. Wang, X. Xu, C. Jiang, and L. Hanzo, “A near-optimal UAV-aided radio coverage strategy for dense urban areas,” IEEE Trans. Veh. Technol., vol. 68, no. 9, pp. 9098–9109, Sep. 2019. ",
+            "[15] J. Wang, C. Jiang, Z. Han, Y. Ren, R. G. Maunder, and L. Hanzo, “Taking drones to the next level: Cooperative distributed unmannedaerial-vehicular networks for small and mini drones,” IEEE Veh. Technol. Mag., vol. 12, no. 3, pp. 73–82, Sep. 2017. ",
+            "[16] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016. ",
+            "[17] T. A. Johansen, A. Zolich, T. Hansen, and A. J. Sørensen, “Unmanned aerial vehicle as communication relay for autonomous underwater vehicle—Field tests,” in Proc. IEEE GLOBECOM Workshops (GC Wkshps). Austin, TX, USA, Dec. 2014, pp. 1469–1474. ",
+            "[18] S. Kim, H. Oh, J. Suk, and A. Tsourdos, “Coordinated trajectory planning for efficient communication relay using multiple UAVs,” Control Eng. Pract., vol. 29, pp. 42–49, Aug. 2014. ",
+            "[19] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Drone small cells in the clouds: Design, deployment and performance analysis,” in Proc. IEEE Global Commun. Conf. (GLOBECOM). San Diego, CA, USA, Dec. 2015, pp. 1–6. ",
+            "[20] Y. Zeng and R. Zhang, “Energy-efficient UAV communication with trajectory optimization,” IEEE Trans. Wireless Commun., vol. 16, no. 6, pp. 3747–3760, Jun. 2017. ",
+            "[21] Q. Wu, Y. Zeng, and R. Zhang, “Joint trajectory and communication design for multi-UAV enabled wireless networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2109–2121, Mar. 2018. ",
+            "[22] S. W. Loke, “The Internet of flying-things: Opportunities and challenges with airborne fog computing and mobile cloud in the clouds,” 2015. [Online]. Available: arXiv:1507.04492. ",
+            "[23] S. Jeong, O. Simeone, and J. Kang, “Mobile edge computing via a UAVmounted cloudlet: Optimization of bit allocation and path planning,” IEEE Trans. Veh. Technol., vol. 67, no. 3, pp. 2049–2063, Mar. 2018. ",
+            "[24] F. Zhou, Y. Wu, H. Sun, and Z. Chu, “UAV-enabled mobile edge computing: Offloading optimization and trajectory design,” in Proc. IEEE Int. Conf. Commun. (ICC). Kansas City, MO, USA, May 2018, pp. 1–6. ",
+            "[25] F. Zhou, Y. Wu, R. Q. Hu, and Y. Qian, “Computation rate maximization in UAV-enabled wireless-powered mobile-edge computing systems,” IEEE J. Sel. Areas Commun., vol. 36, no. 9, pp. 1927–1941, Sep. 2018. ",
+            "[26] N. Zhao et al., “Caching UAV assisted secure transmission in hyper-dense networks based on interference alignment,” IEEE Trans. Commun., vol. 66, no. 5, pp. 2281–2294, May 2018. ",
+            "[27] L. Zhang, Z. Zhao, Q. Wu, H. Zhao, H. Xu, and X. Wu, “Energy-aware dynamic resource allocation in UAV assisted mobile edge computing over social Internet of vehicles,” IEEE Access, vol. 6, pp. 56700–56715, 2018. ",
+            "[28] S. Martello and P. Toth, Knapsack Problems: Algorithms and Computer Implementations (Wiley-Interscience Series in Discrete Mathematics and Optimization). Hoboken, NJ, USA, 1990. ",
+            "[29] J. Wang, C. Jiang, H. Zhang, Y. Ren, K.-C. Chen, and L. Hanzo, “Thirty years of machine learning: The road to Pareto-optimal wireless networks,” IEEE Commun. Surveys Tuts., early access, doi: 10.1109/COMST.2020.2965856. ",
+            "[30] J. Wang, C. Jiang, K. Zhang, X. Hou, Y. Ren, and Y. Qian, “Distributed Q-learning aided heterogeneous network association for energy-efficient IIoT,” IEEE Trans. Ind. Informat., vol. 16, no. 4, pp. 2756–2764, Apr. 2020. ",
+            "[31] H. Yao, T. Mai, C. Jiang, L. Kuang, and S. Guo, “AI routers & network mind: A hybrid machine learning paradigm for packet routing,” IEEE Comput. Intell. Mag., vol. 14, no. 4, pp. 21–30, Nov. 2019. "
+        ],
+        "bbox": [
+            504,
+            68,
+            924,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "YANG et al.: MULTI-UAV-ENABLED LOAD-BALANCE MOBILE-EDGE COMPUTING FOR IoT NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            624,
+            45
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "6907 ",
+        "bbox": [
+            893,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[32] V. Mnih et al., “Playing atari with deep reinforcement learning,” 2013. [Online]. Available: arXiv:1312.5602. ",
+            "[33] J. Lu, S. Wan, X. Chen, Z. Chen, P. Fan, and K. B. Letaief, “Beyond empirical models: Pattern formation driven placement of UAV base stations,” IEEE Trans. Wireless Commun., vol. 17, no. 6, pp. 3641–3655, Jun. 2018. "
+        ],
+        "bbox": [
+            76,
+            71,
+            490,
+            141
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/0bb6da9c75e66bbf77aa84380d2038647c758114963ddc59b282dd81dfb97b58.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            188,
+            197,
+            306
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Lei Yang received the B.S. degree in information management and information system from the Northeastern University at Qinhuangdao, Qinhuangdao, China, in 2014, and the M.S. degree in information and communication engineering from the Beijing University of Technology, Beijing, China, in 2017, where he is currently pursuing the Ph.D. degree with the Beijing Advanced Innovation Center for Future Internet Technology. ",
+        "bbox": [
+            207,
+            186,
+            491,
+            290
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "His main research interests include the UAV communications and mobile-edge computing. ",
+        "bbox": [
+            207,
+            290,
+            491,
+            314
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/9433aef46c19126c6cc07e68f74b93f2c1a65ea6f065f4841800d7d83898a07f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            358,
+            197,
+            474
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Haipeng Yao (Member, IEEE) received the Ph.D. degree from the Department of Telecommunication Engineering, Beijing University of Posts and Telecommunications, Beijing, China, in 2011. ",
+        "bbox": [
+            207,
+            357,
+            490,
+            402
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "He is an Associate Professor with the Beijing University of Posts and Telecommunications. He has published more than 90 papers in prestigious peer-reviewed journals and conferences. He has been engaged in research on future Internet architecture, network AI, big data, cognitive radio networks, and optimization of protocols and architectures for ",
+        "bbox": [
+            207,
+            402,
+            491,
+            483
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "broadband wireless networks. ",
+        "bbox": [
+            75,
+            482,
+            238,
+            493
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/d91600f1e6f415cc0e6996faa934861038b6d16d0620c1690382552c72fc8e7a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            540,
+            197,
+            656
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Jingjing Wang (Member, IEEE) received the B.S. degree (Highest Hons.) in electronic information engineering from Dalian University of Technology, Dalian, China, in 2014, and the Ph.D. degree (Highest Hons.) in information and communication engineering from Tsinghua University, Beijing, China, in 2019. ",
+        "bbox": [
+            207,
+            537,
+            490,
+            618
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "From 2017 to 2018, he visited the Next Generation Wireless Group chaired by Prof. L. Hanzo, University of Southampton, Southampton, U.K. He is currently a Postdoctoral ",
+        "bbox": [
+            207,
+            618,
+            491,
+            662
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Researcher with the Department of Electronic Engineering, Tsinghua University. His research interests include resource allocation and network association, learning theory-aided modeling, analysis and signal processing, as well as information diffusion theory for mobile wireless networks. ",
+        "bbox": [
+            73,
+            664,
+            490,
+            708
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Dr. Wang was a recipient of the Best Journal Paper Award of the IEEE ComSoc Technical Committee on Green Communications & Computing in 2018 and the Best Paper Award from the IEEE ICC and IWCMC in 2019. ",
+        "bbox": [
+            73,
+            708,
+            491,
+            743
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/b2e868f468b5b7706545ed0d22070c410897aabbbedce024eb180d778bb9e575.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            71,
+            627,
+            189
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Chunxiao Jiang (Senior Member, IEEE) received the B.S. degree (Hons.) in information engineering from Beihang University, Beijing, China, in 2008, and the Ph.D. degree (Hons.) in electronic engineering from Tsinghua University, Beijing, in 2013. ",
+        "bbox": [
+            638,
+            71,
+            919,
+            128
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "He was a Postdoctoral Researcher with the Department of Electronic Engineering, Tsinghua University from 2013 to 2016, during which he visited the University of Maryland at College Park, College Park, MD, USA, and the University of Southampton, Southampton, U.K. ",
+        "bbox": [
+            638,
+            128,
+            921,
+            196
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Dr. Jiang was a recipient of the IEEE GLOBECOM Best Paper Award in 2013, the IEEE GlobalSIP Best Student Paper Award in 2015, the IEEE IWCMC Best Paper Award in 2017, and the IEEE Communications Society Young Author Best Paper Award in 2017. ",
+        "bbox": [
+            504,
+            196,
+            921,
+            243
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/862cd51a953082ad8b49ca5d75499a79727fb675a65577db8b61b48dce06835e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            290,
+            627,
+            407
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Abderrahim Benslimane (Senior Member, IEEE) received the B.S. degree in computer science from the University of Nancy, Nancy, France, in 1987, and the DEA (M.S.) and Ph.D. degrees in computer science from the University of Franche-Comté, Besançon, France, in 1989 and 1993, respectively. ",
+        "bbox": [
+            638,
+            289,
+            919,
+            357
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "He has been an Associate Professor with the University of Technology of Belfort-Montbéliard since 1994, and a Professor of computer science with Avignon University, Avignon, France, since 2001. He was a Technical International Expert with the ",
+        "bbox": [
+            638,
+            357,
+            919,
+            415
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "French Ministry of Foreign and European Affairs from 2012 to 2016. He served as a Coordinator with the Faculty of Engineering, French University, Cairo, Egypt. His research interests are in the development of communication protocols with the use of graph theory for mobile and wireless networks. ",
+        "bbox": [
+            503,
+            414,
+            919,
+            460
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Prof. Benslimane was a recipient of the French Award of Doctoral Supervisions from 2017 to 2021 and attributed the French Award of Scientific Excellency from 2011 to 2014. He was a recipient of the title to supervise researches (HDR 2000) from the University of Cergy-Pontoise, Cergy, France. He served as a Symposium Co-Chair/Leader in many IEEE international conferences, such as ICC, GLOBECOM, AINA, and VTC. He is currently the Chair of the ComSoc TC of Communication and Information Security. ",
+        "bbox": [
+            503,
+            460,
+            921,
+            540
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/1438227be2e72c107c0351421d3231f33ea6786bdb4c141b9436e6f5a15e803b.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            607,
+            627,
+            723
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Yunjie Liu received the B.S. degree in technical physics from Peking University, Beijing, China, in 1968. ",
+        "bbox": [
+            638,
+            604,
+            919,
+            638
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "He is currently the Academician of the China Academy of Engineering, Beijing, the Chief of the Science and Technology Committee of China Unicom, and the Dean of the School of Information and Communication Engineering, Beijing University of Posts and Telecommunications, Beijing. His research interests include next generation networks, and network architecture and management. ",
+        "bbox": [
+            638,
+            638,
+            921,
+            731
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "6908 ",
+        "bbox": [
+            76,
+            35,
+            104,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 7, NO. 8, AUGUST 2020 ",
+        "bbox": [
+            555,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:20:52 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 10
+    }
+]

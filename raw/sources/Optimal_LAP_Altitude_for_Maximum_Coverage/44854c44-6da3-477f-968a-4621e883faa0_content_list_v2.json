@@ -1,0 +1,1887 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Optimal LAP Altitude for Maximum Coverage "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                237,
+                84,
+                749,
+                107
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Akram Al-Hourani, Student Member, IEEE, Sithamparanathan Kandeepan, Senior Member, IEEE, and Simon Lardner "
+                    }
+                ]
+            },
+            "bbox": [
+                112,
+                111,
+                875,
+                143
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstract—Low-altitude aerial platforms (LAPs) have recently gained significant popularity as key enablers for rapid deployable relief networks where coverage is provided by onboard radio heads. These platforms are capable of delivering essential wireless communication for public safety agencies in remote areas or during the aftermath of natural disasters. In this letter, we present an analytical approach to optimizing the altitude of such platforms to provide maximum radio coverage on the ground. Our analysis shows that the optimal altitude is a function of the maximum allowed pathloss and of the statistical parameters of the urban environment, as defined by the International Telecommunication Union. Furthermore, we present a closed-form formula for predicting the probability of the geometrical line of sight between a LAP and a ground receiver. "
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                183,
+                486,
+                361
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Index Terms—Low altitude platform, air-to-ground communication, radio propagation, probability of line of sight. "
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                367,
+                486,
+                395
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "I. INTRODUCTION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                203,
+                405,
+                341,
+                417
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "B ROADBAND wireless networks are increasingly adoptedby users of mission critical communications, such as public safety agencies and first responders. This adoption is motivated by the unprecedented development in these networks in terms of capacity and efficiency, compared to the legacy (second generation) mobile communication systems. However, as any cellular network, the communication is largely dependent on fixed infrastructure (base stations) that could be severally disrupted in the case of natural disasters such as floods, earthquakes or tsunamis. By which, inducing the need for finding a rapid and cost-effective temporary recovery solution an utmost necessity. One of the prospective feasible solutions for realizing wireless recovery networks is by utilizing airborne base stations. The airborne communication infrastructure concept has been endorsed by the homeland security bureau in USA [1]. An example of the recent efforts in airborne network recovery solutions is the ongoing European Commission project ABSOLUTE [2] focusing on Low Altitude Platforms (LAP). "
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                426,
+                486,
+                698
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Due to technical limitations, the number of deployable LAPs could be very limited, especially during the chaotic aftermath hours of a disaster. This fact mandates a full exploitation of "
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                698,
+                486,
+                744
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Manuscript received April 28, 2014; accepted July 19, 2014. Date of publication July 24, 2014; date of current version December 17, 2014. This work was supported in part by the European Commission’s Programme (FP7-2011-8) through the ABSOLUTE Project under Grant FP7-ICT-318632 [2]. The associate editor coordinating the review of this paper and approving it for publication was I. Guvenc. "
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                763,
+                484,
+                833
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A. Al-Hourani and S. Kandeepan are with the School of Electrical and Computer Engineering, College of Science, Engineering and Health, RMIT University, Melbourne VIC 3001, Australia (e-mail: akram.hourani@ieee.org; kandeepan@ieee.org). "
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                833,
+                484,
+                878
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "S. Lardner is with the Challenge Networks, Melbourne VIC 3067, Australia (e-mail: simon.lardner@challengenetworks.com.au). "
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                878,
+                484,
+                900
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org. "
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                900,
+                484,
+                922
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Digital Object Identifier 10.1109/LWC.2014.2342736 "
+                    }
+                ]
+            },
+            "bbox": [
+                72,
+                922,
+                367,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "each of the deployed LAPs by optimizing its altitude in order to provide the best possible coverage. In this letter, we target this issue by providing a mathematical model capable of predicting the optimum altitude of a LAP based on the statistical parameters of the underlying urban environment. These parameters are described in three folds: (i) the percentage of build-up area to the total land area, (ii) the number of buildings per unit area, and (iii) the statistical distribution of buildings heights. An important mediator parameter in this study is the LAP-toreceiver line of sight probability, for which we provide a closed form. The remaining of this letter is organized as the following: in Section II, we discuss the preliminaries required for our study including the adopted radio propagation model. While in Section III, we provide the methodology for obtaining the optimum LAP altitude, followed by Section IV and Section V that conclude important notes and remarks. "
+                    }
+                ]
+            },
+            "bbox": [
+                498,
+                181,
+                929,
+                425
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "II. SYSTEM MODEL "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                639,
+                446,
+                791,
+                459
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Low Altitude Platforms (LAP) are quasi-stationary aerial platforms such as quadcopters, balloons and helicopters, usually characterized with an altitude laying within the troposphere. In contrary to High Altitude Platforms (HAP) [3] that can reach the upper layers of the stratosphere. In general, LAPs are much easier to deploy, and are inline with the broadband cellular concept, since low altitude combines both coverage superiority and confined cell radius. The technology carried by LAPs depends on the end-user’s application, budget and bandwidth requirements. Applications could be as advanced as LTE-A, Wi-Fi, WiMAX or as legacy as GSM, TETRA or P-25 systems. "
+                    }
+                ]
+            },
+            "bbox": [
+                498,
+                468,
+                930,
+                650
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A. RF Propagation Model "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                500,
+                671,
+                686,
+                686
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Few literature papers are available on characterizing the airto-ground (ATG) propagation over urban environments, the most comprehensive work in this regard can be found in [4]–[6], where the authors proposed that ATG communication occurs in accordance to two main propagation groups. These groups are derived statistically in [4], where the first group correspond to receivers favoring a Line-of-Sight (LoS) condition or near-Line-of-Sight condition, while the second group generally corresponds to receivers with no LAP Line-of-Sight but still receiving coverage via strong reflections and diffractions. In [5] and [6] the propagation groups where similarly classified according to the receivers’ strict LoS and non-line-of-sight (NLoS) conditions, where each propagation group was studied independently. "
+                    }
+                ]
+            },
+            "bbox": [
+                498,
+                694,
+                929,
+                904
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "As depicted in Fig. 1, radio signals emitted by a LAP base station propagate in free space until reaching the urban environment where they incur shadowing and scattering caused by the man-made structures, introducing additional loss in the ATG link. We refer to the additive loss incurred on top of the free space pathloss as the excessive pathloss, which has a Gaussian distribution [4]–[6], however in this study we deal with its mean value (expectation) rather than with its random behavior, hence η here refers to the mean value of the excessive pathloss. Another point is that the effect of small-scale fluctuations caused by the rapid changes in the propagation environment are not considered. "
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                905,
+                930,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 3, NO. 6, DECEMBER 2014 "
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                501,
+                55
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "569 "
+                    }
+                ]
+            },
+            "bbox": [
+                907,
+                44,
+                930,
+                54
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "2162-2337 © 2014 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. "
+                    }
+                ]
+            },
+            "bbox": [
+                198,
+                946,
+                797,
+                959
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "See http://www.ieee.org/publications_standards/publications/rights/index.html for more information. Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:18:57 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                111,
+                960,
+                880,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/1f0003ea62b68a83cbad2f48b0d7218f51b6da664df32e5c817581d922fddd07.jpg"
+                },
+                "content": "LAP\nFSPL Segment\nUrban Segment\nFSPL\nExcessive\nPathloss (n)\nGround Level\nr",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. Low Altitude Platforms radio propagation in urban environment. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "text_image",
+            "bbox": [
+                70,
+                84,
+                489,
+                258
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                65,
+                299,
+                496,
+                448
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Accordingly, the resulting ATG mean pathloss (expressed in dB) can be modeled as: "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                450,
+                496,
+                479
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathrm{PL} _ {\\xi} = \\text { FSPL } + \\eta_ {\\xi} \\tag {1}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/331b73f8c2541ffccd44604d3163418d6841072bb6427e2c28d9be1280ee6203.jpg"
+                }
+            },
+            "bbox": [
+                215,
+                494,
+                494,
+                511
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where FSPL represents the free space pathloss between the LAP and a ground receiver, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\xi"
+                    },
+                    {
+                        "type": "text",
+                        "content": "refers to the propagation group. Noticing that, the excessive pathloss η affecting the ATG link depends largely on the propagation group rather than the elevation angle which is depicted θ in Fig. 1. "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                523,
+                494,
+                599
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In order to find the spatial expectation of the pathloss denoted as Λ (measured in dB) between a LAP and all ground receivers having a common elevation angle θ, we will apply the following expectation rule: "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                599,
+                494,
+                659
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Lambda = \\sum_ {\\xi} \\mathrm{PL} _ {\\xi} \\mathbf {P} (\\xi , \\theta) \\tag {2}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/890894cb1621d46aa9d32c5cad0fd8f9f954859d1a19ee27dc25f8762cc7e9dc.jpg"
+                }
+            },
+            "bbox": [
+                208,
+                670,
+                494,
+                703
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { P } ( \\xi , \\theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represents the probability of occurrence of a certain propagation group which is strongly dependent on the elevation angle. In our study we are following the assumption of the two dominant propagation groups that strictly correspond to the LoS condition. Accordingly "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\xi \\in \\{ \\mathrm { L o S } , \\mathrm { N L o S } \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and the groups’ probability are linked as the following: "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                717,
+                494,
+                808
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathbf {P} (\\mathrm{NLoS}, \\theta) = 1 - \\mathbf {P} (\\mathrm{LoS}, \\theta). \\tag {3}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/57540dd6ad29275d6fe089a09a92140ab192c377318793dac31d08757622f5dc.jpg"
+                }
+            },
+            "bbox": [
+                173,
+                821,
+                494,
+                838
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "B. Modeling Line of Sight Probability "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                65,
+                877,
+                329,
+                893
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The International Telecommunication Union (ITU) in its recommendation document [7] suggests a remarkable method for finding the probability of geometrical LoS between a terrestrial transmitter at elevation "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h _ { \\mathrm { T X } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and a receiver at elevation "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h _ { \\mathrm { R X } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in an urban environment. This probability is dependent on three statistical parameters related to the urban environment: "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                898,
+                496,
+                960
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                506,
+                84,
+                937,
+                114
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Parameter α: Represents the ratio of built-up land area to the total land area (dimensionless). "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Parameter β: Represents the mean number of buildings per unit area (buildings/km2). "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Parameter γ: A scale parameter that describes the buildings’ heights distribution according to Rayleigh probability density function: "
+                            },
+                            {
+                                "type": "equation_inline",
+                                "content": "f ( H ) = ( \\bar { H / \\gamma ^ { 2 } } ) \\exp ( - \\bar { H ^ { 2 } / 2 } \\gamma ^ { 2 } )"
+                            },
+                            {
+                                "type": "text",
+                                "content": ", where H is the building height in meters. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                525,
+                119,
+                937,
+                239
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Following the mathematical steps in [7] we can write the resulting LoS probability in a single equation as: "
+                    }
+                ]
+            },
+            "bbox": [
+                506,
+                244,
+                937,
+                273
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathbf {P} (\\text { LoS }) = \\prod_ {n = 0} ^ {m} \\left[ 1 - \\exp \\left(- \\frac {\\left[ h _ {\\mathrm{TX}} - \\frac {(n + \\frac {1}{2}) (h _ {\\mathrm{TX}} - h _ {\\mathrm{RX}})}{m + 1} \\right] ^ {2}}{2 \\gamma^ {2}}\\right) \\right] \\tag {4}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/e5f4365a2cccc35a14c01bfd473614b8d853d84d87914cb0682cacc561831eca.jpg"
+                }
+            },
+            "bbox": [
+                508,
+                281,
+                937,
+                364
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "m = \\operatorname { f l o o r } ( r { \\sqrt { \\alpha \\beta } } - 1 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and r is the ground distance between the transmitter and the receiver, as depicted in Fig. 1, while n is merely the product index. It is worthy to mention that the geometrical LoS is independent of the system frequency, also that (4) is generic and can be used for any "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h _ { \\mathrm { T X } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and hRX heights. A similar geometric approach was followed in [8] to determine the theoretical likelihood of the LoS in built-up areas, however the study was not based on the ITU parameters. On the other hand, practical measurements were presented in [9] for satellite to ground LoS estimations. In the particular case of a LAP we can disregard "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h _ { \\mathrm { R X } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "since it is much lower than the average buildings heights and the LAP altitude. Also, the ground distance becomes "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r = h / \\tan ( \\theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where h is the LAP altitude. It is important to note that the resulting plot of the series in (4) will smooth our for large values of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "accordingly "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { P } ( \\mathrm { L o S } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "can be considered as a continuous function of θ and the environment parameters. Plotting this probability in Fig. 2 for four selected urban environments [6] Suburban (0.1, 750, 8), Urban (0.3, 500, 15), Dense Urban (0.5, 300, 20), and Highrise Urban (0.5, 300, 50) for "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha , \\beta"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\gamma"
+                    },
+                    {
+                        "type": "text",
+                        "content": "respectively, we can notice that the trend can be closely approximated to a simple modified Sigmoid function (S-curve) of the following form: "
+                    }
+                ]
+            },
+            "bbox": [
+                506,
+                369,
+                937,
+                704
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathbf {P} (\\mathrm{LoS}, \\theta) = \\frac {1}{1 + a \\exp (- b [ \\theta - a ])} \\tag {5}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/0014dc389c8e6f9f8202ae0bee385c4cc252d49448e943114d786cb95d330f8a.jpg"
+                }
+            },
+            "bbox": [
+                597,
+                712,
+                937,
+                744
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where a and b are called here the S-curve parameters. "
+                    }
+                ]
+            },
+            "bbox": [
+                508,
+                756,
+                873,
+                770
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This approximation significantly ease the calculation of the LoS probability, and also it allows the analytical approach presented in Section III, because the series in (4) cannot be further reduced. In order to generalize the solution we have linked the S-curve parameters a and b directly to the environment variables "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha , \\beta"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and γ. This linking was performed using two variables surface fitting where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\alpha \\times \\beta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is assumed as the first variable, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\gamma )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "as the second. The surface equation yields a two-variables polynomial having the following form: "
+                    }
+                ]
+            },
+            "bbox": [
+                506,
+                770,
+                937,
+                907
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "z = \\sum_ {j = 0} ^ {3} \\sum_ {i = 0} ^ {3 - j} C _ {i j} (\\alpha \\beta) ^ {i} \\gamma^ {j} \\tag {6}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/ce3e2b2e06cd55d18a00488740119bfbd66f915bc7c005965c8c24173b775ce7.jpg"
+                }
+            },
+            "bbox": [
+                636,
+                917,
+                937,
+                959
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "570 "
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                44,
+                90,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 3, NO. 6, DECEMBER 2014 "
+                    }
+                ]
+            },
+            "bbox": [
+                496,
+                42,
+                937,
+                55
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:18:57 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                109,
+                962,
+                880,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/c9fbb66f0e074bcab96898defe87a3d24cd634a6b7d2fa93c34b8dfb56aaee38.jpg"
+                },
+                "content": "| Elevation Angle (θ) [°] | Suburban | Urban | Dense Urban | Highrise Urban |\n|---|---|---|---|---|\n| 0 | 0.0 | 0.0 | 0.0 | 0.0 |\n| 5 | 0.15 | 0.05 | 0.02 | 0.01 |\n| 10 | 0.35 | 0.15 | 0.08 | 0.03 |\n| 15 | 0.65 | 0.35 | 0.25 | 0.08 |\n| 20 | 0.85 | 0.55 | 0.45 | 0.15 |\n| 25 | 0.95 | 0.75 | 0.65 | 0.25 |\n| 30 | 0.98 | 0.85 | 0.78 | 0.35 |\n| 35 | 0.99 | 0.92 | 0.88 | 0.45 |\n| 40 | 0.995 | 0.96 | 0.93 | 0.55 |\n| 45 | 0.998 | 0.98 | 0.96 | 0.65 |\n| 50 | 0.999 | 0.99 | 0.98 | 0.75 |\n| 55 | 0.9995 | 0.995 | 0.99 | 0.85 |\n| 60 | 0.9998 | 0.998 | 0.995 | 0.92 |\n| 65 | 0.9999 | 0.999 | 0.998 | 0.96 |\n| 70 | 1.0 | 1.0 | 0.999 | 0.98 |\n| 75 | 1.0 | 1.0 | 1.0 | 0.99 |\n| 80 | 1.0 | 1.0 | 1.0 | 0.995 |\n| 85 | 1.0 | 1.0 | 1.0 | 0.998 |\n| 90 | 1.0 | 1.0 | 1.0 | 1.0 |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. The calculated line-of-sight probabilities, with their related S-curve fitting for different urban environments. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                70,
+                84,
+                474,
+                281
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/ad3c8066d5fc30341e42fbec60244661da5240f56651bf220d347a1f9ff26f89.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "TABLE I SURFACE POLYNOMIAL COEFFICIENTS FOR a "
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td> $C_{ij}$ </td><td>i</td><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><td>j</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>0</td><td></td><td>9.34E-01</td><td>2.30E-01</td><td>-2.25E-03</td><td>1.86E-05</td></tr><tr><td>1</td><td></td><td>1.97E-02</td><td>2.44E-03</td><td>6.58E-06</td><td>-</td></tr><tr><td>2</td><td></td><td>-1.24E-04</td><td>-3.34E-06</td><td>-</td><td>-</td></tr><tr><td>3</td><td></td><td>2.73E-07</td><td>-</td><td>-</td><td>-</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                89,
+                358,
+                457,
+                441
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/b2689367bef882bb527a90ad3d42326549f0e00bf845631bf6da7b588075232b.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "TABLE II SURFACE POLYNOMIAL COEFFICIENTS FOR b "
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td> $C_{ij}$ </td><td>i</td><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><td>j</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>0</td><td></td><td>1.17E+00</td><td>-7.56E-02</td><td>1.98E-03</td><td>-1.78E-05</td></tr><tr><td>1</td><td></td><td>-5.79E-03</td><td>1.81E-04</td><td>-1.65E-06</td><td>-</td></tr><tr><td>2</td><td></td><td>1.73E-05</td><td>-2.02E-07</td><td>-</td><td>-</td></tr><tr><td>3</td><td></td><td>-2.00E-08</td><td>-</td><td>-</td><td>-</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                87,
+                484,
+                457,
+                568
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/1630a019c75c57d2944bd88b8205bbef5a2ed62fe9be652ed14dc0f46d108ad0.jpg"
+                },
+                "content": "| Parameter a | Parameter b |\n|-------------|-------------|\n| 0           | 0           |\n| 50          | 0           |\n| 100         | 0           |\n| 150         | 0           |\n| 200         | 0           |\n| 250         | 0           |\n| 300         | 0           |\n| 350         | 0           |\n| 400         | 0           |\n| 450         | 0           |\n| 500         | 0           |\n| 550         | 0           |\n| 600         | 0           |\n| 650         | 0           |\n| 700         | 0           |\n| 750         | 0           |\n| 800         | 0           |\n| 850         | 0           |\n| 900         | 0           |\n| 950         | 0           |\n| 1000        | 0           |\n| 1050        | 0           |\n| 1100        | 0           |\n| 1150        | 0           |\n| 1200        | 0           |\n| 1250        | 0           |\n| 1300        | 0           |\n| 1350        | 0           |\n| 1400        | 0           |\n| 1450        | 0           |\n| 1500        | 0           |\n| 1550        | 0           |\n| 1600        | 0           |\n| 1650        | 0           |\n| 1700        | 0           |\n| 1750        | 0           |\n| 1800        | 0           |\n| 1850        | 0           |\n| 1900        | 0           |\n| 1950        | 0           |\n| 2000        | 0           |\n| 2050        | 0           |\n| 2100        | 0           |\n| 2150        | 0           |\n| 2200        | 0           |\n| 2250        | 0           |\n| 2300        | 0           |\n| 2350        | 0           |\n| 2400        | 0           |\n| 2450        | 0           |\n| 2500        | 0           |\n| 2550        | 0           |\n| 2600        | 0           |\n| 2650        | 0           |\n| 2700        | 0           |\n| 2750        | 0           |\n| 2800        | 0           |\n| 2850        | 0           |\n| 2900        | 0           |\n| 2950        | 0           |\n| 3000        | 0           |\n| 3050        | 0           |\n| 3100        | 0           |\n| 3150        | 0           |\n| 3200        | 0           |\n| 3250        | 0           |\n| 3300        | 0           |\n| 3350        | 0           |\n| 3400        | 0           |\n| 3450        | 0           |\n| 3500        | 0           |\n| 3550        | 0           |\n| 3600        | 0           |\n| 3650        | 0           |\n| 3700        | 0           |\n| 3750        | 0           |\n| 3800        | 0           |\n| 3850        | 0           |\n| 3900        | 0           |\n| 3950        | 0           |\n| 4000        | 0           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |\n| -            | -           |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. S-curve parameters 3D-fitting as a relation to the urban environment parameters. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "scatter",
+            "bbox": [
+                63,
+                579,
+                483,
+                760
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where z represents the fitting parameter a or b, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i j }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "are the polynomial coefficients given in Table I and Table II, while the surface fitting is depicted in Fig. 3. "
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                808,
+                486,
+                854
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "III. FINDING THE OPTIMUM ALTITUDE "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                129,
+                877,
+                415,
+                891
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In order to analyze the effect of the LAP’s altitude on the provided service, firstly we define the service threshold in terms of the maximum allowable pathloss "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\operatorname { P L } _ { \\operatorname* { m a x } } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". When the total pathloss between the LAP and a receiver exceeds this threshold, "
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                898,
+                486,
+                960
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/1d340a9d8e49e6fc465977aa497c2a2e75ea0e7937393b1a65e061f70574f993.jpg"
+                },
+                "content": "Coverage Zone\nR",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. The coverage zone by a low altitude platform. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "text_image",
+            "bbox": [
+                531,
+                84,
+                902,
+                256
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "the link is deemed as failed. For ground receivers, this threshold translates into a coverage disk (zone) of radius R, since all receivers within this disk have a pathloss that is less than or equal "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { P L } _ { \\mathrm { m a x } } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", as depicted in Fig. 4. Mathematically speaking, the cell radius of the coverage zone can be written as: "
+                    }
+                ]
+            },
+            "bbox": [
+                498,
+                292,
+                930,
+                369
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R = r \\mid_ {\\Lambda = \\mathrm{PL} _ {\\max}} \\tag {7}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/fc5548c4106d8086abce9fbfb474e6cb064fb0d6ad6e801c86902a30b007428c.jpg"
+                }
+            },
+            "bbox": [
+                658,
+                382,
+                929,
+                398
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Accordingly, the optimization problem is to find the best altitude that will maximize R. In order to do so, we deduce a relation between the LAP altitude h and the cell radius R. By rewriting Equation (1) we have: "
+                    }
+                ]
+            },
+            "bbox": [
+                498,
+                410,
+                930,
+                470
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathrm{PL} _ {\\mathrm{LoS}} = 2 0 \\log d + 2 0 \\log f + 2 0 \\log \\left(\\frac {4 \\pi}{c}\\right) + \\eta_ {\\mathrm{LoS}}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/27d1ae3003bd0002739202130a42f48bca2a9e1d728f2b177b49c637289c44bb.jpg"
+                }
+            },
+            "bbox": [
+                516,
+                478,
+                878,
+                513
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathrm{PL} _ {\\mathrm{NLoS}} = \\underbrace {2 0 \\log d + 2 0 \\log f + 2 0 \\log \\left(\\frac {4 \\pi}{c}\\right)} _ {\\text { FSPL }} + \\underbrace {\\eta_ {\\mathrm{NLoS}}} _ {\\eta_ {\\xi}} \\tag {8}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/350b842616d252ba905e4814a7ecabb6f6f1c3ec9a15c67eb3033ca5559ef699.jpg"
+                }
+            },
+            "bbox": [
+                506,
+                517,
+                929,
+                570
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where d is the distance between the LAP and a receiver at a circle of radius r, given by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "d = { \\sqrt { h ^ { 2 } + r ^ { 2 } } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", while f is the system frequency. The FSPL is according to Friis equation with the assumption of isotropic transmitter and receiver antennas. Referring to (2): "
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                580,
+                930,
+                656
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Lambda = \\mathbf {P} (\\mathrm{LoS}) \\times \\mathrm{PL} _ {\\mathrm{LoS}} + \\mathbf {P} (\\mathrm{NLoS}) \\times \\mathrm{PL} _ {\\mathrm{NLoS}} \\tag {9}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/6c16fc2d7f449798e88f498f86dea49e816beb4d56a039af42400da1740e014c.jpg"
+                }
+            },
+            "bbox": [
+                555,
+                667,
+                929,
+                685
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "According to Fig. 1, we notice that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\theta = \\arctan ( h / r )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Now we substitute from (3), (5), (7), (8) into (9), then performing some simple algebraic reductions, we can write: "
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                710,
+                930,
+                757
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\mathrm{PL} _ {\\max} = \\frac {A}{1 + a \\exp \\left(- b \\left[ \\arctan \\left(\\frac {h}{R}\\right) - a \\right]\\right)} \\\\ + 1 0 \\log (h ^ {2} + R ^ {2}) + B \\tag {10} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/ef21632dcd09fdd7c9c13591c803787600f3b9ddc953990e5bf1f5b6c4ab8b65.jpg"
+                }
+            },
+            "bbox": [
+                500,
+                763,
+                927,
+                823
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "A = \\eta _ { \\mathrm { L o S } } - \\eta _ { \\mathrm { N L o S } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and B = 20 log "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "f + 2 0 \\log ( 4 \\pi / c ) +"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\eta _ { \\mathrm { N L o S } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The above equation is implicit, where neither R nor h can be written as an explicit function of each other. In order to obtain the optimum point of the LAP altitude "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h _ { \\mathrm { O P T } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "that yields the best coverage, we need to search for the value of h that satisfies the equation of the critical point: "
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                834,
+                929,
+                926
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\frac {\\partial R}{\\partial h} = 0 \\tag {11}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/810387886023e9c44015840d6ef9b9941204f20bf187912f6849b4ab3086ebc1.jpg"
+                }
+            },
+            "bbox": [
+                683,
+                931,
+                927,
+                962
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "AL-HOURANI et al.: OPTIMAL LAP ALTITUDE FOR MAXIMUM COVERAGE "
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                484,
+                55
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "571 "
+                    }
+                ]
+            },
+            "bbox": [
+                907,
+                44,
+                927,
+                54
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:18:57 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                109,
+                962,
+                880,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/653e3182ae96e17ab5c468b7b7c225fc5ce33bd1291b991f35b9fc30e542be73.jpg"
+                },
+                "content": "| LAP Altitude (h) [m] | Suburban | Urban | Dense Urban | Highrise Urban | Optimum Altitude (h_OPT) |\n| ------------------- | -------- | ----- | ----------- | -------------- | ------------------------ |\n| 0                   | 500      | 500   | 500         | 500            | -                        |\n| 500                 | 1500     | 1200  | 900         | 400            | -                        |\n| 1000                | 2800     | 1700  | 1300        | 500            | -                        |\n| 1500                | 3400     | 2100  | 1600        | 600            | 3400                     |\n| 2000                | 3200     | 2300  | 1700        | 650            | 2300                     |\n| 2500                | 2800     | 2100  | 1600        | 600            | -                        |\n| 3000                | 2200     | 1700  | 1300        | 550            | -                        |\n| 3500                | 1500     | 1200  | 900         | 450            | -                        |\n| 4000                | 800      | 600   | 500         | -              | -                        |\n| 4500                | 400      | -     | -           | -              | -                        |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 5. Cell radius vs. LAP altitude curve for different urban environments. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                70,
+                84,
+                489,
+                281
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "i.e. the point at which the radius-altitude curve in (10) changes its direction. The optimum altitude of a LAP is strongly dependent on the specific urban environment condition. Fig. 5 depicts the variation of R with respect to h as per (10) for the four urban environments and the following parameters; "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { P L } _ { \\mathrm { m a x } } = 1 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "dB, f = 2, 000 MHz, while using the following "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\left( \\eta _ { \\mathrm { L o S } } , \\eta _ { \\mathrm { N L o S } } \\right)"
+                    },
+                    {
+                        "type": "text",
+                        "content": "pairs (0.1, 21), (1.0, 20), (1.6, 23), (2.3, 34) corresponding to Suburban, Urban, Dense Urban, and Highrise Urban respectively [4] (measured in dB). The figure also shows the optimal LAP altitudes by numerically solving equation (11). "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                324,
+                493,
+                474
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In order to visualize the effect of varying the maximum allowed pathloss "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { P L } _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "on the radius-altitude curve and the optimum altitude solution, we have depicted this relation in the plot of Fig. 6, where the cell radius is a function of both, the LAP altitude and the maximum allowed pathloss "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\operatorname { P L } _ { \\operatorname* { m a x } } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": "by maintaining a constant environment parameters (Urban). We can notice that the resulting line connecting the tips of radiusaltitude curves, indicates a constant ratio between R and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h _ { \\mathrm { O P T } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", or in other words, there is a certain elevation angle that always satisfies a constant ratio of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h _ { \\mathrm { o p t } } / R _ { \\mathrm { i } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", we call it here the optimum elevation angle or "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\theta _ { \\mathrm { O P T } } ="
+                    },
+                    {
+                        "type": "text",
+                        "content": "arctan "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( h _ { \\mathrm { O P T } } / R )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". For obtaining the optimum elevation angle, we first rewrite the expression in (10) in terms of θ and R as the following: "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                476,
+                494,
+                672
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathrm{PL} _ {\\max} = \\frac {A}{1 + a \\exp (- b [ \\theta - a ])} + 2 0 \\log (R \\sec \\theta) + B \\tag {12}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/760f3d37c7dd7a151e2efa0d4171621962d4437708fcfade8439b8b70345adfb.jpg"
+                }
+            },
+            "bbox": [
+                87,
+                681,
+                494,
+                714
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "the optimum point can then be found by solving the equation "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\partial R / \\partial \\theta = 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which yields the following: "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                726,
+                493,
+                756
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\frac {\\pi}{9 \\ln (1 0)} \\tan (\\theta_ {\\mathrm{OPT}}) + \\frac {a b A \\exp (- b [ \\theta_ {\\mathrm{OPT}} - a ])}{\\left[ a \\exp (- b [ \\theta_ {\\mathrm{OPT}} - a ]) + 1 \\right] ^ {2}} = 0 \\tag {13}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/239bb174362136da7f7547357ed41ed43586d2cdb105cb62f89c72b0fd4e5473.jpg"
+                }
+            },
+            "bbox": [
+                82,
+                766,
+                494,
+                801
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "the solution of equation (13) is clearly independent of the maximum allowed pathloss, and is also unique for a certain set of parameters "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( a , b , A )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Accordingly, it explains the straight line in Fig. 6. "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                813,
+                494,
+                875
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "IV. DISCUSSION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                218,
+                893,
+                341,
+                906
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "It is important to note that the value of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { P L } _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "depends on the sensitivity of the receiver, communication technology, and the target quality of service. It is observed that for large values of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { P L } _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "the optimum altitude may exceed the earth’s atmosphere which is not a practically viable solution. Since we mainly consider LAPs in this work, and noting that LAPs will have physical constraints for reaching a maximum altitude, the optimum altitude for the LAP hence can be the found by imposing a constraint on h in our proposed model. "
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                915,
+                493,
+                960
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/82312c84c2d9b5445f65caca3de30822e6ed6056533454ec34b87885acddd26f.jpg"
+                },
+                "content": "| LAP Altitude (h) [m] | Cell Radius (R) [m] |\n| --------------------- | ------------------- |\n| 1000                  | 1000                |\n| 2000                  | 2500                |\n| 3000                  | 3500                |\n| 4500                  | 5000                |\n| 6500                  | 7000                |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 6. Cell radius vs. LAP altitude curve for different maximum pathloss, in an urban environment. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                516,
+                84,
+                930,
+                280
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                506,
+                325,
+                937,
+                416
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "V. CONCLUSION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                661,
+                438,
+                784,
+                450
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this letter, we have provided a mathematical model for obtaining the optimum LAP altitude that maximizes the coverage on the ground. In addition, we have showed that the geometrical line of sight between an LAP and a ground receiver can be expressed as a closed form equation based on the elevation angle and the urban statistical parameters. Future work will include the analysis of the random behaviors of ATG radio channel including the large-scale variations as well as the smallscale fading effect. "
+                    }
+                ]
+            },
+            "bbox": [
+                506,
+                460,
+                937,
+                595
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "REFERENCES "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                673,
+                617,
+                772,
+                628
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] National Public-Safety Telecommunications Council (NPSTC), “The role of deployable aerial communications architecture in emergency communications and recommended next steps,” in White Paper, 2009. [Online]. Available: http://www.npstc.org/download.jsp?tableId=37&column=217& id=2107&file=DOC_309742A1_White_Paper_110922.pdf "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] EU-FP7 ICT IP Project ABSOLUTE, 2013. [Online]. Available: http:// www.absolute-project.eu/reports/publications "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] T. Tozer and D. Grace, “High-altitude platforms for wireless communications,” Electron. Commun. Eng. J., vol. 13, no. 3, pp. 127–137, 2001. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] A. Al-Hourani, S. Kandeepan, and A. Jamalipour, “Modeling air-toground path loss for low altitude platforms in urban environments,” in Proc. GLOBECOM Symp. Sel. Areas Commun., Satellite Space Commun., Austin, TX, USA, Dec. 2014, to be published. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Q. Feng, J. McGeehan, E. Tameh, and A. Nix, “Path loss models for air-toground radio channels in urban environments,” in Proc. IEEE 63rd VTC-Spring, May 2006, vol. 6, pp. 2901–2905. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] J. Holis and P. Pechac, “Elevation dependent shadowing model for mobile communications via high altitude platforms in built-up areas,” IEEE Trans. Antennas Propag., vol. 56, no. 4, pp. 1078–1084, 2008. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] “Propagation data and prediction methods for the design of terrestrial broadband millimetric radio access systems,” Geneva, Switzerland, Rec. P.1410-2, 2003, P Series, Radiowave Propagation. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] E. Ogawa and A. Satoh, “Propagation path visibility estimation for radio local distribution systems in built-up areas,” IEEE Trans. Commun., vol. 34, no. 7, pp. 721–724, Jul. 1986. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] E. Lutz, D. Cygan, M. Dippold, F. Dolainsky, and W. Papke, “The land mobile satellite communication channel-recording, statistics, channel model,” IEEE Trans. Veh. Technol., vol. 40, no. 2, pp. 375–386, May 1991. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                508,
+                635,
+                939,
+                960
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "572 "
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                44,
+                90,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 3, NO. 6, DECEMBER 2014 "
+                    }
+                ]
+            },
+            "bbox": [
+                496,
+                42,
+                937,
+                55
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:18:57 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                109,
+                962,
+                880,
+                974
+            ]
+        }
+    ]
+]
