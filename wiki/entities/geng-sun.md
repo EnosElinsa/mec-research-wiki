@@ -12,6 +12,7 @@ related:
   - "[[sun-2025-emoppo-vlh-aerial-cb]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
   - "[[li-2024-emssa-uav-swarm-vaa]]"
+  - "[[sun-2025-tjcct-twotimescale-uav-mec]]"
 created: 2026-05-29
 updated: 2026-05-31
 ---
@@ -20,7 +21,7 @@ updated: 2026-05-31
 
 IEEE Member. Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China); also affiliated with the **College of Computing and Data Science, Nanyang Technological University** (Singapore) in several papers.
 
-Co-authored 9 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, and survey work in aerial/edge networks:
+Co-authored 10 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, and survey work in aerial/edge networks:
 
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
@@ -31,6 +32,7 @@ Co-authored 9 sources in this wiki, spanning vehicular, post-disaster, energy-ef
 - [[sun-2025-emoppo-vlh-aerial-cb]] — aerial collaborative beamforming to mobile users via evolutionary multi-objective RL (EMOPPO-VLH).
 - [[li-2024-emodrl-ground-space-cb]] — distributed collaborative beamforming for ground-space communications via EMODRL.
 - [[li-2024-emssa-uav-swarm-vaa]] — multi-objective UAV-swarm + IoT collaborative beamforming with virtual antenna arrays via the enhanced salp swarm algorithm (EMSSA).
+- [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale joint resource-allocation / offloading / trajectory-control UAV-MEC (TJCCT; corresponding author).
 
 ## Contributions to this wiki
 

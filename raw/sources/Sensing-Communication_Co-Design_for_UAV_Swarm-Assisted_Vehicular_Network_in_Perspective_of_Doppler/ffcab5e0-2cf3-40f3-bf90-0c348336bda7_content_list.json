@@ -1,0 +1,3125 @@
+[
+    {
+        "type": "text",
+        "text": "Sensing-Communication Co-Design for UAV Swarm-Assisted Vehicular Network in Perspective of Doppler ",
+        "text_level": 1,
+        "bbox": [
+            134,
+            71,
+            872,
+            178
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Qian Zhu , Rongke Liu , Senior Member, IEEE, Zijie Wang , Qirui Liu , Graduate Student Member, IEEE, and Changwen Chen , Fellow, IEEE ",
+        "bbox": [
+            80,
+            184,
+            924,
+            218
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—Utilizing the unmanned aerial vehicle (UAV) swarm to realize sensing and communication for ground vehicles (GVs) has been envisioned as a promising technology in harsh environments. Previous research in vehicular networks has ignored or assumed perfect elimination of Doppler, resulting in unstable or impractical dynamic system models. However, Doppler is essential for multidimensional sensing, especially for velocity estimation, but it may lead to loss of signal-to-noise ratio (SNR) in communication. In this case, to achieve satisfying sensing and communication performance simultaneously, we propose a sensing-communication co-design scheme for UAV swarm-assisted vehicular networks in perspective of Doppler. We first establish the mathematical models for the effect of Doppler on communication and sensing respectively. Then we analyze the influence of UAVs link selection on GV sensing-communication performance. Based on this framework, we aim to minimize the GVs’ maximum Cramer-Rao lower bound (CRLB) for sensing estimates with an SNR loss constraint to make a sensing-communication performance trade-off. Finally, an efficient differential evolution (DE)-based algorithm is developed to find a sub-optimal solution for this complicated non-convex problem. Numerical results demonstrate the validity and superiority of our co-design scheme. Compared with the state-of-the-art methods, our scheme can not only improve the sensing accuracy by more than 30% while ensuring communication, but also outperform over 20% in communication without sacrificing sensing capacity. ",
+        "bbox": [
+            63,
+            256,
+            498,
+            574
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Unmanned aerial vehicle (UAV) swarm, sensingcommunication co-design, doppler, cramer-rao lower bound (CRLB). ",
+        "bbox": [
+            65,
+            580,
+            496,
+            619
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received 7 April 2023; revised 26 July 2023; accepted 2 September 2023. Date of publication 15 September 2023; date of current version 13 February 2024. This work was supported in part by Beijing Natural Science Foundation under Grant L202003 and in part by Shenzhen Fundamental Research Program under Grant JCYJ20220818103413029. The review of this article was coordinated by Prof. Xingwang Li. (Corresponding author: Rongke Liu.) ",
+        "bbox": [
+            65,
+            689,
+            494,
+            768
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Qian Zhu, Zijie Wang, and Qirui Liu are with the School of Electronic and Information Engineering, Beihang University, Beijing 100191, China (e-mail: zhuqian001@buaa.edu.cn; wangmajie@buaa.edu.cn; qirui\\_liu@buaa.edu.cn). ",
+        "bbox": [
+            65,
+            768,
+            494,
+            803
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Rongke Liu is with the School of Electronic and Information Engineering, Beihang University, Beijing 100191, China, and also with the Shenzhen Institute, Beihang University, Shenzhen 523699, China (e-mail: rongke\\_liu@ buaa.edu.cn). ",
+        "bbox": [
+            65,
+            803,
+            494,
+            848
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Changwen Chen was with the Department of Computer Science and Engineering, University at Buffalo, State University of New York, Buffalo, NY 14260 USA. He is now with the Department of Computing, Hong Kong Polytechnic University, Hong Kong 999077, China (e-mail: changwen.chen@polyu.edu.hk). ",
+        "bbox": [
+            65,
+            848,
+            494,
+            893
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TVT.2023.3315868 ",
+        "bbox": [
+            79,
+            893,
+            372,
+            906
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            659,
+            256,
+            787,
+            270
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A. Motivations and Related Works ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            279,
+            749,
+            292
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "W ITH the in-depth promotion and commercialization ofthe fifth generation (5G) wireless networks, it is fore- the fifth generation (5G) wireless networks, it is foreseeable that the booming burgeon of future sixth generation (6G) is irresistible [1]. 5G presents a new paradigm to provide massive ubiquitous connectivity, in which the vehicle-toeverything (V2X) technology has been expected to substantially promote public living standards [2], [3], [4], [5]. However, these intelligent vehicle networks are often deployed in harsh network environments, such as urban canyons and isolated areas, where global navigation satellite system (GNSS) and other traditional positioning technologies may suffer serious performance degradation due to continual non-line-of-sight (NLoS) propagation [6], [7] and available anchor nodes with imperfect geometry [8], [9]. In this case, UAVs, with their advantages of high mobility and flexible deployment, have been envisioned as a promising solution to assist ground vehicles (GVs) to achieve network connection service, making up for the deficiency of GNSS [10], [11]. In addition, it is precisely for these reasons that UAVs have attracted widespread attention in both academia and industry, and may help provide a new quintessence for 6G vehicle networks [12], [13]. ",
+        "bbox": [
+            506,
+            300,
+            939,
+            618
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Integrated sensing and communication (ISAC) is considered a crucial and popular research interest in 6G era, where sensing and communication are forming a virtuous circle of mutual benefit [14], [15], [16]. With numerous sensing-communication applications springing up, it requires improving the performance of various networks to meet the demand of realizing multiple functions simultaneously. Nevertheless, in the existing research on UAV-assisted vehicle networks, the main functions such as location navigation and data communication are commonly designed separately [17]. In addition, the sensing performance of 6G vehicle networks not only includes the common position sensing, but also focus on the velocity sensing and other capabilities, which could realize the sensing dimensions increase and apply to more innovative sensing scenarios, such as coarsegrained indoor positioning [18], activity recognition [19] and even augmented reality [20]. ",
+        "bbox": [
+            506,
+            618,
+            939,
+            859
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Recently, many studies have shown that considering the collaboration of sensing and communication in the early stage of system design, namely sensing-communication co-design, can help improve system properties or resource efficiency, thus solving the above problems [21], [22]. In the scenario of [23], vehicle motion prediction based on radar perception is used to assist in receiving downlink communication signals. However, the performance metrics of these two functionalities are separate, which makes it impossible to compare them under a unified theoretical framework. The collaborative design of communication and control for vehicle-to-vehicle (V2V) networks is introducted in [24], [25], both of which design resource scheduling algorithm to ensure the stability of vehicle communication. In these two studies, the sensing errors of vehicles are perfectly assumed to be nonexistent, which is unrealistic in the actual situation. The authors in [26] and [27] study the control-aware communication to promote the resource utilization efficiency of wireless systems, but their research focuses on system control and resource utilization rather than measuring the ability to perform various tasks. These efforts contribute to understanding the mechanism behind the sensing-communication co-design. Unfortunately, there is still a lack of a theoretical framework to specify the trade-off between communication and sensing. ",
+        "bbox": [
+            506,
+            859,
+            939,
+            905
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "2578 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "0018-9545 © 2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            200,
+            914,
+            801,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            289,
+            926,
+            713,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            486,
+            380
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "As two typical sensing functionalities, velocity measurement and localization occupy the equal important status in UAVassisted vehicular networks. Many literatures have studied the positioning performance of UAV-assisted system by typical positioning methods such as Time Difference of Arrival (TDOA) or Frequency Difference of Arrival (FDOA) [28], [29], [30], but they only consider the static deployment of UAVs without involving the dynamic scene and the field of velocity perception, resulting in limited application scope. Doppler is an indispensable topic in velocity sensing, and it widely exists in dynamic vehicle networks under high relative motion scenario [31], [32]. In existing studies, Doppler shift in the channel is often either ignored for convenience or assumed to have been perfectly eliminated by relevant techniques for the communication purpose [33], [34], [35]. However, in the sensing domain, by introducing FDOA, it is equivalent to adding a constraint to TDOA, which can not only estimate the target velocity, but also improve its position accuracy [36], [37]. Combined with the above research, it can be seen that at present, the research on communication and sensing of Doppler is parallel, and the two have almost no intersection. Although the respective influence of Doppler on communication and sensing is self-evident, its unified performance index and theoretical framework have not been clearly defined so far, making it still an open issue. ",
+        "bbox": [
+            60,
+            382,
+            486,
+            743
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Combined with the above considerations, we shall focus particularly on the establishment of a theoretical framework for sensing-communication co-design, with Doppler as the point of penetration. Besides, The above research point can also provide theoretical support for future vehicle network design meeting more requirements simultaneously, which also has tremendous potential in the aspect of promoting sensing accuracy while guaranteeing communication capability. To the best of our knowledge, this is the first work to probe into both the sensing and communication co-design for UAV-assisted vehicle network from the perspective of Doppler. In the longer term, the framework of sensing-communication co-design may be applied to the integration of vehicles and other smart devices in the future vehicle networks [38], which also be expected to bring a new paradigm for the key technology of the future wireless networks design. ",
+        "bbox": [
+            57,
+            744,
+            486,
+            939
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            79,
+            930,
+            125
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "B. Main Contributions ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            148,
+            664,
+            162
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this article, a Doppler-oriented sensing-communication co-design scheme is proposed to improve the sensing accuracy of UAV-assisted vehicle networks while ensuring GVs’ communication requirements. To further evaluate the performance of the proposed design, we do comparison simulations with benchmark methods at different functional levels, including sensing and communication aspects respectively. In particular, the communication and sensing metrics derived from Doppler respectively are applied to the optimization problem of the proposed framework. Specifically, the main contributions of our research can be elaborated on as follows. ",
+        "bbox": [
+            500,
+            170,
+            929,
+            334
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) We consider a practical UAV swarm-assisted vehicle network consisting of multiple low-altitude UAVs and a terrestrial base station (BS) to provide network connectivity services for GVs in city canyon environments, which is a realistic dynamic three-dimensional (3-D) time slice with instantaneous coordinates and velocity vectors. ",
+            "2) We take the Doppler in the network UAV-GV links as the breakthrough point and derive the mathematical models of the influence on the communication and sensing respectively. ",
+            "3) We use two Doppler-based performance indicators obtained in 2) to construct the theoretical framework of sensing-communication trade-off and form related optimization problems. ",
+            "4) We propose a differential evolution (DE)-based approach according to the optimization problem formed in 3). Further, we compare and analyze the proposed design with benchmark methods under the consideration of sensing and communication functional levels respectively. "
+        ],
+        "bbox": [
+            518,
+            335,
+            929,
+            622
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Numerical results demonstrate the proposed DE-based approach significantly enhances the sensing-communication capabilities in the UAV swarm-assisted vehicular network compared to the state-of-the-art methods. To some extent, the conclusion can be in turn serve as a recommendation for the practical use of future vehicle network. ",
+        "bbox": [
+            500,
+            623,
+            929,
+            712
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The remainder of this article is organized as follows. The system model of the proposed UAV swarm-assisted vehicular network is introduced in Section II. Section III presents the Doppler-oriented sensing-communication framework and forms related optimization problems in detail. Section IV proposes the DE-based approach to slove the optimization problems in Section III. Section V provides numerical results to demonstrate the feasibility and superiority of the proposed algorithm in sensing-communication performance trade-off. Finally, the concluding remarks are drawn in Section VI. ",
+        "bbox": [
+            500,
+            713,
+            929,
+            864
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The main notations used in this article are summarized as follows. A denotes a matrix, a denotes a column vector, and a denotes a scalar. $| | \\mathbf { A } | | _ { F }$ represents the Frobenius norm of A, whereas $\\mathbf { A } ^ { T } , \\mathbf { A } ^ { H } , \\mathbf { A } ^ { - 1 }$ indicates its transpose, conjugate transpose, and inverse, respectively. diag(·) and blkdiag(·) denote the diagonal and block diagonal matrices, respectively. ${ \\mathbf { I } } _ { N }$ is the $N \\times N$ identity matrix and $\\mathbf { 0 } _ { N \\times M }$ represents the $N \\times M$ all-zero matrix. ",
+        "bbox": [
+            500,
+            864,
+            930,
+            941
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "ZHU et al.: SENSING-COMMUNICATION CO-DESIGN FOR UAV SWARM-ASSISTED VEHICULAR NETWORK IN PERSPECTIVE OF DOPPLER ",
+        "bbox": [
+            58,
+            37,
+            797,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2579 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            111,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/4cb3f00f8c1956252612aef2bece415247e8bad772a534755a6a386480201e58.jpg",
+        "image_caption": [
+            "Fig. 1. In a city canyon scenario, where GNSS system and terrestrial cellularbased positioning are unavailable due to high building blockage, UAV swarm provides sensing and communication services for GVs. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"City Canyon\"] --> B[\"UAV\"]\n    A --> C[\"GSV\"]\n    A --> D[\"Car\"]\n    A --> E[\"Truck\"]\n    A --> F[\"Truck\"]\n    A --> G[\"Truck\"]\n    H[\"Terrestrial BS\"] --> I[\"ARS\"]\n    I --> J[\"ARS\"]\n    J --> K[\"ARS->UAV (A2V) links\"]\n    J --> L[\"ARS->UAV (V2G) links\"]\n    J --> M[\"ARS->ARS (B2A) links\"]\n    J --> N[\"UAV->UAV (V2V) links\"]\n    style A fill:#f9f,stroke:#333\n    style H fill:#ccf,stroke:#333\n    style J fill:#cfc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            70,
+            80,
+            489,
+            329
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            402,
+            493,
+            446
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            210,
+            465,
+            351,
+            479
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In this article, as shown in Fig. 1, we consider a typical urban canyon scenario, where multiple GVs are waiting for services such as communication and sensing to be implemented utilizing aerial UAV swarm. In such scenario, conventional technologies such as GNSS systems and terrestrial cellular-based positioning fail to meet GVs’ location requirements due to building blockage [39]. The considered UAV swarm-assisted vehicular network consists of M moving low-altitude UAV platforms as aerial anchor nodes and K moving GVs. As an aerial reference station, ARS is directly connected with the BSs to achieve accurate self-positioning. In addition, ARS can assist the UAV swarm to achieve self-positioning through providing absolute measurements, which can cover a larger signal blind to provide sensing-communication services for multiple GVs. We assume that the whole UAV swarm is deployed at the edge of the studied vehicle network, and it has realized accurate self-positioning through the ground BS and ARS in advance [40], [41]. UAVs and GVs in the network are denoted by sets $\\mathcal { V } = \\{ V _ { 1 } , V _ { 2 } , \\ldots , V _ { M } \\}$ and $\\mathcal { K } = \\{ U _ { 1 } , U _ { 2 } \\ldots \\ldots , U _ { K } \\}$ , respectively, and each GV’s communication and sensing processes are independent of each other. We assume that there are always clear line-of-sight (LoS) paths between UAV-GV links, under which TDOA and FDOA measurements could realize quite high positioning accuracy [30]. In addition, the altitude of UAV swarm brings an noticeable increase in the chance of LoS channel, thus improving the GVs quality-of-service (QoS) experience [42]. ",
+        "bbox": [
+            65,
+            487,
+            494,
+            878
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "It should be noted here, for simplicity, we assume that the positioning error caused by time synchronization can be compensated by some existing efficient solutions [43]. The position and velocity vectors of the UAV n sliced at the time we concerned are denoted by ${ \\bf v } _ { n } = [ v _ { x } ^ { n } , v _ { y } ^ { n } , v _ { z } ^ { n } ] ^ { T } \\in \\mathbb { R } ^ { 3 \\times 1 } , n \\in \\mathcal { V }$ and $\\dot { \\mathbf v } _ { n } = [ \\dot { v } _ { x } ^ { n } , \\dot { v } _ { y } ^ { n } , \\dot { v } _ { z } ^ { n } ] ^ { T } \\in \\mathbb R ^ { 3 \\times 1 } , n \\in \\mathcal V$ v˙ y , v˙ respectively, where the dot notation represents the differential with respect to time. Similarly, we represent the true location and velocity of GV-k as ${ \\mathbf { u } } _ { k } = [ \\bar { u _ { x } ^ { k } } , u _ { y } ^ { k } , \\bar { u _ { z } ^ { k } } ] ^ { T } \\in \\mathbb { R } ^ { 3 \\times 1 } , k \\in \\mathcal { K }$ and $\\dot { \\mathbf { u } } _ { k } = [ \\dot { u } _ { x } ^ { k } , \\dot { u } _ { y } ^ { k } , \\dot { u } _ { z } ^ { k } ] ^ { T } \\in$ $\\mathbb { R } ^ { 3 \\times 1 } , k \\in \\mathcal { K }$ , respectively. Besides, the estimated location of the vehicles is $\\widetilde { \\mathbf { u } } _ { k }$ , and $\\widetilde { \\mathbf { u } } _ { k } = [ \\widetilde { u } _ { x } ^ { k } , \\widetilde { u } _ { y } ^ { k } , \\widetilde { u } _ { z } ^ { k } ] ^ { T } \\in \\mathbb { R } ^ { 3 \\times 1 }$ , k ∈ K. The estimated velocity of the vehicles is $\\widetilde { \\dot { \\bf u } } _ { k }$ , and $\\widetilde { \\mathbf { u } } _ { k } = [ \\widetilde { \\dot { u } } _ { x } ^ { k } , \\widetilde { \\dot { u } } _ { y } ^ { k } , \\widetilde { \\dot { u } } _ { z } ^ { k } ] ^ { T } \\in$ $\\mathbb { R } ^ { 3 \\times 1 } , k \\in \\mathcal { K }$ . For convenience, we suppose that all GVs have the same elevation $H _ { U }$ , that is $u _ { z } ^ { k } = H _ { U }$ , both which and the UAVs altitude can be easily and precisely measured by professional equipments, such as barometers [44], and the height measurement accuracy of these technologies can reach sub-meter level. The circular light green area in which GNSS and terrestrial cellular services are completely disrupted is called the “waiting service area”, as shown in Fig. 1. ",
+        "bbox": [
+            65,
+            880,
+            494,
+            941
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            80,
+            936,
+            332
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The operation process of the studied network is described as follows. Preliminaries: The UAVs have the ability to transmit or receive signals exclusively for communication or sensing purposes, and the GVs are also capable of receiving the corresponding signals [29]. Step 1: By utilizing the signals received from a certain number of the UAV anchors, each GV obtains the TDOA and FDOA estimations and relevant channel quality information. Step 2: Each GV estimates its position and velocity and receives the downlink data through the air-to-ground (A2G) channel by utilizing the multilateral localization algorithm and the information obtained in Step 1 [42]. ",
+        "bbox": [
+            506,
+            333,
+            936,
+            498
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In the following subsections, we introduce the mathematical signal model and the associated measurement model of the studied network to provide communication and sensing services for GVs. ",
+        "bbox": [
+            506,
+            500,
+            937,
+            556
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. Signal Model ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            574,
+            627,
+            589
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Assuming that the signal to be transmitted of the UAV-GV downlink in the scenario is $S ( k _ { s } )$ , where $k _ { s }$ represents the $k _ { s }$ -th subcarrier in orthogonal frequency division multiplexing (OFDM) modulation. Without considering cyclic prefix and assuming that the ideal sampling theorem is satisfied, the signal sent by the UAV can be expressed as ",
+        "bbox": [
+            506,
+            595,
+            937,
+            686
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx (t) = \\sum_ {k _ {s} = 0} ^ {N _ {s} - 1} S (k _ {s}) \\cdot e ^ {j 2 \\pi \\frac {k _ {s} t}{T _ {s}}} \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            624,
+            691,
+            936,
+            734
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $N _ { s }$ and $T _ { s }$ represent the number of subcarriers and the sampling interval respectively. As described in Section II, we indicate the Euclidean distance between the ranging pair UAV-i and vehicle-k as $r _ { i , k } = \\| \\mathbf { v } _ { i } - \\mathbf { u } _ { k } \\| _ { 2 }$ , then the path loss1 of LoS between UAV-i and GV-k follows the free space propagation model and can be expressed as ",
+        "bbox": [
+            506,
+            741,
+            937,
+            830
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP L _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} = \\beta_ {0} r _ {i, k} ^ {\\alpha}, \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            653,
+            838,
+            936,
+            856
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { \\beta _ { 0 } = ( \\frac { 4 \\pi f _ { c } } { c } ) ^ { 2 } } \\end{array}$ is the reference path loss when the distance is 1 m; α is the path loss exponent (PLE) of the A2G channel under LoS conditions; $f _ { c }$ and c are the main frequency of the ranging signal and the speed of light, respectively. Without considering the phase deviation, as shown in Fig. 2, the signal received by the GV-k can be expressed as ",
+        "bbox": [
+            506,
+            863,
+            937,
+            895
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "2580 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_footnote",
+        "text": "1The small-scale fading in the channel model will be taken into account in our future work. ",
+        "bbox": [
+            508,
+            914,
+            937,
+            938
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/1765215cc8e8cf626030954efe07c53e5e5dbe551b43768b0e5c082c6377503e.jpg",
+        "image_caption": [
+            "Fig. 2. Signal model of UAV swarm-assisted vehicular network. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"UAV-i\"] -->|xvi←uk(t)| B[\"GV-k\"]\n    C[\"Air-to-Air Channel\"] -->|......| B\n    D[\"Air-to-Ground Channel\"] -->|yvi←uk(t)| B\n    style A fill:#f9f,stroke:#333\n    style C fill:#f9f,stroke:#333\n    style D fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            90,
+            79,
+            462,
+            324
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            366,
+            488,
+            428
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} y _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} (t) = \\frac {x _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} (t - \\Delta t _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}) \\cdot e ^ {- j 2 \\pi \\cdot \\Delta f _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} \\cdot t}}{\\sqrt {P L _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}}} \\\\ + \\eta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} (t) \\tag {3} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            87,
+            433,
+            486,
+            494
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $x _ { { \\mathbf { v } } _ { i }  { \\mathbf { u } } _ { k } } ( t )$ represents the transmitted ranging signal assigned between UAV-i and GV-k; $\\Delta t _ { { \\bf v } _ { i }  { \\bf u } _ { k } }$ and $\\Delta f _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } }$ are the transmission time delay and frequency offset of the received signal respectively. $\\eta _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } ( t )$ is the additive Gaussian white noise of the channel with a mean of zero and a variance of $\\sigma _ { 0 } ^ { 2 } .$ After sampling, then the received signal is transformed by Fast Fourier Transform (FFT) and simplified in formula (4), $\\begin{array} { r } { \\eta _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } ^ { \\prime } = \\sum _ { n = 0 } ^ { N _ { s } - 1 } \\eta _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } \\exp ( - \\mathrm { j } 2 \\pi n \\bar { k _ { s } } / \\bar { N } _ { s } ) = } \\end{array}$ $\\mathrm { D F T } [ \\eta _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } ]$ ] and $\\beta _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } = \\Delta f _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } T _ { s }$ , which means the discrete Fourier transform (DFT) of η, and it’s still a Gaussian white noise with a mean of zero and a variance of $\\sigma _ { 0 } ^ { 2 } .$ . In addition, we define the ideal SNR as $E _ { s } / N _ { 0 }$ , which means the ratio of energy per bit to noise power spectrum density [45]. ",
+        "bbox": [
+            57,
+            501,
+            488,
+            713
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Measurement Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            729,
+            227,
+            742
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "As shown in Fig. 3, consider a time slice in 3-D space where M0 moving UAVs are providing communication, sensing, and other services for GV-k. Assume that the set of UAV anchor nodes serving the GV-k is ${ { \\mathcal { V } } _ { k } } = \\{ V _ { { k _ { 1 } } } , V _ { { k _ { 2 } } } , . ~ . ~ . , V _ { { k _ { M _ { 0 } } } } \\}$ , and that $M _ { 0 } \\ge 4 [ 3 1 ]$ . Since the service process of each GV in the vehicular network is completely independent, subsequent theoretical derivation and analysis will be carried out with GV-k as an example. ",
+        "bbox": [
+            58,
+            750,
+            488,
+            813
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/2d91c5bd219928ee84c29c029b5228c51b883f02ef48bfca3ffd18e6c98bdfe3.jpg",
+        "image_caption": [
+            "Fig. 3. Measurement model of UAV swarm-assisted vehicular network. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Drone 1\"] -->|v̇k1| B[\"Drone 2\"]\n    A -->|v̇k4| C[\"Drone 3\"]\n    B -->|v̇k2| D[\"Drone 4\"]\n    B -->|v̇k5| E[\"Drone 5\"]\n    C -->|v̇k3| F[\"Drone 6\"]\n    C -->|v̇k4| G[\"...\"]\n    D -->|v̇k2| H[\"u_k\"]\n    E -->|v̇k5| H\n    F -->|v̇k3| H\n    G -->|u̇k| H\n    H --> I[\"r_{k1,k}\"]\n    I --> J[\"v_{k1}\"]\n    J --> K[\"...\"]\n    K --> L[\"u_k\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#ccf,stroke:#333\n    style D fill:#ccf,stroke:#333\n    style E fill:#ccf,stroke:#333\n    style F fill:#ccf,stroke:#333\n    style G fill:#ccf,stroke:#333\n    style H fill:#ccf,stroke:#333\n    style I fill:#fff,stroke:#333\n    style J fill:#fff,stroke:#333\n    style K fill:#fff,stroke:#333\n    style L fill:#fff,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            531,
+            82,
+            904,
+            335
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            378,
+            930,
+            438
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Let $\\mathbf { u } _ { k } = [ u _ { x } ^ { k } , u _ { y } ^ { k } , u _ { z } ^ { k } ] ^ { T }$ and $\\dot { \\mathbf u } _ { k } = [ \\dot { u } _ { x } ^ { k } , \\dot { u } _ { y } ^ { k } , \\dot { u } _ { z } ^ { k } ] ^ { T }$ be the position and velocity of the GV-k to be determined. Without loss of generality, we set the first UAV to be the reference UAV BS and the actual Euclidean distance between GV-k and the $k _ { i } .$ -th UAV is [32] ",
+        "bbox": [
+            500,
+            438,
+            930,
+            515
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {k _ {i}, k} = \\left\\| \\mathbf {v} _ {k _ {i}} - \\mathbf {u} _ {k} \\right\\| = \\sqrt {\\left(\\mathbf {v} _ {k _ {i}} - \\mathbf {u} _ {k}\\right) ^ {T} \\left(\\mathbf {v} _ {k _ {i}} - \\mathbf {u} _ {k}\\right)} \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            543,
+            523,
+            930,
+            549
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $k _ { i } = 1 , 2 , . . . , M _ { 0 }$ and $k = 1 , 2 , . . . , K$ , then the range difference of arrival (RDOA) from the UAV pair $\\mathbf { v } _ { k _ { i } }$ and $\\mathbf { v } _ { k _ { 1 } }$ is denoted as ",
+        "bbox": [
+            500,
+            556,
+            930,
+            599
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {k _ {i} k _ {1}, k} = r _ {k _ {i}, k} - r _ {k _ {1}, k} \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            636,
+            613,
+            930,
+            628
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Take the time derivative of both sides of (5), and the range rate between GV-k and the $k _ { i } { \\mathrm { - t h } } \\mathrm { U A V }$ i s ",
+        "bbox": [
+            500,
+            636,
+            930,
+            666
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\dot {r} _ {k _ {i}, k} = \\frac {\\left(\\dot {\\mathbf {v}} _ {k _ {i}} - \\dot {\\mathbf {u}} _ {k}\\right) ^ {T} \\left(\\mathbf {v} _ {k _ {i}} - \\mathbf {u} _ {k}\\right)}{r _ {k _ {i} , k}} \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            601,
+            672,
+            930,
+            708
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "And on that basis, the range difference rate (RDR) from the UAV pair $\\mathbf { v } _ { k _ { i } }$ and $\\mathbf { v } _ { k _ { 1 } }$ can be expressed as ",
+        "bbox": [
+            500,
+            715,
+            930,
+            746
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\dot {r} _ {k _ {i} k _ {1}, k} = \\dot {r} _ {k _ {i}, k} - \\dot {r} _ {k _ {1}, k} \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            636,
+            755,
+            930,
+            771
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In practical scenarios, the additive noise is ubiquitous in both TDOA $\\mathbf { T } _ { d , k } = [ \\Delta t _ { k _ { 2 } k _ { 1 } , k } , \\Delta t _ { k _ { 3 } k _ { 1 } , k } , \\ldots , \\Delta t _ { k _ { M _ { 0 } } k _ { 1 } , k } ] ^ { T }$ and ",
+        "bbox": [
+            500,
+            780,
+            930,
+            813
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} R _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} (k _ {s}) = \\frac {1}{N _ {s}} S (k _ {s}) \\cdot \\frac {\\sin (\\pi N _ {s} \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}})}{\\sin (\\pi \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}})} \\cdot e ^ {j \\pi (N _ {s} - 1) \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}} \\\\ + \\frac {1}{N _ {s}} \\sum_ {\\substack {m _ {s} = 0 \\\\ m _ {s} \\neq k _ {s}}} ^ {N _ {s} - 1} S (m _ {s}) \\cdot \\frac {\\sin \\left(\\pi N _ {s} \\left(\\frac {m _ {s} - k _ {s}}{N _ {s}} - \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}\\right)\\right)}{\\sin \\left(\\pi \\left(\\frac {m _ {s} - k _ {s}}{N _ {s}} - \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}\\right)\\right)} \\cdot e ^ {j \\pi (N _ {s} - 1) \\left(\\frac {m _ {s} - k _ {s}}{N _ {s}} \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}\\right)} + \\eta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} ^ {\\prime} \\tag{4} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            139,
+            832,
+            930,
+            929
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "ZHU et al.: SENSING-COMMUNICATION CO-DESIGN FOR UAV SWARM-ASSISTED VEHICULAR NETWORK IN PERSPECTIVE OF DOPPLER ",
+        "bbox": [
+            58,
+            37,
+            797,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "2581 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "FDOA $\\mathbf { F } _ { d , k } = [ \\Delta f _ { k _ { 2 } k _ { 1 } , k } , \\Delta f _ { k _ { 3 } k _ { 1 } , k } , . . . , \\Delta f _ { k _ { M _ { 0 } } k _ { 1 } , k } ] ^ { T }$ . In addition, each element in $\\mathbf { T } _ { d , k }$ and $\\mathbf { F } _ { d , k }$ represents the time and frequency observations of the corresponding UAV pairs, respectively. Let ${ \\bf d } _ { k }$ and $\\dot { \\mathbf { d } _ { k } }$ be the measurement vectors of RD and RDR respectively, we have ",
+        "bbox": [
+            65,
+            80,
+            494,
+            157
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {d} _ {k} = \\left[ d _ {k _ {2} k _ {1}, k}, d _ {k _ {3} k _ {1}, k}, \\dots , d _ {k _ {M _ {0}} k _ {1}, k} \\right] ^ {T} = c \\mathbf {T} _ {d, k} = \\mathbf {r} _ {k} + \\Delta \\mathbf {r} _ {k} \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            67,
+            175,
+            493,
+            214
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\dot {\\mathbf {d}} _ {k} = \\left[ \\dot {d} _ {k _ {2} k _ {1}, k}, \\dot {d} _ {k _ {3} k _ {1}, k}, \\dots , \\dot {d} _ {k _ {M _ {0}} k _ {1}, k} \\right] ^ {T} = \\frac {c \\mathbf {F} _ {d , k}}{f _ {c}} = \\dot {\\mathbf {r}} _ {k} + \\Delta \\dot {\\mathbf {r}} _ {k} \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            67,
+            222,
+            493,
+            268
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { r } _ { k } = [ r _ { k _ { 2 } k _ { 1 } , k } , r _ { k _ { 3 } k _ { 1 } , k } , . . . , r _ { k _ { M _ { 0 } } k _ { 1 } , k } ] ^ { T }$ and $\\dot { \\mathbf { r } } _ { k } =$ $\\big [ \\dot { r } _ { k _ { 2 } k _ { 1 } , k } , \\dot { r } _ { k _ { 3 } k _ { 1 } , k } , \\dots , \\dot { r } _ { k _ { M _ { 0 } } k _ { 1 } , k } \\big ] ^ { T }$ are the RD and RDR vectors without noise, respectively. The corresponding noise vectors $\\Delta \\mathbf { r } _ { k } = [ \\Delta r _ { k _ { 2 } k _ { 1 } , k } , \\Delta r _ { k _ { 3 } k _ { 1 } , k } , . . . , \\Delta r _ { k _ { M _ { 0 } } k _ { 1 } , k } ] ^ { T }$ and $\\Delta \\dot { \\mathbf { r } } _ { k } = [ \\Delta \\dot { r } _ { k _ { 2 } k _ { 1 } , k } , \\Delta \\dot { r } _ { k _ { 3 } k _ { 1 } , k } , \\dots , \\Delta \\dot { r } _ { k _ { M _ { 0 } } k _ { 1 } , k } ] ^ { T }$ are assumed to be zero-mean Gaussian random vectors with known covariance matrices $\\mathbf { Q } _ { r , k }$ and $\\mathbf { Q } _ { f , k }$ , respectively. Furthermore, we presume that $\\Delta \\mathbf { r } _ { k }$ and $\\Delta \\dot { \\mathbf { r } } _ { k }$ are uncorrelated of each other, define the noise vector as $\\Delta \\ddot { \\alpha } _ { k } = [ \\Delta \\mathbf { r } _ { k } ^ { T } , \\Delta \\dot { \\mathbf { r } } _ { k } ^ { T } ] ^ { T }$ and its covariance matrix as ",
+        "bbox": [
+            65,
+            289,
+            496,
+            444
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbb {E} [ \\Delta \\boldsymbol {\\alpha} _ {k} \\Delta \\boldsymbol {\\alpha} _ {k} ^ {T} ] = \\mathbf {Q} _ {\\Delta \\boldsymbol {\\alpha} _ {k}} \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            196,
+            463,
+            494,
+            482
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Therefore, the following formula can be satisfied ",
+        "bbox": [
+            65,
+            501,
+            400,
+            516
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {Q} _ {\\Delta \\alpha_ {k}} = \\text { blkdiag } \\left(\\mathbf {Q} _ {r, k}, \\mathbf {Q} _ {f, k}\\right) \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            173,
+            536,
+            494,
+            554
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { Q } _ { r , k } = \\mathbb { E } [ \\Delta \\mathbf { r } _ { k } \\Delta \\mathbf { r } _ { k } ^ { T } ]$ and $\\mathbf { Q } _ { f , k } = \\mathbb { E } [ \\Delta \\dot { \\mathbf { r } } _ { k } \\Delta \\dot { \\mathbf { r } } _ { k } ^ { T } ]$ , and $\\mathbb { E } [ \\cdot ]$ is the expectation operation. ",
+        "bbox": [
+            65,
+            571,
+            491,
+            603
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "It can be seen that the measurement model in (9) and (10) covers many unbiased TDOA and FDOA measurement, which are not linearly related with GV-k’s location $\\mathbf { u } _ { k }$ and velocity $\\dot { \\mathbf { u } } _ { k }$ . The GVs localization problem considered here is to estimate the GV-k’s position $\\mathbf { u } _ { k }$ and velocity $\\dot { \\mathbf { u } } _ { k }$ via exploiting the measurement (9) and (10). ",
+        "bbox": [
+            65,
+            604,
+            494,
+            694
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "III. SENSING-COMMUNICATION CO-DESIGN FRAMEWORK AND PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            722,
+            491,
+            751
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this section, the effects of Doppler on communication and sensing in the proposed UAV swarm-assisted vehicular network are investigated, and corresponding Doppler-related performance metrics are derived respectively. On this basis, the above two Doppler-related indicators are introduced into the design of the proposed optimization problem, so as to ensure the sensing-communication ability of the studied network. Different from previous studies in which Doppler is assumed to be perfectly eliminated by some mature technique [34], [46], we consider the impact of Doppler on the communication-sensing in the real UAV swarm-assisted dynamic vehicular network, making the evaluation results more practical. ",
+        "bbox": [
+            65,
+            758,
+            494,
+            940
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A. Performance Analysis of Doppler for Communication ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            80,
+            897,
+            95
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "According to formula (4) in Section II.A, it can be seen that the Doppler frequency $\\Delta f _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } }$ indeed cause signal amplitude attenuation $\\frac { \\sin ( \\pi N _ { s } \\beta _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } ) } { \\sin ( \\pi \\beta _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } ) }$ , inter-carrier interference (ICI) $I _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } } ( k _ { s } )$ , as shown in the following formula, and other problems, which means that the Doppler $\\Delta f _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } }$ destroys the orthogonality between subcarriers, causing ICI in the signal channel, leading to deterioration of the SNR. ",
+        "bbox": [
+            506,
+            99,
+            937,
+            220
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI_{\\mathbf{v}_{i}\\leftrightarrow \\mathbf{u}_{k}}(k_{s}) = \\frac{1}{N_{s}}\\sum_{\\substack{m_{s} = 0\\\\ m_{s}\\neq k_{s}}}^{N_{s} - 1}S(m_{s})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            228,
+            779,
+            281
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\sin \\left(\\pi N _ {s} \\left(\\frac {m _ {s} - k _ {s}}{N _ {s}} - \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}\\right)\\right)}{\\sin \\left(\\pi \\left(\\frac {m _ {s} - k _ {s}}{N _ {s}} - \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}\\right)\\right)}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            661,
+            286,
+            888,
+            339
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\cdot e ^ {j \\pi (N _ {s} - 1) \\left(\\frac {m _ {s} - k _ {s}}{N _ {s}} \\beta_ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}\\right)} \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            661,
+            344,
+            936,
+            364
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Obviously, when the OFDM system is completely synchronized, there is no frequency offset in the system, thus no ICI, and the received signal is only affected by Gaussian white noise. In this case, the OFDM system has no performance loss and the SNR is $E _ { s } / N _ { 0 }$ . To quantitatively investigate the influence of Doppler on the SNR loss of OFDM system, $D n f$ is proposed and the relevant formula of $D n f _ { { \\mathbf { v } } _ { i }  { \\mathbf { u } } _ { k } }$ can be expressed as [45] ",
+        "bbox": [
+            506,
+            372,
+            937,
+            479
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} D n f _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} = 1 0 \\lg \\left\\{1 + \\frac {E _ {s}}{N _ {0}} \\left[ 1 - \\left| \\frac {\\sin (\\pi N _ {s} \\Delta f _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} T _ {s})}{N _ {s} \\sin (\\pi \\Delta f _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} T _ {s})} \\right| ^ {2} \\right] \\right\\} \\\\ - 1 0 \\lg \\left[ \\left| \\frac {\\sin (\\pi N _ {s} \\Delta f _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} T _ {s})}{N _ {s} \\sin (\\pi \\Delta f _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} T _ {s})} \\right| ^ {2} \\right] \\tag {14} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            508,
+            484,
+            937,
+            573
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In addition, it can be concluded that $D n f _ { { \\bf v } _ { i }  { \\bf u } _ { k } }$ is related to the number of subcarriers $N _ { s }$ and the Doppler frequency offset of the link $\\Delta f _ { \\mathbf { v } _ { i }  \\mathbf { u } _ { k } }$ , both of which are proportional to $D n f _ { { \\mathbf { v } } _ { i }  { \\mathbf { u } } _ { k } } .$ ",
+        "bbox": [
+            506,
+            579,
+            937,
+            625
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Further, according to the Shannon-Hartley theorem $[ 4 7 ] ,$ , the channel capacity of the UAV-i and GV-k link is denoted as ",
+        "bbox": [
+            506,
+            625,
+            937,
+            654
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}} = B \\cdot \\log_ {2} \\left[ 1 + \\left(\\frac {E _ {s}}{N _ {0}} - D n f _ {\\mathbf {v} _ {i} \\leftrightarrow \\mathbf {u} _ {k}}\\right) \\right] \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            543,
+            660,
+            936,
+            694
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "which is a significant indicator to measure system communication performance, and B is the signal bandwidth. Therefore, the channel capacity of GV-k for communication purposes is as follows ",
+        "bbox": [
+            506,
+            699,
+            937,
+            758
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {\\mathbf {u} _ {k}} = \\sum_ {i = 1} ^ {M _ {o}} C _ {\\mathbf {v} _ {k _ {i}} \\leftrightarrow \\mathbf {u} _ {k}} \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            649,
+            765,
+            936,
+            806
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The conclusion is drawn obviously from the formula above that the SNR loss caused by Doppler $D n f _ { \\mathbf { v } _ { k , i }  \\mathbf { u } _ { k } }$ is closely related to channel capacity, both of which are inversely proportional. ",
+        "bbox": [
+            506,
+            811,
+            937,
+            858
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Performance Analysis of Doppler for Sensing ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            873,
+            843,
+            888
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Cramer-Rao lower bound (CRLB) has been widely used in signal processing and parameter estimation to ascertain the lower bound of all unbiased estimates [48]. ",
+        "bbox": [
+            506,
+            893,
+            937,
+            940
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "2582 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            960,
+            880,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Therefore, The best attainable accuracy for estimating CRLB. Set φk = [uTk , u˙ Tk ] T , which contains the GV-k’s the GV-k’s position $\\phi _ { k } = [ \\mathbf { u } _ { k } ^ { T } , \\dot { \\mathbf { u } } _ { k } ^ { T } ] ^ { T }$ $\\mathbf { u } _ { k }$ and velocity u˙ k is limited by the location and speed estimates. The RD and RDR can be arranged into column vectors, that is $\\mathbf q _ { k } = [ \\mathbf d _ { k } ^ { T } , \\dot { \\mathbf d } _ { k } ^ { T } ] ^ { T } =$ $[ d _ { k _ { 2 } k _ { 1 } , k } , d _ { k _ { 3 } k _ { 1 } , k } , \\ldots , d _ { k _ { M _ { 0 } } k _ { 1 } , k } , \\dot { d } _ { k _ { 2 } k _ { 1 } , k } , \\dot { d } _ { k _ { 3 } k _ { 1 } , k } , \\ldots , \\dot { d } _ { k _ { M _ { 0 } } k _ { 1 } , k } ] ^ { T } .$ . Let $p ( \\mathbf { q } _ { k } | \\phi _ { k } )$ be the probability density function of $\\mathbf { q } _ { k }$ and parameterize it by the vector $\\phi _ { k }$ . The Fisher Information Matrix (FIM) of $\\phi _ { k }$ can be denoted as [49] ",
+        "bbox": [
+            58,
+            79,
+            486,
+            217
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {J} _ {\\phi_ {k}} = \\mathrm{E} \\left[ \\left(\\frac {\\partial \\ln p (\\mathbf {q} _ {k} | \\phi_ {k})}{\\partial \\phi_ {k} ^ {T}}\\right) ^ {T} \\left(\\frac {\\partial \\ln p (\\mathbf {q} _ {k} | \\phi_ {k})}{\\partial \\phi_ {k} ^ {T}}\\right) \\right] \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            84,
+            224,
+            486,
+            266
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Therefore, according to CRLB is the inverse of matrix $\\mathbf { J } _ { \\phi _ { k } }$ , it can be obtained by ",
+        "bbox": [
+            58,
+            273,
+            488,
+            303
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {C R L B} \\left(\\phi_ {k}\\right) = \\left\\{\\left(\\frac {\\partial \\mathbf {q} _ {k} \\left(\\phi_ {k}\\right)}{\\partial \\phi_ {k} ^ {T}}\\right) ^ {T} \\mathbf {Q} _ {\\Delta \\alpha_ {k}} ^ {- 1} \\left(\\frac {\\partial \\mathbf {q} _ {k} \\left(\\phi_ {k}\\right)}{\\partial \\phi_ {k} ^ {T}}\\right) \\right\\} ^ {- 1} \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            74,
+            311,
+            486,
+            368
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where the expression of $\\partial { \\bf q } _ { k } ( \\phi _ { k } ) / \\partial \\phi _ { k } ^ { T }$ is as follows ",
+        "bbox": [
+            58,
+            378,
+            419,
+            397
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial \\mathbf {q} _ {k} (\\phi_ {k})}{\\partial \\phi_ {k} ^ {T}} = \\left[ \\begin{array}{l l} \\frac {\\partial \\mathbf {r} _ {k}}{\\partial \\mathbf {u} _ {k} ^ {T}} & \\frac {\\partial \\mathbf {r} _ {k}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} \\\\ \\frac {\\partial \\dot {\\mathbf {r}} _ {k}}{\\partial \\mathbf {u} _ {k} ^ {T}} & \\frac {\\partial \\dot {\\mathbf {r}} _ {k}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} \\end{array} \\right] \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            402,
+            486,
+            468
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            58,
+            474,
+            106,
+            487
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial \\mathbf {r} _ {k}}{\\partial \\mathbf {u} _ {k} ^ {T}} = \\left[ \\begin{array}{c} \\frac {\\left(\\mathbf {v} _ {k _ {2}} - \\mathbf {u} _ {k}\\right) ^ {T}}{r _ {k _ {2} , k}} - \\frac {\\left(\\mathbf {v} _ {k _ {1}} - \\mathbf {u} _ {k}\\right) ^ {T}}{r _ {k _ {1} , k}} \\\\ \\vdots \\\\ \\frac {\\left(\\mathbf {v} _ {k _ {M _ {0}}} - \\mathbf {u} _ {k}\\right) ^ {T}}{r _ {k _ {M _ {0}} , k}} - \\frac {\\left(\\mathbf {v} _ {k _ {1}} - \\mathbf {u} _ {k}\\right) ^ {T}}{r _ {k _ {1} , k}} \\end{array} \\right] \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            87,
+            494,
+            486,
+            589
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial \\dot {\\mathbf {r}} _ {k}}{\\partial \\mathbf {u} _ {k} ^ {T}} = \\left[ \\begin{array}{c} \\frac {(\\mathbf {v} _ {k _ {2}} - \\mathbf {u} _ {k}) ^ {T} \\dot {r} _ {k _ {2} , k}}{r _ {k _ {2} , k} ^ {2}} - \\frac {(\\mathbf {v} _ {k _ {1}} - \\mathbf {u} _ {k}) ^ {T} \\dot {r} _ {k _ {1} , k}}{r _ {k _ {1} , k} ^ {2}} \\\\ \\vdots \\\\ \\frac {(\\mathbf {v} _ {k _ {M _ {0}}} - \\mathbf {u} _ {k}) ^ {T} \\dot {r} _ {k _ {M _ {0}} , k}}{r _ {k _ {M _ {0}} , k} ^ {2}} - \\frac {(\\mathbf {v} _ {k _ {1}} - \\mathbf {u} _ {k}) ^ {T} \\dot {r} _ {k _ {1} , k}}{r _ {k _ {1} , k} ^ {2}} \\end{array} \\right]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            87,
+            593,
+            484,
+            691
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\left[ \\begin{array}{c} \\frac {\\left(\\dot {\\mathbf {v}} _ {k _ {2}} - \\dot {\\mathbf {u}} _ {k}\\right) ^ {T}}{r _ {k _ {2} , k}} - \\frac {\\left(\\dot {\\mathbf {v}} _ {k _ {1}} - \\dot {\\mathbf {u}} _ {k}\\right) ^ {T}}{r _ {k _ {1} , k}} \\\\ \\vdots \\\\ \\frac {\\left(\\dot {\\mathbf {v}} _ {k _ {M _ {0}}} - \\dot {\\mathbf {u}} _ {k}\\right) ^ {T}}{r _ {k _ {M _ {0}} , k}} - \\frac {\\left(\\dot {\\mathbf {v}} _ {k _ {1}} - \\dot {\\mathbf {u}} _ {k}\\right) ^ {T}}{r _ {k _ {1} , k}} \\end{array} \\right] \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            127,
+            696,
+            486,
+            791
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ff78070d2ee81b1b5011a5f92ffb1a8654da0de9c74812a500825189f029e0cd.jpg",
+        "content": "| x (m) | y (m) | Position Type     |\n|-------|-------|-------------------|\n| 100   | 700   | Selected link-1   |\n| 100   | 350   | UAV position      |\n| 200   | 600   | Selected link-1   |\n| 200   | 200   | UAV position      |\n| 300   | 500   | Selected link-1   |\n| 300   | 750   | UAV position      |\n| 400   | 500   | Selected link-1   |\n| 400   | 500   | UAV position      |\n| 500   | 550   | Selected link-1   |\n| 500   | 450   | UAV position      |\n| 600   | 650   | Selected link-1   |\n| 600   | 550   | UAV position      |\n| 700   | 700   | Selected link-1   |\n| 700   | 650   | UAV position      |\n| 800   | 650   | Selected link-1   |\n| 800   | 250   | UAV position      |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            506,
+            80,
+            696,
+            223
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d74cebdd9ac3e0e23c0c246e673b2a296ad98f35ce25a0a8d7777da7def5851e.jpg",
+        "content": "| Selected link | Position accuracy (m) | Velocity accuracy (m/s) | DNF (dB) |\n| ------------- | --------------------- | ----------------------- | -------- |\n| Selected link-1 | 2.7 | 1.25 | 1.0 |\n| Selected link-2 | 2.7 | 1.25 | 2.0 |",
+        "chart_caption": [
+            "Fig. 4. Simulation example of selecting different UAV links for a same GV: (a) scenario, (b) performance results of sensing and communication. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            703,
+            80,
+            925,
+            223
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial \\dot {\\mathbf {r}} _ {k}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} = \\frac {\\partial \\mathbf {r} _ {k}}{\\partial \\mathbf {u} _ {k} ^ {T}} \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            528,
+            281,
+            929,
+            315
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial \\mathbf {r} _ {k}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} = \\mathbf {0} _ {(M _ {0} - 1) \\times 3} \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            530,
+            320,
+            927,
+            354
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "More specifically, we have ",
+        "bbox": [
+            501,
+            358,
+            686,
+            373
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC R L B \\left(\\mathbf {u} _ {k}\\right) = t r \\left(\\mathbf {C R L B} \\left(\\phi_ {k}\\right) (1: 3, 1: 3)\\right) \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            380,
+            929,
+            397
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC R L B \\left(\\dot {\\mathbf {u}} _ {k}\\right) = t r \\left(\\mathbf {C R L B} \\left(\\phi_ {k}\\right) (4: 6, 4: 6)\\right) \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            402,
+            929,
+            420
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, to further explore the essential composition of CRLB, further simultaneous (17) and (20)–(23) can be expressed as (26) explicitly, shown at the bottom of the page. ",
+        "bbox": [
+            500,
+            426,
+            930,
+            470
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "It can be seen from the (26) that positioning and velocity accuracy are highly coupled with each other, both of which are correlated with the geometry of the UAV set $\\nu _ { k }$ [50]. However, the detailed calculation process between the $C R L B ( { \\mathbf { u } } _ { k } )$ and $C R L B ( \\dot { \\mathbf { u } } _ { k } )$ involves matrix inversion, which makes the solution process extremely complicated. In general, compared with only considering TDOA, the additional application of FDOA not only increases the dimension of observation, thus improving the positioning accuracy, but also increases the function of velocity measurement. ",
+        "bbox": [
+            500,
+            472,
+            929,
+            619
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Considering subsections A and B of this section, it can be concluded that Doppler seems to degrade the communication performance of the vehicle network [45], but it can be utilized to realize sensing functions such as positioning and velocity measurement [28]. Further, we operate a simulation experiment in the following scenario, as shown in Fig. 4(a). It can be seen that, for the same circled GV, two UAV subsets with basically the same sensing performance can be found. Specifically, position and velocity measurement accuracy are about 2.5 m and 0.8 m/s, respectively. Unfortunately, the communication capabilities provided by these two subsets of UAVs differed dramatically, with ",
+        "bbox": [
+            500,
+            622,
+            930,
+            789
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathbf {J} _ {\\phi_ {k}} = \\left[ \\begin{array}{c c} \\left(\\frac {\\partial \\mathbf {r}}{\\partial \\mathbf {u} _ {k} ^ {T}}\\right) ^ {T} & \\left(\\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\mathbf {u} _ {k} ^ {T}}\\right) ^ {T} \\\\ \\left(\\frac {\\partial \\mathbf {r}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}}\\right) ^ {T} & \\left(\\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}}\\right) ^ {T} \\end{array} \\right] \\cdot \\left[ \\begin{array}{c c} \\mathbf {Q} _ {r} ^ {- 1} & \\mathbf {0} \\\\ \\mathbf {0} & \\mathbf {Q} _ {f} ^ {- 1} \\end{array} \\right] \\cdot \\left[ \\begin{array}{c c} \\frac {\\partial \\mathbf {r}}{\\partial \\mathbf {u} _ {k} ^ {T}} & \\frac {\\partial \\mathbf {r}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} \\\\ \\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\mathbf {u} _ {k} ^ {T}} & \\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} \\end{array} \\right] \\\\ = \\left[ \\begin{array}{l l} \\left(\\frac {\\partial \\mathbf {r}}{\\partial \\mathbf {u} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {r} ^ {- 1} \\cdot \\frac {\\partial \\mathbf {r}}{\\partial \\mathbf {u} _ {k} ^ {T}} + \\left(\\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\mathbf {u} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {f} ^ {- 1} \\cdot \\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\mathbf {u} _ {k} ^ {T}} & \\left(\\frac {\\partial \\mathbf {r}}{\\partial \\mathbf {u} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {r} ^ {- 1} \\cdot \\frac {\\partial \\mathbf {r}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} + \\left(\\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\mathbf {u} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {f} ^ {- 1} \\cdot \\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} \\\\ \\left(\\frac {\\partial \\mathbf {r}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {r} ^ {- 1} \\cdot \\frac {\\partial \\mathbf {r}}{\\partial \\mathbf {u} _ {k} ^ {T}} + \\left(\\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {f} ^ {- 1} \\cdot \\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\mathbf {u} _ {k} ^ {T}} & \\left(\\frac {\\partial \\mathbf {r}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {r} ^ {- 1} \\cdot \\frac {\\partial \\mathbf {r}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} + \\left(\\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}}\\right) ^ {T} \\cdot \\mathbf {Q} _ {f} ^ {- 1} \\cdot \\frac {\\partial \\dot {\\mathbf {r}}}{\\partial \\dot {\\mathbf {u}} _ {k} ^ {T}} \\end{array} \\right] \\tag {26} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            136,
+            810,
+            929,
+            930
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "ZHU et al.: SENSING-COMMUNICATION CO-DESIGN FOR UAV SWARM-ASSISTED VEHICULAR NETWORK IN PERSPECTIVE OF DOPPLER ",
+        "bbox": [
+            58,
+            37,
+            797,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "2583 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "the SNR loss of 1.1 dB and 1.95 dB respectively, as shown in Fig. 4(b). Therefore, it can be concluded that reasonable link selection of UAVs is significant to make a trade-off between communication and sensing for the studied network. In addition, since Doppler is highly relevant to the selected UAVs, it is a vital issue to consider the co-design of sensing and communication from the perspective of Doppler. ",
+        "bbox": [
+            63,
+            79,
+            494,
+            186
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "C. Optimization Problem Formation ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            208,
+            319,
+            223
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "As described in subsection A and B, Doppler does directly affect two major properties of the mentioned UAV swarm-assisted vehicular network: communication and sensing, among which the sensing function includes position sensing and velocity sensing. In this subsection, to enable efficient communication and high precision sensing, these two factors is formulated as an optimization problem. Our aim is to improve the sensing accuracy of the GVs while ensuring that its communication performance is always maintained at a satisfactory level, so as to realize the ability trade-off between sensing and communication in the proposed system. In a nutshell, the minimization of the maximum sensing accuracy of all vehicles is regarded as the objective function, and the SNR loss caused by Doppler is regarded as one of the constraint conditions. Before modeling this problem, we first introduce the constraints used in the problem formulation as follows: ",
+        "bbox": [
+            63,
+            229,
+            496,
+            470
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Prerequisites: It’s worth noting that the joint deployment of UAV swarm and GVs are subject to random deployment positions, which is more in line with the practical application scenario. In addition, we assume that the location of the UAV swarm has satisfactory rigidity characteristics to maintain its stable formation flight [29]. ",
+        "bbox": [
+            63,
+            470,
+            496,
+            561
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1) Location boundary constraints of UAV swarm: This constraint is used to provide a basic boundary for the random generation of UAV swarm positions: ",
+        "bbox": [
+            82,
+            561,
+            496,
+            608
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nv _ {\\mathrm{min}} \\leq v _ {x, y} ^ {i} \\leq v _ {\\mathrm{max}}, \\forall i \\in \\mathcal {V} (2 7)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            200,
+            621,
+            494,
+            642
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $v _ { \\mathrm { m i n } }$ and $v _ { \\mathrm { m a x } }$ are the boundaries of the UAV deployment. ",
+        "bbox": [
+            104,
+            652,
+            494,
+            683
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "2) Distance boundary constraints between UAVs: This constraint ensures effective communication and safe distance between UAVs: ",
+        "bbox": [
+            82,
+            683,
+            494,
+            728
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\delta_ {\\mathrm{thr}} ^ {\\text { safe }} \\leq \\| \\mathbf {v} _ {i} - \\mathbf {v} _ {j} \\| \\leq \\delta_ {\\mathrm{thr}} ^ {\\mathrm{UAV}}, \\forall i, j \\in \\mathcal {V} \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            173,
+            741,
+            494,
+            762
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\delta _ { \\mathrm { t h r } } ^ { \\mathrm { U A V } }$ is the maximum effective communication range for UAVs and $\\delta _ { \\mathrm { t h r } } ^ { \\mathrm { s a f e } }$ denotes the minimum distance between UAVs for safety reasons. These two distance parameters are used to obtain the random distribution range of the UAV swarm at the beginning of each proposed algorithm run. ",
+        "bbox": [
+            104,
+            773,
+            494,
+            864
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3) Distance difference constraints in UAV swarm-assisted vehicle networks: This constraint is used to ensure that the maximum distance difference between each GV to be served and the aerial UAV providing sensingcommunication services does not exceed the relevant threshold δdisthr : $\\delta _ { \\mathrm { t h r } } ^ { \\mathrm { d i s . } }$ ",
+        "bbox": [
+            82,
+            864,
+            496,
+            940
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            548,
+            79,
+            649,
+            97
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max _ {i \\in \\mathcal {V} _ {0}} \\max _ {k \\in \\mathcal {K}} \\| \\mathbf {v} _ {k _ {i}} - \\mathbf {u} _ {k} \\| \\leq \\delta_ {\\text { thr }} ^ {\\text { dis }} \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            643,
+            102,
+            937,
+            126
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "4) Velocity difference constraints in UAV swarm-assisted vehicle networks: Similar to (3), the constraint is to make sure that the maximum velocity difference between each GV to be served and the aerial UAV providing communication-sensing services does not exceed the relevant threshold $\\delta _ { \\mathrm { t h r } } ^ { \\mathrm { v e l } }$ : ",
+        "bbox": [
+            525,
+            132,
+            939,
+            226
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max _ {i \\in \\mathcal {V} _ {0}} \\max _ {k \\in \\mathcal {K}} \\| \\dot {\\mathbf {v}} _ {k _ {i}} - \\dot {\\mathbf {u}} _ {k} \\| \\leq \\delta_ {\\text { thr }} ^ {\\text { vel }} \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            643,
+            229,
+            937,
+            253
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "5) Communication performance constraints in UAV swarmassisted vehicle networks: For each GV to be served, $M _ { 0 }$ UAVs are used to provide communication and sensing services. Therefore, the constraint is to ensure that the average value of $D n f$ corresponding to $M _ { 0 } \\mathrm { U A V \\mathrm { - G V } }$ links used by each vehicle does not exceed the threshold $D n f _ { \\mathrm { t h r } }$ , so as to ensure the communication performance of GVs: ",
+        "bbox": [
+            525,
+            260,
+            939,
+            367
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max _ {i \\in \\mathcal {V} _ {0}, k \\in \\mathcal {K}} \\left(\\frac {1}{M _ {0}} \\sum_ {i = 1} ^ {M _ {0}} D n f _ {\\mathbf {v} _ {k _ {i}} \\leftrightarrow \\mathbf {u} _ {k}}\\right) \\leq D n f _ {\\text {thr}} \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            580,
+            373,
+            937,
+            415
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Moreover, since the sensing function includes both position sensing and velocity sensing, and there is a certain coupling relationship between them [50], we set the objective function of the optimization problem concerned as the sum of positioning accuracy and velocity accuracy, so that the positioning and velocity sensing indicators can be considered at the same time, so as to ensure the sensing accuracy of all GVs. In addition, we set the optimization action as V to describe the index of the UAVs selected by each GV, and $\\mathbf { V } { = } [ \\mathcal { V } _ { 1 } , \\ldots , \\mathcal { V } _ { k } , \\ldots , \\mathcal { V } _ { K } ] ^ { T } \\in \\mathbb { R } ^ { | K | \\times 5 }$ . In summary, the optimization problem of interest is formulated as follows: ",
+        "bbox": [
+            506,
+            420,
+            939,
+            585
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P1)}: \\min _ {\\mathbf {V}} \\max _ {k \\in \\mathcal {K}} C R L B \\left(\\mathbf {u} _ {k}\\right) + C R L B \\left(\\dot {\\mathbf {u}} _ {k}\\right) \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            548,
+            594,
+            937,
+            616
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\mathrm { s . t . } \\mathbf { C 1 } : v _ { \\mathrm { m i n } } \\leq v _ { x , y } ^ { i } \\leq v _ { \\mathrm { m a x } } , \\forall i \\in \\mathcal { V } .$ ",
+        "bbox": [
+            533,
+            625,
+            816,
+            643
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\mathbf { C 2 } : ~ \\delta _ { \\mathrm { t h r } } ^ { \\mathrm { s a f e } } \\leq \\| \\mathbf { v } _ { i } - \\mathbf { v } _ { j } \\| \\leq \\delta _ { \\mathrm { t h r } } ^ { \\mathrm { U A V } } , \\forall i , j \\in \\mathcal { V } .$ ",
+        "bbox": [
+            567,
+            648,
+            867,
+            667
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\mathbf { C 3 } : \\quad \\operatorname* { m a x } _ { i \\in \\mathcal { V } _ { 0 } } \\operatorname* { m a x } _ { k \\in \\mathcal { K } } \\| \\mathbf { v } _ { k _ { i } } - \\mathbf { u } _ { k } \\| \\leq \\delta _ { \\operatorname { t h r } } ^ { \\mathrm { d i s } }$ ",
+        "bbox": [
+            567,
+            672,
+            814,
+            696
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\mathbf { C 4 } : \\quad \\operatorname* { m a x } _ { i \\in \\mathcal { V } _ { 0 } } \\operatorname* { m a x } _ { k \\in \\mathcal { K } } \\| \\dot { \\mathbf { v } } _ { k _ { i } } - \\dot { \\mathbf { u } } _ { k } \\| \\leq \\delta _ { \\operatorname { t h r } } ^ { \\mathrm { v e l } }$ ",
+        "bbox": [
+            567,
+            704,
+            814,
+            728
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "${ \\bf C 5 } : \\operatorname* { m a x } _ { i \\in \\mathscr { V } _ { 0 } , k \\in \\mathcal { K } } ( \\frac { 1 } { M _ { 0 } } \\sum _ { i = 1 } ^ { M _ { 0 } } D n f _ { { \\bf v } _ { k _ { i } }  { \\bf u } _ { k } } ) \\leq D n f _ { \\mathrm { t h r } }$ Dnfvki↔uk ",
+        "bbox": [
+            567,
+            734,
+            910,
+            777
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where C1 is the range constraint of the location deployment of UAV cluster; C2 is the distance constraint between UAVs; C3 and C4 limit the distance difference and velocity difference between UAVs and GVs respectively; C5 is the requirement of communication performance for each GV. ",
+        "bbox": [
+            506,
+            782,
+            939,
+            858
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "IV. THE PROPOSED DE-BASED OPTIMIZATION METHOD ",
+        "text_level": 1,
+        "bbox": [
+            531,
+            873,
+            914,
+            888
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Obviously, the optimization problem P1 formulated in the previous section is a non-convex problem, and there is no closed-form expression of $C R L B ( { \\mathbf { u } } _ { k } )$ and $C R L B ( \\dot { \\mathbf { u } } _ { k } )$ , which makes the problem more difficult to solve optimally. In this case, the DE algorithm, which has generally been recognized as one of the most popular derivative-free optimization algorithms, shows its enormous advantage in calculating such non-convex optimization problems [28], [29]. Therefore, we propose a DEbased optimization method to find a satisfactory quasi-optimal solution for problem P1. ",
+        "bbox": [
+            506,
+            893,
+            939,
+            941
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "2584 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            960,
+            880,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/c72d4e54d5afd32e0c30996fe17a97411d9fb9f274e2c0d572782ae747fc851c.jpg",
+        "image_caption": [
+            "Fig. 5. Representation of individuals in the proposed DE algorithm. "
+        ],
+        "image_footnote": [],
+        "content": "Gene-1\nV₁',a\nV₂',a\n......\nVₖ',a\n......\nVₖ',a\nGene-K\nIndividual Vₗ,a",
+        "sub_type": "text_image",
+        "bbox": [
+            65,
+            80,
+            484,
+            154
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            196,
+            488,
+            303
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "According to Section III, in the proposed UAV swarm-assisted vehicular network, once the target UAVs are selected for a GV, the sensing-communication capabilities are determined simultaneously. In addition, as mentioned in [51], at least four aerial anchor nodes are required to provide joint TDOA and FDOA positioning service for each device. In our research, in order to ensure the sensing accuracy of GVs, we choose to use five UAVs to provide 3-D sensing services for each GV, that is $M _ { 0 } = 5 .$ When the quantity of UAVs M is relatively small, the optimal solution to this problem can be easily obtained by traversing all possible subsets contained in O, which means the set containing all possible combinations of selecting five UAVs from M UAVs, $\\mathrm { i . e . , ~ } \\mathcal { O } = \\{ \\mathbf { o } _ { 1 } , \\mathbf { o } _ { 2 } , \\dots , \\mathbf { o } _ { \\mathcal { G } } \\}$ , where o is a subset consisting of the index of five UAVs used for sensing and communication purposes and $\\mathcal { G } = \\binom { M } { 5 }$ . However, it is quite impractical to use the same traversal method above to solve problem P1 when the number of subsets $\\mathcal { G }$ is very large due to a tremendous M . Therefore, in this case, the introduction of DE algorithm is particularly appropriate in our research. ",
+        "bbox": [
+            60,
+            304,
+            488,
+            593
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In the DE algorithm, the candidate solution to the optimization problem is called an “individual”, and multiple individuals form a “population” [28]. By simulating the process of evolution and natural selection, the individuals in the population are iteratively improved to obtain a satisfactory solution. As mentioned in Section III, the selection of different UAV subsets means different communication-sensing capabilities for GVs. Therefore, as shown in Fig. 5, in our proposed DE-based method, the a-th individual in the l-th iteration represents the index of the selected UAVs for all GVs $\\mathbf { V } _ { l , a } \\in \\mathbb { R } ^ { | \\mathcal { G } | \\times 5 }$ , and correspondingly, the k-th “gene”, that is gene-k in the individual $\\mathbf { V } _ { l , a } \\in \\mathbb { R } ^ { | \\mathcal { G } | \\times 5 }$ refers to the index of UAVs subset used by GV-k, which is denoted as $\\mathcal { V } _ { k } ^ { l , a } \\in \\mathbb { R } ^ { 1 \\times 5 }$ . The objective of the proposed approach is to minimize the sensing accuracy for all GVs while satisfying a series of constraints, including the distance difference (C3) and velocity difference between UAVs and GVs (C4), as well as the constraint on the communication performance for GVs (C5). Thus, we set the fitness function used to evaluate the sensing-communication capabilities of UAV subsets as follows: ",
+        "bbox": [
+            60,
+            594,
+            488,
+            881
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\operatorname{fit} \\left(\\mathbf {V} _ {l, a}\\right) = \\left(\\alpha_ {\\text {Sen}} \\beta_ {\\text {Sen}} + \\alpha_ {\\text {Dis}} \\beta_ {\\text {Dis}} + \\alpha_ {\\text {Vel}} \\beta_ {\\text {Vel}} + \\alpha_ {\\text {Dnf}} \\beta_ {\\text {Dnf}}\\right) ^ {- 1} \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            58,
+            902,
+            486,
+            936
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 1: Generation of Fitness Function. ",
+        "text_level": 1,
+        "bbox": [
+            510,
+            85,
+            824,
+            101
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Input: Current UAV index selected by GV-k in the current individual, ${ { \\mathcal { V } } _ { k } } = \\{ V _ { { k _ { 1 } } } , V _ { { k _ { 2 } } } , . ~ . ~ . , V _ { { k _ { M _ { 0 } } } } \\}$ . ",
+        "bbox": [
+            535,
+            103,
+            883,
+            135
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Output: The fitness value of the current individual $\\mathrm { f i t } ( \\mathbf { V } _ { l , a } )$ . ",
+        "bbox": [
+            535,
+            135,
+            882,
+            164
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Step 1. Preliminary preparation. ",
+        "text_level": 1,
+        "bbox": [
+            535,
+            164,
+            772,
+            178
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1.1 Determine the location $\\mathbf { v } _ { k _ { i } }$ and velocity $\\dot { \\mathbf { v } } _ { k _ { i } }$ of the UAVs at that moment by the UAV index number, $k _ { i } = 1 , 2 , . . . , M _ { 0 } .$ ",
+            "1.2 According to formulas (24) and (25) to calculate the sensing accuracy of the $\\mathrm { G V } { - } k , \\mathrm { i } . \\mathrm { e } . , C R L B ( { \\mathbf { u } } _ { k } )$ and $C R L B ( \\dot { \\mathbf { u } } _ { k } )$ . ",
+            "1.3 Plug the result of 1.2 into the objective function and get the maximum value of all GVs, and set this maximum value to $C R L B _ { \\operatorname* { m a x } }$ . "
+        ],
+        "bbox": [
+            535,
+            179,
+            915,
+            314
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Step 2. Judgment of constraints. ",
+        "text_level": 1,
+        "bbox": [
+            535,
+            315,
+            769,
+            329
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "2.1 For each GV-k, if constraint C3, C4 and C5 do not hold in turn, the corresponding penalty terms $\\beta _ { \\mathrm { D i s } } , \\beta _ { \\mathrm { V e l } }$ and $\\beta _ { \\mathrm { D n f } }$ would be introduced sequentially, and vice versa. ",
+        "bbox": [
+            533,
+            330,
+            917,
+            388
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Step 3. Calculation of fitness function. ",
+        "text_level": 1,
+        "bbox": [
+            535,
+            390,
+            811,
+            404
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "3.1 According to the constant value initialized by the algorithm of Step1 and Step2, the fitness values of the current individuals $\\mathrm { i t } ( { \\mathbf V } _ { l , a } )$ are obtained by substituting them into the formula (33) for the selection operation in the DE algorithm. ",
+        "bbox": [
+            533,
+            406,
+            920,
+            481
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "It can be seen that the fitness function adopted in our research is the inverse of the weighted sum of four different terms, where $\\beta _ { \\mathrm { S e n } }$ is the maximum sensing accuracy of the GVs corresponding $\\mathbf { V } _ { l , a }$ , which is obtained by solving the problem $\\mathrm { P 1 } ; \\beta _ { \\mathrm { D i s } } , \\beta _ { \\mathrm { V e l } }$ and $\\beta _ { \\mathrm { D n f } }$ are the penalty terms of C3, C4 and C5, respectively. Take the $\\beta _ { \\mathrm { D i s } }$ for example, once $\\mathbf { V } _ { l , a }$ fails to guarantee the distance constraint of the air-ground link, we set $\\beta _ { \\mathrm { D i s } } = 1$ and add a penalty $\\alpha _ { \\mathrm { D i s } }$ to the denominator of the fitness function, so as to reduce the fitness value of this infeasible trajectory; otherwise, it holds $\\beta _ { \\mathrm { D i s } } = 0 .$ . Similarly, αVel and $\\alpha _ { \\mathrm { D n f } }$ are weights corresponding to $\\beta _ { \\mathrm { V e l } }$ and $\\beta _ { \\mathrm { D n f } } .$ . Since the DE algorithm constantly searches for the individuals with higher fitness values during its iterations, the values of weights αDis, αVel and $\\alpha _ { \\mathrm { D n f } }$ should be much larger than that of $\\alpha _ { \\mathrm { S e n } } \\beta _ { \\mathrm { S e n } }$ , so that a UAV subset will be assigned a very low fitness value as long as it does not satisfy all of the constraints. With this strategy above, infeasible UAV subsets are eliminated during the iterations of the DE algorithm, ensuring that the final optimization result is feasible and efficient. ",
+        "bbox": [
+            500,
+            517,
+            930,
+            787
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Fitness function is one of the core content of DE algorithm, and its design rule directly affects the final result of iterative optimization of DE algorithm. We further summarize the design principle of the proposed fitness function as Algorithm 1 in detail. ",
+        "bbox": [
+            500,
+            789,
+            930,
+            863
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The proposed DE-based optimization method is shown in Algorithm 2, it should be noted here that constraints C1 and C2 will be satisfied when generating individuals and calculating the relevant two CRLB values $C R L B ( { \\mathbf { u } } _ { k } )$ and $C R L B ( \\dot { \\mathbf u } _ { k } )$ , respectively. In this case, $N _ { p }$ feasible individuals (the subsets of ",
+        "bbox": [
+            500,
+            864,
+            930,
+            941
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "ZHU et al.: SENSING-COMMUNICATION CO-DESIGN FOR UAV SWARM-ASSISTED VEHICULAR NETWORK IN PERSPECTIVE OF DOPPLER ",
+        "bbox": [
+            58,
+            37,
+            797,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "2585 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "table",
+        "img_path": "images/57826ece50df12a90b0e379cadd3043d22bf1eb091c82ad0808a37b6921615d2.jpg",
+        "table_caption": [
+            "Algorithm 2: Proposed DE-Based Optimization Method. "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"2\">Input: Number of individuals  $N_{p}$ ; maximal iterations  $l_{\\text{max}}$ .Output: Optimal UAV subset selection for ground vehicles  $\\mathbf{V}^{*}$ .</td></tr><tr><td>1:</td><td>Generate the set  $\\mathcal{O}$  covering all UAV link selection possibilities.</td></tr><tr><td>2:</td><td>Utilize  $\\mathcal{O}$  to randomly generate initial population $\\mathbf{P}_{0} = \\{ \\mathbf{V}_{0,1}, \\dots, \\mathbf{V}_{0,N_{p}} \\}$ .</td></tr><tr><td>3:</td><td>for  $l = 0$ ;  $l < l_{\\text{max}}$ ;  $l = l + 1$  do</td></tr><tr><td>4:</td><td>Calculate the fitness values of the individuals in  $\\mathbf{P}_{l}$  using Algorithm 1.</td></tr><tr><td>5:</td><td>Use  $\\mathbf{P}_{l}$  to generate a trial population $\\dot{\\mathbf{P}}_{l} = \\{ \\dot{\\mathbf{V}}_{l,1}, \\dots, \\dot{\\mathbf{V}}_{l,N_{p}} \\}$  according to the mutation and crossover processes of the DE algorithm [28].</td></tr><tr><td>6:</td><td>Calculate the fitness values of the individuals in  $\\dot{\\mathbf{P}}_{l}$  using Algorithm 1 again, and compare with Step 4. One by one to get a new population  $\\mathbf{P}_{l+1}$  with the selection process in the DE algorithm [28].</td></tr><tr><td>7:</td><td>Select the optimal solution  $\\mathbf{V}^{*} = \\mathbf{V}_{l+1,i^{*}}$ , where  $i^{*} = \\arg\\max_{i \\in \\{1, \\dots, N_{p}\\}} \\text{fit}(\\mathbf{V}_{l+1,i})$ .</td></tr><tr><td>8:</td><td>end for</td></tr></table>",
+        "bbox": [
+            77,
+            103,
+            489,
+            406
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "UAV index for all GVs) are randomly generated at the beginning of the DE algorithm to form the initial population $\\mathbf { P } _ { 0 } .$ , as shown in steps 1–2 of Algorithm 2. Then, three typical operations: mutation, crossover and selection are performed iteratively to continuously update the population and search for the better individuals [28]. To be specific, we first get the trial population through the mutation and crossover operations, then we use the selection operation to select individuals from the trial population $\\dot { \\mathbf { P } } _ { l }$ and the original population $\\mathbf { P } _ { l }$ to generate a new population $\\mathbf { P } _ { l + 1 }$ for the next iteration, which is summarized in steps 5-6 in Algorithm 2. With the final selection strategy, during the iterations of the DE algorithm, inferior individuals with relatively low fitness values are constantly replaced by superior individuals with high fitness values obtained through the mutation and crossover operations. After the $l _ { \\mathrm { m a x } }$ iterations, the individual in the algorithm with the highest fitness value in the population is regarded as the final optimization result. ",
+        "bbox": [
+            63,
+            470,
+            494,
+            728
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The advantage of the proposed DE algorithm is that it certainly retains the powerful optimization ability of the DE algorithm itself. Further, for our research, its advantage is more reflected in that we innovatively introduce the index of UAVs used by all GVs as the individual, so as to achieve the problem “dimension reduction”. Specifically, in terms of the computational complexity of the algorithm, compared with benchmarks, the computational complexity is higher but in exchange for higher sensing-communication performance. In addition, the proposed DE-based algorithm can optimize the sensor-communication performance tradeoff of all GVS at one time, thus achieving “dimensionality reduction” to solve the problem, greatly reducing the computational load and improving the optimization efficiency. ",
+        "bbox": [
+            63,
+            729,
+            494,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/ef6ff33310c0739346f333c88acc42bdf8360f17a8ee3f3287bbe798802912d3.jpg",
+        "table_caption": [
+            "TABLE I SIMULATION PARAMETERS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>Main frequency (fc)</td><td>2.6 GHz</td></tr><tr><td>Signal bandwidth (B)</td><td>20 MHz</td></tr><tr><td>Noise power density (N0)</td><td>-174dBm/Hz</td></tr><tr><td>Total noise figure</td><td>9dB</td></tr><tr><td>Measurement noise variance (σ2)</td><td>1dB</td></tr><tr><td>Reference path loss at 1m (β0)</td><td>1.01 × 104</td></tr><tr><td>PLE of A2A channels under LoS conditions (α)</td><td>2</td></tr><tr><td>Sampling period (Ts)</td><td>1/(30.72 × 106)s</td></tr><tr><td>Number of GVs (K)</td><td>10</td></tr><tr><td>Number of UAVs (M)</td><td>20</td></tr><tr><td>Number of anchor nodes per GV (M0)</td><td>5</td></tr><tr><td>GV altitude (HU)</td><td>1 m</td></tr><tr><td>Safety distance between UAVs (δsafethr)</td><td>100 m</td></tr><tr><td>Maximum communication distance between UAVs (δUAVthr)</td><td>300 m</td></tr><tr><td>Distance boundary between UAV and GV (δdisthr)</td><td>500 m</td></tr><tr><td>Velocity boundary between UAV and GV (δvelthr)</td><td>20 m/s</td></tr><tr><td>Dn.f boundary of UAV-GV link (Dnfthr)</td><td>1.5 dB</td></tr><tr><td>Deployment boundary of UAV swarm (min)</td><td>0 m</td></tr><tr><td>Deployment boundary of UAV swarm (max)</td><td>800 m</td></tr><tr><td>Diameter of the urban canyon area</td><td>800 m</td></tr><tr><td>Maximal iteration number of DE algorithm (lmax)</td><td>300</td></tr><tr><td>Population Size (Np)</td><td>50</td></tr><tr><td>Weight of energy consumption term βSen in the fitness function (αSen)</td><td>1</td></tr><tr><td>Penalty values (αDis, αVel and αDnf)</td><td>10</td></tr></table>",
+        "bbox": [
+            528,
+            114,
+            917,
+            561
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "V. SIMULATION RESULTS AND DISCUSSION ",
+        "text_level": 1,
+        "bbox": [
+            575,
+            587,
+            870,
+            599
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In this section, a series of simulation experiments are conducted to make the performance trade-off of the sensing-communication for UAV swarm-assisted vehicular network, and the corresponding numerical results are presented to verify its feasibility and validity. First, the validity of the sensingcommunication co-design scheme for UAV swarm-assisted vehicular network and the feasibility of our scheme are verified by a set of experiments. Then, we discuss and demonstrate the superiority and advancement of the proposed co-design in terms of sensing and communication respectively. Table I summarizes the key simulation parameters used in this section, and the other parameters have been clearly stated in the corresponding positions of the article. ",
+        "bbox": [
+            506,
+            607,
+            937,
+            801
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "We consider an UAV swarm-assisted vehicular network with $M = 2 0 \\mathrm { U A V s }$ and K = 10 GVs located in a square area with side length 800 m and the center is the coordinate (400,400,0). Furthermore, we set $\\delta _ { \\mathrm { t h r } } ^ { \\mathrm { U A V } } = 3 0 0$ m and $\\delta _ { \\mathrm { t h r } } ^ { \\mathrm { s a f e } } = 1 0 0 $ m to ensure that the UAV swarm distribution meets the safety and communication requirements. The TDOA noise and FDOA noise are zero mean Gaussian, and their covariance matrices are $\\sigma ^ { 2 } \\mathbf { R }$ and $0 . 1 \\sigma ^ { 2 } \\mathbf { R }$ , where $\\sigma ^ { 2 }$ is the variance of TDOA noise and R is equal to unity in the diagonal elements and 0.5 otherwise [52]. It is worth noting that, in order to facilitate the analysis of the impact of the proposed design on the UAV swarm-assisted vehicular network, the simulation scenario we focus on is only a time slice of the system operation process, and it can be easily extended to dynamic scenarios according to actual requirements. In this case, at this time slice, the positions and velocities of UAV groups and ground users are fixed values, where positions conform to random distribution when generated. Undoubtedly, the focus of this article is on the sensing-communication service within a small-scale UAV-GV network, but it still has adaptability and superiority in practical applications. Furthermore, a random method according to some specific constraints is selected as the benchmark comparison in our article, which is an advanced strategy in related field [53]. ",
+        "bbox": [
+            506,
+            804,
+            937,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "2586 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            960,
+            880,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f3273fac9d9d9cc11f17150b8c418cbb1fe5b05c905c7f9ff03a47b276f5b4ad.jpg",
+        "content": "| Iteration Numbers | Best Individual (m) | Average Individual (m) |\n|---|---|---|\n| 0 | 4.5 | 6.8 |\n| 50 | 3.2 | 3.8 |\n| 100 | 3.0 | 3.5 |\n| 150 | 2.9 | 3.4 |\n| 200 | 2.8 | 3.3 |\n| 250 | 2.7 | 3.3 |\n| 300 | 2.6 | 3.3 |",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            65,
+            80,
+            225,
+            172
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/276ffb39f7f74ff93d5bce10d582f5462fd10912e625f9b5d52e924999c5fd03.jpg",
+        "content": "| Iteration Number | Best Individual (m/s) | Average Individual (m/s) |\n|---|---|---|\n| 0 | 1.5 | 3.0 |\n| 50 | 1.2 | 1.8 |\n| 100 | 1.1 | 1.4 |\n| 150 | 1.05 | 1.2 |\n| 200 | 1.02 | 1.15 |\n| 250 | 1.01 | 1.12 |\n| 300 | 1.0 | 1.1 |",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            65,
+            184,
+            225,
+            277
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/709a09e12cc4e191f3de79f9337629aa339b430ec5a89dbfbbc3d1492ec26501.jpg",
+        "content": "| x (m) | y (m) | Method           |\n|-------|-------|------------------|\n| 100   | 700   | UAV              |\n| 200   | 500   | GV               |\n| 300   | 700   | UAV              |\n| 400   | 500   | GV               |\n| 500   | 400   | UAV              |\n| 600   | 250   | DE-based method  |\n| 700   | 700   | DE-based method  |\n| 800   | 250   | Random benchmark |",
+        "chart_caption": [
+            "(C）",
+            "Fig. 6. Application examples of the proposed methods and corresponding optimization results: the (a) positioning accuracy and (b) velocity accuracy optimization results, and the random joint deployment of UAV swarm and GVs in the UAV swarm-assisted vehicular network scenario. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            228,
+            85,
+            483,
+            273
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            378,
+            488,
+            590
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "A. The Validity Test of the Proposed Co-Design ",
+        "text_level": 1,
+        "bbox": [
+            57,
+            617,
+            387,
+            632
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "According to the parameter Settings related to the above scenario, the joint deployment of UAV swarm and GVs is shown in Fig. 6(c), and both of them are subject to random deployment positions, which is more in line with the actual situation. In addition, it can be seen that for the same circled GV, the geometric configuration of the UAV subset that optimized by the proposed DE-based algorithm is significantly better than that obtained by the random benchmark method, which is the basis for obtaining high-precision sensing performance [50]. Fig. 6(a) and (b) demonstrate the effect of the proposed design in Algorithm 2 on the positioning accuracy and the velocity accuracy, respectively, where the best (i.e., the minimum) and the average sensing error of $N _ { p }$ individuals in the population decrease constantly as the iteration number increases. Specifically, the final optimized UAV subset $\\mathbf { V } ^ { * }$ improves the localization and velocity accuracy by about 34.2% and 36.7% compared with the best individual $\\mathbf { V } _ { 0 , \\mathrm { b e s t } }$ in the unoptimized random population $\\mathbf { P } _ { 0 }$ respectively, which demonstrates the basic effectiveness of the proposed DE-based scheme. ",
+        "bbox": [
+            60,
+            638,
+            488,
+            925
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/1dc75cb96630984b4b882c48c35ed9ebcdb489f26e66c879e59dc16b35682d06.jpg",
+        "content": "| Optimized position accuracy (m) | PDF    | CCDF   |\n| ------------------------------ | ------ | ------ |\n| 2.5                            | 0.025  | 1.000  |\n| 2.6                            | 0.075  | 0.950  |\n| 2.7                            | 0.050  | 0.850  |\n| 2.8                            | 0.075  | 0.750  |\n| 2.9                            | 0.050  | 0.600  |\n| 3.0                            | 0.025  | 0.400  |",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            508,
+            80,
+            710,
+            196
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ba7de586e75355d84226848ba616e31f6c439ec4741e6cdfa3a030b47d999d8a.jpg",
+        "content": "| Improvement ratio of position accuracy | PDF    | CCDF   |\n| -------------------------------------- | ------ | ------ |\n| 15%                                    | 0.1000 | 1.0000 |\n| 20%                                    | 0.0750 | 0.9000 |\n| 25%                                    | 0.0500 | 0.8000 |\n| 30%                                    | 0.0750 | 0.6000 |\n| 35%                                    | 0.0500 | 0.4000 |\n| 40%                                    | 0.0250 | 0.2500 |\n| 45%                                    | 0.0125 | 0.1250 |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            718,
+            80,
+            922,
+            196
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/cee1f45889abffe8fa40373ac20ccd74a3f7dd18ddd517046d22872272b16925.jpg",
+        "content": "| Optimized velocity accuracy (m/s) | PDF    | CCDF   |\n| -------------------------------- | ------ | ------ |\n| 0.85                             | 0.025  | 1.000  |\n| 0.90                             | 0.075  | 0.750  |\n| 0.95                             | 0.050  | 0.500  |\n| 1.00                             | 0.025  | 0.250  |",
+        "chart_caption": [
+            "(c）"
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            508,
+            231,
+            708,
+            347
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e280ff97e36d667c863f5df7027caf689d829302a0945d80a371fa3c88e52245.jpg",
+        "content": "| Improvement ratio of velocity accuracy | PDF    | CCDF   |\n| ------------------------------------- | ------ | ------ |\n| 15%                                   | 0.025  | 1.000  |\n| 20%                                   | 0.075  | 0.980  |\n| 25%                                   | 0.050  | 0.950  |\n| 30%                                   | 0.075  | 0.850  |\n| 35%                                   | 0.075  | 0.600  |\n| 40%                                   | 0.050  | 0.300  |\n| 45%                                   | 0.025  | 0.100  |",
+        "chart_caption": [
+            "(d) ",
+            "Fig. 7. Statistical results: (a) the position and (c) the velocity accuracy of the optimized solutions using the proposed co-design; and the improvement ratio of (b) the position and (d) the velocity accuracy compared with the random benchmark approach. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            718,
+            231,
+            922,
+            347
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "It’s worth noting that Fig. 6 shows the resulting instance of a single simulation, which has certain randomness. For making the performance evaluation of the proposed co-design more statistically significant, 100 Monte-Carlo simulations are implemented, including the sensing accuracy and the performance improvement ratio compared with the random benchmark, and the results obtained are shown in Fig. 7. The probability density function (PDF) of the optimized position accuracy is shown in Fig. 7(a), where the optimized ranges from 2.56 m to 3.02 m. The PDF of the positioning accuracy improvement compared with the benchmark is shown in Fig. 7(b), where the improvement ranges from 17.82% to 42.56%. The complementary cumulative distribution functions (CCDF) are demonstrated by red dashdotted lines in Fig. 7(a) and (b), which can be interpreted as: the probability of improving the positioning accuracy by more than 31.84% is 50%, and half of the corresponding position errors are less than 2.84 m. Similarly, the case of velocity accuracy in Fig. 7(c) and (d) can also be explained in the same way: the probability of improving the velocity accuracy by more than 34.26% is 50%, and half of the corresponding velocity measurement errors are less than 0.94 m/s. Compared with the benchmark method, the main reason for the obvious advantage of the proposed algorithm is that DE algorithm guarantees the sensing-communication performance of GVs with its powerful local optimal solution searching ability. ",
+        "bbox": [
+            500,
+            457,
+            930,
+            834
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In order to further verify the effectiveness and advancement of the proposed co-design, we conduct a comparison experiment of GVs’ sensing performance by using different methods in the scene of Fig. 6(c). In this part, we add other two commonly used comparison methods in related fields besides the benchmark method to prove the superiority of the proposed algorithm, which are described in detail as follows. The Distance-First method means that the $M _ { 0 }$ closest UAVs to GV are directly selected to provide network connectivity services, which is very common in the related fields [29]. In addition, the meaning of $D n f$ -First method is to preferentially select $M _ { 0 }$ UAVs with the minimum $D n f$ value among all UAVs for operations such as communication and sensing, which focuses more on meeting the high communication requirements. ",
+        "bbox": [
+            500,
+            834,
+            930,
+            925
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "ZHU et al.: SENSING-COMMUNICATION CO-DESIGN FOR UAV SWARM-ASSISTED VEHICULAR NETWORK IN PERSPECTIVE OF DOPPLER ",
+        "bbox": [
+            58,
+            39,
+            797,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "2587 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            111,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ae857bd1993f4d9af74d545c79c4212fe65660a04cf7a48471175f068819a6a7.jpg",
+        "content": "| GV index | Random benchmark | Distance-First method | DNF-First method | DE-based method |\n| -------- | ---------------- | --------------------- | ---------------- | --------------- |\n| 1        | 13.0             | 4.0                   | 7.5              | 3.5             |\n| 2        | 8.0              | 5.0                   | 3.0              | 3.5             |\n| 3        | 4.0              | 4.0                   | 4.0              | 2.0             |\n| 4        | 3.0              | 4.0                   | 6.5              | 3.5             |\n| 5        | 7.0              | 10.5                  | 3.0              | 2.5             |\n| 6        | 8.0              | 11.5                  | 3.0              | 3.0             |\n| 7        | 3.0              | 3.0                   | 13.0             | 2.5             |\n| 8        | 8.5              | 7.0                   | 9.0              | 3.5             |\n| 9        | 8.5              | 7.5                   | 7.0              | 3.5             |\n| 10       | 4.0              | 5.0                   | 5.0              | 2.5             |",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            127,
+            80,
+            432,
+            262
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/68aaf71f91129a7c470d568b43f7aaf6a376b991c0f14c00d4da698f33238b93.jpg",
+        "content": "| GV index | Random benchmark | Distance-First method | DNF-First method | DE-based method |\n| -------- | ---------------- | --------------------- | ---------------- | --------------- |\n| 1        | 4.8              | 1.3                   | 2.5              | 1.0             |\n| 2        | 2.7              | 1.9                   | 0.9              | 1.0             |\n| 3        | 1.3              | 1.6                   | 2.0              | 0.6             |\n| 4        | 1.0              | 1.6                   | 2.3              | 1.0             |\n| 5        | 3.5              | 4.2                   | 0.9              | 0.9             |\n| 6        | 3.1              | 4.5                   | 1.0              | 1.0             |\n| 7        | 1.0              | 1.0                   | 4.4              | 0.9             |\n| 8        | 2.9              | 2.6                   | 3.4              | 0.9             |\n| 9        | 2.8              | 3.3                   | 2.4              | 1.0             |\n| 10       | 1.3              | 1.7                   | 1.3              | 0.8             |",
+        "chart_caption": [
+            "(b) ",
+            "Fig. 8. Results comparison of the proposed co-design and the other three methods: the (a) positioning accuracy and (b) velocity accuracy of all GVs in Fig. 6(c) scenario. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            127,
+            291,
+            432,
+            474
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            561,
+            493,
+            683
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "The sensing performance comparison for all GVs of the four methods mentioned above are shown in Fig. 8. Specifically, Fig. 8(a) and (b) show the localization and velocity accuracy comparison of all GVs in the scenario of Fig. 6(c), respectively. It is clear that the proposed co-design (orange broken line) has a significant advantage in terms of sensing accuracy compared to the other three methods. What’s more, the other three methods have little difference in sensing performance, whether in positioning or velocity measurement, where the position accuracy for GVs ranges from 2.62 m to 12.86 m and the velocity errors ranges from 0.92 m/s to 4.66 m/s. Surprisingly, the sensing effect of the proposed DE-based co-design is basically stable at the positioning accuracy of about 2.42 m and the velocity accuracy of about 0.86 m/s, which verifies all GVs have high sensing performance by virtue of the efficient global optimization ability of DE algorithm itself, and also provides a sensing capability with high stability in the peoposed vehicular network. From the above numerical results, it can be concluded that the proposed co-design for UAV swarm-assisted vehicular network is completely feasible, and it could significantly improve the sensing capability under the same constraints compared to other methods commonly used in the domain, which is the main highlight of the proposed co-design scheme. ",
+        "bbox": [
+            65,
+            683,
+            494,
+            940
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            80,
+            936,
+            170
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "B. The Superiority of the Proposed Co-Design in Sensing ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            209,
+            902,
+            224
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In accordance with Section III.C, the introduction of Doppler observation FDOA realizes the sensing ability of higher dimensions, and in this case, we set the objective function of the optimization problem as the addition of positioning and velocity accuracy, as shown in formula (32). In order to further reflect the superiority of the TDOA joint FDOA estimation method for sensing, that is, to verify the influence of Doppler on sensing performance, we introduce a set of comparison experiments, in which only TDOA observations in the proposed network are considered, and other settings and constraints are consistent with the former. It is indisputable that TDOA is a recognized location method in the field of positioning, which can be applied to indoor, outdoor, and other complex positioning scenarios [37]. In addition, since TDOA can only provide positioning services without the velocity measurement function, we only consider the performance comparison in positioning accuracy when conducting the experiments in this subsection. ",
+        "bbox": [
+            506,
+            229,
+            936,
+            486
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Under this circumstance, it is worth highlighting that the benchmark used in this subsection is to introduce TDOA localization algorithm into the proposed DE-based scheme, and the others remain the same. Specifically, the objective function of the optimization problem in formula (31) changes to consider only the positioning performance, that is, $C R L B ( { \\mathbf { u } } _ { k } )$ . In terms of constraints, correspondingly, except C4 and C5, which are velocity-related and do not need to be satisfied, other constraints are strictly consistent with the former. ",
+        "bbox": [
+            506,
+            487,
+            937,
+            622
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Similar to Fig. 7, for the sake of making the experiments more scientific, we also conduct 100 Monte-Carlo tests to support the results, as shown in Fig. 9. Specifically, Fig. 9(a) and (b) depicts the statistical situation of all GV’s average positioning accuracy obtained by the joint TDOA and FDOA or only TDOA method respectively. Clearly, the joint TDOA and FDOA method can provide a higher level of positioning accuracy, ranging from 2.56 m to 2.98 m, and in half of these results, less than 2.76 m; TDOA method, on the other hand, is significantly inferior, ranging from 6.78 m to 9.56 m, and similarly, half of these results are higher than 8.32 m. The reasons for the above results can be expressed as follows: compared with the method of only TDOA, using the joint TDOA and FDOA method provides an additional observation of frequency dimension, thus significantly improving the positioning accuracy and also increasing the function of velocity measurement for GVs. At the same time, it also shows that Doppler occupies an extremely important role in our co-design scheme, which is reflected in the fact that the application of Doppler realizes the increase of the velocity measurement function, thus broadening the possibility of the scenario application of the studied network. ",
+        "bbox": [
+            506,
+            623,
+            937,
+            940
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "2588 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            111,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/aee32bfe76fdad6222c14bd4e0defa4db68e04f5881176a34f2ece6b3df5487d.jpg",
+        "content": "| Optimized position accuracy (m) | PDF TDOA-FDOA | CCDF TDOA-FDOA | CCDF 50% reference |\n| ------------------------------- | ------------- | -------------- | ------------------ |\n| 2.5                             | 0.01          | 1.0            | 0.5                |\n| 2.6                             | 0.01          | 0.95           | 0.5                |\n| 2.7                             | 0.05          | 0.85           | 0.5                |\n| 2.8                             | 0.075         | 0.7            | 0.5                |\n| 2.9                             | 0.05          | 0.4            | 0.5                |\n| 3.0                             | 0.01          | 0.0            | 0.5                |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            112,
+            80,
+            434,
+            265
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/5a7d3cef67f71c76beefcedd0b9d86c958ebdf4335a7f8ee86f8c60943aab051.jpg",
+        "content": "| Optimized position accuracy (m) | PDF TDOA | CCDF TDOA | CCDF 50% reference |\n| ------------------------------- | -------- | --------- | ------------------ |\n| 6.5                             | 0.01     | 0.1       | 0.5                |\n| 7.0                             | 0.01     | 0.1       | 0.5                |\n| 7.5                             | 0.03     | 0.08      | 0.5                |\n| 8.0                             | 0.05     | 0.06      | 0.5                |\n| 8.5                             | 0.04     | 0.04      | 0.5                |\n| 9.0                             | 0.03     | 0.02      | 0.5                |\n| 9.5                             | 0.02     | 0.01      | 0.5                |\n| >9.5                            | <0.01    | <0.01     | 0.5                |",
+        "chart_caption": [
+            "（a)",
+            "(b）",
+            "Fig. 9. Statistical results: the position accuracy of the optimized solutions using (a) the proposed TDOA-FDOA co-design and (b) the TDOA benchmark approach. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            111,
+            292,
+            432,
+            479
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "C. The Superiority of the Proposed Co-Design in Communication ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            571,
+            398,
+            599
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "As discussed in Section III.A, the influence of Doppler on communication is reflected in the Dnf of the UAV-GV links, which can be used to evaluate the communication quality of the proposed vehicular network. In order to further verify the influence of Doppler on the communication performance of the proposed scheme, we carried out another set of experiments. Specifically speaking, the experiments in this subsection compare the effect of GVs communication and sensing performance by removing or retaining the $D n f$ boundary constraints in the proposed co-design, so as to further explore its preponderance in ensuring the communication ability of the proposed UAV swarm-assisted vehicular network. Note that in this comparison test, the Dnf boundary is still set as $D n f _ { \\mathrm { t h r } } = 1 . 5$ dB and remains the same as before. ",
+        "bbox": [
+            57,
+            607,
+            488,
+            818
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, it is indisputable that the optimization of communication performance of the proposed design should not be based on the sacrifice of sensing ability, otherwise it is of little significance. Therefore, we first verify the influence of the proposed method on $\\mathrm { G V s } ^ { \\prime }$ sensing performance with or without $D n f$ boundary conditions, and similarly, we run 100 Monte-Carlo experiments. As shown in Fig. 10, the range of average positioning and velocity accuracy of all GVs obtained by the two opposite constraints in the 100 experiments basically coincides. Numerically speaking, the range of positioning error is 2.57 m to 3.03 m and the speed measurement accuracy ranges from 0.85 m/s to 1.02 m/s. In addition, no matter in figure (a) or (b), it can be seen that CCDF curves with or without $D n f$ constraints basically coincide, which means that the distribution of GVs’ sensing accuracy obtained under these two comparison conditions is basically the same, that is, $D n f$ constraint has little impact on GVs’ sensing ability. ",
+        "bbox": [
+            57,
+            819,
+            488,
+            940
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f4e0485e392917fce84c01b0c04975be9ad453a8d7ce494db7842d64d1de24cd.jpg",
+        "content": "| Optimized position accuracy (m) | PDF with Dnf Boundary | PDF without Dnf Boundary | CCDF without Dnf Boundary | CCDF with Dnf Boundary | CCDF without Dnf Boundary | CCDF 50% reference |\n| ------------------------------- | --------------------- | ------------------------ | ------------------------- | ---------------------- | ------------------------- | ------------------- |\n| 2.55                            | 0.01                  | 0.01                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.60                            | 0.01                  | 0.01                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.65                            | 0.02                  | 0.03                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.70                            | 0.05                  | 0.04                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.75                            | 0.06                  | 0.05                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.80                            | 0.07                  | 0.06                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.85                            | 0.08                  | 0.07                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.90                            | 0.05                  | 0.05                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 2.95                            | 0.02                  | 0.03                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |\n| 3.00                            | 0.01                  | 0.02                     | 0.8                       | 0.8                    | 0.8                       | 0.8                 |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            506,
+            80,
+            927,
+            224
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/dde4daad075d374341194015acbc6527c0e664338a488b9d580ecd2c0f1c7f79.jpg",
+        "content": "| Optimized velocity accuracy (m/s) | PDF   | CCDF  |\n| -------------------------------- | ----- | ----- |\n| 0.84                             | 0.015 | 1.0   |\n| 0.85                             | 0.015 | 1.0   |\n| 0.86                             | 0.015 | 1.0   |\n| 0.87                             | 0.020 | 1.0   |\n| 0.88                             | 0.025 | 1.0   |\n| 0.89                             | 0.025 | 1.0   |\n| 0.90                             | 0.035 | 1.0   |\n| 0.91                             | 0.035 | 1.0   |\n| 0.92                             | 0.065 | 1.0   |\n| 0.93                             | 0.075 | 1.0   |\n| 0.94                             | 0.095 | 1.0   |\n| 0.95                             | 0.075 | 1.0   |\n| 0.96                             | 0.065 | 1.0   |\n| 0.97                             | 0.045 | 1.0   |\n| 0.98                             | 0.035 | 1.0   |\n| 1.00                             | 0.025 | 1.0   |\n| 1.02                             | 0.015 | 1.0   |",
+        "chart_caption": [
+            "(a) ",
+            "(b) ",
+            "Fig. 10. Statistical results: (a) the position accuracy and (b) the velocity accuracy of the proposed co-design optimized solutions under different Dnf constraints. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            506,
+            255,
+            925,
+            391
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            487,
+            930,
+            623
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "On the basis of Fig. 10, we also record the average $D n f$ value statistics and the channel capacity for each GV, as shown in Fig. 11, aiming to discuss the influence of the proposed scheme on GV’s communication performance under the same set of experiments as in Fig. 10. As shown in Fig. 11(a), the purple and yellow bars represent the distribution of $D n f$ values of the final UAV links selected by GVs with and without $D n f$ constraints, respectively. We assume that if the $D n f$ value is greater than the threshold $D n f _ { \\mathrm { t h r } } .$ , then it is defined as the “failure state” of the communication caused by Doppler. In this instance, it can be seen that with the Dnf constraint, the $D n f$ values of almost all the experimental UAV-GV links are less than $D n f _ { \\mathrm { t h r } } .$ , that is, the “failure $\\mathrm { r a t e } ^ { \\prime \\prime }$ is approximately zero, which is 1.5% to be precise. In the case of no $D n f$ constraints, almost all $D n f$ values obtained are greater than the threshold $D n f _ { \\mathrm { t h r } }$ , that is, the “failure rate” is nearly 100%, and the accurate figure is 99.5%. The above results can be interpreted as follows: due to there is a set of optimization results at the $D n f _ { \\mathrm { t h r } } .$ according to the calculation and statistics method of CCDF, this set of results are not counted in the CCDF curve at this point, so that the CCDF value at this point does not drop to zero. That’s why these two numbers circled in the figure above are not 0 and 1. In addition, it is obvious from the CCDF curve that the median results of the two groups are 1.42 dB and 1.86 dB, respectively, which means that under the condition of $D n f$ constraint, the $D n f$ values can be reduced by 23.6%, thus improving the communication capability of GVs. ",
+        "bbox": [
+            500,
+            623,
+            930,
+            940
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "ZHU et al.: SENSING-COMMUNICATION CO-DESIGN FOR UAV SWARM-ASSISTED VEHICULAR NETWORK IN PERSPECTIVE OF DOPPLER ",
+        "bbox": [
+            58,
+            37,
+            797,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "2589 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ce911c91a7e28ba32cac216a5947e39b9316fb50b13a99a67dfa69d845a8d331.jpg",
+        "content": "| Dnf Value (dB) | PDF with Dnf Boundary | PDF without Dnf Boundary | CCDF without Dnf Boundary | CCDF with Dnf Boundary | CCDF 50% reference |\n| -------------- | --------------------- | ------------------------ | ------------------------- | ---------------------- | ------------------- |\n| 1.1            | 0.01                  | 0.01                     | 0.13                      | 0.13                   | 0.75                |\n| 1.2            | 0.01                  | 0.01                     | 0.13                      | 0.13                   | 0.75                |\n| 1.3            | 0.03                  | 0.03                     | 0.13                      | 0.13                   | 0.75                |\n| 1.4            | 0.05                  | 0.05                     | 0.13                      | 0.13                   | 0.75                |\n| 1.5            | 0.07                  | 0.07                     | 0.13                      | 0.13                   | 0.75                |\n| 1.6            | 0.09                  | 0.09                     | 0.13                      | 0.13                   | 0.75                |\n| 1.7            | 0.11                  | 0.11                     | 0.13                      | 0.13                   | 0.75                |\n| 1.8            | 0.13                  | 0.13                     | 0.13                      | 0.13                   | 0.75                |\n| 1.9            | 0.13                  | 0.13                     | 0.13                      | 0.13                   | 0.75                |\n| 2.0            | 0.13                  | 0.13                     | 0.13                      | 0.13                   | 0.75                |\n| 2.1            | 0.13                  | 0.13                     | 0.13                      | 0.13                   | 0.75                |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "bar_line",
+        "bbox": [
+            74,
+            80,
+            486,
+            223
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ad36a67d56e4b79d32e6585ac1f2520d36d27d3bfdecc0c74b2868ca0708c1ba.jpg",
+        "content": "| Monte-Carlo Iteration Number | with Dnf | without Dnf | Mean-with Dnf | Mean-with Dnf |\n| ---------------------------- | -------- | ----------- | ------------- | -------------- |\n| 0                            | 129.5    | 128.5       | 129.5         | 128.0          |\n| 10                           | 129.5    | 128.5       | 129.5         | 128.0          |\n| 20                           | 130.0    | 128.5       | 129.5         | 128.0          |\n| 30                           | 129.5    | 128.5       | 129.5         | 128.0          |\n| 40                           | 129.5    | 128.5       | 129.5         | 128.0          |\n| 50                           | 129.5    | 128.5       | 129.5         | 128.0          |\n| 60                           | 130.0    | 128.5       | 129.5         | 128.0          |\n| 70                           | 129.5    | 128.5       | 129.5         | 128.0          |\n| 80                           | 129.5    | 128.5       | 129.5         | 128.0          |\n| 90                           | 129.5    | 128.5       | 129.5         | 128.0          |\n| 100                          | 129.5    | 128.5       | 129.5         | 128.0          |",
+        "chart_caption": [
+            "(a) ",
+            "(b) ",
+            "Fig. 11. Statistical results: (a) the Dnf values of UAV-GV links and (b) the channel capacity of GVs obtained by the proposed co-design under different Dnf constraints. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            82,
+            252,
+            473,
+            393
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            486,
+            493,
+            575
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In order to further measure the channel capacity of GVs with or without $D n f$ constraints comprehensively, and according to (14) and (15), we finally obtain Fig. 11(b). It is obvious that in these 100 Monte-Carlo experiments, the channel capacity of GVs with constraints is almost always higher than that without constraints, which is also consistent with the conclusion obtained in Fig. 11(a). Specifically, the average channel capacity of GVs is 129.74 Mbit/s with $D n f$ constraint, and it decreases to 128.16 Mbit/s without $D n f$ constraint, which means the channel capacity of GVs is improved by 1.58 Mbit/s. ",
+        "bbox": [
+            63,
+            578,
+            493,
+            728
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In the current scenario, this improvement above may seems limited for the proposed vehicle network, but there are reasons as follows. The value of $D n f$ is directly related to the relative velocity between the UAVs and GVs, that is, the Doppler in the UAV-GV link. However, in the relevant parameter Settings of this article, the instantaneous relative speed of all UAVs and GVs is relatively small, that is, we choose a time slice in which the whole scene is running in a relatively stable state as the simulation scenario. In this case, even without the $D n f$ constraints, the maximum $D n f$ value is only 2.1 dB, which can be seen from the yellow bars in Fig. 11(a). Therefore, it is reasonable to infer that if the scene parameter is set to a more complex situation such as a larger relative velocity between the UAVs and GVs, the introduction of $D n f$ constraints in the proposed design may make the more advanced optimization effect of communication. In summary, the introduction of $D n f$ constraints effectively guarantees the communication capability without degrading the GVs sensing performance, which has certain guiding significance in the engineering application of UAV swarm-assisted vehicular network with common requirements of sensing and communication. ",
+        "bbox": [
+            63,
+            729,
+            494,
+            940
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            80,
+            936,
+            185
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "VI. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            659,
+            205,
+            784,
+            218
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In this article, we propose a generic analytical framework for UAV swarm-assisted vehicular networks in urban canyon areas, where the UAVs have the mission of providing sensing and communication services concurrently for GVs. Unlike prior research, this article focuses on the co-design between the sensing and communication from a Doppler perspective to meet $\\mathrm { G V s } ^ { \\prime }$ communication requirements while achieving high sensing accuracy. Specifically, we formulated an optimization problem to minimize the GVs’ maximum CRLB with a specific $D n f$ constraint by optimizing the UAVs links, aiming to consider the performance trade-off between sensing and communication. Due to the non-convexity of the optimization problem, we proposed a DE-based method with a local optimization of the UAV-GV links for finding a sub-optimal solution efficiently. The proposed scheme is evaluated on different benchmarks at various levels, which provides prerequisite value for our follow-up research on resource utilization and energy efficiency of UAV swarm under the proposed co-design scheme. Numerical results demonstrate the feasibility of our co-design scheme and the proposed DE-based method could further improve the sensing accuracy by exceed 30% compared with a random approach. In addition, the proposed method can enhance communication performance by more than 20% without sacrificing sensing accuracy. ",
+        "bbox": [
+            506,
+            226,
+            936,
+            588
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Therefore, we foresee that Doppler-oriented sensingcommunication co-design scheme has the potential to play a vital role in the future vehicle networks. We hope this article could provide meaningful inspiration for UAV swarm-assisted vehicular applications, especially in the situations where both sensing and communication need to be considered. ",
+        "bbox": [
+            506,
+            588,
+            937,
+            679
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            691,
+            699,
+            784,
+            712
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] M. Shafi et al., “5G: A tutorial overview of standards, trials, challenges, deployment, and practice,” IEEE J. Sel. Areas Commun., vol. 35, no. 6, pp. 1201–1221, Jun. 2017. ",
+            "[2] K. Abboud, H. A. Omar, and W. Zhuang, “Interworking of DSRC and cellular network technologies for V2X communications: A survey,” IEEE Trans. Veh. Technol., vol. 65, no. 12, pp. 9457–9470, Dec. 2016. ",
+            "[3] X. Mo, C. Cao, M. Li, and D. Z. Wang, “Predicting the impact of disruptions to urban rail transit systems,” in Proc. IEEE 37th Int. Conf. Data Eng., 2021, pp. 2249–2254. ",
+            "[4] Q. Liu, R. Liu, Z. Wang, L. Han, and J. S. Thompson, “A V2X-integrated positioning methodology in ultradense networks,” IEEE Internet Things J., vol. 8, no. 23, pp. 17014–17028, Dec. 2021. ",
+            "[5] C. Cao and M. Li, “Generating mobility trajectories with retained data utility,” in Proc. 27th ACM SIGKDD Conf. Knowl. Discov. Data Mining, 2021, pp. 2610–2620. ",
+            "[6] D. Lu, S. Jiang, B. Cai, W. Shangguan, X. Liu, and J. Luan, “Quantitative analysis of GNSS performance under railway obstruction environment,” in Proc. IEEE/ION Position Location Navigation Symp., 2018, pp. 1074–1080. "
+        ],
+        "bbox": [
+            511,
+            715,
+            939,
+            940
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "2590 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            109,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[7] X. Zhang et al., “A unified NOMA framework in beam-hopping satellite communication systems,” IEEE Trans. Aerosp. Electron. Syst., vol. 59, no. 5, pp. 5390–5404, Oct. 2023. ",
+            "[8] B. Xu, Q. Jia, and L.-T. Hsu, “Vector tracking loop-based GNSS NLOS detection and correction: Algorithm design and performance analysis,” IEEE Trans. Instrum. Meas., vol. 69, no. 7, pp. 4604–4619, Jul. 2020. ",
+            "[9] K. Shamaei and Z. M. Kassas, “LTE receiver design and multipath analysis for navigation in urban environments,” Navigation, vol. 65, no. 4, pp. 655–675, Dec. 2018. ",
+            "[10] N. H. Motlagh, M. Bagaa, and T. Taleb, “UAV-based IoT platform: A crowd surveillance use case,” IEEE Commun. Mag., vol. 55, no. 2, pp. 128–134, Feb. 2017. ",
+            "[11] Y. Zeng, J. Lyu, and R. Zhang, “Cellular-connected UAV: Potential, challenges, and promising technologies,” IEEE Wireless Commun., vol. 26, no. 1, pp. 120–127, Feb. 2019. ",
+            "[12] Z. Xiao, P. Xia, and X.-G. Xia, “Enabling UAV cellular with millimeterwave communication: Potentials and approaches,” IEEE Commun. Mag., vol. 54, no. 5, pp. 66–73, May 2016. ",
+            "[13] F. K. W. Chan and H. C. So, “Accurate distributed range-based positioning algorithm for wireless sensor networks,” IEEE Trans. Signal Process., vol. 57, no. 10, pp. 4100–4105, Oct. 2009. ",
+            "[14] A. Liu et al., “A survey on fundamental limits of integrated sensing and communication,” IEEE Commun. Surveys Tut., vol. 24, no. 2, pp. 994–1034, Secondquarter 2022. ",
+            "[15] R. Zhang, B. Shim, W. Yuan, M. D. Renzo, X. Dang, and W. Wu, “Integrated sensing and communication waveform design with sparse vector coding: Low sidelobes and ultra reliability,” IEEE Trans. Veh. Technol., vol. 71, no. 4, pp. 4489–4494, Aug. 2022. ",
+            "[16] X. Liu, H. Zhang, K. Long, M. Zhou, Y. Li, and H. V. Poor, “Proximal policy optimization-based transmit beamforming and phase-shift design in an IRS-aided ISAC system for the THz band,” IEEE J. Sel. Areas Commun., vol. 40, no. 7, pp. 2056–2069, Jul. 2022. ",
+            "[17] G. Zhao, M. A. Imran, Z. Pang, Z. Chen, and L. Li, “Toward real-time control in future wireless networks: Communication-control co-design,” IEEE Commun. Mag., vol. 57, no. 2, pp. 138–144, Feb. 2019. ",
+            "[18] D. Wu et al., “WiTraj: Robust indoor motion tracking with WiFi signals,” IEEE Trans. Mobile Comput., vol. 22, no. 5, pp. 3062–3078, May 2023. ",
+            "[19] H. Wang, D. Zhang, Y. Wang, J. Ma, Y. Wang, and S. Li, “RT-Fall: A realtime and contactless fall detection system with commodity WiFi devices,” IEEE Trans. Mobile Comput., vol. 16, no. 2, pp. 511–526, Feb. 2017. ",
+            "[20] C. Cao, Z. Li, P. Zhou, and M. Li, “Amateur: Augmented reality based vehicle navigation system,” in Proc. ACM Interact. Moble Wearable Ubiquitous Technol., 2018, pp. 1–24. ",
+            "[21] X. Yue, J. Xie, Y. Liu, Z. Han, R. Liu, and Z. Ding, “Simultaneously transmitting and reflecting reconfigurable intelligent surface assisted NOMA networks,” IEEE Trans. Wireless Commun., vol. 22, no. 1, pp. 189–204, Jan. 2023. ",
+            "[22] H. Zhang, L. Feng, X. Liu, K. Long, and G. K. Karagiannidis, “User scheduling and task offloading in Multi-Tier computing 6G vehicular network,” IEEE J. Sel. Areas Commun., vol. 41, no. 2, pp. 446–456, Feb. 2023. ",
+            "[23] W. Yuan, F. Liu, C. Masouros, J. Yuan, D. W. K. Ng, and N. González-Prelcic, “Bayesian predictive beamforming for vehicular networks: A low-overhead joint radar-communication approach,” IEEE Trans. Wireless Commun., vol. 20, no. 3, pp. 1442–1456, Mar. 2021. ",
+            "[24] J. Mei, K. Zheng, L. Zhao, L. Lei, and X. Wang, “Joint radio resource allocation and control for vehicle platooning in LTE-V2V network,” IEEE Trans. Veh. Technol., vol. 67, no. 12, pp. 12218–12230, Dec. 2018. ",
+            "[25] A. González, N. Franchi, and G. Fettweis, “Control loop aware LTE-V2X semi-persistent scheduling for string stable CACC,” in Proc. IEEE 30th Annu. Int. Symp. Pers. Indoor Mobile Radio Commun., 2019, pp. 1–7. ",
+            "[26] M. Eisen, M. M. Rashid, K. Gatsis, D. Cavalcanti, N. Himayat, and A. Ribeiro, “Control aware radio resource allocation in low latency wireless control systems,” IEEE Internet Things J., vol. 6, no. 5, pp. 7878–7890, Oct. 2019. ",
+            "[27] Y. Wu, Q. Yang, H. Li, K. S. Kwak, and V. C. M. Leung, “Controlaware energy-efficient transmissions for wireless control systems with short packets,” IEEE Internet Things J., vol. 8, no. 19, pp. 14920–14933, Oct. 2021. ",
+            "[28] Z. Wang, R. Liu, Q. Liu, J. S. Thompson, and M. Kadoch, “Energy-efficient data collection and device positioning in UAV-assisted IoT,” IEEE Internet Things J., vol. 7, no. 2, pp. 1122–1139, Feb. 2020. ",
+            "[29] Q. Liu, R. Liu, Z. Wang, and J. S. Thompson, “UAV swarm-enabled localization in isolated region: A rigidity-constrained deployment perspective,” IEEE Wireless Commun. Lett., vol. 10, no. 9, pp. 2032–2036, Sep. 2021. "
+        ],
+        "bbox": [
+            58,
+            78,
+            491,
+            934
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[30] Z. Wang, R. Liu, Q. Liu, L. Han, and J. S. Thompson, “Feasibility study of UAV-assisted anti-jamming positioning,” IEEE Trans. Veh. Technol., vol. 70, no. 8, pp. 7718–7733, Aug. 2021. ",
+            "[31] K. Niu, X. Wang, F. Zhang, R. Zheng, Z. Yao, and D. Zhang, “Rethinking doppler effect for accurate velocity estimation with commodity WiFi devices,” IEEE J. Sel. Areas Commun., vol. 40, no. 7, pp. 2164–2178, Jul. 2022. ",
+            "[32] Y. Li, Z. Peng, and C. Li, “Potential active shooter detection using a portable radar sensor with micro-Doppler and range-Doppler analysis,” in Proc. IEEE Int. Appl. Comput. Electromagnetics Soc. Symp., 2017, pp. 1–2. ",
+            "[33] Z. Li, Y. Li, and J. Zhang, “A sidelobe cancellation doppler filter for angular measurement in monopulse radar imagination,” in Proc. IEEE 3rd Int. Academic Exchange Conf. Sci. Technol. Innov., 2021, pp. 29–33. ",
+            "[34] Z. Matousek, J. Ochodnicky, M. Babjak, and J. Puttera, “Doppler compensation for binary phase-coded radar signals in presence of noise jamming,” in Proc. IEEE 17th Int. Radar Symp., 2016, pp. 1–4. ",
+            "[35] X. Yue and Y. Liu, “Performance analysis of intelligent reflecting surface assisted NOMA networks,” IEEE Trans. Wireless Commun., vol. 21, no. 4, pp. 2623–2636, Apr. 2022. ",
+            "[36] B. Deng, Z. B. Sun, H. F. Peng, and J. Y. Xiong, “Source localization using TDOA/FDOA/DFS measurements with erroneous sensor positions,” in Proc. CIE Int. Conf. Radar, 2016, pp. 1–4. ",
+            "[37] D. Hu, L. Luo, D. Huang, and S. Chen, “A joint TDOA, FDOA and Doppler rate parameters estimation method and its performance analysis,” in Proc. IEEE 21st Int. Conf. High Perform. Comput. Commun. IEEE 17th Int. Conf. Smart City, IEEE 5th Int. Conf. Data Sci. Syst. (HPCC/SmartCity/DSS), 2019, pp. 2482–2486. ",
+            "[38] Z. Niu, X. S. Shen, Q. Zhang, and Y. Tang, “Space-air-ground integrated vehicular network for connected and automated vehicles: Challenges and solutions,” Intell. Converged Netw., vol. 1, no. 2, pp. 142–169, Sep. 2020. ",
+            "[39] Q. Zhu, R. Liu, Z. Wang, Q. Liu, and L. Han, “Ranging code design for UAV swarm self-positioning in green aerial IoT,” IEEE Internet Things J., vol. 10, no. 7, pp. 6298–6311, Apr. 2023. ",
+            "[40] N. Zhao et al., “UAV-assisted emergency networks in disasters,” IEEE Wireless Commun., vol. 26, no. 1, pp. 45–51, Feb. 2019. ",
+            "[41] N. Zhao et al., “Caching UAV assisted secure transmission in hyper-dense networks based on interference alignment,” IEEE Trans. Commun., vol. 66, no. 5, pp. 2281–2294, May 2018. ",
+            "[42] W. Khawaja, I. Guvenc, D. W. Matolak, U.-C. Fiebig, and N. Schneckenburger, “A survey of air-to-ground propagation channel modeling for unmanned aerial vehicles,” IEEE Commun. Surv. Tut., vol. 21, no. 3, pp. 2361–2391, Thirdquarter 2019. ",
+            "[43] B. J. Choi, H. Liang, X. Shen, and W. Zhuang, “DCS: Distributed asynchronous clock synchronization in delay tolerant networks,” IEEE Trans. Parallel Distrib. Syst., vol. 23, no. 3, pp. 491–504, Mar. 2012. ",
+            "[44] J. Rantanen, L. Ruotsalainen, M. Kirkko-Jaakkola, and M. Mäkelä, “Height measurement in seamless indoor/outdoor infrastructure-free navigation,” IEEE Trans. Instrum. Meas., vol. 68, no. 4, pp. 1199–1209, Apr. 2019. ",
+            "[45] A. F. Molisch, Wireless Communications, vol. 34. Hoboken, NJ, USA: Wiley, Dec. 2012. ",
+            "[46] K. Nozaki, Y. Takanezawa, Y. Chang, K. Fukawa, and D. Hirahara, “Multiuser detection of collided AIS packets with accurate estimates of doppler frequencies,” in Proc. IEEE 93rd Veh. Technol. Conf., 2021, pp. 1–5. ",
+            "[47] M. M. Christiansen and K. R. Duffy, “Guesswork, large deviations, and Shannon entropy,” IEEE Trans. Inf. Theory, vol. 59, no. 2, pp. 796–802, Feb. 2013. ",
+            "[48] Y. Zhao, X. Fan, C.-Z. Xu, and X. Li, “ER-CRLB: An extended recursive Cramé–Rao lower bound fundamental analysis method for indoor localization systems,” IEEE Trans. Veh. Technol., vol. 66, no. 2, pp. 1605–1618, Feb. 2017. ",
+            "[49] Y. Shen, H. Wymeersch, and M. Z. Win, “Fundamental limits of wideband cooperative localization via Fisher information,” in Proc. IEEE Wireless Commun. Netw. Conf., 2007, pp. 3951–3955. ",
+            "[50] G. Xie, Principles of GPS and Receiver Design, vol. 7. Beijing, China: Publishing House Electron. Ind., 2009. ",
+            "[51] C.-Y. Chen and W.-R. Wu, “Three-dimensional positioning for LTE systems,” IEEE Trans. Veh. Technol., vol. 66, no. 4, pp. 3220–3234, Apr. 2017. ",
+            "[52] K. C. Ho and W. Xu, “An accurate algebraic solution for moving source location using TDOA and FDOA measurements,” IEEE Trans. Signal Process., vol. 52, no. 9, pp. 2453–2463, Sep. 2004. ",
+            "[53] S. Büyükçorak, G. K. Kurt, and A. Yongaço ˘glu, “UAV assisted ground user localization,” in Proc. IEEE Int. Conf. Wireless Space Extreme Environ., 2019, pp. 111–115. "
+        ],
+        "bbox": [
+            503,
+            78,
+            930,
+            931
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "ZHU et al.: SENSING-COMMUNICATION CO-DESIGN FOR UAV SWARM-ASSISTED VEHICULAR NETWORK IN PERSPECTIVE OF DOPPLER ",
+        "bbox": [
+            58,
+            39,
+            797,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "2591 ",
+        "bbox": [
+            902,
+            40,
+            927,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            111,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/6df80692bd78873992c87edb4c297c85309e200a5250e59a19236b505c34b372.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a woman with shoulder-length dark hair wearing a light blue collared shirt against a solid blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            82,
+            193,
+            198
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Qian Zhu received the B.S. degree in electronic science and technology from the Taiyuan University of Technology, Taiyuan, China, in 2017, and the M.S. degree in computer technology from the University of Chinese Academy of Sciences, Beijing, China,in 2020. She is currently working toward the Ph.D. degree with the School of Electronic and Information Engineering, Beihang University, Beijing, China. Her research interests include 5G positioning, wireless communication, integrated sensing and communication, unmanned aerial vehicles, applications of these technologies, and Internet of Things networks. ",
+        "bbox": [
+            205,
+            80,
+            494,
+            205
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            205,
+            319,
+            218
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/7e62c9146dcd4926d79316d4a1b1a874aea9a683f54624e799d616e73684e6c6.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in formal attire against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            82,
+            636,
+            198
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Qirui Liu (Graduate Student Member, IEEE) received the B.S. degree in communication engineering from the School of Computer and Communication Engineering, University of Science and Technology Beijing, Beijing, China, in 2019. He is currently working toward the Ph.D. degree with the School of Electronic and Information Engineering, Beihang University, Beijing. His research interests include global navigation satellite system, localization techniques, indoor positioning and navigation, applications of these technologies to 5G, and Internet of Things networks. ",
+        "bbox": [
+            648,
+            80,
+            937,
+            219
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/1ad010da0078b62537795b19ebd6e5b80eccfbf29d2e07c78b2833dddd64be35.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man in formal suit and tie against blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            247,
+            193,
+            363
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Rongke Liu (Senior Member, IEEE) received the B.S. and Ph.D. degrees from Beihang University, Beijing, China, in 1996 and 2002, respectively. He is currently a Full Professor with the School of Electronics and Information Engineering and the President with Shenzhen Institute, Beihang University. He was a Visiting Professor with the Florida Institution of Technology, Melbourne, FL, USA, in 2006, University of Tokyo, Tokyo, Japan, in 2015, and University of Edinburgh, Edinburgh, U.K., in 2018. He received the support of the New Century Excellent Talents ",
+        "bbox": [
+            205,
+            246,
+            494,
+            371
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Program from the Minister of Education, China. He has attended many special programs, such as China Terrestrial Digital Broadcast Standard. He has authored or coauthored more than 200 papers in international conferences and journals. He has been granted more than 40 patents. His research interests include wireless communication 5G/6G and satellie internet. ",
+        "bbox": [
+            65,
+            371,
+            494,
+            429
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/34996536268096f8c34cacd2b3329e78351e2d8b26278015c921cba442cae68f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man in business attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            297,
+            634,
+            414
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Changwen Chen (Fellow, IEEE) received the B.S. degree from the University of Science and Technology of China, Hefei, China, in 1983, the M.S.E.E. degree from the University of Southern California, Los Angeles, CA, USA, in 1986, and the Ph.D. degree from the University of Illinois at Urbana-Champaign, Champaign, IL, USA, in 1992. He is currently the Chair Professor of visual computing with Hong Kong Polytechnic University, Hong Kong. From 2008 to 2021, he was an Empire Innovation Professor of computer science and engineering with the University ",
+        "bbox": [
+            648,
+            297,
+            937,
+            422
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/62727daede47f5888d1d9a122fd587bf54e3da3ee9766666202def9e5c7135e7.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a young man wearing glasses and a uniform against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            457,
+            193,
+            574
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Zijie Wang received the B.S. degree in electrical and information engineering from Beihang University, Beijing, China, in 2017. He is currently working toward the Ph.D. degree with the School of Electronic and Information Engineering, Beihang University. His research interests include global navigation satellite system, terrestrial localization systems, indoor/outdoor seamless positioning, unmanned aerial vehicles, applications of these technologies to 5G, and Internet of Things networks. ",
+        "bbox": [
+            205,
+            455,
+            494,
+            570
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "at Buffalo, State University of New York, Buffalo, NY, USA. His research interests include multimedia communication, Internet of video Things, multimedia systems, image/video processing, machine learning, and multimedia signal processing. He was the Editor-in-Chief of IEEE TRANSACTIONS ON MULTIMEDIA from 2014 to 2016, and IEEE TRANSACTIONS ON CIRCUITS AND SYSTEM FOR VIDEO TECHNOLOGY from 2006 to 2009. He is the Editor of several other major IEEE Transactions and Journals, including PROCEEDINGS OF THE IEEE, IEEE JOURNAL OF SELECTED AERAS IN COMMUNICATIONS, and IEEE JOURNAL OF EMERGING AND SELECTED TOPICS IN CIRCUITS AND SYSTEMS. ",
+        "bbox": [
+            506,
+            422,
+            937,
+            523
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "page_number",
+        "text": "2592 ",
+        "bbox": [
+            67,
+            40,
+            92,
+            49
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 73, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            466,
+            39,
+            936,
+            50
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 30,2026 at 11:24:57 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            112,
+            962,
+            880,
+            974
+        ],
+        "page_idx": 14
+    }
+]

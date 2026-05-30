@@ -6,6 +6,7 @@ related:
   - "[[chen-2025-swipt-mec-sac]]"
   - "[[sun-2024-mvtora-postdisaster-vfc]]"
   - "[[wang-2025-lae-network-survey]]"
+  - "[[sun-2025-tjcct-twotimescale-uav-mec]]"
   - "[[geng-sun]]"
 created: 2026-05-31
 updated: 2026-05-31
@@ -13,13 +14,14 @@ updated: 2026-05-31
 
 # Shuang Liang
 
-Affiliated with the **School of Information Science and Technology, Northeast Normal University** (Changchun, China); email `liangshuang@nenu.edu.cn` (consistent across all three sources). BS in communication engineering (Dalian Polytechnic University, 2011), MS in software engineering (Jilin University, 2017), per the author biographies in the parses.
+Affiliated with the **School of Information Science and Technology, Northeast Normal University** (Changchun, China); email `liangshuang@nenu.edu.cn` (consistent across all four sources). BS in communication engineering (Dalian Polytechnic University, 2011), MS in software engineering (Jilin University, 2017), per the author biographies in the parses.
 
-Co-authored 3 sources in this wiki, all within the Jilin-University / NTU aerial-MEC + low-altitude-economy collaboration around [[geng-sun]]:
+Co-authored 4 sources in this wiki, all within the Jilin-University / NTU aerial-MEC + low-altitude-economy collaboration around [[geng-sun]]:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing (MVTORA).
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
+- [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale UAV-assisted MEC (TJCCT; corresponding author).
 
 ## Contributions to this wiki
 

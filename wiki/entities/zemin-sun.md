@@ -7,6 +7,7 @@ related:
   - "[[sun-2024-mvtora-postdisaster-vfc]]"
   - "[[wang-2025-lae-network-survey]]"
   - "[[wang-2025-sac-tma-mec-dc]]"
+  - "[[sun-2025-tjcct-twotimescale-uav-mec]]"
 created: 2026-05-29
 updated: 2026-05-31
 ---
@@ -15,12 +16,13 @@ updated: 2026-05-31
 
 IEEE Member (Student Member on earlier papers). Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China; email `sunzemin@jlu.edu.cn`) — consistent across her papers in this wiki.
 
-Co-authored 4 sources in this wiki, all in the Jilin-University aerial/vehicular-MEC line:
+Co-authored 5 sources in this wiki, all in the Jilin-University aerial/vehicular-MEC line:
 
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing (lead author).
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
 - [[wang-2025-sac-tma-mec-dc]] — joint AAV MEC + data collection via SAC-TMA.
+- [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale UAV-assisted MEC (TJCCT; lead author).
 
 ## Contributions to this wiki
 
