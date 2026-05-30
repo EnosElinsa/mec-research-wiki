@@ -24,12 +24,15 @@ session.
 
 | Script | Purpose | Common flags |
 |---|---|---|
-| `wikilib.py` | Shared library: repo paths, md enumeration, Obsidian-faithful wikilink parsing, raw/sources reference parsing. Imported by the others; not run directly. | — |
+| `wikilib.py` | Shared library: repo paths, md enumeration, Obsidian-faithful wikilink parsing, raw/sources reference parsing (`# REFERENCES` block extraction, IEEE entry parsing, title normalization, stable `surname-year-slug` keys, venue allow-list classifier, folder→curated-slug map). Imported by the others; not run directly. | — |
 | `linkcheck.py` | Wikilink integrity (zero-dangling check), Obsidian resolution rules. Exit 1 if any dangling link. | `--orphans`, `--json` |
 | `curation_status.py` | Reconcile `raw/sources/` vs curated pages; list uncurated folders; detect duplicate MinerU ingests (identical/near). Exit 1 if genuinely-new papers remain. | `--dupes`, `--near-ratio`, `--json` |
 | `make_batches.py` | Split the genuinely-new papers (or an explicit list) into context-window-sized batches for a multi-invocation run. | `--size` (required), `--input`, `--json` |
 | `corpus_counts.py` | Exact page counts per wiki type + `raw/sources` count + log.md size, for reconciling `overview.md`/`index.md`. | `--json` |
 | `process_refs.py` | Find curation process-narration (batch/pass labels) leaked into any page except `log.md`. Exit 1 if any found. | `--json` |
+| `mine_refs.py` | Mine the `# REFERENCES` of every `raw/sources/*/full.md` into deduplicated reference records; idempotently MERGE into `wiki/references/reference-database.json` (preserves enrichment + curated tags, refreshes `cited_by`/`cited_count`, re-derives venue tiers). Used by `mec-reference-scout`. | `--json`, `--merge DB.json` |
+| `render_refdb.py` | Render the human-readable `wiki/references/reference-database.md` (summary + most-cited centrality table) from the JSON DB so the two never drift. | `--db`, `--out`, `--min` |
+| `recommend_refs.py` | Rank not-yet-curated references as curate-next candidates (recency + venue tier + in-corpus citation frequency + scope), tag breadth/depth and ready-in-raw, and refresh the dated `wiki/references/recommendations.md`. | `--top`, `--db`, `--out`, `--json` |
 
 `--json PATH` writes the machine-readable report; a relative PATH lands in
 `.curation-out/` (the scratch dir) automatically.
@@ -47,6 +50,13 @@ python tools/wiki/process_refs.py
 
 # Reconcile the Snapshot before committing meta-doc edits.
 python tools/wiki/corpus_counts.py
+```
+
+```sh
+# Reference-scout pass: mine refs -> merge DB -> render md -> recommend.
+python tools/wiki/mine_refs.py --merge wiki/references/reference-database.json
+python tools/wiki/render_refdb.py --min 2
+python tools/wiki/recommend_refs.py --top 30
 ```
 
 ## Extending the toolkit
