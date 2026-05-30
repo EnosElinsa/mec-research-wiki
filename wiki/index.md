@@ -12,6 +12,7 @@
 - [[du-2024-distributed-foundation-models-6g]] — Du et al. 2024. Overview of **distributed foundation models** over 6G (pipeline/data parallelism + multi-modal learning).
 - [[zeng-2019-uav-comm-tutorial-5g]] — Zeng et al. 2019. **Tutorial** on UAV communications for 5G and beyond; UAV-assisted comms vs **cellular-connected UAV** taxonomy (Proceedings of the IEEE).
 - [[al-hourani-2014-optimal-lap-altitude]] — Al-Hourani et al. 2014. Foundational **air-to-ground channel** letter: closed-form sigmoid LoS-probability vs elevation angle + **optimal LAP altitude** for maximum ground coverage (IEEE WCL). *(Channel-model anchor, not MEC.)*
+- [[xu-2024-mobile-aigc-survey]] — Xu et al. 2024. Survey of **edge-cloud generative AI / AIGC services** in mobile networks (**mobile AIGC networks**); generative-model fundamentals, AIGC lifecycle, cloud-edge-mobile infrastructure, and implementation challenges (resource allocation, offloading, caching, mobility, incentives) (IEEE COMST).
 
 ### Foundational DRL methods
 
@@ -160,6 +161,7 @@
 - [[qi-2024-msar-minmax-latency]] — Qi et al. 2024. Multi-UAV maritime **search & rescue**; **min-max latency** over offloading + R-UAV deployment + S-UAV–target association; iterative linearization + SCA + Branch-and-Bound (IEEE TVT).
 - [[dai-2024-multiuav-marine-welfare]] — Dai et al. 2024. Multi-UAV multi-access marine MEC (UAVs + **ocean beacon stations**); maximizes **system revenue** (welfare − energy) via layered decomposition + **double-auction** OBS selection (IEEE TCOMM).
 - [[li-2023-secure-marine-iot-jamming]] — Li et al. 2023. **Secure** marine-IoT offloading: USVs upload to a **HAP** via NOMA then provide **cooperative jamming**; system-energy min via monotonic optimization (PAS) + cross-entropy (CASE) (IEEE TVT).
+- [[zeng-2024-usv-fleet-collaborative-offloading]] — Zeng et al. 2024. UAVs offload tasks **to USV fleets**; first-price sealed **reverse auction** (reserve price) incentive + symmetric-equilibrium bidding, then BCD + improved **ADMM** energy minimization (IEEE TVT).
 
 ### Trust, security, and federated MEC
 
@@ -182,6 +184,7 @@
 - [[sun-2025-emoppo-vlh-aerial-cb]] — Sun et al. 2025. AAV-swarm **collaborative beamforming** (virtual antenna array) to a terrestrial mobile user; evolutionary multi-objective PPO with vectorized value + LSTM + hyper-sphere task selection (EMOPPO-VLH).
 - [[li-2024-emodrl-ground-space-cb]] — Li et al. 2024. **Distributed collaborative beamforming** for ground-space (terminal-to-LEO) uplink; evolutionary multi-objective DRL (EMODRL); saves 30% handover frequency.
 - [[li-2024-emssa-uav-swarm-vaa]] — Li et al. 2024. **Virtual antenna arrays** for UAV-swarm-assisted IoT data harvesting/dissemination; multi-objective (time / eavesdropper / energy) **salp swarm** optimizer (EMSSA); ground + aerial CB (IEEE TMC).
+- [[sun-2024-imssa-uav-secure-cb]] — Sun et al. 2024. **Secure** UAV collaborative beamforming (UVAA) with **imperfect / unknown eavesdropper** information; multi-objective SCMOP (worst-case secrecy rate / max SLL / flight energy) solved by an **improved multi-objective salp swarm algorithm** (IMSSA); Raspberry Pi demo (IEEE TMC).
 
 ### Architectural / spectrum / governance
 
@@ -229,6 +232,7 @@
 - **Newly confirmed (batch 5/8):** [[kezhi-wang]] (Northumbria Univ. — UAV-MEC trajectory/offloading group; 3 sources, `kezhi.wang@northumbria.ac.uk`-matched), [[xuemin-shen]] (Univ. of Waterloo — MEC resource management; 2 sources), [[yuguang-fang]] (City Univ. of Hong Kong — maritime MEC, [[bin-lin]] cluster; 2 sources), [[haixia-peng]] (Univ. of Waterloo → Xi'an Jiaotong Univ. — vehicular + maritime MEC; 2 sources, affiliation move documented in both parses).
 - **Newly confirmed (batch 6/8):** [[liping-qian]] (Zhejiang Univ. of Technology — NOMA / multi-access marine MEC; 3 sources, `lpqian@zjut.edu.cn`-matched), [[minghui-dai]] (Univ. of Macau — marine multi-access offloading; first author of 2 sources, `minghuidai@um.edu.mo`), [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications — UAV-swarm MEC + UAV-ISAC; 2 sources, `fengzy@bupt.edu.cn`-matched).
 - **Newly confirmed (batch 7/8):** [[shichao-li]] & [[hongbin-chen]] (Guilin Univ. of Electronic Technology — two-hop air-ground IoRT MEC; `@guet.edu.cn`-matched; 2 and 3 sources), [[mianxiong-dong]] (Muroran Inst. of Technology; 2 sources) & [[ning-zhang]] (Univ. of Windsor; 2 sources) — co-authors across the IoRT + robust-multi-UAV DRL offloading thread, [[victor-c-m-leung]] (Shenzhen MSU-BIT / Shenzhen Univ. / UBC, `vleung@ieee.org`; 3 sources in the [[geng-sun]]/[[dusit-niyato]] aerial-MEC cluster).
+- **Newly confirmed (batch 8/8):** [[zhou-su]] (Xi'an Jiaotong Univ. — maritime/vehicular edge computing; 2 sources, `zhousu@ieee.org`-matched, corresponding author of [[zeng-2024-usv-fleet-collaborative-offloading]]), [[yanheng-liu]] (Jilin Univ. — [[geng-sun]] aerial/vehicular-MEC cluster; 2 sources, `yhliu@jlu.edu.cn`-matched). [[victor-c-m-leung]] roster grew 3→5 (+IMSSA secure-CB + mobile-AIGC survey), [[minghui-dai]] 2→3 (+USV-fleet co-author), and the generative-AI cluster rosters bumped on the AIGC survey ([[dusit-niyato]] 15→16, [[jiawen-kang]] 10→11, [[zhu-han]] 6→7, [[xuemin-shen]] 2→3).
 
 (One recurring author remains deferred for human confirmation as a genuine **namesake**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so they are not merged. See the 2026-05-30 log entry. A second **namesake** was confirmed in batch 6/8: the "Jingjing Wang" in [[yang-2020-loadbalance-multiuav-iot]] is at **Tsinghua University** (`chinaeephd@gmail.com`, Shuimu Tsinghua Scholar), distinct from the existing **Beihang** [[jingjing-wang]] entity (`drwangjj@buaa.edu.cn`) — not merged.)
 
@@ -272,6 +276,7 @@
 - [[dispersed-computing]]
 - [[generative-ai-for-mec]]
 - [[aigc-service-provider]]
+- [[mobile-aigc-network]]
 - [[prompt-engineering]]
 - [[distributed-foundation-models]]
 - [[over-the-air-computation]]
@@ -412,6 +417,8 @@
 - [[cross-entropy-method]]
 - [[generalized-assignment-problem]]
 - [[double-auction]]
+- [[reverse-auction-incentive]]
+- [[alternating-direction-method-of-multipliers]]
 - [[queueing-theory]]
 
 ### Channel modeling

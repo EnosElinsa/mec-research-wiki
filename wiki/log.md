@@ -2,6 +2,49 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-05-31 — Curation pass (batch 8/8: 3 new sources + audit; multi-batch run complete)
+
+Eighth and final batch of the deliberately-split 8-batch curation run over the 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 3 assigned batch-8 folders. Corpus grows **131 → 134 curated sources**, completing the 52-paper run (the two space-vs-underscore re-ingests — *Optimizing Spectrum Sharing…* and *UAV-Enabled Multi-Source Data Fusion…* — were correctly identified as duplicates of already-curated sources and skipped). (Confirmed none of the 3 already had a source page before writing.)
+
+> **Note (orchestration):** this batch-8 run was interrupted after writing its pages, concepts, entities, and `index.md`/roster updates but before reconciling `overview.md`/`log.md` and committing. The interrupted work was inspected and completed (overview/log reconciliation + this entry + commit) rather than re-run, to avoid duplication. All three source pages and supporting pages were verified complete and parse-grounded before finishing.
+
+### New source pages (3)
+
+- [[sun-2024-imssa-uav-secure-cb]] — Sun et al. 2024 (**IEEE TMC**, `10.1109/TMC.2023.3273293`). UAV-enabled **secure communications** via **collaborative beamforming** (UVAA) against **known eavesdroppers with imperfect location info + unknown eavesdroppers**; multi-objective SCMOP (maximize worst-case secrecy rate / minimize max sidelobe level / minimize flight energy) proven non-convex & NP-hard, solved by an **improved multi-objective salp swarm algorithm (IMSSA)** with circle-map init + discrete update + migration/adaptive-mutation operators; Raspberry-Pi demonstration. Earlier version at IEEE ISCC 2022. DOI pub 5 May 2023 / current version 6 Mar 2024 → year 2024.
+- [[xu-2024-mobile-aigc-survey]] — Xu et al. 2024 (**IEEE COMST**, `10.1109/COMST.2024.3353265`). **Survey** of edge-cloud generative-AI / **AIGC services** in mobile networks (**mobile AIGC networks**): generative-model fundamentals, the AIGC service lifecycle (data collection → pre-training → fine-tuning → inference → product management), the collaborative cloud-edge-mobile infrastructure, applications/case studies, and implementation challenges (edge resource allocation, task/computation offloading, edge caching, mobility management, incentive mechanisms). DOI pub 12 Jan 2024 / current version 23 May 2024 → year 2024.
+- [[zeng-2024-usv-fleet-collaborative-offloading]] — Zeng et al. 2024 (**IEEE TVT**, `10.1109/TVT.2024.3359310`). UAVs offload marine-monitoring tasks **to USV fleets**; a **first-price sealed reverse auction with reserve price** incentivizes fleet participation (reserve = UAV valuation; symmetric-equilibrium bidding derived with existence + uniqueness proofs), then an energy-minimization problem is decomposed by **BCD** into two subproblems each solved by an **ADMM** improved with dynamic penalty coefficients. Participation degree improves **28.27%/25.74% over RBS/GBS** across task sizes and **27.84%/21.14%** across fleet counts (verbatim). Earlier version at IWCMC 2022. DOI pub 27 Feb 2024 / current version 17 Oct 2024 → year 2024.
+
+### New concept stubs (3)
+
+- [[mobile-aigc-network]] — the edge-cloud architecture for *serving* AIGC as the workload (distinct from [[generative-ai-for-mec]], which uses generative models to optimize the MEC system); anchors [[xu-2024-mobile-aigc-survey]].
+- [[reverse-auction-incentive]] — first-price sealed reverse auction with reserve price (single buyer, lowest-bidding seller wins); the incentive layer of [[zeng-2024-usv-fleet-collaborative-offloading]].
+- [[alternating-direction-method-of-multipliers]] — the ADMM augmented-Lagrangian block-splitting solver, complementing [[two-stage-decomposition]] / [[alternating-optimization-sdr-sca]] / [[penalty-dual-decomposition]].
+
+All other referenced concepts reused existing slugs (e.g. [[collaborative-beamforming]], [[physical-layer-security]], [[salp-swarm-algorithm]], [[uav-trajectory-control]], [[air-to-ground-channel-model]], [[generative-ai-for-mec]], [[aigc-service-provider]], [[three-tier-cloud-edge-end]], [[generative-diffusion-model]], [[task-offloading]], [[service-caching-mec]], [[mobility-aware-offloading]], [[federated-learning]], [[maritime-mec]], [[double-auction]], [[nash-equilibrium]], [[energy-latency-tradeoff]]).
+
+### Entities — 2 new + roster updates
+
+- **Created (2):** [[zhou-su]] (Xi'an Jiaotong Univ., `zhousu@ieee.org`; 2 sources — [[zeng-2024-usv-fleet-collaborative-offloading]] (corresponding author) + [[dai-2023-hybrid-marine-mmwl]]); [[yanheng-liu]] (Jilin Univ., `yhliu@jlu.edu.cn`; 2 sources — [[sun-2024-imssa-uav-secure-cb]] + [[sun-2023-bargain-match-vec]], in the [[geng-sun]] cluster).
+- **Roster updates (existing entities):** [[victor-c-m-leung]] (3→5, +IMSSA secure-CB +AIGC survey), [[minghui-dai]] (2→3, +USV-fleet co-author), [[dusit-niyato]] (15→16, +AIGC survey), [[jiawen-kang]] (10→11, +AIGC survey), [[zhu-han]] (6→7, +AIGC survey), [[xuemin-shen]] (2→3, +AIGC survey), plus the IMSSA secure-CB co-authors [[geng-sun]], [[zemin-sun]], [[jiahui-li]], [[qingqing-wu]] (the IMSSA paper positively **confirms** the SJTU Qingqing Wu in the Geng-Sun collaborative-beamforming cluster).
+- No author-entity links were embedded in source-page bodies (matching the established house convention).
+
+### Duplicate / near-duplicate check
+
+- [[sun-2024-imssa-uav-secure-cb]] is **distinct** from the existing secure-CB source [[zhang-2024-gdmtd3-aerial-secure-cb]] (swarm-intelligence IMSSA optimizer + imperfect/unknown-eavesdropper modeling vs diffusion-enhanced TD3 DRL) and from the other Geng-Sun CB papers ([[sun-2025-emoppo-vlh-aerial-cb]], [[li-2024-emodrl-ground-space-cb]], [[li-2024-emssa-uav-swarm-vaa]]) — cross-linked, not duplicated.
+- [[zeng-2024-usv-fleet-collaborative-offloading]] is **distinct** from the same-cluster marine papers [[dai-2024-multiuav-marine-welfare]] (double-auction OBS selection) and [[dai-2023-hybrid-marine-mmwl]] (MMWL hybrid FDMA/NOMA) — different architecture (USV-fleet-as-helper), incentive (reverse auction), and solver (BCD/ADMM).
+- [[xu-2024-mobile-aigc-survey]] is the anchor **survey** for the generative-AI thread, distinct from the methodological tutorial [[du-2024-gdm-network-optimization-tutorial]] and the concrete ASP-selection source [[du-2024-d2sac-aigc-asp-selection]].
+- No same-paper/different-UUID duplicate ingests found among the 3.
+
+### Audit (correctness-first)
+
+- **DOI / venue / year** — all 3 carry an explicit `Digital Object Identifier` line in their own parse; every DOI, venue, and year is grounded (manuscript date-of-publication / date-of-current-version lines). **Zero `not in parse` metadata fields this batch.** Year follows date-of-current-version for the straddling TMC/TVT papers, with both dates recorded in each citation.
+- **Grounded headline claims only:** USV-fleet participation-degree percentages (28.27%/25.74%; 27.84%/21.14%) quoted verbatim from the parse; IMSSA "outperforms MOPSO/NSGA-II/MODE/MSSA/IMODACH" stated as the paper states it (Pareto/metric curves are figure-derived, flagged indicative); the AIGC survey's claims framed as organizing claims, not measured results.
+- **Wikilink integrity:** wiki-wide check after the pass = **ZERO dangling links** introduced this batch; all new wikilinks target existing slugs or pages created in this same batch. (Two pre-existing dangling references — `hp-mobility-models` and a root-level `purpose` link inside meta-doc narrative — are tracked for the next audit pass and were not introduced here.)
+- **Frontmatter:** `type`/`title`/`authors`/`year`/`url`/`venue`/`tags`/`related`/dates/H1 validated on all 3 source pages; `type`/`title`/`tags`/dates/H1 on the 3 concepts and 2 entities.
+- **Counts reconciled:** **134 sources / 213 concepts / 64 author entities (+[[pytorch]] = 65 entity pages)**. `index.md` and `overview.md` updated to agree.
+- **LLM Wiki API:** not queried this batch (headless shell); not required for correctness.
+- **Raw-folder scope:** only the 3 assigned batch-8 folders were curated; the 52-paper multi-batch run is now complete.
+
 ## 2026-05-31 — Curation pass (batch 7/8: 7 new sources + audit)
 
 Seventh batch of the deliberately-split 8-batch curation run over 52 newly-ingested raw papers (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned batch-7 folders; the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **124 → 131 curated sources**. (Confirmed none of the 7 already had a source page before writing.)

@@ -5,8 +5,10 @@ tags: [gai, llm, gdm, mec, beamforming, semantic-communication]
 related:
   - "[[mobile-edge-computing]]"
   - "[[wang-2025-lae-network-survey]]"
+  - "[[mobile-aigc-network]]"
+  - "[[xu-2024-mobile-aigc-survey]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-05-31
 ---
 
 # Generative AI for MEC (GAI-MEC)
@@ -32,7 +34,7 @@ The application of **generative AI** — large language models (LLMs), diffusion
 
 ## In this wiki
 
-[[wang-2025-lae-network-survey]] surveys this thread under "GAI-driven Computing" and "GAI-driven MEC and Cloud-Edge-End Collaboration". No deep-dive paper from the GAI-MEC angle is curated yet — this concept page is a placeholder until one arrives.
+[[wang-2025-lae-network-survey]] surveys this thread under "GAI-driven Computing" and "GAI-driven MEC and Cloud-Edge-End Collaboration". The distinct but adjacent thread of *serving* generative AI as the edge workload — **mobile AIGC networks** — is surveyed by [[xu-2024-mobile-aigc-survey]] (see [[mobile-aigc-network]]).
 
 ## Open questions
 
