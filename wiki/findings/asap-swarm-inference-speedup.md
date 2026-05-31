@@ -11,7 +11,7 @@ related:
   - "[[data-partition-parallel-inference]]"
   - "[[elastic-task-scheduling]]"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-02
 ---
 
 # ASAP cuts in-swarm computing latency up to 92.66% vs raw-data offloading (hardware-validated)
@@ -20,7 +20,7 @@ In [[sun-2024-asap-uav-swarm]], the ASAP in-swarm collaborative DL-inference sys
 
 > "ASAP has been deployed on 24 popular airborne computers and 5 real-world quad-rotor UAVs. Experiment results show that the proposed system can decrease the computing latency by up to 92.66% compared with data offloading."
 
-This is one of only two **hardware-validated** sources in the corpus (the other is [[shao-2024-drl-antijamming-mec]]), which makes the result unusually credible relative to the simulation-only majority.
+This is one of the few **hardware-validated** sources in the corpus — alongside [[shao-2024-drl-antijamming-mec]] (Raspberry Pi / USRP testbed) and [[zhang-2020-response-delay-uav-swarm]] (real DJI UAVs + 5G NR mmWave testbed), with [[qu-ecoei-uav-swarm]] adding an airborne proof-of-concept — which makes the result unusually credible relative to the simulation-only majority.
 
 ## Mechanism
 
