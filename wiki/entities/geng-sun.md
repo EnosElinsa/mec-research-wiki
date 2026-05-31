@@ -14,6 +14,7 @@ related:
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[sun-2025-tjcct-twotimescale-uav-mec]]"
   - "[[sun-2024-imssa-uav-secure-cb]]"
+  - "[[wang-2024-hfrl-decentralized-navigation]]"
 created: 2026-05-29
 updated: 2026-05-31
 ---
@@ -22,7 +23,7 @@ updated: 2026-05-31
 
 IEEE Member. Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China); also affiliated with the **College of Computing and Data Science, Nanyang Technological University** (Singapore) in several papers.
 
-Co-authored 11 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, and survey work in aerial/edge networks:
+Co-authored 12 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, and survey work in aerial/edge networks:
 
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
@@ -35,6 +36,7 @@ Co-authored 11 sources in this wiki, spanning vehicular, post-disaster, energy-e
 - [[li-2024-emssa-uav-swarm-vaa]] — multi-objective UAV-swarm + IoT collaborative beamforming with virtual antenna arrays via the enhanced salp swarm algorithm (EMSSA).
 - [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale joint resource-allocation / offloading / trajectory-control UAV-MEC (TJCCT; corresponding author).
 - [[sun-2024-imssa-uav-secure-cb]] — UAV-enabled secure collaborative beamforming with imperfect/unknown eavesdropper information via the improved multi-objective salp swarm algorithm (IMSSA).
+- [[wang-2024-hfrl-decentralized-navigation]] — decentralized navigation for heterogeneous UAV-MEC via soft hierarchical DRL + dual-end federated reinforcement learning (co-author; Dalian University of Technology-led).
 
 ## Contributions to this wiki
 

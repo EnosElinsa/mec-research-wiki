@@ -2,6 +2,59 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Curation pass (batch 1/6: 7 new sources + audit)
+
+First batch of a deliberately-split **6-batch** curation run over the **37 genuinely-new** raw papers currently uncurated (split to keep context clean and avoid misinformation). This run curated **only** the 7 assigned batch-1 folders; the other uncurated folders are owned by separate batch runs and were left untouched. Corpus grows **134 → 141 curated sources**. (Confirmed none of the 7 already had a source page before writing.)
+
+> **Scope note.** `wiki/references/recommendations.md` named two "ready to curate now" picks — *Optimizing Spectrum Sharing in UAV Swarms…* and *UAV-Enabled Multi-Source Data Fusion in Vehicular Networks…* — but `curation_status.py --dupes` correctly flagged both raw folders as **duplicate MinerU ingests** (space-named) of already-curated underscore-named papers ([[wang-2025-uav-swarm-stackelberg]] and [[xie-2026-uav-multisource-fusion]]). They were **skipped, not re-curated**; the recommendations file is stale on these two. Reconciliation: `raw/sources` 173 folders, 134 curated, 39 uncurated → 2 duplicates → **37 genuinely-new**. `make_batches.py --size 7` → 6 batches (7/7/7/7/7/2).
+
+### New source pages (7)
+
+- [[mozaffari-2019-uav-wireless-tutorial]] — Mozaffari et al. 2019 (**IEEE COMST**, `10.1109/COMST.2019.2902862`). Tutorial on UAVs for wireless networks: UAVs as aerial base stations vs cellular-connected UAVs; 3D deployment, channel modeling, energy efficiency; analytical toolbox (optimization, ML, stochastic geometry, transport theory, game theory). *Not MEC — UAV-communications tutorial anchor.* Manuscript pub 5 Mar 2019 / current version 20 Aug 2019 → year 2019.
+- [[sun-2024-active-passive-ris-receiver]] — Yifu Sun et al. 2024 (**IEEE TWC**, `10.1109/TWC.2023.3325813`). Active-passive cascaded RIS receiver for anti-jamming; worst-case rate max under imperfect angular jammer CSI; UM-ZF (passive) + AMM/C-M-CCD (active) semi-closed-form solutions. Reports PSR 32.8% vs 75.9% (2.78×) and ~0 dB vs ~−10 dB receive SINR at the BS direction (verbatim). *Not MEC — PHY RIS-receiver anchor.* pub 25 Oct 2023 / current version 12 Jun 2024 → 2024.
+- [[wang-2024-blockchain-uav-mec-dpos]] — Die Wang et al. 2024 (**IEEE TVT**, `10.1109/TVT.2023.3306740`). Blockchain-integrated UAV-assisted MEC; improved **DPoS** (UAV light nodes + reputation-voted ground full nodes) + two-stage **Stackelberg** game over UAV trajectory/comm-resources and ground compute, solved via KKT + SCA. pub 21 Aug 2023 / current version 17 Jan 2024 → 2024.
+- [[han-2024-ground-satellite-fl]] — Dong-Jun Han et al. 2024 (**IEEE JSAC**, `10.1109/JSAC.2024.3365901`). Cooperative FL over ground-to-satellite networks; LEO satellites as edge-compute units + intra-cluster aggregators + ISL relays; solar-battery-aware data offloading + non-convex convergence proof + latency minimizer. pub 13 Feb 2024 / current version 9 May 2024 → 2024.
+- [[liu-2020-cooperative-uav-mec-power-iot]] — Yi Liu, Shengli Xie, Yan Zhang 2020 (**IEEE TVT**, `10.1109/TVT.2020.3016840`). Cooperative UAV-enabled MEC for power IoT (UAVs help neighboring small-cells); long-term utility max as a **semi-Markov** process; two-phase centralized + Q-value-transfer distributed DRL. pub 17 Aug 2020 / current version 22 Oct 2020 → 2020.
+- [[wang-2024-hfrl-decentralized-navigation]] — Pengfei Wang et al. 2024 (**IEEE TMC**, `10.1109/TMC.2024.3439696`). Decentralized navigation for **heterogeneous** UAV-MEC; soft hierarchical DRL (SHDRLN, skill abstraction) + dual-end **federated RL** (DFRL) maximizing task-offloading energy efficiency. DFRL/FedAvg reach 2.7 KB/J at 100/200 episodes = original SHDRLN at 300; DFRL eventually surpasses original SHDRLN (verbatim figure-read). pub 7 Aug 2024 / current version 5 Nov 2024 → 2024.
+- [[liu-2022-maritime-uav-mec-virtualization]] — Ying Liu, Junjie Yan, Xiaohui Zhao 2022 (**IEEE TVT**, `10.1109/TVT.2022.3141799`). Two-layer maritime UAV-MEC (T-UAV MEC server over B-UAVs) with **VM-multiplexing** parallel computing under I/O interference (unequal task sizes); latency min via DQN + DDPG over T-UAV trajectory + VM count. DDPG cuts total avg latency >37%, DQN 31% vs hover-center-no-parallel-computing (verbatim). pub 11 Jan 2022 / current version 2 May 2022 → 2022.
+
+### New concept stubs (5)
+
+- [[active-ris]] — RIS with phase + amplitude (amplifying) control; anchors [[sun-2024-active-passive-ris-receiver]].
+- [[delegated-proof-of-stake]] — DPoS voting-elected delegate consensus; the improved DPoS of [[wang-2024-blockchain-uav-mec-dpos]].
+- [[hierarchical-reinforcement-learning]] — skill/option temporal abstraction; the SHDRLN of [[wang-2024-hfrl-decentralized-navigation]].
+- [[virtual-machine-multiplexing]] — multiple VMs per physical edge server with I/O interference; the parallel-compute mechanism of [[liu-2022-maritime-uav-mec-virtualization]].
+- [[semi-markov-decision-process]] — random-sojourn-time MDP generalization; the formulation behind [[liu-2020-cooperative-uav-mec-power-iot]].
+
+All other referenced concepts reused existing slugs (e.g. [[intelligent-reflecting-surface]], [[anti-jamming-mec]], [[physical-layer-security]], [[csi-estimation-error]], [[alternating-optimization-sdr-sca]], [[stackelberg-game]], [[blockchain-on-edge-trust-layer]], [[federated-learning]], [[federated-reinforcement-learning]], [[soft-actor-critic]], [[heterogeneous-uav-fleet]], [[leo-satellite-edge-computing]], [[privacy-sensitive-data-partitioning]], [[leo-satellite-coverage-time]], [[makespan-minimization]], [[maritime-mec]], [[multi-uav-assisted-mec]], [[deep-q-network]], [[ddpg]], [[parallel-vs-serial-processing]], [[cellular-connected-uav]], [[air-to-ground-channel-model]], [[high-altitude-platform-station]], [[stochastic-geometry-network-analysis]], [[uav-trajectory-control]], [[task-offloading]], [[small-cell-mec]]).
+
+### Entities — 3 new + 3 roster updates
+
+- **Created (3):** [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp`; 2 sources — [[wang-2024-blockchain-uav-mec-dpos]] + [[li-2024-twohop-iort-packet-scheduling]], with [[mianxiong-dong]]); [[dong-jun-han]] (Purdue, `han762@purdue.edu`; 2 sources — [[han-2024-ground-satellite-fl]] + [[han-2024-sagin-fl-handover]], first author both); [[christopher-brinton]] (Purdue, `cgb@purdue.edu`; 2 sources — same two, senior author both).
+- **Roster updates:** [[mianxiong-dong]] (2→3, +blockchain-DPoS, corresponding author), [[shengli-xie]] (2→3, +power-IoT cooperative MEC; GDUT, `shlxie@gdut.edu.cn` consistent — same identity), [[geng-sun]] (11→12, +decentralized-navigation co-author; Jilin Univ.).
+- No author-entity links were embedded in source-page bodies (house convention).
+
+### Duplicate / near-duplicate check
+
+- The two recommendations picks are duplicate ingests of already-curated papers — skipped (see scope note above).
+- [[han-2024-ground-satellite-fl]] is **distinct** from the same Purdue group's [[han-2024-sagin-fl-handover]]: two-tier ground-to-satellite with solar-battery-aware offloading + convergence proof vs three-tier SAGIN adding a UAV/air layer and a seamless-handover offloading optimizer — cross-linked, not duplicated.
+- [[liu-2020-cooperative-uav-mec-power-iot]] (Yi Liu, GDUT), [[liu-2022-maritime-uav-mec-virtualization]] (Ying Liu, Jilin Univ.) are **distinct authors** from each other and from existing Liu entities ([[lihan-liu]], [[yangbo-liu]], [[jiajia-liu]], [[yanheng-liu]]); no entity created for either first author (each has 1 corpus source).
+- [[sun-2024-active-passive-ris-receiver]] (Yifu Sun, NUDT) is a **different author** from the Geng-Sun / Zemin-Sun / Hao-Sun entities and from [[sun-2024-mfris-semantic-antijamming]]'s author — no roster change.
+- No same-paper/different-UUID duplicate ingests among the 7.
+
+### Audit (correctness-first)
+
+- **DOI / venue / year** — all 7 carry an explicit `Digital Object Identifier` line in their own parse; every DOI, venue, and year above is grounded (manuscript date-of-publication / date-of-current-version lines). **Zero `not in parse` metadata fields this batch.** Year follows date-of-current-version for the straddling TWC/TVT/JSAC/TMC papers, with both dates recorded in each citation.
+- **Grounded headline claims only:** RIS PSR 32.8%/75.9% (2.78×) and ~0 dB vs ~−10 dB SINR; maritime DDPG >37% / DQN 31% latency reduction; HFRL 2.7 KB/J at 100/200 vs 300 episodes — all quoted from the parse (figure-read curves flagged indicative). Blockchain-DPoS "superior delay", cooperative power-IoT "better than non-cooperative", and ground-satellite-FL "significantly speeds up convergence" stated qualitatively as the papers state them.
+- **Wikilink integrity:** `linkcheck.py` after the pass = **NO DANGLING LINKS** (Obsidian-faithful). All new wikilinks target existing slugs or pages created in this same batch (7 sources + 5 concepts + 3 entities).
+- **Process-narration:** `process_refs.py` = **0 hits** outside `log.md`; sources/concepts/entities/index/overview kept evergreen.
+- **Frontmatter:** `type`/`title`/`authors`/`year`/`url`/`venue`/`tags`/`related`/dates/H1 validated on all 7 source pages; `type`/`title`/`tags`/dates/H1 on the 5 concepts and 3 entities.
+- **Counts reconciled** (`corpus_counts.py`): **141 sources / 218 concepts / 67 author entities (+[[pytorch]] = 68 entity pages)**, 13 findings / 11 synthesis / 4 comparisons / 2 methodology / 4 queries / 1 thesis. `index.md` and `overview.md` updated to agree.
+- **LLM Wiki API:** not queried this batch (headless shell); not required for correctness.
+- **Raw-folder scope:** only the 7 assigned batch-1 folders were curated; **5 batches (30 papers) remain** for separate invocations.
+
+
+
 ## 2026-06-01 — Synthesis pass (collaborative-beamforming track: +1 synthesis, +1 finding, cross-links; no new papers)
 
 No-new-papers coverage-growth pass over the **collaborative-beamforming (CB)** cluster. Phase 0 confirmed the corpus is fully curated: `curation_status.py --dupes` reports **0 genuinely-new** folders (the two space-vs-underscore re-ingests — *Optimizing Spectrum Sharing…* and *UAV-Enabled Multi-Source Data Fusion…* — remain correctly classified as duplicate MinerU ingests, no page needed). Tree clean at `f3c67fb`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **446 nodes / 3717 edges** → **448 / 3751** after this pass.
