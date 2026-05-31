@@ -2,6 +2,39 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batch 1/12; no new papers)
+
+First invocation of a multi-invocation batched audit over the fully-curated 171-source corpus. Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator` needed). Tree clean at `f81cbb4`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4449 edges**.
+
+### Meta-doc cleanup (Phase A)
+
+- **`index.md`** — added 6 concept pages that existed on disk but were uncatalogued ([[value-decomposition-network]], [[impala]] under DRL backbones; [[majorization-minimization]] under optimization techniques; [[proactive-eavesdropping]] under sensing & security; [[leo-handover-protocol]] + [[fault-tolerant-relay-network]] under aerial/network architectures). Fixed the stale reference-DB count (2981 → **5054**, matching the scout-owned [[reference-database]]). Every catalogue-able wiki page is now indexed exactly once (verified with the new `index_audit.py`); the remaining multi-listed slugs are deliberate entity-roster / `>` cross-reference mentions, not duplicate bullets.
+- **`overview.md`** — added the previously-missing 5th query ([[end-to-end-drl-feasibility-large-scale-mec]]) to Open questions. Snapshot counts re-verified exact via `corpus_counts.py` (171 / 234 / 71 / 14 findings / 11 synthesis / 4 comparisons / 2 methodology / 5 queries / 1 thesis); the "70 author pages + [[pytorch]] = 71" split confirmed (70 author-tagged + 1 tool).
+- **`log.md`** — already consolidated (single [Raw-source housekeeping](#raw-source-housekeeping) section, strict reverse-chronological order, normalized `## YYYY-MM-DD — <title>` headers); this pass only prepended this entry. Meta docs edited with the file tools (never PowerShell redirection); verified mojibake-free at the byte level.
+
+### Correctness & consistency audit (Phase B — batch 1/12)
+
+Audited the just-converted **end-to-end-DRL English cluster** + **source-page batch 1** (15 pages, alphabetical al-hourani-2014 → cheng-2025; batch plan tracked in `.curation-out/audit-coverage.md`).
+
+- **Ungrounded-number fix:** [[albakhrani-2025-moalf-uav-mec]] claimed "92.8% efficiency at double-scale / 83.5% at ten-fold scale" — **92.8% is absent from the parse** and 83.5% is a single per-system-load figure datapoint, not a scale-multiplier result. Rewrote to the parse's actual scalability framing (IoT devices 50→500, UAVs 5→50; figure-derived degradation), keeping the grounded 94.50% / 1890 / 96% / 38% / 55% claims.
+- **DOI provenance fix:** [[bao-2025-ddpg-video-offloading]] cited `10.1007/s40747-025-02106-1` as if parse-grounded, but the Springer parse carries no DOI line. Added a metadata note marking the DOI + venue **web-confirmed** (Springer record), parse supplies only title/dates/year.
+- **Evergreen-wording fix:** [[drl-vs-evolutionary-vs-classical-solvers]] scope note said "not a current census of all **134**" — a stale hardcoded corpus size. Rewrote to "not a current census of the full corpus" (evergreen).
+- **Verified clean** (DOI/venue/year against parse; headline numbers grounded; frontmatter valid; slugs/tags/`related` consistent): the 4 end-to-end-DRL cluster pages, al-hourani-2014, apostolopoulos-2021, bai-2024, benaya-2025, bi-2025 (empty url/venue correct — no pub metadata in parse), bor-yaliniz-2016 (web-confirmed note already present), chang-2022, chen-2023, chen-2024-thoas, chen-2024-three-party, chen-2024-ulse, chen-2025. Spot-checked precise numbers verbatim: cheng-2025 "5.72% / >1.88× / 37.4% vs GE", chen-2024-ulse execution-time magnitudes.
+
+### Toolkit
+
+- Added **`tools/wiki/index_audit.py`** (+ README entry) — reconciles the wiki page inventory against `index.md`: reports pages on disk not catalogued and slugs linked more than once; exit non-zero on either. Promoted from what would otherwise be an ad-hoc one-off, per the toolkit ratchet.
+
+### Gates
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 0 pages unindexed. Frontmatter diagnostics clean on every touched page.
+
+### Routing to `mec-wiki-synthesizer` (coverage gaps — recorded, not filled)
+
+- **Stale roster needs re-tally:** [[drl-vs-evolutionary-vs-classical-solvers]] still reasons over a 26-source family roster; a full re-census across the 171-source corpus is owed (wording made evergreen here, but the analytical broadening is the synthesizer's job).
+- **Candidate synthesis:** the "multi-agent-policy-gradient as a Stackelberg-equilibrium solver" pattern appears in [[bi-2025-sg-mapg]] and relates to [[wang-2025-uav-swarm-stackelberg]] / the [[game-theoretic-offloading-formulations]] comparison — worth a synthesis page if a third source uses it.
+- **Remaining audit scope:** 11 source-page batches (~156 pages) plus concepts/entities/most derived pages are unaudited; later invocations continue from `.curation-out/audit-coverage.md`.
+
 ## 2026-06-01 — Cleanup: duplicate-ingest removal + end-to-end-DRL derived pages converted to English
 
 Repository hygiene pass following the 6-batch curation run.

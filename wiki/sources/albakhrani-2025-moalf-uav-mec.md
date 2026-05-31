@@ -15,7 +15,7 @@ related:
   - "[[song-2022-emorl-tcto-uav]]"
   - "[[multi-verse-optimizer]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # MOALF-UAV-MEC: Adaptive Multiobjective Optimization for UAV-Assisted Mobile Edge Computing in Dynamic IoT Environments
@@ -41,8 +41,8 @@ IoT proliferation strains network/compute resources. The paper targets several i
 
 The paper reports specific figures (treated as the authors' stated results):
 - Task completion rate **94.50%**, with an average of **1890 completed tasks per UAV** and **load-balancing efficiency 96%**.
-- A **38% reduction in UAV route optimization** and a **55% increase in task completion** during high-load periods.
-- Efficiency of **92.8%** at double-scale deployments and **83.5%** at ten-fold scale.
+- A **38% reduction** in UAV path length and a **55% increase in task completion** during high-load periods.
+- Scalability evaluated by varying IoT devices from 50 to 500 and UAVs from 5 to 50 (Fig. 6), reporting graceful performance degradation vs MAPPO / MA-DRL and resource-consumption scaling — magnitudes are figure-derived.
 
 These are the authors' reported numbers; some are figure/abstract-derived and should be read as indicative of claimed performance rather than independently verified.
 
