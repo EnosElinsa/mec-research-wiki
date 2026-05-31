@@ -13,6 +13,7 @@ related:
   - "[[wireless-power-transfer]]"
   - "[[binary-vs-partial-offloading]]"
   - "[[fractional-programming-dinkelbach]]"
+  - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-28
 updated: 2026-06-01
@@ -41,9 +42,9 @@ Authors note that for an $N$-WD system the natural input — channel + queue sta
 
 ## Findings
 
-- LyCNN-DRL beats classical iterative MINLP solvers in execution latency by orders of magnitude (sub-millisecond inference vs seconds per iteration), while approaching their EE.
-- It also beats prior DRL approaches (e.g. the OFDMA-based scheme that wastes sub-bandwidth on local-computing WDs).
-- Long-term EE under stochastic channels and arrivals is achievable *without* future-knowledge — the Lyapunov drift-plus-penalty handles temporal coupling implicitly.
+- LyCNN-DRL matches the classical iterative solver **LyCD**'s energy efficiency (over **97%** of LyCD's utility; LyCD is only ~3% better) at a fraction of its execution latency — **~50 ms** in a ten-WD network and **≤137 ms (0.137 s)** even at $N=40$, roughly two orders of magnitude below LyCD's **35.184 s** (≈250× lower at $N=40$, per Table III; verbatim).
+- It also beats the DRL baselines: the non-Lyapunov-guided **HA2C** (which degrades and fails to converge for $N \ge 10$) and the Lyapunov-guided policy-gradient **LyPG-DRL** (≈47.8% worse $\eta$ at $N=10$ and non-convergent for $N \ge 30$). The OFDMA scheme of ref. [26] — which leaves the sub-bandwidth of local-computing WDs idle — is cited as motivating prior work rather than benchmarked here.
+- Long-term EE under stochastic channels and arrivals is achievable *without* future knowledge — the Lyapunov drift-plus-penalty handles temporal coupling implicitly.
 
 ## Limitations / future work
 
@@ -54,7 +55,7 @@ Authors note that for an $N$-WD system the natural input — channel + queue sta
 ## Cross-link with related sources
 
 - Same Lyapunov template as [[qin-2025-bcuav-masac]] — both papers turn long-term MEC constraints into per-slot subproblems. Qin et al. plug a multi-agent SAC into the per-slot solver; Zhu et al. plug a CNN actor-critic.
-- The WPT layer is the distinctive ingredient — energy is *harvested* per-slot instead of static per-UAV. Future curated UAV+WPT papers will fold cleanly into this thread.
+- The WPT layer is the distinctive ingredient — energy is *harvested* per-slot instead of static per-UAV. It is the DRL counterpart to the classical/convex WPT-MEC anchor [[zhou-2018-uav-wireless-powered-mec]], which solves the same computation-rate problem without learning.
 
 ## Raw artifacts
 
