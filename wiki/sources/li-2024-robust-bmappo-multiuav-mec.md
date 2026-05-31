@@ -16,7 +16,7 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Robust Computation Offloading and Trajectory Optimization for Multi-UAV-Assisted MEC: A Multiagent DRL Approach
@@ -47,7 +47,7 @@ UAV-MEC must serve UEs in remote/hotspot areas, but real deployments face uncert
 ## Key findings
 
 - Simulation: 1000 m × 1000 m region, K = 20 UEs, M = 5 UAVs, task sizes 3.5–4.5 Mb, 300 training episodes (200 steps each), γ = 0.98, Adam.
-- **b-MAPPO** achieves the highest reward and faster convergence than Pure-MAPPO (Gaussian) and MADDPG; reported average UE-agent episode reward ≈ −3.05 (the highest observed).
+- **b-MAPPO** achieves the highest reward and faster convergence than Pure-MAPPO (Gaussian) and MADDPG; the UE-agent reward curve converges to ≈ −3.1 (highest among the three; figure-read, indicative).
 - Against benchmarks (Pure-MAPPO, MADDPG, Greedy, DRL+CVX), b-MAPPO gives lower weighted energy than the learning/heuristic baselines and tracks the near-optimal DRL+CVX closely at lower complexity (Figs. 5–6, qualitative).
 - Weighted energy rises with wider task-complexity intervals, larger estimation-error bounds, and larger data sizes, confirming robustness behavior under bounded errors (Figs. 8–9, indicative).
 
