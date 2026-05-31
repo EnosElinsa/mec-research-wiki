@@ -289,7 +289,7 @@
 
 - [[pytorch]] — DL framework.
 
-(More authors appear in source frontmatter; entity pages currently exist for the central recurring contributors. Future entity pages should land here as more authors recur.)
+(More authors appear in source frontmatter; entity pages exist for the central recurring contributors.)
 
 ## Concepts
 

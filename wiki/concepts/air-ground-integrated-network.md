@@ -7,7 +7,7 @@ related:
   - "[[leo-satellite-edge-computing]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Air-Ground Integrated Network (AGIN)
@@ -32,4 +32,4 @@ Single-layer (UAV-only or LEO-only) framing is sufficient when the offloading de
 
 ## In this wiki
 
-[[qin-2025-bcuav-masac]] explicitly frames its system as AGIN (devices + UAV edge servers, with future possibility of cloud handoff). [[mao-2025-bcsa-frl]] sits in the ground+space slice (terrestrial users + LEO edge). Future cross-layer sources should land here.
+[[qin-2025-bcuav-masac]] explicitly frames its system as AGIN (devices + UAV edge servers, with future possibility of cloud handoff). [[mao-2025-bcsa-frl]] sits in the ground+space slice (terrestrial users + LEO edge).

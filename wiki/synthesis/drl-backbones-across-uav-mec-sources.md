@@ -31,7 +31,7 @@ related:
   - "[[design-recipe-multi-uav-mec]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # DRL backbone choices across the UAV-MEC corpus
@@ -173,7 +173,7 @@ This recovers DDPG's original design profile. The negative findings stand for **
 - **PER** is an off-policy speedup that works with DDPG, TD3, SAC, and DQN. It's a free win for any source using off-policy backbones; surprising it isn't standard across the corpus.
 - **SAC's entropy regularization** is what drives the [[masac|MASAC]] > MADDPG result in cooperative MEC. ESAC extends that pattern to single-agent + matching pre-stage.
 
-The combination — PER + entropy-regularized stochastic policy — is the strongest practical baseline in the wiki for off-policy continuous control. Future sources should treat it as the default.
+The combination — PER + entropy-regularized stochastic policy — is the strongest practical baseline in the wiki for off-policy continuous control.
 
 ### 4. SAGIN-tier scheduling is structurally different from UAV-MEC
 
