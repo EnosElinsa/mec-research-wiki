@@ -51,13 +51,13 @@ DRO fits a different niche: when you have **historical statistics but not a dist
 
 - **Uncertainty set 𝒫.** All distributions ℙ with E_ℙ(Δ_m) = μ_m, D_ℙ(Δ_m) = σ_m². Calibrated from historical CSI residuals.
 - **CVaR reformulation.** A standard trick: for moment-based 𝒫, the worst-case tail probability equals a deterministic SOCP constraint involving μ and σ.
-- **BWOA.** Whale optimization algorithm adapted to binary search via S-shaped sigmoid mapping. Justified empirically vs greedy and pure GA.
+- **BWOA.** Whale optimization algorithm adapted to binary search via a penalty-augmented fitness and sigmoid-style position switching. Evaluated against the exhaustive-search optimum, a greedy offloading algorithm, and simulated annealing (SAA): near-optimal energy at much lower time complexity than greedy/SAA as the network scales (Fig. 4).
 
 ## Findings
 
-- Robust solutions cost ~10–20% more energy than nominal solutions but maintain latency feasibility under realistic CSI errors that break the nominal solutions.
-- WKD beats vanilla K-means deployment when tasks have heterogeneous priorities — important for emergency / mission-critical scenarios.
-- Primal decomposition + BWOA scales to ~50 UAVs / ~200 users on commodity hardware.
+- Under CSI estimation errors, the robust design consumes more energy than the ideal-CSI (perfect-CSI) case, because the MEC servers allocate extra computing resources to absorb the environmental disturbances (Fig. 7, qualitative; no fixed percentage is given in the parse → the specific margin is `not in parse`).
+- The WKD deployment consumes less energy than a random-deploy-and-random-connect (R&R) baseline at the same number of served GUs, and accommodates more GUs while avoiding UAV over-/under-utilization (Fig. 6).
+- Evaluated at small scales — 30 GUs / 6 UAVs in a 1 km × 1 km area for the WKD clustering (Fig. 3), and M (GUs) = 10 with N (UAVs) = 2–5 for the algorithm/scale studies (Figs. 4–5); HAP task capacity H = 10. Larger "50 UAVs / 200 users" / commodity-hardware claims are `not in parse`.
 
 ## Limitations
 

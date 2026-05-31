@@ -2,7 +2,7 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
-## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–3/12; no new papers)
+## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–4/12; no new papers)
 
 First invocation of a multi-invocation batched audit over the fully-curated 171-source corpus. Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator` needed). Tree clean at `f81cbb4`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4449 edges**.
 
@@ -77,6 +77,25 @@ Audited **source-page batch 3** (15 pages, alphabetical guo-2023-mccco-multiuav-
 - **Candidate finding:** [[huang-2023-mu-aec-task-energy]] is the corpus's canonical **DAG-aware multi-UAV-MEC** source (interdependent-task scheduling + energy balancing) yet has no finding page; pairs with the [[peng-2022-cmop-uav-path-planning]] → [[huang-2025-cmop-dispersed-computing]] CMOP-evolutionary lineage.
 - **Candidate synthesis:** the **ground/space FL-over-satellite** thread is now several sources deep ([[han-2024-ground-satellite-fl]], [[han-2024-sagin-fl-handover]], [[zhai-2023-fedleo-decentralized-fl]], [[mao-2025-bcsa-frl]]) — a cross-source synthesis page on satellite/SAGIN federated learning would consolidate it.
 - **Candidate comparison:** the early classical/convex single-UAV-MEC offloading sources ([[jeong-2018-uav-cloudlet-bit-allocation]], [[hu-2019-pdd-uav-mec-offloading]], [[hu-2019-uav-relay-edge-computing]], [[zhang-2019-uav-iot-comp-comm]], [[yu-2020-uav-ec-collaborative-offloading]]) align on objective family (energy/delay) and solver (SCA/PDD/AO) and could anchor a methodology or comparison page.
+
+### Correctness & consistency audit (Phase B — batch 4/12)
+
+Audited **source-page batch 4** (15 pages, alphabetical jia-2022-hierarchical-aerial-matching → li-2025-twohop-airground-drl-offloading). Phase 0 re-reconciled clean (`curation_status.py --dupes`: **171 raw = 171 curated, 0 uncurated, 0 genuinely-new**); tree clean at `f37a5ce`; baseline graph **513 nodes / 4455 edges**.
+
+- **Correctness fixes:** [[jia-2025-dro-uav-hap-mec]] carried four ungrounded/incorrect claims against its own parse. (1) Findings "robust solutions cost ~10–20% more energy than nominal" — **not in parse** (Fig. 7 states only qualitatively that CSI errors raise energy vs the ideal-CSI case); rewrote and marked the margin `not in parse`. (2) "WKD beats vanilla **K-means**" — parse Fig. 6 compares WKD vs random-deploy+random-connect (**R&R**), not K-means; corrected. (3) "scales to ~50 UAVs / ~200 users on commodity hardware" — **not in parse**; the evaluated scales are 30 GUs / 6 UAVs (Fig. 3) and M(GUs)=10, N(UAVs)=2–5 (Figs. 4–5), HAP capacity H=10; replaced. (4) BWOA "justified vs greedy and pure **GA**" — parse compares BWOA vs exhaustive-optimal, greedy, and **simulated annealing (SAA)** (Fig. 4); corrected. DOI `TMC.2025.3571023` / year 2025 verified.
+- **Ungrounded-number fix:** [[li-2024-robust-bmappo-multiuav-mec]] Findings stated a UE-agent reward ≈ −3.05; parse Fig. 3 converges to ≈ **−3.1**; softened to −3.1 (figure-read, indicative). Config K=20 / M=5 / 1000 m / 3.5–4.5 Mb / 300 episodes / γ=0.98 verified verbatim.
+- **Verified clean** (DOI/venue/year against each paper's own parse; headline numbers grounded verbatim; frontmatter valid; slugs/tags/`related` consistent): jia-2022 (`JIOT.2022.3151639`), jiang-2025 (`MCOM.001.2400685`; IAGN/MBCM/CNPC/PC/ACCP/ARDCP verbatim), kang-2023 (`JIOT.2023.3240173`), khoramnejad-2025 (`COMST.2025.3535554`), lee-2024 (`TWC.2023.3342975`; 6.86×/4.18× verbatim from abstract, dates→2024), lei-2024 (`TVT.2024.3388499`), li-2023-secure-marine (`TVT.2022.3231295`; 27.32% + 0.28 W verbatim), li-2024-emodrl (`JSAC.2024.3459029`; "saves 30% handover frequency" verbatim from abstract), li-2024-emssa (`TMC.2023.3298888`), li-2024-rldc (WCNC 2024 DOI grounded via the journal cross-reference; figure values flagged as trends), li-2024-twohop-iort (`JIOT.2024.3393444`), li-2025-stochastic-game (`TGCN.2024.3424449`; five games + NE proof verbatim; figure values flagged trends), li-2025-twohop-airground (`JIOT.2025.3548088`).
+
+### Gates (batch 4)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 0 unindexed / 0 duplicate primaries (515 catalogue-able, 45 cross-ref mentions informational). **`frontmatter_audit.py`** = 513 pages, 0 errors. Diagnostics clean on both edited pages.
+
+### Routing to `mec-wiki-synthesizer` (batch 4 — coverage gaps, recorded not filled)
+
+- **Candidate synthesis:** the **collaborative-beamforming / virtual-antenna-array** thread from the Geng Sun / Jiahui Li group is now dense ([[li-2024-emssa-uav-swarm-vaa]], [[li-2024-emodrl-ground-space-cb]], [[sun-2025-emoppo-vlh-aerial-cb]], [[song-2022-emorl-tcto-uav]], [[zhang-2024-gdmtd3-aerial-secure-cb]]) — a cross-source synthesis on aerial/ground CB and its evolutionary-multi-objective-RL line would consolidate it.
+- **Candidate comparison:** the two-hop air-ground IoRT pair from the same Guilin group — [[li-2024-twohop-iort-packet-scheduling]] (packet-queue delay, MADDPG + MADDQN + adaptive PER) and [[li-2025-twohop-airground-drl-offloading]] (partial-offloading delay, MADDPG-IPER + NV-IPPO) — align on a comparable two-hop UAV+HAP setup and could anchor a comparison page.
+- **Candidate finding:** [[li-2025-stochastic-game-uav-swarm]] (and its conference precursor [[li-2024-rldc-uav-swarm-clustering]]) is the corpus's canonical **dynamic-clustering UAV-swarm stochastic-game** source with a Nash-equilibrium proof, but has no finding page capturing the RLDC energy-efficiency result.
+- **Entity gap:** Ziye Jia recurs as lead/co-author across [[jia-2022-hierarchical-aerial-matching]], [[jia-2025-dro-uav-hap-mec]], and (co-author) [[you-2025-uncertain-maritime-hasac]]; worth an entity page (note possible affiliation drift to confirm, not resolved here).
 
 ## 2026-06-01 — Cleanup: duplicate-ingest removal + end-to-end-DRL derived pages converted to English
 
