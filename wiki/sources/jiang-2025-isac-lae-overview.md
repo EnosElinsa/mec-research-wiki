@@ -5,7 +5,7 @@ authors: ["Yihang Jiang", "Xiaoyang Li", "Guangxu Zhu", "Hang Li", "Jing Deng", 
 year: 2025
 url: "https://doi.org/10.1109/MCOM.001.2400685"
 venue: "IEEE Communications Magazine"
-tags: [survey, isac, lae, low-altitude-economy, iagn, stochastic-geometry, channel-modeling]
+tags: [source, survey, isac, lae, low-altitude-economy, iagn, stochastic-geometry, channel-modeling]
 related:
   - "[[integrated-sensing-and-communication]]"
   - "[[low-altitude-intelligent-network]]"
@@ -13,7 +13,7 @@ related:
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[stochastic-geometry-network-analysis]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Integrated Sensing and Communication for Low Altitude Economy: Opportunities and Challenges

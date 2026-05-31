@@ -5,7 +5,7 @@ authors: ["Xiting Peng", "Chuanqi Qin", "Xiaoyu Zhang", "Lexi Xu", "Xiaoling Zha
 year: 2025
 url: ""
 venue: ""
-tags: [uav, mec, has, post-disaster, multi-agent, drl, fairness, theil, hierarchical]
+tags: [source, uav, mec, has, post-disaster, multi-agent, drl, fairness, theil, hierarchical]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[task-offloading]]"
@@ -19,7 +19,7 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # DRUDM-CFG: A Fairness-Aware Multi-Agent DRL Algorithm for AMEC-Assisted Task Offloading in Post-Disaster Scenarios

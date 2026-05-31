@@ -5,7 +5,7 @@ authors: ["Lingling Liu", "Chong Shen", "Feng Shu", "Feng Wang", "Shujing Li", "
 year: 2025
 url: "https://doi.org/10.1109/TMC.2025.3596169"
 venue: "IEEE Transactions on Mobile Computing"
-tags: [maritime, hap, uav, unicast-multicast, backhaul, multi-objective, multi-verse-optimizer, noma-multicast]
+tags: [source, maritime, hap, uav, unicast-multicast, backhaul, multi-objective, multi-verse-optimizer, noma-multicast]
 related:
   - "[[maritime-mec]]"
   - "[[high-altitude-platform-station]]"
@@ -15,7 +15,7 @@ related:
   - "[[multi-verse-optimizer]]"
   - "[[wang-2026-aerial-marine-msar]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # HAP-UAV-Assisted Maritime IoT Communication Network

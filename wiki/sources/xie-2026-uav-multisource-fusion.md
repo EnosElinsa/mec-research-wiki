@@ -5,7 +5,7 @@ authors: ["Qiqi Xie", "Zexiong Wu", "Chaoda Peng", "Xumin Huang", "Yanglin Chen"
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3676831"
 venue: "IEEE Transactions on Wireless Communications"
-tags: [uav, vehicular, cooperative-perception, data-fusion, multi-objective, evolutionary-algorithm]
+tags: [source, uav, vehicular, cooperative-perception, data-fusion, multi-objective, evolutionary-algorithm]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[vehicular-mec]]"
@@ -13,7 +13,7 @@ related:
   - "[[dynamic-constrained-multi-objective-optimization]]"
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # UAV-Enabled Multi-Source Data Fusion in Vehicular Networks: A Joint Optimization Approach for Reliability and Latency

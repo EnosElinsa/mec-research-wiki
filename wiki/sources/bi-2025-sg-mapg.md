@@ -5,7 +5,7 @@ authors: ["Zhihui Bi", "Fan Yang", "Zhenyu Li", "Guanqi Liu", "Zhufang Kuang"]
 year: 2025
 url: ""
 venue: ""
-tags: [uav, mec, stackelberg, multi-agent, drl, fairness, hierarchical, auction]
+tags: [source, uav, mec, stackelberg, multi-agent, drl, fairness, hierarchical, auction]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[stackelberg-game]]"
@@ -15,7 +15,7 @@ related:
   - "[[matching-theory-for-resource-allocation]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # SG-MAPG: A Three-Layer Hierarchical Model for Service Fairness and Cost Optimization in UAV-Assisted MEC Systems

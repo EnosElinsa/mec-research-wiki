@@ -5,7 +5,7 @@ authors: ["Yifei Bao", "Jinghui Zhang", "Yi Cheng", "Dengyin Zhang", "Rongguo Fu
 year: 2025
 url: "https://doi.org/10.1007/s40747-025-02106-1"
 venue: "Complex & Intelligent Systems (Springer)"
-tags: [hap, uav, video-offloading, video-transcoding, ddpg, qoe, post-disaster, hierarchical-aerial-mec]
+tags: [source, hap, uav, video-offloading, video-transcoding, ddpg, qoe, post-disaster, hierarchical-aerial-mec]
 related:
   - "[[hierarchical-aerial-mec]]"
   - "[[high-altitude-platform-station]]"

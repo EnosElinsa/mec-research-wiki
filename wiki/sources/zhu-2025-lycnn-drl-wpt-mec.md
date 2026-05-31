@@ -5,7 +5,7 @@ authors: ["Bincheng Zhu", "Liang Huang", "Kaikai Chi", "Abdullah Alharbi", "Kepi
 year: 2025
 url: "https://doi.org/10.1109/TWC.2025.3561167"
 venue: "IEEE Transactions on Wireless Communications"
-tags: [wpt, mec, energy-efficiency, lyapunov, drl, cnn, binary-offloading, fractional-programming]
+tags: [source, wpt, mec, energy-efficiency, lyapunov, drl, cnn, binary-offloading, fractional-programming]
 related:
   - "[[mobile-edge-computing]]"
   - "[[task-offloading]]"
@@ -15,7 +15,7 @@ related:
   - "[[fractional-programming-dinkelbach]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Enhancing Energy Efficiency in Wireless-Powered MEC Systems Through Lyapunov-Guided DRL

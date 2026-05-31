@@ -5,7 +5,7 @@ authors: ["Xumin Huang", "Chaoda Peng", "Yuan Wu", "Jiawen Kang", "Weifeng Zhong
 year: 2023
 url: "https://doi.org/10.1109/JIOT.2023.3288379"
 venue: "IEEE Internet of Things Journal"
-tags: [mu-aec, interdependent-tasks, dag, makespan, energy-balancing, cmop, evolutionary-algorithm, local-search]
+tags: [source, mu-aec, interdependent-tasks, dag, makespan, energy-balancing, cmop, evolutionary-algorithm, local-search]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[interdependent-tasks-dag]]"
@@ -17,7 +17,7 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[huang-2025-cmop-dispersed-computing]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Joint Interdependent Task Scheduling and Energy Balancing for Multi-UAV-Enabled Aerial Edge Computing

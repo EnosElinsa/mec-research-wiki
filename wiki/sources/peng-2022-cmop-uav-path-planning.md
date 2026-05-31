@@ -5,7 +5,7 @@ authors: ["Chaoda Peng", "Xumin Huang", "Yuan Wu", "Jiawen Kang"]
 year: 2022
 url: "https://doi.org/10.1109/LWC.2022.3149007"
 venue: "IEEE Wireless Communications Letters"
-tags: [uav, mec, cmop, evolutionary-algorithm, b-spline-trajectory, infeasible-individuals, safe-flight]
+tags: [source, uav, mec, cmop, evolutionary-algorithm, b-spline-trajectory, infeasible-individuals, safe-flight]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[uav-trajectory-control]]"
@@ -15,7 +15,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[peng-2024-energy-time-uav-its]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Constrained Multi-Objective Optimization for UAV-Enabled MEC: Offloading Optimization and Path Planning

@@ -5,7 +5,7 @@ authors: ["Zexiong Wu", "Qiqi Xie", "Zhuoran Wang", "Xumin Huang", "Chaoda Peng"
 year: 2026
 url: "https://doi.org/10.1109/TVT.2025.3604250"
 venue: "IEEE Transactions on Vehicular Technology"
-tags: [uav, mec, urban, terrain-aware-channel, dem, b-spline-trajectory, multi-tasking-evolutionary, task-adaptive, cmop]
+tags: [source, uav, mec, urban, terrain-aware-channel, dem, b-spline-trajectory, multi-tasking-evolutionary, task-adaptive, cmop]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[terrain-aware-channel-model]]"
@@ -17,7 +17,7 @@ related:
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[peng-2024-energy-time-uav-its]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Terrain-Aware UAV-Enabled MEC in Urban Environments: A Constrained Multi-Objective Approach With Task-Adaptive Mechanism

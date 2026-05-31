@@ -5,7 +5,7 @@ authors: ["Ahmed M. Benaya", "Mohamed S. Hassan", "Mahmoud H. Ismail", "Taha Lan
 year: 2025
 url: "https://doi.org/10.1109/TGCN.2025.3551395"
 venue: "IEEE Transactions on Green Communications and Networking"
-tags: [isac, haps, full-duplex, physical-layer-security, aav-jammer, beamforming, mec, alternating-optimization]
+tags: [source, isac, haps, full-duplex, physical-layer-security, aav-jammer, beamforming, mec, alternating-optimization]
 related:
   - "[[integrated-sensing-and-communication]]"
   - "[[high-altitude-platform-station]]"
@@ -15,7 +15,7 @@ related:
   - "[[hierarchical-aerial-mec]]"
   - "[[wang-2025-lae-network-survey]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Aerial ISAC: A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced Coverage and Security

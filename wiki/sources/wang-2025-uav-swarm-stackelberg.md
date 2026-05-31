@@ -5,7 +5,7 @@ authors: ["Qin Wang", "Yi Shen", "Longting Xu", "Hui Zhang", "Haitao Zhao", "Hon
 year: 2025
 url: "https://doi.org/10.1109/TVT.2025.3595972"
 venue: "IEEE Transactions on Vehicular Technology"
-tags: [uav, swarm, spectrum-sharing, stackelberg, game-theory, low-altitude, cognitive-radio, matching]
+tags: [source, uav, swarm, spectrum-sharing, stackelberg, game-theory, low-altitude, cognitive-radio, matching]
 related:
   - "[[stackelberg-game]]"
   - "[[overlay-underlay-spectrum-access]]"
@@ -13,7 +13,7 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[multi-uav-assisted-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Optimizing Spectrum Sharing in UAV Swarms: A Stackelberg Game-Based Incentive Mechanism

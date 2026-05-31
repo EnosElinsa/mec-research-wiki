@@ -5,7 +5,7 @@ authors: ["Xumin Huang", "Zexiong Wu", "Chaoda Peng", "Yuan Wu", "Weifeng Zhong"
 year: 2025
 url: ""
 venue: ""
-tags: [dispersed-computing, cmop, evolutionary-algorithm, task-redundancy, dual-population, parallel-vs-serial]
+tags: [source, dispersed-computing, cmop, evolutionary-algorithm, task-redundancy, dual-population, parallel-vs-serial]
 related:
   - "[[dispersed-computing]]"
   - "[[task-redundancy-for-reliability]]"
@@ -16,7 +16,7 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing
