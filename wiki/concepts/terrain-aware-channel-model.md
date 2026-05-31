@@ -7,7 +7,7 @@ related:
   - "[[csi-estimation-error]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Terrain-Aware Channel Model
@@ -26,4 +26,4 @@ Distinct from:
 - **Statistical** LoS-probability models (sigmoid of elevation angle) — fast but inaccurate in valleys / behind ridges.
 - **Radio-map / measurement-based** models — accurate but require expensive offline data collection.
 
-The terrain-aware model is the wiki's first deterministic-geometric channel model. It also makes UAV destination selection a natural decision variable, since "where to land" depends on the *exact* blocked-region geometry around each candidate destination.
+The terrain-aware model is a deterministic-geometric channel model — distinct from the statistical LoS-probability models used across most aerial-MEC sources in the corpus (see [[blockage-aware-channel-model]]). It also makes UAV destination selection a natural decision variable, since "where to land" depends on the *exact* blocked-region geometry around each candidate destination.
