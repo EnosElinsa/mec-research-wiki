@@ -8,16 +8,13 @@ related:
   - "[[huang-2023-mu-aec-task-energy]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Energy Balancing Across UAVs
 
-A scheduling objective that minimizes the **disparity** in remaining energy across a UAV swarm, rather than the total energy consumed. The goal: keep all UAVs alive about as long as each other so the swarm degrades gracefully — losing one UAV early is far more disruptive than losing all UAVs at once.
+A scheduling objective that minimizes the **disparity** in energy expended across a UAV swarm, rather than the total energy consumed. The goal: keep all UAVs alive about as long as each other so the swarm degrades gracefully — one UAV dying early mid-mission is more disruptive than the swarm reaching end-of-life together.
 
-Two formulations appear in the wiki:
+In the wiki, [[huang-2023-mu-aec-task-energy]] makes this an explicit CMOP objective alongside makespan: an **energy-balancing index** $G_2 = \sum_j \left((TE_j - \overline{TE})/\psi\right)^2$ — the sum of squared normalized deviations of each UAV's total energy $TE_j$ from the swarm mean $\overline{TE}$ (ψ a reference value; Eq. 13), minimized to prevent the sudden departure of high-drain UAVs.
 
-- **Energy-balancing index** (sum of pairwise differences) — [[huang-2023-mu-aec-task-energy]] uses this in a CMOP alongside makespan.
-- **Variance / max-min penalty in DRL reward** — [[nabi-2025-jour-hierarchical-aerial]] adds a load-balancing term to the SAC reward.
-
-Different from **load balancing** ([[load-balancing-uav-mec]]) — load balancing equalizes *current* compute load; energy balancing equalizes *cumulative* energy expended. They're correlated but not identical (a UAV with a more efficient chip can run higher load with less energy).
+Different from **load balancing** ([[load-balancing-uav-mec]]) — load balancing equalizes *current* compute load; energy balancing equalizes *cumulative* energy expended. They're correlated but not identical (a UAV with a more efficient chip can run higher load with less energy). [[nabi-2025-jour-hierarchical-aerial]] sits on the load-balancing side: it adds a per-UAV **load** term (computed cycles ÷ compute capacity, Eq. 25a) to its SAC reward — equalizing instantaneous load rather than cumulative energy.
