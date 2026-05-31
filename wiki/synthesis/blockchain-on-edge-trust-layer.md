@@ -15,7 +15,7 @@ related:
   - "[[bcsa-frl-vs-bc-uav-masac]]"
   - "[[acbft-throughput-increase]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-02
 ---
 
 # Blockchain-on-edge: which layer does the chain defend?
@@ -43,7 +43,7 @@ Three curated sources bolt a permissioned blockchain onto an aerial/space edge-c
 ## Cross-cutting observations
 
 - **The deeper the layer, the more general the source.** ACBFT (consensus-protocol) is reusable by any blockchain-on-edge system; BCSA-FRL (aggregation) is specific to federated learning; BC-UAV-MASAC (audit) is specific to its offloading pipeline. A system could in principle run all three: ACBFT as the consensus engine, CCVM/CSRA at aggregation, and an audit trail on top.
-- **Consensus cost vs MEC compute is a shared concern.** All three acknowledge that consensus eats the same CPU/energy budget as the compute workload. ACBFT attacks this at the protocol level (less communication), BC-UAV-MASAC at the allocation level (DOA splits compute across task / block-gen / block-verify), BCSA-FRL by keeping consensus rounds asynchronous to FL rounds.
+- **Consensus cost vs MEC compute is an explicit concern for two of the three.** ACBFT attacks it at the protocol level (less communication — `O(n)` chain synchronization vs the `O(n²)` of broadcast BFT like PBFT), and BC-UAV-MASAC at the allocation level (a long-term block-creation-delay constraint, with DOA splitting UAV CPU across task-compute / block-generation / block-verification). BCSA-FRL does not analyze blockchain compute overhead against the offloading latency budget — its own limitations flag the smart-contract cost as unquantified — so on the cost axis it is the least characterized of the three.
 - **Byzantine tolerance shows up in two forms.** BCSA-FRL's ~50% threshold is a *property of the voting consensus*; ACBFT's `N = 3f + 1` operating point is the *classic BFT bound* made efficient. They are complementary statements about the same underlying limit.
 
 ## Gaps

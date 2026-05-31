@@ -15,12 +15,12 @@ related:
   - "[[csi-estimation-error]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-02
 ---
 
 # The hierarchical aerial MEC (UAV+HAP) design space
 
-The wiki's **hierarchical aerial MEC** track is now five sources strong, and they make different design choices on every axis: backbone, decomposition, channel model, objective stack, HAP role. This page walks through those axes and highlights where the design space partitions cleanly vs where it doesn't.
+The wiki's **hierarchical aerial MEC** (UAV+HAP) track holds more sources than this page's roster, and the five analyzed here make different design choices on every axis: backbone, decomposition, channel model, objective stack, HAP role. This page walks through those axes on a representative five and highlights where the design space partitions cleanly vs where it doesn't.
 
 ## Roster
 
@@ -69,7 +69,7 @@ Every source minimizes some weighted combination of latency + energy. They diffe
 | Source | Latency | Energy | Other |
 |---|---|---|---|
 | [[peng-2025-drudm-cfg]] | ✓ | ✓ | Theil fairness |
-| [[nabi-2025-jour-hierarchical-aerial]] | ✓ | ✓ | UAV-load variance ([[load-balancing-uav-mec]]) |
+| [[nabi-2025-jour-hierarchical-aerial]] | ✓ | ✓ | UAV load balancing ([[load-balancing-uav-mec]]) |
 | [[bao-2025-ddpg-video-offloading]] | ✓ | (implicit) | **Video bitrate** ([[qoe-modeling-mec]]) |
 | [[jia-2025-dro-uav-hap-mec]] | ✓ (chance constraint) | ✓ (sole objective: total energy) | (none) |
 | [[wang-2026-aerial-marine-msar]] | ✓ | ✓ | (none beyond CO weighted sum) |
