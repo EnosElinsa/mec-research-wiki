@@ -9,7 +9,7 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[sun-2024-mfris-semantic-antijamming]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Semantic Communication
@@ -22,4 +22,4 @@ Semantic transceivers bring **inherent robustness** and **data compression**, wh
 
 ## In this wiki
 
-- [[sun-2024-mfris-semantic-antijamming]] pairs a semantic transceiver with a [[multi-functional-ris]] to maximize a **semantic computation rate** under jamming and imperfect CSI, subject to a **semantic-similarity requirement** — the corpus's first multi-antenna semantic-MEC source.
+- [[sun-2024-mfris-semantic-antijamming]] pairs a semantic transceiver with a [[multi-functional-ris]] to maximize a **semantic computation rate** under jamming and imperfect CSI, subject to a **semantic-similarity requirement**. It positions itself against prior semantic-MEC work limited to single-antenna setups and prior RIS-MEC work using bit-level (non-semantic) transmission, motivating its multi-antenna MF-RIS-aided semantic MEC-IAGN under jamming.
