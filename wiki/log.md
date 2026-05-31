@@ -2,6 +2,41 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Audit pass (DERIVED layer — findings batch 1/3; no new papers)
+
+Opens the **derived layer** — the final Phase B layer (37 pages: findings 14 / synthesis 11 / comparisons 4 / methodology 2 / queries 5 / thesis 1) — with **derived batch 1 = all 14 findings** (alphabetical acbft-throughput-increase → uav-count-inverted-u-energy). Findings are the lightest derived type (single-source, one headline number each), so the whole findings set fits one batch; the claim-dense synthesis/comparison/methodology/query pages get smaller subsequent batches. Tree clean at `e3f6acb` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4465 edges**.
+
+### Derived-layer batch plan
+
+Slugs in `.curation-out/derived_slugs.txt` (type-grouped); `make_batches.py --size 9 --input` as the mechanical split, hand-adjusted to type-coherent batches sized to the window (derived pages are the most cross-source-claim-dense in the wiki, so smaller than concept batches): **batch 1 = 14 findings**; **batch 2 ≈ 11 synthesis**; **batch 3 = 4 comparisons + 2 methodology + 5 queries + 1 thesis**. Recorded under the new DERIVED section of `.curation-out/audit-coverage.md`.
+
+### Correctness & consistency audit (Phase B — derived batch 1: findings)
+
+Derived-finding checks: type frontmatter (`source`/`confidence`/`replicated`); every headline number grounded in the cited parse; `source`/`related` slugs resolve, non-self-referential, and support the attributed claim; evergreen wording.
+
+- **Correctness fix (stale cross-corpus undercount):** [[asap-swarm-inference-speedup]] still asserted ASAP "is one of only **two** hardware-validated sources in the corpus (the other is [[shao-2024-drl-antijamming-mec]])" — the same undercount the **source-page batch 7** audit already corrected on [[sun-2024-asap-uav-swarm]] (and that `overview.md` records). The corpus has **3 fully hardware-validated** sources — ASAP (24 Jetson + 5 real UAVs), [[shao-2024-drl-antijamming-mec]] (Raspberry Pi/USRP), [[zhang-2020-response-delay-uav-swarm]] (DJI UAVs + 5G NR mmWave testbed) — plus [[qu-ecoei-uav-swarm]] as an airborne proof-of-concept. Rewrote to "one of the few hardware-validated sources … alongside [shao-2024, zhang-2020], with [qu-ecoei] adding an airborne proof-of-concept", matching the source-page/overview wording; `updated`→2026-06-02. The finding (dated 2026-05-30) predated the batch-7 fix and was never refreshed — caught by the cross-corpus-count check.
+- **All 14 findings otherwise verified clean** — type frontmatter valid; every headline number grounded verbatim in the cited parse (or flagged figure-derived indicative); `source`/`related` slugs resolve, non-self-referential, and support the claim. Grounding highlights (verbatim against parses):
+  - **liu-2026-jppo-en-convntm cluster (6 findings):** [[en-convntm-beats-baselines]] (ΔΩ 9.91/8.06/17.60/14.95/21.21% over ConvNTM + 7.34/11.30/7.62/11.65/6.14% station sweep), [[neuralmap-loses-spatial-info]] (76.2% higher than NeuralMap @2 UAVs), [[finding-optimal-loss-entropy-weight-coefs]] (Table I c₁=0.1→0.9849 / c₂=0.01→0.9891 / c₃=0.5→0.9827; c₂=0 collapse 0.6178; c₃=0.7→0.6148), [[hybrid-action-beats-pure-drl]] (Fig. 6 DDPG/A2C/TD3/DQN; A2C closest, others "severe degradation"), [[uav-count-inverted-u-energy]] (energy "inverted U-shaped trend, initially decreasing then increasing"), [[charging-stations-improve-efficiency]] (Fig. 5 monotonic Ω/fairness/data-collection up, energy down).
+  - [[masac-beats-maddpg-sensing-queue]] — per-baseline margins verbatim (vs NT-MASAC/NP-MASAC/**MADDPG**/PSO: sensing +27.59/+36.27/**+15.41**/+13.16%, queue −30.77/−35.71/**−30.73**/−29.47%). The page's own correctness note (an earlier [[maddpg-vs-masac-in-mec]] draft mis-quoted the **PSO** figures as the MADDPG margin) is **accurate** — converges, no change.
+  - [[fedleo-delay-accuracy-tradeoff]] (up to 41% delay / 9.39% accuracy headline + MNIST 31.7%/3.643%, CIFAR-10 45.05%/9.39% breakdown), [[bcsa-frl-tolerates-up-to-half-malicious-satellites]] (≈5%/≈6 ms flat across 10–50% malicious; baseline table 6.16%/5.95ms vs 20.05%/7.40ms vs 40.54%/9.31ms; >51% consensus capture), [[acbft-throughput-increase]] ("up to 96.2%" verbatim L35 — the genuine-grounded 96.2%, not the fabricated-96.2% anti-pattern), [[dcb-cuts-satellite-handover-frequency]] ("save 30% handover frequency … vs the rate greedy method" verbatim), [[maritime-three-tier-energy-saving]] ("saves 39.3% of system energy" verbatim), [[no-true-end-to-end-drl-in-corpus]] (idempotent re-check of the source-batch-1 cluster — converges, no change).
+- **Pages:** acbft-throughput-increase, asap-swarm-inference-speedup, bcsa-frl-tolerates-up-to-half-malicious-satellites, charging-stations-improve-efficiency, dcb-cuts-satellite-handover-frequency, en-convntm-beats-baselines, fedleo-delay-accuracy-tradeoff, finding-optimal-loss-entropy-weight-coefs, hybrid-action-beats-pure-drl, maritime-three-tier-energy-saving, masac-beats-maddpg-sensing-queue, neuralmap-loses-spatial-info, no-true-end-to-end-drl-in-corpus, uav-count-inverted-u-energy.
+
+### Toolkit
+
+No ratchet needed — the four gate scripts (`linkcheck`, `process_refs`, `index_audit`, `frontmatter_audit`) covered the findings-layer checks, and the cross-corpus-count defect was a content fix, not a new reusable check. Toolkit stable for the derived layer.
+
+### Gates (derived batch 1)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515/515, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py`** = 513 pages, 0 errors. Graph **513 nodes / 4465 edges** baseline (the asap fix added 2 intra-corpus wikilinks to already-present nodes; node count unchanged, edges refresh on next rescan). Meta-doc edits (this log + tracker) verified mojibake-free at the byte level.
+
+### Routing to `mec-wiki-synthesizer` (derived batch 1 — recorded, not filled)
+
+- No new synthesizer gaps from the findings layer — every finding is anchored to a curated source with a grounded headline result, and its cross-links into the synthesis/comparison layer resolve. The standing concept-layer consolidation/synthesis notes (swarm-metaheuristic family, hybrid-action family, LEO/NTN cluster, multi-agent actor-critic family, game-theory family, caching cluster, channel-model cluster, video-analytics cluster, trust/secure-aggregation cluster; evolutionary-/generative-/CSI-/PLS-family tag fragmentation) remain open from prior batches.
+
+### Next: synthesis pages (derived batch 2)
+
+**14 of 37 derived pages audited.** Remaining: **synthesis (11)** in derived batch 2 (resumes at `synthesis/blockchain-on-edge-trust-layer`), then **comparisons 4 + methodology 2 + queries 5 + thesis 1 (12)** in derived batch 3. **23 derived pages remain.** After the derived layer, the entire non-source layer + all 171 sources will be audited — completing Phase B.
+
 ## 2026-06-02 — Audit pass (non-source layer — entity batch 4, FINAL entities; no new papers)
 
 Completes the entities-layer audit with **entity batch 4** (11 pages, alphabetical yuben-qu → ziye-jia, positions 61–71 of `.curation-out/entity_slugs.txt`) — the **final entity batch**, so **all 71 entity pages (70 author + the `pytorch` tool) are now audited**. Tree clean at `2a7e38d` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4465 edges**.
