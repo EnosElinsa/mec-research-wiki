@@ -2,6 +2,36 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Audit pass (non-source layer — entity batch 4, FINAL entities; no new papers)
+
+Completes the entities-layer audit with **entity batch 4** (11 pages, alphabetical yuben-qu → ziye-jia, positions 61–71 of `.curation-out/entity_slugs.txt`) — the **final entity batch**, so **all 71 entity pages (70 author + the `pytorch` tool) are now audited**. Tree clean at `2a7e38d` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4465 edges**.
+
+### Correctness & consistency audit (Phase B — entity batch 4)
+
+Entity-page checks: `author` tag + frontmatter valid; roster reconciles in BOTH directions against source `authors:` lists; affiliation grounded in the parse(s); namesake handling correct; `related`/wikilinks resolve and are non-self-referential; evergreen wording.
+
+- **All 11 pages verified clean — no corrections needed.** Third all-clean entity-layer outcome (after batch 1 and several concept batches); the layer converges rather than churning. `entity_roster_audit.py` flagged **0 claimed-but-absent / 0 present-but-unlisted** across all 70 author entities, so no roster over-claims or omissions to adjudicate this batch.
+- **Affiliation grounding spot-checks (in-parse email/affiliation lines, verbatim):** yuben-qu (`quyuben@nuaa.edu.cn`, NUAA — eCoEI bio + ASAP author block); yuguang-fang (`my.fang@cityu.edu.hk`, Dept of Computer Science, City University of Hong Kong — confirmed in MSAR + Maritime-EH parses; in-parse bio Qufu-Normal MS / Case-Western PhD / Boston-U 2nd PhD / U-Florida 2000→Distinguished-2019 / CityU-since-Aug-2022 grounded verbatim); zemin-sun (`sunzemin@jlu.edu.cn`, College of CS&T + KLSCKE, Jilin University); zexiong-wu (`zexiongwu@stu.scau.edu.cn`, College of Mathematics and Informatics, SCAU — across all 4 CMOP parses); zhidu-li (`lizd@cqupt.edu.cn`, CQUPT) + zhuwei-wang (`wangzhuwei@bjut.edu.cn`, Beijing University of Technology) — both in the liu-2026 high-density-MEC author block; zhiyong-feng (`fengzy@bupt.edu.cn`, BUPT + **director, Key Laboratory of Universal Wireless Communications, MoE** — directorship + research interests grounded verbatim in the ISAC-overview + response-delay bios); zhou-su (`zhousu@ieee.org`, School of Cyber Science and Engineering, Xi'an Jiaotong University); ziye-jia (`jiaziye@nuaa.edu.cn`, College of EIE NUAA + National Mobile Communications Research Lab, Southeast University).
+- **Namesake / single-identity handling (correct, intact):** zhen-wang — though "Zhen Wang" is a common name, the page's single-identity argument is grounded: identical email (`wangzhen\_jsj@neusoft.edu.cn`, MinerU-escaped underscore) + Dalian-Maritime-University / Dalian-Neusoft-University-of-Information dual affiliation (verbatim in 3 of 4 parses; the 4th lists Dalian Neusoft only) + all four papers supervised by corresponding-author [[bin-lin]] in the maritime/space-air-marine line. No merge/split on a name match alone; documented note intact. No new namesake issues in the batch.
+- **Editorial Contributions cross-mentions verified accurate** (all resolve; linkcheck 0 dangling): yuguang-fang↔[[zhen-wang]]/[[qiang-ye]] on the Maritime-EH JCORA paper; zhou-su↔[[minghui-dai]] on the dai-2023 marine line; zhu-han↔[[ziye-jia]]/[[chao-dong]]/[[qihui-wu]] on the NUAA aerial-computing cluster; zemin-sun↔[[geng-sun]]/[[jiahui-li]] on the Jilin aerial-MEC cluster; zexiong-wu↔[[chaoda-peng]]/[[xumin-huang]]/[[yuan-wu]] on the SCAU evolutionary-computation cluster.
+- **Pages:** yuben-qu, yuguang-fang, zemin-sun, zexiong-wu, zhen-wang, zhidu-li, zhiyong-feng, zhou-su, zhu-han, zhuwei-wang, ziye-jia.
+
+### Toolkit
+
+No ratchet needed — `entity_roster_audit.py` (with the batch-2 `respaced` match + roster-region scoping) re-ran **0/0 both directions** across all 70 author entities. The toolkit is stable for the entities layer; no new reusable need surfaced this batch.
+
+### Gates (entity batch 4)
+
+- **`linkcheck.py`** = NO DANGLING LINKS (5 orphans are non-wiki files: README/schema/full/MinerU parses — not entity pages). **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515/515, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type entity`** = 71 pages, 0 errors. **`entity_roster_audit.py`** = 0/0 both directions. Graph **513 nodes / 4465 edges** (no page edits this batch — audit-only). Meta-doc edits (this log + tracker) verified mojibake-free at the byte level.
+
+### Routing to `mec-wiki-synthesizer` (entity batch 4 — recorded, not filled)
+
+- No new synthesizer gaps from this batch. Every co-author named in the batch-4 rosters already has an entity page or is correctly left unlinked. The standing concept-layer consolidation/synthesis notes (swarm-metaheuristic family, hybrid-action family, LEO/NTN cluster, multi-agent actor-critic family, evolutionary-/generative-/CSI-family tag fragmentation) remain open from prior batches.
+
+### Next: the DERIVED layer (final non-source layer)
+
+**All 171 source + 234 concept + 71 entity pages are now audited.** The only non-source layer remaining is the **derived layer** — findings 14 / synthesis 11 / comparisons 4 / methodology 2 / queries 5 / thesis 1 = **37 pages** — across subsequent batched invocations.
+
 ## 2026-06-02 — Audit pass (non-source layer — entity batch 3; no new papers)
 
 Continues the entities-layer audit with **entity batch 3** (20 pages, alphabetical qingqing-wu → yuan-wu, positions 41–60 of `.curation-out/entity_slugs.txt`), the batch carrying the four adjudicated present-but-unlisted roster hits surfaced in batches 1–2. Tree clean at `ab0bdce` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4459 edges**.
