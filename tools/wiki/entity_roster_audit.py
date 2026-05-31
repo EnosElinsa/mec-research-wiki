@@ -11,12 +11,16 @@ pages, in BOTH directions:
   * PRESENT-BUT-UNLISTED: a corpus source lists an author whose name matches the
     entity, but the entity page does not link that source (a possible omission).
 
-Name matching is deliberately conservative and reported in two strengths so a
-human can judge namesakes (the tool NEVER decides identity):
-  * strict  -> normalized full-name equality (case/punct/hyphen-insensitive).
-  * loose   -> same first AND last token but not strict (initials differ);
-               flagged separately because shared Chinese surnames + given
-               names make loose matches a frequent namesake signal.
+Name matching is deliberately conservative and reported in graded strengths so
+a human can judge namesakes (the tool NEVER decides identity):
+  * strict   -> normalized full-name equality (case/punct/hyphen-insensitive).
+  * respaced -> identical once interior spaces are removed ("Li Ping Qian" ==
+                "Liping Qian"); a Chinese given-name spacing variant, treated as
+                strong as strict for over-claim suppression but reported so it
+                stays visible.
+  * loose    -> same first AND last token but not strict/respaced (initials
+                differ); flagged separately because shared Chinese surnames +
+                given names make loose matches a frequent namesake signal.
 
 This is an aid for the auditor, not an oracle: PRESENT-BUT-UNLISTED hits on
 common names (e.g. "Wei Zhang", "Jie Xu", "Ying Chen") are very often distinct
@@ -117,10 +121,30 @@ def is_author_entity(text: str) -> bool:
 def match_strength(entity_norm: str, author_norm: str) -> str | None:
     if entity_norm == author_norm:
         return "strict"
+    # Respacing variant: identical once interior spaces are removed
+    # ("li ping qian" == "liping qian"). A Chinese given-name spacing variant;
+    # as strong as strict for over-claim suppression. Guard against trivially
+    # collapsing two distinct single-token names.
+    if entity_norm.replace(" ", "") == author_norm.replace(" ", "") and " " in (
+        entity_norm + author_norm
+    ):
+        return "respaced"
     et, at = entity_norm.split(), author_norm.split()
     if len(et) >= 2 and len(at) >= 2 and et[0] == at[0] and et[-1] == at[-1]:
         return "loose"
     return None
+
+
+def _roster_region(text: str) -> str:
+    """The part of an entity page that constitutes its *roster claims*: the
+    frontmatter ``related:`` + intro + bulleted source list, i.e. everything
+    before the first ``## Contributions`` heading. The Contributions section is
+    free-form editorial commentary that often contrast-mentions sources the
+    author did NOT write ("anchored by different sources [[x]]"); counting those
+    wikilinks as roster claims yields false claimed-but-absent over-claims.
+    Falls back to the whole page when there is no such heading."""
+    m = re.search(r"(?im)^##\s+contributions\b", text)
+    return text[: m.start()] if m else text
 
 
 def audit(entity_slugs: list[str] | None):
@@ -143,7 +167,12 @@ def audit(entity_slugs: list[str] | None):
         ename = _title(text, slug)
         enorm = _norm_name(ename)
 
-        claimed = {t for t in wikilib.iter_wikilinks(text) if t in source_slugset}
+        # Roster claims come from the roster region only (excludes the editorial
+        # "## Contributions" commentary). The full-page link set still suppresses
+        # present-but-unlisted hits, so a source mentioned only in Contributions
+        # is neither a false over-claim nor a false omission.
+        claimed = {t for t in wikilib.iter_wikilinks(_roster_region(text)) if t in source_slugset}
+        linked_anywhere = {t for t in wikilib.iter_wikilinks(text) if t in source_slugset}
 
         claimed_but_absent = []
         for s in sorted(claimed):
@@ -154,7 +183,7 @@ def audit(entity_slugs: list[str] | None):
 
         present_but_unlisted = []
         for s, authors in src_norm.items():
-            if s in claimed:
+            if s in linked_anywhere:
                 continue
             best = None
             for an, orig in authors:
