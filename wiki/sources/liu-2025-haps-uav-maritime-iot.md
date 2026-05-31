@@ -44,13 +44,13 @@ Three observations worth tracking:
 
 1. **Unicast + multicast hybrid** is a workload pattern not yet present elsewhere in the wiki. Multicast caps the multicast group at the worst channel, so UAV placement is dominated by serving the laggard vessel — different from unicast-only placements.
 2. **HAP as backhaul** rather than HAP as compute. Most prior wiki entries put compute on the HAP. This one uses the HAP purely as a relay-tier transport pipe.
-3. **Multi-verse optimizer** is a metaheuristic the wiki hasn't seen before — chaos for exploration, grey-wolf for exploitation, discrete-update for binary association variables. Not obviously better than [[binary-whale-optimization|BWOA]] or NSGA-II; the paper doesn't head-to-head compare against them.
+3. **Multi-verse optimizer** is a metaheuristic the wiki hasn't seen before — chaos for exploration, grey-wolf for exploitation, discrete-update for binary association variables. Not obviously better than [[binary-whale-optimization|BWOA]]; the paper doesn't compare against BWOA.
 
 ## Findings
 
-- EMOMVO-CGD beats baseline MVO and NSGA-II on Pareto-front quality.
-- JCCPAPO (the classical step-wise scheme) is competitive but slightly behind EMOMVO-CGD; useful as a fast, interpretable benchmark.
-- Backhaul rate scales much faster with UAV altitude than with HAP transmit power once a coverage threshold is crossed — placement, not power, is the bottleneck.
+- Across two cases (60 vessels / 20 UAVs and 70 vessels / 30 UAVs), EMOMVO-CGD attains the best sum backhaul rate (objective f₂) among all benchmarks, while the classical step-wise JCCPAPO attains the best sum B2V access rate (objective f₁); the two achieve similar UAV energy (f₃). Benchmarks in the parse are the evolutionary MOJS / MOSMA / MOEA/D / conventional MOMVO and the ablation variants C-C-O / P-A-O / P-O / Fixed C-P-P (no NSGA-II in the parse). The per-objective values live in Tables II–III and are indicative.
+- The split is read as f₁ having convex structure (favoring the decomposition-based JCCPAPO) and f₂ being clearly non-convex (favoring the global-search EMOMVO-CGD).
+- JCCPAPO (the classical step-wise scheme) is competitive and useful as a fast, interpretable benchmark.
 
 ## Limitations
 
