@@ -6,8 +6,9 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[task-offloading]]"
   - "[[mao-2025-bcsa-frl]]"
+  - "[[free-space-optical-isl]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # LEO Satellite Edge Computing
@@ -25,7 +26,7 @@ updated: 2026-05-28
 | Predictable orbital geometry | Topology is deterministic; outages are scheduled, not random. |
 | High dynamics (~7.5 km/s ground velocity) | Coverage of any single ground point is brief; handovers dominate. |
 | Multi-operator constellations | A renting service provider can't trust every satellite — see [[zero-trust-architecture]]. |
-| Inter-satellite links (often free-space optical) | Multi-hop forwarding is a natural offloading destination decision. |
+| Inter-satellite links (often free-space optical) | Multi-hop forwarding is a natural offloading destination decision; see [[free-space-optical-isl]] (and the routing implications in [[mao-2024-fso-leo-hierarchical-routing]]). |
 | Energy / compute heterogeneity | LEOs vary widely in onboard compute capacity. |
 
 ## Typical optimization formulations
