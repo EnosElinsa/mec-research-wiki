@@ -5,7 +5,7 @@ tags: [optimization, queueing, online-control]
 related:
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Lyapunov Optimization (drift-plus-penalty)
@@ -28,4 +28,4 @@ Standard guarantee: under mild conditions, time-averaged constraint violation is
 
 ## In this wiki
 
-[[qin-2025-bcuav-masac]] uses Lyapunov to split a long-term sensing-rate maximization with queue-delay and block-creation-delay caps into three per-slot subproblems (CVX + MASAC + DOA). Expect more sources to use the same template.
+[[qin-2025-bcuav-masac]] uses Lyapunov to split a long-term sensing-rate maximization with queue-delay and block-creation-delay caps into three per-slot subproblems (CVX + MASAC + DOA). The drift-plus-penalty template recurs across the corpus's online-control sources (e.g. [[dai-2024-uav-vehicular-offloading-lyapunov]], [[yang-2022-stochastic-uav-mec-lyapunov]], [[wang-2024-maritime-eh-jcora]], [[mao-2016-lodco-eh-mec-offloading]]).
