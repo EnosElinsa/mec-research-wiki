@@ -350,6 +350,7 @@
 - [[low-altitude-intelligent-network]]
 - [[leo-satellite-edge-computing]]
 - [[leo-satellite-coverage-time]]
+- [[leo-handover-protocol]]
 - [[walker-star-constellation]]
 - [[free-space-optical-isl]]
 - [[space-air-ground-integrated-network]]
@@ -362,6 +363,7 @@
 - [[post-disaster-mec]]
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
+- [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
 - [[active-ris]]
 - [[multi-functional-ris]]
@@ -397,6 +399,8 @@
 - [[trust-region-policy-optimization]]
 - [[parameterized-dqn]]
 - [[multi-agent-q-learning]]
+- [[value-decomposition-network]]
+- [[impala]]
 - [[gae]]
 - [[pomdp]] · [[ma-pomdp]]
 - [[markov-reward-process]]
@@ -460,6 +464,7 @@
 - [[penalty-dual-decomposition]]
 - [[alternating-optimization-sdr-sca]]
 - [[monotonic-optimization]]
+- [[majorization-minimization]]
 - [[qcqp-sdr-probabilistic-mapping]]
 - [[order-preserving-quantization]]
 - [[binary-whale-optimization]]
@@ -501,6 +506,7 @@
 - [[physical-layer-security]]
 - [[friendly-jamming-uav]]
 - [[cooperative-jamming]]
+- [[proactive-eavesdropping]]
 - [[secure-computation-efficiency]]
 - [[secrecy-outage-probability]]
 - [[collaborative-beamforming]]
@@ -613,5 +619,5 @@
 
 ## References
 
-- [[reference-database]] — master citation-mining database (2981 unique references mined from the corpus parses; centrality ranking by in-corpus `cited_count`).
+- [[reference-database]] — master citation-mining database (5054 unique references mined from the corpus parses; centrality ranking by in-corpus `cited_count`).
 - [[recommendations]] — reference-scout recommendations: cited-but-not-yet-curated papers ranked by recency, venue, in-corpus citation frequency, and track coverage.

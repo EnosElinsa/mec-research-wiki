@@ -67,6 +67,7 @@ A long-running research wiki on **mobile edge computing (MEC)** broadly construe
 - [[query-does-en-convntm-generalize-beyond-uav-mec]] — generalization of memory-augmented encoders.
 - [[query-when-does-dro-beat-drl-for-csi-uncertainty]] — DRO vs DRL vs structural side-step for CSI uncertainty.
 - [[query-video-vs-cooperative-perception-offloading-shape]] — whether video-analytics and cooperative-perception offloading share one fidelity-vs-cost optimization shape.
+- [[end-to-end-drl-feasibility-large-scale-mec]] — whether a truly end-to-end DRL policy (raw observations → all decisions) is feasible at multi-UAV-MEC scale, or decomposition stays necessary.
 
 ## Where to go next
 

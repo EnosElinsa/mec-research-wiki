@@ -16,7 +16,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # HAP-UAV-Assisted Hierarchical Aerial Computing Framework for Video Offloading: A Deep Reinforcement Learning Approach
@@ -24,6 +24,8 @@ updated: 2026-05-29
 ## Citation
 
 Bao, Y., Zhang, J., Cheng, Y., Zhang, D., & Fu, R. (2025). *HAP-UAV-Assisted Hierarchical Aerial Computing Framework for Video Offloading: A Deep Reinforcement Learning Approach*. **Complex & Intelligent Systems** (Springer). DOI: 10.1007/s40747-025-02106-1.
+
+> **Metadata note:** the parse carries the title, the dates (received 23 May 2025 / accepted 12 Sep 2025 / published online 24 Oct 2025 → year 2025), and "© The Author(s) 2025", but **no DOI line** (only reference DOIs). Venue (**Complex & Intelligent Systems**, Springer) and DOI `10.1007/s40747-025-02106-1` were **web-confirmed** against the Springer record, not taken from the parse.
 
 ## TL;DR
 
