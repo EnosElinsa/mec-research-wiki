@@ -2,7 +2,7 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
-## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–2/12; no new papers)
+## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–3/12; no new papers)
 
 First invocation of a multi-invocation batched audit over the fully-curated 171-source corpus. Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator` needed). Tree clean at `f81cbb4`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4449 edges**.
 
@@ -56,6 +56,27 @@ Audited **source-page batch 2** (15 pages, alphabetical chu-2024 → gao-2024-se
 - **Candidate synthesis:** the **diffusion-model-as-optimizer / GDM-for-network-optimization** thread is now dense ([[du-2024-d2sac-aigc-asp-selection]], [[du-2024-gdm-network-optimization-tutorial]], [[fu-2025-otae-inference-lae-batching]], [[ye-2025-aigc-diffusion-contract]], [[peng-2025-drudm-cfg]], survey [[khoramnejad-2025-gai-wireless-optimization-survey]]) — a cross-source synthesis page would consolidate it.
 - **Foundational-method finding:** [[fujimoto-2018-td3-actor-critic]] is the TD3 method ancestor of a large in-corpus lineage but has no finding page capturing its three overestimation-bias fixes as the grounding for downstream TD3/MATD3/CLP claims.
 
+### Correctness & consistency audit (Phase B — batch 3/12)
+
+Audited **source-page batch 3** (15 pages, alphabetical guo-2023-mccco-multiuav-5g-offloading → jeong-2018-uav-cloudlet-bit-allocation). Phase 0 re-reconciled clean (`curation_status.py --dupes`: **171 raw = 171 curated, 0 uncurated, 0 genuinely-new**); tree clean at `0973591`; baseline graph **513 nodes / 4455 edges**.
+
+- **Ungrounded-number fix:** [[huang-2023-mu-aec-task-energy]] Findings claimed "one UAV's energy hits zero ~25% earlier than the others; here, all UAVs land within ~5%" — **absent from the parse**, which reports IGD/HV Pareto metrics over a makespan-vs-energy-balancing-index front (Table I, Fig. 5), not any energy-depletion-timing margin. Rewrote to the parse's actual IGD/HV result and marked the timing margin `not in parse`. Also corrected the G₂ energy-balancing-index formula: the page wrote a pairwise `Σ|E_j−E_j'|`, but parse Eq. 13 defines `Σ_j ((TE_j−mean)/ψ)²` (sum of squared normalized deviations from the swarm mean).
+- **Evergreen-wording fix:** [[hu-2019-pdd-uav-mec-offloading]] relation note said [[wu-2018-multiuav-minrate-trajectory]] "is curated in this same batch" → rewrote to "is also in the corpus". `process_refs.py` had no "same batch" pattern; **extended the tool** to catch `same batch` / `in this|that|the same batch` process-narration (regression-checked it leaves domain "batch processing" / "in a batch" untouched).
+- **Verified clean** (DOI/venue/year confirmed against each paper's own parse; headline numbers grounded verbatim; frontmatter valid; slugs/tags/`related` consistent): guo-2023 (`TWC.2023.3277801`), guo-2024 (`TMC.2023.3311484`), han-2024-ground-satellite (`JSAC.2024.3365901`), han-2024-sagin (`JSAC.2024.3459090`; config K=50/1200 m/N=5/20 km, 80 sats / 5 orbits / 800 km / 85° / 15°, α=0.8 all verbatim), hao-2024-clp (`TMC.2024.3350078`; system gains 78/70/64/58/54, ablation 84/80/63, 600/1500 episodes, 183→141 ms verbatim), hao-2025 (`TWC.2025.3564356`; 10–100 ms coherence-time slot grounded), he-2019 (`TPDS.2019.2938944`), he-2023 (`JIOT.2023.3241087`), hsu-2025 (`TCCN.2025.3629973`), hu-2019-pdd (`JIOT.2018.2878876`; dates→2019), hu-2019-relay (`TWC.2019.2928539`; vol 18(10) 4738–4752 web-consistent with in-parse Oct-2019 current-version), huang-2025-cmop-dispersed (venue/DOI correctly `not in parse`, misattribution note intact), huang-2025-dual-aav (`JIOT.2024.3521977`; SINR 20.75/−39.9, 64 370 J, 43.20%, 50–90% verbatim), jeong-2018 (`TVT.2017.2706308`; dates→2018).
+
+### Toolkit (batch 3)
+
+- Extended **`process_refs.py`** with a `same batch` / `in this|that|the same batch` process-narration pattern (+ README update); caught the leaked phrasing in [[hu-2019-pdd-uav-mec-offloading]] that the prior pattern set missed.
+
+### Gates (batch 3)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 0 unindexed / 0 duplicate primaries (515 catalogue-able). **`frontmatter_audit.py`** = 513 pages, 0 errors. Diagnostics clean on the edited page.
+
+### Routing to `mec-wiki-synthesizer` (batch 3 — coverage gaps, recorded not filled)
+
+- **Candidate finding:** [[huang-2023-mu-aec-task-energy]] is the corpus's canonical **DAG-aware multi-UAV-MEC** source (interdependent-task scheduling + energy balancing) yet has no finding page; pairs with the [[peng-2022-cmop-uav-path-planning]] → [[huang-2025-cmop-dispersed-computing]] CMOP-evolutionary lineage.
+- **Candidate synthesis:** the **ground/space FL-over-satellite** thread is now several sources deep ([[han-2024-ground-satellite-fl]], [[han-2024-sagin-fl-handover]], [[zhai-2023-fedleo-decentralized-fl]], [[mao-2025-bcsa-frl]]) — a cross-source synthesis page on satellite/SAGIN federated learning would consolidate it.
+- **Candidate comparison:** the early classical/convex single-UAV-MEC offloading sources ([[jeong-2018-uav-cloudlet-bit-allocation]], [[hu-2019-pdd-uav-mec-offloading]], [[hu-2019-uav-relay-edge-computing]], [[zhang-2019-uav-iot-comp-comm]], [[yu-2020-uav-ec-collaborative-offloading]]) align on objective family (energy/delay) and solver (SCA/PDD/AO) and could anchor a methodology or comparison page.
 
 ## 2026-06-01 — Cleanup: duplicate-ingest removal + end-to-end-DRL derived pages converted to English
 
