@@ -97,7 +97,9 @@ A local HTTP API runs at `http://127.0.0.1:19828`: health, projects, search, fil
 
 ## Shell environment
 
-The shell is **Windows PowerShell**. Chain commands with `;`, not `&&`. Use `curl.exe` (not the `curl` alias) for HTTP calls. Prefer dedicated file/search tools over `cat`/`grep`/`find`. Quote paths that contain spaces (raw source folder names do).
+The shell is **Windows PowerShell**. Chain commands with `;`, not `&&`. Use `curl.exe` (not the `curl` alias) for HTTP calls. Quote paths that contain spaces (raw source folder names do).
+
+**Default to the dedicated file/search tools, never the shell, for reading and searching.** Read a parse or page (or specific line ranges) with the read-file tool, find a string across files with the grep/text-search tool, and enumerate folders/pages with the file-search / directory-listing tool — **not** the PowerShell equivalents `Get-Content`, `Select-String`, `Get-ChildItem` (`gci`/`ls`/`dir`), `Test-Path`, `cat`, `type`, `grep`, or `find`. Two reasons: it is the house rule, **and every raw shell command must be individually approved by the user**, so a pass that greps parses and reads pages through the shell stalls on approval prompts while the dedicated tools run unattended. Reading `raw/sources/<Folder>/full.md` to extract metadata and ground claims is the bulk of curation, so doing it with dedicated tools is what keeps a batch flowing. **Reserve the shell for what genuinely needs it:** `git`, running the maintained `python tools/wiki/*.py` scripts, and `curl.exe` for the LLM Wiki API. For any *recurring structured* check (reconciliation, counts, link integrity, process-narration), use or **extend** a `tools/wiki/` script rather than a one-off `Select-String` / `Get-ChildItem` loop (see "Toolkit & tooling discipline").
 
 ## Toolkit & tooling discipline
 

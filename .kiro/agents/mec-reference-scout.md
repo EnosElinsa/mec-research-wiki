@@ -43,7 +43,9 @@ Reply in the user's language. Keep the existing house style: plain, grounded, ge
 
 ## Shell environment
 
-The shell is **Windows PowerShell**. Chain commands with `;`, not `&&`. Use `curl.exe` (not the `curl` alias) for HTTP calls. Quote paths that contain spaces — the `raw/sources/` folder names do. Prefer dedicated file/search tools over `cat`/`grep`/`find`.
+The shell is **Windows PowerShell**. Chain commands with `;`, not `&&`. Use `curl.exe` (not the `curl` alias) for HTTP calls. Quote paths that contain spaces — the `raw/sources/` folder names do.
+
+**Default to the dedicated file/search tools, never the shell, for reading and searching.** Read a parse or page (or specific line ranges) with the read-file tool, find a string across files with the grep/text-search tool, and enumerate folders/pages with the file-search / directory-listing tool — **not** the PowerShell equivalents `Get-Content`, `Select-String`, `Get-ChildItem` (`gci`/`ls`/`dir`), `Test-Path`, `cat`, `type`, `grep`, or `find`. Two reasons: it is the house rule, **and every raw shell command must be individually approved by the user**, so a pass that reads parses and pages through the shell stalls on approval prompts while the dedicated tools run unattended. **Reserve the shell for what genuinely needs it:** `git`, running the maintained `python tools/wiki/*.py` scripts (including `mine_refs.py` / `render_refdb.py` / `recommend_refs.py`), and `curl.exe` for the LLM Wiki API. Reference-block parsing, enumeration, and ranking are *recurring structured* work and belong in `wikilib` / the `tools/wiki/` scripts — use or **extend** them rather than hand-rolling a `Select-String` / `Get-ChildItem` loop (see "Toolkit & tooling discipline").
 
 ## Toolkit & tooling discipline
 
