@@ -2,6 +2,35 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Audit pass (non-source layer — concept batch 8; no new papers)
+
+Continues the non-source-layer audit into **concept batch 8** (20 pages, alphabetical multi-functional-ris → penalty-dual-decomposition, positions 141–160 of `.curation-out/concept_slugs.txt`). Tree clean at `98aeb4d`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
+
+### Correctness & consistency audit (Phase B — concept batch 8)
+
+Concept-page checks: definition grounded in the source(s)/parse it cites, no invented numbers/overclaims, `related`/wikilinks resolve and are non-self-referential, tags reused, evergreen wording.
+
+- **All 20 pages verified clean — no corrections needed.** Definitions accurately reflect how each concept is used in the referencing source(s)/parse; no invented numbers, overclaims, false cross-corpus "first" claims, or stale counts; `related`/wikilinks resolve and are non-self-referential; tags reused; wording already evergreen. This is the second all-clean concept batch (like batch 3) — the audit converges rather than churns.
+- **Grounding spot-checks (verbatim against parses):**
+  - [[multi-objective-reinforcement-learning]] — [[song-2024-mol-aoi-energy]] parse: **MOL-AET** is a multi-objective PPO trained over uniformly-spread preference-weight vectors then refined with policy-network genetic operators, maintaining a nondominated set Q* (verbatim, incl. the m=2 / β=29 → 30-weights initialization).
+  - [[noma]] — [[qin-2025-bcuav-masac]] §III channel model: "we adopt the NOMA method and the spectrum resources between UAVs are orthogonal", SINR $\gamma_{j,k}$ with intra-cluster interference $I_j^k=\sum_{i\ne j}a_{i,k}p_{i,k}g_{i,k}$ and per-slot transmit power $p_{j,k}(t)$ as a decision variable — matches the page verbatim (NOMA within a UAV cluster, orthogonal between UAVs).
+  - [[multi-uav-assisted-mec]] — [[liu-2026-jppo-en-convntm]]: "j-PPO+EN-ConvNTM" jointly controls UAV flight trajectory, task-offloading strategy, and **charging indicators** to minimize energy / maximize data-collection / ensure fairness in high-density mobile-device scenarios (verbatim contributions list); the hybrid continuous-discrete action framing motivating [[j-ppo]] is grounded.
+  - [[multi-tasking-evolutionary-algorithm]] — [[wu-2026-terrain-aware-uav-mec]] title + body: "task-adaptive mechanism" that retains historically-effective genetic operators per individual (bandit-style operator selection) — grounded.
+  - [[particle-swarm-optimization]] — APSO verbatim in [[albakhrani-2025-moalf-uav-mec]] (Algorithm 4 + §IV-G "Adaptive Particle Swarm Optimization (APSO) for Dynamic Resource Allocation"); chain-ordering PSO in [[wang-2025-acbft-uav-consensus]]; IPSO in [[zhang-2024-uav-task-offloading-ddpg]].
+  - [[order-preserving-quantization]] (wu-2025 OPPO extends the DROO order-preserving candidate-generation, each candidate scored after WOA phase optimization), [[parameterized-dqn]] ([[ma-2025-pdqn-vehicular-mec]] hybrid discrete-server + continuous-power), [[over-the-air-computation]] ([[fu-2025-otae-inference-lae-batching]] superposition aggregation + spatial-correlation-aware beamforming), [[network-function-virtualization]] ([[zhang-2025-vnf-sgin-dql]] SDN/NFV 6G satellite-ground VNF selection+chaining via DQL), and [[penalty-dual-decomposition]] ([[hu-2019-pdd-uav-mec-offloading]] inner CCCP / outer multiplier+penalty with binary-to-equality conversion) — all grounded.
+- **Verified clean** (full list): multi-functional-ris, multi-objective-mdp-vectorial-reward, multi-objective-reinforcement-learning, multi-source-data-fusion, multi-tasking-evolutionary-algorithm, multi-uav-assisted-mec, multi-verse-optimizer, nash-equilibrium, network-function-virtualization, network-slicing, noma, non-terrestrial-network, ntm, order-preserving-quantization, over-the-air-computation, overlay-underlay-spectrum-access, parallel-vs-serial-processing, parameterized-dqn, particle-swarm-optimization, penalty-dual-decomposition.
+
+### Gates (concept batch 8)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type concept`** = 234 pages, 0 errors. Graph unchanged **513 / 4455** (no page edits this batch). `log.md` edited with file tools, verified mojibake-free.
+
+### Routing to `mec-wiki-synthesizer` (concept batch 8 — recorded, not filled)
+
+- **Swarm/metaheuristic-family synthesis (standing, reinforced).** [[multi-verse-optimizer]] and [[particle-swarm-optimization]] join the standing swarm/metaheuristic family ([[whale-optimization-algorithm]], [[binary-whale-optimization]], [[salp-swarm-algorithm]], [[gravitational-search-algorithm]], [[ant-colony-optimization]], self-adaptive-global-best-harmony-search). A family synthesis/comparison page tying these distinct-but-comparable derivative-free metaheuristics together may be worth minting (not a merge).
+- **Hybrid-action family (standing, reinforced).** [[parameterized-dqn]] joins [[hybrid-action-decision-making]] / [[hybrid-action-representation]] / [[j-ppo]] / [[soft-actor-critic]] as another way to handle coupled discrete-continuous actions; same standing hybrid-action synthesis candidate flagged in batch 6.
+- **NTN/LEO cluster (standing).** [[non-terrestrial-network]] joins the LEO/NTN concept cluster flagged in batch 6 ([[leo-satellite-edge-computing]] / [[leo-satellite-coverage-time]] / [[leo-handover-protocol]] / [[space-air-ground-integrated-network]]); candidate for a synthesizer synthesis page.
+- No new tag fragmentation introduced this batch.
+
 ## 2026-06-01 — Audit pass (non-source layer — concept batch 7; no new papers)
 
 Continues the non-source-layer audit into **concept batch 7** (20 pages, alphabetical low-altitude-intelligent-network → multi-agent-td3, positions 121–140 of `.curation-out/concept_slugs.txt`). Tree clean at `d5adff0`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
