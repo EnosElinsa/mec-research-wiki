@@ -2,6 +2,26 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Audit pass (non-source layer — concept batch 2; no new papers)
+
+Continues the non-source-layer audit into **concept batch 2** (20 pages, alphabetical blockchain-for-fl-aggregation → cooperative-jamming, positions 21–40 of `.curation-out/concept_slugs.txt`). Tree clean at `cb14bb1`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
+
+### Correctness & consistency audit (Phase B — concept batch 2)
+
+Concept-page checks: definition grounded in the source(s)/parse it cites, no invented numbers/overclaims, `related`/wikilinks resolve and are non-self-referential, tags reused, evergreen wording.
+
+- **Correctness fix (ungrounded mechanism):** [[collision-avoidance-mgi]] described MGI as a *two-agent inter-UAV* "intervention agent vs non-intervention agent" game with a "symmetric-swerve collision" failure mode, a Nash-equilibrium "stable separation maneuver", and role assignment "by UAV ID / speed / heading" — **none of which is in the parse**. This is the same mischaracterization the batch-11 source audit corrected on [[zhang-2025-ssac-mgi-heterogeneous-uav]]: the parse (§V-B, Eqs. 32–34) defines MGI as a **per-UAV** two-agent game — a stochastic reward-maximizing **Standard Agent** plus a deterministic **Safety Agent** with a **binary gating policy** g(s)∈{0,1} that *overrides* the Standard Agent when an intervention triggers (ã = g·a_safe + (1−g)·a), giving safety guarantees during and after training. Rewrote the body to the grounded gating mechanism + the constant-altitude (2-D, 500×500) scope; dropped the invented Nash/symmetric-swerve story.
+- **Consistency fix (grounding):** [[chance-constraint]] said the [[jia-2025-dro-uav-hap-mec]] reformulation "yields a tractable second-order cone program"; the parse reformulates the chance constraint into a **mixed-integer** SOCP (**MISOCP**), matching the [[conditional-value-at-risk]] page. Tightened to MISOCP.
+- **Verified clean** (definition grounded, no invented numbers, links resolve & non-self-referential, tags reused, evergreen): the remaining 18 batch-2 concepts (blockchain-for-fl-aggregation, byzantine-fault-tolerant-consensus, ccvm-correction-voting, cellular-connected-uav, centralized-training-decentralized-execution, cmoea-d-cdp, coalition-formation-game, collaborative-beamforming, collaborative-dl-inference, completion-time-difference, computational-task-caching, conditional-gan, conditional-value-at-risk, constrained-multi-objective-evolutionary-algorithm, constraint-violation-evaluation, contract-theory, convlstm, cooperative-jamming).
+
+### Gates (concept batch 2)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type concept`** = 234 pages, 0 errors. Graph unchanged **513 / 4455** (prose-only edits, no new links/pages). `log.md` edited with file tools, verified mojibake-free.
+
+### Routing to `mec-wiki-synthesizer` (concept batch 2 — recorded, not filled)
+
+- **Tag fragmentation in the evolutionary-algorithm family.** Most pages use the tag `evolutionary` (cmoea-d-cdp, constrained-multi-objective-evolutionary-algorithm, dual-population-evolutionary-algorithm, infeasible-individual-utilization, local-search-evolutionary, multi-tasking-evolutionary-algorithm, evolutionary-reinforcement-learning, salp-swarm-algorithm, dynamic-constrained-multi-objective-optimization) while [[differential-evolution]] and [[constraint-violation-evaluation]] use `evolutionary-algorithm`. A tag-vocabulary normalization (pick one) would de-fragment the family. Flagged only — no merge/delete here.
+
 ## 2026-06-01 — Audit pass (non-source layer — concept batch 1; no new papers)
 
 First invocation of the **non-source-layer** audit, beginning the concept pages now that all 171 source pages are audited (batches 1–12 below). Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). Tree clean at `159bd17`; `corpus_counts.py` confirms 171 / **234 concepts** / 71 entities / 14 findings / 11 synthesis / 4 comparisons / 2 methodology / 5 queries / 1 thesis. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
