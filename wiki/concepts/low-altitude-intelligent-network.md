@@ -7,7 +7,7 @@ related:
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[hierarchical-aerial-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Low-Altitude Intelligent Network (LAIN / Low-Altitude Economy)
@@ -25,7 +25,7 @@ Distinguishing characteristics vs general UAV networks:
 
 LAINs are the natural deployment substrate for [[multi-uav-assisted-mec|UAV-MEC]] in real-world urban environments. Spectrum sharing schemes like [[wang-2025-uav-swarm-stackelberg]] are foundational — without efficient spectrum coordination, UAV-MEC compute offloading becomes bandwidth-starved.
 
-## Open architectural questions (likely covered by paper #10)
+## Open architectural questions
 
 - How to vertically integrate LAIN with terrestrial 5G/6G, HAPS, and LEO?
 - What's the right control plane — fully centralized, hierarchical, or federated?

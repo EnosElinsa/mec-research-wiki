@@ -44,6 +44,7 @@ OFFENDING = [
     re.compile(r"\b(?:first|second|third) 2026-\d{2}-\d{2} batch\b", re.I),
     re.compile(r"\bfor this curation\b", re.I),
     re.compile(r"\b\d+-source snapshot\b", re.I),
+    re.compile(r"\bpaper\s+#\d+\b", re.I),                       # "paper #8", "paper #10" (curation ingest order)
 ]
 
 # Legit ML / domain contexts we must NOT flag.

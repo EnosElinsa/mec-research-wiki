@@ -80,7 +80,7 @@ The two-stage split keeps each stage's action space small, easing learning. CTDE
 ## Cross-link with related sources
 
 - Same MA-POMDP framing as [[peng-2025-drudm-cfg]] and [[qin-2025-bcuav-masac]]; uses CTDE.
-- Trajectory prediction is the distinctive ingredient — most other curated sources react to current observations only. This is the first source in the wiki to use *anticipated* trajectories as a control input. Likely to recur in the **vehicular** and **low-altitude economy** papers later in the queue.
+- Trajectory prediction is the distinctive ingredient — most other curated sources react to current observations only. This is the corpus's clearest example of using *anticipated* trajectories as a control input, a pattern that also fits the **vehicular** and **low-altitude economy** tracks.
 - Compare with [[liu-2026-jppo-en-convntm]]'s [[en-convntm]] which encodes long history — Zhang et al. instead predicts the *future*; both pay $O(H \log H)$-ish cost but for different ends.
 
 ## Raw artifacts

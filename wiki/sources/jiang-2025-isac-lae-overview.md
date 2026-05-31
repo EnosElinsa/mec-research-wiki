@@ -45,7 +45,7 @@ Together they bracket the wiki's LAE thread:
 
 ## Key contributions
 
-- **CNPC vs PC distinction.** Control & Non-Payload Communication (low-rate, high-reliability, low-latency for aircraft control) vs Payload Communication (high-rate, latency-tolerant, mission data). Useful vocabulary for upcoming LAE-MEC papers.
+- **CNPC vs PC distinction.** Control & Non-Payload Communication (low-rate, high-reliability, low-latency for aircraft control) vs Payload Communication (high-rate, latency-tolerant, mission data). Useful vocabulary for LAE-MEC work across the corpus.
 - **Localized channel modeling (MBCM).** Uses measured reference signals to model the channel angular power spectrum — better than purely statistical pathloss models, less expensive than full radio-map measurements.
 - **Stochastic-geometry tradeoff analysis.** Formal coupling between communication coverage and sensing detection in a shared spectrum.
 
