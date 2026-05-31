@@ -6,7 +6,7 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Heterogeneous UAV Fleet
@@ -29,7 +29,7 @@ Most foundational UAV-MEC papers (e.g. [[liu-2026-jppo-en-convntm]]) assume a ho
 
 ## In this wiki
 
-[[zhang-2025-ssac-mgi-heterogeneous-uav]] is the first source explicitly addressing heterogeneity. Its **SSAC** architecture (shared backbone + per-UAV head) is one solution; alternatives include type-aware attention or capability-conditioned policy heads.
+[[zhang-2025-ssac-mgi-heterogeneous-uav]] is the source built explicitly around fleet heterogeneity. Its **SSAC** (Shared Soft Actor-Critic) architecture shares the policy networks across all UAVs and extracts *dimension-invariant* features, so UAVs that differ in service type and resource capacity learn a unified policy; alternatives include type-aware attention or capability-conditioned policy heads.
 
 ## Open questions
 

@@ -45,10 +45,12 @@ OFFENDING = [
     re.compile(r"\bfor this curation\b", re.I),
     re.compile(r"\b\d+-source snapshot\b", re.I),
     re.compile(r"\bpaper\s+#\d+\b", re.I),                       # "paper #8", "paper #10" (curation ingest order)
-    # Forward-looking curation-workflow placement ("future X sources should land here").
-    # NOT a paper's own "future work" (that is evergreen domain content on source pages).
+    # Forward-looking curation-workflow placement ("future X sources should land here",
+    # "subsequent sources should be tagged ...") — an instruction to a later curation run.
+    # The noun is restricted to curation vocabulary (sources/pages/entity-pages), so a
+    # paper's own "future work" / "future research" (noun = work/research) is NOT flagged.
     re.compile(r"\b(?:should|will|would)\s+land here\b", re.I),
-    re.compile(r"\bfuture\s+(?:[\w-]+\s+){0,3}(?:sources?|pages?|entity pages?)\s+(?:should|will|would|land|belong)\b", re.I),
+    re.compile(r"\b(?:future|subsequent|later|upcoming|forthcoming)\s+(?:[\w-]+\s+){0,3}(?:sources?|pages?|entity pages?)\s+(?:should|will|would|must|land|belong|be\s+tagged)\b", re.I),
 ]
 
 # Legit ML / domain contexts we must NOT flag.
