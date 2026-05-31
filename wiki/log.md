@@ -2,6 +2,25 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Audit pass (non-source layer — concept batch 3; no new papers)
+
+Continues the non-source-layer audit into **concept batch 3** (20 pages, alphabetical cooperative-perception → drone-cell-3d-placement, positions 41–60 of `.curation-out/concept_slugs.txt`). Tree clean at `18dc945`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
+
+### Correctness & consistency audit (Phase B — concept batch 3)
+
+Concept-page checks: definition grounded in the source(s)/parse it cites, no invented numbers/overclaims, `related`/wikilinks resolve and are non-self-referential, tags reused, evergreen wording.
+
+- **All 20 verified clean — no corrections needed.** Definitions reflect how each concept is used in the source(s) they cite; no invented numbers/overclaims; `related`/wikilinks resolve and are non-self-referential; tags reused; evergreen wording (no process-narration). Grounding spot-checks against the parses: [[cross-entropy-method]] (li-2023 "Code bAsed croSs Entropy (CASE-Algorithm)" + Polyblock-Approximation/bisection "PAS-Algorithm" solving the bottom problem via canonical [[monotonic-optimization]] — verbatim); [[cooperative-perception]] (xie-2026 abstract: cooperative perception fuses multi-source observations over V2X, vehicle-based suffers occlusion, infrastructure-based has coverage gaps — matches the V2V/V2I/V2U platform table). The batch-1 evergreen-wording fix on [[cooperative-perception]] ("is the wiki's source bringing cooperative perception in") is intact — idempotent re-check, no change.
+- Pages: cooperative-perception, cramer-rao-bound, cross-entropy-method, csi-estimation-error, csra-cold-start-reputation-aggregation, data-partition-parallel-inference, ddpg, ddqn, decentralized-federated-learning, deep-q-network, delegated-proof-of-stake, differential-evolution, diffusion-model-as-optimizer, dispersed-computing, distributed-foundation-models, distributionally-robust-optimization, dl-inference-latency-prediction, dnn-model-partition, double-auction, drone-cell-3d-placement.
+
+### Gates (concept batch 3)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type concept`** = 234 pages, 0 errors. Graph unchanged **513 / 4455** (no page edits this batch). `log.md` edited with file tools, verified mojibake-free.
+
+### Routing to `mec-wiki-synthesizer` (concept batch 3 — recorded, not filled)
+
+- **Tag fragmentation in the CSI/robust-optimization family.** [[csi-estimation-error]] tags `channel-state-information` while [[robust-offloading]] and [[distributionally-robust-optimization]] tag `csi` (and `robust` vs `robust-optimization` across the same cluster). A tag-vocabulary normalization (pick one slug each) would de-fragment the family. Flagged only — no merge/delete/retag here.
+
 ## 2026-06-01 — Audit pass (non-source layer — concept batch 2; no new papers)
 
 Continues the non-source-layer audit into **concept batch 2** (20 pages, alphabetical blockchain-for-fl-aggregation → cooperative-jamming, positions 21–40 of `.curation-out/concept_slugs.txt`). Tree clean at `cb14bb1`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
