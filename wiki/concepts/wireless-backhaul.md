@@ -7,7 +7,7 @@ related:
   - "[[hierarchical-aerial-mec]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Wireless Backhaul
@@ -17,6 +17,6 @@ The high-capacity link that connects an access node (small cell, UAV base statio
 Two flavors in the wiki:
 
 - **HAP-as-backhaul** — the HAPS provides high-bandwidth, line-of-sight backhaul for an underlying UAV layer. Used in [[liu-2025-haps-uav-maritime-iot]] explicitly.
-- **Inter-RSU backhaul** — wired between RSUs, modeled in [[ma-2025-pdqn-vehicular-mec]] as a fixed-rate link.
+- **Inter-RSU backhaul** — wired between RSUs, modeled in [[ma-2025-pdqn-vehicular-mec]] as a fixed, small per-hop transmission delay between adjacent RSUs (propagation-dominated, scaled by the number of road segments a relayed task crosses).
 
 A backhaul link's capacity is *upper-tier* infrastructure. It rarely appears as a decision variable, but its value as a constraint shapes the offloading topology — overloaded backhaul forces more local processing.
