@@ -5,7 +5,7 @@ tags: [transformer, time-series, attention, prediction]
 related:
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Informer for Trajectory / Time-Series Prediction
@@ -19,7 +19,7 @@ Together these let Informer scale to $L = 720$+ sequence lengths on commodity GP
 
 ## Why MEC papers use it
 
-For anything where the controller's quality depends on **future context** rather than current observation alone — vehicular trajectories, UAV swarm positions, queue arrival rates — Informer offers the same expressive power as Transformer at meaningfully lower compute. In [[zhang-2025-mcma-task-migration]], the centralized prediction module would be untenable at $O(H^2)$ for $H = 24$ h history × thousands of vehicles; the ProbSparse trick brings it back into reach.
+For anything where the controller's quality depends on **future context** rather than current observation alone — vehicular trajectories, UAV swarm positions, queue arrival rates — Informer offers the same expressive power as Transformer at meaningfully lower compute. In [[zhang-2025-mcma-task-migration]], an Informer-based multi-step module forecasts vehicular movements to guide prediction-aware task migration; the ProbSparse trick keeps the long-sequence attention cost tractable as the prediction horizon grows.
 
 ## When *not* to use Informer
 
