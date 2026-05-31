@@ -1,0 +1,2319 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "UAV-Assisted Emergency Networks in Disasters "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                83,
+                111,
+                914,
+                141
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nan Zhao, Weidang Lu, Min Sheng, Yunfei Chen, Jie Tang, F. Richard Yu, and Kai-Kit Wong "
+                    }
+                ]
+            },
+            "bbox": [
+                178,
+                153,
+                818,
+                170
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstra ct "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                198,
+                205,
+                261,
+                223
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Reliable and flexible emergency communication is a key challenge for search and rescue in the event of disasters, especially for the case when base stations are no longer functioning. Unmanned aerial vehicle (UAV)-assisted networking is emerging as a promising method to establish emergency networks. In this article, a unified framework for a UAV-assisted emergency network is established in disasters. First, the trajectory and scheduling of UAVs are jointly optimized to provide wireless service to ground devices with surviving BSs. Then the transceiver design of UAV and establishment of multihop ground device-to-device communication are studied to extend the wireless coverage of UAV. In addition, multihop UAV relaying is added to realize information exchange between the disaster areas and outside through optimizing the hovering positions of UAVs. Simulation results are presented to show the effectiveness of these three schemes. Finally, open research issues and challenges are discussed. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                231,
+                398,
+                487
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Introducti on "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                184,
+                493,
+                275,
+                511
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "An emergency communication network is crucial for emergency rescue in natural disasters, especially when the communications infrastructure (e.g., base stations,BSs) is destroyed due to damage. However, existing methods lack flexibility, and are limited by environment and space. To overcome these challenges, unmanned aerial vehicles (UAVs) can be utilized by acting as flying BSs to provide wireless coverage to the ground devices in disasters due to their inherent advantages of flexibility and mobility [1]. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                512,
+                397,
+                652
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Recently, UAV-assisted communications and networking have attracted much interest from both academia and industry [2–12]. The throughput of UAV-enabled mobile relaying was optimized by Zeng et al. by jointly optimizing the transmit power and relay trajectory in [2]. In [3], Zhao et al. proposed a UAV-assisted secure transmission scheme in hyperdense networks via caching. A blind beam tracking scheme was proposed for UAV-satellite communications by Zhao et al. in [4], using large-scale antenna array at the UAV. In [5], some excellent work was done by Wu et al. to maximize the minimum throughput of ground devices by jointly optimizing the UAV’s trajectory, transmit power, and scheduling. Energy trade-off was considered to achieve data collection from ground to the UAV by Yang et al. in [6] via two kinds of trajectory optimization. In [7], the channel models of UAV communications were characterized through practical measurements by Ahmed et al.. A novel UAV-enabled wireless power transfer system was proposed by Xu et al. in [8], in which a UAV-enabled energy transmitter delivered wireless energy to multiple ground energy receivers. In [9], Cheng et al. proposed a UAV trajectory optimization scheme to offload traffic for BSs at the edges of several adjacent cells. In [10], Wu et al. characterized the capacity region of a UAV-enabled two-user broadcast channel via jointly optimizing trajectory and transmit power or rate. Two typical multi-UAV relaying schemes of a single multihop link and multiple dual-hop links were studied by Chen et al. in [11], in which the optimal hovering positions were derived. In [12], Menouar et al. demonstrated the possible applications of intelligent transportation systems based on UAVs, with the potential and challenges highlighted. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                653,
+                398,
+                883
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                419,
+                205,
+                755,
+                423
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Although excellent research has been conducted on UAV communications, very few works have focused on the aspect of UAV-assisted emergency networks in disasters [13–15]. In [13], Erdelj and Natalizio demonstrated the disaster management applications of UAV networks and discussed some open research issues. Message wireless transmission systems with the assistance of UAVs in largescale disasters were studied by Mase and Okada in [14]. A UAV flight path was optimized by Christy et al. for device-to-device (D2D) communication in disasters in [15]. A systematic study of UAV-assisted emergency networks is missing in the literature. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                423,
+                753,
+                589
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this article, a unified framework of UAV-assisted emergency networks in disasters is established. First, the flight trajectory and communication scheduling of UAVs are jointly optimized to provide wireless service for mobile devices with the surviving ground BSs. Then the establishment of multihop D2D and the transceiver design of UAVs are discussed in the scenario without ground BSs to effectively extend the wireless coverage of UAV. Furthermore, to realize the information exchange between disaster and outside areas in the above two scenarios, the multihop UAV relaying scheme is proposed to optimize the hovering positions of UAVs. Simulation results are presented to illustrate the proposed schemes, and some interesting open research issues and challenges are pointed out for UAV-assisted emergency networks. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                589,
+                753,
+                806
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The rest of this article is organized as follows. In the next section, the framework of UAV-assisted emergency networks in disasters is first presented. Then the flight trajectory and communication scheduling of UAV are jointly optimized. In addition, the establishment of multihop D2D and trans-"
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                806,
+                753,
+                883
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This research was supported in part by the open research fund of State Key Laboratory of Integrated Services Networks under Grant ISN19-02, the National Natural Science Foundation of China (NSFC) under Grant 61871065 and 61871348, and the Fundamental Research Funds for the Central Universities under DUT17JC43. "
+                    }
+                ]
+            },
+            "bbox": [
+                777,
+                771,
+                931,
+                895
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nan Zhao is with Dalian University of Technology and Xidian University; Weidang Lu is with Zhejiang University of Technology; Min Sheng is with Xidian University; Yunfei Chen is with the University of Warwick; Jie Tang (corresponding author) is with South China University of Technology; F. Richard Yu is with Carleton University; Kai-Kit Wong is with the University College London. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                901,
+                743,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Digital Object Identifier: 10.1109/MWC.2018.1800160 "
+                    }
+                ]
+            },
+            "bbox": [
+                806,
+                911,
+                931,
+                933
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "INTEGRATING UAVS INTO 5G AND BEYOND "
+                    }
+                ]
+            },
+            "bbox": [
+                342,
+                24,
+                655,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • February 2019 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                965,
+                328,
+                978
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "1536-1284/19/$25.00 © 2019 IEEE "
+                    }
+                ]
+            },
+            "bbox": [
+                482,
+                966,
+                693,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "45 "
+                    }
+                ]
+            },
+            "bbox": [
+                916,
+                965,
+                929,
+                976
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/e0a0693d1fd0b1f790c11e40f647448ed28649c43734841a1c3c41d234626cb9.jpg"
+                },
+                "content": "```mermaid\ngraph TD\n    subgraph Scenario 1\n        A[\"Active BS\"] --> B[\"Demaged BS\"]\n        C[\"Active BS\"] --> D[\"Demaged BS\"]\n        E[\"Active BS\"] --> F[\"Demaged BS\"]\n        G[\"Active BS\"] --> H[\"Demaged BS\"]\n    end\n\n    subgraph Scenario 2\n        I[\"UAV 1\"] --> J[\"Damaged BS\"]\n        K[\"UAV 2\"] --> L[\"Damaged Macro BS\"]\n        M[\"UAV Coverage\"] --> N[\"UAV Relay 1\"]\n        O[\"UAV Relay 2\"] --> P[\"UAV Relay N-1\"]\n        Q[\"Emergency Communication Vehicle\"] --> R[\"End\"]\n    end\n\n    style Scenario 1 fill:#f9f,stroke:#333\n    style Scenario 2 fill:#bbf,stroke:#333\n    style UAV_Relay_1 fill:#dfd,stroke:#333\n    style UAV_Relay_2 fill:#dfd,stroke:#333\n    style UAV_Relay_N-1 fill:#dfd,stroke:#333\n    style UAV_Coverage fill:#dfd,stroke:#333\n    style Emergency_Vehicle fill:#dfd,stroke:#333\n```",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 1. Framework of UAV-assisted emergency networks in disasters. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "flowchart",
+            "bbox": [
+                68,
+                26,
+                931,
+                512
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ceiver design of UAV are studied. Furthermore, the multihop UAV relaying scheme is proposed to optimize the positions of UAVs. Finally, open research issues and challenges are discussed, followed by conclusions in the final section. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                549,
+                575,
+                615
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Fra mework of UAV-Assi sted Emergency Networks "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                285,
+                622,
+                532,
+                663
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The framework of UAV-assisted emergency networks in disasters is shown in Fig. 1, which is described as follows: "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                664,
+                575,
+                703
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Scenario 1: In the scenario with active ground BSs, UAVs can cooperate with the surviving BSs to provide wireless service for the ground devices. In this case, the flight trajectory and communication scheduling can be jointly optimized to improve the performance. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Scenario 2: In the scenario with no BSs, a largescale UAV can act as a flying BS to provide wireless connections, with the help of multihop D2D to extend its coverage area. In addition, UAV transceiver design can be further utilized to improve the reliability. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Multihop UAV relaying: The information exchange between disaster areas and outside in both scenarios 1 and 2 can be realized via multihop UAV relaying, in which the optimal hovering positions of UAVs can be derived with low complexity. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                704,
+                575,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In the following sections, these key scenarios for UAV-assisted emergency networks are discussed in detail. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                549,
+                933,
+                589
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Joi nt Traj ectory a nd Scheduli ng Opti mi za ti on "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                607,
+                595,
+                924,
+                613
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In disasters, victims and rescue workers are usually randomly distributed. It is hard to reach them when BSs are partially damaged. UAVs can be fully exploited to provide wireless connections to the ground devices via specific flight trajectories due to their flexibility and mobility. In [5], some fundamental work has been conducted to jointly optimize the UAV’s trajectory, transmit power, and scheduling without considering any surviving ground BSs. Due to the mobility of UAV, it can fly close to the ground devices to achieve better performance; however, this may cause severe interference to the devices in other cells. When there are some active surviving BSs, as shown in scenario 1 of Fig. 1, more complex situations should be considered, and interference between the BS-served devices and UAV-served devices should be properly avoided to guarantee reliable transmission [9], which is discussed in this section. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                613,
+                931,
+                856
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Problem Formula ti on "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                702,
+                865,
+                830,
+                882
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In a cellular network with several adjacent cells, the BS for the central cell is assumed to be damaged due to natural disasters, as shown in scenario 1 of Fig. 1. Thus, a UAV is deployed to provide wireless connections to the ground devices in the central cell. To guarantee reliable transmission and avoid severe interference to the BS-served devices, we assume that the UAV flies periodically at a fixed altitude H. Each flying cycle T can be further divided into N time slots equally. Multiple antennas are equipped at each BS, while a single antenna is equipped at the UAV. "
+                    }
+                ]
+            },
+            "bbox": [
+                599,
+                883,
+                931,
+                934
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "46 "
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                965,
+                80,
+                976
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • February 2019 "
+                    }
+                ]
+            },
+            "bbox": [
+                666,
+                964,
+                931,
+                978
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                63,
+                39,
+                395,
+                141
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Define the UAV’s horizontal position at the nth slot in a specific flying cycle w(n) as [x(n), y(n)] T, and its maximum speed as V. Thus, the starting and ending positions of the UAV in a specific cycle should be located at the same point (i.e., w(1) = w(N)). In addition, the flying speed of the UAV in each time slot should not exceed V, which requires that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "| | \\mathbf { w } ( n + 1 ) - \\mathbf { w } ( n ) | | ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "be smaller than or equal to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( V T / N ) ^ { 2 } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". To schedule the transmission of UAV, we define the binary parameter s (n). s (n) equaling 1 or 0 means that the kth device is served or not served by the UAV at the nth slot, respectively. Due to the limited capability of a single-antenna UAV, at most one device is served by it at each time slot. Thus, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Sigma _ { k \\in \\mathcal { K } } s _ { k } ( n )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is equal to either 1 or 0, where K is the set of UAV-served devices. This time-division multiple access (TDMA) mode can achieve higher reliability with tolerable latency. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                141,
+                395,
+                372
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To improve the transmission efficiency of UAV and guarantee the quality of service (QoS) of the BS-served users, the sum rate of the UAV-served devices can be maximized by jointly optimizing the communication scheduling S as s (n), ∀k, ∀n and flight trajectory W as w(n), ∀n, with the constraints of w(n), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "s _ { k } \\dot { ( \\boldsymbol n ) }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and the rate threshold for each BS-served and UAV-served device satisfied. The optimization is centralized at the UAV, with some necessary feedback and control from the surviving BSs to the UAV. However, this optimization is extremely difficult to solve due to the fact that it is a mixed-integer non-convex problem. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                370,
+                395,
+                537
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To handle this problem effectively, we first relax the binary variables s (n) into continuous ones "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\hat { s } _ { k } ( n )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "that lie between 0 and 1. Thus, the suboptimal solutions can be calculated through solving the sub-problem with fixed trajectory W and the sub-problem with fixed scheduling S, iteratively, whose convergence can be guaranteed. When the trajectory W is fixed, the problem becomes linear programming, which can be solved easily through classic optimization algorithms (e.g., the interior-point method). When the scheduling S is fixed, the problem remains non-convex, which is still difficult to tackle. To handle this subproblem effectively, the constraints are first transformed into convex ones via successive convex optimization, and then block coordinate descent is applied to change this sub-problem into an approximately convex one, which can also be solved via classic algorithms. After convergence via iterations, the calculated continuous variables "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\hat { s } _ { k } ( n )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "should be turned back into binary ones via comparing their values with 0.5. Thus, the suboptimal values of W and S can be achieved via this iterative algorithm with low computational complexity. In addition, power allocation of a UAV at each time slot is not considered in this scheme to avoid complex controls. Instead, the UAV can fly close to the ground nodes to achieve optimal performance due to its flexibility. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                537,
+                395,
+                895
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Through the above joint optimization scheme for UAV, the average throughput of UAV-served devices can be maximized with the QoS of BS-served devices guaranteed. This is achieved by the joint consideration of flying close to its served devices to improve the throughput and staying away from the BS-served devices to avoid interference. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                895,
+                395,
+                934
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/fc6a99987a696da274b0e9d7e2e32262b928b71906ed227049e34fede65091b0.jpg"
+                },
+                "content": "| Point | m     | m     |\n|-------|-------|-------|\n| 1     | 1500  | -200  |\n| 2     | 1600  | -100  |\n| 3     | 1200  | -400  |\n| 4     | 900   | -500  |\n| 5     | 800   | -700  |\n| 6     | 700   | -800  |\n| 7     | 600   | -900  |\n| 8     | 500   | -1000 |\n| 9     | 400   | -1100 |\n| 10    | 300   | -1200 |\n| 11    | 200   | -1300 |\n| 12    | 100   | -1400 |\n| 13    | 50    | -1500 |\n| 14    | 20    | -1600 |\n| 15    | 10    | -1700 |\n| 16    | 5     | -1800 |\n| 17    | 2     | -1900 |\n| 18    | -1    | -2000 |\n| 19    | -5    | -2100 |\n| 20    | -10   | -2200 |\n| 21    | -15   | -2300 |\n| 22    | -20   | -2400 |\n| 23    | -25   | -2500 |\n| 24    | -30   | -2600 |\n| 25    | -35   | -2700 |\n| 26    | -40   | -2800 |\n| 27    | -45   | -2900 |\n| 28    | -50   | -3000 |\n| 29    | -55   | -3100 |\n| 30    | -60   | -3200 |\n| 31    | -65   | -3300 |\n| 32    | -70   | -3400 |\n| 33    | -75   | -3500 |\n| 34    | -80   | -3600 |\n| 35    | -85   | -3700 |\n| 36    | -90   | -3800 |\n| 37    | -95   | -3900 |\n| 38    | -100  | -4000 |\n| 39    | -105  | -4100 |\n| 40    | -110  | -4200 |\n| 41    | -115  | -4300 |\n| 42    | -120  | -4400 |\n| 43    | -125  | -4500 |\n| 44    | -130  | -4600 |\n| 45    | -135  | -4700 |\n| 46    | -140  | -4800 |\n| 47    | -145  | -4900 |\n| 48    | -150  | -5000 |\n| 49    | -155  | -5100 |\n| 50    | -160  | -5200 |\n| 51    | -165  | -5300 |\n| 52    | -170  | -5400 |\n| 53    | -175  | -5500 |\n| 54    | -180  | -5600 |\n| 55    | -185  | -5700 |\n| 56    | -190  | -5800 |\n| 57    | -195  | -5900 |\n| 58    | -200  | -6000 |\n| 59    | -205  | -6100 |\n| 60    | -210  | -6200 |\n| 61    | -215  | -6300 |\n| 62    | -220  | -6400 |\n| 63    | -225  | -6500 |\n| 64    | -230  | -6600 |\n| 65    | -235  | -6700 |\n| 66    | -240  | -6800 |\n| 67    | -245  | -6900 |\n| 68    | -250  | -7000 |\n| 69    | -255  | -7100 |\n| 70    | -260  | -7200 |\n| 71    | -265  | -7300 |\n| 72    | -270  | -7400 |\n| 73    | -275  | -7500 |\n| 74    | -280  | -7600 |\n| 75    | -285  | -7700 |\n| 76    | -290  | -7800 |\n| 77    | -295  | -7900 |\n| 78    | -300  | -8000 |\n| 79    | -305  | -8100 |\n| 80    | -310  | -8200 |\n| 81    | -315  | -8300 |\n| 82    | -320  | -8400 |\n| 83    | -325  | -8500 |\n| 84    | -330  | -8600 |\n| 85    | -335  | -8700 |\n| 86    | -340  | -8800 |\n| 87    | -345  | -8900 |\n| 88    | -350  | -9000 |\n| 89    | -355  | -9100 |\n| 90    | -360  | -9200 |\n| 91    | -365  | -9300 |\n| 92    | -370  | -9400 |\n| 93    | -375  | -9500 |\n| 94    | -380  | -9600 |\n| 95    | -385  | -9700 |\n| 96    | -390  | -9800 |\n| 97    | -395  | -9900 |\n| 98    | -400  | -1000|",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 2. Performance comparison of joint optimization of UAV scheduling and trajectory when a specific user served by the second BS moves toward the UAV. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "scatter",
+            "bbox": [
+                424,
+                38,
+                929,
+                328
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                419,
+                383,
+                753,
+                434
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Si mula ti on Results "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                529,
+                443,
+                643,
+                459
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In Fig. 2, the trajectory of the UAV is demonstrated to maximize the sum rate of the UAV-served users. We set H = 50 m, V = 50 m/s, T = 120 s, and N = 60. The channel noise is assumed to be –110 dBm. The transmit power of each BS is set to 0.1 W, while the transmit power of the UAV is 0.05 W. The rate thresholds of the BS-served devices and UAV-served devices are set to be 1.5 b/s/Hz and 0.5 b/s/Hz, respectively. Due to the much better channel conditions in the upper left cell than the others, we can see that the blue curve tends to move toward the upper left cell in order to guarantee the QoS of devices in the other two cells. In addition, when the second device served by the upper right BS moves toward the UAV, the red curve will move even closer to the upper left cell than the blue one, which means that the UAV will fly away from this device to avoid generating strong interference to it. Thus, the sum rate of the UAV-served devices can be optimized with the QoS of both the BS-served devices and the UAV-served devices guaranteed through proper management of the scheduling and trajectory of the UAV. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                461,
+                753,
+                755
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Tra nsceiv er Desi gn a nd Multi hop D2D Esta bli shment "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                484,
+                763,
+                690,
+                803
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In scenario 2 of Fig. 1, all the ground BSs have been damaged due to disasters, and a large-scale UAV with multiple antennas can be deployed as a flying BS to provide wireless service, as shown in Fig. 3. Thus, the UAV transceiver can be carefully designed to guarantee the reliability in the downlink and uplink. In addition, the coverage area of the UAV is limited due to its battery constraint; thus, multihop D2D links can be established to extend its coverage. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                805,
+                753,
+                934
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • February 2019 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                964,
+                328,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "47 "
+                    }
+                ]
+            },
+            "bbox": [
+                916,
+                964,
+                931,
+                976
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/b9ed87f5482f9dd404ec97ca98ccb793b223d3eb10e9a10577a8b3aa81a47d0f.jpg"
+                },
+                "content": "```mermaid\ngraph TD\n    A[\"UNAV\"] --> B[\"damaged BS\"]\n    B --> C[\"Cluster\"]\n    B --> D[\"Disaster Area\"]\n    B --> E[\"UAV Coverage Area\"]\n    C --> F[\"Mobile Phone 1\"]\n    C --> G[\"Mobile Phone 2\"]\n    C --> H[\"Mobile Phone 3\"]\n    D --> I[\"Mobile Phone 4\"]\n    D --> J[\"Mobile Phone 5\"]\n    E --> K[\"Mobile Phone 6\"]\n    E --> L[\"Mobile Phone 7\"]\n    E --> M[\"Mobile Phone 8\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fcc,stroke:#333\n    style E fill:#cff,stroke:#333\n    style F fill:#ffc,stroke:#333\n    style G fill:#ffc,stroke:#333\n    style H fill:#ffc,stroke:#333\n    style I fill:#ffc,stroke:#333\n    style J fill:#ffc,stroke:#333\n    style K fill:#ffc,stroke:#333\n    style L fill:#ffc,stroke:#333\n```",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 3. Demonstration of wireless coverage via a large-scale UAV with ground multihop D2D links. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "flowchart",
+            "bbox": [
+                66,
+                38,
+                573,
+                289
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Tra nsceiv er Desi gn "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                351,
+                329,
+                465,
+                347
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In a circular disaster area with radius "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { 1 } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "as shown in Fig. 3, all the BSs have been destroyed. Thus, a large-scale UAV equipped with M antennas is deployed at the center with altitude H to provide wireless coverage to K ground single-antenna devices. According to the maximum angle between UAV and device, we can calculate the maximum transmission distance between the UAV and a specific ground device "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "as H/cosf. Due to the limited transmit power of UAV, the QoS of edge devices is difficult to guarantee. Thus, the multiple antennas at the UAV should be fully exploited to achieve reliable transmission. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                358,
+                575,
+                537
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In the uplink, many devices may want to connect to the UAV simultaneously, and the decoding vectors at the UAV for each device should be carefully designed. In addition, the transmit power of all the devices is assumed to be equal, because the global channel state information (CSI) is difficult to obtain at each node without ground BSs for any optimization. Thus, we can maximize the throughput of all the devices by jointly optimizing the unit decoding vectors with a constraint on the rate of each device. Although this optimization is non-convex, it can be transformed into a convex one, and its closed-form solution can be derived through maximizing the signal-to-interference-plus-noise ratio (SINR) of each link via its corresponding decoding vector. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                538,
+                575,
+                742
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "On the other hand, the precoding design of the UAV in the downlink is more complex. For simplicity, the power information can be integrated into the precoding vectors. Thus, we can maximize the throughput of all the devices by jointly optimizing the precoding vectors, with constraints on the rate of each device and the UAV transmission power. This optimization is non-convex and cannot be solved directly. First, some auxiliary variables are introduced, and the constraints can be converted into convex ones through first-order Taylor expansion approximately. The, the objective function can also be converted to convex via second-order-cone programming (SOCP). Thus, suboptimal solutions can be obtained by solving an SOCP problem iteratively via classic optimization algorithms. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                742,
+                575,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                599,
+                39,
+                933,
+                66
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Multi hop D2D Esta bli shment "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                679,
+                72,
+                852,
+                89
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Although the reliability of wireless connections for ground devices can be enhanced through the transceiver design of a UAV, its coverage is still limited, as shown in Fig. 3, due to the constraint of transmit power. Thus, to increase UAV coverage effectively for the randomly distributed victims and rescue workers, multihop D2D links can be established to bridge the nodes within direct coverage of the UAV and the outside ones. In this scenario, we have to perform multihop D2D to extend the coverage of the UAV. It can be deemed as a self-rescue behavior for survival, although this will cause power consumption of their own devices. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                90,
+                931,
+                255
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To establish multihop D2D links effectively in disasters, the number of hops should be minimized with reliable performance due to the power limitation of each hop and the shortage in power supply. Thus, a shortest-path-routing (SPR) algorithm can be designed in which a device can be selected as a relay node if it is closer to the destination than all the other available devices within a coverage radius r of the current node to guarantee reliability. In addition, the selected device should also be closer to the line from source to destination. The SPR algorithm is a suitable scheme in establishing multihop D2D links with fewer hops to extend the coverage of the UAV, although its performance is not the best. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                255,
+                931,
+                448
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Outage probability is a key measure of the reliability of multihop D2D establishment, which is the probability that the received SINR g falls below a predefined threshold e. To derive the average outage probability, the successful transmission probability of a single hop is first analyzed, based on which the single-hop outage probability can be obtained with a Possion point process (PPP) density for the device distribution. Using single-hop, the average number of hops J from source to destination with distance R can be achieved according to the average distance of a single hop. Finally, the average outage probability of a multihop D2D link can be derived based on the single-hop outage probability and J. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                448,
+                931,
+                641
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Di scussi on "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                732,
+                649,
+                799,
+                664
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In the above demonstration, a large-scale UAV with multiple antennas is considered. Nevertheless, the case when only single-antenna UAVs are available may happen in disasters. In this situation, non-orthogonal multiple access (NOMA) can be adopted to serve several ground devices simultaneously when successive interference cancellation can be performed at fifth generation (5G)-enabled devices or UAV in the downlink and uplink, respectively. To enhance the reliability of the NOMA-based UAV transmission, the hovering position of the UAV and the power allocation for each device can be jointly optimized. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                664,
+                931,
+                833
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Si mula ti on Results "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                708,
+                840,
+                821,
+                856
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The performance of downlink is analyzed in Fig. 4, in which K = 6, H = 50 m, R = 200 m, r = 10 m, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Phi = 6 0 ^ { \\circ }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". First, the sum rate of UAV downlink is compared for different signal-to-noise ratios (SNRs). The precoding vectors with randomly generated complex Guassian entries are also compared. From the results, we can see that reliable UAV downlink transmission can be achieved with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "M \\geq K = 6"
+                    },
+                    {
+                        "type": "text",
+                        "content": "antennas equipped at the UAV. When "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "M < K ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", the zero-forcing scheme cannot be solved, and the performance of the optimal precoding scheme will also degrade severely. In addition, the sum rate increases with antennas at the UAV and decreases with channel noise "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sigma ^ { 2 } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Then the overall outage probability of the link from the UAV to the destination in the multihop D2D is compared for the different transmit power of each device, in which the transmit power of the UAV is 10 mW, the number of available devices for establishing the multihop link is 100, the PPP density is 0.001, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sigma ^ { 2 } = - 1 1 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "dBm, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "M = 6 ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and e = –6 dB. From the results, we can see that reliable transmission from the UAV to the devices out of its direct scope can be guaranteed with low outage probability through the proposed SPR algorithm and precoding design. In addition, the outage probability will become higher with larger distance between the source and destination of the multihop link. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                856,
+                931,
+                934
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "48 "
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                965,
+                80,
+                976
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • February 2019 "
+                    }
+                ]
+            },
+            "bbox": [
+                666,
+                964,
+                931,
+                978
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/bf7c89f4847a07653df54c89459b66e54bc3e56a598176b64786ed741891e36c.jpg"
+                },
+                "content": "| 1/σ² (dB) | Optimal Precoding, 8 antennas | Optimal Precoding, 7 antennas | Optimal Precoding, 6 antennas | Zero-forcing, 6 antennas | Random Precoding, 6 antennas |\n| --------- | ----------------------------- | ----------------------------- | ----------------------------- | ------------------------- | ---------------------------- |\n| 70        | 0                             | 0                             | 0                             | 0                         | 0                            |\n| 80        | 0                             | 0                             | 0                             | 0                         | 0                            |\n| 90        | 3                             | 2                             | 2                             | 1                         | 0                            |\n| 100       | 12                            | 11                            | 9                             | 7                         | 1                            |\n| 110       | 28                            | 25                            | 20                            | 18                        | 1                            |",
+                "chart_caption": [],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                80,
+                44,
+                412,
+                300
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/83145ae3c41aac230447f429bd4ec8ed752dccba702be86e82d904a379ac5c99.jpg"
+                },
+                "content": "| Transmit Power of Each Device (mW) | R=100m, Random Precoding | R=100m, Optimal Precoding | R=50m, Random Precoding | R=50m, Optimal Precoding |\n| ----------------------------------- | ------------------------ | ------------------------- | ----------------------- | ------------------------ |\n| 0                                   | 86                       | 50                        | 76                      | 30                       |\n| 1                                   | 80                       | 32                        | 71                      | 17                       |\n| 2                                   | 78                       | 24                        | 70                      | 14                       |\n| 3                                   | 77                       | 22                        | 69                      | 13                       |\n| 4                                   | 76                       | 20                        | 68                      | 11                       |\n| 5                                   | 76                       | 19                        | 68                      | 10                       |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(b) "
+                    },
+                    {
+                        "type": "text",
+                        "content": "FIGURE 4. a) Downlink sum rate comparison of the optimal precoding design, zero-forcing, and random precoding design; b) overall outage probability comparison of UAV and multihop D2D downlink. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                416,
+                44,
+                739,
+                297
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                63,
+                370,
+                398,
+                654
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Multi hop UAV Rela yi ng "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                147,
+                659,
+                313,
+                677
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Although wireless coverage can be achieved in disasters via UAVs, as shown in scenarios 1 and 2 of Fig. 1, the information bridge should be built between these UAVs and the outside emergency communication vehicles or core networks for these two scenarios effectively. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                677,
+                395,
+                755
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To realize information exchange between disaster areas and outside, multihop UAV relaying can be established to overcome the space and environment limitations, as shown in Fig. 5. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                755,
+                395,
+                806
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, the optimal hovering positions of UAV relaying systems are discussed [11]. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                806,
+                395,
+                833
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Opti ma l Hov eri ng of UAV Rela ys "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                133,
+                838,
+                325,
+                856
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In a multihop UAV relaying system as shown in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathsf { F i g . } 5 ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "the source and destination nodes are linked by N – 1 UAV relays deployed in the same horizontal line at the same altitude "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "according to which the number of UAVs can be minimized. The distance between the source and destination is d, and the nth UAV is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "d _ { n }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "away from the source, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "n = 1 , 2 , \\ldots N - 1 , g _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the fading coefficient of the ith hop, which includes both path loss and channel fading. Denote the air-to-air and air-to-ground path loss models as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 1 } \\ r ^ { \\mathrm { a } _ { 1 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 2 } r ^ { \\alpha _ { 2 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", respectively. In the existing literature, there are plenty of works focusing on the path loss for UAV communications, and in this article, we adopt the one in [7] to set the parameters as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { ~ a } _ { 1 } = 2 . 0 \\dot { 5 } , \\mathrm { ~ a } _ { 2 } = 2 . 3 2 , \\beta _ { 1 } ="
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 2 } = ( 4 \\pi \\mathsf { f } / \\dot { \\alpha } ) ^ { 2 } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which were obtained through practical measurements. For the channel fading, we adopt the Nakagami-m distribution. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                856,
+                395,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                419,
+                370,
+                753,
+                525
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Define the received SNR of the ith hop of the relaying system as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { j } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": "When the amplify-and-forward (AF) relaying protocol is adopted, the received SNR at the destination of multihop relaying can be expressed as "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                525,
+                753,
+                589
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\delta_ {e e 1} = \\left(\\prod_ {i = 1} ^ {N} (1 + 1 / \\delta_ {i}) - 1\\right) ^ {- 1}. \\tag {1}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/bf80fd64b39e12f2c0e4c41c635bcccd0fa82d5e1ce256f8a8f60ca6858ddbb5.jpg"
+                }
+            },
+            "bbox": [
+                448,
+                590,
+                753,
+                636
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "When the decode-and-forward (DF) relaying protocol is exploited, the received SNR at the destination can be expressed as "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                639,
+                753,
+                679
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\delta_ {e e 2} = \\min \\{\\delta_ {1}, \\delta_ {2}, \\dots , \\delta_ {N} \\}. \\tag {2}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/1d49cd21b7e42e1a92dd4bcec81ede8b54d980121ca2c2ebb2d5eea772690228.jpg"
+                }
+            },
+            "bbox": [
+                441,
+                690,
+                753,
+                705
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Taking the case of maximizing "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { \\mathrm { e e 1 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "as an example, first, the optimal hovering altitude can be derived by taking the first-order derivative of the objective function, which is equal to 0. Then the optimal distances of UAV relays from the source can be derived.1 The result obtained will be time-varying, which is hard to implement. To fix this problem, the instantaneous CSI is replaced by the average CSI [11]. Thus, we can replace the instantaneous value of the fading coefficient gi with its average value to make it more practical. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                716,
+                753,
+                858
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Di scussi on "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                554,
+                865,
+                619,
+                882
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In the above demonstration, the optimal hovering positions of UAV relaying are derived with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { \\mathrm { e e 1 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "when AF is adopted. For "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { \\mathrm { e e 2 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "with DF, the solutions of optimal positions are quite different, although "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                883,
+                753,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "From the results, we can see that reliable transmission from UAV to the devices out of its direct scope can be guaranteed with low outage probability through the proposed SPR algorithm and precoding design. In addition, the outage probability will become higher with larger distance between the source and destination of the multi-hop link. "
+                    }
+                ]
+            },
+            "bbox": [
+                780,
+                35,
+                933,
+                281
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • February 2019 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                964,
+                328,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "49 "
+                    }
+                ]
+            },
+            "bbox": [
+                917,
+                965,
+                931,
+                976
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "When we aim to cover a long distance in disasters, the multi-hop single-link UAV relaying can achieve much better performance; on the other hand, if we aim to enhance the reliability of relaying within a shorter distance, the multiple dual-hop UAV relaying is more suitable. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                37,
+                217,
+                235
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/87b20d7fab8775f0828bc7be2fd0aa25bb8f5e02b15e52282497f1f2da4b2ffa.jpg"
+                },
+                "content": "```mermaid\ngraph TD\n    A[\"Source\"] -->|g1| B[\"UAV 1\"]\n    B -->|g2| C[\"UAV 2\"]\n    C -->|g3| D[\"...\"]\n    D --> E[\"UAV N-1\"]\n    E -->|gN| F[\"Destination\"]\n    F -->|δN| G[\"Source\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#ccf,stroke:#333\n    style D fill:#ccf,stroke:#333\n    style E fill:#ccf,stroke:#333\n    style F fill:#ccf,stroke:#333\n    style G fill:#dfd,stroke:#333\n```",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 5. Diagram for the multi-hop UAV relaying system. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "flowchart",
+            "bbox": [
+                248,
+                38,
+                931,
+                225
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/ba62ff68c3a93ed297a451cd68b063421faf8d74e55155f51893bba1e977f2cf.jpg"
+                },
+                "content": "| d (m) | Outage Probability (Multi-hop, AF, δ_ee1) | Outage Probability (Multi-hop, DF, δ_ee2) | BER (Multi-hop, AF, δ_ee1) | BER (Multi-hop, DF, δ_ee2) |\n|-------|------------------------------------------|------------------------------------------|-----------------------------|-----------------------------|\n| 0     | 0.01                                     | 0.01                                     | 0.0001                      | 0.0001                      |\n| 500   | 0.1                                      | 0.1                                      | 0.01                        | 0.01                        |\n| 1000  | 0.5                                      | 0.5                                      | 0.05                        | 0.05                        |\n| 1500  | 0.8                                      | 0.8                                      | 0.1                         | 0.1                         |\n| 2000  | 0.95                                     | 0.95                                     | 0.2                         | 0.2                         |\n| 2500  | 0.98                                     | 0.98                                     | 0.3                         | 0.3                         |\n| 3000  | 0.99                                     | 0.99                                     | 0.4                         | 0.4                         |\n| 3500  | 0.995                                    | 0.995                                    | 0.5                         | 0.5                         |\n| 4000  | 1.0                                      | 1.0                                      | 0.6                         | 0.6                         |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "FIGURE 6. Outage probability and BER comparison with different d when N = 3 and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h = 5 0 \\mathrm { m }"
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                246,
+                250,
+                931,
+                544
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "they can be derived similarly as in the case of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { \\mathrm { e e 1 } } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "which will not be presented here for simplicity [11]. In addition, when other types of channel modeling are considered, the results of the relaying optimization will obviously also change. For example, the optimal altitude h^ will not always remain zero when other channel models are adopted. Moreover, the information exchange between a disaster area and outside can also be achieved by multiple dual-hop UAV relaying, as indicated in [11]. When we aim to cover a long distance in disasters, multihop single-link UAV relaying can achieve much better performance; on the other hand, if we aim to enhance the reliability of relaying within a shorter distance, multiple dual-hop UAV relaying is more suitable [11]. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                575,
+                575,
+                781
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Si mula ti on Results "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                351,
+                789,
+                465,
+                805
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In the simulation, the outage probability and the bit error rate (BER) for the derived optimal positions of multihop UAV relaying are compared in Fig. 6 for different d in multihop UAV relaying with endto-end SNR equal to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { \\mathrm { e e 1 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { \\mathrm { e e } 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", respectively. f = 2 GHz, the transmit power of each hop is 10 dBm, noise power at each UAV relay is –100 dBm, and the average value of |g |2 is 1. m is set to 1 for the Nakagami fading. From the results, we can see that the outage probability and BER both become higher with larger distance due to the more severe path loss. In addition, we can see that both the outage and BER performance of the DF protocol is better than that of the AF protocol, although the computational complexity of DF is higher. "
+                    }
+                ]
+            },
+            "bbox": [
+                241,
+                805,
+                575,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                599,
+                575,
+                931,
+                641
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Open Resea rch Issues a nd Cha llenges "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                633,
+                645,
+                898,
+                664
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Although some fundamental works have been conducted on the UAV-assisted emergency networks in disasters in this article, there still remain some open research issues and challenges to be addressed in the future. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                664,
+                931,
+                728
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Multi-UAV Trajectory: In this article, only a single UAV is considered to provide wireless connections for ground devices with surviving BSs. Nevertheless, in a larger disaster area with more devices to be served, multiple UAVs are needed. This will complicate trajectory optimization of all these UAVs, considering its influence on the ground BS-served devices. In the future, intelligent distributed algorithms for the trajectory and scheduling optimization for UAVs should be developed. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                728,
+                931,
+                856
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Interference Management: In this article, a large-scale UAV is deployed to provide wireless service to ground devices with the help of multihop D2D links. Nevertheless, when more UAVs are deployed to provide service for a much larger area, the interference will appear among the devices served by different UAVs. In addition, if there are still some ad hoc networks within the coverage area of the UAV, the interference between them should be fully considered. Thus, interference management is a key challenge for UAV-assisted emergency networks in disasters. "
+                    }
+                ]
+            },
+            "bbox": [
+                597,
+                856,
+                931,
+                936
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "1 The derivation of the optimal distances can be found in [11] "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                898,
+                208,
+                932
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "50 "
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                965,
+                80,
+                976
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • February 2019 "
+                    }
+                ]
+            },
+            "bbox": [
+                666,
+                964,
+                931,
+                978
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                63,
+                39,
+                395,
+                117
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Channel Modeling: The most distinctive characteristic of UAV communication is the channel modeling, especially between the UAV and ground. In this article, the channel model in [7] is adopted to analyze the positions of multihop UAV relaying. Nevertheless, in practical systems, the channel models for UAV communication are quite different from case to case, and some other models can also be suitable to use. Thus, the optimal hovering positioning of multihop UAV relaying should be further analyzed with other feasible channel models. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                117,
+                395,
+                255
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Energy Supply: Energy supply always remains a key challenge for UAV communication due to the battery limitation, especially for disasters, in which it is difficult to provide stable energy supply. This challenge can be solved by energy harvesting, such as solar energy; however, it will become invalid at night. Thus, more energy-efficient systems should be designed to prolong the operational time for UAVs. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                257,
+                395,
+                370
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Conclusi ons "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                184,
+                378,
+                275,
+                396
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A UAV can be utilized to establish emergency wireless networks to overcome the space and environment limitations in disasters due to its flexibility and mobility. In this article, a unified framework of UAV-assisted emergency networks in disasters has been established. First, with surviving BSs considered, the trajectory and scheduling of A UAV have been jointly optimized to provide wireless connections for the ground devices. Then the transceiver design of UAV and ground multihop D2D establishment have been studied to extend the coverage scope of the UAV BS. Furthermore, a multihop relaying scheme has been examined to exchange the information between the disaster area and outside, in which the hovering positions of UAVs were optimized. Finally, some open research issues and challenges in UAV-assisted emergency networks have been discussed. "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                397,
+                395,
+                627
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Ref erences "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                198,
+                632,
+                261,
+                645
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless Communications with Unmanned Aerial Vehicles: Opportunities and Challenges,” IEEE Commun. Mag., vol. 54, no. 5, May. 2016, pp. 36–42. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput Maximization for UAV-Enabled Mobile Relaying Systems,” IEEE Trans. Commun., vol. 64, no. 12, Dec. 2016, pp. 4983–96. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] N. Zhao et al., “Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment,” IEEE Trans. Commun., vol. 66, no. 5, May 2018, pp. 2281–94. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] J. Zhao et al., “Beam Tracking for UAV Mounted SatCom on-the-Move with Massive Antenna Array,” IEEE JSAC, vol. 36, no. 2, Feb. 2018, pp. 363–75. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Q. Wu, Y. Zeng, and R. Zhang, “Joint Trajectory and Communication Design for Multi-UAV Enabled Wireless Networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, Mar. 2018. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] D. Yang et al., “Energy Tradeoff in Ground-to-UAV Communication Via Trajectory Design,” IEEE Trans. Vehic. Tech., vol. 67, no. 7, July 2018, pp. 6721–26. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] N. Ahmed, S. S. Kanhere, and S. Jha, “On the Importance of Link Characterization for Aerial Wireless Sensor Networks,” IEEE Commun. Mag., vol. 54, no. 5, May 2016, pp. 52–57. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] J. Xu, Y. Zeng, and R. Zhang, “UAV-Enabled Wireless Power Transfer: Trajectory Design and Energy Optimization,” IEEE Trans. Wireless Commun., vol. 17, no. 8, Aug. 2018, pp. 5092–5106. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                647,
+                395,
+                934
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] F. Cheng et al., “UAV Trajectory Optimization for Data Offloading at the Edge of Multiple Cells,” IEEE Trans. Vehic. Tech., vol. 67, no. 7, July 2018, pp. 6732–36. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Q. Wu, J. Xu, and R. Zhang, “Capacity Characterization of UAV-Enabled Two-User Broadcast Channel,” IEEE JSAC, to appear. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Y. Chen et al., “Multiple UAVs as Relays: Multi-Hop Single Link Versus Multiple Dual-Hop Links,” IEEE Trans. Wireless Commun., vol. 17, no. 9, Sept. 2018, pp. 6348–59. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] H. Menouar et al., “UAV-Enabled Intelligent Transportation Systems for the Smart City: Applications and Challenges,” IEEE Commun. Mag., vol. 55, no. 3, Mar. 2017, pp. 22–28. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] M. Erdelj and E. Natalizio, “UAV-Assisted Disaster Management: Applications and Open Issues,” Proc. ICNC’ 16, Kauai, HI, Feb. 2016, pp. 1–5. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] K. Mase and H. Okada, “Message Communication System Using Unmanned Aerial Vehicles Under Large-Scale Disaster Environments,” Proc. IEEE PIMRC ’15, Hong Kong, China, Aug. 2015, pp. 2171–76. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] E. Christy et al., “Optimum UAV Flying Path for Device-To-Device Communications in Disaster Area,” Proc. ICSigSys ’16, Sanur, Indonesia, May 2017, pp. 318–22. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                34,
+                755,
+                264
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Bi ogra phi es "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                554,
+                267,
+                619,
+                282
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nan Zhao [SM] (zhaonan@dlut.edu.cn) is an associate professor at Dalian University of Technology, China. He received his Ph.D. degree in information and communication engineering in 2011 from Harbin Institute of Technology, China. He received the IEEE Communications Society Asia Pacific Board Outstanding Young Researcher Award in 2018. He is an Editor for IEEE Transactions on Green Communications and Networking. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                282,
+                753,
+                355
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Weidan g Lu [M] (luweid@zjut.edu.cn) is an associate professor with the College of Information Engineering at Zhejiang University of Technology, Hangzhou, China. He was a visiting scholar with Nanyang Technology University, Singapore, the Chinese University of Hong Kong, China, and Southern University of Science and Technology, China. His research interests include SWIPT, WSNs, and cooperative communications. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                361,
+                753,
+                434
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Min Shen g [SM] (msheng@mail.xidian.edu.cn) received her M.S. and Ph.D. degrees in communication and information systems from Xidian University in 2000 and 2004, respectively. She is currently a full professor at the State Key Laboratory of Integrated Service Networks, Xidian University. Her general research interests include mobile ad hoc networks, 5G mobile communication systems, and satellite communications networks. She was awarded as a Distinguished Young Researcher by NSFC and a Changjiang Scholar by the Ministry of Education, China, respectively. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                442,
+                753,
+                537
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Yun fei Chen [SM] (Yunfei.Chen@warwick.ac.uk) received his B.E. and M.E. degrees in electronics engineering from Shanghai Jiaotong University, P.R.China, in 1998 and 2001, respectively. He received his Ph.D. degree from the University of Alberta in 2006. He is currently working as an associate professor at the University of Warwick, United Kingdom. His research interests include wireless communications, cognitive radios, wireless relaying, and energy harvesting. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                544,
+                753,
+                629
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Jie Tan g [SM] (eejtang@scut.edu.cn) received his B.Eng. degree from South China University of Technology in 2008, his M.Sc. degree from the University of Bristol in 2009, and his Ph.D. degree from Loughborough University in 2012. He is currently an associate professor at South China University of Technology. His research interests include green communications, NOMA, 5G networks, SWIPT, heterogeneous networks, cognitive radio, and D2D communications. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                636,
+                753,
+                719
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "F. Ric har d Yu [F] (richard.yu@carleton.ca) is a professor at Carleton University, Canada. His research interests include connected/autonomous vehicles, security, and wireless. He serves on the Editorial Boards of several journals, including Co-Editor-in-Chief of Ad Hoc & Sensor Wireless Networks, Lead Series Editor for IEEE Transactions on Vehicular Technology, and Area Editor for IEEE Communications Surveys & Tutorials and IEEE Transactions on Green Communications and Networking, He is a Distinguished Lecturer and the Vice President (Membership) of the IEEE Vehicular Technology Society. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                728,
+                753,
+                833
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Kai-Kit Won g [F] (kai-kit.wong@ucl.ac.uk) received his B.Eng., M.Phil., and Ph.D. degrees, all in electrical and electronic engineering, from Hong Kong University of Science and Technology in 1996, 1998, and 2001, respectively. He is Chair in Wireless Communications at the Department of Electronic and Electrical Engineering, University College London, United Kingdom. He is a Senior Editor for IEEE Communications Letters and IEEE Wireless Communications Letters and also an Area Editor for IEEE Transactions on Wireless Communications. "
+                    }
+                ]
+            },
+            "bbox": [
+                419,
+                842,
+                753,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Energy supply always remains a key challenge for UAV communication due to the battery limitation, especially for the disasters, in which it is difficult to provide stable energy supply. This challenge can be solved by energy harvesting, such as solar energy, however, it will become invalid during night time. "
+                    }
+                ]
+            },
+            "bbox": [
+                780,
+                35,
+                931,
+                250
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE Wireless Communications • February 2019 "
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                964,
+                328,
+                978
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": []
+            },
+            "bbox": [
+                917,
+                965,
+                929,
+                976
+            ]
+        }
+    ]
+]

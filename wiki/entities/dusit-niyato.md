@@ -21,6 +21,7 @@ related:
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[huang-2025-dual-aav-maritime-secure-cb]]"
   - "[[yang-2024-taco-human-digital-twin-edge]]"
+  - "[[zheng-2024-recmop-uav-cb]]"
 created: 2026-05-29
 updated: 2026-06-01
 ---
@@ -29,7 +30,7 @@ updated: 2026-06-01
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 18 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
+The most frequently recurring author in the corpus, co-authoring 19 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -49,6 +50,7 @@ The most frequently recurring author in the corpus, co-authoring 18 sources span
 - [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.
 - [[huang-2025-dual-aav-maritime-secure-cb]] — dual AAV cluster-assisted maritime secure communications via collaborative beamforming.
 - [[yang-2024-taco-human-digital-twin-edge]] — two-timescale accuracy-aware online optimization for human-digital-twin deployment at the edge (TACO).
+- [[zheng-2024-recmop-uav-cb]] — reliable and energy-efficient UAV collaborative beamforming (RECMOP; IMOGSA).
 
 ## Contributions to this wiki
 

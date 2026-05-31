@@ -1,0 +1,4223 @@
+[
+    {
+        "type": "text",
+        "text": "Reliable and Energy-Efficient Communications via Collaborative Beamforming for UAV Networks ",
+        "text_level": 1,
+        "bbox": [
+            89,
+            71,
+            908,
+            140
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Xiaoya Zheng , Geng Sun , Senior Member, IEEE, Jiahui Li , Student Member, IEEE, Shuang Liang , Qingqing Wu , Senior Member, IEEE, Minghao Yin , Member, IEEE, Dusit Niyato , Fellow, IEEE, and Victor C. M. Leung , Life Fellow, IEEE ",
+        "bbox": [
+            104,
+            154,
+            890,
+            208
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract— Unmanned aerial vehicles (UAVs) have been demonstrated to be a prominent component for wireless communications. In this work, we consider an emergency communication scenario wherein a UAV-based relay system collects data from ground users, and then uses different UAV-enabled virtual antenna arrays (UVAAs) to transmit the collected data to several remote base stations (BSs) via collaborative beamforming (CB). However, several adjacent aerial users (AUs) are carrying out other missions at the same time, which may be interfered by the signal transmitted by the UVAAs. Thus, we formulate a reliable and energy-efficient communication multi-objective optimization problem (RECMOP) to jointly maximize the minimum receiving signal-to-noise ratio (SNR) of the BSs, minimize the maximum average receiving SNR of the AUs, and minimize the propulsion power consumption of the UAVs, so that diminishing the energy cost while enhancing the system performance. The formulated ",
+        "bbox": [
+            73,
+            256,
+            491,
+            460
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received 3 December 2023; revised 12 March 2024; accepted 3 May 2024. Date of publication 21 May 2024; date of current version 11 October 2024. This work was supported in part by the National Natural Science Foundation of China under Grant 62272194 and Grant 62172186; in part by the Science and Technology Development Plan Project of Jilin Province under Grant 20230201087GX; in part by the National Research Foundation, Singapore; in part by the Infocomm Media Development Authority through its Future Communications Research and Development Programme; in part by the Defence Science Organisation (DSO) National Laboratories through the AI Singapore Programme (AISG) under Award AISG2-RP-2020-019 and Award FCP-ASTAR-TG-2022-003; and in part by Singapore Ministry of Education (MOE) Tier 1 under Grant RG87/22. An earlier version of this paper was presented at the 2022 IEEE Symposium on Computers and Communications (ISCC) [DOI: 10.1109/ISCC55528.2022.9912883]. The associate editor coordinating the review of this article and approving it for publication was A. Schmeink. (Corresponding authors: Geng Sun; Jiahui Li.) ",
+        "bbox": [
+            73,
+            476,
+            491,
+            659
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Xiaoya Zheng and Jiahui Li are with the College of Computer Science and Technology, Jilin University, Changchun 130012, China (e-mail: xiaoya257248@foxmail.com; lijiahui0803@foxmail.com). ",
+        "bbox": [
+            73,
+            657,
+            488,
+            691
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Geng Sun is with the College of Computer Science and Technology and the Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University, Changchun 130012, China, and also with the College of Computing and Data Science, Nanyang Technological University, Singapore 639798 (e-mail: sungeng@jlu.edu.cn). ",
+        "bbox": [
+            73,
+            691,
+            491,
+            750
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Shuang Liang and Minghao Yin are with the School of Information Science and Technology, Northeast Normal University, Changchun 130117, China (e-mail: liangshuang@nenu.edu.cn; ymh@nenu.edu.cn). ",
+        "bbox": [
+            73,
+            750,
+            491,
+            782
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Qingqing Wu is with the Department of Electronic Engineering, Shanghai Jiao Tong University, Shanghai 200240, China (e-mail: qingqingwu@sjtu.edu.cn). ",
+        "bbox": [
+            73,
+            782,
+            491,
+            816
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Dusit Niyato is with the College of Computing and Data Science, Nanyang Technological University, Singapore 639798 (e-mail: dniyato@ntu.edu.sg). ",
+        "bbox": [
+            73,
+            816,
+            491,
+            840
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Victor C. M. Leung is with the College of Computer Science and Software Engineering, Shenzhen University, Shenzhen 518060, China, and also with the Department of Electrical and Computer Engineering, The University of British Columbia, Vancouver, BC V6T 1Z4, Canada (e-mail: vleung@ieee.org). ",
+        "bbox": [
+            73,
+            839,
+            491,
+            885
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Color versions of one or more figures in this article are available at https://doi.org/10.1109/TWC.2024.3400523. ",
+        "bbox": [
+            73,
+            885,
+            491,
+            907
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TWC.2024.3400523 ",
+        "bbox": [
+            86,
+            907,
+            377,
+            919
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "RECMOP is intricate since it is proven to be NP-hard and non-convex. Therefore, an improved multi-objective gravitational search algorithm (IMOGSA) with several specific designs is proposed to handle the formulated problem. Simulation results manifest that the proposed IMOGSA can effectively solve the formulated RECMOP, and it outperforms other benchmarks in both smaller and larger scale UAV networks. Moreover, extended simulation demonstrates the robustness of the proposed CB-based approach under several unexpected circumstances. ",
+        "bbox": [
+            501,
+            256,
+            921,
+            372
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms— UAVs, virtual antenna array, collaborative beamforming, multi-objective optimization, reliable communication. ",
+        "bbox": [
+            503,
+            377,
+            921,
+            415
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            645,
+            433,
+            779,
+            446
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "EMERGENCY communication network is urgent to beestablished when the terrestrial infrastructure malfunc- /established when the terrestrial infrastructure malfunctions, especially for the hard to reach areas [2], [3]. Due to the inherent characteristics of agile mobility, cost-effective, maneuverability and flexible deployment, the enthusiasm for dispatching unmammed aerial vehicles (UAVs) in emergency communications has skyrocketed since UAVs can provide reliable and efficient wireless communication services [4], [5], [6]. In conventional multiple UAVs-assisted cooperative transmission for emergency communications, UAVs are individually partitioned, with each UAV independently transmitting its own data. However, this mechanism has certain limitations, i.e., the UAVs are unable to communicate with the remote users due to the limited onboard resources of a UAV. ",
+        "bbox": [
+            501,
+            450,
+            921,
+            662
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Collaborative beamforming (CB) has been demonstrated to be a feasible method in addressing the problems above [7]. To be specific, several UAVs can form a UAV-enabled virtual antenna array (UVAA) and adopt CB to transmit data to the legitimate base station (BS) directly. The advantages of applying CB are presented as follows. First, an N 2 fold gain in the received power at the receiver will be induced via N array elements. Accordingly, a beampattern with a high-gain main lobe pointing at the target receiver will be formed, then the long-distance transmission can be achieved. Moreover, due to the high gain, the data transmission task between UAVs and the receiver can be completed in a shorter time [8], [9]. Second, the participating UAVs are merely required to slightly adjust respective excitation current weight and placement, which will enhance the energy efficiency of UAVs. However, there still has a major issue that need to be tackled when applying CB in UAV networks. That is, the sidelobe levels (SLLs) ",
+        "bbox": [
+            501,
+            662,
+            921,
+            920
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            76,
+            35,
+            560,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "13235 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "1536-1276 © 2024 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            199,
+            925,
+            795,
+            936
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            290,
+            936,
+            705,
+            949
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "of the UVAA system will interfere with the adjacent aerial users (AUs). Specifically, in some scenarios, multiple UAVs are deployed in the sky and the central controller chooses the appropriate UAVs to execute missions [10]. In this case, the other unselected UAVs maintain hovering to save energy and wait for other commands from the controller, which will inevitably receive the signal that is transmitted by the selected UAVs. In other words, the unselected UAVs will be interfered. ",
+        "bbox": [
+            73,
+            70,
+            491,
+            191
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Performing an appropriate UVAA can obtain a beam pattern with a high-gain mainlobe and inferior low-gain sidelobes, which will significantly improve the signal strength to the legitimate BSs and reduce the interference caused to the AUs, respectively. However, there are several factors that will influence performance of the considered UVAA system. Specifically, the UAVs can move to appropriate locations to improve the directivity of the mainlobe and suppress the SLLs. Moreover, the excitation current weight of each participating UAV is a critical factor that will impact the performance of the UVAA system. Thus, how to select the suitable locations and excitation current weights of UAVs is a critical issue. ",
+        "bbox": [
+            73,
+            191,
+            491,
+            372
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we apply CB to achieve reliable and energy-efficient communications for UAV networks. Accordingly, a multi-objective optimization problem is formulated to enhance the communication performance of the UVAA system and reduce the propulsion power consumption of all the participating UAVs. The main contributions of this work are listed as follows: ",
+        "bbox": [
+            73,
+            373,
+            490,
+            477
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• CB-based UVAA System and Multi-objective Optimization Problem Formulation: We consider an emergency communication scenario where a UAV-based relay system harvests data from ground users and then performs different UVAAs to send the data to several BSs via CB. At the same time, several AUs that are carrying out other assignments may be interfered by the transmission process between the UVAA system and BSs. Then, we formulate a reliable and energy-efficient communication multi-objective optimization problem (RECMOP) to maximize the minimum receiving signal-to-noise ratio (SNR) of the BSs, minimize the maximum average receiving SNR of the AUs, and minimize the propulsion power consumption of all the UAVs. ",
+        "bbox": [
+            89,
+            479,
+            491,
+            691
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Meta-heuristic Algorithm: We propose an improved multi-objective gravitational search algorithm (IMOGSA) with several specific designs to solve the formulated RECMOP. Specifically, IMOGSA adopts quasiopposition based learning (QBL) strategy and discrete solution update strategy to enhance the quality of the initial solutions and deal with the discrete dimensions of solutions, respectively. Moreover, the proposed algorithm introduces an archive optimization method to improve the quality of solutions in the archive. ",
+        "bbox": [
+            91,
+            691,
+            491,
+            842
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Performance Analysis: Simulation results validate the effectiveness of the proposed IMOGSA in dealing with the formulated RECMOP. Moreover importantly, the proposed IMOGSA outperforms other benchmarks in both smaller and larger scale UAV networks. In addition, the performance analysis of the UVAA system under several unexpected circumstances is conducted, and then ",
+        "bbox": [
+            91,
+            843,
+            491,
+            949
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "the robustness of the proposed CB-based approach is shown. ",
+        "bbox": [
+            535,
+            70,
+            919,
+            99
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The rest structure of this paper is organized as follows. Section II reviews several related works. Section III presents the models and preliminaries. Section IV formulates the RECMOP. Section V proposes the algorithm. Section VI shows the simulation results and Section VII concludes this work. ",
+        "bbox": [
+            503,
+            104,
+            921,
+            193
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORK ",
+        "text_level": 1,
+        "bbox": [
+            638,
+            212,
+            785,
+            226
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we consider to achieve reliable and energy-efficient communications of the UVAA system via using CB, and several related works are presented as follows. Moreover, the main comparisons between related works and this work are presented in Table I, and the details are discussed as follows. ",
+        "bbox": [
+            503,
+            232,
+            921,
+            321
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. UAV-Assisted Emergency Communications ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            344,
+            812,
+            358
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Some previous works have focused on deploying UAV to assist emergency communications. For example, Hu et al. [11] investigated the network recovery of disaster area based on the assistance of UAV and achieved the maximization of the uplink throughput through jointly optimizing the height of UAV, power control and bandwidth allocation. Huang et al. [12] considered the secure transmission in the emergency scenario and proposed a framework for UAV path designing to facilitate the data transmission and collection. Jiang et al. [13] studied the extension of life cycle with respect to medical-emergency facilities, and proposed a mechanism to deploy UAV to charge the wearable devices wirelessly. Lin et al. [14] considered to deploy a UAV as an aerial BS and attempted to seek out the optimal path to serve as many users as possible, subject to the limited battery capacity. Feng et al. [15] deployed UAVs to achieve wireless power transfer for Internet of Things (IoT) devices in emergency communication scenario. Zhang et al. [16] constructed a UAV-enabled emergency communication network wherein a UAV is deployed as mobile BS to achieve information collection from ground users. Moreover, Shah et al. [17] investigated UAV-assisted mobile edge computing to assist the emergency communication in disaster areas. ",
+        "bbox": [
+            501,
+            363,
+            921,
+            710
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "However, these aforementioned works concentrated on the improvement of communication performance, while none of them considered the energy consumption. Moreover, most of them only considered to dispatch a single UAV to assist the post-disaster relief, which is contrary to the practical scenarios. ",
+        "bbox": [
+            503,
+            710,
+            921,
+            787
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "B. UAV-Based Relay System ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            808,
+            697,
+            823
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "There are several works that deploy the UAV-based relay system to facilitate the wireless communications between the source node and destination node. For example, Zeng et al. [18] deployed the UAV as a mobile relay to assist the wireless communication, and studied the throughput maximization problem under the mobility constraint. Zhang et al. [19] regarded the UAV as an amplify-andforward relay and aimed to minimize the outage probability of the relay node through designing the trajectory and transmit power of UAV. Wang et al. [20] investigated the secrecy rate maximization problem in the presence of an eavesdropper, and developed an iterative algorithm to handle the aforementioned problem. Wang et al. [21] deployed a UAV to forward the transmitted data from the cell-edge users towards the cellular BS. Wei et al. [22] integrated the intelligent reflecting surface (IRS) with UAV to assist the communications between the access point and multiple users. Su et al. [23] considered an IRS-UAV architecture to connect the BS and the user. ",
+        "bbox": [
+            501,
+            827,
+            921,
+            949
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "13236 ",
+        "bbox": [
+            76,
+            36,
+            109,
+            45
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            436,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/c3a6efa73457a882fd996bfb70c77ad5cb621eee4bb9b0adbe5a795a7e3d4403.jpg",
+        "table_caption": [
+            "TABLE I COMPARISONS BETWEEN RELATED WORKS WITH THIS WORK "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>Considered scenario</td><td>Relay strategies</td><td colspan=\"2\">Optimization objective</td><td colspan=\"2\">Optimization variables</td><td>Method</td></tr><tr><td>Reference</td><td>Emergency communications</td><td>Multiple UAVs-based relay communications</td><td>SNR</td><td>Energy</td><td>UAV location</td><td>Excitation current weight</td><td>GSA, QBL strategy, Discrete solution update strategy, Archive optimization method</td></tr><tr><td>[11]</td><td>√</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td></tr><tr><td>[12]</td><td>√</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td></tr><tr><td>[13]</td><td>√</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td></tr><tr><td>[16]</td><td>√</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td></tr><tr><td>[24]</td><td>×</td><td>√</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td></tr><tr><td>[25]</td><td>√</td><td>√</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td></tr><tr><td>[27]</td><td>×</td><td>×</td><td>√</td><td>×</td><td>√</td><td>×</td><td>×</td></tr><tr><td>[28]</td><td>×</td><td>×</td><td>√</td><td>×</td><td>√</td><td>×</td><td>×</td></tr><tr><td>[29]</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td><td>×</td><td>×</td></tr><tr><td>[31]</td><td>×</td><td>√</td><td>√</td><td>×</td><td>×</td><td>×</td><td>×</td></tr><tr><td>[32]</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td><td>×</td></tr><tr><td>[34]</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td><td>×</td></tr><tr><td>[35]</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td><td>×</td></tr><tr><td>[38]</td><td>×</td><td>×</td><td>×</td><td>√</td><td>√</td><td>×</td><td>×</td></tr><tr><td>[40]</td><td>×</td><td>×</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td></tr><tr><td>This work</td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td></tr></table>",
+        "bbox": [
+            94,
+            103,
+            903,
+            359
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            386,
+            491,
+            537
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "However, these aforementioned works considered the single UAV-based relay systems, which implies that they are incapable of handling the long-transmissions since the transmit power of a single UAV is limited. ",
+        "bbox": [
+            73,
+            537,
+            490,
+            598
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Several works investigated the multiple UAVs-enabled relay systems. For example, Khallaf et al. [24] dispatched UAVs to establish a free-space optical communication link between a source and a destination. Yang et al. [25] considered a disaster scenario and deployed a UAV-based ad hoc networks over the affected area to provide communication services. Moreover, Yin et al. [26] proposed a planning scheme for relay UAVs to enable the data transmission between UAVs and ground device. ",
+        "bbox": [
+            73,
+            598,
+            491,
+            733
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "However, the locations of UAVs are scattered in the abovementioned works, which means that the completion time of the task will be inevitably extended. ",
+        "bbox": [
+            73,
+            734,
+            491,
+            780
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "C. UAV Communications Optimizations ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            796,
+            344,
+            811
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "There are several works which regard the SNR or the propulsion power consumption as an effective metric to evaluate the performance of a communication network. ",
+        "bbox": [
+            73,
+            811,
+            490,
+            858
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Some existing works have considered to maximize the SNR of the system. For example, Lu et al. [27] proposed to adopt aerial intelligent reflecting surface (AIRS) which has high deployment flexibility and wider reflection of signal to assist wireless networks, and they maximized the worst-case SNR through obtaining the optimal beamforming of the source node, the deployment and beamforming of the AIRS. Sabzehali et al. [28] considered a mmWave-based UAV communication scenario, and investigated the SNR maximization through determining the optimal 3D deployment and the orientation of UAVs. Park et al. [29] formulated an optimization problem to maximize the lower bound of the SNR in the downlink distributed antenna systems. Bushnaq et al. [30] studied a tethered UAV and regular UAV-assisted cellular traffic offloading scenario, and proposed a user association mechanism to maximize the end-to-end SNR. Then, they obtained the SNR coverage probability which refers to the probability that the received SNR is larger than a given threshold. Moreover, Sharma et al. [31] investigated a hybrid satellite-terrestrial network in which several UAV relays assist the wireless communications, and they evaluated the performance of SNR outage probability based on appropriate UAV relay selection. ",
+        "bbox": [
+            73,
+            858,
+            491,
+            949
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            386,
+            921,
+            643
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Some existing works have considered to optimize the propulsion power consumption. For example, Cai et al. [32] maximized the energy efficiency by simultaneously optimizing the velocity, user scheduling, trajectory and transmit power. Sambo et al. [33] designed the UAV trajectory for the sake of minimizing the energy consumption. Moreover, Zeng et al. [34] derived the propulsion power consumption model firstly, and then achieved the minimization of propulsion power consumption through cooperatively designing the UAV trajectory, the communication time and the completion time of the whole task. ",
+        "bbox": [
+            503,
+            643,
+            921,
+            809
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "However, the aforementioned works only focused on single-objective optimization. In practical scenarios, multiple optimization objectives need to be jointly considered, i.e., the SNR and propulsion power consumption of UAVs are required to be simultaneously optimized. ",
+        "bbox": [
+            503,
+            810,
+            921,
+            886
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "D. Schemes for Solving Optimization Problems ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            898,
+            826,
+            914
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Various schemes are used to handle the optimization problems in the domain of UAV communications and networks. ",
+        "bbox": [
+            503,
+            917,
+            921,
+            948
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            76,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "13237 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "For example, Zhang et al. [35] deployed a UAV to execute data collection task for IoT devices, aiming to minimize the age of information (AoI) and energy cost. Then, they adopted weighted factors to transform the multi-objective optimization problem into a single-objective optimization problem. However, it is challenging to find an applicable mechanism for weight assignment since the objectives are conflicted with each other. Deng et al. [36] investigated the UAV-enabled covert communications, and adopted convex optimization to deal with the formulated problem to improve the covertness of the system. However, convex optimization needs to transform the optimization problem. Dai et al. [37] adopted deep reinforcement learning (DRL) to joint design the user association and trajectory in the multi-UAV networks. However, DRL takes a lot of time to train the model. ",
+        "bbox": [
+            73,
+            70,
+            491,
+            296
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Moreover, the meta-heuristic algorithms are also widely used in tackling optimization problem. For example, Liang et al. [38] deployed UAVs to execute wireless power transfer, and formulated an optimization problem to enhance the charging efficiency and diminish the energy consumption of UAVs via optimizing the placement of UAVs. Then, they proposed an improved firefly algorithm to deal with the formulated problem. Roberge et al. [39] used the genetic algorithm and particle swarm optimization to design the flight path of UAV, given the characteristics of the UAV and the complexity of the environment. Moreover, Pham et al. [40] proposed to adopt the Harris hawks optimization algorithm to maximize the sum rate of ground users. ",
+        "bbox": [
+            73,
+            297,
+            491,
+            494
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "However, the abovementioned meta-heuristic algorithms are proposed to deal with the problems whose solutions only contain continuous dimensions, which means that they are unable to deal with the problems with mixed decision variables. ",
+        "bbox": [
+            73,
+            494,
+            491,
+            555
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Accordingly, a multi-objective optimization problem is formulated to improve the performance of the communication network. Then, a meta-heuristic algorithm is proposed to handle the formulated problem. ",
+        "bbox": [
+            73,
+            555,
+            491,
+            614
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "III. MODELS AND PRELIMINARIES ",
+        "text_level": 1,
+        "bbox": [
+            158,
+            625,
+            406,
+            638
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. System Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            643,
+            194,
+            657
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "As shown in Fig. 1, we consider an emergency communication scenario, where a UAV-based relay system consists several rotary-wing UAVs denoted as $\\mathcal { U } = \\{ 1 , 2 , . . . , N _ { U } \\}$ 一 needs to harvest data from ground users in a monitor area, and then transmits the collected data to several legitimate BSs denoted as $\\ B = \\{ 1 , \\ 2 , \\ . . . , \\ N _ { B S } \\}$ . During the transmission process above, several neighbouring AUs denoted as $\\mathcal { A } \\mathcal { U } = \\{ 1$ , $2 , \\ldots , N _ { A U } \\}$ are performing other assignments, which will be interfered by the signal transmitted by the UAVs. The AUs can be detected by the UAVs equipped with cameras or radars. Moreover, the locations of the BSs and AUs are defined to be fixed and known. ",
+        "bbox": [
+            73,
+            662,
+            491,
+            840
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In the considered network, the UAV-based relay system will cooperatively perform different UVAAs to transmit data to several BSs by adopting CB. Mathematically, a three-dimensional (3D) Cartesian coordinate system is adopted wherein the locations of the ith UAV, the jth BS, and the kth AU are denoted by (xUi , yUi , zUi ), (xBSj $( x _ { i } ^ { U } , y _ { i } ^ { U } , z _ { i } ^ { U } ) , ( x _ { j } ^ { B S } , \\mathcal { \\bar { Y } } _ { j } ^ { B S } , 0 )$ and $( x _ { k } ^ { A U } , y _ { k } ^ { A U } , z _ { k } ^ { A U } )$ , zAU ), respectively. ",
+        "bbox": [
+            73,
+            843,
+            491,
+            949
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/e3fc683e94e1501f09851235dbec29d65198b40f949927093a9e68b340b692ca.jpg",
+        "image_caption": [
+            "Fig. 1. Sketch map of a UVAA system in emergency communication scenario. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    subgraph Mainlobe\n        A[\"Mainlobe\"] --> B[\"UVAA\"]\n        A --> C[\"Mainlobe\"]\n        D[\"Mainlobe\"] --> E[\"BS\"]\n        F[\"BS\"] --> G[\"Mainlobe\"]\n    end\n    subgraph Monitoring Area\n        H[\"Monitor area\"] --> I[\"1st AU\"]\n        H --> J[\"2nd AU\"]\n        H --> K[\"3rd AU\"]\n        H --> L[\"4th AU\"]\n        H --> M[\"5th AU\"]\n        H --> N[\"6th AU\"]\n        H --> O[\"7th AU\"]\n        H --> P[\"8th AU\"]\n        H --> Q[\"9th AU\"]\n        H --> R[\"10th AU\"]\n        H --> S[\"11th AU\"]\n        H --> T[\"12th AU\"]\n        H --> U[\"13th AU\"]\n        H --> V[\"14th AU\"]\n        H --> W[\"15th AU\"]\n        H --> X[\"16th AU\"]\n        H --> Y[\"17th AU\"]\n        H --> Z[\"18th AU\"]\n        H --> AA[\"19th AU\"]\n        H --> AB[\"20th AU\"]\n    end\n    subgraph Monitoring Area\n        AC[\"Monitor area\"]\n    end\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            509,
+            68,
+            916,
+            237
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Remark 1: Once upon the collected data of a UAV reaches the upper limit or a UAV generates emergency data, the UAV needs to transmit the collected data to different remote BSs. Note that in certain scenarios, the BSs are not capable of establishing stable communication links with each other due to the long distance or other factors. Moreover, the collected data may need to be transmitted to different BSs for data backup or consistency check. Therefore, the UAVs are required to send the collected data to all the different remote BSs. □ ",
+        "bbox": [
+            501,
+            273,
+            921,
+            407
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "1) Array Factor of the UVAA System: The array factor (AF) for characterizing the beam pattern of the UVAA system can be expressed as follows [41]: ",
+        "bbox": [
+            503,
+            409,
+            921,
+            455
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nF (\\theta , \\phi) = \\sum_ {i = 1} ^ {N _ {U}} I _ {i} e ^ {i _ {u} [ k _ {c} (x _ {i} ^ {U} \\sin \\theta \\cos \\phi + y _ {i} ^ {U} \\sin \\theta \\sin \\phi + z _ {i} ^ {U} \\cos \\theta) ]}, \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            459,
+            921,
+            518
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $I _ { i }$ is the excitation current weight of the ith $\\mathrm { U A V } , i _ { u }$ represents the imaginary unit, $k _ { c } = 2 \\pi / \\lambda$ refers to the phase constant, and λ is the wavelength. Moreover, $\\theta \\in [ 0 , \\pi ]$ and $\\phi \\in [ - \\pi , \\pi ]$ are the elevation and azimuth angles, respectively. ",
+        "bbox": [
+            503,
+            525,
+            919,
+            585
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "2) Channel Model: Two channel models are considered in this work. Specifically, the communication between the UVAA system and AUs belongs to air-to-air (A2A) communication, which can be the line-of-sight (LoS) model. Moreover, to model the channel between the UVAA system and BSs which can be regarded as air-to-ground (A2G) propagation channel, the probabilistic LoS and non-LoS (NLoS) models are required to be considered simultaneously. ",
+        "bbox": [
+            503,
+            585,
+            921,
+            705
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The path loss between the UVAA system u and the receiver r is given as follows [42]: ",
+        "bbox": [
+            503,
+            705,
+            921,
+            736
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {u, r} = \\left\\{ \\begin{array}{l l} (K _ {o} d _ {u, r}) ^ {\\alpha} \\mu_ {L o S}, & \\text { LoS   link }, \\\\ (K _ {o} d _ {u, r}) ^ {\\alpha} \\mu_ {N L o S}, & \\text { NLoS   link }, \\end{array} \\right. \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            560,
+            741,
+            921,
+            799
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $K _ { o } = 4 \\pi f / c , f$ denotes the carrier frequency and c is the speed of light, $d _ { u , r }$ is the distance between the center of the UVAA system u and the receiver r. Note that the receiver r can be an AU or a remote BS. Moreover, α represents the path loss exponent, $\\mu _ { L o S }$ and $\\mu _ {  { N }  { L }  { o } S }$ are the attenuation factors of LoS and NLoS communication links, respectively. ",
+        "bbox": [
+            501,
+            805,
+            921,
+            896
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Accordingly, the path loss of the A2A channel from the UVAA system u to the kth AU is given as follows [42]: ",
+        "bbox": [
+            503,
+            896,
+            921,
+            926
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {u, k} ^ {A 2 A} = (K _ {o} d _ {u, k}) ^ {\\alpha} \\mu_ {L o S}. \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            624,
+            931,
+            921,
+            950
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "13238 ",
+        "bbox": [
+            76,
+            36,
+            109,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            436,
+            35,
+            921,
+            47
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "As for the A2G channel, the probability of having the LoS environment when the UVAA system u transmits data to the jth BS is as follows [43]: ",
+        "bbox": [
+            73,
+            70,
+            491,
+            116
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP _ {u, j} ^ {L o S} (\\theta_ {u, j}) = \\frac {1}{1 + a \\exp (- b (\\theta_ {u , j} - a))}, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            127,
+            491,
+            161
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where a and b are the modeling parameters, $\\theta _ { u , j }$ represents the elevation angle between the UVAA system u and the jth BS, which is gained by $\\begin{array} { r } { \\theta _ { u , j } = \\frac { 1 8 0 } { \\pi } \\sin ^ { - 1 } \\left( \\frac { \\triangle z _ { u , j } } { d _ { u , j } } \\right) } \\end{array}$ ( △zu,jd ), wherein △zu,j u,j $\\triangle z _ { u , j }$ and $d _ { u , j }$ denote the vertical and horizontal distance between the UVAA system u and the jth receiver BS, respectively. Based on this, the probability of having the NLoS environment between the UVAA system u and the jth receiver BS can be described as follows: ",
+        "bbox": [
+            73,
+            171,
+            491,
+            292
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP _ {u, j} ^ {N L o S} (\\theta_ {u, j}) = 1 - P _ {u, j} ^ {L o S} (\\theta_ {u, j}). \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            176,
+            305,
+            491,
+            325
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Accordingly, the average path loss of the A2G channel from the UVAA system u to the jth BS is given as follows [43]: ",
+        "bbox": [
+            73,
+            337,
+            488,
+            368
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {u, j} ^ {A 2 G} = (K _ {o} d _ {u, j}) ^ {\\alpha} [ \\mu_ {L o S} P _ {u, j} ^ {L o S} + \\mu_ {N L o S} P _ {u, j} ^ {N L o S} ]. \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            114,
+            378,
+            490,
+            401
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3) SNR: SNR is a metric which can measure the signal strength and communication reliability by comparing the level of the desired signal to the level of noise. Specifically, the SNR from the UVAA system u to the jth BS, $S N R _ { u , j }$ , and that from the UVAA system u to the kth AU, $S N R _ { u , k }$ , are calculated as follows [44]: ",
+        "bbox": [
+            73,
+            412,
+            491,
+            503
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS N R _ {u, j} = 2 0 \\log_ {1 0} \\left(\\frac {P _ {u} G _ {u , j}}{L _ {u , j} ^ {A 2 G} \\sigma^ {2}}\\right), \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            515,
+            490,
+            556
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            73,
+            566,
+            104,
+            580
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS N R _ {u, k} = 2 0 \\log_ {1 0} \\left(\\frac {P _ {u} G _ {u , k}}{L _ {u , k} ^ {A 2 A} \\sigma^ {2}}\\right), \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            592,
+            490,
+            633
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { P _ { u } = \\sum _ { i = 1 } ^ { N _ { U } } I _ { i } ^ { 2 } P _ { t } } \\end{array}$ e transmit power of the whole $I _ { i } ^ { 2 } P _ { t }$ power of the ith UAV and each UAV element has the same maximum transmit power, i.e., $P _ { t } .$ Moreover, $\\sigma ^ { 2 }$ refers to the noise power. In addition, $G _ { u , j }$ and $G _ { u , k }$ represent the gains of the UVAA system u to the jth BS and the kth AU, respectively, which are expressed as follows [45]: ",
+        "bbox": [
+            73,
+            646,
+            491,
+            753
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nG _ {u, j} = \\frac {4 \\pi | F (\\theta_ {u , j} , \\phi_ {u , j}) | ^ {2} w (\\theta_ {u , j} , \\phi_ {u , j}) ^ {2}}{\\int_ {0} ^ {2 \\pi} \\int_ {0} ^ {\\pi} | F (\\theta , \\phi) | ^ {2} w (\\theta , \\phi) ^ {2} \\sin \\theta d \\theta d \\phi} \\eta , \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            119,
+            765,
+            488,
+            804
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            73,
+            814,
+            102,
+            827
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nG _ {u, k} = \\frac {4 \\pi | F (\\theta_ {u , k} , \\phi_ {u , k}) | ^ {2} w (\\theta_ {u , k} , \\phi_ {u , k}) ^ {2}}{\\int_ {0} ^ {2 \\pi} \\int_ {0} ^ {\\pi} | F (\\theta , \\phi) | ^ {2} w (\\theta , \\phi) ^ {2} \\sin \\theta d \\theta d \\phi} \\eta , \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            106,
+            838,
+            488,
+            877
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $( \\theta _ { u , j } , \\phi _ { u , j } )$ and $( \\theta _ { u , k } , \\phi _ { u , k } )$ are the directions of the jth BS and the kth AU, respectively. Moreover, $w ( \\theta , \\phi )$ is the magnitude of the far-field beam pattern of each UAV element and $\\eta \\in [ 0 , 1 ]$ is the antenna array efficiency. ",
+        "bbox": [
+            73,
+            888,
+            491,
+            950
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Propulsion Power Consumption Model of UAV ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            70,
+            844,
+            85
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "For a rotary-wing UAV which flies in a 2D horizontal plane with speed $v ,$ the propulsion power consumption is given as follows [46]: ",
+        "bbox": [
+            503,
+            90,
+            919,
+            135
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} P (v) = P _ {B} (1 + \\frac {3 v ^ {2}}{v _ {t i p} ^ {2}}) + P _ {I} (\\sqrt {1 + \\frac {v ^ {4}}{4 v _ {i v} ^ {4}}} - \\frac {v ^ {2}}{2 v _ {i v} ^ {2}}) ^ {\\frac {1}{2}} \\\\ + \\frac {1}{2} d _ {0} \\rho s A v ^ {3}, \\tag {11} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            142,
+            919,
+            212
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $P _ { B }$ and $P _ { I }$ are the blade profile and induced power in hovering status, respectively. Moreover, $v _ { t i p }$ refers to the tip speed of the rotor blade, $v _ { i v }$ is the mean rotor induced velocity in hovering. In addition, d0, $\\rho ,$ s and A denote the fuselage drag ratio, air density, rotor solidity and rotor disc area, respectively. ",
+        "bbox": [
+            503,
+            215,
+            919,
+            306
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "According to Eq. (11), the propulsion power consumption of a rotary-wing UAV flying in a 3D horizontal plane is presented as follows [46]: ",
+        "bbox": [
+            503,
+            306,
+            921,
+            352
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} E (T) \\approx \\int_ {0} ^ {T} P (v (t)) d t + \\frac {1}{2} m _ {D} (v (T) ^ {2} - v (0) ^ {2}) \\\\ + m _ {D} g (h (T) - h (0)), \\tag {12} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            547,
+            357,
+            919,
+            411
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where T refers to the end time of the flight, $v ( t )$ denotes the instantaneous UAV speed at time $t , m _ { D }$ and g are the mass of UAV and gravitational acceleration, respectively. Moreover, $v ( T )$ and $h ( T )$ represent the speed and height of the UAV at time T , respectively. In addition, v(0) and $h ( 0 )$ are the speed and height of the UAV at the initial moment, respectively. ",
+        "bbox": [
+            503,
+            417,
+            919,
+            508
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Remark 2: In this work, the trajectories of UAVs are not optimized, and each UAV will adopt a strategy of horizontal flight followed by vertical flight. The reasons are briefly listed as follows. First, due to the lack of an accurate 3D energy consumption model for rotary-wing UAVs at present, several existing works suggest to model the oblique flight of a UAV in a 3D space as the horizontal and vertical components [47], [48], [49]. Second, complex flights of UAVs may induce uncertainty to the autonomous flights of rotary-wing UAVs, thus the adopted flight strategy possesses the ability to stabilize the flight process. Note that the collision among UAVs will not occur since the minimum distance between two adjacent UAVs is added into the constraints of the following formulated optimization problem. □ ",
+        "bbox": [
+            503,
+            508,
+            921,
+            720
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "C. Multi-Objective Optimization ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            742,
+            725,
+            757
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Multi-objective optimization problem (MOP) involves more than one objective function that should be optimized simultaneously. Mathematically, an MOP can be formulated as follows [50]: ",
+        "bbox": [
+            503,
+            761,
+            919,
+            821
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {X} F = [ f _ {1} (x), f _ {2} (x), \\dots , f _ {N _ {o}} (x) ], \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            586,
+            830,
+            919,
+            852
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where x is the decision variable, X is a vector which contains all feasible decision variables. Moreover, $N _ { o }$ is the number of objective functions, and $f _ { o } ( x )$ represents the oth objective function. ",
+        "bbox": [
+            503,
+            858,
+            919,
+            916
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Considering the conflicting relationship among the multiple objectives, the definition of Pareto dominance is introduced. ",
+        "bbox": [
+            503,
+            917,
+            921,
+            949
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            75,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "13239 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            960,
+            852,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "chart",
+        "img_path": "images/64eba9d054642c210a2a74921e503d4467eb9ab78766154b50bc7527da23b0a9.jpg",
+        "content": "| Point | f1(x) | f2(x) |\n|-------|-------|-------|\n| x1    | 0.5   | 0.8   |\n| x2    | 0.6   | 0.7   |\n| x3    | 0.4   | 0.6   |\n| x4    | 0.3   | 0.5   |\n| xn    | 0.2   | 0.4   |",
+        "chart_caption": [
+            "Fig. 2. Solution distribution of a bi-objective optimization problem. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            135,
+            70,
+            433,
+            200
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "To be specific, $x _ { 1 }$ is defined to dominate $x _ { 2 }$ if and only if $\\forall o \\in N _ { o } , f _ { o } ( x _ { 1 } ) \\leq f _ { o } ( x _ { 2 } )$ and $\\exists o \\in N _ { o } , f _ { o } ( x _ { 1 } ) < f _ { o } ( x _ { 2 } )$ . Accordingly, the solution which is not dominated by any other solutions is called Pareto optimal solution. Through taking the bi-objective minimization optimization problem as an example, Fig. 2 demonstrates the domination relationship among solutions in a more intuitive way. As can be seen, $x _ { 3 }$ dominates $x _ { 2 }$ . Moreover, $X ^ { * } = \\{ x _ { 1 } , x _ { 3 } , x _ { 4 } , \\ldots , x _ { n } \\}$ is a set of Pareto optimal solutions. ",
+        "bbox": [
+            73,
+            255,
+            493,
+            391
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "IV. PROBLEM FORMULATION AND ANALYSIS ",
+        "text_level": 1,
+        "bbox": [
+            120,
+            409,
+            444,
+            422
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In this section, the optimization problem is formulated, and then the relevant analysis of the problem is given. ",
+        "bbox": [
+            73,
+            428,
+            491,
+            459
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "A. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            479,
+            243,
+            492
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The optimization problem contains three optimization objectives. The first objective is to maximize the minimum SNR of all the BSs, which can be achieved by adjusting the locations as well as excitation current weights of the participating UAVs and controlling the order that the UVAA system transmits data to the BSs. To control interference caused by the transmission process on the AUs, the second objective is introduced, which is to minimize the maximum average receiving SNR of the AUs. Moreover, shifting locations of UAVs will consume more propulsion power, and thus we define minimizing the propulsion power consumption of UAVs as the third optimization objective. ",
+        "bbox": [
+            73,
+            498,
+            491,
+            678
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We define $X ~ = ~ [ \\mathbb { C } ^ { \\mathcal { U } } , \\mathbb { I } ^ { \\mathcal { U } } , \\mathbb { O } ]$ as the solution of the formulated RECMOP. To be specific, inate matrix of the UVAA system with  denotes the location of the ith UAV. Mo $\\mathbb { C } ^ { \\mathcal { U } } = \\{ \\mathcal { C } _ { 1 } ^ { \\mathcal { U } } , \\mathcal { C } _ { 2 } ^ { \\mathcal { U } } , \\dots , \\mathcal { C } _ { N _ { t r } } ^ { \\mathcal { U } } \\}$ C 2 , CUi $\\mathcal { C } _ { i } ^ { U } =$ CNU } $\\{ x _ { i } ^ { U } , y _ { i } ^ { U } , z _ { i } ^ { U } \\}$ $\\mathbb { I } ^ { \\mathcal { U } } = \\{ I _ { i } | \\forall i \\ \\in \\ \\mathcal { U } \\}$ represents the set of excitation current weights of UAVs, and O denotes the order that the UVAA system transmits data to different BSs. Accordingly, the optimization objectives are described as follows. ",
+        "bbox": [
+            73,
+            679,
+            491,
+            799
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "1) Optimization Objective 1: The first objective is to maximize the minimum receiving SNR of the several remote BSs so that the quality of signal received by each BS can be guaranteed. Accordingly, the first objective function is designed as follows: ",
+        "bbox": [
+            73,
+            800,
+            491,
+            875
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {1} (\\mathbb {C} ^ {\\mathcal {U}}, \\mathbb {I} ^ {\\mathcal {U}}, \\mathbb {O}) = \\widetilde {\\operatorname{Min}} _ {j \\in \\{1, 2,..., N _ {B S} \\}} \\{S N R _ {u, j} \\}, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            881,
+            488,
+            909
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\widetilde { \\mathbf { M i n } } ( \\cdot )$ is the operator that calculates the minimum value of a vector. ",
+        "bbox": [
+            73,
+            917,
+            491,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Remark 3: In this work, we choose to optimize SNR instead of transmission rate and the reasons are as follows. First, SNR is a paramount metric which is capable of evaluating the communication performance of a network, and it puts more emphasis on the quality of the signal. For instance, in certain scenarios, the communication link is defined as interruption if the receiving SNR is lower than the predefined threshold [51], which means that the data transmission process between the transmitter and the receiver is no longer meaningful. Second, according to the Shannon-Hartley theorem, a high transmission rate will be obtained if the SNR is comparatively high. In other words, transmission rate and SNR of certain communication network have the same change tendency [52]. Thus, the SNR is selected to be optimized in this work. ",
+        "bbox": [
+            501,
+            70,
+            921,
+            282
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "2) Optimization Objective 2: The positions of the several AUs are assumed to be known and stationary in the considered scenario, which is typical in a practical scenario, which implies that the interference caused by the UVAA system on the AUs can be mitigated by minimizing the maximum average receiving SNR of the AUs when the UVAA system transmits data to different BSs. Thus, the second objective function is expressed as follows: ",
+        "bbox": [
+            503,
+            282,
+            921,
+            404
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {2} (\\mathbb {C} ^ {\\mathcal {U}}, \\mathbb {I} ^ {\\mathcal {U}}, \\mathbb {O}) = \\widetilde {\\text { Max }} _ {j \\in \\{1, 2,..., N _ {B S} \\}} \\{\\sum_ {k = 1} ^ {N _ {A U}} \\frac {S N R _ {u , k} ^ {j}}{N _ {A U}} \\}. \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            535,
+            410,
+            921,
+            452
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where SN Rju,k $S N R _ { u , k } ^ { j }$ denotes the receiving SNR of the kth AU when the UVAA system transmits data to the jth BS. ",
+        "bbox": [
+            503,
+            460,
+            919,
+            491
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "3) Optimization Objective 3: The UAVs will move to suitable locations to perform an optimal UVAA for transmitting data to each receiver BS. However, additional propulsion power consumption will be induced during the flight process. Therefore, the third optimization objective is to minimize the propulsion power consumption of UAVs, and the corresponding objective function is defined as follows: ",
+        "bbox": [
+            501,
+            491,
+            921,
+            597
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {3} (\\mathbb {C} ^ {\\mathcal {U}}, \\mathbb {O}) = \\sum_ {i = 1} ^ {N _ {U}} \\sum_ {j = 1} ^ {N _ {B S}} E _ {i, j} (T _ {i, j}), \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            599,
+            604,
+            921,
+            647
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $T _ { i , j }$ represents the duration for the ith UAV to perform a UVAA to transmit data to the jth BS, and $E _ { i , j }$ represents the propulsion power consumption of the ith UAV for serving the jth BS. ",
+        "bbox": [
+            503,
+            654,
+            919,
+            714
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Accordingly, the RECMOP is formulated as follows [53]: ",
+        "bbox": [
+            519,
+            714,
+            913,
+            729
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {X} F = \\left\\{- f _ {1}, f _ {2}, f _ {3} \\right\\}, \\tag {17a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            738,
+            919,
+            760
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } C 1: 0 \\leq I _ {i} \\leq 1, \\forall i \\in \\mathcal {U}, \\tag {17b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            576,
+            762,
+            919,
+            777
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 2: L _ {m i n} \\leq x _ {i} ^ {U} \\leq L _ {m a x}, \\forall i \\in \\mathcal {U}, \\tag {17c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            780,
+            919,
+            797
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 3: L _ {m i n} \\leq y _ {i} ^ {U} \\leq L _ {m a x}, \\forall i \\in \\mathcal {U}, \\tag {17d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            800,
+            919,
+            816
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 4: H _ {m i n} \\leq z _ {i} ^ {U} \\leq H _ {m a x}, \\forall i \\in \\mathcal {U}, \\tag {17e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            819,
+            919,
+            837
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 5: V _ {\\text { min }} \\leq v \\leq V _ {\\text { max }}, \\forall i \\in \\mathcal {U}, \\tag {17f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            839,
+            919,
+            854
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 6: \\mathbb {O} ^ {\\mathcal {B} \\times 1} \\in \\mathcal {S O}, \\tag {17g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            858,
+            919,
+            875
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 7: D _ {i _ {1}, i _ {2}} \\geq D _ {\\min}, \\forall i _ {1}, i _ {2} \\in \\mathcal {U}, \\tag {17h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            878,
+            919,
+            895
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where the constraint (17b) confines the value of excitation current weight of the ith UAV $I _ { i }$ to [0, 1], the constraints (17c) and (17d) indicate that the minimum and maximum ranges when UAVs fly in the horizontal plane are $L _ { m i n }$ and $L _ { m a x }$ , respectively, and the constraint (17e) manifests that the minimum and maximum ranges when UAVs fly in the vertical plane are $H _ { m i n }$ and $H _ { m a x } ,$ , respectively. The constraint (17f) indicates the lower bound $V _ { m i n }$ and upper bound $V _ { m a x }$ of the velocity of the UAVs, and SO in the constraint (17g) is the set of orders that the UVAA system transmits data to $N _ { B S }$ BSs, which has $N _ { B S } !$ permutations and is expressed as SO = {OB×1, $\\mathbf { \\bar { \\mathcal { S } } } \\mathbf { \\mathcal { O } } = \\{ \\mathbb { O } _ { 1 } ^ { \\vert \\mathcal { B } \\times 1 } , \\dots , \\mathbb { O } _ { n } ^ { \\vert \\mathcal { \\bar { B } } \\times 1 } , \\dots , \\mathbb { O } _ { N _ { B S } ! } ^ { \\vert \\mathcal { B } \\times 1 } \\}$ 1 , . . . , OB×1NBS!}, wherein OB×1n $\\mathbb { O } _ { n } ^ { B \\times 1 } =$ n $\\{ O _ { 1 } , \\dots , O _ { j } , \\dots , O _ { N _ { B S } } | 1 ~ \\le ~ j ~ \\le ~ \\overset { \\sim } { N } _ { B S } , O _ { j } ~ \\in ~ \\mathcal { B } \\}$ . For instance, $\\mathbb { O } ^ { \\tilde { B } \\times 1 } = \\{ 2 , 5 , \\dots , 7 \\}$ denotes that the UVAA system will transmit data to the 2nd, 5th, . . . , 7th BS sequentially. Moreover, the constraint (17h) indicates the minimum distance between two adjacent UAVs. ",
+        "bbox": [
+            503,
+            902,
+            921,
+            949
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "13240 ",
+        "bbox": [
+            78,
+            36,
+            109,
+            45
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            436,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            960,
+            854,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            281
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Remark 4: Note that the optimization directions of $f _ { 1 }$ and $f _ { 2 }$ are opposite. The reason is that we attempt to achieve the maximum of $f _ { 1 }$ and the minimum of $f _ { 2 } ,$ , so that the quality of the signal received by each BS will be improved and the interference on the AUs caused by the UVAA system can be reduced simultaneously. □ ",
+        "bbox": [
+            73,
+            282,
+            491,
+            375
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. Problem Analysis ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            391,
+            218,
+            405
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Lemma 1: The first optimization objective function $f _ { 1 }$ of the formulated RECMOP is NP-hard since it is a nonlinear multi-dimensional 0-1 knapsack problem. ",
+        "bbox": [
+            73,
+            407,
+            491,
+            453
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: We first consider that the locations of UAVs and the order of transmitting data to different BSs are fixed and known. Thus, the solution space of the first optimization objective function only contains the excitation current weights of UAVs and it is expressed as $X ^ { \\prime } = [ I _ { 1 } , I _ { 2 } , \\ldots , I _ { N _ { U } } ]$ . In this case, the simplified first optimization objective function is defined as ${ \\bf S } { \\bf - R E C M O P } { \\bf - } f _ { 1 }$ and it is expressed as follows: ",
+        "bbox": [
+            73,
+            453,
+            491,
+            559
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {X ^ {\\prime}} - f _ {1} = - \\widetilde {\\operatorname{Min}} _ {j \\in \\{1, 2, \\dots , N _ {B S} \\}} \\left\\{S N R _ {u, j} \\right\\}, \\tag {18a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            106,
+            566,
+            488,
+            592
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\begin{array} { r } { \\mathrm { s . t . } \\qquad C 1 : I _ { i } \\in \\{ 0 , 1 \\} , \\forall i \\in \\{ 1 , 2 , \\ldots , N _ { U } \\} , } \\end{array}$ (18b) ",
+        "bbox": [
+            107,
+            594,
+            488,
+            609
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 2: \\sum_ {i = 1} ^ {N _ {U}} I _ {i} <   N _ {U}. \\tag {18c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            156,
+            613,
+            488,
+            654
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The ${ \\mathrm { S } } { \\mathrm { - R E C M O P } } { \\mathrm { - } } f _ { 1 }$ is a nonlinear multi-dimensional 0-1 knapsack problem which has been proven to be NP-hard [54]. Thus, the S-RECMOP-f1 is NP-hard. ",
+        "bbox": [
+            73,
+            659,
+            488,
+            704
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Lemma 2: The second optimization objective function $f _ { 2 } o f$ the formulated RECMOP is NP-hard. ",
+        "bbox": [
+            73,
+            705,
+            491,
+            733
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: The proof is similar to that of Lemma 1, and thus it is omitted. ",
+        "bbox": [
+            73,
+            734,
+            491,
+            763
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Lemma 3: The third optimization objective function $f _ { 3 }$ of the formulated RECMOP is NP-hard since it is a typical traveling salesman problem. ",
+        "bbox": [
+            73,
+            765,
+            491,
+            810
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: To ease of presentation, the locations and excitation current weights of UAVs are regarded as the constants in this part. Then, the solution space can be expressed as $X ^ { \\prime \\prime } =$ [O]. Accordingly, the simplified third optimization objective function is defined as ${ \\mathrm { S } } { \\mathrm { - R E C M O P } } { - } f _ { 3 }$ , and it is reformulated as follows: ",
+        "bbox": [
+            73,
+            811,
+            491,
+            898
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {X ^ {\\prime \\prime}} f _ {3} = \\sum_ {j = 1} ^ {N _ {B S} - 1} E _ {\\mathcal {O} _ {j}, \\mathcal {O} _ {j + 1}}, \\tag {19a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            181,
+            905,
+            488,
+            948
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad \\mathbb {O} ^ {\\mathcal {B} \\times 1} \\in \\mathcal {S O}, \\tag {19b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            612,
+            69,
+            919,
+            85
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $E _ { \\mathcal { O } _ { j } , \\mathcal { O } _ { j + 1 } }$ represents the propulsion power consumption of UAVs from transmitting data to the $\\mathcal { O } _ { j } 1$ th BS to that of the $\\mathcal { O } _ { j + 1 }$ 1th BS. Clearly, the reformulated ${ \\mathrm { S } } { \\mathrm { - R E C M O P } } { - } f _ { 3 }$ is a typical traveling salesman problem that has been demonstrated to be NP-hard [55]. Thus, the ${ \\mathrm { S } } { \\mathrm { - R E C M O P } } { - } f _ { 3 }$ is NP-hard. ■ ",
+        "bbox": [
+            501,
+            93,
+            919,
+            167
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proposition 1: The formulated RECMOP is NP-hard since the subproblems are NP-hard. ",
+        "bbox": [
+            503,
+            169,
+            919,
+            198
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: The formulated RECMOP is NP-hard since Lemmas 1, 2 and 3 show that the subproblems $f _ { 1 } , f _ { 2 }$ and $f _ { 3 }$ are NP-hard. ",
+        "bbox": [
+            503,
+            199,
+            919,
+            229
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proposition 2: The formulated RECMOP is a large-scale optimization problem since the number of solution dimensions grows linearly with the number of UAVs or BSs. ",
+        "bbox": [
+            503,
+            244,
+            919,
+            289
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: The solution space of the formulated RECMOP contains 3D coordinates of $\\mathbf { U A V s } \\left( \\mathbb { C } ^ { \\mathcal { U } } \\right)$ , excitation current weights of UAVs $( \\mathbb { I } ^ { \\mathcal { U } } )$ as well as the order of transmitting data to the BSs (O), which means that there are $( 4 \\times N _ { U } \\times N _ { B S } + N _ { B S } )$ solution dimensions should be optimized. In particular, the scale of the formulated RECMOP will grow with the number of UAVs or BSs increases. Thus, the formulated RECMOP is a large-scale optimization problem [56]. ■ ",
+        "bbox": [
+            501,
+            289,
+            919,
+            410
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proposition 3: The formulated RECMOP can be classified into a mixed integer programming problem, thus it is nonconvex. ",
+        "bbox": [
+            503,
+            410,
+            919,
+            453
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: The solution space of the formulated RECMOP contains continuous dimensions $( \\mathbb { C } ^ { \\mathcal { U } } , \\mathbb { I } ^ { \\mathcal { U } } )$ and discrete dimensions (O), so that the formulated RECMOP is a typical mixed integer programming problem (MINLP). Since MINLP is non-convex, the formulated RECMOP is also non-convex [57]. ■ ",
+        "bbox": [
+            503,
+            455,
+            919,
+            531
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "V. PROPOSED OPTIMIZATION METHOD ",
+        "text_level": 1,
+        "bbox": [
+            573,
+            541,
+            851,
+            554
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this section, the motivation of applying meta-heuristic algorithm in solving the formulated problem is first presented. Then, the main framework of the conventional MOGSA is introduced. Finally, IMOGSA is proposed to tackle the formulated RECMOP. ",
+        "bbox": [
+            503,
+            556,
+            919,
+            631
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A. Motivation ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            645,
+            602,
+            657
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "There are three widely adopted methods to tackle the multi-objective optimization problems, which are DRL, convex optimization and meta-heuristic algorithms. DRL takes a lot of time to train the model, and it is more appropriate to deal with the problems with continuous time slots [58]. However, the formulated RECMOP is a single slot problem, which means that unnecessary overhead will be induced if the DRL is adopted to handle it. Moreover, the convex optimization is not good at tackling the problems with intricate constraints, e.g., the formulated RECMOP. In addition, metaheuristic algorithms are efficient methods in dealing with large-scale optimization problems which are NP-hard and nonconvex. Thus, a heuristic-based algorithm is proposed to solve the formulated RECMOP. On the one hand, meta-heuristic algorithms do not require a significant amount of time and cost to train models compared with the DRL. On the other hand, meta-heuristic algorithms do not need to transform the formulated problem as in convex optimization, which is equivalent to preserving the original solution space. ",
+        "bbox": [
+            501,
+            661,
+            921,
+            949
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            75,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "13241 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Among the various meta-heuristic algorithms, GSA is selected as the basic framework to deal with the formulated RECMOP, and the motivations are presented as follows. ",
+        "bbox": [
+            73,
+            70,
+            491,
+            116
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• The Unique Update Strategy of Agent: In GSA, the position of each agent is updated based on the counterparts of all the other agents in current population, while the positions of agents in other meta-heuristic algorithms are mainly updated based on the global and/or individual optima. Thus, compared with other meta-heuristic algorithms, GSA has a lower probability of falling into local optimum in handling certain optimization problems due to the unique update strategy. ",
+            "• Strong Global Search Capabilities: During the process of calculating gravity, the force on any agent is expressed by the randomly weighted sum of the gravity of other agents, which helps introduce the uncertainty during the search process, making the algorithm to explore the search space more flexibly. ",
+            "• Simple Principle, Few Parameters and Easy to Implement: Compared with some meta-heuristic algorithms, e.g., squirrel search algorithm [59] and harris hawks optimization [60], GSA is characterized by simple principle and few parameters, which facilitaties the comprehension and implementation. In practical scenarios, the UAVs are required to execute the algorithm, hence the GSA will exhibit a shorter execution time and require less hardware resources. "
+        ],
+        "bbox": [
+            89,
+            117,
+            491,
+            479
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In the following, the conventional GSA is briefly introduced. ",
+        "bbox": [
+            89,
+            482,
+            488,
+            498
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "B. Conventional GSA ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            513,
+            225,
+            527
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Enlightened by the Newton’s laws of gravitation and kinematics, GSA is a typical meta-heuristic algorithm and has been demonstrated to be efficient in finding the optimal solutions of different optimization problems [61], [62]. Specifically, the solution update method of GSA is expressed as follows [61]: ",
+        "bbox": [
+            73,
+            532,
+            491,
+            609
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {i, d} ^ {t + 1} = X _ {i, d} ^ {t} + V _ {i, d} ^ {t + 1}, \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            184,
+            613,
+            488,
+            632
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV _ {i, d} ^ {t + 1} = \\text { rand } \\times V _ {i, d} ^ {t} + a _ {i, d} ^ {t}, \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            189,
+            633,
+            488,
+            652
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $X _ { i , d } ^ { t + 1 }$ an d V t+1 $V _ { i , d } ^ { t + 1 }$ are the position and velocity of the ith agent in the dth dimension at the t+1th iteration, respectively. Moreover, rand is a random number between 0 and 1, $a _ { i , d } ^ { t }$ refers to the acceleration of the ith agent in the dth dimension at the tth iteration, and it is given as follows [61]: ",
+        "bbox": [
+            73,
+            657,
+            491,
+            736
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {i, d} ^ {t} = \\frac {\\sum_ {j = 1 , j \\neq i} ^ {N _ {p o p}} r a n d \\times F _ {i j , d} ^ {t}}{M _ {i i} ^ {t}}, \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            174,
+            739,
+            488,
+            779
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $M _ { i i } ^ { t }$ denotes the inertial mass of the ith agent. Moreover, $\\sum _ { j = 1 , j \\neq i } ^ { N _ { p o p } } r a n d \\times F _ { i j , d } ^ { t }$ Npop is the total force of the other agents acting on the ith agent, wherein $N _ { p o p }$ refers to the number of agents in the population and $F _ { i j , d } ^ { t }$ is the force of the jth agent acting on the ith agent in the dth dimension, and it is written as follows: ",
+        "bbox": [
+            73,
+            782,
+            491,
+            875
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nF _ {i j, d} ^ {t} = G ^ {t} \\frac {M _ {p i} ^ {t} \\times M _ {a j} ^ {t}}{R _ {i j} ^ {t} + \\varepsilon} (X _ {j, d} ^ {t} - X _ {i, d} ^ {t}), \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            876,
+            488,
+            914
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $G ^ { t }$ is the gravitational constant at the tth iteration which will change as the number of iterations increases, $R _ { i j } ^ { t }$ denotes the Euclidian distance between the ith and jth agents at the tth iteration, ε is a constant with a small value. Moreover, $M _ { p i } ^ { t }$ and $M _ { a j } ^ { t }$ are the passive gravitational mass of the ith agent and the active gravitational mass of the jth agent, respectively. ",
+        "bbox": [
+            73,
+            917,
+            491,
+            950
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            70,
+            919,
+            131
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Several multi-objective versions of GSA have been proposed to handle the multi-objective optimization problems, which can be referred to [63] and [64]. The archive is adopted to save the Pareto optimal solutions in these algorithms. However, these algorithms are proposed to deal with the optimization problems only with continuous solution dimensions, which implies that they are incapable of handling the formulated RECMOP with hybrid decision variables. Thus, we propose IMOGSA to overcome the abovementioned challenge and improve the quality of solutions when dealing with the formulated RECMOP. ",
+        "bbox": [
+            501,
+            131,
+            921,
+            297
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "C. IMOGSA",
+        "text_level": 1,
+        "bbox": [
+            504,
+            313,
+            591,
+            325
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this section, IMOGSA is introduced to deal with the formulated RECMOP. Specifically, IMOGSA adopts three specific designs which are the QBL strategy, the discrete solution update strategy and the archive optimization method. The details of the designs are shown as follows, and the general structure of IMOGSA is presented in Algorithm 1. Note that the number of agents in the population and the number of maximum iterations are denoted as $N _ { p o p }$ and $t _ { m a x } ,$ respectively. Moreover, $P _ { t } , \\ F _ { t }$ and $A _ { t }$ are the population, fitness value set of the population and archive at the tth iteration, respectively. In addition, $P _ { m e r g e }$ is the mixed population and $F _ { m e r g e }$ refers to the corresponding fitness value set. ",
+        "bbox": [
+            501,
+            329,
+            921,
+            511
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "1) QBL Strategy: According to Proposition 2, the formulated RECMOP is a large-scale optimization problem, which implies that the algorithm may be trapped into local optimal easily when the quality of initial solutions is not high. Thus, to cope with the characteristic of the formulated RECMOP, we introduce a multi-step initialization method called QBL strategy. Specifically, the procedures of QBL are presented as follows [65]. ",
+        "bbox": [
+            503,
+            511,
+            921,
+            631
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "First, the continuous dimensions of solutions in the initial population $X ^ { I }$ are generated, and the process is as follows: ",
+        "bbox": [
+            503,
+            631,
+            919,
+            662
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {i, d} ^ {I} = L B _ {d} + \\text { rand } * (U B _ {d} - L B _ {d}), \\quad d = 1, 2, \\dots , D _ {c}, \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            516,
+            665,
+            919,
+            700
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $X _ { i , d } ^ { I }$ represents the dth dimension of the ith solution in $X ^ { I } , \\ L B _ { d }$ and $U B _ { d }$ refer to the lower and upper bounds of the dth dimension, respectively. Moreover, $D _ { c }$ denotes the number of continuous dimensions. ",
+        "bbox": [
+            501,
+            709,
+            919,
+            768
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Second, the opposite population $X ^ { O }$ of the initial population $X ^ { I }$ is generated through using some heuristic rules, and the rule adopted in this work is given as follows: ",
+        "bbox": [
+            503,
+            770,
+            921,
+            816
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {i, d} ^ {O} = U B _ {d} + L B _ {d} - X _ {i, d} ^ {I}, \\quad d = 1, 2, \\dots , D _ {c}, \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            535,
+            819,
+            919,
+            838
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $X _ { i , d } ^ { O }$ is the opposite point of $X _ { i , d } ^ { I } .$ ",
+        "bbox": [
+            503,
+            843,
+            785,
+            861
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Third, the strategy gains the quasi-opposite population $X ^ { Q }$ . Specifically, the continuous dimension of solutions in $X ^ { Q }$ is generated as follows: ",
+        "bbox": [
+            503,
+            859,
+            919,
+            905
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {i, d} ^ {Q} = M _ {d} + \\text { rand } * (X _ {i, d} ^ {O} - M _ {d}), \\quad d = 1, 2, \\dots , D _ {c}, \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            524,
+            911,
+            919,
+            949
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "13242 ",
+        "bbox": [
+            76,
+            36,
+            109,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            436,
+            35,
+            921,
+            47
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            960,
+            854,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1 IMOGSA "
+        ],
+        "code_body": "Input: $N_{pop}$ , $t_{max}$ , $P_{0}$ , $F_{0}$ , $A_{0}$ , etc.\nOutput: $A_{t_{max}}$ .\n\n1 $P_{0} \\leftarrow \\varnothing$ , $F_{0} \\leftarrow \\varnothing$ , $A_{0} \\leftarrow \\varnothing$ ;\n\n2 Initialize $P_{0}$ by using QBL strategy;\n\n3 for i = 1 to $N_{pop}$ do\n\n4    Count $F_{0_{i}}$ of $X_{i}$ in $P_{0}$ : $F_{0_{i}} = [f_{i,1}, f_{i,2}, f_{i,3}]$ ;\n\n5 $F_{0} \\leftarrow F_{0} \\cup F_{0_{i}}$ ;\n\n6 end\n\n7 Update $A_{0}$ based on $F_{0}$ ;\n\n8 for t = 1 to $t_{max}$ do\n\n9    Update $G^{t}$ ;\n\n10 Calculate mass of agents in $P_{t-1}$ and $A_{t-1}$ ;\n\n11 Select Food from $A_{t-1}$ based on roulette selection;\n\n12 for i = 1 to $N_{pop}$ do\n\n13    Count $a_{i}^{t}$ of the ith agent based on Eq. (22);\n\n14    Update the continuous dimensions ( $C^{U}, I^{U}$ ) of $X_{i}$ in $P_{t}$ based on Eq. (20);\n\n15    Update the discrete dimensions (O) of $X_{i}$ in $P_{t}$ based on Algorithm 2;\n\n16    end\n\n17 Generate $P_{cm}$ based on Algorithm 3;\n\n18 $P_{merge} \\leftarrow P_{t} \\cup P_{cm}$ ;\n\n19 Calculate $F_{merge}$ of $P_{merge}$ ;\n\n20 Update $A_{t}$ based on $F_{merge}$ ;\n\n21 end\n\n22 Return $A_{t_{max}}$ . ",
+        "bbox": [
+            71,
+            88,
+            486,
+            481
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $M _ { d }$ is the middle point which is calculated by $L B _ { d } +$ $( U B _ { d } - L B _ { d } ) / 2$ . ",
+        "bbox": [
+            73,
+            521,
+            488,
+            551
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fourth, the initial population $X ^ { I }$ and quasi-opposite population $X ^ { Q }$ are integrated into a population symbolized as $\\dot { X ^ { M } }$ , which is described as follows: ",
+        "bbox": [
+            73,
+            551,
+            491,
+            597
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX ^ {M} = X ^ {I} \\cup X ^ {Q}. \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            218,
+            611,
+            488,
+            630
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Finally, the strategy reserves a subset of the population $X ^ { M }$ according to the population size and the dominant relationship between agents. ",
+        "bbox": [
+            73,
+            645,
+            488,
+            691
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Note that the discrete dimensions of each solution in the populations above are generated randomly. ",
+        "bbox": [
+            73,
+            691,
+            488,
+            720
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "2) Discrete Solution Update Strategy: Each solution of the formulated RECMOP contains both continuous $( \\mathbb { C } ^ { \\mathcal { U } } , \\mathbb { I } ^ { \\mathcal { U } } )$ and discrete (O) dimensions. ",
+        "bbox": [
+            73,
+            722,
+            491,
+            767
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The continuous dimensions can be updated by the mechanism of GSA. However, the conventional meta-heuristic algorithms, e.g., GSA, cannot deal with the discrete dimensions since they are initially proposed to handle the problems whose solution only contains continuous dimensions. Therefore, the discrete solution update strategy is proposed in this work, which introduces the order-based crossover (OBX) and subtour exchange crossover (SEX), as show in Fig. 3. Accordingly, the details of the discrete solution update strategy are given in Algorithm 2. ",
+        "bbox": [
+            73,
+            767,
+            491,
+            917
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The main steps of OBX for generating one of the offsprings are summarized as follows: ",
+        "bbox": [
+            73,
+            917,
+            491,
+            949
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/74b9547ca1130cceab0de5a5a25e1be602b4aade2986bd5a2da4818909b0dd91.jpg",
+        "image_caption": [
+            "Fig. 3. Sketch maps of order-based crossover and subtour exchange crossover. (a) Order-based crossover. (b) Subtour exchange crossover. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    subgraph (a)\n        A1[\"Parent1\"] --> B1[\"7 5 2 8 1 4 3 6\"]\n        A2[\"Parent2\"] --> B2[\"7 5 3 2 1 4 8 6\"]\n        A3[\"Parent1\"] --> B3[\"1 2 7 5 4 8 6 3\"]\n        A4[\"Parent2\"] --> B4[\"1 2 7 5 4 8 6 3\"]\n    end\n    subgraph (b)\n        C1[\"Parent1\"] --> D1[\"Parent2\"]\n        C2[\"Parent2\"] --> D2[\"Child1\"]\n        C3[\"Parent1\"] --> D3[\"Child2\"]\n        C4[\"Parent2\"] --> D4[\"Child1\"]\n        C5[\"Parent1\"] --> D5[\"Child2\"]\n    end\n    style (a) fill:#f9f,stroke:#333\n    style (b) fill:#bbf,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            509,
+            66,
+            918,
+            167
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 2 Discrete Solution Update Strategy "
+        ],
+        "code_body": "1 Define the discrete dimensions of Food $\\mathbb{O}_{Food}$ .\n2 if rand < 0.5 then\n3 | $X_i(\\mathbb{O})$ crosses with $\\mathbb{O}_{Food}$ based on OBX;\n4 else\n5 | $X_i(\\mathbb{O})$ crosses with $\\mathbb{O}_{Food}$ based on SEX;\n6 end\n7 Return $X_i(\\mathbb{O})$ ; ",
+        "bbox": [
+            506,
+            236,
+            844,
+            344
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "First, the OBX selects one sub-dimensions from parent1 and confirms the positions of unselected elements in parent2. ",
+        "bbox": [
+            503,
+            380,
+            919,
+            425
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Second, the method exploits the selected sub-dimensions of parent1 and unselected elements of parent2 to generate one of the offsprings. ",
+        "bbox": [
+            503,
+            425,
+            921,
+            470
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The main procedures of SEX are depicted as follows: ",
+        "bbox": [
+            519,
+            470,
+            885,
+            486
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "First, one sub-dimensions is selected from parent1 and the corresponding sequence of the sub-dimensions is ascertained in parent2. ",
+        "bbox": [
+            503,
+            486,
+            919,
+            531
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Second, the SEX swaps the selected sub-dimensions while maintaining the positions of unselected elements unchanged. ",
+        "bbox": [
+            503,
+            531,
+            919,
+            561
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "3) Archive Optimization Method: Inspired by the non-dominated sorting genetic algorithm II (NSGA-II) [66], a new population is generated by using the crossover and mutation strategies on the solutions in the archive. Then, the new population is used to improve the quality of solutions in the archive. ",
+        "bbox": [
+            503,
+            561,
+            921,
+            651
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The crossover operation of the continuous dimensions of two solutions $X _ { c 1 }$ and $X _ { c 2 }$ is expressed as follows: ",
+        "bbox": [
+            503,
+            652,
+            921,
+            683
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} X _ {c 1, d} ^ {\\prime} = \\beta * X _ {c 1, d} + (1 - \\beta) * X _ {c 2, d} \\\\ X _ {c 2, d} ^ {\\prime} = \\beta * X _ {c 2, d} + (1 - \\beta) * X _ {c 1, d}, \\end{array} \\right. \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            568,
+            688,
+            919,
+            729
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $\\beta$ is a random number matrix. ",
+        "bbox": [
+            504,
+            734,
+            756,
+            750
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Moreover, the mutation operation concerning the continuous dimensions of solution $X _ { m }$ is designed as follows: ",
+        "bbox": [
+            503,
+            750,
+            919,
+            780
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {m, d} ^ {\\prime} = X _ {m, d} + \\sigma * r a n d (1, n), \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            601,
+            787,
+            919,
+            806
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where σ represents the mutation step and randn(1, n) denotes a random number matrix with 1 row and n column. ",
+        "bbox": [
+            503,
+            813,
+            919,
+            842
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The crossover and mutation operations of the discrete dimensions are achieved by OBX and discrete mutation operator, respectively. Specifically, the discrete mutation operator is to select two different dimensions and exchange their positions. ",
+        "bbox": [
+            501,
+            843,
+            921,
+            917
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The main procedures of the archive optimization method are presented in Algorithm 3. Note that $N _ { c }$ and $N _ { m }$ represent the numbers of solutions in crossover and mutation populations, respectively. ",
+        "bbox": [
+            503,
+            917,
+            921,
+            949
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            76,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "13243 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/11edf785f6f512286986f7905ea54d42bc519bcae4fcca844748b78b5c22a171.jpg",
+        "image_caption": [
+            "Fig. 4. The algorithm framework of IMOGSA for solving RECMOP. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Start\"] --> B[\"Step1: Population initialization\"]\n    B --> C[\"Step2: Fitness calculation\"]\n    C --> D[\"Step3: Solution update\"]\n    D --> E[\"Step4: Generate new populations\"]\n    E --> F[\"Step5: Archive update\"]\n    F --> G{Step6: Termination?}\n    G -->|Yes| H[\"Final solutions\"]\n    G -->|No| I[\"End\"]\n    \n    subgraph Discrete parts\n        J[\"O\"] --> K[\"BS 1 BS 2 BS N\"]\n        L[\"II^D\"] --> M[\"...\"]\n        N[\"C^D\"] --> O[\"(x^D_1, y^D_1, z^D_1)\"]\n        P[\"Continuous parts\"] --> Q[\"x_N pop ... x_N\"]\n    end\n    \n    subgraph Continuous parts\n        R[\"...\"] --> S[\"...\"]\n        T[\"...\"] --> U[\"...\"]\n        V[\"(x^U_N, y^U_N, z^U_N)\"] --> W[\"x^U_N, y^U_N, z^U_N\"]\n    end\n    \n    subgraph Continuous parts\n        X[\"X1 - - -\"] --> Y[\"Initial population\"]\n        Z[\"X2 - - -\"] --> Y\n        AA[\"X_{Npop} - - -\"] --> Y\n        AB[\"X_1 f_{1,1} f_{1,2} f_{1,3}\"] --> AC[\"Current population\"]\n        AD[\"X_2 f_{2,1} f_{2,2} f_{2,3}\"] --> AD\n        AE[\"X_N f_{N,1} f_{N,2} f_{N,3}\"] --> AD\n        AF[\"X_1 f_{1,1} f_{1,2} f_{1,3}\"] --> AG[\"Current population\"]\n        AH[\"X_2 f_{2,1} f_{2,2} f_{2,3}\"] --> AG\n        AI[\"X_N f_{N,1} f_{N,2} f_{N,3}\"] --> AG\n        AJ[\"X_1 f_{1,1} f_{1,2} f_{1,3}\"] --> AK[\"New populations\"]\n        AL[\"X_2 f_{2,1} f_{2,2} f_{2,3}\"] --> AK\n        AM[\"X_N f_{N,1} f_{N,2} f_{N,3}\"] --> AK\n        AN[\"A_1 f_{1,1} f_{1,2} f_{1,3}\"] --> AO[\"Archive\"]\n        AP[\"A_2 f_{2,1} f_{2,2} f_{2,3}\"] --> AO\n        AQ[\"A_3 f_{3,1} f_{3,2} f_{3,3}\"] --> AO\n    end\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            91,
+            71,
+            910,
+            258
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 3 Archive Optimization Method "
+        ],
+        "code_body": "Input: $N_{c}$ , $N_{m}$ , $A_{t}$ .\n\nOutput: $P_{cm}$ .\n\n1 $P_{c} \\leftarrow \\varnothing$ , $P_{m} \\leftarrow \\varnothing$ ;\n\n2 for i = 1 to $N_{c}/2$ do\n\n3 Select $X_{c1}$ and $X_{c2}$ from $A_{t}$ randomly;\n\n4 Generate $X'_{c1}$ and $X'_{c2}$ based on Eq. (28) and OBX;\n\n5 $P_{c} \\leftarrow P_{c} \\cup X'_{c1} \\cup X'_{c2}$ ;\n\n6 end\n\n7 for i = 1 to $N_{m}$ do\n\n8 Select $X_{m}$ from $A_{t}$ ;\n\n9 Generate $X'_{m}$ by mutating $X_{m}$ based on Eq. (29) and discrete mutation operator;\n\n10 $P_{m} \\leftarrow P_{m} \\cup X'_{m}$ ;\n\n11 end\n\n12 $P_{cm} \\leftarrow P_{c} \\cup P_{m}$ ;\n\n13 Return $P_{cm}$ . ",
+        "bbox": [
+            71,
+            329,
+            486,
+            575
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            614,
+            488,
+            645
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "D. Solving RECMOP With IMOGSA ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            679,
+            323,
+            694
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 shows the framework of the proposed IMOGSA for handling the formulated RECMOP, and the details are as follows. ",
+        "bbox": [
+            73,
+            702,
+            490,
+            747
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Step 1: The proposed IMOGSA generates the initial population. Specifically, the continuous dimensions $( \\mathbb { C } ^ { \\mathcal { U } } , \\mathbb { I } ^ { \\mathcal { U } } )$ of each solution are initialized by using QBL strategy and the discrete dimensions (O) are initialized by generating a random sequence. ",
+            "• Step 2: The corresponding fitness value of each solution in the initial population is calculated and stored. ",
+            "• Step 3: The solutions in current population are updated according to the solution update mechanism of the conventional GSA and the proposed discrete solution update strategy. Moreover, the fitness values of solutions in current population are calculated and updated accordingly. "
+        ],
+        "bbox": [
+            89,
+            752,
+            491,
+            950
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Step 4: The proposed IMOGSA generates two new populations, i.e., the crossover and the mutation populations, according to the introduced archive optimization method. ",
+            "• Step 5: A set of dominant solutions are selected from the mixed population which contains current population and the two new populations. Then, these dominant solutions are saved in the archive. ",
+            "• Step 6: If the termination condition is met, the IMOGSA will stop, and the solutions in the archive will be regarded as final solutions. Otherwise, the algorithm continues. "
+        ],
+        "bbox": [
+            519,
+            311,
+            921,
+            463
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "E. Analysis of the Proposed IMOGSA ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            479,
+            763,
+            494
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In this part, the related analysis of the proposed IMOGSA is presented, which are the complexity analysis and convergence analysis. ",
+        "bbox": [
+            503,
+            498,
+            919,
+            542
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Lemma 4: The computational complexity of the proposed IMOGSA is $\\mathcal { O } ( t _ { m a x } \\cdot N _ { o } \\cdot N _ { p o p } ^ { 2 } )$ . ",
+        "bbox": [
+            503,
+            544,
+            921,
+            575
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Proof: The number of objective functions, the population size and the maximum number of agents in the archive are symbolized as $N _ { o } , N _ { p o p }$ and $N _ { a r c } ,$ respectively. The computational complexity of the proposed IMOGSA is mainly decided by the calculation of objective functions and the rank of solutions in the archive. Accordingly, the computational complexity of computing objective functions is $\\mathcal { O } ( N _ { o } \\cdot N _ { p o p } )$ . Moreover, the computational complexity of ranking $N _ { a r c }$ solutions of each objective function in each iteration is $\\mathcal { O } ( N _ { o } \\cdot N _ { a r c } ^ { 2 } )$ . Based on the setting that $N _ { p o p }$ is equal to $N _ { a r c }$ , the computational complexity of ranking the solutions can be written as $\\mathcal { O } ( N _ { o }$ · $N _ { p o p } ^ { 2 } )$ . Hence, the overall computational complexity of the proposed IMOGSA is $\\mathcal { O } ( t _ { m a x } \\cdot N _ { o } \\cdot N _ { p o p } ^ { 2 } )$ . ■ ",
+        "bbox": [
+            503,
+            575,
+            921,
+            771
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Proposition 4: The proposed IMOGSA will be converged during the iteration process. ",
+        "bbox": [
+            503,
+            771,
+            921,
+            800
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Proof: Given that $\\bar { V } _ { i } ^ { t } ~ = ~ X _ { i } ^ { t } - X _ { i } ^ { t - 1 }$ , the solution update process of the ith agent at the tth iteration can be rewritten as follows: ",
+        "bbox": [
+            503,
+            800,
+            921,
+            844
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {i} ^ {t + 1} = X _ {i} ^ {t} + V _ {i} ^ {t + 1}, \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            591,
+            851,
+            919,
+            869
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV _ {i} ^ {t + 1} = \\text { rand } * (X _ {i} ^ {t} - X _ {i} ^ {t - 1}) + a _ {i} ^ {t}. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            871,
+            919,
+            890
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "According to Eqs. (30) and (31), the solution update process can be expressed as follows: ",
+        "bbox": [
+            503,
+            896,
+            919,
+            926
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nX _ {i} ^ {t + 1} = (1 + \\text { rand }) * X _ {i} ^ {t} - \\text { rand } * X _ {i} ^ {t - 1} + a _ {i} ^ {t}. \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            931,
+            919,
+            950
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "13244 ",
+        "bbox": [
+            78,
+            36,
+            109,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            436,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/865f977b890400d4fe11034186b32991d6e248eb90802de051c0bc93d1cba765.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 5. The locations of BSs and AUs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            91,
+            69,
+            488,
+            176
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Then, the expectation of $X _ { i } ^ { t + 1 }$ can be described as follows: ",
+        "bbox": [
+            89,
+            227,
+            491,
+            244
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} E [ X _ {i} ^ {t + 1} ] = E [ 1 + r a n d ] * E [ X _ {i} ^ {t} ] \\\\ - \\quad E [ r a n d ] * E [ X _ {i} ^ {t - 1} ] + E [ a _ {i} ^ {t} ]. \\tag {33} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            137,
+            250,
+            490,
+            287
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "By defining the lower and upper bounds of rand as α and $\\beta ,$ respectively, the recursive relationship among the positions of the ith agent at different iterations can be written as follows: ",
+        "bbox": [
+            73,
+            295,
+            491,
+            339
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left[ \\begin{array}{c} E \\left[ X _ {i} ^ {t + 1} \\right] \\\\ E \\left[ X _ {i} ^ {t} \\right] \\end{array} \\right] = \\left[ \\begin{array}{c c} \\frac {2 + \\alpha + \\beta}{2} & - \\frac {\\alpha + \\beta}{2} \\\\ 1 & 0 \\end{array} \\right] \\left[ \\begin{array}{c} E \\left[ X _ {i} ^ {t} \\right] \\\\ E \\left[ X _ {i} ^ {t - 1} \\right] \\end{array} \\right] + \\left[ \\begin{array}{c} E \\left[ a _ {i} ^ {t} \\right] \\\\ 0 \\end{array} \\right]. \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            96,
+            345,
+            490,
+            396
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "For ease of presentation, the coefficient matrix is written as follows: ",
+        "bbox": [
+            73,
+            406,
+            491,
+            434
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nM _ {c} = \\left[ \\begin{array}{c c} \\frac {2 + \\alpha + \\beta}{2} & - \\frac {\\alpha + \\beta}{2} \\\\ 1 & 0 \\end{array} \\right]. \\tag {35}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            438,
+            490,
+            472
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "According to [67] and [68], the necessary and sufficient condition to guarantee the convergence of the proposed IMOGSA is that the magnitude of the eigenvalues of M is smaller than 1. Given that α and $\\beta$ are set to be 0 and 1, respectively, we can calculate $| M _ { c } | = ( \\alpha + \\beta ) / 2 = 0 . 5 < 1$ . Therefore, the proposed IMOGSA will converge within limited iterations. ■ ",
+        "bbox": [
+            73,
+            481,
+            491,
+            571
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "VI. SIMULATION RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            186,
+            589,
+            380,
+            602
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In this section, we conduct simulations to demonstrate the effectiveness of the proposed IMOGSA. First, the simulation setups are given. Second, the proposed IMOGSA is adopted to tackle the RECMOP, and the simulation results are compared with several other benchmarks. Finally, the performance of the UVAA system under several unexpected circumstances is analyzed and discussed. ",
+        "bbox": [
+            73,
+            608,
+            490,
+            713
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "A. Simulation Setups ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            734,
+            220,
+            750
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "To match reality, we consider smaller and larger scale UAV networks wherein the numbers of UAVs are set to be 8 and 16, respectively. In both of the considered networks, the UAVs are dispatched over a monitor area of $1 0 0 \\times 1 0 0 ~ \\mathrm { m ^ { 2 } }$ for ease of control. To be specific, the minimum and maximum horizontal flight ranges of UAVs are set to be 0 m and 100 m, and the vertical flight range of UAVs is confined from 90 m to 120 m, to establish communication links with high LoS probability with the BSs, enabling faster transmission rate for the air-toground link. Moreover, the related settings of BSs follows the existing work [44]. Specifically, the number of BSs is set to be 8, the locations of BSs are shown in Fig. 5. Given that the coverage radius of a BS is typically around 1 to 5 km [69], thus the considered BSs-related settings are reasonable. In addition, the locations of AUs are randomly generated near the UAVs. To be specific, the approximate area in which AUs are located is also shown in Fig. 5, wherein the horizontal and vertical locations of AUs are both confined from -200 m to 300 m. All the other simulation parameters follow the work in [70]. ",
+        "bbox": [
+            73,
+            752,
+            491,
+            949
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            70,
+            919,
+            161
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Several benchmark schemes are introduced for making comparisons with the proposed IMOGSA, which can be divided into two categories, i.e., meta-heuristic algorithms and the conventional multi-hop relay strategy, respectively. ",
+        "bbox": [
+            501,
+            162,
+            921,
+            222
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "• Meta-heuristic algorithms: Several meta-heuristic algorithms are introduced, which are NSGA-II [66], multi-objective dragonfly algorithm (MODA) [71], multi-objective grey wolf optimizer (MOGWO) [72], multi-objective salp swarm algorithm (MSSA) [73], and the conventional MOGSA. Note that the proposed discrete solution update strategy is adopted by the algorithms above so that they can deal with the discrete dimensions. Moreover, the number of maximum iterations and population size are defined to be 500 and 30, respectively. ",
+        "bbox": [
+            519,
+            224,
+            921,
+            391
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "• Multi-hop relay strategy: To make comparisons with the proposed CB-based approach, the conventional multi-hop UAV relay strategy is presented. To be specific, a group of UAVs are uniformly distributed between the monitor area and the receiver BSs successively. ",
+        "bbox": [
+            521,
+            392,
+            921,
+            467
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "B. Simulation Results ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            491,
+            653,
+            503
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "1) Optimization Results Obtained by IMOGSA: Table II presents the numerical results regarding the SNR of each BS and that of the adjacent AUs when the UVAA system transmits related data to the BS in both smaller and larger scale UAV networks. First, it is apparent that the receiving SNR of a BS in the larger scale UAV network is almost 2 to 3 times that of the BS in the smaller scale UAV network. The reason is that with the number of UAV elements increases, the beam will be sharper and the energy is more concentrated, resulting in a higher SNR of the direction of each BS. Second, it can be find that the SNR of AUs will also increase with the expansion of the scale of UAV network, due to the increased radiation intensity of sidelobes. Finally, it is observed that the receiving SNR of each remote BS is much lower than that of the adjacent AUs, which is induced by the long distance between each BS and the UVAA system. However, even in this case, the achievable rate of the BS is close to $3 . 1 6 \\times 1 0 ^ { 6 }$ bps given that the receiving SNR is 6 dB. In conclusion, the proposed IMOGSA can achieve satisfactory optimization results. ",
+        "bbox": [
+            501,
+            511,
+            921,
+            797
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "The moving paths of UAVs obtained by IMOGSA in both smaller and larger scale UAV networks for transmitting data to the first BS are visualized in Fig. 6. It is found that the optimized positions of UAVs are more compact and centralized than the initial positions of UAVs. The reason is that the centralized locations of elements contribute to a superior beam pattern with a high-gain mainlobe and low-gain sidelobes. ",
+        "bbox": [
+            501,
+            797,
+            921,
+            902
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Ultimately, it is more preferable to deploy a larger scale UAV network if a higher receiving SNR of each BS is required to improve the communication performance. Moreover, the proposed CB-based approach is more suitable for smaller scale UAV network for reducing the propulsion power consumption of UAVs so that the UAVs can carry out more other missions. ",
+        "bbox": [
+            503,
+            904,
+            921,
+            949
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            76,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "13245 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "table",
+        "img_path": "images/ce1904ef8268e8a240908e0298f4c1abfd7cd983031590697c308cad8213151b.jpg",
+        "table_caption": [
+            "TABLE II THE OPTIMIZED SNR OF BSS AND AUS OBTAINED BY THE PROPOSED IMOGSA IN SMALLER AND LARGER SCALE UAV NETWORKS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"9\">SNR in smaller scale UAV network [dB]</td><td colspan=\"10\">SNR in larger scale UAV network [dB]</td></tr><tr><td>BS</td><td></td><td></td><td></td><td>AUs</td><td></td><td></td><td></td><td></td><td>BS</td><td></td><td></td><td></td><td>AUs</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>6.39</td><td>56.6</td><td>42.7</td><td>69.1</td><td>22.6</td><td>62.9</td><td>34.1</td><td>44.4</td><td>50.5</td><td>13.4</td><td>70.1</td><td>50.9</td><td>32.9</td><td>52.4</td><td>66.2</td><td>63.4</td><td>66.4</td><td>58.3</td><td></td></tr><tr><td>6.37</td><td>42.7</td><td>62.2</td><td>47.0</td><td>60.3</td><td>33.7</td><td>48.5</td><td>57.0</td><td>60.9</td><td>21.3</td><td>57.6</td><td>64.7</td><td>68.8</td><td>67.7</td><td>41.7</td><td>55.0</td><td>33.0</td><td>66.1</td><td></td></tr><tr><td>8.33</td><td>51.5</td><td>55.1</td><td>58.3</td><td>57.8</td><td>51.5</td><td>28.8</td><td>61.7</td><td>60.2</td><td>20.2</td><td>50.7</td><td>35.5</td><td>73.1</td><td>60.2</td><td>76.9</td><td>57.1</td><td>60.7</td><td>56.3</td><td></td></tr><tr><td>6.39</td><td>54.3</td><td>72.8</td><td>57.5</td><td>44.9</td><td>31.8</td><td>29.0</td><td>43.8</td><td>31.7</td><td>18.3</td><td>53.3</td><td>43.6</td><td>51.2</td><td>66.5</td><td>58.8</td><td>63.9</td><td>63.1</td><td>61.3</td><td></td></tr><tr><td>6.59</td><td>49.2</td><td>42.5</td><td>47.1</td><td>17.4</td><td>50.6</td><td>71.4</td><td>56.8</td><td>40.2</td><td>13.4</td><td>50.2</td><td>81.8</td><td>30.3</td><td>58.6</td><td>53.2</td><td>54.7</td><td>48.4</td><td>53.0</td><td></td></tr><tr><td>9.15</td><td>54.7</td><td>42.9</td><td>59.9</td><td>57.4</td><td>69.6</td><td>12.1</td><td>50.4</td><td>49.4</td><td>20.5</td><td>47.3</td><td>53.1</td><td>51.5</td><td>66.5</td><td>56.2</td><td>74.2</td><td>72.2</td><td>67.5</td><td></td></tr><tr><td>9.16</td><td>43.6</td><td>67.6</td><td>39.2</td><td>49.5</td><td>49.5</td><td>54.0</td><td>52.1</td><td>59.1</td><td>15.3</td><td>52.2</td><td>59.8</td><td>69.0</td><td>55.4</td><td>64.8</td><td>65.6</td><td>51.4</td><td>47.8</td><td></td></tr><tr><td>6.97</td><td>43.3</td><td>59.8</td><td>57.4</td><td>52.5</td><td>60.2</td><td>66.8</td><td>41.5</td><td>48.4</td><td>13.6</td><td>54.5</td><td>55.6</td><td>38.4</td><td>70.4</td><td>76.7</td><td>65.7</td><td>65.9</td><td>46.6</td><td></td></tr></table>",
+        "bbox": [
+            114,
+            102,
+            883,
+            253
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/07d8a2ba0cf16774b156de356d93776e072c7f31846b0c26cbcb047a90022029.jpg",
+        "content": "| Position Type       | x-axis (m) | y-axis (m) |\n| ------------------- | ---------- | ---------- |\n| Initial positions   | 50         | 100        |\n| Optimized positions | 50         | 100        |",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            84,
+            276,
+            277,
+            387
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/cf4c1d8ff549f028652ed00ee1170d4b32d4fbb76a8b1ba4a4264805ca568d1b.jpg",
+        "content": "| Position Type       | X (y-axis) | Y (x-axis) | Z (z-axis) |\n| ------------------- | ---------- | ---------- | ---------- |\n| Initial positions   | 50         | 0          | 100        |\n| Optimized positions | 50         | 0          | 100        |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            290,
+            276,
+            483,
+            387
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/7be17c40edca1fd411db5b7c33a6acb0e4f92dbf9e50c0c91495a6b3fcffdd00.jpg",
+        "image_caption": [
+            "Fig. 6. Moving paths of UAVs obtained by the proposed IMOGSA. (a) Smaller scale UAV network. (b) Larger scale UAV network. ",
+            "Fig. 8. Sketch map of the multi-hop UAV relay system. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph LR\n    A[\"UAV 1\"] -->|L1| B[\"UAV 2\"]\n    B -->|L2| C[\"...\"]\n    C --> D[\"UAVN_U\"]\n    D -->|LN_U| E[\"N_BSth BS\"]\n    E --> F[\"...\"]\n    F --> G[\"2nd BS\"]\n    H[\"Monitor area\"] --> I[\"User icon: house, people, trees, buildings\"]\n    I --> J[\"User icon: satellite, globe, person, group, building\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            511,
+            276,
+            916,
+            398
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/21e1bccb45ea227979d87f71a864b54fb4c85dcffd49c246fd9a4d97c49a375e.jpg",
+        "content": "| Method   | Minimum SNR of AUs [dB] | Minimum SNR of BSs [dB] | Power consumption [J] ×10⁴ |\n| -------- | ------------------------ | ------------------------ | -------------------------- |\n| NSGA-II  | -20                      | -10                      | 3                          |\n| NSGA-II  | -15                      | -8                       | 4                          |\n| NSGA-II  | -10                      | -6                       | 5                          |\n| NSGA-II  | -5                       | -4                       | 6                          |\n| NSGA-II  | 0                        | -2                       | 7                          |\n| MOGWO    | 60                       | 60                       | 10                         |\n| MOGWO    | 50                       | 50                       | 9                          |\n| MOGWO    | 40                       | 40                       | 8                          |\n| MOGWO    | 30                       | 30                       | 7                          |\n| MOGWO    | 20                       | 20                       | 6                          |\n| MOGWO    | 10                       | 10                       | 5                          |\n| MOGSA    | -15                      | -15                      | 2                          |\n| MOGSA    | -10                      | -10                      | 3                          |\n| MOGSA    | -5                       | -5                       | 4                          |\n| MOGSA    | 0                        | 0                        | 5                          |\n| MODA     | 60                       | 60                       | 3                          |\n| MODA     | 50                       | 50                       | 4                          |\n| MODA     | 40                       | 40                       | 5                          |\n| MODA     | 30                       | 30                       | 6                          |\n| MODA     | 20                       | 20                       | 7                          |\n| MSSA     | 60                       | 60                       | 2                          |\n| MSSA     | 50                       | 50                       | 3                          |\n| MSSA     | 40                       | 40                       | 4                          |\n| MSSA     | 30                       | 30                       | 5                          |\n| MSSA     | 20                       | 20                       | 6                          |\n| IMOGSA   | -15                      | -15                      | 3                          |\n| IMOGSA   | -10                      | -10                      | 4                          |\n| IMOGSA   | -5                       | -5                       | 5                          |\n| IMOGSA   | 0                        | -2                       | 6                          |\nDirection of PF<lcel>",
+        "chart_caption": [
+            "(a) Smaller scale UAV network. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            86,
+            453,
+            478,
+            603
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/56fe0d34c75be483c848a664c0b00cf0b361678a3d2880cc5cbaeba1ea2304b3.jpg",
+        "content": "| Method   | Minimum SNR of AUs [dB] | Minimum SNR of BSs [dB] | Power consumption [J] |\n|----------|--------------------------|--------------------------|------------------------|\n| NSGA-II  | ~-40                     | ~-20                     | ~1.5                   |\n| MODA     | ~-60                     | ~-80                     | ~1.0                   |\n| MOGWO    | ~-40                     | ~-20                     | ~2.0                   |\n| MSSA     | ~-40                     | ~-20                     | ~1.0                   |\n| MOGSA    | ~-40                     | ~-20                     | ~1.5                   |\n| IMOGSA   | ~-20                     | ~-20                     | ~1.0                   |",
+        "chart_caption": [
+            "(b) Larger scale UAV network. ",
+            "Fig. 7. Solution distributions obtained by the proposed IMOGSA and other meta-heuristic algorithms. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            89,
+            628,
+            480,
+            773
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            857,
+            491,
+            901
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "2) Comparison Results of IMOGSA and Other Meta-Heuristic Algorithms: Fig. 7 illustrates the Pareto solution distributions obtained by the proposed IMOGSA and the other ",
+        "bbox": [
+            73,
+            902,
+            491,
+            949
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "table",
+        "img_path": "images/1ea6dbbef368b1735c90fd5a572208c9893048be09483b96207c3d54811a325c.jpg",
+        "table_caption": [
+            "TABLE IIICOMPARISON RESULTS OF THE MULTI-HOP RELAY STRATEGYAND THE PROPOSED IMOGSA"
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td rowspan=\"2\">Method</td><td colspan=\"3\">Smaller scale UAV network</td><td colspan=\"3\">Larger scale UAV network</td></tr><tr><td> $f_1$  [dB]</td><td> $f_2$  [dB]</td><td> $f_3$  [J]</td><td> $f_1$  [dB]</td><td> $f_2$  [dB]</td><td> $f_3$  [J]</td></tr><tr><td>Multi-hop</td><td>45.6</td><td>67.9</td><td> $8.37 \\times 10^5$ </td><td>215.1</td><td>228.9</td><td> $1.69 \\times 10^6$ </td></tr><tr><td>IMOGSA</td><td>6.3</td><td>57.6</td><td> $2.11 \\times 10^4$ </td><td>13.4</td><td>65.8</td><td> $5.99 \\times 10^4$ </td></tr></table>",
+        "bbox": [
+            506,
+            487,
+            919,
+            556
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "meta-heuristic algorithms in both smaller and larger scale UAV networks. It is found that the solutions obtained by the proposed IMOGSA are closer to the direction of Pareto front (PF), which implies that the performance of the proposed IMOGSA is better than the other adopted meta-heuristic algorithms. The reason is that the introduction of QBL strategy and archive optimization method will enhance the quality of solutions. ",
+        "bbox": [
+            501,
+            585,
+            919,
+            691
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "3) Comparison Results of IMOGSA and Multi-Hop UAV Relay Strategy: In the constructed multi-hop UAV relay system, $N _ { U }$ UAVs at the same altitude are uniformly deployed between the center of the monitor area and a receiver BS, as shown in Fig. 8. Once upon the current transmission process is finished, each relay UAV will fly to the next pre-designed location to execute another transmission mission. Specifically, the decode-and-forward protocol is adopted, and the communication link between the ith and i+1th relay UAVs is denoted as $L _ { i } ^ { j }$ when the receiver is the jth BS. ",
+        "bbox": [
+            501,
+            691,
+            921,
+            843
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Table III presents the comparison results of the multi-hop relay strategy and the proposed IMOGSA. First, it is observed that compared with the proposed IMOGSA, the conventional multi-hop relay strategy will achieve exceptionally high receiving SNR of BSs. The reason is that the distance between the last-hop UAV and the receiver BS is comparatively close, which results in a low path loss and then the receiving SNR is improved accordingly. Similarly, the maximum average receiving SNR of AUs is also relatively high due to the close distance between the AUs and the UVAA system. Moreover, the multi-hop relay strategy will consume more propulsion power compared with IMOGSA since the UAVs are required to fly to respective remote position to construct an ad-hoc network. Generally speaking, if a very high receiving SNR or achievable rate of each BS is required, it is more appropriate to deploy a multi-hop relay network. Otherwise, the CB-based approach is more advisable. ",
+        "bbox": [
+            501,
+            843,
+            921,
+            949
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "13246 ",
+        "bbox": [
+            78,
+            36,
+            109,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            436,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/9c2827b06407716aaac4a93b86c8dafff37d137d6d75b000f22685fb6e16804a.jpg",
+        "content": "| Iteration | Minimum SNR of AUs [dB] | Minimum SNR of BSs [dB] |\n| --------- | ------------------------ | ------------------------ |\n| The 100th | 65                       | 65                       |\n| The 200th | 60                       | 60                       |\n| The 300th | 55                       | 55                       |\n| The 400th | 50                       | 50                       |\n| The 500th | 45                       | 45                       |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            84,
+            71,
+            480,
+            215
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d480a6c9683dbe8ff071bc01ffc0286ce339a69ce5a9247119a53f30c4a2b4eb.jpg",
+        "content": "",
+        "chart_caption": [
+            "(a) Smaller scale UAV network. ",
+            "(b)Larger scale UAV network. ",
+            "Fig. 9. Convergence analysis of the proposed IMOGSA. (a) Smaller scale UAV network. (b) Larger scale UAV network. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            86,
+            241,
+            483,
+            383
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            460,
+            491,
+            609
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "4) Convergence Analysis of the Proposed IMOGSA: In this part, the convergence analysis of the proposed IMOGSA is conducted through analyzing the changing trend of the Pareto solutions with the number of iterations. Specifically, Fig. 9 presents the Pareto solutions obtained in the 100th, 200th, 300th, 400th, and 500th iterations. It can be observed from the figure that the Pareto solution set gradually approaches the direction of PF as the number of iterations increases in both smaller and larger scale UAV networks. Moreover, with the number of iterations increasing, the movement range of the Pareto solution set becomes smaller. Therefore, the proposed IMOGSA will be converged during the iteration process, which is corresponds to Proposition 4. ",
+        "bbox": [
+            73,
+            611,
+            491,
+            808
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "C. Performance Analysis Under Unexpected Circumstances ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            824,
+            478,
+            839
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In this section, several unexpected circumstances are taken into consideration, which are a single damaged UAV element, position jitters of UAVs, position jitters of AUs and imperfect phase synchronization, respectively. The performance of the proposed CB-based approach under the circumstances above is estimated. Note that the simulations are only carried out in smaller scale UAV network for simplicity. ",
+        "bbox": [
+            73,
+            843,
+            491,
+            949
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "1) Single Damaged UAV: In this part, an unexpected circumstance where the component of a UAV is damaged so that the UAV is not capable of participating in the communication process is considered. In this case, other UAVs that exist in the system will continue to carry out the CB mission. To better mimic the real scenarios, the damaged UAV in the whole UVAA system is selected randomly, and it is also undefined that how many BSs that the UAV has served before it is damaged. Note that we only consider the situation that the UAV is damaged in the moment when it is prepared to serve the next BS after serving the former BS, and the scenarios in which the UAV is damaged during the process of sending data to a specific BS will be left as our future work. ",
+        "bbox": [
+            501,
+            70,
+            921,
+            266
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Fig. 10 shows the performance of the UVAA system where a UAV element is damaged. To be specific, Figs. 10(a) and 10(b) signify that the damaged UAV has a serious impact on the minimum receiving SNR of BSs and the maximum average receiving SNR of AUs. Moreover, it is reasonable that the propulsion power consumption of UAVs is reduced since the damaged UAV is no longer participating in the communication, as shown in Fig. 10(c). Overall, we find that the proposed CB-based approach still has comparatively decent performance even when a single UAV element is damaged. ",
+        "bbox": [
+            501,
+            267,
+            921,
+            417
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "2) Position Jitters of UAVs: Due to the influence of wind, airflow, rainstorm, etc., the positions of UAVs will be shifted, which may yield a non-negligible impact on the performance of the UVAA system. Therefore, we conduct simulations to demonstrate how the system will operate when the position jitters of UAVs occur. Specifically, the normal distribution is exploited to generate random position jitters, and the maximum jitters of UAVs in 3D directions are designed as 0.2 m, 0.4 m, 0.6 m, 0.8 m and 1 m, respectively [74]. ",
+        "bbox": [
+            501,
+            419,
+            921,
+            555
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Fig. 11 intuitively demonstrates the impact that is generated by the position jitters of UAVs. Figs. 11(a) and 11(b) illustrate that the minimum receiving SNR of BSs is diminishing and the maximum average receiving SNR of AUs is increasing with the jitters of UAVs. The reason is that the beam pattern of the UVAA system is deteriorated. Moreover, Fig. 11(c) shows that the propulsion power consumption of UAVs will also be influenced, and it tends to be larger with the distance of jitter becomes further. However, the minimum receiving SNR of BSs is still above 2 dB even when the maximum jitter range of UAVs reaches 1 m, which corresponds that the achievable rate is above $2 . 3 2 \\times 1 0 ^ { 6 }$ bps. In conclusion, the performance of the UVAA system will be slightly influenced if the position jitters occur. ",
+        "bbox": [
+            501,
+            555,
+            921,
+            766
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "3) Position Jitters of AUs: The AUs will also encounter the position jitters, thus we also conduct simulations to test whether the maximum average receiving SNR of AUs will change significantly when the jitters occur. Specifically, the maximum jitters of the AUs in 3D directions are the same as VI-C.2. Note that the receiving SNR of BSs and the propulsion power consumption of UAVs are not considered since they will not be influenced by the position jitters of AUs. ",
+        "bbox": [
+            503,
+            767,
+            921,
+            902
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "It is found from Fig. 12 that the maximum average receiving SNR of AUs is increasing with the jitters of UAVs enlarge. The reason is that there will be other sidelobes pointing at these AUs once upon the position jitters happen, while these sidelobes are not optimized and the corresponding radiation intensity is relatively high, resulting in the increase of the maximum average receiving SNR of AUs. To suppress the maximum SLL can overcome the abovementioned challenge brought by the position jitters of AUs, which will be left as our future work. ",
+        "bbox": [
+            503,
+            902,
+            921,
+            949
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            76,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "13247 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "chart",
+        "img_path": "images/bc23a5bacf263109b271357e0326ddfc7dad6f587860a612c08de6f48f575754.jpg",
+        "content": "| Condition | Minimum SNR of BSs [dB] |\n| --------- | ------------------------ |\n| Perfect   | 6.0                      |\n| Damage    | 3.0                      |",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            106,
+            64,
+            339,
+            186
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/be656ddab7b0964dca8b2e8260164ac898230151c8b9ebf98217c6dbcbca0b71.jpg",
+        "content": "| Condition | Maximum SNR of AUs [dB] |\n| :--- | :--- |\n| Perfect | 57.6 |\n| Damage | 58.6 |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            380,
+            63,
+            614,
+            186
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/8d9ac5b780141f2a50cb1f8ed3a645881ad0ddfe3f1ced9247714554999e5086.jpg",
+        "content": "| Condition | Power consumption [J] |\n| :--- | :--- |\n| Perfect | 21000 |\n| Damage | 20000 |",
+        "chart_caption": [
+            "(（c) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            645,
+            68,
+            890,
+            186
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/8525c5ecd06784f2654a2c39159c3faea0140e184be8a3b3327a449fcb4b6d23.jpg",
+        "content": "| Parameter | Minimum SNR of BSs [dB] |\n| --------- | ------------------------ |\n| 0.0       | 6.5                      |\n| 0.2       | 5.8                      |\n| 0.4       | 4.8                      |\n| 0.6       | 4.2                      |\n| 0.8       | 4.0                      |\n| 1.0       | 2.3                      |",
+        "chart_caption": [
+            "Fig. 10. Performance analysis of the UVAA system influenced by a damaged UAV. (a) Minimum SNR of BSs with a damaged UAV. (b) Maximum SNR of AUs with a damaged UAV. (c) Propulsion power consumption of UAVs with a damaged UAV. ",
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            96,
+            247,
+            346,
+            376
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d7b3c804bdd36ba00bb51432d2d10629d3d7357576121fc948d03d23860271ae.jpg",
+        "content": "| Threshold (m) | Maximum SNR of AUs [dB] |\n| ------------- | ------------------------ |\n| 0.0           | 57.0                     |\n| 0.2           | 64.0                     |\n| 0.4           | 64.0                     |\n| 0.6           | 64.0                     |\n| 0.8           | 65.0                     |\n| 1.0           | 64.0                     |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            364,
+            247,
+            620,
+            376
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/1af8b27f825c1752502c66d8583b28bd82c9d224aa815082c65df94916f0cac5.jpg",
+        "content": "| Distance (m) | Power consumption [J] |\n| :--- | :--- |\n| 0.0 | 20500 |\n| 0.2 | 20700 |\n| 0.4 | 23800 |\n| 0.6 | 25800 |\n| 0.8 | 27200 |\n| 1.0 | 31800 |",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            633,
+            251,
+            897,
+            375
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/9ec28042c093b0e0fec2005a1c1a1e3a8024ecb528ac2bb50ceb0a2ba7e3e787.jpg",
+        "content": "| Distance (m) | Maximum SNR of AUs [dB] |\n| :--- | :--- |\n| 0.0 | 57.8 |\n| 0.2 | 59.6 |\n| 0.4 | 60.0 |\n| 0.6 | 60.4 |\n| 0.8 | 61.8 |\n| 1.0 | 62.8 |",
+        "chart_caption": [
+            "Fig. 11. Performance analysis of the UVAA system influenced by position jitters of UAVs. (a) Minimum SNR of BSs with position jitters. (b) Maximum SNR of AUs with position jitters. (c) Propulsion power consumption of UAVs with position jitters. ",
+            "Fig. 12. Maximum receiving SNR of AUs influenced by position jitters of AUs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            142,
+            448,
+            423,
+            593
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/b70a6c7ca9d597a97608b31fa98ad5f6277fd63425881bb191557aea147d3083.jpg",
+        "content": "| γ     | Minimum SNR of BSs [dB] |\n|-------|--------------------------|\n| 4     | 2.5                      |\n| 8     | 4.5                      |\n| 16    | 5.5                      |\n| 32    | 5.8                      |\n| Perfect | 6.5                    |",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            516,
+            448,
+            705,
+            558
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ce71b8cb8b0f7e12f997694d885db9a54ccc45564ab6dd959d04ebe3dfa6f482.jpg",
+        "content": "| γ Value | Maximum SNR of AUs [dB] |\n| ------- | ------------------------ |\n| γ = 4   | 60.5                     |\n| γ = 8   | 59.5                     |\n| γ = 16  | 59.0                     |\n| γ = 32  | 58.5                     |\n| Perfect | 57.5                     |",
+        "chart_caption": [
+            "(b) ",
+            "Fig. 13. Performance analysis of the UVAA system influenced by imperfect phase synchronization. (a) Minimum SNR of BSs with phase errors. (b) Maximum SNR of AUs with phase errors. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            723,
+            448,
+            910,
+            556
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            648,
+            490,
+            753
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "4) Imperfect Phase Synchronization: In this part, simulations are carried out to present the impact brought by the phase errors among UAVs on the performance of the UVAA system. Accordingly, the AF of the UVAA system is redefined as follows [75]: ",
+        "bbox": [
+            73,
+            755,
+            491,
+            830
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "equation",
+        "text": "$$\nF ^ {\\zeta} (\\theta , \\phi) = \\sum_ {i = 1} ^ {N _ {U}} I _ {i} e ^ {i _ {u} \\left[ k _ {c} (x _ {i} ^ {U} \\sin \\theta \\cos \\phi + y _ {i} ^ {U} \\sin \\theta \\sin \\phi + z _ {i} ^ {U} \\cos \\theta) + \\zeta_ {i} \\right]}, \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            835,
+            488,
+            895
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "where $\\zeta _ { i }$ represents the phase error of the ith UAV and it is assumed to obey the Tikhonov distribution with parameter $\\gamma$ which determines the error size [76]. Note that the propulsion power consumption of UAVs is not considered in this part since it is only related with the locations of UAVs. ",
+        "bbox": [
+            73,
+            902,
+            491,
+            950
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            648,
+            919,
+            678
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Fig. 13 shows the obtained results through considering the phase errors. Specifically, Fig. 13(a) shows that the minimum receiving SNR of BSs will be enhanced with the increasing of $\\gamma ,$ and Fig. 13(b) manifests the maximum average receiving SNR of AUs tends to diminish with the $\\gamma$ increases. Generally speaking, the imperfect phase synchronization inevitably has a mild influence on the performance of the UVAA system, however, the impact is gradually overcome with the propose of synchronization algorithms. ",
+        "bbox": [
+            503,
+            679,
+            921,
+            815
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "VII. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            643,
+            837,
+            781,
+            849
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "In this work, the UVAA-enabled emergency communication scenario was investigated. Specifically, we considered a UAV-based relay system that harvests data from ground users and then sends the collected data to several BSs via using CB. We formulated an RECMOP to cooperatively maximize the minimum receiving SNR of the BSs, minimize the maximum average receiving SNR of the neighbouring AUs and minimize the propulsion power consumption of the UAVs. To deal with the formulated RECMOP which is shown to be NP-hard and non-convex, an IMOGSA was proposed. Simulations were implemented and the results manifested the effectiveness of the proposed IMOGSA. Moreover, the results also illustrated that the proposed algorithm outperforms other benchmark schemes. In addition, several unexpected circumstances were analyzed and discussed, and the results suggested that the proposed CB-based approach will inevitably be affected by some exceptional cases, however, it is still able to complete data transmission.In the future, we will extend the proposed CB-based approach to more UAV-assisted wireless communication scenarios including UAVs-assisted wireless communications in post-disaster areas, wireless communications from UAVs to satellites, and UAVs-enabled covert communications. ",
+        "bbox": [
+            503,
+            858,
+            921,
+            949
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "13248 ",
+        "bbox": [
+            78,
+            36,
+            109,
+            45
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            436,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            71,
+            491,
+            327
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            235,
+            347,
+            331,
+            359
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] G. Sun, X. Zheng, Y. Lian, J. Li, and F. Mei, “Reliable UAV communication via collaborative beamforming: A multi-objective optimization approach,” in Proc. IEEE Symp. Comput. Commun. (ISCC), Aug. 2022, pp. 1–7. ",
+            "[2] Y. Cao, Y. Luo, H. Yang, and C. Luo, “UAV-based emergency communications: An iterative two-stage multi-agent soft actor-critic approach for optimal association and dynamic deployment,” IEEE Internet Things J., 2024, doi: 10.1109/JIOT.2023.3329346. ",
+            "[3] Y. Guan, S. Zou, H. Peng, W. Ni, Y. Sun, and H. Gao, “Cooperative UAV trajectory design for disaster area emergency communications: A multiagent PPO method,” IEEE Internet Things J., vol. 11, no. 5, pp. 8848–8859, Mar. 2024. ",
+            "[4] F. Lu et al., “Resource and trajectory optimization for UAV-relayassisted secure maritime MEC,” IEEE Trans. Commun., vol. 72, no. 3, pp. 1641–1652, Mar. 2024. ",
+            "[5] F. Yang, C. Wang, J. Xiong, N. Deng, N. Zhao, and Y. Li, “UAV-enabled robust covert communication against active wardens,” IEEE Trans. Veh. Technol., 2024. ",
+            "[6] L. Zhu, J. Zhang, Z. Xiao, X. Cao, X. Xia, and R. Schober, “Millimeterwave full-duplex UAV relay: Joint positioning, beamforming, and power control,” IEEE J. Sel. Areas Commun., vol. 38, no. 9, pp. 2057–2073, Sep. 2020. ",
+            "[7] S. Jayaprakasam, S. K. A. Rahim, and C. Y. Leow, “Distributed and collaborative beamforming in wireless sensor networks: Classifications, trends, and research directions,” IEEE Commun. Surveys Tuts., vol. 19, no. 4, pp. 2092–2116, 4th Quart., 2017. ",
+            "[8] L. Zhu, J. Zhang, Z. Xiao, X. Cao, D. O. Wu, and X.-G. Xia, “Joint power control and beamforming for uplink non-orthogonal multiple access in 5G millimeter-wave communications,” IEEE Trans. Wireless Commun., vol. 17, no. 9, pp. 6177–6189, Sep. 2018. ",
+            "[9] L. Zhu, J. Zhang, Z. Xiao, X. Cao, D. O. Wu, and X. Xia, “Millimeter-wave NOMA with user grouping, power allocation and hybrid beamforming,” IEEE Trans. Wireless Commun., vol. 18, no. 11, pp. 5065–5079, Nov. 2019. ",
+            "[10] P. S. Bithas, V. Nikolaidis, A. G. Kanatas, and G. K. Karagiannidis, “UAV-to-ground communications: Channel modeling and UAV selection,” IEEE Trans. Commun., vol. 68, no. 8, pp. 5135–5144, Aug. 2020. ",
+            "[11] B. Hu, L. Wang, S. Chen, J. Cui, and L. Chen, “An uplink throughput optimization scheme for UAV-enabled urban emergency communications,” IEEE Internet Things J., vol. 9, no. 6, pp. 4291–4302, Mar. 2022. ",
+            "[12] Z. Huang, C. Chen, and M. Pan, “Multiobjective UAV path planning for emergency information collection and transmission,” IEEE Internet Things J., vol. 7, no. 8, pp. 6993–7009, Aug. 2020. ",
+            "[13] Y. Jiang, Y. Ma, J. Liu, L. Hu, M. Chen, and I. Humar, “MER-WearNet: Medical-emergency response wearable networking powered by UAVassisted computing offloading and WPT,” IEEE Trans. Netw. Sci. Eng., vol. 9, no. 1, pp. 299–309, Jan. 2022. ",
+            "[14] Y. Lin, T. Wang, and S. Wang, “UAV-assisted emergency communications: An extended multi-armed bandit perspective,” IEEE Commun. Lett., vol. 23, no. 5, pp. 938–941, May 2019. "
+        ],
+        "bbox": [
+            75,
+            364,
+            495,
+            950
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[15] W. Feng et al., “UAV-enabled SWIPT in IoT networks for emergency communications,” IEEE Wireless Commun., vol. 27, no. 5, pp. 140–147, Oct. 2020. ",
+            "[16] T. Zhang, J. Lei, Y. Liu, C. Feng, and A. Nallanathan, “Trajectory optimization for UAV emergency communication with limited user equipment energy: A safe-DQN approach,” IEEE Trans. Green Commun. Netw., vol. 5, no. 3, pp. 1236–1247, Sep. 2021. ",
+            "[17] Z. Shah, U. Javed, M. Naeem, S. Zeadally, and W. Ejaz, “Mobile edge computing (MEC)-enabled UAV placement and computation efficiency maximization in disaster scenario,” IEEE Trans. Veh. Technol., 2023. ",
+            "[18] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016. ",
+            "[19] S. Zhang, H. Zhang, Q. He, K. Bian, and L. Song, “Joint trajectory and power optimization for UAV relay networks,” IEEE Commun. Lett., vol. 22, no. 1, pp. 161–164, Jan. 2018. ",
+            "[20] Q. Wang, Z. Chen, W. Mei, and J. Fang, “Improving physical layer security using UAV-enabled mobile relaying,” IEEE Wireless Commun. Lett., vol. 6, no. 3, pp. 310–313, Jun. 2017. ",
+            "[21] T. Wang, Y. Li, and Y. Wu, “Energy-efficient UAV assisted secure relay transmission via cooperative computation offloading,” IEEE Trans. Green Commun. Netw., vol. 5, no. 4, pp. 1669–1683, Dec. 2021. ",
+            "[22] W. Wei, X. Pang, J. Tang, N. Zhao, X. Wang, and A. Nallanathan, “Secure transmission design for aerial IRS assisted wireless networks,” IEEE Trans. Commun., vol. 71, no. 6, pp. 3528–3540, Jun. 2023. ",
+            "[23] Y. Su, X. Pang, S. Chen, X. Jiang, N. Zhao, and F. R. Yu, “Spectrum and energy efficiency optimization in IRS-assisted UAV networks,” IEEE Trans. Commun., vol. 70, no. 10, pp. 6489–6502, Oct. 2022. ",
+            "[24] H. S. Khallaf, S. Hashima, M. Rihan, E. M. Mohamed, and H. M. Kasem, “Quantifying impact of pointing errors on secrecy performance of UAV-based relay-assisted FSO links,” IEEE Internet Things J., vol. 11, no. 2, pp. 2979–2989, Jan. 2024. ",
+            "[25] X. Yang, B. Han, G. Zhang, P. Zheng, J. Bai, and D. Qin, “NOMAassisted routing algorithm design for UAV ad hoc relay networks,” IEEE Sensors J., vol. 23, no. 3, pp. 3296–3312, Feb. 2023. ",
+            "[26] D. Yin, X. Yang, H. Yu, S. Chen, and C. Wang, “An air-to-ground relay communication planning method for UAVs swarm applications,” IEEE Trans. Intell. Vehicles, 2023, doi: 10.1109/TIV.2023.3237329. ",
+            "[27] H. Lu, Y. Zeng, S. Jin, and R. Zhang, “Aerial intelligent reflecting surface: Joint placement and passive beamforming design with 3D beam flattening,” IEEE Trans. Wireless Commun., vol. 20, no. 7, pp. 4128–4143, Jul. 2021. ",
+            "[28] J. Sabzehali, V. K. Shah, H. S. Dhillon, and J. H. Reed, “3D placement and orientation of mmWave-based UAVs for guaranteed LoS coverage,” IEEE Wireless Commun. Lett., vol. 10, no. 8, pp. 1662–1666, Aug. 2021. ",
+            "[29] E. Park, S.-R. Lee, and I. Lee, “Antenna placement optimization for distributed antenna systems,” IEEE Trans. Wireless Commun., vol. 11, no. 7, pp. 2468–2477, Jul. 2012. ",
+            "[30] O. M. Bushnaq, M. A. Kishk, A. Celik, M. Alouini, and T. Y. Al-Naffouri, “Optimal deployment of tethered drones for maximum cellular coverage in user clusters,” IEEE Trans. Wireless Commun., vol. 20, no. 3, pp. 2092–2108, Mar. 2021. ",
+            "[31] P. K. Sharma, D. Deepthi, and D. I. Kim, “Outage probability of 3-D mobile UAV relaying for hybrid satellite-terrestrial networks,” IEEE Commun. Lett., vol. 24, no. 2, pp. 418–422, Feb. 2020. ",
+            "[32] Y. Cai, Z. Wei, R. Li, D. W. Kwan Ng, and J. Yuan, “Energyefficient resource allocation for secure UAV communication systems,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Apr. 2019, pp. 1–8. ",
+            "[33] Y. A. Sambo, P. V. Klaine, J. P. B. Nadas, and M. A. Imran, “Energy minimization UAV trajectory design for delay-tolerant emergency communication,” in Proc. IEEE Int. Conf. Commun. Workshops (ICC Workshops), May 2019, pp. 1–6. ",
+            "[34] Y. Zeng, J. Xu, and R. Zhang, “Energy minimization for wireless communication with rotary-wing UAV,” IEEE Trans. Wireless Commun., vol. 18, no. 4, pp. 2329–2345, Apr. 2019. ",
+            "[35] X. Zhang, Z. Chang, T. Hämäläinen, and G. Min, “AoI-energy tradeoff for data collection in UAV-assisted wireless networks,” IEEE Trans. Commun., vol. 72, no. 3, pp. 1849–1861, Mar. 2024, doi: 10.1109/TCOMM.2023.3337400. ",
+            "[36] D. Deng, S. Dang, X. Li, D. W. K. Ng, and A. Nallanathan, “Joint optimization for covert communications in UAV-assisted NOMA networks,” IEEE Trans. Veh. Technol., vol. 73, no. 1, pp. 1012–1026, Jan. 2024. "
+        ],
+        "bbox": [
+            503,
+            68,
+            924,
+            950
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            76,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "page_number",
+        "text": "13249 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[37] C. Dai, K. Zhu, and E. Hossain, “Multi-agent deep reinforcement learning for joint decoupled user association and trajectory design in full-duplex multi-UAV networks,” IEEE Trans. Mobile Comput., vol. 22, no. 10, pp. 6056–6070, Oct. 2023. ",
+            "[38] S. Liang et al., “Charging UAV deployment for improving charging performance of wireless rechargeable sensor networks via joint optimization approach,” Comput. Netw., vol. 201, Dec. 2021, Art. no. 108573. ",
+            "[39] V. Roberge, M. Tarbouchi, and G. Labonte, “Comparison of parallel genetic algorithm and particle swarm optimization for real-time UAV path planning,” IEEE Trans. Ind. Informat., vol. 9, no. 1, pp. 132–141, Feb. 2013. ",
+            "[40] Q.-V. Pham, T. Huynh-The, M. Alazab, J. Zhao, and W.-J. Hwang, “Sum-rate maximization for UAV-assisted visible light communications using NOMA: Swarm intelligence meets machine learning,” IEEE Internet Things J., vol. 7, no. 10, pp. 10375–10387, Oct. 2020. ",
+            "[41] J. Li, H. Kang, G. Sun, S. Liang, Y. Liu, and Y. Zhang, “Physical layer secure communications based on collaborative beamforming for UAV networks: A multi-objective optimization approach,” in Proc. IEEE Conf. Comput. Commun., May 2021, pp. 1–10. ",
+            "[42] A. Rahmati et al., “Dynamic interference management for UAV-assisted wireless networks,” IEEE Trans. Wireless Commun., vol. 21, no. 4, pp. 2637–2653, Apr. 2022. ",
+            "[43] A. Al-Hourani, S. Kandeepan, and S. Lardner, “Optimal LAP altitude for maximum coverage,” IEEE Wireless Commun. Lett., vol. 3, no. 6, pp. 569–572, Dec. 2014. ",
+            "[44] G. Sun, J. Li, Y. Liu, S. Liang, and H. Kang, “Time and energy minimization communications based on collaborative beamforming for UAV networks: A multi-objective optimization method,” IEEE J. Sel. Areas Commun., vol. 39, no. 11, pp. 3555–3572, Nov. 2021. ",
+            "[45] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Communications and control for wireless drone-based antenna array,” IEEE Trans. Commun., vol. 67, no. 1, pp. 820–834, Jan. 2019. ",
+            "[46] Y. Zeng, Q. Wu, and R. Zhang, “Accessing from the sky: A tutorial on UAV communications for 5G and beyond,” Proc. IEEE, vol. 107, no. 12, pp. 2327–2375, Dec. 2019. ",
+            "[47] Z. Yang, W. Xu, and M. Shikh-Bahaei, “Energy efficient UAV communication with energy harvesting,” IEEE Trans. Veh. Technol., vol. 69, no. 2, pp. 1913–1927, Feb. 2019. ",
+            "[48] C. You and R. Zhang, “Hybrid offline-online design for UAV-enabled data harvesting in probabilistic LoS channels,” IEEE Trans. Wireless Commun., vol. 19, no. 6, pp. 3753–3768, Jun. 2020. ",
+            "[49] S.-F. Chou, A.-C. Pang, and Y.-J. Yu, “Energy-aware 3D unmanned aerial vehicle deployment for network throughput optimization,” IEEE Trans. Wireless Commun., vol. 19, no. 1, pp. 563–578, Jan. 2020. ",
+            "[50] I. Giagkiozis and P. J. Fleming, “Methods for multi-objective optimization: An analysis,” Inf. Sci., vol. 293, pp. 338–350, Feb. 2015. ",
+            "[51] T. Shafique, H. Tabassum, and E. Hossain, “End-to-end energyefficiency and reliability of UAV-assisted wireless data ferrying,” IEEE Trans. Commun., vol. 68, no. 3, pp. 1822–1837, Mar. 2020. ",
+            "[52] C. E. Shannon, “A mathematical theory of communication,” Bell Syst. Tech. J., vol. 27, no. 3, pp. 379–423, 1948. ",
+            "[53] Q. Lin et al., “A clustering-based evolutionary algorithm for manyobjective optimization problems,” IEEE Trans. Evol. Comput., vol. 23, no. 3, pp. 391–405, Jun. 2019. ",
+            "[54] P. Goos, U. Syafitri, B. Sartono, and A. R. Vazquez, “A nonlinear multidimensional knapsack problem in the optimal design of mixture experiments,” Eur. J. Oper. Res., vol. 281, no. 1, pp. 201–221, Feb. 2020. ",
+            "[55] M. Dorigo and L. M. Gambardella, “Ant colony system: A cooperative learning approach to the traveling salesman problem,” IEEE Trans. Evol. Comput., vol. 1, no. 1, pp. 53–66, Apr. 1997. ",
+            "[56] M. N. Omidvar, X. D. Li, Y. Mei, and X. Yao, “Cooperative co-evolution with differential grouping for large scale optimization,” IEEE Trans. Evol. Comput., vol. 18, no. 3, pp. 378–393, Jun. 2014. ",
+            "[57] H. Jiang, Z. Xiao, Z. Li, J. Xu, F. Zeng, and D. Wang, “An energyefficient framework for Internet of Things underlaying heterogeneous small cell networks,” IEEE Trans. Mobile Comput., vol. 21, no. 1, pp. 31–43, Jan. 2022. ",
+            "[58] H. Yang, Z. Xiong, J. Zhao, D. Niyato, L. Xiao, and Q. Wu, “Deep reinforcement learning-based intelligent reflecting surface for secure wireless communications,” IEEE Trans. Wireless Commun., vol. 20, no. 1, pp. 375–388, Jan. 2021. ",
+            "[59] M. Jain, V. Singh, and A. Rani, “A novel nature-inspired algorithm for optimization: Squirrel search algorithm,” Swarm Evol. Comput., vol. 44, pp. 148–175, Feb. 2019. "
+        ],
+        "bbox": [
+            71,
+            68,
+            495,
+            950
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[60] A. A. Heidari, S. Mirjalili, H. Faris, I. Aljarah, M. Mafarja, and H. Chen, “Harris hawks optimization: Algorithm and applications,” Future Gener. Comput. Syst., vol. 97, pp. 849–872, Aug. 2019. ",
+            "[61] E. Rashedi, H. Nezamabadi-Pour, and S. Saryazdi, “GSA: A gravitational search algorithm,” Inf. Sci., vol. 179, no. 13, pp. 2232–2248, Jun. 2009. ",
+            "[62] E. Rashedi, E. Rashedi, and H. Nezamabadi-Pour, “A comprehensive survey on gravitational search algorithm,” Swarm Evol. Comput., vol. 41, pp. 141–158, Aug. 2018. ",
+            "[63] H. Nobahari, M. Nikusokhan, and P. Siarry, “A multi-objective gravitational search algorithm based on non-dominated sorting,” Int. J. Swarm Intell. Res., vol. 3, no. 3, pp. 32–49, Jul. 2012. ",
+            "[64] H. H. Reza and M. Rouhani, “A multi-objective gravitational search algorithm,” in Proc. IEEE 2nd Int. Conf. Comput. Intell. Commun. Syst. Netw., Jun. 2010, pp. 7–12. ",
+            "[65] B. Kazimipour, X. Li, and A. K. Qin, “A review of population initialization techniques for evolutionary algorithms,” in Proc. IEEE Congr. Evol. Comput. (CEC), Jul. 2014, pp. 2585–2592. ",
+            "[66] K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan, “A fast and elitist multiobjective genetic algorithm: NSGA-II,” IEEE Trans. Evol. Comput., vol. 6, no. 2, pp. 182–197, Apr. 2002. ",
+            "[67] D. Li, W. Guo, A. Lerch, Y. Li, L. Wang, and Q. Wu, “An adaptive particle swarm optimizer with decoupled exploration and exploitation for large scale optimization,” Swarm Evol. Comput., vol. 60, Feb. 2021, Art. no. 100789. ",
+            "[68] M. R. Bonyadi and Z. Michalewicz, “Stability analysis of the particle swarm optimization without stagnation assumption,” IEEE Trans. Evol. Comput., vol. 20, no. 5, pp. 814–819, Oct. 2016. ",
+            "[69] H. D. Nguyen, K.-T. Tran, and N. Agoulmine, “Impact of interference on the system performance of Wimax relay 802.16j with sectoring,” in Proc. IEEE Int. Conf. Commun. (ICC), Jun. 2011, pp. 1–5. ",
+            "[70] J. Li et al., “Multi-objective optimization approaches for physical layer secure communications based on collaborative beamforming in UAV networks,” IEEE/ACM Trans. Netw., vol. 31, no. 4, pp. 1902–1917, Aug. 2023. ",
+            "[71] S. Mirjalili, “Dragonfly algorithm: A new meta-heuristic optimization technique for solving single-objective, discrete, and multi-objective problems,” Neural Comput. Appl., vol. 27, no. 4, pp. 1053–1073, May 2016. ",
+            "[72] S. Mirjalili, S. Saremi, S. M. Mirjalili, and L. D. S. Coelho, “Multiobjective grey wolf optimizer: A novel algorithm for multi-criterion optimization,” Exp. Syst. Appl., vol. 47, pp. 106–119, Apr. 2016. ",
+            "[73] S. Mirjalili, A. H. Gandomi, S. Z. Mirjalili, S. Saremi, H. Faris, and S. M. Mirjalili, “Salp swarm algorithm: A bio-inspired optimizer for engineering design problems,” Adv. Eng. Softw., vol. 114, pp. 163–191, Dec. 2017. ",
+            "[74] X. Li, J. Zhou, B. Duan, Y. Yang, Y. Zhang, and J. Fan, “Performance of planar arrays for microwave power transmission with position errors,” IEEE Antennas Wireless Propag. Lett., vol. 14, pp. 1794–1797, 2015. ",
+            "[75] A. Minturn, D. Vernekar, Y. L. Yang, and H. Sharif, “Distributed beamforming with imperfect phase synchronization for cognitive radio networks,” in Proc. IEEE Int. Conf. Commun. (ICC), Jun. 2013, pp. 4936–4940. ",
+            "[76] H. Jung, S.-W. Ko, and I.-H. Lee, “Secure transmission using linearly distributed virtual antenna array with element position perturbations,” IEEE Trans. Veh. Technol., vol. 70, no. 1, pp. 474–489, Jan. 2021. "
+        ],
+        "bbox": [
+            504,
+            68,
+            924,
+            724
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/d80923b6de4764ad284ee70218a2e9b1857a2ab2d813f67f0f9aec457d523ddc.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young woman with short dark hair against a solid blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            829,
+            627,
+            946
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Xiaoya Zheng received the B.S. degree in software engineering from Hebei Geology University in 2021. She is currently pursuing the M.S. degree with the College of Computer Science and Technology, Jilin University. Her research interests include UAV networks and optimization. ",
+        "bbox": [
+            638,
+            828,
+            921,
+            898
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "page_number",
+        "text": "13250 ",
+        "bbox": [
+            78,
+            36,
+            109,
+            46
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 23, NO. 10, OCTOBER 2024 ",
+        "bbox": [
+            437,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            852,
+            974
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/509191fce90c4200673985b9ce4f092dd87dc0f637c348d05f98591ea0b5cdf3.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal attire against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            74,
+            197,
+            191
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Geng Sun (Senior Member, IEEE) received the B.S. degree in communication engineering from Dalian Polytechnic University, Dalian, China, in 2007, and the Ph.D. degree in computer science and technology from Jilin University in 2018. He was a Visiting Researcher with the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, USA. He is currently an Associate Professor with the College of Computer Science and Technology, Jilin University. His research interests include wireless networks, UAV communications, collaborative beamforming, and optimizations. ",
+        "bbox": [
+            207,
+            71,
+            491,
+            196
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            75,
+            196,
+            328,
+            210
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/22819ef1180361729d1ec2db25a4c12efe305782f762e6f20f5548cb3d5f1a58.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            73,
+            627,
+            190
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Minghao Yin (Member, IEEE) received the B.S. and M.S. degrees in computer science from Northeast Normal University, China, in 2001 and 2004, respectively, and the Ph.D. degree in computer science from Jilin University, China, in 2008. Since 2010, he has been the Dean of the Department of Computer Sciences, Northeast Normal University, where he is currently a Professor. He has authored two books and more than 100 articles. His research interests include swarm intelligence, automated reasoning, automated planning, and algorithms. ",
+        "bbox": [
+            638,
+            71,
+            921,
+            199
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/f06c24441f232a3f839db5dd22e2eca3d312ad0407316f17f3ea391bd9555eee.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in a collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            256,
+            199,
+            372
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Jiahui Li (Student Member, IEEE) received the B.S. degree in software engineering and the M.S. degree in computer science and technology from Jilin University, Changchun, China, in 2018 and 2021, respectively, where he is currently pursuing the Ph.D. degree in computer science. His current research interests include UAV networks, antenna arrays, and optimization. ",
+        "bbox": [
+            207,
+            253,
+            491,
+            345
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/8e5c374b481aca5d3947a9f5df934e7405310e24ab23d1c87acd7a4d5bb39138.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a person wearing glasses and a dark jacket (no visible text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            290,
+            627,
+            407
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Dusit Niyato (Fellow, IEEE) received the B.Eng. degree from the King Mongkut’s Institute of Technology Ladkrabang (KMITL), Thailand, in 1999, and the Ph.D. degree in electrical and computer engineering from the University of Manitoba, Canada, in 2008. He is currently a Professor with the School of Computer Science and Engineering, Nanyang Technological University, Singapore. His research interests include the Internet of Things (IoT), machine learning, and incentive mechanism design. ",
+        "bbox": [
+            638,
+            287,
+            921,
+            404
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/f85fcead2afedb2e017f2f472582f1bcef8edecaff6584dcecb69d79d7936be4.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a woman with long dark hair wearing a collared shirt against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            415,
+            197,
+            532
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Shuang Liang received the B.S. degree in communication engineering from Dalian Polytechnic University, China, in 2011, and the M.S. degree in software engineering and the Ph.D. degree in computer science from Jilin University, China, in 2017 and 2022, respectively. She is currently a Post-Doctoral Researcher with the School of Information Science and Technology, Northeast Normal University. Her research interests include wireless communication, the design of array antennas, collaborative beamforming, and optimizations. ",
+        "bbox": [
+            207,
+            414,
+            491,
+            541
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/1bdde5c4bc37bb886d430a6503c7288d46701ba7cae7fa7d4ec2078a3a9fb72c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a smiling man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            507,
+            627,
+            623
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Victor C. M. Leung (Life Fellow, IEEE) was a Professor of electrical and computer engineering and the TELUS Mobility Research Chair at The University of British Columbia (UBC) when he retired from UBC in 2018 and became a Professor Emeritus. He is currently a Distinguished Professor in computer science and software engineering with Shenzhen University, China. He has coauthored more than 1300 journals/conference papers and book chapters. His research interests include wireless networks and mobile systems. He is a fellow of the ",
+        "bbox": [
+            638,
+            505,
+            921,
+            630
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/d2bcea72429bbd3e7252b8241d92d7b3ebc0a69052053a287a0401ea0fe545a5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a tie (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            585,
+            197,
+            702
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Qingqing Wu (Senior Member, IEEE) received the B.Eng. degree in electronic engineering from the South China University of Technology in 2012 and the Ph.D. degree in electronic engineering from Shanghai Jiao Tong University (SJTU) in 2016. From 2016 to 2020, he was a Research Fellow with the Department of Electrical and Computer Engineering, National University of Singapore. He is currently an Associate Professor with SJTU. He has coauthored more than 100 IEEE journal articles with 26 ESI highly cited papers and eight ESI hot papers, which have received more than 18 000 Google citations. His current research interests include intelligent reflecting surface (IRS), unmanned aerial vehicle (UAV) communications, and MIMO transceiver design. He was listed as the Clarivate ESI Highly Cited Researcher in 2021 and 2022, the Most Influential Scholar Award in AI-2000 by Aminer in 2021, and the Worlds Top 2% Scientist by Stanford University in 2020 and 2021. ",
+        "bbox": [
+            207,
+            584,
+            491,
+            710
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            710,
+            491,
+            779
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Royal Society of Canada (Academy of Science), the Canadian Academy of Engineering, and the Engineering Institute of Canada. He received the IEEE Vancouver Section Centennial Award, the 2011 UBC Killam Research Prize, the 2017 Canadian Award for Telecommunications Research, and the 2018 IEEE TCGCC Distinguished Technical Achievement Recognition Award. He has coauthored papers that won the 2017 IEEE ComSoc Fred W. Ellersick Prize, the 2017 IEEE SYSTEMS JOURNAL Best Paper Award, the 2018 IEEE CSIM Best Journal Paper Award, and the 2019 IEEE TCGCC Best Journal Paper Award. He is named in the current Clarivate Analytics list of “Highly Cited Researchers.” He is on the Editorial Boards of IEEE TRANSACTIONS ON GREEN COMMUNICATIONS AND NETWORKING, IEEE TRANSACTIONS ON CLOUD COMPUTING, IEEE ACCESS, IEEE NETWORK, and several other journals. ",
+        "bbox": [
+            503,
+            630,
+            921,
+            779
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "header",
+        "text": "ZHENG et al.: RELIABLE AND ENERGY-EFFICIENT COMMUNICATIONS VIA CB ",
+        "bbox": [
+            76,
+            35,
+            500,
+            46
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "page_number",
+        "text": "13251 ",
+        "bbox": [
+            888,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on May 31,2026 at 05:27:33 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 16
+    }
+]
