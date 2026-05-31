@@ -1,0 +1,2697 @@
+[
+    {
+        "type": "text",
+        "text": "Multi-Agent Deep Reinforcement Learning-Based Trajectory Planning for Multi-UAV Assisted Mobile Edge Computing ",
+        "text_level": 1,
+        "bbox": [
+            96,
+            70,
+            903,
+            175
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Liang Wang , Kezhi Wang , Senior Member, IEEE, Cunhua Pan , Member, IEEE, Wei Xu , Senior Member, IEEE, Nauman Aslam , Member, IEEE, and Lajos Hanzo , Fellow, IEEE ",
+        "bbox": [
+            112,
+            181,
+            880,
+            220
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—An unmanned aerial vehicle (UAV)-aided mobile edge computing (MEC) framework is proposed, where several UAVs having different trajectories fly over the target area and support the user equipments (UEs) on the ground. We aim to jointly optimize the geographical fairness among all the UEs, the fairness of each UAV’ UE-load and the overall energy consumption of UEs. The above optimization problem includes both integer and continues variables and it is challenging to solve. To address the above problem, a multi-agent deep reinforcement learning based trajectory control algorithm is proposed for managing the trajectory of each UAV independently, where the popular Multi-Agent Deep Deterministic Policy Gradient (MADDPG) method is applied. Given the UAVs’ trajectories, a low-complexity approach is introduced for optimizing the offloading decisions of UEs. We show that our proposed solution has considerable performance over other traditional algorithms, both in terms of the fairness for serving UEs, fairness of UE-load at each UAV and energy consumption for all the UEs. ",
+        "bbox": [
+            73,
+            262,
+            491,
+            489
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Multi-agent deep reinforcement learning, MADDPG, mobile edge computing, UAV, trajectory control. ",
+        "bbox": [
+            73,
+            494,
+            491,
+            523
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            215,
+            550,
+            351,
+            564
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "S A BENEFIT of their compelling features, unmanned aerial vehicles (UAVs) are expected to play a vital role in wireless communication systems. To elaborate a little further, UAVs are capable of providing wireless connectivity ",
+        "bbox": [
+            73,
+            568,
+            490,
+            630
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received April 18, 2020; revised August 19, 2020; accepted September 21, 2020. Date of publication September 29, 2020; date of current version March 8, 2021. The work of W. Xu was supported in part by the NSFC under grants 62022026 and 61871109. L. Hanzo would like to acknowledge the financial support of the Engineering and Physical Sciences Research Council projects EP/N004558/1, EP/P034284/1, EP/P034284/1, EP/P003990/1 (COALESCE), of the Royal Society’s Global Challenges Research Fund Grant as well as of the European Research Council’s Advanced Fellow Grant QuantCom. The associate editor coordinating the review of this article and approving it for publication was G. Ding. (Corresponding author: Kezhi Wang.) ",
+        "bbox": [
+            73,
+            640,
+            491,
+            766
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Liang Wang, Kezhi Wang, and Nauman Aslam are with the Department of Computer and Information Science, Northumbria University, Newcastle upon Tyne NE1 8ST, U.K. (e-mail: liang.wang@northumbria.ac.uk; kezhi.wang@northumbria.ac.uk; nauman.aslam@northumbria.ac.uk). ",
+        "bbox": [
+            73,
+            765,
+            488,
+            811
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Cunhua Pan is with the School of Electronic Engineering and Computer Science, Queen Mary University of London, London E1 4NS, U.K. (e-mail: c.pan@qmul.ac.uk). ",
+        "bbox": [
+            73,
+            811,
+            491,
+            845
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Wei Xu is with the National Mobile Communications Research Laboratory, Southeast University, Nanjing 210096, China, and also with Purple Mountain Laboratories, Nanjing 211111, China (e-mail: wxu@seu.edu.cn). ",
+        "bbox": [
+            73,
+            844,
+            491,
+            878
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Lajos Hanzo is with the School of Electronics and Computer Science, University of Southampton, Southampton SO17 1BJ, U.K. (e-mail: lh@ecs.soton.ac.uk). ",
+        "bbox": [
+            73,
+            878,
+            491,
+            912
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TCCN.2020.3027695 even without network infrastructure, or complement the conventional base stations (BSs), whose coverage may suffer from severe blockage due to tall buildings or by the damage caused by natural disasters [1]. In order to support reliable communication links, UAVs can promptly adjust their locations according to the dynamic communication environment. Furthermore, since UAVs can be deployed freely and flexibly in three-dimensional (3D) space, direct line-of-sight (LoS) communication with ground-UEs can be readily established, which can potentially boost the throughput in practical scenarios [2]. As a benefit of the above appealing features, in [3] and [4], both fixed-wing UAVs and rotary-wing UAVs were considered as the relaying nodes, for providing seamless connectivity. In [5], Wang et al. investigated a fixed-wing UAV-to-UAV communication system, and they proposed a path planning algorithm for minimizing the latency of information transmission, under the constraints of accelerations, location uncertainties and throughput. In [6], Cui et al. studied the problem of maximizing the average data rate among UEs in mobile-UAV-enabled networks both in orthogonal multiple access (OMA) and non-orthogonal multiple access (NOMA) modes. Furthermore, in agricultural applications, as well as in weather monitoring and wildfire management, UAV can be utilized as a mobile data collector [7]. As a future development, in [8], the authors deployed the UAV as the mobile energy transmitter (ET) in a wireless power transfer (WPT) system. ",
+        "bbox": [
+            86,
+            912,
+            385,
+            925
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            261,
+            921,
+            654
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "In order to fully exploit the potential of UAVs in wireless communication systems, it is important to investigate their path planning, hovering altitude and trajectory control [9], [10], [11]. In [11], Wang et al. creatively proposed a joint UAV altitude and power allocation optimization method, which beneficially alleviated the inter-cell interference of each UAV network. In [12], Al-Hourani et al. optimized the latitude of UAVs in order to provide the maximum radio coverage area on the ground. In [13], both static and mobile UAVs were considered in device-to-device (D2D) networks. Additionally, the UAV’s altitude was optimized for maximizing the system’s sum-rate and coverage probability. To tackle the throughput maximization problem of UAVaided mobile relaying systems, Zeng et al. [14] proposed an iterative algorithm to optimize the UAV’s trajectory and power allocation. In the content of multi-UAV enabled multiuser systems, Wu et al. [15] maximized the minimum throughput over all ground users by jointly optimizing the user scheduling, power control and UAV trajectories. In order to meet the different quality-of-service (QoS) requirement of users, Alzenad et al. [16] investigated coverage-placement problem of UAV-BSs and proposed an optimal placement algorithm for maximizing the number of users supported. ",
+        "bbox": [
+            503,
+            654,
+            921,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, VOL. 7, NO. 1, MARCH 2021 ",
+        "bbox": [
+            76,
+            34,
+            653,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "73 ",
+        "bbox": [
+            906,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "2332-7731 -c 2020 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            197,
+            931,
+            799,
+            944
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            290,
+            944,
+            705,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "table",
+        "img_path": "images/a28ddd5c0052533f4f6f5ff16e4c64f66bd2d7f01def2e4080f014a04aec0259.jpg",
+        "table_caption": [
+            "TABLE I COMPARISON BETWEEN OUR WORK AND THE EXISTING LITERATURE "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Reference</td><td>Single UAV</td><td>Multi UAV</td><td>Mobile edge computing (incl.)</td><td>Path planning</td><td>Offloading decision</td><td>Reinforcement learning (e.g., Q-learning)</td><td>Multi agent learning</td><td>DNN</td></tr><tr><td>[2]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[4]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[5]</td><td></td><td>√</td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[6]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[7]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[8]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[9]</td><td></td><td>√</td><td></td><td>√</td><td></td><td></td><td></td><td>√</td></tr><tr><td>[10]</td><td></td><td>√</td><td></td><td>√</td><td></td><td>√</td><td>√</td><td></td></tr><tr><td>[11]</td><td></td><td>√</td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[13]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[14]</td><td></td><td>√</td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[15]</td><td></td><td>√</td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[16]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[20]</td><td></td><td>√</td><td>√</td><td>√</td><td>√</td><td></td><td></td><td></td></tr><tr><td>[21]</td><td>√</td><td></td><td></td><td>√</td><td>√</td><td></td><td></td><td></td></tr><tr><td>[23]</td><td>√</td><td></td><td>√</td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[24]</td><td></td><td>√</td><td></td><td>√</td><td></td><td></td><td></td><td></td></tr><tr><td>[30]</td><td></td><td></td><td></td><td></td><td></td><td>√</td><td>√</td><td></td></tr><tr><td>[34]</td><td></td><td></td><td></td><td></td><td></td><td>√</td><td>√</td><td>√</td></tr><tr><td>Our work</td><td></td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td></tr></table>",
+        "bbox": [
+            138,
+            98,
+            856,
+            363
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            400,
+            491,
+            476
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In recent years, mobile edge computing (MEC) has been shown to dramatically improve the user experience [17], [18]. By providing both computing and storage hardware at the network edges, namely at the BSs or access points (APs), the resource-limited UEs have the option of offloading their computation-intensive and latency-critical applications to the MEC servers [19]. Due to the mobility of UAVs, recent years have seen research progress on the integration of UAVs with MEC [20], [21]. In [22], Motlagh et al., were amongst the first who proposed UAV-enabled MEC, in which UEs can significantly reduce the energy consumption via offloading. In order to minimize the overall energy dissipation of UEs while meeting their QoS requirement, Jeong et al. [23] proposed an efficient successive convex approximation-based algorithm for jointly optimizing the bit allocation and UAV’s trajectory. Considering a multi-UAV system, Hua et al. [24] investigated the multi-UAV scenario, and they optimized the UAVs’ trajectories, transmit power and user scheduling. ",
+        "bbox": [
+            73,
+            477,
+            491,
+            748
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Given the recent advances in machine learning [25], the combination of deep neural networks (DNNs) [26] and reinforcement learning (RL) [27], i.e., deep reinforcement learning (DRL) has become a hot research topic. In DRL, an agent is assumed to interact with the environment for learning the optimal policy with the aid of exploration. Compared to traditional RL, DRL facilitates more accurate convergence and approximation by exploiting the power of DNNs for estimating the associated functions in RL [28]. The great potential of DRL in solving complex control problems has also been demonstrated in [29], [30], [31], [32], [33]. In [29], Mnih et al. introduced the deep Q network (DQN) philosophy, which ignited the field of DRL. For instance, Wang et al. [30] systematically investigated the problem of distributed Q-learning aided heterogeneous network association in the content of energy-efficient Internet of Things (IoT). In order to improve the training procedure, DQN relies on a pair of techniques namely, experience replay and target networks. For the sake of tackling the typical over-estimation problem of RL, a double DQN (D-DQN) was proposed by Van Hasselt et al. [31]. However, DQN may suffer from the curse of high-dimensional action spaces and cannot be readily applied to continuous domains. Thus, motivated by this, Lillicrap et al. [32] proposed a deep deterministic policy gradient (DDPG) technique based on the so-called actor-critic architecture, which can be readily applied for a range of challenging problems. A comprehensive survey of multi-agent RL, have also been provided by Bu et al. [33]. ",
+        "bbox": [
+            73,
+            748,
+            491,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            400,
+            921,
+            627
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Against the above background, we conceive a multi-UAV assisted MEC framework, where each UAV is controlled by a dedicated agent. We aim for jointly maximizing the geographical fairness1 among the UEs covered, the fairness of UE-load of each UAV,2 while minimizing the overall energy consumption of UEs by optimizing each UAV’s trajectory and offloading decisions. This is a complex problem which includes both integer and continuous variables. Hence it is challenging to address it by traditional algorithms, such as convex optimization and dynamic programming. Therefore, we conceive a multi-agent deep reinforcement learning based solution, with the help of the popular Multi-Agent Deep Deterministic Policy Gradient (MADDPG) [34] for solving it. Given the UAVs’ trajectories, a low-complexity approach is introduced for optimizing the offloading decisions of UEs. Our simulation results will show that the proposed DRL based algorithm outperforms the benchmark algorithms. We ",
+        "bbox": [
+            503,
+            627,
+            921,
+            885
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1The geographical fairness reflects the QoS level of UEs served by UAVs from the initial time slot to the current time slot. ",
+            "2The UE-load of UAV is defined in (18). "
+        ],
+        "bbox": [
+            504,
+            907,
+            921,
+            944
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "74 ",
+        "bbox": [
+            76,
+            35,
+            93,
+            45
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, VOL. 7, NO. 1, MARCH 2021 ",
+        "bbox": [
+            343,
+            34,
+            919,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/53ef2e6686cc34785b4786e23fb8a6596f1463855014772ba755f6e888465fbf.jpg",
+        "image_caption": [
+            "Fig. 1. Overall System Architecture. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Flying trajectory\"] --> B[\"Offloading decision\"]\n    B --> C[\"Coverage area\"]\n    C --> D[\"Starting point\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fff,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            200,
+            64,
+            795,
+            438
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "summarize the difference between our work and the existing literature in Table I. ",
+        "bbox": [
+            73,
+            476,
+            491,
+            505
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The rest of this article is organized as follows. In Section II, we introduce the system model and the optimization problem. In Section III, our multi-agent based DRL algorithm is proposed. Our experimental results are shown in Section IV. Finally, our conclusions are drawn in Section V. ",
+        "bbox": [
+            73,
+            506,
+            491,
+            580
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The main notations used in this article are summarized in Table II. ",
+        "bbox": [
+            73,
+            582,
+            491,
+            611
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            210,
+            623,
+            356,
+            636
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In this section, we describe the system model. As shown in Fig. 1, we assume that there are N UEs randomly distributed in a square-shaped area with side length l max , and the set of UEs is denoted as $\\mathcal { N } \\triangleq \\{ n = 1 , 2 , \\dots , N \\}$ . There are M UAVs flying at a fixed altitude H over the target area to serve the ground UEs, and the set of UAVs is denoted as $\\mathcal { M } \\triangleq \\{ m = 1 , 2 , \\dots , M \\}$ . We also assume that UAVs can be deployed and easily charged on the building roof when UAVs run out of their energy. Assume that each UE has a computational task to be executed at each time slot (TS) over T consecutive TSs, $\\mathcal { T } \\triangleq \\{ t = 1 , 2 , \\dots , T \\}$ . Each of the tasks can be executed either by the UE or offloaded to one of the UAVs. We define a new set $m \\in \\mathcal { M } ^ { \\prime } \\triangleq \\{ 0 , 1 , \\dots , M \\}$ to denote the possible places where the tasks can be executed, with $m = 0$ representing local execution. Then, we define the offloading decision variable $z _ { n , m , t }$ as ",
+        "bbox": [
+            73,
+            641,
+            491,
+            883
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {n, m, t} = \\{0, 1 \\}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M} ^ {\\prime}, t \\in \\mathcal {T}, \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            890,
+            490,
+            907
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $z _ { n , m , t } = 1 , m \\neq 0$ means that UE n decides to offload the task to UAV m in TS t, while $z _ { n , m , t } = 1 , m = 0$ represents ",
+        "bbox": [
+            73,
+            915,
+            491,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "table",
+        "img_path": "images/92188491e1c81e9a755a280b2b9e24b0d3110d5cc016b6c2792a3857726a0640.jpg",
+        "table_caption": [
+            "TABLE II LIST OF MAIN NOTATIONS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Notation</td><td>Description</td></tr><tr><td>n, N,  $\\mathcal{N}$ </td><td>The index, number and the set of UEs</td></tr><tr><td>m, M,  $\\mathcal{M}$ </td><td>The index, number and the set of UAVs</td></tr><tr><td>t, T,  $\\mathcal{T}$ </td><td>The index, number and the set of TSs</td></tr><tr><td> $z_{n,m,t}$ </td><td>Offloading decision of UE n</td></tr><tr><td> $S_{n,t}$ </td><td>Computation task of UE n in TS t</td></tr><tr><td> $D_{n,t}$ </td><td>Data volume of task  $S_{n,t}$ </td></tr><tr><td> $F_{n,t}$ </td><td>Overall CPU cycles required for task  $S_{n,t}$ </td></tr><tr><td> $f_{n,m,t}$ </td><td>Computation capacity of UAV m allocated to UE n</td></tr><tr><td> $T_{n,m,t}^{C}$ </td><td>Execution time of UAV m to UE n in TS t</td></tr><tr><td> $T_{n,m,t}^{Tr}$ </td><td>Transmission time of UE n to UAV m in TS t</td></tr><tr><td> $T^{max}$ </td><td>Maximal time duration of each TS</td></tr><tr><td> $\\alpha_{m,t}, d_{m,t}$ </td><td>Flying angle and distance of UAV m in TS t</td></tr><tr><td> $d^{max}$ </td><td>Maximal flying distance of UAV in each TS</td></tr><tr><td> $[X_{m,t}, Y_{m,t}, H]$ </td><td>Coordinates of UAV m in TS t</td></tr><tr><td> $[x_n, y_n]$ </td><td>Coordinates of UE n</td></tr><tr><td> $R_{n,m,t}$ </td><td>Horizontal distance between UAV m and UE n</td></tr><tr><td> $R_{m,m',t}$ </td><td>Horizontal distance between UAV m and UAV m&#x27;</td></tr><tr><td> $R^{max}$ </td><td>Maximal horizontal coverage radius of UAV</td></tr><tr><td> $r_{n,m,t}$ </td><td>Transmitting data rate of UE n to UAV m</td></tr><tr><td> $E_{n,m,t}^{C}$ </td><td>Energy consumption for task execution</td></tr><tr><td> $E_{n,m,t}^{Tr}$ </td><td>Energy consumption for offloading</td></tr><tr><td> $c_{m,t}$ </td><td>Relative UE-load of UAV m in TS t</td></tr><tr><td> $f_t^u$ </td><td>Fairness index of UE-load of each UAV in TS t</td></tr><tr><td> $f_t^e$ </td><td>Fairness index of UEs in TS t</td></tr></table>",
+        "bbox": [
+            506,
+            505,
+            919,
+            811
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "that UE n carries out the task itself in TS t, and otherwise $z _ { n , m , t } = 0$ . Furthermore, we assume that each task can only be executed at a single place. Thus, we have ",
+        "bbox": [
+            503,
+            844,
+            919,
+            888
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m = 0} ^ {M} z _ {n, m, t} = 1, \\forall n \\in \\mathcal {N}, t \\in \\mathcal {T}. \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            589,
+            904,
+            921,
+            948
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: MULTI-AGENT DEEP REINFORCEMENT LEARNING-BASED TRAJECTORY PLANNING ",
+        "bbox": [
+            76,
+            34,
+            601,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "75 ",
+        "bbox": [
+            906,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            120,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Similarly to [35], in the TS t, we assume that UE n has a computationally intensive task $S _ { n , t }$ to be executed, which is defined as ",
+        "bbox": [
+            73,
+            69,
+            491,
+            113
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS _ {n, t} = \\left\\{D _ {n, t}, F _ {n, t} \\right\\}, \\forall n \\in \\mathcal {N}, t \\in \\mathcal {T}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            142,
+            121,
+            488,
+            140
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $D _ { n , }$ t denotes the data volume to be processed, while $F _ { n , t }$ describes the total number of the CPU cycles required for executing this task. Both $D _ { n , t }$ and $F _ { n , t }$ can be characterized as in [36]. ",
+        "bbox": [
+            73,
+            145,
+            491,
+            205
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, in TS t, each of UAV flies in a direction determined by the angle of $\\alpha _ { m , t } ~ \\in ~ [ 0 , 2 \\pi )$ , distance of $d _ { m , t } ~ \\in ~ [ 0 , d ^ { m a x } ]$ , and cannot go beyond the border of the target area. We assume that the initial coordinates of UAV m are set as $[ X _ { m , 0 } , Y _ { m , 0 } , H ]$ . Then, the coordinates of UAV m in TS t can be calculated as $[ X _ { m , t } , Y _ { m , t } , H ]$ , where $\\begin{array} { r } { X _ { m , t } = X _ { m , 0 } + \\sum _ { t ^ { \\prime } = 1 } ^ { t } d _ { m , t ^ { \\prime } } \\mathrm { c o s } ( \\alpha _ { m , t ^ { \\prime } } ) } \\end{array}$ and $Y _ { m , t } =$ $\\begin{array} { r } { Y _ { m , 0 } + \\sum _ { t ^ { \\prime } = 1 } ^ { t } d _ { m , t ^ { \\prime } } { \\sin ( \\alpha _ { m , t ^ { \\prime } } ) } } \\end{array}$ . Thus, we have ",
+        "bbox": [
+            73,
+            205,
+            491,
+            330
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq X _ {m, t} \\leq l ^ {\\max}, \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            145,
+            334,
+            488,
+            352
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            73,
+            359,
+            104,
+            372
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq Y _ {m, t} \\leq l ^ {\\max}, \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}. \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            145,
+            380,
+            488,
+            398
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Additionally, we denote the distance between UAV m and UAV m- in TS t as $R _ { m , m ^ { \\prime } , t } .$ , which can be expressed as ",
+        "bbox": [
+            73,
+            404,
+            491,
+            436
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {m, m ^ {\\prime}, t} = \\sqrt {\\left(X _ {m , t} - X _ {m ^ {\\prime} , t}\\right) ^ {2} + \\left(Y _ {m , t} - Y _ {m ^ {\\prime} , t}\\right) ^ {2}}. \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            441,
+            488,
+            467
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We assume that the UAVs should keep a minimal distance of $R ^ { u }$ for avoiding their collision in each TS. Then, we have ",
+        "bbox": [
+            75,
+            472,
+            491,
+            502
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {m, m ^ {\\prime}, t} \\geq R ^ {u}, \\forall m, m ^ {\\prime} \\in \\mathcal {M}, m \\neq m ^ {\\prime}. \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            138,
+            508,
+            488,
+            527
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The horizontal distance between UE n and UAV m in TS t is calculated as ",
+        "bbox": [
+            73,
+            532,
+            491,
+            561
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {n, m, t} = \\sqrt {\\left(X _ {m , t} - x _ {n}\\right) ^ {2} + \\left(Y _ {m , t} - y _ {n}\\right) ^ {2}},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            127,
+            566,
+            434,
+            590
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\forall n \\in N, \\quad m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            592,
+            488,
+            608
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $[ x _ { n } , y _ { n } ]$ is assumed to be the coordinate of UE n. Note that if UE n decides to offload a task to UAV m in TS $t ,$ it must be in the coverage of UAV m. Then, we have ",
+        "bbox": [
+            73,
+            614,
+            491,
+            659
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {n, m, t} R _ {n, m, t} \\leq R ^ {\\max}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            94,
+            666,
+            488,
+            685
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $R ^ { m a x }$ is the maximal horizontal coverage radius of the UAVs. ",
+        "bbox": [
+            73,
+            690,
+            488,
+            719
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, the offloading data rate can be expressed by ",
+        "bbox": [
+            89,
+            720,
+            437,
+            736
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {n, m, t} = B \\log_ {2} \\left(1 + \\frac {\\rho P _ {n}}{H ^ {2} + R _ {n , m , t} ^ {2}}\\right),\n$$",
+        "text_format": "latex",
+        "bbox": [
+            148,
+            739,
+            413,
+            781
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\forall n \\in \\mathcal {N}, m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            215,
+            782,
+            488,
+            797
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where B is the channel’s bandwidth, $P _ { n }$ is the transmission power of UE $n , \\rho = g _ { 0 } G _ { 0 } / \\sigma ^ { 2 } ,$ , G0 ≈ 2.2846, g0 is the channel’s power gain at the reference distance of 1 m and $\\sigma ^ { 2 }$ is the noise power [37]. Here we do not consider any particular modulation and coding scheme. ",
+        "bbox": [
+            73,
+            804,
+            491,
+            878
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Thus, if UE n decides for offloading its task to UAV m in TS t, the time required for offloading the data is given by ",
+        "bbox": [
+            73,
+            878,
+            491,
+            910
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {n, m, t} ^ {T r} = \\frac {D _ {n , t}}{r _ {n , m , t}}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            125,
+            914,
+            488,
+            948
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and the execution time of the task can be expressed as ",
+        "bbox": [
+            503,
+            69,
+            879,
+            85
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {n, m, t} ^ {C} = \\frac {F _ {n , t}}{f _ {n , m , t}}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M} ^ {\\prime}, t \\in \\mathcal {T}, \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            90,
+            919,
+            123
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { n , m , t }$ represents the computational capability of UAV m that can be allocated to UE n, and $m = 0$ indicates local execution. Thus, the overall time required for executing the task can be described as ",
+        "bbox": [
+            501,
+            128,
+            919,
+            188
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {n, m, t} = \\left\\{ \\begin{array}{l l} T _ {n, m, t} ^ {C}, & \\text { if   local   execution }, \\\\ T _ {n, m, t} ^ {T r} + T _ {n, m, t} ^ {C}, & \\text { if   offloading }. \\end{array} \\right. \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            193,
+            919,
+            234
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We also assume that all tasks should be executed within the maximal time duration $T ^ { m a x }$ of TS. Then, we have ",
+        "bbox": [
+            503,
+            238,
+            919,
+            268
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {n, m, t} T _ {n, m, t} \\leq T ^ {\\max}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M} ^ {\\prime}, t \\in \\mathcal {T}. \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            524,
+            276,
+            919,
+            294
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "According to [38], if the UE n decides to execute a task locally, the energy consumption is given by ",
+        "bbox": [
+            503,
+            301,
+            919,
+            332
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {n, m, t} ^ {C} = k _ {n} \\left(f _ {n, m, t}\\right) ^ {v _ {n}} T _ {n, m, t} ^ {C}, \\forall n \\in \\mathcal {N}, t \\in \\mathcal {T}, \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            337,
+            919,
+            358
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $k _ { n } \\geq 0 , v _ { n } \\geq 1$ are positive coefficients. ",
+        "bbox": [
+            503,
+            364,
+            826,
+            378
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "If UE n decides to offload a task, the energy consumption of offloading is ",
+        "bbox": [
+            503,
+            380,
+            919,
+            410
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {n, m, t} ^ {T r} = P _ {n} T _ {n, m, t} ^ {T r}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M}, t \\in \\mathcal {T}. \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            415,
+            919,
+            436
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Thus, the energy consumption at UE n can be expressed as ",
+        "bbox": [
+            504,
+            443,
+            910,
+            458
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {n, m, t} = \\left\\{ \\begin{array}{l l} E _ {n, m, t} ^ {C}, & \\text { if   local   execution }, \\\\ E _ {n, m, t} ^ {T r}, & \\text { if   offloading }. \\end{array} \\right. \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            464,
+            919,
+            505
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, we define $c _ { m , t } \\in [ 0 , 1 ]$ as the relative UE-load of UAV m in TS t, as: ",
+        "bbox": [
+            503,
+            511,
+            919,
+            540
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nc _ {m, t} = \\frac {\\sum_ {n = 1} ^ {N} z _ {n , m , t}}{N}, \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}. \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            566,
+            546,
+            919,
+            579
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In this article, our first objective is to minimize the total energy consumption of UEs via optimizing both the offloading decisions and the UAVs’ trajectories. However, this may lead to an unfair process since some UAVs may serve more UEs than others. To address this issue, similar to the Jain’s fairness equation, we apply a fairness index $f _ { t } ^ { u }$ as ",
+        "bbox": [
+            501,
+            584,
+            919,
+            675
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {t} ^ {u} = \\frac {\\left(\\sum_ {m = 1} ^ {M} \\sum_ {t ^ {\\prime} = 1} ^ {t} c _ {m , t ^ {\\prime}}\\right) ^ {2}}{M \\sum_ {m = 1} ^ {M} \\left(\\sum_ {t ^ {\\prime} = 1} ^ {t} c _ {m , t ^ {\\prime}}\\right) ^ {2}}, \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            589,
+            681,
+            919,
+            739
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { t } ^ { u }$ reflects the level of fairness among the UAVs physically, if all the UAVs have a similar UE-load commencing from the initial TS up to TS t, the value of $f _ { t } ^ { u }$ is closer to 1. ",
+        "bbox": [
+            501,
+            743,
+            919,
+            787
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, to avoid the situation that some UEs are served during many TSs, while others are never served at all, similar to the Jain’s fairness equation, we apply the geographical fairness $f _ { t } ^ { e }$ as follows ",
+        "bbox": [
+            501,
+            789,
+            919,
+            847
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {t} ^ {e} = \\frac {\\left(\\sum_ {n = 1} ^ {N} \\sum_ {t ^ {\\prime} = 1} ^ {t} z _ {n , m , t ^ {\\prime}}\\right) ^ {2}}{N \\sum_ {n = 1} ^ {N} \\left(\\sum_ {t ^ {\\prime} = 1} ^ {t} z _ {n , m , t ^ {\\prime}}\\right) ^ {2}}, \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            586,
+            852,
+            919,
+            910
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { t } ^ { e }$ reflects the level of fairness among the UEs, explicitly, if all UEs are served for a similar number of TSs commencing from the initial TS to the TS t, the value of $f _ { t } ^ { e }$ is closer to 1. ",
+        "bbox": [
+            503,
+            915,
+            919,
+            945
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "76 ",
+        "bbox": [
+            76,
+            35,
+            93,
+            45
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, VOL. 7, NO. 1, MARCH 2021 ",
+        "bbox": [
+            343,
+            34,
+            919,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            120,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            69,
+            488,
+            98
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, we formulate our optimization problem as follows ",
+        "bbox": [
+            89,
+            99,
+            477,
+            114
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {P} 1: \\max _ {\\boldsymbol {P}, \\boldsymbol {Z}} \\sum_ {t = 1} ^ {T} \\frac {f _ {t} ^ {u} \\cdot f _ {t} ^ {e}}{\\sum_ {n = 1} ^ {N} \\sum_ {m = 0} ^ {M} z _ {n , m , t} E _ {n , m , t}} \\tag {21a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            98,
+            123,
+            490,
+            165
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "subject to: ",
+        "bbox": [
+            98,
+            166,
+            179,
+            181
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {n, m, t} = \\{0, 1 \\}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M} ^ {\\prime}, t \\in \\mathcal {T}, \\tag {21b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            183,
+            490,
+            200
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m = 0} ^ {M} z _ {n, m, t} = 1, \\forall n \\in \\mathcal {N}, t \\in \\mathcal {T}, \\tag {21c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            203,
+            490,
+            244
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq X _ {m, t} \\leq l ^ {\\max}, \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {21d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            98,
+            244,
+            488,
+            262
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq Y _ {m, t} \\leq l ^ {\\max}, \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {21e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            98,
+            263,
+            488,
+            281
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\alpha_ {m, t} <   2 \\pi , \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {21f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            98,
+            284,
+            488,
+            299
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq d _ {m, t} \\leq d ^ {\\max}, \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {21g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            98,
+            301,
+            488,
+            318
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {m, m ^ {\\prime}, t} \\geq R ^ {u}, \\forall m, m ^ {\\prime} \\in \\mathcal {M}, m \\neq m ^ {\\prime}, \\tag {21h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            320,
+            488,
+            338
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {n, m, t} R _ {n, m, t} \\leq R ^ {\\max}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M}, t \\in \\mathcal {T}, \\tag {21i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            340,
+            488,
+            356
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {n, m, t} T _ {n, m, t} \\leq T ^ {\\max}, \\forall n \\in \\mathcal {N}, m \\in \\mathcal {M} ^ {\\prime}, t \\in \\mathcal {T}. \\tag {21j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            359,
+            488,
+            376
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $P ~ = ~ \\{ \\alpha _ { m , t } , d _ { m , t } , \\forall m ~ \\in ~ \\mathcal { M } , t ~ \\in ~ \\mathcal { T } \\}$ and $z \\_ =$ $\\{ z _ { n , m , t } , \\forall n \\in \\mathcal { N } , m \\in \\mathcal { M } ^ { \\prime } , t \\in \\mathcal { T } \\}$ . Our objectives are to maximize the fairness of UE-load of each UAV and the fairness of the number of times that each UE is served by UAVs over all the TSs, while minimizing the overall energy consumption of UEs. It is readily observed that the optimization problem cannot be solved by traditional approaches, since it involves both the continuous variables $_ { P }$ and the discrete variables Z . Thus, in this article, a Multi-Agent deep reinforcement learning based Trajectory control algorithm (MAT) is proposed. ",
+        "bbox": [
+            73,
+            383,
+            491,
+            551
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "III. THE PROPOSED ALGORITHM ",
+        "text_level": 1,
+        "bbox": [
+            163,
+            571,
+            401,
+            585
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this section, we present our proposed algorithm. First, some background knowledge on deep reinforcement learning is provided, followed by our MAT conceived for solving Problem (21). ",
+        "bbox": [
+            73,
+            590,
+            490,
+            650
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A. Background Knowledge ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            670,
+            261,
+            685
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In the traditional reinforcement learning setup, a Markov decision process (MDP) [39] is employed with the state space of $\\begin{array} { r c l } { \\mathcal { S } } & { = } & { \\big \\{ \\ : s _ { t } ~ = ~ s _ { 1 } , s _ { 2 } , . . . , s _ { T } \\big \\} } \\end{array}$ and the action space of $\\mathcal { A } = \\{ a _ { t } = a _ { 1 } , a _ { 2 } , . . . , a _ { T } \\}$ . In the MDP, a decision agent interacts with the environment in discrete TSs. More specifically, the decision agent observes the current state $s _ { t }$ of the environment and takes the action $a _ { t }$ that is allowed in that state. As a benefit, the agent will obtain a reward $r _ { t }$ and traverses to a new state $s _ { t + 1 }$ . In [32], a policy $a _ { t } = \\pi ( s _ { t } )$ is introduced that maps the state to a legitimate action. During the process of interacting with the environment, the agent aims for selecting lated reward $\\begin{array} { r } { R _ { t } \\ = \\ \\sum _ { i = t } ^ { T } \\dot { \\gamma } ^ { i - \\dot { t } } r _ { i } } \\end{array}$ hat maxi, where $\\gamma \\in \\mathsf { \\Gamma } ( 0 , 1 )$ ccumu-is the discount factor and T is the number of TSs. Additionally, as a beneficial combination of DNN and RL, the philosophy of DQN [29] was proposed, which uses an action-value function $Q ( \\cdot )$ for approximately evaluating $R _ { t }$ by applying $a _ { t } , ~ s _ { t }$ and following $\\pi ( \\cdot ) \\colon$ ",
+        "bbox": [
+            73,
+            688,
+            491,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            504,
+            69,
+            609,
+            85
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ (s _ {t}, a _ {t}) = \\mathbb {E} _ {\\pi} [ R _ {t} | s _ {t}, a _ {t} ], \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            92,
+            919,
+            109
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "which is known as the Q-function, and can be obtained by a DNN. Then, the DNN can be trained with the aid of the loss function $L ( \\cdot )$ defined as: ",
+        "bbox": [
+            503,
+            114,
+            919,
+            161
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL \\left(\\theta^ {Q}\\right) = \\mathbb {E} \\left[ y _ {t} - Q \\left(s _ {t}, a _ {t} \\mid \\theta^ {Q}\\right) ^ {2} \\right], \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            584,
+            165,
+            919,
+            200
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\theta ^ { Q }$ denotes the network parameter of the DNN and $y _ { t }$ is formulated by ",
+        "bbox": [
+            503,
+            205,
+            919,
+            236
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {t} = r _ {t} + \\gamma Q \\left(s _ {t + 1}, a _ {t + 1} \\mid \\theta^ {Q}\\right), \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            598,
+            242,
+            919,
+            267
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $a _ { t + 1 }$ denotes the action of the agent in the next TS, which is generated by the DNN, given the state $s _ { t + 1 }$ . ",
+        "bbox": [
+            503,
+            271,
+            919,
+            301
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, in order to make the network more stable, a pair of techniques, namely the experience replay and the target network are utilized. The experience replay employs a buffer for storing transitions for the sake of mitigating the correlations between consecutive transitions and hence increasing their independence. Compared to the original RL training procedure, the DQN relies on a mini-batch for randomly sampling the transitions from the experience replay buffer, rather than only selecting a single transition. Furthermore, the target network that has the same network structure as $Q ( s _ { t } , a _ { t } )$ is employed for reducing the correlations. Note that the target network is only updated at certain intervals. ",
+        "bbox": [
+            501,
+            301,
+            921,
+            482
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "However, it is proved in [32] that DQN cannot be directly used for solving continuous-valued control problems. Thus, the popular actor-critic method at DDPG of [32] is resorted to. Specifically, DDPG consists of a DNN turned as actor and a DQN referred to as the critic network. The actor carries our the mapping function $\\pi ( s _ { t } | \\theta ^ { \\pi } )$ while the critic performs the function $\\overline { { Q ( s _ { t } , a _ { t } | \\theta ^ { Q } ) } }$ . The actor can generate the optimal action $a _ { t }$ based on the state st and it can be trained by applying the policy gradient method of [40] defined as ",
+        "bbox": [
+            501,
+            483,
+            921,
+            619
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\nabla_ {\\theta^ {\\pi}} J \\approx \\mathbb {E} \\Big [ \\nabla_ {\\theta^ {\\pi}} Q \\Big (s, a | \\theta^ {Q} \\Big) | _ {s = s _ {t}, a = \\pi (s _ {t} | \\theta^ {\\pi})} \\Big ] \\\\ = \\mathbb {E} \\left[ \\nabla_ {a} Q (s, a | \\theta^ {Q}) | _ {s = s _ {t}, a = \\pi (s _ {t}) \\nabla_ {\\theta} ^ {\\pi} \\pi (s | \\theta^ {\\pi}) | _ {s = s _ {t}}} \\right], \\tag {25} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            517,
+            623,
+            919,
+            691
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "while the critic network can be updated by using the loss function of (23). ",
+        "bbox": [
+            503,
+            698,
+            919,
+            728
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. MAT ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            744,
+            565,
+            758
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this section, by applying the popular MADDPG [34], we conceive a multi-agent MDP, namely an observable Markov game [41]. It is assumed that there are M agents interacting with the environment characterized by a set of states ${ \\mathcal { S } } \\ { \\stackrel { \\Delta } { = } } $ $\\{ s _ { t } , t \\in T \\}$ and a set of actions $\\mathcal { A } \\triangleq \\{ a _ { t } , t \\in \\mathcal { T } \\}$ . The state $s _ { t }$ consists of the private observation $o _ { m , t }$ and some other extra information known by each agent. Additionally, each UAV is controlled by its dedicated agent. In each TS, each agent obtains its private observation $o _ { m , t }$ and takes its own action $a _ { m , t }$ as well as receives a reward $r _ { m , t }$ . Then, the environment updates the state and traverses to a new state. Note that each agent is equipped with an actor network $\\boldsymbol { a } _ { m , t } = \\pi ^ { m } ( \\boldsymbol { o } _ { m , t } )$ , a critic network $Q ^ { m } ( s _ { t } , a _ { t } )$ , their target networks $a _ { m , t + 1 } =$ $\\pi ^ { m ^ { \\prime } } ( o _ { m , t + 1 } )$ and $Q ^ { m ^ { \\prime } } ( s _ { t + 1 } , a _ { t + 1 } )$ , as well as an experience replay buffer $B _ { m }$ . ",
+        "bbox": [
+            503,
+            763,
+            921,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: MULTI-AGENT DEEP REINFORCEMENT LEARNING-BASED TRAJECTORY PLANNING ",
+        "bbox": [
+            76,
+            34,
+            599,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "77 ",
+        "bbox": [
+            906,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            69,
+            491,
+            116
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The proposed algorithm is based on the framework of centralized training combined with decentralized execution. During the training process, each agent sends its own private observation $o _ { m , t }$ and action $a _ { m , t }$ to the environment, and then the states $s _ { t }$ which consist of the observations of all the agents and actions are sent back to each agent. Here, all the agents can exchange their private information simultaneously with each other, including coordinates. Furthermore, the critic network of each agent is trained with the states and actions that includes all the agents’ observations and actions. Then, during the testing process, each agent can execute its action by only receiving its own private observations $o _ { m , t }$ , which can potentially maximize the accumulated rewards. ",
+        "bbox": [
+            73,
+            117,
+            491,
+            311
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Thus, we define the observation, action and reward function for each agent in TS t as follows: ",
+        "bbox": [
+            73,
+            311,
+            491,
+            340
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) Observation $\\mathrm { \\Delta } O _ { m , t } \\mathrm { \\Delta } \\mathrm { : \\Omega }$ we first add the coordinates $[ X _ { m , t } , Y _ { m , t } ]$ of UAV m in TS t into the observation of agent m. For avoiding collisions between each pair of UAVs, we define the set of relative UAV distances $\\{ R _ { m , m ^ { \\prime } , t } , \\forall m ^ { \\prime } \\ \\in \\ M , m ^ { \\prime } \\ \\neq \\ m \\}$ as part of the observation. Additionally, for better exploration, we also add the set of accumulated times of UEs served by UAVs and UE-load of UAthe initial TS up to TS t, i.e., $\\begin{array} { r } { \\{ \\sum _ { t ^ { \\prime } = 1 } ^ { t } z _ { n , m , t ^ { \\prime } } \\} } \\end{array}$ g fro, ∀n $\\in$ $\\mathcal { N } \\} , \\{ \\sum _ { t ^ { \\prime } = 1 } ^ { t } c _ { m , t ^ { \\prime } } , \\forall m \\ \\in \\ M \\}$ , respectively into the observation set. ",
+            "2) Action $a _ { m , t } \\colon$ we define the UAV’s flying direction and distance as the action $a _ { m , t } = \\{ \\alpha _ { m , t } , d _ { m , t } \\}$ of the m-th UAV in the t-th TS. ",
+            "3) Reward Function $r _ { m , t } \\colon$ we define the reward function as: "
+        ],
+        "bbox": [
+            91,
+            343,
+            491,
+            570
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {m, t} = \\frac {f _ {t} ^ {u} \\cdot f _ {t} ^ {e}}{\\frac {1}{N} \\sum_ {n = 1} ^ {N} \\sum_ {m = 0} ^ {M} z _ {n , m , t} \\cdot E _ {n , m , t}} - p _ {m}, \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            119,
+            574,
+            488,
+            611
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { m }$ is the penalty incurred if UAV m flies out of the target area or UAV m is collided with another UAV (i.e., the relative distance is under the defined limit). ",
+        "bbox": [
+            112,
+            613,
+            491,
+            657
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Then, we define the entire state $s _ { t } ,$ and action $a _ { t }$ as follows ",
+        "bbox": [
+            75,
+            657,
+            485,
+            672
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) State $s t \\colon$ the state consists of the observations of all the agents, which is expressed as $s _ { t } = \\{ o _ { m , t } , \\forall m \\in \\mathcal { M } \\}$ . ",
+            "2) Action $a _ { t } \\colon$ the action consists of the actions of all the agents, which is $a _ { t } = \\{ a _ { m , t } , \\forall m \\in \\mathcal { M } \\}$ . "
+        ],
+        "bbox": [
+            91,
+            674,
+            488,
+            733
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We show the structure of agent m in Fig. 2. During its interaction with the environment 1 , each UAV (controlled by agent) $\\textcircled{2}$ selects the optimal action associated with its actor network $\\pi ^ { m } ( \\cdot ) ~ \\textcircled { 6 }$ , and then obtains the Q value from the critic network $Q ^ { m } ( \\cdot ) \\textcircled { 8 }$ as well as its target action and target Q value from $\\pi ^ { m ^ { \\prime } } \\textcircled { 7 }$ and $Q ^ { m ^ { \\prime } } ( \\cdot )$ 9 respectively. The profile of observation, action and reward, which determine the transition are defined as $e _ { m , t } \\triangleq \\{ s _ { t } , a _ { t } , r _ { m , t } , s _ { t + 1 } \\}$ that are stored in the experience replay buffer 4 . However, during the training procedure, randomly sampling the mini-batch $\\textcircled{5}$ may have unpredictable effects, since some transitions associated with poor attempts may lead to the termination of the training procedure or may not converge. As a result, Schaul et al. [42] pointed out that transitions having high Temporal Difference (TD)-error often indicate successful attempts. The TD-error $\\delta _ { m }$ of agent m can be defined as follows ",
+        "bbox": [
+            73,
+            734,
+            491,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            504,
+            69,
+            919,
+            99
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\delta_ {m} = r _ {m, t} + \\gamma Q ^ {m ^ {\\prime}} \\bigg (s _ {t + 1}, a _ {t + 1} | \\theta^ {Q ^ {m ^ {\\prime}}} \\bigg) \\\\ - Q ^ {m} \\left(s _ {t}, a _ {t} | \\theta^ {Q ^ {m}}\\right), \\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}. \\tag {27} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            104,
+            919,
+            165
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Additionally, motivated by [42], we utilize a prioritized experience replay scheme, in which the absolute TD-error $| \\delta _ { m , k } |$ was used for evaluating the probability of the k-th sampled transition in the mini-batch. Then, the probability of sampling the k-th transition is expressed as ",
+        "bbox": [
+            504,
+            169,
+            921,
+            244
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP _ {m, k} = \\frac {\\left(\\left| \\delta_ {m , k} \\right| + \\varepsilon\\right) ^ {\\beta}}{\\sum_ {k ^ {\\prime} = 1} ^ {K} \\left(\\left| \\delta_ {m , k} \\right| + \\varepsilon\\right) ^ {\\beta}}, \\forall m \\in \\mathcal {M}, \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            562,
+            250,
+            919,
+            294
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where K is the size of mini-batch, $\\varepsilon$ is a positive constant value, and $\\beta$ is 0.6. Thus, the loss function 10 of the agent m is defined as ",
+        "bbox": [
+            503,
+            297,
+            919,
+            342
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL \\left(\\theta^ {Q ^ {m}}\\right) = \\mathbb {E} \\left[ \\frac {1}{(K \\cdot P _ {m , k}) ^ {\\mu}} (\\delta_ {m}) ^ {2} \\right], \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            580,
+            345,
+            919,
+            388
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\mu$ is given as 0.4. ",
+        "bbox": [
+            504,
+            392,
+            671,
+            406
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Then, the critic network 8 of agent m can be updated by the loss function 10 provided in (29). Furthermore, the actor network 6 of agent m can be trained by the policy gradient 11 defined as ",
+        "bbox": [
+            503,
+            406,
+            919,
+            468
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\nabla_ {\\theta^ {\\pi^ {m}}} J = \\mathbb {E} \\left[ \\nabla_ {\\theta^ {\\pi^ {m}}} \\pi^ {m} \\left(o _ {m, t} | \\theta^ {\\pi^ {m}}\\right) \\nabla_ {a _ {m, t}} Q ^ {m} (s _ {t}, a _ {t}) | \\theta^ {Q ^ {m}} \\right],\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            474,
+            916,
+            500
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\forall m \\in \\mathcal {M}, t \\in \\mathcal {T}. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            581,
+            501,
+            919,
+            516
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Given the UAVs’ trajectories, we introduce a lowcomplexity approach for optimizing the offloading decisions of UEs. Here, we do not consider the constraint of the maximal available computing resource in each UAV. This can be readily extended to more practical scenarios, where each UAV can only have a certain amount of the computing resources, with the introduction of the matching algorithm. We will leave this idea for our future work. For each UE in TS t, we select the offloading decision based on the following expression ",
+        "bbox": [
+            503,
+            523,
+            921,
+            675
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {n, m, t} = \\left\\{ \\begin{array}{l l} 1, & m = \\underset {m ^ {\\prime} \\in \\mathcal {M} ^ {\\prime}} {\\operatorname{argmin}} \\left\\{E _ {n, m ^ {\\prime}, t} \\right\\}, \\\\ 0, & \\text { otherwise. } \\end{array} \\right. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            566,
+            681,
+            919,
+            729
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Specifically, after the movement of UAVs, each UE can select the most suitable UAV for offloading, which consumes the least energy. Otherwise, the UE may execute the task itself. If UE n decides to offload a task to UAV m, the computational capacity allocated to UE from the UAV is expressed as ",
+        "bbox": [
+            501,
+            733,
+            919,
+            823
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {n, m, t} = \\frac {F _ {n , t}}{T ^ {m a x} - T _ {n , m , t} ^ {T r}}. \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            828,
+            919,
+            864
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We provide the pseudo code of proposed procedure in Algorithm 1. Specifically, we carry out the initialization between Line 1 and 5 at the beginning, where each UAV initializes its actor, critic and two target networks. Then, the training procedure starts from Line 6, where each UAV first obtains its observation from the environment 1 . Note that each UAV is controlled by its dedicated agent 2 . Then, based on the achieved observation, each UAV selects the action $a _ { m , t } ,$ which is generated by its actor network 6 . In order to achieve a better exploration, we add a noise parameter \u000b, which follows a normal distribution with zero mean and a variance of 1. The exploration noise decays with the rate of 0.9995. Then, the UAV executes the action. Note that the UAV will stay at the current location and obtains a penalty $p _ { m } ,$ , if the next location is obtained outside the target area or the UAV is collided with other UAVs. Then, UE selects the UAV which consumes the least energy according to (31). Next, we obtain the reward $r _ { m , t }$ and the next observation $^ { O } m , t { + } 1$ . Then, each UAV stores the transition 3 into its experience replay buffer $B _ { m }$ 4 . From Line 28 to 34, when the learning procedure starts, the mini-batch 5 with prioritized experience replay 12 scheme samples K transitions from $B _ { m }$ . Furthermore, the critic network $\\textcircled{8}$ is updated by the loss function 10 provided in (29), and the actor network 6 is also updated by the policy gradient 11 provided in (30). After that, the pair of target networks are updated at a rate of τ . Finally, we update the priorities of the K sampled transitions. ",
+        "bbox": [
+            503,
+            869,
+            921,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "78 ",
+        "bbox": [
+            76,
+            35,
+            93,
+            45
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, VOL. 7, NO. 1, MARCH 2021 ",
+        "bbox": [
+            343,
+            34,
+            919,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            960,
+            870,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/b2b774b3984e0ccc2ab0da7fff2bc26901816e14660186f23244acd6f93821c3.jpg",
+        "image_caption": [
+            "Fig. 2. Structure of UAV m (i.e., controlled by Agent m). "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Environment\"] --> B[\"Agent m②\"]\n    B --> C{Action ⑥}\n    C --> D[\"Policy gradient ⑪\"]\n    C --> E[\"Target network ⑦\"]\n    B --> F{Transition ③}\n    F --> G[\"Experience replay buffer ④\"]\n    G --> H[\"Prioritized experience replay ⑫\"]\n    H --> I[\"Mini-batch ⑤\"]\n    B --> J[\"Actor ⑥\"]\n    J --> K[\"Policy gradient ⑪\"]\n    J --> L[\"Target network ⑦\"]\n    L --> M[\"Policy gradient ⑪\"]\n    L --> N[\"Policy gradient ⑦\"]\n    L --> O[\"Policy gradient ⑪\"]\n    L --> P[\"Policy gradient ⑪\"]\n    L --> Q[\"Policy gradient ⑪\"]\n    L --> R[\"Policy gradient ⑪\"]\n    L --> S[\"Policy gradient ⑪\"]\n    L --> T[\"Policy gradient ⑪\"]\n    L --> U[\"Policy gradient ⑪\"]\n    L --> V[\"Policy gradient ⑪\"]\n    L --> W[\"Policy gradient ⑪\"]\n    L --> X[\"Policy gradient ⑪\"]\n    L --> Y[\"Policy gradient ⑪\"]\n    L --> Z[\"Policy gradient ⑪\"]\n    L --> AA[\"Policy gradient ⑪\"]\n    L --> AB[\"Policy gradient ⑪\"]\n    L --> AC[\"Policy gradient ⑪\"]\n    L --> AD[\"Policy gradient ⑪\"]\n    L --> AE[\"Policy gradient ⑪\"]\n    L --> AF[\"Policy gradient ⑪\"]\n    L --> AG[\"Policy gradient ⑪\"]\n    L --> AH[\"Policy gradient ⑪\"]\n    L --> AI[\"Policy gradient ⑪\"]\n    L --> AJ[\"Policy gradient ⑪\"]\n    L --> AK[\"Policy gradient ⑪\"]\n    L --> AL[\"Policy gradient ⑪\"]\n    L --> AM[\"Policy gradient ⑪\"]\n    L --> AN[\"Policy gradient ⑪\"]\n    L --> AO[\"Policy gradient ⑪\"]\n    L --> AP[\"Policy gradient ⑪\"]\n    L --> AQ[\"Policy gradient ⑪\"]\n    L --> AR[\"Policy gradient ⑪\"]\n    L --> AS[\"Policy gradient ⑪\"]\n    L --> AT[\"Policy gradient ⑪\"]\n    L --> AU[\"Policy gradient ⑪\"]\n    L --> AV[\"Policy gradient ⑪\"]\n    L --> AW[\"Policy gradient ⑪\"]\n    L --> AX[\"Policy gradient ⑪\"]\n    L --> AY[\"Policy gradient ⑪\"]\n    L --> AZ[\"Policy gradient ⑪\"]\n    L --> BA[\"Policy gradient ⑪\"]\n    L --> BB[\"Policy gradient ⑪\"]\n    L --> BC[\"Policy gradient ⑪\"]\n    L --> BD[\"Policy gradient ⑪\"]\n    L --> BE[\"Policy gradient ⑪\"]\n    L --> BF[\"Policy gradient ⑪\"]\n    L --> BG[\"Policy gradient ⑪\"]\n    L --> BH[\"Policy gradient ⑪\"]\n    L --> BI[\"Policy gradient ⑪\"]\n    L --> BJ[\"Policy gradient ⑪\"]\n    L --> BK[\"Policy gradient ⑪\"]\n    L --> BL[\"Policy gradient ⑪\"]\n    L --> BM[\"Policy gradient ⑪\"]\n    L --> BN[\"Policy gradient ⑪\"]\n    L --> BO[\"Policy gradient ⑪\"]\n    L --> BP[\"Policy gradient ⑪\"]\n    L --> BQ[\"Policy gradient ⑪\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            135,
+            66,
+            862,
+            455
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            508,
+            493,
+            845
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "IV. SIMULATION RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            187,
+            866,
+            379,
+            878
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this section, we rely on our simulations for evaluating the performance of the proposed MAT algorithm. The simulations are conducted by using Python 3.7 and Tensorflow 1.15.0. We employ four fully-connected hidden layers having [400, 300, 200, 200] neurons in both the actor and critic networks. The actor network is trained at the learning rate of $3 \\times 1 0 ^ { - 5 }$ , while the critic network is trained at the learning rate of $1 0 ^ { - 4 }$ . The AdamOptimizer [43] is used for updating the actor and critic networks. We set the target region to be a squareshaped area with side length of $l ^ { m a x } = 1 0 0 ~ \\mathrm { m } .$ , where 50 UEs are randomly and uniformly distributed. We set the initial coordinates of UAVs to [10, 10], [90, 90], [10, 90] and [90, 10] m. Additionally, each UE generates a single task in each TS. The rest of the parameters can be found in Table III. ",
+        "bbox": [
+            73,
+            883,
+            491,
+            946
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "table",
+        "img_path": "images/f5c376567611b7cc12d4bb44f363b876b21e82d3162e10dd6e1df58626933cda.jpg",
+        "table_caption": [
+            "TABLE III SIMULATION PARAMETERS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Notation</td><td>Description</td></tr><tr><td>N</td><td>50</td></tr><tr><td>T</td><td>20</td></tr><tr><td> $l^{max}$ </td><td>100 m</td></tr><tr><td> $D_{n,t}$ </td><td>[10, 14] Kb</td></tr><tr><td> $F_{n,t}$ </td><td>[1800, 2000] cycles/bit</td></tr><tr><td> $T^{max}$ </td><td>1 s</td></tr><tr><td> $d^{max}$ </td><td>20 m</td></tr><tr><td> $R^{max}$ </td><td>20 m</td></tr><tr><td> $R^u$ </td><td>1 m</td></tr><tr><td>H</td><td>50 m</td></tr><tr><td>B</td><td>10 MHz</td></tr><tr><td> $P_n$ </td><td>0.1 Watt</td></tr><tr><td> $σ^2$ </td><td>-90 dBm</td></tr><tr><td> $k_n$ </td><td> $10^{-28}$ </td></tr><tr><td> $v_n$ </td><td>3</td></tr><tr><td> $g_0$ </td><td> $1.42 × 10^{-4}$ </td></tr><tr><td> $γ$ </td><td>0.95</td></tr><tr><td>K</td><td>256</td></tr><tr><td>τ</td><td>0.01</td></tr><tr><td>ε</td><td>0.001</td></tr><tr><td> $B_m$ </td><td> $10^5$ </td></tr><tr><td> $e^{max}$ </td><td>3000</td></tr><tr><td> $p_m$ </td><td>10</td></tr></table>",
+        "bbox": [
+            601,
+            537,
+            826,
+            829
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            883,
+            921,
+            946
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: MULTI-AGENT DEEP REINFORCEMENT LEARNING-BASED TRAJECTORY PLANNING ",
+        "bbox": [
+            76,
+            34,
+            601,
+            45
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "79 ",
+        "bbox": [
+            906,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1 MAT "
+        ],
+        "code_body": "1: for UAV m in M do\n2: Initialize actor network $\\pi^{m}(\\cdot)$ , critic network $Q^{m}(\\cdot)$ with parameters $\\theta^{\\pi^{m}}$ and $\\theta^{Q^{m}}$ ;\n3: Initialize target networks $\\pi^{m'}(\\cdot)$ and $Q^{m'}(\\cdot)$ with parameters $\\theta^{\\pi^{m'}} = \\theta^{\\pi^{m}}$ and $\\theta^{Q^{m'}} = \\theta^{Q^{m}}$ ;\n4: Initialize experience replay buffer $B_{m}$ ;\n5: end for\n6: for Episode = 1,2, ..., $e^{max}$ do\n7: for UAV m in M do\n8: Initialize observation $o_{m,t}$ ;\n9: end for\n10: for TS t in T do\n11: Obtain $s_{t}$ ;\n12: for UAV m in M do\n13: Obtain action $a_{m,t} = \\pi^{m}(o_{m,t}|\\theta^{\\pi^{m}}) + \\epsilon$ ;\n14: Execute $a_{m,t}$ . Note that the UAV will stay at the current location if it flies out of the target area or it is collided with another UAV;\n15: end for\n16: Obtain $a_{t}$ ;\n17: for UE n in N do\n18: Obtain the available offloading decision $z_{n,m,t}$ that consumes the least energy according to (31);\n19: Calculate $E_{n,m,t}$ ;\n20: end for\n21: for UAV m in M do\n22: Obtain $r_{m,t}$ according to (26);\n23: Obtain $o_{m,t+1}$ ;\n24: end for\n25: Obtain $s_{t+1}$ ;\n26: for UAV m in M do\n27: Store transition $\\{s_{t}, a_{t}, r_{m,t}, s_{t+1}\\}$ into experience replay buffer $B_{m}$ with priority $|\\delta_{m}| + \\varepsilon$ ;\n28: if learning process starts then\n29: Sample a mini-batch of K transitions from $B_{m}$ with probability $P_{m,k}$ ;\n30: Update critic network according to (29);\n31: Update actor network according to (30);\n32: Update target networks with updating rate $\\tau$ : $\\theta^{\\pi^{m'}} \\leftarrow \\tau\\theta^{\\pi^{m}} + (1 - \\tau)\\theta^{\\pi^{m'}};$ $\\theta^{Q^{m'}} \\leftarrow \\tau\\theta^{Q^{m}} + (1 - \\tau)\\theta^{Q^{m'}};$ 33: Update priorities of K transitions;\n34: end if\n35: end for\n36: end for\n37: end for ",
+        "bbox": [
+            76,
+            83,
+            493,
+            570
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            628,
+            491,
+            733
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Firstly, we depict the training curve of MAT in Fig. 3, where 3 UAVs are deployed. Observe from Fig. 3 that the accumulated reward achieved by MAT remains under 50 at the beginning and starts increasing from the 1000-th episode. After about 2000 training episodes, the curve reaches about 300 and then convergence is achieved. ",
+        "bbox": [
+            73,
+            734,
+            491,
+            824
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Then, we increase the number of UAV to 4 and in Fig. 4, we depict the accumulated reward achieved by MAT during the training process. Similarly, the curve remains below 200 at the beginning and then increases after the 1000-th episode. It finally saturates around 450. Observe that the accumulated reward seen in Fig. 4 is higher than that in Fig. 3. This is because deploying more UAVs can serve more UEs at the same time, hence resulting in increased accumulated rewards. ",
+        "bbox": [
+            73,
+            824,
+            491,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/543ada5b5fea3f4ca609ac326f536573e6a39a3631dffaed849d71dd3496941b.jpg",
+        "content": "| Training episodes | Accumulated reward |\n| ----------------- | ------------------ |\n| 0                 | ~50                |\n| 500               | ~40                |\n| 1000              | ~150               |\n| 1500              | ~300               |\n| 2000              | ~300               |\n| 2500              | ~250               |",
+        "chart_caption": [
+            "Fig. 3. Accumulated reward versus training episodes (with 3 UAVs). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            514,
+            65,
+            913,
+            294
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/7fb148e0388a1904f1d1ecf6419cd65b0142d7bfb559f9e2e59c77e0e4021a1e.jpg",
+        "content": "| Training episodes | Accumulated reward |\n| ----------------- | ------------------ |\n| 0                 | 200                |\n| 500               | 150                |\n| 1000              | 200                |\n| 1500              | 400                |\n| 2000              | 450                |\n| 2500              | 470                |\n| 3000              | 480                |",
+        "chart_caption": [
+            "Fig. 4. Accumulated reward versus training episodes (with 4 UAVs). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            514,
+            335,
+            913,
+            568
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "After the training stage, both the model and the network parameters are saved for testing. Next, we compare our algorithm in the cases of 3 and 4 UAVs to the following benchmark solutions: ",
+        "bbox": [
+            503,
+            613,
+            919,
+            672
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• RANDOM: In this setup, each UAV randomly selects a flying direction within $\\alpha _ { m , t } \\in [ 0 , 2 \\pi )$ , and a flying distance $d _ { m , t } \\in [ 0 , d ^ { m a x } ]$ . Note that the UAVs are restricted to the target area. ",
+            "• CIRCLE: We group all the UEs into a single cluster according to the UEs’ coordinates and then all the UAVs fly in a circle twice around the center of the cluster having a radius of $R ^ { m a x }$ . "
+        ],
+        "bbox": [
+            521,
+            672,
+            921,
+            792
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Note that the MAT, RANDOM, and CIRCLE benchmarks have the same starting points for the UAVs and their offloading decisions are described in Eq. (31). ",
+        "bbox": [
+            503,
+            794,
+            919,
+            839
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "We first depict the UAV trajectories in Fig. 5, where 3 UAVs are deployed. In this figure, dots represent the location of UEs. We apply a heat map to show the number of times that each UE is served by the UAV commencing from the initial TS to the final TS. The darker the dots, the less amount of time that the UE is spent by the UAV serving. Observe from this figure that all the UAVs move around certain areas, since their coverage range is limited and they have to move for the sake of serving more UEs to increase the fairness index. Additionally, we can see that each UAV covers the particular area in a cooperative manner, so as to maximize the reward defined. For instance, ‘UAV2’ moves to the lower right corner from its initial location for serving more UEs, while ‘UAV3’ moves to the upper right corner to help users in this region. ",
+        "bbox": [
+            501,
+            839,
+            921,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "80 ",
+        "bbox": [
+            76,
+            35,
+            93,
+            45
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, VOL. 7, NO. 1, MARCH 2021 ",
+        "bbox": [
+            343,
+            34,
+            919,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/79e6894a7e202d53d108d12b6175793cae0fd11f00102afaa5c418b5266d949f.jpg",
+        "content": "| UAV   | X (m) | Y (m) |\n|-------|-------|-------|\n| UAV1  | 10    | 10    |\n| UAV1  | 15    | 30    |\n| UAV1  | 20    | 45    |\n| UAV1  | 25    | 50    |\n| UAV1  | 30    | 45    |\n| UAV1  | 35    | 40    |\n| UAV1  | 40    | 35    |\n| UAV1  | 45    | 30    |\n| UAV1  | 50    | 25    |\n| UAV1  | 55    | 20    |\n| UAV1  | 60    | 15    |\n| UAV1  | 65    | 10    |\n| UAV1  | 70    | 5     |\n| UAV1  | 75    | 0     |\n| UAV1  | 80    | -5    |\n| UAV1  | 85    | -10   |\n| UAV1  | 90    | -15   |\n| UAV2  | 65    | 75    |\n| UAV2  | 70    | 70    |\n| UAV2  | 75    | 65    |\n| UAV2  | 80    | 60    |\n| UAV2  | 85    | 55    |\n| UAV2  | 90    | 50    |\n| UAV2  | 95    | 45    |\n| UAV2  | 100   | 40    |\n| UAV3  | 20    | 75    |\n| UAV3  | 25    | 80    |\n| UAV3  | 30    | 85    |\n| UAV3  | 35    | 90    |\n| UAV3  | 40    | 85    |\n| UAV3  | 45    | 80    |\n| UAV3  | 50    | 75    |\n| UAV3  | 55    | 70    |\n| UAV3  | 60    | 65    |\n| UAV3  | 65    | 60    |\n| UAV3  | 70    | 55    |\n| UAV3  | 75    | 50    |\n| UAV3  | 80    | 45    |\n| UAV3  | 85    | 40    |\n| UAV3  | 90    | 35    |\n| UAV3  | 95    | 30    |\n| UAV3  | 100   | 25    |",
+        "chart_caption": [
+            "Fig. 5. UAVs’ trajectories (with 3 UAVs and the locations of UEs are represented by dots.) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            83,
+            65,
+            483,
+            316
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0c64f0d1f1467b7e5bf60f52e26111dfec95fc414fac57ff03a5764a7a27fdf5.jpg",
+        "content": "| UAV   | X (m) | Y (m) |\n|-------|-------|-------|\n| UAV1  | 10    | 10    |\n| UAV1  | 20    | 25    |\n| UAV1  | 30    | 35    |\n| UAV1  | 40    | 45    |\n| UAV1  | 50    | 55    |\n| UAV1  | 60    | 65    |\n| UAV1  | 70    | 75    |\n| UAV1  | 80    | 85    |\n| UAV1  | 90    | 95    |\n| UAV2  | 20    | 75    |\n| UAV2  | 30    | 85    |\n| UAV2  | 40    | 95    |\n| UAV2  | 50    | 105   |\n| UAV2  | 60    | 115   |\n| UAV2  | 70    | 125   |\n| UAV2  | 80    | 135   |\n| UAV2  | 90    | 145   |\n| UAV3  | 10    | 90    |\n| UAV3  | 20    | 75    |\n| UAV3  | 30    | 65    |\n| UAV3  | 40    | 55    |\n| UAV3  | 50    | 45    |\n| UAV3  | 60    | 35    |\n| UAV3  | 70    | 25    |\n| UAV3  | 80    | 15    |\n| UAV3  | 90    | 5     |\n| UAV4  | 20    | 75    |\n| UAV4  | 30    | 85    |\n| UAV4  | 40    | 95    |\n| UAV4  | 50    | 105   |\n| UAV4  | 60    | 115   |\n| UAV4  | 70    | 125   |\n| UAV4  | 80    | 135   |\n| UAV4  | 90    | 145   |\n| UAV4  | 100   | 155   |",
+        "chart_caption": [
+            "Fig. 6. UAVs’ trajectories (with 4 UAVs and the locations of UEs are represented by dots.) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            86,
+            368,
+            478,
+            623
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            689,
+            490,
+            794
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Then, we increase the number of UAVs to 4 and depict the trajectories in Fig. 6. Observe that more UAVs result in better coverage. Again, the UAVs cooperate for serving more UEs within the required number of TSs. Furthermore, compared to the heat map shown in Fig. 5, 4 UAVs can serve each UE more times than 3. More specially, 4 UAVs can increase the minimum number of serving occurrences from about 2.5 TSs in Fig. 5 to about 6 TSs in Fig. 6. ",
+        "bbox": [
+            73,
+            795,
+            491,
+            914
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 7, we show the fairness attained by 3 UAVs while serving all UEs, the fairness of each UAV’s UE-load and the overall energy consumption of all the UEs. Observe from Fig. 7a that the average fairness $f _ { t } ^ { e }$ among all the served UEs achieved by the MAT, CIRCLE and RANDOM regimes increases with the increase of the number of TSs, as expected. Specifically, MAT increases from 0.53 to 0.85, while CIRCLE increases from about 0.5 to 0.6. Finally, RANDOM remains under 0.4. ",
+        "bbox": [
+            73,
+            915,
+            491,
+            945
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e438a31feb5b92bfa7c358eef9cced1a483059a07f4f7bdc4187abb4feaa609a.jpg",
+        "content": "| Number of TSs | MAT   | CIRCLE | RANDOM |\n| ------------- | ----- | ------ | ------ |\n| 2             | 0.54  | 0.51   | 0.32   |\n| 4             | 0.67  | 0.55   | 0.37   |\n| 6             | 0.74  | 0.56   | 0.37   |\n| 8             | 0.78  | 0.57   | 0.37   |\n| 10            | 0.80  | 0.58   | 0.37   |\n| 12            | 0.81  | 0.59   | 0.38   |\n| 14            | 0.82  | 0.59   | 0.38   |\n| 16            | 0.83  | 0.59   | 0.38   |\n| 18            | 0.84  | 0.60   | 0.38   |\n| 20            | 0.85  | 0.60   | 0.39   |",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            535,
+            65,
+            895,
+            271
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/508548aa9b1e04654c83bfdba54ea1f15ad590a8f82c2721c00e32606a3f9fd0.jpg",
+        "content": "| Number of TSs | MAT   | CIRCLE | RANDOM |\n| ------------- | ----- | ------ | ------ |\n| 2             | 1.00  | 1.00   | 0.73   |\n| 4             | 1.00  | 1.00   | 0.74   |\n| 6             | 1.00  | 1.00   | 0.73   |\n| 8             | 1.00  | 1.00   | 0.72   |\n| 10            | 1.00  | 1.00   | 0.72   |\n| 12            | 1.00  | 1.00   | 0.72   |\n| 14            | 1.00  | 1.00   | 0.72   |\n| 16            | 1.00  | 1.00   | 0.72   |\n| 18            | 1.00  | 1.00   | 0.73   |\n| 20            | 1.00  | 1.00   | 0.74   |",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            529,
+            329,
+            895,
+            537
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/dc680077a0197822354897aa8777c919c072410c61b32bc176b01325e8600588.jpg",
+        "content": "| Number of TSs | MAT  | CIRCLE | RANDOM |\n| ------------- | ---- | ------ | ------ |\n| 2             | 6    | 6      | 7      |\n| 4             | 11   | 13     | 15     |\n| 6             | 17   | 19     | 24     |\n| 8             | 23   | 26     | 32     |\n| 10            | 28   | 31     | 40     |\n| 12            | 32   | 36     | 47     |\n| 14            | 38   | 42     | 56     |\n| 16            | 43   | 49     | 66     |\n| 18            | 48   | 56     | 74     |\n| 20            | 55   | 62     | 80     |",
+        "chart_caption": [
+            "(c）",
+            "Fig. 7. The performance of MAT, CIRCLE and RANDOM versus different number of TSs, in terms of (a) fairness index $f _ { t } ^ { e }$ , (b) fairness index $f _ { t } ^ { u }$ and (c) overall energy consumption of all the UEs (with 3 UAVs). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            540,
+            595,
+            895,
+            803
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            900,
+            921,
+            945
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: MULTI-AGENT DEEP REINFORCEMENT LEARNING-BASED TRAJECTORY PLANNING ",
+        "bbox": [
+            76,
+            34,
+            599,
+            45
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "",
+        "bbox": [
+            906,
+            36,
+            918,
+            45
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/fe7b7790a655c22baa811a8137c0623ccc1b98bb05e5b0cfe159f9a3042d4654.jpg",
+        "content": "| Number of TSs | MAT   | CIRCLE | RANDOM |\n| ------------- | ----- | ------ | ------ |\n| 2             | 0.74  | 0.53   | 0.25   |\n| 4             | 0.80  | 0.59   | 0.33   |\n| 6             | 0.83  | 0.61   | 0.39   |\n| 8             | 0.85  | 0.62   | 0.42   |\n| 10            | 0.86  | 0.62   | 0.44   |\n| 12            | 0.87  | 0.63   | 0.46   |\n| 14            | 0.88  | 0.63   | 0.47   |\n| 16            | 0.89  | 0.63   | 0.49   |\n| 18            | 0.895 | 0.63   | 0.50   |\n| 20            | 0.90  | 0.63   | 0.51   |",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            106,
+            65,
+            467,
+            271
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/731a830a5927c099f76bc45f8b929504751ca47f256dfb557fa271f51b0ac605.jpg",
+        "content": "| Number of TSs | MAT    | CIRCLE | RANDOM |\n| ------------- | ------ | ------ | ------ |\n| 2             | 0.99   | 0.985  | 0.78   |\n| 4             | 0.99   | 0.985  | 0.785  |\n| 6             | 0.99   | 0.985  | 0.785  |\n| 8             | 0.99   | 0.985  | 0.79   |\n| 10            | 0.99   | 0.985  | 0.795  |\n| 12            | 0.99   | 0.985  | 0.795  |\n| 14            | 0.99   | 0.985  | 0.795  |\n| 16            | 0.99   | 0.985  | 0.795  |\n| 18            | 0.99   | 0.985  | 0.795  |\n| 20            | 0.99   | 0.985  | 0.795  |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            99,
+            329,
+            467,
+            537
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e2fb9fc363fecff8a218829a1f2695e4b3d98eb2bff386b285a0e2b2117ebe6d.jpg",
+        "content": "| Number of TSs | MAT  | CIRCLE | RANDOM |\n| ------------- | ---- | ------ | ------ |\n| 2             | 5    | 7      | 8      |\n| 4             | 9    | 13     | 16     |\n| 6             | 13   | 19     | 23     |\n| 8             | 17   | 26     | 30     |\n| 10            | 22   | 33     | 37     |\n| 12            | 26   | 38     | 44     |\n| 14            | 30   | 44     | 52     |\n| 16            | 34   | 50     | 59     |\n| 18            | 38   | 57     | 66     |\n| 20            | 43   | 64     | 73     |",
+        "chart_caption": [
+            "(c）",
+            "Fig. 8. The performance of MAT, CIRCLE and RANDOM versus different number of TSs, in terms of (a) fairness index $f _ { t } ^ { e }$ , (b) fairness index $f _ { t } ^ { u }$ and (c) overall energy consumption of all the UEs (with 4 UAVs). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            109,
+            595,
+            467,
+            803
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            883,
+            491,
+            945
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Then, we show the fairness $f _ { t } ^ { u }$ of each UAV’s UE-load achieved by the MAT, CIRCLE and RANDOM regimes in Fig. 7b. Observe that both MAT and CIRCLE approach the fairness of 1, because both solutions can control the UAVs to serve a similar number of UEs. However, RANDOM can only achieve a fairness of 0.75. ",
+        "bbox": [
+            501,
+            69,
+            919,
+            159
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Next, in Fig. 7c, we analyse the energy consumed by UEs. We can see that our proposed MAT achieves the best performance, followed by CIRCLE and RANDOM. This is because after training, MAT assists the UAVs in a cooperative way serving the UEs. Hence, more UEs can offload their tasks to UAVs, which results in reduced energy consumption for all the UEs. ",
+        "bbox": [
+            501,
+            160,
+            921,
+            265
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Next, in Fig. 8, we increase the number of UAVs to 4 and evaluate the performance of three compared solutions. One can see from Fig. 8a that the average fairness $f _ { t } ^ { e }$ increases with the increase of TSs, as expected. Our proposed MAT can achieve the best performance, reaching at 0.9, whereas the RANDOM performs the worst, which can only achieve about 0.5. ",
+        "bbox": [
+            501,
+            266,
+            921,
+            356
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Then, in Fig. 8b, we draw the fairness of each UAV’s UEload $f _ { t } ^ { u }$ achieved by MAT, CIRCLE and RANDOM. One sees that MAT outperforms CIRCLE and RANDOM, as expected. CIRCLE performs worse than MAT but has much better performance than RANDOM. ",
+        "bbox": [
+            501,
+            356,
+            921,
+            431
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Additionally, we show the performance of energy consumed by UEs in Fig. 8c. Similar with before, one can observe that MAT can always achieve the best performance and help UEs to save the energy consumption, while CIRCLE performs the second, followed by RANDOM. This further proves that with proper training, MAT can control the UAVs to provide better service to UEs. ",
+        "bbox": [
+            501,
+            431,
+            921,
+            536
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "V. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            651,
+            561,
+            774,
+            574
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In this article, we have proposed a multi-agent deep reinforcement learning based trajectory control algorithm for jointly maximizing the fairness among all the UEs and the fairness of UE-load of each UAV, as well as minimizing the energy consumption of all the UEs by optimizing each UAV’ trajectory and offloading decision from all the UEs. Simulation results show that the proposed MAT has the considerable performance gain over the compared benchmark algorithms. ",
+        "bbox": [
+            501,
+            580,
+            921,
+            715
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            665,
+            739,
+            761,
+            752
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Commun. Mag., vol. 54, no. 5, pp. 36–42, May 2016. ",
+            "[2] Q. Wu and R. Zhang, “Common throughput maximization in UAVenabled OFDMA systems with delay consideration,” IEEE Trans. Commun., vol. 66, no. 12, pp. 6614–6627, Dec. 2018. ",
+            "[3] L. Kong, L. Ye, F. Wu, M. Tao, G. Chen, and A. V. Vasilakos, “Autonomous relay for millimeter-wave wireless communications,” IEEE J. Sel. Areas Commun., vol. 35, no. 9, pp. 2127–2136, Sep. 2017. ",
+            "[4] R. Fan, J. Cui, S. Jin, K. Yang, and J. An, “Optimal node placement and resource allocation for UAV relaying network,” IEEE Commun. Lett., vol. 22, no. 4, pp. 808–811, Apr. 2018. ",
+            "[5] H. Wang, J. Wang, G. Ding, J. Chen, F. Gao, and Z. Han, “Completion time minimization with path planning for fixed-wing UAV communications,” IEEE Trans. Wireless Commun., vol. 18, no. 7, pp. 3485–3499, Jul. 2019. "
+        ],
+        "bbox": [
+            509,
+            758,
+            921,
+            944
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "82 ",
+        "bbox": [
+            76,
+            35,
+            93,
+            45
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, VOL. 7, NO. 1, MARCH 2021 ",
+        "bbox": [
+            343,
+            34,
+            919,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[6] F. Cui, Y. Cai, Z. Qin, M. Zhao, and G. Y. Li, “Multiple access for mobile-UAV enabled networks: Joint trajectory design and resource allocation,” IEEE Trans. Commun., vol. 67, no. 7, pp. 4980–4994, Jul. 2019. ",
+            "[7] J. Lyu, Y. Zeng, and R. Zhang, “UAV-aided offloading for cellular hotspot,” IEEE Trans. Wireless Commun., vol. 17, no. 6, pp. 3988–4001, Jun. 2018. ",
+            "[8] J. Xu, Y. Zeng, and R. Zhang, “UAV-enabled wireless power transfer: Trajectory design and energy optimization,” IEEE Trans. Wireless Commun., vol. 17, no. 8, pp. 5092–5106, Aug. 2018. ",
+            "[9] T. Q. Duong, L. D. Nguyen, H. D. Tuan, and L. Hanzo, “Learning-aided realtime performance optimisation of cognitive UAV-assisted disaster communication,” in Proc. IEEE Global Commun. Conf. (GLOBECOM), Waikoloa, HI, USA, 2019, pp. 1–6. ",
+            "[10] X. Liu, Y. Liu, Y. Chen, and L. Hanzo, “Trajectory design and power control for multi-UAV assisted wireless networks: A machine learning approach,” IEEE Trans. Veh. Technol., vol. 68, no. 8, pp. 7957–7969, Aug. 2019. ",
+            "[11] J. Wang, C. Jiang, Z. Wei, C. Pan, H. Zhang, and Y. Ren, “Joint UAV hovering altitude and power control for space-air-ground IoT networks,” IEEE Internet Things J., vol. 6, no. 2, pp. 1741–1753, Apr. 2019. ",
+            "[12] A. Al-Hourani, S. Kandeepan, and S. Lardner, “Optimal LAP altitude for maximum coverage,” IEEE Wireless Commun. Lett., vol. 3, no. 6, pp. 569–572, Dec. 2014. ",
+            "[13] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Unmanned aerial vehicle with underlaid device-to-device communications: Performance and tradeoffs,” IEEE Trans. Wireless Commun., vol. 15, no. 6, pp. 3949–3963, Jun. 2016. ",
+            "[14] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016. ",
+            "[15] Q. Wu, Y. Zeng, and R. Zhang, “Joint trajectory and communication design for multi-UAV enabled wireless networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2109–2121, Mar. 2018. ",
+            "[16] M. Alzenad, A. El-Keyi, F. Lagum, and H. Yanikomeroglu, “3-D placement of an unmanned aerial vehicle base station (UAV-BS) for energy-efficient maximal coverage,” IEEE Wireless Commun. Lett., vol. 6, no. 4, pp. 434–437, Aug. 2017. ",
+            "[17] Y. C. Hu, M. Patel, D. Sabella, N. Sprecher, and V. Young, “Mobile edge computing—A key technology towards 5G,” ETSI, Sophia Antipolis, France, White Paper, 2015. ",
+            "[18] K. Wang, P. Huang, K. Yang, C. Pan, and J. Wang, “Unified offloading decision making and resource allocation in ME-RAN,” IEEE Trans. Veh. Technol., vol. 68, no. 8, pp. 8159–8172, Aug. 2019. ",
+            "[19] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “A survey on mobile edge computing: The communication perspective,” IEEE Commun. Surveys Tuts., vol. 19, no. 4, pp. 2322–2358, 4th Quart., 2017. ",
+            "[20] Z. Yang, C. Pan, K. Wang, and M. Shikh-Bahaei, “Energy efficient resource allocation in UAV-enabled mobile edge computing networks,” IEEE Trans. Wireless Commun., vol. 18, no. 9, pp. 4576–4589, Sep. 2019. ",
+            "[21] Y. Zhou et al., “Secure communications for UAV-enabled mobile edge computing systems,” IEEE Trans. Commun., vol. 68, no. 1, pp. 376–388, Jan. 2020. ",
+            "[22] N. H. Motlagh, M. Bagaa, and T. Taleb, “UAV-based IoT platform: A crowd surveillance use case,” IEEE Commun. Mag., vol. 55, no. 2, pp. 128–134, Feb. 2017. ",
+            "[23] S. Jeong, O. Simeone, and J. Kang, “Mobile edge computing via a UAVmounted cloudlet: Optimization of bit allocation and path planning,” IEEE Trans. Veh. Technol., vol. 67, no. 3, pp. 2049–2063, Mar. 2018. ",
+            "[24] M. Hua, Y. Wang, Q. Wu, H. Dai, Y. Huang, and L. Yang, “Energyefficient cooperative secure transmission in multi-UAV-enabled wireless networks,” IEEE Trans. Veh. Technol., vol. 68, no. 8, pp. 7761–7775, Aug. 2019. ",
+            "[25] J. Wang, C. Jiang, H. Zhang, Y. Ren, K. Chen, and L. Hanzo, “Thirty years of machine learning: The road to Pareto-optimal wireless networks,” IEEE Commun. Surveys Tuts., vol. 22, no. 3, pp. 1472–1514, 3rd Quart., 2020. ",
+            "[26] Y. LeCun, Y. Bengio, and G. Hinton, “Deep learning,” Nature, vol. 521, no. 7553, pp. 436–444, 2015. ",
+            "[27] R. S. Sutton and A. G. Barto Introduction to Reinforcement Learning, vol. 2. Cambridge, MA, USA: MIT Press, 1998. ",
+            "[28] Y. Li, “Deep reinforcement learning: An overview,” 2017. [Online]. Available: arXiv:1701.07274. ",
+            "[29] V. Mnih et al., “Human-level control through deep reinforcement learning,” Nature, vol. 518, no. 7540, pp. 529–533, 2015. "
+        ],
+        "bbox": [
+            75,
+            70,
+            493,
+            946
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[30] J. Wang, C. Jiang, K. Zhang, X. Hou, Y. Ren, and Y. Qian, “Distributed Q-learning aided heterogeneous network association for energy-efficient IIoT,” IEEE Trans. Ind. Informat., vol. 16, no. 4, pp. 2756–2764, Apr. 2020. ",
+            "[31] H. Van Hasselt, A. Guez, and D. Silver, “Deep reinforcement learning with double Q-learning,” in Proc. 13th AAAI Conf. Artif. Intell., 2016, pp. 2094–2100. ",
+            "[32] T. P. Lillicrap et al., “Continuous control with deep reinforcement learning,” 2015. [Online]. Available: arXiv:1509.02971. ",
+            "[33] L. Bu, R. Babu, and B. De Schutter, “A comprehensive survey of multiagent reinforcement learning,” IEEE Trans. Syst., Man, Cybern. C, Appl. Rev., vol. 38, no. 2, pp. 156–172, Mar. 2008. ",
+            "[34] R. Lowe, Y. Wu, A. Tamar, J. Harb, P. Abbeel, and I. Mordatch, “Multiagent actor-critic for mixed cooperative-competitive environments,” in Proc. 31st Int. Conf. Neural Inf. Process. Syst., 2017, pp. 6382–6393. ",
+            "[35] K. Wang, K. Yang, and C. S. Magurawalage, “Joint energy minimization and resource allocation in C-RAN with mobile cloud,” IEEE Trans. Cloud Comput., vol. 6, no. 3, pp. 760–770, Jul.–Sep. 2018. ",
+            "[36] L. Yang, J. Cao, Y. Yuan, T. Li, A. Han, and A. Chan, “A framework for partitioning and execution of data stream applications in mobile cloud computing,” ACM SIGMETRICS Perform. Eval. Rev., vol. 40, no. 4, pp. 23–32, 2013. ",
+            "[37] H. He, S. Zhang, Y. Zeng, and R. Zhang, “Joint altitude and beamwidth optimization for UAV-enabled multiuser communications,” IEEE Commun. Lett., vol. 22, no. 2, pp. 344–347, Feb. 2018. ",
+            "[38] X. Lyu, H. Tian, W. Ni, Y. Zhang, P. Zhang, and R. P. Liu, “Energyefficient admission of delay-sensitive tasks for mobile edge computing,” IEEE Trans. Commun., vol. 66, no. 6, pp. 2603–2616, Jun. 2018. ",
+            "[39] D. P. Bertsekas, Dynamic Programming and Optimal Control, vol. 1. Belmont, MA, USA: Athena Sci., 1995. ",
+            "[40] D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller, “Deterministic policy gradient algorithms,” in Proc. 31st Int. Conf. Mach. Learn.-Vol. 32, 2014, pp. 387–395. ",
+            "[41] M. L. Littman, “Markov games as a framework for multi-agent reinforcement learning,” in Proc. Mach. Learn., 1994, pp. 157–163. ",
+            "[42] T. Schaul, J. Quan, I. Antonoglou, and D. Silver, “Prioritized experience replay,” 2015. [Online]. Available: arXiv:1511.05952. ",
+            "[43] D. P. Kingma and J. Ba, “Adam: A method for stochastic optimization,” 2014. [Online]. Available: arXiv:1412.6980. "
+        ],
+        "bbox": [
+            506,
+            70,
+            921,
+            515
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/ac26ae6db44a16b1ec746604d3187faf88738d759e73e93bf89a7cfced1082d5.jpg",
+        "image_caption": [
+            "Liang Wang is currently pursuing the Ph.D. degree with the Department of Computer and Information Sciences, Northumbria University, U.K. His research interests include UAV communication, mobile edge computing, and machine learning. "
+        ],
+        "image_footnote": [],
+        "content": "Portrait of a young man wearing glasses against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            635,
+            627,
+            751
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/200b6f7d0d93f31b7b74f7151936a5f345a987795f6361c76c45fc2197df0072.jpg",
+        "image_caption": [
+            "Kezhi Wang (Senior Member, IEEE) received the B.E. and M.E. degrees from the School of Automation, Chongqing University, China, in 2008 and 2011, respectively, and the Ph.D. degree in engineering from the University of Warwick, U.K., in 2015. He was a Senior Research Officer with the University of Essex, U.K., from 2015 to 2017. He is currently a Senior Lecturer with the Department of Computer and Information Sciences, Northumbria University, U.K. His research interests include mobile edge computing, intelligent reflection "
+        ],
+        "image_footnote": [
+            "surface, and machine learning. "
+        ],
+        "content": "Portrait of a smiling man in a white shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            808,
+            627,
+            926
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: MULTI-AGENT DEEP REINFORCEMENT LEARNING-BASED TRAJECTORY PLANNING ",
+        "bbox": [
+            76,
+            34,
+            599,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "83 ",
+        "bbox": [
+            906,
+            36,
+            919,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/ca8614fdbd3e96af00160549e5781b010bc4f4e8bf9531571093a23ace59bf69.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            74,
+            197,
+            190
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Cunhua Pan (Member, IEEE) received the B.S. and Ph.D. degrees from the School of Information Science and Engineering, Southeast University, Nanjing, China, in 2010 and 2015, respectively. ",
+        "bbox": [
+            207,
+            71,
+            490,
+            118
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "From 2015 to 2016, he was a Research Associate with the University of Kent, U.K. He held a Postdoctoral position with the Queen Mary University of London, U.K., from 2016 to 2019, where he is currently a Lecturer. His research interests mainly include intelligent reflection surface, machine learning, UAV, Internet of Things, ",
+        "bbox": [
+            207,
+            118,
+            490,
+            196
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "and mobile edge computing. He serves as the TPC Member for numerous conferences, such as ICC and GLOBECOM, and the Student Travel Grant Chair for ICC 2019. He also serves as an Editor for IEEE WIRELESS COMMUNICATION LETTERS, IEEE COMMUNICATION LETTERS and IEEE ACCESS. ",
+        "bbox": [
+            73,
+            196,
+            490,
+            253
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/e3355928539e312215d9c2bdfee3f6569e00aeac2d12e3dac2ba74c18d62e5bb.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man in formal attire (no visible text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            73,
+            627,
+            189
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Nauman Aslam (Member, IEEE) received the Ph.D. degree in engineering mathematics from Dalhousie University, Halifax, NS, Canada, in 2008, where he was an Assistant Professor. He is currently a Professor with the Department of Computer and Information Sciences, Northumbria University, Newcastle upon Tyne, U.K. He is also an Adjunct Assistant Professor with Dalhousie University. His research interests include wireless sensor network, energy efficiency, security, and WSN health applications. ",
+        "bbox": [
+            638,
+            71,
+            921,
+            196
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/1528774f975d5617dc6a9e4b35ef7da599fcba8da8eced407d1f3005d255f620.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man wearing a striped polo shirt with a small logo (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            300,
+            197,
+            416
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Wei Xu (Senior Member, IEEE) received the B.Sc. degree in electrical engineering and the M.S. and Ph.D. degrees in communication and information engineering from Southeast University, Nanjing, China, in 2003, 2006, and 2009, respectively. From 2009 to 2010, he was a Postdoctoral Research Fellow with the Department of Electrical and Computer Engineering, University of Victoria, Canada. He is currently a Professor with the National Mobile Communications Research Laboratory, Southeast University. He is also ",
+        "bbox": [
+            207,
+            297,
+            490,
+            422
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "an Adjunct Professor with the University of Victoria, Canada, and a Distinguished Visiting Fellow of the Royal Academy of Engineering, U.K. He has coauthored over 100 refereed journal papers in addition to 36 domestic patents and four U.S. patents granted. His research interests include cooperative communications, information theory, signal processing, and machine learning for wireless communications. He received the Best Paper Awards from IEEE MAPE 2013, IEEE/CIC ICCC 2014, IEEE Globecom 2014, IEEE ICUWB 2016, WCSP 2017, and ISWCS 2018. He was the co-recipient of the First Prize of the Science and Technology Award in Jiangsu Province, China, in 2014. He received the Youth Science and Technology Award of China Institute of Communications in 2018. He was an Editor of the IEEE COMMUNICATIONS LETTERS from 2012 to 2017. He is currently an Editor of the IEEE TRANSACTIONS ON COMMUNICATIONS and IEEE ACCESS. ",
+        "bbox": [
+            73,
+            422,
+            491,
+            583
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/dcb8858d2903e65cf4ee7a652e447eac096cb27661c90f24e9ed06905550678a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man with gray hair and glasses, wearing a suit and tie (no visible text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            397,
+            627,
+            513
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Lajos Hanzo (Fellow, IEEE) received the master’s and Doctorate degrees from the Technical University (TU) of Budapest, in 1976 and 1983, respectively, the D.Sc. degree from the University of Southampton in 2004, and the Honorary Doctorates from the TU of Budapest in 2009, and the University of Edinburgh in 2015. He has published over 1900 contributions at IEEE Xplore and 19 Wiley-IEEE Press books and has helped the fast-track career of 123 Ph.D. students. Over 40 of them are Professors at various stages of their careers in academia and ",
+        "bbox": [
+            638,
+            395,
+            921,
+            520
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "many of them are leading scientists in the wireless industry. He is a Foreign Member of the Hungarian Academy of Sciences and a Former Editor-in-Chief of the IEEE Press. He has served several terms as Governor of both IEEE ComSoc and of VTS. He is a Fellow of the Royal Academy of Engineering, IET, and EURASIP. ",
+        "bbox": [
+            503,
+            521,
+            921,
+            578
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "84 ",
+        "bbox": [
+            76,
+            36,
+            91,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, VOL. 7, NO. 1, MARCH 2021 ",
+        "bbox": [
+            343,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:48 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            122,
+            962,
+            870,
+            974
+        ],
+        "page_idx": 11
+    }
+]
