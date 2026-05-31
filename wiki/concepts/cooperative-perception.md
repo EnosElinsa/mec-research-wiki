@@ -6,7 +6,7 @@ related:
   - "[[vehicular-mec]]"
   - "[[xie-2026-uav-multisource-fusion]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Cooperative Perception in Vehicular Networks
@@ -41,4 +41,4 @@ Implication: protocols designed for opportunistic compute offloading (e.g. simpl
 
 ## In this wiki
 
-[[xie-2026-uav-multisource-fusion]] is the first source to bring cooperative perception in. It is adjacent to but distinct from the **task migration** thread of [[zhang-2025-mcma-task-migration]] — same V-MEC umbrella but different workload class. Future curated perception-class sources should land here.
+[[xie-2026-uav-multisource-fusion]] is the wiki's source bringing cooperative perception in. It is adjacent to but distinct from the **task migration** thread of [[zhang-2025-mcma-task-migration]] — same V-MEC umbrella but different workload class.

@@ -2,6 +2,38 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Audit pass (non-source layer — concept batch 1; no new papers)
+
+First invocation of the **non-source-layer** audit, beginning the concept pages now that all 171 source pages are audited (batches 1–12 below). Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). Tree clean at `159bd17`; `corpus_counts.py` confirms 171 / **234 concepts** / 71 entities / 14 findings / 11 synthesis / 4 comparisons / 2 methodology / 5 queries / 1 thesis. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
+
+### Non-source coverage plan
+
+- Split the non-source layer into **concepts (234) → entities (71) → derived (37)** ≈ 342 pages. Concept list (`.curation-out/concept_slugs.txt`) batched with `make_batches.py --size 20` → **12 concept batches** of 20 (last 14). Tracker: `.curation-out/audit-coverage.md`.
+
+### Correctness & consistency audit (Phase B — concept batch 1)
+
+Audited **concept batch 1** (20 pages, alphabetical action-space-explosion-in-multi-uav-mec → blockage-aware-channel-model). Concept-page checks: definition grounded in the source(s)/parse it cites, no invented numbers/overclaims, `related`/wikilinks resolve and are non-self-referential, tags reused, evergreen wording.
+
+- **Evergreen-wording fixes (forward-looking curation-workflow placement → fact):**
+  - [[air-ground-integrated-network]] — dropped trailing "Future cross-layer sources should land here."
+  - [[cooperative-perception]] — "[[xie-2026-uav-multisource-fusion]] is the **first** source … Future curated perception-class sources should land here." → "is the wiki's source bringing cooperative perception in" (placement instruction removed).
+  - synthesis [[drl-backbones-across-uav-mec-sources]] — dropped trailing "Future sources should treat it as the default."
+  - `index.md` Tools note — "Future entity pages should land here as more authors recur." → dropped (kept the evergreen "entity pages exist for the central recurring contributors").
+- **Grounding spot-checks (verbatim against parses):** [[active-ris]] scaling (Theorem 5: receive power ∝ N_A²·N_P², asymptotic SINR ∝ N_A·N_P, vs (N_P+N_A)² / (N_P+N_A) for single-layer active RIS); [[adaptive-intermediate-data-compression]] (ASAP 8-bit quantization + gzip lossless; 87.2%–92.7% data-size reduction, accuracy reduction within 0.15%); [[b-spline-trajectory]] (3λ control-point parameterization). All confirmed grounded.
+- **Verified clean** (definition grounded, no invented numbers, links resolve & non-self-referential, tags reused): the remaining 16 batch-1 concepts (action-space-explosion-in-multi-uav-mec, adaptive-entropy-priority-replay, adaptive-inter-layer-data-offloading, age-of-information, aigc-service-provider, air-to-ground-channel-model, alternating-direction-method-of-multipliers, alternating-optimization-sdr-sca, ant-colony-optimization, anti-jamming-mec, aoi-energy-tradeoff, bargaining-game, beta-policy-drl, binary-vs-partial-offloading, binary-whale-optimization, blockage-aware-channel-model).
+
+### Toolkit
+
+- **Extended `process_refs.py`** (+ README) with two forward-looking-placement patterns (`(should|will|would) land here`; `future … sources/pages/entity-pages (should|will|would|land|belong)`). Regression-checked: it does **not** flag the legit evergreen "## Limitations / future work" sections on source pages (a paper's own future work is domain content). Caught exactly the 4 leaks above; all fixed → tool exits 0.
+
+### Gates (concept batch 1)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py`** = 513 pages, 0 errors (`--type concept`: 234, 0 errors). Graph unchanged **513 / 4455** (prose-only edits, no link changes). Meta docs (`index.md`, `log.md`) edited with file tools, verified mojibake-free.
+
+### Routing to `mec-wiki-synthesizer` (concept batch 1 — recorded, not filled)
+
+- **Swarm-metaheuristic family** is spread across distinct algorithm pages (binary-whale-optimization, whale-optimization-algorithm, multi-verse-optimizer, salp-swarm-algorithm, particle-swarm-optimization, ant-colony-optimization, gravitational-search-algorithm, self-adaptive-global-best-harmony-search). These are genuinely different algorithms (no merge), but a synthesis/comparison page tying the swarm-metaheuristic family together — when each is used and against what baselines — may be worth minting.
+
 ## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–12/12; no new papers)
 
 First invocation of a multi-invocation batched audit over the fully-curated 171-source corpus. Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator` needed). Tree clean at `f81cbb4`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4449 edges**.
