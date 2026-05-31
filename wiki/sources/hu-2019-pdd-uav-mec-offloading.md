@@ -56,7 +56,7 @@ Single UAV; the parse's conclusion focuses on validation rather than enumerating
 
 ## Relation to the corpus
 
-An early (2018/2019) **single-UAV MEC offloading + trajectory** entry that predates and complements the SCA-based collaborative scheme of [[yu-2020-uav-ec-collaborative-offloading]] and the Lagrangian-dual+SCA single-UAV design of [[zhang-2019-uav-iot-comp-comm]]. Its **min-max delay** objective and **PDD** solver distinguish it from the energy-min and weighted-sum families; PDD is a new optimization vocabulary in this wiki. The author set (Cai/Yu/Qin/Zhao/G. Y. Li, Zhejiang University / QMUL / Georgia Tech) is distinct from the UAV-communication track's Wu/Zeng/Zhang group, whose multi-UAV min-rate paper [[wu-2018-multiuav-minrate-trajectory]] is curated in this same batch. Anchors the new [[penalty-dual-decomposition]] concept.
+An early (2018/2019) **single-UAV MEC offloading + trajectory** entry that predates and complements the SCA-based collaborative scheme of [[yu-2020-uav-ec-collaborative-offloading]] and the Lagrangian-dual+SCA single-UAV design of [[zhang-2019-uav-iot-comp-comm]]. Its **min-max delay** objective and **PDD** solver distinguish it from the energy-min and weighted-sum families; PDD is a new optimization vocabulary in this wiki. The author set (Cai/Yu/Qin/Zhao/G. Y. Li, Zhejiang University / QMUL / Georgia Tech) is distinct from the UAV-communication track's Wu/Zeng/Zhang group, whose multi-UAV min-rate paper [[wu-2018-multiuav-minrate-trajectory]] is also in the corpus. Anchors the new [[penalty-dual-decomposition]] concept.
 
 ## Raw artifacts
 

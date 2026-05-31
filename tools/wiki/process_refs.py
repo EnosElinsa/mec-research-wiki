@@ -30,6 +30,8 @@ OFFENDING = [
     re.compile(r"\bmulti-batch\b", re.I),
     re.compile(r"\bthis batch\b", re.I),
     re.compile(r"\bwithin-batch\b", re.I),
+    re.compile(r"\bsame batch\b", re.I),                         # "(in) this same batch"
+    re.compile(r"\b(?:in|within|during|across) (?:this|that|the same) batch\b", re.I),
     re.compile(r"\bthis curation\b", re.I),
     re.compile(r"\bcuration pass\b", re.I),
     re.compile(r"\bsynthesis pass\b", re.I),

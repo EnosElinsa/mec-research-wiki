@@ -54,13 +54,13 @@ These choices make this paper a strong candidate for the **canonical reference f
 - **Constraint.** Process orders must respect DAG: 𝒮_j(k) ∉ pred(𝒮_j(k − 1)) ∀k.
 - **Objectives.**
   - G₁ = max_j FT_j (makespan).
-  - G₂ = Σ_{j,j'} |E_j − E_{j'}| (energy-balancing index).
+  - G₂ = Σ_j ((TE_j − mean(TE)) / ψ)² (energy-balancing index — sum of squared normalized deviations of each UAV's total energy TE_j from the swarm mean, ψ a reference value; Eq. 13).
 - **Algorithm.** CMOEA/D-CDP augmented with the local-search and DAG-respecting genetic operator.
 
 ## Findings
 
-- Local search yields a steeper convergence curve, especially in early generations where the DAG constraint shrinks the feasible region heavily.
-- Energy balancing reduces the **earliest-departure UAV** failure mode: in baselines, one UAV's energy hits zero ~25% earlier than the others; here, all UAVs land within ~5%.
+- Against the CMOEA/D-CDP, PPS, and ToP baselines on three task-graph instances (general, mesh, tree), the proposed algorithm attains lower mean **IGD** and higher mean **HV** — i.e. a better-converged and better-distributed Pareto front trading makespan (G₁) against the energy-balancing index (G₂) (parse Table I, Fig. 5).
+- The energy-balancing objective is motivated as preventing the *sudden departure* of high-drain UAVs (fairness across the swarm); the paper optimizes the G₂ balancing index rather than reporting an explicit energy-depletion-timing margin → such a margin is `not in parse`.
 
 ## Limitations
 
