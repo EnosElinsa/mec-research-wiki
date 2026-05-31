@@ -2,7 +2,7 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
-## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–9/12; no new papers)
+## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–10/12; no new papers)
 
 First invocation of a multi-invocation batched audit over the fully-curated 171-source corpus. Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator` needed). Tree clean at `f81cbb4`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4449 edges**.
 
@@ -193,6 +193,24 @@ Audited **source-page batch 9** (15 pages, alphabetical wang-2025-double-edge-sa
 - **Candidate comparison — CMOP-evolutionary UAV trajectory lineage:** [[wu-2026-terrain-aware-uav-mec]] (multi-tasking CMOEA, DEM terrain-aware), [[peng-2022-cmop-uav-path-planning]], [[peng-2024-energy-time-uav-its]], [[huang-2025-cmop-dispersed-computing]] (dual-population), and the methods anchor [[wang-acve-constraint-violation-cmop]] (ACVE/DDCo) form a tight constrained-multi-objective family; the existing [[cmop-evolutionary-uav-mec-lineage]] synthesis may be due a re-census as this lineage has grown.
 - **Candidate finding — foundational UAV-comm/WPT anchors:** [[wu-2018-multiuav-minrate-trajectory]] (max-min-rate BCD+SCA) and [[xu-2018-uav-wpt-trajectory]] (single-location-hover-optimal sum-energy + successive hover-and-fly) are heavily-cited foundational anchors with no finding page capturing their canonical results.
 - **Entity ambiguity (noted, not resolved):** [[xu-2018-uav-wpt-trajectory]] first author **Jie Xu** (Guangdong University of Technology) is flagged on-page as distinct from the existing [[jie-xu]] entity (CUHK-Shenzhen, ISAC); namesake disambiguation is the synthesizer's call. Bin Lin / Qiang Ye (maritime cluster) already have entity pages.
+
+### Correctness & consistency audit (Phase B — batch 10/12)
+
+Audited **source-page batch 10** (15 pages, alphabetical yang-2019-sum-power-uav-mec → zhang-2013-energy-optimal-mcc-stochastic). Phase 0 re-reconciled clean (`curation_status.py --dupes`: **171 raw = 171 curated, 0 uncurated, 0 genuinely-new**); tree clean at `25a9c54`; baseline graph **513 nodes / 4455 edges**.
+
+- **All 15 source pages verified clean** — no corrections needed. DOI/venue/year confirmed against each paper's own parse; headline numbers grounded verbatim or flagged figure-/abstract-derived indicative; frontmatter valid; slugs/tags/`related` consistent (no self-refs). DOIs confirmed: `TWC.2019.2927313`, `JIOT.2020.2971645`, `TWC.2022.3142365`, `TMC.2024.3406607`, `LWC.2025.3588758`, `TVT.2024.3463420`, `TVT.2025.3581970`, `JIOT.2020.2965898`, `TCOMM.2016.2611512`, `TWC.2017.2688328`, `TWC.2019.2902559`, `JPROC.2019.2952892`, `TVT.2024.3359310`, `TMC.2023.3304988`, `TWC.2013.072513.121842`.
+- **Headline numbers spot-checked verbatim against parses:** yang-2019 IACL/SCAFAH/ECC/EXH, fuzzy-c-means initializer, ">1000 W initial → ~420 W after three iterations" (figure-read, flagged indicative on-page); yang-2020 400×400 m / B=1 MHz / H=100 m / N=5 UAVs / K=100 IoT, DRL vs FCFS/SJF/RR; ye-2025 ρ-coefficients (9.7417/0.0978/0.7647/0.5158/3497.8463/0.0307), s^A,min=4, prompt-opt +8%/+2% quality and +22% latency-reduction, 380% correctly attributed to cited work [7]; zeng-2024 participation degree +28.27%/+25.74% (vs RBS/GBS over task size) and +27.84%/+21.14% (over fleet count), convergence ~1500 iter (sharpest first ~800); zhai-2023 FedLEO up-to-41% lower delay / up-to-9.39% higher accuracy; zhang-2013 κ=10⁻¹¹, λ=1.5 → κ/λ=6.67×10⁻¹² (correctly computed). yang-2022 / yang-2024-taco / yao-2025 / you-2025 / yu-2020 / zeng-2016 / zeng-2017 / zeng-2019-rotary / zeng-2019-tutorial verified clean (DOI/method/qualitative results grounded; figure values flagged indicative). Year-disambiguation re-confirmed against publication dates (e.g. yao-2025 LWC pub 15 Jul 2025; zeng-2016 TCOMM date-of-current-version Dec 2016; zeng-2019-rotary current version Apr 2019).
+
+### Gates (batch 10)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py`** = 513 pages, 0 errors. No page edits this batch — graph unchanged at **513 nodes / 4455 edges**.
+
+### Routing to `mec-wiki-synthesizer` (batch 10 — coverage gaps, recorded not filled)
+
+- **Candidate findings — foundational Zeng/Zhang UAV-communications anchors:** [[zeng-2016-throughput-relaying]] (UAV mobile relaying + "staircase" water-filling + information-causality), [[zeng-2017-energy-efficient-uav-trajectory]] (first fixed-wing propulsion-energy model + bits/Joule), and [[zeng-2019-rotary-wing-energy-min]] (canonical rotary-wing propulsion model) are heavily-cited foundational anchors with no finding page capturing their canonical results; [[zeng-2019-uav-comm-tutorial-5g]] is a foundational survey similarly without a finding/synthesis tie.
+- **Candidate synthesis — propulsion-energy model lineage:** the fixed-wing ([[fixed-wing-propulsion-energy-model]], zeng-2017) vs rotary-wing ([[rotary-wing-propulsion-energy-model]], zeng-2019) split is referenced widely across the energy-aware [[uav-trajectory-control]] sources; a short synthesis tying which corpus sources adopt which model would consolidate a recurring thread.
+- **Candidate comparison — LEO-satellite + federated learning:** [[zhai-2023-fedleo-decentralized-fl]] (server-free decentralized aggregation + offloading), [[mao-2025-bcsa-frl]] (blockchain-aggregated FRL), and [[han-2024-sagin-fl-handover]] (FL over SAGIN with handover) form a 3-source FL-over-satellite cluster with no comparison/synthesis page.
+- **Candidate comparison — maritime AAV/USV offloading solver families (reinforced):** [[you-2025-uncertain-maritime-hasac]] (Lyapunov → Markov game → heterogeneous-agent SAC) and [[zeng-2024-usv-fleet-collaborative-offloading]] (reverse-auction + ADMM/BCD) add two more solver styles to the Wang/Lin/Ye maritime cluster flagged in batches 8–9; the comparison page remains owed.
 
 ## 2026-06-01 — Cleanup: duplicate-ingest removal + end-to-end-DRL derived pages converted to English
 
