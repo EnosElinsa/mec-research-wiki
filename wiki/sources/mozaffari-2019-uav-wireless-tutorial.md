@@ -14,8 +14,11 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[al-hourani-2014-optimal-lap-altitude]]"
   - "[[zeng-2019-rotary-wing-energy-min]]"
+  - "[[mozaffari-2017-uav-iot-energy-efficient]]"
+  - "[[mohammad-mozaffari]]"
+  - "[[walid-saad]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # A Tutorial on UAVs for Wireless Networks: Applications, Challenges, and Open Problems
@@ -56,7 +59,7 @@ By design a tutorial; it consolidates open problems and research directions rath
 
 ## Relation to the corpus
 
-A **foundational survey/tutorial anchor** for the UAV side of the wiki, complementary to the 5G-and-beyond UAV-communications tutorial [[zeng-2019-uav-comm-tutorial-5g]]. The aerial-base-station, 3D-deployment, and channel-modeling threads it surveys are formalized in corpus anchors such as [[al-hourani-2014-optimal-lap-altitude]] (air-to-ground LoS probability and optimal LAP altitude) and [[zeng-2019-rotary-wing-energy-min]] (rotary-wing propulsion energy). Reinforces [[cellular-connected-uav]], [[air-to-ground-channel-model]], [[high-altitude-platform-station]], and [[stochastic-geometry-network-analysis]].
+A **foundational survey/tutorial anchor** for the UAV side of the wiki, complementary to the 5G-and-beyond UAV-communications tutorial [[zeng-2019-uav-comm-tutorial-5g]]. The aerial-base-station, 3D-deployment, and channel-modeling threads it surveys are formalized in corpus anchors such as [[al-hourani-2014-optimal-lap-altitude]] (air-to-ground LoS probability and optimal LAP altitude) and [[zeng-2019-rotary-wing-energy-min]] (rotary-wing propulsion energy), and put to work by the same group's [[mozaffari-2017-uav-iot-energy-efficient]] (joint UAV 3D placement + mobility + uplink power control for IoT collection). The Virginia Tech (Wireless@VT) authors [[mohammad-mozaffari]] and [[walid-saad]] anchor this UAV-communications thread. Reinforces [[cellular-connected-uav]], [[air-to-ground-channel-model]], [[high-altitude-platform-station]], and [[stochastic-geometry-network-analysis]].
 
 ## Raw artifacts
 

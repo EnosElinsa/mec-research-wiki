@@ -15,10 +15,12 @@
 - [[al-hourani-2014-optimal-lap-altitude]] — Al-Hourani et al. 2014. Foundational **air-to-ground channel** letter: closed-form sigmoid LoS-probability vs elevation angle + **optimal LAP altitude** for maximum ground coverage (IEEE WCL). *(Channel-model anchor, not MEC.)*
 - [[xu-2024-mobile-aigc-survey]] — Xu et al. 2024. Survey of **edge-cloud generative AI / AIGC services** in mobile networks (**mobile AIGC networks**); generative-model fundamentals, AIGC lifecycle, cloud-edge-mobile infrastructure, and implementation challenges (resource allocation, offloading, caching, mobility, incentives) (IEEE COMST).
 - [[mozaffari-2019-uav-wireless-tutorial]] — Mozaffari et al. 2019. **Tutorial** on UAVs for wireless networks; UAVs as aerial base stations vs cellular-connected UAVs, 3D deployment, channel modeling, energy efficiency, and the analytical toolbox (optimization, ML, stochastic geometry, game theory) (IEEE COMST). *(UAV-communications anchor, not MEC.)*
+- [[mozaffari-2017-uav-iot-energy-efficient]] — Mozaffari et al. 2017. Energy-efficient **IoT data collection** via multiple mobile UAVs; joint 3D placement + device association + uplink power control + closed-form update-times/trajectory; −45% device tx power, +28% reliability vs stationary (IEEE TWC). *(UAV-deployment/data-collection anchor, not MEC.)*
 
 ### Foundational DRL methods
 
 - [[fujimoto-2018-td3-actor-critic]] — Fujimoto et al. 2018. Origin paper for **TD3** — clipped double-Q + delayed policy updates + target smoothing to curb actor-critic overestimation (ICML).
+- [[schulman-2017-ppo]] — Schulman et al. 2017. Origin paper for **PPO** — clipped surrogate objective enabling multi-epoch first-order policy updates with TRPO-like stability (OpenAI; arXiv, venue/DOI not in parse).
 - [[xiang-sac-mapless-robot-navigation]] — Xiang et al. Mapless mobile-robot navigation via **Soft Actor-Critic** (LSTM value/Q nets); laser+target→velocity continuous control (venue/year not in parse).
 
 ### Joint trajectory / caching / migration
@@ -70,6 +72,7 @@
 - [[wang-2024-hfrl-decentralized-navigation]] — Wang et al. 2024. Decentralized navigation for **heterogeneous** UAV-MEC; soft hierarchical DRL (SHDRLN, skill abstraction) + dual-end **federated RL** (DFRL) maximizing task-offloading energy efficiency (IEEE TMC).
 - [[zhou-2024-jdl-abs-postdisaster-rescue]] — Zhou et al. 2024. **Post-disaster** ABS computation offloading + communication assistance; min task-queuing-delay over ABS-GU association + offloading ratio + trajectory; **JDL** = Lyapunov + actor-critic DRL with a **model-based SCA critic** (IEEE TWC).
 - [[raivi-2024-jdaco-postdisaster-iot]] — Raivi & Moh 2024. **JDACO** — joint data aggregation + computation offloading for multi-UAV **post-disaster** IoT; two-tier LT-UAV/HT-UAV; minimize aggregation+offload energy/delay + max IoT coverage; **VD3QN** (dueling double DQN + value-decomposition network); +20% training-time / +11.4% data / +5.6% energy-eff / +11.2% mission-duration, up to 98% devices served (IEEE IoT-J).
+- [[sun-2024-ues-video-analytics-disaster]] — Sun et al. 2024. **Battery-aware** UAV-edge-server collaborative **video analytics** for **disaster rescue**; differential-evolution per-slot offloading + **DDQN** trajectory planning; doubles the smart-camera-network lifetime (IEEE TVT).
 
 ### Classical / convex / optimization-based UAV-MEC
 
@@ -88,6 +91,7 @@
 - [[wu-2024-urllc-uav-mec-latency]] — Wu et al. 2024. **URLLC / finite-blocklength** UAV-MEC; min-max latency via BCD + SCA over UAV 3D location + bandwidth + CPU frequency; Rician fading (IEEE TWC).
 - [[wu-2018-multiuav-minrate-trajectory]] — Wu et al. 2018. Multi-UAV-as-base-station **max-min-rate** trajectory + scheduling + power; BCD + SCA + circle-packing init (communications framing, IEEE TWC).
 - [[sun-2025-tjcct-twotimescale-uav-mec]] — Sun et al. 2025. **Two-timescale** UAV-MEC (TJCCT); MINLP system-utility max via short-timescale price-incentive resource allocation + matching offloading and long-timescale convex trajectory control; stability + complexity proved (IEEE TMC).
+- [[jeong-2018-uav-cloudlet-bit-allocation]] — Jeong et al. 2018. Early **UAV-mounted cloudlet** MEC; joint **bit allocation** (uplink/compute/downlink) + trajectory to minimize mobile energy under latency + UAV-energy budget; orthogonal vs **NOMA** access; **SCA** (IEEE TVT).
 
 ### SAGIN / satellite offloading
 
@@ -103,6 +107,7 @@
 - [[zhang-2025-vnf-sgin-dql]] — Zhang et al. 2025. **NFV/SDN service-function-chaining** for 6G satellite-ground integrated networks; dynamic VNF selection + chaining via deep Q-learning (DDVSC) to maximize long-term network profit (IEEE TVT).
 - [[han-2024-ground-satellite-fl]] — Han et al. 2024. **Cooperative FL over ground-to-satellite networks**; LEO satellites as edge-compute units + aggregators + ISL relays; solar-battery-aware data offloading + convergence proof + latency minimizer (IEEE JSAC).
 - [[lee-2024-dho-leo-handover]] — Lee et al. 2024. **DHO** — DRL-based LEO-satellite **handover protocol** that skips the Measurement Report by prediction; minimizes access delay + collision rate; trained with IMPALA; up to 6.86×/4.18× lower access delay vs conventional/heuristic HO (IEEE TWC). *(LEO connection-handover/networking, not offloading.)*
+- [[mao-2024-fso-leo-hierarchical-routing]] — Mao et al. 2024. Hierarchical **routing** for ultra-dense **FSO LEO** constellations; dual-layer MEO/LEO + region division + multi-objective DRL utility routing + cooperative-mechanism conflict resolution; APT-terminal-adaptive (IEEE JSAC). *(LEO routing/networking, not offloading.)*
 
 ### IRS / THz / anti-jamming
 
@@ -179,6 +184,7 @@
 ### Trust, security, and federated MEC
 
 - [[mao-2025-bcsa-frl]] — Mao et al. 2025. Blockchain-enabled cold-start FRL for ZT LEO satellite networks. *BCSA-FRL* (CCVM + CSRA).
+- [[mao-2025-irs-noma-fl-secrecy]] — Mao et al. 2025. **IRS-assisted** secrecy-rate maximization for **NOMA-based federated-learning** model aggregation; max-min secrecy rate over device power + IRS phase shift via **DDPG** (IEEE TCCN).
 - [[qin-2025-bcuav-masac]] — Qin et al. 2025. Blockchain-enabled secure UAV-MEC: Lyapunov + MASAC + DOA.
 - [[benaya-2025-aerial-isac-haps]] — Benaya et al. 2025. HAPS-mounted FD ISAC + friendly-jamming UAV + ground MEC; AO + SDR + SCA.
 - [[wang-2025-acbft-uav-consensus]] — Wang et al. 2025. **ACBFT** — PSO-ordered chain-based Byzantine fault-tolerant consensus for UAV ad hoc networks.
@@ -201,6 +207,7 @@
 - [[li-2024-emssa-uav-swarm-vaa]] — Li et al. 2024. **Virtual antenna arrays** for UAV-swarm-assisted IoT data harvesting/dissemination; multi-objective (time / eavesdropper / energy) **salp swarm** optimizer (EMSSA); ground + aerial CB (IEEE TMC).
 - [[sun-2024-imssa-uav-secure-cb]] — Sun et al. 2024. **Secure** UAV collaborative beamforming (UVAA) with **imperfect / unknown eavesdropper** information; multi-objective SCMOP (worst-case secrecy rate / max SLL / flight energy) solved by an **improved multi-objective salp swarm algorithm** (IMSSA); Raspberry Pi demo (IEEE TMC).
 - [[huang-2025-dual-aav-maritime-secure-cb]] — Huang et al. 2025. **Dual AAV cluster** maritime secure communication via CB: an MUVAA **relay** forwards data to a vessel while an MUVAA **jammer** beams jamming at the eavesdropper; multi-objective SEMCMOP (Bob SINR / Willie SINR / flight energy) solved by an **improved multi-objective mayfly algorithm** (IMOMA) (IEEE IoT-J).
+- [[liang-2024-hmecmop-uav-cb]] — Liang et al. 2024. UAV-swarm **collaborative beamforming** to remote BSs; multi-objective **hovering vs motion energy** minimization (HMECMOP) over positions + excitation weights + BS-communication order; **improved multiverse optimizer** (IMOMVO) (IEEE IoT-J).
 
 ### Architectural / spectrum / governance
 
@@ -249,6 +256,7 @@
 - **NUAA aerial-computing cluster:** [[ziye-jia]], [[chao-dong]], [[qihui-wu]] (NUAA), [[zhu-han]] (Univ of Houston / Kyung Hee).
 - **Dalian-Maritime-University maritime cluster:** [[bin-lin]] (DMU), [[zhen-wang]] (DMU / Dalian Neusoft), [[qiang-ye]] (Univ of Calgary).
 - **NWPU non-terrestrial-network cluster:** [[bomin-mao]], [[hongzhi-guo]], [[jiajia-liu]] (Northwestern Polytechnical University).
+- **Virginia Tech (Wireless@VT) UAV-communications cluster:** [[mohammad-mozaffari]], [[walid-saad]] — foundational UAV-as-aerial-base-station + 3D-deployment works (2 sources each).
 - **NCEPU aerial-edge cluster:** [[peng-qin]], [[yang-fu]] (North China Electric Power University); [[jingjing-wang]] (Beihang University) links the blockchain-UAV thread.
 - **South-China-Agricultural-University evolutionary UAV-MEC cluster:** [[zexiong-wu]] (with [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]]).
 - **Cross-cutting seniors:** [[chunxiao-jiang]] (Tsinghua), [[tony-q-s-quek]] (SUTD).
@@ -333,6 +341,7 @@
 - [[leo-satellite-edge-computing]]
 - [[leo-satellite-coverage-time]]
 - [[walker-star-constellation]]
+- [[free-space-optical-isl]]
 - [[space-air-ground-integrated-network]]
 - [[non-terrestrial-network]]
 - [[vehicular-mec]]

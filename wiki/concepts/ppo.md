@@ -6,13 +6,14 @@ related:
   - "[[j-ppo]]"
   - "[[gae]]"
   - "[[liu-2026-jppo-en-convntm]]"
+  - "[[schulman-2017-ppo]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # PPO (Proximal Policy Optimization)
 
-Schulman et al.'s on-policy actor-critic algorithm that constrains each update to remain "proximal" to the previous policy via a clipped surrogate objective. Standard form:
+Schulman et al.'s on-policy actor-critic algorithm that constrains each update to remain "proximal" to the previous policy via a clipped surrogate objective (origin paper curated as [[schulman-2017-ppo]]). Standard form:
 
 $$
 L_n^{\text{CLIP}}(\theta) = \mathbb{E}_n\big[\min(g_n(\theta) A_n,\; \text{clip}(g_n(\theta), 1-\varepsilon, 1+\varepsilon) A_n)\big]
