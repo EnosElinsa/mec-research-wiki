@@ -6,27 +6,28 @@ related:
   - "[[safe-reinforcement-learning]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Markov Game of Intervention (MGI) for Collision Avoidance
 
-A two-agent sub-game introduced in [[zhang-2025-ssac-mgi-heterogeneous-uav]] for collision avoidance between paired UAVs on near-collision trajectories.
+A **per-UAV** two-agent safe-RL design introduced in [[zhang-2025-ssac-mgi-heterogeneous-uav]] to keep UAVs from colliding with other UAVs or obstacles. Rather than folding safety into the reward (reward shaping), MGI controls each UAV with two cooperating agents and a gating policy that decides, slot by slot, which one acts:
 
-The trick: instead of a symmetric cooperative game where both UAVs share the same avoidance objective (which can lead to symmetric-swerve collisions where both UAVs deflect identically and still hit), MGI **asymmetrically** assigns roles:
+- **Standard Agent.** A stochastic, reward-maximizing policy $\pi$ that pursues the mission objective — minimizing job miss rate and the average energy of UAVs and UEs.
+- **Safety Agent.** A risk-averse policy $\pi^{\mathrm{safe}}$ paired with a **binary gating/intervention policy** $\mathbf{g}(s_t)\in\{0,1\}$ that prevents unsafe actions.
 
-- **Intervention agent.** Constrained to actively deflect to maintain separation.
-- **Non-intervention agent.** Free to pursue its primary task; treats the intervention agent's deflection as a known constraint.
+## Mechanism
 
-The Nash equilibrium of this asymmetric game is a stable separation maneuver where neither UAV's primary task is disrupted more than necessary.
+At each step the executed action is a gated switch between the two agents:
 
-## Why this beats symmetric cooperative deflection
+$$\tilde a_t = \mathbf{g}(s_t)\cdot a_t^{\mathrm{safe}} + (1-\mathbf{g}(s_t))\cdot a_t.$$
 
-- **Symmetric:** both UAVs see the same approach geometry, both compute "swerve right". They still collide.
-- **Asymmetric (MGI):** roles are determined by some deterministic rule (UAV ID, current speed, heading). One UAV swerves, the other holds course. The lateral separation grows monotonically.
+When the gate triggers ($\mathbf{g}(s_t)=1$) the Safety Agent's action **overrides** the Standard Agent; otherwise the Standard Agent follows its stochastic policy. The Standard Agent's reward is likewise assigned according to whichever action was actually executed, so it learns to maximize return *under the influence of* the Safety Agent. The Safety Agent's objective trades off minimizing unsafe-action risk against avoiding excessive interference with the Standard Agent (each intervention is discouraged), so overrides stay selective.
 
-## Trade-offs
+This decoupling — reward maximization in the Standard Agent, safety enforcement in the Safety Agent — is what gives MGI safety guarantees **during and after** training, unlike reward-shaping baselines where a single policy must balance both. The two-agent model is formalized as a two-agent Dec-POMDP and solved jointly with the SSAC backbone (see [[zhang-2025-ssac-mgi-heterogeneous-uav]]).
 
-- The role-assignment rule must be deterministic and globally consistent across the fleet — needs either a deterministic ID-ordering or a higher-level coordinator.
-- Doesn't scale directly to 3-way+ collisions; pairwise decomposition is a reasonable first approximation.
-- Assumes both UAVs have low-latency awareness of each other's positions.
+## Trade-offs and scope
+
+- The gating policy must learn *when* to intervene; too-frequent overrides interfere with the mission objective, too-rare ones admit unsafe actions — hence the intervention cost in the Safety Agent's objective.
+- Evaluated for UAV-UAV and UAV-obstacle avoidance at a **constant flight altitude** (2-D planning over a $500\times500$ grid); full 3-D maneuvering is not modeled.
+- Belongs to the broader [[safe-reinforcement-learning]] family of constraint-enforcing (rather than reward-shaping) approaches.
