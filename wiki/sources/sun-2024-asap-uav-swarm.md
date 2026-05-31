@@ -26,7 +26,7 @@ related:
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-29
-updated: 2026-05-31
+updated: 2026-06-01
 authors:
   - Hao Sun
   - Yuben Qu
@@ -77,7 +77,7 @@ Emergency UAVs (earthquake search-and-rescue, forest-fire detection, mine explor
 Hardware-validated but small scale (24 Jetson computers over WiFi; 5 quad-rotors over ad-hoc). Single task flow only; multi-flow handling is future work. Inference-only (no RL training; transformers only conceptual). No formal channel/energy/optimization model; gains shrink on non-GPU devices. Open: theoretically sufficient UAV count per task, and fault tolerance in volatile swarm networks.
 
 ## Relation to the corpus
-ASAP is the corpus's clearest example of in-swarm [[collaborative-dl-inference]] and is the natural sibling of [[huang-2025-cmop-dispersed-computing]] (dispersed computation across aerial nodes). Its cluster/head hierarchy echoes [[nabi-2025-jour-hierarchical-aerial]], its [[heterogeneous-uav-fleet]] load balancing connects to [[zhang-2025-ssac-mgi-heterogeneous-uav]] and [[load-balancing-uav-mec]], and its [[elastic-task-scheduling]] on node failure parallels [[zhang-2025-mcma-task-migration]]. It is positioned against [[task-offloading]] approaches such as [[bao-2025-ddpg-video-offloading]], and shares the UAV-swarm resource setting of [[wang-2025-uav-swarm-stackelberg]], serving [[post-disaster-mec]] within the broader [[mobile-edge-computing]] / [[multi-uav-assisted-mec]] landscape. As one of only two hardware-validated sources in the corpus (with [[shao-2024-drl-antijamming-mec]]), it is an important reality check on the simulation-heavy literature.
+ASAP is the corpus's clearest example of in-swarm [[collaborative-dl-inference]] and is the natural sibling of [[huang-2025-cmop-dispersed-computing]] (dispersed computation across aerial nodes). Its cluster/head hierarchy echoes [[nabi-2025-jour-hierarchical-aerial]], its [[heterogeneous-uav-fleet]] load balancing connects to [[zhang-2025-ssac-mgi-heterogeneous-uav]] and [[load-balancing-uav-mec]], and its [[elastic-task-scheduling]] on node failure parallels [[zhang-2025-mcma-task-migration]]. It is positioned against [[task-offloading]] approaches such as [[bao-2025-ddpg-video-offloading]], and shares the UAV-swarm resource setting of [[wang-2025-uav-swarm-stackelberg]], serving [[post-disaster-mec]] within the broader [[mobile-edge-computing]] / [[multi-uav-assisted-mec]] landscape. As one of the few hardware-validated sources in the corpus — alongside [[shao-2024-drl-antijamming-mec]] (Raspberry Pi / USRP testbed), [[zhang-2020-response-delay-uav-swarm]] (real DJI UAVs + 5G NR mmWave testbed), and the airborne proof-of-concept [[qu-ecoei-uav-swarm]] — it is an important reality check on the simulation-heavy literature.
 
 ## Raw artifacts
 - `raw/sources/All-Sky_Autonomous_Computing_in_UAV_Swarm/full.md`
