@@ -6,7 +6,7 @@ related:
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[collision-avoidance-mgi]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Safe Reinforcement Learning
@@ -20,7 +20,7 @@ A family of RL formulations that enforce **constraints** (safety, fairness, reso
 | **Reward shaping** | Add penalty term to reward | Easy; constraint violated with positive probability |
 | **Constrained MDP (CMDP)** | Optimize reward subject to expected-cost constraint $\le c$ | Requires Lagrangian or primal-dual solver |
 | **Shielding** | External controller intervenes when policy would violate | Hard guarantees but conservative; reduces achievable reward |
-| **Game-theoretic intervention** | One agent designated as constraint-enforcer in a sub-game | Asymmetric — can break symmetry that confuses cooperative agents |
+| **Gated intervention agent** | A per-agent Safety Agent overrides the task policy via a learned binary gating policy | Hard safety guarantees during *and* after training; a per-intervention cost keeps overrides selective |
 
 ## Why MEC research uses it
 
@@ -30,4 +30,4 @@ A family of RL formulations that enforce **constraints** (safety, fairness, reso
 
 ## In this wiki
 
-[[zhang-2025-ssac-mgi-heterogeneous-uav]] uses the **Markov Game of Intervention** ([[collision-avoidance-mgi|MGI]]) — a game-theoretic intervention scheme that asymmetrically assigns one UAV as the deflector when two UAVs threaten collision. This avoids the symmetric-swerve failure mode of pure cooperative deflection.
+[[zhang-2025-ssac-mgi-heterogeneous-uav]] uses the **Markov Game of Intervention** ([[collision-avoidance-mgi|MGI]]) — a **per-UAV** two-agent scheme in which a stochastic, reward-maximizing **Standard Agent** is paired with a deterministic **Safety Agent** plus a binary gating policy $\mathbf{g}(s)\in\{0,1\}$ that *overrides* the Standard Agent's action whenever an intervention triggers ($\tilde a = \mathbf{g}\cdot a^{\mathrm{safe}} + (1-\mathbf{g})\cdot a$). A per-intervention cost keeps overrides selective. This enforces collision/obstacle avoidance as an explicit constraint rather than a reward penalty, giving safety guarantees during and after training.
