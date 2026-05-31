@@ -402,6 +402,8 @@
 - [[markov-reward-process]]
 - [[semi-markov-decision-process]]
 - [[centralized-training-decentralized-execution]]
+- [[end-to-end-vs-decomposition-in-drl-mec]]
+- [[action-space-explosion-in-multi-uav-mec]]
 - [[adaptive-entropy-priority-replay]]
 - [[prioritized-experience-replay]]
 - [[safe-reinforcement-learning]]
@@ -574,6 +576,7 @@
 - [[masac-beats-maddpg-sensing-queue]] — +15.41% sensing / −30.73% queue delay vs MADDPG ([[qin-2025-bcuav-masac]])
 - [[acbft-throughput-increase]] — up to 96.2% consensus-throughput increase vs existing chaining protocols ([[wang-2025-acbft-uav-consensus]])
 - [[dcb-cuts-satellite-handover-frequency]] — ~30% fewer LEO handovers at similar uplink rate ([[li-2024-emodrl-ground-space-cb]])
+- [[no-true-end-to-end-drl-in-corpus]] — corpus-wide: every DRL work exploits problem structure; no true end-to-end model
 
 ## Thesis
 
@@ -585,6 +588,7 @@
 - [[query-real-world-validation-of-jppo-en-convntm]]
 - [[query-when-does-dro-beat-drl-for-csi-uncertainty]] — DRO vs DRL vs structure for CSI uncertainty
 - [[query-video-vs-cooperative-perception-offloading-shape]] — do rich-media offloading workloads share an optimization shape?
+- [[end-to-end-drl-feasibility-large-scale-mec]] — is end-to-end DRL feasible in large-scale multi-UAV MEC?
 
 ## Comparisons
 
