@@ -84,7 +84,7 @@ A custom prioritized replay variant that scores transitions by a combination of 
 
 - Shares **multi-UAV trajectory + DRL** thread with [[liu-2026-jppo-en-convntm]] and [[qin-2025-bcuav-masac]].
 - Introduces a *non-Jain* fairness metric ([[theil-fairness-index|Theil]]) that future comparisons across this wiki should consider — see [[fairness-metrics-in-mec]].
-- Adds the **hierarchical aerial MEC** motif ([[hierarchical-aerial-mec]]) which paper #8 (SG-MAPG) and the low-altitude-economy paper will probably extend.
+- Adds the **hierarchical aerial MEC** motif ([[hierarchical-aerial-mec]]) which [[bi-2025-sg-mapg]] (SG-MAPG) and the low-altitude-economy survey [[wang-2025-lae-network-survey]] also extend.
 
 ## Raw artifacts
 

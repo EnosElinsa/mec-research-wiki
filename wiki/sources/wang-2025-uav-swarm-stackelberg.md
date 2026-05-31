@@ -34,7 +34,7 @@ Game-theoretic incentive mechanism for UAV-to-UAV (U2U) spectrum sharing within 
 
 The paper is not strictly MEC, but it sits in the **wireless infrastructure layer** that any UAV-MEC system depends on. If the UAV swarm can't share spectrum efficiently, computation offloading at the upper layer is bandwidth-starved. Future MEC papers that assume "abundant U2U bandwidth" effectively assume a working scheme like this.
 
-The Stackelberg + matching pattern is also recurring in the queue — [[liu-2026-jppo-en-convntm]] mentions Stackelberg-based UAV resource pricing in adjacent work, and the upcoming low-altitude-economy paper likely revisits it.
+The Stackelberg + matching pattern also recurs in the corpus — [[liu-2026-jppo-en-convntm]] mentions Stackelberg-based UAV resource pricing in adjacent work, and the low-altitude-economy survey [[wang-2025-lae-network-survey]] revisits it.
 
 ## Findings
 
@@ -51,7 +51,7 @@ The Stackelberg + matching pattern is also recurring in the queue — [[liu-2026
 ## Cross-link with related sources
 
 - This is the **wireless-foundations** track in the wiki — adjacent to but distinct from the **compute-offloading** track that [[mao-2025-bcsa-frl]], [[qin-2025-bcuav-masac]], etc. live in.
-- Connects to [[low-altitude-intelligent-network]] which the upcoming paper #10 (Toward Low-Altitude Economy) will define more fully.
+- Connects to [[low-altitude-intelligent-network]], which the low-altitude-economy survey [[wang-2025-lae-network-survey]] defines more fully.
 
 ## Raw artifacts
 
