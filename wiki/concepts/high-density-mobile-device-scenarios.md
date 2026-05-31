@@ -7,7 +7,7 @@ related:
   - "[[gauss-markov-mobility-model]]"
   - "[[liu-2026-jppo-en-convntm]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # High-Density Mobile Device Scenarios
@@ -28,4 +28,4 @@ The operating regime that motivates [[liu-2026-jppo-en-convntm]]. Characterized 
 
 ## Why the LLM Wiki cares
 
-This is the scenario class the project's [[purpose|research question]] sits inside. Subsequent sources should be tagged for whether they assume static, low-mobility, or high-density conditions.
+This is the scenario class the project's [[purpose|research question]] sits inside. Sources in the corpus differ in whether they assume static, low-mobility, or high-density conditions.
