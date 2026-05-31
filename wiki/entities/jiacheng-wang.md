@@ -10,15 +10,16 @@ related:
   - "[[sun-2025-emoppo-vlh-aerial-cb]]"
   - "[[du-2024-gdm-network-optimization-tutorial]]"
   - "[[wang-gai-isac-physical-layer]]"
+  - "[[huang-2025-dual-aav-maritime-secure-cb]]"
 created: 2026-05-29
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Jiacheng Wang
 
 IEEE Member. Affiliated with the **College of Computing and Data Science, Nanyang Technological University**, Singapore (email `jiacheng.wang@ntu.edu.sg` / `jcwang_cq@foxmail.com`) — consistent across his papers in this wiki.
 
-Co-authored 7 sources in this wiki:
+Co-authored 8 sources in this wiki:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
@@ -27,6 +28,7 @@ Co-authored 7 sources in this wiki:
 - [[sun-2025-emoppo-vlh-aerial-cb]] — aerial collaborative beamforming to mobile users via EMOPPO-VLH.
 - [[du-2024-gdm-network-optimization-tutorial]] — tutorial on generative diffusion models in network optimization.
 - [[wang-gai-isac-physical-layer]] — generative AI for ISAC from the physical-layer perspective (first author).
+- [[huang-2025-dual-aav-maritime-secure-cb]] — dual AAV cluster-assisted maritime secure communications via collaborative beamforming.
 
 ## Contributions to this wiki
 

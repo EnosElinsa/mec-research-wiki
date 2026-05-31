@@ -1,0 +1,2411 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Efficient 3-D Placement of an Aerial Base Station in Next Generation Cellular Networks "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                94,
+                63,
+                903,
+                128
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "R. Irem Bor-Yaliniz, Amr El-Keyi, and Halim Yanikomeroglu "
+                    }
+                ]
+            },
+            "bbox": [
+                264,
+                151,
+                728,
+                167
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Department of Systems and Computer Engineering, Carleton University, Ottawa, ON, Canada "
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                167,
+                813,
+                183
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstract—Agility and resilience requirements of future cellular networks may not be fully satisfied by terrestrial base stations in cases of unexpected or temporary events. A promising solution is assisting the cellular network via low-altitude unmanned aerial vehicles equipped with base stations, i.e., drone-cells. Although drone-cells provide a quick deployment opportunity as aerial base stations, efficient placement becomes one of the key issues. In addition to mobility of the drone-cells in the vertical dimension as well as the horizontal dimension, the differences between the air-to-ground and terrestrial channels cause the placement of the drone-cells to diverge from placement of terrestrial base stations. In this paper, we first highlight the properties of the dronecell placement problem, and formulate it as a 3-D placement problem with the objective of maximizing the revenue of the network. After some mathematical manipulations, we formulate an equivalent quadratically-constrained mixed integer non-linear optimization problem and propose a computationally efficient numerical solution for this problem. We verify our analytical derivations with numerical simulations and enrich them with discussions which could serve as guidelines for researchers, mobile network operators, and policy makers. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                213,
+                491,
+                479
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "I. INTRODUCTION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                215,
+                489,
+                349,
+                502
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Next generation cellular networks have high reliability and availability demands [1]. Be it a natural disaster, extreme densities of users in an area, or providing connectivity in rural areas, the cellular network needs to meet certain quality of service (QoS) requirements. However, these situations are either unexpected, or temporary. As a result, it is not feasible to invest in an infrastructure that will provide revenue for a relatively short time. A potential solution to these problems is assisting the cellular network via low-altitude unmanned aerial vehicles (UAV) that can serve as aerial base stations with a quick deployment opportunity, i.e. drone-cells. However, one of the biggest challenges is to determine the optimal placement of the drone-cell so that the network can benefit the most. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                508,
+                491,
+                704
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Although there has been significant amount of work on using UAVs in surveillance and reconnaissance networks [2], [3], using UAVs to assist future cellular networks is still at its infancy. In [4] and [5], the positioning of aerial relays is discussed. However, both works have a fixed altitude assumption and place the UAV on a line segment without considering the relation between the coverage area and the altitude of the UAV. Moreover, the effects of urban environment on the performance of communications is not considered. Both issues are addressed in [6], which provides fundamental results on the optimal altitude of a drone-cell, and the channel model to be utilized in urban environments. Accordingly, the authors of [7] investigate the coverage of two drone-cells positioned at a fixed altitude, and interfering with each other over a given area. The effects of interference is further studied in the presence of underlaid device-to-device (D2D) communications in [8]. In this work, there is no other base station except the drone-cell, which comes with the assumption that the area to be covered is known. A similar approach in [9] shows the improvement in the coverage by assisting the network with drone-cells at a certain altitude, in case of failure of Evolved Node Bs (eNBs). However, these studies neither cover all potential scenarios, nor show the optimal results for all possible selections of altitude, location, and coverage area. For instance, in case of a congested cell, neither the size of the area to be covered, nor the location of that area within the cell is known. These parameters need to be determined according to the target revenue, and the QoS requirements. Moreover, determining the altitude of the UAV is intertwined in this problem because of the characteristics of the channel between the UAV and the terrestrial users, namely the air-toground channel. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                705,
+                491,
+                825
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                501,
+                213,
+                921,
+                574
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The work presented so far either considers the altitude, which is 1-D, or placement in the horizontal space, which is 2-D. To the best of our knowledge, this paper is the first to propose an efficient 3-D placement algorithm for dronecells in cellular networks by jointly determining the area to be covered, and the altitude of the drone-cell. We begin by discussing the characteristics of the air-to-ground channel. The discussion on how the placement of a drone-cell is different than the placement of terrestrial base stations leads us to the 3- D placement formulation. Our objective in this formulation is to maximize the revenue of the network, which is proportional to the number of users covered by the drone-cell. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                575,
+                921,
+                755
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Due to the complexity of the channel model, the solution of the 3-D placement problem formulation cannot be directly found. In order to solve this problem, we introduce a new variable relating the altitude of the drone-cell to the radius of its coverage area. Although there is not an analytical expression for the optimal value of this variable, it can be efficiently obtained by using one dimensional bisection search. Afterwards, the 3-D placement problem reduces to a mixedinteger non-linear problem (MINLP), which can be solved by using the interior point optimizer of the MOSEK solver. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                756,
+                921,
+                907
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE ICC 2016 - Next-Generation Networking and Internet Symposium "
+                    }
+                ]
+            },
+            "bbox": [
+                289,
+                7,
+                705,
+                21
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "This work was supported in part by Huawei Canada Co., Ltd., in part by the Ontario Ministry of Economic Development and Innovations ORF-RE (Ontario Research FundResearch Excellence) program, and in part by the Natural Sciences and Engineering Research Council of Canada (NSERC) Discovery Grants program. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                848,
+                491,
+                907
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:30 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                117,
+                962,
+                870,
+                974
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "978-1-4799-6664-6/16/$31.00 ©2016 IEEE "
+                    }
+                ]
+            },
+            "bbox": [
+                114,
+                977,
+                370,
+                989
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The rest of the paper is organized as follows. We present the system model, and discuss the channel model in detail in Section II. Next, the description of the 3-D placement problem, and the solution method are presented in Section III. Numerical results validating our derivations are presented in Section IV. Finally, the paper is concluded in Section V. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                61,
+                491,
+                154
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "II. SYSTEM MODEL "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                210,
+                162,
+                356,
+                176
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Consider a macrocell where the location of each user i is known and represented by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( x _ { i } , y _ { i } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". We assume that for a user to be served, the QoS measured by the received signal-tonoise ratio (SNR) should be above a certain threshold. In case of an extreme event, such as congestion within the cell, or malfunction of the infrastructure, the terrestrial base station may become unable to serve all users. Hence, it will be assisted by a drone-cell with fixed transmission power. We consider a low-altitude quasi-stationary UAV for this purpose, and would like to determine the altitude h, and location, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( x _ { D } , y _ { D } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", providing the maximum revenue. Assuming a fixed QoS for all users, the maximum revenue can be obtained by offloading the maximum amount of users to the drone-cell. The placement of the drone-cell affects both the number of users enclosed by the its coverage region, and the quality of the air-to-ground links. Utilization of air-to-ground links is a characteristic of aerial base stations. There has been several studies on air-to-ground channel models, which we discuss next. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                183,
+                491,
+                469
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The air-to-ground channel differs from the terrestrial channel due to its higher chance of line-of-sight (LoS) connectivity. As a result, Rician [2], large scale Rayleigh [3], and free space fading [4] models are widely utilized in the literature for air-to-ground channels. However, none of them considers the effect of the environment on the occurrence of LoS. One of the most complete models on the effects of building blockage on radio propagation is proposed by ITU in [10]. With the help of the results in [10], a channel model for air-to-ground communication in urban environments is presented in [6] and [11], and adopted here. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                470,
+                491,
+                636
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The probability of having LoS for user i depends on the altitude of the drone-cell, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "h ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and the horizontal distance between the drone-cell and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "i ^ { t h }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "user, which is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r _ { i } ="
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sqrt { ( x _ { D } - x _ { i } ) ^ { 2 } + ( y _ { D } - y _ { i } ) ^ { 2 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "for the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "i ^ { t h }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "user located at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( x _ { i } , y _ { i } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and the drone-cell at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( x _ { D } , y _ { D } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "). The LoS probability is given by [6] "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                637,
+                491,
+                728
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "P (h, r _ {i}) = \\frac {1}{1 + a \\exp \\left(- b \\left(\\arctan \\left(\\frac {h}{r _ {i}}\\right) - a\\right)\\right)}, \\tag {1}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/2dba72bd0a953cd0445e95158df509780b856df5fb96f644aae25696160d75a6.jpg"
+                }
+            },
+            "bbox": [
+                117,
+                734,
+                488,
+                776
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where a and b are constant values that depend on the environment. In this setting, the altitude of the user, and the antenna heights of both the users and the drone-cell are neglected. Then the pathloss expression becomes [6] "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                781,
+                491,
+                843
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} L (h, r _ {i}) = 2 0 \\log \\left(\\frac {4 \\pi f _ {c}}{c}\\right) + 2 0 \\log \\left(\\sqrt {h ^ {2} + r _ {i} ^ {2}}\\right) + \\\\ P (h, r _ {i}) \\eta_ {\\mathrm{LoS}} + (1 - P (h, r _ {i})) \\eta_ {\\mathrm{NLoS}}, \\tag {2} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/b7ee2440858ce92d864e50cce64a6e2e8344b18d6fd1993afcad3a188e0014cc.jpg"
+                }
+            },
+            "bbox": [
+                89,
+                851,
+                491,
+                905
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/c962004c5cf9d47346800a8317774c23111ec315b981acd8e3fc48c8e28c43d1.jpg"
+                },
+                "content": "Illustration of a drone flying above a red hexagonal platform with floating objects and ground symbols (no text or labels)",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1: A possible scenario showing the users that are not covered by the eNB. Three potential placements of a dronecell is highlighted. "
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "natural_image",
+            "bbox": [
+                576,
+                61,
+                851,
+                212
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "f _ { c }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the carrier frequency (Hz), c is the speed of light (m/s), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\eta _ { L o S }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\eta _ { N L o S }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(in dB) are respectively the losses corresponding to the LoS and non-LoS connections depending on the environment. Equivalently, (2) can be written as "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                297,
+                919,
+                358
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "L (h, r _ {i}) = 2 0 \\log \\left(\\sqrt {h ^ {2} + r _ {i} ^ {2}}\\right) + A P (h, r _ {i}) + B, \\tag {3}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/d61638b0d8ba0d0976e2fed03691c4ea7cb76db3ffa3958c47b46bd6fa2347b1.jpg"
+                }
+            },
+            "bbox": [
+                542,
+                364,
+                919,
+                397
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where A and B are constants such that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "A = \\eta _ { \\mathrm { L o S } } - \\eta _ { \\mathrm { N L o S } } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { B = 2 0 \\log ( \\frac { 4 \\pi f _ { c } } { c } ) + \\eta _ { \\mathrm { N L o S } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Note that the pathloss model presented here is a function of both h and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r _ { i } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". In other words, the pathloss of the air-to-ground link depends on the altitude in the vertical dimension, and the distance in the horizontal dimension. Thus, we have a 3-D placement problem. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                402,
+                919,
+                494
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "III. EFFICIENT 3-D PLACEMENT OF A UAV "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                558,
+                503,
+                864,
+                517
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Placement of a drone-cell is different than terrestrial cell placement because of the following reasons: "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                523,
+                919,
+                554
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "1) In addition to choosing the drone-cell’s location in the horizontal space "
+                            },
+                            {
+                                "type": "equation_inline",
+                                "content": "( x _ { D } , y _ { D } )"
+                            },
+                            {
+                                "type": "text",
+                                "content": ", we need to determine its altitude, h, as well. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "2) The coverage area of a terrestrial cell is known a priori. However, the coverage area of a drone-cell depends on its altitude, and is unknown before solving the placement problem. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "3) The mobility of the drone-cell allows it to move wherever the demand is, rather than terrestrial cells waiting for the demand to come towards them. As a result, the coverage region providing the maximum revenue to the network should be found. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                521,
+                556,
+                921,
+                736
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The first item indicates that the placement of the drone-cell is a 3-D problem. In addition, the last two items, which are determining the size of the coverage area, and identifying the location of the coverage area must be considered jointly. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                741,
+                919,
+                801
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A possible placement problem is shown in Fig. 1. Assume that the macrocell is congested, where only the users that cannot be served by the eNB are shown. Three potential areas to be covered by deploying a drone-cell at different altitudes and locations are highlighted. Note that in each case, as well as the altitude of the drone-cell, the size of the area to be covered is changing, which in turn, affects the number of users served by the drone-cell. In this section, we will formulate and solve the 3-D placement problem efficiently to serve the maximum number of users with the minimum required area. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                801,
+                921,
+                907
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:30 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                122,
+                962,
+                867,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                73,
+                61,
+                491,
+                107
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We assume that a user is in the coverage region of the dronecell if the air-to-ground link satisfies its QoS requirement. For a given transmission power of the drone-cell, let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\gamma"
+                    },
+                    {
+                        "type": "text",
+                        "content": "represent the pathloss corresponding to the QoS requirement. Hence, user i is served by the drone-cell, if "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "L ( h , r _ { i } ) \\leq \\gamma"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Using (3), we can re-write this condition as "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                107,
+                491,
+                196
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "h ^ {2} + r _ {i} ^ {2} \\leq 1 0 ^ {\\frac {\\gamma - (A P (h , r _ {i}) + B)}{1 0}}. \\tag {4}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/99b15f2e1990a0b91c600abf21b16ec65539dc5458fb14efa52d7ad745ac573d.jpg"
+                }
+            },
+            "bbox": [
+                184,
+                202,
+                491,
+                224
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { i } \\in \\{ 0 , 1 \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote a binary variable that indicates whether user i is served by the drone-cell, or not. Using the variable ui, which is equal to 1, only if the user i is served by the drone-cell, and equal to 0 otherwise, the following constraint, "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                232,
+                491,
+                294
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "u _ {i} (h ^ {2} + r _ {i} ^ {2}) \\leq 1 0 ^ {\\frac {\\gamma - (A P (h , r _ {i}) + B)}{1 0}}, \\tag {5}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/aa7a380ad582a69da703c0a364c56485ab30f4d14be70035c6d4d1f6449eb466.jpg"
+                }
+            },
+            "bbox": [
+                171,
+                299,
+                491,
+                323
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "determines whether user i is covered, or not. This constraint can be further manipulated to "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                330,
+                491,
+                361
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "h ^ {2} + r _ {i} ^ {2} \\leq 1 0 ^ {\\frac {\\gamma - (A P (h , r _ {i}) + B)}{1 0}} + M _ {1} (1 - u _ {i}), \\tag {6}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/96f99c95e904687277034a7ad653c1b252aed1ebd1263b13412f5aa887de1312.jpg"
+                }
+            },
+            "bbox": [
+                138,
+                367,
+                491,
+                390
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "M _ { 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a constant that is slightly larger than the maximum possible value of the distance between a user and the drone-cell. Observe that when "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { i } = 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", (6) is equivalent to (5). If "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { i } = 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", since "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "M _ { 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is large enough, this constraint is released. Now, we can continue by determining the objective function. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                396,
+                491,
+                472
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Assuming a fixed QoS for all users, the best region to be served by the drone-cell is identified with the maximum number of users covered. By using (6), the placement problem for a set of users, U that are not covered by the macrocell can be written as "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                472,
+                491,
+                546
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\underset {x _ {D}, y _ {D}, h, \\{u _ {i} \\}} {\\text { maximize }} \\quad \\sum_ {i \\in \\mathbb {U}} u _ {i}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/4cc2a90483d93ae41f6fea856614a4a4783fbb8f58da7194b36fd56f5e7f1c49.jpg"
+                }
+            },
+            "bbox": [
+                76,
+                554,
+                238,
+                585
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "subject to "
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                589,
+                147,
+                603
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "h ^ {2} + r _ {i} ^ {2} \\leq 1 0 ^ {\\frac {\\gamma - (A P (h , r _ {i}) + B)}{1 0}} + M _ {1} (1 - u _ {i}), \\forall i = 1, \\dots , | \\mathbb {U} |,",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/f98ddcee5b27de4ffe5458d7fdf75994a2a68e0484ab0cd85239a5deace880d4.jpg"
+                }
+            },
+            "bbox": [
+                91,
+                604,
+                488,
+                628
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "x _ {l} \\leq x _ {D} \\leq x _ {u},",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/7d423079a1ee5313d587fce139b0f2cda6d98fefab12bed187b81917e79f4f53.jpg"
+                }
+            },
+            "bbox": [
+                91,
+                631,
+                199,
+                646
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "y _ {l} \\leq y _ {D} \\leq y _ {u}, \\tag {7}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/140722c4153b3f3e0e9a037b59d87ccf3f5c68baa4bdae7597c20a362af0e5a6.jpg"
+                }
+            },
+            "bbox": [
+                91,
+                648,
+                488,
+                666
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "h _ {l} \\leq h \\leq h _ {u},",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/01f1f8cb081f2b70cc9f460b3f958af125f7638ad90ed5e046e4bcd702c8ecb3.jpg"
+                }
+            },
+            "bbox": [
+                91,
+                667,
+                187,
+                684
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "u _ {i} \\in \\{0, 1 \\}, \\quad \\forall i = 1, \\dots , | \\mathbb {U} |,",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/ad02b94fd4fc73f0d87b966f641c8b1fa75135c3a579039f9a76003a83b73376.jpg"
+                }
+            },
+            "bbox": [
+                91,
+                686,
+                488,
+                704
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where |·| represents the cardinality of a set, subscripts "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\cdot ) _ { l }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\cdot ) _ { u }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote respectively the minimum and maximum allowed values for "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "x _ { D } , \\ y _ { D }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and h of the drone-cell. Note that there are quadratic, exponential and binary terms in this problem, which makes it a MINLP. We will show that this problem can be solved efficiently by using a combination of the interiorpoint optimizer of MOSEK solver and bisection search. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                712,
+                491,
+                816
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Observe that if "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P ( h , r )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "was a constant, then this optimization problem would be quadratically constrained MINLP. Let us denote the radius of the area to be covered by R and introduce the variable α as "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                818,
+                491,
+                878
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\alpha = \\frac {h}{R}. \\tag {8}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/f70fa05810656d324320ead57587570718260b0bb9e039367d7dd585824ae53b.jpg"
+                }
+            },
+            "bbox": [
+                253,
+                883,
+                491,
+                912
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Then, if user i is covered, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R \\geq r _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "must be satisfied, i.e., the served user must be located within the coverage region. This conditional expression is similar to (5), and consequently is equivalent to "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                61,
+                921,
+                122
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R \\geq r _ {i} - M _ {2} (1 - u _ {i}), \\tag {9}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/a70558ad6ba50975c4f88cd7b7e88c2d5689dc46cd32df1092a8587d6e6bd2a7.jpg"
+                }
+            },
+            "bbox": [
+                635,
+                125,
+                919,
+                140
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "as in (6), where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "M _ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a constant value which is slightly larger than the maximum possible value of R. Also, the first constraint in (7) becomes "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                148,
+                921,
+                194
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R ^ {2} \\leq \\Gamma (\\alpha), \\tag {10}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/6f3b02a35b1523679f6826e3060a7a13031d915d71fde544f14223ec4c583d20.jpg"
+                }
+            },
+            "bbox": [
+                671,
+                203,
+                919,
+                220
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                231,
+                552,
+                244
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Gamma (\\alpha) = \\frac {1 0 ^ {\\frac {\\gamma - (A P (\\alpha) + B)}{1 0}}}{(1 + \\alpha^ {2})}, \\tag {11}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/df60f4512330f6598bee6f18571e68315ba3ce03bc05274ab851132fde3a82d0.jpg"
+                }
+            },
+            "bbox": [
+                630,
+                241,
+                919,
+                279
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "which enables us to omit the variable h from (7), since "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                286,
+                919,
+                314
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "P (\\alpha) = \\frac {1}{1 + a \\exp (- b (\\arctan (\\alpha) - a))} \\tag {12}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/b5d4f6a9bd5c546a592036e86d9639f43fdf845faf606e1fa155e0a2e80afd3a.jpg"
+                }
+            },
+            "bbox": [
+                571,
+                313,
+                919,
+                345
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "by (1). Thus, (7) becomes "
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                349,
+                687,
+                366
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\underset {x _ {D}, y _ {D}, \\{u _ {i} \\}, R, \\alpha} {\\text { maximize }} \\quad \\sum_ {i \\in \\mathbb {U}} u _ {i}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/8c045edc72aef29084496a1d35576bfef5ddf13826e01afa7496b0e8c76f384f.jpg"
+                }
+            },
+            "bbox": [
+                519,
+                388,
+                679,
+                421
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "subject to R2 ≤ Γ(α) + M1(1 − ui), ∀i = 1, ..., |U|, "
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                422,
+                898,
+                439
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R \\geq r _ {i} - M _ {2} (1 - u _ {i}), \\quad \\forall i = 1, \\dots , | \\mathbb {U} |,",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/9c87bffcce580b727cf0eef9fe284d8d2b304e1085c4c5987bf0a5a228372b9a.jpg"
+                }
+            },
+            "bbox": [
+                601,
+                441,
+                900,
+                459
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "x _ {l} \\leq x _ {D} \\leq x _ {u},",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/e9a6e0b7cc97e3fc8041cfa2c6c359f6fec0c454452caddb859659ff97a676a3.jpg"
+                }
+            },
+            "bbox": [
+                602,
+                462,
+                707,
+                477
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "y _ {l} \\leq y _ {D} \\leq y _ {u}, \\tag {13}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/f97485f47db463660dddb8f0de5025e838b2364f0ea7d141991152566d79a8e6.jpg"
+                }
+            },
+            "bbox": [
+                601,
+                479,
+                919,
+                496
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R \\geq 0,",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/250a7af64df04276a10a7e1d09ae541f6964e3cecb3c239043b2380c34f60c35.jpg"
+                }
+            },
+            "bbox": [
+                602,
+                500,
+                653,
+                513
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "u _ {i} \\in \\{0, 1 \\}, \\quad \\forall i = 1, \\dots , | \\mathbb {U} |.",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/996cd03b517065c70881ad8493b36519ee640d6ab3d08962a783b6ff5dc21759.jpg"
+                }
+            },
+            "bbox": [
+                602,
+                517,
+                905,
+                534
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Note that if α and R are known, h can be evaluated by using (8). Since the variable α appears only in the right-handside of the first constraint of (13), the optimum value of α, which maximizes "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", maximizes the size of the feasible set of (13). Next, we numerically show that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "has only one local maxima. Hence, there exists a certain value, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "that maximizes "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                544,
+                921,
+                650
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Conjecture 1. For any QoS requirement, γ, and for any operating frequency, fc, if a local maxima exists in the function Γ(α) defined in (11), then it is the only local maxima of the function for "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha \\in [ 0 , \\infty ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "for the propagation environments whose parameters are listed in Table I. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                657,
+                921,
+                733
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Observation. Observe that γ and B in (11) only scale the value of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Since "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { B = 2 0 \\log ( \\frac { 4 \\pi f _ { c } } { c } ) + \\eta _ { \\mathrm { N L o S } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", it also follows that the behaviour of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "does not depend on "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "f _ { c } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": "In other words, the maximum point, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", does not change for different γ and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "f _ { c } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", but the value of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha ^ { * } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is scaled. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                739,
+                921,
+                816
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The behaviour of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is only determined by the environment parameters in A and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". By numerically plotting (11) in Fig. 2, we show that for all environments there exists only one maximum value, which occurs at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Moreover, it is observed that the local maximas marked in Fig. 2 are the only maximas for all environments. □ "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                816,
+                921,
+                906
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:30 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                122,
+                962,
+                870,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/a78f90cfb964642107f117647b303e34aff987a0cbc83e9892f7e2e429a348d9.jpg"
+                },
+                "content": "| α     | Suburban | Urban   | Dense Urban | Highrise Urban | Local Maxima |\n|-------|----------|---------|-------------|-----------------|--------------|\n| 10^0  | ~30000   | ~20000  | ~15000      | ~50             | ~3000        |\n| 10^1  | ~1000    | ~1000   | ~1000       | ~200            | ~200         |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2: Γ(α) versus α for various environments. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line",
+            "bbox": [
+                106,
+                78,
+                444,
+                303
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/7d4111ed186bfdc452d824984a848b80d9deb845bc01d5c85e87eea6d675b952.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "TABLE I: RF Propagation Parameters of different environments "
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Environment</td><td>Parameters (a, b, ηLoS, ηNLoS)</td></tr><tr><td>Suburban</td><td>(4.88, 0.43, 0.1, 21)</td></tr><tr><td>Urban</td><td>(9.61, 0.16, 1, 20)</td></tr><tr><td>Dense Urban</td><td>(12.08, 0.11, 1.6, 23)</td></tr><tr><td>High-rise Urban</td><td>(27.23, 0.08, 2.3, 34)</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                133,
+                382,
+                434,
+                445
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We can use the derivative of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma ( \\alpha )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "to find "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which is the root of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\textstyle { \\frac { d \\Gamma ( \\alpha ) } { d \\alpha } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", that can be calculated as "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                470,
+                490,
+                505
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\frac {d \\Gamma (\\alpha)}{d \\alpha} = - \\frac {1 0 ^ {\\Lambda}}{\\Omega \\Delta^ {2}} \\left(2 \\alpha \\Delta^ {2} + A b K (\\Delta - 1)\\right), \\tag {14}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/66762de6e03f79bc3c0e1e981fedc86849ffc831e3f92b462cb68743fe13a83e.jpg"
+                }
+            },
+            "bbox": [
+                135,
+                508,
+                490,
+                542
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K = 1 8 { \\frac { \\log ( 1 0 ) } { 1 0 \\log ( \\mathrm { e } ) } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and ∆, Λ and Ω are "
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                547,
+                377,
+                568
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Delta = \\left(a \\exp \\left(b \\left(a - \\frac {1 8 0}{\\pi} \\arctan (\\alpha)\\right)\\right) + 1\\right), \\tag {15}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/dd3dacd1c1c90ebfb66e04e26ab10031b1324d84947c752ce63dfff783292854.jpg"
+                }
+            },
+            "bbox": [
+                104,
+                574,
+                488,
+                609
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Lambda = \\frac {1}{1 0} \\left(\\gamma - B - \\frac {A}{\\Delta}\\right), \\tag {16}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/f295f058e6e95f533036cf9471ffa062c67ca0bfb0455a07e9dc3ce7ef4d2aed.jpg"
+                }
+            },
+            "bbox": [
+                196,
+                614,
+                490,
+                647
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\Omega = \\left(\\alpha^ {2} + 1\\right) ^ {2}. \\tag {17}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/eff53f770f8672400a47e4127d9f37057eebe2827fe397cfeb55f9a128cd0037.jpg"
+                }
+            },
+            "bbox": [
+                225,
+                654,
+                488,
+                674
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Finally, we proceed with the bisection search to find the root of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\frac { d \\Gamma ( \\acute { \\alpha } ) } { d \\alpha }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Note that, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Delta"
+                    },
+                    {
+                        "type": "text",
+                        "content": "yields that the maximum value of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "can be tan(90◦). Also, the minimum value of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is 0, because "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a ratio of positive quantities. The bisection search algorithm with a maximum number of iterations, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N _ { u } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and tolerance, ǫ, can be summarized in Algorithm 1. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                681,
+                490,
+                772
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "After evaluating "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "using Algorithm 1, the problem given by (13) becomes MINLP, and can be solved to find "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "x _ { D } , y _ { D }"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ u _ { i } \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and R by interior point optimizer of MOSEK solver. "
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                773,
+                488,
+                819
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "IV. NUMERICAL RESULTS "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                187,
+                827,
+                375,
+                840
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The numerical values of the parameters of the air-to-ground channels for different environments are calculated based on [6] and [10], and presented in Table I. Also, all simulation parameters are provided in Table II. It is assumed that the drone-cell have enough capacity to serve all the users in the coverage region. The effect of different environments is shown in Fig. 3 for 25 users by using "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\gamma _ { 2 } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". After finding "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha ^ { * }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "by using Algorithm 1, the solution of the optimization problem in (13) yields "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "which determines the size of the circular coverage region, and the location of the drone-cell in 2-D space, as shown with an asterisk in the corresponding color for each environment in Fig. 3. Note that not only the size of the region, but also the location of the drone-cell changes. Observe that there are users (some of them are pointed by arrows) right on the edge of the coverage region, which means that the altitude is determined efficiently such that there is no area wasted. As expected, the area covered by the suburban environment has the largest size, due to the reduced blockage compared to other environments. On the other hand, the high-rise urban environment has the worst coverage. "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                845,
+                491,
+                907
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [
+                    {
+                        "type": "text",
+                        "content": "Algorithm 1 Bisection Search Algorithm "
+                    }
+                ],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "1:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N \\leftarrow 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ,   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha_{1} = 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ,   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha_{2} = \\tan(89.9^{\\circ})"
+                    },
+                    {
+                        "type": "text",
+                        "content": " \n2: while   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N \\leq N_{u}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "  do\n3:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha_{3} \\leftarrow \\frac{\\alpha_{1} + \\alpha_{2}}{2}"
+                    },
+                    {
+                        "type": "text",
+                        "content": " \n4: if   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\left(\\frac{d\\Gamma(\\alpha)}{d\\alpha}\\bigg|_{\\alpha=\\alpha_{3}}\\right) = 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "  or   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "(\\alpha_{2} - \\alpha_{1}) \\leq \\epsilon"
+                    },
+                    {
+                        "type": "text",
+                        "content": "  then\n5:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha^{*} = \\alpha_{3}"
+                    },
+                    {
+                        "type": "text",
+                        "content": " \n6: break\n7: end if\n8:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N \\leftarrow N + 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": " \n9: if sign   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\left(\\frac{d\\Gamma(\\alpha)}{d\\alpha}\\bigg|_{\\alpha=\\alpha_{3}}\\right) = \\text{sign}\\left(\\frac{d\\Gamma(\\alpha)}{d\\alpha}\\bigg|_{\\alpha=\\alpha_{1}}\\right)"
+                    },
+                    {
+                        "type": "text",
+                        "content": "  then\n10:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha_{1} = \\alpha_{3}"
+                    },
+                    {
+                        "type": "text",
+                        "content": " \n11: else\n12:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha_{2} = \\alpha_{3}"
+                    },
+                    {
+                        "type": "text",
+                        "content": " \n13: end if\n14: end while "
+                    }
+                ]
+            },
+            "bbox": [
+                511,
+                78,
+                888,
+                296
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/c011b5ca52c07331063696b45c020b68a1cd82647908b7c179f19af4f7c1d9bb.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "TABLE II: Simulation Parameters "
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Parameter</td><td>Value</td></tr><tr><td> $(x_{l}, x_{u})$ </td><td>(-1450, 1450) m</td></tr><tr><td> $(y_{l}, y_{u})$ </td><td>(-1258, 1258) m</td></tr><tr><td> $(\\gamma_{1}, \\gamma_{2}, \\gamma_{3})$ </td><td>(90, 100, 125) dB</td></tr><tr><td> $f_{c}$ </td><td>2.5 GHz</td></tr><tr><td> $N_{u}$ </td><td>100</td></tr><tr><td> $\\epsilon$ </td><td> $10^{-5}$ </td></tr><tr><td>Monte Carlo Runs</td><td>100</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                594,
+                338,
+                831,
+                436
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                501,
+                467,
+                921,
+                709
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To elaborate more on the effect of environment parameters and the performance of the algorithm, we show the average revenue for varying QoS requirements in different environments together with 95% confidence interval for the revenue in Fig. 4. The results are obtained by using 100 Monte Carlo simulations. In each simulation, 40 users are generated randomly in the cell according to a uniform probability distribution. The results show that the number of served users varies by at most 1 user. Hence, the performance of the proposed method is consistent. The parameter "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\gamma _ { 3 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "provides the maximum revenue by enabling a coverage area larger than the size of the macrocell, because we are allowing a pathloss of 125 dB for the user to be served. Note that the average revenue for the high-rise urban environment is significantly worse than the other environments for this sparse user distribution. The dramatic drop of revenue can be understood by comparing the parameters of suburban and high-rise urban environments. For instance, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\eta _ { \\mathrm { N L o S } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "increases by 13 dB for the high-rise environment, which alone can reduce the coverage area by more than 100 times. Considering the changes in the other parameters, the significant reduction in the coverage area, and accordingly revenue, is not surprising. However, more users could be covered if the users were in proximity to each other, i.e., clustered. Hence, measuring traffic characteristics in space, such as the amount of clustering as shown in [12], can be of significant importance for determining the efficiency of drone-cell assistance for cellular networks. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                710,
+                921,
+                907
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:30 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                122,
+                962,
+                870,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/6a01f2129bde5191742bb6490ca17e7a1ebc4789d8e96f0c035c92bdeaac0266.jpg"
+                },
+                "content": "| Location Type         | x-dimension (m) | y-dimension (m) |\n| --------------------- | --------------- | --------------- |\n| User Locations        | -1000           | 1000            |\n| User Locations        | -500            | 700             |\n| User Locations        | 0               | 400             |\n| User Locations        | 500             | 300             |\n| User Locations        | 1000            | 100             |\n| User Locations        | 1500            | -100            |\n| Suburban (Su)         | -1000           | -1000           |\n| Suburban (Su)         | -500            | -500            |\n| Suburban (Su)         | 0               | 400             |\n| Suburban (Su)         | 500             | 300             |\n| Suburban (Su)         | 1000            | 100             |\n| Urban (U)             | -1000           | 100             |\n| Urban (U)             | -500            | 400             |\n| Urban (U)             | 0               | 300             |\n| Urban (U)             | 500             | 200             |\n| Urban (U)             | 1000            | 10              |\n| Urban (U)             | 1500            | -10             |\n| Dense Urban (DU)      | 500             | -50             |\n| Dense Urban (DU)      | 750             | -75             |\n| Dense Urban (DU)      | 1000            | -100            |\n| Dense Urban (DU)      | 1250            | -125            |\n| Dense Urban (DU)      | 1500            | -150            |\n| Highrise Urban (HU)   | -875            | -475            |\n| Highrise Urban (HU)   | -625            | -625            |\n| Highrise Urban (HU)   | -375            | -775            |\n| Highrise Urban (HU)   | -137            | -937            |\n| Highrise Urban (HU)   | 43              | -112           |\n| Highrise Urban (HU)   | 67              | -127           |\n| Highrise Urban (HU)   | 89              | -143           |\n| Highrise Urban (HU)   | 113             | -161           |\n| Highrise Urban (HU)   | 137             | -179           |\n| Highrise Urban (HU)   | 169             | -198           |\n| Highrise Urban (HU)   | 199             | -218           |\n| Highrise Urban (HU)   | 229             | -239           |\n| Highrise Urban (HU)   | 259             | -261           |\n| Highrise Urban (HU)   | 289             | -283           |\n| Highrise Urban (HU)   | 319             | -306           |\n| Highrise Urban (HU)   | 349             | -329           |\n| Highrise Urban (HU)   | 379             | -353           |\n| Highrise Urban (HU)   | 409             | -378           |\n| Highrise Urban (HU)   | 439             | -404           |\n| Highrise Urban (HU)   | 469             | -431           |\n| Highrise Urban (HU)   | 499             | -459           |\n| Highrise Urban (HU)   | 529             | -488           |\n| Highrise Urban (HU)   | 559             | -518           |\n| Highrise Urban (HU)   | 589             | -549           |\n| Highrise Urban (HU)   | 619             | -571           |\n| Highrise Urban (HU)   | 649             | -594           |\n| Highrise Urban (HU)   | 679             | -618           |\n| Highrise Urban (HU)   | 709             | -644           |\n| Highrise Urban (HU)   | 739             | -672           |\n| Highrise Urban (HU)   | 769             | -692           |\n| Highrise Urban (HU)   | 799             | -714           |\n| Highrise Urban (HU)   | 829             | -737           |\n| Highrise Urban (HU)   | 859             | -761           |\n| Highrise Urban (HU)   | 889             | -787           |\n| Highrise Urban (HU)   | 919             | -814           |\n| Highrise Urban (HU)   | 949             | -842           |\n| Highrise Urban (HU)   | 979             | -872           |\n| Highrise Urban (HU)   | 1009            | -904           |\n| Highrise Urban (HU)   | 1039            | -937           |\n| Highrise Urban (HU)   | 1069            | -972           |\n| Highrise Urban (HU)   | 1099            | -1011          |\n| Highrise Urban (HU)   | 1129            | -1042          |\n| Highrise Urban (HU)   | 1159            | -1074          |\n| Highrise Urban (HU)   | 1189            | -1108          |\n| Highrise Urban (HU)   | 1219            | -1144          |\n| Highrise Urban (HU)   | 1249            | -1172          |\n| Highrise Urban (HU)   | 1279            | -1202          |\n| Highrise Urban (HU)   | 1309            | -1234          |\n| Highrise Urban (HU)   | 1339            | -1268          |\n| Highrise Urban (HU)   | 1369            | -1304          |\n| Highrise Urban (HU)   | 1399            | -1342          |\n| Highrise Urban (HU)   | 1429            | -1372          |\n| Highrise Urban (HU)   | 1459            | -1404          |\n| Highrise Urban (HU)   | 1489            | -1438          |\n| Highrise Urban (HU)   | 1519            | -1476          |\n| Highrise Urban (HU)   | 1549            | -1516          |\n| Highrise Urban (HU)   | 1579            | -1558          |\n| Highrise Urban (HU)   | 1609            | -1592          |\n| Highrise Urban (HU)   | 1639            | -1628          |\n| Highrise Urban (HU)   | 1669            | -1666          |\n| Highrise Urban (HU)   | 1699            | -1704          |\n| Highrise Urban (HU)   | 1729            | -1744          |\n| Highrise Urban (HU)   | 1759            | -1786          |\n| Highrise Urban (HU)   | 1789            | -1828          |\n| Highrise Urban (HU)   | 1819            | -1872          |\n| Highrise Urban (HU)   | 1849            | -1918          |\n| Highrise Urban (HU)   | 1879            | -1966          |\n| Highrise Urban (HU)   | 1899            | -2014          |\n| Highrise Urban (HU)   | 2009            | -2056          |\n| Highrise Urban (HU)   | 2039            | -2098          |\n| Highrise Urban (HU)   | 2069            | -2142          |\n| Highrise Urban (HU)   | 2099            | -2186          |\n| Highrise Urban (HU)   | 2129            | -2232          |\n| Highrise Urban (HU)   | 2159            | -2278          |\n| Highrise Urban (HU)   | 2189            | -2326          |\n| Highrise Urban (HU)   | 2219            | -2376          |\n| Highrise Urban (HU)   | 2249            | -2428          |\n| Highrise Urban (HU)   | 2279            | -2482          |\n| Highrise Urban (HU)   | 2309            | -2536          |\n| Highrise Urban (HU)   | 2339            | -2584          |\n| Highrise Urban (HU)   | 2369            | -2636          |\n| Highrise Urban (HU)   | 2399            | -2688          |\n| Highrise Urban (HU)   | 2429            | -2742          |\n| Highrise Urban (HU)   | 2459            | -2796          |\n| Highrise Urban (HU)   | 2489            | -2848          |\n| Highrise Urban (HU)   | 2519            | -2898          |\n| Highrise Urban (HU)   | 2549            | -2952          |\n| Highrise Urban (HU)   | 2579            | -3006          |\n| Highrise Urban (HU)   | 2609            | -3064          |\n| Highrise Urban (HU)   | 2639            | -3124          |\n| Highrise Urban (HU)   | 2669            | -3186          |\n| Highrise Urban (HU)   | 2699            | -3248          |\n| Highrise Urban (HU)   | 2729            | -3312          |\n| Highrise Urban (HU)   | 2759            | -3376          |\n| Highrise Urban (HU)   | 2789            | -3438          |\n| Highrise Urban (HU)   | 2819            | -3502          |\n| Highrise Urban (HU)   | 2849            | -3566          |\n| Highrise Urban (HU)   | 2879            | -3628          |\n| Highrise Urban (HU)   | 2899            | -3688          |\n| Highrise Urban (HU)   | 3009            | -3748          |\n| Highrise Urban (HU)   | 3039            | -3818          |\n| Highrise Urban (HU)   | 3069            | -3888          |\n| Highrise Urban (HU)   | 3099            | -3958          |\n| Highrise Urban (HU)   | 3129            | -4028          |\n| Highrise Urban (HU)   | 3159            | -4098          |\n| Highrise Urban (HU)   | 3189            | -4168          |\n| Highrise Urban (HU)   | 3219            | -4238          |\n| Highrise Urban (HU)   | 3249            | -4308          |\n| Highrise Urban (HU)   | 3279            | -4378          |\n| Highrise Urban (HU)   | 3309            | -4448          |\n| Highrise Urban (HU)   | 3339            | -4518          |\n| Highrise Urban (HU)   | 3369            | -4588          |\n| Highrise Urban (HU)   | 3399            | -4658          |\n| Highrise Urban (HU)   | 3429            | -4728          |\n| Highrise Urban (HU)   | 3459            | -4798          |\n| Highrise Urban (HU)   | 3489            | -4868          |\n| Highrise Urban (HU)   | 3519            | -4938          |\n| Highrise Urban (HU)   | 3549            | -4988          |\n| Highrise Urban (HU)   | 3579            | -5048          |\n| Highrise Urban (HU)   | 3609            | -5088          |\n| Highrise Urban (HU)   | 3639            | -5148          |\n| Highrise Urban (HU)   | 3669            | -5188          |\n| Highrise Urban (HU)   | 3699            | -5248          |\n| Highrise Urban (HU)   | 3729            | -5288          |\n| Highrise Urban (HU)   | 3759            | -5348          |\n| Highrise Urban (HU)   | 3789            | -5388          |\n| Highrise Urban (HU)   | 3819            | -5448          |\n| Highrise Urban (HU)   | 3849            | -5488          |\n| Highrise Urban (HU)   | 3879            | -5548          |\n| Highrise Urban (HU)   | 3899            | -5588          |\n| Highrise Urban (HU)   | 4009            | -5648          |\n| Low Transition Point    A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A     A      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      N      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      M      L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L       L        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU                HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        HU        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH U        IH I         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH I         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U         IH U\n    style User Locations    style Suburban    style Rural    style Dense    style Higher    style Low Transition Point|\n    style Suburban    style Dense    style Higher    style Lower    style Upper    style Lower    style Lower    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium    style Medium\n    subgraph \"High Transition Point\" for User Locations\n    end\n    subgraph \"Low Transition Point\" for Suburban\n    end\n    subgraph \"Upper Transition Point\" for Suburban\n    end\n    subgraph \"Lower Transition Point\" for Suburban\n    end\n    subgraph \"Mid Transition Point\" for Suburban\n    end\n    subgraph \"Mid Transition Point\" for Mid-Upper\n    end\n    subgraph \"Mid Transition Point\" for Mid-Upper\n    end\n    subgraph \"Mid Transition Point\" for Mid-Upper\n    end\n    subgraph \"Mid Transition Point\" for Mid-Upper\n    end\n    subgraph \"Mid Transition Point\" for Mid-Upper\n    end\n    subgraph \"Mid Transition Point\" for Mid-Upper\n    end\n    subgraph \"Mid Transition Point\" for Mid-Upper\n    end< img src=\"boxdolid fill:#fbbccff,stroke:#e6ccff,stroke-width:mp\n    end< img src=\"boxdolid fill:#fbbccff,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccff,stroke-width:mp< img src=\"boxdolid\">\n    end< img src=\"boxdolid fill:#e6ccff,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccff,stroke-width:mp< img src=\"boxdolid\">\n    end< img src=\"boxdolid fill:#e6ccff,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccff,stroke-width:mp< img src=\"boxdolid\">\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf< img src=\"boxdolid\">\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxbolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end< img src=\"boxdolid fill:#e6ccf,stroke-width:mp\n    end[ ]< img src=\"boxdolid fill:#e6ccf,stroke-width:mp< img src=\"boxdolid\">\n</image>",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3: Effect of environment on the location and size of the coverage area (circles in the figure) is shown. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "scatter",
+            "bbox": [
+                114,
+                80,
+                441,
+                342
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/a35a3e91322c569950cde041fd0416e0aa831cb23fe6192c559c6fe41d5d3a1a.jpg"
+                },
+                "content": "| Environment    | γ₁   | γ₂   | γ₃   |\n| -------------- | ---- | ---- | ---- |\n| Suburban       | 6.0  | 24.0 | 40.0 |\n| Urban          | 4.0  | 14.0 | 40.0 |\n| Dense Urban    | 3.0  | 9.0  | 40.0 |\n| High-rise Urban| 1.0  | 1.0  | 3.0  |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4: Mean number of users covered in different environments with 95% confidence interval. 40 users are distributed uniformly in one macrocell. "
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "bar",
+            "bbox": [
+                114,
+                425,
+                439,
+                609
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                73,
+                695,
+                491,
+                906
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "V. CONCLUSION "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                651,
+                61,
+                774,
+                75
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this paper, we have studied the 3-D placement problem of a drone-cell. First, we discussed the characteristics of the air-to-ground channel, and observed that they can be captured only by considering both the altitude of the drone-cell, and locations of the drone-cell and the users in the horizontal dimension. This yielded a 3-D placement problem with the objective of maximizing the revenue, which is measured by the maximum number of users covered by the drone-cell. We have formulated an equivalent problem which can be solved efficiently to find the location and size of the coverage region, and the altitude of the drone-cell. "
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                80,
+                921,
+                244
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Our model can be used for many possible communication scenarios, including failure and congestion. The results presented here can be used by proper authorities to manage and regulate drone-cells assisting cellular networks to meet high demands of the future wireless cellular networks. The effect of interference, and using several drone-cells are interesting future research directions. "
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                247,
+                921,
+                351
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "REFERENCES "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                665,
+                362,
+                761,
+                375
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] A. Osseiran, F. Boccardi, V. Braun, K. Kusume, P. Marsch, M. Maternia, O. Queseth, M. Schellmann, H. Schotten, H. Taoka, H. Tullberg, M. Uusitalo, B. Timus, and M. Fallgren, “Scenarios for 5G mobile and wireless communications: The vision of the METIS project,” IEEE Commun. Mag., vol. 52, no. 5, pp. 26–35, May 2014. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] S. Kandeepan, K. Gomez, L. Reynaud, and T. Rasheed, “Aerialterrestrial communications: Terrestrial cooperation and energy-efficient transmissions to aerial base stations,” IEEE Trans. on Aerosp. and Electron. Syst., vol. 50, no. 4, pp. 2715–2735, Oct. 2014. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] P. Zhan, K. Yu, and A. Swindlehurst, “Wireless relay communications with unmanned aerial vehicles: Performance and optimization,” IEEE Trans. on Aerosp. and Electron. Syst., vol. 47, no. 3, pp. 2068–2085, Jul. 2011. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] S. Rohde, M. Putzke, and C. Wietfeld, “Ad-hoc self-healing of OFDMA networks using UAV-based relays,” Ad Hoc Networks, vol. 11, no. 7, pp. 1893–1906, Sep. 2013. [Online]. Available: http://www.sciencedirect.com/science/article/pii/S157087051200131X "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] X. Li, D. Guo, H. Yin, and G. Wei, “Drone-assisted public safety wireless broadband network,” in Proc. IEEE Wireless Commun. and Netw. Conf. Workshops (WCNCW), Mar. 2015, pp. 323–328. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] A. Al-Hourani, S. Kandeepan, and S. Lardner, “Optimal LAP altitude for maximum coverage,” IEEE Wireless Commun. Letters, vol. 3, no. 6, pp. 569–572, Dec. 2014. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Drone small cells in the clouds: Design, deployment and performance analysis,” arXiv:1509.01655 [cs, math], Sep. 2015, arXiv: 1509.01655. [Online]. Available: http://arxiv.org/abs/1509.01655 "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] “Unmanned aerial vehicle with underlaid device-to-device communications: Performance and tradeoffs,” arXiv:1509.01187 [cs, math], Sep. 2015. [Online]. Available: http://arxiv.org/abs/1509.01187 "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] A. Merwaday and I. Guvenc, “UAV assisted heterogeneous networks for public safety communications,” in Proc. IEEE Wireless Commun. and Netw. Conf. Workshops (WCNCW), Mar. 2015, pp. 329–334. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] “Propagation data and prediction methods required for the design of terrestrial broadband radio access systems operating in a frequency range from 3 to 60 GHz,” International Telecommunication Union Radiocommunication Sector (ITU-R), Recommendation ITU-R P.1410- 5, Feb. 2012. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] A. Al-Hourani, S. Kandeepan, and A. Jamalipour, “Modeling air-toground path loss for low altitude platforms in urban environments,” in IEEE Global Commun. Conf. (GLOBECOM), Dec. 2014, pp. 2898– 2904. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] M. Mirahsan, R. Schoenen, and H. Yanikomeroglu, “HetHetNets: Heterogeneous traffic distribution in heterogeneous wireless cellular networks,” IEEE J. on Sel. Areas in Commun., vol. 33, no. 10, October 2015. "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                377,
+                924,
+                905
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: Inner Mongolia University. Downloaded on May 31,2026 at 05:36:30 UTC from IEEE Xplore. Restrictions apply. "
+                    }
+                ]
+            },
+            "bbox": [
+                122,
+                962,
+                870,
+                974
+            ]
+        }
+    ]
+]
