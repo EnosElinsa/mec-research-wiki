@@ -33,7 +33,7 @@ A two-layer aerial MEC (UAVs + 1 HAP) with a clean **two-stage** decision split:
 - **Stage 1 — discrete (matching).** Each ground user (GU) decides binary offload (local vs UAV), then GUs and UAVs are matched via a Gale-Shapley-inspired algorithm (**GOUA**: GU offloading + GU-UAV association).
 - **Stage 2 — continuous (RL).** Each UAV decides a partial offloading ratio to the HAP, allocates UAV CPU to the locally-handled fraction, and the HAP allocates its CPU to the offloaded fraction. Solved by an **enhanced soft actor-critic (ESAC)** with **prioritized experience replay**.
 
-Joint objective: minimize task energy + latency while balancing **load across UAVs** (so no UAV runs out first).
+Joint objective: minimize a weighted sum of task **latency + energy + per-UAV load**, where load is each UAV's computed cycles over its compute capacity (Eq. 25a).
 
 ## Why this matters
 
@@ -49,25 +49,26 @@ This is another instance of the **discrete-then-continuous** decomposition patte
 
 The "separate stages" choice trades joint optimality for tractability and interpretability — an important point for the wiki's **DRL-vs-classical** synthesis.
 
-The **load-balancing** objective (penalize variance of remaining UAV energy) is a quieter contribution: it shows up as a *third* component in the reward beyond delay + energy. Useful precedent for any future paper claiming "long-lived UAV swarm".
+The **load-balancing** angle is a quieter contribution: per-UAV load enters the objective (Eq. 25a) as a *third* weighted term beyond delay + energy, alongside the matching stage that spreads ground users across UAVs.
 
 ## Method
 
 - **Hybrid action space.** Discrete (GU offloading + GU-UAV association) handled by GOUA up front; continuous (UAV partial offloading η_u^h, UAV CPU allocation, HAP CPU allocation) handled by ESAC.
-- **Reward.** Negative weighted sum of (energy, latency, UAV-load variance).
+- **Objective.** Weighted sum of (normalized delay, normalized energy, per-UAV load) — Eq. 25a.
 - **Why SAC + PER?** SAC's entropy regularization helps with the inherently exploratory hierarchical-aerial task; PER prioritizes high-error transitions to speed up convergence.
 
 ## Findings
 
-- ESAC beats DDPG, MAPPO, and SAC-no-PER baselines on cumulative reward.
-- The matching-based GOUA produces stable associations even under highly heterogeneous UAV capacities (no UAV is forced to take more than it can handle).
-- Load-balancing variance reduction is real: max-min UAV energy gap shrinks ~30% vs greedy baselines.
+- ESAC (within JOUR) converges faster (~450 episodes) and to a higher average reward than the GOUA+SAC, GOUA+PPO, and GOUA+DDPG learning baselines (Fig. 5).
+- Across 30–100 GUs and across UAV compute capacity sweeps, JOUR beats GOUA+SAC / GOUA+PPO / GOUA+DDPG and a GOUA+heuristic (HA) baseline on successful-task-completion ratio, average delay, average per-UAV load, and average energy per slot (Figs. 6–13).
+- The matching-based GOUA stage plus the per-UAV-load objective term keep average per-UAV load below the learning/heuristic baselines as the GU count grows.
 
 ## Limitations
 
 - Single HAP. No multi-HAP coordination.
-- Stage-1 association is recomputed every slot, ignoring the cost of repeated handoffs.
-- GUs do not move; a moving-GU variant would change the matching frequency dramatically.
+- Stage-1 association is recomputed every slot (GU locations update each interval), so the cost of repeated handoffs is not modeled.
+- UAVs and HAP positions are fixed (only GUs move); no UAV trajectory optimization.
+- Evaluated UAVs are homogeneous (identical compute capacity within a scenario); heterogeneous-capacity UAVs are not studied.
 - No security or trust dimension — orthogonal to the [[mao-2025-bcsa-frl|trust]] track.
 
 ## Cross-link with related sources
