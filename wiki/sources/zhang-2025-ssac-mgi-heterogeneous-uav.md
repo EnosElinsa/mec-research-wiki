@@ -32,7 +32,7 @@ Existing UAV-MEC schedulers assume **homogeneous** UAVs and uniform UE distribut
 Solution: **SSAC-MGI** — a multi-agent safe RL algorithm with two cooperating modules:
 
 1. **SSAC (Shared Soft Actor-Critic)** — UAVs share a backbone for the *common* features (positions, time) but have heterogeneous heads for service-type-specific features. Lets the multi-agent system learn jointly without forcing identical capability assumptions.
-2. **MGI (Markov Game of Intervention)** — a two-agent collision-avoidance subgame: when two UAVs are on a near-collision trajectory, one acts as "intervention agent" and the other as "non-intervention agent". The intervention agent's policy is constrained to deflect its own trajectory while the other's stays nominal. This avoids the symmetric-deflection failure mode where both UAVs swerve the same direction and still collide.
+2. **MGI (Markov Game of Intervention)** — a per-UAV two-agent safe-RL design. Each UAV is jointly controlled by a **Standard Agent** (a stochastic, reward-maximizing policy that minimizes job miss rate + UAV/UE energy) and a **Safety Agent** (a deterministic, risk-averse policy plus a binary *gating* policy `g(s)`). When the gate triggers (`g(s)=1`), the Safety Agent's action overrides the Standard Agent's; otherwise the Standard Agent acts. The Safety Agent pays a cost for each intervention, encouraging selective overrides. This gives safety guarantees during *and* after training, unlike reward-shaping baselines.
 
 ## Problem framing
 
@@ -52,19 +52,20 @@ Objectives (multiplexed via reward):
 ## Method specifics
 
 - **Heterogeneous service representation.** Each UAV state includes a one-hot of its service-type set + per-type resource budget. SSAC's shared encoder ignores the type vector; per-head decoders condition on it.
-- **Constraint shaping.** Safety constraint is *not* in the reward — it's enforced by the MGI sub-game whose Nash equilibrium guarantees collision avoidance even when the cooperative reward favors close approach.
+- **Constraint shaping.** Safety is *not* folded into the reward — it is enforced by the per-UAV Safety Agent's triggered intervention (binary gating policy overriding the Standard Agent), giving safety guarantees during and after training that reward-shaping cannot.
 
 ## Findings
 
-- Outperforms vanilla MASAC and MADDPG baselines on combined metric (miss rate × energy × safety).
-- Asymmetric deflection from MGI eliminates the back-and-forth oscillation seen in symmetric collision-avoidance heuristics.
-- Heterogeneous-aware shared encoder converges faster than per-UAV-isolated training because the shared backbone amortizes common features.
+- On real-trace-driven simulations (UE locations from Twitter, workflow traces from the Alibaba cluster dataset), SSAC-MGI achieves the highest cumulative reward and the lowest safety-violation cost versus the adapted baselines: SSAC and STRPO (unconstrained reward-shaping MARL), SCPO (constrained MARL via CPO), the SSAC-MGI-FCFS resource-allocation variant, and a handcrafted MANUAL trajectory policy.
+- Decoupling reward maximization (Standard Agent) from safety enforcement (Safety Agent) yields faster convergence and far lower in-flight collision risk than embedding safety into the reward.
+- The MANUAL policy can reach a slightly lower job miss rate and UE energy via fully synchronized coverage trajectories, but at much higher UAV energy and safety-violation cost; SSAC-MGI's residual miss-rate gap shrinks as more UAVs are deployed.
+- The heterogeneity-aware shared SSAC encoder lets all UAVs train jointly (no inter-UAV communication needed at execution) rather than per-UAV-isolated training.
 
 ## Limitations / future work
 
-- Service-type set per UAV is fixed at deployment; live re-provisioning isn't modeled.
-- 2-D trajectory (fixed altitude); 3-D collision geometry is acknowledged but deferred.
-- MGI is a 2-agent collision sub-game; multi-UAV simultaneous near-misses need extension.
+- UAVs fly at a **constant altitude** (UEs modeled at ground level, $z=0$), so trajectory planning is effectively 2-D over a $500\times500$ grid; full 3-D maneuvering is not modeled.
+- Service-type set per UAV is fixed at deployment; live re-provisioning of onboard service types is not modeled (`not in parse` as an explicit limitation — inferred from the fixed-capability system model).
+- The parse's stated future work is **multi-modal perception and online fine-tuning**: image-based UE localization, obstacle detection, near-range UAV identification, and richer historical-trajectory observations to guide planning.
 
 ## Cross-link with related sources
 
