@@ -8,7 +8,7 @@ related:
   - "[[zexiong-wu]]"
   - "[[chaoda-peng]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-02
 ---
 
 # Qiqi Xie
@@ -22,4 +22,4 @@ Co-authored 2 sources in this wiki, both in the South-China-Agricultural-Univers
 
 ## Contributions to this wiki
 
-A recurring (co-/first) author in the SCAU evolutionary UAV-MEC cluster alongside [[zexiong-wu]] and [[chaoda-peng]]. Identical SCAU College of Mathematics and Informatics affiliation across both sources confirms a single identity; previously listed as a lower-priority candidate in the 2026-05-29 follow-up log and now confirmed.
+A recurring (co-/first) author in the SCAU evolutionary UAV-MEC cluster alongside [[zexiong-wu]] and [[chaoda-peng]]. Identical SCAU College of Mathematics and Informatics affiliation across both sources confirms a single identity.

@@ -2,6 +2,38 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Audit pass (non-source layer — entity batch 3; no new papers)
+
+Continues the entities-layer audit with **entity batch 3** (20 pages, alphabetical qingqing-wu → yuan-wu, positions 41–60 of `.curation-out/entity_slugs.txt`), the batch carrying the four adjudicated present-but-unlisted roster hits surfaced in batches 1–2. Tree clean at `ab0bdce` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4459 edges**.
+
+### Correctness & consistency audit (Phase B — entity batch 3)
+
+Entity-page checks: `author` tag + frontmatter valid; roster reconciles in BOTH directions against source `authors:` lists; affiliation grounded in the parse(s); namesake / career-move handling correct; `related`/wikilinks resolve and are non-self-referential; evergreen wording.
+
+- **Roster corrections (all 4 carried hits adjudicated against the source `authors:` frontmatter and the parse author/affiliation block before editing — all confirmed GENUINE same-author omissions, 0 over-claims):**
+  - [[xuemin-shen]] — **2 genuine omissions ADDED.** [[chen-2024-ulse-game]] (parse: "Xuemin Sherman Shen … University of Waterloo … sshen@uwaterloo.ca", Fellow) and [[wang-gai-isac-physical-layer]] (parse: "Xuemin (Sherman) Shen is with University of Waterloo, Canada"; bio "XUEMIN (SHERMAN) SHEN [F] (sshen@uwaterloo.ca)") — identical Waterloo affiliation + email confirm the same person. Count 4→6.
+  - [[yuan-wu]] — **2 genuine omissions ADDED.** [[chen-2023-dotora-air-ground-online]] (parse: "Yuan Wu is with the State Key Lab of Internet of Things for Smart City, University of Macau … yuanwu@um.edu.mo", corresponding author) and [[chen-2024-ulse-game]] (parse: same Macau lab + `yuanwu@um.edu.mo`, corresponding author) — identical University-of-Macau affiliation + email confirm the same person; both are air-ground / UAV-LEO game-theoretic offloading papers in the [[ying-chen]] group. Count 10→12.
+  - Reciprocal cross-links are already present on the source pages (chen-2024-ulse-game / chen-2023-dotora / wang-gai-isac all sit in the relevant clusters); the additions are author→source links between already-present nodes.
+- **Evergreen-wording fix:** [[qiqi-xie]] Contributions said the identity was "previously listed as a lower-priority candidate in the 2026-05-29 follow-up log and now confirmed" — a dated-run / process-narration reference. Dropped it; the grounded single-identity statement (identical SCAU College of Mathematics and Informatics affiliation across both sources) stands on its own. `updated`→2026-06-02.
+- **Affiliation grounding spot-checks (in-parse affiliation/email lines, verbatim):** qingqing-wu (`qingqingwu@sjtu.edu.cn`, Dept of Electronic Engineering, Shanghai Jiao Tong University — confirmed in the URLLC parse; the documented NUS-`elewuqq@nus.edu.sg` earlier-career namesake note on zeng-2019-tutorial / wu-2018-multiuav is grounded and left pending human confirmation, not merged); Shen→Waterloo and Wu→Macau as above.
+- **Verified clean** (frontmatter valid; affiliation grounded via in-parse email/affiliation lines; rosters reconcile both directions; links resolve & non-self-referential; evergreen wording): qingqing-wu (SJTU; NUS namesake documented), qiqi-xie (SCAU — wording-fixed), shengli-xie (GDUT), shichao-li (GUET), shuang-liang (NENU + Jilin U), tony-q-s-quek (SUTD), victor-c-m-leung (Shenzhen MSU-BIT / Shenzhen U / UBC), walid-saad (Virginia Tech / Wireless@VT), wei-zhang (Shandong CSC / NSCC-Jinan — common name, disambiguated by identical lab + co-author roster), weifeng-zhong (GDUT), xumin-huang (GDUT + U Macau), yang-fu (NCEPU), yangbo-liu (NWPU), yanheng-liu (Jilin U), yijie-xun (NWPU), ying-chen (BISTU), yong-wang (Central South U — common name, disambiguated by `ywang@csu.edu.cn`; wang-acve venue/year correctly `not in parse`), yong-zeng (NUS — UAV-comms foundations). (Plus the three corrected: xuemin-shen, yuan-wu, qiqi-xie.)
+
+### Toolkit
+
+No ratchet needed — `entity_roster_audit.py` (with the batch-2 `respaced` match + roster-region scoping) flagged exactly the 4 carried hits as `strict` full-name matches with 0 false positives, and re-ran post-edit to **0 claimed-but-absent / 0 present-but-unlisted** across all 70 author entities. The toolkit is stable for the entities layer.
+
+### Gates (entity batch 3)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type entity`** = 71 pages, 0 errors. **`entity_roster_audit.py`** = 0/0 both directions. Edited pages (xuemin-shen, yuan-wu, qiqi-xie) verified mojibake-free at the byte level. Graph **513 nodes / 4459 edges** baseline (the three corrected pages net +4 intra-corpus author→source links between already-present nodes; node count unchanged, edge count refreshes on next rescan).
+
+### Routing to `mec-wiki-synthesizer` (entity batch 3 — recorded, not filled)
+
+- No new synthesizer gaps from this batch. Every co-author named in the batch-3 rosters either already has an entity page or is correctly left unlinked; the qingqing-wu NUS-vs-SJTU namesake question is a documented identity note (left pending human confirmation, not a coverage gap). The standing concept-layer consolidation/synthesis notes (swarm-metaheuristic family, hybrid-action family, LEO/NTN cluster, multi-agent actor-critic family, evolutionary-/generative-/CSI-family tag fragmentation) remain open from prior batches.
+
+### Next: entity batch 4 (final entities), then derived (37)
+
+With entity batches 1–3 done (60 of 71), **11 entity pages remain** (batch 4: yuben-qu → ziye-jia, positions 61–71), then the **derived layer** (findings 14 / synthesis 11 / comparisons 4 / methodology 2 / queries 5 / thesis 1 = 37) — ≈ **48 non-source pages** across subsequent batched invocations.
+
 ## 2026-06-02 — Audit pass (non-source layer — entity batch 2; no new papers)
 
 Continues the entities-layer audit with **entity batch 2** (20 pages, alphabetical jiacheng-wang → qihui-wu, positions 21–40 of `.curation-out/entity_slugs.txt`), the batch carrying the real roster signal flagged by batch 1. Tree clean at `3ac1a37` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4456 edges**.
