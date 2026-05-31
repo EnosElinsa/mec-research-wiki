@@ -213,6 +213,7 @@
 - [[huang-2025-dual-aav-maritime-secure-cb]] — Huang et al. 2025. **Dual AAV cluster** maritime secure communication via CB: an MUVAA **relay** forwards data to a vessel while an MUVAA **jammer** beams jamming at the eavesdropper; multi-objective SEMCMOP (Bob SINR / Willie SINR / flight energy) solved by an **improved multi-objective mayfly algorithm** (IMOMA) (IEEE IoT-J).
 - [[liang-2024-hmecmop-uav-cb]] — Liang et al. 2024. UAV-swarm **collaborative beamforming** to remote BSs; multi-objective **hovering vs motion energy** minimization (HMECMOP) over positions + excitation weights + BS-communication order; **improved multiverse optimizer** (IMOMVO) (IEEE IoT-J).
 - [[zheng-2024-recmop-uav-cb]] — Zheng et al. 2024. **Reliable + energy-efficient** UAV collaborative beamforming (UVAA relay → remote BSs) in emergency communications; multi-objective RECMOP (max-min BS SNR / min-max AU SNR / min propulsion energy) over UAV locations + excitation weights; **improved multi-objective gravitational search algorithm** (IMOGSA) (IEEE TWC).
+- [[liu-2024-hatrpo-ucb-cb]] — Liu et al. 2024. UAV-enabled **collaborative beamforming** (UVAA → remote BSs); multi-objective UCBMOP (max transmission rate / min UAV energy) over positions + excitation weights; **heterogeneous-agent trust-region MADRL** (HATRPO-UCB) with observation enhancement + agent-specific global state + Beta-distribution policy (IEEE TMC).
 
 ### Architectural / spectrum / governance
 
@@ -234,6 +235,7 @@
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
 - [[zhou-2018-uav-wireless-powered-mec]] — Zhou et al. 2018. **Computation-rate maximization** in UAV-enabled wireless-powered MEC; partial + binary offloading; two-/three-stage closed-form optimization (JSAC).
+- [[xu-2018-uav-wpt-trajectory]] — Xu et al. 2018. Foundational **UAV-enabled WPT**: trajectory design + energy optimization; sum-energy optimum is **single-location hovering** (near-far fairness issue), max-min (min-energy) optimum is **multi-location hovering** → **successive hover-and-fly** + SCP under a max-speed constraint (IEEE TWC).
 - [[liu-2020-wpt-cooperative-uav-mec]] — Liu et al. 2020. UAV-enabled **wireless-powered cooperative** MEC; idle SDs help active SDs; UAV-energy min via SCA + DAI over CPU control / offloading / power / trajectory (IEEE IoT-J).
 
 > [[wu-2025-iopo-irs-uav-thz-mec]] (IRS-assisted THz energy optimization) also targets energy efficiency; it is filed under **IRS / THz / anti-jamming** above as its primary home.
@@ -376,6 +378,7 @@
 - [[rotary-wing-propulsion-energy-model]]
 - [[fixed-wing-propulsion-energy-model]]
 - [[uav-mobile-relaying]]
+- [[successive-hover-and-fly-trajectory]]
 - [[information-causality-constraint]]
 
 ### DRL backbones
@@ -391,6 +394,7 @@
 - [[hierarchical-reinforcement-learning]]
 - [[mappo]]
 - [[heterogeneous-agent-rl]]
+- [[trust-region-policy-optimization]]
 - [[parameterized-dqn]]
 - [[multi-agent-q-learning]]
 - [[gae]]

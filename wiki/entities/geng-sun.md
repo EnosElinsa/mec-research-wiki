@@ -18,6 +18,7 @@ related:
   - "[[huang-2025-dual-aav-maritime-secure-cb]]"
   - "[[liang-2024-hmecmop-uav-cb]]"
   - "[[zheng-2024-recmop-uav-cb]]"
+  - "[[liu-2024-hatrpo-ucb-cb]]"
 created: 2026-05-29
 updated: 2026-06-01
 ---
@@ -26,7 +27,7 @@ updated: 2026-06-01
 
 IEEE Member. Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China); also affiliated with the **College of Computing and Data Science, Nanyang Technological University** (Singapore) in several papers.
 
-Co-authored 15 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, and survey work in aerial/edge networks:
+Co-authored 16 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, and survey work in aerial/edge networks:
 
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
@@ -43,6 +44,7 @@ Co-authored 15 sources in this wiki, spanning vehicular, post-disaster, energy-e
 - [[huang-2025-dual-aav-maritime-secure-cb]] — dual AAV cluster-assisted maritime physical-layer secure communications via collaborative beamforming (IMOMA; corresponding author).
 - [[liang-2024-hmecmop-uav-cb]] — multiobjective hovering/motion-energy reduction for UAV-assisted collaborative beamforming via the improved multiobjective multiverse optimizer (IMOMVO; corresponding author).
 - [[zheng-2024-recmop-uav-cb]] — reliable and energy-efficient UAV collaborative beamforming (RECMOP; max-min BSs SNR / min-max AUs SNR / min propulsion energy) via the improved multi-objective gravitational search algorithm (IMOGSA; corresponding author).
+- [[liu-2024-hatrpo-ucb-cb]] — UAV-enabled collaborative beamforming rate-vs-energy multi-objective optimization (UCBMOP) via heterogeneous-agent trust-region MADRL (HATRPO-UCB).
 
 ## Contributions to this wiki
 
