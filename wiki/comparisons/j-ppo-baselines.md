@@ -9,7 +9,7 @@ related:
   - "[[en-convntm-beats-baselines]]"
   - "[[neuralmap-loses-spatial-info]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-02
 ---
 
 # j-PPO encoder ablation
@@ -30,6 +30,8 @@ Holding the [[j-ppo]] policy fixed and swapping the spatiotemporal encoder, the 
 - The jump from **ConvLSTM → ConvNTM** is non-trivial: external memory enables longer-horizon recall.
 - The jump from **ConvNTM → EN-ConvNTM** is the value of the [[stn]] front-end + attention-driven enhancement.
 - **NeuralMap** ranks fourth despite having a memory because the memory is too narrow — see [[neuralmap-loses-spatial-info]].
+
+The paper states EN-ConvNTM as best and quotes its equilibrium-efficiency gains relative to ConvNTM (the runner-up); the relative ordering of the lower three (ConvLSTM / NeuralMap / raw j-PPO) is read from the Fig. 4–6 box-plots and the per-variant weakness discussion rather than a stated numeric total order, so treat the 3-4-5 positions as indicative.
 
 ## When you might pick a different encoder
 

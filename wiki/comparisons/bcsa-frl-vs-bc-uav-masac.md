@@ -18,7 +18,7 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[air-ground-integrated-network]]"
 created: 2026-05-29
-updated: 2026-05-30
+updated: 2026-06-02
 ---
 
 # Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
@@ -69,9 +69,9 @@ The blockchain is treated as a *resource competitor* — block generation eats U
 ## Where they agree
 
 - **Permissioned blockchain over a small set of edge nodes**, not public chains. Both implicitly accept the latency / energy overhead of consensus as the price of tamper-evident records.
-- **MEC compute and blockchain compute share the same hardware budget.** Both papers acknowledge this contention; BC-UAV-MASAC handles it explicitly via DOA, BCSA-FRL handles it implicitly by leaving the consensus rounds asynchronous to the FRL rounds.
+- **MEC compute and blockchain compute share the same hardware budget.** BC-UAV-MASAC models this contention explicitly — its DOA step splits each UAV's CPU across task-compute, block-generation, and block-verification under a long-term block-creation-delay constraint. BCSA-FRL instead *couples* consensus with FRL aggregation each round (the consensus vote `Rate` doubles as the aggregation weight) and does not quantify the consensus compute/energy overhead against the offloading latency budget — its own paper flags this as an open gap.
 - **[[zero-trust-architecture|Zero-trust]]-flavored framing**, even if BC-UAV-MASAC doesn't use the term. Both reject the assumption of a benevolent central server.
-- **No real-hardware validation.** Simulation only. Both flag this as future work.
+- **No real-hardware validation.** Both evaluate in simulation only.
 
 ## Where they disagree (interesting tradeoff axes)
 
