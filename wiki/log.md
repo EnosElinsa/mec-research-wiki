@@ -2,6 +2,27 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Audit pass (non-source layer — concept batch 4; no new papers)
+
+Continues the non-source-layer audit into **concept batch 4** (20 pages, alphabetical dual-population-evolutionary-algorithm → federated-reinforcement-learning, positions 61–80 of `.curation-out/concept_slugs.txt`). Tree clean at `8f0b593`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
+
+### Correctness & consistency audit (Phase B — concept batch 4)
+
+Concept-page checks: definition grounded in the source(s)/parse it cites, no invented numbers/overclaims, `related`/wikilinks resolve and are non-self-referential, tags reused, evergreen wording.
+
+- **Correctness fix (ungrounded mechanism / misclassification):** [[energy-balancing-uav]] had two defects vs the parses. (1) It described [[huang-2023-mu-aec-task-energy]]'s energy-balancing index as a "sum of pairwise differences"; the parse Eq. 13 defines it as a **sum of squared normalized deviations** from the swarm mean, $G_2=\sum_j((TE_j-\overline{TE})/\psi)^2$ — matching the batch-3 source-page correction. Rewrote with the actual formula. (2) It listed [[nabi-2025-jour-hierarchical-aerial]] as an energy-balancing "Variance / max-min penalty in DRL reward"; the batch-6 source audit established nabi-2025's third SAC-reward term is per-UAV **load** (computed cycles ÷ compute capacity, Eq. 25a) — i.e. **load balancing**, not energy balancing. Moved nabi-2025 to the load-balancing contrast and corrected the framing.
+- **Evergreen-wording fix:** [[federated-learning]] called itself "the base concept underlying the wiki's **prior**, narrower [[federated-reinforcement-learning]]/[[blockchain-for-fl-aggregation]] pages" — "prior" narrates page-creation order; dropped to "the wiki's narrower …". (Soft case fixed by hand; not added to `process_refs.py` to avoid false-positives on a paper's own "prior work".)
+- **Grounding spot-checks (verbatim against parses):** [[dual-population-evolutionary-algorithm]] (huang-2025 parse: "dual-population cooperative mechanism between two populations and a repairing constraint-handling technique" — attribution + repairing-CH correct); [[dynamic-confidence-interval-clipping]] (chen-2024-thoas Eq. 31–32: two-layer confidence interval, dynamic factor α_t scaled by κ adapting to the **sign** of the TD error δ — fully grounded); [[elastic-task-scheduling]] (sun-2024-asap §IV-C + Table IV: ECLB/ICLB online reschedule on cluster-head cutoff/recovery, rescheduling latency "within 1 second", latency returns to baseline after recovery).
+- **Verified clean** (definition grounded, no invented numbers/overclaims, links resolve & non-self-referential, tags reused, evergreen): the remaining 18 batch-4 concepts (dual-population-evolutionary-algorithm, dynamic-confidence-interval-clipping, dynamic-constrained-multi-objective-optimization, dynamic-qos-constraints, dynamic-uav-clustering, edge-user-allocation, elastic-task-scheduling, en-convntm, end-to-end-vs-decomposition-in-drl-mec [idempotent — batch-1 wording fix intact], energy-expenditure-coefficient, energy-harvesting-mec, energy-latency-tradeoff, equilibrium-efficiency-metric, event-driven-vs-slot-driven-offloading, evolutionary-reinforcement-learning, fairness-metrics-in-mec, fault-tolerant-relay-network, federated-reinforcement-learning).
+
+### Gates (concept batch 4)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type concept`** = 234 pages, 0 errors. Graph unchanged **513 / 4455** (prose-only edits, no new links/pages). `log.md` edited with file tools, verified mojibake-free.
+
+### Routing to `mec-wiki-synthesizer` (concept batch 4 — recorded, not filled)
+
+- **Tag fragmentation in the evolutionary-algorithm family (standing).** The same fragmentation flagged in concept batch 2 recurs here — `dual-population-evolutionary-algorithm`, `dynamic-constrained-multi-objective-optimization`, and `evolutionary-reinforcement-learning` tag `evolutionary`, while [[differential-evolution]]/[[constraint-violation-evaluation]] use `evolutionary-algorithm`. A tag-vocabulary normalization (pick one slug) would de-fragment the family. Flagged only — no merge/delete/retag here; no new fragmentation introduced this batch.
+
 ## 2026-06-01 — Audit pass (non-source layer — concept batch 3; no new papers)
 
 Continues the non-source-layer audit into **concept batch 3** (20 pages, alphabetical cooperative-perception → drone-cell-3d-placement, positions 41–60 of `.curation-out/concept_slugs.txt`). Tree clean at `18dc945`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4455 edges**.
