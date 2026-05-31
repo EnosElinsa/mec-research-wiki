@@ -6,19 +6,21 @@ related:
   - "[[wang-2022-cat-rat-fmec-trajectory]]"
   - "[[wang-2021-maddpg-multiuav-trajectory]]"
   - "[[wang-2019-todetas-deployment-scheduling]]"
+  - "[[yang-2019-sum-power-uav-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Kezhi Wang
 
 IEEE Senior Member. Affiliated with the **Department of Computer and Information Sciences, Northumbria University** (Newcastle upon Tyne, U.K.; email `kezhi.wang@northumbria.ac.uk`) across the UAV-MEC papers in this wiki; he is frequently the corresponding author. (Per his in-parse bio: B.E./M.E. from Chongqing University, Ph.D. from the University of Warwick, formerly at the University of Essex.)
 
-Co-authored 3 sources in this wiki, all on UAV-assisted MEC trajectory/offloading:
+Co-authored 4 sources in this wiki, all on UAV-assisted MEC trajectory/offloading/resource allocation:
 
 - [[wang-2022-cat-rat-fmec-trajectory]] — flying-MEC trajectory control via CAT (BCD convex) + RAT (twin-DQN + PER) (corresponding author).
 - [[wang-2021-maddpg-multiuav-trajectory]] — MADDPG multi-UAV trajectory planning for dual-fairness + energy (corresponding author).
 - [[wang-2019-todetas-deployment-scheduling]] — two-layer UAV deployment (differential evolution) + task scheduling (ToDeTaS) (corresponding author).
+- [[yang-2019-sum-power-uav-mec]] — multi-UAV-MEC sum-power minimization over user association + power + compute-capacity + UAV location (compressive sensing + closed-form + 1-D search; FCM init), with Zhaohui Yang and Cunhua Pan (corresponding author).
 
 ## Contributions to this wiki
 
