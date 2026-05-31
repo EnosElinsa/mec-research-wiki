@@ -19,15 +19,17 @@ related:
   - "[[wang-gai-isac-physical-layer]]"
   - "[[sun-2025-tjcct-twotimescale-uav-mec]]"
   - "[[xu-2024-mobile-aigc-survey]]"
+  - "[[huang-2025-dual-aav-maritime-secure-cb]]"
+  - "[[yang-2024-taco-human-digital-twin-edge]]"
 created: 2026-05-29
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Dusit Niyato
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 16 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, and surveys:
+The most frequently recurring author in the corpus, co-authoring 18 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -45,6 +47,8 @@ The most frequently recurring author in the corpus, co-authoring 16 sources span
 - [[wang-gai-isac-physical-layer]] — generative AI for ISAC from the physical-layer perspective.
 - [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale joint resource-allocation / offloading / trajectory-control UAV-MEC (TJCCT).
 - [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.
+- [[huang-2025-dual-aav-maritime-secure-cb]] — dual AAV cluster-assisted maritime secure communications via collaborative beamforming.
+- [[yang-2024-taco-human-digital-twin-edge]] — two-timescale accuracy-aware online optimization for human-digital-twin deployment at the edge (TACO).
 
 ## Contributions to this wiki
 

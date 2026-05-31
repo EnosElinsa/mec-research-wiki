@@ -12,15 +12,16 @@ related:
   - "[[li-2024-emodrl-ground-space-cb]]"
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[sun-2024-imssa-uav-secure-cb]]"
+  - "[[huang-2025-dual-aav-maritime-secure-cb]]"
 created: 2026-05-29
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Jiahui Li
 
 IEEE Member (Student Member on earlier papers). Affiliated with the **College of Computer Science and Technology, Jilin University** (Changchun, China; email `lijiahui0803@foxmail.com` / `lijiahui@jlu.edu.cn`); some papers also list the **Pillar of Engineering Systems and Design, Singapore University of Technology and Design**. Consistent identity across his papers in this wiki, often a corresponding author for the Jilin-University group.
 
-Co-authored 9 sources in this wiki:
+Co-authored 10 sources in this wiki:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
@@ -31,6 +32,7 @@ Co-authored 9 sources in this wiki:
 - [[li-2024-emodrl-ground-space-cb]] — distributed collaborative beamforming for ground-space communications via EMODRL (lead author).
 - [[li-2024-emssa-uav-swarm-vaa]] — multi-objective UAV-swarm + IoT collaborative beamforming with virtual antenna arrays (EMSSA) (lead author).
 - [[sun-2024-imssa-uav-secure-cb]] — UAV-enabled secure collaborative beamforming with imperfect eavesdropper information (IMSSA).
+- [[huang-2025-dual-aav-maritime-secure-cb]] — dual AAV cluster-assisted maritime secure communications via collaborative beamforming (IMOMA; corresponding author).
 
 ## Contributions to this wiki
 
