@@ -31,7 +31,7 @@ related:
   - "[[design-recipe-multi-uav-mec]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # DRL backbone choices across the UAV-MEC corpus
@@ -90,7 +90,7 @@ A clear shift across the corpus:
   - Agents have *roles* worth learning separately (e.g. heterogeneous UAVs in [[zhang-2025-ssac-mgi-heterogeneous-uav]]).
 - **Federated single-agent** ([[mao-2025-bcsa-frl]]) — distinct from MA-DRL: each satellite runs its own MDP locally, then the *parameters* are aggregated across satellites. This is FRL, not MA-DRL.
 
-The wiki's curated corpus does not include any **mean-field MARL** or **value-decomposition (Qmix / VDN)** papers — those scale better past ~20 agents but none of the curated sources hit that count. Worth noting if the corpus grows toward dense LAE deployments.
+The corpus does include one **value-decomposition** source — [[raivi-2024-jdaco-postdisaster-iot]]'s VD3QN (VDN + dueling-double-DQN) for cooperative multi-UAV learning — but no **mean-field MARL** or **QMIX** papers, and none of the curated sources operate at the dense (~20+ agent) regime where value-decomposition's scaling advantage matters most. Worth noting if the corpus grows toward dense LAE deployments.
 
 ## Memory and history handling
 
@@ -177,7 +177,7 @@ The combination — PER + entropy-regularized stochastic policy — is the stron
 
 ### 4. SAGIN-tier scheduling is structurally different from UAV-MEC
 
-[[hsu-2025-drl-hues-hap-noma]] is the wiki's first **HAP-energy-constrained** DRL source. Most HAP entries treat HAP energy as unbounded; this one scopes the scheduler around the HAP's battery budget. The optimization shape (long-term BSS subject to battery dynamics) is closer to the **wireless-power** family ([[zhu-2025-lycnn-drl-wpt-mec]]) than to the **trajectory + offloading** family. PPO suffices because the action space is two-dimensional continuous (transmit-vs-harvest ratio, transmit power) — no need for j-PPO machinery.
+[[hsu-2025-drl-hues-hap-noma]] is the wiki's clearest **HAP-energy-constrained** DRL source. Most HAP entries treat HAP energy as unbounded; this one scopes the scheduler around the HAP's battery budget. The optimization shape (long-term BSS subject to battery dynamics) is closer to the **wireless-power** family ([[zhu-2025-lycnn-drl-wpt-mec]]) than to the **trajectory + offloading** family. PPO suffices because the action space is two-dimensional continuous (transmit-vs-harvest ratio, transmit power) — no need for j-PPO machinery.
 
 This points to a sub-track in the wiki: **resource-constrained aerial scheduling** (energy-aware HAP scheduling, energy-aware UAV-WPT, charging UAVs from fixed stations in [[liu-2026-jppo-en-convntm]]). A future synthesis would consolidate these.
 

@@ -21,7 +21,7 @@ related:
   - "[[yuan-wu]]"
   - "[[jiawen-kang]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-02
 ---
 
 # The CMOP-evolutionary UAV-MEC lineage (Peng/Huang group, 2022-2026)
@@ -92,7 +92,7 @@ peng-2022 (seed: infeasibility-utilization)
    └──→ wu-2026 (+ multi-tasking, terrain-aware channel)
 ```
 
-`huang-2025` reuses [[peng-2024-energy-time-uav-its]]'s repair-CHT technique and operates in the same authorial network, but the paper itself only cites the lineage seed [[peng-2022-cmop-uav-path-planning]]. `wu-2026` is a parallel branch that picks up the data-type operator and adds multi-tasking on top.
+`huang-2025` reuses [[peng-2024-energy-time-uav-its]]'s repair-CHT technique and operates in the same authorial network, but among the lineage papers it cites the seed [[peng-2022-cmop-uav-path-planning]] and [[huang-2023-mu-aec-task-energy]] (not [[peng-2024-energy-time-uav-its]] directly). `wu-2026` is a parallel branch that picks up the data-type operator and adds multi-tasking on top.
 
 ## Working theses
 

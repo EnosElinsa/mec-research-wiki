@@ -10,16 +10,19 @@ related:
   - "[[zhang-2024-dlrl-maritime-usv]]"
   - "[[you-2025-uncertain-maritime-hasac]]"
   - "[[wang-2024-twotier-satellite-marine]]"
+  - "[[li-2023-secure-marine-iot-jamming]]"
+  - "[[dai-2023-hybrid-noma-fdma-marine]]"
+  - "[[huang-2025-dual-aav-maritime-secure-cb]]"
   - "[[maritime-mec]]"
   - "[[three-tier-cloud-edge-end]]"
   - "[[maritime-three-tier-energy-saving]]"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-02
 ---
 
 # Maritime MEC architectures
 
-Seven curated sources target the maritime setting — vessels / maritime wireless devices (MWDs) far from terrestrial base stations, served by some mix of UAV, HAPS, USV, offshore base station (OBS), and LEO satellite. This page maps the tiering choices and the solver families.
+The maritime track is broad (sources tagged [[maritime-mec]] number well over a dozen); this page maps the **architecture/tiering** subset — seven sources that serve vessels / maritime wireless devices (MWDs) far from terrestrial base stations through some mix of UAV, HAPS, USV, offshore base station (OBS), and LEO satellite. It compares their tiering choices and solver families.
 
 ## Roster
 
@@ -55,6 +58,6 @@ The maritime track is **classical-solver-heavy** relative to the UAV-MEC track �
 
 ## Gaps
 
-- **No security/trust source in the maritime track** — unlike the UAV track, no maritime source addresses jamming, blockchain, or zero-trust, despite maritime networks being exposed.
+- **No security/trust source among these architecture sources** — none of the seven mapped here addresses jamming, blockchain, or zero-trust. The broader maritime track does cover physical-layer security: [[li-2023-secure-marine-iot-jamming]] (cooperative jamming for secure marine-IoT offloading), [[dai-2023-hybrid-noma-fdma-marine]], and [[huang-2025-dual-aav-maritime-secure-cb]] (friendly-jamming secure collaborative beamforming). Blockchain / zero-trust, however, is absent from the maritime track.
 - **CSI uncertainty is mostly side-stepped** (known routes) rather than handled robustly — the maritime analog of [[jia-2025-dro-uav-hap-mec]]'s DRO approach is absent.
 - **No head-to-head between the classical-heavy maritime solvers and a DRL controller** on the same maritime benchmark.

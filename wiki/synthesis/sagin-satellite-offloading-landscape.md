@@ -16,12 +16,12 @@ related:
   - "[[non-terrestrial-network]]"
   - "[[fedleo-delay-accuracy-tradeoff]]"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-02
 ---
 
 # The SAGIN / satellite-offloading landscape
 
-Eight curated sources put a satellite (usually LEO) into the offloading hierarchy. They split cleanly by **what the satellite is for** and **what solver shape the per-slot problem takes**. This page maps the eight onto those axes and calls out the shared assumptions and gaps.
+A cluster of curated sources put a satellite (usually LEO) into the offloading hierarchy; the eight mapped below split cleanly by **what the satellite is for** and **what solver shape the per-slot problem takes**. This page maps those eight onto those axes and calls out the shared assumptions and gaps.
 
 ## Roster
 
