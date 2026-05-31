@@ -5,7 +5,7 @@ authors: ["Peng Qin", "Min Fu", "Yang Fu", "Jingjing Wang"]
 year: 2025
 url: "https://doi.org/10.1109/TWC.2025.3582151"
 venue: "IEEE Transactions on Wireless Communications"
-tags: [uav, mec, blockchain, masac, lyapunov, multi-agent, trajectory, noma, pbft, dpos]
+tags: [source, uav, mec, blockchain, masac, lyapunov, multi-agent, trajectory, noma, pbft, dpos]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[uav-trajectory-control]]"
@@ -17,7 +17,7 @@ related:
   - "[[air-ground-integrated-network]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Cooperative UAV Trajectory Design and Resource Allocation in Blockchain-Enabled Secure Aerial Edge Computing Network

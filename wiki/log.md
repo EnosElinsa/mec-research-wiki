@@ -2,7 +2,7 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
-## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batch 1/12; no new papers)
+## 2026-06-01 — Audit pass (meta-doc cleanup + correctness batches 1–2/12; no new papers)
 
 First invocation of a multi-invocation batched audit over the fully-curated 171-source corpus. Phase 0 reconciled clean: `curation_status.py --dupes` reports **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator` needed). Tree clean at `f81cbb4`. LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4449 edges**.
 
@@ -34,6 +34,28 @@ Audited the just-converted **end-to-end-DRL English cluster** + **source-page ba
 - **Stale roster needs re-tally:** [[drl-vs-evolutionary-vs-classical-solvers]] still reasons over a 26-source family roster; a full re-census across the 171-source corpus is owed (wording made evergreen here, but the analytical broadening is the synthesizer's job).
 - **Candidate synthesis:** the "multi-agent-policy-gradient as a Stackelberg-equilibrium solver" pattern appears in [[bi-2025-sg-mapg]] and relates to [[wang-2025-uav-swarm-stackelberg]] / the [[game-theoretic-offloading-formulations]] comparison — worth a synthesis page if a third source uses it.
 - **Remaining audit scope:** 11 source-page batches (~156 pages) plus concepts/entities/most derived pages are unaudited; later invocations continue from `.curation-out/audit-coverage.md`.
+
+### Correctness & consistency audit (Phase B — batch 2/12)
+
+Audited **source-page batch 2** (15 pages, alphabetical chu-2024 → gao-2024-service-experience-cache-uav). Phase 0 re-reconciled clean (`curation_status.py --dupes`: **171 raw = 171 curated, 0 uncurated, 0 genuinely-new**); tree clean at `ecc04aa`; baseline graph **513 nodes / 4455 edges**.
+
+- **All 15 pages verified clean** — DOIs/venues/years confirmed against each parse; headline numbers grounded against the parse text, no ungrounded numbers found. Spot-checked verbatim: [[gao-2024-service-experience-cache-uav]] "19–34% higher / 78.6% (U=4→6) / average service delay [24.1, 40.4] s (mean 33.4) / 54%·32%·23% vs GCR·FRA·NCOA"; [[dai-2023-hybrid-marine-mmwl]] "≤3% gap / >90% time saving vs LINGO"; [[chu-2024-secure-ris-isac]] "2 dB radar SNR gain w/ RIS"; [[du-2024-d2sac-aigc-asp-selection]] "seven DRL baselines (DQN/DRQN/Prioritized-DQN/Rainbow/REINFORCE/PPO/SAC)"; [[du-2024-gdm-network-optimization-tutorial]] "WoS GDM papers 12 (2014) → 257 (2023)"; [[duan-2023-moto-smallcell-offloading]] "29,284,966 records / 21,725 users / 4,045 APs". [[gao-2024-sagin-perception-offloading]] numeric setup/curves are figure-derived and already marked indicative on the page.
+- **Tag-vocabulary consistency fix (corpus-wide sweep):** added the required `source` tag to **26** source pages that `frontmatter_audit.py` flagged as missing it (`updated` bumped to 2026-06-01 on each). `frontmatter_audit.py` now exits 0 over all 513 typed pages.
+
+### Toolkit
+
+- **Sharpened `tools/wiki/index_audit.py`** (+ README) to separate true **duplicate primary listings** (a slug that leads more than one bullet — a real defect) from deliberate cross-reference mentions (entity rosters, finding/methodology bullets citing their source, explicit `>` cross-refs). The previous "any slug linked >1x" heuristic flagged 45 deliberate cross-refs and could never reach exit 0; the refined check surfaced exactly **one genuine defect** — [[liu-2020-wpt-cooperative-uav-mec]] had a full primary bullet under both *Energy efficiency & WPT* and *Classical / convex / optimization-based UAV-MEC*. Gave it one primary home (the convex/optimization section) and a `>` cross-ref note under WPT.
+
+### Gates (batch 2)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 0 unindexed / 0 duplicate primary listings (45 cross-ref mentions reported informationally). **`frontmatter_audit.py`** = 0 errors over 513 pages. `index.md` verified mojibake-free at the byte level after the cross-ref edit.
+
+### Routing to `mec-wiki-synthesizer` (batch 2 — recorded, not filled)
+
+- **Candidate comparison:** the marine multi-access offloading pair [[dai-2023-hybrid-marine-mmwl]] (FDMA-offshore + NOMA-aerial, min-max latency, IEEE TCOMM) and [[dai-2023-hybrid-noma-fdma-marine]] (NOMA-underwater + FDMA-aerial, energy + secrecy, IEEE TNSE) align on a comparable hybrid-multiple-access marine-MEC setup validated vs the LINGO solver — worth a comparison page.
+- **Candidate synthesis:** the **diffusion-model-as-optimizer / GDM-for-network-optimization** thread is now dense ([[du-2024-d2sac-aigc-asp-selection]], [[du-2024-gdm-network-optimization-tutorial]], [[fu-2025-otae-inference-lae-batching]], [[ye-2025-aigc-diffusion-contract]], [[peng-2025-drudm-cfg]], survey [[khoramnejad-2025-gai-wireless-optimization-survey]]) — a cross-source synthesis page would consolidate it.
+- **Foundational-method finding:** [[fujimoto-2018-td3-actor-critic]] is the TD3 method ancestor of a large in-corpus lineage but has no finding page capturing its three overestimation-bias fixes as the grounding for downstream TD3/MATD3/CLP claims.
+
 
 ## 2026-06-01 — Cleanup: duplicate-ingest removal + end-to-end-DRL derived pages converted to English
 

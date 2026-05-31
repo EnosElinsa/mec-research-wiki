@@ -5,7 +5,7 @@ authors: ["Ruofei Ma", "Jingyang Zhou", "Ruisong Wang", "Hsiao-Hwa Chen", "Gongl
 year: 2025
 url: "https://doi.org/10.1109/TVT.2025.3574783"
 venue: "IEEE Transactions on Vehicular Technology"
-tags: [vehicular-mec, iov, drl, p-dqn, parameterized-dqn, hybrid-action, three-tier-offloading]
+tags: [source, vehicular-mec, iov, drl, p-dqn, parameterized-dqn, hybrid-action, three-tier-offloading]
 related:
   - "[[vehicular-mec]]"
   - "[[parameterized-dqn]]"
@@ -15,7 +15,7 @@ related:
   - "[[binary-vs-partial-offloading]]"
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Computation Offloading and Resource Allocation in Vehicular MEC: A Parameterized Deep Reinforcement Learning Approach

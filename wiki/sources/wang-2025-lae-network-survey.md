@@ -5,7 +5,7 @@ authors: ["Yixian Wang", "Geng Sun", "Zemin Sun", "Jiacheng Wang", "Jiahui Li", 
 year: 2025
 url: "https://doi.org/10.1109/TCCN.2025.3601015"
 venue: "IEEE Transactions on Cognitive Communications and Networking"
-tags: [survey, low-altitude-economy, lae, uav, evtol, gai, architecture, mec]
+tags: [source, survey, low-altitude-economy, lae, uav, evtol, gai, architecture, mec]
 related:
   - "[[low-altitude-intelligent-network]]"
   - "[[multi-uav-assisted-mec]]"
@@ -13,7 +13,7 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Toward Realization of Low-Altitude Economy Networks: Core Architecture, Integrated Technologies, and Future Directions

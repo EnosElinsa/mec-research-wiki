@@ -5,7 +5,7 @@ authors: ["Yi-Huai Hsu", "Jiun-Ian Lee", "Chao-Hung Lee"]
 year: 2025
 url: "https://doi.org/10.1109/TCCN.2025.3629973"
 venue: "IEEE Transactions on Cognitive Communications and Networking"
-tags: [hap, sagin, noma, energy-harvesting, ppo, drl, 6g]
+tags: [source, hap, sagin, noma, energy-harvesting, ppo, drl, 6g]
 related:
   - "[[high-altitude-platform-station]]"
   - "[[noma]]"
@@ -15,7 +15,7 @@ related:
   - "[[wireless-power-transfer]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA SAGINs

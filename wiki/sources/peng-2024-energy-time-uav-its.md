@@ -5,7 +5,7 @@ authors: ["Chaoda Peng", "Zexiong Wu", "Xumin Huang", "Yuan Wu", "Jiawen Kang", 
 year: 2024
 url: "https://doi.org/10.1109/TITS.2024.3395993"
 venue: "IEEE Transactions on Intelligent Transportation Systems"
-tags: [uav, its, multi-source-fusion, cmop, evolutionary-algorithm, time-balancing, service-caching]
+tags: [source, uav, its, multi-source-fusion, cmop, evolutionary-algorithm, time-balancing, service-caching]
 related:
   - "[[uav-enabled-its]]"
   - "[[multi-source-data-fusion]]"
@@ -17,7 +17,7 @@ related:
   - "[[huang-2025-cmop-dispersed-computing]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Joint Energy and Completion Time Difference Minimization for UAV-Enabled Intelligent Transportation Systems

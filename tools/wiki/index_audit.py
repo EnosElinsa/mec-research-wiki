@@ -8,9 +8,12 @@ questions:
 
   * Which pages exist on disk but are NOT linked from ``index.md``? (coverage
     gaps the index should list.)
-  * Which slugs does ``index.md`` link to MORE THAN ONCE? (duplicate listings —
-    excluding deliberate ``>`` cross-reference notes is left to human review,
-    but the raw duplicate count is reported.)
+  * Which pages are catalogued under MORE THAN ONE primary bullet? (true
+    duplicate listings — a real defect.) A *primary listing* is the leading
+    wikilink of a markdown list item; a slug that merely appears again inside
+    another bullet's prose (an entity roster, a finding/methodology bullet
+    citing its source, an explicit ``>`` cross-reference) is a deliberate
+    cross-reference, reported informationally but not counted as a duplicate.
 
 Pages that are intentionally not catalogued in the index (the meta docs
 themselves, the repo-root ``purpose``/``README``, parser scaffolding like
@@ -26,6 +29,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from collections import Counter
 
@@ -71,6 +75,38 @@ def index_links() -> list[str]:
     return list(wikilib.iter_wikilinks(wikilib.read_text(idx)))
 
 
+# A markdown list item: optional indent, a -/*/+ bullet, then content.
+_BULLET = re.compile(r"^\s*[-*+]\s+(.*)$")
+_CODE_SPAN = re.compile(r"`[^`]*`")
+_FIRST_LINK = re.compile(r"\[\[([^\]]+)\]\]")
+
+
+def index_primary_listings() -> list[str]:
+    """Slugs that are the *leading* wikilink of a list item in ``index.md``.
+
+    Each catalogued page should have exactly ONE primary bullet here. Mentions
+    of a slug elsewhere — inside another bullet's prose (entity rosters, a
+    finding/methodology bullet citing its source, an explicit ``>`` cross-ref)
+    — are deliberate cross-references, not duplicate listings, so only the
+    bullet-leading link counts toward the duplicate check.
+    """
+    idx = os.path.join(wikilib.wiki_dir(), "index.md")
+    primaries: list[str] = []
+    for line in wikilib.read_text(idx).splitlines():
+        m = _BULLET.match(line)
+        if not m:
+            continue
+        content = _CODE_SPAN.sub("", m.group(1))
+        lm = _FIRST_LINK.search(content)
+        if not lm:
+            continue
+        raw = lm.group(1).replace("\\|", "|")
+        target = raw.split("|")[0].split("#")[0].strip().rstrip("\\").strip()
+        if target:
+            primaries.append(target)
+    return primaries
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument(
@@ -100,8 +136,17 @@ def main(argv: list[str] | None = None) -> int:
         if gap:
             missing[t] = gap
 
-    # Duplicate index listings (a slug linked more than once).
-    duplicated = {s: c for s, c in counts.items() if c > 1 and s in all_pages}
+    # Duplicate *primary listings*: a slug that leads more than one bullet is a
+    # real defect (the same page catalogued twice). A slug that is linked more
+    # than once overall but leads at most one bullet is a deliberate
+    # cross-reference (entity roster / finding citing its source / ``>`` note),
+    # reported informationally but NOT treated as a duplicate listing.
+    primaries = index_primary_listings()
+    primary_counts = Counter(primaries)
+    duplicated = {s: c for s, c in primary_counts.items()
+                  if c > 1 and s in all_pages}
+    crossrefs = {s: c for s, c in counts.items()
+                 if c > 1 and s in all_pages and s not in duplicated}
 
     total_missing = sum(len(v) for v in missing.values())
 
@@ -119,12 +164,17 @@ def main(argv: list[str] | None = None) -> int:
         print("PAGES NOT INDEXED: 0  (every page is catalogued)")
 
     if duplicated:
-        print(f"\nSLUGS LINKED >1x IN INDEX: {len(duplicated)} "
-              "(may include deliberate '>' cross-refs — review)")
+        print(f"\nDUPLICATE PRIMARY LISTINGS: {len(duplicated)} "
+              "(same page leads more than one bullet — fix)")
         for s, c in sorted(duplicated.items(), key=lambda kv: -kv[1]):
             print(f"  {c}x  {s}")
     else:
-        print("\nSLUGS LINKED >1x IN INDEX: 0")
+        print("\nDUPLICATE PRIMARY LISTINGS: 0  (each page catalogued once)")
+
+    if crossrefs:
+        print(f"\nCross-reference mentions (informational, not duplicates): "
+              f"{len(crossrefs)} slugs linked >1x via roster / finding / "
+              "'>' cross-ref prose")
 
     if args.json_path:
         out = args.json_path
@@ -137,6 +187,7 @@ def main(argv: list[str] | None = None) -> int:
                     "distinct_linked": len(linked),
                     "missing": missing,
                     "duplicated": duplicated,
+                    "crossrefs": crossrefs,
                 },
                 fh,
                 indent=2,

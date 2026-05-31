@@ -5,7 +5,7 @@ authors: ["Ziye Jia", "Can Cui", "Chao Dong", "Qihui Wu", "Zhuang Ling", "Dusit 
 year: 2025
 url: "https://doi.org/10.1109/TMC.2025.3571023"
 venue: "IEEE Transactions on Mobile Computing"
-tags: [aerial-mec, hap, uav, distributionally-robust, cvar, primal-decomposition, bwoa, weighted-kmeans, csi-error]
+tags: [source, aerial-mec, hap, uav, distributionally-robust, cvar, primal-decomposition, bwoa, weighted-kmeans, csi-error]
 related:
   - "[[hierarchical-aerial-mec]]"
   - "[[high-altitude-platform-station]]"
@@ -17,7 +17,7 @@ related:
   - "[[weighted-kmeans-uav-deployment]]"
   - "[[wang-2026-aerial-marine-msar]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs and HAPs

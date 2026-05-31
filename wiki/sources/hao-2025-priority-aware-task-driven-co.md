@@ -5,7 +5,7 @@ authors: ["Hao Hao", "Changqiao Xu", "Wei Zhang", "Shujie Yang", "Gabriel-Miro M
 year: 2025
 url: "https://doi.org/10.1109/TWC.2025.3564356"
 venue: "IEEE Transactions on Wireless Communications"
-tags: [mec, computation-offloading, drl, priority, event-driven, dependence-aware, latent-space]
+tags: [source, mec, computation-offloading, drl, priority, event-driven, dependence-aware, latent-space]
 related:
   - "[[mobile-edge-computing]]"
   - "[[task-offloading]]"
@@ -13,7 +13,7 @@ related:
   - "[[event-driven-vs-slot-driven-offloading]]"
   - "[[task-priority-in-mec]]"
 created: 2026-05-28
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Task-Driven Priority-Aware Computation Offloading Using Deep Reinforcement Learning

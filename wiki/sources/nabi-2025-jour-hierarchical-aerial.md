@@ -5,7 +5,7 @@ authors: ["Ahmadun Nabi", "Sangman Moh"]
 year: 2025
 url: "https://doi.org/10.1109/TMC.2025.3548668"
 venue: "IEEE Transactions on Mobile Computing"
-tags: [hierarchical-aerial-mec, hap, uav, sac, prioritized-experience-replay, matching-game, gale-shapley, jour]
+tags: [source, hierarchical-aerial-mec, hap, uav, sac, prioritized-experience-replay, matching-game, gale-shapley, jour]
 related:
   - "[[hierarchical-aerial-mec]]"
   - "[[high-altitude-platform-station]]"
@@ -17,7 +17,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[bao-2025-ddpg-video-offloading]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Joint Offloading Decision, User Association, and Resource Allocation in Hierarchical Aerial Computing

@@ -5,7 +5,7 @@ authors: ["Lihan Liu", "Hongrui Miao", "Chunhui Qu", "Zhuwei Wang", "Haijun Zhan
 year: 2026
 url: ""
 venue: ""
-tags: [uav, mec, drl, ppo, ntm, path-planning, high-density, smart-city]
+tags: [source, uav, mec, drl, ppo, ntm, path-planning, high-density, smart-city]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[high-density-mobile-device-scenarios]]"
@@ -24,7 +24,7 @@ related:
   - "[[charging-stations-improve-efficiency]]"
   - "[[uav-count-inverted-u-energy]]"
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Multi-UAV Path Planning for Mobile Edge Computing with High-Density Mobile Devices

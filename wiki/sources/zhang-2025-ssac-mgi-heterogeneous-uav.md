@@ -5,7 +5,7 @@ authors: ["Xiuling Zhang", "Riheng Jia", "Quanjun Yin", "Zhonglong Zheng", "Ming
 year: 2025
 url: "https://doi.org/10.1109/TMC.2025.3632884"
 venue: "IEEE Transactions on Mobile Computing"
-tags: [uav, mec, heterogeneous, safe-rl, trajectory, sac, collision-avoidance, multi-agent]
+tags: [source, uav, mec, heterogeneous, safe-rl, trajectory, sac, collision-avoidance, multi-agent]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[uav-trajectory-control]]"
@@ -16,7 +16,7 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-28
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled MEC

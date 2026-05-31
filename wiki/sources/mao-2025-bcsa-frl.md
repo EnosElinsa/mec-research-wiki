@@ -5,7 +5,7 @@ authors: ["Bomin Mao", "Yangbo Liu", "Zixiang Wei", "Hongzhi Guo", "Yijie Xun", 
 year: 2025
 url: "https://doi.org/10.1109/JSAC.2025.3560003"
 venue: "IEEE Journal on Selected Areas in Communications (JSAC)"
-tags: [leo-satellite, mec, frl, federated-learning, blockchain, zero-trust, task-offloading, ddqn]
+tags: [source, leo-satellite, mec, frl, federated-learning, blockchain, zero-trust, task-offloading, ddqn]
 related:
   - "[[mobile-edge-computing]]"
   - "[[task-offloading]]"
@@ -19,7 +19,7 @@ related:
   - "[[fl-poisoning-attacks]]"
   - "[[bcsa-frl-tolerates-up-to-half-malicious-satellites]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # A Blockchain-Enabled Cold Start Aggregation Scheme for FRL-Based Task Offloading in Zero Trust LEO Satellite Networks

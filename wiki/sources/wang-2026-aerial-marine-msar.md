@@ -5,7 +5,7 @@ authors: ["Zhen Wang", "Bin Lin", "Qiang Ye"]
 year: 2026
 url: "https://doi.org/10.1109/TCCN.2025.3642113"
 venue: "IEEE Transactions on Cognitive Communications and Networking"
-tags: [maritime, msar, haps, uav, mass, mec, matching, two-stage-optimization, jcora]
+tags: [source, maritime, msar, haps, uav, mass, mec, matching, two-stage-optimization, jcora]
 related:
   - "[[maritime-mec]]"
   - "[[high-altitude-platform-station]]"
@@ -14,7 +14,7 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS, UAVs, and MASSs
