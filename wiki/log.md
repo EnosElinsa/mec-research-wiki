@@ -2,6 +2,35 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-01 — Audit pass (non-source layer — entity batch 1; no new papers)
+
+Opens the **entities-layer** audit with **entity batch 1** (20 pages, alphabetical bin-lin → hui-kang, positions 1–20 of `.curation-out/entity_slugs.txt`). All 171 source pages and all 234 concept pages were audited in prior passes; the 71-page entity layer (70 author + 1 tool `pytorch`) splits into 4 batches of 20/20/20/11 via `make_batches.py --size 20`. Tree clean at `6402403` (apart from a pre-existing untouched `.kiro/agents/**` edit). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4456 edges**.
+
+### Correctness & consistency audit (Phase B — entity batch 1)
+
+Entity-page checks: `author`/`tool` tag + frontmatter valid; roster of authored sources reconciles in BOTH directions against source `authors:` lists; affiliation grounded in the parse(s); namesake / affiliation-move handling correct; `related`/wikilinks resolve and are non-self-referential; evergreen wording.
+
+- **All 20 verified clean — no corrections needed.** Frontmatter valid (`author` tag present on all 20). Rosters reconcile in both directions: `entity_roster_audit.py` reports **0 claimed-but-absent and 0 present-but-unlisted** for every batch-1 entity, confirmed against the source `authors:` frontmatter and the parses.
+- **Affiliation grounding spot-checks (in-parse email/affiliation lines, verbatim):** [[bin-lin]] (`binlin@dlmu.edu.cn`, Dalian Maritime University — confirmed across the two-tier-marine / hybrid-NOMA-FDMA / secure-marine-IoT / DLRL-maritime / MSAR parses); [[bomin-mao]] (`maobomin@nwpu.edu.cn`, NWPU School of Cybersecurity + Aero-Space-Ground-Ocean lab — lead/corresponding author across the NTN-caching / IRS-NOMA-FL / FSO-LEO-routing parses); [[hao-sun]] (`sunhaosn@nuaa.edu.cn`) + [[chao-dong]] (`dch@nuaa.edu.cn`), both NUAA, confirmed in the ASAP parse author block (Hao Sun / Yuben Qu / Chao Dong / Qihui Wu — roster reconciles); [[hui-kang]] (`kanghui@jlu.edu.cn`) + [[boxiong-wang]] (`wangbx0320@163.com`), both Jilin University, confirmed in the SWIPT-MEC acknowledgment block.
+- **Namesake / affiliation-move handling (correct, intact):** [[fuhong-song]] — SWJTU→Guizhou-Univ-of-Finance student→faculty move, identity confirmed via shared co-author Huanlai Xing + shared niche (note intact, not a namesake); [[haixia-peng]] — Waterloo→Xi'an Jiaotong move documented in both parses (note intact); [[hao-sun]] — explicit "distinct from the Jilin/NTU [[geng-sun]]; surname-only collision" disambiguation intact; [[dusit-niyato]] — "most frequently recurring author … 20 sources" headline confirmed exactly (roster tool: niyato 20 = corpus max, then [[geng-sun]] 16, [[jiawen-kang]] 14, [[jiahui-li]] 13, [[qingqing-wu]] 12).
+- **Pages:** bin-lin, bomin-mao, boxiong-wang, chao-dong, chaoda-peng, christopher-brinton, chunhui-qu, chunxiao-jiang, dong-jun-han, dusit-niyato, fuhong-song, geng-sun, haijun-zhang, haixia-peng, hao-hao, hao-sun, hongbin-chen, hongrui-miao, hongzhi-guo, hui-kang.
+
+### Toolkit ratchet (entity batch 1)
+
+- Added **`tools/wiki/entity_roster_audit.py`** (README table updated): reconciles author-entity rosters against source `authors:` lists in both directions — **claimed-but-absent** (entity links a source whose author list lacks a matching name) and **present-but-unlisted** (a source lists a matching author the entity does not link) — with `strict` (full-name) vs `loose` (first+last token) match strengths. Advisory-only (always exit 0); it never decides identity. Fixed its `authors:` parser during this batch to handle BOTH YAML styles (inline flow list + block list), which cleared 5 false-positive over-claims (multi-line block lists had been read as empty). Net real signal carried forward to batches 2–3: [[jiawen-kang]] 2 genuine claimed-but-absent (mao-2025-bcsa-frl, qin-2025-bcuav-masac) + omissions to confirm (du-2023, ye-2025); plus jie-xu (known GDUT/CUHK-Shenzhen namesake split), jingjing-wang, qiang-ye, liping-qian, xuemin-shen, yuan-wu present-but-unlisted hits to adjudicate against the parses before any edit.
+
+### Gates (entity batch 1)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type entity`** = 71 pages, 0 errors (all-types 513, 0 errors). Graph baseline **513 / 4456** (no page edits this batch — audit-only). `log.md` edited with file tools, verified mojibake-free.
+
+### Routing to `mec-wiki-synthesizer` (entity batch 1 — recorded, not filled)
+
+- The roster-reconciliation signal above (candidate omissions on jiawen-kang / jingjing-wang / qiang-ye / liping-qian / xuemin-shen / yuan-wu, and the jie-xu namesake split) is a set of **correctness items for entity batches 2–3**, not synthesizer gaps. No clearly-recurring author lacks an entity page within batch 1's roster — every co-author named in these 20 pages either already has an entity page or is correctly left unlinked.
+
+### Next: entity batches 2–4, then derived (37)
+
+With entity batch 1 done, **51 entity pages remain** (batches 2–4: 20 + 20 + 11), then the **derived layer** (findings 14 / synthesis 11 / comparisons 4 / methodology 2 / queries 5 / thesis 1 = 37) — ≈ **88 non-source pages** across subsequent batched invocations.
+
 ## 2026-06-01 — Audit pass (non-source layer — concept batch 12, FINAL; no new papers)
 
 Closes the concept-layer audit with **concept batch 12** (14 pages, alphabetical unicast-multicast-cooperation → zero-trust-architecture, positions 221–234 of `.curation-out/concept_slugs.txt`). **All 234 concept pages are now audited** (concept batches 1–12); all 171 source pages were audited in source batches 1–12. Tree clean at `8114aff`. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4456 edges**.
