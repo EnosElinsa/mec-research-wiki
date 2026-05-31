@@ -6,7 +6,7 @@ related:
   - "[[meng-2024-uav-isac-overview]]"
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-02
 ---
 
 # Jie Xu
@@ -21,3 +21,5 @@ Co-author of two ISAC sources in this wiki:
 ## Contributions to this wiki
 
 A recurring contributor on the **ISAC** thread, spanning the survey framing ([[meng-2024-uav-isac-overview]]) and a concrete secure-beamforming design ([[yao-2025-secure-isac-dual-eavesdropping]]) that uses the [[ao-sdr-sca-convex-pipeline]]. Co-authors with [[tony-q-s-quek]] and [[qingqing-wu]] across these works.
+
+Distinct from the **Guangdong University of Technology** "Jie Xu" (`jiexu@gdut.edu.cn`, School of Information Engineering) who appears on the UAV wireless-power-transfer / rotary-wing trajectory works [[xu-2018-uav-wpt-trajectory]] and [[zeng-2019-rotary-wing-energy-min]] with Yong Zeng and Rui Zhang — a surname+given-name collision, kept separate (those source pages carry the matching namesake note).

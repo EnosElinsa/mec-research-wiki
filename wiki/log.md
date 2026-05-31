@@ -2,6 +2,42 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Audit pass (non-source layer — entity batch 2; no new papers)
+
+Continues the entities-layer audit with **entity batch 2** (20 pages, alphabetical jiacheng-wang → qihui-wu, positions 21–40 of `.curation-out/entity_slugs.txt`), the batch carrying the real roster signal flagged by batch 1. Tree clean at `3ac1a37` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4456 edges**.
+
+### Correctness & consistency audit (Phase B — entity batch 2)
+
+Entity-page checks: `author`/`tool` tag + frontmatter valid; roster reconciles in BOTH directions against source `authors:` lists; affiliation grounded in the parse(s); namesake / career-move handling correct; `related`/wikilinks resolve and are non-self-referential; evergreen wording.
+
+- **Roster corrections (every flag adjudicated against the source `authors:` frontmatter and the parse author/affiliation block before editing):**
+  - [[jiawen-kang]] — **2 genuine omissions ADDED.** [[du-2023-maddpg-service-placement-agin]] (parse: "Jiawen Kang is with the School of Automation, Guangdong University of Technology … kavinkang@gdut.edu.cn", Senior Member) and [[ye-2025-aigc-diffusion-contract]] (parse: "Dongdong Ye, Shuting Cai, Jiawen Kang, and Rong Yu are with the School of Automation, GDUT … kavinkang@gdut.edu.cn") — identical affiliation+email confirm the same person; both fit the CMOP-evolutionary / generative-AI threads. Count 12→14. The batch-1-flagged "claimed-but-absent" mao-2025-bcsa-frl / qin-2025-bcuav-masac were **tool false positives** (Kang is correctly NOT an author of either — they appear only as a prose contrast-mention in the editorial Contributions section); fixed at the tool level.
+  - [[jingjing-wang]] — **1 genuine omission ADDED.** [[yang-2020-loadbalance-multiuav-iot]] (parse: Jingjing Wang at Dept of Electronic Engineering, Tsinghua University, Shuimu Tsinghua Scholar; co-author [[chunxiao-jiang]]). Web-confirmed Tsinghua-PhD → Beihang-faculty career move in the same AI/ML-wireless + swarm-intelligence niche; shared co-author Chunxiao Jiang → same person (documented, mirrors batch-1 [[haixia-peng]]). Count 2→3.
+  - [[qiang-ye]] — **1 genuine over-claim REMOVED.** [[dai-2023-hybrid-marine-mmwl]] author list (Minghui Dai / Ning Huang / Yuan Wu / Liping Qian / Bin Lin / Zhou Su / Rongxing Lu) has **no Qiang Ye**; removed from roster + the matching Contributions mention, fixing the stale count (body said "6 sources" but listed 7). Remaining 6 all confirmed to list him.
+  - [[jie-xu]] — **namesake split kept distinct + documented.** The strict "Jie Xu" hits on [[xu-2018-uav-wpt-trajectory]] / [[zeng-2019-rotary-wing-energy-min]] are the **GDUT Jie Xu** (`jiexu@gdut.edu.cn`, School of Information Engineering, WPT/rotary-wing with Yong Zeng + Rui Zhang) — distinct from the entity's **CUHK-Shenzhen ISAC** Jie Xu (IEEE Fellow). Added an explicit disambiguation note + cross-links (mirrors batch-1 hao-sun/geng-sun); NOT added to the roster.
+  - [[liping-qian]] — the "claimed-but-absent li-2023-secure-marine-iot-jamming" was a **tool false positive**, not a page defect: the parse + frontmatter spell the name "Li Ping Qian" (corresponding author, `lpqian@zjut.edu.cn` = entity). Roster claim is CORRECT; fixed at the tool level. No page change.
+- **Verified clean** (frontmatter valid; affiliation grounded via in-parse email/affiliation lines; rosters reconcile; links resolve & non-self-referential; evergreen): jiacheng-wang (NTU CCDS), jiadai-wang (NWPU), jiahui-li (Jilin U + SUTD), jiajia-liu (NWPU), kaoru-ota (Muroran IT), kezhi-wang (Northumbria), lihan-liu (Beijing Wuzi U), liping-qian (ZJUT), mianxiong-dong (Muroran IT), minghui-dai (U Macau), mohammad-mozaffari (Virginia Tech), nei-kato (Tohoku U), ning-zhang (U Windsor), peng-qin (NCEPU), **pytorch** (`tool` tag, no author roster — correct), qihui-wu (NUAA). (Plus the four corrected.)
+
+### Toolkit ratchet (entity batch 2 — `entity_roster_audit.py`)
+
+Two principled refinements (README table updated), both regression-checked across all 70 author entities:
+
+- **`respaced` match strength** — treats "Li Ping Qian" ≡ "Liping Qian" (identical once interior spaces are removed; guarded so two single-token names cannot collapse). As strong as `strict` for over-claim suppression; cannot create new namesake merges. Cleared the liping-qian false over-claim.
+- **Roster-region scoping** — roster *claims* are read only from the region before the first `## Contributions` heading (frontmatter `related:` + intro + bulleted source list); the free-form Contributions commentary (which deliberately contrast-mentions sources an author did NOT write) is no longer mis-counted as a claim. Cleared the jiawen-kang mao/qin false over-claims. Present-but-unlisted still suppresses on the whole-page link set.
+- Post-edit tool state: **0 claimed-but-absent**; present-but-unlisted down to the 4 batch-3 items.
+
+### Gates (entity batch 2)
+
+- **`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`index_audit.py`** = 515 catalogue-able, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). **`frontmatter_audit.py --type entity`** = 71 pages, 0 errors (all-types 513, 0). Edited pages verified mojibake-free at the byte level. Graph **513 nodes / 4456→4459 edges** (the four corrected pages net +3 intra-corpus author→source links between already-present nodes; node count unchanged).
+
+### Routing to `mec-wiki-synthesizer` (entity batch 2 — recorded, not filled)
+
+- The remaining present-but-unlisted hits — [[xuemin-shen]] (chen-2024-ulse-game, wang-gai-isac-physical-layer) and [[yuan-wu]] (chen-2023-dotora-air-ground-online, chen-2024-ulse-game) — are **correctness items for entity batch 3**, not synthesizer gaps. No clearly-recurring author within batch 2's rosters lacks an entity page.
+
+### Next: entity batches 3–4, then derived (37)
+
+With entity batches 1–2 done, **31 entity pages remain** (batch 3: qingqing-wu → yuan-wu, 20; batch 4: yuben-qu → ziye-jia, 11), then the **derived layer** (findings 14 / synthesis 11 / comparisons 4 / methodology 2 / queries 5 / thesis 1 = 37) — ≈ **68 non-source pages** across subsequent batched invocations.
+
 ## 2026-06-01 — Audit pass (non-source layer — entity batch 1; no new papers)
 
 Opens the **entities-layer** audit with **entity batch 1** (20 pages, alphabetical bin-lin → hui-kang, positions 1–20 of `.curation-out/entity_slugs.txt`). All 171 source pages and all 234 concept pages were audited in prior passes; the 71-page entity layer (70 author + 1 tool `pytorch`) splits into 4 batches of 20/20/20/11 via `make_batches.py --size 20`. Tree clean at `6402403` (apart from a pre-existing untouched `.kiro/agents/**` edit). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4456 edges**.
