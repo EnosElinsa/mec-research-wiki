@@ -8,7 +8,7 @@ related:
   - "[[hybrid-action-beats-pure-drl]]"
   - "[[liu-2026-jppo-en-convntm]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-02
 ---
 
 # DDPG vs j-PPO for UAV-MEC
@@ -24,9 +24,9 @@ updated: 2026-05-28
 
 ## Why this matters in [[multi-uav-assisted-mec]]
 
-Charging is binary. Offloading-ratio quantization is effectively discrete. DDPG's continuous-only action head can't represent these crisply, and the policy lands in a bad local optimum where it almost never charges (energy violation penalty) or always charges (zero data collection).
+Charging is binary. Offloading-ratio quantization is effectively discrete. DDPG's continuous-only action head must threshold a continuous output to make these discrete decisions, which is lossy. The paper attributes DDPG's (and TD3's and DQN's) "severe performance degradation" in Fig. 6 to exactly this — the inability of continuous- or discrete-only frameworks to handle the joint continuous-discrete decision under high-density mobility. (The specific local-optimum behavior — e.g. rarely vs always charging — is a plausible mechanism but is not characterized in the parse beyond the degradation result.)
 
-`j-PPO+EN-ConvNTM` sidesteps this entirely by routing the discrete components through a separate categorical/Bernoulli head — see [[j-ppo]] for the formal probability ratio.
+`j-PPO+EN-ConvNTM` sidesteps this by routing the discrete components through a separate categorical/Bernoulli head — see [[j-ppo]] for the formal probability ratio.
 
 ## Caveat
 
