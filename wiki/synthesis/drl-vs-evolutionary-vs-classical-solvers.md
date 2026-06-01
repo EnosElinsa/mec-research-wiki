@@ -159,6 +159,23 @@ This is a real gap. A robust DRL controller (e.g. trained with adversarial pertu
 - You can decompose into **per-block solver choices**: classical for convex blocks, DRL for non-convex per-slot blocks, evolutionary for the front, metaheuristic for binary residuals.
 - A reference: [[qin-2025-bcuav-masac]]'s Lyapunov + MASAC + DOA composition is the wiki's most-cited example of doing this well.
 
+### Problem features → recommended family (decision aid)
+
+The guidance above, distilled to the **discriminating problem feature** and tagged by how strongly the corpus actually backs each boundary. **Empirically-supported** means a curated source demonstrates the choice on its own problem; **inferred** means the boundary follows from family characteristics and problem shape but **no curated source runs a head-to-head** to confirm it.
+
+| If the problem is… | Lean toward | Evidence in this corpus |
+|---|---|---|
+| Re-solved every slot/task at deployment, scalarizable reward, sub-ms inference needed | **DRL** | Empirically-supported *within* the family — many DRL sources deploy per-slot policies; the [[j-ppo-vs-pdqn]] head-to-head settles the on-policy-hybrid vs off-policy-hybrid sub-choice |
+| One-shot mission plan, 2-3 truly conflicting objectives, decision-maker picks from the front | **Evolutionary (CMOEA)** | Empirically-supported *within* the family — the [[cmop-evolutionary-uav-mec-lineage|CMOP lineage]] benchmarks CMOEA vs CMOEA baselines, never vs DRL |
+| A small binary subproblem left after decomposition, no good convex relaxation | **Metaheuristic (BWOA/MVO)** | Empirically-supported as a *sub-block* role — [[jia-2025-dro-uav-hap-mec]] (BWOA after primal decomposition), [[liu-2025-haps-uav-maritime-iot]] (EMOMVO as whole-MOP solver) |
+| Clean convex/semi-convex blocks, or a provable property (equilibrium, robustness bound) is required | **Classical** (AO+SDR+SCA / Stackelberg / matching / DRO) | Empirically-supported — the only sources with provable guarantees ([[wang-2025-uav-swarm-stackelberg]], [[jia-2025-dro-uav-hap-mec]], [[benaya-2025-aerial-isac-haps]]) |
+| Long-term constraints over per-slot non-convex decisions | **Hybrid: Lyapunov (classical) + DRL** | Empirically-supported — mapped across 6 sources in [[lyapunov-guided-drl]] |
+| Discrete assignment + conditionally-convex continuous allocation | **Hybrid: two-stage decomposition** | Empirically-supported as a pattern (matching+SAC in [[nabi-2025-jour-hierarchical-aerial]]; matching+convex in [[wang-2026-aerial-marine-msar]]) via [[two-stage-decomposition]]; the joint-vs-staged optimality cost is **inferred**, not measured |
+| Robust to CSI/channel uncertainty | **Classical (DRO+CVaR)** today | Partly inferred — only [[jia-2025-dro-uav-hap-mec]] has a formal robustness story; whether DRO beats a robustly-trained DRL policy is **unsettled** ([[query-when-does-dro-beat-drl-for-csi-uncertainty]]) |
+| **DRL vs evolutionary on the *same* UAV-MEC instance** | **Undetermined by the corpus** | **Inferred only** — no source runs both families on one instance; this is the single biggest evidentiary gap (see below) |
+
+The honest summary: the *within-family* and *sub-block-role* boundaries are empirically grounded, but the **headline DRL-vs-evolutionary boundary is inferred from problem shape, not measured**. Treat the cross-family rows as design heuristics, not validated rankings.
+
 ## What the corpus does NOT settle
 
 ### Head-to-head DRL-vs-evolutionary on the same problem

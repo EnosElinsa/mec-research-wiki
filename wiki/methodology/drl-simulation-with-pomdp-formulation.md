@@ -7,8 +7,9 @@ related:
   - "[[gauss-markov-mobility-model]]"
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[en-convntm-beats-baselines]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # DRL simulation methodology for UAV-MEC under POMDP formulation

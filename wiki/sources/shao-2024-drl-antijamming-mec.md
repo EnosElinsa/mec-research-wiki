@@ -19,8 +19,9 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 authors: [Ziling Shao, Helin Yang, Liang Xiao, Wei Su, Yifan Chen, Zehui Xiong]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3432491

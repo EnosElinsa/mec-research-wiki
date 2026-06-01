@@ -13,8 +13,9 @@ related:
   - "[[mmwave-radar-sensing]]"
   - "[[post-disaster-mec]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Response Delay Optimization in Mobile Edge Computing Enabled UAV Swarm
