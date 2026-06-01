@@ -2,6 +2,49 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 4/8: 6 new sources; +2 concepts)
+
+Fourth batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch3` key there). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders, 189 curated, 25 uncurated, 0 duplicate MinerU ingests**; HEAD synced with origin/main (`670a5a0`), working tree clean apart from the uncurated raw folders + app-generated `wiki/media/`. None of the 6 batch papers had an existing source page. Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`. After this batch: **195 curated, 19 uncurated, 3 batches remain**.
+
+### Source pages created (6)
+
+- **[[huynh-2024-gai-physical-layer-survey]]** — *Generative AI for Physical Layer Communications: A Survey* (IEEE TCCN, 2024, DOI 10.1109/TCCN.2024.3384500). Survey of five GAI model families (GANs, **VAEs**, normalizing flows, diffusion, transformers) across physical-layer problems (modulation/signal classification, channel estimation/equalization, PLS, IRS, beamforming, JSCC, CSI feedback); GAI-vs-traditional-AI comparison + open issues (security/privacy, model-driven GAI, resource-efficient learning, real-time adaptation). *(Physical-layer GAI survey, not MEC.)*
+- **[[li-2024-irs-secure-wpmec]]** — *Intelligent Reflecting Surface Assisted Secure Computation of Wireless Powered MEC System* (IEEE TMC, 2024, DOI 10.1109/TMC.2023.3269791). IRS-assisted WPT-MEC with a passive eavesdropper; harvest-then-offload (TDMA) + partial offloading; sum secure-computation-task-bits max over AP energy beamforming + IRS phase shifts + power + time + local frequency; non-convex → 3 subproblems via Taylor expansion + SDR + Lagrange-duality/KKT, iterative AO; >45% secure-bits gain at max AP power (abstract).
+- **[[wu-2024-satellite-maritime-spectrum-sharing]]** — *Intelligent Spectrum Sharing Strategy for Integrated Satellite-Maritime Heterogeneous Mobile Networks* (IEEE TVT, 2024, DOI 10.1109/TVT.2023.3343720). VDES satellite-maritime spectrum sharing (VDE-SAT + VDE-TER co-frequency under ITU uplink/downlink interference constraints); satellite-centralized allocation maximizing combined throughput with task-priority weighting; partial observability → POMDP solved with SCA-D3QN (Double + Dueling DQN), offline-train/online-deploy. *(Satellite-maritime spectrum/comms, not MEC offloading.)*
+- **[[li-2024-airground-vec-offloading]]** — *Joint Computation Offloading and Multidimensional Resource Allocation in Air–Ground Integrated Vehicular Edge Computing Network* (IEEE IoT-J, 2024, DOI 10.1109/JIOT.2024.3441236). Air-ground integrated VEC (HAP + UAVs + RSU, each w/ MEC; UAVs/RSU also relay to HAP); min total offloading delay (JCESRA) via BCD — many-to-one matching + coalition game (equipment selection) + CVX (bandwidth/compute) + SCA (UAV trajectory), then HAP as a knapsack solved by dynamic programming + compute reallocation.
+- **[[qian-2022-uav-maritime-iot-noma]]** — *Joint Multi-Domain Resource Allocation and Trajectory Optimization in UAV-Assisted Maritime IoT Networks* (IEEE IoT-J, 2022, DOI 10.1109/JIOT.2022.3201017). NOMA-based UAV-assisted M-IoT MEC; USVs offload via uplink power-domain NOMA (SIC) to a UAV-MEC; total-energy min (USV tx/compute + UAV compute + UAV propulsion) over offload ratio + power + UAV compute allocation + trajectory; NP-hard (TSP-equivalent trajectory) → vertical two-layer decomposition: DDPG trajectory (top) + Lagrangian closed-form resource allocation (underlying).
+- **[[ye-2021-ran-slicing-offloading]]** — *Joint RAN Slicing and Computation Offloading for Autonomous Vehicular Networks: A Learning-Assisted Hierarchical Approach* (IEEE OJVT, 2021, DOI 10.1109/OJVT.2021.3089083). Two-timescale RAN slicing + computation offloading for a C-AVN; small-timescale task scheduling for computation load balancing with minimal offloading variation via cooperative multi-agent deep Q-learning (fingerprint); large-timescale RAN slicing as a convex program with statistical (delay-violation) QoS; learning-assisted hierarchical loop. Presented in part at IEEE ICC 2021.
+
+### Concept pages created (2)
+
+- **[[variational-autoencoder]]** (VAE) — probabilistic encoder/latent/decoder generative model; anchors the GAI families catalogued by [[huynh-2024-gai-physical-layer-survey]]; sibling to [[generative-adversarial-network]] / [[generative-diffusion-model]] / [[conditional-gan]]. No dedicated page had existed.
+- **[[dueling-dqn]]** — value/advantage two-stream DQN architecture; anchors the Double + Dueling DQN (SCA-D3QN) backbone of [[wu-2024-satellite-maritime-spectrum-sharing]]; sibling to [[deep-q-network]] / [[ddqn]].
+
+### Entities
+
+No new entity pages. Rosters updated for confirmed authored sources only: **[[dusit-niyato]]** 24→25 and **[[jiacheng-wang]]** 8→9 (+[[huynh-2024-gai-physical-layer-survey]], both NTU, verbatim-confirmed); the air-ground VEC co-authors **[[shichao-li]]** 2→3, **[[hongbin-chen]]** 3→4, **[[tony-q-s-quek]]** 5→6, **[[ning-zhang]]** 2→3, **[[mianxiong-dong]]** 3→4, **[[kaoru-ota]]** 2→3 (all +[[li-2024-airground-vec-offloading]]); the maritime-IoT-NOMA co-authors **[[liping-qian]]** 4→5 (first/corresponding author; "Li Ping Qian" respacing == Liping Qian, noted on the page), **[[yuan-wu]]** 12→13, **[[bin-lin]]** 9→10 (all +[[qian-2022-uav-maritime-iot-noma]]); and the RAN-slicing co-authors **[[xuemin-shen]]** 6→7 and **[[qiang-ye]]** 6→7 (+[[ye-2021-ran-slicing-offloading]]).
+
+  - **Affiliation-history note ([[qiang-ye]]):** the 2021 RAN-slicing paper lists Qiang Ye at **Minnesota State University, Mankato**, whereas his entity page (built from later papers) records **University of Calgary**. Confirmed same person, not a namesake — the paper is co-authored with his documented Waterloo collaborators [[xuemin-shen]] + Weihua Zhuang and Waterloo students (Kaige Qu, Weisen Shi). The entity page now records the affiliation history rather than overwriting it.
+
+  Flagged for human confirmation, **not** created (consistent with the house deferral of single-appearance co-authors): **Yonghui Li** (Univ. Sydney, Fellow; li-2024-irs-secure-wpmec), **Dong In Kim** / **Khaled B. Letaief** / **Nguyen Van Huynh** / **Dinh Thai Hoang** / **Diep N. Nguyen** (huynh-2024), and **Weihua Zhuang** (Waterloo, Fellow; ye-2021) — each 1 corpus appearance.
+
+### Meta-docs
+
+- **[[index]]** — +6 source entries (Foundational surveys & overviews ×1; Energy efficiency & WPT ×1; Vehicular MEC ×2; Maritime MEC ×1; Architectural/spectrum/governance ×1) and +2 concept entries (DRL backbones: [[dueling-dqn]]; generative-AI: [[variational-autoencoder]]).
+- **[[overview]]** — Snapshot sources **189→195**, concepts **246→248** (entities 71 / derived layers unchanged). Track rows refreshed: Foundational surveys 16→17, Vehicular MEC 6→8, Maritime MEC 17→18 (+ a satellite-maritime-spectrum adjacency note), Generative-AI MEC (+physical-layer survey), Energy efficiency & WPT (+IRS-secure-WPMEC); simulation-only count line 189→195.
+
+### Metadata verification (correctness-first)
+
+All 6 source pages carry a DOI line, each verbatim-confirmed against the parse: TCCN.2024.3384500, TMC.2023.3269791, TVT.2023.3343720, JIOT.2024.3441236, JIOT.2022.3201017, OJVT.2021.3089083 — along with venues and publication-date→year mappings (current-version dates → 2024 / 2024 / 2024 / 2024; pub date 23 Aug 2022 → 2022; current version 1 Jul 2021 → 2021). Quantitative claims were checked against the parse and flagged as figure-derived/indicative where not stated numerically; the li-2024-irs-secure-wpmec ">45%" and the qian-2022 NOMA-energy-reduction headline claims are stated verbatim from the abstracts. Survey-level conclusions in huynh-2024 are attributed to the surveyed works rather than the survey itself.
+
+### Toolkit
+
+No ratchet needed — `curation_status.py --dupes`, `linkcheck.py`, `process_refs.py`, `frontmatter_audit.py`, `index_audit.py`, `entity_roster_audit.py`, and `corpus_counts.py` covered state detection, every commit gate, roster cross-checking, and count reconciliation. No reusable one-off arose; toolkit stable.
+
+### Gates
+
+**`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py`** = 556 pages, 0 errors. **`index_audit.py`** = 558/558 indexed, 0 unindexed / 0 duplicate primaries. **`entity_roster_audit.py`** = 0 over-claims (3 pre-existing present-but-unlisted advisories, all on `wang-2024-wipe-gai`, unrelated to this batch). Counts reconciled via `corpus_counts.py`: sources **189→195**, concepts **246→248** (entities 71 unchanged). LLM Wiki API reachable (`/health` ok, v0.4.16); graph-stats endpoint not enumerated this pass (not required for correctness). Untracked `wiki/media/` (app-generated) left unstaged.
+
 ## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 3/8: 6 new sources; +4 concepts)
 
 Third batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch2` key there). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders, 183 curated, 31 uncurated, 0 duplicate MinerU ingests**; HEAD synced with origin/main (`83984bb`), working tree clean apart from the uncurated raw folders + app-generated `wiki/media/`. None of the 6 batch papers had an existing source page. Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`. After this batch: **189 curated, 25 uncurated, 4 batches remain**.

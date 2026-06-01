@@ -1,0 +1,3312 @@
+[
+    {
+        "type": "text",
+        "text": "Intelligent Reflecting Surface Assisted Secure Computation of Wireless Powered MEC System ",
+        "text_level": 1,
+        "bbox": [
+            109,
+            73,
+            893,
+            142
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Baogang Li , Member, IEEE, Jia Liao , Wenjing Wu , and Yonghui Li , Fellow, IEEE ",
+        "bbox": [
+            159,
+            148,
+            845,
+            167
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract— The integration of mobile edge computing (MEC) and wireless power transfer (WPT) can effectively improve the computing ability and energy sustainability of energy-constrained wireless devices in the Internet of Things (IoT) networks. Intelligent reflecting surface (IRS) has recently emerged as an effective technique to improve the performance of wireless systems by intelligently reconfiguring wireless environments. This paper studies the exploitation of IRS to improve the secure computation performance of WPT-MEC systems with a passive eavesdropper. A wireless access point (AP) first charge multiple users with the emitted energy signals, and then the users perform local computing and partial offloading to complete their computation tasks with the harvested energy in the presence of an eavesdropper, where the local computing can be executed during the whole process of WPT and offloading. Meanwhile, deploying IRS can improve the energy capture and secure offloading performance of the users. We maximize the secure computation task bits of users by jointly optimizing the AP energy transmit beamforming, the IRS phase shifts, the transmit power, users’ offloading time, and the local computation frequency of users, which are tangled with each other. An iterative optimal algorithm is developed to solve this non-convex problem by combining Taylor expansion method, semidefinite relaxation (SDR) algorithm, the Lagrange duality theory and Karush-Kuhn-Tucker (KKT) conditions. The numerical results show that the proposed scheme can effectively increase the secure computation task bits compared with other benchmark schemes, especially for the maximum transmit power of AP, the improvement is above 45%. ",
+        "bbox": [
+            63,
+            204,
+            496,
+            547
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Mobile edge computing (MEC), wireless power transfer (WPT), intelligent reflecting surface (IRS), physical layer security (PLS), secure computation. ",
+        "bbox": [
+            65,
+            553,
+            496,
+            594
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received 23 December 2022; revised 13 March 2023; accepted 18 April 2023. Date of publication 25 April 2023; date of current version 6 March 2024. This work was supported in part by the National Natural Science Foundation of China under Grant 61971190 and in part by the Hebei Province Natural Science Foundation under Grant F2022502020. Recommended for acceptance by E. Hossain. (Corresponding author: Wenjing Wu.) ",
+        "bbox": [
+            65,
+            671,
+            494,
+            739
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Baogang Li and Jia Liao are with the Department of Electronic and Communication Engineering, Hebei Key Laboratory of Power Internet of Things Technology, North China Electric Power University, Baoding 071003, China (e-mail: baogangli@ncepu.edu.cn; liaojia1002285404@163.com). ",
+        "bbox": [
+            65,
+            739,
+            494,
+            786
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Wenjing Wu is with the Department of Electronic and Communication Engineering, Hebei Key Laboratory of Power Internet of Things Technology, North China Electric Power University, Baoding 071003, China, and also with China Mobile Group Hebei Company Ltd., Shijiazhuang 050080, China (e-mail: 13230961526@163.com). ",
+        "bbox": [
+            65,
+            785,
+            494,
+            840
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yonghui Li is with the School of Electrical and Information Engineering, The University of Sydney, Sydney, NSW 2006, Australia (e-mail: yonghui.li@sydney.edu.au). ",
+        "bbox": [
+            65,
+            840,
+            494,
+            876
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TMC.2023.3269791 ",
+        "bbox": [
+            79,
+            876,
+            372,
+            888
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            659,
+            205,
+            787,
+            219
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "T HE advance of the Internet of Things (IoT) and the nextgeneration mobile communication network has driven generation mobile communication network has driven the development of a variety of new applications, most of which are latency-sensitive and computation-intensive, such as autonomous driving, remote surgery, virtual reality and so on [1], [2], [3]. However, wireless devices are usually resourceconstrained with very limited power and computing capability, which can hardly support these emerging applications. Besides, these battery-powered devices need to be manually replaced or charged, which is very inconvenient to operate [4], [5]. Mobile edge computing (MEC) can extend cloud computing services to the edge of mobile networks, enabling the resource-limited devices to offload part or all of their tasks to the MEC server located in base station (BS) for computation, which reduces the device’s computation latency, saves their energy consumption and prolongs battery life [3]. ",
+        "bbox": [
+            506,
+            224,
+            937,
+            467
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Radio-frequency (RF) based wireless power transfer (WPT) technology has been studied extensively because it can provide sustainable and low-cost energy supply for energy-constrained wireless devices. Dedicated wireless power transmitters broadcast continuous energy signals to charge wireless devices [4], [5]. Simultaneous wireless information and power transfer (SWIPT) and wireless powered communication network (WPCN) are two paradigms that combine WPT and wireless communication and have been studied widely. SWIPT improves spectral efficiency because the power transmitter can send both energy signal and information signal simultaneously. In WPCN, the dedicated wireless power transmitter first sends energy signals to charge the wireless devices, and then the wireless devices transmit their own information with the harvested energy. ",
+        "bbox": [
+            506,
+            467,
+            937,
+            679
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "The combination of WPT and MEC, also known as wireless powered MEC, has been investigated in [6], [7], [8], [9] to provide a sustainable energy supply for wireless devices and enhanced computation capability. In [6], energy consumption for multiple users was minimized subjected to the computational delay constraints of users. In [7], the authors maximized the computation rate by jointly optimizing the offloading mode and the computing time allocation of users. [8] jointly optimized the transmit beamforming of AP, the computational tasks and the computational time allocation of users. In [9], the authors exploited cooperative communication between two near-far users to execute their computation-intensive tasks in the WPT-MEC system. These studies have demonstrated that combining of WPT and MEC can effectively enhance the computing ability and energy sustainability of energyconstrained wireless devices. Due to the broadcast nature of the wireless transmission, the information of wireless devices is vulnerable to be eavesdropped when they offload tasks to the MEC server. Therefore, the security of MEC system is worth studying. Physical layer security (PLS) technology has been widely studied by exploiting the inherent characteristics of wireless channel to achieve secure transmission [10]. The minimization of energy consumption for secure offloading in MEC system was studied in [11], [12], [13]. [14] and [15] respectively studied the problem of secure offloading delay minimization and computational efficiency maximization in MEC system. In [16], the cooperation interference mechanism between two NOMA users was utilized to achieve secure transmission of users in two time slots. ",
+        "bbox": [
+            506,
+            679,
+            937,
+            891
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "3048 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 4, APRIL 2024 ",
+        "bbox": [
+            526,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "1536-1233 © 2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            203,
+            914,
+            801,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            289,
+            926,
+            713,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            488,
+            304
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "However, the advantages of MEC cannot be fully utilized when there is a weak channel between the edge device and the MEC server, which may be caused by obstacles or poor environmental conditions. In addition, channel fading and interference are also two challenging problems in WPT technology. Recently, intelligent reflecting surface (IRS) has attracted much attention because it can intelligently reconfigure the wireless propagation environment through passive beamforming, thus further enhancing the performance of wireless communications [17], [18], [19]. IRS constitutes numerous low-priced passive reflecting elements, controlled by an IRS controller. Every reflecting element can independently control the amplitude and phase shift of the incident signal. Since IRS can reconfigure the wireless channel to create favorable propagation environments, it can increase channel capacity, reduce power or improve energy efficiency, and improve physical layer security [17], [18], [19], [20]. In [21], [22], [23], the authors studied an IRS-assisted MISO system with one eavesdropper, and jointly designed the BS active beamforming and IRS phase shifts to enhance the system security performance, such as the secrecy sum rate and the power consumption. ",
+        "bbox": [
+            60,
+            306,
+            488,
+            622
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In [24], [25], [26], the authors studied the performance of IRS-based MEC system. By deploying IRS, the users’ offloading performance has been greatly improved (including reducing the computing delay or energy consumption, and increasing the computation task bits of users). In [27], [28], [29], the authors jointly optimized the IRS phase, energy transmission time and other variables to maximize the sum rate of IRS-based WPCN system, which proved that IRS can solve the problems caused by path loss of WPCN. In [30], [31], the authors also studied the advantages that IRS brings to SWIPT systems. In [32], the authors studied how to maximize the computing speed by jointly optimizing IRS beamforming and resource allocation in the IRS assisted MEC system. In [33], the authors considered deploying IRS in MEC enabled UAV system for 6G THz communications networks to reduce the total network delay of the system. And in [34], the authors considered using a UAV as MEC server and several IRSs to improve the simultaneous wireless data and energy transmissions in IRS/UAV based MEC 6G mobile wireless networks. ",
+        "bbox": [
+            60,
+            623,
+            488,
+            907
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Therefore, the existing literatures only studied the performance gains brought by the integration of partial technologies in MEC, WPT, IRS and PLS, but the secure computation and energy self-sustainment of wireless devices are two vital performance requirements that may exist simultaneously in MEC systems. Moreover, IRS has more advantages in improving physical layer security, wireless power transfer and offloading performance. In [35], [36], the authors studied the security MEC network system assisted by IRS, but did not consider the WPT problem, the wireless devices in the system network have the problem of energy sustainability. In [37], [38], the authors studied IRS-assisted WPT-MEC system to improve the energy transmission efficiency and task offloading efficiency, but there are security problems of information leakage exist in the overall system. Table I compares the differences between our work and the existing references, highlighting the novelty of our work. To our knowledge, there is a research gap in applying IRS to ensure secure offloading of WPT-MEC systems with an eavesdropper. Motivated by the above, we apply IRS to the WPT-MEC system with a passive eavesdropper. In the WPT stage, IRS can improve the channel quality to enhance the users’ energy harvesting performance. In the offloading stage, IRS can weaken the eavesdropper’s signal to improve the secure offloading performance of users. Therefore, utilizing an appropriate performance index to measure the security and computation capability of the system is essential, but the subsequent formulated problems are tangled with much more parameters, which makes the work more challenging. The main contributions of this paper are as follows: ",
+        "bbox": [
+            58,
+            910,
+            486,
+            940
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            79,
+            929,
+            484
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We propose an IRS-assisted WPT-MEC secure system model consisting of WPT phase, partial offloading phase and local computation. In the WPT stage, users harvest the energy emitted by the AP to execute computing tasks with the assistance of IRS. In the offloading stage, with the assistance of IRS, users offload their computing tasks to AP in the presence of eavesdropper. We take the users’ secure computation task bits as the performance index to measure the security and computation capability of the system. ",
+        "bbox": [
+            516,
+            487,
+            930,
+            623
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We jointly design the energy transmit beamforming of AP, IRS reflection phase shifts, users’ offloading time, transmit power, and local computation frequency, which is a nonconvex problem. First, we utilize Taylor expansion method and semidefinite relaxation (SDR) algorithm to optimize the AP energy beamforming and the WPT phase’s IRS phase shifts by fixing other variables. Second, SDR algorithm is used to optimize the IRS phase shifts in offloading stage by fixing other variables. Third, Lagrange duality method and Karush-Kuhn-Tucker (KKT) conditions are used to optimize the computation time, and the transmit power with other variables fixed. Finally, the three sets of variables are iteratively updated to maximize users’ secure computation task bits. ",
+        "bbox": [
+            516,
+            623,
+            930,
+            833
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "\\- The numerical results show that the proposed scheme can effectively increase the users’ secure computation task bits compared with other schemes. It is shown that increasing the transmit power of AP or appropriately adding the reflection elements of IRS can greatly improve the system performance. These conclusions provide beneficial insights for the secure offloading of WPT-MEC systems. ",
+        "bbox": [
+            516,
+            834,
+            930,
+            940
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "LI et al.: INTELLIGENT REFLECTING SURFACE ASSISTED SECURE COMPUTATION OF WIRELESS POWERED MEC SYSTEM ",
+        "bbox": [
+            58,
+            37,
+            720,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "3049 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/53263c69701c11e22518463d75d13d1f30039a1a2ed53d0c6b55ac01287e4979.jpg",
+        "table_caption": [
+            "TABLE I COMPARISON OF THE PROPOSED SCHEME WITH OTHER RELATED WORK "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Comparison with related work</td><td>MEC</td><td>WPT</td><td>Security</td><td>Remarks</td></tr><tr><td>Reference [35]</td><td>√</td><td>✕</td><td>√</td><td rowspan=\"5\">Compared with references [35], [36], the challenge to be solved in this paper is how to use the assistance of IRS in the WPT phase to ensure that users harve-st the energy emitted by AP to execute tasks. Compared with references [37], [38], the challenge to be solved in this paper is how to ensure and measure the secure computation performance in the WPT stage and the offloading stage.</td></tr><tr><td>Reference [36]</td><td>√</td><td>✕</td><td>√</td></tr><tr><td>Reference [37]</td><td>√</td><td>√</td><td>✕</td></tr><tr><td>Reference [38]</td><td>√</td><td>√</td><td>✕</td></tr><tr><td>Proposed scheme</td><td>√</td><td>√</td><td>√</td></tr></table>",
+        "bbox": [
+            84,
+            113,
+            917,
+            191
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/0aa160ea3fbc242d21039af4122b68b45f10bfb62aff361b5eca1a1c738ec1f3.jpg",
+        "image_caption": [
+            "Fig. 1. IRS assisted secure computing model of WPT-MEC system. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"IRS controller\"] --> B[\"User\"]\n    B --> C[\"User\"]\n    C --> D[\"User\"]\n    D --> E[\"Eve\"]\n    E --> F[\"AP\"]\n    F --> G[\"Information channel\"]\n    F --> H[\"Information channel\"]\n    F --> I[\"Energy channel\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#bbf,stroke:#333\n    style C fill:#bfb,stroke:#333\n    style D fill:#ffb,stroke:#333\n    style E fill:#ff9,stroke:#333\n    style F fill:#9cf,stroke:#333\n    style G fill:#cfc,stroke:#333\n    style H fill:#fcc,stroke:#333\n    style I fill:#cff,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            101,
+            205,
+            457,
+            439
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The rest of this paper is organized as follows, Section II presents the proposed system model and formulates the optimization problem. In Section III, an iterative optimization algorithm is developed to solve the problem. Numerical results are presented in Section IV to verify the effectiveness of the proposed scheme. Finally, Section V draws the conclusions. ",
+        "bbox": [
+            63,
+            502,
+            494,
+            606
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Notations: Boldface letters refer to vectors (lower case) or matrices (upper case). For an arbitrary-sized matrix $A , ( A ) ^ { H }$ denotes its conjugate transpose, rank(A) denotes its rank, $( A ) ^ { - 1 }$ denotes its inverse, $[ A ] _ { p , q }$ denotes its element in the pth row and qth column. diag(A) denotes the diagonalization of the matrix A. Tr(B) denotes the trace of the square matrix B. And denotes the all-zero matrix, so $\\mathbfcal { B } \\succeq \\mathbf { 0 }$ 0denotes that B is positive 0semidefinite, and then I denotes an identity matrix. $\\mathbb { C } ^ { M \\times N }$ denotes the space of $M \\times N$ complex matrices. $\\mathbb { E } ( \\cdot )$ denotes the statistical expectation. \u0003 · \u0003 denotes the euclidean norm of a complex vector. | · | denotes the magnitude of a complex number. ",
+        "bbox": [
+            63,
+            608,
+            496,
+            787
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            210,
+            813,
+            351,
+            827
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "As shown in Fig. 1, we consider an IRS-assisted wireless powered MEC system, which is composed of K single antenna users, an M-antenna AP integrated with a MEC server, an IRS consisting of N passive reflecting elements, which is controlled by the IRS controller, a passive single antenna eavesdropper. With the assistance of the IRS, users use the harvested energy by the WPT to complete their computation tasks which can be ",
+        "bbox": [
+            63,
+            834,
+            496,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/8c8c3acaa7e419aa1f323097f97567023534477e64c12923c566e313a6ae27d9.jpg",
+        "image_caption": [
+            "Fig. 2. The harvest-then-offload protocol. "
+        ],
+        "image_footnote": [],
+        "content": "T\nAP→Users User1 User2 .... User K\nt₀ t₁ t₂ .... tₖ\nDownlink WPT t₀ Offloading T - t₀",
+        "sub_type": "text_image",
+        "bbox": [
+            543,
+            205,
+            904,
+            291
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "arbitrarily divided into two parts. The model can also be easily extended to multi-eavesdropper scenarios. ",
+        "bbox": [
+            506,
+            349,
+            936,
+            380
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "As shown in Fig. 2, we adopt a harvest-then-offload protocol and a block-based model. The length of each time block is T , the time of WPT is $t _ { 0 } ,$ , and the time of each user to offload their tasks is $t _ { k } . ~ K$ users adopt Time Division Multiple Access (TDMA) protocol to offload their tasks. It should be noted that users execute energy harvesting first, and then start the offloading stage. To focus on studying the influence to the secure performance with IRS and the offloading time of each user, simple and effective TDMA technology is used here. However, due to its delay problem, more effective access methods will be considered in future research work. So they satisfy $\\begin{array} { r } { t _ { 0 } + \\sum _ { k = 1 } ^ { K } t _ { k } \\le T } \\end{array}$ . In the first stage $t _ { 0 } ,$ the AP broadcasts wireless power to K users via WPT, and IRS can improve the wireless channel quality to enhance the energy harvesting performance of users. In the second stage $T - t _ { 0 } ,$ , users use the captured energy to securely offload their computation tasks to AP, and IRS can weaken the eavesdropper’s eavesdropping signal, improving the secure offloading performance of users. The download time from AP to the users is negligible, because MEC server has strong computing ability and the transmit power of AP is large. Assuming that the local computation and energy harvesting of user k can be performed simultaneously. In this paper, we are more interested in the performance limits of the system, such as secure computing capability. Therefore, it is similar to [39] and [40], we assume the ideal case that the channel state information (CSI) of all channels is perfectly known. In practical systems where such CSI cannot be obtained perfectly, the results derived in this paper can be considered as the performance upper bound. ",
+        "bbox": [
+            506,
+            380,
+            937,
+            801
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The IRS diagonal reflection coefficient matrix is $\\Phi _ { k } = $ diag $( \\alpha _ { k , 1 } \\exp ( j \\phi _ { k , 1 } ) , \\alpha _ { k , 2 } \\exp ( j \\phi _ { k , 2 } ) , \\ldots , \\alpha _ { k , N } \\exp ( j \\phi _ { k , N } ) )$ , $n \\in \\mathcal { N } \\triangleq \\{ 1 , 2 , \\dots , N \\} . \\ \\alpha _ { k , n } \\in [ 0 , 1 ]$ and $\\phi _ { k , n } \\in [ 0 , 2 \\pi ]$ are the amplitude and phase shift of IRS element reflecting the kth user’s signal respectively, in order to maximize the received signal, we set $\\alpha _ { k , n } = 1$ . When $k = 0 , \\Phi _ { 0 }$ represents Φthe reflection phase shifts of IRS in the WPT, and when $k \\in \\mathcal { K } \\triangleq \\{ 1 , 2 , \\dots , K \\}$ , k represents the IRS reflective phase shifts in the offloading. ",
+        "bbox": [
+            506,
+            803,
+            939,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3050 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 4, APRIL 2024 ",
+        "bbox": [
+            526,
+            39,
+            936,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. Downlink Wireless Power Transfer ",
+        "text_level": 1,
+        "bbox": [
+            57,
+            79,
+            321,
+            95
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In the WPT, the channel coefficients from AP to user k, from AP to IRS, from IRS to user k are Ha,k ∈ C1×M , $\\mathbf { g } _ { a , k } ^ { H } \\in \\mathbb { C } ^ { 1 \\times M } , \\mathbf { g } _ { a , r } \\in \\mathbb { C } ^ { N \\times M }$ a,r ∈ CN×M , $\\mathbf { g } _ { r , k } ^ { H } \\in \\mathbb { C } ^ { 1 \\times N }$ ∈ C1×N respectively, $\\mathbf { w } \\in \\mathbb { C } ^ { M \\times 1 }$ grepresents the beamforming vector of the energy signal, and $\\mathbf { W } \\triangleq \\mathbb { E } [ \\mathbf { w } \\mathbf { w } ^ { H } ] \\succeq \\mathbf { 0 }$ W ww 0represents the covariance matrix of the transmit energy. Let P be the maximum transmit power of AP, then $\\mathbb { E } [ | | { \\textbf { w } } | | ^ { 2 } ] =$ $\\mathrm { T r } ( \\mathbf { W } ) \\leq P$ w. So the energy signal received by user k is ",
+        "bbox": [
+            57,
+            101,
+            486,
+            212
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {k} ^ {E} = (\\mathbf {g} _ {a, k} ^ {H} + \\mathbf {g} _ {r, k} ^ {H} \\boldsymbol {\\Phi} _ {0} \\mathbf {g} _ {a, r}) \\mathbf {w} + n _ {k}, \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            149,
+            217,
+            486,
+            237
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $n _ { k }$ denotes the additive white Gaussian noise (AWGN) at the user k. Without loss of generality, it is assumed that each user k adopts a linear energy harvesting model [27], [28], [29]. It is worth noting that the system model in this paper focuses on the secure computation capability of WPT-MEC system, so it is idealized to consider that the energy harvesting model is a linear energy harvesting model, and the nonlinear energy harvesting model will be considered in the future research work to make the system more practical. The energy harvested by user k is expressed as ",
+        "bbox": [
+            57,
+            242,
+            486,
+            393
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k} = \\eta t _ {0} \\| (\\mathbf {g} _ {a, k} ^ {H} + \\mathbf {g} _ {r, k} ^ {H} \\boldsymbol {\\Phi} _ {0} \\mathbf {g} _ {a, r}) \\mathbf {w} \\| ^ {2} = \\eta t _ {0} \\operatorname{Tr} (\\mathbf {G} _ {k} \\mathbf {W}), \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            398,
+            486,
+            419
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where η is the energy conversion efficiency of user $( \\mathbf { g } _ { a , k } ^ { H } + \\mathbf { \\dot { g } } _ { r , k } ^ { H } \\Phi _ { 0 } \\mathbf { g } _ { a , r } ) ^ { \\mathbf { \\top } } ( \\mathbf { g } _ { a , k } ^ { H } + \\mathbf { g } _ { r , k } ^ { H } \\Phi _ { 0 } \\mathbf { g } _ { a , r } )$ . $k , \\mathbf { G } _ { k } =$ ",
+        "bbox": [
+            58,
+            424,
+            486,
+            458
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Computation Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            470,
+            223,
+            484
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The users complete their computation tasks in partial offloading mode, one part is executed locally and the other part is offloaded to the MEC server for computation. ",
+        "bbox": [
+            57,
+            491,
+            486,
+            536
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "1) Partial Offloading Computation: K users adopt the TDMA protocol to offload their computation tasks with the harvested energy while a passive eavesdropper intends to eavesdrop the users’ information. The deployment of IRS is to enhance the security offloading performance of users. The channel coefficients from user k to AP, from IRS to AP, from user k to IRS, from user k to Eve, from IRS to Eve are $\\mathbf { h } _ { k , a } \\in \\mathbb { C } ^ { M \\times 1 }$ , $\\mathbf { h } _ { r , a } \\in \\mathbb { C } ^ { M \\times N } , \\mathbf { h } _ { k , r } \\in \\mathbb { C } ^ { N \\times 1 } , h _ { k , e } , \\mathbf { h } _ { r , e } ^ { H } \\in \\mathbb { C } ^ { 1 \\times N }$ , respectively. ",
+        "bbox": [
+            57,
+            537,
+            486,
+            657
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "h hThe received signals of user k at AP and Eve are respectively expressed as ",
+        "bbox": [
+            57,
+            657,
+            484,
+            686
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {a, k} = (\\mathbf {h} _ {k, a} + \\mathbf {h} _ {r, a} \\boldsymbol {\\Phi} _ {k} \\mathbf {h} _ {k, r}) \\sqrt {p _ {k}} x _ {k} + \\mathbf {n} _ {a}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            127,
+            695,
+            486,
+            712
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {e, i} = (h _ {k, e} + \\mathbf {h} _ {r, e} ^ {H} \\boldsymbol {\\Phi} _ {k} \\mathbf {h} _ {k, r}) \\sqrt {p _ {k}} x _ {k} + n _ {e}, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            134,
+            713,
+            486,
+            732
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $x _ { k } \\sim \\mathcal { C N } ( 0 , 1 )$ denotes the information signal of the user $k . \\ \\mathbf { n } _ { a } \\sim { \\mathcal { C N } } ( \\mathbf { 0 } , \\sigma _ { a } ^ { 2 } \\mathbf { I } _ { M } )$ and $n _ { e } \\sim \\mathcal { C N } ( 0 , \\sigma _ { e } ^ { 2 } )$ are the complex n 0 Iadditive white Gaussian noise $( \\mathrm { A W G N } ) . p _ { k }$ is the transmit power of the user k. ",
+        "bbox": [
+            57,
+            737,
+            486,
+            797
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Assume the maximum ratio combining (MRC) receiver is adopted at AP to decode users’ information, i.e., the receiving beamforming vector of AP meets $\\begin{array} { r } { \\mathbf { r } _ { k } = \\frac { \\mathbf { h } _ { k , a } + \\mathbf { h } _ { r , a } \\Phi _ { k } \\mathbf { h } _ { k , r } } { \\| \\mathbf { h } _ { k , a } + \\mathbf { h } _ { r , a } \\Phi _ { k } \\mathbf { h } _ { k , r } \\| } } \\end{array}$ . ",
+        "bbox": [
+            57,
+            799,
+            486,
+            849
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "r h h Φ hSo the signal-to-interference-plus-noise ratio (SINR) at AP and Eve are expressed as, respectively, ",
+        "bbox": [
+            57,
+            847,
+            486,
+            876
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS I N R _ {a, k} = \\frac {p _ {k} \\| \\mathbf {h} _ {k , a} + \\mathbf {h} _ {r , a} \\boldsymbol {\\Phi} _ {k} \\mathbf {h} _ {k , r} \\| ^ {2}}{\\sigma_ {a} ^ {2}}, \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            127,
+            883,
+            486,
+            916
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS I N R _ {e, k} = \\frac {p _ {k} \\| h _ {k , e} + \\mathbf {h} _ {r , e} ^ {H} \\boldsymbol {\\Phi} _ {k} \\mathbf {h} _ {k , r} \\| ^ {2}}{\\sigma_ {e} ^ {2}}. \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            132,
+            917,
+            486,
+            953
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The secrecy offloading rate $R _ { s , k }$ can be written as ",
+        "bbox": [
+            516,
+            79,
+            858,
+            95
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {s, k} = R _ {a, k} - R _ {e, k}, \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            641,
+            102,
+            929,
+            118
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $R _ { a , k } = \\log _ { 2 } ( 1 + S I N R _ { a , k } ) \\quad { \\mathrm { a n d } } \\quad R _ { e , k } = \\log _ { 2 } ( 1 +$ $S I N R _ { e , k } )$ are offloading rate and eavesdropping rate respectively. ",
+        "bbox": [
+            500,
+            125,
+            927,
+            169
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The secure offloading energy consumption of the user k is ",
+        "bbox": [
+            516,
+            170,
+            914,
+            185
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k} ^ {\\text { off }} = p _ {k} t _ {k}. \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            666,
+            189,
+            929,
+            209
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The user k’s secure offloading task bits are ",
+        "bbox": [
+            516,
+            215,
+            811,
+            229
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {\\text { off }} = B t _ {k} (R _ {a, k} - R _ {e, k}), \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            622,
+            234,
+            929,
+            253
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where B is the channel bandwidth. ",
+        "bbox": [
+            500,
+            260,
+            740,
+            273
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "2) Local Computing: Let $f _ { k }$ represent the user k’s CPU frequency, ck is the number of CPU cycles required for user k to compute one bit task, $\\xi _ { k }$ is the effective capacitance parameter. So the energy consumed by user k’s local computation is ",
+        "bbox": [
+            500,
+            273,
+            929,
+            335
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k} ^ {\\text { loc }} = T \\xi_ {k} f _ {k} ^ {3}. \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            661,
+            340,
+            929,
+            359
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The user k’s local computation task bits are ",
+        "bbox": [
+            516,
+            364,
+            814,
+            380
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {k} ^ {l o c} = \\frac {T f _ {k}}{c _ {k}}. \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            670,
+            385,
+            929,
+            417
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "C. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            429,
+            675,
+            441
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In this section, our aim is to maximize the users’ secure computation task bits subject to the maximum delay and the harvested energy of users. As a performance indicator, the users’ secure computation task bits can simultaneously highlight the security and computing ability of the system. We propose a system model of IRS assisted WPT-MEC network security and formulate the secure computation task bits maximization problem by jointly optimizing the AP energy beamforming, the IRS reflection phase shifts, as well as the transmit power, offloading time, and local computation frequency of users. However, most the parameters are tangled with each other, especially for the offloading time, transmit power, and local computing frequency of every user related to multiple users’ decision, which is a huge challenge. Considering the problem is nonconvex, so we use Taylor expansion method, semidefinite relaxation (SDR) algorithm, Lagrange duality method and Karush-Kuhn-Tucker (KKT) conditions to solve this nonconvex problem. ",
+        "bbox": [
+            500,
+            450,
+            929,
+            708
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{(P0)} \\max _ {\\mathbf {W}, \\boldsymbol {\\Phi}, \\mathbf {t}, \\mathbf {p}, \\mathbf {f}} \\sum_ {k = 1} ^ {K} B t _ {k} (R _ {a, k} - R _ {e, k}) + \\frac {T f _ {k}}{c _ {k}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            713,
+            831,
+            755
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. p _ {k} t _ {k} + T \\xi_ {k} f _ {k} ^ {3} \\leq \\eta t _ {0} \\mathrm{Tr} (\\mathbf {G} _ {k} \\mathbf {W}), \\forall k \\in \\mathcal {K}, (1 2 a)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            560,
+            761,
+            929,
+            779
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left| \\exp (j \\phi_ {k, n}) \\right| = 1, \\forall n \\in \\mathcal {N}, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {12b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            595,
+            784,
+            929,
+            801
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{Tr} (\\mathbf {W}) \\leq P, \\mathbf {W} \\succeq \\mathbf {0}, \\tag {12c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            806,
+            929,
+            824
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k = 0} ^ {K} t _ {k} \\leq T, 0 \\leq t _ {k} \\leq T, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {12d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            595,
+            830,
+            927,
+            872
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq p _ {k} \\leq P _ {k} ^ {\\max}, \\forall k \\in \\mathcal {K}, \\tag {12e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            597,
+            878,
+            929,
+            896
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq f _ {k} \\leq F _ {k} ^ {\\max}, \\forall k \\in \\mathcal {K}, \\tag {12f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            597,
+            901,
+            929,
+            919
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { t } = [ t _ { 0 } , t _ { 1 } , \\dots , t _ { K } ] , \\mathbf { p } = [ p _ { 1 } , \\dots , p _ { K } ] , \\mathbf { f } = [ f _ { 1 } , \\dots , f _ { K } ] ,$ $\\ \\Phi { = } [ \\Phi _ { 0 } , \\Phi _ { 1 } , \\ldots , \\Phi _ { K } ] , P$ p fis the maximum transmit power of AP, ",
+        "bbox": [
+            500,
+            924,
+            929,
+            955
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "LI et al.: INTELLIGENT REFLECTING SURFACE ASSISTED SECURE COMPUTATION OF WIRELESS POWERED MEC SYSTEM ",
+        "bbox": [
+            58,
+            37,
+            720,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "3051 ",
+        "bbox": [
+            902,
+            39,
+            927,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "$P _ { k } ^ { \\mathrm { m a x } }$ and $F _ { k } ^ { \\mathrm { m a x } }$ are the maximum transmit power and frequency of user k. (12a) indicates that the energy harvested by the users is not less than the energy required to complete the computation tasks. (12b) represents the reflection phase shifts constraint of IRS in the WPT and offloading. (12c) is the energy beamforming constraint of AP. (12d) indicates that the sum of the users’ energy harvesting time and offloading time is less than their maximum delay constraints. ",
+        "bbox": [
+            63,
+            79,
+            496,
+            200
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "III. SOLUTION TO PROBLEM (P0) ",
+        "text_level": 1,
+        "bbox": [
+            164,
+            215,
+            397,
+            231
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "There are many optimization algorithm solutions for the IRS assisted MEC system in the existing references, which have their own characteristics and advantages. For example, reference [35] adopted the Dinkelbach type method and the block coordinate descent method to solve nonconvex optimization problems, and reference [37] adopted the closed-form solutions method and SDR algorithm to solve nonconvex optimization problems. In our paper, in order to reduce the derivation of mathematical formulas and the complexity of iterative algorithms, we propose an iterative optimization algorithm for solving the formulated problem, the specific methods are as follows. Since the variables are coupled, problem (P0) is a non-convex problem, which cannot be solved directly. Therefore, we decompose it into three tractable sub-problems, then semidefinite programming (SDP) and SDR algorithm are used to optimize the energy transmit beamforming of AP and the IRS phase shifts. Lagrange duality method and KKT condition are utilized to obtain the users’ transmit power and computation time. ",
+        "bbox": [
+            63,
+            237,
+            496,
+            508
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "To simplify the notation, we define $\\mathbf { g } _ { r , k } ^ { H } \\Phi _ { 0 } \\mathbf { g } _ { a , r } =$ $\\mathbf { v } _ { 0 0 } ^ { H } \\mathrm { d i a g } ( \\mathbf { g } _ { r , k } ^ { H } ) \\mathbf { g } _ { a , r } , \\qquad \\mathbf { v } _ { 0 0 } ^ { H } = \\left[ v _ { 0 , 1 } , v _ { 0 , 2 } , \\ldots , v _ { 0 , N } \\right] \\in { \\mathbb C } ^ { 1 \\times N }$ , ",
+        "bbox": [
+            65,
+            508,
+            496,
+            542
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "then $\\mathbf { g } _ { a , k } ^ { H } + \\mathbf { g } _ { r , k } ^ { H } \\Phi _ { 0 } \\mathbf { g } _ { a , r } = [ \\mathbf { v } _ { 0 0 } ^ { H } , 1 ] \\left[ \\begin{array} { c } { \\mathrm { d i a g } ( \\mathbf { g } _ { \\mathrm { r , k } } ^ { \\mathrm { H } } ) \\mathbf { g } _ { \\mathrm { a , r } } } \\\\ { \\mathbf { g } _ { a , k } ^ { H } } \\end{array} \\right] = \\mathbf { v } _ { 0 } ^ { H } \\mathbf { g } _ { k } ,$ ",
+        "bbox": [
+            65,
+            542,
+            494,
+            583
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Let $\\begin{array} { r } { \\mathbf { h } _ { r , a } \\Phi _ { k } \\mathbf { h } _ { k , r } = \\mathbf { h } _ { r , a } \\mathrm { d i a g } ( \\mathbf { h } _ { k , r } ) \\mathbf { v } _ { 0 k } , \\ \\mathbf { v } _ { 0 k } ^ { H } = [ v _ { k , 1 } , v _ { k , 2 } , \\ldots , } \\end{array}$ h Φ hvk,N ] ∈ C1×N , $v _ { k , N } ] \\in \\mathbb { C } ^ { 1 \\times N }$ h then $\\mathbf { h } _ { k , a } + \\mathbf { h } _ { r , a } \\Phi _ { k } \\mathbf { h } _ { k , r } = [ \\mathbf { h } _ { r , a } \\mathrm { d i a g } ( \\mathbf { h } _ { k , r } )$ ",
+        "bbox": [
+            65,
+            582,
+            494,
+            613
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "$\\mathbf { h } _ { k , a } \\big \\vert \\begin{array} { l } { \\mathbf { v } _ { 0 k } } \\\\ { 1 } \\end{array} \\bigg \\vert = \\mathbf { H } _ { k } \\mathbf { v } _ { k }$ \u0004 0 k . Let $\\mathbf { h } _ { r , e } ^ { H } \\Phi _ { k } \\mathbf { h } _ { k , r } = \\mathbf { v } _ { 0 k } ^ { H } \\mathrm { d i a g } ( \\mathbf { h } _ { r , e } ^ { H } ) \\mathbf { h } _ { k , r } ,$ ",
+        "bbox": [
+            65,
+            613,
+            494,
+            652
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "then $h _ { k , e } + { \\bf h } _ { r , e } ^ { H } \\Phi _ { k } { \\bf h } _ { k , r } = [ { \\bf v } _ { 0 k } ^ { H } , 1 ] \\left[ \\begin{array} { c } { \\mathrm { d i a g } ( { \\bf h } _ { \\mathrm { r , e } } ^ { \\mathrm { H } } ) { \\bf h } _ { \\mathrm { k , r } } } \\\\ { h _ { k , e } } \\end{array} \\right] = { \\bf v } _ { k } ^ { H } { \\bf H } _ { e , k }$ ",
+        "bbox": [
+            65,
+            651,
+            494,
+            691
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $v _ { k , n } = \\exp ( j \\phi _ { k , n } )$ ",
+        "bbox": [
+            65,
+            691,
+            247,
+            705
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "So (P0) can be rewritten as ",
+        "bbox": [
+            82,
+            705,
+            269,
+            719
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P1)}: \\max _ {\\mathbf {W}, \\mathbf {v}, \\mathbf {t}, \\mathbf {p}, \\mathbf {f}} \\sum_ {k = 1} ^ {K} B t _ {k} \\left(\\log_ {2} \\left(1 + \\frac {p _ {k} \\| \\mathbf {H} _ {k} \\mathbf {v} _ {k} \\| ^ {2}}{\\sigma_ {a} ^ {2}}\\right) \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            77,
+            727,
+            452,
+            767
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- \\log_ {2} \\left(1 + \\frac {p _ {k} \\parallel \\mathbf {v} _ {k} ^ {H} \\mathbf {H} _ {e , k} \\parallel^ {2}}{\\sigma_ {e} ^ {2}}\\right) + \\frac {T f _ {k}}{c _ {k}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            773,
+            454,
+            809
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } p _ {k} t _ {k} + T \\xi_ {k} f _ {k} ^ {3} \\leq \\eta t _ {0} \\mathrm{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {v} _ {0} \\mathbf {v} _ {0} ^ {H} \\mathbf {g} _ {k} \\mathbf {W}), \\forall k \\in \\mathcal {K}, \\tag {13a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            813,
+            494,
+            845
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left| \\mathbf {v} _ {k} (n) \\right| = 1, \\forall n \\in \\mathcal {N}, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {13b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            146,
+            854,
+            494,
+            871
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{Tr} (\\mathbf {W}) \\leq P, \\mathbf {W} \\succeq \\mathbf {0}, \\tag {13c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            144,
+            876,
+            494,
+            893
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k = 0} ^ {K} t _ {k} \\leq T, 0 \\leq t _ {k} \\leq T, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {13d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            146,
+            900,
+            494,
+            941
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq p _ {k} \\leq P _ {k} ^ {\\max}, \\forall k \\in \\mathcal {K}, \\tag {13e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            590,
+            80,
+            937,
+            98
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq f _ {k} \\leq F _ {k} ^ {\\max}, \\forall k \\in \\mathcal {K}. \\tag {13f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            590,
+            103,
+            937,
+            119
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "To solve problem (P1), we observe that (13a) can be written as $\\begin{array} { r } { f _ { k } \\leq \\sqrt [ 3 ] { \\frac { \\eta t _ { 0 } \\mathrm { T r } ( \\mathbf { g } _ { k } ^ { H } \\mathbf { v } _ { 0 } \\mathbf { v } _ { 0 } ^ { H } \\mathbf { g } _ { k } \\mathbf { W } ) - p _ { k } t _ { k } } { T \\xi _ { k } } } } \\end{array}$ ηt0Tr(gHk v0vH0 gkW)−pktk . It’s obviously that the objec- T ξk tive function is maximized when the equal sign is taken, so we substitute $\\begin{array} { r } { f _ { k } = \\sqrt [ 3 ] { \\frac { \\eta t _ { 0 } \\mathrm { T r } ( \\mathbf { g } _ { k } ^ { H } \\mathbf { v } _ { 0 } \\mathbf { v } _ { 0 } ^ { H } \\mathbf { g } _ { k } \\mathbf { W } ) - p _ { k } t _ { k } } { T \\xi _ { k } } } } \\end{array}$ vT ξk into the objective function, and (P1) can be rewritten as (P2), which is still a non-convex problem, and we decompose it into three tractable sub-problems. First, we use SDP to optimize the energy transmit beamforming  and use SDR to optimize IRS phase shifts $\\mathbf { v } _ { 0 }$ Wwith the variables $\\mathbf { v } _ { k } , \\mathbf { p } ,$ , fixed. Second, , $\\mathbf { v } _ { 0 } , \\mathbf { p } ,$ v are fixed, v p tthe SDR is used to get the IRS phase shifts $\\mathbf { v } _ { k }$ v p tin the offloading. vThird, the Lagrange duality method and KKT condition are used to optimize ,  with , $\\mathbf { v } _ { 0 } , \\mathbf { v } _ { k }$ are fixed. Finally, the three sets p t W v vof variables are iteratively updated. ",
+        "bbox": [
+            506,
+            128,
+            939,
+            335
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P2)}: \\max _ {\\mathbf {W}, \\mathbf {v}, \\mathbf {t}, \\mathbf {p}} \\sum_ {k = 1} ^ {K} B t _ {k} \\left(\\log_ {2} \\left(1 + \\frac {p _ {k} \\| \\mathbf {H} _ {k} \\mathbf {v} _ {k} \\| ^ {2}}{\\sigma_ {a} ^ {2}}\\right) \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            345,
+            898,
+            387
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- \\log_ {2} \\left(1 + \\frac {p _ {k} \\parallel \\mathbf {v} _ {k} ^ {H} \\mathbf {H} _ {e , k} \\parallel^ {2}}{\\sigma_ {e} ^ {2}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            545,
+            393,
+            776,
+            428
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\mathrm{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {v} _ {0} \\mathbf {v} _ {0} ^ {H} \\mathbf {g} _ {k} \\mathbf {W}) - p _ {k} t _ {k}}{T \\xi_ {k}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            545,
+            434,
+            814,
+            474
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\mid \\mathbf {v} _ {k} (n) \\mid = 1, \\forall n \\in \\mathcal {N}, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {14a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            577,
+            481,
+            937,
+            498
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{Tr} (\\mathbf {W}) \\leq P, \\mathbf {W} \\succeq \\mathbf {0}, \\tag {14b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            604,
+            503,
+            937,
+            520
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k = 0} ^ {K} t _ {k} \\leq T, 0 \\leq t _ {k} \\leq T, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {14c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            607,
+            527,
+            937,
+            568
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq p _ {k} \\leq P _ {k} ^ {\\max}, \\forall k \\in \\mathcal {K}. \\tag {14d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            607,
+            575,
+            937,
+            592
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A. Optimizing , $\\mathbf { v } _ { 0 } f o r$ Given $\\mathbf { v } _ { k } ,$ , ",
+        "bbox": [
+            506,
+            609,
+            797,
+            625
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "To simplify notation, let’s define matrix $\\mathbf { V } _ { 0 } = \\mathbf { v } _ { 0 } \\mathbf { v } _ { 0 } ^ { H }$ , which satisfies $\\mathbf { V } _ { 0 } \\succeq \\mathbf { 0 }$ , and rank $( { \\bf V } _ { 0 } ) { = } 1$ V v v. Then the problem can be expressed as ",
+        "bbox": [
+            506,
+            630,
+            939,
+            676
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P3)}: \\max _ {\\mathbf {W}, \\mathbf {V} _ {0}} \\sum_ {k = 1} ^ {K} B t _ {k} R _ {s, k} + \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\operatorname{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W}) - p _ {k} t _ {k}}{T \\xi_ {k}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            508,
+            686,
+            939,
+            729
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\operatorname{Tr} (\\mathbf {W}) \\leq P, \\mathbf {W} \\succeq \\mathbf {0}, \\tag {15a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            734,
+            937,
+            752
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {V} _ {0} (n, n) = 1, \\forall n \\in \\{\\mathcal {N}, N + 1 \\}. \\tag {15b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            589,
+            758,
+            937,
+            775
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Problem (P3) is still non-convex because  and $\\mathbf { v } _ { 0 }$ are W vcoupled to each other, so we fix one variable and apply firstorder Taylor expansion to obtain the optimal value of the other variable, and then solve the optimal solution of the two variables through alternating optimization (AO) algorithm. ",
+        "bbox": [
+            506,
+            784,
+            937,
+            859
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "1) Optimizing $\\mathbf { V } _ { 0 } f o r$ Given : We first fix  to find $\\mathbf { V } _ { 0 } ^ { * }$ , Vthen (P3) can be rewritten as ",
+        "bbox": [
+            506,
+            859,
+            937,
+            888
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P3.1)}: \\max _ {\\mathbf {V} _ {0}} \\sum_ {k = 1} ^ {K} B t _ {k} R _ {s, k} + \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\operatorname{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W}) - p _ {k} t _ {k}}{T \\xi_ {k}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            508,
+            898,
+            934,
+            941
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "3052 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 4, APRIL 2024 ",
+        "bbox": [
+            526,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\mathbf {V} _ {0} (n, n) = 1, \\forall n \\in \\{\\mathcal {N}, N + 1 \\}. \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            127,
+            80,
+            486,
+            98
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The objective function is not a concave function, so we perform first-order Taylor expansion at (n)0 , $\\mathbf { V } _ { 0 } ^ { ( n ) }$ thus it approx-Vimates to an affine function, and iteratively update its Taylor expansion point until it approaches the original function. Let $F _ { k } = \\sqrt [ 3 ] { \\eta t _ { 0 } \\mathrm { T r } ( \\mathbf { g } _ { k } ^ { H } \\mathbf { V } _ { 0 } \\mathbf { g } _ { k } \\mathbf { W } ) - p _ { k } t _ { k } }$ , then the first order Taylor expansion is ",
+        "bbox": [
+            58,
+            104,
+            488,
+            203
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} F _ {k} = \\sqrt [ 3 ]{\\eta t _ {0} \\mathrm{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} ^ {(n)} \\mathbf {g} _ {k} \\mathbf {W}) - p _ {k} t _ {k}} \\\\ + \\operatorname{Tr} \\left(\\frac {1}{3} \\left(\\eta t _ {0} \\operatorname{Tr} \\left(\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} ^ {(n)} \\mathbf {g} _ {k} \\mathbf {W}\\right) - p _ {k} t _ {k}\\right) ^ {- \\frac {2}{3}} \\right. \\\\ \\times \\left. \\mathbf {g} _ {k} \\mathbf {W} ^ {H} \\mathbf {g} _ {k} ^ {H} (\\mathbf {V} _ {0} - \\mathbf {V} _ {0} ^ {(n)})\\right) \\\\ + o (\\mathbf {V} _ {0} - \\mathbf {V} _ {0} ^ {(n)})), \\tag {17} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            210,
+            486,
+            333
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $o ( \\mathbf { V } _ { 0 } - \\mathbf { V } _ { 0 } ^ { ( n ) } ) \\big )$ is the higher order infinitesimal that can V Vbe ignored. So when (n)0 $\\mathbf { V } _ { 0 } ^ { ( n ) }$ is given, $F _ { k }$ is approximately a linear function of $\\mathbf { V } _ { 0 }$ V, and the constraint with rank $\\mathbf { V } _ { 0 } ) { = } 1$ is non-V Vconvex, so the SDR is used to relax the constraint. It can be solved by using the convex optimization tool CVX. But it does not guarantee that the obtained $\\mathbf { V } _ { 0 }$ is rank-1 matric. If the obtained $\\mathbf { V } _ { 0 }$ Vis of rank-1, we apply the eigenvalue decomposition of $\\mathbf { V } _ { 0 }$ to Vfind $\\mathbf { v } _ { 0 }$ V. Otherwise, the Gaussian randomization will be applied vto recover the approximate solution of $\\mathbf { v } _ { 0 }$ [41]. ",
+        "bbox": [
+            57,
+            340,
+            486,
+            479
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "2) Optimizing  for Given $\\mathbf { V } _ { 0 } .$ vWe fix $\\mathbf { V } _ { 0 }$ to find $\\mathbf { W } ^ { * }$ , then W(P3) can be rewritten as ",
+        "bbox": [
+            58,
+            481,
+            486,
+            511
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P3.2)}: \\max _ {\\mathbf {W}} \\sum_ {k = 1} ^ {K} B t _ {k} R _ {s, k} + \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\operatorname{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W}) - p _ {k} t _ {k}}{T \\xi_ {k}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            65,
+            518,
+            461,
+            559
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\operatorname{Tr} (\\mathbf {W}) \\leq \\mathrm{P}, \\mathbf {W} \\succeq \\mathbf {0}. \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            134,
+            566,
+            486,
+            582
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The solution of is similar to that of $\\mathbf { V } _ { 0 }$ . Taylor expansion is W Valso used to convert non-convex problems into convex problems, the first order Taylor expansion is ",
+        "bbox": [
+            58,
+            589,
+            486,
+            635
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} F _ {k} = \\sqrt [ 3 ]{\\eta t _ {0} \\mathrm{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W} ^ {(n)}) - p _ {k} t _ {k}} \\\\ + \\mathrm{Tr} \\bigg (\\frac {1}{3} \\bigg (\\eta t _ {0} \\mathrm{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W} ^ {(n)}) - p _ {k} t _ {k} \\bigg) ^ {- \\frac {2}{3}} \\\\ \\left. \\times (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k}) ^ {H} (\\mathbf {W} - \\mathbf {W} ^ {(n)})\\right) \\\\ + o (\\mathbf {W} - \\mathbf {W} ^ {(n)}). \\tag {19} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            642,
+            486,
+            773
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "It is the SDP problem, and $\\mathbf { W } ^ { * }$ can be obtained by CVX. ",
+        "bbox": [
+            58,
+            781,
+            447,
+            796
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "B. Optimizing k for Given , 0,  and ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            811,
+            365,
+            828
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "To simplify notation, we define matrix as $\\mathbf { V } _ { k } = \\mathbf { v } _ { k } \\mathbf { v } _ { k } ^ { H }$ , which satisfy $\\mathbf { V } _ { k } \\succeq \\mathbf { 0 }$ , and rank ${ \\bf V } _ { k } ) { = } 1$ . The constraint with rank-1 is non-convex, so the SDR is used to relax the constraint. Then the problem (P2) can be rewritten as ",
+        "bbox": [
+            57,
+            832,
+            486,
+            893
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P4)}: \\max _ {\\mathbf {V} _ {k}} \\sum_ {k = 1} ^ {K} B t _ {k} (\\log_ {2} (p _ {k} \\operatorname{Tr} (\\mathbf {H} _ {k} \\mathbf {V} _ {k} \\mathbf {H} _ {k} ^ {H}) + \\sigma_ {a} ^ {2})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            900,
+            422,
+            941
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- \\log_ {2} (p _ {k} \\mathrm{Tr} (\\mathbf {H} _ {e, k} \\mathbf {H} _ {e, k} ^ {H} \\mathbf {V} _ {k}) + \\sigma_ {e} ^ {2})) + C H _ {k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            80,
+            915,
+            98
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\mathbf {V} _ {k} (n, n) = 1, \\forall n \\in \\{\\mathcal {N}, N + 1 \\}, \\forall k \\in \\mathcal {K}, \\tag {20a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            570,
+            104,
+            929,
+            136
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {V} _ {k} \\succeq \\mathbf {0}, \\forall k \\in \\mathcal {K}, \\tag {20b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            592,
+            143,
+            929,
+            160
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { C H _ { k } = \\frac { T } { c _ { k } } \\sqrt [ 3 ] { \\frac { \\eta t _ { 0 } \\mathrm { T r } ( \\mathbf { g } _ { k } ^ { H } \\mathbf { V } _ { 0 } \\mathbf { g } _ { k } \\mathbf { W } ) - p _ { k } t _ { k } } { T \\xi _ { k } } } + B t _ { k } \\log _ { 2 } ( \\frac { \\sigma _ { e } ^ { 2 } } { \\sigma _ { a } ^ { 2 } } ) } \\end{array}$ ηt0Tr(gHk V0gkW)−pktk + Btk log ( is a constant. ",
+        "bbox": [
+            500,
+            172,
+            929,
+            208
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "(P4) is non-convex, so we introduce the Lemma 1 [42]: ",
+        "bbox": [
+            516,
+            209,
+            893,
+            224
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Lemma 1: For a function $y ( \\mu ) = - \\mu x + \\ln \\mu + 1 , \\forall x > 0 ,$ , we have ",
+        "bbox": [
+            500,
+            224,
+            929,
+            252
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- \\ln x = \\max _ {\\mu > 0} y (\\mu), \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            646,
+            266,
+            929,
+            289
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where the optimal solution is $\\textstyle \\mu = { \\frac { 1 } { x } }$ . ",
+        "bbox": [
+            500,
+            301,
+            754,
+            316
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Applying Lemma 1 and letting $\\begin{array} { r } { \\dot { \\mathbf { \\eta } } _ { x } ^ { \\mathrm { ~ c ~ } } = p _ { k } \\mathrm { T r } ( \\mathbf { H } _ { e , k } \\mathbf { H } _ { e , k } ^ { H } \\mathbf { V } _ { k } ) + \\frac { \\mathbf { \\eta } } { \\mathbf { \\eta } } } \\end{array}$ $\\sigma _ { e } ^ { 2 }$ and $\\mu = \\mu _ { v , k }$ , the first term of the objective function of (P4) can be written as ",
+        "bbox": [
+            500,
+            316,
+            929,
+            361
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\frac {1}{\\ln 2} \\ln (p _ {k} \\mathrm{Tr} (\\mathbf {H} _ {k} \\mathbf {V} _ {k} \\mathbf {H} _ {k} ^ {H}) + \\sigma_ {a} ^ {2}) \\\\ - \\frac {1}{\\ln 2} \\ln (p _ {k} \\mathrm{Tr} (\\mathbf {H} _ {e, k} \\mathbf {H} _ {e, k} ^ {H} \\mathbf {V} _ {k}) + \\sigma_ {e} ^ {2}) \\\\ = \\frac {1}{\\ln 2} \\max _ {\\mu_ {v, k} > 0} y _ {v, k} (\\mathbf {V} _ {k}, \\mu_ {v, k}), \\tag {22} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            369,
+            929,
+            469
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $y _ { v , k } ( \\mathbf { V } _ { k } , \\mu _ { v , k } ) = \\ln ( p _ { k } \\mathrm { T r } ( \\mathbf { H } _ { k } \\mathbf { V } _ { k } \\mathbf { H } _ { k } ^ { H } ) + \\sigma _ { a } ^ { 2 } ) - \\mu _ { v , k }$ $( p _ { k } \\mathrm { T r } ( { \\bf H } _ { e , k } { \\bf H } _ { e , k } ^ { H } { \\bf V } _ { k } ) + \\sigma _ { e } ^ { 2 } ) + \\mathrm { l n } ( \\mu _ { v , k } ) + 1$ H. ",
+        "bbox": [
+            501,
+            479,
+            929,
+            512
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "H H VSo (P4) can be transformed into (P4.1) ",
+        "bbox": [
+            518,
+            512,
+            784,
+            526
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P4.1)}: \\max _ {\\mathbf {V} _ {k}, \\mu_ {v, k}} \\sum_ {k = 1} ^ {K} \\frac {1}{\\ln 2} B t _ {k} y _ {v, k} (\\mathbf {V} _ {k}, \\mu_ {v, k}) + C H _ {k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            518,
+            537,
+            877,
+            578
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\mathbf {V} _ {k} (n, n) = 1, \\forall n \\in \\{\\mathcal {N}, N + 1 \\}, \\forall k \\in \\mathcal {K}, \\tag {23a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            590,
+            584,
+            929,
+            616
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {V} _ {k} \\succeq \\mathbf {0}, \\forall k \\in \\mathcal {K}, \\tag {23b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            625,
+            929,
+            640
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu_ {v, k} > 0. \\tag {23c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            616,
+            648,
+            929,
+            662
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "According to Lemma 1, for the fixed ${ \\bf V } _ { k } , \\mathrm { ~ } \\mu _ { v , k } ^ { * } = $ $( p _ { k } \\mathrm { T r } ( { \\bf H } _ { e , k } { \\bf H } _ { e , k } ^ { H } { \\bf V } _ { k } ) + \\sigma _ { e } ^ { 2 } ) ^ { - 1 }$ , then $\\mathbf { V } _ { k } ^ { * }$ Vcan be obtained for the given $\\mu _ { v , k } ^ { * }$ H Vby solving ",
+        "bbox": [
+            500,
+            674,
+            930,
+            723
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P4.1.2)}: \\max _ {\\mathbf {V} _ {k}} \\sum_ {k = 1} ^ {K} \\frac {1}{\\ln 2} B t _ {k} y _ {v, k} (\\mathbf {V} _ {k}, \\mu_ {v, k} ^ {*}) + C H _ {k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            516,
+            734,
+            873,
+            776
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\mathbf {V} _ {k} (n, n) = 1, \\forall n \\in \\{\\mathcal {N}, N + 1 \\}, \\forall k \\in \\mathcal {K}, \\tag {24a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            590,
+            782,
+            929,
+            813
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {V} _ {k} \\succeq \\mathbf {0}, \\forall k \\in \\mathcal {K}. \\tag {24b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            821,
+            929,
+            838
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Since (P4.1.2) is convex, it can be solved by using CVX. But it also does not guarantee that the obtained $\\mathbf { V } _ { k }$ is rank-1 matrices, Vso we also apply the eigenvalue decomposition or the Gaussian randomization to recover the approximate solution of $\\mathbf { v } _ { k }$ . ",
+        "bbox": [
+            500,
+            849,
+            930,
+            909
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The algorithm for obtaining $\\mathbf { v } _ { k }$ vis summarized in Algorithm 1. ",
+        "bbox": [
+            500,
+            910,
+            930,
+            939
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "LI et al.: INTELLIGENT REFLECTING SURFACE ASSISTED SECURE COMPUTATION OF WIRELESS POWERED MEC SYSTEM ",
+        "bbox": [
+            58,
+            37,
+            720,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "3053 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "C. Optimizing ,  for Given , $\\mathbf { v } _ { 0 }$ and $\\mathbf { v } _ { k }$ ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            79,
+            372,
+            95
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "When given , $\\mathbf { v } _ { 0 }$ and $\\mathbf { v } _ { k } .$ , problem (P2) is transformed into problem (P5). ",
+        "bbox": [
+            65,
+            101,
+            494,
+            131
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\text {(P5)}: \\max _ {\\mathbf {p}, \\mathbf {t}} \\sum_ {k = 1} ^ {K} B t _ {k} (\\log_ {2} (1 + p _ {k} a _ {k}) - \\log_ {2} (1 + p _ {k} b _ {k})) \\\\ + \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\operatorname{Tr} \\left(\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W}\\right) - p _ {k} t _ {k}}{T \\xi_ {k}}} \\tag {25} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            79,
+            138,
+            493,
+            227
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\sum_ {k = 0} ^ {K} t _ {k} \\leq T, 0 \\leq t _ {k} \\leq T, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {25a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            129,
+            233,
+            494,
+            275
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq p _ {k} \\leq P _ {k} ^ {\\max}, \\forall k \\in \\mathcal {K}, \\tag {25b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            156,
+            281,
+            493,
+            299
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { a _ { k } = \\frac { \\| \\mathbf { H } _ { k } \\mathbf { v } _ { k } \\| ^ { 2 } } { \\sigma _ { a } ^ { 2 } } , b _ { k } = \\frac { \\| \\mathbf { v } _ { k } ^ { H } \\mathbf { H } _ { e , k } \\| ^ { 2 } } { \\sigma _ { e } ^ { 2 } } } \\end{array}$ . ",
+        "bbox": [
+            65,
+            305,
+            333,
+            328
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Let $\\hat { p _ { k } } = p _ { k } t _ { k } .$ then (25) can be rewritten as ",
+        "bbox": [
+            82,
+            329,
+            385,
+            342
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sum_ {k = 1} ^ {K} B t _ {k} \\left(\\log_ {2} \\left(1 + \\frac {\\hat {p _ {k}} a _ {k}}{t _ {k}}\\right) - \\log_ {2} \\left(1 + \\frac {\\hat {p _ {k}} b _ {k}}{t _ {k}}\\right)\\right) \\\\ + \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\operatorname{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W}) - \\hat {p} _ {k}}{T \\xi_ {k}}}. \\tag {26} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            102,
+            349,
+            494,
+            438
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "(26) is a perspectival function of (25), while (25) is a concave function of ${ \\dot { p } } _ { k }$ (when $a _ { k } \\geq b _ { k } )$ , so its perspective function is also a concave function, i.e., (26) is a concave function about $\\hat { p _ { k } }$ and $t _ { k } ,$ so the problem is convex and it can be rewritten as ",
+        "bbox": [
+            65,
+            444,
+            494,
+            503
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {(P5.1)}: \\max _ {\\hat {\\mathbf {p}}, \\mathbf {t}} \\sum_ {k = 1} ^ {K} B t _ {k} \\left(\\log_ {2} \\left(1 + \\frac {\\hat {p} _ {k} a _ {k}}{t _ {k}}\\right) - \\log_ {2} \\left(1 + \\frac {\\hat {p} _ {k} b _ {k}}{t _ {k}}\\right)\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            512,
+            471,
+            553
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\mathrm{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W}) - \\hat {p} _ {k}}{T \\xi_ {k}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            183,
+            559,
+            419,
+            601
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\sum_ {k = 0} ^ {K} t _ {k} \\leq T, 0 \\leq t _ {k} \\leq T, \\forall k \\in \\{0, \\mathcal {K} \\}, \\tag {27a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            136,
+            607,
+            494,
+            648
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\hat {p} _ {k} \\leq P _ {k} ^ {\\max} T, \\forall k \\in \\mathcal {K}. \\tag {27b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            655,
+            494,
+            672
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The Lagrange duality method and KKT condition are used to get the closed-form expression of the optimal solution. The Lagrange function of (P5.1) can be expressed as: ",
+        "bbox": [
+            65,
+            679,
+            494,
+            724
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL (\\hat {\\mathbf {p}}, \\mathbf {t}, \\lambda , \\boldsymbol {\\mu}) = \\sum_ {k = 1} ^ {K} B t _ {k} \\left(\\log_ {2} \\left(1 + \\frac {\\hat {p _ {k}} a _ {k}}{t _ {k}}\\right) - \\log_ {2} \\left(1 + \\frac {\\hat {p _ {k}} b _ {k}}{t _ {k}}\\right)\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            65,
+            732,
+            503,
+            773
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\frac {T}{c _ {k}} \\sqrt [ 3 ]{\\frac {\\eta t _ {0} \\mathrm{Tr} (\\mathbf {g} _ {k} ^ {H} \\mathbf {V} _ {0} \\mathbf {g} _ {k} \\mathbf {W}) - \\hat {p} _ {k}}{T \\xi_ {k}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            779,
+            407,
+            821
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- \\lambda \\left(\\sum_ {k = 0} ^ {K} t _ {k} - T\\right) - \\sum_ {k = 0} ^ {K} \\mu_ {k} (t _ {k} - T), \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            825,
+            494,
+            869
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where λ and ${ \\pmb \\mu } = ( \\mu _ { 0 } , \\mu _ { 1 } , \\dots , \\mu _ { K } )$ are the dual multipliers of constraints (27a). The dual problem of (P5.1) is expressed as ",
+        "bbox": [
+            65,
+            875,
+            496,
+            906
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\lambda , \\boldsymbol {\\mu}} \\quad \\max _ {\\hat {\\mathbf {p}}, \\mathbf {t}} L (\\hat {\\mathbf {p}}, \\mathbf {t}, \\lambda , \\boldsymbol {\\mu}). \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            193,
+            912,
+            494,
+            936
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The KKT conditions of (P5.1) are ",
+        "bbox": [
+            525,
+            79,
+            759,
+            93
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} \\frac {\\partial L}{\\partial \\hat {p} _ {k}} = 0, \\frac {\\partial L}{\\partial t _ {k}} = 0, \\frac {\\partial L}{\\partial t _ {0}} = 0, \\\\ \\lambda (t _ {0} + \\sum_ {k = 1} ^ {K} t _ {k} - T) = 0, \\\\ \\mu_ {0} (t _ {0} - T) + \\sum_ {k = 1} ^ {K} \\mu_ {k} (t _ {k} - T) = 0, \\\\ t _ {0} + \\sum_ {k = 1} ^ {K} t _ {k} \\leq T, \\\\ 0 \\leq t _ {k} \\leq T, 0 \\leq t _ {0} \\leq T, 0 \\leq \\hat {p} _ {k} \\leq P _ {k} ^ {\\max} T, \\\\ \\lambda \\geq 0, \\mu_ {k} \\geq 0, \\mu_ {0} \\geq 0. \\end{array} \\right. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            550,
+            99,
+            937,
+            200
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Considering the practical situation, the time to capture energy $\\begin{array} { r } { 0 < t _ { 0 } \\leq T , \\mathrm { s o } \\sum _ { k = 1 } ^ { K } t _ { k } < T } \\end{array}$ . Therefore, $\\mu _ { 0 } = 0 , \\mu _ { k } = 0$ . Besides, $\\lambda = 0$ should be eliminated, because if $\\begin{array} { r } { \\lambda = 0 , \\frac { \\partial L } { \\partial \\hat { p } _ { k } } = 0 } \\end{array}$ ∂pˆk and $\\begin{array} { r } { \\frac { \\partial L } { \\partial t _ { 0 } } = 0 } \\end{array}$ ∂t in (30) contradict each other. So the optimal solution of the variable can be obtained as follows. ",
+        "bbox": [
+            508,
+            207,
+            937,
+            284
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {k} ^ {*} = \\left\\{ \\begin{array}{l l} 0, & p _ {k} ^ {\\prime} \\leq 0, \\\\ p _ {k} ^ {\\prime}, & 0 <   p _ {k} ^ {\\prime} <   P _ {k} ^ {\\max}, \\\\ P _ {k} ^ {\\max}, & P _ {k} ^ {\\max} \\leq p _ {k} ^ {\\prime}, \\end{array} \\right. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            599,
+            290,
+            937,
+            339
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "wher $\\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } \\mathbf { \\cdot } $ 2akbk ${ t _ { k } } ^ { * }$ can be obtained by performing bisection method to (32). ",
+        "bbox": [
+            508,
+            345,
+            937,
+            391
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\log_ {2} \\left(1 + \\frac {a _ {k}}{t _ {k}} \\hat {p} _ {k}\\right) - \\log_ {2} \\left(1 + \\frac {b _ {k}}{t _ {k}} \\hat {p} _ {k}\\right) + \\frac {b _ {k} \\hat {p} _ {k}}{\\ln 2 (t _ {k} + b _ {k} \\hat {p} _ {k})} \\\\ - \\frac {a _ {k} \\hat {p} _ {k}}{\\ln 2 (t _ {k} + a _ {k} \\hat {p} _ {k})} - \\frac {\\lambda}{B} = 0. \\tag {32} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            531,
+            397,
+            936,
+            469
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {0} ^ {*} = T - \\sum_ {k = 1} ^ {K} t _ {k}. \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            530,
+            474,
+            937,
+            516
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The dual variable is denoted by ",
+        "bbox": [
+            525,
+            522,
+            742,
+            537
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda = \\frac {T \\eta \\operatorname{Tr} \\left(\\mathbf {g} _ {\\mathrm{k}} ^ {\\mathrm{H}} \\mathbf {V} _ {0} \\mathbf {g} _ {\\mathrm{k}} \\mathbf {W}\\right)}{3 c _ {k} \\sqrt [ 3 ]{T \\xi_ {k}}} \\left(\\eta t _ {0} \\operatorname{Tr} \\left(\\mathbf {g} _ {\\mathrm{k}} ^ {\\mathrm{H}} \\mathbf {V} _ {0} \\mathbf {g} _ {\\mathrm{k}} \\mathbf {W}\\right) - \\hat {\\mathrm{p}} _ {\\mathrm{k}}\\right) ^ {- \\frac {2}{3}}. \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            516,
+            542,
+            937,
+            578
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "After each sub-problem is solved, we obtain the final optimal solution $\\mathbf { p } ^ { * } , \\ \\mathbf { t } ^ { * } , \\ \\mathbf { W } ^ { * } , \\ \\mathbf { V } _ { 0 } ^ { * } , \\ \\mathbf { V } _ { k } ^ { * }$ through iterap t W V Vtive algorithm, then the local computation frequency ${ f _ { k } } ^ { \\prime } =$ $\\sqrt [ 3 ] { \\frac { \\eta t _ { 0 } \\mathrm { T r } ( \\mathbf { g } _ { \\mathrm { k } } ^ { \\mathrm { H } } \\mathbf { v } _ { 0 } \\mathbf { v } _ { 0 } ^ { \\mathrm { H } } \\mathbf { g } _ { \\mathrm { k } } \\mathbf { W } ) - \\mathrm { p } _ { \\mathrm { k } } \\mathbf { t } _ { \\mathrm { k } } } { T \\xi _ { k } } }$ ηt0Tr(gHk v0vH0 gkW)−pktk of each user can also be obtained. But the two cases $f _ { k } ^ { \\mathrm { ~ \\prime ~ } } < F _ { k } ^ { \\operatorname* { m a x } }$ and $f _ { k } ^ { \\mathrm { ~ \\prime ~ } } \\ge F _ { k } ^ { \\operatorname* { m a x } }$ need to be considered. ",
+        "bbox": [
+            508,
+            583,
+            937,
+            679
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Case $I \\colon f _ { k } ^ { \\prime } < F _ { k } ^ { \\mathrm { m a x } }$ ",
+        "bbox": [
+            525,
+            681,
+            668,
+            698
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this case, $\\begin{array} { r } { { f _ { k } } ^ { * } = { f _ { k } } ^ { \\prime } = \\sqrt [ 3 ] { \\frac { \\eta { t _ { 0 } } \\mathrm { T r } ( \\mathbf { g } _ { \\mathrm { k } } ^ { \\mathrm { H } } \\mathbf { v } _ { 0 } \\mathbf { v } _ { 0 } ^ { \\mathrm { H } } \\mathbf { g } _ { \\mathrm { k } } \\mathbf { W } ) - \\mathbf { p } _ { \\mathrm { k } } \\mathbf { t } _ { \\mathrm { k } } } { T \\xi _ { k } } } } \\end{array}$ . ",
+        "bbox": [
+            523,
+            696,
+            885,
+            720
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In particular, when pk = ηt0Tr(gHk v0vH0 gkW) , $\\begin{array} { r } { p _ { k } = \\frac { \\eta t _ { 0 } \\mathrm { T r } ( \\mathbf { g } _ { \\mathrm { k } } ^ { \\mathrm { H } } \\mathbf { v } _ { 0 } \\mathbf { v } _ { 0 } ^ { \\mathrm { H } } \\mathbf { g } _ { \\mathrm { k } } \\mathbf { W } ) } { t _ { k } } , { f _ { k } } ^ { * } = 0 . } \\end{array}$ tk ",
+        "bbox": [
+            525,
+            720,
+            892,
+            743
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Case 2: fk \u000b ≥ F maxk ",
+        "bbox": [
+            526,
+            742,
+            668,
+            758
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this case, $f _ { k } { } ^ { * } = F _ { k } ^ { \\operatorname* { m a x } }$ . So $f _ { k }$ is a constant, and then the variables are , , , , they need to be solved again in the same p t W Φmethod as above, including SDR, Taylor expansion method, and the Lagrange duality method, which will not be repeated here. ",
+        "bbox": [
+            506,
+            758,
+            937,
+            818
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Therefore, by combining the above two cases, the optimal value is ",
+        "bbox": [
+            506,
+            818,
+            937,
+            845
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k} ^ {*} = \\min (f _ {k} ^ {\\prime}, F _ {k} ^ {\\max}). \\tag {35}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            641,
+            854,
+            936,
+            872
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Remark 1: According to the users’ secure computation task bits formula and (35), we can draw the conclusion that the user’s secure computation task bits is related to $F _ { k } ^ { \\mathrm { m a x } }$ or the energy harvested by the user. When $F _ { k } ^ { \\mathrm { m a x } }$ is relatively large, the number of secure computation tasks is affected by the harvested energy of user k rather than limited by its own computation frequency. The more energy users harvest, the more secure computation tasks they have. When $F _ { k } ^ { \\mathrm { m a x } }$ is relatively small, the number of secure computation tasks of users is mainly limited by their own computation frequency, and the secure computation task bits increases with $F _ { k } ^ { \\mathrm { m a x } }$ . ",
+        "bbox": [
+            506,
+            880,
+            937,
+            941
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "3054 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 4, APRIL 2024 ",
+        "bbox": [
+            526,
+            39,
+            937,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            486,
+            185
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Harvesting more energy or increasing $F _ { k } ^ { \\mathrm { m a x } }$ has higher requirements on the users’ own ability (energy conversion or computation ability), which means that the stronger the users’ own ability, the better their secure computation performance. ",
+        "bbox": [
+            57,
+            185,
+            486,
+            246
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The overall iterative algorithm is summarized in Algorithm 2, the convergence is proved as follows. ",
+        "bbox": [
+            57,
+            246,
+            484,
+            275
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Proof: Let $\\mathbf { v } _ { 0 } ( j ) , \\mathbf { v } _ { k } ( j ) , \\mathbf { p } ( j ) , \\mathbf { t } ( j ) , \\mathbf { W } ( j )$ be the solutions v vobtained in the jth iteration, $L ( { \\bf v } _ { 0 } ( j ) , { \\bf W } ( j ) , { \\bf v } _ { k } ( j ) , { \\bf p } ( j ) , { \\bf t } ( j ) )$ v W v p tdenotes the objective function, according to the Algorithm 1, $L ( \\mathbf { v } _ { 0 } ( j ) , \\mathbf { W } ( j ) , \\mathbf { v } _ { k } ( j - 1 ) , \\mathbf { p } ( j - 1 ) , \\mathbf { t } ( j - 1 ) ) \\ge$ $L ( { \\bf v } _ { 0 } ( j - 1 ) , { \\bf W } ( j - 1 ) , { \\bf v } _ { k } ( j - 1 ) , { \\bf p } ( j - 1 ) , { \\bf t } ( j - 1 ) ) . ~ \\mathrm { A c }$ - v W v pcording to the Algorithm 2, we can get $L ( \\mathbf { v } _ { 0 } ( j ) , \\mathbf { W } ( j ) , \\mathbf { v } _ { k } ( j )$ , $p _ { k } ( j ) , t _ { 0 } ( j ) , t _ { k } ( j ) ) \\geq L ( \\mathbf { v } _ { 0 } ( j - 1 ) , \\mathbf { W } ( j - 1 ) , \\mathbf { v } _ { k } ( j - 1 ) , p _ { k }$ $( j - 1 ) , t _ { 0 } ( j - 1 ) , t _ { k } ( j - 1 ) )$ , which indicates that the objective function value of Algorithm 2 is non-decreasing, and because the objective function value has a finite upper bound, Algorithm 2 is convergent. ",
+        "bbox": [
+            57,
+            275,
+            486,
+            441
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Remark 2: There are two extreme cases in our proposed scheme, one is $p _ { k } ^ { * } = 0$ , the other is $f _ { k } ^ { * } = 0$ , which correspond to completely local computation and completely offloading of user k, respectively. ",
+        "bbox": [
+            57,
+            441,
+            488,
+            501
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In (31), $p _ { k } ^ { * } = 0$ means that the user k does not offload but only performs the computation tasks locally, the user are absolutely secure in this case, after obtaining the AP energy beamforming and the IRS reflection phase shifts , the user’s optimal computation frequency is ",
+        "bbox": [
+            57,
+            501,
+            486,
+            578
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k} ^ {*} = \\min (f _ {k} ^ {\\prime \\prime}, F _ {k} ^ {\\max}). \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            193,
+            587,
+            486,
+            606
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { f _ { k } ^ { \\prime \\prime } = \\sqrt [ 3 ] { \\frac { \\eta \\mathrm { T r } ( \\mathbf { g } _ { \\mathrm { k } } ^ { \\mathrm { H } } \\mathbf { V } _ { 0 } ^ { \\ast } \\mathbf { g } _ { \\mathrm { k } } \\mathbf { W } ^ { \\ast } ) } { \\xi _ { k } } } , } \\end{array}$ ",
+        "bbox": [
+            58,
+            616,
+            276,
+            638
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The total energy consumption is ",
+        "bbox": [
+            75,
+            638,
+            297,
+            652
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE = \\sum_ {k = 1} ^ {K} T \\xi_ {k} (f _ {k} ^ {*}) ^ {3}. \\tag {37}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            203,
+            662,
+            486,
+            704
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The total secure computation task bits is ",
+        "bbox": [
+            75,
+            713,
+            351,
+            728
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL = \\sum_ {k = 1} ^ {K} \\frac {T f _ {k} ^ {*}}{c _ {k}}. \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            220,
+            737,
+            486,
+            779
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The other extreme case is ${ f _ { k } } ^ { * } = 0$ in CASE 1. The user k offloads all the computation tasks to the MEC server entirely, and user’s message will be eavesdropped by Eve in this case, after obtaining the AP energy beamforming , the IRS reflection phase shifts and offloading time $t _ { k }$ W, then the user’s optimal transmit power is given by ",
+        "bbox": [
+            57,
+            789,
+            486,
+            878
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {k} ^ {*} = \\min (p _ {k} ^ {\\prime \\prime}, P _ {k} ^ {\\max}), \\tag {39}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            191,
+            890,
+            486,
+            907
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where p\u000b\u000b = ηt∗0Tr(gHk V∗0gkW∗) . $\\begin{array} { r } { p _ { k } ^ { \\prime \\prime } = \\frac { \\eta t _ { 0 } ^ { * } \\mathrm { T r } ( \\mathbf { g } _ { \\mathrm { k } } ^ { \\mathrm { H } } \\mathbf { V } _ { 0 } ^ { * } \\mathbf { g } _ { \\mathrm { k } } \\mathbf { W } ^ { * } ) } { t _ { k } ^ { * } } } \\end{array}$ ",
+        "bbox": [
+            58,
+            917,
+            269,
+            941
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1: Solve $\\mathbf { v } _ { k } ^ { * }$ in (P4). ",
+            "Output: $\\mathbf { v } _ { k } ^ { * } .$ "
+        ],
+        "code_body": "Input: $B, \\sigma_{a}^{2}, \\sigma_{e}^{2}, \\mathbf{H}_{k}, \\mathbf{H}_{e,k}, CH_{k}$ . ",
+        "bbox": [
+            533,
+            104,
+            774,
+            121
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [],
+        "code_body": "1: Initialization: $\\mathbf{v}_k(0)$ , $\\mu_{v,k}(0)$ .  \n2: Set $i = 1$ .  \n3: repeat  \n4: Solve (P4.1) by using CVX for given $\\mu_{v,k}(i - 1)$ , obtain the solution $v_k^*(i)$ ;  \n5: Update $i = i + 1$ ;  \n6: until the objective function of (P4) converges ",
+        "bbox": [
+            521,
+            137,
+            888,
+            242
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 2: The Overall Optimal Iteration for (P2). ",
+            "Output: $\\mathbf { W } ^ { \\ast } , \\mathbf { v } ^ { \\ast } , \\mathbf { p } ^ { \\ast } , \\mathbf { t } ^ { \\ast } , \\mathbf { f } ^ { \\ast }$ "
+        ],
+        "code_body": "Input: $B, \\sigma_{a}^{2}, \\sigma_{e}^{2}, \\mathbf{H}_{k}, \\mathbf{H}_{e,k}, \\mathbf{g}_{k}, T, c_{k}, \\xi_{k}, P, \\varepsilon$ . ",
+        "bbox": [
+            521,
+            285,
+            853,
+            301
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [],
+        "code_body": "1: Initialization: $\\mathbf{W}(0)$ , $\\mathbf{V}(0)$ , $\\mathbf{p}(0)$ , $\\mathbf{t}(0)$ .\n2: Set $j = 1$ .\n3: repeat\n4: Solve (P3.1) by using Taylor expansion and CVX for given the initial value, obtain the solution $\\mathbf{v}_0^*(j)$ , Solve (P3.2) by using Taylor expansion and CVX for given value, obtain the solution $\\mathbf{W}^*(j)$ ;\n5: Applying Algorithm 1 to obtain $\\mathbf{v}_k^*(j)$ ;\n6: Solve (P5) by formula (31), (32), and (33) to obtain $p_k^*(j)$ , $t_0^*(j)$ , $t_k^*(j)$ . Calculate the objective function value $L(j)$ .\n7: Update $j = j + 1$ ;\n8: until $\\| L_k(j) - L_k(j - 1) \\| \\leq \\varepsilon$ ; ",
+        "bbox": [
+            521,
+            316,
+            920,
+            513
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The total energy consumption is ",
+        "bbox": [
+            518,
+            542,
+            740,
+            556
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE = \\sum_ {k = 1} ^ {K} p _ {k} ^ {*} t _ {k} ^ {*}. \\tag {40}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            664,
+            563,
+            929,
+            604
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The total secure computation task bits is ",
+        "bbox": [
+            518,
+            609,
+            794,
+            625
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL = \\sum_ {k = 1} ^ {K} B t _ {k} ^ {*} (\\log_ {2} (1 + p _ {k} ^ {*} a _ {k} ^ {*}) - \\log_ {2} (1 + p _ {k} ^ {*} b _ {k} ^ {*})). \\tag {41}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            531,
+            630,
+            929,
+            671
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Similarly, the user’s secure computation task bits is related to $P _ { k } ^ { \\mathrm { m a x } }$ or the energy harvested by the user. The more energy users harvest, or the larger $P _ { k } ^ { \\mathrm { m a x } }$ , and the more users’ secure computation task bits. ",
+        "bbox": [
+            500,
+            676,
+            930,
+            736
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "To sum up, the harvested energy, $F _ { k } ^ { \\mathrm { m a x } }$ and $P _ { k } ^ { \\mathrm { m a x } }$ have a great impact on the user’s secure computation task bits, so the user’s own ability (the energy conversion, computation and offloading capability) is an important factor that affects their security and offloading computation performance. ",
+        "bbox": [
+            500,
+            737,
+            929,
+            813
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "D. Computational Complexity Analysis ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            828,
+            774,
+            843
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The overall iterative algorithm to solve (P2) is given in Algorithm 2, the computational complexity of the algorithm is mainly composed of the number of iterations and the computational complexity of each iteration, and the computational complexity is mainly for solving (P3), (P4) and (P5). L1 represents the number of iterations required for Algorithm 2 to converge. ",
+        "bbox": [
+            500,
+            849,
+            929,
+            940
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "LI et al.: INTELLIGENT REFLECTING SURFACE ASSISTED SECURE COMPUTATION OF WIRELESS POWERED MEC SYSTEM ",
+        "bbox": [
+            58,
+            37,
+            720,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "3055 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/b0721face0e47e1bbdb4c8d232c52c5cecc61d0760502754756b259aa719cdbe.jpg",
+        "image_caption": [
+            "Fig. 3. Simulation diagram. "
+        ],
+        "image_footnote": [],
+        "content": "y\nIRS\n(x,4)\nUser\n(0,0)\nBS\n(10,2)\nEve\n(8,0)\nx",
+        "sub_type": "text_image",
+        "bbox": [
+            102,
+            79,
+            464,
+            244
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The worst complexity of solving a SDR problem through CVX provided by [43] is $\\mathcal { O } ( \\operatorname* { m a x } \\{ m , n \\bar  \\} ^ { 4 } n ^ { 1 / 2 } l o g ( 1 / \\epsilon ) )$ , where n denotes the size of problem, m denotes the number of constraints and \t denotes the accuracy of the algorithm used by CVX. $L _ { 2 }$ represents the number of iterations required to solve (P3), so the complexity of solving (P3) is represented by $\\mathcal { O } ( L _ { 2 } \\operatorname* { m a x } \\{ K M + K , N + 1 \\} ^ { 4 } ( K M + K ) ^ { 1 / 2 } l o g ( 1 / \\epsilon _ { 1 } ) )$ , where $\\epsilon _ { 1 }$ denotes the accuracy of solution (P3). Similarly, the complexities of solving (P4) and (P5) are represented by $\\mathcal { O } ( L _ { 3 } \\operatorname* { m a x } \\{ 2 K , N + 1 \\} ^ { 4 } ( 2 K ) ^ { 1 / 2 } l o g ( 1 / \\epsilon _ { 2 } ) )$ and $\\mathcal { O } ( L _ { 4 }$ $( K M + K N + K ) ^ { 4 . 5 } l o g ( 1 / \\epsilon _ { 3 } ) )$ , respectively, where $\\epsilon _ { 2 }$ and $\\epsilon _ { 3 }$ denote the the accuracy of solution (P4) and (P5), respectively. $L _ { 3 }$ and $L _ { 4 }$ denote the number of iterations required to solve (P4) and (P5), respectively. Therefore, the overall complexity of solving (P2) is $\\mathcal { O } ( L _ { 1 } ( L _ { 2 } \\operatorname* { m a x } \\{ K M + K , N + 1 \\} ^ { 4 } ( K M +$ $K ) ^ { 1 / 2 } l o g ( 1 / \\epsilon _ { 1 } ) + L _ { 3 } \\operatorname* { m a x } \\{ 2 K , N + 1 \\} ^ { 4 } ( 2 K ) ^ { 1 / 2 }$ $l o g ( 1 / \\epsilon _ { 2 } ) + L _ { 4 } ( K M + K N + K ) ^ { 4 . 5 } l o g ( 1 / \\epsilon _ { 3 } ) ) )$ . ",
+        "bbox": [
+            65,
+            310,
+            496,
+            569
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "IV. NUMERICAL RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            188,
+            595,
+            370,
+            609
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In this section, numerical simulation results are showed to verify the effectiveness of the proposed scheme. Similar to references [21], [35] and [41], we set these parameters. According to the parameter settings, the proposed algorithm is simulated by MATLAB R2017b, and CVX is used as a convex optimization modeling system based on MATLAB, CVX converts MATLAB into a modeling language, allowing the use of standard MATLAB expression syntax to specify constraints and targets. Simulation parameters are set as: $T = 0 . 1 \\mathrm { s } , c _ { k } = 1 0 0 0$ cycles/bit, $\\xi _ { k } = 1 0 ^ { - 2 8 } , P = 0 . 1 \\mathrm { W } , \\sigma _ { a } ^ { 2 } = \\sigma _ { e } ^ { 2 } = - 9 0$ dBm, the number of antennas in AP is $M = 4$ , the number of each IRS’s reflection elements is $N = 3 2 .$ , which refer to reference [35]. As shown in Fig. 3, the locations of AP, IRS and Eve are (10, 2), (x, 4) and (8, 0) respectively, the users are uniformly and randomly placed in a circular region centered at (0, 0) with radius $r = 4 [ 4 1 ]$ . Assume that all the channel coefficients are $h _ { i , j } = \\sqrt { L _ { 0 } d _ { i , j } ^ { - \\beta _ { i , j } } } \\mathbf { g } _ { i , j }$ , where $L _ { 0 } = - 2 0$ dB is the path loss at the reference distance $d = 1 \\mathrm { ~ m ~ }$ , the $\\beta _ { i , j } , d _ { i , j }$ and $\\mathbf { g } _ { i , j }$ are the gpath loss exponent, distance, and small-scale fading component between i and $j ,$ where $i \\in \\{ k , r , a \\} , j \\in \\{ e , r , k , a \\}$ , which are similar to the settings of reference [21]. Suppose the small-scale ",
+        "bbox": [
+            65,
+            616,
+            496,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/1dbc8fa3a94b59ca83ec6468d6d205e60412f1c136cdcf7338e8a583ae48c41c.jpg",
+        "content": "| Iteration times | Our proposed scheme | Local computing completely | Offloading completely |\n| --------------- | --------------------- | ---------------------------- | ---------------------- |\n| 0               | 2.3e5                 | 0                            | 6.0e4                  |\n| 5               | 3.3e5                 | 3.0e4                        | 1.1e5                  |\n| 10              | 3.3e5                 | 3.0e4                        | 1.2e5                  |\n| 15              | 3.3e5                 | 3.0e4                        | 1.2e5                  |\n| 20              | 3.3e5                 | 3.0e4                        | 1.2e5                  |",
+        "chart_caption": [
+            "Fig. 4. Secure computational bits versus the iteration times. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            558,
+            80,
+            890,
+            284
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "fading is a Rician fading and given by ",
+        "bbox": [
+            508,
+            344,
+            769,
+            359
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {g} _ {i, j} = \\sqrt {\\frac {\\alpha_ {i , j}}{1 + \\alpha_ {i , j}}} \\mathbf {g} _ {i, j} ^ {L o S} + \\sqrt {\\frac {1}{1 + \\alpha_ {i , j}}} \\mathbf {g} _ {i, j} ^ {N L o S},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            372,
+            878,
+            414
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where Loi,j $\\mathbf { g } _ { i , j } ^ { L o S }$ and NLi,j $\\mathbf { g } _ { i , j } ^ { N L o S }$ are the deterministic line-of-sight (LoS) and $\\mathrm { n o n { - } L o S \\left( N L o S \\right) }$ components, respectively. We assume that the component from user k to eavesdropper is NLoS and others obey LoS. The path loss exponent between the user and AP, between the user and the Eve, between the user and IRS, between the IRS and AP, between the IRS and the Eve are $\\beta _ { k a } = \\beta _ { a k } =$ $3 . 6 , \\beta _ { k e } = 3 . 6 , \\beta _ { k r } = \\beta _ { r k } = 2 . 2 , \\beta _ { r a } = \\beta _ { a r } = 2 . 2 , \\beta _ { r e } = 2 . 2$ , respectively, the energy harvesting efficiency is $\\eta = 0 . 8$ . ",
+        "bbox": [
+            506,
+            425,
+            937,
+            547
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "However, due to the differences between the system models of other references and the system model proposed in this paper, in order to confirm the superiority of the proposed scheme, we put forward three comparative schemes: ",
+        "bbox": [
+            506,
+            547,
+            937,
+            607
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "(1) Random IRS phase shifts: The phase shifts of the IRS elements are selected randomly from [0, 2π]. ",
+            "(2) Fixed allocation time: The time allocated to users to execute tasks is fixed. ",
+            "(3) Without IRS: The WPT phase and offloading phase are conducted without the assistance of IRS. "
+        ],
+        "bbox": [
+            506,
+            608,
+            937,
+            696
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In addition, as two extreme cases of the proposed scheme, completely local computation and completely offloading are also shown in Fig. 4. ",
+        "bbox": [
+            506,
+            698,
+            937,
+            744
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 proves the convergence of the proposed algorithm. As the number of iterations increases, the secure offloading tasks of users first increases and then converges to a fixed value, it proves the convergence of the proposed algorithm. In addition, we can see that completely local computation has the smallest secure computation task bits, followed by the completely offloading, and the proposed optimal scheme has the largest secure computation task bits. The reason is that although completely local computation is absolutely secure, the user’s own computation ability is limited. While the completely offloading consumes less energy and has stronger computation ability, it has security problems. As a result, the security computation performance of both extremes is worse than that of the proposed optimal scheme, so users can enjoy better performance by using partial offloading to execute computation tasks. ",
+        "bbox": [
+            506,
+            744,
+            937,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "3056 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 4, APRIL 2024 ",
+        "bbox": [
+            526,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/19e82dd0eb3ffc47fb2df6d755543f9a5c85c16472a848074e719064b8fe8361.jpg",
+        "content": "| Maximum transmit power of AP P(dBm) | Proposed scheme | Random IRS phase shifts | Fixed allocation time | Without IRS |\n| ----------------------------------- | --------------- | ----------------------- | --------------------- | ----------- |\n| 10                                  | 2.6e5           | 1.1e5                   | 1.8e5                 | 0.9e5       |\n| 20                                  | 2.7e5           | 1.1e5                   | 1.8e5                 | 0.9e5       |\n| 30                                  | 2.9e5           | 1.1e5                   | 1.9e5                 | 0.9e5       |\n| 40                                  | 3.4e5           | 1.3e5                   | 2.1e5                 | 0.9e5       |\n| 50                                  | 4.5e5           | 1.5e5                   | 2.4e5                 | 1.0e5       |",
+        "chart_caption": [
+            "Fig. 5. Secure computational bits versus the maximum transmit power of AP. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            109,
+            80,
+            434,
+            282
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ca0d7924cabb1de935bfed42fee4bbe01260bde3441d56eef823e91953425639.jpg",
+        "content": "| x-coordinate of users | Proposed scheme | Random IRS phase shifts | Fixed allocation time | Without IRS |\n| --------------------- | --------------- | ----------------------- | --------------------- | ----------- |\n| 0                     | 3.5e5           | 1.2e5                   | 2.1e5                 | 0.8e5       |\n| 2                     | 6.5e5           | 2.0e5                   | 3.8e5                 | 0.5e5       |\n| 4                     | 2.5e5           | 0.9e5                   | 1.4e5                 | 0.3e5       |\n| 6                     | 1.8e5           | 0.5e5                   | 1.0e5                 | 0.2e5       |\n| 8                     | 1.7e5           | 0.4e5                   | 1.0e5                 | 0.2e5       |\n| 10                    | 3.5e5           | 1.1e5                   | 2.1e5                 | 0.8e5       |",
+        "chart_caption": [
+            "Fig. 7. Secure computational bits versus the x-coordinate of IRS. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            555,
+            80,
+            875,
+            284
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/c5c49914b0a6af68520229b76327b834302a133a2426ee7e7499b54de78e6f79.jpg",
+        "content": "| Reflection element of IRS N | Proposed scheme | Random IRS phase shifts | Fixed allocation time | Without IRS |\n| ---------------------------- | --------------- | ----------------------- | --------------------- | ----------- |\n| 10                           | 200000          | 100000                  | 120000                | 70000       |\n| 20                           | 350000          | 130000                  | 220000                | 70000       |\n| 30                           | 450000          | 150000                  | 290000                | 70000       |\n| 40                           | 550000          | 160000                  | 350000                | 70000       |\n| 50                           | 610000          | 170000                  | 390000                | 70000       |\n| 60                           | 650000          | 180000                  | 430000                | 70000       |\n| 70                           | 700000          | 185000                  | 455000                | 70000       |",
+        "chart_caption": [
+            "Fig. 6. Secure computational bits versus the number of reflection elements of IRS. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            114,
+            335,
+            430,
+            537
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            608,
+            484,
+            637
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 5 displays the influence of the maximum transmit power of AP on the users’ secure computation task bits. When the maximum transmit power of the AP is 50 dbm, the secure computational bits of the proposed scheme is about 80% higher than that of the best scheme among the three comparison schemes, even though for the minimum gap the improvement is above 45%. The secure computation task bits of users increases with P . This is because the users need to consume more energy to improve their security, the greater the transmit power of AP, the more energy the users harvest, which will increase the number of computation task bits for both local computation and security offloading. In addition, the secure computation task bits of proposed scheme is higher than other schemes, which indicates that deploying IRS and appropriately optimizing its phase shifts can extremely improve the system performance. ",
+        "bbox": [
+            57,
+            638,
+            486,
+            864
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 6 plots the users’ secure computational bits versus the number of reflection elements of IRS. When the reflection element of IRS is given by 70, the secure computational bits of the proposed scheme is about 56% higher than that of the fixed allocation time scheme. As N increases, the number of secure computational bits increases, but the increase trend gradually decreases, which means that N needn’t to be very large. Besides, if the IRS phase shifts is random, it may have a poor influence on the system performance. When the IRS phase shifts is optimized, with the increase of N, the proposed scheme has obvious advantages compared with other schemes, it suggests that when the phase shift of IRS is optimally adjusted, IRS contributes large gain to the system performance and it can enhance the wireless transmission performance of users both the energy harvesting in the WPT and secure offloading. ",
+        "bbox": [
+            57,
+            864,
+            488,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            351,
+            930,
+            501
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The impact of the users’ location on their secure computation task bits is presented in Fig. 7. The proposed scheme has the best computational performance. Among the three schemes deploying IRS, the closer users are to IRS, the larger their secure computation task bits are, and the maximum is obtained at $x = 2 m$ . Moreover, compared with other comparison schemes, the secure computational bits of our scheme are increased by about 75% compared with the best fixed allocation time scheme, indicating that IRS can greatly improve the users’ secure computation performance. When x ranges from 2 m to 8 m, the users’ secure computation task bits decrease, because users are getting closer to the eavesdropper, so the security becomes worse and the users’ secure computation task bits decrease. For the scheme ”without IRS”, with the increase of x, the users’ secure computation task bits decreases first and then increases. This is because there is no IRS deployed, so the closer the users are to the eavesdropper, the worse their security is. ",
+        "bbox": [
+            500,
+            502,
+            929,
+            758
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The relationship between the number of users and the secure computational task bits is shown in Fig. 8. When the number of users is 9, we can clearly see that the secure computational bits of the proposed scheme is about 42% higher than that of the fixed allocation time scheme with the best performance among other schemes. As K increases, the secure computation task bits gradually increases, but the increasing trend gradually decreases. This is because with the increase in the number of users, the offloading time of each user becomes shorter, and the number of secure offloading computation task bits becomes less, so the increasing trend decreases. Besides, the secure computation task bits of the proposed scheme is significantly higher than that of the comparison scheme, and for the same k, the increasing trend of secure computation task bits of the proposed scheme is greater than that of other schemes, which can show the advantages of IRS in improving users’ secure computation capability and the superiority of the proposed scheme. ",
+        "bbox": [
+            500,
+            758,
+            930,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "LI et al.: INTELLIGENT REFLECTING SURFACE ASSISTED SECURE COMPUTATION OF WIRELESS POWERED MEC SYSTEM ",
+        "bbox": [
+            58,
+            37,
+            720,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "3057 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/9e17a314fa7a513d5b56945cc8d399c75f6584f69338ddff7a49dc69d654ec9c.jpg",
+        "content": "| The number of users K | Proposed scheme | Random IRS phase shifts | Fixed allocation time | Without IRS |\n| --------------------- | --------------- | ----------------------- | --------------------- | ----------- |\n| 1                     | 100000          | 30000                   | 60000                 | 10000       |\n| 2                     | 220000          | 80000                   | 140000                | 40000       |\n| 3                     | 320000          | 120000                  | 220000                | 60000       |\n| 4                     | 410000          | 160000                  | 300000                | 80000       |\n| 5                     | 480000          | 200000                  | 360000                | 100000      |\n| 6                     | 530000          | 220000                  | 410000                | 120000      |\n| 7                     | 550000          | 230000                  | 420000                | 130000      |\n| 8                     | 560000          | 235000                  | 425000                | 140000      |\n| 9                     | 570000          | 240000                  | 430000                | 150000      |",
+        "chart_caption": [
+            "Fig. 8. Secure computational bits versus the number of users. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            122,
+            80,
+            439,
+            282
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            345,
+            496,
+            422
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "V. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            220,
+            444,
+            340,
+            457
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "This paper studied the secure computation performance of IRS-assisted WPT-MEC system with a passive eavesdropper. We considered a harvest-then-offload protocol in which the AP charges the users in the first slot and the users use the harvested energy to offload their computation tasks in the second slot, assuming that the users can perform local computation while harvesting the energy. To maximize the number of secure computation task bits of users, we jointly optimized the AP transmit energy beamforming, the IRS phase shifts, the users’ transmit power, the time to harvest energy and offload tasks, and the local computation frequency. We developed an optimal iterative algorithm to solve this non-convex problem by using Taylor expansion method, SDR and the Lagrange duality, and verify the convergence of the proposed algorithm. The numerical results demonstrated that the secure computation task bits of the proposed scheme are significantly higher than that of the other three schemes, which proves the superiority of the proposed scheme. ",
+        "bbox": [
+            65,
+            465,
+            496,
+            736
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            250,
+            761,
+            341,
+            773
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] M. Chiang and T. Zhang, “Fog and IoT: An overview of research opportunities,” IEEE Internet Things J., vol. 3, no. 6, pp. 854–864, Dec. 2016. ",
+            "[2] W. Shi, C. Jie, Z. Quan, Y. Li, and L. Xu, “Edge computing: Vision and challenges,” IEEE Internet Things J., vol. 3, no. 5, pp. 637–646, Oct. 2016. ",
+            "[3] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “A survey on mobile edge computing: The communication perspective,” IEEE Commun. Surveys Tuts., vol. 19, no. 4, pp. 2322–2358, Fourth Quarter 2017. ",
+            "[4] S. Bi, C. K. Ho, and R. Zhang, “Wireless powered communication: Opportunities and challenges,” IEEE Commun. Mag., vol. 53, no. 4, pp. 117–125, Apr. 2015. ",
+            "[5] P. Ramezani and A. Jamalipour, “Toward the evolution of wireless powered communication networks for the future Internet of Things,” IEEE Netw., vol. 31, no. 6, pp. 62–69, Nov./Dec. 2017. "
+        ],
+        "bbox": [
+            72,
+            782,
+            494,
+            943
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[6] F. Wang, J. Xu, X. Wang, and S. Cui, “Joint offloading and computing optimization in wireless powered mobile-edge computing systems,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 1784–1797, Mar. 2018. ",
+            "[7] S. Bi and Y. J. Zhang, “Computation rate maximization for wireless powered mobile-edge computing with binary computation offloading,” IEEE Trans. Wireless Commun., vol. 17, no. 6, pp. 4177–4190, Jun. 2018. ",
+            "[8] F. Wang, “Computation rate maximization for wireless powered mobile edge computing,” in Proc. 23rd Asia-Pacific Conf. Commun., 2017, pp. 1–6. ",
+            "[9] X. Hu, K.-K. Wong, and K. Yang, “Wireless powered cooperation-assisted mobile edge computing,” IEEE Trans. Wireless Commun., vol. 17, no. 4, pp. 2375–2388, Apr. 2018. ",
+            "[10] Y. Liu, H.-H. Chen, and L. Wang, “Physical layer security for next generation wireless networks: Theories, technologies, and challenges,” IEEE Commun. Surveys Tut., vol. 19, no. 1, pp. 347–376, First Quarter 2017. ",
+            "[11] J. Xu and J. Yao, “Exploiting physical-layer security for multiuser multicarrier computation offloading,” IEEE Wireless Commun. Lett., vol. 8, no. 1, pp. 9–12, Feb. 2019. ",
+            "[12] W. Wu, F. Zhou, R. Q. Hu, and B. Wang, “Energy-efficient resource allocation for secure NOMA-Enabled mobile edge computing networks,” IEEE Trans. Commun., vol. 68, no. 1, pp. 493–505, Jan. 2020. ",
+            "[13] T. Bai, J. Wang, Y. Ren, and L. Hanzo, “Energy-efficient computation offloading for secure UAV-Edge-Computing systems,” IEEE Trans. Veh. Technol., vol. 68, no. 6, pp. 6074–6087, Jun. 2019. ",
+            "[14] X. Wang, W. Wu, B. Lyu, and H. Wang, “Delay minimization for secure NOMA mobile-edge computing,” in Proc. IEEE 19th Int. Conf. Commun. Technol., 2019, pp. 1529–1534. ",
+            "[15] H. Lin, Y. Cao, Y. Zhong, and P. Liu, “Secure computation efficiency maximization in NOMA-Enabled mobile edge computing networks,” IEEE Access, vol. 7, pp. 87504–87512, 2019. ",
+            "[16] B. Li, W. Wu, W. Zhao, and H. Zhang, “Security enhancement with a hybrid cooperative NOMA scheme for MEC system,” IEEE Trans. Veh. Technol., vol. 70, no. 3, pp. 2635–2648, Mar. 2021. ",
+            "[17] Q. Wu, S. Zhang, B. Zheng, C. You, and R. Zhang, “Intelligent reflecting surface-aided wireless communications: A tutorial,” IEEE Trans. Commun., vol. 69, no. 5, pp. 3313–3351, Sep. 2022. ",
+            "[18] Q. Wu and R. Zhang, “Towards smart and reconfigurable environment: Intelligent reflecting surface aided wireless network,” IEEE Commun. Mag., vol. 58, no. 1, pp. 106–112, Jan. 2020. ",
+            "[19] M. A. ElMossallamy, H. Zhang, L. Song, K. G. Seddik, Z. Han, and G. Y. Li, “Reconfigurable intelligent surfaces for wireless communications: Principles, challenges, and opportunities,” IEEE Trans. Cogn. Commun. Netw., vol. 6, no. 3, pp. 990–1002, Sep. 2020. ",
+            "[20] A. Almohamad et al., “Smart and secure wireless communications via reflecting intelligent surfaces: A short survey,” IEEE Open J. Commun. Soc., vol. 1, pp. 1442–1456, Sep. 2020. ",
+            "[21] X. Guan, Q. Wu, and R. Zhang, “Intelligent reflecting surface assisted secrecy communication: Is artificial noise helpful or not?,” IEEE Wireless Commun. Lett., vol. 9, no. 6, pp. 778–782, Jun. 2020. ",
+            "[22] Z. Chu, W. Hao, P. Xiao, and J. Shi, “Intelligent reflecting surface aided multi-antenna secure transmission,” IEEE Wireless Commun. Lett., vol. 9, no. 1, pp. 108–112, Jan. 2020. ",
+            "[23] Q. Wang, F. Zhou, R. Q. Hu, and Y. Qian, “Energy-efficient beamforming and cooperative jamming in IRS-Assisted MISO networks,” in Proc. IEEE Int. Conf. Commun., 2020, pp. 1–7. ",
+            "[24] T. Bai, C. Pan, Y. Deng, M. Elkashlan, A. Nallanathan, and L. Hanzo, “Latency minimization for intelligent reflecting surface aided mobile edge computing,” IEEE J. Sel. Areas Commun., vol. 38, no. 11, pp. 2666–2682, Nov. 2020. ",
+            "[25] Y. Liu et al., “Intelligent reflecting surface meets mobile edge computing: Enhancing wireless communications for computation offloading,” 2020, arXiv:2001.07449. ",
+            "[26] Z. Chu, P. Xiao, M. Shojafar, D. Mi, J. Mao, and W. Hao, “Intelligent reflecting surface assisted mobile edge computing for Internet of Things,” IEEE Wireless Commun. Lett., vol. 10, no. 3, pp. 619–623, Mar. 2021. ",
+            "[27] Z. Chu, Z. Zhu, F. Zhou, M. Zhang, and N. Al-Dhahir, “Intelligent reflecting surface assisted wireless powered sensor networks for Internet of Things,” IEEE Trans. Commun., vol. 69, no. 7, pp. 4877–4889, Jul. 2021. ",
+            "[28] Y. Zheng, S. Bi, Y.-J. A. Zhang, X. Lin, and H. Wang, “Joint beamforming and power control for throughput maximization in IRS-Assisted MISO WPCNs,” IEEE Internet Things J., vol. 8, no. 10, pp. 8399–8410, May 2021. ",
+            "[29] X. Li, C. Zhang, C. He, G. Chen, and J. A. Chambers, “Sum rate maximization in IRS-assisted wireless power communication networks,” IEEE Internet Things J., vol. 8, no. 19, pp. 14959–14970, Oct. 2021. "
+        ],
+        "bbox": [
+            510,
+            80,
+            939,
+            944
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "3058 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 4, APRIL 2024 ",
+        "bbox": [
+            526,
+            39,
+            937,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[30] Q. Wu and R. Zhang, “Joint active and passive beamforming optimization for intelligent reflecting surface assisted SWIPT under QoS constraints,” IEEE J. Sel. Areas Commun., vol. 38, no. 8, pp. 1735–1748, Aug. 2020. ",
+            "[31] A. Khalili, S. Zargari, Q. Wu, D. W. K. Ng, and R. Zhang, “Multi-objective resource allocation for IRS-Aided SWIPT,” IEEE Wireless Commun. Lett., vol. 10, no. 6, pp. 1324–1328, Jun. 2021. ",
+            "[32] G. Chen and Q. Wu, “Computation rate maximization for IRS-aided wireless powered MEC systems,” in Proc. IEEE Wireless Commun. Netw. Conf., 2022, pp. 417–422. ",
+            "[33] Y. M. Park, S. S. Hassan, Y. K. Tun, Z. Han, and C. S. Hong, “Joint resources and phase-shift optimization of MEC-enabled UAV in IRSassisted 6G thz networks,” in Proc. IEEE/IFIP Netw. Operations Manage. Symp., 2022, pp. 1–7. ",
+            "[34] F. Wang and X. Zhang, “IRS/UAV-based edge-computing/trafficoffloading over RF-powered 6G mobile wireless networks,” in Proc. IEEE Wireless Commun. Netw. Conf., 2022, pp. 1272–1277. ",
+            "[35] S. Mao et al., “Reconfigurable intelligent surface-assisted secure mobile edge computing networks,” IEEE Trans. Veh. Technol., vol. 71, no. 6, pp. 6647–6660, Jun. 2022. ",
+            "[36] Y. Wen, T.-X. Zheng, Y. Tong, X. Chen, M. Lin, and W. Wang, “Energyefficient resource allocation for intelligent reflecting surface aided MEC networks,” in Proc. IEEE Int. Conf. Commun. Workshops, 2022, pp. 1–6. ",
+            "[37] S. Mao et al., “Computation rate maximization for intelligent reflecting surface enhanced wireless powered mobile edge computing networks,” IEEE Trans. Veh. Technol., vol. 70, no. 10, pp. 10820–10831, Oct. 2021. ",
+            "[38] P. Chen, B. Lyu, Y. Liu, H. Guo, and Z. Yang, “Multi-IRS assisted wirelesspowered mobile edge computing for Internet of Things,” IEEE Trans. Green Commun. Netw., vol. 7, no. 1, pp. 130–144, Mar. 2023. ",
+            "[39] X. Yu, D. Xu, and R. Schober, “Enabling secure wireless communications via intelligent reflecting surfaces,” in Proc. IEEE Glob. Commun. Conf., 2019, pp. 1–6. ",
+            "[40] M. Cui, G. Zhang, and R. Zhang, “Secure wireless communication via intelligent reflecting surface,” IEEE Wireless Commun. Lett., vol. 8, no. 5, pp. 1410–1414, Oct. 2019. ",
+            "[41] Q. Wu and R. Zhang, “Intelligent reflecting surface enhanced wireless network via joint active and passive beamforming,” IEEE Trans. Wireless Commun., vol. 18, no. 11, pp. 5394–5409, Nov. 2019. ",
+            "[42] Q. Shi, M. Razaviyayn, Z.-Q. Luo, and C. He, “An iteratively weighted MMSE approach to distributed sum-utility maximization for a MIMO interfering broadcast channel,” IEEE Trans. Signal Process., vol. 59, no. 9, pp. 4331–4340, Sep. 2011. ",
+            "[43] Z.-Q. Luo, W.-K. Ma, A. M.-C. So, Y. Ye, and S. Zhang, “Semidefinite relaxation of quadratic optimization problems,” IEEE Signal Process. Mag., vol. 27, no. 3, pp. 20–34, May 2010. "
+        ],
+        "bbox": [
+            55,
+            77,
+            491,
+            583
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/538e55de5ac15dc54d1342b2193b4fd3dd004574e2068cef84af16c9959c1bab.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal suit and tie (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            648,
+            185,
+            765
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Baogang Li (Member, IEEE) received the MS degree in communication and information system from North China Electric Power University, China, in 2006, and the PhD degree in electromagnetic field and microwave technology from the Beijing University of Posts and Telecommunications, Beijing, China, in 2012. Since 2006, he has been with the North China Electric Power University, where he is currently a professor. From 2016 to 2017, he was a visiting scholar with the Department of Electrical Engineering, University of Sydney, Sydney, Australia. His research interests include wireless communication, Industrial Internet, and smart grid communication. ",
+        "bbox": [
+            198,
+            647,
+            486,
+            773
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            58,
+            773,
+            486,
+            795
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/ff49d144b085c3b3cdaf89f77ac1236f545d120afb3b6926ce21d13587c4b53a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal attire against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            82,
+            627,
+            198
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Jia Liao received the BEng degree in communication engineering from North China Electric Power University, China, in 2021. He is currently working towards the MS degree in communication and information engineering with North China Electric Power University, China. His research interests include wireless communication, physical layer security, optimization technology, and wireless resource management. ",
+        "bbox": [
+            641,
+            80,
+            930,
+            174
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/04d2740c02434a08f51fba8c83a2b88e2f7badf0048338ed41da55844575f5e3.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a woman in formal attire against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            252,
+            627,
+            367
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Wenjing Wu received the BEng degree in communication engineering from the Taiyuan Institute of Technology, Taiyuan, China, in 2019, and the MS degree from North China Electric Power University, China, in 2022. Her research interests include wireless communication, physical layer security, optimization technology, and wireless resource management. ",
+        "bbox": [
+            641,
+            251,
+            930,
+            343
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/869a1d37b664840d0d068dd147c695909aaacfd51c6bbdc6f066acb5faa670eb.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a white shirt, standing in front of a bookshelf (no visible text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            422,
+            627,
+            537
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Yonghui Li (Fellow, IEEE) received the PhD degree from the Beijing University of Aeronautics and Astronautics, in November 2002. Since 2003, he has been with the Centre of Excellence in Telecommunications, the University of Sydney, Australia. He is now a professor and director of Wireless Engineering Laboratory in School of Electrical and Information Engineering, University of Sydney. He is the recipient of the Australian Queen Elizabeth II Fellowship, in 2008 and the Australian Future Fellowship, in 2012. His current research interests are in the area of wireless communications, with a particular focus on MIMO, millimeter wave communications, machine to machine communications, coding techniques and cooperative communications. He holds a number of patents granted and pending in these fields. He is now an editor for IEEE Transactions on Communications, IEEE Transactions on Vehicular Technology. He also served as the guest editor for several IEEE journals, such as IEEE Journal on Selected Areas in Communications, IEEE Communications Magazine, IEEE IoT Journal, IEEE Access. He received the best paper awards from IEEE International Conference on Communications (ICC) 2014, IEEE PIRMC 2017 and IEEE Wireless Days Conferences (WD) 2014. ",
+        "bbox": [
+            641,
+            421,
+            930,
+            546
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            547,
+            930,
+            660
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "LI et al.: INTELLIGENT REFLECTING SURFACE ASSISTED SECURE COMPUTATION OF WIRELESS POWERED MEC SYSTEM ",
+        "bbox": [
+            58,
+            39,
+            720,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "3059 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:24:40 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 11
+    }
+]
