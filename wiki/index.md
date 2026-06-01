@@ -151,6 +151,7 @@
 - [[fu-2025-otae-inference-lae-batching]] — Fu et al. 2025. Over-the-air edge inference for low-altitude airspace; diffusion-based online batching + beamforming.
 - [[du-2024-d2sac-aigc-asp-selection]] — Du et al. 2024. Edge AIGC-as-a-Service provider selection; diffusion decision generator (AGOD) inside SAC (**D2SAC**); beats 7 DRL baselines (IEEE TMC).
 - [[wang-2024-wipe-gai]] — Wang et al. 2024. **WiPe-GAI** — wireless perception guides GAI for edge AIGC; sequential multi-scale perception predicts the user skeleton + a diffusion model generates the optimal **pricing** incentive strategy (IEEE TMC).
+- [[du-2024-yolo-semcom-digital-twin]] — Du et al. 2024. **YOLO-based semantic communication** for **digital-twin** construction (apple orchard); a slimmed YOLOv7 (ELAN-H + SimAM) extracts semantic content from UAV images and transmission power is allocated by per-object importance — a confidence rule and a **diffusion-model-generated** scheme — cutting transmitted data ~91% on its case study (IEEE IoT-J).
 
 ### Generative-AI / GAN for ISAC & channels
 
@@ -391,6 +392,7 @@
 - [[task-oriented-communication]]
 - [[discriminant-gain]]
 - [[device-to-device-communication]]
+- [[digital-twin]]
 
 ### Aerial / network architectures
 
