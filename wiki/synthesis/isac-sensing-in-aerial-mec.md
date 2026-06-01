@@ -10,12 +10,15 @@ related:
   - "[[zhang-2025-gan-td3-isac-active-ris]]"
   - "[[tang-2024-iscc-uav-feel]]"
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
+  - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[integrated-sensing-computation-communication]]"
   - "[[physical-layer-security]]"
   - "[[ao-sdr-sca-convex-pipeline]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
+  - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-01
 ---
 
 # ISAC and sensing in aerial MEC
@@ -45,7 +48,24 @@ In [[tang-2024-iscc-uav-feel]], [[benaya-2025-aerial-isac-haps]], and [[yao-2025
 
 ### 2. Sensing as the thing the channel model must capture (GenAI)
 
-[[faisal-2025-cgan-ris-isac-channel]] and [[zhang-2025-gan-td3-isac-active-ris]] don't trade sensing against comm directly; they use **generative models** to handle the hard ISAC channel — a conditional GAN to estimate the RIS-assisted ISAC channel, and a GAN-enhanced TD3 to beamform with double active RIS. Sensing here is a property of the propagation environment the generative model learns.
+[[faisal-2025-cgan-ris-isac-channel]] and [[zhang-2025-gan-td3-isac-active-ris]] don't trade sensing against comm directly; they use **generative models** to handle the hard ISAC channel — a conditional GAN to estimate the RIS-assisted ISAC channel, and a GAN-enhanced TD3 to beamform with double active RIS. Sensing here is a property of the propagation environment the generative model learns. How those two generative methods relate to the GAI-as-decision sources elsewhere in the corpus is mapped in [[gai-generator-vs-optimizer-in-isac]].
+
+## Function coupling: where computation does and doesn't enter
+
+"Sensing + communication" is the common denominator, but only one source folds **computation/offloading** into the same optimization. The corpus's ISAC-family sources partition by which functions they actually couple:
+
+| Functions coupled | What is jointly optimized | Sources |
+|---|---|---|
+| **Sensing + communication** (two-function) | Beampattern / sensing SNR / CRB vs rate or secrecy — no compute workload | [[zhu-2024-sensing-comm-doppler-uav-swarm]] (min-max CRLB under SNR-loss), [[benaya-2025-aerial-isac-haps]] / [[yao-2025-secure-isac-dual-eavesdropping]] (secrecy + sensing), [[faisal-2025-cgan-ris-isac-channel]] / [[zhang-2025-gan-td3-isac-active-ris]] (channel/beamforming) |
+| **Sensing + computation + communication** (tri-function, ISCC) | Sensing quality feeds a compute workload whose latency/accuracy is the objective | [[tang-2024-iscc-uav-feel]] only |
+
+The grounded takeaways:
+
+- [[tang-2024-iscc-uav-feel]] is the **sole genuine tri-function source** in the corpus. Its [[integrated-sensing-computation-communication|ISCC]] formulation links UAV deployment to sensing quality (elevation angle → data-sample quality), bounds federated-edge-learning training loss via successful-sensing probability, and minimizes total training time by jointly optimizing deployment plus bandwidth/batch-size/position (the BBPO alternating-optimization scheme). Sensing, computation, and communication compete for the same onboard resources, so the trade is genuinely three-way.
+- [[zhu-2024-sensing-comm-doppler-uav-swarm]] is the clearest **sensing + communication-only** counterexample: it co-designs the Doppler-driven sensing-vs-communication trade-off (min-max CRLB under an SNR-loss constraint) for a UAV-swarm vehicular network, with **no MEC offloading** — sensing and a data link, nothing computed at the edge.
+- The secure-ISAC ([[benaya-2025-aerial-isac-haps]], [[yao-2025-secure-isac-dual-eavesdropping]]) and generative ([[faisal-2025-cgan-ris-isac-channel]], [[zhang-2025-gan-td3-isac-active-ris]]) designs likewise optimize sensing and communication (often with a secrecy/security axis) but carry no compute/offloading objective.
+
+This is the tri-function coupling gap: **ISAC and MEC remain largely separate threads in the corpus** — sensing is fused with communication and (in the secure designs) security, but the compute/offloading layer that dominates the rest of the wiki is welded onto sensing in exactly one source. It is the sensing-side mirror of the [[collaborative-beamforming-in-aerial-mec|collaborative-beamforming]] observation that no CB source carries a compute/offloading objective either.
 
 ## Solver convergence: the AO + SDR + SCA pipeline
 

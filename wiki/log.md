@@ -2,6 +2,33 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Synthesis-expansion pass (DERIVED layer — THEME A: ISAC / generative-AI roles; no new papers)
+
+Follow-up coverage-growth batch (synthesizer, not auditor): no new raw papers, grew the *derived* layer over the existing corpus from the ISAC-themed leads the prior synthesis pass deferred. Tree clean at `48e95cb` before starting. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). Every claim grounded against the parses (`raw/sources/<Folder>/full.md`) and the committed source pages before writing.
+
+### Pages created (1)
+
+- **`synthesis/gai-generator-vs-optimizer-in-isac`** (lead 8) — maps the 4 ISAC GAI sources into two architectural roles for the generative model: **physical-layer generator** ([[wang-gai-isac-physical-layer]] diffusion SSG, DoA MSE ~1.03° / CSI-compression −7.05 vs −2.46 dB at CR 1/64 — both verbatim in parse; year **not in parse**; [[faisal-2025-cgan-ris-isac-channel]] CGAN channel estimation) vs **decision-layer optimizer** ([[zhang-2024-gdmtd3-aerial-secure-cb]] diffusion-as-policy/actor; [[zhang-2025-gan-td3-isac-active-ris]] GAN-as-critic-regularizer — "boost the estimation accuracy of Q-value" + "performance and stability at the cost of computational complexity" verbatim). Identifies the architectural fusion gap (no source uses GAI at BOTH layers in one system) and ties it to the learning-first-vs-convex-first split in [[isac-sensing-in-aerial-mec]].
+
+### Pages refreshed / cross-links densified
+
+- **[[isac-sensing-in-aerial-mec]] refreshed (lead 4 — resolved by converging into the existing synthesis, not a near-duplicate page).** Added a **function-coupling matrix** distinguishing sensing+communication (two-function) sources from the **sole genuine tri-function ISCC source** [[tang-2024-iscc-uav-feel]]; grounded [[zhu-2024-sensing-comm-doppler-uav-swarm]] as sensing+comm with **no MEC offloading** (min-max CRLB under SNR-loss). States the tri-function coupling gap (ISAC and MEC remain largely separate threads; compute welded onto sensing in exactly one source) and mirrors it to the collaborative-beamforming no-compute-objective observation. Added the new GAI-roles cross-link.
+- **`related:` links added** (all bidirectional, none self-referential) on the 4 source pages ([[wang-gai-isac-physical-layer]], [[faisal-2025-cgan-ris-isac-channel]], [[zhang-2024-gdmtd3-aerial-secure-cb]], [[zhang-2025-gan-td3-isac-active-ris]]), the 2 concept pages ([[generative-ai-for-mec]], [[diffusion-model-as-optimizer]]), and [[collaborative-beamforming-in-aerial-mec]].
+- **Meta-docs:** [[index]] — +1 Synthesis entry. [[overview]] — analytical-layer synthesis tally 12→13 + named the GAI-role synthesis.
+
+### Leads resolved this batch
+
+- **Lead 8 (physical-layer GAI generator vs decision-layer optimizer)** — promoted to the new synthesis page (was deferred from the prior pass as "viable but lower-leverage"; grounded cleanly this batch).
+- **Lead 4 (sensing-comm-compute tri-function coupling gap)** — judged **not** to warrant a standalone page (would near-duplicate the two existing track maps); converged the explicit coupling matrix into [[isac-sensing-in-aerial-mec]] instead. No padding.
+
+### Toolkit
+
+No ratchet needed — `curation_status`, `linkcheck`, `process_refs`, `frontmatter_audit`, `corpus_counts` covered state detection, grounding discovery, and all commit gates. No reusable one-off arose; toolkit stable.
+
+### Gates (THEME A)
+
+**`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py --type synthesis`** = 13 pages, 0 errors. New page + edited meta-docs verified mojibake-free. Counts reconciled via `corpus_counts.py`: synthesis **12→13** (171 sources / 234 concepts / 71 entities / 41 derived).
+
 ## 2026-06-02 — Synthesis-expansion pass (DERIVED layer — DRL solver-design & constraint-handling theme; no new papers)
 
 A coverage-growth pass (synthesizer, not auditor): no new raw papers, grew the *derived* layer over the existing corpus from leads surfaced in a user exploration conversation. Tree clean at `faecd50` before starting. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4481 edges** → **516 / 4534** after the pass (+3 nodes, +53 edges).

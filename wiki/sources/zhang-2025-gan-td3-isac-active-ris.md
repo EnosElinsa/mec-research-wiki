@@ -14,8 +14,9 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[faisal-2025-cgan-ris-isac-channel]]"
   - "[[ye-2025-aigc-diffusion-contract]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Generative-Adversarial-Network-Enhanced DRL for ISAC With Double Active RISs

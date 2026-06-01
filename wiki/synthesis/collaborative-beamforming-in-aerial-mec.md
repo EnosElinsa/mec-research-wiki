@@ -14,6 +14,7 @@ related:
   - "[[salp-swarm-algorithm]]"
   - "[[physical-layer-security]]"
   - "[[diffusion-model-as-optimizer]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
 created: 2026-06-01
 updated: 2026-06-01
