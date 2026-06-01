@@ -1,0 +1,3036 @@
+[
+    {
+        "type": "text",
+        "text": "Enhancing AIoT Device Association With Task Offloading in Aerial MEC Networks ",
+        "text_level": 1,
+        "bbox": [
+            114,
+            71,
+            883,
+            140
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Jingxuan Chen , Peng Yang , Siqiao Ren , Zhongliang Zhao , Xianbin Cao , Senior Member, IEEE, and Dapeng Wu , Fellow, IEEE ",
+        "bbox": [
+            104,
+            145,
+            890,
+            181
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—Unmanned aerial vehicles (UAVs) have emerged as a promising solution for enhancing mobile-edge computing (MEC) networks. However, the integration of UAVs into MEC networks poses unique challenges, such as the presence of dynamic devices and complex resource allocation. This research investigates the problem of task offloading in a distributed MEC network with multiple ground and aerial base stations (UAV base stations). With a focus on the cost-sensitive nature of Internet of Things Devices (IoTDs), our objective is to maximize the Quality of Experience (QoE) in terms of average task response time and cache queue length in IoTDs by jointly optimizing device association, offloading decision, and UAV trajectory planning. To address the combinatorial and nonconvex nature of the problem, we propose an artificial intelligence (AI)-based optimization scheme. First, the association between IoTDs and stations is determined using a recursive selection and replacement transmission-ratebased (RSRT) algorithm. Subsequently, the offloading problem is formulated as a 0-1 Backpack Problem with variable value, for which we present a backtracking task offloading (BTO) algorithm. Additionally, we employ a multiagent deep deterministic policy gradient (MADDPG) approach to determine the trajectory planning of UAVs. Numerical results demonstrate the effectiveness of the proposed scheme in terms of reduction in average response time, and cache queue length in IoTDs within the MEC system when compared to benchmark schemes. ",
+        "bbox": [
+            73,
+            232,
+            491,
+            547
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Device association, MEC, multiagent deep deterministic policy gradient (MADDPG), task offloading, unmanned aerial vehicle (UAV). ",
+        "bbox": [
+            73,
+            554,
+            491,
+            594
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received 15 May 2023; revised 2 July 2023; accepted 19 July 2023. Date of publication 1 August 2023; date of current version 25 December 2023. This work was supported in part by the National Natural Science Foundation of China under Grant 61827901; in part by the Application Research of UAV Inspection System in Facilities and Bridges of Shuohuang Railway under Grant GJNY-19-90; and in part by the National Key Research and Development Program of China under Grant 2021YFB3901500. (Corresponding authors: Zhongliang Zhao; Xianbin Cao.) ",
+        "bbox": [
+            73,
+            662,
+            491,
+            755
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Jingxuan Chen and Siqiao Ren are with the School of Electronic and Information Engineering and the Key Laboratory of Advanced Technology of Near Space Information System, Ministry of Industry and Information Technology of China, Beihang University, Beijing 100191, China (e-mail: chenjingxuan@buaa.edu.cn; rsq0227@buaa.edu.cn). ",
+        "bbox": [
+            73,
+            753,
+            491,
+            811
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Peng Yang, Zhongliang Zhao, and Xianbin Cao are with the School of Electronic and Information Engineering and the Key Laboratory of Advanced Technology of Near Space Information System, Ministry of Industry and Information Technology of China, Beihang University, Beijing 100191, China, and also with the Department of Mathematics and Theories, Peng Cheng Laboratory, Shenzhen 518055, Guangdong, China (e-mail: yangp09@ buaa.edu.cn; zhaozl@buaa.edu.cn; xbcao@buaa.edu.cn). ",
+        "bbox": [
+            73,
+            811,
+            491,
+            890
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Dapeng Wu is with the Department of Computer Science, City University of Hong Kong, Hong Kong (e-mail: dpwu@ieee.org). ",
+        "bbox": [
+            73,
+            890,
+            491,
+            912
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/JIOT.2023.3300011 ",
+        "bbox": [
+            88,
+            912,
+            375,
+            925
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            645,
+            231,
+            782,
+            244
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "N CONTRAST to cloud computing, edge computing is I situated in closer proximity to terminal devices, thereby facilitating superior computing and communication services. Nonetheless, the burgeoning expansion of Internet of Things Devices (IoTDs) has rendered terrestrial infrastructure increasingly inadequate in addressing the demands of numerous wireless applications that necessitate substantial bandwidth [1] and heterogeneous Quality of Service (QoS) [2]. A viable solution to surmount this challenge involves deploying edge servers aerially to bolster ground base stations (GBSs). Moreover, aerial base stations can augment the likelihood of Line-of-Sight (LoS) links, particularly in specialized communication contexts, such as natural disasters and mountainous regions characterized by intricate topography. Consequently, unmanned aerial vehicles (UAVs) have experienced a surge in industrial and commercial adoption, attributable to their inherent flexibility, high mobility, and cost effectiveness. ",
+        "bbox": [
+            501,
+            250,
+            924,
+            526
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "In 2017, the European Telecommunications Standards Institute (ETSI) rebranded mobile-edge computing as multiaccess edge computing (MEC), which offers efficacious cloud computing capabilities for IoTDs within the access network. Concurrently, UAVs, functioning as MEC servers, have emerged as a crucial means of delivering computing resources to IoTDs with adaptability. Unlike fixed edge servers, the dynamic nature of UAVs necessitates the application of algorithms by researchers to determine the optimal edge server placement [3]. As a result, UAV-assisted MEC networks effectively mitigate the paucity of spectrum and computing resources while reducing access and response time [4]. ",
+        "bbox": [
+            501,
+            527,
+            921,
+            727
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Conventional cloud-based architectures collect data and perform calculations centrally via cloud servers. However, distributed architectures present a multitude of benefits over centralized computing. In a distributed system, tasks are processed proximate to data sources or end users, engendering reduced latency and expedited response times. This characteristic is especially critical for time-sensitive applications or users dispersed across vast geographical areas. In this study, we examine the task offloading challenge within a distributed MEC network facilitated by multiple UAVs in order to proficiently manage elevated communication latency caused by congestion while concurrently diminishing the communication load. ",
+        "bbox": [
+            501,
+            728,
+            921,
+            922
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "174 ",
+        "bbox": [
+            76,
+            35,
+            98,
+            45
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 1, 1 JANUARY 2024 ",
+        "bbox": [
+            532,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "2327-4662 -c 2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            196,
+            931,
+            799,
+            944
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            290,
+            944,
+            705,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A. Related Work ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            70,
+            192,
+            83
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A significant portion of the scholarly investigation has been centered on a singular UAV-based MEC network [5], [6], [7], [8]. In a pioneering study, Mukherjee et al. [5] probed the ideal offloading strategy in a standalone UAV-assisted MEC system. Their primary objective was to minimize the weighted sum of delay and energy consumption. Li et al. [6] further broadened this paradigm, emphasizing the maximization of UAV energy efficiency. This was accomplished through the simultaneous optimization of the UAV trajectory, user transmission power, and computation load allocation. The methodology they employed involved the successive convex approximation (SCA) technique coupled with the Dinkelbach algorithm. In contrast, Han et al.’s research [7] shifted its focus to two operational modes: 1) centralized-MEC computation and 2) distributed-MEC computation. They introduced a joint rate splitting problem to optimally distribute rates for transmission links between two antenna arrays on the UAV. In addition, Fragkos et al. [8] proposed a robust data offloading strategy for users. In their theoretical construct, a UAV-MEC hovers over ground-based nodes and leverages alternate reinforcement learning methodologies. ",
+        "bbox": [
+            73,
+            88,
+            491,
+            405
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Considering the constraints inherent in a single UAV within a MEC network, particularly the limited capacity for computing and communication, the exploration of multi-UAV task offloading has emerged. However, optimizing the offloading decision while simultaneously considering the trajectory planning of multiple UAVs presents considerable challenges. A number of studies have thus opted to focus solely on offloading policies while maintaining predetermined UAV mobility patterns. These include scenarios where UAVs hover or follow a prescheduled flight path, moving at a fixed speed in a designated direction [9], or UAVs flying at variable speeds within a predefined area [10]. In other instances, UAVs have been depicted as flying in formation along a circular path [11], being uniformly deployed [12], or each UAV hovers over a specific, fixed area [13], [14]. These various settings serve to simplify the offloading decision-making process, yet also highlight the need for further research that fully integrates dynamic UAV movement and task offloading optimization. ",
+        "bbox": [
+            73,
+            405,
+            491,
+            678
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In the literature, a variety of approaches have been adopted to tackle the complex issue of UAV path planning and task offloading. For instance, Miao et al. [15] presented a drone-swarm-assisted MEC algorithm, optimizing path planning and task offloading. Prioritizing monitoring areas, drone energy, and target distances, the proposed algorithm maximizes offloading services while enhancing energy efficiency and reducing latency. ",
+        "bbox": [
+            73,
+            676,
+            491,
+            799
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In a different study, Qian et al. [16] proposed a top-layered algorithm based on deep reinforcement learning (DRL). Their goal was to minimize the total energy consumption by jointly optimizing several factors: the offloaded workload of the UAVs, the transmit power, the computing resource allocation, and the UAV trajectory. Meanwhile, in [17], a novel DRL technique was introduced, designed to make optimal computation offloading decisions and flight orientation choices concurrently for multi-UAV cooperative target search. Furthermore, Bai et al. [18] put forth TANTO, a pioneering task offloading scheme for Internet of Things (IoT) devices in regions lacking available communication infrastructure. Also, in the study presented by Bai et al. [19], a novel framework termed the intelligent active data processing (IADP) scheme is introduced. The IADP scheme functions by intelligently and proactively disseminating data information. It incorporates active data processing with deadline priority and integrates artificial intelligence (AI)-based UAV trajectory optimization to determine the most efficient transmission paths. This wide array of studies underscores the innovation and diversity of approaches being employed to address the challenges inherent in multi-UAVs-based MEC networks. Chen et al. [20] proposed a low-complexity iterative algorithm for a MEC-aided-UAV system, optimizing UAV trajectory, transmit power, computation ratio, and base station selection, aiming to secure task offloading while considering practical constraints. ",
+        "bbox": [
+            73,
+            799,
+            491,
+            950
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            69,
+            921,
+            311
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "However, a fundamental technical challenge inherent in this problem is the dynamic coordination of trajectories and offloading amongst these UAVs, given their computing tasks. The issue is further complicated by the necessity to make dynamic decisions to ensure the system’s communication capabilities within a complex environment. Moreover, a centralized architecture, while potentially useful, may introduce a significant degree of communication latency, subsequently impacting the overall efficiency of communication. As a result, to circumvent this issue, some researchers [21], [22], [23], [24] have proposed a distributed architecture. This architectural design aims to resolve the latency issue and bolster communication efficiency, thus addressing the inherent complexities of coordinating multi-UAV operations in MEC networks. ",
+        "bbox": [
+            503,
+            311,
+            921,
+            522
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In the academic literature, various studies have proposed solutions to optimize the performance of distributed UAVaided MEC networks. For instance, Chen et al. [21] developed a multiagent reinforcement learning framework designed to devise a cooperative movement strategy for multiple cacheenabled UAVs, taking user mobility into account. In a different study, Yan et al. [22] introduced RUDDER, an innovative algorithm for data offloading in IoT scenarios where network coverage is absent. RUDDER optimizes UAV scheduling, reducing cache queue length and prolonging UAV operational time. In another research endeavor, Lakew et al. [23] proposed the optimization of computing, communication, and energy resources in aerial access networks, which consist of high-altitude platforms and UAVs. The aim of this optimization is to maximize service satisfaction and minimize energy consumption for IoTDs. To facilitate the challenge, a deep actor–critic algorithm is proposed to demonstrate superior performance and reliable convergence. Yang et al. [24] presented an online algorithm to optimize energy and task processing rates in a UAV-enabled MEC system serving distributed energy-harvesting devices. We summarize the difference between the existing researches and our work in Table I. ",
+        "bbox": [
+            503,
+            522,
+            921,
+            869
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "B. Motivation and Contribution ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            886,
+            723,
+            898
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The objective of this article is to achieve a tradeoff between response time and cache queue length of IoTDs in accordance with the computing requirements of IoTDs. Our work focuses on enhancing the performance of the overall Quality of Experience (QoE) of the system through the optimization of device association, task offloading, and control of UAV’s motion. To the best of our knowledge, the current body of research on multi-UAV MEC networks remains insufficient, particularly in regards to combining task offloading and UAV movement based on DRL. The utilization of DRL-based approaches in multi-UAV MEC networks poses a significant challenge in terms of identifying appropriate targets and balancing the tradeoff between exploration and exploitation. Furthermore, given the highly dynamic nature of UAVs, designing algorithms with low time complexity to meet real-time requirements represents an additional challenge. The main contributions of our work are summarized as follows. ",
+        "bbox": [
+            503,
+            905,
+            921,
+            950
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: ENHANCING AIoT DEVICE ASSOCIATION WITH TASK OFFLOADING IN AERIAL MEC NETWORKS ",
+        "bbox": [
+            75,
+            34,
+            668,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "175 ",
+        "bbox": [
+            900,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/79111e0d13d7db04f3b18f8cde9ed0063d9ef8cdf01d1f728370f050c377c7f6.jpg",
+        "table_caption": [
+            "TABLE I COMPARISON BETWEEN OUR WORK AND THE EXISTING LITERATURE "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Reference</td><td>Single UAV</td><td>Multi UAV</td><td>MEC</td><td>Path planning</td><td>Offloading decision</td><td>Reinforcement learning (e.g.Q-learning)</td><td>Multi agent</td></tr><tr><td>[5]</td><td>√</td><td></td><td>√</td><td></td><td>√</td><td>√</td><td></td></tr><tr><td>[6]</td><td>√</td><td></td><td></td><td>√</td><td></td><td></td><td></td></tr><tr><td>[7]</td><td>√</td><td>√</td><td>√</td><td></td><td></td><td></td><td>√</td></tr><tr><td>[8]</td><td>√</td><td></td><td>√</td><td></td><td>√</td><td>√</td><td></td></tr><tr><td>[9]</td><td></td><td>√</td><td>√</td><td></td><td>√</td><td>√</td><td>√</td></tr><tr><td>[10]</td><td></td><td>√</td><td></td><td></td><td>√</td><td>√</td><td></td></tr><tr><td>[11]</td><td></td><td>√</td><td>√</td><td></td><td></td><td>√</td><td>√</td></tr><tr><td>[12]</td><td></td><td>√</td><td>√</td><td></td><td>√</td><td>√</td><td></td></tr><tr><td>[13]</td><td></td><td>√</td><td>√</td><td></td><td>√</td><td></td><td></td></tr><tr><td>[14]</td><td></td><td>√</td><td>√</td><td></td><td>√</td><td></td><td></td></tr><tr><td>[15]</td><td></td><td>√</td><td>√</td><td>√</td><td>√</td><td></td><td></td></tr><tr><td>[16]</td><td></td><td>√</td><td></td><td>√</td><td>√</td><td>√</td><td></td></tr><tr><td>[17]</td><td></td><td>√</td><td></td><td>√</td><td>√</td><td>√</td><td></td></tr><tr><td>[18]</td><td></td><td>√</td><td></td><td>√</td><td>√</td><td></td><td></td></tr><tr><td>[19]</td><td></td><td>√</td><td>√</td><td>√</td><td></td><td></td><td></td></tr><tr><td>[20]</td><td></td><td>√</td><td>√</td><td>√</td><td>√</td><td></td><td></td></tr><tr><td>[21]</td><td></td><td>√</td><td>√</td><td>√</td><td></td><td>√</td><td>√</td></tr><tr><td>[22]</td><td></td><td>√</td><td></td><td>√</td><td></td><td>√</td><td>√</td></tr><tr><td>[23]</td><td></td><td>√</td><td>√</td><td></td><td>√</td><td></td><td>√</td></tr><tr><td>[24]</td><td></td><td>√</td><td>√</td><td></td><td>√</td><td></td><td>√</td></tr><tr><td>Our Work</td><td></td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td></tr></table>",
+        "bbox": [
+            145,
+            97,
+            841,
+            426
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            454,
+            491,
+            665
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1) This article investigates the optimization problem of maximizing the long-term reward with regard to response time of tasks and cache queue of IoTDs by jointly optimizing device association, task offloading, and UAV movement. Moreover, we incorporate the constraints of energy consumption of UAV movement and MEC server’s computing capacity. ",
+        "bbox": [
+            89,
+            666,
+            491,
+            772
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2) We present a groundbreaking methodology, designated as recursive selection and replacement transmission-ratebased (RSRT), devised to address the issue of IoT device association. The proposed technique employs a greedy algorithmic principle to prioritize IoT devices exhibiting the greatest probability of attaining optimal channel quality. This method encompasses a recursive process of selecting and replacing IoT devices contingent on their transmission rates, with the objective of augmenting the efficiency and effectiveness of IoT device association procedures. Furthermore, the operations of the ",
+        "bbox": [
+            89,
+            772,
+            491,
+            938
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "residual IoT devices are provisionally retained in a cache queue until the corresponding devices secure adequate communication resources. ",
+        "bbox": [
+            542,
+            454,
+            921,
+            498
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3) We formulate a backtracking task offloading (BTO) algorithm characterized by low time complexity. Specifically, we initially redefine the task offloading problem as a 0-1 knapsack problem with variable value. Subsequently, we deduce the priority order of the solution space and devise a pruning strategy in accordance with the constraint conditions. Ultimately, the optimal offloading strategy is acquired through a backtracking process. ",
+        "bbox": [
+            521,
+            500,
+            921,
+            635
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "4) We apply the multiagent deep deterministic policy gradient (MADDPG) algorithm to UAV movement control. As an autonomous learning agent, each UAV generates a minimal amount of data information, which serves as state training data for reinforcement learning. Moreover, we ascertain the optimal hyperparameters that yield the most favorable model training outcomes through extensive numerical simulations. Subsequently, we juxtapose the RSRT and BTO algorithms with other benchmark algorithms. The simulation outcomes reveal that the proposed algorithm can efficaciously decrease both the response time and cache queue length. ",
+        "bbox": [
+            521,
+            636,
+            921,
+            816
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The remainder of this manuscript is structured in the following manner. In Section II, we present the system model. Subsequently, Section III elaborates on the formulation of the optimization problem. In Section IV, we expound upon the specific solution to the aforementioned optimization problem. The efficacy of the proposed algorithm is demonstrated via simulation outcomes in Section V. Finally, we provide concluding remarks in Section VI. ",
+        "bbox": [
+            503,
+            816,
+            921,
+            936
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "176 ",
+        "bbox": [
+            78,
+            35,
+            98,
+            45
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 1, 1 JANUARY 2024 ",
+        "bbox": [
+            534,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/efe61db868dd157f47ce54bd19471882134ab7c31d366ef876a096a5a94c8fe5.jpg",
+        "image_caption": [
+            "Fig. 1. Enhanced AIoT aerial MEC network scenario. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"UAV movement\"] --> B[\"MEC Server\"]\n    B --> C[\"Unserved UE\"]\n    C --> D[\"BSRBC Server\"]\n    D --> E[\"NIO/OS\"]\n    E --> F[\"LOS\"]\n    F --> G[\"Car\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fcc,stroke:#333\n    style E fill:#cff,stroke:#333\n    style F fill:#ffc,stroke:#333\n    style G fill:#fcc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            94,
+            64,
+            475,
+            250
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            210,
+            285,
+            356,
+            299
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We consider a MEC network topology, which is consisted of $M ^ { b }$ BSs and $M ^ { u }$ UAVs underlaid with MEC servers. For brief description, the set of $M ^ { b }$ MEC servers on BSs is denoted by ${ \\mathcal { D } } _ { b } = \\{ d _ { 0 } , \\ldots , d _ { M _ { b } - 1 } \\}$ , and the set of $\\mathcal { D } _ { u }$ MEC servers on UAVs is denoted by $\\mathcal { D } _ { u } = \\{ d _ { M ^ { b } + 1 } , \\dotsc , d _ { M _ { b } + M _ { u } - 1 } \\}$ . Then, the set of all the MEC servers can be denoted by $\\mathcal { D } = \\mathcal { D } _ { b }$ ∪ Du. N IoTDs, represented by ${ \\mathcal U } \\ : = \\ : \\{ u _ { 0 } , \\ldots , u _ { N - 1 } \\}$ , are distributed within the geographical area with $L \\times L$ square meters. In this scenario, the UAV takes off from its initial position $P _ { j } ^ { \\mathrm { i n i t } } = [ x _ { j } ^ { \\mathrm { i n i t } } , y _ { j } ^ { \\mathrm { i n i t } } , 0 ]$ to serve the IoTDs and eventually returns to $P _ { j } ^ { \\mathrm { i n i t } }$ within the total duration T . At time step τ , the positions of $d _ { j }$ and $u _ { i }$ are, respectively, denoted by $\\omega _ { d _ { j } } ( \\tau ) =$ $[ x _ { d _ { j } } ( \\tau ) , y _ { d _ { j } } ( \\tau ) , z _ { d _ { j } } ( \\tau ) ]$ and $\\omega _ { u _ { i } } ( \\tau ) = [ x _ { d _ { j } } ( \\tau ) , y _ { d _ { j } } ( \\tau ) , 0 ] .$ . Also, let I and $\\mathcal { I }$ represent the set of indexes of $\\dot { \\mathcal { U } }$ and $\\mathcal { D } .$ The considered aerial MEC network scenario is shown in Fig. 1. ",
+        "bbox": [
+            73,
+            304,
+            491,
+            531
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The computing task $T _ { i } ( t ) = \\{ l _ { i } ^ { t } , \\phi _ { i } ^ { t } \\}$ is randomly generated on $u _ { i }$ and stored in the cache queue $Q _ { i } ( \\tau )$ of length $L _ { i } ( \\tau )$ , where $l _ { i } ^ { t }$ and $\\phi _ { i } ^ { t }$ represent the amount of task data and the computing intensity (CPU-Cycles/bit), respectively. Different from the current literature that the computation task arrives at $u _ { i }$ with a similar computation intensity [25], [26], [27], we set several levels of computation intensity corresponding to different types of computing task. Moreover, we define $t ^ { \\mathrm { { o p t } } }$ as the optimal latency experience. It has the probability that executing the task on local does not satisfy the latency limitation, by the time, the IoTD offloads the fraction of the task queue to the MEC server. ",
+        "bbox": [
+            73,
+            532,
+            490,
+            712
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "It is worth noting that the computing task is indivisible, namely, the task length cannot be simply divided into two parts with an offloading ratio like [25], [27], and [14]. Thus, we can only offload a subset of each IoTD’s task queue at each time step. Let $\\begin{array} { r } { \\mathcal { B } ( \\tau ) = \\{ \\mathcal { B } _ { 0 } ( \\tau ) , \\ldots , \\mathcal { B } _ { i } ( \\tau ) , \\ldots , \\mathcal { B } _ { N - 1 } ( \\tau ) \\} } \\end{array}$ represent the offloading strategy at time step τ , and $B _ { i } ( \\tau ) =$ $\\{ \\beta _ { i } ^ { 0 } ( \\tau ) , \\ldots , \\beta _ { i } ^ { t } ( \\tau ) , \\ldots , \\beta _ { i } ^ { \\tau } ( \\tau ) \\} , t \\ \\in \\ [ 0 , \\tau ] .$ , where $\\beta _ { i } ^ { t } ( \\tau ) \\in$ {0, 1} indicates whether $u _ { i }$ offloads the computation task $T _ { i } ( t )$ at time step τ . We further denote by $L _ { i } ( \\tau )$ the cache queue length of $u _ { i }$ with the maximum length $L _ { i } ^ { \\mathrm { m a x } }$ . When $L _ { i } ( \\tau - 1 ) + l _ { i } ( \\tau ) > L _ { i } ^ { \\mathrm { m a x } }$ , the computation task $T _ { i } ( \\tau )$ is lost and unrecoverable. ",
+        "bbox": [
+            73,
+            713,
+            491,
+            893
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. UAV Movement Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            911,
+            253,
+            924
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "At time step τ , the UAV with MEC server $d _ { j }$ mounted adaptively generates a movement strategy $\\mathcal { M } _ { j } ( \\tau ) = \\{ m _ { j } ( \\tau )$ , $\\alpha _ { j } ( \\tau ) , \\theta _ { j } ( \\tau ) \\} ( j \\geq M _ { b } )$ , which is characterized by: $1 ) \\ \\mathcal { M } _ { j } ( \\tau )$ is a vector in 3-D polar coordinates; 2) due to the limitations of battery life and flying speed of UAVs, we set a constant $\\nu _ { j } ^ { \\operatorname* { m a x } }$ to present the maximum flying speed (we consider the calculation of maximum movement distance $m _ { j } ^ { \\operatorname* { m a x } } ( \\tau )$ in subsequent); and 3) UAV $d _ { j }$ flies in a direction with the azimuth angle $\\alpha _ { j } ( \\tau ) \\in [ 0 , 2 \\pi )$ and the pitch angle $\\theta _ { j } ( \\tau ) \\in [ - \\pi , \\pi ]$ at time step τ . Therefore, the 3-D position coordinates of the UAV $d _ { j }$ are updated as follows: ",
+        "bbox": [
+            73,
+            930,
+            490,
+            960
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            69,
+            921,
+            205
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {d _ {j}} (\\tau + 1) = x _ {d _ {j}} (\\tau) + m _ {j} (\\tau) \\cos \\alpha_ {j} (\\tau) \\sin \\theta_ {j} (\\tau)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            555,
+            220,
+            867,
+            237
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {d _ {j}} (\\tau + 1) = y _ {d _ {j}} (\\tau) + m _ {j} (\\tau) \\sin \\alpha_ {j} (\\tau) \\sin \\theta_ {j} (\\tau)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            555,
+            239,
+            864,
+            255
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {d j} (\\tau + 1) = z _ {d j} (\\tau) + m _ {j} (\\tau) \\cos \\theta_ {j} (\\tau). \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            558,
+            258,
+            919,
+            275
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, we analyze the factors that affect the maximum flying distance $m _ { j } ^ { \\operatorname* { m a x } } ( \\tau )$ of the UAV $d _ { j } .$ Let $\\nu _ { j } ( \\tau )$ denote the flying velocity of the UAV $d _ { j }$ at time step τ , and when the UAVs’ battery is sufficient, $m _ { j } ^ { \\operatorname * { m a x } } ( \\tau ) ~ = ~ \\nu _ { j } ^ { \\operatorname * { m a x } } \\delta T$ , where $\\delta T$ denotes the length of each interval. However, as mentioned above, each UAV eventually returns to its initial position $P _ { j } ^ { \\mathrm { i n i t } }$ . Therefore, the UAV needs to guarantee adequate supplies of residual energy to turn back, which can be expressed as ",
+        "bbox": [
+            501,
+            287,
+            921,
+            422
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {0} ^ {\\tau} E _ {j} (t) + E _ {j} ^ {\\text { return }} \\left(| | \\omega_ {d _ {j}} (\\tau) - P _ {j} ^ {\\text { init }} | |\\right) \\leq E _ {j} ^ {\\text { cap }} \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            558,
+            435,
+            919,
+            476
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $E _ { j } ^ { \\mathrm { r e t u r n } } ( l )$ is the function related to the distance to return, and $E _ { j } ^ { \\mathrm { r e t u r n } } ( | | \\omega _ { d _ { j } } ( \\tau ) - P _ { j } ^ { \\mathrm { i n i t } } | | )$ represents the amount of energy consumed to return to the initial position from the current position. It is noted that the pitch angle during the reentry period only makes a slight difference on energy consumption. Therefore, we set the rated power $p ^ { r }$ and standard velocity $\\nu ^ { r }$ in return mode, and define $E _ { j } ^ { \\mathrm { r e t u r n } } ( l ) ~ = ~ p ^ { r } l / \\nu ^ { r }$ . Besides, Ecap $E _ { j } ^ { \\mathrm { c a p } }$ is the capacity of the mounted battery, and $E _ { j } ^ { \\mathrm { m o v e } } ( \\tau )$ denotes the energy consumed by UAV’s moving and hovering. ",
+        "bbox": [
+            501,
+            488,
+            921,
+            642
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We consider $E _ { j } ( \\tau )$ for a rotary-wing UAV whose energy consumption primarily consists of propulsion that generates acceleration and velocity [28]. Similar to [28], [29], and [30], without considering the acceleration, we define the power consumption of $\\mathrm { U A V s } '$ flying and hovering with a velocity of vj(τ ) as [30] ",
+        "bbox": [
+            501,
+            643,
+            921,
+            733
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} p _ {j} \\big (v _ {j} (\\tau) \\big) = \\frac {1}{2} d _ {0} \\rho_ {a} s A v _ {j} (\\tau) ^ {3} + F _ {j} ^ {f} (\\tau) v _ {j} (\\tau) \\cos \\theta (\\tau) \\\\ + p _ {b} \\left(1 + \\frac {3 v _ {j} (\\tau) ^ {2}}{V ^ {2}}\\right) \\\\ + p _ {i} \\left(\\left(1 + \\frac {v _ {j} (\\tau) ^ {4}}{4 v _ {0} ^ {4}}\\right) ^ {\\frac {1}{2}} - \\frac {v _ {j} (\\tau) ^ {2}}{2 v _ {0} ^ {2}}\\right) ^ {\\frac {1}{2}} \\tag {3} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            741,
+            921,
+            873
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { b }$ and $p _ { i }$ denote the blade profile power and induced power when $\\nu _ { j } ( \\tau ) ~ = ~ 0$ (hovering), respectively. $F _ { j } ^ { f } ( \\tau ) \\ =$ $( 1 / 2 ) \\rho _ { a } s _ { c } \\nu _ { j } ( \\tau ) ^ { 2 } \\cos \\theta ( \\tau )$ is the UAV’s thrust, where $s _ { c }$ represents the fuselag equipment cross-sectional area. According to $( 2 ) .$ , UAV’s maximum movement distance $d _ { j } ^ { \\operatorname* { m a x } } ( \\tau )$ can be ",
+        "bbox": [
+            503,
+            881,
+            921,
+            960
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: ENHANCING AIoT DEVICE ASSOCIATION WITH TASK OFFLOADING IN AERIAL MEC NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            668,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "177 ",
+        "bbox": [
+            900,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "limited by ",
+        "bbox": [
+            73,
+            69,
+            148,
+            84
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} d _ {j} ^ {\\max} (\\tau) \\leq \\frac {1}{\\frac {p (v _ {j} (\\tau)) - p _ {j} (0)}{v _ {j} (\\tau)} + \\frac {p ^ {r}}{v ^ {r}}} \\cdot \\left(E _ {j} ^ {\\text { cap }} - \\sum_ {0} ^ {\\tau - 1} E _ {j} (t) \\right. \\\\ \\left. - p _ {j} (0) \\delta T - \\frac {p ^ {r} \\left| \\left| \\omega_ {d _ {j}} (\\tau - 1) - P _ {j} ^ {\\text { init }} \\right| \\right|}{v ^ {r}}\\right). \\tag {4} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            90,
+            490,
+            179
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Therefore, $d _ { j } ^ { \\operatorname* { m a x } } ( \\tau ) = \\operatorname* { m i n } \\{ ( 4 ) , \\nu _ { j } ^ { \\operatorname* { m a x } } \\delta T \\}$ . ",
+        "bbox": [
+            73,
+            184,
+            344,
+            204
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            217,
+            254,
+            231
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In our scenario, it exists both the ground-to-air (G2A) links and the ground-to-ground (G2G) links. For these two types of communication links, we consider the propagation path loss and the small-scale channel fading to constitute the channel gain. ",
+        "bbox": [
+            73,
+            236,
+            491,
+            311
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In the G2A path-loss model, each IoTD has the probability to transmit LoS signal to the UAVs, and the LoS probability $P _ { i j } ^ { \\mathrm { L o S } } ( \\tau )$ is calculated by ",
+        "bbox": [
+            73,
+            311,
+            491,
+            359
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP _ {i j} ^ {\\mathrm{LoS}} (\\tau) = \\frac {1}{1 + \\lambda_ {1} e ^ {- \\lambda_ {2} \\left(\\theta_ {i j} (\\tau) - \\lambda_ {1}\\right)}}, j \\geq M _ {b} \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            138,
+            364,
+            490,
+            398
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\lambda _ { 1 }$ and $\\lambda _ { 2 }$ are the constants that depend on the environment $( \\mathrm { e . g . }$ , rural, suburban, urban, and dense urban), and $\\theta _ { i j } ( \\tau )$ is the elevation angle of $u _ { i }$ toward $d _ { j } .$ . Let $\\eta _ { \\mathrm { L o S } }$ and ηNLoS represent the excessive propagation losses related to the LoS and NLoS transmissions, respectively. Then, the G2A propagation path loss can be expressed as follows [31]: ",
+        "bbox": [
+            73,
+            404,
+            491,
+            494
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbb {L} _ {i j} (\\tau) = \\frac {1 0 ^ {- \\frac {\\left(\\eta_ {\\mathrm{LoS}} - \\eta_ {\\mathrm{NLoS}}\\right) P _ {i j} ^ {\\mathrm{LoS}} (\\tau) + \\eta_ {\\mathrm{NLoS}}}{1 0}}}{\\left(| | \\omega_ {d _ {j}} (\\tau) - \\omega_ {u _ {i}} (\\tau) | |\\right) ^ {2} \\left(\\frac {4 \\pi f _ {c}}{c}\\right) ^ {2}} \\forall i \\in \\mathcal {I}, j \\geq M _ {b} \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            83,
+            500,
+            490,
+            556
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { c }$ and $c$ denote the carrier frequency and the speed of light, respectively. In addition, for the G2G propagation path loss, we adopt the model in [32], which can be expressed as ",
+        "bbox": [
+            73,
+            561,
+            491,
+            608
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbb {L} _ {i j} (\\tau) = \\left(\\frac {c}{4 \\pi f _ {c}}\\right) ^ {2} \\left(\\frac {\\left| \\left| \\omega_ {d _ {j}} (\\tau) - \\omega_ {u _ {i}} (\\tau) \\right| \\right|}{d _ {0}}\\right) ^ {- \\eta_ {\\mathrm{BS}}} \\forall i \\in \\mathcal {I}, j <   M _ {b} \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            613,
+            488,
+            662
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\eta _ { \\mathrm { L o S } }$ denotes the path-loss exponent, and $d _ { 0 }$ is the reference distance. ",
+        "bbox": [
+            73,
+            671,
+            488,
+            699
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Similar to [1], [33], and [34], we leverage the Nakagami-m model to describe the small-scale channel fading model. The probability density function of the small-scale channel fading $\\mathbb { S } _ { i j } ( \\tau )$ from $u _ { i }$ to $d _ { j }$ is expressed as ",
+        "bbox": [
+            73,
+            700,
+            491,
+            762
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {\\mathbb {S} _ {i j} (\\tau)} \\left(\\mathbb {S} _ {i j} (\\tau) = s\\right) = \\frac {m ^ {N _ {a t s} \\cdot m} s ^ {N _ {a t s} \\cdot m - 1}}{\\left(N _ {a t s} \\cdot m - 1\\right) !} e ^ {- m s} \\forall i \\in \\mathcal {I} \\forall j \\in \\mathcal {J} \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            89,
+            767,
+            488,
+            815
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where m represents the degree of fading, and $N _ { a t s }$ is the number of antennas of the receiver (UAV or BS). ",
+        "bbox": [
+            73,
+            824,
+            488,
+            854
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, we consider an orthogonal frequency-division multiple access (OFDMA) system, and all the MEC servers share a channel, which is divided into K subchannels [35]. The set of K subchannels is denoted by $\\kappa =$ $\\{ s _ { 0 } , \\ldots , s _ { k } , \\ldots , s _ { K - 1 } \\}$ . Besides, one IoTD can only use one subchannel at the same time, while the multiple IoTDs can occupy the same subchannel to access different MEC servers [36], which can be expressed as follows: ",
+        "bbox": [
+            73,
+            854,
+            491,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            69,
+            919,
+            99
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i} \\sum_ {k} a _ {i j, k} (\\tau) \\leq K \\forall j \\in \\mathcal {J}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            109,
+            808,
+            141
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {j} \\sum_ {k} a _ {i j, k} (\\tau) \\leq 1 \\forall i \\in \\mathcal {I} \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            619,
+            143,
+            919,
+            176
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $a _ { i j , k } ( \\tau )$ is the indicator variable. When $u _ { i }$ access the subchannel $s _ { k }$ on $d _ { j } , a _ { i j , k } ( \\tau ) = 1 ;$ otherwise, $a _ { i j , k } ( \\tau ) = 0$ . ",
+        "bbox": [
+            503,
+            186,
+            919,
+            217
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In addition, the IoTDs communicating with the MEC servers in the same subchannels exist the interference. Let $\\begin{array} { r l r } { h _ { i j } ( \\tau ) } & { { } = } & { \\mathbb { S } _ { i j } ( \\tau ) \\mathbb { L } _ { i j } ( \\tau ) } \\end{array}$ represent the channel gain of $u _ { i } \\quad \\mathrm { t o } \\quad d _ { j }$ at time step τ , and its single-tointerference ratio (SINR) in subchannel k can be expressed as ",
+        "bbox": [
+            501,
+            217,
+            921,
+            306
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\gamma_ {i j, k} (\\tau) = \\frac {p _ {i} (\\tau) h _ {i j} (\\tau)}{\\left(\\sum_ {m \\in \\mathcal {J}} \\sum_ {l \\in \\mathcal {I} , l \\neq i} a _ {l m , k} (\\tau) p _ {l} (\\tau) h _ {l j} (\\tau)\\right) + \\frac {B}{K} N _ {0}} (1 0)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            508,
+            316,
+            919,
+            359
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { i } ( \\tau )$ denotes the transmit power of $u _ { i } ,$ and B is the system total bandwidth. $N _ { 0 }$ denotes the spectral density of the additive white Gaussian noise. According to (10), the IoTD’s ui uplink data transmission rate to the MEC server $d _ { j }$ on subchannel k is calculated as follows: ",
+        "bbox": [
+            503,
+            367,
+            921,
+            441
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {i j, k} (\\tau) = \\frac {B}{K} \\log \\bigl (1 + \\gamma_ {i j, k} (\\tau) \\bigr). \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            602,
+            448,
+            919,
+            479
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "It is evident that $\\begin{array} { r } { R _ { i } ( \\tau ) = \\sum _ { j } \\sum _ { k } a _ { i j , k } ( \\tau ) R _ { i j , k } ( \\tau ) } \\end{array}$ . In addition, since the size of the resulted data from computation is usually slight, we neglect the downlink transmission rate and latency in this research work [6], [37], [38]. ",
+        "bbox": [
+            503,
+            487,
+            919,
+            547
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "C. Task Offloading and Caching Queue ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            569,
+            777,
+            584
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this section, we introduce the task offloading model in the considered MEC network topology and the tasks cache queue updating on IoTDs. It is confirmed that the MEC servers with parallel computation capability can independently process offloaded tasks through virtualization technology [39]. Also, the central processing unit (CPU) mounted on the MEC servers has a high processing frequency compared with that on the IoTDs. Although the MEC servers have sufficient amount of memory, the CPU frequency $f _ { j } ^ { S e r } ( \\tau )$ decreases with the sum of the IoTDs’ offloaded task length $L _ { i } ^ { B ( \\tau ) } =$ $\\begin{array} { r } { \\sum _ { i } \\sum _ { k } a _ { i j , k } ^ { \\tau } \\sum _ { t } \\beta _ { i } ^ { t } ( \\tau ) l _ { i } ^ { t } , t \\in \\{ 0 , \\dots , \\tau \\} } \\end{array}$ . We denote by $L _ { j } ^ { \\mathrm { { \\ ' m a x } } }$ the maximum amount of the processing data during a time step and consider a common pool of resources (CPRs) model [25], which can be expressed as ",
+        "bbox": [
+            501,
+            587,
+            921,
+            804
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {j} ^ {\\text { Ser }} (\\tau) = \\left(1 - \\frac {L _ {j} ^ {\\mathcal {B} (\\tau)}}{L _ {j} ^ {\\max}}\\right) F _ {j} \\forall j \\in \\mathcal {J} \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            586,
+            813,
+            919,
+            861
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $F _ { j }$ is the MEC server’s overall CPU frequency. Also, we assume that the offloaded tasks on the MEC servers should be completed within maximum duration δT [40] to avoid the loss of the computation results due to the uncertain device association relationship at the next time step. The MEC server dj providing maximum CPU-Cycles during time step τ can be calculated by ",
+        "bbox": [
+            501,
+            869,
+            921,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "178 ",
+        "bbox": [
+            78,
+            35,
+            98,
+            45
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 1, 1 JANUARY 2024 ",
+        "bbox": [
+            532,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            960,
+            854,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/999327d12528d489172e17d15c9cc9a89737b3330a2e9922de25e91db62be93e.jpg",
+        "image_caption": [
+            "Fig. 2. Task offloading process of IoTDs includes local computing and offloading the task to the MEC server on BS/UAV. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Task Queue\"] --> B[\"Ti(t)\"]\n    B --> C[\"Ti(t+1)\"]\n    C --> D[\"Ti(t+2)\"]\n    D --> E[\"Ti(t+3)\"]\n    E --> F[\"...\"]\n    G[\"Offloading Strategy\"] --> H[\"b_i^t(τ)\"]\n    H --> I[\"b_i^{t+1}(τ)\"]\n    I --> J[\"b_i^{t+1}(τ+1)\"]\n    J --> K[\"b_i^{t+2}(τ)\"]\n    K --> L[\"b_i^{t+3}(τ+1)\"]\n    L --> M[\"b_i^{t+3}(τ+2)\"]\n    M --> N[\"b_i^{t+4}(τ)\"]\n    N --> O[\"t+1\"]\n    O --> P[\"t+2\"]\n    P --> Q[\"t+3\"]\n    Q --> R[\"B_i(τ)\"]\n    style A fill:#f9f,stroke:#333\n    style G fill:#ccf,stroke:#333\n    style H fill:#cfc,stroke:#333\n    style I fill:#fcc,stroke:#333\n    style J fill:#cff,stroke:#333\n    style K fill:#ffc,stroke:#333\n    style L fill:#fcf,stroke:#333\n    style M fill:#cff,stroke:#333\n    style N fill:#cfc,stroke:#333\n    style O fill:#fcc,stroke:#333\n    style P fill:#cff,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            196,
+            66,
+            802,
+            250
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            301,
+            491,
+            330
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {j} (\\tau) = f _ {j} ^ {S e r} (\\tau) \\left(\\delta T - \\max \\left\\{\\frac {\\sum_ {t} ^ {\\tau} \\beta_ {i} (t) l _ {i} (t)}{R _ {i j} (\\tau)} \\right\\}\\right). \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            335,
+            491,
+            371
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Here, we consider that the MEC servers do not enter the parallel computation phase until completing all the tasks transmission. Then, the constraint of the offloaded tasks’ required CPU-Cycles can be described as follows: ",
+        "bbox": [
+            73,
+            375,
+            491,
+            436
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i} \\left(\\sum_ {k} \\left(a _ {i j, k} (\\tau) \\sum_ {t} \\phi_ {i} (t) \\beta_ {i} (t) l _ {i} (t)\\right)\\right) \\leq C _ {j} (\\tau) \\forall j \\in \\mathcal {J}. \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            89,
+            440,
+            490,
+            498
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Meanwhile, the maximum offloading capacity to the MEC server of each IoTD is related to the transmission rate at the current time step τ , which can be expressed as ",
+        "bbox": [
+            73,
+            506,
+            491,
+            551
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {0} ^ {\\tau} \\beta_ {i} (t) l _ {i} (t) \\leq \\delta T R _ {i} (\\tau) \\forall i \\in \\mathcal {I}. \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            169,
+            556,
+            490,
+            597
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The IoTDs serially process the remaining tasks in the queue on local without considering whether the current task could be completed within δT. However, since the tasks are indivisible, their uncompleted data fragment on local also cannot be offloaded. The local computation strategy is represented by $\\mathcal { B } _ { i } ^ { \\prime } ( \\tau ) = \\{ b _ { i } ^ { 0 } ( \\tau ) , \\ldots , b _ { i } ^ { t } ( \\tau ) , \\ldots , b _ { i } ^ { \\tau } ( \\tau ) \\} , t \\in [ 0 , \\tau ] .$ where $b _ { i } ( t )$ is the amount of processing tth task of IoTD ui, which is a continuous variable. Thus, the amount of $\\boldsymbol { u _ { i } } ^ { \\prime } \\boldsymbol { \\mathrm { s } }$ processing task is $\\begin{array} { r } { L _ { i } ^ { c p t } ( \\tau ) = \\sum _ { 0 } ^ { \\tau } ( \\beta _ { i } ( t ) l _ { i } ( t ) + b _ { i } ( t ) ) , t \\in [ 0 , \\tau ] } \\end{array}$ , and the queue length $L _ { i } ( \\tau )$ is updated by ",
+        "bbox": [
+            73,
+            602,
+            491,
+            753
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {i} (\\tau) = \\max \\left\\{0, L _ {i} (\\tau - 1) + l _ {i} (\\tau) - L _ {i} ^ {c p t} (\\tau) \\right\\} \\forall i \\in \\mathcal {I}. \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            89,
+            758,
+            488,
+            785
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Fig. 2 displays an example of the computation and offloading program in the considered AIoT aerial MEC network. For convenience, the explanation of some important parameters is shown in Table II. ",
+        "bbox": [
+            73,
+            789,
+            491,
+            848
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "III. PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            174,
+            866,
+            390,
+            878
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The MEC system aims at maximizing the overall QoE within T. The QoE is classified into two categories: 1) punctuality $\\mathrm { Q o E } _ { \\mathrm { p } } ( \\tau )$ and 2) task backlog ${ \\mathrm { Q o E } } b ( \\tau ) . { \\mathrm { Q o E } } _ { \\mathfrak { p } } ( \\tau )$ refers to the situation in which the task processing satisfies the ",
+        "bbox": [
+            73,
+            883,
+            491,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "table",
+        "img_path": "images/243d5013819aff5b4961b3b806563b3b5d248b189998ab8ef8d161864790b5dc.jpg",
+        "table_caption": [
+            "TABLE II PARAMETER INTRODUCTION "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>Detail Definition</td></tr><tr><td> $S_{ij}(\\tau)$ </td><td>The small-scale fading from  $u_i$  to  $d_j$ </td></tr><tr><td> $f_{S_{ij}(\\tau)}$ </td><td>The probability density of  $S_{ij}(\\tau)$ </td></tr><tr><td>m</td><td>The degree of fading</td></tr><tr><td> $N_{ats}$ </td><td>The number of antennas of the receiver(UAV or BS)</td></tr><tr><td> $\\mathcal{K}$ </td><td>The set of K subchannels</td></tr><tr><td> $s_k$ </td><td>The k-th subchannel</td></tr><tr><td> $a_{ij,k}(\\tau)$ </td><td>If  $u_i$  has access to  $s_k$  on  $d_j$ </td></tr><tr><td> $h_{ij}(\\tau)$ </td><td>The channel gain of  $u_i$  to  $d_j$  at time step  $\\tau$ </td></tr><tr><td> $\\gamma_{ij,k}(\\tau)$ </td><td>The SINR in  $s_k$  of  $u_i$  to  $d_j$ </td></tr><tr><td> $p_i(\\tau)$ </td><td>The transmit power of  $u_i$ </td></tr><tr><td>B</td><td>The system total bandwidth</td></tr><tr><td> $N_0$ </td><td>The spectral density of the Additive White Gaussian Noise</td></tr><tr><td> $R_{ij,k}(\\tau)$ </td><td>The IoTD&#x27;s  $u_i$  uplink data transmission rate to the MEC server  $d_j$  on subchannel k</td></tr><tr><td> $R_{ij}(\\tau)$ </td><td>The IoTD&#x27;s  $u_i$  uplink data transmission rate to the MEC server  $d_j$ </td></tr><tr><td> $f_j^{Ser}(\\tau)$ </td><td>The CPU frequency of the MEC servers</td></tr><tr><td> $L_j^{\\mathcal{B}(\\tau)}$ </td><td>The sum of the IoTs&#x27; offloaded task length</td></tr><tr><td> $C_j(\\tau)$ </td><td>The maximum CPU-Cycles provided by  $d_j$  during time step  $\\tau$ </td></tr><tr><td> $\\beta_i^t(\\tau)$ </td><td>The offloading strategy</td></tr><tr><td> $b_i^t(\\tau)$ </td><td>The local computation strategy</td></tr><tr><td> $L_i^{cpt}(\\tau)$ </td><td>The amount of processing task of  $u_i$ </td></tr></table>",
+        "bbox": [
+            527,
+            328,
+            898,
+            710
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "latency requirement. For IoTD $u _ { i } ,$ its completion time of the tth task is denoted by $t _ { i } ^ { t } ( \\tau )$ , which consists of queue blocking latency $t _ { i } ^ { t , \\mathrm { b l o c k } } ( \\tau )$ i, computing latency, and transmission latency if offloading to the MEC servers. The response time $t _ { i } ^ { t } ( \\tau )$ can be calculated as ",
+        "bbox": [
+            503,
+            751,
+            921,
+            827
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {i} ^ {t} (\\tau) = \\left\\{ \\begin{array}{l} \\beta_ {i} ^ {t} (\\tau) \\left(\\frac {\\sum_ {s \\in \\mathcal {I}} \\sum_ {k} a _ {s j ^ {* , k}} (\\tau) \\sum_ {\\mu \\in [ 0 , \\tau ]} \\phi_ {s} ^ {\\mu} l _ {s} ^ {\\mu \\beta_ {s} ^ {\\mu} (\\tau)}}{f _ {j ^ {*}} ^ {S e r}} + \\frac {l _ {i} (t)}{R _ {i j ^ {*}} (t)}\\right) \\\\ \\quad + \\frac {\\phi_ {i} ^ {t} b _ {i} ^ {t} (\\tau)}{f _ {i} ^ {I o T}} + t _ {i} ^ {t, \\text { block }} (\\tau), b _ {i} ^ {t} (\\tau) \\text {   or   } \\beta_ {i} ^ {t} (\\tau) \\neq 0 \\\\ + \\inf, \\text { otherwise } \\end{array} \\right. \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            851,
+            921,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: ENHANCING AIoT DEVICE ASSOCIATION WITH TASK OFFLOADING IN AERIAL MEC NETWORKS ",
+        "bbox": [
+            75,
+            34,
+            668,
+            45
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "179 ",
+        "bbox": [
+            900,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $j ^ { * }$ is the index of the MEC server connected with $u _ { i } ,$ and the tth task of $u _ { i }$ is offloaded at time step $\\tau ^ { * }$ or processed on local at time step $\\tau ^ { \\prime } .$ However, either $\\tau ^ { * }$ or $\\tau ^ { \\prime }$ does not exist in the case that the task has not been processed till the current time step, and we set $t _ { i } ^ { \\prime } ( t )$ to positive infinity. Then, for each task $T _ { i } ( t )$ , we define a latency satisfaction evaluation function $\\psi ( t _ { i } ^ { t } )$ , which can be expressed as [41] ",
+        "bbox": [
+            73,
+            69,
+            491,
+            176
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\psi \\left(t _ {i} ^ {t}\\right) = \\left\\{ \\begin{array}{l} 1, t _ {i} ^ {t} \\leq t ^ {\\text { opt }} \\\\ \\frac {t ^ {\\text { opt }}}{t ^ {\\text { opt }} + t _ {i} ^ {t}}, \\text { otherwise. } \\end{array} \\right. \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            179,
+            188,
+            491,
+            231
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "At time step τ , the average latency satisfaction of all IoTDs for all generated tasks is denoted as $\\mathrm { Q o E } _ { \\mathrm { p } } ( \\tau )$ . This metric is employed to assess the QoE provided by the system with respect to task latency satisfaction ",
+        "bbox": [
+            73,
+            241,
+            491,
+            303
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{QoE} i ^ {p} (\\tau) = \\frac {1}{\\tau} \\sum_ {t = 0} ^ {\\tau} \\psi (t _ {i} ^ {t}). \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            191,
+            314,
+            491,
+            354
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Analogously to $\\mathrm { Q o E } _ { \\mathrm { p } } ( \\tau )$ , which signifies the average latency satisfaction, the average satisfaction regarding the cache queue length is denoted as $\\mathrm { Q o E } b ( \\tau )$ . This symbol encapsulates a specific physical interpretation, which is the ratio of the remaining cache queue capacity. It is articulated as follows: ",
+        "bbox": [
+            73,
+            367,
+            491,
+            444
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{QoE} i ^ {b} (\\tau) = \\frac {L _ {i} ^ {\\max} - L _ {i} (\\tau)}{L _ {i} ^ {\\max}}. \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            184,
+            454,
+            490,
+            489
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Let , , and  represent, respectively, the strategies of UAV movement, device association, and offloading strategy across all time steps. Given these parameters, the optimization problem can be formulated as follows: ",
+        "bbox": [
+            73,
+            500,
+            491,
+            561
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ ^ {*} (\\mathcal {M}, \\mathcal {A}, \\mathcal {B}) = \\max _ {\\mathcal {M}, \\mathcal {A}, \\mathcal {B}} \\sum_ {\\tau = 0} ^ {T} \\frac {1}{N} \\sum_ {i} \\mathrm{QoEi} ^ {p} (\\tau) \\cdot \\mathrm{QoEi} ^ {b} (\\tau) (2 1 a)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            573,
+            488,
+            616
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "$\\mathrm { s . t . ~ } \\beta _ { i } ^ { t } ( \\tau ) \\in \\{ 0 , 1 \\} , \\forall i \\in \\mathcal { T } , \\tau = 1 , \\dots , T$ (21b) ",
+        "bbox": [
+            81,
+            618,
+            488,
+            633
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq b _ {i} ^ {t} (\\tau) \\leq 1, \\forall i \\in \\mathcal {I}, \\tau = 1, \\dots , T \\tag {21c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            637,
+            488,
+            652
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\beta_ {i} ^ {t} (\\tau) + b _ {i} ^ {t} (\\tau) \\leq 1 \\forall i \\in \\mathcal {I}, \\tau = 1, \\dots , T \\tag {21d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            655,
+            488,
+            672
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {l} \\leq x _ {d _ {j}} (\\tau) \\leq x _ {r} \\forall j \\in \\mathcal {J}, \\tau = 1, \\dots , T \\tag {21e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            675,
+            488,
+            691
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {b} \\leq y _ {d _ {j}} (\\tau) \\leq y _ {f} \\forall j \\in \\mathcal {J}, \\tau = 1, \\dots , T \\tag {21f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            694,
+            488,
+            709
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {d} \\leq z _ {d _ {j}} (\\tau) \\leq z _ {u} \\forall j \\in \\mathcal {J}, \\tau = 1, \\dots , T \\tag {21g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            713,
+            488,
+            729
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(4), (9), (1 4), (1 5) \\tag {21h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            732,
+            488,
+            747
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $x l , ~ x _ { r } , ~ y _ { b }$ , and $y _ { f }$ are the horizontal boundary of the considered scenario, and the UAVs’ altitude limit is between $z _ { d }$ and $z _ { u } .$ Equation (21b) represents that each task can only be completely offloaded or not offloaded. ",
+        "bbox": [
+            73,
+            762,
+            491,
+            823
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "IV. PROBLEM SOLUTION ",
+        "text_level": 1,
+        "bbox": [
+            192,
+            851,
+            375,
+            864
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this section, we introduce the RSRT algorithm for IoTD association and the BTO algorithm for task offloading. Subsequently, we integrate both algorithms into the MADDPG algorithm, which is employed for UAV movement control in order to attain a comprehensive solution. ",
+        "bbox": [
+            73,
+            869,
+            491,
+            946
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1 RSRT "
+        ],
+        "code_body": "Input: IoTD index i, Association strategy $\\mathcal{A}(\\tau)$ Output: $\\mathcal{A}(\\tau)$ 1: Initialize: The alternative subchannel set $\\mathcal{JK}_{i}(\\tau)$ for $u_{i}$ .\n\n2: $j'k' = \\arg\\max_{jk \\in \\mathcal{JK}_{i}(\\tau)} \\{R_{ij,k}(\\tau)\\}$ ;\n\n3: if the subchannel $j'k'$ is idle then\n\n4: $\\mathcal{A}(\\tau)[j'k'] = i$ ;\n\n5: else\n\n6: if $R_{ij',k'} > R_{i*j',k'}$ ( $u_{i}^{*}$ is the original IoTD in the subchannel $j'k'$ ) then\n\n7: $\\mathcal{A}(\\tau)[j'k'] = i$ ;\n\n8: Remove $j'k'$ from the set $\\mathcal{JK}_{i}^{*}(\\tau)$ ;\n\n9: Call RSRT ( $i^{*}, A(\\tau)$ );\n\n10: else\n\n11: Remove $j'k'$ from the set $\\mathcal{JK}_{i}(\\tau)$ ;\n\n12: Call RSRT ( $i, A(\\tau)$ );\n\n13: end if\n\n14: end if ",
+        "bbox": [
+            508,
+            83,
+            921,
+            342
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A. Device Association ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            375,
+            660,
+            387
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We propose an RSRT algorithm to obtain the device association strategy (τ ). Although the problem is an NP-hard problem and does not have the property of optimal substructure, this article utilizes the idea of greedy algorithms to access each IoTD to the allocated subchannel. In addition, UAVs act as base stations that can be moved around flexibly, and data can be temporarily cached in task queues as appropriate. Therefore, although IoTDs connected to subpar subchannels through greedy selection and replacement may currently experience suboptimal transmission rates, the proposed RSRT algorithm maximizes not only the total revenue at the current time but also makes it easier for IoTDs with lower individual benefits to be approached by UAVs through the subsequent UAV mobility control algorithm. ",
+        "bbox": [
+            501,
+            392,
+            921,
+            618
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Specifically, for each IoTD $u _ { i } ,$ access to MEC server $j ^ { \\prime }$ is granted via subchannel k\t denoted by $j ^ { \\prime } k ^ { \\prime }$ , which ensures maximal transmission rate. However, multiple IoTDs may determine the same subchannel as optimal. In such cases, the IoTDs need to compare their transmission rates, and the IoTD with the highest transmission rate is granted access to the subchannel $k ^ { \\prime } .$ The remaining IoTDs must search for the suboptimal subchannel using the same process. If the suboptimal subchannel is already occupied by another IoTD, then the two IoTDs involved in the contention must compare their transmission rates and make the decisions using recursive Algorithm 1. ",
+        "bbox": [
+            503,
+            619,
+            921,
+            800
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. IoTD Task Offloading ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            820,
+            678,
+            835
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this study, we aim to expedite the processing of task data by offloading the data to the base station. However, it is necessary to consider the latency of data transmission during offloading. Therefore, we investigate the means to achieve an optimal task offloading strategy that balances transmission and computing latency while minimizing the length of the task queue. ",
+        "bbox": [
+            501,
+            839,
+            921,
+            946
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "180 ",
+        "bbox": [
+            78,
+            35,
+            98,
+            45
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 1, 1 JANUARY 2024 ",
+        "bbox": [
+            532,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Despite the fact that the problem under consideration is classified as an NP-hard problem, it is possible to mitigate the computational complexity by limiting the solution space to a tractable range that is amenable to systematic exploration via the backtracking method. The application of backtracking to NP-hard problem involves several key factors that contribute to its effectiveness. ",
+        "bbox": [
+            73,
+            69,
+            491,
+            174
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) The ability to identify and apply appropriate pruning strategies that can reduce the size of the solution space and avoid exploring infeasible paths. This is often achieved by exploiting the problem structure and constraints to prune the search tree and eliminate unpromising branches early on. In the context of task offloading, several constraints may need to be considered. These constraints can impact the feasibility of backtracking on tasks offloading policy. Static constraint (15) pertains to the maximum data transmission volume that can be handled by each IoTD. Dynamic constraint (14) pertains to the maximum computing capacity of each base station. These constraints can impact the offloading decisions $\\beta _ { i } ( t )$ made by the system and ensure that backtracking in the offloading process is both efficient and feasible. ",
+            "2) The performance of backtracking is highly dependent on the choice of search order for variables and values, which can significantly impact the number of search nodes explored and the time complexity for obtaining an optimal solution. We focus on prioritizing offloading tasks with heavy data and long waiting time to the base station. This can improve the efficiency of data transmission and computation. Executing these tasks on local devices with limited resources results in increased computation latency and cache queue length. Thus, prioritizing offloading data-heavy and computationally intensive tasks can effectively improve the overall user experience. Further, the construction of a subset tree based on this principle for the solution space tree provides feasibility for the implementation of the backtracking method in NP-hard problems. "
+        ],
+        "bbox": [
+            91,
+            175,
+            491,
+            642
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Then, we define $O _ { i , u } ( \\tau )$ as the offloading amount of the IoTD i during time step τ after the task u is offloaded in the process of the algorithm. Let $\\begin{array} { r l } { T _ { j } ( \\tau ) } & { { } = } \\end{array}$ $\\{ T _ { 0 } ( \\tau ) , \\dots , T _ { u } ( \\tau ) , \\dots , T _ { U } ( \\tau ) \\}$ , where u is the task in the IoTDs served by MEC server $d _ { j } ,$ , represent the set of offloaded tasks at time step τ . In addition, $L _ { i , u } ^ { \\mathrm { r e m a i n } } ( \\tau )$ denotes the queue length of IoTD i after task u is offloaded. Moreover, tasks are deemed indivisible when offloaded to the base station. As a result, task offloading at each time step constitutes a 0-1 knapsack problem, in which the task data $l _ { i } ^ { t }$ corresponds to the weight of the item $\\{ w _ { i , t } \\} .$ while $\\{ Q ( O _ { i , u } ( \\tau ) ) - Q ( 0 ) \\}$ } represents the value of the item $\\{ \\nu _ { i , t } \\}$ . To facilitate the efficient computation of upper bounds, items are only sorted by their value and subsequently assessed in that order with considering (15). For a group of IoTDs served by MEC server $d _ { j } ,$ alternative tasks in their queues are treated as set $\\mathbb { Q } _ { j } ( \\tau ) = \\{ \\nu _ { i , t } \\}$ . The offloaded tasks in set $\\mathbb { Q } _ { j } ( \\tau )$ are arranged in descending order based on the value $\\nu _ { i , t } .$ . To avoid taking too long in the sorting process and making the algorithm infeasible, we reduce the time complexity of the sorting algorithm from $o ( n ^ { 2 } )$ to $o ( 2 )$ by (33). ",
+        "bbox": [
+            73,
+            643,
+            493,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 2 BTO "
+        ],
+        "code_body": "Input: The list current_list(τ) of tasks that are currently offloaded, the current value current_value(τ), the number of tasks remaining in the knapsack $n_{left}(\\tau)$ , the list max_value_list(τ) of task offloading with maximum value, the current maximum value max_value(τ), $\\{w_{i,t}\\}$ , $Q_j(\\tau)$ ;\n\nOutput: $\\mathcal{B}_j(\\tau) \\leftarrow \\max\\_value\\_list(\\tau)$ 1: if $n_{left}(\\tau) == 0$ then\n\n2: if current_list(τ) ≥ max_value(τ) then\n\n3: max_value_list(τ) ← current_list(τ);\n\n4: end if\n\n5: else\n\n6: temp ← current_list(τ);\n\n7: temp.append( $n_{left}-1$ );\n\n8: Update $\\mathbb{Q}_j(\\tau)$ according to (33);\n\n9: Call BTO (temp, max_value_list(τ), max_value(τ), $n_{left}(\\tau)-1$ , $\\{w_{i,t}\\}$ , $Q_j(\\tau)$ );\n\n10: Call BTO (current_value(τ), max_value_list(τ), max_value(τ), $n_{left}(\\tau)-1$ , $\\{w_{i,t}\\}$ , $Q_j(\\tau)$ )\n\n11: end if ",
+        "bbox": [
+            508,
+            83,
+            923,
+            386
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Following this, a subset binary tree is constructed according to the order. For proof, refer to the Appendix, Lemma 1. ",
+        "bbox": [
+            503,
+            420,
+            919,
+            450
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The proposed BTO algorithm is delineated in Algorithm 2. To minimize the stack space necessitated by parameter passing and recursive calls, we record the upper bound value and node information in the solution space tree while traversing each node of the binary tree. At the current extension node of the solution space tree, the upper bound value is computed solely when required to enter the right subtree for determining whether to prune it, while the upper bound value of the left child node remains identical to that of the parent node. ",
+        "bbox": [
+            501,
+            450,
+            921,
+            599
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "C. UAV Trajectory Planning ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            625,
+            700,
+            640
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this article, by applying the algorithm based on deep deterministic policy gradient (MADDPG), we utilize the feature extraction ability of deep learning and the decision ability of reinforcement learning to solve the multiagent cooperation problem. In general, the Markov process decision (MDP) is employed with the state space $\\mathbb { S } \\stackrel { - } { = } \\{ s ^ { 1 } , \\ldots , s ^ { \\tau } , \\ldots , s ^ { T } \\}$ and action space $\\mathbb { A } \\ = \\ \\{ a ^ { 1 } , \\ldots , a ^ { \\tau } , \\ldots , a ^ { T } \\}$ . As an agent, each UAV interacts with the environment and observes the state $s _ { i } ^ { \\tau } \\in s ^ { \\tau }$ at time step τ . In addition, the agent can exchange their private information with each other as well as obtaining a reward $r _ { j } ( \\tau )$ . Then, the environment transfers the state $s ^ { \\tau }$ to the next state $s ^ { \\tau + 1 }$ according to each action $a _ { j } ^ { \\tau }$ . Here, we independently execute and train the policy network and centrally train the Q network. ",
+        "bbox": [
+            501,
+            643,
+            921,
+            853
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In addition, the actions of each UAV are not only affected by the environment but also related to other agents. Therefore, we design the state and action as follows. ",
+        "bbox": [
+            503,
+            854,
+            919,
+            898
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "1) State $s _ { j } ^ { \\tau } .$ We define the distance between $d _ { j }$ and $u _ { i }$ defined as $| | \\omega _ { d _ { j } } ( \\tau ) - \\omega _ { u _ { i } } ( \\tau ) | |$ as part of the observation. Moreover, the task queue of $u _ { i }$ is also taken into account. ",
+        "bbox": [
+            521,
+            898,
+            921,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: ENHANCING AIoT DEVICE ASSOCIATION WITH TASK OFFLOADING IN AERIAL MEC NETWORKS ",
+        "bbox": [
+            75,
+            34,
+            668,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "181 ",
+        "bbox": [
+            900,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "2) Action $a _ { j } ^ { \\tau }$ : We consider the movement strategy of UAV $d _ { j }$ in the time slot τ as the action $a _ { j } ^ { \\tau }$ of the jth UAV. ",
+        "bbox": [
+            89,
+            69,
+            490,
+            101
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The reward function for each $d _ { j }$ is defined as ",
+        "bbox": [
+            89,
+            101,
+            400,
+            116
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {j} ^ {\\tau} = \\sum_ {i \\in I _ {j} (\\tau)} \\frac {1}{\\tau} \\sum_ {0} ^ {\\tau} \\psi \\left(t _ {i} ^ {\\prime} (t), t _ {i} ^ {\\max} (t)\\right) \\left(1 - \\frac {L _ {i} (\\tau)}{L _ {i} ^ {\\max}}\\right) - P _ {j} (\\tau) \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            84,
+            123,
+            490,
+            165
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $P _ { j } ( \\tau )$ is the penalty function, which is defined according to different constraints, respectively. ",
+        "bbox": [
+            73,
+            172,
+            491,
+            200
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "1) UAVs Fly Out of the Determined Range: When the UAVs perform communication task, some of them may fly out of the range. To avoid this problem, we should define a punishment mechanism ",
+        "bbox": [
+            91,
+            202,
+            491,
+            262
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP _ {j} (\\tau) = \\sum_ {j} v _ {j} \\cdot \\sqrt {\\left(\\chi_ {j} ^ {x} (\\tau)\\right) ^ {2} + \\left(\\chi_ {j} ^ {y} (\\tau)\\right) ^ {2}}. \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            161,
+            270,
+            490,
+            311
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "$\\upsilon _ { j }$ denotes the penalty coefficient. $\\chi _ { j } ^ { x }$ is the distance beyond the X-direction boundary, while $\\chi _ { j } ^ { y }$ is the distance beyond the Y-direction boundary at the time step τ . The expressions of calculation are as follows: ",
+        "bbox": [
+            112,
+            316,
+            491,
+            380
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\chi_ {j} ^ {x} (\\tau) = \\max \\left(0, \\left| x _ {d _ {j}} (\\tau - 1) + m _ {j} (\\tau - 1) \\cos \\alpha_ {j} (\\tau - 1) \\right| \\right. \\\\ - | L |) \\tag {24} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            116,
+            386,
+            488,
+            422
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\chi_ {j} ^ {y} (\\tau) = \\max \\bigl (0, \\left| y _ {d _ {j}} (\\tau - 1) + m _ {j} (\\tau - 1) \\sin \\alpha_ {j} (\\tau - 1) \\right| \\bigr)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            116,
+            424,
+            483,
+            444
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- | L |). \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            179,
+            445,
+            488,
+            460
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "2) UAVs Collision: In order to avoid any UAVs colliding with each other, we have taken additional enforcement measures rather than just defining a penalty function $P _ { j } ,$ as collisions are absolutely not allowed. Once a collision occurs during training, we add minus infinity from the reward and enter the next loop. ",
+        "bbox": [
+            89,
+            468,
+            491,
+            559
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Then, the definitions of the entire state and action are as follows. ",
+        "bbox": [
+            73,
+            560,
+            488,
+            588
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) State $s ^ { \\tau } .$ : The state consists of the observations of $d _ { M ^ { b } + 1 } ,$ $\\ldots , d _ { M _ { b } + M _ { u } - 1 } $ , and it can be expressed as $s ^ { \\tau } = \\{ o _ { j } ^ { \\tau } , \\forall j \\in$ $[ M ^ { b } + 1 , M _ { b } + M _ { u } - 1 ] \\}$ . ",
+            "2) Action $a ^ { \\tau } { : }$ The action consists of the actions of $d _ { M ^ { b } + 1 } ,$ $\\ldots , d _ { M _ { b } + M _ { u } - 1 }$ , and it can be expressed as $a ^ { \\tau } = \\{ a _ { j } ^ { \\tau } , \\forall j \\in$ $[ M ^ { b } + 1 , M _ { b } + M _ { u } - 1 ] \\}$ . "
+        ],
+        "bbox": [
+            89,
+            589,
+            488,
+            684
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 3 shows the multiagent cooperative based on the DRL algorithm framework, including policy network $\\mu _ { j } ( s _ { j } ^ { \\tau } | \\theta ^ { \\mu _ { j } } )$ , target policy network $\\mu _ { j } ^ { \\prime } ( s _ { j } ^ { \\tau } | \\theta ^ { \\mu _ { j } ^ { \\prime } } )$ , Q network $Q ( s ^ { \\tau } , a ^ { \\tau } | \\theta ^ { Q _ { j } } )$ , and target $Q$ network $\\bar { Q } ^ { \\prime } ( s ^ { \\tau } , a ^ { \\tau } | \\theta ^ { Q _ { j } ^ { \\prime } } )$ . Particularly, each agent adopts the optimal action $a _ { j } ^ { \\tau }$ from the policy network $\\mu _ { j } ( s _ { j } ^ { \\tau } | \\theta ^ { \\mu _ { j } } )$ and obtains the reward $r _ { j } ( \\tau )$ . Meanwhile, $Q ( s ^ { \\tau } , a ^ { \\tau } | \\theta ^ { Q _ { j } } )$ calculates $Q$ to update the parameter $\\theta ^ { \\mu }$ of policy network by policy gradient as follows: ",
+        "bbox": [
+            73,
+            684,
+            491,
+            816
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\nabla_ {\\theta^ {\\mu_ {j}}} J = \\mathbb {E} \\left[ \\nabla_ {\\theta^ {\\mu_ {j}}} \\mu_ {j} \\left(s _ {j} ^ {\\tau} \\mid \\theta^ {\\mu_ {j}}\\right) \\nabla_ {a _ {j} ^ {\\tau}} Q _ {j} \\left(s ^ {\\tau}, a ^ {\\tau} \\mid \\theta^ {Q _ {j}}\\right) \\right] \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            119,
+            821,
+            490,
+            848
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r l r } { s ^ { \\tau } } & { { } \\ } & { = \\ } & { \\{ s _ { 0 } ^ { \\tau } , \\ldots , s _ { j } ^ { \\tau } , \\ldots , s _ { M _ { \\iota } } ^ { \\tau } \\} } \\end{array}$ and $\\begin{array} { r l r l } { s ^ { \\tau } } & { { } } & { = } \\end{array}$ $\\{ a _ { 0 } ^ { \\tau } , \\ldots , a _ { j } ^ { \\tau } , \\ldots , a _ { M _ { u } } ^ { \\tau } \\}$ . Then, each agent traverses to the next state s τ +1j ${ \\bf \\Phi } _ { s _ { j } ^ { \\prime + 1 } } ^ { \\prime + 1 }$ and adopts the action $a _ { j } ^ { \\tau + 1 } = \\mu _ { j } ^ { \\prime } ( s _ { j } ^ { \\tau + 1 } )$ . The target Q network outputs $Q ^ { \\prime }$ to calculate target value $y _ { \\tau }$ ",
+        "bbox": [
+            73,
+            852,
+            491,
+            916
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {\\tau} = r _ {j} ^ {\\tau} + \\gamma Q ^ {\\prime} \\left(s ^ {\\tau + 1}, \\mu_ {j} ^ {\\prime} \\left(s _ {j} ^ {\\tau + 1} \\mid \\theta^ {\\mu_ {j} ^ {\\prime}}\\right) \\mid \\theta^ {Q ^ {\\prime}}\\right). \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            135,
+            922,
+            490,
+            948
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/ea680b2486941ff5c738190557e36b07675b64806aa113152dcce84e9be3687c.jpg",
+        "image_caption": [
+            "Fig. 3. MADDPG approach in controlling the movement of multiple UAVs. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Environment\"] --> B[\"Agent\"]\n    B --> C[\"reward r_j^τ\"]\n    C --> D[\"Experience replay buffer\"]\n    D --> E[\"Mini-batch\"]\n    E --> F[\"Policy Gradient\"]\n    F --> G[\"Target Policy Network\"]\n    G --> H[\"Policy NetworkUpdate\"]\n    H --> I[\"Q Network Update\"]\n    I --> J[\"Loss Function\"]\n    J --> K[\"Target Q Network\"]\n    K --> L[\"Q'\"]\n    L --> M[\"Policy Gradient\"]\n    M --> N[\"Policy NetworkUpdate\"]\n    N --> O[\"Policy NetworkUpdate\"]\n    O --> P[\"Policy Gradient\"]\n    P --> Q[\"Target Policy Network\"]\n    Q --> R[\"Q Network Update\"]\n    R --> S[\"Loss Function\"]\n    S --> T[\"Target Q Network\"]\n    T --> U[\"Q'\"]\n    U --> V[\"Policy Gradient\"]\n    V --> W[\"Policy NetworkUpdate\"]\n    W --> X[\"Policy NetworkUpdate\"]\n    X --> Y[\"Policy Gradient\"]\n    Y --> Z[\"Target Policy Network\"]\n    Z --> AA[\"Q Network Update\"]\n    AA --> AB[\"Loss Function\"]\n    AB --> AC[\"Target Q Network\"]\n    AC --> AD[\"Q'\"]\n    AD --> AE[\"Policy Gradient\"]\n    AE --> AF[\"Policy NetworkUpdate\"]\n    AF --> AG[\"Policy GradientUpdate\"]\n    AG --> AH[\"Policy GradientUpdate\"]\n    AH --> AI[\"Policy GradientUpdate\"]\n    AI --> AJ[\"Policy GradientUpdate\"]\n    AJ --> AK[\"Policy GradientUpdate\"]\n    AK --> AL[\"Policy GradientUpdate\"]\n    AL --> AM[\"Policy GradientUpdate\"]\n    AM --> AN[\"Policy GradientUpdate\"]\n    AN --> AO[\"Policy GradientUpdate\"]\n    AO --> AP[\"Policy GradientUpdate\"]\n    AP --> AQ[\"Policy GradientUpdate\"]\n    AQ --> AR[\"Policy GradientUpdate\"]\n    AR --> AS[\"Policy GradientUpdate\"]\n    AS --> AT[\"Policy GradientUpdate\"]\n    AT --> AU[\"Policy GradientUpdate\"]\n    AU --> AV[\"Policy GradientUpdate\"]\n    AV --> AW[\"Policy GradientUpdate\"]\n    AW --> AX[\"Policy GradientUpdate\"]\n    AX --> AY[\"Policy GradientUpdate\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            527,
+            65,
+            898,
+            385
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In addition, we utilize an experience replay method to minimize the loss function of Q network with TD-error ",
+        "bbox": [
+            503,
+            438,
+            919,
+            469
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL \\left(\\theta^ {Q _ {j}}\\right) = \\frac {1}{Z} \\sum_ {z} \\left(y _ {\\tau} - Q _ {j} \\left(s ^ {\\tau}, a ^ {\\tau} \\mid \\theta^ {Q _ {j}}\\right)\\right) ^ {2} \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            568,
+            474,
+            919,
+            510
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where Z is the number of sampling from the replay buffer. ",
+        "bbox": [
+            504,
+            516,
+            903,
+            532
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "V. SIMULATION ",
+        "text_level": 1,
+        "bbox": [
+            653,
+            549,
+            771,
+            561
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In this section, we present the extensive numerical evaluation to investigate the performance and intrinsic characteristics of the proposed framework in the aerial AIoT-enabled MEC network. Initially, various training parameters are examined to compare the training procedures, with the aim of identifying the optimal training parameters and their corresponding efficacy (Section V-A). Subsequently, the impact of communication parameters on the task offloading process is explored (Section V-B). In Section V-C, the comparative analysis between our methodology and alternative strategies is furnished. Also, we encapsulate the primary observations by offering insightful elucidations regarding the overall functionality and salient attributes of the proposed algorithm. ",
+        "bbox": [
+            501,
+            568,
+            921,
+            763
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In the simulation, 50 IoTDs are randomly dispersed within a 500 m × 500 m area, with $( x _ { l } , x _ { r } ) = ( - 2 5 0 \\ \\mathrm { m } , 2 5 0 \\ \\mathrm { m } )$ and $( y _ { b } , y _ { f } ) = ( - 2 5 0 ~ \\mathrm { m } , 2 5 0 ~ \\mathrm { m } )$ . The UAVs initiate their flight from the origin (0, 0, 0) and ascend vertically to a height of $z _ { d } = 5 0$ m prior to the commencement of the first time step in our time system. The maximum altitude constraint for UAVs is defined as $z _ { u } = 1 5 0$ m. The IoTDs are served by two fixedlocation BSs and four mobile UAVs together. For each IoTD, the length and the computing density of its task data generated per time step are uniformly distributed. In addition, the pathloss exponent between each IoTD and the GBS, denoted as ηBS, is set to $^ { 2 , }$ while the reference distance $d _ { 0 }$ is established at 1 m. The other details and parameter values are presented in Table III. ",
+        "bbox": [
+            503,
+            763,
+            921,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "182 ",
+        "bbox": [
+            78,
+            35,
+            98,
+            45
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 1, 1 JANUARY 2024 ",
+        "bbox": [
+            532,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/9fe2920a947e59eabffeeb4f55c48a5bbd05ecf3e84ea63dc1c220b2deac53e6.jpg",
+        "table_caption": [
+            "TABLE III SIMULATION PARAMETER INTRODUCTION "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>Value</td><td>Parameter</td><td>Value</td></tr><tr><td> $M^b$ </td><td>2</td><td> $M^u$ </td><td>4</td></tr><tr><td> $\\delta T$ </td><td>2 s</td><td> $E_j^{cap}$ </td><td>31680 kJ</td></tr><tr><td> $F_j$ </td><td>[4,10] × $10^9 Cycles/s$ </td><td> $f_j$ </td><td>0.1 × $10^9 Cycles/s$ </td></tr><tr><td>B</td><td>20MHz</td><td>K</td><td>10</td></tr><tr><td> $\\phi_i^t$ </td><td>[500,2000]Cycles/bit</td><td> $l_i^t$ </td><td>[1000,5000]KB</td></tr><tr><td> $p_i$ </td><td>0.2w</td><td> $N_0$ </td><td> $10^{-17w/Hz}$ </td></tr><tr><td>c</td><td>3 × 108m/s</td><td> $f_c$ </td><td>4.9 × 109</td></tr><tr><td> $\\lambda_1, \\lambda_2$ </td><td>4.88,0.43</td><td> $\\eta_{LoS}, \\eta_{NLoS}$ </td><td>0.1, 21</td></tr><tr><td> $N_{ats}$ </td><td>4(BS),1(UAV)</td><td> $L_j^{max}$ </td><td>50MB</td></tr></table>",
+        "bbox": [
+            102,
+            98,
+            464,
+            287
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/49db43f73c594782fcd40597289be9c1585f0a69886fb1892c8bef06b5b31589.jpg",
+        "content": "| Number of Episodes | Learning rate = 0.05 | Learning rate = 0.005 | Learning rate = 0.0005 |\n| ------------------ | -------------------- | --------------------- | ---------------------- |\n| 0                  | ~0.7                 | ~0.7                  | ~0.7                   |\n| 500                | ~0.75                | ~0.8                  | ~0.8                   |\n| 1000               | ~0.7                 | ~0.85                 | ~0.85                  |\n| 1500               | ~0.75                | ~0.85                 | ~0.85                  |\n| 2000               | ~0.7                 | ~0.85                 | ~0.85                  |\n| 2500               | ~0.75                | ~0.85                 | ~0.85                  |\n| 3000               | ~0.7                 | ~0.85                 | ~0.85                  |",
+        "chart_caption": [
+            "Fig. 4. Average reward of each agent versus the number of episodes under different learning rates. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            96,
+            299,
+            467,
+            503
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            556,
+            488,
+            585
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "A. Training Procedures ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            604,
+            238,
+            618
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "By conducting a series of systematic experiments, we endeavor to identify the optimal values for two key parameters that impact the performance of the deep deterministic policy gradient (DDPG) algorithm: 1) learning rate and 2) discount factor. The experimental results, illustrated in Fig. 11, elucidate the convergence behavior of the reward function under varying learning rates. A learning rate of 0.05 proves to be excessively large, preventing convergence even after 3000 training iterations. Conversely, learning rates of 0.005 and 0.0005 enable convergence. Notably, the 0.005 learning rate fosters more rapid convergence, while a learning rate of 0.0005 results in superior final convergence performance for the reward function. The appropriate learning rate of 0.0005 is employed to evaluate the effects of distinct discount factors on the training performance. As illustrated in Fig. 5, a discount factor of 0.9 is identified as the most favorable option. The assignment of DRL parameters is presented in Table IV. ",
+        "bbox": [
+            73,
+            622,
+            491,
+            878
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "B. Simulation Result ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            896,
+            220,
+            910
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In this section, we evaluate the impact of four different personal parameters in the considered scenario on the performance of IoTDs’ task offloading strategy, including communication parameter (bandwidth B, transmit power $p _ { i } )$ and task parameter [length of data $l _ { i } ^ { t } ,$ computing density $\\phi _ { i } ^ { t } ( \\tau ) ]$ . To ensure the fairness of our simulation, we generate 1000 sets of task data, which included location information, and the length of task data at each time step. Then, we randomly select 50 or 100 groups of IoTDs for 100 times of verification and averaged the results to reduce the impact of randomness in the task data and the potential for bias. In our analysis, we examine the effect of each parameter individually, holding all other parameters constant at their baseline values. Specifically, we vary a single parameter while keeping all other parameters fixed. ",
+        "bbox": [
+            73,
+            915,
+            491,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/9bcbae3ed9f05bb0637bd9c8f04f424386dcb82cb75be5fdcea4ce52b9e33ca1.jpg",
+        "content": "| Number of Episodes | Discount factor = 0.99 | Discount factor = 0.9 | Discount factor = 0.8 | Discount factor = 0.7 |\n| ------------------ | ---------------------- | --------------------- | --------------------- | --------------------- |\n| 0                  | ~0.8                   | ~0.8                  | ~0.8                  | ~0.8                  |\n| 500                | ~0.85                  | ~0.85                 | ~0.8                  | ~0.75                 |\n| 1000               | ~0.85                  | ~0.85                 | ~0.8                  | ~0.75                 |\n| 1500               | ~0.85                  | ~0.85                 | ~0.8                  | ~0.75                 |\n| 2000               | ~0.85                  | ~0.85                 | ~0.8                  | ~0.75                 |\n| 2500               | ~0.85                  | ~0.85                 | ~0.8                  | ~0.75                 |\n| 3000               | ~0.85                  | ~0.85                 | ~0.8                  | ~0.75                 |",
+        "chart_caption": [
+            "Fig. 5. Average reward of each agent versus the number of episodes under different discount factors. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            526,
+            64,
+            898,
+            270
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "table",
+        "img_path": "images/55a80060414441d7d7335dbc0be9d700a165552a893a217336bb02519323de52.jpg",
+        "table_caption": [
+            "TABLE IV DDPG PARAMETER INTRODUCTION "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>Discount factor</td><td>0.9</td></tr><tr><td>Learning rate</td><td>0.0005</td></tr><tr><td>The number of episode</td><td>3000</td></tr><tr><td>Memory size</td><td>200000</td></tr><tr><td>Batch size</td><td>16384</td></tr><tr><td>The number of episode</td><td>3000</td></tr></table>",
+        "bbox": [
+            576,
+            349,
+            852,
+            463
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            492,
+            921,
+            686
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 6 illustrates the impact of bandwidth on the objective function value and some communication indicators. The results indicate that increasing the total bandwidth provided to the base station improves the overall QoE performance. The reason is that a higher bandwidth allows for faster transmission rates, which reduces the transmission latency of offloading tasks from the local to the base station. Additionally, a larger amount of data can be transmitted during each time step, which can effectively reduce the cache queue length. It is worth noting that when the bandwidth changes from 10 to 15 MHz, the transmission latency increases because more tasks are offloaded. Accordingly, the waiting latency decreases, but the response time still decreases. ",
+        "bbox": [
+            501,
+            688,
+            921,
+            883
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "We conduct further experiments where we recreate the length of task data l as evenly distributed means. In Fig. 7(a), we plot the impact of l on the overall QoE performance. The results indicate that increasing the length of task data leads to a significant decrease in QoE, particularly when the number of IoTDs is large. The reason is that when the transmission rate is constant, the increase in the length of data at each time step reduces the efficiency of task offloading. Moreover, when the number of IoTDs is large, the transmission rate decreases due to the increased intensity of interference signals. Therefore, the combined effect of increased data length and decreased transmission rate results in a significant increase in the transmission latency and waiting latency as shown in Fig. 7(b) and (c). ",
+        "bbox": [
+            501,
+            885,
+            921,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: ENHANCING AIoT DEVICE ASSOCIATION WITH TASK OFFLOADING IN AERIAL MEC NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            668,
+            45
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "183 ",
+        "bbox": [
+            901,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/937bf149df8a034ba7e0befed2ea5bf7016562c953d1212841d1fd063b2adf9f.jpg",
+        "content": "| Bandwidth (MHz) | N=50  | N=100 |\n| --------------- | ----- | ----- |\n| 10              | 0.92  | 0.60  |\n| 15              | 0.94  | 0.78  |\n| 20              | 0.95  | 0.81  |\n| 25              | 0.96  | 0.84  |\n| 30              | 0.97  | 0.86  |",
+        "chart_caption": [
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            101,
+            63,
+            346,
+            204
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/437e7b0400bc9672463e2b851b99e48c1e5c4d7bbdfc3e159bf204f0e5089d1f.jpg",
+        "content": "| Bandwidth (MHz) | Response time with N=50 (s) | Cache queue length with N=100 (KB) |\n| --------------- | --------------------------- | ---------------------------------- |\n| 10              | 0.7                         | 800                                |\n| 15              | 0.2                         | 0                                  |\n| 20              | 0.1                         | 0                                  |\n| 25              | 0.05                        | 0                                  |\n| 30              | 0.02                        | 0                                  |",
+        "chart_caption": [
+            "(b) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            366,
+            63,
+            630,
+            204
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f35295f7b6c18e5eb0beabdb83948700f37df9e16bbeac3d13ac836b65502590.jpg",
+        "content": "| Bandwidth (MHz) | Transmission latency with N=50 (s) | Transmission latency with N=100 (s) | Waiting latency with N=50 (s) | Waiting latency with N=100 (s) |\n| --------------- | ---------------------------------- | ------------------------------------ | ----------------------------- | ------------------------------ |\n| 10              | 0.07                               | 0.14                                 | 0.13                          | 0.5                            |\n| 15              | 0.05                               | 0.15                                 | 0.00                          | 0.2                            |\n| 20              | 0.04                               | 0.12                                 | 0.00                          | 0.1                            |\n| 25              | 0.03                               | 0.10                                 | 0.00                          | 0.1                            |\n| 30              | 0.02                               | 0.08                                 | 0.00                          | 0.1                            |",
+        "chart_caption": [
+            "(c) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            632,
+            63,
+            895,
+            204
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/7790cd016944fd2b85ee55e8a57ab7ba69a0ff60d829d539df73d9e3b0597eab.jpg",
+        "content": "| Average length of tasks (KB) | N=50  | N=100 |\n| ---------------------------- | ----- | ----- |\n| 2000                         | 0.97  | 0.87  |\n| 3000                         | 0.95  | 0.81  |\n| 4000                         | 0.93  | 0.76  |\n| 5000                         | 0.91  | 0.64  |\n| 6000                         | 0.90  | 0.54  |",
+        "chart_caption": [
+            "Fig. 6. Influence of bandwidth on reward function and some communication indicators. (a) Average reward versus bandwidth. (b) Response time and cache queue length. (c) Waiting latency and transmission latency versus bandwidth. ",
+            "(a) "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            102,
+            268,
+            344,
+            410
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/375a9262d98ec32c688d8b78d7e9ac204fb5185f0c47c7fe77add7b680ec9cc7.jpg",
+        "content": "| Average length of tasks (KB) | Response time with N=50 | Response time with N=100 | Cache queue length with N=50 | Cache queue length with N=100 |\n| ---------------------------- | ------------------------ | ------------------------- | ----------------------------- | ------------------------------ |\n| 2000                         | 0.3                      | 0.1                       | 0                             | 0                              |\n| 3000                         | 0.4                      | 0.2                       | 0                             | 0                              |\n| 4000                         | 0.6                      | 0.3                       | 0                             | 0                              |\n| 5000                         | 0.8                      | 0.4                       | 0                             | 0                              |\n| 6000                         | 1.5                      | 0.7                       | 500                           | 150                            |",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            367,
+            268,
+            629,
+            410
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0e52033eb60e8c0a85bf3043296950ff7573bce16569935f39b7c848e1c90124.jpg",
+        "content": "| Average length of tasks (KB) | Transmission latency with N=50 | Transmission latency with N=100 |\n| ---------------------------- | ------------------------------ | ------------------------------- |\n| 2000                         | 0.1                            | 0.3                             |\n| 3000                         | 0.15                           | 0.5                             |\n| 4000                         | 0.2                            | 0.7                             |\n| 5000                         | 0.3                            | 0.8                             |\n| 6000                         | 0.35                           | 0.7                             |",
+        "chart_caption": [
+            "(c) ",
+            "Fig. 7. Influence of average data length on reward function and communication indicators. (a) Average reward versus average data length. (b) Response time and cache queue length versus average data length. (c) Waiting latency and transmission latency versus average data length. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            635,
+            268,
+            893,
+            410
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            492,
+            491,
+            643
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "C. Comparison Simulation ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            659,
+            261,
+            674
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In this section, we perform the evaluation of the proposed algorithm compared with four benchmark strategies or comparison algorithms as follows. ",
+        "bbox": [
+            73,
+            678,
+            490,
+            722
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "1) Weighted K-Means With Constraint (WKMC): Each IoTD is assigned a weight value based on its virtual queue length, which is expressed as follows: ",
+        "bbox": [
+            91,
+            723,
+            491,
+            768
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {i} ^ {v} (t) = \\sum_ {\\tau = 0} ^ {t} e ^ {\\frac {t _ {i} ^ {t , \\text { block } (\\tau)}}{t _ {i} ^ {t , \\max}}} l _ {i} ^ {t} (\\tau). \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            207,
+            773,
+            490,
+            820
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Here, $L _ { i } ^ { \\nu } ( t )$ describes the task waiting latency and the length of the virtual queue, which is normalized as the weight value. The weight value is between 0 and 1, where a higher weight value indicates a higher importance or relevance. During the clustering process, the weighted K-Means algorithm calculates the cluster centroids by taking into account the weight of each IoTD. Specifically, the algorithm computes the weighted mean of the data points belonging to each cluster to update the centroid of that cluster. It is worth noting that the distance between the updated centroid and the UAVs’ position at the last time step is limited to $d _ { j } ^ { \\operatorname* { m a x } } ( \\tau )$ during the iterative process. The iterative process continues until the algorithm converges to a stable clustering solution. The final result is a set of cluster centroids (UAVs’ positions) and the IoTDs that belong to each cluster (device association). ",
+        "bbox": [
+            112,
+            824,
+            491,
+            946
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            542,
+            492,
+            921,
+            627
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "2) Fixed UAV Trajectory (FUT): All UAVs fly in an orbit around a circle with a center of (0, 0) and a radius of $\\sqrt { 2 } L / 4$ . Each UAV is capable of moving a maximum distance $m _ { j } ^ { \\operatorname* { m a x } } / 2$ at each time step τ , and the angle interval of each UAV is $2 \\pi / M ^ { u }$ , where $M ^ { u }$ represents the total number of UAVs. ",
+            "3) Nearest Association (NA) Algorithm: For each $u _ { i } ,$ it requests to connect with the nearest $d _ { j } .$ . If the number of IoTDs served by $d _ { j }$ is less than K, $d _ { j }$ accepts the connection request. Otherwise, it requests to connect with the second nearest $d _ { j } ^ { \\prime }$ until it associates with a UAV or BS. ",
+            "4) WKMC+NA: Utilize the weighted K-means clustering (WKMC) algorithm along with the NA algorithm. In this approach, the WKMC algorithm is used to optimize the position of UAVs, and the NA algorithm is used for device association. "
+        ],
+        "bbox": [
+            519,
+            628,
+            921,
+            882
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Fig. 8 shows that as the number of IoTs increases, the value of the objective function decreases, with a rapid decline observed when the number of IoTs exceeds 70. The rapid increase in the number of connected IoTDs exacerbates interference, which may result in some IoTDs not being served for a period of time or experiencing a significantly reduced transmission rate. However, the proposed RSRT+BTO algorithm and WKMC algorithm demonstrate improved adaptability in multi-IoTDs scenarios. Specifically, when N = 100, the proposed RSRT+BTO algorithm exhibits performance improvements of 2.347, 2.126, 1.723, and 1.110 times over FUT, WKMC+NA, NA, and WKMC, respectively. Fig. 9 provides an explanation for the decline in the objective function value. When the number of IoTDs in the FUT algorithm reaches 50, the number of remaining tasks begins to increase significantly. While the response time changes remain constant before reaching 80 IoTDs, this can be attributed to a large number of unprocessed tasks, which do not contribute to an increase in transmission latency. However, when the number of IoTDs reaches 100, the NA and WKMC+NA algorithms experience a significant increase in latency due to the large cache of tasks. As depicted in Fig. 10, these algorithms also exhibit a decrease in transmission latency and an increase in the waiting latency. In contrast, as the number of IoTDs increases, only the transmission latency increases for Algorithms RSRT+BTO and WKMC, while other parameters remain unchanged. This explains the lack of a significant drop in the objective function value. Nevertheless, our proposed RSRT and BTO algorithms demonstrate clear superiority over the WKMC algorithm in terms of response time and cache queue length. ",
+        "bbox": [
+            503,
+            885,
+            921,
+            945
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "184 ",
+        "bbox": [
+            78,
+            35,
+            98,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 1, 1 JANUARY 2024 ",
+        "bbox": [
+            534,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/884b70a9a9b05d913ee66f150eaa1a6f7d9160cac62b0b5ff42934e01c2b05a5.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 8. Average reward versus the number of IoTDs for the proposed algorithms and four comparison algorithms. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            101,
+            64,
+            464,
+            267
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d2fe5917fe8dea6d9116f853de20607d6520f6ade027f15ee1f41ec27c5cf749.jpg",
+        "content": "",
+        "chart_caption": [
+            ""
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            120,
+            318,
+            442,
+            497
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d075b845a2878ffb7a421d60cc9ab878473a551a3f87f5759de1aa3db9ee199a.jpg",
+        "content": "",
+        "chart_caption": [
+            "",
+            "Fig. 9. (a) Response time and (b) cache queue length versus the number of IoTDs for the proposed algorithms and four comparison algorithms. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            130,
+            517,
+            442,
+            698
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            779,
+            491,
+            946
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/1e396f8699dc1d5092d168247f1ef207e0a29182d2ed4e7c05b96733e41eb8c1.jpg",
+        "content": "",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            555,
+            65,
+            867,
+            244
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/53a7881212a6bea953b329bbc49ed494ed54f08130d2798e1dc096ce7a404314.jpg",
+        "content": "",
+        "chart_caption": [
+            "",
+            "",
+            "Fig. 10. (a) Transmission latency and (b) waiting latency versus the number of IoTDs for the proposed algorithms and four comparison algorithms. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            558,
+            267,
+            866,
+            448
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            537,
+            921,
+            779
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In the ensuing comparative analysis, the task losses of five distinct algorithms are scrutinized when the variable M is set at the values 80, 90, and 100, respectively. As gleaned from the data encapsulated in Table V, it becomes evident that both our proposed algorithm and the WKMC algorithm are impervious to task losses. Conversely, the NA and WKMC+NA algorithms encounter minuscule task losses. Significantly, the FUT algorithm experiences a substantial number of task losses, substantiating the necessity and efficacy of UAV trajectory planning. Moreover, Fig. 11 serves to provide a comparative analysis on the fluctuation in cache queue size within an episodic framework, which correspondingly aligns with the observed task losses. The observed consistency further bolsters our hypothesis concerning the crucial role of efficient UAV trajectory planning. ",
+        "bbox": [
+            501,
+            779,
+            921,
+            946
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: ENHANCING AIoT DEVICE ASSOCIATION WITH TASK OFFLOADING IN AERIAL MEC NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            668,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "185 ",
+        "bbox": [
+            901,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "table",
+        "img_path": "images/6e2ef8d3609539b0cb116c1c43d8a686d241de91dc2b6445808865889422e8aa.jpg",
+        "table_caption": [
+            "TABLE V TASK LOSS CONDITION "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Algorithm\\Number of AIoTDs</td><td>80</td><td>90</td><td>100</td></tr><tr><td>RSRT+BTO</td><td>0</td><td>0</td><td>0</td></tr><tr><td>WKMC</td><td>0</td><td>0</td><td>0</td></tr><tr><td>FUT</td><td>4.786</td><td>14.94</td><td>21.35</td></tr><tr><td>NA</td><td>0</td><td>0.089</td><td>0.1</td></tr><tr><td>WKMC+NA</td><td>0</td><td>0.089</td><td>0.11</td></tr></table>",
+        "bbox": [
+            81,
+            98,
+            486,
+            185
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "chart",
+        "img_path": "images/7ed0a5b46236afc4d20c85f42a84d81310ee680c11274ee9113af96c3c3e545a.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 11. Change of IoTDs’ average cache queue length in 300 time steps under the same task length and computing density distribution of five algorithms when the number of IoTDs is 100. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            94,
+            196,
+            473,
+            401
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            474,
+            491,
+            537
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "VI. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            217,
+            553,
+            349,
+            566
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "This research presents a novel AI scheme for optimizing AIoT-enabled MEC networks through the integration of multi-UAVs. The scheme encompasses the RSRT algorithm for device association, the BTO algorithm for task offloading, and the MADDPG approach for UAV trajectory planning. The primary objective is to enhance the QoE for IoT devices by reducing response time and cache queue length. The experimental results demonstrate the effectiveness and superiority of the proposed approach over existing benchmark schemes. The scheme exhibits a high convergence rate and outperforms previous methods in optimizing response time and cache queue length for IoTDs. This research contributes to the advancement of AIoT-enabled aerial MEC networks by effectively addressing the challenges associated with device association, task offloading, and multi-UAV mobility through an integrated and innovative solution. Future research directions could involve further refining and enhancing the joint optimization scheme to improve the efficiency and effectiveness of aerial MEC networks. ",
+        "bbox": [
+            73,
+            571,
+            491,
+            859
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "APPENDIX ",
+        "text_level": 1,
+        "bbox": [
+            243,
+            878,
+            323,
+            890
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "PROOF OF LEMMA 1 ",
+        "text_level": 1,
+        "bbox": [
+            210,
+            897,
+            354,
+            909
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Our goal is to judge the positive impact of offloading a task u on the objective function. Therefore, we take $O _ { i , u } ( \\tau )$ as variable and expand the problem (P1) to obtain the following formulation: ",
+        "bbox": [
+            75,
+            915,
+            491,
+            946
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            69,
+            919,
+            98
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ \\left(O _ {i, u} (\\tau)\\right) = \\frac {L _ {i , u} ^ {\\text { remain }} (\\tau) + O _ {i , u} (\\tau))}{L _ {i} ^ {\\max}} \\cdot \\frac {t ^ {\\text { opt }}}{t ^ {\\text { opt }} + \\frac {O _ {i , u} (\\tau)}{R _ {i} (\\tau)}}. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            534,
+            104,
+            921,
+            147
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Then, we estimate the effect of offloading a task u on the objective function, which can be expressed as $Q ^ { \\prime } ( O _ { i , u } ( \\tau ) ) =$ $Q ( O _ { i , u } ( \\tau ) ) - Q ( 0 )$ , and Q(0) is calculated as follows: ",
+        "bbox": [
+            503,
+            152,
+            919,
+            198
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ (0) = \\frac {L _ {i , u} ^ {\\text { remain }} (\\tau) - O _ {i , u} (\\tau)}{L _ {i} ^ {\\max}} \\cdot \\frac {t ^ {\\text { opt }}}{t ^ {\\text { opt }} + \\delta T}. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            601,
+            205,
+            919,
+            234
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Here, we assume that $Q ( O _ { i , u } ( \\tau ) )$ is a continuous variable and take the derivative with respect to $Q ^ { \\prime } ( O _ { i , u } ( \\tau ) )$ ",
+        "bbox": [
+            503,
+            239,
+            919,
+            270
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\frac {\\partial Q ^ {\\prime} \\left(O _ {i , u} (\\tau)\\right)}{\\partial O _ {i , u} (\\tau)} = \\frac {t ^ {\\text { opt }}}{L _ {i} ^ {\\max} \\left(\\delta T + t ^ {\\text { opt }}\\right) \\left(R _ {i} (\\tau) t ^ {\\text { opt }} + O _ {i , u} (\\tau)\\right) ^ {2}}. \\\\ \\times \\left(R _ {i} (\\tau) ^ {2} t ^ {\\mathrm{opt}} \\left(\\delta T + 2 t ^ {\\mathrm{opt}}\\right) + 2 R _ {i} (\\tau) t ^ {\\mathrm{opt}} O _ {i, u} (\\tau) \\right. \\\\ \\left. + O _ {i, u} (\\tau) ^ {2} - L _ {i, u} ^ {\\text { remain }} (\\tau) R _ {i} (\\tau) \\left(\\delta T + t ^ {\\text { opt }}\\right)\\right). \\tag {32} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            503,
+            275,
+            921,
+            359
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Then, we can obtain two extreme points $\\begin{array} { r l r l r l r l r l } { p _ { 1 } ( Q ^ { \\prime } ) } & { { } } & { = } & { } & { L _ { i , u } ^ { \\mathrm { r e m a i n } } } & { { } - } & { R _ { i } ( \\tau ) \\delta T } & { { } - } & { 2 R _ { i } ( \\tau ) t ^ { \\mathrm { o p t } } } & { { } - } \\end{array}$ Lremain i,u $\\sqrt { ( 2 R _ { i } ( \\tau ) t ^ { \\mathrm { o p t } } + R _ { i } ( \\tau ) \\delta T - L _ { i , u } ^ { \\mathrm { r e m a i n } } ) ^ { 2 } - 4 L _ { i , u } ^ { \\mathrm { r e m a i n } } R _ { i } ( \\tau ) \\delta T }$ ",
+        "bbox": [
+            503,
+            364,
+            921,
+            419
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "and $\\begin{array} { r l r } { p _ { 2 } ( Q ^ { \\prime } ) } & { { } = } & { L _ { i , u } ^ { \\mathrm { r e m a i n } } - R _ { i } ( \\tau ) \\delta T - 2 R _ { i } ( \\tau ) t ^ { \\mathrm { o p t } } + } \\end{array}$ ",
+        "bbox": [
+            503,
+            419,
+            921,
+            435
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "$\\sqrt { ( 2 R _ { i } ( \\tau ) t ^ { \\mathrm { o p t } } + R _ { i } ( \\tau ) \\delta T - L _ { i , u } ^ { \\mathrm { r e m a i n } } ) ^ { 2 } - 4 L _ { i , u } ^ { \\mathrm { r e m a i n } } R _ { i } ( \\tau ) \\delta T } .$ i,u i,u In addition, when $O _ { i , u } ( \\tau )$ approach to + inf, $Q ^ { \\prime } ( O _ { i , u } ( \\tau ) ) = + \\mathrm { i n f . }$ On the contrary, when $O _ { i , u } ( \\tau )$ approach to − inf, $Q ^ { \\prime } ( O _ { i , u } ( \\tau ) ) ~ = ~ - \\operatorname { i n f } .$ . Therefore, the function $Q ^ { \\prime } ( O _ { i , u } ( \\tau ) )$ increases and then decreases and then increases, which extreme points are $p _ { 1 } ( Q ^ { \\prime } )$ and $p _ { 2 } ( Q ^ { \\prime } )$ , respectively. Thus, the subset tree sorting selection for each episode in the traceback method is as follows: ",
+        "bbox": [
+            503,
+            436,
+            921,
+            473
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            473,
+            921,
+            561
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} \\max \\left\\{O _ {i, u} (\\tau) \\right\\}, p _ {1} \\left(Q ^ {\\prime}\\right), p _ {2} \\left(Q ^ {\\prime}\\right) \\leq 0 \\\\ \\arg \\max \\left\\{Q ^ {\\prime} (0), Q ^ {\\prime} \\left(\\max \\left\\{O _ {i, u} (\\tau) \\right\\}\\right) \\right\\}, \\text { otherwise. } \\end{array} \\right. \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            566,
+            919,
+            601
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            663,
+            616,
+            761,
+            628
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] A. Boumaalif and O. Zytoune, “Power distribution of device-to-device communications under Nakagami fading channel,” IEEE Trans. Mobile Comput., vol. 21, no. 6, pp. 2158–2167, Jun. 2022. ",
+            "[2] J. Wang, K. Liu, and J. Pan, “Online UAV-mounted edge server dispatching for mobile-to-mobile edge computing,” IEEE Internet Things J., vol. 7, no. 2, pp. 1375–1386, Feb. 2020. ",
+            "[3] S. K. Kasi et al., “Heuristic edge server placement in Industrial Internet of Things and cellular networks,” IEEE Internet Things J., vol. 8, no. 13, pp. 10308–10317, Jul. 2021. ",
+            "[4] Q. Wu, Y. Zeng, and R. Zhang, “Joint trajectory and communication design for multi-UAV enabled wireless networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2109–2121, Mar. 2018. ",
+            "[5] M. Mukherjee, V. Kumar, A. Lat, M. Guo, R. Matam, and Y. Lv, “Distributed deep learning-based task offloading for UAV-enabled mobile edge computing,” in Proc. 39th IEEE Conf. Comput. Commun., 2020, pp. 1208–1212. ",
+            "[6] M. Li, N. Cheng, J. Gao, Y. Wang, L. Zhao, and X. Shen, “Energyefficient UAV-assisted mobile edge computing: Resource allocation and trajectory optimization,” IEEE Trans. Veh. Technol., vol. 69, no. 3, pp. 3424–3438, Mar. 2020. ",
+            "[7] R. Han, Y. Wen, L. Bai, J. Liu, and J. Choi, “Rate splitting on mobile edge computing for UAV-aided IoT systems,” IEEE Trans. Cogn. Commun. Netw., vol. 6, no. 4, pp. 1193–1203, Dec. 2020. ",
+            "[8] G. Fragkos, E.-E. Tsiropoulou, and S. Papavassiliou, “Artificial intelligence enabled distributed edge computing for Internet of Things applications,” in Proc. 16th Int. Conf. Distrib. Comput. Sens. Syst., 2020, pp. 450–457. "
+        ],
+        "bbox": [
+            503,
+            632,
+            924,
+            946
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "186 ",
+        "bbox": [
+            78,
+            35,
+            98,
+            45
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 1, 1 JANUARY 2024 ",
+        "bbox": [
+            532,
+            34,
+            921,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[9] D. Wei, J. Ma, L. Luo, Y. Wang, L. He, and X. Li, “Computation offloading over multi-UAV MEC network: A distributed deep reinforcement learning approach,” Comput. Netw., vol. 199, Nov. 2021, Art. no. 108439. ",
+            "[10] S. Shi, M. Wang, S. Gu, and Z. Zhong, “Energy-efficient UAV-enabled computation offloading for Industrial Internet of Things: A deep reinforcement learning approach,” Wireless Netw., vol. 2021, pp. 1–10, Oct. 2021. ",
+            "[11] Y. Nie, J. Zhao, F. Gao, and F. R. Yu, “Semi-distributed resource management in UAV-aided MEC systems: A multi-agent federated reinforcement learning approach,” IEEE Trans. Veh. Technol., vol. 70, no. 12, pp. 13162–13173, Dec. 2021. ",
+            "[12] Y. Ye, W. Wei, D. Geng, and X. He, “Dynamic coordination in UAV swarm assisted MEC via decentralized deep reinforcement learning,” in Proc. Int. Conf. Wireless Commun. Signal Process. (WCSP), Nanjing, China, Oct. 2020, pp. 1064–1069. ",
+            "[13] Z. Ning et al., “Dynamic computation offloading and server deployment for UAV-enabled multi-access edge computing,” IEEE Trans. Mobile Comput., vol. 22, no. 5, pp. 2628–2644, May 2023. ",
+            "[14] Y. Liu, S. Xie, and Y. Zhang, “Cooperative offloading and resource management for UAV-enabled mobile edge computing in power IoT system,” IEEE Trans. Veh. Technol., vol. 69, no. 10, pp. 12229–12239, Oct. 2020. ",
+            "[15] Y. Miao, K. Hwang, D. Wu, Y. Hao, and M. Chen, “Drone swarm path planning for mobile edge computing in Industrial Internet of Things,” IEEE Trans. Ind. Informat., vol. 19, no. 5, pp. 6836–6848, May 2023. ",
+            "[16] L. P. Qian, H. Zhang, Q. Wang, Y. Wu, and B. Lin, “Joint multi-domain resource allocation and trajectory optimization in UAV-assisted maritime IoT networks,” IEEE Internet Things J., vol. 10, no. 1, pp. 539–552, Jan. 2023. ",
+            "[17] Q. Luo, T. H. Luan, W. Shi, and P. Fan, “Deep reinforcement learning based computation offloading and trajectory planning for multi-UAV cooperative target search,” IEEE J. Sel. Areas Commun., vol. 41, no. 2, pp. 504–520, Feb. 2023. ",
+            "[18] J. Bai, Z. Zeng, T. Wang, S. Zhang, N. N. Xiong, and A. Liu, “TANTO: An effective trust-based unmanned aerial vehicle computing system for the Internet of Things,” IEEE Internet Things J., vol. 10, no. 7, pp. 5644–5661, Apr. 2023. ",
+            "[19] J. Bai, G. Huang, S. Zhang, Z. Zeng, and A. Liu, “GA-DCTSP: An intelligent active data processing scheme for UAV-enabled edge computing,” IEEE Internet Things J., vol. 10, no. 6, pp. 4891–4906, Mar. 2023. ",
+            "[20] P. Chen et al., “Secure task offloading for MEC-aided-UAV system,” IEEE Trans. Intell. Veh., vol. 8, no. 5, pp. 3444–3457, May 2023. ",
+            "[21] Y.-J. Chen, K.-M. Liao, M.-L. Ku, F. P. Tso, and G.-Y. Chen, “Multi-agent reinforcement learning based 3D trajectory design in aerial-terrestrial wireless caching networks,” IEEE Trans. Veh. Technol., vol. 70, no. 8, pp. 8201–8215, Aug. 2021. ",
+            "[22] H. Yan, W. Bao, X. Zhu, J. Wang, and L. Liu, “Data offloading enabled by heterogeneous UAVs for IoT applications under uncertain environments,” IEEE Internet Things J., vol. 10, no. 5, pp. 3928–3943, Mar. 2023. ",
+            "[23] D. S. Lakew, A.-T. Tran, N.-N. Dao, and S. Cho, “Intelligent offloading and resource allocation in heterogeneous aerial access IoT networks,” IEEE Internet Things J., vol. 10, no. 7, pp. 5704–5718, Apr. 2023. ",
+            "[24] Z. Yang, S. Bi, and Y.-J. A. Zhang, “Dynamic offloading and trajectory control for UAV-enabled mobile edge computing system with energy harvesting devices,” IEEE Trans. Wireless Commun., vol. 21, no. 12, pp. 10515–10528, Dec. 2022. "
+        ],
+        "bbox": [
+            75,
+            70,
+            493,
+            777
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[25] P. A. Apostolopoulos, G. Fragkos, E. E. Tsiropoulou, and S. Papavassiliou, “Data offloading in UAV-assisted multi-access edge computing systems under resource uncertainty,” IEEE Trans. Mobile Comput., vol. 22, no. 1, pp. 175–190, 1 Jan. 2023. ",
+            "[26] Y. Jin and H. J. Lee, “On-demand computation offloading architecture in fog networks,” Electronics, vol. 8, no. 10, p. 1076, 2019. ",
+            "[27] J. Wang, D. Feng, S. Zhang, J. Tang, and T. Q. S. Quek, “Computation offloading for mobile edge computing enabled vehicular networks,” IEEE Access, vol. 7, pp. 62624–62632, 2019. ",
+            "[28] N. Gupta, D. Mishra, and S. Agarwal, “Energy-aware trajectory design for outage minimization in UAV-assisted communication systems,” IEEE Trans. Green Commun. Netw., vol. 6, no. 3, pp. 1751–1763, Sep. 2022. ",
+            "[29] B. Khamidehi and E. S. Sousa, “Reinforcement-learning-aided safe planning for aerial robots to collect data in dynamic environments,” IEEE Internet Things J., vol. 9, no. 15, pp. 13901–13912, Aug. 2022. ",
+            "[30] Y. Zeng, J. Xu, and R. Zhang, “Energy minimization for wireless communication with rotary-wing UAV,” IEEE Trans. Wireless Commun., vol. 18, no. 4, pp. 2329–2345, Apr. 2019. ",
+            "[31] S. Huang, L. Li, Q. Pan, W. Zheng, and Z. Lu, “Fine-grained task offloading for UAV via MEC-enabled networks,” in Proc. IEEE 30th Int. Symp. Pers., Indoor Mobile Radio Commun. (PIMRC Workshops), Istanbul, Turkey, Sep. 2019, pp. 1–6. ",
+            "[32] In T. J. Rouphael, RF and Digital Signal Processing for Software-Defined Radio. Burlington, NJ, USA: Newnes, 2009, pp. 377–383. ",
+            "[33] I. Atzeni, J. Arnau, and M. Kountouris, “Downlink cellular network analysis with LOS/NLOS propagation and elevated base stations,” IEEE Trans. Wireless Commun., vol. 17, no. 1, pp. 142–156, Jan. 2018. ",
+            "[34] B. Tahir, S. Schwarz, and M. Rupp, “Analysis of uplink IRSassisted NOMA under Nakagami-m fading via moments matching,” IEEE Wireless Commun. Lett., vol. 10, no. 3, pp. 624–628, Mar. 2021. ",
+            "[35] B. Di, L. Song, and Y. Li, “Sub-channel assignment, power allocation, and user scheduling for non-orthogonal multiple access networks,” IEEE Trans. Wireless Commun., vol. 15, no. 11, pp. 7686–7698, Nov. 2016. ",
+            "[36] L. Liu, B. Sun, X. Tan, and D. H. K. Tsang, “Energy-efficient resource allocation and subchannel assignment for NOMA-enabled multiaccess edge computing,” IEEE Syst. J., vol. 16, no. 1, pp. 1558–1569, Mar. 2022. ",
+            "[37] E. Xuefei, Z. Ma, and J. F. Huang, “Cluster design and optimization of SWIPT-based MEC networks with UAV assistance,” Wireless Commun. Mobile Comput., vol. 2021, pp. 1–4, Nov. 2021. ",
+            "[38] Y. K. Tun, Y. M. Park, N. H. Tran, W. Saad, S. R. Pandey, and C. S. Hong, “Energy-efficient resource management in UAV-assisted mobile edge computing,” IEEE Commun. Lett., vol. 25, no. 1, pp. 249–253, Jan. 2021. ",
+            "[39] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “Mobile edge computing: Survey and research outlook,” IEEE Commun. Surveys Tuts., submitted to publication. ",
+            "[40] L. Wang, K. Wang, C. Pan, W. Xu, N. Aslam, and L. Hanzo, “Multiagent deep reinforcement learning-based trajectory planning for multi-UAV assisted mobile edge computing,” IEEE Trans. Cogn. Commun. Netw., vol. 7, no. 1, pp. 73–84, Mar. 2021. ",
+            "[41] S. Lee and H. Kim, “ACO-based optimal node selection method for QoE improvement in MEC environment,” in Proc. Int. Conf. Electron., Inf., Commun. (ICEIC), 2019, pp. 1–4. "
+        ],
+        "bbox": [
+            506,
+            70,
+            921,
+            775
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: ENHANCING AIoT DEVICE ASSOCIATION WITH TASK OFFLOADING IN AERIAL MEC NETWORKS ",
+        "bbox": [
+            76,
+            34,
+            668,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "187 ",
+        "bbox": [
+            901,
+            35,
+            919,
+            45
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:26:00 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            138,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 13
+    }
+]

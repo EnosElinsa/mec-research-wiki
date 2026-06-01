@@ -118,6 +118,7 @@
 - [[zheng-2024-semcom-sec-offloading]] — Zheng et al. 2024. **Semantic communication** in a LEO **satellite-borne edge cloud** (SemCom-SEC) for computation offloading; **pruning-split federated learning** (PSFed) updates the semantic coders + a **Rubinstein-bargaining** task-scheduling mechanism (CTPS) for delay/energy under privacy + fairness; −40.50% comm cost, −51.43% privacy risk (IEEE JSAC).
 - [[zhang-2024-coma-satellite-offloading]] — Zhang et al. 2024. **Collaborative task offloading for distributed satellite MEC**; autonomous LEO agents minimize energy under time-varying ISL visibility; POMDP solved with **COMA** (CTDE actor-critic) + an **attention-BiLSTM** actor; STK-built constellation (IEEE TVT).
 - [[zhang-2024-mhspo-satellite-peer-offloading]] — Zhang et al. 2024. **Multi-hop computation peer offloading** (MHSPO) for MEC-enabled LEO satellite networks; an access satellite offloads tasks **horizontally** to peer satellites several ISL hops away for **load balancing**; weighted delay+energy min via **Lyapunov** + delayed online learning + gap-preserving per-satellite distributed decomposition (IEEE TMC).
+- [[wang-2024-satellite-terrestrial-computing]] — Wang et al. 2024. **Satellite-terrestrial computing** for 6G; BSs + LEO satellites with MEC serve **GUEs + SUEs**; min weighted total energy under delay via joint **offloading selection** (relaxation mapping) + **receive beamforming** (SDR) + resource allocation; NP-hard → 3 subproblems solved by **AO**; NOMA-SIC uplinks + FSO inter-satellite links (IEEE TCOMM).
 
 ### IRS / THz / anti-jamming
 
@@ -155,6 +156,7 @@
 - [[bi-2025-sg-mapg]] — Bi et al. 2025. Three-layer hierarchical Stackelberg game for UAV-MEC service fairness & cost. *SG-MAPG*.
 - [[wang-2021-maddpg-multiuav-trajectory]] — Wang et al. 2021. **MADDPG** per-UAV trajectory planning for multi-UAV MEC; dual fairness (geographical + UE-load) + UE energy; low-complexity offloading step (IEEE TCCN).
 - [[seid-2021-madrl-multiuav-iot-edge]] — Seid et al. 2021. Clustered multi-UAV IoT-edge offloading + resource allocation as a **stochastic game**; **MADDPG** (MADRL); energy+delay cost (IEEE TNSM).
+- [[chen-2023-aiot-device-association]] — Chen et al. 2023. Distributed multi-UAV + GBS aerial MEC; QoE (avg response time + IoTD **cache-queue length**) max via joint **device association** (greedy recursive RSRT) + **task offloading** (0-1 knapsack-with-variable-value, backtracking BTO) + **MADDPG** UAV trajectory (IEEE IoT-J).
 
 ### Hierarchical aerial MEC (UAV + HAP)
 
@@ -214,6 +216,7 @@
 - [[zhu-2024-crb-active-ris-isac]] — Zhu et al. 2024. **Active-RIS-empowered ISAC** for an obstructed target; derives the **CRB** for target **DoA** estimation and minimizes it over BS precoding + active-RIS reflection beamforming under per-user SINR + BS/RIS power + RIS amplitude constraints; AO + SDR + **majorization-minimization**; >30 dB CRB reduction vs passive RIS (IEEE TWC). *(PHY active-RIS ISAC anchor, not MEC.)*
 - [[zhao-2018-caching-uav-ia-secure]] — Zhao et al. 2018. **Caching-UAV secure transmission** in hyper-dense small cells; **interference alignment** (SBS precoding) for single-antenna UAVs + idle SBSs repurposed as zero-forced **friendly jammers** against a passive eavesdropper; feasibility + secrecy analysis (IEEE TCOMM). *(Caching + interference-alignment PLS anchor, not MEC offloading.)*
 - [[zhu-2024-zdrl-uav-tracking]] — Zhu et al. 2024. **Collaborative-RL 3D UAV tracking**; one active + four passive UAVs localize a target via TDOA/TSWLS; joint power + trajectory design via **Z-function-decomposition RL** (distributional RL); up to 39.4% / 64.6% lower positioning error vs VD-RL / independent DRL (IEEE TMC). *(UAV localization + trajectory design, not MEC offloading.)*
+- [[an-2024-multilayer-ris-hap-swipt]] — An et al. 2024. **Multi-layer refracting RIS-assisted receiver** enabling **SWIPT** over long-distance **HAP** links; worst-case sum-rate max under imperfect angular CSI + non-linear EH; scalable toolbox-free robust optimization (CSI discretization + **LogSumExp-dual** precoder + **M-CCD** RIS coefficients + closed-form PS/decoder) (IEEE TWC). *(PHY RIS-receiver / SWIPT anchor, not MEC offloading.)*
 
 ### Collaborative beamforming & aerial communications
 
@@ -246,6 +249,7 @@
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
 - [[zhou-2018-uav-wireless-powered-mec]] — Zhou et al. 2018. **Computation-rate maximization** in UAV-enabled wireless-powered MEC; partial + binary offloading; two-/three-stage closed-form optimization (JSAC).
+- [[he-2024-backscatter-wpmec-cooperation]] — He et al. 2024. **Backscatter-assisted wireless-powered MEC with user cooperation** (source node + helper-relay + HAP-with-MEC); integrated **BackCom + active comm**; **user energy-efficiency** maximization via Dinkelbach fractional programming + convex transform to semi-closed-form solutions (IEEE TMC).
 - [[xu-2018-uav-wpt-trajectory]] — Xu et al. 2018. Foundational **UAV-enabled WPT**: trajectory design + energy optimization; sum-energy optimum is **single-location hovering** (near-far fairness issue), max-min (min-energy) optimum is **multi-location hovering** → **successive hover-and-fly** + SCP under a max-speed constraint (IEEE TWC).
 
 > [[liu-2020-wpt-cooperative-uav-mec]] (UAV-enabled wireless-powered cooperative MEC; SCA + DAI) also targets WPT energy minimization; it is filed under **Classical / convex / optimization-based UAV-MEC** above as its primary home.
@@ -255,6 +259,8 @@
 
 - [[zhang-2013-energy-optimal-mcc-stochastic]] — Zhang et al. 2013. **Energy-optimal mobile cloud computing** under a stochastic (Gilbert-Elliott) channel; mobile vs cloud execution with DVS CPU-frequency / transmission-rate scheduling; closed-form policies + a **threshold policy** on data consumption rate $L/T$ (IEEE TWC).
 - [[mao-2016-lodco-eh-mec-offloading]] — Mao et al. 2016. **Green MEC with energy-harvesting devices**; execution-cost (delay + task failure) minimization via the **LODCO** Lyapunov online algorithm deciding offloading + DVFS CPU frequency + transmit power from current state only; asymptotically optimal (IEEE JSAC).
+- [[you-2017-meco-resource-allocation]] — You et al. 2017. **Multiuser MECO resource allocation** (TDMA + OFDMA); min weighted-sum mobile energy under a latency constraint; the optimal TDMA policy is **threshold-based** on a derived **offloading priority function** (complete vs minimum offloading), extended to a finite-capacity cloud + a low-complexity OFDMA scheme (IEEE TWC).
+- [[miettinen-2010-mcc-energy-efficiency]] — Miettinen & Nurminen 2010. Foundational **mobile-cloud-computing energy** measurement/analysis: offloading saves energy only when $E_{cloud}<E_{local}$, governed by the **computing-to-communication ratio**; WLAN-vs-3G + traffic-pattern sensitivity (USENIX HotCloud '10). *(Corpus's earliest anchor; measurement study, no DOI.)*
 - [[yang-2024-taco-human-digital-twin-edge]] — Yang et al. 2024. **Human digital twin** deployment at the edge under an end-edge-cloud framework; two-timescale accuracy-aware online optimization (**TACO**) jointly placing/updating virtual twins + task offloading + access selection; improved Lyapunov + piecewise McCormick envelopes + BCD (IEEE TMC).
 
 ### UAV communications & deployment foundations
@@ -310,6 +316,8 @@
 - [[mobile-edge-computing]]
 - [[task-offloading]]
 - [[task-migration]]
+- [[device-association]]
+- [[computation-to-communication-ratio]]
 - [[computation-peer-offloading]]
 - [[computational-task-caching]]
 - [[binary-vs-partial-offloading]]
@@ -321,6 +329,8 @@
 - [[wireless-power-transfer]]
 - [[rf-energy-harvesting]]
 - [[energy-harvesting-mec]]
+- [[backscatter-communication]]
+- [[simultaneous-wireless-information-and-power-transfer]]
 - [[noma]]
 - [[cooperative-perception]]
 - [[perception-aided-offloading]]

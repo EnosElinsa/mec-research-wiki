@@ -2,6 +2,47 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 3/8: 6 new sources; +4 concepts)
+
+Third batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch2` key there). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders, 183 curated, 31 uncurated, 0 duplicate MinerU ingests**; HEAD synced with origin/main (`83984bb`), working tree clean apart from the uncurated raw folders + app-generated `wiki/media/`. None of the 6 batch papers had an existing source page. Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`. After this batch: **189 curated, 25 uncurated, 4 batches remain**.
+
+### Source pages created (6)
+
+- **[[wang-2024-satellite-terrestrial-computing]]** — *Energy-Efficient Design of Satellite-Terrestrial Computing in 6G Wireless Networks* (IEEE TCOMM, 2024, DOI 10.1109/TCOMM.2023.3334813). BSs + LEO satellites with MEC serve GUEs + SUEs; min weighted total energy under delay via joint offloading-selection (relaxation mapping) + receive beamforming (SDR) + resource allocation; NP-hard → 3 subproblems solved by AO; NOMA-SIC uplinks + FSO inter-satellite links.
+- **[[you-2017-meco-resource-allocation]]** — *Energy-Efficient Resource Allocation for Mobile-Edge Computation Offloading* (IEEE TWC, 2017, DOI 10.1109/TWC.2016.2633522). Multiuser MECO over TDMA + OFDMA; min weighted-sum mobile energy under a latency constraint; optimal TDMA policy is threshold-based on a derived offloading priority function (complete vs minimum offloading); finite-capacity + low-complexity OFDMA extensions. *(MEC fundamentals anchor.)*
+- **[[he-2024-backscatter-wpmec-cooperation]]** — *Energy Efficiency Maximization of Backscatter-Assisted Wireless-Powered MEC With User Cooperation* (IEEE TMC, 2024, DOI 10.1109/TMC.2023.3243161). SN + helper-relay + HAP-with-MEC; integrated BackCom + active communication; user-EE maximization via Dinkelbach fractional programming + convex transform to semi-closed-form solutions.
+- **[[miettinen-2010-mcc-energy-efficiency]]** — *Energy Efficiency of Mobile Clients in Cloud Computing* (USENIX HotCloud '10, Boston, June 2010). Corpus's earliest anchor; mobile-cloud-computing energy measurement/analysis — offloading saves energy only when E_cloud < E_local, governed by the computing-to-communication ratio; WLAN-vs-3G + traffic-pattern sensitivity. Venue/year `not in parse` (web-confirmed HotCloud '10); no DOI (USENIX workshop). *(Measurement study.)*
+- **[[chen-2023-aiot-device-association]]** — *Enhancing AIoT Device Association With Task Offloading in Aerial MEC Networks* (IEEE IoT-J, 2023, DOI 10.1109/JIOT.2023.3300011). Distributed multi-UAV + GBS MEC; QoE (avg response time + IoTD cache-queue length) max via joint device association (greedy recursive RSRT) + task offloading (0-1 knapsack-with-variable-value backtracking BTO) + MADDPG UAV trajectory.
+- **[[an-2024-multilayer-ris-hap-swipt]]** — *Exploiting Multi-Layer Refracting RIS-Assisted Receiver for HAP-SWIPT Networks* (IEEE TWC, 2024, DOI 10.1109/TWC.2024.3394214). Multi-layer refracting RIS-receiver enabling SWIPT over long-distance HAP links; worst-case sum-rate max under imperfect angular CSI + non-linear EH; scalable toolbox-free robust optimization (CSI discretization + LogSumExp-dual precoder + M-CCD RIS coefficients + closed-form PS/decoder). Earlier version GLOBECOM 2023. *(PHY RIS-receiver / SWIPT anchor, not MEC offloading.)*
+
+### Concept pages created (4)
+
+- **[[backscatter-communication]]** — passive reflect-and-modulate transmission vs active comm; BackCom/AC energy-throughput trade-off; anchors [[he-2024-backscatter-wpmec-cooperation]].
+- **[[simultaneous-wireless-information-and-power-transfer]]** (SWIPT) — joint information + energy delivery via power splitting; anchors [[an-2024-multilayer-ris-hap-swipt]], reused by [[chen-2025-swipt-mec-sac]] (no dedicated page had existed).
+- **[[device-association]]** — device↔serving-node/subchannel association as a distinct (combinatorial) decision dimension in aerial MEC; anchors [[chen-2023-aiot-device-association]].
+- **[[computation-to-communication-ratio]]** — foundational MCC offload-decision crossover (cycles per byte); anchors [[miettinen-2010-mcc-energy-efficiency]].
+
+### Entities
+
+No new entity pages. Roster updated for one confirmed authored source: **[[dusit-niyato]]** 23→24 (+[[an-2024-multilayer-ris-hap-swipt]] as Fellow at NTU `dniyato@ntu.edu.sg`, verbatim-confirmed). Flagged for human confirmation rather than promoted (consistent with the house deferral of single-cluster co-authors): **Mohsen Guizani** (now 4 corpus appearances — zhu-2025-lycnn, he-2023-fairness, chen-2024-three-party, he-2024-backscatter; MBZUAI, identity unambiguous but promotion is a style call), **Kai-Kit Wong** (3 appearances), and the **Kang An / Yifu Sun / Zhi Lin / Yonggang Zhu** NUDT cluster (2 appearances each via sun-2024-mfris + an-2024).
+
+### Meta-docs
+
+- **[[index]]** — +6 source entries (MEC/MCC fundamentals ×2; Energy efficiency & WPT; SAGIN/satellite offloading; Multi-agent UAV-MEC; ISAC/sensing & PLS) and +4 concept entries (MEC fundamentals ×2 + ×2 in the energy area).
+- **[[overview]]** — Snapshot sources **183→189**, concepts **242→246**; entities 71 / derived unchanged. Track rows refreshed: MEC/MCC fundamentals 3→5 (+earliest-source note), Energy efficiency & WPT, SAGIN/satellite, ISAC/sensing/PLS 12→13, and UAV-MEC + DRL; simulation-only count line 171→189.
+
+### Metadata verification (correctness-first)
+
+The 5 source pages carrying a DOI line had it verbatim-confirmed against the parse (TCOMM.2023.3334813, TWC.2016.2633522, TMC.2023.3243161, JIOT.2023.3300011, TWC.2024.3394214) along with venues and each publication-date→year mapping (current-version dates → 2024 / 2017 / 2024 / 2023 / 2024). The Miettinen-Nurminen workshop paper carries no venue/year/DOI in the parse — the page states `not in parse` and attributes HotCloud '10 (Boston, June 2010) as web-confirmed. Quantitative claims (You's 30-user/200-realization sim; He's −16/−22 dB BackCom-vs-AC thresholds; An's ~15-iteration convergence, N_Tot<468 / N_E<6×6 / potential-gain scaling) were checked against the parse and flagged as figure-derived/indicative where not stated numerically.
+
+### Toolkit
+
+No ratchet needed — `curation_status.py --dupes`, `linkcheck.py`, `process_refs.py`, `frontmatter_audit.py`, `index_audit.py`, `entity_roster_audit.py`, and `corpus_counts.py` covered state detection, every commit gate, roster cross-checking, and count reconciliation. No reusable one-off arose; toolkit stable.
+
+### Gates
+
+**`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py`** = 548 pages, 0 errors. **`index_audit.py`** = 550/550 indexed, 0 unindexed / 0 duplicate primaries. **`entity_roster_audit.py`** = 0 over-claims (3 pre-existing present-but-unlisted namesake advisories, unrelated to this batch). Counts reconciled via `corpus_counts.py`: sources **183→189**, concepts **242→246** (entities 71 unchanged). LLM Wiki API reachable (`/health` ok, v0.4.16); graph-stats endpoint not enumerated this pass (not required for correctness). Untracked `wiki/media/` (app-generated) left unstaged.
+
 ## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 2/8: 6 new sources; +2 concepts)
 
 Second batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch1` key there). This invocation **recovered an interrupted batch**: 5 source pages had been drafted on disk (uncommitted, no log entry) before an external usage-limit interruption, and `index.md`/`overview.md` had **not** yet been touched. Per the resume-don't-duplicate rule, the 5 drafts were reviewed for correctness/completeness (kept as-is), the 6th paper of the batch (`Cramr-Rao_Bound_Optimization_for_Active_RIS-Empowered_ISAC_Systems`) was extracted and written, the needed concept stubs were created, and navigation was refreshed. Phase 0 reconciliation (`curation_status.py --dupes`) after recognizing the 5 drafts: **214 raw folders, 182 curated, 32 uncurated, 0 duplicate MinerU ingests**. Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`. After this batch: **183 curated, 31 uncurated, 5 batches remain**.

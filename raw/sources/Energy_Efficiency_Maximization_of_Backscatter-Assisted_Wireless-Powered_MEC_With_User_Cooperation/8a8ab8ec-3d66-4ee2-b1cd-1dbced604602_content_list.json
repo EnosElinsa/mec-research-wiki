@@ -1,0 +1,2593 @@
+[
+    {
+        "type": "text",
+        "text": "Energy Efficiency Maximization of Backscatter-Assisted Wireless-Powered MEC With User Cooperation ",
+        "text_level": 1,
+        "bbox": [
+            181,
+            73,
+            824,
+            176
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yejun He , Senior Member, IEEE, Xinying Wu, Zhou He , and Mohsen Guizani , Fellow, IEEE ",
+        "bbox": [
+            129,
+            184,
+            875,
+            202
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—The integrated backscatter communication (Back-Com) and active communication (AC) scheme can improve wireless-powered mobile edge computing (WPMEC) system performance in general single-user and multi-user scenarios. However, there is little research in the cooperation-assisted WPMEC scenario. In this article, we consider a cooperation-assisted WPMEC system consisting of a source node (SN), a helper and a hybrid access point (HAP) integrated with MEC servers. An innovative user cooperation (UC) scheme with the integrated BackCom and AC is proposed to enhance the system performance. As a relay, the helper can help the SN to transmit its computing tasks due to the poor communication link between the SN and the HAP. To be specific, we aim at maximizing the user energy efficiency (EE) by jointly optimizing the backscatter reflection coefficient for BackCom, the transmission power for AC, the system time and task optimization allocation while considering the minimum computation bits requirement, the channel capacity and energy constraints. Based on a fractional program, we first transform the EE maximization problem into an equivalent one (non-convex problem) and then transform this non-convex problem into a convex problem by exploiting variable substitution and convex optimization. In addition, semi-closed form expressions of the optimal solution are deduced. An energy efficiency maximization algorithm is proposed to solve this convex problem. Simulation results demonstrate that the proposed scheme significantly improves the user EE than the existing schemes. ",
+        "bbox": [
+            63,
+            239,
+            498,
+            568
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Backscatter communication, convex optimization, mobile edge computing (MEC), user cooperation, wireless power transfer (WPT). ",
+        "bbox": [
+            65,
+            575,
+            496,
+            617
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            215,
+            631,
+            343,
+            645
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "W ITH the development of communication technology andthe Internet of Things (IoT), there are many application the Internetof Things (IoT),there are many application ",
+        "bbox": [
+            67,
+            652,
+            496,
+            683
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received 23 September 2022; revised 16 December 2022; accepted 27 January 2023. Date of publication 7 February 2023; date of current version 8 January 2024. This work was supported in part by the National Natural Science Foundation of China (NSFC) under Grant 62071306, and in part by Shenzhen Science and Technology Program under Grants JCYJ20200109113601723, GJHZ20180418190529516, JSGG20210802154203011, and JSGG20210420091805014. Recommended for acceptance by C. Cordeiro. (Corresponding author: Yejun He.) ",
+        "bbox": [
+            65,
+            696,
+            494,
+            787
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yejun He and Xinying Wu are with the State Key Laboratory of Radio Frequency Heterogeneuos Integration, College of Electronics and Information Engineering, Shenzhen University, Shenzhen 518060, China (e-mail: heyejun@126.com; wuxinying0163@163.com). ",
+        "bbox": [
+            65,
+            789,
+            494,
+            834
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Zhou He is with the Department of Mechanical Engineering, University of Maryland, College Park, MD 20742 USA (e-mail: zhe12@umd.edu). ",
+        "bbox": [
+            65,
+            834,
+            494,
+            856
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Mohsen Guizani is with the Machine Learning Department, Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI), Abu Dhabi 99163, UAE (e-mail: mguizani@ieee.org). ",
+        "bbox": [
+            65,
+            856,
+            494,
+            891
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TMC.2023.3243161 ",
+        "bbox": [
+            79,
+            891,
+            372,
+            902
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "scenarios of wireless devices, such as autonomous driving, virtual reality (VR), smart city and tele-surgery [1], where these applications are computation-intensive and latency-sensitive. However, the mobile devices with poor computing capabilities and finite battery capacity may have difficulties in handling massive computational tasks [2]. To deal with this issue, mobile edge computing (MEC) [3], named as a distributed computing method, can sink computing and storage capabilities to the access network close to the users. Wireless devices can offload computation tasks to the nearby MEC servers, thus significantly improving the computation capabilities and help reduce the latency. ",
+        "bbox": [
+            506,
+            239,
+            937,
+            419
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "However, these wireless devices are equipped with small battery capacities. It is troublesome to constantly replace the batteries of billions of such IoT devices. To solve this problem, wireless power transfer (WPT) [4] has been proposed to provide a sustainable energy supply. In a wireless-powered mobile edge computing (WPMEC) network, a hybrid access point (HAP) [5] broadcasts radio frequency (RF) energy to the wireless devices. By energy harvesting (EH) technology [6], the users can convert the received RF signals to charge battery. Relying on the harvested energy, users can accomplish the computation tasks by local computing and offloading to MEC servers. ",
+        "bbox": [
+            506,
+            421,
+            937,
+            585
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Extensive studies have investigated the WPMEC [7], [8]. In an updated work [9], the authors minimized the delay by online learning while considering the task deadline and energy constraints. Wang et al. [10] investigated how to provide personalized services by various unmanned aerial vehicle (UAV) owners. In addition, a dynamic scenario containing multi-user and multi-UAV integrated with the MEC server was considered in [11] to minimize the total computation cost. However, there exists a double near-far effect in these systems [12]. A remote user harvests less energy, but needs to consume much energy for task offloading [13]. To address this issue, a user cooperation (UC) scheme [14] is an effective way to improve the system performance. In this UC scheme, the near user acts as a relay to transmit the signal of the far user. In [15], the authors discussed a basic UC scheme. Due to the terrible communication channel between one user and the MEC servers, task offloading needs the help of another user. The authors maximized the total throughput by jointly optimizing the local computing frequency, the transmit power, the task and the time allocation. ",
+        "bbox": [
+            506,
+            585,
+            937,
+            872
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Recently, Backscatter Communication (BackCom) [16], [17] has received significant attention. In BackCom [18], [19], the transmitter works in a full duplex mode. Specifically, it can operate in passive mode by modulating and reflecting the incident signal to the receiver without generating a carrier frequency, while harvesting energy to support circuit consumption [20], [21]. As for traditional active communication (AC), the transmitter first harvests energy and then uses the harvested energy to transfer data, which is based on harvest-then-transmit (HTT) protocol. Generally, the AC mode consumes more energy than BackCom while achieving a higher transfer rate. There is a tradeoff between the EH and the data transfer for BackCom and AC, so they can be combined to increase the throughput and energy efficiency (EE) [22], [23]. ",
+        "bbox": [
+            506,
+            875,
+            937,
+            904
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "1878 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            500,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "1536-1233 © 2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            202,
+            914,
+            801,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            289,
+            926,
+            713,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            488,
+            260
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In [24], the weighted sum computation bits maximization problem was studied in WPMEC with integrated BackCom and AC, where a scenario with power beacon (PB), a MEC server and multiple users were considered. The authors obtained the optimal solution by jointly optimizing the BackCom reflection coefficient and time, the AC power and time, the local computing frequency and the execution time. As for the same system mode, the authors in [25] considered a computational EE fairness problem, which is a non-convex fractional optimization problem. A Dinkelbach-based iterative algorithm was used to obtain the optimal solutions. The EE maximization of all users was investigated in [26], where the authors found the tradeoff between the BackCom and the HTT mode. In [27], the authors jointly considered limited MEC computing capacity, quality of service and energy causal constraints for each user. To maximize the system computing rate and the system EE, a novel two-layer iterative algorithm and a low-complexity algorithm are proposed. ",
+        "bbox": [
+            60,
+            261,
+            488,
+            532
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Although the above studies have made some contributions on the general WPMEC system and the backscatter-assisted WP-MEC system, there are few existing studies on the cooperationassisted WPMEC system with the integrated BackCom and AC. Motivated by above observations, we investigate a WPMEC system based on UC consisting of a HAP, a SN and a helper. The BackCom and the AC are allowed to offload the computation tasks. Unlike the system EE considered in [27], [28], in this article, we provide user EE1 maximization algorithm and use convex optimization techniques [30] to obtain an optimal solution of this problem. Simulation results demonstrate that the proposed design significantly improves the user EE, compared with some conventional schemes. Our main contributions are summarized as follows. ",
+        "bbox": [
+            57,
+            532,
+            488,
+            743
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1) Improving the computation performance of the WPMEC system. Users can use the integrated BackCom and AC to offload computation tasks. On the UC, the near user can act as a relay to help the edge-cell user to transform data. We aim at maximizing ",
+        "bbox": [
+            57,
+            744,
+            488,
+            805
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1Different from the system-centric EE, the user-centric computing EE should not include the energy consumption of HAP. There are some concerns in the system-centric EE maximization. Only users with better energy utilization than the system itself are scheduled, while other users keep silent in this process [29]. As a result, their quality of service cannot be guaranteed. In addition, in WPMEC, the users’ energy comes entirely from the HAP, and this part is less and needs to be fully utilized. HAP is directly connected to the power supply, so the system-centric EE optimal solution is not optimal for each user. The user-centric EE pays attention to the users’ energy efficiency, which is more consistent with the actual application scenarios. ",
+        "bbox": [
+            57,
+            824,
+            488,
+            939
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/cf25844a3e086c1c6954d89e1e82c0b0d47d43166601ab74002f935011132d35.jpg",
+        "image_caption": [
+            "Fig. 1. The user cooperative WPMEC system with integrated BackCom and AC. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Source node\"] -->|g₀| B[\"Helper\"]\n    B -->|hₛ| C[\"HAP with MEC servers intergated\"]\n    C -->|hₕ| B\n    B -->|gₕ| C\n    style A fill:#99ccff,stroke:#333\n    style B fill:#99ccff,stroke:#333\n    style C fill:#99ccff,stroke:#333\n    linkStyle 0 stroke:#000,stroke-width:2px\n    linkStyle 1 stroke:#000,stroke-width:2px\n    linkStyle 2 stroke:#000,stroke-width:2px\n    linkStyle 3 stroke:#000,stroke-width:2px\n    linkStyle 4 stroke:#000,stroke-width:2px\n    linkStyle 5 stroke:#000,stroke-width:2px\n    linkStyle 6 stroke:#000,stroke-width:2px\n    linkStyle 7 stroke:#000,stroke-width:2px\n    linkStyle 8 stroke:#000,stroke-width:2px\n    linkStyle 9 stroke:#000,stroke-width:2px\n    linkStyle 10 stroke:#000,stroke-width:2px\n    linkStyle 11 stroke:#000,stroke-width:2px\n    linkStyle 12 stroke:#000,stroke-width:2px\n    linkStyle 13 stroke:#000,stroke-width:2px\n    linkStyle 14 stroke:#000,stroke-width:2px\n    linkStyle 15 stroke:#000,stroke-width:2px\n    linkStyle 16 stroke:#000,stroke-width:2px\n    linkStyle 17 stroke:#000,stroke-width:2px\n    linkStyle 18 stroke:#000,stroke-width:2px\n    linkStyle 19 stroke:#000,stroke-width:2px\n    linkStyle 20 stroke:#000,stroke-width:2px\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            503,
+            80,
+            930,
+            280
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "the user EE by jointly optimizing the backscatter reflection coefficient for BackCom, the transmission power for AC, the system time and task allocation while considering the minimum computation bits requirement, the channel capacity and energy constraints. ",
+        "bbox": [
+            500,
+            349,
+            930,
+            422
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "2) Applying a fractional program, variable substitution and Lagrange method to transform the non-convex fractional problem to a convex problem and deduce semi-closed form expressions of the optimal solutions. ",
+            "3) Proposing an energy efficiency maximization algorithm to solve this convex optimization problem. Our algorithm is computation-efficient and the proposed scheme significantly improves the user EE than the existing schemes. "
+        ],
+        "bbox": [
+            500,
+            424,
+            930,
+            545
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The remainder is organized as follows. Section II presents the cooperation-assisted WPMEC system with the integrated BackCom and AC, including the communication model, the integrated backCom and AC protocol in the UC scenario and the computation model. Section III introduces the EE maximization problem, the energy efficiency maximization algorithm and the optimal solution of this problem. Simulation results are presented in Section IV. The last section gives the conclusion of this work. ",
+        "bbox": [
+            500,
+            546,
+            930,
+            680
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            646,
+            700,
+            786,
+            713
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            723,
+            686,
+            736
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We consider a user-cooperation WPMEC scenario as illustrated in Fig. 1, including two users and a HAP. One user far away from the HAP, called source node (SN), has a large number of computation tasks. Another user near to the HAP in an idle state is called helper. The HAP can provide the wireless energy and the task offloading for users, and these users can convert the received RF signals to charge the battery. Moreover, a partial offloading is adopted and computation tasks can be executed at the SN, the helper and the HAP in parallel. Due to the terrible channel condition between the SN and the HAP, the SN can offload tasks to helper and HAP with the aid of the helper by the UC. The helper can perform part of the tasks locally, and further offload the remaining tasks to the HAP. After the HAP completes the tasks, it returns the results to the SN with the aid of the helper. Different from existing researches, two communication modes (BackCom and AC) can be used to offload tasks. Specifically, the users are equipped with the BackCom circuit and the AC circuit. There will be a trade-off between the AC and the BackCom. In addition, UC scheme is an effective way to overcome the double near-far effect. Therefore, we can design the UC scheme with the integrated BackCom and AC to further improve the system performance. For the convenience of reading, we list the major notations and definitions in Table I. ",
+        "bbox": [
+            500,
+            744,
+            930,
+            940
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "HE et al.: ENERGY EFFICIENCY MAXIMIZATION OF BACKSCATTER-ASSISTED WIRELESS-POWERED MEC WITH USER COOPERATION",
+        "bbox": [
+            58,
+            37,
+            784,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "1879 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/b2aed8e7dc49b503f8f47507a559c9b64a45687df2f9c82a6dccb25d63e12811.jpg",
+        "table_caption": [
+            "TABLE I KEY NOTATIONS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Notation</td><td>Definition</td></tr><tr><td> $T$ </td><td>The time block</td></tr><tr><td> $t_{b}^{s},t_{b}^{h}$ </td><td>The time for the BackCom</td></tr><tr><td> $t_{a}^{s},t_{a}^{h}$ </td><td>The time for the AC</td></tr><tr><td> $l_{s}^{loc}$ </td><td>The number of tasks executed by the SN locally</td></tr><tr><td> $l_{b}^{h}$ </td><td>The number of tasks offloaded to the helper by the BackCom</td></tr><tr><td> $l_{b}^{ap}$ </td><td>The number of tasks offloaded to the HAP by the BackCom</td></tr><tr><td> $l_{a}^{h}$ </td><td>The number of tasks offloaded to the helper by the AC</td></tr><tr><td> $l_{a}^{ap}$ </td><td>The number of tasks offloaded to the HAP by the AC</td></tr><tr><td> $P_{0}$ </td><td>The power of the HAP</td></tr><tr><td> $\\mu$ </td><td>The energy conversion efficiency</td></tr><tr><td> $\\kappa$ </td><td>The equal computing efficiency parameter</td></tr><tr><td> $h_{s},h_{h},g_{0}$ </td><td>The channel gain</td></tr><tr><td> $f_{h},f_{s}$ </td><td>The CPU frequency</td></tr><tr><td> $\\phi_{s},\\phi_{h}$ </td><td>The CPU cycles required to compute 1 bit task</td></tr><tr><td> $\\beta_{s},\\beta_{h}$ </td><td>The reflection coefficient of the BackCom</td></tr><tr><td> $p_{s},p_{h}$ </td><td>The power of the AC</td></tr><tr><td> $\\sigma^{2}$ </td><td>The noise power</td></tr><tr><td>W</td><td>The system bandwidth</td></tr><tr><td> $p_{bac}^{s},p_{bac}^{h}$ </td><td>The circuit consumption of the BackCom</td></tr><tr><td> $p_{htt}^{s},p_{htt}^{h}$ </td><td>The circuit consumption of the AC</td></tr><tr><td> $L_{min}$ </td><td>The minimum computation bits requirement of the SN</td></tr><tr><td> $\\alpha$ </td><td>The path loss factor</td></tr></table>",
+        "bbox": [
+            213,
+            114,
+            789,
+            508
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/37ec0315a78c1b1849eaf86b8913ca10bee4d2dce0c6586167a0098ed7ee957f.jpg",
+        "image_caption": [
+            "Fig. 2. The integrated BackCom and AC protocol in UC scenario. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"t₀\"] --> B[\"Helper\"]\n    B --> C[\"Source\"]\n    C --> D[\"Helper\"]\n    D --> E[\"HAP\"]\n    E --> F[\"Backscatter Communication\"]\n    F --> G[\"Active Communication\"]\n    G --> H[\"Local computing at source (T)\"]\n    I[\"t_b^s\"] --> J[\"Helper\"]\n    J --> K[\"HAP\"]\n    K --> L[\"Helper\"]\n    L --> M[\"HAP\"]\n    M --> N[\"Active Communication\"]\n    N --> O[\"Local computing at source (T)\"]\n    P[\"t_a^h\"] --> Q[\"Helper\"]\n    Q --> R[\"HAP\"]\n    R --> S[\"Active Communication\"]\n    S --> T[\"Local computing at source (T)\"]\n    U[\"t_d ≈ 0\"] --> V[\"results down load\"]\n    W[\"l_b^h task execution at helper\"] --> X[\"l_a^h task execution at helper\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            75,
+            526,
+            486,
+            654
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            715,
+            493,
+            866
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. Integrated BackCom and AC Protocol in the UC Scenario ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            888,
+            483,
+            902
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "As shown in Fig. 2, we propose an integrated BackCom and AC protocol based on time division multiple access (TDMA) in the UC scenario to avoid channel interference. Moreover, The channel is supposed to be quasi-static fading, which keeps unchange within T . We aim to maximize the user EE within T . The first time slot $t _ { 0 }$ is the wireless energy transmission phase, the users can receive the RF signal from the HAP. After $t _ { 0 } ,$ , the SN can use the integrated BackCom and AC to the offload tasks. During the last time $t _ { d } ,$ the HAP returns the computation results to the SN. Since the computation results are very small compared to the offloading tasks, we ignore the last time slot, $\\mathrm { e . g . , } t _ { d } \\approx 0$ . ",
+        "bbox": [
+            65,
+            910,
+            494,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            523,
+            937,
+            659
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "C. Wireless Energy Transmission ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            675,
+            740,
+            690
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Users harvest energy by the EH from the HAP during $t _ { 0 }$ . Then the SN and the helper transfer data in turns during the slots $t _ { b } ^ { s }$ and $t _ { b } ^ { h }$ by the BackCom. The SN can harvest energy from HAP in $t _ { b } ^ { h }$ and the helper can harvest energy in $t _ { b } ^ { s } .$ . So the harvested energy of the SN and the helper are ",
+        "bbox": [
+            506,
+            696,
+            937,
+            772
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {s} = \\mu h _ {s} (t _ {0} + t _ {b} ^ {h}) P _ {0}, \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            641,
+            777,
+            936,
+            796
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            508,
+            803,
+            538,
+            816
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {h} = \\mu h _ {h} (t _ {0} + t _ {b} ^ {s}) P _ {0}, \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            641,
+            825,
+            936,
+            842
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $h _ { s }$ and $h _ { h }$ are the channel gain between the SN and the HAP, and the channel gain between the helper and the HAP, respectively. $P _ { 0 }$ is the transmit power of the HAP, and $0 < \\mu < 1$ denotes the energy conversion efficiency. ",
+        "bbox": [
+            506,
+            849,
+            936,
+            909
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The task offloading can be executed in two ways, namely BackCom and AC. Let l locs , l hb , l apb , l ha and l apa denote the number $l _ { s } ^ { l o c } , l _ { b } ^ { h } , l _ { b } ^ { a p } , l _ { a } ^ { h }$ $l _ { a } ^ { a p }$ of tasks executed by the SN locally, offloaded to the helper by BackCom, offloaded to the HAP by BackCom, the offloading to the helper by the AC, and offloaded to the HAP by the AC, respectively. ",
+        "bbox": [
+            506,
+            910,
+            937,
+            941
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "1880 ",
+        "bbox": [
+            69,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            500,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            486,
+            140
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "D. Computation Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            155,
+            225,
+            169
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "1) Local Computing: The number of tasks executed locally at the SN is ",
+        "bbox": [
+            57,
+            176,
+            484,
+            205
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {s} ^ {l o c} = \\frac {f _ {s} t _ {s}}{\\phi_ {s}}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            228,
+            209,
+            486,
+            241
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\phi _ { s }$ is the CPU cycles required to compute one bit task, $t _ { s }$ represents the local computing time and $f _ { s }$ denotes the local CPU frequency of the SN [31]. Meanwhile, the corresponding local computation energy consumption is ",
+        "bbox": [
+            57,
+            246,
+            486,
+            306
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {s} ^ {\\text { loc }} = \\kappa (f _ {s}) ^ {3} t _ {s}, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            212,
+            311,
+            484,
+            330
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where κ is the effective capacitance coefficient, which depends on the circuit structure [32]. ",
+        "bbox": [
+            57,
+            337,
+            484,
+            364
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "2) Offloading Tasks by BackCom: During $t _ { b } ^ { s } ,$ the SN can offload the $( l _ { b } ^ { h } + l _ { b } ^ { a p } )$ data to the helper by the BackCom. $l _ { b } ^ { a p }$ b b tasks will be transferred further to the HAP at $t _ { b } ^ { h }$ b. The remaining $l _ { b } ^ { h }$ tasks computed at the helper can be written as ",
+        "bbox": [
+            57,
+            367,
+            486,
+            428
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {b} ^ {h} = \\frac {f _ {h} t _ {h 1}}{\\phi_ {h}}, \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            228,
+            434,
+            486,
+            465
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and the corresponding energy consumption is ",
+        "bbox": [
+            58,
+            470,
+            368,
+            484
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {h 1} ^ {\\text { loc }} = \\kappa (f _ {h}) ^ {3} t _ {h 1}, \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            207,
+            491,
+            486,
+            508
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\phi _ { h }$ is the CPU cycles at the helper required to compute one bit task, $t _ { h 1 }$ and $f _ { h }$ are the local computation time and the CPU frequency of the helper, respectively. It is worth noting that $l _ { b } ^ { h }$ bit data can be executed at the helper after the SN offloaded its partial tasks to the helper by the BackCom. Thus, we have this inequality $0 \\leq t _ { h 1 } \\leq t _ { b } ^ { h } + t _ { a } ^ { s }$ . ",
+        "bbox": [
+            57,
+            515,
+            486,
+            606
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Denote $\\beta _ { s }$ as the reflection coefficient of the SN, where $0 \\leq \\beta _ { s } \\leq 1$ . This means that the SN can divide the received signals into two parts: $\\beta _ { s }$ part as carrier to transfer the data by the BackCom and $1 - \\beta _ { s }$ part of the harvesting energy [33]. Let W denote the WPMEC system bandwidth and $g _ { 0 }$ denote the channel gain from the SN to the helper. The achievable task rate between the SN and the helper by the BackCom is expressed as $\\begin{array} { r } { r _ { b } ^ { s } = W l o g _ { 2 } ( 1 + \\frac { \\zeta \\beta _ { s } P _ { 0 } h _ { s } g _ { 0 } ^ { \\star } } { \\sigma ^ { 2 } } ) } \\end{array}$ . where $\\sigma ^ { 2 }$ is the noise power and σ2 ζ represents the performance gap reflecting the real modulation [34]. So the transmitted computation task during $t _ { b } ^ { s }$ is ",
+        "bbox": [
+            57,
+            606,
+            486,
+            758
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {b} ^ {s} t _ {b} ^ {s} = t _ {b} ^ {s} W \\log_ {2} \\left(1 + \\frac {\\zeta \\beta_ {s} P _ {0} h _ {s} g _ {0}}{\\sigma^ {2}}\\right), \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            141,
+            763,
+            484,
+            796
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and we have $l _ { b } ^ { h } + l _ { b } ^ { a p } \\le r _ { b } ^ { s } t _ { b } ^ { s }$ . The circuit energy consumption of the SN can be expressed as ",
+        "bbox": [
+            57,
+            803,
+            486,
+            834
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {b} ^ {\\text { s   o   f   f }} = p _ {b a c} ^ {s} t _ {b} ^ {s}, \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            213,
+            839,
+            484,
+            858
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and the harvested energy of the SN by the BackCom is ",
+        "bbox": [
+            57,
+            864,
+            430,
+            878
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {b} ^ {s} = \\mu h _ {s} t _ {b} ^ {s} P _ {0} (1 - \\beta_ {s}), \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            186,
+            887,
+            486,
+            902
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { b a c } ^ { s }$ is the circuit power consumption of SN by the BackCom. ",
+        "bbox": [
+            57,
+            910,
+            486,
+            938
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "During $t _ { b } ^ { h }$ , the helper can offload the $l _ { b } ^ { a p }$ data to the HAP by the BackCom. Let $g _ { h }$ represent the channel gain from the helper to the HAP. Therefore, the achievable task rate between the helper and the HAP by the BackCom is given by $r _ { b } ^ { h } = W l o g _ { 2 } ( 1 +$ $\\frac { \\zeta \\beta _ { h } P _ { 0 } h _ { h } g _ { h } } { \\sigma ^ { 2 } } \\Big )$ σ2 , and $0 \\leq \\beta _ { h } \\leq 1$ is the reflection coefficient of the helper. So the transmitted computation task during $t _ { b } ^ { h }$ is ",
+        "bbox": [
+            500,
+            80,
+            929,
+            174
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {b} ^ {h} t _ {b} ^ {h} = t _ {b} ^ {h} W l o g _ {2} \\left(1 + \\frac {\\zeta \\beta_ {h} P _ {0} h _ {h} g _ {h}}{\\sigma^ {2}}\\right). \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            580,
+            180,
+            929,
+            213
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Therefore, we have $l _ { b } ^ { a p } \\le r _ { b } ^ { h } t _ { b } ^ { h }$ r b . The circuit energy consumption of the helper is ",
+        "bbox": [
+            500,
+            219,
+            927,
+            250
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {b} ^ {\\text { h   o   f   f }} = p _ {b a c} ^ {h} t _ {b} ^ {h}, \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            656,
+            255,
+            927,
+            273
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and the harvested energy of the helper by the BackCom is ",
+        "bbox": [
+            500,
+            281,
+            895,
+            295
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {b} ^ {h} = \\mu h _ {h} t _ {b} ^ {h} P _ {0} (1 - \\beta_ {h}), \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            627,
+            301,
+            927,
+            320
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where phbac i $p _ { b a c } ^ { h }$ s the circuit power consumption of the helper by the BackCom. ",
+        "bbox": [
+            500,
+            325,
+            927,
+            354
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "3) Offloading Tasks by the AC: In addition to the BackCom, the task offloading can also use the AC mode. During the $t _ { a } ^ { s } .$ the tas $( l _ { a } ^ { h } + l _ { a } ^ { a p } )$ data can be offloaded to the helransferred further to the HAP at r by the AC. . The remain $l _ { a } ^ { a p }$ $\\bar { t } _ { a } ^ { h }$ $l _ { a } ^ { h }$ tasks computed at the helper can be written as ",
+        "bbox": [
+            500,
+            356,
+            929,
+            431
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl _ {a} ^ {h} = \\frac {f _ {h} t _ {h 2}}{\\phi_ {h}}, \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            670,
+            439,
+            927,
+            470
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and the corresponding energy consumption is ",
+        "bbox": [
+            500,
+            474,
+            811,
+            489
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {h 2} ^ {l o c} = \\kappa (f _ {h}) ^ {3} t _ {h 2}, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            649,
+            494,
+            927,
+            513
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $t _ { h 2 }$ is the local computation time of the helper, and $0 \\leq$ $t _ { h 2 } \\leq t _ { a } ^ { h }$ . ",
+        "bbox": [
+            500,
+            520,
+            927,
+            550
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In addition, the channel capacity between the SN and the helper is expressed as $\\begin{array} { r } { r _ { a } ^ { s } = W l o g _ { 2 } ( 1 + \\frac { p _ { s } g _ { 0 } } { \\sigma ^ { 2 } } ) } \\end{array}$ ), where $p _ { s }$ repretation task is ",
+        "bbox": [
+            500,
+            551,
+            927,
+            609
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {a} ^ {s} t _ {a} ^ {s} = t _ {a} ^ {s} W l o g _ {2} \\left(1 + \\frac {p _ {s} g _ {0}}{\\sigma^ {2}}\\right), \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            614,
+            927,
+            640
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and we have $l _ { a } ^ { h } + l _ { a } ^ { a p } \\le r _ { a } ^ { s } t _ { a } ^ { s }$ . The energy consumption of the SN is expressed as ",
+        "bbox": [
+            500,
+            646,
+            927,
+            676
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {a} ^ {s o f f} = p _ {s} t _ {a} ^ {s} + P _ {h t t} ^ {s} t _ {a} ^ {s}, \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            631,
+            683,
+            927,
+            700
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $P _ { h t t } ^ { s }$ is the circuit consumption of the SN by the AC. ",
+        "bbox": [
+            500,
+            707,
+            904,
+            722
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "During $t _ { a } ^ { h }$ , the helper can offload the $l _ { a } ^ { a p }$ data to the HAP by the AC. The channel capacity between the helper and the HAP is $\\begin{array} { r } { r _ { a } ^ { h } = W l o g _ { 2 } ( 1 + \\frac { p _ { h } g _ { h } } { \\sigma ^ { 2 } } ) } \\end{array}$ σ2 , where $p _ { h }$ is the transmit power of the helper. Therefore, the maximum transmitted computation task is ",
+        "bbox": [
+            500,
+            722,
+            927,
+            796
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {a} ^ {h} t _ {a} ^ {h} = W t _ {a} ^ {h} \\log_ {2} \\left(1 + \\frac {p _ {h} g _ {h}}{\\sigma^ {2}}\\right), \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            606,
+            801,
+            927,
+            827
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "and we have $l _ { a } ^ { a p } \\le r _ { a } ^ { h } t _ { a } ^ { h }$ . The energy consumption of the helper is expressed as ",
+        "bbox": [
+            500,
+            833,
+            929,
+            863
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {a} ^ {h o f f} = p _ {h} t _ {a} ^ {h} + P _ {h t t} ^ {h} t _ {a} ^ {h}, \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            629,
+            869,
+            927,
+            888
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $P _ { h t t } ^ { h }$ is the circuit consumption of the helper by the AC. ",
+        "bbox": [
+            500,
+            893,
+            925,
+            910
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Notice that the energy of the users is supplied from the HAP. So users are subject to the energy consumption constraints [35], i.e., the total energy consumption cannot surpass the total harvested energy for each device. Specifically, we have ",
+        "bbox": [
+            500,
+            910,
+            929,
+            939
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "HE et al.: ENERGY EFFICIENCY MAXIMIZATION OF BACKSCATTER-ASSISTED WIRELESS-POWERED MEC WITH USER COOPERATION",
+        "bbox": [
+            58,
+            37,
+            782,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "1881 ",
+        "bbox": [
+            904,
+            39,
+            927,
+            49
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            960,
+            865,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            494,
+            109
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {s} ^ {\\text { loc }} + E _ {b} ^ {\\text { soff }} + E _ {a} ^ {\\text { soff }} \\leq Q _ {s} + Q _ {b} ^ {s}, \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            154,
+            117,
+            494,
+            137
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            65,
+            146,
+            97,
+            159
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {h 1} ^ {l o c} + E _ {h 2} ^ {l o c} + E _ {a} ^ {h o f f} + E _ {b} ^ {h o f f} \\leq Q _ {h} + Q _ {b} ^ {h}. \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            126,
+            167,
+            494,
+            188
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "III. PROBLEM FORMULATION AND THE OPTIMAL SOLUTION OF USER EE MAXIMIZATION PROBLEM ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            204,
+            494,
+            233
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A. User EE Maximization Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            242,
+            398,
+            257
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this section, we study the user EE maximization problem by jointly optimizing the system time allocation $t = \\left\\{ t _ { 0 } , t _ { b } ^ { s } , t _ { b } ^ { h } , t _ { a } ^ { s } , t _ { a } ^ { h } , t _ { s } , t _ { h 1 } , t _ { h 2 } \\right\\}$ , resource allocation strategy $l = \\{ l _ { s } ^ { l o c } , l _ { b } ^ { h } , l _ { b } ^ { a p } , l _ { a } ^ { h } , l _ { a } ^ { a p } \\}$ , backscatter reflection coefficients $\\beta = \\{ \\beta _ { s } , \\beta _ { h } \\}$ and power allocation $\\pmb { p } = \\{ p _ { s } , p _ { h } \\}$ . Accordingly, the user EE maximization problem can be formulated as ",
+        "bbox": [
+            65,
+            263,
+            496,
+            354
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\boldsymbol {P 1}: \\max _ {\\{\\boldsymbol {t}, \\boldsymbol {l}, \\boldsymbol {p}, \\boldsymbol {\\beta} \\}} \\eta_ {E E} = \\frac {l _ {\\text { total }}}{E _ {\\text { total }}} \\tag {21a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            82,
+            364,
+            494,
+            395
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t.   } \\mathrm{C1}: l _ {b} ^ {h} + l _ {b} ^ {a p} \\leq t _ {b} ^ {s} W l o g _ {2} \\left(1 + \\frac {\\zeta \\beta_ {s} P _ {0} h _ {s} g _ {0}}{\\sigma^ {2}}\\right), \\tag {21b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            97,
+            400,
+            494,
+            434
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 2: l _ {b} ^ {a p} \\leq t _ {b} ^ {h} W l o g _ {2} \\left(1 + \\frac {\\zeta \\beta_ {h} P _ {0} h _ {h} g _ {h}}{\\sigma^ {2}}\\right), \\tag {21c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            439,
+            494,
+            474
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C3}: l _ {a} ^ {h} + l _ {a} ^ {a p} \\leq t _ {a} ^ {s} W l o g _ {2} \\left(1 + \\frac {p _ {s} g _ {0}}{\\sigma^ {2}}\\right), \\tag {21d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            478,
+            494,
+            506
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 4: l _ {a} ^ {a p} \\leq t _ {a} ^ {h} W l o g _ {2} \\left(1 + \\frac {p _ {h} g _ {h}}{\\sigma^ {2}}\\right), \\tag {21e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            510,
+            494,
+            537
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 5: 0 \\leq t _ {0} + t _ {b} ^ {s} + t _ {b} ^ {h} + t _ {a} ^ {s} + t _ {a} ^ {h} \\leq T, \\tag {21f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            542,
+            494,
+            561
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 6: 0 \\leq t _ {s} \\leq T, \\tag {21g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            566,
+            494,
+            583
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 7: 0 \\leq t _ {h 1} \\leq t _ {b} ^ {h} + t _ {a} ^ {s}, 0 \\leq t _ {h 2} \\leq t _ {a} ^ {h}, \\tag {21h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            590,
+            494,
+            609
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 8: t \\succeq 0, \\tag {21i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            614,
+            494,
+            630
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 9: 0 \\leq \\beta_ {s} \\leq 1, 0 \\leq \\beta_ {h} \\leq 1, \\tag {21j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            637,
+            494,
+            652
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 1 0: l _ {\\text { total }} \\geq L _ {\\min}, \\tag {21k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            659,
+            494,
+            676
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 1 1: (3), (5) a n d (1 3), \\tag {211}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            681,
+            494,
+            699
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 1 2: (1 9) a n d (2 0), \\quad (2 1 \\mathrm{m}) \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            122,
+            705,
+            494,
+            743
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\eta _ { E E }$ is the user EE, $l _ { t o t a l } = l _ { s } ^ { l o c } + l _ { b } ^ { h } + l _ { b } ^ { a p } + l _ { a } ^ { h } + l _ { a } ^ { a p }$ is $E _ { t o t a l } = E _ { s } ^ { l o c } + E _ { b } ^ { s o f f } + E _ { a } ^ { s o f f } +$ $E _ { h 1 } ^ { l o c } + E _ { h 2 } ^ { l o c } + E _ { a } ^ { h o f f } + E _ { b } ^ { h o f f } + \\mu h _ { s } t _ { b } ^ { s } P _ { 0 } \\beta _ { s } + \\mu h _ { h } t _ { b } ^ { h } P _ { 0 } \\beta _ { h }$ total energy consumption. C1-C4 represent the maximum transmitted computation bits by the BackCom and the AC. C5-C8 are the time allocation limits, and C9 is the backscatter reflection coefficient constraint for the SN and the helper. C10 is the minimum computation bit requirement and C11 is the local computing relationship. C12 represents the energy consumption constraints. Due to the non-convex fractional objective function, non-convex constraints C1-C4 and the relationship of multivariate multiplication in C12, P 1 is a non-convex fractional optimization problem. In the following, we will convert P 1 into a convex optimization problem. ",
+        "bbox": [
+            65,
+            753,
+            496,
+            940
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            79,
+            937,
+            109
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "First of all, as for the fractional objective function, we apply the Dinkelbach method [36]. Specifically, let $q ^ { * }$ denote the optimal EE. $q ^ { * }$ is achieved if and only if this equation holds. ",
+        "bbox": [
+            506,
+            109,
+            937,
+            155
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max _ {\\{\\boldsymbol {t}, \\boldsymbol {l}, \\boldsymbol {p}, \\boldsymbol {\\beta} \\}} l _ {t o t a l} - q ^ {*} E _ {t o t a l} = l _ {t o t a l} ^ {*} - q ^ {*} E _ {t o t a l} ^ {*} = 0, \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            538,
+            185,
+            937,
+            210
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where ∗ represents optimal solutions for all variables, $l _ { t o t a l } ^ { * }$ is the optimal computation bits and $E _ { t o t a l } ^ { * }$ is the optimal energy consumption. Thus, $\\mathbf { \\nabla } _ { P 1 }$ can be transformed to $\\mathbf { \\nabla } _ { \\mathbf { \\lambda } } P 2$ equivalently. ",
+        "bbox": [
+            506,
+            223,
+            937,
+            268
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\boldsymbol {P 2}: \\max _ {\\{\\boldsymbol {t}, \\boldsymbol {l}, \\boldsymbol {p}, \\boldsymbol {\\beta} \\}} l _ {\\text { total }} - q E _ {\\text { total }} \\tag {23a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            619,
+            284,
+            937,
+            308
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t.   C1 }: (2 1 b) - (2 1 m) \\tag {23b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            634,
+            315,
+            937,
+            330
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "(23) ",
+        "bbox": [
+            904,
+            339,
+            936,
+            353
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where q is a given parameter that should be determined afterward. However, because of the non-convex constraints (23b), P 2 is more tractable than P 1. To deal with that, we introduce auxiliary variables $\\boldsymbol { \\tau } _ { b } ^ { s } , \\boldsymbol { \\tau } _ { b } ^ { h } , \\boldsymbol { \\tau } _ { a } ^ { s }$ and $\\tau _ { a } ^ { h }$ , where $\\tau _ { b } ^ { s } = \\beta _ { s } t _ { b } ^ { s } , \\tau _ { b } ^ { h } = \\beta _ { h } t _ { b } ^ { h } , \\tau _ { a } ^ { s } = p _ { s } t _ { a } ^ { s }$ and $\\tau _ { a } ^ { h } =$ ${ p } _ { h } t _ { a } ^ { h }$ . By using these auxiliary variables, $E _ { t o t a l }$ can be converted to $E _ { t o t a l } ^ { \\prime } \\cdot \\ E _ { t o t a l } ^ { \\prime } = E _ { s } ^ { l o c } + E _ { b } ^ { s o f f } + \\tau _ { a } ^ { s } + P _ { h t t } ^ { h } t _ { a } ^ { h } +$ E\u0007total $E _ { h 1 } ^ { l o c } + E _ { h 2 } ^ { l o c } + \\tau _ { a } ^ { h } + E _ { b } ^ { h o f f } + \\mu h _ { s } P _ { 0 } \\tau _ { b } ^ { s } + \\mu h _ { h } P _ { 0 } \\tau _ { b } ^ { h }$ htt a . According to (21j), we have $0 \\leq \\tau _ { b } ^ { s } \\leq t _ { b } ^ { s }$ and $0 \\leq \\tau _ { b } ^ { h } \\leq t _ { b } ^ { h }$ . Meanwhile, to simplify the mathemaconstants A, B, C and D. $\\begin{array} { r } { A = \\frac { \\zeta \\hat { P _ { 0 } } h _ { s } g _ { 0 } } { \\sigma ^ { 2 } } , B = \\frac { \\zeta P _ { 0 } h _ { h } g _ { h } } { \\sigma ^ { 2 } } , C = \\frac { g _ { 0 } } { \\sigma ^ { 2 } } } \\end{array}$ σ2 σ2 and $\\begin{array} { r } { D = { \\frac { g _ { h } } { \\sigma ^ { 2 } } } } \\end{array}$ . Then, $\\mathbf { \\nabla } _ { \\mathbf { \\lambda } } \\mathbf { \\mathcal { P } } 2$ can be equivalently transformed into $\\mathbf { \\nabla } _ { P 3 }$ . ",
+        "bbox": [
+            506,
+            368,
+            939,
+            568
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP \\mathbf {3}: \\max _ {\\{\\boldsymbol {t}, \\boldsymbol {l}, \\tau \\}} l _ {t o t a l} - q E _ {t o t a l} ^ {\\prime}, \\tag {24a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            538,
+            583,
+            937,
+            608
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t.   C1 }: l _ {b} ^ {h} + l _ {b} ^ {a p} \\leq t _ {b} ^ {s} W l o g _ {2} \\left(1 + \\frac {\\tau_ {b} ^ {s} A}{t _ {b} ^ {s}}\\right), \\tag {24b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            552,
+            614,
+            937,
+            648
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 2: l _ {b} ^ {a p} \\leq t _ {b} ^ {h} W \\log_ {2} \\left(1 + \\frac {\\tau_ {b} ^ {h} B}{t _ {b} ^ {h}}\\right), \\tag {24c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            654,
+            937,
+            689
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 3: l _ {a} ^ {h} + l _ {a} ^ {a p} \\leq t _ {a} ^ {s} W l o g _ {2} \\left(1 + \\frac {\\tau_ {a} ^ {s} C}{t _ {a} ^ {s}}\\right), \\tag {24d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            695,
+            937,
+            729
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 4: l _ {a} ^ {a p} \\leq t _ {a} ^ {h} W \\log_ {2} \\left(1 + \\frac {\\tau_ {a} ^ {h} D}{t _ {a} ^ {h}}\\right), \\tag {24e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            734,
+            937,
+            768
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 5: \\kappa (f _ {s}) ^ {3} t _ {s} + p _ {b a c} ^ {s} t _ {b} ^ {s} + P _ {h t t} ^ {s} t _ {a} ^ {s} + \\tau_ {a} ^ {s} \\tag {24f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            773,
+            937,
+            792
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\leq \\mu h _ {s} (t _ {0} + t _ {b} ^ {s} + t _ {b} ^ {h} - \\tau_ {b} ^ {s}) P _ {0}, \\tag {24f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            582,
+            799,
+            937,
+            816
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 6: \\kappa (f _ {h}) ^ {3} t _ {h 1} + \\kappa (f _ {h}) ^ {3} t _ {h 2} + P _ {h t t} ^ {h} t _ {a} ^ {h} + \\tag {24g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            823,
+            937,
+            842
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {b a c} ^ {h} t _ {b} ^ {h} + \\tau_ {a} ^ {h} \\leq \\mu h _ {h} (t _ {0} + t _ {b} ^ {s} + t _ {b} ^ {h} - \\tau_ {b} ^ {h}) P _ {0}, \\tag {24g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            848,
+            937,
+            867
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 7: 0 \\leq \\tau_ {b} ^ {s} \\leq t _ {b} ^ {s}, 0 \\leq \\tau_ {b} ^ {h} \\leq t _ {b} ^ {h}, \\tag {24h}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            873,
+            937,
+            892
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{C} 8: (2 1 f) - (2 1 l), \\tag {24i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            897,
+            937,
+            914
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "(24) ",
+        "bbox": [
+            904,
+            921,
+            936,
+            935
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "1882 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            500,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1: The User Energy Efficiency Maximization Algorithm. "
+        ],
+        "code_body": "Input: The channel gain, the system bandwidth, the nose power and other parameters in Table 2.\nInitialize: The maximum iterations $I_{max}$ , the error tolerance $\\epsilon$ and initial EE $q = 0$ .\nfor $i = 1 : I_{max}$ do\n    cvx_begin\n    Maximize $l_{total} - qE'_{total}$ Subject to (24b)-(24i)\n    cvx_end\n    if $l_{total} - qE'_{total} < \\epsilon$ then\n    The optimal solution $\\{t^*, l^*, \\tau^*\\}$ are obtained,\n    then calculate $\\beta^*$ and $p^*$ .\n    Return optimal EE $q^*$ and break.\n    end\n    else\n    Update EE: $q = \\frac{l_{total}}{E'_{total}}$ .\n    end\nend\nOutput: Obtain the optimal resource allocation $\\{t^*, l^*, \\beta^*, p^*\\}$ and EE $q^*$ for P1. ",
+        "bbox": [
+            63,
+            119,
+            444,
+            416
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Lemma 1. P 3 is a convex optimization problem. It can be efficiently solved by convex optimization tools, such as CVX [37]. ",
+        "bbox": [
+            57,
+            479,
+            488,
+            523
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Proof. First, the constraints (24h) and (24i) are linear inequality constraints and linear equality constraints. Second, for (24b), $\\begin{array} { r } { t _ { b } ^ { s } W l o g _ { 2 } ( 1 + \\frac { \\tau _ { b } ^ { s } A } { t _ { b } ^ { s } } ) } \\end{array}$ is the perspective of $W l o g _ { 2 } ( 1 +$ $\\tau _ { b } ^ { s } A )$ , which is a concave function of $\\tau _ { b } ^ { s }$ . Since the perspective operation preserves convexity [30], $\\begin{array} { r } { t _ { b } ^ { s } \\dot { W } l o g _ { 2 } ( 1 + \\frac { \\tau _ { b } ^ { s } A } { t _ { b } ^ { s } } ) } \\end{array}$ is concave with respect to $\\tau _ { b } ^ { s }$ and t sb. It is obvious that $l _ { b } ^ { h } + l _ { b } ^ { a p }$ is a linear function. Thus, the (24b) is a convex constraint. What’s more, for the energy constraint (24f), the right side is a linear function with respect to $t _ { 0 } , t _ { b } ^ { s } , t _ { b } ^ { h }$ and $\\tau _ { b } ^ { s }$ . The left side is also a linear function with regard to $t _ { s } , t _ { b } ^ { s } , t _ { a } ^ { s }$ and $\\tau _ { a } ^ { s }$ . So (24f) is also a convex constraint. Using the same analysis method for (24c)–(24e) and (24g), we can easily prove that these constraints are also convex constraints. Finally, by analyzing the above $l _ { t o t a l }$ and $E _ { t o t a l } ^ { \\prime }$ , the objective function becomes a linear function after the EE q is given. Thus, P 3 is proved to be convex. ",
+        "bbox": [
+            57,
+            523,
+            488,
+            763
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "B. Optimal Solution for User EE Maximization Problem ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            813,
+            446,
+            828
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In order to solve P 3, an energy efficiency maximum algorithm is proposed in Algorithm 1. Besides, the Lagrange method can be employed to obtain some meaningful insights of the optimal solution. ",
+        "bbox": [
+            57,
+            834,
+            486,
+            893
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Theorem 1. For the given non-negative Lagrange multipliers $\\lambda _ { i } , i = 1 , 2 , . . , 1 0 .$ , the optimal backscatter reflection coefficients $\\beta = \\{ \\beta _ { s } , \\beta _ { h } \\}$ and the power allocation $\\pmb { p } = \\{ p _ { s } , p _ { h } \\}$ need to satisfy the following equations: ",
+        "bbox": [
+            57,
+            895,
+            488,
+            941
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            79,
+            718,
+            94
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\beta_ {s} ^ {*} = \\left\\{ \\begin{array}{l l} 0, & \\text { if } t _ {b} ^ {s} = 0 \\\\ \\left[ \\frac {\\lambda_ {1} W}{((\\lambda_ {5} - q) \\mu h _ {s} P _ {0} + \\lambda_ {8}) l n 2} - \\frac {\\sigma^ {2}}{\\zeta P _ {0} h _ {s} g _ {0}} \\right] ^ {+}, & \\text { others } \\end{array} , \\right. \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            520,
+            108,
+            929,
+            165
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\beta_ {h} ^ {*} = \\left\\{ \\begin{array}{l l} 0, & \\text { if } t _ {b} ^ {h} = 0 \\\\ \\left[ \\frac {\\lambda_ {2} W}{\\left((\\lambda_ {6} - q) \\mu h _ {h} P _ {0} + \\lambda_ {9}\\right) l n 2} - \\frac {\\sigma^ {2}}{\\zeta P _ {0} h _ {h} g _ {h}} \\right] ^ {+}, & \\text { others } \\end{array} , \\right. \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            172,
+            929,
+            231
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {s} ^ {*} = \\left\\{ \\begin{array}{l l} 0, & \\text { if } t _ {a} ^ {s} = 0 \\\\ {\\left[ \\frac {\\lambda_ {3} W}{(\\lambda_ {5} - q) l n 2} - \\frac {\\sigma^ {2}}{g _ {0}} \\right] ^ {+},} & \\text { others } \\end{array} , \\right. \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            626,
+            238,
+            929,
+            295
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {h} ^ {*} = \\left\\{ \\begin{array}{l l} 0, & \\text { if } t _ {a} ^ {h} = 0 \\\\ {\\left[ \\frac {\\lambda_ {4} W}{(\\lambda_ {6} - q) l n 2} - \\frac {\\sigma^ {2}}{g _ {h}} \\right] ^ {+},} & \\text { others } \\end{array} , \\right. \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            624,
+            303,
+            929,
+            359
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $[ x ] ^ { + } \\triangleq m a x \\{ 0 , x \\}$ . ",
+        "bbox": [
+            500,
+            376,
+            683,
+            393
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Proof. Let $\\lambda _ { i } \\geq 0 i = 1 , 2 , . . . , 1 0$ denote the Lagrange multipliers associated with the constraints (24b)–(24g), (21f) and (21k), respectively. The Lagrangian function of $\\mathbf { \\nabla } _ { P 3 }$ is ",
+        "bbox": [
+            500,
+            393,
+            930,
+            439
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {L} = l _ {t o t a l} - q E _ {t o t a l} ^ {\\prime} \\\\ + \\lambda_ {1} \\left[ l _ {b} ^ {h} + l _ {b} ^ {a p} - t _ {b} ^ {s} W l o g _ {2} \\left(1 + \\frac {\\tau_ {b} ^ {s} A}{t _ {b} ^ {s}}\\right) \\right] \\\\ + \\lambda_ {2} \\left[ l _ {b} ^ {a p} - t _ {b} ^ {h} W l o g _ {2} \\left(1 + \\frac {\\tau_ {b} ^ {h} B}{t _ {b} ^ {h}}\\right) \\right] \\\\ + \\lambda_ {3} \\left[ l _ {a} ^ {h} + l _ {a} ^ {a p} - t _ {a} ^ {s} W l o g _ {2} \\left(1 + \\frac {\\tau_ {a} ^ {s} C}{t _ {a} ^ {s}}\\right) \\right] \\\\ + \\lambda_ {4} \\left[ l _ {a} ^ {a p} - t _ {a} ^ {h} W l o g _ {2} \\left(1 + \\frac {\\tau_ {a} ^ {h} D}{t _ {a} ^ {h}}\\right) \\right] \\\\ + \\lambda_ {5} \\left[ \\kappa \\left(f _ {s}\\right) ^ {3} t _ {s} + p _ {b a c} ^ {s} t _ {b} ^ {s} + P _ {h t t} ^ {s} t _ {a} ^ {s} \\right. \\\\ \\left. + \\tau_ {a} ^ {s} - \\mu h _ {s} (t _ {0} + t _ {b} ^ {s} + t _ {b} ^ {h} - \\tau_ {b} ^ {s}) P _ {0} \\right] \\\\ + \\lambda_ {6} [ \\kappa (f _ {h}) ^ {3} t _ {h 1} + \\kappa (f _ {h}) ^ {3} t _ {h 2} + P _ {h t t} ^ {h} t _ {a} ^ {h} + p _ {b a c} ^ {h} t _ {b} ^ {h} \\\\ \\left. + \\tau_ {a} ^ {h} - \\mu h _ {h} (t _ {0} + t _ {b} ^ {s} + t _ {b} ^ {h} - \\tau_ {b} ^ {h}) P _ {0} \\right] \\\\ + \\lambda_ {7} [ t _ {0} + t _ {b} ^ {s} + t _ {b} ^ {h} + t _ {a} ^ {s} + t _ {a} ^ {h} - T ] \\\\ + \\lambda_ {8} \\left[ \\tau_ {b} ^ {s} - t _ {b} ^ {s} \\right] + \\lambda_ {9} \\left[ \\tau_ {b} ^ {h} - t _ {b} ^ {h} \\right] + \\lambda_ {1 0} \\left[ L _ {\\text { min }} - l _ {\\text { total }} \\right]. \\tag {29} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            452,
+            929,
+            791
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We can use the first-order optimality condition. Let the gradients of the Lagrangian $\\mathcal { L }$ with respect to $\\tau _ { b } ^ { s } , \\tau _ { b } ^ { h } , \\tau _ { a } ^ { s }$ and $\\tau _ { a } ^ { h }$ be zero, respectively. ",
+        "bbox": [
+            500,
+            805,
+            930,
+            852
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tau_ {b} ^ {s} = \\left[ \\frac {\\lambda_ {1} W t _ {b} ^ {s}}{((\\lambda_ {5} - q) \\mu h _ {s} P _ {0} + \\lambda_ {8}) l n 2} - \\frac {\\sigma^ {2} t _ {b} ^ {s}}{\\zeta P _ {0} h _ {s} g _ {0}} \\right] ^ {+}, \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            864,
+            929,
+            901
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tau_ {b} ^ {h} = \\left[ \\frac {\\lambda_ {2} W t _ {b} ^ {h}}{((\\lambda_ {6} - q) \\mu h _ {h} P _ {0} + \\lambda_ {9}) l n 2} - \\frac {\\sigma^ {2} t _ {b} ^ {h}}{\\zeta P _ {0} h _ {h} g _ {h}} \\right] ^ {+}, \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            907,
+            929,
+            943
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "HE et al.: ENERGY EFFICIENCY MAXIMIZATION OF BACKSCATTER-ASSISTED WIRELESS-POWERED MEC WITH USER COOPERATION",
+        "bbox": [
+            58,
+            37,
+            782,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "1883 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tau_ {a} ^ {s} = \\left[ \\frac {\\lambda_ {3} W t _ {a} ^ {s}}{(\\lambda_ {5} - q) l n 2} - \\frac {\\sigma^ {2} t _ {a} ^ {s}}{g _ {0}} \\right] ^ {+}, \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            94,
+            80,
+            493,
+            114
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tau_ {a} ^ {h} = \\left[ \\frac {\\lambda_ {4} W t _ {a} ^ {h}}{(\\lambda_ {6} - q) l n 2} - \\frac {\\sigma^ {2} t _ {a} ^ {h}}{g _ {h}} \\right] ^ {+}, \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            92,
+            121,
+            493,
+            157
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $[ x ] ^ { + } \\triangleq m a x \\{ 0 , x \\}$ . By using the relationships between these auxiliary variables and the original variables, we can easily obtain this theorem. ",
+        "bbox": [
+            65,
+            165,
+            494,
+            210
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We can see from this theorem, when $\\zeta P _ { 0 } h _ { s } g _ { 0 } \\geq$ $\\frac { ( ( \\lambda _ { 5 } - q ) \\mu h _ { s } P _ { 0 } + \\lambda _ { 8 } ) l n 2 \\sigma ^ { 2 } } { \\lambda _ { 1 } W }$ , the SN is more willing to offload tasks by the BackCom. In other words, when the channel condition and the performance gap are good and the harvested energy is enough, the BackCom mode can be selected. In addition, when g0 ≥ $\\begin{array} { r } { g _ { 0 } \\ge \\frac { ( \\lambda _ { 5 } - q ) l n 2 \\sigma ^ { 2 } } { \\lambda _ { 3 } W } } \\end{array}$ (λ5−q)ln2σ2 , e.g., the channel condition between the SN and the helper is well, the SN will choose the AC mode. As for the helper, we can also draw the same conclusions. ",
+        "bbox": [
+            65,
+            212,
+            494,
+            335
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "IV. SIMULATION RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            188,
+            353,
+            370,
+            366
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this section, some numerical results are provided to evaluate the performance of the proposed cooperation-assisted WPMEC with the integrated BackCom and AC scheme, compared with the following four schemes. ",
+        "bbox": [
+            65,
+            375,
+            494,
+            434
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A. User Cooperation With AC Scheme ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            450,
+            331,
+            465
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this scheme, users utilize the traditional harvest-thenoffloading protocol to accomplish the computation tasks. Specially, the SN and the helper first harvest energy from the HAP, and then the SN utilizes the harvested energy to accomplish the computation tasks with the aid of the helper and the HAP. During this process, all task offloading can only use the AC, and the BackCom is banned. Thus, we can easily set $t _ { b } ^ { s } = 0$ and $t _ { b } ^ { h } = 0$ in P 1 to achieve this scheme. ",
+        "bbox": [
+            65,
+            472,
+            494,
+            593
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. User Cooperation With BackCom Scheme ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            609,
+            375,
+            625
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this scheme, users utilize the BackCom mode to accomplish the computation tasks. Specially, the HAP broadcasts energy to users during a whole time block T . The SN can also accomplish computation tasks with the aid of the helper and the HAP. However, all task offloading can only use the BackCom, and the AC is banned. Thus, users need to adjust the backscatter reflection coefficient to maintain the basic circuit consumption and achieve data transformation. We can easily set $t _ { a } ^ { s } = 0$ and $t _ { a } ^ { h } = 0$ in P 1 to achieve this scheme. ",
+        "bbox": [
+            65,
+            630,
+            494,
+            767
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "C. Without User Cooperation With Integrated BackCom and AC Scheme ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            782,
+            481,
+            811
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this scheme, the SN directly communicates with the HAP without the aid of the helper. Specially, it first harvests the energy from the HAP and then can offload tasks to the HAP by the integrated the BackCom and AC. Owning to the bad channel condition between the SN and the HAP, it may harvest less energy and offload a little part of tasks to the HAP. In addition, it can accomplish its computation tasks by local computing during the entire time block T . ",
+        "bbox": [
+            65,
+            819,
+            494,
+            939
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "table",
+        "img_path": "images/cd81b5b4df70a55916723f36c980e214be8e348fa4c1f1b2e7fa37ac06469d9e.jpg",
+        "table_caption": [
+            "TABLE II SIMULATION PARAMETERS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>The time block  $T$ </td><td>1 s</td></tr><tr><td>The power of the HAP  $P_0$ </td><td>4 W</td></tr><tr><td>The noise power  $\\sigma^2$ </td><td> $10^{-10}$  W</td></tr><tr><td>The system bandwidth W</td><td>1 MHz</td></tr><tr><td>The circuit consumption of the BackCom  $p_{bac}^{s}$  and  $p_{bac}^{h}$ </td><td>1 μW</td></tr><tr><td>The circuit consumption of the AC  $p_{htt}^{s}$  and  $p_{htt}^{h}$ </td><td>10 μW</td></tr><tr><td>The minimum computation bits requirement of the SN  $L_{min}$ </td><td> $10^6$  bit</td></tr><tr><td>The CPU cycles required to compute 1 bit task  $\\phi_s$ </td><td>1500</td></tr><tr><td>The CPU frequency of the SN  $f_s$ </td><td>0.2 GHz</td></tr><tr><td>The CPU cycles required to compute 1 bit task  $\\phi_h$ </td><td>1000</td></tr><tr><td>The CPU frequency of the helper  $f_h$ </td><td>0.4 GHz</td></tr><tr><td>The path loss factor between the SN and the HAP  $\\alpha_0$ </td><td>3.3</td></tr><tr><td>The path loss factor between the helper and the HAP  $\\alpha_1$ </td><td>2.6</td></tr><tr><td>The path loss factor between the SN and the helper  $\\alpha_2$ </td><td>2.6</td></tr><tr><td>The equal computing efficiency parameter  $\\kappa$ </td><td> $10^{-29}$ </td></tr><tr><td>The energy conversion efficiency  $\\mu$ </td><td>0.7</td></tr><tr><td>The maximum iterations  $I_{max}$ </td><td>10</td></tr><tr><td>The error tolerance  $\\epsilon$ </td><td> $10^{-10}$ </td></tr></table>",
+        "bbox": [
+            511,
+            114,
+            936,
+            330
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "chart",
+        "img_path": "images/8ecfac31c6f829a95f2afde7dd4815335a19d1d1358010df9fbc16f6f3552cbc.jpg",
+        "content": "| The performance gap (dB) | The Proposed Scheme | User Cooperation With the AC | User Cooperation With the BackCom |\n| ------------------------ | ------------------- | ---------------------------- | -------------------------------- |\n| -24                      | 2.1e7               | 2.1e7                        | 0.35e7                           |\n| -23                      | 2.1e7               | 2.1e7                        | 0.55e7                           |\n| -22                      | 2.1e7               | 2.1e7                        | 0.85e7                           |\n| -21                      | 2.15e7              | 2.1e7                        | 1.15e7                           |\n| -20                      | 2.25e7              | 2.1e7                        | 1.5e7                            |\n| -19                      | 2.45e7              | 2.1e7                        | 1.95e7                           |\n| -18                      | 2.75e7              | 2.1e7                        | 2.4e7                            |\n| -17                      | 3.1e7               | 2.1e7                        | 3.05e7                           |\n| -16                      | 3.8e7               | 2.1e7                        | 3.8e7                            |\n| -15                      | 4.8e7               | 2.1e7                        | 4.8e7                            |",
+        "chart_caption": [
+            "Fig. 3. The user energy efficiency versus the performance gap. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            533,
+            344,
+            910,
+            575
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "D. Throughput Maximization in User Cooperation With Integrated BackCom and AC Scheme ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            632,
+            856,
+            662
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this scheme, we maximize the total computation bits $l _ { t o t a l }$ under the same condition of P 1. Compared with the proposed scheme, this scheme can exhaust the remaining energy to get the maximum computation rates, so the energy utilization is low. ",
+        "bbox": [
+            506,
+            667,
+            936,
+            728
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this simulation, we set the communication channel to $d ^ { - \\alpha }$ , where d denotes the distance between different devices, α is the path-loss exponent. The distances between the SN and the helper, between the SN and the HAP and between the helper and the HAP are 12 m, 30 m and 20 m, respectively. The details of other parameters are exhibited in Table II. ",
+        "bbox": [
+            506,
+            729,
+            936,
+            818
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Fig. 3 illustrates the user EE versus the performance gap $\\zeta .$ As is illustrated, it obviously shows that the EE increases as the performance gap increases in the BackCom scheme and the integrated BackCom and AC scheme while the AC scheme remains unchangeable. The proposed scheme can achieve the best system performance, because it can make a full use of advantages of the BackCom and the AC. When $\\zeta > - 1 6 \\mathrm { d B }$ , the BackCom scheme outperforms the AC scheme, so the proposed scheme can allocate more time to the BackCom mode. When $\\zeta < - 2 2$ dB, the proposed scheme nearly works on the AC mode. Thus, we can conclude that the proposed scheme is more flexible than other schemes. ",
+        "bbox": [
+            506,
+            819,
+            937,
+            940
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "1884 ",
+        "bbox": [
+            69,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            500,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0c1d63b5e4d83d4c03d69d6cbeee8adb6aca19c7bba37b53e81ab36256a9ed30.jpg",
+        "content": "| The number of iterations | P_bac^h = P_bac^s = 1*10^-6W | P_bac^h = P_bac^s = 3*10^-6W | P_bac^h = P_bac^s = 5*10^-6W | P_bac^h = P_bac^s = 7*10^-6W |\n| ------------------------ | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |\n| 1                        | 0.2 × 10^7                   | 0.2 × 10^7                   | 0.2 × 10^7                   | 0.2 × 10^7                   |\n| 2                        | 1.5 × 10^7                   | 1.5 × 10^7                   | 1.5 × 10^7                   | 1.5 × 10^7                   |\n| 3                        | 2.5 × 10^7                   | 2.5 × 10^7                   | 2.5 × 10^7                   | 2.5 × 10^7                   |\n| 4                        | 3.8 × 10^7                   | 3.5 × 10^7                   | 3.2 × 10^7                   | 3.0 × 10^7                   |\n| 5                        | 3.8 × 10^7                   | 3.5 × 10^7                   | 3.2 × 10^7                   | 3.0 × 10^7                   |\n| 6                        | 3.8 × 10^7                   | 3.5 × 10^7                   | 3.2 × 10^7                   | 3.0 × 10^7                   |\n| 7                        | 3.8 × 10^7                   | 3.5 × 10^7                   | 3.2 × 10^7                   | 3.0 × 10^7                   |\n| 8                        | 3.8 × 10^7                   | 3.5 × 10^7                   | 3.2 × 10^7                   | 3.0 × 10^7                   |\n| 9                        | 3.8 × 10^7                   | 3.5 × 10^7                   | 3.2 × 10^7                   | 3.0 × 10^7                   |\n| 10                       | 3.8 × 10^7                   | 3.5 × 10^7                   | 3.2 × 10^7                   | 3.0 × 10^7                   |",
+        "chart_caption": [
+            "Fig. 4. The user energy efficiency versus the number of iterations. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            85,
+            80,
+            462,
+            313
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/89760bbe8d733fc48da980d5c50c7ba05b6e0ba21bd984bd5a6de6aba9668982.jpg",
+        "content": "| The number of iterations | EE Maximization: The Proposed Scheme | EE Maximization: The UC With the AC | EE Maximization: The UC With the BackCom | EE Maximization: Without UC With the iterated BackCom and AC | Throughput Maximization: UC With the iterated BackCom and AC |\n| ------------------------ | ------------------------------------- | ------------------------------------ | ----------------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------- |\n| 1                        | 0                                     | 0                                    | 0                                         | 13500000                                                  | 0                                                           |\n| 2                        | 15000000                              | 17000000                             | 10000000                                  | 13500000                                                  | 0                                                           |\n| 3                        | 27500000                              | 21000000                             | 23500000                                  | 13500000                                                  | 0                                                           |\n| 4                        | 27500000                              | 21000000                             | 24500000                                  | 13500000                                                  | 0                                                           |\n| 5                        | 27500000                              | 21000000                             | 24500000                                  | 13500000                                                  | 0                                                           |\n| 6                        | 27500000                              | 21000000                             | 24500000                                  | 13500000                                                  | 0                                                           |\n| 7                        | 27500000                              | 21000000                             | 24500000                                  | 13500000                                                  | 0                                                           |\n| 8                        | 27500000                              | 21000000                             | 24500000                                  | 13500000                                                  | 0                                                           |\n| 9                        | 27500000                              | 21000000                             | 24500000                                  | 13500000                                                  | 0                                                           |\n| 10                       | 27500000                              | 21000000                             | 24500000                                  | 13500000                                                  | 0                                                           |",
+        "chart_caption": [
+            "Fig. 5. The user energy efficiency versus different schemes. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            85,
+            363,
+            461,
+            594
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            638,
+            486,
+            696
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 shows that the user EE versus the number of iterations. We can see from Fig. 4 that after five iterations, our proposed algorithm can converge to the optimal EE under different circuit consumption of the BackCom, which proves that our algorithm is computation-effective. Besides, the user EE decreases with the increase of $p _ { b a c } ^ { h }$ and $p _ { b a c } ^ { s }$ . Obviously, for the same computation rate, the larger the circuit consumption of the BackCom, the more energy can be consumed. ",
+        "bbox": [
+            57,
+            699,
+            486,
+            819
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Fig. 5 shows that the user EE versus different schemes, where $\\zeta = - 1 7$ dB. It is worth noting that the proposed scheme can achieve the best EE among all five schemes, which illustrates the advantages of the integrated BackCom and AC. In addition, the without-user-cooperation scheme with the integrated BackCom and AC has the lower EE. Even though using the integrated BackCom and AC mode, the terrible channel condition between the SN and the HAP still brings about less harvested energy and offloading tasks. This explains the importance of the UC for improve the property of the far user. It can be observed that the throughput maximization scheme is the lowest EE, so setting the EE as the objective function can achieve a higher energy utilization. ",
+        "bbox": [
+            57,
+            819,
+            488,
+            955
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e1f789e02bf018c20b2b07075a5ef2f553b3d6f631dd5a34ee4806a1b1230216.jpg",
+        "content": "| The performance gap (dB) | t₀    | t_b^s  | t_b^h  | t_a^s  | t_a^h  |\n| ------------------------ | ----- | ------ | ------ | ------ | ------ |\n| -24                      | 0.61  | 0.00   | 0.00   | 0.18   | 0.22   |\n| -23                      | 0.60  | 0.00   | 0.00   | 0.18   | 0.22   |\n| -22                      | 0.00  | 0.24   | 0.43   | 0.15   | 0.19   |\n| -21                      | 0.00  | 0.26   | 0.45   | 0.13   | 0.17   |\n| -20                      | 0.00  | 0.28   | 0.47   | 0.11   | 0.15   |\n| -19                      | 0.00  | 0.30   | 0.49   | 0.09   | 0.13   |\n| -18                      | 0.00  | 0.33   | 0.51   | 0.07   | 0.11   |\n| -17                      | 0.00  | 0.37   | 0.55   | 0.05   | 0.08   |\n| -16                      | 0.00  | 0.41   | 0.59   | 0.03   | 0.05   |\n| -15                      | 0.00  | 0.41   | 0.59   | 0.01   | 0.01   |",
+        "chart_caption": [
+            "Fig. 6. The optimal time allocation versus the performance gap. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            528,
+            80,
+            904,
+            305
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/7e96db28cc29345624e97ae1dad217460f61127a91f4cb4baf3193001ccf088d.jpg",
+        "content": "| The minimum computation bits requirement (10^5 bit) | EE Maximization: The Proposed Scheme | EE Maximization: The UC With the AC | EE Maximization: The UC With the BackCom | Throughput Maximization: UC With the integrated BackCom and AC |\n| -------------------------------------------------- | -------------------------------------- | ------------------------------------ | ----------------------------------------- | ------------------------------------------------------------- |\n| 10                                                 | 3.1e7                                  | 2.1e7                                | 3.0e7                                     | 0.2e7                                                         |\n| 10.4                                               | 3.05e7                                 | 2.1e7                                | 2.95e7                                    | 0.2e7                                                         |\n| 10.8                                               | 3.0e7                                  | 2.1e7                                | 2.9e7                                     | 0.2e7                                                         |\n| 11.2                                               | 2.95e7                                 | 2.1e7                                | 2.85e7                                    | 0.2e7                                                         |\n| 11.6                                               | 2.9e7                                  | 2.05e7                               | 2.8e7                                     | 0.2e7                                                         |\n| 12                                                 | 2.85e7                                 | 2.0e7                                | 2.75e7                                    | 0.2e7                                                         |\n| 12.4                                               | 2.8e7                                  | 1.9e7                                | 2.7e7                                     | 0.2e7                                                         |\n| 12.8                                               | 2.75e7                                 | 1.6e7                                | 2.65e7                                    | 0.2e7                                                         |\n| 13.2                                               | 2.7e7                                  | 1.3e7                                | 2.6e7                                     | 0.2e7                                                         |\n| 13.6                                               | 2.65e7                                 | 0.9e7                                | 2.55e7                                    | 0.2e7                                                         |\n| 14                                                 | 2.6e7                                  | 0.3e7                                | 2.45e7                                    | 0.2e7                                                         |",
+        "chart_caption": [
+            "Fig. 7. The user EE versus the minimum computation bits requirement. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            528,
+            358,
+            904,
+            592
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            638,
+            929,
+            696
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 6, we plot the relationship between the optimal time allocation t ∗ and the performance gap ζ. As desired, when $\\zeta$ is small, the BackCom mode cannot achieve larger computation bits compared with the consumed energy, so users are willing to allocate more time $t _ { 0 } ^ { * }$ to harvest the energy and then use the AC mode to offload the tasks. In addition, $t _ { 0 } ^ { * }$ decreases with the increase of ζ and when $\\zeta \\geq - 2 2$ dB, $t _ { 0 } ^ { * } \\approx 0$ . The reason is that the BackCom mode can achieve more computation bits with the increase of $\\zeta$ under the same energy consumption, so the BackCom mode becomes more energy efficiency for users. The BackCom mode can be chosen to reflect the incident signal to transmit tasks and collect energy simultaneously to support the circuit consumption [38]. Thus, $t _ { b } ^ { s * }$ and $t _ { b } ^ { h * }$ increase while $t _ { a } ^ { s * }$ and $t _ { a } ^ { h * }$ decrease with the increase of $\\zeta .$ . ",
+        "bbox": [
+            500,
+            699,
+            930,
+            910
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Fig. 7 shows the user EE versus the minimum computation bits requirement. Obviously, each user EE of the other three schemes decrease as the minimum computation bits requirement ",
+        "bbox": [
+            500,
+            910,
+            930,
+            955
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "HE et al.: ENERGY EFFICIENCY MAXIMIZATION OF BACKSCATTER-ASSISTED WIRELESS-POWERED MEC WITH USER COOPERATION",
+        "bbox": [
+            58,
+            39,
+            782,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "1885 ",
+        "bbox": [
+            904,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "$L _ { m i n }$ increases except the throughput maximization scheme. The reason is that with $L _ { m i n }$ increases, more system resources can be provided to satisfy the minimum computation bits requirement, which leads to consuming much more energy. In the throughput maximization scheme, the objective function is to maximize the computation bits. Within a certain range of $L _ { m i n } ,$ it can meet the requirement. Thus, the EE of this scheme keeps unchanged at a very low EE. Besides, our proposed scheme can achieve maximum EE than other schemes, which also shows the advantages of the UC scheme with the integrated BackCom and AC. ",
+        "bbox": [
+            63,
+            80,
+            494,
+            244
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "V. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            220,
+            258,
+            340,
+            271
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In this article, we investigated an innovative cooperationassisted WPMEC system with the integrated BackCom and AC, where we formulated a problem of maximizing the user EE by jointly optimizing the backscatter reflection coefficient for the BackCom, the transmission power for the AC, the time and task allocation when considering the minimum computation bits requirement, the channel capacity and the energy constraint. The integrated BackCom and AC protocol based on TDMA in the UC scenario was proposed to avoid interference. Based on the variable substitution, the fractional program and convex optimization techniques, we transformed the original problem into a convex optimization problem and obtained the semi-closed form of an optimal solution. An energy efficiency maximization algorithm was proposed to solve this convex optimization problem. Simulation results showed that the proposed scheme outperforms existing schemes in maximizing the user EE, which demonstrated the advantages of our proposed scheme. ",
+        "bbox": [
+            63,
+            279,
+            496,
+            537
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            250,
+            547,
+            341,
+            561
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] M. Singh, “Ambient backscatter communication in 5G,” in Proc. IEEE 3rd Int. Conf. Inventive Res. Comput. Appl., 2021, pp. 430–432. ",
+            "[2] P. X. Nguyen et al., “Backscatter-assisted data offloading in OFDMA-Based wireless-powered mobile edge computing for IoT networks,” IEEE Internet Things J., vol. 8, no. 11, pp. 9233–9243, Jun. 2021. ",
+            "[3] Y. Siriwardhana, P. Porambage, M. Liyanage, and M. Ylianttila, “A survey on mobile augmented reality with 5G mobile edge computing: Architectures, applications, and technical aspects,” IEEE Commun. Surv. Tut., vol. 23, no. 2, pp. 1160–1192, Second Quarter 2021. ",
+            "[4] F. Wang, J. Xu, and S. Cui, “Optimal energy allocation and task offloading policy for wireless powered mobile edge computing systems,” IEEE Trans. Wireless Commun., vol. 19, no. 4, pp. 2443–2459, Apr. 2020. ",
+            "[5] S. Mao, J. Wu, L. Liu, D. Lan, and A. Taherkordi, “Energy-efficient cooperative communication and computation for wireless powered mobile-edge computing,” IEEE Syst. J., vol. 16, no. 1, pp. 287–298, Mar. 2022. ",
+            "[6] F. Zhou and R. Q. Hu, “Computation efficiency maximization in wirelesspowered mobile edge computing networks,” IEEE Trans. Wireless Commun., vol. 19, no. 5, pp. 3170–3184, May 2020. ",
+            "[7] M. Zeng, R. Du, V. Fodor, and C. Fischione, “Computation rate maximization for wireless powered mobile edge computing with NOMA,” in Proc. IEEE 20th Int. Symp. A World Wireless Mobile Multimedia Netw., 2019, pp. 1–9. ",
+            "[8] F. Wang, J. Xu, X. Wang, and S. Cui, “Joint offloading and computing optimization in wireless powered mobile-edge computing systems,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 1784–1797, Mar. 2018. ",
+            "[9] X. Wang, Z. Ning, L. Guo, S. Guo, X. Gao, and G. Wang, “Online learning for distributed computation offloading in wireless powered mobile edge computing networks,” IEEE Trans. Parallel Distrib. Syst., vol. 33, no. 8, pp. 1841–1855, Aug. 2022. ",
+            "[10] X. Wang, Z. Ning, S. Guo, M. Wen, L. Guo, and V. Poor, “Dynamic UAV deployment for differentiated services: A multi-agent imitation learning based approach,” IEEE Trans. Mobile Comput., early access, Sep. 2021, doi: 10.1109/TMC.2021.3116236. "
+        ],
+        "bbox": [
+            67,
+            565,
+            496,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[11] Z. Ning et al., “Dynamic computation offloading and server deployment for UAV-Enabled multi-access edge computing,” IEEE Trans. Mobile Comput., early access, Nov. 2021, doi: 10.1109/TMC.2021.3129785. ",
+            "[12] B. Li, F. Si, W. Zhao, and H. Zhang, “Wireless powered mobile edge computing with NOMA and user cooperation,” IEEE Trans. Veh. Technol., vol. 70, no. 2, pp. 1957–1961, Feb. 2021. ",
+            "[13] B. Su, Q. Ni, W. Yu, and H. Pervaiz, “Optimizing computation efficiency for NOMA-Assisted mobile edge computing with user cooperation,” IEEE Trans. Green Commun. Netw., vol. 5, no. 2, pp. 858–867, Jun. 2021. ",
+            "[14] D. Wu, F. Wang, X. Cao, and J. Xu, “Wireless powered user cooperative computation in mobile edge computing systems,” in Proc. IEEE Globecom Workshops, 2018, pp. 1–7. ",
+            "[15] B. He, S. Bi, H. Xing, and X. Lin, “Collaborative computation offloading in wireless powered mobile-edge computing systems,” in Proc. IEEE Globecom Workshops, 2019, pp. 1–7. ",
+            "[16] D. T. Hoang, D. Niyato, P. Wang, D. I. Kim, and Z. Han, “Ambient backscatter: A new approach to improve network performance for RF-Powered cognitive radio networks,” IEEE Trans. Commun., vol. 65, no. 9, pp. 3659–3674, Sep. 2017. ",
+            "[17] B. Gu, Y. Xu, C. Huang, and R. Q. Hu, “Energy-efficient resource allocation for OFDMA-based wireless-powered backscatter communications,” in Proc. IEEE Int. Conf. Commun., 2021, pp. 1–6. ",
+            "[18] Y. Ye, L. Shi, X. Chu, and G. Lu, “Throughput fairness guarantee in wireless powered backscatter communications with HTT,” IEEE Wireless Commun. Lett., vol. 10, no. 3, pp. 449–453, Mar. 2021. ",
+            "[19] B. Lyu, D. T. Hoang, and Z. Yang, “User cooperation in wireless-powered backscatter communication networks,” IEEE Wireless Commun. Lett., vol. 8, no. 2, pp. 632–635, Apr. 2019. ",
+            "[20] Y. Ye, L. Shi, R. Q. Hu, and G. Lu, “Energy-efficient resource allocation for wirelessly powered backscatter communications,” IEEE Commun. Lett., vol. 23, no. 8, pp. 1418–1422, Aug. 2019. ",
+            "[21] Z. B. Zawawi, Y. Huang, and B. Clerckx, “Multiuser wirelessly powered backscatter communications: Nonlinearity, waveform design, and SINR-Energy tradeoff,” IEEE Trans. Wireless Commun., vol. 18, no. 1, pp. 241– 253, Jan. 2019. ",
+            "[22] S. Idrees, X. Zhou, S. Durrani, and D. Niyato, “Design of ambient backscatter training for wireless power transfer,” IEEE Trans. Wireless Commun., vol. 19, no. 10, pp. 6316–6330, Oct. 2020. ",
+            "[23] F. Rezaei, C. Tellambura, and S. Herath, “Large-scale wireless-powered networks with backscatter communications–a comprehensive survey,” IEEE Open J. Commun. Soc., vol. 1, pp. 1100–1130, Jul. 2020. ",
+            "[24] L. Shi, Y. Ye, X. Chu, and G. Lu, “Computation bits maximization in a backscatter assisted wirelessly powered MEC network,” IEEE Commun. Lett., vol. 25, no. 2, pp. 528–532, Feb. 2021. ",
+            "[25] L. Shi, Y. Ye, G. Zheng, and G. Lu, “Computational EE fairness in backscatter-assisted wireless powered MEC networks,” IEEE Wireless Commun. Lett., vol. 10, no. 5, pp. 1088–1092, May 2021. ",
+            "[26] L. Shi, R. Q. Hu, J. Gunther, Y. Ye, and H. Zhang, “Energy efficiency for RF-Powered backscatter networks using HTT protocol,” IEEE Trans. Veh. Technol., vol. 69, no. 11, pp. 13932–13936, Nov. 2020. ",
+            "[27] Y. Ye, L. Shi, X. Chu, R. Q. Hu, and G. Lu, “Resource allocation in backscatter-assisted wireless powered MEC networks with limited MEC computation capacity,” IEEE Trans. Wireless Commun., vol. 21, no. 12, pp. 10678–10694, Dec. 2022. ",
+            "[28] Y. Ye, L. Shi, H. Sun, R. Q. Hu, and G. Lu, “System-centric computation energy efficiency for distributed NOMA-Based MEC networks,” IEEE Trans. Veh. Technol., vol. 69, no. 8, pp. 8938–8948, Aug. 2020. ",
+            "[29] Q. Wu, W. Chen, D. W. Kwan Ng, J. Li, and R. Schober, “Usercentric energy efficiency maximization for wireless powered communications,” IEEE Trans. Wireless Commun., vol. 15, no. 10, pp. 6898–6912, Oct. 2016. ",
+            "[30] S. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004. ",
+            "[31] Y. Ye, L. Shi, X. Chu, D. Li, and G. Lu, “Delay minimization in wireless powered mobile edge computing with hybrid BackCom and AT,” IEEE Wireless Commun. Lett., vol. 10, no. 7, pp. 1532–1536, Jul. 2021. ",
+            "[32] H. Yang, Y. Ye, and X. Chu, “Max-min energy-efficient resource allocation for wireless powered backscatter networks,” IEEE Wireless Commun. Lett., vol. 9, no. 5, pp. 688–692, May 2020. ",
+            "[33] Y. Xu, B. Gu, R. Q. Hu, D. Li, and H. Zhang, “Joint computation offloading and radio resource allocation in MEC-Based wireless-powered backscatter communication networks,” IEEE Trans. Veh. Technol., vol. 70, no. 6, pp. 6200–6205, Jun. 2021. ",
+            "[34] B. Lyu, H. Guo, Z. Yang, and G. Gui, “Throughput maximization for hybrid backscatter assisted cognitive wireless powered radio networks,” IEEE Internet Things J., vol. 5, no. 3, pp. 2015–2024, Jun. 2018. "
+        ],
+        "bbox": [
+            505,
+            75,
+            941,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "1886 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. 23, NO. 2, FEBRUARY 2024 ",
+        "bbox": [
+            500,
+            39,
+            937,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[35] J. Lu, P. Wu, and M. Xia, “Computation-efficient hybrid offloading for backscatter-assisted wirelessly powered MEC,” in Proc. IEEE 93rd Veh. Technol. Conf., 2021, pp. 1–6. ",
+            "[36] W. Dinkelbach, “On nonlinear fractional programming,” Manage. Sci., vol. 13, no. 7, pp. 492–498, 1967. ",
+            "[37] M. Grant, S. Boyd, and Y. Ye, “CVX: MATLAB software for disciplined convex programming,” 2009. [Online]. Available: http://cvxr.com ",
+            "[38] Y. Xu and G. Gui, “Optimal resource allocation for wireless powered multicarrier backscatter communication networks,” IEEE Wireless Commun. Lett., vol. 9, no. 8, pp. 1191–1195, Aug. 2020. "
+        ],
+        "bbox": [
+            58,
+            80,
+            488,
+            196
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/1af9ceb3111618fe7ec6b4039868631e1b14804e00987fc6e5cbff39b8dd7af3.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in a light blue collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            82,
+            627,
+            198
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Xinying Wu received the BS degree in communication engineering from the Xi’an University of Science and Technology (XUST), Xi’an, China, in 2020. He is currently working toward the MS degree in information and communication engineering with Shenzhen University, Shenzhen, China. His research interests include wireless communications and mobile edge computing. ",
+        "bbox": [
+            641,
+            80,
+            930,
+            174
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/c66004991f688c3e2ff9e435066a66fda7ed017ba505dcebec8a9cbb22c9b6e7.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal attire against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            239,
+            185,
+            356
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Yejun He (Senior Member, IEEE) received the PhD degree in information and communication engineering from the Huazhong University of Science and Technology, Wuhan, 2005. From 2005 to 2006, he was a research associate at the Department of Electronic and Information Engineering, Hong Kong Polytechnic University, Hong Kong. From 2006 to 2007, he was a research associate at the Department of Electronic Engineering, Faculty of Engineering, the Chinese University of Hong Kong, Hong Kong. In 2012, he was a visiting professor at the Department of Electrical and Computer Engineering, University of Waterloo, Waterloo, ON, Canada. From 2013 to 2015, he was an advanced visiting scholar (visiting professor) at the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, Georgia. Since 2011, he has been a full professor with the College of Electronics and Information Engineering, Shenzhen University, Shenzhen, China, where he is the director of Guangdong Engineering Research Center of Base Station Antennas and Propagation, the director of Shenzhen Key Laboratory of Antennas and Propagation, and the chair of IEEE APS-Shenzhen Chapter. He was selected as Pengcheng Scholar Distinguished professor, Shenzhen, and Minjiang Scholar chair professor of Fujian Province, China, in 2020 and 2022, respectively. He has authored or coauthored more than 260 referred journal and conference papers and 7 books, and holds about 20 patents. His research interests include wireless communications, antennas, and radio frequency. ",
+        "bbox": [
+            198,
+            238,
+            486,
+            364
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            364,
+            488,
+            522
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Dr. He received the Shenzhen Science and Technology Progress Award, in 2017, and has obtained the Guangdong Provincial Science and Technology Progress Award for two times, in 2018 and 2023, respectively. He obtained the IEEE APS Outstanding Chapter Award in 2022. He was also a recipient of the Shenzhen Overseas High-Caliber Personnel Level B (Peacock Plan Award B) and Shenzhen High-Level Professional Talent (Local Leading Talent). He has served as a reviewer for various journals, such as IEEE Transactions on Vehicular Technology, IEEE Transactions on Communications, IEEE Transactions on Industrial Electronics, IEEE Transactions on Antennas and Propagation, IEEE Wireless Communications, the IEEE Communications Letters, the International Journal of Communication Systems, and Wireless Personal Communications. He has also served as a Technical Program Committee member or a Session chair for various conferences, including the IEEE Global Telecommunications Conference, the IEEE International Conference on Communications, the IEEE Wireless Communication Networking Conference, and the IEEE Vehicular Technology Conference. He served as the TPC chair for IEEE ComComAp 2021, the general chair for IEEE ComComAp 2019, and the Organizing Committee vice chair for the International Conference on Communications and Mobile Computing (CMC 2010). He was selected as a board member of IEEE Wireless and Optical Communications Conference (WOCC) and is serving/served as the TPC co-chair for WOCC2023/WOCC2022/WOCC2019/WOCC2016/WOCC2015. He is the principal investigator for more than 30 current or finished research projects, including the National Natural Science Foundation of China, the Science and Technology Program of Guangdong Province, and the Science and Technology Program of Shenzhen City. He is a fellow of IET, and a Senior Member of the China Institute of Communications and the China Institute of Electronics. He is serving as an associate editor of IEEE Transactions on Mobile Computing, IEEE Transactions on Antennas and Propagation, IEEE Antennas and Propagation Magazine, IEEE Antennas and Wireless Propagation Letters, International Journal of Communication Systems, China Communications, as well as ZTE Communications. He served as IEEE Network. ",
+        "bbox": [
+            60,
+            522,
+            488,
+            875
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/bed926e45e23e98dd81018d8fb67ee3379363cf45f63e4d482dd88a862d6e3ef.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in a maroon shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            276,
+            627,
+            393
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Zhou He received the BS degree in electrical engineering from the University of Colorado Boulder, Colorado, USA, in 2018. He is currently working toward the PhD degree of mechanical engineering with the University of Maryland, College Park, USA. His research interests include wireless communication, antennas, and reliability of electronic products. ",
+        "bbox": [
+            641,
+            276,
+            930,
+            357
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/bde17fa0f396e35fd708d0c10b0a188b1b0f9c08de5de157b5f91105a8605dd3.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a smiling older man in business attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            460,
+            627,
+            577
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Mohsen Guizani (Fellow, IEEE) received the BS (with distinction), MS and PhD degrees in electrical and computer engineering from Syracuse University, Syracuse, New York, in 1985, 1987 and 1990, respectively. He is currently a professor of machine learning and the associate provost with Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI), Abu Dhabi, UAE. Previously, he worked in different institutions in the USA. His research interests include applied machine learning and artificial intelligence, Internet of Things (IoT), intelligent autonomous systems, smart city, and cybersecurity. He was elevated to the IEEE Fellow in 2009 and was listed as a Clarivate Analytics Highly Cited researcher in computer science, in 2019, 2020, 2021, and 2022. He has won several research awards including the 2015 IEEE Communications Society Best Survey Paper Award, the Best ComSoc Journal Paper Award, in 2021 as well as five Best Paper Awards from ICC and Globecom Conferences. He is the author of ten books and more than 800 publications. He is also the recipient of the 2017 IEEE Communications Society Wireless Technical Committee (WTC) Recognition Award, the 2018 AdHoc Technical Committee Recognition Award, and the 2019 IEEE Communications and Information Security Technical Recognition (CISTC) Award. He served as the editor-in-chief of IEEE Network and is currently serving on the editorial boards of many IEEE Transactions and Magazines. He was the chair of the IEEE Communications Society Wireless Technical Committee and the chair of the TAOS Technical Committee. He served as the IEEE Computer Society Distinguished speaker and is currently the IEEE ComSoc Distinguished lecturer. ",
+        "bbox": [
+            641,
+            459,
+            930,
+            585
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            585,
+            930,
+            756
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "HE et al.: ENERGY EFFICIENCY MAXIMIZATION OF BACKSCATTER-ASSISTED WIRELESS-POWERED MEC WITH USER COOPERATION",
+        "bbox": [
+            58,
+            39,
+            782,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "1887 ",
+        "bbox": [
+            904,
+            40,
+            930,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 05:27:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 9
+    }
+]
