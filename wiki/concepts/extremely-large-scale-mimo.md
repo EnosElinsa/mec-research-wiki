@@ -1,0 +1,26 @@
+---
+type: concept
+title: "Extremely Large-Scale MIMO (XL-MIMO)"
+tags: [xl-mimo, mimo, 6g, physical-layer, near-field]
+related:
+  - "[[near-field-communications]]"
+  - "[[intelligent-reflecting-surface]]"
+  - "[[terahertz-communication]]"
+  - "[[wang-2024-xl-mimo-tutorial]]"
+created: 2026-06-02
+updated: 2026-06-02
+---
+
+# Extremely Large-Scale MIMO (XL-MIMO)
+
+A 6G physical-layer evolution of massive MIMO (mMIMO) that deploys a much larger number of antennas and a substantially larger array aperture in a compact space, to gain spectral efficiency and spatial degrees of freedom. Two mainstream realizations: a **discrete** aperture packing thousands of antennas at sub-half-wavelength spacing, and a **continuous aperture (CAP)** that approximates an infinite number of infinitesimal antennas via metamaterials.
+
+[[wang-2024-xl-mimo-tutorial]] organizes XL-MIMO into four hardware designs — ULA-based, UPA-based with patch antennas, UPA-based with point antennas, and CAP-based — and surveys their near-field channel models and signal processing.
+
+## Why it differs from mMIMO
+
+- Far higher antenna count → higher signal-processing complexity and new electromagnetic effects (spatial non-stationarity, severe mutual coupling, polarization).
+- Much smaller antenna spacing → more antennas but more hardware complexity/coupling.
+- Larger aperture pushes users into the **near field**, so [[near-field-communications|spherical-wave]] models and near-field signal processing replace conventional far-field assumptions.
+
+It is studied alongside other 6G PHY enablers such as [[intelligent-reflecting-surface|RIS]] and [[terahertz-communication|THz]] communication, with applications in physical-layer security, [[integrated-sensing-and-communication|ISAC]], and IoT.

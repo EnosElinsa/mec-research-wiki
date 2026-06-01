@@ -1,0 +1,3736 @@
+[
+    {
+        "type": "text",
+        "text": "Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment ",
+        "text_level": 1,
+        "bbox": [
+            119,
+            70,
+            877,
+            175
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Nan Zhao , Senior Member, IEEE, Fen Cheng, F. Richard Yu, Fellow, IEEE, Jie Tang , Member, IEEE, Yunfei Chen , Senior Member, IEEE, Guan Gui, Senior Member, IEEE, and Hikmet Sari, Fellow, IEEE ",
+        "bbox": [
+            102,
+            188,
+            890,
+            227
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract— Unmanned aerial vehicles (UAVs) can help small-cell base stations (SBSs) offload traffic via wireless backhaul to improve coverage and increase rate. However, the capacity of backhaul is limited. In this paper, UAV assisted secure transmission for scalable videos in hyper-dense networks via caching is studied. In the proposed scheme, UAVs can act as SBSs to provide videos to mobile users in some small cells. To reduce the pressure of wireless backhaul, UAVs and SBSs are both equipped with caches to store videos at off-peak time. To facilitate UAVs, a single antenna is equipped at each UAV and thus, only the precoding matrices of SBSs should be cooperatively designed to manage interference by exploiting the principle of interference alignment. On the other hand, the SBSs replaced by UAVs will be idle. Thus, in order to guarantee secure transmission, the idle SBSs can be further exploited to generate jamming signal to disrupt eavesdropping. The jamming signal is zero-forced at the ",
+        "bbox": [
+            73,
+            255,
+            491,
+            457
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received July 24, 2017; revised November 15, 2017 and December 26, 2017; accepted January 6, 2018. Date of publication January 11, 2018; date of current version May 15, 2018. The work of N. Zhao was supported in part by the open research fund of National Mobile Communications Research Laboratory, Southeast University under Grant 2018D03, in part by the Xinghai Scholars Program, in part by the National Natural Science Foundation of China under Grant 61771089 and Grant 61671101, and in part by the Fundamental Research Funds for the Central Universities under Grant DUT17JC43. The work of J. Tang was supported in part by the National Natural Science Foundation of China under Grant 61601186, and in part by the Natural Science Foundation of Guangdong Province under Grant 2017A030313383. This paper was presented at the Proceedings of 2018 International Conference on Computing, Networking, and Communications (ICNC 2018) [1]. The associate editor coordinating the review of this paper and approving it for publication was R. Zhang. (Corresponding author: Jie Tang.) ",
+        "bbox": [
+            73,
+            474,
+            491,
+            655
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "N. Zhao and F. Cheng are with the School of Information and Communication Engineering, Dalian University of Technology, Dalian 116023, China, and also with the National Mobile Communications Research Laboratory, Southeast University, Nanjing 210096, China (e-mail: zhaonan@dlut.edu.cn; 251791@mail.dlut.edu.cn). ",
+        "bbox": [
+            73,
+            655,
+            488,
+            712
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "F. R. Yu is with the Department of Systems and Computer Engineering, Carleton University, Ottawa, ON K1S 5B6, Canada (e-mail: richard.yu@carleton.ca). ",
+        "bbox": [
+            73,
+            712,
+            488,
+            746
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "J. Tang is with the School of Electronic and Information Engineering, South China University of Technology, Guangzhou 510641, China (e-mail: eejtang@scut.edu.cn). ",
+        "bbox": [
+            73,
+            746,
+            488,
+            780
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Y. Chen is with the School of Engineering, University of Warwick, Coventry CV4 7AL, U.K. (e-mail: yunfei.chen@warwick.ac.uk). ",
+        "bbox": [
+            73,
+            780,
+            488,
+            803
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "G. Gui is with the College of Telecommunication and Information Engineering, Nanjing University of Posts and Telecommunications, Nanjing 210028, China (e-mail: guiguan@njupt.edu.cn). ",
+        "bbox": [
+            73,
+            803,
+            488,
+            837
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "H. Sari is with the College of Telecommunication and Information Engineering, Nanjing University of Posts and Telecommunications, Nanjing 210028, China, and also with Sequans Communications, 92700 Colombes, France (e-mail: hikmet@njupt.edu.cn). ",
+        "bbox": [
+            73,
+            837,
+            488,
+            882
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org. ",
+        "bbox": [
+            73,
+            882,
+            488,
+            904
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TCOMM.2018.2792014 ",
+        "bbox": [
+            86,
+            904,
+            395,
+            916
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "legitimate users through the precoding of the idle SBSs, without affecting the legitimate transmission. The feasibility conditions of the proposed scheme are derived, and the secrecy performance is analyzed. Finally, simulation results are presented to verify the effectiveness of the proposed scheme. ",
+        "bbox": [
+            501,
+            253,
+            921,
+            319
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms— Caching, interference alignment, physical layer security, small-cell networks, unmanned aerial vehicles. ",
+        "bbox": [
+            503,
+            324,
+            921,
+            351
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            645,
+            371,
+            779,
+            383
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "N 5G MOBILE networks, data traffic will increase unprece-I dentedly. In order to meet the increasing data demands, small-cell networks will be widely deployed, which can achieve much higher throughput and energy efficiency [2]. However, owing to the dense deployment of small-cell base stations (SBSs), the interference between users becomes more serious, which may lead to performance degradation. Thus, it is very important to properly manage interference to further improve the performance of small-cell networks [3]. As an emerging technique for interference management in wireless networks, interference alignment (IA) can be utilized in hyderdense small-cell networks [4]–[9]. In addition, the security of small-cell networks is also a critical issue, which has attracted significant attention [10]–[15]. ",
+        "bbox": [
+            501,
+            388,
+            921,
+            599
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "To alleviate the pressure of small cells and reduce the cost of densely deployed SBSs, unmanned aerial vehicles (UAVs) can be exploited to assist small cells in providing high-speed transmission due to their low cost and high mobility. UAV-aided wireless networks can establish wireless connections without infrastructure, realize larger wireless coverage, and achieve higher transmission rate. Thus, a number of research works on this topic have been done in recent years [16]–[23]. In [16], three typical cases of utilization for UAV-aided wireless communications were summarized by Zeng et al., including UAV-aided ubiquitous coverage, UAV-aided relaying, and UAV-aided information dissemination. In [17], Gupta et al. discussed the key issues of routing and protocol in UAV-aided communications. A sub-modular game perspective of energy consumption optimization of UAV-aided network was provided in Koulali et al. [18]. Sharma et al. [19], proposed a user demand based network model to achieve prolonged connectivity, bigger capacity and better reliability in heterogeneous networks assisted by UAVs. In [20], a spiral algorithm was proposed by Lyu et al. to minimize the number of required UAV-mounted mobile base stations to cover all the ground terminals. Zeng et al. optimized the throughput for UAV-aided mobile relaying system by transmitting appropriate source/relay power along with selecting appropriate relay trajectory in [21]. While in [22], energy-efficient network was achieved through optimizing the UAV’s trajectory by Zeng and Zhang. In addition, in small-cell networks, UAVs can serve as mobile base stations to assist SBSs in offloading data traffic via wireless backhaul [23]. ",
+        "bbox": [
+            501,
+            601,
+            921,
+            917
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            76,
+            35,
+            467,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "2281 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "0090-6778 © 2018 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            197,
+            922,
+            795,
+            935
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See http://www.ieee.org/publications\\_standards/publications/rights/index.html for more information. ",
+        "bbox": [
+            233,
+            935,
+            764,
+            946
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            191
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "However, UAVs can provide data transmission only by connecting to the macro-cell base station (MBS) via wireless backhaul. Due to the limited capacity of wireless backhaul, the transmission rate by UAVs is also limited, which will degrade the quality of service (QoS) when mobile users are crowded. To solve this problem, caches can be equipped at UAVs to store the popular contents at off-peak period [24], and thus, when the users’ requested contents exist at local caches of UAVs, they can be delivered to the users directly without wireless backhaul at peak period. Thus, the load via limited wireless backhaul can be reduced, which makes UAVs more feasible. ",
+        "bbox": [
+            73,
+            191,
+            491,
+            357
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In cache-aided wireless networks, the local caches proactively fetch the popular files from the core network during off-peak time [25]–[28], and the users can obtain the required contents from the edge nodes directly at peak time, e.g., SBSs, instead of the core network. Thus, the traffic at the backhaul can be shifted from the peak time to the off-peak time, and the pressure of backhaul will be significantly relieved [29]. In addition, caching at the edge of networks makes the data traffic much closer to the mobile users. Thus, the transmission latency can be reduced, and the quality of experience for users will be enhanced. Furthermore, caching can also be utilized in interference networks, especially, IA-based networks, to facilitate the interference management and improve the performance [8], [9], [30], [31]. In [30], each file was divided into some non-overlapping subfiles cached at different transmitters, and then, those subfiles would be transmitted to users cooperatively by managing interference effectively with IA gain. Deghel et al. [31] demonstrated that caching can provide benefits for IA networks. In [8], caching and computing were jointly utilized by Zhao et al., to simplify the topology of IA networks, reduce backhaul load, and thus improve the throughput. In [9], power allocation was researched by Cheng et al. in cached-aided small-cell networks with limited backhaul. ",
+        "bbox": [
+            73,
+            358,
+            491,
+            718
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Motivated by the above works, in this paper, UAVs with caching are utilized as mobile base stations (BSs) to provide video streaming to the mobile users along with SBSs. To effectively eliminate the interference between users, IA is exploited in the proposed scheme. In addition, to guarantee the secure transmission, the idle SBSs replaced by UAVs are further utilized to generate jamming signal to disrupt the potential eavesdropping, without affecting the legitimate transmission. The key contributions of this paper can be summarized as follows. ",
+        "bbox": [
+            73,
+            720,
+            491,
+            854
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• To the best of our knowledge, there are very few works on UAV-aided wireless networks with caching [24]. Thus, in this paper, we propose a comprehensive framework for hyper-dense small-cell networks assisted by caching UAVs, analyze its feasibility, and discuss the secure transmission. ",
+        "bbox": [
+            89,
+            856,
+            491,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To relieve the transmission pressure of SBSs, UAVs are utilized to provide data traffic to mobile users cooperatively with SBSs, due to their lower cost and higher mobility. Caches are equipped at UAVs to store popular files in advance, which can relieve the pressure on the wireless backhaul at peak time significantly. ",
+        "bbox": [
+            521,
+            70,
+            921,
+            176
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• A single antenna is equipped at each UAV to facilitate its transmission, and the idea of IA is leveraged to perform interference management in the network through designing the precoding matrices of SBSs cooperatively. The feasibility conditions of the proposed scheme are also derived. ",
+        "bbox": [
+            521,
+            176,
+            921,
+            266
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Another key issue for the UAV aided small-cell network is the secure transmission. In this paper, the idle SBSs replaced by UAVs are further utilized to generate jamming signal to disrupt the potential eavesdropping, which will not affect the transmission of the legitimate network. The security performance of the proposed scheme is analyzed. ",
+        "bbox": [
+            521,
+            267,
+            921,
+            373
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In addition, some issues for adopting IA in our proposed scheme are discussed as follows. ",
+        "bbox": [
+            504,
+            373,
+            921,
+            402
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(1) The performance of IA will degrade at low SNRs, due to the fact that it is originally designed to remove interference, not noise. To make it work in low SNRs, a lot of works have been done to improve its performance [32]–[35]. In addition, although the performance of IA is not optimal at low SNRs, it will give guidelines on the optimal design of MIMO interference network, according to its feasibility conditions [36], i.e., the optimal MIMO transceiver design scheme can achieve reliable performance only when the feasibility conditions of IA can be satisfied. Also, although we adopt IA to achieve interference management in this manuscript, the framework can also be achieved by other interference management techniques, e.g., optimal transceiver design [37]. ",
+        "bbox": [
+            503,
+            402,
+            921,
+            599
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(2) Imperfect channel state information (CSI) will degrade the performance IA. Nevertheless, there have been a lot of research efforts on this aspect [7], [38]–[40], e.g., CSI overhead reduction, limited quantization, channel prediction, blind IA, etc. These works can be combined with our proposed scheme to overcome the CSI problem, which is not the main task of this paper. In addition, only one single antenna is equipped at each UAV, which does not need the CSI knowledge. Thus, the challenge for the estimation of CSI for mobile UAVs can be avoided. ",
+        "bbox": [
+            503,
+            599,
+            921,
+            750
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The rest of this paper is organized as follows. In Section II, the system model is described. In Section III, the interference management scheme for the caching UAV assisted hyper-dense network with jamming signal is proposed, and its feasibility conditions are derived in Section IV. In Section V, the security performance of the proposed scheme when there exists an eavesdropper is analyzed. Simulation results are presented in Section VI, followed by conclusions and future work in Section VII. ",
+        "bbox": [
+            503,
+            750,
+            921,
+            883
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Notation: A† is the conjugate transpose of matrix A. IN represents $N \\times N$ indentity matrix. $\\mathcal { C N } ( \\mathbf { a } , \\mathbf { A } )$ represents the complex Gaussian distribution with mean a and covariance matrix A. $\\mathbf { v } _ { i } ( \\mathbf { A } )$ and ${ { \\mathbf { A } } _ { \\star l } }$ are the eigenvector corresponding to the i th smallest eigenvalue and the lth column of matrix A, respectively. ",
+        "bbox": [
+            503,
+            885,
+            921,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2282 ",
+        "bbox": [
+            76,
+            36,
+            102,
+            45
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            529,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/f91d0318de750f6b19c2bf0faa3041e0c581bc627059d7c64a47aa03c5bb7e6f.jpg",
+        "image_caption": [
+            "Fig. 1. UAV assisted secure transmission in hyper-dense networks via caching. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Internet\"] --> B[\"Optical Backhauls\"]\n    B --> C[\"MBS\"]\n    C --> D[\"Wireless Backhaul\"]\n    D --> E[\"Enhancement Layer Segments\"]\n    E --> F[\"SBS\"]\n    E --> G[\"SBS\"]\n    E --> H[\"SBS\"]\n    F --> I[\"Jamming\"]\n    G --> I\n    H --> I\n    I --> J[\"Eavesdropper\"]\n    J --> K[\"SBS\"]\n    K --> L[\"SBS\"]\n    L --> M[\"SBS\"]\n    M --> N[\"SBS\"]\n    N --> O[\"SBS\"]\n    O --> P[\"SBS\"]\n    P --> Q[\"SBS\"]\n    Q --> R[\"SBS\"]\n    R --> S[\"SBS\"]\n    S --> T[\"SBS\"]\n    T --> U[\"SBS\"]\n    U --> V[\"SBS\"]\n    V --> W[\"SBS\"]\n    W --> X[\"SBS\"]\n    X --> Y[\"SBS\"]\n    Y --> Z[\"SBS\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            75,
+            70,
+            488,
+            275
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            338,
+            488,
+            368
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            209,
+            383,
+            356,
+            397
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Consider a UAV-assisted hyper-dense small-cell network via caching, as shown in Fig. 1, in which one MBS, K SBSs and K corresponding mobile users, operate in a specific frequency band.1 The MBS is connected to the core network via optical backhaul. In addition, there exist A (A < K ) UAVs served as mobile BSs, which are connected to the MBS via wireless backhaul to alleviate the data transmission load of SBSs and achieve higher transmission rate. However, due to limited batteries, limited wireless backhaul and high mobility, some special properties of UAVs are considered in the network as follows. ",
+        "bbox": [
+            73,
+            402,
+            491,
+            568
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Only one single antenna is equipped at each UAV, due to the fact that the scattering in UAV environment is inadequate, the size, weight and power of UAVs are limited, and CSI cannot be obtained easily at UAVs [16]. The interference management regarding to the UAVs can be achieved with the help of the multi-antenna SBSs. ",
+            "• According to the DoF requirement of multi-input and multi-output (MIMO) system, only one data stream can be transmitted by the UAV owing to the single antenna. ",
+            "• UAVs do not need the CSI knowledge, due to the fact that no precoding is needed with single antenna. ",
+            "• Caches are equipped at UAVs in order to alleviate the load of wireless backhaul and save energy. Popular videos can be proactively cached at UAVs during off-peak period or when replenishing batteries on the ground. ",
+            "• Rotary wing UAVs are adopted, which can stay stationary in the air when offloading data, and the transmit power of UAVs cannot be neglected due to the limited batteries, especially when they are far from terrestrial users. Thus, UAVs should fly close enough to the corresponding users when offloading. "
+        ],
+        "bbox": [
+            89,
+            571,
+            488,
+            887
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1We assume that only one active user exists in a certain frequency band of each small cell. Nevertheless, more users can be accommodated by orthogonal frequency-division multiple access or other ways, which is beyond the scope of this paper. ",
+        "bbox": [
+            73,
+            898,
+            491,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/ac7c1448e432784a0dff608288507336e1c82f547d9053e2bceb20301deddce5.jpg",
+        "image_caption": [
+            "Fig. 2. Interference management for UAV assisted small-cell networks with jamming signal. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    subgraph UAVs\n        direction LR\n        A[\"User i\"] -->|dashed arrow| B[\"SBS j\"]\n        A -->|solid arrow| C[\"SBS k\"]\n        D[\"UAV i\"] -->|solid arrow| E[\"SBS l\"]\n        D -->|solid arrow| F[\"User l\"]\n        G[\"x[i\"]] --> H[\"...\"]\n        I[\"x[i\"]] --> J[\"...\"]\n        K[\"x[i\"]] --> L[\"...\"]\n        M[\"x[i\"]] --> N[\"...\"]\n    end\n\n    subgraph Interference\n        direction LR\n        O[\"User i\"] --> P[\"Eavesdropper\"]\n        Q[\"User l\"] --> P\n        R[\"User k\"] --> P\n        S[\"...\"] --> T[\"...\"]\n    end\n\n    style UAVs fill:#f9f,stroke:#333\n    style Interference fill:#ccf,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            511,
+            71,
+            913,
+            282
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "To make the caching of videos at UAVs and SBSs more effective, a special video caching strategy is adopted. In this strategy, each video file is divided into two layers, i.e., base layer (BL) and enhancement layer (EL) [41]. When a user requires standard-definition video streaming, only the BL segment of the video file should be transmitted. When the user need high-definition video streaming, both the EL and BL segments should be delivered. To reduce the load and save caching resource, only EL segments are cached at UAVs, while at SBSs, both BL and EL segments are cached. The SBSs can support the BL transmission, and the UAVs only help to offload data traffic when high-definition video streaming is required. Assume that only one layer of the video can be transmitted to each user within a specific time slot, and the BL and EL segments can be delivered via several successive slots. Thus, at a specific time slot, UAVs can replace SBSs to serve the corresponding users with EL segments in some of the small cells. In this paper, for illustration purpose, we consider a special but useful scenario for video streaming transmission. We can easily extend our proposed scheme to more general cases when the SBSs and UAVs have cached totally different contents. ",
+        "bbox": [
+            501,
+            342,
+            921,
+            672
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Without loss of generality, we assume that the 1st user to the Ath user require EL segments from their corresponding UAVs, and the remaining (K − A) users want to obtain BL segments from their corresponding (K A) SBSs at a specific time slot. Thus, the 1st to the Ath SBSs are idle at the time slot. To fully utilize the resource and guarantee secure transmission, these A SBSs are utilized to generate jamming signal to disrupt potential eavesdropping, without affecting legitimate transmission. Besides, we assume that $M _ { j a m }$ antennas are active at each jamming SBS. For the remaining lth SBS, M antennas are active, and d independent data streams are transmitted to its corresponding user, $l = A + 1 , A + 2 , . . . , K$ . Each mobile user is equipped with N antennas. ",
+        "bbox": [
+            503,
+            675,
+            921,
+            871
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "When the transmission is performed in the hyper-dense small-cell network, interference between users may become much more serious. Thus, IA is exploited to effectively manage the interference in the small-cell network, as illustrated in Fig. 2. When IA is performed, no precoding matrices are needed at UAVs as they only have a single antenna. The received signal at the ith user served by UAV can be expressed as ",
+        "bbox": [
+            501,
+            871,
+            921,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "ZHAO et al.: CACHING UAV ASSISTED SECURE TRANSMISSION IN HYPER-DENSE NETWORKS BASED ON INTERFERENCE ALIGNMENT ",
+        "bbox": [
+            76,
+            35,
+            805,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "2283 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            116
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} y ^ {[ i ]} = \\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {h} ^ {[ i i ]} x ^ {[ i ]} + \\sum_ {a = 1, a \\neq i} ^ {A} \\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {h} ^ {[ i a ]} x ^ {[ a ]} \\\\ + \\sum_ {k = A + 1} ^ {K} \\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {H} ^ {[ i k ]} \\mathbf {V} ^ {[ k ]} \\mathbf {x} ^ {[ k ]} + \\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {z} ^ {[ i ]}, \\tag {1} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            121,
+            491,
+            210
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $i = 1 , 2 , \\dots , A . \\ \\mathbf { h } ^ { [ i a ] }$ is the $N \\times 1$ channel coefficient vector between the ath UAV and the ith user, each entity of which is independent and identically distributed (i.i.d.) following $\\mathcal { C N } ( 0 , 1 )$ . Similarly, $\\mathbf { H } ^ { [ i k ] }$ is the $N \\times M$ channel coefficient matrix between the kth SBS and the ith user. $\\mathbf { V } ^ { [ k ] }$ is the $M \\times d$ precoding matrix of the kth SBS with $\\mathbf { V } ^ { [ k ] } \\mathbf { V } ^ { [ k ] \\dagger } \\mathbf { \\Lambda } = \\mathbf { \\Lambda } \\mathbf { I } _ { d \\cdot } \\mathbf { \\Lambda } \\mathbf { u } ^ { [ i ] }$ is the $N \\times 1$ decoding vector of the i th user with $\\mathbf { u } ^ { [ i ] } \\mathbf { u } ^ { [ i ] \\dagger } = 1 . \\ x ^ { [ i ] }$ is the signal transmitted by the ith UAV with power $P _ { 1 \\cdot \\mathrm { ~ \\bf ~ X ~ } } ^ { } ^ { [ k ] }$ is the signal vector that consists of d independent data streams with power ${ P } _ { 2 } . \\ { \\pmb z } ^ { [ i ] }$ is the $N \\times 1$ additive white Gaussian noise (AWGN) vector with distribution $\\mathcal { C N } ( \\mathbf { 0 } , \\sigma ^ { 2 } I _ { N } )$ at the i th user, where $\\sigma ^ { 2 }$ is the noise power at each antenna. The received signal of the lth user served by SBS can be expressed as ",
+        "bbox": [
+            73,
+            215,
+            491,
+            428
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathbf {y} ^ {[ l ]} = \\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ l l ]} \\mathbf {V} ^ {[ l ]} \\mathbf {x} ^ {[ l ]} + \\sum_ {a = 1} ^ {A} \\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {h} ^ {[ l a ]} x ^ {[ a ]} \\\\ + \\sum_ {\\substack {k = A + 1 \\\\ k \\neq l}} ^ {K} \\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ l k ]} \\mathbf {V} ^ {[ k ]} \\mathbf {x} ^ {[ k ]} + \\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {z} ^ {[ l ]}, \\tag{2} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            433,
+            491,
+            529
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $l = A + 1 , A + 2 , \\ldots , K . \\mathbf { U } ^ { [ l ] }$ is the $N \\times d$ decoding matrix of the lth user, with ${ \\bf U } ^ { [ l ] } { \\bf U } ^ { [ l ] \\dagger } = { \\bf I } _ { d }$ . ",
+        "bbox": [
+            73,
+            535,
+            491,
+            566
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We also assume that there exists a passive eavesdropper with $N _ { e }$ antennas, which tries to eavesdrop the legitimate transmission of the network. The received signal at the eavesdropper without considering the jamming from SBSs can be denoted as ",
+        "bbox": [
+            73,
+            566,
+            491,
+            627
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {y} _ {e} = \\sum_ {i = 1} ^ {A} \\mathbf {h} _ {e} ^ {[ i ]} x ^ {[ i ]} + \\sum_ {l = A + 1} ^ {K} \\mathbf {H} _ {e} ^ {[ l ]} \\mathbf {V} ^ {[ l ]} \\mathbf {x} ^ {[ l ]} + \\mathbf {z} _ {e}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            133,
+            631,
+            488,
+            674
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { h } _ { e } ^ { [ i ] }$ is the $N _ { e } \\times 1$ channel coefficient vector between the ith UAV and the eavesdropper. $\\mathbf { H } _ { e } ^ { [ l ] }$ is the $N _ { e } \\times M$ channel coefficient matrix between the lth SBS and the eavesdropper. $\\mathbf { z } _ { e }$ is the $N _ { e } \\times 1$ AWGN vector with distribution $\\mathcal { C N } ( \\mathbf { 0 } , \\sigma ^ { 2 } I _ { N _ { e } } )$ at the eavesdropper. ",
+        "bbox": [
+            73,
+            679,
+            491,
+            756
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Remark 1: Despite of the mobility of UAVs, they will stop moving when performing transmission to the users. Thus, IA is suitable to be leveraged in the UAV assisted hyper-dense networks, due to the slow change of CSI. ",
+        "bbox": [
+            73,
+            756,
+            491,
+            816
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "III. UAV ASSISTED HYPER-DENSE NETWORKS WITH JAMMING SIGNAL ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            828,
+            452,
+            856
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In this section, the interference management scheme is first proposed for the UAV assisted hyper-dense network without jamming signal. Then, the jamming signal is designed without affecting the legitimate transmission. Finally, an algorithm is proposed to fulfill the scheme. ",
+        "bbox": [
+            73,
+            862,
+            491,
+            938
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. Interference Management in the UAV Assisted Network ",
+        "bbox": [
+            503,
+            71,
+            898,
+            85
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "From Section II, we know that the recovered signal of the mobile user can be expressed as (1) or (2) without considering jamming signal when IA is performed. In order to effectively eliminate the interference between users, the precoding and decoding matrices should be cooperatively designed. In particular, the precoding of UAVs need not be considered due to single antenna equipped. Thus, at the ith user, $i = 1 , 2 , \\ldots , A ,$ , the interference from all the SBSs should be constrained by their precoding matrices into the same subspace of the interference from UAVs. Then, all the interference can be eliminated perfectly using its decoding vector $\\mathbf { u } ^ { [ i ] }$ to recover the desired signal, based on (4) and (5). Similarly, at the lth user, $l = A + 1 , A + 1 , \\ldots , K$ , the interference from other SBSs should be constrained by the precoding matrices into the same subspace of the interference from UAVs. Then, all the interference can be eliminated perfectly by its decoding matrix $\\mathbf { U } ^ { [ l ] }$ to recover the desired signal, based on (6) and (7). Therefore, in order to perfectly eliminate the interference between users, the following conditions (4)-(9) should be satisfied for $i = 1 , 2 , . . . , A$ and $l = A + 1 , A + 2 , \\ldots , K$ according to the idea of IA: ",
+        "bbox": [
+            501,
+            90,
+            921,
+            409
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {h} ^ {[ i a ]} = 0, \\quad \\forall a = 1, 2, \\dots , A, a \\neq i. \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            583,
+            417,
+            919,
+            435
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {H} ^ {[ i k ]} \\mathbf {V} ^ {[ k ]} = \\mathbf {0}, \\quad \\forall k = A + 1, A + 2, \\dots , K. \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            439,
+            919,
+            457
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {h} ^ {[ l a ]} = \\mathbf {0}, \\quad \\forall a = 1, 2, \\dots , A. \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            584,
+            462,
+            919,
+            479
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ l k ]} \\mathbf {V} ^ {[ k ]} = \\mathbf {0}, \\quad \\forall k = A + 1, A + 2, \\dots , K, k \\neq l. \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            484,
+            919,
+            525
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {h} ^ {[ i i ]} \\neq 0. \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            586,
+            530,
+            919,
+            547
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\operatorname{rank} \\left(\\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ l l ]} \\mathbf {V} ^ {[ l ]}\\right) = d. \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            506,
+            551,
+            919,
+            578
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "When (4)-(7) can be met, the conditions (8) and (9) will be satisfied almost certainly due to the fact that there is not any special structure of the channel matrices. Thus, when $( 4 ) - ( 7 )$ can be solved by the precoding and decoding matrices cooperatively, the proposed scheme will be feasible, and the interference can be perfectly eliminated. The received signal of the i th user served by UAV in (1) can be simplified as ",
+        "bbox": [
+            503,
+            584,
+            921,
+            690
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny ^ {[ i ]} = \\overline {{h}} ^ {[ i ]} x ^ {[ i ]} + \\overline {{z}} ^ {[ i ]}, \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            635,
+            699,
+            919,
+            719
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $i = 1 , 2 , \\ldots , A , \\overline { { { h } } } ^ { [ i ] } \\triangleq \\mathbf { u } ^ { [ i ] \\dagger } \\mathbf { h } ^ { [ i i ] }$ and $\\overline { { z } } ^ { [ i ] } \\triangleq \\mathbf { u } ^ { [ i ] \\dagger } \\mathbf { z } ^ { [ i ] }$ . The received signal of the lth user in (2) can be updated as ",
+        "bbox": [
+            503,
+            727,
+            919,
+            761
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {y} ^ {[ l ]} = \\overline {{{{\\mathbf {H}}}}} ^ {[ l ]} \\mathbf {x} ^ {[ l ]} + \\overline {{{{\\mathbf {z}}}}} ^ {[ l ]}, \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            635,
+            768,
+            919,
+            789
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $l = A + 1 , A + 2 , . . . , K , \\overline { { \\mathbf { H } } } ^ { [ l ] } \\triangleq \\mathbf { U } ^ { [ l ] \\dagger } \\mathbf { H } ^ { [ l l ] } \\mathbf { V } ^ { [ l ] }$ and $\\overline { { \\mathbf { z } } } ^ { [ l ] } \\triangleq \\mathbf { U } ^ { [ l ] \\dagger } \\mathbf { z } ^ { [ l ] }$ . Thus, the sum rate of the small-cell network can be expressed as ",
+        "bbox": [
+            503,
+            797,
+            921,
+            845
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} R _ {s u m} = \\sum_ {i = 1} ^ {A} \\log_ {2} \\left| 1 + \\frac {P _ {1}}{\\sigma^ {2}} \\overline {{h}} ^ {[ i ]} \\overline {{h}} ^ {[ i ] \\dagger} \\right| \\\\ + \\sum_ {l = A + 1} ^ {K} \\log_ {2} \\left| \\mathbf {I} _ {d} + \\frac {P _ {2}}{d \\sigma^ {2}} \\overline {{\\mathbf {H}}} ^ {[ l ]} \\overline {{\\mathbf {H}}} ^ {[ l ] \\dagger} \\right|. \\tag {12} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            508,
+            856,
+            921,
+            943
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "2284 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            529,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. Design of Jamming Signal ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            71,
+            279,
+            85
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "When there exists a potential eavesdropper, the idle SBSs that replaced by UAVs can be further utilized to generate jamming signal to disrupt the eavesdropping. Then, the received signal of the kth user in (10) and (11) can be rewritten as ",
+        "bbox": [
+            73,
+            90,
+            490,
+            151
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\widehat {y} ^ {[ i ]} = \\overline {{h}} ^ {[ i ]} x ^ {[ i ]} + \\sum_ {j = 1} ^ {A} \\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {G} ^ {[ i j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} \\mathbf {x} _ {j a m} ^ {[ j ]} + \\overline {{z}} ^ {[ i ]}, \\\\ i = 1, 2, \\dots , A, \\tag {13} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            159,
+            491,
+            220
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\widehat {\\mathbf {y}} ^ {[ l ]} = \\overline {{\\mathbf {H}}} ^ {[ l ]} \\mathbf {x} ^ {[ l ]} + \\sum_ {j = 1} ^ {A} \\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {G} ^ {[ l j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} \\mathbf {x} _ {j a m} ^ {[ j ]} + \\overline {{\\mathbf {z}}} ^ {[ l ]},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            220,
+            388,
+            263
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl = A + 1, A + 2, \\dots , K, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            271,
+            263,
+            490,
+            280
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $j ~ = ~ 1 , 2 , \\ldots , A , ~ \\mathbf { G } ^ { [ k j ] }$ is the $N \\times M _ { j a m }$ channel coefficient matrix between the jth SBS and the kth user, $\\Gamma ^ { [ j ] }$ is the $M _ { j a m } \\times d _ { j a m }$ unitary precoding matrix of the jth SBS, and $\\mathbf { x } _ { i a m } ^ { [ j ] }$ is the jamming vector that consists of $d _ { j a m }$ data streams with transmit power $P _ { j a m }$ . ",
+        "bbox": [
+            73,
+            287,
+            491,
+            366
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "From (13) and (14), we can see that the jamming signal will affect the legitimate transmission of the small-cell network, and thus, they should be properly managed. In order to disrupt the eavesdropping without affecting the legitimate transmission, the jamming signal should be perfectly eliminated at the legitimate users. Thus, the following conditions should be satisfied for $i = 1 , 2 , \\dotsc , A$ and $l = A + 1 , A + 2 , . . . , K$ as ",
+        "bbox": [
+            73,
+            367,
+            491,
+            472
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} ^ {[ i ] \\dagger} \\mathbf {G} ^ {[ i j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} = \\mathbf {0}, \\quad \\forall j = 1, 2, \\dots , A, \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            148,
+            479,
+            488,
+            497
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {U} ^ {[ l ] \\dagger} \\mathbf {G} ^ {[ l j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} = \\mathbf {0}, \\quad \\forall j = 1, 2, \\dots , A. \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            148,
+            500,
+            490,
+            516
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Based on the interference management scheme in Section III-A, the jamming signal should be constrained in the same subspace of the interference at each legitimate user. In other words, the decoding vectors u and matrices U in (15) and (16) have been determined by the conditions (4)-(7) and should not be changed. Thus, only the precoding matrices - should be well designed to make (15) and (16) feasible. ",
+        "bbox": [
+            73,
+            526,
+            491,
+            645
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "When the interference from the undesired transmitters and jamming signal from the idle SBSs can be both perfectly eliminated at each legitimate user, the sum rate of the network is still given by (12). ",
+        "bbox": [
+            73,
+            647,
+            491,
+            708
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "C. Distributed Algorithm to Achieve the Proposed Scheme ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            729,
+            470,
+            744
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In the proposed scheme, UAVs and SBSs are utilized to provide scalable video segments to their corresponding users. For each mobile user, the interference from other SBSs and UAVs can be eliminated perfectly by IA. In addition, the idle SBSs can be re-utilized to generate jamming signal to disrupt the eavesdropping, which can be perfectly zero-forced at the legitimate users. Thus, a distributed algorithm for UAV assisted hyper-dense networks with jamming signal is proposed, in which the precoding matrices and decoding vectors and matrices can be calculated iteratively. Then, the precoding matrices - for jamming can be obtained through zero-forcing. ",
+        "bbox": [
+            73,
+            750,
+            491,
+            916
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In the forward direction of iterations, when we consider the interference from other SBSs and UAVs, the interference covariance matrices at the legitimate users can be written as ",
+        "bbox": [
+            73,
+            916,
+            491,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            504,
+            71,
+            915,
+            85
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathbf {Q} ^ {[ i ]} = \\sum_ {k = A + 1} ^ {K} \\frac {P _ {2}}{d} \\mathbf {H} ^ {[ i k ]} \\mathbf {V} ^ {[ k ]} \\mathbf {V} ^ {[ k ] \\dagger} \\mathbf {H} ^ {[ i k ] \\dagger} \\\\ + \\sum_ {a = 1, a \\neq i} ^ {A} P _ {1} \\mathbf {h} ^ {[ i a ]} \\mathbf {h} ^ {[ i a ] \\dagger}, \\quad \\forall i = 1, 2, \\dots , A. \\tag {17} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            503,
+            98,
+            921,
+            189
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf{Q}^{[l]} = \\sum_{\\substack{k = A + 1,\\\\ k\\neq l}}^{K}\\frac{P_{2}}{d}\\mathbf{H}^{[lk]}\\mathbf{V}^{[k]}\\mathbf{V}^{[k]\\dagger}\\mathbf{H}^{[lk]\\dagger}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            191,
+            764,
+            243
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\sum_ {a = 1} ^ {A} P _ {1} \\mathbf {h} ^ {[ l a ]} \\mathbf {h} ^ {[ l a ] \\dagger}, \\forall l = A + 1, A + 2, \\dots , K. \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            560,
+            247,
+            919,
+            289
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "According to (18), $\\mathbf { U } _ { \\star s } ^ { [ l ] }$ for the sth data stream at the lth user can be calculated as ",
+        "bbox": [
+            503,
+            304,
+            919,
+            334
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {U} _ {\\star s} ^ {[ l ]} = \\mathbf {v} _ {s} (\\mathbf {Q} ^ {[ l ]}), s = 1, \\dots , d, \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            604,
+            349,
+            919,
+            368
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "= + + can be obtained by combining the vectors of where $l = { { A + 1 } , { A + 2 } , . . . , { K } }$ . Then, the decoding matrix $\\mathbf { U } _ { \\star s } ^ { [ \\tilde { l } ] }$ . Specially, $\\mathbf { U } ^ { [ l ] }$ due to the fact that there is only one data stream transmitted by each UAV, we have ",
+        "bbox": [
+            501,
+            381,
+            919,
+            443
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} ^ {[ i ]} = \\mathbf {v} _ {1} \\left(\\mathbf {Q} ^ {[ i ]}\\right), \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            645,
+            457,
+            919,
+            482
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $i = 1 , 2 , \\dots , A .$ ",
+        "bbox": [
+            504,
+            494,
+            661,
+            508
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In the reverse direction, the interference covariance matrices can be computed as ",
+        "bbox": [
+            503,
+            508,
+            919,
+            539
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\overleftarrow {\\mathbf {Q}} ^ {[ k ]} = \\sum_ {i = 1} ^ {A} P _ {1} \\overleftarrow {\\mathbf {H}} ^ {[ k i ]} \\overleftarrow {\\mathbf {v}} ^ {[ i ]} \\overleftarrow {\\mathbf {v}} ^ {[ i ] \\dagger} \\overleftarrow {\\mathbf {H}} ^ {[ k i ] \\dagger} \\\\ +\\sum_{\\substack{l = A + 1\\\\ l\\neq k}}^{K}\\frac{P_{2}}{d}\\overleftarrow{\\mathbf{H}}^{[kl]}\\overleftarrow{\\mathbf{V}}^{[l]} \\overleftarrow{\\mathbf{V}}^{[l]\\dagger}\\overleftarrow{\\mathbf{H}}^{[kl]\\dagger}, \\\\ \\forall k = A + 1, A + 2, \\dots , K, \\tag {21} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            504,
+            551,
+            921,
+            666
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\overleftarrow { \\mathbf { H } } ^ { [ k j ] } = \\mathbf { H } ^ { [ j k ] \\dagger } , \\ \\overleftarrow { \\mathbf { v } } ^ { [ i ] } = \\mathbf { u } ^ { [ i ] } , \\ \\mathrm { a n d } \\ \\overleftarrow { \\mathbf { V } } ^ { [ l ] } = \\mathbf { U } ^ { [ l ] } .$ ",
+        "bbox": [
+            504,
+            678,
+            862,
+            696
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "According to (21), $\\overleftarrow { \\mathbf { U } } _ { \\star s } ^ { [ k ] }$ for the sth data stream of the reverse direction can be calculated as ",
+        "bbox": [
+            503,
+            696,
+            919,
+            727
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\overleftarrow {\\mathbf {U}} _ {\\star s} ^ {[ k ]} = \\mathbf {v} _ {s} \\left(\\overleftarrow {\\mathbf {Q}} ^ {[ k ]}\\right), \\quad s = 1, \\dots , d, \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            586,
+            739,
+            919,
+            765
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $k = A + 1 , A + 2 , . . . , K$ . Then, the decoding matrix ←−U [k] of the reverse direction can be obtained by combining $\\overleftarrow { \\mathbf { U } } ^ { [ k ] }$ the vectors of $\\smash { \\overleftarrow { \\mathbf { U } } _ { \\star S } ^ { [ k ] } }$ . Thus, we can set the precoding matrices of the (A 1)th SBS to the K th SBS as $\\mathbf { V } ^ { [ k ] } = \\overleftarrow { \\mathbf { U } } ^ { [ k ] }$ . The iterations between the forward and reverse directions continue until the algorithm converges, which is similar to the MinIL algorithm in [32]. ",
+        "bbox": [
+            503,
+            776,
+            921,
+            885
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Using the above process, the precoding matrices $\\mathbf { V } ,$ the decoding vectors u and matrices U can be obtained. Based on these solutions, we can calculate the precoding matrices of jamming signal by zero-forcing. The jamming covariance matrices in the reverse direction can be expressed as ",
+        "bbox": [
+            501,
+            886,
+            921,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "ZHAO et al.: CACHING UAV ASSISTED SECURE TRANSMISSION IN HYPER-DENSE NETWORKS BASED ON INTERFERENCE ALIGNMENT ",
+        "bbox": [
+            75,
+            35,
+            807,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "2285 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            45
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            71,
+            434,
+            85
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\overleftarrow {\\mathbf {Q}} _ {j a m} ^ {[ j ]} \\\\ = \\sum_ {i = 1} ^ {A} P _ {1} \\overleftarrow {\\mathbf {G}} ^ {[ j i ]} \\overleftarrow {\\mathbf {v}} ^ {[ i ]} \\overleftarrow {\\mathbf {v}} ^ {[ i ] \\dagger} \\overleftarrow {\\mathbf {G}} ^ {[ j i ] \\dagger} \\\\ + \\sum_ {l = A + 1} ^ {K} \\frac {P _ {2}}{d} \\overleftarrow {\\mathbf {G}} ^ {[ j l ]} \\overleftarrow {\\mathbf {V}} ^ {[ l ]} \\overleftarrow {\\mathbf {V}} ^ {[ l ] \\dagger} \\overleftarrow {\\mathbf {G}} ^ {[ j l ] \\dagger}, \\quad \\forall j = 1, 2, \\dots , A, \\tag {23} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            89,
+            491,
+            215
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\widetilde { { \\bf G } } ^ { [ j i ] } = { \\bf G } ^ { [ i j ] \\dagger }$ . ",
+        "bbox": [
+            73,
+            220,
+            227,
+            237
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Then, the jamming precoding matrix $\\Gamma ^ { [ j ] } ( j = 1 , 2 , . . . , A )$ can be obtained by combining the vectors $\\Gamma _ { \\star s } ^ { [ j ] }$ expressed as ",
+        "bbox": [
+            73,
+            237,
+            490,
+            270
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\boldsymbol {\\Gamma} _ {\\star s} ^ {[ j ]} = \\mathbf {v} _ {s} \\left(\\overleftarrow {\\mathbf {Q}} _ {j a m} ^ {[ j ]}\\right), \\quad s = 1, \\dots , d _ {j a m}. \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            143,
+            273,
+            491,
+            297
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Thus, the distributed algorithm for the proposed scheme can be summarized as Algorithm 1. According to [32, Algorithm 1] can be implemented as a distributed algorithm in two ways. (1) The algorithm can be implemented through communication and training in the forward and reverse directions iteratively until convergence, in which only the local CSI needs to be estimated. (2) If the global CSI is available at each node, precoding and decoding matrices can be calculated at each node in a distributed way following Algorithm 1. ",
+        "bbox": [
+            73,
+            300,
+            491,
+            450
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 1 Distributed Algorithm for the Proposed Scheme ",
+        "text_level": 1,
+        "bbox": [
+            76,
+            468,
+            491,
+            483
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "2: repeat ",
+        "text_level": 1,
+        "bbox": [
+            81,
+            518,
+            147,
+            532
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1: Start with arbitrary $M \\times d$ matrices $\\overline { { \\mathbf { V } ^ { [ l ] } } }$ with $\\begin{array} { r } { \\overline { { \\mathbf { V } ^ { [ l ] } \\mathbf { V } ^ { [ l ] \\dagger } } } = } \\end{array}$ $\\mathbf { I } _ { d } , \\forall i = A + 1 , A + 2 , \\ldots , K$ . ",
+            "3: In the forward direction, calculate the interference covariance matrix $\\mathbf { Q } ^ { [ k ] }$ at the kth user according to (17) and $( 1 8 ) , k = 1 , \\ldots , K .$ ",
+            "4: Compute the decoding matrix $\\mathbf { u } ^ { [ i ] }$ at the i th user and $\\mathbf { U } ^ { [ l ] }$ at the lth user according to (20) and (19), respectively, $i = 1 , \\ldots , A , l = A + 1 , \\ldots , K .$ . ",
+            "5: Reverse the direction. $\\mathbf { \\widetilde { H } } ^ { [ k j ] } = \\mathbf { H } ^ { [ j k ] \\dagger } , \\mathbf { \\widetilde { v } } ^ { [ i ] } = \\mathbf { u } ^ { [ i ] } ,$ , and $\\begin{array} { r } { \\overleftarrow { \\mathbf { V } } ^ { [ l ] } = \\mathbf { U } ^ { [ l ] } . } \\end{array}$ . ",
+            "6: Calculate $\\left\\{ { \\overline { { \\mathbf { Q } } } } ^ { [ k ] } \\right.$ according to $( 2 1 ) , k = A + 1 , \\ldots , K .$ ",
+            "7: Compute the decoding matrix $\\overleftarrow { \\mathbf { U } } ^ { [ k ] }$ according to (22), $k = A + 1 , A + 2 , . . . , K .$ . ",
+            "8: Reverse the communication direction. ${ \\bf V } ^ { [ k ] } = \\overleftarrow { \\mathbf { U } } ^ { [ k ] } , k =$ $A + 1 , A + 2 , . . . , K$ . ",
+            "9: until convergence ",
+            "10: Calculate $\\overleftarrow { \\mathbf { Q } } _ { j a m } ^ { [ j ] }$ according to $( 2 3 ) , j = 1 , 2 , \\ldots , A .$ ",
+            "11: Compute $\\Gamma ^ { [ j ] }$ according to $( 2 4 ) , j = 1 , 2 , \\ldots , A .$ ",
+            "12: Output the solutions as $\\mathbf { \\bar { V } } ^ { [ k ] } , k = \\check { A } + 1 , \\dotsc , K , \\mathbf { u } ^ { [ j ] } , j =$ $1 , \\dotsc , A , \\mathbf { U } ^ { [ k ] } , k = A + 1 , \\dotsc , K { \\mathrm { ~ a n d ~ } } \\mathbf { \\Gamma } ^ { [ j ] } , j = 1 , \\dotsc , A .$ "
+        ],
+        "bbox": [
+            76,
+            486,
+            491,
+            811
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "According to the above algorithm, all the interference and jamming signal can be eliminated perfectly at each legitimate user when the feasibility conditions can be satisfied, which can be performed at each node in a distributed way. ",
+        "bbox": [
+            73,
+            827,
+            491,
+            888
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "IV. FEASIBILITY CONDITIONS ",
+        "text_level": 1,
+        "bbox": [
+            173,
+            897,
+            392,
+            911
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In order to eliminate the interference and jamming signal perfectly at each legitimate user, the feasibility conditions should be satisfied, through which the minimal number of antennas can be obtained to achieve perfect IA. Yetis et al. [36], demonstrated that the feasibility conditions can be derived by comparing the number of equations and the number of variables. In this section, the feasibility conditions for the proposed UAV assisted hyper-dense network are derived first without considering jamming signal. Then, the feasibility conditions for the jamming signal are also derived. ",
+        "bbox": [
+            73,
+            916,
+            491,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            71,
+            921,
+            205
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "A. Feasibility Conditions of the UAV Assisted Network ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            224,
+            877,
+            239
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "According to Bezout’s theorem, a general polynomial system can be solved if and only if the number of equations does not exceed that of variables. Thus, an IA network can be classified as feasible or infeasible by comparing the number of equations with that of variables in [36]. Correspondingly, the proper conditions for the proposed scheme can be derived in Theorem 1 based on Lemma 1 and Lemma 2. ",
+        "bbox": [
+            501,
+            243,
+            921,
+            347
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Lemma 1: The total number of equations in (4)-(7) can be calculated as ",
+        "bbox": [
+            503,
+            348,
+            921,
+            378
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {N} _ {\\varepsilon} = A (A - 1) + A (K - A) d + (K - A) A d \\\\ + (K - A) (K - A - 1) d ^ {2}. \\tag {25} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            506,
+            385,
+            921,
+            421
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Proof: First, the number of equations in (4) can be derived as ",
+        "bbox": [
+            503,
+            428,
+            921,
+            455
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon 1} = A (A - 1). \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            643,
+            465,
+            919,
+            481
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Then, we can obtain the number of equations in (5) as ",
+        "bbox": [
+            504,
+            488,
+            879,
+            503
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon 2} = A (K - A) d. \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            637,
+            511,
+            919,
+            527
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We can also know that the number of equations in (6) can be denoted as ",
+        "bbox": [
+            503,
+            534,
+            919,
+            561
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon 3} = (K - A) A d. \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            637,
+            571,
+            919,
+            587
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Besides, the number of equations in (7) can be expressed as ",
+        "bbox": [
+            504,
+            595,
+            915,
+            609
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon 4} = (K - A) (K - A - 1) d ^ {2}. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            616,
+            919,
+            633
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Thus, the total number of equations in (4)-(7) can be calculated as ",
+        "bbox": [
+            503,
+            638,
+            919,
+            669
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {N} _ {\\varepsilon} = \\mathcal {N} _ {\\varepsilon 1} + \\mathcal {N} _ {\\varepsilon 2} + \\mathcal {N} _ {\\varepsilon 3} + \\mathcal {N} _ {\\varepsilon 4} \\\\ = A (A - 1) + A (K - A) d \\\\ + (K - A) A d + (K - A) (K - A - 1) d ^ {2}. \\tag {30} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            545,
+            676,
+            921,
+            732
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Lemma 2: The total number of variables in (4)-(7) can be calculated as ",
+        "bbox": [
+            503,
+            753,
+            919,
+            782
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v} = A (N - 1) + (K - A) (N - d) d + (K - A) (M - d) d. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            503,
+            791,
+            921,
+            825
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Proof: The total number of variables in the decoding vectors $\\mathbf { u } ^ { [ i ] } , i = 1 , 2 , \\dotsc , A ,$ , can be denoted as ",
+        "bbox": [
+            503,
+            833,
+            919,
+            862
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v 1} = A (N - 1). \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            643,
+            869,
+            919,
+            886
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The total number of variables in the decoding matrices $\\mathbf { U } ^ { [ l ] }$ , $l = A + 1 , A + 2 , . . . , K$ , can be expressed as ",
+        "bbox": [
+            503,
+            893,
+            919,
+            922
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v 2} = (K - A) (N - d) d. \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            931,
+            919,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "2286 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            529,
+            35,
+            921,
+            47
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In addition, the number of variables in the precoding matrices V[k] , $k = A + 1 , A + 2 , . . . , K$ , can be calculated as ",
+        "bbox": [
+            73,
+            70,
+            491,
+            101
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v 3} = (K - A) (M - d) d. \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            184,
+            113,
+            491,
+            130
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Thus, the total number of variables in (4)-(7) can be caculated as ",
+        "bbox": [
+            73,
+            142,
+            491,
+            171
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {N} _ {v} = \\mathcal {N} _ {v 1} + \\mathcal {N} _ {v 2} + \\mathcal {N} _ {v 3} \\\\ = A (N - 1) + (K - A) (N - d) d + (K - A) (M - d) d. \\tag {35} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            184,
+            491,
+            239
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Theorem 1: The proper conditions of the proposed UAV assisted hyper-dense network can be expressed as (36) (on the next page). ",
+        "bbox": [
+            73,
+            266,
+            491,
+            311
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: According to [36], the proposed scheme is feasible if and only if $\\mathcal { N } _ { \\varepsilon } \\ \\leq \\ \\mathcal { N } _ { \\upsilon }$ . Thus, according to Lemma 1 and Lemma 2, the proposed scheme is proper if and only if (37) is satisfied (on the next page), which can be simplified as the first inequality in (36). ",
+        "bbox": [
+            73,
+            311,
+            491,
+            387
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Besides, each of the (A  1)th user to the K th user should recover d streams transmitted by its corresponding SBS. According to the DoF requirement of MIMO network, the values of M and N should satisfy $M \\geq d$ and $N \\geq d .$ . ",
+        "bbox": [
+            73,
+            387,
+            491,
+            446
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, we can notice that the solutions to (4) and (6) only depend on the decoding matrices. Thus, the feasible value of N can be obtained by comparing the total number of variables in (4) and (6) with that of equations in (4) and (6). According to Lemma 1, the total number of the equations in (4) and (6) can be given by ",
+        "bbox": [
+            73,
+            448,
+            491,
+            539
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon 1} + \\mathcal {N} _ {\\varepsilon 3} = A (A - 1) + (K - A) A d. \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            142,
+            551,
+            488,
+            566
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "According to Lemma 2, the total number of the variables in (4) and (6) can be expressed as ",
+        "bbox": [
+            73,
+            579,
+            491,
+            609
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v 1} + \\mathcal {N} _ {v 2} = A (N - 1) + (K - A) (N - d) d. \\tag {39}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            119,
+            622,
+            488,
+            638
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In order to make (4) and (6) solvable, the total number of their variables should be no less than that of their equations as ",
+        "bbox": [
+            73,
+            650,
+            491,
+            681
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v 1} + \\mathcal {N} _ {v 2} \\geq \\mathcal {N} _ {\\varepsilon 1} + \\mathcal {N} _ {\\varepsilon 3},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            693,
+            393,
+            709
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nA (N - 1) + (K - A) (N - d) d \\geq A (A - 1) + (K - A) A d, \\tag {40}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            712,
+            488,
+            746
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "which can be simplified as ",
+        "bbox": [
+            75,
+            760,
+            261,
+            775
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nN \\geq d + A - \\frac {A d}{(K - A) d + A}. \\tag {41}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            173,
+            784,
+            488,
+            816
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Therefore, from the above analysis, the proper conditions of the proposed scheme can be derived as (36). ",
+        "bbox": [
+            73,
+            825,
+            491,
+            854
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Based on the conclusions in [36], the proper condition is not always equivalent to the feasibility condition in IA. Nevertheless, the proper system is feasible in most cases with few counter-examples. In addition, the proposed Algorithm 1 can also be adopted as a theoretical tool for examining the feasibility of the proposed scheme off-line. ",
+        "bbox": [
+            73,
+            856,
+            491,
+            946
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. Feasibility Conditions of the Jamming Signal ",
+        "bbox": [
+            504,
+            71,
+            834,
+            85
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In the proposed scheme, the jamming signal should be generated by the idle SBSs to disrupt the potential eavesdropping without affecting the legitimate transmission. Thus, the jamming signal should be constrained into the same subspace of the interference at each user, i.e., conditions (15) and (16) should be satisfied by designing the precoding matrices of jamming properly. ",
+        "bbox": [
+            501,
+            90,
+            921,
+            196
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Lemma 3: The total number of equations in (15) and (16) can be calculated as ",
+        "bbox": [
+            503,
+            196,
+            921,
+            226
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon} ^ {j a m} = A ^ {2} d _ {j a m} + A (K - A) d d _ {j a m}. \\tag {42}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            578,
+            234,
+            919,
+            253
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: The number of equations in (15) can be given as ",
+        "bbox": [
+            529,
+            262,
+            918,
+            277
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon 5} = A ^ {2} d _ {j a m}. \\tag {43}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            651,
+            285,
+            919,
+            304
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In addition, the number of equations in (16) can be given as ",
+        "bbox": [
+            504,
+            313,
+            916,
+            328
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon 6} = A (K - A) d d _ {j a m}. \\tag {44}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            620,
+            338,
+            919,
+            354
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Thus, the total number of equations in (15) and (16) can be given as ${ \\mathcal N } _ { \\varepsilon } ^ { j a m } = { \\mathcal N } _ { \\varepsilon 5 } + \\bar { { \\mathcal N } } _ { \\varepsilon 6 } = A ^ { 2 } d _ { j a m } + A ( K - A )$ $d d _ { j a m } .$ . ",
+        "bbox": [
+            503,
+            364,
+            919,
+            409
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Lemma 4: The total number of variables in (15) and (16) can be calculated as ",
+        "bbox": [
+            503,
+            410,
+            919,
+            438
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v} ^ {j a m} = A d _ {j a m} (M _ {j a m} - d _ {j a m}). \\tag {45}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            449,
+            919,
+            467
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: Due to the fact that the decoding matrices in (15) and (16) have been determined by the proposed scheme, the effective variables in (15) and (16) only exist in the precoding matrices -[ j] for jamming signal. Thus, the total number of variables in (15) and (16) can be derived as N j a mv $\\mathcal { N } _ { \\nu } ^ { j a m } = \\mathcal { N } _ { \\nu 4 } = A d _ { j a m } ( M _ { j a m } - d _ { j a m } )$ . ",
+        "bbox": [
+            501,
+            474,
+            921,
+            566
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Theorem 2: The feasibility condition of the jamming signal for the proposed scheme can be expressed as (46). ",
+        "bbox": [
+            503,
+            566,
+            919,
+            595
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nM _ {j a m} \\geq A + (K - A) d + d _ {j a m}. \\tag {46}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            606,
+            919,
+            623
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: It is known that $\\begin{array} { r l r } { \\mathcal { N } _ { \\upsilon } ^ { j a m } } & { { } \\ge } & { \\mathcal { N } _ { \\varepsilon } ^ { j a m } } \\end{array}$ should be satisfied to make (15) and (16) solvable. Thus according to Lemma 3 and Lemma 4, we have $A d _ { j a m } ( M _ { j a m } \\mathrm { ~ - ~ }$ $d _ { j a m } ) \\geq A ^ { 2 } d _ { j a m } + A ( K - A ) d d _ { j a m } $ , which can be simplified as (46). ",
+        "bbox": [
+            503,
+            631,
+            921,
+            708
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Remark 2: The minimal number of antennas equipped at SBSs and users to perfectly eliminate the interference between users can be determined by the feasibility conditions in Theorem 1. Then, based on the proposed scheme, the minimal number of antennas to generate jamming signal, which can be zero-forced at the legitimate users, can be determined by the feasibility condition in Theorem 2. ",
+        "bbox": [
+            501,
+            709,
+            921,
+            814
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "V. PERFORMANCE ANALYSIS OF THE EAVESDROPPER ",
+        "text_level": 1,
+        "bbox": [
+            522,
+            835,
+            901,
+            848
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In the proposed scheme, the 1st to the Ath SBSs are replaced by UAVs to provide video streaming service to mobile users, and thus, these A SBSs can be exploited to generate jamming signal to guarantee the security of the legitimate transmission. Thus, in this section, the eavesdropping performance is analyzed with and without jamming signal, respectively, to show ",
+        "bbox": [
+            501,
+            856,
+            921,
+            946
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "ZHAO et al.: CACHING UAV ASSISTED SECURE TRANSMISSION IN HYPER-DENSE NETWORKS BASED ON INTERFERENCE ALIGNMENT ",
+        "bbox": [
+            75,
+            35,
+            807,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "2287 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nA N + (K - A) (M + N) d \\geq A ^ {2} + A ^ {2} d ^ {2} - 2 A ^ {2} d + K ^ {2} d ^ {2} - 2 K A d ^ {2} + 2 A K d + K d ^ {2} - A d ^ {2},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            179,
+            75,
+            810,
+            95
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nN \\geq d + A - \\frac {A d}{(K - A) d + A},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            343,
+            95,
+            553,
+            126
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nM \\geq d. \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            343,
+            126,
+            919,
+            141
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nA (N - 1) + (K - A) (N - d) d + (K - A) (M - d) d \\geq A (A - 1) + A (K - A) d + (K - A) A d + (K - A) (K - A - 1) d ^ {2}. \\tag {37}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            186,
+            921,
+            222
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "the effectiveness of the proposed jamming design in secure transmission.2 ",
+        "bbox": [
+            73,
+            271,
+            491,
+            301
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "A. Eavesdropping Performance Without Jamming Signal ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            325,
+            457,
+            340
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "As mentioned in Section, an eavesdropper with $N _ { e }$ antennas exists in the UAV assisted hyper-dense network. We assume that the CSI between the legitimate transmitters and the eavesdropper can be obtained by the eavesdropper. However, the CSI between the legitimate transmitters and mobile users are unavailable at the eavesdropper, and thus, the number of data streams for each transmitter is difficult to know at the eavesdropper. ",
+        "bbox": [
+            73,
+            345,
+            491,
+            465
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "First, we consider the case when the eavesdropper attempts to eavesdrop the information for the i th legitimate user served by the $\\mathrm { U A V } , i = 1 , 2 , \\ldots , A$ . When decoding is performed at the eavesdropper, the recovered signal without jamming signal can be expressed as ",
+        "bbox": [
+            73,
+            465,
+            491,
+            542
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} y _ {e - 1} ^ {[ i ]} = \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {h} _ {e} ^ {[ i ]} x ^ {[ i ]} + \\sum_ {a = 1, a \\neq i} ^ {A} \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {h} _ {e} ^ {[ a ]} x ^ {[ a ]} \\\\ + \\sum_ {k = A + 1} ^ {K} \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {H} _ {e} ^ {[ k ]} \\mathbf {V} ^ {[ k ]} \\mathbf {x} ^ {[ k ]} + \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {z} _ {e}, \\tag {47} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            550,
+            490,
+            640
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $\\mathbf { u } _ { e } ^ { [ i ] }$ is $N _ { e } \\times 1$ decoding vector for the eavesdropper to obtain the information of the i th user. ",
+        "bbox": [
+            73,
+            648,
+            490,
+            680
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In order to eliminate the interference from other users effectively, the following conditions should be satisfied. ",
+        "bbox": [
+            73,
+            681,
+            491,
+            710
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {h} _ {e} ^ {[ a ]} = 0, \\quad \\forall a = 1, 2, \\dots , A, a \\neq i, \\tag {48}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            151,
+            719,
+            488,
+            738
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {H} _ {e} ^ {[ k ]} \\mathbf {V} ^ {[ k ]} = \\mathbf {0}, \\quad \\forall k = A + 1, A + 2, \\dots , K. \\tag {49}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            120,
+            739,
+            488,
+            757
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "To make (48) and (49) solvable, enough antennas should be equipped at the eavesdropper. The minimal required number of antennas by the eavesdropper is derived in Proposition 1. ",
+        "bbox": [
+            73,
+            767,
+            491,
+            811
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Proposition 1: For the eavesdropper in the proposed scheme without jamming signal, at least $( K - A ) d + A$ antennas are needed to eavesdrop the ith user served by the UAV with inter-user interference perfectly eliminated. ",
+        "bbox": [
+            73,
+            811,
+            491,
+            873
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "2In the proposed scheme, the jamming signal can be eliminated together with the interference between legitimate users, which will not affect the legitimate transmission rate when feasibility conditions can be met. Thus, we can just examine the eavesdropping rate to verify the effectiveness of jamming signal on the secrecy rate. ",
+        "bbox": [
+            73,
+            886,
+            491,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Proof: The total number of equations in (48) and (49) can be expressed as ",
+        "bbox": [
+            503,
+            271,
+            919,
+            301
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon - 1} ^ {e} = (A - 1) + (K - A) d. \\tag {50}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            601,
+            313,
+            919,
+            330
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Since the precoding matrices in (49) are determined by the proposed scheme, the effective variables in (48) and (49) only exist in the decoding vector $\\mathbf { u } _ { e } ^ { [ i ] }$ of the eavesdropper, which can be expressed as ",
+        "bbox": [
+            501,
+            340,
+            919,
+            402
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {v - 1} ^ {e} = N _ {e} - 1. \\tag {51}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            648,
+            414,
+            919,
+            430
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Therefore, (48) and (49) can be solved only when $\\mathcal { N } _ { v - 1 } ^ { e } \\geq$ $\\begin{array} { r } { \\mathcal { N } _ { \\varepsilon - 1 } ^ { e } \\Rightarrow N _ { e } \\geq ( K - A ) d + A } \\end{array}$ . ",
+        "bbox": [
+            503,
+            441,
+            919,
+            472
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Based on Proposition 1, we can know that the eavesdropping rate of the i th user, $i = 1 , 2 , \\dotsc , A$ , can be expressed as ",
+        "bbox": [
+            503,
+            473,
+            921,
+            502
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {e - 1} ^ {[ i ]} = \\log_ {2} \\left(1 + \\frac {P _ {1} \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {h} _ {e} ^ {[ i ]} \\mathbf {h} _ {e} ^ {[ i ] \\dagger} \\mathbf {u} _ {e} ^ {[ i ]}}{\\sigma^ {2}}\\right). \\tag {52}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            570,
+            512,
+            919,
+            553
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "On the other hand, we consider the case when the eavesdropper wants to eavesdrop the lth legitimate user served by the SBS, $l = A + 1 , A + 2 , . . . , K .$ When decoding is performed, the recovered signal at the eavesdropper can be written as ",
+        "bbox": [
+            501,
+            561,
+            921,
+            633
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} y _ {e - 2} ^ {[ l ]} = \\sum_ {s = 1} ^ {d} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ l ]} \\mathbf {V} _ {\\star s} ^ {[ l ]} x _ {s} ^ {[ l ]} + \\sum_ {a = 1} ^ {A} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {h} _ {e} ^ {[ a ]} x ^ {[ a ]} \\\\ + \\sum_ {\\substack {k = A + 1 \\\\ k \\neq l}} ^ {K} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ k ]} \\mathbf {V} ^ {[ k ]} \\mathbf {x} ^ {[ k ]} + \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {z} _ {e}, \\tag{53} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            503,
+            643,
+            919,
+            739
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $x _ { s } ^ { [ l ] }$ is the sth data stream for the lth user. To eliminate the interference from other users, the following conditions should be satisfied: ",
+        "bbox": [
+            503,
+            752,
+            919,
+            799
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {h} _ {e} ^ {[ a ]} = 0, \\quad \\forall a = 1, 2, \\dots , A, \\tag {54}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            542,
+            809,
+            919,
+            827
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ k ]} \\mathbf {V} ^ {[ k ]} = 0, \\quad \\forall k = A + 1, A + 2, \\dots , K, l \\neq k. \\tag {55}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            513,
+            828,
+            919,
+            847
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Similar to Proposition 1, we can conclude that if we want to eliminate the inter-user interference from other legitimate user when eavesdropping a certain SBS served user, the following condition should be satisfied. ",
+        "bbox": [
+            503,
+            858,
+            921,
+            917
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nN _ {e} \\geq (K - A - 1) d + A + 1. \\tag {56}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            604,
+            931,
+            919,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "2288 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            529,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {e - 2} ^ {* [ l ]} = \\sum_ {s = 1} ^ {d} \\log_ {2} \\left(1 + \\frac {P _ {2} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ l ]} \\mathbf {V} _ {\\star s} ^ {[ l ]} \\mathbf {V} _ {\\star s} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ l ] \\dagger} \\mathbf {u} _ {e} ^ {[ l ]}}{d \\sigma^ {2} + P _ {2} \\sum_ {i = 1 , i \\neq s} ^ {d} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ l ]} \\mathbf {V} _ {\\star i} ^ {[ l ]} \\mathbf {V} _ {\\star i} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ l ] \\dagger} \\mathbf {u} _ {e} ^ {[ l ]} + d \\frac {P _ {j a m}}{d _ {j a m}} \\sum_ {j = 1} ^ {A} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {G} _ {e} ^ {[ j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} \\boldsymbol {\\Gamma} ^ {[ j ] \\dagger} \\mathbf {G} _ {e} ^ {[ j ] \\dagger} \\mathbf {u} _ {e} ^ {[ l ]}}\\right). \\tag {61}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            114,
+            74,
+            921,
+            125
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Nevertheless, the interference of other data streams of this user cannot be eliminated. Therefore, the eavesdropping rate of the lth user, $l = A + 1 , A + 2 , . . . K$ , can be calculated as ",
+        "bbox": [
+            73,
+            159,
+            491,
+            205
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} R _ {e - 2} ^ {[ l ]} \\\\ = \\sum_ {s = 1} ^ {d} \\log_ {2} \\left(1 + \\frac {P _ {2} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ e l ]} \\mathbf {V} _ {\\star s} ^ {[ l ]} \\mathbf {V} _ {\\star s} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ e l ] \\dagger} \\mathbf {u} _ {e} ^ {[ l ]}}{d \\sigma^ {2} + P _ {2} \\sum_ {i = 1 , i \\neq s} ^ {d} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ e l ]} \\mathbf {V} _ {\\star i} ^ {[ l ]} \\mathbf {V} _ {\\star i} ^ {[ l ] \\dagger} \\mathbf {H} ^ {[ e l ] \\dagger} \\mathbf {u} _ {e} ^ {[ l ]}}\\right). \\tag {57} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            75,
+            210,
+            491,
+            321
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "B. Eavesdropping Performance With Jamming Signal ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            357,
+            437,
+            373
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "When the jamming signal is generated by the idle SBSs, the potential eavesdropping will be disrupted. According to Proposition 1, when the eavesdropper is equipped with $( K - A ) d + A$ antennas and attempts to eavesdrop the ith user served by the $\\mathrm { U A V } , i = 1 , 2 , . . . , A$ , we can know that the interference from other legitimate users can be eliminated. The recovered signal at the eavesdropper can be expressed as ",
+        "bbox": [
+            73,
+            377,
+            491,
+            483
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {e - 1} ^ {* [ i ]} = \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {h} _ {e} ^ {[ i ]} x ^ {[ i ]} + \\sum_ {j = 1} ^ {A} \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {G} _ {e} ^ {[ j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} \\mathbf {x} _ {j a m} ^ {[ j ]} + \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {z} _ {e}, \\tag {58}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            83,
+            491,
+            491,
+            534
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "and the eavesdropping rate can be rewritten as ",
+        "bbox": [
+            75,
+            541,
+            393,
+            556
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} R _ {e - 1} ^ {* [ i ]} \\\\ = \\log_ {2} \\left(1 + \\frac {P _ {1} \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {h} _ {e} ^ {[ i ]} \\mathbf {h} _ {e} ^ {[ i ] \\dagger} \\mathbf {u} _ {e} ^ {[ i ]}}{\\sigma^ {2} + \\frac {P _ {j a m}}{d _ {j a m}} \\sum_ {j = 1} ^ {A} \\mathbf {u} _ {e} ^ {[ i ] \\dagger} \\mathbf {G} _ {e} ^ {[ j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} \\boldsymbol {\\Gamma} ^ {[ j ] \\dagger} \\mathbf {G} _ {e} ^ {[ j ] \\dagger} \\mathbf {u} _ {e} ^ {[ i ]}}\\right). \\tag {59} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            80,
+            561,
+            490,
+            648
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Similarly, when the eavesdropper is equipped with $( K - A - 1 ) d + A + 1$ antennas and attempts to eavesdrop the lth user served by the $\\mathrm { S B S } , l = A + 1 , A + 2 , \\dotsc , K$ , the interference from other user can be eliminated. The recovered signal at the eavesdropper can be expressed as ",
+        "bbox": [
+            73,
+            657,
+            491,
+            734
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\ny _ {e - 2} ^ {* [ l ]} = \\sum_ {s = 1} ^ {d} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {H} _ {e} ^ {[ l ]} \\mathbf {V} _ {\\star s} ^ {[ l ]} x _ {s} ^ {[ l ]} + \\sum_ {j = 1} ^ {A} \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {G} _ {e} ^ {[ j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} \\mathbf {x} _ {j a m} ^ {[ j ]} + \\mathbf {u} _ {e} ^ {[ l ] \\dagger} \\mathbf {z} _ {e}, \\tag {60}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            75,
+            741,
+            488,
+            800
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "and the eavesdropping rate can be rewritten as (61) (on the top of this page). ",
+        "bbox": [
+            73,
+            810,
+            488,
+            840
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Remark 3: According to (52), (57), (59) and (61), we can conclude that $R _ { e - 2 } ^ { [ l ] } ~ > ~ R _ { e - 2 } ^ { * [ l ] }$ and $R _ { e - 1 } ^ { [ i ] } ~ > ~ R _ { e - 1 } ^ { * [ i ] }$ for the same number of eavesdropping antennas, due to jamming. However, the transmission rate of the legitimate users will not be changed by the jamming signal. Thus, the secrecy rate of the legitimate users will be increased through introducing the jamming signal into the network. In addition, when the transmit power of the jamming signal $P _ { j a m }$ becomes larger, the secrecy rate will increase accordingly. ",
+        "bbox": [
+            73,
+            840,
+            491,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            160,
+            919,
+            189
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Next, the case when more antennas are equipped at the eavesdropper to eliminate the jamming signal is analyzed. According to (58) and (60), in order to eliminate the jamming signal, the following condition should be satisfied along with (48) and (49) or (54) and (55): ",
+        "bbox": [
+            503,
+            190,
+            919,
+            265
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {u} _ {e} ^ {[ k ] \\dagger} \\mathbf {G} _ {e} ^ {[ j ]} \\boldsymbol {\\Gamma} ^ {[ j ]} = \\mathbf {0}. \\tag {62}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            643,
+            271,
+            919,
+            292
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "When the eavesdropper wants to eavesdrop the information of the i th user served by UAV, $i = 1 , 2 , \\dots , A .$ , (48), (49) and (62) should be all satisfied, and the minimal required number of antennas of the eavesdropper is derived in Proposition 2. ",
+        "bbox": [
+            503,
+            299,
+            919,
+            358
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Proposition 2: For the eavesdropper, at least $( K - A ) d +$ $A + A d _ { j a m }$ antennas should be equipped to eavesdrop the ith user served by UAV without interference from other users and jamming signal, $i = 1 , 2 , . . . , A$ . Proof: The number of equations in (62) is equal to $A d _ { j a m }$ . Thus, according to (50), the total number of equations in (48), (49) and (62) can be expressed as ",
+        "bbox": [
+            503,
+            359,
+            921,
+            464
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {N} _ {\\varepsilon - 2} ^ {e} = (A - 1) + (K - A) d + A d _ {a j}. \\tag {63}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            473,
+            919,
+            491
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The total number of variables in (48), (49) and (62) can still be expressed as (51). Thus, (48), (49) and (62) can be solved only when $\\mathcal { N } _ { \\upsilon - 2 } ^ { e } \\ \\geq \\ \\mathcal { N } _ { \\varepsilon - 2 } ^ { e } \\ \\Rightarrow \\ N _ { e } \\ \\geq \\ ( K - A ) d +$ $A + A d _ { j a m } .$ ",
+        "bbox": [
+            503,
+            497,
+            919,
+            558
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Similar to Proposition 2, when the eavesdropper wants to eavesdrop the information of the lth user served by the SBS, $l = A + 1 , A + 2 , . . . , K$ , at least ",
+        "bbox": [
+            503,
+            559,
+            919,
+            603
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nN _ {e} = (K - A - 1) d + A + 1 + A d _ {j a m} \\tag {64}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            573,
+            613,
+            919,
+            630
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "antennas should be equipped to eliminate the interference from other legitimate users and jamming signal perfectly. ",
+        "bbox": [
+            501,
+            637,
+            919,
+            667
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Remark 4: According to the above analysis, we can conclude that $A d _ { j a m }$ more antennas should be equipped at the eavesdropper to successfully eavesdrop the kth user when jamming signal is generated by the idle SBSs. In other words, the eavesdropper should make more effort to eavesdrop the kth user when jamming signal is generated. ",
+        "bbox": [
+            501,
+            667,
+            921,
+            758
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "VI. NUMERICAL RESULTS AND DISCUSSION ",
+        "text_level": 1,
+        "bbox": [
+            553,
+            776,
+            870,
+            789
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In this section, the performance of the proposed UAV assisted hyper-dense small-cell network is presented and verified through extensive simulations. We assume that the transmit power of UAVs and SBSs are equal, i.e., $P _ { 1 } = P _ { 2 } =$ $P _ { j a m } = 1 { . }$ . ",
+        "bbox": [
+            503,
+            795,
+            919,
+            871
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The sum rate of the small-cell network with different numbers of M and N is shown in Fig. 3 without jamming signal, where $K = 5 , A = 2$ , and $d = 1$ . From the results, we can see that the sum rate will increase linearly with SNR only when the feasibility conditions in Theorem 1 can be satisfied, i.e., $5 N + 3 M \\geq 2 8$ and $N \\geq 3 .$ , and all the interference can be eliminated. When $5 N + 3 M < 2 8$ , we can see that the sum rate of the network is much lower than that when it is feasible, due to the residual interference. In addition, based on the feasibility numbers of M and N, the sum rate of the network with the jamming signal is also compared in Fig. 3 for different numbers of antennas equipped at the jammers, $M _ { j a m }$ , when the feasibility conditions in Theorem 1 are satisfied. $K = 5$ , $A = 2 , d = 1$ , and $d _ { j a m } = 1$ . From the results, we can see that the interference can be perfectly eliminated and the sum rate of the network increases linearly with SNR, only when the feasibility condition of the jamming in Theorem 2 can be satisfied, i.e., $M _ { j a m } \\geq 6 .$ . In addition, we can see that the the feasible value of $M _ { j a m }$ only depends on A, K , d and $d _ { j a m } ,$ instead of M and N. ",
+        "bbox": [
+            501,
+            871,
+            921,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "ZHAO et al.: CACHING UAV ASSISTED SECURE TRANSMISSION IN HYPER-DENSE NETWORKS BASED ON INTERFERENCE ALIGNMENT ",
+        "bbox": [
+            75,
+            35,
+            807,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "2289 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            960,
+            854,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/bd5f96462f5b82e2deaf4cbd3a71cff9936c2081367b076e84dce83ec05fc89a.jpg",
+        "content": "| SNR (dB) | M=2,N=5,no jamming | M=2,N=4,no jamming | M=3,N=4,no jamming | M=3,N=3,no jamming | M=2,N=5,M_jam=6 | M=2,N=5,M_jam=5 | M=3,N=4,M_jam=6 | M=3,N=4,M_jam=5 |\n| -------- | ------------------ | ------------------ | ------------------ | ------------------ | --------------- | --------------- | --------------- | --------------- |\n| 0        | 5                  | 5                  | 5                  | 5                  | 5               | 5               | 5               | 5               |\n| 10       | 15                 | 15                 | 15                 | 15                 | 15              | 15              | 15              | 15              |\n| 20       | 25                 | 25                 | 25                 | 25                 | 25              | 25              | 25              | 25              |\n| 30       | 35                 | 35                 | 35                 | 35                 | 35              | 35              | 35              | 35              |\n| 40       | 45                 | 45                 | 45                 | 45                 | 45              | 45              | 45              | 45              |\n| 50       | 78                 | 78                 | 78                 | 78                 | 78              | 78              | 78              | 78              |",
+        "chart_caption": [
+            "Fig. 3. Sum rate comparison of the small-cell network with and without jamming signal, with different number of antennas equipped at each SBS, each mobile user and each jammer $( K = 5 , A = 2 ,$ and $d = 1 )$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            104,
+            71,
+            464,
+            324
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            402,
+            491,
+            628
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "To further verify the feasibility conditions in Theorem 1, the interference leakage at each mobile user with different values of M and N is compared in Fig. 4, without jamming, when K = 5, A = 2, d = 2, and $\\mathrm { S N R } \\ = \\ 2 5 \\mathrm { d B }$ . From the results, we can note that the interference leakage can be eliminated perfectly only when the feasibility conditions in Theorem 1 can be satisfied, i.e., $3 M + 4 N \\geq 3 8$ and $N \\geq 4$ . We can also see that, when M becomes smaller, larger N is needed to make it feasible. ",
+        "bbox": [
+            73,
+            628,
+            490,
+            763
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Similarly, to verify the feasibility condition in Theorem 2, we compare the interference leakage at each mobile user with different values of $d , d _ { j a m } , M$ and N in Fig. 5, with jamming signal generated, when $K \\ = \\ 5 , \\ A \\ = \\ 2$ and $\\mathrm { S N R } = 2 5 \\mathrm { d B }$ . From the results, we can see that only when the feasibility condition $M _ { j a m } \\geq A + ( K - A ) d + d _ { j a m }$ in Theorem 2 can be satisfied, the interference can be eliminated perfectly. In addition, we can find that the feasible value of $M _ { j a m }$ is only related to the values of $d , \\ d _ { j a m } , \\ K$ and A, and it will not be affected by the values of M and N when the feasibility conditions in Theorem 1 have already been satisfied. ",
+        "bbox": [
+            73,
+            765,
+            491,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/039e472799d0a96f3214cbea48f7ac04b1ba00549c57b9ec376d159289ef6b88.jpg",
+        "content": "| N | M=3 | M=4 | M=5 | M=6 |\n| --- | --- | --- | --- | --- |\n| 3 | 0.52 | 0.26 | 0.14 | 0.06 |\n| 4 | 0.27 | 0.12 | 0.08 | 0.03 |\n| 5 | 0.12 | 0.04 | 0.03 | 0.01 |\n| 6 | 0.03 | 0.01 | 0.01 | 0.01 |\n| 7 | 0.01 | 0.01 | 0.01 | 0.01 |\n| 8 | 0.01 | 0.01 | 0.01 | 0.01 |\n| 9 | 0.01 | 0.01 | 0.01 | 0.01 |",
+        "chart_caption": [
+            "Fig. 4. Comparison of interference leakage at each mobile user with different values of M and N. $( K = 5 , A = 2 , d = 2$ and $\\mathrm { S N R } = 2 5 \\mathrm { d B } )$ ). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            74,
+            895,
+            324
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/8496d566fb0a4d29ad1e5c5925fb371dc7519df82dae12eddb8ca76cc89a86a4.jpg",
+        "content": "| M_jam | d=d_jam=2,M=N=6 | d=d_jam=2,M=5,N=6 | d=d_jam=1,M=N=6 | d=d_jam=1,M=N=4 |\n|-------|-----------------|-------------------|-----------------|-----------------|\n| 5     | 0.27            | 0.26              | 0.09            | 0.09            |\n| 6     | 0.15            | 0.14              | 0.00            | 0.00            |\n| 7     | 0.08            | 0.07              | 0.00            | 0.00            |\n| 8     | 0.04            | 0.03              | 0.00            | 0.00            |\n| 9     | 0.01            | 0.01              | 0.00            | 0.00            |\n| 10    | 0.00            | 0.00              | 0.00            | 0.00            |",
+        "chart_caption": [
+            "Fig. 5. Comparison of interference leakage at each mobile user with different values of M jam . (K = 5, A = 2 and SNR = 25dB). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            383,
+            893,
+            636
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "When the eavesdropper intends to eavesdrop the legitimate transmission of a certain UAV, the transmission and eavesdropping rate of a certain UAV served user is compared in Fig. 6 with different number of $N _ { e }$ , with or without jamming signal. We also assume that the legitimate network is feasible with $K \\ = \\ 5 , \\ A \\ = \\ 2 , \\ d \\ = \\ 1 , \\ M \\ = \\ N \\ = \\ 4 , \\ d _ { i a m } \\ = \\ 1$ and $M _ { j a m } = 6$ according to Theorem 1. From the results, we can note that when no jamming is generated, at least $N _ { e } = 5$ antennas are needed to perfectly eavesdrop a certain UAV served user, which is consistent with the conclusion in Proposition 1. On the other hand, we can also see that when jamming signal is generated by the idle SBSs, at least $N _ { e } = 7$ antennas should be equipped at the eavesdropper to eavesdrop a certain UAV served user, which is consistent with the conclusion in Proposition 2. Therefore, we can conclude that additional $A d _ { j a m } = 2 $ antennas should be equipped at the eavesdropper to successfully eavesdrop a UAV served user when jamming signal is generated by the idle SBSs, compared to the case without jamming signal. In other words, the jamming signal can make the legitimate network much securer. ",
+        "bbox": [
+            501,
+            704,
+            921,
+            948
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "2290 ",
+        "bbox": [
+            76,
+            36,
+            102,
+            45
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            529,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/da10e0c1835c04d2c8a3cce86dcd1ccd495fd7582cccc8745894092fce723e57.jpg",
+        "content": "| SNR (dB) | Transmission rate with jamming | Eavesdropping rate with jamming, N_e = 7 | Eavesdropping rate with jamming, N_e = 6 | Eavesdropping rate without jamming, N_e = 5 | Eavesdropping rate without jamming, N_e = 4 |\n| -------- | ------------------------------ | ---------------------------------------- | ---------------------------------------- | ------------------------------------------ | ------------------------------------------ |\n| 0        | 0.8                            | 0.8                                      | 0.8                                      | 0.8                                        | 0.8                                        |\n| 10       | 2.8                            | 2.8                                      | 2.8                                      | 2.8                                        | 2.8                                        |\n| 20       | 5.6                            | 5.6                                      | 5.6                                      | 5.6                                        | 5.6                                        |\n| 30       | 9.0                            | 9.0                                      | 9.0                                      | 9.0                                        | 9.0                                        |\n| 40       | 12.4                           | 12.4                                     | 12.4                                     | 12.4                                       | 12.4                                       |\n| 50       | 15.6                           | 15.6                                     | 15.6                                     | 15.6                                       | 15.6                                       |",
+        "chart_caption": [
+            "Fig. 6. Comparison of the transmission and eavesdropping rate of a certain UAV served user in the small-cell network with different numbers of $N _ { e } .$ . (K = 5, A = 2, M = N = 4, d = 1, and $d _ { j a m } = 1 )$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            104,
+            71,
+            464,
+            324
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/11e3b71142493ec5d7b748c0ba39c85baf6f3dc0ffd8fa8536979cd72cd48b5c.jpg",
+        "content": "| SNR (dB) | Transmission rate | Eavesdropping rate, Ne=5 | Eavesdropping rate, Ne=4 | Eavesdropping rate, Ne=3 |\n| -------- | ----------------- | ------------------------- | ------------------------- | ------------------------- |\n| 0        | 1.0               | 1.0                       | 1.0                       | 1.0                       |\n| 10       | 5.0               | 4.0                       | 3.5                       | 2.5                       |\n| 20       | 10.0              | 7.0                       | 6.5                       | 3.5                       |\n| 30       | 15.0              | 10.0                      | 9.5                       | 3.8                       |\n| 40       | 20.0              | 13.5                      | 13.0                      | 3.8                       |\n| 50       | 30.0              | 16.5                      | 16.0                      | 3.8                       |",
+        "chart_caption": [
+            "Fig. 7. Comparison of the transmission and eavesdropping rate of a certain SBS served user in the small-cell network without jamming signal, with different number of Ne . (K = 3, A = 1, M = N = 4, and d = 2). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            102,
+            385,
+            464,
+            637
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            704,
+            491,
+            779
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 7, the transmission and eavesdropping rate of a certain SBS served user is compared without jamming signal, when an eavesdropper intends to eavesdrop its transmission. We set K  3, A  1, d  2 and $M \\ = \\ N \\ = \\ 4$ to make the small-cell network feasible, according to Theorem 1. From the results, we can observe that the eavesdropping rate is very low when $N _ { e } ~ < ~ 4$ , due to the fact the interference cannot be perfectly eliminated at the eavesdropper, which will affect its eavesdropping performance. When $N _ { e } ~ \\ge ~ 4$ , the eavesdropping rate increases linearly with SNR, which has been greatly improved, according to the conclusion in (56). However, the achieved eavesdropping rate is also lower than the transmission rate, due to the fact the the interference between data streams of the SBS served user cannot be eliminated by the eavesdropper. Then, similar results are provided in Fig. 8, in which the jamming signal is considered. We set $K \\ = \\ 3 , \\ A \\ = \\ 1 , \\ d \\ = \\ 2 , \\ M _ { j a m } \\ = \\ 7 , \\ d _ { j a m } \\ = \\ 2$ and $M = N = 4$ to make the small-cell network feasible, according to Theorem 1 and Theorem 2. Comparing the results in Fig. 7 and Fig. 8, we can conclude that $A d _ { j a m } = 2$ more antennas should be equipped at the eavesdropper to eavesdrop a certain SBS served user with jamming signal, compared to that without jamming signal, according to the conclusion in (56) and (64). Thus, the proposed scheme with jamming signal can make the network much securer. ",
+        "bbox": [
+            73,
+            780,
+            491,
+            946
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f85b69f67a348f3e8a8ddf4a75f3cf3508148d9c68141f4b847745d0f9bcaf46.jpg",
+        "content": "| SNR (dB) | Transmission rate | Eavesdropping rate, N_e = 7 | Eavesdropping rate, N_e = 6 | Eavesdropping rate, N_e = 5 |\n| -------- | ----------------- | --------------------------- | --------------------------- | --------------------------- |\n| 0        | 1.0               | 1.0                         | 1.0                         | 1.0                         |\n| 10       | 4.0               | 3.5                         | 3.5                         | 3.5                         |\n| 20       | 8.0               | 7.0                         | 7.0                         | 4.5                         |\n| 30       | 12.0              | 10.5                        | 10.5                        | 4.5                         |\n| 40       | 16.0              | 13.5                        | 13.5                        | 4.5                         |\n| 50       | 20.0              | 17.0                        | 17.0                        | 4.5                         |",
+        "chart_caption": [
+            "Fig. 8. Comparison of the transmission and eavesdropping rate of a certain SBS served user in the small-cell network with jamming signal, with different numbers of $N _ { e \\cdot } \\left( K = 3 , A = 1 , M = N = 4 , \\bar { M _ { j a m } } ^ { - } = 7 , d = 2 , \\right.$ and $d _ { j a m } = 2 )$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            71,
+            893,
+            324
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ceb63828144b72dcd80cb55fcdd7f327d5bce8e677715c50e9099708e990b72c.jpg",
+        "content": "| Ne | d=2,d_jam=2,with jamming | d=2, without jamming | d=1,d_jam=1,with jamming | d=1, without jamming |\n|----|--------------------------|----------------------|--------------------------|----------------------|\n| 1  | 5.8                      | 3.4                  | 5.7                      | 4.2                  |\n| 2  | 4.0                      | 2.0                  | 3.0                      | 1.8                  |\n| 3  | 3.0                      | 1.3                  | 2.0                      | 0.9                  |\n| 4  | 2.0                      | 0.8                  | 1.0                      | 0.3                  |\n| 5  | 1.5                      | 0.5                  | 0.5                      | 0.1                  |\n| 6  | 1.0                      | 0.3                  | 0.2                      | 0.0                  |\n| 7  | 0.7                      | 0.2                  | 0.1                      | 0.0                  |\n| 8  | 0.5                      | 0.1                  | 0.0                      | 0.0                  |\n| 9  | 0.3                      | 0.1                  | 0.0                      | 0.0                  |\n| 10 | 0.2                      | 0.0                  | 0.0                      | 0.0                  |\n| 11 | 0.1                      | 0.0                  | 0.0                      | 0.0                  |\n| 12 | 0.0                      | 0.0                  | 0.0                      | 0.0                  |",
+        "chart_caption": [
+            "Fig. 9. Comparison of interference leakage at the eavesdropper with different number of Ne when the eavesdropper tries to eavesdrop a certain UAV served user $( K = 5 , A = 2 , M = N = \\dot { 6 } , M _ { j a m } = 1 0 \\mathrm { ~ a n d ~ } \\mathrm { { } } \\dot { \\mathrm { { S N R } } } = 2 5 \\mathrm { { d B } } )$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            532,
+            392,
+            893,
+            643
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            704,
+            921,
+            915
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "The interference leakage at the eavesdropper with different number of $N _ { e }$ when the eavesdropper tries to eavesdrop a certain UAV served user or a SBS served user, is compared in Fig. 9 and Fig. 10, respectively. K = 5, A = 2, M = $N \\ = \\ 6$ and $M _ { j a m } ~ = ~ 1 0$ are set to make the legitimate network feasible, according to Theorem 1 and Theorem 2. $\\mathrm { S N R } \\ = \\ 2 5 \\mathrm { d B }$ . From the results in Fig. 9, we can see that the interference leakage can be perfectly eliminated at the eavesdropper aiming at a certain UAV served user, only when enough antennas are equipped at the eavesdropper to satisfy the conditions in Proposition 1 or Proposition 2. Especially, larger d, larger $d _ { j a m }$ can make the user more difficult to eavesdrop. From the results in Fig. 10, we can note that the interference between users can be perfectly eliminated at the eavesdropper aiming at a certain SBS served user, only when enough antennas are equipped at the eavesdropper to satisfy the conclusions in (56) or (64). In addition, when $d \\ : = \\ : 2$ , there exists some residual interference, due to the fact that the interference between data streams of the target user cannot be eliminated perfectly. ",
+        "bbox": [
+            503,
+            916,
+            921,
+            946
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "ZHAO et al.: CACHING UAV ASSISTED SECURE TRANSMISSION IN HYPER-DENSE NETWORKS BASED ON INTERFERENCE ALIGNMENT ",
+        "bbox": [
+            76,
+            35,
+            805,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "2291 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            135,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/274867d68a26e2ab58620d40f332f5fb3eb4d692ee5341aa366da85cd30c8add.jpg",
+        "content": "| Ne | d=2,d_jam=2,with jamming | d=2, without jamming | d=1,d_jam=1,with jamming | d=1, without jamming |\n|----|--------------------------|----------------------|--------------------------|----------------------|\n| 1  | 6.8                      | 4.2                  | 5.6                      | 4.0                  |\n| 2  | 5.0                      | 3.0                  | 2.9                      | 2.0                  |\n| 3  | 4.0                      | 2.0                  | 1.8                      | 0.8                  |\n| 4  | 3.0                      | 1.5                  | 1.0                      | 0.2                  |\n| 5  | 2.5                      | 1.2                  | 0.5                      | 0.0                  |\n| 6  | 2.0                      | 1.0                  | 0.0                      | 0.0                  |\n| 7  | 1.8                      | 1.0                  | 0.0                      | 0.0                  |\n| 8  | 1.6                      | 1.0                  | 0.0                      | 0.0                  |\n| 9  | 1.4                      | 1.0                  | 0.0                      | 0.0                  |\n| 10 | 1.2                      | 1.0                  | 0.0                      | 0.0                  |\n| 11 | 1.0                      | 1.0                  | 0.0                      | 0.0                  |\n| 12 | 1.0                      | 1.0                  | 0.0                      | 0.0                  |",
+        "chart_caption": [
+            "Fig. 10. Comparison of interference leakage at the eavesdropper with different number of $N _ { e }$ when the eavesdropper tries to eavesdrop a certain SBS served user (K = 5, A = 2, M = N = 6, M jam = 10 and $\\mathrm { S N R } = 2 5 \\mathrm { d B } )$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            104,
+            71,
+            464,
+            324
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/241d36f9bf8dc7c1f4945b61d4e87d1734911a85fba572b50fba170c461ec3bc.jpg",
+        "content": "| P_jam (P₁) | Transmission Rate (bit/s/Hz) | N_e=12, Eavesdropping Rate (bit/s/Hz) | N_e=11, Eavesdropping Rate (bit/s/Hz) | N_e=9, Eavesdropping Rate (bit/s/Hz) |\n| ---------- | ----------------------------- | -------------------------------------- | -------------------------------------- | ------------------------------------ |\n| 0.0        | 8.0                           | 7.5                                    | 7.0                                    | 3.5                                  |\n| 0.5        | 8.0                           | 7.5                                    | 5.0                                    | 2.5                                  |\n| 1.0        | 8.0                           | 7.5                                    | 4.5                                    | 2.0                                  |\n| 1.5        | 8.0                           | 7.5                                    | 4.5                                    | 2.0                                  |\n| 2.0        | 8.0                           | 7.5                                    | 4.5                                    | 2.0                                  |",
+        "chart_caption": [
+            "Fig. 11. Comparison of a certain UAV served user’s transmission and eavesdropping rate with different number of $N _ { e }$ , when the transmit power of the jamming signal becomes larger $( K = 5 , A = 2 , M = N = 6 , \\hat { M _ { j a m } } = 1 0$ , $d \\stackrel { - } { = } d _ { j a m } \\stackrel { - } { = } 2$ and SNR = 25dB). "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            104,
+            401,
+            460,
+            661
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            750,
+            491,
+            946
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            71,
+            919,
+            145
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Finally, the transmission and eavesdropping rate of a targeted UAV served user is compared in Fig. 11, when the transmit power of the jamming signal $P _ { j a m }$ becomes larger. K = 5, A = 2, M = N = 6, $M _ { j a m } ~ = ~ 1 0$ and $d \\digamma =$ $d _ { j a m } = 2$ are set to make the scheme feasible according to Theorem 1 and Theorem 2. $\\mathrm { S N R } = 2 5 \\mathrm { d B }$ . From the results, we can see that when $N _ { e } < 1 2$ , the transmission of the user cannot be perfectly eavesdropper, which is consistent with the conclusion of Proposition 2. In addition, we can find that the eavesdropping rate will decrease with higher $P _ { j a m }$ or smaller $N _ { e }$ . Thus, we can increase $P _ { j a m } ,$ , d or $d _ { j a m }$ to guarantee the secure transmission of the legitimate network. ",
+        "bbox": [
+            503,
+            147,
+            921,
+            328
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "VII. CONCLUSIONS AND FUTURE WORK ",
+        "text_level": 1,
+        "bbox": [
+            566,
+            342,
+            857,
+            354
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In this paper, a caching UAV assisted secure transmission scheme has been proposed in hyper-dense small-cell networks based on IA. In the scheme, UAVs are utilized to provide data traffic to mobile users cooperatively with SBSs to relieve the transmission pressure of SBSs, due to the low cost and high mobility. Cache is equipped at each UAV to store popular files in advance, which can be delivered to the mobile users directly when needed at off-peak time. A single antenna is equipped at each UAV to facilitate its transmission, and the idea of IA is exploited to perform interference management in the network through designing the precoding matrices of SBS cooperatively. We derived the feasibility conditions of the proposed scheme. In addition, we proposed to use the idle SBSs replaced by UAVs to generate jamming signal to disrupt the potential eavesdropping, which would not affect the transmission of the legitimate network. Plenty of simulation results have been presented to show the effectiveness of the proposed scheme. In our future work, we will focus on the practical challenge of the estimation and feedback for the CSI from jamming SBSs to mobile users. ",
+        "bbox": [
+            501,
+            359,
+            921,
+            662
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "ACKNOWLEDGMENT ",
+        "text_level": 1,
+        "bbox": [
+            638,
+            678,
+            787,
+            689
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "We thank the editor and reviewers for their detailed reviews and constructive comments, which have greatly improved the quality of this paper. ",
+        "bbox": [
+            503,
+            695,
+            919,
+            742
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            663,
+            756,
+            761,
+            768
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] F. Cheng et al., “Caching UAV assisted secure transmission in small-cell networks,” in Proc. ICNC, Maui, HI, USA, Mar. 2018, pp. 1–6. ",
+            "[2] N. Wang, E. Hossain, and V. K. Bhargava, “Backhauling 5G small cells: A radio resource management perspective,” IEEE Wireless Commun., vol. 22, no. 5, pp. 41–49, Oct. 2015. ",
+            "[3] H. Zhang, C. Jiang, and J. Cheng, “Cooperative interference mitigation and handover management for heterogeneous cloud small cell networks,” IEEE Wireless Commun., vol. 22, no. 3, pp. 92–99, Jun. 2015. ",
+            "[4] V. R. Cadambe and S. A. Jafar, “Interference alignment and degrees of freedom of the K -user interference channel,” IEEE Trans. Inf. Theory, vol. 54, no. 8, pp. 3425–3441, Aug. 2008. ",
+            "[5] N. Zhao, F. R. Yu, M. Jin, Q. Yan, and V. C. M. Leung, “Interference alignment and its applications: A survey, research issues, and challenges,” IEEE Commun. Surveys Tuts., vol. 18, no. 3, pp. 1779–1803, 3rd Quart., 2016. "
+        ],
+        "bbox": [
+            509,
+            773,
+            921,
+            946
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "2292 ",
+        "bbox": [
+            76,
+            36,
+            102,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            529,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[6] A. Dong, H. Zhang, D. Yuan, and X. Zhou, “Interference alignment transceiver design by minimizing the maximum mean square error for MIMO interfering broadcast channel,” IEEE Trans. Veh. Technol., vol. 65, no. 8, pp. 6024–6037, Aug. 2016. ",
+            "[7] F. C. Kavasoglu, Y. Huang, and B. D. Rao, “Semi-blind interference alignment techniques for small cell networks,” IEEE Trans. Signal Process., vol. 62, no. 23, pp. 6335–6348, Dec. 2014. ",
+            "[8] N. Zhao, X. Liu, F. R. Yu, M. Li, and V. C. M. Leung, “Communications, caching, and computing oriented small cell networks with interference alignment,” IEEE Commun. Mag., vol. 54, no. 9, pp. 29–35, Sep. 2016. ",
+            "[9] F. Cheng, Y. Yu, Z. Zhao, N. Zhao, Y. Chen, and H. Lin, “Power allocation for cache-aided small-cell networks with limited backhaul,” IEEE Access, vol. 5, pp. 1272–1283, Jan. 2017. ",
+            "[10] N. Zhao, F. R. Yu, M. Li, Q. Yan, and V. C. M. Leung, “Physical layer security issues in interference-alignment-based wireless networks,” IEEE Commun. Mag., vol. 54, no. 8, pp. 162–168, Aug. 2016. ",
+            "[11] Y. Wu, R. Schober, D. W. K. Ng, C. Xiao, and G. Caire, “Secure massive MIMO transmission with an active eavesdropper,” IEEE Trans. Inf. Theory, vol. 62, no. 7, pp. 3880–3900, Jul. 2016. ",
+            "[12] F. Zhu, F. Gao, M. Yao, and H. Zou, “Joint information- and jammingbeamforming for physical layer security with full duplex base station,” IEEE Trans. Signal Process., vol. 62, no. 24, pp. 6391–6401, Dec. 2014. ",
+            "[13] L. Fan, S. Zhang, T. Q. Duong, and G. K. Karagiannidis, “Secure switchand-stay combining (SSSC) for cognitive relay networks,” IEEE Trans. Commun., vol. 64, no. 1, pp. 70–82, Jan. 2016. ",
+            "[14] H.-M. Wang, T.-X. Zheng, J. Yuan, D. Towsley, and M. H. Lee, “Physical layer security in heterogeneous cellular networks,” IEEE Trans. Commun., vol. 64, no. 3, pp. 1204–1219, Mar. 2016. ",
+            "[15] W. Wang, K. C. Teh, and K. H. Li, “Artificial noise aided physical layer security in multi-antenna small-cell networks,” IEEE Trans. Inf. Forensics Security, vol. 12, no. 6, pp. 1470–1482, Jun. 2017. ",
+            "[16] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Commun. Mag., vol. 54, no. 5, pp. 36–42, May 2016. ",
+            "[17] L. Gupta, R. Jain, and G. Vaszkun, “Survey of important issues in UAV communication networks,” IEEE Commun. Surveys Tuts., vol. 18, no. 2, pp. 1123–1152, 2nd Quart. 2016. ",
+            "[18] S. Koulali, E. Sabir, T. Taleb, and M. Azizi, “A green strategic activity scheduling for UAV networks: A sub-modular game perspective,” IEEE Commun. Mag., vol. 54, no. 5, pp. 58–64, May 2016. ",
+            "[19] V. Sharma, M. Bennis, and R. Kumar, “UAV-assisted heterogeneous networks for capacity enhancement,” IEEE Commun. Lett., vol. 20, no. 6, pp. 1207–1210, Jun. 2016. ",
+            "[20] J. Lyu, Y. Zeng, R. Zhang, and T. J. Lim, “Placement optimization of UAV-mounted mobile base stations,” IEEE Commun. Lett., vol. 21, no. 3, pp. 604–607, Mar. 2017. ",
+            "[21] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016. ",
+            "[22] Y. Zeng and R. Zhang, “Energy-efficient UAV communication with trajectory optimization,” IEEE Trans. Wireless Commun., vol. 16, no. 6, pp. 3747–3760, Jun. 2017. ",
+            "[23] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Optimal transport theory for cell association in UAV-enabled cellular networks,” IEEE Commun. Lett., vol. 21, no. 9, pp. 2053–2056, Sep. 2017. ",
+            "[24] M. Chen, M. Mozaffari, W. Saad, C. Yin, M. Debbah, and C. S. Hong, “Caching in the sky: Proactive deployment of cache-enabled unmanned aerial vehicles for optimized quality-of-experience,” IEEE J. Sel. Areas. Commun., vol. 35, no. 5, pp. 1046–1061, May 2017. ",
+            "[25] H. Liu, Z. Chen, X. Tian, X. Wang, and M. Tao, “On content-centric wireless delivery networks,” IEEE Wireless Commun., vol. 21, no. 6, pp. 118–125, Dec. 2014. ",
+            "[26] E. Bastug, M. Bennis, and M. Debbah, “Living on the edge: The role of proactive caching in 5G wireless networks,” IEEE Commun. Mag., vol. 52, no. 8, pp. 82–89, Aug. 2014. ",
+            "[27] Z. Zhao, M. Peng, Z. Ding, W. Wang, and H. V. Poor, “Cluster content caching: An energy-efficient approach to improve quality of service in cloud radio access networks,” IEEE J. Sel. Areas. Commun., vol. 34, no. 5, pp. 1207–1221, May 2016. ",
+            "[28] C. Yang, Y. Yao, Z. Chen, and B. Xia, “Analysis on cache-enabled wireless heterogeneous networks,” IEEE Trans. Wireless Commun., vol. 15, no. 1, pp. 131–145, Jun. 2016. ",
+            "[29] M. A. Maddah-Ali and U. Niesen, “Fundamental limits of caching,” IEEE Trans. Inf. Theory, vol. 60, no. 5, pp. 2856–2867, May 2014. ",
+            "[30] M. A. Maddah-Ali and U. Niesen, “Cache-aided interference channels,” in Proc. IEEE ISIT, Hong Kong, Jun. 2015, pp. 809–813. "
+        ],
+        "bbox": [
+            75,
+            71,
+            493,
+            946
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[31] M. Deghel, E. Bastug, M. Assaad, and M. Debbah, “On the benefits of edge caching for MIMO interference alignment,” in Proc. IEEE SPAWC, Stockholm, Sweden, Jun. 2015, pp. 655–659. ",
+            "[32] K. Gomadam, V. R. Cadambe, and S. A. Jafar, “A distributed numerical approach to interference alignment and applications to wireless interference networks,” IEEE Trans. Inf. Theory, vol. 57, no. 6, pp. 3309–3322, Jun. 2011. ",
+            "[33] T. Xu and X.-G. Xia, “A diversity analysis for distributed interference alignment using the Max-SINR algorithm,” IEEE Trans. Inf. Theory, vol. 60, no. 3, pp. 1857–1868, Mar. 2014. ",
+            "[34] N. Zhao, F. R. Yu, and V. C. M. Leung, “Opportunistic communications in interference alignment networks with wireless power transfer,” IEEE Wireless Commun., vol. 22, no. 1, pp. 88–95, Feb. 2015. ",
+            "[35] N. Zhao, F. R. Yu, H. Sun, A. Nallanathan, and H. Yin, “A novel interference alignment scheme based on sequential antenna switching in wireless networks,” IEEE Trans. Wireless Commun., vol. 12, no. 10, pp. 5008–5021, Oct. 2013. ",
+            "[36] C. M. Yetis, T. Gou, S. A. Jafar, and A. H. Kayran, “On feasibility of interference alignment in MIMO interference networks,” IEEE Trans. Signal Process., vol. 58, no. 9, pp. 4771–4782, Sep. 2010. ",
+            "[37] S.-J. Kim and G. B. Giannakis, “Optimal resource allocation for MIMO ad hoc cognitive radio networks,” IEEE Trans. Inf. Theory, vol. 57, no. 5, pp. 3117–3131, May 2011. ",
+            "[38] O. El Ayach and R. W. Heath, Jr., “Grassmannian differential limited feedback for interference alignment,” IEEE Trans. Signal Process., vol. 60, no. 12, pp. 6481–6494, Dec. 2012. ",
+            "[39] R. T. Krishnamachari and M. K. Varanasi, “Interference alignment under limited feedback for MIMO interference channels,” IEEE Trans. Signal Process., vol. 61, no. 15, pp. 3908–3917, Aug. 2013. ",
+            "[40] N. Zhao, F. R. Yu, H. Sun, H. Yin, A. Nallanathan, and G. Wang, “Interference alignment with delayed channel state information and dynamic AR-model channel prediction in wireless networks,” Wireless Netw., vol. 21, no. 4, pp. 1227–1242, May 2015. ",
+            "[41] L. Wu and W. Zhang, “Caching-based scalable video transmission over cellular networks,” IEEE Commun. Lett., vol. 20, no. 6, pp. 1156–1159, Jun. 2016. "
+        ],
+        "bbox": [
+            506,
+            73,
+            921,
+            481
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/826eaf47d05fbe6844a515a391b1c03f02560f9b014a43577c3c2bdda90f9849.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a striped shirt against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            560,
+            627,
+            676
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Nan Zhao (S’08–M’11–SM’16) received the B.S. degree in electronics and information engineering, the M.E. degree in signal and information processing, and the Ph.D. degree in information and communication engineering from the Harbin Institute of Technology, Harbin, China, in 2005, 2007, and 2011, respectively. He is currently an Associate Professor with the Dalian University of Technology, China. His recent research interests include UAV communications, interference alignment, and physical layer security. ",
+        "bbox": [
+            638,
+            556,
+            921,
+            681
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Dr. Zhao was a recipient of the Top Reviewer Award from the IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY in 2016. He won the best paper awards in the IEEE VTC’2017-Spring and MLICOM 2017. He is serving or has served on the Editorial Boards of seven SCI-indexed journals. He was nominated as an Exemplary Reviewer by the IEEE COMMUNICA-TIONS LETTERS in 2016. ",
+        "bbox": [
+            504,
+            681,
+            921,
+            750
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/d218cb9c42c897eb99a2a520b29ba0da19f03019428b2ba805d71a4b00a8a96c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a woman with long dark hair (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            825,
+            627,
+            943
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Fen Cheng received the B.S. degree from the Dalian University of Technology, Dalian, China, in 2017, where she is currently pursuing the M.S. degree with the School of Information and Communication Engineering. ",
+        "bbox": [
+            638,
+            821,
+            921,
+            878
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Her current research interests include UAV communications, interference alignment, cache-aided networks, physical layer security, and resource allocation. ",
+        "bbox": [
+            638,
+            878,
+            921,
+            925
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "ZHAO et al.: CACHING UAV ASSISTED SECURE TRANSMISSION IN HYPER-DENSE NETWORKS BASED ON INTERFERENCE ALIGNMENT ",
+        "bbox": [
+            76,
+            35,
+            807,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "2293 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/99e036fe45c587eae03509ec33a007eeae44b07cc956e20b0dfd4a2c7cf16c75.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            75,
+            197,
+            193
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "F. Richard Yu (S’00–M’04–SM’08–F’18) received the Ph.D. degree in electrical engineering from The University of British Columbia in 2003. From 2002 to 2006, he was with Ericsson, Lund, Sweden, and a start-up in California, USA. He joined Carleton University in 2007, where he is currently a Professor. His research interests include cross-layer/ cross-system design, connected vehicles, security, and green ICT. He was a recipient of the Leadership Opportunity Fund Award from Canada Foundation of Innovation in 2009, the Excellent Contribution ",
+        "bbox": [
+            207,
+            71,
+            491,
+            196
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Award at IEEE/IFIP TrustCom 2010, the Ontario Early Researcher Award (formerly Premiers Research Excellence Award) in 2011, Carleton Research Achievement Award in 2012, the IEEE Outstanding Leadership Award in 2013, the IEEE Outstanding Service Award in 2016, the Best Paper Awards at the International Conference on Networking 2005, IEEE/IFIP TrustCom 2009, Globecom 2012, ICC 2014, and IEEE VTC 2017 Spring. ",
+        "bbox": [
+            73,
+            196,
+            490,
+            266
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "He has served as the technical program committee co-chair of numerous conferences. He serves on the Editorial Boards of several journals, including the Co-Editor-in-Chief for Ad Hoc and Sensor Wireless Networks, a Lead Series Editor for the IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, the IEEE TRANSACTIONS ON GREEN COMMUNICATIONS AND NETWORK-ING, and the IEEE COMMUNICATIONS SURVEYS AND TUTORIALS. He is a registered Professional Engineer in the province of Ontario, Canada, a Fellow of the Institution of Engineering and Technology. He is a Distinguished Lecturer, the Vice President–Membership, and an elected member of the Board of Governors of the IEEE Vehicular Technology Society. ",
+        "bbox": [
+            73,
+            266,
+            491,
+            380
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/1d723e2f76beb63ca0bdb7ea536a9e4c09beb5319ea1e4e4d630df67aeb4d950.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            412,
+            197,
+            531
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Jie Tang (S’10–M’13) received the B.Eng. degree in information engineering from the South China University of Technology, Guangzhou, China, in 2008, the M.Sc. degree (Hons.) in communication systems and signal processing from the University of Bristol, U.K., in 2009, and the Ph.D. degree from Loughborough University, Leicestershire, U.K., in 2012. He is currently an Associate Professor with the School of Electronic and Information Engineering, South China University of Technology, China. He previously held a post-doctoral research position with the School of Electrical and Electronic Engineering, University of Manchester, U.K. ",
+        "bbox": [
+            207,
+            410,
+            490,
+            535
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            535,
+            491,
+            556
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "His research interests include green communications, NOMA, 5G networks, SWIPT, heterogeneous networks, cognitive radio, and D2D communications. He also served as a Track Co-Chair for the IEEE Vehicular Technology Conference (VTC) Spring 2018. He is currently serving as an Associate Editor for EURASIP Journal on Wireless Communications and Networking, Physical Communications and Ad Hoc and Sensor Wireless Networks. ",
+        "bbox": [
+            73,
+            556,
+            490,
+            626
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/e110244467bdc2b234e4d7dc8fdef048997f4fb229a577374a6d43dfe157f437.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a light blue shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            660,
+            197,
+            777
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Yunfei Chen (S’02–M’06–SM’10) received the B.E. and M.E. degrees in electronics engineering from Shanghai Jiaotong University, Shanghai, China, in 1998 and 2001, respectively, the Ph.D. degree from the University of Alberta in 2006. He is currently an Associate Professor with the University of Warwick, U.K. His research interests include wireless communications, cognitive radios, wireless relaying, and energy harvesting. ",
+        "bbox": [
+            207,
+            657,
+            491,
+            760
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/f6f1d0fe20f6eeb8bb74d89b16e5e1d439b4340637fd5c595f5c35a6cd68e3db.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in a dark shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            75,
+            627,
+            193
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Guan Gui (S’08–M’11–SM’17) received the Dr.Eng. degree in information and communication engineering from the University of Electronic Science and Technology of China, Chengdu, China, in 2012. From 2009 to 2012, he joined the Wireless Signal Processing and Network Laboratory, Department of Communications Engineering, Graduate School of Engineering, Tohoku University, as a Research Assistant and Post-Doctoral Research Fellow, respectively. From 2014 to 2015, he was an Assistant Professor with the Department of Electronics and Information System, Akita Prefectural University. Since 2015, he has been a Professor with the Nanjing University of Posts and Telecommunications (NJUPT), Nanjing, China. He is currently engaged in research of big data analysis, deep learning, compressive sensing, and advanced wireless techniques. From 2012 to 2014, he was supported by Japan Society for the Promotion of Science Fellowship as a Post-Doctoral Research Fellow with the Wireless Signal Processing and Network Laboratory. ",
+        "bbox": [
+            638,
+            71,
+            919,
+            196
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            196,
+            919,
+            277
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Dr. Gui was a recipient of the ICC Best Paper Award in 2014 and 2017 and the VTC-Spring Best Student Paper Award in 2014. He was an Associate Editor for the Journal of Security and Communication Networks (Wiley) from 2012 to 2016, the IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY in 2017, and KSII Transactions on Internet and Information Systems in 2017. He was also selected as Jiangsu Specially-Appointed Professor, Jiangsu High-Level Innovation and Entrepreneurial Talent and NJUPT “1311 Talent Plan” in 2016. ",
+        "bbox": [
+            503,
+            277,
+            919,
+            367
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/fc5eb1f67878d0c36cd62bc9d7648d38eb22ca105dea816549ac66bef2807266.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a smiling man wearing glasses and a blue shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            386,
+            627,
+            502
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Hikmet Sari (F’95) received the Engineering and Ph.D. degrees from the ENST, Paris, France, and the Habilitation degree from the University of Paris XI. From 1980 to 2002, he held various research and management positions at Philips Research Laboratories, SAT, Alcatel, Pacific Broadband Communications, and Juniper Networks. From 2003 to 2016, he was Professor and Head of the Telecommunications Department at Supélec. He is currently Professor at Nanjing University of Posts and Telecommunications (NJUPT) and Chief Scientist at Sequans ",
+        "bbox": [
+            638,
+            382,
+            919,
+            507
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Communications. ",
+        "bbox": [
+            504,
+            507,
+            601,
+            518
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "He served as an Editor of the IEEE TRANSACTIONS ON COMMUNICA-TIONS from 1987 to 1991, as an Associate Editor of the IEEE COMMUNICA-TIONS LETTERS from 1999 to 2002, and as a Guest Editor for several special issues of the IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS (JSAC), the European Transactions on Telecommunications (ETT), and other journals. He served as a Distinguished Lecturer of the IEEE Communications Society (ComSoc) from 2001 to 2006, as a member of the IEEE Fellow Evaluation Committee from 2002 to 2007, and as a member of the Awards Committee from 2005 to 2007. He was Chair of the Communication Theory Symposium of ICC 2002, Technical Program Chair of ICC 2004, Vice General Chair of ICC 2006, General Chair of PIMRC 2010, General Chair of WCNC 2012, Executive Chair of WCNC 2014, General Chair of ICUWB 2014, General Co-Chair of IEEE BlackSeaCom 2015, Technical Program Chair of EuCNC 2015, Executive Co-Chair of ICC 2016, General Co-Chair of ATC 2016, and Executive Chair of ICC 2017. He also chaired the Globecom and ICC Technical Content (GITC) Committee during the period of 2010 to 2011, and he was ComSoc Vice President for Conferences from 2014 to 2015. Currently, he is serving on the ComSoc Board of Governors as Director for Conference Operations and also as General Co-Chair of PIMRC 2019. ",
+        "bbox": [
+            503,
+            518,
+            919,
+            733
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "His distinctions include the André Blondel Medal in 1995, the Edwin H. Armstrong Achievement Award in 2003, the Harold Sobol Award in 2012, as well as election to Academia Europaea (the Academy of Europe) and to the Science Academy of Turkey in 2012. ",
+        "bbox": [
+            503,
+            733,
+            919,
+            780
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "2294 ",
+        "bbox": [
+            76,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON COMMUNICATIONS, VOL. 66, NO. 5, MAY 2018 ",
+        "bbox": [
+            529,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 01,2026 at 07:48:49 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            137,
+            962,
+            854,
+            974
+        ],
+        "page_idx": 13
+    }
+]

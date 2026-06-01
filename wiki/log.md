@@ -2,6 +2,48 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 1/8: 6 new sources; +6 concepts)
+
+First batch of a multi-invocation curation run over **43 newly-added raw papers**. Phase 0 reconciliation (`curation_status.py --dupes`) found **214 raw folders, 177 now-curated, 37 still uncurated, 0 duplicate MinerU ingests**. This invocation recovered and finalized an interrupted in-progress batch: 6 source pages + 6 concept pages were already drafted on disk (uncommitted, no log entry, `index.md`/`overview.md` already edited), so per the resume-don't-duplicate rule this batch audited and committed them rather than re-extracting. The remaining 37 papers are planned into 7 further batches (`make_batches.py --size 6` → `.curation-out/batches-remaining.json`) for subsequent invocations. Every metadata field and headline claim re-verified against `raw/sources/<Folder>/full.md`.
+
+### Source pages created (6)
+
+- **[[wang-2024-xl-mimo-tutorial]]** — *A Tutorial on Extremely Large-Scale MIMO for 6G* (IEEE COMST, 2024, DOI 10.1109/COMST.2023.3349276). Physical-layer / near-field survey anchor; four XL-MIMO hardware designs + near-field channel modeling + DL-empowered signal processing. *(PHY anchor, not MEC.)*
+- **[[wang-2024-wipe-gai]]** — *A Unified Framework for Guiding Generative AI With Wireless Perception…* (IEEE TMC, 2024, DOI 10.1109/TMC.2024.3377226). WiPe-GAI: sequential multi-scale perception predicts user skeleton → guides GAI; diffusion model generates the optimal pricing incentive.
+- **[[chen-2024-dro-video-caching]]** — *Adaptive Bitrate Video Caching in UAV-Assisted MEC Networks Based on DRO* (IEEE TMC, 2024, DOI 10.1109/TMC.2023.3304624). ζ-structure-metric confidence set + convex DRO latency minimizer under an energy budget; real YouTube traces.
+- **[[zhang-2024-coma-satellite-offloading]]** — *Collaborative Task Offloading… for Satellite MEC Using MADRL* (IEEE TVT, 2024, DOI 10.1109/TVT.2024.3405642). Distributed LEO SMEC; POMDP solved with COMA (CTDE) + attention-BiLSTM actor; STK constellation.
+- **[[zhao-2018-caching-uav-ia-secure]]** — *Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment* (IEEE TCOMM, 2018, DOI 10.1109/TCOMM.2018.2792014). IA for single-antenna caching UAVs + idle SBSs as zero-forced friendly jammers. *(Caching + IA-PLS anchor, not MEC offloading.)*
+- **[[zhu-2024-zdrl-uav-tracking]]** — *Collaborative RL Based UAV Trajectory Design for 3D UAV Tracking* (IEEE TMC, 2024, DOI 10.1109/TMC.2024.3382913). One active + four passive UAVs, TDOA/TSWLS; Z-function-decomposition RL (distributional RL); up to 39.4%/64.6% lower positioning error vs VD-RL / independent DRL (abstract-verbatim). *(Localization + trajectory, not MEC offloading.)*
+
+### Concept pages created (6)
+
+- **[[counterfactual-multi-agent-policy-gradient]]** (COMA) — credit-assignment via centralized-critic counterfactual baseline; anchors [[zhang-2024-coma-satellite-offloading]].
+- **[[distributional-reinforcement-learning]]** — learns the return distribution, not just its expectation; anchors [[zhu-2024-zdrl-uav-tracking]].
+- **[[extremely-large-scale-mimo]]** and **[[near-field-communications]]** — 6G PHY pair anchored by [[wang-2024-xl-mimo-tutorial]].
+- **[[interference-alignment]]** — MIMO precoding-subspace interference management; anchors [[zhao-2018-caching-uav-ia-secure]].
+- **[[wireless-perception]]** — CSI-based sensing to guide GAI; anchors [[wang-2024-wipe-gai]].
+
+### Entities
+
+No new entity pages this batch. Recurring identities flagged for human confirmation rather than promoted: **Hongyang Du** (appears on both new TMC/COMST papers with differing affiliations — intentionally un-promoted), **Nan Zhao** (lead of the 2018 caching-UAV paper, shares an author neighborhood with [[zhao-2019-uav-emergency-disasters]]). Confirmed existing entities cross-linked from [[wang-2024-wipe-gai]]: [[jiacheng-wang]], [[dusit-niyato]], [[jiawen-kang]], [[xuemin-shen]].
+
+### Meta-docs
+
+- **[[index]]** — +6 source entries (placed under UAV-comms anchor / caching-offloading / satellite-offloading / generative-AI / secure-ISAC sections per topic) and +6 concept entries (DRL-methods + PHY/security groups).
+- **[[overview]]** — Snapshot sources **171→177**, concepts **234→240**; entities 71 and derived 42 unchanged.
+
+### Metadata verification (correctness-first)
+
+All 6 DOIs verbatim-confirmed against the `Digital Object Identifier` line of each parse (COMST.2023.3349276, TMC.2024.3377226, TMC.2023.3304624, TVT.2024.3405642, TCOMM.2018.2792014, TMC.2024.3382913). All venues/years confirmed. ZD-RL's 39.4%/64.6% headline numbers verified verbatim in the abstract; figure-derived margins on the other five were flagged as indicative rather than stated as exact.
+
+### Toolkit
+
+No ratchet needed — `curation_status.py --dupes`, `make_batches.py`, `linkcheck.py`, `process_refs.py`, `frontmatter_audit.py`, `index_audit.py`, and `corpus_counts.py` covered state detection, batch planning, grounding discovery, and every commit gate. No reusable one-off arose; toolkit stable.
+
+### Gates
+
+**`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py --type source`** = 177 pages, 0 errors; **`--type concept`** = 240 pages, 0 errors. **`index_audit.py`** = 532/532 indexed, 0 unindexed / 0 duplicate primaries. Counts reconciled via `corpus_counts.py`: sources **171→177**, concepts **234→240** (entities 71 / derived 42 unchanged). LLM Wiki API healthy (v0.4.16) but the `/graph` endpoint returned `Not found` in this headless shell — graph stats skipped (not required for correctness). Untracked `wiki/media/` (app-generated, hash-suffixed, unreferenced by any page) left unstaged.
+
 ## 2026-06-02 — Synthesis-expansion pass (DERIVED layer — THEME B: solver-selection decision aid + sim-to-real; no new papers)
 
 Second follow-up coverage-growth batch (synthesizer, not auditor): no new raw papers, addressed the solver-selection and hardware-validation leads the prior synthesis pass deferred. Phase 0 reconciled clean: **171 raw = 171 curated, 0 uncurated**. Every claim grounded against the parses before writing.
