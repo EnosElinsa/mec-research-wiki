@@ -19,16 +19,18 @@ related:
   - "[[liang-2024-hmecmop-uav-cb]]"
   - "[[zheng-2024-recmop-uav-cb]]"
   - "[[liu-2024-hatrpo-ucb-cb]]"
+  - "[[sun-2021-temcmop-uav-cb]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Geng Sun
 
 IEEE Member. Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China); also affiliated with the **College of Computing and Data Science, Nanyang Technological University** (Singapore) in several papers.
 
-Co-authored 16 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, and survey work in aerial/edge networks:
+Co-authored 17 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, and survey work in aerial/edge networks:
 
+- [[sun-2021-temcmop-uav-cb]] — earliest UAV collaborative-beamforming entry; time + VAA-time + motion/hovering-energy multi-objective optimization (TEMCMOP) via the improved multi-objective ant lion optimizer (IMOALO) (lead author).
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.

@@ -1,0 +1,1013 @@
+# Time and Energy Minimization Communications Based on Collaborative Beamforming for UAV Networks: A Multi-Objective Optimization Method
+
+Geng Sun , Member, IEEE, Jiahui Li, Graduate Student Member, IEEE, Yanheng Liu Shuang Liang , and Hui Kang
+
+Abstract— Unmanned aerial vehicle (UAV) communications and networks are of utmost concern. However, they have challenges such as the limited on-board energy and restricted transmit power. In this paper, we study a UAV-enabled communication scenario that a set of UAVs perform a virtual antenna array (VAA) to communicate with different remote base stations (BSs) by using collaborative beamforming (CB). To achieve a better transmission performance, the UAV elements can fly to optimal positions by using optimal speeds and adjust to optimal excitation current weights for performing CB transmissions. However, there are some trade-offs between energy consumption and transmission performance. Thus, we formulate a time and energy minimization communication multi-objective optimization problem (TEMCMOP) of CB in UAV networks to simultaneously minimize the total transmission time, total performing time of VAAs and total motion and hovering energy consumptions of UAVs by jointly optimizing the positions, flight speeds and excitation current weights of UAVs, as well as the order of communicating with different BSs. Due to the complexity and NP-hardness of the formulated TEMCMOP, we propose an improved multi-objective ant lion optimization (IMOALO) algorithm with chaos-opposition based learning solution initialization and hybrid solution update operators to solve the problem. Simulation results verify that the proposed IMOALO can effectively solve the formulated TEMCMOP and it has better performance than some other benchmark approaches.
+
+Manuscript received October 14, 2020; revised March 1, 2021; accepted April 12, 2021. Date of publication June 14, 2021; date of current version October 18, 2021. This work was supported in part by the National Natural Science Foundation of China under Grant 62002133, Grant 61872158, and Grant 61806083; in part by the Science and Technology Development Plan Project of Jilin Province under Grant 20190701019GH and Grant 20190701002GH; in part by the 13th Five-Year Plan Scientific Research Planning Project of Education Department of Jilin Province under Grant JJKH20200996KJ; and in part by the Young Science and Technology Talent Lift Project of Jilin Province under Grant QT202013. (Corresponding authors: Shuang Liang; Hui Kang.)
+
+Geng Sun is with the College of Computer Science and Technology, Jilin University, Changchun 130012, China, and also with the Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University, Changchun 130012, China (e-mail: sungeng@jlu.edu.cn).
+
+Jiahui Li, Yanheng Liu, Shuang Liang, and Hui Kang are with the College of Computer Science and Technology, Jilin University, Changchun 130012, China (e-mail: lijiahui0803@foxmail.com; yhliu@jlu.edu.cn; liangshuang8587@foxmail.com; kanghui@jlu.edu.cn).
+
+Color versions of one or more figures in this article are available at https://doi.org/10.1109/JSAC.2021.3088720.
+
+Digital Object Identifier 10.1109/JSAC.2021.3088720
+
+Index Terms— UAV communications, collaborative beamforming, energy efficiency, multi-objective optimization problem, swarm intelligence.
+
+# I. INTRODUCTION
+
+U NMANNED aerial vehicles (UAVs) have found numer-ous applications since their advantages of high mobility, ous applications since their advantages of high mobility, low cost, wide-coverage and simple deployment. Among various enabling technologies for UAVs, wireless communications and networks have attracted significantly growing attention in recent years [1]. For instance, UAVs can be seen as new aerial users that access the cellular network from the sky for communications. Moreover, UAVs are used as the base stations (BSs) and relays to assist in terrestrial wireless communications by providing data access and ad-hoc networks from the sky [2], [3]. In addition, UAVs can be used for caching, which can track the mobility pattern of users and avoid frequently updating the content requests of mobile users [4], [5].
+
+Despite UAV communication and network systems are anticipated to be widely applied, they also face several unprecedented challenges such as the limited on-board energy and restricted transmit power [6], [7] [8]. These characteristics make the UAVs limited to be used in some scenarios, e.g., it is difficult for a UAV to communicate with a remote BS efficiently [9]. Thus, it is necessary to improve the transmission performance of the UAV networks so that reducing the transmission task completion time and energy consumption.
+
+To enhance the transmission performance of UAV networks, the positions of UAVs can be dynamically adjusted according to the communication requirements. Specifically, the UAV can fly close to the receivers sequentially to shorten the link distances for a more effective data collection or machine-type communication [10], [11] [12]. However, in this case, the UAVs often needs to fly for long distances, resulting in more motion energy consumptions. Moreover, since the UAV need to consume time to fly to the target position, more transmission task completion time will be consumed so that decreasing the effectiveness of UAV networks. To overcome these issues, some previous works have been proposed.
+
+For example, Zeng et al. [13] study a UAV-enabled multicasting system, in which the UAV trajectory is designed to minimize its mission completion time while ensuring that each ground node successfully recovers the file with a desired high probability. Zeng et al. [14] investigate the UAV-enabled wireless communications and formulate an energy minimization problem by jointly optimizing the UAV trajectory, communication time allocation among the ground nodes and total mission completion time. However, the multi-UAV case is not considered in the abovementioned works. Chou et al. [15] consider the three-dimensional (3D) deployment problem for a swarm of UAVs by jointly optimizing flight altitude, energy expense and travel time for the network throughput optimization. However, the optimization of the order for serving multiple ground users is not considered in this work. The authors in [16] investigate the use of flight-time constrained UAVs as the flying BSs to provide wireless service to the ground users, and propose a novel framework for optimizing the average number of bits that transmitted to the users and hover time of UAV. However, the locations of UAVs are not optimized and considered.
+
+Collaborative beamforming (CB) is a feasible method to improve the transmission performance in UAV communications. The UAVs in the network can perform a virtual antenna array (VAA) rapidly and use CB to produce a high-gain mainlobe that points to the remote BS, so that improving the transmission rate and extending the transmission distance, thereby enhancing the network performance. Some researchers have focused on conducting CB by using UAVs. For example, Garza et al. [17] design a UAV-based 3D antenna array for optimizing the directivity and SLL of the beam pattern. Mozaffari et al. [18] propose a novel framework to deploy and operate a drone-based linear antenna array (LAA) system to minimize the wireless transmission time and control time that are needed for the movement and stabilization of UAVs. Zhu et al. [19] formulate a problem for the achievable rate maximization from the source node to the destination node, where the UAV position, analog beamforming and power control are jointly optimized. However, performing a suitable VAA is also a time-consuming and energy-consuming task since the UAVs are distributed randomly and discretely, thus they need to fly to optimal positions for CB. Moreover, the excitation current weight of each UAV element is another critical factor that affects the beam pattern as well as the transmission rate. In addition, in the process of performing VAA, the flight speeds of UAVs will affect the transmission task completion time and energy consumptions. Thus, how to achieve the optimal positions, excitation current weights and flight speeds of the UAV elements in the VAA for minimizing the transmission task completion time consists of the transmission time and performing time of VAA while reducing the motion energy consumptions by using CB is of great significance.
+
+In this paper, we propose a multi-objective optimization approach that simultaneously optimizes the transmission time, performing time of UAV-enabled VAA, and motion and hovering energy consumptions of UAVs for utilizing CB. The main contributions of this work are summarized as follows:
+
+![](images/6e8e988848f150885b69371db2d1b9edaff34d98960a2eee90a03083f9879740.jpg)
+
+<details>
+<summary>text_image</summary>
+
+UAV-enabled VAA
+z
+y
+R
+ψk rk
+x
+Mainlobe
+Monitor area
+BS N
+BS 2
+BS 1
+</details>
+
+Fig. 1. Sketch map of a UAV-enabled CB system.
+
+• We consider a typical UAV-enabled data collection communication scenario of the UAV networks, and adopt the method that the UAVs perform a VAA to communicate with multi-BSs by using CB. Then, we formulate a time and energy minimization communication multi-objective optimization problem TEMCMOP) of CB in UAV networks to jointly minimize the total transmission time, total performing time of UAV-enabled VAAs and total motion and hovering energy consumptions of UAVs. Moreover, the formulated problem is analyzed and proven as NP-hard.   
+• Based on the energy consumption model of UAVs proposed in [14], we investigate the relationship between the performing time of UAV-enabled VAA, flight speeds of UAVs and motion energy consumptions of UAVs. Moreover, we derive the energy-optimal flight speed strategy of UAVs for performing the VAA. According to this strategy, the formulated TEMCMOP is reformulated in a more tractable form.   
+• We propose an improved multi-objective ant lion optimizer (IMOALO) to solve the formulated problem. IMOALO uses the chaos theory and opposition based learning (OBL) mechanism to enhance the performance of the initial solutions and introduces the hybrid solution update operation to deal with the complex solution space which contains continuous and discrete solutions, so that making the algorithm more suitable for solving the formulated TEMCMOP.   
+• Simulations are conducted to evaluate the effectiveness and performance of the proposed method.
+
+The rest of this paper is organized as follows: Section II gives the models and preliminaries. Section III formulates the TEMCMOP of CB in UAV networks and give the analysis. Section IV proposes the algorithm. Section V shows the simulation results. Section VI presents some discussions and Section VII concludes the overall paper.
+
+# II. MODELS AND PRELIMINARIES
+
+# A. System Models
+
+As shown in Fig. 1, we consider a UAV-enabled airto-ground (A2G) wireless communication system, where a set of rotary-wing UAVs denoted as $\mathcal { U } = \{ 1 , 2 , \dots , N _ { U A V } \}$ are dispatched to communicate with a set of BSs denoted as $\beta = \{ 1 , 2 , \dots , N _ { B S } \}$ . Specifically, the UAVs are acting as the = 1 2flying users and they will form a VAA to communicate with a set of remote BSs by using CB, wherein each UAV element of the VAA is with a single omnidirectional antenna. Without loss of generality, a 3D Cartesian coordinate system is used in this work, and the locations of the ith UAV and the jth BS are denoted as $( x _ { i } ^ { U } , y _ { i } ^ { U } , z _ { i } ^ { U } )$ and $( x _ { j } ^ { B } , y _ { j } ^ { B } , 0 )$ , respectively.
+
+( ) ( 0)1) Array Factor of UAV-Enabled VAA: Fig. 1 shows the sketch map of a VAA consists of several UAVs to serve different BSs by using CB. According to the principle of electromagnetic wave superposition, the array factor (AF) can be expressed as follows [17], [20] [21]:
+
+$$
+A F (\theta , \phi) = \sum_ {i = 1} ^ {N _ {U A V}} I _ {i} e ^ {j \left[ k _ {c} \left(x _ {i} ^ {U} \sin \theta \cos \phi + y _ {i} ^ {U} \sin \theta \sin \phi + z _ {i} ^ {U} \cos \theta\right) \right]} \tag {1}
+$$
+
+where $\theta ~ \in ~ [ 0 , \pi ]$ and $\phi ~ \in ~ [ - \pi , \pi ]$ are the elevation and [0 ] [ ]azimuth angles, respectively. Moreover, $I _ { i }$ is the excitation current weight of the ith UAV, $k _ { c } = 2 \pi / \lambda$ is the phase constant and λ is the wavelength.
+
+2) A2G Transmission Based on UAV-Enabled VAA: Due to the high altitude of UAVs and the usage of CB, the effect of multi-path is significantly mitigated [18]. Thus, it is reasonable to use the line-of-sight (LoS) propagation model for the A2G transmission. Accordingly, the transmission rate from the UAV-enabled VAA to the jth ground BS in a far-field region is as follows [13]:
+
+$$
+R _ {B S _ {j}} = B \log_ {2} \left(1 + \frac {P _ {C B _ {t}} K _ {B S _ {j}} G _ {B S _ {j}} d _ {B S _ {j}} ^ {- \alpha}}{\sigma^ {2}}\right) \tag {2}
+$$
+
+where B is the transmission bandwidth, $P _ { C B _ { t } }$ is the total transmit power of the VAA, $K _ { B S _ { i } }$ is the constant path loss coefficient between the VAA and the jth BS, $d _ { B S _ { j } }$ is the distance between the origin of the VAA and the jth BS, and $\sigma ^ { 2 }$ is the noise power. Moreover, $G _ { B S _ { j } }$ is the gain of the VAA towards the location of the jth BS, which is expressed as follows [18]:
+
+$$
+\begin{array}{l} G _ {B S _ {j}} (\pmb {x} _ {j} ^ {\mathcal {U}}, \pmb {y} _ {j} ^ {\mathcal {U}}, \pmb {z} _ {j} ^ {\mathcal {U}}) \\ = \frac {4 \pi | A F (\theta_ {j} , \phi_ {j}) | ^ {2} w (\theta_ {j} , \phi_ {j}) ^ {2}}{\int_ {0} ^ {2 \pi} \int_ {0} ^ {\pi} | A F (\theta , \phi) | ^ {2} w (\theta , \phi) ^ {2} \sin \theta d \theta d \phi} \eta \tag {3} \\ \end{array}
+$$
+
+where $( { x } _ { j } ^ { \mathcal { U } } , ~ { y } _ { j } ^ { \mathcal { U } } , ~ { z } _ { j } ^ { \mathcal { U } } ) ~ = ~ \{ \left[ x _ { i , j } ^ { U } \right] _ { N _ { U A V } \times 1 } , ~ \left[ { y } _ { i , j } ^ { U } \right] _ { N _ { U A V } \times 1 } ,$ $[ z _ { i , j } ^ { U } ] _ { N _ { U A V } \times 1 } \} ( \stackrel { \smile } { i } \in \mathcal { U } )$ = [ ] [ ], denotes the 3D coordinates of UAVs [ ]while communicating with the jth BS. Moreover, $w ( \theta , \phi )$ is ( )the magnitude of the far-field beam pattern of each element, and $\eta \in [ 0 , 1 ]$ is the antenna array efficiency [21].
+
+# B. Energy Consumption Model of UAV
+
+According to [14], the total energy consumption of a UAV includes two main components. The first one is the energy consumptions that related to the communications, i.e., radiation, signal processing and other circuitry. The other one is the energy consumption of propulsion, which ensures the UAV remains hovering and moving. In general, the communication-related energy consumption can be ignored since it is much smaller than propulsion energy, e.g., a few watts w) versus hundreds of w [13], [14]. Thus, for a rotary-wing UAV with a speed of v, the propulsion power consumption when it flies in a two-dimensional (2D) horizontal plane can be modeled as follows [14]:
+
+$$
+\begin{array}{l} P (v) = P _ {B} \left(1 + \frac {3 v ^ {2}}{v _ {t i p} ^ {2}}\right) + P _ {I} \left(\sqrt {1 + \frac {v ^ {4}}{4 v _ {0} ^ {4}}} - \frac {v ^ {2}}{2 v _ {0} ^ {2}}\right) ^ {1 / 2} \\ + \frac {1}{2} d _ {0} \rho s A v ^ {3} \tag {4} \\ \end{array}
+$$
+
+where $P _ { B }$ and $P _ { I }$ are the two constants that represent the blade profile power and induced power in hovering status, respectively. $v _ { t i p }$ is the tip speed of the rotor blade, $v _ { 0 }$ is the mean rotor induced velocity in hover, $d _ { 0 }$ and s are the fuselage drag ratio and rotor solidity, respectively, and $\rho$ and A are known as the air density and rotor disc area, respectively.
+
+Definition 1 (Maximum-Endurance (ME) Speed): The ME speed $V _ { M E }$ is the optimal speed of a UAV that maximizes the UAV endurance for any given on-board energy [2], which can be reflected in Fig. 4.
+
+Definition 2 (Maximum-Distance (MD) Speed): The MD speed $V _ { M D }$ is the optimal speed of a UAV that maximizes the total flying distance with a unit energy $E _ { u } ~ [ 2 ] .$ .
+
+Remark 1: Note that we ignore the additional/less energy consumption caused by the acceleration/deceleration of the horizontal flight of UAVs since it only takes a small portion of the total operation time of UAV maneuvering duration, as mentioned in [14]. -
+
+Moreover, by considering the arbitrary 3D trajectory with UAV climbing and descending over time, the energy consumption with the heuristic closed-form approximation is expressed as follows [2]:
+
+$$
+\begin{array}{l} E (T) \approx \int_ {0} ^ {T} P (v (t)) d t + \frac {1}{2} m _ {U A V} (v (T) ^ {2} - v (0) ^ {2}) \\ + m _ {U A V} g (h (T) - h (0)) \tag {5} \\ \end{array}
+$$
+
+where $v ( t )$ is the instantaneous UAV speed of time t, T is the ( )end time of the flight, $m _ { U A V }$ is the aircraft mass of a UAV and $g$ is the gravitational acceleration.
+
+Lemma 1: By using the energy consumption models shown in Eqs. (4) and (5), the motion energy consumption of a UAV to fly per unit distance in the vertical direction is more than that in the horizontal direction when flying at the same speeds in both two directions.
+
+Proof: Eq. (5) has more items than Eq. (4), which causes extra energy consumption. More intuitively, the energy consumption per second of a UAV during the horizontal $( E _ { h o r } )$ and vertical $( E _ { v e r } )$ flights at different equal speeds are shown in Fig. 2. As can be seen, $E _ { v e r } ( V ) > E _ { h o r } ( V )$ at different speeds V .
+
+# C. Multi-Objective Optimization Problem
+
+Mathematically, a multi-objective optimization problem (MOP) for achieving the minimum value of each objective function can be modeled as follows [22]:
+
+$$
+\min F = \left[ f _ {1} (x), f _ {2} (x), \dots , f _ {K} (x) \right] \tag {6}
+$$
+
+![](images/a9f130fd9db070d21045c250549cb4904d49aed77d857ac0a995217bfe85ab1e.jpg)
+
+<details>
+<summary>line</summary>
+
+| V (m/s) | Energy consumption per second of a UAV during the horizontal flight (J) | Energy consumption per second of a UAV during the vertical flight (J) |
+| ------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| 0       | 200                                                                | 200                                                                |
+| 5       | 150                                                                | 250                                                                |
+| 10      | 150                                                                | 350                                                                |
+| 15      | 150                                                                | 450                                                                |
+| 20      | 200                                                                | 600                                                                |
+| 25      | 250                                                                | 750                                                                |
+| 30      | 350                                                                | 1000                                                               |
+</details>
+
+Fig. 2. Energy consumptions of UAV flying in horizontal and vertical directions under different speeds.
+
+where $f _ { k } ( x )$ is the kth objective function, x is the vector of the optimization variables and K is the total number of objective functions.
+
+Different from the single-objective optimization problem, the MOP aim to obtain a non-dominated set of solutions instead of a single optimal solution. In the MOP, the optimal solutions are defined as the Pareto optimal solutions, and the solutions that dominate others but not themselves are defined as the Pareto optimal or non-dominated solutions. Moreover, the set of all the Pareto optimal solutions is defined as the Pareto set (PS) and the set of all the Pareto optimal objective functions is regarded as the Pareto front (PF) [22].
+
+Remark 2: Note that in many real-life MOPs, the decision makers will select one or more preferred solutions from the PS according to their specific optimization goals. The Pareto optimal solutions are often called non-dominated solutions when the theoretical Pareto optimal solutions are unknown. -
+
+# III. PROBLEM FORMULATION AND ANALYSIS
+
+# A. Problem Statement
+
+In this part, the scenario description, motivations for CB and problem formulation are presented in detail.
+
+1) Scenario Description: We consider a square monitor area denoted as $A _ { m } , N _ { U A V }$ UAVs are randomly distributed in this area for data collection tasks, such as shooting video or audio, capturing digital signals, sensing or other tasks. Note that these UAVs can fly to any locations of $A _ { m }$ . There are several remote BSs located far away from $A _ { m } .$ , which means that these UAVs cannot reach the BSs for data transmission because of the energy limitation.
+
+At a certain time, when the collected data of a UAV, e.g., video or image, reaches the upper limit of the catch, or a UAV generates some emergency data that needs to be uploaded to the BSs immediately, this UAV needs to transmit different categories of data to remote BSs or data centers for further aggregation, archival retention and utilization. Note that in practice applications, the BSs can be some temporary receiving equipments, e.g., the temporary-constructed data receiving vehicles on the ground, which means that these BSs are also far away from each other, making it difficult to establish stable wireless communication links between them. Moreover, different categories of data may need to be processed preliminarily by the edge computing technology of UAVs, and then sent to different BSs for further processing. In addition, the same data may be required by multiple BSs or data centers, e.g., for the purpose of data backup or data security, which means that the same data may be transmitted multiple times. Furthermore, the collected data may need to be transmitted to different BSs for the consistency check, so that achieving the integrity and consistency of data. Therefore, the UAVs are required to take on the data transmission tasks and the data should be transmitted to all the remote BSs, which can meet the transmission requirements of some works [23]–[25].
+
+![](images/e283d1055ba6f07b92095d7c3e72d0e5b3b1a6fb7c9c33a371fc6b4a5dc29063.jpg)
+
+<details>
+<summary>line</summary>
+
+| Distance (× 100 m) | Single UAV (bps) | 8-UAV CB (bps) |
+| ------------------ | ---------------- | -------------- |
+| 0                  | 1.5e8            | 2.5e8          |
+| 5                  | 0.2e8            | 1.3e8          |
+| 10                 | 0.05e8           | 0.8e8          |
+| 15                 | 0.02e8           | 0.5e8          |
+| 20                 | 0.01e8           | 0.3e8          |
+| 25                 | 0.005e8          | 0.2e8          |
+</details>
+
+Fig. 3. Transmission rates of single UAV and 8-UAV CB.
+
+Remark 3: Note that limited by the transmit power, the data transmission cannot be effectively completed by using a single UAV equipped with the ordinary omnidirectional antenna in the consider scenario. More intuitively, the transmission rates obtained by a single UAV equipped with the omnidirectional antenna and 8-UAV-enabled VAA are shown in Fig. 3. As can be seen, the former has very low data transmission capability when the transmission distance exceeds 2500 m in our setting. -
+
+2) Motivations for Utilizing CB: In this work, we assume that the remote BSs are located several kilometers away from the monitoring area. According to Remark 3, due to the long distances between the BSs and monitor area, the transmission cannot be effectively completed by using the ordinary omnidirectional antennas even in the LoS channel with the limited transmit power. Thus, there are four possible methods for a UAV to transmit the data to remote BSs, that are, (a) flying to the BSs for a short-range communication, (b) constructing a multi-hop flying ad-hoc network, (c) using a directional antenna for improving the gains, and (d) performing CB for communications. We consider that the CB-based method is more suitable for the abovementioned scenario and the motivations are as follows:
+
+• A UAV is usually regarded as an energy-sensitive system with limited on-board energy, which means that the UAV may not have enough energy to return to the monitor area when it flies to these BSs (method (a)) for the long-distance transmission missions. Similarly, if the UAVs construct a multi-hop ad-hoc network for the data transmission (method (b)), part of the UAVs also need to fly around the BSs, which means that these UAVs may be not guaranteed to have enough energy for returning.
+
+The UAVs are dispatched to perform some data collection missions in the monitor area, which means that these UAVs cannot be far away from the area for a long time so that preventing data loss and tasks squeeze. Thus, the methods (a) and (b) may be not very applicable in this scenario. Moreover, some experimental deployments indicate that link failures are likely to occur in method (b) [26], [27]. These failures often manifest in multiple links at a time, causing the path recovery becomes difficult and costly, so that making method (b) not applicable for long-distance communications. In addition, in practical applications, large tracts of densely populated areas are designated as no-fly zones [28], [29]. Thus, using methods (a) and (b) requires bypassing these no-fly zones, resulting in extra energy and time consumptions for movement and communication.
+
+• The directional antennas of UAVs (method (c)) may require more robust UAV frames and larger capacity on-board batteries [30], causing the lack of the versatility and generality of UAV systems. Thus, using the UAVs with directional antennas for long-range communications will undoubtedly increase the cost of data collection.
+
+Note that we will further evaluate the performance of these methods in Section V. Some simulation results [18] and actual experimental applications [31] prove that CB has strong realistic meaning, e.g., obtaining the same outcomes as a multi-hop relay in some cases. Thus, based on analysis above, it is better for the considered scenario that the UAVs perform a VAA for CB, and transmit the data to different BSs in sequence.
+
+3) Problem Formulation: The primary objective of the UAV-enabled VAA is to complete the data transmission asap, so that the UAVs can perform other tasks while saving more energy. Therefore, the total transmission time between the UAV-enabled VAA and the BSs should be minimized. To achieve this goal, the performance of UAV-enabled VAA should be improved. Specifically, the UAVs can move to better positions and use the optimal excitation current weights to generate a better beam pattern, i.e., with higher directivity, so that increasing the corresponding transmission rate.1 However, performing a suitable VAA will increase the motion energy consumptions of UAVs, which may decrease the lifetime of the UAV networks. Moreover, generating the UAV-enabled VAA is also a time-consuming task. Although the performing time of the UAV-enabled VAA can be reduced by increasing the flight speeds of UAVs, the energy consumption of a UAV for a certain flight distance may increase with the growth of its speed in some cases, which means that it is difficult to reduce the performing time of the UAV-enabled VAA while maintaining low energy consumptions simultaneously. Thus, these conditions should be considered holistically since there are trade-offs between them.
+
+In addition, without loss of generality, we assume that the UAVs need to transmit the collected data to all the BSs. However, the mainlobe of the UAV-enabled VAA can point to only one BS at each time, which means that the UAV elements of the VAA need to be re-located after each transmission. Thus, the order of communicating with each BS should be also considered since this will affect the motion energy consumptions of the UAVs.
+
+In summary, the positions, excitation current weights of UAVs, flight speeds of UAVs for performing the VAA and order of communicating with different BSs will affect the
+
+performance of the considered UAV networks. In this paper, we use $\mathbb { X } ^ { \mathcal { B } \times \mathcal { U } } = \{ x _ { i , j } ^ { U } | \forall i \in \mathcal { U } , \forall j \in \mathcal { B } \} , \mathbb { Y } ^ { \mathcal { B } \times \mathcal { U } } = \{ y _ { i , j } ^ { U } | \forall i \in$ $\mathcal { U } , \forall j \in \mathcal { B } \} , \mathbb { Z } ^ { \mathcal { B } \times \mathcal { U } } \ = \ \{ z _ { i , i } ^ { U } | \forall i \in \mathcal { U } , \forall j \in \mathcal { B } \} , \mathbb { I } ^ { \mathcal { B } \times \mathcal { U } } \ =$ $\{ I _ { i , j } | \forall i \in \mathcal { U } , \forall j \in \mathcal { B } \}$ and ${ \mathbb { V } } ^ { \mathcal { B } \times \mathcal { U } } \ = \ \{ v _ { i , j } | \forall i \ \in \ \mathcal { U } , \forall j \ \in$ =B} to denote the x-axis coordinates, y-axis coordinates, z-axis coordinates, excitation current weights and horizontal speeds of UAVs for performingBSs, respectively. For example, $x _ { i , j } ^ { U } , y _ { i , j } ^ { U } , z _ { i , j } ^ { U } , ~ I _ { i , j }$ diffeand $v _ { i , j }$ represent the x-axis coordinate, y-axis coordinate, z-axis coordinate, excitation current weight and speed of the ith UAV for serving the jth BS, respectively. Moreover, we utilize $\mathbb { Q } ^ { \scriptscriptstyle { B \times 1 } } = \{ Q _ { 1 } , Q _ { 2 } , \dotsc , Q _ { N _ { B S } } | j \ \in \ B , Q _ { j } \ \in \ B \}$ to denote =the order that the UAV-enabled VAA to communicate with different BSs, $\boldsymbol { \mathrm { e . g . , } } \mathbb { Q } ^ { \beta \times 1 } = \{ 2 , 1 , \dots , 1 0 \}$ represents that the = 2 1 10VAA will communicate with the these BSs according to the order of BS 2, BS 1, …, BS 10.
+
+Accordingly, a decision variable (solution) with all decision dimensions can be expressed as $\begin{array} { r l } { X } & { { } = } \end{array}$ $[ { \mathbb X } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb Y } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb Z } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb I } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb V } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb Q } ^ { \mathcal { B } \times \bar { 1 } } ]$ , = and the [ ]optimization objectives are detailed as follows.
+
+Optimization Objective 1: In this paper, the first objective is to minimize the total transmission time from the UAV-enabled VAA to all the BSs, and this can be achieved by optimizing the positions and excitation current weights of the UAV elements in the VAA as well as the order of communicating with different BSs. Thus, the first objective function can be designed as follows
+
+$$
+f _ {1} (\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Z} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {I} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Q} ^ {\mathcal {B} \times 1}) = \sum_ {j = 1} ^ {N _ {B S}} T _ {j} ^ {t r} \tag {7}
+$$
+
+where $\begin{array} { r } { T _ { j } ^ { t r } = \frac { D _ { j } ^ { d a t a } } { R _ { B S _ { j } } } } \end{array}$ RBSj denotes the transmission time from the UAV-enabled VAA to BS j, and $D _ { j } ^ { d a t a }$ is the total transmitted data.
+
+Optimization Objective 2: The UAVs need to perform a VAA within a certain time $T ^ { p e r f }$ . Therefore, the flight speeds of UAVs need to be optimized to minimize the motion time of UAVs for performing the VAA. Hence, the second objective is to minimize the total performing time of the UAV-enabled VAA for communicating with different BSs, and the second objective function can be designed as follows
+
+$$
+f _ {2} \left(\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Z} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {V} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Q} ^ {\mathcal {B} \times 1}\right) = \sum_ {j = 1} ^ {N _ {B S}} T _ {j} ^ {\text { per } f} \tag {8}
+$$
+
+where $T _ { j } ^ { p e r f } = \widetilde { \mathbf { M a x } } ( \{ \frac { S _ { i , j } } { v _ { i , j } } | \forall i \in \mathcal { U } \} )$ , in which $\widetilde { \mathrm { M a x } } ( \cdot )$ is the vi, = ( ) ( )maximizing operator for calculating the maximum values of a vector and $S _ { i , j }$ is the horizontal flight distance of the ith UAV for serving BS $j$ which can be calculated by using the 3D locations of $\mathbf { \bar { U } A V s _ { \lambda } } ( \mathbb { X } ^ { B \times \mathcal { U } } , \mathbb { Y } ^ { B \times \mathcal { U } } , \mathbb { Z } ^ { B \times \mathcal { U } } )$ and the order of communicating with different BSs $( \mathbb { Q } ^ { B \times 1 } )$ . Note that $T ^ { p e r f }$ refers to the time from the initial moment to the moment that the last UAV arrives at the target position, and if parts of UAVs arrive their locations early, they will hover and wait for other UAVs in their locations until all the UAVs approach their destinations.
+
+Remark 4: To reach the desired positions, each UAV will first fly along the horizontal direction, then in the vertical direction, and the reasons and influences of this strategy are discussed in Section VI.
+
+Remark 5: Note that we ignore the vertical flight time of UAVs when performing the UAV-enabled VAA. This is due to the fact that we reduce the amplitude of the vertical movement of the UAVs in this paper, which means that the UAVs will have more horizontal flights than the vertical flights. Thus, the time of vertical flight is so less that can be ignored. Moreover, the energy consumption model shown in Eq. (5) is approximate, and the energy consumption of vertical flight is affected by the flight distances, initial and terminal speeds, and instantaneous speeds of a UAV. Hence, it is difficult to accurately obtain the closed-form expression of the energy consumption for performing the UAV-enabled VAA. Accordingly, in this paper, $\mathbb { V } ^ { B \times \hat { u _ { } } ^ { - } }$ only denotes the horizontal speeds of the UAVs. However, note that the energy consumptions of the vertical flight cannot be ignored since they are with large values. Thus, we calculate the flying energy consumptions of UAVs in the vertical direction by using $V _ { M D }$ . -
+
+Optimization Objective 3: To achieve the previous two objectives, the UAVs need to fly to better locations by using unequal speeds and perform different VAAs for communicating with different BSs. However, these processes will cause extra motion energy consumptions, and the UAVs need to hover to communicate with the BSs, which is also a energy-consume task. Thus, to reduce the total energy consumptions of UAVs in terms of motion for performing VAA and hovering for CB, the third objective function can be designed as follows
+
+$$
+\begin{array}{l} f _ {3} \left(\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Z} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {V} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Q} ^ {\mathcal {B} \times 1}\right) \\ = \sum_ {j = 1} ^ {N _ {B S}} \sum_ {i = 1} ^ {N _ {U A V}} E _ {i, j} ^ {t r} (T _ {j} ^ {t r}) + E _ {i, j} ^ {p e r f} (T _ {j} ^ {p e r f}) \tag {9} \\ \end{array}
+$$
+
+where $E _ { i , j } ^ { t r } ( T _ { j } ^ { t r } )$ represents the hovering energy consumptions ( )of the ith UAV that communicates with the jth BS, which can be calculated as $E _ { i , j } ^ { t r } ( T _ { j } ^ { t r } ) ~ = ~ P ( V _ { 0 } ) \cdot T _ { j } ^ { t r }$ , in which $V _ { 0 } ~ = ~ 0$ ( ) = ( )is the hovering speed. Moreover, $\textcircled { T } _ { i , j } ^ { p e r f } ( T _ { j } ^ { p e r f } )$ = 0 ( )denotes the energy consumptions of the UAV i for performing the UAV-enabled VAA for serving with BS j, and it can be calculated as $E _ { i , j } ^ { p e r f } ( T _ { j } ^ { p e r f } ) = \bar { P } ( v _ { i , j } ) \cdot T _ { j } ^ { m o v e } + P ( V _ { 0 } )$ · $( T _ { j } ^ { t r } - T _ { j } ^ { m o v e } )$ (, in which $\begin{array} { r } { T _ { j } ^ { m o v e } = \frac { S _ { i , j } } { v _ { i , j } } } \end{array}$ ( ) + ( )Si,jvi,j is the flight time of Ui，j UAV i for reaching the destination for serving BS $j .$ .
+
+Accordingly, the TEMCMOP of CB in UAV networks can be formulated as follows
+
+$$
+\min _ {X} F = (f _ {1}, f _ {2}, f _ {3}) \tag {10a}
+$$
+
+$$
+\text { s.t. } C 1: 0 \leqslant I _ {i, j} \leqslant 1, \quad \forall i \in \mathcal {B}, \forall j \in \mathcal {U} \tag {10b}
+$$
+
+$$
+C 2: L _ {m i n} \leqslant x _ {i, j} ^ {U} \leqslant L _ {m a x}, \quad \forall i \in \mathcal {B}, \forall j \in \mathcal {U} \tag {10c}
+$$
+
+$$
+C 3: L _ {\text { min }} \leqslant y _ {i, j} ^ {U} \leqslant L _ {\max}, \quad \forall i \in \mathcal {B}, \forall j \in \mathcal {U} \tag {10d}
+$$
+
+$$
+C 4: H _ {\text { min }} \leqslant z _ {i, j} ^ {U} \leqslant H _ {\max}, \quad \forall i \in \mathcal {B}, \forall j \in \mathcal {U} \tag {10e}
+$$
+
+$$
+C 5: V _ {\min} \leqslant v _ {i, j} \leqslant V _ {\max}, \quad \forall i \in \mathcal {B}, \forall j \in \mathcal {U} \tag {10f}
+$$
+
+$$
+C 6: \mathbb {Q} ^ {\mathcal {B} \times 1} \in \mathcal {Q} \tag {10g}
+$$
+
+$$
+C 7: \theta_ {S L} \in [ - \pi , \theta_ {F N 1}) \cup (\theta_ {F N 2}, \pi ] \tag {10h}
+$$
+
+$$
+C 8: \phi_ {S L} \in [ - \pi , \phi_ {F N 1}) \cup (\phi_ {F N 2}, \pi ] \tag {10i}
+$$
+
+$$
+C 9: D _ {(i _ {1}, i _ {2})} \geq \max \{D _ {m i n}, \frac {\lambda}{2} \}, \forall i _ {1}, i _ {2} \in \mathcal {U} (1 0 j)
+$$
+
+where $L _ { m i n }$ and $L _ { m a x }$ are the minimum and maximum ranges of the area that the UAVs can move in the horizontal plane, $H _ { m i n }$ and $H _ { m a x }$ are the minimum and maximum altitudes that the UAV can fly in the vertical directions, $V _ { m i n }$ and $V _ { m a x }$ are the minimum and maximum horizontal speeds of the UAVs, respectively. Moreover, Q  {QB×11 , $\mathcal { Q } = \{ \mathbb { Q } _ { 1 } ^ { \mathcal { B } \times 1 } , \mathbb { Q } _ { 2 } ^ { \mathcal { B } \times \hat { 1 } } , . . . , \mathbb { Q } _ { N _ { B S 1 } } ^ { \mathcal { B } \times 1 } \}$ QNBS! QB×1NBS } is the =set of orders that the UAV-enabled VAA communicates with $N _ { B S }$ different BSs, which has $N _ { B S } !$ possible permutations. In addition, $\theta _ { F N 1 } , \theta _ { F N 2 } , \phi _ { F N 1 }$ !, and φF N2 are the first nulls in $[ - \pi , \theta _ { M L } ) , ( \theta _ { M L } , \pi ] , [ 0 , \phi _ { M L } )$ and $\left( \phi _ { M L } , \pi \right]$ , respectively, [ ) ( ] [0 ) ( ]and they can determine the first null beamwidth of the beam pattern. Furthermore, {·} is an operator that uses to take maxthe maximum value, and the constraint in (10j) indicates that the minimum separation distance between two adjacent UAVs must be greater than $D _ { m i n }$ and $\begin{array} { l } { { \frac { \lambda } { 2 } } } \end{array}$ to avoid collision and mutual coupling, respectively.
+
+# B. Problem Analysis
+
+In this section, the formulated TEMCMOP is comprehensively analyzed.
+
+Lemma 2: The formulated TEMCMOP shown in $E q .$ . (10) is NP-hard.
+
+Proof: For ease of analysis and without loss of generality, we only consider the third optimization objective and simplify the original formulated TEMCMOP by using fixed locations, horizontal speeds and excitation current weights of the UAV-enabled VAA. Thus, $f _ { 3 }$ and the corresponding constraints can be reduced as follows
+
+$$
+\min _ {X (\mathbb {Q} ^ {\mathcal {B} \times 1})} f _ {3} = \sum_ {j = 1} ^ {N _ {B S} - 1} E _ {Q _ {j}, Q _ {j + 1}} \tag {11a}
+$$
+
+$$
+\text { s.t. } \mathbb {Q} ^ {\mathcal {B} \times 1} \in \mathcal {Q} \tag {11b}
+$$
+
+where $E _ { Q _ { j } , Q _ { j + 1 } }$ 1 denotes the motion energy consumptions of the UAVs from communicating with the Qjth BS to that of the Qj+1th BS. The reduced optimization problem (11) is actually a traveling salesman problem (TSP) [13], [32], which is known to be NP-hard. Clearly, the formulated TEMCMOP is more complex than the simplified problem, thus it is also an NP-hard problem.
+
+Lemma 3: The objectives of the formulated TEMCMOP shown in $E q .$ (10) are trade-offs.
+
+Proof: The increased performance of the UAV-enabled VAA will increase the transmission rate, so that the communication time will be reduced, thereby saving the hovering energy consumptions of UAVs. However, the motion of UAVs causes extra energy consumptions. Moreover, according to Eq. (4), if the UAVs perform the UAV-enabled VAA by using higher speeds, the energy consumptions will be also higher. On the contrary, if the slow speeds of UAVs are adopted, the performing time of UAV-enabled VAA will be increased, which means that the hovering energy consumptions are increased. Thus, the abovementioned objectives are trade-offs.
+
+Lemma 4: The formulated TEMCMOP shown in $E q .$ . (10) is a large-scale optimization problem.
+
+![](images/922d3aa4bf3250a56ceade03c3c7b009829f4dc78144e795b204130049c1f17e.jpg)
+
+<details>
+<summary>line</summary>
+
+| V (m/s) | Power curve of FAD mechanism (W) | Average power curve of FMEH mechanism (W) |
+| ------- | --------------------------------- | ------------------------------------------ |
+| 0       | 170                               | 170                                        |
+| 4       | 150                               | 150                                        |
+| 10      | 125                               | 125                                        |
+| 20      | 180                               | -                                          |
+</details>
+
+Fig. 4. Sketch map of $V _ { d i v }$ .
+
+Proof: Both the 3D locations of $\begin{array} { r l } { \mathbf { U A V s } } & { { } ( \mathbb { X } ^ { B \times \mathcal { U } } } \end{array}$ , $\mathbb { Y } ^ { B \times { \mathcal { U } } } , { \mathbb { Z } } ^ { B \times { \mathcal { U } } } )$ , the speed of UAVs $( \mathbb { X } ^ { B \times \mathcal { U } } )$ , the excitation current weights of $\mathbf { U A } \mathbf { \bar { V } _ { S } } ( \mathbb { I } ^ { B \times \mathcal { U } } )$ , and the order of communicating with different BSs $( \mathbb { Q } ^ { B \times 1 } )$ may affect the optimization objectives of formulated TEMCMOP. Thus, these factors must be considered, which means that there are $( 5 \times ( N _ { U A V } \times N _ { B S } ) +$ $N _ { B S } )$ (5 ( )+solution dimensions should be optimized. Moreover, )the number of solution dimensions is positively correlated with $N _ { U A V }$ and $N _ { B S }$ , which means that the increasing of them will significantly grow the scale of the problem. For example, assume that the numbers of UAVs and BSs are 20 and 10, respectively, then the number of solution dimension is 1010. Thus, the formulated MOP becomes a large-scale optimization problem [33], [34].
+
+# C. Problem Reduction
+
+The formulated TEMCMOP is an NP-hard and large-scale optimization problem with trade-offs between different objectives, which means that it is difficult to be handled and even a high-efficiency algorithm will consume many computing resources for solving it. Thus, it is of paramount importance to reduce its complexity.
+
+T perf refers to the time from the initial moment to the moment that the last UAV arrived at the target location. Intuitively, it may be an energy-optimal strategy for all the UAVs in the VAA fly at a constant speed to the target positions at the termination time. However, the relationship between the power and speed of a UAV is a complex curve, as shown in Fig. 4. Thus, when the flight distance $S _ { i }$ of a UAV i is less than $V _ { M E } \times T ^ { p e r f }$ , this UAV may have two strategies to reach the target position. (1) Fly by using $V _ { a d }$ (denoted as FAD): the UAV flies to the target location by using the uniform speed $V _ { a d } ( S _ { i } , T ^ { p e r f } )$ . (2) Fly by using $V _ { M E }$ and then hover (denoted ( )as FMEH): the UAV flies to the target location by using the speed $V _ { M E }$ and then hovers at the location.
+
+Definition 3 (Adaptive Speed): Given a fixed flight distance $S _ { i }$ of a UAV i and T perf for performing UAV-enabled VAA, the adaptive speed $V _ { a d }$ refers to the speed that the UAV can use to fly to the target position at the end of T without acceleration or deceleration, which can be calculated as $\begin{array} { r } { V _ { a d } ( S _ { i } , T ^ { p e r f } ) = \frac { S _ { i } } { T ^ { p e r f } } } \end{array}$ .
+
+( ) =Definition 4 (Divide Speed): If the energy consumption of a UAV for reaching the target position by using the FAD strategy is equal to that by using the FMEH strategy, the adaptive speed of FAD strategy is called as the divide speed $( V _ { d i v } )$ .
+
+Lemma 5: If $V _ { a d } ( S _ { i } , T ^ { p e r f } )$ of a UAV i is less than $V _ { d i v } ,$ , ( )the UAV has better energy efficient with FMEH strategy for reaching target location than FAD, and vice versa.
+
+Proof: Assuming that there is a speed $V _ { e q u a l }$ of the FAD strategy that consumes the same amount of energy with the FMEH strategy for the same flight distance $S _ { p }$ and $T _ { p } ^ { p e r f }$ . Moreover, we suppose that the time of a UAV for flying to targeted position by using $V _ { M E }$ is $T _ { M E } ^ { m o v e }$ . Then, the following equation can be obtained
+
+$$
+\begin{array}{l} P (V _ {e q u a l}) \cdot T _ {p} ^ {p e r f} = P (V _ {M E}) \cdot T _ {M E} ^ {m o v e} \\ + P (V _ {0}) \cdot (T _ {p} ^ {p e r f} - T _ {M E} ^ {m o v e}) (1 2) \\ \end{array}
+$$
+
+where T perfp $\begin{array} { r } { T _ { p } ^ { p e r f } = \frac { S _ { p } } { V _ { e q u a l } } } \end{array}$ and T moveME $\begin{array} { r } { T _ { M E } ^ { m o v e } = \frac { S _ { p } } { V _ { M E } } } \end{array}$ . Thus, Eq. (12) can Vequal VME be converted as follows
+
+$$
+\begin{array}{l} P (V _ {e q u a l}) \cdot \frac {S _ {p}}{V _ {e q u a l}} = P (V _ {M E}) \cdot \frac {S _ {p}}{V _ {M E}} \\ + P (V _ {0}) \cdot (\frac {S _ {p}}{V _ {\text { equal }}} - \frac {S _ {p}}{V _ {M E}}) \tag {13} \\ \end{array}
+$$
+
+accordingly, $P ( V _ { e q u a l } )$ can be expressed as follows
+
+$$
+P (V _ {e q u a l}) = \frac {P (V _ {M E}) - P (V _ {0})}{V _ {M E} - 0} \cdot V _ {e q u a l} + P (V _ {0}) \tag {14}
+$$
+
+Thus, Eq. (14) can regarded as the average power expression of FMEH mechanism when $v < V _ { M E }$ . Moreover, the power that changes with the speed of these two mechanism are shown in Fig. 4, wherein the blue curve represents the FAD mechanism and red line denotes the FMEH mechanism as derived in Eq. (14). As can be seen, these two curves have an intersection point $( V _ { d i v } , P ( V _ { d i v } ) )$ . Specifically, when $v < V _ { d i v }$ , the blue ( )curve is above the red curve, which means the FMEH strategy has better energy efficient in this case since $T _ { p } ^ { p e r f }$ for FAD and FMEH strategies are equal and the FAD strategy has higher power than FMEH strategy. Correspondingly, when $v > V _ { d i v } ,$ the FAD strategy has better energy efficient. Note that due to the complicated expression of $P ( V )$ in Eq. (4), a closed-form expression for $V _ { d i a }$ is difficult to obtain. However, it can be found numerically that it is an efficient way to calculate $V _ { M E }$ in [14].
+
+According to Lemma 5, we can employ the most energy-efficient flight scheme for the UAVs to save more energy consumptions, i.e., when the $V _ { a d } ( S _ { i } , T ^ { p e r f } )$ of a UAV is less than $V _ { d i v } ,$ ( ) the FMEH strategy is used, and otherwise, the FAD strategy is adopted. Thus, the speeds of UAVs for serving BS $j ~ ( \forall j \in B )$ can be calculated as follow
+
+$$
+v _ {i, j} = \left\{ \begin{array}{l l} \frac {S _ {i , j}}{T _ {j} ^ {\text { perf }}} & V _ {a d} (S _ {i, j}, T _ {j} ^ {\text { perf }}) > V _ {d i v} \\ \{V _ {0}, V _ {M E} \} & \text { otherwise } \end{array} \right. \tag {15}
+$$
+
+Thus, we can derive the energy-optimal speeds of $N _ { U A V }$ UAVs for serving BS $j$ based on $\bar { T } _ { j } ^ { p e \bar { r } f }$ , which means that the solution dimensions that related to the speeds can be reduced from $N _ { U A V } \times N _ { B S }$ to $N _ { B S }$ so that it is easier to be solved. Accordingly, the reduced TEMCMOP (R-TEMCMOP) that reformulated from the original TEMCMOP shown in Eq. (10) can be presented as follows
+
+$$
+\min _ {X ^ {s i m}} F = (f _ {1}, f _ {2}, f _ {3})
+$$
+
+$$
+\mathrm{s.t.} C 1 - C 4, C 6 - C 9
+$$
+
+$$
+C 1 0: 0 \leqslant T _ {i} ^ {\text { perf }} \leqslant \frac {\sqrt {2} \cdot (L _ {\max} - L _ {\min})}{V _ {\min}}, \forall i \in \mathcal {B} \tag {16}
+$$
+
+where $\begin{array} { r l r } { X ^ { s i m } } & { = } & { [ { \mathbb X } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb Y } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb Z } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb I } ^ { \mathcal { B } \times \mathcal { U } } , { \mathbb T } ^ { \mathcal { B } \times 1 } , { \mathbb Q } ^ { \mathcal { B } \times 1 } ] . } \end{array}$ , and $\mathbb { T } ^ { \mathcal { B } \times 1 } = \{ T _ { 1 } ^ { \dot { p e r f } } , T _ { 2 } ^ { \dot { p e r f } } , \cdot \cdot \cdot , T _ { N _ { B S } } ^ { p e r \dot { f } } \}$ ]. As can be seen, =the solution dimensions of the original TEMCMOP are reduced after the reformulating, making it easier to be solved.
+
+# IV. ALGORITHM
+
+In this section, an IMOALO with several improved factors are proposed to solve the formulated R-TEMCMOP.
+
+# A. Motivation
+
+Swarm intelligence (SI) algorithms study the complex collective behavior of the systems composed of several simple agents, which can interact with other agents locally and with their surrounding environment. These properties make SI algorithms be potential to solve some NP-hard problems. Among them, ant lion optimization (ALO) algorithm is a recent proposed SI algorithm with superiority and outperformance in comparison to other SI algorithms [35]. Thus, we aim to employ MOALO [36], which is a variant of ALO for solving MOP, to handle the formulated R-TEMCMOP shown in Eq. (16). However, conventional MOALO may face some challenges for solving this problem, which are summarized as follows:
+
+• The solution of the formulated R-TEMCMOP has two types of solution dimensions that are the continues solution dimensions $( \mathbb { X } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { Y } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { Z } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { I } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { T } ^ { \mathcal { B } \times 1 } )$ and discrete solution dimensions $( \mathbb { Q } ^ { B \times 1 } )$ , respectively. Thus, it is a hybrid MOP with mixed solution dimensions, which is hard for classical SI algorithms such as MOALO to deal with [37].   
+As illustrated in Lemma 4, the formulated TEMCMOP as well as R-TEMCMOP are large-scale optimization problems and they are difficult to be solved.   
+In the formulated R-TEMCMOP, different solution dimensions indicate completely different physical meanings, i.e., position, speed, excitation current weight and discrete order, which means that it is a challenge for the conventional MOALO to update them in a specific way. Moreover, there are some principles of CB which are difficult to be learned by SI algorithms, such as the complex relationship between the element positions and beam pattern. Thus, conventional MOALO may consume unnecessary resources in a redundant solution space when solving the formulated R-TEMCMOP.
+
+# B. Conventional MOALO
+
+ALO is proposed by Mirjalili [38]. The main inspiration of ALO algorithm comes from the hunting behavior of antlions in nature. Specifically, ants may randomly walk around antlions and be hunted by antlions, which is the same as the exploration of search space. Moreover, the antlions may construct traps to affect ants walk, and the boundaries of antlions traps may adaptively shrink, which can guarantee the exploitation of search space. Thus, the mathematical models of ALO are presented as follows.
+
+The solutions of the optimization problem are represented by ants, and the antlions are used to maintain the best solutions obtained by ants. First, an ant performs random walk and the rand walk is normalized inside the search space. Then, the random walk of ants may be affected by the antlions and the radius of an ant’s random walk is decreased adaptively. Finally, if an ant is fitter than an antlion, the antlions may catch the ant and reconstruct the trap. The details of these operators are described in [36]. Moreover, ALO use an antlion that is selected by the roulette wheel selection from the antlions set and an elite that represents the fittest antlion during optimization to guide the updates of all ants. Accordingly, an ant can be updated as follows
+
+$$
+X _ {k} ^ {t} = \frac {R _ {A} ^ {t} + R _ {E} ^ {t}}{2} \tag {17}
+$$
+
+where $X _ { k } ^ { t }$ is the kth ant of the tth iteration, $R _ { A } ^ { t }$ is the random walk around the antlion that selected by the roulette wheel selection from antlions set at the tth iteration, and $R _ { E } ^ { t }$ is the random walk around the elite at tth iteration.
+
+To solve MOP, MOALO utilizes the similar mechanism to the multi-objective particle swarm optimization (MOPSO) [39]. Specifically, MOALO employs Pareto dominance to compare different solutions and uses an archive to store Pareto solutions. Moreover, it introduces the niching method [36] to maintain the archive. The main step of niching method is first calculating the corresponding probability of each solution according to the distribution density of the solution, then selecting a solution from the archive or deleting solutions from the full archive depending on the probabilities by using roulette wheel selection.
+
+# C. IMOALO
+
+In this section, we propose an IMOALO to solve the formulated R-TEMCMOP. IMOALO introduces two improved factors that are the chaos-OBL solution initialization and hybrid solution update operators to enhance the performance of conventional MOALO so that overcoming the challenges presented in Section IV-A. The pseudocode of the proposed IMOALO is shown in Algorithm 1, and the details are presented as follows:
+
+1) Chaos-OBL Solution Initialization: Conventional MOALO algorithm performs the solution initialization in a random way, which may reduce the population diversity, leading to certain blindness of the searching directions. Moreover, as mentioned above, the formulated R-TEMCMOP is a large-scale optimization problem, which means that the algorithm may easily fall into the local optima when the performance of the initial solutions is not with high quality. Thus, it is of paramount importance to enhance the performance of the initial solutions.
+
+The chaotic search is a random movement method with the features of ergodicity, randomicity and irregularity, which can transform the parameters/variables from the solution space to the chaotic domain. Thus, it is able to obtain a better distribution of initial solutions. Moreover, OBL is an optimization method which can be used to improve the diversity of initial solutions [40], [41], and the principle of OBL is to search both directions in the searching space and then maintain the fittest solutions, so that enhancing the quality of solution initialization. In this work, we combine these two abovementioned methods to obtain better initial solutions, and the steps can be summarized as follows:
+
+Algorithm 1 IMOALO   
+1 Define the parameters: population size $N_{pop}$ , maximum iteration $t_{max}$ , archive set Archive and fitness function, etc.;
+2 for k = 1 to $N_{pop}$ do
+3 Initialize the kth solution of the population by using Eqs. (19) and (20); //Chaos-OBL solution initialization
+4 end
+5 for t = 1 to $t_{max}$ do
+6 for k = 1 to $N_{pop}$ do
+7 Select a antlion randomly from the Archive;
+8 Select the elite by using roulette wheel selection from the Archive;
+9 Update the continuous part $X_k(\mathbb{X}^{\mathcal{B}\times\mathcal{U}}, \mathbb{Y}^{\mathcal{B}\times\mathcal{U}}, \mathbb{Z}^{\mathcal{B}\times\mathcal{U}}, \mathbb{I}^{\mathcal{B}\times\mathcal{U}}, \mathbb{T}^{\mathcal{B}\times1})$ of the kth ant by using Algorithm 2;
+10 Update the discrete part $X_k(\mathbb{Q}^{\mathcal{B}\times1})$ of the kth ant by using Algorithm 3;
+11 end
+12 Calculate the objective function values of all ants and update Archive;
+13 if the archive is full then
+14 Delete some solutions by using Roulette wheel from Archive;
+15 end
+16 Return Archive;
+17 end
+
+First, we utilize a chaotic map which is Gauss/mouse map to initial $N _ { p o p }$ solutions since it achieves the best performance of initial solutions in the tests, and this map can be modeled as follows
+
+$$
+\hbar_ {i + 1} = \left\{ \begin{array}{l l} 1, & \hbar_ {i} = 0 \\ \frac {1}{m o d (\hbar_ {i} , 1)}, & \text { otherwise } \end{array} \right. \tag {18}
+$$
+
+where i is the index of the chaotic sequence, and $\hbar _ { i }$ is the ith number of the Guess/mouse sequence. Moreover, mod is the modulo operation. By using this model, each dimension of solutions can be initialized as follows
+
+$$
+X (i) = L B _ {i} + \hbar_ {i} \times (U B _ {i} - L B _ {i}) \tag {19}
+$$
+
+where $X ( i )$ is the ith dimension of a solution, and $L B _ { i }$ and $U B _ { i }$ ( )are the corresponding upper and lower bounds of the ith dimension of a solution, respectively.
+
+Second, the $N _ { p o p }$ opposition solutions of chaos-initialed solution are generated by using OBL method. Specifically, each dimension of the solution can be initialized as follows
+
+$$
+X (i) = L B _ {i} + U B _ {i} - X ^ {c h} (i) \tag {20}
+$$
+
+where $X ^ { c h }$ is corresponding chaos-initialed solution of X.
+
+Finally, we calculate the objective function values of the generated $2 \cdot N _ { p o p }$ initial solutions, and then rank them by using Pareto dominance and retain the best $N _ { p o p }$ ones as the final initial solutions subsequently.
+
+2) Hybrid Solution Update Operator: As mentioned in Section IV-A, the formulated R-TEMCMOP is a hybrid optimization problem with both continuous solution and discrete solution spaces, respectively. Thus, these two parts should be updated separately.
+
+For the continuous part, these solution dimensions can be straightforwardly updated by using the method of conventional MOALO. However, it is hard for the conventional MOALO to update the solution dimensions with different physical meanings in a specific way. Moreover, the complex principles in CB should be considered to obtain a better beam pattern. Thus, we utilize the following method to update continuous solution dimensions.
+
+First, according to the principles of electromagnetism and CB, an antenna array can achieve higher gain when the elements are concentrated with suitable distances [21], e.g., between . λ and λ for avoiding the mutual coupling. 0 5Moreover, if the UAVs in the VAA are compactly distributed, less motion energy will be consumed to change the locations of UAVs for serving different BSs. Thus, it is better for the algorithm to centralize the horizontal locations of UAVs $( \mathbb { X } ^ { B \times \breve { \mathcal { U } } } , \mathbb { Y } ^ { B \times \mathcal { U } } )$ in the earlier iterations.
+
+Inspired by the moth-flame optimization (MFO) algorithm [42], a MFO-based method is proposed to achieve the purpose above. Specifically, a center position of the UAV-enabled VAA is selected as a flame $( X _ { c } ^ { f } )$ to guide the update directions of all the UAV elements. Thus, the solution update method for the horizontal locations of UAV elements in the earlier iterations by using the MFO-based method can be described as follows
+
+$$
+\begin{array}{l} X _ {k} \left(\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}\right) = D _ {k} \left(\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}\right) \cdot \cos (2 \pi \cdot r a n d) \\ + X _ {k} (\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}) \tag {21} \\ \end{array}
+$$
+
+where $D _ { k }$ indicates the distance of the kth solution for the flame $( X _ { c } ^ { f } )$ , which can be calculated as follows
+
+$$
+D _ {k} \left(\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}\right) = X _ {k} \left(\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}\right) - X _ {c} ^ {f} \left(\mathbb {X} ^ {\mathcal {B} \times \mathcal {U}}, \mathbb {Y} ^ {\mathcal {B} \times \mathcal {U}}\right) \tag {22}
+$$
+
+where $X _ { c } ^ { f } ( \mathbb { X } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { Y } ^ { \mathcal { B } \times \mathcal { U } } ) = [ \widetilde { E } ( \mathbb { X } ^ { \mathcal { B } \times \mathcal { U } } ) , \widetilde { E } ( \mathbb { Y } ^ { \mathcal { B } \times \mathcal { U } } ) ]$ , and $\widetilde E ( \cdot )$ ( ) = [ ( ) ( )] ( )is the averaging operator for calculating the average values of each row of a matrix.
+
+Second, according to Lemma 1, the vertical flight of a UAV consumes more energy than that of the horizontal flight, which means that the update of $\mathbb { Z } ^ { B \times { \mathcal { U } } }$ needs to be more cautious since it may affect the third optimization objective significantly. Moreover, the shorter vertical flight also reduces the corresponding time for performing the VAA in the real applications. Thus, the vector $\mathbb { Z } ^ { 1 \times \mathcal { U } }$ which represents the z-axis coordinates of the UAV-enabled VAA when communicates with the first BS obtained by using the update method of conventional MOALO is set as a flame to guide the update of $\mathbb { Z } ^ { \beta ^ { \prime } \times \mathcal { U } } \left( \beta ^ { \prime } = \{ 2 , 3 , \cdots , N _ { U A V } \} \right)$ ), and the update method is as follows $( \forall j \in B ^ { \prime } )$ :
+
+$$
+X _ {k} (\mathbb {Z} ^ {j \times \mathcal {U}}) = D _ {k} (\mathbb {Z} ^ {j \times \mathcal {U}}) \cdot c o s (2 \pi \cdot r a n d) + X _ {k} (\mathbb {Z} ^ {j \times \mathcal {U}}) \tag {23}
+$$
+
+$$
+D _ {k} (\mathbb {Z} ^ {j \times \mathcal {U}}) = X _ {k} (\mathbb {Z} ^ {j \times \mathcal {U}}) - X _ {k} (\mathbb {Z} ^ {1 \times \mathcal {U}}) \tag {24}
+$$
+
+Finally, appropriate excitation current weights $\mathbb { I } ^ { B \times { \mathcal { U } } }$ can change the beam pattern of the UAV-enabled $\mathrm { V A A }$ for each communication significantly, which results in a higher transmission rate. Thus, we also utilize the MFO-based method to enhance the update performance of the excitation current weights. Specifically, for a solution $X _ { k }$ that needs to be updated, we first select a full solution $X _ { a }$ from the Pareto archive by using the roulette wheel selection, and replace ${ X _ { k } } ( \mathbb { X } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { Y } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { Z } ^ { \mathcal { B } \times \mathcal { U } } , \mathbb { T } ^ { \mathcal { B } \times 1 } )$ by using $X _ { a } ( \mathbb { X } ^ { B \times \mathcal { U } }$ , YB×U , $\mathbb { Z } ^ { { \boldsymbol { B } } \times { \dot { \boldsymbol { U } } } } , \mathbb { T } ^ { { \boldsymbol { B } } \times { 1 } } )$ . Then, $X _ { a } ( \mathbb { I } ^ { B \times \mathcal { U } } )$ are set as ( )the flame to guide the exploitation of $X _ { k } ( \mathbb { I } ^ { B \times \dot { \mathcal { U } } } )$ , and the update method is as follows
+
+$$
+X _ {k} (\mathbb {I} ^ {\mathcal {B} \times \mathcal {U}}) = D _ {k} (\mathbb {I} ^ {\mathcal {B} \times \mathcal {U}}) \cdot \cos (2 \pi \cdot r a n d) + X _ {k} (\mathbb {I} ^ {\mathcal {B} \times \mathcal {U}})) \tag {25}
+$$
+
+$$
+D _ {k} (\mathbb {I} ^ {\mathcal {B} \times \mathcal {U}}) = X _ {k} (\mathbb {I} ^ {\mathcal {B} \times \mathcal {U}}) - X _ {a} (\mathbb {I} ^ {\mathcal {B} \times \mathcal {U}}) \tag {26}
+$$
+
+Algorithm 2 Continuous Solution Update Algorithm   
+1 Calculate the $\zeta$ by using Eq. (27);
+2 Update $X_{k}(\mathbb{X}^{\mathcal{B}\times\mathcal{U}},\mathbb{Y}^{\mathcal{B}\times\mathcal{U}},\mathbb{Z}^{\mathcal{B}\times\mathcal{U}},\mathbb{I}^{\mathcal{B}\times\mathcal{U}},\mathbb{T}^{\mathcal{B}\times 1})$ by using Eq. (17);
+3 Update $X_{k}(\mathbb{Z}^{\mathcal{B}\times\mathcal{U}})$ by using Eq. (23);
+4 if $t < \frac{t_{max}}{2}$ then
+5    if rand < $\zeta$ then
+6    Update $X_{k}(\mathbb{X}^{\mathcal{B}\times\mathcal{U}},\mathbb{Y}^{\mathcal{B}\times\mathcal{U}})$ by using Eq.(21);
+7    end
+8 end
+9 else
+10    if rand < $\zeta$ then
+11    Select a full solution $X_{a}$ from Archive;
+12    Replace $X_{k}(\mathbb{X}^{\mathcal{B}\times\mathcal{U}},\mathbb{Y}^{\mathcal{B}\times\mathcal{U}},\mathbb{Z}^{\mathcal{B}\times\mathcal{U}})$ by using
+13 $X_{a}(\mathbb{X}^{\mathcal{B}\times\mathcal{U}},\mathbb{Y}^{\mathcal{B}\times\mathcal{U}},\mathbb{Z}^{\mathcal{B}\times\mathcal{U}})$ ;
+14    Update $X_{k}(\mathbb{I}^{\mathcal{B}\times\mathcal{U}})$ by using Eq. (25);
+15    end
+16 Return $X_{k}(\mathbb{X}^{\mathcal{B}\times\mathcal{U}},\mathbb{Y}^{\mathcal{B}\times\mathcal{U}},\mathbb{Z}^{\mathcal{B}\times\mathcal{U}},\mathbb{I}^{\mathcal{B}\times\mathcal{U}},\mathbb{T}^{\mathcal{B}\times  1})$ ;
+
+Accordingly, the continuous solution update method is shown in Algorithm 2. Note that ζ is a threshold for regulating and it is calculated as follows
+
+$$
+\zeta = \left\{ \begin{array}{l l} 0. 5 - \frac {t}{t _ {\text { max }}}, & t <   \frac {t _ {\text { max }}}{2} \\ \frac {t}{t _ {\text { max }}} - 0. 5, & \text { otherwise } \end{array} \right. \tag {27}
+$$
+
+For the discrete part, it cannot be handled by conventional MOALO directly since this algorithm is originally proposed for the continuous optimization problems. Thus, we utilize the partial mapped crossover (PMX) [43] and mutation [43] operators to update the discrete part of the solution. The sketch maps of these two operators are shown in Fig. 5, and the main steps of PMX are presented as follows:
+
+(1) Sub-dimensions selection: Cut two sub-dimensions of equal size on the two discrete solutions at the same positions. (Marked in green font in the Fig. 5).   
+(2) Sub-dimensions exchange: Exchange the two selected sub-dimensions to produce new discrete solutions.
+
+![](images/dbd1e32648c9a3099e6cc4a916e05fabdf535c1a6642f45211b0572caa64797d.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    subgraph PMX
+        A1["1 5 6"] --> A2["3 4"]
+        A2 --> A3["2 1"]
+        A3 --> A4["4 3"]
+    end
+    
+    subgraph Mutation
+        B1["1 5 6"] --> B2["5 3"]
+        B2 --> B3["4 6"]
+        B3 --> B4["2 1"]
+        B4 --> B5["4 3"]
+    end
+    
+    A1 <--> A2
+    B1 <--> B2
+    B1 <--> B3
+    B2 <--> B3
+    B3 <--> B4
+    B4 <--> B5
+    B5 <--> B6
+    style PMX fill:#f9f,stroke:#333
+    style Mutation fill:#ccf,stroke:#333
+```
+</details>
+
+Fig. 5. Sketch map of the PMX and mutation operations.
+
+(3) Mapping list determination: Determine the mapping relationship based on the selected sub-dimensions. (Such as with 3,  with  in $F i g .$ 5).   
+4 6(4) Solution legalization: Resolve duplicate dimensions of the discrete solutions by using the mapping list.
+
+Moreover, as can be seen, the mutation operator will generate two intersections randomly and swaps the two intersection dimensions. Accordingly, the main steps of the discrete solution update method are shown in Algorithm 3. Note that τ is a threshold for regulating and it is calculated as follows
+
+$$
+\tau = 0. 7 - \frac {0 . 4}{1 + e ^ {5 - \frac {1 0 \cdot t}{t _ {m a x}}}} \tag {28}
+$$
+
+Algorithm 3 Discrete Solution Update Algorithm   
+1 Define the discrete dimensions of Antlion $\mathbb{Q}_{AL}^{\mathcal{B}\times 1}$ ;  
+2 Calculate the $\tau$ by using Eq. (28);  
+3 if rand $< \tau$ then  
+4 $X_{k}(\mathbb{Q}^{\mathcal{B}\times 1})$ crosses with $\mathbb{Q}_{AL}^{\mathcal{B}\times 1}$ by using PMX operator;  
+5 end  
+6 else if rand $< \tau$ then  
+7 | Update $X_{k}(\mathbb{Q}^{\mathcal{B}\times 1})$ by using mutation operator;  
+8 end  
+9 Return $X_{k}(\mathbb{Q}^{\mathcal{B}\times 1})$ ;
+
+# D. Complexity of the Proposed Algorithm
+
+Lemma 6: The complexity of the proposed IMOALO is $\mathcal { O } ( k \cdot N _ { p o p } ^ { 2 } )$ .
+
+)Proof: The computational complexity of the proposed algorithm is similar to MOPSO, which can be primarily derived by the computations of the objective functions and crowding distance. We also assume that the number of optimization objectives and population size are k and $N _ { p o p } ,$ respectively, then the objective function computation has $\mathcal { O } ( k \cdot N _ { p o p } )$ computational complexity. Moreover, the cost ( )part of crowding distance computation is sorting the solutions in each objective function. Specifically, the computational complexity of sorting $N _ { A r c }$ solutions in the Pareto archive is $\mathcal { O } ( k \cdot N _ { A r c }$ · $N _ { A r c } )$ . In this paper, we set the size ( log )of the Pareto archive to be the same as the population $N _ { p o p } .$ , which means that the computational complexity for the non-dominated sorting is $\mathcal { O } ( k \cdot N _ { p o p } ^ { 2 } )$ . Thus, the overall (complexity of the proposed IMOALO is $\mathcal { O } ( k \cdot N _ { p o p } ^ { 2 } )$ .
+
+# V. SIMULATIONS AND ANALYSIS
+
+In this section, simulations are conducted to evaluate the performance of the proposed IMOALO for solving the formulated R-TEMCMOP shown in Eq. (16) by using Matlab. First, some other CB-based methods and optimization algorithms are introduced for comparisons. Second, the proposed CB-based method is compared to other UAV communication strategies in the considered scenario. Finally, the performance of the proposed CB-based method is further evaluated by considering several unexpected circumstances.
+
+# A. Simulation Setups
+
+In this work, the monitor region $A _ { m }$ is set as 100 m $\times$ 100 m, and the number of BSs is 8. Moreover, the carrier frequency $( f _ { c } )$ , total transmit power $( P _ { C B _ { t } } )$ and path loss coefficient $( K _ { B S } )$ are set as 2.4 GHz, $( 0 . 1 \times N _ { U A V } )$ W and 3, respectively. In addition, the mass $( m _ { U A V } )$ ), collision distance $( D _ { m i n } )$ , minimum and maximum altitudes of UAVs $( H _ { m i n }$ and $H _ { m a x } )$ are set as  kg, 0.5 m, 100 m and 2120 m, respectively. Other key parameters follow the works in [14] and [18].
+
+Moreover, several CB-based methods and optimization algorithms are introduced as the comparison approaches to evaluate the effectiveness and performance of the proposed algorithm. First, the uniform LAA and rectangular antenna array (RAA) consist of UAV elements are adopted. Note that the LAA and RAA mean that all the UAV elements are symmetrically excited and located about the origin of the array, as done in [18]. Second, we devise an approach named mixed position with optimized excitation current weight (MPOECW) for comparison. In MPOECW, the positions of UAVs for communicating with the first BS are determined by using the conventional MOALO and these positions will be unchanged. When the UAV-enabled VAA needs to communicate with the rest BSs, only the excitation current weights of the UAV elements are optimized by using conventional MOALO. Finally, the conventional MOALO, multi-objective dragonfly algorithm (MODA), MOPSO, and non-dominated sorting genetic algorithm-II (NSGA-II) are introduced to solve the formulated R-TEMCMOP for comparison. Note that the proposed discrete solution update method of the hybrid solution update factor is introduced to these comparison algorithms above so that they are able to deal with the formulated R-TEMCMOP. The population size and maximum number of iteration of these algorithms are set as 30 and 500, respectively.
+
+In addition, some benchmark strategies, i.e. (1) flying to the BSs for a short-range communication, (2) constructing a multi-hop flying ad-hoc network, and (3) using a directional antenna for improving the gains, are also introduced for comparisons. Unless stated otherwise, the same simulation setups are utilized in these benchmark strategies.
+
+# B. Comparison With Different CB-Based Communication Methods
+
+In this section, the proposed IMOALO algorithm and other comparison CB-based approaches are used to solve
+
+TABLE INUMERICAL OPTIMIZATION RESULTS OF TTM OBTAINEDBY DIFFERENT APPROACHES
+
+<table><tr><td rowspan="2">Method</td><td colspan="3">Smaller-scale UAV network</td><td colspan="3">Larger-scale UAV network</td></tr><tr><td> $f_1(s)$ </td><td> $f_2(s)$ </td><td> $f_3(J)$ </td><td> $f_1(s)$ </td><td> $f_2(s)$ </td><td> $f_3(J)$ </td></tr><tr><td>LAA</td><td>950.43</td><td>17.23</td><td> $1.31 \times 10^6$ </td><td>301.71</td><td>17.20</td><td> $8.50 \times 10^5$ </td></tr><tr><td>RAA</td><td>933.53</td><td>18.13</td><td> $1.29 \times 10^6$ </td><td>300.09</td><td>17.10</td><td> $8.61 \times 10^5$ </td></tr><tr><td>MPOECW</td><td>890.37</td><td>21.01</td><td> $1.34 \times 10^6$ </td><td>290.04</td><td>35.64</td><td> $1.16 \times 10^6$ </td></tr><tr><td>MODA</td><td>949.01</td><td>242.33</td><td> $1.64 \times 10^6$ </td><td>305.13</td><td>244.92</td><td> $1.53 \times 10^6$ </td></tr><tr><td>MOPSO</td><td>985.07</td><td>13.00</td><td> $1.54 \times 10^6$ </td><td>331.90</td><td>20.92</td><td> $1.22 \times 10^6$ </td></tr><tr><td>NSGA-II</td><td>931.47</td><td>141.55</td><td> $1.51 \times 10^6$ </td><td>308.44</td><td>192.62</td><td> $1.40 \times 10^6$ </td></tr><tr><td>MOALO</td><td>1019.68</td><td>78.22</td><td> $1.49 \times 10^6$ </td><td>316.86</td><td>105.01</td><td> $1.16 \times 10^6$ </td></tr><tr><td>IMOALO</td><td>883.56</td><td>14.01</td><td> $1.24 \times 10^6$ </td><td>285.81</td><td>11.38</td><td> $8.71 \times 10^5$ </td></tr></table>
+
+TABLE IINUMERICAL OPTIMIZATION RESULTS OF PTM OBTAINEDBY DIFFERENT APPROACHES
+
+<table><tr><td rowspan="2">Method</td><td colspan="3">Smaller-scale UAV network</td><td colspan="3">Larger-scale UAV network</td></tr><tr><td> $f_2(s)$ </td><td> $f_1(s)$ </td><td> $f_3(J)$ </td><td> $f_2(s)$ </td><td> $f_1(s)$ </td><td> $f_3(J)$ </td></tr><tr><td>LAA</td><td>17.23</td><td>950.43</td><td> $1.31 \times 10^6$ </td><td>17.20</td><td>301.71</td><td> $8.50 \times 10^5$ </td></tr><tr><td>RAA</td><td>18.13</td><td>933.53</td><td> $1.29 \times 10^6$ </td><td>17.10</td><td>300.09</td><td> $8.61 \times 10^5$ </td></tr><tr><td>MPOECW</td><td>18.64</td><td>893.44</td><td> $1.33 \times 10^6$ </td><td>14.01</td><td>299.33</td><td> $1.17 \times 10^5$ </td></tr><tr><td>MODA</td><td>200.42</td><td>1059.58</td><td> $1.75 \times 10^6$ </td><td>166.94</td><td>365.48</td><td> $1.56 \times 10^6$ </td></tr><tr><td>MOPSO</td><td>8.18</td><td>1003.41</td><td> $1.71 \times 10^6$ </td><td>8.72</td><td>346.00</td><td> $1.79 \times 10^6$ </td></tr><tr><td>NSGA-II</td><td>37.24</td><td>1034.47</td><td> $1.56 \times 10^6$ </td><td>34.38</td><td>364.91</td><td> $1.48 \times 10^6$ </td></tr><tr><td>MOALO</td><td>67.83</td><td>1040.23</td><td> $1.48 \times 10^6$ </td><td>97.97</td><td>318.80</td><td> $1.14 \times 10^6$ </td></tr><tr><td>IMOALO</td><td>8.09</td><td>895.71</td><td> $1.29 \times 10^6$ </td><td>8.61</td><td>289.85</td><td> $9.20 \times 10^5$ </td></tr></table>
+
+the formulated R-TEMCMOP, in which the smaller-scale and larger-scale networks that have  and 16 UAVs are considered, respectively.
+
+As mentioned above, the multi-objective optimization algorithms may obtain a set of Pareto solutions, which means that decision makers must select one as the final solution for the engineering problem. In reality, there are some scenarios that the decision makers leans towards saving more energy of the UAVs for other tasks. Moreover, some streaming media transmissions, such as video and audio, may require a fast connection between the UAV-enabled VAA and the BSs, which means that it needs high demands on decreasing the performing time of UAV-enabled VAA. In addition, the transmission between the UAV-enabled VAA and a BS may take up the frequency bandwidth of the BS, thus the decision makers may incline towards reducing the transmission time in some scenarios. Furthermore, the service time that consists of performing time of VAA and transmission time should be minimized in some scenarios, such that the UAVs can perform other tasks asap. Thus, we devise four strategies to select a final solution from the PS, which are transmission time minimization strategy (TTM), performing time of VAA minimization strategy (PTM), energy consumption minimization strategy (ECM), and service time minimization strategy (STM).
+
+Tables I, II, and III show the numerical results obtained by different approaches by using TTM, ECM and PTM strategies in terms of the total transmission time $( f _ { 1 } )$ , total performing time of UAV-enabled VAA $( f _ { 2 } )$ and total energy consumptions of UAVs $( f _ { 3 } )$ in both smaller-scale and larger-scale UAV networks, respectively. As can be seen, (1) For the TTM strategy, the proposed IMOALO achieves the best performance on the first objective $( f _ { 1 } )$ in both smaller-scale and larger-scale cases which can meet the needs of the determiner. Moreover, it obtains the best performance on the second objective $( f _ { 2 } )$ in larger-scale network and the best performance on the third objective $( f _ { 3 } )$ in smaller-scale network. (2) For the PTM strategy, the proposed IMOALO achieves the best performance on the second objective $( f _ { 2 } )$ which is the most important objective of the strategy and obtains outstanding results on the first and third objectives $( f _ { 1 }$ and $f _ { 3 } )$ in both smaller-scale and larger-scale networks. (3) For the ECM strategy, IMOALO achieves the outstanding results on the third objective $( f _ { 3 } )$ while obtains the best performance on other optimization objectives in larger-scale case, and has the best performance on all the objectives in smaller-scale case. Note that it is difficult for a method to achieve the best performance on all the objectives since the three optimization objectives are tradeoffs. Thus, IMOALO has the overall best performance among all the approaches in both smaller-scale and larger-scale UAV networks.
+
+![](images/585a86e175ebff055a5dc77d7df66c77b284488d3fee76840f90e1bc1ec006ab.jpg)
+
+Fig. 6. Flight paths of $\mathrm { U A V s }$ obtained by different methods in smaller-scale UAV network. (a) LAA. (b) RAA. (c) MODA. (d) MOPSO. (e) NSGA-II. (f) MOALO. (g) IMOALO.   
+TABLE IIINUMERICAL OPTIMIZATION RESULTS OF ECM OBTAINEDBY DIFFERENT APPROACHES
+
+<table><tr><td rowspan="2">Method</td><td colspan="3">Smaller-scale UAV network</td><td colspan="3">Larger-scale UAV network</td></tr><tr><td> $f_3(J)$ </td><td> $f_1(s)$ </td><td> $f_2(s)$ </td><td> $f_3(J)$ </td><td> $f_1(s)$ </td><td> $f_2(s)$ </td></tr><tr><td>LAA</td><td> $1.31 \times 10^6$ </td><td>950.43</td><td>17.23</td><td> $8.50 \times 10^5$ </td><td>301.71</td><td>17.20</td></tr><tr><td>RAA</td><td> $1.29 \times 10^6$ </td><td>933.53</td><td>18.13</td><td> $8.61 \times 10^5$ </td><td>300.09</td><td>17.10</td></tr><tr><td>MPOECW</td><td> $1.28 \times 10^6$ </td><td>891.57</td><td>30.47</td><td> $7.82 \times 10^5$ </td><td>273.74</td><td>18.64</td></tr><tr><td>MODA</td><td> $1.60 \times 10^6$ </td><td>950.22</td><td>203.51</td><td> $1.32 \times 10^6$ </td><td>306.44</td><td>215.77</td></tr><tr><td>MOPSO</td><td> $1.50 \times 10^6$ </td><td>1000.27</td><td>24.00</td><td> $1.21 \times 10^6$ </td><td>338.21</td><td>19.39</td></tr><tr><td>NSGA-II</td><td> $1.39 \times 10^6$ </td><td>964.90</td><td>68.54</td><td> $1.11 \times 10^6$ </td><td>312.48</td><td>85.82</td></tr><tr><td>MOALO</td><td> $1.47 \times 10^6$ </td><td>1025.68</td><td>80.22</td><td> $1.13 \times 10^6$ </td><td>318.70</td><td>98.05</td></tr><tr><td>IMOALO</td><td> $1.24 \times 10^6$ </td><td>883.56</td><td>14.01</td><td> $8.67 \times 10^5$ </td><td>289.21</td><td>10.22</td></tr></table>
+
+TABLE IV NUMERICAL OPTIMIZATION RESULTS OF STM OBTAINED BY DIFFERENT APPROACHES 
+
+<table><tr><td rowspan="2">Method</td><td colspan="2">Smaller-scale UAV network</td><td colspan="2">Larger-scale UAV network</td></tr><tr><td> $t_{service}$ (s)</td><td> $f_3$ (J)</td><td> $t_{service}$ (s)</td><td> $f_3$ (J)</td></tr><tr><td>LAA</td><td>967.66</td><td> $1.31 \times 10^6$ </td><td>318.91</td><td> $8.50 \times 10^5$ </td></tr><tr><td>RAA</td><td>951.66</td><td> $1.29 \times 10^6$ </td><td>317.19</td><td> $8.61 \times 10^5$ </td></tr><tr><td>MPOECW</td><td>950.57</td><td> $1.33 \times 10^6$ </td><td>315.78</td><td> $1.17 \times 10^5$ </td></tr><tr><td>MODA</td><td>1158.96</td><td> $1.73 \times 10^6$ </td><td>479.92</td><td> $1.34 \times 10^6$ </td></tr><tr><td>MOPSO</td><td>985.46</td><td> $1.58 \times 10^6$ </td><td>343.85</td><td> $1.26 \times 10^6$ </td></tr><tr><td>NSGA-II</td><td>1032.41</td><td> $1.40 \times 10^6$ </td><td>387,75</td><td> $1.29 \times 10^6$ </td></tr><tr><td>MOALO</td><td>1099.26</td><td> $1.48 \times 10^6$ </td><td>416.44</td><td> $1.16 \times 10^6$ </td></tr><tr><td>IMOALO</td><td>898.10</td><td> $1.24 \times 10^6$ </td><td>298.46</td><td> $9.21 \times 10^5$ </td></tr></table>
+
+Moreover, as mentioned above, the service time should be minimized in some scenarios. Thus, the total service time $( t _ { s e r v i c e } )$ is introduced as a comparison item and Table IV presents the results obtained by different methods with STM strategy in both smaller-scale and larger-scale cases. As can be seen, IMOALO achieves the best performance on $t _ { s e r v i c e }$ while obtaining the outstanding results on the third objective $( f _ { 3 } )$ in both cases.
+
+For a more intuitive exposition, the flight paths of UAVs obtained by different methods in both smaller-scale and larger-scale networks for communicating with the first BS are shown in Figs. 6 and 7, respectively. As can be seen, the flight paths of UAVs obtained by IMOALO conduct a tendency to concentrate on the center of their initial positions. The reason may be that the proposed MFO-based method can enhance exploitation ability in a specific way, thereby improving the CB performance.
+
+Figs. 8(a) and 8(b) show the solution distributions of different multi-objective optimization algorithms including MODA, MOPSO, NSGA-II, conventional MOALO and the proposed IMOALO in smaller-scale and larger-scale networks, respectively. It can be seen from the figures that the PS obtained by IMOALO is more closer to the direction of PF in both smaller-scale and larger-scale cases, which means that it has a better performance than other algorithms for solving the formulated R-TEMCMOP in different network scales. The reason may be that the chaos-OBL solution initialization method can make the solutions to be distributed more uniform. Note that the optimality of the solutions obtained by IMOALO is difficult to be demonstrated. This is due to the fact that the proposed IMOALO will obtain a set of Pareto solutions by using the comparison methods of Pareto dominance. Thus, it is difficult for us to evaluate the optimality of the solutions obtained by the algorithm by using a set of solutions in PF. Moreover, the formulated TEMCMOP has been demonstrated as NP-hard, and it is also proven as a complex large-scale optimization problem, which means that it is very difficult to be solved optimally in polynomial time. Thus, it is almost impossible to detect the true optimal solution in practice.
+
+![](images/434a2569f9014c6e079e6374d2c2af014ce03cee3b25d47b4d867ce1dc945099.jpg)
+
+Fig. 7. Flight paths of UAVs obtained by different methods in larger-scale UAV network. (a) LAA. (b) RAA. (c) MODA. (d) MOPSO. (e) NSGA-II. (f) MOALO. (g) IMOALO.   
+![](images/d2054abc059419b4b2035d782b0ec13c403c2d90acbbd6e03691bbe31b46fa30.jpg)
+
+![](images/790f6d346abf033ca611e08c432e6a42a298485e2fcf71a650f4d70350172b98.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| Algorithm | The total transmission time of VAAs (s) | The total energy consumption of UAVs (J) |
+|-----------|----------------------------------------|------------------------------------------|
+| MOALO     | ~20                                    | ~100                                     |
+| MODA      | ~180                                   | ~150                                     |
+| MOPSO     | ~350                                   | ~2.2×10⁶                                 |
+| NSGA-II   | ~100                                   | ~1.0×10⁶                                 |
+| IMOALO    | ~0                                     | ~400                                     |
+</details>
+
+Fig. 8. Solution distributions obtained by different algorithms. (a) Smaller-scale UAV network. (b) Larger-scale UAV network.
+
+Finally, we note that the number of UAVs used in the larger-scale UAV network is twice that of the smaller-scale, but the corresponding transmission efficiency has increased more than twice, which means that the proposed CB-based method is more suitable for the larger-scale UAV networks.
+
+# C. Comparison With Other UAV Communication Strategies
+
+As mentioned in Section III-A, there are three other possible methods that can be used as the communication strategies in the considered scenario. Thus, in this section, the UAV communication strategies mentioned in Section III-A are introduced for comparisons, and the details are as follows.
+
+1) Flying to the BSs for a Short-Range Communication: In this method, for the sake of intuition and generality, we use eight UAVs that equipped with the omnidirectional antennas to fly to the eight different BSs for transmitting data simultaneously, as shown in Fig. 9(a). When these UAVs approach their corresponding targeted BSs, i.e., the data transmission link between the UAV and BS is able to be established for communication, the UAVs will hover and perform data transmission, and then return back to the monitor area. Note that the energy optimal speed of UAVs $V _ { m e }$ is utilized and the vertical altitudes of UAVs are also fixed for saving energy. The comparison results between this method and the proposed CB-based method consists of eight UAVs are shown in Table V. As can be seen, the proposed method is far ahead of this method in terms of service time, and it also has a certain advantage in saving energy consumption. Moreover, in this flying-to-BS strategy, the UAVs must leave the monitor area, which may cause mission squeeze and data omission of the monitor area. Thus, this may be not suitable for the considered scenario which has long-distance data transmissions. However, we find that the flying-to-BS strategy has good performance when the BSs are closer to the monitoring area. Thus, this strategy is recommended to be applied in some scenarios that the UAVs are closer to the BSs.
+
+TABLE V PERFORMANCE COMPARISONS BETWEEN DIFFERENT UAV COMMUNICATION STRATEGIES 
+
+<table><tr><td></td><td>Service time (s)</td><td>Energy consumption (J)</td></tr><tr><td>Flying to the BSs</td><td>1814.81</td><td> $1.49 \times 10^{6}$ </td></tr><tr><td>Multi-hop network</td><td>2912.59</td><td> $1.44 \times 10^{6}$ </td></tr><tr><td>Single omnidirectional antenna</td><td> $9.29 \times 10^{4}$ </td><td> $1.56 \times 10^{7}$ </td></tr><tr><td>8 dBi directional antenna</td><td>16213.93</td><td> $2.72 \times 10^{6}$ </td></tr><tr><td>12 dBi directional antenna</td><td>10843.54</td><td> $1.82 \times 10^{6}$ </td></tr><tr><td>15 dBi directional antenna</td><td>8695.42</td><td> $1.46 \times 10^{6}$ </td></tr><tr><td>8-UAV CB based on IMOALO</td><td>898.10</td><td> $1.24 \times 10^{6}$ </td></tr></table>
+
+![](images/1e7cfc7194af4d05b687337168f58bfdb5f67968085b206d40ded570bae0d448.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["UAV 1"] --> B["Monitor area"]
+    C["UAV N_UAV"] --> B
+    D["BS 1"] --> B
+    E["BS 2"] --> B
+    B --> F["Flight path"]
+    F --> G["Initial positions of UAVs"]
+    G --> H["Flight path"]
+    H --> I["UAV 2"]
+    style B fill:#99ccff,stroke:#333
+    style G fill:#99ccff,stroke:#333
+```
+</details>
+
+![](images/1a0119c5add5880f612a04f02b31537757a64ce68bb77e3f9628cf1fc0c2cf9d.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Monitor area"] --> B["UAV 1"]
+    B --> C["UAV 2"]
+    C --> D["UAV 3"]
+    D --> E["..."]
+    E --> F["UAV N_UAV"]
+    F --> G["BS 1"]
+    G --> H["Horizontal"]
+    I["BS N_BS"] --> J["Multi-hop link"]
+    style A fill:#cce5ff,stroke:#333
+    style G fill:#cce5ff,stroke:#333
+    style H fill:#cce5ff,stroke:#333
+```
+</details>
+
+Fig. 9. Schematic maps of some UAV communication strategies in the considered scenario. (a) Flying to the BSs for a short-range communication. (b) Constructing a multi-hop flying ad-hoc network.
+
+2) Constructing a Multi-Hop Flying Ad-Hoc Network: In this strategy, according to reference [44], we utilize the decode-and-forward relay mode and without loss of generality, we assume that the transmission rate of each hop link is equal [45]. More intuitively, as shown in Fig. 9(b), the UAVs are linearly distributed between the monitor area and a BS to perform a multi-hop flying ad-hoc network for the data transmission. After the current transmission completed, the UAVs will fly to the next positions for serving another BS. Table V shows the comparison results in terms of the service time and energy consumption obtained by the multi-hop method and the proposed CB-based method consists of eight UAVs. As can be seen, the proposed method has great advantages in all items, and the reason may be that CB can achieve a high-gain beam towards the target BS and it does not have to make the UAVs fly long distances to establish communication links. Thus, the multi-hop approach may be not suitable for the considered scenario since it will consume much more energy to establish different multi-hop links for different BSs. Moreover, similar to the flying-to-BS strategy, this multi-hop strategy will also lead the UAVs to leave the monitor area for a long time, causing the risks of mission squeeze and data omission.
+
+However, from the simulation results, we find that the transmission rate of an ad-hoc link established by the multi-hops is higher than that of the proposed CB-based strategy. This is because that the distance of a hop in the multi-hop strategy is very short compared to the CB link in the proposed strategy, so that it is able to achieve a higher data transmission rate. Therefore, constructing a multi-hop flying ad-hoc network is a feasible method that can be considered when a large amount of data needs to be transmitted to a single BS.
+
+3) Using a Directional Antenna for Improving the Gains: In this section, we use a UAV equipped with a directional antenna for the data transmission. Specifically, the gains of the directional antenna are set to be dBi, 12 dBi and 815 dBi, respectively, and the corresponding results are shown in Table V. Moreover, the results of a single UAV equipped with the omnidirectional antenna is also presented in this table. As can be seen, the results in terms of the service time and total energy consumption for the data transmission obtained by the directional-antenna method are better than the single-omnidirectional-antenna method in the considered scenario. However, the corresponding results obtained by the proposed CB-based strategy outperforms the directional antenna-based method. Note that the advantage of the directional antenna-based method is that only one UAV is needed to complete data transmission, which means that it may be suitable for the scenarios that with a very limited number of UAVs.
+
+# D. Performance Evaluations of Unexpected Circumstances
+
+The proposed method may face some unexpected circumstances in practice. Thus, in this section, we evaluate the effectiveness and performance of the proposed strategy by considering some situations including the position drifts of UAVs and synchronization and phase jitter.
+
+1) Position Drifts of UAVs: The UAVs are usually suffered from inaccurate positioning and wind, and may drift from the assigned positions so that decreasing the performance of CB for communication. Thus, we verify the impact of UAV position drifts on the performance of the entire system. Specifically, according to [46], we utilize the normal distribution to generate position drifts in different directions for the UAVs. The maximum drifts are set to be 0.2 m, 0.4 m, 0.6 m, 0.8 m and  m, respectively, and the results 1are recorded in Figs. 10(a) and 10(b). Note that due to the randomness of the generated errors, we repeat the simulations for 30 times independently and the average values are given. It can be seen from the figure that these results tend to get worse as the drifts become larger. However, the performance gaps between the optimal and position-drifted conditions are actually not very obvious. The reason may be that the MFO method of the proposed hybrid solution update operator in IMOALO can make the UAV antenna elements concentrate in a suitable position, which means that even if the elements are shifted from the assigned positions, they may be still in the sub-optimal positions which are suitable for performing CB. Thus, the proposed method has certain robustness.
+
+Moreover, we evaluate the influence of frequency error caused by the UAV position drifts by using the similar method. By considering the maximum drift of 1 m, the UAVs with the frequencies of 2.4 GHz, 1.2 GHz and 600 MHz are used for the test, respectively. Note that the transmission performances of UAVs with different frequencies are different, which means that the impacts of their position drifts cannot be intuitively presented by comparing the gaps of the optimization objective values. Therefore, we normalize the optimization objective values with the position drifts and the corresponding values without position drifts to show their remaining performance ratios. The statistical results of remaining performance are shown in Figs. 10(c) and 10(d), respectively, and it can be seen from the figures that the proposed CB-based UAV communication system is more sensitive to drifts when the frequency of UAV is higher. The reason may be that the wavelength of the high-frequency communication system is short, which means that the same degree of UAV position drift can cause more wavelength unit movement, so that making a larger impact on results, and the similar conclusion can be also found in [18].
+
+![](images/0858ab33222b09bc759bbf751793b4f55025db9a9e99183657520f13b07881a6.jpg)
+
+<details>
+<summary>bar</summary>
+
+(a)
+| X-axis (m) | Transmission time (s) |
+|---|---|
+| 0.0 | 285.7 |
+| 0.2 | 287.8 |
+| 0.4 | 288.3 |
+| 0.6 | 288.5 |
+| 0.8 | 288.3 |
+| 1.0 | 288.6 |
+</details>
+
+![](images/57040a1332aa253d66a24acb887da87e09c3f3cddc896db7ca4b1055b4b9de03.jpg)
+
+<details>
+<summary>bar</summary>
+
+(b)
+Energy consumption (J)
+| m (m) | Energy consumption (J) |
+|---|---|
+| 0.0 | 8.7×10⁵ |
+| 0.2 | 8.9×10⁵ |
+| 0.4 | 8.9×10⁵ |
+| 0.6 | 9.0×10⁵ |
+| 0.8 | 8.9×10⁵ |
+| 1.0 | 9.0×10⁵ |
+</details>
+
+![](images/1e6bc54c416eaed4b5b16afab4d37cdd671232634f9477b51b9cf0f481200662.jpg)
+
+<details>
+<summary>bar</summary>
+
+(c)
+Transmission performance
+| Frequency | Transmission performance |
+| :--- | :--- |
+| 2.4 GHz | 0.99 |
+| 1.2 GHz | 0.995 |
+| 600 MHz | 0.998 |
+</details>
+
+![](images/3b6b2df91e44dc719e1446686381027df7b8057acae0ae87dd08c9d769d6c7dd.jpg)
+
+<details>
+<summary>bar</summary>
+
+| Frequency | Energy-saving performance |
+| --------- | ------------------------- |
+| 2.4 GHz   | 0.96                      |
+| 1.2 GHz   | 0.98                      |
+| 600 MHz   | 0.985                     |
+</details>
+
+Fig. 10. The performance analysis of the position drifts of UAVs. (a) Transmission time of the UAV-enabled VAA with position drifts. (b) Energy consumption of the UAV-enabled VAA with position drifts. (c) Transmission performance of the UAV-enabled VAA with different carrier frequencies after position drifts. (d) Energy-saving performance of the UAV-enabled VAA with different carrier frequencies after position drifts.
+
+2) Imperfect Synchronization and Phase Jitter: In CB, the imperfect synchronization and phase jitter may generate phase errors, and these errors will affect the communication performance of the UAV-enabled VAA. Therefore, in this section, the impact of phase errors on the transmission performance is evaluated.
+
+Concretely, by considering the phase errors, the AF of the UAV-enabled VAA can be rewritten as follows [47]:
+
+$$
+\begin{array}{l} A F (\theta , \phi) \\ = \sum_ {i = 1} ^ {N _ {U A V}} I _ {i} e ^ {j \left[ k _ {c} \left(x _ {i} ^ {U} \sin \theta \cos \phi + y _ {i} ^ {U} \sin \theta \sin \phi + z _ {i} ^ {U} \cos \theta\right) + \epsilon_ {i} (k) \right]} \tag {29} \\ \end{array}
+$$
+
+where $\epsilon _ { i } ( k )$ is the random phase error caused by the imperfect ( )synchronization and phase jitter. Following references [47] and [48], we assume that $\epsilon _ { i } ( k )$ follows a Tikhonov (or von ( )Mises) distribution. The Tikhonov (or von Mises) distribution is described as follows
+
+$$
+f _ {\epsilon} (\epsilon) = \frac {1}{2 \pi I _ {0} \left(\frac {1}{\sigma_ {\epsilon} ^ {2}}\right)} e ^ {\frac {\cos (\epsilon)}{\sigma_ {\epsilon} ^ {2}}} \tag {30}
+$$
+
+where $\vert \epsilon \vert ~ < ~ \pi , ~ I _ { \alpha } \left( x \right)$ is the αth order modified Bessel ( )function of the first kind, and $\sigma _ { \epsilon } ^ { 2 }$ is the variance of the phase error [49], which is related to a parameter γ, wherein $\begin{array} { r } { \gamma = \frac { 1 } { \sigma _ { \epsilon } ^ { 2 } } } \end{array}$ . Accordingly, we can generate different groups of = phase errors according to different values of γ. Note that γ can determine the error size, e.g., the larger γ can lead the generated phase errors to be smaller. Fig. 11 shows the results of the transmission time and energy consumption by considering different groups of phase errors. It can be seen from the figure that both the transmission time and energy consumption of the UAV-enabled VAA are increased with the increasing of the phase errors, which means that the imperfect synchronization and phase jitter will have an adverse effect on the performance of UAV-based CB. However, these impacts may become less and less since the synchronization algorithms are being proposed continuously.
+
+![](images/2f017651f3ed936d5b5e0ca2fb59ccc364aed6f0861509d8e4e766138e661956.jpg)
+
+<details>
+<summary>bar</summary>
+
+(a)
+| Category | Transmission time (s) |
+|---|---|
+| γ=4 | 358 |
+| γ=8 | 327 |
+| γ=16 | 312 |
+| γ=32 | 308 |
+| Perfect | 298 |
+</details>
+
+![](images/83c7ea2fe04ea67236a134cf4b50bde8a28852bd12cd6f7d2c61a7b090137151.jpg)
+
+<details>
+<summary>bar</summary>
+
+| Category | Energy consumption (J) |
+| -------- | ------------------------ |
+| γ=4      | 1.1x10⁶                  |
+| γ=8      | 9.5x10⁵                  |
+| γ=16     | 9.0x10⁵                  |
+| γ=22     | 8.5x10⁵                  |
+| Perfect  | 8.0x10⁵                  |
+</details>
+
+Fig. 11. The performance analysis of phase errors caused by imperfect synchronization and phase jitter. (a) Transmission time of the UAV-enabled VAA by considering phase errors. (b) Energy consumption of the UAV-enabled VAA by considering phase errors.
+
+# VI. DISCUSSION
+
+In this section, the influences of the flight strategies of UAVs, collision avoidance methods of UAVs, channel models and carrier frequency are further discussed.
+
+# A. The Influence of Flight Strategies of UAVs
+
+In this work, each UAV will first fly along the horizontal direction, then in the vertical direction to reach the desired positions. Although this strategy may be not demonstrate to be the optimal one, it is utilized based on the following considerations. First, since there is no closed-form and accurate 3D energy consumption model for the rotary-wing UAVs by now [2], some previous works suggest to model the oblique flight of a UAV in a 3D space as the horizontal and vertical components [15], [50] [51], and this method is similar to the strategy used in this work, which gives a feasible approach to approximately calculate the energy consumptions of UAVs. Second, the rotary-wing UAVs has some limitations on the flying methods since they need precise flight control systems for the flight attitude control and navigation, which means that complex flights of the UAVs may bring some uncertainty to the autonomous flights of UAVs. Therefore, the adopted flight strategy may be more conducive and economic to maintain the stability of the entire flight system, and it is also used by the automatic return-to-home systems of some UAVs [52].
+
+Note that this flight strategy may not have a significant impact on the optimization problem. This is due to the fact that we aim to find the better locations of UAVs while the flying paths of UAVs are not considered and formulated in the problem. Likewise, this flight strategy may not affect the optimization results greatly, since we design the algorithm by adopting some mechanisms such as limiting the using of the vertical flights to offset these effects. Furthermore, we propose a multi-objective optimization approach to simultaneously optimize the performing time, transmission time and energy consumption of UAV-enabled VAA, and the movement method of UAVs is only used to provide energy consumption results, which means that our approach is still valid even if other movement methods or flight strategies of UAVs are exploited.
+
+# B. Collision Avoidance Methods of UAVs
+
+The collision avoidance is an important aspect, which can significantly contribute to making the UAVs even safer for flying. In this paper, we do not consider the specific methods for collision avoidance. This is due to the fact that there are actually many mature methods that are available for UAV collision avoidance in the considered scenario. For instance, camera, infrared, radar, LiDAR and sonar, etc, can be utilized by UAVs for obstacle detection [53]. Likewise, most of the sense and avoid methods of UAV action approaches can be embedded in the proposed optimization framework, since they focus on reducing the computational cost with short response time by simplifying the process of collision avoidance, and deviating the UAVs from their original paths when needed and then turning the UAVs to the previous flight state quickly [53]. Note that the sense and avoid methods usually consume very little computational resources, energy and time, which does not have a significant effect on the results of our work.
+
+Moreover, the monitor area is considered as a relatively huge space in this work, and we study the position optimization of UAVs in this 3D space. Therefore, the probability of collision between different UAVs is actually small due to the large 3D activity space for the UAVs. In addition, in practical applications, it is entirely possible for the experienced administrators to set up some simple scheduling strategies to avoid collisions based on actual scenes, e.g., a very simple strategy that part UAVs fly to different altitudes for horizontal flights and then reach the specified altitude, and others use the opposite ways.
+
+Accordingly, by utilizing the collision detections and scheduling strategies, the collision problem can be solved in practice. In this paper, we propose a multi-objective optimization method to simultaneously optimize the performing time, transmission time and energy consumption of the UAV-enabled VAA, and mainly focus on the optimization of the UAV positions as well as the excitation currents. Thus, the collision problem can be solved by embedding the abovementioned methods and strategies, and does not create barriers and obstacles to the implementation of the proposed method.
+
+# C. The Influence of Channel Models
+
+The channel model has a crucial influence on all communication systems. According to references [54], [55], the wireless channel model for UAV communications is closely related to the heights of UAVs. Specifically, in an urban scenario, if the height of UAV is higher than 100 m, the LoS channel model can be used reasonably, i.e., the channel model used in this work. If the height of UAV is below 100 m, then the probabilistic LoS channel model should be employed. Thus, to further evaluate the influence of channel models, we introduce the probability LoS channel model suggested in 3GPP [54] by setting the heights of UAVs as 75 m to 95 m, respectively. Then, the LoS probability of the UAVs can be calculated as follows [54]:
+
+TABLE VINUMERICAL OPTIMIZATION RESULTS OF PROBABILITY NLOS CHANNELMODEL OBTAINED BY DIFFERENT APPROACHES
+
+<table><tr><td>Method</td><td> $f_1(s)$ </td><td> $f_2(s)$ </td><td> $f_3(J)$ </td></tr><tr><td>LAA</td><td>4510.36</td><td>17.15</td><td> $6.09 \times 10^6$ </td></tr><tr><td>RAA</td><td>4450.25</td><td>17.16</td><td> $6.01 \times 10^6$ </td></tr><tr><td>MPOECW</td><td>3961.54</td><td>29.33</td><td> $5.54 \times 10^6$ </td></tr><tr><td>MODA</td><td>4190.39</td><td>455.52</td><td> $6.41 \times 10^6$ </td></tr><tr><td>MOPSO</td><td>4246.78</td><td>13.87</td><td> $6.11 \times 10^6$ </td></tr><tr><td>NSGA-II</td><td>4163.22</td><td>193.33</td><td> $5.94 \times 10^6$ </td></tr><tr><td>MOALO</td><td>4689.23</td><td>176.01</td><td> $6.10 \times 10^6$ </td></tr><tr><td>IMOALO</td><td>3892.07</td><td>32.32</td><td> $5.29 \times 10^6$ </td></tr></table>
+
+$$
+P _ {L o S} = \left\{ \begin{array}{l l} 1, & d _ {2 D} \leq d _ {1} \\ \frac {d _ {1}}{d _ {2 D}} + \exp \left(\frac {- d _ {2 D}}{p _ {1}}\right) \left(1 - \frac {d _ {1}}{d _ {2 D}}\right), & d _ {2 D} > d _ {1} \end{array} \right. \tag {31}
+$$
+
+where $d _ { 2 D }$ is the horizontal distance between the BS and UAV. Moreover, $d _ { 1 }$ and $p _ { 1 }$ can be calculated as follows
+
+$$
+d _ {1} = 4 3 0 0 \log_ {1 0} (h _ {U T}) - 3 8 0 0 \tag {32}
+$$
+
+$$
+p _ {1} = \max \left(4 6 0 \log_ {1 0} \left(h _ {U T}\right) - 7 0 0, 1 8\right) \tag {33}
+$$
+
+where $h _ { U T }$ is the height of the UAV. Consequently, the probability of non-LoS (NLoS) channel is defined as follows
+
+$$
+P _ {N L o S} = 1 - P _ {L o S} \tag {34}
+$$
+
+Accordingly, the probabilities of LoS and NLoS channels can be calculated, which means that the path loss can be further achieved, so that obtaining the corresponding transmission rates [15], [56]. The optimization results of different algorithms by using the abovementioned channel models are shown in Table VI. Note that the settings of these algorithms are the same as the previous simulations, in which eight UAVs are exploited to form the VAA. As can be seen, in NLoS channel, the transmission time and transmission energy consumption are increased. Thus, by considering the maneuverability of the UAVs, it is recommended that the UAVs fly to sufficiently high and suitable locations to use the LoS channel for the time and energy minimization communications.
+
+# D. The Influence of Carrier Frequency
+
+Different carrier frequencies have certain impacts on the performance of CB. Thus, in this section, we evaluate the influence of carrier frequency to achieve further results. Specifically, the frequencies of 2.4 GHz, 1.2 GHz and 600 MHz are used for the simulation, and the results are recorded in Fig. 12.
+
+![](images/46bdbd7bdf6c3e570e561fce70fc6693a5b9e9875fe48bc5a82c122545b5ba3f.jpg)
+
+<details>
+<summary>bar</summary>
+
+(a)
+Transmission time (s)
+| Frequency | Transmission time (s) |
+| :--- | :--- |
+| 2.4 GHz | 280 |
+| 1.2 GHz | 175 |
+| 600 MHz | 120 |
+</details>
+
+![](images/1d6c97163aac17825409de2aa1e04b9d408f11e4c030ba9dc3f4c6d1368352f4.jpg)
+
+<details>
+<summary>bar</summary>
+
+(b)
+Energy consumption (J)
+| Frequency | Energy consumption (J) |
+| :--- | :--- |
+| 2.4 GHz | 8.5e+05 |
+| 1.2 GHz | 6.0e+05 |
+| 600 MHz | 4.5e+05 |
+</details>
+
+Fig. 12. The influence of different carrier frequencies. (a) Transmission time of the UAV-enabled VAA with different carrier frequencies. (b) Energy consumption of the UAV-enabled VAA with different carrier frequencies.
+
+As can be seen, under the same bandwidth, the UAV elements with low-frequency may be better for long-distance transmission since the attenuation of low-frequency communication is slower compared to high-frequency communication, which is more suitable for the long-distance transmission. However, low-frequency communications are often faced with the characteristics of insufficient bandwidth and non-universality. Considering that most UAV communication systems are worked at 2.4 GHz frequency, it is more appropriate to verify the performance of the system under the 2.4 GHz frequency.
+
+# VII. CONCLUSION
+
+In this paper, the time and energy minimization communications of UAV networks based on CB is investigated. Specifically, we consider a scenario that several UAVs are dispatched to communicate with a set of BSs by using CB, and formulate a TEMCMOP of UAV networks to simultaneously optimize the total transmission time, total performing time of UAV-enabled VAAs and total energy consumptions of UAVs. Moreover, the NP-hardness of the formulated problem and the trade-offs among different optimization objectives are proven. In addition, we investigate the relationship between the performing time of UAV-enabled VAA, speeds of the UAVs and energy consumptions, and reformulate the TEMCMOP to R-TEMCMOP, which is a more tractable form. The solution to R-TEMCMOP is hybrid and complex, which contains continuous and discrete parts, respectively. Thus, an IMOALO algorithm is proposed to solve this problem. IMOALO algorithm uses the chaos-OBL method to enhance the quality of initial solutions and introduces the hybrid solution update method to deal with the hybrid solutions of R-TEMCMOP, so that improving the performance of the algorithm. Simulations are conducted to evaluate the effectiveness of the proposed algorithm, and the results show that IMOALO achieves the overall best performance in terms of the three optimization objectives for communicating with different BSs than some other CB-based methods including LAA, RAA, MPOECW, MODA, MOPSO, NSGA-II and conventional MOALO. Moreover, the proposed CB-based method is more suitable than some other UAV communication strategies in the considered scenario.
+
+# REFERENCES
+
+[1] M. A. Ali, Y. Zeng, and A. Jamalipour, “Software-defined coexisting UAV and WiFi: Delay-oriented traffic offloading and UAV placement,” IEEE J. Sel. Areas Commun., vol. 38, no. 6, pp. 988–998, Jun. 2020.
+
+[2] Y. Zeng, Q. Wu, and R. Zhang, “Accessing from the sky: A tutorial on UAV communications for 5G and beyond,” Proc. IEEE, vol. 107, no. 12, pp. 2327–2375, Dec. 2019.   
+[3] W. Zafar and B. M. Khan, “Flying ad-hoc networks: Technological and social implications,” IEEE Technol. Soc. Mag., vol. 35, no. 2, pp. 67–74, Jun. 2016.   
+[4] M. Chen, M. Mozaffari, W. Saad, C. Yin, M. Debbah, and C. S. Hong, “Caching in the sky: Proactive deployment of cache-enabled unmanned aerial vehicles for optimized quality-of-experience,” IEEE J. Sel. Areas Commun., vol. 35, no. 5, pp. 1046–1061, May 2017.   
+[5] H. Wang, G. Ding, F. Gao, J. Chen, J. Wang, and L. Wang, “Power control in UAV-supported ultra dense networks: Communications, caching, and energy transfer,” IEEE Commun. Mag., vol. 56, no. 6, pp. 28–34, Jun. 2018.   
+[6] G. Wu, Y. Miao, Y. Zhang, and A. Barnawi, “Energy efficient for UAVenabled mobile edge computing networks: Intelligent task prediction and offloading,” Comput. Commun., vol. 150, pp. 556–562, Jan. 2020.   
+[7] D. Xu, Y. Sun, D. W. K. Ng, and R. Schober, “Multiuser MISO UAV communications in uncertain environments with no-fly zones: Robust trajectory and resource allocation design,” IEEE Trans. Commun., vol. 68, no. 5, pp. 3153–3172, May 2020.   
+[8] Q. Ju and Y. Zhang, “Predictive power management for Internet of battery-less things,” IEEE Trans. Power Electron., vol. 33, no. 1, pp. 299–312, Jan. 2018.   
+[9] M. Mozaffari, W. Saad, M. Bennis, Y.-H. Nam, and M. Debbah, “A tutorial on UAVs for wireless networks: Applications, challenges, and open problems,” IEEE Commun. Surveys Tuts., vol. 21, no. 3, pp. 2334–2360, 3rd Quart., 2019.   
+[10] M. Samir, S. Sharafeddine, C. M. Assi, T. M. Nguyen, and A. Ghrayeb, “UAV trajectory planning for data collection from time-constrained IoT devices,” IEEE Trans. Wireless Commun., vol. 19, no. 1, pp. 34–46, Jan. 2020.   
+[11] P. Li and J. Xu, “Fundamental rate limits of UAV-enabled multiple access channel with trajectory optimization,” IEEE Trans. Wireless Commun., vol. 19, no. 1, pp. 458–474, Jan. 2020.   
+[12] Q. Ju and Y. Zhang, “Clustered data collection for Internet of batteryless things,” IEEE Internet Things J., vol. 4, no. 6, pp. 2275–2285, Dec. 2017.   
+[13] Y. Zeng, X. Xu, and R. Zhang, “Trajectory design for completion time minimization in UAV-enabled multicasting,” IEEE Trans. Wireless Commun., vol. 17, no. 4, pp. 2233–2246, Apr. 2018.   
+[14] Y. Zeng, J. Xu, and R. Zhang, “Energy minimization for wireless communication with rotary-wing UAV,” IEEE Trans. Wireless Commun., vol. 18, no. 4, pp. 2329–2345, Apr. 2019.   
+[15] S.-F. Chou, A.-C. Pang, and Y.-J. Yu, “Energy-aware 3D unmanned aerial vehicle deployment for network throughput optimization,” IEEE Trans. Wireless Commun., vol. 19, no. 1, pp. 563–578, Jan. 2020.   
+[16] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Wireless communication using unmanned aerial vehicles (UAVs): Optimal transport theory for hover time optimization,” IEEE Trans. Wireless Commun., vol. 16, no. 12, pp. 8052–8066, Dec. 2017.   
+[17] J. Garza, M. A. Panduro, A. Reyna, G. Romero, and C. D. Rio, “Design of UAVs-based 3D antenna arrays for a maximum performance in terms of directivity and SLL,” Int. J. Antennas Propag., vol. 2016, pp. 1–8, Aug. 2016.   
+[18] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Communications and control for wireless drone-based antenna array,” IEEE Trans. Commun., vol. 67, no. 1, pp. 820–834, Jan. 2019.   
+[19] L. Zhu, J. Zhang, Z. Xiao, X. Cao, X.-G. Xia, and R. Schober, “Millimeter-wave full-duplex UAV relay: Joint positioning, beamforming, and power control,” IEEE J. Sel. Areas Commun., vol. 38, no. 9, pp. 2057–2073, Sep. 2020.   
+[20] G. Sun et al., “Energy efficient collaborative beamforming for reducing sidelobe in wireless sensor networks,” IEEE Trans. Mobile Comput., vol. 20, no. 3, pp. 965–982, Mar. 2021.   
+[21] C. A. Balanis, Antenna Theory: Analysis and Design, 3rd ed. Hoboken, NJ, USA: Wiley, 2005.   
+[22] Q. Lin et al., “A clustering-based evolutionary algorithm for manyobjective optimization problems,” IEEE Trans. Evol. Comput., vol. 23, no. 3, pp. 391–405, Jun. 2019.   
+[23] G. Wang, B. Lee, J. Ahn, and G. Cho, “A UAV-assisted CH election framework for secure data collection in wireless sensor networks,” Future Gener. Comput. Syst., vol. 102, pp. 152–162, Jan. 2020.   
+[24] G. Fragkos, N. Kemp, E. E. Tsiropoulou, and S. Papavassiliou, “Artificial intelligence empowered UAVs data offloading in mobile edge computing,” in Proc. IEEE Int. Conf. Commun. (ICC), Jun. 2020, pp. 1–7.   
+[25] Q. Ju, G. Sun, H. Li, and Y. Zhang, “Collaborative in-network processing for Internet of battery-less things,” IEEE Internet Things J., vol. 6, no. 3, pp. 5184–5195, Jun. 2019.
+
+[26] B. Fu and L. A. DaSilva, “A mesh in the sky: A routing protocol for airborne networks,” in Proc. IEEE Mil. Commun. Conf. (MILCOM), Oct. 2007, pp. 1–7.   
+[27] G. Secinti, P. B. Darian, B. Canberk, and K. R. Chowdhury, “Resilient end-to-end connectivity for software defined unmanned aerial vehicular networks,” in Proc. IEEE 28th Annu. Int. Symp. Pers., Indoor, Mobile Radio Commun. (PIMRC), Oct. 2017, pp. 1–5.   
+[28] M. Alighanbari, Y. Kuwata, and J. P. How, “Coordination and control of multiple UAVs with timing constraints and loitering,” in Proc. Amer. Control Conf., vol. 6, 2003, pp. 5311–5316.   
+[29] P. Sarunic and R. Evans, “Hierarchical model predictive control of UAVs performing multitarget-multisensor tracking,” IEEE Trans. Aerosp. Electron. Syst., vol. 50, no. 3, pp. 2253–2268, Jul. 2014.   
+[30] J. Chen et al., “Long-range and broadband aerial communication using directional antennas (ACDA): Design and implementation,” IEEE Trans. Veh. Technol., vol. 66, no. 12, pp. 10793–10805, Dec. 2017.   
+[31] S. Mohanti et al., “AirBeam: Experimental demonstration of distributed beamforming by a swarm of UAVs,” in Proc. IEEE 16th Int. Conf. Mobile Ad Hoc Sensor Syst. (MASS), Nov. 2019, pp. 162–170.   
+[32] A. Ouaarab, B. Ahiod, and X.-S. Yang, “Discrete cuckoo search algorithm for the travelling salesman problem,” Neural Comput. Appl., vol. 24, nos. 7–8, pp. 1659–1669, Jun. 2014.   
+[33] Z. Yang, K. Tang, and X. Yao, “Large scale evolutionary optimization using cooperative coevolution,” Inf. Sci., vol. 178, no. 15, pp. 2985–2999, Aug. 2008.   
+[34] M. N. Omidvar, X. Li, Y. Mei, and X. Yao, “Cooperative co-evolution with differential grouping for large scale optimization,” IEEE Trans. Evol. Comput., vol. 18, no. 3, pp. 378–393, Jun. 2014.   
+[35] M. Wang, C. Wu, L. Wang, D. Xiang, and X. Huang, “A feature selection approach for hyperspectral image based on modified ant lion optimizer,” Knowl.-Based Syst., vol. 168, pp. 39–48, Mar. 2019.   
+[36] S. Mirjalili, P. Jangir, and S. Saremi, “Multi-objective ant lion optimizer: A multi-objective optimization algorithm for solving engineering problems,” Int. J. Speech Technol., vol. 46, no. 1, pp. 79–95, Jan. 2017.   
+[37] Y. Wang, Z.-Y. Ru, K. Wang, and P.-Q. Huang, “Joint deployment and task scheduling optimization for large-scale mobile users in multi-UAVenabled mobile edge computing,” IEEE Trans. Cybern., vol. 50, no. 9, pp. 3984–3997, Sep. 2020.   
+[38] S. Mirjalili, “The ant lion optimizer,” Adv. Eng. Softw., vol. 83, pp. 80–98, May 2015.   
+[39] C. A. C. Coello, G. T. Pulido, and M. S. Lechuga, “Handling multiple objectives with particle swarm optimization,” IEEE Trans. Evol. Comput., vol. 8, no. 3, pp. 256–279, Jun. 2004.   
+[40] H. Wang, Z. Wu, S. Rahnamayan, Y. Liu, and M. Ventresca, “Enhancing particle swarm optimization using generalized opposition-based learning,” Inf. Sci., vol. 181, no. 20, pp. 4699–4714, Oct. 2011.   
+[41] M. Tubishat, N. Idris, L. Shuib, M. A. M. Abushariah, and S. Mirjalili, “Improved salp swarm algorithm based on opposition based learning and novel local search algorithm for feature selection,” Expert Syst. Appl., vol. 145, May 2020, Art. no. 113122.   
+[42] S. Mirjalili, “Moth-flame optimization algorithm: A novel natureinspired heuristic paradigm,” Knowl.-Based Syst., vol. 89, pp. 228–249, Nov. 2015.   
+[43] K. Deep and H. Mebrahtu, “Variant of partially mapped crossover for the travelling salesman problems,” Int. J. Combinat. Optim. Problems Informat., vol. 3, no. 1, p. 24, 2012.   
+[44] S. Hosseinalipour, A. Rahmati, and H. Dai, “Interference avoidance position planning in dual-hop and multi-hop UAV relay networks,” IEEE Trans. Wireless Commun., vol. 19, no. 11, pp. 7033–7048, Nov. 2020.   
+[45] H.-M. Wang, Y. Zhang, X. Zhang, and Z. Li, “Secrecy and covert communications against UAV surveillance via multi-hop networks,” IEEE Trans. Commun., vol. 68, no. 1, pp. 389–401, Jan. 2020.   
+[46] X. Li, J. Zhou, B. Duan, Y. Yang, Y. Zhang, and J. Fan, “Performance of planar arrays for microwave power transmission with position errors,” IEEE Antennas Wireless Propag. Lett., vol. 14, pp. 1794–1797, 2015.   
+[47] A. Minturn, D. Vernekar, Y. L. Yang, and H. Sharif, “Distributed beamforming with imperfect phase synchronization for cognitive radio networks,” in Proc. IEEE Int. Conf. Commun. (ICC), Jun. 2013, pp. 4936–4940.   
+[48] Y. S. Shmaliy, “Von Mises/Tikhonov-based distributions for systems with differential phase measurement,” Signal Process., vol. 85, no. 4, pp. 693–703, Apr. 2005.   
+[49] H. Jung, S.-W. Ko, and I.-H. Lee, “Secure transmission using linearly distributed virtual antenna array with element position perturbations,” IEEE Trans. Veh. Technol., vol. 70, no. 1, pp. 474–489, Jan. 2021.   
+[50] Z. Yang, W. Xu, and M. Shikh-Bahaei, “Energy efficient UAV communication with energy harvesting,” IEEE Trans. Veh. Technol., vol. 69, no. 2, pp. 1913–1927, Feb. 2020.
+
+[51] C. You and R. Zhang, “Hybrid offline-online design for UAV-enabled data harvesting in probabilistic LoS channels,” IEEE Trans. Wireless Commun., vol. 19, no. 6, pp. 3753–3768, Jun. 2020.   
+[52] (May 2020). Mavic Air 2 Return to Home Test. [Online]. Available: https://youtu.be/-33y-t-MNT0   
+[53] S. A. S. Mohamed, M.-H. Haghbayan, T. Westerlund, J. Heikkonen, H. Tenhunen, and J. Plosila, “A survey on odometry for autonomous navigation systems,” IEEE Access, vol. 7, pp. 97466–97486, 2019.   
+[54] Technical Specification Group Radio Access Network: Study on enhanced LTE Support for Aerial Vehicles, document 3GPP TR 36.777, Version 15.0.0, Dec. 2017.   
+[55] C. Yan, L. Fu, J. Zhang, and J. Wang, “A comprehensive survey on UAV communication channel modeling,” IEEE Access, vol. 7, pp. 107769–107792, 2019.   
+[56] X. Liu, Y. Liu, and Y. Chen, “Reinforcement learning in multiple-UAV networks: Deployment and movement design,” IEEE Trans. Veh. Technol., vol. 68, no. 8, pp. 8036–8049, Aug. 2019.
+
+![](images/30d39f6366c7651b9b63721a1372106656fb1b8a2c3723fb7ad8ae6c67bb3392.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man in a black shirt against a white background (no text or symbols visible)
+</details>
+
+Geng Sun (Member, IEEE) received the B.S. degree in communication engineering from Dalian Polytechnic University in 2011, and the Ph.D. degree in computer science and technology from Jilin University in 2018. He was a Visiting Researcher with the School of Electrical and Computer Engineering, Georgia Institute of Technology, USA. He is currently an Associate Professor with the College of Computer Science and Technology, Jilin University. His research interests include wireless networks, UAV communications, collaborative beamforming, and optimizations.
+
+![](images/07c63180020bab54bd653cad1b6008a2b3a4118573ab1eee1a39bcd42ca825a6.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man in a collared shirt (no text or symbols visible)
+</details>
+
+Jiahui Li (Graduate Student Member, IEEE) received the bachelor’s degree in software engineering from Jilin University, Changchun, China, in 2018, where he is currently pursuing the master’s degree in computer science and technology. His current research focuses on UAV networks, antenna arrays, and optimization.
+
+![](images/26c6428a79446964060e2101845921deefb898cf3921884f332dd598bed379a7.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man in formal suit and tie against red background (no text or symbols visible)
+</details>
+
+Yanheng Liu received the M.Sc. and Ph.D. degrees in computer science from Jilin University, China. He is currently a Professor with Jilin University. His primary research interests are in network security, network management, and mobile computing network theory and applications.
+
+![](images/1bee6dd102538ff72ffefa7c2eb18c88f674ba037d6550896338b591a0330bf0.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman with long dark hair wearing a light blue collared shirt and black blazer against a solid blue background (no text or symbols visible)
+</details>
+
+Shuang Liang received the B.S. degree in communication engineering from Dalian Polytechnic University, China, in 2011, and the M.S. degree in software engineering from Jilin University, China, in 2017, where she is currently pursuing the Ph.D. degree in computer science. Her research interests focus on wireless communication and design of array antennas.
+
+![](images/564c9702b8ff33d668f8e5cc97db82a799e22f52c94b01866c2c9a1eaa8cf315.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman wearing glasses and a red shirt against a blue background (no text or symbols visible)
+</details>
+
+Hui Kang received the M.E. and Ph.D. degrees from Jilin University in 1996 and 2007, respectively. She is currently an Associate Professor with the College of Computer Science and Technology, Jilin University. Her research interests include information integration and distributed computing.

@@ -5,16 +5,18 @@ tags: [author, researcher, aerial-mec, jilin-university]
 related:
   - "[[sun-2024-imssa-uav-secure-cb]]"
   - "[[sun-2023-bargain-match-vec]]"
+  - "[[sun-2021-temcmop-uav-cb]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-02
 ---
 
 # Yanheng Liu
 
 Affiliated with the **College of Computer Science and Technology, Jilin University** (Changchun, China; email `yhliu@jlu.edu.cn`) — consistent across his papers in this wiki.
 
-Co-authored 2 sources in this wiki, both in the Jilin-University aerial/vehicular-MEC cluster:
+Co-authored 3 sources in this wiki, all in the Jilin-University aerial/vehicular-MEC cluster:
 
+- [[sun-2021-temcmop-uav-cb]] — UAV collaborative-beamforming time + energy multi-objective optimization (TEMCMOP) via IMOALO.
 - [[sun-2024-imssa-uav-secure-cb]] — UAV-enabled secure communications via collaborative beamforming with imperfect eavesdropper information (IMSSA).
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing (BARGAIN-MATCH).
 
