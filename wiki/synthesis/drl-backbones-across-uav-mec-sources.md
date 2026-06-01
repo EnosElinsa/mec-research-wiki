@@ -30,6 +30,9 @@ related:
   - "[[ma-pomdp]]"
   - "[[design-recipe-multi-uav-mec]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
+  - "[[lyapunov-guided-drl]]"
+  - "[[j-ppo-vs-pdqn]]"
+  - "[[safety-and-robustness-mechanisms-in-mec]]"
 created: 2026-05-29
 updated: 2026-06-02
 ---
@@ -154,7 +157,7 @@ The hybrid-action design space splits cleanly three ways: a canonical native hyb
 | **Latent-space encoding** | [[hao-2025-priority-aware-task-driven-co]] | Heterogeneous-size action sets compressed into a learned latent; standard DRL on the latent. |
 | **Stage-separated** | [[nabi-2025-jour-hierarchical-aerial]] (Gale-Shapley + ESAC), [[zhang-2025-mcma-task-migration]] (Q-head + policy-grad), [[wang-2026-aerial-marine-msar]] (matching + convex) | Discrete decided up front by classical method; continuous decided separately by DRL or convex. |
 
-[[liu-2026-jppo-en-convntm|j-PPO]] vs [[ma-2025-pdqn-vehicular-mec|P-DQN]] is now a real comparison ([[ddpg-vs-jppo]] should eventually be supplemented by a `j-ppo-vs-pdqn` page). Key contrast: PPO is on-policy with stochastic exploration; P-DQN is off-policy with replay-buffer sample efficiency. The wiki has no head-to-head, so picking one over the other is currently a problem-shape decision rather than empirical preference.
+[[liu-2026-jppo-en-convntm|j-PPO]] vs [[ma-2025-pdqn-vehicular-mec|P-DQN]] is now a real comparison ([[j-ppo-vs-pdqn]]; alongside the [[ddpg-vs-jppo]] continuous-only contrast). Key distinction: PPO is on-policy with stochastic exploration; P-DQN is off-policy with replay-buffer sample efficiency. No curated source runs both on the same instance, so picking one over the other is a problem-shape decision rather than empirical preference — j-PPO for high-dimensional continuous actions entangled with discrete switches at multi-agent scale, P-DQN for a small fixed destination menu where replay reuse pays off.
 
 ### 2. DDPG has a niche after all
 

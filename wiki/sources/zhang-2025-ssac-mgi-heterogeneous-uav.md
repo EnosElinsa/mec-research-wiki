@@ -15,8 +15,9 @@ related:
   - "[[collision-avoidance-mgi]]"
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[safety-and-robustness-mechanisms-in-mec]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled MEC

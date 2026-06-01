@@ -15,8 +15,9 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[centralized-training-decentralized-execution]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
+  - "[[safety-and-robustness-mechanisms-in-mec]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Robust Computation Offloading and Trajectory Optimization for Multi-UAV-Assisted MEC: A Multiagent DRL Approach

@@ -566,6 +566,7 @@
 
 - [[drl-simulation-with-pomdp-formulation]] — POMDP simulation protocol used in [[liu-2026-jppo-en-convntm]]
 - [[ao-sdr-sca-convex-pipeline]] — the AO + SDR + SCA convex pipeline recurring across the ISAC/secure-beamforming sources
+- [[lyapunov-guided-drl]] — the Lyapunov drift-plus-penalty + per-slot DRL hybrid across 6 sources
 
 ## Findings
 
@@ -599,6 +600,7 @@
 ## Comparisons
 
 - [[ddpg-vs-jppo]]
+- [[j-ppo-vs-pdqn]] — native hybrid-action head-to-head: on-policy j-PPO vs off-policy P-DQN
 - [[j-ppo-baselines]]
 - [[bcsa-frl-vs-bc-uav-masac]] — Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
 - [[game-theoretic-offloading-formulations]] — potential vs Stackelberg vs bargaining vs matching
@@ -615,6 +617,7 @@
 - [[isac-sensing-in-aerial-mec]] — How sensing enters the 7 ISAC/sensing sources.
 - [[maritime-mec-architectures]] — Tiering + solver families across the 7 maritime sources.
 - [[blockchain-on-edge-trust-layer]] — Which layer the blockchain defends (consensus / aggregation / audit) across the 3 blockchain-on-edge sources.
+- [[safety-and-robustness-mechanisms-in-mec]] — Safe-RL / DRO / bounded-robust / structural-side-step mechanisms compared by threat, guarantee, and cost.
 - [[collaborative-beamforming-in-aerial-mec]] — Target / objectives / solver split across the 5 collaborative-beamforming sources.
 
 ## References

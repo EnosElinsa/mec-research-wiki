@@ -4,8 +4,9 @@ title: Lyapunov Optimization (drift-plus-penalty)
 tags: [optimization, queueing, online-control]
 related:
   - "[[qin-2025-bcuav-masac]]"
+  - "[[lyapunov-guided-drl]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Lyapunov Optimization (drift-plus-penalty)
@@ -24,7 +25,7 @@ Standard guarantee: under mild conditions, time-averaged constraint violation is
 
 - Long-term queue stability constraints are *exactly* what arrive in MEC: per-slot data backlog, per-slot energy budget, per-slot delay caps that the system should respect on average.
 - It decouples the long-term planning from the per-slot decision, making per-slot subproblems tractable (often convex or near-convex).
-- It composes cleanly with DRL — the per-slot subproblem can be solved by an RL agent while Lyapunov's virtual queues take care of the temporal coupling.
+- It composes cleanly with DRL — the per-slot subproblem can be solved by an RL agent while Lyapunov's virtual queues take care of the temporal coupling. This **Lyapunov + DRL** hybrid is common enough across the corpus to have its own methodology page: [[lyapunov-guided-drl]].
 
 ## In this wiki
 

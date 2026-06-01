@@ -16,8 +16,9 @@ related:
   - "[[binary-whale-optimization]]"
   - "[[weighted-kmeans-uav-deployment]]"
   - "[[wang-2026-aerial-marine-msar]]"
+  - "[[safety-and-robustness-mechanisms-in-mec]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs and HAPs
@@ -67,7 +68,7 @@ DRO fits a different niche: when you have **historical statistics but not a dist
 
 ## Cross-link with related sources
 
-- **Robustness family.** Currently the wiki's only DRO entry; pairs naturally with the perfect-CSI assumptions in [[hsu-2025-drl-hues-hap-noma]] and [[benaya-2025-aerial-isac-haps]] for a future "robustness across the corpus" synthesis.
+- **Robustness family.** Currently the wiki's only DRO entry; mapped against the corpus's other safety/robustness mechanisms in [[safety-and-robustness-mechanisms-in-mec]], and pairs naturally with the perfect-CSI assumptions in [[hsu-2025-drl-hues-hap-noma]] and [[benaya-2025-aerial-isac-haps]].
 - **Aerial-MEC architecture.** Two-layer UAV+HAP, same as [[peng-2025-drudm-cfg]], [[nabi-2025-jour-hierarchical-aerial]], [[bao-2025-ddpg-video-offloading]].
 - **Solver lineage.** Convex (SOCP) + metaheuristic (BWOA) + decomposition — sits closer to [[wang-2026-aerial-marine-msar]] and [[liu-2025-haps-uav-maritime-iot]] than to the DRL papers.
 

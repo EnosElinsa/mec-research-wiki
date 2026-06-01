@@ -14,6 +14,7 @@ related:
   - "[[ddqn]]"
   - "[[binary-vs-partial-offloading]]"
   - "[[zhang-2025-mcma-task-migration]]"
+  - "[[j-ppo-vs-pdqn]]"
 created: 2026-05-29
 updated: 2026-06-01
 ---
@@ -66,7 +67,7 @@ This is now the second wiki source that picks **DQN-family** for hybrid actions,
 ## Cross-link with related sources
 
 - **Vehicular-MEC track:** alongside [[zhang-2025-mcma-task-migration]] (task migration with Informer prediction) and [[xie-2026-uav-multisource-fusion]] (UAV-fusion for V2X perception).
-- **Hybrid-action DRL:** alongside [[liu-2026-jppo-en-convntm]] — together they motivate a `j-ppo-vs-pdqn` comparison page once a deciding factor (memory, mobility, etc.) becomes clear.
+- **Hybrid-action DRL:** alongside [[liu-2026-jppo-en-convntm]] — together they motivate the [[j-ppo-vs-pdqn]] comparison, which contrasts P-DQN's off-policy value-based handling with j-PPO's on-policy stochastic one.
 - **Three-tier cloud-edge-end:** introduces this architectural pattern to the wiki; future ground-MEC papers will likely revisit it.
 
 ## Raw artifacts

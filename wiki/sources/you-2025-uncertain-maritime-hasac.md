@@ -16,8 +16,9 @@ related:
   - "[[wang-2025-double-edge-samin]]"
   - "[[wang-2024-twotier-satellite-marine]]"
   - "[[jia-2022-hierarchical-aerial-matching]]"
+  - "[[lyapunov-guided-drl]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-02
 ---
 
 # Joint Computation Offloading and Resource Allocation for Uncertain Maritime MEC via Cooperation of AAVs and Vessels

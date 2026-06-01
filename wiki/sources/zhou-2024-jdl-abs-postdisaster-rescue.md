@@ -20,8 +20,9 @@ related:
   - "[[zhang-2019-stochastic-offloading-uav-mec]]"
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[lyapunov-guided-drl]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Delay-Aware UAV Computation Offloading and Communication Assistance for Post-Disaster Rescue
