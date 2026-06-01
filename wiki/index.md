@@ -615,6 +615,7 @@
 - [[drl-vs-evolutionary-vs-classical-solvers]] — Solver-family analysis (DRL / evolutionary / classical).
 - [[sagin-satellite-offloading-landscape]] — The 8 SAGIN / satellite-offloading sources mapped by satellite role + solver shape.
 - [[isac-sensing-in-aerial-mec]] — How sensing enters the 7 ISAC/sensing sources.
+- [[gai-generator-vs-optimizer-in-isac]] — GAI as physical-layer generator vs decision-layer optimizer across the 4 ISAC GAI sources.
 - [[maritime-mec-architectures]] — Tiering + solver families across the 7 maritime sources.
 - [[blockchain-on-edge-trust-layer]] — Which layer the blockchain defends (consensus / aggregation / audit) across the 3 blockchain-on-edge sources.
 - [[safety-and-robustness-mechanisms-in-mec]] — Safe-RL / DRO / bounded-robust / structural-side-step mechanisms compared by threat, guarantee, and cost.

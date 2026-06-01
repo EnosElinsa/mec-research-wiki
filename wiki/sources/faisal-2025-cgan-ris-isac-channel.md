@@ -14,8 +14,9 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[zhang-2025-gan-td3-isac-active-ris]]"
   - "[[benaya-2025-aerial-isac-haps]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Conditional Generative Adversarial Networks for Channel Estimation in RIS-Assisted ISAC Systems

@@ -26,8 +26,9 @@ related:
   - "[[zhang-2025-gan-td3-isac-active-ris]]"
   - "[[meng-2024-uav-isac-overview]]"
   - "[[jiang-2025-isac-lae-overview]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Generative AI for Integrated Sensing and Communication: Insights From the Physical Layer Perspective

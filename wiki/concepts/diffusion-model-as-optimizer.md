@@ -8,8 +8,9 @@ related:
   - "[[ddpg]]"
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-01
 ---
 
 # Diffusion Model as Optimizer

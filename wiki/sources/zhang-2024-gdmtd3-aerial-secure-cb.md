@@ -17,6 +17,7 @@ related:
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[peng-2025-drudm-cfg]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-29
 updated: 2026-06-01
 ---

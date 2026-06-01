@@ -7,8 +7,9 @@ related:
   - "[[wang-2025-lae-network-survey]]"
   - "[[mobile-aigc-network]]"
   - "[[xu-2024-mobile-aigc-survey]]"
+  - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-28
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Generative AI for MEC (GAI-MEC)
