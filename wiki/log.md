@@ -2,6 +2,43 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 8/8: 1 new source; +1 concept) — RUN COMPLETE
+
+Eighth and **final** batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch7` key there — a single paper). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders, 213 curated, 1 uncurated, 0 duplicate MinerU ingests**; HEAD synced with origin/main (`e937338`), working tree clean apart from the one uncurated raw folder + app-generated `wiki/media/`. The batch paper had no existing source page. `.curation-context.md` was absent this session, so the extraction format was reconstructed from the live `wiki/sources/` schema (mirroring `du-2024-d2sac-aigc-asp-selection` / `sun-2024-mfris-semantic-antijamming`). Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`. After this batch: **214 curated, 0 uncurated, 0 batches remain — all 43 papers in the run are curated.**
+
+### Source page created (1)
+
+- **[[du-2024-yolo-semcom-digital-twin]]** — *YOLO-Based Semantic Communication With Generative AI-Aided Resource Allocation for Digital Twins Construction* (IEEE Internet of Things Journal, DOI 10.1109/JIOT.2023.3317629; manuscript received 23 Jun 2023, accepted 10 Sep 2023, date of publication 20 Sep 2023, date of current version 21 Feb 2024 → year 2024; vol/issue/pages **not in parse**). A [[semantic-communication]] framework that builds a [[digital-twin|digital twin]] of an apple orchard from UAV imagery while cutting transmission cost: a slimmed [[yolov7-object-detection|YOLOv7-X]] detector ("YOLOv7-HS" via an ELAN-H/HorNet module + a parameter-free SimAM 3-D attention module) extracts only the semantic content (cropped apples + confidence + position), then transmission power is allocated by per-object importance ($W_i=c_i^\sigma$). Two allocation schemes — a confidence-based rule (Conf-SemCom) and a **diffusion-model-generated** scheme ([[diffusion-model-as-optimizer]], double-Q-trained, 5 inference denoising steps) — are compared against average allocation (Avg-SemCom) under a Fisher–Snedecor $\mathcal{F}$ fading channel, optimizing the authors' MIST (metric for image semantic transmission). First author Baoxia Du (Jilin), distinct from corpus-recurring co-author Hongyang Du.
+
+### Concept page created (1)
+
+- **[[digital-twin]]** — continuously-synchronized virtual replica of a physical object/process; the synchronization data stream is the recurring edge-transmission workload that motivates [[semantic-communication]] and importance-aware allocation. Anchors [[du-2024-yolo-semcom-digital-twin]] and relates to the human-digital-twin edge-deployment paper [[yang-2024-taco-human-digital-twin-edge]]. No dedicated page had existed (the term previously appeared only inline in [[generative-ai-for-mec]]).
+
+### Entities
+
+No new entity pages. One roster updated for a confirmed authored source: **[[dusit-niyato]]** 25→26 (+[[du-2024-yolo-semcom-digital-twin]], NTU — consistent with his confirmed affiliation across the corpus). Flagged for human confirmation, **not** created (consistent with the house deferral): lead author **Baoxia Du** and co-authors **Haifeng Liu**, **Peng Xin**, **Jun Yu**, **Mingyang Qi**, **You Tang** (Jilin Agricultural Science & Technology University / Jilin Institute of Chemical Technology / Yanbian University) — each 1 corpus appearance; and **Hongyang Du**, who recurs across the corpus but **remains intentionally un-promoted** pending affiliation disambiguation (the standing deferral noted on [[du-2024-gdm-network-optimization-tutorial]] and [[wang-2024-wipe-gai]]).
+
+### Meta-docs
+
+- **[[index]]** — +1 source entry (Generative-AI MEC) and +1 concept entry (MEC fundamentals: [[digital-twin]]).
+- **[[overview]]** — Snapshot sources **213→214**, concepts **259→260** (entities 71 / derived layers unchanged). Generative-AI MEC track row +[[du-2024-yolo-semcom-digital-twin]]; simulation-only count line 213→214 (hardware-validated count unchanged at 3).
+
+### Metadata verification (correctness-first)
+
+DOI JIOT.2023.3317629 read directly from the parse's Digital Object Identifier line; venue (IEEE Internet of Things Journal) and the dual publication dates likewise from the parse front matter. Year set to 2024 (date of current version, matching the corpus convention for early-access/current-version splits). Volume/issue/pages are not in the parse and were **omitted rather than guessed** (a web search did not surface the article record directly; the parse remains authoritative). Quantitative claims preserved as stated in the parse and attributed to their tables/figures: detector ablation (Table III: 70.7M→53.5M params, 188.0G→152.6G FLOPs, AP@0.5 87.8%→89.1%→89.8%, with the authors' "+1.3%/+1.7% AP, −24% params, −19% FLOPs" and "+0.8% AP" deltas), detector comparison (Table IV, best AP@0.5 + 34 FPS among 8 detectors on MinneApple), and the 595.2 MB → 55.4 MB / **91% communication-cost reduction** over 331 test images. MIST/SSIM/BER-vs-η/distance curve readings and the ~500-iteration diffusion-crossover were flagged as figure-derived/indicative. Positioning claims (importance-aware semantic allocation; replaceable detector module) attributed as the paper's own.
+
+### Toolkit
+
+No ratchet needed — `curation_status.py --dupes`, `linkcheck.py`, `process_refs.py`, `frontmatter_audit.py`, `index_audit.py`, `entity_roster_audit.py`, and `corpus_counts.py` covered state detection, every commit gate, roster cross-checking, and count reconciliation. No reusable one-off arose; the toolkit is stable and unchanged this pass.
+
+### Gates
+
+**`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py`** = 587 pages, 0 errors. **`index_audit.py`** = 589/589 indexed, 0 unindexed / 0 duplicate primaries. **`entity_roster_audit.py`** = 0 over-claims (3 pre-existing present-but-unlisted advisories, all on `wang-2024-wipe-gai`, unrelated to this batch). Counts reconciled via `corpus_counts.py`: sources **213→214**, concepts **259→260** (entities 71 unchanged); `raw/sources` 214 = curated 214 (zero uncurated). LLM Wiki API reachable (`/health` ok, v0.4.16); graph node/edge stats not enumerated (the `/graph` endpoint shape returned errors in prior passes and is not required for correctness). Untracked `wiki/media/` (app-generated) left unstaged.
+
+### Run summary (multi-batch curation run, batches 1/8–8/8)
+
+The multi-invocation run is **complete**: 43 papers curated across 8 batches (batch 1/8 covered earlier groundwork; batches 2/8–8/8 worked the `batches-remaining.json` plan = 6+6+6+6+6+6+1 = 37 papers). Final corpus: **214 sources, 260 concepts, 71 entities**, 0 uncurated raw folders, 0 duplicate MinerU ingests. `.curation-out/batches-remaining.json` now has an empty `batches` object (the `batch7` key moved into `completed`).
+
 ## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 7/8: 6 new sources; +5 concepts)
 
 Seventh batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch6` key there). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders, 207 curated, 7 uncurated, 0 duplicate MinerU ingests**; HEAD synced with origin/main (`5000c0d`), working tree clean apart from the uncurated raw folders + app-generated `wiki/media/`. None of the 6 batch papers had an existing source page. `.curation-context.md` was absent this session, so the extraction format was reconstructed from the live `wiki/sources/` schema (mirroring `lyu-2017-spiral-mbs-placement` / `chen-2022-qoe-game-end-edge-cloud`). Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`, with Crossref used to confirm venue/volume/page/year where the parse was silent. After this batch: **213 curated, 1 uncurated, 1 batch remains** (the `batch7` key: a single YOLO-semantic-communication digital-twins paper).
