@@ -26,6 +26,7 @@ related:
   - "[[zhan-2020-completion-time-energy-uav-mec]]"
   - "[[wang-2024-wipe-gai]]"
   - "[[wang-2024-xl-mimo-tutorial]]"
+  - "[[an-2024-multilayer-ris-hap-swipt]]"
 created: 2026-05-29
 updated: 2026-06-02
 ---
@@ -34,7 +35,7 @@ updated: 2026-06-02
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 23 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
+The most frequently recurring author in the corpus, co-authoring 24 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -59,6 +60,7 @@ The most frequently recurring author in the corpus, co-authoring 23 sources span
 - [[zhan-2020-completion-time-energy-uav-mec]] — completion-time vs energy Pareto optimization for a fixed-wing UAV-MEC server; path discretization + AO + SCA.
 - [[wang-2024-wipe-gai]] — wireless-perception-guided GAI (WiPe-GAI) for edge AIGC pricing via a diffusion model.
 - [[wang-2024-xl-mimo-tutorial]] — tutorial/survey on extremely large-scale MIMO (XL-MIMO) for 6G (near-field channel modeling + signal processing).
+- [[an-2024-multilayer-ris-hap-swipt]] — multi-layer refracting RIS-assisted receiver enabling SWIPT over long-distance HAP links (worst-case sum-rate, LogSumExp-dual + M-CCD).
 
 ## Contributions to this wiki
 
