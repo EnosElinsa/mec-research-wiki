@@ -41,6 +41,7 @@
 
 - [[he-2019-euagame-user-allocation]] — He et al. 2019. **EUAGame** — edge user allocation as a potential game with a decentralized NE algorithm.
 - [[sun-2024-mvtora-postdisaster-vfc]] — Sun et al. 2024. Post-disaster aerial-terrestrial MEC + **vehicle fog computing**; game theory + convex + evolutionary (MVTORA).
+- [[chen-2022-qoe-game-end-edge-cloud]] — Chen et al. 2022. **QoE-aware decentralized end-edge-cloud offloading** as a **potential game** (MUTO-Game); self-interested user devices compete for channels + edge compute, maximizing sum QoE; proven NE existence + the distributed GDTO algorithm + a convergence bound and a **Price-of-Anarchy** worst-case guarantee (IEEE TMC).
 
 > [[chen-2024-ulse-game]] (UAV-LEO offloading as a potential game) is also game-theoretic; it is filed under **SAGIN / satellite offloading** below as its primary architectural home.
 
@@ -123,6 +124,8 @@
 - [[wang-2024-satellite-terrestrial-computing]] — Wang et al. 2024. **Satellite-terrestrial computing** for 6G; BSs + LEO satellites with MEC serve **GUEs + SUEs**; min weighted total energy under delay via joint **offloading selection** (relaxation mapping) + **receive beamforming** (SDR) + resource allocation; NP-hard → 3 subproblems solved by **AO**; NOMA-SIC uplinks + FSO inter-satellite links (IEEE TCOMM).
 - [[zhou-2024-mco-satellite-edge-offloading]] — Zhou et al. 2024. **Mobility-aware** computation offloading in a three-layer SECN (GEO cloud / LEO edge / ground); first to model **LEO high-speed movement** (coverage-time model + four mobility scenarios); min weighted latency+energy; discrete non-convex → continuous convex relaxation → **MCO-A**, an **ADMM-based distributed** algorithm (convergence proved) scaling to large co-existing-user offloading (IEEE TMC).
 - [[liu-2023-sagecn-online-offloading]] — Liu et al. 2023. Collaborative **space/aerial-aided** edge computing (SAGECN) for 6G where **LEO satellites are both servers and users**; a satellite offloads its own tasks one hop to a nearby aircraft or multi-hop to the cloud; min long-term completion delay via **Lyapunov** drift-plus-penalty + **delayed online learning** predicting task arrivals + queue lengths, per-slot bounded integer program (IEEE TVT).
+- [[zhang-2023-three-tier-satellite-offloading]] — Zhang et al. 2023. **Satellite-based three-tier cloud-edge offloading**; remote ground UEs offload (data-partition **partial offloading**) to a LEO-edge server and further to a ground cloud; min system energy over **user association + power + task scheduling + fronthaul/backhaul bandwidth assignment**; NOMA fronthaul + quadratic-transform power + CVX bandwidth, in a joint iterative algorithm (IEEE TWC).
+- [[zhang-2024-qos-vne-sagoin]] — Zhang et al. 2024. **QoS-aware multi-domain virtual network embedding** over a three-layer **space-air-ground-ocean** integrated network (SAGOI-Net); K-means classifies VNRs into compute/bandwidth/delay QoS categories to switch the **RL agent's reward**; convolutional policy network for node mapping + k-shortest-path link mapping (IEEE TSC). *(SDN/NFV resource orchestration.)*
 
 ### IRS / THz / anti-jamming
 
@@ -200,6 +203,7 @@
 - [[qi-2024-msar-minmax-latency]] — Qi et al. 2024. Multi-UAV maritime **search & rescue**; **min-max latency** over offloading + R-UAV deployment + S-UAV–target association; iterative linearization + SCA + Branch-and-Bound (IEEE TVT).
 - [[dai-2024-multiuav-marine-welfare]] — Dai et al. 2024. Multi-UAV multi-access marine MEC (UAVs + **ocean beacon stations**); maximizes **system revenue** (welfare − energy) via layered decomposition + **double-auction** OBS selection (IEEE TCOMM).
 - [[li-2023-secure-marine-iot-jamming]] — Li et al. 2023. **Secure** marine-IoT offloading: USVs upload to a **HAP** via NOMA then provide **cooperative jamming**; system-energy min via monotonic optimization (PAS) + cross-entropy (CASE) (IEEE TVT).
+- [[lu-2023-uav-relay-secure-maritime-mec]] — Lu et al. 2023. **UAV-relay-assisted secure maritime MEC** with a **flying eavesdropper**; a relay UAV amplify-and-forwards maritime-device tasks to a coastal edge server while a **coastal jammer** disrupts an eavesdropping UAV; **max-min secure computing capacity** over transmit power + time-slot + local-computation + UAV trajectory; non-convex → **BCD + SCA** (IEEE TCOMM).
 - [[zeng-2024-usv-fleet-collaborative-offloading]] — Zeng et al. 2024. UAVs offload tasks **to USV fleets**; first-price sealed **reverse auction** (reserve price) incentive + symmetric-equilibrium bidding, then BCD + improved **ADMM** energy minimization (IEEE TVT).
 - [[liu-2022-maritime-uav-mec-virtualization]] — Liu et al. 2022. Two-layer maritime UAV-MEC (T-UAV MEC server over B-UAVs) with **VM-multiplexing** parallel computing under I/O interference; latency min via DQN + DDPG over T-UAV trajectory + VM count (IEEE TVT).
 - [[li-2020-maritime-uav-satellite-coverage]] — Li et al. 2020. **Coverage enhancement** of a hybrid satellite-UAV-terrestrial maritime network; a **fixed-wing UAV** shares spectrum with satellites and uses TBS/satellite backhaul; jointly optimizes pre-planned **trajectory + in-flight transmit power** to **max-min ergodic rate** using only **location-dependent large-scale CSI** (AIS-derived ship positions); non-convex → decomposition + SCA + bisection (IEEE TCOMM). *(Maritime communication-layer coverage, not MEC offloading.)*
@@ -274,6 +278,7 @@
 - [[miettinen-2010-mcc-energy-efficiency]] — Miettinen & Nurminen 2010. Foundational **mobile-cloud-computing energy** measurement/analysis: offloading saves energy only when $E_{cloud}<E_{local}$, governed by the **computing-to-communication ratio**; WLAN-vs-3G + traffic-pattern sensitivity (USENIX HotCloud '10). *(Corpus's earliest anchor; measurement study, no DOI.)*
 - [[wang-2016-partial-offloading-dvs]] — Wang et al. 2016. **Partial computation offloading using dynamic voltage scaling (DVS)**; jointly optimizes SMD computational speed + transmit power + offloading ratio for **energy minimization (ECM)** and **latency minimization (LM)**; ECM recast convex via variable substitution → closed-form **EPCO**, LM via univariate search; multi-cloud extension in closed form; proves **total offloading is never optimal under DVS** (IEEE TCOM).
 - [[yang-2024-taco-human-digital-twin-edge]] — Yang et al. 2024. **Human digital twin** deployment at the edge under an end-edge-cloud framework; two-timescale accuracy-aware online optimization (**TACO**) jointly placing/updating virtual twins + task offloading + access selection; improved Lyapunov + piecewise McCormick envelopes + BCD (IEEE TMC).
+- [[shi-2023-two-timescale-migration-rerouting]] — Shi et al. 2023. **Service migration vs task rerouting** for MEC handovers; **two-timescale** online optimization — slow access-selection + migration/rerouting, fast computing/communication resource allocation — minimizing long-term average service delay; improved **Lyapunov** + randomized rounding (JASTO) + Lagrange-dual (OASTR), asymptotically optimal (IEEE TWC).
 
 ### UAV communications & deployment foundations
 
@@ -281,6 +286,7 @@
 - [[zeng-2016-throughput-relaying]] — Zeng et al. 2016. **UAV mobile relaying** throughput maximization; joint relay trajectory + source/relay power; "staircase" water-filling power structure + SCA trajectory under **information-causality** (IEEE TCOMM). *(UAV mobile-relaying anchor, not MEC.)*
 - [[zhao-2019-uav-emergency-disasters]] — Zhao et al. 2019. **UAV-assisted emergency networks** in disasters (magazine framework): joint trajectory+scheduling with surviving BSs, multihop D2D coverage extension, and multihop UAV relaying (AF/DF) — IEEE Wireless Communications. *(Post-disaster comms framework, not a single MEC formulation.)*
 - [[bor-yaliniz-2016-3d-abs-placement]] — Bor-Yaliniz et al. 2016. First **3-D placement** of a drone-cell (aerial base station): jointly choose altitude + coverage location/size to maximize covered users; quadratically-constrained MINLP via bisection + interior-point solver (IEEE ICC). *(Aerial-base-station deployment anchor, not MEC.)*
+- [[lyu-2017-spiral-mbs-placement]] — Lyu et al. 2017. **Minimum-count UAV-MBS placement** as the NP-hard **Geometric Disk Cover** problem; a polynomial-time **spiral** algorithm places base stations along the convex-hull perimeter of uncovered ground terminals and nudges inward; near core-sets-optimal on small instances, beats strip-based/K-means/random (IEEE COMML). *(Aerial-base-station deployment anchor, not MEC.)*
 - [[mozaffari-2019-drone-antenna-array]] — Mozaffari et al. 2019. **Drone-based antenna array** that beam-steers by **physically repositioning** the drones; minimum-**service-time** design = transmission time (perturbation-theory drone-spacing directivity max) + control time (**bang-bang** closed-form minimum control time under wind/gravity); +32% spectral efficiency vs fixed uniform array (IEEE TCOMM). *(UAV-communications / aerial-beamforming anchor, not MEC.)*
 
 ## Entities
@@ -328,6 +334,7 @@
 - [[mobile-edge-computing]]
 - [[task-offloading]]
 - [[task-migration]]
+- [[service-migration]]
 - [[device-association]]
 - [[computation-to-communication-ratio]]
 - [[computation-peer-offloading]]
@@ -370,6 +377,7 @@
 - [[dynamic-qos-constraints]]
 - [[finite-blocklength-urllc]]
 - [[network-function-virtualization]]
+- [[virtual-network-embedding]]
 - [[service-function-chaining]]
 - [[small-cell-mec]]
 - [[mobility-aware-offloading]]
@@ -390,11 +398,13 @@
 - [[walker-star-constellation]]
 - [[free-space-optical-isl]]
 - [[space-air-ground-integrated-network]]
+- [[space-air-ground-ocean-integrated-network]]
 - [[non-terrestrial-network]]
 - [[vehicular-mec]]
 - [[uav-enabled-its]]
 - [[cellular-connected-uav]]
 - [[drone-cell-3d-placement]]
+- [[geometric-disk-cover]]
 - [[maritime-mec]]
 - [[post-disaster-mec]]
 - [[three-tier-cloud-edge-end]]
@@ -485,6 +495,7 @@
 - [[bargaining-game]]
 - [[coalition-formation-game]]
 - [[nash-equilibrium]]
+- [[price-of-anarchy]]
 - [[prospect-theory]]
 - [[contract-theory]]
 - [[matching-theory-for-resource-allocation]]
