@@ -16,8 +16,9 @@ related:
   - "[[noma]]"
   - "[[air-ground-integrated-network]]"
   - "[[mao-2025-bcsa-frl]]"
+  - "[[lyapunov-guided-drl]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Cooperative UAV Trajectory Design and Resource Allocation in Blockchain-Enabled Secure Aerial Edge Computing Network

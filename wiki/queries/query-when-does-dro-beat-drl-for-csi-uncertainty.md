@@ -10,8 +10,9 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[wang-2026-aerial-marine-msar]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
+  - "[[safety-and-robustness-mechanisms-in-mec]]"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-02
 ---
 
 # When does DRO beat DRL for CSI uncertainty in aerial MEC?
@@ -37,4 +38,4 @@ Under what conditions does the DRO approach (worst-case guarantee, no online ada
 - A controlled study running [[jia-2025-dro-uav-hap-mec]]'s DRO formulation and a DRL controller on the **same** UAV-HAP MEC environment under matched CSI-error models, reporting both average performance and worst-case violation rate.
 - A hybrid (DRO-regularized DRL) baseline to see whether the two are complementary rather than competing.
 
-No curated source provides this comparison yet; promoting it here so the next robustness-themed source gets slotted against it.
+No curated source provides this comparison yet; promoting it here so the next robustness-themed source gets slotted against it. The full map of the corpus's safety/robustness mechanisms — including this DRO source, the [[collision-avoidance-mgi|MGI]] safe-RL approach, and the bounded-uncertainty robust designs — is in [[safety-and-robustness-mechanisms-in-mec]].

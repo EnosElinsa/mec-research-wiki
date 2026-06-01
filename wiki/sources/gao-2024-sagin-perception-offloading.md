@@ -26,8 +26,9 @@ related:
   - "[[binary-vs-partial-offloading]]"
   - "[[xie-2026-uav-multisource-fusion]]"
   - "[[bao-2025-ddpg-video-offloading]]"
+  - "[[lyapunov-guided-drl]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-02
 authors:
   - Yulan Gao
   - Ziqiang Ye

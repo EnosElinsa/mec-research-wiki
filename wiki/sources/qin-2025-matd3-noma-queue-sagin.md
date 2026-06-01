@@ -15,8 +15,9 @@ related:
   - "[[wang-2024-hybrid-oma-noma-sagin]]"
   - "[[hsu-2025-drl-hues-hap-noma]]"
   - "[[fu-2025-otae-inference-lae-batching]]"
+  - "[[lyapunov-guided-drl]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-02
 ---
 
 # Learning-Based NOMA-Enabled Queue-Aware Task Offloading and AAV 3D Trajectory Planning for SAGIN

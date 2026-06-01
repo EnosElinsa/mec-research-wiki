@@ -15,8 +15,9 @@ related:
   - "[[fractional-programming-dinkelbach]]"
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[qin-2025-bcuav-masac]]"
+  - "[[lyapunov-guided-drl]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Enhancing Energy Efficiency in Wireless-Powered MEC Systems Through Lyapunov-Guided DRL

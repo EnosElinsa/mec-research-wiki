@@ -7,6 +7,7 @@ related:
   - "[[hybrid-action-decision-making]]"
   - "[[hybrid-action-beats-pure-drl]]"
   - "[[liu-2026-jppo-en-convntm]]"
+  - "[[j-ppo-vs-pdqn]]"
 created: 2026-05-28
 updated: 2026-06-02
 ---

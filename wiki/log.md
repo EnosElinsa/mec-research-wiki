@@ -2,6 +2,40 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Synthesis-expansion pass (DERIVED layer — DRL solver-design & constraint-handling theme; no new papers)
+
+A coverage-growth pass (synthesizer, not auditor): no new raw papers, grew the *derived* layer over the existing corpus from leads surfaced in a user exploration conversation. Tree clean at `faecd50` before starting. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4481 edges** → **516 / 4534** after the pass (+3 nodes, +53 edges).
+
+### Batch scope
+
+Took the three best-grounded, audit-flagged leads, which form one coherent theme — **DRL solver-design & constraint-handling** — and left the other five conversation leads for later batches (rationale below). Every claim was grounded against the parses (`raw/sources/<Folder>/full.md`) and the committed source pages before writing.
+
+### Pages created (3)
+
+- **`methodology/lyapunov-guided-drl`** (lead 1, the conversation's highest-priority lead) — the Lyapunov drift-plus-penalty + per-slot DRL hybrid as a cross-source design pattern. Roster grounded across 6 sources: [[qin-2025-bcuav-masac]] (Lyapunov + MASAC + CVX + DOA; "drift-plus-penalty" + balancing weight λ verbatim in parse §B), [[zhu-2025-lycnn-drl-wpt-mec]] (Lyapunov + CNN actor; >97% of LyCD utility), [[zhou-2024-jdl-abs-postdisaster-rescue]] (Lyapunov + SCA-in-the-critic + two-timescale), [[gao-2024-sagin-perception-offloading]] (Lyapunov + DDPG/DQN/SGHS; V balancing param explicit), [[qin-2025-matd3-noma-queue-sagin]] (Lyapunov + MATD3 + CVX/GSCRA), [[you-2025-uncertain-maritime-hasac]] (Lyapunov + heterogeneous-agent SAC; "yields small-scale problems" verbatim). Complements the [[lyapunov-optimization]] concept (mechanics) and [[ao-sdr-sca-convex-pipeline]] (classical sibling).
+- **`comparisons/j-ppo-vs-pdqn`** (lead 2; flagged as a genuine new-page candidate in derived-batch-2/3 audit routing notes and in [[drl-backbones-across-uav-mec-sources]] / [[ma-2025-pdqn-vehicular-mec]]) — native-hybrid-action head-to-head: on-policy stochastic [[j-ppo|j-PPO]] ([[liu-2026-jppo-en-convntm]]) vs off-policy value-based [[parameterized-dqn|P-DQN]] ([[ma-2025-pdqn-vehicular-mec]]). Explicit method-shape (not shared-instance) framing; "secures a higher reward" / "severe performance degradation" attributions grounded verbatim.
+- **`synthesis/safety-and-robustness-mechanisms-in-mec`** (lead 3) — cross-family map of 4 mechanism families by threat / guarantee / cost: hard per-state safe-RL ([[zhang-2025-ssac-mgi-heterogeneous-uav]] MGI), distributionally-robust ([[jia-2025-dro-uav-hap-mec]] DRO+CVaR), bounded-uncertainty robust ([[li-2024-robust-bmappo-multiuav-mec]] Beta-policy MAPPO; [[sun-2024-mfris-semantic-antijamming]] + [[sun-2024-active-passive-ris-receiver]] worst-case RIS anti-jamming), and structural side-step ([[wang-2026-aerial-marine-msar]] known routes; [[wu-2026-terrain-aware-uav-mec]] terrain geometry). DRO conservatism margin correctly marked `not in parse`.
+
+### Pages refreshed / cross-links densified
+
+- **Resolved standing "future page" promises:** [[drl-backbones-across-uav-mec-sources]] (the `j-ppo-vs-pdqn` placeholder → live link + rewritten contrast), [[jia-2025-dro-uav-hap-mec]] (the "future robustness synthesis" promise → [[safety-and-robustness-mechanisms-in-mec]]), [[ma-2025-pdqn-vehicular-mec]] (the "motivate a j-ppo-vs-pdqn page" note → live link), [[query-when-does-dro-beat-drl-for-csi-uncertainty]] (added the synthesis map).
+- **`related:`/in-body links added** on [[lyapunov-optimization]], [[qin-2025-bcuav-masac]], [[zhu-2025-lycnn-drl-wpt-mec]], [[zhou-2024-jdl-abs-postdisaster-rescue]], [[gao-2024-sagin-perception-offloading]], [[qin-2025-matd3-noma-queue-sagin]], [[you-2025-uncertain-maritime-hasac]], [[zhang-2025-ssac-mgi-heterogeneous-uav]], [[li-2024-robust-bmappo-multiuav-mec]], [[ddpg-vs-jppo]], [[drl-vs-evolutionary-vs-classical-solvers]] — all bidirectional, none self-referential. Fixed two transient duplicate-`updated` keys introduced mid-edit (gao-2024, qin-2025-matd3) before gating.
+- **Meta-docs:** [[index]] — +3 entries (Methodology / Comparisons / Synthesis sections). [[overview]] — analytical-layer tally (findings 14 / synthesis 11→12 / comparisons 4→5 / methodology 2→3) and cross-cutting observations #1 (Lyapunov+DRL → methodology page + 6-source roster), #4 (hybrid-action → j-ppo-vs-pdqn), #6 (CSI uncertainty → robustness synthesis).
+
+### Leads rejected / deferred (with reason)
+
+- **Lead 5 (swarm-intelligence vs evolutionary-MORL vs diffusion-DRL in collaborative beamforming)** — already substantially covered by the existing [[collaborative-beamforming-in-aerial-mec]] synthesis (its "Solver split" section + single-author-group caveat). A dedicated comparison would largely duplicate it; **deferred** to avoid padding.
+- **Leads 4 & 8 (sensing-comm-compute tri-function coupling gap; physical-layer GAI vs decision-layer DRL fusion)** — partially grounded ([[zhu-2024-sensing-comm-doppler-uav-swarm]] is sensing+comm with **no MEC offloading**; [[wang-gai-isac-physical-layer]] has **no year in parse** and is a magazine overview), and the gap is already noted in [[collaborative-beamforming-in-aerial-mec]] ("no CB source carries a compute/offloading objective") and [[isac-sensing-in-aerial-mec]]. A standalone gap-analysis page is viable but lower-leverage than the constraint-handling theme; **deferred** to a future ISAC-themed batch.
+- **Leads 6 & 7 (classical-solver applicability decision-tree; hardware-validation / sim-to-real synthesis)** — viable but belong to different themes (solver-selection; sim-to-real). To keep this batch context-coherent and well-grounded, **deferred**; the hardware-validation roster is already captured in [[overview]] and several source pages.
+
+### Toolkit
+
+No ratchet needed — the five maintained scripts (`curation_status`, `linkcheck`, `process_refs`, `frontmatter_audit`, `index_audit`, `corpus_counts`) plus the read-only LLM Wiki search/graph API covered state detection, grounding discovery, and all four commit gates. No reusable one-off arose; toolkit stable.
+
+### Gates
+
+**`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py`** = 516 pages, 0 errors. **`index_audit.py`** = 518/518 indexed, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational). New pages + edited meta-docs verified mojibake-free at the byte level. Counts reconciled via `corpus_counts.py`: **171 sources + 234 concepts + 71 entities + 40 derived (14 findings / 12 synthesis / 5 comparisons / 5 queries / 3 methodology / 1 thesis) = 516 typed pages**. Graph **516 nodes / 4534 edges**.
+
 ## 2026-06-02 — Audit pass (DERIVED layer — comparisons + methodology + queries + thesis, batch 3/3 FINAL; no new papers)
 
 The **final derived batch** closes Phase B across all layers: **derived batch 3 = comparisons 4 + methodology 2 + queries 5 + thesis 1 = 12 pages**. Tree clean at `772a2b3` (apart from a pre-existing untouched `.kiro/agents/**` edit, left alone). Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). LLM Wiki API reachable (`allowUnauthenticated:true`, v0.4.16); baseline graph **513 nodes / 4477 edges**. Git + toolkit run through Windows PowerShell (no WSL credential workaround needed).

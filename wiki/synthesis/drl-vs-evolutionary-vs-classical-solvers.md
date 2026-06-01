@@ -18,6 +18,8 @@ related:
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
   - "[[cmop-evolutionary-uav-mec-lineage]]"
+  - "[[safety-and-robustness-mechanisms-in-mec]]"
+  - "[[lyapunov-guided-drl]]"
   - "[[hierarchical-aerial-mec-design-space]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-29
