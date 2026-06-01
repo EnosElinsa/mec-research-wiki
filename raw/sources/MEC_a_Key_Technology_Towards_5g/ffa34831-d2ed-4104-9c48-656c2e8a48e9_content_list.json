@@ -1,0 +1,2452 @@
+[
+    {
+        "type": "image",
+        "img_path": "images/4278a23405e614f545d953ff05d58af3a6b8913e0d13873f7a9f53f787bb5902.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "ETSI\nWorld Class Standards",
+        "sub_type": "text_image",
+        "bbox": [
+            40,
+            29,
+            961,
+            441
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "ETSI White Paper No. 11 ",
+        "bbox": [
+            102,
+            468,
+            346,
+            486
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing A key technology towards 5G ",
+        "text_level": 1,
+        "bbox": [
+            102,
+            536,
+            880,
+            631
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "First edition – September 2015 ",
+        "bbox": [
+            102,
+            676,
+            410,
+            694
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "ISBN No. 979-10-92620-08-5 ",
+        "bbox": [
+            102,
+            711,
+            379,
+            728
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Authors: ",
+        "bbox": [
+            102,
+            749,
+            176,
+            764
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Yun Chao Hu, Milan Patel, Dario Sabella, Nurit Sprecher and Valerie Young ",
+        "bbox": [
+            102,
+            770,
+            712,
+            785
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "ETSI (European Telecommunications Standards Institute) ",
+        "bbox": [
+            100,
+            865,
+            534,
+            881
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "06921 Sophia Antipolis CEDEX, France ",
+        "bbox": [
+            100,
+            881,
+            391,
+            895
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Tel +33 4 92 94 42 00 ",
+        "bbox": [
+            104,
+            896,
+            267,
+            909
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "info@etsi.org ",
+        "bbox": [
+            104,
+            910,
+            210,
+            925
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "www.etsi.org ",
+        "bbox": [
+            104,
+            926,
+            208,
+            940
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "About the authors ",
+        "text_level": 1,
+        "bbox": [
+            114,
+            131,
+            381,
+            154
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Yun Chao Hu ",
+        "bbox": [
+            112,
+            174,
+            226,
+            187
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Contributor, Huawei, Vice Chair ETSI MEC ISG, Chair MEC IEG Working Group ",
+        "bbox": [
+            112,
+            192,
+            694,
+            208
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Milan Patel ",
+        "bbox": [
+            112,
+            222,
+            208,
+            235
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Contributor, Huawei ",
+        "bbox": [
+            112,
+            240,
+            272,
+            254
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Dario Sabella ",
+        "bbox": [
+            112,
+            269,
+            226,
+            282
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Contributor, Telecom Italia; Vice-Chair MEC IEG Working Group ",
+        "bbox": [
+            112,
+            287,
+            591,
+            302
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Nurit Sprecher ",
+        "bbox": [
+            112,
+            317,
+            235,
+            331
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Contributor, Nokia; Chair ETSI MEC ISG ",
+        "bbox": [
+            112,
+            335,
+            410,
+            349
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Valerie Young ",
+        "bbox": [
+            112,
+            365,
+            235,
+            380
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Contributor, Intel ",
+        "bbox": [
+            112,
+            382,
+            248,
+            395
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            91
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            108
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "7X ",
+        "bbox": [
+            527,
+            34,
+            957,
+            118
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            566,
+            982
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2 ",
+        "bbox": [
+            924,
+            966,
+            936,
+            976
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Contents ",
+        "text_level": 1,
+        "bbox": [
+            115,
+            131,
+            248,
+            153
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "About the authors 2 ",
+        "bbox": [
+            129,
+            168,
+            884,
+            186
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Contents 3 ",
+        "bbox": [
+            131,
+            193,
+            882,
+            210
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Introduction 4 ",
+        "bbox": [
+            131,
+            217,
+            880,
+            233
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Market Drivers 5 ",
+        "bbox": [
+            131,
+            241,
+            880,
+            256
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Business Value 6 ",
+        "bbox": [
+            131,
+            265,
+            880,
+            281
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing Service Scenarios 7 ",
+        "bbox": [
+            131,
+            288,
+            880,
+            306
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "General 7 ",
+        "bbox": [
+            134,
+            315,
+            880,
+            329
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Augmented Reality 8 ",
+        "bbox": [
+            134,
+            338,
+            880,
+            354
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Intelligent Video Acceleration 9 ",
+        "bbox": [
+            134,
+            362,
+            880,
+            376
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Connected Cars 9 ",
+        "bbox": [
+            134,
+            387,
+            880,
+            400
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Internet of Things Gateway 11 ",
+        "bbox": [
+            134,
+            410,
+            880,
+            425
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Deployment Scenarios 11 ",
+        "bbox": [
+            131,
+            431,
+            880,
+            448
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "ETSI Industry Specification Group on Mobile Edge Computing 12 ",
+        "bbox": [
+            131,
+            454,
+            880,
+            473
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Proofs of Concept 13 ",
+        "bbox": [
+            131,
+            478,
+            880,
+            495
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Conclusions 14 ",
+        "bbox": [
+            131,
+            502,
+            880,
+            518
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "References 15 ",
+        "bbox": [
+            131,
+            525,
+            880,
+            542
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            91
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            108
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "/X ",
+        "bbox": [
+            527,
+            34,
+            954,
+            118
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            564,
+            982
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3 ",
+        "bbox": [
+            924,
+            966,
+            934,
+            975
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Introduction ",
+        "text_level": 1,
+        "bbox": [
+            117,
+            131,
+            294,
+            154
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing (MEC) is a new technology which is currently being standardized in an ETSI Industry Specification Group (ISG) of the same name. Mobile Edge Computing provides an IT service environment and cloud-computing capabilities at the edge of the mobile network, within the Radio Access Network (RAN) and in close proximity to mobile subscribers. The aim is to reduce latency, ensure highly efficient network operation and service delivery, and offer an improved user experience. ",
+        "bbox": [
+            115,
+            170,
+            900,
+            252
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing is a natural development in the evolution of mobile base stations and the convergence of IT and telecommunications networking. Based on a virtualized platform, MEC is recognized by the European 5G PPP (5G Infrastructure Public Private Partnership) research body as one of the key emerging technologies for 5G networks (together with Network Functions Virtualization (NFV) and Software-Defined Networking (SDN)) [1]. In addition to defining more advanced air interface technologies, 5G networks will leverage more programmable approaches to software networking and use IT virtualization technology extensively within the telecommunications infrastructure, functions, and applications. MEC thus represents a key technology and architectural concept to enable the evolution to 5G, since it helps advance the transformation of the mobile broadband network into a programmable world and contributes to satisfying the demanding requirements of 5G in terms of expected throughout, latency, scalability and automation. ",
+        "bbox": [
+            115,
+            262,
+            905,
+            449
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "MEC is based on a virtualized platform, with an approach complementary to NFV: in fact, while NVF is focused on network functions, the MEC framework enables applications running at the edge of the network. The infrastructure that hosts MEC and NFV or network functions is quite similar; thus, in order to allow operators to benefit as much as possible from their investment, it will be beneficial to reuse the infrastructure and infrastructure management of NFV to the largest extent possible, by hosting both VNFs (Virtual Network Functions) and MEC applications on the same platform. ",
+        "bbox": [
+            115,
+            462,
+            900,
+            560
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The environment of Mobile Edge Computing is characterized by low latency, proximity, high bandwidth, and real-time insight into radio network information and location awareness. All of this can be translated into value and can create opportunities for mobile operators, application and content providers enabling them to play complementary and profitable roles within their respective business models and allowing them to better monetize the mobile broadband experience. ",
+        "bbox": [
+            115,
+            571,
+            897,
+            652
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing opens up services to consumers and enterprise customers as well as to adjacent industries that can now deliver their mission-critical applications over the mobile network. It enables a new value chain, fresh business opportunities and a myriad of new use cases across multiple sectors. The intention is to develop favourable market conditions which will create sustainable business for all players in the value chain, and to facilitate global market growth. To this end, a standardized, open environment needs to be created to allow the efficient and seamless integration of such applications across multi-vendor Mobile Edge Computing platforms. This will also ensure that the vast majority of the customers of a mobile operator can be served. ",
+        "bbox": [
+            115,
+            664,
+            905,
+            795
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The objectives of this white paper are to introduce the concept of Mobile Edge Computing and the related key market drivers, and to discuss the business and technical benefits of Mobile Edge Computing. A few examples of service scenarios that can benefit from the technology and possible deployment scenarios are presented. The white paper explains what is being standardized and how innovation can be stimulated through using a standardized API. It outlines the specifications being produced by the Industry Specification Group on MEC. ",
+        "bbox": [
+            115,
+            806,
+            865,
+            872
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            89
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            35,
+            952,
+            116
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            564,
+            980
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4 ",
+        "bbox": [
+            924,
+            966,
+            934,
+            975
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            115,
+            135,
+            855,
+            167
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "ETSI ISG MEC encourages Proofs of Concept (PoC) to demonstrate the viability of MEC implementations. PoCs help to build awareness and confidence in the technology, and to develop a diverse and open MEC ecosystem. This white paper describes the MEC PoC framework and calls for active participation. ",
+        "bbox": [
+            115,
+            177,
+            900,
+            225
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Market Drivers ",
+        "text_level": 1,
+        "bbox": [
+            115,
+            260,
+            327,
+            282
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The growth of mobile traffic and pressure on costs are driving a need to implement several changes in order to maintain quality of experience, to generate revenue, and optimize network operations and resource utilization. The Internet of Things is further congesting the network and network operators need to do local analysis to ease security and backhaul impacts. Enterprises want the ability to enable and engage with their customers with more efficient, secure and low latency connections. Application and content providers are challenged with the latency of the network when connecting to the cloud. These challenges need to be resolved. ",
+        "bbox": [
+            115,
+            299,
+            889,
+            413
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Mobile operators need to shorten the time to launch new revenue generating applications for current customers but also for specific industries and sectors, such as but not limited to automotive, industry automation and welfare industries. Business transformation based on collaboration with the different players in the value chain can help in facing these challenges. ",
+        "bbox": [
+            115,
+            425,
+            889,
+            489
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Technology improvements which provide low latency, better flexibility, agility, usage of virtualization, network and context awareness, etc. can provide the opportunity to increase the Quality of Experience of end users and make network operation more cost effective and competitive. ",
+        "bbox": [
+            115,
+            500,
+            892,
+            549
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Smart phone applications and content are moving to the cloud. The access to the cloud needs to be optimised to guarantee a rich experience for consumers of an application or consumers of content and a tight collaboration is essential between network operators and application and content providers. This collaboration can lead to the deployment of applications/content at the edge of the mobile operator’s network, providing awareness of the network and context information. Standardization will be essential to support this collaboration and the hosting of cloud or internet based applications within a multivendor environment. ",
+        "bbox": [
+            115,
+            560,
+            905,
+            674
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The market drivers of MEC include business transformation, technology integration and industry collaboration (as illustrated in Figure 1). All of these can be enabled by MEC and a wide variety of use cases can be supported for new and innovative markets, such as e-Health, connected vehicles, industry automation, augmented reality, gaming and IoT services. ",
+        "bbox": [
+            115,
+            686,
+            892,
+            751
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            89
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            35,
+            952,
+            116
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            564,
+            980
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "5 ",
+        "bbox": [
+            924,
+            966,
+            934,
+            975
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/39ec2016268f75b15eba2e540a9a5ea79afbb069f099123c00883054489b5c6c.jpg",
+        "image_caption": [
+            "Figure 1: MEC market drivers "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"MEC\"] --> B[\"Business Transformation\"]\n    A --> C[\"Technical Integration\"]\n    A --> D[\"Industry Collaboration\"]\n    A --> E[\"Many Use Cases\"]\n    \n    B --> F[\"New Market\"]\n    B --> G[\"Faster Time to Market\"]\n    B --> H[\"Revenue Generation\"]\n    \n    C --> I[\"Low Latency\"]\n    C --> J[\"Proximity\"]\n    C --> K[\"Virtualization\"]\n    C --> L[\"QoE\"]\n    \n    D --> M[\"Cloud\"]\n    D --> N[\"Network\"]\n    D --> O[\"Standards\"]\n    \n    E --> P[\"IOT\"]\n    E --> Q[\"Vehicle\"]\n    \n    E --> R[\"Health\"]\n    E --> S[\"Retail\"]\n    \n    E --> T[\"Caching Services\"]\n    E --> U[\"Accelerated Video\"]\n    \n    E --> V[\"Augmented Reality\"]\n    \n    E --> W[\"Acceleration Video\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            149,
+            133,
+            870,
+            492
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Business Value ",
+        "text_level": 1,
+        "bbox": [
+            115,
+            554,
+            334,
+            575
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing offers an IT service environment at a location considered to be a lucrative point in the mobile network: the Radio Access Network (RAN) edge. Characterized by proximity, low latency and high bandwidth, this environment will offer localized cloud computing capabilities as well as exposure to real-time radio network and context information. ",
+        "bbox": [
+            112,
+            593,
+            900,
+            658
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Opening up this IT service environment will allow applications and services from mobile operators, service and content providers to be efficiently and seamlessly integrated across multi-vendor, mobile edge computing platforms. The characteristics and capabilities offered by a MEC platform can be leveraged in a way that will allow proximity, context, agility and speed to be used for wider innovation that can be translated into unique value and revenue generation. ",
+        "bbox": [
+            112,
+            669,
+            885,
+            751
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Access to content and applications can be accelerated; their responsiveness can be increased, maximizing speed and interactivity. Popular and locally-relevant content can be delivered directly where users connect, limiting ingress bandwidth to the core and cloud. ",
+        "bbox": [
+            112,
+            762,
+            904,
+            810
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Knowledge of real-time radio network conditions and context information can be used to optimize the network and service operation (responding and adapting to changing network conditions). This would improve service experience and the utilization of network resources, enabling them to efficiently handle increased amounts of traffic. Real-time network and fine-granular context information (including ",
+        "bbox": [
+            112,
+            821,
+            904,
+            887
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            108
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            957,
+            118
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            566,
+            982
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6 ",
+        "bbox": [
+            924,
+            966,
+            936,
+            976
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "location) could be used to enrich the mobile broadband experience by creating highly personalized services which are tailored to individual needs and preferences. ",
+        "bbox": [
+            112,
+            135,
+            860,
+            167
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Operators can reposition themselves in the value chain and redefine personalized services. They can capitalize their networks and open them up to authorized third-parties (in a secure way), exposing capabilities to Over the Top (OTT) players and application developers to flexibly, agilely and rapidly deploy innovative applications and services towards mobile subscribers, enterprises and vertical segments. Operators will be able to create new revenue streams, delight their customers by developing a new breed of applications that provide incremental value, and open up new market opportunities. In addition, applications supporting tighter integration of network and service parameters will improve both service experience and utilization of the network resources. ",
+        "bbox": [
+            112,
+            178,
+            897,
+            309
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Application service providers, OTT players and independent software vendors will be able to translate proximity and context into value, and be able to generate new revenue. Their applications and services can be enhanced and accelerated to provide a unique and unparalleled experience. Innovative applications can be deployed rapidly in a new standards-based environment, taking advantage of new levels of flexibility and agility. Applications will be able to expand their cloud into the mobile network and create a whole new set of services. They will be able to feel and react to end-user experience in real time, based on the actual radio conditions. The new MEC specifications will allow applications and services to be deployed on top of multi-vendor Mobile Edge Computing platforms, enabling them to be used by the vast majority of the customers of a single mobile operator. The mobile end user will enjoy a unique, gratifying and personalized mobile-broadband experience. ",
+        "bbox": [
+            112,
+            321,
+            900,
+            486
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The MEC initiative will help to develop favourable market conditions for all players in the value chain as well as facilitate economic growth with a myriad of new use cases across multiple sectors (see Figure 2). ",
+        "bbox": [
+            112,
+            495,
+            899,
+            529
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/0a131a6747e96ae6c34eab49a53723be22130d442c2cabb356030b67e1a0f552.jpg",
+        "image_caption": [
+            "Figure 2: Improved QoE with Mobile Edge Computing in close proximity to end users "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Big Data\"] --> B[\"Edge cloud\"]\n    C[\"Internet of Things Sensors\"] --> D[\"Edge cloud\"]\n    E[\"Social & Internet Data sources\"] --> F[\"Edge cloud\"]\n    G[\"Developer & Customer communities\"] --> H[\"Edge cloud\"]\n    I[\"API\"] --> J[\"Edge cloud\"]\n    K[\"Private Cloud\"] --> L[\"Enterprise\"]\n    M[\"DiMZ\"] --> N[\"Edge cloud\"]\n    O[\"App\"] --> P[\"Service\"]\n    Q[\"App\"] --> R[\"Service\"]\n    S[\"App\"] --> T[\"Service\"]\n    U[\"App\"] --> V[\"Service\"]\n    W[\"App\"] --> X[\"Service\"]\n    Y[\"App\"] --> Z[\"Service\"]\n    AA[\"App\"] --> AB[\"Service\"]\n    AC[\"App\"] --> AD[\"Service\"]\n    AE[\"App\"] --> AF[\"Service\"]\n    AG[\"App\"] --> AH[\"Service\"]\n    AI[\"App\"] --> AJ[\"Service\"]\n    AK[\"App\"] --> AL[\"Service\"]\n    AM[\"App\"] --> AN[\"Service\"]\n    AO[\"App\"] --> AP[\"Service\"]\n    AQ[\"App\"] --> AR[\"Service\"]\n    AS[\"App\"] --> AT[\"Service\"]\n    AU[\"App\"] --> AV[\"Service\"]\n    AW[\"App\"] --> AX[\"Service\"]\n    AY[\"Big Data\"] --> Z\n    Z --> AB\n    AB --> AC\n    AC --> AD\n    AD --> AE\n    AE --> AF\n    AF --> AG\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            213,
+            536,
+            808,
+            730
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing Service Scenarios ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            790,
+            742,
+            814
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "General ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            829,
+            213,
+            847
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The following sections describe a number of service scenarios that have been considered within ETSI ISG MEC. These illustrate various scenarios which can take advantage of Mobile Edge Computing to either increase performance compared to providing such services through the cloud or through core network servers, or to utilize the unique capabilities offered by MEC platforms such as proximity to the user and network edge, serving a highly localized area. It should be noted these examples are non-exhaustive and further service scenarios are available in the ETSI ISG MEC specification for Mobile Edge Computing Service Scenarios, GS MEC 004. Other scenarios which can make use of MEC are also possible. ",
+        "bbox": [
+            112,
+            850,
+            904,
+            882
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            952,
+            116
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            566,
+            982
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "7 ",
+        "bbox": [
+            924,
+            966,
+            936,
+            976
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            112,
+            135,
+            905,
+            218
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Augmented Reality ",
+        "text_level": 1,
+        "bbox": [
+            114,
+            229,
+            339,
+            247
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "New services become possible when mobile networks supporting high data rates and low latency computation are deployed. One example of such services is Augmented Reality. Augmented reality (AR) is the combination of a view of the real-world environment and supplementary computer-generated sensory input such as sound, video, graphics or GPS data. Augmented reality can enhance the experience of a visitor to a museum or another point of interest. Consider a visitor to a museum, art gallery, city monument, music or sports event, holding their mobile device towards a particular point of interest with the application related to their visit activated (i.e., the museum application). The camera captures the point of interest and the application displays additional information related to what the visitor is viewing. ",
+        "bbox": [
+            112,
+            249,
+            899,
+            398
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Augmented reality services require an application to analyse the output from a device's camera and/or a precise location in order to supplement a user's experience when visiting a point of interest by providing additional information to the user about what they are currently experiencing. The application needs to be aware of a user's position and the direction they are facing, either through positioning techniques or through the camera view, or both. After analysing such information, the application can provide additional information in real-time to the user. If the user moves, the information needs to be refreshed. Hosting the Augmented Reality service on a MEC platform instead of in the cloud is advantageous since supplementary information pertaining to a point of interest is highly localised and is often irrelevant beyond the particular point of interest. Figure 3 shows how a MEC platform can be used to provide an Augmented Reality service. ",
+        "bbox": [
+            112,
+            407,
+            905,
+            574
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/6ec4db30a68899644a51e40bd06de7d60b0e97b879e7007516417d80d12b50a2.jpg",
+        "image_caption": [
+            "Figure 3: Augmented Reality Service Scenario "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph LR\n    A[\"User\"] --> B[\"Wireless Tower\"]\n    B --> C[\"AR object cache\"]\n    B --> D[\"AR data cache\"]\n    C --> E[\"MEC server\"]\n    D --> E\n    E --> F[\"Object ID\"]\n    F --> G[\"Central AR cache\"]\n    G --> H[\"Core network\"]\n    H --> I[\"Internet\"]\n    I --> J[\"Content server\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#cfc,stroke:#333\n    style E fill:#fcc,stroke:#333\n    style F fill:#cff,stroke:#333\n    style G fill:#ffc,stroke:#333\n    style H fill:#cfc,stroke:#333\n    style I fill:#fcc,stroke:#333\n    style J fill:#cfc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            124,
+            583,
+            905,
+            753
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Additionally, the processing of user location or camera view can be performed on a MEC platform rather than on a more centralized server. There may be a need to update information at a fast rate, depending on how the user moves, and the context in which the augmented reality service is used (e.g. in an art gallery, exhibits are positioned only a few metres apart and each piece is supplemented with additional text on the artist, the interpretation of the artwork, etc.) In other words, augmented reality data requires low latency and a high rate of data processing in order to provide the correct information to ",
+        "bbox": [
+            112,
+            791,
+            905,
+            892
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            108
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            957,
+            118
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            566,
+            982
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "8 ",
+        "bbox": [
+            924,
+            966,
+            936,
+            976
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "the user's device depending on the location and orientation of the user. Performing such data processing on the MEC platform also has the advantage of collecting metrics, anonymized meta-data, etc., in order to analyse the service usage and help to improve the service in order to provide a better user experience. ",
+        "bbox": [
+            112,
+            135,
+            884,
+            200
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Intelligent Video Acceleration ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            212,
+            460,
+            230
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "End user Quality of Experience (QoE) and utilization of radio network resources can be improved through intelligent video acceleration. Internet media and file delivery are typically streamed or downloaded today using Hypertext Transmission Protocol (HTTP) over the TCP protocol. Available capacity can vary by an order of magnitude within seconds (as a result of changes in radio channel conditions, devices entering/leaving network). TCP may not be able to adapt fast enough to rapidlyvarying conditions in the radio access network (RAN). This may lead to under-utilisation of precious radio resources and to a sub-optimal user experience. ",
+        "bbox": [
+            112,
+            233,
+            868,
+            348
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Figure 4 shows an example of the intelligent video acceleration service scenario which attempts to overcome the challenges described above. In this scenario, a radio analytics application, which resides in a MEC server, provides the video server with an indication on the throughput estimated to be available at the radio downlink interface. This information can be used to assist the TCP congestion control decisions (for example in selecting the initial window size, setting the value of the congestion window during the congestion avoidance phase, and adjusting the size of the congestion window when the conditions on the \"radio link\" deteriorate). The information can also be used to ensure that the application-level coding matches the estimated capacity at the radio downlink. ",
+        "bbox": [
+            112,
+            359,
+            905,
+            491
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The video server may use this information to assist TCP congestion control decisions (for example by ensuring that the application level coding matches the estimated capacity at the radio downlink). The content’s time-to-start as well as video-stall occurrences can be reduced, enabling improved video quality and throughput. ",
+        "bbox": [
+            112,
+            501,
+            882,
+            568
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/6cc947b31e74ec7468f20eca1cb0d445ecad9b05ff9795523636951c557e584c.jpg",
+        "image_caption": [
+            "Figure 4: Intelligent Video Acceleration Service Scenario "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph LR\n    A[\"Mobile Throughput Guidance Information\"] --> B[\"MEC Server\"]\n    B --> C[\"Core network\"]\n    C --> D[\"Video Content Server\"]\n    D --> E[\"Internet\"]\n    F[\"TCPflow behavior based on Throughput Guidance Information\"] --> A\n    G[\"WiFi\"] --> A\n    H[\"Satellite\"] --> A\n    I[\"Satellite\"] --> A\n    J[\"Satellite\"] --> A\n    K[\"Satellite\"] --> A\n    L[\"Satellite\"] --> A\n    M[\"Satellite\"] --> A\n    N[\"Satellite\"] --> A\n    O[\"Satellite\"] --> A\n    P[\"Satellite\"] --> A\n    Q[\"Satellite\"] --> A\n    R[\"Satellite\"] --> A\n    S[\"Satellite\"] --> A\n    T[\"Satellite\"] --> A\n    U[\"Satellite\"] --> A\n    V[\"Satellite\"] --> A\n    W[\"Satellite\"] --> A\n    X[\"Satellite\"] --> A\n    Y[\"Satellite\"] --> A\n    Z[\"Satellite\"] --> A\n    AA[\"Satellite\"] --> A\n    AB[\"Satellite\"] --> A\n    AC[\"Satellite\"] --> A\n    AD[\"Satellite\"] --> A\n    AE[\"Satellite\"] --> A\n    AF[\"Satellite\"] --> A\n    AG[\"Satellite\"] --> A\n    AH[\"Satellite\"] --> A\n    AI[\"Satellite\"] --> A\n    AJ[\"Satellite\"] --> A\n    AK[\"Satellite\"] --> A\n    AL[\"Satellite\"] --> A\n    AM[\"Satellite\"] --> A\n    AN[\"Satellite\"] --> A\n    AO[\"Satellite\"] --> A\n    AP[\"Satellite\"] --> A\n    AQ[\"Satellite\"] --> A\n    AR[\"Satellite\"] --> A\n    AS[\"Satellite\"] --> A\n    AT[\"Satellite\"] --> A\n    AU[\"Satellite\"] --> A\n    AV[\"Satellite\"] --> A\n    AW[\"Satellite\"] --> A\n    AX[\"Satellite\"] --> A\n    AY[\"Satellite\"] --> A\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            119,
+            575,
+            910,
+            775
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Connected Cars ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            813,
+            307,
+            829
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The number of connected vehicles is rapidly growing and will continue to do so over the coming years. Communication of vehicles and roadside sensors with a roadside unit is intended to increase the safety, efficiency, and convenience of the transportation system, by the exchange of critical safety and ",
+        "bbox": [
+            112,
+            834,
+            897,
+            883
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            957,
+            118
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            566,
+            982
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "9 ",
+        "bbox": [
+            924,
+            966,
+            936,
+            976
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "operational data. The communication can also be used to provide value added services, such as car finder, parking location and to support entertainment services (e.g. video distribution). ",
+        "bbox": [
+            112,
+            135,
+            862,
+            167
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "As the number of connected vehicles increases and use cases evolve, the volume of data will continue to increase along with the need to minimize latency. Whilst data stored and processed centrally may be adequate for some use cases, it can be unreliable and slow for others. ",
+        "bbox": [
+            112,
+            178,
+            904,
+            225
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "LTE can significantly accelerate the deployment of connected vehicle communications. LTE cells can provide “beyond the line of sight” visibility i.e. beyond the range of direct communication between vehicles of 300 – 500m. It can also satisfy the tight latency requirement of connected vehicle communications, below 100ms in some use cases. Messages could be distributed in real time over LTE, eliminating the need to build a countrywide Digital Short-Range Communications (DSRC) network. Cars can leverage their increasingly inbuilt LTE connectivity; in deployments where DSRC exists, LTE would be able complement it. ",
+        "bbox": [
+            112,
+            237,
+            900,
+            351
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing can be used to extend the connected car cloud into the highly distributed mobile base station environment, and enable data and applications to be housed close to the vehicles. This can reduce the round trip time of data and enable a layer of abstraction from both the core network and applications provided over the internet. MEC applications can run on MEC servers which are deployed at the LTE base station site to provide the roadside functionality. The MEC applications can receive local messages directly from the applications in the vehicles and the roadside sensors, analyse them and then propagate (with extremely low latency) hazard warnings and other latency-sensitive messages to other cars in the area (as depicted in Figure 5). This enables a nearby car to receive data in a matter of milliseconds, allowing the driver to immediately react. ",
+        "bbox": [
+            112,
+            363,
+            902,
+            512
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/1a3b1f35bd0b94a3a63a037399995fba19b6adc57ed227456405e3c4fb5a936b.jpg",
+        "image_caption": [
+            "Figure 5: Connected Vehicles Service Scenario "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Mobile Phone\"] --> B[\"V2I\"]\n    B --> C[\"EPC\"]\n    C --> D[\"Connected car Cloud\"]\n    D --> B\n    B --> E[\"Car Road\"]\n    E --> F[\"Car Road\"]\n    F --> G[\"Car Road\"]\n    G --> H[\"Car Road\"]\n    H --> I[\"Car Road\"]\n    I --> J[\"Car Road\"]\n    J --> K[\"Car Road\"]\n    K --> L[\"Car Road\"]\n    L --> M[\"Car Road\"]\n    M --> N[\"Car Road\"]\n    N --> O[\"Car Road\"]\n    O --> P[\"Car Road\"]\n    P --> Q[\"Car Road\"]\n    Q --> R[\"Car Road\"]\n    R --> S[\"Car Road\"]\n    S --> T[\"Car Road\"]\n    T --> U[\"Car Road\"]\n    U --> V[\"Car Road\"]\n    V --> W[\"Car Road\"]\n    W --> X[\"Car Road\"]\n    X --> Y[\"Car Road\"]\n    Y --> Z[\"Car Road\"]\n    Z --> AA[\"Car Road\"]\n    AA --> AB[\"Car Road\"]\n    AB --> AC[\"Car Road\"]\n    AC --> AD[\"Car Road\"]\n    AD --> AE[\"Car Road\"]\n    AE --> AF[\"Car Road\"]\n    AF --> AG[\"Car Road\"]\n    AG --> AH[\"Car Road\"]\n    AH --> AI[\"Car Road\"]\n    AI --> AJ[\"Car Road\"]\n    AJ --> AK[\"Car Road\"]\n    AK --> AL[\"Car Road\"]\n    AL --> AM[\"Car Road\"]\n    AM --> AN[\"Car Road\"]\n    AN --> AO[\"Car Road\"]\n    AO --> AP[\"Car Road\"]\n    AP --> AQ[\"Car Road\"]\n    AQ --> AR[\"Car Road\"]\n    AR --> AS[\"Car Road\"]\n    AS --> AT[\"Car Road\"]\n    AT --> AU[\"Car Road\"]\n    AU --> AV[\"Car Road\"]\n    AV --> AW[\"Car Road\"]\n    AW --> AX[\"Car Road\"]\n    AX --> AY[\"Car Road\"]\n    AY --> AZ[\"Car Road\"]\n    AZ --> BA[\"Car Road\"]\n    BA --> BB[\"Car Road\"]\n    BB --> BC[\"Car Road\"]\n    BC --> BD[\"Car Road\"]\n    BD --> BE[\"Car Road\"]\n    BE --> BF[\"Car Road\"]\n    BF --> BG[\"Car Road\"]\n    BG --> BH[\"Car Road\"]\n    BH --> BI[\"Car Road\"]\n    BI --> BJ[\"Car Road\"]\n    BJ --> BK[\"Car Road\"]\n    BK --> BL[\"Car Road\"]\n    BL --> BM[\"Car Road\"]\n    BM --> BN[\"Car Road\"]\n    BN --> BO[\"Car Road\"]\n    BO --> BP[\"Car Road\"]\n    BP --> BQ[\"Car Road\"]\n    BQ --> BR[\"Car Road\"]\n    BR --> BS[\"Car Road\"]\n    BS --> BT[\"Car Road\"]\n    BT --> BU[\"Car Road\"]\n    BU --> BV[\"Car Road\"]\n    BV --> BW[\"Car Road\"]\n    BW --> BX[\"Car Road\"]\n    BX --> BY[\"Car Road\"]\n    BY --> BZ[\"Car Road\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            376,
+            520,
+            647,
+            736
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The roadside MEC application will be able to inform adjacent Mobile Edge Computing servers about the event(s) and in so doing, enable these servers to propagate hazard warnings to cars that are close to the affected area. ",
+        "bbox": [
+            112,
+            775,
+            900,
+            822
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The roadside application will be able to send local information to the applications at the connected car cloud for further centralized processing and reporting. ",
+        "bbox": [
+            112,
+            834,
+            889,
+            866
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            952,
+            118
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            564,
+            982
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "10 ",
+        "bbox": [
+            924,
+            966,
+            942,
+            976
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Internet of Things Gateway ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            136,
+            421,
+            155
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "The Internet of Things (IoT) generates additional messaging on telecoms networks, and requires gateways to aggregate the messages and ensure low latency and security. Because of the nature of some of the devices being connected, a real time capability is required and a grouping of sensors and devices is needed for efficient service. ",
+        "bbox": [
+            112,
+            156,
+            878,
+            221
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "IoT devices are often resource constrained in terms of processor and memory capacity. There is a need to aggregate various IoT device messages connected through the mobile network close to the devices. This also provides an analytics processing capability and a low latency response time. ",
+        "bbox": [
+            112,
+            233,
+            890,
+            282
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/40df8d9434db822cdc28d923342f6425b02d90be0598ae529499aafb3a82a80d.jpg",
+        "image_caption": [
+            "Figure 6: IoT Gateway Service Scenario "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph LR\n    A[\"Input Device\"] --> B[\"Data Link\"]\n    B --> C[\"Network\"]\n    C --> D[\"MEC Server\"]\n    D --> E[\"IoT GW App\"]\n    E --> F[\"Mobile Core\"]\n    F --> G[\"Internet\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fcc,stroke:#333\n    style E fill:#cff,stroke:#333\n    style F fill:#ffc,stroke:#333\n    style G fill:#cfc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            124,
+            293,
+            900,
+            458
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Various devices are connected over different forms of connectivity, such as 3G, LTE, Wi-Fi or other radio technologies. In general the messages are small, encrypted and come in different forms of protocols. There is a need for a low latency aggregation point to manage the various protocols, distribution of messages and for the processing of analytics. The MEC server provides the capability to resolve these challenges. ",
+        "bbox": [
+            112,
+            500,
+            899,
+            582
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing can be used to connect and control devices remotely, analyse and provide real time provisioning and analytics. MEC enables the aggregation and distribution of IoT services into the highly distributed mobile base station environment, and enable applications to respond in real-time. This can reduce the round trip time of data and enable a layer of abstraction from both the core network and applications in the cloud. IoT applications can run on MEC servers which are deployed at the LTE base station site to provide this functionality. ",
+        "bbox": [
+            112,
+            592,
+            892,
+            690
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Deployment Scenarios ",
+        "text_level": 1,
+        "bbox": [
+            114,
+            725,
+            448,
+            747
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing servers can be deployed at multiple locations, such as at the LTE macro base station (eNodeB) site, at the 3G Radio Network Controller (RNC) site, at a multi-Radio Access Technology (RAT) cell aggregation site, and at an aggregation point (which may also be at the edge of the core network). The multi-RAT cell aggregation site can be located indoors within an enterprise (e.g. hospital, large corporate HQ), or indoors/outdoors for a special public coverage scenario (e.g. stadium, shopping mall) to control a number of local multi-RAT access points providing radio coverage to the premises. This deployment option enables the direct delivery of locally-relevant, fast services from base station clusters. Where a MEC platform is deployed may depend on a number of factors, including scalability, physical deployment constraints, performance criteria (e.g. latency) and which network information will be exposed. Note that some MEC services may not be available / applicable in certain deployment options. ",
+        "bbox": [
+            112,
+            764,
+            905,
+            896
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            952,
+            118
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            564,
+            982
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "11 ",
+        "bbox": [
+            924,
+            966,
+            942,
+            976
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            112,
+            135,
+            899,
+            184
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "MEC applications can be intelligently and flexibly deployed in a seamless manner on different MEC platforms based on technical and business parameters. The deployment of MEC applications on a particular MEC platform may depend on the availability of specific MEC services and on other parameters, such as latency requirements, required resources, availability of a particular VNF, scalability considerations, cost etc. ",
+        "bbox": [
+            112,
+            193,
+            902,
+            275
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "MEC will utilise the NFV infrastructure. The NFV platform may be dedicated to MEC or shared with other network functions or applications. MEC will also use (as much as possible) the NFV management and orchestration entities and interfaces. ",
+        "bbox": [
+            112,
+            287,
+            904,
+            336
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "ETSI Industry Specification Group on Mobile Edge Computing ",
+        "text_level": 1,
+        "bbox": [
+            112,
+            369,
+            833,
+            414
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "The ETSI Industry Specification Group (ISG) on Mobile Edge Computing (MEC) produces normative Group Specifications that will enable the hosting of third-party applications in a multi-vendor MEC environment. Launched in December 2014, the group plans to deliver the first set of specifications within 2 years. ",
+        "bbox": [
+            112,
+            429,
+            858,
+            495
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "The initial scope of the ISG MEC focuses on use cases; it specifies the requirements and the reference architecture, including the components and functional elements that are the key enablers for MEC solutions. ",
+        "bbox": [
+            112,
+            506,
+            878,
+            554
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "When the first documents reach the required maturity level, work on platform services, APIs and interfaces will commence. The MEC platform API will be application-agnostic and will allow the smooth porting of value-creating applications on every mobile-edge server with guaranteed SLA (see Figure 7). ",
+        "bbox": [
+            112,
+            565,
+            894,
+            615
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/1623f3ca414acee697b4a148367ca24938419e6086cecab6c1cfc5adba102774.jpg",
+        "image_caption": [
+            "Mobile-edge Computing platform APl "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"MEC Application Platform Services\"] --> B[\"MEC Hosting Infrastructure\"]\n    C[\"Platform API\"] --> D[\"MEC Application Platform Services\"]\n    E[\"Value-creating applications\"] --> F[\"MEC App\"]\n    G[\"Platform API\"] --> H[\"MEC App\"]\n    I[\"Platform API\"] --> J[\"MEC App\"]\n    K[\"Platform API\"] --> L[\"MEC App\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            206,
+            674,
+            509,
+            818
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/bbd96efac35857676a63f6278aa6d0ef84c50f6830d38a947a839a5d890e6ba2.jpg",
+        "image_caption": [
+            "Figure 7: MEC platform API "
+        ],
+        "image_footnote": [],
+        "content": "Application agnostic, providing the opportunity to revolutionize, differentiate and create value\nPromotes interoperability and mass deployment; the vast majority of the population can be served\nAllows smooth porting of value-creating applications on every mobile-edge server, with guaranteed SLA",
+        "sub_type": "text_image",
+        "bbox": [
+            531,
+            674,
+            816,
+            818
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In addition to the technical work, an industry-enabling working group (IEG WG) has been setup under the ISG MEC which is tasked with advancing Mobile Edge Computing in the industry and accelerating the adoption of the concept and the standards. This will help to develop favourable market conditions for sustainable business for all players in the value chain. ",
+        "bbox": [
+            112,
+            856,
+            904,
+            889
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            952,
+            118
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            566,
+            982
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "12 ",
+        "bbox": [
+            924,
+            966,
+            942,
+            976
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            112,
+            135,
+            884,
+            167
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "The IEG group is developing two Group Specifications: ",
+        "bbox": [
+            112,
+            178,
+            524,
+            193
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. ETSI GS MEC-IEG 005 [2] Proof of Concept Framework, specifying the process and criteria that a Proof of Concept demonstration must adhere to. This specification has already been published; ",
+            "2. ETSI GS MEC-IEG 004 Service Scenarios, which presents a number of examples of service scenarios, business and consumer benefits which can be enabled by Mobile Edge Computing. "
+        ],
+        "bbox": [
+            127,
+            203,
+            880,
+            272
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "The ETSI ISG is open to members and non-members of ETSI to participate and contribute towards this innovative technology. Industry players are invited to actively participate and contribute to the work on Mobile Edge Computing and to take part in the PoC activities. More information on how to participate is available at: http://www.etsi.org/mobile-edge-computing/get-involved-in-mec. ",
+        "bbox": [
+            112,
+            285,
+            900,
+            350
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Proofs of Concept ",
+        "text_level": 1,
+        "bbox": [
+            114,
+            385,
+            381,
+            407
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In order to ensure the success and widespread deployment of Mobile Edge Computing, it is necessary to have more than just timely and high quality specifications. It is crucial to validate the specifications that are being developed, and to demonstrate that the use cases have been fulfilled. Furthermore, the MEC concept must be demonstrated to be feasible and valuable to all the major stakeholders in the value chain in order to appeal to the widest possible audience. ",
+        "bbox": [
+            112,
+            424,
+            900,
+            504
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "To showcase the Mobile Edge Computing concept, the ISG MEC has developed a Proof of Concept process, specified in GS MEC-IEG 005 [2]. A PoC proposal can be submitted by a PoC team consisting of at least one Mobile Network Operator, at least one infrastructure vendor and at least one content or application provider. GS MEC-IEG 005 [2] specifies the process and criteria that a Proof of Concept demonstration must adhere to in order to be accepted as a MEC PoC. A wiki site http://mecwiki.etsi.org has been put in place to assist PoC teams. This site hosts the PoC project proposal templates and the list of PoC Topics, which are specific areas where input or feedback from PoCs is needed. One or several PoC Topics can be addressed by a single PoC project. ",
+        "bbox": [
+            112,
+            516,
+            905,
+            649
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "The public demonstration of MEC Proofs of Concept helps to build commercial awareness and confidence in this technology, and helps to develop a diverse, open, MEC ecosystem. ",
+        "bbox": [
+            112,
+            658,
+            823,
+            690
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            952,
+            116
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            564,
+            982
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "13 ",
+        "bbox": [
+            924,
+            966,
+            942,
+            976
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Conclusions ",
+        "text_level": 1,
+        "bbox": [
+            117,
+            131,
+            295,
+            154
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Mobile Edge Computing enables innovative service scenarios that can ensure enhanced personal experience and optimized network operation, as well as opening up new business opportunities. A few examples are described in this white paper to demonstrate how proximity to users and objects, together with network and context information can be leveraged by applications to create value. Mobile Edge Computing attracts a new value-chain and energized eco-system, where all players can benefit from tighter collaboration. Mobile operators can play a pivotal role within the new value chain and attract OTT service providers, developers and Internet players to innovate over a new cutting-edge technology, while enabling context-aware applications to run in close proximity to the mobile subscriber. Mobile subscribers can enjoy a unique, truly gratifying and personalized mobile-broadband experience which is tailored to their needs and preferences. ",
+        "bbox": [
+            115,
+            170,
+            905,
+            335
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Based on a virtualized platform, MEC complements NFV and is fully aligned with the emerging distributed cloud approach. It is recognised as a key technology of the future 5G era, satisfying the demanding requirements for ultra-low latency and stimulating innovation. ",
+        "bbox": [
+            115,
+            347,
+            858,
+            395
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "The MEC technology is defined by the ETSI ISG MEC, which was launched in December 2014 with the intention to develop the first set of specifications within 2 years. The deliverables will include service scenarios, requirements, architecture and API specifications, complemented with a PoC Framework specification and White Papers which aim to accelerate the market adoption of the MEC technology. ",
+        "bbox": [
+            115,
+            406,
+            875,
+            470
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "MEC supports different deployment options, as MEC Servers can be located at different places within the Radio Access Network depending on technical and business requirements. ",
+        "bbox": [
+            115,
+            481,
+            878,
+            513
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "A MEC Proof-of-Concept (PoC) program has been established to demonstrate the viability of MEC implementations. The results and lessons learned by the MEC PoCs are fed back to the ISG MEC specification activities. ",
+        "bbox": [
+            115,
+            524,
+            853,
+            571
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "The MEC ISG is developing the foundation to enable an open radio access network which can host third party innovative applications and content at the edge of the network. The ISG is open to members and non-members of ETSI to participate and contribute towards this innovative technology, and to take part in the PoC activities. ",
+        "bbox": [
+            115,
+            583,
+            899,
+            648
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            89
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            952,
+            116
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            564,
+            980
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "14 ",
+        "bbox": [
+            926,
+            966,
+            942,
+            975
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "References ",
+        "text_level": 1,
+        "bbox": [
+            115,
+            131,
+            284,
+            154
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "[1] 5G Vision: The 5G Infrastructure Public Private Partnership: the next generation of communication networks and services. From The 5G Infrastructure Public Private Partnership: https://5g-ppp.eu/wp-content/uploads/2015/02/5G-Vision-Brochure-v1.pdf ",
+        "bbox": [
+            112,
+            170,
+            825,
+            221
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "[2] ETSI GS MEC-IEG 005; Mobile Edge Computing (MEC); Proof of Concept Framework. ",
+        "bbox": [
+            117,
+            229,
+            828,
+            244
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "ETSI ",
+        "bbox": [
+            102,
+            34,
+            357,
+            90
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "World Class Standards ",
+        "bbox": [
+            102,
+            92,
+            357,
+            107
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            527,
+            34,
+            954,
+            118
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "footer",
+        "text": "Mobile Edge Computing - a key technology towards 5G ",
+        "bbox": [
+            102,
+            966,
+            566,
+            982
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "page_number",
+        "text": "15 ",
+        "bbox": [
+            924,
+            966,
+            942,
+            976
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/d6d6b67479c347d323b99b5544a2a48235c96d9a56608f1476b1b19b65b42c3b.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Abstract digital network graphic with interconnected nodes on a dark blue gradient background (no text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            40,
+            29,
+            957,
+            342
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "ETSI ",
+        "bbox": [
+            115,
+            401,
+            176,
+            419
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/0d080830cb90352a9dcf86adcb8a183dbdad1dadc8924591dc098cae11759941.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            176,
+            397,
+            299,
+            438
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "World Class Standards ",
+        "bbox": [
+            115,
+            439,
+            300,
+            451
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "ETSI (European Telecommunications Standards Institute) ",
+        "bbox": [
+            112,
+            495,
+            544,
+            510
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "06921 Sophia Antipolis CEDEX, France ",
+        "bbox": [
+            115,
+            511,
+            403,
+            525
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Tel +33 4 92 94 42 00 ",
+        "bbox": [
+            115,
+            526,
+            278,
+            539
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "info@etsi.org ",
+        "bbox": [
+            115,
+            541,
+            221,
+            555
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "www.etsi.org ",
+        "bbox": [
+            115,
+            556,
+            220,
+            570
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "This White Paper is issued for information only. It does not constitute an official or agreed position of ETSI, nor of its Members. The views expressed are entirely those of the author(s). ",
+        "bbox": [
+            112,
+            617,
+            870,
+            640
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "ETSI declines all responsibility for any errors and any loss or damage resulting from use of the contents of this White Paper. ",
+        "bbox": [
+            112,
+            642,
+            793,
+            655
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "ETSI also declines responsibility for any infringement of any third party's Intellectual Property Rights (IPR), but will be pleased to acknowledge any IPR and correct any infringement of which it is advised. ",
+        "bbox": [
+            112,
+            657,
+            870,
+            680
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Copyright Notification ",
+        "text_level": 1,
+        "bbox": [
+            115,
+            683,
+            243,
+            694
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Copying or reproduction in whole is permitted if the copy is complete and unchanged (including this copyright statement). ",
+        "bbox": [
+            112,
+            696,
+            786,
+            709
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "© European Telecommunications Standards Institute 2015. All rights reserved. ",
+        "bbox": [
+            115,
+            711,
+            552,
+            722
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "DECT™, PLUGTESTS™, UMTS™, TIPHON™, IMS™, INTEROPOLIS™, FORAPOLIS™, and the TIPHON and ETSI logos are Trade Marks of ETSI registered for the benefit of its Members. ",
+        "bbox": [
+            112,
+            724,
+            870,
+            747
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "3GPP™ and LTE™ are Trade Marks of ETSI registered for the benefit of its Members and of the 3GPP Organizational Partners. ",
+        "bbox": [
+            112,
+            750,
+            800,
+            762
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "GSM™, the Global System for Mobile communication, is a registered Trade Mark of the GSM Association. ",
+        "bbox": [
+            112,
+            764,
+            692,
+            776
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/edc9fdd560625140126bc7b54a52732d145755dc1bbadacace6877b75c6d3be5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Abstract digital network background with blue gradient and white nodes (no text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            40,
+            793,
+            957,
+            969
+        ],
+        "page_idx": 15
+    }
+]

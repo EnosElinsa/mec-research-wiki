@@ -19,6 +19,7 @@
 - [[mahboob-2024-ai-ntn-survey]] — Mahboob & Liu 2024. Survey of **AI-empowered satellite-based non-terrestrial networks** for 6G; AI-per-NTN-challenge taxonomy (channel/Doppler estimation, beam/resource management, handover, routing, slicing, offloading, security) + distributed-learning paradigms + O-RAN/RIC implementation (IEEE COMST).
 - [[wang-2024-xl-mimo-tutorial]] — Wang et al. 2024. **Tutorial / survey on extremely large-scale MIMO (XL-MIMO)** for 6G; four hardware designs (ULA / UPA-patch / UPA-point / CAP), near-field channel modeling, and low-complexity + deep-learning signal processing (IEEE COMST). *(Physical-layer / near-field anchor, not MEC.)*
 - [[huynh-2024-gai-physical-layer-survey]] — Van Huynh et al. 2024. Survey of **generative AI for physical-layer communications**; five GAI model families (GANs, **VAEs**, normalizing flows, diffusion, transformers) across modulation/signal classification, channel estimation/equalization, PLS, IRS, beamforming, JSCC, CSI feedback; GAI-vs-traditional-AI comparison + open issues (security, model-driven GAI, resource-efficient learning, real-time adaptation) (IEEE TCCN). *(Physical-layer GAI survey, not MEC.)*
+- [[hu-2015-mec-5g-etsi-whitepaper]] — Hu et al. 2015. The **ETSI white paper** that introduces **Mobile Edge Computing** as a standardized concept (IT/cloud capabilities at the RAN edge), its market drivers, business value, service scenarios (AR, intelligent video acceleration, connected cars, IoT gateway), deployment locations, and the ETSI ISG MEC + Proof-of-Concept framework; positions MEC as complementary to NFV/SDN for 5G (ETSI White Paper No. 11; no DOI). *(Standardization anchor for MEC itself.)*
 
 ### Foundational DRL methods
 
@@ -120,6 +121,8 @@
 - [[zhang-2024-coma-satellite-offloading]] — Zhang et al. 2024. **Collaborative task offloading for distributed satellite MEC**; autonomous LEO agents minimize energy under time-varying ISL visibility; POMDP solved with **COMA** (CTDE actor-critic) + an **attention-BiLSTM** actor; STK-built constellation (IEEE TVT).
 - [[zhang-2024-mhspo-satellite-peer-offloading]] — Zhang et al. 2024. **Multi-hop computation peer offloading** (MHSPO) for MEC-enabled LEO satellite networks; an access satellite offloads tasks **horizontally** to peer satellites several ISL hops away for **load balancing**; weighted delay+energy min via **Lyapunov** + delayed online learning + gap-preserving per-satellite distributed decomposition (IEEE TMC).
 - [[wang-2024-satellite-terrestrial-computing]] — Wang et al. 2024. **Satellite-terrestrial computing** for 6G; BSs + LEO satellites with MEC serve **GUEs + SUEs**; min weighted total energy under delay via joint **offloading selection** (relaxation mapping) + **receive beamforming** (SDR) + resource allocation; NP-hard → 3 subproblems solved by **AO**; NOMA-SIC uplinks + FSO inter-satellite links (IEEE TCOMM).
+- [[zhou-2024-mco-satellite-edge-offloading]] — Zhou et al. 2024. **Mobility-aware** computation offloading in a three-layer SECN (GEO cloud / LEO edge / ground); first to model **LEO high-speed movement** (coverage-time model + four mobility scenarios); min weighted latency+energy; discrete non-convex → continuous convex relaxation → **MCO-A**, an **ADMM-based distributed** algorithm (convergence proved) scaling to large co-existing-user offloading (IEEE TMC).
+- [[liu-2023-sagecn-online-offloading]] — Liu et al. 2023. Collaborative **space/aerial-aided** edge computing (SAGECN) for 6G where **LEO satellites are both servers and users**; a satellite offloads its own tasks one hop to a nearby aircraft or multi-hop to the cloud; min long-term completion delay via **Lyapunov** drift-plus-penalty + **delayed online learning** predicting task arrivals + queue lengths, per-slot bounded integer program (IEEE TVT).
 
 ### IRS / THz / anti-jamming
 
@@ -158,6 +161,7 @@
 - [[wang-2021-maddpg-multiuav-trajectory]] — Wang et al. 2021. **MADDPG** per-UAV trajectory planning for multi-UAV MEC; dual fairness (geographical + UE-load) + UE energy; low-complexity offloading step (IEEE TCCN).
 - [[seid-2021-madrl-multiuav-iot-edge]] — Seid et al. 2021. Clustered multi-UAV IoT-edge offloading + resource allocation as a **stochastic game**; **MADDPG** (MADRL); energy+delay cost (IEEE TNSM).
 - [[chen-2023-aiot-device-association]] — Chen et al. 2023. Distributed multi-UAV + GBS aerial MEC; QoE (avg response time + IoTD **cache-queue length**) max via joint **device association** (greedy recursive RSRT) + **task offloading** (0-1 knapsack-with-variable-value, backtracking BTO) + **MADDPG** UAV trajectory (IEEE IoT-J).
+- [[ning-2023-madrl-uav-trajectory-differentiated-services]] — Ning et al. 2023. **Distributed multi-UAV trajectory** control in a **multi-SP differentiated-services** UAV-MEC with **non-binary, time-varying** user service preferences; minimizes short-term user + long-term UAV computational cost; proves a **unique Nash Equilibrium** (complete info) then a **Markov-game multi-agent DRL** controller using **local observations only** (IEEE TMC).
 
 ### Hierarchical aerial MEC (UAV + HAP)
 
@@ -198,6 +202,7 @@
 - [[li-2023-secure-marine-iot-jamming]] — Li et al. 2023. **Secure** marine-IoT offloading: USVs upload to a **HAP** via NOMA then provide **cooperative jamming**; system-energy min via monotonic optimization (PAS) + cross-entropy (CASE) (IEEE TVT).
 - [[zeng-2024-usv-fleet-collaborative-offloading]] — Zeng et al. 2024. UAVs offload tasks **to USV fleets**; first-price sealed **reverse auction** (reserve price) incentive + symmetric-equilibrium bidding, then BCD + improved **ADMM** energy minimization (IEEE TVT).
 - [[liu-2022-maritime-uav-mec-virtualization]] — Liu et al. 2022. Two-layer maritime UAV-MEC (T-UAV MEC server over B-UAVs) with **VM-multiplexing** parallel computing under I/O interference; latency min via DQN + DDPG over T-UAV trajectory + VM count (IEEE TVT).
+- [[li-2020-maritime-uav-satellite-coverage]] — Li et al. 2020. **Coverage enhancement** of a hybrid satellite-UAV-terrestrial maritime network; a **fixed-wing UAV** shares spectrum with satellites and uses TBS/satellite backhaul; jointly optimizes pre-planned **trajectory + in-flight transmit power** to **max-min ergodic rate** using only **location-dependent large-scale CSI** (AIS-derived ship positions); non-convex → decomposition + SCA + bisection (IEEE TCOMM). *(Maritime communication-layer coverage, not MEC offloading.)*
 
 ### Trust, security, and federated MEC
 
@@ -267,6 +272,7 @@
 - [[mao-2016-lodco-eh-mec-offloading]] — Mao et al. 2016. **Green MEC with energy-harvesting devices**; execution-cost (delay + task failure) minimization via the **LODCO** Lyapunov online algorithm deciding offloading + DVFS CPU frequency + transmit power from current state only; asymptotically optimal (IEEE JSAC).
 - [[you-2017-meco-resource-allocation]] — You et al. 2017. **Multiuser MECO resource allocation** (TDMA + OFDMA); min weighted-sum mobile energy under a latency constraint; the optimal TDMA policy is **threshold-based** on a derived **offloading priority function** (complete vs minimum offloading), extended to a finite-capacity cloud + a low-complexity OFDMA scheme (IEEE TWC).
 - [[miettinen-2010-mcc-energy-efficiency]] — Miettinen & Nurminen 2010. Foundational **mobile-cloud-computing energy** measurement/analysis: offloading saves energy only when $E_{cloud}<E_{local}$, governed by the **computing-to-communication ratio**; WLAN-vs-3G + traffic-pattern sensitivity (USENIX HotCloud '10). *(Corpus's earliest anchor; measurement study, no DOI.)*
+- [[wang-2016-partial-offloading-dvs]] — Wang et al. 2016. **Partial computation offloading using dynamic voltage scaling (DVS)**; jointly optimizes SMD computational speed + transmit power + offloading ratio for **energy minimization (ECM)** and **latency minimization (LM)**; ECM recast convex via variable substitution → closed-form **EPCO**, LM via univariate search; multi-cloud extension in closed form; proves **total offloading is never optimal under DVS** (IEEE TCOM).
 - [[yang-2024-taco-human-digital-twin-edge]] — Yang et al. 2024. **Human digital twin** deployment at the edge under an end-edge-cloud framework; two-timescale accuracy-aware online optimization (**TACO**) jointly placing/updating virtual twins + task offloading + access selection; improved Lyapunov + piecewise McCormick envelopes + BCD (IEEE TMC).
 
 ### UAV communications & deployment foundations
@@ -327,6 +333,7 @@
 - [[computation-peer-offloading]]
 - [[computational-task-caching]]
 - [[binary-vs-partial-offloading]]
+- [[dynamic-voltage-scaling]]
 - [[event-driven-vs-slot-driven-offloading]]
 - [[task-priority-in-mec]]
 - [[priority-based-delay-utility]]
