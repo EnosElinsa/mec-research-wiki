@@ -16,16 +16,18 @@ related:
   - "[[liang-2024-hmecmop-uav-cb]]"
   - "[[zheng-2024-recmop-uav-cb]]"
   - "[[liu-2024-hatrpo-ucb-cb]]"
+  - "[[sun-2021-temcmop-uav-cb]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Jiahui Li
 
 IEEE Member (Student Member on earlier papers). Affiliated with the **College of Computer Science and Technology, Jilin University** (Changchun, China; email `lijiahui0803@foxmail.com` / `lijiahui@jlu.edu.cn`); some papers also list the **Pillar of Engineering Systems and Design, Singapore University of Technology and Design**. Consistent identity across his papers in this wiki, often a corresponding author for the Jilin-University group.
 
-Co-authored 13 sources in this wiki:
+Co-authored 14 sources in this wiki:
 
+- [[sun-2021-temcmop-uav-cb]] — earliest UAV collaborative-beamforming entry; time + VAA-time + energy multi-objective optimization (TEMCMOP) via IMOALO.
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.

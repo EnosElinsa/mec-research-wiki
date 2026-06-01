@@ -10,6 +10,7 @@ related:
   - "[[wu-2018-multiuav-minrate-trajectory]]"
   - "[[xu-2018-uav-wpt-trajectory]]"
   - "[[lyu-2017-spiral-mbs-placement]]"
+  - "[[zeng-2016-uav-comm-opportunities-challenges]]"
 created: 2026-06-01
 updated: 2026-06-02
 ---
@@ -18,7 +19,7 @@ updated: 2026-06-02
 
 A foundational author of the **UAV-communications** research line in this wiki. The parses list his affiliation as the **Department of Electrical and Computer Engineering, National University of Singapore** (Singapore) on the earlier works; he is widely associated with UAV trajectory optimization and energy-efficient UAV communication.
 
-Co-authored 7 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations:
+Co-authored 8 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations:
 
 - [[zeng-2016-throughput-relaying]] — throughput maximization for UAV-enabled **mobile relaying** (trajectory + power, staircase water-filling) (lead author).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — energy-efficient UAV communication + the first **fixed-wing propulsion-energy model** (bits/Joule) (lead author).
@@ -27,6 +28,7 @@ Co-authored 7 sources in this wiki — the corpus's UAV-communications / traject
 - [[wu-2018-multiuav-minrate-trajectory]] — multi-UAV-as-base-station max-min-rate trajectory + scheduling + power (co-author, with Qingqing Wu and Rui Zhang).
 - [[xu-2018-uav-wpt-trajectory]] — UAV-enabled **wireless power transfer** trajectory design + energy optimization (sum-energy hovering vs max-min successive hover-and-fly / SCP) (co-author, with Jie Xu and Rui Zhang).
 - [[lyu-2017-spiral-mbs-placement]] — minimum-count UAV-MBS placement as the geometric disk cover problem, solved by a spiral algorithm (co-author, with Jiangbin Lyu, Rui Zhang, Teng Joon Lim).
+- [[zeng-2016-uav-comm-opportunities-challenges]] — the IEEE Communications Magazine overview of UAV-aided wireless communications (architecture, channel characteristics, three use cases, design challenges) (lead author, with Rui Zhang and Teng Joon Lim).
 
 ## Contributions to this wiki
 

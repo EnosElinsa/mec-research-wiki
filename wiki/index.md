@@ -81,6 +81,7 @@
 - [[zhou-2024-jdl-abs-postdisaster-rescue]] — Zhou et al. 2024. **Post-disaster** ABS computation offloading + communication assistance; min task-queuing-delay over ABS-GU association + offloading ratio + trajectory; **JDL** = Lyapunov + actor-critic DRL with a **model-based SCA critic** (IEEE TWC).
 - [[raivi-2024-jdaco-postdisaster-iot]] — Raivi & Moh 2024. **JDACO** — joint data aggregation + computation offloading for multi-UAV **post-disaster** IoT; two-tier LT-UAV/HT-UAV; minimize aggregation+offload energy/delay + max IoT coverage; **VD3QN** (dueling double DQN + value-decomposition network); +20% training-time / +11.4% data / +5.6% energy-eff / +11.2% mission-duration, up to 98% devices served (IEEE IoT-J).
 - [[sun-2024-ues-video-analytics-disaster]] — Sun et al. 2024. **Battery-aware** UAV-edge-server collaborative **video analytics** for **disaster rescue**; differential-evolution per-slot offloading + **DDQN** trajectory planning; doubles the smart-camera-network lifetime (IEEE TVT).
+- [[gao-2024-d3qn-uav-mec-mobile-gt]] — Gao et al. 2024. **3D** UAV-MEC for **mobile** ground terminals in a **post-disaster** urban scenario; collect→compute→deliver total-time minimization over UAV 3D trajectory + GT scheduling, with **obstacle avoidance** among buildings + **probabilistic-LoS** channel; MDP + **multi-step dueling DDQN (D3QN)**; 3D beats 2D, robust to GT mobility / height limits (IEEE TVT).
 
 ### Classical / convex / optimization-based UAV-MEC
 
@@ -224,6 +225,7 @@
 - [[chen-2024-three-party-hierarchical-game-pls]] — Chen et al. 2024. **Three-party hierarchical game** for PLS with dynamic trilateral coalitions (LUs / EVs / JAs); HCSF + DRL (IEEE TWC).
 - [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024. Secure UAV-**RIS**-MEC-IoT offloading against **aerial + ground eavesdroppers**; SOP over Nakagami-m + max-min **secure computation efficiency** via Dinkelbach + BCD + bisection (IEEE TCOMM).
 - [[su-2024-sensing-aided-isac-pls]] — Su et al. 2024. **Sensing-aided PLS** for ISAC: dual-functional BS estimates eavesdropper directions (CAML) then jointly minimizes CRB and maximizes AN-aided secrecy rate via AO + fractional programming (IEEE TWC).
+- [[wen-2024-iscc-edge-ai]] — Wen et al. 2024. **Task-oriented ISCC** for multi-device **edge-AI inference**: ISAC devices radar-sense multi-view data, quantize + offload features to an edge server running split inference; maximize **discriminant gain** (KL-divergence accuracy surrogate) over sensing/transmit power + comm time + quantization bits; non-convex but solved **optimally** by the **sum-of-ratios** method (IEEE TWC).
 - [[zhu-2024-sensing-comm-doppler-uav-swarm]] — Zhu et al. 2024. **Sensing-communication co-design** for UAV-swarm-assisted vehicular networks in perspective of **Doppler**; min-max GV **CRLB** under SNR-loss constraint via differential evolution (IEEE TVT).
 - [[chu-2024-secure-ris-isac]] — Chu et al. 2024. **Secure RIS-ISAC** correspondence; maximize radar output SNR under per-user comm SINR + eavesdropping-SINR ceiling + power + RIS unit-modulus; AO + SDR + fractional programming + **majorization-minimization**; ~2 dB radar gain vs no-RIS (IEEE TVT). *(PHY secure-ISAC anchor, not MEC.)*
 - [[zhu-2024-crb-active-ris-isac]] — Zhu et al. 2024. **Active-RIS-empowered ISAC** for an obstructed target; derives the **CRB** for target **DoA** estimation and minimizes it over BS precoding + active-RIS reflection beamforming under per-user SINR + BS/RIS power + RIS amplitude constraints; AO + SDR + **majorization-minimization**; >30 dB CRB reduction vs passive RIS (IEEE TWC). *(PHY active-RIS ISAC anchor, not MEC.)*
@@ -233,6 +235,7 @@
 
 ### Collaborative beamforming & aerial communications
 
+- [[sun-2021-temcmop-uav-cb]] — Sun et al. 2021. **Earliest CB entry** — UAVs form a virtual antenna array to communicate with remote BSs; multi-objective **TEMCMOP** (transmission time / VAA-performing time / motion+hovering energy) over positions + speeds + excitation weights + BS-serving order; NP-hard, energy-optimal-speed reformulation + **improved multi-objective ant lion optimizer (IMOALO)** with chaos-OBL init + hybrid update (IEEE JSAC).
 - [[sun-2025-emoppo-vlh-aerial-cb]] — Sun et al. 2025. AAV-swarm **collaborative beamforming** (virtual antenna array) to a terrestrial mobile user; evolutionary multi-objective PPO with vectorized value + LSTM + hyper-sphere task selection (EMOPPO-VLH).
 - [[li-2024-emodrl-ground-space-cb]] — Li et al. 2024. **Distributed collaborative beamforming** for ground-space (terminal-to-LEO) uplink; evolutionary multi-objective DRL (EMODRL); saves 30% handover frequency.
 - [[li-2024-emssa-uav-swarm-vaa]] — Li et al. 2024. **Virtual antenna arrays** for UAV-swarm-assisted IoT data harvesting/dissemination; multi-objective (time / eavesdropper / energy) **salp swarm** optimizer (EMSSA); ground + aerial CB (IEEE TMC).
@@ -287,6 +290,9 @@
 - [[zhao-2019-uav-emergency-disasters]] — Zhao et al. 2019. **UAV-assisted emergency networks** in disasters (magazine framework): joint trajectory+scheduling with surviving BSs, multihop D2D coverage extension, and multihop UAV relaying (AF/DF) — IEEE Wireless Communications. *(Post-disaster comms framework, not a single MEC formulation.)*
 - [[bor-yaliniz-2016-3d-abs-placement]] — Bor-Yaliniz et al. 2016. First **3-D placement** of a drone-cell (aerial base station): jointly choose altitude + coverage location/size to maximize covered users; quadratically-constrained MINLP via bisection + interior-point solver (IEEE ICC). *(Aerial-base-station deployment anchor, not MEC.)*
 - [[lyu-2017-spiral-mbs-placement]] — Lyu et al. 2017. **Minimum-count UAV-MBS placement** as the NP-hard **Geometric Disk Cover** problem; a polynomial-time **spiral** algorithm places base stations along the convex-hull perimeter of uncovered ground terminals and nudges inward; near core-sets-optimal on small instances, beats strip-based/K-means/random (IEEE COMML). *(Aerial-base-station deployment anchor, not MEC.)*
+- [[zeng-2016-uav-comm-opportunities-challenges]] — Zeng et al. 2016. **Magazine overview** of UAV-aided wireless communications: networking architecture, air-to-ground LoS channel characteristics, three use cases (ubiquitous coverage / relaying / data collection), and design challenges (CNPC links, dynamic topology, SWAP constraints, interference coordination) (IEEE Communications Magazine). *(Foundational UAV-comms overview, not MEC.)*
+- [[zhan-2011-uav-relay-heading-optimization]] — Zhan et al. 2011. **Earliest UAV-comms source** — multi-UAV relays connect ground APs to a BTS on the uplink; defines the **ergodic normalized transmission rate (ENTR)**, approximates it as a **sinusoid** in UAV heading → closed-form optimal heading, plus an adaptive **handoff** algorithm + new-relay deployment for the mobile topology (IEEE TAES). *(UAV mobile-relaying / heading-control anchor, not MEC.)*
+- [[mozaffari-2016-uav-underlaid-d2d]] — Mozaffari et al. 2016. UAV downlink base station **coexisting with an underlaid D2D network**; **stochastic-geometry** coverage / sum-rate analysis for static + mobile UAV; optimal altitude (decreasing in D2D density), **disk-covering** minimum stop-points for full coverage, and the **coverage-vs-delay / D2D-outage** tradeoff (IEEE TWC). *(Aerial-base-station + D2D coexistence anchor, not MEC.)*
 - [[mozaffari-2019-drone-antenna-array]] — Mozaffari et al. 2019. **Drone-based antenna array** that beam-steers by **physically repositioning** the drones; minimum-**service-time** design = transmission time (perturbation-theory drone-spacing directivity max) + control time (**bang-bang** closed-form minimum control time under wind/gravity); +32% spectral efficiency vs fixed uniform array (IEEE TCOMM). *(UAV-communications / aerial-beamforming anchor, not MEC.)*
 
 ## Entities
@@ -382,6 +388,9 @@
 - [[small-cell-mec]]
 - [[mobility-aware-offloading]]
 - [[semantic-communication]]
+- [[task-oriented-communication]]
+- [[discriminant-gain]]
+- [[device-to-device-communication]]
 
 ### Aerial / network architectures
 
@@ -522,6 +531,8 @@
 - [[binary-whale-optimization]]
 - [[whale-optimization-algorithm]]
 - [[salp-swarm-algorithm]]
+- [[ant-lion-optimizer]]
+- [[sum-of-ratios-optimization]]
 - [[self-adaptive-global-best-harmony-search]]
 - [[multi-verse-optimizer]]
 - [[gravitational-search-algorithm]]

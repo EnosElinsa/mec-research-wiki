@@ -10,17 +10,19 @@ related:
   - "[[liang-2024-hmecmop-uav-cb]]"
   - "[[zheng-2024-recmop-uav-cb]]"
   - "[[liu-2024-hatrpo-ucb-cb]]"
+  - "[[sun-2021-temcmop-uav-cb]]"
   - "[[geng-sun]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-06-02
 ---
 
 # Shuang Liang
 
 Affiliated with the **School of Information Science and Technology, Northeast Normal University** (Changchun, China; email `liangshuang@nenu.edu.cn`, consistent across all sources), and also with the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University**. BS in communication engineering (Dalian Polytechnic University, 2011), MS in software engineering (Jilin University, 2017), per the author biographies in the parses.
 
-Co-authored 7 sources in this wiki, all within the Jilin-University / NTU aerial-MEC + low-altitude-economy collaboration around [[geng-sun]]:
+Co-authored 8 sources in this wiki, all within the Jilin-University / NTU aerial-MEC + low-altitude-economy collaboration around [[geng-sun]]:
 
+- [[sun-2021-temcmop-uav-cb]] — UAV collaborative-beamforming time + energy multi-objective optimization (TEMCMOP) via IMOALO.
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing (MVTORA).
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
