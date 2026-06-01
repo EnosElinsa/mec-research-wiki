@@ -2,6 +2,47 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 2/8: 6 new sources; +2 concepts)
+
+Second batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch1` key there). This invocation **recovered an interrupted batch**: 5 source pages had been drafted on disk (uncommitted, no log entry) before an external usage-limit interruption, and `index.md`/`overview.md` had **not** yet been touched. Per the resume-don't-duplicate rule, the 5 drafts were reviewed for correctness/completeness (kept as-is), the 6th paper of the batch (`Cramr-Rao_Bound_Optimization_for_Active_RIS-Empowered_ISAC_Systems`) was extracted and written, the needed concept stubs were created, and navigation was refreshed. Phase 0 reconciliation (`curation_status.py --dupes`) after recognizing the 5 drafts: **214 raw folders, 182 curated, 32 uncurated, 0 duplicate MinerU ingests**. Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`. After this batch: **183 curated, 31 uncurated, 5 batches remain**.
+
+### Source pages created (6 — 5 recovered drafts + 1 new)
+
+- **[[lillicrap-2016-ddpg-continuous-control]]** — *Continuous Control with Deep Reinforcement Learning* (ICLR 2016; arXiv:1509.02971). DDPG origin paper; off-policy actor-critic bringing DQN's replay + target networks to deterministic continuous control. DOI/venue/date `not in parse` (web-confirmed ICLR 2016). *(Foundational DRL method.)*
+- **[[van-hasselt-2016-double-dqn]]** — *Deep Reinforcement Learning with Double Q-learning* (AAAI 2016; arXiv:1509.06461). Double DQN origin paper; decouples selection from evaluation (reuse target net) to curb DQN over-estimation; Atari median 93.5%→114.7% / mean 241.1%→330.3% (Table 1, parse). DOI/venue `not in parse` (web-confirmed AAAI 2016). *(Foundational DRL method.)*
+- **[[mozaffari-2019-drone-antenna-array]]** — *Communications and Control for Wireless Drone-Based Antenna Array* (IEEE TCOMM, 2019, DOI 10.1109/TCOMM.2018.2871453). Minimum-service-time design via perturbation-theory drone-spacing directivity + **bang-bang** closed-form minimum control time; +32% spectral efficiency vs fixed uniform array. *(UAV-communications / aerial-beamforming anchor, not MEC.)*
+- **[[zhan-2020-completion-time-energy-uav-mec]]** — *Completion Time and Energy Optimization in the UAV-Enabled MEC System* (IEEE IoT-J, 2020, DOI 10.1109/JIOT.2020.2993260). Fixed-wing UAV-MEC; separate UAV-energy and completion-time minimization + their Pareto tradeoff; path discretization + AO + SCA.
+- **[[zhang-2024-mhspo-satellite-peer-offloading]]** — *Energy-Efficient Computation Peer Offloading in Satellite Edge Computing Networks* (IEEE TMC, 2024, DOI 10.1109/TMC.2023.3269801). Multi-hop satellite peer offloading (MHSPO) for load balancing; weighted delay+energy min via Lyapunov + delayed online learning + per-satellite distributed decomposition.
+- **[[zhu-2024-crb-active-ris-isac]]** — *Cramér-Rao Bound Optimization for Active RIS-Empowered ISAC Systems* (IEEE TWC, 2024, DOI 10.1109/TWC.2024.3384501). Derives the DoA CRB for active-RIS ISAC and minimizes it over BS precoding + active-RIS reflection beamforming via AO + SDR + MM; >30 dB CRB reduction vs passive RIS. *(PHY active-RIS ISAC anchor, not MEC.)*
+
+### Concept pages created (2)
+
+- **[[computation-peer-offloading]]** — horizontal edge-to-edge (peer) offloading for load balancing; anchors [[zhang-2024-mhspo-satellite-peer-offloading]].
+- **[[bang-bang-control]]** — time-optimal full-on/full-off control; anchors the minimum-control-time derivation in [[mozaffari-2019-drone-antenna-array]].
+
+(The 5 recovered drafts already carried their concept dependencies on [[ddpg]], [[ddqn]], [[cramer-rao-bound]], [[active-ris]], [[lyapunov-optimization]], [[alternating-optimization-sdr-sca]], etc., which existed from prior passes; only the two stubs above were genuinely new vocabulary.)
+
+### Entities
+
+No new entity pages. Rosters updated for confirmed authored sources surfaced by `entity_roster_audit.py`: **[[mohammad-mozaffari]]** 2→3 and **[[walid-saad]]** 2→3 (both +[[mozaffari-2019-drone-antenna-array]], Virginia Tech / Wireless@VT, identities already confirmed); **[[dusit-niyato]]** 20→23 (+[[zhan-2020-completion-time-energy-uav-mec]] as Fellow at NTU `dniyato@ntu.edu.sg`, verbatim-confirmed; plus two previously-omitted batch-1 sources [[wang-2024-wipe-gai]] and [[wang-2024-xl-mimo-tutorial]] that the roster audit flagged as present-but-unlisted). No identities promoted on uncertainty.
+
+### Meta-docs
+
+- **[[index]]** — +6 source entries (Foundational DRL methods ×2; Classical/convex UAV-MEC; SAGIN/satellite; ISAC/sensing/PLS; UAV-communications-foundations) and +2 concept entries (MEC fundamentals; UAV control & decisions).
+- **[[overview]]** — Snapshot sources **177→183**, concepts **240→242**; entities 71 / derived unchanged. Track rows refreshed: Foundational DRL methods 3→5, ISAC/sensing/PLS 11→12, plus the satellite and classical-convex rows.
+
+### Metadata verification (correctness-first)
+
+The 4 source pages with a DOI line had it verbatim-confirmed against the parse (TCOMM.2018.2871453, JIOT.2020.2993260, TMC.2023.3269801, TWC.2024.3384501) along with venues and the publication-date→year mapping. The two DeepMind method papers carry no DOI/venue/date line in the parse — both pages state `not in parse` and attribute the ICLR-2016 / AAAI-2016 venues as web-confirmed. Double DQN's Atari score deltas and DDPG's ">20 tasks" were verified against the parse; the CRB >30 dB / 36 dB and figure-curve margins flagged as figure-derived/indicative.
+
+### Toolkit
+
+No ratchet needed — `curation_status.py --dupes`, `linkcheck.py`, `process_refs.py`, `frontmatter_audit.py`, `index_audit.py`, `entity_roster_audit.py`, and `corpus_counts.py` covered state detection, every commit gate, roster cross-checking, and count reconciliation. No reusable one-off arose; toolkit stable.
+
+### Gates
+
+**`linkcheck.py`** = NO DANGLING LINKS (the 2 dangling targets the drafts introduced — `bang-bang-control`, `computation-peer-offloading` — were resolved by creating those concept pages). **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py`** = 538 pages, 0 errors. **`index_audit.py`** = 540/540 indexed, 0 unindexed / 0 duplicate primaries. Counts reconciled via `corpus_counts.py`: sources **177→183**, concepts **240→242** (entities 71 unchanged). LLM Wiki API not queried this pass (not required for correctness). Untracked `wiki/media/` (app-generated) left unstaged.
+
 ## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 1/8: 6 new sources; +6 concepts)
 
 First batch of a multi-invocation curation run over **43 newly-added raw papers**. Phase 0 reconciliation (`curation_status.py --dupes`) found **214 raw folders, 177 now-curated, 37 still uncurated, 0 duplicate MinerU ingests**. This invocation recovered and finalized an interrupted in-progress batch: 6 source pages + 6 concept pages were already drafted on disk (uncommitted, no log entry, `index.md`/`overview.md` already edited), so per the resume-don't-duplicate rule this batch audited and committed them rather than re-extracting. The remaining 37 papers are planned into 7 further batches (`make_batches.py --size 6` → `.curation-out/batches-remaining.json`) for subsequent invocations. Every metadata field and headline claim re-verified against `raw/sources/<Folder>/full.md`.
