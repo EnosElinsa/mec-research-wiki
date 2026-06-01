@@ -16,8 +16,9 @@ related:
   - "[[post-disaster-mec]]"
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Delay-Aware Cooperative Task Offloading for Multi-UAV Enabled Edge-Cloud Computing

@@ -25,6 +25,7 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-29
 updated: 2026-06-01
 authors:

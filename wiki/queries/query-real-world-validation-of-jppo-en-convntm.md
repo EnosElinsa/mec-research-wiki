@@ -5,8 +5,9 @@ tags: [open-question, sim-to-real, uav]
 related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[en-convntm-beats-baselines]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-01
 ---
 
 # Does j-PPO+EN-ConvNTM transfer from simulation to real-world UAV-MEC?

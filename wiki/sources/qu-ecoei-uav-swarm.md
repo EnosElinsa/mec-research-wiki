@@ -24,8 +24,9 @@ related:
   - "[[sun-2024-asap-uav-swarm]]"
   - "[[li-2024-rldc-uav-swarm-clustering]]"
   - "[[huang-2025-cmop-dispersed-computing]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-01
 ---
 
 # Elastic Collaborative Edge Intelligence for UAV Swarm: Architecture, Challenges, and Opportunities

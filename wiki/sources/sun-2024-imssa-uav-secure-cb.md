@@ -17,6 +17,7 @@ related:
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[li-2024-emodrl-ground-space-cb]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
+  - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
 updated: 2026-06-01
 ---

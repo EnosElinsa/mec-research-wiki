@@ -2,6 +2,37 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-02 — Synthesis-expansion pass (DERIVED layer — THEME B: solver-selection decision aid + sim-to-real; no new papers)
+
+Second follow-up coverage-growth batch (synthesizer, not auditor): no new raw papers, addressed the solver-selection and hardware-validation leads the prior synthesis pass deferred. Phase 0 reconciled clean: **171 raw = 171 curated, 0 uncurated**. Every claim grounded against the parses before writing.
+
+### Pages created (1)
+
+- **`synthesis/hardware-validation-and-sim-to-real-in-mec`** (lead 7) — inventories the few non-simulation sources on a 4-rung depth ladder: **full algorithm on real devices** ([[sun-2024-asap-uav-swarm]] 24 airborne computers [20 Nano/2 TX2/2 NX] + 5 real quad-rotors; [[shao-2024-drl-antijamming-mec]] Raspberry Pi 4B + USRP N210/X310; [[zhang-2020-response-delay-uav-swarm]] 2 DJI M100 + 5G NR mmWave 28 GHz, 89.9% packet cut), **proof-of-concept** ([[qu-ecoei-uav-swarm]] 4 Jetson; year not in parse), **practicality demo** ([[sun-2024-imssa-uav-secure-cb]] Raspberry Pi CB), and **model verification** ([[bai-2024-delay-aware-cooperative-edge-cloud]] real UAV-edge platform verifies model, algorithm in sim). All hardware specs verbatim-verified against parses. Distils only parse-grounded sim-to-real challenges (idealized/indoor testbeds, small/tethered scale, unmodelled flight+channel dynamics, single-failure-only fault tests, DRL training never on hardware). Connects to [[query-real-world-validation-of-jppo-en-convntm]] and [[drl-simulation-with-pomdp-formulation]].
+
+### Pages refreshed / cross-links densified
+
+- **[[drl-vs-evolutionary-vs-classical-solvers]] extended (lead 6 — converged into the existing synthesis, no standalone tree).** Added a **"problem features → recommended family" decision aid** table that annotates each boundary as **empirically-supported** (within-family / sub-block-role) vs **inferred** (the headline DRL-vs-evolutionary boundary, which no source measures head-to-head). Converged rather than duplicated the page's existing "When to pick each family" guide; a standalone decision-tree page judged unnecessary (would near-duplicate).
+- **`related:` links added** (bidirectional) on [[query-real-world-validation-of-jppo-en-convntm]], [[drl-simulation-with-pomdp-formulation]], and the 6 hardware sources ([[sun-2024-asap-uav-swarm]], [[shao-2024-drl-antijamming-mec]], [[zhang-2020-response-delay-uav-swarm]], [[qu-ecoei-uav-swarm]], [[sun-2024-imssa-uav-secure-cb]], [[bai-2024-delay-aware-cooperative-edge-cloud]]).
+- **Meta-docs:** [[index]] — +1 Synthesis entry. [[overview]] — synthesis tally 13→14 + refreshed observation #8 (added the imssa practicality demo + a pointer to the new sim-to-real synthesis).
+
+### Leads resolved this batch
+
+- **Lead 7 (hardware-validation / sim-to-real)** — promoted to the new synthesis page; all hardware claims re-verified verbatim against parses.
+- **Lead 6 (solver-selection decision aid)** — converged into [[drl-vs-evolutionary-vs-classical-solvers]] as a feature→family table with empirically-supported-vs-inferred annotations; no standalone page (no padding).
+
+### Entities / concepts
+
+Re-checked for THEME B: no new recurring author or concept needed — the sim-to-real and solver-selection material reuses existing slugs.
+
+### Toolkit
+
+No ratchet needed — the maintained scripts covered state detection, grounding, and all gates. No reusable one-off arose; toolkit stable.
+
+### Gates (THEME B)
+
+**`linkcheck.py`** = NO DANGLING LINKS. **`process_refs.py`** = 0 files / 0 hits. **`frontmatter_audit.py --type synthesis`** = 14 pages, 0 errors. **`index_audit.py`** = 520/520 indexed, 0 unindexed / 0 duplicate primaries. New page + edited meta-docs verified mojibake-free. Counts reconciled via `corpus_counts.py`: synthesis **13→14** (171 sources / 234 concepts / 71 entities / 42 derived).
+
 ## 2026-06-02 — Synthesis-expansion pass (DERIVED layer — THEME A: ISAC / generative-AI roles; no new papers)
 
 Follow-up coverage-growth batch (synthesizer, not auditor): no new raw papers, grew the *derived* layer over the existing corpus from the ISAC-themed leads the prior synthesis pass deferred. Tree clean at `48e95cb` before starting. Phase 0 reconciled clean: `curation_status.py --dupes` = **171 raw = 171 curated, 0 uncurated, 0 genuinely-new** (no routing to `mec-wiki-curator`). Every claim grounded against the parses (`raw/sources/<Folder>/full.md`) and the committed source pages before writing.
