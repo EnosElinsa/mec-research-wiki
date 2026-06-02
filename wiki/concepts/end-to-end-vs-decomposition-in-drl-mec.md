@@ -4,7 +4,7 @@ title: "End-to-End vs Decomposition-Based DRL in MEC"
 created: 2026-05-31
 updated: 2026-05-31
 tags: [drl, end-to-end, decomposition, architecture-design, uav-mec]
-related: [two-stage-decomposition, hybrid-action-decision-making, hybrid-action-representation, centralized-training-decentralized-execution, action-space-explosion-in-multi-uav-mec, drl-vs-evolutionary-vs-classical-solvers, design-recipe-multi-uav-mec, two-timescale-optimization]
+related: [two-stage-decomposition, hybrid-action-decision-making, hybrid-action-representation, centralized-training-decentralized-execution, action-space-explosion-in-multi-uav-mec, drl-vs-evolutionary-vs-classical-solvers, design-recipe-multi-uav-mec, two-timescale-optimization, discrete-continuous-two-stage-decomposition, decomposition-beats-end-to-end-drl-in-mec]
 ---
 # End-to-End vs Decomposition-Based DRL in MEC
 
@@ -55,5 +55,7 @@ Considerations when choosing the degree of end-to-end-ness:
 ## See also
 
 - [[two-stage-decomposition]] — the core scaffold of decomposition-based design
+- [[discrete-continuous-two-stage-decomposition]] — the discrete-then-continuous solver protocol
+- [[decomposition-beats-end-to-end-drl-in-mec]] — the thesis that decomposition outperforms end-to-end DRL here
 - [[drl-backbones-across-uav-mec-sources]] — a classification from the DRL-backbone angle
 - [[design-recipe-multi-uav-mec]] — the decision node within the multi-UAV-MEC design recipe

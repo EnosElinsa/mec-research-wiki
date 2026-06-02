@@ -205,4 +205,6 @@ Six papers from one group, all compounding. Whether the methodological stack sca
 - [[swarm-metaheuristics-in-uav-mec]] — swarm-intelligence metaheuristic family deep dive (9+ algorithms; the "metaheuristic (BWOA/MVO)" row above maps onto its standalone-vs-embedded role split).
 - [[hierarchical-aerial-mec-design-space]] — track-level synthesis where all three families overlap.
 - [[two-stage-decomposition]] — the most portable cross-family scaffold.
+- [[discrete-continuous-two-stage-decomposition]] — the discrete-then-continuous solver protocol that scaffold names.
+- [[decomposition-beats-end-to-end-drl-in-mec]] — the thesis the hybrid/decomposition evidence supports.
 - [[design-recipe-multi-uav-mec]] — DRL-track design recipe; the evolutionary equivalent would be a useful future page.
