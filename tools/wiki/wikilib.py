@@ -340,6 +340,27 @@ def normalize_title(title: str | None) -> str:
     return _NORM_WS.sub(" ", t).strip()
 
 
+_TITLE_KEY_STRIP = re.compile(r"[^a-z0-9]+")
+
+
+def title_match_key(title: str | None) -> str:
+    """Separator-insensitive title key for matching mined refs to curated pages.
+
+    Unlike :func:`normalize_title` (which collapses punctuation to *spaces*),
+    this drops every non-alphanumeric character entirely, so word boundaries
+    don't matter. This repairs PDF de-hyphenation artifacts where a hyphenated
+    word wrapped across a line break and the parser dropped *both* the hyphen
+    and the space: e.g. "Relay-Assisted" / "relay assisted" / "relayassisted"
+    and "Multi-Agent" / "Multiagent" all collapse to the same key.
+
+    Use this ONLY for curated-vs-mined title matching, never for the in-DB
+    dedup (which must keep distinct titles distinct).
+    """
+    if not title:
+        return ""
+    return _TITLE_KEY_STRIP.sub("", title.lower())
+
+
 def author_surname(authors: str | None) -> str:
     """Best-effort first-author surname (last token of the first author)."""
     if not authors:
@@ -387,6 +408,35 @@ def folder_to_slug_map(root: str | None = None) -> dict:
             if folder and "<" not in folder and ">" not in folder:
                 mapping[folder] = slug
     return mapping
+
+
+_FM_TITLE = re.compile(r"(?im)^title:\s*(.+?)\s*$")
+
+
+def curated_title_keys(root: str | None = None) -> dict:
+    """Map ``title_match_key`` -> curated slug for every ``wiki/sources`` page.
+
+    Used to detect whether a mined reference is already curated. The key is
+    separator-insensitive (see :func:`title_match_key`) so PDF de-hyphenation
+    artifacts in mined titles ("relayassisted") still match the curated page
+    ("Relay-Assisted"). On a key collision between two genuinely different
+    curated titles the first slug wins; collisions are logged by the caller if
+    needed (the stripped keys are long, so collisions are highly unlikely).
+    """
+    wiki_sources = os.path.join((root or wiki_dir()), "sources")
+    keys = {}
+    if not os.path.isdir(wiki_sources):
+        return keys
+    for p in glob.glob(os.path.join(wiki_sources, "*.md")):
+        slug = os.path.splitext(os.path.basename(p))[0]
+        m = _FM_TITLE.search(read_text(p))
+        if not m:
+            continue
+        title = m.group(1).strip().strip('"').strip("'")
+        key = title_match_key(title)
+        if key:
+            keys.setdefault(key, slug)
+    return keys
 
 
 # --- venue classification (allow-list from the mec-reference-scout brief) ----
