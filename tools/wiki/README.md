@@ -34,6 +34,7 @@ session.
 | `frontmatter_audit.py` | Lint YAML frontmatter validity + tag/type consistency on every typed wiki page: required keys (`type`/`title`/`tags`/`created`/`updated`), `type` matches directory, `# H1` present, type-specific tags/keys (source→`source` tag + `authors`/`year`/`url`/`venue`; entity→`author` or `tool`; finding→`source`+`confidence`; synthesis→`synthesis` tag), and no self-reference in `related:`. A structural lint, not a fact-checker. Exit 1 if any page has a structural error. | `--type`, `--show-soft`, `--ignore`, `--json` |
 | `entity_roster_audit.py` | Cross-check author-entity rosters against source-page `authors:` lists, both directions: **claimed-but-absent** (entity links a source whose author list lacks a matching name — roster over-claim) and **present-but-unlisted** (a source lists a matching author the entity does not link — possible omission *or* namesake). Roster claims are read from the **roster region only** (frontmatter `related:` + intro + bulleted source list, i.e. everything before the first `## Contributions` heading), so editorial contrast-mentions in the Contributions commentary are not mis-counted as claims. Name matching is reported as `strict` (full-name), `respaced` (identical once interior spaces are removed, e.g. "Li Ping Qian" == "Liping Qian" — a Chinese given-name spacing variant), or `loose` (first+last token only); both YAML author styles (inline flow + block list) are handled. Advisory only (always exit 0) — it never decides identity; confirm namesakes against the parses before editing. | `--input`, `--json` |
 | `mine_refs.py` | Mine the `# REFERENCES` of every `raw/sources/*/full.md` into deduplicated reference records; idempotently MERGE into `wiki/references/reference-database.json` (preserves enrichment + curated tags, refreshes `cited_by`/`cited_count`, re-derives venue tiers). Used by `mec-reference-scout`. | `--json`, `--merge DB.json` |
+| `verify_refdb.py` | Integrity gate for the mined `reference-database.json`: scans every record's string fields for residual MinerU contamination markers (the `strip_ref_contamination` regression guard), checks all parsed years are in `[--min-year, --max-year]`, and lists future-year records (>= `--flag-year`) split into curated (expected in-press) vs uncurated (review for mis-parse). Exit 1 on any contamination marker or out-of-range year; year warnings alone do not fail. | `--db`, `--min-year`, `--max-year`, `--flag-year`, `--json` |
 | `render_refdb.py` | Render the human-readable `wiki/references/reference-database.md` (summary + most-cited centrality table) from the JSON DB so the two never drift. | `--db`, `--out`, `--min` |
 | `recommend_refs.py` | Rank not-yet-curated references as curate-next candidates (recency + venue tier + in-corpus citation frequency + scope), tag breadth/depth and ready-in-raw, and refresh the dated `wiki/references/recommendations.md`. | `--top`, `--db`, `--out`, `--json` |
 
@@ -60,8 +61,9 @@ python tools/wiki/corpus_counts.py
 ```
 
 ```sh
-# Reference-scout pass: mine refs -> merge DB -> render md -> recommend.
+# Reference-scout pass: mine refs -> merge DB -> verify -> render md -> recommend.
 python tools/wiki/mine_refs.py --merge wiki/references/reference-database.json
+python tools/wiki/verify_refdb.py
 python tools/wiki/render_refdb.py --min 2
 python tools/wiki/recommend_refs.py --top 30
 ```

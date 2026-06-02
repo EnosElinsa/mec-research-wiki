@@ -3,7 +3,7 @@
  "parses_mined": 210,
  "distinct_papers": 210,
  "reference_strings": 10756,
- "unique_references": 7487,
+ "unique_references": 7470,
  "records": [
   {
    "key": "zeng-2017-energy-efficient-uav-communication-with",
@@ -529,6 +529,42 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "schulman-2017-proximal-policy-optimization-algorithms",
+   "authors": "J. Schulman, F. Wolski, P. Dhariwal, A. Radford, and O. Klimov",
+   "title": "Proximal policy optimization algorithms",
+   "venue": "arXiv preprint arXiv:1707.06347",
+   "year": "2017",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "chen-2024-thoas-traffic-aware-sagin",
+    "chen-2025-swipt-mec-sac",
+    "du-2024-d2sac-aigc-asp-selection",
+    "du-2024-gdm-network-optimization-tutorial",
+    "guo-2024-multiuav-proactive-eavesdropping",
+    "hsu-2025-drl-hues-hap-noma",
+    "lee-2024-dho-leo-handover",
+    "lei-2024-hvmappo-maritime-sar",
+    "li-2024-emodrl-ground-space-cb",
+    "nabi-2025-jour-hierarchical-aerial",
+    "sun-2025-emoppo-vlh-aerial-cb",
+    "sun-2025-tjcct-twotimescale-uav-mec",
+    "wang-2024-hfrl-decentralized-navigation",
+    "wang-2024-wipe-gai",
+    "wang-2025-sac-tma-mec-dc",
+    "xiang-sac-mapless-robot-navigation",
+    "xu-2024-mobile-aigc-survey",
+    "zhang-2024-gdmtd3-aerial-secure-cb"
+   ],
+   "cited_count": 18,
+   "scope": "uncertain",
+   "venue_normalized": "arXiv preprint arXiv:1707.06347",
+   "venue_tier": "other"
+  },
+  {
    "key": "zhao-2022-multi-agent-deep-reinforcement-learning-for",
    "authors": "N. Zhao, Z. Ye, Y. Pei, Y. Liang, and D. Niyato",
    "title": "Multi-agent deep reinforcement learning for task offloading in UAV-assisted mobile edge computing",
@@ -562,41 +598,6 @@
    "scope": "in",
    "curated_as": "zhao-2022-matd3-multiuav-ec-offloading",
    "venue_normalized": "IEEE Trans. Wirel. Commun.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "schulman-2017-proximal-policy-optimization-algorithms",
-   "authors": "J. Schulman, F. Wolski, P. Dhariwal, A. Radford, and O. Klimov",
-   "title": "Proximal policy optimization algorithms",
-   "venue": "arXiv preprint arXiv:1707.06347",
-   "year": "2017",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "chen-2024-thoas-traffic-aware-sagin",
-    "chen-2025-swipt-mec-sac",
-    "du-2024-d2sac-aigc-asp-selection",
-    "du-2024-gdm-network-optimization-tutorial",
-    "guo-2024-multiuav-proactive-eavesdropping",
-    "hsu-2025-drl-hues-hap-noma",
-    "lee-2024-dho-leo-handover",
-    "lei-2024-hvmappo-maritime-sar",
-    "li-2024-emodrl-ground-space-cb",
-    "nabi-2025-jour-hierarchical-aerial",
-    "sun-2025-emoppo-vlh-aerial-cb",
-    "sun-2025-tjcct-twotimescale-uav-mec",
-    "wang-2024-hfrl-decentralized-navigation",
-    "wang-2025-sac-tma-mec-dc",
-    "xiang-sac-mapless-robot-navigation",
-    "xu-2024-mobile-aigc-survey",
-    "zhang-2024-gdmtd3-aerial-secure-cb"
-   ],
-   "cited_count": 17,
-   "scope": "uncertain",
-   "venue_normalized": "arXiv preprint arXiv:1707.06347",
    "venue_tier": "other"
   },
   {
@@ -1998,6 +1999,32 @@
    "venue_tier": "other"
   },
   {
+   "key": "anon-2004-untitled-2",
+   "authors": null,
+   "title": null,
+   "venue": "S.",
+   "year": "2004",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "hu-2019-pdd-uav-mec-offloading",
+    "li-2024-airground-vec-offloading",
+    "lu-2023-uav-relay-secure-maritime-mec",
+    "tang-2024-iscc-uav-feel",
+    "yang-2024-taco-human-digital-twin-edge",
+    "ye-2021-ran-slicing-offloading",
+    "you-2025-uncertain-maritime-hasac",
+    "zhang-2019-stochastic-offloading-uav-mec",
+    "zhou-2018-uav-wireless-powered-mec"
+   ],
+   "cited_count": 9,
+   "venue_normalized": "S.",
+   "venue_tier": "other"
+  },
+  {
    "key": "guo-2024-multi-uav-cooperative-task-offloading-and",
    "authors": "H. Guo, Y. Wang, J. Liu, and C. Liu",
    "title": "Multi-UAV cooperative task offloading and resource allocation in 5G advanced and beyond",
@@ -2384,31 +2411,6 @@
    "cited_count": 8,
    "venue_normalized": "IEEE J. Sel. Areas Commun. (JSAC)",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "anon-2004-untitled-2",
-   "authors": null,
-   "title": null,
-   "venue": "S.",
-   "year": "2004",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "hu-2019-pdd-uav-mec-offloading",
-    "li-2024-airground-vec-offloading",
-    "lu-2023-uav-relay-secure-maritime-mec",
-    "tang-2024-iscc-uav-feel",
-    "yang-2024-taco-human-digital-twin-edge",
-    "ye-2021-ran-slicing-offloading",
-    "zhang-2019-stochastic-offloading-uav-mec",
-    "zhou-2018-uav-wireless-powered-mec"
-   ],
-   "cited_count": 8,
-   "venue_normalized": "S.",
-   "venue_tier": "other"
   },
   {
    "key": "burd-1996-processor-design-for-portable-systems",
@@ -3752,6 +3754,78 @@
    "venue_tier": "conf"
   },
   {
+   "key": "kingma-2014-adam-a-method-for-stochastic-optimization",
+   "authors": "D. P. Kingma and J. Ba",
+   "title": "Adam: A method for stochastic optimization",
+   "venue": null,
+   "year": "2014",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "faisal-2025-cgan-ris-isac-channel",
+    "guo-2024-multiuav-proactive-eavesdropping",
+    "liu-2024-hatrpo-ucb-cb",
+    "niazmand-2025-jopa-dnn-pruning-iiot",
+    "wang-2021-maddpg-multiuav-trajectory",
+    "zhu-2025-lycnn-drl-wpt-mec"
+   ],
+   "cited_count": 6,
+   "scope": "uncertain",
+   "venue_normalized": null,
+   "venue_tier": null
+  },
+  {
+   "key": "silver-2014-deterministic-policy-gradient-algorithms",
+   "authors": "D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. A. Riedmiller",
+   "title": "Deterministic policy gradient algorithms",
+   "venue": "Proc. 31st Int. Conf. Mach. Learn.",
+   "year": "2014",
+   "vol": "32",
+   "no": null,
+   "pp": "387–395",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "hao-2024-clp-multiuav-priority-offloading",
+    "hao-2025-priority-aware-task-driven-co",
+    "mahboob-2024-ai-ntn-survey",
+    "sun-2025-tjcct-twotimescale-uav-mec",
+    "wang-2021-maddpg-multiuav-trajectory",
+    "zhao-2022-matd3-multiuav-ec-offloading"
+   ],
+   "cited_count": 6,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. 31st Int. Conf. Mach. Learn.",
+   "venue_tier": "other"
+  },
+  {
+   "key": "hasselt-2010-double-q-learning",
+   "authors": "H. Hasselt",
+   "title": "Double q-learning",
+   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
+   "year": "2010",
+   "vol": "23",
+   "no": null,
+   "pp": "2613–2621",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "du-2024-gdm-network-optimization-tutorial",
+    "du-2024-yolo-semcom-digital-twin",
+    "gao-2024-d3qn-uav-mec-mobile-gt",
+    "mahboob-2024-ai-ntn-survey",
+    "shao-2024-drl-antijamming-mec",
+    "ye-2025-aigc-diffusion-contract"
+   ],
+   "cited_count": 6,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
+   "venue_tier": "other"
+  },
+  {
    "key": "han-2009-optimization-of-manet-connectivity-via-smart",
    "authors": "Z. Han, A. L. Swindlehurst, and K. J. R. Liu",
    "title": "Optimization of MANET connectivity via smart deployment/movement of unmanned air vehicles",
@@ -4305,6 +4379,29 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "zhang-2021-task-offloading-and-trajectory-control-for",
+   "authors": "L. Zhang et al.",
+   "title": "Task offloading and trajectory control for UAV-assisted mobile edge computing using deep reinforcement learning",
+   "venue": "IEEE Access",
+   "year": "2021",
+   "vol": "9",
+   "no": null,
+   "pp": "53708–53719",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "shao-2024-drl-antijamming-mec",
+    "sun-2024-mvtora-postdisaster-vfc",
+    "sun-2024-ues-video-analytics-disaster",
+    "wu-2025-iopo-irs-uav-thz-mec",
+    "zhang-2024-uav-task-offloading-ddpg"
+   ],
+   "cited_count": 5,
+   "scope": "in",
+   "venue_normalized": "IEEE Access",
+   "venue_tier": "other"
+  },
+  {
    "key": "dong-2021-uavs-as-an-intelligent-service-boosting-edge",
    "authors": "C. Dong et al.",
    "title": "UAVs as an intelligent service: Boosting edge intelligence for air-ground integrated networks",
@@ -4784,6 +4881,29 @@
    "venue_tier": "other"
   },
   {
+   "key": "lowe-2017-multiagent-actor-critic-for-mixed-cooperative",
+   "authors": "R. Lowe, Y. Wu, A. Tamar, J. Harb, P. Abbeel, and I. Mordatch",
+   "title": "Multiagent actor-critic for mixed cooperative-competitive environments",
+   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
+   "year": "2017",
+   "vol": "30",
+   "no": null,
+   "pp": "1–9",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "he-2023-fairness-3d-multiuav-maddpg",
+    "lei-2024-hvmappo-maritime-sar",
+    "seid-2021-madrl-multiuav-iot-edge",
+    "wang-2021-maddpg-multiuav-trajectory",
+    "zhang-2025-mcma-task-migration"
+   ],
+   "cited_count": 5,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
+   "venue_tier": "other"
+  },
+  {
    "key": "mao-2016-power-delay-tradeoff-in-multi-user-mobile",
    "authors": "Y. Mao, J. Zhang, S. H. Song, and K. B. Letaief",
    "title": "Power-delay tradeoff in multi-user mobile-edge computing systems",
@@ -4964,29 +5084,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "kingma-2014-adam-a-method-for-stochastic-optimization",
-   "authors": "D. P. Kingma and J. Ba",
-   "title": "Adam: A method for stochastic optimization",
-   "venue": null,
-   "year": "2014",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "faisal-2025-cgan-ris-isac-channel",
-    "guo-2024-multiuav-proactive-eavesdropping",
-    "liu-2024-hatrpo-ucb-cb",
-    "niazmand-2025-jopa-dnn-pruning-iiot",
-    "zhu-2025-lycnn-drl-wpt-mec"
-   ],
-   "cited_count": 5,
-   "scope": "uncertain",
-   "venue_normalized": null,
-   "venue_tier": null
-  },
-  {
    "key": "wang-2014-outage-constrained-robust-transmit",
    "authors": "K. Wang, A. M. So, T. Chang, W. Ma, and C. Chi",
    "title": "Outage constrained robust transmit optimization for multiuser MISO downlinks: Tractable approximations by conic optimization",
@@ -5033,29 +5130,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "silver-2014-deterministic-policy-gradient-algorithms",
-   "authors": "D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. A. Riedmiller",
-   "title": "Deterministic policy gradient algorithms",
-   "venue": "Proc. 31st Int. Conf. Mach. Learn.",
-   "year": "2014",
-   "vol": "32",
-   "no": null,
-   "pp": "387–395",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "hao-2024-clp-multiuav-priority-offloading",
-    "hao-2025-priority-aware-task-driven-co",
-    "mahboob-2024-ai-ntn-survey",
-    "wang-2021-maddpg-multiuav-trajectory",
-    "zhao-2022-matd3-multiuav-ec-offloading"
-   ],
-   "cited_count": 5,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. 31st Int. Conf. Mach. Learn.",
-   "venue_tier": "other"
-  },
-  {
    "key": "cuervo-2010-maui-making-smartphones-last-longer-with-code",
    "authors": "E. Cuervo et al.",
    "title": "MAUI: Making smartphones last longer with code offload",
@@ -5099,29 +5173,6 @@
    "cited_count": 5,
    "scope": "in",
    "venue_normalized": "Computer",
-   "venue_tier": "other"
-  },
-  {
-   "key": "hasselt-2010-double-q-learning",
-   "authors": "H. Hasselt",
-   "title": "Double Q-learning",
-   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
-   "year": "2010",
-   "vol": "23",
-   "no": null,
-   "pp": "1–9",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "du-2024-gdm-network-optimization-tutorial",
-    "du-2024-yolo-semcom-digital-twin",
-    "gao-2024-d3qn-uav-mec-mobile-gt",
-    "mahboob-2024-ai-ntn-survey",
-    "ye-2025-aigc-diffusion-contract"
-   ],
-   "cited_count": 5,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
    "venue_tier": "other"
   },
   {
@@ -6334,28 +6385,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "zhang-2021-task-offloading-and-trajectory-control-for",
-   "authors": "L. Zhang et al.",
-   "title": "Task offloading and trajectory control for UAV-assisted mobile edge computing using deep reinforcement learning",
-   "venue": "IEEE Access",
-   "year": "2021",
-   "vol": "9",
-   "no": null,
-   "pp": "53708–53719",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "shao-2024-drl-antijamming-mec",
-    "sun-2024-mvtora-postdisaster-vfc",
-    "sun-2024-ues-video-analytics-disaster",
-    "wu-2025-iopo-irs-uav-thz-mec"
-   ],
-   "cited_count": 4,
-   "scope": "in",
-   "venue_normalized": "IEEE Access",
-   "venue_tier": "other"
-  },
-  {
    "key": "xu-2021-uav-assisted-mec-networks-with-aerial-and",
    "authors": "Y. Xu, T. Zhang, Y. Liu, D. Yang, L. Xiao, and M. Tao",
    "title": "UAV-assisted MEC networks with aerial and ground cooperation",
@@ -7348,24 +7377,23 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "lowe-2017-multiagent-actor-critic-for-mixed-cooperative",
-   "authors": "R. Lowe, Y. Wu, A. Tamar, J. Harb, P. Abbeel, and I. Mordatch",
-   "title": "Multiagent actor-critic for mixed cooperative-competitive environments",
+   "key": "lowe-2017-multi-agent-actor-critic-for-mixed",
+   "authors": "R. Lowe, Y. I. Wu, A. Tamar, J. Harb, O. Pieter Abbeel, and I. Mordatch",
+   "title": "Multi-agent actor-critic for mixed cooperative-competitive environments",
    "venue": "Proc. Adv. Neural Inf. Process. Syst.",
    "year": "2017",
    "vol": "30",
    "no": null,
-   "pp": "1–9",
+   "pp": "6382–6393",
    "url": null,
    "doi": null,
    "cited_by": [
-    "lei-2024-hvmappo-maritime-sar",
-    "seid-2021-madrl-multiuav-iot-edge",
-    "wang-2021-maddpg-multiuav-trajectory",
-    "zhang-2025-mcma-task-migration"
+    "bi-2025-sg-mapg",
+    "liu-2024-hatrpo-ucb-cb",
+    "ning-2023-madrl-uav-trajectory-differentiated-services",
+    "peng-2020-maddpg-uav-vehicular"
    ],
    "cited_count": 4,
-   "scope": "uncertain",
    "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
    "venue_tier": "other"
   },
@@ -7696,6 +7724,28 @@
    "venue_tier": "other"
   },
   {
+   "key": "hausknecht-2015-deep-recurrent-q-learning-for-partially",
+   "authors": "M. Hausknecht and P. Stone",
+   "title": "Deep recurrent Q-learning for partially observable MDPs",
+   "venue": "Proc. AAAI Fall Symp. Ser.",
+   "year": "2015",
+   "vol": null,
+   "no": null,
+   "pp": "29–37",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "chang-2022-marl-multiuav-trajectory",
+    "du-2024-d2sac-aigc-asp-selection",
+    "du-2024-gdm-network-optimization-tutorial",
+    "mahboob-2024-ai-ntn-survey"
+   ],
+   "cited_count": 4,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. AAAI Fall Symp. Ser.",
+   "venue_tier": "other"
+  },
+  {
    "key": "2015-2015-the-internet-of-flying-things-opportunities",
    "authors": "S. W. Loke. (Jul. 2015).",
    "title": "The Internet of flying-things: Opportunities and challenges with airborne fog computing and mobile cloud in the clouds",
@@ -7714,6 +7764,27 @@
    ],
    "cited_count": 4,
    "venue_normalized": "arXiv:1507.04492v1, Jul.",
+   "venue_tier": "other"
+  },
+  {
+   "key": "li-2015-performance-of-planar-arrays-for-microwave",
+   "authors": "X. Li, J. Zhou, B. Duan, Y. Yang, Y. Zhang, and J. Fan",
+   "title": "Performance of planar arrays for microwave power transmission with position errors",
+   "venue": "IEEE Antennas Wireless Propag. Lett.",
+   "year": "2015",
+   "vol": "14",
+   "no": null,
+   "pp": "1794–1797",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "liang-2024-hmecmop-uav-cb",
+    "sun-2021-temcmop-uav-cb",
+    "sun-2024-imssa-uav-secure-cb",
+    "zheng-2024-recmop-uav-cb"
+   ],
+   "cited_count": 4,
+   "venue_normalized": "IEEE Antennas Wireless Propag. Lett.",
    "venue_tier": "other"
   },
   {
@@ -7889,6 +7960,27 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "feng-2010-analysis-of-energy-consumption-on-data",
+   "authors": "J. Feng, Y. Nimmagadda, Y. Lu, B. Jung, D. Peroulis, and Y. C. Hu",
+   "title": "Analysis of energy consumption on data sharing in beamforming for wireless sensor networks",
+   "venue": "Proc. IEEE ICCCN",
+   "year": "2010",
+   "vol": null,
+   "no": null,
+   "pp": "1–28",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "huang-2025-dual-aav-maritime-secure-cb",
+    "li-2024-emodrl-ground-space-cb",
+    "li-2024-emssa-uav-swarm-vaa",
+    "liang-2024-hmecmop-uav-cb"
+   ],
+   "cited_count": 4,
+   "venue_normalized": "Proc. IEEE",
+   "venue_tier": "Q1"
+  },
+  {
    "key": "frew-2008-airborne-communication-networks-for-small",
    "authors": "E. W. Frew and T. X. Brown",
    "title": "Airborne communication networks for small unmanned aircraft systems",
@@ -7908,6 +8000,28 @@
    "cited_count": 4,
    "venue_normalized": "Proc. IEEE",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "yuan-2006-energy-efficient-cpu-scheduling-for",
+   "authors": "W. Yuan and K. Nahrstedt",
+   "title": "Energy-efficient CPU scheduling for multimedia applications",
+   "venue": "ACM Trans. Comput. Syst.",
+   "year": "2006",
+   "vol": "24",
+   "no": "3",
+   "pp": "292–331",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "jeong-2018-uav-cloudlet-bit-allocation",
+    "mao-2017-mec-survey-communication",
+    "yu-2020-uav-ec-collaborative-offloading",
+    "zhang-2013-energy-optimal-mcc-stochastic"
+   ],
+   "cited_count": 4,
+   "scope": "uncertain",
+   "venue_normalized": "ACM Trans. Comput. Syst.",
+   "venue_tier": "other"
   },
   {
    "key": "anon-2006-untitled",
@@ -7971,6 +8085,27 @@
    "cited_count": 4,
    "scope": "uncertain",
    "venue_normalized": "Proc. ACM Symp. Oper. Syst. Principles (SOSP), Bolton Landing, NY, USA, Oct.",
+   "venue_tier": "other"
+  },
+  {
+   "key": "coello-2002-mopso-a-proposal-for-multiple-objective",
+   "authors": "C. A. C. Coello and M. S. Lechuga",
+   "title": "MOPSO: A proposal for multiple objective particle swarm optimization",
+   "venue": "Proc.",
+   "year": "2002",
+   "vol": "2",
+   "no": "02",
+   "pp": "1051–1056",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "li-2024-emssa-uav-swarm-vaa",
+    "liang-2024-hmecmop-uav-cb",
+    "sun-2024-imssa-uav-secure-cb",
+    "sun-2025-emoppo-vlh-aerial-cb"
+   ],
+   "cited_count": 4,
+   "venue_normalized": "Proc.",
    "venue_tier": "other"
   },
   {
@@ -13261,26 +13396,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "lowe-2017-multi-agent-actor-critic-for-mixed",
-   "authors": "R. Lowe, Y. Wu, A. Tamar, J. Harb, O. P. Abbeel, and I. Mordatch",
-   "title": "Multi-agent actor-critic for mixed cooperative-competitive environments",
-   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
-   "year": "2017",
-   "vol": "30",
-   "no": null,
-   "pp": "6379–6390",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "bi-2025-sg-mapg",
-    "liu-2024-hatrpo-ucb-cb",
-    "peng-2020-maddpg-uav-vehicular"
-   ],
-   "cited_count": 3,
-   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
-   "venue_tier": "other"
-  },
-  {
    "key": "mirjalili-2017-salp-swarm-algorithm-a-bio-inspired-optimizer",
    "authors": "S. Mirjalili, A. H. Gandomi, S. Z. Mirjalili, S. Saremi, H. Faris, and S. M. Mirjalili",
    "title": "Salp swarm algorithm: A bio-inspired optimizer for engineering design problems",
@@ -13630,48 +13745,6 @@
    "venue_tier": "conf"
   },
   {
-   "key": "hausknecht-2015-deep-recurrent-q-learning-for-partially",
-   "authors": "M. Hausknecht and P. Stone",
-   "title": "Deep recurrent Q-learning for partially observable MDPs",
-   "venue": "Proc. AAAI Fall Symp. Ser.",
-   "year": "2015",
-   "vol": null,
-   "no": null,
-   "pp": "29–37",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "du-2024-d2sac-aigc-asp-selection",
-    "du-2024-gdm-network-optimization-tutorial",
-    "mahboob-2024-ai-ntn-survey"
-   ],
-   "cited_count": 3,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. AAAI Fall Symp. Ser.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "kingma-2015-adam-a-method-for-stochastic-optimization",
-   "authors": "D. P. Kingma and J. Ba",
-   "title": "Adam: A method for stochastic optimization",
-   "venue": "Proc. Int. Conf. Learn. Representations",
-   "year": "2015",
-   "vol": null,
-   "no": null,
-   "pp": "1–15",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "du-2024-d2sac-aigc-asp-selection",
-    "wang-2021-maddpg-multiuav-trajectory",
-    "zhang-2024-gdmtd3-aerial-secure-cb"
-   ],
-   "cited_count": 3,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. Int. Conf. Learn. Representations",
-   "venue_tier": "other"
-  },
-  {
    "key": "boshkovska-2015-practical-non-linear-energy-harvesting-model",
    "authors": "E. Boshkovska, D. W. K. Ng, N. Zlatanov, and R. Schober",
    "title": "Practical non-linear energy harvesting model and resource allocation for SWIPT systems",
@@ -13711,26 +13784,6 @@
    "cited_count": 3,
    "scope": "uncertain",
    "venue_normalized": "Proc. ICML",
-   "venue_tier": "other"
-  },
-  {
-   "key": "li-2015-performance-of-planar-arrays-for-microwave",
-   "authors": "X. Li, J. Zhou, B. Duan, Y. Yang, Y. Zhang, and J. Fan",
-   "title": "Performance of planar arrays for microwave power transmission with position errors",
-   "venue": "IEEE Antennas Wireless Propag. Lett.",
-   "year": "2015",
-   "vol": "14",
-   "no": null,
-   "pp": "1794–1797",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "sun-2021-temcmop-uav-cb",
-    "sun-2024-imssa-uav-secure-cb",
-    "zheng-2024-recmop-uav-cb"
-   ],
-   "cited_count": 3,
-   "venue_normalized": "IEEE Antennas Wireless Propag. Lett.",
    "venue_tier": "other"
   },
   {
@@ -14124,26 +14177,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "feng-2010-analysis-of-energy-consumption-on-data",
-   "authors": "J. Feng, Y. Nimmagadda, Y. Lu, B. Jung, D. Peroulis, and Y. C. Hu",
-   "title": "Analysis of energy consumption on data sharing in beamforming for wireless sensor networks",
-   "venue": "Proc. IEEE ICCCN",
-   "year": "2010",
-   "vol": null,
-   "no": null,
-   "pp": "1–28",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "li-2024-emodrl-ground-space-cb",
-    "li-2024-emssa-uav-swarm-vaa",
-    "liang-2024-hmecmop-uav-cb"
-   ],
-   "cited_count": 3,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
-  },
-  {
    "key": "neely-2010-stochastic-network-optimization-with",
    "authors": "Neely and J. Michael",
    "title": "Stochastic network optimization with application to communication and queueing systems",
@@ -14224,27 +14257,6 @@
    "cited_count": 3,
    "scope": "in",
    "venue_normalized": "Inf. Sci.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "yuan-2006-energy-efficient-cpu-scheduling-for",
-   "authors": "W. Yuan and K. Nahrstedt",
-   "title": "Energy-efficient CPU scheduling for multimedia applications",
-   "venue": "ACM Trans. Comput. Syst.",
-   "year": "2006",
-   "vol": "24",
-   "no": "3",
-   "pp": "292–331",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "jeong-2018-uav-cloudlet-bit-allocation",
-    "mao-2017-mec-survey-communication",
-    "zhang-2013-energy-optimal-mcc-stochastic"
-   ],
-   "cited_count": 3,
-   "scope": "uncertain",
-   "venue_normalized": "ACM Trans. Comput. Syst.",
    "venue_tier": "other"
   },
   {
@@ -18552,6 +18564,26 @@
    "scope": "in",
    "venue_normalized": "IEEE Trans. Intell. Transp. Syst. (TITS)",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "kuba-2022-trust-region-policy-optimisation-in-multi",
+   "authors": "J. G. Kuba et al.",
+   "title": "Trust region policy optimisation in multi-agent reinforcement learning",
+   "venue": "Apr.",
+   "year": "2022",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://arxiv.org/abs/",
+   "doi": null,
+   "cited_by": [
+    "li-2025-twohop-airground-drl-offloading",
+    "zhu-2024-zdrl-uav-tracking"
+   ],
+   "cited_count": 2,
+   "scope": "in",
+   "venue_normalized": "Apr.",
+   "venue_tier": "other"
   },
   {
    "key": "gao-2022-virtual-network-function-placement-in",
@@ -25527,6 +25559,25 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "raffin-2018-rl-baselines-zoo",
+   "authors": "A. Raffin",
+   "title": "RL baselines zoo",
+   "venue": null,
+   "year": "2018",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://github",
+   "doi": null,
+   "cited_by": [
+    "du-2024-d2sac-aigc-asp-selection",
+    "du-2024-gdm-network-optimization-tutorial"
+   ],
+   "cited_count": 2,
+   "venue_normalized": null,
+   "venue_tier": null
+  },
+  {
    "key": "wu-2018-a-survey-of-physical-layer-security",
    "authors": "Y. Wu, A. Khisti, C. Xiao, G. Caire, K. Wong, and X. Gao",
    "title": "A survey of physical layer security techniques for 5G wireless networks and challenges ahead",
@@ -25621,6 +25672,25 @@
    "scope": "in",
    "venue_normalized": "IEEE VTC",
    "venue_tier": "conf"
+  },
+  {
+   "key": "cai-2018-on-an-eigenvector-dependent-nonlinear",
+   "authors": "Y. Cai, L.-H. Zhang, Z. Bai, and R.-C. Li",
+   "title": "On an eigenvector-dependent nonlinear eigenvalue problem",
+   "venue": "SIAM J. Matrix Anal. Appl.",
+   "year": "2018",
+   "vol": "39",
+   "no": "3",
+   "pp": "1360–1382",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "an-2024-multilayer-ris-hap-swipt",
+    "sun-2024-mfris-semantic-antijamming"
+   ],
+   "cited_count": 2,
+   "venue_normalized": "SIAM J. Matrix Anal. Appl.",
+   "venue_tier": "other"
   },
   {
    "key": "hua-2018-energy-optimization-for-cellular-connected",
@@ -26985,6 +27055,25 @@
    "venue_tier": "other"
   },
   {
+   "key": "mnih-2016-asynchronous-methods-for-deep-reinforcement",
+   "authors": "V. Mnih et al.",
+   "title": "Asynchronous methods for deep reinforcement learning",
+   "venue": "Proc. Int. Conf. Mach. Learn.",
+   "year": "2016",
+   "vol": "48",
+   "no": null,
+   "pp": "1928–1937",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "guo-2024-multiuav-proactive-eavesdropping",
+    "lee-2024-dho-leo-handover"
+   ],
+   "cited_count": 2,
+   "venue_normalized": "Proc. Int. Conf. Mach. Learn.",
+   "venue_tier": "other"
+  },
+  {
    "key": "sun-2016-edgeiot-mobile-edge-computing-for-the",
    "authors": "X. Sun and N. Ansari",
    "title": "EdgeIoT: Mobile Edge computing for the Internet of Things",
@@ -27316,6 +27405,26 @@
    "cited_count": 2,
    "venue_normalized": "Proc. IEEE",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "kingma-2015-adam-a-method-for-stochastic-optimization",
+   "authors": "D. P. Kingma and J. Ba",
+   "title": "Adam: A method for stochastic optimization",
+   "venue": "Proc. Int. Conf. Learn. Representations",
+   "year": "2015",
+   "vol": null,
+   "no": null,
+   "pp": "1–15",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "du-2024-d2sac-aigc-asp-selection",
+    "zhang-2024-gdmtd3-aerial-secure-cb"
+   ],
+   "cited_count": 2,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. Int. Conf. Learn. Representations",
+   "venue_tier": "other"
   },
   {
    "key": "batabyal-2015-mobility-models-traces-and-impact-of-mobility",
@@ -29098,25 +29207,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "coello-2002-mopso-a-proposal-for-multiple-objective",
-   "authors": "C. A. Coello Coello and M. S. Lechuga",
-   "title": "MOPSO: A proposal for multiple objective particle swarm optimization",
-   "venue": "Proc.",
-   "year": "2002",
-   "vol": "2",
-   "no": "02",
-   "pp": "1051–1056",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "liang-2024-hmecmop-uav-cb",
-    "sun-2024-imssa-uav-secure-cb"
-   ],
-   "cited_count": 2,
-   "venue_normalized": "Proc.",
-   "venue_tier": "other"
-  },
-  {
    "key": "konda-2000-actor-critic-algorithms",
    "authors": "V. R. Konda and J. N. Tsitsiklis",
    "title": "Actor-critic algorithms",
@@ -29421,25 +29511,6 @@
    "cited_count": 2,
    "scope": "in",
    "venue_normalized": "Future Gener. Comput. Syst., to be published.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "wu-2026-task-offloading-with-service-migration-for",
-   "authors": "H. Wu, X. Yang, and Z. Bu",
-   "title": "Task offloading with service migration for satellite edge computing: A deep reinforcement learning approach",
-   "venue": "IEEE Access",
-   "year": "2026",
-   "vol": "12",
-   "no": null,
-   "pp": "25844–25856",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "wang-2025-double-edge-samin"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": "IEEE Access",
    "venue_tier": "other"
   },
   {
@@ -30423,6 +30494,24 @@
    "scope": "in",
    "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "anon-2025-untitled-4",
+   "authors": null,
+   "title": null,
+   "venue": "M. Ozel. ¨ Drone Dataset (UAV). Accessed:",
+   "year": "2025",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://www.kaggle.com/datasets/dasmehdixtr/drone-dataset-uav",
+   "doi": null,
+   "cited_by": [
+    "fu-2025-otae-inference-lae-batching"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "M. Ozel. ¨ Drone Dataset (UAV). Accessed:",
+   "venue_tier": "other"
   },
   {
    "key": "danino-2025-ensemble-mix-enhancing-sample-efficiency-in",
@@ -33620,6 +33709,25 @@
    "cited_count": 1,
    "scope": "in",
    "venue_normalized": "IEEE Wireless Commun. Lett.",
+   "venue_tier": "other"
+  },
+  {
+   "key": "wu-2024-task-offloading-with-service-migration-for",
+   "authors": "H. Wu, X. Yang, and Z. Bu",
+   "title": "Task offloading with service migration for satellite edge computing: A deep reinforcement learning approach",
+   "venue": "IEEE Access",
+   "year": "2024",
+   "vol": "12",
+   "no": null,
+   "pp": "25844–25856",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "wang-2025-double-edge-samin"
+   ],
+   "cited_count": 1,
+   "scope": "in",
+   "venue_normalized": "IEEE Access",
    "venue_tier": "other"
   },
   {
@@ -43177,6 +43285,24 @@
    "venue_tier": null
   },
   {
+   "key": "anon-2023-untitled-5",
+   "authors": null,
+   "title": null,
+   "venue": "WalkerStar. Accessed: Nov. 1",
+   "year": "2023",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "han-2024-ground-satellite-fl"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "WalkerStar. Accessed: Nov. 1",
+   "venue_tier": "other"
+  },
+  {
    "key": "fan-2023-channel-assignment-and-power-allocation",
    "authors": "X. Fan, H. Zhou, K. Sun, X. Chen, and N. Wang",
    "title": "Channel assignment and power allocation utilizing NOMA in long-distance UAV wireless communication",
@@ -43437,7 +43563,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-5",
+   "key": "anon-2023-untitled-6",
    "authors": null,
    "title": null,
    "venue": "Binayak Kar, Widhi Yahya, Ying-Dar Lin, and Asad Ali. Offloading using traditional optimization and machine learning in federated cloud–edge–fog systems: A survey. IEEE Communications Surveys & Tutorials, 25(2):1199–1226",
@@ -43455,7 +43581,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2023-untitled-6",
+   "key": "anon-2023-untitled-7",
    "authors": null,
    "title": null,
    "venue": "Yanqi Gong, Kun Bian, Fei Hao, Yifei Sun, and Yulei Wu. Dependent tasks offloading in mobile edge computing: A multi-objective evolutionary optimization strategy. Future generation computer systems, 148:314–325",
@@ -43473,7 +43599,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-7",
+   "key": "anon-2023-untitled-8",
    "authors": null,
    "title": null,
    "venue": "Fuhong Song, Huanlai Xing, Xinhan Wang, Shouxi Luo, Penglin Dai, Zhiwen Xiao, and Bowen Zhao. Evolutionary multi-objective reinforcement learning based trajectory control and task offloading in uav-assisted mobile edge computing. IEEE Transactions on Mobile Computing, 22(12):7387–7405",
@@ -43491,7 +43617,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2023-untitled-8",
+   "key": "anon-2023-untitled-9",
    "authors": null,
    "title": null,
    "venue": "Hongyue Kang, Xiaolin Chang, Jelena Misiˇ c, Vojislav B. Mi ´ siˇ c,´ Junchao Fan, and Yating Liu. Cooperative uav resource allocation and task offloading in hierarchical aerial computing systems: A mappo-based approach. IEEE Internet of Things Journal, 10(12):10497–10509",
@@ -43509,10 +43635,28 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2023-untitled-9",
+   "key": "anon-2023-untitled-10",
    "authors": null,
    "title": null,
    "venue": "Yuya Cui, Honghu Li, Degan Zhang, Aixi Zhu, Yang Li, and Hao Qiang. Multiagent reinforcement learning-based cooperative multitype task offloading strategy for internet of vehicles in b5g/6g network. IEEE Internet of Things Journal, 10(14):12248–12260",
+   "year": "2023",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "peng-2025-drudm-cfg"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
+   "venue_tier": "Q1"
+  },
+  {
+   "key": "anon-2023-untitled-11",
+   "authors": null,
+   "title": null,
+   "venue": "Yejun He, Youhui Gan, Haixia Cui, and Mohsen Guizani. Fairnessbased 3-d multi-uav trajectory optimization in multi-uav-assisted mec system. IEEE Internet of Things Journal, 10(13):11383–11395",
    "year": "2023",
    "vol": null,
    "no": null,
@@ -43762,24 +43906,6 @@
    "cited_count": 1,
    "venue_normalized": "Iraqi J. Comput. Sci. Math.",
    "venue_tier": "other"
-  },
-  {
-   "key": "raffin-2023-rl-baselines-zoo",
-   "authors": "A. Raffin",
-   "title": "RL baselines zoo",
-   "venue": null,
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://github",
-   "doi": null,
-   "cited_by": [
-    "du-2024-d2sac-aigc-asp-selection"
-   ],
-   "cited_count": 1,
-   "venue_normalized": null,
-   "venue_tier": null
   },
   {
    "key": "lai-2023-merak-an-efficient-distributed-dnn-training",
@@ -47416,7 +47542,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-10",
+   "key": "anon-2023-untitled-12",
    "authors": null,
    "title": null,
    "venue": "Valarmathi B, Kshitij J, Dimple R et al (",
@@ -47434,7 +47560,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-11",
+   "key": "anon-2023-untitled-13",
    "authors": null,
    "title": null,
    "venue": "Niyazi M, Behnamian J (",
@@ -47452,7 +47578,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-12",
+   "key": "anon-2023-untitled-14",
    "authors": null,
    "title": null,
    "venue": "Xu R, Razavi S, Zheng R (",
@@ -47470,7 +47596,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-13",
+   "key": "anon-2023-untitled-15",
    "authors": null,
    "title": null,
    "venue": "Krichen M (",
@@ -47488,7 +47614,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-14",
+   "key": "anon-2023-untitled-16",
    "authors": null,
    "title": null,
    "venue": "Nauman A, Alruwais N, Alabdulkreem E et al (",
@@ -47506,7 +47632,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-15",
+   "key": "anon-2023-untitled-17",
    "authors": null,
    "title": null,
    "venue": "Wu K, Cao X, Yang P et al (",
@@ -47524,7 +47650,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-16",
+   "key": "anon-2023-untitled-18",
    "authors": null,
    "title": null,
    "venue": "Kang H, Chang X, Miši´c J et al (",
@@ -47542,7 +47668,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-17",
+   "key": "anon-2023-untitled-19",
    "authors": null,
    "title": null,
    "venue": "Wang S, Bi S, Zhang YJA (",
@@ -47560,7 +47686,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-18",
+   "key": "anon-2023-untitled-20",
    "authors": null,
    "title": null,
    "venue": "Shao J, Zhang X, Zhang J (",
@@ -47596,7 +47722,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2023-untitled-19",
+   "key": "anon-2023-untitled-21",
    "authors": null,
    "title": null,
    "venue": "A. F. Molish, Wireless Communications From Fundamentals to Beyond 5G, 3rd ed. Hoboken, NJ, USA: Wiley",
@@ -50715,6 +50841,25 @@
    "venue_tier": "other"
   },
   {
+   "key": "mou-2023-t2i-adapter-learning-adapters-to-dig-out-more",
+   "authors": "C. Mou et al.",
+   "title": "T2i-adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models",
+   "venue": "Proc. AAAI Conf. Artif. Intell.",
+   "year": "2023",
+   "vol": null,
+   "no": null,
+   "pp": "4296–4304",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "ye-2025-aigc-diffusion-contract"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. AAAI Conf. Artif. Intell.",
+   "venue_tier": "other"
+  },
+  {
    "key": "le-2023-federated-learning-with-noma-assisted-by",
    "authors": "T. H. T. Le, L. Cantos, S. R. Pandey, H. Shin, and Y. H. Kim",
    "title": "Federated learning with NOMA assisted by multiple intelligent reflecting surfaces: Latency minimizing optimization and auction",
@@ -50992,7 +51137,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2023-untitled-20",
+   "key": "anon-2023-untitled-22",
    "authors": null,
    "title": null,
    "venue": "ITU-R. (",
@@ -51103,24 +51248,6 @@
    "scope": "in",
    "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "anon-2023-untitled-21",
-   "authors": null,
-   "title": null,
-   "venue": "M. Ozel. ¨ Drone Dataset (UAV). Accessed:",
-   "year": "2023",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://www.kaggle.com/datasets/dasmehdixtr/drone-dataset-uav",
-   "doi": null,
-   "cited_by": [
-    "fu-2025-otae-inference-lae-batching"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "M. Ozel. ¨ Drone Dataset (UAV). Accessed:",
-   "venue_tier": "other"
   },
   {
    "key": "wu-2023-multi-agent-drl-for-joint-completion-delay",
@@ -51938,7 +52065,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2023-untitled-22",
+   "key": "anon-2023-untitled-23",
    "authors": null,
    "title": null,
    "venue": "A. Krizhevsky, V. Nair, and G. Hinton. CIFAR-10 (Canadian Institute for Advanced Research). Accessed: Mar. 1",
@@ -52404,7 +52531,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2023-untitled-23",
+   "key": "anon-2023-untitled-24",
    "authors": null,
    "title": null,
    "venue": "IEEE Trial-use Standard for Aerial Network Communication, Standard",
@@ -56893,6 +57020,25 @@
    "venue_tier": "other"
   },
   {
+   "key": "jia-2022-codl-efficient-cpu-gpu-co-execution-for-deep",
+   "authors": "F. Jia et al.",
+   "title": "CoDL: Efficient CPU-GPU co-execution for deep learning inference on mobile devices",
+   "venue": "Proc. 20th Annu. Int. Conf. Mobile Syst. Appl. Serv. Assoc. Comput. Machinery, New York, NY, USA",
+   "year": "2022",
+   "vol": null,
+   "no": null,
+   "pp": "209–221",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "sun-2024-asap-uav-swarm"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. 20th Annu. Int. Conf. Mobile Syst. Appl. Serv. Assoc. Comput. Machinery, New York, NY, USA",
+   "venue_tier": "other"
+  },
+  {
    "key": "li-2022-do-we-really-need-to-use-constraint-violation",
    "authors": "S. Li, K. Li, and W. Li",
    "title": "Do we really need to use constraint violation in constrained evolutionary multi-objective optimization?",
@@ -57721,25 +57867,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "IEEE J. Sel. Topics Signal Process.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "kuba-2022-trust-region-policy-optimisation-in-multi",
-   "authors": "J. G. Kuba et al.",
-   "title": "Trust region policy optimisation in multi-agent reinforcement learning",
-   "venue": "Apr.",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://arxiv.org/abs/",
-   "doi": null,
-   "cited_by": [
-    "zhu-2024-zdrl-uav-tracking"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": "Apr.",
    "venue_tier": "other"
   },
   {
@@ -59522,6 +59649,24 @@
    "venue_tier": "other"
   },
   {
+   "key": "anon-2022-untitled-14",
+   "authors": null,
+   "title": null,
+   "venue": "Internet usage statistics",
+   "year": "2022",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://www",
+   "doi": null,
+   "cited_by": [
+    "zhang-2024-mhspo-satellite-peer-offloading"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Internet usage statistics",
+   "venue_tier": "other"
+  },
+  {
    "key": "zhu-2022-integrated-satellite-terrestrial-networks",
    "authors": "X. Zhu and C. Jiang",
    "title": "Integrated satellite-terrestrial networks toward 6G: Architectures, applications, and challenges",
@@ -61287,7 +61432,7 @@
    "venue_tier": "conf"
   },
   {
-   "key": "anon-2022-untitled-14",
+   "key": "anon-2022-untitled-15",
    "authors": null,
    "title": null,
    "venue": "Han K, Wang Y, Chen H et al (",
@@ -61305,7 +61450,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-15",
+   "key": "anon-2022-untitled-16",
    "authors": null,
    "title": null,
    "venue": "Coutinho RW, Boukerche A (",
@@ -61324,7 +61469,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-16",
+   "key": "anon-2022-untitled-17",
    "authors": null,
    "title": null,
    "venue": "Jia Z, Wu Q, Dong C et al (",
@@ -61342,7 +61487,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-17",
+   "key": "anon-2022-untitled-18",
    "authors": null,
    "title": null,
    "venue": "Lakew DS, Tran AT, Dao NN et al (",
@@ -61360,7 +61505,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-18",
+   "key": "anon-2022-untitled-19",
    "authors": null,
    "title": null,
    "venue": "Ladosz P, Weng L, Kim M et al (",
@@ -61378,7 +61523,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-19",
+   "key": "anon-2022-untitled-20",
    "authors": null,
    "title": null,
    "venue": "Liu Y, Yan J, Zhao X (",
@@ -61396,7 +61541,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-20",
+   "key": "anon-2022-untitled-21",
    "authors": null,
    "title": null,
    "venue": "Wang Z, He X, Zhang Z et al (",
@@ -61414,7 +61559,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-21",
+   "key": "anon-2022-untitled-22",
    "authors": null,
    "title": null,
    "venue": "Liu H, Cao G (",
@@ -61432,7 +61577,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-22",
+   "key": "anon-2022-untitled-23",
    "authors": null,
    "title": null,
    "venue": "Panda KG, Wilson A, Sen D (",
@@ -61783,7 +61928,7 @@
    "venue_tier": "conf"
   },
   {
-   "key": "anon-2022-untitled-23",
+   "key": "anon-2022-untitled-24",
    "authors": null,
    "title": null,
    "venue": "Technical Characteristics for a VHF Data Exchange System in the VHF Maritime Mobile Band , Standard M.",
@@ -61817,6 +61962,24 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Netw.",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "giuffrida-2022-the-sat-1-mission-the-first-on-board-deep",
+   "authors": "G. Giuffrida et al.",
+   "title": "The φ-Sat-1 mission: The first on-board deep neural network demonstrator for satellite earth observation",
+   "venue": "IEEE Trans. Geosci. Remote Sens.",
+   "year": "2022",
+   "vol": "60",
+   "no": "5517414",
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "wu-2024-satellite-maritime-spectrum-sharing"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "IEEE Trans. Geosci. Remote Sens.",
+   "venue_tier": "other"
   },
   {
    "key": "li-2022-employing-intelligent-aerial-data-aggregators",
@@ -64092,24 +64255,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "lowe-2022-multi-agent-actor-critic-for-mixed",
-   "authors": "R. Lowe, Y. I. Wu, A. Tamar, J. Harb, O. Pieter Abbeel, and I. Mordatch",
-   "title": "Multi-agent actor-critic for mixed cooperative-competitive environments",
-   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
-   "year": "2022",
-   "vol": null,
-   "no": null,
-   "pp": "6382–6393",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "ning-2023-madrl-uav-trajectory-differentiated-services"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
-   "venue_tier": "other"
-  },
-  {
    "key": "bozorgchenani-2022-computation-offloading-in-heterogeneous",
    "authors": "A. Bozorgchenani, S. Maghsudi, D. Tarchi, and E. Hossain",
    "title": "Computation offloading in heterogeneous vehicular edge networks: On-line and offpolicy bandit solutions",
@@ -65633,7 +65778,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-24",
+   "key": "anon-2022-untitled-25",
    "authors": null,
    "title": null,
    "venue": "NVIDIA.(",
@@ -67262,6 +67407,24 @@
    "venue_tier": null
   },
   {
+   "key": "yu-2022-efficient-direct-target-localization-for",
+   "authors": "Z. Yu, J. Li, Q. Guo, and J. Ding",
+   "title": "Efficient direct target localization for distributed MIMO radar with expectation propagation and belief propagation",
+   "venue": "IEEE Trans. Signal Process.",
+   "year": "2022",
+   "vol": "69",
+   "no": null,
+   "pp": "4055–4068",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "su-2024-sensing-aided-isac-pls"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "IEEE Trans. Signal Process.",
+   "venue_tier": "other"
+  },
+  {
    "key": "zhang-2022-integrated-sensing-and-communication-waveform",
    "authors": "R. Zhang, B. Shim, W. Yuan, M. D. Renzo, X. Dang, and W. Wu",
    "title": "Integrated sensing and communication waveform design with sparse vector coding: Low sidelobes and ultra reliability",
@@ -67334,7 +67497,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2022-untitled-25",
+   "key": "anon-2022-untitled-26",
    "authors": null,
    "title": null,
    "venue": "C. Hackl, D. Lueth, and T. Di Bartolo, Navigating the Metaverse: A Guide to Limitless Possibilities in a Web 3.0 World. Hoboken, NJ, USA: Wiley",
@@ -67532,7 +67695,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-26",
+   "key": "anon-2022-untitled-27",
    "authors": null,
    "title": null,
    "venue": "Huawei.(",
@@ -67786,6 +67949,24 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "anon-2022-untitled-28",
+   "authors": null,
+   "title": null,
+   "venue": "MathWorks. (",
+   "year": "2022",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://ww2.mathworks",
+   "doi": null,
+   "cited_by": [
+    "wen-2024-iscc-edge-ai"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "MathWorks. (",
+   "venue_tier": "other"
   },
   {
    "key": "chen-2022-joint-power-allocation-and-placement-scheme",
@@ -68396,7 +68577,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2022-untitled-27",
+   "key": "anon-2022-untitled-29",
    "authors": null,
    "title": null,
    "venue": "J. M. J. Valero et al., Trusted Execution Environment-Enabled Platform for 5G Security and Privacy Enhancement. Cham, Switzerland: Springer",
@@ -70928,6 +71109,24 @@
    "venue_tier": null
   },
   {
+   "key": "xu-2022-pp-yoloe-an-evolved-version-of-yolo",
+   "authors": "S. Xu et al.",
+   "title": "PP-YOLOE: An evolved version of YOLO",
+   "venue": null,
+   "year": "2022",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "du-2024-yolo-semcom-digital-twin"
+   ],
+   "cited_count": 1,
+   "venue_normalized": null,
+   "venue_tier": null
+  },
+  {
    "key": "wang-2021-resource-allocation-for-noma-based-space",
    "authors": "L. Wang, Y. Wu, H. Zhang, S. Choi, and V. C. M. Leung",
    "title": "Resource allocation for NOMA based space-terrestrial satellite networks",
@@ -73342,6 +73541,25 @@
    "scope": "in",
    "venue_normalized": "Nov.",
    "venue_tier": "other"
+  },
+  {
+   "key": "pan-2021-regularized-softmax-deep-multi-agent-q",
+   "authors": "L. Pan, T. Rashid, B. Peng, L. Huang, and S. Whiteson",
+   "title": "Regularized softmax deep multi-agent Q-learning",
+   "venue": null,
+   "year": "2021",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "kang-2023-mappo-hierarchical-aerial"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": null,
+   "venue_tier": null
   },
   {
    "key": "sun-2021-learning-based-resource-allocation-strategy",
@@ -76380,24 +76598,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "karabulut-2021-rach-optimization-with-decision-tree-based",
-   "authors": "U. Karabulut, A. Awada, I. Viering, A. N. Barreto, and G. P. Fettweis",
-   "title": "RACH optimization with decision tree based supervised learning for conditional handover in 5G beamformed systems",
-   "venue": null,
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "lee-2024-dho-leo-handover"
-   ],
-   "cited_count": 1,
-   "venue_normalized": null,
-   "venue_tier": null
-  },
-  {
    "key": "zhao-2021-a-comprehensive-survey-of-6g-wireless",
    "authors": "Y. Zhao et al.",
    "title": "A comprehensive survey of 6G wireless communications",
@@ -78928,24 +79128,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "coello-2021-mopso-a-proposal-for-multiple-objective",
-   "authors": "C. A. C. Coello and M. S. Lechuga",
-   "title": "MOPSO: A proposal for multiple objective particle swarm optimization",
-   "venue": "Proc. IEEE Congr. Evol. Comput.",
-   "year": "2021",
-   "vol": null,
-   "no": null,
-   "pp": "1051–1056",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "li-2024-emssa-uav-swarm-vaa"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
-  },
-  {
    "key": "lyu-2021-aoi-aware-co-design-of-cooperative",
    "authors": "L. Lyu et al.",
    "title": "AoI-aware co-design of cooperative transmission and state estimation for marine IoT systems",
@@ -79055,24 +79237,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Internet Things J. (IoTJ)",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "li-2021-performance-of-planar-arrays-for-microwave",
-   "authors": "X. Li, J. Zhou, B. Duan, Y. Yang, Y. Zhang, and J. Fan",
-   "title": "Performance of planar arrays for microwave power transmission with position errors",
-   "venue": "IEEE Antennas Wireless Propag. Lett.",
-   "year": "2021",
-   "vol": "14",
-   "no": null,
-   "pp": "1794–1797",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "liang-2024-hmecmop-uav-cb"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE Antennas Wireless Propag. Lett.",
-   "venue_tier": "other"
   },
   {
    "key": "mao-2021-an-intelligent-route-computation-approach",
@@ -81156,24 +81320,6 @@
    "cited_count": 1,
    "venue_normalized": "Proc. IEEE",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "yu-2021-efficient-direct-target-localization-for",
-   "authors": "Z. Yu, J. Li, Q. Guo, and J. Ding",
-   "title": "Efficient direct target localization for distributed MIMO radar with expectation propagation and belief propagation",
-   "venue": "IEEE Trans. Signal Process.",
-   "year": "2021",
-   "vol": "69",
-   "no": null,
-   "pp": "4055–4068",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "su-2024-sensing-aided-isac-pls"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE Trans. Signal Process.",
-   "venue_tier": "other"
   },
   {
    "key": "mo-2021-predicting-the-impact-of-disruptions-to-urban",
@@ -84407,24 +84553,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-2",
-   "authors": null,
-   "title": null,
-   "venue": "3rd generation part-nership project (3GPP), evolved universal terrestrial radio access (E-UTRA); further advancements for E-UTRA physical layer aspects, TR 36.814–920",
-   "year": "2020",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "chen-2024-dro-video-caching"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "3rd generation part-nership project (3GPP), evolved universal terrestrial radio access (E-UTRA); further advancements for E-UTRA physical layer aspects, TR 36.814–920",
-   "venue_tier": "other"
-  },
-  {
    "key": "amin-2020-channel-capacity-analysis-of-nonorthogonal",
    "authors": "A. Al Amin and S. Y. Shin",
    "title": "Channel capacity analysis of nonorthogonal multiple access with OAM-MIMO system",
@@ -84948,7 +85076,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-3",
+   "key": "anon-2020-untitled-2",
    "authors": null,
    "title": null,
    "venue": "R. S. Sutton, Reinforcement Learning: An Introduction. Cambridge, MA, USA: MIT Press",
@@ -85447,7 +85575,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-4",
+   "key": "anon-2020-untitled-3",
    "authors": null,
    "title": null,
    "venue": "Yong Wang, Zhi-Yang Ru, Kezhi Wang, and Pei-Qiu Huang. Joint deployment and task scheduling optimization for large-scale mobile users in multi-uav-enabled mobile edge computing. IEEE Transactions on Cybernetics, 50(9):3984–3997",
@@ -85465,7 +85593,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-5",
+   "key": "anon-2020-untitled-4",
    "authors": null,
    "title": null,
    "venue": "Tiankui Zhang, Yu Xu, Jonathan Loo, Dingcheng Yang, and Lin Xiao. Joint computation and communication design for uavassisted mobile edge computing in iot. IEEE Transactions on Industrial Informatics, 16(8):5505–5516",
@@ -85483,7 +85611,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-6",
+   "key": "anon-2020-untitled-5",
    "authors": null,
    "title": null,
    "venue": "Lei Yang, Haipeng Yao, Jingjing Wang, Chunxiao Jiang, Abderrahim Benslimane, and Yunjie Liu. Multi-uav-enabled loadbalance mobile-edge computing for iot networks. IEEE Internet of Things Journal, 7(8):6898–6908",
@@ -85501,7 +85629,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-7",
+   "key": "anon-2020-untitled-6",
    "authors": null,
    "title": null,
    "venue": "Jingjing Cui, Yuanwei Liu, and Arumugam Nallanathan. Multiagent reinforcement learning-based resource allocation for uav networks. IEEE Transactions on Wireless Communications, 19(2):729– 743",
@@ -85519,7 +85647,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-8",
+   "key": "anon-2020-untitled-7",
    "authors": null,
    "title": null,
    "venue": "Yu Zhang, Zhiyu Mou, Feifei Gao, Jing Jiang, Ruijin Ding, and Zhu Han. Uav-enabled secure communications by multi-agent deep reinforcement learning. IEEE Transactions on Vehicular Technology, 69(10):11599–11611",
@@ -85534,24 +85662,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Veh. Technol. (TVT)",
-   "venue_tier": "Q1"
-  },
-  {
-   "key": "anon-2020-untitled-9",
-   "authors": null,
-   "title": null,
-   "venue": "Yejun He, Youhui Gan, Haixia Cui, and Mohsen Guizani. Fairnessbased 3-d multi-uav trajectory optimization in multi-uav-assisted mec system. IEEE Internet of Things Journal, 10(13):11383–11395",
-   "year": "2020",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "peng-2025-drudm-cfg"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE Internet Things J. (IoTJ)",
    "venue_tier": "Q1"
   },
   {
@@ -85808,6 +85918,24 @@
    "cited_count": 1,
    "venue_normalized": "IEEE WCNC",
    "venue_tier": "conf"
+  },
+  {
+   "key": "zhang-2020-trajectory-planning-of-uav-in-wireless",
+   "authors": "J. Zhang et al.",
+   "title": "Trajectory planning of UAV in wireless powered IoT system based on deep reinforcement learning",
+   "venue": "Proc. IEEE/CIC Int. Conf. Commun. China",
+   "year": "2020",
+   "vol": null,
+   "no": null,
+   "pp": "645–650",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "liu-2022-maritime-uav-mec-virtualization"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Proc. IEEE",
+   "venue_tier": "Q1"
   },
   {
    "key": "wang-2020-joint-deployment-and-task-scheduling-2",
@@ -87180,6 +87308,25 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "briggs-2020-federated-learning-with-hierarchical",
+   "authors": "C. Briggs, Z. Fan, and P. Andras",
+   "title": "Federated learning with hierarchical clustering of local updates to improve training on non-IID data",
+   "venue": "Proc. Int. Joint Conf. Neural Netw.",
+   "year": "2020",
+   "vol": null,
+   "no": null,
+   "pp": "1–9",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhai-2023-fedleo-decentralized-fl"
+   ],
+   "cited_count": 1,
+   "scope": "in",
+   "venue_normalized": "Proc. Int. Joint Conf. Neural Netw.",
+   "venue_tier": "other"
+  },
+  {
    "key": "lin-2020-a-variational-autoencoder-based-secure",
    "authors": "C.-H. Lin et al.",
    "title": "A Variational Autoencoder-Based Secure Transceiver Design Using Deep Learning",
@@ -87880,7 +88027,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-10",
+   "key": "anon-2020-untitled-8",
    "authors": null,
    "title": null,
    "venue": "Zhang Y, Mou Z, Gao F et al (",
@@ -87898,7 +88045,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-11",
+   "key": "anon-2020-untitled-9",
    "authors": null,
    "title": null,
    "venue": "Federal Communication Commission (FCC). (Jul.",
@@ -88099,7 +88246,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-12",
+   "key": "anon-2020-untitled-10",
    "authors": null,
    "title": null,
    "venue": "H. Zhang, L. Song, and Z. Han, Unmanned Aerial Vehicle Applications Over Cellular Networks for 5G and Beyond. Cham, Switzerland: Springer Int.",
@@ -89032,7 +89179,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-13",
+   "key": "anon-2020-untitled-11",
    "authors": null,
    "title": null,
    "venue": "N. H. Mahmood, N. Marchenko, M. Gidlund, and",
@@ -89159,7 +89306,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-14",
+   "key": "anon-2020-untitled-12",
    "authors": null,
    "title": null,
    "venue": "Internet of Things Data to Top 1.6 Zettabytes by",
@@ -89557,6 +89704,25 @@
    "scope": "in",
    "venue_normalized": "IEEE Internet Things J. (IoTJ)",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "yao-2020-attention-cooperative-task-offloading-and",
+   "authors": "Z. Yao, Y. Li, S. Xia, and G. Wu",
+   "title": "Attention cooperative task offloading and service caching in edge computing",
+   "venue": "Proc. IEEE Global Commun. Conf., Rio de Janeiro, Brazil",
+   "year": "2020",
+   "vol": null,
+   "no": null,
+   "pp": "5189–5194",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "du-2023-maddpg-service-placement-agin"
+   ],
+   "cited_count": 1,
+   "scope": "in",
+   "venue_normalized": "IEEE GLOBECOM",
+   "venue_tier": "conf"
   },
   {
    "key": "yang-2020-multi-uav-edge-computing-for-iov-task",
@@ -90014,7 +90180,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-15",
+   "key": "anon-2020-untitled-13",
    "authors": null,
    "title": null,
    "venue": "Why Autonomous Vehicles Will Rely on Edge Computing and Not the Cloud? Accessed: Jul. 13",
@@ -90068,7 +90234,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-16",
+   "key": "anon-2020-untitled-14",
    "authors": null,
    "title": null,
    "venue": "Building an Ecosystem for Responsible Drone Use and Development on Microsoft Azure. Accessed: Sep. 19",
@@ -90122,7 +90288,7 @@
    "venue_tier": "conf"
   },
   {
-   "key": "anon-2020-untitled-17",
+   "key": "anon-2020-untitled-15",
    "authors": null,
    "title": null,
    "venue": "Bonsai. Deep Reinforcement Learning Models: Tips & Tricks for Writing Reward Functions. Accessed: Jun. 26",
@@ -90140,7 +90306,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-18",
+   "key": "anon-2020-untitled-16",
    "authors": null,
    "title": null,
    "venue": "PTV Vissim. Accessed: Jun. 16",
@@ -92730,7 +92896,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-19",
+   "key": "anon-2020-untitled-17",
    "authors": null,
    "title": null,
    "venue": "ETSI GR MEC 031 V2.1.1 (",
@@ -93115,7 +93281,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2020-untitled-20",
+   "key": "anon-2020-untitled-18",
    "authors": null,
    "title": null,
    "venue": "(May",
@@ -93228,7 +93394,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2020-untitled-21",
+   "key": "anon-2020-untitled-19",
    "authors": null,
    "title": null,
    "venue": "F. van Diggelen, Assisted GNSS. Hoboken, NJ, USA: Wiley",
@@ -97650,24 +97816,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "cai-2019-on-an-eigenvector-dependent-nonlinear",
-   "authors": "Y. Cai, L.-H. Zhang, Z. Bai, and R.-C. Li",
-   "title": "On an eigenvector-dependent nonlinear eigenvalue problem",
-   "venue": "SIAM J. Matrix Anal. Appl.",
-   "year": "2019",
-   "vol": "39",
-   "no": "3",
-   "pp": "1360–1382",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "an-2024-multilayer-ris-hap-swipt"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "SIAM J. Matrix Anal. Appl.",
-   "venue_tier": "other"
-  },
-  {
    "key": "qin-2019-completion-time-minimization-for-multi-uav",
    "authors": "Z. Qin, A. Li, C. Dong, H. Dai, and Z. Xu",
    "title": "Completion time minimization for multi-UAV information collection via trajectory planning",
@@ -98035,6 +98183,24 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Commun. Mag.",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "karabulut-2019-rach-optimization-with-decision-tree-based",
+   "authors": "U. Karabulut, A. Awada, I. Viering, A. N. Barreto, and G. P. Fettweis",
+   "title": "RACH optimization with decision tree based supervised learning for conditional handover in 5G beamformed systems",
+   "venue": null,
+   "year": "2019",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "lee-2024-dho-leo-handover"
+   ],
+   "cited_count": 1,
+   "venue_normalized": null,
+   "venue_tier": null
   },
   {
    "key": "zhang-2019-aeronautical-adhoc-networking-for-the",
@@ -98574,25 +98740,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "zitzler-2019-multiobjective-optimization-using",
-   "authors": "E. Zitzler and L. Thiele",
-   "title": "Multiobjective optimization using evolutionary algorithms—A comparative case study",
-   "venue": "Proc. Int. Conf. Parallel Problem Solving Nat.",
-   "year": "2019",
-   "vol": null,
-   "no": null,
-   "pp": "292–301",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "huang-2023-mu-aec-task-energy"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": "Proc. Int. Conf. Parallel Problem Solving Nat.",
-   "venue_tier": "other"
-  },
-  {
    "key": "ding-2019-impact-of-non-orthogonal-multiple-access-on",
    "authors": "Z. Ding, P. Fan, and H. V. Poor",
    "title": "Impact of non-orthogonal multiple access on the offloading of mobile edge computing",
@@ -98922,25 +99069,6 @@
    "scope": "in",
    "venue_normalized": "IEEE ICC",
    "venue_tier": "conf"
-  },
-  {
-   "key": "yuan-2019-energy-efficient-cpu-scheduling-for",
-   "authors": "W. Yuan and K. Nahrstedt",
-   "title": "Energy-efficient CPU scheduling for multimedia applications",
-   "venue": "ACM Trans. Comput. Syst.",
-   "year": "2019",
-   "vol": "24",
-   "no": "3",
-   "pp": "292–331",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "yu-2020-uav-ec-collaborative-offloading"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "ACM Trans. Comput. Syst.",
-   "venue_tier": "other"
   },
   {
    "key": "gao-2019-weighted-area-coverage-of-maritime-joint",
@@ -101486,6 +101614,24 @@
    "venue_tier": "other"
   },
   {
+   "key": "bykorak-2019-uav-assisted-ground-user-localization",
+   "authors": "S. Büyükçorak, G. K. Kurt, and A. Yongaço ˘glu",
+   "title": "UAV assisted ground user localization",
+   "venue": "Proc. IEEE Int. Conf. Wireless Space Extreme Environ.",
+   "year": "2019",
+   "vol": null,
+   "no": null,
+   "pp": "111–115",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhu-2024-sensing-comm-doppler-uav-swarm"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Proc. IEEE",
+   "venue_tier": "Q1"
+  },
+  {
    "key": "liu-2019-energy-efficient-distributed-mobile-crowd",
    "authors": "C. H. Liu, Z. Chen, and Y. Zhan",
    "title": "Energy-efficient distributed mobile crowd sensing: A deep learning approach",
@@ -101950,25 +102096,6 @@
    "cited_count": 1,
    "scope": "in",
    "venue_normalized": "IEEE Wireless Commun. Lett.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "hausknecht-2019-deep-recurrent-q-learning-for-partially",
-   "authors": "M. Hausknecht and P. Stone",
-   "title": "Deep recurrent q-learning for partially observable MDPs",
-   "venue": "Proc. Assoc. Adv. Artif. Intell. Fall Symp. Ser.",
-   "year": "2019",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "chang-2022-marl-multiuav-trajectory"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. Assoc. Adv. Artif. Intell. Fall Symp. Ser.",
    "venue_tier": "other"
   },
   {
@@ -102900,25 +103027,6 @@
    "cited_count": 1,
    "scope": "in",
    "venue_normalized": "Theor. Econom., New York, NY, USA, Working Papers",
-   "venue_tier": "other"
-  },
-  {
-   "key": "kar-2018-distributed-linear-parameter-estimation",
-   "authors": "S. Kar, J. M. Moura, and H. V. Poor",
-   "title": "Distributed linear parameter estimation: Asymptotically efficient adaptive strategies",
-   "venue": "SIAM J. Control Optim.",
-   "year": "2018",
-   "vol": "51",
-   "no": "3",
-   "pp": "2200–2229",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "li-2025-stochastic-game-uav-swarm"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "SIAM J. Control Optim.",
    "venue_tier": "other"
   },
   {
@@ -104272,6 +104380,24 @@
    "venue_tier": "conf"
   },
   {
+   "key": "park-2018-minimum-throughput-maximization-in-uav-aided",
+   "authors": "J. Park, H. Lee, S. Eom, and I. Lee",
+   "title": "Minimum throughput maximization in UAV-aided wireless powered communication networks",
+   "venue": null,
+   "year": "2018",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://arxiv.org/abs/1801.02781",
+   "doi": null,
+   "cited_by": [
+    "zeng-2019-uav-comm-tutorial-5g"
+   ],
+   "cited_count": 1,
+   "venue_normalized": null,
+   "venue_tier": null
+  },
+  {
    "key": "do-2018-jammingresistant-receivers-for-the-massive",
    "authors": "T. T. Do, E. Björnson, E. G. Larsson, and S. M. Razavizadeh",
    "title": "Jammingresistant receivers for the massive MIMO uplink",
@@ -105010,24 +105136,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "gutierrez-2018-complexity-of-the-bisection-method",
-   "authors": "C. Gutierrez, F. Gutierrez, and M. C. Rivara",
-   "title": "Complexity of the bisection method",
-   "venue": "Theor. Comput. Sci.",
-   "year": "2018",
-   "vol": "382",
-   "no": "2",
-   "pp": "131–138",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhou-2018-uav-wireless-powered-mec"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Theor. Comput. Sci.",
-   "venue_tier": "other"
-  },
-  {
    "key": "chen-2018-resource-allocation-for-device-to-device",
    "authors": "Y. Chen, B. Ai, Y. Niu, K. Guan, and Z. Han",
    "title": "Resource allocation for device-to-device communications underlaying heterogeneous cellular networks using coalitional games",
@@ -105431,6 +105539,24 @@
    "cited_count": 1,
    "venue_normalized": "IEEE/ACM Trans. Netw. (ToN)",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "zheng-2018-a-deep-bayesian-policy-reuse-approach-against",
+   "authors": "Y. Zheng, Z. Meng, J. Hao, Z. Zhang, T. Yang, and C. Fan",
+   "title": "A deep Bayesian policy reuse approach against non-stationary agents",
+   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
+   "year": "2018",
+   "vol": null,
+   "no": null,
+   "pp": "962–972",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "wang-2024-hfrl-decentralized-navigation"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
+   "venue_tier": "other"
   },
   {
    "key": "campion-2018-uav-swarm-communication-and-control",
@@ -105903,24 +106029,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Access",
    "venue_tier": "other"
-  },
-  {
-   "key": "raffin-2018-rl-baselines-zoo",
-   "authors": "A. Raffin.",
-   "title": "RL baselines zoo",
-   "venue": null,
-   "year": "2018",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://github.com/araffin/rl-baselines-zoo",
-   "doi": null,
-   "cited_by": [
-    "du-2024-gdm-network-optimization-tutorial"
-   ],
-   "cited_count": 1,
-   "venue_normalized": null,
-   "venue_tier": null
   },
   {
    "key": "alsaba-2018-beamforming-in-wireless-energy-harvesting",
@@ -107604,24 +107712,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "IEEE Access",
-   "venue_tier": "other"
-  },
-  {
-   "key": "cai-2018-on-an-eigenvector-dependent-nonlinear",
-   "authors": "Y. Cai, L.-H. Zhang, Z. Bai, and R.-C. Li",
-   "title": "On an eigenvector-dependent nonlinear eigenvalue problem",
-   "venue": "SIAM J. Matrix Anal. Appl.",
-   "year": "2018",
-   "vol": "39",
-   "no": "3",
-   "pp": "1360–1382",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "sun-2024-mfris-semantic-antijamming"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "SIAM J. Matrix Anal. Appl.",
    "venue_tier": "other"
   },
   {
@@ -110190,6 +110280,25 @@
    "venue_tier": "other"
   },
   {
+   "key": "yao-2017-heterogeneous-cloudlet-deployment-and-user",
+   "authors": "H. Yao, C. Bai, M. Xiong, D. Zeng, and Z. Fu",
+   "title": "Heterogeneous cloudlet deployment and user-cloudlet association toward cost effective fog computing",
+   "venue": "Concurrency Comput.: Practice Experience",
+   "year": "2017",
+   "vol": "29",
+   "no": "16",
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "he-2019-euagame-user-allocation"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": "Concurrency Comput.: Practice Experience",
+   "venue_tier": "other"
+  },
+  {
    "key": "tran-2017-collaborative-mobile-edge-computing-in-5g",
    "authors": "T. X. Tran, A. Hajisami, P. Pandey, and D. Pompili",
    "title": "Collaborative mobile edge computing in 5G networks: New paradigms, scenarios, and challenges",
@@ -111500,6 +111609,24 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "anon-2017-untitled-15",
+   "authors": null,
+   "title": null,
+   "venue": "3rd generation part-nership project (3GPP), evolved universal terrestrial radio access (E-UTRA); further advancements for E-UTRA physical layer aspects, TR 36.814–920",
+   "year": "2017",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "chen-2024-dro-video-caching"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "3rd generation part-nership project (3GPP), evolved universal terrestrial radio access (E-UTRA); further advancements for E-UTRA physical layer aspects, TR 36.814–920",
+   "venue_tier": "other"
+  },
+  {
    "key": "mao-2017-modnn-local-distributed-mobile-computing",
    "authors": "J. Mao, X. Chen, K. W. Nixon, C. Krieger, and Y. Chen",
    "title": "MoDNN: Local distributed mobile computing system for deep neural network",
@@ -111740,7 +111867,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-15",
+   "key": "anon-2017-untitled-16",
    "authors": null,
    "title": null,
    "venue": "S. Vaidyanathan and C.-H. Lien, Applications of Sliding Mode Control in Science and Engineering",
@@ -111976,24 +112103,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "zheng-2017-a-deep-bayesian-policy-reuse-approach-against",
-   "authors": "Y. Zheng, Z. Meng, J. Hao, Z. Zhang, T. Yang, and C. Fan",
-   "title": "A deep Bayesian policy reuse approach against non-stationary agents",
-   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
-   "year": "2017",
-   "vol": null,
-   "no": null,
-   "pp": "962–972",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "wang-2024-hfrl-decentralized-navigation"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
-   "venue_tier": "other"
-  },
-  {
    "key": "pan-2017-joint-precoding-and-rrh-selection-for-user",
    "authors": "C. Pan, H. Zhu, N. J. Gomes, and J. Wang",
    "title": "Joint precoding and RRH selection for user-centric green MIMO C-RAN",
@@ -112174,24 +112283,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2017-untitled-16",
-   "authors": null,
-   "title": null,
-   "venue": "Internet usage statistics",
-   "year": "2017",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://www",
-   "doi": null,
-   "cited_by": [
-    "zhang-2024-mhspo-satellite-peer-offloading"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Internet usage statistics",
-   "venue_tier": "other"
-  },
-  {
    "key": "dolui-2017-comparison-of-edge-computing-implementations",
    "authors": "K. Dolui and S. K. Datta",
    "title": "Comparison of edge computing implementations: Fog computing, cloudlet and mobile edge computing",
@@ -112262,24 +112353,6 @@
    "cited_count": 1,
    "venue_normalized": "Proc. IEEE",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "arnold-2017-power-consumption-modeling-of-different-base",
-   "authors": "O. Arnold, F. Richter, G. Fettweis, and O. Blume",
-   "title": "Power consumption modeling of different base station types in heterogeneous cellular networks",
-   "venue": "Proc. Future Netw. Mobile Summit",
-   "year": "2017",
-   "vol": null,
-   "no": null,
-   "pp": "1–8",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zeng-2019-rotary-wing-energy-min"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. Future Netw. Mobile Summit",
-   "venue_tier": "other"
   },
   {
    "key": "fadlullah-2017-gt-qosec-a-gametheoretic-joint-optimization",
@@ -112443,25 +112516,6 @@
    "cited_count": 1,
    "scope": "out",
    "venue_normalized": "Deep Learning With Python, Berlin, Germany: Springer",
-   "venue_tier": "other"
-  },
-  {
-   "key": "briggs-2017-federated-learning-with-hierarchical",
-   "authors": "C. Briggs, Z. Fan, and P. Andras",
-   "title": "Federated learning with hierarchical clustering of local updates to improve training on non-IID data",
-   "venue": "Proc. Int. Joint Conf. Neural Netw.",
-   "year": "2017",
-   "vol": null,
-   "no": null,
-   "pp": "1–9",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhai-2023-fedleo-decentralized-fl"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": "Proc. Int. Joint Conf. Neural Netw.",
    "venue_tier": "other"
   },
   {
@@ -112686,10 +112740,10 @@
    "venue_tier": "other"
   },
   {
-   "key": "15-2017-ai-2000-most-influential-scholar-award",
-   "authors": "Study on Enhanced LTE Support for Aerial Vehicles (Release 15), Standard 36.777, 3GPP, Dec. 2017. ![](images/82e08755f4be0003c4be641e25a76722cc22774182bb5270b3610563bd136891.jpg) <details> <summary>natural_image</summary> Portrait of a woman wearing glasses and formal attire (no text or symbols visible) </details> Yao Tang (Member, IEEE) received the B.Eng. degree in communication engineering from the University of Electronic Science and Technology of China in 2018 and the Ph.D. degree in information engineering from The Chinese University of Hong Kong in 2023. She is currently a Post-Doctoral Research Fellow with the Department of Information Engineering, The Chinese University of Hong Kong. Her research interests include optimization in UAV-enabled wireless communications, federated edge learning, and semantic communications. ![](images/1b783f8fdfdd3749d1e2b4f883531254fdb08dfc27921b8104cf04a80d7fc82b.jpg) <details> <summary>natural_image</summary> Portrait photo of a young man in formal attire (no text or symbols visible) </details> Guangxu Zhu (Member, IEEE) received the Ph.D. degree in electrical and electronic engineering from The University of Hong Kong in 2019. Currently, he is a Senior Research Scientist and the Deputy Director of the Network System Optimization Center, Shenzhen Research Institute of Big Data, and an Adjunct Associate Professor with The Chinese University of Hong Kong, Shenzhen. His recent research interests include edge intelligence, semantic communications, and integrated sensing and communication. He was a recipient of the 2023 IEEE ComSoc Asia-Pacific Best Young Researcher Award and the Outstanding Paper Award, the World’s Top 2% Scientists by Stanford University, the 2022",
-   "title": "AI 2000 Most Influential Scholar Award Honorable Mention",
-   "venue": "the Young Scientist Award from UCOM",
+   "key": "anon-2017-untitled-18",
+   "authors": null,
+   "title": null,
+   "venue": "Study on Enhanced LTE Support for Aerial Vehicles (Release 15), Standard 36.777, 3GPP, Dec.",
    "year": "2017",
    "vol": null,
    "no": null,
@@ -112700,8 +112754,7 @@
     "tang-2024-iscc-uav-feel"
    ],
    "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "the Young Scientist Award from UCOM",
+   "venue_normalized": "Study on Enhanced LTE Support for Aerial Vehicles (Release 15), Standard 36.777, 3GPP, Dec.",
    "venue_tier": "other"
   },
   {
@@ -113163,7 +113216,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-18",
+   "key": "anon-2017-untitled-19",
    "authors": null,
    "title": null,
    "venue": "Global UAV Market. Accessed: Mar. 20",
@@ -113200,7 +113253,7 @@
    "venue_tier": null
   },
   {
-   "key": "anon-2017-untitled-19",
+   "key": "anon-2017-untitled-20",
    "authors": null,
    "title": null,
    "venue": "Facebook Takes Flight. Accessed: Apr. 10",
@@ -113218,7 +113271,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-20",
+   "key": "anon-2017-untitled-21",
    "authors": null,
    "title": null,
    "venue": "Project Loon. Accessed: Apr. 10",
@@ -113236,7 +113289,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-21",
+   "key": "anon-2017-untitled-22",
    "authors": null,
    "title": null,
    "venue": "3GPP: Study on Enhanced Support for Aerial Vehicles. Accessed: Apr. 10",
@@ -113270,6 +113323,24 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Commun. (TCOM)",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "anon-2017-untitled-23",
+   "authors": null,
+   "title": null,
+   "venue": "Packings of Equal Circles in Fixed-Sized Containers With Maximum Packing Density. Accessed: Apr. 5",
+   "year": "2017",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "http://www.packomania.com",
+   "doi": null,
+   "cited_by": [
+    "wu-2018-multiuav-minrate-trajectory"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Packings of Equal Circles in Fixed-Sized Containers With Maximum Packing Density. Accessed: Apr. 5",
+   "venue_tier": "other"
   },
   {
    "key": "teh-2017-distral-robust-multitask-reinforcement",
@@ -113308,7 +113379,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2017-untitled-22",
+   "key": "anon-2017-untitled-24",
    "authors": null,
    "title": null,
    "venue": "Study on Scenarios and Requirements for Next Generation Access Technologies, Release 14, document TR 38.913, 3GPP, Sophia Antipolis, France, Jun.",
@@ -113434,7 +113505,7 @@
    "venue_tier": "conf"
   },
   {
-   "key": "anon-2017-untitled-23",
+   "key": "anon-2017-untitled-25",
    "authors": null,
    "title": null,
    "venue": "NOKIA: Multi-Access Edge Computing. Accessed on Mar. 20",
@@ -113452,7 +113523,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-24",
+   "key": "anon-2017-untitled-26",
    "authors": null,
    "title": null,
    "venue": "NOKIA: Mobile Edge Computing. Accessed on Mar. 20",
@@ -113504,25 +113575,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE GLOBECOM",
    "venue_tier": "conf"
-  },
-  {
-   "key": "bieker-2017-traffic-simulation-for-all-a-real-world",
-   "authors": "L. Bieker, D. Krajzewicz, A. Morra, C. Michelacci, and F. Cartolano",
-   "title": "Traffic simulation for all: A real world traffic scenario from the city of bologna",
-   "venue": "Modeling Mobility With Open Data, M. Behrisch and M. Weber, Eds. Cham, Switzerland: Springer",
-   "year": "2017",
-   "vol": null,
-   "no": null,
-   "pp": "47–60",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhang-2025-mcma-task-migration"
-   ],
-   "cited_count": 1,
-   "scope": "out",
-   "venue_normalized": "Modeling Mobility With Open Data, M. Behrisch and M. Weber, Eds. Cham, Switzerland: Springer",
-   "venue_tier": "other"
   },
   {
    "key": "peng-2017-resource-allocation-for-cellular-based-inter",
@@ -113779,7 +113831,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-25",
+   "key": "anon-2017-untitled-27",
    "authors": null,
    "title": null,
    "venue": "B. Kumbhani and R. S. Kshetrimayum, MIMO Wireless Communications Over Generalized Fading Channels. Boca Raton, FL, USA: CRC Press",
@@ -113907,7 +113959,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-26",
+   "key": "anon-2017-untitled-28",
    "authors": null,
    "title": null,
    "venue": "Enhanced LTE Support for Aerial Vehicles. Accessed: Jul. 16",
@@ -113998,6 +114050,25 @@
    "venue_tier": "other"
   },
   {
+   "key": "achiam-2017-constrained-policy-optimization",
+   "authors": "J. Achiam, D. Held, A. Tamar, and P. Abbeel",
+   "title": "Constrained policy optimization",
+   "venue": "Proc. Int. Conf. Mach. Learn.",
+   "year": "2017",
+   "vol": null,
+   "no": null,
+   "pp": "22–31",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhang-2025-ssac-mgi-heterogeneous-uav"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": "Proc. Int. Conf. Mach. Learn.",
+   "venue_tier": "other"
+  },
+  {
    "key": "baktir-2017-how-can-edge-computing-benefit-from-software",
    "authors": "A. C. Baktir, A. Ozgovde, and C. Ersoy",
    "title": "How can edge computing benefit from software-defined networking: A survey, use cases, and future directions",
@@ -114052,7 +114123,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-27",
+   "key": "anon-2017-untitled-29",
    "authors": null,
    "title": null,
    "venue": "Propagation Data and Prediction Methods Required for the Design of Earth-space Telecommunication Systems, document",
@@ -114088,7 +114159,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-28",
+   "key": "anon-2017-untitled-30",
    "authors": null,
    "title": null,
    "venue": "Study on New Radio (NR) to Support Non Terrestrial Networks (Release 15), document TR 38.811, 3GPP",
@@ -114691,7 +114762,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2017-untitled-29",
+   "key": "anon-2017-untitled-31",
    "authors": null,
    "title": null,
    "venue": "S. Boyd. EE364b Convex Optimization II, Course Notes. Accessed: Jun. 29",
@@ -114709,7 +114780,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-30",
+   "key": "anon-2017-untitled-32",
    "authors": null,
    "title": null,
    "venue": "Concorde. Concorde TSP Solver. Accessed: Jun. 29",
@@ -114727,7 +114798,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2017-untitled-31",
+   "key": "anon-2017-untitled-33",
    "authors": null,
    "title": null,
    "venue": "M. Grant and S. Boyd. (Mar.",
@@ -114905,24 +114976,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Pattern Anal. Mach. Intell.",
    "venue_tier": "other"
-  },
-  {
-   "key": "xu-2017-pp-yoloe-an-evolved-version-of-yolo",
-   "authors": "S. Xu et al.",
-   "title": "PP-YOLOE: An evolved version of YOLO",
-   "venue": null,
-   "year": "2017",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "du-2024-yolo-semcom-digital-twin"
-   ],
-   "cited_count": 1,
-   "venue_normalized": null,
-   "venue_tier": null
   },
   {
    "key": "diamantoulakis-2016-wireless-powered-communications-with-non",
@@ -116665,25 +116718,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "hausknecht-2016-deep-reinforcement-learning-in-parameterized",
-   "authors": "M. Hausknecht and P. Stone",
-   "title": "Deep reinforcement learning in parameterized action space",
-   "venue": null,
-   "year": "2016",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "ma-2025-pdqn-vehicular-mec"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": null,
-   "venue_tier": null
-  },
-  {
    "key": "wang-2016-channel-measurements-and-models-for-high",
    "authors": "C. X. Wang, A. Ghazal, B. Ai, P. Fan, and Y. Liu",
    "title": "Channel measurements and models for high-speed train communication systems: A survey",
@@ -117013,24 +117047,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2016-untitled-4",
-   "authors": null,
-   "title": null,
-   "venue": "M. J. Neely, Stochastic Network Optimization With Application to Communication Queueing Systems. San Rafael, CA, USA: Morgan and Calypool",
-   "year": "2016",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "mao-2016-lodco-eh-mec-offloading"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "M. J. Neely, Stochastic Network Optimization With Application to Communication Queueing Systems. San Rafael, CA, USA: Morgan and Calypool",
-   "venue_tier": "other"
-  },
-  {
    "key": "giyenko-2016-intelligent-uav-in-smart-cities-using-iot",
    "authors": "A. Giyenko et al.",
    "title": "Intelligent UAV in Smart Cities Using IoT",
@@ -117067,7 +117083,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2016-untitled-5",
+   "key": "anon-2016-untitled-4",
    "authors": null,
    "title": null,
    "venue": "V. A. Zorich and O. Paniagua, Mathematical Analysis II. Berlin, Germany: Springer",
@@ -117103,7 +117119,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2016-untitled-6",
+   "key": "anon-2016-untitled-5",
    "authors": null,
    "title": null,
    "venue": "E. M. Greitzer, Z. S. Spakovszky, and I. A. Waitz. Thermodynamics & Propulsion, 16. Unified, MIT Course Notes. Accessed on Jul. 5",
@@ -117157,7 +117173,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2016-untitled-7",
+   "key": "anon-2016-untitled-6",
    "authors": null,
    "title": null,
    "venue": "C. A. Balanis, Antenna Theory: Analysis and Design, 4th ed. New York, NY, USA: Wiley",
@@ -117340,7 +117356,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2016-untitled-8",
+   "key": "anon-2016-untitled-7",
    "authors": null,
    "title": null,
    "venue": "Chen X, Hwang JN, Meng D et al (",
@@ -117358,7 +117374,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2016-untitled-9",
+   "key": "anon-2016-untitled-8",
    "authors": null,
    "title": null,
    "venue": "Sun Y, Yin X, Jiang J, et al (",
@@ -117394,21 +117410,22 @@
    "venue_tier": "other"
   },
   {
-   "key": "mnih-2016-asynchronous-methods-for-deep-reinforcement",
-   "authors": "V. Mnih et al.",
-   "title": "Asynchronous methods for deep reinforcement learning",
-   "venue": "Proc. Int. Conf. Mach. Learn.",
+   "key": "ali-2016-dynamic-user-clustering-and-power-allocation",
+   "authors": "M. S. Ali, H. Tabassum, and E. Hossain",
+   "title": "Dynamic user clustering and power allocation for uplink and downlink non-orthogonal multiple access (NOMA) systems",
+   "venue": "IEEE Access",
    "year": "2016",
-   "vol": "48",
+   "vol": "4",
    "no": null,
-   "pp": "1928–1937",
+   "pp": "6325–6343",
    "url": null,
    "doi": null,
    "cited_by": [
-    "lee-2024-dho-leo-handover"
+    "wang-2024-hybrid-oma-noma-sagin"
    ],
    "cited_count": 1,
-   "venue_normalized": "Proc. Int. Conf. Mach. Learn.",
+   "scope": "in",
+   "venue_normalized": "IEEE Access",
    "venue_tier": "other"
   },
   {
@@ -117428,6 +117445,25 @@
    "cited_count": 1,
    "venue_normalized": "Electron. Commun. Committee, May",
    "venue_tier": "other"
+  },
+  {
+   "key": "grant-2016-cvx-matlab-software-for-disciplined-convex",
+   "authors": "M. Grant and S. Boyd",
+   "title": "CVX: MATLAB software for disciplined convex programming",
+   "venue": null,
+   "year": "2016",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": "https://cvxr.com/cvx",
+   "doi": null,
+   "cited_by": [
+    "zhang-2019-uav-iot-comp-comm"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": null,
+   "venue_tier": null
   },
   {
    "key": "perobelli-2016-marine-traffic-a-day-in-numbers",
@@ -117593,7 +117629,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2016-untitled-10",
+   "key": "anon-2016-untitled-9",
    "authors": null,
    "title": null,
    "venue": "Q. D. Lã, Y. H. Chew, and B.-H. Soong, Potential Game Theory. Berlin, Germany:Springer",
@@ -117646,24 +117682,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE J. Sel. Areas Commun. (JSAC)",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "anon-2016-untitled-11",
-   "authors": null,
-   "title": null,
-   "venue": "Packings of Equal Circles in Fixed-Sized Containers With Maximum Packing Density. Accessed: Apr. 5",
-   "year": "2016",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "http://www.packomania.com",
-   "doi": null,
-   "cited_by": [
-    "wu-2018-multiuav-minrate-trajectory"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Packings of Equal Circles in Fixed-Sized Containers With Maximum Packing Density. Accessed: Apr. 5",
-   "venue_tier": "other"
   },
   {
    "key": "hasselt-2016-learning-values-across-many-orders-of",
@@ -117757,7 +117775,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2016-untitled-12",
+   "key": "anon-2016-untitled-10",
    "authors": null,
    "title": null,
    "venue": "T. H. Luan et al. (",
@@ -118008,6 +118026,24 @@
    "cited_count": 1,
    "venue_normalized": "Comput. Netw.",
    "venue_tier": "other"
+  },
+  {
+   "key": "plachy-2016-dynamic-resource-allocation-exploiting",
+   "authors": "J. Plachy, Z. Becvar, and E. C. Strinati",
+   "title": "Dynamic resource allocation exploiting mobility prediction in mobile edge computing",
+   "venue": "Proc. IEEE Int. Symp. Pers. Indoor Mobile Radio Commun. (PIMRC), Valencia, Spain",
+   "year": "2016",
+   "vol": null,
+   "no": null,
+   "pp": "1–6",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "mach-2017-mec-survey-architecture"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Proc. IEEE",
+   "venue_tier": "Q1"
   },
   {
    "key": "manyam-2016-path-planning-for-cooperative-routing-of-air",
@@ -118608,7 +118644,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2016-untitled-13",
+   "key": "anon-2016-untitled-11",
    "authors": null,
    "title": null,
    "venue": "F. A. Oliehoek et al., A Concise Introduction to Decentralized POMDPs",
@@ -118788,7 +118824,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2016-untitled-14",
+   "key": "anon-2016-untitled-12",
    "authors": null,
    "title": null,
    "venue": "S. Boyd. EE364b Convex Optimization II, Course Notes, accessed on Mar. 24",
@@ -118806,7 +118842,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2016-untitled-15",
+   "key": "anon-2016-untitled-13",
    "authors": null,
    "title": null,
    "venue": "Fixed Wing Vertical Takeoff and Landing Aircraft, accessed on Jun. 28",
@@ -120158,24 +120194,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "park-2015-minimum-throughput-maximization-in-uav-aided",
-   "authors": "J. Park, H. Lee, S. Eom, and I. Lee",
-   "title": "Minimum throughput maximization in UAV-aided wireless powered communication networks",
-   "venue": null,
-   "year": "2015",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://arxiv.org/abs/1801.02781",
-   "doi": null,
-   "cited_by": [
-    "zeng-2019-uav-comm-tutorial-5g"
-   ],
-   "cited_count": 1,
-   "venue_normalized": null,
-   "venue_tier": null
-  },
-  {
    "key": "song-2015-optimization-methods-for-designing-sequences",
    "authors": "J. Song, P. Babu, and D. P. Palomar",
    "title": "Optimization methods for designing sequences with low autocorrelation sidelobes",
@@ -120248,25 +120266,6 @@
    "scope": "in",
    "venue_normalized": "IEEE VTC",
    "venue_tier": "conf"
-  },
-  {
-   "key": "jia-2015-codl-efficient-cpu-gpu-co-execution-for-deep",
-   "authors": "F. Jia et al.",
-   "title": "CoDL: Efficient CPU-GPU co-execution for deep learning inference on mobile devices",
-   "venue": "Proc. 20th Annu. Int. Conf. Mobile Syst. Appl. Serv. Assoc. Comput. Machinery, New York, NY, USA",
-   "year": "2015",
-   "vol": null,
-   "no": null,
-   "pp": "209–221",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "sun-2024-asap-uav-swarm"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. 20th Annu. Int. Conf. Mobile Syst. Appl. Serv. Assoc. Comput. Machinery, New York, NY, USA",
-   "venue_tier": "other"
   },
   {
    "key": "wang-2015-adaptive-replacement-strategies-for-moea-d",
@@ -120449,6 +120448,25 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Commun. Mag.",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "hausknecht-2015-deep-reinforcement-learning-in-parameterized",
+   "authors": "M. Hausknecht and P. Stone",
+   "title": "Deep reinforcement learning in parameterized action space",
+   "venue": null,
+   "year": "2015",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "ma-2025-pdqn-vehicular-mec"
+   ],
+   "cited_count": 1,
+   "scope": "in",
+   "venue_normalized": null,
+   "venue_tier": null
   },
   {
    "key": "lu-2015-wireless-networks-with-rf-energy-harvesting-a",
@@ -120994,24 +121012,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE GLOBECOM",
    "venue_tier": "conf"
-  },
-  {
-   "key": "ruszczynski-2015-special-issue-on-full-duplex-communications",
-   "authors": "A. Ruszczynski, Nonlinear Optimization. Princeton, NJ, USA: Princeton Univ. Press, 2011. ![](images/0d58c6425521cb812e8ebc649af09caf11d61d10d8eec70eb5680c0cf414859e.jpg) <details> <summary>natural_image</summary> Portrait of a young woman with long hair and a bow tie (no text or symbols visible) </details> Zhijin Qin (S’13–M’16) received the B.S. degree from the Queen Mary University of London (QMUL), London, U.K., and the Beijing University of Posts and Telecommunications, Beijing, China, in 2012, and the Ph.D. degree in electronic engineering from QMUL, in 2016. She has been a Lecturer (an Assistant Professor) with the School of Electronic Engineering and Computer Science, QMUL since 2018. She was with Imperial College London, London, as a Post-Doctoral Research Associate from 2016 to 2017. She was with Lancaster University, Lancashire, as a Lecturer from 2017 to 2018. Her current research interest includes machine learning and compressive sensing in wireless communications and Internet of Things networks. Dr. Qin was a recipient of the Best Paper Award from IEEE GLOBECOM 2017. She is an Associate Editor of IEEE COMMUNICATIONS LETTERS. ![](images/c867bfb01cbfaec9ee0a8eb8cbb51aa2035902af089749ff2000dfd176afc7fd.jpg) <details> <summary>natural_image</summary> Portrait photo of a young man in a collared shirt (no text or symbols visible) </details> Qiyu Hu received the B.S.E. degree in information engineering from Zhejiang University, Hangzhou, China, in 2018, where he is currently pursuing the Ph.D. degree at the College of Information Science and Electronic Engineering. His current research interests include unmanned aerial vehicle communications, machine learning, and mobile edge computing. ![](images/0f351f274322f2b3e613f7aaf97cf12889edcd011625743007b14a8346f4b0a5.jpg) <details> <summary>natural_image</summary> Portrait of a man wearing glasses and a striped shirt (no text or symbols visible) </details> Yunlong Cai (S’07–M’10–SM’16) received the Ph.D. degree in electronic engineering from the University of York, York, U.K., in 2010. From 2010 to 2011, he was a Post-Doctoral Fellow with the Electronics and Communications Laboratory, Conservatoire National des Arts et Métiers, Paris, France. Since 2011, he has been with the College of Information Science and Electronic Engineering, Zhejiang University, Hangzhou, China, where he is currently an Associate Professor. From 2016 to 2017, he was a Visiting Scholar with the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, USA. His current research interests include transceiver design for multiple-antenna systems, sensor array processing, adaptive filtering, full-duplex communications, cooperative and relay communications, and wireless information and energy transfer. Dr. Cai is an Associate Editor of IEEE SIGNAL PROCESSING LETTERS. ![](images/67f5a5f4fe8d6136bd705d5ec3964b169501301dcf74bac33ed7a8dd42919021.jpg) <details> <summary>natural_image</summary> Portrait of a smiling man wearing glasses, outdoors with mountainous background (no text or symbols visible) </details> Guanding Yu (S’05–M’07–SM’13) received the B.E. and Ph.D. degrees in communication engineering from Zhejiang University, Hangzhou, China, in 2001 and 2006, respectively. In 2006, he joined Zhejiang University, where is currently a Professor with the College of Information and Electronic Engineering. From 2013 to 2015, he was also a Visiting Professor with the School of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, USA. His current research interests include 5G communications and networks, mobile edge computing, and machine learning for wireless networks. Dr. Yu was a recipient of the 2016 IEEE ComSoc Asia–Pacific Outstanding Young Researcher Award. He regularly sits on the Technical Program Committee (TPC) boards of prominent IEEE conferences such as ICC, GLOBECOM, and VTC. He also serves as the Symposium Co-Chair for IEEE Globecom 2019 and the Track Chair for IEEE VTC 2019’Fall. He has served as a Guest Editor of IEEE Communications Magazine’s",
-   "title": "Special Issue on Full-Duplex Communications",
-   "venue": "an Editor of the IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS Series on Green Communications and Networking, and a lead Guest Editor of the IEEE Wireless Communications Magazine’s “Special Issue on LTE in Unlicensed Spectrum,” and an Editor of IEEE ACCESS. He is currently serving as an Editor of the IEEE TRANSACTIONS ON GREEN COMMUNICATIONS AND NETWORKING and IEEE WIRELESS COMMUNICATIONS LETTERS. ![](images/7fae921070f8adc837a79fa220d33b290ad2fd2bf71109b2a39935798d9139a1.jpg) <details> <summary>natural_image</summary> Portrait of a man wearing glasses and a zip-up sweater (no text or symbols visible) </details> Minjian Zhao (M’10) received the M.Sc. and Ph.D. degrees in communication and information systems from Zhejiang University, Hangzhou, China, in",
-   "year": "2015",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "hu-2019-pdd-uav-mec-offloading"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE J. Sel. Areas Commun. (JSAC)",
-   "venue_tier": "Q1"
   },
   {
    "key": "shi-2015-convolutional-lstm-network-a-machine-learning",
@@ -121593,24 +121593,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "plachy-2015-dynamic-resource-allocation-exploiting",
-   "authors": "J. Plachy, Z. Becvar, and E. C. Strinati",
-   "title": "Dynamic resource allocation exploiting mobility prediction in mobile edge computing",
-   "venue": "Proc. IEEE Int. Symp. Pers. Indoor Mobile Radio Commun. (PIMRC), Valencia, Spain",
-   "year": "2015",
-   "vol": null,
-   "no": null,
-   "pp": "1–6",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "mach-2017-mec-survey-architecture"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
-  },
-  {
    "key": "geng-2015-on-the-optimality-of-treating-interference-as",
    "authors": "C. Geng, N. Naderializadeh, A. S. Avestimehr, and S. A. Jafar",
    "title": "On the optimality of treating interference as noise",
@@ -121698,6 +121680,25 @@
    ],
    "cited_count": 1,
    "venue_normalized": "IEEE MultiMedia",
+   "venue_tier": "other"
+  },
+  {
+   "key": "bieker-2015-traffic-simulation-for-all-a-real-world",
+   "authors": "L. Bieker, D. Krajzewicz, A. Morra, C. Michelacci, and F. Cartolano",
+   "title": "Traffic simulation for all: A real world traffic scenario from the city of bologna",
+   "venue": "Modeling Mobility With Open Data, M. Behrisch and M. Weber, Eds. Cham, Switzerland: Springer",
+   "year": "2015",
+   "vol": null,
+   "no": null,
+   "pp": "47–60",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhang-2025-mcma-task-migration"
+   ],
+   "cited_count": 1,
+   "scope": "out",
+   "venue_normalized": "Modeling Mobility With Open Data, M. Behrisch and M. Weber, Eds. Cham, Switzerland: Springer",
    "venue_tier": "other"
   },
   {
@@ -122025,24 +122026,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "pedestrian-2015-edge-learning-for-5g-mobile-networks-and",
-   "authors": "MathWorks. (2022). Pedestrian and Bicyclist Classification Using Deep Learning. [Online]. Available: https://ww2.mathworks. cn/help/radar/ug/pedestrian-and-bicyclist-classification-using-deeplearning.html ![](images/539e8671241252a080e2d5eef2f9fd497495c575e5ee1d49e444af7057cbc340.jpg) <details> <summary>natural_image</summary> Portrait photo of a man in a suit and white shirt (no text or symbols visible) </details> Dingzhu Wen (Member, IEEE) received the bachelor’s and master’s degrees from the Department (School) of Information Science and Electronic Engineering, Zhejiang University, in 2014 and 2017, respectively, and the Ph.D. degree from the Department of Electrical and Electronic Engineering, The University of Hong Kong, in 2021. He is currently an Assistant Professor with the School of Information Science and Technology, ShanghaiTech University. His research interests include federated edge learning, edge artificial intelligent inference, integrated sensing-communication-computation, over-the-air computation, in-band fullduplex communications, and device-to-device communications. He served as the Session Chair for APEMC 2022 and IEEE ICC 2023, the TPC Member of IEEE ICC 2023, IEEE GlobeCom 2022, IEEE VTC-Fall 2020, and IEEE WCSP 2018, and the TPC Co-Chair of IEEE PIMRC 2023 workshop on",
-   "title": "Edge Learning for 5G Mobile Networks and Beyond",
-   "venue": "and the Co-Chair of IEEE VTC",
-   "year": "2015",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://ww2.mathworks",
-   "doi": null,
-   "cited_by": [
-    "wen-2024-iscc-edge-ai"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE VTC",
-   "venue_tier": "conf"
   },
   {
    "key": "anon-2015-untitled-11",
@@ -123389,24 +123372,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "bajd-2014-rotation-and-orientation",
-   "authors": "T. Bajd, M. Mihelj, and M. Munih",
-   "title": "Rotation and orientation",
-   "venue": "Introduction to Robotics. Dordrecht, The Netherlands: Springer",
-   "year": "2014",
-   "vol": null,
-   "no": null,
-   "pp": "9–36",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "mozaffari-2019-drone-antenna-array"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Introduction to Robotics. Dordrecht, The Netherlands: Springer",
-   "venue_tier": "other"
-  },
-  {
    "key": "du-2014-wireless-networks-without-edges",
    "authors": "Y. Du and G. de Veciana, “",
    "title": "Wireless networks without edges",
@@ -123662,24 +123627,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "bezdek-2014-fcm-the-fuzzy-c-means-clustering-algorithm",
-   "authors": "J. C. Bezdek, R. Ehrlich, and W. Full",
-   "title": "FCM: The fuzzy c-means clustering algorithm",
-   "venue": "Comput. Geosci.",
-   "year": "2014",
-   "vol": "10",
-   "no": null,
-   "pp": "191–203",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "yang-2019-sum-power-uav-mec"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Comput. Geosci.",
-   "venue_tier": "other"
-  },
-  {
    "key": "zhou-2014-chaincluster-engineering-a-cooperative",
    "authors": "H. Zhou et al.",
    "title": "ChainCluster: Engineering a cooperative content distribution framework for highway vehicular communications",
@@ -123771,25 +123718,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "lowe-2014-multiagent-actor-critic-for-mixed-cooperative",
-   "authors": "R. Lowe, Y. Wu, A. Tamar, J. Harb, P. Abbeel, and I. Mordatch",
-   "title": "Multiagent actor-critic for mixed cooperative-competitive environments",
-   "venue": null,
-   "year": "2014",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "he-2023-fairness-3d-multiuav-maddpg"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": null,
-   "venue_tier": null
-  },
-  {
    "key": "khan-2014-deep-compression-for-efficient-and",
    "authors": "F. M. A. Khan, H. Abou-Zeid, and S. A. Hassan",
    "title": "Deep compression for efficient and accelerated over-the-air federated learning",
@@ -123862,25 +123790,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "Al-Hourani A, Kandeepan S, Lardner S (",
-   "venue_tier": "other"
-  },
-  {
-   "key": "ali-2014-dynamic-user-clustering-and-power-allocation",
-   "authors": "M. S. Ali, H. Tabassum, and E. Hossain",
-   "title": "Dynamic user clustering and power allocation for uplink and downlink non-orthogonal multiple access (NOMA) systems",
-   "venue": "IEEE Access",
-   "year": "2014",
-   "vol": "4",
-   "no": null,
-   "pp": "6325–6343",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "wang-2024-hybrid-oma-noma-sagin"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": "IEEE Access",
    "venue_tier": "other"
   },
   {
@@ -125028,25 +124937,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "zhang-2014-task-offloading-and-trajectory-control-for",
-   "authors": "L. Zhang et al.",
-   "title": "Task offloading and trajectory control for UAV-assisted mobile edge computing using deep reinforcement learning",
-   "venue": "IEEE Access",
-   "year": "2014",
-   "vol": "9",
-   "no": null,
-   "pp": "53708–53719",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhang-2024-uav-task-offloading-ddpg"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": "IEEE Access",
-   "venue_tier": "other"
-  },
-  {
    "key": "xu-2014-multiuser-miso-beamforming-for-simultaneous",
    "authors": "J. Xu, L. Liu, and R. Zhang",
    "title": "Multiuser MISO beamforming for simultaneous wireless information and power transfer",
@@ -125263,6 +125153,25 @@
    "cited_count": 1,
    "scope": "in",
    "venue_normalized": "IEEE Trans. Signal Process.",
+   "venue_tier": "other"
+  },
+  {
+   "key": "kar-2013-distributed-linear-parameter-estimation",
+   "authors": "S. Kar, J. M. Moura, and H. V. Poor",
+   "title": "Distributed linear parameter estimation: Asymptotically efficient adaptive strategies",
+   "venue": "SIAM J. Control Optim.",
+   "year": "2013",
+   "vol": "51",
+   "no": "3",
+   "pp": "2200–2229",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "li-2025-stochastic-game-uav-swarm"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": "SIAM J. Control Optim.",
    "venue_tier": "other"
   },
   {
@@ -125891,6 +125800,24 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "bajd-2013-rotation-and-orientation",
+   "authors": "T. Bajd, M. Mihelj, and M. Munih",
+   "title": "Rotation and orientation",
+   "venue": "Introduction to Robotics. Dordrecht, The Netherlands: Springer",
+   "year": "2013",
+   "vol": null,
+   "no": null,
+   "pp": "9–36",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "mozaffari-2019-drone-antenna-array"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Introduction to Robotics. Dordrecht, The Netherlands: Springer",
+   "venue_tier": "other"
+  },
+  {
    "key": "zhang-2013-energyoptimal-mobile-cloud-computing-under",
    "authors": "W. Zhang, Y. Wen, K. Guan, D. Kilper, H. Luo, and D. O. Wu",
    "title": "Energyoptimal mobile cloud computing under stochastic wireless channel",
@@ -125927,24 +125854,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2013-untitled-2",
-   "authors": null,
-   "title": null,
-   "venue": "WalkerStar. Accessed: Nov. 1",
-   "year": "2013",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "han-2024-ground-satellite-fl"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "WalkerStar. Accessed: Nov. 1",
-   "venue_tier": "other"
-  },
-  {
    "key": "kahneman-2013-prospect-theory-an-analysis-of-decision-under",
    "authors": "D. Kahneman and A. Tversky",
    "title": "Prospect theory: An analysis of decision under risk",
@@ -125960,6 +125869,24 @@
    ],
    "cited_count": 1,
    "venue_normalized": "Handbook of the Fundamentals of Financial Decision Making: Part I. Singapore: World Scientific",
+   "venue_tier": "other"
+  },
+  {
+   "key": "anon-2013-untitled-2",
+   "authors": null,
+   "title": null,
+   "venue": "K. Sydsaeter, Mathematics for Economic Analysis. London, U.K.: Pearson",
+   "year": "2013",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "apostolopoulos-2021-prospect-theory-uav-offloading"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "K. Sydsaeter, Mathematics for Economic Analysis. London, U.K.: Pearson",
    "venue_tier": "other"
   },
   {
@@ -127750,6 +127677,24 @@
    "venue_tier": "other"
   },
   {
+   "key": "soyata-2012-cloud-vision-real-time-face-recognition-using-2",
+   "authors": "T. Soyata, R. Muraleedharan, C. Funai, M. Kwon, and W. Heinzelman",
+   "title": "Cloud-vision: Real-time face recognition using a mobilecloudlet-cloud acceleration architecture",
+   "venue": "Proc. IEEE Symp. Comput. Commun.",
+   "year": "2012",
+   "vol": null,
+   "no": null,
+   "pp": "59–66",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "bai-2024-delay-aware-cooperative-edge-cloud"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Proc. IEEE",
+   "venue_tier": "Q1"
+  },
+  {
    "key": "lambert-2012-worldwide-electricity-consumption-of",
    "authors": "S. Lambert, W. Van Heddeghem, W. Vereecken, B. Lannoo, D. Colle, and M. Pickavet",
    "title": "Worldwide electricity consumption of communication networks",
@@ -128006,24 +127951,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "mnih-2012-asynchronous-methods-for-deep-reinforcement",
-   "authors": "V. Mnih et al.",
-   "title": "Asynchronous methods for deep reinforcement learning",
-   "venue": null,
-   "year": "2012",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "guo-2024-multiuav-proactive-eavesdropping"
-   ],
-   "cited_count": 1,
-   "venue_normalized": null,
-   "venue_tier": null
-  },
-  {
    "key": "mao-2012-near-optimal-power-and-rate-control-of-multi",
    "authors": "Z. Mao, C. E. Koksal, and N. B. Shroff",
    "title": "Near optimal power and rate control of multi-hop sensor networks with energy replenishment: Basic limitations with finite energy and data storage",
@@ -128058,24 +127985,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "Reinforcement Learning: Stateof-the-Art. Berlin, Heidelberg, Germany: Springer",
-   "venue_tier": "other"
-  },
-  {
-   "key": "anon-2012-untitled-13",
-   "authors": null,
-   "title": null,
-   "venue": "L. E. Schrage, Optimization Modeling With LINGO. Chicago, IL, USA: Lindo System",
-   "year": "2012",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "dai-2023-hybrid-marine-mmwl"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "L. E. Schrage, Optimization Modeling With LINGO. Chicago, IL, USA: Lindo System",
    "venue_tier": "other"
   },
   {
@@ -128115,7 +128024,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2012-untitled-14",
+   "key": "anon-2012-untitled-13",
    "authors": null,
    "title": null,
    "venue": "FP7 European Project. (",
@@ -128187,7 +128096,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2012-untitled-15",
+   "key": "anon-2012-untitled-14",
    "authors": null,
    "title": null,
    "venue": "(",
@@ -128440,7 +128349,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2012-untitled-16",
+   "key": "anon-2012-untitled-15",
    "authors": null,
    "title": null,
    "venue": "A. F. Molisch, Wireless Communications",
@@ -128548,7 +128457,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2012-untitled-17",
+   "key": "anon-2012-untitled-16",
    "authors": null,
    "title": null,
    "venue": "A.",
@@ -128601,6 +128510,24 @@
    "cited_count": 1,
    "venue_normalized": "COURSERA: Neural Netw. Mach. Learn.",
    "venue_tier": "other"
+  },
+  {
+   "key": "quitin-2012-distributed-beamforming-with-software-defined",
+   "authors": "F. Quitin, M. M. Ur Rahman, R. Mudumbai, and U. Madhow",
+   "title": "Distributed beamforming with software-defined radios: Frequency synchronization and digital feedback",
+   "venue": "Proc. IEEE Glob. Commun. Conf.",
+   "year": "2012",
+   "vol": null,
+   "no": null,
+   "pp": "4787–4792",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "liu-2024-hatrpo-ucb-cb"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "IEEE GLOBECOM",
+   "venue_tier": "conf"
   },
   {
    "key": "xie-2012-making-sensor-networks-immortal-an-energy",
@@ -129152,24 +129079,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "soyata-2011-cloud-vision-real-time-face-recognition-using",
-   "authors": "T. Soyata, R. Muraleedharan, C. Funai, M. Kwon, and W. Heinzelman",
-   "title": "Cloud-vision: Real-time face recognition using a mobilecloudlet-cloud acceleration architecture",
-   "venue": "Proc. IEEE Symp. Comput. Commun.",
-   "year": "2011",
-   "vol": null,
-   "no": null,
-   "pp": "59–66",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "bai-2024-delay-aware-cooperative-edge-cloud"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
-  },
-  {
    "key": "zymler-2011-distributionally-robust-joint-chance",
    "authors": "S. Zymler, B. Kuhn, and D. Rustem",
    "title": "Distributionally robust joint chance constraints with second-order moment information",
@@ -129334,25 +129243,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "boyd-2011-for-contributions-to-game-theory-and",
-   "authors": "S. P. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004. ![](images/9b3abd4cb3558bd840eb1221988281a0cd784ab8246c9e40b884dfc86e96e555.jpg) <details> <summary>natural_image</summary> Portrait of a young man wearing glasses and a white shirt (no text or symbols visible) </details> Jiahao You is currently working toward the Ph.D. degree with the School of Electronic and Information Engineering, Nanjing University of Aeronautics and Astronautics, Nanjing, China. His research interests include deep reinforcement learning and its applications in computation offloading and resource allocation, edge computing, low-altitude intelligent networks, and AAV trajectory planning. ![](images/63b8c48eb13667d27483edb4818b6aa862b3ecf6a3cab7c2d6a329a3f7f59d65.jpg) <details> <summary>natural_image</summary> Portrait of a smiling person wearing glasses and a bright yellow top (no visible text or symbols) </details> Ziye Jia (Member, IEEE) received the B.E., M.S., and Ph.D. degrees in communication and information systems from Xidian University, Xi’an, China, in 2012, 2015, and 2021, respectively. From 2018 to 2020, she was a Visiting Ph.D. degree Student with the Department of Electrical and Computer Engineering, University of Houston, Houston, TX, USA. She is currently an Associate Professor with the Key Laboratory of Dynamic Cognitive System of Electromagnetic Spectrum Space, Ministry of Industry and Information Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. Her research interests include space-air-ground networks, aerial access networks, AAV networking, resource optimization, and machine learning. ![](images/130916b700589b4fb9e7fed3a556087143318cb79f97ee8984e4e08e9b25e273.jpg) <details> <summary>natural_image</summary> Portrait of a man wearing a dark jacket (no text or symbols visible) </details> Chao Dong (Senior Member, IEEE) received the Ph.D. degree in communication engineering from the PLA University of Science and Technology, China, in 2007. He is currently a Full Professor with the College of Electronic and Information Engineering, Nanjing University of Aeronautics and Astronautics, Nanjing, China. His research interests include D2D communications, AAVs swarm networking, and anti-jamming network protocol. ![](images/1d24d843c3194cfc618924385e3e7c178f1e1f59b58c99d6acd348ebb5adb5b5.jpg) <details> <summary>natural_image</summary> Portrait of a smiling man wearing a black turtleneck (no text or symbols visible) </details> Zhu Han (Fellow, IEEE) received the B.S. degree in electronic engineering from Tsinghua University, Beijing, China, in 1997, and the M.S. and Ph.D. degrees in electrical and computer engineering from the University of Maryland, College Park, MD, USA, in 1999 and 2003, respectively. From 2000 to 2002, he was an R&D Engineer with JDSU, Germantown, MD, USA. From 2003 to 2006, he was a Research Associate with the University of Maryland. From 2006 to 2008, he was an Assistant Professor with Boise State University, Boise, ID, USA. He is currently a John and Rebecca Moores Professor with Electrical and Computer Engineering Department and also with Computer Science Department, University of Houston, Houston, TX, USA. His research interests include wireless resource allocation and management, wireless communications and networking, quantum computing, data science, smart grid, carbon neutralization, security and privacy, and focuses on the novel game-theory related concepts critical to enabling efficient and distributive use of wireless networks with limited resources. Dr. Han was the recipient of the NSF Career Award in 2010, Fred W. Ellersick Prize of the IEEE Communication Society in 2011, EURASIP Best Paper Award for the Journal on Advances in Signal Processing in 2015, IEEE Leonard G. Abraham Prize in the field of Communications Systems (Best Paper Award in IEEE JSAC) in 2016, IEEE Vehicular Technology Society 2022 Best Land Transportation Paper Award, and several Best Paper awards in IEEE conferences, and 2021 IEEE Kiyo Tomiyasu Award (an IEEE Field Award), for outstanding early to mid-career contributions to technologies holding the promise of innovative applications, with the following citation:",
-   "title": "for contributions to game theory and distributed management of autonomous communication networks",
-   "venue": "Since",
-   "year": "2011",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "you-2025-uncertain-maritime-hasac"
-   ],
-   "cited_count": 1,
-   "scope": "out",
-   "venue_normalized": "Since",
-   "venue_tier": "other"
-  },
-  {
    "key": "zhang-2011-hybrid-swarm-based-optimization-algorithm-of",
    "authors": "Z. Zhang, Z. Hao, and H. Huang",
    "title": "Hybrid swarm-based optimization algorithm of GA & VNS for nurse scheduling problem",
@@ -129369,6 +129259,24 @@
    "cited_count": 1,
    "scope": "out",
    "venue_normalized": "Information Computing and Applications, B. Liu and C. Chai, Eds. Berlin, Germany: Springer",
+   "venue_tier": "other"
+  },
+  {
+   "key": "anon-2011-untitled-6",
+   "authors": null,
+   "title": null,
+   "venue": "A. Ruszczynski, Nonlinear Optimization. Princeton, NJ, USA: Princeton Univ. Press",
+   "year": "2011",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "hu-2019-pdd-uav-mec-offloading"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "A. Ruszczynski, Nonlinear Optimization. Princeton, NJ, USA: Princeton Univ. Press",
    "venue_tier": "other"
   },
   {
@@ -129516,24 +129424,6 @@
    "scope": "uncertain",
    "venue_normalized": "IEEE J. Sel. Areas Commun. (JSAC)",
    "venue_tier": "Q1"
-  },
-  {
-   "key": "yu-2011-rethinking-virtual-network-embedding",
-   "authors": "M. Yu, Y. Yi, J. Rexford, and M. Chiang",
-   "title": "Rethinking virtual network embedding: Substrate support for path splitting and migration",
-   "venue": "ACM SIGCOMM Comput. Commun. Rev.",
-   "year": "2011",
-   "vol": "38",
-   "no": "2",
-   "pp": "17–29",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhang-2024-qos-vne-sagoin"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "ACM SIGCOMM",
-   "venue_tier": "top-conf"
   },
   {
    "key": "nguyen-2011-impact-of-interference-on-the-system",
@@ -130266,6 +130156,24 @@
    "venue_tier": "Q1"
   },
   {
+   "key": "anon-2010-untitled-2",
+   "authors": null,
+   "title": null,
+   "venue": "M. J. Neely, Stochastic Network Optimization With Application to Communication Queueing Systems. San Rafael, CA, USA: Morgan and Calypool",
+   "year": "2010",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "mao-2016-lodco-eh-mec-offloading"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "M. J. Neely, Stochastic Network Optimization With Application to Communication Queueing Systems. San Rafael, CA, USA: Morgan and Calypool",
+   "venue_tier": "other"
+  },
+  {
    "key": "van-2010-performance-and-power-management-for-cloud",
    "authors": "H. N. Van, F. D. Tran, and J.-M. Menaud",
    "title": "Performance and power management for cloud infrastructures",
@@ -130320,7 +130228,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2010-untitled-2",
+   "key": "anon-2010-untitled-3",
    "authors": null,
    "title": null,
    "venue": "NURMINEN, J. K. Parallel connections and their effect on the battery consumption of a mobile phone. In Consumer Communications and Networking Conference (CCNC)",
@@ -130335,6 +130243,24 @@
    ],
    "cited_count": 1,
    "venue_normalized": "NURMINEN, J. K. Parallel connections and their effect on the battery consumption of a mobile phone. In Consumer Communications and Networking Conference (CCNC)",
+   "venue_tier": "other"
+  },
+  {
+   "key": "arnold-2010-power-consumption-modeling-of-different-base",
+   "authors": "O. Arnold, F. Richter, G. Fettweis, and O. Blume",
+   "title": "Power consumption modeling of different base station types in heterogeneous cellular networks",
+   "venue": "Proc. Future Netw. Mobile Summit",
+   "year": "2010",
+   "vol": null,
+   "no": null,
+   "pp": "1–8",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zeng-2019-rotary-wing-energy-min"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Proc. Future Netw. Mobile Summit",
    "venue_tier": "other"
   },
   {
@@ -130447,25 +130373,6 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Inf. Theory",
    "venue_tier": "other"
-  },
-  {
-   "key": "grant-2010-cvx-matlab-software-for-disciplined-convex",
-   "authors": "M. Grant and S. Boyd",
-   "title": "CVX: MATLAB software for disciplined convex programming",
-   "venue": null,
-   "year": "2010",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": "https://cvxr.com/cvx",
-   "doi": null,
-   "cited_by": [
-    "zhang-2019-uav-iot-comp-comm"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": null,
-   "venue_tier": null
   },
   {
    "key": "chen-2010-a-novel-set-based-particle-swarm-optimization",
@@ -130647,25 +130554,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "Proc. 5th Adv. Satellite Multimedia Syst. Conf. 11th Signal Process. Space Commun. Workshop",
-   "venue_tier": "other"
-  },
-  {
-   "key": "silver-2010-deterministic-policy-gradient-algorithms",
-   "authors": "D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller",
-   "title": "Deterministic policy gradient algorithms",
-   "venue": "Proc. Int. Conf. Mach. Learn.",
-   "year": "2010",
-   "vol": null,
-   "no": null,
-   "pp": "387–395",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "sun-2025-tjcct-twotimescale-uav-mec"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. Int. Conf. Mach. Learn.",
    "venue_tier": "other"
   },
   {
@@ -131147,25 +131035,6 @@
    "scope": "uncertain",
    "venue_normalized": "IEEE VTC",
    "venue_tier": "conf"
-  },
-  {
-   "key": "hasselt-2009-double-q-learning",
-   "authors": "H. Hasselt",
-   "title": "Double q-learning",
-   "venue": "Proc. Adv. Neural Inf. Process. Syst.",
-   "year": "2009",
-   "vol": null,
-   "no": null,
-   "pp": "2613–2621",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "shao-2024-drl-antijamming-mec"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. Adv. Neural Inf. Process. Syst.",
-   "venue_tier": "other"
   },
   {
    "key": "meng-2009-empirical-near-ground-path-loss-modeling-in-a",
@@ -131802,24 +131671,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "bykorak-2009-uav-assisted-ground-user-localization",
-   "authors": "S. Büyükçorak, G. K. Kurt, and A. Yongaço ˘glu",
-   "title": "UAV assisted ground user localization",
-   "venue": "Proc. IEEE Int. Conf. Wireless Space Extreme Environ.",
-   "year": "2009",
-   "vol": null,
-   "no": null,
-   "pp": "111–115",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhu-2024-sensing-comm-doppler-uav-swarm"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
-  },
-  {
    "key": "tropina-2009-comparative-analysis-of-engine-ignition",
    "authors": "A. A. Tropina, L. Lenarduzzi, S. V. Marasov, and A. P. Kuzmenko",
    "title": "Comparative analysis of engine ignition systems",
@@ -132151,42 +132002,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "feng-2008-analysis-of-energy-consumption-on-data",
-   "authors": "J. Feng, Y. Nimmagadda, Y. Lu, B. Jung, D. Peroulis, and Y. C. Hu",
-   "title": "Analysis of energy consumption on data sharing in beamforming for wireless sensor networks",
-   "venue": "Proc. IEEE ICCCN",
-   "year": "2008",
-   "vol": null,
-   "no": null,
-   "pp": "1–6",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "huang-2025-dual-aav-maritime-secure-cb"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
-  },
-  {
-   "key": "johnson-2008-dynamic-source-routing-in-ad-hoc-wireless",
-   "authors": "D. B. Johnson and D. A. Maltz",
-   "title": "Dynamic source routing in ad hoc wireless networks",
-   "venue": "Mobile Computing. Boston, MA, USA: Springer",
-   "year": "2008",
-   "vol": null,
-   "no": null,
-   "pp": "153–181",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "yang-2024-taco-human-digital-twin-edge"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Mobile Computing. Boston, MA, USA: Springer",
-   "venue_tier": "other"
-  },
-  {
    "key": "wang-2008-power-efficient-resource-allocation-for-time",
    "authors": "X. Wang and G. B. Giannakis",
    "title": "Power-efficient resource allocation for time-division multiple access over fading channels",
@@ -132257,24 +132072,6 @@
    "cited_count": 1,
    "venue_normalized": "Proc.",
    "venue_tier": "other"
-  },
-  {
-   "key": "johnston-2008-opportunistic-file-transfer-over-a-fading",
-   "authors": "L. Johnston and V. Krishnamurthy",
-   "title": "Opportunistic file transfer over a fading channel: a POMDP search theory formulation with optimal threshold policies",
-   "venue": "IEEE Trans. Wireless Commun.",
-   "year": "2008",
-   "vol": "5",
-   "no": "2",
-   "pp": "394–405",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhang-2013-energy-optimal-mcc-stochastic"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
-   "venue_tier": "Q1"
   },
   {
    "key": "soh-2008-mobile-gaming",
@@ -132387,25 +132184,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "mou-2008-t2i-adapter-learning-adapters-to-dig-out-more",
-   "authors": "C. Mou et al.",
-   "title": "T2i-adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models",
-   "venue": "Proc. AAAI Conf. Artif. Intell.",
-   "year": "2008",
-   "vol": null,
-   "no": null,
-   "pp": "4296–4304",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "ye-2025-aigc-diffusion-contract"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. AAAI Conf. Artif. Intell.",
-   "venue_tier": "other"
-  },
-  {
    "key": "duckham-2008-efficient-generation-of-simple-polygons-for",
    "authors": "M. Duckham, L. Kulik, M. Worboys, and A. Galton",
    "title": "Efficient generation of simple polygons for characterizing the shape of a set of points in the plane",
@@ -132422,6 +132200,24 @@
    "cited_count": 1,
    "venue_normalized": "Pattern Recognit.",
    "venue_tier": "other"
+  },
+  {
+   "key": "yu-2008-rethinking-virtual-network-embedding",
+   "authors": "M. Yu, Y. Yi, J. Rexford, and M. Chiang",
+   "title": "Rethinking virtual network embedding: Substrate support for path splitting and migration",
+   "venue": "ACM SIGCOMM Comput. Commun. Rev.",
+   "year": "2008",
+   "vol": "38",
+   "no": "2",
+   "pp": "17–29",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhang-2024-qos-vne-sagoin"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "ACM SIGCOMM",
+   "venue_tier": "top-conf"
   },
   {
    "key": "kingsford-2008-what-are-decision-trees",
@@ -132476,25 +132272,6 @@
    "cited_count": 1,
    "scope": "in",
    "venue_normalized": "Proc. Euro. Symp. Artif. Neural Netw.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "achiam-2008-constrained-policy-optimization",
-   "authors": "J. Achiam, D. Held, A. Tamar, and P. Abbeel",
-   "title": "Constrained policy optimization",
-   "venue": "Proc. Int. Conf. Mach. Learn.",
-   "year": "2008",
-   "vol": null,
-   "no": null,
-   "pp": "22–31",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhang-2025-ssac-mgi-heterogeneous-uav"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "Proc. Int. Conf. Mach. Learn.",
    "venue_tier": "other"
   },
   {
@@ -132589,24 +132366,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "quitin-2008-distributed-beamforming-with-software-defined",
-   "authors": "F. Quitin, M. M. Ur Rahman, R. Mudumbai, and U. Madhow",
-   "title": "Distributed beamforming with software-defined radios: Frequency synchronization and digital feedback",
-   "venue": "Proc. IEEE Glob. Commun. Conf.",
-   "year": "2008",
-   "vol": null,
-   "no": null,
-   "pp": "4787–4792",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "liu-2024-hatrpo-ucb-cb"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE GLOBECOM",
-   "venue_tier": "conf"
-  },
-  {
    "key": "simon-2008-biogeography-based-optimization",
    "authors": "D. Simon",
    "title": "Biogeography-based optimization",
@@ -132659,24 +132418,6 @@
    "cited_count": 1,
    "venue_normalized": "Found. Trends Netw.",
    "venue_tier": "other"
-  },
-  {
-   "key": "anon-2008-untitled-3",
-   "authors": null,
-   "title": null,
-   "venue": "Simon, M. K. and Alouini, M-S. A unified approach to the performance analysis of digital communication over generalized fading channels. Proceedings of the IEEE, 86, 9 (",
-   "year": "2008",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "zhan-2011-uav-relay-heading-optimization"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
   },
   {
    "key": "fan-2007-power-provisioning-for-a-warehouse-sized",
@@ -132804,6 +132545,24 @@
    ],
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Knowl. Data Eng.",
+   "venue_tier": "other"
+  },
+  {
+   "key": "gutierrez-2007-complexity-of-the-bisection-method",
+   "authors": "C. Gutierrez, F. Gutierrez, and M. C. Rivara",
+   "title": "Complexity of the bisection method",
+   "venue": "Theor. Comput. Sci.",
+   "year": "2007",
+   "vol": "382",
+   "no": "2",
+   "pp": "131–138",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhou-2018-uav-wireless-powered-mec"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Theor. Comput. Sci.",
    "venue_tier": "other"
   },
   {
@@ -133661,24 +133420,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "zhang-2006-trajectory-planning-of-uav-in-wireless",
-   "authors": "J. Zhang et al.",
-   "title": "Trajectory planning of UAV in wireless powered IoT system based on deep reinforcement learning",
-   "venue": "Proc. IEEE/CIC Int. Conf. Commun. China",
-   "year": "2006",
-   "vol": null,
-   "no": null,
-   "pp": "645–650",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "liu-2022-maritime-uav-mec-virtualization"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc. IEEE",
-   "venue_tier": "Q1"
-  },
-  {
    "key": "palomar-2006-a-tutorial-on-decomposition-methods-for",
    "authors": "D. Palomar and M. Chiang",
    "title": "A tutorial on decomposition methods for network utility maximization",
@@ -133750,6 +133491,24 @@
    "cited_count": 1,
    "venue_normalized": "A. Filippone, Flight Performance of Fixed and Rotary Wing Aircraft. Washington, DC, USA: AIAA",
    "venue_tier": "other"
+  },
+  {
+   "key": "johnston-2006-opportunistic-file-transfer-over-a-fading",
+   "authors": "L. Johnston and V. Krishnamurthy",
+   "title": "Opportunistic file transfer over a fading channel: a POMDP search theory formulation with optimal threshold policies",
+   "venue": "IEEE Trans. Wireless Commun.",
+   "year": "2006",
+   "vol": "5",
+   "no": "2",
+   "pp": "394–405",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhang-2013-energy-optimal-mcc-stochastic"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
+   "venue_tier": "Q1"
   },
   {
    "key": "anon-2006-untitled-3",
@@ -133846,6 +133605,24 @@
    "key": "anon-2006-untitled-4",
    "authors": null,
    "title": null,
+   "venue": "L. E. Schrage, Optimization Modeling With LINGO. Chicago, IL, USA: Lindo System",
+   "year": "2006",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "dai-2023-hybrid-marine-mmwl"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "L. E. Schrage, Optimization Modeling With LINGO. Chicago, IL, USA: Lindo System",
+   "venue_tier": "other"
+  },
+  {
+   "key": "anon-2006-untitled-5",
+   "authors": null,
+   "title": null,
    "venue": "G. J. Leishman, Principles of Helicopter Aerodynamics. Cambridge, U.K.: Cambridge Univ. Press",
    "year": "2006",
    "vol": null,
@@ -133858,6 +133635,24 @@
    ],
    "cited_count": 1,
    "venue_normalized": "G. J. Leishman, Principles of Helicopter Aerodynamics. Cambridge, U.K.: Cambridge Univ. Press",
+   "venue_tier": "other"
+  },
+  {
+   "key": "anon-2006-untitled-6",
+   "authors": null,
+   "title": null,
+   "venue": "T. M. Cover and J. A. Thomas, Element of Information Theory. Hoboken, NJ, USA: Wiley",
+   "year": "2006",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "jeong-2018-uav-cloudlet-bit-allocation"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "T. M. Cover and J. A. Thomas, Element of Information Theory. Hoboken, NJ, USA: Wiley",
    "venue_tier": "other"
   },
   {
@@ -133915,7 +133710,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2006-untitled-5",
+   "key": "anon-2006-untitled-7",
    "authors": null,
    "title": null,
    "venue": "R. J. Freund, Regression Analysis: Statistical Modeling of a Response Variable, 2nd ed. Hoboken, NJ, USA: Wiley",
@@ -134077,7 +133872,7 @@
    "venue_tier": "top-conf"
   },
   {
-   "key": "anon-2006-untitled-6",
+   "key": "anon-2006-untitled-8",
    "authors": null,
    "title": null,
    "venue": "T. M. Cover and J. A. Thomas, Elements of Information Theory. Hoboken, NJ, USA: Wiley",
@@ -134093,25 +133888,6 @@
    "cited_count": 1,
    "venue_normalized": "T. M. Cover and J. A. Thomas, Elements of Information Theory. Hoboken, NJ, USA: Wiley",
    "venue_tier": "other"
-  },
-  {
-   "key": "kuba-2006-trust-region-policy-optimisation-in-multi",
-   "authors": "J. G. Kuba et al.",
-   "title": "Trust region policy optimisation in multi-agent reinforcement learning",
-   "venue": null,
-   "year": "2006",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "li-2025-twohop-airground-drl-offloading"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": null,
-   "venue_tier": null
   },
   {
    "key": "yu-2006-dual-methods-for-nonconvex-spectrum",
@@ -134132,7 +133908,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2006-untitled-7",
+   "key": "anon-2006-untitled-9",
    "authors": null,
    "title": null,
    "venue": "Han, Z., et al. Smart deployment/movement of unmanned air vehicle to improve connectivity in MANET. In Proceedings of the IEEE Wireless Communications and Networking Conference",
@@ -134150,7 +133926,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-2006-untitled-8",
+   "key": "anon-2006-untitled-10",
    "authors": null,
    "title": null,
    "venue": "Zhan",
@@ -134168,7 +133944,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2006-untitled-9",
+   "key": "anon-2006-untitled-11",
    "authors": null,
    "title": null,
    "venue": "Bolcskei, H., et al.¨ Capacity scaling laws in MIMO relay networks. IEEE Transactions on Wireless Communications, 5, 6 (",
@@ -134351,25 +134127,6 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "pan-2005-regularized-softmax-deep-multi-agent-q",
-   "authors": "L. Pan, T. Rashid, B. Peng, L. Huang, and S. Whiteson",
-   "title": "Regularized softmax deep multi-agent Q-learning",
-   "venue": null,
-   "year": "2005",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "kang-2023-mappo-hierarchical-aerial"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": null,
-   "venue_tier": null
-  },
-  {
    "key": "chung-2005-performance-analysis-and-overflowed-traffic",
    "authors": "S.-P. Chung and J.-C. Lee",
    "title": "Performance analysis and overflowed traffic characterization in multiservice hierarchical wireless networks",
@@ -134499,25 +134256,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "yao-2005-attention-cooperative-task-offloading-and",
-   "authors": "Z. Yao, Y. Li, S. Xia, and G. Wu",
-   "title": "Attention cooperative task offloading and service caching in edge computing",
-   "venue": "Proc. IEEE Global Commun. Conf., Rio de Janeiro, Brazil",
-   "year": "2005",
-   "vol": null,
-   "no": null,
-   "pp": "5189–5194",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "du-2023-maddpg-service-placement-agin"
-   ],
-   "cited_count": 1,
-   "scope": "in",
-   "venue_normalized": "IEEE GLOBECOM",
-   "venue_tier": "conf"
-  },
-  {
    "key": "anon-2005-untitled-9",
    "authors": null,
    "title": null,
@@ -134607,6 +134345,24 @@
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Wireless Commun. (TWC)",
    "venue_tier": "Q1"
+  },
+  {
+   "key": "boer-2005-a-tutorial-on-the-cross-entropy-method",
+   "authors": "P. T. D. Boer, D. P. Kroese, S. Mannor, and R. Y. Rubinstein",
+   "title": "A tutorial on the cross-entropy method",
+   "venue": "Ann. Oper. Res.",
+   "year": "2005",
+   "vol": "134",
+   "no": "1",
+   "pp": "19–67",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "li-2023-secure-marine-iot-jamming"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Ann. Oper. Res.",
+   "venue_tier": "other"
   },
   {
    "key": "anon-2005-untitled-11",
@@ -134988,24 +134744,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "IEEE Trans. Multimedia",
-   "venue_tier": "other"
-  },
-  {
-   "key": "coello-2004-mopso-a-proposal-for-multiple-objective",
-   "authors": "C. A. C. Coello and M. S. Lechuga",
-   "title": "MOPSO: A proposal for multiple objective particle swarm optimization",
-   "venue": "Proc.",
-   "year": "2004",
-   "vol": null,
-   "no": null,
-   "pp": "1051–1056",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "sun-2025-emoppo-vlh-aerial-cb"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Proc.",
    "venue_tier": "other"
   },
   {
@@ -135518,25 +135256,6 @@
    "cited_count": 1,
    "venue_normalized": "C. Villani, Topics in Optimal Transportation",
    "venue_tier": "other"
-  },
-  {
-   "key": "schulman-2003-proximal-policy-optimization-algorithms",
-   "authors": "J. Schulman, F. Wolski, P. Dhariwal, A. Radford, and O. Klimov",
-   "title": "Proximal policy optimization algorithms",
-   "venue": null,
-   "year": "2003",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "wang-2024-wipe-gai"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": null,
-   "venue_tier": null
   },
   {
    "key": "dumitrescu-2003-approximation-algorithms-for-tsp-with",
@@ -136117,44 +135836,7 @@
    "venue_tier": null
   },
   {
-   "key": "rardin-2002-experimental-evaluation-of-heuristic",
-   "authors": "R. L. Rardin and R. Uzsoy",
-   "title": "Experimental evaluation of heuristic optimization algorithms: A tutorial",
-   "venue": "J. Heuristics",
-   "year": "2002",
-   "vol": "7",
-   "no": "3",
-   "pp": "261–304",
-   "url": null,
-   "doi": "10.1023/A:1011319115230",
-   "cited_by": [
-    "nabi-2025-jour-hierarchical-aerial"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "J. Heuristics",
-   "venue_tier": "other"
-  },
-  {
    "key": "anon-2002-untitled",
-   "authors": null,
-   "title": null,
-   "venue": "T. M. Cover and J. A. Thomas, Element of Information Theory. Hoboken, NJ, USA: Wiley",
-   "year": "2002",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "jeong-2018-uav-cloudlet-bit-allocation"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "T. M. Cover and J. A. Thomas, Element of Information Theory. Hoboken, NJ, USA: Wiley",
-   "venue_tier": "other"
-  },
-  {
-   "key": "anon-2002-untitled-2",
    "authors": null,
    "title": null,
    "venue": "T. S. Rappaport, Wireless Communications: Principles and Practice (Prentice-Hall Communications Engineering and Emerging Technologies Series), 2nd ed. Upper Saddle River, NJ, USA: Prentice-Hall",
@@ -136263,7 +135945,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-2002-untitled-3",
+   "key": "anon-2002-untitled-2",
    "authors": null,
    "title": null,
    "venue": "Nabar, R. U., Bolcskei, H., and Paulraj, A. J.¨ Outage properties of space-time block codes in correlated Rayleigh or Ricean fading environments. In Proceedings of the IEEE International Conference on Acoustics, Speech, and Signal Processing",
@@ -136538,6 +136220,25 @@
    "venue_tier": null
   },
   {
+   "key": "rardin-2001-experimental-evaluation-of-heuristic",
+   "authors": "R. L. Rardin and R. Uzsoy",
+   "title": "Experimental evaluation of heuristic optimization algorithms: A tutorial",
+   "venue": "J. Heuristics",
+   "year": "2001",
+   "vol": "7",
+   "no": "3",
+   "pp": "261–304",
+   "url": null,
+   "doi": "10.1023/A:1011319115230",
+   "cited_by": [
+    "nabi-2025-jour-hierarchical-aerial"
+   ],
+   "cited_count": 1,
+   "scope": "uncertain",
+   "venue_normalized": "J. Heuristics",
+   "venue_tier": "other"
+  },
+  {
    "key": "qu-2001-what-is-the-limit-of-energy-saving-by-dynamic",
    "authors": "G. Qu",
    "title": "What is the limit of energy saving by dynamic voltage scaling?",
@@ -136679,24 +136380,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "Int. J. Satellite Commun.",
-   "venue_tier": "other"
-  },
-  {
-   "key": "boer-2001-a-tutorial-on-the-cross-entropy-method",
-   "authors": "P. T. D. Boer, D. P. Kroese, S. Mannor, and R. Y. Rubinstein",
-   "title": "A tutorial on the cross-entropy method",
-   "venue": "Ann. Oper. Res.",
-   "year": "2001",
-   "vol": "134",
-   "no": "1",
-   "pp": "19–67",
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "li-2023-secure-marine-iot-jamming"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "Ann. Oper. Res.",
    "venue_tier": "other"
   },
   {
@@ -137119,24 +136802,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-1999-untitled-3",
-   "authors": null,
-   "title": null,
-   "venue": "K. Sydsaeter, Mathematics for Economic Analysis. London, U.K.: Pearson",
-   "year": "1999",
-   "vol": null,
-   "no": null,
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "apostolopoulos-2021-prospect-theory-uav-offloading"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "K. Sydsaeter, Mathematics for Economic Analysis. London, U.K.: Pearson",
-   "venue_tier": "other"
-  },
-  {
    "key": "sutton-1999-between-mdps-and-semi-mdps-a-framework-for",
    "authors": "R. S. Sutton, D. Precup, and S. Singh",
    "title": "Between MDPs and Semi-MDPs: A framework for temporal abstraction in reinforcement learning",
@@ -137247,7 +136912,7 @@
    "venue_tier": "top-conf"
   },
   {
-   "key": "anon-1999-untitled-4",
+   "key": "anon-1999-untitled-3",
    "authors": null,
    "title": null,
    "venue": "D.",
@@ -137319,7 +136984,7 @@
    "venue_tier": "other"
   },
   {
-   "key": "anon-1999-untitled-5",
+   "key": "anon-1999-untitled-4",
    "authors": null,
    "title": null,
    "venue": "Alouini, M. S., Tang, X., and Goldsmith, A. An adaptive modulation scheme for simultaneous voice and data transmission over fading channels. IEEE Journal on Selected Areas in Communications, 17, 5 (May",
@@ -137337,7 +137002,7 @@
    "venue_tier": "Q1"
   },
   {
-   "key": "anon-1999-untitled-6",
+   "key": "anon-1999-untitled-5",
    "authors": null,
    "title": null,
    "venue": "Tarokh, V., Jafarkhani, H., and Calderbank, A. R. Space-time block codes from orthogonal designs. IEEE Transactions on Information Theory, 45, 5 (July",
@@ -137534,6 +137199,25 @@
    ],
    "cited_count": 1,
    "venue_normalized": "A. G. B. Richard and S. Sutton, Reinforcement Learning: An Introduction, 2nd ed. Bradford, NH, USA: MIT Press",
+   "venue_tier": "other"
+  },
+  {
+   "key": "zitzler-1998-multiobjective-optimization-using",
+   "authors": "E. Zitzler and L. Thiele",
+   "title": "Multiobjective optimization using evolutionary algorithms—A comparative case study",
+   "venue": "Proc. Int. Conf. Parallel Problem Solving Nat.",
+   "year": "1998",
+   "vol": null,
+   "no": null,
+   "pp": "292–301",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "huang-2023-mu-aec-task-energy"
+   ],
+   "cited_count": 1,
+   "scope": "in",
+   "venue_normalized": "Proc. Int. Conf. Parallel Problem Solving Nat.",
    "venue_tier": "other"
   },
   {
@@ -137773,6 +137457,24 @@
    "venue_tier": "other"
   },
   {
+   "key": "anon-1998-untitled-10",
+   "authors": null,
+   "title": null,
+   "venue": "Simon, M. K. and Alouini, M-S. A unified approach to the performance analysis of digital communication over generalized fading channels. Proceedings of the IEEE, 86, 9 (",
+   "year": "1998",
+   "vol": null,
+   "no": null,
+   "pp": null,
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "zhan-2011-uav-relay-heading-optimization"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Proc. IEEE",
+   "venue_tier": "Q1"
+  },
+  {
    "key": "wolpert-1997-no-free-lunch-theorems-for-optimization",
    "authors": "D. H. Wolpert and W. G. Macready",
    "title": "No free lunch theorems for optimization",
@@ -137918,6 +137620,24 @@
    "venue_tier": "other"
   },
   {
+   "key": "johnson-1996-dynamic-source-routing-in-ad-hoc-wireless",
+   "authors": "D. B. Johnson and D. A. Maltz",
+   "title": "Dynamic source routing in ad hoc wireless networks",
+   "venue": "Mobile Computing. Boston, MA, USA: Springer",
+   "year": "1996",
+   "vol": null,
+   "no": null,
+   "pp": "153–181",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "yang-2024-taco-human-digital-twin-edge"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Mobile Computing. Boston, MA, USA: Springer",
+   "venue_tier": "other"
+  },
+  {
    "key": "satyanarayanan-1996-fundamental-challenges-in-mobile-computing",
    "authors": "M. Satyanarayanan",
    "title": "Fundamental challenges in mobile computing",
@@ -137951,24 +137671,6 @@
    ],
    "cited_count": 1,
    "venue_normalized": "J. M. Rabaey, Digital Integrated Circuits. Prentice Hall",
-   "venue_tier": "other"
-  },
-  {
-   "key": "giuffrida-1996-the-sat-1-mission-the-first-on-board-deep",
-   "authors": "G. Giuffrida et al.",
-   "title": "The φ-Sat-1 mission: The first on-board deep neural network demonstrator for satellite earth observation",
-   "venue": "IEEE Trans. Geosci. Remote Sens.",
-   "year": "1996",
-   "vol": "60",
-   "no": "5517414",
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "wu-2024-satellite-maritime-spectrum-sharing"
-   ],
-   "cited_count": 1,
-   "venue_normalized": "IEEE Trans. Geosci. Remote Sens.",
    "venue_tier": "other"
   },
   {
@@ -138570,25 +138272,6 @@
    "venue_tier": "other"
   },
   {
-   "key": "yao-1992-heterogeneous-cloudlet-deployment-and-user",
-   "authors": "H. Yao, C. Bai, M. Xiong, D. Zeng, and Z. Fu",
-   "title": "Heterogeneous cloudlet deployment and user-cloudlet association toward cost effective fog computing",
-   "venue": "Concurrency Comput.: Practice Experience",
-   "year": "1992",
-   "vol": "29",
-   "no": "16",
-   "pp": null,
-   "url": null,
-   "doi": null,
-   "cited_by": [
-    "he-2019-euagame-user-allocation"
-   ],
-   "cited_count": 1,
-   "scope": "uncertain",
-   "venue_normalized": "Concurrency Comput.: Practice Experience",
-   "venue_tier": "other"
-  },
-  {
    "key": "chung-1992-a-computationally-efficient-numerical",
    "authors": "T.-S. Chung and C.-J. Wu",
    "title": "A computationally efficient numerical algorithm for the minimum-time control problem of continuous systems",
@@ -139182,6 +138865,24 @@
    "cited_count": 1,
    "scope": "uncertain",
    "venue_normalized": "IEEE Trans. Microw. Theory Techn.",
+   "venue_tier": "other"
+  },
+  {
+   "key": "bezdek-1984-fcm-the-fuzzy-c-means-clustering-algorithm",
+   "authors": "J. C. Bezdek, R. Ehrlich, and W. Full",
+   "title": "FCM: The fuzzy c-means clustering algorithm",
+   "venue": "Comput. Geosci.",
+   "year": "1984",
+   "vol": "10",
+   "no": null,
+   "pp": "191–203",
+   "url": null,
+   "doi": null,
+   "cited_by": [
+    "yang-2019-sum-power-uav-mec"
+   ],
+   "cited_count": 1,
+   "venue_normalized": "Comput. Geosci.",
    "venue_tier": "other"
   },
   {
@@ -140864,7 +140565,7 @@
    "key": "anon-na-untitled-2",
    "authors": null,
    "title": null,
-   "venue": "ETSI GS MEC-IEG 005; Mobile Edge Computing (MEC); Proof of Concept Framework. ![](images/d6d6b67479c347d323b99b5544a2a48235c96d9a56608f1476b1b19b65b42c3b.jpg) <details> <summary>natural_image</summary> Abstract digital network graphic with interconnected nodes on a dark blue gradient background (no text or symbols) </details> ETSI ![](images/0d080830cb90352a9dcf86adcb8a183dbdad1dadc8924591dc098cae11759941.jpg) World Class Standards ETSI (European Telecommunications Standards Institute) 06921 Sophia Antipolis CEDEX, France Tel +33 4 92 94 42 00 info@etsi.org www.etsi.org This White Paper is issued for information only. It does not constitute an official or agreed position of ETSI, nor of its Members. The views expressed are entirely those of the author(s). ETSI declines all responsibility for any errors and any loss or damage resulting from use of the contents of this White Paper. ETSI also declines responsibility for any infringement of any third party's Intellectual Property Rights (IPR), but will be pleased to acknowledge any IPR and correct any infringement of which it is advised.",
+   "venue": "ETSI GS MEC-IEG 005; Mobile Edge Computing (MEC); Proof of Concept Framework.",
    "year": null,
    "vol": null,
    "no": null,
@@ -140875,7 +140576,7 @@
     "hu-2015-mec-5g-etsi-whitepaper"
    ],
    "cited_count": 1,
-   "venue_normalized": "ETSI GS MEC-IEG 005; Mobile Edge Computing (MEC); Proof of Concept Framework. ![](images/d6d6b67479c347d323b99b5544a2a48235c96d9a56608f1476b1b19b65b42c3b.jpg) <details> <summary>natural_image</summary> Abstract digital network graphic with interconnected nodes on a dark blue gradient background (no text or symbols) </details> ETSI ![](images/0d080830cb90352a9dcf86adcb8a183dbdad1dadc8924591dc098cae11759941.jpg) World Class Standards ETSI (European Telecommunications Standards Institute) 06921 Sophia Antipolis CEDEX, France Tel +33 4 92 94 42 00 info@etsi.org www.etsi.org This White Paper is issued for information only. It does not constitute an official or agreed position of ETSI, nor of its Members. The views expressed are entirely those of the author(s). ETSI declines all responsibility for any errors and any loss or damage resulting from use of the contents of this White Paper. ETSI also declines responsibility for any infringement of any third party's Intellectual Property Rights (IPR), but will be pleased to acknowledge any IPR and correct any infringement of which it is advised.",
+   "venue_normalized": "ETSI GS MEC-IEG 005; Mobile Edge Computing (MEC); Proof of Concept Framework.",
    "venue_tier": "other"
   },
   {
