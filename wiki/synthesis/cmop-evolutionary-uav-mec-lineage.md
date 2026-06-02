@@ -21,7 +21,7 @@ related:
   - "[[yuan-wu]]"
   - "[[jiawen-kang]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # The CMOP-evolutionary UAV-MEC lineage (Peng/Huang group, 2022-2026)
@@ -138,4 +138,5 @@ The lineage's [[xie-2026-uav-multisource-fusion]] and [[wu-2026-terrain-aware-ua
 
 - [[constrained-multi-objective-evolutionary-algorithm]] — concept page with method-level overview.
 - [[drl-vs-evolutionary-vs-classical-solvers]] — cross-corpus solver-family synthesis (this lineage is the wiki's evolutionary representative).
+- [[swarm-metaheuristics-in-uav-mec]] — the corpus's *swarm-intelligence* metaheuristic thread (PSO/WOA/SSA/MVO/ALO/GSA/ACO/...); population-based like this lineage but distinct machinery and a different author network.
 - [[design-recipe-multi-uav-mec]] — DRL-track design recipe; sits on the opposite side of the spectrum.

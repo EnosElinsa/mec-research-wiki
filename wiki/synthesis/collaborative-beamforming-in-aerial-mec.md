@@ -16,8 +16,9 @@ related:
   - "[[diffusion-model-as-optimizer]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-03
 ---
 
 # Collaborative beamforming across the aerial/space corpus
@@ -58,7 +59,7 @@ The five sources cleanly partition into the three solver families the corpus tra
 - **Evolutionary multi-objective RL.** [[sun-2025-emoppo-vlh-aerial-cb]] (EMOPPO-VLH) and [[li-2024-emodrl-ground-space-cb]] (EMODRL) wrap an evolutionary population mechanism around a (multi-objective) PPO learner to produce a Pareto policy *set* online — the same recipe as the non-CB [[song-2022-emorl-tcto-uav]]. They win when the receiver moves or the cluster scale changes, because offline optimizers cannot react.
 - **Diffusion-enhanced DRL.** [[zhang-2024-gdmtd3-aerial-secure-cb]] (GDMTD3) is the only single-policy learner, using a [[diffusion-model-as-optimizer|generative diffusion model]] inside TD3 to represent the high-dimensional action distribution. It ties CB into the wiki's generative-AI thread.
 
-The pattern mirrors the corpus-wide finding that evolutionary/swarm methods are chosen specifically for their **one-run Pareto set** (decision-maker picks a trade-off afterward), while DRL is chosen for **online reactivity** to a non-stationary environment.
+The pattern mirrors the corpus-wide finding that evolutionary/swarm methods are chosen specifically for their **one-run Pareto set** (decision-maker picks a trade-off afterward), while DRL is chosen for **online reactivity** to a non-stationary environment. The EMSSA/IMSSA pair here are the CB instances of the broader [[swarm-metaheuristics-in-uav-mec|swarm-metaheuristic family]] that recurs across the corpus.
 
 ## Grounded data points
 

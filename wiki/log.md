@@ -2,6 +2,37 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-03 — Synthesis pass (no new papers): +1 solver-family synthesis + 1 CTDE comparison + cross-links
+
+Coverage-growth pass over the **current** corpus (no new raw papers). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders = 214 curated, 0 uncurated, 0 genuinely-new, 0 duplicate MinerU ingests** — nothing to route to `mec-wiki-curator`. Tree clean at `628627a`; LLM Wiki API reachable (`/health` ok, v0.4.16, `allowUnauthenticated`); baseline graph **589 nodes / 5436 edges**. This pass acted on the two strongest standing concept-layer routing notes accumulated across the audit batches (recorded in `.curation-out/audit-coverage.md`): the **swarm-metaheuristic family** (reinforced in nearly every concept audit batch) and the **multi-agent actor-critic / CTDE family** (flagged in concept batches 7/10/11).
+
+### Coverage added (2 derived pages)
+
+- **synthesis [[swarm-metaheuristics-in-uav-mec]]** — ties together the corpus's nine swarm-intelligence metaheuristic concept pages ([[particle-swarm-optimization|PSO]], [[whale-optimization-algorithm|WOA]], [[binary-whale-optimization|BWOA]], [[salp-swarm-algorithm|SSA]], [[multi-verse-optimizer|MVO]], [[ant-lion-optimizer|ALO]], [[gravitational-search-algorithm|GSA]], [[ant-colony-optimization|ACO]], [[self-adaptive-global-best-harmony-search|SGHS]]) plus the single-source mayfly (IMOMA in [[huang-2025-dual-aav-maritime-secure-cb]]), across ~14 sources. Maps the **two roles** (standalone multi-objective Pareto solver — almost all collaborative-beamforming, [[geng-sun]]-group concentrated; vs embedded single-objective sub-solver after a convex/Lyapunov/DRL layer), the **shared improved-variant toolkit** (chaos/OBL init + discrete/hybrid update operator + EC-style archive refinement), and the sources' own rationale for swarm-over-DRL/convex (grounded verbatim in [[zheng-2024-recmop-uav-cb]]). The metaheuristic deep-dive that [[drl-vs-evolutionary-vs-classical-solvers]] referenced but had no home for.
+- **comparison [[ctde-actor-critic-backbones-in-mec]]** — the corpus's explicitly multi-agent CTDE cluster (11 sources): 5 MADDPG ([[seid-2021-madrl-multiuav-iot-edge]], [[peng-2020-maddpg-uav-vehicular]], [[wang-2021-maddpg-multiuav-trajectory]], [[he-2023-fairness-3d-multiuav-maddpg]], [[du-2023-maddpg-service-placement-agin]]), 2 MATD3 ([[zhao-2022-matd3-multiuav-ec-offloading]], [[shao-2024-drl-antijamming-mec]]'s PER-MATD3), MASAC ([[qin-2025-bcuav-masac]]), MAPPO ([[kang-2023-mappo-hierarchical-aerial]]), tabular MA-Q ([[li-2025-stochastic-game-uav-swarm]]), and value-decomposition VD3QN ([[raivi-2024-jdaco-postdisaster-iot]]). Maps backbone choice to action space + policy class + game structure. Distinct from the two-way [[maddpg-vs-masac-in-mec]] thesis (generalizes it to the whole family) and the [[drl-backbones-across-uav-mec-sources]] synthesis (which covers a different, mostly single-agent 2025–2026 roster). The +15.41%/−30.73%-vs-MADDPG figures carry the audited correct margins (not the PSO-baseline misquote).
+
+### Connections added
+
+- Reciprocal `related` links from all 8 swarm concept pages → [[swarm-metaheuristics-in-uav-mec]]; from the 6 CTDE concept pages ([[maddpg]], [[multi-agent-td3]], [[masac]], [[mappo]], [[multi-agent-q-learning]], [[centralized-training-decentralized-execution]]) → [[ctde-actor-critic-backbones-in-mec]].
+- Cross-links + See-also entries wiring the two new pages into their sibling derived pages: swarm synthesis ↔ [[drl-vs-evolutionary-vs-classical-solvers]] / [[collaborative-beamforming-in-aerial-mec]] / [[cmop-evolutionary-uav-mec-lineage]]; CTDE comparison ↔ [[maddpg-vs-masac-in-mec]] / [[drl-backbones-across-uav-mec-sources]]. `updated` bumped only on pages actually edited.
+
+### Grounding (correctness-first)
+
+- Every roster row + claim cross-checked against audited-clean concept/source pages and, where a specific number or mechanism is cited, against the parse: the swarm two-role split and the "swarm over DRL/convex" rationale (verbatim in [[zheng-2024-recmop-uav-cb]]); the IMOMA-mayfly identification in [[huang-2025-dual-aav-maritime-secure-cb]] (not ALO — corrected against the parse before rostering); the MASAC vs MADDPG +15.41%/−30.73% margins (audited-correct, PSO-baseline distinction preserved); MATD3/PER-MATD3 framings ([[zhao-2022-matd3-multiuav-ec-offloading]], [[shao-2024-drl-antijamming-mec]]); VD3QN = VDN + dueling-double-DQN ([[raivi-2024-jdaco-postdisaster-iot]]).
+- **Deliberately left out for lack of support:** [[albakhrani-2025-moalf-uav-mec]] kept as APSO-as-one-ingredient (multi-technique framework, not a standalone swarm result); [[mao-2025-bcsa-frl]] excluded from the CTDE roster (it is FRL parameter-aggregation, not a centralized critic). No tag-vocabulary normalizations performed this pass (the standing evolutionary-/generative-/CSI-/PLS-family tag-fragmentation notes are deferred — they touch many pages and are better batched on their own). Standing candidates not yet acted on: LEO/NTN concept cluster synthesis, caching cluster, channel-model cluster, game-theory-mechanisms synthesis, video-analytics cluster, secure-aggregation cluster, `j-ppo-vs-pdqn` already exists.
+
+### Counts
+
+`corpus_counts.py`: synthesis **14→15**, comparisons **5→6** (sources 214 / concepts 260 / entities 71 / findings 14 / methodology 3 / queries 5 / thesis 1 unchanged). [[overview]] Snapshot + analytical-layer line and [[index]] Synthesis + Comparisons sections updated to match.
+
+### Gates
+
+`linkcheck.py` = **NO DANGLING LINKS**; `process_refs.py` = **0 files / 0 hits**; `index_audit.py` = 591/591 indexed, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational); `frontmatter_audit.py` = 589 pages, 0 errors. Both new pages + edited meta docs mojibake-free at byte level (`fs_write`, no shell redirection). Graph 589 nodes / 5436 edges baseline (the 2 new pages + reciprocal links register on the next rescan).
+
+### Toolkit
+
+No ratchet needed — `curation_status.py`, `corpus_counts.py`, `linkcheck.py`, `process_refs.py`, `index_audit.py`, and `frontmatter_audit.py` covered Phase 0 state detection, count reconciliation, and all commit gates. No reusable one-off arose; the toolkit is stable and unchanged this pass.
+
 ## 2026-06-03 — Audit pass (no new papers): close standing roster advisory + verify corpus
 
 No-new-papers quality pass. Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders = 214 curated, 0 uncurated, 0 genuinely-new** — nothing to route to `mec-wiki-curator`. Working tree opened with three uncommitted entity edits left from the prior session (the `wang-2024-wipe-gai` roster additions on [[jiacheng-wang]] / [[jiawen-kang]] / [[xuemin-shen]]); verified them against the parse and committed.

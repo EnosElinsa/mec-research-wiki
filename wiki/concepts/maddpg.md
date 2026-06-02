@@ -13,8 +13,9 @@ related:
   - "[[peng-2020-maddpg-uav-vehicular]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[du-2023-maddpg-service-placement-agin]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-03
 ---
 
 # Multi-Agent Deep Deterministic Policy Gradient (MADDPG)

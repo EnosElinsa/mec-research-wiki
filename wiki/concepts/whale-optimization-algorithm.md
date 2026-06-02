@@ -7,8 +7,9 @@ related:
   - "[[self-adaptive-global-best-harmony-search]]"
   - "[[multi-verse-optimizer]]"
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # Whale Optimization Algorithm (WOA)

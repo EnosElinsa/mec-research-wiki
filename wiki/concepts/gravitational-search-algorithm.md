@@ -10,8 +10,9 @@ related:
   - "[[mixed-integer-nonlinear-programming]]"
   - "[[collaborative-beamforming]]"
   - "[[zheng-2024-recmop-uav-cb]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-03
 ---
 
 # Gravitational Search Algorithm (GSA)

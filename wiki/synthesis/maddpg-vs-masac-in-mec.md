@@ -13,8 +13,9 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[hybrid-action-decision-making]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-29
-updated: 2026-05-30
+updated: 2026-06-03
 ---
 
 # MADDPG vs MASAC in cooperative MEC: when entropy beats determinism
@@ -112,7 +113,7 @@ If you're building a cooperative MEC controller and choosing between MADDPG and 
 
 ## Open questions
 
-- **MAPPO vs MASAC** — MAPPO is the on-policy stability story. The corpus has no head-to-head curated source. Worth tracking.
+- **MAPPO vs MASAC** — MAPPO is the on-policy stability story. The corpus has no head-to-head curated source. Worth tracking. (The wider CTDE family — MADDPG/MATD3/MAPPO/MASAC/value-based — and which problem features select each is mapped in [[ctde-actor-critic-backbones-in-mec]].)
 - **MATD3 vs MASAC at small agent count** — MATD3's twin-Q + delayed updates close most of the stability gap without the entropy machinery. Whether that's enough for cooperative MEC at U=2..3 agents is an empirical open question.
 - **Mean-field MASAC** — none of the curated sources scale past ~10 agents. Beyond that, the centralized critic input dimension dominates training cost. Mean-field MARL or attention-factorized critics are the standard fixes; corpus has zero examples so far.
 - **Does the entropy bonus help or hurt under [[fl-poisoning-attacks|poisoning]] / [[zero-trust-architecture|zero-trust]] threat models?** Wider exploration may make a malicious agent's bad samples harder to filter. Cross-pollinating this synthesis with [[bcsa-frl-vs-bc-uav-masac]]'s threat model would be the natural next step.

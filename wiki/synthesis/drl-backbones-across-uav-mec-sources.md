@@ -33,8 +33,9 @@ related:
   - "[[lyapunov-guided-drl]]"
   - "[[j-ppo-vs-pdqn]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # DRL backbone choices across the UAV-MEC corpus
