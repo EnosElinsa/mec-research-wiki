@@ -22,7 +22,6 @@ from __future__ import annotations
 
 import argparse
 import datetime
-import glob
 import json
 import os
 import re
@@ -191,12 +190,12 @@ def main(argv=None):
     db = json.load(open(db_path, encoding="utf-8"))
     recs = db["records"]
 
-    # Already-curated set: by curated_as tag AND by normalized-title of wiki pages.
-    cur_titles = set()
-    for p in glob.glob(os.path.join(wikilib.wiki_dir(), "sources", "*.md")):
-        m = re.search(r"(?im)^title:\s*(.+)$", wikilib.read_text(p))
-        if m:
-            cur_titles.add(wikilib.normalize_title(m.group(1).strip().strip('"')))
+    # Already-curated set: by curated_as tag AND by separator-insensitive title
+    # key of wiki pages. The separator-insensitive key (wikilib.title_match_key)
+    # repairs PDF de-hyphenation artifacts in mined titles (e.g. "relayassisted"
+    # vs the curated "Relay-Assisted") that a punctuation-only normalization
+    # would miss, leaking already-curated papers into the recommendations.
+    cur_keys = wikilib.curated_title_keys()
 
     slug_map = wikilib.folder_to_slug_map()
     uncurated_folders = set(wikilib.raw_folders()) - set(slug_map)
@@ -209,7 +208,7 @@ def main(argv=None):
             continue
         if not r.get("title"):
             continue
-        if wikilib.normalize_title(r["title"]) in cur_titles:
+        if wikilib.title_match_key(r["title"]) in cur_keys:
             continue
         sc = infer_scope(r)
         if sc == "out":
@@ -244,7 +243,7 @@ def main(argv=None):
         ready.append(info)
 
     today = datetime.date.today().isoformat()
-    n_curated = len(cur_titles)
+    n_curated = len(cur_keys)
 
     def venue_label(r):
         return r.get("venue_normalized") or r.get("venue") or "n/a"

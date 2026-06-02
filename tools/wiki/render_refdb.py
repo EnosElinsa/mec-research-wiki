@@ -44,11 +44,24 @@ def _cell(s):
     return (s or "n/a").replace("|", "\\|").replace("\n", " ")
 
 
-def _curated(r):
-    return f"yes → {r['curated_as']}" if r.get("curated_as") else "no"
+def _curated(r, cur_keys=None):
+    """Curated status for the rendered column.
+
+    Prefers an explicit ``curated_as`` tag; otherwise falls back to a
+    separator-insensitive title-key match against curated wiki pages, so a
+    de-hyphenated mined title still resolves to its curated slug.
+    """
+    if r.get("curated_as"):
+        return f"yes → {r['curated_as']}"
+    if cur_keys:
+        slug = cur_keys.get(wikilib.title_match_key(r.get("title")))
+        if slug:
+            return f"yes → {slug}"
+    return "no"
 
 
 def render(db, min_cited):
+    cur_keys = wikilib.curated_title_keys()
     gen = db.get("generated") or datetime.date.today().isoformat()
     recs = db["records"]
     ge2 = sum(1 for r in recs if r["cited_count"] >= 2)
@@ -92,7 +105,7 @@ def render(db, min_cited):
             ven=_cell(_venue(r)),
             vnp=_cell(_volnopp(r)),
             cb=_cell(", ".join(r.get("cited_by", []))),
-            cur=_cell(_curated(r)),
+            cur=_cell(_curated(r, cur_keys)),
         ))
     out.append("")
     out.append(f"_Full record set (all {len(recs)} unique references, including singletons) lives in the companion `reference-database.json`._")
