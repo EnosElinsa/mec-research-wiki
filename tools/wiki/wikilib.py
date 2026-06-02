@@ -380,7 +380,7 @@ _VENUE_TABLE = [
     (("trans. netw", "/acm trans. netw", "transactions on networking"), "IEEE/ACM Trans. Netw. (ToN)", "Q1"),
     (("inf. forensics security", "information forensics and security", "tifs"), "IEEE Trans. Inf. Forensics Security (TIFS)", "Q1"),
     (("trans. evol. comput", "evolutionary comput"), "IEEE Trans. Evol. Comput. (TEVC)", "Q1"),
-    (("commun. surveys tuts", "communications surveys", "comst", "surv. tutor"), "IEEE Commun. Surveys Tuts. (COMST)", "Q1"),
+    (("commun. surveys tuts", "commun. survey. tuts", "commun. surveys tut", "commun. survey. tut", "commun. surv. tut", "communications surveys", "communication surveys", "comst", "surv. tutor"), "IEEE Commun. Surveys Tuts. (COMST)", "Q1"),
     (("trans. commun",), "IEEE Trans. Commun. (TCOM)", "Q1"),
     (("commun. mag", "communications magazine"), "IEEE Commun. Mag.", "Q1"),
     (("ieee netw", "ieee network"), "IEEE Netw.", "Q1"),
