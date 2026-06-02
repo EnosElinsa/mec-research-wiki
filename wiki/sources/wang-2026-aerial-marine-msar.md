@@ -12,9 +12,10 @@ related:
   - "[[matching-theory-for-resource-allocation]]"
   - "[[hierarchical-aerial-mec]]"
   - "[[two-stage-decomposition]]"
+  - "[[discrete-continuous-two-stage-decomposition]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-04
 ---
 
 # Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS, UAVs, and MASSs

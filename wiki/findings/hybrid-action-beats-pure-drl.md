@@ -9,8 +9,9 @@ related:
   - "[[j-ppo]]"
   - "[[hybrid-action-decision-making]]"
   - "[[ddpg-vs-jppo]]"
+  - "[[decomposition-beats-end-to-end-drl-in-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-04
 ---
 
 # Hybrid-action j-PPO outperforms continuous- or discrete-only DRL in UAV-MEC

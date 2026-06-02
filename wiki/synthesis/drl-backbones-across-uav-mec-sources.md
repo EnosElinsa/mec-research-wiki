@@ -34,6 +34,9 @@ related:
   - "[[j-ppo-vs-pdqn]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
+  - "[[discrete-continuous-two-stage-decomposition]]"
+  - "[[decomposition-beats-end-to-end-drl-in-mec]]"
+  - "[[explicit-constraints-beat-reward-shaping-in-mec-drl]]"
 created: 2026-05-29
 updated: 2026-06-03
 ---
@@ -137,7 +140,7 @@ If you're building a UAV-MEC controller from scratch, the corpus suggests:
    - Pure discrete → DDQN / Dueling-DQN family.
    - Pure continuous → SAC / TD3.
    - Hybrid → either j-PPO-style ratio modification or two-stage decomposition. Avoid threshold-on-continuous-actor (DDPG with thresholding) — the corpus shows this loses on every metric.
-3. **Use Lyapunov for long-term constraints, not reward shaping.** Reward shaping is unreliable; virtual queues give you tunable optimality–violation tradeoffs and compose cleanly with DRL.
+3. **Use Lyapunov for long-term constraints, not reward shaping.** Reward shaping is unreliable; virtual queues give you tunable optimality–violation tradeoffs and compose cleanly with DRL. (This recommendation generalizes into the [[explicit-constraints-beat-reward-shaping-in-mec-drl]] thesis.)
 4. **Add memory only when horizon coupling is provably significant.** EN-ConvNTM-style modules pay for themselves only when long history actually matters.
 5. **Consider classical sub-solvers for convex sub-blocks.** A KKT solver for the continuous resource allocation is more reliable than asking DRL to learn convexity from scratch.
 6. **Reserve safe-RL machinery for hard constraints.** Reward penalties don't guarantee safety. Use [[collision-avoidance-mgi|MGI]]-style asymmetric intervention or shielding when collisions / energy depletion are catastrophic.

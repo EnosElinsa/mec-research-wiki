@@ -4,7 +4,7 @@ title: "Is end-to-end DRL feasible in large-scale multi-UAV MEC?"
 created: 2026-05-31
 updated: 2026-05-31
 tags: [drl, end-to-end, scalability, research-gap, open-question]
-related: [end-to-end-vs-decomposition-in-drl-mec, action-space-explosion-in-multi-uav-mec, no-true-end-to-end-drl-in-corpus, hybrid-action-decision-making, hybrid-action-memory-augmented-drl-wins-uav-mec, two-stage-decomposition]
+related: [end-to-end-vs-decomposition-in-drl-mec, action-space-explosion-in-multi-uav-mec, no-true-end-to-end-drl-in-corpus, hybrid-action-decision-making, hybrid-action-memory-augmented-drl-wins-uav-mec, two-stage-decomposition, decomposition-beats-end-to-end-drl-in-mec]
 ---
 # Is end-to-end DRL feasible in large-scale multi-UAV MEC?
 

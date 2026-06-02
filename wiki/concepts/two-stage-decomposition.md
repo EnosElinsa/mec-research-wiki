@@ -7,8 +7,10 @@ related:
   - "[[hybrid-action-decision-making]]"
   - "[[wang-2026-aerial-marine-msar]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
+  - "[[discrete-continuous-two-stage-decomposition]]"
+  - "[[decomposition-beats-end-to-end-drl-in-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-04
 ---
 
 # Two-Stage Decomposition
@@ -27,3 +29,5 @@ Examples in the wiki:
 - [[jia-2025-dro-uav-hap-mec]] — primal decomposition: BWOA for binary, CVX for continuous.
 
 Compare with the **joint hybrid-action** approach of [[liu-2026-jppo-en-convntm|j-PPO]] and [[ma-2025-pdqn-vehicular-mec|P-DQN]], which solve both at once via a hybrid policy.
+
+The full solver protocol — per-stage solver menu, the information seam between stages, and when to reach for it — is in the [[discrete-continuous-two-stage-decomposition]] methodology page, and it is the strongest evidence for the [[decomposition-beats-end-to-end-drl-in-mec]] thesis.

@@ -17,8 +17,9 @@ related:
   - "[[weighted-kmeans-uav-deployment]]"
   - "[[wang-2026-aerial-marine-msar]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
+  - "[[discrete-continuous-two-stage-decomposition]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-04
 ---
 
 # Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs and HAPs

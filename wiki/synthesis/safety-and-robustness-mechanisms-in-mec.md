@@ -20,8 +20,9 @@ related:
   - "[[query-when-does-dro-beat-drl-for-csi-uncertainty]]"
   - "[[lyapunov-guided-drl]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
+  - "[[explicit-constraints-beat-reward-shaping-in-mec-drl]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-04
 ---
 
 # Safety and robustness mechanisms across the MEC corpus
@@ -70,7 +71,7 @@ The cheapest "robustness" is to design the stochasticity away. [[wang-2026-aeria
 ## Cross-cutting reading
 
 - **The guarantee you get tracks the assumption you make.** Hard per-state guarantee (MGI) needs an explicit override mechanism; distributional guarantee (DRO) needs only moments but pays in conservatism; bounded-set guarantee (robust reformulation, RIS worst-case) needs a known error ball; no guarantee (side-step) needs exploitable domain structure. There is no free robustness.
-- **Reward shaping is the rejected baseline twice over.** [[zhang-2025-ssac-mgi-heterogeneous-uav]] argues against folding *safety* into the reward, and the [[lyapunov-guided-drl]] sources argue against folding *long-term constraints* into the reward. Both replace a soft reward penalty with an explicit mechanism (a gated override; a virtual queue) precisely because the penalty gives no guarantee. Robustness and safety in this corpus are constraint-handling problems, not reward-tuning problems.
+- **Reward shaping is the rejected baseline twice over.** [[zhang-2025-ssac-mgi-heterogeneous-uav]] argues against folding *safety* into the reward, and the [[lyapunov-guided-drl]] sources argue against folding *long-term constraints* into the reward. Both replace a soft reward penalty with an explicit mechanism (a gated override; a virtual queue) precisely because the penalty gives no guarantee. Robustness and safety in this corpus are constraint-handling problems, not reward-tuning problems — the position argued in full as the [[explicit-constraints-beat-reward-shaping-in-mec-drl]] thesis.
 - **Robustness is split across solver families, not concentrated in one.** DRO and the RIS worst-case designs are classical; MGI and Beta-policy MAPPO are DRL; the side-steps are classical/evolutionary. The [[drl-vs-evolutionary-vs-classical-solvers]] page's "provable robustness: only classical" row is *mostly* right but [[li-2024-robust-bmappo-multiuav-mec]] shows DRL can carry a (bounded, non-distributional) robust reformulation too.
 
 ## Gaps

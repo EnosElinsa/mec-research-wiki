@@ -4,7 +4,7 @@ title: "No true end-to-end DRL model exists in the corpus"
 created: 2026-05-31
 updated: 2026-05-31
 tags: [drl, end-to-end, decomposition, research-gap]
-related: [end-to-end-vs-decomposition-in-drl-mec, action-space-explosion-in-multi-uav-mec, hybrid-action-decision-making, two-stage-decomposition, drl-vs-evolutionary-vs-classical-solvers]
+related: [end-to-end-vs-decomposition-in-drl-mec, action-space-explosion-in-multi-uav-mec, hybrid-action-decision-making, two-stage-decomposition, drl-vs-evolutionary-vs-classical-solvers, decomposition-beats-end-to-end-drl-in-mec]
 source: "[[drl-vs-evolutionary-vs-classical-solvers]]"
 confidence: high
 replicated: null

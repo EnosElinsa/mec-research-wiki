@@ -636,6 +636,7 @@
 - [[drl-simulation-with-pomdp-formulation]] — POMDP simulation protocol used in [[liu-2026-jppo-en-convntm]]
 - [[ao-sdr-sca-convex-pipeline]] — the AO + SDR + SCA convex pipeline recurring across the ISAC/secure-beamforming sources
 - [[lyapunov-guided-drl]] — the Lyapunov drift-plus-penalty + per-slot DRL hybrid across 6 sources
+- [[discrete-continuous-two-stage-decomposition]] — the discrete-then-continuous (matching/metaheuristic/discrete-policy + convex/continuous-policy) solver protocol
 
 ## Findings
 
@@ -656,7 +657,9 @@
 
 ## Thesis
 
-- [[hybrid-action-memory-augmented-drl-wins-uav-mec]]
+- [[hybrid-action-memory-augmented-drl-wins-uav-mec]] — hybrid-action, memory-augmented DRL is the right design for UAV-MEC under high-density mobility
+- [[decomposition-beats-end-to-end-drl-in-mec]] — decomposition-based solvers beat truly end-to-end DRL for joint MEC optimization
+- [[explicit-constraints-beat-reward-shaping-in-mec-drl]] — explicit constraint-handling mechanisms beat reward shaping for safety / long-term / robustness constraints
 
 ## Queries
 

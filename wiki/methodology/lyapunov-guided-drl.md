@@ -20,8 +20,10 @@ related:
   - "[[safety-and-robustness-mechanisms-in-mec]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
   - "[[drl-simulation-with-pomdp-formulation]]"
+  - "[[discrete-continuous-two-stage-decomposition]]"
+  - "[[explicit-constraints-beat-reward-shaping-in-mec-drl]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-04
 ---
 
 # Lyapunov-guided DRL
@@ -65,7 +67,7 @@ The $V$ weight is the one knob that lives *between* the two layers — it sets h
 
 ## Why not just shape the reward?
 
-The alternative is to add the long-term constraint as a penalty term in the DRL reward. The corpus's Lyapunov-guided sources implicitly reject this, and the reasoning generalizes: a reward penalty gives only a soft, untunable, *average-case* nudge with no stability guarantee, whereas the virtual queue gives a provable time-average bound and a clean $V$ knob. This is the queue-stability analog of the safety argument that [[zhang-2025-ssac-mgi-heterogeneous-uav]]'s [[collision-avoidance-mgi|MGI]] makes for hard safety constraints — in both cases an explicit constraint-handling mechanism beats baking the constraint into the reward (the cross-family view is in [[safety-and-robustness-mechanisms-in-mec]]). The cross-source recommendation distilled in [[drl-backbones-across-uav-mec-sources]] — "use Lyapunov for long-term constraints, not reward shaping" — is exactly this pattern.
+The alternative is to add the long-term constraint as a penalty term in the DRL reward. The corpus's Lyapunov-guided sources implicitly reject this, and the reasoning generalizes: a reward penalty gives only a soft, untunable, *average-case* nudge with no stability guarantee, whereas the virtual queue gives a provable time-average bound and a clean $V$ knob. This is the queue-stability analog of the safety argument that [[zhang-2025-ssac-mgi-heterogeneous-uav]]'s [[collision-avoidance-mgi|MGI]] makes for hard safety constraints — in both cases an explicit constraint-handling mechanism beats baking the constraint into the reward (the cross-family view is in [[safety-and-robustness-mechanisms-in-mec]]). The cross-source recommendation distilled in [[drl-backbones-across-uav-mec-sources]] — "use Lyapunov for long-term constraints, not reward shaping" — is exactly this pattern, and it is the core evidence for the [[explicit-constraints-beat-reward-shaping-in-mec-drl]] thesis.
 
 ## Variations worth noting
 

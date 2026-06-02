@@ -16,8 +16,9 @@ related:
   - "[[load-balancing-uav-mec]]"
   - "[[peng-2025-drudm-cfg]]"
   - "[[bao-2025-ddpg-video-offloading]]"
+  - "[[discrete-continuous-two-stage-decomposition]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-04
 ---
 
 # Joint Offloading Decision, User Association, and Resource Allocation in Hierarchical Aerial Computing

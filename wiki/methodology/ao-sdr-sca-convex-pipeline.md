@@ -17,7 +17,7 @@ updated: 2026-05-30
 
 # The AO + SDR + SCA convex pipeline
 
-A recurring solver protocol across the wiki's convex-optimization aerial sources — especially the ISAC/secure-beamforming ones. Where the [[drl-simulation-with-pomdp-formulation]] methodology page captures the DRL track's protocol, this page captures the **classical convex track's** dominant template. It generalizes the per-source descriptions in [[benaya-2025-aerial-isac-haps]], [[yao-2025-secure-isac-dual-eavesdropping]], and [[tang-2024-iscc-uav-feel]] (and resembles the older SCA-based [[zhang-2019-uav-iot-comp-comm]] and [[liu-2022-miso-uav-mec-trajectory]]).
+A recurring solver protocol across the wiki's convex-optimization aerial sources — especially the ISAC/secure-beamforming ones. Where the [[drl-simulation-with-pomdp-formulation]] methodology page captures the DRL track's protocol, the [[lyapunov-guided-drl]] page the temporal-decoupling protocol, and the [[discrete-continuous-two-stage-decomposition]] page the mixed-integer split, this page captures the **classical convex track's** dominant template. It generalizes the per-source descriptions in [[benaya-2025-aerial-isac-haps]], [[yao-2025-secure-isac-dual-eavesdropping]], and [[tang-2024-iscc-uav-feel]] (and resembles the older SCA-based [[zhang-2019-uav-iot-comp-comm]] and [[liu-2022-miso-uav-mec-trajectory]]).
 
 ## The problem shape it fits
 
