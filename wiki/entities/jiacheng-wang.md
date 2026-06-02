@@ -12,6 +12,7 @@ related:
   - "[[wang-gai-isac-physical-layer]]"
   - "[[huang-2025-dual-aav-maritime-secure-cb]]"
   - "[[huynh-2024-gai-physical-layer-survey]]"
+  - "[[wang-2024-wipe-gai]]"
 created: 2026-05-29
 updated: 2026-06-02
 ---
@@ -20,7 +21,7 @@ updated: 2026-06-02
 
 IEEE Member. Affiliated with the **College of Computing and Data Science, Nanyang Technological University**, Singapore (email `jiacheng.wang@ntu.edu.sg` / `jcwang_cq@foxmail.com`) — consistent across his papers in this wiki.
 
-Co-authored 9 sources in this wiki:
+Co-authored 10 sources in this wiki:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
@@ -31,6 +32,7 @@ Co-authored 9 sources in this wiki:
 - [[wang-gai-isac-physical-layer]] — generative AI for ISAC from the physical-layer perspective (first author).
 - [[huang-2025-dual-aav-maritime-secure-cb]] — dual AAV cluster-assisted maritime secure communications via collaborative beamforming.
 - [[huynh-2024-gai-physical-layer-survey]] — survey of generative AI for physical-layer communications (co-author).
+- [[wang-2024-wipe-gai]] — wireless-perception-guided GAI (WiPe-GAI) for edge AIGC pricing via a diffusion model (first author).
 
 ## Contributions to this wiki
 
