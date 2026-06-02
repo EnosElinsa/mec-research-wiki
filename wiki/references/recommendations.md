@@ -16,7 +16,6 @@ _Generated: 2026-06-02_ · Candidates mined from the reference lists of the 214 
 
 | Year | Venue (abbrev) | Title | Authors | cited_count | Candidate track / why (breadth vs depth) | in raw/? |
 |---|---|---|---|---|---|---|
-| 2026 | IEEE Access | Task offloading with service migration for satellite edge computing: A deep reinforcement learning approach | H. Wu et al. | 1 | _depth_ — cited by 1 corpus paper(s); deepens **SAGIN / satellite offloading & federation** | no |
 | 2024 | IEEE J. Sel. Areas Commun. (JSAC) | Through the wall detection and localization of autonomous mobile device in indoor scenario | J. Wang et al. | 3 | _depth_ — cited by 3 corpus paper(s); general MEC offloading, no dedicated track yet | no |
 | 2024 | IEEE Trans. Commun. (TCOM) | Resource and trajectory optimization for UAV-relayassisted secure maritime MEC | F. Lu et al. | 3 | _depth_ — cited by 3 corpus paper(s); deepens **Maritime MEC** | no |
 | 2025 | IEEE Internet Things J. (IoTJ) | UAV-assisted joint mobile edge computing and data collection via matching-enabled deep reinforcement learning | B. Wang et al. | 2 | _depth_ — cited by 2 corpus paper(s); deepens **Game-theoretic offloading** | no |
@@ -46,6 +45,7 @@ _Generated: 2026-06-02_ · Candidates mined from the reference lists of the 214 
 | 2025 | IEEE J. Sel. Areas Commun. (JSAC) | Cooperative ground-satellite scheduling and power allocation for urban air mobility networks | H.-J. Moon et al. | 1 | _depth_ — cited by 1 corpus paper(s); deepens **SAGIN / satellite offloading & federation** | no |
 | 2025 | IEEE Trans. Mobile Comput. (TMC) | DNN partitioning, task offloading, and resource allocation in dynamic vehicular networks: A Lyapunov-guided diffusion-based reinforcement learning approach | Z. Liu et al. | 1 | _depth_ — cited by 1 corpus paper(s); deepens **Vehicular MEC** | no |
 | 2025 | IEEE Trans. Veh. Technol. (TVT) | URLLC-aware trajectory plan and beamforming design for NOMA-aided UAV integrated sensing, communication, and computation networks | P. Qin et al. | 1 | _depth_ — cited by 1 corpus paper(s); deepens **ISAC / sensing / PLS** | no |
+| 2025 | IEEE Trans. Veh. Technol. (TVT) | Joint trajectory design and radio resource management for UAV-aided vehicular networks | L. Spampinato et al. | 1 | _depth_ — cited by 1 corpus paper(s); deepens **Vehicular MEC** | no |
 
 ## Depth picks — most cited within the corpus (foundational)
 

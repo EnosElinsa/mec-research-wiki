@@ -160,6 +160,37 @@ _REF_MARKER_DOT = re.compile(r"(?m)^[ \t]*(\d+)\.\s+")
 # (appendix / author biographies that MinerU sometimes keeps inline).
 _POST_REF_HEADING = re.compile(r"(?im)^#{1,6}\s+")
 
+# Trailing junk MinerU appends to the FINAL reference entry when no heading
+# separates the bibliography from what follows: inline figure markdown, the
+# <details>/<summary> wrappers around image captions, and author-biography
+# prose. None of these tokens ever occur inside a legitimate IEEE reference
+# string, so truncating at the earliest one safely de-contaminates the entry
+# without touching well-formed references (and is idempotent on clean input).
+_REF_CONTAM = re.compile(
+    r"!\[\]\("                                                       # inline image markdown
+    r"|</?details>|</?summary>"                                      # MinerU caption wrappers
+    r"|\s#{1,6}\s+\w"                                                # embedded heading (e.g. "# Biographies")
+    r"|Bi\s?ogra\s?phi\s?es"                                         # OCR-split "Biographies"
+    r"|\b(?:Student |Graduate Student |Senior |Life )?(?:Member|Fellow),\s*IEEE\b"  # IEEE bio designations
+    r"|\breceived (?:the|his|her|a|an)\b[^.]*\bdegree\b",            # bio sentence opener
+    re.I,
+)
+
+
+def strip_ref_contamination(s: str) -> str:
+    """Cut a reference string at the first MinerU contamination marker.
+
+    The last entry of a references block frequently absorbs trailing figure
+    markdown and author biographies because no markdown heading separates them.
+    Those markers never appear inside a real reference, so truncating at the
+    earliest one removes the junk without altering well-formed entries.
+    Idempotent: clean input is returned unchanged.
+    """
+    if not s:
+        return s
+    m = _REF_CONTAM.search(s)
+    return s[: m.start()].strip() if m else s
+
 _QUOTED_TITLE = re.compile(r"[“\"]([^“”\"]+?)[”\"]", re.S)
 _VOL = re.compile(r"\bvol\.\s*([0-9]+)", re.I)
 _NO = re.compile(r"\bno\.\s*([0-9]+)", re.I)
@@ -215,6 +246,7 @@ def split_ref_entries(block: str):
     for i in range(1, len(parts) - 1, 2):
         num = int(parts[i])
         body = re.sub(r"\s+", " ", parts[i + 1]).strip()
+        body = strip_ref_contamination(body)
         if body:
             out.append((num, body))
     if out:
@@ -227,6 +259,7 @@ def split_ref_entries(block: str):
             s = marks[j][1]
             e = marks[j + 1][0] if j + 1 < len(marks) else len(block)
             body = re.sub(r"\s+", " ", block[s:e]).strip()
+            body = strip_ref_contamination(body)
             if body:
                 out.append((marks[j][2], body))
     return out
@@ -238,6 +271,9 @@ def parse_ref_entry(raw: str) -> dict:
     Never guesses: authors/title/venue/vol/no/pp/year/doi/url are only filled
     when they are unambiguously present in the string.
     """
+    # Defensive: de-contaminate even when called directly on a raw string
+    # (split_ref_entries already strips, so this is idempotent in the pipeline).
+    raw = strip_ref_contamination(raw)
     rec = {
         "authors": None, "title": None, "venue": None,
         "vol": None, "no": None, "pp": None, "year": None,
