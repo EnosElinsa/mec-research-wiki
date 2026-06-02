@@ -2,6 +2,31 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-03 — Audit pass (no new papers): close standing roster advisory + verify corpus
+
+No-new-papers quality pass. Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders = 214 curated, 0 uncurated, 0 genuinely-new** — nothing to route to `mec-wiki-curator`. Working tree opened with three uncommitted entity edits left from the prior session (the `wang-2024-wipe-gai` roster additions on [[jiacheng-wang]] / [[jiawen-kang]] / [[xuemin-shen]]); verified them against the parse and committed.
+
+### Roster correctness (parse-grounded)
+
+- [[jiacheng-wang]] (10), [[jiawen-kang]] (15), [[xuemin-shen]] (9) each gained [[wang-2024-wipe-gai]] in `related:` + the body roster, with the stated co-authored-source counts re-reconciled to the bullet lists. The WiPe-GAI parse author block grounds all three: Jiacheng Wang (NTU, first author, `jiacheng.wang@ntu.edu.sg`), Jiawen Kang (GDUT, **corresponding author**, `kavinkang@gdut.edu.cn`), Xuemin Shen (Waterloo, `sshen@uwaterloo.ca`). This clears the **3 standing present-but-unlisted advisories** that `entity_roster_audit.py` had been reporting on `wang-2024-wipe-gai` since the batch-1 curation; the source page's `related:` and [[dusit-niyato]]'s roster already carried the link, so this only completes the symmetry.
+
+### Audit results
+
+- **Raw/curated reconciliation:** 214 = 214, 0 uncurated, 0 duplicate MinerU ingests.
+- **Meta docs:** `log.md` / `index.md` / `overview.md` reviewed — date headers, ordering, and the consolidated [Raw-source housekeeping](#raw-source-housekeeping) section are intact; Snapshot counts already exact (`corpus_counts.py`: 214 sources / 260 concepts / 71 entities / 14 findings / 14 synthesis / 5 comparisons / 3 methodology / 5 queries / 1 thesis). No meta-doc edits needed (idempotent — prior passes left them clean).
+- **Correctness spot-checks (freshest sources):** [[du-2024-yolo-semcom-digital-twin]] re-verified against its parse — DOI 10.1109/JIOT.2023.3317629 verbatim; the 595.2 MB → 55.4 MB (54.8 MB image + 0.6 MB text) / **91%** communication-cost reduction and the η = 0.5/0.75/1 at 10/20/30 m crossover are verbatim; figure-derived MIST/SSIM/BER magnitudes correctly flagged indicative. [[wang-2024-wipe-gai]] DOI 10.1109/TMC.2024.3377226 + corresponding-author claim confirmed in-parse. No ungrounded numbers found.
+- **Wording/evergreen:** `process_refs.py` = 0 files / 0 hits (no process-narration leaked into any non-`log.md` page).
+- **Gates:** `linkcheck.py` = **NO DANGLING LINKS**; `process_refs.py` = 0/0; `index_audit.py` = 589/589 indexed, 0 unindexed / 0 duplicate primaries; `frontmatter_audit.py` = 587 pages, 0 errors (entity-typed 71, 0 errors); `entity_roster_audit.py` = **0 over-claims / 0 present-but-unlisted** (the 3 prior advisories now cleared). `corpus_counts.py` counts unchanged (audit-only, no new pages).
+- **LLM Wiki API:** unreachable this pass (`/health` connection refused — desktop app not running). Degraded gracefully to local file/search tools per the read-only-optimization contract; graph node/edge stats not enumerated. Correctness was grounded in the parses and committed files throughout, not the index.
+
+### Toolkit
+
+No ratchet needed — `curation_status.py`, `corpus_counts.py`, `linkcheck.py`, `process_refs.py`, `index_audit.py`, `frontmatter_audit.py`, and `entity_roster_audit.py` covered the whole pass. No reusable one-off arose; the toolkit is stable and unchanged.
+
+### Routing to mec-wiki-synthesizer
+
+No new gaps surfaced this pass beyond the standing consolidation/synthesis candidates already recorded across the source/concept/entity audit batches in `.curation-out/audit-coverage.md` (swarm-metaheuristic family synthesis, hybrid-action family, game-theory-mechanisms, LEO/NTN cluster, caching cluster, channel-model cluster, multi-agent actor-critic comparison, and the standing tag-vocabulary normalizations). These remain `mec-wiki-synthesizer`'s to act on — not filled here.
+
 ## 2026-06-02 — Curation pass (SOURCE layer — multi-batch run batch 8/8: 1 new source; +1 concept) — RUN COMPLETE
 
 Eighth and **final** batch of the multi-invocation curation run over the 37 papers planned in `.curation-out/batches-remaining.json` (the `batch7` key there — a single paper). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders, 213 curated, 1 uncurated, 0 duplicate MinerU ingests**; HEAD synced with origin/main (`e937338`), working tree clean apart from the one uncurated raw folder + app-generated `wiki/media/`. The batch paper had no existing source page. `.curation-context.md` was absent this session, so the extraction format was reconstructed from the live `wiki/sources/` schema (mirroring `du-2024-d2sac-aigc-asp-selection` / `sun-2024-mfris-semantic-antijamming`). Every metadata field and headline claim verified against `raw/sources/<Folder>/full.md`. After this batch: **214 curated, 0 uncurated, 0 batches remain — all 43 papers in the run are curated.**
