@@ -9,8 +9,9 @@ related:
   - "[[multi-verse-optimizer]]"
   - "[[whale-optimization-algorithm]]"
   - "[[collaborative-beamforming]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # Ant Lion Optimizer (ALO)

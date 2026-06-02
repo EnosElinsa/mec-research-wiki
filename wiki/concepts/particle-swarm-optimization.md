@@ -7,8 +7,9 @@ related:
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[albakhrani-2025-moalf-uav-mec]]"
   - "[[whale-optimization-algorithm]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # Particle Swarm Optimization (PSO)

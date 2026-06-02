@@ -22,8 +22,9 @@ related:
   - "[[lyapunov-guided-drl]]"
   - "[[hierarchical-aerial-mec-design-space]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-03
 ---
 
 # DRL vs evolutionary vs classical solvers across the MEC corpus
@@ -201,6 +202,7 @@ Six papers from one group, all compounding. Whether the methodological stack sca
 
 - [[drl-backbones-across-uav-mec-sources]] — DRL family deep dive (12 sources).
 - [[cmop-evolutionary-uav-mec-lineage]] — evolutionary family deep dive (6 sources, single research group).
+- [[swarm-metaheuristics-in-uav-mec]] — swarm-intelligence metaheuristic family deep dive (9+ algorithms; the "metaheuristic (BWOA/MVO)" row above maps onto its standalone-vs-embedded role split).
 - [[hierarchical-aerial-mec-design-space]] — track-level synthesis where all three families overlap.
 - [[two-stage-decomposition]] — the most portable cross-family scaffold.
 - [[design-recipe-multi-uav-mec]] — DRL-track design recipe; the evolutionary equivalent would be a useful future page.

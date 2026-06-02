@@ -6,8 +6,9 @@ related:
   - "[[multi-verse-optimizer]]"
   - "[[matching-theory-for-resource-allocation]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # Binary Whale Optimization Algorithm (BWOA)

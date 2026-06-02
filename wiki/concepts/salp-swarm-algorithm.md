@@ -9,8 +9,9 @@ related:
   - "[[collaborative-beamforming]]"
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[sun-2024-imssa-uav-secure-cb]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-03
 ---
 
 # Salp Swarm Algorithm (SSA)

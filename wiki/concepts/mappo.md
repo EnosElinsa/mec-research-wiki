@@ -7,8 +7,9 @@ related:
   - "[[ppo]]"
   - "[[centralized-training-decentralized-execution]]"
   - "[[masac]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # MAPPO (Multi-Agent PPO)

@@ -673,6 +673,7 @@
 - [[j-ppo-baselines]]
 - [[bcsa-frl-vs-bc-uav-masac]] — Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
 - [[game-theoretic-offloading-formulations]] — potential vs Stackelberg vs bargaining vs matching
+- [[ctde-actor-critic-backbones-in-mec]] — CTDE multi-agent backbones: MADDPG vs MATD3 vs MASAC vs MAPPO vs value-based
 
 ## Synthesis
 
@@ -680,6 +681,7 @@
 - [[drl-backbones-across-uav-mec-sources]] — Cross-corpus DRL-backbone analysis.
 - [[maddpg-vs-masac-in-mec]] — When entropy beats determinism in cooperative MEC.
 - [[cmop-evolutionary-uav-mec-lineage]] — Peng/Huang group's 6-paper CMOP-evolutionary lineage (2022-2026).
+- [[swarm-metaheuristics-in-uav-mec]] — Nine-plus swarm-intelligence metaheuristics (PSO/WOA/SSA/MVO/ALO/GSA/ACO/SGHS) mapped by role (standalone Pareto solver vs embedded sub-solver).
 - [[hierarchical-aerial-mec-design-space]] — Cross-comparison of the 5 UAV+HAP hierarchical-MEC sources.
 - [[drl-vs-evolutionary-vs-classical-solvers]] — Solver-family analysis (DRL / evolutionary / classical).
 - [[sagin-satellite-offloading-landscape]] — The 8 SAGIN / satellite-offloading sources mapped by satellite role + solver shape.

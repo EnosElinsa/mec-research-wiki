@@ -8,8 +8,9 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[prioritized-experience-replay]]"
   - "[[shao-2024-drl-antijamming-mec]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # Multi-Agent TD3 (MATD3)

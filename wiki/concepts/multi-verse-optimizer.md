@@ -6,8 +6,9 @@ related:
   - "[[binary-whale-optimization]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
   - "[[liang-2024-hmecmop-uav-cb]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-03
 ---
 
 # Multi-Verse Optimizer (MVO)

@@ -4,8 +4,9 @@ title: MASAC (Multi-Agent Soft Actor-Critic)
 tags: [drl, multi-agent, off-policy]
 related:
   - "[[qin-2025-bcuav-masac]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-03
 ---
 
 # MASAC (Multi-Agent Soft Actor-Critic)

@@ -6,8 +6,9 @@ related:
   - "[[whale-optimization-algorithm]]"
   - "[[multi-verse-optimizer]]"
   - "[[gao-2024-sagin-perception-offloading]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # Self-Adaptive Global-Best Harmony Search (SGHS)

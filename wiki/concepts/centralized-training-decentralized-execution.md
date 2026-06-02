@@ -7,8 +7,9 @@ related:
   - "[[masac]]"
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-03
 ---
 
 # Centralized Training, Decentralized Execution (CTDE)

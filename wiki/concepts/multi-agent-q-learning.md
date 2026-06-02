@@ -7,8 +7,9 @@ related:
   - "[[stochastic-game]]"
   - "[[ddqn]]"
   - "[[li-2025-stochastic-game-uav-swarm]]"
+  - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # Multi-Agent Q-Learning

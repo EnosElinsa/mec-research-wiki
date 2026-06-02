@@ -5,8 +5,9 @@ tags: [optimization, swarm-intelligence, metaheuristic, routing]
 related:
   - "[[mao-2024-ntn-hierarchical-caching-cav]]"
   - "[[particle-swarm-optimization]]"
+  - "[[swarm-metaheuristics-in-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-03
 ---
 
 # Ant Colony Optimization (ACO)
