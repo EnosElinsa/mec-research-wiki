@@ -12,15 +12,17 @@ related:
   - "[[ye-2021-ran-slicing-offloading]]"
   - "[[chen-2022-qoe-game-end-edge-cloud]]"
   - "[[wang-2024-wipe-gai]]"
+  - "[[dai-2024-graph-rm-survey-optimization]]"
+  - "[[dai-2024-graph-rm-survey-learning]]"
 created: 2026-05-31
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # Xuemin (Sherman) Shen
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Waterloo** (Waterloo, ON, Canada; email `sshen@uwaterloo.ca`) across his papers in this wiki.
 
-Co-authored 9 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, UAV-LEO and end-edge-cloud offloading games, the mobile-AIGC and generative-AI-ISAC threads, human-digital-twin edge deployment, two-timescale RAN-slicing / offloading, and wireless-perception-guided edge AIGC:
+Co-authored 11 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, UAV-LEO and end-edge-cloud offloading games, the mobile-AIGC and generative-AI-ISAC threads, human-digital-twin edge deployment, two-timescale RAN-slicing / offloading, wireless-perception-guided edge AIGC, and the graph-based-resource-management two-part survey:
 
 - [[peng-2020-maddpg-uav-vehicular]] — MADDPG resource management in MEC- and UAV-assisted vehicular networks (with Haixia Peng).
 - [[duan-2023-moto-smallcell-offloading]] — MOTO mobility-aware online task offloading with load balancing in small-cell MEC.
@@ -31,7 +33,9 @@ Co-authored 9 sources in this wiki, spanning UAV-assisted vehicular MEC, terrest
 - [[wang-gai-isac-physical-layer]] — generative AI for integrated sensing and communication from the physical-layer perspective (Niyato/Kang generative-AI cluster).
 - [[ye-2021-ran-slicing-offloading]] — two-timescale joint RAN slicing + computation offloading for autonomous vehicular networks (cooperative MA-DQL + convex slicing; with [[qiang-ye]] and his Waterloo group).
 - [[wang-2024-wipe-gai]] — wireless-perception-guided GAI (WiPe-GAI) for edge AIGC pricing via a diffusion model (Niyato/Kang generative-AI cluster).
+- [[dai-2024-graph-rm-survey-optimization]] — Part I (optimization approaches) of the two-part graph-based-resource-management survey.
+- [[dai-2024-graph-rm-survey-learning]] — Part II (learning approaches / GNNs) of the same two-part survey.
 
 ## Contributions to this wiki
 
-- A recurring senior co-author across the MEC resource-management line. Works with [[haixia-peng]] on the UAV-vehicular MADDPG paper, with the Central South University group (Feng Lyu et al.) on the small-cell MOTO paper, with the [[ying-chen]] / [[yuan-wu]] group on the UAV-LEO and end-edge-cloud potential-game offloading papers, with the [[qiang-ye]] Waterloo group on the RAN-slicing paper, and within the Niyato/Du generative-AI cluster on the mobile-AIGC survey and the generative-AI-ISAC physical-layer paper.
+- A recurring senior co-author across the MEC resource-management line. Works with [[haixia-peng]] on the UAV-vehicular MADDPG paper, with the Central South University group (Feng Lyu et al.) on the small-cell MOTO paper, with the [[ying-chen]] / [[yuan-wu]] group on the UAV-LEO and end-edge-cloud potential-game offloading papers, with the [[qiang-ye]] Waterloo group on the RAN-slicing paper, within the Niyato/Du generative-AI cluster on the mobile-AIGC survey and the generative-AI-ISAC physical-layer paper, and with the Dalian-Maritime / Xidian group (Yanpeng Dai, Nan Cheng, [[shuguang-cui]] et al.) on the two-part graph-based-resource-management survey.

@@ -20,15 +20,16 @@ related:
   - "[[zheng-2024-recmop-uav-cb]]"
   - "[[liu-2024-hatrpo-ucb-cb]]"
   - "[[sun-2021-temcmop-uav-cb]]"
+  - "[[li-2025-omrp-cb-iot]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # Geng Sun
 
 IEEE Member. Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China); also affiliated with the **College of Computing and Data Science, Nanyang Technological University** (Singapore) in several papers.
 
-Co-authored 17 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, and survey work in aerial/edge networks:
+Co-authored 18 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, and survey work in aerial/edge networks:
 
 - [[sun-2021-temcmop-uav-cb]] — earliest UAV collaborative-beamforming entry; time + VAA-time + motion/hovering-energy multi-objective optimization (TEMCMOP) via the improved multi-objective ant lion optimizer (IMOALO) (lead author).
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing.
@@ -47,6 +48,7 @@ Co-authored 17 sources in this wiki, spanning vehicular, post-disaster, energy-e
 - [[liang-2024-hmecmop-uav-cb]] — multiobjective hovering/motion-energy reduction for UAV-assisted collaborative beamforming via the improved multiobjective multiverse optimizer (IMOMVO; corresponding author).
 - [[zheng-2024-recmop-uav-cb]] — reliable and energy-efficient UAV collaborative beamforming (RECMOP; max-min BSs SNR / min-max AUs SNR / min propulsion energy) via the improved multi-objective gravitational search algorithm (IMOGSA; corresponding author).
 - [[liu-2024-hatrpo-ucb-cb]] — UAV-enabled collaborative beamforming rate-vs-energy multi-objective optimization (UCBMOP) via heterogeneous-agent trust-region MADRL (HATRPO-UCB).
+- [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT; overlap-based routing (OMRP) + SoftPPO-LSTM node selection (corresponding author).
 
 ## Contributions to this wiki
 

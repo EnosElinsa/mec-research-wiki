@@ -20,6 +20,8 @@
 - [[wang-2024-xl-mimo-tutorial]] — Wang et al. 2024. **Tutorial / survey on extremely large-scale MIMO (XL-MIMO)** for 6G; four hardware designs (ULA / UPA-patch / UPA-point / CAP), near-field channel modeling, and low-complexity + deep-learning signal processing (IEEE COMST). *(Physical-layer / near-field anchor, not MEC.)*
 - [[huynh-2024-gai-physical-layer-survey]] — Van Huynh et al. 2024. Survey of **generative AI for physical-layer communications**; five GAI model families (GANs, **VAEs**, normalizing flows, diffusion, transformers) across modulation/signal classification, channel estimation/equalization, PLS, IRS, beamforming, JSCC, CSI feedback; GAI-vs-traditional-AI comparison + open issues (security, model-driven GAI, resource-efficient learning, real-time adaptation) (IEEE TCCN). *(Physical-layer GAI survey, not MEC.)*
 - [[hu-2015-mec-5g-etsi-whitepaper]] — Hu et al. 2015. The **ETSI white paper** that introduces **Mobile Edge Computing** as a standardized concept (IT/cloud capabilities at the RAN edge), its market drivers, business value, service scenarios (AR, intelligent video acceleration, connected cars, IoT gateway), deployment locations, and the ETSI ISG MEC + Proof-of-Concept framework; positions MEC as complementary to NFV/SDN for 5G (ETSI White Paper No. 11; no DOI). *(Standardization anchor for MEC itself.)*
+- [[dai-2024-graph-rm-survey-optimization]] — Dai et al. 2024. **Part I** of a two-part survey on **graph-based resource management** in wireless networks — the **graph-optimization** half (coloring / max-independent-set / max-flow / bipartite-stable matching) across cellular, D2D, multi-hop, multi-antenna, edge caching/computing, and NTN scenarios (IEEE TCCN).
+- [[dai-2024-graph-rm-survey-learning]] — Dai et al. 2024. **Part II** of the same survey — the **graph-learning** half: GNN model families applied to power control, spectrum management, beamforming design, task scheduling, and aerial coverage planning, plus the two-part survey's consolidated challenges + future directions (IEEE TCCN).
 
 ### Foundational DRL methods
 
@@ -127,6 +129,7 @@
 - [[liu-2023-sagecn-online-offloading]] — Liu et al. 2023. Collaborative **space/aerial-aided** edge computing (SAGECN) for 6G where **LEO satellites are both servers and users**; a satellite offloads its own tasks one hop to a nearby aircraft or multi-hop to the cloud; min long-term completion delay via **Lyapunov** drift-plus-penalty + **delayed online learning** predicting task arrivals + queue lengths, per-slot bounded integer program (IEEE TVT).
 - [[zhang-2023-three-tier-satellite-offloading]] — Zhang et al. 2023. **Satellite-based three-tier cloud-edge offloading**; remote ground UEs offload (data-partition **partial offloading**) to a LEO-edge server and further to a ground cloud; min system energy over **user association + power + task scheduling + fronthaul/backhaul bandwidth assignment**; NOMA fronthaul + quadratic-transform power + CVX bandwidth, in a joint iterative algorithm (IEEE TWC).
 - [[zhang-2024-qos-vne-sagoin]] — Zhang et al. 2024. **QoS-aware multi-domain virtual network embedding** over a three-layer **space-air-ground-ocean** integrated network (SAGOI-Net); K-means classifies VNRs into compute/bandwidth/delay QoS categories to switch the **RL agent's reward**; convolutional policy network for node mapping + k-shortest-path link mapping (IEEE TSC). *(SDN/NFV resource orchestration.)*
+- [[xie-2025-stin-delay-offloading]] — Xie et al. 2025. **LEO satellite-terrestrial** computation offloading + resource allocation that treats **system state delay** (stale observations / delayed actions) as a first-class modeling object: a **stochastic delay MDP** reduced to a standard MDP with an **augmented state**, solved by an augmented-experience **double DQN**, plus a multi-level feedback queue (RAMLFQ) for per-server CPU; MINLP energy minimization under latency (IEEE TMC).
 
 ### IRS / THz / anti-jamming
 
@@ -186,6 +189,7 @@
 - [[li-2024-airground-vec-offloading]] — Li et al. 2024. **Air-ground integrated VEC** (HAP + UAVs + RSU, each with MEC; UAVs/RSU also relay to the HAP); minimizes total task offloading delay (**JCESRA**) via BCD: many-to-one **matching** + **coalition game** (equipment selection) + CVX (bandwidth/compute) + **SCA** (UAV trajectory), then HAP as a **knapsack** solved by dynamic programming + compute reallocation (IEEE IoT-J).
 - [[ye-2021-ran-slicing-offloading]] — Ye et al. 2021. **Two-timescale joint RAN slicing + computation offloading** for autonomous vehicular networks (C-AVN); small-timescale task scheduling for load balancing with minimal offloading variation via cooperative **multi-agent deep Q-learning** (fingerprint), large-timescale **RAN slicing** as a convex program with statistical QoS, in a learning-assisted hierarchical loop (IEEE OJVT).
 - [[dai-2024-uav-vehicular-offloading-lyapunov]] — Dai et al. 2024. UAV relieves **overloaded RSUs** in VEC; minimizes time-average vehicular task delay under long-term UAV energy via **Lyapunov** + **Markov-approximation** online offloading (IEEE TMC).
+- [[mou-2025-adm-dt-migration]] — Mou et al. 2025. **Adaptive digital-twin migration** in vehicular edge networks (VECONs); minimizes communication + colocation + migration cost (NP-hard, three-way DT-communication latency) with an off-policy **actor-critic** agent **warm-started on expert (Greedy) demonstrations** then decayed; ~39% average migration-latency reduction on real Cologne traces (IEEE TVT).
 
 ### Maritime MEC
 
@@ -245,6 +249,7 @@
 - [[liang-2024-hmecmop-uav-cb]] — Liang et al. 2024. UAV-swarm **collaborative beamforming** to remote BSs; multi-objective **hovering vs motion energy** minimization (HMECMOP) over positions + excitation weights + BS-communication order; **improved multiverse optimizer** (IMOMVO) (IEEE IoT-J).
 - [[zheng-2024-recmop-uav-cb]] — Zheng et al. 2024. **Reliable + energy-efficient** UAV collaborative beamforming (UVAA relay → remote BSs) in emergency communications; multi-objective RECMOP (max-min BS SNR / min-max AU SNR / min propulsion energy) over UAV locations + excitation weights; **improved multi-objective gravitational search algorithm** (IMOGSA) (IEEE TWC).
 - [[liu-2024-hatrpo-ucb-cb]] — Liu et al. 2024. UAV-enabled **collaborative beamforming** (UVAA → remote BSs); multi-objective UCBMOP (max transmission rate / min UAV energy) over positions + excitation weights; **heterogeneous-agent trust-region MADRL** (HATRPO-UCB) with observation enhancement + agent-specific global state + Beta-distribution policy (IEEE TMC).
+- [[li-2025-omrp-cb-iot]] — Li et al. 2025. **Collaborative beamforming for static ground IoT** (the corpus's only ground-IoT CB entry): a sensing-area-**overlap**-driven hierarchical clustering routing protocol (**OMRP**) feeds **SoftPPO-LSTM** CB-node selection for the long uplink to a remote BS; +17% network lifetime over benchmark routing, +8.3% CB throughput over benchmark algorithms, Raspberry Pi 4B deployment (IEEE IoT-J).
 
 ### Architectural / spectrum / governance
 
@@ -270,6 +275,7 @@
 - [[he-2024-backscatter-wpmec-cooperation]] — He et al. 2024. **Backscatter-assisted wireless-powered MEC with user cooperation** (source node + helper-relay + HAP-with-MEC); integrated **BackCom + active comm**; **user energy-efficiency** maximization via Dinkelbach fractional programming + convex transform to semi-closed-form solutions (IEEE TMC).
 - [[li-2024-irs-secure-wpmec]] — Li et al. 2024. **IRS-assisted secure wireless-powered MEC** with a passive eavesdropper; harvest-then-offload (TDMA) + partial offloading; **sum secure computation task bits** maximization over AP energy beamforming + IRS phase shifts (WPT + offload) + power + time + local frequency; non-convex → 3 subproblems via Taylor expansion + SDR + Lagrange-duality/KKT, iterative AO; >45% secure-bits gain at max AP power (IEEE TMC).
 - [[xu-2018-uav-wpt-trajectory]] — Xu et al. 2018. Foundational **UAV-enabled WPT**: trajectory design + energy optimization; sum-energy optimum is **single-location hovering** (near-far fairness issue), max-min (min-energy) optimum is **multi-location hovering** → **successive hover-and-fly** + SCP under a max-speed constraint (IEEE TWC).
+- [[wang-2025-airground-laser-mec]] — Wang et al. 2025. **Air-ground coordinated MEC** with a **laser-powered** rotary-wing UAV: a grid-powered ground AP both laser-charges the UAV and serves as a compute server, while the UAV is simultaneously MEC server + relay; minimizes long-term average **UAV energy** by decomposing into an **LP** task/EH-time allocation stage + a **DDPG** trajectory stage (**LP-DDPG**) (IEEE TVT).
 
 > [[liu-2020-wpt-cooperative-uav-mec]] (UAV-enabled wireless-powered cooperative MEC; SCA + DAI) also targets WPT energy minimization; it is filed under **Classical / convex / optimization-based UAV-MEC** above as its primary home.
 > [[wu-2025-iopo-irs-uav-thz-mec]] (IRS-assisted THz energy optimization) also targets energy efficiency; it is filed under **IRS / THz / anti-jamming** above as its primary home.
@@ -323,6 +329,7 @@
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
 - [[dong-jun-han]] & [[christopher-brinton]] (Purdue University — non-terrestrial **federated-learning** offloading cluster with Mung Chiang / David J. Love / Seyyedali Hosseinalipour; 2 sources each — [[han-2024-ground-satellite-fl]] + [[han-2024-sagin-fl-handover]]).
 - [[yong-zeng]] (National University of Singapore — **UAV-communications / trajectory-optimization** foundations; 5 sources: [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], [[zeng-2019-uav-comm-tutorial-5g]], [[wu-2018-multiuav-minrate-trajectory]]).
+- [[shuguang-cui]] (The Chinese University of Hong Kong, Shenzhen — physical-layer / edge-AI / surveys; 7 sources spanning the graph-based-resource-management two-part survey, XL-MIMO, generative-AI/ISAC physical-layer, ISCC edge-AI, and generative-diffusion network optimization).
 
 (Two recurring author names are deferred for human confirmation as genuine **namesakes**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so not merged; and the "Jingjing Wang" in [[yang-2020-loadbalance-multiuav-iot]] is at **Tsinghua University** (`chinaeephd@gmail.com`), distinct from the existing **Beihang** [[jingjing-wang]] entity (`drwangjj@buaa.edu.cn`) — not merged.)
 
@@ -393,6 +400,9 @@
 - [[discriminant-gain]]
 - [[device-to-device-communication]]
 - [[digital-twin]]
+- [[graph-based-resource-management]]
+- [[hot-spot-problem-iot]]
+- [[omrp-overlap-routing]]
 
 ### Aerial / network architectures
 
@@ -484,6 +494,9 @@
 - [[variational-autoencoder]]
 - [[conditional-gan]]
 - [[beta-policy-drl]]
+- [[softppo-lstm]]
+- [[expert-guided-warm-start-rl]]
+- [[graph-neural-network]]
 
 ### Memory / encoders
 
@@ -557,6 +570,7 @@
 - [[blockage-aware-channel-model]]
 - [[air-to-ground-channel-model]]
 - [[terrain-aware-channel-model]]
+- [[first-order-radio-energy-model]]
 - [[stochastic-geometry-network-analysis]]
 - [[csi-estimation-error]]
 
