@@ -13,15 +13,16 @@ related:
   - "[[sun-2024-imssa-uav-secure-cb]]"
   - "[[zheng-2024-recmop-uav-cb]]"
   - "[[liu-2024-hatrpo-ucb-cb]]"
+  - "[[pan-2025-uav-ris-energy-efficient-comm]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-03
 ---
 
 # Qingqing Wu
 
 IEEE Senior Member. Affiliated with the **Department of Electronic Engineering, Shanghai Jiao Tong University** (Shanghai, China; email `qingqingwu@sjtu.edu.cn`) — consistent across these papers in this wiki.
 
-Co-authored 10 sources in this wiki, spanning UAV ISAC, aerial MEC, collaborative beamforming, URLLC-based UAV-MEC, two-timescale UAV-MEC, and UAV-swarm virtual antenna arrays:
+Co-authored 11 sources in this wiki, spanning UAV ISAC, aerial MEC, collaborative beamforming, URLLC-based UAV-MEC, two-timescale UAV-MEC, UAV-mounted-RIS communications, and UAV-swarm virtual antenna arrays:
 
 - [[meng-2024-uav-isac-overview]] — overview of UAV-enabled integrated sensing and communication.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
@@ -33,6 +34,7 @@ Co-authored 10 sources in this wiki, spanning UAV ISAC, aerial MEC, collaborativ
 - [[sun-2024-imssa-uav-secure-cb]] — UAV-enabled secure collaborative beamforming with imperfect eavesdropper information (IMSSA; corresponding author, SJTU-email-matched).
 - [[zheng-2024-recmop-uav-cb]] — reliable and energy-efficient UAV collaborative beamforming (RECMOP; IMOGSA; SJTU-email-matched).
 - [[liu-2024-hatrpo-ucb-cb]] — UAV collaborative beamforming rate-vs-energy MOP (UCBMOP) via heterogeneous-agent trust-region MADRL (HATRPO-UCB; SJTU-email-matched).
+- [[pan-2025-uav-ris-energy-efficient-comm]] — cooperative UAV-mounted RISs for energy-efficient communications; joint BS beamforming + 3D UAV-RIS location + discrete phase shifts via INSGA-II-CDC (SJTU-email-matched).
 
 > Note: a "Qingqing Wu" also appears in two **earlier** papers but listed at the **National University of Singapore** (`elewuqq@nus.edu.sg`), not SJTU — the 2019 tutorial [[zeng-2019-uav-comm-tutorial-5g]] and the 2018 multi-UAV min-rate paper [[wu-2018-multiuav-minrate-trajectory]] (both first-authored by him at NUS). These are plausibly the same researcher at an earlier career stage, but the affiliation/email differ, so those two sources are **not** added to this SJTU roster pending human confirmation.
 
