@@ -17,15 +17,16 @@ related:
   - "[[zheng-2024-recmop-uav-cb]]"
   - "[[liu-2024-hatrpo-ucb-cb]]"
   - "[[sun-2021-temcmop-uav-cb]]"
+  - "[[li-2025-omrp-cb-iot]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # Jiahui Li
 
 IEEE Member (Student Member on earlier papers). Affiliated with the **College of Computer Science and Technology, Jilin University** (Changchun, China; email `lijiahui0803@foxmail.com` / `lijiahui@jlu.edu.cn`); some papers also list the **Pillar of Engineering Systems and Design, Singapore University of Technology and Design**. Consistent identity across his papers in this wiki, often a corresponding author for the Jilin-University group.
 
-Co-authored 14 sources in this wiki:
+Co-authored 15 sources in this wiki:
 
 - [[sun-2021-temcmop-uav-cb]] — earliest UAV collaborative-beamforming entry; time + VAA-time + energy multi-objective optimization (TEMCMOP) via IMOALO.
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
@@ -41,6 +42,7 @@ Co-authored 14 sources in this wiki:
 - [[liang-2024-hmecmop-uav-cb]] — multiobjective hovering/motion-energy reduction for UAV-assisted collaborative beamforming (IMOMVO).
 - [[zheng-2024-recmop-uav-cb]] — reliable and energy-efficient UAV collaborative beamforming (RECMOP; IMOGSA).
 - [[liu-2024-hatrpo-ucb-cb]] — UAV collaborative beamforming rate-vs-energy MOP (UCBMOP) via heterogeneous-agent trust-region MADRL (HATRPO-UCB).
+- [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT; overlap-based routing (OMRP) + SoftPPO-LSTM node selection (corresponding author).
 
 ## Contributions to this wiki
 

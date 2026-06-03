@@ -29,15 +29,16 @@ related:
   - "[[an-2024-multilayer-ris-hap-swipt]]"
   - "[[huynh-2024-gai-physical-layer-survey]]"
   - "[[du-2024-yolo-semcom-digital-twin]]"
+  - "[[li-2025-omrp-cb-iot]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # Dusit Niyato
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 26 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
+The most frequently recurring author in the corpus, co-authoring 27 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -65,6 +66,7 @@ The most frequently recurring author in the corpus, co-authoring 26 sources span
 - [[an-2024-multilayer-ris-hap-swipt]] — multi-layer refracting RIS-assisted receiver enabling SWIPT over long-distance HAP links (worst-case sum-rate, LogSumExp-dual + M-CCD).
 - [[huynh-2024-gai-physical-layer-survey]] — survey of generative AI for physical-layer communications (GANs/VAEs/normalizing-flows/diffusion/transformers across channel estimation, PLS, IRS, beamforming, JSCC).
 - [[du-2024-yolo-semcom-digital-twin]] — YOLO-based semantic communication with a diffusion-model-generated power allocation scheme for digital-twin (apple-orchard) construction.
+- [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT; overlap-based routing (OMRP) + SoftPPO-LSTM CB node selection.
 
 ## Contributions to this wiki
 

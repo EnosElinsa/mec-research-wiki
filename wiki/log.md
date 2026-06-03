@@ -2,6 +2,54 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-03 — Curate 6 new sources (batch 1/8): resumed interrupted run — graph-RM survey (I+II), data-driven IoT CB, DT migration, laser air-ground MEC, STIN delay offloading + audit
+
+**Resumed an interrupted curation run** (a prior invocation was cut off by a network issue, leaving uncommitted partial work in the tree). A new batch of **43 genuinely-new raw sources** is being curated across **8 invocations** (`make_batches.py --size 6` plan in `.curation-out/batches.json`); this entry is **batch 1/8**. Resume reconciliation at `c29d71d`: `curation_status.py --dupes` reported 37 uncurated / 0 duplicate MinerU ingests *after* counting the 6 in-flight source pages already on disk, confirming the in-flight set = batch 1 of the plan (the stale `batches-remaining.json` is from the *previous* completed 43-paper run and was ignored in favor of `batches.json`).
+
+### Reconciliation of the in-flight (uncommitted) work
+
+The interrupted invocation had already written, correctly and groundedly: 6 source pages, 7 concept pages, 1 entity page, and had bumped the [[overview]] Snapshot counts (214→220 / 260→267 / 71→72) + 4 author rosters ([[geng-sun]], [[hui-kang]], [[jiahui-li]], [[yuan-wu]]). It had **not** finished: `index.md` cataloguing (14 new pages), 4 more author rosters, the [[overview]] track tables, or this log entry. This pass verified the in-flight pages against their parses and completed the unfinished navigation/roster/log work rather than re-curating.
+
+### Curated (6 sources)
+
+- [[dai-2024-graph-rm-survey-optimization]] — Dai et al. 2024, *IEEE TCCN*, DOI `10.1109/TCCN.2024.3508783`. **Part I** of the two-part graph-based-resource-management survey: graph-optimization tools (coloring / max-independent-set / max-flow / bipartite-stable matching) across cellular, D2D, multi-hop, multi-antenna, edge caching/computing, NTN.
+- [[dai-2024-graph-rm-survey-learning]] — Dai et al. 2024, *IEEE TCCN*, DOI `10.1109/TCCN.2024.3508777`. **Part II**: GNN families for power control, spectrum, beamforming, scheduling, aerial coverage + consolidated challenges/future directions.
+- [[li-2025-omrp-cb-iot]] — Li et al. 2025, *IEEE IoT-J*, DOI `10.1109/JIOT.2025.3553288`. Data-driven collaborative beamforming for **static ground IoT** (corpus's only ground-IoT CB entry): overlap-based routing (OMRP) + SoftPPO-LSTM CB-node selection; +17% lifetime / +8.3% throughput (parse-confirmed), Raspberry Pi 4B deployment.
+- [[mou-2025-adm-dt-migration]] — Mou et al. 2025, *IEEE TVT*, DOI `10.1109/TVT.2024.3492349`. Adaptive digital-twin migration in vehicular edge networks; off-policy actor-critic warm-started on expert (Greedy) demonstrations; ~39% avg migration-latency reduction on Cologne traces (parse-confirmed).
+- [[wang-2025-airground-laser-mec]] — Wang et al. 2025, *IEEE TVT*, DOI `10.1109/TVT.2024.3486036`. Laser-powered air-ground coordinated MEC (UAV = MEC server + relay, ground AP laser-charges it); LP task/EH-time allocation + DDPG trajectory (**LP-DDPG**).
+- [[xie-2025-stin-delay-offloading]] — Xie et al. 2025, *IEEE TMC*, DOI `10.1109/TMC.2024.3479243`. LEO satellite-terrestrial offloading with **system state delay** as a first-class object: stochastic-delay MDP → augmented-state double DQN + RAMLFQ CPU queue; MINLP energy minimization.
+
+### New vocabulary (7 concepts + 1 entity)
+
+- Concepts: [[graph-based-resource-management]], [[graph-neural-network]], [[omrp-overlap-routing]], [[softppo-lstm]], [[hot-spot-problem-iot]], [[first-order-radio-energy-model]], [[expert-guided-warm-start-rl]] — each grounded in its source(s) and cross-linked to existing vocabulary ([[collaborative-beamforming]], [[ppo]], [[ddpg]], [[matching-theory-for-resource-allocation]], [[drl-backbones-across-uav-mec-sources]], [[service-migration]], [[vehicular-mec]], etc.). No near-synonym duplicates created.
+- Entity: [[shuguang-cui]] (CUHK-Shenzhen; 7 sources across graph-RM survey, XL-MIMO, GAI/ISAC physical-layer, ISCC edge-AI, GDM tutorial).
+
+### Rosters / navigation finished this pass
+
+- Author rosters updated to add the new sources: [[dusit-niyato]] (26→27), [[jiacheng-wang]] (10→11), [[zemin-sun]] (6→7), [[xuemin-shen]] (9→11, both Dai surveys) — completing the 4 the interrupted run had missed (the other 4 — [[geng-sun]], [[hui-kang]], [[jiahui-li]], [[yuan-wu]] — were already bumped in the in-flight tree). `entity_roster_audit.py` now reports **0 over-claims / 0 omissions**.
+- [[index]]: all 6 sources filed (Foundational surveys; Collaborative beamforming; Vehicular MEC; SAGIN/satellite; Energy efficiency & WPT), 7 concepts + 1 entity catalogued. `index_audit.py` = 608/608 indexed.
+- [[overview]]: track tables updated (Foundational surveys 22→24, SAGIN, Vehicular MEC 8→9, Collaborative beamforming 10→11, Energy efficiency & WPT) to stay evergreen; Snapshot counts already reconciled in the in-flight tree.
+
+### Counts
+
+`corpus_counts.py`: sources **214→220**, concepts **260→267**, entities **71→72** (findings 14 / synthesis 15 / comparisons 6 / methodology 4 / queries 5 / thesis 3 unchanged). `raw/sources` 257.
+
+### Grounding (correctness-first)
+
+- All 6 DOIs verified verbatim against the parse `Digital Object Identifier` lines. Years: Part I/II = 2024; the four 2024-DOI TVT/TMC/IoT-J papers carry **date-of-current-version 2025** (Feb/Mar 2025) and are dated 2025 per the corpus convention, recorded explicitly in each Citation block. Headline numbers cross-checked against the parses ([[li-2025-omrp-cb-iot]] 17% / 8.3% in the abstract; [[mou-2025-adm-dt-migration]] ~39% in the abstract/contributions). Figure-derived magnitudes flagged indicative on the [[wang-2025-airground-laser-mec]] and [[xie-2025-stin-delay-offloading]] pages.
+
+### Gates
+
+`linkcheck.py` = **NO DANGLING LINKS**; `process_refs.py` = **0 files / 0 hits**; `index_audit.py` = 608/608 indexed, 0 unindexed / 0 duplicate primaries; `frontmatter_audit.py` = 606 pages, 0 errors; `entity_roster_audit.py` = 0 over-claims / 0 omissions. LLM Wiki API reachable (`/health` ok, v0.4.16, `allowUnauthenticated`) but the `/graph/stats` route returned `Not found` on this build — graph node/edge counts not captured this pass (not a correctness blocker).
+
+### Toolkit
+
+No ratchet needed — `curation_status.py`, `make_batches.py`, `corpus_counts.py`, `linkcheck.py`, `process_refs.py`, `index_audit.py`, `frontmatter_audit.py`, and `entity_roster_audit.py` covered resume-state reconciliation, count reconciliation, and all commit gates. No reusable one-off arose; the toolkit is stable and unchanged this pass.
+
+### Remaining
+
+Batches **2/8 – 8/8** (37 sources) remain uncurated, one batch per fresh invocation. Next invocation should curate **batch 2** from `.curation-out/batches.json`: `Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing`, `Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing`, `Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways`, `Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks`, `Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications`, `Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens`.
+
 ## 2026-06-04 — Synthesis pass (no new papers): +1 methodology + 2 theses (grow the thin types) + cross-links
 
 Coverage-growth pass over the **current** corpus (no new raw papers), targeting the chronically under-grown derived types — **methodology** (was 3) and **thesis** (was 1) — per the updated Phase A page-type-balance / thesis-gap guidance (agent file `4e967a9`). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders = 214 curated, 0 uncurated, 0 genuinely-new, 0 duplicate MinerU ingests** — nothing to route to `mec-wiki-curator`. Tree clean at `4e967a9`; LLM Wiki API reachable (`/health` ok, v0.4.16, `allowUnauthenticated`); baseline graph **592 nodes / 5487 edges**. Built on the prior pass's two new pages (`swarm-metaheuristics-in-uav-mec`, `ctde-actor-critic-backbones-in-mec`, committed `0515997`) rather than re-deriving them. Candidates mined from existing synthesis/comparison pages (the protocols/positions described *in passing* there but lacking their own page).

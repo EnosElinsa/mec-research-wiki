@@ -17,16 +17,17 @@ related:
   - "[[chen-2024-ulse-game]]"
   - "[[chen-2022-qoe-game-end-edge-cloud]]"
   - "[[qian-2022-uav-maritime-iot-noma]]"
+  - "[[mou-2025-adm-dt-migration]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-03
 ---
 
 # Yuan Wu
 
 IEEE Senior Member. Affiliated with the **State Key Laboratory of Internet of Things for Smart City** and the **Department of Computer and Information Science, University of Macau** (Macau SAR, China; email `yuanwu@um.edu.mo`).
 
-Co-authored 14 sources in this wiki — six in the **CMOP-evolutionary UAV-MEC** lineage, five maritime / multi-access offloading papers, and three air-ground / UAV-LEO / end-edge-cloud game-theoretic and online offloading papers:
+Co-authored 15 sources in this wiki — six in the **CMOP-evolutionary UAV-MEC** lineage, five maritime / multi-access offloading papers, three air-ground / UAV-LEO / end-edge-cloud game-theoretic and online offloading papers, and an adaptive digital-twin migration paper:
 
 - [[peng-2022-cmop-uav-path-planning]] (lineage seed), [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]].
 - [[dai-2023-hybrid-marine-mmwl]] — hybrid offshore + aerial multi-access offloading for marine networks (MMWL); corresponding author.
@@ -37,6 +38,7 @@ Co-authored 14 sources in this wiki — six in the **CMOP-evolutionary UAV-MEC**
 - [[chen-2023-dotora-air-ground-online]] — energy-efficient task offloading + resource allocation in air-ground integrated MEC; distributed online approach (DGMS/TPA/DOTORA); corresponding author (with [[ying-chen]]).
 - [[chen-2024-ulse-game]] — multi-user task offloading in UAV-assisted LEO satellite edge computing as a potential game (LUTO-Game / JULTO); corresponding author (with [[ying-chen]] and [[xuemin-shen]]).
 - [[chen-2022-qoe-game-end-edge-cloud]] — QoE-aware decentralized end-edge-cloud offloading as a potential game (MUTO-Game / GDTO; PoA analysis); co-author (with [[ying-chen]] and [[xuemin-shen]]).
+- [[mou-2025-adm-dt-migration]] — adaptive digital-twin migration in vehicular edge networks; off-policy actor-critic with expert warm-start, minimizing communication + colocation + migration cost.
 
 ## Contributions to this wiki
 
