@@ -30,6 +30,7 @@ related:
   - "[[huynh-2024-gai-physical-layer-survey]]"
   - "[[du-2024-yolo-semcom-digital-twin]]"
   - "[[li-2025-omrp-cb-iot]]"
+  - "[[pan-2025-uav-ris-energy-efficient-comm]]"
 created: 2026-05-29
 updated: 2026-06-03
 ---
@@ -38,7 +39,7 @@ updated: 2026-06-03
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 27 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
+The most frequently recurring author in the corpus, co-authoring 28 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -67,6 +68,7 @@ The most frequently recurring author in the corpus, co-authoring 27 sources span
 - [[huynh-2024-gai-physical-layer-survey]] — survey of generative AI for physical-layer communications (GANs/VAEs/normalizing-flows/diffusion/transformers across channel estimation, PLS, IRS, beamforming, JSCC).
 - [[du-2024-yolo-semcom-digital-twin]] — YOLO-based semantic communication with a diffusion-model-generated power allocation scheme for digital-twin (apple-orchard) construction.
 - [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT; overlap-based routing (OMRP) + SoftPPO-LSTM CB node selection.
+- [[pan-2025-uav-ris-energy-efficient-comm]] — cooperative UAV-mounted RISs for energy-efficient communications; joint BS beamforming + 3D UAV-RIS location + discrete phase shifts via INSGA-II-CDC.
 
 ## Contributions to this wiki
 

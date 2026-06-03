@@ -2,6 +2,54 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-03 — Curate 6 new sources (batch 2/8): resumed interrupted run — hybrid cloud-edge LEO offloading, communication-constrained MARL, MEC+DRL-in-NTN survey, ground-satellite UAM scheduling, cooperative UAV-RIS, covert mmWave + audit
+
+**Resumed an interrupted curation run** (a prior batch-2 invocation was cut off by a network issue, leaving uncommitted partial work in the tree). This is **batch 2/8** of the 43-paper run (`make_batches.py` plan in `.curation-out/batches.json`); batch 1 committed at `dd019c9`. Resume reconciliation: HEAD still at `dd019c9`; `git status` showed the in-flight set = the 6 source pages of `batches.json["batch2"]` + 5 concept pages + 2 modified entity rosters. The stale `.curation-out/batch2of8-decisions.md` describes a *different* paper set (an old `batches-remaining.json` plan) and was ignored in favor of `batches.json` + the on-disk in-flight pages; `.curation-out/batch2-actual-decisions.md` is the authoritative record.
+
+### Reconciliation of the in-flight (uncommitted) work
+
+The interrupted invocation had already written, correctly and groundedly: all 6 source pages, 5 concept pages ([[covert-communication]], [[urban-air-mobility]], [[communication-constrained-marl]], [[non-dominated-sorting-genetic-algorithm]], [[uav-mounted-ris]]), and had bumped 2 author rosters ([[geng-sun]], [[yanheng-liu]]). It had **not** finished: 3 more author rosters ([[dusit-niyato]], [[qingqing-wu]], [[zhu-han]] — flagged by `entity_roster_audit.py` as present-but-unlisted omissions), `index.md` cataloguing (6 sources + 5 concepts), the [[overview]] Snapshot counts + track tables, or this log entry. This pass verified the in-flight pages against their parses and completed the unfinished roster/navigation/log work rather than re-curating. No new entity pages warranted (all genuinely-new authors appear once; foundational-method conservatism preserved).
+
+### Curated (6 sources)
+
+- [[tang-2021-cecls-hybrid-cloud-edge]] — Tang et al. 2021, *IEEE IoT-J*, DOI `10.1109/JIOT.2021.3056569`. Hybrid cloud-and-edge LEO satellite (**CECLS**) three-tier (user / LEO-edge / cloud) sum-energy minimization under coverage-time + LEO-compute caps; binary nonconvex → binary-relaxation LP → distributed **ADMM**.
+- [[li-2024-smdrl-resource-constrained-mec]] — Li et al. 2024, *IEEE TMC*, DOI `10.1109/TMC.2024.3383041`. Computation offloading in bandwidth-constrained multi-access MEC; **SMDRL** (learned message encoding + TopK self-scheduling) + a virtual energy-deficit queue → per-slot QoE-max MDP.
+- [[ullah-2026-mec-drl-ntn-survey]] — Ullah et al. 2026, *IEEE COMST*, DOI `10.1109/COMST.2025.3576571`. Survey of **DRL for MEC-empowered non-terrestrial wireless networks (MeNT-WiNs)**: AAV + LEO/GEO satellite + HAP; DRL fundamentals, offloading models (binary / partial / task-call-graph), and DRL across satellite autonomy, AAV-swarm management, resource/spectrum/energy allocation, routing, security.
+- [[moon-2024-ground-satellite-uam-scheduling]] — Moon & Chae 2024, *IEEE JSAC*, DOI `10.1109/JSAC.2024.3460031`. Cooperative ground-satellite downlink scheduling + power allocation for **urban air mobility** in a 6G NTN; satellite absorbs high-interference UAMs, GS link association as a **minimum-cost max-flow** graph problem + SCA power allocation (MINLP). Communication-layer, not offloading.
+- [[pan-2025-uav-ris-energy-efficient-comm]] — Pan et al. 2025, *IEEE TMC*, DOI `10.1109/TMC.2025.3579597`. Cooperative multiple **UAV-mounted RISs**; three-objective EEComm-MOF (max-min rate / max total rate / min energy) over BS beamforming + UAV-RIS 3D location + discrete phase shifts via **INSGA-II-CDC**.
+- [[ma-2024-covert-mmwave-finite-blocklength]] — Ma et al. 2024, *IEEE IoT-J*, DOI `10.1109/JIOT.2023.3296414`. Covert **mmWave** with finite blocklength vs spatially-random wardens (PPP); stochastic-geometry covertness + AECT for PA/LFDA beamforming; jointly optimizes transmit power + blocklength.
+
+### New vocabulary (5 concepts, no new entities)
+
+- Concepts: [[covert-communication]] (hiding a transmission's *existence*; anchors [[ma-2024-covert-mmwave-finite-blocklength]]), [[urban-air-mobility]] (UAM as SAGIN edge user; anchors [[moon-2024-ground-satellite-uam-scheduling]]), [[communication-constrained-marl]] (inter-agent channel as a scarce resource; anchors [[li-2024-smdrl-resource-constrained-mec]]), [[non-dominated-sorting-genetic-algorithm]] (NSGA-II MOEA; anchors [[pan-2025-uav-ris-energy-efficient-comm]]), [[uav-mounted-ris]] (RIS carried by a UAV for 3D/opportunistic deployment; anchors [[pan-2025-uav-ris-energy-efficient-comm]]). Each grounded in its source(s) and cross-linked to existing vocabulary; no near-synonym duplicates created.
+- Entities: none. All genuinely-new authors (Tang, Fei, Bin Li, Kexin Li, Moon, Chae, Pan, Gong, P. Wang, Ma, et al.) appear once → not promoted, consistent with house conservatism.
+
+### Rosters / navigation finished this pass
+
+- Author rosters updated to add the new sources: [[dusit-niyato]] (27→28), [[qingqing-wu]] (10→11), [[zhu-han]] (7→8) — completing the 3 the interrupted run had missed ([[geng-sun]] and [[yanheng-liu]] were already bumped in the in-flight tree). Affiliations re-verified against the parses (Niyato→NTU, Wu→SJTU, Han→Univ. of Houston / Kyung Hee). `entity_roster_audit.py` now reports **0 over-claims / 0 omissions**.
+- [[index]]: all 6 sources filed (Foundational surveys; SAGIN/satellite ×2; IRS/sensing; Energy efficiency & WPT; MEC/MCC fundamentals) + 5 concepts catalogued (Aerial architectures ×2; DRL backbones; Optimization techniques; Sensing & security). `index_audit.py` = 619/619 indexed.
+- [[overview]]: Snapshot counts updated + track tables (Foundational surveys 24→25, SAGIN/satellite, ISAC/sensing/PLS 14→15, Energy efficiency & WPT, MEC/MCC fundamentals 8→9).
+
+### Counts
+
+`corpus_counts.py`: sources **220→226**, concepts **267→272**, entities **72** unchanged (findings 14 / synthesis 15 / comparisons 6 / methodology 4 / queries 5 / thesis 3 unchanged). `raw/sources` 257.
+
+### Grounding (correctness-first)
+
+- All 6 DOIs verified verbatim against the parse `Digital Object Identifier` lines. Years recorded per the date-of-current-version convention in each Citation block: tang-2021 (current version May 2021), li-2024 (Oct 2024), ullah **2026** (current version 2 Jan 2026, COMST early-access in 2025), moon-2024 (Dec 2024), pan-2025 (Sep 2025), ma-2024 (current version 8 Jan 2024). [[pan-2025-uav-ris-energy-efficient-comm]] headline numbers cross-checked verbatim against the parse abstract + conclusion + Tables III/IV (5-GU: +74.62% / +64.45% / −10.55%; 10-GU: +43.75% / +89.57% / −13.60%), flagged as best-benchmark-relative Pareto advantage rather than absolute optimality. Figure-derived magnitudes flagged indicative on the source pages.
+
+### Gates
+
+`linkcheck.py` = **NO DANGLING LINKS**; `process_refs.py` = **0 files / 0 hits**; `index_audit.py` = 619/619 indexed, 0 unindexed / 0 duplicate primaries; `frontmatter_audit.py` = 617 pages, 0 errors; `entity_roster_audit.py` = 0 over-claims / 0 omissions.
+
+### Toolkit
+
+No ratchet needed — `curation_status.py`, `corpus_counts.py`, `linkcheck.py`, `process_refs.py`, `index_audit.py`, `frontmatter_audit.py`, and `entity_roster_audit.py` covered resume-state reconciliation, count reconciliation, and all commit gates. No reusable one-off arose; the toolkit is stable and unchanged this pass.
+
+### Remaining
+
+Batches **3/8 – 8/8** (31 sources) remain uncurated, one batch per fresh invocation. Next invocation should curate **batch 3** from `.curation-out/batches.json`: `DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach`, `Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing`, `Distributed_and_Collaborative_Beamforming_in_Wireless_Sensor_Networks_Classifications_Trends_and_Research_Directions`, `Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis`, `Dynamic_Trajectory_Design_for_Multi-UAV-Assisted_Mobile_Edge_Computing`, `Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage`.
+
 ## 2026-06-03 — Curate 6 new sources (batch 1/8): resumed interrupted run — graph-RM survey (I+II), data-driven IoT CB, DT migration, laser air-ground MEC, STIN delay offloading + audit
 
 **Resumed an interrupted curation run** (a prior invocation was cut off by a network issue, leaving uncommitted partial work in the tree). A new batch of **43 genuinely-new raw sources** is being curated across **8 invocations** (`make_batches.py --size 6` plan in `.curation-out/batches.json`); this entry is **batch 1/8**. Resume reconciliation at `c29d71d`: `curation_status.py --dupes` reported 37 uncurated / 0 duplicate MinerU ingests *after* counting the 6 in-flight source pages already on disk, confirming the in-flight set = batch 1 of the plan (the stale `batches-remaining.json` is from the *previous* completed 43-paper run and was ignored in favor of `batches.json`).

@@ -10,15 +10,16 @@ related:
   - "[[lyu-2023-noma-marine-emergency-offloading]]"
   - "[[zhang-2020-response-delay-uav-swarm]]"
   - "[[xu-2024-mobile-aigc-survey]]"
+  - "[[tang-2021-cecls-hybrid-cloud-edge]]"
 created: 2026-05-29
-updated: 2026-05-31
+updated: 2026-06-03
 ---
 
 # Zhu Han
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 7 sources in this wiki, spanning aerial MEC, maritime cooperation, 6G foundation models, UAV-swarm response delay, and the mobile-AIGC survey:
+Co-authored 8 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -27,6 +28,7 @@ Co-authored 7 sources in this wiki, spanning aerial MEC, maritime cooperation, 6
 - [[lyu-2023-noma-marine-emergency-offloading]] — NOMA-based UAV emergency communication for marine IoT; coalition-game offloading (CGTO).
 - [[zhang-2020-response-delay-uav-swarm]] — response-delay optimization for a MEC-enabled UAV swarm (stochastic geometry + queueing theory).
 - [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.
+- [[tang-2021-cecls-hybrid-cloud-edge]] — computation offloading in a hybrid cloud-and-edge LEO satellite network (CECLS); three-tier sum-energy minimization via binary-relaxation LP + distributed ADMM.
 
 ## Contributions to this wiki
 
