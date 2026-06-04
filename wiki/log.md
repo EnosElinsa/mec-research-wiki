@@ -2,6 +2,23 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-04 — Curate 1 new source (batch 8/8): URLLC-NOMA-UAV-ISCC + audit
+
+### Curated (1 source)
+
+- [[qin-2025-urllc-noma-uav-iscc]] — Qin et al. 2025, *IEEE TVT*, DOI `10.1109/TVT.2024.3460813`. NOMA-aided UAV ISCC network: joint sensing + communication + edge computing with URLLC constraints. Lyapunov extreme-value tail-constraint decoupling + SAC-TPBD DRL for trajectory + beamforming; convex resource allocation. Comparable to SCA/SDR baselines with higher efficiency; significant queue-backlog reduction; SAC faster convergence + lower variance than baseline DRL.
+
+### New concepts
+
+None — all referenced concepts mapped to existing slugs ([[integrated-sensing-computation-communication]], [[finite-blocklength-urllc]], [[lyapunov-optimization]], [[soft-actor-critic]], [[uav-trajectory-control]]).
+
+### Audit notes
+
+- DOI verified in parse: TVT.2024.3460813 confirmed.
+- Venue confirmed: IEEE TVT.
+- `linkcheck.py` → NO DANGLING LINKS. `process_refs.py` → clean.
+- Source count updated in `overview.md`: 256 → 257.
+
 ## 2026-06-04 — Curate 6 new sources (batch 7/8): marine-FL-DT-secrecy, GAI-diffusion-SemCom, SAGIN-spherical-SG, SAGIN-IoT-RL, TTW-AMD-localization, UAV-hotspot-offloading + audit
 
 ### Curated (6 sources)

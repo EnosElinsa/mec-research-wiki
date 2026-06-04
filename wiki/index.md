@@ -256,6 +256,7 @@
 
 ### ISAC, sensing & physical-layer security
 
+- [[qin-2025-urllc-noma-uav-iscc]] — Qin et al. 2025. **NOMA-aided UAV ISCC** with URLLC: sensing + communication + computation; Lyapunov tail-constraint + **SAC-TPBD** DRL; comparable to SCA/SDR baselines with higher efficiency (IEEE TVT).
 - [[tang-2024-iscc-uav-feel]] — Tang et al. 2024. **ISCC** for UAV-assisted federated edge learning; deployment + sensing/compute/comm via AO (BBPO).
 - [[wang-2024-ttw-amd-localization]] — Wang et al. 2024. **Through-the-wall (TTW)** passive AMD detection + localization via CSI; reference-channel SSI cancellation + 2D matrix pencil ToF/PLCR estimation; hardware-validated (glass/brick walls: 0.964/0.952 detection accuracy, 1.65/2.05 m median error) (IEEE JSAC).
 - [[yao-2025-secure-isac-dual-eavesdropping]] — Yao et al. 2025. Secure UAV-ISAC against dual eavesdropping; AO + SCA + SDR for secrecy + sensing security.
