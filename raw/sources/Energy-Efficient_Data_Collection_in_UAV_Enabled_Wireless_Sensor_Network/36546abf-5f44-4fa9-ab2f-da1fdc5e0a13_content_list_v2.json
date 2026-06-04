@@ -1,0 +1,2596 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Energy-Efficient Data Collection in UAV Enabled Wireless Sensor Network"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                99,
+                71,
+                897,
+                95
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Cheng Zhan , Member, IEEE, Yong Zeng , Member, IEEE, and Rui Zhang Fellow, IEEE"
+                    }
+                ]
+            },
+            "bbox": [
+                147,
+                99,
+                849,
+                121
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstract—In wireless sensor networks, utilizing the unmanned aerial vehicle (UAV) as a mobile data collector for the sensor nodes (SNs) is an energy-efficient technique to prolong the network lifetime. In this letter, considering a general fading channel model for the SN-UAV links, we jointly optimize the SNs’ wakeup schedule and UAV’s trajectory to minimize the maximum energy consumption of all SNs, while ensuring that the required amount of data is collected reliably from each SN. We formulate our design as a mixed-integer non-convex optimization problem. By applying the successive convex optimization technique, an efficient iterative algorithm is proposed to find a sub-optimal solution. Numerical results show that the proposed scheme achieves significant network energy saving as compared to benchmark schemes."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                174,
+                491,
+                351
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Index Terms—Unmanned aerial vehicle, trajectory design, energy minimization, data collection, wireless sensor network."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                357,
+                491,
+                386
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "I. INTRODUCTION"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                215,
+                412,
+                351,
+                426
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "a large number of low-cost sensor nodes (SNs) that are typically powered by limited energy sources such as battery, which are difficult to be recharged once depleted [1]. Therefore, energy-efficient sensing and communication techniques for SNs are crucial to prolong the lifetime of WSNs. There has been a growing interest recently in employing the unmanned aerial vehicle (UAV) as a mobile data collector for the ground SNs in WSN [2]. By leveraging its high mobility, UAV is capable of collecting data from the SNs energyefficiently, since it can sequentially visit the SNs and collect data from them only when it moves sufficiently close to each SN. Thus, the link distance from each active SN to the UAV is significantly reduced, which saves the transmission energy of all SNs. It has been shown that short-distance line-of-sight (LoS) communication links between UAV and ground terminals can be efficiently exploited in various UAV-enabled wireless networks for performance enhancement by properly designing the UAV’s trajectory [3]–[5]."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                430,
+                491,
+                705
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "For UAV-enabled WSNs, sleep and wake-up mechanism is another useful technique to save the energy consumption of SNs [6]. With such a mechanism, the SNs remain in the sleep state until they receive the waking up beacon signal with good strength from the nearby UAV, at which time they will wake up and start sending data to the UAV, and return to the sleep state after the transmission. There are two critical issues in designing UAV-enabled WSNs for data collection. The first one is due to the limited battery energy of SNs. The wakeup schedule of SNs should thus be appropriately designed so that each SN can complete its data transmission with minimum energy consumption. The second issue is due to the highly dynamic wireless channels between the SNs and the moving UAV, which are prone to packet loss [7], especially for the practical case when multi-path induced channel fading is present. Thus, the trajectory of the UAV should be properly designed to ensure that each SN can transmit data with low outage probability when it is in its wake-up state."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                705,
+                491,
+                765
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                501,
+                172,
+                921,
+                376
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The problem of jointly designing the SNs’ wake-up schedule and the UAV’s trajectory for energy-efficient data collection is new and challenging, which has not been rigorously studied to our best knowledge. The deployment and mobility of multiple UAVs for Internet of Things (IoT) communications was investigated in [8]. A cyclical multiple access scheme was also proposed in [9], for supporting delay-tolerant data transmission from ground terminals to the UAV in a periodic manner. It is worth noting that an optimization framework for energy-efficient UAV-to-ground communication via trajectory design was recently developed in [10], but only the UAV’s energy consumption was considered."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                376,
+                921,
+                549
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Under a general fading channel model for the SN-UAV links, this letter studies the joint optimization of SNs’ wake-up schedule and UAV’s trajectory to achieve reliable and energyefficient data collection in UAV-enabled WSNs. The aim is to minimize the maximum energy consumption of all SNs while ensuring that a target amount of data is collected reliably from each SN. The design is formulated as a mixed-integer non-convex optimization problem, which is difficult to be optimally solved. By applying the successive convex optimization technique, an efficient iterative algorithm is proposed to find a sub-optimal solution for our design. Numerical results show that the proposed scheme achieves significant energy savings for the SNs as compared to the benchmark schemes with static data collector or simple straight trajectory of the UAV."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                550,
+                921,
+                753
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "II. SYSTEM MODEL AND PROBLEM FORMULATION"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                531,
+                777,
+                893,
+                791
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We consider a WSN where a UAV is employed as a mobile data collector to gather information from K SNs on the ground, which are denoted by {uk, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 \\leq k \\leq K \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The location of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is denoted by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { w } _ { k } \\in \\mathbb { R } ^ { 2 \\times 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Each SN "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "generates sensing data of size "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "S _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "bits, and the UAV is regularly dispatched to collect the sensed data for a duration of T seconds. We assume that the UAV flies at a fixed altitude of H meters and denote its maximum speed as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "V _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in meter/second (m/s). The initial and final locations of the UAV are assumed to be pre-determined,"
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                795,
+                921,
+                926
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Manuscript received September 13, 2017; revised October 24, 2017; accepted November 18, 2017. Date of publication November 23, 2017; date of current version June 19, 2018. This work was supported in part by the National Natural Science Foundation of China under Grant 61702426, and in part by the China Scholarship Council. The associate editor coordinating the review of this paper and approving it for publication was M. Sheng. (Corresponding author: Yong Zeng)."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                777,
+                491,
+                857
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "C. Zhan is with the School of Computer and Information Science, Southwest University, Chongqing 400715, China (e-mail: zhanc@swu.edu.cn)."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                857,
+                491,
+                880
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Y. Zeng and R. Zhang are with the Department of Electrical and Computer Engineering, National University of Singapore, Singapore 117583 (e-mail: elezeng@nus.edu.sg; elezhang@nus.edu.sg)."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                880,
+                491,
+                914
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Digital Object Identifier 10.1109/LWC.2017.2776922 whose horizontal coordinates are denoted as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\bf q } _ { 0 } , { \\bf q } _ { F } \\in \\mathbb { R } ^ { 2 \\times 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", respectively. This corresponds to practical scenarios where q0 and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { q } _ { F }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "depend on various factors such as the UAV’s pre- and post-mission flying paths, which are given in different applications [4]. We assume that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\| { \\bf q } _ { F } - { \\bf q } _ { 0 } \\| \\le V _ { \\mathrm { m a x } } T"
+                    },
+                    {
+                        "type": "text",
+                        "content": "so that there exists at least one feasible trajectory for the UAV to move from "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\bf q } _ { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { q } _ { F }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "within T. The "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { U A V } _ { \\mathrm { \\Delta } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "flying trajectory projected on the ground is denoted as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { q } ( t ) \\in \\mathbb { R } ^ { 2 \\times 1 } , \\bar { 0 } \\leq \\bar { t } \\leq T ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". For convenience, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "T"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is discretized into M time slots, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { i . e . , ~ } T = M \\delta _ { t }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { t }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denotes the elemental slot length such that the UAV’s location is considered as approximately unchanged by the ground SNs within each time slot even at the maximum speed. Therefore, the UAV’s trajectory q(t) can be approximated by the sequence "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ \\mathbf { q } [ m ] , 1 \\leq m \\leq M \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { q } [ m ] \\triangleq \\mathbf { q } ( m \\delta _ { t } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denotes the UAV’s location at time slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "m ."
+                    }
+                ]
+            },
+            "bbox": [
+                86,
+                914,
+                380,
+                926
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "328"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                35,
+                98,
+                45
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 7, NO. 3, JUNE 2018"
+                    }
+                ]
+            },
+            "bbox": [
+                531,
+                34,
+                921,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "2162-2345 \u0004c 2017 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission."
+                    }
+                ]
+            },
+            "bbox": [
+                196,
+                931,
+                799,
+                944
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "See http://www.ieee.org/publications_standards/publications/rights/index.html for more information."
+                    }
+                ]
+            },
+            "bbox": [
+                230,
+                944,
+                764,
+                957
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:25 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                962,
+                910,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                73,
+                69,
+                491,
+                286
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We assume that the sleep and wake-up mechanism is employed, and at most one SN can be waked up to communicate with the UAV at each time slot. Denote the wake-up schedule variable as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "x _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "x _ { k } [ m ] = 1 \\mathrm { ~ i f ~ } u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is waked up at time slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "m ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "x _ { k } [ m ] = 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "otherwise. Thus, we have - Kk=1 xk[m] ≤ 1, ∀m. If xk[m] = 1, then uk transmits data with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\dot { \\sum _ { k = 1 } ^ { K } } x _ { k } [ m ] \\le 1 } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "[ \\mathrm { f } \\ x _ { k } [ m ] = 1"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "a constant transmission power "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and a designed transmission rate "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in bits/second/Hz (bps/Hz)."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                286,
+                491,
+                402
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We assume quasi-static block fading channels for the ground-UAV links, where the channel remains unchanged within each fading block and may change over blocks. Furthermore, the duration of each fading block is typically much smaller than "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\delta _ { t } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". As such, the number of fading blocks in each time slot, denoted as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "L ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is much larger than 1 in practice. Under a general fading channel model, the channel coefficient between the UAV and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "at the l-th fading block of time slot m can be modelled as hk[m, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "l ] = \\sqrt { \\beta _ { k } [ m ] } \\rho _ { k } [ m , l ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\rho _ { k } [ m , l ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a small-scale fading coefficient and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "accounts for the large-scale channel attenuation that depends only on the distance between the UAV and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "d _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "be the distance between the UAV and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "at time slot m. We thus have"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                402,
+                491,
+                592
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\beta_ {k} [ m ] = \\beta_ {0} d _ {k} ^ {- \\alpha} [ m ] = \\frac {\\beta_ {0}}{(H ^ {2} + \\| \\mathbf {q} [ m ] - \\mathbf {w} _ {k} \\| ^ {2}) ^ {\\alpha / 2}}, \\tag {1}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/1119dfca6740683b145272aa524693f66f20aa64c09ae93d9142c955163bc06e.jpg"
+                }
+            },
+            "bbox": [
+                112,
+                614,
+                491,
+                648
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denotes the reference channel power gain at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "d _ { 0 } ="
+                    },
+                    {
+                        "type": "text",
+                        "content": "1m, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha \\ge 2"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the path loss exponent. Without loss of generality, for any time slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "m , \\ \\rho _ { k } [ m , l ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "are assumed to be independent and identically distributed (i.i.d.) random variables with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbb { E } [ | \\rho _ { k } [ m , l ] | ^ { 2 } ] = \\dot { 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". We assume that the UAV only knows the locations of the SNs as well as the channel distribution information (CDI), namely the values for α and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "as well as the identical distribution of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "| \\rho _ { k } [ m , l ] | ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Note that due to the time-varying UAV locations, the distribution of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "| h _ { k } [ m , l ] | ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "keeps unchanged within each time slot but varies over different time slots. Therefore, the transmission rate "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "by the wake-up SN can be designed adaptively over each time slot based on the UAV’s location. Once the trajectory q[m], wakeup schedule "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "x _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and transmission rate "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "are determined, the UAV will wake up the corresponding SNs, and inform each of them the optimized transmission rate over time slots using the downlink control links."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                669,
+                491,
+                914
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "If "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is in the wake-up state for communication at time slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "m ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "then for the l-th fading block of time slot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "m ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "the achievable"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                916,
+                491,
+                946
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "rate in bps/Hz is given by"
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                69,
+                687,
+                85
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "C _ {k} [ m, l ] = \\log_ {2} \\left(1 + \\frac {\\left| h _ {k} [ m , l ] \\right| ^ {2} P _ {k}}{\\sigma^ {2} \\Gamma}\\right), \\tag {2}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/d0ab0a754ad787b5a3d95691be24565009c22b20bac7cfdaa132d8efccc2027a.jpg"
+                }
+            },
+            "bbox": [
+                581,
+                93,
+                921,
+                128
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sigma ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the noise power, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Gamma > 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the SNR gap between the practical modulation schemes and the theoretical Gaussian signaling. The outage probability between "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and the UAV at the l-th fading block of time slot m is then given by"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                136,
+                921,
+                196
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} p _ {k} [ m, l ] = \\mathbb {P} (C _ {k} [ m, l ] <   R _ {k} [ m ]) \\\\ = \\mathbb {P} \\left(| \\rho_ {k} [ m, l ] | ^ {2} <   \\frac {\\sigma^ {2} \\Gamma \\left(2 ^ {R _ {k} [ m ]} - 1\\right)}{\\beta_ {k} [ m ] P _ {k}}\\right) \\\\ = F \\left(\\frac {\\sigma^ {2} \\Gamma (2 ^ {R _ {k} [ m ]} - 1)}{\\beta_ {k} [ m ] P _ {k}}\\right) \\triangleq p _ {k} ^ {o u t} [ m ], \\tag {3} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/26be220a122a71c7602cbe39cd5b69100884460f9a01f7b50087014f263a4c4f.jpg"
+                }
+            },
+            "bbox": [
+                553,
+                205,
+                921,
+                292
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "F ( \\cdot )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denotes the identical cumulative distribution function (CDF) of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "| \\rho _ { k } [ m , l ] | ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Note that during each time slot m, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "p _ { k } [ m , l ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is identical for different fading blocks "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "l ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and thus is denoted as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "p _ { k } ^ { o u t } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which is a non-decreasing function with respect to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Therefore, in order to ensure that the target amount of sensing information of each SN is collected reliably by the UAV, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "should be chosen such that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "p _ { k } ^ { o u t } [ m ] = \\epsilon ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where \b denotes the maximum tolerable outage probability. As a result, the transmission rate can be expressed as"
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                297,
+                921,
+                430
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "R _ {k} [ m ] = \\log_ {2} \\left(1 + \\frac {F ^ {- 1} (\\epsilon) P _ {k} \\beta_ {0}}{\\sigma^ {2} \\Gamma (H ^ {2} + \\| \\mathbf {q} [ m ] - \\mathbf {w} _ {k} \\| ^ {2}) ^ {\\alpha / 2}}\\right), \\tag {4}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/3472edf95158dca25d66fa48aae30a73f187ac36a591a88c473612fcb0c445ea.jpg"
+                }
+            },
+            "bbox": [
+                532,
+                438,
+                919,
+                474
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "F ^ { - 1 } ( \\cdot )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the inverse function of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "F ( \\cdot )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                482,
+                808,
+                497
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In order to ensure fairness among all SNs in terms of their energy consumption, we choose to minimize the maximum energy consumption among all SNs. Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { X } = \\{ x _ { k } [ m ] , \\forall k , m \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { Q } = \\{ \\mathbf { q } [ m ] , \\forall m \\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Our aim is to jointly optimize the wakeup schedule X and the UAV’s trajectory Q so as to minimize the maximum energy consumption of all SNs, while ensuring that the target amount of data "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "S _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in bits is collected from uk reliably (i.e., with maximum outage probability "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\epsilon )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Define "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "D _ { \\operatorname* { m a x } } \\triangleq \\delta _ { t } V _ { \\operatorname* { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in meter, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "E _ { k } \\triangleq \\delta _ { t } P _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in Joule, and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { r _ { k } \\triangleq \\frac { S _ { k } } { B \\delta _ { t } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in bps/Hz, where B denotes the channel bandwidth in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\operatorname { H z } ;"
+                    },
+                    {
+                        "type": "text",
+                        "content": "then the problem is formulated as"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                497,
+                921,
+                657
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\text {(P1)}: \\min _ {\\mathbf {X}, \\mathbf {Q}, \\theta} \\theta \\\\ \\text { s.t. } \\sum_ {m = 1} ^ {M} x _ {k} [ m ] E _ {k} \\leq \\theta , \\quad \\forall k, (5) \\\\ \\sum_ {m = 1} ^ {M} x _ {k} [ m ] R _ {k} [ m ] \\geq r _ {k}, \\quad \\forall k, (6) \\\\ \\sum_ {k = 1} ^ {K} x _ {k} [ m ] \\leq 1, \\quad \\forall m, (7) \\\\ x _ {k} [ m ] \\in \\{0, 1 \\}, \\quad \\forall k, m, (8) \\\\ \\| \\mathbf {q} [ m ] - \\mathbf {q} [ m - 1 ] \\| \\leq D _ {\\max}, \\forall m \\geq 2, (9) \\\\ \\mathbf {q} [ 1 ] = \\mathbf {q} _ {0}, \\mathbf {q} [ M ] = \\mathbf {q} _ {F}. (10) \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/2c158b3eb3bab0fdae965f3b3ee35157054f9107fa3cfcdf26630c2c1f023694.jpg"
+                }
+            },
+            "bbox": [
+                535,
+                667,
+                921,
+                878
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Note that constraints (5) ensure that the energy consumption of each SN does not exceed θ, where θ is the slack variable signifying the maximum energy to be minimized, and the constraints (6) ensure that the target amount of data from each"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                887,
+                921,
+                946
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ZHAN et al.: ENERGY-EFFICIENT DATA COLLECTION IN UAV ENABLED WSN"
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                34,
+                491,
+                46
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "329"
+                    }
+                ]
+            },
+            "bbox": [
+                898,
+                35,
+                921,
+                45
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:25 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                960,
+                908,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "SN is collected reliably. The constraints (9) and (10) correspond to the UAV’s speed and initial/final location constraints, respectively."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                69,
+                491,
+                114
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "III. PROPOSED SOLUTION"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                189,
+                131,
+                377,
+                143
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Problem (P1) is a mixed-integer non-convex problem, which is difficult to be optimally solved in general. Therefore, in this letter, we aim to obtain an efficient sub-optimal solution to (P1). To this end, we first relax the binary constraints in (8) as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "0 \\leq x _ { k } [ m ] \\leq 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and then solve the relaxed problem iteratively based on the block coordinate descent technique. To reconstruct the binary wake-up schedule variables, note that there are LM fading blocks in total with the time horizon T. If the solution X of the relaxed problem is not binary, we can allocate "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N _ { k } [ m ] \\ = \\ \\lfloor L x _ { k } [ m ] \\rceil"
+                    },
+                    {
+                        "type": "text",
+                        "content": "fading blocks to SN uk in any time slot m, where \tx\n denotes the nearest integer of x. With sufficiently large "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "L ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "the gap between "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "L x _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is practically negligible. Since the relaxed problem is not jointly convex with respect to X and Q, we adopt the block coordinate descent technique to solve X and Q alternately. First, for any given trajectory Q, the integer-relaxed wake-up schedule solution can be obtained by solving the following standard linear program (LP),"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                148,
+                491,
+                411
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text {(P2)}: \\min _ {\\mathbf {X}, \\theta} \\theta",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/3b36bf7f7937fd326992dbbe6c3f97e58bb91cf4df8d6bd0d07353f6976e6898.jpg"
+                }
+            },
+            "bbox": [
+                148,
+                419,
+                243,
+                441
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text { s.t. } 0 \\leq x _ {k} [ m ] \\leq 1, \\quad \\forall k, m, \\tag {11}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/0be690a4f60b606e067c16a02b7d2ce2a68a2648683e2883dc638d21d316ac04.jpg"
+                }
+            },
+            "bbox": [
+                202,
+                443,
+                488,
+                458
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "(5), (6), (7).",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/2c66c0eb1380cf2f741b6c2ab0e2f127b32ea433029fc7e93a61e37c6310a563.jpg"
+                }
+            },
+            "bbox": [
+                233,
+                462,
+                316,
+                476
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "On the other hand, for any given wake-up schedule X, the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { U A V } _ { \\mathrm { \\Delta } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "trajectory is optimized to maximize the weighted minimum of the communication throughput of all SNs, where the weight is inversely proportional to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Specifically, the problem can be formulated as"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                484,
+                491,
+                556
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text {(P3)}: \\max _ {\\mathbf {Q}, \\eta} \\eta",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/8d158e280db8bff17954acb2d112addd0c8d8a93d5370422d9c868647ddc3ceb.jpg"
+                }
+            },
+            "bbox": [
+                129,
+                566,
+                227,
+                589
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text { s.t. } \\frac {1}{r _ {k}} \\sum_ {m = 1} ^ {M} x _ {k} [ m ] R _ {k} [ m ] \\geq \\eta , \\quad \\forall k, \\tag {12}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/91122a1e8dddbc8c25fc275570b315c2079f1b4a7209f056df63963531aa65fd.jpg"
+                }
+            },
+            "bbox": [
+                184,
+                593,
+                488,
+                633
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "(9), (1 0).",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/1f587101d6455ff8fbea5576b6a4342a5362e2ebe1048106593375133c40bb62.jpg"
+                }
+            },
+            "bbox": [
+                215,
+                636,
+                279,
+                650
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Problem (P3) is a non-convex optimization problem due to the non-convex constraints (12). However, an efficient approximate solution can be obtained based on the successive convex optimization technique [10], which is guaranteed to converge to at least a locally optimal solution. The main idea is to successively maximize a lower bound of (P3) at each iteration. Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\bf Q } ^ { l } \\stackrel { \\cdot } { = } \\{ { \\bf q } ^ { l } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", ∀m} denote the given trajectory in the l-th iteration. Similar as [10], by applying the first-order Taylor expansion, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in (4) can be lower-bounded as"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                659,
+                491,
+                789
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} R _ {k} [ m ] \\geq R _ {k, l} ^ {l b} [ m ] \\triangleq A _ {k, l} [ m ] - I _ {k, l} [ m ] \\| \\mathbf {q} [ m ] - \\mathbf {w} _ {k} \\| ^ {2} \\\\ + I _ {k, l} [ m ] \\left\\| \\mathbf {q} ^ {l} [ m ] - \\mathbf {w} _ {k} \\right\\| ^ {2}, \\tag {13} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/960c2badeb63f347b6756cd9e3dbefe96bebde0bc049593e927ce28ae148c633.jpg"
+                }
+            },
+            "bbox": [
+                125,
+                795,
+                488,
+                844
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "A _ { k , l } [ m ] = \\log _ { 2 } \\biggl ( 1 + \\frac { F ^ { - 1 } ( \\epsilon ) P _ { k } \\beta _ { 0 } } { \\sigma ^ { 2 } \\Gamma J _ { k , l } [ m ] ^ { \\alpha / 2 } } \\biggr ) ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(14)"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                845,
+                488,
+                881
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "I _ {k, l} [ m ] = \\frac {F ^ {- 1} (\\epsilon) P _ {k} \\beta_ {0} (\\alpha / 2) \\log_ {2} e}{J _ {k , l} [ m ] \\left(\\sigma^ {2} \\Gamma J _ {k , l} [ m ] ^ {\\alpha / 2} + F ^ {- 1} (\\epsilon) P _ {k} \\beta_ {0}\\right)}, \\tag {15}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/f3574d4db85146f4d73d402b3941a123b85a04b7b6b25e2d59d636029813cc4f.jpg"
+                }
+            },
+            "bbox": [
+                125,
+                882,
+                488,
+                917
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "J _ {k, l} [ m ] = H ^ {2} + \\left\\| \\mathbf {q} ^ {l} [ m ] - \\mathbf {w} _ {k} \\right\\| ^ {2}. \\tag {16}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/ac744d6effb1d03e46a8c945a3e6484a2922f67e957f3d6766d716794d5683db.jpg"
+                }
+            },
+            "bbox": [
+                125,
+                919,
+                488,
+                946
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [
+                    {
+                        "type": "text",
+                        "content": "Algorithm 1 Successive Convex Optimization for (P3)"
+                    }
+                ],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "1: Initialize the trajectory as  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf{Q}^0"
+                    },
+                    {
+                        "type": "text",
+                        "content": ";\n2:  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "l \\leftarrow 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "; set tolerance  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\kappa > 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": ";\n3: repeat\n4: Solve the QCQP problem (P4) for given  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf{Q}^l"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and denote the optimal solution as  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf{Q}^{l+1}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ";\n5:  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf{Q}^l \\leftarrow \\mathbf{Q}^{l+1}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ";  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "l \\leftarrow l + 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": ";\n6: until The fractional increase of the objective value of (P4) is below  "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\kappa"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                85,
+                921,
+                200
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [
+                    {
+                        "type": "text",
+                        "content": "Algorithm 2 Iterative Algorithm for Relaxed (P1)"
+                    }
+                ],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "1: Initialize the trajectory as   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "Q^{0}"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ;\n2:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r \\leftarrow 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ; set tolerance   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\kappa > 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ;\n3: repeat\n4: Solve (P2) for given   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "Q^{r}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "  to obtain solution   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "X^{r}"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ;\n5: Solve (P3) for given   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{X^{r}, Q^{r}\\}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "  with Algorithm 1, and denote the solution as   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "Q^{r+1}"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ;\n6:   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r \\leftarrow r + 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ;\n7: until The fractional decrease of the objective value of (P2) is below   "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\kappa"
+                    },
+                    {
+                        "type": "text",
+                        "content": " ."
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                247,
+                921,
+                378
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "As a result, the UAV’s trajectory can be optimized by solving the following problem,"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                420,
+                919,
+                450
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text {(P4)}: \\max _ {\\mathbf {Q}, \\eta^ {l b}} \\eta^ {l b}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/4287c36c0abc014660e42d2ddcd6ae21b34ccbc7518117e7b4b98285f5cada13.jpg"
+                }
+            },
+            "bbox": [
+                549,
+                470,
+                658,
+                498
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\text { s.t. } \\frac {1}{r _ {k}} \\sum_ {m = 1} ^ {M} x _ {k} [ m ] R _ {k, l} ^ {l b} [ m ] \\geq \\eta^ {l b}, \\quad \\forall k, \\tag {17}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/55e70fa255ee981c695e389c0eb3ec607b1fabaae0adb03e0224986695e672f4.jpg"
+                }
+            },
+            "bbox": [
+                606,
+                501,
+                919,
+                542
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "(9), (1 0).",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/b43f95fa47f228e3aecbf74abc5b4fc1a9246972703ecbb2ea8633aaced9e0dc.jpg"
+                }
+            },
+            "bbox": [
+                637,
+                544,
+                700,
+                559
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Note that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\eta ^ { l b }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a slack variable to be maximized, and it is not difficult to show that at the optimal solution to (P4), we have "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\eta ^ { l b } = \\operatorname* { m i n } _ { k } \\frac { 1 } { r _ { k } } \\sum _ { m = 1 } ^ { M } x _ { k } [ m ] \\dot { R _ { k , l } ^ { l b } } [ m ] } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "= mink 1r . Since "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k , l } ^ { l b } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a concave quadratic function with respect to q[m], (P4) is a convex quadratically constrained quadratic program (QCQP), which can be solved efficiently by existing software tools such as CVX. Thus, (P3) can be solved by iteratively optimizing (P4) with the local point "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { Q } ^ { l }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "updated in each iteration, which is summarized in Algorithm 1."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                580,
+                921,
+                713
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Similar as in [10], the resulting objective values of (P4) in Algorithm 1 are non-decreasing over the iterations. Thus, Algorithm 1 is guaranteed to converge. The overall algorithm for the integer-relaxed problem (P1) is obtained by optimizing the wake-up schedule X and trajectory Q alternately via solving problem (P2) and (P3) respectively, in an iterative manner, which is summarized in Algorithm 2."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                713,
+                921,
+                814
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "It can be shown that after step 4 of Algorithm 2, the constraints in (6) are all satisfied with equality. Furthermore, constraints (6) can be relaxed after step 5 due to the maximization of the weighted minimum throughput in (P3), which leaves more optimization space for decreasing θ in (P2). Therefore, with Algorithm 2, the resulting cost values of (P2) are non-increasing over the iterations. Furthermore, since the objective value of (P2) is lower-bounded by a finite value, Algorithm 2 is guaranteed to converge."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                814,
+                921,
+                946
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "330"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                35,
+                98,
+                45
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE WIRELESS COMMUNICATIONS LETTERS, VOL. 7, NO. 3, JUNE 2018"
+                    }
+                ]
+            },
+            "bbox": [
+                531,
+                34,
+                921,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:25 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                962,
+                908,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/64b60114d2b43bc8e2a8c9e0098b849bc77da686d18947564a64515941014961.jpg"
+                },
+                "content": "| x     | T=40s | T=50s | T=100s |\n|-------|-------|-------|--------|\n| -800  | 0     | 0     | 0      |\n| -600  | 200   | 200   | 400    |\n| -400  | 0     | 0     | -400   |\n| -200  | -200  | -200  | -600   |\n| 0     | 0     | 0     | 0      |\n| 200   | 200   | 200   | 400    |\n| 400   | 0     | 0     | -400   |\n| 600   | -200  | -200  | -600   |\n| 800   | 0     | 0     | 0      |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(a) UAV's trajectory"
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                76,
+                63,
+                277,
+                189
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/730049f33299720444c82c83474f0c65a2074186008841d9e1ca1628ab8e46cc.jpg"
+                },
+                "content": "| Sleep | SN u₁ | SN u₂ | SN u₃ | SN u₄ |\n|-------|-------|-------|-------|-------|\n| 0     | 0     | 0     | 0     | 0     |\n| 5     | 1.0   | 0     | 0     | 0     |\n| 10    | 0     | 0     | 0     | 0     |\n| 15    | 0     | 1.0   | 0     | 0     |\n| 20    | 0     | 1.0   | 0     | 0     |\n| 25    | 0     | 0     | 0     | 0     |\n| 30    | 0     | 0     | 1.0   | 0     |\n| 35    | 0     | 0     | 1.0   | 0     |\n| 40    | 0     | 0     | 0     | 1.0   |\n| 45    | 0     | 0     | 0     | 1.0   |\n| 50    | 0     | 0     | 0     | 0     |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(b) Wake-up schedule (T= 50s)"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. The UAV’s trajectory and SNs’ wake-up schedule."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                277,
+                65,
+                488,
+                185
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "IV. NUMERICAL RESULTS"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                187,
+                247,
+                377,
+                260
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, numerical results are provided to verify our proposed design. We consider the practical Rician fading channels with Rician factor "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { c } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and the CDF function F(·) of √ √ "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "| \\rho _ { k } [ m , l ] | ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "can be expressed as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "F ( z ) ~ = ~ 1 -"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "Q _ { 1 } ( \\sqrt { 2 K _ { c } } , \\sqrt { 2 ( K _ { c } + 1 ) z } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "Q _ { 1 } ( a , b )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is the Marcum-Q function [11]. We consider a system with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K = 4 ~ \\mathrm { S N s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which are randomly located within an area of size "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 . 6 \\times 1 . 6 ~ \\mathrm { k m } ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The results obtained are based on one random realization of the SN locations as shown in Fig. 1(a). The UAV’s initial and final locations are respectively set as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { q } _ { 0 } = [ - 8 0 0 , 0 ] ^ { T }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathbf { q } _ { F } = [ 8 0 0 , 0 ] ^ { T }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in meter. Furthermore, we set "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H = 1 0 0 \\mathrm { m } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", Vmax = 50m/s, δt = 0.5s, B = 1MHz, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 0 } ~ = ~ - 6 0 \\mathrm { d B }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\sigma ^ { 2 } = - 1 1 0 \\mathrm { d B m }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", \u0007 = 7dB, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { c } = 1 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\alpha = 2"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The SN’s transmission power is set to be "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { P _ { k } = 0 . 1 \\mathrm { W } , } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "∀k."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                265,
+                491,
+                467
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "For benchmark comparison, we consider the simple straight flight, where the UAV flies in a straight line from "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\bf q } _ { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "to qF with constant speed "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\frac { \\| \\mathbf q _ { F } - \\mathbf q _ { 0 } \\| } { T }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". This straight flight is also used as the initial trajectory in Algorithm 2. The optimized trajectories under different T are shown in Fig. 1(a) with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "S _ { k } = 1 0 \\mathrm { { M b i t s } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\epsilon = 1 0 ^ { - 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". It is observed that as T increases, the UAV adjusts its trajectory to move closer to the SNs. The wake-up schedule of SNs is also shown in Fig. 1(b) for the case of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "T = 5 0 \\mathrm { s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where it is observed that the SNs remain in sleep states for most of the time and are only waked up when the UAV is moving sufficiently close to them."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                467,
+                490,
+                628
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In Fig. 2, we compare the min-max energy consumption of our optimized trajectory with that of straight flight and the static collecting scheme, where the data collector is deployed at the geometric center of all SNs. It is observed that our proposed design outperforms the two benchmark schemes, and the performance gain is more pronounced as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "S _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "increases or \b decreases. This is expected since with our proposed scheme, the UAV can fly closer to or even stays above the SNs with better channels, due to which the SNs can transmit at higher data rate reliably with less transmission time and thus save energy consumption. Note that finding the optimal solution to (P1) is difficult in general, even by discretizing the continuous trajectory variables approximately. To show the efficiency of our proposed design, we compare with a lower bound of the min-max energy "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\theta ^ { \\tilde { l } b }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\theta ^ { l \\bar { b } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is computed based on the ideal case that the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { U A V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "only collects data when it is on the top of each SN and its traveling time is ignored. In this case, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\theta ^ { l b } = \\frac { P _ { k } S _ { k } } { B R _ { k } ^ { \\operatorname* { m a x } } [ m ] } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "BRmaxk [m] , "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { k } ^ { \\operatorname* { m a x } } [ m ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "rate for uk and Rmaxk [m] = log2 \t 1 + F−1(\b)Pkβ0σ 2\u0007Hα "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "u _ { k }"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { R _ { k } ^ { \\operatorname* { m a x } } [ m ] = \\log _ { 2 } \\left( 1 + \\frac { F ^ { - 1 } ( \\epsilon ) P _ { k } \\beta _ { 0 } } { \\sigma ^ { 2 } \\Gamma H ^ { \\alpha } } \\right) } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "due to (4). As compared to the lower bound "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\theta ^ { \\mathit { l b } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", only a small performance gap is observed by our proposed design, which implies that our proposed solution is quite close to the optimal solution for the considered setup."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                628,
+                491,
+                946
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/5e9422c02de543a1c84d307d09d924b9758479ededd90019b9c0272eb2851a84.jpg"
+                },
+                "content": "| Data size S_k (Mbits) | Static collecting | Straight flight | Optimized trajectory | Lower bound |\n| --------------------- | ----------------- | --------------- | --------------------- | ----------- |\n| 1                     | 0.0               | 0.0             | 0.0                   | 0.0         |\n| 5                     | 0.5               | 0.3             | 0.2                   | 0.1         |\n| 10                    | 1.0               | 0.6             | 0.4                   | 0.2         |\n| 15                    | 1.5               | 0.9             | 0.6                   | 0.3         |\n| 20                    | 2.0               | 1.3             | 0.8                   | 0.4         |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(a)θ versus "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "S _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(∈=10-2)"
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                509,
+                65,
+                707,
+                196
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/a09f04ecaf483b864128e758394052ea9bb6a12f6772d6d91803aaf26868d9b3.jpg"
+                },
+                "content": "| Outage probability target ε | Static collecting | Straight flight | Optimized trajectory | Lower bound |\n| -------------------------- | ----------------- | --------------- | -------------------- | ----------- |\n| 10⁻¹                       | 0.6               | 0.5             | 0.2                  | 0.1         |\n| 10⁻²                       | 1.2               | 0.8             | 0.2                  | 0.1         |\n| 10⁻³                       | 2.1               | 1.1             | 0.2                  | 0.1         |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(b)0 versus ∈(Sk=10Mbits)"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. Min-max energy consumption θ versus the sensing data size "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "S _ { k }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "or outage probability target \b "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( T = 1 \\bar { 0 } 0 \\mathrm { s } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ")."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                714,
+                66,
+                915,
+                196
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                503,
+                253,
+                919,
+                282
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "V. CONCLUSION"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                651,
+                292,
+                772,
+                305
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This letter proposes a novel design for energy-efficient data collection in UAV-enabled WSNs. The SNs’ wake-up schedule and UAV’s trajectory are jointly optimized to minimize the maximum energy consumption of all SNs while ensuring reliable data collection in fading channels. With the successive convex optimization technique, an efficient iterative algorithm is proposed to find a sub-optimal solution. The design framework can also be extended to the multi-UAV scenario, where the UAV-sensor association and co-channel interference should be taken into account. In this case, the UAV’s trajectory design needs to strike a balance between enhancing the direct link and suppressing the interference link, which is an interesting problem to be addressed in future work."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                311,
+                921,
+                500
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "REFERENCES"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                665,
+                516,
+                761,
+                529
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] D. Wu, J. He, H. Wang, C. Wang, and R. Wang, “A hierarchical packet forwarding mechanism for energy harvesting wireless sensor networks,” IEEE Commun. Mag., vol. 53, no. 8, pp. 92–98, Aug. 2015."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] A. E. A. A. Abdulla et al., “An optimal data collection technique for improved utility in UAS-aided networks,” in Proc. IEEE Int. Conf. Comput. Commun. (INFOCOM), Toronto, ON, Canada, May 2014, pp. 736–744."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Commun. Mag., vol. 54, no. 5, pp. 36–42, May 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Unmanned aerial vehicle with underlaid device-to-device communications: Performance and tradeoffs,” IEEE Trans. Wireless Commun., vol. 15, no. 6, pp. 3949–3963, Jun. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] S. Say, H. Inata, J. Liu, and S. Shimamoto, “Priority-based data gathering framework in UAV-assisted wireless sensor networks,” IEEE Sensors J., vol. 16, no. 14, pp. 5785–5794, Jul. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] N. Ahmed, S. S. Kanhere, and S. Jha, “On the importance of link characterization for aerial wireless sensor networks,” IEEE Commun. Mag., vol. 54, no. 5, pp. 52–57, May 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Mobile Internet of Things: Can UAVs provide an energy-efficient mobile architecture?” in Proc. IEEE Glob. Commun. Conf. (GLOBECOM), Washington, DC, USA, Dec. 2016, pp. 1–6."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] J. Lyu, Y. Zeng, and R. Zhang, “Cyclical multiple access in UAV-aided communications: A throughput-delay tradeoff,” IEEE Wireless Commun. Lett., vol. 5, no. 6, pp. 600–603, Dec. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Y. Zeng and R. Zhang, “Energy-efficient UAV communication with trajectory optimization,” IEEE Trans. Wireless Commun., vol. 16, no. 6, pp. 3747–3760, Jun. 2017."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] F. Ono, H. Ochiai, and R. Miura, “A wireless relay network based on unmanned aircraft system with rate optimization,” IEEE Trans. Wireless Commun., vol. 15, no. 11, pp. 7699–7708, Nov. 2016."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                532,
+                924,
+                946
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ZHAN et al.: ENERGY-EFFICIENT DATA COLLECTION IN UAV ENABLED WSN"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                34,
+                491,
+                45
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "331"
+                    }
+                ]
+            },
+            "bbox": [
+                898,
+                35,
+                919,
+                45
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:25 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                962,
+                908,
+                974
+            ]
+        }
+    ]
+]

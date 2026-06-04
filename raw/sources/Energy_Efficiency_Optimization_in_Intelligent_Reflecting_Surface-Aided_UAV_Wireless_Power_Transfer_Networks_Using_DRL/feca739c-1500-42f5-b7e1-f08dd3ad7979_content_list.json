@@ -1,0 +1,2211 @@
+[
+    {
+        "type": "text",
+        "text": "Energy Efficiency Optimization in Intelligent Reflecting Surface-Aided UAV Wireless Power Transfer Networks Using DRL ",
+        "text_level": 1,
+        "bbox": [
+            129,
+            71,
+            863,
+            176
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Kimchheang Chhea , Sengly Muy , and Jung-Ryun Lee , Senior Member, IEEE ",
+        "bbox": [
+            178,
+            184,
+            811,
+            202
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—Lower production costs have inspired studies on unmanned aerial vehicles (UAV) for wireless communication. However, limited transmission power and size of the UAV make it challenging to use advanced communication models while meeting the growing need for high data rates and energy efficiency (EE). In this paper, we study an energy-efficient UAV network enhanced by an intelligent reflecting surface (IRS) with simultaneous wireless information and power transfer (SWIPT), where the IRS is employed to improve the EE of ground user equipment (GUE). The goal is to maximize the average EE by jointly controlling the UAV’s flying route, IRS phase steer, UAV transmission power, and power splitting (PS) ratio of the energy transfer technology. The formulated problem of maximizing the average EE is non-convex and thus challenging to be solved. To address this problem, we propose a deep reinforcement learning (DRL) approach. The modified reward function is implemented to enhance the efficiency of the DRL agent, which is formulated based on the expected signal-to-interference-plus-noise ratio (SINR) map. Simulation results demonstrate that the proposed DRL algorithm achieves lower energy consumption, higher data rate, and improved EE compared to the comparison algorithm. ",
+        "bbox": [
+            60,
+            239,
+            488,
+            505
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Intelligent reflecting surface, unmanned aerial vehicle, deep reinforcement learning, energy transfer. ",
+        "bbox": [
+            58,
+            513,
+            486,
+            540
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            208,
+            551,
+            336,
+            564
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "HE latest technological progress of unmanned-aerialvehicles (UAV) and the drop in production costs have inspired substantial studies on UAV applications in wireless communications. It is expected that UAV-enabled wireless communication can be utilized as a mobile base station (BS) in the upcoming wireless communication networks, providing ultra-reliable ",
+        "bbox": [
+            58,
+            571,
+            486,
+            662
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Received 16 April 2024; revised 14 August 2024 and 13 November 2024; accepted 15 December 2024. Date of publication 18 December 2024; date of current version 18 April 2025. This work was supported in part by the Ministry of Science and ICT (MSIT), Korea through Information Technology Research Center (ITRC) Support Program under Grant IITP-RS-2024-00436248 Supervised by the Institute for Information & Communications Technology Planning & Evaluation(IITP), in part by the Human Resources Development under Grant 20214000000280 of the Korea Institute of Energy Technology Evaluation and Planning (KETEP) Grant Funded by the Korea Government Ministry of Trade, Industry and Energy, and in part by Chung-Ang University Young Scientist Scholarship in 2024 (2019). The review of this article was coordinated by Prof. Byonghyo Shim. (Corresponding author: Jung-Ryun Lee.) ",
+        "bbox": [
+            57,
+            675,
+            486,
+            811
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Kimchheang Chhea and Sengly Muy are with the Department of Intelligent Energy and Industry, Chung-Ang University, Seoul 06974, South Korea (e-mail: chheangkim@cau.ac.kr; muysengly@cau.ac.kr). ",
+        "bbox": [
+            57,
+            811,
+            486,
+            845
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Jung-Ryun Lee is with the Department of Intelligent Energy and Industry, Chung-Ang University, Seoul 06974, South Korea, and also with the School of Electronics and Electrical Engineering, Chung-Ang University, Seoul 06974, South Korea (e-mail: jrlee@cau.ac.kr). ",
+        "bbox": [
+            57,
+            845,
+            486,
+            891
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TVT.2024.3519591 ",
+        "bbox": [
+            72,
+            891,
+            361,
+            902
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "service and high data rate communications while supporting a massive number of users [1]. It is noted that UAV-aided data delivery is an important communication technology in Internet of Things (IoT) environments. This is because it can reduce the energy consumption of IoT devices by positioning the UAV near low-battery devices, thereby prolonging the network lifetime. As opposed to the ground base station (BS) that is always supplied with reliable energy source, UAVs cannot obtain energy while flying. Additionally, the location of the UAV can impact the energy consumption of both the ground device and the UAV itself. Therefore, careful trajectory planning and transmission power control are required to satisfy the increasing demands for high data rate and energy efficiency (EE) [2]. ",
+        "bbox": [
+            500,
+            239,
+            930,
+            436
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Recently, intelligent reflecting surface (IRS) has emerged as a highly promising and innovative communication paradigm within the area of wireless networks. The IRS is a type of metasurface that directs incoming communication signals to achieve extended coverage, improve physical layer security, and support massive network connections [3]. Using IRS in UAV networks can extensively improve the communication range of the UAV without using a significant amount of energy. In addition, IRS enables passive beamforming, which mitigates high RF signal attenuation and establishes an effective transmission beam to ground devices. These capabilities to manage the wireless environment offer distinct advantages in addressing various challenges in wireless communications, such as improving spectrum efficiency and EE [4]. ",
+        "bbox": [
+            500,
+            436,
+            930,
+            647
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "On the other hand, IoT networks primarily consist of wireless nodes that are geographically dispersed or spatially spread out, such as sensor nodes and device-to-device communications [5]. One challenging issue for these networks is lowering energy usage and prolonging the lifespan of the network. Because battery replacement or regular recharging can be costly and inconvenient, harvesting energy from the surrounding environment is regarded as a sustainable way to offset the energy consumption of the devices [6]. Specifically, UAV-enabled wireless energy transfer holds great potential as it offers the flexibility to efficiently cover a specific area by dynamically adjusting sourceto-destination distance. This adaptability allows for meeting the energy requirements of diverse nodes and enhancing energy harvesting efficiency. Furthermore, it is noted that the EE of an IoT network can be further enhanced by integration of wireless power transfer (WPT) technology into the IRS-aided UAV network platform. ",
+        "bbox": [
+            500,
+            647,
+            930,
+            904
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 4, APRIL 2025 ",
+        "bbox": [
+            58,
+            37,
+            501,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "6599 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "0018-9545 © 2024 IEEE. All rights reserved, including rights for text and data mining, and training of artificial intelligence and similar technologies. Personal use is permitted, but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            55,
+            915,
+            932,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "When integrating UAV into the IoT network in wireless communication, one key aspect to consider is the optimization of UAV trajectory. Even though our work focuses mainly on the communications and optimization of the ground network/devices, the consideration of a trajectory optimization of the UAV in the networks allows for more robust and successful communications between the UAV and ground devices [7]. Our optimization approach introduces the SINR map concept which is an important measurement for communication quality and EE. The SINR map is defined specifically for use in the DRL reward function. Integrating the SINR map with learning-based algorithm such as DRL allows for smoother training, increased stability and better adaptation to complex environment, which we will describe in more detail in Section IV. This leads to better strategy in interference management and UAV route planning. In addition, the better adaptation to environment is advantageous for scalability which means the approach can allocate resources more efficiently among nodes. ",
+        "bbox": [
+            63,
+            79,
+            494,
+            351
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this work, we focus on enhancing the EE of IRS-assisted UAV networks within a simultaneous wireless information and power transfer (SWIPT) framework. An IRS is positioned at the network edge to boost the EE of ground user equipment (GUEs). Various aspects impact the EE of the IRS-aided UAV WPT network, such as the geographical position of the UAV, the transmission power level of the UAV, the phases of the IRS units, and the energy harvesting/information reception ratio (power splitting ratio) in a SWIPT system. Therefore, our work aims to maximize the average EE of the GUEs by simultaneously optimizing the UAV flying route, transmission power, IRS phase steer, and power splitting (PS) ratio in a IRS-aided UAV WPT network. The key contributions of this paper are outlined as follows: ",
+        "bbox": [
+            63,
+            351,
+            496,
+            561
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We construct a system model of the IRS-aided UAV communication system equipped with SWIPT functionality for IoT network, where a UAV can transfer energy to IoT devices and offer services at the same time. From the channel model for the UAV with an IRS and the energy model of the GUE, we develop an optimization problem of maximizing the average EE of the IRS-assisted UAV WPT network with decision variables of the UAV flying route, transmission power, IRS phase steer, and energy harvesting ratio of SWIPT functionality. ",
+        "bbox": [
+            82,
+            563,
+            494,
+            714
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "\\- To solve this optimization problem with very high computational complexity, we propose a deep reinforcement learning (DRL) algorithm. The proposed DRL algorithm introduces the concept of the SINR map (the average SINR of the UAV over the GUEs in the given network). From the SINR map, we construct the reward function using bivariate normal distribution in the proposed DRL algorithm. ",
+        "bbox": [
+            82,
+            714,
+            494,
+            834
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "\\- It is verified that the proposed DRL algorithm enhances the performance of the UAV in that it consumes less energy on average and maintains high data rate compared to the comparison schemes. Also, the results verify that using a UAV equipped with IRS functionality can significantly reduces the energy consumption of nodes in a network. ",
+        "bbox": [
+            82,
+            834,
+            494,
+            939
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORKS ",
+        "text_level": 1,
+        "bbox": [
+            649,
+            80,
+            797,
+            93
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. IRS-Enabled Communications ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            102,
+            742,
+            116
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Due to the essential qualities of IRS in tackling important challenges in wireless networks, many theoretical and experimental studies have been conducted concerning various scenarios with the focus on analysis and improvement of the system [8]. According to the study in [9], the authors investigated the use of IRS in mobile edge computing (MEC) systems. They formulated a latency-minimization problem and find solutions using the block coordinate descent and the alternative optimization approach. The performance of the MEC-aided IRS was improved by reducing the latency approximately 20% compared to the non-IRS system. In [10], the study on multiple IRS systems that incorporate location information is carried out, which highlighted the high location uncertainty of the IRS and BS. The authors introduced a power allocation scheme aimed at optimizing the system performance. In [11], the authors explored the use of an IRS in a mmWave multiple-input and multiple-output system. They aimed to analyze the data rate between a BS and a mobile user. To optimize performance, the authors proposed a method for determining the ideal IRS phase steer, relying on restricted input from the moving user for the optimal configuration. Alongside improving the data rate, it is possible to minimize both the error bound and the orientation error bound by introducing perfect channel state information. ",
+        "bbox": [
+            506,
+            123,
+            939,
+            470
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "B. UAV-Assisted Networks ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            488,
+            695,
+            502
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The authors of [12] explored three-dimensional (3D) route mapping for a UAV connected to a cellular network to reduce the flight time while maintaining the target link quality. To address this issue, the authors derived the optimal UAV path by solving the equivalent shortest path problem. The results show the flight time was reduced while satisfying the communication quality constraints. In [13] the authors proposed a study considering gathering and dissemination of critical emergency information, transmission powers of the UAV and the GUE, and UAV acceleration. Their results demonstrated an improvement in the quality-of-experience factor and significant reduction in the flying duration of the UAV. In [14], the authors proposed a new scheme which can reduce the computational complexity of the UAV flying route calculation and communication overhead compared to the existing schemes, by optimizing only some selected way-points along the UAV’s path. Their method substantially reduced the flying route design complexity and achieved an enhanced rate performance compared to the conventional path discretization method. ",
+        "bbox": [
+            506,
+            508,
+            939,
+            796
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "C. IRS-Aided UAV Networks ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            813,
+            710,
+            827
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Due to the aforementioned feasible characteristics of UAV and IRS, combining these technologies could further enhance the network performance. The study in [16] focused on the problem of minimum rate maximization of users in the UAV and IRS communication systems, and solved it by converting the original problem into successive convex optimization problems with rate constraint penalty. The authors in [17] investigated UAV with the assistance of IRS in wireless radio systems. The authors optimize for a weighted minimum bit error rate through the optimization of the UAV flying route, IRS phase steer, and IRS scheduling. The result is obtained by using relaxation-based method, and it shows the advantages of the IRS and the UAV flying route optimization in that there is a notable enhancement in the fairness of the system. The results also show that the UAV moves nearer to the IRS and hovers at the location longer when the total flying time is increased to benefit the reflecting signal to and from the IRS. ",
+        "bbox": [
+            506,
+            834,
+            939,
+            941
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "6600 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 4, APRIL 2025 ",
+        "bbox": [
+            494,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            486,
+            228
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In [19] the authors worked on maximizing the system sumrate in the system that utilizes IRS to aid UAV in orthogonal frequency division multiple access communications. A jointiterative optimization algorithm is employed to optimize the allocation of resources, IRS phase steer, and flying route of the UAV. The results demonstrated the increase in the achievable sumrate when the maneuverability of the UAV and the IRS phase steer are optimized. The system’s total rate can also be significantly influenced by the number of reflectors in an IRS when the phase steer is optimized. In [20], the authors conducted a study on the attainable data rate of a communication system enabled by UAV with the assistance of an IRS. The findings of the study indicated that the inclusion of the IRS resulted in significant improvements in the quality of communication in networks enabled by UAV. ",
+        "bbox": [
+            60,
+            231,
+            486,
+            455
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "It is noted that our study is distinguished from previous studies on the UAV-IRS communication system [15], [16], [17], [18], [19], [20], [21] in that it combines energy harvesting functionality of SWIPT with IRS-aided UAV communications to increase the EE of the network system, and apply the DRL algorithm to address the non-convexity in the proposed optimization problem with low computational complexity. ",
+        "bbox": [
+            57,
+            455,
+            486,
+            561
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The remaining sections of this paper are structured as follows. Section III presents the system model and outlines the problem formulation. Section IV provides a comprehensive explanation of the proposed DRL method. Section V discusses the computational complexity analysis. Simulation results are discussed in Section VI, and the paper concludes in Section VII. ",
+        "bbox": [
+            57,
+            563,
+            486,
+            652
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "III. SYSTEM MODEL AND PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            97,
+            670,
+            447,
+            684
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. System Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            691,
+            183,
+            705
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "We consider a single-antenna aerial-BS UAV serving a set of $m = \\{ 1 , 2 , . . . , M \\}$ users, providing downlink communications within a considered area, as shown in Fig. 1. A GUE receives information and energy at the same instant due to the embedded SWIPT technology. In our assumption, we utilize a 3D Cartesian coordinate such that the location of the GUE m is fixed at $\\boldsymbol { q _ { m } } = [ x _ { m } , y _ { m } , 0 ] ^ { T }$ . The initial flying location of the UAV is $q _ { u i } = [ x _ { 0 } , y _ { 0 } , h _ { 0 } ] ^ { T }$ . We deploy one single IRS with multiple steerable elements which it is mounted fixed at $q _ { r } = [ x _ { r } , y _ { r } , h _ { r } ] ^ { T }$ . The IRS consists of $N _ { r } \\times N _ { c }$ passive reflecting element (PRE), which are consistently arranged as a uniform planar array (UPA), with $N _ { r }$ and $N _ { c }$ be the number of IRS unit in row and column, respectively. The UPA is structured such that each column contains PREs that are equidistant from each other, with a separation of $s _ { c }$ meters. Similarly, the UPA is composed of PREs arranged in rows that are equidistant, with a spacing of $s _ { r }$ meters. The UPA allows each PRE to independently re-scatter the incoming signal, and this process is characterized by a reflection coefficient comprising an amplitude a ranging from 0 to 1 and a phase steer $\\bar { \\theta _ { n _ { r } , n _ { c } } } \\in [ 0 , 2 \\pi ] , \\bar { \\mathrm { i . e . } } r _ { n _ { r } , n _ { c } } = \\bar { a } e ^ { j \\bar { ( } \\theta _ { n _ { r } , n _ { c } } ) }$ , $\\forall n _ { r } \\in \\{ 1 , 2 , \\ldots , N _ { r } \\}$ , and $\\forall n _ { c } \\in \\left\\{ 1 , 2 , \\ldots , N _ { c } \\right\\}$ . In this paper we use fixed $a = 1$ , and phase steer $\\theta _ { n _ { r } , n _ { c } }$ can be modified by the IRS decision maker. ",
+        "bbox": [
+            60,
+            713,
+            488,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/b54da9531f10e12ec295d85cfd1433a03108bbfe9b1635202b2b03c92b40fa8a.jpg",
+        "image_caption": [
+            "Fig. 1. System model of the IRS-aided UAV communication network with energy transfer. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"(x[t\"], y[\"t\"], h)] --> B[\"User 1 (x₁, y₁, 0)\"]\n    A --> C[\"User m (xₘ, yₘ, 0)\"]\n    B --> D[\"hᵤ₁[t\"]]\n    C --> E[\"hᵣ₁[t\"]]\n    D --> F[\"hu₁[t\"]]\n    E --> G[\"hᵣₘ[t\"]]\n    F --> H[\"H[t\"]]\n    G --> I[\"hᵣₘ[t\"]]\n    H --> J[\"(xᵣ, yᵣ, hᵣ)\"]\n    I --> K[\"(xᵣ, yᵣ, hᵣ)\"]\n    J --> L[\"IRS Controller\"]\n    K --> L\n    style A fill:#f9f,stroke:#333\n    style B fill:#bbf,stroke:#333\n    style C fill:#bbf,stroke:#333\n    style D fill:#dfd,stroke:#333\n    style E fill:#dfd,stroke:#333\n    style F fill:#dfd,stroke:#333\n    style G fill:#dfd,stroke:#333\n    style H fill:#dfd,stroke:#333\n    style I fill:#dfd,stroke:#333\n    style J fill:#dfd,stroke:#333\n    style K fill:#dfd,stroke:#333\n    style L fill:#dfd,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            548,
+            82,
+            885,
+            304
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            369,
+            930,
+            489
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. Channel Model for UAV Data Delivery With IRS ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            506,
+            856,
+            520
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The UAV is dispatched to provide services to all GUEs. In contrast to terrestrial communication systems, where Rayleigh fading is commonly employed for small-scale fading, Rician fading is deemed more suitable for UAV-ground communications. This choice is justified by the typically prevalent Lineof-Sight (LoS) channel component and the occurrence of local scattering in UAV-ground communication scenarios. Thus, we utilize the channel model of Rician fading for both the UAV-GUE link and the IRS-GUE link. By considering the substantial path loss and reflection loss, we assume that signals reflected by the IRS two or more times have minimal power and are consequently disregarded. The channel between the UAV and the GUE m can be described as ",
+        "bbox": [
+            500,
+            526,
+            929,
+            722
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {h} _ {u m} [ t ] = \\sqrt {\\frac {\\beta_ {0}}{d _ {u m} ^ {\\alpha_ {u m}} [ t ]}} \\left(\\sqrt {\\frac {\\kappa}{\\kappa + 1}} + \\sqrt {\\frac {1}{1 + \\kappa}} \\tilde {\\mathbf {h}} _ {u m} [ t ]\\right), \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            727,
+            929,
+            768
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "here, $\\alpha _ { u m }$ is the path loss factor specifically associated with the link of the UAV to the GUE m. The Rician factor is denoted as $\\kappa ,$ and $\\tilde { \\mathbf { h } } _ { u m } [ t ] \\sim \\mathcal { C N } ( 0 , 1 )$ represents the scattering element of GUE m during time slot t, following a complex circularly symmetric Gaussian distribution with zero mean and unit variance. For ease of design, we presume that LoS propagation dominates the link of the UAV, IRS, and GUE. This is because the UAV operates at a high altitude, allowing the UAV-IRS link to typically occur in unobstructed field of view, reducing the impact of blockage. Consequently, we utilize an appropriate channel model of the UAV-IRS link to achieve the desired system performance and design [15]. At time t, the channel representing the communication of the UAV-IRS link is expressed as ",
+        "bbox": [
+            500,
+            773,
+            930,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "CHHEA et al.: ENERGY EFFICIENCY OPTIMIZATION IN INTELLIGENT REFLECTING SURFACE-AIDED UAV WIRELESS ",
+        "bbox": [
+            58,
+            37,
+            691,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "6601 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            79,
+            494,
+            109
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {H} [ t ] = \\sqrt {\\frac {\\beta_ {0}}{d _ {u r} ^ {2} [ t ]}} \\tilde {\\mathbf {H}} [ t ], \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            202,
+            117,
+            494,
+            159
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\beta _ { 0 }$ is gain at $d _ { 0 } =$ 1m reference distance, and $\\tilde { \\mathbf { H } } [ t ]$ is the LoS channel of the UAV-GUE link, given in (7) shown at the bottom of this page. We denote $\\theta _ { u r } [ t ] , \\zeta _ { u r } [ t ]$ and z as the angleof-arrivals at the IRS, and the height of the UAV, respectively, where ",
+        "bbox": [
+            65,
+            167,
+            494,
+            242
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sin \\theta_ {u r} [ t ] = \\frac {z - h _ {r}}{d _ {u r} [ n ]}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            129,
+            250,
+            494,
+            281
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sin \\zeta_ {u r} [ t ] = \\frac {x _ {r} - x [ t ]}{\\sqrt {(x _ {r} - x [ t ]) ^ {2} + (y _ {r} - y [ t ]) ^ {2}}}, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            131,
+            286,
+            493,
+            321
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\cos \\zeta_ {u r} [ t ] = \\frac {y [ n ] - y _ {r}}{\\sqrt {(x _ {r} - x [ t ]) ^ {2} + (y _ {r} - y [ t ]) ^ {2}}}. \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            129,
+            327,
+            493,
+            364
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "At time slot t, the channel model from the IRS to the GUE m is described as ",
+        "bbox": [
+            65,
+            369,
+            494,
+            398
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {h} _ {r m} [ t ] = \\sqrt {\\frac {\\beta_ {0}}{d _ {r m} ^ {\\alpha_ {r m}} [ t ]}} \\left(\\sqrt {\\frac {\\kappa}{\\kappa + 1}} \\mathbf {h} _ {r m} ^ {L o S} [ t ] + \\sqrt {\\frac {1}{1 + \\kappa}} \\tilde {\\mathbf {h}} _ {r m} [ t ]\\right), \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            405,
+            493,
+            462
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\tilde { \\mathbf { h } } _ { r m } [ t ] \\sim \\mathcal { C N } ( \\mathbf { 0 } , \\mathbf { I } _ { N _ { r } N _ { c } } ) , \\mathbf { I } _ { N _ { r } N _ { c } }$ is the covariance matrix, and $\\mathbf { h } _ { r m } ^ { L o S } [ t ]$ r c  is given by (8) shown at the bottom of this page. The reflector coefficient of the IRS at time slot t is described by ",
+        "bbox": [
+            65,
+            472,
+            494,
+            518
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Theta [ t ] = \\mathrm{diag} (\\boldsymbol {\\theta} [ t ]) \\in \\mathbb {C} ^ {N _ {r} N _ {c} \\times N _ {r} N _ {c}}, \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            159,
+            523,
+            494,
+            544
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $\\pmb { \\theta } [ t ] = [ e ^ { j \\theta _ { 1 , 1 } } [ t ] , \\dots , e ^ { j \\theta _ { n _ { r } , n _ { c } } [ t ] } , \\dots , e ^ { j \\theta _ { N _ { r } , N _ { c } } [ t ] } ] ^ { T } \\in$ $\\mathbb { C } ^ { N _ { r } N _ { c } \\times 1 }$ . The composite of the UAV-GUE channel can be formulated as ",
+        "bbox": [
+            65,
+            551,
+            494,
+            598
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathbf {h} _ {m} ^ {H} [ t ] \\triangleq \\mathbf {h} _ {r m} ^ {H} [ t ] \\boldsymbol {\\Theta} [ t ] \\mathbf {H} [ t ] + \\mathbf {h} _ {u m} ^ {H} [ t ]. \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            156,
+            606,
+            494,
+            626
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Because of the scattering elements present in the Rician fading channels described in (1) and (6), the overall channel becomes probabilistic in nature. To ensure effective control over the IRS phase for coherent signal composition at the GUE and to facilitate UAV route planning, it is necessary to approximate and provide real-time channel information between the PRE, UAV, and the individual GUE. This information is essential to be shared with the central decision maker of both the IRS and the UAV during the entire flight operation. ",
+        "bbox": [
+            65,
+            633,
+            494,
+            770
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "C. Energy Model for IRS-Aided UAV Data Delivery ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            80,
+            865,
+            95
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In our work, we consider the SWIPT-equipped GUE using PS technique. With the PS ratio $\\rho _ { m }$ , the GUE can exploit energy and information signal at the same instant with the received SINR at the GUE m, which can be expressed as ",
+        "bbox": [
+            506,
+            101,
+            937,
+            161
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS I N R _ {m} [ t ] = \\frac {\\rho_ {m} p _ {m} [ t ] | \\mathbf {h} _ {m} ^ {H} [ t ] | ^ {2}}{\\rho_ {m} \\sum_ {m ^ {\\prime} \\neq m} p _ {m ^ {\\prime}} [ t ] | \\mathbf {h} _ {m ^ {\\prime}} ^ {H} [ t ] | ^ {2} + \\sigma_ {m} ^ {2}}, \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            169,
+            937,
+            207
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { m }$ and $\\sigma _ { m }$ are the received power and noise, respectively, at the GUE m. The energy dissipation of the GUE m can be described as ",
+        "bbox": [
+            506,
+            214,
+            937,
+            257
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} E D _ {m} [ t ] = P _ {c} + p _ {m} - (1 - \\rho_ {m}) \\left(p _ {m} [ t ] | \\mathbf {h} _ {m} ^ {H} [ t ] | ^ {2} \\right. \\\\ \\left. + \\sum_ {m ^ {\\prime} \\neq m} p _ {m ^ {\\prime}} [ t ] \\left| \\mathbf {h} _ {m ^ {\\prime}} ^ {H} [ t ] \\right| ^ {2}\\right), \\tag {12} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            553,
+            265,
+            937,
+            368
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $P _ { c }$ is the circuit power consumption and (1 − $\\rho _ { m } ) p _ { m } [ t ] | \\mathbf { h } _ { m } ^ { H } [ t ] | ^ { 2 }$ is the energy signal received at the GUE m. Therefore, we can express the data rate received at the GUE m as ",
+        "bbox": [
+            508,
+            377,
+            937,
+            435
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {m} [ t ] = \\log (1 + S I N R _ {m} [ t ]). \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            446,
+            936,
+            464
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "D. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            481,
+            683,
+            494
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "From (11) and (12), we define the EE at the GUE m as ",
+        "bbox": [
+            523,
+            502,
+            898,
+            517
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE E _ {m} (q _ {u}, \\rho_ {m}, p _ {m}, \\Theta) [ t ] = \\frac {R _ {m} (q _ {u} , \\rho_ {m} , p _ {m} , \\Theta) [ t ]}{E D _ {m} (q _ {u} , \\rho_ {m} , p _ {m} , \\Theta) [ t ]}. \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            525,
+            936,
+            559
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Accordingly, we formulate a problem that simultaneously optimizes the route planning of the UAV, PS ratio, transmission power, and IRS phase steer to maximize the average EE which can be described as ",
+        "bbox": [
+            506,
+            566,
+            937,
+            625
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max _ {q _ {u}, \\rho_ {m}, p _ {m}, \\Theta} \\frac {1}{M} \\sum_ {m = 1} ^ {M} E E _ {m} (q _ {u}, \\rho_ {m}, p _ {m}, \\Theta) [ t ] \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            563,
+            633,
+            936,
+            674
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "$\\mathrm { s . t . } C 1 : p _ { m } [ t ] \\leq p _ { \\operatorname* { m a x } } ,$ (16) ",
+        "bbox": [
+            587,
+            681,
+            936,
+            698
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 2: 0 \\leq \\Theta [ t ] \\leq 2 \\pi , \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            621,
+            703,
+            936,
+            720
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 3: 0 <   \\rho_ {m} [ t ] \\leq 1, \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            621,
+            726,
+            936,
+            743
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC 4: \\| q _ {u} [ t + 1 ] - q _ {u} [ t ] \\| \\leq D _ {\\max}, \\forall t, \\tag {19}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            621,
+            750,
+            936,
+            766
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\tilde {\\mathbf {H}} [ t ] = \\left[ 1, e ^ {- j 2 \\pi d \\frac {\\sin \\theta_ {u r} [ t ] \\cos \\zeta^ {u r} [ t ]}{\\lambda}}, \\ldots , e ^ {- j 2 \\pi d (N _ {r} - 1) \\frac {\\sin \\theta_ {u r} [ t ] \\cos \\zeta^ {u r} [ t ]}{\\lambda}} \\right] ^ {T} \\\\ \\times \\left[ 1, e ^ {- j 2 \\pi d \\frac {\\sin \\theta_ {u r} [ t ] \\sin \\zeta^ {u r} [ t ]}{\\lambda}}, \\dots , e ^ {- j 2 \\pi d (N _ {c} - 1) \\frac {\\sin \\theta_ {u r} [ t ] \\sin \\zeta^ {u r} [ t ]}{\\lambda}} \\right] ^ {T} (7) \\\\ \\mathbf {h} _ {r m} ^ {L o S} = \\left[ 1, e ^ {- j 2 \\pi d \\frac {\\sin \\theta_ {r m} [ t ] \\cos \\zeta^ {r m} [ t ]}{\\lambda}}, \\ldots , e ^ {- j 2 \\pi d (N _ {r} - 1) \\frac {\\sin \\theta_ {r m} [ t ] \\cos \\zeta^ {r m} [ t ]}{\\lambda}} \\right] ^ {T} \\\\ \\times \\left[ 1, e ^ {- j 2 \\pi d \\frac {\\sin \\theta_ {r m} [ t ] \\sin \\zeta^ {r m} [ t ]}{\\lambda}}, \\dots , e ^ {- j 2 \\pi d (N _ {c} - 1) \\frac {\\sin \\theta_ {r m} [ t ] \\sin \\zeta^ {r m} [ t ]}{\\lambda}} \\right] ^ {T} (8) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            252,
+            791,
+            937,
+            924
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "6602 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 4, APRIL 2025 ",
+        "bbox": [
+            493,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where constraints C1, C2, C3 indicate that the power cannot exceed the maximum power, phase steer is within the range of $[ 0 , 2 \\pi ]$ , and the PS ratio is in range of [0,1], respectively. In addition, constraint C4 defines the displacement of the UAV from one location at time slot t to the next location at time slot $t + 1$ . None of the constraints is convex with respect to the controlling parameters, leading to the non-convex problem. While conventional approaches could solve the optimization problem (15), the learning-based approach might be a more appropriate choice. In our work, we handle high-dimensional control parameters such as the route planning of the UAV, PS ratio, transmission power allocation, and IRS phase steer in dynamic environment. This justifies the use of DRL with reduced computational complexity. ",
+        "bbox": [
+            57,
+            79,
+            489,
+            292
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "IV. PROPOSED ALGORITHM ",
+        "text_level": 1,
+        "bbox": [
+            176,
+            306,
+            368,
+            321
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The non-convex nature of problem in (15) arises from the interference term and the dynamic positioning of the UAV in relation to both ground users and IRS. To address this problem, this paper employs the Deep Q-learning (DQL) framework (a branch of DRL) as the core framework in this study due to its exceptional ability to handle complex, non-convex optimization challenges common in dynamic and incomplete wireless network environments [22]. Specifically, our work focuses on improving the EE of the IRS-assisted UAV WPT network in a way to maximize data rate over energy dissipation within the proposed network system, where the problem involves dynamic and high-dimensional parameters such as UAV route planning, IRS phase steer, transmission power allocation, and PS ratio. As the UAV navigates a largely unknown and constantly changing environment to serve GUEs, DQL’s deep neural network-based function approximation [23] proves essential in managing the high-dimensional state and action spaces. Additionally, the SINR map concept is used in the reward function to enhance the training of the DQL. ",
+        "bbox": [
+            60,
+            328,
+            489,
+            617
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A. Markov Decision Process Formulation ",
+        "text_level": 1,
+        "bbox": [
+            57,
+            632,
+            348,
+            646
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Generally, the concept of RL aims to learn optimal decisionmaking policy in an environment using trial-and-error strategy. We adopt RL to optimize the average EE in IRS-aided UAV WPT network, as RL enables the UAV to learn optimal control policies through direct environmental interactions. This approach allows real-time adaptation of flight trajectories, transmission power, PS ratio, and IRS phase steer. Prior to turning to the RL algorithm, the formulated problem is regarded as a Markov Decision Process. The central decision maker, also known as RL agent, makes sequential decisions which affects the observed state (the route planning of the UAV, PS ratio, transmission power, IRS phase steer, channel gain of m-th GUE and current timeslot in our work) at the next time slot. Thus, the IRS-aided UAV data delivery problem can be formulated as a Markov Decision Process. ",
+        "bbox": [
+            60,
+            652,
+            489,
+            878
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Proposed DRL Based IRS-Aided UAV Data Delivery ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            896,
+            441,
+            912
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this subsection, we introduce a DRL-based algorithm to optimize the route planning of the UAV, PS ratio, transmission power, and IRS phase steer. We will introduce RL, and describe the proposed DRL and its design details afterward. ",
+        "bbox": [
+            58,
+            917,
+            488,
+            948
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            79,
+            930,
+            109
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "It is noted that among many RL techniques, Q-learning aligns with our study due to its effectiveness with discrete action spaces, where evaluating and updating values is feasible for a finite set of actions, unlike continuous spaces that require optimization over infinite possibilities to find the optimal action. Its balance between exploration and exploitation makes it suitable for optimizing various discretized control parameters including the UAV route planning, IRS phase steer, UAV transmission power, and PS ratio of SWIPT. Additionally, DQL is chosen over traditional Q-learning because of the neural network’s ability to handle the high-dimensional state-action spaces. In Q-learning, the agent gets an optimal policy through interactions with the environment and earns rewards for its actions. The goal is to learn a policy that maximizes the discounted sum of rewards. Let denote $Q ^ { \\pi } ( s , a )$ as the action-value function, also known as the Q-value function. It details the expected discounted total rewards obtained by the agent when performing action a in state $s _ { t }$ , given the policy $\\pi .$ The agent’s objective is to select the optimal action value $Q ^ { * } ( s , a ) = \\operatorname* { m a x } _ { \\pi } Q ^ { \\pi } ( s , a )$ and adopt the best policy. The approximated Q-values are stored in the Q-table, which associates states with corresponding actions. ",
+        "bbox": [
+            500,
+            109,
+            930,
+            426
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "At each time slot $t ,$ The Q-value is computed based on the present state and the action chosen in the previous step. The recorded value is kept in a Q-function, which plays a crucial role in determining the policy Π. DRL enables the agent to develop an optimal policy that maximizes the cumulative reward over a time horizon rather than focusing on immediate returns. ",
+        "bbox": [
+            500,
+            426,
+            930,
+            516
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "During each time slot t, the Q-value and Q-function are continuously updated based on the current state, previous actions, and received reward to enhance the agent’s decision-making. This update process is performed using the equation as follows ",
+        "bbox": [
+            500,
+            517,
+            930,
+            579
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {t + 1} (s _ {t}, a _ {t}) \\leftarrow Q _ {t} (s _ {t}, a _ {t}) + \\eta [ r _ {t} + \\gamma \\max _ {a} Q _ {t} (s _ {t + 1}, a) ] \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            508,
+            595,
+            930,
+            618
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\eta$ and $\\gamma$ are the step size and discount rate, respectively. In (20), the reward $r _ { t }$ is acquired from $r : = S \\times A \\to R ,$ where $\\mathbb { E } \\{ r _ { t } | ( s , a , s ^ { \\prime } ) = ( s _ { t } , a _ { t } , s _ { t + 1 } ) \\} = R _ { s , a } ^ { s ^ { \\prime } }$ . From iterative updating of the equation, the optimal value function can be acquired as follows ",
+        "bbox": [
+            500,
+            633,
+            930,
+            708
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ ^ {*} (s, a) = \\mathbb {E} _ {s ^ {\\prime}} [ R + \\gamma \\max _ {a ^ {\\prime}} Q ^ {*} (s ^ {\\prime} a ^ {\\prime}) | s, a ]. \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            570,
+            727,
+            930,
+            750
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In the DRL based model, we make the assumption that a single decision maker, acting as an agent, governs both the IRS and the UAV. The agent receives information on state $s _ { t }$ from the state space S during time slot $t ,$ which includes the positions of the UAV and all GUEs, and the IRS phase steer. The agent acquires the current state and make choice according to the decision policy Π, then selects one action $a _ { t }$ from a set of possible action A that includes the direction of movement for the UAV, PS ratio, transmission power, and IRS phase steer. Following the agent’s action, it receives a reward or penalty $r _ { t }$ determined by the average EE of the UAV. We explain the detailed definition of the states, actions, and reward function in our work, as follows. ",
+        "bbox": [
+            500,
+            766,
+            930,
+            948
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "CHHEA et al.: ENERGY EFFICIENCY OPTIMIZATION IN INTELLIGENT REFLECTING SURFACE-AIDED UAV WIRELESS ",
+        "bbox": [
+            58,
+            37,
+            693,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "6603 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            960,
+            867,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/41af47b213ed2fc91364853795ed9caac0a5beb51f330c55f97eb3c9feadb094.jpg",
+        "image_caption": [
+            "Fig. 2. Proposed DRL model. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Agent\"] -->|Take action| B[\"UAV position\"]\n    A -->|Take action| C[\"Power allocation\"]\n    A -->|Take action| D[\"IRS phase-steer\"]\n    A -->|Take action| E[\"Power splitting ratio\"]\n    A -->|Take action| F[\"GUE location\"]\n    A -->|Take action| G[\"IRS location\"]\n    H[\"Reward\"] --> I[\"Experience Replay Memory\"]\n    I --> J[\"State\"]\n    J --> K[\"Environment\"]\n    K --> L[\"Predicting\"]\n    L --> A\n    style A fill:#f9f,stroke:#333\n    style H fill:#ccf,stroke:#333\n    style J fill:#cfc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            82,
+            79,
+            479,
+            263
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "1) States: The state space of the proposed DRL model is defined by ",
+        "bbox": [
+            65,
+            308,
+            494,
+            338
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns ^ {t} = \\{q _ {u} [ t ], \\rho [ t ], p [ t ], \\Theta [ t ], \\mathbf {h} _ {m} ^ {H} [ t ], t \\} \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            154,
+            345,
+            493,
+            364
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $q _ { u } [ t ] = [ x [ t ] , y [ t ] , h ] ^ { T }$ is the UAV two-dimensional (2D) coordinate, $\\rho [ t ] \\in [ 0 , 1 ]$ is the PS ratio, $p [ t ]$ is the transmission power, $\\Theta [ t ] \\stackrel { \\cdot } { \\in } \\mathbb { C } ^ { \\tilde { N _ { r } } \\tilde { N _ { c } } \\tilde { \\times } N _ { r } N _ { c } }$ is the IRS phase steer at time slot t. ",
+        "bbox": [
+            65,
+            369,
+            494,
+            430
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "2) Actions: The action space of the proposed DRL model is designed as ",
+        "bbox": [
+            65,
+            431,
+            494,
+            460
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\na ^ {t} = \\{\\Delta q _ {u} [ t ], \\Delta \\rho [ t ], \\Delta p [ t ], \\Delta \\Theta [ t ] \\}, \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            468,
+            493,
+            487
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\Delta q _ { u } [ t ] \\in \\{ ( - \\delta x , 0 ) , ( \\delta x , 0 ) , ( 0 , - \\delta y ) , ( 0 , \\delta y ) , \\ ( - \\delta x y _ { \\mathrm { m } } )$ $0 ) , ( \\delta x y , 0 ) , ( - \\delta y x , 0 ) , ( \\delta y x , 0 ) , ( 0 , 0 ) \\}$ means the moving directions of the UAV, $\\Delta \\rho [ t ] \\in \\{ 0 , . . . , 1 \\} , \\Delta p [ t ] \\in \\{ 0 , . . . , p _ { \\operatorname* { m a x } } \\}$ , $\\Delta \\Theta [ t ] \\in \\{ 0 , . . . , 2 \\pi \\}$ . ",
+        "bbox": [
+            65,
+            493,
+            494,
+            554
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "3) Reward: Once an action is taken, the environment gives feedback as a reward or penalty to the agent, which indicates how good the taken actions are concerning the designed objective. Since the DRL in our work controls many parameters, we facilitate the design by introducing a reward function based on the SINR map which consists of necessary information about the communication quality between the UAV and GUEs in the given area. To create the SINR map, we first consider a UAV located at the specific location, and calculate the SINR levels between the UAV and the GUEs under the given network topology by using (11). Fig. 3 shows the SINR distribution assuming that the UAV is located at $[ 0 , 0 , z ] ^ { T }$ and 15 GUEs are deployed over the given area. These SINR values are averaged over the number of GUEs, which denotes the expected SINR value of the UAV under the given network topology. We repeat the above procedure varying the location of the UAV and obtain the SINR map which indicates the average SINR of the UAV over all GUEs under the given network topology. Fig. 4 shows the map of the average SINR of the UAV under the same environment in Fig. 3. Based on this basis, we will calculate the expected EE that will be used in the reward function in the following. ",
+        "bbox": [
+            65,
+            555,
+            494,
+            869
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Using the concept of the SINR map, we build a reward function, which indicates the average EE of the UAV under given network topology. The reward function is designed as ",
+        "bbox": [
+            65,
+            871,
+            494,
+            916
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr (\\tilde {q} _ {u}, q _ {u}, \\rho_ {m}, p _ {m}, \\Theta) [ t ]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            924,
+            262,
+            941
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "chart",
+        "img_path": "images/8bbaaba75958050870aa2ab2f56b348c7a5a7da3f585b613df347e412ad556a4.jpg",
+        "content": "| Point | x-axis [m] | y-axis [m] | SINR (×10⁻⁷) |\n|-------|------------|------------|--------------|\n| 1     | 10         | 1          | 0            |\n| 2     | 130        | 130        | 200          |\n| 3     | 95         | 95         | 0            |\n| 4     | 145        | 145        | 250          |\n| 5     | 25         | 25         | 2.5          |\n| 6     | 45         | 45         | 0            |\n| 7     | 55         | 55         | 0            |\n| 8     | 70         | 70         | 0            |\n| 9     | 210        | 210        | 200          |\n| 10    | 10         | 1          | 0            |\n| 11    | 60         | 60         | 0            |\n| 12    | 10         | 1          | 0            |\n| 13    | 210        | 210        | 250          |\n| 14    | 95         | 95         | 0            |\n| 15    | 70         | 70         | 0            |\n| 16    | 145        | 145        | 250          |\n| 17    | 55         | 55         | 0            |\n| 18    | 70         | 70         | 0            |\n| 19    | 95         | 95         | 0            |\n| 20    | 210        | 210        | 250          |\n| 21    | 210        | 210        | 200          |\n| 22    | 210        | 210        | 200          |\n| 23    | 210        | 210        | 200          |\n| 24    | 210        | 210        | 200          |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            533,
+            79,
+            915,
+            297
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e906d0aa8c8402c7ba3302f251d628006283fb071162cbdd958a720e159f17f7.jpg",
+        "content": "| x-axis [m] | y-axis [m] | SINR (×10⁻⁶) |\n| ---------- | ---------- | ------------ |\n| 0          | 200        | 0            |\n| 0          | 100        | 0.4          |\n| 0          | 0          | 0.8          |\n| 0          | -100       | 0.6          |\n| 100        | 200        | 0.2          |\n| 100        | 100        | 0.6          |\n| 100        | 0          | 0.9          |\n| 100        | -100       | 0.7          |\n| 200        | 200        | 0.1          |\n| 200        | 100        | 0.5          |\n| 200        | 0          | 1.0          |\n| 200        | -100       | 0.8          |\n| 300        | 200        | 0.3          |\n| 300        | 100        | 0.7          |\n| 300        | 0          | 1.2          |\n| 300        | -100       | 0.9          |",
+        "chart_caption": [
+            "Fig. 3. SINR levels of the UAV (located at $[ 0 , 0 , z ] ^ { T } )$ to given 15 GUEs. ",
+            "Fig. 4. Average SINR values of the UAV over given 15 GUEs. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "surface_3d",
+        "bbox": [
+            538,
+            335,
+            914,
+            551
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n= \\frac {1}{M} \\sum_ {m = 1} ^ {M} A _ {m} f _ {\\tilde {q} _ {m}} (\\tilde {q} _ {u}) E E _ {m} (q _ {u}, \\rho_ {m}, p _ {m}, \\Theta) [ t ], \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            545,
+            595,
+            936,
+            638
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $f$ is the multivariate (bivariate in our work) normal distribution, $\\tilde { q } _ { m }$ and $\\tilde { q } _ { u }$ denote the projections of $q _ { m }$ and $q _ { u }$ over $x { - } y$ plane, respectively, and $A _ { m }$ is the normalization weight. It is noted that the function $f$ is multiplied by $E E _ { m }$ to obtain a continuous and differentiable reward function while preserving the characteristics of the SINR distribution of multi-modal Gaussian distribution. $f$ is given by ",
+        "bbox": [
+            506,
+            642,
+            937,
+            750
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {\\vec {\\psi}} (\\vec {a}) = \\frac {\\exp \\left(- \\frac {1}{2} (\\vec {a} - \\vec {\\psi}) ^ {\\mathrm{T}} \\boldsymbol {\\Delta} ^ {- 1} (\\vec {a} - \\vec {\\psi})\\right)}{\\sqrt {(2 \\pi) ^ {k} | \\boldsymbol {\\Delta} |}}, \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            572,
+            753,
+            936,
+            799
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\vec { a }$ is a column vector, $\\vec { \\mu }$ is the mean vector, $k$ is the dimension of the function, Δ is the covariance matrix and $| \\Delta | \\equiv \\operatorname* { d e t } \\Delta$ is the determinant of the Δ. The procedure of obtaining the proposed reward function is summarized into two steps as follows. ",
+        "bbox": [
+            506,
+            804,
+            937,
+            878
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Step 1: We assume a finite number of quantized grid on the considered area. Next, we sample the SINRs from the given GUEs location when the UAV is located at a fixed position. We repeat this procedure until we obtain all the ",
+        "bbox": [
+            523,
+            878,
+            937,
+            940
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6604 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 4, APRIL 2025 ",
+        "bbox": [
+            493,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "chart",
+        "img_path": "images/a3e2029297363f73bba8e528e37095e27705f078105c9c4e7189175e0f9865ed.jpg",
+        "content": "| Point | x-axis [m] | y-axis [m] |\n|-------|------------|------------|\n| 1     | 150        | 220        |\n| 2     | 160        | 20         |\n| 3     | 170        | 280        |\n| 4     | 180        | 130        |\n| 5     | 40         | 50         |\n| 6     | 80         | 160        |\n| 7     | 90         | 110        |\n| 8     | 140        | 220        |\n| 9     | 250        | 80         |\n| 10    | 40         | 130        |\n| 11    | 90         | 110        |\n| 12    | 30         | 110        |\n| 13    | 240        | 130        |\n| 14    | 180        | 130        |",
+        "chart_caption": [
+            "Fig. 5. Reward values of the UAV in 2D. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "heatmap",
+        "bbox": [
+            90,
+            80,
+            461,
+            297
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "chart",
+        "img_path": "images/4837460d6d670697ba6d7c4cf3018389731c522570de820fcc4b430339840988.jpg",
+        "content": "| Point | x-axis [m] | y-axis [m] | Reward |\n|-------|------------|------------|--------|\n| 1     | 20         | 20         | 1.1    |\n| 2     | 100        | 100        | 1.4    |\n| 3     | 20         | 20         | 1.7    |\n| 4     | 150        | 150        | 1.4    |\n| 5     | 0          | 0          | 1.0    |\n| 6     | 20         | 20         | 1.3    |\n| 7     | 10         | 10         | 1.2    |\n| 8     | 20         | 20         | 1.5    |\n| 9     | 150        | 150        | 1.4    |\n| 10    | 20         | 20         | 1.1    |\n| 11    | 10         | 10         | 1.2    |\n| 12    | 20         | 20         | 1.1    |\n| 13    | 150        | 150        | 1.5    |\n| 14    | 20         | 20         | 1.6    |\n| 15    | 20         | 20         | 1.4    |",
+        "chart_caption": [
+            "Fig. 6. Reward values of the UAV in 3D. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "scatter",
+        "bbox": [
+            90,
+            338,
+            461,
+            545
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "SINR samples changing the UAV’s locations. After that, we can construct the SINR map by averaging the collected SINR samples. ",
+        "bbox": [
+            92,
+            592,
+            486,
+            637
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Step 2: However, the SINR map shows considerable fluctuation due to the nature of the SINR, making the map inefficient when implementing with DRL. To address this issue, we applied the multivariate function to the SINR map, and obtained the continuous smooth reward function which can be implemented with DRL. First, we calculate the average EE obtained via the SINR map using (14). f is the bivariate normal distribution, having peaks at all of the GUE locations. To obtain the reward function, f is multiplied by the average EE with the normalization weight $A _ { m }$ . Because f is inherently smooth, we can construct the smooth and continuous reward function r. We can verify that the reward in Fig. 6 is continuous which is different from the SINR value in Fig. 4 (discrete and fluctuated). ",
+        "bbox": [
+            75,
+            638,
+            488,
+            848
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "It is noted that the SINR map is unique to each specific set of generated GUE locations, meaning that any change in the GUE locations necessitates retraining the DRL model to reflect the new scenario accurately. This requirement stems from the fact that the model’s learned parameters are highly dependent on the spatial distribution of the GUEs, and thus, a different topology of GUE locations alters the underlying problem dynamics. Therefore, for each unique set of GUE locations, one SINR map is computed, and a corresponding reward is determined based on this map. ",
+        "bbox": [
+            57,
+            849,
+            489,
+            941
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            79,
+            930,
+            138
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Figs. 5 and 6 show the average EE of the UAV in 2D and 3D, respectively, under the same environment in Fig. 4. It is noticeable that the EE in Fig. 6 is a surface, and the product of $E E _ { m }$ and the bivariate function gives the EE a smoother contour shape as opposed to the average SINR value in Fig. 4. In addition, the EE of the UAV is designed in such a way that the highest EE region provides the highest reward, which induces the UAV to fly over or hover around this region with high probability. ",
+        "bbox": [
+            500,
+            138,
+            930,
+            260
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Consequently, the penalty of the proposed DRL algorithm is defined as ",
+        "bbox": [
+            500,
+            261,
+            930,
+            289
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {t} ^ {\\prime} = \\left\\{ \\begin{array}{l l} r _ {t}, & \\text { satisfies } C 1, C 2, C 3, C 4, \\\\ 0, & \\text { otherwise. } \\end{array} \\right. \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            579,
+            297,
+            930,
+            338
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "4) DNN Design: In this subsection, we discuss in detail the design of the DNN in our proposed algorithm. The DNN is designed with fully connected layer and zero bias. The DNN architecture comprises three distinct layers: an initial layer for input, intermediate layers or hidden layers for processing, and a final layer for generating output. For this model, the input layer consists of the UAV coordinates, GUE coordinates, transmission power, PS ratio, IRS phase steer, and composite channel gain. The neural networks with all the samples are trained using minibatch and the average output of the network is computed. The utilization of a DNN allows us to approximate the Q-value, and thus, the output of the neural network directly corresponds to the Q-value. Within our neural network architecture, we incorporate L hidden layers, with the number of nodes in each hidden layer matching that of the layer at the output. The rectified linear unit (ReLU) activation function is utilized to activate every layer of the DNN. To calculate the Q-value, denoted as $Q ( s , a , \\phi )$ , we consider the neural network weights represented by φ. These weights are updated using the backpropagation algorithm, which involves computing the partial derivative of the loss function concerning to the network weights. By iteratively adjusting the weights through backpropagation, we aim to optimize the Q-value estimation process. The objective of the DNN is to reduce the value of the loss function, which can be expressed as follows ",
+        "bbox": [
+            500,
+            345,
+            930,
+            722
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL (\\phi) = \\mathbb {E} [ (y - Q (s _ {t}, a _ {t}, \\phi)) ^ {2} ], \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            607,
+            732,
+            930,
+            750
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r } { y = r _ { t } + \\gamma \\operatorname* { m a x } _ { a \\in A } Q _ { p r e v } ( s _ { t } , a _ { t } , \\phi ) } \\end{array}$ . During the training phase of the DNN, the parameter φ is updated using a technique called experience replay. This involves randomly selecting a minibatch, denoted as Dˆ , from the experience replay memory D. The selected minibatch is then utilized as the input data for updating the parameter φ of the neural network. This approach allows for efficient and effective utilization of past experiences to improve the training process of the DNN. ",
+        "bbox": [
+            500,
+            758,
+            930,
+            878
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Error gradient is obtained by chain rule, which is given by ",
+        "bbox": [
+            516,
+            880,
+            914,
+            895
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\nabla_ {\\phi} L \\approx \\frac {1}{| \\hat {D} |} \\sum 2 (y - Q (s _ {t}, a _ {t}, \\phi)) \\nabla_ {\\phi} Q (s _ {t}, a _ {t}, \\phi). \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            521,
+            902,
+            930,
+            936
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "CHHEA et al.: ENERGY EFFICIENCY OPTIMIZATION IN INTELLIGENT REFLECTING SURFACE-AIDED UAV WIRELESS ",
+        "bbox": [
+            58,
+            37,
+            691,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "6605 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "At each iteration, the agent modifies its decision-making strategy based on the current estimate of the Q-value. The agent employs an \u0010-greedy policy to choose an action from the action space. This policy is defined as follows ",
+        "bbox": [
+            65,
+            79,
+            494,
+            140
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {t} ^ {\\prime} = \\left\\{ \\begin{array}{l l} \\operatorname{argmax} _ {a \\in A} Q (s _ {t}, a _ {t}, \\phi), & \\text { with   probability } 1 - \\epsilon \\\\ \\text { random   action }, & \\text { with   probability } \\epsilon . \\end{array} \\right. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            74,
+            152,
+            494,
+            191
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "V. COMPUTATIONAL COMPLEXITY ANALYSIS ",
+        "text_level": 1,
+        "bbox": [
+            126,
+            210,
+            432,
+            223
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this section, we analyze and evaluate the computational complexity of the algorithms used in this paper. For the REIN-FORCE algorithm, the computational complexity can be calculated as $\\begin{array} { r } { O ( \\frac { 1 } { \\epsilon _ { r } } ) } \\end{array}$ [24], where $\\epsilon _ { r }$ is the error threshold. The successive hover and fly (SHF) algorithm’s complexity is influenced by the number of variables and the computation of the objective function. For a convex subproblem with $\\kappa = q _ { e } + \\rho _ { e } + p _ { e } + \\theta _ { e }$ variables, the ellipsoid method can be applied using iterative techniques like gradient descent with barrier, which has a computational complexity denoted by $\\begin{array} { r } { O ( \\kappa ^ { 2 } \\times \\log ( \\frac { 1 } { \\epsilon _ { \\infty } } ) ) } \\end{array}$ . Furthermore, the exhaustive 2-Dimensional search of the SHF algorithm involves $O ( \\xi ^ { 2 } )$ possible candidates, with ξ representing the quantized levels along the x and y axes. Incorporating the ellipsoid update [25] and addressing (15) as discussed in [26], the complexity $O ( \\kappa ^ { 2 } )$ and $O ( \\kappa \\times \\xi )$ are considered in each iteration. Consequently, the overall computational complexity of the SHF algorithm is represented by ",
+        "bbox": [
+            65,
+            231,
+            496,
+            488
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} O \\left(\\xi^ {2}\\right) \\times O \\left(\\kappa^ {2} \\log \\left(\\frac {1}{\\epsilon_ {e}}\\right)\\right) \\times \\left(O \\left(\\kappa^ {2}\\right) + O (\\kappa \\xi)\\right) \\\\ = O \\left(\\kappa^ {3} \\times \\xi^ {2} \\times \\log \\left(\\frac {1}{\\epsilon_ {e}}\\right) \\times \\max \\{\\kappa , \\xi \\}\\right). \\tag {30} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            97,
+            498,
+            494,
+            573
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The computational complexity of DRL is mainly calculated based on the DNN. The DNN used in the proposed DRL consists of 4 layers. We set the number node for input and output layer as equal to the number of states and the number of actions, respectively. With the number of control variables $N _ { c o n }$ , the number of inputs can be defined as $( N _ { c o n } + 2 ) \\times M$ . With fully connected layers and zero biased, we assume the algorithm converges at $E$ episodes with I iterations. The computational complexity for feedforward network can be computed as $O ( L \\times N _ { a c t } \\times M )$ where L and $N _ { a c t }$ are the number of layers and actions, respectively, and $N _ { a c t } = q _ { e } \\times \\rho _ { e } \\times p _ { e } \\times \\theta _ { e }$ . Therefore, the computational complexity of the proposed DRL can be calculated as ",
+        "bbox": [
+            65,
+            580,
+            496,
+            777
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nO (E \\times I \\times L \\times N _ {a c t} \\times (N _ {c o n} + 2) \\times N _ {I R S} \\times M ^ {2}), \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            82,
+            789,
+            494,
+            808
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $N _ { I R S }$ is the number of IRS element. The computational cost of gradient search (GS) is influenced by the convergence error threshold $\\epsilon _ { s } [ 2 7 ] ;$ GS will be described later in Section VI. By setting the value of $\\epsilon _ { r } = \\epsilon _ { e } = 1 0 ^ { - 4 } , \\epsilon _ { s } = 1 0 ^ { - 5 } , E =$ $1 0 0 , I = 1 0 0 , L = 4 , q _ { e } = 1 0 , \\rho _ { e } = 1 0 , p _ { e } = 1 0 , \\theta _ { e } = 1 0 , \\xi =$ $1 0 ^ { 5 } , M = 1 5 , N _ { I R S } = 8 0$ , we can compute the computational complexity and the number of operation, which are summarized as in Table I. ",
+        "bbox": [
+            65,
+            819,
+            496,
+            939
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "table",
+        "img_path": "images/a0cf14e621ff530928277148041049ad319a0e2475b21454c6c58779fca47bb0.jpg",
+        "table_caption": [
+            "TABLE I COMPUTATIONAL COMPLEXITY COMPARISON "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Algorithm</td><td>Computational Complexity</td><td>Operations</td></tr><tr><td>DRL</td><td> $O(EILN_{act}(N_{con} + 2)N_{IRS}M^{2})$ </td><td> $3.49 \\times 10^{12}$ </td></tr><tr><td>REINFORCE</td><td> $O(\\epsilon_{r}^{-4})$ </td><td> $10^{16}$ </td></tr><tr><td>SHF</td><td> $O\\left(\\kappa^{3}\\xi^{2}\\log\\left(\\frac{1}{\\epsilon_{e}}\\right)\\times\\max\\{\\kappa,\\xi\\}\\right)$ </td><td> $5.46 \\times 10^{20}$ </td></tr><tr><td>GS</td><td> $O(\\epsilon_{s}^{-2})$ </td><td> $10^{10}$ </td></tr></table>",
+        "bbox": [
+            513,
+            113,
+            932,
+            196
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "table",
+        "img_path": "images/d5cf3f0305f9cf735c965f800598c4751c223d9f8be672bf2e1a09862378065d.jpg",
+        "table_caption": [
+            "TABLE II SIMULATION PARAMETERS. "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>Coverage area</td><td>300m×300m</td></tr><tr><td>Number of the GUEs</td><td>15</td></tr><tr><td>Number of reflecting units</td><td>{10,20,...,80}</td></tr><tr><td>Velocity of the UAV</td><td>5m/s</td></tr><tr><td>UAV flying height</td><td>100m</td></tr><tr><td>IRS&#x27;s height</td><td>30m</td></tr><tr><td>transmission power</td><td>{10,12,14,...,28} [dBm]</td></tr><tr><td>Energy transfer efficiency</td><td>50%</td></tr><tr><td>Path loss exponent (NLoS)</td><td>3.6</td></tr><tr><td>Path loss exponent (LoS)</td><td>2.2</td></tr><tr><td>Rician factor</td><td>2</td></tr><tr><td>Discount factor</td><td>0.8</td></tr></table>",
+        "bbox": [
+            560,
+            244,
+            887,
+            406
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/6ddaf52d84711e2386e254205cca70ee50340336ca8a5f51fff57c5e5e3c5657.jpg",
+        "content": "| P_max [dBm] | DRL   | SHF (ρ<1) | DRL without IRS | REINFORCE | SHF (ρ=1) | GS    | SHF (ρ=0.5) |\n| ----------- | ----- | --------- | --------------- | --------- | --------- | ----- | ----------- |\n| 10          | 14.5  | 7.5       | 13.0            | 12.5      | 13.5      | 12.0  | 11.0        |\n| 12          | 15.0  | 8.0       | 13.5            | 13.0      | 14.0      | 12.5  | 11.5        |\n| 14          | 15.5  | 8.5       | 14.0            | 13.5      | 14.5      | 13.0  | 12.0        |\n| 16          | 16.0  | 9.0       | 14.5            | 14.0      | 15.0      | 13.5  | 12.5        |\n| 18          | 16.2  | 9.5       | 14.8            | 14.5      | 15.2      | 13.8  | 13.0        |\n| 20          | 16.3  | 10.0      | 14.9            | 14.8      | 15.3      | 14.0  | 13.5        |\n| 22          | 16.3  | 10.2      | 14.9            | 14.9      | 15.3      | 14.0  | 13.8        |\n| 24          | 16.3  | 10.3      | 14.9            | 14.9      | 15.3      | 14.0  | 13.9        |\n| 26          | 16.3  | 10.3      | 14.9            | 14.9      | 15.3      | 14.0  | 13.9        |\n| 28          | 16.3  | 10.3      | 14.9            | 14.9      | 15.3      | 14.0  | 13.9        |",
+        "chart_caption": [
+            "Fig. 7. Average EE vs. $p _ { \\mathrm { m a x } } .$ "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            563,
+            422,
+            878,
+            614
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "VI. RESULTS AND DISCUSSION ",
+        "text_level": 1,
+        "bbox": [
+            614,
+            662,
+            829,
+            676
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this section, we assess the performance of the proposed DRL with SINR map-based reward through comprehensive evaluations of various simulations. For comparison, we select the SHF scheme [28] with random IRS phase steer, DRL without IRS, REINFORCE [29] and GS [30]. REINFORCE is derived as a Monte-Carlo policy gradient learning algorithm, which trains the agent to generate a stochastic policy. Due to the challenge of balancing exploration and exploitation during training, RE-INFORCE often converges to suboptimal solution. For the GS, we use the trajectory control parameter $q _ { u } [ t ]$ outputting from the proposed DRL and alternatively update the rest of the parameters such as power splitting ratio, transmission power allocation and IRS phase steer using gradient search with log-barrier function [30] until convergence is reached. The Table II provides a summary of the parameters employed in the simulation. ",
+        "bbox": [
+            506,
+            683,
+            937,
+            909
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this simulation, we set the number of IRS element to 80 units. In Fig. 7 we compare the average EE under various $p _ { \\mathrm { m a x } }$ values. This figure shows that EE performance of the proposed algorithm is higher than that of the SHF. Additionally, it shows the performance improvement of the IRS in the IRS-aided UAV communication scenario. We simulate SHF with various PS ratio $\\rho = 1 , \\rho = 0 . 5 , \\rho < < 1$ , where $\\rho = 1$ means that all received signals are used for information decoding. It is noticed that the SHF with $\\rho < < 1$ yields a very low average EE compared to that of the proposed DRL. The REINFORCE obtains slightly lower EE than SHF with $\\rho = 1$ and GS, and significantly lower EE than the proposed DRL. ",
+        "bbox": [
+            506,
+            910,
+            937,
+            941
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "6606 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 4, APRIL 2025 ",
+        "bbox": [
+            494,
+            37,
+            936,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0c2e027a56f84671614b120e9e018590eee3d6f64169b79d1f305af43eff15ef.jpg",
+        "content": "| P_max [dBm] | DRL   | DRL without IRS | SHF (ρ=1) | REINFORCE | GS    | SHF (ρ=0.5) |\n| ----------- | ----- | --------------- | --------- | --------- | ----- | ----------- |\n| 10          | 14.5  | 12.0            | 13.5      | 12.5      | 13.0  | 11.0        |\n| 12          | 15.0  | 12.5            | 14.0      | 13.0      | 13.5  | 11.5        |\n| 14          | 15.5  | 13.0            | 14.5      | 13.5      | 14.0  | 12.0        |\n| 16          | 16.0  | 13.5            | 15.0      | 14.0      | 14.5  | 12.5        |\n| 18          | 16.5  | 14.0            | 15.5      | 14.5      | 15.0  | 13.0        |\n| 20          | 17.0  | 14.5            | 16.0      | 15.0      | 15.5  | 13.5        |\n| 22          | 17.5  | 15.0            | 16.5      | 15.5      | 16.0  | 14.0        |\n| 24          | 17.5  | 15.0            | 16.5      | 16.0      | 16.0  | 14.0        |\n| 26          | 17.5  | 15.0            | 16.5      | 16.0      | 16.0  | 14.0        |\n| 28          | 17.5  | 15.0            | 16.5      | 16.0      | 16.0  | 14.0        |",
+        "chart_caption": [
+            "Fig. 8. Average data rate vs. pmax. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            116,
+            80,
+            432,
+            271
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/c9f9d31ed70e4dd779fba66cc7aff2d00191f82248a180761d61d2391daf7d7b.jpg",
+        "content": "| P_max [dBm] | DRL    | DRL without IRS | REINFORCE | SHF (ρ=1) | SHF (ρ=0.5) | GS     |\n| ----------- | ------ | --------------- | --------- | --------- | ----------- | ------ |\n| 10          | 1.01   | 1.01            | 1.02      | 1.05      | 0.99        | 1.03   |\n| 12          | 1.02   | 1.02            | 1.03      | 1.06      | 1.00        | 1.04   |\n| 14          | 1.03   | 1.03            | 1.04      | 1.07      | 1.01        | 1.05   |\n| 16          | 1.04   | 1.04            | 1.05      | 1.08      | 1.02        | 1.06   |\n| 18          | 1.06   | 1.06            | 1.07      | 1.10      | 1.04        | 1.08   |\n| 20          | 1.08   | 1.08            | 1.09      | 1.12      | 1.06        | 1.10   |\n| 22          | 1.10   | 1.10            | 1.12      | 1.14      | 1.08        | 1.12   |\n| 24          | 1.10   | 1.10            | 1.13      | 1.14      | 1.08        | 1.14   |\n| 26          | 1.10   | 1.10            | 1.13      | 1.14      | 1.08        | 1.14   |\n| 28          | 1.10   | 1.10            | 1.13      | 1.14      | 1.08        | 1.14   |",
+        "chart_caption": [
+            "Fig. 9. Average energy consumption of the GUE vs. $p _ { \\mathrm { m a x } }$ . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            112,
+            309,
+            432,
+            500
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            547,
+            486,
+            698
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The average data rate versus the maximum transmission power is illustrated in Fig. 8. We can verify that the data rate of the proposed algorithm outperforms the SHF with $\\rho = 1$ . Moreover, the proposed algorithm achieves higher data rate than the SHF with $\\rho = 0 . 5$ and exhibits high data rate compared to the SHF with $\\rho < < 1$ . GS achieves data rate slightly lower than SHF with $\\rho = 1$ but higher than REINFORCE for all maximum transmission power constraints. ",
+        "bbox": [
+            57,
+            699,
+            486,
+            819
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "We further illustrate the average energy used by the GUE in Fig. 9. Overall, the trend of the average energy consumption of the GUE becomes saturated around $p _ { \\operatorname* { m a x } } = 2 2$ dBm. We can see that SHF with $\\rho = 1$ consumes the highest energy under low transmission power constraints, while GS consumes the highest energy between $p _ { \\operatorname* { m a x } } = 1 8$ and 28 dBm. The proposed algorithm consumes notably lower energy than the SHF with $\\rho = 1$ , and slightly lower energy than both REINFORCE and the DRL without IRS. We can notice that the SHF with $\\rho = 0 . 5 , \\rho < < 1$ uses low energy for their communications. This is because the received signal is mostly used for energy harvesting, which results in very low data rate and the degrades in the EE. It is noted that even though the proposed algorithm consumes slightly more energy than that of the SHF with $\\rho = 0 . 5 , \\rho < < 1$ , it achieves higher EE. ",
+        "bbox": [
+            57,
+            819,
+            488,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/33a77cf3f7cd7c42baaec89d38f1bcb7969bbe9c5acc0b523861082e4f3f9228.jpg",
+        "content": "| Number of reflecting unit | DRL   | DRL without IRS | REINFORCE | SHF (ρ=1) | SHF (ρ=0.5) | SHF (ρ<<1) |\n| ------------------------- | ----- | --------------- | --------- | --------- | ----------- | ---------- |\n| 10                        | 14.0  | 14.0            | 12.5      | 13.5      | 11.5        | 8.0        |\n| 20                        | 14.5  | 14.0            | 13.0      | 14.0      | 12.0        | 8.5        |\n| 30                        | 15.0  | 14.0            | 13.5      | 14.5      | 12.5        | 9.0        |\n| 40                        | 15.5  | 14.0            | 14.0      | 15.0      | 13.0        | 9.5        |\n| 50                        | 16.0  | 14.0            | 14.5      | 15.5      | 13.5        | 10.0       |\n| 60                        | 16.5  | 14.0            | 15.0      | 16.0      | 14.0        | 10.5       |\n| 70                        | 17.0  | 14.0            | 15.5      | 16.5      | 14.5        | 11.0       |\n| 80                        | 17.5  | 14.0            | 16.0      | 17.0      | 15.0        | 11.5       |",
+        "chart_caption": [
+            "Fig. 10. Average EE vs. the number of reflecting unit. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            558,
+            80,
+            870,
+            271
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/13401c8c1aa63412d9c6f0c84c016e9c9d9fdf51cf8880a88d326855d1ce379f.jpg",
+        "content": "| Number of reflecting unit | DRL   | DRL without IRS | SHF (ρ=0.5) | SHF (ρ<1) | GS    | REINFORCE |\n| ------------------------- | ----- | --------------- | ----------- | --------- | ----- | --------- |\n| 10                        | 16.0  | 16.0            | 13.0        | 9.0       | 15.0  | 14.5      |\n| 20                        | 16.5  | 16.0            | 13.5        | 9.5       | 15.5  | 15.0      |\n| 30                        | 17.0  | 16.0            | 14.0        | 10.0      | 16.0  | 15.5      |\n| 40                        | 17.5  | 16.0            | 14.5        | 10.5      | 16.5  | 16.0      |\n| 50                        | 18.0  | 16.0            | 15.0        | 11.0      | 17.0  | 16.5      |\n| 60                        | 18.5  | 16.0            | 15.5        | 11.5      | 17.5  | 17.0      |\n| 70                        | 19.0  | 16.0            | 16.0        | 12.0      | 18.0  | 17.5      |\n| 80                        | 19.5  | 16.0            | 16.5        | 12.5      | 18.5  | 18.0      |",
+        "chart_caption": [
+            "Fig. 11. Average data rate vs. the number of reflecting unit. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            558,
+            310,
+            870,
+            500
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            547,
+            930,
+            652
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In the following figures, we analyze the performances varying the number of reflecting units. In Fig. 10 the average EE increases as the number of reflecting unit goes up. We can clearly see the IRS performance gain of the proposed algorithm compared to the DRL without IRS method. ",
+        "bbox": [
+            500,
+            652,
+            930,
+            728
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 11 shows the data rate achieved as we increase the number of reflecting units. It is verified that the proposed method achieves a higher data rate compared to that of the SHF with $\\rho = 1$ . Although REINFORCE achieves lower energy consumption than SHF with $\\rho = 1$ , its data rate is also lower than the SHF, which results in lower EE. GS achieves a better data rate than REINFORCE at the expense of having the highest energy consumption among all comparable algorithms. Fig. 12 depicts the performance considering the average energy consumption versus the number of reflecting units. From the result in Fig. 12, we can verify that the proposed algorithm takes advantage of the reflecting units of the IRS to reduce the energy consumption. Furthermore, as the number of reflecting units increases to a certain amount, the performance gradually goes to convergent state, highlighting the limitation of IRS. Additionally, it is noteworthy highlighting that the achieved performance of the proposed algorithm with 10 units of IRS is approximately comparable to that of the DRL without any IRS. Therefore, it is important to employ more than 10 IRS units to reap the advantage of the IRS. ",
+        "bbox": [
+            500,
+            729,
+            930,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "CHHEA et al.: ENERGY EFFICIENCY OPTIMIZATION IN INTELLIGENT REFLECTING SURFACE-AIDED UAV WIRELESS ",
+        "bbox": [
+            58,
+            37,
+            693,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "6607 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/bfff5bba16b5db713e9a06e699290453364ac800344b8f0deae096f1a0d19388.jpg",
+        "content": "| Number of reflecting unit | DRL    | SHF (ρ=0.5) | DRL without IRS | SHF (ρ<1) | SHF (ρ=1) | REINFORCE |\n| ------------------------- | ------ | ----------- | --------------- | --------- | --------- | --------- |\n| 10                        | 1.14   | 1.10        | 1.12            | 1.07      | 1.16      | 1.15      |\n| 20                        | 1.13   | 1.09        | 1.12            | 1.06      | 1.15      | 1.14      |\n| 30                        | 1.12   | 1.08        | 1.12            | 1.06      | 1.14      | 1.14      |\n| 40                        | 1.12   | 1.08        | 1.12            | 1.06      | 1.14      | 1.13      |\n| 50                        | 1.12   | 1.08        | 1.12            | 1.06      | 1.14      | 1.13      |\n| 60                        | 1.12   | 1.08        | 1.12            | 1.06      | 1.14      | 1.13      |\n| 70                        | 1.12   | 1.08        | 1.12            | 1.06      | 1.14      | 1.13      |\n| 80                        | 1.12   | 1.08        | 1.12            | 1.06      | 1.14      | 1.13      |",
+        "chart_caption": [
+            "Fig. 12. Average energy consumption of the GUE vs. the number of reflecting unit. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            121,
+            80,
+            439,
+            271
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            337,
+            496,
+            428
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "VII. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            213,
+            443,
+            346,
+            455
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we study the IRS-aided UAV WPT network with SWIPT, where the main goal is to improve the average EE of the GUEs. We formulate the optimization problem as a maximization problem for the average EE. To address this problem, we employ the DRL approach and proposed the reward function based on the EE of the GUEs to optimize flying route of the UAV, the IRS phase steer, the transmission power of the UAV and PS ratio at the same instant. The simulation results demonstrate the potential gain of the proposed algorithm with and without IRS. ",
+        "bbox": [
+            63,
+            464,
+            493,
+            613
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "For future work, we will investigate energy-efficient UAV 3D route planning in a multiple-UAV environment using multiagent DRL, where a detailed energy consumption model of the UAV is considered. Additionally, we will implement Transformer model to handle network retraining when network topology changes. Transformer can capture long-range dependencies [31], which is important for understanding relations between the UAV, GUEs, and interference sources in an IRS-aided UAV system. We believe that this part shows the potential capability of Transformer to estimate the SINR distribution under varying network topologies. ",
+        "bbox": [
+            63,
+            616,
+            494,
+            782
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            250,
+            797,
+            341,
+            809
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] A. Fotouhi et al., “Survey on UAV cellular communications: Practical aspects, standardization advancements, regulation, and security challenges,” IEEE Commun. Surveys Tut., vol. 21, no. 4, pp. 3417–3442, Fourth Quarter 2019, doi: 10.1109/COMST.2019.2906228. ",
+            "[2] Y. Zeng, Q. Wu, and R. Zhang, “Accessing from the sky: A tutorial on UAV communications for 5G and beyond,” Proc. IEEE, vol. 107, no. 12, pp. 2327–2375, Dec. 2019. ",
+            "[3] Q. Wu and R. Zhang, “Towards smart and reconfigurable environment: Intelligent reflecting surface aided wireless network,” IEEE Commun. Mag., vol. 58, no. 1, pp. 106–112, Jan. 2020. "
+        ],
+        "bbox": [
+            72,
+            818,
+            494,
+            933
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[4] Y. Liu et al., “Reconfigurable intelligent surfaces: Principles and opportunities,” IEEE Commun. Surveys Tut., vol. 23, no. 3, pp. 1546–1577, Third Quarter 2021, doi: 10.1109/COMST.2021.3077737. ",
+            "[5] H. Wang, G. Ding, F. Gao, J. Chen, J. Wang, and L. Wang, “Power control in UAV-Supported ultra dense networks: Communications, caching, and energy transfer,” IEEE Commun. Mag., vol. 56, no. 6, pp. 28–34, Jun. 2018, doi: 10.1109/MCOM.2018.1700431. ",
+            "[6] N. Zhao, S. Zhang, F. R. Yu, Y. Chen, A. Nallanathan, and V. C. M. Leung, “Exploiting interference for energy harvesting: A survey, research issues, and challenges,” IEEE Access, vol. 5, pp. 10403–10421, 2017, doi: 10.1109/ACCESS.2017.2705638. ",
+            "[7] N. Cheng et al., “AI for UAV-assisted IOT applications: A comprehensive review,” IEEE Internet Things J., vol. 10, no. 16, pp. 14438–14461, Aug. 2023, doi: 10.1109/jiot.2023.3268316. ",
+            "[8] Q. Wu, S. Zhang, B. Zheng, C. You, and R. Zhang, “Intelligent reflecting surface-aided wireless communications: A tutorial,” IEEE Trans. Commun., vol. 69, no. 5, pp. 3313–3351, May 2021, doi: 10.1109/TCOMM.2021.3051897. ",
+            "[9] T. Bai, C. Pan, Y. Deng, M. Elkashlan, A. Nallanathan, and L. Hanzo, “Latency minimization for intelligent reflecting surface aided mobile edge computing,” IEEE J. Sel. Areas Commun., vol. 38, no. 11, pp. 2666–2682, Nov. 2020, doi: 10.1109/JSAC.2020.3007035. ",
+            "[10] X. Hu, C. Zhong, Y. Zhang, X. Chen, and Z. Zhang, “Location information aided multiple intelligent reflecting surface systems,” IEEE Trans. Commun., vol. 68, no. 12, pp. 7948–7962, Dec. 2020, doi: 10.1109/TCOMM.2020.3020577. ",
+            "[11] J. He, H. Wymeersch, T. Sanguanpuak, O. Silvén, and M. Juntti, “Adaptive beamforming design for mmWave RIS-aided joint localization and communication,” in Proc. IEEE Wireless Commun. Netw. Conf. Workshops, 2020, pp. 1–6. ",
+            "[12] S. Zhang and R. Zhang, “Radio map-based 3D path planning for cellular-connected UAV,” IEEE Trans. Wireless Commun., vol. 20, no. 3, pp. 1975–1989, Mar. 2021, doi: 10.1109/TWC.2020.3037916. ",
+            "[13] Z. Huang, C. Chen, and M. Pan, “Multiobjective UAV path planning for emergency information collection and transmission,” IEEE Internet Things J., vol. 7, no. 8, pp. 6993–7009, Aug. 2020, doi: 10.1109/JIOT. 2020.2979521. ",
+            "[14] Y. Guo, C. You, C. Yin, and R. Zhang, “UAV flying route and communication co-design: Flexible path discretization and path compression,” IEEE J. Sel. Areas Commun., vol. 39, no. 11, pp. 3506–3523, Nov. 2021, doi: 10.1109/JSAC.2021.3088690. ",
+            "[15] Z. Wei et al., “Sum-rate maximization for IRS-aided UAV OFDMA communication systems,” IEEE Trans. Wireless Commun., vol. 20, no. 4, pp. 2530–2550, Apr. 2021, doi: 10.1109/TWC.2020.3042977. ",
+            "[16] Y. Pan, K. Wang, C. Pan, H. Zhu, and J. Wang, “UAV-Assisted and intelligent reflecting surfaces-supported terahertz communications,” IEEE Wireless Commun. Lett., vol. 10, no. 6, pp. 1256–1260, Jun. 2021, doi: 10.1109/LWC.2021.3063365. ",
+            "[17] M. Hua, L. Yang, Q. Wu, C. Pan, C. Li, and A. L. Swindlehurst, “UAV-Assisted intelligent reflecting surface symbiotic radio system,” IEEE Trans. Wireless Commun., vol. 20, no. 9, pp. 5769–5785, Sep.. 2021, doi: 10.1109/TWC.2021.3070014. ",
+            "[18] Y. Cai, Z. Wei, S. Hu, D. W. K. Ng, and J. Yuan, “Resource allocation for power-efficient IRS-aided UAV communications,” in Proc. 2020 IEEE Int. Conf. Commun. Workshops, 2020, pp. 1–7, doi: 10.1109/ICCWorkshops49005.2020.9145224. ",
+            "[19] Z. Mohamed and S. Aïssa, “Leveraging UAVs with intelligent reflecting surfaces for energy-efficient communications with cell-edge users,” in Proc. 2020 IEEE Int. Conf. Commun. Workshops, 2020, pp. 1–6, doi: 10.1109/ICCWorkshops49005.2020.9145273. ",
+            "[20] S. Li, B. Duo, X. Yuan, Y. -C. Liang, and M. Di Renzo, “Reconfigurable intelligent surface assisted UAV communication: Joint flying route design and passive beamforming,” IEEE Wireless Commun. Lett., vol. 9, no. 5, pp. 716–720, May 2020, doi: 10.1109/LWC.2020.2966705. ",
+            "[21] Z. Li, W. Chen, H. Cao, H. Tang, K. Wang, and J. Li, “Joint communication and flying route design for intelligent reflecting surface empowered UAV SWIPT networks,” IEEE Trans. Veh. Technol., vol. 71, no. 12, pp. 12840–12855, Dec. 2022, doi: 10.1109/TVT.2022.3196039. ",
+            "[22] M. S. Frikha, S. M. Gammar, A. Lahmadi, and L. Andrey, “Reinforcement and deep reinforcement learning for wireless Internet of Things: A survey,” Comput. Commun., vol. 178, pp. 98–113, Oct. 2021, doi: 10.1016/j.comcom.2021.07.014. ",
+            "[23] K. Arulkumaran, M. P. Deisenroth, M. Brundage, and A. A. Bharath, “Deep reinforcement learning: A brief survey,” IEEE Signal Process. Mag., vol. 34, no. 6, pp. 26–38, Nov. 2017, doi: 10.1109/msp.2017.2743240. "
+        ],
+        "bbox": [
+            511,
+            78,
+            939,
+            933
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "6608 ",
+        "bbox": [
+            67,
+            40,
+            92,
+            49
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 4, APRIL 2025 ",
+        "bbox": [
+            494,
+            39,
+            936,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[24] J. Zhang, J. Kim, B. O’Donoghue, and S. Boyd, “Sample efficient reinforcement learning with reinforce,” in Proc. AAAI Conf. Artif. Intell., 2021, pp. 10887–10895, doi: 10.1609/aaai.v35i12.17300. ",
+            "[25] S. Bubeck, Convex Optimization: Algorithms and Complexity. Norwell, MA, USA: Now Publishers, 2015, doi: 10.1561/9781601988614. ",
+            "[26] R. Hunger, “Floating point operations in matrix-vector calculus,” Technische Univ. München, Munich, Germany, Tech. Rep., Version 1.3, 2007. ",
+            "[27] R. Sedgewick and K. Wayne, Computer Science: An Interdisciplinary Approach. London, U.K.: Pearson, 2017. ",
+            "[28] J. Xu, Y. Zeng, and R. Zhang, “UAV-Enabled wireless power transfer: Flying route design and energy optimization,” IEEE Trans. Wireless Commun., vol. 17, no. 8, pp. 5092–5106, Aug. 2018, doi: 10.1109/TWC.2018.2838134. ",
+            "[29] P. S. Thomas and E. Brunskill, “Policy gradient methods for reinforcement learning with function approximation and action-dependent baselines,” CoRR, vol. abs/1706.06643, pp. 1–2, Jun. 2017. [Online]. Available: http://arxiv.org/abs/1706.06643 ",
+            "[30] S. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004. ",
+            "[31] Z. Chen, Z. Zhang, and Z. Yang, “Big AI models for 6G wireless networks: Opportunities, challenges, and research directions,” IEEE Wireless Commun., vol. 31, no. 5, pp. 164–172, Oct. 2024, doi: 10.1109/mwc.015.2300404. "
+        ],
+        "bbox": [
+            58,
+            80,
+            488,
+            343
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/6673236715ead6d284a85e45ebc9a744665bc2ef84036776d2ca9098de684dd5.jpg",
+        "image_caption": [
+            "Kimchheang Chhea received the B.Eng. degree from the Department of Electrical and Energy Engineering, Institute of Technology of Cambodia, Phnom Penh, Cambodia, in 2019. He is currently working toward the M.S. and Ph.D. degrees integrated program with the Department of Intelligent Energy and Industry, Chung-Ang University, Seoul, South Korea. His research interests include machine learning-based network optimization and next-generation wireless communication. "
+        ],
+        "image_footnote": [],
+        "content": "Portrait of a young man in formal suit and tie (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            373,
+            185,
+            489
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/6ee0d6d4bd579b672bdf0064c332f2078ae6b8b3b582767cdf388e6d88362b25.jpg",
+        "image_caption": [
+            "Sengly Muy received the B.S. degree from the Institute of Technology of Cambodia (ITC), Phnom Penh, Cambodia, in 2018, and the integrated M.S. and Ph.D. degree from the Department of Intelligent Energy and Industry, Chung-Ang University, Republic of Korea, in 2024. His research interests include performance optimization in wireless networks, artificial intelligence, and machine learning. "
+        ],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            82,
+            627,
+            199
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/6908985d249272205e0e5e4e98368830719e28308f848d162da522f4bcbff369.jpg",
+        "image_caption": [
+            "Jung-Ryun Lee (Senior Member, IEEE) received the B.S. and M.S. degrees in mathematics from Seoul National University, Seoul, South Korea, in 1995 and 1997, respectively, and the Ph.D. degree in electrical and electronics engineering from the Korea Advanced Institute of Science and Technology (KAIST), Daejeon, South Korea, in 2006. From 1997 to 2005, he was a Chief Research Engineer with LG Electronics, South Korea. From 2006 to 2007, he was a full-time Lecturer of electronic engineering with the University of Incheon, Incheon, South Korea. Since 2008, he has ",
+            "been a Professor with the School of Electrical and Electronics Engineering, Chung-Ang University, Seoul, South Korea. His research interests include energy-efficient networks and algorithms, bioinspired autonomous networks, and artificial intelligencebased networking. He is also a Regular Member of IEICE, KIISE, and KICS. He was the recipient of the Excellent Paper Award at ICUFN 2012, Best Paper Award at ICN 2014, Best Paper Award at QSHINE 2016, and Excellent Paper Award at ICTC 2018. "
+        ],
+        "image_footnote": [],
+        "content": "Portrait of a man in formal attire with glasses (no visible text or symbols)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            284,
+            627,
+            398
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "CHHEA et al.: ENERGY EFFICIENCY OPTIMIZATION IN INTELLIGENT REFLECTING SURFACE-AIDED UAV WIRELESS ",
+        "bbox": [
+            58,
+            39,
+            691,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "6609 ",
+        "bbox": [
+            902,
+            40,
+            930,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:45:08 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 10
+    }
+]

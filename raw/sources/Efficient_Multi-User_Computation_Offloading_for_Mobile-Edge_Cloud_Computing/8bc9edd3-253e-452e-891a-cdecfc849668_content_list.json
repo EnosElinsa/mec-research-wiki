@@ -1,0 +1,3837 @@
+[
+    {
+        "type": "text",
+        "text": "Efficient Multi-User Computation Offloading for Mobile-Edge Cloud Computing ",
+        "text_level": 1,
+        "bbox": [
+            97,
+            73,
+            903,
+            144
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Xu Chen, Member, IEEE, Lei Jiao, Member, IEEE, Wenzhong Li, Member, IEEE, ACM, and Xiaoming Fu, Senior Member, IEEE ",
+        "bbox": [
+            138,
+            148,
+            856,
+            179
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—Mobile-edge cloud computing is a new paradigm to provide cloud computing capabilities at the edge of pervasive radio access networks in close proximity to mobile users. In this paper, we first study the multi-user computation offloading problem for mobile-edge cloud computing in a multi-channel wireless interference environment. We show that it is NP-hard to compute a centralized optimal solution, and hence adopt a game theoretic approach for achieving efficient computation offloading in a distributed manner. We formulate the distributed computation offloading decision making problem among mobile device users as a multi-user computation offloading game. We analyze the structural property of the game and show that the game admits a Nash equilibrium and possesses the finite improvement property. We then design a distributed computation offloading algorithm that can achieve a Nash equilibrium, derive the upper bound of the convergence time, and quantify its efficiency ratio over the centralized optimal solutions in terms of two important performance metrics. We further extend our study to the scenario of multi-user computation offloading in the multi-channel wireless contention environment. Numerical results corroborate that the proposed algorithm can achieve superior computation offloading performance and scale well as the user size increases. ",
+        "bbox": [
+            60,
+            217,
+            491,
+            496
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Computation offloading, game theory, mobile-edge cloud computing, Nash equilibrium. ",
+        "bbox": [
+            57,
+            501,
+            489,
+            529
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            209,
+            539,
+            339,
+            552
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A S SMARTPHONES are gaining enormous popularity,more and more new mobile applications such as face recognition, natural language processing, interactive gaming, and augmented reality are emerging and attract great attention [1]–[3]. This kind of mobile applications are typically resource-hungry, demanding intensive computation and high energy consumption. Due to the physical size constraint, ",
+        "bbox": [
+            57,
+            572,
+            489,
+            679
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received March 17, 2015; revised September 05, 2015; accepted September 29, 2015; approved by IEEE/ACM TRANSACTIONS ON NETWORKING Editor U. Ayesta. Date of publication October 26, 2015; date of current version October 13, 2016. This work was supported in part by the EU FP7 IRSES MobileCloud Project under Grant No. 612212, the National Natural Science Foundation of China under Grants No. 61373128 and No. 61321491, the Sino-German Institutes of Social Computing, the Simulation Science Center sponsored by State Lower Saxony and Volkswagen Foundation, and the Alexander von Humboldt Foundation. (Corresponding author: Wenzhong Li.) ",
+        "bbox": [
+            57,
+            699,
+            491,
+            803
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "X. Chen and X. Fu are with the Institute of Computer Science, University of Göttingen, 37077 Göttingen, Germany (e-mail: xu.chen@cs.uni-goettingen.de; fu@cs.uni-goettingen.de). ",
+        "bbox": [
+            57,
+            803,
+            491,
+            837
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "L. Jiao was with the University of Göttingen, 37077 Göttingen, Germany. He is now with Bell Labs, Alcatel-Lucent, Dublin, Ireland (e-mail: lei.jiao@belllabs.com). ",
+        "bbox": [
+            57,
+            837,
+            491,
+            871
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "W. Li is with the State Key Laboratory for Novel Software Technology, Nanjing University, Nanjing 210093, China (e-mail: lwz@nju.edu.cn). ",
+        "bbox": [
+            57,
+            871,
+            489,
+            894
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org. ",
+        "bbox": [
+            57,
+            894,
+            489,
+            917
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TNET.2015.2487344 ",
+        "bbox": [
+            72,
+            918,
+            375,
+            930
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "however, mobile devices are in general resource-constrained, having limited computation resources and battery life. The tension between resource-hungry applications and resource-constrained mobile devices hence poses a significant challenge for the future mobile platform development [4]. ",
+        "bbox": [
+            501,
+            216,
+            935,
+            291
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Mobile cloud computing is envisioned as a promising approach to address such a challenge. By offloading the computation via wireless access to the resource-rich cloud infrastructure, mobile cloud computing can augment the capabilities of mobile devices for resource-hungry applications. One possible approach is to offload the computation to the remote public clouds such as Amazon EC2 and Windows Azure. However, an evident weakness of public cloud based mobile cloud computing is that mobile users may experience long latency for data exchange with the public cloud through the wide area network. Long latency would hurt the interactive response, since humans are acutely sensitive to delay and jitter. Moreover, it is very difficult to reduce the latency in the wide area network. To overcome this limitation, the cloudlet based mobile cloud computing was proposed as a promising solution [5]. Rather than relying on a remote cloud, the cloudlet based mobile cloud computing leverages the physical proximity to reduce delay by offloading the computation to the nearby computing sever/cluster via one-hop WiFi wireless access. However, there are two major disadvantages for the cloudlet based mobile cloud computing: 1) due to limited coverage of WiFi networks (typically available for indoor environments), cloudlet based mobile cloud computing can not guarantee ubiquitous service provision everywhere; 2) due to space constraint, cloudlet based mobile cloud computing usually utilizes a computing sever/cluster with small/medium computation resources, which may not satisfy QoS of a large number of users. ",
+        "bbox": [
+            501,
+            292,
+            937,
+            700
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "To address these challenges and complement cloudlet based mobile cloud computing, a novel mobile cloud computing paradigm, called mobile-edge cloud computing, has been proposed [6]–[9]. As illustrated in Fig. 1, mobile-edge cloud computing can provide cloud-computing capabilities at the edge of pervasive radio access networks in close proximity to mobile users. In this case, the need for fast interactive response can be met by fast and low-latency connection (e.g., via fiber transmission) to large-scale resource-rich cloud computing infrastructures (called telecom cloud) deployed by telecom operators (e.g., AT&T and T-Mobile) within the network edge and backhaul/core networks. By endowing ubiquitous radio access networks (e.g., 3G/4G macro-cell and small-cell base-stations) with powerful computing capabilities, mobile-edge cloud computing is envisioned to provide pervasive and agile computation augmenting services for mobile device users at anytime and anywhere [6]–[9]. ",
+        "bbox": [
+            501,
+            702,
+            937,
+            931
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            60,
+            39,
+            486,
+            51
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "2795 ",
+        "bbox": [
+            908,
+            41,
+            935,
+            51
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "1063-6692 © 2015 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            194,
+            942,
+            802,
+            955
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See http://www.ieee.org/publications\\_standards/publications/rights/index.html for more information. ",
+        "bbox": [
+            222,
+            956,
+            773,
+            965
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            72,
+            963,
+            923,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/0a5afb7e899b4f4fa5432030af9b2b7a6f0f7b97f00731aa9631e1100116e8c2.jpg",
+        "image_caption": [
+            "Fig. 1. An illustration of mobile-edge cloud computing. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph LR\n    A[\"Mobile Users\"] --> B[\"Wireless Base-station\"]\n    C[\"Fiber Link\"] --> D[\"Telecom Cloud\"]\n    D --> E[\"Internet\"]\n    B --> D\n    D --> E\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            60,
+            84,
+            494,
+            188
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            60,
+            233,
+            494,
+            264
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we study the issue of designing efficient computation offloading mechanism for mobile-edge cloud computing. One critical factor of affecting the computation offloading performance is the wireless access efficiency [10]. Given the fact that base-stations in most wireless networks are operating in multi-channel setting, a key challenge is how to achieve efficient wireless access coordination among multiple mobile device users for computation offloading. If too many mobile device users choose the same wireless channel to offload the computation to the cloud simultaneously, they may cause severe interference to each other, which would reduce the data rates for computation offloading. This hence can lead to low energy efficiency and long data transmission time. In this case, it would not be beneficial for the mobile device users to offload computation to the cloud. To achieve efficient computation offloading for mobile-edge cloud computing, we hence need to carefully tackle two key challenges: 1) how should a mobile user choose between the local computing (on its own device) and the cloud computing (via computation offloading)? 2) if a user chooses the cloud computing, how can the user choose a proper channel in order to achieve high wireless access efficiency for computation offloading? ",
+        "bbox": [
+            64,
+            264,
+            493,
+            598
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We adopt a game theoretic approach to address these challenges. Game theory is a powerful tool for designing distributed mechanisms, such that the mobile device users in the system can locally make decisions based on strategic interactions and achieve a mutually satisfactory computation offloading solution. This can help to ease the heavy burden of complex centralized management (e.g., massive information collection from mobile device users) by the telecom cloud operator. Moreover, as different mobile devices are usually owned by different individuals and they may pursue different interests, game theory provides a useful framework to analyze the interactions among multiple mobile device users who act in their own interests and devise incentive compatible computation offloading mechanisms such that no mobile user has the incentive to deviate unilaterally. ",
+        "bbox": [
+            60,
+            599,
+            494,
+            826
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Specifically, we model the computation offloading decision making problem among multiple mobile device users for mobile-edge cloud computing in a multi-channel wireless environment as a multi-user computation offloading game. We then propose a distributed computation offloading algorithm that can achieve the Nash equilibrium of the game. The main results and contributions of this paper are as follows: ",
+        "bbox": [
+            60,
+            827,
+            494,
+            932
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Multi-User Computation Offloading Game Formulation: ",
+        "bbox": [
+            77,
+            934,
+            491,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We first show that it is NP-hard to find the centralized ",
+        "bbox": [
+            97,
+            949,
+            491,
+            961
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "optimal multi-user computation offloading solutions in a multi-channel wireless interference environment. We hence consider the distributed alternative and formulate the distributed computation offloading decision making problem among the mobile device users as a multi-user computation offloading game, which takes into account both communication and computation aspects of mobile-edge cloud computing. We also extend our study to the scenario of multi-user computation offloading in the multi-channel wireless contention environment. ",
+        "bbox": [
+            538,
+            79,
+            940,
+            230
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Analysis of Computation Offloading Game Properties: We then study the structural property of the multi-user computation offloading game and show that the game is a potential game by carefully constructing a potential function. According to the property of potential game, we show that the multi-user computation offloading game admits the finite improvement property and always possesses a Nash equilibrium. ",
+        "bbox": [
+            521,
+            231,
+            940,
+            352
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Distributed Computation Offloading Algorithm Design: We next devise a distributed computation offloading algorithm that achieves a Nash equilibrium of the multi-user computation offloading game and derive the upper bound of the convergence time under mild conditions. We further quantify the efficiency ratio of the Nash equilibrium solution by the algorithm over the centralized optimal solutions in terms of two important metrics of the number of beneficial cloud computing users and the system-wide computation overhead. Numerical results demonstrate that the proposed algorithm can achieve efficient computation offloading performance and scale well as the user size increases. ",
+        "bbox": [
+            521,
+            353,
+            939,
+            548
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The rest of the paper is organized as follows. We first present the system model in Section II. We then propose the multi-user computation offloading game and develop the distributed computation offloading algorithm in Sections III and IV, respectively. We next analyze the performance of the algorithm and present the numerical results in Sections V and VII, respectively. We further extend our study to the case under the wireless contention model in Section VI, discuss the related work in Section VIII, and finally conclude in Section IX. ",
+        "bbox": [
+            505,
+            550,
+            940,
+            686
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            652,
+            705,
+            795,
+            719
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "We first introduce the system model. We consider a set of $\\mathcal { N } = \\{ 1 , 2 , \\ldots , N \\}$ collocated mobile device users, where each user has a computationally intensive task to be completed. There exists a wireless base-station and through which the mobile device users can offload the computation to the cloud in proximity deployed by the telecom operator. Similar to many previous studies in mobile cloud computing (e.g., [9]–[17]) and mobile networking (e.g., [18] and [19]), to enable tractable analysis and get useful insights, we consider a quasi-static scenario where the set of mobile device users remains unchanged during a computation offloading period (e.g., several hundred milliseconds), while may change across different periods.1 Since both the communication and computation aspects play a key role in ",
+        "bbox": [
+            505,
+            727,
+            940,
+            926
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1The general case that mobile users may depart and leave dynamically within a computation offloading period will be considered in a future work. ",
+        "bbox": [
+            506,
+            937,
+            939,
+            961
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            69,
+            961,
+            923,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2796 ",
+        "bbox": [
+            62,
+            41,
+            92,
+            51
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            511,
+            40,
+            940,
+            51
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "mobile-edge cloud computing, we next introduce the communication and computation models in details. ",
+        "bbox": [
+            57,
+            79,
+            491,
+            108
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            57,
+            121,
+            246,
+            135
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "We first introduce the communication model for wireless access in mobile-edge cloud computing. Here the wireless base-station can be a 3G/4G macro-cell or small-cell base-station [20] that manages the uplink/downlink communications of mobile device users. There are wireless channels and the set of channels is denoted as $\\mathcal { M } = \\{ 1 , 2 , \\dots , M \\}$ . Furthermore, we denote $a _ { n } \\in \\{ 0 \\}$ as the computation offloading decision of mobile device user . Specifically, we have $a _ { n } > 0$ if user chooses to offload the computation to the cloud via a wireless channel $a _ { n } ;$ we have $a _ { n } ~ = ~ 0$ if user decides to compute its task locally on its own mobile device. Given the decision profile $\\pmb { a } = \\left( a _ { 1 } , a _ { 2 } , \\ldots , a _ { N } \\right)$ of all the mobile device users, we can compute the uplink data rate of a mobile device user that chooses to offload the computation to the cloud via a wireless channel $a _ { n } > 0$ as [21] ",
+        "bbox": [
+            60,
+            141,
+            491,
+            370
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {n} (\\boldsymbol {a}) = w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0} + \\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\} : a _ {i} = a _ {n}} q _ {i} g _ {i , s}}\\right). \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            81,
+            376,
+            491,
+            433
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Here is the channel bandwidth and $q _ { n }$ is user 's transmission power which is determined by the wireless base-station according to some power control algorithms such as [22] and [23].2 Further, $g _ { n , s }$ denotes the channel gain between the mobile device user and the base-station , and $\\varpi _ { 0 }$ denotes the background noise power. Note that here we focus on exploring the computation offloading problem under the wireless interference model, which can well capture user's time average aggregate throughput in the cellular communication scenario in which some physical layer channel access scheme (e.g., CDMA) is adopted to allow multiple users to share the same spectrum resource simultaneously and efficiently. In Section VI, we will also extend our study to the wireless contention model in which some media access control protocol such as CSMA is adopted in WiFi-alike networks. ",
+        "bbox": [
+            60,
+            439,
+            489,
+            667
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "From the communication model in (1), we see that if too many mobile device users choose to offload the computation via the same wireless access channel simultaneously during a computation offloading period, they may incur severe interference, leading to low data rates. As we discuss latter, this would negatively affect the performance of mobile-edge cloud computing. ",
+        "bbox": [
+            57,
+            669,
+            489,
+            761
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. Computation Model ",
+        "text_level": 1,
+        "bbox": [
+            59,
+            771,
+            226,
+            788
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "We then introduce the computation model. We consider that each mobile device user has a computation task ${ \\mathcal { T } } _ { n } \\triangleq ( b _ { n } , d _ { n } )$ that can be computed either locally on the mobile device or remotely on the telecom cloud via computation offloading. Here $b _ { n }$ denotes the size of computation input data (e.g., the program ",
+        "bbox": [
+            57,
+            792,
+            489,
+            870
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2To be compatible with existing wireless systems, in this paper we consider that the power is determined to satisfy the requirements of wireless transmission (e.g., the specified SINR threshold). For the future work, we will study the joint power control and offloading decision making problem to optimize the performance of computation offloading. This joint problem would be very challenging to solve since the offloading decision making problem alone is NP-hard as we show later. ",
+        "bbox": [
+            57,
+            880,
+            491,
+            961
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "codes and input parameters) involved in the computation task $\\mathcal { I } _ { n }$ and $d _ { n }$ denotes the total number of CPU cycles required to accomplish the computation task $\\mathcal { I } _ { n }$ . A mobile device user can apply the methods (e.g., call graph analysis) in [4], [24] to obtain the information of $b _ { n }$ and $d _ { n }$ . We next discuss the computation overhead in terms of both energy consumption and processing time for both local and cloud computing approaches. ",
+        "bbox": [
+            501,
+            79,
+            937,
+            185
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1) Local Computing: For the local computing approach, a mobile device user executes its computation task $\\mathcal { I } _ { n }$ locally on the mobile device. Let $f _ { n } ^ { m }$ be the computation capability $( \\mathrm { i . e . }$ , CPU cycles per second) of mobile device user . Here we allow that different mobile devices may have different computation capabilities. The computation execution time of the task $\\mathcal { I } _ { n }$ by local computing is then given as ",
+        "bbox": [
+            503,
+            185,
+            937,
+            292
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {n} ^ {m} = \\frac {d _ {n}}{f _ {n} ^ {m}}. \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            680,
+            297,
+            935,
+            330
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "For the computational energy, we have that ",
+        "bbox": [
+            503,
+            337,
+            805,
+            352
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\ne _ {n} ^ {m} = \\gamma_ {n} d _ {n}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            675,
+            362,
+            935,
+            378
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\gamma _ { n }$ is the coefficient denoting the consumed energy per CPU cycle, which can be obtained by the measurement method in [15]. ",
+        "bbox": [
+            503,
+            389,
+            935,
+            434
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "According to (2) and (3), we can then compute the overhead of the local computing approach in terms of computational time and energy as ",
+        "bbox": [
+            503,
+            435,
+            937,
+            481
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nK _ {n} ^ {m} = \\lambda_ {n} ^ {t} t _ {n} ^ {m} + \\lambda_ {n} ^ {e} e _ {n} ^ {m}, \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            641,
+            490,
+            935,
+            508
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $\\lambda _ { n } ^ { t } , \\lambda _ { n } ^ { e } \\in \\{ 0 , 1 \\}$ denote the weighting parameters of computational time and energy for mobile device user 's decision making, respectively. When a user is at a low battery state and cares about the energy consumption, the user can set $\\lambda _ { n } ^ { e } = 1$ and $\\lambda _ { n } ^ { t } = 0$ in the decision making. When a user is running some application that is sensitive to the delay (e.g., video streaming) and hence concerns about the processing time, then the user can set $\\lambda _ { n } ^ { e } = 0$ and $\\lambda _ { n } ^ { t } = 1$ in the decision making. To provide rich modeling flexibility, our model can also apply to the generalized case where $\\lambda _ { n } ^ { i } , \\lambda _ { n } ^ { e } \\in [ 0 , 1 ]$ such that a user can take both computational time and energy into the decision making at the same time. In practice the proper weights that capture a user's valuations on computational energy and time can be determined by applying the multi-attribute utility approach in the multiple criteria decision making theory [25]. ",
+        "bbox": [
+            501,
+            517,
+            937,
+            746
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2) Cloud Computing: For the cloud computing approach, a mobile device user will offload its computation task $\\mathcal { I } _ { n }$ to the cloud in proximity deployed by telecom operator via wireless access and the cloud will execute the computation task on behalf of the mobile device user. ",
+        "bbox": [
+            503,
+            746,
+            937,
+            821
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "For the computation offloading, a mobile device user would incur the extra overhead in terms of time and energy for transmitting the computation input data to the cloud via wireless access. According to the communication model in Section II-A, we can compute the transmission time and energy of mobile device user for offloading the input data of size $b _ { n }$ as, respectively, ",
+        "bbox": [
+            501,
+            822,
+            937,
+            929
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {n, o f f} ^ {c} (\\boldsymbol {a}) = \\frac {b _ {n}}{r _ {n} (\\boldsymbol {a})}, \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            650,
+            934,
+            935,
+            965
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: EFFICIENT MULTI-USER COMPUTATION OFFLOADING FOR MOBILE-EDGE CLOUD COMPUTING ",
+        "bbox": [
+            59,
+            40,
+            653,
+            51
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "2797 ",
+        "bbox": [
+            908,
+            41,
+            935,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            67,
+            961,
+            923,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            60,
+            79,
+            92,
+            92
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ne _ {n} ^ {c} (\\boldsymbol {a}) = \\frac {q _ {n} b _ {n}}{r _ {n} (\\boldsymbol {a})} + L _ {n}, \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            100,
+            493,
+            133
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $L _ { n }$ is the tail energy due to that the mobile device will continue to hold the channel for a while even after the data transmission. Such a tail phenomenon is commonly observed in 3G/4G networks [26]. After the offloading, the cloud will execute the computation task $\\mathcal { I } _ { n }$ . We denote $f _ { n } ^ { c }$ as the computation capability (i.e., CPU cycles per second) assigned to user by the cloud. Similar to the mobile data usage service, the cloud computing capability $f _ { n } ^ { c }$ is determined according to the cloud computing service contract subscribed by the mobile user from the telecom operator. Due to the fact many telecom operators (e.g., AT&T and T-Mobile) are capable for large-scale cloud computing infrastructure investment, we consider that the cloud computing resource requirements of all users can be satisfied. The case that a small/medium telecom operator has limited cloud computing resource provision will be considered in a future work. Then the execution time of the task $\\mathcal { I } _ { n }$ of mobile device user on the cloud can be then given as ",
+        "bbox": [
+            60,
+            140,
+            496,
+            399
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {n, e x e} ^ {c} = \\frac {d _ {n}}{f _ {n} ^ {c}}. \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            229,
+            405,
+            493,
+            438
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "According to (5), (6), and (7), we can compute the overhead of the cloud computing approach in terms of processing time and energy as ",
+        "bbox": [
+            60,
+            444,
+            494,
+            491
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nK _ {n} ^ {c} (\\boldsymbol {a}) = \\lambda_ {n} ^ {t} \\left(t _ {n, o f f} ^ {c} (\\boldsymbol {a}) + t _ {n, e x e} ^ {c}\\right) + \\lambda_ {n} ^ {e} e _ {n} ^ {c} (\\boldsymbol {a}). \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            118,
+            501,
+            493,
+            520
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Similar to many studies such as [11]–[14], we neglect the time overhead for the cloud to send the computation outcome back to the mobile device user, due to the fact that for many applications (e.g., face recognition), the size of the computation outcome in general is much smaller than the size of computation input data, which includes the mobile system settings, program codes and input parameters. Also, due to the fact that wireless spectrum is the most constrained resource, and higher-layer network resources are much richer and the higher-layer management can be done quickly and efficiently via high-speed wired connection and high-performance computing using powerful servers at the base-station, the wireless access efficiency at the physical layer is the bottleneck for computation offloading via wireless transmission [10]. Similar to existing studies for mobile cloud computing [9], [17], [24], we hence account for the most critical factor (i.e., wireless access at the physical layer) only.3 ",
+        "bbox": [
+            60,
+            529,
+            494,
+            774
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Based on the system model above, in the following sections we will develop a game theoretic approach for devising efficient multi-user computation offloading policy for the mobile-edge cloud computing. ",
+        "bbox": [
+            60,
+            774,
+            494,
+            836
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "III. MULTI-USER COMPUTATION OFFLOADING GAME ",
+        "text_level": 1,
+        "bbox": [
+            92,
+            847,
+            464,
+            861
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In this section, we consider the issue of achieving efficient multi-user computation offloading for the mobile-edge cloud computing. ",
+        "bbox": [
+            60,
+            868,
+            494,
+            913
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "According to the communication and computation models in Section II, we see that the computation offloading decisions among the mobile device users are coupled. If too many mobile device users simultaneously choose to offload the computation tasks to the cloud via the same wireless channel, they may incur severe interference and this would lead to a low data rate. When the data rate of a mobile device user is low, it would consume high energy in the wireless access for offloading the computation input data to cloud and incur long transmission time as well. In this case, it would be more beneficial for the user to compute the task locally on the mobile device to avoid the long processing time and high energy consumption by the cloud computing approach. Based on this insight, we first define the concept of beneficial cloud computing. ",
+        "bbox": [
+            505,
+            79,
+            940,
+            292
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Definition 1: Given a computation offloading decision profile , the decision $a _ { n }$ of user that chooses the cloud computing approach $( i . e . , a _ { n } > 0 )$ is beneficial if the cloud computing approach does not incur higher overhead than the local computing approach $( i . e . , K _ { n } ^ { c } ( { \\pmb a } ) \\leq K _ { n } ^ { m } )$ . ",
+        "bbox": [
+            505,
+            292,
+            940,
+            368
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The concept of beneficial cloud computing plays an important role in the mobile-edge cloud computing. On the one hand, from the user's perspective, beneficial cloud computing ensures the individual rationality, i.e., a mobile device user would not suffer performance loss by adopting the cloud computing approach. On the other hand, from the telecom operator's point of view, the larger number of users achieving beneficial cloud computing implies a higher utilization ratio of the cloud resources and a higher revenue of providing mobile-edge cloud computing service. Thus, different from traditional multi-user traffic scheduling problem, when determining the wireless access schedule for computation offloading, we need to ensure that for a user choosing cloud computing, that user must be a beneficial cloud computing user. Otherwise, the user will not follow the computation offloading schedule, since it can switch to the local computing approach to reduce the computation overhead. ",
+        "bbox": [
+            505,
+            368,
+            940,
+            613
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "A. Finding Centralized Optimum is NP-Hard ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            624,
+            827,
+            638
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We first consider the centralized optimization problem in term of the performance metric of the total number of beneficial cloud computing users. We will further consider another important metric of the system-wide computation overhead later. Mathematically, we can model the problem as follows: ",
+        "bbox": [
+            505,
+            643,
+            940,
+            722
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max _ {\\boldsymbol {a}} \\sum_ {n \\in \\mathcal {N}} I _ {\\{a _ {n} > 0 \\}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            604,
+            730,
+            744,
+            762
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "$\\mathrm { s u b j e c t ~ t o ~ } K _ { n } ^ { c } ( \\pmb { a } ) \\leq K _ { n } ^ { m } , \\forall \\ b { a } _ { n } > 0 , n \\in \\mathcal { N } ,$ ",
+        "bbox": [
+            562,
+            762,
+            883,
+            780
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {n} \\in \\{0, 1, \\dots , M \\}, \\forall n \\in \\mathcal {N}. \\tag {9}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            636,
+            783,
+            937,
+            799
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Here $I _ { \\{ A \\} }$ is an indicator function with $I _ { \\{ A \\} } = 1$ if the event is true and $I _ { \\{ A \\} } = 0$ otherwise. ",
+        "bbox": [
+            505,
+            809,
+            940,
+            841
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Unfortunately, it turns out that the problem of finding the maximum number of beneficial cloud computing users can be extremely challenging. ",
+        "bbox": [
+            505,
+            841,
+            940,
+            887
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Theorem 1: The problem in (9) that computes the maximum number of beneficial cloud computing users is NP-hard. ",
+        "bbox": [
+            505,
+            887,
+            940,
+            917
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Proof: To proceed, we first introduce the maximum cardinality bin packing problem [27]: we are given items with sizes $p _ { i }$ for $i \\in \\mathcal N$ and bins of identical capacity $C ,$ and the objective is to assign a maximum number of items to the fixed number of bins without violating the capacity constraint. Mathematically, we can formulate the problem as ",
+        "bbox": [
+            505,
+            918,
+            940,
+            961
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "2798 ",
+        "bbox": [
+            62,
+            41,
+            92,
+            51
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            511,
+            40,
+            940,
+            51
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_footnote",
+        "text": "3We can account for the high-layer factors by simply adding a processing latency term (which is typically much smaller than the wireless access) into user's time overhead function and this will not affect the analysis of the problem. ",
+        "bbox": [
+            62,
+            926,
+            494,
+            963
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_footnote",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            69,
+            963,
+            923,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            491,
+            125
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max \\sum_ {i = 1} ^ {N} \\sum_ {j = 1} ^ {M} x _ {i j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            173,
+            153,
+            285,
+            196
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { subject   to } \\sum_ {i = 1} ^ {N} p _ {i} x _ {i j} \\leq C, \\forall j \\in \\mathcal {M},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            131,
+            198,
+            383,
+            240
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {j = 1} ^ {M} x _ {i j} \\leq 1, \\forall i \\in \\mathcal {N},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            204,
+            243,
+            359,
+            283
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {i j} \\in \\{0, 1 \\}, \\forall i \\in \\mathcal {N}, j \\in \\mathcal {M}. \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            206,
+            286,
+            489,
+            302
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "It is known from [27] that the maximum cardinality bin packing problem above is NP-hard. ",
+        "bbox": [
+            57,
+            316,
+            491,
+            346
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "For our problem, according to Theorem 1, we know that a user that can achieve beneficial cloud computing if and only if its received interference $\\begin{array} { r } { \\sum _ { i \\in \\mathcal { N } \\backslash \\{ n \\} : a _ { i } = a _ { n } } q _ { i } g _ { i , s } \\leq T _ { n } } \\end{array}$ . Based on this, we can transform the maximum cardinality bin packing problem to a special case of our problem of finding the maximum number of beneficial cloud computing users as follows. We can regard the items and the bins in the maximum cardinality bin packing problem as the mobile device users and channels in our problem, respectively. Then the size of an item and the capacity constraint of each bin can be given as $p _ { n } = q _ { n } g _ { n , s }$ and $C = T _ { n } + q _ { n } g _ { n , s }$ , respectively. By this, we can ensure that as long as a user on its assigned channel $a _ { n }$ achieves the beneficial cloud computing, for an item $n ,$ the total sizes of the items on its assigned bin $a _ { n }$ will not violate the capacity constraint ue toes that $\\begin{array} { r } { \\sum _ { i \\in \\mathcal { N } \\backslash \\{ n \\} : a _ { i } = a _ { n } } q _ { i } g _ { i , s } \\ \\leq \\ T _ { n , } } \\end{array}$ $\\begin{array} { r } { \\sum _ { i = 1 } ^ { N } p _ { i } x _ { i , a _ { n } } = \\sum _ { i \\in \\mathcal { N } \\backslash \\{ n \\} : a _ { i } = a _ { n } } q _ { i } g _ { i , s } \\ + } \\end{array}$ $q _ { n } g _ { n , s } \\leq C$ ",
+        "bbox": [
+            60,
+            347,
+            491,
+            610
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Therefore, if we have an algorithm that can find the maximum number of beneficial cloud computing users, then we can also obtain the optimal solution to the maximum cardinality bin packing problem. Since the maximum cardinality bin packing problem is NP-hard, our problem is hence also NP-hard. □ ",
+        "bbox": [
+            57,
+            610,
+            491,
+            686
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The key idea of proof is to show that the maximum cardinality bin packing problem (which is known to be NP-hard [27]) can be reduced to a special case of our problem. Theorem 1 provides the major motivation for our game theoretic study, because it suggests that the centralized optimization problem is fundamentally difficult. By leveraging the intelligence of each individual mobile device user, game theory is a powerful tool for devising distributed mechanisms with low complexity, such that the users can self-organize into a mutually satisfactory solution. This can also help to ease the heavy burden of complex centralized computing and management by the cloud operator. Moreover, another key rationale of adopting the game theoretic approach is that the mobile devices are owned by different individuals and they may pursue different interests. Game theory is a useful framework to analyze the interactions among multiple mobile device users who act in their own interests and devise incentive compatible computation offloading mechanisms such that no user has the incentive to deviate unilaterally. ",
+        "bbox": [
+            60,
+            686,
+            491,
+            963
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Besides the performance metric of the number of beneficial cloud computing users, in this paper we also consider another important metric of the system-wide computation overhead, i.e., ",
+        "bbox": [
+            503,
+            79,
+            937,
+            125
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\boldsymbol {a}} \\sum_ {n \\in \\mathcal {N}} Z _ {n} (\\boldsymbol {a})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            619,
+            134,
+            751,
+            166
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "$\\mathrm { s u b j e c t ~ t o } a _ { n } \\in \\{ 0 , 1 , \\ldots , M \\} , \\forall n \\in \\mathcal { N } .$ (11) ",
+        "bbox": [
+            574,
+            167,
+            937,
+            183
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Note that the centralized optimization problem for minimizing the system-wide computation overhead is also NP-hard, since it involves a combinatorial optimization over the multi-dimensional discrete space $( \\mathrm { i . e . , ~ } \\{ 0 , 1 , \\ldots , M \\} ^ { N } )$ . As shown in Sections V and VII, the proposed game theoretic solution can also achieve superior performance in terms of the performance metric of the system-wide computation overhead. ",
+        "bbox": [
+            501,
+            187,
+            937,
+            295
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Game Formulation ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            307,
+            665,
+            321
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "We then consider the distributed computation offloading decision making problem among the mobile device users. Let $\\begin{array} { l l l } { a _ { - n } } & { = } & { \\left( a _ { 1 } , \\ldots , a _ { n - 1 } , a _ { n + 1 } , \\ldots , a _ { N } \\right) } \\end{array}$ be the computation offloading decisions by all other users except user . Given other users' decisions $a _ { - n } .$ , user would like to select a proper decision $a _ { n }$ , by using either the local computing $( a _ { n } ~ = ~ 0 )$ or the cloud computing via a wireless channel $\\left( a _ { n } \\ > \\ 0 \\right)$ to minimize its computation overhead, i.e., ",
+        "bbox": [
+            501,
+            326,
+            937,
+            449
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {a _ {n} \\in \\mathcal {A} _ {n} \\triangleq \\{0, 1, \\dots , M \\}} Z _ {n} (a _ {n}, a _ {- n}), \\forall n \\in \\mathcal {N}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            577,
+            461,
+            863,
+            487
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "According to (4) and (8), we can obtain the overhead function of mobile device user as ",
+        "bbox": [
+            503,
+            495,
+            935,
+            525
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nZ _ {n} (a _ {n}, a _ {- n}) = \\left\\{ \\begin{array}{l l} K _ {n} ^ {m}, & \\text { if   } a _ {n} = 0, \\\\ K _ {n} ^ {c} (\\boldsymbol {a}), & \\text { if   } a _ {n} > 0. \\end{array} \\right. \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            582,
+            532,
+            935,
+            566
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "We then formulate the problem above as a strategic game $\\Gamma = ( { \\cal N } , \\{ A _ { n } \\} _ { n \\in { \\cal N } } , \\{ Z _ { n } \\} _ { n \\in { \\cal N } } )$ , where the set of mobile device users $\\mathcal { N }$ is the set of players, is the set of strategies for player $n ,$ and the overhead function $Z _ { n } ( a _ { n } , a _ { - n } )$ of each user is the cost function to be minimized by player . In the sequel, we call the game as the multi-user computation offloading game. We now introduce the important concept of Nash equilibrium. ",
+        "bbox": [
+            503,
+            574,
+            937,
+            680
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Definition 2: A strategy profile ${ \\pmb a } ^ { * } = ( a _ { 1 } ^ { * } , \\dots , a _ { N } ^ { * } )$ is a Nash equilibrium of the multi-user computation offloading game if at the equilibrium $\\pmb { a } ^ { * }$ , no user can further reduce its overhead by unilaterally changing its strategy, i.e., ",
+        "bbox": [
+            503,
+            681,
+            937,
+            742
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nZ _ {n} (a _ {n} ^ {*}, a _ {- n} ^ {*}) \\leq Z _ {n} (a _ {n}, a _ {- n} ^ {*}), \\forall a _ {n} \\in \\mathcal {A} _ {n}, n \\in \\mathcal {N}. \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            535,
+            752,
+            935,
+            770
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "According to the concept of Nash equilibrium, we first have the following observation. ",
+        "bbox": [
+            503,
+            780,
+            937,
+            811
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Corollary 1: For the multi-user computation offloading game, if a user at Nash equilibrium $\\pmb { a } ^ { * }$ chooses cloud computing approach $\\left( i . e . , \\ a _ { n } ^ { * } \\ > \\ 0 \\right)$ , then the user must be a beneficial cloud computing user. ",
+        "bbox": [
+            501,
+            811,
+            937,
+            873
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "This is because if a user choosing the cloud computing approach is not a beneficial cloud computing user at the equilibrium, then the user can improve its benefit by just switching to the local computing approach, which contradicts with the fact that no user can improve unilaterally at the Nash equilibrium. Furthermore, the Nash equilibrium also ensures the nice self-stability property such that the users at the equilibrium can achieve a mutually satisfactory solution and no user has the incentive to deviate. This property is very important to the multi-user computation offloading problem, since the mobile devices are owned by different individuals and they may act in their own interests. ",
+        "bbox": [
+            501,
+            873,
+            937,
+            961
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: EFFICIENT MULTI-USER COMPUTATION OFFLOADING FOR MOBILE-EDGE CLOUD COMPUTING ",
+        "bbox": [
+            59,
+            40,
+            653,
+            51
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "2799 ",
+        "bbox": [
+            908,
+            41,
+            935,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            67,
+            961,
+            923,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            60,
+            79,
+            494,
+            169
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "C. Structural Properties ",
+        "text_level": 1,
+        "bbox": [
+            62,
+            182,
+            236,
+            198
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "We next study the existence of Nash equilibrium of the multiuser computation offloading game. To proceed, we shall resort to a powerful tool of potential game [28]. ",
+        "bbox": [
+            60,
+            202,
+            494,
+            248
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Definition 3: A game is called a potential game if it admits potential function $\\Phi ( { \\pmb a } )$ such that for every $n \\in \\mathcal { N } , a _ { - n } \\in$ $\\textstyle \\prod _ { i \\neq n } { \\mathcal { A } } _ { i } ,$ , and $a _ { n } ^ { \\prime } , a _ { n } \\in { \\mathcal { A } } _ { n } ,$ , if ",
+        "bbox": [
+            60,
+            249,
+            494,
+            296
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nZ _ {n} (a _ {n} ^ {\\prime}, a _ {- n}) <   Z _ {n} (a _ {n}, a _ {- n}), \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            172,
+            302,
+            493,
+            320
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "we have ",
+        "bbox": [
+            60,
+            324,
+            125,
+            337
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Phi (a _ {n} ^ {\\prime}, a _ {- n}) <   \\Phi (a _ {n}, a _ {- n}). \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            180,
+            348,
+            493,
+            365
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "An appealing property of the potential game is that it always admits a Nash equilibrium and possesses the finite improvement property, such that any asynchronous better response update process (i.e., no more than one player updates the strategy to reduce the overhead at any given time) must be finite and leads to a Nash equilibrium [28]. ",
+        "bbox": [
+            60,
+            368,
+            494,
+            458
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "To show the multi-user computation offloading game is a potential game, we first show the following result. ",
+        "bbox": [
+            60,
+            460,
+            494,
+            490
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Lemma 1: Given a computation offloading decision profile , a user achieves beneficial cloud computing if its received interference $\\begin{array} { r } { \\mu _ { n } ( { \\pmb a } ) \\triangleq \\sum _ { i \\in \\mathcal { N } \\backslash \\{ n \\} : a _ { i } = a _ { n } } q _ { i } g _ { i , s } } \\end{array}$ on the chosen wireless channel $a _ { n } ~ > ~ 0 ~ s a t i s f i e s$ that $\\ddot { \\mu } _ { n } ( { \\pmb a } ) ~ \\le ~ T _ { n }$ , with the threshold ",
+        "bbox": [
+            60,
+            490,
+            494,
+            565
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {n} = \\frac {q _ {n} g _ {n , s}}{2 ^ {\\frac {(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}) b _ {n}}{w (\\lambda_ {n} ^ {t} e _ {n} ^ {m} + \\lambda_ {n} ^ {e} e _ {n} ^ {m} - \\lambda_ {n} ^ {e} L _ {n} - \\lambda_ {n} ^ {t} t _ {n , e x e} ^ {c})}} - 1} - \\varpi_ {0}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            108,
+            571,
+            447,
+            612
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Proof: According to (4), (8), and Definition 1, we know that the condition $K _ { n } ^ { c } ( { \\pmb a } ) \\le K _ { n } ^ { m }$ is equivalent to ",
+        "bbox": [
+            60,
+            614,
+            491,
+            646
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}) b _ {n}}{r _ {n} (\\pmb {a})} + \\lambda_ {n} ^ {e} L _ {n} + \\lambda_ {n} ^ {t} t _ {n, e x e} ^ {c} \\leq \\lambda_ {n} ^ {t} t _ {n} ^ {m} + \\lambda_ {n} ^ {e} e _ {n} ^ {m}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            87,
+            648,
+            469,
+            681
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "That is, ",
+        "bbox": [
+            62,
+            683,
+            118,
+            695
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {n} (\\pmb {a}) \\geq \\frac {\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}}{\\lambda_ {n} ^ {t} t _ {n} ^ {m} + \\lambda_ {n} ^ {e} e _ {n} ^ {m} - \\lambda_ {n} ^ {e} L _ {n} - \\lambda_ {n} ^ {t} t _ {n , e x e} ^ {c}}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            119,
+            704,
+            434,
+            740
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "According to (1), we then have that ",
+        "bbox": [
+            62,
+            747,
+            310,
+            762
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}: a _ {i} = a _ {n}} q _ {i} g _ {i, s} \\\\ \\leq \\frac {q _ {n} g _ {n , s}}{2 ^ {\\overline {{w \\left(\\lambda_ {n} ^ {t} e _ {n} ^ {m} + \\lambda_ {n} ^ {e} e _ {n} ^ {m} - \\lambda_ {n} ^ {e} L _ {n} - \\lambda_ {n} ^ {t} t _ {n , e x e} ^ {c}\\right)}}}} - 1 - \\varpi_ {0}. \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            60,
+            771,
+            493,
+            870
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            474,
+            856,
+            491,
+            870
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "According to Lemma 1, we see that when the received interference $\\mu _ { n } ( { \\pmb a } )$ of user on a wireless channel is lower enough, it is beneficial for the user to adopt cloud computing approach and offload the computation to the cloud. Otherwise, the user should compute the task on the mobile device locally. Based on Lemma 1, we show that the multi-user computation offloading ",
+        "bbox": [
+            60,
+            871,
+            494,
+            963
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "game is indeed a potential game by constructing the potential function as ",
+        "bbox": [
+            506,
+            79,
+            940,
+            108
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\Phi (\\boldsymbol {a}) = \\frac {1}{2} \\sum_ {i = 1} ^ {N} \\sum_ {j \\neq i} q _ {i} g _ {i, s} q _ {j} q _ {j, s} I _ {\\{a _ {i} = a _ {j} \\}} I _ {\\{a _ {i} > 0 \\}} \\\\ + \\sum_ {i = 1} ^ {N} q _ {i} g _ {i, s} T _ {i} I _ {\\{a _ {i} = 0 \\}}. \\tag {16} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            506,
+            115,
+            939,
+            201
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Theorem 2: The multi-user computation offloading game is a potential game with the potential function as given in (16), and hence always has a Nash equilibrium and the finite improvement property. ",
+        "bbox": [
+            505,
+            207,
+            940,
+            268
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Proof: Suppose that a user $k \\in \\mathcal N$ updates its current decision $a _ { k }$ to the decision $a _ { k } ^ { \\prime }$ and this leads to a decrease in its overhead function, i.e., $Z _ { k } ( a _ { k } , a _ { - k } ) > Z _ { k } ( a _ { k } ^ { \\prime } , a _ { - k } )$ . According to the definition of potential game, we will show that this also leads to a decrease in the potential function, i.e., $\\Phi ( a _ { k } , a _ { - k } ) >$ $\\Phi ( a _ { k } ^ { \\prime } , a _ { - k } )$ . We will consider the following three cases: 1) $a _ { k } >$ and $a _ { k } ^ { \\prime } > 0 ; 2 ) { } a _ { k } = 0$ and $a _ { k } ^ { \\prime } > 0 ; 3 ) a _ { k } > 0$ and $a _ { k } ^ { \\prime } = 0$ . ",
+        "bbox": [
+            506,
+            269,
+            940,
+            377
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "For case 1), since the function of is monotonously increasing in terms of , according to (1), we know that the condition $Z _ { k } ( a _ { k } , a _ { - k } ) > Z _ { k } ( a _ { k } ^ { \\prime } , a _ { - k } )$ implies that ",
+        "bbox": [
+            505,
+            377,
+            940,
+            423
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i \\in \\mathcal {N} \\setminus \\{k \\}: a _ {i} = a _ {k}} q _ {i} g _ {i, s} > \\sum_ {i \\in \\mathcal {N} \\setminus \\{k \\}: a _ {i} = a _ {k} ^ {\\prime}} q _ {i} g _ {i, s}. \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            569,
+            428,
+            939,
+            465
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Since $a _ { k } > 0$ and $a _ { k } ^ { \\prime } > 0$ , according to (16) and (17), we then know that ",
+        "bbox": [
+            506,
+            472,
+            939,
+            501
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\Phi (a _ {k}, a _ {- k}) - \\Phi (a _ {k} ^ {\\prime}, a _ {- k}) \\\\ = \\frac {1}{2} q _ {k} g _ {k, s} \\sum_ {i \\neq k} q _ {i} g _ {i, s} I _ {\\{a _ {i} = a _ {k} \\}} \\\\ + \\frac {1}{2} \\sum_ {k \\neq i} q _ {i} g _ {i, s} I _ {\\{a _ {k} = a _ {i} \\}} q _ {k} g _ {k, s} \\\\ - \\frac {1}{2} q _ {k} g _ {k, s} \\sum_ {i \\neq k} q _ {i} g _ {i, s} I _ {\\left\\{a _ {i} = a _ {k} ^ {\\prime} \\right\\}} \\\\ - \\frac {1}{2} \\sum_ {k \\neq i} q _ {i} g _ {i, s} I _ {\\left\\{a _ {k} ^ {\\prime} = a _ {i} \\right\\}} q _ {k} g _ {k, s} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            510,
+            512,
+            734,
+            683
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n= q _ {k} g _ {k, s} \\sum_ {i \\neq k} q _ {i} g _ {i, s} I _ {\\left\\{a _ {i} = a _ {k} \\right\\}} - q _ {k} g _ {k, s} \\sum_ {i \\neq k} q _ {i} g _ {i, s} I _ {\\left\\{a _ {i} = a _ {k} ^ {\\prime} \\right\\}} > 0. \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            518,
+            685,
+            939,
+            735
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "For case 2), since $a _ { k } \\ = \\ 0 , \\ a _ { k } ^ { \\prime } \\ > \\ 0$ , and $Z _ { k } ( a _ { k } , a _ { - k } ) ~ >$ $Z _ { k } ( a _ { k } ^ { \\prime } , a _ { - k } )$ , we know that $\\textstyle \\sum _ { i \\in { \\mathcal { N } } \\setminus \\{ k \\} : a _ { i } = a _ { k } ^ { \\prime } } q _ { i } g _ { i , s } < T _ { k }$ . This implies that ",
+        "bbox": [
+            506,
+            745,
+            940,
+            792
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\Phi (a _ {k}, a _ {- k}) - \\Phi (a _ {k} ^ {\\prime}, a _ {- k}) \\\\ = q _ {k} g _ {k, s} T _ {k} \\\\ - \\frac {1}{2} q _ {k} g _ {k, s} \\sum_ {i \\neq k} q _ {i} g _ {i, s} I _ {\\{a _ {i} = a _ {k} ^ {\\prime} \\}} - \\frac {1}{2} \\sum_ {k \\neq i} q _ {i} g _ {i, s} I _ {\\{a _ {k} ^ {\\prime} = a _ {i} \\}} q _ {k} g _ {k, s} \\\\ = q _ {k} g _ {k, s} T _ {k} - q _ {k} g _ {k, s} \\sum_ {i \\neq k} q _ {i} g _ {i, s} I _ {\\left\\{a _ {i} = a _ {k} ^ {\\prime} \\right\\}} > 0. \\tag {19} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            510,
+            799,
+            939,
+            911
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "For case 3), by the similar argument in case 2), when $a _ { k } > 0$ and $a _ { k } ^ { \\prime } = 0$ , we can also show that $Z _ { k } ( a _ { k } , a _ { - k } ) > Z _ { k } ( a _ { k } ^ { \\prime } , a _ { - k } )$ implies $\\Phi ( a _ { k } , a _ { - k } ) > \\Phi ( a _ { k } ^ { \\prime } , a _ { - k } )$ . ",
+        "bbox": [
+            506,
+            918,
+            940,
+            963
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "2800 ",
+        "bbox": [
+            62,
+            41,
+            92,
+            51
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            511,
+            40,
+            940,
+            51
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            67,
+            963,
+            923,
+            975
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1 Distributed Computation Offloading Algorithm "
+        ],
+        "code_body": "1: initialization:\n2: each mobile device user n chooses the computation decision $a_{n}(0) = 0$ .\n3: end initialization\n4: repeat for each user n and each decision slot t in parallel:\n5: transmit the pilot signal on the chosen channel $a_{n}(t)$ to the wireless base-station s.\n6: receive the information of the received powers on all the channels from the wireless base-station s.\n7: compute the best response set $\\Delta_{n}(t)$ .\n8: if $\\Delta_{n}(t) \\neq \\varnothing$ then\n9: send RTU message to the cloud for contending for the decision update opportunity.\n10: if receive the UP message from the cloud then\n11: choose the decision $a_{n}(t+1) \\in \\Delta_{n}(t)$ for next slot.\n12: else choose the original decision $a_{n}(t+1) = a_{n}(t)$ for next slot.\n13: end if\n14: else choose the original decision $a_{n}(t+1) = a_{n}(t)$ for next slot.\n15: end if\n16: until END message is received from the cloud ",
+        "bbox": [
+            60,
+            125,
+            489,
+            477
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Combining results in the three cases above, we can hence conclude that the multi-user computation offloading game is a potential game. □ ",
+        "bbox": [
+            57,
+            500,
+            489,
+            544
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The key idea of the proof is to show that when a user $\\in \\mathcal { N }$ updates its current decision $a _ { k }$ to a better decision $a _ { k } ^ { \\prime } ,$ the decrease in its overhead function will lead to the decrease in the potential function of the multi-user computation offloading game. Theorem 2 implies that any asynchronous better response update process is guaranteed to reach a Nash equilibrium within a finite number of iterations. We shall exploit such finite improvement property for the distributed computation offloading algorithm design in following Section IV. ",
+        "bbox": [
+            57,
+            546,
+            489,
+            683
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "IV. DISTRIBUTED COMPUTATION OFFLOADING ALGORITHM ",
+        "text_level": 1,
+        "bbox": [
+            67,
+            698,
+            481,
+            712
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this section we develop a distributed computation offloading algorithm in Algorithm 1 for achieving the Nash equilibrium of the multi-user computation offloading game. ",
+        "bbox": [
+            57,
+            718,
+            489,
+            764
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A. Algorithm Design ",
+        "text_level": 1,
+        "bbox": [
+            57,
+            776,
+            211,
+            790
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The motivation of using the distributed computation offloading algorithm is to enable mobile device users to achieve a mutually satisfactory decision making, prior to the computation task execution. The key idea of the algorithm design is to utilize the finite improvement property of the multi-user computation offloading game and let one mobile device user improve its computation offloading decision at a time. Specifically, by using the clock signal from the wireless base-station for synchronization, we consider a slotted time structure for the computation offloading decision update. Each decision slot consists the following two stages: ",
+        "bbox": [
+            57,
+            795,
+            489,
+            963
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1) Wireless Interference Measurement: at this stage, we measure the interference on different channels for wireless access. Specifically, each mobile device user who selects decision $a _ { n } ( t ) ~ > ~ 0$ (i.e., cloud computing approach) at the current decision slot will transmit some pilot signal on its chosen channel $a _ { n } ( t )$ to the wireless base-station . The wireless base-station then measures the total received power $\\begin{array} { r } { \\rho _ { m } ( { \\pmb a } ( t ) ) \\triangleq \\sum _ { i \\in \\mathcal { N } : a _ { i } ( t ) = m } q _ { i } g _ { i , s } } \\end{array}$ on each channel $m \\in \\mathcal { M }$ and feedbacks the information of the received powers on all the channels $( \\mathrm { i . e . , } \\{ \\rho _ { m } ( { \\pmb a } ( t ) ) , m \\in \\mathcal { M } \\} )$ to the mobile device users. Accordingly, each user can obtain its received interference $\\mu _ { n } ( m , a _ { - n } ( t ) )$ from other users on each channel $m \\in \\mathcal { M }$ as ",
+        "bbox": [
+            501,
+            79,
+            935,
+            262
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu_ {n} (m, a _ {- n} (t)) = \\left\\{ \\begin{array}{l l} \\rho_ {m} (\\boldsymbol {a} (t)) - q _ {n} g _ {n, s}, & \\text { if } a _ {n} (t) = m, \\\\ \\rho_ {m} (\\boldsymbol {a} (t)), & \\text { otherwise }. \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            523,
+            267,
+            913,
+            300
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "That is, for its current chosen channel $a _ { n } ( t )$ , user determines the received interference by subtracting its own power from the total measured power; for other channels over which user does not transmit the pilot signal, the received interference is equal to the total measured power. ",
+        "bbox": [
+            501,
+            307,
+            935,
+            384
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "2) Offloading Decision Update: at this stage, we exploit the finite improvement property of the multi-user computation offloading game by having one mobile device user carry out a decision update. Based on the information of the measured interferences $\\{ \\mu _ { n } ( m , a _ { - n } ( t ) ) , m \\in \\mathcal { M } \\}$ on different channels, each mobile device user first computes its set of best response update as ",
+        "bbox": [
+            501,
+            384,
+            935,
+            489
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Delta_ {n} (t) \\triangleq \\{\\tilde {a}: \\tilde {a} = \\arg \\min _ {a \\in \\mathcal {A} _ {n}} Z _ {n} (a, a _ {- n} (t)) \\text {   and   }\n$$",
+        "text_format": "latex",
+        "bbox": [
+            503,
+            500,
+            831,
+            524
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. Z _ {n} (\\tilde {a}, a _ {- n} (t)) <   Z _ {n} \\left(a _ {n} (t), a _ {- n} (t)\\right) \\right\\}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            672,
+            525,
+            932,
+            542
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Then, if $\\Delta _ { n } ( t ) \\ \\neq \\ \\emptyset \\ ( \\mathrm { i . e . }$ , user can improve its decision), user will send a request-to-update (RTU) message to the cloud to indicate that it wants to contend for the decision update opportunity. Otherwise, user will not contend and adhere to the current decision at next decision slot, i.e., $a _ { n } ( t + 1 ) = a _ { n } ( t )$ . Next, the cloud will randomly select one user out of the set of users who have sent the RTU messages and send the update-permission (UP) message to the user for updating its decision for the next slot as $a _ { n } ( t + 1 ) \\in \\Delta _ { n } ( t )$ . For other users who do not receive the UP message from the cloud, they will not update their decisions and choose the same decisions at next slot, i.e., $a _ { n } ( t + 1 ) = a _ { n } ( t )$ . ",
+        "bbox": [
+            501,
+            552,
+            935,
+            735
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. Convergence Analysis ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            746,
+            685,
+            761
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "According to the finite improvement property in Theorem 2, the algorithm will converge to a Nash equilibrium of the multiuser computation offloading game within finite number of decision slots. In practice, we can implement that the computation offloading decision update process terminates when no RTU messages are received by the cloud. In this case, the cloud will broadcast the END message to all the mobile device users and each user will execute the computation task according to the decision obtained at the last decision slot by the algorithm. Due to the property of Nash equilibrium, no user has the incentive to deviate from the achieved decisions. ",
+        "bbox": [
+            501,
+            766,
+            935,
+            931
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We then analyze the computational complexity of the distributed computation offloading algorithm. In each decision slot, each mobile device user will in parallel execute the operations in Lines 5–15 of Algorithm 1. Since most operations only involve some basic arithmetical calculations, the dominating part is the computing of the best response update in Line 11, which involves the sorting operation over channel measurement data and typically has a complexity of $\\mathcal { O } ( M$ . The computational complexity in each decision slot is hence . Suppose that it takes decision slots for the algorithm to terminate. Then the total computational complexity of the distributed computation offloading algorithm is $\\mathcal { O } ( C M \\log M )$ . Let $T _ { \\mathrm { m a x } } \\triangleq \\mathrm { m a x } _ { n \\in \\mathcal { N } } \\{ T _ { n } \\} , Q _ { n } \\triangleq q _ { n } g _ { n , s } \\mathrm { , }$ , $Q _ { \\operatorname* { m a x } } \\ \\triangleq \\ \\operatorname* { m a x } _ { n \\in \\mathcal { N } } \\{ Q _ { n } \\}$ , and $\\begin{array} { r } { Q _ { \\operatorname* { m i n } } \\ \\triangleq \\ \\operatorname* { m i n } _ { n \\in \\mathcal { N } } \\{ Q _ { n } \\} } \\end{array}$ . For the number of decision slots for convergence, we have the following result. ",
+        "bbox": [
+            503,
+            932,
+            935,
+            961
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: EFFICIENT MULTI-USER COMPUTATION OFFLOADING FOR MOBILE-EDGE CLOUD COMPUTING ",
+        "bbox": [
+            59,
+            40,
+            653,
+            51
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "2801 ",
+        "bbox": [
+            908,
+            41,
+            934,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            67,
+            961,
+            923,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            60,
+            79,
+            494,
+            291
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Theorem 3: When $T _ { n }$ and $Q _ { n }$ are non-negative integers for any $n \\in \\mathcal N .$ , the distributed computation offloading algorithm will terminate within at most N2 $\\begin{array} { r } { \\frac { Q _ { \\mathrm { m a x } } ^ { 2 ^ { \\star } } } { 2 Q _ { \\mathrm { m i n } } } N ^ { 2 } + \\frac { \\tilde { T _ { \\mathrm { m a x } } } Q _ { \\mathrm { m a x } } } { Q _ { \\mathrm { m i n } } } N } \\end{array}$ decision slots, i.e., $\\begin{array} { r } { C \\le \\frac { Q _ { \\mathrm { m a x } } ^ { 2 } } { 2 Q _ { \\mathrm { m i n } } } N ^ { 2 } + \\frac { Q _ { \\mathrm { m a x } } ^ { * \\cdots } \\overline { { T } } _ { \\mathrm { m a x } } } { Q _ { \\mathrm { m i n } } } N } \\end{array}$ xN + 2Qmin QmaxTmax N. 2Qmin Qmin Qmin ",
+        "bbox": [
+            60,
+            292,
+            494,
+            362
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Proof: First of all, according to (16), we know that ",
+        "bbox": [
+            92,
+            361,
+            447,
+            375
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} 0 \\leq \\Phi (\\boldsymbol {a}) \\leq \\frac {1}{2} \\sum_ {i = 1} ^ {N} \\sum_ {j = 1} ^ {N} Q _ {\\max} ^ {2} + \\sum_ {i = 1} ^ {N} Q _ {\\max} T _ {\\max} \\\\ = \\frac {1}{2} Q _ {\\max} ^ {2} N ^ {2} + Q _ {\\max} T _ {\\max} N. \\tag {20} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            111,
+            378,
+            493,
+            452
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "During a decision slot, suppose that a user $k \\in \\mathcal N$ updates its current decision $a _ { k }$ to the decision $a _ { k } ^ { \\prime }$ and this leads to a decrease in its overhead function, i.e., $Z _ { k } ( a _ { k } , a _ { - k } ) > Z _ { k } ( a _ { k } ^ { \\prime } , a - _ { k } )$ . According to the definition of potential game, we will show that this also leads to a decrease in the potential function by at least $Q _ { \\mathrm { m i n } } , \\mathrm { i . e . }$ , ",
+        "bbox": [
+            60,
+            453,
+            494,
+            546
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Phi (a _ {k}, a _ {- k}) \\geq \\Phi (a _ {k} ^ {\\prime}, a - _ {k}) + Q _ {\\min}. \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            152,
+            555,
+            491,
+            572
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "We will consider the following three cases: 1) $a _ { k } > 0$ and $a _ { k } ^ { \\prime } >$ $0 ; 2 ) a _ { k } = 0$ and $a _ { k } ^ { \\prime } > 0 ; 3 ) { } a _ { k } > 0$ and $a _ { k } ^ { \\prime } = 0$ . ",
+        "bbox": [
+            60,
+            575,
+            491,
+            605
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "For case 1), according to (18) in the proof of Theorem 2, we know that ",
+        "bbox": [
+            60,
+            607,
+            494,
+            634
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\Phi (a _ {k}, a _ {- k}) - \\Phi (a _ {k} ^ {\\prime}, a _ {- k}) \\\\ = Q _ {k} \\left(\\sum_ {i \\neq k} Q _ {i} I _ {\\{a _ {i} = a _ {k} \\}} - \\sum_ {i \\neq k} Q _ {i} I _ {\\{a _ {i} = a _ {k} ^ {\\prime} \\}}\\right) > 0. \\tag {22} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            60,
+            645,
+            494,
+            711
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Since $Q _ { i }$ are integers for any $i \\in \\mathcal { N } _ { : }$ , we know that ",
+        "bbox": [
+            60,
+            713,
+            413,
+            728
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i \\neq k} Q _ {i} I _ {\\left\\{a _ {i} = a _ {k} \\right\\}} \\geq \\sum_ {i \\neq k} Q _ {i} I _ {\\left\\{a _ {i} = a _ {k} ^ {\\prime} \\right\\}} + 1.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            138,
+            735,
+            415,
+            766
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Thus, according to (22), we have ",
+        "bbox": [
+            62,
+            770,
+            293,
+            785
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Phi (a _ {k}, a _ {- k}) \\geq \\Phi (a _ {k} ^ {\\prime}, a - _ {k}) + Q _ {k} \\geq \\Phi (a _ {k} ^ {\\prime}, a - _ {k}) + Q _ {\\min}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            79,
+            797,
+            472,
+            814
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "For case 2), according to (19) in the proof of Theorem 2, we know that ",
+        "bbox": [
+            60,
+            826,
+            493,
+            855
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Phi \\left(a _ {k}, a _ {- k}\\right) - \\Phi \\left(a _ {k} ^ {\\prime}, a - _ {k}\\right) = Q _ {k} \\left(T _ {k} - \\sum_ {i \\neq k} Q _ {i} I _ {\\left\\{a _ {i} = a _ {k} ^ {\\prime} \\right\\}}\\right) > 0.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            60,
+            863,
+            491,
+            912
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "By the similar augment as in case 1), we have ",
+        "bbox": [
+            62,
+            921,
+            381,
+            936
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Phi (a _ {k}, a _ {- k}) \\geq \\Phi (a _ {k} ^ {\\prime}, a - _ {k}) + Q _ {k} \\geq \\Phi (a _ {k} ^ {\\prime}, a - _ {k}) + Q _ {\\min}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            69,
+            946,
+            472,
+            964
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            69,
+            963,
+            923,
+            975
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "For case 3), by the similar argument in case 2), we can also show that $\\Phi ( a _ { k } , a _ { - k } ) \\ge \\Phi ( a _ { k } ^ { \\prime } , a - { } _ { k } ) + Q _ { \\operatorname* { m i n } }$ . ",
+        "bbox": [
+            506,
+            79,
+            940,
+            108
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Thus, according to (20) and (21), we know that the algorithm will terminate by driving the potential function to a minimal point within at most xN²+ 2Qmin $\\begin{array} { r } { \\frac { Q _ { \\mathrm { m a x } } ^ { 2 } } { 2 Q _ { \\mathrm { m i n } } } N ^ { 2 } + \\frac { Q _ { \\mathrm { m a x } } T _ { \\mathrm { m a x } } } { Q _ { \\mathrm { m i n } } } N } \\end{array}$ decision slots. □ ",
+        "bbox": [
+            506,
+            110,
+            940,
+            168
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Theorem 3 shows that under mild conditions the distributed computation offloading algorithm can converge in a fast manner with at most a quadratic convergence time (i.e., upper bound). Note that in practice the transmission power and channel gain are non-negative $( \\mathrm { i . e . , ~ } q _ { n } , g _ { n , s } \\ \\geq \\ 0 )$ , we hence have $Q _ { n } \\ =$ $\\{ q _ { n } g _ { n , s } \\} \\ge 0$ . The non-negative condition of $T _ { n } \\geq 0$ ensures that a user could have the chances to achieve beneficial cloud computing (otherwise, the user should always choose the local computing). For ease of exposition, we consider that $Q _ { n }$ and $T _ { n }$ are integers, which can also provide a good approximation for the general case that $Q _ { n }$ and $T _ { n }$ could be real number. For the general case, numerical results in Section VII demonstrate that the distributed computation offloading algorithm can also converge in a fast manner with the number of decision slots for convergence increasing (almost) linearly with the number of users . Since the time length of a slot in wireless systems is typically at time scale of microseconds (e.g., the length of a slot is around 70 microseconds in LTE system [29]), this implies that the time for the computation offloading decision update process is very short and can be neglectable, compared with the computation execution process, which is typically at the time scale of millisecond/seconds (e.g., for mobile gaming application, the execution time is typically several hundred milliseconds [30]). ",
+        "bbox": [
+            505,
+            172,
+            940,
+            524
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "V. PERFORMANCE ANALYSIS ",
+        "text_level": 1,
+        "bbox": [
+            619,
+            533,
+            824,
+            546
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "We then analyze the performance of the distributed computation offloading algorithm. Following the definition of price of anarchy (PoA) in game theory [31], we will quantify the efficiency ratio of the worst-case Nash equilibrium over the centralized optimal solutions in terms of two important metrics: the number of beneficial cloud computing users and the system-wide computation overhead. ",
+        "bbox": [
+            505,
+            551,
+            940,
+            657
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "A. Metric I: Number of Beneficial Cloud Computing Users ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            667,
+            915,
+            684
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "We first study the PoA in terms of the metric of the number of beneficial cloud computing users in the system. Let be the set of Nash equilibria of the multi-user computation offloading game and $\\pmb { a } ^ { * } = ( a _ { 1 } ^ { * } , \\dots , a _ { N } ^ { * } )$ denote the the centralized optimal solution that maximizes the number of beneficial cloud computing users. Then the PoA is defined as ",
+        "bbox": [
+            505,
+            686,
+            940,
+            778
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{PoA} = \\frac {\\min _ {\\boldsymbol {a} \\in \\Upsilon} \\sum_ {n \\in \\mathcal {N}} I _ {\\{a _ {n} > 0 \\}}}{\\sum_ {n \\in \\mathcal {N}} I _ {\\{a _ {n} ^ {*} > 0 \\}}}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            782,
+            829,
+            835
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "For the metric of the number of beneficial cloud computing users, a larger PoA implies a better performance of the multi-user computation offloading game solution. Recall that $\\begin{array} { r l r } { T _ { \\mathrm { m a x } } \\triangleq \\operatorname* { m a x } _ { n \\in \\mathcal { N } } \\{ T _ { n } \\} , \\ T _ { \\mathrm { m i n } } \\triangleq \\operatorname* { m i n } _ { n \\in \\mathcal { N } } \\{ T _ { n } \\} } \\end{array}$ , $Q _ { \\mathrm { m a x } } \\ { \\triangleq }$ ma $\\mathrm { x } _ { n \\in \\mathcal { N } } \\{ q _ { n } g _ { n , s } \\}$ , and $Q _ { \\operatorname* { m i n } } \\triangleq \\operatorname* { m i n } _ { n \\in \\mathcal N } \\{ q _ { n } g _ { n , s } \\}$ . We can show the following result. ",
+        "bbox": [
+            506,
+            842,
+            940,
+            932
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Theorem 4: Consider the multi-user computation offloading game, where $T _ { n } ~ \\ge ~ 0 ~ f o r$ each user $n \\in { \\mathcal { N } } .$ . The PoA for the metric of the number of beneficial cloud computing users satisfies that ",
+        "bbox": [
+            506,
+            934,
+            940,
+            963
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "2802 ",
+        "bbox": [
+            62,
+            40,
+            92,
+            51
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            511,
+            40,
+            940,
+            53
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            55,
+            79,
+            489,
+            108
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n1 \\geq \\mathrm{PoA} \\geq \\frac {\\left\\lfloor \\frac {T _ {\\min}}{Q _ {\\max}} \\right\\rfloor}{\\left\\lfloor \\frac {T _ {\\max}}{Q _ {\\min}} \\right\\rfloor + 1}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            182,
+            111,
+            366,
+            163
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Proof: Let $\\tilde { \\textbf { \\em a } } \\in  { \\textit { T } }$ be an arbitrary Nash equilibrium of the game. Since the centralized optimum $\\pmb { a } ^ { * }$ maximizes the number of beneficial cloud computing users, we hence have that $\\begin{array} { r } { \\sum _ { n \\in \\mathcal { N } } I _ { \\{ \\tilde { a } _ { n } > 0 \\} } \\leq \\sum _ { n \\in \\mathcal { N } } I _ { \\{ a _ { n } ^ { * } > 0 \\} } } \\end{array}$ and $\\mathrm { P o A } \\le 1$ . Moreover, $\\begin{array} { r } { \\mathrm { i f } \\sum _ { n \\in \\mathcal { N } } I _ { \\{ \\tilde { a } _ { n } > 0 \\} } \\ = \\ N } \\end{array}$ , we have $\\textstyle \\sum _ { n \\in { \\mathcal { N } } } I _ { \\{ a _ { n } ^ { * } > 0 \\} } \\ = \\ N$ and $\\mathrm { P o A } = 1$ . In following proof, we will focus on the case that $\\textstyle \\sum _ { n \\in { \\mathcal { N } } } I _ { \\{ \\tilde { a } _ { n } > 0 \\} } < N$ . ",
+        "bbox": [
+            57,
+            163,
+            491,
+            269
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "First, we show that for the centralized optimum $\\pmb { a } ^ { * }$ , we have $\\begin{array} { r l r } { \\sum _ { n \\in \\mathcal { N } } I _ { \\{ a _ { n } ^ { * } > 0 \\} } } & { { } \\le } & { M \\left( \\Big | \\frac { T _ { \\operatorname* { m a x } } } { Q _ { \\operatorname* { m i n } } } \\Big | + 1 \\right) } \\end{array}$ , where is the number of channels. To proceed, we first denote $\\begin{array} { r } { C _ { m } ( \\pmb { a } ) \\triangleq \\sum _ { i = 1 } ^ { N } I _ { \\{ a _ { i } = m \\} } } \\end{array}$ as the number of users on channel for a given decision profile . Since $\\begin{array} { r l r l } { T _ { n } } & { { } \\ge } & { 0 } \\end{array}$ , we have $K _ { n } ^ { c } ( a _ { n } , a _ { - n } ~ = ~ { \\bf 0 } ) ~ \\geq ~ K _ { n } ^ { m }$ for $a _ { n } \\ > \\ 0 .$ , i.e., there exists at least a user that can achieve beneficial cloud computing by letting the user choose cloud computing $a _ { n }$ and the other users choose local computing. This implies that for the centralized optimum $\\pmb { a } ^ { * }$ , we have $\\begin{array} { r l r } { \\sum _ { n \\in \\mathcal { N } } I _ { \\{ a _ { n } ^ { * } > 0 \\} } } & { { } \\ge } & { 1 } \\end{array}$ . Let $\\begin{array} { r } { C _ { m ^ { * } } ( \\pmb { a } ^ { * } ) = \\operatorname* { m a x } _ { m \\in \\mathcal { M } } \\{ C _ { m } ( \\pmb { a } ^ { * } ) \\} , \\mathrm { i . e . } } \\end{array}$ , channel $m ^ { * }$ is the one with most users. Suppose user is on the channel $m ^ { * }$ . Then we know that ",
+        "bbox": [
+            59,
+            269,
+            491,
+            468
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}: a _ {i} = m ^ {*}} q _ {i} g _ {i, s} \\leq T _ {n},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            177,
+            475,
+            371,
+            509
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "which implies that ",
+        "bbox": [
+            57,
+            509,
+            190,
+            524
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\left(C _ {m ^ {*}} \\left(\\boldsymbol {a} ^ {*}\\right) - 1\\right) Q _ {\\min} \\leq \\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}: a _ {i} = m ^ {*}} q _ {i} g _ {i, s} \\\\ \\leq T _ {n} \\leq T _ {\\max}. \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            116,
+            528,
+            430,
+            581
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "It follows that ",
+        "bbox": [
+            59,
+            581,
+            162,
+            595
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {m ^ {*}} \\left(\\boldsymbol {a} ^ {*}\\right) \\leq \\left\\lfloor \\frac {T _ {\\max}}{Q _ {\\min}} \\right\\rfloor + 1.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            182,
+            598,
+            366,
+            633
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "We hence have that ",
+        "bbox": [
+            59,
+            632,
+            197,
+            643
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {N}} I _ {\\{a _ {n} ^ {*} > 0 \\}} = \\sum_ {m = 1} ^ {M} C _ {m} (\\boldsymbol {a} ^ {*}) \\leq M C _ {m ^ {*}} (\\boldsymbol {a} ^ {*}) \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            121,
+            648,
+            489,
+            690
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\leq M \\left(\\left\\lfloor \\frac {T _ {\\max}}{Q _ {\\min}} \\right\\rfloor + 1\\right). \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            214,
+            693,
+            489,
+            726
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Second, for the Nash equilibrium $\\tilde { \\pmb { a } } ,$ since $\\begin{array} { r } { \\sum _ { n \\in \\mathcal { N } } I _ { \\{ \\tilde { a } _ { n } > 0 \\} } < } \\end{array}$ $N _ { ; }$ , there exists at lease one user that chooses the local computing approach, i.e., $a _ { \\tilde { n } } = 0$ . Since is a Nash equilibrium, we have that user cannot reduce its overhead by choosing computation offloading via any channel $m \\in \\mathcal { M }$ . We then know that ",
+        "bbox": [
+            57,
+            726,
+            489,
+            802
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i \\in \\mathcal {N} \\backslash \\{\\tilde {n} \\}: \\tilde {a} _ {i} = m} q _ {i} g _ {i, s} \\geq T _ {\\tilde {n}}, \\forall m \\in \\mathcal {M},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            145,
+            806,
+            403,
+            840
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "which implies that ",
+        "bbox": [
+            59,
+            841,
+            190,
+            855
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} C _ {m} (\\tilde {\\boldsymbol {a}}) Q _ {\\max} \\geq \\sum_ {i \\in \\mathcal {N} \\backslash \\{\\tilde {n} \\}: \\tilde {a} _ {i} = m} q _ {i} g _ {i, s}. \\\\ \\geq T _ {\\tilde {n}} \\geq T _ {\\min}. \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            146,
+            860,
+            400,
+            911
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "It follows that ",
+        "bbox": [
+            59,
+            913,
+            160,
+            926
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Thus, we have ",
+        "bbox": [
+            505,
+            79,
+            611,
+            93
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n \\in \\mathcal {N}} I _ {\\{\\tilde {a} _ {n} > 0 \\}} = \\sum_ {m = 1} ^ {M} C _ {m} (\\tilde {\\boldsymbol {a}}) \\geq M \\left\\lfloor \\frac {T _ {\\min}}{Q _ {\\max}} \\right\\rfloor . \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            567,
+            97,
+            935,
+            138
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Based on (24) and (25), we can conclude that $\\begin{array} { r l } { \\mathrm { P o A } } & { { } \\ge } \\end{array}$ $\\frac { \\left\\lfloor { \\frac { T _ { \\operatorname* { m i n } } } { Q _ { \\operatorname* { m a x } } } } \\right\\rfloor } { \\left\\lceil { \\frac { T _ { \\operatorname* { m a x } } } { Q _ { \\operatorname* { m i n } } } } \\right\\rceil + 1 }$ Qmax Tmin , which completes the proof. Tmax +1 Qmin ",
+        "bbox": [
+            503,
+            139,
+            935,
+            185
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Recall that the constraint $T _ { n } \\geq 0$ ensures that some user can achieve beneficial cloud computing in the centralized optimum, and avoid the possibility of the PoA involving “division by zero”. Theorem 4 implies that the worst-case performance of the Nash equilibrium will be close to the centralized optimum $\\pmb { a } ^ { * }$ when the gap between the best and worst users in terms of wireless access performance $q _ { n } , g _ { n , s }$ and interference tolerance threshold $T _ { n }$ for achieving beneficial cloud computing is not large. ",
+        "bbox": [
+            503,
+            183,
+            937,
+            319
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "B. Metric II: System-Wide Computation Overhead ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            330,
+            856,
+            346
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "We then study the PoA in terms of another metric of the total computation overhead of all the mobile device users in the system, i.e., $\\textstyle \\sum _ { n \\in { \\mathcal { N } } } Z _ { n } ( { \\pmb a } )$ . Let be the centralized optimal solution that minimizes the system-wide computation overhead, i.e., $\\begin{array} { r } { \\overline { { \\pmb { a } } } = \\arg \\operatorname* { m i n } _ { \\pmb { a } \\in \\prod _ { n = 1 } ^ { N } A _ { n } } \\sum _ { n \\in \\mathcal { N } } Z _ { n } ( \\pmb { a } ) } \\end{array}$ . Similarly, we can define the PoA as ",
+        "bbox": [
+            503,
+            349,
+            937,
+            443
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm{PoA} = \\frac {\\max _ {\\boldsymbol {a} \\in \\Upsilon} \\sum_ {n \\in \\mathcal {N}} Z _ {n} (\\boldsymbol {a})}{\\sum_ {n \\in \\mathcal {N}} Z _ {n} (\\bar {\\boldsymbol {a}})}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            616,
+            446,
+            822,
+            499
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Note that, different from the metric of the number of beneficial cloud computing users, a smaller system-wide computation overhead is more desirable. Hence, for the metric of the system-wide computation overhead, a smaller PoA is better. Let ",
+        "bbox": [
+            503,
+            499,
+            937,
+            558
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nK _ {n, m i n} ^ {c} \\triangleq \\frac {\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}}{w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0}}\\right)} + \\lambda_ {n} ^ {e} L _ {n} + \\lambda_ {n} ^ {t} t _ {n, e x e} ^ {c} \\text {and}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            505,
+            558,
+            869,
+            588
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nK _ {n, m a x} ^ {c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            506,
+            588,
+            562,
+            604
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\triangleq \\frac {\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}}{w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0} + \\left(\\sum_ {i \\in \\mathcal {N} \\setminus \\{n \\}} q _ {i} g _ {i , s}\\right) / M}\\right)} + \\lambda_ {n} ^ {e} L _ {n} + \\lambda_ {n} ^ {t} t _ {n, e x e} ^ {c}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            505,
+            605,
+            935,
+            688
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "We can show the following result. ",
+        "bbox": [
+            505,
+            689,
+            743,
+            704
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Theorem 5: For the multi-user computation offloading game, the PoA of the metric of the system-wide computation overhead satisfies that ",
+        "bbox": [
+            503,
+            704,
+            937,
+            749
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n1 \\leq \\mathrm{PoA} \\leq \\frac {\\sum_ {n = 1} ^ {N} \\min \\left\\{K _ {n} ^ {m} , K _ {n , m a x} ^ {c} \\right\\}}{\\sum_ {n = 1} ^ {N} \\min \\left\\{K _ {n} ^ {m} , K _ {n , m i n} ^ {c} \\right\\}}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            589,
+            752,
+            851,
+            821
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Proof: Let $\\tilde { \\pmb { a } } \\in \\Upsilon$ be an arbitrary Nash equilibrium of the game. Since the centralized optimum $\\pmb { a } ^ { * }$ minimizes the systemwide computation overhead, we hence first have that $\\mathrm { P o A } \\geq 1$ . ",
+        "bbox": [
+            503,
+            821,
+            937,
+            866
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "For a Nash equilibrium $\\hat { \\pmb { a } } \\in \\Upsilon , \\mathrm { i f } \\bar { a } _ { n } > 0$ , we shall show that the interference that a user receives from other other users on the wireless access channel $\\hat { a } _ { n }$ is at most ",
+        "bbox": [
+            503,
+            866,
+            937,
+            912
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {m ^ {*}} (\\tilde {\\boldsymbol {a}}) \\geq \\frac {T _ {\\min}}{Q _ {\\max}} \\geq \\left\\lfloor \\frac {T _ {\\min}}{Q _ {\\max}} \\right\\rfloor .\n$$",
+        "text_format": "latex",
+        "bbox": [
+            163,
+            932,
+            381,
+            965
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left(\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}} q _ {i} g _ {i, s}\\right) / M.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            641,
+            917,
+            802,
+            965
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: EFFICIENT MULTI-USER COMPUTATION OFFLOADING FOR MOBILE-EDGE CLOUD COMPUTING ",
+        "bbox": [
+            57,
+            40,
+            653,
+            51
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "2803 ",
+        "bbox": [
+            908,
+            41,
+            935,
+            50
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            69,
+            961,
+            920,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "We prove this by contradiction. Suppose that a user at the Nash equilibrium receives an interference greater than $\\textstyle \\left( \\sum _ { i \\in { \\mathcal { N } } \\setminus \\{ n \\} } q _ { i } g _ { i , s } \\right) / M$ . Then, we have that ",
+        "bbox": [
+            60,
+            79,
+            494,
+            130
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}: \\hat {a} _ {i} = \\hat {a} _ {n}} q _ {n} g _ {n, s} > \\left(\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}} q _ {i} g _ {i, s}\\right) / M. \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            97,
+            130,
+            493,
+            177
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "According to the property of Nash equilibrium such that no user can improve by changing the channel unilaterally, we also have that ",
+        "bbox": [
+            60,
+            178,
+            494,
+            221
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i \\in \\mathcal {N} \\setminus \\{n \\}: \\hat {a} _ {i} = m} q _ {n} g _ {n, s} \\geq \\sum_ {i \\in \\mathcal {N} \\setminus \\{n \\}: \\hat {a} _ {i} = \\hat {a} _ {n}} q _ {n} g _ {n, s}, \\forall m \\in \\mathcal {M}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            79,
+            229,
+            474,
+            264
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "This implies that ",
+        "bbox": [
+            62,
+            271,
+            184,
+            285
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m = 1} ^ {M} \\sum_ {i \\in \\mathcal {N} \\setminus \\{n \\}: \\hat {a} _ {i} = m} q _ {n} g _ {n, s}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            60,
+            291,
+            241,
+            335
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\geq M \\left(\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}: \\hat {a} _ {i} = \\hat {a} _ {n}} q _ {n} g _ {n, s}\\right). \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            222,
+            337,
+            493,
+            386
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "According to (26) and (27), we now reach a contradiction that ",
+        "bbox": [
+            62,
+            392,
+            488,
+            408
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\left(\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}} q _ {i} g _ {i, s}\\right) / M <   \\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}: \\hat {a} _ {i} = \\hat {a} _ {n}} q _ {n} g _ {n, s} \\\\ \\leq \\left(\\sum_ {m = 1} ^ {M} \\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}: \\hat {a} _ {i} = m} q _ {n} g _ {n, s}\\right) / M \\\\ \\leq \\left(\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}} q _ {i} g _ {i, s}\\right) / M. \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            411,
+            484,
+            561
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Thus, a user at the Nash equilibrium receives an interference not greater than $\\textstyle \\left( \\sum _ { i \\in { \\mathcal { N } } \\setminus \\{ n \\} } q _ { i } g _ { i , s } \\right) / M$ . Based on this, if $\\hat { a } _ { n } >$ , we hence have that ",
+        "bbox": [
+            60,
+            567,
+            493,
+            615
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {n} (\\hat {\\boldsymbol {a}}) \\geq w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0} + \\left(\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}} q _ {i} g _ {i , s}\\right) / M}\\right),\n$$",
+        "text_format": "latex",
+        "bbox": [
+            87,
+            619,
+            467,
+            702
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "which implies that ",
+        "bbox": [
+            62,
+            708,
+            194,
+            723
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} K _ {n} ^ {c} (\\hat {\\pmb {a}}) = \\frac {\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}}{r _ {n} (\\hat {\\pmb {a}})} + \\lambda_ {n} ^ {e} L _ {n} + \\lambda_ {n} ^ {t} t _ {n, e x e} ^ {c} \\\\ \\geq \\frac {\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}}{w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0} + \\left(\\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\}} q _ {i} g _ {i , s}\\right) / M}\\right)} \\\\ + \\lambda_ {n} ^ {e} L _ {n} + \\lambda_ {n} ^ {t} t _ {n, e x e} ^ {c} \\\\ = K _ {n, m a x} ^ {c}. \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            104,
+            727,
+            449,
+            885
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Moreover, if $K _ { n } ^ { m } ~ < ~ K _ { n , m a x } ^ { c }$ < Knmax and ${ \\hat { a } } _ { n } \\ > \\ 0 ,$ then the user can always improve by switching to the local computing approach $( \\mathrm { i } . \\mathrm { e } . , \\hat { a } _ { n } = 0 )$ , we thus know that ",
+        "bbox": [
+            60,
+            892,
+            493,
+            937
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nZ _ {n} (\\hat {\\boldsymbol {a}}) \\leq \\min \\{K _ {n} ^ {m}, K _ {n, m a x} ^ {c} \\}. \\tag {28}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            172,
+            946,
+            493,
+            965
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "For the centralized optimal solution $\\overline { { \\pmb { a } } } ,$ if $\\bar { a } _ { n } ~ > ~ 0$ , we have that ",
+        "bbox": [
+            506,
+            79,
+            940,
+            108
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} r _ {n} (\\bar {\\boldsymbol {\\alpha}}) = w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0} + \\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\} : \\bar {a} _ {i} = \\bar {a} _ {n}} q _ {i} g _ {i , s}}\\right) \\\\ \\leq w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0}}\\right), \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            543,
+            115,
+            896,
+            207
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "which implies that ",
+        "bbox": [
+            506,
+            215,
+            640,
+            230
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} K _ {n} ^ {c} (\\bar {\\boldsymbol {a}}) = \\frac {\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}}{r _ {n} (\\bar {\\boldsymbol {a}})} + \\lambda_ {n} ^ {e} L _ {n} + \\lambda_ {n} ^ {t} t _ {n, e x e} ^ {c} \\\\ \\leq \\frac {\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}}{w \\log_ {2} \\left(1 + \\frac {q _ {n} g _ {n , s}}{\\varpi_ {0}}\\right)} + \\lambda_ {n} ^ {e} L _ {n} + \\lambda_ {n} ^ {t} t _ {n, e x e} ^ {c} \\\\ = K _ {n, m i n} ^ {c}. \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            543,
+            235,
+            900,
+            332
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Moreover, if $K _ { n } ^ { m } < K _ { n , m i n } ^ { c }$ and $\\bar { a } _ { n } > 0$ , then the system-wide computation overhead can be further reduced by letting user switch to the local computing approach $( \\mathrm { i } . \\mathsf { e } . , \\overline { { a } } _ { n } = 0 )$ . This is because such a switching will not increase extra interference to other users. We thus know that ",
+        "bbox": [
+            506,
+            340,
+            940,
+            416
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nZ _ {n} (\\bar {\\boldsymbol {a}}) \\leq \\min \\{K _ {n} ^ {m}, K _ {n, m i n} ^ {c} \\}. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            618,
+            428,
+            939,
+            447
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "According to (28) and (29), we can conclude that ",
+        "bbox": [
+            523,
+            456,
+            864,
+            471
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} 1 \\leq \\operatorname{PoA} = \\frac {\\max _ {\\boldsymbol {a} \\in \\Upsilon} \\sum_ {n \\in \\mathcal {N}} Z _ {n} (\\boldsymbol {a})}{\\sum_ {n \\in \\mathcal {N}} Z _ {n} (\\bar {\\boldsymbol {a}})} \\\\ \\leq \\frac {\\sum_ {n = 1} ^ {N} \\min \\{K _ {n} ^ {m} , K _ {n , m a x} ^ {c} \\}}{\\sum_ {n = 1} ^ {N} \\min \\{K _ {n} ^ {m} , K _ {n , m i n} ^ {c} \\}}. \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            592,
+            477,
+            853,
+            600
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Intuitively, Theorem 5 indicates that when the resource for wireless access increases (i.e., the number of wireless access channels is larger and hence $K _ { n , m a x } ^ { c }$ is smaller), the worstcase performance of Nash equilibrium can be improved. Moreover, when users have lower cost of local computing (i.e., $K _ { n } ^ { m }$ is smaller), the worst-case Nash equilibrium is closer to the centralized optimum and hence the PoA is lower. ",
+        "bbox": [
+            506,
+            624,
+            940,
+            731
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "VI. EXTENSION TO WIRELESS CONTENTION MODEL ",
+        "text_level": 1,
+        "bbox": [
+            543,
+            746,
+            903,
+            760
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In the previous sections above, we mainly focus on exploring the distributed computation offloading problem under the wireless interference model as given in (1). Such wireless interference model is widely adopted in literature (see [21], [32] and references therein) and can well capture user's time average aggregate throughput in the cellular communication scenario in which some physical layer channel access scheme (e.g., CDMA) is adopted to allow multiple users to share the same spectrum resource simultaneously and efficiently. In this case, the multiple access among users for the shared spectrum is carried out over the signal/symbol level (e.g., at the time scale of microseconds), rather than the packet level (e.g., at the time scale of milliseconds/seconds). ",
+        "bbox": [
+            505,
+            766,
+            940,
+            961
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "2804 ",
+        "bbox": [
+            62,
+            41,
+            92,
+            51
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            511,
+            40,
+            940,
+            51
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            69,
+            961,
+            923,
+            975
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In this section, we extend our study to the wireless contention model in which the multiple access among users for the shared spectrum is carried out over the packet level. This is most relevant to the scenario that some media access control protocol such as CSMA is implemented such that users content to capture the channel for data packet transmission for a long period $( \\mathrm { e . g . }$ ., hundreds of milliseconds or several seconds) in the WiFi-like networks (e.g., White-Space Network [33]). In this case, we can model a user's expected throughput for computation offloading over the chosen wireless channel $a _ { n } > 0$ as follows ",
+        "bbox": [
+            57,
+            79,
+            491,
+            231
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {n} (\\boldsymbol {a}) = R _ {n} \\frac {W _ {n}}{W _ {n} + \\sum_ {i \\in \\mathcal {N} \\backslash \\{n \\} : a _ {i} = a _ {n}} W _ {i}}, \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            140,
+            235,
+            489,
+            281
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "where $R _ { n }$ is the data rate that user can achieve when it can successfully gab the channel, and $W _ { n } > 0$ denotes user's weight in the channel contention/sharing, with a larger weight $W _ { n }$ implying that user is more dominant in grabbing the channel. When $W _ { n } = 1$ for any user , it is relevant to the equal-sharing case (e.g., round robin scheduling). ",
+        "bbox": [
+            57,
+            288,
+            491,
+            381
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Similarly, we can apply the communication and computation models in the previous sections above to compute the overhead for both local and cloud computing approaches, and model the distributed computation offloading problem as a strategic game. For such multi-user computation offloading game under the wireless contention model, we can show that it exhibits the same structural property as the case under the wireless interference model. We can first define the received “interference” (i.e., aggregated contention weights) of user on the chosen channel as μn(a)= ∑ieN\\{n}:ai=an $\\begin{array} { r } { \\mu _ { n } ( { \\pmb a } ) = \\sum _ { i \\in \\mathcal { N } \\backslash \\{ n \\} : a _ { i } = a _ { n } } W _ { i } } \\end{array}$ . Then we can show the same threshold structure for the game as follow. ",
+        "bbox": [
+            57,
+            381,
+            491,
+            547
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Lemma 2: For the multi-user computation offloading game under the wireless contention model, a user achieves beneficial cloud computing if its received interference $\\mu _ { n } ( { \\pmb a } )$ on the chosen channel $a _ { n } \\ > \\ 0$ satisfies that $\\mu _ { n } ( \\pmb { a } ) ~ \\leq ~ T _ { n }$ , with the threshold ",
+        "bbox": [
+            57,
+            548,
+            491,
+            624
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT _ {n} = \\left(\\frac {\\left(\\lambda_ {n} ^ {t} t _ {n} ^ {m} + \\lambda_ {n} ^ {e} e _ {n} ^ {m} - \\lambda_ {n} ^ {e} L _ {n} - \\lambda_ {n} ^ {t} t _ {n , e x e} ^ {c}\\right) R _ {n}}{\\left(\\lambda_ {n} ^ {t} + \\lambda_ {n} ^ {e} q _ {n}\\right) b _ {n}} - 1\\right) W _ {n}.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            64,
+            629,
+            484,
+            671
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "By exploiting the threshold structure above and following the similar arguments in the proof of Theorem 2, we can also show that the multi-user computation offloading game under the wireless contention model is a potential game. ",
+        "bbox": [
+            57,
+            679,
+            489,
+            740
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Theorem 6: The multi-user computation offloading game under the wireless contention model is a potential game under the wireless contention model with the potential function as given in (31), and hence always has a Nash equilibrium and the finite improvement property. ",
+        "bbox": [
+            57,
+            740,
+            491,
+            816
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\Phi (\\boldsymbol {a}) = \\frac {1}{2} \\sum_ {i = 1} ^ {N} \\sum_ {j \\neq i} W _ {i} W _ {j} I _ {\\{a _ {i} = a _ {j} \\}} I _ {\\{a _ {i} > o \\}} \\\\ + \\sum_ {i = 1} ^ {N} W _ {i} T _ {n} I _ {\\{a _ {n} = 0 \\}}. \\tag {31} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            57,
+            823,
+            491,
+            910
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Based on Lemma 2 and Theorem (6), we observe that the multi-user computation offloading game under the wireless contention model exhibits the same structural property as the case ",
+        "bbox": [
+            57,
+            917,
+            491,
+            961
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "under the wireless interference model. Moreover, by defining $q _ { n } g _ { n , s } = W _ { n }$ , the potential function in (31) is the same as that in (16). Thus, by regarding the aggregated contention weights μn(a)=∑ieN{n}:ai=an $\\begin{array} { r } { \\mu _ { n } ( { \\pmb a } ) = \\sum _ { i \\in \\mathcal { N } \\backslash \\{ n \\} : a _ { i } = a _ { n } } W _ { i } } \\end{array}$ as the received interference, we can apply the distributed computation offloading algorithm in Section IV to achieve the Nash equilibrium, which possesses the same performance and convergence guarantee for the case under the wireless contention model. ",
+        "bbox": [
+            503,
+            79,
+            937,
+            200
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "VII. NUMERICAL RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            625,
+            212,
+            817,
+            226
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "In this section, we evaluate the proposed distributed computation offloading algorithm by numerical studies. We first consider the scenario where the wireless small-cell base-station has a coverage range of 50 m [34] and $N \\ = \\ 3 0$ mobile device users are randomly scattered over the coverage region [34]. The base-station consists of $M = 5$ channels and the channel bandwidth $w = 5 \\ : \\mathrm { M H z }$ . The transmission power $q _ { n } = 1 0 0$ mWatts and the background noise $\\varpi _ { 0 } = - 1 0 0$ dBm [21]. According to the wireless interference model for urban cellular radio environment [21], we set the channel gain $g _ { n , s } = l _ { n , s } ^ { - \\alpha }$ , where $l _ { n , s }$ is the distance between mobile device user and the wireless base-station and $\\alpha = 4$ is the path loss factor. ",
+        "bbox": [
+            501,
+            233,
+            935,
+            415
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "For the computation task, we consider the face recognition application in [2], where the data size for the computation offloading $b _ { n } ~ = ~ 5 0 0 0$ KB and the total number of CPU cycles $d _ { n } = 1 0 0 0$ Megacycles. The CPU computational capability $f _ { n } ^ { m }$ of a mobile device user is randomly assigned from the set $\\{ 0 . 5 , 0 . 8 , 1 . 0 \\}$ GHz to account for the heterogenous computing capability of mobile devices, and the computational capability allocated for a user on the cloud is $f _ { n } ^ { c } = 1 0 \\mathrm { G H z } [ 2 ]$ . For the decision weights of each user for both the computation time and energy, we set that $\\lambda _ { n } ^ { t } = 1 - \\lambda _ { n } ^ { e }$ and $\\lambda _ { n } ^ { e }$ is randomly assigned from the set $\\{ 1 , 0 . 5 , 0 \\}$ . In this case, $\\mathrm { i f } \\lambda _ { n } ^ { e } = 1 ( \\lambda _ { n } ^ { e } = 0$ , respectively), a user only cares about the computation energy (computation time, respectively); if ${ \\lambda } _ { n } ^ { e } = 0 . 5$ , then user cares both the computation time and energy. ",
+        "bbox": [
+            503,
+            416,
+            937,
+            628
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "We first show the dynamics of mobile device users' computation overhead $Z _ { n } ( { \\pmb a } )$ by the proposed distributed computation offloading algorithm in Fig. 2. We see that the algorithm can converge to a stable point (i.e., Nash equilibrium of the multi-user computation offloading game). Fig. 3 shows the dynamics of the achieved number of beneficial cloud computing users by the proposed algorithm. It demonstrates that the algorithm can keep the number of beneficial cloud computing users in the system increasing and converge to an equilibrium. We further show the dynamics of the system-wide computation overhead $\\textstyle \\sum _ { n \\in { \\mathcal { N } } } Z _ { n } ( { \\pmb a } )$ by the proposed algorithm in Fig. 4. We see that the algorithm can also keep the system-wide computation overhead decreasing and converge to an equilibrium. ",
+        "bbox": [
+            503,
+            629,
+            935,
+            826
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "We then compare the distributed computation offloading algorithm with the following solutions: ",
+        "bbox": [
+            503,
+            826,
+            935,
+            856
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "A. Local Computing by All Users ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            868,
+            741,
+            883
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "each user chooses to compute its own task locally on the mobile phone. This could correspond to the scenario that each user is risk-averse and would like to avoid any potential performance degradation due to the concurrent computation offloadings by other users. ",
+        "bbox": [
+            503,
+            887,
+            935,
+            961
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: EFFICIENT MULTI-USER COMPUTATION OFFLOADING FOR MOBILE-EDGE CLOUD COMPUTING ",
+        "bbox": [
+            59,
+            40,
+            653,
+            51
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "2805 ",
+        "bbox": [
+            908,
+            41,
+            935,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            67,
+            961,
+            923,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/094925f69a6424c847e5453958c2939e3e844e42bb92e1c63149b06212362961.jpg",
+        "content": "| Decision Slot | User's Computation Overhead |\n| ------------- | --------------------------- |\n| 0             | 1.5                         |\n| 5             | 2.0                         |\n| 10            | 1.8                         |\n| 15            | 2.5                         |\n| 20            | 2.8                         |\n| 25            | 3.5                         |\n| 30            | 2.0                         |\n| 35            | 1.5                         |\n| 40            | 1.2                         |\n| 45            | 1.0                         |\n| 50            | 0.8                         |\n| 55            | 0.6                         |\n| 60            | 0.5                         |\n| 65            | 0.4                         |\n| 70            | 0.3                         |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            136,
+            76,
+            420,
+            242
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/dc68f6bb981cb12be4da6e80cfa56b1ce994466d85814c58cf87af7b2ee43c57.jpg",
+        "content": "| Decision Slot | Number of Beneficial Cloud Computing Users |\n| ------------- | ------------------------------------------ |\n| 0             | 1                                          |\n| 5             | 5                                          |\n| 10            | 10                                         |\n| 15            | 15                                         |\n| 20            | 18                                         |\n| 25            | 20                                         |\n| 30            | 22                                         |\n| 35            | 23                                         |\n| 40            | 24                                         |\n| 45            | 24                                         |\n| 50            | 24                                         |\n| 55            | 24                                         |\n| 60            | 24                                         |\n| 65            | 24                                         |\n| 70            | 24                                         |",
+        "chart_caption": [
+            "Fig. 2. Dynamics of users' computation overhead. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            136,
+            268,
+            418,
+            437
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/5d8f8b456a1c162b319cafe55d41e70aac43d8ec244cba4e0a474c46d4acb861.jpg",
+        "content": "| Decision Slot | System-wide Computation Overhead |\n| ------------- | --------------------------------- |\n| 0             | 52.0                              |\n| 5             | 48.0                              |\n| 10            | 42.0                              |\n| 15            | 36.0                              |\n| 20            | 32.0                              |\n| 25            | 28.0                              |\n| 30            | 26.0                              |\n| 35            | 24.0                              |\n| 40            | 23.0                              |\n| 45            | 22.5                              |\n| 50            | 22.5                              |\n| 55            | 22.5                              |\n| 60            | 22.5                              |\n| 65            | 22.5                              |\n| 70            | 22.5                              |",
+        "chart_caption": [
+            "Fig. 3. Dynamics of the number of beneficial cloud computing users. ",
+            "Fig. 4. Dynamics of system-wide computation overhead. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            136,
+            463,
+            418,
+            631
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "B. Cloud Computing by All Users ",
+        "text_level": 1,
+        "bbox": [
+            60,
+            667,
+            302,
+            683
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "each user chooses to offload its own task to the cloud via a randomly selected wireless channel. This could correspond to the scenario that each user is myopic and ignores the impact of other users for cloud computing. ",
+        "bbox": [
+            60,
+            688,
+            494,
+            750
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "C. Cross Entropy Based Centralized Optimization ",
+        "text_level": 1,
+        "bbox": [
+            60,
+            761,
+            412,
+            778
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "we compute the centralized optimum by the global optimization using Cross Entropy (CE) method, which is an advanced randomized searching technique and has been shown to be efficient in finding near-optimal solutions to complex combinatorial optimization problems [35]. ",
+        "bbox": [
+            60,
+            780,
+            493,
+            856
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "We run experiments with different number of $\\begin{array} { r l } { N } & { { } = } \\end{array}$ $1 5 , \\ldots , 5 0$ [34], respectively. We repeat each experiment 100 times for each given user number and show the average number of beneficial cloud computing users and the average system-wide computation overhead in Figs. 5 and 6, respectively. We see that, for the metric of the number of beneficial cloud computing users, the distributed computation offloading solution can achieve up-to 30% performance improvement over the solutions by cloud computing by all users, respectively. For the metric of the system-wide computation overhead, the distributed computation offloading solution can achieve up-to 68% and 55%, and 51% overhead reduction over with the solutions by local computing by all users, and cloud computing by all users, respectively. Moreover, compared with the centralized optimal solution by CE method, the performance loss of the distributed computation offloading solution is at most 12% and 14%, for the metrics of number of beneficial cloud computing users and system-wide computation overhead, respectively. This demonstrates the efficiency of the proposed distributed computation offloading algorithm. Note that for the distributed computation offloading algorithm, a mobile user makes the computation offloading decision locally based on its local parameters. While for CE based centralized optimization, the complete information is required and hence all the users need to report all their local parameters to the cloud. This would incur high system overhead for massive information collection and may raise the privacy issue as well. Moreover, since the mobile devices are owned by different individuals and they may pursue different interests, the users may not have the incentive to follow the centralized optimal solution. While, due to the property of Nash equilibrium, the distributed computation offloading solution can ensure the self-stability such that no user has the incentive to deviate unilaterally. ",
+        "bbox": [
+            60,
+            856,
+            494,
+            963
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/a6a3d43d44926a6e449f50880fe4d67c219a0255c694ebff0ae813896aa04cf4.jpg",
+        "content": "| Number of Users | Distributed Computation Offloading | Cloud Computing by All Users | CE based Centralized Optimization |\n| --------------- | ----------------------------------- | ---------------------------- | ---------------------------------- |\n| 15              | 15                                  | 12                           | 16                                 |\n| 20              | 18                                  | 15                           | 20                                 |\n| 25              | 21                                  | 17                           | 23                                 |\n| 30              | 24                                  | 20                           | 27                                 |\n| 35              | 28                                  | 23                           | 31                                 |\n| 40              | 30                                  | 24                           | 34                                 |\n| 45              | 33                                  | 26                           | 35                                 |\n| 50              | 37                                  | 29                           | 39                                 |",
+        "chart_caption": [
+            "Fig. 5. Average number of beneficial cloud computing users with different number of users. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            582,
+            77,
+            866,
+            247
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/7551c3e598f5b968519af9f68b5e0f5da4c7d2578682b2157825b05a92577b50.jpg",
+        "content": "| Number of Users | Distributed Computation Offloading | Cloud Computing by All Users | Local Computing by All Users | CE based Centralized Optimization |\n| --------------- | ----------------------------------- | ---------------------------- | ---------------------------- | ---------------------------------- |\n| 15              | 10                                  | 12                           | 27                           | 8                                  |\n| 20              | 13                                  | 20                           | 36                           | 12                                 |\n| 25              | 17                                  | 28                           | 45                           | 16                                 |\n| 30              | 25                                  | 41                           | 54                           | 22                                 |\n| 35              | 31                                  | 63                           | 63                           | 27                                 |\n| 40              | 36                                  | 79                           | 71                           | 31                                 |\n| 45              | 40                                  | 87                           | 80                           | 36                                 |\n| 50              | 50                                  | 105                          | 88                           | 44                                 |",
+        "chart_caption": [
+            "Fig. 6. Average system-wide computation overhead with different number of users. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            582,
+            287,
+            866,
+            456
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            505,
+            506,
+            940,
+            918
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "We next evaluate the convergence time of the distributed computation offloading algorithm in Fig. 7. It shows that the average number of decision slots for convergence increases (almost) linearly as the number of mobile device users increases. This demonstrates that the distributed computation offloading algorithm converges in a fast manner and scales well with the size of mobile device users in practice.4 ",
+        "bbox": [
+            506,
+            918,
+            940,
+            961
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "2806 ",
+        "bbox": [
+            62,
+            41,
+            92,
+            51
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            513,
+            40,
+            940,
+            51
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            67,
+            961,
+            923,
+            975
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/1689e273d8672c2d54ad724ced68161cc6a055b0e265bfc5021d2567501f6168.jpg",
+        "content": "| Number of Users | Average Number of Decision Slots |\n| --------------- | --------------------------------- |\n| 15              | 20                                |\n| 20              | 30                                |\n| 25              | 40                                |\n| 30              | 45                                |\n| 35              | 50                                |\n| 40              | 55                                |\n| 45              | 60                                |\n| 50              | 65                                |",
+        "chart_caption": [
+            "Fig. 7. Average number of decision slots for convergence with different number of users. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            135,
+            78,
+            415,
+            239
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            292,
+            489,
+            354
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "VIII. RELATED WORK ",
+        "text_level": 1,
+        "bbox": [
+            194,
+            375,
+            354,
+            387
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Many previous work has investigated the single-user computation offloading problem (e.g., [10]–[16]). Barbera et al. in [10] showed by realistic measurements that the wireless access plays a key role in affecting the performance of mobile cloud computing. Rudenko et al. in [11] demonstrated by experiments that significant energy can be saved by computation offloading. Gonzalo et al. in [12] developed an adaptive offloading algorithm based on both the execution history of applications and the current system conditions. Xian et al. in [13] introduced an efficient timeout scheme for computation offloading to increase the energy efficiency on mobile devices. Huang et al. in [14] proposed a Lyapunov optimization based dynamic offloading algorithm to improve the mobile cloud computing performance while meeting the application execution time. Wen et al. in [15] presented an efficient offloading policy by jointly configuring the clock frequency in the mobile device and scheduling the data transmission to minimize the energy consumption. Wu et al. in [16] applied the alternating renewal process to model the network availability and developed offloading decision algorithm accordingly. ",
+        "bbox": [
+            60,
+            397,
+            489,
+            700
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "To the best of our knowledge, only a few works have addressed the computation offloading problem under the setting of multiple mobile device users [9]. Yang et al. in [24] studied the scenario that multiple users share the wireless network bandwidth, and solved the problem of maximizing the mobile cloud computing performance by a centralized heuristic genetic algorithm. Our previous work in [17] considered the multi-user computation offloading problem in a single-channel wireless setting, such that each user has a binary decision variable (i.e., to offload or not). Given the fact that base-stations in most wireless networks are operating in the multi-channel wireless environment, in this paper we study the generalized multi-user computation offloading problem in a multi-channel setting, which results in significant differences in analysis. For example, we show the generalized problem is NP-hard, which is not true for the single-channel case. We also investigate the price of anarchy in terms of two performance metrics and show that the number of available channels can also impact the price of anarchy (e.g., Theorem 5). We further derive the upper bound of the convergence time of the computation offloading algorithm in the multi-channel environment. Barbarossa et al. in [9] studied the multi-user computation offloading problem in a multi-channel wireless environment, by assuming that the number of wireless access channels is greater than the number of users such that each mobile user can offload the computation via a single orthogonal channel independently without experiencing any interference from other users. In this paper we consider the more practical case that the number of wireless access channels is limited and each user mobile may experience interference from other users for computation offloading. ",
+        "bbox": [
+            60,
+            702,
+            489,
+            913
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            79,
+            935,
+            321
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "IX. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            657,
+            338,
+            783,
+            351
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "In this paper, we propose a game theoretic approach for the computation offloading decision making problem among multiple mobile device users for mobile-edge cloud computing. We formulate the problem as as a multi-user computation offloading game and show that the game always admits a Nash equilibrium. We also design a distributed computation offloading algorithm that can achieve a Nash equilibrium, derive the upper bound of convergence time, and quantify its price of anarchy. Numerical results demonstrate that the proposed algorithm achieves superior computation offloading performance and scales well as the user size increases. ",
+        "bbox": [
+            501,
+            358,
+            935,
+            524
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "For the future work, we are going to consider the more general case that mobile users may depart and leave dynamically within a computation offloading period. In this case, the user mobility patterns will play an important role in the problem formulation. Another direction is to study the joint power control and offloading decision making problem, which would be very interesting and technically challenging. ",
+        "bbox": [
+            503,
+            525,
+            935,
+            632
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            675,
+            647,
+            766,
+            659
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] K. Kumar and Y. Lu, “Cloud computing for mobile users: Can offloading computation save energy?,” IEEE Comput., vol. 43, no. 4, pp. 51–56, Apr. 2010. ",
+            "[2] T. Soyata, R. Muraleedharan, C. Funai, M. Kwon, and W. Heinzelman, “Cloud-vision: Real-time face recognition using a mobile-cloudlet-cloud acceleration architecture,” in Proc. IEEE ISCC, 2012, pp. 000059–000066. ",
+            "[3] J. Cohen, “Embedded speech recognition applications in mobile phones: Status, trends, and challenges,” in Proc. IEEE ICASSP, 2008, pp. 5352–5355. ",
+            "[4] E. Cuervo et al., “MAUI: Making smartphones last longer with code offload,” in Proc. 8th Int. Conf. Mobile Syst., Appl., Services, 2010, pp. 49–62. ",
+            "[5] M. Satyanarayanan, P. Bahl, R. Caceres, and N. Davies, “The case for VM-based cloudlets in mobile computing,” IEEE Pervasive Comput., vol. 8, no. 4, pp. 14–23, Oct.–Dec. 2009. ",
+            "[6] European Telecommunications Standards Institute, “Mobile-edge computing—Introductory technical white paper,” 2014. ",
+            "[7] U. Drolia et al., “The case for mobile edge-clouds,” in Proc. 10th IEEE Int. Conf. Ubiquitous Intell. Comput., 2013, pp. 209–215. ",
+            "[8] Ericsson, “The telecom cloud opportunity,” Mar. 2012 [Online]. Available: http://www.ericsson.com/res/site\\_AU/docs/2012/ericsson\\_telecom\\_cloud\\_discussion\\_paper.pdf ",
+            "[9] S. Barbarossa, S. Sardellitti, and P. D. Lorenzo, “Joint allocation of computation and communication resources in multiuser mobile cloud computing,” in Proc. IEEE Workshop SPAWC, 2013, pp. 26–30. "
+        ],
+        "bbox": [
+            528,
+            662,
+            940,
+            964
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "CHEN et al.: EFFICIENT MULTI-USER COMPUTATION OFFLOADING FOR MOBILE-EDGE CLOUD COMPUTING ",
+        "bbox": [
+            60,
+            40,
+            653,
+            51
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "2807 ",
+        "bbox": [
+            908,
+            41,
+            935,
+            50
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_footnote",
+        "text": "4For example, the length of a slot is at the time scale of microseconds in LTE system [29] and hence the convergence time of the proposed algorithm is very short. ",
+        "bbox": [
+            60,
+            927,
+            489,
+            961
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_footnote",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            70,
+            961,
+            923,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[10] M. V. Barbera, S. Kosta, A. Mei, and J. Stefa, “To offload or not to offload? the bandwidth and energy costs of mobile cloud computing,” in Proc. IEEE INFOCOM, 2013, pp. 1285–1293. ",
+            "[11] A. Rudenko, P. Reiher, G. J. Popek, and G. H. Kuenning, “Saving portable computer battery power through remote process execution,” Mobile Comput. Commun. Rev., vol. 2, no. 1, pp. 19–26, 1998. ",
+            "[12] G. Huertacanepa and D. Lee, “An adaptable application offloading scheme based on application behavior,” in Proc. 22nd Int. Conf. Adv. Inf. Netw. Appl.–Workshops, 2008, pp. 387–392. ",
+            "[13] C. Xian, Y. Lu, and Z. Li, “Adaptive computation offloading for energy conservation on battery-powered systems,” in Proc. IEEE ICDCS, 2007, vol. 2, pp. 1–8. ",
+            "[14] D. Huang, P. Wang, and D. Niyato, “A dynamic offloading algorithm for mobile computing,” IEEE Trans. Wireless Commun., vol. 11, no. 6, pp. 1991–1995, Jun. 2012. ",
+            "[15] Y. Wen, W. Zhang, and H. Luo, “Energy-optimal mobile application execution: Taming resource-poor mobile devices with cloud clones,” in Proc. IEEE INFOCOM, 2012, pp. 2716–2720. ",
+            "[16] H. Wu, D. Huang, and S. Bouzefrane, “Making offloading decisions resistant to network unavailability for mobile cloud collaboration,” in Proc. IEEE Collaboratecom, 2013, pp. 168–177. ",
+            "[17] X. Chen, “Decentralized computation offloading game for mobile cloud computing,” IEEE Trans. Parallel Distrib. Syst., vol. 26, no. 4, pp. 974–983, Apr. 2014. ",
+            "[18] S. Wu, Y. Tseng, C. Lin, and J. Sheu, “A multi-channel MAC protocol with power control for multi-hop mobile ad hoc networks,” Comput. J., vol. 45, no. 1, pp. 101–110, 2002. ",
+            "[19] G. Iosifidis, L. Gao, J. Huang, and L. Tassiulas, “An iterative double auction mechanism for mobile data offloading,” in Proc. IEEE WiOpt, 2013, pp. 154–161. ",
+            "[20] D. López-Pérez, X. Chu, A. V. Vasilakos, and H. Claussen, “On distributed and coordinated resource allocation for interference mitigation in self-organizing LTE networks,” IEEE/ACM Trans. Netw., vol. 21, no. 4, pp. 1145–1158, Aug. 2013. ",
+            "[21] T. S. Rappaport, Wireless Communications: Principles and Practice. Upper Saddle River, NJ, USA: Prentice-Hall, 1996. ",
+            "[22] M. Xiao, N. B. Shroff, and E. K. Chong, “A utility-based power-control scheme in wireless cellular systems,” IEEE/ACM Trans. Netw., vol. 11, no. 2, pp. 210–221, Apr. 2003. ",
+            "[23] M. Chiang, P. Hande, T. Lan, and C. W. Tan, “Power control in wireless cellular networks,” Found. Trends Netw., vol. 2, no. 4, pp. 381–533, 2008. ",
+            "[24] L. Yang et al., “A framework for partitioning and execution of data stream applications in mobile cloud computing,” Perform. Eval. Rev., vol. 40, no. 4, pp. 23–32, 2013. ",
+            "[25] J. Wallenius et al., “Multiple criteria decision making, multiattribute utility theory: Recent accomplishments and what lies ahead,” Manage. Sci., vol. 54, no. 7, pp. 1336–1349, 2008. ",
+            "[26] W. Hu and G. Cao, “Quality-aware traffic offloading in wireless networks,” in Proc. ACM Mobihoc, 2014, pp. 277–286. ",
+            "[27] K.-H. Loh, B. Golden, and E. Wasil, “Solving the maximum cardinality bin packing problem with a weight annealing-based algorithm,” in Operations Research and Cyber-Infrastructure. New York, NY, USA: Springer, 2009. ",
+            "[28] D. Monderer and L. S. Shapley, “Potential games,” Games Econ. Behav., vol. 14, no. 1, pp. 124–143, 1996. ",
+            "[29] T. Innovations, “LTE in a nutshell,” White Paper, 2010. ",
+            "[30] S. Dey, Y. Liu, S. Wang, and Y. Lu, “Addressing response time of cloud-based mobile applications,” in Proc. 1st Int. Workshop Mobile Cloud Comput. Netw., 2013, pp. 3–10. ",
+            "[31] T. Roughgarden, Selfish Routing and the Price of Anarchy. Cambridge, MA, USA: MIT Press, 2005. ",
+            "[32] J. G. Andrews et al., “What will 5G be?,” IEEE J. Sel. Areas Commun., vol. 32, no. 6, pp. 1065–1082, Jun. 2014. ",
+            "[33] P. Bahl, R. Chandra, T. Moscibroda, R. Murty, and M. Welsh, “White space networking with Wi-Fi like connectivity,” Comput. Commun. Rev., vol. 39, no. 4, pp. 27–38, 2009. ",
+            "[34] T. Q. Quek, G. de la Roche, I. Güvenç, and M. Kountouris, Small Cell Networks: Deployment, PHY Techniques, and Resource Management. Cambridge, U.K.: Cambridge Univ. Press, 2013. ",
+            "[35] R. Y. Rubinstein and D. P. Kroese, The Cross-Entropy Method: A Unified Approach to Combinatorial Optimization, Monte-Carlo Simulation and Machine Learning. New York, NY, USA: Springer, 2004. "
+        ],
+        "bbox": [
+            77,
+            78,
+            500,
+            918
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/8a1bffa4c9d460159ac29fb3eebdbb329a5023971382b9a9ea7d5e49b4e4440b.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            82,
+            635,
+            198
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Xu Chen received the Ph.D. degree in information engineering from the Chinese University of Hong Kong (Hong Kong, China) in 2012, and worked as a Postdoctoral Research Associate at Arizona State University, Tempe, USA from 2012 to 2014. He is currently a Humboldt Scholar Fellow at Institute of Computer Science of University of Göttingen, Germany. He serves as an Associate Editor of EURASIP Journal on Wireless Communications and Networking, the guest editor of International Journal of Big Data Intelligence, the special track ",
+        "bbox": [
+            648,
+            81,
+            940,
+            207
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "co-chair of International Symposium on Visual Computing (ISCV'15), the publicity co-chair of International Conference on Network Games, Control and Optimization (NETGCOOP'14), and TPC members for many conferences including MOBIHOC, GLOBECOM, ICC, and WCNC. He is also the recipient of the Honorable Mention Award (first runner-up of best paper award) in 2010 IEEE international conference on Intelligence and Security Informatics (ISI), the Best Paper Runner-up Award of 2014 IEEE International Conference on Computer Communications (INFOCOM), and 2014 Hong Kong Young Scientist Award Runner-up. ",
+        "bbox": [
+            506,
+            207,
+            940,
+            311
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/b5604c491eb28868f03536bc6ab5ce41de1d1d97644e066d2f0f25db7254d01c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a young man with short dark hair wearing a collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            348,
+            635,
+            466
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Lei Jiao received the B.Sc. and M.Sc. degrees from Northwestern Polytechnical University, Xi'an, China, in 2007 and 2010, respectively, and the Ph.D. degree from University of Göttingen, Göttingen, Germany, in 2014, all in computer science. He is now a researcher with Bell Labs, Dublin, Ireland. Prior to Ph.D. study, he was a researcher with IBM Research, Beijing, China. His research interests span networking and distributed computing, with a recent focus on performance modeling, analysis, optimization, and evaluation. ",
+        "bbox": [
+            648,
+            347,
+            940,
+            474
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/487261a2e7b40df48ebb4c410dfa9c0d1ffb7c63ba434c8a97cb4cf8caddd622.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a young man in a collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            510,
+            635,
+            629
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Wenzhong Li received his B.S. and Ph.D. degree from Nanjing University, China, both in computer science. He was an Alexander von Humboldt Scholar Fellow in University of Göttingen, Germany. He is now an Associate Professor in the Department of Computer Science, Nanjing University. Dr. Li's research interests include wireless networks, pervasive computing, mobile cloud computing, and social networks. He has published over 40 peer-review papers at international conferences and journals, which include INFOCOM, ICDCS, IWQoS, ICPP, ",
+        "bbox": [
+            648,
+            510,
+            940,
+            637
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "IEEE TRANSACTIONS ON PARALLEL AND DISTRIBUTED SYSTEMS, IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, etc. He is a member of IEEE, ACM, and China Computer Federation (CCF). He was also the winner of the Best Paper Award of ICC 2009. ",
+        "bbox": [
+            506,
+            637,
+            940,
+            683
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/d3f040949954475a6b9edeaa6e009cfeb036588ad119348aa04a09eb0e7ddb73.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a smiling man wearing glasses and a collared shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            721,
+            635,
+            837
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Xiaoming Fu received the Ph.D. degree from Tsinghua University, Beijing, China. He was a research staff at the Technical University Berlin until joining the University of Göttingen, Germany in 2002, where he has been a Professor in computer science and heading the Computer Networks Group since 2007. His research interests include network architectures, protocols, and applications. He is currently an Editorial Board member of IEEE Communications Magazine, IEEE TRANSACTIONS ON NETWORK AND SERVICE MANAGEMENT, Elsevier ",
+        "bbox": [
+            648,
+            719,
+            940,
+            846
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Computer Networks, and Computer Communications, and has published more than 100 papers in journals and international conference proceedings. He is the coordinator of EU FP7, GreenICN, and MobileCloud projects, and received ACM ICN 2014 Best Paper Award, IEEE LANMAN 2013 Best Paper Award and the 2005 University of Göttingen Foundation Award for Exceptional Publications by Young Scholars. He is a senior member of the IEEE. ",
+        "bbox": [
+            506,
+            846,
+            940,
+            915
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "2808 ",
+        "bbox": [
+            64,
+            41,
+            92,
+            51
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "IEEE/ACM TRANSACTIONS ON NETWORKING, VOL. 24, NO. 5, OCTOBER 2016 ",
+        "bbox": [
+            513,
+            40,
+            940,
+            51
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:03:22 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            69,
+            961,
+            923,
+            975
+        ],
+        "page_idx": 13
+    }
+]
