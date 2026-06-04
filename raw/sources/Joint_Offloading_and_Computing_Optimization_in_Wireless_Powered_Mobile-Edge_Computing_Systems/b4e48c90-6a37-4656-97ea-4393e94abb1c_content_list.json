@@ -1,0 +1,3478 @@
+[
+    {
+        "type": "text",
+        "text": "Joint Offloading and Computing Optimization in Wireless Powered Mobile-Edge Computing Systems ",
+        "text_level": 1,
+        "bbox": [
+            78,
+            71,
+            919,
+            140
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Feng Wang , Member, IEEE, Jie Xu , Member, IEEE, Xin Wang, Senior Member, IEEE, and Shuguang Cui, Fellow, IEEE ",
+        "bbox": [
+            158,
+            152,
+            836,
+            188
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract— Mobile-edge computing (MEC) and wireless power transfer (WPT) have been recognized as promising techniques in the Internet of Things era to provide massive low-power wireless devices with enhanced computation capability and sustainable energy supply. In this paper, we propose a unified MEC-WPT design by considering a wireless powered multiuser MEC system, where a multiantenna access point (AP) (integrated with an MEC server) broadcasts wireless power to charge multiple users and each user node relies on the harvested energy to execute computation tasks. With MEC, these users can execute their respective tasks locally by themselves or offload all or part of them to the AP based on a time-division multiple access protocol. Building on the proposed model, we develop an innovative framework to improve the MEC performance, by jointly optimizing the energy transmit beamforming at the AP, the central processing unit frequencies and the numbers of offloaded bits at the users, as well as the time allocation among users. Under this framework, we address a practical scenario where latencylimited computation is required. In this case, we develop an optimal resource allocation scheme that minimizes the AP’s total energy consumption subject to the users’ individual computation latency constraints. Leveraging the state-of-the-art optimization techniques, we derive the optimal solution in a semiclosed form. Numerical results demonstrate the merits of the proposed design over alternative benchmark schemes. ",
+        "bbox": [
+            73,
+            224,
+            491,
+            540
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms— Mobile-edge computing, wireless power transfer, computation offloading, energy beamforming, convex optimization. ",
+        "bbox": [
+            73,
+            546,
+            491,
+            585
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Manuscript received May 26, 2017; revised October 16, 2017; accepted December 12, 2017. Date of publication December 22, 2017; date of current version March 8, 2018. This work was supported in part by the National Key Research and Development Program of China under Grant 2017YFB0403402, in part by the National Natural Science Foundation of China under Grant 61671154, in part by DoD under Grant HDTRA1-13-1-0029, in part by NSFC under Grant 61328102/61629101, in part by the Shenzhen Fundamental Research Fund under Grant KQTD2015033114415450, and in part by NSF under Grant DMS-1622433, Grant AST-1547436, Grant ECCS-1508051/ 1659025, and Grant CNS-1343155. This paper was presented in part at the IEEE International Conference on Communications, Paris, France, May 21–25, 2017 [1]. The associate editor coordinating the review of this paper and approving it for publication was T. Melodia. (Corresponding author: Jie Xu.) ",
+        "bbox": [
+            73,
+            598,
+            491,
+            758
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "F. Wang and J. Xu are with the School of Information Engineering, Guangdong University of Technology, Guangzhou 510006, China (e-mail: fengwang13@gdut.edu.cn; jiexu@gdut.edu.cn). ",
+        "bbox": [
+            73,
+            757,
+            488,
+            792
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "X. Wang is with the Key Laboratory for Information Science of Electromagnetic Waves (MoE), Department of Communication Science and Engineering, Shanghai Institute for Advanced Communication and Data Science, Fudan University, Shanghai 200433, China (e-mail: xwang11@fudan.edu.cn). ",
+        "bbox": [
+            73,
+            791,
+            488,
+            837
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "S. Cui is with the Department of Electrical and Computer Engineering, University of California, Davis, CA 95616 USA, and also with the Shenzhen Research Institute of Big Data, Shenzhen 518172, China (e-mail: sgcui@ucdavis.edu). ",
+        "bbox": [
+            73,
+            837,
+            488,
+            882
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org. ",
+        "bbox": [
+            73,
+            882,
+            488,
+            904
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TWC.2017.2785305 ",
+        "bbox": [
+            86,
+            904,
+            377,
+            916
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            645,
+            223,
+            779,
+            237
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "HE recent advancement of Internet of Things (IoT) has motivated various new applications (e.g., autonomous driving, virtual reality, augmented reality, and tele-surgery) to provide real-time machine-to-machine and machine-to-human interactions [2]. These emerging latency-sensitive applications critically rely on the real-time communication and computation of massive wireless devices. For example, smart wireless sensors in IoT networks may need to perceive the physical environment and then use the built-in computation resources to preprocess the sensed data in real time before sending it to the access point (AP) [2]. As extensive existing works focus on improving their communication performance, how to provide these devices with enhanced computation capability is a crucial yet challenging task to be tackled, especially when they are of small size and low power. To resolve this issue, mobile-edge computing (MEC) has emerged as a promising technique by providing cloud-like computing at the edge of mobile networks via integrated MEC servers at wireless APs and base stations (BSs) [3], [4]. Leveraging MEC, resourcelimited wireless devices can offload their computation tasks to APs/BSs; then the integrated MEC servers can compute these tasks remotely. In general, the computation offloading can be implemented in two ways, namely binary and partial offloading [3]. In the binary offloading case, the computation task is not partitionable and should be offloaded as a whole. In the partial offloading case, the task can be partitioned into two parts, and only one of them is offloaded. The MEC technique facilitates the real-time implementation of computationextensive tasks at massive low-power devices, and thus has attracted growing research interests in both academia and industry [3]–[7]. ",
+        "bbox": [
+            501,
+            253,
+            921,
+            722
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "On the other hand, how to provide sustainable and costeffective energy supply to massive computation-heavy devices is another challenge facing IoT. Radio-frequency (RF) signal based wireless power transfer (WPT) provides a viable solution by deploying dedicated energy transmitters to broadcast energy wirelessly [18]. Recently, emerging wireless powered communication networks (WPCNs) and simultaneous wireless information and power transfer (SWIPT) paradigms have been proposed to achieve ubiquitous wireless communications in a self-sustainable way [12]–[15], where WPT and wireless communications are combined into a joint design. In order to improve the WPT efficiency from the energy transmitter to one or more energy receivers, transmit energy beamforming has been proposed as a promising solution by deploying multiple antennas at energy transmitters [9]. By properly adjusting the transmit beamforming vectors, energy transmitters can concentrate the radiative energy towards the intended receivers for efficient WPT. Motivated by these approaches, it is expected that the transmit energy beamforming-enabled WPT can also play an important role in facilitating selfsustainable computing for a large number of IoT devices. ",
+        "bbox": [
+            501,
+            722,
+            921,
+            917
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "1784 ",
+        "bbox": [
+            78,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 17, NO. 3, MARCH 2018 ",
+        "bbox": [
+            452,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "1536-1276 © 2017 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            199,
+            922,
+            795,
+            935
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See http://www.ieee.org/publications\\_standards/publications/rights/index.html for more information. ",
+        "bbox": [
+            233,
+            935,
+            764,
+            946
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            910,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            71,
+            491,
+            191
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To explore benefits of both MEC and WPT in ubiquitous computing, this paper develops a joint MEC-WPT design by considering a wireless powered multiuser MEC system that consists of a multi-antenna AP and multiple singleantenna users. The AP employs energy transmit beamforming to simultaneously charge the users, and each user relies on its harvested energy to execute the respective computation task. Suppose that partial offloading is allowed such that each user can arbitrarily partition the computation task into two independent parts for local computing and offloading, respectively. Furthermore, we assume that the downlink WPT and the uplink wireless communication (for computation offloading) are operated simultaneously over orthogonal frequency bands.1 In addition, a time division multiple access (TDMA) protocol is employed to coordinate computation offloading, where different users offload their respective tasks to the AP over orthogonal time slots. The main results of this paper are summarized as follows. ",
+        "bbox": [
+            73,
+            191,
+            491,
+            464
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• To improve the performance of such a wireless powered multiuser MEC system, we develop an innovative design framework by jointly optimizing the energy transmit beamforming at the AP, the central processing unit (CPU) frequencies2 and the numbers of offloaded bits at the users, as well as the offloading time allocation among users. Note that the number of offloaded bits at each user corresponds to the multiplication of the offloading rate and allocated offloading time in this block. ",
+            "• Targeting an energy-efficient wireless-powered MEC design, we minimize the AP’s total energy consumption subject to the users’ individual computation latency constraints. Leveraging the state-of-the-art optimization techniques, we obtain the optimal solution in a semiclosed form. It is revealed that at the optimal solution, the number of locally computed bits at each user should be strictly positive; i.e., it is always beneficial for each user to leave certain bits for local computing. It is also shown that the optimal offloading rate (and equivalent transmit power) at each user critically depends on the channel power gain and the circuit power. ",
+            "• Extensive numerical results are provided to gauge the performance of the proposed designs with joint WPT, local computing, and offloading (i.e., task partition per "
+        ],
+        "bbox": [
+            89,
+            465,
+            491,
+            828
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "user and offloading time allocation among the users) optimization, over benchmark schemes without such a joint consideration. It is shown that the proposed design can significantly reduce the energy consumption of the wireless powered MEC systems. ",
+        "bbox": [
+            535,
+            71,
+            921,
+            148
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. Related Works ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            171,
+            625,
+            184
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Transmit energy beamforming enabled WPT has been extensively studied in the literature (see, e.g., [9]–[24] and references therein). By considering a linear energy harvesting (EH) model, various prior works have investigated the optimal design of energy beamforming under different setups with SWIPT, e.g., in two-user multi-input multi-output (MIMO) systems [9], secrecy communications systems [10], multi-input single-output (MISO) interference channels [11], and multiuser MISO downlink channels [14]–[16]. Furthermore, some recent works investigated the transmit power allocation [23] and the transmit waveform optimization [24] for WPT by taking into account the nonlinear nature of the rectifier in EH [20], [21]. In addition, the benefit of energy beamforming crucially relies on the channel state information (CSI) known at the transmitter. The reverse-link channel training [17] and the energy measurement and feedback methods [18], [19] were proposed in WPT systems for the energy transmitter to practically learn the CSI to users. Furthermore, Lee and Zhang [22] developed a distributed energy beamforming system for multiple energy transmitters to charge multiple energy receivers simultaneously, with the help of the energy measurement and feedback. ",
+        "bbox": [
+            501,
+            191,
+            921,
+            522
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "On the other hand, several existing works [25]–[33] investigated the energy-efficient multiuser MEC design, where each user is powered by fixed energy sources such as battery, and the objective is to minimize the energy consumption at the users via joint computing and offloading optimization at the demand side. For example, Liu et al. [25] provided an overview on the applications and challenges of computation offloading. Liu et al. [26] and Huang et al. [27] investigated the dynamic offloading for MEC systems based on the techniques of Markov decision process and Lyapunov optimization, respectively. Munoz et al. [28] and Wang et al. [29] considered the joint computation and communication resource allocation in single-user MEC systems, and such designs were extended to multiuser MEC systems in [30]–[33]. Different from these prior works that studied WPT and MEC separately, this paper pursues a joint MEC-WPT design in a wireless powered multiuser MEC system, by jointly optimizing the WPT supply at the AP, as well as the local computing and offloading demands at the users. ",
+        "bbox": [
+            501,
+            523,
+            921,
+            810
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "It is worth noting that a prior work [34] considered the wireless powered single-user MEC system with binary offloading, where the user aims to maximize the probability of successful computation, by deciding whether a task should be fully offloaded or not, subject to the computation latency constraint. By contrast, this paper considers a more general case with more than one user, and allows for more flexible partial offloading to improve the system performance in terms of the energy efficiency (i.e., minimizing the total energy consumption at the AP including the radiated energy for WPT and the energy for computing the offloaded tasks). ",
+        "bbox": [
+            501,
+            811,
+            921,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: JOINT OFFLOADING AND COMPUTING OPTIMIZATION ",
+        "bbox": [
+            76,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "1785 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_footnote",
+        "text": "1The wireless energy harvesting in the downlink and the information transmission (or offloading) in the uplink can be performed simultaneously over orthogonal frequency bands in one single antenna with a duplexer, as commonly used in conventional frequency-division-duplexing (FDD) wireless communication transceivers. ",
+        "bbox": [
+            73,
+            840,
+            488,
+            898
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_footnote",
+        "text": "2The term CPU generally refers to the processing unit and control unit at each user that takes charge of the local computing of computation tasks. The CPU frequency, i.e., the frequency of the CPU’s clock pulses, determines the rate at which a CPU executes instructions. ",
+        "bbox": [
+            73,
+            898,
+            491,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            910,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/246e3aa6d948903e4b3333259237c876c9421eb9269bd7f07b0e461c40e55c96.jpg",
+        "image_caption": [
+            "Fig. 1. A wireless powered multiuser MEC system with WPT in the downlink and computation offloading in the uplink. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"AP with an MEC server integrated\"] -->|h_i, g_i| B[\"User i\"]\n    B --> C[\"User K\"]\n    C --> D[\"User 1\"]\n    D --> E[\"IoT sensor\"]\n    E --> F[\"Information transceiver\"]\n    F --> G[\"Offloading\"]\n    G --> H[\"Energy\"]\n    H --> I[\"Rechargeable battery\"]\n    I --> J[\"Local computing\"]\n    J --> K[\"Task\"]\n    K --> L[\"Input bits\"]\n    B --> M[\"RF signal\"]\n    M --> N[\"Duplexer\"]\n    N --> O[\"Rectifier\"]\n    O --> P[\"DC signal\"]\n    P --> Q[\"Information transceiver\"]\n    Q --> R[\"Offloading\"]\n    R --> S[\"Energy\"]\n    S --> T[\"Rechargeable battery\"]\n    T --> U[\"Local computing\"]\n    U --> V[\"Task\"]\n    V --> W[\"Output bits\"]\n    style A fill:#f9f,stroke:#333\n    style B fill:#ccf,stroke:#333\n    style C fill:#cfc,stroke:#333\n    style D fill:#fcc,stroke:#333\n    style E fill:#cff,stroke:#333\n    style F fill:#ffc,stroke:#333\n    style G fill:#ffc,stroke:#333\n    style H fill:#ffc,stroke:#333\n    style I fill:#ffc,stroke:#333\n    style J fill:#ffc,stroke:#333\n    style K fill:#ffc,stroke:#333\n    style L fill:#ffc,stroke:#333\n    style M fill:#ffc,stroke:#333\n    style N fill:#ffc,stroke:#333\n    style O fill:#ffc,stroke:#333\n    style P fill:#ffc,stroke:#333\n    style Q fill:#ffc,stroke:#333\n    style R fill:#ffc,stroke:#333\n    style S fill:#ffc,stroke:#333\n    style T fill:#ffc,stroke:#333\n    style U fill:#ffc,stroke:#333\n    style V fill:#ffc,stroke:#333\n    style W fill:#ffc,stroke:#333\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            81,
+            71,
+            488,
+            270
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            332,
+            491,
+            363
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The remainder of the paper is organized as follows. Section II presents the system model. Section III formulates the computation latency constrained energy consumption minimization problem, and develops an efficient algorithm to obtain a well-structured optimal solution. Section IV provides numerical results to demonstrate the merits of the proposed design. Finally, Section V concludes this paper. ",
+        "bbox": [
+            73,
+            363,
+            491,
+            468
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Notations: Boldface letters refer to vectors (lower case) or matrices (upper case). For a square matrix S, tr(S) denotes its trace, while $s ~ \\succeq ~ 0$ means that S is positive semidefinite. For an arbitrary-size matrix M, rank(M), $M ^ { \\dag } .$ , and $M ^ { H }$ denote its rank, transpose, and conjugate transpose, respectively. I and 0 denote an identity matrix and an all-zero vector/matrix, respectively, with appropriate dimensions. $\\mathbb { C } ^ { x \\times y }$ denotes the space of $x \\times y$ complex matrices; R denotes the set of real numbers. E[·] denotes the statistical expectation. \u0003x\u0003 denotes the Euclidean norm of a vector x, |z| denotes the magnitude of a complex number z, and $[ x ] ^ { + } \\triangleq \\operatorname* { m a x } ( x , 0 )$ . ",
+        "bbox": [
+            73,
+            469,
+            491,
+            636
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "II. SYSTEM MODEL ",
+        "text_level": 1,
+        "bbox": [
+            210,
+            654,
+            356,
+            667
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "As shown in Fig. 1, we consider a wireless powered multiuser MEC system consisting of an N-antenna AP (integrated with an MEC server) and a set ${ \\mathcal { K } } \\triangleq \\{ 1 , \\ldots , K \\}$ of singleantenna users. In this system, the AP employs RF signal based energy transmit beamforming to charge the K users. Each user $i \\in \\mathcal K$ utilizes the harvested energy to execute its computation task through local computing and offloading. Suppose that the downlink WPT from the AP to the users and the uplink computation offloading are operated simultaneously over orthogonal frequency bands, and the uplink for computation offloading and the downlink for computation result downloading are operated over the same frequency band. Assume a block-based model, and we focus on one particular block with length T . Here, T is chosen to be no larger than the latency of the MEC application and also no larger than the channel coherence time, such that the wireless channels remain unchanged during this block. For simplifying the analysis and better capturing the AP’s transmission energy for computation offloading, we assume that the AP perfectly knows the CSI from/to the K users,3 as well as their computation requirements. In accordance with such information, the AP coordinates the downlink WPT, the computation offloading, and the local computing for the K users. ",
+        "bbox": [
+            73,
+            674,
+            491,
+            948
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            501,
+            71,
+            921,
+            148
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. Energy Transmit Beamforming From AP to Users ",
+        "text_level": 1,
+        "bbox": [
+            503,
+            160,
+            862,
+            175
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Let $s ~ \\in ~ \\mathbb { C } ^ { N \\times 1 }$ denote the energy-bearing transmit signal by the AP, which is assumed to be a random signal with its power spectral density satisfying certain regulations on RF radiation [18]. Let $Q \\triangleq \\mathbb { E } [ s s ^ { H } ] \\succeq \\mathbf { 0 }$ denote the energy transmit covariance matrix and $\\mathbb { E } [ \\| s \\| ^ { 2 } ] = \\operatorname { t r } ( Q )$ the transmit power at the AP. In general, the AP can use multiple energy beams to deliver the wireless energy, i.e., Q can be of any rank. Supposing $r \\ = \\ \\operatorname { r a n k } ( Q ) \\ \\leq \\ N ,$ , then a total of r energy beams can be obtained via the eigenvalue decomposition (EVD) of Q [18]. Let $\\mathbf { \\Psi } _ { { \\pmb { h } } _ { i } } ~ \\in ~ \\mathbb { C } ^ { N \\times 1 }$ denote the channel vector from the AP to user $i \\in \\mathcal K ,$ and define $\\pmb { H } _ { i } \\triangleq \\pmb { h } _ { i } \\pmb { h } _ { i } ^ { H } , \\forall i \\in \\mathcal { K } .$ . Accordingly, the received RF power at each user $i \\in \\mathcal K$ is given by $| h _ { i } ^ { \\ - \\ - } s | ^ { 2 }$ . In order to harvest such energy, each user i first converts the received RF signal into a direct current (DC) signal by a rectifier and then stores the energy of the DC signal in its chargeable battery (cf. Fig. 1). Note that the harvested DC power is generally nonlinear with respect to the received RF power [20], due to the nonlinear devices such as the diodes and diode-connected transistors. Moreover, the nonlinear RF-to-DC conversion greatly depends on the input power level and the transmit waveform. In the literature, there have been a handful of recent works on analytic nonlinear EH models, which characterize such nonlinear relations between the harvested DC power and the input RF power [23] or transmit waveform [24]. However, there still lacks a generic EH model that captures all practical issues [21]. Therefore, for simplicity, we assume that the input RF power is within the linear regime of the rectifier, and consider a linear EH model which has been commonly adopted in the WPT literature [9]–[12], [14]–[22]. Accordingly, the harvested energy amount by user i over this time block is ",
+        "bbox": [
+            501,
+            178,
+            921,
+            647
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {i} = T \\zeta \\mathbb {E} \\left[ \\left| \\boldsymbol {h} _ {i} ^ {H} \\boldsymbol {s} \\right| ^ {2} \\right] = T \\zeta \\mathrm{tr} (\\boldsymbol {Q} \\boldsymbol {H} _ {i}), \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            583,
+            650,
+            921,
+            684
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "where $0 < \\zeta \\leq 1$ denotes the constant EH efficiency per user. The harvested energy $E _ { i }$ is used by user i for both computation offloading and local computing. ",
+        "bbox": [
+            503,
+            686,
+            921,
+            733
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. Energy Consumption at Users for Computation ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            744,
+            846,
+            760
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "For each user $i \\in \\mathcal K ,$ the computation task with $R _ { i } ~ > ~ 0$ computation input bits is partitioned into two parts with $\\ell _ { i } \\geq 0$ and $q _ { i } \\geq 0$ bits, which are offloaded to the MEC server at the AP or locally computed, respectively.4 We assume that such a partition does not incur additional computation input bits, i.e., $R _ { i } = \\ell _ { i } + q _ { i } , \\forall i \\in \\mathcal { K } .$ ",
+        "bbox": [
+            503,
+            763,
+            921,
+            854
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3When the CSI at the AP is not perfect (e.g., subject to some CSI estimation errors), the WPT and MEC performance may degrade. In this case, robust optimization techniques (see, e.g., [10], [15]) may be applied to obtain the energy beamforming vectors. However, the imperfect CSI scenario is out of scope of this paper. ",
+        "bbox": [
+            503,
+            862,
+            921,
+            920
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "4Each input bit can be treated as the smallest task unit, which includes the needed program codes and input parameters. ",
+        "bbox": [
+            504,
+            921,
+            921,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "1786 ",
+        "bbox": [
+            78,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 17, NO. 3, MARCH 2018 ",
+        "bbox": [
+            452,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            908,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "table",
+        "img_path": "images/e78421213c378b4868e15dc9dd2ce3f27684b1d7ce29b05761dd6d32dfcddf42.jpg",
+        "table_caption": [
+            "Fig. 2. The TDMA protocol for multiuser computation offloading. "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"5\">T</td></tr><tr><td>Offloading from user 1 to the AP</td><td>...</td><td>Offloading from user K to the AP</td><td>Downloading from the AP to user 1</td><td>...</td></tr><tr><td>t1</td><td>tK</td><td>tK+1≈0</td><td>t2K≈0</td><td></td></tr></table>",
+        "bbox": [
+            81,
+            69,
+            486,
+            132
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "1) Computation Offloading From Users to the AP: In order for the K users to offload their respective bits to the AP for computation, we adopt a TDMA protocol without interference as shown in Fig. 2, where the block is divided into 2K time slots each with a length of $t _ { i } , \\forall i \\in \\{ 1 , \\ldots , 2 K \\}$ . In the first K time slots, the K users offload their computation bits to the $\\mathrm { A P }$ one by one. After the MEC server executes the computation tasks on behalf of these users, the AP sends the computation results to the K users in the last K time slots. Due to the sufficient CPU capability at the MEC server, the computation time consumed at the MEC server are relatively small and negligible. Therefore, we assume that the users can download the computation results immediately after the first K offloading time slots. Furthermore, as the AP is usually with high transmit power and the computed results are usually of small size, we ignore the downloading time, i.e., $t _ { i } ~ \\approx ~ 0 .$ , $\\forall i \\in \\{ K + 1 , \\ldots , 2 K \\}$ , and also ignore the energy consumption for transmitting and receiving the computation results in this paper. ",
+        "bbox": [
+            73,
+            186,
+            491,
+            472
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "For computation offloading in time slot $i ,$ let ${ \\pmb g } _ { i } ~ \\in \\mathbb { C } ^ { N \\times 1 }$ denote the uplink channel vector from user i to the AP and $p _ { i }$ the transmit power for offloading. Assume further that the AP employs the maximum ratio combining (MRC) receiver to decode the information. The achievable offloading rate (in bits/sec) for user i is given by ",
+        "bbox": [
+            73,
+            472,
+            491,
+            565
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {i} = B \\log_ {2} \\left(1 + \\frac {p _ {i} \\tilde {g} _ {i}}{\\Gamma \\sigma^ {2}}\\right), \\quad \\forall i \\in \\mathcal {K}, \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            571,
+            490,
+            606
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where B denotes the spectrum bandwidth, $\\tilde { g } _ { i } \\triangleq \\Vert \\pmb { g } _ { i } \\Vert ^ { 2 }$ denotes the effective channel power gain from user i to the $\\mathsf { A P } , \\sigma ^ { 2 }$ is the noise power at the receiver of the AP, and $\\Gamma \\geq 1$ is a constant accounting for the gap from the channel capacity due to a practical coding and modulation scheme. For simplicity, $\\Gamma = 1$ is assumed throughout this paper. As a result, the number of offloaded bits $\\ell _ { i }$ by user i to the AP can be expressed as ",
+        "bbox": [
+            73,
+            614,
+            491,
+            720
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\ell_ {i} = r _ {i} t _ {i}, \\quad \\forall i \\in \\mathcal {K}. \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            207,
+            732,
+            488,
+            748
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Computation offloading incurs energy consumption at both the K users and the AP. Per user $i \\in \\mathcal { K } .$ in addition to the transmit power pi , a constant circuit power $p _ { \\mathrm { c } , i }$ (by the digital-to-analog converter (DAC), filter, etc.) is consumed. The offloading energy consumption at user i is then $E _ { \\mathrm { o f f } , i } =$ the transmit power $( p _ { i } + p _ { \\mathrm { c } , i } ) t _ { i }$ . With simple manipulations based on (2) and (3), $p _ { i }$ can be expressed as $\\begin{array} { r } { p _ { i } = \\frac { 1 } { \\tilde { g } _ { i } } \\beta \\left( \\frac { \\ell _ { i } } { t _ { i } } \\right) } \\end{array}$ where $\\beta ( x ) ~ \\triangleq ~ \\sigma ^ { 2 } ( 2 ^ { \\frac { x } { B } } ~ - ~ 1 )$ is a monotonically increasing and convex function with respect to $x . ^ { 5 }$ Hence, the offloading ",
+        "bbox": [
+            73,
+            758,
+            491,
+            902
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "5Note that to avoid the issue of dividing by zero, we define $\\begin{array} { r } { \\beta \\left( \\frac { \\ell _ { i } } { t _ { i } } \\right) = 0 } \\end{array}$ when either $\\ell _ { i } = 0$ or ti = 0 holds. ",
+        "bbox": [
+            73,
+            916,
+            491,
+            946
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "energy consumption at user i is ",
+        "bbox": [
+            504,
+            71,
+            723,
+            85
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {\\text { offl }, i} = \\frac {t _ {i}}{\\tilde {g} _ {i}} \\beta \\left(\\frac {\\ell_ {i}}{t _ {i}}\\right) + p _ {c, i} t _ {i}. \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            609,
+            94,
+            921,
+            128
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Remark 1: Note that in practice, in order for the AP to acquire the CSI (to the K users) for the energy beamforming design, each user needs to consume a certain amount of energy (e.g., for CSI feedback), and there generally exists a tradeoff between such energy consumption at the users versus the CSI accuracy at the AP. However, with the technical advancements, the user’s feedback overhead for CSI acquisition could be made very small. Specifically, there are generally three types of CSI acquisition methods in the literature, namely the channel estimation and feedback [8], reverse-link training based on the channel reciprocity [17], and energy measurement and feedback [18], [19]. In the energy measurement and feedback method [18], each user only needs to measure its harvested energy level over each block and send one feedback bit to the AP per block; based on the feedback bits, the AP can sequentially improve the accuracy of CSI estimation; such a one-bit feedback is negligible when compared to the user reverse-link traffic for task offloading. Thus it is practically reasonable to ignore the feedback overhead and energy consumption at each user. ",
+        "bbox": [
+            501,
+            135,
+            921,
+            435
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "As for the AP, the energy is mainly consumed for executing the offloaded computation tasks and transmitting the computation results back to the users [4]. As the AP and its integrated MEC server generally have sufficient communication and computation capacities,6 it can adopt a large transmit power (accordingly high communication rate) and a high constant CPU frequency to minimize the latency. In this case, the $\\mathrm { A P } ^ { * } \\mathrm { s }$ energy consumption is generally proportional to the totally offloaded bits $\\textstyle \\sum _ { i = 1 } ^ { K } \\ell _ { i }$ from the K users. Therefore, we adopt a simplified linear energy consumption model for the computation at the AP as ",
+        "bbox": [
+            501,
+            436,
+            921,
+            603
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {\\mathrm{MEC}} = \\alpha \\sum_ {i = 1} ^ {K} \\ell_ {i}, \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            645,
+            612,
+            921,
+            655
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where α denotes the energy consumption per offloaded bit at the AP. In practice, α depends on the transceiver structure of the AP, the chip structure of the MEC server, and its operated CPU frequencies, etc. [4]. ",
+        "bbox": [
+            503,
+            662,
+            921,
+            722
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "2) Local Computing at Users: Consider next the local computing for executing $q _ { i }$ input bits at each user $i \\in \\mathcal K$ . Let $C _ { i }$ denote the number of CPU cycles required for computing one input bit at user i . Then the total number of CPU cycles required for the $q _ { i }$ bits is $C _ { i } q _ { i }$ . By applying dynamic voltage and frequency scaling (DVFS) techniques [3], [4], user i can control the energy consumption for local task execution by adjusting the CPU frequency $f _ { i , n }$ for each cycle n, where $f _ { i , n } ~ \\in ~ ( 0 , f _ { i } ^ { \\operatorname* { m a x } } ] , \\ n ~ \\in \\{ 1 , . . . , C _ { i } q _ { i } \\}$ , and $f _ { i } ^ { \\mathrm { m a x } }$ denotes user ",
+        "bbox": [
+            503,
+            723,
+            921,
+            862
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "6In the case when the MEC server’s computing capacity is limited, the computation offloading protocol needs to be redesigned, by taking into account the computation time at the MEC server as well as the computation resource sharing among these different users. Under such a scenario, how to jointly design the WPT and MEC optimally is out of the scope of this paper. It is an interesting direction to pursue in the future work. ",
+        "bbox": [
+            503,
+            875,
+            921,
+            946
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: JOINT OFFLOADING AND COMPUTING OPTIMIZATION ",
+        "bbox": [
+            76,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "1787 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            908,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "i’s maximum CPU frequency.7 With $f _ { i , n } \\mathrm { { ' s } } ,$ the execution time for local computing at user i is \tCi qin=1 1fi,n $\\textstyle \\sum _ { n = 1 } ^ { C _ { i } q _ { i } } { \\frac { 1 } { f _ { i , n } } }$ . As each user $i \\in \\mathcal K$ needs to accomplish the task execution within a block, the execution time cannot exceed the block length T , i.e., ",
+        "bbox": [
+            73,
+            69,
+            491,
+            133
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n = 1} ^ {C _ {i} q _ {i}} \\frac {1}{f _ {i , n}} \\leq T, \\quad \\forall i \\in \\mathcal {K}. \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            192,
+            138,
+            491,
+            181
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Under the assumption of a low CPU voltage that normally holds for low-power devices, the consumed energy for local computing at user $i \\in \\mathcal K$ could be expressed as [35] ",
+        "bbox": [
+            73,
+            186,
+            491,
+            232
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {\\mathrm{loc}, i} = \\sum_ {n = 1} ^ {C _ {i} q _ {i}} \\kappa_ {i} f _ {i, n} ^ {2}, \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            238,
+            491,
+            281
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\kappa _ { i }$ is the effective capacitance coefficient that depends on the chip architecture at user i . ",
+        "bbox": [
+            73,
+            286,
+            491,
+            316
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "C. Energy Harvesting Constraints at Users ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            335,
+            370,
+            349
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "As each user $i \\in \\mathcal K$ is powered by the WPT from the AP to achieve self-sustainable operation, the so-called energy harvesting constraint needs to be imposed such that the totally consumed energy at the user cannot exceed the harvested energy $E _ { i }$ in (1) per block. By combining the computation offloading energy in (4) and the local computation energy in $( 7 )$ , the total energy consumed by user i within the block is $E _ { \\mathrm { o f f } , i } + E _ { \\mathrm { l o c } , i }$ . Therefore, we must have per user $i \\in \\mathcal { K } ^ { 8 }$ : ",
+        "bbox": [
+            73,
+            354,
+            491,
+            474
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {\\text { loc }, i} + E _ {\\text { offl }, i} \\leq E _ {i}. \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            205,
+            483,
+            490,
+            500
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "III. COMPUTATION LATENCY CONSTRAINED ENERGY MINIMIZATION ",
+        "text_level": 1,
+        "bbox": [
+            124,
+            513,
+            442,
+            542
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "A. Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            549,
+            243,
+            561
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Under the above setup, we pursue an energy-efficient MEC-WPT design by considering a computation latency constrained energy minimization problem. Suppose that each user $i \\in \\mathcal K$ has a computation task with $R _ { i } ~ > ~ 0$ input bits, which needs to be successfully executed before the end of the block. In this case, the sum of the number of offloaded bits $\\ell _ { i }$ and the number of locally computed bits $q _ { i }$ should be equal to $R _ { i }$ , i.e., we have $q _ { i } = R _ { i } - \\ell _ { i } , \\forall i \\in \\mathcal { K } .$ ",
+        "bbox": [
+            73,
+            568,
+            491,
+            686
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "We aim to minimize the energy consumption at the AP (including the energy consumption $\\textstyle \\sum _ { i = 1 } ^ { K } a \\ell _ { i }$ in (5) for computation and $T \\mathrm { t r } ( Q )$ for WPT) while ensuring the successful execution of the K users’ computation tasks per time block. To this end, we jointly optimize the energy transmit covariance matrix Q at the AP, the local CPU frequencies $\\{ f _ { i , 1 } , \\ldots , f _ { i , C _ { i } ( R _ { i } - \\ell _ { i } ) } \\}$ , and the numbers of offloaded bits ",
+        "bbox": [
+            73,
+            688,
+            491,
+            796
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "7Note that in practice, each CPU frequency $f _ { i , n }$ can only be an integer chosen from a finite set. However, such an integer constraint may make the design problem a mixed-integer one that is NP-hard in general. To avoid this, we model $f _ { i , n }$ as continuous variables to provide a performance upper-bound for the practical cases with discrete CPU frequencies. ",
+        "bbox": [
+            73,
+            806,
+            491,
+            864
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "8Note that in (8) we consider that the totally consumed energy should not exceed the totally harvested one, instead of the “energy causality” in conventional energy harvesting communications (see, e.g., [13]). This consideration implies that at the beginning of the block each user has sufficiently large energy storage, such that the stored energy will never be used up at any time within each block and the energy storage level will be refilled via energy harvesting by the end of each block. ",
+        "bbox": [
+            73,
+            864,
+            491,
+            945
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "$\\ell _ { i } { ' } s$ at the users, as well as the time allocation $t _ { i } \\mathbf { \\ ' } _ { \\mathbf { S } }$ among different users. Let $t \\triangleq [ t _ { 1 } , \\dots , t _ { K } ] ^ { \\dagger } , \\ell \\triangleq [ \\ell _ { 1 } , \\dots , \\ell _ { K } ] ^ { \\dagger }$ , and $\\pmb { f } \\triangleq [ f _ { 1 , 1 } , \\ldots , f _ { K , C _ { K } ( R _ { K } - \\ell _ { K } ) } ] ^ { \\dagger }$ . Mathematically, the latencyconstrained energy minimization problem is formulated as ",
+        "bbox": [
+            503,
+            70,
+            921,
+            132
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(\\mathcal {P} 1): \\quad \\min _ {\\boldsymbol {Q} \\succeq \\boldsymbol {0}, t, \\ell , f} \\quad T \\operatorname{tr} (\\boldsymbol {Q}) + \\sum_ {i = 1} ^ {K} \\alpha \\ell_ {i} \\tag {9a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            514,
+            138,
+            921,
+            181
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad \\sum_ {n = 1} ^ {C _ {i} (R _ {i} - \\ell_ {i})} \\frac {1}{f _ {i , n}} \\leq T, \\forall i \\in \\mathcal {K} \\tag {9b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            583,
+            184,
+            919,
+            226
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {n = 1} ^ {C _ {i} (R _ {i} - \\ell_ {i})} \\kappa_ {i} f _ {i, n} ^ {2} + \\frac {t _ {i}}{\\tilde {g} _ {i}} \\beta \\left(\\frac {\\ell_ {i}}{t _ {i}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            229,
+            805,
+            271
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ p _ {c, i} t _ {i} - T \\zeta \\operatorname{tr} (\\boldsymbol {Q} \\boldsymbol {H} _ {i}) \\leq 0, \\quad \\forall i \\in \\mathcal {K} \\tag {9c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            619,
+            273,
+            919,
+            287
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i = 1} ^ {K} t _ {i} \\leq T, \\quad t _ {i} \\geq 0, \\quad 0 \\leq \\ell_ {i} \\leq R _ {i}, \\forall i \\in \\mathcal {K} (9 d)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            622,
+            290,
+            919,
+            330
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq f _ {i, n} \\leq f _ {i} ^ {\\max}, \\forall n, \\forall i \\in \\mathcal {K}. \\tag {9e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            620,
+            333,
+            919,
+            349
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Here, the constraints in (9b) and (9c) represent the K users’ individual local computing latency and energy harvesting constraints, respectively. Note that due to the non-convex nature of (9b) and (9c), problem (P1) is non-convex in the current form. However, we can transform it into a convex form and find the well-structured optimal solution, as will be shown in the next subsection. ",
+        "bbox": [
+            501,
+            359,
+            921,
+            464
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "B. Optimal Solution to Problem (P 1) ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            487,
+            759,
+            503
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this subsection, we provide the optimal solution to the computation latency constrained energy minimization problem (P1). To cope with the non-convex constraints in (9b) and (9c), we first establish the following lemma. ",
+        "bbox": [
+            501,
+            507,
+            919,
+            568
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Lemma 1: Given the number of offloaded bits $\\ell ,$ the optimal solution of the local CPU frequencies $f _ { i , n } \\mathrm { ~ \\bar { ~ } s ~ }$ to problem (P 1) should satisfy ",
+        "bbox": [
+            503,
+            568,
+            919,
+            613
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {i, 1} = \\dots = f _ {i, C _ {i} (R _ {i} - \\ell_ {i})} = C _ {i} (R _ {i} - \\ell_ {i}) / T, \\forall i \\in \\mathcal {K}. \\tag {10}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            527,
+            623,
+            919,
+            640
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Proof: See Appendix A. ",
+        "bbox": [
+            529,
+            648,
+            704,
+            662
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Lemma 1 indicates that at each user $i \\in \\mathcal K ,$ the local CPU frequencies for different CPU cycles are identical at the optimality. Hence, problem (P1) can be equivalently reformulated as ",
+        "bbox": [
+            503,
+            664,
+            921,
+            723
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(\\mathcal {P} 1. 1): \\min _ {\\boldsymbol {Q} \\succeq \\boldsymbol {0}, t, \\ell} T \\operatorname{tr} (\\boldsymbol {Q}) + \\sum_ {i = 1} ^ {K} \\alpha \\ell_ {i} \\tag {11a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            531,
+            729,
+            919,
+            772
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad \\sum_ {i = 1} ^ {K} t _ {i} \\leq T \\tag {11b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            607,
+            773,
+            919,
+            816
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\kappa_ {i} C _ {i} ^ {3} (R _ {i} - \\ell_ {i}) ^ {3}}{T ^ {2}} + \\frac {t _ {i}}{\\tilde {g} _ {i}} \\beta \\left(\\frac {\\ell_ {i}}{t _ {i}}\\right) + p _ {c, i} t _ {i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            640,
+            818,
+            892,
+            853
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- T \\zeta \\operatorname{tr} (\\boldsymbol {Q} \\boldsymbol {H} _ {i}) \\leq 0 \\quad \\forall i \\in \\mathcal {K} \\tag {11c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            643,
+            854,
+            919,
+            869
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n0 \\leq \\ell_ {i} \\leq R _ {i}, t _ {i} \\geq 0, \\forall i \\in \\mathcal {K}. \\tag {11d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            638,
+            872,
+            919,
+            888
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "As $\\beta ( x )$ is convex as a function of $x \\ \\geq \\ 0 .$ , its perspective function $\\begin{array} { r } { \\frac { t _ { i } } { \\tilde { g } _ { i } } \\beta \\left( \\frac { \\ell _ { i } } { t _ { i } } \\right) } \\end{array}$ is jointly convex with respect to $t _ { i } ~ \\geq ~ 0$ and $\\ell _ { i } \\geq \\breve { 0 } \\ [ 3 \\breve { 7 } ]$ . As a result, the energy harvesting constraints in (11c) become convex. Furthermore, since the objective function in (11a) is affine and the other constraints are all convex, problem (P1.1) is convex and can thus be optimally solved by standard convex optimization techniques. Nevertheless, to gain engineering insights, we derive its optimal solution in a semiclosed form by leveraging the Lagrange duality method [37]. ",
+        "bbox": [
+            503,
+            897,
+            921,
+            946
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "1788 ",
+        "bbox": [
+            78,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 17, NO. 3, MARCH 2018 ",
+        "bbox": [
+            452,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            908,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            70,
+            491,
+            161
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Let $\\mu \\geq 0$ and $\\lambda _ { i } \\geq 0$ denote the dual variables associated with the time-allocation constraint in (11b) and the i -th energy harvesting constraint in (11c), $\\forall i \\in { \\mathcal { K } } ,$ respectively. Then the partial Lagrangian of (P 1.1) is expressed as ",
+        "bbox": [
+            73,
+            161,
+            491,
+            223
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\mathcal {L} _ {1} \\left(\\boldsymbol {Q}, t, \\ell , \\lambda , \\mu\\right) \\\\ = T \\operatorname{tr} \\left(\\left(\\boldsymbol {I} - \\sum_ {i = 1} ^ {K} \\zeta \\lambda_ {i} \\boldsymbol {H} _ {i}\\right) \\boldsymbol {Q}\\right) - \\mu T \\\\ + \\sum_ {i = 1} ^ {K} \\left(\\alpha \\ell_ {i} + \\frac {\\lambda_ {i} \\kappa_ {i} C _ {i} ^ {3} (R _ {i} - \\ell_ {i}) ^ {3}}{T ^ {2}} \\right. \\\\ \\left. + \\frac {\\lambda_ {i} t _ {i}}{\\tilde {g} _ {i}} \\beta \\left(\\frac {\\ell_ {i}}{t _ {i}}\\right) + \\lambda_ {i} p _ {c, i} t _ {i} + \\mu t _ {i}\\right), \\tag {12} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            138,
+            243,
+            491,
+            383
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\pmb { \\lambda } \\triangleq [ \\lambda _ { 1 } , \\ldots , \\lambda _ { K } ] ^ { \\dagger }$ . Accordingly, the dual function is given by ",
+        "bbox": [
+            73,
+            401,
+            491,
+            433
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\Phi (\\lambda , \\mu) = \\min _ {Q \\succeq 0, t, \\ell} \\mathcal {L} (Q, t, \\ell , \\lambda , \\mu) \\\\ \\text { s.t. } \\quad 0 \\leq \\ell_ {i} \\leq R _ {i}, \\quad t _ {i} \\geq 0, \\forall i \\in \\mathcal {K}. \\tag {13} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            112,
+            454,
+            490,
+            494
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Consequently, the dual problem of (P1.1) is ",
+        "bbox": [
+            73,
+            515,
+            377,
+            531
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(\\mathcal {D} 1. 1): \\max _ {\\lambda , \\mu} \\Phi (\\lambda , \\mu) \\tag {14a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            140,
+            551,
+            490,
+            575
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad F (\\lambda) \\triangleq I - \\sum_ {i = 1} ^ {K} \\zeta \\lambda_ {i} H _ {i} \\succeq 0 \\tag {14b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            205,
+            579,
+            490,
+            619
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu \\geq 0, \\quad \\lambda_ {i} \\geq 0, \\forall i \\in \\mathcal {K}. \\tag {14c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            236,
+            622,
+            490,
+            637
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Note that the constraint ${ \\cal F } ( \\lambda ) \\succeq 0$ is necessary to ensure the dual function $\\Phi ( \\lambda , \\mu )$ to be bounded from below (as proved in Appendix B). We denote the feasible set of $( \\lambda , \\mu )$ characterized by (14b) and (14c) as S. ",
+        "bbox": [
+            73,
+            657,
+            491,
+            717
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Since problem (P1.1) is convex and satisfies the Slater’s condition, strong duality holds between (P1.1) and its dual problem (D1.1) [37]. As a result, we can solve (P 1.1) by equivalently solving (D1.1). In the following, we first obtain the dual function $\\Phi ( \\lambda , \\mu )$ for any given $( \\lambda , \\mu ) ~ \\in ~ { \\mathcal { S } } ,$ and then find the optimal dual variables λ and $\\mu$ to maximize $\\Phi ( \\lambda , \\mu )$ using the ellipsoid method [38]. For convenience of presentation, let $( Q ^ { * } , t ^ { * } , \\ell ^ { * } )$ denote the optimal solution to problem (13) for given λ and $\\mu , ( Q ^ { \\mathrm { o p t } } , t ^ { \\mathrm { o p t } } , \\ell ^ { \\mathrm { o p t } } )$ denote the optimal primary solution to (P 1.1), and $( \\lambda ^ { \\mathrm { o p t } } , \\mu ^ { \\mathrm { o p t } } )$ ) denote the optimal dual solution to (D1.1). ",
+        "bbox": [
+            73,
+            718,
+            491,
+            883
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "1) Evaluating the Dual Function $\\Phi ( \\lambda , \\mu ) .$ : First, we obtain the dual function $\\Phi ( \\lambda , \\mu )$ in (13) for any given $( \\lambda , \\mu ) \\in { \\mathcal { S } } .$ To this end, problem (13) can be decomposed into $( K + 1 )$ subproblems as follows, one for optimizing Q and the other K for jointly optimizing $t _ { i } \\mathrm { ' s }$ and $\\ell _ { i } { \\mathrm { ' } } \\mathrm { s } .$ . ",
+        "bbox": [
+            73,
+            886,
+            491,
+            946
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            504,
+            70,
+            743,
+            85
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {Q} \\operatorname{tr} (Q F (\\lambda)) \\quad \\text { s.t. } \\quad Q \\succeq 0. \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            516,
+            95,
+            919,
+            119
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\min _ {t _ {i}, \\ell_ {i}} \\alpha \\ell_ {i} + \\frac {\\lambda_ {i} \\kappa_ {i} C _ {i} ^ {3} (R _ {i} - \\ell_ {i}) ^ {3}}{T ^ {2}} + \\frac {\\lambda_ {i} t _ {i}}{\\tilde {g} _ {i}} \\beta \\left(\\frac {\\ell_ {i}}{t _ {i}}\\right) \\\\ + \\lambda_ {i} p _ {c, i} t _ {i} + \\mu t _ {i} \\tag {16a} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            516,
+            121,
+            919,
+            172
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad 0 \\leq \\ell_ {i} \\leq R _ {i}, \\quad t _ {i} \\geq 0, \\tag {16b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            517,
+            176,
+            919,
+            191
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where each subproblem i in (16a) is for the user $i \\in \\mathcal { K } .$ . Under the condition of ${ \\cal F } ( \\lambda ) \\succeq 0 ,$ , it is evident that the optimal value of problem (16a) is zero and its optimal solution $\\ b { Q } ^ { * }$ can be any positive semidefinite matrix in the null space of $F ( \\lambda )$ . Without loss of optimality, we simply set ${ { Q } ^ { * } } = \\mathbf { 0 }$ for the purpose of obtaining the dual function $\\Phi ( \\lambda , \\mu )$ and computing the optimal dual solution.9 Note that ${ { Q } ^ { * } } = \\mathbf { 0 }$ is generally not the optimal primary solution to $( \\mathcal { P } 1 . 1 )$ . As a result, after finding the optimal dual solution $( \\lambda ^ { \\mathrm { o p t } } , \\mu ^ { \\mathrm { o p t } } )$ , we need to use an additional step to retrieve the optimal primary solution of $\\boldsymbol { Q } ^ { \\mathrm { o p t } }$ to (P 1.1), as will be shown in Section IV-C. ",
+        "bbox": [
+            503,
+            200,
+            921,
+            366
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "For the i -th subproblem in (16a), it is convex and satisfies the Slater’s condition. Based on the Karush-Kuhn-Tucker (KKT) conditions [37], one can obtain the optimal solution $( t _ { i } ^ { * } , \\ell _ { i } ^ { * } )$ to (16a) in a semi-closed form, as stated in the following lemma. ",
+        "bbox": [
+            503,
+            367,
+            921,
+            441
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Lemma 2: For any given $( \\lambda , \\mu ) \\in { \\mathcal { S } } ,$ the optimal solution $( t ^ { * } , \\ell _ { i } ^ { * } )$ to problem (16a) can be obtained as follows. ",
+        "bbox": [
+            504,
+            441,
+            919,
+            472
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• If $\\lambda _ { i } = 0 .$ , we have $\\ell _ { i } ^ { * } = 0$ and $t _ { i } ^ { * } = 0 ;$ ; ",
+            "• If $\\lambda _ { i } > 0 .$ , we have "
+        ],
+        "bbox": [
+            519,
+            474,
+            802,
+            505
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\ell_ {i} ^ {*} = \\left[ R _ {i} - \\sqrt {\\frac {T ^ {2}}{3 \\kappa_ {i} C _ {i} ^ {3}} \\left(\\frac {\\alpha}{\\lambda_ {i}} + \\frac {\\sigma^ {2} \\ln 2}{B \\tilde {g} _ {i}} 2 ^ {\\frac {r _ {i} ^ {*}}{B}}\\right)} \\right] ^ {+} \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            575,
+            513,
+            919,
+            556
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {i} ^ {*} = \\ell_ {i} ^ {*} / r _ {i} ^ {*}, \\tag {18}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            578,
+            556,
+            919,
+            574
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { r l r } { r _ { i } ^ { * } } & { { } \\triangleq } & { \\frac { B } { \\ln 2 } \\left( W _ { 0 } \\left( \\frac { \\tilde { g } _ { i } } { \\sigma ^ { 2 } \\ e } \\left( \\frac { \\mu } { \\lambda _ { i } } + p _ { \\mathrm { c } , i } \\right) - \\frac { 1 } { e } \\right) + 1 \\right) } \\end{array}$ denotes the offloading rate of user $i , \\stackrel { \\prime } { W } _ { 0 } ( x )$ is the principal branch of the Lambert W function defined as the solution for $W _ { 0 } ( x ) e ^ { W _ { 0 } ( x ) } = x \\ [ 3 6 ]$ , and e is the base of the natural logarithm. ",
+        "bbox": [
+            535,
+            580,
+            919,
+            662
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Proof: See Appendix C. ",
+        "bbox": [
+            529,
+            666,
+            702,
+            680
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "By combining Lemma 2 and ${ \\cal Q } ^ { * } = \\mathbf { 0 } $ , the dual function $\\Phi ( \\lambda , \\mu )$ can be evaluated for any given $( \\lambda , \\mu ) \\in \\mathcal { S }$ . ",
+        "bbox": [
+            504,
+            680,
+            919,
+            710
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "2) Obtaining the Optimal $\\lambda ^ { \\mathrm { { o p t } } }$ and $\\mu ^ { \\mathrm { o p t } }$ to Maximize $\\Phi ( \\lambda , \\mu ) .$ : Having obtained $( Q ^ { * } , \\ell ^ { * } , t ^ { * } )$ for given λ and $\\mu ,$ we can next solve the dual problem (D1.1) to maximize $\\Phi ( \\lambda , \\mu )$ . Note that the dual function $\\Phi ( \\lambda , \\mu )$ is concave but non-differentiable in general [37]. Hence, we use subgradient based methods, $\\mathrm { e . g . }$ , the ellipsoid method [38], to obtain the optimal $\\lambda ^ { \\mathrm { { o p t } } }$ and $\\mu ^ { \\mathrm { o p t } }$ for problem (D1.1). The basic idea of the ellipsoid method is to find a series of ellipsoids to localize the optimal dual solution $\\lambda ^ { \\mathrm { { o p t } } }$ and $\\mu ^ { \\mathrm { o p t } }$ [38]. To start with, we choose a given $( \\lambda , \\mu ) ~ \\in ~ { \\mathcal { S } }$ as the center of the initial ellipsoid and set its volume to be sufficiently large to contain $( \\lambda ^ { \\mathrm { o p t } } , \\mu ^ { \\mathrm { o p t } } )$ . Then, at each iteration, we update the dual variables $( \\lambda , \\mu )$ based on the subgradients of both the ",
+        "bbox": [
+            503,
+            710,
+            921,
+            907
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "9Note that ${ { \\boldsymbol { Q } } ^ { * } } = \\mathbf { 0 }$ is not a unique optimal solution to problem (16a) when $F ( \\lambda )$ is rank-deficient, i.e., rank $\\overset { \\cdot } { ( F ( \\lambda ) ) } < N .$ ",
+        "bbox": [
+            504,
+            920,
+            919,
+            945
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: JOINT OFFLOADING AND COMPUTING OPTIMIZATION ",
+        "bbox": [
+            76,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "1789 ",
+        "bbox": [
+            895,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            908,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "objective function and the constraint functions, and accordingly construct a new ellipsoid with reduced volume. When the volume of the ellipsoid is reduced below a certain threshold, the iteration will terminate and the center of the ellipsoid is chosen to be the optimal dual solution $( \\lambda ^ { \\mathrm { o p t } } , \\mu ^ { \\mathrm { o p t } } )$ . More details can be referred to in [38]. ",
+        "bbox": [
+            73,
+            70,
+            491,
+            161
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "To implement the ellipsoid method, it remains to determine the subgradients of both the objective function in (14a) and the constraint functions in (14b) and (14c). For the objective function $\\Phi ( \\lambda , \\mu )$ in (14a), one subgradient is given by [38] ",
+        "bbox": [
+            73,
+            161,
+            491,
+            223
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left[ \\frac {\\kappa_ {1} C _ {1} ^ {3} (R _ {1} - \\ell_ {1} ^ {*}) ^ {3}}{T ^ {2}} + \\frac {t _ {1} ^ {*}}{\\tilde {g} _ {1}} \\beta \\left(\\frac {\\ell_ {1} ^ {*}}{t _ {1} ^ {*}}\\right) + p _ {\\mathrm{c}, 1} t _ {1} ^ {*}, \\dots , \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            86,
+            227,
+            400,
+            268
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. \\frac {\\kappa_ {K} C _ {K} ^ {3} (R _ {K} - \\ell_ {K} ^ {*}) ^ {3}}{T ^ {2}} + \\frac {t _ {K} ^ {*}}{\\tilde {g} _ {K}} \\beta \\left(\\frac {\\ell_ {K} ^ {*}}{t _ {K} ^ {*}}\\right) + p _ {\\mathrm{c}, K} t _ {K} ^ {*}, \\sum_ {i = 1} ^ {K} t _ {i} ^ {*} - T \\right] ^ {\\dagger}. \\tag {19a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            88,
+            270,
+            490,
+            330
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "As for the constraint ${ \\cal F } ( \\lambda ) ~ \\succeq ~ 0$ in (14b), we have the following lemma. ",
+        "bbox": [
+            73,
+            339,
+            491,
+            369
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Lemma 3: Let $\\pmb { v } \\in \\mathbb { C } ^ { N \\times 1 }$ be the eigenvector corresponding to the smallest eigenvalue of $F ( \\lambda )$ , i.e., $v =$ arg min $\\| \\pmb { \\xi } \\| = 1 \\pmb { \\xi } ^ { H } \\pmb { F } ( \\pmb { \\lambda } ) \\pmb { \\xi }$ . Then the constraint ${ \\cal F } ( \\lambda ) \\ \\succeq \\ 0$ is equivalent to the constraint of ${ \\pmb v } ^ { H } { \\pmb F } ( \\pmb \\lambda ) { \\pmb v } \\geq 0 ,$ , and the subgradient of ${ \\pmb v } ^ { H } { \\pmb F } ( { \\pmb \\lambda } )$ v at the given λ and $\\mu$ is ",
+        "bbox": [
+            73,
+            369,
+            491,
+            446
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left[ \\zeta \\boldsymbol {v} ^ {H} \\boldsymbol {H} _ {1} \\boldsymbol {v}, \\dots , \\zeta \\boldsymbol {v} ^ {H} \\boldsymbol {H} _ {K} \\boldsymbol {v}, 0 \\right] ^ {\\dagger}. \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            452,
+            490,
+            479
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proof: See Appendix D. ",
+        "bbox": [
+            99,
+            484,
+            274,
+            500
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, the subgradient of $\\lambda _ { i } \\geq 0$ in (14c) is given by the elementary vector $\\pmb { e } _ { i } \\in \\mathbb { R } ^ { ( K + 1 ) \\times 1 }$ (i.e., ei is of all zero entries except for the i -th entry being one), $\\forall i \\in { \\mathcal { K } } ,$ while that of $\\mu \\geq 0$ is $e _ { K + 1 }$ . By using this together with (19) and (20), the ellipsoid method can be applied to efficiently update λ and $\\mu$ towards the optimal $\\lambda ^ { \\mathrm { { o p t } } }$ and $\\mu ^ { \\mathrm { o p t } }$ for (D1.1). ",
+        "bbox": [
+            73,
+            500,
+            491,
+            590
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3) Finding the Optimal Primary Solution to (P1): With $\\lambda ^ { \\mathrm { o p t } }$ and $\\mu ^ { \\mathrm { o p t } }$ obtained, it remains to determine the optimal primary solution to (P 1.1) (or equivalently (P 1)). Specifically, by replacing λ and $\\mu$ with $\\lambda ^ { \\mathrm { { o p t } } }$ and $\\mu ^ { \\mathrm { o p t } }$ in Lemma 2, one can obtain the optimal $( t ^ { \\mathrm { o p t } } , \\ell ^ { \\mathrm { o p t } } )$ for (P 1) in a semi-closed form. Furthermore, by substituting obtain the optimal local CPusers. However, we cannot d $\\ell ^ { \\mathrm { o p t } }$ in Lemmequencies ly obtain t $\\{ f _ { i , n } ^ { \\mathrm { o p t } } \\}$ ne can thenfor the Kimal energy transmit covariance matrix $\\boldsymbol { Q } ^ { \\mathrm { o p t } }$ for (P 1) from the solution to problem (16a), since its solution is non-unique in general. Therefore, we adopt an additional step to obtain $\\boldsymbol { Q } ^ { \\mathrm { o p t } }$ by solving a semidefinite program (SDP), which corresponds to solving problem (P1.1) for Q under the given $( t ^ { \\mathrm { o p t } } , \\ell ^ { \\mathrm { o p t } } )$ . ",
+        "bbox": [
+            73,
+            590,
+            491,
+            787
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We can then readily establish the following proposition. ",
+        "bbox": [
+            89,
+            787,
+            472,
+            803
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proposition 1: The optimal solution $( \\{ f _ { i , n } ^ { \\mathrm { o p t } } \\} , Q ^ { \\mathrm { o p t } } , t ^ { \\mathrm { o p t } }$ $\\ell ^ { \\mathrm { { o p t } } } )$ for problem (P 1) is given by ",
+        "bbox": [
+            75,
+            804,
+            488,
+            838
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\ell_ {i} ^ {\\text { opt }} = \\left\\{ \\begin{array}{l l} \\left[ R _ {i} - \\sqrt {\\frac {T ^ {2}}{3 \\kappa_ {i} C _ {i} ^ {3}} \\left(\\frac {\\alpha}{\\lambda_ {i} ^ {\\text { opt }}} + \\frac {\\sigma^ {2} \\ln 2}{B \\tilde {g} _ {i}} 2 ^ {\\frac {r _ {i} ^ {\\text { opt }}}{B}}\\right)} \\right] ^ {+}, \\\\ \\quad \\text { if } \\lambda_ {i} ^ {\\text { opt }} > 0, \\\\ 0, \\\\ \\quad \\text { if } \\lambda_ {i} ^ {\\text { opt }} = 0, \\end{array} \\right. \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            86,
+            843,
+            490,
+            949
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {i} ^ {\\text { opt }} = \\left\\{ \\begin{array}{l l} \\ell_ {i} ^ {\\text { opt }} / r _ {i} ^ {\\text { opt }}, & \\text { if   } \\lambda_ {i} ^ {\\text { opt }} > 0, \\\\ 0, & \\text { if   } \\lambda_ {i} ^ {\\text { opt }} = 0, \\end{array} \\right. \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            517,
+            65,
+            919,
+            104
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {i, 1} ^ {\\text { opt }} = \\dots = f _ {i, C _ {i} (R _ {i} - \\ell_ {i} ^ {\\text { opt }})} ^ {\\text { opt }} = C _ {i} (R _ {i} - \\ell_ {i} ^ {\\text { opt }}) / T, \\quad \\forall i \\in \\mathcal {K}, \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            514,
+            107,
+            919,
+            133
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "and ",
+        "bbox": [
+            504,
+            138,
+            535,
+            151
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ ^ {\\text { opt }} = \\arg \\min _ {Q \\succeq 0} T \\operatorname{tr} (Q)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            524,
+            161,
+            696,
+            186
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\frac {\\kappa_ {i} C _ {i} ^ {3} (R _ {i} - \\ell_ {i} ^ {\\mathrm{opt}}) ^ {3}}{T ^ {2}} + \\frac {t _ {i} ^ {\\mathrm{opt}}}{\\tilde {g} _ {i}} \\beta \\left(r _ {i} ^ {\\mathrm{opt}}\\right) + p _ {c, i} t _ {i} ^ {\\mathrm{opt}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            578,
+            189,
+            901,
+            224
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- T \\zeta \\operatorname{tr} (\\boldsymbol {Q} \\boldsymbol {H} _ {i}) \\leq 0, \\quad \\forall i \\in \\mathcal {K}, \\tag {24}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            617,
+            226,
+            919,
+            241
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            504,
+            250,
+            550,
+            263
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {i} ^ {\\text { opt }} \\triangleq \\frac {B}{\\ln 2} \\left(W _ {0} \\left(\\frac {\\tilde {g} _ {i}}{\\sigma^ {2} e} \\left(\\frac {\\mu^ {\\text { opt }}}{\\lambda_ {i} ^ {\\text { opt }}} + p _ {c, i}\\right) - \\frac {1}{e}\\right) + 1\\right) \\tag {25}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            534,
+            268,
+            919,
+            310
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "corresponds to the optimal offloading rate for user i , $\\forall i \\in { \\mathcal { K } } .$ ",
+        "bbox": [
+            503,
+            315,
+            919,
+            330
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Proposition 1 can be verified by simply combining Lemmas 1 and 2; hence, we omit its detailed proof for conciseness. Note that (24) is an instance of SDP, which can thus be efficiently solved by off-the-shelf solvers, e.g., CVX [39]. ",
+        "bbox": [
+            503,
+            330,
+            919,
+            390
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Summarizing, we present Algorithm 1 to solve the computation latency constrained energy minimization problem (P1). ",
+        "bbox": [
+            503,
+            391,
+            919,
+            421
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Algorithm 1 for Solving the Energy Minimization Problem (P 1) ",
+        "bbox": [
+            504,
+            440,
+            919,
+            470
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1: Initialization: Given an ellipsoid $\\mathcal { E } ( ( \\lambda , \\mu ) , A )$ containing $( \\lambda ^ { \\mathrm { o p t } } , \\mu ^ { \\mathrm { o p t } } )$ , where $( \\lambda , \\mu )$ is the center of E and $\\mathbf A \\succ \\mathbf 0$ characterizes the volume of $\\mathcal { E } .$ ",
+        "bbox": [
+            509,
+            473,
+            921,
+            516
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "2: Repeat: ",
+        "text_level": 1,
+        "bbox": [
+            509,
+            518,
+            586,
+            532
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• For each user $i \\in \\mathcal K ,$ obtain $( t _ { i } ^ { * } , \\ell _ { i } ^ { * } )$ by Lemma 2 under given $\\lambda _ { i }$ and $\\mu ;$ ",
+            "• Compute the subgradients of the objective function and the constraints of (D1.1) as in Section III-B.2; ",
+            "• Update λ and $\\mu$ using the ellipsoid method [38]; "
+        ],
+        "bbox": [
+            544,
+            535,
+            919,
+            611
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3: Until λ and $\\mu$ converge within a prescribed accuracy. ",
+        "bbox": [
+            509,
+            614,
+            890,
+            628
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "4: Set $( \\lambda ^ { \\mathrm { o p t } } , \\mu ^ { \\mathrm { o p t } } )  ( \\lambda , \\mu )$ ",
+        "bbox": [
+            509,
+            628,
+            704,
+            643
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "5: Output: Obtain $( t ^ { \\mathrm { o p t } } , \\ell ^ { \\mathrm { o p t } } ) , \\{ f _ { i , n } ^ { \\mathrm { o p t } } \\}$ , and compute $\\boldsymbol { Q } ^ { \\mathrm { o p t } }$ by (24). ",
+        "bbox": [
+            509,
+            643,
+            919,
+            672
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Remark 2: Proposition 1 shows that the optimal joint computing and offloading design has the following interesting properties to minimize the energy consumption at the AP. ",
+        "bbox": [
+            503,
+            693,
+            919,
+            737
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1) First, if the energy harvesting constraint is not tight for user i (i.e., user i harvests sufficient wireless energy), then no computation offloading is required and user i should compute all the tasks locally $( \\mathrm { i . e . , } \\ell _ { i } ^ { \\mathrm { o p t } } = 0 )$ . This can be explained based on the complementary slackness condition [37], i.e., ",
+        "bbox": [
+            519,
+            737,
+            921,
+            827
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\lambda_ {i} ^ {\\text { opt }} \\left(\\frac {\\kappa_ {i} C _ {i} ^ {3} (R _ {i} - \\ell_ {i} ^ {\\text { opt }}) ^ {3}}{T ^ {2}} + \\frac {t _ {i} ^ {\\text { opt }}}{\\tilde {g} _ {i}} \\beta \\left(r _ {i} ^ {\\text { opt }}\\right) + p _ {c, i} t _ {i} ^ {\\text { opt }} \\right. \\\\ \\left. - T \\zeta \\operatorname{tr} \\left(\\boldsymbol {Q} ^ {\\text { opt }} \\boldsymbol {H} _ {i}\\right)\\right) = 0, \\quad \\forall i \\in \\mathcal {K}. \\tag {26} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            544,
+            833,
+            919,
+            909
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In this case, if the energy harvesting constraint is not tight for user i, then based on (26) we have $\\lambda _ { i } ^ { \\mathrm { { o p t } } } = 0 .$ , and accordingly $\\ell _ { i } ^ { \\mathrm { { o p t } } } = 0$ holds from (21). This property is intuitive: when the user has sufficient energy to accomplish the tasks locally, there is no need to employ computation offloading that incurs additional energy consumption for the MEC server’s computation at the AP. ",
+        "bbox": [
+            542,
+            916,
+            921,
+            948
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "1790 ",
+        "bbox": [
+            78,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 17, NO. 3, MARCH 2018 ",
+        "bbox": [
+            452,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            908,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            112,
+            69,
+            491,
+            160
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "2) Next, it is always beneficial to leave some bits for local computing at each user $i \\in \\mathcal K ,$ i.e., $\\ell _ { i } ^ { \\mathrm { { o p t } } } < R _ { i }$ always holds (see (21)). In other words, offloading all the bits to the AP is always suboptimal. This is because when $\\ell _ { i } ^ { \\mathrm { { o p t } } } \\to R _ { i }$ , the marginal energy consumption of local computing is almost zero, and thus it is beneficial to leave some bits for local computing in this case. ",
+            "3) Furthermore, it is observed that for each user i , more stringent the energy harvesting constraint is (or the associated dual variable $\\lambda _ { i } ^ { \\mathrm { { o p t } } }$ is larger), more bits should be offloaded to the AP with a smaller offloading rate $r _ { i } ^ { \\mathrm { { ^ { o p t } } } }$ opt This property follows based on (21) and (25), in which a larger $\\bar { \\lambda } _ { i } ^ { \\mathrm { { o p t } } }$ admits a large r \u0003opt $\\ell _ { i } ^ { \\mathrm { { o p t } } }$ and a smaller $r _ { i } ^ { \\mathrm { { o p t } } }$ . ",
+            "4) Finally, the number of offloaded bits $\\ell _ { i } ^ { \\mathrm { { o p t } } }$ and the offloading rate $r _ { i } ^ { \\mathrm { { o p t } } }$ r opt for each user i are affected by the channel gain $\\tilde { g } _ { i } ,$ , the block length T , the circuit power $p _ { \\mathrm { c } , i }$ , and the MEC energy consumption α per offloaded bit in the following way: 1) when the channel condition becomes better (i.e., g˜i becomes larger), both \u0003opt a $\\ell _ { i } ^ { \\mathrm { { o p t } } }$ nd $r _ { i } ^ { \\mathrm { { ^ { o p t } } } }$ increase, and thus user i is likely to offload more bits with a higher offloading rate; 2) a higher circuit power $p _ { c , i }$ at the user leads to a higher offloading rate $r _ { i } ^ { \\mathrm { o p t } } ; 3 )$ when T or α increases, $\\ell _ { i } ^ { \\mathrm { { o p t } } }$ \u0003 reduces and thus fewer bits are offloaded to the AP. "
+        ],
+        "bbox": [
+            89,
+            161,
+            491,
+            532
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "IV. NUMERICAL RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            189,
+            550,
+            377,
+            564
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In this section, numerical results are provided to gauge the performance of the proposed design with joint WPT, offloading, and computing optimization, as compared to the following four benchmark schemes. ",
+        "bbox": [
+            73,
+            570,
+            491,
+            630
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1) Local computing only: each user $i \\in \\mathcal K$ accomplishes its computation task by only local computing. This scheme corresponds to solving problem (P1) by setting $\\ell _ { i } = 0$ , $\\forall i \\in \\mathcal { K }$ . ",
+            "2) Computation offloading only: each user $i \\in \\mathcal K$ accomplishes its computation task by fully offloading the computation bits to the AP. This scheme corresponds to solving (P 1) by setting $f _ { i , n } = 0$ , ∀n, $\\forall i \\in { \\mathcal { K } } ,$ as well as $\\ell _ { i } = R _ { i }$ for (P 1), $\\forall i \\in { \\mathcal { K } }$ . ",
+            "3) Joint design with isotropic WPT: the N-antenna AP radiates the RF energy isotropically or omni-directionally over all directions by setting $Q = p I$ , where $p \\geq 0$ denotes the transmit power at each antenna. This scheme corresponds to solving problem (P1) by replacing Q as p I with p being another optimization variable. ",
+            "4) Separate MEC-WPT design: this scheme separately designs the computation offloading for MEC and the energy beamforming for WPT [21], [32]. First, the K users minimize their sum-energy consumption subject to the users’ individual computation latency constraints [32]. Then, under the constraints of "
+        ],
+        "bbox": [
+            89,
+            628,
+            491,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "energy demand at the K users, the AP designs the transmit energy beamforming with minimum energy consumption [21]. ",
+        "bbox": [
+            542,
+            71,
+            921,
+            114
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In the simulations, the EH efficiency is set as $\\zeta = 0 . 3 .$ . The system parameters are set as (unless stated otherwise): the number of the AP antennas $N \\ = \\ 4 , \\ C _ { i } \\ =$ $1 0 ^ { 3 }$ cycles/bit, $\\kappa _ { i } = 1 0 ^ { - 2 8 } , \\forall i \\in \\mathcal { K } \\ [ 3 2 ] .$ , the circuit power $p _ { c , i } = 1 0 ^ { - 4 }$ Watt (W), the energy consumption per offloaded bit by the MEC server $\\ a \\ = \\ 1 0 ^ { - 4 }$ Joule/bit, the receiver noise power $\\sigma ^ { 2 } = 1 0 ^ { - 9 }$ W, and the spectrum bandwidth for offloading $B \\ = \\ 2$ MHz. By considering a Rayleigh fading channel model, the wireless channel from the AP to each user $i \\in \\mathcal K$ is set as ",
+        "bbox": [
+            503,
+            114,
+            921,
+            265
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\boldsymbol {h} _ {i} = \\theta_ {0} d _ {i} ^ {- 3} \\bar {\\boldsymbol {h}} _ {i}, \\quad \\boldsymbol {g} _ {i} = \\theta_ {0} d _ {i} ^ {- 3} \\bar {\\boldsymbol {g}} _ {i}, \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            268,
+            921,
+            289
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array} { l l l } { \\bar { \\pmb { h } } _ { i } } & { \\sim } & { { \\cal C } { \\cal N } ( \\mathbf { 0 } , I ) } \\end{array}$ and $\\begin{array} { r } { \\bar { \\bf g } _ { i } { \\mathrm { ~  ~ \\sim ~ } } \\subset N ( { \\bf 0 } , I ) , \\forall i \\mathrm { ~  ~ \\in ~ } \\mathcal { K } , } \\end{array}$ is an independent and identically distributed (i.i.d.) circularly symmetric complex Gaussian (CSCG) random vector with zero mean and covariance $\\pmb { I } ; \\theta _ { 0 } = 6 . 2 5 \\times 1 0 ^ { - 4 } ( \\mathrm { i . e . , } - 3 2 \\mathrm { d B } )$ corresponds to the channel power gain at a reference distance of one meter; $d _ { i }$ denotes the distance from the AP to user $i \\in \\mathcal K \\backslash$ and the path-loss exponent is assumed to be 3. The numerical results are obtained by averaging over 500 randomized channel realizations. Note that the simulation parameters are specifically chosen, but our approaches can be also applied to other system setups. ",
+        "bbox": [
+            501,
+            292,
+            921,
+            460
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "A. Case With Homogeneous Users ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            474,
+            741,
+            489
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "First, we consider the case with homogeneous users, where the distances from the AP to all the users are identical with $d _ { i } \\ = \\ 5$ meters, $\\forall i \\in \\mathcal { K } .$ The corresponding average power loss is set to be $5 \\times 1 0 ^ { - 6 } ( \\mathrm { i . e . , } - 5 3 \\mathrm { d B } )$ . Additionally, the numbers of computation bits at all users are set to be identical, i.e., $R = R _ { i } , \\forall i \\in \\mathcal { K } .$ . Figs. 3–6 show the average energy consumption at the AP under different system parameters. It is observed that the proposed joint design achieves the lowest average energy consumption at the AP among all the five schemes. The joint design with isotropic WPT achieves a suboptimal performance due to the loss of multiantenna energy beamforming gain. The suboptimal performance of the separate-design scheme implies the necessity of unified demand-supply optimization in wireless powered MEC systems. ",
+        "bbox": [
+            501,
+            494,
+            921,
+            719
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Fig. 3 shows the average energy consumption at the AP versus the time block length T , where $R ~ = ~ 1 0$ kbits and $K = 1 0$ . First, with a small value of $T \\ ( { \\mathrm { e . g . , ~ } } T = 0 . 0 5 \\ \\mathrm { s e c } )$ , the benchmark schemes but the local-computing-only scheme are observed to achieve a near optimal performance close to that with the proposed joint design, while as T increases, the energy consumption with the local-computing-only scheme significantly decreases, approaching that with the proposed joint design. It is also observed that the energy consumption with the full-offloading-only scheme remains almost unchanged when $T \\geq 0 . 1$ sec. This is due to the fact that in this case, the optimal offloading time for all users is fixed to be around 0.1 sec for saving the circuit energy consumption; hence, increasing T cannot further improve the energy efficiency in this case. By contrast, the energy consumption with the local-computing-only scheme decreases monotonically as T increases. This is because as T increases, one can always lower down the CPU frequency to save energy for local computing. Finally, it is seen in Fig. 3 both the separate-design and the equal-offloading-time-allocation schemes achieve a very similar performance in the interested time block regime. ",
+        "bbox": [
+            503,
+            720,
+            921,
+            946
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: JOINT OFFLOADING AND COMPUTING OPTIMIZATION ",
+        "bbox": [
+            76,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "1791 ",
+        "bbox": [
+            893,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            910,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "chart",
+        "img_path": "images/22b98bc02dcd9b004ca56d3eb9a7ab96d89c2b336bf0d706d09982adc9a8154f.jpg",
+        "content": "| Time block length, T (sec) | Local computing only | Full offloading only | Joint design w/ isotropic WPT | Separate design | Proposed joint design |\n| -------------------------- | -------------------- | -------------------- | ----------------------------- | --------------- | --------------------- |\n| 0.0                        | 100000               | 1000                 | 10000                         | 1000            | 1000                  |\n| 0.1                        | 10000                | 100                  | 100                           | 100             | 100                   |\n| 0.2                        | 1000                 | 100                  | 100                           | 100             | 100                   |\n| 0.3                        | 100                  | 100                  | 100                           | 100             | 100                   |\n| 0.4                        | 100                  | 100                  | 100                           | 100             | 100                   |\n| 0.5                        | 100                  | 100                  | 100                           | 100             | 100                   |\n| 0.6                        | 100                  | 100                  | 100                           | 100             | 100                   |\n| 0.7                        | 100                  | 100                  | 100                           | 100             | 100                   |\n| 0.8                        | 100                  | 100                  | 100                           | 100             | 100                   |",
+        "chart_caption": [
+            "Fig. 3. The average energy consumption at the AP versus the block length T . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            98,
+            70,
+            472,
+            303
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/51793a80b6a11ecd5ae67764161e20e6ab5591c4f153e75e39b4a34e4c3b9112.jpg",
+        "content": "| Number of computation bits per user, R (kbits) | Local computing only | Full offloading only | Joint design w/ isotropic WPT | Separate design | Proposed joint design |\n| --------------------------------------------- | -------------------- | -------------------- | ------------------------------ | --------------- | --------------------- |\n| 2                                             | 0.5                  | 1.0                  | 1.5                            | 1.0             | 0.5                   |\n| 4                                             | 5.0                  | 3.0                  | 6.0                            | 3.0             | 2.0                   |\n| 6                                             | 15.0                 | 5.0                  | 10.0                           | 5.0             | 4.0                   |\n| 8                                             | 30.0                 | 7.0                  | 15.0                           | 7.0             | 6.0                   |\n| 10                                            | 50.0                 | 9.0                  | 20.0                           | 9.0             | 8.0                   |\n| 12                                            | 70.0                 | 11.0                 | 25.0                           | 11.0            | 10.0                  |\n| 14                                            | 100.0                | 13.0                 | 30.0                           | 13.0            | 12.0                  |\n| 16                                            | 150.0                | 15.0                 | 35.0                           | 15.0            | 14.0                  |\n| 18                                            | 200.0                | 17.0                 | 40.0                           | 17.0            | 16.0                  |\n| 20                                            | 300.0                | 20.0                 | 45.0                           | 20.0            | 18.0                  |",
+        "chart_caption": [
+            "Fig. 5. The average energy consumption at the AP versus the number of computation bits R at each user. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            526,
+            70,
+            898,
+            301
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0d1dbbd4442815981abbf4bcf1f27d8ecaf88d9bf313619bb6b051d093d5921c.jpg",
+        "content": "| User number, K | Local computing only | Full offloading only | Joint design w/ isotropic WPT | Separate design | Proposed joint design |\n| -------------- | -------------------- | -------------------- | ------------------------------ | --------------- | --------------------- |\n| 1              | 30                   | 15                   | 30                             | 15              | 10                    |\n| 5              | 60                   | 40                   | 50                             | 30              | 20                    |\n| 10             | 90                   | 70                   | 80                             | 50              | 40                    |\n| 15             | 110                  | 90                   | 100                            | 70              | 60                    |\n| 20             | 120                  | 110                  | 110                            | 90              | 80                    |\n| 25             | 130                  | 120                  | 120                            | 100             | 90                    |\n| 28             | 140                  | 130                  | 130                            | 110             | 100                   |",
+        "chart_caption": [
+            "Fig. 4. The average energy consumption at the AP versus the user number K . "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            98,
+            345,
+            468,
+            575
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/e0df0f4f242ac01fd7ed2b0574b1f63c6d24d13b4f64091080485a08f837758a.jpg",
+        "content": "| Spectrum bandwidth for offloading per user, B (MHz) | Local computing only | Full offloading only | Joint design w/ isotropic WPT | Separate design | Proposed joint design |\n| -------------------------------------------------- | -------------------- | -------------------- | ----------------------------- | --------------- | --------------------- |\n| 0.5                                                | 34.0                 | 51.0                 | 72.0                          | 28.0            | 28.0                  |\n| 1.0                                                | 34.0                 | 41.0                 | 51.0                          | 25.0            | 24.0                  |\n| 1.5                                                | 34.0                 | 37.0                 | 43.0                          | 23.0            | 22.0                  |\n| 2.0                                                | 34.0                 | 35.0                 | 39.0                          | 22.0            | 21.0                  |\n| 2.5                                                | 34.0                 | 34.0                 | 36.0                          | 21.5            | 20.5                  |\n| 3.0                                                | 34.0                 | 34.0                 | 34.0                          | 21.0            | 20.0                  |\n| 3.5                                                | 34.0                 | 34.0                 | 33.0                          | 21.0            | 20.0                  |\n| 4.0                                                | 34.0                 | 34.0                 | 32.0                          | 21.0            | 20.0                  |\n| 4.5                                                | 34.0                 | 34.0                 | 31.5                          | 21.0            | 20.0                  |\n| 5.0                                                | 34.0                 | 34.0                 | 31.0                          | 21.0            | 20.0                  |",
+        "chart_caption": [
+            "Fig. 6. The average energy consumption at the AP versus the spectrum bandwidth B for offloading. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            527,
+            359,
+            897,
+            592
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            628,
+            491,
+            719
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 4 depicts the average energy consumption versus the user number K , where $R = 1 0$ kbits and $T = 0 . 5$ sec. It is shown that the gain achieved by the proposed joint design becomes more significant as the user number K becomes large. The full-loading-only scheme outperforms the localcomputing-only scheme, but with a decreasing gain as K increases. This is because in the full-offloading-only scheme, all users share the finite time block and the offloading energy consumption would increase drastically when K becomes large. It is also observed that the performance of the equaloffloading-time-allocation scheme becomes closer to that of the proposed joint design with larger $K \\ge 1 5$ . This indicates that an equal offloading time is desirable for a large number of the users in order to minimize the energy consumption at the AP. ",
+        "bbox": [
+            73,
+            720,
+            491,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 5 shows the average energy consumption at the AP versus the number of computation bits R at each user, where K = 2 and $T = 0 . 0 5$ sec. It is shown that the average energy consumption by all the six schemes increases as R becomes large, and the full-offloading-only scheme outperforms the local-computing-only one, especially when R becomes large. This indicates that with large R values, it is desirable to offload more computation bits to the AP in order to reduce the energy consumption. Furthermore, the full-offloading-only scheme is observed to achieve a near optimal performance close to that with the proposed joint design when R becomes large. This is because the energy consumption per bit for offloading is significantly smaller than that for local computing in the large R case. It is also observed that the separate-design scheme outperforms all the other benchmark schemes in this setup. ",
+        "bbox": [
+            501,
+            659,
+            921,
+            886
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Fig. 6 shows the average energy consumption versus the spectrum bandwidth B for offloading, where $K \\ = \\ 6 ,$ $T = 0 . 5 { \\mathrm { ~ s e c } }$ , and R = 50 kbits. As expected, Fig. 6 shows that the energy consumption by the four schemes with offloading decreases as B increases, and the one by the local-computingonly scheme remains unchanged. This indicates that a large value of B not only implies a high offloading rate, but also helps save the energy consumption in computation offloading. It is also observed that at small B values (e.g., $B \\le 3 ~ \\mathrm { M H z } )$ , the local-computing-only scheme outperforms the full-offloading-only scheme, but it does not hold for large B cases. This indicates that offloading becomes a better option than local-computing as B increases. ",
+        "bbox": [
+            503,
+            886,
+            921,
+            946
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "1792 ",
+        "bbox": [
+            78,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 17, NO. 3, MARCH 2018 ",
+        "bbox": [
+            454,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            910,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/717bc431a02965c193c5eb39642349dd89762a52a56251fad868d6a29c2a4295.jpg",
+        "table_caption": [
+            "TABLE I OFFLOADED BITS AND RESIDUAL ENERGY AT USERS FOR THE PROPOSED OPTIMAL JOINT DESIGN UNDER DIFFERENT $d _ { 2 }$ "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td> $d_{2}$  (meters)</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr><tr><td>Near user&#x27;s offloaded bits  $\\ell_{1}^{\\text{opt}}$  (kbits)</td><td>0.165</td><td>0.142</td><td>0.124</td><td>0.092</td><td>0.068</td><td>0.028</td><td>0.006</td></tr><tr><td>Far user&#x27;s offloaded bits  $\\ell_{2}^{\\text{opt}}$  (kbits)</td><td>1.798</td><td>6.974</td><td>11.817</td><td>13.682</td><td>13.585</td><td>12.972</td><td>12.162</td></tr><tr><td>Near user&#x27;s residual energy ( $\\times 10^{-5}$  Joule)</td><td>0.007</td><td>0.026</td><td>0.062</td><td>0.531</td><td>3.276</td><td>9.218</td><td>21.105</td></tr><tr><td>Far user&#x27;s residual energy ( $\\times 10^{-5}$  Joule)</td><td>0.003</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>",
+        "bbox": [
+            183,
+            108,
+            816,
+            186
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/03f2cbe8c7330ecc298b544e31225f2f7a42ef46a966bc9d11e1b96b25f22efb.jpg",
+        "content": "| Distance between the AP and the far user, d₂ (meters) | Local computing only | Full offloading only | Joint design w/ isotropic WPT | Separate design | Proposed joint design |\n| ---------------------------------------------------- | -------------------- | -------------------- | ----------------------------- | --------------- | --------------------- |\n| 2                                                    | 3                    | 4                    | 3                             | 2               | 1                     |\n| 3                                                    | 4                    | 5                    | 4                             | 3               | 2                     |\n| 4                                                    | 8                    | 6                    | 7                             | 7               | 3                     |\n| 5                                                    | 14                   | 8                    | 10                            | 12              | 4                     |\n| 6                                                    | 24                   | 10                   | 19                            | 20              | 6                     |\n| 7                                                    | 38                   | 16                   | 38                            | 31              | 10                    |\n| 8                                                    | 56                   | 28                   | 73                            | 46              | 19                    |",
+        "chart_caption": [
+            "Fig. 7. The average energy consumption at the AP versus the distance $d _ { 2 }$ from the AP to the far user. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            101,
+            210,
+            464,
+            441
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            486,
+            491,
+            623
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "B. Case With Heterogeneous Users ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            643,
+            316,
+            657
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Next, we evaluate the performance of the wireless powered MEC system in the case with heterogeneous users. For the purpose of illustration, we focus on the scenario with only $K = 2$ users. It is assumed that the distances from the $\\mathbf { A P }$ to the two users (namely near and far users) are $d _ { 1 } = 2$ meters and $d _ { 2 } \\geq 2$ meters, respectively. The time block length is set as $T = 0 . 2$ sec. ",
+        "bbox": [
+            73,
+            662,
+            490,
+            767
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 7 shows the average energy consumption versus the distance $d _ { 2 }$ from the AP to the far user, where the computation task sizes for both users are set as $R _ { 1 } ~ = ~ R _ { 2 } ~ = ~ 2 0$ kbits. It is observed that as $d _ { 2 }$ increases, the energy consumption by the six schemes increases significantly, and the proposed joint design achieves the lowest energy consumption among them. The local-computing-only scheme is observed to outperform the full-offloading-only scheme when $d _ { 2 } \\ < \\ 3$ meters, but performs inferior to the full-offloading-only scheme when $d _ { 2 } \\ > \\ 3$ meters. Furthermore, the proposed joint design is observed to achieve a significant performance gain over the separate-design one when $d _ { 2 } > 4$ meters. ",
+        "bbox": [
+            73,
+            768,
+            491,
+            949
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/586f5092cfc457a639d89155139f638ef4b9308301848849d7ba0b1922fb4049.jpg",
+        "content": "| Computation task size of the far user, R₂ (kbits) | Local computing only | Full offloading only | Joint design w/ isotropic WPT | Separate design | Proposed joint design |\n| ------------------------------------------------- | -------------------- | -------------------- | ------------------------------ | --------------- | --------------------- |\n| 10                                                | 0                    | 0                    | 0                              | 0               | 0                     |\n| 20                                                | 25                   | 10                   | 20                             | 25              | 5                     |\n| 30                                                | 75                   | 15                   | 30                             | 60              | 10                    |\n| 40                                                | 185                  | 20                   | 40                             | 135             | 15                    |",
+        "chart_caption": [
+            "Fig. 8. The average energy consumption at the AP versus the computation task size $R _ { 2 }$ kbits. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            527,
+            210,
+            897,
+            441
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "To provide more insights, Table I demonstrates the numbers of offloaded bits $\\ell _ { i } ^ { \\mathrm { { o p t } } } \\mathrm { { s } }$ at both users and their residual energy $( \\mathrm { i . e . , ~ } E _ { i } - E _ { \\mathrm { l o c } , i } - \\mathrm { \\bar { ~ } } E _ { \\mathrm { o f f } , i } )$ under different values of $d _ { 2 }$ for the proposed joint design. It is observed that the far user prefers offloading significantly more bits than the near user, especially at a larger $d _ { 2 }$ . As $d _ { 2 }$ increases, the number of offloaded bits $\\ell _ { 1 } ^ { \\mathrm { { o p t } } }$ by the near user decreases significantly, while that by the far user (i.e., \u0003 op2 $( \\mathrm { i . e . , } \\ell _ { 2 } ^ { \\mathrm { o p t } } )$ increases. This result is generally consistent with the first property in Remark 2. Furthermore, it is observed that the residual energy at the near user increases dramatically as $d _ { 2 }$ increases, while the far user always uses up all its energy when $d _ { 2 } > d _ { 1 }$ . This shows that as $d _ { 2 }$ increases, the energy consumption increase at the AP in Fig. 7 is mainly to satisfy the energy requirement at the far user. In this case, the near user will harvest a lot of energy. ",
+        "bbox": [
+            503,
+            507,
+            921,
+            734
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, we consider the case when the near and far users have distinct computation task sizes. Fig. 8 depicts the average energy consumption versus the computation task size $R _ { 2 }$ at the far user, where $R _ { 1 } = 2 0$ kbits and $d _ { 2 } = 6$ meters. It is observed that the energy consumption by the six schemes increases as $R _ { 2 }$ increases, and both the local-computing-only and the separate-design schemes lead to much higher energy consumption than the other four schemes when $R _ { 2 } > 2 0 \\mathrm { k b i t s } .$ This is due to the fact that in the local-computing-only and the separate-design schemes, the far user cannot explore the benefit of task offloading for energy saving. Among the five benchmark schemes, the full-offloading-only scheme achieves the best performance close to the optimal proposed one. Table II presents the numbers of offloaded bits at both users and their residual energy for the proposed joint design. It is observed that as $R _ { 2 }$ increases, the number of offloaded bits $\\ell _ { 1 } ^ { \\mathrm { { o p t } } }$ by the near user decreases, while $\\ell _ { 2 } ^ { \\mathrm { { o p t } } }$ by the far user increases significantly. Similarly as in Table I, $\\ell _ { 2 } ^ { \\mathrm { { o p t } } }$ is observed to be significantly larger than $\\ell _ { 1 } ^ { \\mathrm { { o p t } } }$ . It is also observed that with $R _ { 2 }$ increasing, the residual energy at the near user becomes more significant, while that at the far user is zero. ",
+        "bbox": [
+            503,
+            734,
+            921,
+            946
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: JOINT OFFLOADING AND COMPUTING OPTIMIZATION ",
+        "bbox": [
+            76,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "1793 ",
+        "bbox": [
+            895,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            910,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "table",
+        "img_path": "images/d4addd425f3b9463b3a41807bd6d6e8b8dbd50baa79768efd9769bb5ee5ce1e7.jpg",
+        "table_caption": [
+            "TABLE II OFFLOADED BITS AND RESIDUAL ENERGY AT USERS FOR THE PROPOSED OPTIMAL JOINT DESIGN UNDER DIFFERENT $R _ { 2 }$ "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td> $R_2$  (kbits)</td><td>10</td><td>20</td><td>30</td><td>40</td></tr><tr><td>Near user&#x27;s offloaded bits  $\\ell_1^{\\text{opt}}$  (kbits)</td><td>0.825</td><td>0.432</td><td>0.239</td><td>0.282</td></tr><tr><td>Far user&#x27;s offloaded bits  $\\ell_2^{\\text{opt}}$  (kbits)</td><td>3.586</td><td>13.62</td><td>23.791</td><td>33.264</td></tr><tr><td>Near user&#x27;s residual energy ( $\\times 10^{-5}$  Joule)</td><td>0.426</td><td>3.317</td><td>6.42</td><td>9.545</td></tr><tr><td>Far user&#x27;s residual energy ( $\\times 10^{-5}$  Joule)</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>",
+        "bbox": [
+            266,
+            108,
+            733,
+            186
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            73,
+            212,
+            491,
+            319
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Tables I and II show that when the users are heterogeneous in locations and/or task sizes, even the optimal joint design still leads to unbalanced energy demand and supply at these users. In particular, the AP needs to use a large transmit power to satisfy the high energy demand of users that are far apart and/or have heavy computation tasks. At the same time, the nearby users with light computation tasks can accordingly harvest more energy and are likely to have energy surplus. To better balance the energy demand and surplus, it can be viable to enable user cooperation between near and far users, which is an interesting research direction worth pursuing in future work. ",
+        "bbox": [
+            73,
+            320,
+            491,
+            501
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "V. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            220,
+            520,
+            344,
+            534
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "We developed a unified MEC-WPT design framework with joint energy beamforming, offloading, and computing optimization in emerging wireless powered multiuser MEC systems. In particular, we proposed an efficient wireless powered multiuser MEC design by considering the latencyconstrained computation, for which the AP minimizes the total energy consumption subject to the users’ individual computation latency constrains. Leveraging the Lagrange duality method, we obtained the optimal solution in a semiclosed form. Numerical results demonstrated the merits of the proposed joint design over alternative benchmark schemes. The proposed unified MEC-WPT design can pave the way to facilitate ubiquitous computing for IoT devices in a self-sustainable way. ",
+        "bbox": [
+            73,
+            542,
+            491,
+            755
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "APPENDICES ",
+        "text_level": 1,
+        "bbox": [
+            236,
+            773,
+            330,
+            787
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "A. Proof of Lemma 1 ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            797,
+            223,
+            811
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "First, consider the case when there exists some user i with $\\ell _ { i } = R _ { i } , \\mathrm { i . e . }$ ., user i offloads all of its computation task bits to the AP. As user i does not perform local computing in this case, the local CPU frequency of user i is evidently zero. ",
+        "bbox": [
+            73,
+            818,
+            491,
+            893
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "We next consider the nontrivial case of $0 ~ \\le ~ \\ell _ { i } ~ < ~ R _ { i }$ , ∀i ∈ K . Define fi - \tnC $\\forall i \\in { \\mathcal { K } } .$ $\\begin{array} { r } { f _ { i } \\triangleq \\frac { \\sum _ { n = 1 } ^ { C _ { i } ( R _ { i } - \\ell _ { i } ) } f _ { i , n } } { C _ { i } ( R _ { i } - \\ell _ { i } ) } , \\forall i \\in \\mathcal { K } } \\end{array}$ i  fi,n\u0003 ) , ∀i ∈ K . Since that both $1 / x$ and $x ^ { 2 }$ are convex functions with respect to $x > 0 ,$ , based on Jensen’s inequality [37], it follows that ",
+        "bbox": [
+            73,
+            893,
+            491,
+            948
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            504,
+            212,
+            795,
+            227
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {i} (R _ {i} - \\ell_ {i}) / f _ {i} \\leq \\sum_ {n = 1} ^ {C _ {i} (R _ {i} - \\ell_ {i})} 1 / f _ {i, n} \\tag {28a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            602,
+            232,
+            921,
+            276
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC _ {i} (R _ {i} - \\ell_ {i}) \\kappa_ {i} f _ {i} ^ {2} \\leq \\sum_ {n = 1} ^ {C _ {i} (R _ {i} - \\ell_ {i})} \\kappa_ {i} f _ {i, n} ^ {2}, \\tag {28b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            593,
+            277,
+            919,
+            321
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "where both the equalities hold if and only if ",
+        "bbox": [
+            504,
+            325,
+            810,
+            340
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {i, 1} = \\dots = f _ {i, C _ {i} (R _ {i} - \\ell_ {i})}, \\quad \\forall i \\in \\mathcal {K}. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            588,
+            349,
+            919,
+            366
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "As a result, the optimality of problem (P 1) is achieved when (29) holds. Therefore, by replacing $f _ { i } \\stackrel { \\triangle } { = } f _ { i , n }$ , ∀n, problem (P1) is equivalently expressed as ",
+        "bbox": [
+            503,
+            372,
+            921,
+            417
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\min _ {\\boldsymbol {Q} \\succeq \\boldsymbol {0}, t, \\ell , \\{f _ {i} \\}} T \\operatorname{tr} (\\boldsymbol {Q}) + \\sum_ {i = 1} ^ {K} \\alpha \\ell_ {i} \\tag {30a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            539,
+            422,
+            919,
+            465
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text { s.t. } \\quad C _ {i} (R _ {i} - \\ell_ {i}) / f _ {i} \\leq T, \\forall i \\in \\mathcal {K} \\tag {30b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            560,
+            476,
+            919,
+            492
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\kappa_ {i} C _ {i} (R _ {i} - \\ell_ {i}) f _ {i} ^ {2} + \\frac {t _ {i}}{\\tilde {g} _ {i}} \\beta \\left(\\frac {\\ell_ {i}}{t _ {i}}\\right) + p _ {c, i} t _ {i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            591,
+            502,
+            851,
+            536
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n- T \\zeta \\operatorname{tr} (\\boldsymbol {Q} \\boldsymbol {H} _ {i}) \\leq 0, \\quad \\forall i \\in \\mathcal {K} \\tag {30c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            596,
+            545,
+            919,
+            561
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {i = 1} ^ {K} t _ {i} \\leq T, \\quad t _ {i} \\geq 0, 0 \\leq \\ell_ {i} \\leq R _ {i}, \\forall i \\in \\mathcal {K}. (3 0 d)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            571,
+            919,
+            614
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "For a given $( t , \\ell ) .$ , it is evident that the optimal $f _ { i } { } ^ { \\dag } \\mathrm { s }$ for (30) (equivalent (P 1)) should be as small as possible by (30c). Since $f _ { i }$ is bounded below by $C _ { i } ( R _ { i } - \\ell _ { i } ) / T$ in (30b), it follows that the optimal $f _ { i } ^ { \\mathrm { ~ \\tiny ~ , ~ } } \\mathrm { ~ s ~ }$ are ",
+        "bbox": [
+            503,
+            619,
+            919,
+            679
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {i} = C _ {i} (R _ {i} - \\ell_ {i}) / T, \\forall i \\in \\mathcal {K}. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            601,
+            688,
+            919,
+            704
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "It then readily follows that, at optimum of (P 1), $f _ { i , 1 } = \\dots =$ $f _ { i , C _ { i } ( R _ { i } - \\ell _ { i } ) } = C _ { i } ( R _ { i } - \\ell _ { i } ) / T , \\forall i \\in \\mathcal { K }$ . ",
+        "bbox": [
+            504,
+            710,
+            919,
+            743
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "B. Proof of ${ \\cal F } ( \\lambda ) \\succeq 0$ ",
+        "text_level": 1,
+        "bbox": [
+            504,
+            758,
+            655,
+            773
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "${ \\cal F } ( \\lambda ) \\succeq 0$ can be verified by contradiction. Assume that F(λ) is not positive semidefinite. Denote by ξ one eigenvector corresponding to the negative eigenvalue of $F ( \\lambda )$ . By setting ${ \\pmb Q } = \\tau \\pmb \\xi \\pmb \\xi ^ { H } \\succeq { \\bf 0 }$ with τ going to infinity (which is feasible for (13)), it follows that ",
+        "bbox": [
+            504,
+            777,
+            921,
+            853
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lim _ {\\tau \\to + \\infty} \\mathrm{tr} (Q F (\\lambda)) = \\lim _ {\\tau \\to + \\infty} \\tau \\xi^ {H} F (\\lambda) \\xi = - \\infty , \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            540,
+            859,
+            919,
+            883
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "which in turn implies that the objective value in (13) is unbounded below over $Q \\succeq 0$ . Therefore, in order for the dual function value $\\Phi ( \\lambda , \\mu )$ to be bounded below, we need $F ( \\lambda ) \\succeq 0 .$ . ",
+        "bbox": [
+            503,
+            888,
+            921,
+            949
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "1794 ",
+        "bbox": [
+            78,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 17, NO. 3, MARCH 2018 ",
+        "bbox": [
+            452,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            960,
+            908,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "C. Proof of Lemma 2 ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            70,
+            223,
+            85
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Given $( \\lambda , \\mu ) \\in { \\mathcal { S } } ,$ we solve problem (16a) for each user $i \\in \\mathcal K$ . When $\\lambda _ { i } = 0$ , the objective function in (16a) becomes $\\alpha \\ell _ { i } + \\mu t _ { i }$ . It is evident that $t _ { i } ^ { * } = 0$ and $\\ell _ { i } ^ { * } = 0$ are optimal for (16a). ",
+        "bbox": [
+            73,
+            90,
+            490,
+            148
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "For $\\lambda _ { i } > 0 .$ , the Lagrangian of (16a) is given by ",
+        "bbox": [
+            89,
+            150,
+            418,
+            165
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathcal {L} _ {i} = \\alpha \\ell_ {i} + \\frac {\\lambda_ {i} \\kappa_ {i} C _ {i} ^ {3} (R _ {i} - \\ell_ {i}) ^ {3}}{T ^ {2}} + \\frac {\\lambda_ {i} t _ {i}}{\\tilde {g} _ {i}} \\beta \\left(\\frac {\\ell_ {i}}{t _ {i}}\\right) + \\lambda_ {i} p _ {c, i} t _ {i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            83,
+            169,
+            459,
+            205
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n+ \\mu t _ {i} + \\gamma_ {i} (\\ell_ {i} - R _ {i}) - \\nu_ {i} \\ell_ {i} - \\eta_ {i} t _ {i}, (3 3)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            227,
+            205,
+            490,
+            220
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "where $\\gamma _ { i } , \\nu _ { i } ,$ and $\\eta _ { i }$ are the non-negative Lagrangian multipliers associated with $\\ell _ { i } ~ \\le ~ R _ { i } , ~ \\ell _ { i } ~ \\ge ~ 0$ , and $t _ { i } ~ \\geq ~ 0$ , respectively. Based on the KKT conditions [37], the necessary and sufficient conditions for the optimal primal-dual point $( t _ { i } ^ { * } , \\ell _ { i } ^ { * } , \\gamma _ { i } ^ { * } , \\nu _ { i } ^ { * } , \\eta _ { i } ^ { * } )$ are ",
+        "bbox": [
+            73,
+            229,
+            491,
+            306
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\nt _ {i} ^ {*} \\geq 0, \\quad 0 \\leq \\ell_ {i} ^ {*} \\leq R _ {i} \\tag {34a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            292,
+            311,
+            490,
+            328
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\gamma_ {i} ^ {*} \\geq 0, \\quad \\nu_ {i} ^ {*} \\geq 0, \\quad \\eta_ {i} ^ {*} \\geq 0 \\tag {34b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            251,
+            340,
+            490,
+            357
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\gamma_ {i} ^ {*} (\\ell_ {i} ^ {*} - R _ {i}) = 0, \\quad \\nu_ {i} ^ {*} \\ell_ {i} ^ {*} = 0, \\eta_ {i} ^ {*} t _ {i} ^ {*} = 0 \\tag {34c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            165,
+            369,
+            490,
+            386
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\lambda_ {i}}{\\tilde {g} _ {i}} \\left(\\beta \\left(\\frac {\\ell_ {i} ^ {*}}{t _ {i} ^ {*}}\\right) - \\frac {\\ell_ {i} ^ {*}}{t _ {i} ^ {*}} \\beta^ {\\prime} \\left(\\frac {\\ell_ {i} ^ {*}}{t _ {i} ^ {*}}\\right)\\right) + \\lambda_ {i} p _ {c, i} + \\mu - \\eta_ {i} ^ {*} = 0 \\tag {34d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            86,
+            396,
+            491,
+            431
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha - \\frac {3 \\lambda_ {i} \\kappa_ {i} C _ {i} ^ {3} (R _ {i} - \\ell_ {i} ^ {*}) ^ {2}}{T ^ {2}} + \\frac {\\lambda_ {i}}{\\tilde {g} _ {i}} \\beta^ {\\prime} \\left(\\frac {\\ell_ {i} ^ {*}}{t _ {i} ^ {*}}\\right) + \\gamma_ {i} ^ {*} - \\nu_ {i} ^ {*} = 0, (3 4 e)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            76,
+            441,
+            490,
+            479
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "where $\\textstyle \\beta ^ { \\prime } ( x ) \\triangleq { \\frac { \\sigma ^ { 2 } \\ln 2 } { B } } 2 ^ { \\frac { x } { B } }$ is the first-order derivative of $\\beta ( x )$ with respect to $x .$ . Note that (34c) denotes the complementary slackness condition, while the left-hand-side terms of (34d) and (34e) are the first-order derivatives of $\\mathscr { L } _ { i }$ with respect to $t _ { i } ^ { * }$ and $\\ell _ { i } ^ { * }$ , respectively. For the function $y ~ =$ $\\beta ( x ) - x \\beta ^ { \\prime } ( \\dot { x } )$ of $x ~ > ~ 0$ , its inverse function can be shown to be [36] ",
+        "bbox": [
+            73,
+            484,
+            491,
+            593
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx = \\frac {B}{\\ln 2} \\left(W _ {0} \\left(- \\frac {y}{\\sigma^ {2} e} - \\frac {1}{e}\\right) + 1\\right). \\tag {35}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            597,
+            490,
+            631
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Let $r _ { i } ^ { * } \\ \\triangleq \\ \\ell _ { i } ^ { * } / t _ { i } ^ { * }$ . From (34b) and (34d), we have $\\beta ( r _ { i } ^ { * } ) -$ $\\begin{array} { r } { r _ { i } ^ { * } \\beta ^ { \\prime } ( r _ { i } ^ { * } ) = - \\tilde { g } _ { i } \\left( \\frac { \\mu } { \\lambda _ { i } } + p _ { c , i } \\right) } \\end{array}$ . Based on (35), it follows that ",
+        "bbox": [
+            73,
+            637,
+            488,
+            676
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {i} ^ {*} = \\frac {B}{\\ln 2} \\left(W _ {0} \\left(\\frac {\\tilde {g} _ {i}}{\\sigma^ {2} e} \\left(\\frac {\\mu}{\\lambda_ {i}} + p _ {c, i}\\right) - \\frac {1}{e}\\right) + 1\\right). \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            114,
+            681,
+            490,
+            715
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Since $W _ { 0 } ( x )$ is a monotonically increasing function of $x \\geq - { \\frac { 1 } { e } }$ and $W _ { 0 } ( - { \\textstyle \\frac { 1 } { \\rho } } ) = - 1$ [36], it follows that $r _ { i } ^ { * } > 0$ with nonzero $p _ { \\mathrm { c } , i }$ . From (34c) and (34e), it is immediate that ",
+        "bbox": [
+            73,
+            720,
+            488,
+            768
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\ell_ {i} ^ {*} = \\left[ R _ {i} - \\sqrt {\\frac {1}{3 \\kappa_ {i} C _ {i} ^ {3}} \\left(\\frac {\\alpha}{\\lambda_ {i}} + \\frac {\\sigma^ {2} \\ln 2}{B \\tilde {g} _ {i}} 2 ^ {\\frac {r _ {i} ^ {*}}{B}}\\right)} \\right] ^ {+}. \\tag {37}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            124,
+            773,
+            490,
+            816
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "With (36) and (37), the optimal $t _ { i } ^ { * }$ is then obtained as $t _ { i } ^ { * } = \\ell _ { i } ^ { * } / r _ { i } ^ { * }$ . ",
+        "bbox": [
+            73,
+            821,
+            488,
+            854
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "D. Proof of Lemma 3 ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            869,
+            223,
+            883
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "The positive semidefinite constraint ${ \\cal F } ( \\lambda ) \\ \\succeq \\ 0$ can be equivalently expressed as a scalar inequality constraint as [37] ",
+        "bbox": [
+            73,
+            888,
+            491,
+            919
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\pi (\\lambda) \\triangleq \\min _ {\\| \\xi \\| = 1} \\boldsymbol {\\xi} ^ {H} \\boldsymbol {F} (\\lambda) \\boldsymbol {\\xi} \\geq 0. \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            179,
+            924,
+            490,
+            950
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Given a query point $\\lambda _ { 1 } \\ \\triangleq \\ [ \\lambda _ { 1 , 1 } , . . . , \\lambda _ { 1 , K } ] ^ { \\dagger }$ , one can find the normalized eigenvector v1 of $F ( \\lambda _ { 1 } )$ corresponding to the smallest eigenvalue of $F ( \\lambda _ { 1 } ) { \\mathrm { ~ } } ( { \\mathrm { i . e . , ~ } } \\pi ( \\lambda _ { 1 } ) )$ . Consequently, we can determine the value of the scalar constraint at a query point as $\\pi ( \\pmb { \\lambda } _ { 1 } ) = \\pmb { v } _ { 1 } ^ { H } \\pmb { F } ( \\pmb { \\lambda } _ { 1 } ) \\pmb { v } _ { 1 }$ . To obtain a subgradient, we have ",
+        "bbox": [
+            501,
+            69,
+            919,
+            159
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\pi (\\boldsymbol {\\lambda}) - \\pi (\\boldsymbol {\\lambda} _ {1}) = \\min _ {\\| \\boldsymbol {\\xi} \\| = 1} \\boldsymbol {\\xi} ^ {H} \\boldsymbol {F} (\\boldsymbol {\\lambda}) \\boldsymbol {\\xi} - \\boldsymbol {v} _ {1} ^ {H} \\boldsymbol {F} (\\boldsymbol {\\lambda} _ {1}) \\boldsymbol {v} _ {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            550,
+            167,
+            870,
+            193
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\leq \\boldsymbol {v} _ {1} ^ {H} (\\boldsymbol {F} (\\boldsymbol {\\lambda}) - \\boldsymbol {F} (\\boldsymbol {\\lambda} _ {1})) \\boldsymbol {v} _ {1} \\tag {39a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            653,
+            205,
+            919,
+            224
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n= \\sum_ {i = 1} ^ {K} \\left(\\lambda_ {1, i} - \\lambda_ {i}\\right) \\zeta \\boldsymbol {v} _ {1} ^ {H} \\boldsymbol {H} _ {i} \\boldsymbol {v} _ {1}, \\tag {39b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            651,
+            234,
+            919,
+            277
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "where the last equality follows from the affine structure of $F ( \\cdot )$ in (14b). By the weak subgradient calculus [37], the subgradient of $F ( \\lambda )$ at the given λ and $\\mu$ is then ",
+        "bbox": [
+            503,
+            282,
+            919,
+            328
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "equation",
+        "text": "$$\n[ \\zeta \\boldsymbol {v} ^ {H} \\boldsymbol {H} _ {1} \\boldsymbol {v}, \\dots , \\zeta \\boldsymbol {v} ^ {H} \\boldsymbol {H} _ {K} \\boldsymbol {v}, 0 ] ^ {\\dagger}, \\tag {40}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            604,
+            334,
+            919,
+            352
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "where v is the eigenvector corresponding to the smallest eigenvalue of $F ( \\lambda )$ , and the last zero entry follows from the fact that $\\pi ( \\lambda )$ is independent of $\\mu$ . ",
+        "bbox": [
+            503,
+            359,
+            919,
+            405
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            665,
+            422,
+            759,
+            435
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] F. Wang, J. Xu, X. Wang, and S. Cui, “Joint offloading and computing optimization in wireless powered mobile-edge computing systems,” in Proc. IEEE ICC, Paris, France, May 2017, pp. 1–6. ",
+            "[2] M. Chiang and T. Zhang, “Fog and IoT: An overview of research opportunities,” IEEE Internet Thing J., vol. 3, no. 6, pp. 854–864, Dec. 2016. ",
+            "[3] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “A survey on mobile edge computing: The communication perspective,” IEEE Commun. Survey Tuts., vol. 19, no. 4, pp. 2322–2358, 4th Quart., 2017. [Online]. Available: https://arxiv.org/abs/1701.01090 ",
+            "[4] S. Barbarossa, S. Sardellitti, and P. Di Lorenzo, “Communicating while computing: Distributed mobile cloud computing over 5G heterogeneous networks,” IEEE Signal Process. Mag., vol. 31, no. 6, pp. 45–55, Nov. 2014. ",
+            "[5] E. Cuervo et al., “MAUI: Making smartphones last longer with code offload,” in Proc. ACM MobiSys, San Francisco, CA, USA, Jun. 2010, pp. 49–62. ",
+            "[6] S. Kosta, A. Aucinas, P. Hui, R. Mortier, and X. Zhang, “ThinkAir: Dynamic resource allocation and parallel execution in the cloud for mobile code offloading,” in Proc. IEEE INFOCOM, Orlando, FL, USA, Mar. 2012, pp. 945–953. ",
+            "[7] Y. Hu, M. Patel, D. Sabella, N. Sprecher, and V. Young, “Mobile edge computing: A key technology towards 5G,” ETSI, Sophia Antipolis, France, White Paper 11, 2015. [Online]. Available: http://www.etsi.org/images/files/ETSIWhitePapers/etsi\\_wp11\\_mec\\_a\\_ key\\_technology\\_towards\\_5g.pdf ",
+            "[8] D. J. Love, R. W. Heath, V. K. N. Lau, D. Gesbert, B. D. Rao, and M. Andrews, “An overview of limited feedback in wireless communication systems,” IEEE J. Sel. Areas Commun., vol. 26, no. 8, pp. 1341–1365, Oct. 2008. ",
+            "[9] R. Zhang and C. K. Ho, “MIMO broadcasting for simultaneous wireless information and power transfer,” IEEE Trans. Wireless Commun., vol. 12, no. 5, pp. 1989–2001, May 2013. ",
+            "[10] D. W. K. Ng, E. S. Lo, and R. Schober, “Robust beamforming for secure communication in systems with wireless information and power transfer,” IEEE Trans. Wireless Commun., vol. 13, no. 8, pp. 4599–4615, Aug. 2014. ",
+            "[11] S. Timotheou, I. Krikidis, G. Zheng, and B. Ottersten, “Beamforming for MISO interference channels with QoS and RF energy transfer,” IEEE Trans. Wireless Commun., vol. 13, no. 5, pp. 2646–2658, May 2014. ",
+            "[12] S. Bi, C. K. Ho, and R. Zhang, “Wireless powered communication: Opportunities and challenges,” IEEE Commun. Mag., vol. 53, no. 4, pp. 117–125, Apr. 2015. "
+        ],
+        "bbox": [
+            504,
+            439,
+            926,
+            946
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: JOINT OFFLOADING AND COMPUTING OPTIMIZATION ",
+        "bbox": [
+            76,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "1795 ",
+        "bbox": [
+            895,
+            36,
+            919,
+            45
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            906,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[13] H. Li, J. Xu, R. Zhang, and S. Cui, “A general utility optimization framework for energy-harvesting-based wireless communications,” IEEE Commun. Mag., vol. 53, no. 4, pp. 79–85, Apr. 2015. ",
+            "[14] J. Xu, L. Liu, and R. Zhang, “Multiuser MISO beamforming for simultaneous wireless information and power transfer,” IEEE Trans. Signal Process., vol. 62, no. 18, pp. 4798–4810, Sep. 2014. ",
+            "[15] F. Wang, T. Peng, Y. Huang, and X. Wang, “Robust transceiver optimization for power-splitting based downlink MISO SWIPT systems,” IEEE Signal Process. Lett., vol. 22, no. 9, pp. 1492–1496, Sep. 2015. ",
+            "[16] F. Wang, C. Xu, Y. Huang, X. Wang, and X.-Q. Gao, “REEL-BF design: Achieving the SDP bound for downlink beamforming with arbitrary shaping constraints,” IEEE Trans. Signal Process., vol. 65, no. 10, pp. 2672–2685, May 2017. ",
+            "[17] Y. Zeng and R. Zhang, “Optimized training design for wireless energy transfer,” IEEE Trans. Commun., vol. 63, no. 2, pp. 536–550, Feb. 2015. ",
+            "[18] J. Xu and R. Zhang, “Energy beamforming with one-bit feedback,” IEEE Trans. Signal Process., vol. 62, no. 20, pp. 5370–5381, Oct. 2014. ",
+            "[19] J. Xu and R. Zhang, “A general design framework for MIMO wireless energy transfer with limited feedback,” IEEE Trans. Signal Process., vol. 64, no. 10, pp. 2475–2488, May 2016. ",
+            "[20] C. R. Valenta and G. D. Durgin, “Harvesting wireless power: Survey of energy-harvester conversion efficiency in far-field, wireless power transfer systems,” IEEE Microw. Mag., vol. 15, no. 4, pp. 108–120, Jun. 2014. ",
+            "[21] Y. Zeng, B. Clerckx, and R. Zhang, “Communications and signals design for wireless power transmission,” IEEE Trans. Commun., vol. 65, no. 5, pp. 2264–2290, May 2017. ",
+            "[22] S. Lee and R. Zhang, “Distributed wireless power transfer with energy feedback,” IEEE Trans. Signal Process., vol. 65, no. 7, pp. 1685–1699, Apr. 2017. ",
+            "[23] E. Boshkovska, D. W. K. Ng, N. Zlatanov, and R. Schober, “Practical non-linear energy harvesting model and resource allocation for SWIPT systems,” IEEE Commun. Lett., vol. 19, no. 12, pp. 2082–2085, Dec. 2015. ",
+            "[24] B. Clerckx and E. Bayguzina, “Waveform design for wireless power transfer,” IEEE Trans. Signal Process., vol. 64, no. 23, pp. 6313–6328, Dec. 2016. ",
+            "[25] F. Liu et al., “Gearing resource-poor mobile devices with powerful clouds: Architectures, challenges, and applications,” IEEE Wireless Commun., vol. 20, no. 3, pp. 14–22, Jun. 2013. ",
+            "[26] J. Liu, Y. Mao, J. Zhang, and K. B. Letaief, “Delay-optimal computation task scheduling for mobile-edge computing systems,” in Proc. IEEE ISIT, Barcelona, Spain, Jul. 2016, pp. 1451–1455. ",
+            "[27] D. Huang, P. Wang, and D. Niyato, “A dynamic offloading algorithm for mobile computing,” IEEE Trans. Wireless Commun., vol. 11, no. 6, pp. 1991–1995, Jun. 2012. ",
+            "[28] O. Munoz, A. Pascual-Iserte, and J. Vidal, “Optimization of radio and computational resources for energy efficiency in latency-constrained application offloading,” IEEE Trans. Veh. Technol., vol. 64, no. 10, pp. 4738–4755, Oct. 2015. ",
+            "[29] Y. Wang, M. Sheng, X. Wang, L. Wang, and J. Li, “Mobileedge computing: Partial computation offloading using dynamic voltage scaling,” IEEE Trans. Commun., vol. 64, no. 10, pp. 4268–4282, Aug. 2016. ",
+            "[30] M.-H. Chen, B. Liang, and M. Dong, “Joint offloading decision and resource allocation for multi-user multi-task mobile cloud,” in Proc. IEEE ICC, Kuala Lumpur, Malaysia, May 2016, pp. 1–6. ",
+            "[31] X. Chen, L. Jiao, W. Li, and X. Fu, “Efficient multi-user computation offloading for mobile-edge cloud computing,” IEEE/ACM Trans. Netw., vol. 24, no. 5, pp. 2795–2808, Oct. 2016. ",
+            "[32] C. You, K. Huang, H. Chae, and B.-H. Kim, “Energy-efficient resource allocation for mobile-edge computation offloading,” IEEE Trans. Wireless Commun., vol. 16, no. 3, pp. 1397–1411, Mar. 2017. ",
+            "[33] S. Sardellitti, G. Scutari, and S. Barbarossa, “Joint optimization of radio and computational resources for multicell mobile-edge computing,” IEEE Trans. Signal Inf. Process. Netw., vol. 1, no. 2, pp. 89–103, Jun. 2015. ",
+            "[34] C. You, K. Huang, and H. Chae, “Energy efficient mobile cloud computing powered by wireless energy transfer,” IEEE J. Sel. Areas Commun., vol. 34, no. 5, pp. 1757–1771, May 2016. "
+        ],
+        "bbox": [
+            71,
+            68,
+            495,
+            939
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[35] T. D. Burd and R. W. Brodersen, “Processor design for portable systems,” J. VLSI Signal Process. Syst., vol. 13, nos. 2–3, pp. 203–221, 1996. ",
+            "[36] R. M. Corless, G. H. Gonnet, D. E. G. Hare, D. J. Jeffrey, and D. E. Knuth, “On the Lambert W function,” Adv. Comput. Math., vol. 5, no. 1, pp. 329–359, Dec. 1996. ",
+            "[37] S. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, Mar. 2004. ",
+            "[38] S. Boyd, “Ellipsoid method,” Stanford Univ., Stanford, CA, USA, Tech. Rep., May 2014. [Online]. Available: http://stanford.edu/class/ee364b/lectures/ellipsoid\\_method\\_notes.pdf ",
+            "[39] M. Grant, S. Boyd, and Y. Ye. (2009). CVX: MATLAB Software for Disciplined Convex Programming. [Online]. Available: http://cvxr.com/cvx/ "
+        ],
+        "bbox": [
+            506,
+            71,
+            921,
+            227
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/3a56ff945c13944532f6e727f9fc726c38b6d7fe044e567cd92361e5f4ee2f5f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            402,
+            627,
+            520
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Feng Wang (M’16) received the B.Eng. degree from the Nanjing University of Posts and Telecommunications, China, in 2009, and the M.Sc. and Ph.D. degrees from Fudan University, China, in 2012 and 2016, respectively. From 2012 to 2013, he was a Research Fellow with the Department of Communication Technology, Sharp Laboratories of China. In 2017, he joined the Engineering Systems and Design Pillar, Singapore University of Technology and Design, as a Post-Doctoral Research Fellow. He is currently an Assistant Professor with the ",
+        "bbox": [
+            638,
+            398,
+            921,
+            525
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "School of Information Engineering, Guangdong University of Technology, China. His research interests include signal processing for communications, wireless power transfer, and edge computing. ",
+        "bbox": [
+            504,
+            525,
+            921,
+            560
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/87426fdda5d3df3dcdb0fbc9d109d92ce32ed8e2f330adf64463adba07b64b9a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in a dark polo shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            736,
+            627,
+            849
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Jie Xu (S’12–M’13) received the B.E. and Ph.D. degrees from the University of Science and Technology of China in 2007 and 2012, respectively. From 2012 to 2014, he was a Research Fellow with the Department of Electrical and Computer Engineering, National University of Singapore. From 2015 to 2016, he was a Post-Doctoral Research Fellow with the Engineering Systems and Design Pillar, Singapore University of Technology and Design. He is currently with the School of Information Engineering, Guangdong University of Technology, China. ",
+        "bbox": [
+            638,
+            729,
+            921,
+            856
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "His research interests include energy efficiency and energy harvesting in wireless communications, wireless information and power transfer, wireless securities, UAV communications, and mobile-edge computing. He was a recipient of the IEEE Signal Processing Society Young Author Best Paper Award in 2017. He is currently an Editor of the IEEE WIRELESS COMMUNICATIONS LETTERS, an Associate Editor of the IEEE ACCESS, and a Guest Editor of the IEEE WIRELESS COMMUNICATIONS. ",
+        "bbox": [
+            503,
+            856,
+            921,
+            935
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "1796 ",
+        "bbox": [
+            78,
+            36,
+            104,
+            45
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, VOL. 17, NO. 3, MARCH 2018 ",
+        "bbox": [
+            452,
+            35,
+            921,
+            46
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            83,
+            962,
+            908,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/bbd3d0e2698147b5737c5e46bbbf24acdfe1b6aabf0e060aef14691002888180.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing a plaid shirt (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            76,
+            75,
+            197,
+            193
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Xin Wang (SM’09) received the B.Sc. and M.Sc. degrees in electrical engineering from Fudan University, Shanghai, China, in 1997 and 2000, respectively, and the Ph.D. degree in electrical engineering from Auburn University, Auburn, AL, USA, in 2004. ",
+        "bbox": [
+            207,
+            71,
+            491,
+            141
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "From 2004 to 2006, he was a Post-Doctoral Research Associate with the Department of Electrical and Computer Engineering, University of Minnesota, Minneapolis, MN, USA. In 2006, he joined the Department of Computer and Electrical ",
+        "bbox": [
+            207,
+            141,
+            491,
+            198
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Engineering and Computer Science, Florida Atlantic University, Boca Raton, FL, USA, as an Assistant Professor, and then an Associate Professor since 2010. He is currently a Distinguished Professor with the Department of Communication Science and Engineering, Fudan University. His research interests include stochastic network optimization, energy-efficient communications, cross-layer design, and signal processing for communications. He served as an Associate Editor for the IEEE SIGNAL PROCESSING LETTERS. He currently serves as an Associate Editor for the IEEE TRANSACTIONS ON SIGNAL PROCESSING and an Editor for the IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY. ",
+        "bbox": [
+            73,
+            198,
+            490,
+            311
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/6930648fa73c60309e583956a04f4f68d72fdeee420207d381a7f10ed3b9088e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and formal attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            506,
+            75,
+            627,
+            193
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Shuguang Cui (S’99–M’05–SM’12–F’14) received the Ph.D. degree in electrical engineering from Stanford University, Stanford, CA, USA, in 2005. He was an Assistant, Associate, and Full Professor in electrical and computer engineering with The University of Arizona and Texas A&M University. He is currently a Child Family Endowed Chair Professor of electrical and computer engineering with the University of California, Davis, CA, USA. His current research interests focus on data-driven large-scale system control and resource management, largedata-set analysis, Internet of Things system design, energy-harvesting-based communication system design, and cognitive network optimization. He was selected as the Thomson Reuters Highly Cited Researcher and listed in the Worlds’ Most Influential Scientific Minds by ScienceWatch in 2014. He was a recipient of the IEEE Signal Processing Society 2012 Best Paper Award. He has served as the general co-chair and TPC co-chair for many IEEE conferences. He has also been serving as an Area Editor for the IEEE Signal Processing Magazine and an Associate Editor for the IEEE TRANSACTIONS ON BIG DATA, the IEEE TRANSACTIONS ON SIGNAL PROCESSING, the IEEE JSAC Series on Green Communications and Networking, and the IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS. He was an Elected Member of the IEEE Signal Processing Society SPCOM Technical Committee from 2009 to 2014 and the Elected Chair of the IEEE ComSoc Wireless Technical Committee from 2017 to 2018. He was elected as the IEEE ComSoc Distinguished Lecturer in 2014. He is a member of the Steering Committee for the IEEE TRANSACTIONS ON BIG DATA and the IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING. He is also a member of the IEEE ComSoc Emerging Technology Committee. ",
+        "bbox": [
+            638,
+            71,
+            921,
+            198
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            503,
+            198,
+            921,
+            402
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: JOINT OFFLOADING AND COMPUTING OPTIMIZATION ",
+        "bbox": [
+            76,
+            35,
+            444,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "1797 ",
+        "bbox": [
+            895,
+            36,
+            919,
+            46
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:05:54 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            84,
+            962,
+            910,
+            974
+        ],
+        "page_idx": 13
+    }
+]
