@@ -2,6 +2,29 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-04 — Curate 6 new sources (batch 3/8): DNN-VEC-diffusion, decentralized-offloading-game, DCBF-WSN-survey, drone-small-cells, multi-UAV-coverage, dynamic-trajectory-flight-dynamics + audit
+
+### Curated (6 sources)
+
+- [[liu-2025-mad2rl-dnn-vec]] — Liu et al. 2025, *IEEE TMC*, DOI `10.1109/TMC.2024.3486728`. DNN partitioning + task offloading in vehicular edge computing (VEC); **MAD2RL** = Lyapunov decoupling + diffusion-model-based MARL (first integration of diffusion model in MARL, claimed) + convex resource-allocation subroutine; simulated on OpenStreetMap/SUMO with VGG16/ResNet18.
+- [[chen-2015-decentralized-offloading-game]] — Chen 2015, *IEEE TPDS*, DOI `10.1109/TPDS.2014.2316834`. Mobile cloud computing; decentralized computation offloading game; **potential-game** structure → NE always exists; decentralized mechanism converges in O(N log N); PoA ≤ ~10% vs centralized optimum.
+- [[jayaprakasam-2017-dcbf-wsn-survey]] — Jayaprakasam et al. 2017, *IEEE COMST*, DOI `10.1109/COMST.2017.2720690`. Survey of **distributed and collaborative beamforming (DCBF)** in WSNs: four research directions (beampattern, power/lifetime, synchronization, prototypes); N²-fold received-power gain anchor.
+- [[mozaffari-2015-drone-small-cells]] — Mozaffari et al. 2015, *IEEE GLOBECOM*. DOI not in parse. Drone-small-cell optimal altitude (proven unique analytically) + two-DSC optimal distance in interference-free and full-interference scenarios.
+- [[mozaffari-2016-efficient-multi-uav-coverage]] — Mozaffari et al. 2016, *IEEE LCOMM*, DOI `10.1109/LCOMM.2016.2578312`. Multi-UAV coverage probability + **circle-packing** deployment for M UAVs; non-overlap altitude upper bound; minimum-UAV-count formula.
+- [[wang-2025-maddpg-lc-dynamic-trajectory]] — Wang et al. 2025, *IEEE TVT*, DOI `10.1109/TVT.2024.3485182`. Multi-UAV MEC with explicit **UAV flight-dynamics** constraints; **MADDPG-LC** = MADDPG desired-trajectory + LQR tracking control + CVXPY resource allocation + blockchain security.
+
+### New concepts
+
+None — all referenced concepts mapped to existing slugs ([[vehicular-mec]], [[dnn-model-partition]], [[lyapunov-optimization]], [[diffusion-model-as-optimizer]], [[potential-game]], [[nash-equilibrium]], [[collaborative-beamforming]], [[drone-cell-3d-placement]], [[air-to-ground-channel-model]], [[maddpg]], [[centralized-training-decentralized-execution]], [[blockchain-for-fl-aggregation]], [[uav-trajectory-control]]).
+
+### Audit notes
+
+- DOIs verified in parse: TMC.2024.3486728, TPDS.2014.2316834, COMST.2017.2720690, LCOMM.2016.2578312, TVT.2024.3485182. GLOBECOM 2015 DOI not in parse — left as `not in parse`.
+- Venues verified in parse: IEEE TMC, IEEE TPDS, IEEE COMST, IEEE GLOBECOM, IEEE LCOMM, IEEE TVT — all confirmed.
+- `linkcheck.py` → NO DANGLING LINKS.
+- `process_refs.py` → clean.
+- Source count updated in `overview.md`: 226 → 232.
+
 ## 2026-06-03 — Curate 6 new sources (batch 2/8): resumed interrupted run — hybrid cloud-edge LEO offloading, communication-constrained MARL, MEC+DRL-in-NTN survey, ground-satellite UAM scheduling, cooperative UAV-RIS, covert mmWave + audit
 
 **Resumed an interrupted curation run** (a prior batch-2 invocation was cut off by a network issue, leaving uncommitted partial work in the tree). This is **batch 2/8** of the 43-paper run (`make_batches.py` plan in `.curation-out/batches.json`); batch 1 committed at `dd019c9`. Resume reconciliation: HEAD still at `dd019c9`; `git status` showed the in-flight set = the 6 source pages of `batches.json["batch2"]` + 5 concept pages + 2 modified entity rosters. The stale `.curation-out/batch2of8-decisions.md` describes a *different* paper set (an old `batches-remaining.json` plan) and was ignored in favor of `batches.json` + the on-disk in-flight pages; `.curation-out/batch2-actual-decisions.md` is the authoritative record.
