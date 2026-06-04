@@ -6,6 +6,11 @@
 
 - [[mao-2017-mec-survey-communication]] — Mao et al. 2017. Canonical **MEC survey** from the communication perspective (joint radio + compute resource management).
 - [[mach-2017-mec-survey-architecture]] — Mach & Becvar 2017. **MEC survey** from the architecture + computation-offloading angle; MCC-vs-edge, integrated architectures (SCC/MMC/MobiScud/FMC/CONCERT) + ETSI, and the three offloading research areas (decision / resource allocation / mobility management) (IEEE COMST).
+- [[liang-2025-gai-semcom-survey]] — Liang et al. 2025. Survey of **GAI-driven semantic communication (SemCom)** networks — novel three-plane architecture, transceiver design, information effectiveness metrics, knowledge management, use cases (IEEE TCCN).
+- [[zhao-2025-gai-pls-survey]] — Zhao et al. 2025. Survey of **GAI for physical-layer security (PLS)** — GANs/AEs/VAEs/diffusion models across confidentiality, authentication, availability, resilience, integrity (IEEE TCCN).
+- [[li-2025-thz-um-mimo-ce-hybrid-field]] — Li & Madhukumar 2025. **Hybrid near- and far-field THz UM-MIMO channel estimation** — dictionary-learning (BD-ODL) + Bayesian CSCE + BCRB; significant NMSE improvement over LS/MMSE/CS baselines (IEEE TWC). *(THz/near-field PHY anchor.)*
+- [[wu-2019-irs-joint-beamforming]] — Wu & Zhang 2019. **Foundational IRS paper** — joint active (AP) + passive (IRS phase-shift) beamforming for SINR-constrained power minimization; asymptotic O(M²) passive gain; IRS matches massive MIMO with far fewer RF chains (IEEE TWC). *(IRS anchor.)*
+- [[he-2018-uav-altitude-beamwidth]] — He et al. 2018. Joint **UAV altitude and beamwidth optimization** for multiuser communications (MC/BC/MAC); fly-hover-and-communicate; optimal (H,Θ) differs by model (IEEE LCOMM). *(UAV-deployment anchor.)*
 - [[khoramnejad-2025-gai-wireless-optimization-survey]] — Khoramnejad & Hossain 2025. Survey of **generative AI** for xG/6G wireless network optimization (GANs, GDMs, GFlowNets) + NTN case study.
 - [[du-2024-gdm-network-optimization-tutorial]] — Du et al. 2024. **Tutorial** on **generative diffusion models** in network optimization (DRL enhancement, incentive/ISAC/SemCom/IoV case studies) (IEEE COMST).
 - [[wang-gai-isac-physical-layer]] — Wang et al. Overview of **generative AI for ISAC** from the physical-layer perspective; five GAI models + a diffusion SSG near-field DoA case study (~1.03° MSE) (IEEE Wireless Communications; year not in parse).
@@ -29,6 +34,7 @@
 
 ### Foundational DRL methods
 
+- [[mnih-2015-dqn-atari]] — Mnih et al. 2015. Origin paper for **DQN** — deep convolutional Q-learning with experience replay + target network; human-level Atari across 49 games with same architecture/hyperparameters (Nature).
 - [[fujimoto-2018-td3-actor-critic]] — Fujimoto et al. 2018. Origin paper for **TD3** — clipped double-Q + delayed policy updates + target smoothing to curb actor-critic overestimation (ICML).
 - [[schulman-2017-ppo]] — Schulman et al. 2017. Origin paper for **PPO** — clipped surrogate objective enabling multi-epoch first-order policy updates with TRPO-like stability (OpenAI; arXiv, venue/DOI not in parse).
 - [[lillicrap-2016-ddpg-continuous-control]] — Lillicrap et al. 2016. Origin paper for **DDPG** — off-policy actor-critic bringing DQN's replay + target networks to deterministic continuous control; soft target updates + OU exploration (ICLR; DOI/venue not in parse).
