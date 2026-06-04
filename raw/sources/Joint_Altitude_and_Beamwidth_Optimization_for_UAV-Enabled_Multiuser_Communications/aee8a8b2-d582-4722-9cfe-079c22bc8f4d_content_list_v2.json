@@ -1,0 +1,2881 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Joint Altitude and Beamwidth Optimization for UAV-Enabled Multiuser Communications"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                248,
+                71,
+                750,
+                116
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Haiyun He , Shuowen Zhang , Student Member, IEEE, Yong Zeng , Member, IEEE, and Rui Zhang , Fellow, IEEE"
+                    }
+                ]
+            },
+            "bbox": [
+                171,
+                125,
+                823,
+                165
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstract— We study multiuser communication systems enabled by an unmanned aerial vehicle (UAV) that is equipped with a directional antenna of adjustable beamwidth. We propose a flyhover-and-communicate protocol, where the ground terminals are partitioned into disjoint clusters that are sequentially served by the UAV as it hovers above the corresponding cluster centers. We jointly optimize the UAV’s flying altitude and antenna beamwidth for throughput optimization in three fundamental multiuser communication models, namely, UAV-enabled downlink multicasting, downlink broadcasting, and uplink multiple access. Results show that the optimal UAV altitude and antenna beamwidth critically depend on the communication model considered."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                179,
+                491,
+                330
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Index Terms— UAV communication, altitude optimization, directional antenna, beamwidth optimization, wireless network."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                337,
+                491,
+                364
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "I. INTRODUCTION"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                215,
+                377,
+                351,
+                391
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "W IRELESS communication assisted by unmanned aerialvehicles (UAVs) is a promising technology to meet the vehicles (UAVs) is a promising technology to meet the highly diversified and dynamic data demands in future wireless systems [1]. Compared to existing technologies such as small cell and satellite communication, UAV-enabled wireless communication has appealing advantages, such as the ability of on-demand and fast deployment, higher capacity due to dominant line-of-sight (LoS) communication links with the ground terminals (GTs), and additional design degrees of freedom by exploiting the fully controllable UAV mobility. Thus, UAV-enabled communication is expected to play a significant role in future wireless systems, especially for applications such as data offloading for cellular base stations (BSs) in temporary hotspot areas, mobile relaying for emergency responses, periodic information dissemination and data collection in large Internet of Things (IoT) networks, etc."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                393,
+                491,
+                628
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To realize the full potential of UAV-enabled communication, it is crucial to maximally exploit the fully controllable UAV mobility in three-dimensional (3D) space. The horizontal/vertical positions of the UAVs could be optimized for their deployment, leading to various two-dimensional (2D) or 3D UAV placement designs [2]–[8]. Furthermore, the UAVs’ locations could be contiguously adjusted over time to best meet the communication requirement, which leads to the more general UAV trajectory optimization problems [9], [10]."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                630,
+                491,
+                762
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "However, the existing works mainly assume that the UAVs are equipped with either omnidirectional antenna or directional"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                763,
+                491,
+                792
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Manuscript received September 9, 2017; revised November 3, 2017; accepted November 6, 2017. Date of publication November 10, 2017; date of current version February 9, 2018. The associate editor coordinating the review of this paper and approving it for publication was K. N. Pappi. (Corresponding author: Yong Zeng.)"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                801,
+                491,
+                859
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors are with the Department of Electrical and Computer Engineering, National University of Singapore, Singapore 117583 (e-mail: haiyun.he@u.nus.edu; shuowen.zhang@u.nus.edu; elezeng@ nus.edu.sg; elezhang@nus.edu.sg)."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                859,
+                491,
+                905
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Digital Object Identifier 10.1109/LCOMM.2017.2772254 antenna with fixed beamwidth. In this letter, we consider the new case where the UAV is equipped with a directional antenna whose beamwidth can be adjusted. Note that with contemporary beamwidth tuning technologies [11], antennas with tunable radiation patterns have already been applied for various applications such as satellite communication and remote sensing. For UAV-enabled wireless communication systems with tunable antenna beamwidth, there is in general an interesting trade-off in adjusting the antenna beamwidth of the UAV versus its altitude above a ground position. Specifically, for a given UAV altitude, increasing the antenna beamwidth helps cover more GTs within the antenna’s main lobe, but at the cost of reduced link capacity for each of those GTs due to the reduced antenna gain in the main lobe. On the other hand, for a given antenna beamwidth, an increase in the UAV altitude would cover more GTs, but with lower link capacity for each GT due to the increased link distance."
+                    }
+                ]
+            },
+            "bbox": [
+                86,
+                905,
+                397,
+                917
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                501,
+                178,
+                921,
+                428
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To optimally resolve such a trade-off, we study in this letter the joint UAV altitude and beamwidth optimization problem for UAV-enabled multiuser communication systems. We propose a practical fly-hover-and-communicate protocol, where the GTs are partitioned into disjoint clusters with the size of each cluster determined by the area projected by the antenna’s main lobe on the ground. Each cluster is then sequentially served by the UAV as it hovers above the corresponding cluster center. Note that although this protocol may be suboptimal in general, it is favorable for practical implementation. We study three fundamental UAV-enabled multiuser communication models, namely, downlink multicasting (MC), where the UAV sends common information to all GTs in each cluster, downlink broadcasting (BC), where the UAV sends independent information to different GTs via frequency division multiple access (FDMA), and uplink multiple access (MAC), where each GT sends independent information to the UAV via FDMA. Our results show that the optimal UAV altitude and antenna beamwidth critically depend on the communication model considered."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                429,
+                921,
+                724
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "II. SYSTEM MODEL"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                638,
+                750,
+                785,
+                762
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We consider a UAV-enabled wireless communication system as shown in Fig. 1, where the UAV is deployed as a flying BS at an altitude of H meters (m) to serve K GTs in a large area A of size "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "A ~ \\mathrm { m } ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The GTs are assumed to be uniformly distributed in A with density "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\rho = \\frac { K } { A } \\operatorname { G T s } / \\mathrm { m } ^ { 2 } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". We assume that the UAV is equipped with a directional antenna of adjustable beamwidth. For simplicity, we assume that the azimuth and elevation half-power beamwidths of the UAV antenna are equal, which are both denoted as 2\u0003 in radians (rad), with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta \\in \\left( 0 , \\frac { \\pi } { 2 } \\right)"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Moreover, the corresponding antenna gain in direction (θ , ψ)"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                770,
+                921,
+                919
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "344"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                36,
+                98,
+                45
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE COMMUNICATIONS LETTERS, VOL. 22, NO. 2, FEBRUARY 2018"
+                    }
+                ]
+            },
+            "bbox": [
+                553,
+                35,
+                921,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "1558-2558 © 2017 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission."
+                    }
+                ]
+            },
+            "bbox": [
+                199,
+                922,
+                795,
+                935
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "See http://www.ieee.org/publications_standards/publications/rights/index.html for more information."
+                    }
+                ]
+            },
+            "bbox": [
+                233,
+                935,
+                764,
+                946
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:13 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                962,
+                910,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/a3e5271f22b5e041d608c752fbdc5a6cbaa99896054db9fda36e10a54e4930e3.jpg"
+                },
+                "content": "z\nH\nA\nC\ny\nx",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. A UAV-enabled outdoor wireless communication system."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "sub_type": "text_image",
+            "bbox": [
+                140,
+                70,
+                428,
+                204
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "is approximately modelled as"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                256,
+                277,
+                271
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "G = \\left\\{ \\begin{array}{l l} \\frac {G _ {0}}{\\Theta^ {2}}, & - \\Theta \\leq \\theta \\leq \\Theta , - \\Theta \\leq \\psi \\leq \\Theta \\\\ g \\approx 0, & \\text { otherwise }, \\end{array} \\right. \\tag {1}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/b4096d72a76e96426481afe36460e6dc9598f5d15b2dbfad328149ef28ddea21.jpg"
+                }
+            },
+            "bbox": [
+                124,
+                276,
+                491,
+                316
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { G _ { 0 } ~ = ~ \\frac { 3 0 0 0 0 } { 2 ^ { 2 } } \\times \\left( \\frac { \\pi } { 1 8 0 } \\right) ^ { 2 } ~ \\approx ~ 2 . 2 8 4 6 ; ~ \\theta } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\psi"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote the azimuth and elevation angles, respectively [12, eq. (2)– (51)]. Note that g satisfies "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { 0 < g \\ll \\frac { { \\bf \\dot { G } } _ { 0 } } { \\Theta ^ { 2 } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in practice, and we assume "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "g = 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "for simplicity. On the other hand, we assume that each GT is equipped with an omnidirectional antenna with unit gain. Thus, for any given UAV location, the disk region on the ground that is covered by the antenna’s main lobe with radius "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\bar { r } \\ = \\ H"
+                    },
+                    {
+                        "type": "text",
+                        "content": "tan \u0003 corresponds to the ground coverage area of the UAV, as illustrated in Fig. 1. Furthermore, we assume that the GTs are located outdoors in rural areas, and the communication channel between the UAV and each GT is dominated by the LoS path, thus the channel power gain between the UAV and a GT with horizontal distance "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r \\leq \\bar { r }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "to the UAV is given by"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                323,
+                491,
+                532
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "h (r) = \\frac {\\beta_ {0}}{H ^ {2} + r ^ {2}}, \\tag {2}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/098c687d4959a2892efa4ff21fa4b31eebcd88b08991d248d8e4570f0c1c660e.jpg"
+                }
+            },
+            "bbox": [
+                215,
+                537,
+                490,
+                568
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denotes the channel power gain at the reference distance "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "d _ { 0 } = 1 \\mathrm { m }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                571,
+                488,
+                599
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We assume that the area A is sufficiently large such that it can be partitioned into "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { N = \\frac { A } { A _ { s } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "As tessellated regular hexagonal cells denoted by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\{ \\mathcal { A } _ { i } \\} _ { i = 1 } ^ { N }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "for any given √ "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\bar { r } } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "each with equal circumradius "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\bar { r }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and size "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\dot { \\mathbf { A } } _ { s } = \\frac { 3 \\sqrt { 3 } } { 2 } \\hat { r } ^ { 2 } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", as illustrated in Fig. 1. The average number of GTs in each Ai is then given by"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                599,
+                491,
+                681
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "K _ {s} = \\rho A _ {s} = \\frac {3 \\sqrt {3}}{2} \\rho H ^ {2} \\tan^ {2} \\Theta . \\tag {3}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/a257d367192ce05f326e60f78b1d8600dad2c12273b0849a355a64de1308a7ec.jpg"
+                }
+            },
+            "bbox": [
+                171,
+                686,
+                490,
+                719
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "It is worth noting that the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "GTs in each Ai all lie within the UAV coverage area when the UAV is hovering above the center of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\mathcal { A } } _ { i } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denoted as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Under the proposed flyhover-and-communicate protocol, the UAV sequentially serves the GTs in A by successively flying over "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i } \\mathrm { ^ { * } s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "based on a certain order (e.g., that obtained via algorithms for solving the travelling salesman problem to minimize the total flying distance [13]), and hovering above each "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "for time duration "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "T _ { i } ~ > ~ 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "seconds (s) to communicate with the corresponding "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". In this letter, we assume that the UAV flying speed "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "V _ { m }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is sufficiently large and the sum hovering time is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\sum _ { i = 1 } ^ { N } \\bar { T } _ { i } \\gg \\frac { L } { V _ { m } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "where L denotes the total traveling distance. Thus the mission completion time can be expressed as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { T _ { \\mathrm { c o m p l e t i o n } } = \\sum _ { i = 1 } ^ { N } T _ { i } + } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\frac { L } { V _ { m } } \\approx \\sum _ { i = 1 } ^ { N } T _ { i } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Vm \u0005Ni =1 Ti ."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                720,
+                491,
+                949
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We assume that the feasible range of altitude H of the UAV is given by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "[ H _ { \\operatorname* { m i n } } , H _ { \\operatorname* { m a x } } ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H _ { \\operatorname* { m i n } } > 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H _ { \\operatorname* { m a x } } > H _ { \\operatorname* { m i n } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "are practically determined by e.g., obstacle heights and authority regulations; and the feasible range of half-beamwidth \u0003 is assumed to be "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "[ \\Theta _ { \\mathrm { m i n } } , \\Theta _ { \\mathrm { m a x } } ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { m i n } } > 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { m i n } } <"
+                    },
+                    {
+                        "type": "text",
+                        "content": "< "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { m a x } } < \\frac { \\pi } { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "are determined by the practical antenna beamwidth tuning technique adopted (e.g., [11]). For all multiuser systems considered, we denote W as the total communication bandwidth in Hz; "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { d }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in watt (W) as the transmission power at the UAV for the two downlink cases (MC and BC) and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { u }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "as the transmission power by each GT for the uplink case (MAC). Furthermore, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N _ { 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denotes the noise power spectrum density at all receivers in W/Hz."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                71,
+                921,
+                263
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "III. DOWNLINK MULTICASTING"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                596,
+                282,
+                828,
+                297
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, we consider the case of downlink MC, where the UAV has a mission to deliver a common file of total size "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\bar { D }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "bits to all GTs in A. Our objective is to minimize the mission completion time by jointly optimizing H and \u0003. As clarified in Section II, the mission completion time can be approximated by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { T _ { \\mathrm { M C } } \\approx \\sum _ { i = 1 } ^ { N } T _ { i } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                303,
+                919,
+                393
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "When the UAV hovers above "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", the received signal-tonoise ratio (SNR) at a GT with distance r to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is given by"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                393,
+                921,
+                422
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\gamma_ {\\mathrm{MC}} (r) = \\frac {P _ {d} G h (r)}{N _ {0} W} = \\frac {\\alpha}{\\Theta^ {2} (H ^ {2} + r ^ {2})}, \\quad 0 \\leq r \\leq \\bar {r}, \\tag {4}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/c6a4125f1d6a5d46e5ff0e2b38ee6df06f5bc7238430d4c8aa8750bdc7861d65.jpg"
+                }
+            },
+            "bbox": [
+                532,
+                429,
+                919,
+                462
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\alpha = \\frac { P _ { d } G _ { 0 } \\beta _ { 0 } } { N _ { 0 } W } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "PdG0β0N W . The corresponding achievable communi-0 cation rate is thus given by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { M C } } ( r ) = \\log _ { 2 } ( 1 + \\gamma _ { \\mathrm { M C } } ( r ) )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in bits per second per Hz (bps/Hz). By noting that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { M C } } ( r )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a decreasing function of r, it follows that the common file can be completely delivered to all GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "if Ti W "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\cdot { \\cal R } _ { \\mathrm { M C } } ( \\bar { r } ) \\geq \\bar { D }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "holds, with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { M C } } ( \\bar { r } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denoting the achievable rate of the celledge GT. Hence, the mission completion time for downlink MC with the proposed scheme can be written as"
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                468,
+                921,
+                590
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "T _ {\\mathrm{MC}} = \\frac {N \\bar {D}}{W R _ {\\mathrm{MC}} (\\bar {r})} = \\frac {\\frac {K \\bar {D}}{W}}{K _ {s} R _ {\\mathrm{MC}} (\\bar {r})} = \\frac {\\frac {K \\bar {D}}{W}}{\\tilde {R} _ {\\mathrm{MC}}}. \\tag {5}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/2a375b4a8478d63cd08be81d7f17cd45b689bb13a8f507235a3bdac0e78f5857.jpg"
+                }
+            },
+            "bbox": [
+                563,
+                597,
+                919,
+                638
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Consequently, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "T _ { \\mathrm { M C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is minimized by maximizing "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } } \\ \\stackrel { \\Delta } { = }"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s } R _ { \\mathrm { M C } } ( \\bar { r } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which can be explicitly expressed as"
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                645,
+                919,
+                680
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\tilde {R} _ {\\mathrm{MC}} (H, \\Theta) = \\frac {3 \\sqrt {3}}{2} \\rho H ^ {2} \\tan^ {2} \\Theta \\log_ {2} \\left(1 + \\frac {\\alpha \\cos^ {2} \\Theta}{\\Theta^ {2} H ^ {2}}\\right). \\tag {6}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/23d5b76fde728f4519a45cec36d7e865f16f2e1c4fb90c9c9880933edb98a60b.jpg"
+                }
+            },
+            "bbox": [
+                524,
+                686,
+                919,
+                722
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "It is worth noting that as H or \u0003 increases, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "given in (3) increases, while "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { M C } } ( \\bar { r } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "decreases. To balance the above trade-off and find the optimal H and \u0003 for maximizing "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", we present the following results."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                727,
+                919,
+                787
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Proposition 1: For any given "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta \\in [ \\Theta _ { \\operatorname* { m i n } } , \\Theta _ { \\operatorname* { m a x } } ] , \\tilde { R } _ { \\operatorname { M C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a non-decreasing function of H , with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H > 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                786,
+                919,
+                816
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Proof: Define "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\tilde { \\alpha } _ { 1 } ~ = ~ \\frac { \\alpha \\cos ^ { 2 } \\Theta } { \\Theta ^ { 2 } } , \\tilde { \\alpha } _ { 2 } ~ = ~ \\frac { 3 \\sqrt { 3 } } { 2 \\ln 2 } \\rho \\tan ^ { 2 } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "α cos2 \u0003 \u00032 2 ln 2 ρ tan2 \u0003 and 3  3 "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { \\cal H } \\ = \\ \\cal H ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "wn that, which i "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\operatorname* { l i m } _ { { \\tilde { H } }  \\infty } \\frac { \\partial { \\tilde { R } } _ { \\mathrm { M C } } ( H , \\Theta ) } { \\partial { \\tilde { H } } } ~ = ~ 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "= 0, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\frac { \\partial ^ { 2 } \\tilde { R } _ { \\mathrm { M C } } ( H , \\Theta ) } { \\partial \\tilde { H } ^ { 2 } } = \\frac { - \\tilde { \\alpha } _ { 1 } ^ { 2 } \\tilde { \\alpha } _ { 2 } } { \\tilde { H } ( \\tilde { \\alpha } _ { 1 } + \\tilde { H } ) ^ { 2 } } < 0 } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\frac { \\partial \\tilde { R } _ { \\mathrm { M C } } ( H , \\Theta ) } { \\partial \\tilde { H } } \\geq } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "0 , \\forall \\tilde { H } > 0 ."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                816,
+                921,
+                901
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Proposition 1 implies that for any given \u0003, the optimal H "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H _ { \\mathrm { M C } } ^ { \\star } = H _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". This is because as H grows, the increase in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is more significant than the decrease in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { M C } } ( \\bar { r } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                902,
+                921,
+                946
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "HE et al.: JOINT ALTITUDE AND BEAMWIDTH OPTIMIZATION FOR UAV-ENABLED MULTIUSER COMMUNICATIONS"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                35,
+                697,
+                46
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "345"
+                    }
+                ]
+            },
+            "bbox": [
+                900,
+                36,
+                919,
+                45
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:13 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                962,
+                908,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Next, we investigate the effect of \u0003 on "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "with given "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H = H _ { \\operatorname* { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". However, due to the complicated expression of the derivative of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "with respect to \u0003, it is generally difficult to obtain a closed-form solution of the optimal \u0003 to maximize "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which is denoted as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M C } } ^ { \\star } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ". As a result, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M C } } ^ { \\star }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "needs to be obtained via a one-dimensional search over "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "[ \\Theta _ { \\mathrm { m i n } } , \\Theta _ { \\mathrm { m a x } } ] ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", for which the numerical results will be given later in Section VI. Nevertheless, it can be shown√ from (6) that limH→∞ "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\tilde { R } _ { \\mathrm { M C } } ( H , \\Theta ) = \\frac { 3 \\sqrt { 3 } } { 2 } \\rho \\alpha \\frac { \\sin ^ { 2 } \\Theta } { \\Theta ^ { 2 } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "\u00032 , which yields \u0003\fMC "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M C } } ^ { \\star } = \\Theta _ { \\mathrm { m i n } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", since Thus, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\frac { \\sin ^ { 2 } \\Theta } { \\Theta ^ { 2 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "ecreasing function ofis sufficiently large, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta , \\ : 0 \\ : < \\ : \\Theta \\ : < \\ : \\frac { \\pi } { 2 }"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H _ { \\mathrm { m a x } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "the corresponding optimal beamwidth is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M C } } ^ { \\star } = \\Theta _ { \\mathrm { m i n } } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                70,
+                491,
+                265
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "IV. DOWNLINK BROADCASTING"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                166,
+                279,
+                398,
+                292
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Next, we consider the case of downlink BC where the UAV needs to send independent information to each of the GTs in A. Our objective is to maximize the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { G T s } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "sum throughput within a given period "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "T _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(in s) via joint optimization of H and \u0003. Let the sum rate of all GTs in each cell "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "be denoted by RBC in bps/Hz. Then the total throughput of all cells is given by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { D _ { \\mathrm { B C } } = \\sum _ { i = 1 } ^ { N } T _ { i } W R _ { \\mathrm { B C } } = T _ { \\mathrm { B C } } W \\bar { R } _ { \\mathrm { B C } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in bits. Hence, maximizing "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "D _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is equivalent to maximizing "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Note that a closed-form expression of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is generally difficult to obtain since it involves integration of GT rates over uniform distribution in the hexagonal cell Ai . For analytical tractability, we assume that when the UAV hovers above each "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", it serves all GTs within the disk region "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "centered at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "with the same radius r¯ as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", as shown in Fig. 1, which is of size "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ A _ { s } ^ { \\prime } = } \\pi \\bar { r } ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Thus, there are on average "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\bar { K _ { s } ^ { \\prime } } = \\rho A _ { s } ^ { \\prime } = \\rho \\pi H ^ { 2 } \\tan ^ { 2 } \\Theta"
+                    },
+                    {
+                        "type": "text",
+                        "content": "GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "whose sum rate is denoted by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in bps/Hz. In the sequel, we aim to maximize "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "as an approximation of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                297,
+                491,
+                551
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We assume FDMA for the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "GTs to be simultaneously served by the UAV in each "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", where each GT is allocated with an equal bandwidth "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\frac { W } { K _ { s } ^ { \\prime } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Moreover, we consider the equal power allocation scheme, where the total UAV downlink transmission power "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { d }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is equally allocated to the "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "GTs in each "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Thus, when the UAV hovers above "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", the received SNR at a GT with distance r to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is given by"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                551,
+                491,
+                657
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\gamma_ {\\mathrm{BC}} (r) = \\frac {\\frac {P _ {d}}{K _ {s} ^ {r}} G h (r)}{N _ {0} \\frac {W}{K _ {s} ^ {r}}} = \\frac {\\alpha}{\\Theta^ {2} (H ^ {2} + r ^ {2})}, \\quad 0 \\leq r \\leq \\bar {r}. \\tag {7}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/0c92b63364fb8daf50c17131490ed1cbc64d7b7cb64ed23048991ab6e2d26713.jpg"
+                }
+            },
+            "bbox": [
+                91,
+                662,
+                488,
+                705
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The corresponding GT rate is then given by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { B C } } ( r ) ~ ="
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r l r } { \\frac { 1 } { K _ { s } ^ { \\prime } } \\log _ { 2 } { ( 1 + \\gamma _ { \\mathrm { B C } } ( r ) ) } } & { = } & { \\frac { \\log _ { 2 } { \\left( 1 + \\frac { \\alpha } { \\Theta ^ { 2 } ( H ^ { 2 } + r ^ { 2 } ) } \\right) } } { \\rho \\pi H ^ { 2 } \\tan ^ { 2 } { \\Theta } } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "bps/Hz. Hence, the total communication rate of all GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is given by"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                710,
+                491,
+                770
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\tilde {R} _ {\\mathrm{BC}} (H, \\Theta) \\\\ = \\int_ {0} ^ {2 \\pi} \\int_ {0} ^ {H \\tan \\Theta} \\rho R _ {\\mathrm{BC}} (r) r d r d \\theta \\\\ = \\frac {1}{\\sin^ {2} \\Theta} \\log_ {2} \\left(1 + \\frac {\\alpha \\cos^ {2} \\Theta}{\\Theta^ {2} H ^ {2}}\\right) - \\frac {1}{\\tan^ {2} \\Theta} \\log_ {2} \\left(1 + \\frac {\\alpha}{\\Theta^ {2} H ^ {2}}\\right) \\\\ + \\frac {\\alpha}{\\Theta^ {2} H ^ {2} \\tan^ {2} \\Theta} \\log_ {2} \\left(\\frac {\\Theta^ {2} H ^ {2} + \\alpha \\cos^ {2} \\Theta}{\\Theta^ {2} H ^ {2} \\cos^ {2} \\Theta + \\alpha \\cos^ {2} \\Theta}\\right). \\tag {8} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/61a70370ea5c2dce1fd81815a05807bdeda58611254f655c6aaf0c107aac1352.jpg"
+                }
+            },
+            "bbox": [
+                76,
+                775,
+                491,
+                898
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Note that there exists a trade-off between the individual GT rate, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { B C } } ( r )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and the number of GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime } , \\ K _ { s } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which are decreasing and increasing functions of both H and \u0003, respectively. To obtain the optimal H and \u0003 to maximize "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", we provide the following proposition."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                901,
+                491,
+                946
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                71,
+                919,
+                99
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Proposition 2: For any given "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta \\in [ \\Theta _ { \\operatorname* { m i n } } , \\Theta _ { \\operatorname* { m a x } } ] , \\ \\tilde { R } _ { \\mathrm { B C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is a decreasing function of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H _ { ; }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H > 0"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                99,
+                919,
+                128
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Proof: Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { H } = H ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". It can be shown that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\frac { \\partial \\tilde { R } _ { \\mathrm { B C } } ( H , \\Theta ) } { \\partial \\tilde { H } } = } \\end{array}"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\frac { \\alpha } { \\tilde { H } ^ { 2 } \\Theta ^ { 2 } \\tan ^ { 2 } \\Theta } \\left( \\log _ { 2 } \\left( \\tilde { H } + \\frac { \\alpha } { \\Theta ^ { 2 } } \\right) - \\log _ { 2 } \\left( \\frac { \\tilde { H } } { \\cos ^ { 2 } \\Theta } + \\frac { \\alpha } { \\Theta ^ { 2 } } \\right) \\right) } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "which is negative since "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\cos ^ { 2 } \\Theta < 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "for any "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta \\in [ \\Theta _ { \\operatorname* { m i n } } , \\Theta _ { \\operatorname* { m a x } } ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                128,
+                919,
+                188
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Proposition 2 indicates that given any \u0003, the optimal H in the downlink BC case is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H _ { \\mathrm { B C } } { } ^ { \\star } = H _ { \\operatorname* { m i n } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which is in sharp contrast to the previous case of downlink MC in Section III. This can be intuitively explained as follows. Note that due to the bandwidth partitioning for FDMA, as H increases, each individual GT rate in downlink BC decreases more quickly than that in downlink MC, since in the BC case each GT is assigned smaller portion of the total bandwidth and less power with the increasing number of GTs served. On the other hand, due to the difficulty in deriving a closed-form expression of the optimal \u0003 from (8), we examine the effect of the beamwidth \u0003 on "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "numerically in Section VI."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                188,
+                921,
+                364
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "V. UPLINK MULTIPLE ACCESS"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                602,
+                388,
+                823,
+                402
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Last, we consider the case of uplink MAC, where each GT in A needs to send independent information to the UAV. Our objective is to maximize the GTs’ sum throughput within a given period "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "T _ { \\mathrm { M A C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(in s) by jointly optimizing H and \u0003. Similar to the case of downlink BC in Section IV, we assume that the UAV serves all "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "via FDMA with equal bandwidth allocation over the served GTs, thus the sum throughput is maximized by maximizing the total communication rate of all GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", denoted as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M A C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                412,
+                921,
+                545
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "When the UAV hovers above "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "the received SNR at the UAV from a GT with distance r to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { i }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is given by"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                545,
+                919,
+                575
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\gamma_ {\\mathrm{MAC}} (r) = \\frac {P _ {u} h (r) G}{N _ {0} \\frac {W}{K _ {s} ^ {\\prime}}} = \\frac {\\eta H ^ {2} \\tan^ {2} \\Theta}{\\Theta^ {2} (H ^ {2} + r ^ {2})}, \\quad 0 \\leq r \\leq \\bar {r}, \\tag {9}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/5f0073959a38f636a79072c2e1f52a54e21611404049fd803b8a55c145fa7e52.jpg"
+                }
+            },
+            "bbox": [
+                529,
+                584,
+                921,
+                625
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { \\eta \\ : = \\ : \\frac { P _ { u } \\beta _ { 0 } G _ { 0 } \\rho \\pi } { N _ { 0 } W } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Puβ0G0ρπ . The corresponding GT rate is given N0W by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { R _ { \\mathrm { M A C } } ( r ) = \\frac { 1 } { K _ { \\cdot } ^ { \\prime } } \\log _ { 2 } { ( 1 + \\gamma _ { \\mathrm { M A C } } ( r ) ) } } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "bps/Hz, which can be s shown to decrease as H or \u0003 increases, since the decrease in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\frac { 1 } { K _ { s } ^ { \\prime } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is more significant than the increase in log2 "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( 1 + \\gamma _ { \\mathrm { M A C } } ( r ) )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The total rate of all GTs in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { A } _ { i } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is given by"
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                633,
+                921,
+                717
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\begin{array}{l} \\tilde {R} _ {\\mathrm{MAC}} (H, \\Theta) \\\\ = \\int_ {0} ^ {2 \\pi} \\int_ {0} ^ {H \\tan \\Theta} \\rho R _ {\\mathrm{MAC}} (r) r d r d \\theta \\\\ = \\frac {1}{\\tan^ {2} \\Theta} \\left[ \\frac {1}{\\cos^ {2} \\Theta} \\log_ {2} \\left(1 + \\frac {\\eta \\sin^ {2} \\Theta}{\\Theta^ {2}}\\right) - \\log_ {2} \\left(1 + \\frac {\\eta \\tan^ {2} \\Theta}{\\Theta^ {2}}\\right) \\right. \\\\ \\left. + \\frac {\\eta \\tan^ {2} \\Theta}{\\Theta^ {2}} \\log_ {2} \\left(1 + \\frac {\\Theta^ {2} \\tan^ {2} \\Theta}{\\Theta^ {2} + \\eta \\tan^ {2} \\Theta}\\right) \\right]. \\tag {10} \\\\ \\end{array}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/d59b370ab51207a497ea29d8da0c0e02a0ce901c623e88c80f5256e31fc4a685.jpg"
+                }
+            },
+            "bbox": [
+                511,
+                723,
+                921,
+                849
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Note that interestingly, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M A C } } ( H , \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is independent of H , since as H grows, the decrease in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { \\mathrm { M A C } } ( r )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "equally compensates the increase in "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "K _ { s } ^ { \\prime }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in (10). On the other hand, similar to the previous two cases, we will investigate the optimal \u0003, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M A C } } ^ { \\star } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "to maximize "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M A C } } ( H , \\Theta ) = \\tilde { R } _ { \\mathrm { M A C } } ( \\Theta )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "regardless of H via numerical examples in the next section."
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                857,
+                921,
+                946
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "346"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                36,
+                98,
+                45
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "IEEE COMMUNICATIONS LETTERS, VOL. 22, NO. 2, FEBRUARY 2018"
+                    }
+                ]
+            },
+            "bbox": [
+                553,
+                35,
+                921,
+                46
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:13 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                962,
+                908,
+                974
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/2aa2ed323b194239f67af44a5fc77baa71ac6d3992e8d787dd02aa4461c8c327.jpg"
+                },
+                "content": "| Θ (rad) | H=500m | H=1500m | H=2500m | H=3500m | H=4500m |\n| ------- | ------ | ------- | ------- | ------- | ------- |\n| 0.0     | 0.0000 | 0.0000  | 0.0000  | 0.0000  | 0.0000  |\n| 0.2     | 0.0100 | 0.0200  | 0.0300  | 0.0400  | 0.0600  |\n| 0.4     | 0.0200 | 0.0400  | 0.0600  | 0.1000  | 0.1500  |\n| 0.6     | 0.0300 | 0.0600  | 0.1000  | 0.1800  | 0.2200  |\n| 0.8     | 0.0400 | 0.1000  | 0.1500  | 0.2500  | 0.2800  |\n| 1.0     | 0.0500 | 0.1500  | 0.2200  | 0.2800  | 0.3200  |\n| 1.2     | 0.1500 | 0.2200  | 0.2800  | 0.2900  | 0.3100  |\n| 1.4     | 0.2500 | 0.2800  | 0.2900  | 0.2700  | 0.2800  |\n| 1.6     | 0.3500 | 0.3200  | 0.2700  | 0.2400  | 0.2400  |",
+                "chart_caption": [],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                143,
+                71,
+                423,
+                196
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/e86960bce3fef6474f4b9922b7d36f87e8e2f21d63cacf328cf71d17e5a31fa1.jpg"
+                },
+                "content": "| H (m) | R̃_BC analytical | R̃_BC simulation |\n|-------|-----------------|-----------------|\n| 0     | 15.0            | 15.0            |\n| 500   | 10.0            | 10.0            |\n| 1000  | 8.5             | 8.5             |\n| 1500  | 7.5             | 7.5             |\n| 2000  | 6.5             | 6.5             |\n| 2500  | 6.0             | 6.0             |\n| 3000  | 5.5             | 5.5             |\n| 3500  | 5.0             | 5.0             |\n| 4000  | 4.5             | 4.5             |\n| 4500  | 4.0             | 4.0             |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "versus "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta"
+                    },
+                    {
+                        "type": "text",
+                        "content": "under different H values in downlink MC."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                143,
+                215,
+                423,
+                335
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/155507dd01f4294036d3b592f6d9aedfffc73692369dc051b346f072b31f3666.jpg"
+                },
+                "content": "| Θ (rad) | RBC analytical | RBC simulation |\n| ------- | -------------- | -------------- |\n| 0.0     | 15.0           | 15.0           |\n| 0.2     | 12.0           | 12.0           |\n| 0.4     | 9.0            | 9.0            |\n| 0.6     | 7.5            | 7.5            |\n| 0.8     | 6.5            | 6.5            |\n| 1.0     | 5.5            | 5.5            |\n| 1.2     | 4.5            | 4.5            |\n| 1.4     | 3.0            | 3.0            |\n| 1.6     | 1.0            | 1.0            |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(a)Θ=1rad"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(b)H= 500m"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "versus H or \u0003 in downlink BC."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                143,
+                349,
+                423,
+                469
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "VI. NUMERICAL RESULTS"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                187,
+                523,
+                377,
+                536
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, we provide numerical results to validate our analysis. We consider "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\beta _ { 0 } = 1 . 4 2 \\times 1 0 ^ { - 4 } , \\ W = 1 0 \\mathrm { M H z } ,"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { d } ~ = ~ 1 0 \\mathrm { { d B m } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "P _ { u } ~ = ~ - 1 0 \\mathrm { d B m }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "N _ { 0 } = - 1 6 9 \\mathrm { d B m / H z } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\rho { = } 0 . 0 0 5 ~ \\mathrm { G T s } / \\mathrm { m } ^ { 2 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", unless specified otherwise."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                541,
+                491,
+                599
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "First, we consider the case of downlink MC and plot "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "given in (6) versus \u0003 under different values of H in Fig. 2. It can be observed that for any given "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta , \\tilde { R } _ { \\mathrm { M C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "increases with H , thus validating Proposition 1. Moreover, it is observed that given any H , "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "first increases and then decreases as \u0003 increases from 0 to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\textstyle { \\frac { \\pi } { 2 } } ;"
+                    },
+                    {
+                        "type": "text",
+                        "content": "; while the optimal "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M C } } ^ { \\star }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "that maximizes "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is shown to be non-increasing with H , which is consistent "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M C } } ^ { \\star } = \\Theta _ { \\mathrm { m i n } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "H→∞"
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                599,
+                491,
+                724
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Next, we consider the case of downlink BC. In Fig. 3, we plot the analytical results of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "given in (8), versus H with fixed "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta = \\frac { \\pi } { 1 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "rad or versus \u0003 with fixed "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "H = 5 0 0 \\mathrm { m }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". We also plot the simulation results of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "obtained by averaging over 100 independent realizations of GT locations, which are observed to match closely with the analytical results in Section IV. It is also observed that "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "decreases with H as well as \u0003, which is consistent with our analysis in Section IV and suggests that smaller H or \u0003 is desirable for maximizing "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { B C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                724,
+                491,
+                872
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Last, we consider the case of uplink MAC. In Fig. 4, we plot both the analytical and simulation results for "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M A C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "given in (10) versus \u0003 with arbitrary H and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\rho ~ ="
+                    },
+                    {
+                        "type": "text",
+                        "content": "0.001, 0.005 or 0.01 GTs/m2. It is observed that the analytical and simulation results match well. Moreover, for each given "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\rho ,"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M A C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "first increases and then decreases as \u0003 increases from 0 to "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\frac { \\pi } { 2 } } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and the optimal "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta _ { \\mathrm { M A C } } ^ { \\star }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "that maximizes "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M A C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "is almost the same for different values of "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\rho _ { ; }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which is 1.3195 (or 79.7271 in degree) if "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 . 3 1 9 5 \\in [ \\Theta _ { \\operatorname* { m i n } } , \\Theta _ { \\operatorname* { m a x } } ]"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", as indicated in Fig. 4."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                872,
+                491,
+                948
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/95a8190dada077359301044ac92dcf3aa28174bbeb65d135771c69bb30f0edc4.jpg"
+                },
+                "content": "| Θ (rad) | ρ = 0.001 analytical | ρ = 0.001 simulation | ρ = 0.005 analytical | ρ = 0.005 simulation | ρ = 0.010 analytical | ρ = 0.010 simulation |\n| ------- | --------------------- | --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |\n| 0.0     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 0.2     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 0.4     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 0.6     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 0.8     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 1.0     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 1.2     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 1.4     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |\n| 1.6     | 12.0                  | 12.0                  | 12.0                  | 12.0                  | 13.0                  | 13.0                  |",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\tilde { R } _ { \\mathrm { M A C } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "versus "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\Theta"
+                    },
+                    {
+                        "type": "text",
+                        "content": "under various GT density "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\rho"
+                    },
+                    {
+                        "type": "text",
+                        "content": "in uplink MAC."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "sub_type": "line chart",
+            "bbox": [
+                573,
+                70,
+                852,
+                191
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                503,
+                224,
+                921,
+                287
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "VII. CONCLUSION"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                643,
+                297,
+                781,
+                310
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this letter, we studied the joint altitude and beamwidth optimization problem for UAV-enabled multiuser communication systems. Three fundamental models were studied based on our proposed fly-hover-and-communicate protocol. Our results show drastically different rules for setting optimal altitude and beamwidth values in different multiuser models. We hope that the results provide new and helpful insights for the design of practical UAV-enabled communication systems. Extension of our results to the case with fading UAV-GT channels and/or multiple UAVs is an interesting direction of future work."
+                    }
+                ]
+            },
+            "bbox": [
+                501,
+                315,
+                921,
+                464
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "REFERENCES"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                663,
+                476,
+                761,
+                488
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Commun. Mag., vol. 54, no. 5, pp. 36–42, May 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] A. Al-Hourani, S. Kandeepan, and S. Lardner, “Optimal LAP altitude for maximum coverage,” IEEE Wireless Commun. Lett., vol. 3, no. 6, pp. 569–572, Dec. 2014."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] R. I. Bor-Yaliniz, A. El-Keyi, and H. Yanikomeroglu, “Efficient 3-D placement of an aerial base station in next generation cellular networks,” in Proc. IEEE Int. Conf. Commun. (ICC), Kuala Lumpur, Malaysia, May 2016, pp. 1–5."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Efficient deployment of multiple unmanned aerial vehicles for optimal wireless coverage,” IEEE Commun. Lett., vol. 20, no. 8, pp. 1647–1650, Aug. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Unmanned aerial vehicle with underlaid device-to-device communications: Performance and tradeoffs,” IEEE Trans. Wireless Commun., vol. 15, no. 6, pp. 3949–3963, Jun. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] V. Sharma, M. Bennis, and R. Kumar, “UAV-assisted heterogeneous networks for capacity enhancement,” IEEE Commun. Lett., vol. 20, no. 6, pp. 1207–1210, Apr. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] J. Lyu, Y. Zeng, R. Zhang, and T. J. Lim, “Placement optimization of UAV-mounted mobile base stations,” IEEE Commun. Lett., vol. 21, no. 3, pp. 604–607, Mar. 2017."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] J. Lyu, Y. Zeng, and R. Zhang, “Cyclical multiple access in UAV-aided communications: A throughput-delay tradeoff,” IEEE Wireless Commun. Lett., vol. 5, no. 6, pp. 600–603, Dec. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Y. Zeng and R. Zhang, “Energy-efficient UAV communication with trajectory optimization,” IEEE Trans. Wireless Commun., vol. 16, no. 6, pp. 3747–3760, Jun. 2017."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] T. Debogovic, J. P. Carrier, and J. Bartolic, “Partially reflective surface antenna with dynamic beamwidth control,” IEEE Antennas Wireless Propag. Lett., vol. 9, pp. 1157–1160, 2010."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] C. A. Balanis, Antenna Theory: Analysis and Design, 4th ed. Hoboken, NJ, USA: Wiley, 2016."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] G. Laporte, “The traveling salesman problem: An overview of exact and approximate algorithms,” Eur. J. Oper. Res., vol. 59, no. 2, pp. 231–247, Jun. 1992."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                503,
+                489,
+                923,
+                946
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "HE et al.: JOINT ALTITUDE AND BEAMWIDTH OPTIMIZATION FOR UAV-ENABLED MULTIUSER COMMUNICATIONS"
+                    }
+                ]
+            },
+            "bbox": [
+                76,
+                35,
+                697,
+                46
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "347"
+                    }
+                ]
+            },
+            "bbox": [
+                900,
+                36,
+                919,
+                45
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Authorized licensed use limited to: LNM Institute of Information Technology. Downloaded on June 03,2026 at 07:09:13 UTC from IEEE Xplore. Restrictions apply."
+                    }
+                ]
+            },
+            "bbox": [
+                83,
+                962,
+                908,
+                974
+            ]
+        }
+    ]
+]

@@ -2,6 +2,30 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-04 — Curate 6 new sources (batch 5/8): DQN, GAI-SemCom-survey, GAI-PLS-survey, THz-UM-MIMO-CE, IRS-beamforming, UAV-altitude-beamwidth + audit
+
+### Curated (6 sources)
+
+- [[mnih-2015-dqn-atari]] — Mnih et al. 2015, *Nature*. DOI not in parse. Foundational **DQN** paper: deep convolutional Q-learning + experience replay + target network; human-level control across 49 Atari games with a single algorithm/architecture.
+- [[liang-2025-gai-semcom-survey]] — Liang et al. 2025, *IEEE TCCN*, DOI `10.1109/TCCN.2024.3435524`. Survey of **GAI-driven SemCom networks**: three-plane architecture, multimodal transceiver design, information-effectiveness metrics, knowledge management (construction/update/sharing), use cases.
+- [[zhao-2025-gai-pls-survey]] — Zhao et al. 2025, *IEEE TCCN*, DOI `10.1109/TCCN.2024.3438379`. Survey of **GAI for physical-layer security**: GANs/AEs/VAEs/diffusion models applied to confidentiality, authentication, availability, resilience, integrity.
+- [[li-2025-thz-um-mimo-ce-hybrid-field]] — Li & Madhukumar 2025, *IEEE TWC*, DOI `10.1109/TWC.2024.3514141`. **Hybrid near- and far-field THz UM-MIMO CE**: BD-ODL dictionary learning + Bayesian CSCE + BCRB; significant NMSE improvement; converges within ~10 iterations.
+- [[wu-2019-irs-joint-beamforming]] — Wu & Zhang 2019, *IEEE TWC*, DOI `10.1109/TWC.2019.2936025`. Foundational **IRS paper**: joint active AP + passive IRS beamforming for power minimization; asymptotic O(M²) gain; IRS matches massive MIMO with far fewer RF chains.
+- [[he-2018-uav-altitude-beamwidth]] — He et al. 2018, *IEEE LCOMM*, DOI `10.1109/LCOMM.2017.2772254`. Joint **UAV altitude + beamwidth optimization** for multiuser communications (MC/BC/MAC); fly-hover-and-communicate; optimal pair differs by communication model.
+
+### New concepts
+
+None — all referenced concepts mapped to existing slugs.
+
+### Audit notes
+
+- DOIs verified in parse: TCCN.2024.3435524, TCCN.2024.3438379, TWC.2024.3514141, TWC.2019.2936025, LCOMM.2017.2772254 — all confirmed. Nature DQN paper: DOI not in parse.
+- Venues confirmed in parse: Nature, IEEE TCCN (×2), IEEE TWC (×2), IEEE LCOMM.
+- One dangling link fixed ([[hybrid_near_far_field]] removed from THz page).
+- One process-narration leak fixed ("batch 7/8" in liang-2025 Relation section, replaced with evergreen phrasing).
+- `linkcheck.py` → NO DANGLING LINKS. `process_refs.py` → clean.
+- Source count updated in `overview.md`: 238 → 244.
+
 ## 2026-06-04 — Curate 6 new sources (batch 4/8): multi-user-offloading-game, UAV-WSN-data-collection, UAV-MEC-ADMM, UAV-MEC-NOMA-OMA, IRS-UAV-SWIPT-DRL, GAI-RIS-resource-mgmt + audit
 
 ### Curated (6 sources)

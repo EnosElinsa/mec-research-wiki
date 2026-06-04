@@ -1,0 +1,58 @@
+---
+type: source
+title: "Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming"
+authors: ["Qingqing Wu", "Rui Zhang"]
+year: 2019
+url: "https://doi.org/10.1109/TWC.2019.2936025"
+venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+tags: [source, irs, beamforming, passive-beamforming, sinr, power-minimization, foundational-irs]
+related:
+  - "[[active-ris]]"
+  - "[[qingqing-wu]]"
+  - "[[an-2024-multilayer-ris-hap-swipt]]"
+  - "[[chu-2024-secure-ris-isac]]"
+  - "[[zhu-2024-crb-active-ris-isac]]"
+created: 2026-06-04
+updated: 2026-06-04
+---
+
+# Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming
+
+## Citation
+
+Wu, Q., & Zhang, R. (2019). *Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming*. **IEEE Transactions on Wireless Communications**, 18(11). DOI: 10.1109/TWC.2019.2936025. (Received 15 May 2019; accepted 12 August 2019; published 23 August 2019; current version 11 November 2019.)
+
+## TL;DR
+
+Foundational IRS paper. Studies an IRS-aided single-cell system (multi-antenna AP + multiple single-antenna users + one IRS). Formulates new **transmit-power minimization** problems solved by jointly optimizing the AP's **active transmit beamforming** and the IRS's **passive reflect beamforming** (phase shifts), subject to per-user SINR constraints. Proves that IRS-aided MIMO can match the rate performance of a massive MIMO system with significantly fewer active antennas/RF chains. Provides asymptotic analysis (infinitely large IRS) and deployment insights.
+
+## Problem framing
+
+5G massive MIMO and mmWave approaches improve spectral efficiency but are costly in hardware (RF chains) and energy. IRS — a planar array of passive programmable phase shifters — can shape radio propagation without any transmit RF chains, at low cost and with negligible power consumption. The IRS creates an additional controllable signal path from AP to users, enabling **3D passive beamforming** that augments the AP's active beamforming. The joint active+passive design is the key optimization challenge; without it, the IRS passive gain is not fully exploited.
+
+## System model
+
+- **AP:** N_T active antennas. **IRS:** M passive reflecting elements, each with an adjustable phase shift θ_m ∈ [0, 2π] (unit modulus constraint). **K single-antenna users.**
+- **Signal model:** users receive both the direct AP path and the AP→IRS→user reflected path; total received SINR is a function of both active beamforming vectors at the AP and the IRS phase-shift vector.
+- **Optimization (P1):** minimize total AP transmit power subject to per-user SINR ≥ γ_k; variables: AP beamforming vectors + IRS phase shifts. Non-convex due to unit-modulus constraint and coupled variables.
+- **Approach:** alternating optimization — for fixed IRS phases, AP beamforming is solved as second-order cone programming (SOCP); for fixed AP beamformers, IRS phases are solved via semidefinite relaxation (SDR).
+
+## Key findings
+
+- Joint active+passive beamforming with IRS achieves the **same rate performance as a massive MIMO system** (which has no IRS) while using significantly fewer active antennas and RF chains at the AP (parse Abstract, simulations).
+- Asymptotic analysis: with M IRS elements, the passive array gain scales as O(M²), meaning even a modest-size IRS can achieve large performance gains (parse Section IV).
+- Useful deployment insights: IRS should be placed close to either the AP or the users (not midway) to maximize received power (parse simulation Section V).
+- Semidefinite relaxation for the IRS phase-shift subproblem is shown to be tight (parse Section III).
+
+## Limitations / future work
+
+Single IRS, single cell. Phase shifts assumed continuous [0,2π]; practical discrete phase-shift architectures not treated here. Perfect CSI assumed throughout.
+
+## Relation to the corpus
+
+Qingqing Wu ([[qingqing-wu]]) is the first author. This is the foundational IRS joint-beamforming paper that underpins the majority of IRS corpus entries — [[an-2024-multilayer-ris-hap-swipt]], [[chu-2024-secure-ris-isac]], [[zhu-2024-crb-active-ris-isac]], [[chhea-2025-irs-uav-swipt-drl]], [[wu-2025-gai-ris-resource-management]], and others all build on the system model and alternating-optimization approach established here. The active vs. passive beamforming comparison establishes [[active-ris]] as a concept in the corpus.
+
+## Raw artifacts
+
+- `raw/sources/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming/full.md`
+- Original PDF and extracted figures (`images/`) in the same folder.
