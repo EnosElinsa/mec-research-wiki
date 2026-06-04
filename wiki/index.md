@@ -46,6 +46,7 @@
 ### Game-theoretic offloading & allocation
 
 - [[chen-2015-decentralized-offloading-game]] — Chen 2015. **Decentralized computation offloading game** for mobile cloud computing — potential game; Nash equilibrium existence + decentralized mechanism; ≤10% PoA over centralized optimum (IEEE TPDS).
+- [[chen-2016-multiuser-offloading-game-mec]] — Chen et al. 2016. **Multi-user computation offloading game** for mobile-edge cloud computing — NP-hard centrally; potential game + distributed NE algorithm; multi-channel interference + contention environments (IEEE/ACM ToN).
 - [[he-2019-euagame-user-allocation]] — He et al. 2019. **EUAGame** — edge user allocation as a potential game with a decentralized NE algorithm.
 - [[sun-2024-mvtora-postdisaster-vfc]] — Sun et al. 2024. Post-disaster aerial-terrestrial MEC + **vehicle fog computing**; game theory + convex + evolutionary (MVTORA).
 - [[chen-2022-qoe-game-end-edge-cloud]] — Chen et al. 2022. **QoE-aware decentralized end-edge-cloud offloading** as a **potential game** (MUTO-Game); self-interested user devices compete for channels + edge compute, maximizing sum QoE; proven NE existence + the distributed GDTO algorithm + a convergence bound and a **Price-of-Anarchy** worst-case guarantee (IEEE TMC).
@@ -93,6 +94,9 @@
 
 ### Classical / convex / optimization-based UAV-MEC
 
+- [[zhan-2018-uav-wsn-data-collection]] — Zhan et al. 2018. UAV **data collection** in WSN; joint wake-up schedule + trajectory to minimize max SN energy; general fading + outage constraint; SCA (IEEE WCL).
+- [[li-2020-energy-efficient-uav-mec-admm]] — Li et al. 2020. UAV-mounted cloudlet **energy efficiency** (compute-bits/energy ratio) maximization; Dinkelbach + SCA + **ADMM** distributed decomposition; Gaussian KDE for user-mobility prediction (IEEE TVT).
+- [[ji-2021-uav-mec-noma-oma-energy-min]] — Ji et al. 2021. UAV-MEC **weighted-sum energy minimization** (UAV + UDs) under **partial offloading** with OMA and NOMA; block alternating descent + SCA; OMA beats NOMA in this energy-min setting (IEEE IoT-J).
 - [[zhang-2019-uav-iot-comp-comm]] — Zhang et al. 2019. Joint computation + communication design for single-UAV MEC; Lagrangian duality + SCA.
 - [[yang-2019-sum-power-uav-mec]] — Yang et al. 2019. Multi-UAV-MEC **sum-power minimization** (UEs + UAV propulsion) over user association + power + compute-capacity + UAV location/altitude/beamwidth; compressive-sensing association + closed-form capacity + 1-D location search + fuzzy-c-means init (IEEE TWC).
 - [[yu-2020-uav-ec-collaborative-offloading]] — Yu et al. 2020. Collaborative UAV+edge-cloud offloading; SCA; beats UAV-only / EC-only.
@@ -141,6 +145,8 @@
 
 ### IRS / THz / anti-jamming
 
+- [[chhea-2025-irs-uav-swipt-drl]] — Chhea et al. 2025. IRS-aided UAV **SWIPT** network; **DRL** with SINR-map reward maximizes average EE over trajectory + IRS phase shifts + transmit power + PS ratio (IEEE TVT).
+- [[wu-2025-gai-ris-resource-management]] — Wu et al. 2025. **GAI + distributional RL (DBRL)** for RIS-aided 6G resource management; CDL cascade channel estimation + GAN-modeled distributional Q-function; maximizes joint EE + QoSSR (IEEE TCCN).
 - [[wu-2025-iopo-irs-uav-thz-mec]] — Wu et al. 2025. **IRS-assisted** multi-UAV THz MEC; two-stage IOPO (order-preserving offloading + WOA phases).
 - [[shao-2024-drl-antijamming-mec]] — Shao et al. 2024. **Anti-jamming** UAV-MEC resource management; PER-MATD3 (hardware-validated).
 - [[sun-2024-mfris-semantic-antijamming]] — Sun et al. 2024. **Multi-functional RIS** + **semantic** anti-jamming communication & computing for aerial-ground MEC; worst-case CSI; semantic-computation-rate max via monotonic optimization + DSOCP (+ GPI) (IEEE JSAC).

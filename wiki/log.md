@@ -2,6 +2,30 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-04 — Curate 6 new sources (batch 4/8): multi-user-offloading-game, UAV-WSN-data-collection, UAV-MEC-ADMM, UAV-MEC-NOMA-OMA, IRS-UAV-SWIPT-DRL, GAI-RIS-resource-mgmt + audit
+
+### Curated (6 sources)
+
+- [[chen-2016-multiuser-offloading-game-mec]] — Chen et al. 2016, *IEEE/ACM ToN*, DOI `10.1109/TNET.2015.2487344`. Multi-user offloading game for mobile-edge cloud computing in multi-channel wireless interference + contention environments; NP-hard centrally; **potential game** → NE always exists; distributed algorithm with bounded convergence time.
+- [[zhan-2018-uav-wsn-data-collection]] — Zhan et al. 2018, *IEEE WCL*, DOI `10.1109/LWC.2017.2776922`. UAV mobile data collector for WSN; joint wake-up schedule + trajectory to minimize max SN energy; general fading channel + outage constraint; SCA iterative algorithm; significant savings vs. static/straight-line benchmarks.
+- [[li-2020-energy-efficient-uav-mec-admm]] — Li et al. 2020, *IEEE TVT*, DOI `10.1109/TVT.2020.2968343`. UAV-mounted cloudlet EE maximization; Dinkelbach + SCA + **ADMM** distributed decomposition; Gaussian KDE user-mobility prediction.
+- [[ji-2021-uav-mec-noma-oma-energy-min]] — Ji et al. 2021, *IEEE IoT-J*, DOI `10.1109/JIOT.2020.3046788`. UAV-MEC weighted-sum energy minimization under partial offloading with OMA and NOMA; block alternating descent + SCA; OMA achieves lower total energy than NOMA in this setting.
+- [[chhea-2025-irs-uav-swipt-drl]] — Chhea et al. 2025, *IEEE TVT*, DOI `10.1109/TVT.2024.3519591`. IRS-aided UAV SWIPT network; **DRL** with SINR-map bivariate-normal reward; maximizes average EE over trajectory + IRS phase shifts + transmit power + PS ratio.
+- [[wu-2025-gai-ris-resource-management]] — Wu et al. 2025, *IEEE TCCN*, DOI `10.1109/TCCN.2024.3519384`. **GAI + distributional RL (DBRL)** with GAN-modeled distributional Q-function for RIS-aided 6G resource management; CDL cascade channel estimation; maximizes joint EE + QoSSR.
+
+### New concepts
+
+None — all referenced concepts mapped to existing slugs ([[potential-game]], [[nash-equilibrium]], [[uav-data-collection]], [[uav-trajectory-control]], [[alternating-direction-method-of-multipliers]], [[task-offloading]], [[binary-vs-partial-offloading]], [[simultaneous-wireless-information-and-power-transfer]], [[active-ris]], [[distributional-reinforcement-learning]], [[generative-diffusion-model]]).
+
+### Audit notes
+
+- DOIs verified in parse for all 6 sources.
+- Venues verified: IEEE/ACM ToN, IEEE WCL, IEEE TVT (×2), IEEE IoT-J, IEEE TCCN — all confirmed.
+- Haijun Zhang in [[wu-2025-gai-ris-resource-management]] shares affiliation/name with [[wang-2025-maddpg-lc-dynamic-trajectory]] — flagged for human confirmation before entity page creation.
+- `linkcheck.py` → NO DANGLING LINKS.
+- `process_refs.py` → clean.
+- Source count updated in `overview.md`: 232 → 238.
+
 ## 2026-06-04 — Curate 6 new sources (batch 3/8): DNN-VEC-diffusion, decentralized-offloading-game, DCBF-WSN-survey, drone-small-cells, multi-UAV-coverage, dynamic-trajectory-flight-dynamics + audit
 
 ### Curated (6 sources)
