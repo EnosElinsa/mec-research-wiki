@@ -11,6 +11,7 @@
 - [[li-2025-thz-um-mimo-ce-hybrid-field]] — Li & Madhukumar 2025. **Hybrid near- and far-field THz UM-MIMO channel estimation** — dictionary-learning (BD-ODL) + Bayesian CSCE + BCRB; significant NMSE improvement over LS/MMSE/CS baselines (IEEE TWC). *(THz/near-field PHY anchor.)*
 - [[wu-2019-irs-joint-beamforming]] — Wu & Zhang 2019. **Foundational IRS paper** — joint active (AP) + passive (IRS phase-shift) beamforming for SINR-constrained power minimization; asymptotic O(M²) passive gain; IRS matches massive MIMO with far fewer RF chains (IEEE TWC). *(IRS anchor.)*
 - [[he-2018-uav-altitude-beamwidth]] — He et al. 2018. Joint **UAV altitude and beamwidth optimization** for multiuser communications (MC/BC/MAC); fly-hover-and-communicate; optimal (H,Θ) differs by model (IEEE LCOMM). *(UAV-deployment anchor.)*
+- [[lyu-2018-uav-hotspot-offloading]] — Lyu et al. 2018. **UAV-aided cellular hotspot offloading**: cyclical trajectory + bandwidth allocation + user partitioning; max-min throughput; spectrum reuse > orthogonal; beats small-cell (IEEE TWC). *(UAV-as-aerial-BS offloading anchor.)*
 - [[khoramnejad-2025-gai-wireless-optimization-survey]] — Khoramnejad & Hossain 2025. Survey of **generative AI** for xG/6G wireless network optimization (GANs, GDMs, GFlowNets) + NTN case study.
 - [[du-2024-gdm-network-optimization-tutorial]] — Du et al. 2024. **Tutorial** on **generative diffusion models** in network optimization (DRL enhancement, incentive/ISAC/SemCom/IoV case studies) (IEEE COMST).
 - [[wang-gai-isac-physical-layer]] — Wang et al. Overview of **generative AI for ISAC** from the physical-layer perspective; five GAI models + a diffusion SSG near-field DoA case study (~1.03° MSE) (IEEE Wireless Communications; year not in parse).
@@ -126,6 +127,8 @@
 
 ### SAGIN / satellite offloading
 
+- [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019. **First SAGIN computing-offloading** paper for remote IoT; UAV edge + satellite cloud; MDP + **actor-critic RL** offloading + heuristic VM allocation (IEEE JSAC).
+- [[liu-2024-sagin-spherical-sg-connectivity]] — Liu et al. 2024. **Spherical stochastic geometry** uplink path connectivity analysis for SAGIN; GUs + AVs on spherical surfaces; three connectivity metrics; first such model (IEEE JSAC).
 - [[gao-2024-sagin-perception-offloading]] — Gao et al. 2024. **Perception-aided** SAGIN offloading (mmWave radar + YOLOv7 → DRL state); Lyapunov + DDPG + DQN + SGHS.
 - [[chen-2024-thoas-traffic-aware-sagin]] — Chen et al. 2024. **THOAS** — traffic-aware slicing-enabled SAGIN; probsparse-attention prediction + lightweight distilled PPO.
 - [[chen-2024-ulse-game]] — Chen et al. 2024. Multi-user UAV-LEO offloading as a **potential game** (LUTO-Game / JULTO distributed best-response).
@@ -171,6 +174,7 @@
 
 ### Generative-AI MEC
 
+- [[zhang-2025-gsc-diffusion-semcom]] — Zhang et al. 2025. **Generative AI Semantic Communication (GSC)**: Swin Transformer encoder + **diffusion model** decoder for image transmission; +17.75% PSNR in AWGN vs DeepJSCC; MU-GSC multi-user extension (IEEE TCCN).
 - [[ye-2025-aigc-diffusion-contract]] — Ye et al. 2025. Edge AIGC services via **contract theory** + prompt engineering; generative diffusion model as the contract-item optimizer.
 - [[zhang-2024-gdmtd3-aerial-secure-cb]] — Zhang et al. 2024. UAV-swarm secure collaborative beamforming via **generative-diffusion-model-enhanced TD3** (GDMTD3).
 - [[fu-2025-otae-inference-lae-batching]] — Fu et al. 2025. Over-the-air edge inference for low-altitude airspace; diffusion-based online batching + beamforming.
@@ -219,6 +223,7 @@
 
 ### Maritime MEC
 
+- [[qian-2024-marine-fl-dt-secrecy]] — Qian et al. 2024. **FL-assisted marine digital twin** with secrecy; USV NOMA model-upload to HAP + chaotic spread-spectrum broadcast; energy minimization; layered decomposition (IEEE IoT-J).
 - [[wang-2026-aerial-marine-msar]] — Wang et al. 2026. UAV+HAPS+MASS three-tier MEC for maritime search & rescue. *JCORA* (matching + convex + PGD).
 - [[lei-2024-hvmappo-maritime-sar]] — Lei et al. 2024. **Heterogeneous-vehicle maritime SAR** (observation UAVs + relay UAVs + ASV edge servers); joint trajectory + offloading + routing topology minimizing time/energy while maximizing relay **fault tolerance**; Dec-POMDP + **HVMAPPO** (MAPPO/CTDE + param-sharing + normalized GAE + Pop-Art) (IEEE TVT).
 - [[liu-2025-haps-uav-maritime-iot]] — Liu et al. 2025. HAP-UAV maritime IoT comm: HAP-as-backhaul, UAV multicast, vessel unicast.
@@ -252,6 +257,7 @@
 ### ISAC, sensing & physical-layer security
 
 - [[tang-2024-iscc-uav-feel]] — Tang et al. 2024. **ISCC** for UAV-assisted federated edge learning; deployment + sensing/compute/comm via AO (BBPO).
+- [[wang-2024-ttw-amd-localization]] — Wang et al. 2024. **Through-the-wall (TTW)** passive AMD detection + localization via CSI; reference-channel SSI cancellation + 2D matrix pencil ToF/PLCR estimation; hardware-validated (glass/brick walls: 0.964/0.952 detection accuracy, 1.65/2.05 m median error) (IEEE JSAC).
 - [[yao-2025-secure-isac-dual-eavesdropping]] — Yao et al. 2025. Secure UAV-ISAC against dual eavesdropping; AO + SCA + SDR for secrecy + sensing security.
 - [[chen-2024-three-party-hierarchical-game-pls]] — Chen et al. 2024. **Three-party hierarchical game** for PLS with dynamic trilateral coalitions (LUs / EVs / JAs); HCSF + DRL (IEEE TWC).
 - [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024. Secure UAV-**RIS**-MEC-IoT offloading against **aerial + ground eavesdroppers**; SOP over Nakagami-m + max-min **secure computation efficiency** via Dinkelbach + BCD + bisection (IEEE TCOMM).

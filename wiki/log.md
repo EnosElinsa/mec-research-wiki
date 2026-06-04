@@ -2,6 +2,28 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-04 — Curate 6 new sources (batch 7/8): marine-FL-DT-secrecy, GAI-diffusion-SemCom, SAGIN-spherical-SG, SAGIN-IoT-RL, TTW-AMD-localization, UAV-hotspot-offloading + audit
+
+### Curated (6 sources)
+
+- [[qian-2024-marine-fl-dt-secrecy]] — Qian et al. 2024, *IEEE IoT-J*, DOI `10.1109/JIOT.2023.3305711`. FL-assisted marine digital twin with secrecy; USV NOMA model-upload to HAP + chaotic spread-spectrum HAP broadcast; energy minimization via layered decomposition; NOMA > TDMA.
+- [[zhang-2025-gsc-diffusion-semcom]] — Zhang et al. 2025, *IEEE TCCN*, DOI `10.1109/TCCN.2025.3526839`. GAI Semantic Communication (GSC): Swin Transformer encoder + diffusion model decoder for image; +17.75% PSNR in AWGN / +20.84% in Rayleigh vs DeepJSCC; MU-GSC multi-user extension.
+- [[liu-2024-sagin-spherical-sg-connectivity]] — Liu et al. 2024, *IEEE JSAC*, DOI `10.1109/JSAC.2024.3365891`. Spherical stochastic geometry model for SAGIN uplink path connectivity; three connectivity metrics; first such analytical model; simulations confirm accuracy.
+- [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019, *IEEE JSAC*, DOI `10.1109/JSAC.2019.2906789`. First SAGIN computing-offloading paper for remote IoT; UAV edge + satellite cloud; MDP + actor-critic RL; near-optimal VM allocation heuristic.
+- [[wang-2024-ttw-amd-localization]] — Wang et al. 2024, *IEEE JSAC*, DOI `10.1109/JSAC.2023.3322819`. Through-the-wall passive AMD detection + localization via CSI; T-DeLo system: reference-channel SSI cancellation + 2D matrix pencil ToF/PLCR estimation; hardware-validated (glass: 0.964 detection, 1.65 m median error; brick: 0.952, 2.05 m).
+- [[lyu-2018-uav-hotspot-offloading]] — Lyu et al. 2018, *IEEE TWC*, DOI `10.1109/TWC.2018.2818734`. UAV-aided cellular hotspot offloading: cyclical trajectory + bandwidth + user partitioning for max-min throughput; spectrum reuse > orthogonal; outperforms small-cell baseline.
+
+### New concepts
+
+None — all referenced concepts mapped to existing slugs.
+
+### Audit notes
+
+- DOIs verified in parse for all 6 sources.
+- Venues confirmed: IEEE IoT-J, IEEE TCCN, IEEE JSAC (×3), IEEE TWC — all confirmed.
+- `linkcheck.py` → NO DANGLING LINKS. `process_refs.py` → clean.
+- Source count updated in `overview.md`: 250 → 256.
+
 ## 2026-06-04 — Curate 6 new sources (batch 6/8): Fed-IDCCO-IoV, WPT-MEC, dual-UAV-secure-MEC, CTMiG-task-migration, UABS-V2X-3DQN, UAV-heading-SDMA + audit
 
 ### Curated (6 sources)
