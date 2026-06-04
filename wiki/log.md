@@ -2,6 +2,30 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-04 — Curate 6 new sources (batch 6/8): Fed-IDCCO-IoV, WPT-MEC, dual-UAV-secure-MEC, CTMiG-task-migration, UABS-V2X-3DQN, UAV-heading-SDMA + audit
+
+### Curated (6 sources)
+
+- [[huang-2024-fed-idcco-iov-caching]] — Huang et al. 2024, *IEEE TVT*, DOI `10.1109/TVT.2024.3429507`. Joint data caching + computation offloading in UAV-assisted IoV; **DRL + federated learning** (Fed-IDCCO); minimizes delay + maximizes cache hit ratio; FL accelerates convergence + protects privacy.
+- [[wang-2018-wpt-mec-joint-offloading]] — Wang et al. 2018, *IEEE TWC*, DOI `10.1109/TWC.2017.2785305`. **Wireless-powered MEC**: joint energy beamforming + partial offloading + CPU freq + TDMA time allocation; minimizes AP energy; local computing always beneficial at optimum; semi-closed-form optimal solution.
+- [[xu-2021-secure-uav-mec-dual-uav]] — Xu et al. 2021, *IEEE TCOMM*, DOI `10.1109/TCOMM.2020.3025910`. **Dual-UAV secure MEC** (server + jammer UAV); first secure-computing-capacity metric in UAV-MEC; TDMA (BCD) + NOMA (P-BCD); NOMA > TDMA for security; partial offloading best.
+- [[wang-2025-ctmig-task-migration-uav]] — Wang et al. 2025, *IEEE TSC*, DOI `10.1109/TSC.2025.3576644`. **CTMiG/ILCTS** — joint task offloading + migration in multi-UAV MEC; improved PPO for expert data + GAIL online refinement; large-result A2G delivery latency as primary concern.
+- [[spampinato-2025-uabs-v2x-3dqn-ilp]] — Spampinato et al. 2025, *IEEE TVT*, DOI `10.1109/TVT.2024.3454955`. UABS trajectory (**3DQN**) + **ILP** RRM for V2X extended-sensing in urban Bologna scenario; SUMO mobility; coverage-limited + capacity-limited scenarios evaluated.
+- [[jiang-2012-uav-heading-sdma]] — Jiang & Swindlehurst 2012, *IEEE JSAC*, DOI `10.1109/JSAC.2012.120614`. Multi-antenna fixed-wing UAV **heading optimization** for ground-to-air SDMA uplink; ergodic sum rate + prediction filter; SDMA >> TDMA; asymptotic low/high-SNR simplified algorithms.
+
+### New concepts
+
+None — all referenced concepts mapped to existing slugs.
+
+### Audit notes
+
+- DOIs verified in parse for all 6 sources.
+- Venues confirmed: IEEE TVT (×2), IEEE TWC, IEEE TCOMM, IEEE TSC, IEEE JSAC — all confirmed.
+- wang-2025-ctmig publication date 8 August 2025 is future relative to today; flagged as indicative.
+- 1 residual dangling link in log.md fixed (hybrid_near_far_field reference in batch-5 audit note removed wikilink markup).
+- `linkcheck.py` → NO DANGLING LINKS. `process_refs.py` → clean.
+- Source count updated in `overview.md`: 244 → 250.
+
 ## 2026-06-04 — Curate 6 new sources (batch 5/8): DQN, GAI-SemCom-survey, GAI-PLS-survey, THz-UM-MIMO-CE, IRS-beamforming, UAV-altitude-beamwidth + audit
 
 ### Curated (6 sources)
@@ -21,7 +45,7 @@ None — all referenced concepts mapped to existing slugs.
 
 - DOIs verified in parse: TCCN.2024.3435524, TCCN.2024.3438379, TWC.2024.3514141, TWC.2019.2936025, LCOMM.2017.2772254 — all confirmed. Nature DQN paper: DOI not in parse.
 - Venues confirmed in parse: Nature, IEEE TCCN (×2), IEEE TWC (×2), IEEE LCOMM.
-- One dangling link fixed ([[hybrid_near_far_field]] removed from THz page).
+- One dangling link fixed (hybrid_near_far_field removed from THz page).
 - One process-narration leak fixed ("batch 7/8" in liang-2025 Relation section, replaced with evergreen phrasing).
 - `linkcheck.py` → NO DANGLING LINKS. `process_refs.py` → clean.
 - Source count updated in `overview.md`: 238 → 244.
