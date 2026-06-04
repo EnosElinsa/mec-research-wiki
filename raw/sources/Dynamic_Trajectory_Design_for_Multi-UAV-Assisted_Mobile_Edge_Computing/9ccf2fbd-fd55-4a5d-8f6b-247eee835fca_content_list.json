@@ -1,0 +1,3802 @@
+[
+    {
+        "type": "text",
+        "text": "Dynamic Trajectory Design for Multi-UAV-Assisted Mobile Edge Computing ",
+        "text_level": 1,
+        "bbox": [
+            79,
+            71,
+            927,
+            142
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Zhuwei Wang , Member, IEEE, Haowei Wang , Lihan Liu , Enchang Sun , Senior Member, IEEE, Haijun Zhang , Fellow, IEEE, Zhidu Li , Senior Member, IEEE, Chao Fang , Senior Member, IEEE, and Meng Li , Senior Member, IEEE ",
+        "bbox": [
+            112,
+            148,
+            890,
+            200
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract—The trajectory design for unpiloted aerial vehicle (UAV)-assisted mobile edge computing (MEC) networks has become a hot research topic. In the UAV-assisted MEC scenario, the UAV is required to frequently adjust its flight trajectory due to dynamic factors such as time-varying task offloading requirements, user mobility, and transmission environment variation. In this paper, with consideration of the constraint induced by the UAV flight dynamics, the dynamic trajectory design challenge within the blockchain-based multi-UAV-assisted MEC framework is investigated. An intelligent algorithm that integrates multi-agent deep deterministic policy gradient (MADDPG), linear quadratic regulator (LQR), and CVXPY solver, named MADDPG-LC, is proposed to achieve real-time joint optimization of dynamic trajectory control and resource allocation with respect to minimizing weighted energy consumption and delays. Numerical simulation results demonstrate the efficacy of the proposed MADDPG-LC algorithm in addressing the UAV flight dynamics constraint, which has generally overlooked in existing works. ",
+        "bbox": [
+            63,
+            237,
+            498,
+            467
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Index Terms—Dynamic trajectory, flight dynamics, intelligent design, unpiloted aerial vehicle (UAV)-assisted MEC. ",
+        "bbox": [
+            65,
+            473,
+            496,
+            500
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "I. INTRODUCTION ",
+        "text_level": 1,
+        "bbox": [
+            215,
+            518,
+            343,
+            532
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "URRENTLY, various applications of Internet of Things (IoT) have arisen, such as online games, virtual reality, autonomous driving, smart city, etc. The majority of these applications have strict requirements for low latency and security [1]. ",
+        "bbox": [
+            65,
+            540,
+            496,
+            602
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Received 28 June 2024; revised 5 October 2024; accepted 15 October 2024. Date of publication 5 November 2024; date of current version 5 March 2025. This work was supported in part by the National Natural Science Foundation of China under Grant 62371014, Grant 62101031 and Grant 62371012, in part by Beijing Natural Science Foundation under Grant 4222002 and Grant L212004, in part by the Science and Technology Research Program of Chongqing Municipal Education Commission under Grant KJQN202300646, in part by the Fundamental Research Funds for the Central Universities under Grant FRF-TP-22-002C2. The review of this article was coordinated by Dr. Zehui Xiong. (Corresponding author: Lihan Liu.) ",
+        "bbox": [
+            63,
+            618,
+            494,
+            731
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Zhuwei Wang, Haowei Wang, Enchang Sun, Chao Fang, and Meng Li are with the School of Information Science and Technology, Beijing University of Technology, Beijing 100124, China (e-mail: wangzhuwei@bjut.edu.cn; wanghaowei@emails.bjut.edu.cn; ecsun@bjut.edu.cn; fangchao@bjut.edu.cn; limeng720@bjut.edu.cn). ",
+        "bbox": [
+            65,
+            732,
+            494,
+            789
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Lihan Liu is with the School of Statistics and Data Science, Beijing Wuzi University, Beijing 101149, China (e-mail: liulihan@bwu.edu.cn). ",
+        "bbox": [
+            65,
+            789,
+            494,
+            811
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Haijun Zhang is with the Beijing Engineering and Technology Research Center for Convergence Networks and Ubiquitous Services, University of Science and Technology Beijing, Beijing 100083, China (e-mail: haijunzhang@ieee.org). ",
+        "bbox": [
+            65,
+            811,
+            494,
+            857
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Zhidu Li is with the School of Communications and Information Engineering, Chongqing University of Posts and Telecommunications, Chongqing 400065, China (e-mail: lizd@cqupt.edu.cn). ",
+        "bbox": [
+            65,
+            856,
+            494,
+            891
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Digital Object Identifier 10.1109/TVT.2024.3485182 ",
+        "bbox": [
+            79,
+            891,
+            370,
+            902
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "In an effort to enhance the quality of service (QoS) for users, a significant amount of computing tasks need to be executed in wireless devices under exacting real-time requirements. Nevertheless, since the energy and computing frequency limitations of the user devices, it becomes challenging to handle all tasks locally. Migrating computing tasks to the cloud is capable of effectively alleviating the computing burden on user devices. However, due to the inherent challenge lies in the typical remoteness of cloud servers, data transmission and processing can result in large latency, rendering the cloud server inappropriate for real-time operations with low-latency requirements [2]. ",
+        "bbox": [
+            506,
+            237,
+            937,
+            404
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Mobile edge computing (MEC), as an emerging distributed computing paradigm rooted in mobile communication networks, extends the capabilities of cloud computing by aggregating a large amount of idle computing power and storage resources distributed at the network edge. Compared to traditional cloud computing, MEC significantly reduces latency, improves energy efficiency, and enhances privacy and security by bringing computing and storage resources closer to users [3]. The distributed architecture of MEC allows data processing at the network edge, thereby avoiding the latency and bandwidth consumption associated with data transmission to the remote data center. Thanks to MEC technology, user devices can offload computing tasks to edge nodes via the wireless network, which not only reduces the computational burden on terminal devices, but also improves response speed and service quality, especially in real-time processing scenarios such as unpiloted aerial vehicles (UAVs), intelligent transportation, and industrial automation. ",
+        "bbox": [
+            506,
+            402,
+            937,
+            659
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "The traditional MEC server is typically immovable, which limits its coverage and flexibility, and may lead to problems such as non-line-of-sight (NLoS) transmission and obstacles blocking, thereby negatively affecting transmission quality and data rate. Additionally, in remote regions where natural disasters occur or where traditional immovable base stations are difficult to deploy, terrestrial MEC networks have challenges in delivering computing services. The integration of UAV into MEC network can effectively address the these problems [4], [5]. The UAV has controllable mobility and can be easily deployed to substantially enhance the coverage and capacity of wireless networks. Incorporating MEC technology into UAV network enables them to provide aerial computing services to ground users for the tasks offloading. In contrast to the traditional MEC network, the LoS channel provided by UAV can be used to establish the high-speed transmission between the MEC server and user. Additionally, the high mobility of the UAV allows it to carry the MEC server close to ground users, thereby significantly reducing power consumption and latency. ",
+        "bbox": [
+            506,
+            660,
+            937,
+            901
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "4684 ",
+        "bbox": [
+            67,
+            39,
+            97,
+            49
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 3, MARCH 2025 ",
+        "bbox": [
+            484,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "0018-9545 © 2024 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. ",
+        "bbox": [
+            200,
+            914,
+            801,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "See https://www.ieee.org/publications/rights/index.html for more information. ",
+        "bbox": [
+            289,
+            926,
+            713,
+            939
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            79,
+            488,
+            125
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Although the UAV-assisted MEC offers advantages to communication networks, it also brings new challenges. On the one hand, the attacker can extract sensitive task information and bring a threat to network privacy and security. In UAV-assisted MEC systems, the insecure communication link between the ground user and UAV is vulnerable to malicious attacks. The information sharing and exchange among edge nodes have the potential to reduce their security and privacy [6]. Blockchain is a decentralized digital ledger technology that allows data sharing across multiple nodes without relying on the verification by a central authority. Owing to its completely transparent and fault-tolerant data processing capabilities, blockchain is widely regarded as a promising solution for building secure platforms. It further enhances its value by ensuring anonymity, strengthening security, and eliminating the need for third-party intermediaries [7], [8]. However, once the blockchain technology is applied to UAV-assisted MEC systems, the induced delay and energy consumption are challenges that require further investigation. ",
+        "bbox": [
+            60,
+            126,
+            488,
+            411
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "On the other hand, due to UAV flight and user mobility, the transmission environment between the UAV and users dynamically changes. Meanwhile, users have different task offloading requirements that vary over time, resulting in diverse resource optimization purposes. These dynamic issues require timely and frequent adjustments to the flight trajectory of the UAV [9], [10]. However, the dynamic trajectory optimization and control is an extremely challenging problem, involving a large number of continuous variables, such as flight speed, direction, and acceleration, while requiring joint optimization of system resources, including computing frequency resource, offloading ratio, and user associations. At present, the research on real-time control of dynamic UAV trajectory design in multi-UAV-assisted MEC scenarios is still insufficient. Existing works always derive the desired UAV trajectory based on the initial conditions, while ignoring the UAV flight dynamics constraint and the influence of time-varying dynamic factors [11], [12], [13]. ",
+        "bbox": [
+            60,
+            412,
+            488,
+            667
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "In this paper, the dynamic trajectory optimization issue for multi-UAV-assisted MEC is investigated. The system dynamics constraint of the UAV and time-varying factors such as user mobility, dynamic task offloading requirements, and transmission environment variation are considered. By integrating multiagent deep deterministic policy gradient (MADDPG), linear quadratic regulator (LQR), and the CVXPY solver, a novel MADDPG-LC algorithm is proposed to achieve the real-time dynamic trajectory control. The main contributions are as follows. ",
+        "bbox": [
+            57,
+            669,
+            488,
+            818
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Given the constraint of UAV flight dynamics, a blockchainbased multi-UAV-assisted MEC framework is explored. The communication model, computing model, blockchain model, and UAV dynamics model are analyzed in detail. Then, the dynamic trajectory design problem, enabling multiple UAVs to adapt their flight trajectories dynamically according to time-varying task requirements, ",
+        "bbox": [
+            74,
+            819,
+            488,
+            925
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "dynamic transmission environments, and user mobility, is formulated. ",
+        "bbox": [
+            535,
+            80,
+            929,
+            108
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "\\- To tackle the dynamic trajectory design challenge, it is feasible to decompose the optimization problem into three distinct subproblems: the desired UAV trajectory design, the actual UAV trajectory tracking control, and the user association and computing frequency assignment. Specifically, by integrating the desired trajectory design with the trajectory tracking control problem, it can successfully realizes the dynamic UAV trajectory control that adjusts to the time-varying UAV-assisted MEC environment, while adhering to the constraint induced by UAV flight dynamics. ",
+        "bbox": [
+            518,
+            109,
+            929,
+            260
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "\\- A MADDPG-LC algorithm is proposed to achieve realtime joint optimization of resource allocation and dynamic trajectory control. In particular, the desired optimal UAV trajectories are derived through the employment of a MADDPG-based trajectory design. Subsequently, the actual flight trajectories are successfully acquired by using the LQR-based tracking control algorithm. Finally, the CVXPY solver is utilized to address the resource allocation problem regarding the user association and computing frequency assignments. ",
+        "bbox": [
+            518,
+            261,
+            930,
+            411
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "\\- Numerical simulations illustrate the effectiveness of proposed MADDPG-LC algorithm with respect to the reward convergence, loss function, temporal difference (TD) error, and existing benchmark strategies. Additionally, the performance comparisons between actual and desired trajectories are also analyzed to reveal the influence of UAV system dynamics on the dynamic trajectory design. ",
+        "bbox": [
+            518,
+            412,
+            929,
+            517
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The remainder of this paper is organized as follows. Section II reviews related works. Section III outlines the system model and the optimization problem formulation. In the Section IV, the MADDPG-LC algorithm to address the dynamic trajectory challenge is proposed. The simulation results and conclusions are given in Sections V and VI, respectively. ",
+        "bbox": [
+            500,
+            518,
+            930,
+            608
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "II. RELATED WORKS ",
+        "text_level": 1,
+        "bbox": [
+            641,
+            625,
+            791,
+            638
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This section briefly reviews the work on UAV-assisted MEC trajectory design and UAV trajectory tracking control. In addition, the existing challenges are also discussed. ",
+        "bbox": [
+            500,
+            645,
+            930,
+            691
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "A. UAV-Assisted MEC Trajectory Design ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            708,
+            786,
+            723
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Compared with the traditional MEC system, the UAV-assisted MEC system exhibits benefits of high cost efficiency, fast deployment and flexible reconfiguration. Zhou et al. [14] investigated the maximization problems of computation rate in a UAV-enabled MEC wireless powered system, subject to the energy-harvesting causal constraint and the speed limitations of UAV. Both the two-stage and three-stage alternative algorithms were presented to derive the optimal transmit power, offloading time, and processing frequency. Wu et al. [15] delved into the latency issue in UAV-assisted MEC, and proposed a UAV flight control solution enabled by cellular network edges. This solution mitigates the impact of link latency by leveraging multi-access edge computing and end-to-end control delay prediction. With regard to the time-varying features of user task relevance and requirements, Xu et al. [16] investigated their influence on task offloading, trajectory planning, and edge computing resource allocation. They further introduced an iterative strategy based on the block coordinate descent method, which decomposes the original optimization problem into two convex optimization subproblems for solution. ",
+        "bbox": [
+            500,
+            729,
+            930,
+            925
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: DYNAMIC TRAJECTORY DESIGN FOR MULTI-UAV-ASSISTED MOBILE EDGE COMPUTING ",
+        "bbox": [
+            58,
+            39,
+            614,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "4685 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            494,
+            184
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In UAV-assisted MEC systems, the joint optimization of trajectory design and resource allocation is crucial to achieve high energy efficiency and low latency. In [17], a multi-UAVassisted self-organizing MEC network was investigated, and both the resource allocation and UAV trajectory were optimized to minimize the total energy consumption. In [18], with the aim of achieving fair performance among users, the problem of maximizing the minimum throughput was tackled by jointly optimizing the multiuser communication scheduling and association along with the UAV’s trajectory and power control. In [19], the joint optimization involving CPU frequency, transmission power, and UAV trajectory for a UAV-assisted MEC network was explored. In [20], the authors investigated the computational efficiency issue in MEC systems, and a two-stage alternative computational efficiency approach was proposed to jointly optimize UAV trajectory, CPU frequency, transmission bandwidth, time slots, and task allocation. In [21], a dual-structure online resource allocation and trajectory optimization algorithm with the multi-UAV MEC architecture was proposed. In [22], the authors also studied the problem of energy efficiency optimization, and proposed an online joint optimization method based on edge network resource scheduling and UAV trajectory planning, which achieved the objective of minimizing the average weighted energy consumption of users under the constraints of UAV average energy consumption and data queue stability. ",
+        "bbox": [
+            63,
+            185,
+            496,
+            561
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "However, most of existing works focus on the deployment of UAV hovering points or the UAV trajectory planning in relatively low-dynamic scenarios. The application of these researches to complex dynamic scenarios would give rise to system instability and even significantly degrade system performance. At the same time, the collaboration of multiple UAVs can boost MEC, but it brings the challenge for multiple UAV trajectory planning. Therefore, how to optimize the flight trajectory control of multiple UAVs in dynamic scenarios has become as an urgent problem that requires to be addressed. ",
+        "bbox": [
+            65,
+            563,
+            496,
+            714
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "B. UAV Trajectory Tracking Control ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            737,
+            319,
+            753
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In the early research on UAV trajectory control, the primary focus is on the tracking control of UAVs, rather than the communication performance optimization and applicability to IoT. For example, in [23], a UAV trajectory planning approach was implemented utilizing a closed-loop model predictive method. Then, a trajectory mapping network based on deep learning was introduced to achieve the closed-loop control of the UAV, thereby improving the efficiency of trajectory planning. In [24], the multi-objective UAV trajectory planning problem was formulated, and a forward dynamic programming method considering the kinematics model of UAVs was proposed. In [25], the LoS path optimization technique was utilized to optimize collision-free paths based on 3D digital terrain. A feasible flight trajectory including UAV position and flight angle according to the pre-determined speed distribution was derived. In [26], a trajectory planner was designed to minimize the latency, where the trajectory continuity, waypoint constraints, and UAV dynamics constraints were considered. ",
+        "bbox": [
+            63,
+            758,
+            496,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            506,
+            79,
+            937,
+            169
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Owing to the high mobility of the UAV, its flight states will change over time, and the dynamic issues such as time-varying task requirements, user mobility, and transmission environment variations should be investigated. In the user mobility scenario, Xu et al. [27] proposed a multi-time scale intelligent optimization algorithm based on a two-layer cyclic structure. The algorithm decomposed the optimization problem into two subproblems: long-term scale UAV trajectory planning and short-term scale resource allocation. Hu et al. [28] studied the real-time flight control problem of UAV in complex application environments, and a DRL-based strategy based on a combination of curriculum learning and asynchronous curriculum experience replay method was proposed. In [29], the authors analyzed the effect of communication delay and time-varying UAV speed on real-time control in high dynamic leader-follower scenarios, and an extended delayed informative DDPG algorithm was proposed to address the UAV formation tracking problem. Bekkouche et al. [30] investigated the impact of network-induced latency and transmission unreliability on the flight control of UAVs, and found that when the network-induced latency and transmission packet loss rate exceeded the certain threshold, the actual flight trajectory of the UAV will significantly deviated from the desired trajectory. ",
+        "bbox": [
+            506,
+            170,
+            937,
+            517
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Unfortunately, most existing works typically focus on the whole UAV trajectory planning, which makes them inappropriate for applications in complex and highly dynamic scenarios. Due to the challenges introduced by high dynamics, the current research lacks joint resource optimization together with UAVs and users. Therefore, in the UAV-assisted MEC scenario, based on the dynamic UAV trajectory control to achieve the joint optimization of UAV trajectory design and resource management is a challenge that urgently needs to be addressed. ",
+        "bbox": [
+            506,
+            517,
+            937,
+            654
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "III. SYSTEM MODEL AND OPTIMIZATION PROBLEM FORMULATION ",
+        "text_level": 1,
+        "bbox": [
+            548,
+            669,
+            897,
+            699
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In this section, a multi-UAV-assisted security MEC model is firstly described. Subsequently, the user mobility model, communication model, computation model, blockchain model, and UAV dynamics model are individually constructed. Finally, the joint optimization problem concerning the flight trajectories, user association, and computing frequency is formulated. ",
+        "bbox": [
+            506,
+            705,
+            937,
+            797
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A. System Model ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            813,
+            632,
+            828
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Fig. 1 depicts a blockchain-based multi-UAV-assisted MEC framework with M UAVs and K mobile users. The locations of UAV m and mobile user k are respectively represented as $\\boldsymbol { q _ { m } } = \\{ x _ { m } , y _ { m } , H \\}$ and $q _ { k } = \\{ x _ { k } , y _ { k } , 0 \\}$ , and H is the UAV flight m = m m k = k kaltitude. Since each UAV is equipped with a MEC server, it can serve as either a compute node or a blockchain node, enabling it to handle both computing and blockchain tasks. Similar to existing works [14], [18], ground users are power constrained, thus all tasks generated by users are stored in the user’s cache, and when the user is associated with a UAV, the tasks will be offloaded to the UAV for processing. After the completion of task processing on UAV, the blockchain node collects the offloading record as a “transaction”, verifies it, and generates a new block to record the transaction. Once the consensus is reached across the entire blockchain, the block is added to the chain. ",
+        "bbox": [
+            506,
+            834,
+            937,
+            940
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "4686 ",
+        "bbox": [
+            67,
+            40,
+            95,
+            49
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 3, MARCH 2025 ",
+        "bbox": [
+            484,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/f76d52f2434d3f213ee99a3bbc1d937e41c3b467d6f5c543a84726ca78d3bca6.jpg",
+        "image_caption": [
+            "Fig. 1. The UAV-assisted MEC framework. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    A[\"Drone\"] --> B[\"Blockchain link\"]\n    A --> C[\"Communication link\"]\n    A --> D[\"MEC server\"]\n    A --> E[\"Flying trajectory\"]\n    A --> F[\"Mobile user\"]\n    G[\"City Area\"] --> H[\"Mobile User\"]\n    I[\"Urban Area\"] --> J[\"Mobile User\"]\n    K[\"Mobile User\"] --> L[\"Mobile User\"]\n    M[\"Mobile User\"] --> N[\"Mobile User\"]\n    O[\"Mobile User\"] --> P[\"Mobile User\"]\n    Q[\"Mobile User\"] --> R[\"Mobile User\"]\n    S[\"Mobile User\"] --> T[\"Mobile User\"]\n    U[\"Mobile User\"] --> V[\"Mobile User\"]\n    W[\"Mobile User\"] --> X[\"Mobile User\"]\n    Y[\"Mobile User\"] --> Z[\"Mobile User\"]\n    AA[\"Mobile User\"] --> AB[\"Mobile User\"]\n    AC[\"Mobile User\"] --> AD[\"Mobile User\"]\n    AE[\"Mobile User\"] --> AF[\"Mobile User\"]\n    AG[\"Mobile User\"] --> AH[\"Mobile User\"]\n    AI[\"Mobile User\"] --> AJ[\"Mobile User\"]\n    AK[\"Mobile User\"] --> AL[\"Mobile User\"]\n    AM[\"Mobile User\"] --> AN[\"Mobile User\"]\n    AO[\"Mobile User\"] --> AP[\"Mobile User\"]\n    AQ[\"Mobile User\"] --> AR[\"Mobile User\"]\n    AS[\"Mobile User\"] --> AT[\"Mobile User\"]\n    AU[\"Mobile User\"] --> AV[\"Mobile User\"]\n    AW[\"Mobile User\"] --> AX[\"Mobile User\"]\n    AY[\"Cloud Area\"] --> AZ[\"Smartphone Array\"]\n    BA[\"Smartphone Array\"] --> BB[\"Battery Array\"]\n    BC[\"Battery Array\"] --> BD[\"Battery Array\"]\n    BE[\"Battery Array\"] --> BF[\"Battery Array\"]\n    BG[\"Battery Array\"] --> BH[\"Battery Array\"]\n    BI[\"Battery Array\"] --> BJ[\"Battery Array\"]\n    BK[\"Battery Array\"] --> BL[\"Battery Array\"]\n    BM[\"Battery Array\"] --> BN[\"Battery Array\"]\n    BO[\"Battery Array\"] --> BP[\"Battery Array\"]\n    BZ[\"Battery Array\"] --> CA[\"Battery Array\"]\n    CB[\"Battery Array\"] --> CC[\"Battery Array\"]\n    DD[\"Battery Array\"] --> DE[\"Battery Array\"]\n    DF[\"Battery Array\"] --> DG[\"Battery Array\"]\n    DH[\"Battery Array\"] --> DI[\"Battery Array\"]\n    DJ[\"Battery Array\"] --> DK[\"Battery Array\"]\n    DL[\"Battery Array\"] --> DM[\"Battery Array\"]\n    DN[\"Battery Array\"] --> DOB[\"Battery Array\"]\n    DOB --> DP[\"Battery Array\"]\n    DP --> DPB[\"Battery Array\"]\n    DPB --> DPN[\"Battery Array\"]\n    DPN --> DPQ[\"Battery Array\"]\n    DPQ --> DPR[\"Battery Array\"]\n    DPR --> DPS[\"Battery Array\"]\n    DPS --> DPT[\"Battery Array\"]\n    DPT --> DPU[\"Battery Array\"]\n    DPU --> DPV[\"Battery Array\"]\n    DPV --> DPW[\"Battery Array\"]\n    DPW --> DPX[\"Battery Array\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            97,
+            80,
+            452,
+            287
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            333,
+            486,
+            453
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "B. User Mobility Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            469,
+            230,
+            483
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In the UAV-assisted MEC, ground users usually have high mobility that the user’s location is always time-varying. The movement process of the user can be regarded as a typical Gauss-Markov mobility model, that is, the speed change of a mobile user in each time slot follows a Gaussian distribution. Therefore, the user motion speed $v _ { k }$ at (n 1)-th time slot is related to its kspeed at the n-th moment as ",
+        "bbox": [
+            57,
+            489,
+            486,
+            595
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nv _ {k} [ n + 1 ] = \\eta v _ {k} [ n ] + (1 - \\eta) \\bar {v} + \\varsigma \\sqrt {1 - \\eta^ {2}} o _ {k} [ n ], \\tag {1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            603,
+            486,
+            622
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $o _ { k } [ n ] \\sim N ( 0 , 1 )$ represents a standard normal distribution, and $\\varsigma , \\bar { v } ,$ , and η denote the asymptotic standard deviation, ¯asymptotic mean, and memory level of speed, respectively. ",
+        "bbox": [
+            57,
+            628,
+            486,
+            674
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, the mobile user location can be updated by ",
+        "bbox": [
+            75,
+            674,
+            412,
+            689
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nq _ {k} [ n + 1 ] = q _ {k} [ n ] + v _ {k} [ n ] T _ {s}, \\tag {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            168,
+            696,
+            486,
+            714
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $T _ { s }$ is the time slot duration. ",
+        "bbox": [
+            58,
+            720,
+            292,
+            734
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "C. Communication Model ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            750,
+            244,
+            763
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Generally, the communication between the user and the UAV is regarded as a LoS transmission. Therefore, the channel gain between UAV m and user k is given by ",
+        "bbox": [
+            57,
+            771,
+            486,
+            818
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\ng _ {k, m} [ n ] = \\frac {g _ {0}}{\\left(H ^ {2} + \\| q _ {m} [ n ] - q _ {k} [ n ] \\| ^ {2}\\right)}, \\tag {3}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            139,
+            823,
+            484,
+            854
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $g _ { 0 }$ denotes the reference channel gain of distance 1m. ",
+        "bbox": [
+            57,
+            859,
+            466,
+            873
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "In our work, the OFDM technique is used for each user to offload the task. Therefore, the data transmission rate is ",
+        "bbox": [
+            57,
+            875,
+            486,
+            902
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {k, m} [ n ] = B \\log_ {2} \\left(1 + \\frac {p _ {k} g _ {k , m} [ n ]}{\\sigma^ {2}}\\right), \\tag {4}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            141,
+            909,
+            486,
+            941
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $B , \\sigma ^ { 2 }$ , and $p _ { k }$ denote the assigned channel bandwidth, noise power, and user’s transmission power, respectively. ",
+        "bbox": [
+            500,
+            80,
+            927,
+            109
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Define the user association indicator $\\lambda _ { k , m } [ n ] \\in \\{ 0 , 1 \\}$ . Specifically, $\\lambda _ { k , m } [ n ] = 1$ k,m[ ] signifies that user k is associated with UAV m. Generally, it can be assumed that each user is exclusively associated with a single UAV in each time slot, that is ",
+        "bbox": [
+            500,
+            111,
+            929,
+            170
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m \\in M} \\lambda_ {k, m} [ n ] \\leq 1, \\forall k. \\tag {5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            636,
+            178,
+            929,
+            210
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Let $A _ { k } [ n ]$ denote the quantity of task data offloaded by user k. k[ ]The transmission delay can be derived as ",
+        "bbox": [
+            500,
+            217,
+            927,
+            246
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD _ {k, m} ^ {\\text { trans }} [ n ] = \\frac {\\lambda_ {k , m} A _ {k} [ n ]}{R _ {k , m} [ n ]}. \\tag {6}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            627,
+            253,
+            929,
+            287
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, the relevant transmission energy consumption is ",
+        "bbox": [
+            501,
+            292,
+            873,
+            306
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k, m} ^ {\\text { trans }} [ n ] = p _ {k} D _ {k, m} ^ {\\text { trans }} [ n ] = \\frac {p _ {k} \\lambda_ {k , m} A _ {k} [ n ]}{R _ {k , m} [ n ]}. \\tag {7}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            565,
+            313,
+            929,
+            347
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "D. Computation Model ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            359,
+            668,
+            373
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The user tasks are offloaded to UAV for processing, thereby causing computing delay and energy consumption. The computing delay is given by ",
+        "bbox": [
+            500,
+            381,
+            929,
+            426
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD _ {k, m} ^ {\\text { comp }} [ n ] = \\frac {\\lambda_ {k , m} C _ {k , m} [ n ]}{f _ {k , m} [ n ]}, \\tag {8}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            619,
+            431,
+            929,
+            465
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $C _ { k , m } [ n ]$ and $f _ { k , m } [ n ]$ respectively represent the required k,m[ ] k,m[ ]CPU frequency and the allocated computation capability for processing the offloading tasks. ",
+        "bbox": [
+            500,
+            472,
+            930,
+            516
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Then, the relevant computing energy can be derived as ",
+        "bbox": [
+            516,
+            518,
+            888,
+            532
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} E _ {k, m} ^ {\\text { comp }} [ n ] = p _ {k, m} ^ {\\text { comp }} [ n ] D _ {k, m} ^ {\\text { comp }} [ n ] \\\\ = \\lambda_ {k, m} k _ {\\text { comp }, m} f _ {k, m} ^ {2} [ n ] C _ {k, m} [ n ], \\tag {9} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            567,
+            537,
+            929,
+            582
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { k , m } ^ { c o m p } [ n ] = k _ { c o m p , m } f _ { k , m } ^ { 3 } [ n ]$ pcomp n k f 3 n denotes the power compuk,m [ ] = ctation of CPU, and $k _ { c o m p , m }$ m[ ]represents the effective energy coefficient. ",
+        "bbox": [
+            500,
+            589,
+            929,
+            633
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Consequently, the total energy consumption and delay for the task offloading and processing are respectively given by ",
+        "bbox": [
+            500,
+            636,
+            929,
+            666
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {k, m} [ n ] = E _ {k, m} ^ {\\text { trans }} [ n ] + E _ {k, m} ^ {\\text { comp }} [ n ], \\tag {10a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            595,
+            672,
+            929,
+            691
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD _ {k, m} [ n ] = D _ {k, m} ^ {\\text { trans }} [ n ] + D _ {k, m} ^ {\\text { comp }} [ n ]. \\tag {10b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            696,
+            927,
+            715
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "It is worth noting that the transmission of feedback data is always ignored because the data size is extremely small [14]. ",
+        "bbox": [
+            500,
+            722,
+            929,
+            752
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "E. Blockchain Model ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            768,
+            654,
+            781
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "As a promising security solution, blockchain can establish a reliable trading platform for sharing users’ computing tasks with UAVs. When achieving an assignment, the UAV registers the work and results as transactions on the blockchain. Then, the blockchain members authenticate the transactions, indicating that the UAV has completed the processing. Due to the trusted encryption and traceability, the blockchain can adequately safeguard the privacy and safety of users when sharing tasks. Fig. 2 illustrates the blockchain process with eight steps. Generally, the last four steps (5)-(8) can be categorized into the block generation and consensus mechanism, which are the main issues causing the energy consumption and latency. ",
+        "bbox": [
+            500,
+            789,
+            930,
+            940
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: DYNAMIC TRAJECTORY DESIGN FOR MULTI-UAV-ASSISTED MOBILE EDGE COMPUTING ",
+        "bbox": [
+            58,
+            37,
+            614,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4687 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/8c7d814abf46b986e32de5df833f9dbdc47162c286efcb68a8598531f72bdbee.jpg",
+        "image_caption": [
+            "Fig. 2. The blockchain process. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph LR\n    A[\"(1)Encrypting the identity information\"] --> B[\"Mobile user\"]\n    B --> C[\"(2)Offloading computation task\"]\n    C --> D[\"Computation/blockchain node\"]\n    D --> E[\"(3)Processing computation tasks\"]\n    D --> F[\"(4)Hanging transactions\"]\n    F --> G[\"(5)Checking and packing into block\"]\n    G --> H[\"(6)Propagating blocks\"]\n    H --> I[\"(7)Verifying the block\"]\n    I --> J[\"(8)Recording the block into blockchain\"]\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            132,
+            80,
+            872,
+            195
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            65,
+            244,
+            494,
+            275
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "1) Block Generation: Let $I _ { b } [ n ]$ represent the transaction size, b[ ]including the computing task data and encrypted data, which is given by ",
+        "bbox": [
+            65,
+            276,
+            494,
+            321
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI _ {b} [ n ] = \\operatorname{Hash} \\left(\\sum_ {k \\in K} \\left(A _ {k, r} [ n ] + A _ {k} [ n ]\\right)\\right) + A _ {t} [ n ], \\tag {11}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            90,
+            327,
+            494,
+            368
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $A _ { t } [ n ]$ and $A _ { k , r } [ n ]$ respectively represent the relevant t[ ] k,r[ ]encrypted file and computation result, and · denotes the hash function. ",
+        "bbox": [
+            65,
+            375,
+            494,
+            419
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, the delay for new block generation is ",
+        "bbox": [
+            82,
+            421,
+            380,
+            436
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD _ {m} ^ {g} [ n ] = \\frac {I _ {b} [ n ] L _ {m} [ n ]}{f _ {b , m} [ n ]}, \\tag {12}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            200,
+            441,
+            494,
+            476
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $f _ { b , m } [ n ]$ represents the computational capability of block b,m[ ]producer on UAV, and $L _ { m } [ n ]$ is the required CPU cycles for a msingle data bit processing. ",
+        "bbox": [
+            65,
+            481,
+            494,
+            527
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Similar to (9), the relevant energy consumption can be derived as ",
+        "bbox": [
+            65,
+            527,
+            494,
+            555
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} ^ {g} [ n ] = k _ {\\text { comp }, m} f _ {b, m} ^ {2} [ n ] I _ {b} [ n ] L _ {m} [ n ]. \\tag {13}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            149,
+            564,
+            494,
+            583
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "2) Consensus Process: The block propagation and verification are required to reach a consensus. Therefore, the time delay caused by block propagation is ",
+        "bbox": [
+            65,
+            589,
+            494,
+            635
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD _ {m} ^ {t} [ n ] = \\frac {S _ {b} [ n ]}{\\min _ {m ^ {\\prime} \\in M , m ^ {\\prime} \\neq m} R _ {m , m ^ {\\prime}} [ n ]}, \\tag {14}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            151,
+            640,
+            494,
+            675
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $S _ { b } [ n ]$ is the block size, and $R _ { m , m ^ { \\prime } } [ n ]$ denotes the transb[ ] m,m [ ]mission rate between the block processors m and $m ^ { \\prime } .$ . ",
+        "bbox": [
+            65,
+            680,
+            494,
+            710
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The energy consumption of block propagation is given by ",
+        "bbox": [
+            82,
+            710,
+            476,
+            727
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} ^ {t} [ n ] = p _ {u} D _ {m} ^ {t} [ n ], \\tag {15}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            732,
+            494,
+            751
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { u }$ is the UAV transmission power. ",
+        "bbox": [
+            65,
+            757,
+            350,
+            772
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "uThen, the verification time can be derived as ",
+        "bbox": [
+            82,
+            773,
+            385,
+            786
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD ^ {v} [ n ] = \\max _ {m ^ {\\prime} \\in M, m ^ {\\prime} \\neq m} \\frac {\\alpha [ n ]}{f _ {v , m ^ {\\prime}} [ n ]}, \\tag {16}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            173,
+            792,
+            494,
+            827
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $\\alpha [ n ]$ and $f _ { v , m ^ { \\prime } } [ n ]$ represent the required CPU cycles for [ ] v,m [ ]block verification and the computation capability of processor $m ^ { \\prime }$ , respectively. ",
+        "bbox": [
+            65,
+            832,
+            494,
+            878
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "While the energy consumption is ",
+        "bbox": [
+            82,
+            878,
+            309,
+            893
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE ^ {v} [ n ] = p _ {v} D ^ {v} [ n ], \\tag {17}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            213,
+            900,
+            494,
+            917
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $p _ { v }$ is the CPU power consumption. ",
+        "bbox": [
+            65,
+            925,
+            350,
+            940
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Consequently, the total delay and energy consumption introduced by the block generation and consensus process are ",
+        "bbox": [
+            508,
+            244,
+            937,
+            276
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD _ {m} [ n ] = D _ {m} ^ {g} [ n ] + D _ {m} ^ {t} [ n ] + D ^ {v} [ n ], \\tag {18a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            595,
+            281,
+            937,
+            299
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE _ {m} [ n ] = E _ {m} ^ {g} [ n ] + E _ {m} ^ {t} [ n ] + E ^ {v} [ n ]. \\tag {18b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            597,
+            305,
+            937,
+            323
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "F. UAV Dynamics Model ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            335,
+            685,
+            351
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In UAV-assisted MEC scenarios, the UAV must frequently adjust its flight trajectory due to dynamic factors including the time-varying user’s task requirements, dynamic UAV flight states, and transmission environment variation. In addition, issues such as the sudden change of flight speed and the threshold constraints of UAV acceleration will cause deviations between ideal desired trajectory and actual flight trajectory, thereby compromising the UAV control stability and potentially causing significant system performance degradation. Therefore, it is crucial to dynamically control the UAV flight in real time to reduce the deviations between the actual and desired trajectories, ultimately mitigating performance degradation. ",
+        "bbox": [
+            506,
+            358,
+            937,
+            539
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In general, the dynamics of UAV m can be modeled as [29] ",
+        "bbox": [
+            523,
+            539,
+            930,
+            555
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\dot {v} _ {m} (t) = u _ {m} (t - \\tau), \\tag {19a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            651,
+            561,
+            936,
+            577
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\dot {q} _ {m} (t) = v _ {m} (t), \\tag {19b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            651,
+            584,
+            936,
+            599
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where $u _ { m } ( t ) , v _ { m } ( t )$ and $q _ { m } ( t )$ respectively denote the UAV m( ) m( ) m( )acceleration, speed, and position, and τ is the delay caused by issues such as signal processing, transmission, reception, and actuation, which serves as a stochastic item due to the user and UAV mobility. ",
+        "bbox": [
+            506,
+            606,
+            937,
+            681
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Define a state vector ",
+        "bbox": [
+            525,
+            683,
+            670,
+            695
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {m} (t) = [ q _ {m} (t), v _ {m} (t) ] ^ {T}. \\tag {20}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            632,
+            702,
+            936,
+            720
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Based on (19) and (20), the system dynamics of the UAV is given by ",
+        "bbox": [
+            506,
+            726,
+            937,
+            757
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\dot {p} _ {m} (t) = \\bar {G} p _ {m} (t) + G u _ {m} (t - \\tau), \\tag {21}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            606,
+            763,
+            936,
+            781
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            508,
+            787,
+            555,
+            799
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\bar {G} = \\left[ \\begin{array}{l l} 0 _ {3 \\times 3} & I _ {3 \\times 3} \\\\ 0 _ {3 \\times 3} & 0 _ {3 \\times 3} \\end{array} \\right], G = \\left[ \\begin{array}{l} 0 _ {3 \\times 3} \\\\ I _ {3 \\times 3} \\end{array} \\right], \\tag {22}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            602,
+            803,
+            936,
+            838
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "and here $I _ { j \\times j }$ and $0 _ { j \\times j }$ respectively denote the identity and zero matrices. ",
+        "bbox": [
+            506,
+            842,
+            937,
+            869
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Then, considering the typical delay of smaller than one time slot, the corresponding discrete-time dynamics can be derived as ",
+        "bbox": [
+            506,
+            872,
+            937,
+            916
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {m} [ n + 1 ] = G _ {0} p _ {m} [ n ] + G _ {1, n} u _ {m} [ n ] + G _ {2, n} u _ {m} [ n - 1 ], \\tag {23}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            516,
+            924,
+            936,
+            941
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "4688 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 3, MARCH 2025 ",
+        "bbox": [
+            484,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            58,
+            80,
+            106,
+            92
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\np _ {m} [ n ] = p _ {m} (n T _ {s}), G _ {0} = e ^ {\\bar {G} T _ {s}},\n$$",
+        "text_format": "latex",
+        "bbox": [
+            69,
+            101,
+            292,
+            121
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nG _ {1, n} = \\int_ {0} ^ {T _ {s} - \\tau_ {n}} e ^ {\\bar {G} T _ {s}} d t G, G _ {2, n} = \\int_ {T _ {s} - \\tau_ {n}} ^ {T _ {s}} e ^ {\\bar {G} T _ {s}} d t G, (2 4)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            79,
+            126,
+            486,
+            162
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "and $\\tau _ { n }$ and $u _ { m } [ n ]$ represent the time delay and UAV acceleration n m[ ]in the n-th time slot, respectively. ",
+        "bbox": [
+            57,
+            169,
+            486,
+            199
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Additionally, the energy consumption of UAV propulsion cannot be ignored, which is determined by instantaneous acceleration and speed as [8] ",
+        "bbox": [
+            57,
+            200,
+            486,
+            246
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} E _ {f, m} [ n ] = \\left(c _ {1} \\| v _ {m} [ n ] \\| ^ {3} + \\frac {c _ {2}}{\\| v _ {m} [ n ] \\|} \\left(1 + \\frac {\\| u _ {m} [ n ] \\| ^ {2}}{g _ {m} ^ {2}}\\right)\\right) \\\\ + \\frac {m _ {c} (\\| v _ {m} [ n ] \\| ^ {2} - \\| v _ {m} [ n - 1 ] \\| ^ {2})}{2 T _ {s}}, \\tag {25} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            252,
+            484,
+            334
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where $c _ { 1 }$ and $c _ { 2 }$ represent factors associated with the UAV, $m _ { c }$ is the UAV mass, and $g _ { m }$ cdenotes the gravitational acceleration. ",
+        "bbox": [
+            57,
+            340,
+            486,
+            369
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "G. Optimization Problem Formulation ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            387,
+            326,
+            402
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Based on (10), (18) and (25), the total energy consumption is given by ",
+        "bbox": [
+            57,
+            407,
+            486,
+            439
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE = \\sum_ {m \\in M} \\sum_ {n \\in N} \\left(\\sum_ {k \\in K} E _ {k, m} [ n ] + E _ {m} [ n ] + \\xi E _ {f, m} [ n ]\\right), \\tag {26}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            70,
+            446,
+            486,
+            488
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "where ξ is a scaling factor. ",
+        "bbox": [
+            58,
+            494,
+            242,
+            508
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Similarly, the total time delay is ",
+        "bbox": [
+            75,
+            510,
+            294,
+            523
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nD = \\sum_ {m \\in M} \\sum_ {n \\in N} \\left(\\sum_ {k \\in K} D _ {k, m} [ n ] + D _ {m} [ n ]\\right). \\tag {27}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            124,
+            532,
+            486,
+            574
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Therefore, through jointly taking into account the UAV trajectory control, user association, and computing frequency assignment, the optimization problem regarding the dynamic trajectory design of UAV-assisted MEC can be formulated as ",
+        "bbox": [
+            57,
+            580,
+            486,
+            642
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(P 1): \\min _ {Q, f _ {k}, f _ {b}, \\lambda} \\varpi E + (1 - \\varpi) D\n$$",
+        "text_format": "latex",
+        "bbox": [
+            58,
+            648,
+            292,
+            674
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. p _ {m} [ n + 1 ] = G _ {0} p _ {m} [ n ] + G _ {1, n} u _ {m} [ n ] + G _ {2, n} u _ {m} [ n - 1 ], \\tag {28a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            80,
+            680,
+            486,
+            712
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\| q _ {m} [ n ] - q _ {\\tilde {m}} [ n ] \\right\\| ^ {2} \\geq d _ {\\min} ^ {2}, m \\neq \\tilde {m}, \\tag {28b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            719,
+            486,
+            738
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k \\in K} \\lambda_ {k, m} [ n ] \\leq N _ {\\max}, \\forall m, \\tag {28c}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            744,
+            486,
+            776
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {m \\in M} \\lambda_ {k, m} [ n ] \\leq 1, \\forall k, \\tag {28d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            111,
+            784,
+            486,
+            815
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda_ {k, m} [ n ] \\in \\{0, 1 \\}, \\tag {28e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            821,
+            486,
+            840
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {k \\in K} \\lambda_ {k, m} f _ {k, m} [ n ] + f _ {b, m} [ n ] \\leq F, \\tag {28f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            845,
+            486,
+            878
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k, m} [ n ] \\geq 0, f _ {b, m} [ n ] \\geq 0. \\tag {28g}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            883,
+            486,
+            902
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In the above problem P 1, $\\lambda = \\{ \\lambda _ { k , m } [ n ] \\} , \\ f _ { k } = \\{ f _ { k , m } [ n ] \\}$ , $f _ { b } = \\{ f _ { b , m } [ n ] \\}$ , and $Q = \\{ q _ { m } [ n ] , v _ { m } [ n ] , u _ { m } [ n ] \\}$ = k,m[ ]respectively represent the sets of user association, UAV trajectory, and computing frequency assignment. The objective function aims to minimize the weighted sum of time delays and energy consumption induced by the task offloading, computing, and blockchain processing, and here $0 \\leq \\varpi \\leq 1$ . In the joint optimization problem, constraint (28a) describes the UAV flight dynamics model, detailing how the UAV position $p _ { m } [ n + 1 ]$ at time $n + 1$ i s updated based on the previous state and acceleration control input. This constraint ensures the trajectory adheres to the UAV’s flight dynamics. Constraint (28b) specifies the minimum safety distance between UAVs. Constraints (28c) and (28d) define the associations between mobile users and UAVs that each user can only connect to one UAV each time slot and each UAV can serve a maximum of $N _ { \\mathrm { m a x } }$ users. Constraint (28f) ensures that the total computing resources allocated by each UAV, including the resources allocated to users $f _ { k , m } [ n ]$ and blockchain tasks $f _ { b , m } [ n ]$ k,m[ ], do not exceed the UAV’s maximum computational b,m[ ]capacity F . ",
+        "bbox": [
+            58,
+            909,
+            486,
+            941
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            79,
+            930,
+            352
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "IV. MADDPG-LC ALGORITHM DESIGN ",
+        "text_level": 1,
+        "bbox": [
+            575,
+            367,
+            853,
+            380
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Obviously, the solution to problem P 1 has a significant challenge due to its inherent non-convex nature, along with the UAV dynamics restrict (28 a), which is commonly overlooked in existing works. In reality, the acceleration and speed of UAVs, subject to the system dynamics constraint, cannot be changed arbitrarily. To tackle this complexity, a practical approach involves decomposing the optimization problem P 1 into distinct subproblems. Once the flight trajectory of the UAV is determined, the original optimization problem can be reduced to a resource allocation issue. Conversely, when the user association and computation frequency assignment are specified, the optimization problem P 1 transforms into a dynamic trajectory design problem. However, the dynamics constraints of the UAV still render the direct resolution of the dynamic trajectory design exceedingly challenging. Assuming perfect flight capabilities of the UAV, the dynamic trajectory design problem can be further simplified into a desired trajectory design problem. Consequently, the dynamic trajectory design can be further decomposed into two components: desired trajectory design and trajectory tracking control. In summary, a feasible approach to solving the optimization problem P 1 involves dividing it into three individual subproblems: the design of the desired UAV trajectory, the tracking control of the actual UAV trajectory, and the allocation of user association and computing frequency. ",
+        "bbox": [
+            500,
+            387,
+            930,
+            751
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "A. Desired UAV Trajectory Design ",
+        "text_level": 1,
+        "bbox": [
+            500,
+            766,
+            742,
+            781
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Given the user association and computation frequency assignment, along with the assumption of the UAV’s perfect flying ability, the optimization problem P 1 can be simplified to a desired UAV trajectory design problem as ",
+        "bbox": [
+            500,
+            787,
+            930,
+            848
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(P 2. 1): \\min _ {Q} \\varpi E + (1 - \\varpi) D\n$$",
+        "text_format": "latex",
+        "bbox": [
+            526,
+            854,
+            750,
+            878
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\left\\| q _ {m} [ n ] - q _ {\\tilde {m}} [ n ] \\right\\| ^ {2} \\geq d _ {\\min} ^ {2}, m \\neq \\tilde {m}. \\tag {29}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            594,
+            883,
+            929,
+            904
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Typically, traditional algorithms usually address the issue of UAV trajectory design through iteration methods. However, these methods have high computational complexity and low adaptability, rendering them unsuitable for dynamic scenarios with stringent real-time requirements. In contrast, RL algorithms demonstrate superior adaptability to complex and unpredictable environments, and can continuously enhance their performance through learning, thereby exhibiting significant advantages in numerous practical applications. Specifically, DRL algorithms integrate the merits of deep learning and RL to approximate both value and policy functions through neural networks, with the aim of more effectively achieving decision objectives. Within the realm of DRL, the DDPG algorithm, as an algorithm capable of handling continuous action spaces, can learn deterministic policies to improve the algorithm stability and convergence. ",
+        "bbox": [
+            500,
+            909,
+            930,
+            940
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: DYNAMIC TRAJECTORY DESIGN FOR MULTI-UAV-ASSISTED MOBILE EDGE COMPUTING ",
+        "bbox": [
+            58,
+            37,
+            614,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "4689 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            79,
+            493,
+            275
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The MADDPG algorithm is an extension of the DDPG framework specifically designed for environments where multiple agents intelligently collaborate [13], [31], [32]. It typically follows a “centralized training with decentralized execution” paradigm, allowing each agent to have its own local state. During the training phase, global information is used to optimize the policy network, with all agents participating simultaneously to collect experience and update their own policy networks. In the execution phase, each agent independently generates action decisions based on its individualized policy network. Given the necessity of continuous actions, such as speed and yaw angle, the MADDPG algorithm, owing to its proficiency in handling continuous action spaces, emerges as a potential feasible algorithm to solve the ideal desired UAV trajectory design challenge. ",
+        "bbox": [
+            63,
+            276,
+            493,
+            487
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In accordance with the problem P 2.1, as presented in (29), it can be reformulated as a decentralized partially observable Markov decision process (POMDP). In this framework, each UAV is equipped with an dedicated agent, denoted as m, and has its local observation $o _ { m }$ . The aggregate of all local observations mfrom UAVs forms the global environmental state. During the action execution phase, each UAV derives its action $a _ { m }$ based on the local observation, and then receives a reward $r _ { m }$ m. Therefore, mthe MADDPG algorithm serves as a feasible approach to tackle the challenge of desired UAV trajectory design, and the relevant POMDP definition is further analyzed as follows. ",
+        "bbox": [
+            63,
+            487,
+            493,
+            652
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1) Observation: The local information observable by each agent m includes the position of the UAV, along with the locations and task-related information of all ground users, which is given by ",
+        "bbox": [
+            65,
+            652,
+            494,
+            714
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\no _ {m, n} = \\{q _ {m} [ n ], q _ {1} [ n ], \\dots , q _ {K} [ n ],\n$$",
+        "text_format": "latex",
+        "bbox": [
+            99,
+            724,
+            333,
+            741
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nA _ {1} [ n ], \\dots , A _ {K} [ n ], C _ {1} [ n ], \\dots , C _ {K} [ n ] \\}. \\tag {30}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            166,
+            746,
+            493,
+            763
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "2) State: Then, the environment state consists the observations of all UAVs as ",
+        "bbox": [
+            65,
+            773,
+            493,
+            801
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns _ {n} = \\left\\{o _ {1, n}, o _ {2, n}, \\dots , o _ {M, n} \\right\\}. \\tag {31}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            181,
+            815,
+            493,
+            832
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3) Action: The action of UAV can be described as a discrete-time control strategies determined by UAV flight acceleration that ",
+        "bbox": [
+            65,
+            842,
+            493,
+            872
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {m, n} = u _ {m} [ n ]. \\tag {32}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            225,
+            883,
+            493,
+            900
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The action set consists of all actions of UAVs that $a _ { n } =$ $\\{ a _ { 1 , n } , a _ { 2 , n } , . . . , a _ { M , n } \\}$ . ",
+        "bbox": [
+            65,
+            910,
+            493,
+            941
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "4) Reward: The reward offers a feedback mechanism, allowing the agent to refine its action policy over time. Through an iterative process aimed at maximizing the accumulative longterm rewards, the agent is able to gradually develop an optimal flight strategy. According to desired trajectory design problem P 2.1, the time delay and energy consumption can be regraded as key components in reward function, that is ",
+        "bbox": [
+            506,
+            79,
+            937,
+            185
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nr _ {m, n} = - (\\varpi E _ {m} [ n ] + (1 - \\varpi) D _ {m} [ n ]) - P _ {m} [ n ], \\tag {33}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            538,
+            194,
+            936,
+            210
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $E _ { m } [ n ]$ and $D _ { m } [ n ]$ respectively denote the total energy consumption and time delay of UAV m in n-th time slot, and $P _ { m } [ n ]$ denotes the penalty incurred by the UAV, encompassm[ ]ing scenarios where the UAV violates the restricted airspace boundary or when two UAVs approach within the minimum safe distance. ",
+        "bbox": [
+            506,
+            218,
+            937,
+            306
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Then, the desired UAV flight trajectory $Q ^ { * }$ can be derived based on the above POMDP definition by using the MADDPG approach. Please refer to Section IV-D for the details of MAD-DPG algorithm design. ",
+        "bbox": [
+            506,
+            309,
+            937,
+            369
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "B. Actual UAV Trajectory Tracking Control ",
+        "text_level": 1,
+        "bbox": [
+            508,
+            386,
+            809,
+            400
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In actual application scenarios, the UAV is required to frequently adjust its trajectory in response to dynamic nature of the transmission environment, task requirements, user mobility, and interference noise. Additionally, the speed and acceleration of the UAV are inherently restricted, rendering the UAV unable to arbitrarily change its state to match a desired trajectory. As a result, the desired UAV flight trajectory derived from Section IV-A, compared to the actual trajectory, is bound to exhibit deviations, which will cause significant performance degradation. Therefore, it is essential to implement effective trajectory tracking control mechanisms to make the UAV’s flight trajectory closer to the desired one, thus improving control stability and overall system efficiency. ",
+        "bbox": [
+            506,
+            407,
+            937,
+            602
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Once the UAV’s desired trajectory is determined through subproblem P 2.1, in order to decrease the deviation between the desired and actual trajectories, the dynamic trajectory design can equivalent be regarded as a UAV trajectory tracking control problem, which is given by ",
+        "bbox": [
+            506,
+            603,
+            937,
+            679
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(P 2. 2): Q \\to Q ^ {*}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            523,
+            686,
+            654,
+            704
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. p _ {m} [ n + 1 ] = G _ {0} p _ {m} [ n ] + G _ {1, n} u _ {m} [ n ] + G _ {2, n} u _ {m} [ n - 1 ], \\tag {34}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            523,
+            709,
+            936,
+            739
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $Q ^ { * }$ is the desired trajectory that $Q ^ { * } = \\{ q _ { m } ^ { * } [ n ] , v _ { m } ^ { * } [ n ] \\}$ }, and $v ^ { * }$ and $q ^ { * }$ = m[ ] m[ ]represent the desired speed and position information, respectively. ",
+        "bbox": [
+            506,
+            750,
+            937,
+            795
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Then, the speed and position deviations are respectively expressed as $\\Delta v ( t ) = v ( t ) - v ^ { * } ( t )$ and $\\Delta q ( t ) = q ( t ) - q ^ { * } ( t )$ , and Δ ( ) = ( ) ( )the state deviation vector is given by $\\Delta p _ { m } ( t ) = [ \\Delta q ( t ) , \\Delta v ( t ) ]$ . Δ m( ) = [Δ ( ) Δ ( )]Based on (21) to (23), the UAV deviation dynamics model can be formulated as ",
+        "bbox": [
+            506,
+            796,
+            937,
+            869
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Delta p _ {m} [ n + 1 ] = G _ {0} \\Delta p _ {m} [ n ] + G _ {1, n} u _ {m} [ n ] + G _ {2, n} u _ {m} [ n - 1 ]. \\tag {35}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            518,
+            878,
+            936,
+            909
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Defined a new state vector $z _ { m } [ n ] = [ \\Delta p _ { m } [ n ] , u _ { m } [ n - 1 ] ] ^ { T }$ , m[ ] = [Δ m[ ] m[ ]]which incorporates both the current UAV state deviation of the ",
+        "bbox": [
+            506,
+            909,
+            937,
+            939
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "4690 ",
+        "bbox": [
+            67,
+            39,
+            95,
+            49
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 3, MARCH 2025 ",
+        "bbox": [
+            484,
+            37,
+            937,
+            50
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [
+            "Algorithm 1: User Association and Computing Frequency Assignment. "
+        ],
+        "code_body": "1 Input location information of UAV and user.\n2 for UAV m=1,2,...,M do\n3    for User k=1,2,...,K do\n4    if User k is within the service range then\n5    if The task of user k exceeds threshold then\n6    | $\\lambda_{k,m}[n]=1$ .\n7    else\n8    | Calculate channel gain $g_{k,m}[n]$ .\n9    end\n10    end\n11    end\n12    Update $\\lambda_{k,m}[n]$ based on $g_{k,m}[n]$ .\n13 end\n14 Calculate $f_{k}$ and $f_{b}$ by CVXPY solver according to $\\lambda_{k,m}[n]$ and (39).\n15 Return $f_{k}$ , $f_{b}$ , and $\\lambda$ . ",
+        "bbox": [
+            67,
+            116,
+            436,
+            364
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "UAV and previous control signals accounting for the effects of delay. Then, the deviation dynamics model in (35) can be rewritten as ",
+        "bbox": [
+            57,
+            393,
+            488,
+            439
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nz _ {m} [ n + 1 ] = H [ n ] z _ {m} [ n ] + F [ n ] u _ {m} [ n ], \\tag {36}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            136,
+            448,
+            484,
+            465
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            58,
+            472,
+            104,
+            484
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nH \\left[ n \\right] = \\left[ \\begin{array}{c c} G _ {0} & G _ {2, n} \\\\ 0 & 0 \\end{array} \\right], F \\left[ n \\right] = \\left[ \\begin{array}{c} G _ {1, n} \\\\ 0 \\end{array} \\right].\n$$",
+        "text_format": "latex",
+        "bbox": [
+            129,
+            489,
+            412,
+            525
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "By using the typical quadratic cont function, based on the deviation dynamics (36), the optimal trajectory tracking control problem (34) can be equivalent to be ",
+        "bbox": [
+            57,
+            530,
+            486,
+            575
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\min _ {\\{u \\}} z _ {m} [ N ] ^ {T} W z _ {m} [ N ] + \\sum_ {n = 0} ^ {N - 1} \\\\ (z _ {m} [ n ] ^ {T} W z _ {m} [ n ] + u _ {m} [ n ] ^ {T} Z u _ {m} [ n ]) \\\\ s. t. z _ {m} [ n + 1 ] = H [ n ] z _ {m} [ n ] + F [ n ] u _ {m} [ n ]. \\tag {37} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            124,
+            582,
+            486,
+            670
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where W and Z are determined system parameters, and $N$ denotes the length of control period. ",
+        "bbox": [
+            57,
+            676,
+            486,
+            707
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The optimization problem in (37) can be addressed as a typical LQR problem, and the optimal UAV flight acceleration is given by [33] ",
+        "bbox": [
+            57,
+            708,
+            486,
+            753
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nu _ {m} [ n ] = - l [ n ] z _ {m} [ n ], \\tag {38}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            196,
+            761,
+            484,
+            779
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where the coefficient l n can be iteratively obtained by ",
+        "bbox": [
+            57,
+            785,
+            436,
+            801
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nl [ n ] = \\left[ H [ n ] ^ {T} S [ n + 1 ] H [ n ] + Z \\right] ^ {- 1} H [ n ] ^ {T} S [ n + 1 ] F [ n ],\n$$",
+        "text_format": "latex",
+        "bbox": [
+            57,
+            806,
+            451,
+            825
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS [ n ] = F [ n ] ^ {T} S [ n + 1 ] F [ n ] + W - l [ n ] ^ {T} H [ n ] ^ {T} S [ n + 1 ] F [ n ],\n$$",
+        "text_format": "latex",
+        "bbox": [
+            58,
+            830,
+            486,
+            849
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS [ N ] = W.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            58,
+            854,
+            141,
+            872
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Drawing upon the optimally designed UAV flight acceleration $u _ { m } [ n ]$ in (38), the actual flight speed and trajectory can be m[ ]subsequently determined as $v _ { m } [ n ] = v _ { m } [ n - 1 ] + u _ { m } [ n ] T _ { s }$ and $q _ { m } [ n ] { = } q _ { m } [ n - 1 ] { + } v _ { m } [ n - 1 ] \\dot { T } _ { s } { + } 0 . 5 \\dot { u _ { m } } [ n ] \\dot { T } _ { s } ^ { 2 }$ + m[ ] s, respectively. ",
+        "bbox": [
+            57,
+            878,
+            486,
+            941
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "C. User Association and Computing Frequency Assignment ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            79,
+            910,
+            95
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Once the flying trajectory is definitively determined, the user association problem can be addressed using the principle of channel optimality. The UAV will make a decision on whether to be associated with the user based on the channel gain and the user’s task offloading requirement. Specifically, in the case that the capacity of the task storage of users within the service range does not exceed the predefined priority connection threshold, the UAV will give precedence to associating with users having the best channel gains. Conversely, if the task in the storage of a user within the service range exceeds the threshold, that user will be prioritized for association, while the remaining users will be connected in accordance with their channel gains. ",
+        "bbox": [
+            500,
+            101,
+            930,
+            281
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Subsequently, upon the determination of UAV flight trajectory and user association, the problem of resource allocation can be equivalent to a computing frequency assignment issue as ",
+        "bbox": [
+            500,
+            282,
+            930,
+            328
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(P 2. 3): \\min _ {f _ {k}, f _ {b}} \\varpi E + (1 - \\varpi) D\n$$",
+        "text_format": "latex",
+        "bbox": [
+            547,
+            337,
+            774,
+            362
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\ns. t. \\sum_ {k \\in K} \\lambda_ {k, m} f _ {k, m} [ n ] + f _ {b, m} [ n ] \\leq F, \\tag {39a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            585,
+            368,
+            929,
+            400
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf _ {k, m} [ n ] \\geq 0, f _ {b, m} [ n ] \\geq 0. \\tag {39b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            407,
+            929,
+            424
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Obviously, the above computing frequency assignment problem is convex, and the optimal solutions can be easily obtained by utilizing the CVXPY solver [8]. Algorithm 1 presents the details regarding user association and computing frequency assignment. ",
+        "bbox": [
+            500,
+            433,
+            930,
+            508
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "D. MADDPG-Based UAV Trajectory Design ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            527,
+            811,
+            542
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Based on the POMDP definition in Section IV-A, the desired UAV flight trajectory can be derived by using the MADDPG approach. ",
+        "bbox": [
+            500,
+            547,
+            930,
+            593
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The agent m interacts with environment. Then, an action is generated by online actor network with Gaussian noise added to enhance the exploration efficiency, which is given by ",
+        "bbox": [
+            500,
+            594,
+            930,
+            640
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {m, n} = \\mu (o _ {m, n} | \\phi^ {\\mu_ {m}}) + \\varepsilon , \\tag {40}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            622,
+            650,
+            929,
+            666
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $\\mu ( o _ { m , n } | \\phi ^ { \\mu _ { m } } )$ represents the online actor network, and ε ( m,n )is the additional Gaussian noise. ",
+        "bbox": [
+            500,
+            676,
+            929,
+            705
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "The expected reward value can be defined as: ",
+        "bbox": [
+            516,
+            705,
+            826,
+            720
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nx _ {m, n} = r _ {m, n} + \\gamma * Q _ {m} ^ {\\prime} (o _ {m, n + 1}, \\mu^ {\\prime} (o _ {m, n + 1} | \\phi^ {\\mu_ {m} ^ {\\prime}}) | \\phi^ {Q _ {m} ^ {\\prime}}), \\tag {41}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            518,
+            729,
+            929,
+            761
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where $Q _ { m } ^ { \\prime } ( o _ { m , n + 1 } , \\mu ^ { \\prime } ( o _ { m , n + 1 } | \\phi ^ { \\mu _ { m } ^ { \\prime } } ) | \\phi ^ { Q _ { m } ^ { \\prime } } )$ denotes the next Q m( m,n ( m,n ) )value obtained from target critic network, $\\mu ^ { \\prime } ( o _ { m , n + 1 } | \\phi ^ { \\mu _ { m } ^ { \\prime } } )$ ( m,n )refers to the next action policy from target actor network, and γ is the discount factor. Additionally, the experience replay technique is employed to mitigate the training sample correlation. ",
+        "bbox": [
+            500,
+            762,
+            929,
+            837
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Then, the critic is updated by minimizing the following loss function ",
+        "bbox": [
+            500,
+            838,
+            929,
+            867
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL (\\phi_ {m}) = \\frac {1}{\\Gamma} \\sum_ {n = 0} ^ {\\Gamma - 1} (x _ {m, n} - Q _ {m} (o _ {n}, a _ {m, n} | \\phi^ {Q _ {m}})) ^ {2}, \\tag {42}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            533,
+            875,
+            929,
+            916
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "where  is the mini-batch size. ",
+        "bbox": [
+            501,
+            925,
+            713,
+            939
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: DYNAMIC TRAJECTORY DESIGN FOR MULTI-UAV-ASSISTED MOBILE EDGE COMPUTING ",
+        "bbox": [
+            58,
+            37,
+            614,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "4691 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/f11e7c7bc7b4439cd71b4d52e5cbcb438402c7a39da654f37d9fd9ff91aca9b9.jpg",
+        "image_caption": [
+            "Fig. 3. Schematic of the MADDPG-LC algorithm. "
+        ],
+        "image_footnote": [],
+        "content": "```mermaid\ngraph TD\n    subgraph Environment\n        A[\"Drone Environment\"] --> B[\"Training progress\"]\n        B --> C[\"Agent 1: Actor 1, Agent 2, Agent m\"]\n        C --> D{Γ * (s_n, a_n, s_{n+1}, r_n)}\n        D --> E[\"Experience Replay Buffer\"]\n        E --> F[\"(s_n, a_n, s_{n+1}, r_n)\"]\n        F --> G[\"User Association and Computing Resource Allocation\"]\n        G --> H[\"LQR-based Actual UAV Trajectory Control\"]\n        H --> I[\"q', v', u'\"]\n    end\n\n    subgraph Training\n        J[\"Agent 1\"] --> K[\"Target Actor 1, Actor 2, Actor m\"]\n        K --> L[\"Action 1, Action 2, Action 3, LQR\"]\n        L --> M[\"Update\"]\n        M --> N[\"Feedback to LQR\"]\n        N --> O[\"Policy Gradient\"]\n        O --> P[\"Q\"]\n        P --> Q[\"Critic 1, Target Critic 1, Loss Function\"]\n        Q --> R[\"Update\"]\n        R --> S[\"Feedback to LQR\"]\n        S --> T[\"Policy Gradient\"]\n        T --> U[\"Q\"]\n        U --> V[\"Critic 2, Target Critic 2, Loss Function\"]\n        V --> W[\"Update\"]\n        W --> X[\"Feedback to LQR\"]\n        X --> Y[\"Policy Gradient\"]\n        Y --> Z[\"Q\"]\n        Z --> AA[\"Critic m, Target Critic m, Loss Function\"]\n        AA --> AB[\"Update\"]\n        AB --> AC[\"Feedback to LQR\"]\n    end\n\n    subgraph Execution\n        AD[\"Agent 2\"] --> AE[\"Target Actor 2, Actor 3, Actor m\"]\n        AE --> AF[\"Action 2, Action 3, Action 4, LQR\"]\n        AF --> AG[\"Update\"]\n        AG --> AH[\"Feedback to LQR\"]\n        AH --> AI[\"Policy Gradient\"]\n        AI --> AJ[\"Q\"]\n        AJ --> AK[\"Critic 2, Target Critic 2, Loss Function\"]\n        AK --> AL[\"Update\"]\n        AL --> AM[\"Feedback to LQR\"]\n        AM --> AN[\"Policy Gradient\"]\n        AN --> AO[\"Q\"]\n        AO --> AP[\"Critic m, Target Critic m, Loss Function\"]\n        AP --> AQ[\"Update\"]\n        AQ --> AR[\"Feedback to LQR\"]\n    end\n\n    subgraph Training\n        AS[\"Agent m\"] --> AT[\"Target Actor C, Actor m, LQR\"]\n        AT --> AU[\"Action 1, Action 2, Action 3, Action 4, LQR\"]\n        AU --> AV[\"Update\"]\n        AV --> AW[\"Feedback to LQR\"]\n        AW --> AX[\"Policy Gradient\"]\n        AX --> AY[\"Q\"]\n        AY --> AZ[\"Critic 1, Target Critic 1, Loss Function\"]\n        AZ --> BA[\"Update\"]\n        BA --> BB[\"Feedback to LQR\"]\n        BB --> BC[\"Policy Gradient\"]\n        BC --> BD[\"Q\"]\n        BD --> BE[\"Critic m, Target Critic m, Loss Function\"]\n        BE --> BF[\"Update\"]\n        BF --> BG[\"Feedback to LQR\"]\n    end\n```",
+        "sub_type": "flowchart",
+        "bbox": [
+            85,
+            80,
+            917,
+            271
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The online actor network parameter $\\phi ^ { \\mu _ { m } }$ is updated by using the policy gradient algorithm as ",
+        "bbox": [
+            65,
+            320,
+            494,
+            351
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\nabla_ {\\phi} J \\approx \\frac {1}{\\Gamma} \\sum_ {n = 0} ^ {\\Gamma - 1} [ \\nabla_ {a} Q _ {m} (o, a | \\phi^ {Q _ {m}})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            163,
+            359,
+            393,
+            401
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left. \\left| _ {o = o _ {n}, a = \\mu (o _ {n})} \\nabla_ {\\phi} \\mu \\left(o \\mid \\phi^ {\\mu_ {m}}\\right) \\right| _ {o _ {n}} \\right]. \\tag {43}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            178,
+            407,
+            494,
+            426
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where $\\nabla$ represents the gradient operator. ",
+        "bbox": [
+            65,
+            435,
+            350,
+            450
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Then, the parameters of target networks can be updated through the soft update method: ",
+        "bbox": [
+            65,
+            450,
+            494,
+            479
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\phi^ {Q _ {m} ^ {\\prime}} \\leftarrow \\iota \\phi^ {Q _ {m}} + (1 - \\iota) \\phi^ {Q _ {m} ^ {\\prime}}, \\tag {44a}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            175,
+            487,
+            494,
+            506
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\phi^ {\\mu_ {m} ^ {\\prime}} \\leftarrow \\iota \\phi^ {\\mu_ {m}} + (1 - \\iota) \\phi^ {\\mu_ {m} ^ {\\prime}}, \\tag {44b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            176,
+            513,
+            494,
+            531
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "where ι is a constant that $\\iota \\ll 1$ . ",
+        "bbox": [
+            65,
+            542,
+            287,
+            555
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Upon the completion of training process, the optimized actor network parameter, represented as $\\phi ^ { \\mu _ { m } ^ { * } }$ , is acquired. Then, the desired flight acceleration can be derived as ",
+        "bbox": [
+            65,
+            556,
+            494,
+            601
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "equation",
+        "text": "$$\nu _ {m} ^ {*} [ n ] = \\mu (o _ {m, n} | \\phi^ {\\mu_ {m} ^ {*}}). \\tag {45}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            196,
+            611,
+            494,
+            628
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Finally, the desired flight trajectory information, including the UAV position $q _ { m } ^ { * } [ n ]$ and the flight speed $v _ { m } ^ { * } [ n ]$ , can be further m[ ]derived based on flight acceleration $u _ { m } ^ { * } [ n ]$ . ",
+        "bbox": [
+            65,
+            638,
+            494,
+            683
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "m[ ]In conclusion, based on the thorough analysis presented from Sections IV.A to IV.D, the schematic of proposed MADDPG-LC-based dynamic trajectory algorithm for multi-UAV-assisted MEC system can be depicted as Fig. 3. Specifically, due to the dynamic nature of UAVs and users, the UAV flight trajectory needs to be frequently adjusted. The DRL algorithm is capable of effectively addressing the dynamic trajectory control problem. In the proposed MADDPG-LC scheme, the integration of the MADDPG-based desired trajectory design and the LQR-based trajectory tracking control successfully realizes the dynamic UAV trajectory control that adjusts to the dynamic UAV-assisted MEC environment, while adhering to the constraint induced by UAV flight dynamics. Furthermore, in conjunction with user association and computing frequency assignment, the MADDPG-LC framework has the ability to achieve real-time dynamic trajectory control to jointly optimize the UAV trajectory design and resource allocation each time slot. ",
+        "bbox": [
+            65,
+            684,
+            494,
+            939
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/93bb9fd61a5079cbc2c2bb6e90cc53ceb239f91dc0bfca49bd0006e177ee5cfd.jpg",
+        "table_caption": [
+            "TABLE I SIMULATION PARAMETERS "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Parameter</td><td>value</td><td>Parameter</td><td>value</td></tr><tr><td> $B$ </td><td>1MHz</td><td> $\\sigma^{2}$ </td><td>-90dBm</td></tr><tr><td> $d_{min}$ </td><td>5m</td><td> $F$ </td><td>2.5 Gcycles/s</td></tr><tr><td> $A_{k}$ </td><td>10 M</td><td> $C_{k}$ </td><td>20 Mcycles</td></tr><tr><td> $c1$ </td><td> $9.26 \\times 10^{-4}$ </td><td> $c2$ </td><td>2250</td></tr></table>",
+        "bbox": [
+            516,
+            354,
+            932,
+            434
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "V. SIMULATION RESULTS ",
+        "text_level": 1,
+        "bbox": [
+            634,
+            458,
+            809,
+            469
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "This section evaluates the proposed MADDPG-LC dynamic trajectory control scheme through extensive simulations, including the algorithm convergence and performance, and the analysis of delay and energy consumption. ",
+        "bbox": [
+            506,
+            478,
+            937,
+            540
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "A. Simulation Parameter Setting ",
+        "text_level": 1,
+        "bbox": [
+            506,
+            556,
+            735,
+            571
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "In our simulations, we consider the movement of users and UAVs within a $1 0 0 \\mathrm { ~ m ~ } \\times \\mathrm { ~ } 1 0 0$ m area, with three UAVs flying at an altitude of 10 meters above ground level in a designated area. The starting positions of UAVs are randomly initialized, while their initial speed and acceleration are both set to 0. Each user can move at a speed ranging from 0 to 2 m/s. The transmit power is set to 40 dBm for the UAV and 20 dBm for the user. User information is updated every 0.1 seconds. The transaction and block sizes are set to 2KB and 3MB, respectively. Other system parameters can be found in the Table I. ",
+        "bbox": [
+            506,
+            578,
+            937,
+            728
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "The simulation is carried out using Python 3.7.16 and Tensor-Flow 2.0.0. The parameter settings for the MADDPG algorithm are as follows: the learning rate of the actor-critic network is set to 0.001 if undefined, the reward discount factor $\\gamma = 0 . 9$ , the =soft update coefficient is 0.01, and the batch size for randomly sampled data is 256. The actor-critic network consists of two fully connected layers, each containing 300 neurons. The input dimension for the actor network is set to $3 K + 2$ , where $\\cdot _ { 3 } \\cdot$ +represents the position and task dimensions of a single user, K is the number of users, and ‘2’ is the position dimension of a single agent. The input dimension for the critic network is $M ( 3 K + 2 ) + 2 M$ , where M represents the number of agents ( + ) +(i.e., UAVs). The inputs include the observations and actions of all agents. ",
+        "bbox": [
+            506,
+            729,
+            937,
+            940
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "4692 ",
+        "bbox": [
+            67,
+            39,
+            92,
+            49
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 3, MARCH 2025 ",
+        "bbox": [
+            484,
+            37,
+            936,
+            49
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/603b9d699ec951552a42432ff5655b230de711d7ffbf11fbce4f6908a749cece.jpg",
+        "content": "| Number of training episodes | learning rate=0.01 Trend Line | learning rate=0.001 Trend Line | learning rate=0.0001 Trend Line | learning rate=0.01 | learning rate=0.001 | learning rate=0.0001 |\n| --------------------------- | ----------------------------- | ------------------------------ | ------------------------------- | ------------------ | ------------------- | -------------------- |\n| 0                           | -50000                        | -50000                         | -50000                          | -50000             | -50000              | -50000               |\n| 100                         | 75000                         | 60000                          | -25000                          | 75000              | 65000               | -25000               |\n| 200                         | 80000                         | 65000                          | 25000                           | 80000              | 75000               | 25000                |\n| 300                         | 85000                         | 70000                          | 45000                           | 85000              | 85000               | 45000                |\n| 400                         | 90000                         | 75000                          | 65000                           | 90000              | 95000               | 65000                |\n| 500                         | 95000                         | 80000                          | 85000                           | 95000              | 115000              | 85000                |\n| 600                         | 100000                        | 85000                          | 115000                          | 115000             | 135000              | 115000               |\n| 700                         | 115000                        | 95625                          | 162562                          | 135625             | 162562              | 162562               |\n| 750                         | 125625                        | 115437                         | 218333                          | 162562             | 183333              | 218333               |",
+        "chart_caption": [
+            "Fig. 4. Accumulated reward. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            90,
+            80,
+            456,
+            258
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/b61206219a4136b86abaac8479ae170940c4a7b94b4ea9c9d1b520f7f1f6ed86.jpg",
+        "content": "| Number of training episodes | Learning Rate=0.01 | Learning Rate=0.001 | Learning Rate=0.0001 | Trend Line |\n| --------------------------- | ------------------ | ------------------- | -------------------- | ---------- |\n| 0                           | 0                  | 0                   | 0                    | 0          |\n| 100                         | ~2500              | ~2000               | ~1500                | ~150       |\n| 200                         | ~3000              | ~2500               | ~2000                | ~200       |\n| 300                         | ~3200              | ~2800               | ~2500                | ~250       |\n| 400                         | ~3100              | ~2900               | ~2800                | ~280       |\n| 500                         | ~3150              | ~2950               | ~2900                | ~290       |\n| 600                         | ~3200              | ~3000               | ~3000                | ~300       |\n| 700                         | ~3250              | ~3050               | ~3100                | ~310       |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            90,
+            301,
+            267,
+            444
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/a908d72c03c90fa4d4a1ccf382ef15bafb20a0be89f0a67b8a90fb993bbd0013.jpg",
+        "content": "| Number of training episodes | learning rate=0.01 | learning rate=0.001 | learning rate=0.0001 | learning rate=0.0001 Trend Line | learning rate=0.0001 Trend Line | learning rate=0.00001 Trend Line |\n| --------------------------- | ------------------ | ------------------- | -------------------- | ------------------------------- | ------------------------------- | ------------------------------- |\n| 0                           | 0                  | 0                   | 0                    | 0                               | 0                               | 0                               |\n| 100                         | ~2500              | ~7500               | ~1500                | ~1500                           | ~1500                           | ~1500                           |\n| 200                         | ~2500              | ~5000               | ~2500                | ~2500                           | ~2500                           | ~2500                           |\n| 300                         | ~2500              | ~2500               | ~2500                | ~2500                           | ~2500                           | ~2500                           |\n| 400                         | ~2500              | ~2500               | ~2500                | ~2500                           | ~2500                           | ~2500                           |\n| 500                         | ~2500              | ~2500               | ~2500                | ~2500                           | ~2500                           | ~2500                           |\n| 600                         | ~2500              | ~2500               | ~2500                | ~2500                           | ~2500                           | ~2500                           |\n| 700                         | ~2500              | ~2500               | ~2500                | ~2500                           | ~2500                           | ~2500                           |",
+        "chart_caption": [
+            "Fig. 5. The loss and TD-error. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            279,
+            301,
+            454,
+            443
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "B. Convergence Performance ",
+        "text_level": 1,
+        "bbox": [
+            58,
+            496,
+            265,
+            511
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "In Fig. 4, the training cumulative reward curve for MADDPG-LC algorithm at learning rates of 0.01, 0.001 and 0.0001 are presented. As can be seen, the learning speed of the agent decreases as the learning rate decreases. When the learning rate is 0.01, the agent is capable of learning quickly and get a high expected total reward, but the converged cumulative reward is not sufficiently stable. When the learning rate is 0.0001, the agent learning speed is extremely slow, and it can only obtain the relatively higher expected total reward after training 700 episodes. When the learning rate is 0.001, the agent can quickly learn to acquire a higher expected total reward, and the accumulated reward can converge at a more stable level. ",
+        "bbox": [
+            57,
+            517,
+            486,
+            698
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Fig. 5 presents the trend curve of loss function of actor network and TD error of critic network for MADDPG-LC algorithm. Integrated with the accumulated reward change curve, it can be seen that around the first 30 cycles, the critic network loss is zero, and all objectives are not optimized. The accumulated rewards also fluctuate at an extremely low level. This is because the UAV is in sample collection stage for experience buffer at the beginning. If there is no enough experience to draw upon, actions will be randomly selected. It can also be seen from Fig. 6 that, when the replay memory has enough samples, the agent begins to sample the stored experience tuples for the network training. There is a significant exploration and learning phase before 50 rounds. In this phase, the loss of critic network drops rapidly, and the average task execution significantly increases, while the average energy consumption and delay decrease. The loss and TD-error curves tend to converge as the number of training rounds increases, indicating that the agent performance is gradually improved with the network training. ",
+        "bbox": [
+            57,
+            699,
+            488,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            80,
+            930,
+            109
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "C. UAV Trajectory Evaluation ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            126,
+            713,
+            141
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "To examine the efficacy of the MADDPG-LC algorithm in the actual design of dynamic UAV trajectories, the performance comparisons are presented in Figs. 7, 8, and 9, respectively, focusing on the UAV’s trajectory, speed, and acceleration. It can be observed that the actual and desired trajectories basically coincide with each other at the beginning. Then, the trajectory gradually deviates, and the deviation between the two trajectories is mainly affected by flight control dynamics constraints, environmental uncertainty, and system time delays. Under ideal conditions, the UAV flight is not constrained by flight dynamics, allowing it to arbitrarily change its direction and speed upon the received acceleration control signals, resulting in a deviation between the desired trajectory and the actual trajectory, and this deviation will gradually become larger. In addition, other factors such as delays mean that the UAV cannot respond immediately based on the acceleration control signal, and there is a delay in control, which will further bring the trajectory deviation. On the other hand, the user task requirements are dynamically updated according to the UAV task offloading. Due to the deviation between the desired and actual trajectories, the deviation between the desired and actual task offloading requirements will also increase. In fact, the desired UAV trajectory is formulated based on the user’s initial task offloading requirements, while the actual UAV trajectory is dynamically re-planned based on the current flight status and updated user task offloading requirements. Therefore, the proposed MADDPG-LC algorithm has the capability to adjust the flight trajectory in real-time according to the updated user’s task offloading requirements and UAV flight state, thereby improving the overall system performance. Since the actual UAV accelerations are not intuitively visible in Figs. 9, 10 presents the detailed actual UAV acceleration from the Fig. 9. ",
+        "bbox": [
+            500,
+            147,
+            930,
+            616
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "D. Performance Comparisons ",
+        "text_level": 1,
+        "bbox": [
+            501,
+            632,
+            713,
+            647
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Finally, the performance comparisons between the proposed algorithm with other benchmark strategies are presented. ",
+        "bbox": [
+            500,
+            652,
+            929,
+            683
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Actual UAV trajectory: In this setup, the UAV flight according to the MADDPG-LC strategy, and the UAV receives real-time control to fly within the designated service area, providing services to users. ",
+        "bbox": [
+            500,
+            683,
+            929,
+            743
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Desired UAV trajectory: In this setup, the speed and acceleration of the UAV can change ideally, generating an ideal desired trajectory, flying within the designated service area to provide services for the users. ",
+        "bbox": [
+            500,
+            744,
+            929,
+            803
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Around flight: In this setup, users are grouped according to their coordinates, and the UAV service area is defined based on this, and each UAV flight around the service area with a specified radius. ",
+        "bbox": [
+            500,
+            804,
+            930,
+            863
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Firstly, the flight trajectories of multi-UAV collaboration are depicted in Fig. 11, where the green dots represent the locations of users and the different colored lines are the trajectories of UAVs. The proposed MADDPG-LC algorithm can effectively achieve collaboration among multiple UAVs to assist the task offloading of ground users. In Fig. 12, we analyze the system energy consumption of different algorithms. It can be seen that the MADDPG-LC strategy has the lowest energy consumption, followed by the desired UAV trajectory strategy. UAVs using the hovering cruise strategy consume much more energy than other two strategies. In Fig. 13, the average system delay is analyzed. Similar to energy consumption, the MADDPG-LC strategy has ",
+        "bbox": [
+            500,
+            864,
+            930,
+            940
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: DYNAMIC TRAJECTORY DESIGN FOR MULTI-UAV-ASSISTED MOBILE EDGE COMPUTING ",
+        "bbox": [
+            60,
+            39,
+            614,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "4693 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            867,
+            974
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "chart",
+        "img_path": "images/89dfb2ad3741555522758b785aa9947da1a2547ef277df86b3c01be6a562bf9e.jpg",
+        "content": "| Number of training episodes | Total number of user devices |\n| --------------------------- | ---------------------------- |\n| 0                           | 1.0                          |\n| 50                          | 3.0                          |\n| 100                         | 14.0                         |\n| 150                         | 16.0                         |\n| 200                         | 17.0                         |\n| 250                         | 15.0                         |\n| 300                         | 13.0                         |\n| 350                         | 17.0                         |\n| 400                         | 16.0                         |\n| 450                         | 17.0                         |\n| 500                         | 13.0                         |\n| 550                         | 16.0                         |\n| 600                         | 17.0                         |\n| 650                         | 13.0                         |\n| 700                         | 17.0                         |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            127,
+            90,
+            340,
+            244
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f386e9ec4adfbfc7101be4d3f7a9bf96ccb803bf376d2d10cc20ca88cc4b73cd.jpg",
+        "content": "| Number of training episodes | Average energy consumption (W) |\n| --------------------------- | ------------------------------ |\n| 0                           | 850                            |\n| 50                          | 350                            |\n| 100                         | 100                            |\n| 150                         | 120                            |\n| 200                         | 110                            |\n| 250                         | 130                            |\n| 300                         | 140                            |\n| 350                         | 120                            |\n| 400                         | 110                            |\n| 450                         | 130                            |\n| 500                         | 320                            |\n| 550                         | 190                            |\n| 600                         | 120                            |\n| 650                         | 140                            |\n| 700                         | 100                            |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            388,
+            80,
+            609,
+            244
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/580e4118ae4a5b4e4dbce6e308ac761598affe41dcd09582e8cec7411d1f6251.jpg",
+        "content": "| Number of training episodes | Average latency of user tasks (s) |\n| --------------------------- | --------------------------------- |\n| 0                           | 6.0                               |\n| 50                          | 2.8                               |\n| 100                         | 1.0                               |\n| 150                         | 1.0                               |\n| 200                         | 1.0                               |\n| 250                         | 1.0                               |\n| 300                         | 1.0                               |\n| 350                         | 1.0                               |\n| 400                         | 1.0                               |\n| 450                         | 1.0                               |\n| 500                         | 2.0                               |\n| 550                         | 1.0                               |\n| 600                         | 1.0                               |\n| 650                         | 1.0                               |\n| 700                         | 1.0                               |",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            653,
+            80,
+            875,
+            244
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/6772e14565c941343f99c4734c46ffe12552727addaafa41827230b92f907f4a.jpg",
+        "content": "| x (m) | desired trajectory y (m) | actual trajectory y (m) | user devices y (m) |\n|-------|--------------------------|-------------------------|--------------------|\n| 10    | 10                       | 10                      | 78                 |\n| 20    | 15                       | 15                      | 60                 |\n| 30    | 40                       | 40                      | 55                 |\n| 40    | 60                       | 60                      | 50                 |\n| 50    | 70                       | 70                      | 45                 |\n| 60    | 80                       | 80                      | 30                 |\n| 70    | 85                       | 85                      | 25                 |\n| 80    | 80                       | 80                      | 20                 |\n| 90    | 75                       | 75                      | 15                 |",
+        "chart_caption": [
+            "Fig. 6. Training curves. ",
+            "Fig. 7. The comparison between the desired and actual UAV trajectories. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            112,
+            291,
+            449,
+            515
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f9de692b850ee49ed6e35f6495312eb2e67e362882e5ba52027fe11580973b05.jpg",
+        "content": "| time (s) | Actual velocity (m/s) | Desired velocity (m/s) |\n| -------- | --------------------- | ---------------------- |\n| 0        | ~14                   | ~10                    |\n| 10       | ~-5                   | ~-5                    |\n| 20       | ~-10                  | ~-10                   |\n| 30       | ~-20                  | ~-10                   |\n| 40       | ~10                   | ~10                    |\n| 50       | ~-10                  | ~-10                   |\n| 60       | ~-15                  | ~-5                    |\n| 70       | ~-10                  | ~-5                    |\n| 80       | ~-20                  | ~-10                   |",
+        "chart_caption": [
+            "Fig. 8. Speed comparison. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            87,
+            556,
+            471,
+            785
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            834,
+            494,
+            941
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ad18b492b1fe1b9ff107e3690611e536a5b3854990890b460858f084668d712a.jpg",
+        "content": "| time (s) | Actual acceleration (X-axis) | Desired acceleration (X-axis) | Actual acceleration (Y-axis) | Desired acceleration (Y-axis) |\n| -------- | ---------------------------- | ----------------------------- | ---------------------------- | ----------------------------- |\n| 0        | 0                            | 0                             | 0                            | 0                             |\n| 10       | 0                            | 0                             | 0                            | 0                             |\n| 20       | 0                            | 0                             | 0                            | 0                             |\n| 30       | 0                            | 0                             | 0                            | 0                             |\n| 40       | 0                            | 0                             | 0                            | 0                             |\n| 50       | 0                            | 0                             | 0                            | 0                             |\n| 60       | 0                            | 0                             | 0                            | 0                             |\n| 70       | 0                            | 0                             | 0                            | 0                             |\n| 80       | 0                            | 0                             | 0                            | 0                             |",
+        "chart_caption": [
+            "Fig. 9. Acceleration comparison. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            531,
+            292,
+            915,
+            521
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/67a32af5e71d47ab590273c1d15acb2db9475b106e13ec77fd56973e4f08e368.jpg",
+        "content": "| time (s) | Actual acceleration (m/s²) | Actual acceleration (m/s²) |\n| -------- | -------------------------- | -------------------------- |\n| 0        | ~4.5                       | ~4.5                       |\n| 5        | ~-1.5                      | ~-2.0                      |\n| 10       | ~0.5                       | ~0.0                       |\n| 15       | ~2.5                       | ~2.0                       |\n| 20       | ~-1.0                      | ~-1.5                      |\n| 25       | ~4.5                       | ~4.5                       |\n| 30       | ~-3.0                      | ~-3.5                      |\n| 35       | ~4.5                       | ~4.5                       |\n| 40       | ~-1.0                      | ~-1.5                      |\n| 45       | ~4.5                       | ~4.5                       |\n| 50       | ~-1.0                      | ~-1.5                      |\n| 55       | ~4.5                       | ~4.5                       |\n| 60       | ~-1.0                      | ~-1.5                      |\n| 65       | ~4.5                       | ~4.5                       |\n| 70       | ~-1.0                      | ~-1.5                      |\n| 75       | ~4.5                       | ~4.5                       |\n| 80       | ~-1.0                      | ~-1.5                      |",
+        "chart_caption": [
+            "Fig. 10. Actual acceleration. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            531,
+            566,
+            915,
+            795
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "the lowest latency. This is because the MADPG-LC algorithm can dynamically adjust the UAV flight in real-time based on the time-varying task offloading requirement, user mobility, and UAV flight states, in order to provide best service for ground users, resulting in better system performance than the benchmark strategies. ",
+        "bbox": [
+            506,
+            849,
+            937,
+            941
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "4694 ",
+        "bbox": [
+            67,
+            40,
+            92,
+            49
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 3, MARCH 2025 ",
+        "bbox": [
+            484,
+            39,
+            936,
+            50
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "chart",
+        "img_path": "images/38eb6c9b98488817113075bfd13360c3f6e96ca82b888ad8f374614a4fe8e7d6.jpg",
+        "content": "",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "sub_type": "line",
+        "bbox": [
+            102,
+            80,
+            444,
+            313
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/153bd16c575db6ae9ccae27c86de653ed4bbc81b4c8905066f8ca25094e60e0d.jpg",
+        "content": "| Number of user | Actual UAV trajectory | Desired UAV trajectory | Around flight |\n| -------------- | ---------------------- | ----------------------- | ------------- |\n| 8              | 1.0                    | 1.0                     | 2.7           |\n| 15             | 1.3                    | 1.3                     | 3.0           |\n| 25             | 1.4                    | 1.7                     | 3.4           |",
+        "chart_caption": [
+            "Fig. 11. Multi-UAV trajectory design. ",
+            "Fig. 12. Average energy consumption comparison. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            127,
+            349,
+            419,
+            522
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "chart",
+        "img_path": "images/709effb20f09090924ca5cedd150f2f74a202f139cc3633dc5ed8799d914ee7f.jpg",
+        "content": "| Number of user | Actual UAV trajectory | Desired UAV trajectory | Around flight |\n| -------------- | ---------------------- | ----------------------- | ------------- |\n| 8              | 0.6                    | 0.6                     | 1.7           |\n| 15             | 0.8                    | 0.8                     | 1.9           |\n| 25             | 0.9                    | 1.0                     | 2.1           |",
+        "chart_caption": [
+            "Fig. 13. Average latency comparison. "
+        ],
+        "chart_footnote": [],
+        "sub_type": "bar",
+        "bbox": [
+            127,
+            556,
+            417,
+            731
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "VI. CONCLUSION ",
+        "text_level": 1,
+        "bbox": [
+            210,
+            768,
+            336,
+            781
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "In this work, a multi-UAV dynamic trajectory control algorithm is proposed for blockchain-based multi-UAV-assisted MEC systems, aiming to optimize the weighted energy consumption and latency. To address the constraint introduced by the UAV flight dynamics, the optimization problem is decomposed into three subproblems. In particular, the integration of desired trajectory design and trajectory tracking control successfully realizes the dynamic trajectory control. On this basis, in conjunction with user association and computing frequency assignment, the proposed MADDPG-LC framework has the ability to achieve real-time joint optimization of resource allocation and dynamic trajectory control. Numerical simulation results validate the effectiveness of proposed MADDPG-LC algorithm for the dynamic UAV-assisted MEC system. It is worth noting that our research exists potential future works. For example, the communication model in this study is primarily based on LoS channels. Future research can explore more realistic NLoS environments and incorporate advanced channel models to further improve the application performance of UAVs in various environments. In addition, future work can explore the integration of emerging technologies such as 6G networks into the MEC framework to further improve computational efficiency and communication reliability. Furthermore, by integrating energy harvesting technology with the development of energy-saving algorithms for UAVs, the processing duration of multi-UAV systems can be significantly extended, making them more suitable for long-term missions. ",
+        "bbox": [
+            57,
+            789,
+            488,
+            955
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            80,
+            930,
+            321
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "REFERENCES ",
+        "text_level": 1,
+        "bbox": [
+            686,
+            340,
+            776,
+            353
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[1] F. Spinelli and V. Mancuso, “Toward enabled industrial verticals in 5G: A survey on MEC-based approaches to provisioning and flexibility,” IEEE Commun. Surveys Tuts., vol. 23, no. 1, pp. 596–630, First Quarter 2021. ",
+            "[2] M. Dai, N. Huang, Y. Wu, J. Gao, and Z. Su, “Unmanned-aerial-vehicleassisted wireless networks: Advancements, challenges, and solutions,” IEEE Internet Things J., vol. 10, no. 5, pp. 4117–4147, Mar. 2023. ",
+            "[3] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “A survey on mobile edge computing: The communication perspective,” IEEE Commun. Surveys Tuts., vol. 19, no. 4, pp. 2322–2358, Fourth Quarter 2017. ",
+            "[4] C. Zhan, H. Hu, X. Sui, Z. Liu, and D. Niyato, “Completion time and energy optimization in the UAV-enabled mobile-edge computing system,” IEEE Internet Things J., vol. 7, no. 8, pp. 7808–7822, Aug. 2020. ",
+            "[5] X. Hu, K.-K. Wong, K. Yang, and Z. Zheng, “UAV-assisted relaying and edge computing: Scheduling and trajectory optimization,” IEEE Trans. Wireless Commun., vol. 18, no. 10, pp. 4738–4752, Oct. 2019. ",
+            "[6] B. Li, Z. Fei, Y. Zhang, and M. Guizani, “Secure UAV communication networks over 5G,” IEEE Wireless Commun., vol. 26, no. 5, pp. 114–120, Oct. 2019. ",
+            "[7] T. Alladi, V. Chamola, N. Sahu, and M. Guizani, “Applications of blockchain in unmanned aerial vehicles: A review,” Veh. Commun., vol. 23, 2020, Art. no. 100249. ",
+            "[8] Q. Tang, Z. Fei, J. Zheng, B. Li, L. Guo, and J. Wang, “Secure aerial computing: Convergence of mobile edge computing and blockchain for uav networks,” IEEE Trans. Veh. Technol., vol. 71, no. 11, pp. 12073–12087, Nov. 2022. ",
+            "[9] N. Cheng et al., “Ai for UAV-assisted IoT applications: A comprehensive review,” IEEE Internet Things J., vol. 10, no. 16, pp. 14438–14461, Aug. 2023. ",
+            "[10] C. Deng, X. Fang, and X. Wang, “UAV-enabled mobile-edge computing for AI applications: Joint model decision, resource allocation, and trajectory optimization,” IEEE Internet Things J., vol. 10, no. 7, pp. 5662–5675, Apr. 2023. ",
+            "[11] J. Xia, P. Wang, B. Li, and Z. Fei, “Intelligent task offloading and collaborative computation in multi-UAV-enabled mobile edge computing,” China Commun., vol. 19, no. 4, pp. 244–256, 2022. ",
+            "[12] B. Zhu, E. Bedeer, H. H. Nguyen, R. Barton, and Z. Gao, “UAV trajectory planning for AoI-minimal data collection in UAV-aided IoT networks by transformer,” IEEE Trans. Wireless Commun., vol. 22, no. 2, pp. 1343–1358, Feb. 2023. ",
+            "[13] L. Wang, K. Wang, C. Pan, W. Xu, N. Aslam, and L. Hanzo, “Multi-agent deep reinforcement learning-based trajectory planning for multi-UAV assisted mobile edge computing,” IEEE Trans. Cogn. Commun. Netw., vol. 7, no. 1, pp. 73–84, Mar. 2021. ",
+            "[14] F. Zhou, Y. Wu, R. Q. Hu, and Y. Qian, “Computation rate maximization in UAV-enabled wireless-powered mobile-edge computing systems,” IEEE J. Sel. Areas Commun., vol. 36, no. 9, pp. 1927–1941, Sep. 2018. ",
+            "[15] Y.-H. Wu, C.-Y. Li, Y.-B. Lin, K. Wang, and M.-S. Wu, “Modeling control delays for edge-enabled UAVs in cellular networks,” IEEE Internet Things J., vol. 9, no. 17, pp. 16222–16233, Sep. 2022. ",
+            "[16] B. Xu, Z. Kuang, J. Gao, L. Zhao, and C. Wu, “Joint offloading decision and trajectory design for UAV-enabled edge computing with task dependency,” IEEE Trans. Wireless Commun., vol. 22, no. 8, pp. 5043–5055, Aug. 2023. "
+        ],
+        "bbox": [
+            503,
+            359,
+            932,
+            954
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: DYNAMIC TRAJECTORY DESIGN FOR MULTI-UAV-ASSISTED MOBILE EDGE COMPUTING ",
+        "bbox": [
+            58,
+            37,
+            614,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "4695 ",
+        "bbox": [
+            902,
+            39,
+            930,
+            50
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "ref_text",
+        "list_items": [
+            "[17] W. You, C. Dong, Q. Wu, Y. Qu, Y. Wu, and R. He, “Joint task scheduling, resource allocation, and UAV trajectory under clustering for fanets,” China Commun., vol. 19, no. 1, pp. 104–118, 2022. ",
+            "[18] Q. Wu, Y. Zeng, and R. Zhang, “Joint trajectory and communication design for multi-UAV enabled wireless networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2109–2121, Mar. 2018. ",
+            "[19] B. Liu, Y. Wan, F. Zhou, Q. Wu, and R. Q. Hu, “Resource allocation and trajectory design for MISO UAV-assisted MEC networks,” IEEE Trans. Veh. Technol., vol. 71, no. 5, pp. 4933–4948, May 2022. ",
+            "[20] Y. Xu, T. Zhang, Y. Liu, D. Yang, L. Xiao, and M. Tao, “UAV-assisted MEC networks with aerial and ground cooperation,” IEEE Trans. Wireless Commun., vol. 20, no. 12, pp. 7712–7727, Dec. 2021. ",
+            "[21] Y. Xu, T. Zhang, Y. Liu, D. Yang, L. Xiao, and M. Tao, “Cellular-connected multi-UAV MEC networks: An online stochastic optimization approach,” IEEE Trans. Commun., vol. 70, no. 10, pp. 6630–6647, Oct. 2022. ",
+            "[22] Z. Yang, S. Bi, and Y.-J. A. Zhang, “Online trajectory and resource optimization for stochastic UAV-enabled MEC systems,” IEEE Trans. Wireless Commun., vol. 21, no. 7, pp. 5629–5643, Jul. 2022. ",
+            "[23] Y. Liu, H. Wang, J. Fan, J. Wu, and T. Wu, “Control-oriented UAV highly feasible trajectory planning: A deep learning method,” Aerosp. Sci. Technol., vol. 110, 2021, Art. no. 106435. ",
+            "[24] H. Huang, A. V. Savkin, and W. Ni, “Online UAV trajectory planning for covert video surveillance of mobile targets,” IEEE Trans. Automat. Sci. Eng., vol. 19, no. 2, pp. 735–746, Apr. 2022. ",
+            "[25] J. W. Woo, J.-Y. An, M. G. Cho, and C.-J. Kim, “Integration of path planning, trajectory generation and trajectory tracking control for aircraft mission autonomy,” Aerosp. Sci. Technol., vol. 118, 2021, Art. no. 107014. ",
+            "[26] J. L. Sanchez-Lopez, M. Castillo-Lopez, M. A. Olivares-Mendez, and H. Voos, “Trajectory tracking for aerial robots: An optimization-based planning and control approach,” J. Intell. Robotic Syst., vol. 100, no. 2, pp. 531–574, 2020. ",
+            "[27] W. Xu, T. Zhang, X. Mu, Y. Liu, and Y. Wang, “Trajectory planning and resource allocation for multi-UAV cooperative computation,” IEEE Trans. Commun., vol. 72, no. 7, pp. 4305–4318, Jul. 2024. ",
+            "[28] Z. Hu, X. Gao, K. Wan, Q. Wang, and Y. Zhai, “Asynchronous curriculum experience replay: A deep reinforcement learning approach for UAV autonomous motion control in unknown dynamic environments,” IEEE Trans. Veh. Technol., vol. 72, no. 11, pp. 13985–14001, Nov. 2023. ",
+            "[29] L. Liu et al., “Delay-informed intelligent formation control for UAVassisted IoT application,” Sensors, vol. 23, no. 13, 2023, Art. no. 6190. ",
+            "[30] O. Bekkouche, T. Taleb, and M. Bagaa, “UAVs traffic control based on multi-access edge computing,” in Proc. IEEE Glob. Commun. Conf., 2018, pp. 1–6. ",
+            "[31] Z. Wang, Y. Xue, L. Liu, H. Zhang, C. Qu, and C. Fang, “Multi-agent DRL-controlled connected and automated vehicles in mixed traffic with time delays,” IEEE Trans. Intell. Transp. Syst., early access, Sep. 18, 2024, doi: 10.1109/TITS.2024.3435036. ",
+            "[32] Y. He, Y. Gan, H. Cui, and M. Guizani, “Fairness-based 3-D multi-UAV trajectory optimization in multi-UAV-assisted mec system,” IEEE Internet Things J., vol. 10, no. 13, pp. 11383–11395, Jul. 2023. ",
+            "[33] Z. Wang, Y. Gao, C. Fang, L. Liu, H. Zhou, and H. Zhang, “Optimal control design for connected cruise control with stochastic communication delays,” IEEE Trans. Veh. Technol., vol. 69, no. 12, pp. 15357–15369, Dec. 2020. "
+        ],
+        "bbox": [
+            67,
+            80,
+            494,
+            694
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/97574951503745cbdb789c4aa27161cfafca56eb79933b763203e61532c41fda.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a checkered shirt against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            67,
+            718,
+            193,
+            835
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Zhuwei Wang (Member, IEEE) received the B.S. and Ph.D. degrees from Beijing University of Posts and Telecommunications, Beijing, China, in 2005 and 2011, respectively. From 2008 to 2010, he was a Visiting Scholar with the Department of Electronic and Computer Engineering, University of California at San Diego, La Jolla, CA, USA. From 2012 to 2014, he was a Postdoctoral Research Fellow with the Department of Electrical Engineering, Columbia University, New York, NY, USA. He is currently an Associate Professor with Beijing University of ",
+        "bbox": [
+            205,
+            718,
+            494,
+            843
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Technology, Beijing. His research interests include edge AI, intelligent network control, intelligent resource allocation, and real-time applications, such as UAV and CCC. He was the recipient of the Best Paper Award from IEEE ICCC 2021 and ICFEICT 2024. He was the Workshop Chair for ICFEICT 2023 and 2024, and the Technical Program Committee of several international conferences, including IEEE ICC, and IEEE ICCC. He was the Leading Editor of Sensors and Electronics Special Issues. ",
+        "bbox": [
+            65,
+            843,
+            494,
+            922
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/bf1416cd0445d52243a9752453b6f2e3a74b6f76f66944ea38639ede4f8ebc6d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man in formal attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            82,
+            636,
+            199
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Haowei Wang received the B.S. degree in electronic information engineering from the Faculty of Information, North University of Technology, Beijing, China, in 2022, He is currently toward the M.S. degree if information and communication engineering, Beijing University of Technology, Beijing. His research interests include networking AI, UAV communications, optimal control design, and deep reinforcement learning. ",
+        "bbox": [
+            649,
+            80,
+            937,
+            185
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/63ee0912e553e702915856ad742d3f5f5e5048dcb03ae42e89957fede8e30a23.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a woman with short black hair wearing a white collared shirt and dark jacket (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            508,
+            266,
+            636,
+            383
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Lihan Liu received the M.S. degree from New York University, New York, NY, USA, in 2014, and the Ph.D. degree from the Beijing University of Posts and Telecommunications, Beijing, China, in 2019. She is currently an Assistant Professor with Beijing Wuzi University, Beijing. Her research interests include Big Data, artificial intelligence, optimization theory, and game theory. ",
+        "bbox": [
+            649,
+            265,
+            937,
+            357
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/73126737bf4700d45d4667e4d0f3d21073647c1c2ff612f4bebd62dbf7e7fae5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man in business attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            450,
+            636,
+            565
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Enchang Sun (Senior Member, IEEE) received the Ph.D. degree in information and telecommunications engineering from Xidian University, Xi’an, China, in 2008. Since 2008, he has been with the School of Information Science and Technology, Beijing University of Technology, Beijing, China, where he is currently an Associate Professor. He visited the University of Warwick, Coventry, U.K., Carleton University, Ottawa, ON, Canada, and the University of Houston, Houston, TX, USA, in 2012, 2015, and 2019, respectively. He has authored or coauthored more than ",
+        "bbox": [
+            649,
+            448,
+            937,
+            574
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "60 papers, and hold about 20 Chinese patents. His research interests include communication and information theory with special emphasis on cognitive and collaborative communications, distributed machine learning, and blockchain. He is also a Senior Member with the Chinese Institute of Electronics (CIE) and China Institute of Communications (CIC), and the MIET Member with the Institution of Engineering and Technology (IET). ",
+        "bbox": [
+            506,
+            574,
+            937,
+            643
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/62c95353e11a4e48910c10c192616cc49f5d1195b2a638ec5177183e41bff147.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in business attire (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            510,
+            719,
+            634,
+            834
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Haijun Zhang (Fellow, IEEE) was a Postdoctoral Research Fellow with the Department of Electrical and Computer Engineering, The University of British Columbia (UBC), Vancouver, BC, Canada. He is currently a Full Professor with the University of Science and Technology Beijing, Beijing, China. He is/was the Track Co-Chair for VTC Fall 2022 and WCNC 2020/2021, Symposium Chair for GLOBE-COM 2019, TPC Co-Chair for INFOCOM 2018 Workshop on Integrating Edge Computing, Caching, and Offloading in Next Generation Networks, and ",
+        "bbox": [
+            649,
+            718,
+            937,
+            843
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "General Co-Chair for GameNets 2016. He is also an Editor of IEEE TRANS-ACTIONS ON WIRELESS COMMUNICATIONS, IEEE TRANSACTIONS ON INFOR-MATION FORENSICS AND SECURITY, and IEEE TRANSACTIONS ON COMMUNI-CATIONS. He is also a Distinguished Lecturer of IEEE. He was the recipient of the IEEE CSIM Technical Committee Best Journal Paper Award in 2018, IEEE ComSoc Young Author Best Paper Award in 2017, and IEEE ComSoc Asia-Pacific Best Young Researcher Award in 2019. ",
+        "bbox": [
+            506,
+            843,
+            937,
+            922
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "4696 ",
+        "bbox": [
+            67,
+            40,
+            92,
+            49
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 74, NO. 3, MARCH 2025 ",
+        "bbox": [
+            484,
+            39,
+            936,
+            50
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            126,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/723c1c2eeb2b21208d3d7296d9b507265fff041ab4dcbdab0ac5b424e7be2e0c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in a white shirt against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            82,
+            185,
+            198
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Zhidu Li (Senior Member, IEEE) received the Ph.D. degree in information and communications engineering from the Beijing University of Posts and Telecommunications, Beijing, China, in 2018. In 2017, he was with the Norwegian University of Science and Technology, as a Visiting Scholar. He is currently a Professor with the Chongqing University of Posts and Telecommunications. He has authored or coauthored more than 60 papers in his research interests include network optimization and edge intelligence, and most of them appeared in prestigious IEEE journals and conferences, such as IEEE JOURNAL ON SELECTED AREAS IN COMMUNICA-TIONS, IEEE TRANSACTIONS ON MULTIMEDIA, IEEE GLOBECOM, and IEEE ICC. He was the recipient of three Best Paper awards from conferences such as the IEEE WCSP, IEEE BLOCKCHAIN and EAI MOBIMEDIA. ",
+        "bbox": [
+            198,
+            80,
+            486,
+            207
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            58,
+            207,
+            486,
+            252
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/8d4c8ef6bf72e74e9d6ca462b74d0eaef9189e0ac20756df100b2e78945c5d55.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait of a man wearing glasses and a suit (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            503,
+            82,
+            627,
+            198
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Meng Li (Senior Member, IEEE) received the Ph.D. degree in electronic science and technology from the Beijing University of Technology, Beijing, China, in 2018. He is currently an Associate Professor with the School of Information Science and Technology, Beijing University of Technology. From September 2015 to September 2016, he visited Carleton University, Ottawa, ON, Canada, as a visiting Ph.D. Student funded by China Scholarship Council (CSC). His research interests include industrial IoT, M2M communications, computing power network, and intelligent resource allocation. Dr. Li was the recipient of the Excellent Doctoral Dissertation Award from China Education Society of Electronics in 2019 and the Best Paper Award at ICCC 2021. He was the Technical Program Committee (TPC) Member of several international conferences, including IEEE INFOCOM, IEEE GLOBECOM, and IEEE ICC. ",
+        "bbox": [
+            641,
+            80,
+            930,
+            207
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            500,
+            207,
+            930,
+            263
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/0c71094916277cc4e661dd55a661aa9cb460e908696552e60e44a19406aabcf5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "Portrait photo of a man in formal attire against a blue background (no text or symbols visible)",
+        "sub_type": "natural_image",
+        "bbox": [
+            60,
+            330,
+            185,
+            448
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Chao Fang (Senior Member, IEEE) received the Ph.D. degree from the State Key Laboratory of Networking and Switching Technology in Information and Communication Engineering, Beijing University of Posts and Telecommunications, Beijing, China, in 2015. From 2013 to 2014, he had been funded by China Scholarship Council to visit Carleton University, Ottawa, ON, Canada, as a Joint Ph.D. Student. In 2016, he joined the Beijing University of Technology, where he is currently an Associate Professor. He is also a Visiting Scholar with the University of ",
+        "bbox": [
+            198,
+            330,
+            486,
+            455
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Technology Sydney, Ultimo, NSW, Australia, the Commonwealth Scientific and Industrial Research Organization, The Hong Kong Polytechnic University, Hong Kong, Kyoto University, Kyoto, Japan, Muroran Institute of Technology, Muroran, Japan, and the Queen Mary University of London, London, U.K. His research interests include future networks, intelligent cloud-edge-terminal cooperation computing, and intelligent network control. He was the recipient of the Best Paper Award from IEEE ICFEICT 2022 and 2024. From 2022 to 2023, he was the Vice Chair of the Technical Affairs Committee in the IEEE ComSoc Asia/Pacific Region. He was the Session Chair for ICC 2015, ICCC 2023, and WCNC 2024, the Workshop Chair for ICFEICT from 2022 to 2024 and ICNCIC from 2023 to 2024, Technical Program Committee Chair for SPCNC 2024, and the Poster Co-Chair for HotICN 2018. He is also the leading Editor of Sensors, Electronics, and Symmetry Special Issues. ",
+        "bbox": [
+            58,
+            455,
+            488,
+            603
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "WANG et al.: DYNAMIC TRAJECTORY DESIGN FOR MULTI-UAV-ASSISTED MOBILE EDGE COMPUTING ",
+        "bbox": [
+            58,
+            39,
+            614,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "4697 ",
+        "bbox": [
+            902,
+            40,
+            930,
+            50
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "Authorized licensed use limited to: Guangxi University. Downloaded on June 03,2026 at 06:47:03 UTC from IEEE Xplore. Restrictions apply. ",
+        "bbox": [
+            127,
+            962,
+            865,
+            974
+        ],
+        "page_idx": 13
+    }
+]

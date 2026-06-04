@@ -16,6 +16,9 @@
 - [[xu-2024-mobile-aigc-survey]] — Xu et al. 2024. Survey of **edge-cloud generative AI / AIGC services** in mobile networks (**mobile AIGC networks**); generative-model fundamentals, AIGC lifecycle, cloud-edge-mobile infrastructure, and implementation challenges (resource allocation, offloading, caching, mobility, incentives) (IEEE COMST).
 - [[mozaffari-2019-uav-wireless-tutorial]] — Mozaffari et al. 2019. **Tutorial** on UAVs for wireless networks; UAVs as aerial base stations vs cellular-connected UAVs, 3D deployment, channel modeling, energy efficiency, and the analytical toolbox (optimization, ML, stochastic geometry, game theory) (IEEE COMST). *(UAV-communications anchor, not MEC.)*
 - [[mozaffari-2017-uav-iot-energy-efficient]] — Mozaffari et al. 2017. Energy-efficient **IoT data collection** via multiple mobile UAVs; joint 3D placement + device association + uplink power control + closed-form update-times/trajectory; −45% device tx power, +28% reliability vs stationary (IEEE TWC). *(UAV-deployment/data-collection anchor, not MEC.)*
+- [[mozaffari-2015-drone-small-cells]] — Mozaffari et al. 2015. **Drone small-cell** optimal altitude (unique, analytically proven) + two-DSC optimal distance in interference-free and full-interference scenarios (IEEE GLOBECOM). *(UAV-deployment/coverage anchor, not MEC.)*
+- [[mozaffari-2016-efficient-multi-uav-coverage]] — Mozaffari et al. 2016. Multi-UAV **coverage probability** + **circle-packing** 3D deployment for M UAVs; minimum-UAV-count formula (IEEE LCOMM). *(UAV-deployment/coverage anchor, not MEC.)*
+- [[jayaprakasam-2017-dcbf-wsn-survey]] — Jayaprakasam et al. 2017. Survey of **distributed and collaborative beamforming (DCBF)** in WSNs: beampattern analysis, power/lifetime optimization, synchronization, prototypes; N²-fold array-gain anchor (IEEE COMST). *(DCBF/WSN survey anchor.)*
 - [[mahboob-2024-ai-ntn-survey]] — Mahboob & Liu 2024. Survey of **AI-empowered satellite-based non-terrestrial networks** for 6G; AI-per-NTN-challenge taxonomy (channel/Doppler estimation, beam/resource management, handover, routing, slicing, offloading, security) + distributed-learning paradigms + O-RAN/RIC implementation (IEEE COMST).
 - [[wang-2024-xl-mimo-tutorial]] — Wang et al. 2024. **Tutorial / survey on extremely large-scale MIMO (XL-MIMO)** for 6G; four hardware designs (ULA / UPA-patch / UPA-point / CAP), near-field channel modeling, and low-complexity + deep-learning signal processing (IEEE COMST). *(Physical-layer / near-field anchor, not MEC.)*
 - [[huynh-2024-gai-physical-layer-survey]] — Van Huynh et al. 2024. Survey of **generative AI for physical-layer communications**; five GAI model families (GANs, **VAEs**, normalizing flows, diffusion, transformers) across modulation/signal classification, channel estimation/equalization, PLS, IRS, beamforming, JSCC, CSI feedback; GAI-vs-traditional-AI comparison + open issues (security, model-driven GAI, resource-efficient learning, real-time adaptation) (IEEE TCCN). *(Physical-layer GAI survey, not MEC.)*
@@ -42,6 +45,7 @@
 
 ### Game-theoretic offloading & allocation
 
+- [[chen-2015-decentralized-offloading-game]] — Chen 2015. **Decentralized computation offloading game** for mobile cloud computing — potential game; Nash equilibrium existence + decentralized mechanism; ≤10% PoA over centralized optimum (IEEE TPDS).
 - [[he-2019-euagame-user-allocation]] — He et al. 2019. **EUAGame** — edge user allocation as a potential game with a decentralized NE algorithm.
 - [[sun-2024-mvtora-postdisaster-vfc]] — Sun et al. 2024. Post-disaster aerial-terrestrial MEC + **vehicle fog computing**; game theory + convex + evolutionary (MVTORA).
 - [[chen-2022-qoe-game-end-edge-cloud]] — Chen et al. 2022. **QoE-aware decentralized end-edge-cloud offloading** as a **potential game** (MUTO-Game); self-interested user devices compete for channels + edge compute, maximizing sum QoE; proven NE existence + the distributed GDTO algorithm + a convergence bound and a **Price-of-Anarchy** worst-case guarantee (IEEE TMC).
@@ -50,6 +54,7 @@
 
 ### Multi-UAV cooperative computing & deployment
 
+- [[wang-2025-maddpg-lc-dynamic-trajectory]] — Wang et al. 2025. **MADDPG-LC** — dynamic trajectory design for multi-UAV MEC with UAV **flight-dynamics** constraints; MADDPG + LQR tracking + CVXPY + blockchain security (IEEE TVT).
 - [[guo-2023-mccco-multiuav-5g-offloading]] — Guo et al. 2023. SDN-enhanced cooperative multi-UAV partial offloading with task interdependency (MCCCO).
 - [[wang-2019-todetas-deployment-scheduling]] — Wang et al. 2019. Two-layer UAV deployment (**differential evolution**) + task scheduling (greedy); ToDeTaS.
 - [[miao-2022-gaglpp-drone-swarm-iiot]] — Miao et al. 2023. Drone-swarm path planning for Industrial-IoT MEC; ground-station global + onboard local planning (GAGLPP); priority/energy/distance scheduling (IEEE TII).
@@ -185,6 +190,7 @@
 
 ### Vehicular MEC
 
+- [[liu-2025-mad2rl-dnn-vec]] — Liu et al. 2025. **MAD2RL** — DNN partitioning + task offloading in VEC; Lyapunov + diffusion-model-based MARL + convex resource allocation (IEEE TMC).
 - [[zhang-2025-mcma-task-migration]] — Zhang et al. 2025. Task migration with Informer trajectory prediction across edge servers. *MCMA*.
 - [[xie-2026-uav-multisource-fusion]] — Xie et al. 2026. UAV-enabled cooperative perception fusion via dynamic constrained multi-objective optimization.
 - [[sun-2023-bargain-match-vec]] — Sun et al. 2023. **BARGAIN-MATCH** — bargaining (intra-server) + matching (inter-server) for VEC offloading.
