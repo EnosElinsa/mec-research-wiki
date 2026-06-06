@@ -16,8 +16,9 @@ related:
   - "[[ppo]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[jia-2022-hierarchical-aerial-matching]]"
+  - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-07
 ---
 
 # Cooperative UAV Resource Allocation and Task Offloading in Hierarchical Aerial Computing Systems: A MAPPO-Based Approach

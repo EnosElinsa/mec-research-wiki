@@ -18,8 +18,9 @@ related:
   - "[[hierarchical-aerial-mec]]"
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[qin-2025-bcuav-masac]]"
+  - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-07
 ---
 
 # DRUDM-CFG: A Fairness-Aware Multi-Agent DRL Algorithm for AMEC-Assisted Task Offloading in Post-Disaster Scenarios

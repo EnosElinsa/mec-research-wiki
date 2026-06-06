@@ -689,6 +689,7 @@
 
 ## Methodology
 
+- [[ctde-multi-agent-drl-protocol]] - centralized-training / decentralized-execution protocol for cooperative multi-agent MEC control
 - [[drl-simulation-with-pomdp-formulation]] — POMDP simulation protocol used in [[liu-2026-jppo-en-convntm]]
 - [[ao-sdr-sca-convex-pipeline]] — the AO + SDR + SCA convex pipeline recurring across the ISAC/secure-beamforming sources
 - [[lyapunov-guided-drl]] — the Lyapunov drift-plus-penalty + per-slot DRL hybrid across 6 sources
