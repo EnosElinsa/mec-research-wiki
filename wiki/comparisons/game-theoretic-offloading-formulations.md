@@ -18,12 +18,12 @@ related:
   - "[[matching-theory-for-resource-allocation]]"
   - "[[nash-equilibrium]]"
 created: 2026-05-30
-updated: 2026-06-02
+updated: 2026-06-07
 ---
 
 # Game-theoretic offloading formulations: potential vs Stackelberg vs bargaining vs matching
 
-A cluster of curated sources cast MEC offloading / resource allocation as a game. They span four distinct game families, each chosen for a structural reason. This page maps the formulation to the problem shape it fits — using the eight sources tabulated below as representatives — so a future reader can pick the right one rather than defaulting to "a game". (Other curated sources also use a game formulation, e.g. [[zeng-2024-usv-fleet-collaborative-offloading]] (Stackelberg) and [[you-2025-uncertain-maritime-hasac]] (Markov game); the track is broader than this roster.)
+A cluster of curated sources cast MEC offloading / resource allocation as a game. They span four distinct game families, each chosen for a structural reason. This page maps the formulation to the problem shape it fits — using the eight sources tabulated below as representatives — so the comparison distinguishes the equilibrium structure rather than defaulting to "a game". (Other curated sources also use a game formulation, e.g. [[zeng-2024-usv-fleet-collaborative-offloading]] (Stackelberg) and [[you-2025-uncertain-maritime-hasac]] (Markov game); the track is broader than this roster.)
 
 ## Roster
 

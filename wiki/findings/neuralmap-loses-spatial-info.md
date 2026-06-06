@@ -10,7 +10,7 @@ related:
   - "[[j-ppo-en-convntm]]"
   - "[[en-convntm-beats-baselines]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-07
 ---
 
 # NeuralMap loses spatial information when a single agent controls multiple UAVs
@@ -23,6 +23,6 @@ NeuralMap stores one 1-D vector per 2-D world-grid cell. When multiple UAVs occu
 
 [[en-convntm]]'s 3-D memory blocks plus the [[stn]]-driven attention avoid this collapse.
 
-## Implication for future work
+## Design implication
 
 If a project wants to reuse NeuralMap, it likely needs per-UAV memory partitions or an attention-based identity disambiguation step.

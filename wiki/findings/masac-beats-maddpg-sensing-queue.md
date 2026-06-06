@@ -11,7 +11,7 @@ related:
   - "[[lyapunov-optimization]]"
   - "[[age-of-information]]"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-07
 ---
 
 # MASAC beats MADDPG on secure aerial MEC by +15.41% sensing rate / -30.73% queue delay
@@ -22,8 +22,6 @@ In [[qin-2025-bcuav-masac]], the MASAC-based controller is compared against NT-M
 - **Queue delay** reduced by 30.77% / 35.71% / **30.73%** / 29.47% vs the same baseline ordering (parse L709).
 
 So against **MADDPG** specifically, the proposed MASAC method gives **+15.41% sensing rate** and **−30.73% queue delay**.
-
-> Correctness note: an earlier draft of the [[maddpg-vs-masac-in-mec]] synthesis quoted "+13.16% / −29.47%" as the MADDPG margin. Those are the **PSO** comparison figures; the figures vs MADDPG are 15.41% / 30.73%. Corrected on 2026-05-30 against the parse.
 
 ## Mechanism
 
