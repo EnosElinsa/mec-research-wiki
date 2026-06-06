@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-07 - Audit methodology page: discrete-continuous two-stage decomposition
+
+- Audited [[discrete-continuous-two-stage-decomposition]] against its cited source pages and raw parses for [[wang-2026-aerial-marine-msar]], [[nabi-2025-jour-hierarchical-aerial]], [[jia-2025-dro-uav-hap-mec]], [[zhang-2025-mcma-task-migration]], [[ma-2025-pdqn-vehicular-mec]], and [[liu-2026-jppo-en-convntm]]. The stage table, solver labels, seam descriptions, and native-hybrid contrast are parse-grounded.
+- Corrections: softened the page's continuous-stage premise so it distinguishes conditionally convex classical residuals from DRL continuous-control stages conditioned on a discrete decision. No DOI, venue, year, numeric-result, wikilink, or frontmatter corrections were needed.
+- Verification scope: `log.md` line count 2715 -> 2722; raw/curated reconciliation clean at 257 raw folders / 257 curated references / 0 genuinely new papers; LLM Wiki API reachable on project `current` with graph 649 nodes / 6005 edges; `process_refs.py` 0 hits; `linkcheck.py --orphans` no dangling links; `frontmatter_audit.py --type methodology` 5 pages checked, 0 errors.
+- Routing to mec-wiki-synthesizer: no new synthesizer coverage gap surfaced in this bounded one-page audit.
+
 ## 2026-06-07 - Audit methodology page: CTDE multi-agent DRL protocol
 
 - Audited [[ctde-multi-agent-drl-protocol]] against its cited source pages and raw parses for [[zhang-2025-mcma-task-migration]], [[peng-2025-drudm-cfg]], [[kang-2023-mappo-hierarchical-aerial]], [[qin-2025-bcuav-masac]], and [[zhang-2025-ssac-mgi-heterogeneous-uav]]. The explicit CTDE claims, local-actor/global-critic split, action-space backbone mapping, DTDE contrast, and dense-fleet critic absence note are parse-grounded.

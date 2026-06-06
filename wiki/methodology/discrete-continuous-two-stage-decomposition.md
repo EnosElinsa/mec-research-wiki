@@ -20,7 +20,7 @@ related:
   - "[[j-ppo-vs-pdqn]]"
   - "[[end-to-end-vs-decomposition-in-drl-mec]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-07
 ---
 
 # The discrete-then-continuous two-stage decomposition protocol
@@ -29,12 +29,12 @@ A recurring solver protocol across the wiki's joint-offloading-plus-resource-all
 
 ## The problem shape it fits
 
-A joint optimization whose decision vector is **mixed-integer**: a combinatorial part (binary offload local-vs-remote, device-to-server association, task-migration target, server/satellite selection) entangled with a continuous part (power, bandwidth, compute split, offloading fraction, trajectory). The two parts are coupled — the best power allocation depends on who is served, and the best association depends on what power is available — so neither can be solved in isolation to global optimality. The joint problem is typically NP-hard or a non-convex MINLP. The corpus's two recurring observations make the split pay off:
+A joint optimization whose decision vector is **mixed-integer**: a combinatorial part (binary offload local-vs-remote, device-to-server association, task-migration target, server/satellite selection) entangled with a continuous part (power, bandwidth, compute split, offloading fraction, trajectory). The two parts are coupled — the best power allocation depends on who is served, and the best association depends on what power is available — so neither can be solved in isolation to global optimality. The joint problem is typically NP-hard or a non-convex MINLP. The corpus's recurring observation is that the split pays off when:
 
 - **The discrete decisions dominate the structure** (who goes where), while
-- **the continuous decisions are conditionally convex / closed-form-ish given the discrete choice** (resource allocation given a fixed matching).
+- **the continuous stage is easier once the discrete choice is fixed** — either conditionally convex / closed-form-ish in the classical pipelines, or a continuous-control learning problem whose observation can be conditioned on the discrete decision.
 
-When both hold, freezing the discrete choice first and then solving a near-convex continuous residual loses some joint optimality but buys tractability, modularity, and interpretability.
+When both hold, solving the discrete choice first and then optimizing or learning the continuous residual loses some joint optimality but buys tractability, modularity, and interpretability.
 
 ## The two-stage protocol
 
@@ -48,7 +48,7 @@ Decide the integer variables first, with a solver suited to combinatorial struct
 
 ### Stage 2 — the continuous resource decision
 
-Conditioned on the Stage-1 choice (concatenated into the solver's input/observation), solve the now-near-convex continuous residual:
+Conditioned on the Stage-1 choice (or, in DRL pipelines, with that choice concatenated into the next agent's observation), solve the continuous residual:
 
 - **Convex / quasi-convex / projected-gradient** — [[wang-2026-aerial-marine-msar]] splits Stage II into quasi-convex transmit-power, PGD edge-compute allocation, and convex local-compute allocation; [[jia-2025-dro-uav-hap-mec]] uses CVX for its continuous resource block.
 - **A continuous-action policy** — [[nabi-2025-jour-hierarchical-aerial]] hands the offloading-ratio + UAV-CPU + HAP-CPU allocation to an **enhanced SAC with [[prioritized-experience-replay|PER]]** (ESAC); [[zhang-2025-mcma-task-migration]] hands bandwidth + compute allocation to **MADDPG**, conditioned on the Stage-1 migration decision.
