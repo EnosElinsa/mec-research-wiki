@@ -59,7 +59,7 @@ A long-running research wiki on **mobile edge computing (MEC)** broadly construe
 5. **Fairness metrics fragment** — Jain, Theil, and now energy-balancing variance ([[huang-2023-mu-aec-task-energy]], [[nabi-2025-jour-hierarchical-aerial]]) and completion-time difference ([[peng-2024-energy-time-uav-its]]). The [[fairness-metrics-in-mec]] page now collects these side by side.
 6. **CSI uncertainty is an explicit concern** in three different ways: distributionally robust ([[jia-2025-dro-uav-hap-mec]]), known-route side-step ([[wang-2026-aerial-marine-msar]]), and terrain-aware geometric ([[wu-2026-terrain-aware-uav-mec]]) — these sit alongside hard-safety and bounded-robust mechanisms in the [[safety-and-robustness-mechanisms-in-mec]] synthesis.
 7. **DRL is not the only game in town.** The **evolutionary / classical** branch is comparable in size to the DRL branch, which justifies the [[drl-vs-evolutionary-vs-classical-solvers]] synthesis.
-8. **Most papers are still simulation-only.** Only 3 of the 226 curated sources are fully hardware-validated ([[sun-2024-asap-uav-swarm]], [[shao-2024-drl-antijamming-mec]], [[zhang-2020-response-delay-uav-swarm]]); [[qu-ecoei-uav-swarm]] adds a **proof-of-concept** prototype (4 real airborne Jetson devices), [[sun-2024-imssa-uav-secure-cb]] a Raspberry Pi practicality demonstration, and [[bai-2024-delay-aware-cooperative-edge-cloud]] a real UAV-edge platform used to *verify its model* (not a full algorithm deployment). The rungs of validation depth and the sim-to-real challenges the sources name are mapped in [[hardware-validation-and-sim-to-real-in-mec]]. Worth keeping in mind for any thesis claim.
+8. **Most papers are still simulation-only.** Only 3 of the 257 curated sources are fully hardware-validated ([[sun-2024-asap-uav-swarm]], [[shao-2024-drl-antijamming-mec]], [[zhang-2020-response-delay-uav-swarm]]); [[qu-ecoei-uav-swarm]] adds a **proof-of-concept** prototype (4 real airborne Jetson devices), [[sun-2024-imssa-uav-secure-cb]] a Raspberry Pi practicality demonstration, and [[bai-2024-delay-aware-cooperative-edge-cloud]] a real UAV-edge platform used to *verify its model* (not a full algorithm deployment). The rungs of validation depth and the sim-to-real challenges the sources name are mapped in [[hardware-validation-and-sim-to-real-in-mec]]. Worth keeping in mind for any thesis claim.
 
 ## Open questions
 
@@ -74,4 +74,3 @@ A long-running research wiki on **mobile edge computing (MEC)** broadly construe
 - `wiki/index.md` — full type-grouped page directory.
 - `wiki/log.md` — reverse-chronological activity log.
 - `raw/sources/` — new papers are added here before curation.
-

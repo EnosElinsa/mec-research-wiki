@@ -2,7 +2,26 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
-## 2026-06-07 - Synthesize CTDE multi-agent DRL methodology
+## 2026-06-07 — Meta-doc audit batch (log/index/overview)
+
+### Meta-doc cleanups
+
+- `log.md`: normalized the top 2026-06-07 header to `## YYYY-MM-DD — <title>` and moved the 2026-06-04 synthesis entry above the 2026-06-03 entries so reverse chronology is strict; Raw-source housekeeping remains consolidated at the foot. Line count: 2657 → 2676.
+- `overview.md`: reconciled the hardware-validation observation to the exact current source count (257 curated sources).
+- `index.md`: audited through `index_audit.py`; no edits needed.
+
+### Audit results
+
+- Raw/curated reconciliation: `curation_status.py --dupes` = 257 raw folders, 257 curated references, 0 genuinely new uncurated papers.
+- Counts: `corpus_counts.py` = 257 sources / 272 concepts / 72 entities / 14 findings / 15 synthesis / 6 comparisons / 5 methodology / 5 queries / 3 thesis; `raw/sources` 257.
+- Wording/index/frontmatter/link gates clean: `process_refs.py` 0 hits; `index_audit.py` 651/651 indexed, 0 missing, 0 duplicate primary listings; `frontmatter_audit.py` 649 pages, 0 errors; `linkcheck.py --orphans` no dangling links (5 orphans reported: MinerU_markdown_202605072001035_dfcfcb28, MinerU_markdown_202605131927481_3b25f7d3, README, full, schema).
+- LLM Wiki API reachable on project `current`; graph 649 nodes / 6005 edges.
+
+### Routing to mec-wiki-synthesizer
+
+- No new synthesizer coverage gaps surfaced in this meta-doc-only batch.
+
+## 2026-06-07 — Synthesize CTDE multi-agent DRL methodology
 
 ### Coverage added
 
@@ -158,6 +177,39 @@ None — all referenced concepts mapped to existing slugs ([[vehicular-mec]], [[
 - `process_refs.py` → clean.
 - Source count updated in `overview.md`: 226 → 232.
 
+## 2026-06-04 — Synthesis pass (no new papers): +1 methodology + 2 theses (grow the thin types) + cross-links
+
+Coverage-growth pass over the **current** corpus (no new raw papers), targeting the chronically under-grown derived types — **methodology** (was 3) and **thesis** (was 1) — per the updated Phase A page-type-balance / thesis-gap guidance (agent file `4e967a9`). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders = 214 curated, 0 uncurated, 0 genuinely-new, 0 duplicate MinerU ingests** — nothing to route to `mec-wiki-curator`. Tree clean at `4e967a9`; LLM Wiki API reachable (`/health` ok, v0.4.16, `allowUnauthenticated`); baseline graph **592 nodes / 5487 edges**. Built on the prior pass's two new pages (`swarm-metaheuristics-in-uav-mec`, `ctde-actor-critic-backbones-in-mec`, committed `0515997`) rather than re-deriving them. Candidates mined from existing synthesis/comparison pages (the protocols/positions described *in passing* there but lacking their own page).
+
+### Coverage added (3 derived pages)
+
+- **methodology [[discrete-continuous-two-stage-decomposition]]** — the discrete-then-continuous solver protocol generalizing [[two-stage-decomposition]] from concept to engineering protocol: Stage-1 solver menu (matching / metaheuristic / discrete-policy), Stage-2 menu (convex/quasi-convex/PGD / continuous-policy), the two information-seam styles (frozen hand-off vs CTDE conditioned observation), and the limitations. Grounded in [[wang-2026-aerial-marine-msar]] (matching + quasi-convex/PGD/convex), [[nabi-2025-jour-hierarchical-aerial]] (Gale-Shapley GOUA + ESAC), [[jia-2025-dro-uav-hap-mec]] (BWOA + CVX), [[zhang-2025-mcma-task-migration]] (MAPPO + MADDPG, conditioned). Third solver-protocol methodology alongside [[ao-sdr-sca-convex-pipeline]] and [[lyapunov-guided-drl]].
+- **thesis [[decomposition-beats-end-to-end-drl-in-mec]]** (`confidence: medium`, `status: supported`) — design-philosophy position that decomposition-based solvers beat truly end-to-end DRL for joint MEC optimization. Supporting evidence: the high-confidence absence finding [[no-true-end-to-end-drl-in-corpus]], the [[end-to-end-vs-decomposition-in-drl-mec]] structural argument, the two decomposition methodology pages, and [[hybrid-action-beats-pure-drl]]. Not `settled`: no counterfactual experiment (the open question in [[end-to-end-drl-feasibility-large-scale-mec]]), corpus predates transformer-policy wave. Refutation conditions named.
+- **thesis [[explicit-constraints-beat-reward-shaping-in-mec-drl]]** (`confidence: medium`, `status: supported`) — position that explicit constraint-handling (gated safety override, Lyapunov virtual queue, DRO/robust reformulation) beats folding constraints into the reward. Supporting evidence: the [[safety-and-robustness-mechanisms-in-mec]] "reward shaping is the rejected baseline twice over" reading, [[collision-avoidance-mgi|MGI]] hard-safety ([[zhang-2025-ssac-mgi-heterogeneous-uav]]), the six [[lyapunov-guided-drl]] sources, the robustness sources ([[li-2024-robust-bmappo-multiuav-mec]], [[jia-2025-dro-uav-hap-mec]]), and the [[drl-backbones-across-uav-mec-sources]] distilled recommendation. Not `settled`: structural not head-to-head, single-source anchors for the strongest claims. Refutation conditions named.
+
+### Connections added (bidirectional)
+
+- Methodology page wired reciprocally into [[two-stage-decomposition]] (concept), [[ao-sdr-sca-convex-pipeline]] + [[lyapunov-guided-drl]] (sibling methodology cross-refs), [[drl-vs-evolutionary-vs-classical-solvers]] + [[drl-backbones-across-uav-mec-sources]] (See-also / related), and its four instantiating source pages ([[wang-2026-aerial-marine-msar]], [[nabi-2025-jour-hierarchical-aerial]], [[jia-2025-dro-uav-hap-mec]], [[zhang-2025-mcma-task-migration]]).
+- `decomposition-beats-end-to-end` wired into [[no-true-end-to-end-drl-in-corpus]], [[end-to-end-vs-decomposition-in-drl-mec]], [[end-to-end-drl-feasibility-large-scale-mec]], [[two-stage-decomposition]], [[hybrid-action-beats-pure-drl]], and [[drl-vs-evolutionary-vs-classical-solvers]].
+- `explicit-constraints-beat-reward-shaping` wired into [[safety-and-robustness-mechanisms-in-mec]], [[lyapunov-guided-drl]], [[collision-avoidance-mgi]], and [[drl-backbones-across-uav-mec-sources]] (recommendation 3). `updated` bumped only on pages actually edited.
+
+### Grounding (correctness-first)
+
+- Every methodology roster row cross-checked against the source pages (audited-clean) and, for the seam claim, the parse phrasing: [[zhang-2025-mcma-task-migration]]'s "keeps each stage's action space homogeneous (all-discrete vs all-continuous)" and its MAPPO-then-MADDPG-conditioned split; [[nabi-2025-jour-hierarchical-aerial]]'s GOUA + ESAC frozen hand-off; [[wang-2026-aerial-marine-msar]]'s four-subproblem JCORA (matching + quasi-convex + PGD + convex); [[jia-2025-dro-uav-hap-mec]]'s BWOA-after-primal-decomposition + CVX. The [[zhu-2025-lycnn-drl-wpt-mec]] ">97% of LyCD utility while significantly reducing execution time" claim re-verified verbatim in its parse (referenced via the Lyapunov page, not re-stated as a new number).
+- **Deliberately left out for lack of support:** (1) an *evolutionary design-recipe* methodology page (counterpart to [[design-recipe-multi-uav-mec]]) — the CMOEA lineage is one research group and the recipe would over-generalize from a single author network; deferred. (2) A *"DRL vs evolutionary head-to-head"* thesis — the corpus has **no** source running both families on one instance (the standing biggest evidentiary gap), so a thesis would be speculation, not an earned position; left as the existing open question. (3) A *"MASAC beats MADDPG"* thesis — already covered by the [[maddpg-vs-masac-in-mec]] synthesis's working-thesis section; promoting it to a `thesis/` page would duplicate, not add. (4) New entity pages — no clearly-recurring unrepresented author surfaced in this slice; not forced. No tag-vocabulary normalizations (standing family-tag-fragmentation notes remain deferred, better batched on their own).
+
+### Counts
+
+`corpus_counts.py`: methodology **3→4**, thesis **1→3** (sources 214 / concepts 260 / entities 71 / findings 14 / synthesis 15 / comparisons 6 / queries 5 unchanged). [[overview]] Snapshot + analytical-layer line + observation #4 and [[index]] Methodology + Thesis sections updated to match.
+
+### Gates
+
+`linkcheck.py` = **NO DANGLING LINKS**; `process_refs.py` = **0 files / 0 hits**; `index_audit.py` = 594/594 indexed, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational); `frontmatter_audit.py` = 592 pages, 0 errors. New pages + edited meta docs mojibake-free at byte level (`fs_write`/`str_replace`, no shell redirection; em-dash byte check clean). Graph 592 nodes / 5487 edges baseline (the 3 new pages + reciprocal links register on the next rescan).
+
+### Toolkit
+
+No ratchet needed — `curation_status.py`, `corpus_counts.py`, `linkcheck.py`, `process_refs.py`, `index_audit.py`, and `frontmatter_audit.py` covered Phase 0 state detection, count reconciliation, and all commit gates. No reusable one-off arose; the toolkit is stable and unchanged this pass.
+
 ## 2026-06-03 — Curate 6 new sources (batch 2/8): resumed interrupted run — hybrid cloud-edge LEO offloading, communication-constrained MARL, MEC+DRL-in-NTN survey, ground-satellite UAM scheduling, cooperative UAV-RIS, covert mmWave + audit
 
 **Resumed an interrupted curation run** (a prior batch-2 invocation was cut off by a network issue, leaving uncommitted partial work in the tree). This is **batch 2/8** of the 43-paper run (`make_batches.py` plan in `.curation-out/batches.json`); batch 1 committed at `dd019c9`. Resume reconciliation: HEAD still at `dd019c9`; `git status` showed the in-flight set = the 6 source pages of `batches.json["batch2"]` + 5 concept pages + 2 modified entity rosters. The stale `.curation-out/batch2of8-decisions.md` describes a *different* paper set (an old `batches-remaining.json` plan) and was ignored in favor of `batches.json` + the on-disk in-flight pages; `.curation-out/batch2-actual-decisions.md` is the authoritative record.
@@ -253,39 +305,6 @@ No ratchet needed — `curation_status.py`, `make_batches.py`, `corpus_counts.py
 ### Remaining
 
 Batches **2/8 – 8/8** (37 sources) remain uncurated, one batch per fresh invocation. Next invocation should curate **batch 2** from `.curation-out/batches.json`: `Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing`, `Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing`, `Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways`, `Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks`, `Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications`, `Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens`.
-
-## 2026-06-04 — Synthesis pass (no new papers): +1 methodology + 2 theses (grow the thin types) + cross-links
-
-Coverage-growth pass over the **current** corpus (no new raw papers), targeting the chronically under-grown derived types — **methodology** (was 3) and **thesis** (was 1) — per the updated Phase A page-type-balance / thesis-gap guidance (agent file `4e967a9`). Phase 0 reconciliation (`curation_status.py --dupes`): **214 raw folders = 214 curated, 0 uncurated, 0 genuinely-new, 0 duplicate MinerU ingests** — nothing to route to `mec-wiki-curator`. Tree clean at `4e967a9`; LLM Wiki API reachable (`/health` ok, v0.4.16, `allowUnauthenticated`); baseline graph **592 nodes / 5487 edges**. Built on the prior pass's two new pages (`swarm-metaheuristics-in-uav-mec`, `ctde-actor-critic-backbones-in-mec`, committed `0515997`) rather than re-deriving them. Candidates mined from existing synthesis/comparison pages (the protocols/positions described *in passing* there but lacking their own page).
-
-### Coverage added (3 derived pages)
-
-- **methodology [[discrete-continuous-two-stage-decomposition]]** — the discrete-then-continuous solver protocol generalizing [[two-stage-decomposition]] from concept to engineering protocol: Stage-1 solver menu (matching / metaheuristic / discrete-policy), Stage-2 menu (convex/quasi-convex/PGD / continuous-policy), the two information-seam styles (frozen hand-off vs CTDE conditioned observation), and the limitations. Grounded in [[wang-2026-aerial-marine-msar]] (matching + quasi-convex/PGD/convex), [[nabi-2025-jour-hierarchical-aerial]] (Gale-Shapley GOUA + ESAC), [[jia-2025-dro-uav-hap-mec]] (BWOA + CVX), [[zhang-2025-mcma-task-migration]] (MAPPO + MADDPG, conditioned). Third solver-protocol methodology alongside [[ao-sdr-sca-convex-pipeline]] and [[lyapunov-guided-drl]].
-- **thesis [[decomposition-beats-end-to-end-drl-in-mec]]** (`confidence: medium`, `status: supported`) — design-philosophy position that decomposition-based solvers beat truly end-to-end DRL for joint MEC optimization. Supporting evidence: the high-confidence absence finding [[no-true-end-to-end-drl-in-corpus]], the [[end-to-end-vs-decomposition-in-drl-mec]] structural argument, the two decomposition methodology pages, and [[hybrid-action-beats-pure-drl]]. Not `settled`: no counterfactual experiment (the open question in [[end-to-end-drl-feasibility-large-scale-mec]]), corpus predates transformer-policy wave. Refutation conditions named.
-- **thesis [[explicit-constraints-beat-reward-shaping-in-mec-drl]]** (`confidence: medium`, `status: supported`) — position that explicit constraint-handling (gated safety override, Lyapunov virtual queue, DRO/robust reformulation) beats folding constraints into the reward. Supporting evidence: the [[safety-and-robustness-mechanisms-in-mec]] "reward shaping is the rejected baseline twice over" reading, [[collision-avoidance-mgi|MGI]] hard-safety ([[zhang-2025-ssac-mgi-heterogeneous-uav]]), the six [[lyapunov-guided-drl]] sources, the robustness sources ([[li-2024-robust-bmappo-multiuav-mec]], [[jia-2025-dro-uav-hap-mec]]), and the [[drl-backbones-across-uav-mec-sources]] distilled recommendation. Not `settled`: structural not head-to-head, single-source anchors for the strongest claims. Refutation conditions named.
-
-### Connections added (bidirectional)
-
-- Methodology page wired reciprocally into [[two-stage-decomposition]] (concept), [[ao-sdr-sca-convex-pipeline]] + [[lyapunov-guided-drl]] (sibling methodology cross-refs), [[drl-vs-evolutionary-vs-classical-solvers]] + [[drl-backbones-across-uav-mec-sources]] (See-also / related), and its four instantiating source pages ([[wang-2026-aerial-marine-msar]], [[nabi-2025-jour-hierarchical-aerial]], [[jia-2025-dro-uav-hap-mec]], [[zhang-2025-mcma-task-migration]]).
-- `decomposition-beats-end-to-end` wired into [[no-true-end-to-end-drl-in-corpus]], [[end-to-end-vs-decomposition-in-drl-mec]], [[end-to-end-drl-feasibility-large-scale-mec]], [[two-stage-decomposition]], [[hybrid-action-beats-pure-drl]], and [[drl-vs-evolutionary-vs-classical-solvers]].
-- `explicit-constraints-beat-reward-shaping` wired into [[safety-and-robustness-mechanisms-in-mec]], [[lyapunov-guided-drl]], [[collision-avoidance-mgi]], and [[drl-backbones-across-uav-mec-sources]] (recommendation 3). `updated` bumped only on pages actually edited.
-
-### Grounding (correctness-first)
-
-- Every methodology roster row cross-checked against the source pages (audited-clean) and, for the seam claim, the parse phrasing: [[zhang-2025-mcma-task-migration]]'s "keeps each stage's action space homogeneous (all-discrete vs all-continuous)" and its MAPPO-then-MADDPG-conditioned split; [[nabi-2025-jour-hierarchical-aerial]]'s GOUA + ESAC frozen hand-off; [[wang-2026-aerial-marine-msar]]'s four-subproblem JCORA (matching + quasi-convex + PGD + convex); [[jia-2025-dro-uav-hap-mec]]'s BWOA-after-primal-decomposition + CVX. The [[zhu-2025-lycnn-drl-wpt-mec]] ">97% of LyCD utility while significantly reducing execution time" claim re-verified verbatim in its parse (referenced via the Lyapunov page, not re-stated as a new number).
-- **Deliberately left out for lack of support:** (1) an *evolutionary design-recipe* methodology page (counterpart to [[design-recipe-multi-uav-mec]]) — the CMOEA lineage is one research group and the recipe would over-generalize from a single author network; deferred. (2) A *"DRL vs evolutionary head-to-head"* thesis — the corpus has **no** source running both families on one instance (the standing biggest evidentiary gap), so a thesis would be speculation, not an earned position; left as the existing open question. (3) A *"MASAC beats MADDPG"* thesis — already covered by the [[maddpg-vs-masac-in-mec]] synthesis's working-thesis section; promoting it to a `thesis/` page would duplicate, not add. (4) New entity pages — no clearly-recurring unrepresented author surfaced in this slice; not forced. No tag-vocabulary normalizations (standing family-tag-fragmentation notes remain deferred, better batched on their own).
-
-### Counts
-
-`corpus_counts.py`: methodology **3→4**, thesis **1→3** (sources 214 / concepts 260 / entities 71 / findings 14 / synthesis 15 / comparisons 6 / queries 5 unchanged). [[overview]] Snapshot + analytical-layer line + observation #4 and [[index]] Methodology + Thesis sections updated to match.
-
-### Gates
-
-`linkcheck.py` = **NO DANGLING LINKS**; `process_refs.py` = **0 files / 0 hits**; `index_audit.py` = 594/594 indexed, 0 unindexed / 0 duplicate primaries (45 cross-ref mentions informational); `frontmatter_audit.py` = 592 pages, 0 errors. New pages + edited meta docs mojibake-free at byte level (`fs_write`/`str_replace`, no shell redirection; em-dash byte check clean). Graph 592 nodes / 5487 edges baseline (the 3 new pages + reciprocal links register on the next rescan).
-
-### Toolkit
-
-No ratchet needed — `curation_status.py`, `corpus_counts.py`, `linkcheck.py`, `process_refs.py`, `index_audit.py`, and `frontmatter_audit.py` covered Phase 0 state detection, count reconciliation, and all commit gates. No reusable one-off arose; the toolkit is stable and unchanged this pass.
 
 ## 2026-06-03 — Synthesis pass (no new papers): +1 solver-family synthesis + 1 CTDE comparison + cross-links
 
