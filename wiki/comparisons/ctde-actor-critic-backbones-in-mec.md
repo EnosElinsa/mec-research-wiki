@@ -24,6 +24,7 @@ related:
   - "[[raivi-2024-jdaco-postdisaster-iot]]"
   - "[[maddpg-vs-masac-in-mec]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
+  - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-06-03
 updated: 2026-06-03
 ---
@@ -101,5 +102,6 @@ Two sources leave the actor-critic family entirely. [[li-2025-stochastic-game-ua
 
 - [[maddpg-vs-masac-in-mec]] — the two-way "when entropy beats determinism" thesis this page generalizes.
 - [[drl-backbones-across-uav-mec-sources]] — the broader (mostly single-agent, 2025–2026) DRL-backbone map.
+- [[ctde-multi-agent-drl-protocol]] - the reusable engineering protocol behind the CTDE training/execution split.
 - [[centralized-training-decentralized-execution]] — the paradigm all rostered backbones share.
 - [[game-theoretic-offloading-formulations]] — where [[li-2025-stochastic-game-uav-swarm]]'s learned-equilibrium backbone connects to the game-theory track.

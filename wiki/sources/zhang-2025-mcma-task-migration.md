@@ -17,8 +17,9 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[discrete-continuous-two-stage-decomposition]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-05-28
-updated: 2026-06-04
+updated: 2026-06-07
 ---
 
 # Multi-Agent DRL With Trajectory Prediction for Task Migration-Assisted Computation Offloading

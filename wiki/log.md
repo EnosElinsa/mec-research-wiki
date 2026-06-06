@@ -2,6 +2,28 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-07 - Synthesize CTDE multi-agent DRL methodology
+
+### Coverage added
+
+- Methodology: [[ctde-multi-agent-drl-protocol]] maps the centralized-training / decentralized-execution engineering protocol across [[zhang-2025-mcma-task-migration]], [[peng-2025-drudm-cfg]], and [[kang-2023-mappo-hierarchical-aerial]], with [[qin-2025-bcuav-masac]] treated as a related MASAC/Lyapunov instantiation rather than a parse-labeled CTDE source.
+
+### Connections and refreshes
+
+- Added the new methodology page to `wiki/index.md` and refreshed `wiki/overview.md` analytical-layer counts from 4 to 5 methodology pages.
+- Linked the CTDE concept page, CTDE backbone comparison, and the three explicit CTDE source pages to the new protocol page.
+- Clarified the overview's CTDE observation so [[zhang-2025-ssac-mgi-heterogeneous-uav]] is correctly treated as the DTDE contrast case.
+
+### Verification
+
+- `python tools/wiki/curation_status.py --dupes`: 257 raw folders, 257 curated, 0 genuinely new uncurated papers.
+- `python tools/wiki/corpus_counts.py`: sources 257, concepts 272, entities 72, findings 14, synthesis 15, comparisons 6, methodology 5, queries 5, thesis 3, raw/sources 257.
+- `python tools/wiki/linkcheck.py`: no dangling links.
+- `python tools/wiki/process_refs.py`: 0 files affected, 0 hits.
+- `python tools/wiki/frontmatter_audit.py --type methodology`: 5 pages checked, 0 errors.
+- `python tools/wiki/index_audit.py`: 651 catalogue-able pages, 651 indexed, 0 missing, 0 duplicate primary listings.
+- LLM Wiki graph: 649 nodes, 6005 edges.
+
 ## 2026-06-04 — Curate 1 new source (batch 8/8): URLLC-NOMA-UAV-ISCC + audit
 
 ### Curated (1 source)
