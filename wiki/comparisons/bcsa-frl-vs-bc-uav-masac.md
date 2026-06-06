@@ -18,12 +18,12 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[air-ground-integrated-network]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-07
 ---
 
 # Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
 
-The wiki's two blockchain-integrated MEC sources — [[mao-2025-bcsa-frl]] and [[qin-2025-bcuav-masac]] — both bolt a permissioned blockchain onto an edge-compute system, but they attack *very different* problems with *very different* design philosophies. This page maps the two side-by-side so future readers (and future synthesis pages) don't conflate them.
+The wiki's two blockchain-integrated MEC sources — [[mao-2025-bcsa-frl]] and [[qin-2025-bcuav-masac]] — both bolt a permissioned blockchain onto an edge-compute system, but they attack *very different* problems with *very different* design philosophies. This page maps the two side-by-side so the trust-aggregation and secure-aerial-optimization patterns stay distinct.
 
 ## At-a-glance
 
@@ -128,4 +128,4 @@ This would address [[qin-2025-bcuav-masac]]'s gap (no explicit attacker model) b
 
 - **What's the right granularity for blockchain consensus in MEC?** Per-FL-round (BCSA-FRL) is too coarse for fast-loop optimization; per-time-slot (implied by BC-UAV-MASAC) is probably too fine for energy budgets. Some intermediate "consensus on summary" pattern hasn't been proposed.
 - **Is malicious-voting tolerance fundamental, or just one mechanism?** CCVM is one design; would Byzantine-fault-tolerant consensus families (HotStuff, Tendermint) handle this with no MEC-specific machinery? The corpus doesn't say.
-- **How do these patterns extend to V2X / vehicular MEC?** Both papers target aerial/space MEC. Vehicular MEC has different mobility and trust assumptions (operators are usually fewer, but vehicles churn faster). Worth a curated source if one shows up.
+- **How do these patterns extend to V2X / vehicular MEC?** Both papers target aerial/space MEC. Vehicular MEC has different mobility and trust assumptions: operators are usually fewer, but vehicles churn faster.

@@ -2,6 +2,33 @@
 
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
+## 2026-06-07 — Batch 02 derived-page audit, slice 1
+
+### Scope audited
+
+- Audited 20 derived pages: 6 comparisons and 14 findings in `wiki/comparisons/` and `wiki/findings/`.
+- Source grounding checked against the relevant raw parses for headline numeric claims, including ACBFT 96.2%, ASAP 92.66%, BCSA-FRL 50% / 5% / 6 ms, BC-UAV-MASAC 15.41% / 30.73%, FedLEO 41% / 9.39%, j-PPO EN-ConvNTM ablation and hyperparameter values, maritime three-tier 39.3%, and DCB 30% handover reduction.
+
+### Corrections
+
+- Removed a dated correction note from [[masac-beats-maddpg-sensing-queue]] while preserving the parse-grounded MADDPG and PSO margins.
+- Rewrote small process-facing wording in [[bcsa-frl-vs-bc-uav-masac]] and [[game-theoretic-offloading-formulations]] into evergreen comparison wording.
+- Retitled [[neuralmap-loses-spatial-info]]'s "Implication for future work" section to a present-tense design implication.
+
+### Verification
+
+- Raw/curated reconciliation: `curation_status.py --dupes` = 257 raw folders, 257 curated references, 0 genuinely new uncurated papers.
+- LLM Wiki API reachable on project `current`; graph 649 nodes / 6005 edges.
+- `process_refs.py`: 0 files affected, 0 hits.
+- `linkcheck.py`: no dangling links.
+- `frontmatter_audit.py --type comparison`: 6 pages checked, 0 errors.
+- `frontmatter_audit.py --type finding`: 14 pages checked, 0 errors.
+- `corpus_counts.py`: 257 sources / 272 concepts / 72 entities / 14 findings / 15 synthesis / 6 comparisons / 5 methodology / 5 queries / 3 thesis; `raw/sources` 257.
+
+### Routing to mec-wiki-synthesizer
+
+- No new synthesizer coverage gaps surfaced in this bounded slice.
+
 ## 2026-06-07 — Meta-doc audit batch (log/index/overview)
 
 ### Meta-doc cleanups
