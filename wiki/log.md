@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-07 - Audit methodology page: CTDE multi-agent DRL protocol
+
+- Audited [[ctde-multi-agent-drl-protocol]] against its cited source pages and raw parses for [[zhang-2025-mcma-task-migration]], [[peng-2025-drudm-cfg]], [[kang-2023-mappo-hierarchical-aerial]], [[qin-2025-bcuav-masac]], and [[zhang-2025-ssac-mgi-heterogeneous-uav]]. The explicit CTDE claims, local-actor/global-critic split, action-space backbone mapping, DTDE contrast, and dense-fleet critic absence note are parse-grounded.
+- Corrections: tightened the [[qin-2025-bcuav-masac]] wording so its AGIN-MASAC role is treated as a related Lyapunov-decomposed MASAC instantiation, not as a parse-labeled CTDE proof point. No DOI, venue, year, numeric-result, wikilink, or frontmatter corrections were needed on the methodology page.
+- Verification scope: `log.md` line count 2708 -> 2715; raw/curated reconciliation clean at 257 raw folders / 257 curated references / 0 genuinely new papers; LLM Wiki API reachable on project `current` with graph 649 nodes / 6005 edges; `process_refs.py` 0 hits; `linkcheck.py --orphans` no dangling links; `frontmatter_audit.py --type methodology` 5 pages checked, 0 errors.
+- Routing to mec-wiki-synthesizer: no new synthesizer coverage gap surfaced in this bounded one-page audit.
+
 ## 2026-06-07 - Audit methodology page: AO SDR SCA pipeline
 
 - Audited [[ao-sdr-sca-convex-pipeline]] against the relevant source pages and raw parses for [[benaya-2025-aerial-isac-haps]], [[yao-2025-secure-isac-dual-eavesdropping]], [[tang-2024-iscc-uav-feel]], [[zhang-2019-uav-iot-comp-comm]], and [[liu-2022-miso-uav-mec-trajectory]]. Tightened the page so Tang is described as adjacent AO-only BBPO rather than a full SDR/SCA beamforming instance, clarified Yao's rank-one recovery wording, softened overbroad "de-facto / always" phrasing, and removed mojibake from the audited page.
