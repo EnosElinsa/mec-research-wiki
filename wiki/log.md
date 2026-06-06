@@ -1,5 +1,10 @@
 # Research Log
 
+## 2026-06-07 - Audit methodology page: AO SDR SCA pipeline
+
+- Audited [[ao-sdr-sca-convex-pipeline]] against the relevant source pages and raw parses for [[benaya-2025-aerial-isac-haps]], [[yao-2025-secure-isac-dual-eavesdropping]], [[tang-2024-iscc-uav-feel]], [[zhang-2019-uav-iot-comp-comm]], and [[liu-2022-miso-uav-mec-trajectory]]. Tightened the page so Tang is described as adjacent AO-only BBPO rather than a full SDR/SCA beamforming instance, clarified Yao's rank-one recovery wording, softened overbroad "de-facto / always" phrasing, and removed mojibake from the audited page.
+- Verification scope: raw/curated reconciliation clean at 257 raw folders / 257 curated references / 0 genuinely new papers; LLM Wiki API reachable on project `current` with graph 649 nodes / 6005 edges. No new synthesizer routing gap surfaced in this one-page audit.
+
 Reverse-chronological activity log (newest first). Curation and audit passes are kept in full; the LLM-Wiki desktop app's automated raw-file deletion events are consolidated under [Raw-source housekeeping](#raw-source-housekeeping) at the foot of this file.
 
 ## 2026-06-07 — Batch 02 derived-page audit, slice 1
