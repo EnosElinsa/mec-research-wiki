@@ -14,7 +14,7 @@ updated: 2026-06-01
 
 # DRL simulation methodology for UAV-MEC under POMDP formulation
 
-The protocol used by [[liu-2026-jppo-en-convntm]] — generally applicable to any DRL-based UAV-MEC paper this wiki may add later.
+The protocol used by [[liu-2026-jppo-en-convntm]] — a reusable template for DRL-based UAV-MEC papers with a POMDP formulation.
 
 ## Why a POMDP
 
