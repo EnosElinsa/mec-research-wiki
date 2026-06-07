@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-07 - Audit methodology page: DRL simulation with POMDP formulation
+
+- Audited [[drl-simulation-with-pomdp-formulation]] against the raw parse for [[liu-2026-jppo-en-convntm]]. The page's POMDP framing, 3-channel observation, reward shaping, training/evaluation procedure, and hardware line are parse-grounded; the only correction was to remove process-narration from the lead sentence and make it evergreen.
+- Verification scope: `curation_status.py --dupes` remained clean at 257 raw folders / 257 curated references / 0 genuinely new papers; `frontmatter_audit.py --type methodology` reported 5 pages checked, 0 errors; `process_refs.py` and `linkcheck.py --orphans` were run as the evergreen and link-integrity gates, with no issues reported in the audited scope; LLM Wiki API graph stats were unavailable in this shell due a transient local API call failure, so the audit relied on file-grounded verification.
+- Routing to mec-wiki-synthesizer: no new synthesizer coverage gap surfaced in this bounded one-page audit.
+
 ## 2026-06-07 - Audit methodology page: discrete-continuous two-stage decomposition
 
 - Audited [[discrete-continuous-two-stage-decomposition]] against its cited source pages and raw parses for [[wang-2026-aerial-marine-msar]], [[nabi-2025-jour-hierarchical-aerial]], [[jia-2025-dro-uav-hap-mec]], [[zhang-2025-mcma-task-migration]], [[ma-2025-pdqn-vehicular-mec]], and [[liu-2026-jppo-en-convntm]]. The stage table, solver labels, seam descriptions, and native-hybrid contrast are parse-grounded.
