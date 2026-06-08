@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-08 - Audit synthesis pages: maritime architectures and SAGIN / satellite-offloading landscape
+
+- Audited these two synthesis pages only: [[maritime-mec-architectures]] and [[sagin-satellite-offloading-landscape]]. No content-page edits were required; both pages were already evergreen, frontmatter-valid, and grounded in their linked source parses.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type synthesis` reported 15 pages checked and 0 errors; the LLM Wiki API health endpoint was reachable and the graph endpoint was reachable in read-only mode.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded synthesis-page audit.
+
 ## 2026-06-08 - Audit synthesis pages: ISAC sensing and MADDPG vs MASAC
 
 - Audited these two synthesis pages only: [[isac-sensing-in-aerial-mec]] and [[maddpg-vs-masac-in-mec]]. No content-page edits were required; both pages were already evergreen, frontmatter-valid, and grounded in their linked source parses.
