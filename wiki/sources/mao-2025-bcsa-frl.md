@@ -22,7 +22,7 @@ created: 2026-05-28
 updated: 2026-06-01
 ---
 
-# A Blockchain-Enabled Cold Start Aggregation Scheme for FRL-Based Task Offloading in Zero Trust LEO Satellite Networks
+# A Blockchain-Enabled Cold Start Aggregation Scheme for Federated Reinforcement Learning-Based Task Offloading in Zero Trust LEO Satellite Networks
 
 ## Citation
 
