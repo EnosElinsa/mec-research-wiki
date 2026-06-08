@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: SAGIN offloading, satellite SEC, IRS-SWIPT, secure RIS-ISAC, marine multi-access
+
+- Audited these five source pages only: [[cheng-2019-sagin-iot-offloading-rl]], [[cheng-2025-dos-satellite-edge-computing]], [[chhea-2025-irs-uav-swipt-drl]], [[chu-2024-secure-ris-isac]], and [[dai-2023-hybrid-marine-mmwl]]. The pages were already grounded in their parses on DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording; the only source-page change was non-substantive line-ending normalization in [[chu-2024-secure-ris-isac]].
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors; the LLM Wiki health endpoint was reachable and the read-only graph API was available.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: video caching, THOAS, PLS game, ULSE game, SWIPT-MEC SAC
 
 - Audited these five source pages only: [[chen-2024-dro-video-caching]], [[chen-2024-thoas-traffic-aware-sagin]], [[chen-2024-three-party-hierarchical-game-pls]], [[chen-2024-ulse-game]], and [[chen-2025-swipt-mec-sac]]. No content-page edits were required; each page was already grounded in its linked parse with DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording intact for this bounded slice.
