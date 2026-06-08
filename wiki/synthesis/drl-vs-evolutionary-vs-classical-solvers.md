@@ -29,11 +29,11 @@ updated: 2026-06-03
 
 # DRL vs evolutionary vs classical solvers across the MEC corpus
 
-> **Scope note:** the family roster below is a **partial snapshot** of an earlier, smaller state of the corpus (26 sources), not a current census of the full corpus. The *qualitative* operating guidance still holds (and is reinforced by the [[sagin-satellite-offloading-landscape]], [[isac-sensing-in-aerial-mec]], and [[maritime-mec-architectures]] track syntheses), but the exact family counts here are not current. A full re-tally across the present corpus is future work.
+> **Scope note:** the family roster below is a working summary of the solver families represented in this corpus. The *qualitative* operating guidance still holds (and is reinforced by the [[sagin-satellite-offloading-landscape]], [[isac-sensing-in-aerial-mec]], and [[maritime-mec-architectures]] track syntheses), but the exact family counts should be read as approximate because several sources use hybrid pipelines that span more than one family.
 
 Across the corpus, three solver families coexist in roughly comparable size, and the choice between them is a real design decision rather than a default. This page maps the families and gives operating guidance.
 
-## Family roster (26-source partial snapshot)
+## Family roster
 
 | Family | Sources | Size |
 |---|---|---|
