@@ -16,22 +16,22 @@ related:
   - "[[you-2017-meco-resource-allocation]]"
   - "[[mao-2017-mec-survey-communication]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-08
 ---
 
 # Energy Efficiency of Mobile Clients in Cloud Computing
 
 ## Citation
 
-Miettinen, A. P., & Nurminen, J. K. (2010). *Energy Efficiency of Mobile Clients in Cloud Computing*. **2nd USENIX Workshop on Hot Topics in Cloud Computing (HotCloud '10)**, Boston, MA, June 2010. (Venue and year are `not in parse`; web-confirmed against the USENIX HotCloud '10 program. No DOI — USENIX workshop paper.)
+Miettinen, A. P., & Nurminen, J. K. (2010). *Energy Efficiency of Mobile Clients in Cloud Computing*. **2nd USENIX Workshop on Hot Topics in Cloud Computing (HotCloud '10)**, Boston, MA, June 2010. No DOI - USENIX workshop paper.
 
 ## TL;DR
 
-An early, foundational **analysis and measurement** of when offloading computation from a mobile device to the cloud actually **saves energy**. The central quantity is the **computing-to-communication ratio**: offloading helps only when the energy cost of transferring input/output data is less than the energy of computing locally ($E_{cloud} < E_{local}$). Using measurements of contemporary handheld devices over **WLAN and 3G**, the authors show the trade-off is **highly sensitive** to workload characteristics, the amount *and pattern* of data communication (bursts vs many small packets), and the wireless technology used — and they draw out the engineering implications for energy-efficient mobile cloud computing.
+An early, foundational **analysis and measurement** of when offloading computation from a mobile device to the cloud actually **saves energy**. The central quantity is the **computing-to-communication ratio**: offloading helps only when the energy cost of transferring input/output data is less than the energy of computing locally ($E_{cloud} < E_{local}$). Using measurements of contemporary handheld devices over **WLAN and 3G**, the authors show the trade-off is **highly sensitive** to workload characteristics, the amount *and pattern* of data communication (bursts vs many small packets), and the wireless technology used - and they draw out the engineering implications for energy-efficient mobile cloud computing.
 
 ## Problem framing
 
-Battery capacity grows only slowly (the paper cites ~5%/year) and thermal limits cap small-device power budgets, so energy efficiency is a first-order constraint. Cloud computing can offload work to save mobile energy — but **only if** the communication energy is smaller than the saved computation energy. Many mobile applications are deliberately light-weight (a "natural selection" toward what runs on limited devices), so the computational characteristics of much current software actually favor **local** processing; offloading pays off for the genuinely compute-heavy cases. The paper sets out to map this basic local-vs-remote balance empirically.
+Battery capacity grows only slowly (the paper cites ~5%/year) and thermal limits cap small-device power budgets, so energy efficiency is a first-order constraint. Cloud computing can offload work to save mobile energy - but **only if** the communication energy is smaller than the saved computation energy. Many mobile applications are deliberately light-weight (a "natural selection" toward what runs on limited devices), so the computational characteristics of much current software actually favor **local** processing; offloading pays off for the genuinely compute-heavy cases. The paper sets out to map this basic local-vs-remote balance empirically.
 
 ## System model
 
@@ -45,7 +45,7 @@ This is a **measurement and analysis** study, not an algorithm. The model is an 
 
 ## Key findings
 
-- Offloading is beneficial **only** when the workload is sufficiently compute-intensive relative to its data transfer — i.e., a high enough computing-to-communication ratio; many light-weight mobile apps fall below this and are better run locally.
+- Offloading is beneficial **only** when the workload is sufficiently compute-intensive relative to its data transfer - i.e., a high enough computing-to-communication ratio; many light-weight mobile apps fall below this and are better run locally.
 - The crossover is **strongly dependent on the wireless technology**: WLAN and 3G give very different thresholds for when moving to the cloud pays off.
 - Not only data volume but **traffic pattern** matters: bursty transfers are more energy-efficient than many small packets. This puts real responsibility on developers and content producers to structure communication well.
 
