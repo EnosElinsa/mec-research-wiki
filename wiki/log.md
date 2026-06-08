@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-08 - Audit thesis pages: decomposition, constraints, hybrid-action memory
+
+- Audited these three thesis pages only: [[decomposition-beats-end-to-end-drl-in-mec]], [[explicit-constraints-beat-reward-shaping-in-mec-drl]], and [[hybrid-action-memory-augmented-drl-wins-uav-mec]]. No content-page edits were required; all three were already evergreen, frontmatter-valid, and grounded in their linked source parses.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type thesis` reported 3 pages checked and 0 errors; the LLM Wiki health endpoint was reachable, and the graph endpoint reported 649 nodes / 6005 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded thesis-page audit.
+
 ## 2026-06-08 - Audit synthesis pages: safety and robustness, swarm metaheuristics, solver-family comparison
 
 - Audited these three synthesis pages only: [[safety-and-robustness-mechanisms-in-mec]], [[swarm-metaheuristics-in-uav-mec]], and [[drl-vs-evolutionary-vs-classical-solvers]]. The first two were already parse-grounded; the solver-family comparison page needed evergreen wording cleanup in its scope note, and the swarm page needed a small count wording fix so its opener matches the roster it presents.
