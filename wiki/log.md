@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: LAP altitude, MOALF-UAV-MEC, HAP-SWIPT, prospect-theory offloading, delay-aware edge-cloud
+
+- Audited these five source pages only: [[al-hourani-2014-optimal-lap-altitude]], [[albakhrani-2025-moalf-uav-mec]], [[an-2024-multilayer-ris-hap-swipt]], [[apostolopoulos-2021-prospect-theory-uav-offloading]], and [[bai-2024-delay-aware-cooperative-edge-cloud]]. All five were already grounded, evergreen, and frontmatter-valid against their linked parses; the only source-page change was non-substantive line-ending normalization in [[al-hourani-2014-optimal-lap-altitude]].
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit thesis pages: decomposition, constraints, hybrid-action memory
 
 - Audited these three thesis pages only: [[decomposition-beats-end-to-end-drl-in-mec]], [[explicit-constraints-beat-reward-shaping-in-mec-drl]], and [[hybrid-action-memory-augmented-drl-wins-uav-mec]]. No content-page edits were required; all three were already evergreen, frontmatter-valid, and grounded in their linked source parses.
