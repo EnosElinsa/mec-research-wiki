@@ -21,7 +21,7 @@ related:
   - "[[mohammad-mozaffari]]"
   - "[[walid-saad]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-08
 ---
 
 # Unmanned Aerial Vehicle With Underlaid Device-to-Device Communications: Performance and Tradeoffs
@@ -67,5 +67,6 @@ A foundational **stochastic-geometry** UAV-base-station entry from the Virginia 
 
 ## Raw artifacts
 
-- `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/full.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/full.md`
+- Origin PDF: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/8090181e-977c-4e03-95bb-bdc99eb016ee_origin.pdf`
+- Figures: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/images/`

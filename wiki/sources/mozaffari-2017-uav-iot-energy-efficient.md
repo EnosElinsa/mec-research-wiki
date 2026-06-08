@@ -16,7 +16,7 @@ related:
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
   - "[[weighted-kmeans-uav-deployment]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-08
 ---
 
 # Mobile Unmanned Aerial Vehicles (UAVs) for Energy-Efficient Internet of Things Communications
@@ -62,5 +62,6 @@ A **UAV-deployment + data-collection anchor** from the same Mozaffari/Saad/Benni
 
 ## Raw artifacts
 
-- `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/full.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/full.md`
+- Origin PDF: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/b905eb51-494c-4f5b-95c4-b1f8f6ac328f_origin.pdf`
+- Figures: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/images/`

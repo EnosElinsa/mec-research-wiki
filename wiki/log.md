@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: ADM DT migration and Mozaffari UAV placement foundations
+
+- Audited these five source pages only: [[mou-2025-adm-dt-migration]], [[mozaffari-2015-drone-small-cells]], [[mozaffari-2016-efficient-multi-uav-coverage]], [[mozaffari-2016-uav-underlaid-d2d]], and [[mozaffari-2017-uav-iot-energy-efficient]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[mou-2025-adm-dt-migration]] now records the parse-stated future-work directions; the four Mozaffari pages now use explicit Parse / Origin PDF / Figures raw-artifact bullets. The audited DOI / venue / year and headline numeric claims were already grounded in the parses.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: drone swarm GAGLPP, secure RIS-UAV MEC-IoT, MCC energy efficiency, DQN Atari, ground-satellite UAM
 
 - Audited these five source pages only: [[miao-2022-gaglpp-drone-swarm-iiot]], [[michailidis-2024-secure-ris-uav-mec-iot]], [[miettinen-2010-mcc-energy-efficiency]], [[mnih-2015-dqn-atari]], and [[moon-2024-ground-satellite-uam-scheduling]]. One content-page fix was required: the [[miettinen-2010-mcc-energy-efficiency]] citation no longer narrates web verification in published prose and now stays evergreen. The other four pages were already grounded in their linked parses for DOI / venue / year where present, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording, so no additional content-page edits were required.

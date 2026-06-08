@@ -25,7 +25,7 @@ related:
   - "[[zhao-2025-traj-offload-cache-migration]]"
   - "[[yuan-wu]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-08
 ---
 
 # Adaptive Digital Twin Migration in Vehicular Edge Computing and Networks
@@ -66,6 +66,7 @@ Reported on real-world Cologne, Germany vehicular-mobility traces (small-scale 5
 - The expert demonstrations come from the Greedy policy, so warm-start quality is bounded by that heuristic's quality (the paper notes heuristic effectiveness depends on predefined-rule quality).
 - Centralized reward computation over all RSU data may become a bottleneck as the network scales (the paper discusses the centralized-vs-distributed variance/latency trade-off but does not fully resolve it).
 - Specific numeric values for several results are figure-derived; treat the 39% headline as the paper's stated average rather than a per-scenario guarantee.
+- Future work named in the conclusion: integrate DT-based complex task scheduling and edge caching, and explore hybrid local-centralized / global-distributed decision strategies.
 
 ## Relation to the corpus
 This is a [[service-migration]] design in the [[vehicular-mec]] setting, distinct from the corpus's task-rerouting and offloading-migration work: it migrates the *[[digital-twin|digital twin]]* rather than a task or a service container, and its cost model is dominated by the three-way DT-communication structure. It complements [[yang-2024-taco-human-digital-twin-edge]] (human-digital-twin edge deployment trading accuracy vs cost) and [[zhao-2025-traj-offload-cache-migration]] (service migration vs task rerouting at the MEC edge). Its expert-warm-started actor-critic adds an [[expert-guided-warm-start-rl|imitation-bootstrapped]] data point to the corpus's [[drl-backbones-across-uav-mec-sources|DRL-backbone]] landscape — a contrast to the from-scratch on-policy and off-policy agents elsewhere. Shared authorship with the corpus via [[yuan-wu]].
