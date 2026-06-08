@@ -25,7 +25,7 @@ related:
   - "[[wang-gai-isac-physical-layer]]"
   - "[[du-2024-distributed-foundation-models-6g]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-08
 ---
 
 # Enhancing Deep Reinforcement Learning: A Tutorial on Generative Diffusion Models in Network Optimization
@@ -38,7 +38,7 @@ Du, H., Zhang, R., Liu, Y., Wang, J., Lin, Y., Li, Z., Niyato, D., Kang, J., Xio
 A comprehensive **tutorial** on applying **Generative Diffusion Models (GDMs)** to network-optimization tasks, with a focus on **enhancing Deep Reinforcement Learning (DRL)**. It explains GDM mechanics (forward noising + learned reverse denoising), surveys why GDMs suit optimization (model complex distributions, generate decisions, refine solutions iteratively), and walks through a worked **sum-rate-maximization** example. It then gives a series of **case studies** integrating GDMs with DRL, incentive-mechanism design, ISAC, semantic communication (SemCom), and Internet-of-Vehicles (IoV) networks. The wiki's dedicated **GDM-in-network-optimization tutorial anchor**.
 
 ## Problem framing
-Generative AI (GenAI) can *create* new data (text/image/audio/time-series), unlike discriminative AI that classifies existing data. Among GenAI families (Transformers, GANs, VAEs, flow-based, energy-based, GDMs), **GDMs** stand out for modeling complex distributions and generating high-quality samples, and their adoption has grown sharply (Web-of-Science "Generative Diffusion Model" papers: 12 in 2014 → 257 in 2023, parse Fig. 1). Existing GDM surveys are either broad or domain-specific (CV/NLP), leaving a gap for **network optimization**. This tutorial fills it: how GDMs can be harnessed for complex optimization in dynamic wireless environments, especially as DRL policy representations and decision generators.
+Generative AI (GenAI) can *create* new data (text/image/audio/time-series), unlike discriminative AI that classifies existing data. Among GenAI families (Transformers, GANs, VAEs, flow-based, energy-based, GDMs), **GDMs** stand out for modeling complex distributions and generating high-quality samples, and their adoption has grown sharply (Web-of-Science "Generative Diffusion Model" papers: 12 in 2014 → 257 in 2023). Existing GDM surveys are either broad or domain-specific (CV/NLP), leaving a gap for **network optimization**. This tutorial fills it: how GDMs can be harnessed for complex optimization in dynamic wireless environments, especially as DRL policy representations and decision generators.
 
 ## Scope surveyed
 - **GDM background + mechanics:** forward/reverse diffusion chains; applications across CV, text, audio, graphs, molecules, tabular data; key advantages over other GenAI methods.
@@ -51,7 +51,7 @@ Generative AI (GenAI) can *create* new data (text/image/audio/time-series), unli
 As a tutorial, it presents no single benchmark; its contribution is (1) a broad GDM-for-network-optimization tutorial, (2) concrete case studies demonstrating GDMs' practicality across DRL/incentive/ISAC/SemCom/IoV scenarios, and (3) future-direction guidance. Its recurring thesis is that GDMs' iterative denoising and distribution-modeling make them strong **decision generators / DRL enhancers** for dynamic wireless optimization.
 
 ## Limitations / future work
-Tutorial + case studies, not a controlled experimental study. GDM sampling can require many denoising steps (low sampling efficiency), a recurring practical hurdle. Future-direction discussion is forward-looking rather than validated. (Author note: the lead author **Hongyang Du** has appeared with differing affiliations across the corpus — see entity deferral below.)
+Tutorial + case studies, not a controlled experimental study. GDM sampling can require many denoising steps (low sampling efficiency), a recurring practical hurdle. Future-direction discussion is forward-looking rather than validated. The lead author **Hongyang Du** has appeared with differing affiliations across the corpus.
 
 ## Relation to the corpus
 The methodological **tutorial anchor** for the wiki's growing **generative-AI MEC** thread, sitting beside the GAI-for-wireless survey [[khoramnejad-2025-gai-wireless-optimization-survey]] and the GAI-for-ISAC overview [[wang-gai-isac-physical-layer]] (same Du/Niyato/Kang/Wang author cluster). It frames the **[[diffusion-model-as-optimizer]]** / GDM-as-decision-generator pattern used by [[ye-2025-aigc-diffusion-contract]] (diffusion + [[contract-theory]]), [[peng-2025-drudm-cfg]] (diffusion + classifier-free guidance), and [[du-2024-d2sac-aigc-asp-selection]] (diffusion-inside-SAC, D2SAC) — the latter two by overlapping authors. Complements the 6G foundation-models overview [[du-2024-distributed-foundation-models-6g]]. Authors with corpus entity pages include [[dusit-niyato]], [[jiawen-kang]], and [[jiacheng-wang]].

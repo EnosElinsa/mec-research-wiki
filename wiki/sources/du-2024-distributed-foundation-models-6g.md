@@ -16,14 +16,14 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-08
 ---
 
 # Distributed Foundation Models for Multi-Modal Learning in 6G Wireless Networks
 
 ## Citation
 
-Du, J., Lin, T., Jiang, C., Yang, Q., Bader, C. F., & Han, Z. (2024). *Distributed Foundation Models for Multi-Modal Learning in 6G Wireless Networks*. **IEEE Wireless Communications**. DOI: `not in parse` (venue confirmed via web search; the MinerU parse does not contain the DOI).
+Du, J., Lin, T., Jiang, C., Yang, Q., Bader, C. F., & Han, Z. (2024). *Distributed Foundation Models for Multi-Modal Learning in 6G Wireless Networks*. **IEEE Wireless Communications**. DOI: `not in parse`.
 
 ## TL;DR
 
