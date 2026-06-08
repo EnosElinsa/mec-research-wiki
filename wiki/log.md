@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: UAV relaying, MU-AEC task energy, IoV caching, dispersed computing, maritime secure CB
+
+- Audited these five source pages only: [[hu-2019-uav-relay-edge-computing]], [[huang-2023-mu-aec-task-energy]], [[huang-2024-fed-idcco-iov-caching]], [[huang-2025-cmop-dispersed-computing]], and [[huang-2025-dual-aav-maritime-secure-cb]]. No content-page edits were required; each page was already grounded in its linked parse for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API was reachable and reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: fairness multi-UAV, backscatter WPMEC, HAP NOMA, ETSI MEC white paper, UAV MEC PDD
 
 - Audited these five source pages only: [[he-2023-fairness-3d-multiuav-maddpg]], [[he-2024-backscatter-wpmec-cooperation]], [[hsu-2025-drl-hues-hap-noma]], [[hu-2015-mec-5g-etsi-whitepaper]], and [[hu-2019-pdd-uav-mec-offloading]]. No content-page edits were required; DOI / venue / year, title / H1 consistency, grounded numeric claims, related-link sanity, and evergreen wording were already aligned with the corresponding parses.
