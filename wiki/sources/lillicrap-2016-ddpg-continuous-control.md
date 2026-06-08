@@ -15,18 +15,18 @@ related:
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[maddpg]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-08
 ---
 
 # Continuous Control with Deep Reinforcement Learning
 
 ## Citation
 
-Lillicrap, T. P., Hunt, J. J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., Silver, D., & Wierstra, D. (2016). *Continuous Control with Deep Reinforcement Learning*. **Google DeepMind**. DOI: not in parse; venue: not in parse. (Published as arXiv:1509.02971 and at ICLR 2016 — web-confirmed, since the parse carries no venue/DOI/date line.)
+Lillicrap, T. P., Hunt, J. J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., Silver, D., & Wierstra, D. (2016). *Continuous Control with Deep Reinforcement Learning*. Presented at ICLR 2016. Also published as arXiv:1509.02971. DOI: not in parse.
 
 ## TL;DR
 
-The **origin paper for DDPG** (Deep Deterministic Policy Gradient), the off-policy actor-critic algorithm that many UAV-MEC and aerial DRL sources in this wiki use as a continuous-control backbone. It adapts the ideas behind Deep Q-Learning to continuous action spaces: a [[deep-q-network|DQN]]-style critic (replay buffer + target network) is combined with a **deterministic policy gradient** actor, so the method avoids the per-step action maximization that makes plain Q-learning intractable in continuous domains. Using one set of hyperparameters and network architecture, DDPG robustly solves more than 20 simulated physics tasks (cartpole swing-up, dexterous manipulation, legged locomotion, car driving), in many cases learning end-to-end directly from raw pixels. This is a **foundational DRL-method** entry rather than an MEC application — it documents the algorithm the wiki's [[ddpg]] concept page and its downstream variants build on.
+The **origin paper for DDPG** (Deep Deterministic Policy Gradient), the off-policy actor-critic algorithm that many UAV-MEC and aerial DRL sources in this wiki use as a continuous-control backbone. It adapts the ideas behind Deep Q-Learning to continuous action spaces: a [[deep-q-network|DQN]]-style critic (replay buffer + target network) is combined with a **deterministic policy gradient** actor, so the method avoids the per-step action maximization that makes plain Q-learning intractable in continuous domains. Using one set of hyperparameters and network architecture, DDPG robustly solves more than 20 simulated physics tasks (cartpole swing-up, dexterous manipulation, legged locomotion, car driving), in many cases learning end-to-end directly from raw pixels. This is a **foundational DRL-method** entry rather than an MEC application; it documents the algorithm that [[ddpg]] and its downstream variants build on.
 
 ## Problem framing
 
@@ -62,7 +62,7 @@ The parse notes DDPG can require a large number of training episodes to find sol
 
 ## Relation to the corpus
 
-The **method ancestor** of the wiki's large DDPG lineage. The [[ddpg]] concept page summarizes this algorithm; vanilla DDPG drives the continuous controllers in [[bao-2025-ddpg-video-offloading]] (offloading-ratio + transcoding + HAP-resource control) and [[zhang-2024-uav-task-offloading-ddpg]] (UAV trajectory), the multi-agent extension [[maddpg]] descends from it, and [[fujimoto-2018-td3-actor-critic|TD3]] is its overestimation-hardened successor. Curating the source paper grounds those downstream claims, just as [[schulman-2017-ppo]] grounds the PPO line and [[van-hasselt-2016-double-dqn]] grounds the Double-Q line.
+The **method ancestor** of the wiki's large DDPG lineage. The [[ddpg]] concept page summarizes this algorithm; vanilla DDPG drives the continuous controllers in [[bao-2025-ddpg-video-offloading]] (offloading-ratio + transcoding + HAP-resource control) and [[zhang-2024-uav-task-offloading-ddpg]] (UAV trajectory), the multi-agent extension [[maddpg]] descends from it, and [[fujimoto-2018-td3-actor-critic|TD3]] is its overestimation-hardened successor. This source paper grounds those downstream claims, just as [[schulman-2017-ppo]] grounds the PPO line and [[van-hasselt-2016-double-dqn]] grounds the Double-Q line.
 
 ## Raw artifacts
 
