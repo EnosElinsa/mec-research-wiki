@@ -17,7 +17,7 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-08
 ---
 
 # Diffusion-Based Reinforcement Learning for Edge-Enabled AI-Generated Content Services
@@ -45,12 +45,12 @@ Two goals: **G1** make AIGC accessible from any device, anywhere, anytime; **G2*
 
 - **AGOD.** A conditional reverse-diffusion policy generates the optimal decision from the environment state — diffusion models used to generate *decisions* rather than media ([[diffusion-model-as-optimizer]]). Unlike prior diffusion-RL (e.g. Diffusion Q-Learning) restricted to **continuous** offline action spaces, AGOD targets the **discrete** ASP-selection action space online.
 - **D2SAC.** AGOD is embedded as the actor inside [[soft-actor-critic|Soft Actor-Critic]] (entropy-regularized, off-policy, double-Q critics, replay buffer, target networks) to give efficient and effective ASP selection.
-- **Type.** MDP solved by a diffusion-policy DRL agent. Code released by the authors (link in parse).
+- **Type.** MDP solved by a diffusion-policy DRL agent. Code released by the authors.
 
 ## Key findings
 
-- **D2SAC outperforms seven representative DRL algorithms** — DQN, DRQN, Prioritized-DQN, Rainbow, REINFORCE, PPO, and SAC — on the studied ASP-selection task (parse abstract + contributions; specific reward curves in the figures).
-- Energy cost rises consistently with the number of diffusion **denoising steps** (parse Fig. 2, the authors' own measurement), grounding the resource model.
+- **D2SAC outperforms seven representative DRL algorithms** — DQN, DRQN, Prioritized-DQN, Rainbow, REINFORCE, PPO, and SAC — on the studied ASP-selection task (abstract and contributions; specific reward curves in the figures).
+- Energy cost rises consistently with the number of diffusion **denoising steps** (Fig. 2, the authors' own measurement), grounding the resource model.
 - AGOD is presented as **extensible** to other wireless-network optimization problems, not only ASP selection.
 
 ## Limitations / future work

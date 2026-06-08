@@ -16,7 +16,7 @@ related:
   - "[[zhao-2024-caching-service-placement-uav]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-08
 ---
 
 # MADDPG-Based Joint Service Placement and Task Offloading in MEC Empowered Air-Ground Integrated Networks
@@ -50,7 +50,7 @@ MEC-empowered AGINs deliver compute for applications like forest-fire monitoring
 
 ## Limitations / future work
 
-The parse's conclusion does not enumerate explicit future work beyond the established framework.
+The conclusion does not enumerate explicit future work beyond the established framework.
 
 ## Relation to the corpus
 

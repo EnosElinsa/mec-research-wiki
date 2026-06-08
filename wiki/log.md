@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: MADDPG service placement, D2SAC ASP selection, distributed foundation models, GDM tutorial, YOLO SemCom digital twin
+
+- Audited these five source pages only: [[du-2023-maddpg-service-placement-agin]], [[du-2024-d2sac-aigc-asp-selection]], [[du-2024-distributed-foundation-models-6g]], [[du-2024-gdm-network-optimization-tutorial]], and [[du-2024-yolo-semcom-digital-twin]]. Corrected evergreen wording and grounding on the source pages where needed: removed parse/process narration from source prose, normalized parse-referenced wording into evergreen factual statements, and kept DOI / venue / year / title / H1 consistency intact.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors; the LLM Wiki health endpoint was reachable and returned `allowUnauthenticated:true`; the read-only graph API was reachable.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: marine offloading, graph-resource-management survey, vehicular offloading
 
 - Audited these five source pages only: [[dai-2023-hybrid-noma-fdma-marine]], [[dai-2024-graph-rm-survey-learning]], [[dai-2024-graph-rm-survey-optimization]], [[dai-2024-multiuav-marine-welfare]], and [[dai-2024-uav-vehicular-offloading-lyapunov]]. No content-page edits were required; each page was already grounded in its linked parse for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording.
