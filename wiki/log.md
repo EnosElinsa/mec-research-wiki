@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: SAGIN FL handover, multi-UAV priority offloading, task-driven priority offloading, UAV altitude/beamwidth, EUA game
+
+- Audited these five source pages only: [[han-2024-sagin-fl-handover]], [[hao-2024-clp-multiuav-priority-offloading]], [[hao-2025-priority-aware-task-driven-co]], [[he-2018-uav-altitude-beamwidth]], and [[he-2019-euagame-user-allocation]]. No content-page edits were required; DOI / venue / year, title / H1 consistency, grounded numeric claims, related-link sanity, and evergreen wording were already aligned with the corresponding parses.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API was reachable and reported a baseline of 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: SAGIN perception offloading, cache-enabled UAV service experience, multi-UAV 5G offloading, proactive eavesdropping, ground-satellite FL
 
 - Audited these five source pages only: [[gao-2024-sagin-perception-offloading]], [[gao-2024-service-experience-cache-uav]], [[guo-2023-mccco-multiuav-5g-offloading]], [[guo-2024-multiuav-proactive-eavesdropping]], and [[han-2024-ground-satellite-fl]]. No content-page edits were required; DOI / venue / year, title / H1 consistency, key grounded numeric claims, related-link sanity, and evergreen wording were already aligned with the corresponding parses.
