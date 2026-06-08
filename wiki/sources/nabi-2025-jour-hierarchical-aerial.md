@@ -18,7 +18,7 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[discrete-continuous-two-stage-decomposition]]"
 created: 2026-05-29
-updated: 2026-06-04
+updated: 2026-06-08
 ---
 
 # Joint Offloading Decision, User Association, and Resource Allocation in Hierarchical Aerial Computing
@@ -67,6 +67,7 @@ The **load-balancing** angle is a quieter contribution: per-UAV load enters the 
 ## Limitations
 
 - Single HAP. No multi-HAP coordination.
+- Future work explicitly targets multiple HAPs and satellites to extend the architecture's applicability and performance.
 - Stage-1 association is recomputed every slot (GU locations update each interval), so the cost of repeated handoffs is not modeled.
 - UAVs and HAP positions are fixed (only GUs move); no UAV trajectory optimization.
 - Evaluated UAVs are homogeneous (identical compute capacity within a scenario); heterogeneous-capacity UAVs are not studied.
@@ -81,3 +82,4 @@ The **load-balancing** angle is a quieter contribution: per-UAV load enters the 
 ## Raw artifacts
 
 - `raw/sources/Joint Offloading Decision, User Association, and Resource Allocation in Hierarchical Aerial Computin/full.md`
+- Original PDF and extracted figures (`images/`) in the same folder.

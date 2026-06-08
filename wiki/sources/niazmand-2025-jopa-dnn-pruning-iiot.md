@@ -17,7 +17,7 @@ related:
   - "[[wang-2024-maritime-eh-jcora]]"
   - "[[zhang-2025-vnf-sgin-dql]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-08
 ---
 
 # Joint Task Offloading, DNN Pruning, and Computing Resource Allocation for Fault Detection With Dynamic Constraints in Industrial IoT
@@ -54,7 +54,7 @@ DNN inference for facility fault diagnosis is accurate but compute-heavy (many F
 
 ## Limitations / future work
 
-Simulation-based, specific to the washing-machine fault-detection service; the parse's conclusion section was not reached in the read range, so further-work items are `not in parse` here beyond what the contributions imply.
+Simulation-based, specific to the washing-machine fault-detection service. The conclusion explicitly points future work toward dynamic radio bandwidth resource allocation and machine-learning-based joint radio scheduling, task offloading, and computing resource allocation under varying network conditions and QoS demands.
 
 ## Relation to the corpus
 
