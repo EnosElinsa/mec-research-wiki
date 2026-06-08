@@ -39,4 +39,4 @@ Workloads (1) and (2) both have a **quality-knob** in the action space — trans
 - A formulation that expresses video-transcoding and fusion-compression as the same fidelity-vs-cost knob, tested on both workloads.
 - A solver-family swap: run a DRL controller on the cooperative-perception problem and a CMOO solver on the video problem, to separate "workload shape" from "solver choice".
 
-Promoted here so the next rich-media offloading source can be slotted against this hypothesis.
+This page serves as the corpus's comparison anchor for future rich-media offloading workloads.
