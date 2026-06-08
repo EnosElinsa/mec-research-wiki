@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: batch 11 slice D
+
+- Audited these five source pages only: [[pervez-2024-acm-multiuav-mec]], [[qi-2024-msar-minmax-latency]], [[qian-2022-uav-maritime-iot-noma]], [[qian-2024-marine-fl-dt-secrecy]], and [[qin-2025-bcuav-masac]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[qin-2025-bcuav-masac]] now states the parse-supported queue-delay result as "more than 29.47% queue-delay reduction" rather than terse signed shorthand, and carries an audit-current `updated` date. [[pervez-2024-acm-multiuav-mec]], [[qi-2024-msar-minmax-latency]], [[qian-2022-uav-maritime-iot-noma]], and [[qian-2024-marine-fl-dt-secrecy]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: batch 11 slice C
 
 - Audited these five source pages only: [[pan-2025-uav-ris-energy-efficient-comm]], [[peng-2020-maddpg-uav-vehicular]], [[peng-2022-cmop-uav-path-planning]], [[peng-2024-energy-time-uav-its]], and [[peng-2025-drudm-cfg]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
