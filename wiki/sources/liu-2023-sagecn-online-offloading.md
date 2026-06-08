@@ -29,7 +29,7 @@ updated: 2026-06-02
 
 ## Citation
 
-Liu, Y., Jiang, L., Qi, Q., Xie, K., & Xie, S. (2023). *Online Computation Offloading for Collaborative Space/Aerial-Aided Edge Computing Toward 6G System*. **IEEE Transactions on Vehicular Technology**. DOI: 10.1109/TVT.2023.3312676. (Manuscript received 17 May 2023; revised 11 July 2023; accepted 18 August 2023; date of publication 7 September 2023; date of current version 13 February 2024 → year 2023.)
+Liu, Y., Jiang, L., Qi, Q., Xie, K., & Xie, S. (2023). *Online Computation Offloading for Collaborative Space/Aerial-Aided Edge Computing Toward 6G System*. **IEEE Transactions on Vehicular Technology**. DOI: 10.1109/TVT.2023.3312676. (Manuscript received 17 May 2023; revised 11 July 2023; accepted 18 August 2023; date of publication 7 September 2023; date of current version 13 February 2024; year 2023.)
 
 ## TL;DR
 
@@ -53,12 +53,12 @@ In 6G, the space-air-ground integrated network (SAGIN) is meant to give worldwid
 
 ## Key findings
 
-- Numerical results are reported to confirm the collaborative offloading scheme **reduces the long-term task completion delay of LEO satellites while guaranteeing computation efficiency**, relative to comparison schemes. Specific numeric margins are figure-derived; treat exact values as indicative.
+- Numerical results confirm the collaborative offloading scheme **reduces the long-term task completion delay of LEO satellites while guaranteeing computation efficiency**, relative to comparison schemes. Specific numeric margins are figure-derived; treat exact values as indicative.
 - The combination of Lyapunov decomposition with **predicted** (rather than assumed-known) task arrivals and queue lengths is the paper's core mechanism for handling space/aerial variability.
 
 ## Limitations / future work
 
-The evaluation is numerical/simulation-based, and several modeling simplifications are made (constant satellite-aircraft channel gain, per-slot bounded offloading capacities). The prediction quality of the delayed online learning bounds achievable performance. Explicit future-work statements are `not in parse`.
+The evaluation is numerical/simulation-based, and several modeling simplifications are made (constant satellite-aircraft channel gain, per-slot bounded offloading capacities). The prediction quality of the delayed online learning bounds achievable performance. Explicit future work is not stated.
 
 ## Relation to the corpus
 

@@ -49,7 +49,7 @@ Maritime communication is hard (long distances, unstable channels, sparse infras
 
 ## Key findings
 
-- Versus a baseline of **hovering at the center with no parallel computing**, the DDPG algorithm reduces total average latency by **more than 37%** and the DQN algorithm by **31%** (verbatim from the conclusion).
+- Versus a baseline of **hovering at the center with no parallel computing**, the DDPG algorithm reduces total average latency by **more than 37%** and the DQN algorithm by **31%**.
 - **DDPG outperforms DQN** for the joint trajectory + VM-configuration problem because it selects continuous actions without quantization error — at the cost of heavier computation.
 - DRL-based optimization is more robust to problem modeling (insensitive to convexity of models/constraints) but needs more compute / stronger hardware.
 
@@ -59,7 +59,7 @@ Simulation-only, using random user requests and simplified channel conditions. S
 
 ## Relation to the corpus
 
-A **maritime UAV-MEC + DRL** entry distinctive for its **VM-virtualization / I/O-interference** angle on parallel computing — a layer most corpus MEC papers abstract away. Its two-layer T-UAV / B-UAV architecture parallels the MEC-enabled UAV-swarm structure of [[zhang-2020-response-delay-uav-swarm]] (top-UAV MEC over bottom-UAVs), and it sits in the maritime track alongside [[liu-2025-haps-uav-maritime-iot]] and the broader [[maritime-mec]] cluster. Reinforces [[virtual-machine-multiplexing]], [[parallel-vs-serial-processing]], [[deep-q-network]], and [[ddpg]]. (First author Ying Liu, Jilin University — distinct from the Yi Liu of [[liu-2020-cooperative-uav-mec-power-iot]] and the Yangbo/Lihan Liu entities.)
+A **maritime UAV-MEC + DRL** entry distinctive for its **VM-virtualization / I/O-interference** angle on parallel computing — a layer most corpus MEC papers abstract away. Its two-layer T-UAV / B-UAV architecture parallels the MEC-enabled UAV-swarm structure of [[zhang-2020-response-delay-uav-swarm]] (top-UAV MEC over bottom-UAVs), and it sits in the maritime track alongside [[liu-2025-haps-uav-maritime-iot]] and the broader [[maritime-mec]] cluster. Reinforces [[virtual-machine-multiplexing]], [[parallel-vs-serial-processing]], [[deep-q-network]], and [[ddpg]]. First author Ying Liu is from Jilin University, distinct from the Yi Liu of [[liu-2020-cooperative-uav-mec-power-iot]] and the Yangbo/Lihan Liu entities.
 
 ## Raw artifacts
 

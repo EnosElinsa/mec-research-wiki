@@ -48,7 +48,7 @@ Traditional MEC suffers poor channel quality from multipath and blockages. Equip
 
 ## Limitations / future work
 
-The parse's conclusion does not enumerate explicit future work beyond the established design.
+The conclusion does not enumerate explicit future work beyond the established design.
 
 ## Relation to the corpus
 

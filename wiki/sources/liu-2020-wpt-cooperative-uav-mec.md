@@ -48,13 +48,13 @@ Low-power SDs are constrained in compute and battery. Wireless power transfer + 
 
 ## Key findings
 
-- Both algorithms **converge within several iterations** and achieve **similar minimal required energy** and optimized trajectory; for **large** data amounts the SCA-based algorithm should be used (to find an optimal solution), while for **small** data amounts DAI gives smaller computing energy consumption (verbatim from the parse).
+- Both algorithms **converge within several iterations** and achieve **similar minimal required energy** and optimized trajectory; for **large** data amounts the SCA-based algorithm should be used (to find an optimal solution), while for **small** data amounts DAI gives smaller computing energy consumption.
 - **Trajectory optimization is the dominant factor** in minimizing total required energy, and optimizing acceleration greatly affects the UAV's required energy — propulsion-related energy dominates the total ([[rotary-wing-propulsion-energy-model]] context).
 - Jointly optimizing the UAV's CPU frequency and offloaded bits greatly reduces computing energy; leveraging idle SDs further reduces the UAV's computing energy. A noted cost: more idle SDs means more optimization variables and longer convergence time.
 
 ## Limitations / future work
 
-The parse's conclusion does not enumerate explicit future work; it notes the convergence-time growth as the number of idle SDs increases. Results are simulation-based.
+The conclusion does not enumerate explicit future work; it notes the convergence-time growth as the number of idle SDs increases. Results are simulation-based.
 
 ## Relation to the corpus
 
