@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: robust b-MAPPO multi-UAV, SMDRL resource-constrained MEC, two-hop packet scheduling, OMRP CB IoT, UAV swarm stochastic game
+
+- Audited these five source pages only: [[li-2024-robust-bmappo-multiuav-mec]], [[li-2024-smdrl-resource-constrained-mec]], [[li-2024-twohop-iort-packet-scheduling]], [[li-2025-omrp-cb-iot]], and [[li-2025-stochastic-game-uav-swarm]]. No content-page edits were required; each page was already grounded in its linked parse for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors; `python tools/wiki/index_audit.py` reported 651 catalogue-able pages, 651 distinct slugs linked from `index.md`, and 0 duplicate primary listings.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API was reachable and reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: air-ground VEC offloading, ground-space EMODRL, UAV swarm AVAA, IRS secure WPMEC, UAV swarm clustering
 
 - Audited these five source pages only: [[li-2024-airground-vec-offloading]], [[li-2024-emodrl-ground-space-cb]], [[li-2024-emssa-uav-swarm-vaa]], [[li-2024-irs-secure-wpmec]], and [[li-2024-rldc-uav-swarm-clustering]]. No content-page edits were required; each page was already grounded in its linked parse for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording.
