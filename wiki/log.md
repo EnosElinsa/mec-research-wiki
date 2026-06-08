@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: duan MOTO, faisal CGAN-RIS-ISAC, fu OTAE batching, fujimoto TD3, gao UAV mobile GT
+
+- Audited these five source pages only: [[duan-2023-moto-smallcell-offloading]], [[faisal-2025-cgan-ris-isac-channel]], [[fu-2025-otae-inference-lae-batching]], [[fujimoto-2018-td3-actor-critic]], and [[gao-2024-d3qn-uav-mec-mobile-gt]]. No content-page edits were required; DOI / venue / year, title / H1 consistency, key grounded numeric claims, related-link sanity, and evergreen wording were all already aligned with the corresponding parses.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: MADDPG service placement, D2SAC ASP selection, distributed foundation models, GDM tutorial, YOLO SemCom digital twin
 
 - Audited these five source pages only: [[du-2023-maddpg-service-placement-agin]], [[du-2024-d2sac-aigc-asp-selection]], [[du-2024-distributed-foundation-models-6g]], [[du-2024-gdm-network-optimization-tutorial]], and [[du-2024-yolo-semcom-digital-twin]]. Corrected evergreen wording and grounding on the source pages where needed: removed parse/process narration from source prose, normalized parse-referenced wording into evergreen factual statements, and kept DOI / venue / year / title / H1 consistency intact.
