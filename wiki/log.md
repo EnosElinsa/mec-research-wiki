@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: SAGIN perception offloading, cache-enabled UAV service experience, multi-UAV 5G offloading, proactive eavesdropping, ground-satellite FL
+
+- Audited these five source pages only: [[gao-2024-sagin-perception-offloading]], [[gao-2024-service-experience-cache-uav]], [[guo-2023-mccco-multiuav-5g-offloading]], [[guo-2024-multiuav-proactive-eavesdropping]], and [[han-2024-ground-satellite-fl]]. No content-page edits were required; DOI / venue / year, title / H1 consistency, key grounded numeric claims, related-link sanity, and evergreen wording were already aligned with the corresponding parses.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API was reachable and the current baseline remained 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: duan MOTO, faisal CGAN-RIS-ISAC, fu OTAE batching, fujimoto TD3, gao UAV mobile GT
 
 - Audited these five source pages only: [[duan-2023-moto-smallcell-offloading]], [[faisal-2025-cgan-ris-isac-channel]], [[fu-2025-otae-inference-lae-batching]], [[fujimoto-2018-td3-actor-critic]], and [[gao-2024-d3qn-uav-mec-mobile-gt]]. No content-page edits were required; DOI / venue / year, title / H1 consistency, key grounded numeric claims, related-link sanity, and evergreen wording were all already aligned with the corresponding parses.
