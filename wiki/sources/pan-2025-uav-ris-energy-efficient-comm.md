@@ -28,7 +28,7 @@ related:
   - "[[cmop-evolutionary-uav-mec-lineage]]"
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-08
 ---
 
 # Cooperative UAV-Mounted RISs-Assisted Energy-Efficient Communications

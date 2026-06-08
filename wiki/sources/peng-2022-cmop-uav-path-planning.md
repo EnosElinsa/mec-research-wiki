@@ -15,7 +15,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[peng-2024-energy-time-uav-its]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-08
 ---
 
 # Constrained Multi-Objective Optimization for UAV-Enabled MEC: Offloading Optimization and Path Planning
@@ -71,4 +71,6 @@ It's worth treating this paper as the **canonical reference** for the wiki's evo
 
 ## Raw artifacts
 
-- `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/full.md`
+- Parse: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/full.md`
+- Origin PDF: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/e2cbd4fd-01db-4ad4-a0b5-46084bd1f98c_origin.pdf`
+- Figures: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/images/`
