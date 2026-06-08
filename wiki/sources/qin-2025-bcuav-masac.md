@@ -18,7 +18,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-05-28
-updated: 2026-06-02
+updated: 2026-06-08
 ---
 
 # Cooperative UAV Trajectory Design and Resource Allocation in Blockchain-Enabled Secure Aerial Edge Computing Network
@@ -33,7 +33,7 @@ Authors with North China Electric Power University and Beihang University.
 
 Joint design of (a) UAV trajectories, (b) terminal sensing-data admission, (c) terminal transmission power, and (d) UAV edge resource allocation across compute *and* blockchain workloads — under long-term queue-delay and block-creation-delay constraints. The hard part is that constraints are long-term but decisions are per-time-slot.
 
-Solution stack: **[[lyapunov-optimization|Lyapunov optimization]]** to decouple the long-term constraints into per-slot drift+penalty problems, then split the per-slot problem into three subproblems solved by **CVX** (sensing admission), **[[masac|MASAC (multi-agent SAC)]]** (transmission power + UAV trajectory), and **DOA (Dingo Optimization Algorithm)** (compute / block-resource split). Reports +13.16% data sensing rate and –29.47% queue delay vs benchmarks.
+Solution stack: **[[lyapunov-optimization|Lyapunov optimization]]** to decouple the long-term constraints into per-slot drift+penalty problems, then split the per-slot problem into three subproblems solved by **CVX** (sensing admission), **[[masac|MASAC (multi-agent SAC)]]** (transmission power + UAV trajectory), and **DOA (Dingo Optimization Algorithm)** (compute / block-resource split). Reports more than 13.16% data-sensing-rate improvement and more than 29.47% queue-delay reduction vs benchmark methods.
 
 ## Problem framing
 
