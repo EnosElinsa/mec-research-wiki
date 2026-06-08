@@ -11,7 +11,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[mozaffari-2015-drone-small-cells]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-08
 ---
 
 # Efficient Deployment of Multiple Unmanned Aerial Vehicles for Optimal Wireless Coverage
@@ -59,5 +59,6 @@ Journal companion to [[mozaffari-2015-drone-small-cells]] and a foundational ref
 
 ## Raw artifacts
 
-- `raw/sources/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage/full.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage/full.md`
+- Origin PDF: `raw/sources/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage/b3ffb44c-8fe3-4661-904e-1af48c1094af_origin.pdf`
+- Figures: `raw/sources/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage/images/`

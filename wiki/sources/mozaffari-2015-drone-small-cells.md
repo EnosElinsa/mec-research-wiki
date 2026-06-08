@@ -11,7 +11,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[mozaffari-2016-efficient-multi-uav-coverage]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-08
 ---
 
 # Drone Small Cells in the Clouds: Design, Deployment and Performance Analysis
@@ -59,5 +59,6 @@ Companion/precursor to [[mozaffari-2016-efficient-multi-uav-coverage]], which ex
 
 ## Raw artifacts
 
-- `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/full.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/full.md`
+- Origin PDF: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/b019ad77-4751-4aa5-af30-e76dc961c962_origin.pdf`
+- Figures: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/images/`
