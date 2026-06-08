@@ -20,7 +20,7 @@ related:
   - "[[qin-2025-bcuav-masac]]"
   - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-05-28
-updated: 2026-06-07
+updated: 2026-06-08
 ---
 
 # DRUDM-CFG: A Fairness-Aware Multi-Agent DRL Algorithm for AMEC-Assisted Task Offloading in Post-Disaster Scenarios
@@ -89,4 +89,6 @@ A custom prioritized replay variant that scores transitions by a combination of 
 
 ## Raw artifacts
 
-- `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/full.md`
+- Parse: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/full.md`
+- Origin PDF: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/328a810b-17dd-4c5e-913a-2dbfe1e0ea85_origin.pdf`
+- Figures: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/images/`

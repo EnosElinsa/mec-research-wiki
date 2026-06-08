@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: batch 11 slice C
+
+- Audited these five source pages only: [[pan-2025-uav-ris-energy-efficient-comm]], [[peng-2020-maddpg-uav-vehicular]], [[peng-2022-cmop-uav-path-planning]], [[peng-2024-energy-time-uav-its]], and [[peng-2025-drudm-cfg]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[pan-2025-uav-ris-energy-efficient-comm]] carries the parse-stated 10-GU energy reduction of 13.60% and now has an audit-current `updated` date; [[peng-2022-cmop-uav-path-planning]], [[peng-2024-energy-time-uav-its]], and [[peng-2025-drudm-cfg]] now use explicit Parse / Origin PDF / Figures raw-artifact bullets. [[peng-2020-maddpg-uav-vehicular]] was already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: batch 11 slice B
 
 - Audited these five source pages only: [[mozaffari-2019-drone-antenna-array]], [[mozaffari-2019-uav-wireless-tutorial]], [[nabi-2025-jour-hierarchical-aerial]], [[niazmand-2025-jopa-dnn-pruning-iiot]], and [[ning-2023-madrl-uav-trajectory-differentiated-services]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.

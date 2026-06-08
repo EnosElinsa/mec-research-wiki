@@ -17,7 +17,7 @@ related:
   - "[[huang-2025-cmop-dispersed-computing]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-08
 ---
 
 # Joint Energy and Completion Time Difference Minimization for UAV-Enabled Intelligent Transportation Systems
@@ -76,4 +76,6 @@ This paper is also a **lineage** entry in the Peng/Huang group's **CMOP-evolutio
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach/full.md`
+- Parse: `raw/sources/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach/full.md`
+- Origin PDF: `raw/sources/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach/9aeb297b-5e89-4774-8eb4-cf560799765b_origin.pdf`
+- Figures: `raw/sources/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach/images/`
