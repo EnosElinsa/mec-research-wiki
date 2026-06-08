@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: HATRPO-UCB collaborative beamforming, SAGIN spherical SG connectivity
+
+- Audited these two source pages only: [[liu-2024-hatrpo-ucb-cb]] and [[liu-2024-sagin-spherical-sg-connectivity]]. Both pages were already grounded in their linked parses for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording, so no content-page edits were required.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API was reachable and reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: cooperative UAV power IoT, wireless-powered cooperative MEC, maritime UAV virtualization, MISO UAV MEC, SAGECN offloading
 
 - Audited these five source pages only: [[liu-2020-cooperative-uav-mec-power-iot]], [[liu-2020-wpt-cooperative-uav-mec]], [[liu-2022-maritime-uav-mec-virtualization]], [[liu-2022-miso-uav-mec-trajectory]], and [[liu-2023-sagecn-online-offloading]]. The pages were already grounded in their linked parses for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording; I made only small wording cleanups to remove process narration from the published prose.
