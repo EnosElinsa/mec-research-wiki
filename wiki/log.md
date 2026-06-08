@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-08 - Audit query pages: rich-media shape and CSI-robustness anchors
+
+- Audited the five query pages in this slice: [[end-to-end-drl-feasibility-large-scale-mec]], [[query-does-en-convntm-generalize-beyond-uav-mec]], [[query-real-world-validation-of-jppo-en-convntm]], [[query-video-vs-cooperative-perception-offloading-shape]], and [[query-when-does-dro-beat-drl-for-csi-uncertainty]]. The first three were already evergreen and required no content-page edits; the last two had process-narration in their closing sentences and were rewritten to evergreen corpus-facing wording.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `python tools/wiki/frontmatter_audit.py --type query` reported 5 pages checked and 0 errors; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); LLM Wiki API health was reachable and graph stats were 649 nodes / 6005 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded query-page audit.
+
 ## 2026-06-08 - Audit methodology page: Lyapunov-guided DRL
 
 - Audited [[lyapunov-guided-drl]] against the raw parses for [[qin-2025-bcuav-masac]], [[zhu-2025-lycnn-drl-wpt-mec]], [[zhou-2024-jdl-abs-postdisaster-rescue]], [[gao-2024-sagin-perception-offloading]], [[qin-2025-matd3-noma-queue-sagin]], and [[you-2025-uncertain-maritime-hasac]]. The page is parse-grounded and evergreen as written, so no content-page edits were required.
