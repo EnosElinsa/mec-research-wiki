@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: air-ground VEC offloading, ground-space EMODRL, UAV swarm AVAA, IRS secure WPMEC, UAV swarm clustering
+
+- Audited these five source pages only: [[li-2024-airground-vec-offloading]], [[li-2024-emodrl-ground-space-cb]], [[li-2024-emssa-uav-swarm-vaa]], [[li-2024-irs-secure-wpmec]], and [[li-2024-rldc-uav-swarm-clustering]]. No content-page edits were required; each page was already grounded in its linked parse for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper; `python tools/wiki/process_refs.py` reported 0 hits; `python tools/wiki/linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`); `python tools/wiki/frontmatter_audit.py --type source` reported 257 pages checked and 0 errors.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API was reachable and reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: LEO handover, maritime SAR HVMAPPO, UAV MEC ADMM, maritime coverage, marine IoT jamming
 
 - Audited these five source pages only: [[lee-2024-dho-leo-handover]], [[lei-2024-hvmappo-maritime-sar]], [[li-2020-energy-efficient-uav-mec-admm]], [[li-2020-maritime-uav-satellite-coverage]], and [[li-2023-secure-marine-iot-jamming]]. No content-page edits were required; each page was already grounded in its linked parse for DOI / venue / year, title / H1 consistency, key numeric claims, related-link sanity, and evergreen wording.
