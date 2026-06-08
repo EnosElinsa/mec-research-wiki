@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-08 - Audit source pages: batch 11 slice B
+
+- Audited these five source pages only: [[mozaffari-2019-drone-antenna-array]], [[mozaffari-2019-uav-wireless-tutorial]], [[nabi-2025-jour-hierarchical-aerial]], [[niazmand-2025-jopa-dnn-pruning-iiot]], and [[ning-2023-madrl-uav-trajectory-differentiated-services]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[nabi-2025-jour-hierarchical-aerial]] now records the parse-stated multi-HAP/satellite future-work direction and carries the standard original-PDF / images raw-artifact note; [[niazmand-2025-jopa-dnn-pruning-iiot]] now replaces a stale read-range caveat with the parse-stated dynamic radio-resource-scheduling future-work direction. [[mozaffari-2019-drone-antenna-array]], [[mozaffari-2019-uav-wireless-tutorial]], and [[ning-2023-madrl-uav-trajectory-differentiated-services]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-08 - Audit source pages: ADM DT migration and Mozaffari UAV placement foundations
 
 - Audited these five source pages only: [[mou-2025-adm-dt-migration]], [[mozaffari-2015-drone-small-cells]], [[mozaffari-2016-efficient-multi-uav-coverage]], [[mozaffari-2016-uav-underlaid-d2d]], and [[mozaffari-2017-uav-iot-energy-efficient]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
