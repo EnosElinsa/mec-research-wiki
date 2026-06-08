@@ -1,5 +1,11 @@
 # Research Log
 
+## 2026-06-08 - Audit methodology page: Lyapunov-guided DRL
+
+- Audited [[lyapunov-guided-drl]] against the raw parses for [[qin-2025-bcuav-masac]], [[zhu-2025-lycnn-drl-wpt-mec]], [[zhou-2024-jdl-abs-postdisaster-rescue]], [[gao-2024-sagin-perception-offloading]], [[qin-2025-matd3-noma-queue-sagin]], and [[you-2025-uncertain-maritime-hasac]]. The page is parse-grounded and evergreen as written, so no content-page edits were required.
+- Verification scope: `curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers; `frontmatter_audit.py --type methodology` reported 5 pages checked, 0 errors; `process_refs.py` reported 0 hits; `linkcheck.py --orphans` reported zero dangling links and 5 orphans (`MinerU_markdown_202605072001035_dfcfcb28`, `MinerU_markdown_202605131927481_3b25f7d3`, `README`, `full`, `schema`). LLM Wiki API graph check (`projects/current/graph?limit=5000`) reported 649 nodes and 6005 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded one-page audit.
+
 ## 2026-06-07 - Audit methodology page: DRL simulation with POMDP formulation
 
 - Audited [[drl-simulation-with-pomdp-formulation]] against the raw parse for [[liu-2026-jppo-en-convntm]]. The page's POMDP framing, 3-channel observation, reward shaping, training/evaluation procedure, and hardware line are parse-grounded; the only correction was to remove process-narration from the lead sentence and make it evergreen.
