@@ -48,12 +48,12 @@ Remote power-IoT areas lack computation services; UAV-enabled MEC can supply the
 
 ## Key findings
 
-- The proposed centralized and distributed DRL schemes achieve **better performance than non-cooperative UAV edge computing** methods (stated qualitatively; the parse's figures report service drop rate vs UAV computation capability).
+- The proposed centralized and distributed DRL schemes achieve **better performance than non-cooperative UAV edge computing** methods (stated qualitatively; the figures report service drop rate vs UAV computation capability).
 - Allowing UAVs to assist neighboring small-cells improves utility relative to isolated per-UAV operation.
 
 ## Limitations / future work
 
-Simulation-only; the parse does not enumerate explicit future work beyond the centralized/distributed comparison. Focused on the power-IoT setting with semi-Markov demand/channel dynamics. DOI date of publication 17 Aug 2020 / date of current version 22 Oct 2020 → year 2020.
+Simulation-only; explicit future work is not stated beyond the centralized/distributed comparison. Focused on the power-IoT setting with semi-Markov demand/channel dynamics. DOI date of publication 17 Aug 2020 / date of current version 22 Oct 2020 → year 2020.
 
 ## Relation to the corpus
 
