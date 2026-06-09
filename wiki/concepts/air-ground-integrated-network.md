@@ -6,8 +6,9 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[leo-satellite-edge-computing]]"
   - "[[qin-2025-bcuav-masac]]"
+  - "[[mao-2025-bcsa-frl]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Air-Ground Integrated Network (AGIN)
