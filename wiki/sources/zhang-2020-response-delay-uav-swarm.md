@@ -14,8 +14,9 @@ related:
   - "[[post-disaster-mec]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
+  - "[[zhu-han]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Response Delay Optimization in Mobile Edge Computing Enabled UAV Swarm
@@ -55,7 +56,7 @@ The parse's conclusion does not enumerate explicit future-work targets → `not 
 
 ## Relation to the corpus
 
-A **hardware-validated** (real DJI UAVs + 5G NR mmWave testbed) UAV-swarm MEC entry, joining the small set of non-simulation-only sources ([[sun-2024-asap-uav-swarm]], [[shao-2024-drl-antijamming-mec]], [[qu-ecoei-uav-swarm]]). Its analytical backbone — [[stochastic-geometry-network-analysis]] + [[queueing-theory]] for response delay — is distinctive in the UAV-swarm track and contrasts with the DRL/game-theoretic swarm sources; it grounds the new [[queueing-theory]] concept. Shares senior co-author Zhu Han with the NUAA aerial/maritime cluster. Reinforces [[multi-uav-assisted-mec]] and the disaster-rescue framing of [[post-disaster-mec]].
+A **hardware-validated** (real DJI UAVs + 5G NR mmWave testbed) UAV-swarm MEC entry, joining the small set of non-simulation-only sources ([[sun-2024-asap-uav-swarm]], [[shao-2024-drl-antijamming-mec]], [[qu-ecoei-uav-swarm]]). Its analytical backbone — [[stochastic-geometry-network-analysis]] + [[queueing-theory]] for response delay — is distinctive in the UAV-swarm track and contrasts with the DRL/game-theoretic swarm sources; it grounds the new [[queueing-theory]] concept. Shares senior co-author [[zhu-han|Zhu Han]] with the NUAA aerial/maritime cluster. Reinforces [[multi-uav-assisted-mec]] and the disaster-rescue framing of [[post-disaster-mec]].
 
 ## Raw artifacts
 
