@@ -21,7 +21,7 @@ related:
   - "[[zhang-2024-coma-satellite-offloading]]"
   - "[[you-2017-meco-resource-allocation]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-09
 ---
 
 # Mobility-Aware Computation Offloading in Satellite Edge Computing Networks
@@ -59,7 +59,7 @@ LEO satellites give low-latency edge service but have limited energy/compute/sto
 
 ## Limitations / future work
 
-The evaluation is experimental/simulation-based, and several modeling simplifications are made for tractability (constant L-L and G-L rates, negligible user mobility, neglected result-feedback transmission latency, a single GEO satellite as cloud). The paper contrasts ADMM favorably against RL (longer training, poor large-scale scaling) and game theory (rising complexity, slow Nash-equilibrium attainment), positioning the distributed convex approach as more scalable. Explicit future-work statements are `not in parse`.
+The evaluation is experimental/simulation-based, and several modeling simplifications are made for tractability (constant L-L and G-L rates, negligible user mobility, neglected result-feedback transmission latency, a single GEO satellite as cloud). The paper contrasts ADMM favorably against RL (longer training, poor large-scale scaling) and game theory (rising complexity, slow Nash-equilibrium attainment), positioning the distributed convex approach as more scalable. Future work is to include more specific factors such as inter-task dependencies, resource-allocation optimization, and collaboration among GEO satellites, and to investigate the latency impact of distributed algorithms.
 
 ## Relation to the corpus
 

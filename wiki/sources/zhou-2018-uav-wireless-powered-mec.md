@@ -17,7 +17,7 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Computation Rate Maximization in UAV-Enabled Wireless-Powered Mobile-Edge Computing Systems
@@ -53,7 +53,7 @@ Low-power IoT devices have limited compute and battery. MEC plus WPT can extend 
 
 ## Limitations / future work
 
-The parse does not enumerate explicit future work; the study is single-UAV and simulation-based.
+The study is single-UAV and simulation-based. The authors state that UAV flight time limits computation performance and identify multiple-antenna techniques as a future direction.
 
 ## Relation to the corpus
 
