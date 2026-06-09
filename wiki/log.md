@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 12 slice D
+
+- Audited these five source pages only: [[spampinato-2025-uabs-v2x-3dqn-ilp]], [[sun-2024-imssa-uav-secure-cb]], [[sun-2024-mfris-semantic-antijamming]], [[sun-2024-mvtora-postdisaster-vfc]], and [[sun-2024-ues-video-analytics-disaster]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: all five pages now have audit-current `updated` dates and encoding-clean punctuation in the audited prose. [[spampinato-2025-uabs-v2x-3dqn-ilp]], [[sun-2024-mvtora-postdisaster-vfc]], and [[sun-2024-ues-video-analytics-disaster]] now include explicit original-PDF filenames in Raw artifacts. [[sun-2024-mvtora-postdisaster-vfc]] now records parse-grounded received/publication/current-version dates, the conference precursor DOI note, and the discussion-section limitation about three-layer hardware overhead / latency-weighted energy tradeoff. [[sun-2024-imssa-uav-secure-cb]] now clarifies that the Raspberry-Pi result is an optimizer implementation rather than a full UAV/UVAA deployment.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 12 slice C
 
 - Audited these five source pages only: [[su-2024-sensing-aided-isac-pls]], [[sun-2021-temcmop-uav-cb]], [[sun-2023-bargain-match-vec]], [[sun-2024-active-passive-ris-receiver]], and [[sun-2024-asap-uav-swarm]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.

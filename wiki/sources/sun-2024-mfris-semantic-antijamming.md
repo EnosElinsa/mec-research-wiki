@@ -17,14 +17,14 @@ related:
   - "[[mixed-integer-nonlinear-programming]]"
   - "[[shao-2024-drl-antijamming-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Multi-Functional RIS-Assisted Semantic Anti-Jamming Communication and Computing in Integrated Aerial-Ground Networks
 
 ## Citation
 
-Sun, Y., Lin, Z., An, K., Li, D., Li, C., Zhu, Y., Ng, D. W. K., Al-Dhahir, N., & Wang, J. (2024). *Multi-Functional RIS-Assisted Semantic Anti-Jamming Communication and Computing in Integrated Aerial-Ground Networks*. **IEEE Journal on Selected Areas in Communications**. DOI: 10.1109/JSAC.2024.3459028. (Received 15 February 2024; date of publication 12 September 2024; date of current version 22 November 2024 → year 2024. An earlier version was presented in part at WCSP, Hefei, China, 2024.)
+Sun, Y., Lin, Z., An, K., Li, D., Li, C., Zhu, Y., Ng, D. W. K., Al-Dhahir, N., & Wang, J. (2024). *Multi-Functional RIS-Assisted Semantic Anti-Jamming Communication and Computing in Integrated Aerial-Ground Networks*. **IEEE Journal on Selected Areas in Communications**. DOI: 10.1109/JSAC.2024.3459028. (Received 15 February 2024; date of publication 12 September 2024; date of current version 22 November 2024, so the wiki year is 2024. An earlier version was presented in part at WCSP, Hefei, China, 2024.)
 
 ## TL;DR
 
@@ -53,7 +53,7 @@ MEC-IAGN for 6G faces three bottlenecks: computation-intensive tasks, an uncontr
 
 ## Limitations / future work
 
-No explicit quantitative future-work targets are grounded in the captured parse → `not in parse`.
+No explicit quantitative future-work targets are grounded in the captured parse: `not in parse`.
 
 ## Relation to the corpus
 
