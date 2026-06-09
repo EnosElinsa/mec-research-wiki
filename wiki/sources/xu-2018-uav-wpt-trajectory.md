@@ -20,7 +20,7 @@ related:
   - "[[liu-2020-wpt-cooperative-uav-mec]]"
   - "[[yong-zeng]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # UAV-Enabled Wireless Power Transfer: Trajectory Design and Energy Optimization
@@ -71,5 +71,6 @@ A **foundational UAV-WPT trajectory-optimization** anchor, and the WPT-only prec
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/full.md`
-- Original PDF and extracted figures in the same folder's `images/`.
+- Parse: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/full.md`
+- Origin PDF: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/7aaece4b-2696-4b7f-b602-3ee5873bc8b3_origin.pdf`
+- Figures: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/images/`
