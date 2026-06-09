@@ -2,7 +2,7 @@
 type: source
 title: "Proximal Policy Optimization Algorithms"
 authors: ["John Schulman", "Filip Wolski", "Prafulla Dhariwal", "Alec Radford", "Oleg Klimov"]
-year: ""
+year: 2017
 url: ""
 venue: ""
 tags: [source, drl, policy-gradient, on-policy, ppo, continuous-control, foundational-method]
@@ -23,7 +23,7 @@ updated: 2026-06-09
 
 ## Citation
 
-Schulman, J., Wolski, F., Dhariwal, P., Radford, A., & Klimov, O. *Proximal Policy Optimization Algorithms*. **OpenAI**. DOI: not in parse; venue: not in parse; year: not in parse.
+Schulman, J., Wolski, F., Dhariwal, P., Radford, A., & Klimov, O. (2017). *Proximal Policy Optimization Algorithms*. **OpenAI**. DOI: not in parse; venue: not in parse. The raw sidecar parse records `arXiv:1707.06347v2 [cs.LG] 28 Aug 2017`.
 
 ## TL;DR
 
