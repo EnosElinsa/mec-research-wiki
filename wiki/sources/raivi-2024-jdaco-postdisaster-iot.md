@@ -18,7 +18,7 @@ related:
   - "[[zhou-2024-jdl-abs-postdisaster-rescue]]"
   - "[[sun-2024-mvtora-postdisaster-vfc]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # JDACO: Joint Data Aggregation and Computation Offloading in UAV-Enabled Internet of Things for Post-Disaster Scenarios
@@ -57,7 +57,7 @@ The joint optimization is framed as a **Markov game** and solved with a multi-ag
 
 ## Limitations / future work
 
-The captured parse does not enumerate explicit future-work targets → `not in parse`. LT-UAVs are single-core (one task at a time), node locations are assumed known beforehand, and the HT-UAV hovers at a fixed altitude.
+Future work will consider mobile ground nodes, add object-detection ability for individual UAVs, and extend the model to heterogeneous IoT nodes. LT-UAVs are single-core (one task at a time), node locations are assumed known beforehand, and the HT-UAV hovers at a fixed altitude.
 
 ## Relation to the corpus
 

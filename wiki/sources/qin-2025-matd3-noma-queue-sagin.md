@@ -17,7 +17,7 @@ related:
   - "[[fu-2025-otae-inference-lae-batching]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-06-09
 ---
 
 # Learning-Based NOMA-Enabled Queue-Aware Task Offloading and AAV 3D Trajectory Planning for SAGIN
@@ -46,7 +46,9 @@ SAGIN serves users lacking ground base stations: AAVs give massive access, satel
 
 ## Key findings
 
-- Simulation outcomes show the advantages of the method over baselines (qualitative; specific cost curves in the paper).
+- Against MADDPG, MATD3-F, MATD3-P, and DDPG, the proposed method lowers total system cost by **18.76%, 29.40%, 35.38%, and 52.14%**, respectively, in the Fig. 4 setting.
+- The same benchmark order shows average queue-backlog reductions of **4.36%, 12.49%, 15.95%, and 30.38%** in Fig. 7.
+- When the AAV computation capacity rises from 3 GHz to 8 GHz at $R_{LU}(t)=15$ Mbps, total system cost drops by **17.51%** in Fig. 9.
 
 ## Limitations / future work
 
