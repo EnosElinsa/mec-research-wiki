@@ -1,5 +1,12 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 16 slice C
+
+- Audited these five source pages only: [[zhang-2024-coma-satellite-offloading]], [[zhang-2024-dlrl-maritime-usv]], [[zhang-2024-gdmtd3-aerial-secure-cb]], [[zhang-2024-mhspo-satellite-peer-offloading]], and [[zhang-2024-qos-vne-sagoin]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: none. All five audited source pages were already grounded in their linked raw parses and needed no content-page edits.
+- Verification scope: the LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6008 edges. The required validation gates were run before commit.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 16 slice B
 
 - Audited these five source pages only: [[zhang-2013-energy-optimal-mcc-stochastic]], [[zhang-2019-stochastic-offloading-uav-mec]], [[zhang-2019-uav-iot-comp-comm]], [[zhang-2020-response-delay-uav-swarm]], and [[zhang-2023-three-tier-satellite-offloading]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
