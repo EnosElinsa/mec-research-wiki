@@ -4,7 +4,7 @@ title: "UAV-Assisted Emergency Networks in Disasters"
 authors: ["Nan Zhao", "Weidang Lu", "Min Sheng", "Yunfei Chen", "Jie Tang", "F. Richard Yu", "Kai-Kit Wong"]
 year: 2019
 url: "https://doi.org/10.1109/MWC.2018.1800160"
-venue: "IEEE Wireless Communications"
+venue: "not in parse"
 tags: [source, post-disaster-mec, uav-communications, uav-mobile-relaying, emergency-network, device-to-device, trajectory-design]
 related:
   - "[[post-disaster-mec]]"
@@ -18,14 +18,14 @@ related:
   - "[[raivi-2024-jdaco-postdisaster-iot]]"
   - "[[lyu-2023-noma-marine-emergency-offloading]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # UAV-Assisted Emergency Networks in Disasters
 
 ## Citation
 
-Zhao, N., Lu, W., Sheng, M., Chen, Y., Tang, J., Yu, F. R., & Wong, K.-K. (2019). *UAV-Assisted Emergency Networks in Disasters*. **IEEE Wireless Communications**, 26(1), 45–51. DOI: 10.1109/MWC.2018.1800160. (The parse carries the DOI but no explicit publication date/volume → year, venue, volume/issue, and pages **web-confirmed** via dblp: IEEE Wireless Communications, vol. 26, no. 1, pp. 45–51, 2019, and flagged as such.)
+Zhao, N., Lu, W., Sheng, M., Chen, Y., Tang, J., Yu, F. R., & Wong, K.-K. (2019). *UAV-Assisted Emergency Networks in Disasters*. Venue, volume/issue, and pages: `not in parse`. DOI: 10.1109/MWC.2018.1800160.
 
 ## TL;DR
 

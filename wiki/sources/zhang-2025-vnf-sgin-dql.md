@@ -17,7 +17,7 @@ related:
   - "[[chen-2024-thoas-traffic-aware-sagin]]"
   - "[[niazmand-2025-jopa-dnn-pruning-iiot]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Learning-Assisted Dynamic VNF Selection and Chaining for 6G Satellite-Ground Integrated Networks
@@ -51,7 +51,7 @@ A **deep Q-learning (DQL)** framework for **dynamic VNF selection and chaining (
 
 ## Limitations / future work
 
-Simulation-based. The parse's conclusion section was not reached in the read range, so explicit further-work items are `not in parse`.
+Simulation-based. Future work: investigate how earth-station deployment density and location affect the VNF selection and chaining problem.
 
 ## Relation to the corpus
 
