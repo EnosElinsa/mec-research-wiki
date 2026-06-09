@@ -21,7 +21,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[bao-2025-ddpg-video-offloading]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-09
 authors:
   - Dongdong Ye
   - Shuting Cai
@@ -36,6 +36,10 @@ venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
 ---
 
 # Optimizing AIGC Services by Prompt Engineering and Edge Computing: A Generative Diffusion Model-Based Contract Theory Approach
+
+## Citation
+
+Ye, D., Cai, S., Du, H., Kang, J., Liu, Y., Yu, R., & Niyato, D. (2025). *Optimizing AIGC Services by Prompt Engineering and Edge Computing: A Generative Diffusion Model-Based Contract Theory Approach*. **IEEE Transactions on Vehicular Technology**. DOI: 10.1109/TVT.2024.3463420. (Received 17 May 2024; revised 4 September 2024; accepted 8 September 2024; date of publication 8 October 2024; date of current version 16 January 2025.)
 
 ## TL;DR
 To deliver text-to-image AIGC from an edge-deployed pretrained foundation model, an [[aigc-service-provider]] (ASP) must jointly tune four resource dimensions — level of [[prompt-engineering|prompt optimization]], number of diffusion denoising steps, CPU cycle frequency, and network transmission rate — while users are self-interested and their per-quality "gain" is private (information asymmetry). The paper formulates a **two-stage** [[contract-theory]] problem (a quality-based contract, then a latency-based contract per chosen quality item) and, because each non-convex contract must be re-solved repeatedly, uses a [[generative-diffusion-model]] as the solver ([[diffusion-model-as-optimizer]]) to generate optimal contract items directly. With Stable Diffusion XL + NIMA, the GDM scheme beats a DRL-based contract generator on test reward, and prompt optimization raises generation quality (+8% / +2% across types) and expected latency reduction (+22% for one type).
