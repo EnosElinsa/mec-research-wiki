@@ -24,7 +24,7 @@ related:
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-09
 authors: [Fuhong Song, Qixun Yang, Mingsen Deng, Huanlai Xing, Yanping Liu, Xi Yu, Kaiju Li, Lexi Xu]
 year: 2024
 url: "https://doi.org/10.1109/TMC.2024.3394568"
@@ -79,3 +79,4 @@ This is an aerial-ground / [[hierarchical-aerial-mec]] work that, unlike most of
 
 ## Raw artifacts
 - `raw/sources/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach/full.md`
+- Original PDF (`59a5c499-4de5-4693-94d8-c8bb910236f5_origin.pdf`) and extracted figures (`images/`) in the same folder.

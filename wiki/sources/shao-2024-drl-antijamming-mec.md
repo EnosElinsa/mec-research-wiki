@@ -21,7 +21,7 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-09
 authors: [Ziling Shao, Helin Yang, Liang Xiao, Wei Su, Yifan Chen, Zehui Xiong]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3432491
@@ -66,3 +66,4 @@ This is the corpus's anchor for [[anti-jamming-mec]] resource management, comple
 
 ## Raw artifacts
 - `raw/sources/Deep_Reinforcement_Learning-Based_Resource_Management_for_UAV-Assisted_Mobile_Edge_Computing_Against_Jamming/full.md`
+- Original PDF (`61d1a406-15d3-42b7-9873-b406053311ee_origin.pdf`) and extracted figures (`images/`) in the same folder.
