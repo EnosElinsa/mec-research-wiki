@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 16 slice B
+
+- Audited these five source pages only: [[zhang-2013-energy-optimal-mcc-stochastic]], [[zhang-2019-stochastic-offloading-uav-mec]], [[zhang-2019-uav-iot-comp-comm]], [[zhang-2020-response-delay-uav-swarm]], and [[zhang-2023-three-tier-satellite-offloading]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[zhang-2020-response-delay-uav-swarm]] now links the existing [[zhu-han]] entity in `related:` and in its relation-to-corpus note. [[zhang-2013-energy-optimal-mcc-stochastic]], [[zhang-2019-stochastic-offloading-uav-mec]], [[zhang-2019-uav-iot-comp-comm]], and [[zhang-2023-three-tier-satellite-offloading]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6008 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 16 slice A
 
 - Audited these five source pages only: [[zeng-2024-usv-fleet-collaborative-offloading]], [[zhai-2023-fedleo-decentralized-fl]], [[zhan-2011-uav-relay-heading-optimization]], [[zhan-2018-uav-wsn-data-collection]], and [[zhan-2020-completion-time-energy-uav-mec]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
