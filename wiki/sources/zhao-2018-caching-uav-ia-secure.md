@@ -20,7 +20,7 @@ related:
   - "[[chen-2024-dro-video-caching]]"
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-09
 ---
 
 # Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment
@@ -57,7 +57,7 @@ A **caching-UAV-assisted secure transmission** scheme for **hyper-dense small-ce
 
 ## Limitations / future work
 
-A physical-layer / interference-management study (this is a UAV-communications + caching + PLS paper, not an MEC offloading paper). IA is acknowledged to degrade at low SNR and under imperfect CSI; the analysis assumes a single active user per cell band and rotary-wing UAVs that hover (static) while transmitting. Results are simulation-based.
+A physical-layer / interference-management study (this is a UAV-communications + caching + PLS paper, not an MEC offloading paper). IA is acknowledged to degrade at low SNR and under imperfect CSI; the analysis assumes a single active user per cell band and rotary-wing UAVs that hover (static) while transmitting. Results are simulation-based. Future work: practical CSI estimation and feedback from jamming SBSs to mobile users.
 
 ## Relation to the corpus
 

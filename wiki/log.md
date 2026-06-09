@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 17 slice A
+
+- Audited these five source pages only: [[zhang-2025-three-tier-maritime-offloading]], [[zhang-2025-vnf-sgin-dql]], [[zhao-2018-caching-uav-ia-secure]], [[zhao-2019-uav-emergency-disasters]], and [[zhao-2022-matd3-multiuav-ec-offloading]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[zhang-2025-vnf-sgin-dql]] now records the parse-stated earth-station deployment future-work direction. [[zhao-2018-caching-uav-ia-secure]] now records the parse-stated CSI estimation and feedback future-work direction. [[zhao-2019-uav-emergency-disasters]] now uses `not in parse` for venue, volume/issue, and pages instead of retaining externally confirmed bibliographic details not present in the raw parse. [[zhang-2025-three-tier-maritime-offloading]] and [[zhao-2022-matd3-multiuav-ec-offloading]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6008 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 16 slice D
 
 - Audited these five source pages only: [[zhang-2024-uav-task-offloading-ddpg]], [[zhang-2025-gan-td3-isac-active-ris]], [[zhang-2025-gsc-diffusion-semcom]], [[zhang-2025-mcma-task-migration]], and [[zhang-2025-ssac-mgi-heterogeneous-uav]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
