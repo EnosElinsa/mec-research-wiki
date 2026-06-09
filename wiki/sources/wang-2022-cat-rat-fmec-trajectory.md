@@ -17,7 +17,7 @@ related:
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Deep Reinforcement Learning Based Dynamic Trajectory Control for UAV-Assisted Mobile Edge Computing
@@ -48,7 +48,7 @@ UEs have limited compute/battery; MEC helps, and **flying MEC (F-MEC)** carries 
 
 ## Key findings
 
-- **RAT ≈ CAT** in performance, and both beat traditional baseline algorithms (parse abstract / Section 7).
+- RAT performs similarly to CAT in the abstract-level summary, and Section 7 reports RAT as the best-performing scheme across the simulated comparisons; both beat traditional baseline algorithms.
 - Once trained, **RAT generalizes to arbitrary UAV take-off points** and returns trajectories with simple algebraic calculations instead of re-solving the optimization — useful for emergency scenarios (battlefields, earthquakes, large fires) where fast decisions matter.
 - RAT with PER is **less sensitive to hyperparameters** (minibatch size, replay-buffer size) than reinforcement learning without PER.
 
