@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit concept pages: batch 18 slice A
+
+- Audited these five concept pages only: [[action-space-explosion-in-multi-uav-mec]], [[active-ris]], [[adaptive-entropy-priority-replay]], [[adaptive-inter-layer-data-offloading]], and [[adaptive-intermediate-data-compression]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence.
+- Content-page fixes: none. All five audited concept pages were already grounded and consistent. Spot-checks confirmed [[active-ris]] against [[sun-2024-active-passive-ris-receiver]], [[adaptive-entropy-priority-replay]] against [[peng-2025-drudm-cfg]], [[adaptive-inter-layer-data-offloading]] against [[han-2024-sagin-fl-handover]], and [[adaptive-intermediate-data-compression]] against [[sun-2024-asap-uav-swarm]].
+- Validation results: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. `python tools/wiki/frontmatter_audit.py --type concept` was supported and reported 272 concept pages checked with 0 errors. `python tools/wiki/process_refs.py`, `python tools/wiki/linkcheck.py --orphans`, and `python tools/wiki/index_audit.py` were clean before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API was reachable and reported 649 nodes and 6008 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded concept-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 17 slice D
 
 - Audited these two source pages only: [[zhu-2024-zdrl-uav-tracking]] and [[zhu-2025-lycnn-drl-wpt-mec]]. Verified title / authors / year / venue / DOI, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
