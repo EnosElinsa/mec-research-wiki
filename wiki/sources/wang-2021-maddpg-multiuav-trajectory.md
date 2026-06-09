@@ -16,7 +16,7 @@ related:
   - "[[wang-2022-cat-rat-fmec-trajectory]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Multi-Agent Deep Reinforcement Learning-Based Trajectory Planning for Multi-UAV Assisted Mobile Edge Computing
@@ -50,7 +50,7 @@ UAVs as flexible aerial servers can establish LoS links and adapt position to dy
 
 ## Limitations / future work
 
-No explicit quantitative future-work targets are grounded in the captured parse → `not in parse`.
+The parse leaves constrained UAV computing resources outside the low-complexity offloading step and notes that a matching algorithm could extend the model to that more practical setting. No explicit quantitative future-work targets are grounded in the captured parse.
 
 ## Relation to the corpus
 

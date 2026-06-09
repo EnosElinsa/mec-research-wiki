@@ -4,7 +4,7 @@ title: "Deep Reinforcement Learning with Double Q-learning"
 authors: ["Hado van Hasselt", "Arthur Guez", "David Silver"]
 year: 2016
 url: ""
-venue: "Thirtieth AAAI Conference on Artificial Intelligence (AAAI)"
+venue: "not in parse"
 tags: [source, drl, q-learning, value-based, double-dqn, overestimation-bias, foundational-method]
 related:
   - "[[ddqn]]"
@@ -13,14 +13,14 @@ related:
   - "[[fujimoto-2018-td3-actor-critic]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-09
 ---
 
 # Deep Reinforcement Learning with Double Q-learning
 
 ## Citation
 
-van Hasselt, H., Guez, A., & Silver, D. (2016). *Deep Reinforcement Learning with Double Q-learning*. **Google DeepMind**. DOI: not in parse; venue: not in parse. (Published in the Proceedings of the Thirtieth AAAI Conference on Artificial Intelligence, 2016; arXiv:1509.06461 — web-confirmed, since the parse carries no venue/DOI/date line.)
+van Hasselt, H., Guez, A., & Silver, D. (2016). *Deep Reinforcement Learning with Double Q-learning*. DOI: not in parse; venue: not in parse. The parse carries no DOI, venue, or formal date line.
 
 ## TL;DR
 
