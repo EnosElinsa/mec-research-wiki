@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit concept pages: batch 18 slice C
+
+- Audited these five concept pages only: [[alternating-optimization-sdr-sca]], [[ant-colony-optimization]], [[ant-lion-optimizer]], [[anti-jamming-mec]], and [[aoi-energy-tradeoff]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence.
+- Content-page fixes: none. All five audited concept pages were already grounded and consistent.
+- Validation results: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. `python tools/wiki/process_refs.py`, `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py --type concept`, and `git diff --check` were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API for `current` was reachable and reported 649 nodes and 6008 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded concept-page audit.
+
 ## 2026-06-09 - Audit concept pages: batch 18 slice B
 
 - Audited these five concept pages only: [[age-of-information]], [[aigc-service-provider]], [[air-ground-integrated-network]], [[air-to-ground-channel-model]], and [[alternating-direction-method-of-multipliers]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence.
