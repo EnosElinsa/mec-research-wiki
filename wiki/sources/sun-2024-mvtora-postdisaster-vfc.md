@@ -16,18 +16,18 @@ related:
   - "[[sun-2023-bargain-match-vec]]"
   - "[[kang-2023-mappo-hierarchical-aerial]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-09
 ---
 
 # Joint Task Offloading and Resource Allocation in Aerial-Terrestrial UAV Networks With Edge and Fog Computing for Post-Disaster Rescue
 
 ## Citation
 
-Sun, G., He, L., Sun, Z., Wu, Q., Liang, S., Li, J., Niyato, D., & Leung, V. C. M. (2024). *Joint Task Offloading and Resource Allocation in Aerial-Terrestrial UAV Networks With Edge and Fog Computing for Post-Disaster Rescue*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2024.3350886.
+Sun, G., He, L., Sun, Z., Wu, Q., Liang, S., Li, J., Niyato, D., & Leung, V. C. M. (2024). *Joint Task Offloading and Resource Allocation in Aerial-Terrestrial UAV Networks With Edge and Fog Computing for Post-Disaster Rescue*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2024.3350886. (Manuscript received 5 May 2023; accepted 2 January 2024; date of publication 8 January 2024; date of current version 6 August 2024. A small part appeared at IEEE MSN 2022, DOI 10.1109/MSN57253.2022.00030.)
 
 ## TL;DR
 
-A **three-layer post-disaster rescue** computing architecture combining MEC and **vehicle fog computing (VFC)**: a vehicle fog layer, a UAV client layer, and a UAV edge layer. The joint task-offloading + resource-allocation problem (**JTRAOP**) maximizes time-average system utility. Since it's NP-hard, the **MVTORA** approach splits it into a game-theoretic algorithm for offloading decisions, a convex-optimization algorithm for MEC resource allocation, and an evolutionary-computation-based hybrid algorithm for VFC resource allocation.
+A **three-layer post-disaster rescue** computing architecture combining MEC and **vehicle fog computing (VFC)**: a vehicle fog layer, a UAV client layer, and a UAV edge layer. The joint task-offloading + resource-allocation problem (**JTRAOP**) maximizes time-average system utility. Since it is NP-hard, the **MVTORA** approach splits it into a game-theoretic algorithm for offloading decisions, a convex-optimization algorithm for MEC resource allocation, and an evolutionary-computation-based hybrid algorithm for VFC resource allocation.
 
 ## Problem framing
 
@@ -51,7 +51,7 @@ UAVs are valuable for fast-response disaster rescue but have limited battery/com
 
 ## Limitations / future work
 
-Future work: extend to include UAV trajectory optimization.
+Future work: extend to include UAV trajectory optimization. The discussion also notes additional hardware overhead from the three-layer structure and that energy consumption is not always optimal against some baselines because the objective weights latency more heavily for disaster rescue.
 
 ## Relation to the corpus
 
@@ -60,4 +60,4 @@ A **post-disaster MEC** entry alongside [[peng-2025-drudm-cfg]] (fairness-aware 
 ## Raw artifacts
 
 - `raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/full.md`
-- Original PDF and extracted figures in the same folder.
+- Original PDF (`c83b18ed-ed3b-4ee8-98d0-5f04b355c25e_origin.pdf`) and extracted figures (`images/`) in the same folder.
