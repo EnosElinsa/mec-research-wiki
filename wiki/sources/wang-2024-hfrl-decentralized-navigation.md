@@ -17,7 +17,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Decentralized Navigation With Heterogeneous Federated Reinforcement Learning for UAV-Enabled Mobile Edge Computing
@@ -54,7 +54,7 @@ In UAV-enabled MEC, UAVs have limited battery and heterogeneous performance, so 
 
 ## Limitations / future work
 
-Simulation-only; the parse does not enumerate explicit future work. Results rest on figure-read energy-efficiency curves (flagged indicative). The approach assumes a cloud aggregator reachable by all UAVs. DOI date of publication 7 Aug 2024 / date of current version 5 Nov 2024 → year 2024.
+Simulation-only. Stated future work is to improve policy-model generality, extend SHDRLN/DFRL to multi-task scenarios such as task offloading, edge caching, and load balancing, and use a more comprehensive communication-channel model. Results rest on figure-read energy-efficiency curves (flagged indicative). The approach assumes a cloud aggregator reachable by all UAVs. DOI date of publication 7 Aug 2024 / date of current version 5 Nov 2024 → year 2024.
 
 ## Relation to the corpus
 
