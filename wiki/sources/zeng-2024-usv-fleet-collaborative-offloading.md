@@ -14,11 +14,12 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[energy-latency-tradeoff]]"
   - "[[nash-equilibrium]]"
+  - "[[zhou-su]]"
   - "[[dai-2024-multiuav-marine-welfare]]"
   - "[[dai-2023-hybrid-marine-mmwl]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # USV Fleet-Assisted Collaborative Computation Offloading for Smart Maritime Services: An Energy-Efficient Design
@@ -59,11 +60,11 @@ Simulation: MATLAB; 10 UAVs and 20 USV fleets randomly deployed in a 40 km × 40
 
 ## Limitations / future work
 
-Simulation-only (MATLAB). The parse's conclusion section is not captured in detail here; numeric values beyond the stated participation-degree percentages are read from MinerU-parsed figures/tables and are indicative. The model assumes UAVs, USV fleets, and maritime cloud servers are all trusted.
+Simulation-only (MATLAB). The authors defer joint allocation of caching, communication, and computation capacities for UAVs and USV fleets to future work. Numeric values beyond the stated participation-degree percentages are read from MinerU-parsed figures/tables and are indicative. The model assumes UAVs, USV fleets, and maritime cloud servers are all trusted.
 
 ## Relation to the corpus
 
-A **maritime MEC** entry distinctive for combining a **reverse-auction incentive** with an **ADMM/BCD energy-minimization** core, and for the **USV-fleet-as-helper** architecture (UAVs offload *to* USV fleets, rather than USVs offloading). It sits beside the University-of-Macau marine multi-access line — [[dai-2024-multiuav-marine-welfare]] (which uses a [[double-auction]] for OBS selection) and [[dai-2023-hybrid-marine-mmwl]] — sharing co-authors **Minghui Dai** ([[minghui-dai]]) and **Zhou Su**, and the two-tier marine game work [[wang-2024-twotier-satellite-marine]]. Reinforces [[maritime-mec]], [[task-offloading]], and the [[two-stage-decomposition]]/[[alternating-direction-method-of-multipliers]] solver thread.
+A **maritime MEC** entry distinctive for combining a **reverse-auction incentive** with an **ADMM/BCD energy-minimization** core, and for the **USV-fleet-as-helper** architecture (UAVs offload *to* USV fleets, rather than USVs offloading). It sits beside the University-of-Macau marine multi-access line — [[dai-2024-multiuav-marine-welfare]] (which uses a [[double-auction]] for OBS selection) and [[dai-2023-hybrid-marine-mmwl]] — sharing co-authors **Minghui Dai** ([[minghui-dai]]) and [[zhou-su|Zhou Su]], and the two-tier marine game work [[wang-2024-twotier-satellite-marine]]. Reinforces [[maritime-mec]], [[task-offloading]], and the [[two-stage-decomposition]]/[[alternating-direction-method-of-multipliers]] solver thread.
 
 ## Raw artifacts
 

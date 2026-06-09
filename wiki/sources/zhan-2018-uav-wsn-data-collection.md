@@ -9,10 +9,11 @@ tags: [source, uav-data-collection, wireless-sensor-network, trajectory-optimiza
 related:
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
+  - "[[yong-zeng]]"
   - "[[mozaffari-2017-uav-iot-energy-efficient]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-09
 ---
 
 # Energy-Efficient Data Collection in UAV Enabled Wireless Sensor Network
@@ -50,11 +51,11 @@ Sensor nodes have limited battery energy; once depleted they cannot be replaced.
 
 ## Limitations / future work
 
-Sub-optimal (SCA iterative, not globally optimal). Single-UAV, fixed-altitude model. General fading is handled via outage-probability constraint rather than adaptive rate coding. Battery lifetime of the UAV itself is not jointly optimized.
+Sub-optimal (SCA iterative, not globally optimal). Single-UAV, fixed-altitude model; the authors identify a multi-UAV extension with UAV-sensor association and co-channel interference as future work. General fading is handled via outage-probability constraint rather than adaptive rate coding. Battery lifetime of the UAV itself is not jointly optimized.
 
 ## Relation to the corpus
 
-From the Zeng/Zhang group (NUS) — the same authors behind the UAV-communications tutorial [[zeng-2019-uav-comm-tutorial-5g]]. Focuses on the **data-collection** variant of UAV-enabled WSN rather than MEC offloading, making it a close complement to [[mozaffari-2017-uav-iot-energy-efficient]]. Establishes the max-energy-fairness (min-max) objective for UAV-WSN that recurs in later corpus works, and grounds [[uav-data-collection]] as a primary UAV use case distinct from MEC compute offloading.
+From the Zeng/Zhang group (NUS), including [[yong-zeng]] — the same authors behind the UAV-communications tutorial [[zeng-2019-uav-comm-tutorial-5g]]. Focuses on the **data-collection** variant of UAV-enabled WSN rather than MEC offloading, making it a close complement to [[mozaffari-2017-uav-iot-energy-efficient]]. Establishes the max-energy-fairness (min-max) objective for UAV-WSN that recurs in later corpus works, and grounds [[uav-data-collection]] as a primary UAV use case distinct from MEC compute offloading.
 
 ## Raw artifacts
 

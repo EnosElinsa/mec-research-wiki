@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 16 slice A
+
+- Audited these five source pages only: [[zeng-2024-usv-fleet-collaborative-offloading]], [[zhai-2023-fedleo-decentralized-fl]], [[zhan-2011-uav-relay-heading-optimization]], [[zhan-2018-uav-wsn-data-collection]], and [[zhan-2020-completion-time-energy-uav-mec]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[zeng-2024-usv-fleet-collaborative-offloading]] now links the existing [[zhou-su]] entity in `related:` and records the parse-stated future-work direction on joint caching, communication, and computation allocation. [[zhan-2018-uav-wsn-data-collection]] now links the existing [[yong-zeng]] entity in `related:` and records the parse-stated multi-UAV / UAV-sensor association / co-channel-interference future-work direction. [[zhai-2023-fedleo-decentralized-fl]], [[zhan-2011-uav-relay-heading-optimization]], and [[zhan-2020-completion-time-energy-uav-mec]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 15 slice D
 
 - Audited these five source pages only: [[zeng-2016-throughput-relaying]], [[zeng-2016-uav-comm-opportunities-challenges]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], and [[zeng-2019-uav-comm-tutorial-5g]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
