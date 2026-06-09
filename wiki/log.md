@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 15 slice B
+
+- Audited these five source pages only: [[yang-2019-sum-power-uav-mec]], [[yang-2020-loadbalance-multiuav-iot]], [[yang-2022-stochastic-uav-mec-lyapunov]], [[yang-2024-taco-human-digital-twin-edge]], and [[yao-2025-secure-isac-dual-eavesdropping]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[yang-2019-sum-power-uav-mec]] now records the parse-stated future-work direction (UAV-enabled MEC networks where UAVs are served as UEs) instead of `not in parse`, and its citation note avoids process-style arrow wording. [[yang-2020-loadbalance-multiuav-iot]] now uses the same evergreen citation / `not in parse` punctuation style. [[yang-2022-stochastic-uav-mec-lyapunov]], [[yang-2024-taco-human-digital-twin-edge]], and [[yao-2025-secure-isac-dual-eavesdropping]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 15 slice A
 
 - Audited these five source pages only: [[xie-2025-stin-delay-offloading]], [[xie-2026-uav-multisource-fusion]], [[xu-2018-uav-wpt-trajectory]], [[xu-2021-secure-uav-mec-dual-uav]], and [[xu-2024-mobile-aigc-survey]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.

@@ -16,14 +16,14 @@ related:
   - "[[wang-2019-todetas-deployment-scheduling]]"
   - "[[seid-2021-madrl-multiuav-iot-edge]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Multi-UAV-Enabled Load-Balance Mobile-Edge Computing for IoT Networks
 
 ## Citation
 
-Yang, L., Yao, H., Wang, J., Jiang, C., Benslimane, A., & Liu, Y. (2020). *Multi-UAV-Enabled Load-Balance Mobile-Edge Computing for IoT Networks*. **IEEE Internet of Things Journal**. DOI: 10.1109/JIOT.2020.2971645. (Date of publication 4 Feb 2020; date of current version 12 Aug 2020 → year 2020.)
+Yang, L., Yao, H., Wang, J., Jiang, C., Benslimane, A., & Liu, Y. (2020). *Multi-UAV-Enabled Load-Balance Mobile-Edge Computing for IoT Networks*. **IEEE Internet of Things Journal**. DOI: 10.1109/JIOT.2020.2971645. (Date of publication 4 Feb 2020; date of current version 12 Aug 2020; year 2020.)
 
 ## TL;DR
 
@@ -53,7 +53,7 @@ IoT devices have limited power and compute and cannot run high-complexity tasks 
 
 ## Limitations / future work
 
-The parse's conclusion does not enumerate explicit quantitative future-work targets → `not in parse`. All results are simulation-based; numbers in Figs. 4–10 are MinerU-rendered curves and are treated as indicative, not exact.
+The parse's conclusion does not enumerate explicit quantitative future-work targets: `not in parse`. All results are simulation-based; numbers in Figs. 4–10 are MinerU-rendered curves and are treated as indicative, not exact.
 
 ## Relation to the corpus
 

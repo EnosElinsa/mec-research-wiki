@@ -17,14 +17,14 @@ related:
   - "[[guo-2023-mccco-multiuav-5g-offloading]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Energy Efficient Resource Allocation in UAV-Enabled Mobile Edge Computing Networks
 
 ## Citation
 
-Yang, Z., Pan, C., Wang, K., & Shikh-Bahaei, M. (2019). *Energy Efficient Resource Allocation in UAV-Enabled Mobile Edge Computing Networks*. **IEEE Transactions on Wireless Communications**. DOI: 10.1109/TWC.2019.2927313. (Manuscript received 20 February 2019; date of publication 16 July 2019; date of current version 10 September 2019 → year 2019.)
+Yang, Z., Pan, C., Wang, K., & Shikh-Bahaei, M. (2019). *Energy Efficient Resource Allocation in UAV-Enabled Mobile Edge Computing Networks*. **IEEE Transactions on Wireless Communications**. DOI: 10.1109/TWC.2019.2927313. (Manuscript received 20 February 2019; date of publication 16 July 2019; date of current version 10 September 2019; year 2019.)
 
 ## TL;DR
 
@@ -60,7 +60,7 @@ A **fuzzy c-means (FCM) clustering**-based algorithm supplies an initial feasibl
 
 ## Limitations / future work
 
-The parse's conclusion (Section V) does not enumerate explicit future-work targets in the captured text → `not in parse`. Offloading is binary and channels are assumed LoS-dominated with orthogonal-frequency UAVs (no inter-UAV interference).
+The conclusion leaves UAV-enabled MEC networks where **UAVs are served as UEs** as future work. Offloading is binary and channels are assumed LoS-dominated with orthogonal-frequency UAVs (no inter-UAV interference).
 
 ## Relation to the corpus
 
