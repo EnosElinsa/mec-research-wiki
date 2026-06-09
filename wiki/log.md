@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 12 slice B
+
+- Audited these five source pages only: [[seid-2021-madrl-multiuav-iot-edge]], [[shao-2024-drl-antijamming-mec]], [[shi-2023-two-timescale-migration-rerouting]], [[song-2022-emorl-tcto-uav]], and [[song-2024-mol-aoi-energy]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[shao-2024-drl-antijamming-mec]] and [[song-2024-mol-aoi-energy]] now carry explicit original-PDF / images raw-artifact notes and audit-current `updated` dates. [[seid-2021-madrl-multiuav-iot-edge]], [[shi-2023-two-timescale-migration-rerouting]], and [[song-2022-emorl-tcto-uav]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported no genuinely new papers before commit. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 12 slice A
 
 - Audited these five source pages only: [[qin-2025-matd3-noma-queue-sagin]], [[qin-2025-urllc-noma-uav-iscc]], [[qu-ecoei-uav-swarm]], [[raivi-2024-jdaco-postdisaster-iot]], and [[schulman-2017-ppo]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
