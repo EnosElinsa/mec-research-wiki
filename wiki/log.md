@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 14 slice A
+
+- Audited these five source pages only: [[wang-2025-acbft-uav-consensus]], [[wang-2025-airground-laser-mec]], [[wang-2025-ctmig-task-migration-uav]], [[wang-2025-double-edge-samin]], and [[wang-2025-lae-network-survey]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[wang-2025-ctmig-task-migration-uav]] now corrects the A2G-rate example to the parse-stated 14 Mbps to 2 Mbps over 300 to 325 meters, removes dated "relative to today" wording, and uses explicit Parse / Origin PDF / Figures raw-artifact bullets. [[wang-2025-lae-network-survey]] now uses explicit Parse / Origin PDF / Figures raw-artifact bullets. [[wang-2025-acbft-uav-consensus]], [[wang-2025-airground-laser-mec]], and [[wang-2025-double-edge-samin]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 13 slice D
 
 - Audited these five source pages only: [[wang-2024-satellite-terrestrial-computing]], [[wang-2024-ttw-amd-localization]], [[wang-2024-twotier-satellite-marine]], [[wang-2024-wipe-gai]], and [[wang-2024-xl-mimo-tutorial]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.

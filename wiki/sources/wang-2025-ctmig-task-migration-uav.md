@@ -12,7 +12,7 @@ related:
   - "[[mou-2025-adm-dt-migration]]"
   - "[[shi-2023-two-timescale-migration-rerouting]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-09
 ---
 
 # Joint Task Offloading and Migration Optimization in UAV-Enabled Dynamic MEC Networks
@@ -23,11 +23,11 @@ Wang, L., Shen, B., Ma, L., Zhang, Y., Zhao, Y., Guo, H., Yu, Z., & Guo, B. (202
 
 ## TL;DR
 
-Studies a multi-UAV MEC network where mobile users (MUs) offload tasks to UAVs, but as MUs and network conditions change, the initially selected UAV may no longer be optimal — necessitating **task migration** from one UAV to another. Focuses on large-result tasks (video editing, reconnaissance) where the downlink result delivery delay is non-trivial (A2G download rate drops sharply with distance). Formulates a joint **task offloading + migration** (CTMiG) problem minimizing total latency. Proposes **ILCTS** — imitation learning combining an improved PPO policy (generates expert data) with **Generative Adversarial Imitation Learning (GAIL)** for online policy refinement. Achieves superior training accuracy and average latency over RL and heuristic baselines.
+Studies a multi-UAV MEC network where mobile users (MUs) offload tasks to UAVs, but as MUs and network conditions change, the initially selected UAV may no longer be optimal, necessitating **task migration** from one UAV to another. Focuses on large-result tasks (video editing, reconnaissance) where the downlink result delivery delay is non-trivial (A2G download rate drops sharply with distance). Formulates a joint **task offloading + migration** (CTMiG) problem minimizing total latency. Proposes **ILCTS**: imitation learning combining an improved PPO policy (generates expert data) with **Generative Adversarial Imitation Learning (GAIL)** for online policy refinement. Achieves superior training accuracy and average latency over RL and heuristic baselines.
 
 ## Problem framing
 
-Most UAV-MEC works assume result sizes are negligible and channels are stable. This paper relaxes both: (i) large results (100s of MB) make downlink delay significant; (ii) A2G transmission rate drops sharply with distance (14 Mbps → 2 Mbps over 300–325 m per parse Fig. 1 reference), while A2A (inter-UAV) channels are more stable. When an MU moves far from its serving UAV, migrating partially-computed tasks to a closer UAV (via A2A links) can reduce total delay. The policy must jointly decide initial offloading and ongoing migration in response to environmental dynamics.
+Most UAV-MEC works assume result sizes are negligible and channels are stable. This paper relaxes both: (i) large results make downlink delay significant; (ii) A2G transmission rate drops sharply with distance (14 Mbps to 2 Mbps as distance increases from 300 to 325 meters, per the paper's Fig. 1 discussion), while A2A (inter-UAV) channels are more stable. When an MU moves far from its serving UAV, migrating partially-computed tasks to a closer UAV (via A2A links) can reduce total delay. The policy must jointly decide initial offloading and ongoing migration in response to environmental dynamics.
 
 ## System model
 
@@ -46,7 +46,7 @@ Most UAV-MEC works assume result sizes are negligible and channels are stable. T
 
 ## Limitations / future work
 
-Received and published in 2025; listed as "current version 8 August 2025" in parse — a future date relative to today (2026-06-04); flagged as indicative. UAV trajectory optimization is not included (UAVs are fixed or move on preset paths); only offloading + migration decisions are optimized.
+The paper is simulation-based. UAV trajectory optimization is not included: UAVs remain stationary at predefined positions, while MUs move continuously; only offloading + migration decisions are optimized.
 
 ## Relation to the corpus
 
@@ -54,5 +54,6 @@ Extends the task-migration literature ([[mou-2025-adm-dt-migration]], [[shi-2023
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/full.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/full.md`
+- Origin PDF: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/48fff01b-84b5-45c8-b1cb-1065a9ac9683_origin.pdf`
+- Figures: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/images/`
