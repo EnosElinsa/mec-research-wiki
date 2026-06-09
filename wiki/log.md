@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 12 slice C
+
+- Audited these five source pages only: [[su-2024-sensing-aided-isac-pls]], [[sun-2021-temcmop-uav-cb]], [[sun-2023-bargain-match-vec]], [[sun-2024-active-passive-ris-receiver]], and [[sun-2024-asap-uav-swarm]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[sun-2024-asap-uav-swarm]] now carries the standard Citation section, explicit original-PDF / images raw-artifact note, and an audit-current `updated` date. [[su-2024-sensing-aided-isac-pls]], [[sun-2021-temcmop-uav-cb]], [[sun-2023-bargain-match-vec]], and [[sun-2024-active-passive-ris-receiver]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 12 slice B
 
 - Audited these five source pages only: [[seid-2021-madrl-multiuav-iot-edge]], [[shao-2024-drl-antijamming-mec]], [[shi-2023-two-timescale-migration-rerouting]], [[song-2022-emorl-tcto-uav]], and [[song-2024-mol-aoi-energy]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
