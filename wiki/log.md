@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit concept pages: batch 18 slice D
+
+- Audited these five concept pages only: [[b-spline-trajectory]], [[backscatter-communication]], [[bang-bang-control]], [[bargaining-game]], and [[beta-policy-drl]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence and targeted raw parses where a source-specific claim needed grounding.
+- Content-page fixes: [[b-spline-trajectory]] now avoids an over-specific continuity claim not stated in the linked local evidence, while retaining the parse-grounded control-point and low-dimensional B-spline trajectory framing. [[backscatter-communication]], [[bang-bang-control]], [[bargaining-game]], and [[beta-policy-drl]] were already grounded and consistent.
+- Validation results: `python tools/wiki/curation_status.py --dupes` was run as the no-new-papers guard. `python tools/wiki/process_refs.py`, `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py --type concept`, and `git diff --check` were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API for `current` was reachable and reported 649 nodes and 6008 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded concept-page audit.
+
 ## 2026-06-09 - Audit concept pages: batch 18 slice C
 
 - Audited these five concept pages only: [[alternating-optimization-sdr-sca]], [[ant-colony-optimization]], [[ant-lion-optimizer]], [[anti-jamming-mec]], and [[aoi-energy-tradeoff]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence.
