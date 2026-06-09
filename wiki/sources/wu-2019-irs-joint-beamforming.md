@@ -13,7 +13,7 @@ related:
   - "[[chu-2024-secure-ris-isac]]"
   - "[[zhu-2024-crb-active-ris-isac]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-09
 ---
 
 # Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming
@@ -24,7 +24,7 @@ Wu, Q., & Zhang, R. (2019). *Intelligent Reflecting Surface Enhanced Wireless Ne
 
 ## TL;DR
 
-Foundational IRS paper. Studies an IRS-aided single-cell system (multi-antenna AP + multiple single-antenna users + one IRS). Formulates new **transmit-power minimization** problems solved by jointly optimizing the AP's **active transmit beamforming** and the IRS's **passive reflect beamforming** (phase shifts), subject to per-user SINR constraints. Proves that IRS-aided MIMO can match the rate performance of a massive MIMO system with significantly fewer active antennas/RF chains. Provides asymptotic analysis (infinitely large IRS) and deployment insights.
+Foundational IRS paper. Studies an IRS-aided single-cell system (multi-antenna AP + multiple single-antenna users + one IRS). Formulates new **transmit-power minimization** problems solved by jointly optimizing the AP's **active transmit beamforming** and the IRS's **passive reflect beamforming** (phase shifts), subject to per-user SINR constraints. Simulations show that IRS-aided MIMO can match the rate performance of a massive MIMO system with significantly fewer active antennas/RF chains. Provides asymptotic analysis (infinitely large IRS) and deployment insights.
 
 ## Problem framing
 
@@ -32,17 +32,17 @@ Foundational IRS paper. Studies an IRS-aided single-cell system (multi-antenna A
 
 ## System model
 
-- **AP:** N_T active antennas. **IRS:** M passive reflecting elements, each with an adjustable phase shift θ_m ∈ [0, 2π] (unit modulus constraint). **K single-antenna users.**
+- **AP:** `M` active antennas. **IRS:** `N` passive reflecting elements, each with an adjustable phase shift (unit-modulus constraint). **K single-antenna users.**
 - **Signal model:** users receive both the direct AP path and the AP→IRS→user reflected path; total received SINR is a function of both active beamforming vectors at the AP and the IRS phase-shift vector.
 - **Optimization (P1):** minimize total AP transmit power subject to per-user SINR ≥ γ_k; variables: AP beamforming vectors + IRS phase shifts. Non-convex due to unit-modulus constraint and coupled variables.
 - **Approach:** alternating optimization — for fixed IRS phases, AP beamforming is solved as second-order cone programming (SOCP); for fixed AP beamformers, IRS phases are solved via semidefinite relaxation (SDR).
 
 ## Key findings
 
-- Joint active+passive beamforming with IRS achieves the **same rate performance as a massive MIMO system** (which has no IRS) while using significantly fewer active antennas and RF chains at the AP (parse Abstract, simulations).
-- Asymptotic analysis: with M IRS elements, the passive array gain scales as O(M²), meaning even a modest-size IRS can achieve large performance gains (parse Section IV).
+- Simulation results report that joint active+passive beamforming with IRS achieves the **same rate performance as a massive MIMO system** (which has no IRS) while using significantly fewer active antennas and RF chains at the AP (parse Abstract, simulations).
+- Asymptotic analysis: with `N` IRS elements, the passive array gain scales quadratically with `N`, meaning even a modest-size IRS can achieve large performance gains (parse Section IV).
 - Useful deployment insights: IRS should be placed close to either the AP or the users (not midway) to maximize received power (parse simulation Section V).
-- Semidefinite relaxation for the IRS phase-shift subproblem is shown to be tight (parse Section III).
+- SDR is used as an approximate relaxation for IRS phase-shift optimization, with Gaussian randomization when the relaxed solution is not rank-one; the paper also gives lower-complexity alternating-optimization variants (parse Section III).
 
 ## Limitations / future work
 
