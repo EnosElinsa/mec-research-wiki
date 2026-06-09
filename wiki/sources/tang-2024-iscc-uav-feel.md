@@ -2,7 +2,7 @@
 type: source
 title: "Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning"
 authors: ["Yao Tang", "Guangxu Zhu", "Wei Xu", "Man Hon Cheung", "Tat-Ming Lok", "Shuguang Cui"]
-year: 2024
+year: 2025
 url: "https://doi.org/10.1109/TWC.2024.3523381"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, isac, federated-edge-learning, uav, resource-allocation, alternating-optimization, integrated-sensing-computation-communication]
@@ -16,14 +16,14 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-09
 ---
 
 # Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning
 
 ## Citation
 
-Tang, Y., Zhu, G., Xu, W., Cheung, M. H., Lok, T.-M., & Cui, S. (2024). *Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning*. **IEEE Transactions on Wireless Communications**. DOI: 10.1109/TWC.2024.3523381.
+Tang, Y., Zhu, G., Xu, W., Cheung, M. H., Lok, T.-M., & Cui, S. (2025). *Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning*. **IEEE Transactions on Wireless Communications**. DOI: 10.1109/TWC.2024.3523381. (Date of publication 6 Jan 2025; date of current version 11 Apr 2025.)
 
 ## TL;DR
 
