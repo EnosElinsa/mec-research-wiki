@@ -17,7 +17,7 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Latency Minimization for UAV-Enabled URLLC-Based Mobile Edge Computing Systems
@@ -63,4 +63,4 @@ A **URLLC / finite-blocklength** UAV-MEC entry — the first in the corpus to dr
 ## Raw artifacts
 
 - `raw/sources/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems/full.md`
-- Original PDF and extracted figures in the same folder.
+- Original PDF and extracted figures (`images/`) in the same folder.
