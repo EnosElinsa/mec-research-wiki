@@ -13,7 +13,7 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[multi-uav-assisted-mec]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Optimizing Spectrum Sharing in UAV Swarms: A Stackelberg Game-Based Incentive Mechanism
@@ -46,7 +46,7 @@ The Stackelberg + matching pattern also recurs in the corpus — [[liu-2026-jppo
 
 - Assumes the U2B is willing to share — no analysis of operator-side trust or settlement.
 - Does not jointly model the *compute* layer of the swarm — pure communication paper.
-- Single-leader Stackelberg; multi-leader (multiple U2Bs) is more realistic.
+- The Stackelberg interaction is modeled around U2B/U2U trading roles rather than operator-level multi-market competition.
 
 ## Cross-link with related sources
 
@@ -56,3 +56,4 @@ The Stackelberg + matching pattern also recurs in the corpus — [[liu-2026-jppo
 ## Raw artifacts
 
 - `raw/sources/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism/full.md`
+- Original PDF and extracted figures in the same folder.

@@ -15,7 +15,7 @@ related:
   - "[[discrete-continuous-two-stage-decomposition]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-29
-updated: 2026-06-04
+updated: 2026-06-09
 ---
 
 # Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS, UAVs, and MASSs
@@ -39,7 +39,7 @@ The MINLP is decomposed into four subproblems and solved by the **JCORA** algori
 
 ## Why this matters
 
-This is the wiki's first **MSAR / maritime** entry. Two architectural innovations:
+This **MSAR / maritime** entry contributes two architectural innovations:
 
 1. **Three computation tiers including a sea-surface tier (MASS)** — distinct from the wiki's previous land/air mix. MASSs sit between UAVs and HAPS in compute capacity and proximity.
 2. **Both `UAV → HAPS` and `UAV → MASS` offloading routes** are jointly optimized. Most prior aerial-MEC papers use only one of these.
@@ -51,7 +51,7 @@ Compare with [[peng-2025-drudm-cfg]] (HAPS + UAV for **post-disaster ground**) �
 - **UAV → MASS:** Rician fading with explicit shadow fading X_σ and a "ducting" propagation parameter F (sea-surface path-loss exponent < 2).
 - **UAV → HAPS:** sigmoid-LoS-probability over elevation angle (now standard for HAPS papers — see also [[hsu-2025-drl-hues-hap-noma]]).
 
-The MASS model is novel for the wiki: **historical / pre-measured CSI** is assumed available because MASSs travel along established shipping routes. This is a clever way to side-step the imperfect-CSI problem that [[jia-2025-dro-uav-hap-mec]] solves with DRO.
+The MASS channel model is distinctive: **historical / pre-measured CSI** is assumed available because MASSs travel along established shipping routes. This is a way to side-step the imperfect-CSI problem that [[jia-2025-dro-uav-hap-mec]] solves with DRO.
 
 ## Findings
 
@@ -74,3 +74,4 @@ The MASS model is novel for the wiki: **historical / pre-measured CSI** is assum
 ## Raw artifacts
 
 - `raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/full.md`
+- Original PDF and extracted figures in the same folder.
