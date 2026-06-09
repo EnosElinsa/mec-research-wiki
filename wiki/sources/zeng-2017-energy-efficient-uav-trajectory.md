@@ -15,8 +15,9 @@ related:
   - "[[zeng-2019-rotary-wing-energy-min]]"
   - "[[wu-2018-multiuav-minrate-trajectory]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
+  - "[[yong-zeng]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Energy-Efficient UAV Communication With Trajectory Optimization

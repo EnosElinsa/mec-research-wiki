@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 15 slice D
+
+- Audited these five source pages only: [[zeng-2016-throughput-relaying]], [[zeng-2016-uav-comm-opportunities-challenges]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], and [[zeng-2019-uav-comm-tutorial-5g]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], and [[zeng-2019-uav-comm-tutorial-5g]] now include the existing [[yong-zeng]] entity link in `related:` for consistency with their Zeng-authored source pages. [[zeng-2016-throughput-relaying]] and [[zeng-2016-uav-comm-opportunities-challenges]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 15 slice C
 
 - Audited these five source pages only: [[ye-2021-ran-slicing-offloading]], [[ye-2025-aigc-diffusion-contract]], [[you-2017-meco-resource-allocation]], [[you-2025-uncertain-maritime-hasac]], and [[yu-2020-uav-ec-collaborative-offloading]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
