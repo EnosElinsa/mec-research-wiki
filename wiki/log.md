@@ -1,5 +1,14 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 14 slice B
+
+- Audited these five source pages only: [[wang-2025-maddpg-lc-dynamic-trajectory]], [[wang-2025-sac-tma-mec-dc]], [[wang-2025-uav-swarm-stackelberg]], [[wang-2026-aerial-marine-msar]], and [[wang-acve-constraint-violation-cmop]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[wang-2025-uav-swarm-stackelberg]] now removes an over-narrow single-leader limitation and uses an explicit original-PDF / figures raw-artifact note. [[wang-2026-aerial-marine-msar]] now removes stale wiki-positioning wording and uses an explicit original-PDF / figures raw-artifact note. [[wang-2025-maddpg-lc-dynamic-trajectory]], [[wang-2025-sac-tma-mec-dc]], and [[wang-acve-constraint-violation-cmop]] were already grounded and needed no content-page edits.
+- Index reconciliation: [[wang-acve-constraint-violation-cmop]] now has its index listing aligned with the source page's TEVC 2025 / DOI grounding note rather than the older `not in parse` summary.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 14 slice A
 
 - Audited these five source pages only: [[wang-2025-acbft-uav-consensus]], [[wang-2025-airground-laser-mec]], [[wang-2025-ctmig-task-migration-uav]], [[wang-2025-double-edge-samin]], and [[wang-2025-lae-network-survey]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.

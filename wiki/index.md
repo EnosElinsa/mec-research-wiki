@@ -69,7 +69,7 @@
 
 ### Pure optimization methods
 
-- [[wang-acve-constraint-violation-cmop]] — Wang et al. **ACVE** — adaptive constraint-violation-evaluation framework + DDCo dual-population coevolution (venue/year `not in parse`).
+- [[wang-acve-constraint-violation-cmop]] — Wang et al. 2025. **ACVE** — adaptive constraint-violation-evaluation framework + DDCo dual-population coevolution (IEEE TEVC early access; DOI grounded by the source parse sidecar and by [[huang-2025-cmop-dispersed-computing]]).
 
 ### Compute offloading & DRL
 
