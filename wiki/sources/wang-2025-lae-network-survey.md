@@ -13,7 +13,7 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Toward Realization of Low-Altitude Economy Networks: Core Architecture, Integrated Technologies, and Future Directions
@@ -82,4 +82,6 @@ Layers 4–6 are governance / operations layers that the more technical MEC pape
 
 ## Raw artifacts
 
-- `raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/full.md`
+- Parse: `raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/full.md`
+- Origin PDF: `raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/e609bbbb-d1d3-4e5b-84cc-22cbbc900778_origin.pdf`
+- Figures: `raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/images/`
