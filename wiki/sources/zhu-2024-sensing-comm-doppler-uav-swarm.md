@@ -16,7 +16,7 @@ related:
   - "[[meng-2024-uav-isac-overview]]"
   - "[[jiang-2025-isac-lae-overview]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Sensing-Communication Co-Design for UAV Swarm-Assisted Vehicular Network in Perspective of Doppler
@@ -50,7 +50,7 @@ Intelligent vehicle networks are often deployed in harsh environments (urban can
 
 ## Limitations / future work
 
-The parse does not enumerate explicit future work beyond the established co-design framework; results are simulation-based.
+Results are simulation-based. The authors point to follow-up research on resource utilization and energy efficiency of UAV swarms under the proposed co-design scheme.
 
 ## Relation to the corpus
 
