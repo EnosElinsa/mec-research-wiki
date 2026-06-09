@@ -28,7 +28,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-09
 authors:
   - Jianqiu Wu
   - Zhongyi Yu
@@ -79,3 +79,4 @@ This is the corpus's entry point for [[intelligent-reflecting-surface]] and [[te
 
 ## Raw artifacts
 - `raw/sources/Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems/full.md`
+- Original PDF and extracted figures (`images/`) in the same folder.

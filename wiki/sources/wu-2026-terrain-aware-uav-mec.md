@@ -17,7 +17,7 @@ related:
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[peng-2024-energy-time-uav-its]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Terrain-Aware UAV-Enabled MEC in Urban Environments: A Constrained Multi-Objective Approach With Task-Adaptive Mechanism
@@ -71,3 +71,4 @@ The **destination optimization** point is also new: previous trajectory-design p
 ## Raw artifacts
 
 - `raw/sources/Terrain-Aware_UAV-Enabled_Mobile_Edge_Computing_in_Urban_Environments_A_Constrained_Multi-Objective_Approach_With_Task-Adaptive_Mechanism/full.md`
+- Original PDF and extracted figures (`images/`) in the same folder.

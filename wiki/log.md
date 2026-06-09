@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 14 slice D
+
+- Audited these five source pages only: [[wu-2024-urllc-uav-mec-latency]], [[wu-2025-gai-ris-resource-management]], [[wu-2025-iopo-irs-uav-thz-mec]], [[wu-2026-terrain-aware-uav-mec]], and [[xiang-sac-mapless-robot-navigation]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[wu-2024-urllc-uav-mec-latency]], [[wu-2025-iopo-irs-uav-thz-mec]], and [[wu-2026-terrain-aware-uav-mec]] now use explicit original-PDF / figures raw-artifact notes. [[wu-2025-gai-ris-resource-management]] and [[xiang-sac-mapless-robot-navigation]] were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 14 slice C
 
 - Audited these five source pages only: [[wang-gai-isac-physical-layer]], [[wen-2024-iscc-edge-ai]], [[wu-2018-multiuav-minrate-trajectory]], [[wu-2019-irs-joint-beamforming]], and [[wu-2024-satellite-maritime-spectrum-sharing]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
