@@ -1,5 +1,14 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 14 slice C
+
+- Audited these five source pages only: [[wang-gai-isac-physical-layer]], [[wen-2024-iscc-edge-ai]], [[wu-2018-multiuav-minrate-trajectory]], [[wu-2019-irs-joint-beamforming]], and [[wu-2024-satellite-maritime-spectrum-sharing]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[wu-2019-irs-joint-beamforming]] now uses the parse's AP/IRS notation (`M` AP antennas, `N` IRS elements), softens the massive-MIMO comparison to a simulation result, and replaces an overstated SDR-tightness sentence with the parse-grounded SDR/randomization plus alternating-optimization description. [[wang-gai-isac-physical-layer]], [[wen-2024-iscc-edge-ai]], [[wu-2018-multiuav-minrate-trajectory]], and [[wu-2024-satellite-maritime-spectrum-sharing]] were already grounded and needed no content-page edits.
+- Index reconciliation: [[wu-2019-irs-joint-beamforming]] now describes the asymptotic gain in terms of the number of IRS elements and frames the massive-MIMO comparison as simulation-supported.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 14 slice B
 
 - Audited these five source pages only: [[wang-2025-maddpg-lc-dynamic-trajectory]], [[wang-2025-sac-tma-mec-dc]], [[wang-2025-uav-swarm-stackelberg]], [[wang-2026-aerial-marine-msar]], and [[wang-acve-constraint-violation-cmop]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
