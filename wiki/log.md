@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 13 slice D
+
+- Audited these five source pages only: [[wang-2024-satellite-terrestrial-computing]], [[wang-2024-ttw-amd-localization]], [[wang-2024-twotier-satellite-marine]], [[wang-2024-wipe-gai]], and [[wang-2024-xl-mimo-tutorial]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: none. All five audited source pages were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 13 slice C
 
 - Audited these five source pages only: [[wang-2022-cat-rat-fmec-trajectory]], [[wang-2024-blockchain-uav-mec-dpos]], [[wang-2024-hfrl-decentralized-navigation]], [[wang-2024-hybrid-oma-noma-sagin]], and [[wang-2024-maritime-eh-jcora]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
