@@ -17,7 +17,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
 created: 2026-05-28
-updated: 2026-06-02
+updated: 2026-06-09
 ---
 
 # Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled MEC
@@ -65,7 +65,7 @@ Objectives (multiplexed via reward):
 ## Limitations / future work
 
 - UAVs fly at a **constant altitude** (UEs modeled at ground level, $z=0$), so trajectory planning is effectively 2-D over a $500\times500$ grid; full 3-D maneuvering is not modeled.
-- Service-type set per UAV is fixed at deployment; live re-provisioning of onboard service types is not modeled (`not in parse` as an explicit limitation — inferred from the fixed-capability system model).
+- Service-type set per UAV is modeled as pre-configured onboard capacity; live re-provisioning of onboard service types is not discussed in the parse.
 - The parse's stated future work is **multi-modal perception and online fine-tuning**: image-based UE localization, obstacle detection, near-range UAV identification, and richer historical-trajectory observations to guide planning.
 
 ## Cross-link with related sources
