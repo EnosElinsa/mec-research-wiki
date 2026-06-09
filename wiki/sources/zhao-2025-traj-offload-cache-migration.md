@@ -22,7 +22,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-09
 authors: [Mingxiong Zhao, Rongqian Zhang, Zhenli He, Keqin Li]
 year: 2025
 url: "https://doi.org/10.1109/TMC.2024.3486995"
@@ -54,7 +54,7 @@ UAV-assisted MEC extends [[mobile-edge-computing]] to areas without infrastructu
 - **Bandwidth**: convex; solved by primal-dual with a high-SNR closed-form (Proposition 1).
 
 ## Key findings
-- Versus **K-means++** and **Random** deployment: throughput **+10%-45%**, scheduling cost **−15%-30%** (Fig. 5); conclusion also reports execution time **−8%-37%** versus conventional algorithms.
+- Versus **K-means++** and **Random** deployment: throughput **+10%-45%**, scheduling cost **-15%-30%** (Fig. 5); conclusion also reports execution time **-8%-37%** versus conventional algorithms.
 - Steady state (Fig. 5): PA throughput ≈ 30/slot (K-means++ ≈ 27, Random ≈ 21); PA scheduling cost ≈ 17.5 (K-means++ ≈ 19.5-20, Random ≈ 24.5).
 - Running time (Table I): at 1000 users PA = 3.72 s vs K-B&B 18.85 s, K-GA 9.34 s, TSOUD-B&B 18.54 s, TSOUD-GA 8.30 s; RSA (random scheduling) fastest (0.36 s) but low quality.
 - Migration + caching beats compute-only (Fig. 7): sustained association ≈ 40, offloading ≈ 30, computing ≈ 13, migration ≈ 17, caching ≈ 13 — above the compute-only baseline of ≈ 22.
@@ -70,3 +70,4 @@ This is a [[multi-uav-assisted-mec]] study that jointly couples [[uav-trajectory
 
 ## Raw artifacts
 - `raw/sources/Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC/full.md`
+- Original PDF and extracted figures (`images/`) in the same folder.
