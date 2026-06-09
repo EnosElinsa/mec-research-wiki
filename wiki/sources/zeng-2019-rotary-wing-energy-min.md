@@ -23,8 +23,9 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[li-2024-rldc-uav-swarm-clustering]]"
+  - "[[yong-zeng]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Energy Minimization for Wireless Communication With Rotary-Wing UAV

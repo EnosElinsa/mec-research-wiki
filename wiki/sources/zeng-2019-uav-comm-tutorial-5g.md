@@ -14,8 +14,9 @@ related:
   - "[[wang-2025-lae-network-survey]]"
   - "[[meng-2024-uav-isac-overview]]"
   - "[[mao-2017-mec-survey-communication]]"
+  - "[[yong-zeng]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-09
 ---
 
 # Accessing From the Sky: A Tutorial on UAV Communications for 5G and Beyond
