@@ -16,7 +16,7 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # Generative-Adversarial-Network-Enhanced DRL for ISAC With Double Active RISs
@@ -46,7 +46,7 @@ ISAC shares spectrum for sensing and communication, but obstacles block BS→use
 
 ## Key findings
 
-- Simulations show effectiveness of both algorithms and the superiority of active RIS over passive RIS. **GAN-TD3 beats plain TD3 in convergence speed and stability, at the cost of higher computational complexity** (the paper's stated trade-off).
+- Simulations show effectiveness of both algorithms and the superiority of active RIS over passive RIS. **GAN-TD3 improves performance and stability over plain TD3, at the cost of higher computational complexity and slower convergence speed** (the paper's stated trade-off).
 
 ## Limitations / future work
 
