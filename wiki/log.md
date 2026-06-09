@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 13 slice A
+
+- Audited these five source pages only: [[sun-2025-emoppo-vlh-aerial-cb]], [[sun-2025-tjcct-twotimescale-uav-mec]], [[tang-2021-cecls-hybrid-cloud-edge]], [[tang-2024-iscc-uav-feel]], and [[ullah-2026-mec-drl-ntn-survey]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: [[tang-2024-iscc-uav-feel]] now uses the parse-grounded 2025 publication/current-version year while retaining the DOI stem `TWC.2024.3523381`; its index listing was reconciled to Tang et al. 2025. The other four audited source pages were already grounded and needed no content-page edits.
+- Verification scope: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. The remaining gates were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6007 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 12 slice D
 
 - Audited these five source pages only: [[spampinato-2025-uabs-v2x-3dqn-ilp]], [[sun-2024-imssa-uav-secure-cb]], [[sun-2024-mfris-semantic-antijamming]], [[sun-2024-mvtora-postdisaster-vfc]], and [[sun-2024-ues-video-analytics-disaster]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
