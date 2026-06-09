@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit source pages: batch 17 slice D
+
+- Audited these two source pages only: [[zhu-2024-zdrl-uav-tracking]] and [[zhu-2025-lycnn-drl-wpt-mec]]. Verified title / authors / year / venue / DOI, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
+- Content-page fixes: both source pages were already substantively grounded. Corrected mojibake artifacts in parse-grounded prose (`->`, active-target-passive, passive-BS, ranges, `>=`, `~250x`), and aligned [[zhu-2025-lycnn-drl-wpt-mec]]'s H1 with its full frontmatter title. No related-link or index reconciliation was required.
+- Validation results: `python tools/wiki/curation_status.py --dupes`, `python tools/wiki/process_refs.py`, `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/frontmatter_audit.py --type source`, and `git diff --check` were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API reported 649 nodes and 6008 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded source-page audit.
+
 ## 2026-06-09 - Audit source pages: batch 17 slice C
 
 - Audited these five source pages only: [[zhou-2018-uav-wireless-powered-mec]], [[zhou-2024-jdl-abs-postdisaster-rescue]], [[zhou-2024-mco-satellite-edge-offloading]], [[zhu-2024-crb-active-ris-isac]], and [[zhu-2024-sensing-comm-doppler-uav-swarm]]. Verified title / authors / year / venue / DOI where present, key numeric claims, method and system-model claims, related-link sanity, evergreen wording, frontmatter, and raw artifact pointers against the linked parses.
