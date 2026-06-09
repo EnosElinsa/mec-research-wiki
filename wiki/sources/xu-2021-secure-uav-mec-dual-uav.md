@@ -12,7 +12,7 @@ related:
   - "[[task-offloading]]"
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-09
 ---
 
 # Joint Resource and Trajectory Optimization for Security in UAV-Assisted MEC Systems
@@ -56,5 +56,6 @@ Provides the **secure computing capacity** metric definition for UAV-MEC PLS —
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/full.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/full.md`
+- Origin PDF: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/4a0aaa0c-101c-4198-9c6f-efa42d18c909_origin.pdf`
+- Figures: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/images/`

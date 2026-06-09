@@ -13,7 +13,7 @@ related:
   - "[[dynamic-constrained-multi-objective-optimization]]"
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-06-09
 ---
 
 # UAV-Enabled Multi-Source Data Fusion in Vehicular Networks: A Joint Optimization Approach for Reliability and Latency
@@ -37,8 +37,8 @@ The optimization problem: maximize **reliability** (perception accuracy / covera
 
 ## Why this is interesting
 
-- **Different solver family.** Almost every other curated source uses DRL. This one picks evolutionary multi-objective optimization (think NSGA-II family). Worth noting in any future synthesis comparing solver classes.
-- **Different MEC role for the UAV.** Most curated sources have UAVs computing offloaded *user tasks*. Here the UAV is a *perception fusion server* — semantically different but topologically the same (UAV as airborne edge).
+- **Different solver family.** The paper uses evolutionary dynamic constrained multi-objective optimization instead of a DRL controller.
+- **Different MEC role for the UAV.** Most related UAV-MEC sources have UAVs computing offloaded *user tasks*. Here the UAV is a *perception fusion server* — semantically different but topologically similar (UAV as airborne edge).
 
 ## Findings
 
@@ -60,4 +60,6 @@ The optimization problem: maximize **reliability** (perception accuracy / covera
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/full.md`
+- Parse: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/full.md`
+- Origin PDF: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/3f0640e8-069b-47ea-8844-e0100315d78c_origin.pdf`
+- Figures: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/images/`
