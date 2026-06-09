@@ -7,12 +7,12 @@ related:
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-09
 ---
 
 # B-Spline Trajectory
 
-A smooth UAV flight path defined by a small set of **control points** $\{C P_1, ..., C P_\lambda\}$. The B-spline curve interpolates / approximates these control points, producing a continuously differentiable path with $C^2$ continuity (smooth velocity and acceleration). This is exactly what a UAV's flight controller wants — sharp corners are physically infeasible.
+A smooth UAV flight path defined by a small set of **control points** $\{C P_1, ..., C P_\lambda\}$. The B-spline curve approximates these control points as a smooth path that avoids the sharp corners of waypoint-by-waypoint routing, which is what a UAV's flight controller needs for physically feasible motion.
 
 Why this matters for optimization: the trajectory is parameterized by only $3\lambda$ continuous variables (3D coordinates of $\lambda$ control points) instead of arbitrarily many path-point coordinates. A B-spline with $\lambda = 6$ already produces complex paths over hundreds of meters. This shrinks the decision space dramatically — critical for evolutionary trajectory optimization.
 
