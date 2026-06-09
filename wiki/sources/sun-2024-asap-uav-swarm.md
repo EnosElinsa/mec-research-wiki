@@ -27,7 +27,7 @@ related:
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-06-09
 authors:
   - Hao Sun
   - Yuben Qu
@@ -43,6 +43,9 @@ venue: "IEEE Transactions on Mobile Computing (TMC)"
 ---
 
 # All-Sky Autonomous Computing in UAV Swarm
+
+## Citation
+Sun, H., Qu, Y., Dong, C., Dai, H., Li, Z., Zhang, L., Wu, Q., & Guo, S. (2024). *All-Sky Autonomous Computing in UAV Swarm*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2024.3427420. (Manuscript received 9 February 2024; accepted 7 July 2024; date of publication 15 July 2024; date of current version 5 November 2024.)
 
 ## TL;DR
 ASAP (All-Sky Autonomous comPuting) processes UAV sensory data entirely inside the swarm via [[collaborative-dl-inference]], rather than compressing models onboard (accuracy loss) or offloading raw data to a possibly-damaged ground station (high latency). It uses [[dnn-model-partition]] across UAV clusters, [[data-partition-parallel-inference]] within clusters, and [[pipeline-parallel-inference]] across clusters, balanced by a [[dl-inference-latency-prediction|latency predictor]] and kept robust by [[elastic-task-scheduling]]. On 24 airborne computers and 5 real quad-rotor UAVs it cuts computing latency by up to 92.66% vs data offloading and up to 98.50% vs state-of-the-art terrestrial collaborative computing while preserving accuracy.
@@ -82,3 +85,4 @@ ASAP is the corpus's clearest example of in-swarm [[collaborative-dl-inference]]
 
 ## Raw artifacts
 - `raw/sources/All-Sky_Autonomous_Computing_in_UAV_Swarm/full.md`
+- Original PDF and extracted figures (`images/`) in the same folder.
