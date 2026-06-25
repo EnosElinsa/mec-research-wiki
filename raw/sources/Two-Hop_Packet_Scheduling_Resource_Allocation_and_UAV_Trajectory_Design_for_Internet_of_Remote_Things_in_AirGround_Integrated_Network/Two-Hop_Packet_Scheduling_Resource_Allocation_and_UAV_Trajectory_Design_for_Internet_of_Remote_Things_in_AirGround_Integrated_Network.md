@@ -1,0 +1,963 @@
+# Two-Hop Packet Scheduling, Resource Allocation, and UAV Trajectory Design for Internet of Remote Things in Air–Ground Integrated Network
+
+Shichao Li , Zhiqiang Yu , Mianxiong Dong , Member, IEEE, Kaoru Ota , Member, IEEE, Hongbin Chen Ning Zhang , Senior Member, IEEE, and Chao Yang
+
+Abstract—Compared with terrestrial network, the air–ground integrated network consisting of unmanned aerial vehicles (UAVs) and high-altitude platforms (HAPs) offers the advantages of large coverage, high capacity, and seamless connection. Therefore, the air–ground integrated network can provide effective communication services for the Internet of Remote Things (IoRT). In order to reduce the end-to-end (e2e) packet delay and avoid network congestion of the two-hop network, we investigate a joint packet scheduling, resource allocation, and UAV trajectory design problem, with the objective of minimizing the average packet queue delay from HAP to IoRT devices in the air–ground integrated network. This problem is nonconvex and difficult to solve by the traditional methods. In order to solve this problem, we reformulate it into a Markov decision process (MDP) first. And then, considering there are continuous and discrete hybrid action spaces in the MDP, we separate the primal action spaces into two subaction spaces, and utilize the basic idea of multiagent deep deterministic policy gradient (MADDPG) and multiagent double deep Q network (MADDQN) methods to solve them, respectively. After that, in order to improve the stability, convergence rate and learning efficiency, we introduce the basic idea of adaptive prioritized experience replay (PER), and propose a hybrid MADDPG-adaptive PER (MADDPG-APER) algorithm. Simulation results show that the proposed algorithm can reduce the average packet queue delay compared with other benchmark algorithms.
+
+Index Terms—Air–ground integrated network, packet scheduling, resource allocation, two hop, unmanned aerial vehicle (UAV) trajectory design.
+
+Manuscript received 31 January 2024; revised 4 March 2024; accepted 20 April 2024. Date of publication 25 April 2024; date of current version 25 July 2024. This work was supported in part by the Natural Science Foundation of China under Grant 62361016 and Grant 62061009; in part by the Chinese Scholarship Council under Grant 202108450022; in part by the Project of Guangxi Wireless Broadband Communication and Signal Processing Key Laboratory under Grant GXKL06240106; in part by the JSPS KAKENHI under Number JP22K11989 and Number JP24K14910; in part by the Leading Initiative for Excellent Young Researchers (LEADER), MEXT, Japan, and JST, PRESTO, Japan, Grant Number JPMJPR21P3; and in part by the JST ASPIRE Grant Number JPMJAP2344. (Corresponding author: Mianxiong Dong.)
+
+Shichao Li, Zhiqiang Yu, Hongbin Chen, and Chao Yang are with the Guangxi Wireless Broadband Communication and Signal Processing Key Laboratory, Guilin University of Electronic Technology, Guilin 541004, China (e-mail: shichaoli@guet.edu.cn; zhiqyu@yeah.net; chbscut@guet.edu.cn; ycguet@gmail.com).
+
+Mianxiong Dong and Kaoru Ota are with the Department of Sciences and Informatics, Muroran Institute of Technology, Muroran 0508585, Japan (e-mail: mx.dong@csse.muroran-it.ac.jp; ota@csse.muroran-it.ac.jp).
+
+Ning Zhang is with the Department of Electrical and Computer Engineering, University of Windsor, Windsor, ON N9B 3P4, Canada (e-mail: ning.zhang@uwindsor.ca).
+
+Digital Object Identifier 10.1109/JIOT.2024.3393444
+
+# I. INTRODUCTION
+
+N RECENT years, with the rapid development of wireless communication and sensor technologies, the Internet of Things (IoT) interconnects a vast amount of objects with the Internet [1]. However, the limited coverage and low capacity of the terrestrial communication network pose challenges in providing effective communication services to certain smart devices, especially for the Internet of Remote Things (IoRT) devices which are deployed in the remote and rural area [2], [3]. In order to tackle this issue, the air–ground integrated network has been proposed. The aerial access network comprises unmanned aerial vehicles (UAVs) and highaltitude platforms (HAPs), while the HAPs can satisfy the requirement of large connection due to it has the advantages of high-service reliability and large coverage area. In addition, considering the low-communication rate between the HAPs and IoRT devices cannot meet the data transmission rate requirement of IoRT devices, by utilizing the UAVs advantages of high mobility, low cost, flexible deployment, and good line-of-sight, the aerial access network can achieve seamless coverage and increase the channel capacity [4], [5]. Therefore, it is necessary to utilize the aerial access network to provide services for IoRT devices.
+
+As a rapidly evolving network, the air–ground integrated network possesses numerous advantages, but also presents many challenges. First, due to the long distance between the HAPs and the IoRT devices, the end-to-end (e2e) packet delay is large [6], [7]. For the air–ground integrated network consisting of HAPs, UAVs, and IoRT devices, how to design UAV trajectories and allocate resources to reduce packet delay is a challenging issue. Second, the UAVs can be viewed as relays in the two-hop air–ground integrated network. When a large number of services are requested, it will cause network congestion [8]. Therefore, an effective two-hop packet scheduling policy in HAPs and UAVs should be designed to avoid network congestion.
+
+In this article, we formulate a problem of minimizing the average packet queue delay from HAP to IoRT devices while considering the packet transmission rate by jointly optimizing the packet scheduling, resource allocation, and UAV trajectory design in the air–ground integrated network. Because the primal problem is nonconvex and it is difficult to solve, we reformulate it into a Markov decision process (MDP) first.
+
+And then, considering there are both continuous and discrete hybrid action spaces in the MDP, we employ the basic idea of multiagent deep deterministic policy gradient (MADDPG) and multiagent double deep Q network (MADDQN) methods to solve them, respectively. After that, we introduce the adaptive prioritized experience replay (PER) mechanism to improve the stability, convergence rate and learning efficiency, and propose a hybrid MADDPG-adaptive PER (MADDPG-APER) algorithm. Simulation results demonstrate the effectiveness of the proposed algorithm in terms of average packet queue delay when compared to the other existing algorithms. Specifically, the main contributions of this article are summarized as follows.
+
+1) First, we establish an air–ground integrated network model with two-hop downlink for packet transmission. Based on this network model, a joint packet scheduling, resource allocation, and UAV trajectory design optimization problem, with the objective of minimizing the average packet queue delay is formulated.   
+2) Additionally, in order to solve the nonconvex problem, the primal problem is reformulated into a MDP. Considering there are both continuous and discrete action spaces in the problem, the primal action spaces are separated into two subaction spaces. By utilizing the basic idea of MADDPG and MADDQN methods, these two subaction space problems have been solved.   
+3) Finally, in order to improve the stability, convergence rate, and learning efficiency of algorithm, the basic idea of adaptive PER has been introduced to update the discount rate and learning rate, and the hybrid MADDPG-APER algorithm has been proposed.
+
+The remainder of this article is organized as follows. In Section II, the related work is summarized. In Section III, we introduce the system model of the air–ground integrated network, and the average packet queue delay minimization problem is formulated. In Section IV, we reformulate the problem and propose the hybrid MADDPG-APER algorithm. Simulation results are provided in Section V. Finally, we conclude this article in Section VI.
+
+# II. RELATED WORKS
+
+Resource allocation in the air–ground integrated network has recently received considerable attention. These works can be classified into two categories based on the different objectives.
+
+The first objective is to maximize the system benefit. Considering the excessive transmission power of HAPs can cause great adverse effects to devices in the coverage area, a multiagent deep Q-learning-based transmission power control algorithm was proposed to maximize the revenue in the downlink communication [9]. Considering the limited computation, communication, and energy resources of HAPs and UAVs, a joint IoT devices association, partial offloading, and communication resource allocation problem was formulated. By utilizing the MADDPG method, a multiagent policygradient-based deep actor critic algorithm was proposed [10]. Cumali et al. [11] discussed the user selection problem in a nonorthogonal multiple access (NOMA)-based multiuser HAPs system and proposed an algorithm for joint user selection and user pairing to maximize the system utility. Fu et al. [12] employed a dual decomposition method to jointly optimize UAV deployment and transmission power of UAV to maximize system utility. A joint UAV trajectory plan, UAV-user association, resource allocation, and load allocation problem was formulated to maximize the revenue of system. And the problem was solved by alternating optimization and the Dinkelbach method [13]. In order to address the limited energy challenge of UAVs and IoT devices, a joint UAV trajectory plan and resource allocation problem was formulated to maximize the system energy efficiency. By utilizing the Lagrange dual decomposition and successive convex approximation method, a near-optimal UAV trajectory and flight speed optimization algorithm was proposed [14]. Considering the learning accuracy and training latency constraints, a joint UAV trajectory design and resource allocation algorithm was proposed [15].
+
+The second objective is to maximize the transmission rate. In order to maximize the achievable sum rate of the uplink communication, Qin et al. [16] first formulated a resource optimization problem for subchannel allocation and power control, and then solved it by utilizing distributed approach. In order to maximize the throughput of the total downlink for ground users, a genetic-algorithm-based approach was proposed by jointly optimizing the 3-D placements of UAVs and user association [17]. Considering the presence of multiple jammers in the communication network, an iterative algorithm was proposed by jointly optimizing the link scheduling, 3-D trajectory, and the transmission power of UAV to maximize the minimum average throughput [18]. Na et al. [19] proposed an iterative precoding and bandwidth allocation algorithm for multiantenna HAPs to maximize the network data rate. Lee et al. [20] formulated an optimization problem involving the association between air–ground terminals, transmission power, and multiHAP deployment, an iterative algorithm and a proposed proxy function were used to solve the problem to maximize the throughput of the e2e network. In order to maximize the sum rate, the orthogonal frequency division multiple access (OFDMA) and NOMA techniques were employed with power allocation, UAV height optimization, and spectrum allocation to optimize the downlink and uplink transmissions, respectively [21].
+
+However, the previous works have not considered the twohop packet scheduling design in the air–ground integrated network. By designing the two-hop packet scheduling policy, the e2e packet delay can be effectively reduced, and the network congestion can be avoided. In order to minimize the packet queue delay in the air–ground integrated network, the previous works should be investigated, which motivated this work.
+
+# III. SYSTEM MODEL AND PROBLEM FORMULATION
+
+In this section, we first present the system model of air– ground integrated network, including the network model, channel model, and queue model. And then, a joint two-hop packet scheduling, resource allocation, and UAV trajectory design problem is formulated to minimize the average packet queue delay.
+
+![](images/172351fca75a1c2f3ea2a56996e673361c6c846817925e7352174789d46107d5.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["λkm"] --> B["ZHk"]
+    C["Zmk"] --> D["Zmk"]
+    B --> E["HAP"]
+    D --> E
+    E --> F["UAVs"]
+    F --> G["IoRT devices"]
+    G --> H["Packet queue"]
+    G --> I["UAV-IoRT device link"]
+    G --> J["Interference between UAVs"]
+    style A fill:#f9f,stroke:#333
+    style C fill:#f9f,stroke:#333
+    style E fill:#ccf,stroke:#333
+    style F fill:#ccf,stroke:#333
+    style G fill:#cfc,stroke:#333
+    style H fill:#ffc,stroke:#333
+    style I fill:#ffc,stroke:#333
+    style J fill:#ffc,stroke:#333
+```
+</details>
+
+Fig. 1. System model.
+
+# A. Network Model
+
+In this article, the downlink air–ground integrated network is considered as shown in Fig. 1, which consists of one HAP, M UAVs, and K IoRT devices. We denote the sets of UAVs and IoRT devices are $\mathcal { M } = \{ 1 , \dots , M \}$ and ${ \mathcal { K } } = \{ 1 , \ldots , K \}$ , respectively. When the IoRT devices need to receive the broadcast message, and there is software needs to be updated, the downlink packet transmission should be considered. In addition, when the software is being upgraded, randomly generated packet can be used to simulate different scenarios during the upgrade process to ensure that the software of IoRT devices can be used. Therefore, we consider the HAP randomly generates packet to be transmitted to the IoRT devices by utilizing the UAVs as relays. The position of each IoRT device is fixed. The UAV m is associated with $K _ { m }$ IoRT devices, and we denote ${ \cal K } _ { m } = \{ 1 , \dots , K _ { m } \}$ as the set of IoRT device associating with the UAV m, where $\begin{array} { r } { \sum _ { m \in \mathcal { M } } K _ { m } = K } \end{array}$ . The whole time period is T, which is divided into N time slots with equal length τ , i.e., T = Nτ , and we denote the set of time slot is $\mathcal { N } = \{ 1 , \dots , n , \dots , N \}$ . The height of HAP and the UAVs are $H _ { \mathrm { h a p } } .$ , and $H _ { \mathrm { u a v } } .$ , respectively. The horizontal position of the IoRT device $k _ { m }$ is $\boldsymbol { F } _ { k _ { m } } = ( x _ { k _ { m } } , y _ { k _ { m } } )$ , and the UAV m position at time slot n in the horizontal can be expressed as $\pmb q _ { m } ( n ) = ( x _ { m } ( n ) , y _ { m } ( n ) )$ . The HAP can be viewed as static, and that the position of the HAP is $F _ { \mathrm { h a p } } = ( x _ { \mathrm { h a p } } , y _ { \mathrm { h a p } } , H _ { \mathrm { h a p } } )$ . Let denote $V _ { \mathrm { m a x } }$ as the maximal flight speed of the UAV, and the distance of UAV can travel in one time slot as $V _ { \mathrm { m a x } } \tau$ . Then, the UAV m trajectory should satisfy
+
+$$
+\left\| \boldsymbol {q} _ {m} (n + 1) - \boldsymbol {q} _ {m} (n) \right\| ^ {2} \leq \left(V _ {\max} \tau\right) ^ {2} \forall m \in \mathcal {M} \forall n \in \mathcal {N}. \tag {1}
+$$
+
+Meanwhile, each UAV needs to return to the start point within the whole time process to periodically serve IoRT devices [22]. Therefore, for each UAV, the following constraint should be satisfied:
+
+TABLE I NOTATIONS AND DESCRIPTIONS 
+
+<table><tr><td>Notation</td><td>Description</td></tr><tr><td> $m,M,\mathcal{M}$ </td><td>The index, number and the set of UAVs</td></tr><tr><td> $k,K,\mathcal{K}$ </td><td>The index, number and the set of IoRT devices</td></tr><tr><td> $k_{m},K_{m},\mathcal{K}_{m}$ </td><td>The index, number and the set of IoRT devices served by UAV  $m$ </td></tr><tr><td> $n,N,\mathcal{N}$ </td><td>The index, number and the set of time slots</td></tr><tr><td> $T$ </td><td>Time period</td></tr><tr><td> $\tau$ </td><td>Length of the time slot</td></tr><tr><td> $(x_{m}(n),y_{m}(n),H_{uav})$ </td><td>Position of UAV  $m$  at time slot  $n$ </td></tr><tr><td> $A_{Hk_{m}}(n)$ </td><td>Packet scheduling action of HAP for IoRT device  $k_{m}$  at time slot  $n$ </td></tr><tr><td> $B_{Hk_{m}}(n)$ </td><td>Packet scheduling action of UAV  $m$  for IoRT device  $k_{m}$  at time slot  $n$ </td></tr><tr><td> $W_{H}^{max}$ </td><td>Available bandwidth of HAP</td></tr><tr><td> $P_{max}$ </td><td>Maximum transmission power of each UAV</td></tr><tr><td> $w_{Hm}(n)$ </td><td>Bandwidth allocated for HAP to UAV  $m$  at time slot  $n$ </td></tr><tr><td> $p_{m}(n)$ </td><td>Transmission power of UAV  $m$  at time slot  $n$ </td></tr><tr><td> $d_{Hm}(n)$ </td><td>Distance between the HAP and the UAV  $m$  at time slot  $n$ </td></tr><tr><td> $h_{mk_{m}}(n)$ </td><td>Channel power gain between the UAV  $m$  and IoRT device  $k_{m}$  at time slot  $n$ </td></tr><tr><td> $R_{Hm}(n)$ </td><td>Transmission rate from HAP to UAV  $m$  at time slot  $n$ </td></tr><tr><td> $R_{mk_{m}}(n)$ </td><td>Transmission rate from UAV  $m$  to IoRT device  $k_{m}$  at time slot  $n$ </td></tr><tr><td> $Z_{Hk_{m}}(n)$ </td><td>Queue information for IoRT device  $k_{m}$  in link 1 at time slot  $n$ </td></tr><tr><td> $Z_{mk_{m}}(n)$ </td><td>Queue information for IoRT device  $k_{m}$  in link 2 at time slot  $n$ </td></tr><tr><td> $C_{Hk_{m}}(n)$ </td><td>Number of packets for IoRT device  $k_{m}$  can be transmitted in link 1 at time slot  $n$ </td></tr><tr><td> $C_{mk_{m}}(n)$ </td><td>Number of packets for IoRT device  $k_{m}$  can be transmitted in link 2 at time slot  $n$ </td></tr><tr><td> $G$ </td><td>Size of packet</td></tr><tr><td> $Y_{Hk_{m}}(n)$ </td><td>Number of packets randomly generated by HAP for IoRT device  $k_{m}$  at time slot  $n$ </td></tr><tr><td> $\lambda_{km}$ </td><td>Average packet arrival rate of IoRT device  $k_{m}$ </td></tr><tr><td> $d(n)$ </td><td>Total packet queue delay at time slot  $n$ </td></tr><tr><td> $D$ </td><td>Average packet queue delay</td></tr><tr><td> $R_{km}$ </td><td>Average packet delivery rate of IoRT device  $k_{m}$ </td></tr><tr><td> $O_{mk_{m}}(n)$ </td><td>Maximum number of packets IoRT device  $k_{m}$  can receive at time slot  $n$ </td></tr><tr><td> $\phi_{km}$ </td><td>Average packet delivery ratio requirement for the IoRT device  $k_{m}$ </td></tr></table>
+
+$$
+\boldsymbol {q} _ {m} [ 1 ] = \boldsymbol {q} _ {m} [ N ] \quad \forall m \in \mathcal {M}. \tag {2}
+$$
+
+Considering the safe distance between the UAVs, the UAV m trajectory should satisfy
+
+$$
+\left\| \boldsymbol {q} _ {m} (n) - \boldsymbol {q} _ {l} (n) \right\| ^ {2} \geq d _ {\min} ^ {2} \forall m, l \in \mathcal {M}, m \neq l \forall n \in \mathcal {N} \tag {3}
+$$
+
+where $d _ { \mathrm { m i n } }$ is the minimum safety distance of UAVs.
+
+The notations and descriptions are listed in Table I.
+
+# B. Channel Model
+
+The packet transmission from the HAP to the IoRT devices can be considered as a two-hop process. We denote the packet transmission from the HAP to the UAVs as link 1, and the packet transmission from the UAVs to the IoRT devices as link 2. Let denote $A _ { H k _ { m } } ( n ) ~ \in ~ \{ 0 , 1 \}$ and $B _ { m k _ { m } } ( n ) \ \in \ \{ 0 , 1 \}$ as the packet scheduling actions at link 1 and link 2, respectively. Specifically, if the HAP schedules the packet of IoRT device $k _ { m }$ to UAV m at time slot $n , \ A _ { H k _ { m } } ( n ) = 1$ . Otherwise, $A _ { H k _ { m } } ( n ) = 0 .$ . If the UAV m schedules the packet to the IoRT device $k _ { m }$ at time slot n, $B _ { m k _ { m } } ( n ) ~ = ~ 1$ . Otherwise, transmission rate from $B _ { m k _ { m } } ( n ) = 0 .$ .
+
+The link 1 and link 2 utilize different frequency bandwidth. Therefore, there is no interference between link 1 and link 2. For the link 1, we consider the OFDMA, the bandwidth is allocated orthogonally to each UAV. Therefore, there is no interference in link 1. In order to improve the frequency resource utilization of link 1, one packet should be scheduled in each wireless link at each time slot. Therefore, we have
+
+$$
+\sum_ {k _ {m} \in \mathcal {K} _ {m}} A _ {H k _ {m}} (n) = 1 \quad \forall k _ {m} \in \mathcal {K} _ {m} \quad \forall n \in \mathcal {N}. \tag {4}
+$$
+
+For the link 2, each UAV can utilize the same frequency bandwidth at each time slot, and each UAV utilizes the time division multiple access (TDMA) in its coverage area. Therefore, there exists interference between UAVs, and no interference within a UAV’s coverage area at each time slot. One packet should be scheduled in each UAV’s coverage area at each time slot to improve the frequency resource utilization, and we have
+
+$$
+\sum_ {k _ {m} \in \mathcal {K} _ {m}} B _ {m k _ {m}} (n) = 1 \quad \forall k _ {m} \in \mathcal {K} _ {m} \forall m \in \mathcal {M} \forall n \in \mathcal {N}. \tag {5}
+$$
+
+We denote the available bandwidth of the HAP as $W _ { H } ^ { \mathrm { m a x } }$ m at time slot n as $w _ { H m } ( n )$ . Meanwhile, at time slot n, the bandwidth should satisfy
+
+$$
+\sum_ {m \in \mathcal {M}} w _ {H m} (n) \leq W _ {H} ^ {\max} \quad \forall m \in \mathcal {M} \quad \forall n \in \mathcal {N}. \tag {6}
+$$
+
+According to [23], the transmission rate from the HAP to the UAV m at time slot n can be given as
+
+$$
+\begin{array}{l} R _ {H m} (n) = w _ {H m} (n) \log_ {2} \left(1 + \frac {p _ {H} G _ {T} G _ {R} L _ {H m} (n) L _ {l}}{k _ {B} N _ {t} w _ {H m} (n)}\right) \\ \forall m \in \mathcal {M} \quad \forall n \in \mathcal {N} \tag {7} \\ \end{array}
+$$
+
+where $p _ { H }$ is the transmission power of HAP, $G _ { T }$ is the transmitter antenna power gain, $G _ { R }$ is the receiver antenna power gain, Ll is the total line loss, and $\begin{array} { r l r } { L _ { H m } ( n ) } & { { } = } & { ( c / [ 4 \pi d _ { H m } ( n ) f _ { H m } ] ) ^ { 2 } } \end{array}$ is the free space loss. Wherein, c is the light speed, $\begin{array} { r l } { d _ { H m } ( n ) } & { { } = } \end{array}$ $\sqrt { ( H _ { \mathrm { h a p } } - H _ { \mathrm { u a v } } ) ^ { 2 } + ( x _ { \mathrm { h a p } } - x _ { m } ( n ) ) ^ { 2 } + ( y _ { \mathrm { h a p } } - y _ { m } ( n ) ) ^ { 2 } }$ is the distance between the HAP and the UAV m at time slot $n , f _ { H m }$ is the center frequency, $k _ { B }$ is the Boltzmann’s constraint, and $N _ { t }$ is the noise temperature.
+
+The link 2 between the UAVs and the IoRT devices can be viewed as line-of-sight channel [22]. Thus, the channel power gain between the UAV m and the IoRT device $k _ { m }$ at time slot n can be expressed as
+
+$$
+h _ {m k _ {m}} (n) = \frac {h}{H _ {\mathrm{uav}} ^ {2} + \| \boldsymbol {q} _ {m} (n) - \boldsymbol {F} _ {k _ {m}} \| ^ {2}}
+$$
+
+$$
+\forall m \in \mathcal {M} \quad \forall k _ {m} \in \mathcal {K} _ {m} \quad \forall n \in \mathcal {N} \tag {8}
+$$
+
+where h is the channel power gain at a reference distance of 1 m.
+
+We denote the maximum transmission power of each UAV as $P _ { \mathrm { m a x } }$ , and the transmission power of UAV m at time slot n as $p _ { m } ( n )$ . Because there is only interference between UAVs in link 2, when the UAV m schedules the packet to the IoRT device $k _ { m }$ at time slot n, the signal-to-interference-plus-noise ratio received at IoRT device $k _ { m }$ can be obtained as
+
+$$
+\gamma_ {m k _ {m}} (n) = \frac {p _ {m} (n) h _ {m k _ {m}} (n)}{\sum_ {j = 1 , j \neq m} ^ {M} p _ {j} (n) h _ {j k _ {m}} (n) + N _ {0}}
+$$
+
+$$
+\forall m, j \in \mathcal {M} \quad \forall k _ {m} \in \mathcal {K} _ {m} \quad \forall n \in \mathcal {N} \tag {9}
+$$
+
+where $N _ { 0 }$ is the noise power. Based on the above analysis, the transmission rate from the UAV m, and the IoRT device $k _ { m }$ at time slot n can be given as
+
+$$
+R _ {m k _ {m}} (n) = w _ {2} \log_ {2} \left(1 + \gamma_ {m k _ {m}} (n)\right)
+$$
+
+$$
+= w _ {2} \log_ {2} \left(1 + \frac {p _ {m} (n) h _ {m k _ {m}} (n)}{\sum_ {j = 1 , j \neq m} ^ {M} p _ {j} (n) h _ {j k _ {m}} (n) + N _ {0}}\right)
+$$
+
+$$
+\forall m \in \mathcal {M} \quad \forall k _ {m} \in \mathcal {K} _ {m} \quad \forall n \in \mathcal {N} \tag {10}
+$$
+
+where $w _ { 2 }$ is the bandwidth of link 2.
+
+# C. Queue Model
+
+We denote the size of each packet as G bits, and the number of packets that the HAP transmits to the UAV m in link 1 at time slot n is $C _ { H m } ( n ) = \lfloor R _ { H m } ( n ) \tau / G \rfloor$ . Similarly, the number of packets that the UAV m transmits to IoRT device $k _ { m }$ in link 2 at time slot n is $C _ { m k _ { m } } ( n ) = \lfloor R _ { m k _ { m } } ( n ) \tau / G \rfloor$ , where $\lfloor x \rfloor =$ $\operatorname* { m a x } \{ z \in Z | z \le x \} ~ [ 2 4 ]$ . Furthermore, we set $[ x ] ^ { + } = \operatorname* { m a x } \{ x , 0 \}$ in this article.
+
+We denote $Y _ { H k _ { m } } ( n )$ as the number of packets randomly generated by HAP for the IoRT device $k _ { m }$ at time slot n. $Y _ { H k _ { m } } ( n )$ follows the Poisson distribution, and the average packet arrival rate of IoRT device $k _ { m }$ can be expressed as $\lambda _ { k _ { m } } = E [ Y _ { H k _ { m } } ( n ) ]$ . The queue update of IoRT device $k _ { m }$ on link 1 and link 2 are given in (11) and (12), shown at the bottom of the page, respectively.
+
+$$
+Z _ {H k _ {m}} (n + 1) = \left\{ \begin{array}{l l} Y _ {H k _ {m}} (n) + Z _ {H k _ {m}} (n), & \text { if } A _ {H k _ {m}} (n) = 0 \\ Y _ {H k _ {m}} (n) + \left[ Z _ {H k _ {m}} (n) - C _ {H m} (n) \right] ^ {+}, & \text { if } A _ {H k _ {m}} (n) = 1 \end{array} \right. \tag {11}
+$$
+
+$$
+Z _ {m k _ {m}} (n + 1) = \left\{ \begin{array}{l l} Z _ {m k _ {m}} (n), & \text {if} A _ {H k _ {m}} (n) = 0, B _ {m k _ {m}} (n) = 0 \\ {\left[ Z _ {m k _ {m}} (n) - C _ {m k _ {m}} (n) \right] ^ {+},} & \text {if} A _ {H k _ {m}} (n) = 0, B _ {m k _ {m}} (n) = 1 \\ Z _ {m k _ {m}} (n) + \min \{C _ {H m} (n), Z _ {H k _ {m}} (n) \}, & \text {if} A _ {H k _ {m}} (n) = 1, B _ {m k _ {m}} (n) = 0 \\ \min \{C _ {H m} (n), Z _ {H k _ {m}} (n) \} + {\left[ Z _ {m k _ {m}} (n) - C _ {m k _ {m}} (n) \right] ^ {+}}, & \text {if} A _ {H k _ {m}} (n) = 1, B _ {m k _ {m}} (n) = 1 \end{array} \right. \tag {12}
+$$
+
+# D. Problem Formulation
+
+In this article, the total packet queue delay from the HAP to the IoRT devices at time slot n can be expressed as
+
+$$
+d (n) = \sum_ {m \in \mathcal {M}} \sum_ {k _ {m} \in \mathcal {K} _ {m}} \frac {Z _ {H k _ {m}} (n) + Z _ {m k _ {m}} (n)}{\lambda_ {k _ {m}}} \quad \forall n \in \mathcal {N}. \tag {13}
+$$
+
+The average packet queue delay from the HAP to the IoRT devices can be given as
+
+$$
+\bar {D} = \lim _ {N \rightarrow \infty} \frac {1}{N} \sum_ {n = 1} ^ {N} E [ d (n) ]. \tag {14}
+$$
+
+In order to meet the packet transmission requirement of IoRT devices, the following average packet delivery rate constraint should be satisfied:
+
+$$
+\begin{array}{l} \bar {R} _ {k _ {m}} = \lim _ {N \rightarrow \infty} \frac {1}{N} \sum_ {n = 1} ^ {N} E \left[ B _ {m k _ {m}} (n) O _ {m k _ {m}} (n) \right] \geq \phi_ {k _ {m}} \lambda_ {k _ {m}} \\ \forall k _ {m} \in \mathcal {K} _ {m} \tag {15} \\ \end{array}
+$$
+
+where $\bar { R } _ { k _ { m } }$ is the average packet delivery rate of IoRT device $k _ { m } . \mathrm { ~ } O _ { m k _ { m } } ( n ) = \operatorname* { m i n } ( C _ { m k _ { m } } ( n ) , Z _ { m k _ { m } } ( n ) )$ is the maximum number of packets that can be delivered to the IoRT device $k _ { m }$ at time slot n, and $\phi _ { k _ { m } } \in ( 0 , 1 ]$ represents the average packet delivery ratio requirement for the IoRT device $k _ { m }$ .
+
+In this work, we formulate a problem of minimizing the average queue delay by jointly optimizing the packet scheduling, bandwidth allocation, power control, and UAV trajectory design. The problem is formulated as follows:
+
+$$
+\text {(P1)}: \min _ {A, B, Q, w _ {H}, P} \bar {D} \tag {16a}
+$$
+
+$$
+\text { s.t. } \quad \bar {R} _ {k _ {m}} \geq \phi_ {k _ {m}} \lambda_ {k _ {m}} \quad \forall k _ {m} \in \mathcal {K} _ {m} \tag {16b}
+$$
+
+$$
+\sum_ {m \in \mathcal {M}} w _ {H m} (n) \leq W _ {H} ^ {\max} \forall m \in \mathcal {M} \forall n \in \mathcal {N} \tag {16c}
+$$
+
+$$
+p _ {m} (n) \leq P _ {\max} \quad \forall m \in \mathcal {M} \quad \forall n \in \mathcal {N} \tag {16d}
+$$
+
+$$
+A _ {H k _ {m}} (n) \in \{0, 1 \} \forall k _ {m} \in \mathcal {K} _ {m} \forall n \in \mathcal {N} \tag {16e}
+$$
+
+$$
+B _ {m k _ {m}} (n) \in \{0, 1 \} \forall k _ {m} \in \mathcal {K} _ {m} \forall m \in \mathcal {M} \forall n \in \mathcal {N} (1 6 f)
+$$
+
+$$
+\sum_ {k _ {m} \in \mathcal {K} _ {m}} A _ {H k _ {m}} (n) = 1 \forall k _ {m} \in \mathcal {K} _ {m} \forall n \in \mathcal {N} \tag {16g}
+$$
+
+$$
+\sum_ {k _ {m} \in \mathcal {K} _ {m}} B _ {m k _ {m}} (n) = 1
+$$
+
+$$
+\forall k _ {m} \in \mathcal {K} _ {m} \quad \forall m \in \mathcal {M} \quad \forall n \in \mathcal {N} \tag {16h}
+$$
+
+$$
+(1), (2), (3) \tag {16i}
+$$
+
+where $\textbf { \textit { A } } = \{ A _ { H k _ { m } } ( n ) \ \quad \forall k _ { m } \ \in \ \mathcal { K } _ { m } \ \quad \forall n \ \in \ \mathcal { N } \}$ , B = $\{ B _ { m k _ { m } } ( n ) \forall m \in \mathcal { M } \forall k _ { m } \in K _ { m } \forall n \in \mathcal { N } \} , Q = \{ q _ { m } ( n )$ ∀m ∈ $\mathcal { M } \quad \forall n \in \mathcal { N } \} , w _ { H } = \{ w _ { H m } ( n )$ ∀m ∈  ∀n ∈  }, P = $\{ p _ { m } ( n ) \quad \forall m \in \mathcal { M } \quad \forall n \in \mathcal { N } \}$ . Constraint (16b) implies the receive packet requirement of IoRT devices. Constraint (16c) is the bandwidth constraint of link 1. Constraint (16d) is the transmission power constraint of UAV. Constraints (16e) and (16f) are the packet scheduling action constraints of link 1 and link 2. Because $A _ { H k _ { m } } ( n )$ , and $B _ { m k _ { m } } ( n )$ are binary variables, and the optimization variables are coupled, the problem (P1) is nonconvex and difficult to solve.
+
+![](images/9390e5bd777726b4d4c39f1e920628b46c153d56d9bae65562980a7d5f9f2eee.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Environment"] -->|Reword r(n)| B["HAP Agents"]
+    A -->|Reword r(n)| C["UAV m Agents"]
+    B --> D["Observation"]
+    C --> D
+    D --> E["System state s(n)"]
+    A --> F["System action a(n)"]
+    F --> B
+    F --> C
+    style A fill:#f9f,stroke:#333
+    style B fill:#ccf,stroke:#333
+    style C fill:#ccf,stroke:#333
+```
+</details>
+
+Fig. 2. MDP model based on multiagent DRL in the air–ground integrated network.
+
+# IV. PROBLEM REFORMULATION AND SOLUTION
+
+In this section, the deep reinforcement learning (DRL) method is utilized to solve the problem (P1). Because the optimization variables contains discrete and continuous actions, the problem is a hybrid action spaces problem. In order to solve this problem, we first reformulate the problem (P1) into a MDP based on multiagent DRL, and then propose the hybrid MADDPG-APER algorithm.
+
+# A. MDP Modeling Based on Multiagent DRL
+
+In the network environment, the action policy is formulated by packet scheduling of one HAP and M UAVs, the trajectory design and power control of M UAVs, and the bandwidth allocation of one HAP. Thus, the network decision problem can be viewed as a multiagent DRL problem. The HAP and each UAV can be considered as an agent, which interacts with the network environment by executing the decisions. As shown in Fig. 2, we reformulate it into a MDP. We denote the set of agents as $\mathcal { U } = \{ 1 , \dots , M , M + 1 \}$ , where 1 to M agents correspond to 1 to M UAVs, respectively, and $( M +$ 1)th agent corresponds to the HAP. The MDP contains three key elements, i.e., observation, action and reward. DRL can explore how to map the observation to action in environments with reward, and obtain the optimal policy that maximizes the reward by continuous training.
+
+The MDP of a multiagent can be represented by a set of data $( \mathbf { s } ( n ) , \mathbf { a } ( n ) , r ( n ) , \mathbf { s } ( n ~ + ~ 1 ) )$ at time slot n. s(n) is the system state and it can be expressed as $\mathbf { s } ( n ) = \{ \mathbf { s } _ { 1 } ( n ) , \ldots , \mathbf { s } _ { m } ( n ) , \ldots , \mathbf { s } _ { M + 1 } ( n ) \}$ , where ${ \bf s } _ { m } ( n )$ denotes the observation of the agent m at time slot n. a(n) is the system action and it can be expressed as $\begin{array} { r l } { \mathbf { a } ( n ) } & { { } = } \end{array}$ $\{ \mathbf { a } _ { 1 } ( n ) , \dots , \mathbf { a } _ { m } ( n ) , \dots , \mathbf { a } _ { M + 1 } ( n ) \}$ , where $\mathbf { a } _ { m } ( n )$ denotes the action of the agent m at time slot $n , r ( n )$ is the reward of agent. Specifically, at each time slot, each agent needs to output its action based on a policy when it receives its observation, and the policy is represented as the neural network in the DRL. When the system action a(n) is performed, the system state s(n) changes to the next state ${ \bf s } ( n + 1 )$ and the agent can obtain the reward $r ( n )$ . In the process of interacting with the environment, the agent is constantly learning to optimize the policy, and this process is repeated until the optimal policy is obtained.
+
+Then, we denote $i \in \mathcal { U } .$ , the observation, action and reward are defined below.
+
+1) Observation: At time slot n, the observation of HAP is denoted as $\begin{array} { r l } { { \bf s } _ { M + 1 } ( n ) \quad } & { { } = } \end{array}$ $\{ R _ { H 1 } ( n ) , \dots , R _ { H M } ( n ) , Z _ { H 1 } ( n ) , \dots , Z _ { H K _ { M } } ( n ) \}$ , and the observation of UAV m is denoted as $\begin{array} { l } { \mathbf { s } _ { m } ( n ) \ = \ \{ R _ { m 1 } ( n ) , \dots , R _ { m K _ { m } } ( n ) , Z _ { m 1 } ( n ) , \dots , Z _ { m K _ { m } } ( n ) \} } \end{array}$ . Specifically, ${ \bf s } _ { M + 1 } ( n )$ contains the transmission rate $R _ { H m } ( n )$ and packet queue information $Z _ { H k _ { m } } ( n )$ in link 1, ${ \bf s } _ { m } ( n )$ contains the transmission rate $R _ { m k _ { m } } ( n )$ and packet queue information $Z _ { m k _ { m } } ( n )$ in link 2. Furthermore, the observations of all the agents constitute the system state. Thus, at time slot n, the system state is denoted as $\mathbf { s } ( n ) = \{ \mathbf { s } _ { i } ( n ) , i \in \mathcal { U } \}$ .
+
+2) Action: Denote $\varsigma _ { m } ( n ) \in [ 0 , V _ { \mathrm { m a x } } ]$ and $\alpha _ { m } ( n ) \in$ [0, 2π] as the flight speed and flight angle of UAV m at time slot n, respectively. Thus, the trajectory update of UAV m at time slot n can be reflected as: $x _ { m } ( n ) = x _ { m } ( n - 1 ) + \varsigma _ { m } ( n ) \tau \cos { \alpha _ { m } ( n ) }$ , $\begin{array} { r c l } { y _ { m } ( n ) } & { = } & { y _ { m } ( n \mathrm { ~ - ~ } 1 ) \mathrm { ~ } + \varsigma _ { m } ( n ) \tau \sin { \alpha _ { m } ( n ) } } \end{array}$ . At the time slot n, the action of HAP is $\begin{array} { r l } { { \bf { a } } _ { M + 1 } ( n ) } & { { } = } \end{array}$ $\{ A _ { H 1 } ( n ) , \dots , A _ { H K _ { m } } ( n ) , \dots , A _ { H K _ { M } } ( n )$ , wH1(n), . . . , wHM (n)}, which contains the scheduling action and bandwidth allocation. At the time slot n, the action of UAV m is $\mathbf { a } _ { m } ( n )$ $\{ B _ { m 1 } ( n ) , \dots , B _ { m K _ { m } } ( n ) , p _ { m } ( n ) , \varsigma _ { m } ( n ) , \alpha _ { m } ( n ) \}$ , which contains the scheduling action, transmission power, flight speed, and flight angle. Moreover, the system action consisted with the actions of all the agents, which can be represented as $\mathbf { a } ( n ) = \{ \mathbf { a } _ { i } ( n ) , i \in \mathcal { U } \}$ .
+
+3) Reward: Considering the objective of minimizing the average delay, the reward function at time slot n can be defined as
+
+$$
+\begin{array}{l} r (n) = - E [ d (n) ] \\ = - E \left[ \sum_ {m \in \mathcal {M}} \sum_ {k _ {m} \in \mathcal {K} _ {m}} \frac {Z _ {H k _ {m}} (n) + Z _ {m k _ {m}} (n)}{\lambda_ {k _ {m}}} \right] \\ \forall n \in \mathcal {N}. \tag {17} \\ \end{array}
+$$
+
+In this article, a cooperative game is considered. In this game, the HAP and all the UAVs cooperate with each other and serve the common purpose of minimizing the average packet queue delay, all the agents share the same optimization objective, i.e., $r _ { 1 } ( n ) = r _ { 2 } ( n ) = \cdot \cdot \cdot =$ $r _ { M } ( n ) ~ = ~ r _ { M + 1 } ( n )$ . Therefore, we define r(n) as the reward function of all the agents.
+
+# B. Proposed Hybrid MADDPG-APER Algorithm
+
+As described above, the continuous and discrete actions are included in both HAP action ${ \bf a } _ { M + 1 } ( n )$ and UAV action $\mathbf { a } _ { m } ( n )$ . Therefore, the primal action space can be separated into two subaction spaces. In addition, each discrete action corresponds to an optimal continuous action, we can first find the optimal continuous action for each discrete action, and then select the optimal discrete action based on the continuous actions. The specific actions of the agent are divided as follows.
+
+1) HAP: The action of HAP is split into $( \mathbf { v } _ { M + 1 } , \mathbf { u } _ { M + 1 } )$ , where the discrete part $\mathbf { v } _ { M + 1 }$ is represented as the packet scheduling and the continuous part ${ \bf u } _ { M + 1 }$ is represented as the bandwidth allocation. The HAP has a total of $( K _ { m } ) ^ { M }$ discrete action and all the discrete action of HAP can be constructed as $\hat { \mathbf { v } } _ { M + 1 } =$ $( \mathbf { v } _ { M + 1 } ^ { 1 } , \ldots , \mathbf { v } _ { M + 1 } ^ { l } , \ldots , \mathbf { v } _ { M + 1 } ^ { ( K _ { m } ) ^ { M } } )$ , where $\mathbf { v } _ { M + 1 } ^ { l }$ denotes the lth discrete action. The continuous action is $\hat { \mathbf { u } } _ { M + 1 } =$ $( \mathbf { u } _ { M + 1 } ^ { 1 } , \ldots , \mathbf { u } _ { M + 1 } ^ { l } , \ldots , \mathbf { u } _ { M + 1 } ^ { ( K _ { m } ) ^ { M } } )$ , where $\mathbf { u } _ { M + 1 } ^ { l }$ denotes the lth continuous action of HAP, which corresponds to the discrete action vlM+1. $\mathbf { v } _ { M + 1 } ^ { l } .$
+
+2) UAV m: The action of UAV m are divided into $( \mathbf { v } _ { m } , \mathbf { u } _ { m } )$ , where the discrete part ${ \bf v } _ { m }$ is represented as the packet scheduling, the continuous part $\mathbf { u } _ { m }$ contains flight speed, flight angle, and power control. The UAV m has a total of $( K _ { m } )$ discrete action. The total discrete action of UAV m can be reformed into $\hat { \mathbf { v } } _ { m } = ( \mathbf { v } _ { m } ^ { 1 } , \ldots , \mathbf { v } _ { m } ^ { l } , \ldots , \mathbf { v } _ { m } ^ { ( K _ { m } ) } )$ v(Km) ), where $\mathbf { v } _ { m } ^ { l }$ means the lth discrete action. Similarly, the m continuous action is $\hat { \bf u } _ { m } ~ = ~ ( { \bf u } _ { m } ^ { 1 } , \ldots , { \bf u } _ { m } ^ { l } , \ldots , \bar { \bf u } _ { m } ^ { ( K _ { m } ) } )$ where $\mathbf { u } _ { m } ^ { l }$ is the lth continuous action of UAV m, which m corresponds to the discrete action $\mathbf { v } _ { m } ^ { l } .$
+
+Furthermore, we define $\hat { \mathbf { u } } \ = \ ( \hat { \mathbf { u } } _ { 1 } , \hdots , \hat { \mathbf { u } } _ { M } , \hat { \mathbf { u } } _ { M + 1 } )$ as the continuous action of all agents.
+
+Considering the action is divided into continuous and discrete parts, the hybrid MADDPG-APER algorithm is proposed, and the structure of the algorithm is illustrated in Fig. 3. As the agent, the HAP and UAVs have three neural networks: 1) an actor network; 2) a critic network; and 3) their corresponding target network. The actor network is used based on the actor part in MADDPG, operating as an action policy function, and generates continuous action corresponding to each discrete action. The critic network is promoted by utilizing the MADDQN, which as Q-function has two roles, one is to evaluate the performance of the action output, and the other is to output the discrete action with maximum Q-value. In order to make it easy to understand, the two subfigures are illustrated separately.
+
+Fig. 3(a) is the overview of architecture for hybrid MADDPG-APER algorithm. The HAP and each UAV act as an agent and have independent actor network and critic network belonging to themselves. Let denote one of the agents as i, its actor network and critic network are denoted as $\mu _ { i } ( \mathbf { s } _ { i } | \phi _ { \mu _ { i } } . )$ with parameter $\phi _ { \mu _ { i } }$ and $Q _ { i } ( \mathbf { s } , \mathbf { v } _ { i } ^ { l } , \hat { \mathbf { u } } | \phi _ { Q _ { i } } . )$ with parameter $\phi _ { Q _ { i } }$ , respectively. $\mu _ { i }$ is the strategy function used by agent i to generate deterministic action, and $Q _ { i }$ is the actionvalue function used by agent i to evaluate the action, which outputs are real numbers, i.e., Q-value. In addition, we use $\phi _ { \mu _ { i } }$ and $\phi _ { Q _ { i } }$ as parameterized actor network and critic network, respectively, and use their changes to drive network changes. The neural network work with decentralized execution and centralized training within a multiagent scenario. In decentralized execution stage, only the actor network outputs action without involving the critic network. In centralized training stage, the critic network needs the system state, action of all agents to train, while the actor network is updated by feedback from the critic network. Furthermore, Fig. 3(a) shows the action decision process. Specifically, based on the observation $\mathbf { s } _ { i }$ of the agent i, the actor network generates continuous actions $\hat { \mathbf { u } } _ { i }$ related to all discrete actions. Meanwhile, we can utilize the system state s, continuous action uˆ and discrete action $\mathbf { v } _ { i } ^ { l }$ as input, and the critic network outputs Q-value for evaluating the continuous action concerning discrete action. Then, the discrete action with the maximum Q-value is selected, and its corresponding continuous action is used as the final continuous action. The action can be expressed as
+
+![](images/fa2b0d2ef8c87f01dad0b2713256ebbcf2d610f4368767904e916cc319f4dec4.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Centralized training"] --> B["Decentralized execution"]
+    B --> C["Environment"]
+    C --> D["s₁ (u₁ˡ, v₁ˡ)"]
+    D --> E["Actor_1 u₁(s₁ | φₙᵢ)"]
+    E --> F["..."]
+    F --> G["Actor_i uᵢ(sᵢ | φᵤᵢ)"]
+    G --> H["..."]
+    H --> I["û₁"]
+    I --> J["Critic_1 Q₁(s, v₁ˡ, û | φ_Qᵢ)"]
+    J --> K["..."]
+    K --> L["ûᵢ"]
+    L --> M["Critic_i Qᵢ(s, vᵢˡ, û | φ_Qᵢ)"]
+    M --> N["..."]
+    N --> O["vᵢˡ"]
+    O --> P["ûᵢ"]
+    P --> Q["..."]
+    Q --> R["û₁"]
+    R --> S["Actor_1"]
+    S --> T["(s₁, û₁)"]
+    T --> U["Actor_1"]
+    U --> V["u₁(s₁ | φₙᵢ)"]
+    V --> W["..."]
+    W --> X["û₁"]
+    X --> Y["Actor_i"]
+    Y --> Z["uᵢ(sᵢ | φᵤᵢ)"]
+    Z --> AA["..."]
+    AA --> AB["ûᵢ"]
+    AB --> AC["Actor_i"]
+```
+</details>
+
+(a)
+
+![](images/3a5d9e9077227ecc81d67d92a3a730898de78f2a63fb9d7c7c02f9b91ce65d01.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Agent i"] --> B["Next state s(n+1)"]
+    B --> C["Reward r(n)"]
+    C --> D["(s(n),r(n),v_i'(n),\hat{u}(n),s(n+1))"]
+    D --> E["Store"]
+    E --> F["Experience replay buffer"]
+    F --> G["Prioritized sample Mini-batch"]
+    G --> H["(s(j),r(j),v_i'(j),\hat{u}(j),s(j+1))"]
+    H --> I["γ_t"]
+    I --> J["×"]
+    J --> K["Target Q-value"]
+    K --> L["Loss function"]
+    L --> M["η_t^c"]
+    M --> N["Update"]
+    N --> O["Critic network"]
+    O --> P["Target critic network"]
+    P --> Q["u'_i(s_j(1)+|\phi_{ij}')"]
+    Q --> R["Action network"]
+    R --> S["s_i(n)"]
+    S --> T["Environment"]
+    T --> U["(u'_i(n),v'_i(n))"]
+    U --> V["Policy gradient"]
+    V --> W["×"]
+    W --> X["η_t^a"]
+    X --> Y["Update"]
+    Y --> Z["u'_i(s_j(1)+|\phi_{ij}')"]
+    Z --> AA["Action network"]
+    AA --> AB["s_i(n)"]
+    AB --> AC["Soft update"]
+    AC --> AD["Target actor network"]
+    AD --> AE["u'_i(s_j(1)+|\phi_{ij}')"]
+    AE --> AF["Action network"]
+    AF --> AG["v'_i(n)"]
+    AG --> AH["Policy gradient"]
+    AH --> AI["Update"]
+    AI --> AJ["u'_i(s_j(1)+|\phi_{ij}')"]
+    AJ --> AK["Action network"]
+    AK --> AL["s_i(n)"]
+    AL --> AM["Soft update"]
+    AM --> AN["Target actor network"]
+    AN --> AO["u'_i(s_j(1)+|\phi_{ij}')"]
+    AO --> AP["Action network"]
+    AP --> AQ["v'_i(n)"]
+    AQ --> AR["Policy gradient"]
+    AR --> AS["Update"]
+    AS --> AT["u'_i(s_j(1)+|\phi_{ij}')"]
+    AT --> AU["Action network"]
+    AU --> AV["s_i(n)"]
+    AV --> AW["Soft update"]
+    AW --> AX["u'_i(s_j(1)+|\phi_{ij}')"]
+    AX --> AY["Action network"]
+    AY --> AZ["v'_i(n)"]
+    AZ --> BA["Policy gradient"]
+    BA --> BB["Update"]
+    BB --> BC["u'_i(s_j(1)+|\phi_{ij}')"]
+    BC --> BD["Action network"]
+    BD --> BE["s_i(n)"]
+    BE --> BF["Soft update"]
+    BF --> BG["u'_i(s_j(1)+|\phi_{ij}')"]
+    BG --> BH["Action network"]
+    BH --> BI["v'_i(n)"]
+    BI --> BJ["Policy gradient"]
+    BJ --> BK["Update"]
+    BK --> BL["u'_i(s_j(1)+|\phi_{ij}')"]
+    BL --> BM["Action network"]
+    BM --> BN["v'_i(n)"]
+    BN --> BO["Policy gradient"]
+    BO --> BP["Update"]
+    BP --> BQ["u'_i(s_j(1)+|\phi_{ij}')"]
+    BQ --> BR["Action network"]
+    BR --> BS["v'_i(n)"]
+    BS --> BT["Policy gradient"]
+    BT --> BU["Update"]
+    BU --> BV["u'_i(s_j(1)+|\phi_{ij}')"]
+    BV --> BW["Action network"]
+    BW --> BX["v'_i(n)"]
+    BX --> BY["Policy gradient"]
+    BY --> BZ["Update"]
+    BZ --> CA["u'_i(s_j(1)+|\phi_{ij}')"]
+    CA --> CB["Action network"]
+    CB --> CC["v'_i(n)"]
+    CC --> CD["Policy gradient"]
+    CD --> CE["Update"]
+    CE --> CF["u'_i(s_j(1)+|\phi_{ij}')"]
+    CF --> CG["Action network"]
+    CG --> CH["v'_i(n)"]
+    CH --> CI["Policy gradient"]
+    CI --> CJ["Update"]
+    CJ --> CK["u'_i(s_j(1)+|\phi_{ij}')"]
+    CK --> CL["Action network"]
+```
+</details>
+
+(b)   
+Fig. 3. Structure of hybrid MADDPG-APER algorithm. (a) Overview of architecture for hybrid MADDPG-APER algorithm. (b) Training process of each agent in hybrid MADDPG-APER algorithm.
+
+$$
+\mathbf {v} _ {i} ^ {l} = \arg \max _ {\mathbf {v} _ {i} ^ {l} \in \hat {\mathbf {v}} _ {i}} Q _ {i} \left(\mathbf {s}, \mathbf {v} _ {i} ^ {l}, \hat {\mathbf {u}} \mid \phi_ {Q _ {i}}\right) \tag {18}
+$$
+
+$$
+\mathbf {u} _ {i} ^ {l} = \hat {\mathbf {u}} _ {i} \left[ \mathbf {v} _ {i} ^ {l} \right]. \tag {19}
+$$
+
+It should be noted that in order to balance the tradeoff between exploration and exploitation, we have done the extra work on the output of continuous action and the selection of discrete action. For the action output, a noise ξ is added to the actor network, i.e., $\hat { \mathbf { u } } _ { i } = \mu _ { i } ( \mathbf { s } _ { i } | \phi _ { \mu _ { i } } . ) + \xi$ . For the selection of discrete action, an ε-greedy strategy is employed for the critic network, when the probability is less than or equal to ε, the discrete action is chosen randomly; otherwise, (18) is used for selection.
+
+The training process of each agent in hybrid MADDPG-APER algorithm is shown in Fig. 3(b). Similarly, taking the example of a certain agent i. It can be seen that the actor network and the critic network of the agent i have corresponding target network. The two target networks are defined as $\mu _ { i } ^ { \prime } ( \mathbf { s } _ { i } | \boldsymbol { \phi } ^ { \prime } _ { \mu _ { i } } . )$ with parameter $\phi _ { \mu _ { i } } ^ { \prime }$ and $Q _ { i } ^ { \prime } ( \mathbf { s } , \mathbf { v } _ { i } ^ { l } , \hat { \mathbf { u } } | \boldsymbol { \phi } ^ { \prime } _ { Q _ { i } } . )$ with parameter $\phi _ { Q _ { i } } ^ { \prime }$ , respectively. They have the same network structure as the critic network and actor network, respectively, and the parameters are synchronized after a certain number of steps of training. At time slot n, after all agents utilize neural network for action decision making through (18) and (19), the agent first obtains reward r(n) and environment changes from state s(n) to state $\mathbf s ( n + 1 )$ . And then, the data $( \mathbf { s } ( n ) , r ( n ) , \mathbf { v } _ { i } ^ { l } ( n ) , \hat { \mathbf { u } } ( n ) , \mathbf { s } ( n + 1 ) )$ is stored in the experience replay buffer. Define ${ \bf e } _ { i , j } \ = \ ( { \bf s } ( j ) , r ( j ) , { \bf v } _ { i } ^ { l } ( j ) , \hat { \bf u } ( j ) , { \bf s } ( j + 1 ) )$ as a certain sample data of the agent i. For the traditional experience replay mechanism, when the experience replay buffer is full, some data $( \mathbf { s } ( j ) , r ( j ) , \mathbf { v } _ { i } ^ { l } ( j ) , \hat { \mathbf { u } } ( j ) , \mathbf { s } ( j + 1 ) )$ are sampled as a mini-batch randomly in the experience replay buffer for network update [25], [26]. However, this mechanism will extract sample data with equal probability during training without considering the importance of the sample data. Due to the different temporal difference error (TD-error), the samples of the experience relay have different impacts on the deep neural network, and the larger the TD-error, the larger the impact on the deep neural network. Prioritizing samples with large TD-error and training them frequently can improve the learning efficiency of the algorithm. This is the basic idea of PER mechanism [27]. Therefore, we adopt the PER mechanism to select sample data in the proposed algorithm. Further, although a higher learning rate can speed up the convergence of the algorithm, it can cause greater instability to the convergence. The discount rate shows how much the agent cares about future rewards and current rewards, which needs to be traded off with reasonable settings to improve the performance of the algorithm [28], [29]. Therefore, an adaptive discount rate and learning rate are employed to update the network in order to improve the stability and convergence rate of the algorithm. The specific process of training is given as follows.
+
+1) Sampling in PER: PER employs the idea of TD-error. For each sample data ${ \bf e } _ { i , j }$ of the agent i, the priority can be calculated by using TD-error. The TD-error $\delta _ { i } ( j )$ can be written as
+
+$$
+\delta_ {i} (j) = y _ {i} (j) - Q _ {i} (\mathbf {s} (j), \mathbf {v} _ {i} ^ {l} (j), \hat {\mathbf {u}} (j) | \phi_ {Q _ {i}}) \tag {20}
+$$
+
+with
+
+$$
+y _ {i} (j) = r (j) + \gamma_ {t} Q _ {i} ^ {\prime} (\mathbf {s} (j + 1), \arg \max _ {\mathbf {v} _ {i} ^ {l} \in \hat {\mathbf {v}} _ {i}} Q _ {i} (\mathbf {s} (j + 1)
+$$
+
+$$
+\mathbf {v} _ {i} ^ {l} (j + 1), \hat {\mathbf {u}} (j + 1) \big | \phi_ {Q _ {i}}), \hat {\mathbf {u}} (j + 1) | \phi_ {Q _ {i}} ^ {\prime} \tag {21}
+$$
+
+where $y _ { i } ( j )$ is the target Q-value. $\gamma _ { t }$ is the adaptive discount rate, and the update process is
+
+$$
+\gamma_ {t + 1} = 1 - (1 - \varpi_ {d}) (1 - \gamma_ {t}) \tag {22}
+$$
+
+where $\varpi _ { d } ~ \in ~ ( 0 , 1 )$ is defined as the increase rate of γt [27]. The probability of a sample data ${ \bf e } _ { i , j }$ from agent i being extracted is expressed as
+
+$$
+P _ {i} (j) = \frac {P _ {i , j} ^ {\alpha}}{\sum_ {k} P _ {i , k} ^ {\alpha}} \tag {23}
+$$
+
+where $p _ { i , j } = \vert \delta _ { i } ( j ) \vert + \psi$ indicates the priority of the sample data $\mathbf { e } _ { i , j } .$ , and ψ is a minute positive value intended to accommodate the extraction of certain exceptional edge sample data exhibiting the TD-error of 0. α indicates the prioritization of the sample data.
+
+2) Discrete Action Updating: Because the PER introduces error, the data distribution is changed. Therefore, it is necessary to compensate through importance sampling (IS) weight, and the IS weight can be expressed as [30]
+
+$$
+\omega_ {i} (j) = \frac {1}{(M _ {b} P _ {i} (j)) ^ {\beta}} \tag {24}
+$$
+
+where $M _ { b }$ is the capacity size of the experience replay buffer and $\beta$ is a hyperparameter that determines the degree of the compensation. Since the decision of discrete action is determined by the critic network, the update of discrete actions is represented by the critic network. With the description of TD-error, the updating for loss function of critic network is obtained as
+
+$$
+L \big (\phi_ {Q _ {i}} \big) = E \Big [ \omega_ {i} (j) \delta_ {i} ^ {2} (j) \Big ]. \tag {25}
+$$
+
+The learning rate $\eta ^ { c }$ is improved to adaptive learning rate $\eta _ { t } ^ { c }$ for critic network updates, which is given by
+
+$$
+\eta_ {t + 1} ^ {c} = (1 - \varpi_ {c}) \eta_ {t} ^ {c} \tag {26}
+$$
+
+where $\varpi _ { c } \in ( 0 , 1 )$ is the decrease rate of the $\eta _ { t } ^ { c } ,$ , the update of the critic network part based on MADDQN can be given as
+
+$$
+\phi_ {Q _ {i}} \leftarrow \phi_ {Q _ {i}} + \eta_ {t} ^ {c} \nabla \phi_ {Q _ {i}} L (\phi_ {Q _ {i}}) \tag {27}
+$$
+
+where $\nabla \phi _ { Q _ { i } } L ( \phi _ { Q _ { i } } )$ is the gradient vector of $L ( \phi _ { Q _ { i } } )$ with respect to $\phi _ { Q _ { i } }$ .
+
+3) Continuous Action Updating: As continuous action is generated by the actor network, actor network update is used to represent the update of continuous action. The update of the actor network for each agent requires a maximum Q-value from the feedback of the critic network, which can be defined as
+
+$$
+Q _ {i} ^ {\mu} \left(\mathbf {s}, \mathbf {v} _ {i} ^ {l}, \hat {\mathbf {u}} \mid \phi_ {Q _ {i}}\right) = \max _ {\mathbf {v} _ {i} ^ {l} \in \hat {\mathbf {v}} _ {i}} Q _ {i} \left(\mathbf {s}, \mathbf {v} _ {i} ^ {l}, \hat {\mathbf {u}} \mid \phi_ {Q _ {i}}\right). \tag {28}
+$$
+
+The policy gradient of the actor network utilizes the policy gradient in MADDPG, which is represented as
+
+$$
+\nabla \phi_ {\mu_ {i}} = E \left[ \nabla Q _ {i} ^ {\mu} \left(\mathbf {s} (j), \mathbf {v} _ {i} ^ {l} (j), \hat {\mathbf {u}} (j) \mid \phi_ {Q _ {i}}\right) \nabla \mu_ {i} (\mathbf {s} _ {i} (j) \mid \phi_ {\mu_ {i}})\right). \tag {29}
+$$
+
+Similar to the critic network, the learning rate $\eta ^ { a }$ of actor network is modified to adaptive learning rate $\eta _ { t } ^ { a }$ with decrease rate $\varpi _ { a } \in ( 0 , 1 )$ , which can be expressed as
+
+$$
+\eta_ {t + 1} ^ {a} = (1 - \varpi_ {a}) \eta_ {t} ^ {a} \tag {30}
+$$
+
+and the gradient ascent-based update actor network can be depicted as
+
+$$
+\phi_ {\mu_ {i}} \leftarrow \phi_ {\mu_ {i}} + \eta_ {t} ^ {a} \nabla \phi_ {\mu_ {i}}. \tag {31}
+$$
+
+4) Target Networks Updating: With the update of the actor network and critic network, the target actor network and target critic network are updated by the soft-up replacement, i.e.,
+
+$$
+\phi^ {\prime} _ {\mu_ {i}} \leftarrow \rho \phi_ {\mu_ {i}} + (1 - \rho) \phi^ {\prime} _ {\mu_ {i}}
+$$
+
+$$
+\phi_ {Q _ {i}} ^ {\prime} \leftarrow \rho \phi_ {Q _ {i}} + (1 - \rho) \phi_ {Q _ {i}} ^ {\prime} \tag {32}
+$$
+
+where $\rho \ll 1$ is the soft update factor, which indicates the update rate of the target network.
+
+Based on the above analysis, the hybrid MADDPG-APER algorithm is shown in Algorithm 1.
+
+# C. Complexity Analysis
+
+In DRL, the complexity of algorithm depends on the number of the neural network layers and the number of neurons in each layer [31]. Therefore, the complexity of the proposed hybrid MADDPG-APER algorithm can be expressed as
+
+$$
+\mathcal {O} \left(\sum_ {g = 0} ^ {G _ {a}} a _ {g} \times a _ {g + 1} + \sum_ {g = 0} ^ {G _ {c}} c _ {g} \times c _ {g + 1}\right) \tag {33}
+$$
+
+where $G _ { a }$ is the number of hidden layers of the actor network and $a _ { g }$ is the number of neurons in the gth layer of the actor network, $G _ { c }$ is the number of hidden layers of the critic network and $c _ { g }$ is the number of neurons in the gth layer of the critic network, $a _ { 0 }$ and $c _ { 0 }$ denote the dimensions in the input layer of the actor network and critic network, respectively, and $a _ { G _ { a } + 1 }$ and $c _ { G _ { c } + 1 }$ denote the dimensions in the output layer of the actor network and critic network, respectively.
+
+# V. SIMULATION RESULTS
+
+In this section, we demonstrate the effectiveness of the hybrid MADDPG-APER algorithm through numerical simulations.
+
+# A. Parameters Setting
+
+In order to represent the performance of the algorithm, it is necessary to set appropriate parameters in the simulation. We consider that all IoRT devices are distributed in a 200 m × 200 m area. The HAP hovers at a fixed position of (100, 100, 20000) m, the transmission power of HAP is 10 W and the bandwidth is 450 MHz in link 1. There are 3 UAVs in the system, the maximum flight speed of each UAV is 25 m/s, the fixed flight altitude is 200 m, the maximum transmission power is 1 W, and the minimum safety distance of UAVs is 50 m. The bandwidth is 200 MHz in link 2. The number of IoRT devices served by each UAV is 6. The delivery ratio requirement is 0.8 and average packet arrival rate is 5 packets/slot. The antenna power gain is $G _ { T } G _ { R } { = } 2 5 \ \mathrm { d B }$ , the center frequency is 2.4 GHz, the Boltzmann’s constraint is $k _ { B } = 1 . 3 8 \stackrel { \cdot } { \times } 1 0 ^ { - 2 3 }$ J/K, and the noise temperature is $N _ { t } { = } 1 0 0 0$ K [32]. The noise power is −110 dBm, and the channel power gain of link $2 \ \mathrm { i s } \ - 6 0$ dB at a reference distance of 1 m. The time duration of each period is 10 s, and the length of each
+
+Algorithm 1 Hybrid MADDPG-APER Algorithm   
+1: Initialize actor network $\mu_{i}(\mathbf{s}_{i}(n)|\phi_{\mu_{i}})$ with parameter $\phi_{\mu_{i}}$ and critic network $Q_{i}(\mathbf{s}(n),\mathbf{v}_{i}^{l}(n),\hat{\mathbf{u}}(n)|\phi_{Q_{i}})$ with parameter $\phi_{Q_{i}}$ .
+2: Initialize target actor network $\mu_{i}^{\prime}(\mathbf{s}_{i}(n)|\phi^{\prime}_{\mu_{i}})$ and target critic network $Q_{i}^{\prime}(\mathbf{s}(n),\mathbf{v}_{i}^{l}(n),\hat{\mathbf{u}}(n)|\phi^{\prime}_{Q_{i}})$ with parameters $\phi^{\prime}_{\mu_{i}}\leftarrow\phi_{\mu_{i}},\phi^{\prime}_{Q_{i}}\leftarrow\phi_{Q_{i}}$ .
+3: Initialize experience replay buffer with capacity size $M_{b}$ , mini-batch size J.
+4: for each episode do
+5: Initialize system state s.
+6: for each n do
+7: for each agent i do
+8: Receive current observation $s_{i}(n)$ .
+9: Obtain continuous action $\hat{\mathbf{u}}_{i}(n)=\mu_{i}(\mathbf{s}_{i}(n)|\phi_{\mu_{i}})+\xi.$ 10: end for
+11: for each agent i do
+12: Select discrete action $\mathbf{v}_{i}^{l}(n)$ by Eq. (18) when the probability is less than or equal to $\varepsilon$ , otherwise randomly select $\mathbf{v}_{i}^{l}(n)$ .
+13: Select continuous action $\mathbf{u}_{i}^{l}(n)$ by Eq. (19).
+14: end for
+15: Execute action $\mathbf{u}_{1}^{l}(n),\mathbf{v}_{1}^{l}(n),\ldots,\mathbf{u}_{M}^{l}(n),\mathbf{v}_{M}^{l}(n),\mathbf{u}_{M+1}^{l}(n),\mathbf{v}_{M+1}^{l}(n)$ , obtain reward r(n) and system state $s(n+1)$ .
+16: for each agent i do
+17: Store data $(\mathbf{s}(n),r(n),\mathbf{v}_{i}^{l}(n),\hat{\mathbf{u}}(n),\mathbf{s}(n+1))$ into replay buffer with maximal priority $p_{n}=max_{n<e}p_{e}$ .
+18: if replay buffer is full then
+19: Sample J data with probability $P_{i}(j)$ by Eq. (23) in the replay buffer.
+20: end if
+21: for each sample data $e_{i,j}$ do
+22: Calculate the IS weights $\omega_{i}(j)$ by Eq. (24).
+23: Update sample data prioritization $|\delta_{i}(j)|$ by Eq. (20).
+24: end for
+25: Update critic network by Eq. (27).
+26: Update actor network by Eq. (31).
+27: Update two target networks by Eq. (32).
+28: end for
+29: end for
+30: Update adaptive discount rate $\gamma_{t}$ by Eq. (22).
+31: Update adaptive learning rate $\eta_{t}^{c}$ by Eq. (26).
+32: Update adaptive learning rate $\eta_{t}^{a}$ by Eq. (30).
+33: end for
+
+TABLE II SIMULATION PARAMETERS 
+
+<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>Initial discount rate  $\gamma_t$ </td><td>0.9</td></tr><tr><td>Increase rate  $\varpi_d$ </td><td>0.004</td></tr><tr><td>Initial learning rate  $\eta_t^c$ </td><td>0.002</td></tr><tr><td>Decrease rate  $\varpi_c$ </td><td>0.004</td></tr><tr><td>Initial learning rate  $\eta_t^a$ </td><td>0.001</td></tr><tr><td>Decrease rate  $\varpi_a$ </td><td>0.004</td></tr><tr><td>Capacity size of experience replay buffer  $M_b$ </td><td>10000</td></tr><tr><td>Size of mini-batch  $J$ </td><td>64</td></tr><tr><td>Priority weighting factor  $\alpha$ </td><td>0.5</td></tr><tr><td>IS weighting factor  $\beta$ </td><td>0.5</td></tr><tr><td>Soft update factor  $\rho$ </td><td>0.005</td></tr><tr><td>Probability  $\varepsilon$ </td><td>0.1</td></tr></table>
+
+![](images/3ff11576d37eddc16c539aea896680a707014d49af1abcb1ea020f15ec713508.jpg)
+
+<details>
+<summary>line</summary>
+
+| Episode | Hybrid MADDPG-APER | Hybrid MADDPG-PER | Hybrid MADDPG-AER |
+| ------- | ----------------- | ----------------- | ----------------- |
+| 0       | -185              | -185              | -190              |
+| 200     | -170              | -175              | -185              |
+| 400     | -160              | -165              | -175              |
+| 600     | -150              | -155              | -165              |
+| 800     | -140              | -145              | -155              |
+| 1000    | -135              | -140              | -150              |
+| 1200    | -130              | -135              | -145              |
+| 1400    | -125              | -130              | -140              |
+</details>
+
+Fig. 4. Convergence performance of algorithms versus different update mechanisms.
+
+time slot is 0.05 s. For the HAP agent, three fully connected hidden layers with [521, 256, 128] neurons are contained to its actor network and critic network. For the UAV agent, three fully connected hidden layers with [256, 128, 64] neurons are contained to its actor network and critic network. Other parameters are set in Table II.
+
+# B. Comparison of Convergence Performances
+
+In order to demonstrate the convergence performance of the proposed algorithm with respect to the update mechanism, we compare it with other existing update mechanisms.
+
+1) Hybrid MADDPG-PER: When using the PER update mechanism, the algorithm only uses the PER mechanism for sample extraction without using adaptive updating of parameters [33].   
+2) Hybrid MADDPG-Adaptive Experience Replay (MADDPG-AER): During network training, the algorithm only employs adaptive updating of parameters with sample extraction using traditional experience replay mechanism [28].
+
+Fig. 4 presents the convergence performance of algorithms under different update mechanisms. For the proposed hybrid MADDPG-APER algorithm, as shown in Fig. 4, when the number of training episodes reaches roughly 720, there is no longer large change in the curves and the training curves keep fluctuating in a small range as the number of training episodes increases. Therefore, the algorithm has converged roughly at 720 episodes. In addition, it can be seen that the proposed hybrid MADDPG-APER algorithm has better convergence and stability than other update mechanisms.
+
+![](images/a1dfc1841f482c6517de3d3970e790a354779cb7397598424e5d167e91587c4d.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of IoRT devices served by each UAV | Hybrid MADDPG-RR | MADDPG | FRL | Hybrid MADDPG-APER |
+| ----------------------------------------- | ---------------- | ------ | --- | ------------------ |
+| 4                                         | 160              | 135    | 120 | 100                |
+| 5                                         | 180              | 150    | 140 | 120                |
+| 6                                         | 200              | 170    | 160 | 140                |
+| 7                                         | 230              | 200    | 190 | 160                |
+| 8                                         | 260              | 230    | 220 | 190                |
+</details>
+
+Fig. 5. Average packet queue delay versus the number of IoRT devices served by each UAV.
+
+# C. Performance Comparison
+
+In order to represent the performance of the hybrid MADDPG-APER algorithm, we compare it with the following three algorithms.
+
+1) Hybrid MADDPG-Round Robin (MADDPG-RR) Algorithm: The MADDPG method is used to optimize the power control, bandwidth allocation, and UAV trajectory design. However, the packet scheduling values are assigned in a predefined sequence.   
+2) MADDPG Algorithm: The packet scheduling, power control, bandwidth allocation, and UAV trajectory design are obtained by utilizing the MADDPG method. The packet scheduling variables are relaxed as [0, 1].   
+3) Federated Reinforcement Learning (FRL) Algorithm: The FRL algorithm utilizes the framework of actor– critic network and adds a central weight-aggregator to manage and improve cooperation between agents. This algorithm transfers the parameter of actor network to the aggregator and perform federated update. The aggregator runs parameter of actor network by using a predefined algorithm, subsequently aggregating and returning them to the actor networks [34].
+
+Fig. 5 illustrates the average packet queue delay versus the number of IoRT devices served by each UAV for the four algorithms. From this figure, we can see that the average packet queue delay increases with the number of IoRT devices increasing. This is explained that bandwidth resources are limited. With the number of IoRT devices increasing, each IoRT device is allocated less bandwidth resources. Therefore, the packet queue delay increases. Meanwhile, the hybrid MADDPG-APER algorithm maintains a low-average packet queue delay when the number of IoRT devices served by each UAV increases from 4 to 8. The average packet queue delay of the hybrid MADDPG-APER algorithms decreases by 30.15%, 19.16%, and 13.46% on average compared with the hybrid MADDPG-RR algorithm, MADDPG algorithm, and FRL algorithm, respectively, when the number of IoRT devices increases from 4 to 8.
+
+![](images/39099c85e0f13025d125af199942195b580551047587335831046699585bb633.jpg)
+
+<details>
+<summary>line</summary>
+
+| Average packet arrive rate (packets/slot) | Hybrid MADDPG-RR | MADDPG | FRL | Hybrid MADDPG-APER |
+| ----------------------------------------- | ---------------- | ------ | --- | ------------------ |
+| 3                                         | 160              | 130    | 120 | 105                |
+| 4                                         | 175              | 145    | 135 | 120                |
+| 5                                         | 200              | 170    | 160 | 140                |
+| 6                                         | 240              | 210    | 190 | 170                |
+| 7                                         | 295              | 250    | 225 | 205                |
+</details>
+
+Fig. 6. Average packet queue delay versus the average packet arrival rate.
+
+![](images/b9eff3b3adfd924fc8bfabf4270fb79ed57b6e2bc7f1d9b4a40516913225fa4b.jpg)
+
+<details>
+<summary>line</summary>
+
+| Available bandwidth of HAP (MHz) | Hybrid MADDPG-RR | MADDPG | FRL | Hybrid MADDPG-APER |
+| -------------------------------- | ---------------- | ------ | --- | ------------------ |
+| 350                              | 280              | 250    | 225 | 190                |
+| 400                              | 240              | 200    | 185 | 160                |
+| 450                              | 200              | 170    | 160 | 140                |
+| 500                              | 180              | 150    | 145 | 125                |
+| 550                              | 170              | 135    | 130 | 120                |
+</details>
+
+Fig. 7. Average packet queue delay versus the available bandwidth of HAP.
+
+Fig. 6 shows the average packet queue delay versus the average packet arrival rate for the four algorithms. On the one hand, for each algorithm, the average packet queue delay increases with the average packet arrival rate increasing. This is because more packet need more time for transmission. On the other hand, the proposed hybrid MADDPG-APER algorithm is obviously superior to the other three benchmark algorithms. Specifically, when the average packet arrival rate is set from 3 packets/slot to 7 packets/slot, the average packet queue delay of the proposed hybrid MADDPG-APER algorithm decreases by 31.70%, 18.81% and 11.34% on average compared to the hybrid MADDPG-RR algorithm, MADDPG algorithm and FRL algorithm, respectively.
+
+Fig. 7 demonstrates the average packet queue delay versus the available bandwidth of HAP for the four algorithms. From this figure, we can see that when the available bandwidth of HAP increases, the average packet queue delay becomes lower. The reason is that as the available bandwidth increases, the transmission rate increases. Therefore, the transmission time is decreasing. Meanwhile, the hybrid MADDPG-APER algorithm has the lowest average packet queue delay compared to the other three benchmark algorithms. When the available bandwidth of HAP increases from 350 MHz to 550 MHz, the average packet queue delay of the hybrid MADDPG-APER algorithm decreases by 30.98%, 18.45%, and 12.57% on average compared to the hybrid MADDPG-RR algorithm, MADDPG algorithm, and FRL algorithm, respectively.
+
+![](images/7c4a1e20bd2ae8373c3d7c75a5235cc1122a231b47cec1cd4966cd2cc0121488.jpg)
+
+<details>
+<summary>line</summary>
+
+| Available bandwidth of each UAV (MHz) | Hybrid MADDPG-RR | MADDPG | FRL | Hybrid MADDPG-APER |
+| ------------------------------------- | ---------------- | ------ | --- | ------------------ |
+| 160                                   | 295              | 255    | 230 | 200                |
+| 180                                   | 250              | 215    | 190 | 165                |
+| 200                                   | 200              | 175    | 160 | 140                |
+| 220                                   | 180              | 145    | 140 | 125                |
+| 240                                   | 165              | 135    | 130 | 120                |
+</details>
+
+Fig. 8. Average packet queue delay versus the available bandwidth of each UAV.
+
+![](images/b636cc46f4da23a0bd266e036121f83001f5868bbb3f5935882467060d86c9d3.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| UAV   | X (m) | Y (m) | Time (s) |
+|-------|-------|-------|----------|
+| UAV1  | 20    | 30    | 5        |
+| UAV1  | 40    | 60    | 5        |
+| UAV1  | 60    | 80    | 5        |
+| UAV1  | 80    | 120   | 5        |
+| UAV1  | 100   | 160   | 5        |
+| UAV1  | 120   | 180   | 5        |
+| UAV1  | 140   | 160   | 5        |
+| UAV1  | 160   | 120   | 5        |
+| UAV1  | 180   | 80    | 5        |
+| UAV2  | 20    | 30    | 5        |
+| UAV2  | 40    | 60    | 5        |
+| UAV2  | 60    | 80    | 5        |
+| UAV2  | 80    | 120   | 5        |
+| UAV2  | 100   | 160   | 5        |
+| UAV2  | 120   | 180   | 5        |
+| UAV2  | 140   | 160   | 5        |
+| UAV2  | 160   | 120   | 5        |
+| UAV2  | 180   | 80    | 5        |
+| UAV3  | 20    | 30    | 5        |
+| UAV3  | 40    | 60    | 5        |
+| UAV3  | 60    | 80    | 5        |
+| UAV3  | 80    | 120   | 5        |
+| UAV3  | 100   | 160   | 5        |
+| UAV3  | 120   | 180   | 5        |
+| UAV3  | 140   | 160   | 5        |
+| UAV3  | 160   | 120   | 5        |
+| UAV3  | 180   | 80    | 5        |
+| UAV3  | 20    | 30    | 10       |
+| UAV3  | 40    | 60    | 10       |
+| UAV3  | 60    | 80    | 10       |
+| UAV3  | 80    | 120   | 10       |
+| UAV3  | 100   | 160   | 10       |
+| UAV3  | 120   | 180   | 10       |
+| UAV3  | 140   | 160   | 10       |
+| UAV3  | 160   | 120   | 10       |
+| UAV3  | 180   | 80    | 10       |
+| UAV3  | 20    | 30    | 20       |
+| UAV3  | 40    | 60    | 20       |
+| UAV3  | 60    | 80    | 20       |
+| UAV3  | 80    | 120   | 20       |
+| UAV3  | 100   | 160   | 20       |
+| UAV3  | 120   | 180   | 20       |
+| UAV3  | 140   | 160   | 20       |
+| UAV3  | 160   | 120   | 20       |
+| UAV3  | 180   | 80    | 20       |
+| UAV3  | -     | -     | -        |
+| UAV3  | -     | -     | -        |
+| UAV3  | -     | -     | -        |
+| UAV3  | -     | -     | -        |
+| UAV3  | -     | -     | -        |
+| UAV3  | -     | -     | -        |
+| UAV3  | -     | -     | -        |
+| UAV3  | -     | -     | -        |
+)|
+</details>
+
+Fig. 9. UAV trajectory versus the time period. UAV trajectory is sampled per second. UAV trajectory direction is marked by “→.”
+
+Fig. 8 describes the average packet queue delay versus the bandwidth of each UAV for the four algorithms. From this figure, it can be seen that as the bandwidth increases, the queue delay decreases, which is due to the higher bandwidth with higher transmission rate. Moreover, when the UAVs bandwidth increases from 160 MHz to 240 MHz, the average packet queue delay of the proposed hybrid MADDPG-APER algorithm is reduced by on average 32.02%, 19.30%, and 12.81% than hybrid MADDPG-RR algorithm, MADDPG algorithm, and FRL algorithm, respectively.
+
+Fig. 9 presents the UAV trajectory versus the time period. It can be observed that the UAV trajectory is a closed loop. When the time period T is small, the UAV trajectory can only form small loop, which will not effectively approach the IoRT devices. As T increases, UAVs are closer to devices. This is because when T increases, the UAVs have more flight time.
+
+Fig. 10 is the UAV transmission power versus the time for $T \ : = \ : 1 0 \ : \mathrm { ~ s } . \ p _ { 1 } , \ p _ { 2 }$ , and $p _ { 3 }$ correspond to the transmission power of the three UAVs in Fig. 9, respectively. As can be seen, the transmission power of the three UAVs is very close at each point in time. This is because if the difference in transmission power between UAVs is large, the UAV with high-transmission power will cause serious interference to the
+
+![](images/70445d81e06f67e182e03215768068f8e2552a29daeef2c6a2360bbcb3685403.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time (s) | p1    | p2    | p3    |
+| -------- | ----- | ----- | ----- |
+| 0        | 0.78  | 0.80  | 0.78  |
+| 1        | 0.88  | 0.85  | 0.84  |
+| 2        | 0.71  | 0.74  | 0.74  |
+| 3        | 0.83  | 0.75  | 0.77  |
+| 4        | 0.84  | 0.77  | 0.80  |
+| 5        | 0.81  | 0.78  | 0.78  |
+| 6        | 0.73  | 0.76  | 0.72  |
+| 7        | 0.86  | 0.90  | 0.89  |
+| 8        | 0.89  | 0.86  | 0.89  |
+| 9        | 0.77  | 0.77  | 0.74  |
+| 10       | 0.77  | 0.80  | 0.77  |
+</details>
+
+${ \mathrm { F i g . } }$ 10. UAV transmission power versus time for $T = 1 0 ~ \mathrm { : }$ s.
+
+UAV with low-transmission power, which in turn causes a significant reduction in the transmission rate and result in high delay.
+
+# VI. CONCLUSION
+
+In this article, a joint packet scheduling, bandwidth allocation, power control, and UAV trajectory design problem was investigated to minimize the average packet queue delay from HAP to IoRT devices in the air–ground integrated network. The nonconvex problem was transformed into a MDP. We decomposed the continuous and discrete hybrid action spaces into two subaction spaces, and utilized the basic idea of MADDPG and MADDQN to solve them, respectively. In order to improve the stability, convergence rate and learning efficiency, the basic idea of adaptive PER was introduced, and we proposed the hybrid MADDPG-APER algorithm. Simulation results have shown that compared with other benchmark algorithms, the proposed algorithm can achieve better performance in terms of the average packet queue delay.
+
+In this article, we have investigated the downlink packet transmission problem in air–ground integrated network. For future work, we can investigate the uplink packet transmission problem which includes the mobile edge computing (MEC) technique. The air–ground integrated MEC network will introduce the following two challenges. First, the air– ground integrated MEC network comprises multicomputation equipment options, making it challenging to select feasible computation equipment and make optimal use of the available resources. Second, there are multidimensional resources in the air–ground integrated MEC network, such as the system bandwidth, UAV trajectory, computation resources, transmission power of HAP and UAV, etc. It is challenging to allocate these resources and make full use of resources to improve the network performance.
+
+# REFERENCES
+
+[1] S. Li et al., “Joint admission control and resource allocation in edge computing for Internet of Things,” IEEE Netw., vol. 32, no. 1, pp. 72–79, Jan./Feb. 2018.   
+[2] Y. Guo, Q. Li, Y. Li, N. Zhang, and S. Wang, “Service coordination in the space–air–ground integrated network,” IEEE Netw., vol. 35, no. 5, pp. 168–173, Nov. 2021.
+
+[3] J. Xu, K. Ota, M. Dong, and H. Zhou, “MCTS-enhanced hybrid offloading for aerial multi-access edge computing,” IEEE Wireless Commun., vol. 28, no. 5, pp. 82–87, Oct. 2021.   
+[4] N. Zhang, S. Zhang, P. Yang, O. Alhussein, W. Zhuang, and X. S. Shen, “Software defined space–air–ground integrated vehicular networks: Challenges and solutions,” IEEE Commun. Mag., vol. 55, no. 7, pp. 101–109, Jul. 2017.   
+[5] H. Shen, Q. Ye, W. Zhuang, W. Shi, G. Bai, and G. Yang, “Drone-smallcell-assisted resource slicing for 5G uplink radio access networks,” IEEE Trans. Veh. Technol., vol. 70, no. 7, pp. 7071–7086, Jul. 2021.   
+[6] K. G. Kurt et al., “A vision and framework for the high altitude platform station (HAPS) networks of the future,” IEEE Commun. Surveys Tuts., vol. 23, no. 2, pp. 729–779, 2nd Quart. 2021.   
+[7] Q. Ren, O. Abbasi, G. K. Kurt, H. Yanikomeroglu, and J. Chen, “Caching and computation offloading in high altitude platform station (HAPS) assisted intelligent transportation systems,” IEEE Trans. Wireless Commun., vol. 21, no. 11, pp. 9010–9024, Nov. 2022.   
+[8] Y. Fu, Y. Shan, Q. Zhu, K. Hung, Y. Wu, and T. Q. S. Quek, “A distributed microservice-aware paradigm for 6G: Challenges, principles, and research opportunities,” IEEE Netw., early access, Oct. 6, 2023, doi: 10.1109/MNET.2023.3321528.   
+[9] S. Jo, W. Yang, H. K. Choi, E. Noh, H.-S. Jo, and J. Park, “Deep Q-learning-based transmission power control of a high altitude platform station with spectrum sharing,” Sensors, vol. 22, no. 4, pp. 1–20, Feb. 2022.   
+[10] D. S. Lakew, A.-T. Tran, N.-N. Dao, and S. Cho, “Intelligent offloading and resource allocation in heterogeneous aerial access IoT networks,” IEEE Internet Things J., vol. 10, no. 7, pp. 5704–5718, Apr. 2023.   
+[11] I. Cumali, B. Ozbek, G. K. Kurt, and H. Yanikomeroglu, “User selection and codebook design for NOMA-based high altitude platform station (HAPS) communications,” IEEE Trans. Veh. Technol., vol. 72, no. 3, pp. 3636–3646, Mar. 2023.   
+[12] S. Fu, Y. Tang, N. Zhang, L. Zhao, S. Wu, and X. Jian, “Joint unmanned aerial vehicle (UAV) deployment and power control for Internet of Things networks,” IEEE Trans. Veh. Technol., vol. 69, no. 4, pp. 4367–4378, Apr. 2020.   
+[13] Y. Li, S. Xu, Y. Wu, and D. Li, “Network energy-efficiency maximization in UAV-enabled air–ground-integrated deployment,” IEEE Internet Things J., vol. 9, no. 15, pp. 13209–13222, Aug. 2022.   
+[14] P. Qin et al., “Joint trajectory plan and resource allocation for UAV-enabled C-NOMA in air–ground integrated 6G heterogeneous network,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 6, pp. 3421–3434, Nov./Dec. 2023.   
+[15] Y. Jing, Y. Qu, C. Dong, Y. Shen, Z. Wei, and S. Wang, “Joint UAV location and resource allocation for air–ground integrated federated learning,” in Proc. IEEE Glob. Commun. Conf. (GLOBECOM), 2021, pp. 1–6.   
+[16] P. Qin, Y. Zhu, X. Zhao, and J. Liu, “Sum rate maximization for 6G IoT resource allocation: A matching approach,” in Proc. 10th Int. Conf. Commun., Signal Process., Syst., vol. 878, 2022, pp. 86–100.   
+[17] H. Goehar, A. S. Khwaja, A. A. Alnoman, A. Anpalagan, and M. Jaseemuddin, “Investigation of a HAP-UAV collaboration scheme for throughput maximization via joint user association and 3D UAV placement,” Sensors, vol. 23, no. 13, pp. 1–29, Jul. 2023.   
+[18] Z. Huang, Z. Sheng, A. A. Nasir, C. Yin, and A. Masaracchia, “UAVassisted downlink-and-uplink communication in the presence of multiple malicious Jammers,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), 2023, pp. 1–6.   
+[19] D.-H. Na, K.-H. Park, Y.-C. Ko, and M.-S. Alouini, “Beamforming and band allocation for satellite and high-altitude platforms cognitive systems,” IEEE Wireless Commun. Lett., vol. 11, no. 11, pp. 2330–2334, Nov. 2022.   
+[20] J.-H. Lee, K.-H. Park, Y.-C. Ko, and M.-S. Alouini, “Spectral-efficient network design for high-altitude platform station networks with mixed RF/FSO system,” IEEE Trans. Wireless Commun., vol. 21, no. 9, pp. 7072–7087, Sep. 2022.   
+[21] Y. He, D. Wang, F. Huang, R. Zhang, X. Gu, and J. Pan, “Downlink and uplink sum rate maximization for HAP-LAP cooperated networks,” IEEE Trans. Veh. Technol., vol. 71, no. 9, pp. 9516–9531, Sep. 2022.   
+[22] S. Li, N. Zhang, H. Chen, S. Lin, and H. Wu, “Joint subcarrier allocation, modulation mode selection, and trajectory design in a UAV-based OFDMA network,” IEEE Commun. Lett., vol. 26, no. 9, pp. 2111–2115, Sep. 2022.
+
+[23] Z. Jia, Q. Wu, C. Dong, C. Yuen, and Z. Han, “Hierarchical aerial computing for internet of things via cooperation of HAPs and UAVs,” IEEE Internet Things J., vol. 10, no. 7, pp. 5676–5688, Apr. 2023.   
+[24] S. Xu, G. Zhu, C. Shen, Y. Lei, and Z. Zhong, “Delay-aware online service scheduling in high-speed railway communication systems,” Math. Probl. Eng., vol. 2014, pp. 1–11, Mar. 2014.   
+[25] Q. Ye, W. Shi, K. Qu, H. He, W. Zhuang, and X. Shen, “Joint RAN slicing and computation offloading for autonomous vehicular networks: A learning-assisted hierarchical approach,” IEEE Open J. Veh. Technol., vol. 2, pp. 272–288, Jun. 2021.   
+[26] P. Wawrzynski and A. K. Tanwani, “Autonomous reinforcement learning with experience replay,” Neural Netw., vol. 41, pp. 156–167, May 2013.   
+[27] Y. Ouyang, X. Wang, R. Hu, and H. Xu, “APER-DDQN: UAV precise airdrop method based on deep reinforcement learning,” IEEE Access, vol. 10, pp. 50878–50891, 2022.   
+[28] V. Franois-Lavet, R. Fonteneau, and D. Ernst, “How to discount deep reinforcement learning: Towards new dynamic strategies,” in Proc. NIPS Deep Reinf. Learn. Workshop, 2015, pp. 1–9.   
+[29] Y. Ju et al., “Joint secure offloading and resource allocation for vehicular edge computing network: A multi-agent deep reinforcement learning approach,” IEEE Trans. Intell. Transp. Syst., vol. 24, no. 5, pp. 5555–5569, Mar. 2023.   
+[30] D.-F. Wu, C. Huang, Y. Yin, S. Huang, Q. Guo, and L. Zhang, “State aware-based prioritized experience replay for handover decision in 5G ultradense networks,” Wireless Commun. Mobile Comput., vol. 2022, pp. 1–16, May 2022.   
+[31] S. Lu, S. Liu, Y. Zhu, W. Liang, K. Li, and Y. Lu, “A DRLbased decentralized computation offloading method: An example of an intelligent manufacturing scenario,” IEEE Trans. Ind. Informat., vol. 19, no. 9, pp. 9631–9641, Sep. 2023.   
+[32] Z. Jia, M. Sheng, J. Li, D. Niyato, and Z. Han, “LEO-satellite-assisted UAV: Joint trajectory and data collection for Internet of Remote Things in 6G aerial access networks,” IEEE Internet Things J., vol. 8, no. 12, pp. 9814–9826, Jun. 2021.   
+[33] P. Zhu, W. Dai, W. Yao, J. Ma, Z. Zeng, and H. Lu, “Multi-robot flocking control based on deep reinforcement learning,” IEEE Access, vol. 8, pp. 150397–150406, 2020.   
+[34] Z. Zhu, S. Wan, P. Fan, and K. B. Letaief, “Federated multiagent actor– critic learning for age sensitive mobile-edge computing,” IEEE Internet Things J., vol. 9, no. 2, pp. 1053–1067, Jan. 2022.
+
+![](images/9ebd28787d0d853bc0562ac6e80741b6f5cc72d6d2e63a91f9b33a586a6521cb.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a black shirt (no text or symbols visible)
+</details>
+
+Shichao Li received the Ph.D. degree in communication and information systems from Beijing Jiaotong University, Beijing, China, in 2019.
+
+He is currently an Associate Professor with the School of Information and Communication, Guilin University of Electronic Technology, Guilin, China. His main research interests include mobile edge computing, vehicular networks, high-mobility broadband wireless communications, wireless resource allocation, and cloud radio access networks.
+
+Dr. Li has served as a TPC member for IEEE VTC2020-Fall and VTC2021-Fall.
+
+![](images/5e7a5783875bcf4142b79616598be48224a298ffc9866c0950104aac7dd035f7.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man in formal attire against a blue background (no text or symbols visible)
+</details>
+
+Zhiqiang Yu received the B.S. degree in electronic information engineering from Nanchang Institute of Technology, Nanchang, China, in 2021. He is currently pursuing the M.S. degree in electronic information, Guilin University of Electronic Technology, Guilin, China.
+
+His main research interests include deep reinforcement learning and air–ground integrated networks.
+
+![](images/160fcb4cd7d3927a9f3419931081fdfe1d8deee20d4f8e7b0c3600c93f673b13.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a suit (no text or symbols visible)
+</details>
+
+Mianxiong Dong (Member, IEEE) received the B.S., M.S., and Ph.D. degrees in computer science and engineering from The University of Aizu, Aizuwakamatsu, Japan, in 2006, 2008, and 2013, respectively.
+
+He is the Vice President and Professor of Muroran Institute of Technology, Muroran, Japan. He was a JSPS Research Fellow with the School of Computer Science and Engineering, The University of Aizu and was a Visiting Scholar with BBCR Group, University of Waterloo, Waterloo, ON, Canada, sup-
+
+ported by JSPS Excellent Young Researcher Overseas Visit Program from April 2010 to August 2011.
+
+Dr. Dong was selected as a Foreigner Research Fellow (a total of three recipients all over Japan) by NEC C&C Foundation in 2011. He is the recipient of The 12th IEEE ComSoc Asia–Pacific Young Researcher Award 2017, the Funai Research Award 2018, the NISTEP Researcher 2018 (one of only 11 people in Japan) in recognition of significant contributions in science and technology, The Young Scientists Award from MEXT in 2021, the SUEMATSU-Yasuharu Award from IEICE in 2021, and the IEEE TCSC Middle Career Award in 2021. He is a Clarivate Analytics of 2019, 2021, 2022, and 2023 Highly Cited Researcher (Web of Science) and a Foreign Fellow of European Actuarial Journal.
+
+![](images/6eb702487364bee87f79492da589c70317f8d22c61de732d3668be03b715c28a.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a woman wearing glasses and a red top, against a plain background (no text or symbols visible)
+</details>
+
+Kaoru Ota (Member, IEEE) was born in Aizuwakamatsu, Japan. She received the B.S. degree in computer science and engineering from The University of Aizu, Aizuwakamatsu, in 2006, the M.S. degree in computer science from Oklahoma State University, Stillwater, OK, USA, in 2008, and the Ph.D. degree in computer science and engineering from The University of Aizu in 2012.
+
+She is a Professor and the Ministry of Education, Culture, Sports, Science and Technology (MEXT) Excellent Young Researcher with the Department of Sciences and Informatics.
+
+Prof. Ota is the recipient of the IEEE TCSC Early Career Award 2017, The 13th IEEE ComSoc Asia–Pacific Young Researcher Award 2018, the 2020 N2Women: Rising Stars in Computer Networking and Communications, the 2020 KDDI Foundation Encouragement Award, the 2021 IEEE Sapporo Young Professionals Best Researcher Award, and The Young Scientists Award from MEXT in 2023. She is a Clarivate Analytics of 2019, 2021, and 2022 Highly Cited Researcher (Web of Science) and is selected as a JST-PRESTO Researcher in 2021 and a Fellow of EAJ in 2022.
+
+![](images/386abe127e366cfef42aa60476c43684ff07db60e49ea05a785b786c35955a87.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a dark jacket (no text or symbols visible)
+</details>
+
+Hongbin Chen received the B.E. degree in electronic and information engineering from Nanjing University of Posts and Telecommunications, Nanjing, China, in 2004, and the Ph.D. degree in circuits and systems from South China University of Technology, Guangzhou, China, in 2009.
+
+From October 2006 to May 2008, he was a Research Assistant with the Department of Electronic and Information Engineering, The Hong Kong Polytechnic University, Hong Kong, where he was a Research Associate from March to April 2014.
+
+From May 2015 to May 2016, he was a Visiting Scholar with the Department of Electrical and Computer Engineering, National University of Singapore, Singapore. He is currently a Professor with the School of Information and Communication, Guilin University of Electronic Technology, Guilin, China. His research interests include energy-efficient wireless communications.
+
+![](images/190fadb6e6dfca950fe8f491c8f2f9a1f9ff5d1fc7b540acefcaf47f5651b9a3.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a dark polo shirt (no text or symbols visible)
+</details>
+
+Ning Zhang (Senior Member, IEEE) received the Ph.D. degree from the University of Waterloo, Waterloo, ON, Canada, in 2015.
+
+He was a Postdoctoral Research Fellow with the University of Waterloo and also with the University of Toronto, Toronto, ON, Canada. He is currently an Associate Professor with the University of Windsor, Windsor, ON, Canada.
+
+He received the Best Paper Awards from IEEE Globecom in 2014, IEEE WCSP in 2015, the Journal of Communications and Information
+
+Networks in 2018, IEEE ICC in 2019, the IEEE Technical Committee on Transmission Access and Optical Systems in 2019, and IEEE ICCC in 2019, respectively. He also serves/served as the Track Chair for several international conferences and the Co-Chair for several international workshops. He serves as an Associate Editor for the IEEE INTERNET OF THINGS JOURNAL, IEEE TRANSACTIONS ON MOBILE COMPUTING, IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, IEEE ACCESS, IET Communications, and Vehicular Communications. He was a Guest Editor of several international journals, such as the IEEE WIRELESS COMMUNICATIONS, IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS, and IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING.
+
+![](images/befa63191da2f0b0942da6e70f5841982cad9758734a1e8fa6d37e4cef747345.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man against a blue background (no text or symbols visible)
+</details>
+
+Chao Yang was born in Shaanxi, China, in 1988. He received the Ph.D. degree in information and communication engineering from Guilin University of Electronic Technology, Guilin, China, in 2020.
+
+He is currently an Associate Professor with Guilin University of Electronic Technology. His research interests include broadband communications, MIMO communication, and radar-communication integration.

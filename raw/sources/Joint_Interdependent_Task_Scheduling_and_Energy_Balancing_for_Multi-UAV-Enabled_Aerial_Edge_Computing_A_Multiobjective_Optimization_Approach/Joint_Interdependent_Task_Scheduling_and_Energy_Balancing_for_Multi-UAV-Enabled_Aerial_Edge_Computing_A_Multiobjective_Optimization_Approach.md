@@ -1,0 +1,1080 @@
+# Joint Interdependent Task Scheduling and Energy Balancing for Multi-UAV-Enabled Aerial Edge Computing: A Multiobjective Optimization Approach
+
+Xumin Huang , Chaoda Peng , Yuan Wu , Senior Member, IEEE, Jiawen Kang , Member, IEEE, Weifeng Zhong , Dong In Kim , Fellow, IEEE, and Long Qi :D
+
+Abstract—To provide a dependency-aware application, multiple unmanned aerial vehicles (UAVs) are employed to serve a ground user with a set of interdependent tasks. This leads to a new computing paradigm called as multi-UAV-enabled aerial edge computing (MU-AEC). For the large-scale application of MU-AEC, both the task-centric objective and UAV-centric objective should be simultaneously considered. Thus, we focus on the joint interdependent task scheduling and energy balancing for MU-AEC by using a multiobjective optimization approach, which enables a decision maker to identify the optimal solutions corresponding to the best feasible tradeoffs between the two objectives. A constrained multiobjective optimization problem involving two objectives: 1) the makespan minimization of all tasks and 2) energy balancing among different UAVs, is formulated. In the solution methodology, we propose a constrained decomposition-based multiobjective evolution algorithm. To
+
+Manuscript received 7 September 2022; revised 28 March 2023; accepted 5 June 2023. Date of publication 21 June 2023; date of current version 21 November 2023. This work was supported in part by the National Natural Science Foundation of China under Grant 62001125, Grant 62202177, Grant 62102099, and Grant 62003099; in part by the Guangzhou Basic Research Program under Grant 2023A04J0340, Grant 202201010576, and Grant 2023A04J1704; in part by the Science Foundation of Guangdong for Distinguished Young Scholars under Grant 2019B151502056; and in part by the Earmarked Fund for Modern Agro-Industry Technology Research System in China under Grant CARS-01. The work of Yuan Wu’s was supported in part by the Research Grant of University of Macau under Grant MYRG2020- 00107-IOTSC, and in part by the Guangdong-Macau Joint Laboratory for Advanced and Intelligent Computing under Grant GDST 2020B1212030003. (Corresponding author: Long Qi.)
+
+Xumin Huang is with the School of Automation, Guangdong University of Technology, Guangzhou 510006, China, and also with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macau, China (e-mail: huangxu\_min@163.com).
+
+Chaoda Peng is with the College of Mathematics and Informatics, South China Agricultural University, Guangzhou 510642, China (e-mail: ChaodaPeng@scau.edu.cn).
+
+Yuan Wu is with the State Key Laboratory of Internet of Things for Smart City and the Department of Computer and Information Science, University of Macau, Macau, China (e-mail: yuanwu@um.edu.mo).
+
+Jiawen Kang and Weifeng Zhong are with the School of Automation, Guangdong University of Technology, Guangzhou 510006, China (e-mail: kavinkang@gdut.edu.cn; wfzhongs@gdut.edu.cn).
+
+Dong In Kim is with the Department of Electrical and Computer Engineering, Sungkyunkwan University, Suwon 16419, South Korea (e-mail: dikim@skku.ac.kr).
+
+Long Qi is with the College of Engineering and the Guangdong Laboratory for Lingnan Modern Agriculture, South China Agricultural University, Guangzhou 510642, China (e-mail: qilong@scau.edu.cn).
+
+Digital Object Identifier 10.1109/JIOT.2023.3288379
+
+quickly seek more superior solutions, a local search mechanism by utilizing the objective information, and an improved genetic operator are proposed for remarkable performance improvements. Finally, numerical results demonstrate that compared with the baseline algorithms, our algorithm achieves both advantages in increasing the convergence and diversity of the solutions.
+
+Index Terms—Constrained multiobjective optimization, energy balancing, evolutionary algorithm, interdependent task scheduling, unmanned aerial vehicle (UAV).
+
+# I. INTRODUCTION
+
+D UE TO great advantages of ease deployment, flexi-ble mobility and lower cost, unmanned aerial vehicles (UAVs) have been applied as flying edge computing platforms to provide ubiquitous wireless coverage and cost-efficient computing resources for ground users [1]. UAV-assisted wireless communication is an emerging topic in the field of next generation networks [2]. Nowadays, UAV may serve as different roles, such as mobile edge server [3], mobile relay [4], mobile data collector [5], and mobile charger [6]. On the one hand, the number of connected devices is increasing, which is expected to reach 64 billion by 2025 [7]. On the other hand, the number of computing workloads of tasks of the devices is increasing with the rapid development of emerging applications, such as virtual reality, augmented reality, interactive gaming, and image/video processing. Computing capacity of a single UAV is limited and more deployments of the UAVs are necessitated to serve more users and support the computationintensive applications. To this end, deploying multiple UAVs in terms of a UAV swarm is an applicable and efficient approach. This leads to a novel computing paradigm called as multi-UAV-enabled aerial edge computing (MU-AEC). In addition, the increasing complexity of mobile applications requires dependency-aware task processing. According to the statistic of the Alibaba data trace, more than 75% of 4 million applications contain interdependent tasks [8]. Take a face recognition application as an example. A set of interdependent tasks are generated, including the object capture, face detection, preliminary processing, feature extraction and classification, and the dependencies among them cause challenges to the execution of the application. To properly assign the tasks, the difference in energy consumption of the UAVs is also nonnegligible. For the large-scale application of MU-AEC, it is important for us to study the joint interdependent task scheduling and energy balancing for remarkable performance improvements of MU-AEC.
+
+When the UAV swarm is employed to serve a user with multiple interdependent tasks, we could jointly optimize processing time of all tasks and energy consumption of all UAVs. We should tackle the following challenges. First, offloading optimization needs to overcome the effect of task dependencies on the offloading policy. To reduce the total completion time of all tasks (i.e., makespan), different tasks are assigned to proper UAVs that perform the received tasks with proper processing orders and computing capabilities. Second, energy optimization on the UAV side can be considered to balance the energy consumption among all UAVs. Energy balancing aims to prevent the sudden departure of some UAVs due to the higher energy consumption rates. This is significant for the UAV swarm to improve fairness among the UAVs and coordinate the UAV swarm operations. Last but not the least, the unified management of the UAV swarm considers both processing efficiency of the interdependent tasks and energy balancing among the UAVs as a joint criterion. These are two important yet conflicting objectives which need to be jointly optimized. Technically, it is not suitable to simply sum the two objectives with fixed weights. In practice, the decision maker necessitates a set of solutions rather than a single one to handle different tradeoffs among the interested objectives, according to different preferences. Thus, the conventional schemes that formulate a single-objective optimization problem cannot be directly adopted for current MU-AEC. We find that the practical multiobjective optimization problem on the makespan of all tasks and energy balancing among all UAVs has not been studied yet in the community of MU-AEC.
+
+To address the above challenges, we study the joint independent task scheduling and energy balancing for MU-AEC by using a multiobjective optimization approach. A user separates an application into a set of interdependent tasks. A UAV swarm is employed to process the tasks and each task is entirely offloaded to a single UAV. We aim to realize the simultaneous optimization of the task-centric objective and UAVcentric objective in multi-UAV-enabled computation offloading. To minimize the makespan of all interdependent tasks, we optimize the decisions of task assignment and computing resource allocation, according to dependency information of the tasks. To balance the energy consumption among the UAVs, we adjust the above decisions to minimize a proposed energy balancing index, according to energy consumption profile of the UAVs. The proposed two objectives conflict with each other, causing the difficulties in the simultaneous optimization. This leads to a constrained multiobjective optimization problem (CMOP). After tackling the CMOP, we then seek Pareto optimal solutions, each of which satisfies the objectives at an acceptable level without being dominated by any other solution, and finally provide the decision maker with a limited number of satisfactory solutions under different preferences. Thus, the decision maker can conveniently identify the optimal solutions corresponding to the best feasible tradeoffs between the two objects.
+
+In the solution methodology, we propose a revised constrained multiobjective evolutionary algorithm in [9] by introducing a novel local search mechanism and genetic operator. The local search mechanism makes good use of the objective information to improve the searching ability of the algorithm. The genetic operator is elaborately designed to optimize the processing orders of the tasks according to the taskdependency requirement. Complexity analysis is performed to indicate that the proposed algorithm converges within a reasonable computational time limit. Finally, numerical results demonstrate that compared with the baseline algorithms, our algorithm achieves an advantage in finding a well-converged and well-distributed set of Pareto optimal solutions in the decision space.
+
+The main contributions of this article are summarized as follows.
+
+1) We study an offloading scenario in MU-AEC where a user has a set of interdependent tasks and multiple UAVs are instructed to receive and handle the tasks based on a centralized approach.   
+2) We jointly optimize the makespan of the interdependent tasks and energy balancing among the UAVs by using a multiobjective optimization approach. The simultaneous optimization on both the task and UAVs sides are considered to present a delay-aware and energy-aware offloading policy.   
+3) We develop a constrained multiobjective evolutionary algorithm for tackling the CMOP. To quickly seek more superior solutions, our algorithm jointly exploits the local search mechanism by utilizing the objective information, and improved genetic operator. The experimental results demonstrate that our algorithm is beneficial to increase the convergence and diversity of the solutions.
+
+The remainder of this article is organized as follows. Section II provides a comprehensive overview of previous works. Section III presents the system model and formulates a multiobjective optimization problem for computation offloading in MU-AEC. Section IV introduces our solution methodology to solve the CMOP. In Section V, we evaluate the performance of the proposed scheme by numerical results. Section VI concludes this article.
+
+# II. RELATED WORK
+
+# A. Multi-UAV-Enabled Aerial Edge Computing
+
+Research efforts have been devoted to a variety of optimization schemes for MU-AEC where an MEC server is integrated into a UAV for serving ground users. The previous works studied the joint optimization on the task and UAV sides, according to different objectives and constraints. For example, each task can be computed on multiple UAVs in parallel for guaranteeing the reliability [10]. The task arrival of each user was modeled by a Poisson process and the rate of served tasks among all users was further maximized while satisfying the given stringent reliability and latency requirements. Similarly, the total number of offloading requests was maximized to serve most of the users in an optimal way, with the given hard deadline and energy budget constraints of each user [11].
+
+In MU-AEC, the joint computation offloading and UAV trajectory planning was studied from a systematic perspective. To help process the maritime data, UAV-assisted maritime IoT networks were proposed, where computation-intensive maritime tasks were transmitted to a UAV via nonorthogonal multiple access subject to the UAV mobility [12]. The joint optimization of UAV trajectory, task offloading ratio and resource allocation was studied to reduce the total energy consumption of the system. There are some related works that focused on the energy minimization objective under different offloading scenarios. Based on the binary offloading assumption, an energy-efficient scheme was proposed to jointly optimize the number and locations of the UAVs and offloading destinations and computing resource allocation among the tasks [13]. The partial offloading assumption was applied to enable each user to offload different parts of its task to multiple UAVs, and the additional optimization of bit and power allocation was involved [14]. For collaborative offloading, a multi-UAV-assisted two-stage offloading system was introduced in [15], where each UAV cooperated with a terrestrial base station to process an offloading task.
+
+For MU-AEC, some researchers focused on the systematic communication performance. For example, Chang et al. [16] jointly optimized trajectory design, user association and power allocation to maximize the total achievable data rate between multiple users and UAVs in a multi-UAV communications system. A part of the works took into account fairness in computation offloading. The fairness considerations for both the users and UAVs were proposed in [17]. In this work, a deep reinforcement learning-based trajectory control was proposed for the UAVs, and the offloading policy was further designed with the given trajectories of the UAVs. Load balancing could be integrated into the deployment problem of multiple UAVs to improve the latency-aware task scheduling [18]. Moreover, the load balancing of different UAVs over a long period of time was investigated in [19].
+
+In addition to the efficiency improvement, security consideration was proposed for strengthening MU-AEC. A dual-role UAV could serve as an aerial data relay and workload processor. Secrecy driven UAV-assisted relay transmission was further proposed to facilitate the deployment of the dual-role UAV while guarding against a malicious node that tries to overhear the relay transmission [17]. Secrecy performance was optimized for multi-UAV-enabled computation offloading. Considering a UAV eavesdropper that continuously eavesdropped on the offloading data transmitted to normal UAVs, Ding et al. [20] investigated how to optimize the long-term secure performance by an online learning-based scheme. To cope with the eavesdropping attack, a group of auxiliary devices were adopted for cooperative jamming in the UAVassisted data collection scenario, and the problem on how to maximize the total secrecy throughput was studied [21].
+
+# B. Interdependent Task Scheduling
+
+To optimize the interdependent task scheduling, the decision maker should overcome the obstacles of task dependencies and heterogeneity of processors, thereby reducing the makespan and energy consumption cost. Many approaches have been adopted for achieving this goal. A rounding-based algorithm was designed in [22] to determine the offloading destinations and processing orders of the interdependent tasks in the makespan minimization problem. A heuristic algorithm was designed in [23] to optimize the same decisions in the cost minimization problem. A task is executed in either a local device or a remote cloud. By comparing the local execution cost at the optimal CPU clock frequency with the cloud execution cost at the optimal transmission power, Guo et al. [24] designed an energy-efficient dynamic offloading and resource scheduling scheme to minimize the total weighted sum of energy and time consumption of all tasks. For the similar objective, a deep reinforcement learning-based scheme was presented while considering the time-varying wireless fading channels and stochastic edge computing capability [25]. Off-policy reinforcement learning was adopted to seek task offloading decisions of a set of interdependent tasks considering the collaborative execution between a user and an edge computing server [26]. UAV was also employed as an available processor of interdependent tasks. A single UAV was scheduled to process different interdependent tasks at different locations given a designed trajectory [27]. Multi-UAV-enabled interdependent task offloading was considered in [28], which focused on optimizing the radio resource allocation and adopted the fixed computing capability for each task.
+
+Both UAV-enabled computation offloading and adoption of a multi-UAV network for handling independent tasks have been investigated, according to different objectives and constraints. However, most of the previous works paid attention to different single-objective optimization problems while the multiobjective optimizations have not been investigated yet. For MU-AEC, we introduce two objectives on both the task and UAV sides to simultaneously minimize the makespan of all tasks and total difference in energy consumption of all UAVs. To realize the simultaneous optimization of these two objectives, we propose a multiobjective optimization approach and formulate a complicated CMOP. We jointly optimize the task assignment and computing resource allocation subject to feasible constraints. In the solution methodology, we refer to an algorithm in [9], and propose a revised constrained multiobjective evolutionary algorithm for seeking a wellconverged and well-distributed set of Pareto optimal solutions to the CMOP. More specifically, we improve the evolutionary algorithm by applying a local search mechanism that utilizes the objective information well, and adopts an improved genetic operator to meet the task-dependency requirement. Finally, numerical results demonstrate that compared with the baseline algorithms, our algorithm achieves both advantages in increasing the convergence and diversity of the solutions.
+
+![](images/0ca92bf1eca20e8849b9711a8843ec2df3d288d050e0d704d7cb867e74462bc0.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Leader UAV"] --> B["User"]
+    C["Serial task queue"] --> D["User"]
+    E["Linear"] --> F["Tree"]
+    G["Mesh"] --> H["General"]
+    style A fill:#f9f,stroke:#333
+    style C fill:#f9f,stroke:#333
+    style E fill:#ccf,stroke:#333
+    style G fill:#ccf,stroke:#333
+    style B fill:#dfd,stroke:#333
+    style D fill:#dfd,stroke:#333
+    style F fill:#dfd,stroke:#333
+    style H fill:#dfd,stroke:#333
+```
+</details>
+
+Fig. 1. System model.
+
+# III. SYSTEM MODEL AND PROBLEM FORMULATION
+
+# A. Network Entities
+
+A user runs a dependency-aware application (e.g., face recognition and vehicular navigation), which can be partitioned into I interdependent tasks. The dependencies among the tasks are described by a directed acyclic task graph. With the help of the nearest access point, the user sends an offloading request with the task graph to a leader UAV, which is in charge of the formation, movements, and operations of a swarm of UAVs. The UAV swarm consists of J collaborative UAVs. The UAV swarm flies from the start point to the proximity of the user and hovers at a constant altitude h to serve the user. Note that a variety of UAV path planning algorithms have been designed and they can be adopted by the UAV swarm. According to the acquired prior knowledge of the user and UAVs, the leader UAV acts as a centralized decision maker, which decide the decisions of task assignment and computing resource allocation. Following the instructions of the leader UAV, all UAVs in the swarm collaborate with each other to receive and perform the tasks, but also exchange the intermediate data when necessary. We provide more details of the above network entities of MU-AEC as follows.
+
+1) User: The dependency relationships among the tasks can be illustrated by four basic topologies: a) linear; b) mesh; c) tree; and d) general, which are shown in Fig. 1. To quantificationally measure the dependencies among the tasks, we adopt the directed acyclic task graph denoted by $\mathcal { G } = ( \nu , \mathcal { E } )$ . In the task graph, each node i refers to a task i and the associated parameter $W _ { i }$ refers to the computation workloads in terms of the number of CPU cycles of completing the task. For any task i, the precedent tasks belonging to a set pred(i) should be accomplished before the task. After the completion, task i transmits the output data as the intermediate data to the
+
+subsequent tasks belonging to a set succ(i). Particularly, if pred(i) = ∅, task i is the first task and the input data is uploaded by the user. If succ(i) = ∅, task i is the last task and the output data is sent to the user. According to the known task graph, we obtain the process order of each task by knowing the process orders of the precedent tasks. When task i is not the first task, the process order is order(i) = max(order(l), l ∈ pred(i)) + 1. Edge (i, l) between the interdependent tasks i and l means that task i is one predecessor of task $l ,$ at the same time, task l is one successor of task i. The edge (i, l) is weighted with the parameter $M _ { i , l }$ , which refers to the data size of the intermediate data between the two tasks.
+
+2) Leader UAV: The leader UAV is totally trusted by the user and UAVs, and plays as a UAV manager that orchestrates the offloading service within the UAV swarm. There exists a knowledge database inside the leader UAV, which collects auxiliary information of the swarm members, such as maximal computing speed and energy consumption profile. In computation offloading, the user location and task graph are known by the leader UAV. Due to the central position, the leader UAV is convenient to monitor the UAVs and obtain the status information, such as the 3-D positions and accurate channel state information. As a result, the leader UAV successfully acquires the prior knowledge of the user and UAVs and utilize it for the assistance of the centralized decisionmaking procedure. Note that the energy consumption of the leader UAV is relatively higher due to the role of the centralized decision maker. But we tend to neglect the additional energy consumption caused to the leader UAV in this article because the leader UAV is similar with a swarm member, and consumes a major part of the energy for workload processing and hovering control. To balance their energy consumption of all UAVs, we are motivated to optimize the task assignment among different UAVs and adopt proper computing resources in the task processing.
+
+3) UAV Swarm: The movements and operations of the UAVs are strictly instructed by the leader UAV. In MU-AEC, processing efficiency of a set of interdependent tasks is enhanced by the collaboration among the UAVs. According to the task graph, serial and parallel computing are necessitated and data exchange among the corresponding UAVs is required. The communication link between any two UAVs is symmetrical. The data rate of proximal UAV-to-UAV communication is calculated under the assumption of undergoing Lineof-Sight (LoS) condition. The channel between any two UAVs is orthogonal and a UAV can multicast to local swarm members when necessary. In turn, the ground-toair and air-to-ground communications are modeled based on the mixed LoS and non-LoS (NLoS) conditions. We model the average channel gain between the user and a UAV, and further utilize it to calculate the uplink and downlink data rates. Due to the hardware limitation, a single UAV is considered to perform one task at each time, i.e., the UAV completes the received tasks in a serial manner, which is also assumed in some works such as [22]. To prevent the sudden departure of some UAVs due to the higher energy consumption rates, we try to eliminate the difference in energy consumption of the UAVs.
+
+# B. Problem Formulation
+
+We introduce the communication and energy models for task processing in MU-AEC. In the proximal UAV-to-UAV communication, for simplicity, we consider that the data rate between any two UAVs is constant over time and almost identical. When a source UAV transmits data to a destination UAV, the data rate between them is $\gamma .$ When the source UAV multicasts to m destination UAVs, the data rate between the source UAV and one destination UAV is $\gamma / m$ . To calculate the average channel gain in the ground-to-air and air-to-ground communications, we first derive the probabilities of the LoS and NLoS channels. A Cartesian coordinate system is adopted to confirm the location of the user as $( \eta _ { 0 } ^ { x } , \dot { \eta } _ { 0 } ^ { y } , 0 )$ and the 3-D coordinate of UAV j as $( \eta _ { j } ^ { x } , \eta _ { j } ^ { y } , h )$ . Referring to the assumption in [29], all UAVs hover at a fixed altitude h when serving the user. The distance and elevation angle between them are calculated by $d _ { j } = \sqrt { ( \eta _ { j } ^ { x } - \eta _ { 0 } ^ { x } ) ^ { 2 } + ( \eta _ { j } ^ { y } - \eta _ { j } ^ { y } ) ^ { 2 } + h ^ { 2 } }$ and $\theta _ { j } = \arcsin ( h / d _ { j } )$ , respectively. The probability of the LoS channel is estimated by
+
+$$
+P _ {j} ^ {\mathrm{LoS}} = \frac {1}{1 + \alpha \exp (- \beta (\theta_ {i} - \alpha))} \tag {1}
+$$
+
+where α and $\beta$ are the coefficients. Then, the probability of the NLoS channel is $P _ { i } ^ { \mathrm { { N L o S } } } ~ = ~ 1 - P _ { i } ^ { \mathrm { { L o S } } }$ . Furthermore, we refer to [30] and [31] and calculate the average channel gain between the user and UAV j
+
+$$
+g _ {j} = \frac {1}{P _ {j} ^ {\mathrm{LoS}} \iota_ {j} ^ {\mathrm{LoS}} + P _ {j} ^ {\mathrm{NLoS}} \iota_ {j} ^ {\mathrm{NLoS}}}. \tag {2}
+$$
+
+$\iota _ { i } ^ { \mathrm { L o S } }$ and $\iota _ { i } ^ { \mathrm { N L o S } }$ are the path loss of different links, respectively. We consider the free space path loss, and have
+
+$$
+\left\{ \begin{array}{l} \iota_ {j} ^ {\mathrm{LoS}} = \mu^ {\mathrm{LoS}} \left(\frac {4 \pi f _ {\mathrm{c}} d _ {j}}{s}\right) ^ {2} \\ \iota_ {j} ^ {\mathrm{NLoS}} = \mu^ {\mathrm{NLoS}} \left(\frac {4 \pi f _ {\mathrm{c}} d _ {j}}{s}\right) ^ {2} \end{array} \right. \tag {3}
+$$
+
+where $f _ { c }$ and s indicate the carrier frequency and light speed, respectively; $\mu ^ { \mathrm { L o S } }$ and $\mu ^ { \mathrm { N L o S } }$ indicate the excessive path loss coefficient of different links, respectively. We consider that the uplink and downlink channels are approximately equal and orthogonal [32]. Based on $g _ { j }$ , we calculate the achievable uplink and downlink data rates between the user and UAV j
+
+$$
+\left\{ \begin{array}{l} r _ {j} ^ {\mathrm{DL}} = B \log \left(1 + \frac {\rho_ {j} ^ {\mathrm{tx}} g _ {j}}{N _ {0}}\right) \\ r _ {j} ^ {\mathrm{UL}} = B \log \left(1 + \frac {\rho_ {0} ^ {\mathrm{tx}} g _ {j}}{N _ {0}}\right) \end{array} \right. \tag {4}
+$$
+
+where $B , \rho _ { j } ^ { \mathrm { t x } } , \rho _ { 0 } ^ { \mathrm { t x } }$ , and $N _ { 0 }$ are the available bandwidth, transmit power of $\operatorname { U A V } j$ and user, respectively, and noise power spectral density.
+
+We introduce an integer offloading decision $x _ { i , j }$ to represent the correlation between task i and $\mathrm { U A V } j .$ Here, $x _ { i , j } = k > 0$ means that task i is offloaded to UAV j and assigned with the kth processing order while $x _ { i , j } = 0$ means that task i is not offloaded to $\mathrm { U A V } j .$ . Let sign(·) represent a function that returns a bool result by evaluating whether the given input parameter is larger than 0. Each task is required to be offloaded to one UAV, i.e., $\begin{array} { r } { \sum _ { \forall j } \operatorname { s i g n } ( x _ { i , j } ) = 1 ~ \forall i } \end{array}$ . We denote $S _ { j } = \{ i | x _ { i , j } >$ $0 , 1 \leq i \leq I \}$ as the receiving task set of $\mathrm { U A V } j .$ Then, the kth task of $\boldsymbol { S _ { j } }$ is marked by $S _ { j } ( k )$ . We normally have the constraints $S _ { j } ( k ) \not \in \mathbf { p r e d } ( S _ { j } ( k - 1 ) )$ ∀k according to the task-dependency requirement. When $x _ { i , j } = k > 0 .$ , the UAV executes the task with computing speed $f _ { j } ^ { k } ,$ , where $0 \leq f _ { j } ^ { k } \leq F _ { j }$ and $F _ { j }$ is the maximal computing speed.
+
+According to the known task dependencies and offloading decisions of its precedent tasks, there is ready time RTkj for task $S _ { j } ( k )$ . If the task is the first task in the task graph, i.e. $, \mathrm { p r e d } ( \mathcal { S } _ { j } ( k ) ) = \emptyset$ , the ready time is consumed for receiving the input data, $\mathsf { R T } _ { j } ^ { k } = i p / r _ { j } ^ { \mathrm { U L } }$ , where $i p$ is the input data size. Otherwise, when $\check { k } = 1$ , the task is the first task of $S _ { j } ,$ the task should be started after its precedent tasks. For task ${ \bf \bar { \mathbf { \mathit { S } } } } _ { j } ( k )$ , the consumed time of waiting one precedent task l includes finishing time of task l [denoted as $F T ( l ) ]$ and intermediate data transmission time between these two interdependent tasks. We first pay attention to the intermediate data transmission time, and introduce a bool variable y between the two interdependent tasks to judge whether they are processed by different UAVs. For example, $y _ { m , n } = 1$ means that tasks m and n are assigned to different UAVs, otherwise, $y _ { m , n } ~ = ~ 0$ means that they are assigned to an identical UAV. Based on the offloading decisions of these two taks, $y _ { m , n }$ is calculated by
+
+$$
+y _ {m, n} = \left\{ \begin{array}{l l} 0, & \text { if } \sum_ {1 \leq j \leq J} \operatorname{sign} (x _ {m, j}) \cdot \operatorname{sign} (x _ {n, j}) = 1 \\ 1, & \text { otherwise. } \end{array} \right. \tag {5}
+$$
+
+For task $S _ { j } ( k )$ and its precedent task l, we can calculate $y _ { l , S _ { j } ( k ) }$ and know the intermediate data size between the two tasks $M _ { l , S _ { j } ( k ) }$ . When $y _ { l , S _ { j } ( k ) } = 1$ , a UAV that performs task l needs to transmit the intermediate data to UAV j. Considering that the UAV transmits the output data to all subsequent tasks of task l via the multicast method, we calculate the intermediate data transmission rate by
+
+$$
+r _ {l} ^ {\mathrm{UAV}} = \frac {\gamma}{\sum_ {m \in \mathbf {s u c c} (l)} y _ {l , m}}. \tag {6}
+$$
+
+Thus, the intermediate data transmission time between task $S _ { j } ( k )$ and task l is $y _ { l , S _ { j } ( k ) } M _ { l , S _ { j } ( k ) } / r _ { l } ^ { \mathrm { U A V } }$ . Given pred $( S _ { j } ( k ) ) \neq \emptyset$ and $k = 1$ , we calculate the ready time of task $S _ { j } ( k )$ by
+
+$$
+\phi_ {j} ^ {k} = \max \left(\mathrm{FT} (l) + \frac {y _ {l , \mathcal {S} _ {j} (k)} M _ {l , \mathcal {S} _ {j} (k)}}{r _ {l} ^ {\mathrm{UAV}}}, l \in \mathbf {p r e d} (\mathcal {S} _ {j} (k))\right). \tag {7}
+$$
+
+The above equation is to confirm the maximal waiting time among all precedent tasks. If pre $1 ( S _ { j } ( k ) ) \neq \emptyset$ and $k = 1$ , $\mathsf { R T } _ { j } ^ { k }$ is calculated by comparing $\phi _ { j } ^ { k }$ and finishing time of task $S _ { j } ( k - 1 )$ denoted as $\mathrm { F T } _ { j } ^ { k - 1 }$ . To summarize, the ready time of task $S _ { j } ( k )$ is expressed by
+
+$$
+\mathrm{RT} _ {j} ^ {k} = \left\{ \begin{array}{l l} \frac {i p}{r _ {j} ^ {\mathrm{UL}}}, & \text { if } \mathbf {p r e d} (S _ {j} (k)) = \emptyset \\ \phi_ {j} ^ {k}, & \text { if } \mathbf {p r e d} (S _ {j} (k)) \neq \emptyset \text { and } k = 1 \\ \max \left(\mathrm{FT} _ {j} ^ {k - 1}, \phi_ {j} ^ {k}\right), & \\ & \text { if } \mathbf {p r e d} (S _ {j} (k)) \neq \emptyset \text { and } 2 \leq k > 1. \end{array} \right. \tag {8}
+$$
+
+Next, we calculate the finishing time of task $S _ { j } ( k )$ , which is expressed by $\mathrm { F T } _ { j } ^ { k }$ . The finishing time consists of three parts: 1) ready time $\check { \mathbf { R T } } _ { j } ^ { k } ; ~ 2 )$ workload processing time $W _ { S _ { j } ( k ) } / f _ { j } ^ { k }$ ; and 3) possible final output data transmission time ϕkj
+
+$$
+\mathrm{FT} _ {j} ^ {k} = \mathrm{RT} _ {j} ^ {k} + \frac {W _ {S _ {j} (k)}}{f _ {j} ^ {k}} + \varphi_ {j} ^ {k} \tag {9}
+$$
+
+where $\varphi _ { j } ^ { k }$ has a nonzero value only when outcome of task $S _ { j } ( k )$ is the final output data that should be returned to the user, i.e., succ $( S _ { j } ( k ) ) = \emptyset$
+
+$$
+\varphi_ {j} ^ {k} = \left\{ \begin{array}{l l} \frac {o p}{r _ {j} ^ {\mathrm{DL}}}, & \text { if } \mathbf {s u c c} (S _ {j} (k)) = \emptyset \\ 0, & \text { otherwise } \end{array} \right. \tag {10}
+$$
+
+where $o p$ is the final output data size. In this article, our decision variable vector is expressed by a vector $\mathbf { x } = \{ \mathbf { y } _ { j } \} _ { \forall j } ,$ where $\mathbf { y } _ { j } = { \mathcal { S } } _ { j } \cup \{ f _ { j } ^ { 1 } , \ldots , f _ { j } ^ { | S _ { j } | } \}$ . Given x, we can measure the makespan of all interdependent tasks by
+
+$$
+G _ {1} (\mathbf {x}) = \max \left(\mathrm{FT} _ {j} ^ {\left| \mathcal {S} _ {j} \right|}, 1 \leq j \leq J\right). \tag {11}
+$$
+
+For UAV j, a major part of the energy is consumed for the workload processing and hovering control [13]. The hover power is constant and denoted by $\rho _ { j } ^ { \mathbf { \overline { { H } } } }$ . The hovering time of UAV j depends on the finishing time of the last task, namely, $\mathrm { F T } _ { j } ^ { | \cal S _ { j } | }$ . To perform a task $\boldsymbol { \mathcal { S } } _ { j } ^ { k }$ , the amount of energy consumed for the workload processing is equal to $\varepsilon _ { j } f _ { j } ^ { k 2 } W _ { S _ { i } ^ { k } }$ , where $\varepsilon _ { j }$ is a hardware parameter on the effective switched capacitance depending on the chip architecture. According to the offloading decision $\{ x _ { i , j } , 1 \leq i \leq I \}$ , the total energy consumption of UAV j
+
+$$
+T E _ {j} = \rho_ {j} ^ {H} \mathrm{FT} _ {j} ^ {| \mathcal {S} _ {j} |} + \sum_ {1 \leq k \leq | \mathcal {S} _ {j} |} \varepsilon_ {j} f _ {j} ^ {k 2} W _ {\mathcal {S} _ {j} (k)}. \tag {12}
+$$
+
+In the applicable task processing, $T E _ { j }$ is required to below the upper limit $\nu _ { j } C _ { j }$ , where $0 < \nu _ { j } < 1$ is a coefficient and $C _ { j }$ is the battery capacity. Furthermore, we propose a novel energy balancing index to quantificationally evaluate the degree of balancing the energy consumption among all UAVs, which is expressed by
+
+$$
+G _ {2} (\mathbf {x}) = \sum_ {1 \leq j \leq J} \left(\frac {T E _ {j} - \overline {{{T E}}}}{\psi}\right) ^ {2} \tag {13}
+$$
+
+where $\overline { { T E } }$ is the average value of $\{ T E _ { j } \} _ { \forall j }$ and $\psi$ is a reference value.
+
+As a result, we can formulate a CMOP for the leader UAV. In the CMOP, the leader UAV aims to jointly minimize the makespan on the task side and energy balancing index on the UAV side. The CMOP is shown as follows:
+
+$$
+\min \left\{ \begin{array}{l} G _ {1} (\mathbf {x}) = \max \Bigl (\mathrm{FT} _ {j} ^ {| \mathcal {S} _ {j} |}, 1 \leq j \leq J \Bigr) \\ G _ {2} (\mathbf {x}) = \sum_ {1 \leq j \leq J} \Bigl (\frac {T E ^ {j} - \overline {{T E}}}{\psi} \Bigr) ^ {2} \end{array} \right.
+$$
+
+(14)
+
+To derive the feasible solutions, necessary constraints should be satisfied. The first constraint (C1) ensures that each task is offloaded to a single UAV. The second constraint (C2) restricts the energy consumption for each UAV. The third constraint (C3) is to satisfy the task-dependency requirement. The fourth constraint (C4) and the fifth constraint (C5) ensure the feasible domain of the decisions $x _ { i , j }$ and $f _ { j } ^ { k } { : }$ , respectively.
+
+Note that the above problem is a typical multiobjective optimization problem and the problem can be transformed as a single-objective optimization problem by introducing weight coefficients between the two objectives. However, the single-objective optimization problem generally gets a unique solution while the multiobjective optimization problem can obtain a set of optimal solutions. In practice, the decision maker necessitates a set of solutions rather than a unique one to handle different tradeoffs among the interested objectives, according to different preferences. This motivates us to study the multiobjective optimization problem.
+
+# IV. CONSTRAINED MULTIOBJECTIVE EVOLUTIONARY ALGORITHM
+
+Problem (14) is an NP-hard CMOP. We aim to seek Pareto optimal solutions with good convergence and diversity. To this end, evolutionary algorithm can provide an efficient solution methodology for solving a problem. In the multiobjective optimization problem, there are nonlinear objectives and coupled constraints. We cannot obtain the gradient information of the objective functions during the solving process. In this situation, the application of conventional or heuristic algorithms may suffer from obtaining local optima at the end. In addition, we are motivated to adopt the evolutionary algorithms to solve the multiobjective optimization problem since the evolutionary algorithm as a typical population-based algorithm is convenient to obtain a set of Pareto optimal solutions at a single run.
+
+We propose a revised constrained multiobjective evolutionary algorithm to quickly seek superior solutions to the CMOP. In the algorithm, we have two major aspects of the technical innovation, which are summarized as follows.
+
+1) Local Search Mechanism: We integrate a local search mechanism by exploiting the objective information into the evolutionary algorithm design, to improve the searching ability of the proposed algorithm and thereby increase the convergence and diversity of the solutions.   
+2) Genetic Operation: We design an improved genetic operator to optimize the processing orders of the interdependent tasks and facilitate the execution of the algorithm.
+
+We present a preliminary study of the conventional multiobjective evolutionary algorithm and further provide more details of our algorithm in this section.
+
+# A. Preliminary Study
+
+To tackle the Problem (14), a decomposition-based constrained multiobjective evolutionary algorithm with a constraint domination principle (CMOEA/D-CDP) [9] is used as the solution solver. We first introduce some basic concepts about constrained multiobjective optimization and the brief technique details of CMOEA/D-CDP.
+
+In general, a CMOP is formulated as follows:
+
+$$
+\min \mathcal {G} (\mathbf {x}) = (G _ {1} (\mathbf {x}), G _ {2} (\mathbf {x}), \dots , G _ {m} (\mathbf {x})) ^ {T}
+$$
+
+s.t.
+
+$$
+I C _ {i} (\mathbf {x}) \leq 0, i = 1, 2, \dots , q
+$$
+
+$$
+E C _ {i} (\mathbf {x}) = 0, i = q + 1, \dots , l
+$$
+
+$$
+\mathbf {x} \in \mathbf {D} \tag {15}
+$$
+
+where G(x) is the m-dimensional objective function, $I C _ { i } ( { \bf x } )$ and $E C _ { i } ( \mathbf { x } )$ are the inequality and the equality constraints, respectively. x is the decision variable and D is n-dimensional search space. l is the number of equality and inequality constraints. A solution x is said to dominate another solution y if $G _ { i } ( \mathbf { x } ) \leq G _ { i } ( \mathbf { y } )$ , for all $i \in \{ 1 , 2 , \ldots , m \}$ , and $G _ { j } ( \mathbf { x } ) < G _ { j } ( \mathbf { y } )$ for at least one $j \in \{ 1 , 2 , \dots , m \}$ holds. Every multiobjective evolutionary algorithm aims to obtain a set of well-distributed Pareto optimal solutions where a solution is called Pareto optimal solutions if none of the solutions in the solution set D that dominates it. The set of the Pareto optimal solutions is called Pareto optimal set, and their mappings in the objective space are called Pareto front.
+
+Referring to [33], the degree of constraint violation of an individual x on the ith constraint is calculated by using the following equation:
+
+$$
+C O _ {i} (\mathbf {x}) = \left\{ \begin{array}{l l} \max \{0, I C _ {i} (\mathbf {x}) \}, & 1 \leq i \leq q \\ \max \{0, | E C _ {i} (\mathbf {x}) | - \delta \}, & q + 1 \leq i \leq l \end{array} \right. \tag {16}
+$$
+
+where δ is the tolerance value for equality constraints, and its value is usually set to 0.0001. The constraint violation of an individual x is calculated by
+
+$$
+C V (\mathbf {x}) = \sum_ {i = 1} ^ {l} C O _ {i} (\mathbf {x}). \tag {17}
+$$
+
+Note that $C V ( \mathbf { x } ) = \mathbf { 0 }$ means that x is a feasible individual and $C V ( \mathbf { x } ) > \mathbf { 0 }$ means that x is an infeasible individual.
+
+Decomposition-based multiobjective evolutionary algorithm [34] (MOEA/D) is one of the popular evolutionary algorithms for solving multiobjective optimization problems due to its advantages of maintaining diversity of the population and lower computational complexity compared with other nondecomposition-based algorithms. Later, it was extended with a constraint domination principle (CDP) [35] to solve CMOPs, which is denoted as CMOEA/D-CDP. In CDP, for the two individuals x and y, if both of them are feasible, the one that dominates another one is selected. If both of them are infeasible, the one with the smaller degree of constraint violation is selected according to (16). In the other case, the feasible one is selected into the next generation.
+
+The main idea of CMOEA/D-CDP is shown in Fig. 2, it decomposes a CMOP into a number of scalar optimization subproblems by a set of $\mathcal { N }$ well-distributed weight vectors. The above set is denoted as $\mathbf { W } \mathbf { V } = \{ \mathbf { w } ^ { 1 } , \mathbf { w } ^ { 2 } , \dots , \mathbf { w } ^ { \mathcal { N } } \}$ }, where $\mathcal { N }$ is the number of the population size. These subproblems is further solved at a collaborative manner. CMOEA/D-CDP also uses a neighboring information mechanism to help the population evolve. Therein, a weight vector is corresponding to a subproblem, and the neighbor relations among these subproblems are defined by taking each of their T closest weight vectors as each of their neighbors in terms of their Euclidean distances. Then in the update scheme, each newly generated individual is used to update its neighbors in terms of three decomposition-based methods. An achievement scalarizing function (ASF) is one of the most commonly used decomposition-based methods, which is given in (18). To prevent the loss of the diversity of the population, the mating parents are selected either from the neighbors of an individual or from the whole population at a probability δ to produce an offspring, and the offspring is used to update the neighbors of each individual at most $n _ { r }$ times
+
+![](images/536cb5ece0a163ddcbea7716de9eced060456bb10458f5f3cc2800ef3c8ba58c.jpg)
+
+<details>
+<summary>text_image</summary>
+
+G₂(x)
+weight vector
+neighbors of weight vector wⁱ
+individual
+ideal point
+xⁱ
+xⁱ
+wⁱ
+...
+ideal point z*
+</details>
+
+Fig. 2. Illustration of CMOEA/D-CDP.
+
+$$
+\operatorname{ASF} \left(\mathbf {x} ^ {n} \mid \mathbf {w} ^ {n}\right) = \max \left(\frac {G _ {i} \left(\mathbf {x} ^ {n}\right) - z _ {i}}{\mathbf {w} ^ {n}}, 1 \leq i \leq m\right) \tag {18}
+$$
+
+where $z _ { i } = \operatorname* { m i n } ( G _ { i } ( \mathbf { x } ) \quad \forall \mathbf { x } )$ . We denote $\mathbf { z } ^ { * } = ( z _ { 1 } , \dots , z _ { m } )$ as the ideal point that shifts the population to the first quadrant.
+
+# B. Proposed Framework
+
+By analyzing the characteristics of the two objectives: 1) minimizing the makespan of all interdependent tasks and 2) energy balancing index among all UAVs, we introduce a novel local search mechanism by making use of the information of the two objectives, and try to seek promising optimal solutions. Meanwhile, an improved genetic operator is designed to further explore the search space by randomly switching the positions of different tasks uploaded to different UAVs. The algorithm is performed generation by generation and we adopt the maximum number of generations $g _ { \mathrm { m a x } }$ as a stopping criterion. The algorithm consists of four components: 1) initialization; 2) reproduction; 3) selection; and 4) termination. In the following, we introduce the technique details of the components.
+
+Initialization: The original Problem (14) needs to be modified to make it executable by the evolutionary algorithm since the task-dependency constraint in $ { \boldsymbol { S } } _ { j }$ is not accountable and the feasibility of $ { \boldsymbol { S } } _ { j }$ is necessitated to be quantificationally measured by calculating the objectives and degree of constraint violations. Besides, a proper and equivalent representation of the decision variable vector x (i.e., an individual in the evolutionary algorithm) is helpful to promote the solution performance. To this end, we first design an elaborate genetic coding scheme.
+
+![](images/8c9c946d5f7b0cc467cb442152a88c2a5299a3212176210e987a127f32871ea6.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph LR
+    A["x₁"] --> B["x₂"] --> C["..."]
+    C --> D["x_I"] --> E["f₁"] --> F["f₂"] --> G["..."]
+    G --> H["f_I"]
+    style A fill:#f9f,stroke:#333
+    style B fill:#f9f,stroke:#333
+    style C fill:#f9f,stroke:#333
+    style D fill:#f9f,stroke:#333
+    style E fill:#f9f,stroke:#333
+    style F fill:#f9f,stroke:#333
+    style G fill:#f9f,stroke:#333
+    style H fill:#f9f,stroke:#333
+```
+</details>
+
+Fig. 3. Illustration of genetic encoding scheme.
+
+The original decision variable vector x consists of two parts, one is the offloading decision of each task regarding to any UAV and the other is the corresponding computing speed. To simplify the formation of an individual, we tend to utilize the decision variable vector which is represented as $( x _ { 1 } , x _ { 2 } , \ldots , x _ { I } , f _ { 1 } , f _ { 2 } , \ldots , f _ { I } )$ , as shown in Fig. 3. The tasks of a mission are encoded in order (the green part), and the corresponding computing speed of each task is also encoded in order (the pink part), which is appended to the first part of the decision variable vector. The domain for each integer offloading decision xi varies from 1 to J where the domain indicates that the ith task is executed in a UAV indexed by xi. In this way, each task is definitely assigned to a single UAV, guaranteeing that C1 is satisfied. Given the task graph, the leader UAV can classify and sort the tasks based on the processing orders $\{ \mathrm { o r d e r } ( i ) \} _ { \forall i }$ . This ensures that for ${ \cal { S } } _ { j } ,$ any kth task will not be a precedent task of the (k − 1)th task. As a result, C3 is automatically satisfied for each UAV.
+
+Based on the above genetic encoding scheme, a population $P _ { 0 }$ is first initialized, and their objective and constraint violation are calculated regarding to Problem (14). As stated above, C1 and C3 can be always satisfied in this step. Thus, they are not necessary to be integrated into the calculation $C V ( \mathbf { x } )$ . Then, N weight vectors $\bar { \mathbf { W } } \bar { \mathbf { V } } = \{ \mathbf { w } ^ { 1 } , \mathbf { w } ^ { 2 } , \dots , \mathbf { w } ^ { \mathcal { N } } \}$ from the hyperplane $G _ { 1 } ( { \bf x } ) + G _ { 2 } ( { \bf x } ) = 1$ are evenly sampled, and a set of $\rho$ weight vectors WS from the N weight vectors are evenly selected for the proposed local search mechanism. The parameters regarding to CMOEA/D-CDP, including T closest weight vectors of each weight vector as its neighbors B, the maximum number of individuals updated by an offspring $n _ { r } ,$ and the possibility of choosing mating parents from the neighbors δ, are initialized. The initial condition t and termination condition are also set.
+
+Reproduction: At a generation t, the population $P _ { t }$ evolves by producing offspring individuals. For the ith individual $\mathbf { x } ^ { i }$ , its mating individuals are either selected from its neighbors or from the whole population. Subsequently, an improved genetic operation is performed on $\mathbf { x } ^ { i }$ and its mating individuals to produce an offspring individual $\mathbf { X } ^ { \mathrm { { n e w } } }$ . The genetic operator can be found in Algorithm 3.
+
+Selection: According to CMOEA/D-CDP, each nth individual is associated with a weight vector $\mathbf { w } ^ { n }$ , which is compared with its offspring individual $\mathbf { X } ^ { \mathrm { { n e w } } }$ based on CDP, the better
+
+# Algorithm 1 Proposed Algorithm Framework
+
+# 1: Initialization:
+
+1) Initialize a population $P _ { 0 } ,$ and calculate the objectives and constraints in Problem (14).   
+2) Initialize a set of $\mathcal { N }$ evenly distributed weight vectors ${ \bf W } { \bf V } ~ = ~ \left\{ { \bf w } ^ { 1 } , { \bf w } ^ { 2 } . . . , \dot { \bf w } ^ { \mathcal { N } } \right\}$ , and evenly sample ρ weight vectors from the N weight vectors to generate WS.   
+3) Initialize parameters regarding to CMOEA/D-CDP, including $T$ closest weight vectors of each weight vector as its neighbors , the maximum number of individuals updated by an offspring $n _ { r } ,$ and the probability of choosing mating parents from the neighbors δ.   
+4) Initialize the maximum number of generations $g _ { \mathrm { m a x } } ,$ set current generation number $t = 1 ,$ , and update the ideal point ${ \bf z } ^ { \ast } = ( z _ { 1 } , z _ { 2 } )$ .
+
+# 2: Reproduction:
+
+1) For each individual x, if rand $< \delta ,$ select the mating individuals from its neighbors $B ,$ otherwise select its mating individuals from the whole population.   
+2) Perform genetic operation on x with its mating individuals to produce an offspring $\mathbf { x } ^ { n e w }$ according to Algorithm 3.   
+3) Calculate the objectives and constraints in Problem (14).   
+4) Update the ideal point $\mathbf { z } ^ { \ast }$ with each $\mathbf { x } ^ { n e w }$
+
+# 3: Selection:
+
+1) For each x, update its neighbors with $\mathbf { x } ^ { n e w }$ . If the number of updating the neighbors has not reached $n _ { r } ,$ randomly pick up a neighbor individual from $B ,$ and compare it with $\mathbf { x } ^ { n e w }$ in terms of CDP.   
+2) Obtain the next generation $P _ { t + 1 }$ .   
+3) Apply the proposed local search mechanism to $P _ { t + 1 }$ in every 10 generations according to Algorithm 2.   
+4) $t = t + 1$
+
+# 4: Termination:
+
+1) If $t \ > \ g _ { \mathrm { m a x } } ,$ output all the feasible nondominated solutions in $P _ { t }$ . Otherwise, ${ \bf g 0 }$ to Reproduction scheme.
+
+one survives. Besides, CMOEA/D-CDP introduces a neighbor update scheme that $\mathbf { X } ^ { \mathrm { { n e w } } }$ is randomly compared with its neighbors at most $n _ { r }$ times in terms of CDP.
+
+After the selection scheme, a local search mechanism based on utilizing the objective information is applied to produce the new population $P _ { t + 1 }$ and further find promising optimal solutions. More details can be found in Section IV-C.
+
+Termination: If the stopping criterion is met, the final population with feasible nondominated solutions are output as the optimal solutions for Problem (14). Otherwise, the proposed framework repeats the procedure of the reproduction and selection scheme.
+
+According to the above phases, we show the pseudocode of the proposed algorithm framework in Algorithm 1. Next, we provide more details on the elaborately designed local search mechanism and genetic operation.
+
+Algorithm 2 Local Search Mechanism   
+Input:
+• The population $P_{t+1}$ .
+• The $\rho$ weight vectors WS.
+• The maximum number of generations $g_{max}$ .
+
+Output:
+• The modified population $P_{t+1}$ .
+
+1: for i = 1 to $\rho$ do
+2: Select the best individual $x^{b}$ in $P_{t+1}$ according to Equ. (18).
+3: for j = 1 to $\frac{\|P_{t+1}\|}{\rho}$ do
+4: if rand < 0.5 then
+5: %Reassigning high computing speed to all tasks in a random UAV.
+6: Randomly choose a UAV k in $x^{b}$ .
+7: For each task in $S_{k}$ regarding to $x^{b}$ , increase the computing speed by choosing a new value varying from $[\frac{F^{k}}{2}, F^{k}]$ .
+8: else
+9: %Randomly shift a task of a UAV to another UAV.
+10: Find the UAV with the least number of undertaking tasks as $x_{lea}^{b}$ in $x^{b}$ .
+11: Find the UAV with the largest number of undertaking tasks as $x_{lar}^{b}$ in $x^{b}$ .
+12: Generate a new individual $x^{new}$ by randomly choosing a task $x_{r\_lar}^{b}$ from $x_{lar}^{b}$ , and reassigning this task to the UAV with the least number of undertaking tasks: $x_{r\_lar}^{b} = x_{lea}^{b}$ .
+13: end if
+14: end for
+15: Compare $x^{new}$ with its parent $x^{b}$ based on CDP. When $x^{new}$ is better than $x^{b}$ , $x^{b} = x^{new}$ .
+16: Update the ideal point $z^{*}$ with $x^{new}$ .
+17: end for
+18: $g_{max} = g_{max} - 1$ .
+
+# C. Local Search Mechanism
+
+This section studies the local search mechanism based on utilizing the objective information. The pseudocode is presented in Algorithm 2.
+
+The proposed local search mechanism includes two parts regarding to the two objectives of Problem (14). The first objective is to minimize the makespan of all interdependent tasks. We consider a greedy manner in the task processing. A special mutation operator is designed by reassigning relatively high computing speed to all tasks executed by a randomly selected UAV, as shown in lines 5–7, since more computing resources are useful to reduce the processing time of a task. The second objective is to minimize the proposed energy balancing among all UAVs. To this end, the UAV with the largest number of undertaking tasks will randomly shift a task to another UAV with the least number of undertaking tasks, as shown in lines 9–12. This attempts to eliminate the difference
+
+Algorithm 3 Improved Genetic Operation   
+Input:
+- The population $P_t$ .
+- The $i$ -th parent individual $\mathbf{x}^i$ .
+- Neighbors $\mathcal{B}_i$ of the parent individual $\mathbf{x}^i$ .
+- Two DE control parameters $\mathcal{F}$ and $CR$ .
+
+Output:
+- An offspring individual $\mathbf{x}^{new}$ .
+
+1: if rand < δ then
+2: Randomly pick three individuals from the neighbors $\mathcal{B}_i$ of $\mathbf{x}^i$ as $\mathbf{x}^{r1}$ , $\mathbf{x}^{r2}$ and $\mathbf{x}^{r3}$ .
+
+3: else
+4: Randomly pick three individuals from the whole population as $\mathbf{x}^{r1}$ , $\mathbf{x}^{r2}$ and $\mathbf{x}^{r3}$ .
+
+5: end if
+6: Perform DE/current-to-rand/1 on $\mathbf{x}^i$ , $\mathbf{x}^{r1}$ , $\mathbf{x}^{r2}$ and $\mathbf{x}^{r3}$ to produce $\mathbf{x}'$ according to Equ. (19).
+
+7: Fix $\mathbf{x}'$ back to its boundary constraint.
+8: if rand < 0.5 then
+9: Perform the polynomial mutation on $\mathbf{x}'$ to produce $\mathbf{x}^{new}$ according to Equ. (20).
+
+10: Fix $\mathbf{x}^{new}$ back to its boundary constraint.
+11: else
+12: Randomly choose two positions $p_1$ and $p_2$ of the tasks in the mutant $\mathbf{x}'$ , where $p_1, p_2 = 1, 2, ..., I$ .
+
+13: Generate $\mathbf{x}^{new}$ by swapping the positions of the two tasks $x_{p_1}'$ and $x_{p_2}'$ , and their corresponding computing speeds $f_{p_1}'$ and $f_{p_2}'$ .
+
+14: Fix $\mathbf{x}^{new}$ back to its boundary constraint.
+15: end if
+
+in the workload processing of the UAVs, which is helpful to finally reduce the introduced energy balancing index.
+
+# D. Genetic Operation
+
+We introduce the details of the improved genetic operator. The pseudocode is presented in Algorithm 3.
+
+For the nth parent $\mathbf { x } _ { } ^ { n } ,$ three mating parents $\mathbf { x } ^ { r 1 } , \mathbf { x } ^ { r 2 }$ , and $\mathbf { x } ^ { r 3 }$ are randomly chosen from the neighbors of $\mathbf { x } ^ { i }$ or the whole population. They are used for the differential evolution (DE) operation by using DE/current-to-rand/1 [36] to generate an individual $\dot { { \bf x } ^ { \prime } } ,$ as shown in lines 1–7. The DE/current-to-rand/1 is given as follows:
+
+$$
+\mathbf {x} ^ {\prime} = \mathbf {x} ^ {i} + \mathcal {F} \left(\mathbf {x} ^ {r _ {1}} - \mathbf {x} ^ {i}\right) + \mathcal {F} \left(\mathbf {x} ^ {r _ {2}} - \mathbf {x} ^ {r _ {3}}\right) \tag {19}
+$$
+
+where $\mathcal { F }$ is the DE control parameter. After the DE operation, if an element of $\mathbf { x } ^ { \prime }$ is out of boundary constraint, randomly select a value from its inside boundary.
+
+Then, a polynomial mutation [37] is performed on the individual $\mathbf { x } ^ { \prime }$ to generate an offspring individual $\mathbf { X } ^ { \mathrm { { n e w } } }$ , as shown in lines 9–10. For an element $x _ { i } ^ { \mathrm { n e w } }$ in $\mathbf { X } ^ { \mathrm { { n e w } } }$ , the polynomial mutation is given as follows:
+
+$$
+x _ {i} ^ {\text { new }} = \left\{ \begin{array}{l l} x _ {i} ^ {\prime} + \sigma_ {i} (U _ {i} - L _ {i}), & \text { if   } \text { rand } <   C R \\ x _ {i} ^ {\prime}, & \text { otherwise } \end{array} \right. \tag {20}
+$$
+
+![](images/34d8ccd0a8b009a6eb99c26247b5fd9a84404a3e68161b13018bf2bfbb5daff7.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    0 -->|1800| L1
+    L1 -->|1500| L2
+    L1 -->|1600| L3
+    L3 -->|1400| L5
+    L3 -->|1200| L8
+    L3 -->|1500| L4
+    L4 -->|1600| L6
+    L4 -->|2000| L7
+    L5 -->|1400| L8
+    L6 -->|1300| L8
+    L7 -->|1800| L7
+    L8 -->|1000| 9
+```
+</details>
+
+(a)
+
+![](images/367c5c33a221cd1fb3870933c1c676badeec4056e787f240324c3ec278ecbcbe.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    0 -->|1500| L1
+    L1 -->|1600| L2
+    L1 -->|1400| L3
+    L2 -->|1600| L5
+    L3 -->|1300| L6
+    L4 -->|1800| L7
+    L5 -->|2000| L8
+    L6 -->|1500| L8
+    L7 -->|2000| L8
+    L8 -->|1000| 9
+```
+</details>
+
+(b)
+
+![](images/65ebe145e5c9a691b64ed229f62c845153730a89acc4a7e8f30d2772980c796a.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["0"] -->|1200| B["L₁"]
+    B -->|1500| C["L₂"]
+    C -->|1600| D["L₃"]
+    C -->|1200| E["L₄"]
+    D -->|1400| F["L₅"]
+    D -->|1800| G["L₆"]
+    E -->|1300| H["L₇"]
+    E -->|1500| I["L₈"]
+    F -->|1000| J["9"]
+    G -->|2000| J
+    H -->|1000| J
+    I -->|1800| J
+```
+</details>
+
+(c)   
+Fig. 4. Three task graphs in the experiments. (a) General task graph. (b) Mesh task graph. (c) Tree task graph.
+
+where
+
+$$
+\sigma_ {i} = \left\{ \begin{array}{l l} (2 * \text { rand }) ^ {\frac {1}{\eta + 1}} - 1, & \text { if   } \text { rand } <   0. 5 \\ - (2 - 2 * \text { rand }) ^ {\frac {1}{\eta + 1}}, & \text { otherwise } \end{array} \right. \tag {21}
+$$
+
+where CR is another control parameter, $U _ { i }$ and $L _ { i }$ are the upper boundary and lower boundary of the ith decision variable, and η is the distribution index. After the polynomial mutation, if an element of $\mathbf { X } ^ { \mathrm { { n e w } } }$ is out of boundary constraint, randomly select a value from its inside boundary.
+
+However, the operation may not work well since some of structures that are beneficial for the evolution process have not been utilized. To cope this dilemma, an improved genetic operator by swapping tasks between all UAVs is designed. As shown in lines 12–14, two random positions $p _ { 1 }$ and $p _ { 2 }$ of the individual $\mathbf { x } ^ { \prime }$ are chosen, the two tasks with their corresponding computing speed (i.e., $f _ { p _ { 1 } } ^ { \prime }$ and $f _ { p _ { 2 } } ^ { \prime } )$ are exchanged.
+
+# E. Complexity Analysis
+
+We perform the complexity analysis of the proposed algorithm to indicate that the algorithm coverages within a reasonable computational time limit. The proposed algorithm utilizes CMOEA/D-CDP [9] as the solution framework, and further designs two mechanisms: 1) the local search mechanism and 2) the improved genetic operation, to achieve performance improvements. Therefore, the complexity of the proposed algorithm includes three parts. CMOEA/D-CDP is extended from the original version MOEA/D [34] and the complexity of MOEA/D is analyzed by O(mN T) for one generation, where m is the number of objectives, $\mathcal { N }$ is the population size, and T is the size of neighbors of an individual. CMOEA/D updates an individual with its neighbors, i.e., T times while the proposed CMOEA/D-CDP updates an individual with its neighbors $n _ { r }$ times. So the complexity for CMOEA/D-CDP is $O ( m \Lambda ( \Lambda _ { r } )$ for one generation. For the local search mechanism, it has two loops as shown in Algorithm 2, whose complexity is $O ( m \rho [ \mathcal { N } / \rho ] )$ , i.e., O(mN ). For the improved genetic operation, it is a part of CMOEA/D-CDP and the overall complexity of CMOEA/D-CDP includes this part of computational resources. Due to gmax generations, the complexity of the proposed algorithm is $O ( m \Lambda _ { n _ { r } g _ { \mathrm { m a x } } } )$ .
+
+# V. EXPERIMENTAL STUDIES
+
+In this section, we conduct a number of simulation experiments to evaluate the overall performance of our scheme for MU-AEC. For the performance comparison, we introduce three well-known constrained multiobjective evolutionary algorithms, i.e., ToP [36], PPS [37], and CMOEA/D-CDP [9] as the baseline algorithms. We show the experimental results of the algorithms for addressing three commonly used task graphs: 1) general task graph; 2) mesh task graph; and 3) tree task graph. Besides, we apply two commonly utilized performance metrics of the multiobjective optimization: 1) inverted generational distance (IGD) [38] and 2) hypervolume (HV) [39], to quantificationally measure the performance of each algorithm on the task graphs. We pay attention to the performance of the algorithms regarding to convergence and diversity of the obtained nondominated solution set. Both IGD and HV are frequently used to test the performance and quality of the obtained nondominated solutions for multiobjective methods. They can be easily calculated to measure the convergence and diversity. Note that a smaller IGD value implies that an algorithm achieves better performance in terms of the convergence, and a larger HV value implies that an algorithm achieves better performance in terms of both of the convergence and diversity.
+
+# A. Parameter Setting
+
+We set the simulation parameters as follows. There are $I \ = \ 8$ interdependent tasks and J = 4 UAVs in the UAV swarm. We refer to [25] and consider three kinds of the task graphs. The unit of the workloads of a task is mega CPU cycles, and the unit of the data size of intermediate data between any two interdependent tasks is kilo bytes. Let $\{ W _ { i } \} _ { \forall i } = [ 6 0 . 5 , 8 0 . 3 , 1 5 2 . 6 , 1 0 5 . 8 , 1 9 5 . 3 , 8 6 . 4 , 1 6 6 . 8 , 1 0 0 . 3 ] .$ The detailed topology and weights of the three task graphs are shown in Fig. 4, and note that both the first and last nodes indicate the user. The transmit power of the device is 0.2 W and that of a UAV varies from 0.2 W to 0.6 W. In the ground-toair and air-to-ground communications, the available bandwidth is 6 MHz and noise power is −60 dBm. Each UAV flies at a constant height $h \ = \ 1 0$ m and the distance between the device and it ranges from 10 to 20 m. To formulate the communication model between the device and a UAV, we refer to the parameter settings in [30] and [31], where $\alpha = 1 1 . 9 5 .$ , β = 0.14, fc = 2 GHz, $s = 3 \times 1 0 ^ { 8 }$ m/s, $\mu ^ { \mathrm { L o S } } = 3 \ \mathrm { d B }$ , and $\mu ^ { \mathrm { N L o S } } = 2 3 ~ \mathrm { d B }$ . The data rate between any two UAVs is γ = 5 mega byte per second. To formulate the energy consumption model of a UAV, hovering power $\rho ^ { H } \in U [ 5 0 , 6 0 ]$ W, and effective switched capacitance $\varepsilon \in U [ 1 , 1 0 ] \times 1 0 ^ { - 2 7 }$ . For each UAV, the maximal computing speed $F = 3 ~ \mathrm { G H z }$ and upper limit of the energy consumption 100 J are identical. The reference value in the energy balancing index $\phi$ is set to 100 for the general task and the mesh task graph, ten for the tree task graph.
+
+In our proposed algorithm, three parameters of the genetic operators $\mathcal { F } ~ = ~ 0 . 7 , ~ C R ~ = ~ 0 . 1$ , and $\eta ~ = ~ 2 1$ are set in Algorithm 3, $\rho = 0 . 2 \mathcal { N }$ . Let $T = 0 . 1 { \mathcal { N } } , n _ { r } = 0 . 0 1 { \mathcal { N } } .$ , and $\delta \ = \ 0 . 9$ , which are suggested in CMOEA/D-CDP. In the comparison experiments, four algorithms independently run 30 times with the population size $\mathcal { N } = 1 0 0$ , and set the maximum number of generations $g _ { \mathrm { m a x } } = 8 0 0$ . To calculating the above two performance metrics, including IGD and HV, we utilize 100 feasible nondominated solutions at the final population. Due to true Pareto fronts of these test instances are unknown, we evenly sample a set of nondominated feasible solutions obtained by running our algorithm with a population size 5000 and 10,000 generations for each test instance, then the obtained Pareto front of each test instance is shifted slightly by subtracting a smaller positive value as the approximation of the true Pareto front. The reference point for calculating HV is set to (2.5, 8), (2.5, 8), and (2, 10) for the general task graph, the mesh task graph, and the tree task graph, respectively.
+
+# B. Performance Comparison
+
+In the following, we compare the solution performance among different multiobjective optimization algorithms under three different task graphs in Table I and Fig. 5.
+
+Table I shows the mean and standard deviation (STD) values of IGD and HV regarding to four algorithms. In particular, the best results achieved by an algorithm on each test instance are highlighted in gray. According to Table I, our algorithm consistently achieves the better solution performance than all baseline algorithms in terms of the lower mean values of IGD and the higher mean values of HV on the three test instances. This means that our algorithm can finally finds a set of better-distributed feasible nondominated solutions. The proposed algorithm provides a wider range of preferences for the decision maker of Problem (14).
+
+Fig. 5 shows the Pareto fronts of the four algorithms at the median run in terms of HV. The horizontal axis indicates the first objective $G _ { 1 } ( \mathbf { x } )$ of Problem (14), i.e., makespan, while the vertical axis indicates the second objective $G _ { 2 } ( \mathbf { x } )$ , i.e., energy balancing index. From the figure, the advantages of the proposed algorithm over the baseline algorithms are intuitive. For the general task graph, we can observe that our algorithm obtains a part of Pareto fronts that are superior to all baseline algorithms, and for the mesh task graph and the tree task graph, our algorithm consistently achieves better-distributed Pareto front than CMOEA/D-CDP, PPS, and ToP, which highlights the superiority of the proposed algorithm once again.
+
+To summarize, the above results demonstrate that our algorithm outperforms the conventional algorithms in obtaining the feasible optimal solutions by guaranteeing the better convergence and improved diversity of the solutions.
+
+![](images/1c6bd2b531f609d66504cfb102cc25f9a00dcdbba0e2b1c0b793a31b0a06fe3a.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| Makespan (s) | Energy Balancing Index | Algorithm        |
+| ------------ | ---------------------- | ---------------- |
+| 1.2          | 5.4                    | Our Algorithm    |
+| 1.3          | 5.0                    | Our Algorithm    |
+| 1.4          | 4.8                    | Our Algorithm    |
+| 1.5          | 4.5                    | Our Algorithm    |
+| 1.6          | 4.2                    | Our Algorithm    |
+| 1.7          | 3.9                    | Our Algorithm    |
+| 1.8          | 3.6                    | Our Algorithm    |
+| 1.9          | 3.3                    | Our Algorithm    |
+| 2.0          | 3.0                    | Our Algorithm    |
+| 2.1          | 2.7                    | Our Algorithm    |
+| 2.2          | 2.4                    | Our Algorithm    |
+| 2.3          | 2.1                    | Our Algorithm    |
+| 2.4          | 1.8                    | Our Algorithm    |
+| 1.2          | 5.3                    | PPS              |
+| 1.3          | 5.1                    | PPS              |
+| 1.4          | 4.9                    | PPS              |
+| 1.5          | 4.6                    | PPS              |
+| 1.6          | 4.3                    | PPS              |
+| 1.7          | 4.0                    | PPS              |
+| 1.8          | 3.7                    | PPS              |
+| 1.9          | 3.4                    | PPS              |
+| 2.0          | 3.1                    | PPS              |
+| 2.1          | 2.8                    | PPS              |
+| 2.2          | 2.5                    | PPS              |
+| 2.3          | 2.2                    | PPS              |
+| 2.4          | 1.9                    | PPS              |
+| 1.2          | 5.2                    | CMOEA/D-CDP      |
+| 1.3          | 5.0                    | CMOEA/D-CDP      |
+| 1.4          | 4.7                    | CMOEA/D-CDP      |
+| 1.5          | 4.4                    | CMOEA/D-CDP      |
+| 1.6          | 4.1                    | CMOEA/D-CDP      |
+| 1.7          | 3.8                    | CMOEA/D-CDP      |
+| 1.8          | 3.5                    | CMOEA/D-CDP      |
+| 1.9          | 3.2                    | CMOEA/D-CDP      |
+| 2.0          | 2.9                    | CMOEA/D-CDP      |
+| 2.1          | 2.6                    | CMOEA/D-CDP      |
+| 2.2          | 2.3                    | CMOEA/D-CDP      |
+| 2.3          | 2.0                    | CMOEA/D-CDP      |
+| 2.4          | 1.7                    | CMOEA/D-CDP      |
+| 1.2          | 5.1                    | ToP              |
+| 1.3          | 4.9                    | ToP              |
+| 1.4          | 4.6                    | ToP              |
+| 1.5          | 4.3                    | ToP              |
+| 1.6          | 4.0                    | ToP              |
+| 1.7          | 3.7                    | ToP              |
+| 1.8          | 3.4                    | ToP              |
+| 1.9          | 3.1                    | ToP              |
+| 2.0          | 2.8                    | ToP              |
+| 2.1          | 2.5                    | ToP              |
+| 2.2          | 2.2                    | ToP              |
+| 2.3          | 1.9                    | ToP              |
+| 2.4          | 1.6                    | ToP              |
+| 2.5          | 1.3                    | ToP              |
+| 1.2          | 5.0                    | Other            |
+| 1.3          | 4.8                    | Other            |
+| 1.4          | 4.5                    | Other            |
+| 1.5          | 4.2                    | Other            |
+| 1.6          | 3.9                    | Other            |
+| 1.7          | 3.6                    | Other            |
+| 1.8          | 3.3                    | Other            |
+| 1.9          | 3.0                    | Other            |
+| 2.0          | 2.7                    | Other            |
+| 2.1          | 2.4                    | Other            |
+| 2.2          | 2.1                    | Other            |
+| 2.3          | 1.8                    | Other            |
+| 2.4          | 1.5                    | Other            |
+| 2.5          | 1.2                    | Other            |
+</details>
+
+![](images/2598c91290f0fca65d49659d8604051d9597533b9d6f0ecfd161df3aa7bf483a.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| Method           | Makespan (s) | Energy Balancing Index |
+| ---------------- | ------------ | ---------------------- |
+| Our Algorithm    | 1.3          | 5.8                    |
+| Our Algorithm    | 1.4          | 5.6                    |
+| Our Algorithm    | 1.5          | 5.0                    |
+| Our Algorithm    | 1.6          | 4.7                    |
+| Our Algorithm    | 1.7          | 4.5                    |
+| Our Algorithm    | 1.8          | 4.4                    |
+| Our Algorithm    | 1.9          | 4.3                    |
+| Our Algorithm    | 2.0          | 4.2                    |
+| PPS              | 1.4          | 5.6                    |
+| PPS              | 1.5          | 5.2                    |
+| PPS              | 1.6          | 5.0                    |
+| CMOEA/D-CDP      | 1.4          | 5.4                    |
+| CMOEA/D-CDP      | 1.5          | 5.2                    |
+| CMOEA/D-CDP      | 1.6          | 5.0                    |
+| CMOEA/D-CDP      | 1.7          | 4.9                    |
+| CMOEA/D-CDP      | 1.8          | 4.8                    |
+| CMOEA/D-CDP      | 1.9          | 4.7                    |
+| CMOEA/D-CDP      | 2.0          | 4.6                    |
+| ToP              | 1.4          | 5.8                    |
+| ToP              | 1.5          | 5.2                    |
+| ToP              | 1.6          | 5.0                    |
+| ToP              | 1.7          | 4.9                    |
+| ToP              | 1.8          | 4.8                    |
+| ToP              | 1.9          | 4.7                    |
+| ToP              | 2.0          | 4.6                    |
+| ToP              | 2.1          | 4.5                    |
+| ToP              | 2.2          | 4.4                    |
+| ToP              | 2.3          | 4.3                    |
+| ToP              | 2.4          | 4.2                    |
+| ToP              | 2.5          | 4.1                    |
+| ToP              | 2.6          | 4.0                    |
+| ToP              | 2.7          | 3.9                    |
+| ToP              | 2.8          | 3.8                    |
+| ToP              | 2.9          | 3.7                    |
+| ToP              | 3.0          | 3.6                    |
+| ToP              | 3.1          | 3.5                    |
+| ToP              | 3.2          | 3.4                    |
+| ToP              | 3.3          | 3.3                    |
+| ToP              | 3.4          | 3.2                    |
+| ToP              | 3.5          | 3.1                    |
+| ToP              | 3.6          | 3.0                    |
+| ToP              | 3.7          | 2.9                    |
+| ToP              | 3.8          | 2.8                    |
+| ToP              | 3.9          | 2.7                    |
+| ToP              | 4.0          | 2.6                    |
+| PPS              | 1.4          | 5.6                    |
+| PPS              | 1.5          | 5.2                    |
+| PPS              | 1.6          | 5.0                    |
+| PPS              | 1.7          | 4.9                    |
+| PPS              | 1.8          | 4.8                    |
+| PPS              | 1.9          | 4.7                    |
+| PPS              | 2.0          | 4.6                    |
+| PPS              | 2.1          | 4.5                    |
+| PPS              | 2.2          | 4.4                    |
+| PPS              | 2.3          | 4.3                    |
+| PPS              | 2.4          | 4.2                    |
+| PPS              | 2.5          | 4.1                    |
+| PPS              | 2.6          | 4.0                    |
+| PPS              | 2.7          | 3.9                    |
+| PPS              | 2.8          | 3.8                    |
+| PPS              | 2.9          | 3.7                    |
+| PPS              | 3.0          | 3.6                    |
+| PPS              | 3.1          | 3.5                    |
+| PPS              | 3.2          | 3.4                    |
+| PPS              | 3.3          | 3.3                    |
+| PPS              | 3.4          | 3.2                    |
+| PPS              | 3.5          | 3.1                    |
+| PPS              | 3.6          | 3.0                    |
+| PPS              | 3.7          | 2.9                    |
+| PPS              | 3.8          | 2.8                    |
+| PPS              | 3.9          | 2.7                    |
+| PPS              | 4.0          | 2.6                    |
+| CMOEA/D-CDP      | 1.4          | 5.4                    |
+| CMOEA/D-CDP      | 1.5          | 5.0                    |
+| CMOEA/D-CDP      | 1.6          | 4.9                    |
+| CMOEA/D-CDP      | 1.7          | 4.8                    |
+| CMOEA/D-CDP      | 1.8          | 4.7                    |
+| CMOEA/D-CDP      | 1.9          | 4.6                    |
+| CMOEA/D-CDP      | 2.0          | 4.5                    |
+| CMOEA/D-CDP      | 2.1          | 4.4                    |
+| CMOEA/D-CDP      | 2.2          | 4.3                    |
+| CMOEA/D-CDP      | 2.3          | 4.2                    |
+| CMOEA/D-CDP      | 2.4          | 4.1                    |
+| CMOEA/D-CDP      | 2.5          | 4.0                    |
+| CMOEA/D-CDP      | 2.6          | 3.9                    |
+| CMOEA/D-CDP      | 2.7          | 3.8                    |
+| CMOEA/D-CDP      | 2.8          | 3.7                    |
+| CMOEA/D-CDP      | 2.9          | 3.6                    |
+| CMOEA/D-CDP      | 3.0          | 3.5                    |
+| CMOEA/D-CDP      | 3.1          | 3.4                    |
+| CMOEA/D-CDP      | 3.2          | 3.3                    |
+| CMOEA/D-CDP      | 3.3          | 3.2                    |
+| CMOEA/D-CDP      | 3.4          | 3.1                    |
+| CMOEA/D-CDP      | 3.5          | 3.0                    |
+| CMOEA/D-CDP      | 3.6          | 2.9                    |
+| CMOEA/D-CDP      | 3.7          | 2.8                    |
+| CMOEA/D-CDP      | 3.8          | 2.7                    |
+| CMOEA/D-CDP      | 3.9          | 2.6                    |
+| CMOEA/D-CDP      | 4.0          | 2.5                    |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+| ToP              | -            | -                      |
+
+Note: The data is extracted from the provided image as shown in the code, but the original text contains only the actual data points for the 'Energy Balancing Index' column.
+</details>
+
+![](images/0bf60297b4b0263ae9a84e5438444a4abcbf302839deb6ab65597fcc8c9bc6a3.jpg)  
+Fig. 5. Pareto fronts of the four algorithms at the median run in terms of HV.
+
+# C. Discussions on the Local Search Mechanism and Improved Genetic Operator
+
+In this section, we study the impact of the local search mechanism and improved genetic operator on the performance improvements of our algorithm.
+
+We first investigate the effectiveness of the local search mechanism by utilizing the objective information. To highlight the advantages of the mechanism, we perform the proposed algorithm with and without this mechanism under the mesh task graph. The comparison results, including the mean and STD values of IGD and HV are presented in Table II. The local search mechanism is designed to make use of the objective information to seek superior individuals, thus the proposed algorithm is enhanced with the powerful searching ability to locate the promising regions. This is significant for the algorithm to accelerate the convergence. As a result, we find that the proposed algorithm with the local search mechanism achieves the superior solution performance, according to the lower mean value of IGD and higher mean value of HV on the general task graph. For example, the mean value of IGD decreases more than 2% due to the adoption of the local search mechanism.
+
+TABLE I COMPARISON RESULTS OF FOUR COMPARED ALGORITHMS IN TERMS OF THE MEAN VALUES AND STD OF IGD AND HV 
+
+<table><tr><td rowspan="2">Algorithm</td><td colspan="2">The general task graph</td><td colspan="2">The mesh task graph</td><td colspan="2">The tree task graph</td></tr><tr><td>IGD</td><td>HV</td><td>IGD</td><td>HV</td><td>IGD</td><td>HV</td></tr><tr><td>CMOEA/D-CDP</td><td>2.91e-01(3.98e-02)</td><td>6.80e+00(2.24e-01)</td><td>6.89e-01(1.68e-01)</td><td>4.31e+00(4.75e-01)</td><td>8.58e-01(1.08e-01)</td><td>6.46e+00(1.27e+00)</td></tr><tr><td>PPS</td><td>4.70e-01(5.54e-01)</td><td>6.04e+00(1.27e+00)</td><td>2.57e+00(9.70e+00)</td><td>3.84e+00(1.00e+00)</td><td>8.52e-01(9.35e-02)</td><td>6.05e+00(1.03e+00)</td></tr><tr><td>ToP</td><td>1.02e+00(6.70e-02)</td><td>1.76e+00(3.31e-01)</td><td>1.34e+00(3.55e-01)</td><td>2.97e+00(4.72e-01)</td><td>1.22e+00(7.70e-02)</td><td>3.09e+00(5.01e-01)</td></tr><tr><td>Our Algorithm</td><td>2.75e-01(4.91e-02)</td><td>6.83e+00(1.69e-01)</td><td>6.02e-01(3.41e-02)</td><td>4.46e+00(9.01e-02)</td><td>7.60e-01(6.97e-02)</td><td>7.64e+00(9.72e-01)</td></tr></table>
+
+TABLE II COMPARISON OF THE PROPOSED ALGORITHM WITH AND WITHOUT THE LOCAL SEARCH MECHANISM 
+
+<table><tr><td></td><td>IGD</td><td>HV</td></tr><tr><td>With</td><td>6.02e-01(3.41e-02)</td><td>4.46e+00(9.01e-02)</td></tr><tr><td>Without</td><td>6.16e-01(4.59e-02)</td><td>4.45e+00(1.01e-01)</td></tr></table>
+
+TABLE III COMPARISON OF THE PROPOSED ALGORITHM WITH AND WITHOUT THE IMPROVED GENETIC OPERATION 
+
+<table><tr><td></td><td>IGD</td><td>HV</td></tr><tr><td>Improved</td><td>6.02e-01(3.41e-02)</td><td>4.46e+00(9.01e-02)</td></tr><tr><td>Original</td><td>6.20e-01(1.07e-01)</td><td>4.40e+00(3.22e-01)</td></tr></table>
+
+Similarly, we investigate the effectiveness of the improved genetic operator by using the mesh task graph in this experiment. The proposed algorithm with the improved genetic operation is denoted as improved, and with the original genetic operator is denoted as Original in Table III. The original genetic operator consists of DE/current-to-rand/1 and polynomial mutation. While the rest of the parameters remain unchanged as in Section V-A. The comparison results are presented in Table III. The improved genetic operator is particularly designed to strictly follow the dependencies among the tasks and facilitate the execution of our algorithm. This also enables the algorithm to further exploit the above promising regions well to seek more superior solutions and improve the diversity. From the table, we find that the adoption of the improved genetic operator is helpful for the proposed algorithm to achieve the superior solution performance in terms of the lower mean value of IGD and higher mean value of HV. The mean value of IGD decreases about 3% and that of HV increases about 2%.
+
+![](images/053af3555b7508d4c729c765a80065823b4c718fc818dc1c178a8bf6819341ea.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| Makespan (s) | Energy Balancing Index | γ   |
+| ------------ | ---------------------- | --- |
+| 0.9          | 7.2                    | 7   |
+| 1.0          | 5.5                    | 7   |
+| 1.1          | 4.8                    | 7   |
+| 1.2          | 4.2                    | 7   |
+| 1.3          | 3.8                    | 7   |
+| 1.4          | 3.5                    | 7   |
+| 1.5          | 3.2                    | 7   |
+| 1.6          | 3.0                    | 7   |
+| 1.7          | 2.8                    | 7   |
+| 0.9          | 7.0                    | 4   |
+| 1.0          | 6.5                    | 4   |
+| 1.1          | 6.0                    | 4   |
+| 1.2          | 5.5                    | 4   |
+| 1.3          | 5.0                    | 4   |
+| 1.4          | 4.5                    | 4   |
+| 1.5          | 4.0                    | 4   |
+| 1.6          | 3.5                    | 4   |
+| 1.7          | 3.0                    | 4   |
+| 0.9          | 7.5                    | 5   |
+| 1.0          | 7.0                    | 5   |
+| 1.1          | 6.5                    | 5   |
+| 1.2          | 6.0                    | 5   |
+| 1.3          | 5.5                    | 5   |
+| 1.4          | 5.0                    | 5   |
+| 1.5          | 4.5                    | 5   |
+| 1.6          | 4.0                    | 5   |
+| 1.7          | 3.5                    | 5   |
+| 0.9          | 7.8                    | 6   |
+| 1.0          | 7.3                    | 6   |
+| 1.1          | 6.8                    | 6   |
+| 1.2          | 6.3                    | 6   |
+| 1.3          | 5.8                    | 6   |
+| 1.4          | 5.3                    | 6   |
+| 1.5          | 4.8                    | 6   |
+| 1.6          | 4.3                    | 6   |
+| 1.7          | 3.8                    | 6   |
+| 0.9          | 8.0                    | 4   |
+| 1.0          | 7.5                    | 4   |
+| 1.1          | 7.0                    | 4   |
+| 1.2          | 6.5                    | 4   |
+| 1.3          | 6.0                    | 4   |
+| 1.4          | 5.5                    | 4   |
+| 1.5          | 5.0                    | 4   |
+| 1.6          | 4.5                    | 4   |
+| 1.7          | 4.0                    | 4   |
+</details>
+
+Fig. 6. Comparison of the objectives with respect to different γ .
+
+# D. Impact of Parameters on the Proposed Algorithm
+
+In this section, we evaluate the impact of key system parameters on the studied objectives, including the makespan and energy balancing index parameter. In these experiments, the mesh task graph is still utilized. Except the parameter to be discussed in each experiment, the rest of the parameter settings remain the same as presented in Section V-A.
+
+We observe the system performance with respect to different data rate γ of inter-UAV communication and workloads of the interdependent tasks. In Fig. 6, let γ vary from 4 to 7 Mb/s. Note that the increase of γ is helpful to reduce the data transmission time of the intermediate data between any two adjacent tasks if they are not performed by an identical UAV. The makespan of all tasks is significantly reduced with the increase of γ . At the same time, hovering time of some UAVs can be properly decreased to reduce their energy consumption. From the figure, we find that this is also helpful to further mitigate the difference in energy consumption of all UAVs.
+
+Let λ represent a varying coefficient regarding to the changing number of workloads of each task. We let λ vary from 0.5 to 2. With the increase of λ, the total workload of all tasks increases and this naturally prolongs the makespan since more computing time is necessitated on the UAV side. The hovering time and computing time of each UAV increases and the total energy consumption of all UAVs accordingly increases. According to Fig. 7, we find that with the increase of the total energy consumption of all UAVs, it will be difficult to balance the energy consumption among the UAVs and the energy balancing index finally increases.
+
+![](images/2d351827a5711fbaa4e8e08b022f0c86107707b99d86ac135b8b216f65c1aa67.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| Makespan (s) | Energy Balancing Index | λ    |
+| ------------ | ---------------------- | ---- |
+| 1.18         | 9.8                    | 0.5  |
+| 1.19         | 9.0                    | 0.5  |
+| 1.20         | 8.0                    | 0.5  |
+| 1.21         | 7.0                    | 0.5  |
+| 1.22         | 6.0                    | 0.5  |
+| 1.23         | 5.0                    | 0.5  |
+| 1.24         | 4.5                    | 0.5  |
+| 1.25         | 4.0                    | 0.5  |
+| 1.26         | 3.5                    | 0.5  |
+| 1.27         | 3.0                    | 0.5  |
+| 1.28         | 2.5                    | 0.5  |
+| 1.29         | 2.0                    | 0.5  |
+| 1.30         | 1.5                    | 0.5  |
+| 1.31         | 1.0                    | 0.5  |
+| 1.32         | 0.5                    | 0.5  |
+| 1.33         | 0.0                    | 0.5  |
+| 1.34         | -0.5                   | 0.5  |
+| 1.35         | -1.0                   | 0.5  |
+| 1.36         | -1.5                   | 0.5  |
+| 1.37         | -2.0                   | 0.5  |
+| 1.38         | -2.5                   | 0.5  |
+| 1.39         | -3.0                   | 0.5  |
+| 1.40         | -3.5                   | 0.5  |
+| 1.41         | -4.0                   | 0.5  |
+| 1.42         | -4.5                   | 0.5  |
+| 1.43         | -5.0                   | 0.5  |
+| 1.44         | -5.5                   | 0.5  |
+| 1.45         | -6.0                   | 0.5  |
+| 1.46         | -6.5                   | 0.5  |
+| 1.47         | -7.0                   | 0.5  |
+| 1.48         | -7.5                   | 0.5  |
+| 1.49         | -8.0                   | 0.5  |
+| 1.50         | -8.5                   | 0.5  |
+| 1.51         | -9.0                   | 0.5  |
+| 1.52         | -9.5                   | 0.5  |
+| 1.53         | -10.0                  | 0.5  |
+| 1.54         | -10.5                  | 0.5  |
+| 1.55         | -11.0                  | 0.5  |
+| 1.56         | -11.5                  | 0.5  |
+| 1.57         | -12.0                  | 0.5  |
+| 1.58         | -12.5                  | 0.5  |
+| 1.59         | -13.0                  | 0.5  |
+| 1.60         | -13.5                  | 0.5  |
+| 1.61         | -14.0                  | 0.5  |
+| 1.62         | -14.5                  | 0.5  |
+| 1.63         | -15.0                  | 0.5  |
+| 1.64         | -15.5                  | 0.5  |
+| 1.65         | -16.0                  | 0.5  |
+| 1.66         | -16.5                  | 0.5  |
+| 1.67         | -17.0                  | 0.5  |
+| 1.68         | -17.5                  | 0.5  |
+| 1.69         | -18.0                  | 0.5  |
+| 1.70         | -18.5                  | 0.5  |
+| 1.71         | -19.0                  | 0.5  |
+| 1.72         | -19.5                  | 0.5  |
+| 1.73         | -20.0                  | 0.5  |
+| 1.74         | -20.5                  | 0.5  |
+| 1.75         | -21.0                  | 0.5  |
+| 1.76         | -21.5                  | 0.5  |
+| 1.77         | -22.0                  | 0.5  |
+| 1.78         | -22.5                  | 0.5  |
+| 1.79         | -23.0                  | 0.5  |
+| 1.80         | -23.5                  | 0.5  |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...     |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...   |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...    |
+| ...          | ...                    | ...```
+</details>
+
+Fig. 7. Comparison of the objectives with respect to different λ.
+
+TABLE IV SENSITIVITY OF THE PARAMETER $\rho$ 
+
+<table><tr><td>ρ</td><td>IGD</td><td>HV</td></tr><tr><td>ρ = 0.1N</td><td>6.04e-01(4.90e-02)</td><td>4.44e+00(1.60e-01)</td></tr><tr><td>ρ = 0.15N</td><td>6.15e-01(6.76e-02)</td><td>4.44e+00(1.57e-01)</td></tr><tr><td>ρ = 0.2N</td><td>6.02e-01(3.41e-02)</td><td>4.46e+00(9.01e-02)</td></tr><tr><td>ρ = 0.25N</td><td>6.01e-01(5.54e-02)</td><td>4.45e+00(1.53e-01)</td></tr></table>
+
+The parameter $\rho$ in Algorithm 2 indicates that the number of the individuals is utilized for the local search mechanism, and each individual is utilized $\lfloor \mathcal { N } / \rho \rfloor$ times. Note that a smaller value of $\rho$ implies that less individuals are utilized, which may not help the proposed algorithm find a wider range of promising regions, while a larger value of $\rho$ implies that more individuals are utilized, but each of them is used with less times, which may not help the proposed algorithm find better individuals in our algorithm. Let $\rho$ vary from 0.1N to 0.25N with a constant step 0.05 . The results are summarized in Table IV. From this table, we can observe that the proposed algorithm maintains stable IGD and HV values with different values of $\rho .$ We realize that the proposed algorithm is less sensitive to this parameter.
+
+# VI. CONCLUSION
+
+We studied the joint interdependent task scheduling and energy balancing for MU-AEC by using a multiobjective optimization approach. The makespan of all interdependent tasks and total difference in energy consumption of all UAVs were simultaneously optimized in a CMOP. To tackle the CMOP, we proposed a revised a constrained decompositionbased multiobjective evolution algorithm. To quickly seek more superior solutions, the algorithm jointly exploited a local search mechanism by utilizing the objective information, and an improved genetic operator. Finally, numerical results demonstrated that compared with the baseline algorithm, the proposed algorithm achieved an advantage in finding a wellconverged and well-distributed set of Pareto optimal solutions in the decision space.
+
+In the future, we will try to evaluate the effect of user mobility and channel fading on the performance (e.g., throughput, outage probability, and packet loss rate) of UAV communications when considering the dynamic communication environment between mobile users and UAVs. Moreover, we will extend our scheme to the multiuser offloading scenario. Then, we are motivated to jointly optimize the trajectory planning of the UAVs, task scheduling, radio, and computing resource allocation in the future. In addition, we could seek a parallel lightweight scheme to complete the decision-making procedure, and simplify the control of different UAVs.
+
+# REFERENCES
+
+[1] X. Shen, J. Gao, W. Wu, M. Li, C. Zhou, and W. Zhuang, “Holistic network virtualization and pervasive network intelligence for 6G,” IEEE Commun. Surveys Tuts., vol. 24, no. 1, pp. 1–30, 1st Quart., 2022.   
+[2] X. Jiang, M. Sheng, N. Zhao, C. Xing, W. Lu, and X. Wang, “Green UAV communications for 6G: A survey,” Chin. J. Aeronaut., vol. 35, no. 9, pp. 19–34, 2022.   
+[3] W. Lu et al., “Secure transmission for multi-UAV-assisted mobile edge computing based on reinforcement learning,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 3, pp. 1270–1282, May/Jun. 2023.   
+[4] S. Gong, S. Wang, C. Xing, S. Ma, and T. Q. S. Quek, “Robust superimposed training optimization for UAV assisted communication systems,” IEEE Trans. Wireless Commun., vol. 19, no. 3, pp. 1704–1721, Mar. 2020.   
+[5] X.-H. Lin, S.-Z. Bi, N. Cheng, M.-J. Dai, and H. Wang, “An α-fairness approach to balancing the energy consumption among sensors for UAV– IoT systems,” IEEE Internet Things J., vol. 9, no. 18, pp. 17965–17978, Sep. 2022.   
+[6] J. Xie, Z. Chang, X. Guo, and T. Hämäläinen, “Energy efficient resource allocation for wireless powered UAV wireless communication system with short packet,” IEEE Trans. Green Commun. Netw., vol. 7, no. 1, pp. 101–113, Mar. 2023.   
+[7] P. Newman. “IoT report: How Internet of Things technology growth is reaching mainstream companies and consumers.” Business Insider. 2019. [Online]. Available: https://www.businessinsider.com/internet-of-thingsreport   
+[8] L. Liu, H. Tan, S. H.-C. Jiang, Z. Han, X.-Y. Li, and H. Huang, “Dependent task placement and scheduling with function configuration in edge computing,” in Proc. IEEE/ACM 27th Int. Symp. Qual. Servies (IWQoS), 2019, pp. 1–10.   
+[9] M. A. Jan and R. A. Khanum, “A study of two penalty-parameterless constraint handling techniques in the framework of MOEA/D,” Appl. Soft Comput., vol. 13, no. 1, pp. 128–148, 2013.   
+[10] E. E. Haber, H. A. Alameddine, C. Assi, and S. Sharafeddine, “UAVaided ultra-reliable low-latency computation offloading in future IoT networks,” IEEE Trans. Commun., vol. 69, no. 10, pp. 6838–6851, Oct. 2021.   
+[11] C. Zhan, H. Hu, Z. Liu, Z. Wang, and S. Mao, “Multi-UAV-enabled mobile-edge computing for time-constrained IoT applications,” IEEE Internet Things J., vol. 8, no. 20, pp. 15553–15567, Oct. 2021.   
+[12] L. P. Qian, H. Zhang, Q. Wang, Y. Wu, and B. Lin, “Joint multi-domain resource allocation and trajectory optimization in UAV-assisted maritime IoT networks,” IEEE Internet Things J., vol. 10, no. 1, pp. 539–552, Jan. 2023.   
+[13] Y. Wang, Z.-Y. Ru, K. Wang, and P.-Q. Huang, “Joint deployment and task scheduling optimization for large-scale mobile users in multi-UAVenabled mobile edge computing,” IEEE Trans. Cybern., vol. 50, no. 9, pp. 3984–3997, Sep. 2020.   
+[14] X. Qin, Z. Song, Y. Hao, and X. Sun, “Joint resource allocation and trajectory optimization for multi-UAV-assisted multi-access mobile edge computing,” IEEE Wireless Commun. Lett., vol. 10, no. 7, pp. 1400–1404, Jul. 2021.
+
+[15] N. N. Ei, M. Alsenwi, Y. K. Tun, Z. Han, and C. S. Hong, “Energyefficient resource allocation in multi-UAV-assisted two-stage edge computing for beyond 5G networks,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 9, pp. 16421–16432, Sep. 2022.   
+[16] Z. Chang, H. Deng, L. You, G. Min, S. Garg, and G. Kaddoum, “Trajectory design and resource allocation for multi-UAV networks: Deep reinforcement learning approaches,” IEEE Trans. Netw. Sci. Eng., early access, May 3, 2022, doi: 10.1109/TNSE.2022.3171600.   
+[17] L. Wang, K. Wang, C. Pan, W. Xu, N. Aslam, and L. Hanzo, “Multiagent deep reinforcement learning-based trajectory planning for multi-UAV assisted mobile edge computing,” IEEE Trans. Cogn. Commun. Netw., vol. 7, no. 1, pp. 73–84, Mar. 2021.   
+[18] L. Yang, H. Yao, J. Wang, C. Jiang, A. Benslimane, and Y. Liu, “Multi-UAV-enabled load-balance mobile-edge computing for IoT networks,” IEEE Internet Things J., vol. 7, no. 8, pp. 6898–6908, Aug. 2020.   
+[19] H. Guo, X. Zhou, Y. Wang, and J. Liu, “Achieve load balancing in multi-UAV edge computing IoT networks: A dynamic entry and exit mechanism,” IEEE Internet Things J., vol. 9, no. 19, pp. 18725–18736, Oct. 2022.   
+[20] Y. Ding et al., “Online edge learning offloading and resource management for UAV-assisted MEC secure communications,” IEEE J. Sel. Topics Signal Process., vol. 17, no. 1, pp. 54–65, Jan. 2023.   
+[21] L. P. Qian, W. Zhang, Q. Wang, Y. Wu, and X. Yang, “Alternative optimization for secrecy throughput maximization in UAV-aided NOMA networks,” IEEE Wireless Commun. Lett., vol. 11, no. 12, pp. 2580–2584, Dec. 2022.   
+[22] G. Zhao, H. Xu, Y. Zhao, C. Qiao, and L. Huang, “Offloading tasks with dependency and service caching in mobile edge computing,” IEEE Trans. Parallel Distrib. Syst., vol. 32, no. 11, pp. 2777–2792, Nov. 2021.   
+[23] S. Sundar and B. Liang, “Offloading dependent tasks with communication delay and deadline constraint,” in Proc. IEEE INFOCOM Conf. Comput. Commun., 2018, pp. 37–45.   
+[24] S. Guo, J. Liu, Y. Yang, B. Xiao, and Z. Li, “Energy-efficient dynamic computation offloading and cooperative task scheduling in mobile cloud computing,” IEEE Trans. Mobile Comput., vol. 18, no. 2, pp. 319–333, Feb. 2019.   
+[25] J. Yan, S. Bi, Y. J. Zhang, and M. Tao, “Optimal task offloading and resource allocation in mobile-edge computing with inter-user task dependency,” IEEE Trans. Wireless Commun., vol. 19, no. 1, pp. 235–250, Jan. 2020.   
+[26] J. Wang, J. Hu, G. Min, W. Zhan, A. Y. Zomaya, and N. Georgalas, “Dependent task offloading for edge computing based on deep reinforcement learning,” IEEE Trans. Comput., vol. 71, no. 10, pp. 2449–2461, Oct. 2022.   
+[27] X. Wei, L. Cai, N. Wei, P. Zou, J. Zhang, and S. Subramaniam, “Joint UAV trajectory planning, DAG task scheduling, and service function deployment based on DRL in UAV-empowered edge computing,” IEEE Internet Things J., early access, Mar. 17, 2023, doi: 10.1109/JIOT.2023.3257291.   
+[28] L. X. Nguyen, Y. K. Tun, T. N. Dang, Y. M. Park, Z. Han, and C. S. Hong, “Dependency tasks offloading and communication resource allocation in collaborative UAV networks: A metaheuristic approach,” IEEE Internet Things J., vol. 10, no. 10, pp. 9062–9076, May 2023.   
+[29] F. Pervez, L. Zhao, and C. Yang, “Joint user association, power optimization and trajectory control in an integrated satellite-aerialterrestrial network,” IEEE Trans. Wireless Commun., vol. 21, no. 5, pp. 3279–3290, May 2022.   
+[30] A. Al-Hourani, S. Kandeepan, and S. Lardner, “Optimal LAP altitude for maximum coverage,” IEEE Wireless Commun. Lett., vol. 3, no. 6, pp. 569–572, Dec. 2014.   
+[31] M. Mozaffari, W. Saad, M. Bennis, and M. Debbah, “Mobile unmanned aerial vehicles (UAVs) for energy-efficient Internet of Things communications,” IEEE Trans. Wireless Commun., vol. 16, no. 11, pp. 7574–7589, Nov. 2017.   
+[32] Y. Yu, J. Tang, J. Huang, X. Zhang, D. K. C. So, and K.-K. Wong, “Multi-objective optimization for UAV-assisted wireless powered IoT networks based on extended DDPG algorithm,” IEEE Trans. Commun., vol. 69, no. 9, pp. 6361–6374, Sep. 2021.   
+[33] C. Peng, H.-L. Liu, and E. D. Goodman, “A cooperative evolutionary framework based on an improved version of directed weight vectors for constrained multiobjective optimization with deceptive constraints,” IEEE Trans. Cybern., vol. 51, no. 11, pp. 5546–5558, Nov. 2021.   
+[34] Q. Zhang and H. Li, “MOEA/D: A multiobjective evolutionary algorithm based on decomposition,” IEEE Trans. Evol. Comput., vol. 11, no. 6, pp. 712–731, Dec. 2007.
+
+[35] K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan, “A fast and elitist multiobjective genetic algorithm: NSGA-II,” IEEE Trans. Evol. Comput., vol. 6, no. 2, pp. 182–197, Apr. 2002.   
+[36] Z.-Z. Liu and Y. Wang, “Handling constrained multiobjective optimization problems with constraints in both the decision and objective spaces,” IEEE Trans. Evol. Comput., vol. 23, no. 5, pp. 870–884, Oct. 2019.   
+[37] Z. Fan et al., “Push and pull search for solving constrained multiobjective optimization problems,” Swarm Evol. Comput., vol. 44, pp. 665–679, Feb. 2019.   
+[38] C. A. Coello Coello, G. B. Lamont, and D. A. Van Veldhuizen, Evolutionary Algorithms for Solving Multi-Objective Problems, vol. 5. New York, NY, USA: Springer, 2007.   
+[39] E. Zitzler and L. Thiele, “Multiobjective optimization using evolutionary algorithms—A comparative case study,” in Proc. Int. Conf. Parallel Problem Solving Nat., 1998, pp. 292–301.
+
+![](images/46ce38837c4855791e3b81bc6bb8802f1ad62179d8b56de2394d9d4c63089311.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man in a white collared shirt (no text or symbols visible)
+</details>
+
+Xumin Huang received the Ph.D. degree in control science and engineering from the Guangdong University of Technology, Guangzhou, China, in 2019.
+
+He is currently an Associate Professor with the School of Automation, Guangdong University of Technology. He is also currently working as a Macau Young Scholars Postdoctoral Fellow with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macau, China. His research interests include resource and service optimizations
+
+for connected vehicles, Internet of Things, blockchain, and edge intelligence.
+
+![](images/2f96e13f1e03f04633f5cc1967e24f8a7e7b3aa0790e26df514530983c89c439.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a collared shirt (no text or symbols visible)
+</details>
+
+Chaoda Peng received the Ph.D. degree from the School of Automation, Guangdong University of Technology, Guangzhou, China, in 2019.
+
+He was a visiting Ph.D. student with the Department of Electrical and Computer Engineering, Michigan State University, East Lansing, MI, USA. He is currently with the College of Mathematics and Informatics, South China Agricultural University, Guangzhou. His current research interests include constrained evolutionary multiobjective optimization, UAV path planning, and mobile-edge computing.
+
+![](images/7c6fcbce29e268fd8427193701982fc23ceb17a2a473a5832e69f5339b664a45.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a collared shirt (no text or symbols visible)
+</details>
+
+Yuan Wu (Senior Member, IEEE) received the Ph.D. degree in electronic and computer engineering from The Hong Kong University of Science and Technology, Hong Kong, in 2010.
+
+He is currently an Associate Professor with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macau, China, where he is also with the Department of Computer and Information Science. From 2016 to 2017, he was a Visiting Scholar with the Department of Electrical and Computer Engineering, University of Waterloo,
+
+Waterloo, ON, Canada. His research interests include resource management for wireless networks, green communications and computing, mobile-edge computing, and edge intelligence.
+
+Dr. Wu was the recipient of the Best Paper Award from the IEEE International Conference on Communications in 2016, and the IEEE Technical Committee on Green Communications and Computing in 2017. He is currently on the editorial boards of IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, IEEE TRANSACTIONS ON NETWORK SCIENCE AND ENGINEERING, IEEE INTERNET OF THINGS JOURNAL, and IEEE OPEN JOURNAL OF THE COMMUNICATIONS SOCIETY.
+
+![](images/7fee760fab84c317088dc6fc2a024aa841808531999febbef9c5ddcb8f6d6995.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a person wearing glasses and a collared shirt (no text or symbols visible)
+</details>
+
+Jiawen Kang (Member, IEEE) received the Ph.D. degree from the Guangdong University of Technology, Guangzhou, China, in 2018.
+
+He was a Postdoctoral Fellow with Nanyang Technological University, Singapore, from 2018 to 2021. He is currently a Professor with Guangdong University of Technology. His research interests mainly focus on blockchain, security, and privacy protection in wireless communications and networking.
+
+![](images/aa621197b4e43ee991045df09194176c574d22d4e7ef9a936e451b96f2fc67ed.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a turtleneck (no text or symbols visible)
+</details>
+
+Dong In Kim (Fellow, IEEE) received the B.S. and M.S. degrees in electronics engineering from Seoul National University, Seoul, South Korea, in 1980 and 1984, respectively, and the M.S. and Ph.D. degrees in electrical engineering from the University of Southern California (USC), Los Angeles, CA, USA, in 1987 and 1990, respectively.
+
+From 1984 to 1985, he was a Researcher with Korea Telecom Research Center, Seoul. From 1986 to 1988, he was a Korean Government Graduate Fellow with the Department of Electrical
+
+Engineering, USC. From 1991 to 2002, he was with the University of Seoul, Seoul, leading the Wireless Communications Research Group and also serving as an Elected Department Chair for two-year term. From 2002 to 2007, he was a Tenured Full Professor with the School of Engineering Science, Simon Fraser University, Burnaby, BC, Canada. From 1999 to 2000, he was a Visiting Professor with the University of Victoria, Victoria, BC, Canada. Since 2007, he has been with Sungkyunkwan University (SKKU), Suwon, South Korea, where he is a Professor and an SKKU Fellow with the School of Information and Communication Engineering. Since 1988, he has been engaged with the research activities in the areas of wireless cellular communications. His current research interests include cooperative relaying and base station cooperation, interference management for heterogeneous networks and cognitive radio networks, cross-layer design, and optimization.
+
+Prof. Kim was an Editor of the IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS: Wireless Communications Series and also a Division Editor for the Journal of Communications and Networks. He is currently an Editor of Spread Spectrum Transmission and Access for the IEEE TRANSACTIONS ON COMMUNICATIONS and an Area Editor of Cross-Layer Design and Optimization for the IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS. He also serves as a Co-Editor-in-Chief for the JOURNAL OF COMMUNICATIONS AND NETWORKS.
+
+![](images/2febc6a563b2da059ed26bb270038e3adba98d932b1c4fb7d88d79d2bf2dd252.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a black collared shirt (no text or symbols visible)
+</details>
+
+Weifeng Zhong received the Ph.D. degree in control science and engineering from the Guangdong University of Technology, Guangzhou, China, in 2019.
+
+He is currently an Associate Professor with Guangdong University of Technology. He was a visiting scholar with the Nanyang Technological University, Singapore, in 2021, and a visiting student with Hong Kong University of Science and Technology, Hong Kong, in 2016. His research interests include resource management in smart grid, connected vehicles, and Internet of Things.
+
+![](images/680ba0a5ffa2fcb46d35bfc71047f1bdd9f6ea0733ec4c5019c388c4cc3686bd.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a collared shirt (no text or symbols visible)
+</details>
+
+Long Qi received the M.Sc. and Ph.D. degrees from Jilin University, Changchun, China, in 2006 and 2009, respectively.
+
+He is currently a Professor with the College of Engineering, South China Agricultural University, Guangzhou, China. He has published more than 80 articles and holds numerous patents in his research areas. He got the Youth Science and Technology Award of CSAE, and was founded by the Science Foundation of Guangdong for Distinguished Young Scholars in 2019. His research interests include
+
+image processing, machine vision, deep learning, simulation, and their applications in agriculture.

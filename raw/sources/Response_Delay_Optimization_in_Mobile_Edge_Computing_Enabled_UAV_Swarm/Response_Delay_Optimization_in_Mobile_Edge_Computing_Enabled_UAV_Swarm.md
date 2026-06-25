@@ -1,0 +1,1073 @@
+# Response Delay Optimization in Mobile Edge Computing Enabled UAV Swarm
+
+Qixun Zhang , Member, IEEE, Jingran Chen , Lei Ji, Zhiyong Feng , Senior Member, IEEE, Zhu Han, Fellow, IEEE, and Zhiyong Chen , Member, IEEE
+
+Abstract—Unmanned aerial vehicles (UAVs) can be conveniently deployed for environmental monitoring, firefighting, disaster rescue, and so on. However, the utmost challenge is how to transfer the important and urgent information to the control center as quick as possible in face of communication and computation constraints. As one of the promising technologies, mobile edge computing (MEC) technology can be deployed on UAVs to support computationintensive and latency-critical applications. Therefore, a joint communication and computation optimization model is established for a MEC enabled UAV network, which includes a centralized MEC enabled top-UAV and a swarm of distributed bottom-UAVs. Using stochastic geometry, the successful transmission probability results for a single link and a group of links are derived based on the three-dimensional distribution of UAV swarm. Moreover, the optimal response delay is theoretically achieved with the closedform solutions by using stochastic geometry and queueing theory. In contrast to the conventional UAVs without MEC capabilities, the optimal response delay is achieved by using our proposed joint communication and computation optimization algorithm in the MEC enabled UAV swarm scenario. The performances of the proposed algorithm are evaluated based on the results from the simulation system and the hardware testbed.
+
+Index Terms—Mobile edge computing, stochastic geometry, queueing theory, unmanned aerial vehicle.
+
+# I. INTRODUCTION
+
+S PREDICTED by METIS project [1], the worldwide mobile traffic will increase by 33 times in 2020 compared with that of 2010. Due to the flexible moving capability, unmanned
+
+Manuscript received May 15, 2019; revised September 26, 2019 and November 19, 2019; accepted January 2, 2020. Date of publication January 8, 2020; date of current version March 12, 2020. This work of Q. Zhang, J. Chen, L. Ji, and Z. Feng was supported in part by the National Natural Science Foundation of China under Grants 61525101, 61941102, in part by the Beijing Natural Science Foundation under Grant L172049, and in part by the China Scholarship Council under Grant 201806475028. This work of Z. Han was supported by the US MURI AFOSR MURI 18RT0073, NSF EARS-1839818, CNS-1717454, CNS-1731424, CNS-1702850, and CNS-1646607. This work of Z. Chen was supported by the National Natural Science Foundation of China under Grant 61671291. The review of this article was coordinated by Dr. S. Misra. (Corresponding author: Zhiyong Feng.)
+
+Q. Zhang, J. Chen, L. Ji, and Z. Feng are with the Key Laboratory of Universal Wireless Communications, Ministry of Education, Beijing University of Posts and Telecommunications, Beijing 100876, China (e-mail: zhangqixun@bupt.edu.cn; chenjingran@bupt.edu.cn; jilei0922@bupt.edu.cn; fengzy@bupt.edu.cn).
+
+Z. Han is with Electrical and Computer Engineering Department, University of Houston, Houston, TX 77004 USA, and also with the Department of Computer Science and Engineering, Kyung Hee University, Seoul 446-701, South Korea (e-mail: zhan2@uh.edu).
+
+Z. Chen is with Cooperative Medianet Innovation Center, Shanghai Jiao Tong University, Shanghai 200240, China (e-mail: zhiyongchen@sjtu.edu.cn). Digital Object Identifier 10.1109/TVT.2020.2964821
+
+aerial vehicles (UAVs) are considered as an important technology for future wireless networks like areal access networks, which can support various applications, such as surveillance, aerial photography, and disaster rescue (such as Notre Dame fire rescue) [2]. With the fast development of millimeter wave (mmWave) technology, UAVs can support the fifth generation (5G) system with extended coverage and enhanced capacity using sub-6GHz and mmWave spectrum bands [3], [4]. However, the UAV-aided 5G system brings about new challenges, such as efficient spectrum resources allocation for UAVs to mitigate interference [5], and low-latency information transmission in an emergency communication scenario.
+
+To overcome those challenges, many research works have been proposed on UAV-aided wireless communication solutions in the literature. For example, Lim et al. [6] proposed an overview of UAV-aided wireless connection technology with a basic network architecture and channel characteristics. Besides, a feasible method utilizing UAV-based floating relay cells inside macrocell was designed in [7]. Both advantage and disadvantage of various types of UAV networks were introduced in [8] with comprehensive analysis. In terms of the interference problem among UAV-aided communication links, the stochastic geometry theory is also considered as an effective tool for performance evaluation [9]. For a two-dimensional (2D) network, the signalto-interference-plus-noise ratio (SINR) coverage probability and rate coverage probability were analyzed in [10] and [11], respectively. However, these works were mainly constrained to 2D space without considering about the three-dimensional (3D) distribution of UAV swarm. Although, both SINR and density distribution performance indicators were considered in [12] by using stochastic geometric theory, only single UAV’s scenario was considered. A novel framework for UAV networks with the massive access capability using NOMA technology has been proposed in [13]. The path loss, mobility, agility of UAV networks are analyzed in detail and the reason for establishing a random spatial model of UAVs using the stochastic geometry theory is also explained explicitly.
+
+In order to enhance the performance of UAV-aided wireless communication, mobile edge computing (MEC) technology is proposed by appropriately utilizing computing resources at the edge of network to decrease response delay and increase efficiency of network resources utilization [14]–[17]. A novel approach of deploying MEC nodes on UAVs was introduced to support intensive-computation-oriented (ICO) and sensitivedelay-oriented (SDO) tasks [18], [19]. Although both spatial modeling and delay analysis for MEC were derived in [20], neither the joint MEC technology in UAVs nor the delay optimization scheme have been considered yet. Besides, other research works were done on the performance optimization for MEC on UAVs. As mentioned in [21] and [22], the offloading optimization methods were discussed on UAV-enabled MEC networks. And the computation rate maximization method was proposed in [23] for UAV-aided wireless networks. However, these studies only considered the local optimization problem, which did not jointly consider both communication and computation resources optimization issues.
+
+In general, few research works considered the combination of MEC and the UAV-aided wireless network optimization. Most existing works have not considered its impact on response delay with the capacity limitation on the wireless backhaul link. In addition, the joint communication and computation resources optimization problem in the UAV-aided wireless network has not been fully solved by using MEC technology. In this paper, we propose a two-layered UAV network to jointly optimize the communication and computation resources using MEC. Both the successful transmission probability and the optimal response delay are theoretically derived with closed-form solutions by using stochastic geometry and queueing theory for a swarm of three-dimensional distributed UAVs. Therefore, the main contributions are listed as following.
+
+Considering the complex distribution of UAVs and variable MEC server deployment demands, a 3D Poisson Point Process (PPP) model is proposed for the joint communication and computation optimization problem formulation in the UAV network, including a centralized MEC enabled top-UAV (T-UAV) and a swarm of distributed bottom-UAVs (B-UAVs). In terms of the payload and energy constraints of this UAV swarm, MEC servers are deployed on the T-UAV in a centralized way.   
+Stochastic geometry theory is utilized to analyze various types of interference among UAVs to derive the closedform solutions on the successful transmission probability for UAV communication links. In terms of the performance of communication and computation capabilities in UAV swarm, the influential variables and four delay performance indicators are analyzed theoretically using queueing theory.   
+Considering both computing capability and spatial distribution of UAVs, a novel optimization method of response delay is proposed with the closed-form solutions. With both communication and computation resources constraints, the optimal solution of UAV swarm deployment and MEC server configuration can be achieved at a certain threshold of response delay based on our proposed response delay optimization algorithm. And the performances of the proposed algorithm are evaluated and discussed based on the results from both the simulation system and the hardware testbed.
+
+The rest of this paper is organized as follows. Section II introduces the system model for joint communication and computation optimization in the UAV-aided wireless network. In Section III, the successful transmission probability is derived for both the single link and a group of links scenarios. The response delay has been formulated theoretically by four kinds of delay indicators by considering both the communication and computation constrains and the closed-form results are achieved with analyses in the MEC enabled UAV swarm scenario in Section IV. The results of both the simulation system and the hardware testbed are discussed to evaluate the performance of the proposed response delay optimization algorithm in Section V. Section VI concludes this paper.
+
+![](images/4d62f428bd7598edb7f2c2efadc3ccb383f1e8b39794f433b1b512c36144d18f.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["B-UAVs (intra-group)"] --> B["B-UAVs (inter-group)"]
+    B --> C["T-UAV"]
+    C --> D["GCS"]
+    D --> E["mmWave beam (first hop)"]
+    E --> F["backual link (second hop)"]
+    F --> G["Interference link"]
+    H["CDC and CCC"] --> I["BBU"]
+    I --> J["Control Center"]
+    J --> K["MEC"]
+    K --> L["H1"]
+    L --> M["H2"]
+    M --> N["Vu"]
+    N --> O["XA"]
+    O --> P["i"]
+    P --> Q["k"]
+    Q --> R["Output"]
+```
+</details>
+
+Fig. 1. System model of joint communication and computation optimization in the UAV-aided wireless network.
+
+# II. SYSTEM MODEL AND PROBLEM FORMULATION
+
+In this paper, the two-hop UAV scenario is considered, including the first hop from B-UAV to T-UAV and the second hop from T-UAV to the control center. As shown in Fig. 1, the information detected by B-UAVs is collected and compressed by MEC servers in T-UAV, and is transmitted to the control center via the backhaul link. The control center consists of four components [24]: ground control station (GCS), baseband units (BBUs), centralized data cloud (CDC), and centralized control cloud (CCC). To collect the information efficiently and flexibly in different UAV scenarios, the B-UAV swarm is composed of small rotary-wing UAVs. On the other hand, the T-UAV with the processing and computing abilities on board can collect the data from B-UAVs and support the heavy payload, the wide coverage, and the long flight duration time. Therefore, the fixed-wing UAV deployed with the MEC server is used as a T-UAV in this paper.
+
+# A. UAV-Aided Communication System Model
+
+Many empirical and theoretical results show that the PPP is an appropriate point process to model the distribution of base stations with tractability. And the PPP model is widely used to formulate different types of networks, such as the cellular networks [9] and the UAV networks [12]. If the network is sufficiently large and stationary (or just isotropic) with the strong enough random propagation effects such as fading and shadowing, the stochastic results obtained by modelling the wireless networks as a spatial Poisson point process are still valid in the practical scenario [25]. By introducing the stochastic theory into a 3D space, the successful transmission probabilities of the communication links and system throughputs can be analyzed intuitively based on [9]–[12]. Therefore, in this paper, we assume that the locations of B-UAVs follow a 3D PPP model $\Phi _ { u }$ with an intensity $\lambda _ { u }$ in the UAV swarm scenario. Considering the practical constraints, the distribution space of UAVs is limited by $V _ { u } ( x , y , z )$ , where $x , y \in R , z \in [ H _ { 1 } , H _ { 2 } ]$ and the subscript u is the brief notation of UAV. Besides, $H _ { 1 }$ and $H _ { 2 }$ represent the vertical distance between the lowest altitude and the highest altitude of B-UAVs from the T-UAV in the 3D space, respectively. Besides, as a centralized processing node, the T-UAV will collect the information in a certain sphere area. To guarantee an efficient data exchange, the directional antenna with pencil beams can be used for communication as follows [26],
+
+$$
+G \left(\theta^ {*}\right) = \left\{ \begin{array}{l l} \frac {2 \pi}{\theta_ {w}}, & \theta^ {*} \in \left[ \varphi^ {*} - \frac {\theta_ {w}}{2}, \varphi^ {*} + \frac {\theta_ {w}}{2} \right], \\ C, & \text { others }, \end{array} \right. \tag {1}
+$$
+
+where $\theta ^ { * } \in [ 0 , 2 \pi ]$ is the angle from the x-axis in the 2D coordinate system and $\varphi ^ { * }$ is the angle of the antenna orientation from x-axis, and $\theta _ { w }$ is the beamwidth. B-UAVs in the entire space form a set of $S _ { n }$ , and some B-UAVs associated with the same T-UAV can be defined by the set $X _ { A } = \{ x _ { 1 } , x _ { 2 } , . . . , x _ { k } , . . . , x _ { K } \}$ , $X _ { A } \subset S _ { n }$ . Elements x1 to xK indicate the distance between each B-UAV to T-UAV and K represents the number of B-UAVs in the set $X _ { A }$ .
+
+In this paper, we assume that only B-UAVs within the coverage of the T-UAV can the establish communication links with this T-UAV. Meanwhile, we only discuss a one-way uplink where the B-UAVs are the transmitters and the T-UAV is the receiver. As shown in Fig. 1, considering the limited loading and flying capabilities of the small rotary-wing B-UAVs, one mmWave phased array antenna is deployed to generate a single beam for the wide-band services transmission among B-UAVs and T-UAV. For the fixed-wing T-UAV with much stronger loading and flying capabilities, it can deploy multiple phased array antennas to generate different beams concurrently to support the space-division multiple access (SDMA) communication for B-UAVs [27]. Multiple radio frequency integrated circuits (RFICs) are integrated in each phased sub-array antenna panel to ensure that the main lobe beam at the receiver T-UAV points to the direction of each transmitter B-UAV [28]. Considering the mmWave pencil beam feature, multiple B-UAVs can access to T-UAV with separate beams by employing the spatial orthogonality technology based on the location awareness techniques, such as the global positioning system (GPS) and the image processing technology from cameras in UAVs. Therefore, multiple B-UAVs within a group can simultaneously transmit to the T-UAV by using the SDMA technology in the same frequency band. However, considering the extreme cases, when two B-UAVs are located within the beamwidth of the same T-UAV beam, these B-UAVs can utilize the time-division multiple access (TDMA) technology in [29] or the frequency-division multiple access (FDMA) technology in [30] to avoid the intra-group interference. Besides, there is a high probability to guarantee the spatial orthogonality among different beams by either appropriately tuning the beam direction using beamforming technology or making the full use of the flying mobility of UAVs. Therefore, the intra-group main lobe interference among B-UAVs is not considered in this paper. However, due to the random distribution of UAVs outside the set $X _ { A }$ and the presence of side lobe beam interference, when the T-UAV receives the main lobe beam of one B-UAV in the set $X _ { A }$ , the side lobe beams from the inter-group UAVs will also be received, which cause the interference to B-UAVs in the set $X _ { A }$ in [31].
+
+In a word, a typical T-UAV at O will suffer the interference from B-UAVs outside the set $X _ { A }$ while receiving the desired signals. Using directional antennas, $G _ { t } ^ { k }$ and $G _ { r } ^ { k }$ represent the antenna gains of main lobe at both transmitter and receiver, respectively and $G _ { A } ^ { k } = G _ { t } ^ { k } G _ { r } ^ { k }$ . Meanwhile, $G _ { t } ^ { i }$ and $G _ { r } ^ { i }$ represent the average antenna gains at both interferer and receiver, respectively and $G _ { i } = G _ { t } ^ { i } G _ { r } ^ { i }$ . The path loss is proportional to $x ^ { - \alpha }$ , where x represents the distance between each pair of B-UAV and T-UAV, and α indicates path loss index. $h _ { k }$ represents the gain of small scale fading channel of the $k ^ { t h } \mathrm { \ B - U A } \bar { \mathrm { V } }$ communicating with the T-UAV, which is a random variable following a unit mean exponential distribution. It is assumed that all B-UAVs transmit at the same power level $P _ { t }$ . The additive white Gaussian noise (AWGN) power is given by $N = N _ { 0 } B$ , where $N _ { 0 }$ is the noise power density and B is the system bandwidth. Therefore, the $\mathrm { S I N R } \gamma _ { x _ { k } }$ of any B-UAV k within the set $X _ { A }$ at T-UAV can be expressed as
+
+$$
+\gamma_ {x _ {k}} = \frac {P _ {t} h _ {k} x _ {k} ^ {- \alpha} G _ {A} ^ {k}}{\sum_ {x _ {i} \in S _ {n} \backslash \{X _ {A} \}} P _ {t} h _ {i} x _ {i} ^ {- \alpha} G _ {i} + N}. \tag {2}
+$$
+
+# B. MEC Enabled Computation System Model
+
+As mentioned in [6], the rotary-wing UAVs such as quadcopters, have the limited energy and payload due to their dimensions and flying abilities. Therefore, we assume that all B-UAVs only have the communication ability, and the MEC servers are not deployed on B-UAVs due to the computation and energy constraints. On the other hand, the T-UAV equipped with MEC servers can collect the data from different B-UAVs and compute the data by using image processing algorithms to remove redundant information and detect targets. The parallel computing can be implemented by creating a number of virtual machines (VMs) on the same physical machine (PM) within the T-UAV. However, multiple VMs sharing the same PM using the VM multiplexing technology will lead to the overall performance deterioration due to the I/O interference among VMs. The degradation factor $d \left( d \geq 0 \right)$ is used to depict the increase of expected service time by the VM when it is multiplexed with another VM. It is also assumed that the expected service time $T _ { 1 }$ of the VM in isolation is exponentially distributed with a mean of $1 / \mu$ . Thus, we can derive the expected time which executes two multiplexed VMs as $T _ { 2 } = T _ { 1 } ( 1 + d )$ . According to [32], the expected execution time of m multiplexed VMs is denoted as
+
+$$
+T _ {m} = T _ {1} (1 + d) ^ {m - 1}. \tag {3}
+$$
+
+# III. UAV COMMUNICATION LINK PERFORMANCE
+
+The successful transmission probability is used to indicate the quality of communication link in UAV swarm, which is defined as the probability when the received SINR $\gamma$ is larger than the threshold θ according to [10] as
+
+$$
+P (\theta) = P (\gamma > \theta). \tag {4}
+$$
+
+To ensure the quality of communication links among UAVs, the distribution area of interferers follows the association criterions as follows. Let $E _ { X _ { A } }$ denote that a T-UAV is associated with the B-UAVs from the set $X _ { A }$ . According to (2), the received power $P _ { r }$ from the B-UAV k is given as
+
+$$
+P _ {r} = P _ {t} h _ {k} x _ {k} ^ {- \alpha} G _ {A} ^ {k}, \tag {5}
+$$
+
+where $k \in [ 1 , K ]$ . Hence, the average received power $P _ { x _ { k } } ^ { a v g }$ xk is
+
+$$
+P _ {x _ {k}} ^ {a v g} = P _ {t} x _ {k} ^ {- \alpha} G _ {A} ^ {k}. \tag {6}
+$$
+
+Therefore, the event $E _ { X _ { A } }$ is equivalent to that no any other B-UAV i not within the set $X _ { A }$ has a much higher $P ^ { a v g }$ at the T-UAV. The set $X _ { A }$ contains K B-UAVs and the number of B-UAVs in $V _ { u }$ is $V _ { u } \lambda _ { u }$ . Therefore, the range of i can be expressed as $i \in [ 1 , V _ { u } \lambda _ { u } - K ]$ and (6) is further written as
+
+$$
+\begin{array}{l} E _ {X _ {A}} = \bigcap_ {x _ {k} \in X _ {A}} \left\{P _ {x _ {k}} ^ {\text { a   v   g }} > P _ {x _ {i}} ^ {\text { a   v   g }}, \forall x _ {i} \in S _ {n} \backslash \{X _ {A} \} \right\} \\ = \left\{\min (P _ {x _ {k}} ^ {a v g}) > P _ {x _ {i}} ^ {a v g}, \forall x _ {k} \in X _ {A},   x _ {i} \in S _ {n} \setminus \{X _ {A} \} \right\}. \tag {7} \\ \end{array}
+$$
+
+Based on (6), the event of (7) can be further written as
+
+$$
+E _ {X _ {A}} = \left\{x _ {i} > \left(\frac {G _ {i}}{G _ {A} ^ {k}}\right) ^ {\frac {1}{\alpha}} \max (x _ {k}), \forall x _ {k} \in X _ {A}, x _ {i} \in S _ {n} \backslash X _ {A} \right\}. \tag {8}
+$$
+
+Because the association relation among T-UAV and B-UAVs is based on the average received power strength, a primary exclusive region (PER) around the T-UAV is created in the whole network $S _ { n }$ . The closest distance from the interferer UAV to the T-UAV under the association criterion is given in (8). Therefore, based on the 3D distribution of UAV swarm, the PER forms a sphere with a radius of $R ( x _ { k } )$ as
+
+$$
+R \left(x _ {k}\right) \geq x _ {i} = \left(\frac {G _ {i}}{G _ {A} ^ {k}}\right) ^ {\frac {1}{\alpha}} \max \left(x _ {k}\right). \tag {9}
+$$
+
+To explicitly distinguish the distribution range of communication and interfering UAVs, we assume that all UAVs in $X _ { A }$ are distributed within PER, while all interfering UAVs are distributed outside PER. Based on the association criterion, the successful transmission probability is derived in Lemma 1.
+
+Lemma 1: When all the following conditions are satisfied:
+
+1) The gain of small scale fading channel is a random variable following a unit mean exponential distribution. The distribution function is $f ( x ) = e ^ { - x } , x > 0$ , which is expressed as $h \sim \exp ( 1 )$ .   
+2) The inter-group interference $\begin{array} { r } { I = \sum _ { x _ { i } \in S _ { n } \backslash \{ X _ { A } \} } h _ { i } x _ { i } ^ { - \alpha } G _ { i } } \end{array}$   
+3) The distance from B-UAV k to the $\mathrm { T } { \cdot } \mathrm { U A V } ~ x _ { k } \ ' \in X _ { A }$ , and the distance from B-UAV i to the T-UAV $x _ { i } \in S _ { n } \backslash \{ X _ { A } \}$ .   
+By choosing $x _ { k }$ from the set $X _ { A }$ arbitrarily and substituting eq. (2) to eq. (4), the successful transmission probability is
+
+derived as
+
+$$
+\begin{array}{l} P \left(\gamma_ {x _ {k}} > \theta\right) = P \left(\frac {P _ {t} h _ {k} x _ {k} ^ {- \alpha} G _ {A} ^ {k}}{P _ {t} I + N} > \theta\right) \\ = \exp \left(- \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right) \mathcal {L} _ {I} \left(\frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha}\right) \\ = \exp \left(- \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right) \\ \times \mathbb {E} _ {S _ {n}} \left\{\prod_ {x _ {i} \in S _ {n} \backslash X _ {A}} \left(\frac {1}{1 + \frac {G _ {i} \theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} x _ {i} ^ {- \alpha}}\right) \right\}, \tag {10} \\ \end{array}
+$$
+
+where $\begin{array} { r } { \mathcal { L } _ { I } \big ( \frac { \theta } { G _ { A } ^ { k } } x _ { k } ^ { \alpha } \big ) } \end{array}$ is the Laplace transform of $I =$ $\begin{array} { r } { \sum _ { x _ { i } \in S _ { n } \backslash \{ X _ { A } \} } \tilde { h } _ { i } x _ { i } ^ { - \alpha } G _ { i } } \end{array}$ .
+
+Proof: Please see Appendix A.
+
+Based on the THEOREM 4.9 in [33], $\begin{array} { r l } { \mathcal { L } _ { I } \big ( } & { { } \frac { \theta } { G _ { A } ^ { k } } x _ { k } ^ { \alpha } \big ) } \end{array}$ can be further derived as
+
+$$
+\begin{array}{l} \mathcal {L} _ {I} \left(\frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha}\right) = \mathbb {E} _ {S _ {n}} \left\{\prod_ {x _ {i} \in S _ {n} \backslash \{X _ {A} \}} \left(\frac {1}{1 + \frac {G _ {i} \theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} x _ {i} ^ {- \alpha}}\right) \right\} \\ = \exp \left(- \lambda_ {u} \int_ {V} \left(1 - \frac {1}{1 + \frac {G _ {i} \theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} x _ {i} ^ {- \alpha}}\right) d x\right). \tag {11} \\ \end{array}
+$$
+
+According to (9), the interference sources are constrained in a region $V = V _ { u } - V _ { R ( x _ { k } ) }$ . Therefore, the integral part of (11) can be expanded as
+
+$$
+\begin{array}{l} \int_ {V} \left(1 - \frac {1}{1 + \frac {G _ {i} \theta x _ {k} ^ {\alpha}}{G _ {A} ^ {k}} x _ {i} ^ {- \alpha}}\right) d x \\ = \int_ {H _ {1}} ^ {H _ {2}} \int_ {0} ^ {2 \pi} \int_ {0} ^ {R} \left(1 - \frac {1}{1 + \frac {G _ {i} \theta x _ {k} ^ {\alpha}}{G _ {A} ^ {k}} \left(\sqrt {r ^ {2} + z ^ {2}}\right) ^ {- \alpha}}\right) r d r d \varphi d z \\ - \int_ {0} ^ {R (x _ {k})} \int_ {0} ^ {\frac {\pi}{2}} \int_ {0} ^ {2 \pi} \left(1 - \frac {1}{1 + \frac {G _ {i} \theta x _ {k} ^ {\alpha}}{G _ {A} ^ {k}} x _ {i} ^ {- \alpha}}\right) x _ {i} ^ {2} \sin \overline {{\theta}} d x _ {i} d \overline {{\theta}} d \varphi \\ = V \left(H _ {1}, H _ {2}, \theta , x _ {k}\right). \tag {12} \\ \end{array}
+$$
+
+Substituting (11) and (12) into (10), the successful transmission probability is represented as
+
+$$
+\begin{array}{l} P _ {x _ {k}} = P \left(\gamma_ {x _ {k}} > \theta\right) \\ = \exp \left(- \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right) \exp \left(- \lambda_ {u} V \left(H _ {1}, H _ {2}, \theta , x _ {k}\right)\right), \tag {13} \\ \end{array}
+$$
+
+where $P _ { x _ { k } }$ indicates the successful transmission probability of the link xk between B-UAV and T-UAV. When a T-UAV is associated with a group of B-UAVs simultaneously, the successful transmission probability $P _ { X _ { A } }$ of the set $X _ { A }$ can be denoted based
+
+![](images/b4180d77e0b9c3309b956baee873280b5cc2ee795ef766305f30a0369aa51649.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph LR
+    A["Drone"] -->|Offloaded Packets L| B["System queue"]
+    B --> C["m VMs Parallel computing"]
+    C -->|Completed jobs| D["Control Center"]
+    style A fill:#f9f,stroke:#333
+    style B fill:#ccf,stroke:#333
+    style C fill:#cfc,stroke:#333
+    style D fill:#fcc,stroke:#333
+```
+</details>
+
+Fig. 2. Procedure of data packet transmission for UAVs.   
+![](images/2677d37af395460a67349f97e81f0835048800a365a8c5a5bae66d569abe203f.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Control Center"] --> B["CDC and CCC"]
+    B --> C["T-UAV"]
+    C --> D["B-UAVs"]
+    D --> E["Transmission Delay H"]
+    E --> F["Processing Delay"]
+    E --> G["Queueing Delay"]
+    E --> H["Transmission Delay I"]
+    H --> I["Waiting Delay"]
+    F --> J["Communication Delay"]
+    G --> K["Communication Delay"]
+    H --> L["Communication Delay"]
+    M["Response delay"] --> N["Output"]
+```
+</details>
+
+Fig. 3. Different types of delay in data packet transmission.
+
+on [34] as
+
+$$
+P _ {X _ {A}} = 1 - \prod_ {k = 1} ^ {K} \left(1 - P _ {x _ {k}}\right) \geq P _ {x _ {k}}, \forall x _ {k} \in X _ {A}. \tag {14}
+$$
+
+When a group of UAVs are working cooperatively a swarm, the successful transmission probability $P _ { X _ { A } }$ will increase based on (14). For example, if a UAV link in a swarm fails due to an unpredictable environment deterioration, this UAV can still communicate with the bottom or top UAVs to guarantee a stable link connectivity among the UAVs. Based on the derived relation results between the successful transmission probability and the density of UAVs, the MEC technology can be utilized to reduce the delay pressure on backhaul links for latency sensitive applications in Section IV.
+
+# IV. DELAY OPTIMIZATION IN MEC ENABLED UAVS
+
+The performance of data packet procedure delay is studied with the backhaul link constraints in MEC enabled UAV-aided wireless networks in Fig. 2. Different B-UAVs can offload data packets to a T-UAV for MEC servers to process, which will be delivered to the control center via backhaul links.
+
+When a packet flows from source to destination via the entire system, the response delay (RD) can be divided into communication delay and computation delay from the perspectives of communication and computation processes in Fig. 3. More specifically, the communication delay includes both waiting delay (WD) and transmission delay (TD), while the computation delay consists of queueing delay (QD) and processing delay (PD) [35]. Thus, the RD can be achieved by summing these four kinds of delay, which are WD, TD, QD, and PD. In order to minimize RD, a joint communication and computation optimization problem is formulated. With different communication and computation resources, the optimal configuration of communication and computation resources is achieved by TD and QD variations with RD constraints.
+
+# A. Communication Delay Modeling and Analysis
+
+The communication delay of UAVs $T _ { c o m m }$ comprises of the expected WD for offloaded packets at B-UAVs denoted as $T _ { c o m m - w } ,$ , and the TD denoted as $T _ { c o m m - t }$ . We assume that the transmission time for a packet from B-UAV to T-UAV includes L slots in a frame. $t _ { 0 }$ is the length of a slot and $T _ { L } = L t _ { 0 }$ is the length of a frame. Each UAV has its own offloading buffer, in which a new task need to wait when an existing task is transmitting. The probability of generating a task in each time slot is defined by $p ,$ so the probability in a frame is $P _ { G } = 1 - ( 1 - p ) ^ { L }$ . Let S denotes the slot index when a packet arrives at offloading buffer. And the probability distribution of S follows a conditional geometric distribution, which can be expressed as
+
+$$
+P _ {G} (S = s) = \frac {p (1 - p) ^ {s - 1}}{P _ {G}} = \frac {p (1 - p) ^ {s - 1}}{1 - (1 - p) ^ {L}}. \tag {15}
+$$
+
+Therefore, the WD of offloaded packets can be expressed as
+
+$$
+T _ {c o m m - w} = t _ {0} E [ L - S ] = t _ {0} \left(\frac {L}{1 - (1 - p) ^ {L}} - \frac {1}{p}\right). \tag {16}
+$$
+
+We also assume that the bandwidth of the B-UAV to T-UAV communication link is $B _ { 1 }$ and the task packet size is l. Refer to the derivation of the successful transmission probability in (13), the TD which spans L slots is defined based on [36] as
+
+$$
+T _ {c o m m - t} = L t _ {0} = \frac {l}{C} = \frac {l}{B _ {1} \log (1 + \theta_ {1}) P _ {x _ {k}}}. \tag {17}
+$$
+
+Therefore, the communication delay of offloaded packets from B-UAV to T-UAV is depicted by adding (16) and (17) as
+
+$$
+\begin{array}{l} T _ {c o m m} ^ {B - T} = T _ {c o m m - w} + T _ {c o m m - t} \\ = t _ {0} \left(\frac {L}{1 - (1 - p) ^ {L}} - \frac {1}{p}\right) + \frac {l}{B _ {1} \log (1 + \theta) P _ {x _ {k}}}. \tag {18} \\ \end{array}
+$$
+
+Moreover, data packets processed by MEC-enabled system are compressed compared to the system without computing ability. If the packet is compressed, δ = 1 to indicate the packets are compressed by MEC servers, otherwise $\delta = 0 .$ Assuming that the compression ratio is η and the bandwidth of backhaul link is $B _ { 2 }$ , TD via backhaul link is denoted by
+
+$$
+T _ {c o m m - t} ^ {T - C} = \left\{ \begin{array}{l l} \frac {l}{B _ {2} \log (1 + \theta_ {2})}, & \delta = 0, \\ \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})}, & \delta = 1. \end{array} \right. \tag {19}
+$$
+
+# B. Computation Delay Modeling and Analysis
+
+When different packets arrive at T-UAV from B-UAVs simultaneously, they will be queued in the buffer, waiting for computation. In (15), the tasks are generated following an independent and identically distributed (i.i.d.) Bernoulli distribution at different time instants. And the superposition of independent arrival process behaves as a Poisson process [20]. Therefore, based on the distribution space $V _ { R ( x _ { k } ) }$ , the distribution density $\lambda _ { u }$ of B-UAVs, and the $P _ { G }$ ( )of task generation probability, the packets at the buffer of T-UAV follow a Poisson process with a
+
+rate of λ as
+
+$$
+\lambda = \sum_ {k = 1} ^ {K} \left[ 1 - (1 - p) ^ {L} \right] \frac {B _ {1} \log (1 + \theta_ {1}) P _ {x _ {k}}}{l}
+$$
+
+$$
+\approx K \frac {P _ {G}}{L t _ {0}} = \frac {\lambda_ {u} V _ {R (x _ {k})} P _ {G}}{L t _ {0}}. \tag {20}
+$$
+
+1) Optimal VM Control: Based on the computation model in (3), the total computation rate of T-UAV is denoted by
+
+$$
+\mu (m) = \frac {m}{T _ {m}} = \frac {m}{T _ {1}} (1 + d) ^ {1 - m}. \tag {21}
+$$
+
+On one hand, a large number of VMs will bring a big challenge to energy consumption of UAVs and reduce the individual computation rate due to I/O interference. On the other hand, the lack of VMs leads to a marginal gain from parallel computing. Therefore, it is important to optimize the number of VMs to ensure that the overall computation rate is maximized. Denoted by (21), the upper convex function can achieve the maximal value and the derivation is shown below,
+
+$$
+\frac {d \mu (m)}{d m} = \frac {1}{T _ {1}} (1 + d) ^ {1 - m} [ 1 - m \ln (1 + d) ] = 0, \tag {22}
+$$
+
+$$
+m _ {\max} = \text { round } \left(\frac {1}{\ln (1 + d)}\right), \tag {23}
+$$
+
+where round(x) rounds x to the nearest integer. Therefore, $\mu ( m _ { \mathrm { m a x } } )$ represents the maximum computation rate of MEC maxmodel, and it will impose constraints on the packet arrival rate.
+
+2) Queueing Delay and Processing Delay: The packets arrive at the buffer of T-UAV are approximated as a Poisson process with the rate λ. Besides, the whole computation rate of VMs for T-UAV is $\mu ( m )$ and the expected service time of each VM in isolation is exponentially distributed. Therefore, it can be modeled as the M/M/m queue. The QD and PD are depicted as $T _ { c o m p - q }$ and $T _ { c o m p - p } .$ , respectively.
+
+The computation load rate of M/M/m is denoted as
+
+$$
+\rho = \frac {\lambda}{\mu (m)} = \frac {\lambda_ {u} V _ {R (x _ {k})} P _ {G}}{\mu (m) L t _ {0}}. \tag {24}
+$$
+
+In order to avoid infinite queues due to insufficient computing capability, the computation load rate must be less than 1. Since the maximum computation rate is $\mu ( m _ { \mathrm { m a x } } )$ , the packet arrival maxrate and the density of B-UAVs are bounded as following,
+
+$$
+\left. \lambda \in (0, \rho \mu (m _ {\max}) ] \right., \lambda_ {u} \in \left(0, \frac {\rho \mu (m _ {\max}) L t _ {0}}{V _ {R (x _ {k})} P _ {G}} \right]. \tag {25}
+$$
+
+Because $\mu ( m )$ is a non-linear function of state m which is intractable, the lower bound $\mu ^ { - } ( m )$ can represent $\mu ( m )$ as
+
+$$
+\mu^ {-} (m) = \frac {m}{T _ {1}} (1 + d) ^ {1 - m _ {\max}}. \tag {26}
+$$
+
+Let μ = μ−(m) , $\mu = \frac { \mu ^ { - } ( m ) } { m }$ according to the first in first out (FIFO) schedulm ing policy, the probability of no packet in the queue is
+
+$$
+P _ {0} = \left[ \left(\sum_ {n = 0} ^ {m - 1} \frac {\lambda^ {n}}{\mu^ {n} n !}\right) + \frac {1}{m !} \left(\frac {\lambda}{\mu}\right) ^ {m} \left(\frac {1}{1 - \rho}\right) \right] ^ {- 1}. \tag {27}
+$$
+
+Therefore, applying the classical M/M/m queue results in [37], the average number of packets in the queue and the system is
+
+TABLE IDIFFERENT TYPES OF DELAY
+
+<table><tr><td>Type</td><td>Expression</td></tr><tr><td> $T_{comm-w}$ </td><td> $t_0\left(\frac{L}{1-(1-p)^L}-\frac{1}{p}\right)$ </td></tr><tr><td> $T_{comm-t}$ </td><td> $\frac{l}{B_1\log(1+\theta_1)P_{x_k}}$ </td></tr><tr><td> $T_{comm-t}^{T-C} (\delta=0)$ </td><td> $\frac{l}{B_2\log(1+\theta_2)}$ </td></tr><tr><td> $T_{comm-t}^{T-C} (\delta=1)$ </td><td> $\frac{\eta l}{B_2\log(1+\theta_2)}$ </td></tr><tr><td> $T_{comp-q}$ </td><td> $\frac{\hat{L}_q}{\hat{\lambda}}$ </td></tr><tr><td> $T_{comp-p}$ </td><td> $\frac{1}{\mu}$ </td></tr></table>
+
+defined by $L _ { q }$ and $L _ { s }$ , respectively
+
+$$
+L _ {q} = \frac {\lambda^ {m} \rho P _ {0}}{\mu^ {m} m ! (1 - \rho) ^ {2}}, L _ {s} = L _ {q} + \frac {\lambda}{\mu}. \tag {28}
+$$
+
+Moreover, according to the Little’s law, QD, PD, and the sojourn delay are denoted by $T _ { c o m p - q } , T _ { c o m p - p } ,$ and $T _ { c o m p }$
+
+$$
+T _ {c o m p - q} = \frac {L _ {q}}{\lambda}, T _ {c o m p - p} = \frac {1}{\mu}, \text { and } T _ {c o m p} = \frac {L _ {s}}{\lambda}. \tag {29}
+$$
+
+# C. Response Delay Optimization
+
+All types of delay for the joint communication and computation optimization are shown in Table I, in which RD is depicted by $T _ { a l l - b e f o r e }$ without MEC as
+
+$$
+T _ {a l l - b e f o r e} = T _ {c o m m - w} + T _ {c o m m - t} + T _ {c o m m - t} ^ {T - C}, \delta = 0. \tag {30}
+$$
+
+When MEC is applied, RD is denoted by $T _ { a l l - a f t e r }$ as
+
+$$
+\begin{array}{l} T _ {a l l - a f t e r} = T _ {c o m m - w} + T _ {c o m m - t} + T _ {c o m p - q} \\ + T _ {c o m p - p} + T _ {c o m m - t} ^ {T - C}, \delta = 1. \tag {31} \\ \end{array}
+$$
+
+The additional delay includes QD and PD. The length of PD mainly depends on the capability of each VM. Therefore, to optimize RD, we must know the trend of QD $T _ { c o m p - q } \mathrm { a s }$
+
+$$
+T _ {c o m p - q} = \frac {L _ {q}}{\lambda} = \frac {\lambda^ {m - 1} \rho P _ {0}}{\mu^ {m} m ! (1 - \rho) ^ {2}} = F (\lambda , m) P _ {0}. \tag {32}
+$$
+
+The remaining part of (32) that does not include $P _ { 0 }$ is defined by $F ( \lambda , m )$ . Using the Stirling’s approximation, $F ( \lambda , m )$ can be further derived as
+
+$$
+F (\lambda , m) = \frac {\lambda^ {m - 1} \rho}{\mu^ {m} m ! (1 - \rho) ^ {2}} \approx \frac {(\rho e) ^ {\frac {\lambda}{\rho \mu}}}{\lambda^ {\frac {3}{2}} \sqrt {\frac {2 \pi}{\rho \mu}}} \frac {\rho}{(1 - \rho) ^ {2}}. \tag {33}
+$$
+
+According to (27), $P _ { 0 }$ can be approximated when $m$ is sufficiently large and $\rho$ is sufficiently small. Based on the series theory, $P _ { 0 }$ can be further derived as
+
+$$
+\begin{array}{l} P _ {0} = \left[ \left(\sum_ {n = 0} ^ {m - 1} \frac {\lambda^ {n}}{\mu^ {n} n !}\right) + \frac {1}{m !} \left(\frac {\lambda}{\mu}\right) ^ {m} \left(\frac {1}{1 - \rho}\right) \right] ^ {- 1} \\ \approx \left(\sum_ {n = 0} ^ {m} \frac {\lambda^ {n}}{\mu^ {n} n !}\right) ^ {- 1} = \exp (- \frac {\lambda}{\mu}). \tag {34} \\ \end{array}
+$$
+
+Therefore, we take the derivative of $\mathrm { Q D } \ : T _ { c o m p - q }$ as
+
+$$
+\begin{array}{l} \frac {d T _ {c o m p - q} (\lambda)}{d \lambda} \\ = \sqrt {\frac {\rho \mu}{2 \pi}} \frac {\rho}{(1 - \rho) ^ {2}} (\rho e) ^ {\frac {\lambda}{p \mu}} \lambda^ {- \frac {3}{2}} e ^ {- \frac {\lambda}{\mu}} \left[ \ln (\rho e) \frac {1}{\rho \mu} - \frac {3}{2 \lambda} - \frac {1}{\mu} \right] \\ = 0. \tag {35} \\ \end{array}
+$$
+
+Considering that $\rho < 1$ , the extreme point $\lambda ^ { * }$ is achieved based on (35) as follows,
+
+$$
+\lambda^ {*} = \frac {3 \rho \mu}{2 [ \ln (\rho e) - \rho ]} <   0. \tag {36}
+$$
+
+However, considering the actual meaning of packet arrival rate, the parament λ should be positive. Therefore, in the definition domain $( 0 , \rho \mu m _ { \mathrm { m a x } } ] .$ , the derivative dTcomp−q(λ) < 0, and $\frac { d T _ { c o m p - q } ( \lambda ) } { d \lambda } < 0 .$ $T _ { c o m p - q }$ maxis a monotonically decreasing function of λ. Thus, when the packet arrival rate reaches the maximum $\rho \mu m _ { \mathrm { m a x } } ,$ and the number of VMs is $m _ { \mathrm { m a x } }$ max, the optimal value of QD is maxachieved. However, deploying a large number of VMs will lead to an increase of the energy consumption for T-UAV. On the other hand, according to (17) and (20), the increase of packet arrival rate will increase the distribution density of UAVs, leading to an increase of TD. It is not appropriate to determine the deployment of entire UAV swarm only based on the optimization results of QD. Therefore, the optimal RD should consider both TD and QD.
+
+According to RD results in (30) and (31), data is compressed by MEC servers so that the TD over backhaul links is reduced. If $T _ { a l l - a f t e r } > T _ { a l l - b e f o r e : }$ , the network is considered as a computation-limited network. On the contrary, if $T _ { a l l - a f t e r } <$ $T _ { a l l - b e f o r e }$ as derived in Lemma $^ { 2 , }$ the network is considered as a communication-limited network.
+
+Lemma 2: In order to ensure $T _ { a l l - a f t e r } < T _ { a l l - b e f o r e } ,$ the data compression ratio η is restricted by
+
+$$
+\eta <   1 - \frac {B _ {2} \log (1 + \theta_ {2}) \left(\frac {L _ {q}}{\lambda} + \frac {1}{\mu}\right)}{l}. \tag {37}
+$$
+
+Proof: Please see Appendix B.
+
+Therefore, based on the comprehensive analysis of various factors and constraints, the optimization model of RD is
+
+$$
+\min \quad T _ {\text { all   -   after }} \tag {38a}
+$$
+
+$$
+\text { s.t. } \quad \eta <   1 - \frac {B _ {2} \log (1 + \theta_ {2}) \left(\frac {L _ {q}}{\lambda} + \frac {1}{\mu}\right)}{l}, \tag {38b}
+$$
+
+$$
+\frac {\lambda}{m \mu} = \rho > \xi , \tag {38c}
+$$
+
+$$
+\lambda \in (0, \rho \mu (m _ {\max}) ], m \in (0, m _ {\max} ]. \tag {38d}
+$$
+
+where $\xi$ is the threshold of computation load rate and can guarantee the appropriate ratio of communication and computation resources. More specifically, (38b) represents the constraints of the data compression ratio in the computation delay model, and (38c) represents the limitation of the computation load rate. Furthermore, (38d) indicates the limitation range of packet arrival rate and the number of VMs deployed in the T-UAV. In order to solve (38a), Theorem 1 is proposed below.
+
+Theorem 1: By substituting variables, RD can be represented as a function only related to λ,
+
+$$
+\begin{array}{l} T _ {a l l - a f t e r} \\ = w \left(\lambda_ {u}\right) + t \left(\lambda_ {u}\right) + q (\lambda) + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log \left(1 + \theta_ {2}\right)} = \mathcal {T} (\lambda), \tag {39} \\ \end{array}
+$$
+
+where
+
+$$
+\left\{ \begin{array}{l} \lambda_ {u} = \frac {\lambda L t _ {0}}{V _ {R (x _ {k})} P _ {G}}, \\ w (\lambda_ {u}) = t _ {0} \left(\frac {L}{1 - (1 - p) ^ {L}} - \frac {1}{p}\right) = \frac {t (\lambda_ {u})}{1 - (1 - p) ^ {L}} - \frac {t _ {0}}{p}, \\ t (\lambda_ {u}) = \frac {l}{B _ {1} \log (1 + \theta_ {1})} \exp \left(\frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right) \\ \times \exp \left(\lambda_ {u} V \left(H _ {1}, H _ {2}, \theta , x _ {k}\right)\right), \\ q (\lambda) = \frac {\lambda^ {m - 1} \rho}{\mu^ {m} m ! (1 - \rho) ^ {2}} \left[ \left(\sum_ {n = 0} ^ {m - 1} \frac {\lambda^ {n}}{\mu^ {n} n !}\right) + \frac {1}{m !} \left(\frac {\lambda}{\mu}\right) ^ {m} \left(\frac {1}{1 - \rho}\right) \right] ^ {- 1}. \end{array} \right. \tag {40}
+$$
+
+Proof: Please see Appendix C.
+
+Then, by using the Taylor’s formula, we have
+
+$$
+\left\{\begin{array}{l}\frac {L}{1 - (1 - p) ^ {L}} \approx L, \quad L \gg 1,\\\exp \left(\frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right) \approx 1, \quad \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}} \rightarrow 0,\\\exp \left(\lambda_ {u} V \left(H _ {1}, H _ {2}, \theta , x _ {k}\right)\right) \approx 1 + \lambda_ {u} V \left(H _ {1}, H _ {2}, \theta , x _ {k}\right),\\\lambda_ {u} = \frac {l \lambda}{B _ {1} \log (1 + \theta_ {1}) V _ {R \left(x _ {k}\right)}}, \quad \lambda_ {u} V \left(H _ {1}, H _ {2}, \theta , x _ {k}\right) \ll 1.\end{array}\right. \tag {41}
+$$
+
+Therefore, (39) can be simplified as follows,
+
+$$
+\begin{array}{l} \mathcal {T} (\lambda) = 2 L t _ {0} + q (\lambda) + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})} - \frac {t _ {0}}{p} \\ \approx \frac {2 l ^ {2} \lambda V (H _ {1} , H _ {2} , \theta , x _ {k})}{[ B _ {1} \log (1 + \theta_ {1}) ] ^ {2} V _ {R (x _ {k})}} + \frac {(\rho e) ^ {\frac {\lambda}{\rho \mu}}}{\lambda^ {\frac {3}{2}} \sqrt {\frac {2 \pi}{\rho \mu}}} \frac {\rho}{(1 - \rho) ^ {2}} \cdot e ^ {- \frac {\lambda}{\mu}} \\ + \frac {2 l}{B _ {1} \log (1 + \theta_ {1})} + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})} - \frac {t _ {0}}{p} \\ = y _ {1} (\lambda) + y _ {2} (\lambda) + C ^ {*}, \tag {42} \\ \end{array}
+$$
+
+where $C ^ { * }$ is a constant. Without loss of generality, when $\rho = 0 . 5$ and $\mu = 1 0$ , the derivatives of $y _ { 1 } ( \lambda )$ and $y _ { 2 } ( \lambda )$ are
+
+$$
+\frac {d y _ {1} (\lambda)}{d \lambda} = \frac {2 l ^ {2} V (H _ {1} , H _ {2} , \theta , x _ {k})}{[ B _ {1} \log (1 + \theta_ {1}) ] ^ {2} V _ {R (x _ {k})}},
+$$
+
+$$
+\frac {d y _ {2} (\lambda)}{d \lambda} = - \frac {1 . 4 ^ {0 . 2 \lambda}}{1 . 1 4 \times 2 . 7 ^ {0 . 1 \lambda} \times \lambda^ {1 . 5}} \left(0. 0 7 7 + \frac {3}{\lambda}\right). \tag {43}
+$$
+
+Theorem 2: We assume that the derivative of $y$ is unchanged when λ is increased by 1. We define the event $E _ { \lambda ^ { \dagger } }$ † that RD reaches its minimum when $\bar { \lambda } = \lambda ^ { \dagger } ( \forall \lambda \in ( 0 , \rho \mu m _ { \operatorname* { m a x } } ] )$ , and the event $E _ { m ^ { \dagger } }$ when $m = m ^ { \dagger } ( \forall m \in ( 0 , m _ { \mathrm { m a x } } ] , m \in \mathrm { N } ^ { * } )$ . The sufficient conditions of $\lambda ^ { \dagger }$ and $m ^ { \dagger }$ are (44) and (45).
+
+TABLE II OPTIMAL CONFIGURATION SCHEME OF COMMUNICATION AND COMPUTATION RESOURCES 
+
+<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>Density of UAVs</td><td> $\frac{l\lambda^{\dagger}}{B_1\log(1+\theta_1)V_{R(x_k)}}$ </td></tr><tr><td>Packet arrival rate</td><td> $\lambda^{\dagger}$ </td></tr><tr><td>Number of VMs</td><td> $m^{\dagger}$ </td></tr><tr><td>Computation load rate</td><td> $\frac{\lambda^{\dagger}}{\mu m^{\dagger}}$ </td></tr></table>
+
+$$
+E _ {\lambda^ {\dagger}} = \left\{ \begin{array}{l} \frac {1 . 4 ^ {0 . 2 \lambda}}{1 . 1 4 \times 2 . 7 ^ {0 . 1 \lambda} \times \lambda^ {1 . 5}} (0. 0 7 7 + \frac {3}{\lambda}) \\ \geq \frac {2 l ^ {2} \lambda V (H _ {1} , H _ {2} , \theta , x _ {k})}{[ B _ {1} \log (1 + \theta_ {1}) ] ^ {2} V _ {R (x _ {k})}} \end{array} \right\}
+$$
+
+$$
+\cap \left\{ \begin{array}{l} \frac {1 . 4 ^ {0 . 2 (\lambda + 1)}}{1 . 1 4 \times 2 . 7 ^ {0 . 1 (\lambda + 1)} \times (\lambda + 1) ^ {1 . 5}} (0. 0 7 7 + \frac {3}{\lambda + 1}) \\ \leq \frac {2 l ^ {2} \lambda V (H _ {1} , H _ {2} , \theta , x _ {k})}{[ B _ {1} \log (1 + \theta_ {1}) ] ^ {2} V _ {R (x _ {k})}} \end{array} \right\}, \tag {44}
+$$
+
+$$
+\begin{array}{l} E _ {m ^ {\dagger}} = \left\{ \begin{array}{l} \frac {1 . 4 ^ {m}}{2 . 5 1 \times 2 . 7 ^ {0 . 5   m} \times m ^ {1 . 5}} (0. 0 7 7 + \frac {0 . 6}{m}) \\ \geq \frac {1 0 l ^ {2} \lambda V (H _ {1} , H _ {2} , \theta , x _ {k})}{[ B _ {1} \log (1 + \theta_ {1}) ] ^ {2} V _ {R (x _ {k})}} \end{array} \right\} \\ \cap \left\{ \begin{array}{l} \frac {1 . 4 ^ {m + 1}}{2 . 5 1 \times 2 . 7 ^ {0 . 5 (m + 1)} \times (m + 1) ^ {1 . 5}} \left(0. 0 7 7 + \frac {0 . 6}{m + 1}\right) \\ \leq \frac {1 0 l ^ {2} \lambda V \left(H _ {1} , H _ {2} , \theta , x _ {k}\right)}{\left[ B _ {1} \log \left(1 + \theta_ {1}\right) \right] ^ {2} V _ {R \left(x _ {k}\right)}} \end{array} \right\}. \tag {45} \\ \end{array}
+$$
+
+Proof: Please see Appendix D.
+
+Based on Theorem 2, the minimum RD is $\mathcal { T } ( \lambda ^ { \dagger } )$ as
+
+$$
+\mathcal {T} \left(\lambda^ {\dagger}\right) = w (\lambda_ {u} ^ {\dagger}) + t (\lambda_ {u} ^ {\dagger}) + q (\lambda^ {\dagger}) + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})}
+$$
+
+$$
+= w \left(\frac {l \lambda^ {\dagger}}{B _ {1} \log (1 + \theta_ {1}) V _ {R (x _ {k})}}\right)
+$$
+
+$$
++ t \left(\frac {l \lambda^ {\dagger}}{B _ {1} \log (1 + \theta_ {1}) V _ {R (x _ {k})}}\right)
+$$
+
+$$
++ q (\lambda^ {\dagger}) + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})}. \tag {46}
+$$
+
+The optimal configuration scheme of communication and computation resources is shown in Table II, and the minimum RD can be achieved based on the proposed Algorithm 1.
+
+# D. Algorithm Complexity Analysis
+
+The complexity of our proposed RD optimization algorithm in Algorithm 1 is analyzed by four aspects from both the communication and computation systems. Considering the communication system, the first aspect comes from the density of B-UAVs and the second aspect is from the traversal method of obtaining the successful transmission probability. Due to the adoption of the traversal method and nesting cycle, the complexity is $O ( n ^ { 2 } )$ . In the computation system, the third aspect is the packet arrival rate and the fourth aspect is the number of VMs. In order to calculate the QD, when the packet arrival rate changes, the number of VMs needs to be traversed from 1 to $m .$ . There is a nesting cycle in the algorithm of the computation system. Therefore, the complexity is denoted by $O ( n ^ { 2 } )$ . The PER-based DSC algorithm of communication system performance analysis is proposed in [12], but the computation system performance analysis is not considered. Although the APs/CSs algorithm complexity of the communication system in [20] is $O ( n )$ , it does not analyze the trend of communication system performance in terms of the node density and the interference, where only the TD at a certain SINR is given. Therefore, compared with the conventional algorithms in [12] and [20], our proposed algorithm can realize the RD optimization for the joint communication and computation system without the extra algorithm complexity increase. And the system parameter configuration scheme with both communication and computing resources limits are also discussed and analyzed thoroughly in Section V. In summary, the complexity comparison results among different algorithms are shown in Table III.
+
+Algorithm 1: Response Delay Optimization Algorithm.   
+1: Input: Antenna gains $G_{A}^{k}$ and $G_{i}$ , transmit power $P_{t}$ , noise power density $N_{0}$ , path loss index $\alpha$ , distribution space $V_{u}$ , and SINR threshold $\theta$ .
+2: Output: Response delay $T_{all-after}$ , packet arrival rate $\lambda^{\dagger}$ , and the number of VMs $m^{\dagger}$ .
+3: Step 1: UAV distribution information
+4: Initialization: $\lambda_{u}=0$ , $X_{A}=S_{n}=\varnothing$ .
+5: Establish a 3D-PPP distribution model, add UAV nodes to the sets of $S_{n}$ and $X_{A}$ based on PER.
+6: Step 2: Successful transmission probability acquisition.
+7: for $\lambda_{u}=1$ ; $\lambda_{u}<100$ ; $\lambda_{u}++do$ 8: Calculate successful transmission probability $P_{x_{k}}$ and $P_{X_{A}}$ from the set $X_{A}$ .
+9: end for
+10: Step 3: All kinds of delay calculation.
+11: Input: Successful transmission probability $P_{x_{k}}$ , degradation factor d, service time $T_{1}$ , and compression ratio $\eta$ .
+12: Initialization: m=0, $\lambda=0$ .
+13: Calculate $m_{max}$ .
+14: for m=1; m<m_max; m++do
+15: Calculate $T_{comm-w}$ , $T_{comm-t}$ , $T_{comm-q}$ , $T_{comm-p}$ .
+16: Calculate $T_{all-before}$ , $T_{all-after}$ .
+17: Find the minimum $T_{all-after}$ .
+18: if $\min(T_{all-after})<T_{all-before}$ then
+19: Get $m^{\dagger}$ , calculate $\lambda^{\dagger}$ and $\lambda_{u}^{\dagger}$ .
+20: else
+21: Reassign $\rho$ and go to Step 3.
+22: end if
+23: end for
+
+# V. RESULTS AND ANALYSIS
+
+To evaluate the performance of the proposed joint communication and computation optimization algorithms, both the simulation system and the hardware testbed have been designed and analyzed based on the numerous performance evaluation results in Section V.
+
+TABLE III COMPLEXITY COMPARISON AMONG ALGORITHMS 
+
+<table><tr><td>Algorithm Name</td><td>Communication</td><td>Computation</td></tr><tr><td>PER-based DSC [12]</td><td> $T_1(n) = O(n^2)$ </td><td>N/A</td></tr><tr><td>APs/CSs [20]</td><td> $T_1(n) = O(n)$ </td><td> $T_2(n) = O(n^2)$ </td></tr><tr><td>Our proposed RD</td><td> $T_1(n) = O(n^2)$ </td><td> $T_2(n) = O(n^2)$ </td></tr></table>
+
+![](images/010d7d3f3bd95507245385e656bfe354989aada0ee7859c067ff3367b9a6dfc4.jpg)  
+Fig. 4. Simulation scenario of MEC enabled UAV swarm.
+
+# A. Simulation System Design and Performance Analysis
+
+The Monte Carlo simulation algorithm has been used to verify our proposed algorithms in the typical scenarios and the key simulation parameters follow the default settings unless specified otherwise. Within the coverage range of 1 km for x, y, and z axes [13], [38] in Fig. 4, the layout of simulation scenario includes one T-UAV in the top layer, and a swarm of B-UAVs following a 3D-PPP distribution in the bottom layer. The effective communication range between the T-UAV and the intra-group B-UAVs is set by 300 m, and the maximum distance of the received interference signal by the inter-group UAVs is 1000 m based on [39]. The total bandwidth of the B-UAV to T-UAV communication link is $B _ { 1 } = 4 0 0$ MHz and the bandwidth of backhaul link is $B _ { 2 } = 1 0 0$ MHz [40]. The path loss is $P L ( d B ) = 7 2 + 3 0 \times \log _ { 1 0 } ( d )$ [4]. The expected service time of the single VM is $T _ { 1 } \mathrm { = } 0 . 1 ~ \mathrm { s }$ and the degradation factor d is set as $d = 0 . 2$ . The task generation probability per slot is $p = 0 . 2 [ 2 0 ]$ . The detailed parameters and settings of the proposed simulation system are shown in Table IV.
+
+Fig. 5 illustrates the relation between the successful transmission probability and the density of B-UAVs within the set $X _ { A }$ at different distances from T-UAV based on the numerical simulation restuls. Typically, the distances of three UAVs, named UAVs 1, 2, 3, to the T-UAV, are increasing successively as shown in Fig. 5. Moreover, the increasing density of B-UAVs leads to the interference problem, which will decrease the successful transmission probability. Therefore, when the density of B-UAVs reaches a certain threshold, the performance of communication links among UAVs will be deteriorated seriously, resulting in a transmission failure. Furthermore, the overall successful transmission probability of a group of UAVs will be increased if these UAVs can cooperate with each other.
+
+TABLE IV KEY PARAMETERS OF SIMULATION SYSTEM FOR MEC ENABLED UAVS 
+
+<table><tr><td>Parameter</td><td>Value</td></tr><tr><td> $N_0$ </td><td>-174 dBm/Hz</td></tr><tr><td> $B_1$ </td><td>400 MHz</td></tr><tr><td> $B_2$ </td><td>100 MHz</td></tr><tr><td> $P_t$ </td><td>5 W</td></tr><tr><td> $G_A$ </td><td>20 dBi</td></tr><tr><td> $G_i$ </td><td>3 dBi</td></tr><tr><td> $\theta$ </td><td>0 dB</td></tr><tr><td>intra-group communication range</td><td>300 m</td></tr><tr><td>inter-group communication range</td><td>1000 m</td></tr><tr><td>Number of iteration</td><td>1000</td></tr><tr><td>Path loss</td><td> $72 + 30 \times \log_{10}(d)$ </td></tr><tr><td> $l$ </td><td>200 Mbits</td></tr><tr><td> $\eta$ </td><td>10%</td></tr><tr><td> $T_1$ </td><td>0.1</td></tr><tr><td> $d$ </td><td>0.2</td></tr><tr><td> $p$ </td><td>0.2</td></tr></table>
+
+![](images/54554c627a266466a36085c8baaeb58c8246a038c1a9123a9ecfb9048296e792.jpg)
+
+<details>
+<summary>line</summary>
+
+| Density of UAVs (/km³) | P1 of UAV 1 | P2 of UAV 2 | P3 of UAV 3 | P_X_A of UAV swarm |
+| ---------------------- | ----------- | ----------- | ----------- | ------------------ |
+| 0                      | 1.0         | 1.0         | 1.0         | 1.0                |
+| 10                     | 0.85        | 0.8         | 0.75        | 0.95               |
+| 20                     | 0.7         | 0.65        | 0.6         | 0.85               |
+| 30                     | 0.55        | 0.5         | 0.45        | 0.75               |
+| 40                     | 0.45        | 0.4         | 0.35        | 0.65               |
+| 50                     | 0.35        | 0.3         | 0.25        | 0.55               |
+| 60                     | 0.25        | 0.2         | 0.15        | 0.45               |
+| 70                     | 0.2         | 0.15        | 0.1         | 0.35               |
+| 80                     | 0.15        | 0.1         | 0.05        | 0.25               |
+| 90                     | 0.1         | 0.05        | 0.02        | 0.15               |
+| 100                    | 0.05        | 0.02        | 0.01        | 0.1                |
+</details>
+
+Fig. 5. Successful transmission probability under different densities of UAVs.
+
+In Fig. 6, the performances of the successful transmission probability and the TD are shown with the increase of the density of UAVs. In Fig. 6(a), the successful transmission probability results at different UAV distribution densities are achieved from the average of 1000 simulations. The trends of successful transmission probability between the simulation results and the theoretical results are consistent based on Fig. 5 and Fig. 6(a). As the density of B-UAV increases, the interference among UAVs will become more severe, leading to the decrease of the successful transmission probability. On the other hand, the TD between B-UAV and T-UAV is shown in Fig. 6(b). As the density of B-UAV increases, the successful transmission probability among different communication links decreases, and the capacity of communication links will also decrease. Therefore, the data packet transmission will take much longer time due to the retransmission process, leading to an increase of TD. Moreover, when the density of UAVs is relatively large, the random distribution of a large number of UAVs will cause a severe interference fluctuation problem. Therefore, as shown in Fig. 6(b), when the density of UAVs increases, the TD will increase and the fluctuation trend will be obvious as well.
+
+![](images/a2695a9364ac4ffec9b9abb96fdb4b58d6d3451d130894dc8e111969a1b3b31a.jpg)
+
+<details>
+<summary>line</summary>
+
+| Density of UAVs (/km³) | Successful Transmission Probability |
+| ---------------------- | ------------------------------------ |
+| 0                      | 0.95                                 |
+| 5                      | 0.92                                 |
+| 10                     | 0.85                                 |
+| 15                     | 0.78                                 |
+| 20                     | 0.72                                 |
+| 25                     | 0.68                                 |
+| 30                     | 0.65                                 |
+| 35                     | 0.60                                 |
+| 40                     | 0.55                                 |
+| 45                     | 0.50                                 |
+| 50                     | 0.45                                 |
+| 55                     | 0.40                                 |
+| 60                     | 0.35                                 |
+| 65                     | 0.30                                 |
+| 70                     | 0.25                                 |
+| 75                     | 0.20                                 |
+| 80                     | 0.15                                 |
+| 85                     | 0.10                                 |
+| 90                     | 0.05                                 |
+| 95                     | 0.02                                 |
+| 100                    | 0.01                                 |
+</details>
+
+![](images/8d331019425bd859de28ad6571f834ffda2729083fb2fc48895bca9c0872d2d3.jpg)
+
+<details>
+<summary>line</summary>
+
+| Density of UAVs (/km³) | Transmission Delay (s) |
+| ---------------------- | ---------------------- |
+| 0                      | 1.1                    |
+| 5                      | 1.15                   |
+| 10                     | 1.2                    |
+| 15                     | 1.25                   |
+| 20                     | 1.3                    |
+| 25                     | 1.4                    |
+| 30                     | 1.5                    |
+| 35                     | 1.6                    |
+| 40                     | 1.7                    |
+| 45                     | 1.8                    |
+| 50                     | 1.9                    |
+| 55                     | 2.0                    |
+| 60                     | 2.1                    |
+| 65                     | 2.2                    |
+| 70                     | 2.3                    |
+| 75                     | 2.4                    |
+| 80                     | 2.5                    |
+| 85                     | 2.6                    |
+| 90                     | 2.7                    |
+| 95                     | 2.8                    |
+| 100                    | 2.9                    |
+</details>
+
+(b)   
+Fig. 6. Successful transmission probability and transmission delay for B-UAVs.
+
+In Fig. 7, the average number of packets in the queue system is analyzed. In order to derive the statistical law of the average number of packets, the simulation has been performed 10000 times. It can be seen that the average number of packets in the queue increases as the packet arrival rate grows. However, by using the parallel computing algorithm in the T-UAV, the average number of packets in the queue can be effectively reduced. If the packet arrival rate grows consecutively and exceeds the processing limit of the computation system, the queue length will increase indefinitely when the computation load rate is greater than 1 according to (24). The preset buffer capacity in the simulation is 100, therefore the queue length will eventually approach the maximum capacity limit of the buffer as shown in Fig. 7. Besides, by increasing the number of VMs denoted by the parameter m, the improved computation capability can process more packets. Therefore, as shown in Fig. 7, when $^ { \ast } m = 1 , ^ { \ast }$ the system reaches its computation limit when the packet arrival rate is 15/s. When $^ { 6 6 } m = 5 , "$ the system reaches the limit when the packet arrival rate is 80/s.
+
+![](images/0494437650eb212adf572674993c3ec7d7eda29fa3fba1f11bf04ffcef98d073.jpg)
+
+<details>
+<summary>line</summary>
+
+| Packet Arrival Rate (/s) | m=1  | m=3  | m=5  |
+| ------------------------ | ---- | ---- | ---- |
+| 0                        | 10   | 0    | 0    |
+| 5                        | 40   | 0    | 0    |
+| 10                       | 80   | 20   | 0    |
+| 15                       | 95   | 40   | 5    |
+| 20                       | 98   | 60   | 15   |
+| 25                       | 99   | 75   | 30   |
+| 30                       | 99.5 | 85   | 45   |
+| 35                       | 99.8 | 90   | 60   |
+| 40                       | 99.9 | 92   | 75   |
+| 45                       | 99.95| 94   | 85   |
+| 50                       | 99.98| 95   | 90   |
+| 55                       | 99.99| 96   | 92   |
+| 60                       | 99.995|97   | 94   |
+| 65                       | 99.998|98   | 95   |
+| 70                       | 99.999|98.5 | 96   |
+| 75                       | 99.9995|98.8 | 97   |
+| 80                       | 99.9998|99.0 | 98   |
+| 85                       | 99.9999|99.2 | 98.5 |
+| 90                       | 99.99995|99.4 | 99   |
+| 95                       | 99.99998|99.6 | 99.2 |
+| 100                      | 100  | 100  | 100  |
+</details>
+
+Fig. 7. Average number of packets in queue.
+
+![](images/ef3acc36af2ffa43c7d186645cb239a84a7c975ffb2aee9cbcbdcd8eda6c23cb.jpg)
+
+<details>
+<summary>line</summary>
+
+| Packet Arrival Rate (/s) | m=1    | m=3    | m=5    |
+| ------------------------ | ------ | ------ | ------ |
+| 0                        | 0.10   | 0.04   | 0.00   |
+| 2                        | 0.12   | 0.04   | 0.00   |
+| 4                        | 0.16   | 0.04   | 0.00   |
+| 6                        | 0.20   | 0.04   | 0.00   |
+| 8                        | 0.33   | 0.04   | 0.00   |
+| 10                       | 0.50   | 0.04   | 0.00   |
+| 12                       | 0.75   | 0.04   | 0.00   |
+| 14                       | 1.00   | 0.04   | 0.00   |
+| 16                       | 1.25   | 0.04   | 0.00   |
+| 18                       | 1.50   | 0.04   | 0.00   |
+| 20                       | 1.75   | 0.17   | 0.01   |
+| 22                       | 2.00   | 0.39   | 0.02   |
+| 24                       | 2.25   | 0.61   | 0.03   |
+| 26                       | 2.50   | 0.83   | 0.04   |
+| 28                       | 2.75   | 1.05   | 0.05   |
+| 30                       | 3.00   | 1.27   | 0.06   |
+| 32                       | 3.25   | 1.50   | 0.15   |
+| 34                       | 3.50   | 1.73   | 0.35   |
+| 36                       | 3.75   | 1.96   | 0.65   |
+| 38                       | 4.00   | 2.19   | 1.05   |
+| 40                       | 4.25   | 2.42   | 1.50   |
+</details>
+
+Fig. 8. Performance of parallel computing on queueing delay.
+
+The impact of parallel computing using multiple VMs on the QD is shown in Fig. 8. The change of the packet arrival rate is determined by the density of B-UAVs, the task generation probability of B-UAVs, and the TD of the communication link. Without considering the computation load level of the system, QD will increase as the packet arrival rate grows. By increasing the number of VMs for parallel computing, QD can be effectively reduced. Corresponding to the curve $^ { 6 6 } m = 1 ^ { , 5 }$ in Fig. 8, if only one VM is used for computation, QD will increase sharply as the packet arrival rate grows due to the computation resource limit. When the packet arrival rate achieves 8/s, according to (24), the computation load rate is greater than 1 and the computation system is not capable to process all the packets. The acceptable maximum packet arrival rate of the system is 8/s, beyond which the infinite queue exists and deteriorates the system performance. By using five VMs as depicted by $^ { 6 6 } m = 5 ^ { , }$ in Fig. 8, when the packet arrival rate is less than 25/s, the slope of QD curve is smooth. However, as the packet arrival rate is growing consecutively, QD will increase significantly due to the computation resource limit, leading to the acceptable maximum packet arrival rate of 34/s.
+
+![](images/8d06c9562209154f991eaeed30161b7e6e7e01a2d0c9415b2396967a52f5f93e.jpg)
+
+<details>
+<summary>area_stacked</summary>
+
+| Density of UAVs (/km³) | Number of VMs | Response Delay (s) |
+| ---------------------- | ------------- | ------------------ |
+| 40                     | 3             | 1.5                |
+| 30                     | 4             | 2.5                |
+| 20                     | 5             | 3.5                |
+| 10                     | 6             | 2.5                |
+| 0                      | 7             | 1.5                |
+| 6                      | 8             | 1.0                |
+| 5                      | 9             | 0.5                |
+</details>
+
+Fig. 9. Response delay based on Monte Carlo simulation.
+
+![](images/cc60bf6aa99efecbebf912c0b5089256c85e73c057ee29f58f08ea4df54fe8f8.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of VMs | ρ=0.5 | ρ=0.5 approximate | ρ=0.6 | ρ=0.6 approximate | ρ=0.7 | ρ=0.7 approximate |
+| ------------- | ----- | ----------------- | ----- | ----------------- | ----- | ----------------- |
+| 1             | 0.10  | 0.13              | 0.18  | 0.25              | 0.34  | 0.50              |
+| 2             | 0.04  | 0.06              | 0.07  | 0.10              | 0.14  | 0.25              |
+| 3             | 0.02  | 0.04              | 0.04  | 0.06              | 0.08  | 0.15              |
+| 4             | 0.01  | 0.03              | 0.03  | 0.04              | 0.05  | 0.10              |
+| 5             | 0.01  | 0.02              | 0.02  | 0.03              | 0.04  | 0.08              |
+</details>
+
+Fig. 10. Queuing delay comparison between theoretical approximation and simulation results.
+
+The RD of the entire system is evaluated and analyzed based on the Monte Carlo simulation results in Fig. 9, which is mainly affected by the density of UAVs and the number of VMs. The density of UAVs reflects the capability of the communication system, while the number of VMs denotes the capability of the computation system. On one hand, as the density of UAVs increases, the interference among UAVs becomes much more severe, leading to the increase of TD and RD due to the retransmission process. On the other hand, as the number of VMs grows, the QD decreases due to the computation capacity enhancement, resulting in the reduction of RD. Therefore, the performance of RD in the joint communication and computation system is comprehensively analyzed by Fig. 9.
+
+According to (24) and (26), the distribution density of B-UAVs has a linear relation with the number of VMs in T-UAV. Fig. 10 shows the relation between QD and VMs, where the solid lines denote the simulation results and the dashed lines are the theoretical approximation values. By using the series approximation method, when the number of VMs $m \geq 3$ and the computation load rate $\rho \leq 0 . 6 ,$ the error between theoretical and simulation results is negligible. Moreover, when the number of VMs increases, QD shows a monotonous decreasing trend, which is consistent with the theoretical analysis. Furthermore, when a large number of VMs is deployed, the descending speed of QD will slow down, which means that consuming extra computing resources will not yield a better performance.
+
+![](images/b25a24f1c89e4c90cef934a9750ac09d183f90f1d15b3e448e8d5a26bae4c1c8.jpg)  
+Fig. 11. Delay rate of change for QD and TD.
+
+![](images/c0d9682fc037fc175ec1d1f4814f462679801a321f11d148135922bea82908e5.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of VMs | T_all-after | T_all-before | T_all-after ρ=0.6 | T_all-after ρ=0.7 | T_all-after ρ=0.8 |
+| ------------- | ----------- | ----------- | ----------------- | ----------------- | ----------------- |
+| 1             | 2.8         | 1.8         | 1.4               | 1.5               | 1.3               |
+| 2             | 2.0         | 1.6         | 1.3               | 1.4               | 1.2               |
+| 3             | 1.8         | 1.7         | 1.3               | 1.4               | 1.2               |
+| 4             | 1.7         | 1.8         | 1.4               | 1.5               | 1.3               |
+| 5             | 1.8         | 1.9         | 1.5               | 1.6               | 1.4               |
+| 6             | 1.9         | 2.0         | 1.6               | 1.7               | 1.5               |
+| 7             | 2.0         | 2.1         | 1.7               | 1.8               | 1.6               |
+| 8             | 2.1         | 2.2         | 1.8               | 1.9               | 1.7               |
+| 9             | 2.2         | 2.3         | 1.9               | 2.0               | 1.8               |
+| 10            | 2.3         | 2.4         | 2.0               | 2.1               | 1.9               |
+</details>
+
+Fig. 12. Response delay with and without MEC models.
+
+The relation between the number of VMs and the delay rate of change for QD and TD is shown in Fig. 11, where the derivative of QD is negative and the derivative of TD is positive. To compare the slopes of QD and TD, we utilize the absolute value of the derivatives for QD and TD in Fig. 11. Three crossing points among these curves are highlighted by $\rho = 0 . 6 , \rho = 0 . 7$ , and $\rho = 0 . 8$ , where the approximate results of the number of VMs are $m = 2 , m = 2$ , and $m = 3$ , respectively. Simulation results prove the effectiveness of the approximated value m when the event $E _ { m ^ { \dagger } }$ occurs.
+
+The performance of RD is calculated with different number of VMs in Fig. 12 based on (38a). The optimization function is a lower convex function, and the number of VMs in Fig. 12 is the same as that in Fig. 11 when RD achieves the minimum. By using MEC technology, the RD can be reduced by 10%∼20% based on the results. Furthermore, as the computation load rate increases, the RD becomes larger. When the number of VMs is small, the RD using MEC is larger than that without MEC. On the contrary, when the number of VMs is large, the RD using MEC will be smaller than that without MEC. Moreover, when the number of VMs is greater than 6, the RD shows a unified trend with different computation load rates. When $\rho = 0 . 6 , \rho = 0 . 7$ , and $\rho = 0 . 8 $ , different curves of RD indicate the same ascending trend as the curve of $T _ { a l l - b e f o r e }$ without using MEC. According to (42), the change of RD mainly depends on TD and QD. When the number of VMs is greater than 6, the sharply increased TD will play a dominant role in the performance of RD due to the interference caused by a large number of data packets transmission, where the MEC technology loses its advantage. Therefore, the RD can be effectively minimized based on the appropriate VMs configuration in accordance with various packet arrival rates.
+
+![](images/34e7ba7ca3fc3eb8f3667b126ceb1102b187b12479b75c80da85b14a1436eea0.jpg)
+
+<details>
+<summary>text_image</summary>
+
+MmWave Transceiver RF Head
+B-UAV
+5G New Radio MmWave Communication System
+MmWave Tx Phased Array Antenna
+MmWave Rx Phased Array Antenna
+T-UAV
+MEC Server
+Control Cneter
+5G New Radio MmWave Communication System
+</details>
+
+Fig. 13. 5G NR mmWave UAVs hardware testbed.
+
+TABLE V 5G NR mmWAVE COMMUNICATION SYSTEM PROTOCOL 
+
+<table><tr><td>Carrier Frequency</td><td>28 GHz</td></tr><tr><td>Bandwidth</td><td>8 × 100 MHz carriers</td></tr><tr><td>Sampling Frequency</td><td>3.072 GS/s</td></tr><tr><td>Waveform</td><td>CP-OFDM</td></tr><tr><td>FFT Size</td><td>2048</td></tr><tr><td>Duplexing</td><td>Dynamic TDD</td></tr><tr><td>Antenna</td><td>64-element phased array</td></tr><tr><td>MIMO Scheme</td><td>Analog + Digital Beamforming (Hybrid)</td></tr><tr><td>Modulation</td><td>QPSK, 16-QAM, 64-QAM</td></tr><tr><td>Coding</td><td>Turbo, LDPC</td></tr></table>
+
+# B. Hardware Testbed and Performance Analysis
+
+Considering the disaster rescue scenario, we have designed and developed the hardware testbed to evaluate the RD performance of MEC enabled UAV communication system by using two DJI M100 quad-rotor UAVs and the 5G New Radio (NR) mmWave communication system as shown in Fig. 13. We deploy two mini-sized computers on the top of B-UAV and T-UAV, which are utilized as the MEC modules on UAVs. On the left side of Fig. 13, the B-UAV can use its camera to generate a video streaming service which is transmitted via the 5G NR mmWave communication system. As one of the candidate spectrum bands for 5G systems, the 5G NR mmWave communication system operates in the 28 GHz mmWave spectrum band with a bandwidth of 800 MHz by aggregating eight 100 MHz carriers. To support the mobile communication scenario for MEC enabled UAVs, two 64-element phased array antennas are utilized at both the transmitter and the receiver of 5G mmWave system with mmWave beam alignment and beam tracking capabilities. The communication protocol is based on the 3GPP TS 38.300 standard on 5G NR [41] and the detailed parameters are shown in Table V based on the NI mmWave testbed in [40].
+
+![](images/617d4c60cc885f3cdb2bec2071419d6a9677a4949d49828ff6ede7027e7164e7.jpg)
+
+<details>
+<summary>line</summary>
+
+| Transmission Delay (ms) | Communication link 1 | Communication link 2 | Communication link 3 | Communication link 4 | Communication link 5 | Communication link 6 |
+| ----------------------- | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| 0                       | 120                  | 110                  | 120                  | 120                  | 120                  | 110                  |
+| 100                     | 125                  | 115                  | 125                  | 125                  | 125                  | 110                  |
+| 200                     | 125                  | 115                  | 130                  | 125                  | 125                  | 110                  |
+| 300                     | 130                  | 115                  | 125                  | 120                  | 120                  | 110                  |
+| 400                     | 125                  | 115                  | 130                  | 125                  | 125                  | 110                  |
+| 500                     | 125                  | 105                  | 125                  | 120                  | 130                  | 100                  |
+| 600                     | 125                  | 105                  | 125                  | 125                  | 135                  | 110                  |
+| 700                     | 125                  | 105                  | 125                  | 120                  | 125                  | 105                  |
+| 800                     | 125                  | 105                  | 125                  | 125                  | 130                  | 115                  |
+| 900                     | 145                  | 145                  | 145                  | 145                  | 145                  | 145                  |
+</details>
+
+Fig. 14. Transmission delay of the hardware testbed.
+
+On the right side of Fig. 13, the T-UAV can receive the video streaming service via the 5G mmWave link at the receiver side. However, the accumulated surging demands of video streaming services transmitted from different B-UAVs to the same T-UAV will put a great pressure on the transmission link capacity between the T-UAV and the control center. In contrast to the conventional algorithms without the MEC capability on the T-UAV, the video streaming service can be reduced to a few number of key frames containing only the useful disaster rescue information, such as the fire, the survivor, and other targets, by using the image processing algorithms with the support of the MEC on the T-UAV. Therefore, the transmission capacity requirements between the T-UAV and the control center can be substantially reduced by using the computation ability of MEC server on the T-UAV.
+
+The performance of TD is evaluated as shown in Fig. 14 based on the MEC enabled UAVs hardware testbed in Fig. 13. Considering the scenario of multiple B-UAVs simultaneous transmission to one T-UAV, six communication links are generated by using a random radio resource allocation algorithm, which have the same total data amount of 100 Mbits. Fig. 14 shows the instantaneous transmission rate and the TD for different communication links, where the communication links 1, 3, 4, and 5 have much higher transmission rates due to the increased amount of communication resources allocated. Moreover, when the transmission processes are completed for the communication links of 1, 3, 4, and 5, the communication links 2 and 6 can achieve their peak data rates due to the abundant radio resources and the decrease of severe interferences from other communication links.
+
+Furthermore, the performance of computation delay is analyzed by using the MEC server on the T-UAV to process the target detection algorithm for the disaster rescue scenario based on the received video streaming data in shown in Fig. 15. Based on the hardware testbed in Fig. 13, the camera of B-UAV generates the video streaming service, where one person is walking with a constant speed of 1 m/s with the word “Target” on a white board for the image detection test as depicted by the red rectangle in Fig. 15(a). The MEC server on the T-UAV utilizes the speeded up robust features video stream detection algorithm (SURF-VSD) [42] to detect the target from the received video. The performance of computation delay is evaluated based on nine key frames with the detected “Target” in each frame by Fig. 15(b). Considering the computation capability limit of the MEC server deployed on the T-UAV in the hardware testbed, the video streaming service has a length of 52 seconds with a total traffic size of 7.84 Mbits. The total traffic size of these nine key frames is 775.9 kbits. Therefore, by using the computation capability of MEC server on the T-UAV, the total packets of video streaming service transmitted from the T-UAV to the control center can be significantly decreased by 89.9% in contrast to the conventional algorithms without the MEC. As a result, the pressure of the linear surging demands on the transmission link capacity between the T-UAV and the control center can be substantially decreased, which is caused by multiple concurrent transmission links from different B-UAVs to the same T-UAV.
+
+![](images/4f58c325c305a6672df80e04ebe2acf82e1330b1309f46ca21c4a64af3ba503c.jpg)  
+167
+
+![](images/c07c5df417521b0499ceb2c302dd7a841d3708a32e7c90cd7fb6167449396d6e.jpg)  
+303
+
+![](images/eac115d401971b64ae918940333d373b544d790154d77c4d26131554771fcc95.jpg)
+
+![](images/5a251c2d3093762e8acba29a6a7c56289d4fa92c608dc3948ce801be22c76328.jpg)  
+596
+
+![](images/6286d52195f7dde11a634ee1f9bea83c075d2472c802d54b6f97cf42216d5a2e.jpg)  
+761
+
+![](images/cb6c2ac77d7d2b845df13b42c79a15dc1ef850fa7c1f81b9ad0b16775cebb2c9.jpg)  
+853
+
+![](images/8ac7dbe1d53d967ead8699ebc0c33949176e3c9a0ed863f7a07ffa4df53c36e3.jpg)  
+1007
+
+![](images/8e92841db2bc092d264d66a5b443e119d51dd3dd09b4d6fedd8f8806fc524577.jpg)  
+1213
+
+![](images/ac117a5db0d0b8627f7c96d3fd60c43bbdc077ec4212de4866266346f76a0d6c.jpg)  
+1325
+
+(a)   
+![](images/0faa8e61965d7e4a12b072fa37f5217587203451a21920a88b9ae8bd65f2be91.jpg)
+
+<details>
+<summary>bar</summary>
+
+| Numbers of Video Frame | Computation Delay (ms) |
+| :--- | :--- |
+| 167 | 94.34 |
+| 303 | 223.96 |
+| 462 | 332.32 |
+| 596 | 462.42 |
+| 761 | 590.40 |
+| 853 | 685.91 |
+| 1007 | 768.48 |
+| 1213 | 856.78 |
+| 1325 | 945.62 |
+</details>
+
+(b)   
+Fig. 15. Computation delay evaluation based on the hardware testbed. (a) Target detection scenario for MEC enabled UAVs. (b) Computation delay of processing different numbers of video frame.
+
+# VI. CONCLUSION
+
+In this paper, a joint communication and computation optimization scheme has been proposed in the MEC enabled UAV swarm scenario, which can improve the transmission efficiency and minimize the response delay under communication and computation constrains. The successful transmission probability for UAVs is achieved theoretically with the closed-form solutions and the response delay is also formulated as an optimization problem by considering four delay parameters. Compared with conventional UAVs without MEC capabilities, there is a 10%∼20% decrease of the response delay for our proposed algorithm with the communication and computation resources limits and the delay constrains in the disaster rescue scenario. On one hand, with both communication and computation resources limits, the optimal response delay can be achieved with an optimal configuration scheme of the distribution density of UAVs and the number of VMs. On the other hand, in order to meet the delay constraint of latency-sensitive services, the demanding communication and computation resources can be estimated based on our proposed joint optimization algorithm. Finally, both the simulation system and the hardware testbed have been developed to evaluate the feasibility and performance of our proposed response delay optimization algorithm in the MEC enabled UAV swarm scenario. Numerous results prove that the total packets of video streaming service transmitted from the T-UAV to the control center can be significantly decreased by 89.9% using the computation capability of MEC server on the T-UAV, in contrast to the conventional algorithm without using MEC.
+
+# APPENDIX A
+
+# PROOF OF LEMMA 1
+
+Since $h _ { k }$ follows a unit mean exponential distribution, $P ( \gamma _ { x _ { k } } > \theta )$ can be derived as
+
+$$
+\begin{array}{l} P \left(\gamma_ {x _ {k}} > \theta\right) = P \left(\frac {P _ {t} h _ {k} x _ {k} ^ {- \alpha} G _ {A} ^ {k}}{P _ {t} I + N} > \theta\right) \\ = \mathbb {E} _ {I} \left\{\exp \left(- \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right) \exp \left(- \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} I\right) \right\} \\ = \exp \left(- \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right) \mathcal {L} _ {I} \left(\frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha}\right). \tag {47} \\ \end{array}
+$$
+
+$\begin{array} { r } { \mathcal { L } _ { I } \big ( \frac { \theta } { G _ { A } ^ { k } } x _ { k } ^ { \alpha } \big ) } \end{array}$ LI ( θGk is the Laplace transform of $I =$ $\begin{array} { r } { \sum _ { x _ { i } \in S _ { n } \backslash \{ X _ { A } \} } h _ { i } x _ { i } ^ { - \alpha } G _ { i } } \end{array}$ , which can be further derived as
+
+$$
+\begin{array}{l} \mathcal {L} _ {I} \left(\frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha}\right) = \mathbb {E} _ {I} \left\{\exp \left(- \frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} I\right) \right\} \\ = \mathbb {E} _ {S _ {n}} \left\{\prod_ {x _ {i} \in S _ {n} \backslash \{X _ {A} \}} \mathbb {E} _ {h _ {i}} \left[ \exp \left(- \frac {G _ {i} \theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} h _ {i} x _ {i} ^ {- \alpha}\right) \right] \right\} \\ = \mathbb {E} _ {S _ {n}} \left\{\prod_ {x _ {i} \in S _ {n} \backslash \{X _ {A} \}} \left(\frac {1}{1 + \frac {G _ {i} \theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} x _ {i} ^ {- \alpha}}\right) \right\}. \tag {48} \\ \end{array}
+$$
+
+Therefore, substituting (48) to (47), Lemma 1 is proved.
+
+# APPENDIX B
+
+# PROOF OF LEMMA 2
+
+According to (30) and (31), the condition to ensure that $T _ { a l l - a f t e r }$ is less than $T _ { a l l - b e f o r e }$ is derived as follows,
+
+$$
+T _ {a l l - a f t e r} <   T _ {a l l - b e f o r e}
+$$
+
+$$
+\Rightarrow \frac {L _ {q}}{\lambda} + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})} - \frac {l}{B _ {2} \log (1 + \theta_ {2})} <   0
+$$
+
+$$
+\Rightarrow \eta <   1 - \frac {B _ {2} \log (1 + \theta_ {2}) \left(\frac {L _ {q}}{\lambda} + \frac {1}{\mu}\right)}{l}. \tag {49}
+$$
+
+# APPENDIX C
+
+# PROOF OF THEOREM 1
+
+The RD $T _ { a l l - a f t e r }$ is expressed as follows,
+
+$$
+T _ {a l l - a f t e r} = t _ {0} \left(\frac {L}{1 - (1 - p) ^ {L}} - \frac {1}{p}\right)
+$$
+
+$$
++ \frac {l}{B _ {1} \log (1 + \theta_ {1})} \exp \left(\frac {\theta}{G _ {A} ^ {k}} x _ {k} ^ {\alpha} \frac {N}{P _ {t}}\right)
+$$
+
+$$
+\times \exp \left(\lambda_ {u} V \left(H _ {1}, H _ {2}, \theta , x _ {k}\right)\right)
+$$
+
+$$
++ \frac {\lambda^ {m - 1} \rho}{\mu^ {m} m ! (1 - \rho) ^ {2}} \left[ \left(\sum_ {n = 0} ^ {m - 1} \frac {\lambda^ {n}}{\mu^ {n} n !}\right) + \frac {1}{m !} \left(\frac {\lambda}{\mu}\right) ^ {m} \right.
+$$
+
+$$
+\left. \times \left(\frac {1}{1 - \rho}\right) \right] ^ {- 1}
+$$
+
+$$
++ \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})}
+$$
+
+$$
+= w \left(\lambda_ {u}\right) + t \left(\lambda_ {u}\right) + q (\lambda) + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log \left(1 + \theta_ {2}\right)}. \tag {50}
+$$
+
+According to (20), we know λu = VR(x )PG . $\begin{array} { r } { \lambda _ { u } = \frac { \lambda L t _ { 0 } } { V _ { R ( x _ { k } ) } P _ { G } } } \end{array}$ λLt0 Therefore, (50) can be expressed as
+
+$$
+T _ {a l l - a f t e r} = w \left(\frac {\lambda L t _ {0}}{V _ {R (x _ {k})} P _ {G}}\right) + t \left(\frac {\lambda L t _ {0}}{V _ {R (x _ {k})} P _ {G}}\right)
+$$
+
+$$
++ q (\lambda) + \frac {1}{\mu} + \frac {\eta l}{B _ {2} \log (1 + \theta_ {2})} = \mathcal {T} (\lambda). \tag {51}
+$$
+
+Therefore, Theorem 1 is proved.
+
+# APPENDIX D
+
+# PROOF OF THEOREM 2
+
+According to (43) where $\frac { d y _ { 2 } ( \lambda ) } { d \lambda } < 0 , y _ { 2 } ( \lambda )$ is a monotonically decreasing function. In order to obtain the trend of $y _ { 2 } ( \lambda )$ , the second derivative in $y _ { 2 } ( \lambda )$ is derived as follows,
+
+$$
+y _ {2} ^ {\prime \prime} (\lambda) = - 1. 1 4 \times \left\{\frac {\lambda^ {0 . 5} \times 0 . 9 7 ^ {\lambda} \times [ \lambda \ln (0 . 9 7) - 1 . 5 ]}{\lambda^ {3}} \right.
+$$
+
+$$
+\times \left(0. 0 7 7 + \frac {3}{\lambda}\right) - \frac {3 \times 0 . 9 7 ^ {\lambda}}{\lambda^ {3 . 5}} \Bigg \}. \tag {52}
+$$
+
+When $\lambda > 0 , \lambda \ln ( 0 . 9 7 ) - 1 . 5 < 0$ , we have $y _ { 2 } ^ { \prime \prime } ( \lambda ) > 0$ . It means that $y _ { 2 } ( \lambda )$ is a concave function and the descending trend will become smaller with the increase of λ. Besides, the increasing rate $y _ { 1 } ( \lambda )$ is a fixed value. Thus, when RD reaches the minimum, the following two conditions must be met.
+
+(i) When λ = λ† , | dy2(λ) | $\begin{array} { r } { \lambda = \lambda ^ { \dagger } , | \frac { d y _ { 2 } ( \lambda ) } { d \lambda } | \geq | \frac { d y _ { 1 } ( \lambda ) } { d \lambda } | . } \end{array}$
+
+(ii) When $\begin{array} { r } { \lambda = \lambda ^ { \dagger } + 1 , | \frac { d y _ { 2 } ( \lambda ) } { d \lambda } | \leq | \frac { d y _ { 1 } ( \lambda ) } { d \lambda } | . } \end{array}$
+
+According to $\begin{array} { r } { m = \frac { \lambda } { \rho \mu } } \end{array}$ ρμ , the number of VMs $m ^ { \dagger }$ is also achieved. Therefore, Theorem 2 is proved.
+
+# REFERENCES
+
+[1] T. O. Olwal, K. Djouani, and A. M. Kurien, “A survey of resource management toward 5G radio access networks,” IEEE Commun. Surv. Tut., vol. 18, no. 3, pp. 1656–1686, Apr. 2016.   
+[2] Z. Xiao, P. Xia, and X. Xia, “Enabling UAV cellular with millimeterwave communication: Potentials and approaches,” IEEE Commun. Mag., vol. 54, no. 5, pp. 66–73, May 2016.   
+[3] I. Bor-Yaliniz, M. Salem, G. Senerath, and H. Yanikomeroglu, “Is 5G ready for drones: A look into contemporary and prospective wireless networks from a standardization perspective,” IEEE Wireless Commun., vol. 26, no. 1, pp. 18–27, Feb. 2019.   
+[4] Z. Feng, L. Ji, Q. Zhang, and W. Li, “Spectrum management for MmWave enabled UAV swarm networks: Challenges and opportunities,” IEEE Commun. Mag., vol. 57, no. 1, pp. 146–153, Jan. 2019.   
+[5] Y. Xu, L. Xiao, D. Yang, Q. Wu, and L. Cuthbert, “Throughput maximization in multi-UAV enabled communication systems with difference consideration,” IEEE Access, vol. 6, pp. 55291–55301, Oct. 2018.   
+[6] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Commun. Mag., vol. 54, no. 5, pp. 36–42, May 2016.   
+[7] Y. Li and L. Cai, “UAV-assisted dynamic coverage in a heterogeneous cellular system,” IEEE Netw., vol. 31, no. 4, pp. 56–61, Aug. 2017.   
+[8] L. Gupta, R. Jain, and G. Vaszkun, “Survey of important issues in UAV communication networks,” IEEE Commun. Surv. Tut., vol. 18, no. 2, pp. 1123–1152, Nov. 2016.   
+[9] M. Haenggi, J. G. Andrews, F. Baccelli, O. Dousse, and M. Franceschetti, “Stochastic geometry and random graphs for the analysis and design of wireless networks,” IEEE J. Sel. Areas Commun., vol. 27, no. 7, pp. 1029–1046, Sep. 2009.   
+[10] A. K. Gupta, J. G. Andrews, and R. W. Heath, “On the feasibility of sharing spectrum licenses in mmWave cellular systems,” IEEE Trans. Commun., vol. 64, no. 9, pp. 3981–3995, Sep. 2016.   
+[11] J. G. Andrews, F. Baccelli, and R. K. Ganti, “A tractable approach to coverage and rate in cellular networks,” IEEE Trans. Commun., vol. 59, no. 11, pp. 3122–3134, Nov. 2011.   
+[12] C. Zhang and W. Zhang, “Spectrum sharing for drone networks,” IEEE J. Sel. Areas Commun., vol. 35, no. 1, pp. 136–144, Jan. 2017.   
+[13] Y. Liu, Z. Qin, Y. Cai, Y. Gao, G. Y. Li, and A. Nallanathan, “UAV communications based on non-orthogonal multiple access,” IEEE Wireless Commun., vol. 26, no. 1, pp. 52–57, Feb. 2019.   
+[14] Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief, “A survey on mobile edge computing: The communication perspective,” IEEE Commun. Surv. Tut., vol. 19, no. 4, pp. 2322–2358, Aug. 2017.   
+[15] M. Marjanovic, A. Antonic, and I. P. Zarko, “Edge computing architecture for mobile crowdsensing,” IEEE Access, vol. 6, pp. 10662–10674, Jan. 2018.   
+[16] Y. Gu, Z. Chang, M. Pan, L. Song, and Z. Han, “Joint radio and computational resource allocation in IoT fog computing,” IEEE Trans. Veh. Technol., vol. 67, no. 8, pp. 7475–7484, Aug. 2018.   
+[17] A. Mukherjee, S. Misra, V. S. P. Chandra, and M. S. Obaidat, “Resourceoptimized multiarmed bandit-based offload path selection in edge UAV swarms,” IEEE Internet Things J., vol. 6, no. 3, pp. 4889–4896, Jun. 2019.   
+[18] K. Zhang, S. Leng, Y. He, S. Maharjan, and Y. Zhang, “Mobile edge computing and networking for green and low-latency Internet of Things,” IEEE Commun. Mag., vol. 56, no. 5, pp. 39–45, May 2018.   
+[19] D. He, Y. Qiao, S. Chan, and N. Guizani, “Flight security and safety of drones in airborne fog computing systems,” IEEE Commun. Mag., vol. 56, no. 5, pp. 66–71, May 2018.
+
+[20] S. Ko, K. Han, and K. Huang, “Wireless networks for mobile edge computing: Spatial modeling and latency analysis,” IEEE Trans. Wireless Commun., vol. 17, no. 8, pp. 5225–5240, Aug. 2018.   
+[21] M. Messous, H. Sedjelmaci, N. Houari, and S. Senouci, “Computation offloading game for an UAV network in mobile edge computing,” in Proc. IEEE Int. Conf. Commun., Paris, May 2017, pp. 1–6.   
+[22] F. Zhou, Y. Wu, H. Sun, and Z. Chu, “UAV-enabled mobile edge computing: Offloading optimization and trajectory design,” in Proc. IEEE Int. Conf. Commun., Kansas City, MO, May 2018, pp. 1–6.   
+[23] F. Zhou, Y. Wu, R. Q. Hu, and Y. Qian, “Computation rate maximization in UAV-enabled wireless-powered mobile-edge computing systems,” IEEE J. Sel. Areas Commun., vol. 36, no. 9, pp. 1927–1941, Sep. 2018.   
+[24] Y. Dong, M. Z. Hassan, J. Cheng, M. J. Hossain, and V. C. M. Leung, “An edge computing empowered radio access network with UAV-mounted FSO fronthaul and backhaul: Key challenges and approaches,” IEEE Wireless Commun., vol. 25, no. 3, pp. 154–160, Jun. 2018.   
+[25] H. P. Keeler, N. Ross, and A. Xia, “When do wireless network signals appear Poisson?” Bernoulli, vol. 24, no. 3, pp. 1973–1994, 2018, doi: 10.3150/16-BEJ917.   
+[26] Q. Wang, H. Dai, O. Georgiou, Z. Shi, and W. Zhang, “Connectivity of underlay cognitive radio networks with directional antennas,” IEEE Trans. Veh. Technol., vol. 67, no. 8, pp. 7003–7017, Aug. 2018.   
+[27] ITU-R Study Groups Document 5C/495-E, “Proposed modification on working document towards a preliminary draft new recommendation ITU-R F.[Broadband haps characteristics],” May 2018. [Online]. Available: https://www.itu.int/md/R15-WP5C-C-0495/en   
+[28] Y. Huang, Y. Li, H. Ren, J. Lu, and W. Zhang, “Multi-panel MIMO in 5G,” IEEE Commun. Mag., vol. 56, no. 3, pp. 56–61, Mar. 2018.   
+[29] F. Jiang, and A. L. Swindlehurst, “Optimization of UAV heading for the ground-to-air uplink,” IEEE J. Sel. Areas Commun., vol. 30, no. 5, pp. 993–1005, Jun. 2012.   
+[30] S. Yin, Y. Zhao, and L. Li, “Resource allocation and basestation placement in cellular networks with wireless powered UAVs,” IEEE Trans. Veh. Technol., vol. 68, no. 1, pp. 1050–1055, Jan. 2019.   
+[31] M. G. Khoshkholgh, K. Navaie, H. Yanikomeroglu, V. C. M. Leung, and K. G. Shin, “How do non-ideal UAV antennas affect air-toground communications?,” in Proc. IEEE Int. Conf. Commun., Shanghai, May 2019, pp. 1–7.   
+[32] D. Bruneo, “A stochastic model to investigate data center performance and QoS in IaaS cloud computing systems,” IEEE Trans. Parallel Distrib. Syst., vol. 25, no. 3, pp. 560–569, Mar. 2014.   
+[33] M. Haenggi, Stochastic Geometry for Wireless Networks. New York, NY, USA: Cambridge Univ. Press, 2013.   
+[34] Y. Teng, Q. Zhang, M. Liu, and M. Song, “Successful transmission probability analysis for cache-enabled users in mobile networks,” in Proc. IEEE Int. Conf. Commun. Workshops, Paris, May 2017, pp. 1382–1387.   
+[35] Z. Ning, J. Huang, and X. Wang, “Vehicular fog computing: Enabling real-time traffic management for smart cities,” IEEE Wireless Commun., vol. 26, no. 1, pp. 87–93, Feb. 2019.   
+[36] Q. Ye, M. Al-Shalash, C. Caramanis, and J. G. Andrews, “A tractable model for optimizing device-to-device communications in downlink cellular networks,” in Proc. IEEE Int. Conf. Commun., Sydney, NSW, Jun. 2014, pp. 2039–2044.   
+[37] M. Fidler and A. Rizk, “A guide to the stochastic network calculus,” IEEE Commun. Surv. Tut., vol. 17, no. 1, pp. 92–105, Jan.–Mar. 2015.   
+[38] M. Mozaffari, W. Saad, M. Bennis, Y. Nam, and M. Debbah, “A tutorial on UAVs for wireless networks: Applications, challenges, and open problems,” IEEE Commun. Surv. Tut., vol. 21, no. 3, pp. 2334–2360, Jul.–Sep. 2019.   
+[39] DJI, “DJI MATRICE 100 User Manual,” V1.6, Mar. 2016. [Online]. Available: https://dl.djicdn.com/downloads/m100/M100\_User\_Manual\_ EN.pdf   
+[40] NI mmWave Hybrid Beamforming Testbed Reference Architecture. Mar. 2019. [Online]. Available: https://www.ni.com/zh-cn/innovations/ white-papers/18/ni-mmwave-hybrid-beamforming-testbed-referencearchitecture.html   
+[41] 3GPP, “Technical Specification Group Radio Access Network; NR and NG-RAN Overall Description; Stage 2,” TS 38.300 (V15.2.0), Jun. 2018.   
+[42] J. Danielsson, M. Jagemar, M. Behnam, M. Sjodin, and T. Seceleanu, “Measurement-based evaluation of data-parallelism for openCV featuredetection algorithms,” in Proc. IEEE 42nd Annu. Comput. Softw. Appl. Conf., Tokyo, Jul. 2018, pp. 701–710.
+
+![](images/8f74d464e9d50c07fdd0be049a6bf78f9988c06fe07ebc76a694c4becaae0189.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a collared shirt (no text or symbols visible)
+</details>
+
+Qixun Zhang (Member, IEEE) received the B.S. and Ph.D. degrees from the Beijing University of Posts and Telecommunications (BUPT), Beijing, China, in 2006 and 2011, respectively. He is currently a Professor with the School of Information and Communication Engineering, BUPT, as well as in the Key Laboratory of Universal Wireless Communications, Ministry of Education, Beijing, China. From March to June 2016, he was a Visiting Scholar with the University of Maryland, College Park, MD, USA. From 2018 to 2019, he was a Visiting Scholar with
+
+the Electrical and Computer Engineering Department, University of Houston, Houston, TX, USA. His research interests include wireless resource allocation and management, cognitive radio, heterogeneous networks convergence, game theory, mmWave communication and networking, autonomous driving vehicle communication, and unmanned aerial vehicle communication. He is active in the ITU-R WP5A/5 C/5D, IEEE 1900, CCSA, and IMT-2020(5G) standards.
+
+![](images/e1c96af858929678b46178246cee47f91872bf63687d87f0707402aa9f9fbb16.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man in formal attire (no text or symbols visible)
+</details>
+
+Jingran Chen received the B.S. degree from the Beijing University of Posts and Telecommunications (BUPT), Beijing, China, in 2017. He is currently working toward the master’s degree with the School of Information and Communication Engineering in BUPT, China. His research interests include unmanned aerial vehicles communication, vehicular networks, and mobile edge computing.
+
+![](images/0b5298a3cf8a8ceccbaca7bb2cff3d39a52a3e3957c409aa949e5760959fd937.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a young man in formal attire (no text or symbols visible)
+</details>
+
+Lei Ji received the Ph.D. degree from the School of Information and Communication Engineering, Beijing University of Posts and Telecommunications (BUPT), Beijing, China, in 2019. His research interests include heterogeneous wireless networks, resource scheduling and management, and unmanned aerial vehicles, and swarm resource management.
+
+![](images/214bfd917e6eb5cb2c09c088c94c8c67c6fdfd89a2fa496bd30a939bd88e852b.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman with short dark hair (no text or symbols visible)
+</details>
+
+Zhiyong Feng (Senior Member, IEEE) received the B.S., M.S., and Ph.D. degrees from the Beijing University of Posts and Telecommunications (BUPT), Bejing, China. She is currently a Professor with the School of Information and Communication Engineering, BUPT, and the Director of the Key Laboratory of Universal Wireless Communications, Ministry of Education, Beijing, China. She is active in standards development, such as ITU-R WP5A/5 C/5D, IEEE 1900, ETSI, and CCSA. Her research interests include wireless network architecture design and radio
+
+resource management in 5th-generation mobile networks (5G), spectrum sensing and dynamic spectrum management in cognitive wireless networks, universal signal detection and identification, and network information theory.
+
+![](images/25c7b62a7935f4487d0caaef08fc20f3987d82e43904fe8c1b9e149b0e257e6b.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man in a dark turtleneck (no text or symbols visible)
+</details>
+
+Zhu Han (Fellow, IEEE) received the B.S. degree in electronic engineering from Tsinghua University, Beijing, China, in 1997, and the M.S. and Ph.D. degrees in electrical and computer engineering from the University of Maryland, College Park, MD, USA, in 1999 and 2003, respectively. From 2000 to 2002, he was an R&D Engineer with JDSU, Germantown, MD, USA. From 2003 to 2006, he was a Research Associate with the University of Maryland. From 2006 to 2008, he was an Assistant Professor with Boise State University, Boise, ID, USA. He is currently a John and Rebecca Moores Professor with the Electrical and Computer Engineering Department as well as with the Computer Science Department, University of Houston, Houston, TX, USA. He is also a Chair Professor with the National Chiao Tung University, Hsinchu, Taiwan. His research interests include wireless resource allocation and management, wireless communications and networking, game theory, big data analysis, security, and smart grid. Since 2017, he has been 1% highly cited Researcher according to Web of Science. He was a recipient of an NSF Career Award in 2010, the Fred W. Ellersick Prize of the IEEE Communication Society in 2011, the EURASIP Best Paper Award for the Journal on Advances in Signal Processing in 2015, IEEE Leonard G. Abraham Prize in the field of Communications Systems (Best Paper Award in IEEE JSAC) in 2016, and several best paper awards in IEEE conferences. He was an IEEE Communications Society Distinguished Lecturer from 2015 to 2018, and has been an AAAS fellow and ACM distinguished member, since 2019.
+
+![](images/e0a9a29246e099d96785f558b6c852fc68930a79fdfe812781728f4ef43af9c3.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man wearing glasses and a suit (no text or symbols visible)
+</details>
+
+Zhiyong Chen (Member, IEEE) received the Ph.D. degree from the School of Information and Communication Engineering, Beijing University of Posts and Telecommunications (BUPT), Beijing, China, in 2011. From 2009 to 2011, he was a Visiting Ph.D. Student at the Department of Electronic Engineering, University of Washington, Seattle, USA. He is currently an Associate Professor with the Cooperative Medianet Innovation Center, Shanghai Jiao Tong University (SJTU), Shanghai, China. His research interests include mobile communications-computingcaching (3 C) networks, mobile VR/AR delivery and mobile AI systems. He currently serves an Associate Editor of IEEE ACCESS, and served as the Student Volunteer Chair for the IEEE ICC 2019, the Publicity Chair for the IEEE/CIC ICCC 2014 and a TPC member for major international conferences. Dr. Chen is the recipient of the IEEE Asia-Pacific Outstanding Paper Award in 2019.

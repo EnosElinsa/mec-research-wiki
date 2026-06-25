@@ -1,0 +1,836 @@
+# A Reinforcement Learning-Based Stochastic Game for Energy-Efficient UAV Swarm-Assisted MEC With Dynamic Clustering and Scheduling
+
+Jialiuyuan Li , Changyan Yi , Member, IEEE, Jiayuan Chen , You Shi , Tong Zhang , Member, IEEE, Xiaolong Li, Ran Wang , Member, IEEE, and Kun Zhu , Member, IEEE
+
+Abstract—In this paper, we study the energy-efficient unmanned aerial vehicle (UAV) swarm assisted mobile edge computing (MEC) with dynamic clustering and scheduling. In the considered system model, UAVs are divided into multiple swarms, with each swarm consisting of a leader UAV and several follower UAVs. These UAVs serve as mobile edge servers, providing computing services to their covered ground end-users. Unlike existing works, we allow UAVs to dynamically cluster into different swarms, in other words, each follower UAV can change its leader based on the time-varying spatial positions, updated application placement, etc. in a dynamic manner. With the objective of maximizing the long-term energy efficiency of the UAV swarm assisted MEC system, a joint optimization problem of UAV swarm dynamic clustering and scheduling is formulated. Considering the inherent cooperation and competition among intelligent UAVs, we further reformulate this problem as a combination of a series of strongly interconnected multi-agent stochastic games, and theoretically prove the existence of the corresponding Nash Equilibrium (NE). Then, we propose a novel reinforcement learning based UAV swarm dynamic coordination (RLDC) algorithm for obtaining such an equilibrium. Furthermore, the convergence and complexity of the RLDC algorithm are analyzed. Simulations are performed to evaluate the performance of RLDC and illustrate its superiority compared to existing approaches.
+
+Manuscript received 26 January 2024; revised 10 April 2024 and 5 June 2024; accepted 3 July 2024. Date of publication 5 July 2024; date of current version 17 February 2025. This work was supported in part by the Major Program Project of Xiangjiang Laboratory under Grant XJ2022001 and Grant XJ2023001; in part by the IoT Intelligent Sensing Support Project for Science and Technology Innovation Teams in Hunan Province, Hunan Provincial Natural Science Foundation of China under Grant 2023JJ40237; in part by the State Key Laboratory of Massive Personalized Customization System and Technology under Grant H&C-MPC-2023-04- 01; in part by the National Natural Science Foundation of China (NSFC) under Grant 62176122, Grant 62132007, and Grant 62171218; in part by the Postgraduate Research and Practice Innovation Program of NUAA under Grant xcxjh20231601; and in part by the Postgraduate Research and Practice Innovation Program of Jiangsu Province under Grant KYCX220372. This article was presented in part at the IEEE WCNC 2024, Dubai, UAE [DOI: 10.1109/WCNC57260.2024.10570678]. The editor coordinating the review of this article was X. Ge. (Corresponding authors: Changyan Yi; Xiaolong Li.)
+
+Jialiuyuan Li, Changyan Yi, Jiayuan Chen, You Shi, Tong Zhang, Ran Wang, and Kun Zhu are with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing 211106, Jiangsu, China (e-mail: jialiuyuan.li@nuaa.edu.cn; changyan.yi@nuaa.edu.cn; jiayuan.chen@nuaa.edu.cn; shyou@nuaa.edu.cn; zhangt@nuaa.edu.cn; wangran@nuaa.edu.cn; zhukun@nuaa.edu.cn).
+
+Xiaolong Li is with the Hunan Provincial General University Key Laboratory of IoT Intelligent Sensing and Distributed Collaborative Optimization, Hunan University of Technology and Business, Changsha 410205, China (e-mail: lxl@hutb.edu.cn).
+
+Digital Object Identifier 10.1109/TGCN.2024.3424449
+
+Index Terms—UAV swarm, MEC, long-term energy efficiency, stochastic game, reinforcement learning.
+
+# I. INTRODUCTION
+
+R ECENTLY, the concept of unmanned aerialvehicle (UAV) assisted mobile edge computing (MEC) [2], [3], [4] has attracted significant attention due to its high mobility, flexible coverage and rapid deployment in providing fast-responsive supplementary computing services to end-users (e.g., IoT devices). Specifically, in a UAV swarm, a leader UAV possesses the capability to dynamically guide their follower UAVs to approach end-users. Furthermore, by forming into swarms (each of which consists of a leader and multiple followers [5]), UAV swarm assisted MEC can further improve the collaboration among UAVs for enhancing service quality, and thus has become a popular trend for terrain limited and emergency applications, such as wireless inland ship [2], [6] and maritime ship [7].
+
+Although UAV swarm assisted MEC is envisioned as a lightweight and highly efficient paradigm, it faces several inherent restrictions. For instance, the computing workload among different swarms may be severely unbalanced with fixed clustering [1]. Furthermore, the restricted energy capacities of UAVs hinder the practical implementation of this paradigm for providing the long-term MEC services. Moreover, the constrained storage capacities of UAVs hinder their capability to accommodate all applications to meet the varied task requirements. Recent research efforts in this area include cooperative trajectory planning [8], [9] and collaborative task delegation [10], [11], [12], etc. Nevertheless, there are still several crucial challenges, especially how UAV swarms can cater to dynamic service requirements of IoT devices, and how UAV swarms can be dynamically clustered based on their spatial positions and updated application placement, which are imperative but have not yet been well investigated and are exceedingly difficult due to the following factors. i) Since the MEC service demands of IoT devices vary dynamically, UAV swarms with fixed clustering makes it challenging to balance the computing workload among different swarms. This prompts us to dynamically schedule the clustering of UAVs to collaboratively provide MEC services for IoT devices with balanced workload. ii) UAVs (especially the leaders) are battery-constrained and have to fly to the depot for energy replenishment if necessary, meaning that the leader UAV interrupts computing services, reducing system performance. This motivates us to develop a more efficient approach to dispatch UAVs to return to the depot for energy replenishment. iii) The limited storage capacities of UAVs (both leaders and followers) impede their abilities to store all applications to fulfill diverse task requirements of IoT devices, which inspires us to update application placement of UAVs and enable UAVs to help with each other through task delegations (particularly within the swarm).
+
+In this paper, we investigate the joint optimization of UAV swarm dynamic clustering and scheduling, considering energy replenishment, application placement, trajectory planning and task delegation for UAV swarm assisted MEC. The objective is to optimize the long-term energy efficiency of all UAVs, defined as the number of tasks processed by all UAVs divided by their total energy consumption when offering MEC service. In the considered system, leader UAVs lead the swarm in moving to other areas, replenishing energy and updating their application through wired connections. Furthermore, follower UAVs dynamically change swarms and decide whether to process tasks locally or delegate tasks to their followed leader UAV. Addressing the optimization problem is challenging due to several reasons. First, while UAVs are intelligent and capable of making autonomous decisions based on the state information, the system objective of improving total energy efficiency necessitates cooperative strategies among all UAVs, while enabling UAVs to autonomously make individual decisions may potentially result in competitions and suboptimal outcomes. For instance, leader UAVs might prioritize their own computation offloading requests and postpone energy replenishment, disregarding the needs of other UAVs. Moreover, they may focus on placing popular applications without considering the quality of service (QoS) requirements of IoT devices, thereby degrading system performance. Additionally, selfish movement decisions of leader UAVs towards regions with intensive computation requirements can result in collisions among UAV swarms. Follower UAVs might prefer joining UAV swarms that serve more IoT devices, leading to a higher number of follower UAVs occupying a leader UAV’s computing resources. Second, we also consider that UAVs do not have access to future environment information.
+
+To tackle these challenges, we reformulate the joint optimization problem as a series of complex multi-agent stochastic games: energy replenishment stochastic game (ERSG), application planning stochastic game (APSG), trajectory planning stochastic game (TPSG), dynamic clustering stochastic game (DCSG), and task delegation stochastic game (TDSG). This formulation allows us to comprehensively describe strategic interactions among UAVs and facilitates a refined problem structure for finding solutions. However, due to the tight coupling among these multi-agent stochastic games, solving them directly remains difficult. To obtain the corresponding equilibrium for these interconnected multiagent stochastic games, we design a novel reinforcement learning (RL) based UAV swarm dynamic coordination (RLDC) algorithm, with the objective of generating the long-term optimal energy efficient decisions for providing quality services for IoT devices. For clarity, the main contributions of this paper are summarized in the following.
+
+• A joint optimization problem of dynamic clustering and scheduling in UAV swarm assisted MEC is formulated, with the objective of maximizing the long-term energy efficiency.   
+• Through the observation of cooperation and competition among UAVs as well as the environmental uncertainty, we reformulate the optimization problem as a series of interconnected multi-agent stochastic games, called ERSG, APSG, TPSG, DCSG and TDSG.   
+• To efficiently obtain the corresponding equilibrium for these interconnected games, we propose a novel algorithm, called RLDC. Additionally, we theoretically prove it existing Nash Equilibrium (NE), and analyze the convergence and complexity of the RLDC algorithm.   
+• Extensive simulations are performed to demonstrate the superiority of the RLDC algorithm over counterparts. The simulation results validate the effectiveness and efficiency of the RLDC algorithm in achieving optimized solutions for the UAV swarm assisted MEC system.
+
+The rest of this paper is organized as follows: Section II reviews the related work and highlights the novelties of this paper. Section III presents the system model and problem formulation of the considered UAV swarm assisted MEC. In Section IV, a problem reformulation based on multi-agent stochastic games is developed. Section V proposes the RLDC algorithm for optimizing dynamic UAV swarm clustering and scheduling. Simulation results are presented in Section VI, followed by the conclusion in Section VII.
+
+# II. RELATED WORK
+
+In recent years, there has been a significant increase in attention towards adopting UAV swarms as edge servers for IoT devices in MEC systems, which can be attributed to the rapid development of UAV technology. For instance, Wang et al. in [13] proposed an optimal collaborative computing offloading method to solve the collaborative task offloading problem in edge computing based on UAV swarms, aiming to minimize the overall task processing delay. Huang et al. in [14] proposed a grouping and role partitioning algorithm to solve the high latency that can result from multi-hop transmissions between UAVs. Seid et al. in [15] proposed a multi-agent reinforcement learning based drone cluster algorithm to provide computing task offloading and resource allocation services for IoT devices to minimize overall network computing costs while ensuring quality of service (QoS) for IoT devices or UEs in IoT networks. Liao et al. in [2] proposed a heuristic algorithm to solve the problem of minimizing UAV swarm energy consumption with the constraints of UAV flight speed and swarm stability in an iterative manner. Fragkos et al. in [16] designed an autonomous MEC server selection scheme for UAV data offloading based on stochastic learning automata theory and developed non-cooperative games to determine which UAV data to offload to selected MEC servers. However, in the majority of these studies, dynamic clustering in UAV swarm assisted MEC was neglected.
+
+TABLE I A TABLE COMPARING OUR WORK WITH THE EXISTING WORKS 
+
+<table><tr><td>Reference</td><td>Dynamic clustering</td><td>Energy replenishment</td><td>Application placement</td><td>Trajectory planning</td><td>Task delegation</td></tr><tr><td>[13]</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td><td>√</td></tr><tr><td>[14]</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td></tr><tr><td>[15]</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td><td>√</td></tr><tr><td>[2]</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td><td>√</td></tr><tr><td>[16]</td><td>✕</td><td>✕</td><td>✕</td><td>√</td><td>√</td></tr><tr><td>[17]</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td><td>√</td></tr><tr><td>[18]</td><td>✕</td><td>√</td><td>✕</td><td>✕</td><td>√</td></tr><tr><td>[10]</td><td>✕</td><td>✕</td><td>✕</td><td>√</td><td>✕</td></tr><tr><td>[4]</td><td>✕</td><td>√</td><td>√</td><td>√</td><td>✕</td></tr><tr><td>Our work</td><td>√</td><td>√</td><td>√</td><td>√</td><td>√</td></tr></table>
+
+To enhance the energy efficiency of UAV swarm assisted MEC, energy replenishment, trajectory planning, task delegation, and application placement have been discussed in existing work. For energy replenishment, Liang et al. in [17] applied magnetic coupled resonant wireless power transmission technology, which makes mobile users collect abundant energy from wireless charging stations in a short period of time. In terms of trajectory planning, Mou et al. in [18] designed a UAV swarm trajectory algorithm that performs specific coverage tasks within patches to solve the coverage problem of three-dimensional irregular terrain. For task delegation, Li et al. in [10] proposed a layered network architecture based on UAV swarms to jointly delegate sensing task and computing to improve computing resource utilization. For application placement, to the best of our knowledge, only a few existing research focus on application placement [4], [19]. Moreover, the energy efficiency optimization of UAV swarm assisted MEC involving multiple decision variables can be formulated as a joint optimization problem. Nevertheless, the joint optimization of dynamic clustering and scheduling has not been previously investigated.
+
+In summary, unlike prior existing work, this paper specifically explores the following issues related to UAV swarm assisted MEC systems. First, a joint optimization problem of dynamic clustering and scheduling in UAV swarm assisted MEC is formulated. Second, we reformulate the optimization problem as a series of interconnected multi-agent stochastic games, and subsequently propose a novel algorithm to determine the corresponding equilibrium. To highlight the novelties of our work, we summarize the differences between our work and existing works regarding UAV swarm-assisted MEC in Table I.
+
+# III. SYSTEM MODEL AND PROBLEM FORMULATION
+
+# A. Overview
+
+Consider a deployment scenario of UAV swarm-assisted MEC in a target region, as shown in Fig. 1. The system consists of a group of leader UAVs, denoted as M with $| { \mathcal { M } } | = M$ , a group of follower UAVs, denoted as $\mathcal { N }$ with $| { \mathcal { N } } | = N$ , and a set of IoT devices scattered randomly on the ground, denoted as K with $| { \boldsymbol { \kappa } } | = K$ . At the edge of the target region, a depot is deployed to serve leader UAVs with energy replenishment and application placement update via wired connections. We investigate a time-slotted operation framework, which is characterized by $t \in \{ 1 , 2 , \ldots , T \}$ . The target region is uniformly divided into large grids with side length l to limit the activities scope of each swarm. Meanwhile, the large grids are further uniformly partitioned into small grids with side length q to specify the activities of follower UAVs. Similar to [20], the downlink transmission range of each follower UAV is set as ${ \sqrt { 2 } } q / 2$ , such that it can cover a small grid for computation outcome feedback. Additionally, we denote the set of IoT devices served by follower UAV $n \in \mathcal N$ as ${ \mathcal { Z } } _ { n }$ . Since we consider that each UAV swarm shares a frequency band B, IoT devices may introduce interference to other UAVs within the swarm. All important notations are listed in Table II.
+
+![](images/f352c385fce652d5ccbfee713f6342e6d89f6bf5318897392a1e6aad3fa9ac64.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["User"] --> B["Task offloading"]
+    A --> C["Task delegation"]
+    A --> D["Follow another leader UAV"]
+    A --> E["Interference"]
+    B --> F["Leader UAV"]
+    C --> G["Follower UAV"]
+    D --> H["Applications"]
+    E --> I["Tasks"]
+    F --> J["UAV energy"]
+    G --> K["IoT device"]
+    H --> L["Depot"]
+    I --> M["Coverage of follower UAV"]
+    style A fill:#f9f,stroke:#333
+    style B fill:#ccf,stroke:#333
+    style C fill:#cfc,stroke:#333
+    style D fill:#fcc,stroke:#333
+    style E fill:#cff,stroke:#333
+    style F fill:#ffc,stroke:#333
+    style G fill:#cfc,stroke:#333
+    style H fill:#fcc,stroke:#333
+    style I fill:#cfc,stroke:#333
+    style J fill:#ffc,stroke:#333
+    style K fill:#cfc,stroke:#333
+    style L fill:#fcc,stroke:#333
+    style M fill:#cfc,stroke:#333
+```
+</details>
+
+Fig. 1. An illustration of the considered UAV swarm assisted MEC system.
+
+To clearly describe the process of UAV swarms providing MEC service over the target region, we illustrate the time slot structure, as shown in Fig. 2. At the beginning of each time slot t, each leader UAV determines whether to return to the depot for replenishing energy and updating applications. If a leader UAV chooses not to return to the depot, it will autonomously lead its UAV swarm to move to another adjacent large grid with a constant velocity and a direction (forward, backward, left, or right), and this period of time is denoted as $T ^ { S m o v }$ . Then, the leader UAV hovers over the center of the large grid with the time $T ^ { L h o v }$ . During the period of time
+
+TABLE II IMPORTANT NOTATIONS IN THIS PAPER 
+
+<table><tr><td>Symbol</td><td>Meaning</td></tr><tr><td> $\mathcal{M}$ </td><td>Set of leader UAVs</td></tr><tr><td> $\mathcal{N}$ </td><td>Set of follower UAVs</td></tr><tr><td> $\mathcal{K}$ </td><td>Set of IoT devices</td></tr><tr><td> $\mathcal{L}$ </td><td>Positions set of leader UAVs</td></tr><tr><td> $\mathcal{F}$ </td><td>Positions set of follower UAVs</td></tr><tr><td> $\mathcal{I}$ </td><td>Positions set of IoT devices</td></tr><tr><td> $T$ </td><td>The number of time slot</td></tr><tr><td> $l$ </td><td>Length of the large grid</td></tr><tr><td> $q$ </td><td>Length of the small grid</td></tr><tr><td> $V$ </td><td>UAV Velocity</td></tr><tr><td> $C$ </td><td>The number of the task types</td></tr><tr><td> $\mathcal{Z}_{n}$ </td><td>Set of IoT devices served by follower UAV  $n$ </td></tr><tr><td> $B$ </td><td>Channel bandwidth</td></tr><tr><td> $\lambda$ </td><td>Path loss</td></tr><tr><td> $\varphi$ </td><td>LoS probability</td></tr><tr><td> $\gamma$ </td><td>SINR</td></tr><tr><td> $\mu$ </td><td>Instantaneous achievable rate</td></tr><tr><td> $\varpi$ </td><td>Power spectral density of noise</td></tr><tr><td> $\xi$ </td><td>Effective capacitance coefficient</td></tr><tr><td> $\omega^{L}$ </td><td>Applications placement of leader UAVs</td></tr><tr><td> $\omega^{F}$ </td><td>Applications placement of follower UAVs</td></tr><tr><td> $\varepsilon$ </td><td>Set of leader UAVs returning to the depot</td></tr><tr><td> $\delta$ </td><td>Set of follower UAVs following which leader UAVs</td></tr><tr><td> $\phi$ </td><td>Set of whether delegating tasks to leader UAVs</td></tr></table>
+
+![](images/75d765bb9067b4e026186212b96fccd0cd7a9d8305a48ac846a81bccf0b277e0.jpg)
+
+<details>
+<summary>bar_stacked</summary>
+
+| Time slot | UAV swarm | Follower UAV |
+| :--- | :--- | :--- |
+| Slot 1 | Moving T^Smov | Clustering T₁^clus |
+| Slot 1 | Moving T^Smov | Clustering T₂^clus |
+| Slot 1 | Hovering T^Lhov | Hovering T₁^Fhov |
+| ... | ... | ... |
+</details>
+
+Fig. 2. Time slot structure of UAV swarms providing MEC service over the target region.
+
+$T ^ { L h o v }$ , each follower UAV independently determines which leader UAV to follow for clustering with the time $T ^ { c l u s }$ , and hover over the center of the small grid for processing tasks and task delegation with the time $T ^ { F h o v }$ . Additionally, since the size of the results is significantly small compared to the offloaded task, the delay and energy consumption associated with delegating results back from follower UAVs to IoT devices are omitted in this paper. Note that if the follower UAV cannot process the tasks received from IoT devices, it will delegate the task to their followed leader UAV for processing. Moreover, to improve the energy efficiency of follower UAVs, leader UAVs provide energy replenishment to the follower UAVs in a swarm through wireless power transfer technology [21]. In contrast, if the leader UAV chooses to return to the depot, it will replenish its energy and update its application placement.
+
+# B. Task Offloading and Delegation Model
+
+In this paper, let $\begin{array} { r c l } { \pmb { \mathcal { L } } ( t ) } & { = } & { \{ \mathcal { L } _ { 1 } ( t ) , \mathcal { L } _ { 2 } ( t ) , \ldots , \mathcal { L } _ { M } ( t ) \} } \end{array}$ , $\begin{array} { r l r } { \pmb { \mathcal { F } } ( t ) } & { { } = } & { \{ \mathcal { F } _ { 1 } ( t ) , \mathcal { F } _ { 2 } ( t ) , \ldots , \mathcal { F } _ { N } ( t ) \} \quad \mathrm { a n d } \quad \pmb { \mathcal { Z } } ( t ) \quad = } \end{array}$ $\{ \mathcal { T } _ { 1 } ( t ) , \mathcal { T } _ { 2 } ( t ) , \ldots , \mathcal { T } _ { K } ( t ) \}$ denote the set of leader UAVs’ positions, the set of follower UAV’s positions and set of IoT devices’ positions, respectively. Therein, $\begin{array} { r l } { \mathcal { L } _ { m } ( t ) } & { { } = } \end{array}$ $\begin{array} { r l r } { ( x _ { m } ^ { L } ( t ) , y _ { m } ^ { L } ( t ) ) , \mathcal { F } _ { n } ( t ) } & { { } = } & { ( x _ { n } ^ { F } ( t ) , y _ { n } ^ { F } ( t ) ) , \mathcal { T } _ { k } ( i ) \quad = } \end{array}$ $( x _ { k } ^ { I } ( t ) , y _ { k } ^ { I } ( t ) )$ represent their horizontal coordinates at time slot t, respectively. Thus, the distance between follower UAV n and IoT device $k ,$ as well as the distance between leader UAV m and follower UAV n at time slot t can be mathematically expressed as $\begin{array} { r l } { d _ { n , k } ( t ) } & { { } = } \end{array}$ $\sqrt { ( x _ { n } ^ { F } ( t ) - x _ { k } ^ { I } ( t ) ) ^ { 2 } + ( y _ { n } ^ { F } ( t ) - y _ { k } ^ { I } ( t ) ) ^ { 2 } + H _ { F } ^ { 2 } }$ and $d _ { m , n } ( t )$ $\begin{array} { r l r } { } & { { } = } & { \sqrt { ( x _ { m } ^ { L } ( t ) - x _ { n } ^ { F } ( t ) ) ^ { 2 } + ( y _ { m } ^ { L } ( t ) - y _ { n } ^ { F } ( t ) ) ^ { 2 } + ( H _ { L } - H _ { F } ) ^ { 2 } } . } \end{array}$ , where $H _ { L }$ and $H _ { F }$ denote the fixed flight altitudes of leader UAVs and follower UAVs, respectively.
+
+Following the literature [9], the line-of-sight (LoS) probability between follower UAV n and IoT device k at time slot t can be expressed as $\varphi _ { n , k } ( t ) = a \cdot e x p ( - b ( \arctan ( H _ { F } / d _ { n , k } ( t ) ) -$ $a ) )$ , where a and b are constant values depending on the environment. Based on this, their path loss is given by $\begin{array} { r c l } { { \lambda _ { n , k } ( t ) ~ = ~ 2 0 \log \sqrt { H _ { F } ^ { 2 } + d _ { n , k } ( t ) ^ { 2 } + \varphi _ { n , k } ( t ) ( \eta _ { L o S } ~ - } } } \end{array}$ $\eta _ { N L o S } ) + 2 0 \log ( { ( 4 \pi f ^ { c } ) } / { c ^ { l } } ) + \eta _ { N L o S }$ , where $f ^ { c }$ signifies the carrier frequency, and $c ^ { l }$ signifies the speed of light. $\eta _ { L o S }$ and $\eta _ { N L o S }$ denote the losses corresponding to LoS and non-LoS, respectively. Following the literature [22], the path loss between leader UAV m and follower UAV n at time slot t can be expressed as $\lambda _ { m , n } ( t ) = 3 2 . 4 5 + 2 0 \log f ^ { c } + 2 0 \log d _ { m , n } ( t )$ .
+
+Given the reuse of a common frequency band across all links in a UAV swarm, the signal-to-interference-plus-noise ratio (SINR) at follower UAV n for the uplink communication of IoT device $k ,$ and at leader UAV m for the uplink communication of follower UAV n during time slot $t ,$ can be expressed as $\begin{array} { r } { \gamma _ { n , k } ( t ) = p _ { k } ^ { I } \mathbb { 1 } 0 ^ { - \lambda _ { n , k } ( t ) / 1 0 } / ( \stackrel { \smile } { \sum } \iota _ { \in \mathcal { G } _ { n } \setminus k } p _ { i } ^ { I } \mathbb { 1 } 0 ^ { - \lambda _ { n , k } ( t ) / 1 0 } + \varpi ) } \end{array}$ and $\gamma _ { m , n } ( t ) = p _ { n } ^ { F } 1 0 ^ { - \lambda _ { m , n } ( t ) / 1 0 } / \varpi$ , respectively. $p _ { k } ^ { I }$ and $p _ { n } ^ { F }$ denote the transmission power of IoT device k and follower UAV n, respectively.  denotes the power spectral density of noise. Besides, it is assumed that follower UAV n can only receive one task offloaded from IoT device $k \in \mathcal { Z } _ { n }$ at time slot t. Hence, the instantaneous achievable rates of IoT device k offloading tasks to follower UAV n, and follower UAV n delegating tasks to leader UAV m at time slot t can be written as $\begin{array} { r } { \mu _ { n , k } ^ { \bf { \bar { F } } } ( t ) = B \log _ { 2 } ( 1 + \gamma _ { n , k } ( t ) ) } \end{array}$ and $\mu _ { m , n } ^ { L } ( t ) = B \log _ { 2 } ( 1 +$ $\gamma _ { m , n } ( t ) )$ , respectively. Let $\mathcal { C } = \{ 1 , 2 , \ldots , C \}$ denote the set of task types. Therefore, the time of IoT device k offloading its task whose type is $c \in { \mathcal { C } }$ to follower UAV n, and the time of follower UAV n delegating its task whose type is c to leader UAV m at time slot t can be expressed as:
+
+$$
+T _ {n, k, c} ^ {\text { off }} (t) = v _ {k, c} (t) \kappa_ {k, c} / \mu_ {n, k} ^ {F} (t) \tag {1}
+$$
+
+and
+
+$$
+T _ {m, n, c} ^ {\text {dele}} (t) = \left(1 - \varepsilon_ {m} (t)\right) \delta_ {m, n} (t) \phi_ {m, n, c} (t) \kappa_ {k, c} / \mu_ {m, n} ^ {L} (t), \tag {2}
+$$
+
+respectively, where $\kappa _ { k , c }$ indicates the size of the task whose type is c offloaded from IoT device k. $v _ { k , c } ( t ) \in [ 0 , 1 ]$ , and $\upsilon _ { k , c } ( t ) = 1$ means that IoT device k requests its task whose type is c at time slot t, otherwise $\boldsymbol { v } _ { k , c } ( t ) = 0$ . Note that we consider each IoT device generating only one task request at time slot t in this paper. Besides, $\varepsilon _ { m } ( t ) \ \in \ [ 0 , 1 ] .$ , and $\varepsilon _ { m } ( t ) = 1$ means that leader UAV m returns to the depot at time slot t, otherwise $\varepsilon _ { m } ( t ) = 0$ . Meanwhile, $\delta _ { m , n } ( t ) \in [ 0 , 1 ]$ , and $\delta _ { m , n } ( t ) = 1$ means that follower UAV n follows the leader
+
+UAV m at time slot t, otherwise $\delta _ { m , n } ( t ) = 0 $ . Additionally, $\phi _ { m , n , c } ( t ) \in [ 0 , 1 ]$ , and $\phi _ { m , n , c } ( t ) = 1$ means that follower UAV n delegates its task whose type is c to the leader UAV m, otherwise $\phi _ { m , n , c } ( t ) = 0$ .
+
+# C. UAV Computation Model
+
+As shown in Figure 2, in this paper, we consider $T _ { n . k . c } ^ { o f f } ( t ) ~ < ~ T _ { n } ^ { F h o v } \bar { ( t ) }$ , indicating that $\bar { T } _ { n } ^ { F h o v } ( t )$ is sufficiently long for follower UAV n to receive each task offloaded by IoT device $k \in \mathcal { Z } _ { n }$ at time slot t. Besides, the application c placed in follower UAV n and leader UAV m can be defined as $\omega _ { n , c } ^ { F } ( t ) ~ \in ~ \{ 0 , 1 \}$ and $\omega _ { m , c } ^ { L } ( t ) ~ \in ~ \{ 0 , 1 \}$ , respectively. $\omega _ { n , c } ^ { F } ( t ) = 1$ ,means that follower UAV n places the application which can process task type $^ { c , }$ otherwise $\omega _ { n , c } ^ { F } ( t ) ~ = ~ 0$ . And the definition of $\omega _ { m , c } ^ { L } ( t )$ is similar to that of $\omega _ { n , c } ^ { F } ( t )$ . Consequently, the size of tasks processed by follower UAV n and leader UAV m can be expressed as:
+
+$$
+\begin{array}{l} D _ {n} ^ {F} (t) = \min \Bigg \{\sum_ {k \in \mathcal {G} _ {n}} \sum_ {m = 1} ^ {M} \sum_ {c = 1} ^ {C} \bigl (1 - \phi_ {m, n, c} (t) \bigr) v _ {k, c} (t) \\ \left. \omega_ {n, c} ^ {F} (t) \kappa_ {k, c}, f _ {n} ^ {F} \left(T _ {n} ^ {\text { Fhov }} (t) - \min \left\{\boldsymbol {T} _ {n} ^ {\text { off }} (t) \right\}\right) \right\} \tag {3} \\ \end{array}
+$$
+
+and
+
+$$
+\begin{array}{l} D _ {m} ^ {L} (t) = \min \left\{\sum_ {n = 1} ^ {N} \sum_ {c = 1} ^ {C} \delta_ {m, n} (t) \phi_ {m, n, c} (t) v _ {k, c} (t) \right. \\ \left. \omega_ {m, c} ^ {L} (t) \kappa_ {k, c}, f _ {m} ^ {L} \left(T _ {n} ^ {\text { Fhow }} (t) - \min \left\{\boldsymbol {T} _ {m} ^ {\text { dele }} (t) \right\}\right) \right\}, \tag {4} \\ \end{array}
+$$
+
+respectively, where T offn (t) = {T offn,1,1 $T _ { N , K , C } ^ { o f f } ( t ) \}$ and $\pmb { T } _ { m } ^ { d e l e } ( t ) = \{ T _ { m , 1 , 1 } ^ { d e l e } ( t ) , \ldots , T _ { m , n , c } ^ { d e l e } ( t ) , \ldots ,$ $\pmb { T } _ { n } ^ { o f f } ( t ) = \{ T _ { n , 1 , 1 } ^ { o f f } ( t ) , \allowbreak , \allowbreak \dots , T _ { n , k , c } ^ { o f f } ( t ) , \allowbreak , \allowbreak \dots \}$ T off n,k ,c (t ), . . . , $T _ { M , N , C } ^ { d e l e } ( t ) \} . ~ f _ { n } ^ { F }$ and $f _ { m } ^ { L }$ m,1,1indicate the computing capacity of follower UAV n and leader UAV m (the CPU cycle rate). $T _ { n } ^ { F h o v } ( t ) - \operatorname* { m i n } \{ \pmb { T } _ { n } ^ { o f f } ( t ) \}$ and $T _ { n } ^ { F h o v } ( t ) - \operatorname* { m i n } \{ \pmb { T } _ { m } ^ { d e l e } ( t ) \}$ indicate that follower UAV n and leader UAV m start to process tasks when the first task is totally received, respectively.
+
+# D. UAV Propulsion Model
+
+In this paper, we adopt a propulsion power model of rotary-wing UAVs to compute the propulsion powers of leader UAVs and follower UAVs, which is dependent on the velocity v. Specifically, the propulsion power of each UAV can be expressed as follows:
+
+$$
+\begin{array}{l} P ^ {p r o} (v) = \frac {1}{2} \left(\frac {S _ {f}}{R _ {s} A}\right) \rho R _ {s} A v ^ {3} + \left(\frac {\varphi_ {e}}{8} \rho R _ {s} A \Omega_ {e} ^ {3} R _ {e} ^ {3}\right) \left(1 + \frac {3 v ^ {2}}{(\Omega_ {e} R _ {e}) ^ {3}}\right) \\ + \left((1 + \varsigma_ {p}) \frac {(g M _ {U A V}) ^ {\frac {3}{2}}}{\sqrt {2 \rho A}}\right) \left(\sqrt {1 + v ^ {4} / 4 \left(\sqrt {g M _ {U A V} / 2 \rho A}\right) ^ {2}} \right. \\ - v ^ {2} / 2 \left(\sqrt {\frac {g M _ {U A V}}{2 \rho A}}\right)\left. \right) ^ {\frac {1}{2}}, \tag {5} \\ \end{array}
+$$
+
+where the parameters in (5) are described in Table III.
+
+TABLE III UAV ENERGY MODEL PARAMETERS 
+
+<table><tr><td>Parameter</td><td>Descriptions</td></tr><tr><td> $p_{n}^{F}$ </td><td>transmission power of follower UAV n</td></tr><tr><td> $f_{n}^{F}$ </td><td>CPU frequencies of follower UAV n</td></tr><tr><td> $R_{s}$ </td><td>Rotor solidity</td></tr><tr><td> $\varsigma_{p}$ </td><td>Induced power factor</td></tr><tr><td> $\varphi_{e}$ </td><td>Drag coefficient of the blade</td></tr><tr><td> $\Omega_{e}$ </td><td>Angular velocity of the blade</td></tr><tr><td> $S_{f}$ </td><td>Equivalent flat plate area of the fuselage</td></tr><tr><td> $\xi$ </td><td>effective capacitance coefficient</td></tr><tr><td> $f_{m}^{L}$ </td><td>CPU frequencies of leader UAV m</td></tr><tr><td> $M_{UAV}$ </td><td>UAV mass</td></tr><tr><td> $\rho$ </td><td>Air density</td></tr><tr><td> $R_{e}$ </td><td>Rotor radius</td></tr><tr><td>A</td><td>Rotor disc area</td></tr><tr><td>g</td><td>Gravity acceleration</td></tr></table>
+
+# E. UAV Energy Model
+
+In this paper, we consider that UAV energy consumption includes task delegation energy consumption, computing energy consumption and propulsion energy consumption. $E _ { n } ^ { d e l e } ( t ) = p _ { n } ^ { F } T _ { m , n , c } ^ { d e \bar { l e } } ( t )$ energy, where $p _ { n } ^ { F }$ nsumption is given byindicates the transmission power of follower UAV n. Moreover, the computing energy consumption of follower UAV n and leader UAV m can be written as $\begin{array} { l c l } { E _ { n } ^ { c o m p } ( t ) } & { = } & { \xi ( f _ { n } ^ { F } ) ^ { 2 } D _ { n } ^ { F } ( t ) } \end{array}$ and $E _ { m } ^ { c o m p } ( t ) = \xi ( f _ { m } ^ { L } ) ^ { 2 } D _ { m } ^ { L } ( t )$ n n  , where ξ indicates the effective capacitance coefficient. Besides, $\overset { \cdot } { f _ { n } ^ { F } }$ and $f _ { m } ^ { L }$ indicate the CPU frequencies of follower UAV n and leader UAV m, respectively.
+
+Additionally, the propulsion energy consumption of follower UAV n and leader UAV m can be expressed as:
+
+$$
+\begin{array}{l} E _ {n} ^ {p r o} (t) = P ^ {p r o} (v) ((1 - \delta_ {m, n} (t - 1) \delta_ {m, n} (t)) d _ {m, n} (t) + l / v) \\ + P ^ {p r o} (0) T _ {n} ^ {F h o v} (t) \tag {6} \\ \end{array}
+$$
+
+and
+
+$$
+\begin{array}{l} E _ {m} ^ {p r o} (t) = \varepsilon_ {m} (t) P ^ {p r o} (v) d _ {m} ^ {r e t u r n} (t) / v \\ + (1 - \varepsilon_ {m} (t)) \left(P ^ {p r o} (v) l / v + P ^ {p r o} (0) T _ {n} ^ {L h o v} (t)\right), \tag {7} \\ \end{array}
+$$
+
+respectively, where $d _ { m } ^ { r e t u r n } ( t )$ indicates the distance between leader UAV m and depot at time slot t. Specifically, $E _ { n } ^ { p r o } ( t )$ consists of the dynamic clustering energy consumption, horizontal moving energy consumption and the hovering energy consumption of follower UAV n at each time slot t. Meanwhile, $E _ { m } ^ { \hat { p } r o } ( t )$ consists of the energy consumption of returning to the depot, horizontal moving energy consumption and the hovering energy consumption of leader UAV m at each time slot t. For simplicity, we consider that the clustering distance between follower UAV n and its following leader UAV m is denoted as $d _ { m } ^ { r e t u r n } ( t )$ , which is the average distance between follower UAV n and the UAV swarm containing leader UAV m.
+
+Furthermore, let $E _ { m } ^ { c h a r g e } ( t )$ E chargem (t) denote the energy consumption of leader UAV m aerial charging to the follower UAVs in its UAV swarm. For simplicity, we consider that the energy consumed by each follower UAV can be fully replenished by the leader UAV in the swarm at time slot t, which can be written as:
+
+$$
+E _ {m} ^ {\text { charge }} (t) = \left\{ \begin{array}{l} \sum_ {n = 1} ^ {N} \left(\sum_ {c = 1} ^ {C} \delta_ {m, n} (t) p _ {n} ^ {F} T _ {m, n, c} ^ {\text { dele }} (t) + \xi \left(f _ {n} ^ {F}\right) ^ {2} D _ {n} ^ {F} (t) + E _ {n} ^ {\text { pro }} (t)\right), \varepsilon_ {m} (t) = 0, \\ 0, \end{array} \right. \tag {8}
+$$
+
+Based on these, let $E _ { m } ^ { r e s i } ( t )$ and $E _ { m } ^ { t o t a l }$ denote the residual energy and energy capacity of leader UAV m at time slot t, respectively. $E _ { m } ^ { r e s i } ( t )$ can be formulated as:
+
+$$
+E _ {m} ^ {\text {resi}} (t) = \left\{ \begin{array}{c c} E _ {m} ^ {\text {resi}} (t - 1) - E _ {m} ^ {\text {comp}} (t) - E _ {m} ^ {\text {pro}} (t) - E _ {m} ^ {\text {charge}} (t), \\ \varepsilon_ {m} (t - 1) = 0, \varepsilon_ {m} (t) = 0, \\ E _ {m} ^ {\text {resi}} (t - 1) - E _ {m} ^ {\text {return}} (t), & \varepsilon_ {m} (t) = 1, \\ E _ {m} ^ {\text {total}}, & \varepsilon_ {m} (t - 1) = 1, \varepsilon_ {m} (t) = 0, \end{array} \right. \tag {9}
+$$
+
+# F. Application Placement Model
+
+In this paper, if leader UAVs choose to return to the depot, they will update their application placement to provide better MEC service. Besides, to guarantee the QoS for IoT devices, it is essential to allocate each type of application to a leader UAV that remains airborne over the target region during each time slot. This allocation can be mathematically represented as follows:
+
+$$
+\sum_ {m = 1} ^ {M} \omega_ {m, c} ^ {L} (t) \varepsilon_ {m} (t) \geq 1, \forall c \in \mathcal {C}. \tag {10}
+$$
+
+After replenishing its energy and updating its applications, leader UAV m will return to its original location within the target region and resume its MEC service. It is noteworthy that applications placed in leader UAV m must not exceed its storage capacity, which is given by:
+
+$$
+\sum_ {c = 1} ^ {C} \omega_ {m, c} ^ {L} (t) \leq S ^ {L}, \tag {11}
+$$
+
+where $S ^ { L }$ indicates the maximum number of applications placed in each leader UAV.
+
+# G. Problem Formulation
+
+In this paper, we denote $E ^ { e f \hbar } ( t )$ as the energy efficiency of all UAVs at time slot t, which means that the size of tasks processed by all UAVs relative to their energy consumption during time slot t. This can be mathematically expressed as:
+
+$$
+E ^ {e f f i} (t) = \frac {\sum_ {m = 1} ^ {M} D _ {m} ^ {L} (t) + \sum_ {n = 1} ^ {N} D _ {n} ^ {F} (t)}{\sum_ {m = 1} ^ {M} \left(1 - \varepsilon_ {m} (t)\right) \left(E _ {m} ^ {r e s i} (t - 1) - E _ {m} ^ {r e s i} (t)\right)}. \tag {12}
+$$
+
+Then we aim to jointly optimize the dynamic clustering and scheduling of the considered UAV swarm assisted MEC system, with the objective of maximizing the long-term energy efficiency of all UAVs, which can be formulated as:
+
+$$
+[ \mathcal {P} 1 ]: \max _ {\boldsymbol {\mathcal {L}} (t), \boldsymbol {\omega} ^ {L} (t), \boldsymbol {\varepsilon} (t), \boldsymbol {\delta} (t), \boldsymbol {\phi} (t)} \lim _ {T \rightarrow + \infty} \frac {1}{T} \sum_ {t = 1} ^ {T} E ^ {\text { effi }} (t) \tag {13a}
+$$
+
+s.t ., (10), (11),
+
+$$
+E _ {m} ^ {\text { resi }} (t) \geq E _ {m} ^ {\text { return }} (t), m \in \mathcal {M}, \tag {13b}
+$$
+
+$$
+\sum_ {m = 1} ^ {M} \delta_ {m, n} (t) = 1, \forall n \in \mathcal {N}, \tag {13c}
+$$
+
+$$
+1 \leq \sum_ {n = 1} ^ {N} \delta_ {m, n} (t) \leq N ^ {\text {   clus   }}, \forall m \in \mathcal {M}, \tag {13d}
+$$
+
+$$
+X ^ {l o w} \leq (1 - \varepsilon_ {m} (t)) x _ {m} ^ {L} (t) \leq X ^ {u p}, m \in \mathcal {M}, \tag {13e}
+$$
+
+$$
+Y ^ {l o w} \leq (1 - \varepsilon_ {m} (t)) y _ {m} ^ {L} (t) \leq Y ^ {u p}, m \in \mathcal {M}, \tag {13f}
+$$
+
+where $\begin{array} { r l r } { \pmb { \omega } ^ { L } ( t ) } & { { } = } & { \{ \omega _ { 1 , 1 } ^ { L } ( t ) , \ldots , \omega _ { M , C } ^ { L } ( t ) \} , \quad \pmb { \varepsilon } ( t ) \qquad = } \end{array}$ $\{ \varepsilon _ { 1 } ( t ) , \varepsilon _ { 2 } ( t ) , \ , \ldots , \varepsilon _ { M } ( t ) \} , \ \delta ( t ) \ = \ \{ \widetilde { \delta } _ { 1 , 1 } ( t ) , \ldots , \varepsilon _ { M , N } ( t ) \}$ and $\pmb { \phi } ( t ) = \{ \phi _ { 1 , 1 , 1 } ( t ) , \ \dots , \phi _ { M , N , C } ( t ) \}$ . Constraint (13b) indicates that the residual energy consumption can not be less than the returning energy consumption for each leader UAV at time slot $t ;$ constraint (13c) indicates that each follower UAV must follow at least one leader UAV; constraint (13d) indicates that each UAV swarm contains at least one and not more than $N ^ { c l u s }$ follower UAVs, where $N ^ { c l u s }$ indicates the maximum number of follower UAVs that can be accommodated in a UAV swarm; constraint (13e) indicates that the abscissa of each leader UAV cannot exceed the upper boundary $X ^ { u p }$ or fall below the lower boundary $X ^ { l o w }$ unless it returns to depot; constraint (13f) indicates that the ordinate of each leader UAV cannot exceed the upper boundary $Y ^ { u p }$ or fall below the lower boundary $Y ^ { l o w }$ unless it returns to depot.
+
+Remark 1: Taking into account UAV path planning induced by dynamic clustering may also be interesting in the optimization of the UAV swarm assisted MEC system. In fact, many existing work have studied such an issue, i.e., individual UAV path planning [23], [24], [25]. To be more specific, each follower UAV flies to a new UAV cluster by determining a series of actions (e.g., moving forward, back, left and right to another adjacent small gird). Meanwhile, the relevant constraints (e.g., collision avoidance constraint) are required to be taken into account in the dynamic clustering problem, which makes the follower UAV’s action space very large. Hence, it may require the introduction of more approaches, such as autonomous path planning algorithm based on a tangent intersection and target guidance strategy (APPATT) [23], tangent-based (3D-TG) method [24] and adaptive clustering-based algorithm [25]. Obviously, this is not trivial but beyond the focus of the current paper, and thus we would like to leave this extension and integration in our future work. In the following sections, we first reformulate the optimization problem [P1] as a series of interconnected multiagent stochastic games, and subsequently introduce a novel algorithm to obtain the corresponding solution.
+
+# IV. PROBLEM REFORMULATION BASED ON MULTI-AGENT STOCHASTIC GAME
+
+# A. Game Statement
+
+To solve the UAV swarm dynamic clustering and scheduling optimization in the unknown stochastic environment, the statement of the multi-agent stochastic game is presented. Since UAVs have no prior information on the task requirements of
+
+IoT devices, the complete information based dynamic clustering and scheduling methods fail to effectively solve problem [P1] under an unknown environment. At the beginning of each time slot, a new stochastic state emerges in the environment, which is impacted by both the previous state and the actions taken by all UAVs in the preceding time slot. As a result, the state-action transition adheres to the Markov property. Considering the intelligence of UAVs, in order to solve problem [P1], each UAV is allowed to independently make decisions, and the relationships of cooperation and competition exist among them. UAVs are formed as UAV swarms to cooperatively take actions (dynamic clustering and scheduling) to maximize the energy efficiency of the whole UAV swarm assisted MEC system. Meanwhile, UAVs independently make decisions based on individual interest, in which the conflicts of interest among UAVs leads to competition. The competition caused by granting UAVs to make decisions independently is outlined as below.
+
+1) For energy replenishment, each leader UAV may prefer to processing more tasks for maximizing its energy efficiency but is reluctant to return to the depot to replenish its energy until its battery is completely depleted, potentially leading to the collapse of constraint (10).   
+2) For application placement, in order to optimize leader UAVs’ energy efficiency, each leader UAV has a tendency to prioritize the placement of applications that are frequently requested. However, this situation may neglect the QoS requirements of several IoT devices, leading them to experience resource starvation.   
+3) For trajectory planning, each leader UAV aims to maximize the energy efficiency of its swarm by moving to large grids with demands for intensive computation. However, this situation may result in collisions among UAV swarms.   
+4) For dynamic clustering, each follower UAV can leave the previous swarm and join a new swarm for processing more tasks. However, this situation may result in many follower UAVs occupying a certain leader UAV’s computing resources, making several tasks impossible to be processed in the leader UAV’s hovering time.   
+5) For task delegation, each follower UAV decides whether to delegate tasks to their leader UAV or not, which will result in computing resource competition among follower UAVs F.
+
+Additionally, considering the uncertainty of the future environment information, such as the uncertain task requirements of IoT devices, we reformulate the joint optimization problem $\left[ \mathcal { P } 1 \right]$ as a series of strongly interconnected multi-agent stochastic games as described below.
+
+# B. Game Formulation
+
+Firstly, we define the multi-agent stochastic game $\mathcal { G }$ as a tuple $\langle \mathcal { U } , \mathcal { S } , \mathcal { A } , \mathbb { P } , \mathcal { R } \rangle$ based on the discussion above.
+
+1) $\mathcal { U } = \{ 1 , 2 , \dots , U \}$ denotes the set of agents.   
+2) S denotes the set of environment states. s(t) denotes the environment state at time slot t.   
+3) $\mathcal { A } \ = \ \{ \mathcal { A } _ { 1 } , \mathcal { A } _ { 2 } , . . . , \mathcal { A } _ { U } \}$ represents the set of joint actions, where $\mathcal { A } _ { u }$ refers to the set of individual actions for agent u. The joint action at time slot t is represented as
+
+$\mathbf { } a ( t ) \in { \mathcal { A } } .$ , while the individual action of agent u is represented as $a _ { u } ( t ) \in \mathcal { A } _ { u }$ . Hence, the joint action can be expressed as $\pmb { a } ( t ) = \{ a _ { 1 } ( t ) , \ldots , a _ { U } ( t ) \}$ .
+
+4) P denotes the $U \times U$ matrix of state transition probabilities. $p _ { s s ^ { \prime } } ( \pmb { a } ( t ) )$ signifies the probability of transitioning from state s to $s ^ { \prime }$ by taking the joint action $\mathbf { \pmb { a } } ( t ) \in \mathcal { A }$   
+5) $\mathcal { R } = \{ \mathcal { R } _ { 1 } , \mathcal { R } _ { 2 } , . . . , \mathcal { R } _ { U } \}$ indicates the reward function, where $r _ { u }$ represents the set of immediate reward of agent $u \in \mathcal { U } .$
+
+For the formulated stochastic game ${ \mathcal { G } } ,$ the mapping from the set of states to the set of actions is represented by the policy denoted as $\pi _ { u } : S \longrightarrow { \mathcal A } _ { u } .$ . It is worth noting that the expected reward of each agent depends on the joint policy instead of the individual policy. Thus, we introduce the NE to determine the joint policy, which is defined as follows:
+
+Definition 1: An NE refers to a set of optimal policy for multi-agent stochastic game ${ \mathcal { G } } ,$ denoted as $\pmb { \pi } ^ { * } =$ $\{ \pi _ { 1 } ^ { * } , \pi _ { 2 } ^ { * } , \ldots , \pi _ { U } ^ { * } \}$ , if and only if no player can minimize its expected discount function by unilaterally departing [26], i.e., $\hat { \Theta } _ { u } ( \pi _ { u } ^ { * } , \pi _ { \mathcal { U } \backslash \{ u \} } ^ { * } ) \geq \hat { \Theta } _ { u } ( \pi _ { u } , \pi _ { \mathcal { U } \backslash \{ u \} } ^ { * } ) , \forall u \in \mathcal { U } , \forall \pi _ { u } \in \pi$ .
+
+Second, we model the multi-UAV dynamic clustering and scheduling problem as interconnected multi-agent stochastic games. The multi-agent stochastic games are consisted of ERSG $\langle \mathcal { U } , S ^ { E R } , \mathcal { A } ^ { E R } , \mathbb { P } ^ { E R } , \mathcal { R } ^ { E R } \rangle$ , APSG $\langle \mathcal { U } , \mathcal { S } ^ { A P } , \mathcal { A } ^ { A P } , \mathbb { P } ^ { A P } , \mathcal { R } ^ { A P } \rangle , \mathrm { T P S G } \langle \mathcal { U } , \mathcal { S } ^ { T P } , \mathcal { A } ^ { T \dot { P } } , \mathbb { P } ^ { T P }$ , RTP , $\begin{array} { r } { \mathcal { R } ^ { T P } \rangle , \mathrm { D C S G } \langle \mathcal { U } , \mathcal { S } ^ { D C } , \mathcal { A } ^ { D C } , \mathbb { P } ^ { D C } , \mathcal { R } ^ { D C } \rangle } \end{array}$ $\langle \mathcal { U } , \mathcal { S } ^ { \hat { T } D } , \mathcal { A } ^ { T D } , \mathbb { P } ^ { \hat { T } \hat { D } } , \mathcal { R } ^ { T \hat { D } } \rangle$ and TDSGERSG, APSG and TPSG, each leader UAV independently selects an action based on the current environmental states $s ^ { E R } ( t ) \in$ $\begin{array} { l } { { S ^ { E R } , ~ s ^ { A P } ( t ) ~ \in ~ S ^ { A P } } } \end{array}$ and $s ^ { T P } ( t ) ~ \in ~ \mathcal { S } ^ { T P }$ , respectively. Subsequently, the joint actions ${ \bf a } ^ { E R } ( t ) \in \mathcal { A } ^ { E R } , \ { \bf a } ^ { \mathrm { ' } } { } ^ { A P } ( t ) \ { \overleftarrow { \in } }$ $\mathcal { A } ^ { A P }$ and $\mathbf { \bar { \mathbf { a } } } ^ { T P } ( t ) \mathbf { \bar { \mathbf { \Lambda } } } \in \mathcal { A } ^ { T P }$ are formed. After executing these joint actions, rewards are obtained according to $\mathcal { R } ^ { E R }$ , RAP and $\mathcal { R } ^ { T P }$ , and the environment transitions to its next state by $\mathbb { P } ^ { E R } , \mathbb { P } ^ { A \hat { P } }$ and $\mathbb { P } ^ { T P }$ , respectively. Similarly, for DCSG and TDSG, each follower UAV independently selects an action based on the current environmental states $\bar { \mathbf { \Psi } } _ { s } D C _ { \left( t \right) } \in \mathcal { S } ^ { D C }$ and $s ^ { T D } ( t ) \in \mathcal { S } ^ { T D }$ respecand ly, the joint actionsare formed. After $\mathbf { \sigma } _ { \mathbf { \sigma } } ^ { \prime D C } ( t ) \ \in \mathcal { A } ^ { D C }$ $\mathbf { \Omega } _ { \pmb { a } } ^ { T \bar { D } } ( t ) \in \dot { \mathcal { A } } ^ { T D }$ to executing these joint actions, rewards are obtained according $\mathcal { R } ^ { D C }$ and $\mathcal { R } ^ { \check { T } D }$ , and the environment transitions to its next state by $\mathbb { P } ^ { D C }$ and $\ln ^ { T D }$ , respectively.
+
+Note that, ERSG, APSG, TPSG, DCSG and TDSG are inherently interconnected. Specifically, the joint action of ERSG $\pmb { \dot { a } } ^ { E R } ( t ) \in \mathcal { A } ^ { E R }$ determining whether leader UAVs lead their swarms to move to another adjacent large grid or update application placement at time slot t changes the states STP $\scriptstyle { \dot { S } } ^ { T P }$ and $\mathit { \Pi } _ { \mathcal { S } ^ { A P } }$ , respectively. Moreover, since different UAV swarms’ trajectories influence the dynamic clustering time of follower UAVs, the joint action of TPSG $\pmb { a } ^ { T P } ( t ) \in \mathcal { A } ^ { T P }$ changes the state $s ^ { \tilde { D } C }$ . Additionally, since the decisions of follower UAVs choosing which leader UAV to follow influence UAV swarms’ formations for further delegating tasks, the joint action of DCSG $\mathbf { \sigma } _ { \mathbf { a } ^ { D C } ( t ) } \in \mathcal { A } ^ { D C }$ changes the state $\check { s } ^ { T D }$ . Finally, since the computing energy consumption of leader UAVs influences their residual energy, the joint action of TDSG ${ \pmb a } ^ { T D } ( t ) \in \mathcal { A } ^ { T D }$ changes the state $\bar { S } ^ { E R }$ . In the following section, we propose a novel algorithm called RLDC to obtain equilibrium of these interconnected multi-agent stochastic games.
+
+Lemma 1: For ERSG, the optimal policy for leader UAV m ∈ M can be denoted by πERm $\begin{array} { r l r } { { \mathbf { U } } { \mathbf { A } } { \mathbf { V } } } & { { } m } & { \in \mathrm { ~  ~ \mathcal ~ { ~ M ~ } ~ } } \end{array}$ $\begin{array} { r l } { \displaystyle \mathrm { b y } } & { { } \pi _ { m } ^ { \bar { E } R * } } \end{array}$ ER\* namely, {πER∗ 1 , πE2 $\{ \pi _ { 1 } ^ { E R * } , \pi _ { 2 } ^ { E R * } , \ldots , \pi _ { M } ^ { E R * } \}$ . . . , πER∗ M } forms the NE.
+
+Proof: Please refer to Appendix A.
+
+According to Definition 1 and Lemma 1, we aim to identify a Nash equilibrium (NE) strategy for each agent u at any given state s(t). It is worth noting that even though the environmental information available to each agent may be imperfect, they have the chance to learn the optimal policies through repeated interactions with the environment [27]. Since ERSG, APSG, TPSG, DCSG and TDSG can converge to their optimal policies by the RLDC algorithm respectively, which has been theoretically analyzed in Theorem 1 of Section V, the interconnected multi-agent stochastic games can obtain the optimal policy consisting of the optimal policies of ERSG, APSG, TPSG, DCSG and TDSG. Therefore, the proposed RLDC algorithm can achieve the equilibrium point for the interconnected multi-agent stochastic games.
+
+# V. REINFORCEMENT LEARNING BASED UAV SWARM DYNAMIC COORDINATION ALGORITHM
+
+In this section, we first introduce a finite-state Markov decision process (MDP) to characterize the game process of each leader UAV and follower UAV. Then, we propose the RLDC algorithm to maximize the expected long-term reward of the considered UAV swarm-assisted MEC system, where each learner operates in an unknown stochastic environment and does not know the reward and transition functions in advance. Since the state and action transitions satisfy the Markov property in ERSG, APSG, TPSG, DCSG and TDSG, we characterize the strategic decision processes of each leader UAV and follower UAV by a series of respective MDPs.
+
+MDP for Each Leader UAV in ERSG: To design an optimal schedule for energy replenishment of all leader UAVs in ERSG, the individual decision-making problem for each leader UAV m ∈ M can be modeled as an MDP $( S ^ { E R } , \mathcal { A } _ { m } ^ { E R } , \mathcal { R } _ { m } ^ { E R } , \mathbb { P } ^ { E R } )$ .
+
+1) Environment State for Each Leader UAV in ERSG: To reduce the size of the state space in ERSG, we divide the energy of leader UAVs into several levels. Specifically, $E _ { m } ^ { l e v e l } ( t ) \stackrel { \sim } { = } \ \lceil E _ { m } ^ { r e s i } ( t ) / E ^ { u n i t } \rceil$ UAV m , where $E ^ { u n i t }$ $s ^ { E R } ( t ) \ \in$ $s ^ { E R }$ for each leader UAV $\textit { m } \in \textit { M }$ at time slot t can be written as $s ^ { E R } ( t ) ~ = ~  \pmb { { E } } ^ { l e v e l } ( t )$ , where $E ^ { l e v e l } ( t ) =$ $\{ E _ { 1 } ^ { l e v e l } ( t ) , E _ { 2 } ^ { l e v e l } ( t ) , \ldots , E _ { M } ^ { l e v e l } ( t ) \}$ indicates the set of all leader UAVs’ energy levels.   
+M selects an action 2) Action for Each Leader UAV in ERSG: Leader UAV m $a _ { m } ^ { E R } ( t ) \in \mathcal { A } _ { m } ^ { E R }$ at time slot t, where $\in$ $\mathcal { A } _ { m } ^ { E R }$ denotes the action set of leader UAV m consisting of two actions, i.e., returning to the depot or not.   
+reward 3) Reward of Each Leader UAV in ERSG: The immediate $r _ { m } ^ { E R } ( t ) \in \mathcal { R } _ { m } ^ { E R }$ of leader UAV $m \in \mathcal { M }$ at time slot t is given by:
+
+$$
+r _ {m} ^ {E R} (t) = \left\{ \begin{array}{l l} - 1 0, & \text { if   constraint   (10)   is   violated }, \\ \varepsilon_ {m} (t), & \text { otherwise }. \end{array} \right. \tag {14}
+$$
+
+4) State Transition Probabilities of Leader UAVs in ERSG: The state transition probability from state $s ^ { E R }$ $s ^ { E R ^ { \prime } }$ $\begin{array} { r l } { \mathbf { \boldsymbol { a } } ^ { E R } ( t ) } & { { } = } \end{array}$ $( a _ { 1 } ^ { E R } ( t ) , a _ { 2 } ^ { E R } ( t ) , \cdot \cdot \cdot , a _ { M } ^ { E R } ( t ) ) \mathrm { ~ \quad ~ \ c a n ~ \quad ~ b e ~ \quad ~ w r i t t e n ~ \quad ~ a s ~ \ u s i t ~ \ u s i t }$ $p _ { _ { s E R _ { \ s E R ^ { \prime } } } } ^ { \dot { E } R } ( \mathbf { \tilde { a } } ^ { E \dot { R } } ( t ) ) \ = \ ^ { \prime \prime } P r ( s ^ { E R } ( t + 1 ) \ = \ s ^ { E R ^ { \prime } } | s ^ { E R } ( t ) \ =$ $s ^ { E R } , \pmb { a } ^ { E R } ( t ) )$ . Moreover, the descriptions of state transition probabilities of APSG $\mathbb { P } ^ { A P }$ , TPSG $\yen 12$ , DCSG $\mathbb { P } ^ { D C }$ and TDSG $\mathbb { P } ^ { T D }$ are similar to that in ERSG, and are omitted in this paper for conciseness.
+
+MDP for Each Leader UAV in APSG: To produce an optimal schedule for application placement of all leader UAVs in APSG, the individual decision-making problem for each leader UAV m ∈ M can be modeled as an MDP $( S ^ { A P } , \mathcal { A } _ { m } ^ { A P } , \mathcal { R } _ { m } ^ { A P } , \mathbb { P } ^ { A P } )$ .
+
+1) Environment State for Each Leader UAV in APSG: The environment state $s ^ { A P } \dot { ( t ) } \in \mathcal { S } ^ { A P }$ for each leader UAV $m \in$ M consists of whether leader UAVs returning to the depot and all leader UAVs’ applications placement at time slot $t ,$ which can be expressed as $\mathbf { \boldsymbol { s } } ^ { A P } ( t ) = \{ \pmb { \varepsilon } ( t ) , \pmb { \omega } ^ { L } ( t ) \}$ .   
+2) Action for Each Leader UAV in APSG: Leader UAV m selects an action aAPm $a _ { m } ^ { A P } ( t ) \in \mathcal { A } _ { m } ^ { A P }$ , where $\mathcal { A } _ { m } ^ { A P }$ signifies the action set of leader UAV m consisting of $C ! / ( \stackrel { \cdots } { ( ( C - \bar { S } ^ { L } ) } * S ^ { L } ! )$ actions.   
+3) Reward ofimmediate reward $\begin{array} { r l r } { r _ { m } ^ { A P } ( t ) } & { { } \in } & { \mathcal { R } _ { m } ^ { A P } } \end{array}$ in APSG: Theof leader UAV $m \in \mathcal { M }$ $r _ { m } ^ { A P } ( t ) ~ =$ $\begin{array} { r l } { } & { { } \sum _ { \tau = 1 } ^ { t } \sum _ { n = 1 } ^ { N } \sum _ { c = 1 } ^ { C } \sum _ { k \in \mathcal { Z } _ { n } } \delta _ { m , n } ( \tau ) v _ { k , c } ( \tau ) \omega _ { m , c } ^ { L } ( \tau ) | } \end{array}$ $r _ { m } ^ { A P } ( t )$
+
+MDP for Each Leader UAV in TPSG: To find an optimal schedule for application placement of all leader UAVs in TPSG, the individual decision-making problem for each leader UAV $\begin{array} { r l r } { m } & { { } \in } & { { \mathcal { M } } } \end{array}$ can be modeled as an MDP $( S ^ { T P } , \mathcal { A } _ { m } ^ { T P } , \mathcal { R } _ { m } ^ { T P } , \mathbb { P } ^ { T P } )$ .
+
+1) Environment State for Each Leader UAV in TPSG: The environment state $s ^ { T P } \dot { ( t ) } \in \mathcal { S } ^ { T P }$ for each leader UAV m ∈ M consists of all leader UAVs’ positions L(t) and UAV association set $\pmb \delta ( t )$ at time slot t, which can be expressed as $\mathbf { \boldsymbol { s } } ^ { T P } ( t ) = \{ \mathbf { \boldsymbol { \mathcal { L } } } ( t ) , \mathbf { \dot { \boldsymbol { \delta } } } ( t ) \}$ .   
+2) Action for Each Leader UAV in TPSG: Leader UAV $m \in \mathcal { M }$ selects an action $a _ { m } ^ { T P } ( t ) \in \mathcal { A } _ { m } ^ { T P }$ at time slot t, where $\mathcal { A } _ { m } ^ { T P } = \mathrm { \{ f o r w a r d { } } $ , backward, left, right} indicates the action set of leader UAV m moving to an adjacent large grid in one direction.   
+3) Reward of Each Leader UAV in TPSG: The immediate reward rTPm $r _ { m } ^ { T P } ( t ) \in \mathcal { R } _ { m } ^ { T P }$ of leader UAV $m \in \mathcal { M }$ at time slot t can be written as:
+
+$$
+r _ {m} ^ {T P} (t) = \left\{ \begin{array}{l l} - 1 0, & \text { if   constraint   (13e)   or   (13f)   is   violated }, \\ E ^ {\text { effi }} (t), & \text { otherwise }. \end{array} \right. \tag {15}
+$$
+
+MDP for Each Follower UAV in DCSG: To produce an optimal schedule for application placement of all leader UAVs in DCSG, the individual decision-making problem for each leader UAV $m \in \mathcal { M }$ can be modeled as an MDP $( S ^ { D C } , \mathcal { A } _ { n } ^ { D C } , \mathcal { R } _ { n } ^ { D C } , \mathbb { P } ^ { D C } )$ .
+
+1) Environment State for Each Leader UAV in DCSG: The environment state $s ^ { D C } ( t ) \in \mathcal { S } ^ { D C }$ for each follower UAV $n \in \mathcal N$ consists of all leader UAVs’ positions $\mathcal { L } ( t )$ and UAV association set δ(t) at time slot t, which can be expressed as $s ^ { D C } ( t ) = \{ \pmb { { \mathcal { L } } } ( t ) , \pmb { \delta } ( t ) \}$ .
+
+follower UAV 2) Action for Each Leader UAV in DCSG: At time slot t, $n \in \mathcal N$ selects an action $a _ { n } ^ { D C } ( t ) \ \in \ A _ { n } ^ { D C }$ where 中 $\mathcal { A } _ { n } ^ { D C }$ signifies the action set of follower UAV n consisting of M.   
+3) Reward of Each Leader UAV in DCSG: The immediate reward $r _ { n } ^ { D C } ( t ) \in \mathcal { R } _ { n } ^ { D C }$ of follower UAV $n \in \mathcal N$ in DCSG at time slot t can be written as:
+
+$$
+r _ {n} ^ {D C} (t) = \left\{ \begin{array}{l l} - 1 0, & \text { if   constraint   (13d)   is   violated }, \\ E ^ {\text { effi }} (t), & \text { otherwise }. \end{array} \right. \tag {16}
+$$
+
+MDP for Each Follower UAV in TDSG: To find an optimal schedule for application placement of all leader UAVs in TDSG, the individual decision-making problem for each leader UAV $\textit { m } \in \textit { M }$ can be modeled as an MDP $( S ^ { T D } , \mathcal { A } _ { n } ^ { T D } , \mathcal { R } _ { n } ^ { T D } , \mathbb { P } ^ { T D } )$ .
+
+1) Environment State for Each Follower UAV in TDSG: The environment state $s ^ { T D } ( t ) \ \in \ S ^ { T D }$ for each follower UAV $n \in \mathcal N$ consists of leader UAV m’s application placement $\omega _ { m } ^ { L } ( t )$ , follower UAV n’s application placement $\omega ^ { F } ( t )$ and UAV association set ${ \pmb \delta } ( t )$ at time slot t, which can be written as $s ^ { T D } ( t ) = \{ \pmb { \omega } _ { m } ^ { L } ( t ) , \mathbf { \dot { \omega } } ^ { F } ( t ) , \pmb { \delta } ( t ) \}$ .
+
+2) Action for Each Follower UAV in TDSG: At time slot t, follower UAV $n \in \mathcal N$ selects an action $a _ { n } ^ { T D } ( t ) \in \mathcal { A } _ { n } ^ { T D }$ , ， where $\mathcal { A } _ { n } ^ { T D } ( t )$ indicates the action set of follower UAV n consisting of two feasible actions, i.e., whether delegating its tasks to the leader UAV or not.
+
+3) Reward of Each Follower UAV in TDSG: The immediate reward $\check { r } _ { n } ^ { T D } ( t ) \ \in \ \mathcal { R } _ { n } ^ { T D }$ of follower UAV $\textit { n } \in \mathcal { N }$ r TDn (t) = $r _ { n _ { . } } ^ { T D } ( t ) ~ =$ $\begin{array} { r l } { \sum _ { m = 1 } ^ { M } \sum _ { c = 1 } ^ { C } ( ( D _ { n } ^ { F } ( t ) } & { { } + \delta _ { m , n } ( t ) D _ { m } ^ { L } ( t ) ) / ( p _ { n } ^ { F } T _ { m , n , c } ^ { d e l e } ( t ) \ + } \end{array}$ M $\xi ( f _ { n } ^ { F } ) ^ { 2 } D _ { n } ^ { F } ( t ) + \delta _ { m , n } ( t ) \xi ( f _ { m } ^ { L } ) ^ { 2 } D _ { m } ^ { L } ( t ) ) \}$ , where the numerator denotes the size of tasks processed by follower UAV n and leader UAV m in a UAV swarm, and the denominator represents the energy consumption of task delegation and task processing.
+
+Based on the formulation of these MDPs, we propose a novel RLDC algorithm, where Q learning is utilized to obtain the solution. In the proposed RLDC algorithm, each UAV initially conducts uniform exchanges of its historical Q-values with other UAVs. Subsequently, each UAV makes its current decision and updates the reward based on its current Q-value and the historical Q-values of other UAVs. Finally, each UAV updates its Q-value for the subsequent exchange with other UAVs based on its own decision, reward, and the historical Q-values of others. For inter-UAV information interaction, a central controller and a dedicated channel are enabled to be responsible for managing UAV information, including the reception and distribution of Q-values. Notably, to maintain the timeliness of decision-making, the dedicated channel refrains from participating in UAV decision-making, focusing solely on information exchange. Therefore, each UAV’s decisionmaking remains decentralized, with each UAV considering only its own strategy optimization. Given that the data size of the information exchanged via the dedicated channel is considerably small (only Q values), while the transmission rate of the dedicated channel between different UAVs can be relatively large (commonly over 70 Mbps [28]), the delay of the information exchange in such a system is negligible, especially compared to that of the UAV decision-making process. Similar settings have been widely employed in the literature on game-theoretic analysis and optimization for UAV systems [20] and [29].
+
+To be more specific, we may adopt distributed channel access (DCA) mechanisms to the dedicated channel, where multiple UAVs share a common channel for exchanging information [30]. Since most traditional DCA mechanisms are based on random access schemes, we may consider the most popular random access scheme, namely carrier-sense multiple access with collision avoidance (CSMA/CA) [31], which abides by listen-before-talk (LBT) protocol for regulating UAV to continually sense the channel before initiating a transmission. Again note that, since this is a dedicated channel for information exchange, the traffic load will be considerably low. Similar settings are given in [28] and [30].
+
+Furthermore, each leader UAV includes an energy replenishment learner (ER learner), an application placement learner (AP learner) and a trajectory planning learner (TP learner). Meanwhile, each follower UAV includes and a dynamic clustering learner (DC learner) and a task delegation learner (TD learner). At the beginning of each time slot, each UAV first shares its Q-values of ERSG, APSG and TPSG to other UAVs. Subsequently, each leader UAV takes an action in ER learner. If the leader UAV flies to the depot for energy replenishment, it will take an action in AP learner. Otherwise, it will take an action in TP learner. Afterwards, each follower UAV takes an action in DC learner. Then, each leader UAV takes an action in TD learner. Finally, each UAV updates its Qvalues based on its rewards and other UAVs’ shared Q values.
+
+Settings for ER learner: The policy of ER learner in leader UAV m is expressed as πERm $\pi _ { m } ^ { E R } : \check { S } ^ { E R } \longrightarrow \mathcal { A } _ { m } ^ { E R }$ : SER , which signifies a probability distribution of actions $a _ { m } ^ { E R } \in \mathcal { A } _ { m } ^ { E R }$ in a given state $s ^ { E R }$ . Specifically, for leader UAV m in state $s ^ { \breve { E R } } \in { \cal S } ^ { E R } ,$ the energy replenishment policy can be denoted as πERm $\pi _ { m } ^ { E R } ( s ^ { E R } ) \ = \ \{ \tilde { \pi } _ { m } ^ { E R } ( s ^ { \ E R } , a _ { m } ^ { E R } ) | a _ { m } ^ { \dot { E } R } \ \stackrel {  } { \in } \ \mathcal { A } _ { m } ^ { E R } \}$ , wherechoosing $\pi _ { m } ^ { E R } ( s ^ { \prime \prime } \underline { { { \cal E } } } \underline { { { R } } } , a _ { m } ^ { E R } )$ π m , a m action aERm $a _ { m } ^ { E R }$ in state $s ^ { E \dot { R } }$ .
+
+The Q function of the ER learner for leader UAV m is the in state expected reward resulting from executing action $s ^ { E R } \in \mathcal { S } ^ { E R }$ under the given policy $\pi _ { m } ^ { E R }$ m, which can be $a _ { m } ^ { E R } \in \mathcal { A } _ { m } ^ { E R }$ m expressed by $\tau \stackrel { . } { + } 1 ) | s ^ { E R } ( t ) \stackrel { . } { = } s ^ { E R } , \pmb { a } ( t ) ^ { E R ^ { \prime \prime \prime } } = \pmb { a } ^ { E R } , \pi _ { m } ^ { E R } )$ $\begin{array} { r } { Q _ { m } ^ { E R } ( s ^ { E R } , { \pmb a } ^ { E R } , \pi _ { m } ^ { E R } ) = \check { \mathbb { E } } ( \check { \sum _ { \tau = 0 } ^ { \infty } } \sigma ^ { \tau } r _ { m } ^ { E R } ( t + } \end{array}$ , π m τ=ER ogTr where the τ r Em constant discounted factor σ is defined with a value range of [0, 1]. This equation yields the action value, commonly referred to as the Q value. It takes into account the aggregation of immediate rewards in the current time slot to ascertain the long-term reward.
+
+For striking a balance between exploration and exploitation, in this paper, an exploration strategy based on -greedy is taken into account for the ER learner. Specifically, the ER learner for leader UAV m selects a random action $a _ { m } ^ { E R } \in \mathcal { A } _ { m } ^ { E R }$ a m in state sER $s ^ { E R } \in \mathcal { S } ^ { E R }$ with probability , and chooses the optimal action $a _ { m } ^ { E R * }$ aER∗ m with probability (1−), where the best action has
+
+![](images/37da4b6d213ad259f42549d8f442ae23b9aab79471e89357a814a65ece365af6.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    subgraph "Leader UAV"
+        A["ER Learner"] --> B{Energy Rewing?}
+        B -->|S^AP r_Y AP| C["AP Learner"]
+        B -->|N^TTP r^TP| D["TP Learner"]
+        D --> E["Follower UAV"]
+        E --> F["DC Learner"]
+        F --> G["TD Learner"]
+    end
+
+    subgraph "UAV Swarm"
+        H["ER Learner"] --> I{Energy Rewing?}
+        I -->|S^AP r_Y AP| J["AP Learner"]
+        I -->|N^TTP r^TP| K["TP Learner"]
+        K --> L["Follower UAV"]
+        L --> M["DC Learner"]
+        M --> N["TD Learner"]
+    end
+
+    subgraph "Environment"
+        O["A^DC A^TD"] --> P["Environment"]
+        P --> Q["Environment"]
+        Q --> R["Environment"]
+    end
+
+    style A fill:#f9f,stroke:#333
+    style H fill:#f9f,stroke:#333
+    style O fill:#f9f,stroke:#333
+```
+</details>
+
+Fig. 3. An illustration of the RLDC algorithm.
+
+$Q _ { m _ { - } } ^ { E R } ( s ^ { E R } , a _ { -- } ^ { E R * } , \pi _ { m } ^ { E R } ) \geq Q _ { m } ^ { E R } ( s ^ { E R } , a ^ { E R } , \pi _ { m } ^ { E R } ) , \forall a ^ { E R } \in$ πER ) ≥ , π $\dot { A } ^ { E R }$ with aERm $a _ { m } ^ { E R * }$ $\mathbf { \Delta } _ { a } \ddot { E } \ddot { R } *$ ER∗. Then, the probability of selecting action $a _ { m } ^ { E R } \in \mathcal { A } _ { m } ^ { E R }$ a m in state $s ^ { E R }$ can be expressed by:
+
+$$
+\pi_ {m} ^ {E R} \big (s ^ {E R}, a _ {m} ^ {E R} \big)
+$$
+
+$$
+= \left\{ \begin{array}{l l} 1 - \epsilon , & \text { if } Q _ {m} ^ {E R} (s ^ {E R}, \cdot , \cdot) \text { of } a _ {m} ^ {E R} \text { is   the   highest }, \\ \epsilon , & \text { otherwise }. \end{array} \right. \tag {17}
+$$
+
+In the Q value update step of Q-learning, the ER learner for UAV m follows the update rule $\begin{array} { r l r } { Q _ { m } ^ { E R } ( s ^ { E R } , { \mathbf { a } } ^ { E R } , t } & { { } + } & { 1 ) \quad \ldots = } & { { } \quad Q _ { m , \ldots } ^ { E R } ( s _ { \ldots } ^ { E R } , \mathbf { \dot { a } } _ { \ldots } ^ { E R } , t ) \quad + } \end{array}$ $\begin{array} { r } { \eta \stackrel {   } { \sum } _ { m ^ { \prime } \in M \backslash m } ( Q _ { m } ^ { E R } ( s ^ { E R } , \pmb { a } ^ { E R } , t ) \ - \ \bar { Q } _ { m ^ { \prime } } ^ { E R } ( s ^ { E R } , \pmb { a } ^ { E R } , t ) ) \ + } \end{array}$ R(sER, $\nu ( r _ { m } ^ { E R } ( t ) \mathrm { ~  ~ { ~ \sigma ~ } ~ } + \mathrm { ~  ~ { ~ \sigma ~ } ~ } \operatorname* { m a x } _ { \pmb { a } ^ { E R ^ { \prime } } \in \mathcal { A } ^ { E R } } \sigma Q _ { m } ^ { E R } ( s ^ { E R ^ { \prime } } , \pmb { a } ^ { E R ^ { \prime } } , t )$ $Q _ { m } ^ { E R } ( s ^ { E R } , \pmb { a } ^ { E R } , t ) )$ R (sER, aER, , where η and ν denote the learning rates. s ER- $s ^ { \varDelta R ^ { \prime } }$ and aER- d $\mathbf { \delta } _ { \mathbf { { \boldsymbol { a } } } ^ { L R ^ { \prime } } }$ enote the next environment state and the next joint action, respectively.
+
+Since the settings of other learners are similar to those of the ER learner, they are omitted here for conciseness. In summary, Algorithm 1 provides a detailed illustration of the RLDC algorithm. To better understand the implementation of UAV swarm dynamic clustering and scheduling in the RLDC algorithm, we can take a look at an example: The RLDC algorithm obtains the optimal strategy through several iterations, where each iteration involves solving the long-term optimization problem of UAV swarm dynamic clustering and scheduling. At each time slot, first, leader UAV $m \in \mathcal { M }$ shares Q values $\overline { { Q } } _ { m } ^ { E R } , Q _ { m } ^ { T P }$ and $Q _ { m } ^ { \dot { A } P }$ with other leader UAVs, which means that the all leader UAVs simultaneously learn to update the Q value from various state-action pairs [20]. Meanwhile, follower UAV $n \in \mathcal N$ shares Q valu es QDCn a $Q _ { n } ^ { D \bar { C } }$ nd QTDn $Q _ { n } ^ { T D }$ with $a _ { m } ^ { E R }$ m πERm follower UAVs. Seaccording to policy $\pi _ { m } ^ { E R } ( s _ { m } ^ { E R } | \cdot )$ UAV m selects an actionand then obtains reward $\ddot { R } _ { m } ^ { E R }$ . If leader UAV m chooses to fly back to the depot for energy replenishment, it will select an action $a _ { m } ^ { A P }$ according to policy $\pi _ { m } ^ { A P } ( s _ { m } ^ { A P } | \cdot )$ πAPm (sAPm |·) for updating its applications and then (sm obtains reward ${ \dot { R } } _ { m } ^ { { \dot { A } } P }$ . Otherwise, leader UAV m will select an action m $a _ { m } ^ { T P }$ m according to policy $\pi _ { m } ^ { T P } ( s _ { m } ^ { T P } | \cdot )$ for leading its
+
+Algorithm 1: RLDC Algorithm   
+1 Initialize Q value: $Q_{m}^{ER} = Q_{m}^{AP} = Q_{m}^{TP} = Q_{n}^{DC} = Q_{n}^{TD} = 0$ , $\forall m \in M, n \in N.$ 2 Set the maximal iteration counter LOOP, loop = 0 and sum = 0.
+
+3 for loop < LOOP do
+
+4    Set t = 0.
+5    while $t \leq T$ do
+
+6    for m = 1 to M do
+
+7    Share Q values $Q_{m}^{ER}, Q_{m}^{TP}$ and $Q_{m}^{AP}$ with leader UAV $m' \in M \setminus m.$ 8    Observe states $s^{ER}(t), s^{AP}(t)$ and $s^{TP}(t).$ 9    Select $a_{m}^{ER}(t)$ according to $\pi_{m}^{ER}(s^{ER}, \cdot)$ .
+
+10    if $\varepsilon_{m}(t) = 1$ then
+
+11    Select $a_{m}^{AP}(t)$ according to $\pi_{m}^{AP}(s^{AP}, \cdot)$ .
+
+12    else
+
+13    Select $a_{m}^{TP}(t)$ according to $\pi_{m}^{TP}(s^{TP}, \cdot)$ .
+
+14    for n = 1 to N do
+
+15    Share Q values $Q_{n}^{DC}$ and $Q_{n}^{TD}$ with follower UAV $n' \in N \setminus n.$ 16    Observe states $s^{DC}(t)$ and $s^{TD}(t).$ 17    Select $a_{n}^{DC}(t)$ according to $\pi_{n}^{DC}(s^{DC}, \cdot)$ .
+
+18    Select $a_{n}^{TD}(t)$ according to $\pi_{n}^{TD}(s^{TD}, \cdot)$ .
+
+19    Obtain the $E^{effi}(t)$ and the rewards $R_{m}^{ER}(t), R_{m}^{AP}(t), R_{m}^{TP}(t), R_{n}^{DC}(t)$ and $R_{n}^{TD}(t).$ 20    Update the Q values $Q_{m}^{ER}(t), Q_{m}^{AP}(t), Q_{m}^{TP}(t), Q_{n}^{DC}(t)$ and $Q_{n}^{TD}(t).$ 21    Set $t = t + 1.$ 22    Set sum = sum + $\sum_{t=1}^{T} E^{effi}(t)$ 23    Set loop = loop + 1.
+
+24 Output: sum/loop
+
+$R _ { m } ^ { T P }$ elects an action osing a leader. Meanwhile, f $a _ { n } ^ { D C }$ according to follower UAV n $\pi _ { n } ^ { D C } ( s _ { n } ^ { D C } | \cdot )$ $R _ { n } ^ { D C }$ selects an action $a _ { n } ^ { T D }$ according to policy $\pi _ { n } ^ { T D } ( s _ { n } ^ { T D } | \cdot )$ πTDn (sTDn |·) for (sn whether delegating tasks to its leader UAV and then obtains reward m and Q values $R _ { m } ^ { E R }$ . Forth, the energy efficiency of all UAVs $Q _ { m } ^ { E R } , Q _ { m } ^ { T P } , Q _ { m } ^ { \breve { A } \breve { P } } , Q _ { n } ^ { D C }$ and $Q _ { n } ^ { T D }$ are updated. $E ^ { e f f }$ Finally, the energy efficiency of all UAVs $E ^ { \dot { e } \bar { f } \hbar }$ is added and the average energy efficiency of all UAVs is calculated at each iteration.
+
+The Convergence of the RLDC Algorithm: As recognized in [32], [33], when the limits limt→∞ $\overbrace { Q _ { m } ^ { E R } ( s ^ { E R } , } ^ { } a ^ { E R } , \pi _ { m } ^ { E R } , t )$ t→∞ m aTP , πTP , $\begin{array} { r } { \operatorname* { l i m } _ { t \to \infty } Q _ { m } ^ { A \tilde { P } } ( s ^ { A P } , { \pmb a } ^ { A P } , { \pi } _ { m _ { - } } ^ { A \tilde { P } } , t ) , \operatorname* { l i m } _ { t \to \infty } Q _ { m _ { - } } ^ { T P } ( s ^ { T \tilde { P } } } \end{array}$ $\begin{array} { r l } { \mathbf { \Phi } _ { \pmb { a } } ^ { } T \dot { \bar { P } } ^ { } , \pi _ { m } ^ { T \bar { P } ^ { } } , t \big ) , } & { { } \operatorname* { l i m } _ { t  \infty } \ddot { Q } _ { m _ { - } } ^ { D C } \big ( s ^ { D C } , \mathbf { a } ^ { D \bar { C } } , \hat { \pi } _ { m } ^ { D C } , t \big ) } \end{array}$ limt→∞ Q DC (sDC , , limt →∞ aDC , πDCm , t ) QTP (sTP , Q value QER∗ QTP∗ ( (sDC $\tilde { Q } ^ { T P ^ { * } } ( s ^ { T \bar { P } } , { \pmb a } ^ { T \hat { P } } , \pi _ { m } ^ { T \bar { P } } ) , Q ^ { { D \bar { C } } }$ $( \overset { \cdot } { s } D C , \overset { \cdot } { \pmb { a } } ^ { D C } , \pi _ { m } ^ { D C } )$ , aDC , ${ \check { Q } } ^ { \prime \prime \prime } { } ^ { * } { \cal R } ^ { * } \ \bigl ( s ^ { E R } , { \pmb a } ^ { E R } , \pi _ { m } ^ { E R } \bigr ) , \ Q ^ { A P ^ { * } } \bigl ( \check { s } ^ { A P } , { \pmb a } ^ { A P } , \pi _ { m } ^ { A P } \bigr )$ $Q _ { m } ^ { T D } ( s ^ { T D } , { \pmb a } ^ { T D } , \pi _ { m } ^ { \tilde { T } D } , t )$ DC ) (sER, , π m and , a TD , ）， aER, πERm ) ), QDC ∗ $\stackrel { \prime } { Q } ^ { \tilde { T } D ^ { * } } ( s ^ { T D } , \pmb { a } ^ { T D } , \pi _ { m } ^ { T D } )$ π m , QAP∗ (s , aTD , πTDm ) respectively, , a AP , AP ), the RLDC approach is converged.
+
+Lemma 2: A random iterative process $\Delta ^ { t + 1 } ( x ) = ( 1 -$ $\nu ^ { t } ( x ) ) \Delta ^ { t } ( x ) + \eta ^ { t } ( x ) \Phi ^ { t } ( x )$ converges to zeros with a probability of 1 under the following conditions:
+
+1) The state space is finite.   
+2) $\begin{array} { r } { \sum _ { t } \nu ^ { t } ( x ) = \sum _ { t } \eta ^ { t } ( x ) = \sum _ { t } ( \nu ^ { t } ( x ) ) ^ { 2 } = \sum _ { t } ( \eta ^ { t } ( x ) ) ^ { 2 } = } \end{array}$ ∞ and $\bar { E } \{ \eta ^ { t } ( x ) | \Lambda ^ { t } \} \stackrel {  } { \leq } E \{ \nu ^ { t } ( x ) | \bar { \Lambda } ^ { t } \}$ .   
+3) $\begin{array} { r } { \vert \vert E \{ \Phi ^ { t } ( x ) \vert \Lambda ^ { t } \} \vert \vert _ { w } \leq \chi \vert \vert \Delta ^ { t } \vert \vert _ { w } , } \end{array}$ where $\chi \in ( 0 , 1 )$   
+4) $\begin{array} { r } { V a r \{ \Phi ^ { t } ( x ) | \Lambda ^ { t } \} \ \le \ \Lambda ( 1 + \vert \vert \triangle ^ { t } \vert \vert _ { W } ) ^ { 2 } } \end{array}$ , where Λ is a constant.
+
+Proof: Please refer to Appendix B.
+
+Theorem 1: In ERSG, we can obtain: $\mathcal { P } ( l i m _ { t  \infty } Q _ { m } ^ { E R } ( s ^ { E R }$ , $\mathbf { \Phi } _ { \mathbf { a } } ^ { E R } , \mathbf { \Phi } _ { \pi } ^ { E R } , t ) ~ = ~ Q _ { m } ^ { E R ^ { * } } \bigl ( s ^ { E R } , ~ { \mathbf { a } } ^ { E R } , \pi _ { m } ^ { E R * } \bigr ) \bigr ) ~ = ~ 1 , \forall m ~ \in \mathbf { B } ^ { * } ,$ aER, πER∗ m )) = 1, ∀m ∈ ，π $\mathcal { M } , s ^ { E \ddot { R } } \in \dot { \mathcal { S } } ^ { E R } , \pmb { a } ^ { E \ddot { R } } \in \dot { A } ^ { E R } .$
+
+Proof: Please refer to Appendix C.
+
+The theorem and analogous to that of $Q _ { m } ^ { A P } , Q _ { m } ^ { T P } , Q _ { n } ^ { D C }$ and d pr $Q _ { n } ^ { T D }$ $\phantom { } \overline { { Q _ { m } ^ { E R } } }$ are omitted here for conciseness.
+
+Through the theoretical analysis, we show that the optimal NE exists in the proposed RLDC algorithm, and the NE point can be obtained by updating Q-value (i.e., updating Q matrix one by one). Specifically, in Theorem 1, we first prove $\begin{array} { r l } { \mathcal { P } ( l i m _ { t  \infty } Q _ { m } ^ { E R } ( s ^ { E R } , a ^ { \dot { E } R } , \pi _ { m } ^ { E R } , t ) } & { { } = } \end{array}$ $\begin{array} { r l r } { \overline { { Q } } _ { m } ^ { E R } ( s ^ { E R } , \mathbf { \dot { a } } ^ { E R } , \pi _ { m } ^ { E R } ) ) } & { { } = } & { 1 . } \end{array}$ Qm ER sER . Then, according to the proof of Lemma 2, we have $\mathcal { P } ( \mathit { l i m } _ { t  \infty } \overline { { Q } } _ { m } ^ { E R }$ Qm ER $\begin{array} { r l r } { ( s ^ { E R } , { \bf a } ^ { E R } , \pi _ { m } ^ { E R } , t ) } & { { } = } & { Q _ { m } ^ { E R ^ { * } } ( s ^ { E R } , a ^ { E R } , \pi _ { m } ^ { E R * } ) ) \quad = \quad 1 } \end{array}$ ER∗ )) $Q _ { m } ^ { E R ^ { * } } ( s ^ { E R } ,  { \pmb { a } } ^ { E R } , \pi _ { m } ^ { E R * } ) ) \ = \ 1$ ∗ (sER, aER, $\mathcal { P } ( l i m _ { t  \infty } Q _ { m } ^ { E R } ( s ^ { E R } , { \pmb a } ^ { E R } , \ \pi _ { m } ^ { E R } , t ) \ =$ , which indicates that leader π m , UAV m can obtain the optimal policy $\pi _ { m } ^ { E R * }$ in ERSG. Similarly, according to Lobtain their optimal policies $\{ \pi _ { 1 } ^ { E R * } , \pi _ { 2 } ^ { E R * } , \ldots , \pi _ { M } ^ { E R * } \}$ . . . , π M } Vs can, which indicates that the system can reach NE point in ERSG. Given the analogy in theorem and proof between $Q _ { n } ^ { T D }$ and $Q _ { m } ^ { E R }$ , it follows that APSG, TPSG, DCSG, and $Q _ { m } ^ { A P } , Q _ { m } ^ { T P } , Q _ { n } ^ { D C }$ n , TDSG can each reach their respective NE by the RLDC algorithm. Consequently, the NE of interconnected multi-agent stochastic games encompasses those of ERSG, APSG, TPSG, DCSG, and TDSG. Thus, the system can reach this NE point in interconnected multi-agent stochastic games.
+
+The Complexity of the RLDC Algorithm: Hereafter, we analyze the time complexity and space complexity of the proposed RLDC algorithm, which plays a critical role in UAV swarm assisted MEC system. The time complexity of the proposed RLDC algorithm is dependent on three factors: the maximal iteration counter LOOP, the number of time slots T, and the number of follower UAVs N. Thus, the time complexity can be written as $O ( L O O P ^ { * } T ^ { * } N )$ . The space complexity of the proposed RLDC algorithm is determined by the size of information exchanged among all UAVs during
+
+TABLE IV SIMULATION PARAMETERS 
+
+<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>Carrier frequency  $f^{c}$ </td><td>3 GHz</td></tr><tr><td>Effective Capacitance Coefficient  $\xi$ </td><td> $10^{-18}$ </td></tr><tr><td>Number of task types C</td><td>10</td></tr><tr><td>Time slot length t</td><td>30 s</td></tr><tr><td>Length of the small grid q</td><td>50 m</td></tr><tr><td>Storage capacity of each leader UAV  $S^{L}$ </td><td>6</td></tr><tr><td>Storage capacity of each follower UAV  $S^{F}$ </td><td>4</td></tr><tr><td>Transmission power of follower UAV  $p^{F}$ </td><td>0.2 W</td></tr><tr><td>Bandwidth B</td><td>10 MHz</td></tr><tr><td>Power spectral density of noise  $\varpi$ </td><td>-174dBm/H</td></tr><tr><td>UAV velocity v</td><td>20 m/s</td></tr><tr><td>Length of the large grid q</td><td>150 m</td></tr><tr><td>Computing capacity of leader UAV  $f^{L}$ </td><td>4 Mbps</td></tr><tr><td>Computing capacity of follower UAV  $f^{F}$ </td><td>2 Mbps</td></tr><tr><td>Transmission power of leader UAV  $p^{L}$ </td><td>2 W</td></tr><tr><td>The maximum number of follower UAVs</td><td>9</td></tr><tr><td>Task size of follower UAVs  $\kappa_{k,c}$  in a UAV swarm  $N^{clus}$ </td><td>10 Mbits</td></tr></table>
+
+dynamic clustering and scheduling. Specifically, the size of this information is determined by the dimension of the state space in various learners. As mentioned before, the dimension of the state space in the ER learner is influenced by the energy levels. The dimension of the state space in the AP learner depends on the application types. Furthermore, the dimension of the state space in the TP learner is affected by the number of possible positions. Similarly, the dimension of the state space in the DC learner is influenced by the number of possible positions. Finally, the dimension of the state space in the TD learner is influenced by the number of possible positions and application types. Therefore, for a given UAV swarm assisted MEC system, the space complexity of the proposed RLDC algorithm remains constant even with increasing number of IoT devices over the target region, which indicates that the proposed RLDC algorithm demonstrates scalability.
+
+# VI. SIMULATION RESULTS
+
+In this section, simulations are conducted to evaluate the performance of the proposed RLDC algorithm. We consider a 1000m × 1000m square target region, which includes 3 leader UAVs and 9 follower UAVs. Meanwhile, 500 IoT devices are randomly located in the target region, and their positions are not time-varying. Additionally, the leader UAVs’ altitude is 150m, while the follower UAVs’ altitude is 120m. Table IV lists the values of main simulation parameters. Table V lists the RLDC algorithm settings. Similar settings have also been utilized in previous work such as [20], [34], [35], [36]. It is worth noting that specific parameters have the potential to vary based on various evaluation scenarios. For the purpose of comparison, we introduce two benchmark algorithms, namely, a fixed UAV swarm algorithm and a no UAV swarm algorithm.
+
+• Fixed UAV swarm algorithm is devised to maximize the energy efficiency of all UAVs without considering dynamic clustering based on the RLDC algorithm, where each leader UAV contains a TP learner, an ER learner and an AP learner, and each follower UAV contains a TD learner.   
+• No UAV swarm algorithm is devised to maximize the energy efficiency of all UAVs without considering UAV
+
+TABLE V RLDC ALGORITHM SETTINGS 
+
+<table><tr><td colspan="3">Leader UAV</td></tr><tr><td colspan="3">ER learner (state space size =  $\lceil E^{total} / E^{unit} \rceil^M$ , action space size = 2)AP learner (state space size =  $2^{2M+C}$ , action space size =  $C! / ((C-S^L) * S^L!)$ )TP learner (state space size =  $((X^{up} - X^{low})/l)^{2M} * ((Y^{up} - Y^{low})/l)^{2M} * 2^N$ ), action space size = 4)</td></tr><tr><td colspan="3">Follower UAV</td></tr><tr><td colspan="3">DC learner (state space size =  $((X^{up} - X^{low})/l)^{2M} * ((Y^{up} - Y^{low})/l)^{2M} * 2^N$ ), action space size = M)TD learner (state space size =  $2^{2N+2C}$ , action space size = 2)</td></tr><tr><td>Discounted Factor σ</td><td>Learning Rate η/ν</td><td>Probability ε</td></tr><tr><td>0.9</td><td>0.1/0.1</td><td>0.1</td></tr></table>
+
+![](images/4d2fc11114678b2d3e80ae576c5398534fa3c133c59f8f6c75413b6c20dc316b.jpg)
+
+<details>
+<summary>line</summary>
+
+| Time Slot | Leader UAV 1 | Leader UAV 2 | Leader UAV 3 |
+| --------- | ------------ | ------------ | ------------ |
+| 1         | 3.4e4        | 3.5e4        | 3.5e4        |
+| 3         | 3.4e4        | 3.5e4        | 3.5e4        |
+| 5         | 2.9e4        | 4.1e4        | 3.5e4        |
+| 7         | 2.7e4        | 4.2e4        | 3.5e4        |
+| 9         | 2.7e4        | 4.2e4        | 3.5e4        |
+| 11        | 2.7e4        | 4.2e4        | 3.5e4        |
+| 13        | 2.7e4        | 4.2e4        | 3.5e4        |
+| 15        | 2.7e4        | 3.6e4        | 3.9e4        |
+| 17        | 2.7e4        | 3.5e4        | 4.1e4        |
+| 19        | 2.7e4        | 3.5e4        | 4.1e4        |
+| 21        | 2.7e4        | 3.5e4        | 3.1e4        |
+| 23        | 3.8e4        | 3.5e4        | 2.8e4        |
+| 25        | 4.1e4        | 3.5e4        | 2.8e4        |
+| 27        | 4.1e4        | 3.5e4        | 2.8e4        |
+| 29        | 3.6e4        | 4.1e4        | 2.8e4        |
+| 31        | 3.5e4        | 4.1e4        | 2.8e4        |
+</details>
+
+Fig. 4. Comparison of leader UAVs’ energy consumption with varying time slots.
+
+swarm and leader UAV based on the RLDC algorithm, where each UAV is equipped with a TP learner, an ER learner and an AP learner.
+
+Fig. 4 illustrates the variation in energy consumption of leader UAVs over time slots, indicating the impact of dynamic clustering on leader UAVs’ energy consumption. Since leader UAVs need to expend energy to charge their follower UAVs, an increase in the number of follower UAVs following the leader UAV results in higher energy consumption for the leader UAV. Then, the follower UAV will re-select the leader UAV based on its own position, the distance between itself and the leader UAVs, and other factors. Consequently, the energy consumption of the leader UAV continues fluctuating. It is obvious that the energy consumption of leader UAV 1 decreases rapidly and the energy consumption of leader UAV 2 increases rapidly at time slot 5. This can be attributed to the dynamic clustering, where a follower UAV changes its leader UAV from leader UAV 1 to leader UAV 2, and thereby, the leader UAV 2 has to consume more energy to charge the follower UAV. The explanations of the energy consumption of leader UAV 2 and 3 at time slot 15 and leader UAV 1 and 2 at time slot 28 are similar to those discussed above. Meanwhile, the energy consumption of leader UAV 1 and 3 at time slot 22 is double that in time slot 5, 15 and 28, indicating that two follower UAVs change their leader UAV from leader UAV 3 to leader UAV 1. All these outcomes are intended to demonstrate that the RLDC algorithm is capable of achieving dynamic clustering of UAV swarms.
+
+Fig. 5 depicts all UAVs’ energy efficiency as the length of time slot varies. It is evident that the energy efficiency of all UAVs is zero due to the moving time exceeding the length of time slot. As the length of time slot increases, more tasks can be offloaded and processed by follower UAVs or leader UAVs from IoT devices, improving the energy efficiency. However, once all tasks have been processed, the UAVs remain in an idle state and consume energy while hovering over the target region until the time slot expires. Furthermore, the results demonstrate that the proposed RLDC algorithm outperforms both the fixed UAV swarm algorithm and no UAV swarm algorithm. This superiority arises from several reasons: i) in cases where the task requests from IoT devices are dynamically changing, the fixed UAV swarm cannot dynamically cluster according to the ever-changing task requests, and as a result, many tasks cannot be processed; ii) the storage capacity of each UAV is limited, and furthermore, UAVs are unable to delegate the tasks that cannot be processed to other UAVs without UAV swarm.
+
+![](images/c7c29007dcf8b30dcb500993b0a19d44a719c0bd368c9f445b9f5655641aaab6.jpg)
+
+<details>
+<summary>line</summary>
+
+| Length of Time Slot (s) | Proposed USRL | Fixed Swarm | No Swarm |
+| ----------------------- | ------------- | ----------- | -------- |
+| 10                      | 0             | 0           | 0        |
+| 15                      | 0             | 0           | 0        |
+| 20                      | 340           | 270         | 160      |
+| 25                      | 400           | 340         | 290      |
+| 30                      | 360           | 300         | 250      |
+| 35                      | 320           | 280         | 230      |
+| 40                      | 290           | 260         | 220      |
+| 45                      | 260           | 240         | 210      |
+| 50                      | 240           | 230         | 210      |
+</details>
+
+Fig. 5. Comparison of all UAVs’ energy efficiency with varying lengths of time slot in fixed UAV swarm algorithm.
+
+![](images/e0194a6c7045f11be712ccb2ba89c6c9f94d0942a7172dcd7bd71134fe724b92.jpg)
+
+<details>
+<summary>line</summary>
+
+| Number of IoT Devices | Proposed RLDC | Fixed Swarm | No Swarm |
+| --------------------- | ------------- | ----------- | -------- |
+| 100                   | 0             | 0           | 0        |
+| 300                   | 320           | 280         | 210      |
+| 500                   | 400           | 340         | 280      |
+| 700                   | 480           | 400         | 340      |
+| 900                   | 520           | 440         | 380      |
+| 1100                  | 560           | 480         | 400      |
+| 1300                  | 600           | 500         | 420      |
+| 1500                  | 640           | 520         | 440      |
+| 1700                  | 660           | 540         | 460      |
+| 1900                  | 680           | 550         | 470      |
+</details>
+
+Fig. 6. Comparison of all UAVs’ energy efficiency with varying numbers of IoT devices in fixed UAV swarm algorithm.
+
+Fig. 6 examines all UAVs’ energy efficiency as the number of IoT devices varies. Obviously, the energy efficiency of all UAVs exhibits a monotonically increasing trend with the increasing number of IoT devices. This can be attributed to the generation of more task requests by IoT devices as their quantity grows. Furthermore, the results demonstrate that the proposed RLDC algorithm surpasses both the fixed UAV swarm and no UAV swarm algorithms, which is consistent with the discussion in Fig. 5.
+
+Fig. 7 illustrates all UAVs’ energy efficiency as the UAV velocity varies. Obviously, the energy efficiency of all UAVs initially increases and then decreases with the UAV velocity increasing. Since as the velocity of UAVs increases, there is a reduction in the time taken for movement. As a result, UAVs have more time available for hovering and processing tasks. The decrease in energy efficiency of all UAVs can be attributed to two main factors: increased propulsion energy consumption as velocity increases and insufficient tasks to be processed. It is evident that the performance superiority of the proposed RLDC algorithm over the other two algorithms, which is consistent with the discussion in Fig. 5.
+
+![](images/acdf8948f452603c5ec239ea9cc3bdcedb2ec7fc8e3d06a51180679b9b8749dc.jpg)
+
+<details>
+<summary>line</summary>
+
+| UAV Velocity (m/s) | Proposed RLDC | Fixed Swarm | No Swarm |
+| ------------------ | ------------- | ----------- | -------- |
+| 10                 | 0             | 0           | 0        |
+| 15                 | 250           | 230         | 150      |
+| 20                 | 380           | 340         | 260      |
+| 25                 | 400           | 370         | 280      |
+| 30                 | 420           | 390         | 300      |
+| 35                 | 410           | 390         | 295      |
+| 40                 | 400           | 380         | 290      |
+| 45                 | 380           | 360         | 260      |
+| 50                 | 350           | 320         | 220      |
+</details>
+
+Fig. 7. Comparison of all UAVs’ energy efficiency with varying UAV velocities in fixed UAV swarm algorithm.
+
+![](images/145fd9b54767672b3f95a43b189b1a6e93b015dfebb8576e48bb3c83a57fcec8.jpg)
+
+<details>
+<summary>line</summary>
+
+| Storage Capacity of Leader UAV | q=25 m | q=50 m | q=75 m |
+| ------------------------------ | ------ | ------ | ------ |
+| 1                              | 205    | 240    | 110    |
+| 2                              | 220    | 260    | 115    |
+| 3                              | 230    | 280    | 120    |
+| 4                              | 240    | 300    | 120    |
+| 5                              | 250    | 320    | 120    |
+| 6                              | 260    | 340    | 120    |
+| 7                              | 265    | 360    | 120    |
+| 8                              | 270    | 375    | 120    |
+| 9                              | 275    | 390    | 120    |
+| 10                             | 280    | 400    | 120    |
+</details>
+
+Fig. 8. Comparison of all UAVs’ energy efficiency with varying storage capacities of leader UAV.
+
+Fig. 8 demonstrates all UAVs’ energy efficiency with the varying storage capacities of leader UAV. It can be observed that the performance with small grid size 50m outperforms that with 25m and 75m. The reason is that the length of small grid 25m accommodates fewer IoT devices, leading to decreased number of tasks processed by UAVs. In contrast, while the length of small grid 75m may accommodate a greater number of IoT devices, it also results in a substantial increase in the energy consumption of all UAVs as the moving distance of UAV swarm increases. Furthermore, the results also indicate that all UAVs’ energy efficiency increases as the storage capacity of leader UAV grows, which can be attributed to the increased capability of processing various types of applications.
+
+Fig. 9 shows the average task processing latency with the varying transmission power of follower UAVs. It can be seen that the average task processing latency increases as the length of small grid increases. This phenomenon can be attributed to the longer length of small grid leading to the longer average distance between leader UAVs and follower UAVs, which results in longer average task delegation time. Moreover, the average task processing latency consistently decreases with the increasing transmission power of follower UAVs, which can be attributed to higher transmission power leading to shorter task delegation time.
+
+![](images/d2120a85001a004826bcd0abfac3c7a2fc46bf6682b8bce49dd3fd261cc05df3.jpg)
+
+<details>
+<summary>line</summary>
+
+| Transmission Power of Follower UAV (W) | q=25 m | q=50 m | q=75 m |
+| -------------------------------------- | ------ | ------ | ------ |
+| 0.5                                    | 8.8    | 12.8   | 16.0   |
+| 1.0                                    | 8.5    | 12.5   | 15.8   |
+| 1.5                                    | 8.3    | 12.3   | 15.6   |
+| 2.0                                    | 8.1    | 12.1   | 15.4   |
+| 2.5                                    | 7.9    | 11.9   | 15.2   |
+| 3.0                                    | 7.7    | 11.7   | 15.0   |
+| 3.5                                    | 7.5    | 11.5   | 14.8   |
+| 4.0                                    | 7.3    | 11.3   | 14.6   |
+| 4.5                                    | 7.1    | 11.1   | 14.4   |
+| 5.0                                    | 6.9    | 10.9   | 14.2   |
+</details>
+
+Fig. 9. Comparison of average task processing latency with different transmission power of follower UAV.
+
+![](images/b52be4aff98f0705a4e06161c2a8b930b0a7e8c5345bb2547600e7613350ab20.jpg)
+
+<details>
+<summary>line</summary>
+
+| Computing Capacity of Leader UAV (bit/s) ×10⁶ | q=25 m | q=50 m | q=75 m |
+| --------------------------------------------- | ------ | ------ | ------ |
+| 1                                             | 12.0   | 16.0   | 19.0   |
+| 1.5                                           | 9.5    | 13.5   | 17.0   |
+| 2                                             | 8.0    | 12.0   | 15.5   |
+| 2.5                                           | 6.5    | 10.5   | 14.0   |
+| 3                                             | 5.5    | 9.5    | 12.5   |
+| 3.5                                           | 4.5    | 8.5    | 11.5   |
+| 4                                             | 4.0    | 8.0    | 10.5   |
+| 4.5                                           | 3.5    | 7.5    | 10.0   |
+| 5                                             | 3.0    | 7.0    | 9.5    |
+</details>
+
+Fig. 10. Comparison of average task processing latency with different computing capacities.
+
+Fig. 10 depicts the average task processing latency with the varying computing capacities of leader UAV. It can be observed that the average task processing latency increases as the length of small grid increases. The explanation for this trend is similar to those presented in Fig. 9. Furthermore, the average task processing latency exhibits a monotonically decreasing trend with the computing capacity of leader UAV increasing. This trend can be attributed to the fact that as the computing capacity of leader UAV increases, task processing time of leader UAV decreases, and the average task processing latency decreases accordingly.
+
+# VII. CONCLUSION
+
+In this paper, with the aim of maximizing the long-term energy efficiency of the UAV swarm assisted MEC system, a joint optimization problem of UAV swarm dynamic clustering and scheduling is formulated. Considering the cooperation and competition among intelligent UAVs as well as the environment uncertainty, the optimization problem is reformulated as a series of interconnected multi-agent stochastic games, and theoretically prove the existence of the corresponding NE. Furthermore, we propose a novel RLDC algorithm for obtaining such an equilibrium. Simulation results show that, compared to counterparts, the proposed RLDC algorithm significantly increases the energy efficiency of the UAV swarm assisted MEC system.
+
+# APPENDIX A PROOF OF LEMMA 1
+
+According to [37], if any problem can be proved to be a multi-period stage game, it always exists the NE. Therefore, the key for proving the existence of NE is whether our proposed problem is a multi-period stage game. First of all, by the formulation of utility functions and corresponding strategies in Section III, our proposed problem can be defined as a stochastic game, which is a generalized form of repeated game involving various state transition probabilities [38]. Furthermore, it is well known that any repeated game can be seen as a series of multiple stage games. Consequently, we can conclude that our proposed problem is a stochastic game consisting of a set of multiple stage games, each characterized by distinct stage transition probabilities, and is equivalent to the multi-period stage game [39]. In order to clearly express such NE in our specifically considered problem (as we just described), we introduce Definition $2 \ ( \mathrm { i . e . }$ , the multi-UAV stage game expression) and Definition 3 (i.e., the NE expression) as follows:
+
+Definition 2: A multi-UAV stage game can be defined as $( \widetilde { Y } _ { 1 } , \widetilde { Y } _ { 2 } , \dots , \widetilde { Y } _ { M } ) \ [ 3 8 ]$ , where $\widetilde { \boldsymbol { { r } } } _ { m }$ denotes the reward of leader UAV m $\in \mathcal { M }$ over the joint action space [38]. Thus, $\widetilde { r } _ { m }$ is:
+
+$$
+\widetilde {\Upsilon} _ {m} = \left\{r _ {m} (t) \left(a _ {1} (t), a _ {2} (t), \dots , a _ {M} (t)\right) \mid a _ {m} (t) \in \mathcal {A} _ {m} \right\}. \tag {18}
+$$
+
+Definition 3: Let ϑER−m $\vartheta _ { - m } ^ { E R }$ represent the product of all leader $\pi _ { 1 } ^ { E R } , \cdot \cdot \cdot , \pi _ { m - 1 } ^ { E R } \cdot \pi _ { m + 1 } ^ { \dot { E R } } , \cdot \cdot \cdot , \pi _ { M } ^ { E R }$ π1 UAV . Thus $m \in \mathcal { M } , \vartheta _ { - m } ^ { E R } \equiv$ stage game joint policy (Υ ER , $\{ \pi _ { 1 } ^ { \mathbf { \tilde { \it E R } } } , \pi _ { 2 } ^ { \mathbf { \tilde { \it E R } } } , \dots , \pi _ { U } ^ { \mathbf { \tilde { \it E R } } } \}$ $( \bar { \tilde { Y } } _ { 1 } ^ { E R } , \bar { \tilde { Y } } _ { 2 } ^ { E R } , \dots , \tilde { \tilde { Y } } _ { M } ^ { E R } )$ {π1 , Υ ER ), the NE consists of a  πERU }, when the inequality is M satisfied [38]:
+
+$$
+\pi_ {m} ^ {E R} \vartheta_ {- m} ^ {E R} \widetilde {\Upsilon} _ {m} ^ {E R} \geq \boldsymbol {\pi} _ {m} ^ {E R} \vartheta_ {- m} ^ {E R} \widetilde {\Upsilon} _ {m} ^ {E R}, \forall m \in \mathcal {M}, \forall \pi_ {m} \in \boldsymbol {\pi} _ {m}. \tag {19}
+$$
+
+$\{ \pi _ { 1 } ^ { E R } , \pi _ { 2 } ^ { E R } , \ldots , \pi _ { U } ^ { E R } \}$ e NE consists of, when the policy $\pi _ { m } ^ { E R }$ et of policiesof the leader UAV m ∈ M can maximize its utility function. Hence, {πER∗ 1 , πE2 we can infer that $\{ \pi _ { 1 } ^ { E R * } , \pi _ { 2 } ^ { E R * } , \ldots , \pi _ { M } ^ { \ddot { E } \ddot { R } * } \}$ ，π2 . , πm $\pi _ { m } ^ { E R * } \vartheta _ { - m } ^ { E R * } \widetilde { T } _ { m } ^ { E R } \ \geq \ \overline { { \pi _ { m } ^ { E R } \vartheta _ { - m } ^ { E R * } } } \widetilde { T } _ { m } ^ { E R }$ πER∗ M } forms the NE, where πERm $\mathrm { N E , }$ π m ϑER∗ −m ΥERm , and $\pi _ { m } ^ { E R * }$ ∗ is the optimal policy of leader UAV $m \in { \mathcal { M } }$ . In addition, it is worth noting that, in our paper, the utility function is defined as the expected discounted reward function. If an NE is reached, every leader UAV m $\in \mathcal { M }$ will choose to take the NE strategy and will not unilaterally deviate from the NE, thereby ensuring that the utility function $Q _ { m } ^ { E R } ( s ^ { E R } , \pmb { a } ^ { E R } , \pi _ { m } ^ { E R } )$ , aER, remains unaltered, and consequently, the reward remains unchanged [26].
+
+# APPENDIX B PROOF OF LEMMA 2
+
+At time slot t, the iteration process of the RLDC algorithm for a given state-action pair $( s ^ { E R } , \pmb { a } ^ { E R } )$ can be represented by $\{ Q _ { m } ^ { E R } ( s ^ { E R } , { \pmb \alpha } ^ { E R } , t + 1 ) \}$ ER, a , $\begin{array} { r l } { \overleftarrow { Q } ^ { E R } ( s ^ { E R } , { \mathbf { \em a } ^ { E R } } , t ) } & { { } ~ = } \end{array}$ Q aER, t) $\begin{array} { r } { \frac { 1 } { M } \sum _ { m = 1 } ^ { M } Q _ { m } ^ { E R } ( s ^ { E R } , { \pmb a } ^ { E R } , t ) , \forall t \geq 0 } \end{array}$
+
+In this proof, the action and state within the bracket are omitted for conciseness, i.e., $Q _ { m } ^ { t } ~ = ~ Q _ { m } ^ { E R } ( s ^ { E R } , { \pmb a } ^ { E R } , t )$
+
+$\overline { { Q } } ^ { t } = \overline { { Q } } ^ { E R } ( s ^ { E R } , a ^ { E R } , t ) , r _ { m } ^ { t } = r _ { m } ( s ^ { E R } , { \bf a } ^ { E R } , s ^ { E R ^ { \prime } } , t )$ , and $\overset { \cdot } { Q } _ { m } ^ { t ^ { \prime } } = \overset { \cdot } { Q } _ { m } ^ { E R } ( s ^ { E R ^ { \prime } } , { \pmb a } ^ { E R ^ { \prime } } , t )$ . According to the equation above, we can obtain:
+
+$$
+\overline {{{Q}}} ^ {t + 1} = \left(1 - \nu^ {t}\right) \overline {{{Q}}} ^ {t} + \frac {\nu^ {t}}{M} \sum_ {m = 1} ^ {M} \left(\mathcal {R} _ {m} ^ {t} + \sigma \max _ {\boldsymbol {a} ^ {E R ^ {\prime}} \in \mathcal {A} ^ {E R}} Q _ {m} ^ {t ^ {\prime}}\right). \tag {20}
+$$
+
+By deducting $Q ^ { * }$ from both sides of equation (20), we have:
+
+$$
+\begin{array}{l} \overline {{{Q}}} ^ {t + 1} - Q ^ {*} = \left(1 - \nu^ {t}\right) \left(\overline {{{Q}}} ^ {t} - Q ^ {*}\right) \\ + \nu^ {t} \left(\frac {1}{M} \sum_ {m = 1} ^ {M} \left(\mathcal {R} _ {m} ^ {t} + \sigma \max _ {\boldsymbol {a} ^ {E R ^ {\prime}} \in \mathcal {A} ^ {E R}} Q _ {m} ^ {t ^ {\prime}}\right) - Q ^ {*}\right). \tag {21} \\ \end{array}
+$$
+
+It is important to highlight that the temporal difference algorithm, as discussed in (21), can be viewed as a stochastic process outlined in Lemma 1 with $\triangle ^ { t + 1 } \ = \ \overline { { Q } } ^ { t } \ - \ Q ^ { * }$ , $\begin{array} { r } { \dot { \Phi } ^ { t } = \frac { 1 } { M } \sum _ { m = 1 } ^ { M } ( \mathcal { R } _ { m } ^ { t } + \sigma \underset { { \pmb a } ^ { E R ^ { \prime } } \in A ^ { E R } } { \operatorname* { m a x } } Q _ { m } ^ { t ^ { \prime } } ) - Q ^ { * } } \end{array}$ and $\nu ^ { t } = \eta ^ { t }$ . Consequently, the condition 1) and 2) in Lemma 1 are satisfied. To meet the requirements of the condition 3) and 4) in Lemma 1, we provide the proof of the temporal difference algorithm in equation (21).
+
+Based on [33, Proposition 5.1], operator $\mathcal F ( \cdot )$ can be considered as a contraction mapping, and $Q ^ { * }$ represents the sole fixed point of $\mathcal F ( \cdot )$ . The expression for $\mathcal F ( \cdot )$ is:
+
+$$
+\begin{array}{l} \mathcal {F} (Q) = \sum_ {s ^ {E R ^ {\prime}} \in \mathcal {S} ^ {E R}} P _ {s ^ {E R} s ^ {E R ^ {\prime}}} ^ {E R} \\ \times \left(\boldsymbol {a} ^ {E R}\right) \left(\frac {1}{M} \sum_ {m = 1} ^ {M} \mathcal {R} _ {m} ^ {t} \left(s ^ {E R}, \boldsymbol {a} ^ {E R}, s ^ {E R ^ {\prime}}\right) \right. \\ \left. + \sigma \max _ {a ^ {E R ^ {\prime}} \in \mathcal {A} ^ {E R}} Q \left(s ^ {E R ^ {\prime}}, \boldsymbol {a} ^ {E R ^ {\prime}}\right)\right). \tag {22} \\ \end{array}
+$$
+
+Thus, we have ${ \mathcal { F } } ( Q ^ { * } ) = Q ^ { * }$ and $| | \mathcal { F } ( Q _ { 1 } ( s ^ { E R } , \pmb { a } ^ { E R } ) )$ $\begin{array} { r l r } { - } & { { } \mathcal { F } ( Q _ { 2 } ( s ^ { E R } , a ^ { E R } ) ) | | _ { \infty } } & { = \quad \ddot { | | Q _ { 1 } ( s ^ { E R } , { \mathbf { a } } ^ { E R } ) } \quad - } \end{array}$ $Q _ { 2 } ( s ^ { E R } , \bar { \pmb { a } } ^ { E R } ) | | _ { \infty } .$ $\begin{array} { r l r l } { E \{ \Phi ^ { t } \} } & { { } } & { = } \end{array}$  s - ∈S P ERs s $\begin{array} { r } { \sum _ { s ^ { E R ^ { \prime } } \in S ^ { E R } } P _ { s ^ { E R } s ^ { E R ^ { \prime } } } ^ { E R } ( \mathbf { a } ^ { E R } ) ( \frac { 1 } { M } \sum _ { m = 1 } ^ { M } \mathcal { R } _ { m } ^ { t } + \sigma \underset { \mathbf { a } ^ { E R ^ { \prime } } \subset A ^ { E R } } { \operatorname* { m a x } } \overline { { Q } } ^ { t ^ { \prime } } - \sigma \underset { \mathbf { a } ^ { E R ^ { \prime } } \subsetneq A ^ { E R } } { \operatorname* { m a x } } \overline { { Q } } ^ { t ^ { \prime } } ) } \end{array}$ Q t - $Q ^ { * } ) ~ = ~ \mathcal { F } ( \overline { { Q } } ^ { t } ) ~ - ~ Q ^ { * }$ . Then, we have $\begin{array} { r l } { | | E \{ \Phi ^ { t } \} | | _ { \infty } } & { { } = } \end{array}$ $| | \mathcal { F } ( \overline { { Q } } ^ { t } ) - \mathcal { F } ( Q ^ { * } ) | | _ { \infty } \ \leq \ \sigma | | \overline { { Q } } ^ { t } - Q ^ { * } | | _ { \infty }$ based on the properties of a contraction mapping, replacing $| | \mathbf { \partial } \cdot \mathbf { \partial } | | _ { \infty }$ with $| | \cdot | | _ { W }$ satisfies the condition 3) in Lemma 1. With respect to the condition 4) in Lemma 1, we can obtain $\begin{array} { r l r } { E \big \{ \bf \dot { \Phi } ^ { t } \big \} } & { { } = } & { \sum _ { s ^ { E R ^ { \prime } } \in { \cal S } ^ { E R } } P _ { s ^ { E R } s ^ { E R ^ { \prime } } } ^ { E R } ( { \pmb a } ^ { E R } ) ( \frac { 1 } { M } \sum _ { m = 1 } ^ { M } r _ { m } ~ + } \end{array}$ $\sigma _ { _ { a } E R ^ { \prime } \in A ^ { E R } } \overline { { Q } } ^ { t ^ { \prime } } - Q ^ { \ast } ) = \mathcal { F } ( \overline { { Q } } ^ { t } ) - Q ^ { \ast }$ a - ∈A Q t - , by which $V a r \{ \Phi ^ { t } \} ~ \leq ~ { \cal A } ( 1 + \vert \vert \overline { { { Q } } } ^ { t } - \left. Q ^ { * } \right. \vert _ { W } ^ { 2 } )$ can be rigorously proved for a given constant Λ owing to the fact that $\textstyle { \frac { 1 } { M } } \sum _ { m = 1 } ^ { M } r _ { m } ^ { t }$ is bounded [40]. Therefore, the condition 4) in $\begin{array} { r l } { \mathcal { P } ( \mathit { l i m } _ { t  \infty } \overline { { Q } } ( s ^ { E R } , { \mathbf { a } } ^ { E R } \pi _ { m } ^ { E R } , t ) } & { { } = } \end{array}$ , $Q ^ { E R ^ { * } } ( s ^ { E R } , { \pmb { a } } ^ { E R } , \pi _ { m } ^ { E R } ) ) \stackrel { * } { = } 1$ , π m
+
+# APPENDIX C PROOF OF THEOREM 1
+
+Similar to Lemma 2, the action and state within the bracket are excluded in this proof.
+
+Considering that the Q value of state-action pair $( s ^ { E R } , \pmb { a } ^ { E R } )$ is updateds at state and only if the joint action, we represent the sequence aER $\mathbf { \delta } _ { a } ^ { E R }$ $s ^ { E R }$ of updating state-action pairs as $\{ j \} , \forall j \geq 0$ in the ER learner. Hence, we have: $\begin{array} { r l r } { \dot { Q } ^ { j + 1 } } & { { } = } & { ( W _ { M } - } \end{array}$ $\eta ^ { j } { \mathcal { L } } \ - \ \nu ^ { j } W _ { M } ) { \cal Q } ^ { j } \ + \ \nu ^ { j } ( R ^ { j } \ + \ V ^ { j } )$ $( Q _ { 1 } ^ { j + 1 } , \dots , Q _ { m } ^ { \bar { j } + 1 } ) ^ { \top }$ , and $W _ { M }$ is the $M \times M$ , where identity matrix. $\begin{array} { r l } { Q ^ { j + 1 } } & { { } = } \end{array}$ 1  Then, we can obtain $\mathbf { { \mathbf { } } } R ^ { j } \mathbf { \mathbf { \Phi } } = \mathbf { \Phi } ( \mathcal { R } _ { 1 } ^ { j } , \dots , \mathcal { R } _ { M } ^ { j } ) ^ { \top }$ and $V ^ { j } \ =$ $( \sigma \operatorname* { m a x } _ { \pmb { a } ^ { E R ^ { \prime } } \in \mathcal { A } ^ { E R } } Q _ { 1 } ^ { j ^ { \prime } } , \dots , \sigma \operatorname* { m a x } _ { \pmb { a } ^ { E R ^ { \prime } } \in \mathcal { A } ^ { E R } } Q _ { M } ^ { j ^ { \prime } } ) ^ { \top }$ Q j -1 , . . . , σ . Furthermore, we can obtain: Qj +1 − Qj + $Q ^ { j + 1 } - \overline { { { Q } } } ^ { j + 1 } = ( { \cal W } _ { M } - \eta ^ { j } \mathcal { L } - \nu ^ { j } { \cal Y } _ { M } ) ( Q ^ { j } -$ $\overline { { { \pmb { Q } } } } ^ { j } ) + \nu ^ { j } ( \hat { \pmb { R } } ^ { j } + \hat { \pmb { V } } ^ { j } )$ , where the M-dimensional column vector of ones is denoted as ${ \bf 1 } _ { M }$ . Then we have $\begin{array} { r l } { \overline { { \pmb { Q } } } ^ { j } } & { { } = } \end{array}$ $\overline { { Q } } ^ { \jmath } { \bf 1 } _ { M }$ . Additionally, we can derive $\hat { \pmb { R } } ^ { j } = ( { \pmb { W } } _ { M } - \frac { } { }$ $\begin{array} { r } { ( \frac { 1 } { M } ) \mathbf { 1 } _ { M } ( \mathbf { 1 } _ { M } ) ^ { \top } ) R ^ { j } } \end{array}$ and $\begin{array} { r } { \hat { \pmb { V } } ^ { j } = ( \pmb { W } _ { M } - ( \frac { 1 } { M } ) \pmb { 1 } _ { M } ( \pmb { 1 } _ { M } ) ^ { \top } ) \pmb { V } ^ { j } } \end{array}$ . Hence, we obtain:
+
+$$
+\begin{array}{l} \left\| \boldsymbol {Q} ^ {j + 1} - \overline {{\boldsymbol {Q}}} ^ {j + 1} \right\| \\ = \left\| \left(\boldsymbol {W} _ {M} - \eta^ {j} \mathcal {L} - \nu^ {j} \boldsymbol {W} _ {M}\right) \boldsymbol {Q} ^ {j} - \overline {{{\boldsymbol {Q}}}} ^ {j + 1} \right\| + \left\| \nu^ {j} \left(\boldsymbol {R} ^ {j} + \boldsymbol {V} ^ {j}\right) \right\| \\ \stackrel {(\varrho)} {\leq} \left(1 - X _ {j} + \nu^ {j}\right) \left\| \boldsymbol {Q} ^ {j} - \overline {{\boldsymbol {Q}}} ^ {j} \right\| + \nu^ {j} \left(\left\| \hat {\boldsymbol {R}} ^ {j} \right\| + \left\| \hat {\boldsymbol {V}} ^ {j} \right\|\right), \tag {23} \\ \end{array}
+$$
+
+where the value of () is determined according to [41, Lemma 4.4] while $X _ { j }  0 \mathrm { ~ a s ~ } j  \infty$ with $X _ { j } \in [ 0 , 1 ] .$ . $\mathbf { A s } \nu ^ { j } \to 0$ when $j  \infty ,$ , it follows that $( 1 - X _ { j } + \nu ^ { j } )  0$ as well. Consequently, we can conclude that $\mathcal { P } ( l i m _ { t  \infty } | | Q ^ { j } ~ -$ $\overline { { { Q } } } ^ { \jmath } | | \ = \ 0 ) \ = \ 1$ $\mathcal { P } ( l i m _ { t  \infty } Q _ { m } ^ { E R } ( s ^ { E R } , { \pmb a } ^ { E R } ) \ =$ $\overline { { Q } } _ { m } ^ { E R } ( s ^ { E R } , \pmb { a } ^ { E R } ) ) = 1 , \forall m \in \mathcal { M } , s ^ { E R } \in \mathcal { S } ^ { E R } , \pmb { a } ^ { E R } \in \mathcal { A } ^ { E R }$ Qm R ∈ SER,
+
+P(limt→∞QERm ${ \mathcal { P } } ( l i m _ { t  \infty } { \overline { { Q } } } _ { m } ^ { E R } ( s ^ { E R } , { \pmb a } ^ { E R } ) ~ = ~ Q _ { m } ^ { E R ^ { * } } ( s ^ { E R } , { \pmb a } ^ { E R } ) ) ~ = ~ 1$ Hence, we can obtain $Q _ { m } ^ { E R ^ { * } } ( s ^ { E R } ,  { \pmb { a } } ^ { E R } ) = 1$ P t→∞ m  , and this completes the proof of $\stackrel { \cdot } { \mathcal { P } } ( l i m _ { t  \infty } Q _ { m } ^ { E R } ( s ^ { E R } , \dot { \mathbf { a } ^ { E R } } )$ = Theorem 1.
+
+# REFERENCES
+
+[1] J. Li, J. Chen, C. Yi, T. Zhang, K. Zhu, and J. Cai, “Energy-efficient UAV swarm assisted MEC with dynamic clustering and scheduling,” in Proc. IEEE WCNC, 2024, pp. 1–6.   
+[2] Y. Liao, X. Chen, S. Xia, Q. Ai, and Q. Liu, “Energy minimization for UAV swarm-enabled wireless inland ship MEC network with time windows,” IEEE Trans. Green Commun. Netw., vol. 7, no. 2, pp. 594–608, Jun. 2023.   
+[3] C. Yi, S. Huang, and J. Cai, “An incentive mechanism integrating joint power, channel and link management for social-aware D2D content sharing and proactive caching,” IEEE Trans. Mobile Comput., vol. 17, no. 4, pp. 789–802, Apr. 2018.   
+[4] J. Li, C. Yi, J. Chen, K. Zhu, and J. Cai, “Joint trajectory planning, application placement, and energy renewal for UAV-assisted MEC: A triple-learner-based approach,” IEEE Internet Things J., vol. 10, no. 15, pp. 13622–13636, Aug. 2023.   
+[5] W. He, H. Yao, T. Mai, F. Wang, and M. Guizani, “Three-stage Stackelberg game enabled clustered federated learning in heterogeneous UAV swarms,” IEEE Trans. Veh. Technol., vol. 72, no. 7, pp. 9366–9380, Jul. 2023.   
+[6] Y. Shi, C. Yi, R. Wang, Q. Wu, B. Chen, and J. Cai, “Service migration or task rerouting: A two-timescale online resource optimization for MEC,” IEEE Trans. Wireless Commun., vol. 23, no. 2, pp. 1503–1519, Feb. 2024.   
+[7] Y. Liu, J. Yan, and X. Zhao, “Deep reinforcement learning based latency minimization for mobile edge computing with virtualization in maritime UAV communication network,” IEEE Trans. Veh. Technol., vol. 71, no. 4, pp. 4225–4236, Apr. 2022.
+
+[8] Y. Miao, K. Hwang, D. Wu, Y. Hao, and M. Chen, “Drone swarm path planning for mobile edge computing in Industrial Internet of Things,” IEEE Trans. Ind. Inf., vol. 19, no. 5, pp. 6836–6848, May 2023.   
+[9] K. Wang, X. Zhang, L. Duan, and J. Tie, “Multi-UAV cooperative trajectory for servicing dynamic demands and charging battery,” IEEE Trans. Mob. Comput., vol. 22, no. 3, pp. 1599–1614, Mar. 2023.   
+[10] T. Li, S. Leng, Z. Wang, K. Zhang, and L. Zhou, “Intelligent resource allocation schemes for UAV-swarm-based cooperative sensing,” IEEE Internet Things J., vol. 9, no. 21, pp. 21570–21582, Nov. 2022.   
+[11] A. Mukherjee, S. Misra, V. S. P. Chandra, and M. S. Obaidat, “Resourceoptimized multiarmed bandit-based offload path selection in edge UAV swarms,” IEEE Internet Things J., vol. 6, no. 3, pp. 4889–4896, Jun. 2019.   
+[12] Y. Shi, Y. Yang, C. Yi, B. Chen, and J. Cai, “Towards online reliability-enhanced microservice deployment with layer sharing in edge computing,” IEEE Internet Things J., vol. 11, no. 13, pp. 23370–23383, Jul. 2024.   
+[13] Y. Wang, H. Guo, and J. Liu, “Cooperative task offloading in UAV swarm-based edge computing,” in Proc. IEEE GLOBECOM, 2021, pp. 1–6.   
+[14] W. Huang, H. Guo, and J. Liu, “Task offloading in UAV swarmbased edge computing: Grouping and role division,” in Proc. IEEE GLOBECOM, 2021, pp. 1–6.   
+[15] A. M. Seid, G. O. Boateng, B. Mareri, G. Sun, and W. Jiang, “Multiagent DRL for task offloading and resource allocation in multi-UAV enabled IoT edge network,” IEEE Trans. Netw. Serv. Manage., vol. 18, no. 4, pp. 4531–4547, Dec. 2021.   
+[16] G. Fragkos, N. Kemp, E. E. Tsiropoulou, and S. Papavassiliou, “Artificial intelligence empowered UAVs data offloading in mobile edge computing,” in Proc. IEEE ICC, 2020, pp. 1–7.   
+[17] L. Liang, Y. Zhao, K. Jian, H. You, and X. Zhang, “Resource allocation strategy for multi-UAV-assisted MEC system with dense mobile users and MCR-WPT,” in Proc. IEEE WCNC, 2023, pp. 1–6.   
+[18] Z. Mou, Y. Zhang, F. Gao, H. Wang, T. Zhang, and Z. Han, “Deep reinforcement learning based three-dimensional area coverage with UAV swarm,” IEEE J. Sel. Areas Commun., vol. 39, no. 10, pp. 3160–3176, Oct. 2021.   
+[19] Y. Yang et al., “Dynamic human digital twin deployment at the edge for task execution: A two-timescale accuracy-aware online optimization,” IEEE Trans. Mobile Comput., early access, May 28, 2024, doi: 10.1109/TMC.2024.3406607.   
+[20] C. Zhao, J. Liu, M. Sheng, W. Teng, Y. Zheng, and J. Li, “Multi-UAV trajectory planning for energy-efficient content coverage: A Decentralized learning-based approach,” IEEE J. Sel. Areas Commun., vol. 39, no. 10, pp. 3193–3207, Oct. 2021.   
+[21] O. S. Oubbati, A. Lakas, and M. Guizani, “Multiagent deep reinforcement learning for wireless-powered UAV networks,” IEEE Internet Things J., vol. 9, no. 17, pp. 16044–16059, Sep. 2022.   
+[22] H. Mei, K. Yang, Q. Liu, and K. Wang, “Joint trajectory-resource optimization in UAV-enabled edge-cloud system with virtualized mobile clone,” IEEE Internet Things J., vol. 7, no. 7, pp. 5906–5921, Jul. 2020.   
+[23] H. Liu, X. Li, M. Fan, G. Wu, W. Pedrycz, and P. Nagaratnam Suganthan, “An autonomous path planning method for unmanned aerial vehicle based on a tangent intersection and target guidance strategy,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 4, pp. 3061–3073, Apr. 2022.   
+[24] H. Liu, G. Wu, L. Zhou, W. Pedrycz, and P. N. Suganthan, “Tangentbased path planning for UAV in a 3-D low altitude urban environment,” IEEE Trans. Intell.Transp. Syst., vol. 24, no. 11, pp. 12062–12077, Nov. 2023.   
+[25] J. Chen, Y. Zhang, L. Wu, T. You, and X. Ning, “An adaptive clusteringbased algorithm for automatic path planning of heterogeneous UAVs,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 9, pp. 16842–16853, Sep. 2022.   
+[26] J. Zheng, Y. Cai, N. Lu, Y. Xu, and X. Shen, “Stochastic game-theoretic spectrum access in distributed and dynamic environment,” IEEE Trans. Veh. Technol., vol. 64, no. 10, pp. 4807–4820, Oct. 2015.   
+[27] R. Chen, C. Yi, K. Zhu, B. Chen, J. Cai, and M. Guizani, “A three-party hierarchical game for physical layer security aware wireless communications with dynamic trilateral coalitions,” IEEE Trans. Wireless Commun., vol. 23, no. 5, pp. 4815–4829, May 2024.   
+[28] A. Mahmood, T. Vu, S. Chatzinotas, and B. Ottersten, “Joint optimization of 3D placement and radio resource allocation for per-UAV sum rate Maximization,” IEEE Trans. Veh. Technol., vol. 72, no. 10, pp. 13094–13105, Oct. 2023.
+
+[29] B. Shi, Z. Chen, and Z. Xu, “A deep reinforcement learning based approach for Optimizing trajectory and frequency in energy constrained multi-UAV assisted MEC system,” IEEE Trans. Netw. Serv. Manage., early access, Feb. 6, 2024, doi: 10.1109/TNSM.2024.3362949.   
+[30] Z. Guo, Z. Chen, P. Liu, J. Luo, X. Yang, and X. Sun, “Multiagent reinforcement learning-based distributed channel access for next generation wireless networks,” IEEE J. Sel. Areas Commun., vol. 40, no. 5, pp. 1587–1599, May 2022.   
+[31] A. Colvin, “CSMA with collision avoidance,” Comput. Commun., vol. 6, no. 5, pp. 227–235, 1983.   
+[32] T. Jaakkola, M. I. Jordan, and S. P. Singh, “Convergence of stochastic iterative dynamic programming algorithms,” in Proc. Adv. Neural Inf. Process. Syst., 1994, pp. 703–710.   
+[33] S. Kar, J. M. F. Moura, and H. V. Poor, “QD-learning: A collaborative distributed strategy for multi-agent reinforcement learning through consensus + innovations,” IEEE Trans. Signal Process., vol. 61, no. 7, pp. 1848–1862, Apr. 2013.   
+[34] C. Yi and J. Cai, “Two-stage spectrum sharing with combinatorial auction and Stackelberg game in recall-based cognitive radio networks,” IEEE Trans. Commun., vol. 62, no. 11, pp. 3740–3752, Nov. 2014.   
+[35] B. Liu, Y. Wan, F. Zhou, Q. Wu, and R. Hu, “Resource allocation and trajectory design for MISO UAV-assisted MEC networks,” IEEE Trans. Veh. Technol., vol. 71, no. 5, pp. 4933–4948, May 2022.   
+[36] Y. Shi, C. Yi, B. Chen, C. Yang, K. Zhu, and J. Cai, “Joint online optimization of data sampling rate and preprocessing mode for edge– cloud collaboration-enabled industrial IoT,” IEEE Internet Things J., vol. 9, no. 17, pp. 16402–16417, Sep. 2022.   
+[37] M. S. Munir, S. F. Abedin, N. H. Tran, Z. Han, E.-N. Huh, and C. S. Hong, “Risk-aware energy scheduling for edge computing with microgrid: A multi-agent deep reinforcement learning approach,” IEEE Trans. Netw. Service Manag., vol. 18, no. 3, pp. 3476–3497, Sep. 2021.   
+[38] J. Hu et al., “Nash q-learning for general-sum stochastic games,” J. Mach. Learn. Res., vol. 4, pp. 1039–1069, Dec. 2003.   
+[39] M. Makris and L. Renou, “Information design in multi-stage games,” Theor. Econom., New York, NY, USA, Working Papers, 2018.   
+[40] F. S. Melo, Convergence of Q-Learning: A Simple Proof, Inst. Syst. Robot., Lisboa, Portugal, 2001.   
+[41] S. Kar, J. M. Moura, and H. V. Poor, “Distributed linear parameter estimation: Asymptotically efficient adaptive strategies,” SIAM J. Control Optim., vol. 51, no. 3, pp. 2200–2229, 2013.
+
+![](images/84125c26373e753729e43b50d933dd9fb4122df9735fc18fc68334149cb1c90a.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in formal attire against a blue background (no text or symbols visible)
+</details>
+
+Jialiuyuan Li is currently pursuing the Ph.D. degree with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. His research interests include game theory, stochastic game, reinforcement learning, and their applications in various wireless networks, including edge computing, industrial IoT, and UAV systems.
+
+![](images/1d09bf22914f550a841c916a99ebab2d94551cec3689647c9c046d0ec16de506.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a suit (no text or symbols visible)
+</details>
+
+Changyan Yi (Member, IEEE) received the Ph.D. degree from the Department of Electrical and Computer Engineering, University of Manitoba, Winnipeg, MB, Canada, in 2018. He is currently a Professor with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. From September 2018 to August 2019, he was a Research Associate with the University of Manitoba. His research interests include stochastic optimization, mechanism design, game theory, queueing scheduling, and machine   
+learning with applications in resource management and decision making for various networking systems and services.
+
+![](images/45f4efac78040e1f85388ca8fd5bb5f3309abdba8e13a73aec0ce6908b6b735c.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man in formal attire against a blue background (no text or symbols visible)
+</details>
+
+Jiayuan Chen is currently pursuing the Ph.D. degree with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. His research interests include machine learning (e.g., reinforcement learning) and mechanism design with applications in resource management and decision making for various wireless networks and mobile services, including edge/fog computing, industrial IoT, vehicular/UAV systems, and digital twin.
+
+![](images/151c60df3129e4ec33334328338d9acb02286e3472e992ed3562c5508d4f3fe6.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man in formal attire with glasses against a blue background (no text or symbols visible)
+</details>
+
+You Shi received the M.S. degree from the School of Computer Science and Communication Engineering, Jiangsu University, Zhenjiang, China, in 2020. He is pursuing the Ph.D. degree with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. His main research interests include mobile-edge computing, online optimization, service deployment, resource management, Internet of Things, and 5G and beyond.
+
+![](images/f6ae7ab492f3180e5027a6821122b355b1d5840193f88332439e4451d10966d4.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a woman wearing glasses and a business suit (no text or symbols visible)
+</details>
+
+Tong Zhang (Member, IEEE) received the B.E. degree in computer science and technology from Xi’an Jiaotong University in 2014, and the Ph.D. degree in computer science and technology from Tsinghua University in 2019. She is currently an Associate Professor with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics. Her research interests are primarily centered on flow scheduling in data center networks, task scheduling in real-time edge systems, and traffic management in time-sensitive networking.
+
+![](images/3ff2372d5d28bd802ea71fce29e8912ef3c94ebf5d53633446476f76a4b596ce.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a light blue shirt (no text or symbols visible)
+</details>
+
+Xiaolong Li received the B.E. degree from Harbin Institute of Technology, Harbin, China, in 2003, and the Ph.D. degree from Hunan University, Changsha, China, in 2008. Since January 2017, he has been a Professor with Hunan University of Technology and Business, Changsha. His research interests include deep learning, intelligent transportation systems, and the Internet of Things. He won the Best Paper Award at the ChinaCom Conference in 2013. He has served as a Technical Program Committee Member for IEEE GreenCom 2024 and IEEE VTC-Fall 2020.
+
+![](images/7be9f1ab4368a43b0303363552ad1a0ead4a3a5f7f9ec9535960fdce5fb4f14b.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a sweater, standing with arms crossed (no visible text or symbols)
+</details>
+
+Ran Wang (Member, IEEE) received the B.E. degree in electronic and information engineering from Honors School, Harbin Institute of Technology, China, in July 2011, and the Ph.D. degree in computer science and engineering from Nanyang Technological University, Singapore, in April 2016. He is an Associate Professor and a Doctoral Supervisor with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. He has authored or co-authored over 60 papers in   
+top-tier journals and conferences. His current research interests include telecommunication networking and cloud computing. He received the Nanyang Engineering Doctoral Scholarship Award in Singapore and the innovative and entrepreneurial Ph.D. Award of Jiangsu Province, China, in 2011 and 2017, respectively. He is the recipient of the Second Prize for Scientific and Technological Progress awarded by the China Institute of Communications and he is the ChangKong Scholar of NUAA.
+
+![](images/66eafb9c947086b147e99e808b1b9015b4544d015e0d81cdd055b9c3dc88ab0c.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man wearing a pink polo shirt (no text or symbols visible)
+</details>
+
+Kun Zhu (Member, IEEE) received the Ph.D. degree from the School of Computer Engineering, Nanyang Technological University, Singapore, in 2012. He was a Research Fellow with the Wireless Communications Networks and Services Research Group, University of Manitoba, Winnipeg, MB, Canada, from 2012 to 2015. He is currently a Professor with the College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China, and the Collaborative Innovation Center of Novel Software Technology   
+and Industrialization, Nanjing. He is also a Jiangsu Specially Appointed Professor. He has published more than 50 technical papers. His research interests include resource allocation in 5G, wireless virtualization, and selforganizing networks. He won several research awards, including the IEEE WCNC 2019 Best Paper Awards and the ACM China Rising Star Chapter Award. He has served as a TPC for several conferences.

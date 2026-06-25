@@ -1,0 +1,926 @@
+# Joint Computation Offloading and Multidimensional Resource Allocation in Air–Ground Integrated Vehicular Edge Computing Network
+
+Shichao Li , Laha Ale , Member, IEEE, Hongbin Chen , Fangqing Tan , Tony Q. S. Quek , Fellow, IEEE, Ning Zhang , Senior Member, IEEE, Mianxiong Dong , Member, IEEE, and Kaoru Ota , Member, IEEE
+
+Abstract—The integration of vehicle edge computing (VEC) and air–ground integrated network is considered as a key technology to achieve autonomous driving. It exploits the ubiquitous service coverage and enables tasks to be offloaded to various components, such as high-altitude platform (HAP), unmanned aerial vehicle (UAV), and roadside unit (RSU). In this article, we address the challenge of minimizing the overall task offloading delay in the air–ground integrated VEC network through a joint multicomputation equipment selection and multidimensional resource allocation (JCESRA) problem. Considering the nonconvexity inherent in the problem, we employ the fundamental idea of the block coordinate descent (BCD) method to tackle it. Initially, we exclude the HAP and decompose the primal problem into three subproblems: 1) low-altitude computation equipment selection; 2) joint bandwidth and computation resource allocation; and 3) UAV trajectory design. The first subproblem, which involves integer programming, is solved by using the many-to-one matching method. Meanwhile, we utilize the CVX and successive convex approximation (SCA) method to solve the
+
+Manuscript received 7 May 2024; revised 2 July 2024; accepted 3 August 2024. Date of publication 8 August 2024; date of current version 9 October 2024. This work was supported in part by the Natural Science Foundation of China under Grant 62361016, Grant 62061009, and Grant 62261013; in part by the National Research Foundation, Singapore and Infocomm Media Development Authority under its Future Communications Research and Development Programme; in part by the Chinese Scholarship Council under Grant 202108450022; in part by the Project of Guangxi Wireless Broadband Communication and Signal Processing Key Laboratory under Grant GXKL06240106; in part by the Japan Society for the Promotion of Science (JSPS) KAKENHI under Grant JP22K11989 and Grant JP24K14910; in part by the Japan Science and Technology Agency (JST), PRESTO, Japan, under Grant JPMJPR21P3; in part by JST ASPIRE under Grant JPMJAP2344; and in part by Soroptimist Japan Foundation. (Corresponding author: Mianxiong Dong.)
+
+Shichao Li, Hongbin Chen, and Fangqing Tan are with the Guangxi Key Laboratory of Wireless Broadband Communication and Signal Processing, Guilin University of Electronic Technology, Guilin 541004, China (e-mail: shichaoli@guet.edu.cn; chbscut@guet.edu.cn; tfqing@guet.edu.cn).
+
+Laha Ale is with the School of Computing and Artificial Intelligence, Southwest Jiaotong University, Chengdu 610031, China (e-mail: laha.ale@ieee.org).
+
+Tony Q. S. Quek is with the Information Systems Technology and Design, Singapore University of Technology and Design, Singapore 487372, and also with the Yonsei Frontier Lab, Yonsei University, Seoul 03722, South Korea (e-mail: tonyquek@sutd.edu.sg).
+
+Ning Zhang is with the Department of Electrical and Computer Engineering, University of Windsor, Windsor, ON N9B 3P4, Canada (e-mail: ning.zhang@uwindsor.ca).
+
+Mianxiong Dong is with the Department of Information and Electronic Engineering, Muroran Institute of Technology, Muroran 050-8585, Japan (e-mail: mx.dong@csse.muroran-it.ac.jp).
+
+Kaoru Ota is with the Department of Sciences and Informatics, Muroran Institute of Technology, Muroran 050-8585, Japan (e-mail: ota@csse. muroran-it.ac.jp).
+
+Digital Object Identifier 10.1109/JIOT.2024.3441236
+
+last two subproblems, respectively. Considering the matching externality, we utilize the coalition game method to deal with it. Based on the solutions of the three subproblems, the JCESRA algorithm without considering the HAP has been proposed. Subsequently, we consider the HAP into the problem. Because the task offloading decision and computation resource allocation of the HAP problem can be viewed as a knapsack problem, we utilize the dynamic programming method to solve it. Because some tasks are offloaded to the HAP, there are some redundant computation resources in UAVs and RSU. We reallocate the computation resources of UAVs and RSU to further reduce the task offloading delay. At last, we present the complete JCESRA algorithm. The simulation results unequivocally indicate that the proposed JCESRA algorithm outperforms other algorithms by significantly reducing the task offloading delay.
+
+Index Terms—Air–ground integrated network, multicomputation equipment selection, multidimensional resource allocation, vehicle edge computing (VEC).
+
+# I. INTRODUCTION
+
+W ITH the remarkable progress in wireless communica-tion and automobile industry technologies, autonomous tion and automobile industry technologies,autonomous driving has become a revolution in intelligent transportation systems [1], [2]. The autonomous driving needs to process a large number of computation-sensitive tasks, such as assisted driving, vehicle navigation, and high-definition mapping. These applications require significant resources while enforcing strict delay constraints [3]. Unfortunately, the limited computation resources available in vehicles create difficulties in addressing these requirements on a local scale. As a solution, vehicular edge computing (VEC) has been proposed, which leverages the abundant computation and storage resources of VEC servers to enable task offloading, alleviate the insufficient computation resources of the vehicles, and reduce task execution delay [4], [5].
+
+The existing VEC architecture mainly relies on the terrestrial cellular network, but only relying on the terrestrial cellular network cannot satisfy some task requirements of autonomous driving. For instance, due to the limited coverage of the terrestrial cellular network, the rapid mobility of vehicles will lead to frequent handover or service interruption [6]. In order to solve this problem, the aerial access network consisting of the high-altitude platform (HAP) and the unmanned aerial vehicle (UAV) has been proposed [7]. Combining the terrestrial network and aerial access network can form the air– ground integrated heterogeneous network, which can provide data sensing, collection, transmission, and processing as well as customized information services to support autonomous driving [8].
+
+However, the air–ground integrated VEC network will introduce the following three challenges. First, the air– ground integrated VEC network comprises multicomputation equipment options, making it challenging to select feasible computation equipment and make optimal use of the available resources. Second, the multicomputation equipment in the air–ground integrated VEC network can not only compute the tasks but also can serve as relays, such as the UAV and roadside unit (RSU) can not only compute the offloaded tasks but also can transmit the tasks to the HAP as relays. Third, there are multidimensional resources in the air–ground integrated VEC network, such as the computation resources and transmission power of HAP, UAV, and RSU, system bandwidth, UAV trajectory, etc. It is challenging to allocate these resources and make full use of resources to improve the network performance.
+
+In this work, we formulate a problem of total task offloading delay minimization while considering the multicomputation equipment selection, and multidimensional resource allocation in the air–ground integrated VEC network. To tackle the nonconvex problem, the basic idea of the block coordinate descent (BCD) method is utilized. We begin by excluding the HAP and decompose the primal problem into three subproblems: 1) low-altitude computation equipment selection; 2) joint bandwidth and computation resource allocation; and 3) UAV trajectory design. For the first subproblem, we employ the many-to-one matching method to solve it. The second subproblem is solved by using the CVX optimization technique, while the successive convex approximation (SCA) method is applied to solve the third subproblem. In order to deal with the matching externality, the coalition game is utilized. By leveraging the solutions obtained from the three subproblems, we introduce the joint multicomputation equipment selection and multidimensional resource allocation (JCESRA) algorithm without considering the HAP. Subsequently, we incorporate the HAP into the model, the problem can be viewed as a knapsack problem, and we utilize the dynamic programming method to solve it. Because some tasks are offloaded to the HAP, there are some redundant computation resources in UAVs and RSU. We reallocate the computation resources of UAVs and RSU to further reduce the task offloading delay. At last, the complete JCESRA algorithm is proposed. The simulation results provide compelling evidence of the superior performance of the proposed JCESRA algorithm in minimizing task offloading delay when compared to other existing algorithms.
+
+The remaining sections of this article are structured as follows. In Section II, the related works are reviewed. In Section III, we introduce the air–ground integrated VEC network system model, and the total task offloading delay minimization problem is formulated. In Section IV, the JCESRA algorithm without considering the HAP is proposed. In Section V, considering the HAP, the complete JCESRA algorithm is proposed. Section VI presents the simulation results, while Section VII serves as the final section of this article where we provide our concluding remarks.
+
+# II. RELATED WORKS
+
+The task offloading and resource allocation in air– ground integrated mobile-edge computing (MEC) network has recently received considerable attention. However, only a few works have considered the HAP in the air–ground integrated network. This section offers an overview of the existing literature in the field, categorizing the related works based on whether they consider the HAP or not.
+
+# A. Related Works Without Considering the HAP
+
+The majority of existing studies on air–ground integrated network primarily concentrate on UAVs, which can be categorized into three groups based on the different objectives. The first objective is to minimize the energy consumption. To prolong the operating time of UAVs and enhance network lifetime, an optimization problem was formulated to minimize the total energy consumption of UAVs. This was achieved through a joint approach involving region partitioning and UAV trajectory scheduling. By decomposing it into two subproblems, the original problem was solved [9]. In order to reflect the MEC network state in real time, a MEC network with multiple movable UAVs and one digital twinempowered ground base station was proposed. Considering the limited energy resources of both users and UAVs, an online problem of resource scheduling to minimize the energy consumption was proposed. To solve this problem, a deep reinforcement learning approach based on multiagent proximal policy optimization was proposed [10]. Considering the user mobility and unpredictable MEC environments, an intelligent task offloading problem in UAV-enabled MEC with the assistance of digital twin was studied to reduce the MEC system energy consumption. A double deep Q-network algorithm was proposed to effectively solve the problem of users association and UAV trajectory [11].
+
+The second objective is to minimize the task offloading delay. Xu et al. explored the concepts of partial offloading and binary offloading modes to minimize the system offloading delay. They developed the alternating optimization algorithm by employing the SCA method, Karush–Kuhn–Tucker conditions, and penalized methods [12]. Luan et al. directed their attention toward minimizing the average task offloading delay by considering the joint optimization of topology reconstruction and task scheduling. To tackle this problem, they proposed a hierarchical hybrid subtask scheduling algorithm [13]. Liu et al. investigated the joint beamforming and offloading design in a three-tier integrated sensing, communication, and computation framework. A joint transmission beamforming design and offloading decision algorithm was proposed to minimize the task execution delay [14]. To minimize the sum of the maximum delay, a joint UAV trajectory design, task offloading, and users scheduling problem was formulated. Based on the penalty dual decomposition method, a novel algorithm was proposed [15].
+
+The third objective is to maximize the number of offloaded tasks. In the context of UAV-assisted vehicular network, the number of offloaded tasks maximization problem with the heterogeneous QoS requirements constraints was formulated. To address this problem, a multiagent deep deterministic policy gradient-based method was employed [16]. Considering the random trajectories of mobile devices, a computation task maximization with fairness constraints was formulated, and a soft actor–critic-based UAV trajectory planning and resource allocation algorithm was proposed [17]. Two weighted sum computation tasks maximization problems were formulated when considering the partial and binary offloading. These problems involved joint optimization of various parameters, including local computation resources and time, IoT nodes’ transmission power, and the UAV’s trajectory. In order to solve the two problems, two iterative algorithms with fast convergence rate were proposed [18].
+
+# B. Related Works With Considering the HAP
+
+To maximize the computation of IoT data performed by the MEC platform, a heuristic algorithm was developed. This algorithm facilitated offloading decisions between the UAVs and HAPs [19]. Liu et al. formulated an offloading problem within an air–ground integrated MEC framework, with the aim of maximizing the system revenue. To address this problem, they proposed a multileader–multifollower Stackelberg game method [20]. To minimize the total cost of an air–ground integrated MEC network, a partial task offloading scheme was developed. This scheme utilized the deep deterministic policy gradient approach to optimize the task offloading decisions [21]. Considering the air–ground fog computing nodes consisting of the HAP and UAVs, a joint task and energy offloading problem was formulated. Based on the reinforcement learning method, a multiagent soft actor–criticbased approach was proposed [22].
+
+According to the analysis of the previous paper review, it is evident that there is a limited number of studies focusing on the HAP in air–ground integrated network. Additionally, the existing works do not address the three challenges mentioned in the previous section, namely, the selection of multicomputation equipment, determining the role of computation equipment, and managing multidimensional resource allocation. Therefore, there is a need to investigate the existing works concerning task offloading delay minimization in the air–ground integrated VEC network. This need serves as the motivation for the present study.
+
+# III. SYSTEM MODEL
+
+In this section, we present the system model of the air– ground integrated VEC network. Subsequently, we formulate a joint task offloading and resource allocation problem to minimize the total task offloading delay.
+
+# A. Network Model
+
+Fig. 1 illustrates the scenario under consideration, which involves a one-way road with J-lanes. Along the road, a RSU equipped with a MEC server is deployed to offer radio coverage. Meanwhile, there are K UAVs and one HAP in this system, each UAV and the HAP is equipped with one MEC server. We denote the set of UAVs as $\kappa \_ =$ $\{ 1 , \ldots , K \}$ . In this system, we call the UAVs and RSU as lowaltitude computation equipment, and the set of low-altitude computation equipment is $\mathcal { A } = \{ 0 , 1 , \ldots , k , \ldots , K \}$ , where 1st to Kth low-altitude computation equipment corresponds to 1 to $K \ { \mathrm { U A V s } } ,$ respectively, and 0th low-altitude computation equipment corresponds to the RSU. The time period is denoted as $T _ { \ast }$ , which is divided into N time slots, and each time slot duration is τ . The set of time slots can be defined as ${ \mathcal { N } } =$ $\{ 1 , \ldots , N \}$ . We denote the set of vehicles at time slot n as $\mathcal { T } ( n ) = \{ 1 , \dots , I ( n ) \}$ . In this article, each vehicle can generate one task at each time slot, and the vehicle indices can also be interpreted as the set of task indices.
+
+![](images/b659019d79865050ff9a754cd4e8f7b893ff666bf92870d24ef1305aea4484a1.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["HAP"] --> B["MEC server"]
+    C["UAV"] --> D["MEC server"]
+    E["RSU"] --> F["MEC server"]
+    G[" cars"] --> H[" cars"]
+    I[" cars"] --> J[" cars"]
+    K[" cars"] --> L[" cars"]
+    M[" cars"] --> N[" cars"]
+    O[" cars"] --> P[" cars"]
+    Q[" cars"] --> R[" cars"]
+    S[" cars"] --> T[" cars"]
+    U[" cars"] --> V[" cars"]
+    W[" cars"] --> X[" cars"]
+    Y[" cars"] --> Z[" cars"]
+    AA[" cars"] --> AB[" cars"]
+    AC[" cars"] --> AD[" cars"]
+    AE[" cars"] --> AF[" cars"]
+    AG[" cars"] --> AH[" cars"]
+    AI[" cars"] --> AJ[" cars"]
+    AK[" cars"] --> AL[" cars"]
+    AM[" cars"] --> AN[" cars"]
+    AO[" cars"] --> AP[" cars"]
+    AQ[" cars"] --> AR[" cars"]
+    AS[" cars"] --> AT[" cars"]
+    AU[" cars"] --> AV[" cars"]
+    AW[" cars"] --> AX[" cars"]
+    AY[" cars"] --> AZ[" cars"]
+    BA[" cars"] --> BB[" cars"]
+    BC[" cars"] --> BD[" cars"]
+    BE[" cars"] --> BF[" cars"]
+    BG[" cars"] --> BH[" cars"]
+    BI[" cars"] --> BJ[" cars"]
+    BK[" cars"] --> BL[" cars"]
+    BM[" cars"] --> BN[" cars"]
+    BO[" cars"] --> BP[" cars"]
+    BP --> BZ[" car "]
+    BX[" car "] --> BY[" car "]
+    BY --> ZB[" car "]
+    ZB --> BA
+    ZB --> BB
+    ZB --> BC
+    ZB --> BK
+```
+</details>
+
+Fig. 1. System model.
+
+Let denote the lanes from closest to farthest, based on their vertical distance to the RSU, as $1 , 2 , \ldots , j , \ldots , J ,$ respectively. The original position of RSU is $O ,$ and the position of vehicle i at time slot n is $P _ { i } ( n )$ . Similar to [16], the network can be viewed as static during each time slot. We denote the moving direction of the vehicle as the x-axis, i.e., west. The y-axis is oriented toward the south, while the z-axis aligns with the direction of the antenna of RSU. We denote xi(n) and yij as the positions of the x-axis and y-axis of vehicle i at time slot n, respectively. Therefore, $P _ { i } ( n )$ is given as $( x _ { i } ( n ) , y _ { i j } , 0 )$ . The position of the x-axis xi(n) is
+
+$$
+x _ {i} (n) = x _ {i} (n - 1) + v _ {v e h} (n) \tau \forall i \in \mathcal {I} (n) \forall n \in \mathcal {N} \tag {1}
+$$
+
+where $\nu _ { \nu e h } ( n )$ is the velocity of the vehicle at time slot n. The position of the y-axis $y _ { i j }$ can be denoted as
+
+$$
+y _ {i j} = (j - 1) w + w _ {0} \forall i \in \mathcal {I} (n), j = 1, \dots , J \tag {2}
+$$
+
+where w represents the width of each lane, and $w _ { 0 }$ is the distance between lane 1 and the RSU.
+
+In this article, the HAP and RSU are static, and we denote the height of HAP and RSU as $H _ { \mathrm { h a p } }$ and $H _ { r s u } ,$ respectively. The position of HAP and RSU can be expressed as $P _ { \mathrm { h a p } } =$ $( x _ { \mathrm { h a p } } , y _ { \mathrm { h a p } } , H _ { \mathrm { h a p } } )$ and $P _ { r s u } = ( x _ { r s u } , y _ { r s u } , H _ { r s u } )$ , respectively.
+
+The notations and descriptions are listed in Table I.
+
+# B. UAV Model
+
+In this article, each UAV can be viewed as computation equipment, which can process the offloaded tasks, and it also can be viewed as a relay to transmit the tasks to the HAP.
+
+TABLE I SUMMARY OF KEY NOTATIONS 
+
+<table><tr><td>Notation</td><td>Description</td></tr><tr><td> $\mathcal{K},\mathcal{A},\mathcal{I}(n),\mathcal{N}$ </td><td>set of the UAVs, low altitude computation equipment, vehicles, and time slots</td></tr><tr><td> $P_{i}(n),\quad P_{hap},\quad P_{rsu}$ </td><td>position of the vehicle, HAP and RSU</td></tr><tr><td> $v_{veh},v_{uav}$ </td><td>speed of the vehicle and UAV</td></tr><tr><td> $\tau$ </td><td>each time slot duration</td></tr><tr><td> $q_{k}(n)$ </td><td>trajectory of the UAV</td></tr><tr><td> $d_{min}$ </td><td>minimum safety distance of UAVs</td></tr><tr><td> $h_{ik}(n)$ </td><td>channel gain between the vehicle and the low altitude computation equipment</td></tr><tr><td> $E^{fly}(n)$ </td><td>energy consumption of flight for the UAV</td></tr><tr><td> $c_{i}(n),\quad s_{i}(n),\quad t_{i}^{max}(n)$ </td><td>CPU-cycles requirement, data size, and maximal delay requirement of task</td></tr><tr><td> $b_{ik}(n)$ </td><td>bandwidth allocated to vehicle by the low altitude computation equipment</td></tr><tr><td> $b_{k}^{hap}(n)$ </td><td>bandwidth allocated to the UAV by the HAP</td></tr><tr><td> $p_{veh}(n),p_{k}(n)$ </td><td>transmission power of the vehicle and low altitude computation equipment</td></tr><tr><td> $F_{hap}^{max},F_{k}^{max}$ </td><td>maximum CPU-cycle frequency of the HAP and low altitude computation equipment</td></tr><tr><td> $\alpha_{ik}(n)$ </td><td>task offloading variable to the low altitude computation equipment</td></tr><tr><td> $\alpha_{ik}^{hap}(n)$ </td><td>task offloading variable to the HAP</td></tr><tr><td> $f_{ik}(n)$ </td><td>CPU-cycle frequency of the low altitude computation equipment allocated to task</td></tr><tr><td> $f_{ik}^{hap}(n)$ </td><td>CPU-cycle frequency of the HAP allocated to task</td></tr><tr><td> $r_{ik}(n)$ </td><td>transmission rate between the vehicle and the low altitude computation equipment</td></tr><tr><td> $t_{ik}^{trans}(n)$ </td><td>transmission delay between the vehicle and the low altitude computation equipment</td></tr><tr><td> $r_{k}^{hap}(n)$ </td><td>transmission rate between the low altitude computation equipment and the HAP</td></tr><tr><td> $E_{ik}^{trans}(n)$ </td><td>transmission energy consumption of the low altitude computation equipment to the HAP</td></tr><tr><td> $t_{ik}^{com}(n)$ </td><td>computation delay of the low altitude computation equipment</td></tr><tr><td> $E_{ik}^{com}(n)$ </td><td>computation energy consumption of the low altitude computation equipment</td></tr><tr><td> $t_{ik}^{hap,com}(n)$ </td><td>computation delay of the HAP</td></tr><tr><td> $T_{ik}(n)$ </td><td>task offloading delay of the low altitude computation equipment</td></tr><tr><td> $T_{ik}^{hap}(n)$ </td><td>task offloading delay of the HAP</td></tr></table>
+
+Denote the trajectory of UAV k at time slot n as $\mathbf { \delta } \mathbf { q } _ { k } ( n ) =$ $( x _ { k } ( n ) , y _ { k } ( n ) , H _ { \mathrm { u a v } } )$ , where $H _ { \mathrm { u a v } }$ is the altitude of the UAVs. Let denote $\nu _ { \mathrm { u a v } } ( n )$ as the velocity of the UAV at time slot n, and the maximum distance that each UAV can travel within time slot n is $\nu _ { \mathrm { u a v } } ( n ) \tau$ . Consequently, the trajectory of UAV k should adhere to the following constraint:
+
+$$
+\left\| \boldsymbol {q} _ {k} (n + 1) - \boldsymbol {q} _ {k} (n) \right\| ^ {2} \leq \left(v _ {\text { uav }} (n) \tau\right) ^ {2} \forall k \in \mathcal {K} \quad \forall n \in \mathcal {N}. \tag {3}
+$$
+
+Considering the safety distance between the UAVs, the UAV k trajectory should adhere to the following constraint:
+
+$$
+\left\| \boldsymbol {q} _ {k} (n) - \boldsymbol {q} _ {m} (n) \right\| ^ {2} \geq d _ {\min} \forall k, m \in \mathcal {K}, k \neq m \forall n \in \mathcal {N} \tag {4}
+$$
+
+where $d _ { \mathrm { m i n } }$ is the minimum safety distance of UAVs.
+
+Considering the wireless link between the UAVs and the vehicles as a Line-of-Sight (LoS) channel [23], the channel gain between the UAV k and the vehicle i at time slot n is
+
+$$
+\begin{array}{l} h _ {i k} (n) = \frac {h}{H _ {\mathrm{uav}} ^ {2} + \| \boldsymbol {q} _ {k} (n) - \boldsymbol {P} _ {i} (n) \| ^ {2}} \\ \forall i \in \mathcal {I} (n) \quad \forall k \in \mathcal {K} \quad \forall n \in \mathcal {N} \tag {5} \\ \end{array}
+$$
+
+where h represents the signal strength at a reference distance of 1 m.
+
+The energy consumption of flight for UAV at time slot n can be modeled as
+
+$$
+E ^ {\text { fly }} (n) = \tau \left(\theta_ {1} (v _ {\text { uav }} (n)) ^ {3} + \frac {\theta_ {2}}{v _ {\text { uav }} (n)}\right) \forall n \in \mathcal {N} \tag {6}
+$$
+
+where $\theta _ { 1 }$ and θ2 are the parameters related to the UAVs weight, wing area, wing span efficiency, air density, etc. [24].
+
+# C. Communication Model
+
+Each vehicle generates one task to process during each time slot, and these tasks can be computed either by the MEC server in the RSU, UAVs, or HAP. Due to the significant distance between the vehicles and the HAP, the tasks are offloaded to the HAP by using either UAVs or RSU as relays.
+
+In this article, we utilize $\{ c _ { i } ( n ) , s _ { i } ( n ) , t _ { i , \operatorname* { m a x } } ( n ) \}$ to express the task generated by vehicle i at time slot n, where $c _ { i } ( n )$ is the CPU-cycles requirement of this task, $s _ { i } ( n )$ is the data size of this task, and $t _ { i , \mathrm { m a x } } ( n )$ is the maximal delay requirement of this task [1], [3]. Considering the long distance between vehicles and HAP, if a task is offloaded to the HAP, the task needs to be transmitted to a UAV or RSU first, and then, the task is offloaded to the HAP through the UAV or RSU as a relay. We use $\alpha _ { i k } ( n ) ~ \in ~ \{ 0 , 1 \}$ to denote whether the task i is offloaded to the low-altitude computation equipment k at time slot n. Specifically, if the task i is offloaded to the lowaltitude computation equipment k at time slot $n , \alpha _ { i k } ( n ) = 1$ . Otherwise, $\alpha _ { i k } ( n ) = 0$ . Similarly, we also denote $\alpha _ { i k } ^ { \mathrm { h a p } } ( n ) \ \in$ hap {0, 1} as the task i is offloaded to the HAP by utilizing the low-altitude computation equipment k as a relay at time slot n. If the task i is offloaded to the HAP by utilizing the lowaltitude computation equipment k as a relay at time slot n, $\alpha _ { i k } ^ { \mathrm { h a p } } ( n ) = 1$ αik hap . Otherwise, $\alpha _ { i k } ^ { \mathrm { h a p } } ( n ) = 0 .$ .
+
+Considering each task can only be processed by one MEC server, we have
+
+$$
+\sum_ {k \in \mathcal {A}} \alpha_ {i k} (n) + \sum_ {k \in \mathcal {A}} \alpha_ {i k} ^ {\text { hap }} (n) = 1 \quad \forall i \in \mathcal {I} (n) \quad \forall n \in \mathcal {N} \tag {7}
+$$
+
+$$
+\alpha_ {i k} (n) \in \{0, 1 \} \quad \forall k \in \mathcal {A}, i \in \mathcal {I} (n) \quad \forall n \in \mathcal {N} \tag {8}
+$$
+
+$$
+\alpha_ {i k} ^ {\text { hap }} (n) \in \{0, 1 \} \forall k \in \mathcal {A} \forall i \in \mathcal {I} (n) \forall n \in \mathcal {N}. \tag {9}
+$$
+
+The available spectrum bandwidth of low-altitude computation equipment k is $B _ { k }$ . Each low-altitude computation equipment uses the different frequency bandwidth, and the bandwidth is allocated orthogonally to each vehicle. Therefore, there is no interference between the vehicles and low-altitude computation equipment. Let denote $b _ { i k } ( n )$ as the bandwidth allocated to task i by the low-altitude computation equipment k at time slot n. Then, the bandwidth resources should satisfy
+
+$$
+\sum_ {i \in \mathcal {I} (n)} \alpha_ {i k} (n) b _ {i k} (n) \leq B _ {k} \quad \forall k \in \mathcal {A} \forall n \in \mathcal {N}. \tag {10}
+$$
+
+We denote the transmission power of each vehicle at time slot n as $p _ { \nu e h } ( n )$ , the transmission rate between the vehicle i and the low-altitude computation equipment k at time slot n is
+
+$$
+\begin{array}{c} r _ {i k} (n) = b _ {i k} (n) \log \left(1 + \frac {h _ {i k} (n) p _ {v e h} (n)}{N _ {0}}\right) \\ \forall k \in \mathcal {A} \quad \forall i \in \mathcal {I} (n) \quad \forall n \in \mathcal {N} \end{array} \tag {11}
+$$
+
+where $N _ { 0 }$ is the noise power. $h _ { i 0 } ( n )$ is the channel gain between the vehicle i and the RSU at time slot n. Thus, the transmission delay between the vehicle i and the low-altitude computation equipment k at time slot n is
+
+$$
+t _ {i k} ^ {\text { trans }} (n) = \frac {s _ {i} (n)}{r _ {i k} (n)} \quad \forall k \in \mathcal {A} \quad \forall i \in \mathcal {I} (n) \quad \forall n \in \mathcal {N}. \tag {12}
+$$
+
+We denote the bandwidth allocated from the HAP to the low-altitude computation equipment k at time slot n as b hapk (n), and the bandwidth is allocated orthogonally to each $b _ { k } ^ { \mathrm { h a p } } ( n )$ bk low-altitude computation equipment. Therefore, there is no interference between the UAVs. According to [25], the transmission rate from the HAP to the low-altitude computation equipment k at time slot n can be given as
+
+$$
+\begin{array}{l} r _ {k} ^ {\text { hap }} (n) = b _ {k} ^ {\text { hap }} (n) \log_ {2} \left(1 + \frac {p _ {k} (n) G _ {T} G _ {R} L _ {k} ^ {\text { hap }} (n) L _ {l}}{k _ {B} N _ {t} b _ {k} ^ {\text { hap }} (n)}\right) \\ \forall k \in \mathcal {A} \quad \forall n \in \mathcal {N} \tag {13} \\ \end{array}
+$$
+
+where $p _ { k } ( n )$ is the transmission power of low-altitude computation equipment k at time slot n, $G _ { T }$ is the transmitter antenna power gain, $G _ { R }$ is the receiver antenna power gain, $L _ { l }$ is the total line loss, kB noise temperature, and $L _ { k } ^ { \mathrm { h a p } } ( n ) = ( c / 4 \pi d _ { k } ^ { \mathrm { h a p } } ( n ) f _ { k } ^ { \mathrm { h a p } } ) ^ { 2 }$ t ap (n)f hapk )2 $N _ { t }$ is theis the free space loss. Wherein, c is the light speed, $f _ { k } ^ { \mathrm { h a p } }$ is the center frequency, and $d _ { k } ^ { \mathrm { h a p } } ( n )$ is the distance between the HAP and the low-altitude computation equipment k at time slot n. When the task is offloaded to the HAP by the UAV k, $d _ { k } ^ { \mathrm { h a p } } ( n ) =$ $\sqrt { ( H _ { \mathrm { h a p } } - H _ { \mathrm { u a v } } ) ^ { 2 } + ( x _ { \mathrm { h a p } } - x _ { k } ( n ) ) ^ { 2 } + ( y _ { \mathrm { h a p } } - y _ { k } ( n ) ) ^ { 2 } }$ . When the task is offloaded to the HAP by the RSU, $d _ { 0 } ^ { \mathrm { h a p } } \ =$ $\sqrt { ( H _ { \mathrm { h a p } } - H _ { r s u } ) ^ { 2 } + ( x _ { \mathrm { h a p } } - x _ { r s u } ) ^ { 2 } + ( y _ { \mathrm { h a p } } - y _ { r s u } ) ^ { 2 } } .$ .
+
+Based on the above analysis, when the task i is offloaded to the HAP by utilizing the low-altitude computation equipment k as a relay, the transmission energy consumption of low-altitude computation equipment k can be expressed as
+
+$$
+E _ {i k} ^ {\text { trans }} (n) = p _ {k} (n) \frac {s _ {i} (n)}{r _ {k} ^ {\text { hap }} (n)} \quad \forall k \in \mathcal {A} \forall i \in \mathcal {I} (n) \forall n \in \mathcal {N}. \tag {14}
+$$
+
+# D. Computation Model
+
+We represent the CPU-cycle frequency allocated to task i by the low-altitude computation equipment k at time slot n as $f _ { i k } ( n )$ . If the task i is processed by the low-altitude computation equipment k at time slot n, the computation delay $t _ { i k } ^ { \mathrm { c o m } } ( n )$ is
+
+$$
+t _ {i k} ^ {\mathrm{com}} (n) = \frac {c _ {i} (n)}{f _ {i k} (n)} \forall k \in \mathcal {A} \forall i \in \mathcal {I} (n) \forall n \in \mathcal {N}. \tag {15}
+$$
+
+Let $F _ { k } ^ { \mathrm { m a x } }$ denote the maximum CPU-cycle frequency of the low-altitude computation equipment k. The total computation resource constraint of the low-altitude computation equipment k is
+
+$$
+\sum_ {i \in \mathcal {I} (n)} \alpha_ {i k} (n) f _ {i k} (n) \leq F _ {k} ^ {\max} \forall k \in \mathcal {A} \forall n \in \mathcal {N}. \tag {16}
+$$
+
+When the task i is processed by the low-altitude computation equipment k, the computation energy consumption of low-altitude computation equipment k at time slot n is
+
+$$
+E _ {i k} ^ {\mathrm{com}} (n) = \kappa_ {k} \left(f _ {i k} (n)\right) ^ {2} c _ {i} (n) \quad \forall k \in \mathcal {A} \quad \forall i \in \mathcal {I} (n) \quad \forall n \in \mathcal {N} \tag {17}
+$$
+
+where $\kappa _ { k }$ is the conversion coefficient of MEC server in low-altitude computation equipment $k ,$ which depends on the processors chip architecture [26].
+
+Let f ik $f _ { i k } ^ { \mathrm { h a p } } ( n )$ hap represent the CPU-cycle frequency allocated to the task i by the HAP through the low-altitude computation equipment k transmission at time slot n. Therefore, if the task i is processed by the HAP through the low-altitude computation equipment k transmission at time slot n, the computation delay $t _ { i k } ^ { \mathrm { h a p , c o m } } ( n )$ hap,com is given as
+
+$$
+t _ {i k} ^ {\text { hap,com }} (n) = \frac {c _ {i} (n)}{f _ {i k} ^ {\text { hap }} (n)} \quad \forall k \in \mathcal {A} \forall i \in \mathcal {I} (n) \forall n \in \mathcal {N}. \tag {18}
+$$
+
+Denote the maximal CPU-cycle frequency of the HAP as max $F _ { \mathrm { h a p } } ^ { \mathrm { m a x } }$ , and the total HAP computation resource constraint can be formulated by
+
+$$
+\sum_ {k \in \mathcal {A}} \sum_ {i \in \mathcal {I} (n)} \alpha_ {i k} ^ {\text { hap }} (n) f _ {i k} ^ {\text { hap }} (n) \leq F _ {\text { hap }} ^ {\max} \quad \forall n \in \mathcal {N}. \tag {19}
+$$
+
+Considering the analysis presented above, when the task i is offloaded to the low-altitude computation equipment k, the total task offloading delay can be determined as follows:
+
+$$
+T _ {i k} (n) = t _ {i k} ^ {\text { trans }} (n) + t _ {i k} ^ {\text { com }} (n) \quad \forall k \in \mathcal {A} \quad \forall i \in \mathcal {I} (n) \quad \forall n \in \mathcal {N}. \tag {20}
+$$
+
+When the task i is offloaded to the HAP through the low-altitude computation equipment k transmission, the total offloading delay can be represented as
+
+$$
+T _ {i k} ^ {\text { hap }} (n) = t _ {i k} ^ {\text { trans }} (n) + \frac {s _ {i} (n)}{r _ {k} ^ {\text { hap }} (n)} + t _ {i k} ^ {\text { hap,com }} (n),
+$$
+
+$$
+\forall k \in \mathcal {A} \forall i \in \mathcal {I} (n) \forall n \in \mathcal {N}. \tag {21}
+$$
+
+# E. Problem Formulation
+
+In this article, we address the problem of joint resource allocation and UAV trajectory design with the objective to minimize the total task offloading delay. The problem can be formulated as
+
+$$
+\begin{array}{l} \min_{\substack{\boldsymbol {\alpha},\boldsymbol{\alpha}^{\text{hap}}f\\ f^{\text{hap}},\boldsymbol {b},\boldsymbol {Q}}}\sum_{n\in \mathcal{N}}\sum_{i\in \mathcal{I}}\sum_{k\in \mathcal{A}}\alpha_{ik}(n)T_{ik}(n)\tag{P1} \\ + \sum_ {n \in \mathcal {N}} \sum_ {i \in \mathcal {I}} \sum_ {k \in \mathcal {A}} \alpha_ {i k} ^ {\text { hap }} (n) T _ {i k} ^ {\text { hap }} (n) \\ \end{array}
+$$
+
+$$
+\text { s.t. } \quad (3), (4), (7), (8), (9), (1 0), (1 6), (1 9) \tag {22a}
+$$
+
+$$
+\alpha_ {i k} T _ {i k} (n) \leq t _ {i, \max} (n) \forall k \in \mathcal {A}, i \in \mathcal {I} (n), n \in \mathcal {N} \tag {22b}
+$$
+
+$$
+\alpha_ {i k} ^ {\text { hap }} (n) T _ {i k} ^ {\text { hap }} (n) \leq t _ {i, \max} (n) \forall k \in \mathcal {A}, i \in \mathcal {I} (n), n \in \mathcal {N} \tag {22c}
+$$
+
+$$
+\sum_ {i \in \mathcal {I} (n)} \left(\alpha_ {i k} (n) E _ {i k} ^ {\mathrm{com}} (n)\right) + \sum_ {i \in \mathcal {I} (n)} \left(\alpha_ {i k} ^ {\mathrm{hap}} (n) E _ {i k} ^ {\mathrm{trans}} (n)\right)
+$$
+
+$$
++ E ^ {f l y} (n) \leq E _ {k} ^ {\max} (n) \forall k \in \mathcal {K}, n \in \mathcal {N} \tag {22d}
+$$
+
+$$
+\sum_ {i \in \mathcal {I} (n)} \left(\alpha_ {i 0} (n) E _ {i 0} ^ {\mathrm{com}} (n)\right) + \sum_ {i \in \mathcal {I} (n)} \left(\alpha_ {i 0} ^ {\mathrm{hap}} (n) E _ {i 0} ^ {\mathrm{trans}} (n)\right)
+$$
+
+$$
+\leq E _ {0} ^ {\max} (n) \forall n \in \mathcal {N} \tag {22e}
+$$
+
+where $\alpha = \{ \alpha _ { i k } ( n ) \forall i \in \mathcal { T } ( n ) \forall k \in \mathcal { A } \forall n \in \mathcal { N } \} , \alpha ^ { \mathrm { h a p } } =$ $\{ \alpha _ { i k } ^ { \mathrm { h a p } } ( n ) \forall i \in \mathcal { Z } ( n ) \forall k \in \mathcal { A } \forall n \in \mathcal { N } \} , f = \{ f _ { i k } ( n ) \forall i \in$ {α ik I(n) $\forall k \in { \mathcal { A } } \forall n \in { \mathcal { N } } \} , f ^ { \mathrm { h a p } } ( n ) = \{ f _ { i k } ^ { \mathrm { h a p } } ( n ) \forall i \in { \mathcal { T } } ( n )$ ∀k ∈ $\mathcal { A } \quad \forall n \ \in \mathcal { N } \} , \ b \ = \ \{ b _ { i k } ( n ) \quad \forall i \ \in \ \widetilde { \mathcal { Z } } ( n ) \quad \forall k \ \in \ \mathcal { A } \quad \forall n \ \in$ $\mathcal { N } \} , \ d Q = \{ \pmb q _ { k } ( n ) \forall k \in \mathcal { K } \forall n \in \mathcal { N } \} . \ E _ { k } ^ { \operatorname* { m a x } } ( n )$ and $E _ { 0 } ^ { \mathrm { m a x } } ( n )$ are the maximal energy of UAV k and RSU at time slot $n ,$ respectively. Constraints (22e) and (22e) are the delay requirement constraints. Constraints (22e) and (22e) are the UAV and RSU energy constraints, respectively. Because $\alpha _ { i k } ( n )$ and $\alpha _ { i k } ^ { \mathrm { h a p } } ( n )$ are binary variables, and the coupling of optimization variables, problem (P1) is nonconvex. Meanwhile, because there are too many optimization variables and constraints, problem (P1) is hard to solve by the traditional methods.
+
+# IV. JOINT MULTICOMPUTATION EQUIPMENT SELECTION AND MULTIDIMENSIONAL RESOURCE ALLOCATION ALGORITHM WITHOUT CONSIDERING THE HAP
+
+According to the fundamental idea of the BCD method, we first exclude the HAP and decompose the primal problem into three subproblems. And then, we utilize the many-toone matching method, CVX, and SCA method to solve the three subproblems, respectively. Considering the matching externality, we utilize the coalition game method to deal with it. Based on the solutions of the three subproblems, the JCESRA algorithm without considering the HAP is proposed. For brevity, we omit the slot index n in this section.
+
+# A. Low-Altitude Computation Equipment Selection Subproblem
+
+Given the offloading decision strategy of $\mathrm { H A P } \ \alpha ^ { \mathrm { h a p } } ,$ , the computation resource allocation of low-altitude computation equipment $f ,$ the computation resource allocation of HAP $f ^ { \mathrm { h a p } }$ , the bandwidth allocation of low-altitude computation equipment b, and the UAV trajectory $\varrho ,$ the problem is given as
+
+$( \mathbf { P 2 } ) \underset { \alpha } { \operatorname* { m i n } } \sum _ { i \in \mathcal { T } } \sum _ { k \in \mathcal { A } } \alpha _ { i k } T _ { i k }$
+
+${ \mathrm { s . t . ~ } } ( 7 ) , ~ ( 8 ) , ~ ( 1 0 ) , ~ ( 1 6 ) , ~ ( 2 2 { \mathrm { b } } ) , ~ ( 2 2 { \mathrm { d } } ) , ~ ( 2 2 { \mathrm { e } } ) . ( 2 3 { \mathrm { a } } )$
+
+Considering $\alpha _ { i k }$ is a binary variable, and the traditional optimization method is difficult to solve it. In the following, we employ the matching game method to solve the problem.
+
+# B. Matching Algorithm
+
+Problem (P2) can be viewed as a two sided matching problem. There are two sets of agents in this problem, one set is the low-altitude computation equipment, such as the UAVs and RSU, and the other set is the vehicles. Considering each low-altitude computation equipment can serve many vehicles, and one vehicle can only connect to one low-altitude computation equipment, problem (P2) can be viewed as a many-to-one problem [27], [28].
+
+For (22e) and (22e), when the offloading decision strategy of $\mathrm { H A P } \ \alpha ^ { \mathrm { h a p } }$ , and the computation resource allocation of lowaltitude computation equipment f are given, the maximum number of vehicles served by the low-altitude computation equipment k can be obtained, which can be denoted as $I _ { k } ^ { \mathrm { m a x } }$ .
+
+Definition 1: Given the low-altitude computation equipment set  and the vehicle set , k matching many-to-one function  of set A and I should satisfy the following:
+
+$1 ) | \Phi ( i ) | \leq 1 \forall i \in { \mathcal { T } } ;$   
+2) $| \Phi ( k ) | \leq I _ { k } ^ { \operatorname* { m a x } } \forall k \in \mathcal { A } ;$   
+3) $| \Phi ( i ) | \in { \dot { \mathcal { A } } } { \mathrm { ~ i f ~ a n d ~ o n l y ~ i f ~ } } | \Phi ( k ) | \in { \mathcal { T } } ;$   
+$4 ) \ i \in \Phi ( k ) \Leftrightarrow \Phi ( i ) = k$
+
+where |(i)| can be viewed as the cardinality of matching results $\Phi ( \cdot )$ . When $\Phi ( i ) ~ = ~ \{ 0 \} ~ \mathrm { o r } ~ \Phi ( k ) ~ = ~ \{ 0 \}$ , it means the vehicle i or the low-altitude computation equipment k is unmatched with anyone.
+
+First, for the vehicle $i \in \mathcal { Z } ,$ , it will select one low-altitude computation equipment which leads to the minimum task offloading delay. Therefore, the preference list of vehicle i is
+
+$$
+P L _ {i} = \frac {1}{T _ {i}} \forall i \in \mathcal {I}. \tag {24}
+$$
+
+If the vehicle i selects the low-altitude computation equipment k to offload the task, $T _ { i } = T _ { i k }$ .
+
+The vehicle i prefers low-altitude computation equipment $k ^ { ( 1 ) }$ k(1) to k(2) , which means the low-altitude computation equip- $k ^ { ( 2 ) }$ ment $k ^ { ( 1 ) }$ has priority over low-altitude computation equipment $k ^ { ( 2 ) }$ . We can express as $k ^ { ( 1 ) } \succ _ { i } k ^ { ( 2 ) }$ . In this case, the vehicle i will choose the low-altitude computation equipment $k ^ { ( 1 ) }$ to match, and we have $\Phi ( i ) = k ^ { ( 1 ) }$ .
+
+Second, for the low-altitude computation equipment $k \in { \mathcal { A } } ,$ it will concern which vehicles to serve to generate minimum task offloading delay, i.e., the vehicles in $G _ { k } ,$ where $G _ { k }$ is the set of vehicles associated with the low-altitude computation equipment k. Therefore, the preference list of low-altitude computation equipment can be expressed as
+
+$$
+P L _ {k} = \frac {1}{\sum_ {i \in G _ {k}} T _ {i}} \forall k \in \mathcal {A}. \tag {25}
+$$
+
+$\mathrm { I f } i ^ { ( 1 ) } \succ _ { k } i ^ { ( 2 ) }$ , and there is only one vacancy, the low-altitude computation equipment will choose vehicle $i ^ { ( 1 ) }$ to serve, where $\Phi ( k ) = \bar { i } ^ { ( 1 ) }$ . However, if the low-altitude computation equipment has residual resources, the vehicles $i ^ { ( 1 ) }$ and $\bar { \cdot } ( 2 )$ will be served by the same low-altitude computation equipment.
+
+In particular, the matching should be stable, and we introduce the definitions of blocking pair as follows.
+
+Definition 2: A vehicle and one low-altitude computation equipment pair is defined as a blocking pair, if:
+
+1) the vehicle i is unserved or the vehicle i prefers other low-altitude computation equipment to the current lowaltitude computation equipment;   
+2) the low-altitude computation equipment k prefers another vehicle i to one vehicle in existing matching (k).
+
+Based on the above analysis, we propose the matching algorithm outlined in Algorithm 1. The process can be explained as follows. First, the preference lists of vehicles and lowaltitude computation equipment are given according to (24) and (25). Second, the vehicle i selects the preferred lowaltitude computation equipment k as its partner. Third, if the number of vehicles associated low-altitude computation equipment a is less than $I _ { k } ^ { \mathrm { m a x } }$ , and the low-altitude computation equipment has residual bandwidth and computation resources, which means (10), (16), and (22e) are satisfied, and the low-altitude computation equipment k keeps all the matched vehicles. Otherwise, the low-altitude computation equipment k deletes the minimum value matched vehicles.
+
+Algorithm 1 Matching Algorithm   
+1: Set the initial values for all system parameters, and set $\Omega = \mathcal{I}$ .
+2: Establish the preference list of the vehicle and the low altitude computation equipment according to (24) and (25), respectively.
+3: while $\Omega \neq \emptyset$ do
+4:    for $i \in \Omega$ do
+5:    The vehicle $i$ selects the preferred low altitude computation equipment $k$ as its partner.
+6:    end for
+7:    for $k \in \mathcal{A}$ do
+8:    if $\sum_{i \in \mathcal{I}} \alpha_{ik} \leq I_k^{max}$ , and the low altitude computation equipment has residual bandwidth and computation resources then
+9:    The low altitude computation equipment $k$ keeps all the matched vehicles, and removes the matched vehicles from $\Omega$ .
+10:    else
+11:    The low altitude computation equipment $k$ keeps the most preferred $I_k^{max}$ vehicles.
+12:    end if
+13:    end for
+14: end while
+15: Get the matching result $\Phi^*$ .
+
+The complexity of Algorithm 1 grows linearly. As each vehicle can select each low-altitude computation equipment in its preference list in the worst case, the complexity is $\mathcal { O } ( I ( K + 1 ) )$ .
+
+# C. Joint Bandwidth and Computation Resource Allocation Subproblem
+
+Given the offloading decision strategy of low-altitude computation equipment α, the offloading decision strategy of HAP $\pmb { \alpha } ^ { \mathrm { h a p } }$ , the computation resource allocation of HAP $f ^ { \mathrm { h a p } }$ , and the UAV trajectory Q, the problem is given as
+
+$$
+\text {(P3)} \min _ {\boldsymbol {b}, f} \sum_ {i \in \mathcal {I}} \sum_ {k \in \mathcal {A}} \alpha_ {i k} T _ {i k}
+$$
+
+$\mathrm { s . t . ~ ( 1 0 ) , ( 1 6 ) , ~ ( 2 2 b ) , ~ ( 2 2 d ) , ~ ( 2 2 e ) . }$ (26a)
+
+Because the objective function and constraints of problem (P3) are all convex, we can utilize the standard convex optimization techniques, such as the CVX solver [29].
+
+# D. UAV Trajectory Design Subproblem
+
+Given the offloading decision strategy of HAP $\pmb { \alpha } ^ { \mathrm { h a p } }$ , the offloading decision strategy of low-altitude computation equipment α, the computation resource allocation of low-altitude computation equipment $f ,$ the computation resource allocation of HAP $f ^ { \mathrm { h a p } }$ , and the bandwidth allocation of low-altitude computation equipment b, the problem is given as
+
+$$
+\text {(P4)} \min _ {Q} \sum_ {i \in \mathcal {I}} \sum_ {k \in \mathcal {K}} \alpha_ {i k} T _ {i k}
+$$
+
+${ \mathrm { s . t . } } ( 3 ) , ( 4 ) , ( 2 2 \mathbf { b } ) .$ (27a)
+
+Since there is one single optimization variable $\varrho$ in problem (P4), we only need to minimize the value of $t _ { i k } ^ { \mathrm { t r a n s } }$ By . substituting (5) into (12), $t _ { i k } ^ { \mathrm { t r a n s } }$ can be expressed as
+
+$$
+t _ {i k} ^ {\text { trans }} = \frac {s _ {i}}{b _ {i k} \log \left(1 + \frac {h _ {i k} p _ {v e h}}{\left(H ^ {2} + \| \boldsymbol {q} _ {k} - \boldsymbol {P} _ {i} \| ^ {2}\right) N _ {0}}\right)} \quad \forall k \in \mathcal {K} \quad \forall i \in \mathcal {I}. \tag {28}
+$$
+
+We find the objective function $t _ { i k } ^ { \mathrm { t r a n s } }$ is nonconvex with the UAV trajectory Q. Therefore, the objective function of problem (P4) is nonconvex, and (4) and (22e) are nonconvex constraints.
+
+For problem (P4), we can find that $r _ { i k }$ is a convex function with respect to $\| \pmb q _ { k } - \pmb P _ { i } \| ^ { 2 }$ . We can recall any convex function has a globally lower bound constraint by its first Taylor expansion at a given point. Therefore, we can utilize the SCA method to solve problem (P4). We denote $D _ { i k } ^ { l } = \Vert \pmb { q } _ { k } ^ { l } - \pmb { P } _ { i } \Vert$ as the distance between the UAV k and the vehicle i at the lth iteration. When $\pmb q _ { k } ^ { l }$ is given, the lower bound of $r _ { i k }$ can be expressed as
+
+$$
+\tilde {r} _ {i k} = r _ {i k} ^ {l} + \nabla r _ {i k} ^ {l} \left(\| \boldsymbol {q} _ {k} - \boldsymbol {P} _ {i} \| - D _ {i k} ^ {l}\right) \forall k \in \mathcal {K} \forall i \in \mathcal {I} \tag {29}
+$$
+
+where $r _ { i k } ^ { l }$ is the transmission rate between the vehicle i and the UAV k at the lth iteration. $\nabla r _ { i k } ^ { l }$ is the first-order derivative of $r _ { i k } ^ { l }$ .
+
+For (4), because $\| \pmb q _ { k } - \pmb q _ { m } \| ^ { 2 }$ is convex with respect to the UAV trajectory, we can utilize the SCA method to relax the constraint. By utilizing the first-order Taylor expansion at the given points $\pmb q _ { k } ^ { l }$ and $\pmb q _ { m } ^ { l }$ , (4) can be expressed as
+
+$$
+\left\| \boldsymbol {q} _ {k} - \boldsymbol {q} _ {m} \right\| ^ {2} \geq - \left\| \boldsymbol {q} _ {k} ^ {l} - \boldsymbol {q} _ {m} ^ {l} \right\| ^ {2} + 2 \left(\boldsymbol {q} _ {k} ^ {l} - \boldsymbol {q} _ {m} ^ {l}\right) ^ {T} \left(\boldsymbol {q} _ {k} - \boldsymbol {q} _ {m}\right)
+$$
+
+$\forall k , m \in K , k \neq m .$ (30)
+
+Based on the above analysis, we can reformulate problem (P4) as
+
+$$
+\begin{array}{l} \min _ {\mathcal {Q}} \sum_ {i \in \mathcal {I}} \sum_ {k \in \mathcal {K}} \alpha_ {i k} \left(\frac {s _ {i}}{\tilde {r} _ {i k}} + \frac {s _ {i}}{r _ {k} ^ {\text { hap }}} + t _ {i k} ^ {\text { com }}\right) (P5) \\ - \left\| \boldsymbol {q} _ {k} ^ {l} - \boldsymbol {q} _ {m} ^ {l} \right\| ^ {2} + 2 \left(\boldsymbol {q} _ {k} ^ {l} - \boldsymbol {q} _ {m} ^ {l}\right) ^ {T} \left(\boldsymbol {q} _ {k} - \boldsymbol {q} _ {m}\right) \geq d _ {\min} \\ \alpha_ {i k} \left(\frac {s _ {i}}{\tilde {r} _ {i k}} + \frac {s _ {i}}{r _ {k} ^ {\text { hap }}} + t _ {i k} ^ {\text { com }}\right) \leq t _ {i, \max} \quad i \in \mathcal {I}, k \in \mathcal {K}. (31c) \\ \end{array}
+$$
+
+Because the objective function and constraints are all convex, we can utilize the standard convex optimization techniques, such as the CVX solver.
+
+# E. Coalition Game
+
+For the matching algorithm utilized in the last section, if the preference lists of the vehicles and the low-altitude computation equipment are fixed, the preference of any participant relies solely on the information of the other group participants. However, taking into account that the residual resources of low-altitude computation equipment will vary with different matching decisions, the preference of vehicles is influenced by the decisions made by other participants. This matching interaction, where the preferences of different participants are influenced by each other, can be classified as an externality matching [30]. We utilize the coalition game to deal with the matching externality in this section.
+
+Definition 3: We utilize a triple (I, G, U ) to express the coalition game, and this game can be expressed as follows.
+
+1) I is the set of vehicles, which can be regarded as the game players.   
+2) We defined $\mathcal { G } = \{ G _ { 0 } , \dots , G _ { k } , \dots , G _ { K } \}$ as the coalition partition, and $G _ { k }$ can be obtained by Algorithm 1. $G _ { k } \subseteq$ I can be viewed as the coalition formed by the players, and it should satisfy $i \ \in \ \cap G _ { k ^ { \prime } } \ = \ \emptyset \quad \forall k \ \ne \ k ^ { \prime }$ , and $\textstyle \bigcup _ { i = 1 } ^ { I } G _ { k } = { \mathcal { T } } .$ .   
+3) $\mathcal { U } ( G _ { k } )$ is the utility of coalition $G _ { k } ,$ which is equal to (25).
+
+As we know, the fundamental principle of the coalition game is to establish a preference order for comparing two coalitions, and then the switch rule that enables players to join or leave their coalitions according to their preferences should be set.
+
+The preference order can be expressed as follows.
+
+Definition 4: For all the vehicles $i \in \mathcal { T }$ and $i \in G _ { k } , G _ { k ^ { \prime } }$ , if $G _ { k } \succ _ { i } G _ { k ^ { \prime } }$ , the vehicle i prefers to be a member of $G _ { k }$ rather than $G _ { k ^ { \prime } }$ . The operation can be expressed as
+
+$$
+\begin{array}{l} G _ {k} \succ_ {i} G _ {k ^ {\prime}} \Leftrightarrow \mathcal {U} (G _ {k}) > \mathcal {U} (G _ {k ^ {\prime}}) \\ \mathcal {U} (G _ {k}) + \mathcal {U} (G _ {k ^ {\prime}} \setminus i) \geq \mathcal {U} (G _ {k} \setminus i) + \mathcal {U} (G _ {k ^ {\prime}}). \tag {32} \\ \end{array}
+$$
+
+The switch rule can be expressed as follows.
+
+Definition 5: When a partition $\mathcal { G } = \{ G _ { 0 } , \dots , G _ { k } , \dots , G _ { K } \}$ is given, if and only if $G _ { k } \bigcup \{ i \} \ \succ _ { i } \ G _ { k ^ { \prime } }$ , the vehicle $i \in G _ { k ^ { \prime } }$ will decides to leave the current coalition $G _ { k ^ { \prime } }$ , and join another coalition $G _ { k }$ , where $\boldsymbol { k } \neq \boldsymbol { k } ^ { \prime }$ .
+
+Based on the preference order and switch rule, we propose coalition game-based algorithm outlined in Algorithm 2.
+
+Lemma 1: The final partition $\mathcal { G } _ { \mathrm { f i n } }$ obtained by Algorithm 2 is Nash stable.
+
+Proof: If a partition is Nash stable, it means that there is no vehicles preferring to leave the current coalition and join another coalition. We utilize the converse method to prove the final partition $\mathcal { G } _ { \mathrm { f i n } }$ reaches the Nash stable. We assume that the final partition $\mathcal { G } _ { \mathrm { f i n } }$ is not Nash stable. Therefore, there exists a vehicle $i \in \mathcal { Z }$ in the current coalition $G _ { k ^ { \prime } }$ , and another coalition $G _ { k } \in \mathcal { G } _ { \mathrm { f i n } }$ such that $G _ { k } \cup \{ i \} \succ _ { i } G _ { k ^ { \prime } }$ . According to the switch rule, vehicle i has the ability to switch from coalition $G _ { k ^ { \prime } }$ to $G _ { k } ,$ which contradicts the assumption that $\mathcal { G } _ { \mathrm { f i n } }$ is the final partition. Thus, Lemma 1 is proved.
+
+Algorithm 2 Coalition Game-Based Algorithm   
+1: Set the initial values for all system parameters.
+2: Obtain the vehicles association $G_{ini}$ by Algorithm 1.
+3: Set the iterative number l = 1, $G^{1} = G_{ini}$ .
+4: repeat
+5: Select a vehicle i and its coalition $G_{k} \in G^{1}$ randomly, and select another coalition $G_{k'} \in G^{1}$ randomly.
+6: if $|G_{k}| = I_{max}$ then
+7: Select a vehicle $i'$ in coalition $G_{k}$ , assume the vehicle $i'$ swaps with i to form a new partition $G'$ , and obtain the utility of new coalitions.
+8: Calculate the utility of the coalitions $G_{k}$ by solving the problem (P3) and (P4).
+9: if $G_{k} \cup \{i\} \succ_{i} G_{k'}$ then
+10: The vehicle i and $i'$ swap their coalitions.
+11: Update the coalition partition set as $G^{1+1} = G'$ , and set $l = l + 1$ .
+12: end if
+13: else
+14: Assume the selected vehicle leaves its coalition $G_{k'}$ and joins another coalition $G_{k}$ to form a new partition $G'$ . Obtain the utility of new coalitions.
+15: Calculate the utility of the coalitions $G_{k}$ by solving the problem (P3) and (P4).
+16: if $G_{k} \cup \{i\} \succ_{i} G_{k'}$ then
+17: The vehicle i leaves its coalition $G_{k'}$ and joins another coalition $G_{k}$ .
+18: Update the coalition partition set as $G^{1+1} = G'$ , and set $l = l + 1$ .
+19: end if
+20: end if
+21: until The final partition $G_{fin}$ reaches the Nash stable.
+
+For the complexity of the proposed Algorithm 2, it mainly depends on two parts, one is the matching process in Algorithm 1, and the other one is the coalition game process. For the matching process in Algorithm 1, the complexity is $\mathcal { O } ( I ( K + 1 ) )$ to obtain the initial partition. For the coalition game process, the worst case is that each vehicle needs to switch its partition to achieve the Nash stable. Therefore, the complexity is $\mathcal { O } ( I ( K { + } 1 ) ) ,$ ). In each iteration, problems (P3) and (P5) are convex problems, if we use the interior point method, the complexity of problems (P3) and (P5) is $\mathcal { O } ( \bar { I } ^ { 3 . 5 } ( K + 1 ) ^ { 3 . 5 } )$ and $\mathcal { O } ( \bar { I } ^ { 3 . 5 } K ^ { 3 . 5 } )$ ), respectively [31]. Therefore, the complexity of the proposed Algorithm 2 is ${ \mathcal O } ( ( I ( K { + } 1 ) ) ( I ^ { 3 . 5 } ( K { + } 1 ) ^ { \bar { 3 } . 5 } ) ) =$ $\mathcal { O } ( I ^ { 4 . 5 } ( K ) ^ { - } 1 ) ^ { 4 . 5 } )$ .
+
+# F. JCESRA Algorithm Without Considering the HAP
+
+In this section, we present Algorithm 3, which outlines the JCESRA algorithm without considering the HAP.
+
+According to Algorithm 3, the vehicles can successfully match with the computation equipment, and obtain the corresponding bandwidth and computation resources. In each iteration, the complexity of Algorithms 1 and 2 is $\mathcal { O } ( I ( K +$ 1)) and $\mathcal { O } ( I ^ { 4 . 5 } ( K + 1 ) ^ { \overline { { 4 . 5 } } } )$ , respectively. The complexity of problems (P3) and (P5) is $\mathcal { O } ( I ^ { 3 . 5 } ( K + 1 ) ^ { 3 . 5 } )$ and $\mathcal { O } ( I ^ { 3 . 5 } K ^ { 3 . 5 } )$ , respectively. Therefore, the complexity of the proposed Algorithm 3 is $\mathcal { O } ( I ^ { 4 . 5 } ( K + 1 ) ^ { 4 . 5 } )$ ).
+
+Algorithm 3 Proposed JCESRA Algorithm Without Considering the HAP   
+1: Initialize the system parameters, such as $K$ , $I$ , $N$ , $T$ , $\nu_{\text{uav}}$ , $\nu_{\text{veh}}$ , $B_k$ , and the iterative number $l$ .
+2: repeat
+3: Obtain the matching result $\Phi^*$ by the Algorithm 1.
+4: Obtain the final partition $\mathcal{G}_{fin}$ by the Algorithm 2.
+5: Solve the problem (P3) by the CVX.
+6: Solve the problem (P4) by the SCA method.
+7: Update $l = l + 1$ ;
+8: until The algorithm is terminated.
+
+# V. JOINT MULTICOMPUTATION EQUIPMENT SELECTION AND MULTIDIMENSIONAL RESOURCE ALLOCATION CONSIDERING THE HAP
+
+In the last section, we did not consider the task offloading decision and computation resource allocation of HAP, which is considered in this section. We also omit the slot index n in this section for brevity.
+
+# A. Task Offloading Decision and Computation Resource Allocation of the HAP Subproblem
+
+Given the offloading decision strategy of low-altitude computation equipment α, the computation resource allocation of low-altitude computation equipment f , the bandwidth allocation of low-altitude computation equipment b, and the UAV trajectory Q, the problem is given as
+
+$$
+\begin{array}{l} \text {(P6)} \min _ {\alpha^ {\text {hap}} f ^ {\text {hap}}} \sum_ {i \in \mathcal {I}} \sum_ {k \in \mathcal {A}} \alpha_ {i k} ^ {\text {hap}} T _ {i k} ^ {\text {hap}} \\ \text {s.t. (7), (9), (19), (22c), (22d), (22e).} \end{array} \tag {33a}
+$$
+
+According to Algorithm 3, the vehicles can successfully match with the low-altitude computation equipment, and obtain the corresponding bandwidth and computation resources. However, because the HAP has sufficient computation resources, the tasks can be offloaded to the HAP to reduce the total task offloading delay.
+
+First, we deal with the computation resource allocation of HAP. When the task i is offloaded to the low-altitude computation equipment k, the task offloading delay $T _ { i k }$ comprises the transmission time from the vehicle to the low-altitude computation equipment and the computation time of the low-altitude computation equipment. In addition, when the task i is offloaded to the HAP by utilizing the low-altitude computation equipment as a relay, the task offloading delay hap $T _ { i k } ^ { \mathrm { h a p } }$ Tik consists of the transmission time from the vehicle to the low-altitude computation equipment, the transmission time from the low-altitude computation equipment to the HAP, and the computation time of the HAP. If the task i is offloaded to the HAP instead of low-altitude computation equipment to compute, the task offloading delay should satisfy $T _ { i k } \ge T _ { i k } ^ { \mathrm { h a p } }$ Therefore, we can get
+
+Algorithm 4 Dynamic Programming Method   
+1: Initialize the objects, the weight of objects, the value of objects, the capacity of knapsack, Table[0...I, 0...F $^{max}_{hap}$ ]
+2: for i = 1 to I do
+3:    for j = 0 to F $^{max}_{hap}$ do
+4:    if j < f $_{i}^{hap}$ then
+5:    Table[i, j] ← Table[i - 1, j]
+6:    else
+7:    Table[i, j] ← max{Table[i - 1, j], value[T $_{i}$ ] + Table[i - 1, j - f $_{i}^{hap}$ ]}
+8:    end if
+9:    end for
+10: end for
+
+$$
+\begin{array}{l} t _ {i k} ^ {\text { trans }} + \frac {c _ {i}}{f _ {i k}} \geq t _ {i k} ^ {\text { trans }} + \frac {s _ {i}}{r _ {k} ^ {\text { hap }}} + \frac {c _ {i}}{f _ {i k} ^ {\text { hap }}} \quad \forall k \in \mathcal {A} \quad \forall i \in \mathcal {I} \\ f _ {i k} ^ {\text { hap }} \geq \frac {c _ {i}}{\frac {c _ {i}}{f _ {i k}} - \frac {s _ {i}}{r _ {k} ^ {\text { hap }}}} \quad \forall k \in \mathcal {A} \forall i \in \mathcal {I}. \tag {34} \\ \end{array}
+$$
+
+According to Algorithm 3, we can obtain the value of $f _ { i k } ,$ and we get f haik $f _ { i k } ^ { \mathrm { { h a p } } } = \mathsf { \bar { \Phi } } ( c _ { i } / [ ( c _ { i } / f _ { i k } ) - ( s _ { i } / r _ { k } ^ { \mathrm { { h a p } } } ) ] )$ hap as the computation resource allocation of HAP by utilizing the low-altitude computation equipment k as a relay.
+
+Second, we deal with the task offloading decision of HAP. When the computation resource allocation of HAP is fixed, problem (P6) can be viewed as a knapsack problem. In this knapsack problem, the HAP can be viewed as a knapsack, the computation resources of HAP can be viewed as the capacity of the knapsack, the tasks offloaded in the lowaltitude computation equipment can be viewed as the objects, the computation resources allocated by the HAP can be viewed as the weight of objects, and the task offloading delay can be viewed as the value of the object, the smaller the delay, the greater the value. For the knapsack problem, we need to select the objects to maximize the value of objects in the knapsack.
+
+For the knapsack problem, there are many methods can solve it, in this article, we utilize the dynamic programming method to solve it [32], as shown in Algorithm 4.
+
+In this algorithm, $f _ { i } ^ { \mathrm { h a p } }$ is the computation resource allocated by the HAP to task i. value[Ti] means the value corresponding to the task i offloading delay. The complexity of the proposed Algorithm 4 is $\mathcal { O } ( I F _ { \mathrm { h a p } } ^ { \mathrm { m a x } } )$ hap .
+
+# B. Computation Resources of Low-Altitude Computation Equipment Adjustment
+
+Because some tasks can be offloaded from the low-altitude computation equipment to the HAP, the low-altitude computation equipment may have some redundant computation resources. In this situation, we can reallocate the computation resources of low-altitude computation equipment to reduce the task offloading delay.
+
+# Algorithm 5 Proposed Complete JCESRA Algorithm With Considering the HAP
+
+1: Obtain computation equipment selection and resource allocation without considering the HAP according to Algorithm 3.   
+2: Obtain the task offloading decision and computation resource allocation of the HAP according to Algorithm 4.   
+3: By solving problem (P7), we can adjust the computation resources of low-altitude computation equipment to further minimize the task offloading delay.
+
+When all the variables are fixed except the computation resources of low-altitude computation equipment, we only need to solve the following problem:
+
+$$
+\begin{array}{l} \text {(P7)} \min _ {f} \sum_ {i \in \mathcal {I}} \sum_ {k \in \mathcal {A}} \alpha_ {i k} T _ {i k} \\ \text { s.t. } (1 6), (2 2 \mathrm{b}), (2 2 \mathrm{d}), (2 2 \mathrm{e}). \tag {35a} \\ \end{array}
+$$
+
+Because the objective function and constraints of problem (P3) are all convex, we can utilize the standard convex optimization techniques, such as the CVX solver.
+
+# C. Joint Computation Equipment Selection and Resource Allocation Algorithm Considering the HAP
+
+Based on the above analysis, we present Algorithm 5, which outlines the complete JCESRA algorithm considering the HAP.
+
+First, we can obtain the computation equipment selection and resource allocation without considering the HAP according to Algorithm 3. Second, obtain the task offloading decision and computation resource allocation of the HAP according to Algorithm 4. Third, by solving problem (P7), we can adjust the computation resources of low-altitude computation equipment to further minimize the task offloading delay.
+
+Considering the complexity analysis, Algorithm 3 has a complexity of ${ \mathcal { O } } ( I ^ { 4 . 5 } ( K { + } 1 ) ^ { 4 . 5 } )$ . Algorithm 4 has a complexity of $\mathcal { O } ( I F _ { \mathrm { h a p } } ^ { \mathrm { m a x } } )$ . Solving problem (P7) has a complexity of $\mathcal { O } ( I ^ { 3 . 5 } ( K \dot { + } 1 ) ^ { 3 . 5 } )$ . Therefore, the complexity of the proposed Algorithm 5 is $\mathcal { O } ( I ^ { 4 . 5 } ( K + 1 ) ^ { 4 . 5 } )$ ).
+
+# VI. NUMERICAL RESULTS
+
+There is one HAP, three UAVs, one RSU, and ten vehicles in the air–ground integrated VEC network. The road is a 10-lane road, with each lane having a width of 5 m, and the distance between lane 1 and the RSU is 5 m. The speed of vehicles and UAVs are 30 and 10 m/s, respectively. The altitude of UAVs is 50 m. The duration of each period is 2 s, and the length of each time slot is 0.2 s. The maximal CPU-cycle frequency of the MEC servers in HAP, RSU, and UAVs is 10, 3, and 0.5 GHz/s, respectively. The bandwidth of both RSU and each UAV is 5 MHz. The transmission power of RSU and each UAV is 1 and 0.1 W, respectively. The bandwidth allocated from the HAP to each UAV and RSU is 10 and 20 MHz, respectively. The conversion coefficient of MEC servers in RSU and UAVs is $1 0 ^ { - 2 8 }$ and $1 0 ^ { - 2 7 }$ , respectively [26]. The maximal energy of UAV and RSU at each time slot is 1.7, and 0.01 J, respectively. The data size of the tasks and the CPUcycle requirement are modeled as Gaussian distributions, si ∼ (200, 10) and $c _ { i } \sim \mathcal { N } ( 2 0 , 1 )$ , respectively. The data size is measured by kB and the CPU-cycle frequency is measured by Megacycles, respectively. The delay requirement of each task is 50 ms. The parameters related to UAVs are $\theta _ { 1 } \ =$ 0.00614 and $\theta _ { 2 } \ = \ 1 5 . 9 7 6 \ [ 2 4 ]$ . The antenna power gain is $G _ { T } G _ { R } = 2 5$ dB, the center frequency is 2.4 GHz, Boltzmann’s constraint is $k _ { B } = 1 . 3 8 \times 1 0 ^ { - 2 3 } \mathrm { J } / \mathrm { K }$ , and the noise temperature is $N _ { t } = 1 0 0 0$ K [25].
+
+In order to demonstrate the effectiveness of the proposed JCESRA algorithm, we compare its performance with the following three algorithms.
+
+1) Random Selection (RS) Algorithm: In this algorithm, the computation equipment is selected randomly, and the other subproblems are solved by utilizing the same method in this article.   
+2) JCESRA Without Coalition Game (JCESRA w/o CG) Algorithm: The coalition game method is not utilized in this algorithm, and the subproblems are solved by utilizing the same method in this article.   
+3) Penalty BCD (P-BCD) Algorithm: In this algorithm, a penalized objective was formulated, and the SCA method was utilized to solve the computation equipment selection subproblem [33]. The other subproblems are solved by utilizing the same method in this article.
+
+Fig. 2 illustrates the effect of the CPU-cycle frequency of the MEC server in three different computation equipment on the total task offloading delay. From these three subfigures, we can find that four different algorithms have the same trend. The total task offloading delay exhibits decrease as the CPU-cycle frequency of the MEC server increases. It can be explained as the higher CPU-cycle frequency results in the lower computation time, ultimately reducing the task offloading delay. Take Fig. 2(a) as an example, the average total task offloading delay of the proposed JCESRA algorithm decreases by 4.29% and 10.08% compared to the P-BCD algorithm and JCESRA w/o CG algorithm, respectively. Meanwhile, for the proposed JCESRA algorithm, we can observe that as the CPUcycle frequency of the MEC server in the HAP increases, the reduction in the total task offloading delay gradually slows down and eventually reaches a constant value. This can be explained as follows: when the CPU-cycle frequency of the MEC server in the HAP approaches infinity, all the tasks are offloaded to the HAP in order to minimize the task offloading delay. In this case, the task offloading delay can be approximated as equal to the transmission delay. Based on the simulation results, we can see that by increasing the CPU-cycle frequency of any computation equipment, the task offloading delay can be reduced. This highlights the effectiveness of allocating more computation resources and demonstrates that the task offloading delay can be mitigated by enhancing the computation capabilities of the involved equipment.
+
+Fig. 3 illustrates the effect of the bandwidth on the total task offloading delay. The total task offloading delay decreases with the increase in bandwidth. This is because the larger bandwidth results in lower transmission time, thereby reducing the task offloading delay. For Fig. 3(a), when the bandwidth of the RSU increases from 3 to 7 MHz, the proposed JCESRA algorithm outperforms the P-BCD algorithm and JCESRA w/o CG algorithm with performance gains of approximately 4.86% and 7.85%, respectively. For Fig. 3(b), compared to the P-BCD algorithm and JCESRA w/o CG algorithm, the proposed JCESRA algorithm has performance gains of about 6.4% and 2.98%, respectively. Based on the simulation results, it is evident that the proposed JCESRA algorithm consistently outperforms other algorithms in terms of reducing the task offloading delay.
+
+![](images/8515b3becdc2a1d63a5e66a74b45b87e3291b83e3c6fe8f2b1d1f57593296af5.jpg)
+
+<details>
+<summary>line</summary>
+
+| The CPU-cycle frequency of the MEC server in HAP (GHz) | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| ------------------------------------------------------ | ------------ | ------------------------ | --------------- | ---------------- |
+| 9                                                      | 0.35         | 0.31                     | 0.28            | 0.27             |
+| 10                                                     | 0.33         | 0.29                     | 0.27            | 0.26             |
+| 11                                                     | 0.31         | 0.28                     | 0.26            | 0.25             |
+| 12                                                     | 0.29         | 0.27                     | 0.25            | 0.24             |
+| 13                                                     | 0.28         | 0.26                     | 0.24            | 0.23             |
+| 14                                                     | 0.27         | 0.25                     | 0.23            | 0.22             |
+| 15                                                     | 0.26         | 0.24                     | 0.22            | 0.21             |
+| 16                                                     | 0.25         | 0.23                     | 0.21            | 0.20             |
+| 17                                                     | 0.24         | 0.22                     | 0.20            | 0.19             |
+| 18                                                     | 0.23         | 0.21                     | 0.19            | 0.18             |
+| 19                                                     | 0.22         | 0.20                     | 0.18            | 0.17             |
+| 20                                                     | 0.21         | 0.19                     | 0.17            | 0.16             |
+</details>
+
+(a)
+
+![](images/f08fe031aaccb8fa2d7a2c8ffc63975998bded345c68b9b38669466ef5a27ffc.jpg)
+
+<details>
+<summary>line</summary>
+
+| The CPU-cycle frequency of the MEC server in UAV (GHz) | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| ------------------------------------------------------ | ------------ | ------------------------ | --------------- | ---------------- |
+| 0.5                                                    | 0.32         | 0.275                    | 0.268           | 0.255            |
+| 0.6                                                    | 0.318        | 0.272                    | 0.265           | 0.252            |
+| 0.7                                                    | 0.315        | 0.269                    | 0.261           | 0.249            |
+| 0.8                                                    | 0.312        | 0.266                    | 0.258           | 0.247            |
+| 0.9                                                    | 0.31         | 0.264                    | 0.256           | 0.245            |
+| 1.0                                                    | 0.308        | 0.262                    | 0.254           | 0.243            |
+</details>
+
+(b)
+
+![](images/794e580f9d5e2dabf14c4629240a416621e2ad93d27145065ea572902816e6e0.jpg)
+
+<details>
+<summary>line</summary>
+
+| The CPU-cycle frequency of the MEC server in RSU (GHz) | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| ------------------------------------------------------ | ------------ | ----------------------- | --------------- | ---------------- |
+| 3                                                      | 0.325        | 0.278                   | 0.268           | 0.255            |
+| 4                                                      | 0.320        | 0.275                   | 0.265           | 0.252            |
+| 5                                                      | 0.317        | 0.272                   | 0.263           | 0.250            |
+| 6                                                      | 0.314        | 0.269                   | 0.261           | 0.248            |
+| 7                                                      | 0.311        | 0.267                   | 0.259           | 0.246            |
+</details>
+
+(c)   
+Fig. 2. Total task offloading delay against the CPU-cycle frequency of the MEC server in three different computation equipments under different algorithms. (a) Total task offloading delay against the CPU-cycle frequency of the MEC server in HAP under different algorithms. (b) Total task offloading delay against the CPU-cycle frequency of the MEC server in each UAV under different algorithms. (c) Total task offloading delay against the CPU-cycle frequency of the MEC server in RSU under different algorithms.
+
+![](images/eecaa909431e8d2f49bf08ca99378361d49b18a2c4bbffd10f9f4d9622af7ad5.jpg)
+
+<details>
+<summary>line</summary>
+
+| The total bandwidth of RSU (MHz) | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| -------------------------------- | ------------ | ------------------------ | --------------- | ---------------- |
+| 3                                | 0.41         | 0.36                     | 0.34            | 0.32             |
+| 4                                | 0.36         | 0.30                     | 0.29            | 0.28             |
+| 5                                | 0.32         | 0.28                     | 0.27            | 0.26             |
+| 6                                | 0.30         | 0.26                     | 0.25            | 0.24             |
+| 7                                | 0.28         | 0.25                     | 0.24            | 0.23             |
+</details>
+
+(a)   
+![](images/bee30bfe25d040e2c9304d0a4c5c9adfbb2b848e5641cf7bedd8dba9f4462d73.jpg)
+
+<details>
+<summary>line</summary>
+
+| The bandwidth of each UAV (MHz) | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| -------------------------------- | ------------ | ------------------------ | --------------- | ---------------- |
+| 5                                | 0.32         | 0.28                     | 0.27            | 0.26             |
+| 5.5                              | 0.28         | 0.24                     | 0.23            | 0.22             |
+| 6                                | 0.26         | 0.23                     | 0.22            | 0.21             |
+| 6.5                              | 0.25         | 0.22                     | 0.21            | 0.21             |
+| 7                                | 0.24         | 0.22                     | 0.21            | 0.21             |
+</details>
+
+(b)
+
+Fig. 3. Total task offloading delay against the bandwidth under different algorithms. (a) Total task offloading delay against the bandwidth of RSU under different algorithms. (b) Total task offloading delay against the bandwidth of each UAV under different algorithms.   
+![](images/b5441735b991733c3c66fbea4641332817853e9f2d9ed00f3898b7dbbe41743c.jpg)
+
+<details>
+<summary>bar</summary>
+
+| The altitude of the UAVs (m) | JCESRA algorithm | JCESRA w/o HAP algorithm |
+| :--- | :--- | :--- |
+| 50 | 0.25 | 0.36 |
+| 60 | 0.26 | 0.37 |
+| 70 | 0.265 | 0.375 |
+| 80 | 0.27 | 0.38 |
+| 90 | 0.275 | 0.385 |
+</details>
+
+Fig. 4. Total task offloading delay against the altitude of UAVs under different algorithms.
+
+Fig. 4 depicts an illustration of the total task offloading delay against the altitude of UAVs under different algorithms. The total task offloading delay increases as the altitude of UAVs increases. This is because as the altitude of UAVs increases, the channel gain between the UAVs and vehicles becomes smaller. Therefore, the total task offloading delay increases. Simultaneously, we observe the impact of the HAP on the total task offloading delay. Introducing the HAP into the system can effectively reduce the total task offloading delay. Specifically, when comparing the JCESRA algorithm to the JCESRA w/o HAP algorithm, the JCESRA algorithm achieves a reduction of 30.52% in the total task offloading delay when the altitude of UAVs is 50 m.
+
+![](images/8df15033d6a1835f0600e9aff327a90f16ea402216e066aa1c99256984aeeb1e.jpg)
+
+<details>
+<summary>line</summary>
+
+| The data size of each task (KB) | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| -------------------------------- | ------------ | ------------------------ | --------------- | ---------------- |
+| 200                              | 0.32         | 0.28                     | 0.27            | 0.25             |
+| 220                              | 0.36         | 0.31                     | 0.29            | 0.28             |
+| 240                              | 0.39         | 0.34                     | 0.32            | 0.31             |
+| 260                              | 0.42         | 0.37                     | 0.35            | 0.33             |
+| 280                              | 0.46         | 0.40                     | 0.38            | 0.36             |
+| 300                              | 0.50         | 0.43                     | 0.41            | 0.38             |
+</details>
+
+Fig. 5. Impact of each task data size on the total task offloading delay under different algorithms.
+
+![](images/973dc9b7ed9c5b19fbf0656005a8ad147d3a8d5ac6c89ba47d37f24ead31683c.jpg)
+
+<details>
+<summary>line</summary>
+
+| The CPU-cycle requirement of each task (Megacycles) | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| ---------------------------------------------------- | ------------ | ----------------------- | --------------- | ---------------- |
+| 20                                                   | 0.32         | 0.27                    | 0.26            | 0.25             |
+| 22                                                   | 0.33         | 0.28                    | 0.27            | 0.26             |
+| 24                                                   | 0.35         | 0.30                    | 0.29            | 0.27             |
+| 26                                                   | 0.36         | 0.31                    | 0.30            | 0.28             |
+| 28                                                   | 0.37         | 0.32                    | 0.31            | 0.29             |
+| 30                                                   | 0.39         | 0.33                    | 0.32            | 0.30             |
+</details>
+
+Fig. 6. Impact of each task CPU-cycles requirement on the total task offloading delay under different algorithms.
+
+Fig. 5 illustrates the effect of each task data size on the total task offloading delay. From this figure, it is evident that the total task offloading delay shows the increase as the data size of each task increases. This is because with the increasing of the data size, more transmission time is needed.
+
+Fig. 6 illustrates the effect of each task CPU-cycles requirement on the total task offloading delay. It has the same trend as Fig. 5 and can be explained by the same reasons. As the CPU-cycle requirement of each task increases, the total task offloading delay also increases. This is due to the fact that tasks with higher CPU-cycle requirements require more computation time, resulting in longer task offloading delays. Furthermore, when comparing the proposed JCESRA algorithm with the P-BCD algorithm and JCESRA w/o HAP algorithm, the total task offloading delay is reduced by an average of 8.61% and 5.69%, respectively, when the CPU-cycle requirement of each task increases from 20 to 30 Megacycles. The proposed JCESRA algorithm demonstrates the effectiveness in minimizing the task offloading delay even with varying CPUcycle requirements.
+
+![](images/b226590984b107a611124a9eb62ac3f5ec6948d8689614b602f8eb63c2fadb13.jpg)
+
+<details>
+<summary>line</summary>
+
+| The number of vehicles | RS algorithm | JCESRA w/o CG algorithm | P-BCD algorithm | JCESRA algorithm |
+| ---------------------- | ------------ | ----------------------- | --------------- | ---------------- |
+| 8                      | 0.25         | 0.22                    | 0.21            | 0.20             |
+| 9                      | 0.29         | 0.25                    | 0.24            | 0.23             |
+| 10                     | 0.32         | 0.28                    | 0.27            | 0.26             |
+| 11                     | 0.37         | 0.32                    | 0.30            | 0.29             |
+| 12                     | 0.42         | 0.36                    | 0.34            | 0.32             |
+</details>
+
+Fig. 7. Impact of vehicles number on the total task offloading delay under different algorithms.
+
+Fig. 7 illustrates the effect of vehicles number on the total task offloading delay. The total task offloading delay increases with the increasing number of vehicles. This is due to the fact that as the number of vehicles increases, there is a greater demand for bandwidth and computation resources to satisfy the delay constraint. Therefore, the total task offloading delay experiences the increase.
+
+# VII. CONCLUSION
+
+In this article, we investigated the problem of joint multicomputation equipment selection and multidimensional resource allocation problem to minimize the total task offloading delay in the air–ground integrated VEC network. To tackle the coupled nature of the optimization variables, we initially excluded the HAP and decomposed the main problem into three subproblems based on the basic idea of the BCD method. By utilizing the many-to-one matching method, the low-altitude computation equipment selection subproblem was solved. The joint bandwidth and computation resource allocation subproblem was solved by the CVX, and the UAV trajectory design subproblem was solved by the SCA method. The coalition game was utilized to deal with the matching externality, and the JCESRA algorithm without considering the HAP has been proposed. Subsequently, we incorporated the HAP into the analysis. The task offloading decision and computation resource allocation of the HAP subproblem was viewed as a knapsack problem, and utilized the dynamic programming method to solve it. Because some tasks are offloaded to the HAP, there are some redundant computation resources in the UAVs and RSU. We reallocated the computation resources of UAVs and RSU to further reduce the task offloading delay. At last, the complete JCESRA algorithm was proposed. The simulation results provided validation for the effectiveness of the proposed JCESRA algorithm.
+
+For this article, there are two aspects can be extended.
+
+1) Due to the restricted battery capacity and limited endurance capability, the UAVs cannot provide long time services. We can utilize the energy harvesting technology to solve this problem. The UAVs are equipped with solar panels to obtain solar energy. Meanwhile, each UAV has the energy harvesting function, which can harvest energy from radio frequency signals emitted by the RSU.
+
+2) Considering the reinforcement learning methods are commonly used to solve nonconvex problems, we can utilize the reinforcement learning methods to solve this problem, such as multiagent deep deterministic policy gradient, multiagent proximal policy optimization, and so on.
+
+# REFERENCES
+
+[1] S. Li, S. Lin, L. Cai, W. Li, and G. Zhu, “Joint resource allocation and computation offloading with time-varying fading channel in vehicular edge computing,” IEEE Trans. Veh. Technol., vol. 69, no. 3, pp. 3384–3398, Mar. 2020.   
+[2] L. Liu, X. Yuan, N. Zhang, D. Chen, K. Yu, and A. Taherkordi, “Joint computation offloading and data caching in multi-access edge computing enabled Internet of Vehicles,” IEEE Trans. Veh. Technol., vol. 72, no. 11, pp. 14939–14954, Nov. 2023.   
+[3] S. Li, N. Zhang, H. Chen, S. Lin, O. A. Dobre, and H. Wang, “Joint road side units selection and resource allocation in vehicular edge computing,” IEEE Trans. Veh. Technol., vol. 70, no. 12, pp. 13190–13204, Dec. 2021.   
+[4] S. Li et al., “Joint admission control and resource allocation in edge computing for Internet of Things,” IEEE Netw., vol. 32, no. 1, pp. 72–79, Jan./Feb. 2018.   
+[5] W. Feng, S. Lin, N. Zhang, G. Wang, B. Ai, and L. Cai, “Joint C-V2X based offloading and resource allocation in multi-tier vehicular edge computing system,” IEEE J. Sel. Areas Commun., vol. 41, no. 2, pp. 432–445, Feb. 2023.   
+[6] N. Zhang, S. Zhang, P. Yang, O. Alhussein, W. Zhuang, and X. S. Shen, “Software defined space–air–ground integrated vehicular networks: Challenges and solutions,” IEEE Commun. Mag., vol. 55, no. 7, pp. 101–109, Jul. 2017.   
+[7] Y. Liu et al., “Space–air–ground integrated networks: Spherical stochastic geometry-based uplink connectivity analysis,” IEEE J. Sel. Areas Commun., vol. 42, no. 5, pp. 1387–1402, May 2024.   
+[8] Z. Wei et al., “Spectrum sharing between high altitude platform network and terrestrial network: Modeling and performance analysis,” IEEE Trans. Commun., vol. 71, no. 6, pp. 3736–3751, Jun. 2023.   
+[9] D. Wang, J. Tian, H. Zhang, and D. Wu, “Task offloading and trajectory scheduling for UAV-enabled MEC networks: An optimal transport theory perspective,” IEEE Wireless Commun. Lett., vol. 11, no. 1, pp. 150–154, Jan. 2022.   
+[10] W. Liu, B. Li, W. Xie, Y. Dai, and Z. Fei, “Energy efficient computation offloading in aerial edge networks with multi-agent cooperation,” IEEE Trans. Wireless Commun., vol. 22, no. 9, pp. 5725–5739, Sep. 2023.   
+[11] B. Li, Y. Liu, L. Tan, H. Pan, and Y. Zhang, “Digital twin assisted task offloading for aerial edge computing and networks,” IEEE Trans. Veh. Technol., vol. 71, no. 10, pp. 10863–10877, Oct. 2022.   
+[12] Y. Xu, T. Zhang, J. Loo, D. Yang, and L. Xiao, “Completion time minimization for UAV-assisted mobile-edge computing systems,” IEEE Trans. Veh. Technol., vol. 70, no. 11, pp. 12253–12259, Nov. 2021.   
+[13] Q. Luan, H. Cui, L. Zhang, and Z. Lv, “A hierarchical hybrid subtask scheduling algorithm in UAV-assisted MEC emergency network,” IEEE Internet Things J., vol. 9, no. 14, pp. 12737–12753, Jul. 2022.   
+[14] P. Liu, Z. Fei, X. Wang, Y. Zhou, Y. Zhang, and F. Liu, “Joint beamforming and offloading design for integrated sensing, communication and computation system,” 2024, arXiv:2401.02071.   
+[15] Q. Hu, Y. Cai, G. Yu, Z. Qin, M. Zhao, and G. Y. Li, “Joint offloading and trajectory design for UAV-enabled mobile edge computing systems,” IEEE Internet Things J., vol. 6, no. 2, pp. 1879–1892, Apr. 2019.   
+[16] H. Peng and X. Shen, “Multi-agent reinforcement learning based resource management in MEC- and UAV-assisted vehicular networks,” IEEE J. Sel. Areas Commun., vol. 39, no. 1, pp. 131–141, Jan. 2021.   
+[17] X. Zhou, L. Huang, T. Ye, and W. Sun, “Computation bits maximization in UAV-assisted MEC networks with fairness constraint,” IEEE Internet Things J., vol. 9, no. 21, pp. 20997–21009, Nov. 2022.
+
+[18] Q. Li, L. Shi, Z. Zhang, and G. Zheng, “Resource allocation in UAV-enabled wireless-powered MEC networks with hybrid passive and active communications,” IEEE Internet Things J., vol. 10, no. 3, pp. 2574–2588, Feb. 2022.   
+[19] Z. Jia, Q. Wu, C. Dong, C. Yuen, and Z. Han, “Hierarchical aerial computing for Internet of Things via cooperation of HAPs and UAVs,” IEEE Internet Things J., vol. 10, no. 7, pp. 5676–5688, Apr. 2023.   
+[20] J. Liu et al., “Minimization of offloading delay for two-tier UAV with mobile edge computing,” in Proc. 15th Int. Wireless Commun. Mobile Comput. Conf. (IWCMC), 2019, pp. 1534–1538.   
+[21] T. P. Truong, A.-T. Tran, T. M. T. Nguyen, T.-V. Nguyen, A. Masood, and S. Cho, “MEC-enhanced aerial serving networks via HAP: A deep reinforcement learning approach,” in Proc. Int. Conf. Inf. Netw. (ICOIN), 2022, pp. 319–323.   
+[22] Z. Cheng, M. Liwang, N. Chen, L. Huang, X. Du, and M. Guizani, “Deep reinforcement learning-based joint task and energy offloading in UAV-aided 6G intelligent edge networks,” Comput. Commun., vol. 192, pp. 234–244, Aug. 2022.   
+[23] S. Li, N. Zhang, H. Chen, S. Lin, and H. Wu, “Joint subcarrier allocation, modulation mode selection, and trajectory design in a UAV-based OFDMA network,” IEEE Commun. Lett., vol. 26, no. 9, pp. 2111–2115, Sep. 2022.   
+[24] H. Hu, Z. Chen, F. Zhou, R. Q. Hu, and H. Zhu, “Computation-efficient grouping, trajectory, and resource allocation for UAV swarm-assisted aerial–ground collaborative computing networks,” IEEE Internet Things J., vol. 11, no. 7, pp. 12510–12525, Apr. 2024.   
+[25] S. Li et al., “Two-hop packet scheduling, resource allocation, and UAV trajectory design for Internet of Remote Things in air–ground integrated network,” IEEE Internet Things J., vol. 11, no. 15, pp. 26160–26172, Aug. 2024.   
+[26] S. Li, N. Zhang, R. Jiang, Z. Zhou, F. Zheng, and G. Yang, “Joint task offloading and resource allocation in mobile edge computing with energy harvesting,” J. Cloud Comput., vol. 11, no. 1, pp. 1–14, 2022.   
+[27] N. Raveendran, H. Zhang, L. Song, L.-C. Wang, C. S. Hong, and Z. Han, “Pricing and resource allocation optimization for IoT fog computing and NFV: An EPEC and matching based perspective,” IEEE Trans. Mobile Comput., vol. 21, no. 4, pp. 1349–1361, Apr. 2020.   
+[28] C. Xu, G. Zheng, and L. Tang, “Energy-aware user association for NOMA-based mobile edge computing using matching-coalition game,” IEEE Access, vol. 8, pp. 61943–61955, 2020.   
+[29] M. Grant and S. Boyd. “CVX: MATLAB software for disciplined convex programming, version 2.1.” 2014. [Online]. Available: http://cvxr.com/cvx   
+[30] B. Zhang, X. Mao, J.-L. Yu, and Z. Han, “Resource allocation for 5G heterogeneous cloud radio access networks with D2D communication: A matching and coalition approach,” IEEE Trans. Veh. Technol., vol. 67, no. 7, pp. 5883–5894, Jul. 2018.   
+[31] S. P. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004.   
+[32] A. E. Ezugwu, V. Pillay, D. Hirasen, K. Sivanarain, and M. Govender, “A comparative study of meta-heuristic optimization algorithms for 0–1 knapsack problem: Some initial results,” IEEE Access, vol. 7, pp. 43979–44001, 2019.   
+[33] Y. A. Farha and M. H. Ismail, “Design and optimization of a UAVenabled non-orthogonal multiple access edge computing IoT system,” IEEE Access, vol. 10, pp. 117385–117398, 2022.
+
+![](images/701c069236732f008eccc64d962f7866aca6d0e429b9a1e98bedcee705522bcc.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man in a black shirt (no text or symbols visible)
+</details>
+
+Shichao Li received the Ph.D. degree in communication and information systems from Beijing Jiaotong University, Beijing, China, in 2019.
+
+From 2022 to 2024, he was a Postdoctoral Research Fellow supported by the Chinese Scholarship Council with Singapore University of Technology and Design, Singapore. He is currently an Associate Professor with the School of Information and Communication, Guilin University of Electronic Technology, Guilin, China. His main
+
+research interests include mobile-edge computing, vehicular networks, highmobility broadband wireless communications, wireless resource allocation, and cloud radio access networks.
+
+Dr. Li is on the editorial board of the Discover Applied Sciences (Springer). He has served as a TPC Member for IEEE Globecom2024, IEEE VTC2023- Spring, IEEE VTC2021-Fall, and IEEE VTC2020-Fall.
+
+![](images/0e16b9d47333a89b2a2b1e04040eef3e2ef18c08cb8dc7c3c4a36c59c46facc5.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses against a blue background (no text or symbols visible)
+</details>
+
+Laha Ale (Member, IEEE) received the bachelor’s degree in computer science from the Southwest University of Science and Technology, Mianyang, China, in 2011, the M.B.A. degree from Webster University, Webster Groves, MO, USA, in 2016, and the Ph.D. degree in geospatial computer science from Texas A&M University–Corpus Christi, Corpus Christi, TX, USA, in 2021.
+
+Before beginning his graduate program, he worked as a Software Engineer with Tieto, Chengdu, China; Symantec, Chengdu; and Veritas, Chengdu,
+
+for seven years. In January 2022, he joined the Center for Computational Biomedicine, Harvard University, Cambridge, MA, USA, as a Postdoctoral Research Fellow. He joined the School of Computing and Artificial Intelligence, Southwest Jiaotong University, Chengdu, as an Associate Professor in 2023. His research interests include mobile-edge computing, deep learning, deep reinforcement learning, deep universal probabilistic programming, and data science for biomedicine.
+
+![](images/a7e912d22477015443f49d7bddeaf9c4bc05a2feb62e93b3bc018de879ef17ef.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man wearing a dark jacket over a striped shirt (no text or symbols visible)
+</details>
+
+Hongbin Chen received the B.E. degree in electronic and information engineering from Nanjing University of Posts and Telecommunications, Nanjing, China, in 2004, and the Ph.D. degree in circuits and systems from the South China University of Technology, Guangzhou, China, in 2009.
+
+From October 2006 to May 2008, he was a Research Assistant with the Department of Electronic and Information Engineering, Hong Kong Polytechnic University, Hong Kong, where he was a
+
+Research Associate from March to April 2014. From May 2015 to May 2016, he was a Visiting Scholar with the Department of Electrical and Computer Engineering, National University of Singapore, Singapore. He is currently a Professor with the School of Information and Communication, Guilin University of Electronic Technology, Guilin, China. His research interests include energy-efficient wireless communications.
+
+![](images/c111d0332f1eeb4568538a0e7355327938db14a0b6714862c2e4b8b9c148f860.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a man wearing a checkered shirt against a blue background (no text or symbols visible)
+</details>
+
+Fangqing Tan received the M.S. degree in communication and information system from Chongqing University of Posts and Telecommunications, Chongqing, China, in 2012, and the Ph.D. degree from Beijing University of Posts and Telecommunications, Beijing, China, in 2017.
+
+From 2018 to 2021, he was a Postdoctoral Fellow with the School of Electronics and Information Technology, Sun Yat-sen University, Guangzhou, China. Since 2017, he has been with Guilin University of Electronic Technology, Guilin, China,
+
+where he is currently an Associate Professor. His research interests include wireless power transfer, multiple antennas communications, and Internet of Things.
+
+Dr. Tan was recognized as an Exemplary Reviewer by the IEEE Wireless Communications Letters in 2020. He is a TPC Member of IEEE TENCON-2022 and ICCT-2023.
+
+![](images/5b002c8e4400a422936f9e47e1bbc1c09d4f8ab91d0bcbc8123c62d7669d8acd.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a smiling man in a blue striped shirt (no text or symbols visible)
+</details>
+
+Tony Q. S. Quek (Fellow, IEEE) received the B.E. and M.E. degrees in electrical and electronics engineering from Tokyo Institute of Technology, Tokyo, Japan, in 1998 and 2000, respectively, and the Ph.D. degree in electrical engineering and computer science from Massachusetts Institute of Technology, Cambridge, MA, USA, in 2008.
+
+He is currently the Cheng Tsang Man Chair Professor with Singapore University of Technology and Design (SUTD), Singapore, and a Distinguished Professor with ST Engineering, Singapore. He
+
+also serves as the Director of the Future Communications Research and Development Programme, the Head of ISTD Pillar, and the Deputy Director of the SUTD-ZJU IDEA. His current research topics include wireless communications and networking, network intelligence, nonterrestrial networks, open radio access network, and 6G.
+
+Dr. Quek has been actively involved in organizing and chairing sessions, and has served as a member of the Technical Program Committee as well as the symposium chair of a number of international conferences. He is currently serving as an Area Editor for the IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS.
+
+![](images/e2c3ff96f34eddd4dc257fe214823ed7f2c63d5f6df53bda1009680f37a1ed2a.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a dark polo shirt (no text or symbols visible)
+</details>
+
+Ning Zhang (Senior Member, IEEE) received the Ph.D. degree from the University of Waterloo, Waterloo, ON, Canada, in 2015.
+
+He was a Postdoctoral Research Fellow with the University of Waterloo and also with the University of Toronto, Toronto, ON, Canada. He is currently an Associate Professor with the University of Windsor, Windsor, ON, Canada.
+
+Dr. Zhang received the Best Paper Awards from IEEE Globecom 2014, IEEE WCSP 2015, the Journal of Communications and Information
+
+Networks in 2018, IEEE ICC 2019, the IEEE Technical Committee on Transmission Access and Optical Systems in 2019, and IEEE ICCC 2019, respectively. He also serves/served as the track chair for several international conferences and the co-chair for several international workshops. He serves as an Associate Editor for the IEEE INTERNET OF THINGS JOURNAL, IEEE TRANSACTIONS ON MOBILE COMPUTING, IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING, IEEE ACCESS, IET Communications, and Vehicular Communications. He was a Guest Editor of several international journals, such as the IEEE WIRELESS COMMUNICATIONS, IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS, and IEEE TRANSACTIONS ON COGNITIVE COMMUNICATIONS AND NETWORKING.
+
+![](images/5f0786f632186b2fd9331365ad32a2c6c659b7331002162ed0ebbc46f90291c5.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man wearing glasses and a suit (no text or symbols visible)
+</details>
+
+Mianxiong Dong (Member, IEEE) received the B.S., M.S., and Ph.D. degrees in computer science and engineering from The University of Aizu, Aizuwakamatsu, Japan, in 2006, 2008, and 2013, respectively.
+
+He is the Vice President and a Professor with Muroran Institute of Technology, Muroran, Japan. He was a JSPS Research Fellow with the School of Computer Science and Engineering, The University of Aizu and a Visiting Scholar with the BBCR Group, University of Waterloo, Waterloo, ON,
+
+Canada, supported by the JSPS Excellent Young Researcher Overseas Visit Program from April 2010 to August 2011.
+
+Dr. Dong was selected as a Foreigner Research Fellow (a total of three recipients all over Japan) by NEC C&C Foundation in 2011. He is the recipient of the 12th IEEE ComSoc Asia–Pacific Young Researcher Award in 2017, the Funai Research Award in 2018, the NISTEP Researcher 2018 (one of only 11 people in Japan) in recognition of significant contributions in science and technology, the Young Scientists Award from MEXT in 2021, the SUEMATSU-Yasuharu Award from IEICE in 2021, and the IEEE TCSC Middle Career Award in 2021. He is a Clarivate Analytics Highly Cited Researcher (Web of Science) in 2019 and 2021–2023 and a Foreign Fellow of EAJ.
+
+![](images/0a901effbb180a0c759cf5a6dbd6f4d7d97a4ae871437db58dea66a6d601d574.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a woman wearing glasses and a red top, against a plain background (no text or symbols visible)
+</details>
+
+Kaoru Ota (Member, IEEE) was born in Aizuwakamatsu, Japan. She received the B.S. degree in computer science and engineering from The University of Aizu, Aizuwakamatsu, in 2006, the M.S. degree in computer science from Oklahoma State University, Stillwater, OK, USA, in 2008, and the Ph.D. degree in computer science and engineering from The University of Aizu in 2012.
+
+She is a Professor and a Ministry of Education, Culture, Sports, Science and Technology (MEXT) Excellent Young Researcher with the Department of
+
+Sciences and Informatics, Muroran Institute of Technology, Muroran, Japan.
+
+Prof. Ota is the recipient of the IEEE TCSC Early Career Award in 2017, the 13th IEEE ComSoc Asia–Pacific Young Researcher Award in 2018, the 2020 N2Women: Rising Stars in Computer Networking and Communications, the 2020 KDDI Foundation Encouragement Award, the 2021 IEEE Sapporo Young Professionals Best Researcher Award, and The Young Scientists Award from MEXT in 2023. She is a Clarivate Analytics Highly Cited Researcher (Web of Science) in 2019, 2021, and 2022, and is selected as a JST-PRESTO Researcher in 2021 and a Fellow of EAJ in 2022.

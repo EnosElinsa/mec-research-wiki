@@ -1,0 +1,1012 @@
+# Distributed and Collaborative Beamforming in Wireless Sensor Networks: Classifications, Trends, and Research Directions
+
+Suhanya Jayaprakasam, Member, IEEE, Sharul Kamal Abdul Rahim, Member, IEEE, and Chee Yen Leow, Member, IEEE
+
+Abstract—Distributed and collaborative beamforming (DCBF) scheme in wireless sensor networks (WSNs) is receiving newfound interest in recent times due to the rapid advancements in wireless technology and embedded systems. Although studies on distributed and collaborative beamforming have been carried out for more than ten years, the DCBF was initially considered impractical due to high complexity and hardly achievable requirements. It gained prominence only in the past few years as small wireless communication electronic sensors with high processing capability became easily available. Recent works showcasing distributed and collaborative beamforming as a suitable solution for 5G communication systems such as mm-wave communication and machine to machine communications has further ignited the interest in this research field. Motivated by these factors, this paper presents a survey on the research trends of distributed and collaborative beamforming in WSNs. We provide classifications of the DCBF research areas and conduct an extensive review of the various proposals which have appeared in the literature for each classification. This survey uncovered that majority of existing research can be broadly divided into four major research trends: beampattern analysis, power and lifetime optimization, synchronization, and finally, prototype design. The inherent features, constraints and challenges of each research category in the distributed and collaborative beamforming are presented and the lessons learned from the shortcomings of previous research are summarized. Finally, this paper has unveiled open research directions in the field of distributed and collaborative beamforming in WSNs.
+
+Index Terms—Collaborative beamforming, distributed beamforming, distributed networks, wireless sensor networks.
+
+# I. INTRODUCTION
+
+W IRELESS sensor network (WSN) is becoming an indis-pensable part of our daily lives where the spatially pensable part of our daily lives where the spatially
+
+Manuscript received February 6, 2016; revised August 16, 2016, January 31, 2017, and May 3, 2017; accepted June 15, 2017. Date of publication June 27, 2017; date of current version November 21, 2017. This work was supported in part by H2020-MSCA-RISE-2015 under Grant 690750, and in part by the Ministry of Higher Education Malaysia and Universiti Teknologi Malaysia under Grant 4F261, Grant 05H39, Grant 4F818, Grant 4FF617, Grant 4F901, Grant 4J210, Grant 12H35 and FRGS/1/2016/ICT03/UTM/02/1 and FRGS/2/2014/TK03/UTM/02/4. (Corresponding author: Suhanya Jayaprakasam.)
+
+S. Jayaprakasam is with the Wireless Systems Laboratory, Department of Electronics and Computer Engineering, Hanyang University, Seoul 04763, South Korea (e-mail: suhanya.jp@ieee.org).
+
+S. K. A. Rahim and C. Y. Leow are with the Wireless Communication Centre, Faculty of Electrical Engineering, Universiti Teknologi Malaysia, Johor Bahru 81310, Malaysia (e-mail: sharulkamal@fke.utm.my; bruceleow@fke.utm.my).
+
+Digital Object Identifier 10.1109/COMST.2017.2720690
+
+distributed autonomous sensors can be seen in various applications such as smart homes, emergency, health, entertainment, transportation, military and environmental monitoring [1], [2]. Since each of the sensors in the WSN require the capability to concurrently sense, gather, process and communicate information, the challenge in WSN lies in achieving power efficient communication for data transfer.
+
+Distributed and collaborative beamforming (DCBF) is a branch of cooperative communication where randomly located independent nodes cooperate with each other to form a virtual antenna array in a WSN. DCBF is a relatively new research topic which has only caught the interest of the wireless communications researchers over the past decade. The collaborative communication in WSN improves the life time of sensor nodes, making the DCBF valuable for sensors with crucial resources and battery life especially in applications where the network is deployed at places where it difficult to replace or recharge the power source [3]. Another limitation which DCBF helps to alleviate in WSN is the long-distance transmission limitation in circumstances where it is unsuitable to layout sink node and multi-hop transmission [4].
+
+Akin to the conventional antenna array beamforming, DCBF provides gain in the received signal-to-noise ratio (SNR) compared to a point-to-point transmission. With a fixed radiated power at each antenna element (called the collaborating node), an ideal DCBF with N collaborating nodes will result in $N ^ { 2 }$ fold gain in the received power at the destination [5]. Conversely, received power can be reduced by an order of $1 / N ^ { 2 }$ for a fixed received power threshold.
+
+The concept of DCBF was conceived circa 2004 by two independent pieces of research under the names collaborative beamforming by Ochiai et al. [6] and distributed beamforming by Barriac et al. [7]. Initially, research work on collaborative beamforming focused on the beampattern analysis and the random array theory while assuming perfect phase synchronization [5], [6] between sensor nodes. On the other hand, the research on distributed beamforming focused only on the feasibility of achieving synchronization among distributed nodes and did not consider the significance of the physical array geometry and the beampattern [7]–[9]. Over the years, the lines that separated the collaborative beamforming and distributed beamforming significantly blurred such that both the terms are now interchangeable.
+
+The DCBF helms as a promising technique in many sensor node powered technologies such as the machine-type communication (MTC) and device-to-device communication (D2D) in the Internet of Things (IoT) network [10]. A new user equipment (UE) category known as LTE UE Category 0 has been introduced in the 3GPP LTE Release 13 to support low-rate and low-power transmission in MTC [11]. DCBF which caters for low power transmission is an excellent technology to achieve the goal set by the LTE-13 to improve the coverage by 15dB for delay tolerant MTC and to reduce power consumption for the MTC. The IEEE 802.15.6 Body Area Networks (BAN) and IEEE P802.15.8 Peer Aware Communications (PAC) standards further motivates fully distributed, infrastructure-less and low-powered sensor nodes communications which will benefit with DCBF [12], [13].
+
+However, there are a few challenges in applying DCBF in WSN. One of the main challenges is synchronizing the distributed sensor nodes to collaborate together to perform beamforming. Besides, since WSN is energy limited, energy consumption of the DCBF scheme should be considerably low in practice. Another challenge lies in achieving the DCBF with limited complexity and processing, given that the hardware of sensor nodes in the WSN are restricted to simple circuitry [4].
+
+This article attempts to provide an exhaustive survey of the DCBF’s research trends in WSN. The existing literature on DCBF are classified according to their research directions and prominent works that can be adopted as pilot research papers for future research are highlighted. Furthermore, common performance metrics for evaluation in each research direction are also presented.
+
+We note that reviews on DCBF has been presented before in the papers [14] and [15]. The paper [14] by Mudumbai et al., was presented in 2009, when research work on DCBF was still in its initial stages. The review by Mudumbai et al. focuses only on a narrow field of beamforming synchronization issues and by no means provides a comprehensive literature survey of the DCBF. A more recent review by Uher et al. in 2011 [15] serves as a good tutorial on beampattern analysis in DCBF. However, beampattern analysis is only one of the research directions of DCBF. Hence, the review paper by Uher et al. leaves out numerous other major research directions and stateof-the-art proposals in DCBF. As such, this survey article aims to supplement the papers [14] and [15] by providing a complete taxonomy of research trends, as well an updated literature review on DCBF from the perspective of WSN applications.
+
+Due to the distributed nature of the collaborating nodes and the lack of channel correlation among nodes, DCBF is rarely applied to receive beamforming in [14]. As such, this review focuses only on transmit DCBF. Furthermore, we distinctly discuss the DCBF in WSN in this survey paper and do not consider the distributed beamforming/network beamforming in cellular communication [16]–[23]. While the base station in the cellular distributed beamforming is distributed, the beamforming process relies on wired backhaul links for array coordination which deviates from the decentralized coordination perspective of WSN DCBF.
+
+The rest of this article is organized as follows. In Section II, an introduction on both distributed and collaborative beamforming are provided, along with comparisons to the conventional beamforming. Taxonomic classification of major research directions are also presented in this section. In Section III, a review on beampattern synthesis and analysis of DCBF is provided. In Section IV, power and lifetime optimization oriented DCBF proposals are reviewed. Section V examines the DCBF literature on the synchronization issues and a taxonomy to differentiate various approaches is provided. Prototypes and implementation of DCBF are summarized in Section VI. Emerging research trends are discussed in Section VII while Section VIII discusses challenges, lessons learned and future directions of the DCBF. Finally, Section IX provides concluding remarks and highlights the contribution of this survey.
+
+TABLE I COMPARISON OF CENTRALIZED BEAMFORMING AND DISTRIBUTED AND COLLABORATIVE BEAMFORMING 
+
+<table><tr><td>Feature</td><td>Centralized beamforming</td><td>DCBF</td></tr><tr><td>1. Geometry of the antenna elements in the array</td><td>usually uniform</td><td>usually random</td></tr><tr><td>2. Synchronization and weight computations</td><td>performed by a common controller</td><td>performed by individual nodes</td></tr><tr><td>3. Internal oscillators</td><td>one common oscillator for all elements</td><td>one oscillator for each collaborating node</td></tr><tr><td>4. Physical array size</td><td>small (a few λ)</td><td>large (up to tens or hundreds of λ)</td></tr></table>
+
+# II. DISTRIBUTED AND COLLABORATIVE BEAMFORMING IN WSNS
+
+In this section, the comparisons between the centralized beamforming, collaborative beamforming, distributed beamforming and antenna diversity are provided to highlight the similarities and differences of each concept. We then summarize the major research directions in DCBF by providing a taxonomic classification of the CDBF.
+
+# A. Comparison of Collaborative Beamforming and Distributed Beamforming (DCBF) in WSN
+
+The distributed and collaborative beamforming is essentially an adaptation of the traditional centralized antenna array theory and beamforming. Table I compares the major differences between the centralized antenna array beamforming and the DCBF. A centralized beamforming system is usually a uniform array, where antenna elements are uniformly spaced. However, non-uniform arrays are also possible since antenna engineers could pre-compute and synthesize the spatial arrangement of the antenna elements according to the system’s specification. In WSN, the arrangement of the sensor nodes which will act as the virtual array for DCBF is usually random.
+
+Furthermore, the placement of each collaborating node cannot be manipulated, unlike in the centralized beamforming system. Next, the centralized beamforming system has all its antenna elements connected to a common controller and processor. Therefore, all the antenna elements will have the same phase, frequency and time references. This common reference does not exist in DCBF since the collaborating nodes are distributed. Hence, each sensor node is required to synchronize phase, frequency and time independently in DCBF so that the signals are transmitted and received coherently. Fig. 1 graphically highlights the differences between the centralized beamforming and the DCBF.
+
+![](images/2f89fddcaa2b5f0698aca7e3c32e747f511fdba5365a19e5d9a0d070088c3a15.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["target"] --> B["Amplifier"]
+    A --> C["Phase shifter"]
+    B --> D["Power Divider"]
+    C --> D
+    E["θ+3Δ θ"] --> F["Amplifier"]
+    G["θ+2Δ θ"] --> H["Amplifier"]
+    I["θ+Δ θ"] --> J["Amplifier"]
+    F --> J
+    H --> J
+    J --> K["processor"]
+    K --> L["oscillator"]
+    style A fill:#f9f,stroke:#333
+    style L fill:#ccf,stroke:#333
+```
+</details>
+
+![](images/962b8ab12f95769418ae44d9932a02291979a37a8c4b4b48b84afc87f99c2386.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["target"] --> B["Amplifier"]
+    B --> C["Phase shifter"]
+    C --> D["processor"]
+    D --> E["oscillator"]
+    F["SENSOR #1"] --> B
+    G["SENSOR #2"] --> H["Amplifier"]
+    H --> I["Phase shifter"]
+    I --> J["processor"]
+    J --> K["oscillator"]
+    L["SENSOR #3"] --> M["Amplifier"]
+    M --> N["Phase shifter"]
+    N --> O["processor"]
+    O --> P["oscillator"]
+    Q["?"] -.-> B
+    R["?"] -.-> M
+```
+</details>
+
+(b)   
+Fig. 1. Comparison of (a) centralized beamforming, and (b) collaborative/distributed beamforming in WSN.
+
+TABLE II COMPARISON BETWEEN COLLABORATIVE BEAMFORMING [5] AND DISTRIBUTED BEAMFORMING [7] AT THE INITIAL RESEARCH STAGES 
+
+<table><tr><td>Feature</td><td>Collaborative Beamforming</td><td>Distributed Beamforming</td></tr><tr><td>1. Objective</td><td>Analyse the statistical properties of the beampattern</td><td>Synchronize carrier frequency and phase to maximize the received power at the target destination</td></tr><tr><td>2. Knowledge on location</td><td>Each node knows its own location and the location of the reference node (cluster head)</td><td>Not needed</td></tr><tr><td>3. Processing units</td><td>Independent at each node</td><td>Independent at each node</td></tr><tr><td>4. Overhead</td><td>Information sharing (source node to all collaborating nodes)</td><td>Information sharing and feedback from receiver</td></tr><tr><td>5. Feedback from receiver</td><td>Not available</td><td>Available</td></tr><tr><td>6. Performance metrics</td><td>Beampattern characteristics (e.g beamwidth, sidelobe level, directivity)</td><td>Received signal strength</td></tr></table>
+
+Research on collaborative beamforming and distributed beamforming initially focused on different approaches of the same problem. Through the works in [5] and [6], collaborative beamforming focused on the possibility of achieving a good beampattern using randomly located distributed nodes. The main objective of research associated to the term collaborative beamforming was to provide statistical analysis of the beampattern characteristics achieved using the de-centralized and randomly located nodes. Idealized channel conditions were adopted and each sensor nodes were assumed to have knowledge of its own location and the target receiver.
+
+The initial focus of distributed beamforming through the works in [7] and [24] was on the feasibility to successfully beam towards the direction of interest. The location of both the sensor nodes and the direction of the beam is not explicitly known and the objective of the distributed beamforming was to enable the distributed nodes to identify the direction of interest with minimal feedback from the receiver and subsequently adjust the initial phase of their transmission to form a beam with maximum power towards this direction. A simple solution to distributively synchronize each sensor node was proposed. Contrary to the collaborative beamforming idea, the work on distributed beamforming in these papers did not rely on the array geometry and the distribution of the collaborating sensors. The distributed beamforming focused only on maximizing the received power at the target receiver according to the channel gain and paid no considerations to the overall beampattern generated by the cooperating nodes.
+
+Over the time, the terms distributed beamforming and collaborative beamforming started to overlap and converge into one common idea, owing to their obvious similarities. Both concepts consider distributed sensors with individual processors attempting to collaboratively transmit common message to a common destination. In both cases, initial information sharing is essential, where the common message is made known to all the distributed nodes. As such, later research works under the terms distributed beamforming and collaborative beamforming started overlapping each other, effectively blurring the distinguishing features of these two terms. For ease of reference, the main distinguishable features of the initial works in distributed and collaborative beamforming are presented in Table II.
+
+# B. Comparison Between Antenna Diversity and DCBF
+
+The use of multiple antennas to transmit or receive information bearing signal may cause the DCBF to be easily confused with the antenna diversity technique. Here, a clear distinction between the concepts antenna diversity and the DCBF is provided.
+
+![](images/7daa4b36531313b54958ca20eedf515c30ced6dbd5b81086e9833c20f3e0f004.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Distributed/ Collaborative Beamforming"] --> B["Beampattern synthesis & analysis"]
+    A --> C["Power minimization and lifetime maximization"]
+    A --> D["Synchronization"]
+    A --> E["Prototype/testbed"]
+    B --> F["Statistical analysis"]
+    B --> G["Properties optimization"]
+    D --> H["Carrier frequency"]
+    D --> I["Phase"]
+```
+</details>
+
+Fig. 2. Major research directions in distributed and collaborative beamforming in WSN.
+
+Antenna diversity is achieved by placing multiple antennas at the transmitter or the receiver to mitigate the adverse effect of multipath fading. When multiple antennas are placed at the transmitter with only one antenna at the receiver, the system is known as multiple input single output (MISO). Conversely, a system with single antenna at the transmitter while multiple antennas are placed at the receiver is known as single input multiple output (SIMO) and multiple antennas at both ends is multiple input multiple output (MIMO). The antenna diversity techniques differ from the beamforming techniques mainly due to how the signals from multiple paths between the transmitter and receiver are treated. In antenna diversity, it is assumed that the fading at each of the multiple antennas are independent and uncorrelated. Therefore, antenna diversity systems are typically applied for environments where rich scattering is expected, such as indoor wireless communications [25]. Antenna diversity techniques offer very minimal improvement in a correlated channel. Beamforming on the other hand usually produces highly correlated channels between the antennas and the target location. Similarly in DCBF, although the collaborative nodes are placed wide apart, some degree of correlation between the individual channels are expected, thus making DCBF suitable for communications where line of sight (LOS) is available.
+
+The disparity between the objectives and applications of antenna diversity and beamforming calls for different signal processing techniques for both concepts. Though the ultimate goal of both antenna diversity and beamforming is to transmit or receive the same information via multiple antenna, the methodology applied in both concepts differ significantly. Furthermore, in DCBF, the antennas are not centralized and controlled by a common processor. The similarities and differences between antenna diversity and DCBF are summarized in Table III.
+
+# C. Classifications of Research Trends
+
+Review of the existing literature reveal that the majority of the research works on DCBF in WSN fall under one or more of the following four major categories as summarized in Fig. 2: beampattern synthesis and analysis, power and lifetime optimization, synchronization, and prototypes. The focus
+
+TABLE III COMPARISONS BETWEEN ANTENNA DIVERSITY AND DCBF 
+
+<table><tr><td>Feature</td><td>antenna diversity</td><td>DCBF</td></tr><tr><td>1. Antenna</td><td colspan="2">multiple antenna at transmitter/ receiver</td></tr><tr><td>2. Information</td><td colspan="2">all antenna transmits/ receives the same information</td></tr><tr><td>3. Objective</td><td>overcome channel fade</td><td>directive transmission</td></tr><tr><td>4. Improvement</td><td>diversity gain</td><td>array gain</td></tr><tr><td>5. Processor</td><td>common processor for all antennas</td><td>independent at each antenna</td></tr></table>
+
+of the literature on beampattern synthesis can be further classified into two categories: statistical beampattern analysis and optimization of beampattern properties. Papers on power and lifetime optimization strive to optimize the power consumption and network’s lifetime in a network via various optimization tools. Literature on synchronization is by far the most mature research direction out of these four research directions, focusing on carrier, phase and time synchronization. The taxonomy for the various synchronization approaches in DCBF is provided in this article to easily classify the vast number of work falling within this category. The final category is the prototypes which are built according to the DCBF proposals from the previous three categories. Though the four categories are presented independently, all the four categories could complement each other, whereby research work combining a few of these categories is possible. The sections that follow will provide critical analysis of each categories.
+
+# III. BEAMPATTERN SYNTHESIS AND ANALYSIS OF DCBF IN WSN
+
+One of the four major research directions in the field of DCBF in WSNs is beampattern synthesis and analysis. The focus of this direction can be further sub-classified into two categories: statistical beampattern analysis and beampattern properties optimization. Since beampattern synthesis and analysis rely on the random array theory, the pertinent random array beamforming works that paved way for DCBF are first reviewed. This is followed by discussions and review of literature on the two sub-classifications. Pilot papers and common performance metrics for both statistical beampattern analysis and beampattern properties optimization are highlighted.
+
+# A. Random Array Beamforming
+
+The random array theory analyses mathematical models and statistical properties of the beampattern of randomly distributed array. In this section, important works on random antenna array that contributed to the development of DCBF will be briefly reviewed.
+
+One of the major driving forces behind the development of random array theory is the motivation to reduce the number of elements in an array. The work in [26] and [27] in the 1960s proved that randomly arranging the elements over a linear aperture can reduce the number of elements needed to beamform when compared to uniform linear array. This however, comes with a penalty of much higher sidelobe level [27].
+
+General comparisons with no unified theory on the beampattern of random antenna arrays are presented via computer simulations in the research works in [28] and [29]. Eventually statistical analysis and mathematical models to characterize the random antenna array’s beampattern properties such as directivity, beamwidth and sidelobe level, are presented in [30] and [31].
+
+The focus on the random array theory then shifted to obtaining lower sidelobes with linear array [32] and also curved array [33]. Statistical analysis on the sidelobes of random antenna array has since been tackled by various works over the next three decades [34]–[37].
+
+The solid initial works on the random antenna array paved way to the statistical analysis of collaborative beamforming presented by Ochiai et al. [5] in 2005. Though the collaborative beamforming differs from the earlier random antenna theory as the elements are now decentralized, the random antenna theory research provides a strong foundation for the beampattern synthesis and analysis of DCBF.
+
+# B. General Array Factor Model for Distributed and Collaborative Beamforming
+
+The general array factor model for collaborative beamforming is derived from the random array theory. The elevation angle is denoted $\theta \in [ 0 , \pi ]$ , whereas the azimuth angle is denoted as $\phi \in [ - \pi , \pi ] . \mathrm { ~ A ~ }$ few general assumptions are made, as listed below [5].
+
+1) All the collaborating nodes are located on the x-y plane, randomly distributed within the disk of radius, R meters.   
+2) One of the collaborating nodes is chosen as a cluster head (CH), which will serve as the reference point for all other nodes, whereby the polar coordinates of the CH is (0, 0). The $k ^ { t h }$ node positioned at $r _ { k }$ meters and $\psi _ { k }$ radians away from the CH has the polar coordinates of $( r _ { k } , \psi _ { k } )$ .   
+3) The destination is located on the x-y-z plane, hence a destination situated at A meters, φ0 radians at the azimuth and $\theta _ { 0 }$ radians at the elevation from the CH is denoted in spherical coordinates as $( A , \phi _ { 0 } , \theta _ { 0 } )$ .   
+4) Each node is equipped with an isotropic antenna and the separation between the nodes is large enough to ignore mutual coupling effects.   
+5) The channels between nodes and to the target are all ideal. Thus, there are no multipath fading and shadowing.
+
+![](images/b3f22ab3dcdaf02a9c7fc275aea700d1a0f1360096a8dae5497577f55a089ae6.jpg)
+
+<details>
+<summary>text_image</summary>
+
+(r_k, \u0394_k)
+(0, 0)
+\theta_0
+\phi_0
+y
+z
+x
+</details>
+
+Fig. 3. Topology of the nodes in a collaborative beamforming scenario [5].
+
+6) All nodes have knowledge of their own location and are perfectly synchronized such that there is no frequency carrier, phase and time jitter.
+
+The topology and the geometrical configuration of the collaborating nodes and the target is depicted in Fig. 3. The distance of the $k ^ { t h }$ collaborating node, $d _ { k } ( A , \phi , \theta )$ is derived as [5]
+
+$$
+d _ {k} (A, \phi , \theta) = \sqrt {A ^ {2} + r _ {k} ^ {2} - 2 r _ {k} A \sin \theta \cos (\phi - \psi_ {k})} \tag {1}
+$$
+
+Under the ideal conditions, the array factor for N collaborating nodes, each transmitting with an energy of $1 / N$ is therefore [5]
+
+$$
+F (\phi , \theta | \mathbf {r}, \psi) = \frac {1}{N} \sum_ {k = 1} ^ {N} e ^ {j \Psi_ {k}} e ^ {j \frac {2 \pi}{\lambda} d _ {k} (\phi , \theta)} \tag {2}
+$$
+
+where $\Psi _ { k }$ is the initial phase for node $k \in { 1 , 2 , \dots , N } .$ . The initial phase will provide phase rotation of the signal at each individual nodes so that the signals will add up coherently at the target. There are two methods to identify the value of $\Psi _ { k }$ . The first method is the closed-loop method, where accurate knowledge of the target’s positions is known to all collaborating nodes via feedback from the target. The second method is the open-loop method, where it is assumed that the target’s location is known a priori by only the cluster head and all the other nodes only need the knowledge of its own location relative to the location of the cluster head.
+
+The initial phase for closed-loop method is referenced to the target and is therefore
+
+$$
+\Psi_ {k} ^ {C L} = - \frac {2 \pi}{\lambda} d _ {k} (\phi_ {0}, \theta_ {0}) \tag {3}
+$$
+
+The approximate array factor, $\widetilde { F }$ of a closed-loop system is derived in [5] as
+
+$$
+\widetilde {F} ^ {C L} (\phi , \theta | \mathbf {r}, \psi) = \frac {1}{N} \sum_ {k = 1} ^ {N} e ^ {j \frac {2 \pi}{\lambda} r _ {k} [ \sin \theta_ {0} \cos (\phi_ {0} - \psi_ {k}) - \sin \theta \cos (\phi - \psi_ {k}) ]} \tag {4}
+$$
+
+On the other hand, the initial phase of the nodes in the open-loop is
+
+$$
+\Psi_ {k} ^ {O L} = \frac {2 \pi}{\lambda} r _ {k} \sin \theta_ {0} \cos (\phi_ {0} - \psi_ {k}) \tag {5}
+$$
+
+TABLE IV SIMULATION PARAMETERS FOR TWO AND THREE DIMENSION BEAMFORMING 
+
+<table><tr><td>Parameter</td><td>Values for 2D simulation</td><td>Values for 3D simulation</td></tr><tr><td>N</td><td>5</td><td>10</td></tr><tr><td>R</td><td>1 meter</td><td>2 meters</td></tr><tr><td> $\phi_0$ </td><td>20°</td><td>120°</td></tr><tr><td> $\theta_0$ </td><td>90°</td><td>45°</td></tr><tr><td>λ</td><td>0.332 meters (900 MHz frequency)</td><td>0.332 meters (900 MHz frequency)</td></tr></table>
+
+The array factor of the open-loop system is derived in [5] as
+
+$$
+\widetilde {F} ^ {O L} (\phi , \theta | \mathbf {r}, \psi) = e ^ {j \frac {2 \pi}{\lambda}} \frac {1}{N} \sum_ {k = 1} ^ {N} e ^ {j \frac {2 \pi}{\lambda} r _ {k} [ \sin \theta_ {0} \cos (\phi_ {0} - \psi_ {k}) - \sin \theta \cos (\phi - \psi_ {k}) ]} \tag {6}
+$$
+
+The array factor of DCBF can be simulated with the aid of programming tools. The locations of all stations are geometrically modelled on a two dimensional space, with complete information of each station’s x-y Cartesian location. The signals from collaborating nodes are then sampled according to the space-time function in (4) to plot the resultant beampattern.
+
+Consider simulation parameters specified in Table IV for the two and three dimensional parameters. For two dimensional beampattern simulation, the topology is as shown in Fig. 4. The main lobe of the beam is at $\phi _ { 0 } = 2 0 ^ { \circ }$ and $\theta _ { 0 } = 9 0 ^ { \circ }$ . The simulated beam pattern for this scenario is shown in polar and Cartesian planes in Figs. 5a and Fig. 5b, respectively. The results show that a good, narrow beam pattern with a high gain at the direction of the destination can be formed via the DCBF.
+
+Very little research has been done on the three dimensional beampattern model of collaborative beamforming. The beampattern is usually reduced to a two dimensional model where all nodes, including the receiver are on the same plane by assuming that $\theta _ { 0 } = \pi / 2$ . For three dimensional beampattern simulation, consider a topology as shown in Fig. 6a where all collaborating nodes are on the x-y plane. The main lobe of the beam is at $\phi _ { 0 } = 1 2 0 ^ { \circ } , \theta _ { 0 } = 4 5 ^ { \circ }$ . The simulated three dimension beam pattern for this scenario is shown in Fig. 6b. High gain is achieved at the intended target location compared to other points on the three dimensional space.
+
+# C. Beampattern Properties and Analysis in Distributed and Collaborative Beamforming in WSN
+
+Based on the random array statistical analysis mentioned in Section III-A, a number of research work started focusing on statistical properties of the beampattern in collaborative beamforming. The earliest of such work is presented in [5], where average properties of beampattern for uniformly distributed sensor array with perfect phase information are derived. The work in [38] proceed to show that Gaussian distributed nodes provide better average beampattern properties compared to the uniformly distributed nodes. Finally, a unified method to evaluate and derive the beampattern properties for collaborative beamforming with arbitrary node distribution is proposed in [39]. These statistical models stand as a performance reference and benchmark for subsequent works on beampattern optimization and analysis in collaborative beamforming.
+
+![](images/fd1d057e66b2f7f0eeaa5139a3d1ea7e5821b2eef4b0ff45c5a3af462c547453.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| Type              | X plane (meter) | Y plane (meter) |
+| ----------------- | --------------- | --------------- |
+| Elements in the array | 0               | 0               |
+| Destination       | 950             | 350             |
+</details>
+
+![](images/f0f5715eb37040e92c03a15d0441cc249bc3ee999e905d69b6e89e7d27777d30.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| X-plane (meter) | Y-plane (meter) |
+| --------------- | --------------- |
+| -0.5            | 0.1             |
+| 0.0             | 0.0             |
+| 0.1             | -0.3            |
+| 0.2             | -0.1            |
+| 0.6             | 0.4             |
+</details>
+
+Fig. 4. Aerial views of the nodes on an x-y plane disk: (a) Position of sensor nodes in a cluster and a destination. (b) A closer view of the collaborating nodes and cluster head.
+
+The general beampattern properties analysed in [5], [38], and [39] are listed and explained as below.
+
+1) Average Far-Field Beampattern: The average far-field beampattern, $P _ { a \nu }$ is the average distribution of antenna’s power over the azimuth and the elevation plane. However, in the existing collaborative beamforming literature, only two dimensional azimuthal plane is considered for N collaborating nodes on an $\widetilde { R } = R / \lambda$ disk radius.   
+2) Three-dB Beamwidth of the Average Beampattern: The three-dB beamwidth is defined as the angle φ3dB at which the power of the average beampattern drops 3dB below the maximum value at φ0, i.e., $\begin{array} { r } { P _ { a \nu } ( \phi _ { 3 d B } ) = \frac { 1 } { 2 } } \end{array}$ .   
+3) Three-dB Sidelobe Region: The three-dB sidelobe region is the range between the angle φ, where the sidelobe at which the mainlobe of the average beampattern reduces to three decibels lower than the mainlobe.
+
+$$
+\phi | \pi \geq | \phi | \geq \phi_ {n _ {0}} ^ {\text { zero }} \tag {7}
+$$
+
+4) Average Directivity: The directivity explains how the radiated power is concentrated in the desired direction, φ0 relative to a single isotropic antenna. It may be
+
+![](images/52b5a6843cff48fec0a5aeaed7e1114ffd3b035a31ced603894b593d19f189c1.jpg)
+
+<details>
+<summary>radar</summary>
+
+| Angle (°) | Value |
+|-----------|-------|
+| 0         | 0.2   |
+| 30        | 0.4   |
+| 60        | 0.6   |
+| 90        | 0.8   |
+| 120       | 0.9   |
+| 150       | 0.7   |
+| 180       | 0.5   |
+| 210       | 0.3   |
+| 240       | 0.1   |
+| 270       | 0.2   |
+| 300       | 0.3   |
+| 330       | 0.4   |
+| 360       | 0.5   |
+</details>
+
+(a)
+
+![](images/95601c459747e03433f8d51f7e049617b295cea2257b76fdae46be8e29fbe3fc.jpg)
+
+<details>
+<summary>line</summary>
+
+| Angle (degree) | Normalized Gain (dB) |
+| -------------- | -------------------- |
+| -150           | -4                   |
+| -100           | -20                  |
+| -50            | -6                   |
+| 0              | 0                    |
+| 50             | -20                  |
+| 100            | -10                  |
+| 150            | -2                   |
+</details>
+
+(b)
+
+Fig. 5. Two dimensional DCBF beam formed by nodes in Fig. 4: (a) Polar representation (aerial view) of the beampattern. (b) Cartesian representation of the beampattern.   
+![](images/cc220723ab8c7c0e371603cc62b5c5a6f699ccaa7bb319c2b8006eb807291bd1.jpg)
+
+<details>
+<summary>scatter</summary>
+
+| x (y, meters) | y (z, meters) | z (meters) |
+| ------------- | ------------- | ---------- |
+| -1.0          | 0.0           | 0.1        |
+| 0.5           | 0.5           | 0.2        |
+| 1.0           | 1.0           | 0.1        |
+| 1.5           | 1.5           | 0.1        |
+| 2.0           | 2.0           | 0.0        |
+| 2.5           | 2.5           | -0.1       |
+| 3.0           | 3.0           | -0.2       |
+</details>
+
+(a)
+
+![](images/9e1a9dba4633d2a471b08916fedaaed440ddc8bc95de607298a8c4b62dafa51b.jpg)
+
+<details>
+<summary>surface_3d</summary>
+
+| X     | Y     | Z     |
+|-------|-------|-------|
+| -0.5  | 0.0   | 0.1   |
+| 0.0   | 0.1   | 0.2   |
+| 0.5   | 0.2   | 0.3   |
+| 0.0   | 0.3   | 0.4   |
+| -0.5  | 0.4   | 0.5   |
+| 0.5   | 0.5   | 0.6   |
+| 0.0   | 0.6   | 0.7   |
+| -0.5  | 0.7   | 0.8   |
+| 0.5   | 0.8   | 0.9   |
+| 0.0   | 0.7   | 1.0   |
+</details>
+
+(b)   
+Fig. 6. Three dimensional DCBF (a) Position of sensor nodes in a cluster (b) Beampattern on the x-y-z plane.
+
+defined as
+
+$$
+D \triangleq \frac {\int_ {- \pi} ^ {\pi} P (\phi_ {0}) d \phi}{\int_ {- \pi} ^ {\pi} P (\phi) d \phi} = \frac {2 \pi}{\int_ {- \pi} ^ {\pi} P (\phi) d \phi} \tag {8}
+$$
+
+where $P ( \phi _ { 0 } )$ is the radiated power density in the direction of φ0.
+
+5) Distribution of Peak Sidelobe: The distribution of peak sidelobe, $P r _ { o u t }$ is given as the probability that the sidelobe with a maximum peak exceeds a threshold power level. It is used to estimate the maximum interference to unintended targets within the collaborative transmission range.   
+6) Complementary cumulative distribution function (CCDF): The complementary cumulative distribution function (CCDF) of a beampattern is the probability of the average power in the direction of φ0 exceeding a threshold power $P _ { 0 }$ .
+
+The closed form statistical equations for most of these beampattern characteristics have been estimated for various random node distribution, z. The statistical beampattern characteristics for uniform, Gaussian and arbitrary distribution, as reported by Ochiai et al. [5], [6], Ahmed and Vorobyov [38], [40], and Huang et al. [39] respectively are compared in Table V.
+
+Some general conclusions can be drawn from the compilation of statistical expressions in Table V. For all cases, when the number of nodes N is high enough, the beampattern approaches a mainbeam with gain N. The average mainbeam becomes narrow as the normalized disk radius, $\widetilde { R }$ increases and therefore the directivity increases with ${ \widetilde { R } } .$
+
+The distribution of the nodes also affects some of the beampattern characteristics. Nodes distributed with a Gaussian distribution have wider mainlobe compared to nodes distributed uniformly as illustrated in Figs. 7a and 7b. For this reason, the directivity of Gaussian distributed nodes is lower compared to uniformly distributed nodes, as can be seen in Fig. 7c. However, Gaussian distributed nodes provide smoother sidelobes. It can be seen from Fig. 7b that while the sidelobes of the uniformly distributed network oscillate in accordance to Bessel function as it approaches the minimum, the Gaussian distributed network transitions smoothly to the minimum.
+
+However, these ideal beampattern characteristics and properties are hardly achievable when a realistic environment is considered. Discussions in [5] and [41] have shown that the mainbeam of the beampattern quickly degrades as the phase noise and localization errors increases. So far, no analysis has been provided on how other beampattern characteristics such as directivity and the CCDF are affected by these uncertainties.
+
+Furthermore, the statistical analysis places relatively high number of collaborating nodes in a disk of unit radius. Such compact distribution is highly unrealistic as it is physically impossible to place two antennas closer than half the carrier wavelength. Another problem that arises from such tightly packed nodes would be mutual coupling between the antennas of each node. Since mutual coupling affects the current distribution at the coupled antennas, it is expected that the beampattern characteristics will have a different behaviour compared to those summarized in Table V. These issues remain unanswered in the existing literature on beampattern analysis of DCBF.
+
+TABLE VSTATISTICAL PROPERTIES OF BEAMPATTERN IN WSN DCBF WITH DIFFERENT SENSOR NODE DISTRIBUTION
+
+<table><tr><td></td><td>Uniform Distribution</td><td>Gaussian Distribution</td><td>Arbitrary Distribution</td></tr><tr><td>Distribution of Sensor Nodes</td><td>Uniform distribution</td><td>Gaussian distribution with zero mean and variance  $\sigma_0^2$ </td><td>arbitrary distribution of z</td></tr><tr><td>Average Far-Field Beampattern $(P_{av}(\phi))$ </td><td><img src="images/59433cd261ea263811c6679f644e482b46bd0a94c90b3f3cd2169bb6dad15dc2.jpg"/>where  $J_n(x) = n^{th}$  order Bessel function of the first kind.</td><td><img src="images/1347be5c8acc08c4df209315cf740854b4cdfc329bea5c6c25c1c7a2009dc820.jpg"/></td><td><img src="images/44964bc3423d8047cc0c8afbbc9db376d0800313935f3342d381970e6dc45374.jpg"/></td></tr><tr><td>Three-dB Beamwidth of the Average Beampattern ( $\phi_{av}^{3dB}$ )</td><td><img src="images/ebeac6b69dc6722a66af0d43ba976d2c5e67a6003cf59e68e8dcf1270ff078f2.jpg"/></td><td><img src="images/56c963967d2dcef0d249a2c5e9255634d4934b3e54992c4340fd58f63bf387b1.jpg"/></td><td><img src="images/0d58ceffa06132d7ca49b1c8b00bec7e61ff5c3f068ffddb6b355ec9597b47e5.jpg"/></td></tr><tr><td>Three-dB Sidelobe Region  $\phi_{3dB}$ </td><td>NA</td><td><img src="images/f356a45f359774cc348b75d9fad871d2b126772bc461655005dd6c748d88a452.jpg"/></td><td>NA</td></tr><tr><td>Average Directivity $(D_{av}^*)$ </td><td> $\frac{N}{1 + (N - 1)_2F_3(\frac{1}{2}\frac{3}{2}; 1, 2, 3; -(4\pi\widetilde{R})^2)}$ (16)where  $_2F_3$  a generalized hyper-geometric function</td><td> $\frac{N}{1 + (N - 1)_1F_1(\frac{1}{2}; 1; -(4\pi\sigma)^2)}$ (17)where  $_1F_1$  a generalized hyper-geometric function</td><td> $\frac{N}{2\pi + (N - 1)\int\limits_\pi^\pi\left|\frac{1}{M}\sum\limits_{t=1}^{M}e^{-ja\widetilde{z}_t}\right|^2d\phi}$ (18)</td></tr><tr><td>Variables and definitions</td><td> $\widetilde{R}=$  normalized disc radius of the collaborating nodes&#x27; cluster</td><td> $\sigma^2 = \frac{\sigma_0^2}{\lambda^2}$ </td><td>M= size of survey set.  $\widetilde{z}=$  random value from the survey set</td></tr><tr><td>General variables</td><td colspan="3"> $\alpha = 4\pi\widetilde{R}\sin(\phi/2); z_k = \frac{r_k}{\lambda}\sin\left(\psi_k - \frac{\phi}{2}\right); a = \alpha(\phi) = 4\pi\sin\left(\phi_k - \frac{\phi}{2}\right)$ </td></tr></table>
+
+![](images/0258226db080fa95a6b168113de40bcb3fc46b7bd74cfa5c1ac8c3220789ea06.jpg)
+
+<details>
+<summary>line</summary>
+
+| Angle, φ | uniform (N=16) | gaussian (N=16) | uniform (N=1024) | gaussian (N=1024) |
+| -------- | -------------- | --------------- | ---------------- | ----------------- |
+| -150     | -30            | -30             | -30              | -30               |
+| -100     | -30            | -30             | -30              | -30               |
+| -50      | -25            | -25             | -25              | -25               |
+| 0        | 0              | 0               | 0                | 0                 |
+| 50       | -25            | -25             | -25              | -25               |
+| 100      | -30            | -30             | -30              | -30               |
+| 150      | -30            | -30             | -30              | -30               |
+</details>
+
+(a)
+
+![](images/f9dd6165bf15321065a673a721577952cca7a810166f9738658b7dfe44549926.jpg)
+
+<details>
+<summary>line</summary>
+
+| Angle | uniform | gaussian |
+|-------|---------|----------|
+| 0     | 0       | 0        |
+| 5     | -4      | -4       |
+| 10    | -12     | -8       |
+| 20    | -12     | -10      |
+| 30    | -12     | -12      |
+| 40    | -12     | -12      |
+| 50    | -12     | -12      |
+</details>
+
+(b)
+
+![](images/7de329571a6845f0540fe7262c8df632f9a6da43bb62d12f2e8c24a3ceacf8bf.jpg)
+
+<details>
+<summary>line</summary>
+
+| Normalized Radius | uniform | gaussian |
+| ----------------- | ------- | -------- |
+| 0                 | 0.45    | 0.35     |
+| 10                | 0.90    | 0.85     |
+| 20                | 0.95    | 0.92     |
+| 30                | 0.97    | 0.95     |
+| 40                | 0.98    | 0.97     |
+| 50                | 0.99    | 0.98     |
+</details>
+
+Fig. 7. Uniform and Gaussian spatial distributions of $\widetilde { R } = 3 \mathrm { ~ ( a ) }$ Average beampatterns for N =16 and 1024 [40] (b) 3 dB beamwidth and sidelobe region for $N = 1 6 , \widetilde { R } = 3$ [38] (c) Normalized directivity for N = 16 [40].
+
+# D. Optimization of Beampattern Properties in Distributed and Collaborative Beamforming in WSN
+
+Having established that a good narrow beampattern can be established via DCBF, research on beampattern analysis shifted focus to beampattern optimization of DCBF. The optimization can be achieved via two methodologies: beamforming coefficient perturbation or node perturbation method. The beamforming coefficient consists of two variables, which are the amplitude and the phase of the signal. Either one or both of these variables can be perturbed via the coefficient perturbation method. Node perturbation can be done via node selection and node placement. Node selection procedure work on the basis that the positions of the antenna elements in an array are chosen such that their mutual phase offset due to their locations create a coherent combined signal at the target location. On the other hand, node placement procedure involves carefully selecting the best location for each antenna and positioning it so that the combined signal and beampattern is optimal.
+
+The literature on beampattern optimization in DCBF shows that convex optimization and meta-heuristic algorithms are most commonly used to solve beampattern optimization problems. Convex optimization technique is applicable when the problem is a convex or concave function whereby the function is twice differentiable and has at most one global optimal value. Papers focusing on convex optimization first attempts to relax the non-convex objective function into a convex function and then apply convex optimization to solve the problem [42].
+
+Meta-heuristics is a sophisticated trial-and-error solution finding method with controlled randomization techniques. In general, application of heuristics and meta-heuristic algorithms in an optimization problem greatly helps in reducing the convergence time of the optimization. Meta-heuristics tend to apply intensification and diversification to ensure convergence to the global optimum. Compared to heuristic methods, metaheuristic methods such as genetic algorithm (GA) and particle swarm optimization (PSO) perform better at obtaining a near optimal solution. When meta-heuristic algorithms are applied to optimization of beampattern properties in DCBF, the objective function is optimized iteratively. Hence, the speed of the algorithm converging to the best solution, on top of the value optimized beampattern solution, is also regarded as a measure of performance.
+
+Research works on beampattern optimization in DCBF predominantly fall under either coefficient perturbation or the node perturbation category, each possessing its own pros and cons. Nulling schemes are the most common theme in DCBF beampattern optimization. The distributed collaborating nodes are manipulated to form a null at the direction of an unintended receiver. This is done via phase perturbation in [42], [47], and [48], node selection in [41] and [43]–[45] and mobile node placement in [46]. However, in open-loop DCBF, the targets do not provide feedback to the collaborating nodes and the directions of interferences are probably unknown. In such cases, it is more useful to achieve lower overall sidelobes rather than just nulls at certain directions.
+
+Minimizing sidelobes is commonly performed by reducing the peak sidelobe (PSL) of the beampattern. Recently, a quasi-circular node selection method to reduce the PSL in DCBF using a variant of the particle swarm algorithm (PSO) was proposed in [50]. Similarly, a node selection method based on uniform space linear array for PSL minimization is implemented using genetic algorithm (GA) in [51] and PSO in [49] and various other meta-heuristic methods [52]–[54]. All these papers adopt the node selection method to achieve PSL reduction. PSL reduction is also attempted using coefficient perturbation method via meta-heuristic optimizations in [56], [57], [59], [61], and [64]. An improvement of at least three-dB can be seen using all the approaches. However, the choice of optimization methodology relies heavily on the limitations of the networks and the application scenarios. The drawback of the node selection method in DCBF is that it may cause some nodes to be used more often than others. Hence, not all the nodes will be utilized, and the network might exhaust the energy of frequently used nodes. Furthermore, this method is only feasible when there is a large number of collaborating nodes in the network. Optimization of PSL via coefficient perturbation on the other hand, provides limited improvement for nodes distributed over a large cluster area [59]. Furthermore, it is recently discovered that the PSL minimization does not always equate to interference minimization and capacity improvement in the network and is more suited to clusters of small sizes and high sensor node density [65].
+
+TABLE VI TECHNIQUES USED FOR BEAMPATTERN OPTIMIZATION IN DCBF 
+
+<table><tr><td>Objective</td><td>Methodology</td><td>Optimization Tool</td></tr><tr><td rowspan="3">Nulling</td><td>node selection</td><td>greedy feedback based [41, 43], particle swarm optimization(PSO) [44], least square linear line fitting [45]</td></tr><tr><td>mobile node placement</td><td>heuristic: heavy ball [46]</td></tr><tr><td>coefficient perturbation</td><td>convex: interior point method [42], heuristic: three step iteration [47], deterministic [48]</td></tr><tr><td rowspan="2">Minimize sidelobe</td><td>node selection</td><td>PSO [49, 50], genetic algorithm (GA) [51], firefly algorithm (FA) [52], cuckoo search algorithm (CS) [53], cross entropy optimization (CEO) [54], deterministic: sector-based [55]</td></tr><tr><td>coefficient perturbation</td><td>GA and NSGA-II [56–58, 64], hybrid PSO and gravitational search algorithm (GSA) [59]</td></tr><tr><td rowspan="2">Maximize directivity</td><td>node selection</td><td>heuristic [60]</td></tr><tr><td>coefficient perturbation</td><td>PSO, GA, GSA, NSGA-II [56, 58, 61]</td></tr><tr><td>Minimize beamwidth</td><td>node selection</td><td>deterministic: ring-based [62, 63], deterministic: sector-based [55]</td></tr></table>
+
+Maximization of the beampattern directivity [56], [58], [60], [61] and minimization of the beamwidth [62], [63] have also been attempted in DCBF with lesser regularity. However, minimizing the beamwidth is shown to increase the sidelobe [62] where the sparser the selected node, the higher the sidelobes [55]. On the other hand, the work in [56], [58], and [61] show that dual optimization of beamwidth minimization and directivity optimization provide a better solution than the peak sidelobe minimization. The techniques used for beampattern optimization in distributed and collaborative beamforming are summarized in Table VI.
+
+An interesting point to note is that all available literature in this category simplifies the three dimensional array factor into a two dimensional problem. Moreover, research works where optimization provided using meta-heuristic algorithms do not provide an upper bound or statistical analysis for the optimal solution. Optimization under more practical antenna characteristics instead of the ideal omnidirectional antenna, as well consideration of channel and synchronization effects are interesting directions to be considered for future. For sparsely located collaborating nodes, coefficient perturbation is a better choice for optimization instead of node perturbation.
+
+# IV. POWER AND LIFETIME OPTIMIZATION OF THE WSNS IN COLLABORATIVE AND DISTRIBUTED BEAMFORMING
+
+In wireless sensor networks, the power of the batteryoperated devices is a precious commodity. Ideally, each collaborating sensor node in DCBF need not transmit with its maximum transmit power to establish successful communication link with the receiver. A low average transmit power in the transmissions is preferred in wireless communications due to high utility costs, possible health hazards, and tightening environmental regulations. Each node might also have different amount of power resource in WSNs. As such, per-node transmit power constraint should be considered when performing distributed and collaborative transmit beamforming. Hence, one of the research direction of distributed and collaborative beamforming is efficient power allocation to minimize total power consumption and maximize the lifetime of the network.
+
+TABLE VII SUMMARY OF PAPERS FOCUSING ON POWER AND LIFETIME OPTIMIZATION IN WSN DCBF 
+
+<table><tr><td>Ref.</td><td>Objective</td><td>Constraint</td><td>Proposal</td><td>Performance metrics</td></tr><tr><td>[66, 69]</td><td>Maximize network lifetime</td><td>per node battery power, channel condition, miscellaneous per node energy consumption</td><td>power allocation: convex optimization and consensus algorithm</td><td>battery depletion rate, CDF of network lifetime, convergence rate</td></tr><tr><td>[68]</td><td>Minimize per node power</td><td>NA</td><td>phase and amplitude perturbation: GA</td><td>network lifetime</td></tr><tr><td>[70]</td><td>Maximize capacity and minimize total power</td><td>total power and minimal capacity demand</td><td>power allocation: genetic algorithm (GA)</td><td>total power and capacity</td></tr><tr><td>[71]</td><td>Minimize total power</td><td>per node battery power, minimal capacity demand</td><td>power allocation: convex optimization (dual problem)</td><td>total power, outage probability</td></tr><tr><td>[74]</td><td>Maximize receive SNR and minimize total power</td><td>total power and SNR</td><td>power allocation: max-min</td><td>total power and SNR</td></tr><tr><td>[67, 75]</td><td>Maximize network lifetime</td><td>SNR</td><td>power allocation: deterministic</td><td>SNR, capacity, network lifetime</td></tr><tr><td>[76]</td><td>Maximize capacity</td><td>channel conditions</td><td>power allocation: intelligent transmission power allocation (ITPA)</td><td>capacity, network lifetime</td></tr><tr><td>[77]</td><td>Maximize per node SNR</td><td>power allocation: per-node power</td><td>max-min</td><td>SNR, power efficiency</td></tr><tr><td>[78]</td><td>Maximize energy efficiency</td><td>NA</td><td>node allocation: sequential quadratic programming (SQP), scatter search</td><td>energy efficiency, spectral efficiency</td></tr></table>
+
+Jayaprakasam et al. [60] propose a method to prolong the lifetime of the sensors in collaborative beamforming by suggesting that the nodes are divided into sector based subsets and alternate the collaborative transmissions between sector subsets. Similarly, Jayaprakasam et al. [62] and Zarifi et al. [63], the authors showed that by selecting collaborating nodes from multiple rings of fixed radii, the beampattern of the collaborative beamforming is optimized while the total energy consumption is reduced. This inherently increases the lifetime and connectivity of the network. However, the works in [60], [62], and [63] merely suggested that the proposed power optimization proposals will prolong the lifetime of the sensors, and did not quantify improvements by using any performance metric.
+
+Based on the literature, there is no standard performance metrics for the evaluation of power and lifetime improvement in DCBF. However, the following performance metrics are commonly used as the optimization objective in energy/ power optimization literature:
+
+1) Network lifetime: The definition for network lifetime differs from one paper to another. The paper [66] defines the network lifetime as span of time that a network can
+
+guarantee the specified QoS requirement. Ahmed and Vorobyov [67] on the other hand define network lifetime as the percentage (%) of sensor nodes alive after DCBF. Another definition of this term is the time taken for the first sensor to run out of battery [68]. Nevertheless, all of these papers strive on maximizing the network lifetime so that coverage is possible for a longer period.
+
+2) Total power consumption: Ideally, the total power consumption in the DCBF network is the sum of the total transmit power of each nodes in downlink transmission. Additionally, miscellaneous random energy consumption in network (due to processes such as sensing, local communication, and data processing are considered in [66] and [69]. The total power consumption has to be low so that optimal energy efficiency is achieved.   
+3) SNR: A high received signal power over noise indicates good transmission. This metric differs from the total power consumptions in two distinct manner. First, the power is measured at the receiver, and random energy consumption at the transmitting nodes are ignored. Next, the channel and noise effect on the signal are considered in the SNR whereas they are not available in the total power consumption metric.   
+4) Capacity: The capacity at the receiver is derived from the received SNR such that $C = l o g _ { 2 } ( 1 + S N R )$ . This gives a measure on how the received power affects the rate of the communication.
+
+Table VII summarises the literature falling under the power and lifetime optimization. Majority of papers in this category uses per-node power allocation to obtain desired objectives [66], [67], [69]–[77]. The work by Ding et al. [78] however, uses node location perturbation whereas Valenzuela-Valdes et al. [68] uses coefficient perturbation to achieve the same goals.
+
+![](images/74b3b98f6736f88e4dde291bf6215320f0361d8d79611f277be4b4a7f3ac4318.jpg)
+
+<details>
+<summary>flowchart</summary>
+
+```mermaid
+graph TD
+    A["Synchronization Schemes"] --> B["Closed Loop"]
+    A --> C["Open Loop"]
+    B --> D["Iterative bit feedback"]
+    B --> E["Rich feedback"]
+    C --> F["Intra- node communication"]
+    C --> G["Blind method"]
+```
+</details>
+
+Fig. 8. Classification of synchronization methods.
+
+# V. SENSOR NODES SYNCHRONIZATION IN COLLABORATIVE AND DISTRIBUTED BEAMFORMING
+
+Research focusing on beampattern analysis often regard the DCBF system to be in a perfect synchrony. In reality, the time, frequency and phase offset exist in the individual collaborating nodes and it is important to perform synchronization to compensate these offsets so that coherent signals will be received at the target destination.
+
+The complex signal at a target when N number of nodes collaboratively transmit at time t all transmitting with carrier frequency $f _ { c }$ when asynchrony is assumed is
+
+$$
+r (t) = \sum_ {k = 1} ^ {N} e ^ {j 2 \pi (f _ {c} + \Delta f _ {k}) (t + \Delta t _ {k}) (\Delta \Psi_ {k})} \tag {19}
+$$
+
+From (19), three distinct offsets occur due to the random and distributed nature of the collaborating nodes can be identified, which are
+
+1) Phase offset, $\Delta \Psi _ { k } .$ : The signal from each node reaches the target with a different phase offset. The phase offset is a combination of the channel rotation and distance variation. Hence, the initial phase of each collaborating node has to be compensated for successful beam steering.   
+2) Frequency offset, $\Delta f _ { k } .$ : Ideally, the local oscillators of all collaborating nodes must oscillate with the same carrier frequency. However, since the local oscillators will each experience independent drift, frequency offset will be present at each node, where oscillator center frequencies will differ slightly from each other. This difference will cause a linearly increasing phase offset in time with respect to the reference center frequency.   
+3) Time offset, $\Delta t _ { k } .$ : The time reference of each node has to be identical to ensure that all nodes beamform simultaneously.
+
+These offsets will cause the combined signal at the target to subsequently become misaligned, causing loss in the beamforming gain at the target direction. In an ideal case, there will be no time and frequency offsets and hence, $\Delta f _ { k } = \Delta t _ { k } = 0$ for $k = 1 \ldots N .$ . If each node has perfect knowledge of its phase compensation $\Psi _ { k }$ the collaborating nodes can produce a coherent signal at the target direction. Thus, the equation (19) becomes
+
+$$
+r (t) = e ^ {j 2 \pi f _ {c} t} \sum_ {k = 1} ^ {N} e ^ {j (\Delta \Psi_ {k} - \Psi_ {k})} \tag {20}
+$$
+
+However, in order to determine the phase compensation, information on the initial phase offset of each collaborating node is needed. Therefore, unless full CSI of each collaborating node to destination is known, a coherent collaborative data transmission is not possible. Hence, achieving the correct phase compensation at each collaborating nodes is essential in DCBF. This is called phase synchronization.
+
+A large portion of existing research works on DCBF has focused on the synchronization issues. These works focus on either the phase or frequency synchronization and sometimes tackle both synchronizations together. Based on the existing literatures, this article introduces a taxonomy to classify the types of synchronization in DCBF, as presented in Fig. 8.
+
+The synchronization procedures in the literature can be broadly classified into two categories: closed-loop method and the open-loop method. The closed-loop method can be sub-classified into the iterative bit feedback method and rich feedback method. Similarly, the open-loop method can be sub-classified into the blind method and the intra-node communication method.
+
+In closed-loop method, the synchronization is aided by feedback from the target node. This feedback could either be just one or a few quantized bits, or in a form of a rich feedback with semi or full CSI information. In the open-loop method, the nodes will have to synchronize without any feedback from the target node. This can be done via intra-node communication method where collaborating nodes communicate and exchange information amongst them to perform synchronization. The blind beamforming method is also a form of open-loop method, where the collaborating nodes beamform without any additional information from the target nor the other collaborating nodes.
+
+The common performance metrics used to evaluate the synchronization in DCBF are the received signal strength (RSS) and the normalized received signal strength (NRSS). Under the assumption that the carrier signal frequency $f _ { c }$ is synchronized and unit transmission power at all nodes, the received signal $y ( t )$ at a channel-attenuated transmissions at timeslot t is [24]
+
+$$
+y (t) = x (t) e ^ {j 2 \pi f _ {c} t} \sum_ {k = 1} ^ {N} h _ {k} e ^ {j (\widetilde {\phi} _ {k} (t) + \Psi_ {k} (t))} + w (t) \tag {21}
+$$
+
+where $x ( t )$ is the common baseband message signal, $w ( t )$ is additive noise, $h _ { k } ( t )$ is the propagation channel effects at timeslot t on node $n _ { k } . ~ { \tilde { \phi } }$ is the cumulative phase response at the node $n _ { k } ,$ whereby the errors caused by the phase rotation due to its location and the offset of the oscillator are absorbed into the single entity of ${ \widetilde { \phi } } .$ Hence, the beamforming gain, i.e., the normalized baseband received power $P _ { R }$ is [24]
+
+$$
+P _ {R} = \frac {1}{N} \left\| \sum_ {k = 1} ^ {N} h _ {k} e ^ {j (\widetilde {\phi} _ {k} (t) + \Psi_ {k} (t))} + \mathbf {w} (t) \right\| ^ {2} \tag {22}
+$$
+
+The value of NRSS is maximized when $\widetilde { \phi } _ { k } ( t ) + \Psi _ { k } ( t ) =$ 0, ∀k. Hence, the phase rotation $\Psi _ { k } ( t )$ has to be adjusted to maximize the NRSS at the intended receiver. Equation (22) without the scaling factor $1 / N$ provides the RSS at the intended receiver.
+
+# A. Closed-Loop Synchronization: Iterative Bit Feedback
+
+In the iterative bit feedback method, each of the distributed collaborating nodes will iteratively adjust its transmit signal with a perturbation according to decision bits received from the target node [9]. The literature falling under the iterative bit feedback method all share the following process:
+
+Step 1 The collaborating nodes independently perturb either one or more of its characteristics (carrier frequency, carrier phase, carrier energy amplitude, node position) in a random or a predetermined fashion.   
+Step 2 Nodes collaboratively transmit a test signal to the intended target.   
+Step 3 Target evaluates the received signal. Based on the signal quality, the target will formulate a decision.   
+Step 4 Target broadcasts one or more bits of coded decision to all the collaborating nodes.   
+Step 5 Collaborating nodes either retain, discard or modify the perturbation applied in Step 1, according to the received bits.   
+Step 6 Algorithm advances to the next iteration and returns to Step 2.
+
+Consequently, the iterative bit feedback method achieves synchronization through the successive adjustment applied by the collaborating nodes.
+
+The first iterative bit feedback proposal can be traced back to the one-bit feedback (1BF) for phase synchronization done by Mudumbai et al. [8]. The algorithm iterates every time slot. Each collaborating node randomly perturbs its carrier and collaboratively transmits to the target. The target receiver evaluates the received signal strength (RSS) and sends back a one-bit decision to the nodes. Decision bit ‘1’ is sent if the RSS is better than the previous slot whereas $\cdot _ { 0 } \cdot \mathrm { \ }$ is sent otherwise. The nodes retain the perturbation if they receive positive feedback (bit ‘1’) from the target and discards the perturbation if they receive negative feedback (bit ‘0’). This randomized process is repeated in the subsequent time slots until the phase of each node is adjusted to its optimal value to achieve high level of signal coherence at the target. This algorithm is in fact, similar to the classic gradient search algorithm and the step size of the perturbation $\beta$ has to be chosen carefully to ensure that the one bit feedback algorithm converges quickly and close enough to the maximum RSS. The achievable RSS of 1BF was improved in [79] by using an additional bit in the feedback using an improved algorithm called random 2 bits feedback (R2BF). With a two-bit feedback (2BF), nodes gain additional information on the quality of the RSS increment and adjust the step size of their random perturbation accordingly. The phase rotation limit $\beta$ governs the step size of the algorithm update and thus the value has to be carefully chosen according to channel and noise conditions as well as number of nodes in the DCBF network.
+
+The 1BF concept has also been applied with node perturbation with an equally successful outcome. The work in [80] opportunistically selects a subset of source nodes from the available collaborative nodes and beamforms towards the target. The target checks if the combined signals from the subset provide improvement or impairment to the received power and provides one bit accept/reject feedback to the subset. The subset will be rejected if bit $\cdot _ { 0 } \cdot \mathrm { \ }$ is received, and another subset will be selected for the testing at the next iteration. The process is repeated until the subset with the best-received signal is identified. Similarly, the node selection method is used with the 1BF for forming a null at unintended targets in [41]. In this work, it is assumed that ideal phase synchronization for forming the main lobe towards an intended target is possible and the paper focuses on choosing the best subset of nodes to create nulls according to one bit feedbacks received from unintended targets.
+
+Fast convergence is very much desired in the feedbackbased scheme since longer convergences come with a penalty of more signalling overhead and power consumption. The works in [81]–[83] show that introducing signed perturbation can improve the convergence and the robustness against noise and time varying channel in the 1BF scheme. Instead of applying random perturbation for the next iteration whenever a negative feedback is received, the nodes first attempt to toggle the sign of its phase perturbation for the next iteration. Further enhancement of the signed random one-bit feedback is proposed in [84] by mimicking the bacterial foraging methodology. In this algorithm which is called the robust adaptive random search algorithm (BioRARSA), all nodes independently continue performing perturbation in the same direction (positive or negative phase perturbation), and the sign of the perturbation is toggled when a negative feedback is received. Unlike [81]–[83], the sign toggle is retained in [84] until the next negative feedback. The algorithm was further improved in BioRARSA2 [85] by introducing re-synchronization when a stall is detected in the convergence.
+
+The paper [79] proposes a new deterministic phase perturbation scheme called deterministic one-bit feedback (D1BF) and proved the convergence to maximum RSS is much faster with deterministic approach compared to the random approach. Each node is provided with a predefined set of K phase perturbation and nodes apply every possible combination to improve the RSS iteratively. Another advantage of this deterministic approach is that the D1BF does not rely on carefully selected step size value $( \beta )$ for good convergence. The successive deterministic distributed beamforming (SDDB) proposed in [86] is build upon the D1BF algorithm. In SDDB, every node will transmit test signal independently and successively. The receiver estimated the phase offset from the individual received test signal from each collaborating node and providing a log2K bits feedback to the particular node to indicate which of the predefined set of K phase perturbation is to be chosen by the node for DCBF. Since all other nodes remain in power saving mode until it reaches its assigned time slot to transmit, SDDB greatly saves the energy consumption in the network. However, the deterministic algorithms are not fully distributed as a certain amount of network coordination is needed to index the collaborating nodes and initiate transmissions.
+
+![](images/e776f0fc31faa8f54f5479616db8ae7af416a25db89584bc95a8e57fa297132e.jpg)
+
+<details>
+<summary>line</summary>
+
+| time slots | 1BF, β=4 | SDDB, K=4 | BioRARSA2 |
+| ---------- | -------- | --------- | --------- |
+| 0          | -40      | -40       | -10       |
+| 50         | -15      | -10       | -5        |
+| 100        | -10      | -5        | -2        |
+| 150        | -8       | -3        | -1        |
+| 200        | -6       | -2        | -0.5      |
+| 250        | -5       | -1        | -0.2      |
+| 300        | -4       | -0.5      | -0.1      |
+| 350        | -3       | -0.2      | -0.05     |
+| 400        | -2       | -0.1      | -0.02     |
+</details>
+
+Fig. 9. Comparison of three different closed-loop bit feedback schemes (R1BF [9], SDDB [86] and BioRARSA2 [85]) at SNR=0 dB.
+
+The bit feedback method is one of the most preferred approach for phase synchronization in the distributed and collaborative beamforming literature due to its simplicity. However, it suffers from slow convergence rate, which only worsens in the presence of additive white Gaussian noise (AWGN). The random bit feedback methods are shown to have a lower rate and lower maximal value of achievable convergence in the presence of AWGN [87].
+
+Fig. 9 compares the 1BF, BioRARSA2 and the SDDB algorithms with N 100 colllaborating nodes. Due to its deterministic phase perturbation, the SDDB algorithm stops after 100 iterations and achieves 4dB below the maximum achievable NRSS. The 1BF algorithm on the other hand performs poorly with slow convergence and lower achievable NRSS in 400 time slots. It is interesting to note however that BioRARSA is able to reach within −1dB of the maximum achievable NRSS within the 400 time slots. Therefore, it can be deduced that heuristically controlled randomization is more robust towards the noise effect. However, the convergence time of a few hundred slots are needed in all the bit feedback methods in Fig. 9. Due to the frequency offset at each node, there exists a maximum time window within which phase coherence can be maintained. As such, longer convergence will translate into loss of coherence and thus affect the beamforming gain in real time [88]. It is due to these shortcomings that richer feedbacks are considered for phase synchronizations.
+
+# B. Closed-Loop Synchronization: Rich Feedback
+
+In the rich feedback method, the target receiver resorts to using a feedback with more information rather than just a few bits to perform the phase synchronization in the distributed and collaborative beamforming. This method is shown to be more robust compared to the bit feedback method but has the penalty of large feedback overhead.
+
+The work in [89] proposed a scheme where the receiver extracts the average channel effect (phase offset) of a trial transmission and updates the node with this information on top of the one bit accept/reject information. The scheme provides better convergence and scalability compared to a random perturbation with one-bit feedback. In [90], the collaborative nodes are divided into two subsets which separately perform collaborative beamforming with test signal to the receiver. The receiver derives a composite channel estimate from the combined pilot signals received from both subsets and estimates composite phase differences between the two subsets. Feedback with a value for phase correction is sent to one of the subsets, and the process is repeated iteratively until there is a minimal phase difference between the two subsets. The work in [91] on the other hand considers stochastic clock drift and kinematics at each collaborating nodes and performs both phase and frequency synchronization. Nodes apply code division multiple access (CDMA) to collaboratively transmit test signal so that the receiver could successfully separate the signals. The individual phase and frequency offset at each collaborating node is thus estimated. State estimation and state prediction are derived via extended Kalman filter (EKF) and sent to the collaborating nodes for phase and frequency synchronization. Similarly, the work in [92] adopted a two-state Kalman filter to predict and track the phase and frequency with a one-shot phase estimate obtained from the target at the fist time slot.
+
+The round-trip synchronization method was first introduced in the form of frequency-slotted round-trip method (F-RT) in [93]. In this proposal, a two-source network, each equipped with two phase lock loops (PLL), establishes frequency and phase synchronization by continuously transmitting three unmodulated beacons on different frequencies. The beacon is transmitted in a round-trip version; from the target destination to the first source, which is then bounced to the second source and finally returned to the target destination. The same flow is repeated for the reverse direction. The phase offset is thus estimated correctly, with no need for iterative feedback. This method proved to be efficient in providing a high rate of source and destination mobility if the round-trip synchronization is performed periodically.
+
+The frequency division duplexing in F-RT causes nonreciprocal phase shifts and degrades the performance in general multipath channels. To circumvent the problem, Brown et al. proposed a time-slotted round trip (T-RT) method in [94] and [95]. This concept is similar to the F-RT method, except that a single frequency is used for all beacons and carriers and time division duplexing employed instead. It is shown in [96] that good beamforming gain can be achieved even with imperfect synchronization caused by cumulative phase errors. However, T-RT method consumes an excessive amount of network power due to the extensive signalling.
+
+Though rich feedback could provide faster and better convergence, the signalling overhead is significantly higher compared to bit feedback solution. The overhead translates into latency problem in real time and can cause challenges for implementation in software defined radio platform [97].
+
+# C. Open-Loop Synchronization: Intra-Node Communication
+
+In some cases, reliable feedback from the target node back to the collaborating nodes is not possible. Furthermore, direct CSI estimation becomes SNR-limited as communications ranges increase [98]. In such cases, collaborating nodes could rely on communications among themselves to perform synchronization.
+
+The cluster head referenced initial phase calculation in [5] is an example of intra-node communication synchronization used to achieve phase synchronization. Another intranode synchronization example is the master-slave architecture in [99] and [100] whereby a designated master node provides a continuous training signal to all the other collaborating other nodes called slave such that all nodes locked-into baseband costas loop to achieve frequency synchronization. Similarly, a master-slave protocol is proposed in [7], where a master node is elected from the collaborating nodes, and all the other nodes are identified as the slave nodes. The master node sends a reference beacon to all the slaves, and the slaves lock their oscillators after pre-compensating the phase mismatch and the propagation delay. Therefore, a combined frequency and phase synchronization is achieved.
+
+In [101], a new two-way source synchronization (2-WSS) protocol is developed to facilitate precise source synchronization and retro-directive distributed transmit beamforming. A beacon is sent successively from one node to another in what is called forward propagation phase and then repeated in reverse in the backward propagation phase. Each collaborating node estimates the phase shift according to the received beacon and locks its oscillator accordingly. The protocol is quite similar to the T-RT, except that the target destination does not participate in the synchronization process. This masterslave inspired synchronization method is scalable and suitable for large-scale sensor network applications [4]. In [98], the previous work in [7] and [101] was analysed considering radio frequency chains in each transceiver are generally not reciprocal and may vary with temperature, aging, and other effects and a relative calibration method is proposed to compensate the non-reciprocity.
+
+However the overhead the open loop intra-communication synchronization is very high. The overhead problem renders the scheme not scalable as such unsuitable for high number of collaborating nodes. Furthermore, the overhead also causes latency in the overall system. A fast open-loop protocol is proposed in [102] aims at reducing the required non-overlapping time-slots.
+
+# D. Open-Loop Synchronization: Blind Method
+
+The blind method is a unique method of synchronization where the nodes synchronize themselves with no feedback from the target nor reference nodes. The analysis in [103] shows that lack of carrier synchronization among distributed nodes can be turned to an advantage. The proposed blind zero feedback (0F) algorithm has shown that significant beamforming gain is achieved at the receiver as the offsets of the oscillator drift will subsequently, but intermittently cause coherent addition of signals at the receiver. The complexity of the proposed algorithm is significantly lower than any other synchronization method since no overhead is incurred. However, a very low data rate can be expected with this method as coherent beamforming is intermittent. This makes the 0F an apt solution for emergency radio applications. However, statistical analysis in [104] shows that the efficiency of 0F is limited only to small network size. [105]
+
+In summary, each of the four synchronization method has its advantages and disadvantages. Almost all papers strive on improving the RSS of received signal via distributed node synchronization. Synchronization methods with the most impact are summarized in Table VIII with details on its and performance metrics and inherent issues. Though hampered by delayed convergence issues, the bit feedback synchronization method is the most popular synchronization method amongst all four methods. The bit feedback algorithms promises scalability due to its low level of signalling which makes the scheme very desirable. However, most of the bit-feedback synchronization is performed with the assumption that the perfect frequency and time synchronization is available. While rich feedback methods do cater for frequency synchronization, none of the four categories considers the impact of timing offset in achieving a good DCBF gain. Recent work of Hu et al. [123] has proposed a distributed timing estimation feedback method to mitigate the phase offset in distributed nodes for DCBF. However, more analysis on the impact of timing asynchrony with regards to carrier frequency is needed for DCBF.
+
+# VI. WSN PROTOTYPES OF DISTRIBUTED AND COLLABORATIVE BEAMFORMING
+
+A working prototype is important to investigate the practical problems faced in implementing DCBF. Table IX summarizes the literature work on prototypes of distributed and collaborative beamforming. All the prototypes are built for the objective of synchronization in WSN application.
+
+The first prototype for collaborative beamforming was built at the University of California in 2006 to test out the 1BF synchronization algorithm. A simple three-source one receiver bench top model where the baseband processing is done by an FPGA is built. The measured result was within 90% of its theoretical limit [9].
+
+The 1BF algorithm was also applied to a 60 GHz wireless sensor network application system. The system is also extended to include frequency synchronization as reported in [107]. As with [9], the received gain is more than 90% of its maximum capacity. However, information about the hardware specifications are not detailed, hindering the reproduction of the results.
+
+In 2010, the researchers who introduced the T-RT carrier synchronization scheme [94] built a low-cost 1021MHz acoustic signal based prototype as a proof concept of the T-RT scheme. The prototype, called acoustic cooperative communication experimental network testbed (ACCENT) managed to obtain power ratio of more than 0.9 (received power/ power of ideal beamformer) even in noisy multipath channels [116]. The paper implies that the acoustic prototype can be easily extended for the RF collaborative beamforming design and development by scaling the acoustic signal’s frequency to 900MHz.
+
+TABLE VIII SUMMARY OF PAPERS FOCUSING ON DCBF SYNCHRONIZATION IN WSN 
+
+<table><tr><td>Papers</td><td>Methodology</td><td>Objective</td><td>Classification</td><td>Performance metrics</td><td>Issues</td></tr><tr><td>[8, 9, 82, 83, 87, 89, 106-113]</td><td>One bit feedback (1BF)</td><td>Phase synchronization</td><td>closed-loop: bit feedback-random coefficient (phase) perturbation</td><td>RSS, convergence rate.</td><td>slow convergence; susceptible to noise and time varying channel</td></tr><tr><td>[80, 114]</td><td>One bit feedback (1BF)</td><td>Phase synchronization</td><td>closed-loop: bit feedback-node perturbation (selection)</td><td>Average received power</td><td>Only works with large collaborating nodes</td></tr><tr><td>[84, 85]</td><td>Bio-inspired robust adaptive random search algorithm (BioRARSA)</td><td>Phase synchronization</td><td>closed-loop: bit feedback-random coefficient (phase) perturbation</td><td>beamforming gain; convergence analysis</td><td>slow convergence</td></tr><tr><td>[79, 110]</td><td>Random two bits feedback (R2BF)</td><td>Phase synchronization</td><td>closed-loop: bit feedback-random coefficient (phase) perturbation</td><td>RSS, convergence rate</td><td>slow convergence; susceptible to noise and time varying channel</td></tr><tr><td>[86, 110]</td><td>Deterministic 1 bit feedback (D1BF)</td><td>Phase synchronization</td><td>closed-loop: bit feedback-deterministic coefficient (phase) perturbation</td><td>RSS, convergence rate</td><td>limited upper bound; not fully distributed</td></tr><tr><td>[86]</td><td>Successive Deterministic Distributed Beamforming (SDDB)</td><td>Phase synchronization</td><td>closed-loop: bit feedback-deterministic coefficient (phase) perturbation</td><td>RSS, convergence rate</td><td>limited upper bound; not fully distributed</td></tr><tr><td>[115]</td><td>Gradually Adjust Phase (GAP)</td><td>Phase synchronization</td><td>closed-loop: bit feedback-deterministic coefficient (phase) perturbation</td><td>RSS, convergence rate</td><td>limited upper bound; not fully distributed</td></tr><tr><td>[94, 116]</td><td>Time slotted round trip (T-RT)</td><td>Phase and frequency synchronization</td><td>closed-loop: rich feedback-deterministic coefficient (phase) perturbation</td><td>convergence; overhead</td><td>not scalable; high power consumption</td></tr><tr><td>[80]</td><td>Opportunistic feedback</td><td>Phase synchronization</td><td>closed-loop: rich feedback-deterministic coefficient (phase) and node (selection) perturbation</td><td>Average received power</td><td>only works for large number of collaborating nodes</td></tr><tr><td>[89]</td><td>1BF + Average channel effect feedback</td><td>Phase and frequency synchronization</td><td>closed-loop: rich feedback-random coefficient (phase) perturbation</td><td>NRSS, BER, scalability</td><td>high overhead</td></tr><tr><td>[90]</td><td>Pairwise algorithm</td><td>Phase and frequency synchronization</td><td>closed-loop: rich feedback-deterministic coefficient (phase) perturbation</td><td>RSS, convergence, composite phase error</td><td>not scalable</td></tr><tr><td>[91, 117, 118]</td><td>Receiver coordinated distributed transmission</td><td>Phase and frequency synchronization</td><td>closed-loop: rich feedback-deterministic coefficient (phase) and frequency perturbation</td><td>RSS, convergence, composite phase error</td><td>not scalable</td></tr><tr><td>[101, 119]</td><td>Two way source synchronization (2-WSS)</td><td>Phase and frequency synchronization</td><td>open-loop: retrodirective-deterministic coefficient (phase) perturbation</td><td>beamforming gain (dB)</td><td>high overhead; not scalable</td></tr><tr><td>[7, 99, 100]</td><td>master-slave synchronization</td><td>Phase and frequency synchronization</td><td>open-loop: intra-node: master nodes synchronizes the slave nodes</td><td>convergence; overhead</td><td>high overhead; not scalable</td></tr><tr><td>[103, 104, 120-122]</td><td>Zero feedback (0BF)</td><td>Phase and frequency synchronization</td><td>open-loop: blind-natural frequency drift of oscillators</td><td>Alignment probability and alignment delay</td><td>limited to small networks; low latency</td></tr></table>
+
+The paper [100] introduces a prototype which can perform phase synchronization via the 1BF scheme [8] and carrier synchronization via a master slave based modified baseband version of the classic Costas loop. The proposed set-up is able to achieve received power close to the ideal received power. However, since the set-up employed analog signalling for synchronization, instability occur and manual calibration is required if the signal is lost.
+
+Quitin et al. [124] demonstrated a fully wireless distributed collaborative beamforming implementation with digital phase and carrier synchronization using software defined radio (SDR). The phase synchronization is based on the 1BF scheme [14] whereas frequency synchronization is done using extended kalman filter (EKF). A detailed experimentation based on the schemes is subsequently carried out and presented in [117], with an added advantage of using same feedback packets for both phase and frequency synchronization.
+
+The work in [121] introduces a prototype to validate zero feedback (0F) blind beamforming method, i.e., no carrier frequency or phase synchronization among the transmitters.
+
+TABLE IX SUMMARY OF PAPERS ON DISTRIBUTED AND COLLABORATIVE BEAMFORMING PROTOTYPES FOR DCBF SYNCHRONIZATION 
+
+<table><tr><td>Ref.</td><td>Algorithm</td><td>Hardware</td><td>Topology and Set-up</td><td>Performance metric</td></tr><tr><td>[9]</td><td>1BF frequency synchronization</td><td>Xilinx Spartan-3 FPGA (transmitters)</td><td>3 sources; 1 destination; 20kHz baseband frequency</td><td>Received power</td></tr><tr><td>[107]</td><td>1BF phase and frequency synchronization</td><td>60-GHz sensor with frequency-phase tuning capability (transmitters); DSP (receiver)</td><td>3 sources; 1 destination; 60GHz frequency</td><td>Received power</td></tr><tr><td>[100]</td><td>1BF phase synchronization; M-S Costas Loop analog frequency synchronization</td><td>USRP-1 with Flex 900 RF daughterboard</td><td>2 sources; 1 destination; 892 MHz for transmission, 964 MHz for feedback</td><td>Received power</td></tr><tr><td>[117, 124]</td><td>1BF phase synchronization; EKF frequency synchronization</td><td>USRP-2 and USRP-N200 baseband boards, and WBX 50-2200MHz RF daughterboards; GNU Radio framework</td><td>3 sources; 1 destination; 892 MHz for transmission, 964 MHz for feedback [124] and 2 sources; 1 destination; 892 MHz for transmission, 964 MHz for feedback; indoor with 20cm separation between sources, 2m separation between sources and receiver [117]</td><td>Received power</td></tr><tr><td>[116]</td><td>T-RT phase and frequency synchronization</td><td>Texas Instruments TMS320C6713DSK starter kit</td><td>2 &amp; 3 source; 1 destination; 7.5m x 7.5m area, 2 sources: 4m separation, 3 sources: 1-3 m separation; 1021 MHz frequency</td><td>Received power ratio</td></tr><tr><td>[126]</td><td>Retrodirective phase synchronization; EKF frequency synchronization</td><td>USRP-2 with WBX RF daughterboard; GNU Radio framework</td><td>3 sources; 1 destination; 915 MHz</td><td>Received power</td></tr><tr><td>[121, 125]</td><td>0BF blind method</td><td>source: iCube-Chipcon/ TICC2500 radio transceiver module, interfaced to a Silabs C8051F321 micro-controller unit (MCU); destination: USRP</td><td>2 sources; 1 destination; indoor [121] and 4 sources; 1 destination; indoor [125]</td><td>SNR</td></tr></table>
+
+Analysis for a two source experimental set-up shows that an SNR within 1.5dB of the ideal SNR is achieved with the proposed test-bed and algorithm. This work is then further extended in [125] to include 4 sources and BER performance analysis.
+
+All the prototypes on DCBF thus far are built upon the synchronization algorithms discussed in Section V. From the compilation of the prototypes in Table IX, it apparent that the Universal Software Radio Peripheral (USRP) is the common hardware choice for the implementation of DCBF. Most prototypes are built in a very small scale with only 1 destination, whereby the maximum collaborating source nodes considered is four nodes. Results obtained using the prototypes highly correlates to the theoretical results obtained from simulations which they were based upon. Since it has been proven with the prototypes that the DCBF can be practically implemented in real life, more elaborate outdoor test-beds should be considered to further identify the practical problems that maybe faced in the deployment of DCBF in WSN.
+
+# VII. EMERGING TRENDS
+
+The distributed and collaborative beamforming is fairly a new concept, which has been around only for the past decade. Due to this, most earlier work on DCBF focuses on proposals to prove that the concept is feasible. As such, initial work liberally made assumptions and generalization in their schemes. Since DCBF has by now gained a strong foothold, many more exciting research trends have been emerging in the last few years. This section focuses on two most prominent research trends of DCBF.
+
+# A. Robust DCBF Under Various Channel Effects
+
+Most works on DCBF are performed under the assumption of perfect channel effect. However, in practice, the channel information will be corrupted by various effects such as scattering, outdated CSI, mobility, and time variation.
+
+Of late, a number of papers analysing the effects of scattering and reflection have emerged. Scattering causes an angular spread of a transmitted or received signal. The paper [127] analyses the effects of scattering on the gain and the 3dB beamwidth of DCBF, and concludes that the 3dB beamwidth increases when the cluster radius is small or the angular scattering is large. A closed-form expressions for the maximum gain of the beampattern with regards to the scattering was also presented. An analytical study performed by Zaidi and Affes [128] discovered that the performance of single-ray DCBF deteriorates when the angular scattering is either too small or too large. The authors proceed to propose DCBF techniques to counter the scattering effects in their preceding work in [128]–[131] by exploiting the multi-ray structure channels.
+
+Research on DCBF under imperfect channel is also an emerging new direction. In cases where the feedback is limited and channel estimation error exists, the collaborating nodes have only imperfect CSI to work with to beamform collaboratively. Zheng et al. [132], [133] proposes a robustoptimal beamforming technique with local CSI under SNR constraints based on the Karush-Kuhn-Tucker (KKT) analysis and achieves near optimal gain with use of the imperfect CSI. MMSE based techniques [134]–[136] and SINR balancing techniques [137], [138] have also been proposed in the literature to perform beamforming in DCBF when the channel is outdated and corrupted by noise. Results in general indicates that if additional feedback is allowed in communication, beamforming close to a gain of 1 is possible even under imperfect and outdated CSI.
+
+Other interesting emerging trends are the analysis of DCBF under the effect of time-varying channel and device mobility [85], [89], [110]. Such channel effects will cause the gain of the DCBF to gradually decline over time. The works in [85] and [86] show that even with a limited bit feedback method, the effect of time-varying channel and device mobility can be mitigated to a satisfactory level. Shi et al. [4] on the other hand, considers mobility in the master-slave synchronization model [7]. Effects of channel mismatch and phase offset [139], [140] also emerge as practical trending topics.
+
+Although all the research on channel effects so far fall under the synchronization classification, robust DCBF under the various channel effects and uncertainties will in fact, affect all four major directions of DCBF. So far, the proposal of Feng et al. [141] on optimal energy-efficient power allocation for DCBF is the only literature which does not focus on synchronization alone. Now that it has been established that DCBF can in fact be made robust, the work can now be extended to the other categories, i.e., beampattern analysis, power minimization and power/lifetime maximization and prototype/implementation to model a more realistic and practical DCBF.
+
+# B. Niche WSN Applications
+
+Initial proposals on DCBF are done under the assumption of a general WSN whereby the application and corresponding standards are not considered. Since the feasibility of DCBF is now supported by the working prototypes, more niche area of applications for DCBF in WSNs are investigated over the past few years.
+
+The WSNs enriched with the additional capabilities of cognitive radio has led to the evolution of cognitive radio sensor networks (CRSNs) [142]. It is suggested that a cluster-based network architecture is an appropriate choice for effective dynamic spectrum management in CSRN [143], which motivates the use of DCBF in CRSN. Since sensor nodes are energy constrained devices, energy efficient spectrum sensing methods are needed for CRSN [144]. Therefore, advanced and intelligent radio resource allocation schemes are essential to ensure QoS guarantee, to maximize the network lifetime, as well as to reduce the inter-node and inter-network interferences [145]. Given that the DCBF could address these problems, it is natural for the research on DCBF to branch into CRSN.
+
+There has been a recent influx in research works using DCBF in cognitive radio WSN over the last three years [137], [146]–[153]. Xu et al. [154] have implied that distributed algorithm is preferred in the development of cognitive radio communication technique, since only local information is needed for the convergence of power control algorithm. Hence, application of distributed beamforming with robust power control in cognitive radio is an interesting topic that is gaining traction. However, most CRSN applications require efficient real-time communication and dynamic spectrum access capabilities in the inherently resource-constrained sensor networks, and these need further investigation in the context of DCBF [155].
+
+Implantable or wearable wireless sensor networks (WSNs) have gained an increased attention in the recent years. Such WSNs are frequently called body area networks (BANs), where the working group of the IEEE 802.15 WSN standard has introduced the IEEE 802.15.6 BAN specifications in 2012. In IoT services, BANs eases the customization and adaptation of the service to the individual needs of the users. Recently, Ding et al. [78] has reported that the DCBF can be successfully used in body area network (BAN) using ultra wideband (UWB) with good energy efficiency. It has been shown that since the battery resources of implant nodes in BAN are limited and not easily renewable, DCBF is an excellent energy efficient solution option in BAN. Collaboratively transmitting the data will allow each sensor nodes in the BAN to utilize lesser energy to transmit data for the same range as a single sensor could. Carefully choosing the relay location and the transmitting energy of each sensor nodes in the BAN will further ensure the longevity of the system, as detailed in Section IV. Practical channel model for BSN which includes of the inductivity, resistance, mutual inductance and the magnetic field providing the radiation pattern of each sensor node is considered in [156].
+
+The work of Berbakov et al. [157]–[159], Afana et al. [160], and Alexandris et al. [122], on the other hand, have shown that DCBF has a promising future in the field of radio frequency energy harvesting. Since energy harvesting sensors are constrained by power limitation, a jointly optimal transmission policy which maximizes the total throughput is much needed in such scenarios [161].
+
+The DCBF is also investigated in an radar sensor scenario. The difference between radar WSN and the conventional WSN in terms of beamforming is that target location in the radar system is non-cooperative and thus no information about the target is known a priory or via feedback. It is shown in [162] the radar sensors can estimate parameters of beacon signals transmitted from sensors to get their local synchronization information. Taghizadeh et al. [163] proposed partial DCBF with MSE and convex optimization to reliably estimate the a target source with distributed passive radar by collecting and combining the individual passive observations from a network of sensor nodes and processing the information in a centralized fusion center. The performance of different radar sensor configurations such as linear, circular, uniform and non-uniform spacing were analyzed and compared in terms of potential applicability to long-range noise radar in [164].
+
+The recent research trend of simultaneous wireless information and power transfer (SWIPT) promises mobile users both wireless data and energy access at the same time [165], [166]. Sensor networks which are typically powered by small batteries with limited lifetime, benefit highly from SWIPT scheme [167]. The works of Berbakov et al. [157]–[159] have already proven that collaborative beamforming could be successfully used for energy harvesting in WSNs. The use of DCBF in SWIPT could effectively improve power transfer efficiency by increasing the transmission distance since DCBF can mitigate high path loss. The directivity advantage of CDBF could also improve the secrecy rate of the communication in SWIPT [168]. Such motivations render the use of DCBF in SWIPT an interesting research direction. The recent work by Feng et al. [169] proposed distributed beamforming algorithm in multi-user SWIPT system. Meanwhile, Xu et al. [170] provided an optimal solution for optimizing the collaborative energy beamforming at energy transmitters, and the distributed information beamforming and the inactive/active status of sensor nodes, subject to individual power constraints at energy transmitters and sensor nodes. High computational complexity and control channel budget is identified as the obstacles in DCBF in SWIPT.
+
+It can also be noted research work focused on DCBF in 5G applications is emerging of recent. The work [171] discussed beamforming with power constraints in DCBF in an M2M network. The work in [172] on the hand verified the accuracy of radar ranging via DCBF in a microwave and mm-wave radar sensor scenario.
+
+# VIII. CHALLENGES, LESSONS LEARNED AND FUTURE RESEARCH DIRECTIONS
+
+Though the topic of distributed and collaborative beamforming has been studied in-depth in the four major classifications presented in this paper, a few open issues remain unanswered in this field. The topics below present several vital challenges and lessons learned from the review presented in the previous sections as well as the author’s experience in the DCBF. Suggestions for future research directions are presented for each topic.
+
+# A. Extension of DCBF From Two-Dimensional to Three-Dimensional Analysis
+
+So far, no research focuses on three-dimensional node and target distribution in DCBF. The pioneering DCBF beampattern analysis in [6] presented the array factor as a semi-three-dimensional model, where the collaborating nodes are distributed on a two-dimensional plane whereas the receiver is on a three-dimensional plane. More recently, Buchanan and Huff [173] presented a null steering technique in DCBF assuming a spherical random array (SRA). Unfortunately, all the preceding analytical and numerical studies on the beampattern of DCBF in these papers are made based on a two dimensional plane model. All collaborating nodes and the targets are assumed to be co-planar, which would almost never be the case in real applications of the DCBF.
+
+A good way forward would be to employ the array factor for a spherical random array presented in [173] for DCBF in future research and analyse the pattern in a three-dimensional environment. The effects of three-dimensional node distribution in DCBF is an interesting research to pursue, as a look into these beampattern properties could identify the problems that may be faced by DCBF in real world application. The threedimensional spatial temporal modelling will especially aid the design of millimetre (mm) wave WSNs since beamforming with both azimuth and elevation information can leverage the excessive path loss in mm-wave communications [174]. Once solid groundwork is established in the statistical and analytical research on the field, beampattern optimization considering three-dimensional DCBF is an interesting direction to consider in the future.
+
+# B. Realistic Antenna and Electromagnetic Properties Considerations
+
+It is interesting to note that most of the research on DCBF are performed with a very high number of cooperating nodes [9], [14], [86]. Furthermore, some of the prominent work consider placing a relatively high number of nodes in a very small cluster disk [5], [38], [40], [41], [64], [175]. This is motivated by the fact that closely spaced nodes provide the best beampattern as the angular spread is minimized and hence channel is assumed correlated. However, it is unrealistic to have transmitting nodes placed so close to each other in practice due to physical limitation of antenna sizes. Furthermore, the effect of mutual coupling also cannot be ignored when the nodes are closely spaced. Antennas placed closer than half of their carrier wavelength will cause mutual coupling and both the gain and the beampattern will be affected by this. Hence, the effect of mutual coupling in DCBF is an interesting topic to be investigated.
+
+The coupling coefficient between two antennas in a centralized array can be determined when the antenna’s selfimpedance, impedance of its generator and the mutual impedance between the two antennas are known. The array factor of the antenna array can thence be reformulated by including the coupling coefficient values in the formulation [176]. However, finding the mutual impedance between randomly distributed nodes is not as straightforward as in the case of centralized array, especially when the transmit amplitude ξ at each node vary. Hence this issue needs further investigation and studies with the aid of electromagnetic simulation software.
+
+Another common assumption in existing literature is that an ideal isotropic antenna is used at each node. Although this assumption is useful for analytical purposes, it is often not realistic in practice. It is more probable that the distributed nodes are comprised of different types of antennas at different orientations for DCBF in real world applications such as M2M and emergency response. For example, [156] included the individual magnetic and electrical field of each collaborating nodes when formulating their problem of magnetic induction based body area sensor network. More of details should be absorbed in the analysis to ensure that the practical use of DCBF in wireless network is realizable.
+
+Furthermore, perfect alignment or equal orientation of the coil axes is not valid in practice. The polarization will cause loss in signal strength and this too should be accounted into the DCBF analysis. In conclusion, it will be good for the DCBF research which currently focuses on the physical layer and signal processing aspects to collaborate with the antenna and propagation community to realize a practical and realistic DCBF.
+
+# C. Data Sharing and Medium Access Protocol Considerations
+
+One of the major challenges in wireless sensor networks (WSNs) research is to prevent traffic congestion without compromising the energy of the sensor nodes. Since the collaborating nodes in DCBF have independent processors, additional communication is needed for information sharing between the elements before beamforming can be performed by these nodes collaboratively. Without proper communication protocol, frequent collisions among nodes will occur in the network. Therefore, successful DCBF will not be feasible.
+
+Jayaprakasam et al. [177] have proposed a CSMA/CA based collaborative beamforming in 802.11g wireless networks. Results show that collaborative beamforming with the proposed solution works well for low traffic load networks. Ahmed and Vorobyov [41] in their work on sidelobe control, proposes to use TDD based communication to avoid collision problems. However since the protocol is not the main feature of the paper, the proposal is not explained in detail and no performance metrics provided to validate the proposal. Etezadi et al. [178] proposes a collision free transmission by assigning each node a countdown counter. However, the effect of this proposal on the latency and network throughput are not analyzed.
+
+Although there has been a headway in designing communication protocol for DCBF, most existing works in both open-loop and closed-loop DCBF do not consider the data sharing protocol to realize the DCBF. Therefore, as a way forward, an efficient protocol or scheduling method should be presented according to the application of the DCBF to allow data to be shared among the distributed, collaborating nodes using least amount of channel resource and energy. Doing so can also provide a more comprehensive view on how the DCBF affects network throughput and network transport capacity in a WSN, which is lacking in the current literature.
+
+# D. Customized DCBF for Niche WSN Applications
+
+In this section, we propose additional applications that the DCBF research could tap into.
+
+The in-band full-duplex (IBFD) operation has emerged as an attractive solution for increasing the throughput of wireless communication systems and networks via simultaneous transmission and reception over the same frequency band [179]. While the antennas in DCBF function as both transmitters and receivers, the nodes are assumed to operate in half-duplex or dual frequency full-duplex in the existing literature. The half-duplex method limits the capacity of the network as information sharing, transmission and feedback have to be performed at different time slots. Though dual frequency fullduplex eliminates the problem, dual radio systems for small battery operated sensors are expensive and not an efficient use of radio spectrum. The use of DCBF with in-band duplex operation hence could double the spectral efficiency and thus pave path towards next-generation wireless networks.
+
+Another area which would benefit from DCBF is unmanned aerial vehicle (UAV) and drone applications. LoS links are expected for aerial to ground channels in such application [180]. Recent works have investigated the simultaneous use of multiple single-antenna UAVs as well as relaying techniques to communicate with a ground station [181], [182]. Therefore DCBF could potentially assist in extending the transmission range of the drones to a terrestrial or aerial based base station while preserving the limited power resources of the UAV/drones. Recently, collaborative beamforming was proposed for wireless sensor network unmanned aerial vehicle (WSN-UAV) system for military remote monitoring and surveillance to achieve the ground-to-air transmissions [183]. Interestingly, the simulation results have shown that the proposed system can accommodate the geolocalization errors and UAV movement. The work DCBF in UAV could open up multidisciplinary research on communication-aware path tracking and path planning [184].
+
+It is interesting to note that most existing niche applications in DCBF discussed in Section VII-B do not consider the standard and requirements of the application when modelling the problem. For example, when the BAN WSN is considered, power constraint, channel conditions and other standardization issues listed in IEEE 802.15.6 should be taken into consideration. Therefore, future work on DCBF in a specific application should be made realistic and compliant to the standard and protocols of the application.
+
+# E. Multi-Beam Multi-Null DCBF
+
+An interesting point to note from the existing literature is that the DCBF is rarely applied for cases of more than one beam or null. Except for the recent paper by [46] which proposes simultaneous multi-beamforming and multi-nulling in DCBF via feedback method, there has been no other work in this direction.
+
+Since WSN will usually interact with more than a single sink and encounter multiple interference, multi-beam multinull is a strong topic for consideration. The multiple beams essentially allows for multicasting [185]–[187]. This will be beneficial for the resource constrained WSNs when they need to communicate with more than one sink or source. However, an increase in number of beams and number of nulls will significantly increase the convergence time of the beamforming and thus research should focus on finding a balance between accurate beamforming and short communication latency.
+
+# F. Security Issues in DCBF
+
+The DCBF claims to improve the secrecy in communication due to the directive beamforming [188]–[192]. However, due to the information sharing in DCBF, security could become concern in DCBF. Due to the broadcast nature of the information sharing, the transmission of a source node will be heard from all neighbouring nodes, including nodes which are not the collaborating nodes. Information could be easily intercepted by eavesdroppers during the information sharing stage. Not much research has been done on the security issues to fully understand the impact of the broadcast information sharing on the security of the data transmission.
+
+# G. Roadblocks in the Real-World Implementation
+
+Though significant improvement in realizing the DCBF is seen over the past few year, some roadblocks remain in implementing the concept in real-world.
+
+The existing DCBF prototypes only consider low number of collaborating nodes, mostly focusing on indoor locations.
+
+Large scale test beds tested under various propagation channel is needed to test the applicability of DCBF in practice. The USRP is a popular choice of radio for the prototypes due to its affordability and user-friendliness. However it has to be noted that the computational capacity, size and price of the USRP vastly exceeds that of a practical sensor device.
+
+Furthermore, most assumptions made to realize the CDBF, such as accurate location information, identical sensor nodes properties and the ability to perform accurate phase offsets without delay might not be feasible in practice. The recent work by Felici-Castell [193] analysed all these impractical requirements and considered different alternatives by relaxing these requirements to find feasible assumptions to carry out DCBF with commercial sensor nodes. A much lower than the expected gain is observed in the practical analysis of DCBF. Therefore, in order to realize CDBF, research work should consider technically feasible assumptions with regards to real-world implementation.
+
+# IX. CONCLUSION
+
+This survey article has offered a comprehensive overview of the emerging trends of the distributed and collaborative beamforming (DCBF) in wireless networks, with emphasis on the WSNs. Major research directions have been highlighted and detailed classifications are provided. Open issues in this field and possible future research directions have been proposed based on the state-of-the-art survey done in this article.
+
+An in depth review of the research work done on the beampattern analysis of DCBF shows that this research direction has matured enough to venture into three-dimensional beampattern analysis. Beampattern optimization has been identified as a current trending research direction for those working on the physical dimension of the DCBF.
+
+The majority of research on the DCBF is on the synchronization of the distributed nodes to form a beam collaboratively. This field of work has been visited extensively with many elegant solutions having been proposed over the past decade to enable the synchronization with least overhead and complexity. Nevertheless, this field still promises potential for growth.
+
+Finally research works on test-beds and prototypes show that most of the works in this field is still in its infant stage. It requires more rigorous and large-scale experiments to further propel distributed and collaborative beamforming into commercialization in the future.
+
+We conclude the paper by highlighting recent emerging trends in CDBF and pointing out the challenges, lessons learned and ideas for future research directions. This paper hopes to furnish the readers a comprehensive literature review of CDBF and provide caution and suggestions to future researchers in this field to avoid the common pitfalls.
+
+# APPENDIX
+
+Definitions of symbols and acronyms used in this paper.
+
+0F zero feedback
+
+2-WSS two-way source synchronisation
+
+AF array factor
+
+<table><tr><td>AWGN</td><td>additive white Gaussian noise</td></tr><tr><td>BioRARSA</td><td>robust adaptive random search algorithm</td></tr><tr><td>CCDF</td><td>complementary cumulative distribution function</td></tr><tr><td>CRSN</td><td>cognitive radio sensor network</td></tr><tr><td>DCBF</td><td>distributed and collaborative beamforming</td></tr><tr><td>CDMA</td><td>code division multiple access</td></tr><tr><td>CS</td><td>cuckoo search</td></tr><tr><td>CSI</td><td>channel state information</td></tr><tr><td>D1BF</td><td>deterministic 1 bit feedback</td></tr><tr><td>D2D</td><td>device-to-device</td></tr><tr><td>EKF</td><td>extended Kalman filter</td></tr><tr><td>F-RT</td><td>frequency-slotted round-trip</td></tr><tr><td>GA</td><td>genetic algorithm</td></tr><tr><td>GAP</td><td>gradually adjust phase</td></tr><tr><td>GPS</td><td>global positioning system</td></tr><tr><td>GSA</td><td>gravitational search algorithm</td></tr><tr><td>HPBW</td><td>half power beamwidth</td></tr><tr><td>IoT</td><td>Internet of Things</td></tr><tr><td>LTE</td><td>long term evolution</td></tr><tr><td>MIMO</td><td>multiple input multiple output</td></tr><tr><td>M2M</td><td>machine to machine</td></tr><tr><td>MTC</td><td>machine type communication</td></tr><tr><td>NRSS</td><td>normalized received signal strength</td></tr><tr><td>pdf</td><td>probability density function</td></tr><tr><td>PAC</td><td>peer aware communications</td></tr><tr><td>PLL</td><td>phase lock loop</td></tr><tr><td>PSL</td><td>peak side-lobe level</td></tr><tr><td>PSO</td><td>particle swarm optimisation</td></tr><tr><td>PSOGSA</td><td>particle swarm optimisation-gravitational search algorithm</td></tr><tr><td>R1BF</td><td>random one-bit feedback</td></tr><tr><td>R2BF</td><td>random 2 bits feedback</td></tr><tr><td>RAA</td><td>random antenna array</td></tr><tr><td>RSS</td><td>received signal strength</td></tr><tr><td>SDDB</td><td>successive deterministic distributed beamforming</td></tr><tr><td>SINR</td><td>signal to interference noise ratio</td></tr><tr><td>SNR</td><td>signal to noise ratio</td></tr><tr><td>SRA</td><td>spherical random array</td></tr><tr><td>TDMA</td><td>time division multiple access</td></tr><tr><td>TDD</td><td>time division duplex</td></tr><tr><td>T-RT</td><td>time-slotted round trip</td></tr><tr><td>UE</td><td>user equipment</td></tr><tr><td>UAV</td><td>unmanned aerial vehicle</td></tr><tr><td>WPAN</td><td>wireless personal area network</td></tr><tr><td>WSN</td><td>wireless sensor network</td></tr><tr><td> $n_k$ </td><td> $k^{th}$  collaborating node</td></tr><tr><td> $\theta$ </td><td>elevation angle</td></tr><tr><td> $\phi$ </td><td>azimuth angle</td></tr><tr><td> $r_k$ </td><td>relative radius of node  $k$ </td></tr><tr><td> $\psi_k$ </td><td>relative azimuth of node  $k$ </td></tr><tr><td> $A$ </td><td>relative radius of target</td></tr><tr><td> $\phi_0$ </td><td>relative azimuth of target</td></tr><tr><td> $\theta_0$ </td><td>relative elevation of target</td></tr><tr><td> $d_k$ </td><td>distance of the  $k^{th}$  collaborating node</td></tr><tr><td> $\Psi_k$ </td><td>initial phase for node  $k$ </td></tr><tr><td> $\lambda$ </td><td>wavelength</td></tr></table>
+
+<table><tr><td> $\widetilde{F}$ </td><td>array factor</td></tr><tr><td> $R$ </td><td>cluster radius</td></tr><tr><td> $\mathbf{z}$ </td><td>node distribution</td></tr><tr><td> $N$ </td><td>number of collaborating nodes</td></tr><tr><td> $D$ </td><td>directivity</td></tr><tr><td> $f_{c}$ </td><td>carrier frequency</td></tr><tr><td> $\Delta\Psi_{k}$ </td><td>phase offset</td></tr><tr><td> $\Delta f_{k}$ </td><td>frequency offset</td></tr><tr><td> $\Delta t_{k}$ </td><td>time offset</td></tr><tr><td> $\mathbf{x}$ </td><td>input variable</td></tr><tr><td> $\mathbf{w}$ </td><td>beamforming coefficient weight</td></tr><tr><td> $f$ </td><td>objective function</td></tr><tr><td> $\xi$ </td><td>transmit amplitude</td></tr><tr><td> $b$ </td><td>number of feedback bits</td></tr><tr><td> $\beta$ </td><td>phase rotation limit.</td></tr></table>
+
+# REFERENCES
+
+[1] H. Yetgin, K. T. K. Cheung, M. El-Hajjar, and L. H. Hanzo, “A survey of network lifetime maximization techniques in wireless sensor networks,” IEEE Commun. Surveys Tuts., vol. 19, no. 2, pp. 828–854, 2nd Quart., 2017.   
+[2] A. Noel et al., “Structural health monitoring using wireless sensor networks: A comprehensive survey,” IEEE Commun. Surveys Tuts., to be published.   
+[3] A. Ghani et al., “Spread spectrum based energy efficient collaborative communication in wireless sensor networks,” PLoS ONE, vol. 11, no. 7, 2016, Art. no. e0159069.   
+[4] S. Shi, S. Zhu, X. Gu, and R. Hu, “Extendable carrier synchronization for distributed beamforming in wireless sensor networks,” in Proc. IEEE Int. Wireless Commun. Mobile Comput. Conf. (IWCMC), Paphos, Cyprus, 2016, pp. 298–303.   
+[5] H. Ochiai, P. Mitran, H. V. Poor, and V. Tarokh, “Collaborative beamforming for distributed wireless ad hoc sensor networks,” IEEE Trans. Signal Process., vol. 53, no. 11, pp. 4110–4124, Nov. 2005.   
+[6] H. Ochiai, P. Mitran, H. V. Poor, and V. Tarokh, “Collaborative beamforming in ad hoc networks,” in Proc. IEEE Inf. Theory Workshop, San Antonio, TX, USA, 2004, pp. 396–401.   
+[7] G. Barriac, R. Mudumbai, and U. Madhow, “Distributed beamforming for information transfer in sensor networks,” in Proc. ACM 3rd Int. Symp. Inf. Process. Sensor Netw., Berkeley, CA, USA, 2004, pp. 81–88.   
+[8] R. Mudumbai, J. Hespanha, U. Madhow, and G. Barriac, “Scalable feedback control for distributed beamforming in sensor networks,” in Proc. IEEE Int. Symp. Inf. Theory (ISIT), Adelaide, SA, Australia, 2005, pp. 137–141.   
+[9] R. Mudumbai, B. Wild, U. Madhow, and K. Ramchandran, “Distributed beamforming using 1 bit feedback: From concept to realization,” in Proc. IEEE 44th Allerton Conf. Commun. Control Comput., Monticello, IL, USA, 2006, pp. 1020–1027.   
+[10] A. Asadi, Q. Wang, and V. Mancuso, “A survey on device-to-device communication in cellular networks,” IEEE Commun. Surveys Tuts., vol. 16, no. 4, pp. 1801–1819, 4th Quart., 2014.   
+[11] Evolved Universal Terrestrial Radio Access (E-UTRA); User Equipment (UE) Radio Transmission and Reception, ETSI Standard TS 136 101 V9, 2010.   
+[12] IEEE 802.15 WPAN Task Group 6 (TG6) Body Area Networks, IEEE 802.15 Working Group for Wireless Specialty Networks (WSN), IEEE Standard 802.15, 2011.   
+[13] IEEE 802.15 WPA Task Group 8 (TG8) Peer Aware Communications, IEEE 802.15 Working Group for Wireless Specialty Networks (WSN), IEEE Standard 802.15, 2012.   
+[14] R. Mudumbai, D. R. Brown, III, U. Madhow, and H. V. Poor, “Distributed transmit beamforming: Challenges and recent progress,” IEEE Commun. Mag., vol. 47, no. 2, pp. 102–110, Feb. 2009.   
+[15] J. Uher, T. A. Wysoki, and B. J. Wysoki, “Review of distributed beamforming,” J. Telecommun. Inf. Technol., vol. 1, pp. 78–88, 2011.   
+[16] H. V. Balan, R. Rogalin, A. Michaloliakos, K. Psounis, and G. Caire, “AirSync: Enabling distributed multiuser MIMO with full spatial multiplexing,” IEEE/ACM Trans. Netw., vol. 21, no. 6, pp. 1681–1695, Dec. 2013.
+
+[17] A. Forenza et al., “Achieving large multiplexing gain in distributed antenna systems via cooperation with pCell technology,” in Proc. IEEE 49th Asilomar Conf. Signals Syst. Comput., Pacific Grove, CA, USA, 2015, pp. 286–293.   
+[18] A. Ekbal and J. M. Cioffi, “Distributed transmit beamforming in cellular networks—A convex optimization perspective,” in Proc. IEEE Int. Conf. Commun. (ICC), vol. 4. Seoul, South Korea, 2005, pp. 2690–2694.   
+[19] P. Harris et al., “A distributed massive MIMO testbed to assess realworld performance and feasibility,” in Proc. IEEE 81st Veh. Technol. Conf. (VTC Spring), Glasgow, U.K., 2015, pp. 1–2.   
+[20] V. N. Ha and L. B. Le, “Joint coordinated beamforming and admission control for fronthaul constrained cloud-RANs,” in Proc. IEEE Glob. Commun. Conf. (GLOBECOM), Austin, TX, USA, 2014, pp. 4054–4059.   
+[21] D. Qiao, Y. Wu, and Y. Chen, “Massive MIMO architecture for 5G networks: Co-located, or distributed?” in Proc. IEEE 11th Int. Symp. Wireless Commun. Syst. (ISWCS), Barcelona, Spain, 2014, pp. 192–197.   
+[22] J. Zhao, J. Wu, and P. Fan, “MMSE-beamforming for multi-user multiple-input multiple-output systems with distributed antennas,” in Proc. IEEE Int. Conf. Comput. Netw. Commun. (ICNC), Garden Grove, CA, USA, 2015, pp. 21–25.   
+[23] Z. Zhao et al., “Cooperative transmissions in 5G large-scale relay systems: How to keep a balance between performance and complexity?” J. Signal Process. Syst., vol. 83, no. 2, pp. 207–223, 2016.   
+[24] R. Mudumbai, G. Barriac, and U. Madhow, “On the feasibility of distributed beamforming in wireless networks,” IEEE Trans. Wireless Commun., vol. 6, no. 5, pp. 1754–1763, May 2007.   
+[25] B. Friedlander and S. Scherzer, “Beamforming versus transmit diversity in the downlink of a cellular communications system,” IEEE Trans. Veh. Technol., vol. 53, no. 4, pp. 1023–1034, Jul. 2004.   
+[26] H. Unz, “Linear arrays with arbitrarily distributed elements,” IRE Trans. Antennas Propag., vol. 8, no. 2, pp. 222–223, Mar. 1960.   
+[27] A. Maffett, “Array factors with nonuniform spacing parameter,” IRE Trans. Antennas Propag., vol. 10, no. 2, pp. 131–136, Mar. 1962.   
+[28] D. King, R. Packard, and R. Thomas, “Unequally-spaced, broadband antenna arrays,” IRE Trans. Antennas Propag., vol. 8, no. 4, pp. 380–384, Jul. 1960.   
+[29] M. Andreasen, “Linear arrays with variable interelement spacings,” IRE Trans. Antennas Propag., vol. 10, no. 2, pp. 137–143, Mar. 1962.   
+[30] Y. T. Lo, “A mathematical theory of antenna arrays with randomly spaced elements,” IEEE Trans. Antennas Propag., vol. 12, no. 3, pp. 257–268, May 1964.   
+[31] J. H. Doles, III, and F. D. Benedict, “Broad-band array design using the asymptotic theory of unequally spaced arrays,” IEEE Trans. Antennas Propag., vol. 36, no. 1, pp. 27–33, Jan. 1988.   
+[32] R. F. Harrington, “Sidelobe reduction by nonuniform element spacing,” IRE Trans. Antennas Propag., vol. 9, no. 2, pp. 187–192, Mar. 1961.   
+[33] A. Ishimaru, “Theory of unequally-spaced arrays,” IRE Trans. Antennas Propag., vol. 10, no. 6, pp. 691–702, Nov. 1962.   
+[34] Y. Lo and S. Lee, “Sidelobe level of nonuniformly spaced antenna arrays,” IEEE Trans. Antennas Propag., vol. 13, no. 5, pp. 817–818, Sep. 1965.   
+[35] V. D. Agrawal and Y. T. Lo, “Distribution of sidelobe level in random arrays,” Proc. IEEE, vol. 57, no. 10, pp. 1764–1765, Oct. 1969.   
+[36] B. D. Steinberg, “The peak sidelobe of the phased array having randomly located elements,” IEEE Trans. Antennas Propag., vol. 20, no. 2, pp. 129–136, Mar. 1972.   
+[37] M. Donvito and S. Kassam, “Characterization of the random array peak sidelobe,” IEEE Trans. Antennas Propag., vol. 27, no. 3, pp. 379–385, May 1979.   
+[38] M. F. A. Ahmed and S. A. Vorobyov, “Collaborative beamforming for wireless sensor networks with Gaussian distributed sensor nodes,” IEEE Trans. Wireless Commun., vol. 8, no. 2, pp. 638–643, Feb. 2009.   
+[39] J. Huang, P. Wang, and Q. Wan, “Collaborative beamforming for wireless sensor networks with arbitrary distributed sensors,” IEEE Commun. Lett., vol. 16, no. 7, pp. 1118–1120, Jul. 2012.   
+[40] M. F. A. Ahmed and S. A. Vorobyov, “Performance characteristics of collaborative beamforming for wireless sensor networks with Gaussian distributed sensor nodes,” in Proc. Int. Conf. Acoust. Speech Signal Process., Las Vegas, NV, USA, 2008, pp. 3249–3252.   
+[41] M. F. A. Ahmed and S. A. Vorobyov, “Sidelobe control in collaborative beamforming via node selection,” IEEE Trans. Signal Process., vol. 58, no. 12, pp. 6168–6180, Dec. 2010.
+
+[42] L. Berbakov, C. Antón-Haro, and J. Matamoros, “Distributed beamforming with sidelobe control using one bit of feedback,” in Proc. IEEE 73rd Veh. Technol. Conf. (VTC Spring), Budapest, Hungary, 2011, pp. 1–5.   
+[43] M. F. A. Ahmed and S. A. Vorobyov, “Node selection for sidelobe control in collaborative beamforming for wireless sensor networks,” in Proc. IEEE 10th Workshop Signal Process. Adv. Wireless Commun., Perugia, Italy, 2009, pp. 519–523.   
+[44] N. N. A. Malik, M. Esa, S. K. Yusof, and N. M. A. Latiff, “Collaborative beamforming null-steering array for wireless sensor networks,” in Proc. IEEE 2nd Int. Symp. Telecommun. Technol. (ISTT), 2014, pp. 316–320.   
+[45] N. N. N. A. Malik, M. Esa, and N. M. A. Latiff, “Least-square collaborative beamforming linear array for steering capability in green wireless sensor networks,” J. Electron. Sci. Technol., vol. 14, no. 2, pp. 118–124, 2016.   
+[46] K. Farazi, S. Chinkidjakarn, and I. D. R. Brown, “Simultaneous distributed beamforming and nullforming with adaptive positioning,” in Proc. IEEE Glob. Conf. Signal Inf. Process. (GlobalSIP), Washington, DC, USA, 2016, pp. 129–132.   
+[47] J. Matamoros, C. Anton-Haro, D. Gregoratti, and L. Berbakov, “Distributed beampattern control with one-bit of feedback,” in Proc. Eur. Wireless 20th Eur. Wireless Conf., Barcelona, Spain, 2014, pp. 1–5.   
+[48] K. Zarifi, S. Affes, and A. Ghrayeb, “Collaborative null-steering beamforming for uniformly distributed wireless sensor networks,” IEEE Trans. Signal Process., vol. 58, no. 3, pp. 1889–1903, Mar. 2010.   
+[49] N. N. A. Malik, M. Esa, and S. K. S. Yusof, “Optimization of adaptive linear sensor node array in wireless sensor network,” in Proc. IEEE Asia–Pac. Microw. Conf. (APMC), Singapore, 2009, pp. 2336–2339.   
+[50] N. N. A. Malik, M. Esa, S. S. Yusof, S. A. Hamzah, and M. K. H. Ismail, “Circular collaborative beamforming for improved radiation beampattern in WSN,” Int. J. Distrib. Sensor Netw., vol. 9, no. 7, p. 9, 2013.   
+[51] C. H. Wong, Z. W. Siew, M. K. Tan, R. K. Y. Chin, and K. T. K. Teo, “Optimization of distributed and collaborative beamforming in wireless sensor networks,” in Proc. IEEE 4th Int. Conf. Comput. Intell. Commun. Syst. Netw. (CICSyN), Phuket, Thailand, 2012, pp. 84–89.   
+[52] G. Sun, Y. Liu, J. Zhang, A. Wang, and X. Zhou, “Node selection optimization for collaborative beamforming in wireless sensor networks,” Ad Hoc Netw., vol. 37, pp. 389–403, Feb. 2016.   
+[53] G. Sun et al., “Sidelobe control by node selection algorithm based on virtual linear array for collaborative beamforming in WSNs,” Wireless Pers. Commun., vol. 90, no. 3, pp. 1443–1462, 2016.   
+[54] J.-C. Chen, C.-K. Wen, and K.-K. Wong, “An efficient sensor-node selection algorithm for sidelobe control in collaborative beamforming,” IEEE Trans. Veh. Technol., vol. 65, no. 8, pp. 5984–5994, Aug. 2016.   
+[55] W. Zhang, H. Yang, Z. Yang, L. Huang, and Z. Guo, “Collaborative beamforming for wireless sensor networks with sector-based node selection,” in Proc. IEEE Int. Conf. Commun. Circuits Syst. (ICCCAS), vol. 1. Chengdu, China, 2013, pp. 141–144.   
+[56] S. Jayaprakasam, S. K. A. Rahim, C. Y. Leow, and M. F. M. Yusof, “Beampatten optimization in distributed beamforming using multiobjective and metaheuristic method,” in Proc. IEEE Symp. Wireless Technol. Appl. (ISWTA), Kota Kinabalu, Malaysia, 2014, pp. 86–91.   
+[57] S. Jayaprakasam, S. K. A. Rahim, and C. Y. Leow, “A Pareto elite selection genetic algorithm for random antenna array beamforming with low sidelobe level,” Progr. Electromagn. Res. B, vol. 51, pp. 407–425, Sep. 2013.   
+[58] S. Jayaprakasam, S. K. A. Rahim, L. C. Yen, and K. R. Ramanathan, “Genetic algorithm based weight optimization for minimizing sidelobes in distributed random array beamforming,” in Proc. IEEE Int. Conf. Parallel Distrib. Syst. (ICPADS), Seoul, South Korea, 2013, pp. 623–627.   
+[59] S. Jayaprakasam, S. K. A. Rahim, C. Y. Leow, T. O. Ting, and A. A. Eteng, “Multiobjective beampattern optimization in collaborative beamforming via NSGA-II with selective distance,” IEEE Trans. Antennas Propag., vol. 65, no. 5, pp. 2348–2357, May 2017.   
+[60] S. Jayaprakasam, S. K. A. Rahim, and C. Y. Leow, “PSOGSA-Explore: A new hybrid metaheuristic approach for beampattern optimization in collaborative beamforming,” Appl. Soft Comput., vol. 30, pp. 229–237, May 2015.   
+[61] C.-W. Chang et al., “Radiating sensor selection for distributed beamforming in wireless sensor networks,” in Proc. IEEE Mil. Commun. Conf. (MILCOM), San Diego, CA, USA, 2008, pp. 1–7.
+
+[62] S. Jayaprakasam, S. K. A. Rahim, C. Y. Leow, and T. O. Ting, “Interference reduction and capacity improvement in collaborative beamforming networks via directivity optimization,” in Proc. IEEE Int. Conf. Comput. Commun. Control Technol. (I4CT), Kuching, Malaysia, 2015, pp. 332–336.   
+[63] K. Zarifi, S. Affes, and A. Ghrayeb, “Distributed beamforming for wireless sensor networks with random node location,” in Proc. IEEE Int. Conf. Acoust. Speech Signal Process. (ICASSP), Taipei, Taiwan, 2009, pp. 2261–2264.   
+[64] K. Zarifi, A. Ghrayeb, and S. Affes, “Distributed beamforming for wireless sensor networks with improved graph connectivity and energy efficiency,” IEEE Trans. Signal Process., vol. 58, no. 3, pp. 1904–1921, Mar. 2010.   
+[65] S. Jayaprakasam, S. K. A. Rahim, C. Y. Leow, and T. O. Ting, “Sidelobe reduction and capacity improvement of open-loop collaborative beamforming in wireless sensor networks,” PLoS ONE, vol. 12, no. 5, 2017, Art. no. e0175510.   
+[66] B. B. Haro, S. Zazo, and D. P. Palomar, “Energy efficient collaborative beamforming in wireless sensor networks,” IEEE Trans. Signal Process., vol. 62, no. 2, pp. 496–510, Jan. 2014.   
+[67] M. F. A. Ahmed and S. A. Vorobyov, “Simple semi-distributed lifetime maximizing strategy via power allocation in collaborative beamforming for wireless sensor networks,” arXiv preprint arXiv:1401.4147, 2014.   
+[68] J. Valenzuela-Valdes, F. Luna, R. M. Luque-Baena, and P. Padilla, “Saving energy in WSNs with beamforming,” in Proc. IEEE 3rd Int. Conf. Cloud Netw. (CloudNet), Luxembourg City, Luxembourg, 2014, pp. 255–260.   
+[69] B. Béjar, S. Zazo, and D. P. Palomar, “Lifetime maximization for beamforming applications in wireless sensor networks,” in Proc. IEEE Int. Conf. Acoust. Speech Signal Process. (ICASSP), Kyoto, Japan, 2012, pp. 2849–2852.   
+[70] B. Lu, J. Liu, C. Wang, H. Xu, and Q. Wang, “Capacity and power optimization for collaborative beamforming with two relay clusters,” in Advances in Swarm Intelligence. New York, NY, USA: Springer, 2014, pp. 155–162.   
+[71] S. Schedler and V. Kuehn, “Resource allocation for distributed beamforming with multiple relays and individual power constraints,” in Proc. IEEE 11th Int. Symp. Wireless Commun. Syst. (ISWCS), Barcelona, Spain, 2014, pp. 1–5.   
+[72] S. Shen and T.-M. Lok, “Asynchronous distributed downlink beamforming and power control in multi-cell networks,” IEEE Trans. Wireless Commun., vol. 13, no. 7, pp. 3892–3902, Jul. 2014.   
+[73] X. Zhang, D. Wang, L. Bai, and C. Chen, “Collaborative relay beamforming based on minimum power for M2M devices in multicell systems,” Int. J. Distrib. Sensor Netw., vol. 9, no. 12, pp. 1–9, Nov. 2013.   
+[74] T. Baleshan, A. D. S. Jayalath, and J. C. Coetzee, “On power minimisation and SNR maximisation of distributed beamforming in cooperative communication systems,” IET Electron Lett., vol. 50, no. 9, pp. 712–713, Apr. 2014.   
+[75] M. F. A. Ahmed and S. A. Vorobyov, “Power control for collaborative beamforming in wireless sensor networks,” in Proc. IEEE 45th Asilomar Conf. Signals Syst. Comput. (ASILOMAR), Pacific Grove, CA, USA, 2011, pp. 99–103.   
+[76] S. Chung and I. Joe, “Intelligent transmission power allocation for distributed beamforming in wireless sensor networks,” Int. J. Distrib. Sensor Netw., vol. 11, pp. 1–10, Jun. 2015.   
+[77] Y. Jing and S. Shahbazpanahi, “Max–min optimal joint power control and distributed beamforming for two-way relay networks under pernode power constraints,” IEEE Trans. Signal Process., vol. 60, no. 12, pp. 6576–6589, Dec. 2012.   
+[78] J. Ding, E. Dutkiewicz, X. Huang, and G. Fang, “Energy-efficient distributed beamforming in UWB based implant body area networks,” in Proc. IEEE 81st Veh. Technol. Conf. (VTC Spring), Glasgow, U.K., 2015, pp. 1–5.   
+[79] I. Thibault, G. E. Corazza, and L. Deambrogio, “Random, deterministic, and hybrid algorithms for distributed beamforming,” in Proc. IEEE 5th Adv. Satellite Multimedia Syst. Conf. (ASMA), Cagliari, Italy, 2010, pp. 221–225.   
+[80] M.-O. Pun, D. R. Brown, III, and H. V. Poor, “Opportunistic collaborative beamforming with one-bit feedback,” IEEE Trans. Wireless Commun., vol. 8, no. 5, pp. 2629–2641, May 2009.   
+[81] J. A. Bucklew and W. A. Sethares, “Convergence of a class of decentralized beamforming algorithms,” IEEE Trans. Signal Process., vol. 56, no. 6, pp. 2280–2288, Jun. 2008.
+
+[82] M. Johnson, M. Mitzenmacher, and K. Ramchandran, “Distributed beamforming with binary signaling,” in Proc. IEEE Int. Symp. Inf. Theory (ISIT), Toronto, ON, Canada, 2008, pp. 890–894.   
+[83] S. Song, J. S. Thompson, P.-J. Chung, and P. M. Grant, “Improving the one-bit feedback algorithm for distributed beamforming,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Sydney, NSW, Australia, 2010, pp. 1–6.   
+[84] C.-S. Tseng, C.-C. Chen, and C. Lin, “A bio-inspired robust adaptive random search algorithm for distributed beamforming,” in Proc. IEEE Int. Conf. Commun. (ICC), Kyoto, Japan, 2011, pp. 1–6.   
+[85] C.-S. Tseng, J. Denis, and C. Lin, “On the robust design of adaptive distributed beamforming for wireless sensor/relay networks,” IEEE Trans. Signal Process., vol. 62, no. 13, pp. 3429–3441, Jul. 2014.   
+[86] I. Thibault, A. Faridi, G. E. Corazza, A. V. Coralli, and A. Lozano, “Design and analysis of deterministic distributed beamforming algorithms in the presence of noise,” IEEE Trans. Commun., vol. 61, no. 4, pp. 1595–1607, Apr. 2013.   
+[87] L. Berbakov, C. Antón-Haro, and J. Matamoros, “Distributed beamforming using one bit of feedback: AWGN analysis,” in Proc. VDE 18th Eur. Wireless Conf. Eur. Wireless (EW), Poznan, Poland, 2012, ´ pp. 1–4.   
+[88] P. A. Parker, P. Mitran, D. W. Bliss, and V. Tarokh, “On bounds and algorithms for frequency synchronization for collaborative communication systems,” IEEE Trans. Signal Process., vol. 56, no. 8, pp. 3742–3752, Aug. 2008.   
+[89] W. Tushar, D. B. Smith, A. Zhang, T. A. Lamahewa, and T. Abhayapala, “Distributed transmit beamforming: Phase convergence improvement using enhanced one-bit feedback,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Paris, France, 2012, pp. 528–532.   
+[90] P. Jeevan, S. Pollin, A. Bahai, and P. P. Varaiya, “Pairwise algorithm for distributed transmit beamforming,” in Proc. IEEE Int. Conf. Commun. (ICC), Beijing, China, 2008, pp. 4245–4249.   
+[91] D. R. Brown, U. Madhow, P. Bidigare, and S. Dasgupta, “Receivercoordinated distributed transmit nullforming with channel state uncertainty,” in Proc. IEEE 46th Annu. Conf. Inf. Sci. Syst. (CISS), Princeton, NJ, USA, 2012, pp. 1–6.   
+[92] R. Mudumbai, U. Madhow, R. Brown, and P. Bidigare, “DSP-centric algorithms for distributed transmit beamforming,” in Proc. IEEE 45th Signals Syst. Comput. (ASILOMAR), Pacific Grove, CA, USA, 2011, pp. 93–98.   
+[93] D. R. Brown, G. B. Prince, and J. A. McNeill, “A method for carrier frequency and phase synchronization of two autonomous cooperative transmitters,” in Proc. IEEE 6th Workshop Signal Process. Adv. Wireless Commun., New York, NY, USA, 2005, pp. 260–264.   
+[94] D. R. Brown, III, and H. V. Poor, “Time-slotted round-trip carrier synchronization for distributed beamforming,” IEEE Trans. Signal Process., vol. 56, no. 11, pp. 5630–5643, Nov. 2008.   
+[95] I. Ozil and D. R. Brown, III, “Time-slotted round-trip carrier synchronization,” in Proc. IEEE 41st Asilomar Conf. Signals Syst. Comput. (ACSSC), Pacific Grove, CA, USA, 2007, pp. 1781–1785.   
+[96] Q. Wang and K. Ren, “Time-slotted round-trip carrier synchronization in large-scale wireless networks,” in Proc. IEEE Int. Conf. Commun. (ICC), Beijing, China, 2008, pp. 5087–5091.   
+[97] T. Schmid, O. Sekkat, and M. B. Srivastava, “An experimental study of network performance impact of increased latency in software defined radios,” in Proc. ACM 2nd Int. Workshop Wireless Netw. Testbeds Exp. Eval. Characterization, Montreal, QC, Canada, 2007, pp. 59–66.   
+[98] T. P. Bidigare et al., “Wideband distributed transmit beamforming using channel reciprocity and relative calibration,” in Proc. IEEE 49th Conf. Signals Syst. Comput. (ASILOMAR), Pacific Grove, CA, USA, 2015, pp. 271–275.   
+[99] F. Quitin, M. M. Ur Rahman, R. Mudumbai, and U. Madhow, “Distributed beamforming with software-defined radios: Frequency synchronization and digital feedback,” in Proc. IEEE Glob. Commun. Conf. (GLOBECOM), Anaheim, CA, USA, 2012, pp. 4787–4792.   
+[100] M. M. Rahman, H. E. Baidoo-Williams, R. Mudumbai, and S. Dasgupta, “Fully wireless implementation of distributed beamforming on a software-defined radio platform,” in Proc. ACM 11th Int. Conf. Inf. Process. Sensor Netw., Beijing, China, 2012, pp. 305–316.   
+[101] R. D. Preuss and D. R. Brown, III, “Retrodirective distributed transmit beamforming with two-way source synchronization,” in Proc. IEEE 44th Annu. Conf. Inf. Sci. Syst. (CISS), 2010, pp. 1–6.   
+[102] N. Xie, X. Bao, H. Wang, and X. Lin, “Fast open-loop synchronization for distributed downlink beamforming,” in Proc. IEEE 47th Annu. Conf. Inf. Sci. Syst. (CISS), 2013, pp. 1–6.
+
+[103] A. Bletsas, A. Lippman, and J. N. Sahalos, “Simple, zero-feedback, collaborative beamforming for emergency radio,” in Proc. IEEE 6th Int. Symp. Wireless Commun. Syst., 2009, pp. 657–661.   
+[104] A. Bletsas, A. Lippman, and J. N. Sahalos, “Zero-feedback, collaborative beamforming for emergency radio: Asymptotic analysis,” Mobile Netw. Appl., vol. 16, no. 5, pp. 589–599, 2011.   
+[105] E. Vlachos and K. Berberidis, “Blind distributed beamforming via matrix completion,” in Proc. IEEE 17th Int. Workshop Signal Process. Adv. Wireless Commun. (SPAWC), Edinburgh, U.K., 2016, pp. 1–6.   
+[106] P. Fertl, A. Hottinen, and G. Matz, “A multiplicative weight perturbation scheme for distributed beamforming in wireless relay networks with 1-bit feedback,” in Proc. IEEE Int. Conf. Acoust. Speech Signal Process. (ICASSP), 2009, pp. 2625–2628.   
+[107] M. Seo, M. Rodwell, and U. Madhow, “A feedback-based distributed phased array technique and its application to 60-GHz wireless sensor network,” in Proc. IEEE MTT-S Int. Microw. Symp. Dig., Atlanta, GA, USA, 2008, pp. 683–686.   
+[108] G. Lim and L. J. Cimini, “Partitioned one-bit feedback for cooperative beamforming,” in Proc. IEEE 44th Annu. Conf. Inf. Sci. Syst. (CISS), 2010, pp. 1–5.   
+[109] C. Lin, V. V. Veeravalli, and S. P. Meyn, “A random search framework for convergence analysis of distributed beamforming with feedback,” IEEE Trans. Inf. Theory, vol. 56, no. 12, pp. 6133–6141, Dec. 2010.   
+[110] I. Thibault, G. E. Corazza, and L. Deambrogio, “Phase synchronization algorithms for distributed beamforming with time varying channels in wireless sensor networks,” in Proc. IEEE 7th Int. Wireless Commun. Mobile Comput. Conf. (IWCMC), 2011, pp. 77–82.   
+[111] J. Li and A. P. Petropulu, “A lowcomplexity algorithm for collaborativerelay beamforming,” in Proc. IEEE Int. Conf. Acoust. Speech Signal Process. (ICASSP), Vancouver, BC, Canada, 2013, pp. 5002–5005.   
+[112] S. Sigg and M. Beigl, “An adaptive protocol for distributed beamforming,” in OASIcs-OpenAccess Series in Informatics, vol. 17. Wadern, Germany: Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, 2011, pp. 38–48.   
+[113] H. Yang et al., “Variable directional perturbation with one-bit feedback for collaborative beamforming,” in Proc. IEEE/CIC Int. Conf. Commun. China (ICCC), 2016, pp. 1–5.   
+[114] Y. Chen, H. Yang, X. Sun, and Z. Yang, “Opportunistic collaborative beamforming with phase-compensation and limited feedback,” in Proc. IEEE Glob. Telecommun. Conf. (GLOBECOM), Houston, TX, USA, 2011, pp. 1–6.   
+[115] R. Hu, L. Guo, C. Zhang, and J. Lin, “A closed-loop deterministic phase synchronization algorithm for distributed beamforming,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Istanbul, Turkey, 2014, pp. 452–456.   
+[116] D. R. Brown, III, B. Zhang, B. Svirchuk, and M. Ni, “An experimental study of acoustic distributed beamforming using round-trip carrier synchronization,” in Proc. IEEE 10th Int. Symp. Phased Array Syst. Technol. (ARRAY), 2010, pp. 316–323.   
+[117] F. Quitin, M. M. U. Rahman, R. Mudumbai, and U. Madhow, “A scalable architecture for distributed transmit beamforming with commodity radios: Design and proof of concept,” IEEE Trans. Wireless Commun., vol. 12, no. 3, pp. 1418–1428, Mar. 2013.   
+[118] U. Madhow, D. R. Brown, S. Dasgupta, and R. Mudumbai, “Distributed massive MIMO: Algorithms, architectures and concept systems,” in Proc. IEEE Inf. Theory Appl. Workshop (ITA), San Diego, CA, USA, 2014, pp. 1–7.   
+[119] R. D. Preuss and D. R. Brown, III, “Two-way synchronization for coordinated multicell retrodirective downlink beamforming,” IEEE Trans. Signal Process., vol. 59, no. 11, pp. 5415–5427, Nov. 2011.   
+[120] A. Bletsas, A. Lippman, and J. N. Sahalos, “Simple, zero-feedback, distributed beamforming with unsynchronized carriers,” IEEE J. Sel. Areas Commun., vol. 28, no. 7, pp. 1046–1054, Sep. 2010.   
+[121] G. Sklivanitis and A. Bletsas, “Testing zero-feedback distributed beamforming with a low-cost SDR testbed,” in Proc. IEEE 45th Asilomar Conf. Signals Syst. Comput. (ASILOMAR), Pacific Grove, CA, USA, 2011, pp. 104–108.   
+[122] K. Alexandris, G. Sklivanitis, and A. Bletsas, “Reachback WSN connectivity: Non-coherent zero-feedback distributed beamforming or TDMA energy harvesting?” IEEE Trans. Wireless Commun., vol. 13, no. 9, pp. 4923–4934, Sep. 2014.   
+[123] P.-H. Hu, P.-H. Tseng, Y.-Y. Kuo, and C.-C. Wei, “Distributed transmit beamforming algorithms for unsynchronized OFDM systems with timing offset,” IEEE Commun. Lett., vol. 20, no. 9, pp. 1788–1791, Sep. 2016.
+
+[124] F. Quitin, U. Madhow, M. M. U. Rahman, and R. Mudumbai, “Demonstrating distributed transmit beamforming with softwaredefined radios,” in Proc. IEEE Int. Symp. World Wireless Mobile Multimedia Netw. (WoWMoM), San Francisco, CA, USA, 2012, pp. 1–3.   
+[125] G. Sklivanitis, K. Alexandris, and A. Bletsas, “Testbed for non-coherent zero-feedback distributed beamforming,” in Proc. IEEE Int. Conf. Acoust. Speech Signal Process. (ICASSP), Vancouver, BC, Canada, 2013, pp. 2563–2567.   
+[126] B. Peiffer, R. Mudumbai, A. Kruger, A. Kumar, and S. Dasgupta, “Experimental demonstration of a distributed antenna array pre-synchronized for retrodirective transmission,” in Proc. IEEE Annu. Conf. Inf. Sci. Syst. (CISS), Princeton, NJ, USA, 2016, pp. 460–465.   
+[127] A. Amar, “The effect of local scattering on the gain and beamwidth of a collaborative beampattern for wireless sensor networks,” IEEE Trans. Wireless Commun., vol. 9, no. 9, pp. 2730–2736, Sep. 2010.   
+[128] S. Zaidi and S. Affes, “Analysis of collaborative beamforming designs in real-world environments,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Shanghai, China, 2013, pp. 3518–3523.   
+[129] S. Zaidi, B. Hmidet, and S. Affes, “Power-constrained distributed implementation of SNR-optimal collaborative beamforming in highlyscattered environments,” IEEE Wireless Commun. Lett., vol. 4, no. 5, pp. 457–460, Oct. 2015.   
+[130] S. A. R. Zaidi and S. Affes, “Distributed collaborative beamforming in the presence of angular scattering,” IEEE Trans. Commun., vol. 62, no. 5, pp. 1668–1680, May 2014.   
+[131] S. Zaidi and S. Affes, “Distributed collaborative beamforming design for maximized throughput in interfered and scattered environments,” IEEE Trans. Commun., vol. 63, no. 12, pp. 4905–4919, Dec. 2015.   
+[132] G. Zheng, K.-K. Wong, A. Paulraj, and B. Ottersten, “Collaborativerelay beamforming with perfect CSI: Optimum and distributed implementation,” IEEE Signal Process. Lett., vol. 16, no. 4, pp. 257–260, Apr. 2009.   
+[133] G. Zheng, K.-K. Wong, A. Paulraj, and B. Ottersten, “Robust and distributed beamforming,” in Proc. IEEE Int. Conf. Wireless Commun. Signal Process. (WCSP), 2009, pp. 1–5.   
+[134] J. Choi, “MMSE-based distributed beamforming in cooperative relay networks,” IEEE Trans. Commun., vol. 59, no. 5, pp. 1346–1356, May 2011.   
+[135] J.-B. Kim, J.-W. Choi, and J. M. Cioffi, “Cooperative distributed beamforming with outdated CSI and channel estimation errors,” IEEE Trans. Commun., vol. 62, no. 12, pp. 4269–4280, Dec. 2014.   
+[136] J. Zhu, R. S. Blum, X. Lin, and Y. Gu, “Robust transmit beamforming for parameter estimation using distributed sensors,” IEEE Commun. Lett., vol. 20, no. 7, pp. 1329–1332, Jul. 2016.   
+[137] S. H. Safavi, M. Ardebilipour, V. Jamali, and M. Ahmadian, “Distributed beamforming for SINR balancing approach in cognitive two-way relay networks with imperfect channel state information,” in Proc. IEEE 20th Iran. Conf. Elect. Eng. (ICEE), Tehran, Iran, 2012, pp. 1342–1346.   
+[138] M. A. M. Sadr, B. Mahboobi, S. Mehrizi, M. A. Attari, and M. Ardebilipour, “Stochastic robust collaborative beamforming: Nonregenerative relay,” IEEE Trans. Commun., vol. 64, no. 3, pp. 947–958, Mar. 2016.   
+[139] A. El-Keyi and B. Champagne, “Decentralized collaborative uplink beamforming with robustness against channel mismatches,” in Proc. IEEE 41st Asilomar Conf. Signals Syst. Comput. (ACSSC), Pacific Grove, CA, USA, 2007, pp. 2235–2238.   
+[140] X. Shen et al., “Analysis of collaborative beamforming for wireless sensor networks with phase offset,” Radioengineering, vol. 23, no. 1, pp. 421–429, 2014.   
+[141] W. Feng, Y. Chen, N. Ge, and J. Lu, “Optimal energy-efficient power allocation for distributed antenna systems with imperfect CSI,” IEEE Trans. Veh. Technol., vol. 65, no. 9, pp. 7759–7763, Sep. 2016.   
+[142] S. H. R. Bukhari, M. H. Rehmani, and S. Siraj, “A survey of channel bonding for wireless networks and guidelines of channel bonding for futuristic cognitive radio sensor networks,” IEEE Commun. Surveys Tuts., vol. 18, no. 2, pp. 924–948, 2nd Quart., 2016.   
+[143] O. B. Akan, O. B. Karli, and O. Ergul, “Cognitive radio sensor networks,” IEEE Netw., vol. 23, no. 4, pp. 34–40, Jul./Aug. 2009.   
+[144] O. Ergul and O. B. Akan, “Cooperative coarse spectrum sensing for cognitive radio sensor networks,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Istanbul, Turkey, 2014, pp. 2055–2060.   
+[145] A. Ahmad, S. Ahmad, M. H. Rehmani, and N. U. Hassan, “A survey on radio resource allocation in cognitive radio sensor networks,” IEEE Commun. Surveys Tuts., vol. 17, no. 2, pp. 888–917, 2nd Quart., 2015.
+
+[146] A. Minturn, D. Vernekar, Y. Yang, and H. Sharif, “Distributed beamforming with imperfect phase synchronization for cognitive radio networks,” in Proc. IEEE Int. Conf. Commun. (ICC), Budapest, Hungary, 2013, pp. 4936–4940.   
+[147] X. Lian, H. Nikookar, and L. Ligthart, “Distributed beamforming with nodes selection for cognitive radio networks,” J. Commun. Navig. Sens. Services, vol. 1, no. 1, pp. 23–46, 2014.   
+[148] H. Nikookar and L. Ligthart, “Distributed beamforming for cognitive radio,” in Proc. IEEE 4th Int. Conf. Wireless Commun. Veh. Technol. Inf. Theory Aerosp. Electron. Syst. (VITAE), Aalborg, Denmark, 2014, pp. 1–5.   
+[149] C. Zhang, L. Guo, R. Hu, and J. Lin, “Opportunistic distributed beamforming in cognitive radio networks with limited feedback,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Istanbul, Turkey, 2014, pp. 893–897.   
+[150] A. Piltan and S. Salari, “Distributed beamforming in cognitive relay networks with partial channel state information,” IET Commun., vol. 6, no. 9, pp. 1011–1018, Jun. 2012.   
+[151] F. Quitin, A. Irish, and U. Madhow, “Distributed receive beamforming: A scalable architecture and its proof of concept,” in Proc. IEEE 77th Veh. Technol. Conf. (VTC Spring), Dresden, Germany, 2013, pp. 1–5.   
+[152] A. Afana, A. Ghrayeb, V. Asghari, and S. Affes, “On the performance of spectrum sharing two-way relay networks with distributed beamforming,” in Proc. 14th Signal Process. Adv. Wireless Commun. (SPAWC), Darmstadt, Germany, 2013, pp. 365–369.   
+[153] A. Afana, V. Asghari, A. Ghrayeb, and S. Affes, “On the performance of cooperative relaying spectrum-sharing systems with collaborative distributed beamforming,” IEEE Trans. Commun., vol. 62, no. 3, pp. 857–871, Mar. 2014.   
+[154] Y. Xu, X. Zhao, and Y.-C. Liang, “Robust power control and beamforming in cognitive radio networks: A survey,” IEEE Commun. Surveys Tuts., vol. 17, no. 4, pp. 1834–1857, 4th Quart., 2015.   
+[155] A. O. Bicen, V. C. Gungor, and O. B. Akan, “Delay-sensitive and multimedia communication in cognitive radio sensor networks,” Ad Hoc Netw., vol. 10, no. 5, pp. 816–830, 2012.   
+[156] S. Kisseleff, I. F. Akyildiz, and W. H. Gerstacker, “Distributed beamforming for magnetic induction based body area sensor networks,” in Proc. IEEE Glob. Commun. Conf. (GLOBECOM), Washington, DC, USA, 2016, pp. 1–7.   
+[157] L. Berbakov, C. Antón-Haro, and J. Matamoros, “Joint optimization of transmission policies for collaborative beamforming with energy harvesting sensors,” IEEE Trans. Wireless Commun., vol. 13, no. 7, pp. 3496–3509, Jul. 2014.   
+[158] L. Berbakov, J. Matamoros, and C. Antòn-Haro, “Greedy transmission strategies for collaborative beamforming with energy harvesting sensors,” in Proc. VDE 17th Int. ITG Workshop Smart Antennas (WSA), Stuttgart, Germany, 2013, pp. 1–6.   
+[159] L. Berbakov, C. Antón-Haro, and J. Matamoros, “Optimal transmission policy for collaborative beamforming with finite energy storage capacity,” in Proc. IEEE 24th Annu. Int. Symp. Pers. Indoor Mobile Radio Commun. (PIMRC), London, U.K., 2013, pp. 559–563.   
+[160] A. Afana, A. Ghrayeb, V. R. Asghari, and S. Affes, “Distributed beamforming for two-way DF relay cognitive networks under primary– secondary mutual interference,” IEEE Trans. Veh. Technol., vol. 64, no. 9, pp. 3918–3930, Sep. 2015.   
+[161] A. Gavili and S. ShahbazPanahi, “Optimal network beamforming in collaborative relay networks with centralized energy harvesting,” IEEE Trans. Signal Process., vol. 64, no. 22, pp. 6005–6016, Nov. 2016.   
+[162] M. Xiao, X. Li, and J. Xu, “A distributed transmit beamforming synchronization strategy for multi-element radar systems,” Int. J. Electron., vol. 104, no. 2, pp. 218–227, 2017.   
+[163] O. Taghizadeh, V. Radhakrishnan, G. Alirezaei, and R. Mathar, “Partial distributed beamforming design in passive radar sensor networks,” in Proc. IEEE 4th Annu. Int. Conf. Wireless Space Extreme Environ. (WISEE), Aachen, Germany, 2016, pp. 7–12.   
+[164] D. B. Alexander, R. M. Narayanan, and B. Himed, “Investigation of correlation characteristics for random array collaborative beamforming using noise signals,” in Proc. SPIE Defense Security, 2016, Art. no. 98290I.   
+[165] Q. Shi, L. Liu, W. Xu, and R. Zhang, “Joint transmit beamforming and receive power splitting for MISO SWIPT systems,” IEEE Trans. Wireless Commun., vol. 13, no. 6, pp. 3269–3280, Jun. 2014.   
+[166] A. A. Eteng, S. K. A. Rahim, C. Y. Leow, S. Jayaprakasam, and B. W. Chew, “Low-power near-field magnetic wireless energy transfer links: A review of architectures and design approaches,” Renew. Sustain. Energy Rev., vol. 77, pp. 486–505, Sep. 2017.
+
+[167] S. Guo, F. Wang, Y. Yang, and B. Xiao, “Energy-efficient cooperative tfor simultaneous wireless information and power transfer in clustered wireless sensor networks,” IEEE Trans. Commun., vol. 63, no. 11, pp. 4405–4417, Nov. 2015.   
+[168] Q. Li, Q. Zhang, and J. Qin, “Secure relay beamforming for simultaneous wireless information and power transfer in nonregenerative relay networks,” IEEE Trans. Veh. Technol., vol. 63, no. 5, pp. 2462–2467, Jun. 2014.   
+[169] R. Feng, M. Dai, and H. Wang, “Distributed beamforming in MISO SWIPT system,” IEEE Trans. Veh. Technol., vol. 66, no. 6, pp. 5440–5445, Jun. 2017.   
+[170] J. Xu, Z. Zhong, and B. Ai, “Wireless powered sensor networks: Collaborative energy beamforming considering sensing and circuit power consumption,” IEEE Commun. Lett., vol. 5, no. 4, pp. 344–347, Aug. 2016.   
+[171] D. Wang, L. Bai, X. Zhang, W. Guan, and C. Chen, “Collaborative relay beamforming strategies for multiple destinations with guaranteed QoS in wireless machine-to-machine networks,” Int. J. Distrib. Sensor Netw., vol. 8, no. 8, pp. 525–640, 2012.   
+[172] J. E. Hodkin et al., “Microwave and millimeter-wave ranging for coherent distributed RF systems,” in Proc. IEEE Aerosp. Conf., 2015, pp. 1–7.   
+[173] K. Buchanan and G. H. Huff, “A stochastic mathematical framework for the analysis of spherically-bound random arrays,” IEEE Trans. Antennas Propag., vol. 62, no. 6, pp. 3002–3011, Jun. 2014.   
+[174] S. Kutty and D. Sen, “Beamforming for millimeter wave communications: An inclusive survey,” IEEE Commun. Surveys Tuts., vol. 18, no. 2, pp. 949–973, 2nd Quart., 2016.   
+[175] K. Zarifi, M. Abuthinien, A. Ghrayeb, and S. Affes, “Relay selection schemes for uniformly distributed wireless sensor networks,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Budapest, Hungary, 2009, pp. 1–6.   
+[176] V. Agrawal and Y. Lo, “Mutual coupling in phased arrays of randomly spaced antennas,” IEEE Trans. Antennas Propag., vol. 20, no. 3, pp. 288–295, May 1972.   
+[177] S. Jayaprakasam, T. C. Chuah, and S. W. Tan, “Medium access control for collaborative transmit beamforming in wireless networks,” in Proc. IEEE Symp. Comput. Informat. (ISCI), Kuala Lumpur, Malaysia, Mar. 2011, pp. 357–362.   
+[178] F. Etezadi, K. Zarifi, A. Ghrayeb, and S. Affes, “Decentralized relay selection schemes in uniformly distributed wireless sensor networks,” IEEE Trans. Wireless Commun., vol. 11, no. 3, pp. 938–951, Mar. 2012.   
+[179] A. Sabharwal et al., “In-band full-duplex wireless: Challenges and opportunities,” IEEE J. Sel. Areas Commun., vol. 32, no. 9, pp. 1637–1652, Sep. 2014.   
+[180] S. Chandrasekharan et al., “Designing and implementing future aerial communication networks,” IEEE Commun. Mag., vol. 54, no. 5, pp. 26–34, May 2016.   
+[181] Y. Zeng, R. Zhang, and T. J. Lim, “Throughput maximization for UAV-enabled mobile relaying systems,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4983–4996, Dec. 2016.   
+[182] Y. Zeng, R. Zhang, and T. J. Lim, “Wireless communications with unmanned aerial vehicles: Opportunities and challenges,” IEEE Commun. Mag., vol. 54, no. 5, pp. 36–42, May 2016.   
+[183] Y. Nijsure, M. F. A. Ahmed, G. Kaddoum, G. Gagnon, and F. Gagnon, “WSN-UAV monitoring system with collaborative beamforming and ADS-B based multilateration,” in Proc. IEEE 83rd Veh. Technol. Conf. (VTC Spring), Nanjing, China, 2016, pp. 1–5.   
+[184] A. Muralidharan and Y. Mostofi, “Distributed beamforming using mobile robots,” in Proc. IEEE Int. Conf. Acoust. Speech Signal Process. (ICASSP), Shanghai, China, 2016, pp. 6385–6389.   
+[185] G. H. Sim and J. Widmer, “Finite horizon opportunistic multicast beamforming,” IEEE Trans. Wireless Commun., vol. 16, no. 3, pp. 1452–1465, Mar. 2017.   
+[186] G. H. Sim, J. Widmer, and B. Rengarajan, “Opportunistic finite horizon multicasting of erasure-coded data,” IEEE Trans. Mobile Comput., vol. 15, no. 3, pp. 705–718, Mar. 2016.   
+[187] G. H. Sim, J. Widmer, and B. Rengarajan, “Opportunistic beamforming for finite horizon multicast,” in Proc. IEEE Int. Symp. World Wireless Mobile Multimedia Netw. (WoWMoM), Sydney, NSW, Australia, Jun. 2014, pp. 1–9.   
+[188] J. Zhang and M. C. Gursoy, “Collaborative relay beamforming for secrecy,” in Proc. IEEE Int. Conf. Commun. (ICC), Cape Town, South Africa, 2010, pp. 1–5.   
+[189] J. Zhang and M. C. Gursoy, “Collaborative relay beamforming for secure broadcasting,” in Proc. IEEE Wireless Commun. Netw. Conf. (WCNC), Sydney, NSW, Australia, 2010, pp. 1–6.
+
+[190] C. Gu and C. Zhang, “Adaptive distributed beamforming and jamming in DF relay networks for physical layer secrecy,” in Proc. IEEE Int. Conf. Commun. Syst. (ICCS), Shenzhen, China, Dec. 2016, pp. 1–5.   
+[191] J. R. Ward and M. Younis, “Increasing base station anonymity using distributed beamforming,” Ad Hoc Netw., vol. 32, pp. 53–80, Sep. 2015.   
+[192] W. Yang, K. Wang, X. Xu, and J. Zhou, “Secure transmission for AF relaying spectrum-sharing systems with collaborative distributed beamforming,” in Proc. 25th Wireless Opt. Commun. Conf. (WOCC), Chengdu, China, 2016, pp. 1–4.   
+[193] S. Felici-Castell, E. A. Navarro, J. J. Pérez-Solano, J. Segura-García, and M. García-Pineda, “Practical considerations in the implementation of collaborative beamforming on wireless sensor networks,” Sensors, vol. 17, no. 2, p. 237, 2017.
+
+![](images/5271b74849d1608d67826294e0f11f823d8a11cb27fa078417decc678ebf1258.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a woman with dark hair and earrings (no text or symbols visible)
+</details>
+
+Suhanya Jayaprakasam received the B.Eng. degree in electronics engineering from the Faculty of Electrical Engineering, Universiti Teknologi Malaysia in 2007, the M.Sc.Eng. degree from the Faculty of Engineering of Multimedia University, Malaysia, in 2011, and the Ph.D. degree from the Wireless Communication Center, University Teknologi Malaysia in 2016. She is currently a Post-Doctoral Researcher with the Wireless Systems Laboratory, Hanyang University, South Korea. Her research interests include smart antenna system, dis-
+
+tributed and collaborative beamforming, optimal resource allocation, locationaware wireless communications and millimeter wave communications.
+
+![](images/b0d2b33aebe0a99bde423176347d5e6acdadcce9c7e9450b4855e43eef509951.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait of a man in formal attire against a yellow background (no text or symbols visible)
+</details>
+
+Sharul Kamal Abdul Rahim received the B.Eng. degree in electrical engineering from the University of Tennessee, USA, in 1996, the M.Sc. degree in engineering (communication engineering) from Universiti Teknologi Malaysia (UTM) in 2001, and the Ph.D. degree in wireless communication system from the University of Birmingham, U.K., in 2007. He is currently an Associate Professor with the Wireless Communication Centre, Faculty of Electrical Engineering, UTM Skudai. His research interests include antenna design, RF and microwave
+
+systems, reconfigurable antenna, beamforming network, smart antenna system, and antenna for energy power transfer. He is also a member of the Institute of Engineer Malaysia, Institute of Electronics, Information and Communication Engineers, and Eta Kappa Nu Chapter (International Electrical Engineering Honour Society, University of Tennessee).
+
+![](images/f052a5859f9c3ef827b9325faa1164a8edc8a68e3707e5ff96d5c474c6e6e828.jpg)
+
+<details>
+<summary>natural_image</summary>
+
+Portrait photo of a young man in formal attire (no text or symbols visible)
+</details>
+
+Chee Yen Leow (S’08–M’11) received the B.Eng. degree in computer engineering from Universiti Teknologi Malaysia (UTM), Johor Bahru, Malaysia, in 2007 and the Ph.D. degree from Imperial College London, U.K., in 2011. Since 2007, he has been an Academic Staff Member with the Faculty of Electrical Engineering, UTM. He is currently a Senior Lecturer with the Wireless Communication Centre, Faculty of Electrical Engineering, UTM. His research interests include cooperative communication, MIMO, physical layer security, non-orthogonal
+
+multiple access, convex optimization, communications theory, near field wireless charging, wireless powered communication, millimetre wave communication, and 5G.

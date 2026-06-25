@@ -1,0 +1,790 @@
+# Cooperative UAV Trajectory Design and Resource Allocation in Blockchain-Enabled Secure Aerial Edge Computing Network
+
+Peng Qin , Member, IEEE, Min Fu, Yang $\mathrm { F u } ^ { \mathbb { P } }$ , and Jingjing Wang , Senior Member, IEEE
+
+Abstract—Mobile Mdge Computing (MEC) has emerged as a crucial technology for supporting computation-intensive and latency-sensitive Internet of things (IoT) applications. Meanwhile, UAVs can serve as MEC servers, providing cost-effective computation offloading services to IoT terminals with their flexible deployment capabilities, especially in areas lacking ground infrastructure. Nevertheless, the computation offloading process suffers from potential security risks, while the randomness and uncertainty of terminals’ data sensing may exacerbate the queue backlogs. To tackle these challenges, a UAV-enabled secure aerial computing network that integrates MEC and blockchain is proposed, with the aim of jointly designing data sensing, offloading, and computing, together with UAV trajectory planning to maximize the long-term average data sensing rate under queuing delay and block creation delay constraints. To address the coupling between long-term constraints and short-term decisions, we apply Lyapunov optimization to decompose the original problem into three deterministic subproblems for each time slot. We then develop a multi-agent learning-based approach to collaboratively train terminal transmission power and UAV flight trajectories. Moreover, sensing rate and edge resource allocation are adaptively optimized in response to real-time data arrivals and queue backlogs. Simulation results demonstrate the superior performance of our solution, achieving over a $1 3 . 1 6 \%$ improvement in data sensing rate and more than a $2 9 . 4 7 \%$ reduction in queue delay compared to benchmark methods.
+
+Index Terms—Air-ground integrated network, UAV trajectory planning, task offloading, blockchain, resource allocation, queueawareness, multi-agent-learning.
+
+# I. INTRODUCTION
+
+W ITH the rapid development of Internet of Things (IoT)and 5G/6G wireless communication technologies, the proliferation of IoT devices has significantly increased, leading
+
+Received 4 January 2025; revised 28 April 2025; accepted 18 June 2025. Date of publication 30 June 2025; date of current version 22 December 2025. This work was supported in part by the National Natural Science Foundation of China under Grant 62201212, Grant 62271201, Grant 62222101, and Grant U24A20213; in part by the Natural Science Foundation of Hebei Province under Grant F2022502017; in part by Beijing Natural Science Foundation under Grant L232043 and Grant L222039; in part by the Natural Science Foundation of Zhejiang Province under Grant LMS25F010007; and in part by the Fundamental Research Funds for the Central Universities under Grant 2025MS008. The associate editor coordinating the review of this article and approving it for publication was J. Liu. (Corresponding author: Peng Qin.)
+
+Peng Qin, Min Fu, and Yang Fu are with the State Key Laboratory of Alternate Electrical Power System with Renewable Energy Sources, School of Electrical and Electronic Engineering, North China Electric Power University, Beijing 102206, China (e-mail: qinpeng@ncepu.edu.cn).
+
+Jingjing Wang is with the School of Cyber Science and Technology, Beihang University, Beijing 100191, China, and also with Hangzhou Innovation Institute, Beihang University, Hangzhou 310051, China (e-mail: drwangjj@buaa.edu.cn).
+
+Digital Object Identifier 10.1109/TWC.2025.3582151
+
+to a surge in computation-intensive and latency-sensitive tasks. Deploying Mobile Edge Computing (MEC) servers at the network edge can effectively alleviate the burden on terminals for handling these tasks. However, in remote areas with limited infrastructure, such as deserts and wilderness, the insufficient coverage of Base Stations (BSs) makes it difficult to establish reliable ground-based MEC systems. Fortunately, with the advancement of UAVs, they can serve as edge servers with processing capabilities, and UAV-based MEC networks are gaining attention because of their adaptable mobility and Line-of-Sight (LoS) links. They can efficiently extend ground networks by providing communication [1], computation [2], and storage [3] functions from the air, thereby enhancing coverage, supporting high-speed data transmission, and delivering on-demand edge computing services. Additionally, UAV trajectory planning can be appropriately designed to further improve network service quality. Therefore, developing a multi-layer computing architecture based on Air-Ground Integrated Networks (AGIN) to support remote IoT applications is imperative [4].
+
+However, due to the migration of computation tasks between terminals and UAVs, task offloading suffers from potential security risks such as terminal privacy leakage, the tampering and reversal of offloaded tasks as well as computation results [5]. Therefore, ensuring the security of task offloading process between terminals and UAVs in MEC is a pivotal issue. Fortunately, blockchain technology can record data in a decentralized, transparent, and secure manner through encrypted hash-linked data chains. Data stored on blockchain is immutable, making it possible to establish a transparent task offloading framework based on distributed consensus. This framework can ensure the traceability, immutability, and irreversibility of tasks, thereby effectively protecting the security and privacy of task offloading between terminals and UAVs. For instance, blockchain-based identity authentication ensures the authenticity and integrity of UAV identities, preventing forgery and tampering during task offloading. By implementing automated verification through smart contracts, it effectively mitigates security threats such as identity spoofing and man-in-the-middle attacks, ensuring secure task transmission and execution.
+
+Moreover, to unleash the full promising of the aforementioned network architecture integrating MEC and AGIN with blockchain, several challenges remain to be tackled. Firstly, the sensing procedure of IoT terminals are featured by random
+
+and uncertain data amount, and it may lead to system overload, i.e.,excessive data backlogs, when data sensing and offloading/processing are imbalanced. Therefore, the admission of sensed data should be dynamically controlled to stabilize the data backlogs, which, however, results in an intractable long-term stochastic issue. Secondly, the block generation and consensus substantially affect the system security, while competing for edge resources with data processing tasks. Consequently, designing efficient resource allocation strategy to well balance the computing and security performance, whilst considering resource restraints of UAV edge servers, is critical yet challenging. Thirdly, Deep Reinforcement Learning (DRL) combines the learning and prediction ability of Deep Learning (DL) with the decision-making advantage of Reinforcement Learning (RL), enabling rapid adaption to complex and dynamic networks [7], [8]. In spite of the benefits, the training of DRL suffers from slow convergence and inadequate exploration, especially in multi-agent scenarios. Thus, how to enhance DRL by achieving cooperation among multiple agents requires further research efforts.
+
+In summary, our primary motivation is to address the security and privacy risks associated with task offloading by integrating blockchain technology into UAV-enabled edge computing networks, while supporting the long-term performance optimization of MEC systems through efficient resource coordination. Considering the randomness of task data arrivals and the dynamic nature of UAV trajectories, our goal is to design an online algorithm that maximizes the long-term average data sensing rate under queue delay and security constraints. The main contributions of this paper are as follows:
+
+• A UAV-based secure aerial edge computing network is proposed, which includes multiple UAV edge servers and IoT devices to perform data sensing as well as computation offloading. Particularly, each UAV functions as both a computing node and a blockchain node, which dynamically allocates edge resource to simultaneously accomplish computation and blockchain tasks. Additionally, the UAV needs to design an appropriate trajectory to enhance the effectiveness of task offloading, reducing the terminal data backlogs. Subsequently, we formulate a long-term average sensing rate maximization problem by jointly considering terminal data sensing, transmission power, UAV trajectory planning, along with UAV resource allocation while adhering to long-term queue delay and security constraints.   
+• Because of the coupling between long-term constraints and short-term resource optimization, it is not trivial to solve the problem directly. To this end, we use Lyapunov optimization to deal with long-term queue delay and security constraints, and subsequently break down the original problem into three more manageable subproblems. First, terminal data sensing is optimized using convex optimization. Furthermore, we propose an AGIN-MASAC (Multi-Agent Soft Actor Critic) algorithm to jointly train the terminal transmission power and UAV trajectories, where each UAV and terminal device is treated as an agent operating collaboratively to enhance overall performance. Finally, the Dingo Optimization Algorithm (DOA) is used to address the edge resource allocation
+
+TABLE I KEY NOTATIONS   
+
+<table><tr><td>Notation</td><td>Description</td></tr><tr><td>θk(t), vk(t)</td><td>Flight angle and speed of UAVuk</td></tr><tr><td>wj</td><td>Horizontal coordinate of device dj</td></tr><tr><td>xj,k(t)</td><td>Distance from dj to uk</td></tr><tr><td>pj,k(t)</td><td>Uplink transmission power of device dj to UAVuk</td></tr><tr><td>Rj,k(t)</td><td>Offloading transmission rate from device dj to UAVuk</td></tr><tr><td>γj,k(t)</td><td>Signal-to-interference and noise ratio of dj atuk</td></tr><tr><td>Ik(j)</td><td>Interference from other devices occupying the same frequency resource</td></tr><tr><td>ηLoSj,k,ηNLoSj,k</td><td>Additional losses caused by free-space propagation for LoS and NLoS links</td></tr><tr><td>ej(t)</td><td>Admitted sensing tasks of device dj</td></tr><tr><td>Qj(t)</td><td>Queue for storing admitted sensing task data by device</td></tr><tr><td>Wj(t)</td><td>Task data amount that leaves the queue of device dj</td></tr><tr><td>Hj,k(t)</td><td>Task queue backlog stored in UAVuk from the offloaded tasks of device dj</td></tr><tr><td>Wjcj,k(t)</td><td>Amount of task processed by UAVuk from device dj</td></tr><tr><td>fcj,k(t)</td><td>CPU cycle frequency allocated by UAVuk to device dj</td></tr><tr><td>δQj(t)</td><td>Task offloading queuing delay at device dj</td></tr><tr><td>γk(t)</td><td>Participation of block processoruk</td></tr><tr><td>Itss(t)</td><td>Transaction size in time slot t</td></tr><tr><td>Dj(t),Dj,cr(t)</td><td>Computation task and result of device dj</td></tr><tr><td>Yb(t)</td><td>Size of the generated block</td></tr><tr><td>δgj(t)</td><td>Delay for generating a new block</td></tr><tr><td>fkv(t)</td><td>Computational capacity ofukallocated to block generation</td></tr><tr><td>δb,v(t)</td><td>Time for block verification</td></tr><tr><td>φ(t)</td><td>CPU cycles required for block verification</td></tr><tr><td>fb,v(t)</td><td>Computational capacity ofuk&#x27;allocated to block verification in time slot t</td></tr><tr><td>δB(t)</td><td>Total delay for block processoruk to complete transac-tion processing</td></tr></table>
+
+issue, in which resources are judiciously assigned to data computing and block processing, adaptively balancing security and computing performance.   
+• We conducted numerous experiments and compared our method with four benchmark approaches including the MASAC without trajectory optimization algorithm (NT-MASAC), MASAC without power optimization algorithm (NP-MASAC), Multi-Agent Deep Deterministic Policy Gradient (MADDPG) algorithm, and Particle Swarm Optimization (PSO) algorithm for resource allocation. The results validate that our approach performs excellently in terms of long-term average data sensing rate, training convergence, and queuing delay.
+
+For ease reference, the key notations are listed in Table I.
+
+The article is arranged as follows. Related work is discussed in Section II. A UAV-based secure aerial computing network integrating MEC and blockchain technologies in Section III. Section IV addresses the problem of maximizing the terminals’ long-term average data sensing rate. Section V provides a DRL-based solution. Finally, the simulation results are presented in Section VI, while Section VII offers the conclusions.
+
+# II. RELATED WORKS
+
+# A. Aerial Edge Computing Architecture Based on UAV
+
+Some researches have investigated UAV-based aerial edge computing architectures and demonstrated their significant advantages over traditional ground networks [9], [10], [11], [12], [13]. Paper [11] jointly optimized UAV flight time, 3D trajectory, terminal offloading decisions, and time allocation for terminals, aiming to maximize the energy efficiency of UAV and consider the fairness of offloading. However, this
+
+work overlooked the issue of scarce spectrum resources, where NOMA is crucial for enhancing spectrum efficiency. Paper [13] explored resource allocation in UAV networks using NOMA to tackle the challenge of optimizing network capacity. Paper [14] studied online cognitive data sensing and processing optimization in energy-harvesting-enabled IoT networks to maximize long-term sensing rates. However, the aforementioned work optimized the resource allocation without considering trajectory planning. Our work fills the gap by jointly optimizing terminal transmission power, UAV trajectory planning, and edge resource allocation.
+
+# B. Integration of Blockchain and MEC
+
+Integrating blockchain with MEC has emerged as a compelling trend in recent years. Some studies [5], [15], [16], [17], [18] have conducted preliminary research on the application of blockchain technology in MEC networks. Paper [5] proposed an improved DPoS consensus scheme in a blockchain-integrated UAV-assisted MEC network. However, this work did not take task offloading and computation between terminals and UAVs into consideration. Paper [15] explored the integration of blockchain and VEC, and proposed a vehicle task allocation scheme. Paper [18] proposed a blockchain-enabled framework for task offloading and energy harvesting in multi-UAV-assisted IoT networks. The aforementioned studies overlooked the dynamic interactions between sensed data arrival and offloading decisions. Unlike these works, our approach explicitly incorporates terminal sensing rates as optimization variables and addresses the interplay between sensing, offloading, and computing within the MEC framework. Moreover, our use of Lyapunov optimization ensures long-term queue stability, distinguishing our work from prior blockchain-integrated systems.
+
+# C. Application of DRL in MEC
+
+DRL improves learning efficiency and the capacity to handle large-scale networks, drawing widespread attention in academia for its application in solving complex resource optimization problems in MEC [19], [20], [21], [22], [23]. Paper [21] explored blockchain-based resource allocation in multi-UAV-enabled 5G-RAN systems, employing a MADRL framework to enhance the efficiency and security of virtualized resource allocation. However, the above work did not take into account long-term queue delay constraint addressed in this paper. Paper [22] used DRL to address the challenge of latency minimization by simultaneously optimizing UAV placement, resource allocation, and computation offloading, while taking into account both Quality of Service (QoS) and resource constraints. Paper [23] proposed a multi-agent DRL scheme to solve high-dimensional state space problem of joint terminal association, power allocation, and trajectory design. However, these studies overlooked the optimization of computational resources, which is particularly important in scenarios where edge server resources are limited.
+
+We summarize the difference between our work and some other typical literature in Table II.
+
+TABLE II COMPARISON WITH RELATED WORKS   
+
+<table><tr><td>Reference</td><td>Scenario</td><td>Algorithm</td><td>Problem</td></tr><tr><td>[4]</td><td>Multi-UAV assisted net-work</td><td>MADDPG, greedy algorithm</td><td>Task offloading and resource management under queue-awareness</td></tr><tr><td>[14]</td><td>Energy-harvesting IoT network with MEC</td><td>Lyapunov, dynamic threshold-based control</td><td>Joint sensing rate and task processing optimization under energy constraints</td></tr><tr><td>[16]</td><td>UAV-enabled MEC network with blockchain integration</td><td>Block coordinate descent (BCD), SCA</td><td>Joint optimization of user association, UAV trajectory, block processor scheduling, and computation resource allocation</td></tr><tr><td>[18]</td><td>Multi-UAV-assisted IoT network</td><td>MADDPG, Stackelberg game</td><td>Computation offloading and energy harvesting, minimize resource price</td></tr><tr><td>[21]</td><td>UAV-enabled 5G network with blockchain</td><td>MADDPG, Stackelberg game</td><td>Resource allocation and pricing</td></tr><tr><td>This paper</td><td>Blockchain-integrated UAV-enabled MEC network</td><td>Lyapunov, MASAC, CVX, DOA</td><td>UAV trajectory planning, task offloading, blockchain, resource allocation</td></tr></table>
+
+# III. SYSTEM MODEL
+
+As shown in Fig. 1, the UAV-enabled secure aerial edge computing network is composed of multiple IoT devices and UAV edge servers. Assume there are totally $J$ devices and $K$ UAVs. The sets of devices and UAVs are denoted as $D = \{ d _ { 1 } , \ldots , d _ { j } , \ldots , d _ { J } \}$ and $U = \left\{ u _ { 1 } , \ldots , u _ { k } , \ldots , u _ { K } \right\}$ , respectively. The system operates in a time-slot mode, where the total optimization time is evenly divided into $T$ time slots, each with a duration of $\tau$ , and the entire period is denoted as $\{ 1 , \ldots , t , \ldots , T \}$ . In each time slot, devices collect sensing data from the environment and store it in local task data queues. Assuming that the task data is indivisible, we adopt a full offloading strategy considering the terminals’ limited resources [4], [14]. The MEC server is deployed on each UAV, which not only handles the computing tasks offloaded by terminals but also acts as a blockchain node, collecting and verifying offloading records to generate and add new blocks to the blockchain. The encryption and traceability features of the blockchain ensure the privacy and security of terminal devices during the computation offloading process effectively.
+
+# A. Communication Model
+
+1) UAV Trajectory: To avoid additional power consumption during the UAV’s ascent or descent, we assume that all UAVs maintain a fixed altitude of $H$ .1 Let $\theta _ { k } \left( t \right) \in \left( - 1 8 0 ^ { \circ } , 1 8 0 ^ { \circ } \right]$ and $v _ { k } ( t )$ indicate the flight angle and speed of UAV $u _ { k }$ during time slot t, respectively. Thus, the trajectory of UAV $u _ { k }$ can be expressed as
+
+$$
+\mathbf {q} _ {k} (t + 1) = \mathbf {q} _ {k} (t) + v _ {k} (t) \tau [ \cos \theta_ {k} (t), \sin \theta_ {k} (t) ] ^ {T}. \tag {1}
+$$
+
+The horizontal coordinate of device $d _ { j }$ is represented by ${ \bf w } _ { j }$ , then the distance from $d _ { j }$ to $u _ { k }$ is calculated as
+
+$$
+x _ {j, k} (t) = \sqrt {\left\| \mathbf {q} _ {k} (t) - \mathbf {w} _ {j} (t) \right\| ^ {2} + H ^ {2}}. \tag {2}
+$$
+
+To reduce the offloading transmission delay as much as possible while ensuring the quality of service, each terminal only selects the association with the nearest UAV at each time slot. $a _ { j , k } \left( t \right)$ indicates the correlation indicator variable, and
+
+$$
+a _ {j, k} \left(t\right) = \left\{ \begin{array}{l} 1, x _ {j, k} \left(t\right) - \min  _ {k \in K} x _ {j, k} \left(t\right) = 0 \\ 0, \text {e l s e .} \end{array} \right.
+$$
+
+1The UAV altitude is presumed to be a constant subject to government regulation [4], [5], [23], while our approach can be easily extended to 3D trajectory planning.
+
+![](images/a53ea2ee0c3848387dcf0447a0aa7a0d55a1bfaec1f4e1012cc28215279f08f4.jpg)  
+Fig. 1. The system model.
+
+2) Channel Model: To further enhance spectrum efficiency, we adopt the NOMA method and the spectrum resources between UAVs are orthogonal [24]. Let $B$ denote the bandwidth size for each cluster, and $p _ { j , k } ( t )$ represent the uplink transmission power of terminal $d _ { j }$ to UAV $u _ { k }$ , then the offloading transmission rate is calculated as
+
+$$
+R _ {j, k} (t) = B \log_ {2} \left(1 + \gamma_ {j, k} (t)\right), \tag {3}
+$$
+
+where $\gamma _ { j , k } \left( t \right)$ is the signal-to-interference and noise ratio of $d _ { j }$ at $u _ { k }$ , and is calculated as
+
+$$
+\gamma_ {j, k} (t) = \frac {p _ {j , k} (t) g _ {j , k} (t)}{I _ {j} ^ {k} (t) + \sigma^ {2}}, \tag {4}
+$$
+
+where $I _ { j } ^ { k } ( t ) = \sum _ { i = 1 , i \neq j } ^ { J } a _ { i , k } \left( t \right) p _ { i , k } \left( t \right) g _ { i , k } \left( t \right)$ represents the interference from other devices occupying the same frequency resource within the coverage area of UAV $u _ { k }$ , and $\sigma ^ { 2 }$ is the noise power. $g _ { j , k } \left( t \right) = 1 0 ^ { - \frac { L _ { j , k } \left( t \right) } { 1 0 } }$ is defined as the channel gain, and $L _ { j , k } \left( t \right)$ is the path loss from $d _ { j }$ to $u _ { k }$ , calculated by
+
+$$
+\begin{array}{l} L _ {j, k} (t) = 2 0 \log_ {1 0} \frac {4 \pi f _ {c} d _ {j , k} (t)}{c} + p _ {j, k} ^ {L o S} (t) \eta_ {j, k} ^ {L o S} \\ + \left(1 - p _ {j, k} ^ {L o S} (t)\right) \eta_ {j, k} ^ {N L o S}, \tag {5} \\ \end{array}
+$$
+
+where $f _ { c }$ and $c$ represent the carrier frequency and the speed of light, respectively. ηLoSj,k $\eta _ { j , k } ^ { L o S }$ and ηNLj,k $\eta _ { j , k } ^ { N L o S }$ oS represent the additional losses caused by free-space propagation for LoS and non-lineof-sight (NLoS) links, respectively, which are determined by the environment. $p _ { j , k } ^ { L o S } \left( t \right)$ is the LoS probability for the link from $d _ { j }$ to $u _ { k }$ , calculated by the following formula
+
+$$
+p _ {j, k} ^ {L o S} (t) = \frac {1}{1 + \rho_ {1} \exp \left\{- \rho_ {2} \left[ \tan^ {- 1} \left(\frac {H}{\| \mathbf {q} _ {k} (t) - \mathbf {w} _ {j} \|}\right) - \rho_ {1} \right] \right\}}, \tag {6}
+$$
+
+where $\rho _ { 1 }$ and $\rho _ { 2 }$ are also variables determined by the environment.
+
+# B. Data Sensing and Task Queue Model
+
+1) Data Sensing: The amount of sensed data for device $d _ { j }$ in the time slot $t$ is defined as $s _ { j } ( t )$ , which is randomly distributed within the range $[ 0 , S _ { \mathrm { m a x } } ]$ . To avoid system overload, the device performs admission control and only admits a portion of the sensed tasks, defined as $e _ { j } ( t )$ , and the following constraint should be satisfied
+
+$$
+e _ {j} (t) \leq s _ {j} (t). \tag {7}
+$$
+
+2) Queue Model: Every terminal has a buffer queue for storing admitted sensing task data, denoted by $Q _ { j } ( t )$ . Assuming the buffer is infinitely large and operates on a First-In-First-Out (FIFO) basis. $W _ { j } ( t )$ represents the task data amount that leaves the buffer queue of terminal $d _ { j }$ and is offloaded to UAV $u _ { k }$ , calculated as
+
+$$
+W _ {j} (t) = \sum_ {k = 1} ^ {K} a _ {j, k} (t) \min  \left\{Q _ {j} (t), \tau R _ {j, k} (t) \right\}. \tag {8}
+$$
+
+Then, the queue backlog of terminal $d _ { j }$ in the time slot $t$ is calculated as
+
+$$
+Q _ {j} (t + 1) = \max  \left\{Q _ {j} (t) - W _ {j} (t), 0 \right\} + e _ {j} (t). \tag {9}
+$$
+
+Similarly, the task queue backlog stored in UAV $u _ { k }$ from the offloaded tasks of device $d _ { j }$ during time slot $t$ is denoted as $H _ { j , k } ( t )$ , and can be obtained as follows
+
+$$
+H _ {j, k} (t + 1) = \max  \left\{H _ {j, k} (t) - W _ {j, k} ^ {c} (t), 0 \right\} + a _ {j, k} (t) W _ {j} (t), \tag {10}
+$$
+
+where $W _ { j , k } ^ { c } ( t )$ represents the amount of task data processed by UAV $u _ { k }$ from device $d _ { j }$ . $f _ { j , k } ^ { c } ( t )$ denotes the CPU cycle frequency allocated by UAV $u _ { k }$ to device $d _ { j }$ . Then, $W _ { j , k } ^ { c } ( t )$ can be calculated by
+
+$$
+W _ {j, k} ^ {c} (t) = \min  \left\{H _ {j, k} (t), \frac {\tau f _ {j , k} ^ {c} (t)}{\lambda_ {j}} \right\}, \tag {11}
+$$
+
+where $\lambda _ { j }$ represents the computational intensity required to process the task of terminal $d _ { j }$ (cycles per bit).
+
+3) Delay Model: Long-term queue delay encompasses both task offloading and computation queue delays. According to Little’s Law, offloading queue delay is directly proportional to the queue backlog and inversely related to the average task arrival rate. Based on the previous discussion, the average task arrival rate for device $d _ { j }$ can be calculated as
+
+$$
+\tilde {e} _ {j} (t) = \frac {1}{t} \sum_ {c = 0} ^ {t - 1} e _ {j} (c). \tag {12}
+$$
+
+Then, the task offloading queuing delay at terminal $d _ { j }$ can be expressed as
+
+$$
+\delta_ {j} ^ {Q} (t) = \frac {Q _ {j} (t)}{\tilde {e} _ {j} (t)}. \tag {13}
+$$
+
+Similarly, we can obtain the task arrival rate at UAV $u _ { k }$ from terminal $d _ { j }$ and the computation queue delay as follows
+
+$$
+\tilde {W} _ {j, k} (t) = \frac {1}{t} \sum_ {c = 0} ^ {t - 1} a _ {j, k} (c) W _ {j} (c), \tag {14}
+$$
+
+$$
+\delta_ {j, k} ^ {H} (t) = \frac {H _ {j , k} (t)}{\tilde {W} _ {j , k} (t)}. \tag {15}
+$$
+
+4) Energy Consumption Model: When offloading tasks to UAV $u _ { k }$ during time slot t, the offloading energy consumption of terminal $d _ { j }$ can be calculated as
+
+$$
+E _ {j} (t) = p _ {j, k} (t) \sum_ {k = 0} ^ {K} a _ {j, k} (t) \min  \left\{\frac {Q _ {j} (t)}{R _ {j , k} (t)}, \tau \right\}. \tag {16}
+$$
+
+# C. Blockchain Model
+
+UAVs acting as blockchain nodes can generate a transaction that records key information about the offloading tasks and computation results from the previous time slot. Meanwhile, a block containing the complete transaction is appended to the end of the longest confirmed chain after global consensus, and once confirmed, the block becomes irreversible. During the block consensus process, the Practical Byzantine Fault Tolerance (PBFT) protocol is used to achieve low consensus latency and a deterministic protocol.
+
+1) Block Generation: To prevent excessive consumption of computational resources by blockchain nodes competing for the right to record transactions, a DPoS consensus algorithm can be used to select block processors. The algorithm employs a real-time voting mechanism to evaluate the reputation of nodes based on their past performance and the number of tokens they hold, selecting the node with the highest votes as the block processor, with all nodes eligible to participate in the voting process [16]. Note that this paper focuses on block resource allocation and does not address the selection of block processors, given that not all blockchain nodes participate in transaction recording. Therefore, in the following sections, we leverage $\gamma _ { k } ( t )$ to indicate the participation of block processor $u _ { k }$ , where $\gamma _ { k } ( t ) = 1$ means $u _ { k }$ participates in the transaction recording in the time slot $t .$ , otherwise $\gamma _ { k } ( t ) = 0$ .
+
+The transaction size in time slot $t$ can be calculated as
+
+$$
+I _ {t s} (t) = \operatorname {H a s h} \left(\sum_ {j \in J} \left(D _ {j} (t) + D _ {j, c r} (t)\right)\right) + D _ {e f} (t), \tag {17}
+$$
+
+where $H a s h ( . )$ is a hash function which is used to convert the computation tasks and results into hash values for conserving UAV storage space. $D _ { j } ( t )$ and $D _ { j , c r } ( t )$ represent the computation task and result of terminal $d _ { j }$ , respectively, $D _ { e f } ( t )$ denotes the associated encrypted files. Meanwhile, we denote the size of the generated block as $Y _ { b } ( t )$ .
+
+For block processor $u _ { k }$ , the delay for generating a new block could be represented as
+
+$$
+\delta_ {k} ^ {g} (t) = \frac {I _ {t s} (t) L _ {k} (t)}{f _ {k} ^ {b} (t)}, \tag {18}
+$$
+
+where $f _ { k } ^ { b } ( t )$ represents the computational capacity of $u _ { k }$ allocated to block generation in time slot $t$ , and $L _ { k } ( t )$ represents the CPU cycles required by $u _ { k }$ for generating each bit of block data.
+
+2) Consensus Process: The consensus process involves block propagation and verification [25].
+
+Consensus: Due to varying distances and transmission rates between different UAV block processors, we represent the
+
+block propagation delay as the transmission delay required for the latest receipt of the block, calculated as
+
+$$
+\delta_ {k} ^ {b, p} (t) = \frac {Y _ {b} (t)}{R _ {k , \min } (t)}, \tag {19}
+$$
+
+where $R _ { k , \mathrm { m i n } } ( t ) ~ = ~ \operatorname* { m i n } _ { k ^ { \prime } \in K \backslash \{ k \} } ~ \gamma _ { k ^ { \prime } } ( t ) R _ { k , k ^ { \prime } } ( t )$ , and $R _ { k , k ^ { \prime } } ( t )$
+
+represents the transmission rate from block processor $u _ { k }$ to block processor uk0 . $u _ { k ^ { \prime } }$
+
+Block verification: Similarly, the time for block verification is represented as the maximum delay required to verify across all blocks, calculated as
+
+$$
+\delta_ {k} ^ {b, v} (t) = \max  _ {k ^ {\prime} \in K \backslash \{k \}} \gamma_ {k ^ {\prime}} (t) \frac {\varphi (t)}{f _ {k ^ {\prime}} ^ {b , v} (t)}, \tag {20}
+$$
+
+where $\varphi ( t )$ denotes the CPU cycles required for block verification in time slot t, and $f _ { k ^ { \prime } } ^ { b , v } ( \dot { t } )$ represents the computational capacity of $u _ { k ^ { \prime } }$ allocated to block verification in time slot t.
+
+Thus, the total delay for block processor $u _ { k }$ to complete transaction processing is given by
+
+$$
+\delta^ {B} (t) = \sum_ {k = 1} ^ {K} \gamma_ {k} (t) \left[ \delta_ {k} ^ {g} (t) + \delta_ {k} ^ {b, p} (t) + \delta_ {k} ^ {b, v} (t) \right]. \tag {21}
+$$
+
+Since block creation delay significantly impacts the security of edge computing, we will impose a security constraint on the long-term block creation delay, as follows
+
+$$
+\lim  _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 1} ^ {T} \delta^ {B} (t) \leq \delta_ {\max } ^ {B}, \tag {22}
+$$
+
+where δB $\delta _ { \mathrm { m a x } } ^ { B }$ is the security upper bound for block creation delay.
+
+# IV. PROBLEM FORMULATION AND TRANSFORMATION
+
+In this section, we propose a problem to maximize the longterm average data sensing rate for terminals in a UAV-enabled aerial secure edge computing network, subject to long-term queue and security constraints.
+
+# A. Problem Formulation
+
+Our optimization goal is to maximize the long-term average data sensing rate by jointly optimizing UAV trajectory $\mathbf { q } ( t )$ , terminal transmission power $\mathbf { p } ( t )$ , edge resource allocation $\mathbf f ( t )$ (includes computation $f _ { j , k } ^ { c } ( t )$ , block generation $f _ { k } ^ { b } ( t )$ block verification $f _ { k } ^ { b , v } ( t ) )$ , and task sensing rate $\mathbf { e } ( t )$ , while adhering to long-term queue delay and security constraints. The problem can be formulated as follows
+
+$$
+\begin{array}{l} \mathbf {P 0}: \max  _ {\{\mathbf {q} (t), \mathbf {p} (t), \mathbf {f} (t), \mathbf {e} (t) \}} \lim  _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 1} ^ {T} \sum_ {j = 1} ^ {J} e _ {j} (t) \\ s. t. \quad C _ {1}: \sum_ {j = 1} ^ {J} f _ {j, k} ^ {e} (t) + \gamma_ {k} (t) f _ {k} ^ {b} (t) \\ + \gamma_ {k} (t) f _ {k} ^ {b, v} (t) \leq f _ {k, \max } (t), \quad \forall u _ {k} \in U, \\ C _ {2}: f _ {j, k} ^ {e} (t) \geq 0, f _ {k} ^ {b} (t) \geq 0, f _ {k} ^ {b, v} (t) \geq 0, \\ \forall u _ {k} \in U, \\ \end{array}
+$$
+
+$$
+C _ {3}: 0 \leq p _ {j, k} (t) \leq p _ {j} ^ {\max }, \quad \forall d _ {j} \in D,
+$$
+
+$$
+C _ {4}: | | \mathbf {q} _ {k} (t + 1) - \mathbf {q} _ {k} (t) | | \leq v ^ {\max} \tau ,
+$$
+
+$$
+\forall u _ {k} \in U,
+$$
+
+$$
+C _ {5}: | | \mathbf {q} _ {k} (t + 1) - \mathbf {q} _ {i} (t) | | \geq \xi ,
+$$
+
+$$
+\forall u _ {k}, u _ {i} \in U, k \neq i,
+$$
+
+$$
+C _ {6}: c s _ {d} \leq \mathbf {q} _ {k} (t) \leq c s _ {u}, \quad \forall u _ {k} \in U,
+$$
+
+$$
+C _ {7}: e _ {j} (t) \leq s _ {j} (t), \quad \forall d _ {j} \in D,
+$$
+
+$$
+C _ {8}: \lim _ {T \to \infty} \frac {1}{T} \sum_ {t = 1} ^ {T} \delta_ {j} ^ {Q} (t) \leq \delta_ {j, \max} ^ {Q},
+$$
+
+$$
+C _ {9}: \lim  _ {T \to \infty} \frac {1}{T} \sum_ {t = 1} ^ {T} \delta_ {j, k} ^ {H} (t) \leq \delta_ {j, k, \max} ^ {H},
+$$
+
+$$
+C _ {1 0}: \lim  _ {T \rightarrow \infty} \frac {1}{T} \sum_ {t = 1} ^ {T} \delta^ {B} (t) \leq \delta_ {\max } ^ {B}. \tag {23}
+$$
+
+where $C _ { 1 } - C _ { 2 }$ represent the constraints on computational resource allocation for UAVs. $C _ { 3 }$ denotes terminal transmission power constraint. $C _ { 4 }$ is the mobility constraint with $v ^ { \mathrm { m a x } }$ being the maximum UAV speed. $C _ { 5 }$ represents the anti-collision constraint to ensure UAV flight safety, where $\xi$ indicates the minimum distance between UAVs. $C _ { 6 }$ indicates the constraint within the UAV service area, with $c s _ { u }$ and $c s _ { d }$ representing the upper and lower bounds, respectively. $C _ { 7 }$ denotes the constraint on the acceptance of a limited amount of sensing data. $C _ { 8 }$ represents the task offloading queuing delay constraint. $C _ { 9 }$ denotes the edge computing queuing delay constraint. $C _ { 1 0 }$ is the constraint on long-term security.
+
+Problem P0 is inherently NP-hard due to the strong coupling between long-term constraints $C _ { 8 } - C _ { 1 0 }$ and short-term variables (e.g., UAV position and resource allocation in each slot). Although directly optimizing the decisions over all time slots could lead to the optimal performance, the dependency across high-dimensional variables significantly increases the solution complexity. Besides, the uncertainty of dynamic environments (e.g., future task arrival $s _ { j } ( t ) )$ hinders us to employ offline optimization, especially in real-time scenarios.
+
+# B. Problem Transformation
+
+To address long-term queuing delay constraints, we introduce two new virtual queues for task offloading and edge computing, and transform $C _ { 8 }$ and $C _ { 9 }$ into queue stability constraints as follows
+
+$$
+V _ {j} ^ {Q} (t + 1) = \left\{V _ {j} ^ {Q} (t) + \delta_ {j} ^ {Q} (t + 1) - \delta_ {j, \max } ^ {Q} \right\} ^ {+}, \tag {24}
+$$
+
+$$
+V _ {j, k} ^ {H} (t + 1) = \left\{V _ {j, k} ^ {H} (t) + \delta_ {j, k} ^ {H} (t + 1) - \delta_ {j, k, \max } ^ {H} \right\} ^ {+}. \tag {25}
+$$
+
+If the above two virtual queues are stable with respect to their average rates, then $C _ { 8 }$ and $C _ { 9 }$ are automatically satisfied, i.e.
+
+$$
+\lim  _ {t \rightarrow \infty} \mathbb {E} \left[ V _ {j} ^ {Q} (t) \right] / t = 0, \tag {26}
+$$
+
+$$
+\lim  _ {t \rightarrow \infty} \mathbb {E} \left[ V _ {j, k} ^ {H} (t) \right] / t = 0. \tag {27}
+$$
+
+Additionally, introduce a virtual queue $V ^ { B } ( t )$ related to $C _ { 1 0 }$ , represented as
+
+$$
+V ^ {B} (t + 1) = \left\{V ^ {B} (t) + \delta^ {B} (t) - \delta_ {\max } ^ {B} \right\} ^ {+}. \tag {28}
+$$
+
+The larger the value of $V ^ { B } ( t )$ , the more the block creation delay deviates significantly from the security requirements.
+
+Subsequently, P0 is transformed into
+
+$$
+\mathbf{P1}:\max_{\{\mathbf{q}(t),\mathbf{p}(t),\mathbf{f}(t),\mathbf{e}(t)\}}\lim_{T\to \infty}\frac{1}{T}\sum_{t = 1}^{T}\sum_{j = 1}^{J}e_{j}(t)
+$$
+
+$$
+\begin{array}{l l} \text {s . t .} & C 1, C 2, C 3, C 4, C 5, C 6, C 7, \end{array}
+$$
+
+$$
+C _ {8} ^ {\prime}: (2 4) \text {i s m e a n r a t e s t a b l e},
+$$
+
+$$
+C _ {9} ^ {\prime}: (2 5) \text {i s m e a n r a t e s t a b l e},
+$$
+
+$$
+C _ {1 0} ^ {\prime}: (2 8) \text {i s m e a n r a t e s t a b l e .} \tag {29}
+$$
+
+The transformed problem remains NP-hard, and the interplay between short-term decisions and long-term queue delays complicates its solution. Therefore, we use Lyapunov optimization technology to transform the problem into a series of short-term, deterministic optimization subproblems that can be solved on a per-time-slot basis. We define the Lyapunov function as half the sum of the squares of all queues, given by
+
+$$
+\begin{array}{l} L [ \Theta (t) ] = \frac {1}{2} \sum_ {j = 1} ^ {J} \left\{\left(Q _ {j} (t)\right) ^ {2} + \left(V _ {j} ^ {Q} (t)\right) ^ {2} + \sum_ {k = 1} ^ {K} \left[ \left(H _ {j, k} (t)\right) ^ {2} \right. \right. \\ \left. \left. + \left(V _ {j, k} ^ {H} (t)\right) ^ {2} \right] \right\} + \frac {1}{2} \left(V ^ {B} (t)\right) ^ {2}. \tag {30} \\ \end{array}
+$$
+
+The Lyapunov drift is the expected change in the Lyapunov function between consecutive time slots, as follows
+
+$$
+\Delta L [ \Theta (t) ] = \mathbb {E} \left\{L [ \Theta (t + 1) ] - L [ \Theta (t) ] \mid \Theta (t) \right\}. \tag {31}
+$$
+
+Then, the drift-plus-penalty approach is used for maintaining the queue stability while simultaneously maximizing long-term average data sensing rate. The derivation is as follows
+
+$$
+\Delta_ {V} L [ \Theta (t) ] = \Delta L [ \Theta (t) ] - \lambda \mathbb {E} \left\{\sum_ {j = 1} ^ {J} e _ {j} (t) \mid \Theta (t) \right\}, \tag {32}
+$$
+
+where $\lambda ~ > ~ 0$ , which is introduced for balancing penalty minimization and queue stability.
+
+Theorem 1: Given the network state, the upper bound of $\Delta _ { V } L [ \Theta ( t ) ]$ is further derived as
+
+$$
+\begin{array}{l} \Delta_ {V} L [ \Theta (t) ] \\ \leq C - \left\{\lambda \sum_ {j = 1} ^ {J} \mathbb {E} \{e _ {j} (t) | \Theta (t) \right. \\ - \sum_ {j = 1} ^ {J} \mathbb {E} \left\{Q _ {j} (t) e _ {j} (t) | \Theta (t) \right\} - \frac {1}{2} \sum_ {j = 1} ^ {J} \mathbb {E} \left\{\left[ e _ {j} (t) \right] ^ {2} | \Theta (t) \right\} \\ -\sum_{j = 1}^{J}\mathbb{E}\left\{(t + 1)V_{j}^{Q}(t)\frac{e_{j}(t)}{\sum_{c = 0}^{t - 1}e_{j}(c) + e_{j}(t)}\bigg| \Theta (t)\right\} \\ \Bigg\} \\ - \sum_ {j = 1} ^ {J} \mathbb {E} \left\{Q _ {j} (t) W _ {j} (t) | \Theta (t) \right\} - \frac {1}{2} \sum_ {j = 1} ^ {J} \mathbb {E} \left\{\left[ W _ {j} (t) \right] ^ {2} | \Theta (t) \right\} \\ \end{array}
+$$
+
+$$
+\begin{array}{l} -\sum_{j = 1}^{J}\mathbb{E}\left\{(t + 1)V_{j}^{Q}(t)\frac{Q_{j}(t) - W_{j}(t)}{\sum_{c = 0}^{t - 1}e_{j}(c) + e_{j}(t)}\Bigg|\Theta (t)\right\} \\ - \sum_ {j = 1} ^ {J} \sum_ {k = 1} ^ {K} \mathbb {E} \left\{H _ {j, k} (t) a _ {j} ^ {k} (t) W _ {j} (t) | \Theta (t) \right\} - \sum_ {j = 1} ^ {J} \sum_ {k = 1} ^ {K} \left\{(t + 1) \right. \\ \times V _ {j, k} ^ {H} (t) \frac {a _ {j , k} (t) W _ {j} (t) + H _ {j , k} (t)}{\sum_ {c = 0} ^ {t - 1} a _ {j , k} (c) W _ {j} (c) + a _ {j , k} (t) W _ {j} (t)} | \Theta (t) \Bigg \} \\ + \sum_ {j = 1} ^ {J} \sum_ {k = 1} ^ {K} \mathbb {E} \left\{H _ {j, k} (t) \frac {\tau f _ {j , k} ^ {c} (t)}{\lambda_ {j}} | \Theta (t) \right\} \\ - \mathbb {E} \left\{V ^ {B} (t) \delta^ {B} (t) \mid \Theta (t) \right\} + \sum_ {j = 1} ^ {J} \sum_ {k = 1} ^ {K} \left\{(t + 1) V _ {j, k} ^ {H} (t) \right. \\ \left. \times \frac {\frac {\tau f _ {j , k} ^ {c} (t)}{\lambda_ {j}}}{\sum_ {c = 0} ^ {t - 1} a _ {j , k} (c) W _ {j} (c) + a _ {j , k} (t) W _ {j} (t)} | \Theta (t) \right\} \Bigg \} \tag {33} \\ \end{array}
+$$
+
+where $C$ is a constant.
+
+Proof: See Appendix A.2
+
+We observe the system state and apply the opportunity cost minimization approach to optimize system parameters at each time slot t. Consequently, the original problem P1 can be reformulated as minimizing the upper bound of the expression derived in (33) under the given constraints. Based on the involved variables, P1 is decomposed into three sequential, distributed subproblems.
+
+1) Data Sensing Rate Optimization (SP1): In SP1, the terminal data sensing rate is set independently of other system variables. The problem can be expressed as
+
+$$
+\begin{array}{l} \mathbf {S P 1}: \max _ {\mathbf {e} (t)} \phi_ {j} (t) = \lambda e _ {j} (t) - Q _ {j} (t) e _ {j} (t) - \frac {1}{2} [ e _ {j} (t) ] ^ {2} \\ - (t + 1) V _ {j} ^ {Q} (t) \frac {e _ {j} (t)}{\sum_ {c = 0} ^ {t - 1} e _ {j} (c) + e _ {j} (t)}, \\ \end{array}
+$$
+
+s.t. C 7. (34)
+
+2) UAV Trajectory Planning and Terminal Transmission Power Control (SP2): In SP2, terminals select the optimal transmission power while UAVs optimize their flight trajectories.
+
+$$
+\begin{array}{l} \mathbf {S P 2}: \max  _ {\mathbf {q} (t), \mathbf {p} (t)} \varphi_ {j} (t) = Q _ {j} (t) W _ {j} (t) - \frac {1}{2} [ W _ {j} (t) ] ^ {2} \\ - (t + 1) V _ {j} ^ {Q} (t) \frac {Q _ {j} (t) - W _ {j} (t)}{\sum_ {c = 0} e _ {j} (c) + e _ {j} (t)} \\ - \sum_ {k = 1} ^ {K} H _ {j, k} (t) a _ {j} ^ {k} (t) W _ {j} (t) \\ - \sum_ {k = 1} ^ {K} (t + 1) V _ {j, k} ^ {H} (t) \\ \end{array}
+$$
+
+2https://pan.baidu.com/s/1SblAQDLHkjSGTimQwUP29w?pwd=nfk7
+
+$$
+\times \frac {a _ {j , k} (t) W _ {j} (t) + H _ {j , k} (t)}{\sum_ {c = 0} ^ {t - 1} a _ {j , k} (c) W _ {j} (c) + a _ {j , k} (t) W _ {j} (t)},
+$$
+
+s.t. C 3, C 4, C 5, C 6. (35)
+
+It is still an NP-hard non-convex, programming challenge, since the UAV trajectory is coupled with the terminal transmission power. Besides, the high dynamics of the network and strict delay requirements necessitate a rapid solution. Therefore, we propose a MASAC-based approach in the next section.
+
+3) UAV Resource Allocation (SP3): In SP3, the UAV allocates resources to both terminal tasks and blockchain processing at the time slot t.
+
+$$
+\begin{array}{l} \mathbf {S P 3}: \max  _ {\mathbf {f} (t)} \psi_ {k} (t) = \sum_ {k = 1} ^ {K} H _ {j, k} (t) \frac {\tau f _ {j , k} ^ {c} (t)}{\lambda_ {j}} - V ^ {B} (t) \delta^ {B} (t) \\ + \sum_ {k = 1} ^ {K} (t + 1) V _ {j, k} ^ {H} (t) \\ \times \frac {\frac {\tau f _ {j , k} ^ {c} (t)}{\lambda_ {j}}}{\sum_ {c = 0} ^ {t - 1} a _ {j , k} (c) W _ {j} (c) + a _ {j , k} (t) W _ {j} (t)} \\ \end{array}
+$$
+
+s.t. $C 1 , C 2$
+
+$$
+C _ {1 0}: \frac {\tau f _ {j , k} ^ {c} (t)}{\lambda_ {j}} \leq H _ {j, k} (t). \tag {36}
+$$
+
+# V. MASAC-BASED TRAJECTORY PLANNING AND RESOURCE ALLOCATION ALGORITHM
+
+In this section, we propose a MASAC-based approach to address the joint UAV trajectory planning and terminal power control subproblem in aerial edge computing networks, treating UAVs and terminal devices as two distinct types of agents. Besides, we use convex optimization and heuristic algorithm to solve the terminal data sensing rate and UAV resource allocation subproblems, respectively.
+
+# A. Optimization of Data Sensing Rate
+
+In SP1, we define $z _ { j } ( t ) = \sum _ { c = 0 } ^ { t - 1 } e _ { j } ( c )$ , and then transform the original problem into its dual problem, as follows
+
+$$
+\mathbf{SP1}:\max_{\substack{\mathbf{e}(t)}}\phi_{j}(t)
+$$
+
+s.t. C 7,
+
+$$
+z _ {j} (t) = \sum_ {c = 0} ^ {t - 1} e _ {j} (c). \tag {37}
+$$
+
+The second derivative of the objective function is $\begin{array} { r } { \frac { \partial ^ { 2 } \phi _ { j } ( t ) } { e _ { j } ( t ) ^ { 2 } } = } \end{array}$ $\begin{array} { r } { - 1 + 2 ( t + 1 ) \frac { z _ { j } ( t ) } { ( z _ { j } ( t ) + e _ { j } ( t ) ) _ { . } ^ { 3 } } V _ { j } ^ { Q } ( t ) } \end{array}$ . Given that $e _ { j } ( t )$ is on the order of $1 0 ^ { 5 }$ , and $V _ { j } ^ { Q } ( t ) ~ < ~ z _ { j } ( t ) + e _ { j } ( t )$ , so $2 ( t +$ $\begin{array} { r } { 1 ) \frac { z _ { j } ( t ) } { ( z _ { j } ( t ) + e _ { j } ( \underline { { t } } ) ) ^ { 3 } } V _ { j } ^ { Q } ( t ) \ll \mathrm { i } } \end{array}$ ) zj (t)(zj (t)+ej (t))3 V Qj (t)  1. Thus, we can obtain $\frac { \partial ^ { 2 } \phi _ { j } ( t ) } { e _ { j . } ( t ) ^ { 2 } } < 0$ . Therefore, SP1 is a convex optimization problem with linearity constraints, which can be solved using existing optimization tools, such as CVX.
+
+![](images/fdbca8db22a0854d6436a736f4ed52307c20b56482995d13c6598e750e8fd095.jpg)  
+Fig. 2. The architecture of SAC.
+
+# B. UAV Trajectory Planning and Terminal Power Control
+
+1) The SAC Framework: SAC is an off-policy reinforcement learning algorithm aimed at maximizing the weighted sum of cumulative rewards and policy entropy, encouraging the agent to exhibit greater randomness in action selection. By combining offline policies with maximum entropy reinforcement learning, SAC improves sampling efficiency and stabilizes convergence. The maximum entropy policy seeks to maximize the expected return and entropy simultaneously.
+
+Fig. 2 illustrates the SAC structure, which includes a policy function (indicated by $\pi _ { \phi } ( a _ { t } | s _ { t } ) )$ , two Q-functions (indicated by $Q _ { \beta _ { 1 } } ( s _ { t } , a _ { t } )$ and $Q _ { \beta _ { 2 } } ( s _ { t } , a _ { t } ) )$ , two target networks (indicated by $Q _ { \bar { \beta } _ { 1 } } ( s _ { t } , a _ { t } )$ and $Q _ { \bar { \beta } _ { 2 } } ( s _ { t } , a _ { t } ) )$ , and an experience replay pool, where $s _ { t }$ and $a _ { t }$ denote environment state and action, respectively. Nevertheless, SAC is a single-agent DRL algorithm that does not account for inter-agent interference. While multiple agents update their policies simultaneously, it can lead to an unstable environment and training process. Therefore, we invoke MASAC to address the inherent nonstationarity of multi-agent environments and make decisions on terminal power control and UAV trajectory planning under the interference of resource competition among terminals.
+
+2) Policy Function: The policy function $\pi _ { \phi }$ , acting as the “actor”, executes actions. Besides, the policy gathers state information from the network at each time slot.
+
+State: The terminal’s observations include the terminal’s position, queue backlog, historical transmission power, and the position of the associated UAV. Thus, the state space is denoted as
+
+$$
+s _ {j} (t) = \left\{\mathbf {q} _ {k} (t), \mathbf {w} _ {j} (t), Q _ {j} (t), p _ {j, k} (t - 1): \forall k \right\}. \tag {38}
+$$
+
+Additionally, the UAV’s observations include the positions of all devices and UAVs, queue backlogs, and historical decisions, represented as
+
+$$
+\begin{array}{l} s _ {J + k} (t) = \left\{\left\{\mathbf {q} _ {k} (t): \forall k \in K \right\}, \left\{\mathbf {w} _ {j} (t): \forall j \in J \right\}, \right. \\ \left. \theta_ {k} (t - 1), v _ {k} (t - 1), \{H _ {j, k} (t): \forall k \in K \} \right\}. \tag {39} \\ \end{array}
+$$
+
+Action: The policy function takes actions based on the state to adjust the UAV’s flight direction angle and the transmission
+
+power of each terminal. Specifically, for terminal, the action space is represented as
+
+$$
+a _ {j} (t) = \left\{p _ {j, k} (t) \right\}. \tag {40}
+$$
+
+Meanwhile, the action space of UAV is expressed as3
+
+$$
+a _ {J + k} (t) = \left\{\theta_ {k} (t), v _ {k} (t) \right\}. \tag {41}
+$$
+
+The policy function is executed using a fully connected deep neural network (DNN), with parameters denoted as $\phi$ . During DNN training, the output layer produces two vectors of the same dimension, which serve as the mean and covariance for Gaussian random variables generation. The Gaussian random variables are sampled, and their values are constrained through an activation function, resulting in the policy function producing action $a ( t )$ .
+
+However, the actions determined by the policy function may not fulfill all the constraints of SP2, hence we design several tricks below. For the terminal power control, the activation function of the output layer is a sigmoid function, and the output values are constrained to the desired range through a linear transformation. Specifically, denote the Gaussian random variable generated by the policy function as $z$ , which is transformed into actual action $P _ { o u t p u t }$ via
+
+$$
+\begin{array}{l} P _ {\text {o u t p u t}} = P _ {\min } + \left(P _ {\max } - P _ {\min }\right) \cdot \sigma (z) \\ = P _ {\max } \cdot \sigma (z). \tag {42} \\ \end{array}
+$$
+
+where $\sigma ( . )$ is the sigmoid activation function. Likewise, we use the sigmoid and tanh function to output the UAV’s speed and direction angle, respectively, followed by scaling to the feasible range. In this way, the policy function can generate actions that comply with constraints related to terminal power control and UAV trajectory planning.
+
+Reward: Besides, we further guarantee safety distance constraint $C _ { 5 }$ and service area constraints $C _ { 6 }$ by adding penalties for violations. Define binary factors $\xi _ { k } ^ { s } ( t )$ and $\xi _ { k } ^ { c } ( t )$ to indicate whether UAV $k$ flies close to another UAV and out of the service area, respectively. That is, $\xi _ { k } ^ { s } ( t ) = 1$ indicates UAV $k$ violates the safety constraint, and $\xi _ { k } ^ { c } ( t ) = 1$ indicates the UAV flies out of the service area, otherwise $\xi _ { k } ^ { s } ( t ) , \xi _ { k } ^ { c } ( t ) = 0$ . Subsequently, SAC outputs the adjusted action $a ( t )$ and receives a reward $r ( t )$ . We consider a collaborative multi-agent architecture where all agents aim to maximize a common reward. The reward design should primarily focus on minimizing the objective function of SP2. As a result, the reward can be defined as
+
+$$
+r (t) = \sum_ {j = 1} ^ {J} \varphi_ {j} (t) - \sum_ {k = 1} ^ {K} \left[ \xi_ {k} ^ {s} (t) r _ {t} ^ {s} + \xi_ {k} ^ {c} (t) r _ {t} ^ {c} \right], \tag {43}
+$$
+
+where $\boldsymbol { r } _ { t } ^ { s }$ and $\boldsymbol { r } _ { t } ^ { c }$ denote the penalties for breaching the constraints $C _ { 5 }$ and $C _ { 6 }$ , respectively.
+
+3) Experience Replay Pool: Upon receiving $r ( t )$ and the subsequent time slot’s state $s ( t + 1 )$ , SAC stores the transition tuple $( s ( t ) , a ( t ) , r ( t ) , s ( t + 1 ) )$ in the experience replay memory as a training experience. When the memory reaches
+
+3If we consider 3D trajectory optimization, an additional dimension corresponded to UAV vertical direction angle should be added in (41).
+
+capacity, newly generated transitions replace the oldest transitions. Besides, SAC periodically draws a random batch of transitions from the memory and applies gradient descent to update the neural networks of the policy function and Qfunctions.
+
+4) Q-Functions: The ‘critic’ uses two Q-functions, $Q _ { \beta _ { 1 } }$ and $Q _ { \beta _ { 2 } }$ during gradient descent, aiming at reducing the positive bias in policy improvement. $Q _ { \beta _ { 1 } }$ and $Q _ { \beta _ { 2 } }$ are implemented by two DNNs with parameters $\beta _ { 1 }$ and $\beta _ { 2 }$ , respectively. Both produce Q-values for state-action pairs, with SAC choosing the smaller of the two Q-values.   
+5) Target Networks: The DNNs for every Q-function are updated via gradient descent as well, with two target networks, $Q _ { \beta _ { 1 } }$ and $Q _ { \beta _ { 2 } }$ , used to lessen the correlation between transitions and stabilize training. As backups for the Q-functions, the two target networks initially have the same structure and parameters as the Q-functions. Then, they adjust their parameters based on the exponential moving averages of $Q _ { \beta _ { 1 } }$ and $Q _ { \beta _ { 2 } }$ , along with a smoothing constant $\tau$ .   
+6) Maximum Entropy Reinforcement Learning: The objective of SAC is to maximize both the expected cumulative reward as well as the anticipated entropy of the policy. Thus, the maximum entropy objective is defined as
+
+$$
+J (\pi) = \sum_ {t = 1} ^ {T} \mathbb {E} _ {(s (t), a (t)) \sim \rho_ {\pi}} [ r (t) - \alpha \log (\pi (. | s (t))) ]. \tag {44}
+$$
+
+where $\alpha$ is a smoothing coefficient that adjusts the balance between the system’s reward and the exploration of unknown actions.
+
+SAC carries out gradient descent on the neural networks for both the Q-function and the policy function at fixed intervals. The parameters $\beta _ { i } , i ~ = ~ 1 , 2$ of the Q-function are refined through minimizing the soft Bellman residual
+
+$$
+\begin{array}{l} J _ {Q} (\beta_ {i}) = \mathbb {E} _ {(s (t), a (t)) \sim D} \left[ \frac {1}{2} \left(Q _ {\beta_ {i}} (s (t), a (t)) - (r (t) \right. \right. \\ + \gamma \min  _ {z = 1, 2} \left[ Q _ {\bar {\beta} _ {z}} (s (t + 1), a (t + 1)) \right] \\ \left. \left. - \alpha \log \left(\pi_ {\phi} (a (t + 1) | s (t + 1))\right)\right) ^ {2}\right) \Bigg ]. \tag {45} \\ \end{array}
+$$
+
+where $D$ represents the distribution of states and actions that are sampled.
+
+The policy function parameter $\phi$ is updated in the following way
+
+$$
+\begin{array}{l} J _ {\pi} (\phi) = \mathbb {E} _ {s (t) \sim D} [ \alpha \log \pi_ {\phi} (f _ {\phi} (\varepsilon (t); s (t)) | s (t)) \\ \left. - \min  _ {z = 1, 2} Q _ {\beta_ {z}} (s (t), f _ {\phi} (\varepsilon (t); s (t))) \right]. \tag {46} \\ \end{array}
+$$
+
+Here, the reparameterization trick addresses the policy gradient problem by expressing the policy as $a ( t ) = f _ { \phi } ( \varepsilon ( t ) ; s ( t ) )$ , where $\varepsilon ( t )$ denotes the independent noise vector.
+
+7) Implementation of MASAC: As shown in Algorithm 1, every agent (UAV and terminal) collects state information $s ( t )$ and performs actions $a ( t )$ based on observations in each time slot. After executing the action $a ( t )$ , a reward $r ( t )$ is received and the transition $( s ( t ) , a ( t ) , r ( t ) , s ( t + 1 ) )$ $s ( t + 1 ) )$ is stored in the experience replay buffer, while the neural network parameters
+
+Algorithm 1 MASAC-Based Algorithm for UAV Trajectory Planning and Terminal Power Control (AGIN-MASAC)
+
+1: Input: UAV and terminal actor and critic networks, task queue-related information $\{ Q _ { j } ( t ) , H _ { j , k } ( t ) , V _ { j } ^ { Q } ( t ) , V _ { j , k } ^ { \hat { H } } ( t ) , \tilde { e } _ { j } ( t ) , \tilde { W } _ { j , k } ( t ) \}$ .   
+2: Output: Optimal terminal power and UAV flight direction.   
+3: Initialize: Network parameters for policy function and Qfunctions: $\phi , \beta _ { 1 } , \beta _ { 2 }$ , parameters of target networks: $\bar { \beta } _ { 1 } \gets$ $\beta _ { 1 } , \bar { \beta } _ { 2 }  \beta _ { 2 }$ .   
+4: for each episode do
+
+5: for $t \in \{ 1 , \ldots , t , \ldots , T \}$ do   
+6: for $n = 1 , 2 , \dotsc , J + K$ do   
+7: Obtain the state observation space using (38) and (39), compute the probability distribution, then select an action from $a ( t ) \sim \pi _ { \phi } ( a ( t ) | s ( t ) )$ .
+
+8: end for   
+9: Calculate every agent’s reward $r ( t )$ .   
+10: Obtain optimal $e _ { n } ^ { * } ( t )$ for each terminal $n \in J$ by solving SP1.   
+11: Allocate UAV resources using Algorithm 2.   
+12: Update queue $Q _ { j } ( t ) , H _ { j , k } ( \bar { t } ) , V _ { j } ^ { \tilde { Q } } ( t ) , V _ { j , k } ^ { H } ( t )$ using (9), (10), (24), and (25), and transition to state $s ( t + 1 )$ .   
+13: Store the experience sample $( s ( t ) , a ( t ) , r ( t ) , s ( t { + } 1 ) )$ in the experience cache as backup data.   
+14: Randomly sample experiences from the experience replay pool.   
+15: for $n = 1 , 2 , \dotsc , J + K$ do   
+16: Update parameters of Q-function using (44):   
+17: $\beta _ { i } \gets \beta _ { i } - \lambda \nabla _ { \beta _ { i } } J _ { Q } ( \beta _ { i } )$ , for $i \in \{ 1 , 2 \}$   
+18: Update parameters of policy-function using (45):   
+19: $\phi  \phi - \lambda \nabla _ { \phi } J _ { \pi } ( \phi )$ .   
+20: Update target networks using:   
+21: $\bar { \beta } _ { i }  \tau \beta _ { i } + ( 1 - \tau ) \bar { \beta } _ { i }$ , for $i \in \{ 1 , 2 \}$ , where $\tau$ is the learning rate.   
+22: end for   
+23: end for   
+24: end for
+
+$\beta , \phi , \bar { \beta } _ { i }$ are updated. Additionally, the Q-function, policy function, and target network parameters of every agent are updated through tracking the learned networks. Moreover, the queue backlog updated continuously throughout the iterations. Once the training phase is complete, the DNN needs only forward propagation, with trained agents using minimal computational resources for decision-making. Additionally, Algorithm 1 accounts for queue awareness, enabling terminals and UAVs to adjust power and flight trajectories dynamically according to the current task queue status.
+
+# C. UAV Resource Allocation
+
+Since SP3 remains an NP-hard problem, it can not be addressed using traditional convex optimization theory. For such problems, heuristic search algorithms can provide nearoptimal solutions. The DOA draws inspiration from the social behavior of Australian dingoes, specifically their hunting
+
+strategies, which include group attacks, harassment, and scavenging. The algorithm also incorporates a survival rate rule for optimizing individuals and is characterized by its strong optimization capabilities and fast convergence [26]. Thus, we apply the DOA to tackle the problem while treating the objective function of SP3 as the fitness function for the algorithm.
+
+1) Initial Population Size Generation:
+
+$$
+\vec {x} _ {i} (m) = l b _ {i} (m) + r a n d _ {i} \left[ u b _ {i} (m) - l b _ {i} (m) \right], \tag {47}
+$$
+
+where $m$ represents the iteration count. ${ \vec { x } } _ { i } \left( m \right)$ denotes the current optimizing individual. $l b _ { i }$ and $u b _ { i }$ represent the lower and upper bounds of $\vec { X _ { i } }$ , respectively. $r a n d _ { i }$ is a random number generated between [0,1].
+
+2) Three Hunting Strategies: The dingo exhibits three primary hunting strategies in the wild, each adapted to specific types of prey and environmental conditions. These strategies reflect the high level of cooperation and intelligence the dingoes display in group hunting.
+
+Group attack strategy: When a pack of dingoes hunts large prey, such as kangaroos, they work together to locate the prey and surround it. It is represented as follows
+
+$$
+\vec {x} _ {i} (m + 1) = \beta_ {1} \sum_ {k = 1} ^ {n _ {a}} \left[ \frac {\left(\vec {\varphi} _ {k} (m) - \vec {x} _ {i} (m)\right)}{n _ {a}} - \vec {x} _ {*} (m) \right], \tag {48}
+$$
+
+where $n _ { a }$ is a randomly generated integer within the range $[ 2 , \frac { S } { 2 } ]$ in descending order. S represents the size set of the optimizing individuals. $\varphi \in X$ and $X$ indicates a randomly generated optimizing individual. $\vec { x } _ { * } ( m )$ represents the best solution discovered in the previous iteration, and $\beta _ { 1 }$ is a random number uniformly generated within [-2, 2] that represents the scaling factor, which can alter the dingo’s trajectory.
+
+Harassment strategy: When dingoes hunt small animals, such as rabbits, the pack continuously closes in and chases the prey until it is captured. The behavior of the dingo pack in this scenario can be represented as follows
+
+$$
+\vec {x} _ {i} (m + 1) = \vec {x} _ {*} (m) + \beta_ {1} e ^ {\beta_ {2}} \left[ \vec {x} _ {r _ {1}} (m) - \vec {x} _ {i} (m) \right], \tag {49}
+$$
+
+where $\beta _ { 2 }$ is a random number generated between [−1,1]. $r _ { 1 }$ is a random number within the interval from 1 to the maximum pack size of dingoes. $\vec { x } _ { r _ { 1 } } ( m )$ is the randomly selected dingo $r _ { 1 }$ in the pack. Besides, $i \neq r _ { 1 }$ .
+
+Scavenging strategy: The scavenging strategy is defined as the behavior of dingoes finding and consuming carrion while wandering randomly in their habitat. This strategy is represented as follows
+
+$$
+\vec {x} _ {i} (m + 1) = \frac {1}{2} e ^ {\beta_ {2}} \left[ \vec {x} _ {r _ {1}} (m) - (- 1) ^ {\sigma} \vec {x} _ {i} (m) \right], \tag {50}
+$$
+
+where $\sigma$ is a randomly generated binary number, and satisfied $\sigma \in \{ 0 , 1 \}$ .
+
+3) Optimization Strategy Evaluation: The use of the group attack strategy, harassment strategy, and scavenging strategy is implemented by comparing two randomly generated probability values ( $P _ { 1 }$ and $P _ { 2 }$ ) with two predefined probability values
+
+$P$ and $Q$ ). The method for determining which strategy to use is as follows
+
+$$
+\left\{ \begin{array}{l} \text {g r o u p a t t a c k s t r a t e g y ,} \quad P _ {1} \geq P \quad \text {a n d} \quad P _ {2} <   Q, \\ \text {h a r a s s m e n t s t r a t e g y ,} \quad P _ {1} <   P, \\ \text {s c a v e n g i n g s t r a t e g y ,} \quad P _ {1} \geq P \quad \text {a n d} \quad P _ {2} \geq Q. \end{array} \right. \tag {51}
+$$
+
+where $P$ and $Q$ are the probability values for the dingo pack to execute the corresponding strategies, set to fixed values of 0.5 and 0.7, respectively.
+
+4) Survival Strategy: The survival rate of dingoes is calculated using the following formula
+
+$$
+c (i) = \frac {F _ {\operatorname* {m a x}} - F (i)}{F _ {\operatorname* {m a x}} - F _ {\operatorname* {m i n}}}, \tag {52}
+$$
+
+where $c ( i )$ denotes the survival rate of dingo i within the range [0,1]. $F _ { \mathrm { m a x } }$ and $F _ { \mathrm { m i n } }$ indicate the maximum and minimum values of the fitness function, with corresponding survival rates of 0 and 1, respectively. $F ( i )$ denotes the current fitness function value of the dingo pack $i$ , which is set to the objective value of SP3 in this algorithm.
+
+5) Dingo Individual Replacement:
+
+$$
+\vec {x} _ {i} (m) = \vec {x} _ {*} (m) + \frac {\vec {x} _ {r _ {1}} (m) - (- 1) ^ {- \sigma} \vec {x} _ {r _ {2}} (m)}{2}, \tag {53}
+$$
+
+where $\vec { x } _ { r _ { 1 } } ( m )$ and $\vec { x } _ { r _ { 2 } } ( m )$ are individuals randomly selected from the dingo population $\vec { x } _ { i } ( m )$ . $r _ { 1 }$ and $r _ { 2 }$ are random numbers generated within the interval from 1 to the maximum dingo population size, with $r _ { 1 } \neq r _ { 2 }$ .
+
+The specific algorithm is shown in Algorithm 2. Firstly, initialize the dingo population and evaluate the fitness for each individual. In each time slot, update the positions of the dingoes through multiple iterations. If the random numbers meet certain conditions, different strategies (such as group attack, harassment, or scavenging) are used to update positions, and the survival rate of the dingoes is calculated. Individuals with low survival rates are replaced. Through these steps, the global optimal individual positions are ultimately found, achieving optimization of computational resources.
+
+# D. Complexity Analysis
+
+SP1 is a convex subproblem, optimized through $I _ { 1 }$ iterations with a complexity of $O ( I _ { 1 } K )$ . For the MASAC algorithm, its major complexity stems from the offline training, and the online implementation with well-trained actor networks consumes negligible time. Define $L$ and $I$ as the number of layers in the actor network and the critic network, respectively. Let $L _ { l }$ and $I _ { i }$ represent the number of neurons in the $l$ layer and the $i$ layer, respectively. Then, the training complexity is given by $\begin{array} { r } { \dot { O _ { \mathrm { \ell } } } \dot { \left( e p _ { \mathrm { m a x } } T ( J + K ) \right. } \left( \sum _ { l = 2 } ^ { L - 1 } J _ { l - 1 } \left( \dot { L _ { l } } + \dot { L _ { l } } L _ { l + 1 } \right) + \right. } \end{array}$ $\begin{array} { r } { \sum _ { i = 2 } ^ { I - 1 } I _ { i - 1 } \left( I _ { i } + I _ { i } I _ { i + 1 } \right) \Big ) } \end{array}$ , where $e p _ { \mathrm { m a x } }$ is the number of episodes, and $T$ is the total number of time slots. Such complexity increases linearly with the number of terminals and UAVs. For CRO, the total computational complexity across all UAVs is $O ( I _ { D O A } N _ { 0 } J K )$ , where $N _ { 0 }$ is the number of dingoes. Compared to PSO, which has a complexity of $O ( I _ { P S O } N _ { P S O } J K )$ , CRO would introduce additional computational overhead due to its dynamic survival rate
+
+Algorithm 2 DOA-Based Computing Resource Optimization Algorithm (CRO)   
+1: Input: Dingo population size.  
+2: Output: Global optimal individual position.  
+3: Initialize: Iterations $I_{DOA}$ , time $T$ , and other parameters.  
+4: Initialize the dingo population and calculate the fitness of individuals.  
+5: Set parameters: population size, $P$ , $Q$ .  
+6: for $t = 1$ to $T$ do  
+7: for Iteration = 1 to Iterations do  
+8: for $k = 1, 2, \ldots, K$ do  
+9: if random number $P_1 < P$ then  
+10: if random number $P_2 < Q$ then  
+11: Update the positions of dingoes using the group attack strategy (48).  
+12: else  
+13: Update the positions of dingoes using the harassment strategy (49).  
+14: end if  
+15: else  
+16: Update the positions of dingoes using the scavenging strategy (50).  
+17: end if  
+18: Calculate the survival rate of the dingo individuals using (52).  
+19: Perform population replacement for individuals with low survival rates using (53).  
+20: if $x_{new} < x_*$ then  
+21: $x_* = x_{new}$ .  
+22: end if  
+23: Iteration = Iteration + 1.  
+24: end for  
+25: end for  
+26: end for
+
+mechanism and behavioral strategies like group attacks and harassment. However, this added complexity enables CRO to achieve better global exploration and local exploitation, particularly in high-dimensional and dynamic optimization scenarios. As a result, the total computational complexity is $\begin{array} { r } { O \left( I _ { 1 } K + e p _ { \operatorname* { m a x } } T ( J + K ) \left( \sum _ { l = 2 } ^ { L - 1 } \dot { ( L _ { l - 1 } } L _ { l } + L _ { l } L _ { l + 1 } ) + \dot { \bar { f } _ { l } } \right) \right. } \end{array}$ $\begin{array} { r } { \sum _ { i = 2 } ^ { I - \mathrm { i } } I _ { i - 1 } ( I _ { i } + I _ { i } I _ { i + 1 } ) ) + I _ { D O A } J N _ { 0 } K \Big ) } \end{array}$ .
+
+# VI. SIMULATION RESULTS
+
+This section evaluates the proposed method through simulations. Consider a $1 0 0 0 \mathrm { ~ m ~ } \times 1 0 0 0 \mathrm { ~ m ~ }$ area with 3 UAVs and 45 devices distributed within it. The UAVs fly at a height of $H = 1 0 0 \mathrm { ~ m ~ }$ and a speed of $V = 2 0 ~ \mathrm { m / s }$ . Furthermore, we configure the transaction size as 2 KB and the block size as $^ { 2 \ \mathrm { ~ M B ~ } }$ , respectively. The other parameters are detailed in Table III[1], [5], [16].
+
+We evaluate our algorithm against the following benchmark methods:
+
+1) Trajectory planning and Resource allocation MASAC without trajectory planning (NT-MASAC) [27]: Resource allocation for both the terminals and UAVs has been
+
+TABLE III SIMULATION PARAMETERS   
+
+<table><tr><td>Parameter</td><td>Value</td></tr><tr><td>Total service time T</td><td>200 s</td></tr><tr><td>Length of time slot τ</td><td>0.5 s</td></tr><tr><td>Number of UAVs</td><td>3</td></tr><tr><td>Altitude of UAV</td><td>100 m</td></tr><tr><td>Safe distance between two UAVs</td><td>5 m</td></tr><tr><td>Additive loss ηj,k, LoS, ηj,kNLoS</td><td>0.1, 2.1</td></tr><tr><td>Carrier frequency fc</td><td>0.1 GHz</td></tr><tr><td>Environment parameters ρ1, ρ2</td><td>4.88, 0.43</td></tr><tr><td>CPU frequency of each UAV</td><td>10 GHz</td></tr><tr><td>Number of terminals</td><td>45</td></tr><tr><td>Maximum transmission power of terminals</td><td>23 dBm</td></tr><tr><td>Bandwidth</td><td>1 MHz</td></tr><tr><td>Queuing delay bound δj,max, Q, δHj,k,max</td><td>100 ms, 50 ms</td></tr><tr><td>Duration of a time slot T</td><td>0.5 s</td></tr><tr><td>Noise power</td><td>-144 dBm/Hz</td></tr><tr><td>Reference channel gain h0</td><td>-50 dB</td></tr><tr><td>Processing density for block in each slot, Lk(t)</td><td>737 cycles/bit</td></tr><tr><td>Weight parameter λ</td><td>1011</td></tr></table>
+
+![](images/4f8378b53a1e77ade2ae3fdb1a4699f322c70176f58b5b8a26566d1b07256487.jpg)  
+Fig. 3. Sum accumulative reward over episode.
+
+optimized. However, the UAV’s flight trajectory is assumed to follow a series of concentric circles for simplicity.
+
+2) Trajectory planning and Resource allocation MASAC without power optimization (NP-MASAC) [28]: We leverage MASAC to train the trajectory planning of UAVs, while omitting the terminal power control.   
+3) MADDPG [4]: Terminal data sensing rate and UAV resource allocation are optimized using the proposed method. Meanwhile, terminal transmission power and UAV trajectories are addressed using MADDPG.   
+4) PSO Algorithm (PSO) [29]: Data sensing rate, transmission power, and UAV trajectories are optimized using the proposed method, while UAV resource allocation is addressed using particle swarm optimization.
+
+Fig. 3 illustrates the sum accumulative reward throughout the training episode. The figure indicates that our algorithm performs better and converges faster. This is because MASAC encourages exploration by maximizing policy entropy, enhancing policy robustness and adaptability, and thus outperforms MADDPG and other reduction strategy methods in complex multi-agent environments. Additionally, the curve exhibits higher volatility at the start of training phase, which is attributed to terminals learning power control to adapt to dynamic environments such as task arrivals, noise interference, and UAV movements, while UAV explores flight trajectory for serving multiple terminals as well as avoids violating boundary and safety distance constraints. Once all agents learn the appropriate actions, the proposed method converges, as
+
+![](images/7e85a4e813a7ace5f3233e004e4acc75d56dc13b0780396098447962c914315c.jpg)  
+Fig. 4. Top view of UAV trajectories.
+
+![](images/2f74d00eb16988dfff036cb726e19ef48d4fe6e3d1a19d6bb44f24b87cf15d87.jpg)  
+(a) Queuing delay of $Q _ { j } ( t )$
+
+![](images/276b68df93268447cec0fc8d8252a8a2030721db4b50764c09cebeb44a15188d.jpg)  
+(b) Queuing delay of $H _ { j , k } ( t )$   
+Fig. 5. Average queuing delay over time.
+
+observed when the episode approaches 100. However, due to the dynamic changes in the network environment, the cumulative reward may fluctuate around its convergent value.
+
+Fig. 4 depicts the UAV trajectories in a scenario with 3 UAVs and 45 devices. In practice, for IoT data collection or sensing, terminals are generally deployed near specific targets, so we distribute the terminals across several hotspot areas. As shown in the figure, each UAV can move from its initial position to the associated terminals and then hover near the target area. This is because the UAVs adjust their trajectories based on the dynamic task offloading demands of the terminals they serve, ensuring effective computation offloading services and significantly reducing overall system overhead.
+
+Fig. 5 (a)-(b) presents the average queuing delays of $Q _ { j } ( t )$ and $H _ { j , k } ( t )$ over time, where each point represents a moving window average over 20 time slots. It can be observed that all methods provide relatively stable data queues. However, the proposed method ensures lower queue delays and better stability. This is because the proposed method controls queue data admission and computation more effectively through the joint optimization of data sensing rates and computational resources, maintaining the stability of the queues. According to the numerical results, compared to NT-MASAC, NP-MASAC,
+
+![](images/05e34eefa93ac83603afdd0ba2a8c5afcce10e3d89d121439c69e471fb2492ca.jpg)
+
+![](images/d311e72daf0e0c787a660583f3dfcab182a7088e44d964d70859baeb51be3180.jpg)  
+Fig. 6. Sum throughput of terminal over time.   
+Fig. 7. Average terminal energy consumption.
+
+MADDPG, and PSO, the proposed method can reduce queue delay by $3 0 . 7 7 \%$ , $3 5 . 7 1 \%$ , $3 0 . 7 3 \%$ , and $2 9 . 4 7 \%$ , respectively.
+
+Fig. 6 compares the system throughput of our method with that of the benchmark algorithms, where all algorithms except NP-MASAC perform power control. The numerical results indicate that our method consistently maintains a high and stable level of throughput. It can also be observed from the figure that power control enables better utilization of channel capacity for task offloading. Furthermore, different optimization dimensions and methods result in varying UAV trajectories, leading to different system throughputs across the algorithms. Additionally, due to the fixed circular UAV trajectory, the throughput of NT-MASAC exhibits periodic fluctuations.
+
+Fig. 7 shows average energy consumption of terminals with the maximum perceived data volume of $S _ { \mathrm { m a x } } ~ = ~ 2 \times 1 0 ^ { 5 }$ bit. The results indicate that the proposed approach delivers a lower average system energy consumption than the four benchmark methods. On one hand, NP-MASAC does not perform power optimization, resulting in the terminals always offloading tasks at maximum transmission power, resulting in increased energy consumption. On the other hand, although other methods include power control, different optimization dimensions result in varying resource allocations and UAV trajectories, leading to differences in average energy consumption among the terminals. Additionally, NT-MASAC exhibits significant fluctuations in average energy consumption due to its periodic changes in throughput.
+
+Fig. 8 depicts how the maximum available computational resources of the UAVs affect the total queuing delay and block creation delay. As the computational capacity $f _ { k , \mathrm { m a x } }$ rises from 10 GHz to $3 0 \mathrm { G H z }$ , the total queuing delay initially decreases before stabilizing. While the computational capacity rises from 10 GHz to $2 5 ~ \mathrm { \ G H z }$ , the total queuing delay and block creation delay decrease by $5 0 . 4 7 \%$ and $4 6 . 7 5 \%$ , respectively. The figure also reveals that, further increases in
+
+![](images/35ee3aa9c46d4c6e472f756ec42770e2b90899837ef21b16a8d80fcbb974266e.jpg)
+
+![](images/9dd5a1f1911cb35352943ee02a58255f0d8f870a4de21f26e965abad0b70fc49.jpg)  
+Fig. 8. The effects of UAV maximum computation capability on delay and security performance.   
+Fig. 9. Average data sensing rate versus the maximum task bits of terminal.
+
+computational capacity do not result in significant reductions in delay when $f _ { k , \mathrm { m a x } }$ exceeds $2 5 \ \mathrm { G H z }$ . This is because, with sufficient computational resources, transmission rate becomes the new limiting factor in decreasing the total queuing delay.
+
+In Fig. 9, we further evaluate the system’s average data sensing rate under different task data scales. The average sensing rates for all methods increase with the maximum sensing data amount $S _ { \mathrm { m a x } }$ and eventually stabilize. On one hand, due to limited data processing resources, the amount of admitted data gradually stabilizes to maintain queue stability and prevent excessive queue buildup. On the other hand, with limited transmission power at the terminals, the amount of tasks sent per time slot also stabilizes once the queue buildup reaches a certain level. The proposed algorithm consistently outperforms other methods because it jointly optimizes task sensing, transmission power, computing resources, and UAV trajectories, thus maximizing the average sensing rate while controlling transmission and computation queue buildup. Numerical results show that when the task data scale is $\mathrm { 8 \times 1 0 ^ { 5 } }$ bit, the proposed method improves the sensing rate by $2 7 . 5 9 \%$ , $3 6 . 2 7 \%$ , $1 5 . 4 1 \%$ , and $1 3 . 1 6 \%$ compared to the NT-MASAC, NP-MASAC, MADDPG, and PSO algorithms, respectively.
+
+Fig. 10 shows the system’s average data sensing rate as the number of terminal devices increases. It can be observed that the average sensing rate decreases with the increase in the number of terminals. The decline is due to the increased interference among terminal devices, which affects the overall system throughput. Additionally, As the computational resources at the edge nodes approach saturation, the computation speed slows down, further exacerbating task queue backlogs. However, the proposed method consistently achieves the highest average sensing rate. This is attributed to the joint optimization of task sensing, transmission power, UAV computational resources, and trajectory, which boosts resource efficiency and ensures scalability. In contrast, other algorithms,
+
+![](images/8de3212e0f308fdb17ec7905f4f85c3ba7f6f938c8de4638ea645cb13280203d.jpg)  
+Fig. 10. Average data sensing rate versus the numbers of terminals.
+
+lacking effective dynamic network adjustment mechanisms, struggle to address the dual challenges of queue backlogs and offloading efficiency in large-scale scenarios.
+
+# VII. CONCLUSION
+
+This paper proposes a UAV-enabled secure aerial computing network architecture which integrates MEC and blockchain technologies to support computation offloading for remote IoT terminals. Under this architecture, task data sensed by terminals is offloaded to UAVs for edge processing. We address the problem of maximizing the long-term average data sensing rate of terminals by jointly optimizing terminal data sensing, transmission power, UAV trajectory planning, along with UAV resource allocation while adhering to longterm queue delay and security constraints. Specifically, we design an AGIN-MASAC based on MADRL to collaboratively train terminal and UAV agents. Additionally, by utilizing convex optimization and the Dingo algorithm, we embed two subroutines within AGIN-MASAC to optimize data sensing rates and UAV resource allocation. Numerical results show that our method outperforms other benchmark methods in terms of long-term average data sensing rate, training convergence, and queue delay.
+
+# REFERENCES
+
+[1] P. Qin et al., “Optimal resource allocation for AGIN 6G: A learningbased three-sided matching approach,” IEEE Trans. Netw. Sci. Eng., vol. 11, no. 2, pp. 1553–1565, Apr. 2024.   
+[2] Y. Chen, K. Li, Y. Wu, J. Huang, and L. Zhao, “Energy efficient task offloading and resource allocation in air-ground integrated MEC systems: A distributed online approach,” IEEE Trans. Mobile Comput., vol. 23, no. 8, pp. 8129–8142, Aug. 2024.   
+[3] W. Zhang, G. Zhang, and S. Mao, “Deep-reinforcement-learning-based joint caching and resources allocation for cooperative MEC,” IEEE Internet Things J., vol. 11, no. 7, pp. 12203–12215, Apr. 2024.   
+[4] P. Qin, Y. Fu, Y. Xie, K. Wu, X. Zhang, and X. Zhao, “Multiagent learning-based optimal task offloading and UAV trajectory planning for AGIN-power IoT,” IEEE Trans. Commun., vol. 71, no. 7, pp. 4005–4017, Jul. 2023.   
+[5] D. Wang, Y. Jia, M. Dong, K. Ota, and L. Liang, “Blockchain-integrated UAV-assisted mobile edge computing: Trajectory planning and resource allocation,” IEEE Trans. Veh. Technol., vol. 73, no. 1, pp. 1263–1275, Jan. 2024.   
+[6] J. Wang, Z. Jiao, J. Chen, X. Hou, T. Yang, and D. Lan, “Blockchainaided secure access control for UAV computing networks,” IEEE Trans. Netw. Sci. Eng., vol. 11, no. 6, pp. 5267–5279, Dec. 2024.   
+[7] P. Qin, Y. Fu, J. Zhang, S. Geng, J. Liu, and X. Zhao, “DRL-based resource allocation and trajectory planning for NOMA-enabled multi-UAV collaborative caching 6G network,” IEEE Trans. Veh. Technol., vol. 73, no. 6, pp. 8750–8764, Jun. 2024.   
+[8] D. Wu, T. Liu, Z. Li, T. Tang, and R. Wang, “Delay-aware edgeterminal collaboration in green Internet of Vehicles: A multi-agent soft actor-critic approach,” IEEE Trans. Green Commun. Netw., vol. 7, no. 2, pp. 1090–1102, Jun. 2023.
+
+[9] H. Feng, J. Wang, Z. Fang, J. Chen, and D.-T. Do, “Evaluating AoIcentric HARQ protocols for UAV networks,” IEEE Trans. Commun., vol. 72, no. 1, pp. 288–301, Jan. 2024.   
+[10] Z. Yang, S. Bi, and Y. A. Zhang, “Online trajectory and resource optimization for stochastic UAV-enabled MEC systems,” IEEE Trans. Wireless Commun., vol. 21, no. 7, pp. 5629–5643, Jul. 2022.   
+[11] N. Lin, H. Tang, L. Zhao, S. Wan, A. Hawbani, and M. Guizani, “A PDDQNLP algorithm for energy efficient computation offloading in UAV-assisted MEC,” IEEE Trans. Wireless Commun., vol. 22, no. 12, pp. 8876–8890, Dec. 2023.   
+[12] P. Qin, Y. Fu, X. Zhao, K. Wu, J. Liu, and M. Wang, “Optimal task offloading and resource allocation for C-NOMA heterogeneous airground integrated power Internet of Things networks,” IEEE Trans. Wireless Commun., vol. 21, no. 11, pp. 9276–9292, Nov. 2022.   
+[13] X. Fan, H. Zhou, K. Sun, X. Chen, and N. Wang, “Channel assignment and power allocation utilizing NOMA in long-distance UAV wireless communication,” IEEE Trans. Veh. Technol., vol. 72, no. 10, pp. 12970–12982, Oct. 2023.   
+[14] X. Li, S. Bi, Z. Quan, and H. Wang, “Online cognitive data sensing and processing optimization in energy-harvesting edge computing systems,” IEEE Trans. Wireless Commun., vol. 21, no. 8, pp. 6611–6626, Aug. 2022.   
+[15] J. Shi, J. Du, Y. Shen, J. Wang, J. Yuan, and Z. Han, “DRL-based V2V computation offloading for blockchain-enabled vehicular networks,” IEEE Trans. Mobile Comput., vol. 22, no. 7, pp. 3882–3897, Jul. 2023.   
+[16] Q. Tang, Z. Fei, J. Zheng, B. Li, L. Guo, and J. Wang, “Secure aerial computing: Convergence of mobile edge computing and blockchain for UAV networks,” IEEE Trans. Veh. Technol., vol. 71, no. 11, pp. 12073–12087, Nov. 2022.   
+[17] X. Ye, M. Li, P. Si, R. Yang, Z. Wang, and Y. Zhang, “Collaborative and intelligent resource optimization for computing and caching in IoV with blockchain and MEC using A3C approach,” IEEE Trans. Veh. Technol., vol. 72, no. 2, pp. 1449–1463, Feb. 2023.   
+[18] A. M. Seid, J. Lu, H. N. Abishu, and T. A. Ayall, “Blockchainenabled task offloading with energy harvesting in multi-UAV-assisted IoT networks: A multi-agent DRL approach,” IEEE J. Sel. Areas Commun., vol. 40, no. 12, pp. 3517–3532, Dec. 2022.   
+[19] D. Wu et al., “UAV-assisted real-time video transmission for vehicles: A soft actor–critic DRL approach,” IEEE Internet Things J., vol. 11, no. 8, pp. 14710–14726, Apr. 2024.   
+[20] A. Gao, S. Zhang, Y. Hu, W. Liang, and S. X. Ng, “Game-combined multi-agent DRL for tasks offloading in wireless powered MEC networks,” IEEE Trans. Veh. Technol., vol. 72, no. 7, pp. 9131–9144, Jul. 2023.   
+[21] A. M. Seid, A. Erbad, H. N. Abishu, A. Albaseer, M. Abdallah, and M. Guizani, “Blockchain-empowered resource allocation in multi-UAVenabled 5G-RAN: A multi-agent deep reinforcement learning approach,” IEEE Trans. Cogn. Commun. Netw., vol. 9, no. 4, pp. 991–1011, Aug. 2023.   
+[22] H. Wang, H. Zhang, X. Liu, K. Long, and A. Nallanathan, “Joint UAV placement optimization, resource allocation, and computation offloading for THz band: A DRL approach,” IEEE Trans. Wireless Commun., vol. 22, no. 7, pp. 4890–4900, Jul. 2023.   
+[23] Z. Chang, H. Deng, L. You, G. Min, S. Garg, and G. Kaddoum, “Trajectory design and resource allocation for multi-UAV networks: Deep reinforcement learning approaches,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 5, pp. 2940–2951, Oct. 2023.   
+[24] P. Qin et al., “Joint resource allocation and UAV trajectory design for D2D-assisted energy-efficient air–ground integrated caching network,” IEEE Trans. Veh. Technol., vol. 73, no. 11, pp. 17558–17571, Nov. 2024.   
+[25] J. Wang, J. Wang, Z. Tong, Z. Jiao, M. Zhang, and C. Jiang, “ACBFT: Adaptive chained Byzantine fault-tolerant consensus protocol for UAV ad hoc networks,” IEEE Trans. Veh. Technol., early access, Mar. 25, 2025, doi: 10.1109/TVT.2025.3548281.   
+[26] J. Li et al., “Multidomain separation for human vital signs detection with FMCW radar in interference environment,” IEEE Trans. Microw. Theory Techn., vol. 72, no. 7, pp. 4278–4293, Jul. 2024.   
+[27] Y. Wang, H. Wu, R. H. Jhaveri, and Y. Djenouri, “DRL-based URLLC-constraint and energy-efficient task offloading for Internet of Health Things,” IEEE J. Biomed. Health Informat., vol. 28, no. 6, pp. 3305–3316, Jun. 2024.   
+[28] X. Li, Y. Qin, J. Huo, and W. Huangfu, “Computation offloading and trajectory planning of multi-UAV-enabled MEC: A knowledge-assisted multiagent reinforcement learning approach,” IEEE Trans. Veh. Technol., vol. 73, no. 5, pp. 7077–7088, May 2024.
+
+[29] L. Sun, L. Wan, and X. Wang, “Learning-based resource allocation strategy for industrial IoT in UAV-enabled MEC systems,” IEEE Trans. Ind. Informat., vol. 17, no. 7, pp. 5031–5040, Jul. 2021.
+
+![](images/19022d870653cc10fecdf378ce31d6ccfa8675310241c0569ce7b7d597591ac9.jpg)
+
+Peng Qin (Member, IEEE) received the B.S. and Ph.D. degrees in information and communication engineering from the Huazhong University of Science and Technology, Wuhan, China, in 2009 and 2014, respectively. From 2012 to 2013, he was a Visiting Scholar with the University of Victoria, Victoria, BC, Canada. He is currently an Associate Professor with the School of Electrical and Electronic Engineering, North China Electric Power University. His research interests include resource allocation in the Internet of Things, smart grid com-
+
+munications, space air ground integrated networks, and vehicular networks. He was a recipient of the International Communications Signal Processing and Systems Conference Best Paper Award and the International Conference on Artificial Intelligence in China Best Paper Award in 2019, 2020, 2021, and 2022, respectively.
+
+![](images/15695cf15d76d2679ed524df34cce4dd432ec7a2efbb3e51ddc88cf4198ad0a2.jpg)
+
+Min Fu received the B.S. degree from North China Electric Power University in 2022, where she is currently pursuing the M.Sc. degree with the School of Electrical and Electronic Engineering. Her research interests include space air ground integrated networks and wireless communication network resource optimization.
+
+![](images/047afd25032ec5d055bc46deeeb82ba111f0f56c0b7fa14ef72b1974ffb091e7.jpg)
+
+Yang Fu received the B.S. degree from North China Electric Power University in 2022, where he is currently pursuing the Ph.D. degree with the School of Electrical and Electronic Engineering. His research interests include resource allocation in smart grid communications, space air ground integrated networks, vehicular networks, and the Internet of Things.
+
+![](images/26ce440843656519a682d63d3be71c26d00a38b469aaaff54e841db9cc56f2d4.jpg)
+
+Jingjing Wang (Senior Member, IEEE) received the B.Sc. degree (Hons.) in electronic information engineering from Dalian University of Technology, Liaoning, China, in 2014, and the Ph.D. degree (Hons.) in information and communication engineering from Tsinghua University, Beijing, China, in 2019. From 2017 to 2018, he visited the Next Generation Wireless Group, University of Southampton, U.K., chaired by Prof. Lajos Hanzo. He is currently a Professor at the School of Cyber Science and Technology, Beihang University, Beijing, and also a
+
+Researcher at Hangzhou Innovation Institute, Beihang University, Hangzhou, China. He has published more than 100 IEEE journal/conference papers. His research interests include AI enhanced next-generation wireless networks, UAV networking, and swarm intelligence. He was a recipient of the Best Journal Paper Award of the IEEE ComSoc Technical Committee on Green Communications and Computing and the Best Paper Award of the IEEE ICC and the IEEE IWCMC. He is currently serving as an Editor for IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, IEEE INTERNET OF THINGS JOURNAL, and IEEE WIRELESS COMMUNICATIONS LETTER.
