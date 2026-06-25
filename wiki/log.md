@@ -1,5 +1,13 @@
 # Research Log
 
+## 2026-06-09 - Audit concept pages: batch 18 slice E
+
+- Audited these five concept pages only: [[binary-vs-partial-offloading]], [[binary-whale-optimization]], [[blockage-aware-channel-model]], [[blockchain-for-fl-aggregation]], and [[byzantine-fault-tolerant-consensus]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence and targeted raw parses where a source-specific claim needed grounding.
+- Content-page fixes: [[binary-whale-optimization]] now matches the parse-grounded [[jia-2025-dro-uav-hap-mec]] baseline list: exhaustive search, greedy offloading, and simulated annealing. [[binary-vs-partial-offloading]], [[blockage-aware-channel-model]], [[blockchain-for-fl-aggregation]], and [[byzantine-fault-tolerant-consensus]] were already grounded and consistent.
+- Validation results: `python tools/wiki/curation_status.py --dupes` reported 257 raw folders / 257 curated references / 0 genuinely new papers, with 1 referenced-name mismatch entry (`Untouched primary documents (PDFs, parsed markdown, images`) that did not indicate an uncurated paper. `python tools/wiki/process_refs.py`, `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py --type concept`, and `git diff --check` were run before commit.
+- LLM Wiki health endpoint was reachable with unauthenticated read access; the read-only graph API for `current` was reachable and reported 649 nodes and 6008 edges.
+- Routing to mec-wiki-synthesizer: no new coverage gap surfaced in this bounded concept-page audit.
+
 ## 2026-06-09 - Audit concept pages: batch 18 slice D
 
 - Audited these five concept pages only: [[b-spline-trajectory]], [[backscatter-communication]], [[bang-bang-control]], [[bargaining-game]], and [[beta-policy-drl]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence and targeted raw parses where a source-specific claim needed grounding.
