@@ -5,6 +5,7 @@ tags: [author, researcher, ieee-senior, cmop-evolutionary-lineage]
 related:
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[peng-2024-energy-time-uav-its]]"
+  - "[[peng-2026-demand-aware-multiuav-mec]]"
   - "[[huang-2023-mu-aec-task-energy]]"
   - "[[huang-2025-cmop-dispersed-computing]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
@@ -20,16 +21,16 @@ related:
   - "[[mou-2025-adm-dt-migration]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
 created: 2026-05-29
-updated: 2026-06-03
+updated: 2026-07-06
 ---
 
 # Yuan Wu
 
 IEEE Senior Member. Affiliated with the **State Key Laboratory of Internet of Things for Smart City** and the **Department of Computer and Information Science, University of Macau** (Macau SAR, China; email `yuanwu@um.edu.mo`).
 
-Co-authored 15 sources in this wiki — six in the **CMOP-evolutionary UAV-MEC** lineage, five maritime / multi-access offloading papers, three air-ground / UAV-LEO / end-edge-cloud game-theoretic and online offloading papers, and an adaptive digital-twin migration paper:
+Co-authored 16 sources in this wiki — seven in the **CMOP-evolutionary UAV-MEC** lineage, five maritime / multi-access offloading papers, three air-ground / UAV-LEO / end-edge-cloud game-theoretic and online offloading papers, and an adaptive digital-twin migration paper:
 
-- [[peng-2022-cmop-uav-path-planning]] (lineage seed), [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]].
+- [[peng-2022-cmop-uav-path-planning]] (lineage seed), [[peng-2024-energy-time-uav-its]], [[peng-2026-demand-aware-multiuav-mec]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]].
 - [[dai-2023-hybrid-marine-mmwl]] — hybrid offshore + aerial multi-access offloading for marine networks (MMWL); corresponding author.
 - [[dai-2023-hybrid-noma-fdma-marine]] — hybrid NOMA (underwater) + FDMA (aerial) multi-access offloading; energy minimization + secrecy provisioning; corresponding author.
 - [[dai-2024-multiuav-marine-welfare]] — multi-UAV multi-access marine MEC with double-auction OBS selection (system-welfare / energy); corresponding author.

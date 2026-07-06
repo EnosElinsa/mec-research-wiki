@@ -70,12 +70,15 @@
 - [[wang-2019-todetas-deployment-scheduling]] — Wang et al. 2019. Two-layer UAV deployment (**differential evolution**) + task scheduling (greedy); ToDeTaS.
 - [[miao-2022-gaglpp-drone-swarm-iiot]] — Miao et al. 2023. Drone-swarm path planning for Industrial-IoT MEC; ground-station global + onboard local planning (GAGLPP); priority/energy/distance scheduling (IEEE TII).
 
+> [[peng-2026-demand-aware-multiuav-mec]] is a multi-UAV fleet-allocation source filed under **CMOP / evolutionary UAV-MEC** as its primary methodological home.
+
 ### Pure optimization methods
 
 - [[wang-acve-constraint-violation-cmop]] — Wang et al. 2025. **ACVE** — adaptive constraint-violation-evaluation framework + DDCo dual-population coevolution (IEEE TEVC early access; DOI grounded by the source parse sidecar and by [[huang-2025-cmop-dispersed-computing]]).
 
 ### Compute offloading & DRL
 
+- [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Liu et al. 2026. UAV-assisted vehicular V2X with **delayed CSI feedback**; Lyapunov energy queue + diffusion-actor DDPG (**D3PG**) over V2V channel reuse, power control, and UAV altitude (IEEE TWC).
 
@@ -134,6 +137,7 @@
 ### SAGIN / satellite offloading
 
 - [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019. **First SAGIN computing-offloading** paper for remote IoT; UAV edge + satellite cloud; MDP + **actor-critic RL** offloading + heuristic VM allocation (IEEE JSAC).
+- [[zhou-2021-delay-sagin-task-scheduling]] — Zhou et al. 2021. Delay-oriented IoT task scheduling in SAGIN; UAV collects tasks and schedules local / BS / LEO execution via deep risk-sensitive RL with separate delay-cost and energy-risk Q-functions (IEEE TWC).
 - [[liu-2024-sagin-spherical-sg-connectivity]] — Liu et al. 2024. **Spherical stochastic geometry** uplink path connectivity analysis for SAGIN; GUs + AVs on spherical surfaces; three connectivity metrics; first such model (IEEE JSAC).
 - [[huang-2026-amappo-satellite-edge]] — Huang et al. 2026. Cost-aware dependent-task offloading in UAV-assisted satellite edge computing; direct IoTD-to-LEO in spacious regions, UAV relay in obstructive regions, MATS DAG sequencing + asynchronous GNN-augmented MAPPO (IEEE TMC).
 - [[gao-2024-sagin-perception-offloading]] — Gao et al. 2024. **Perception-aided** SAGIN offloading (mmWave radar + YOLOv7 → DRL state); Lyapunov + DDPG + DQN + SGHS.
@@ -182,6 +186,8 @@
 
 ### Generative-AI MEC
 
+- [[wang-2026-lifelong-semantic-content-reuse]] — Wang et al. 2026. UAV-assisted Metaverse semantic content reuse; semantic subject/object caching plus DC-ELLA lifelong policy transfer for changing semantic environments (IEEE TMC).
+- [[wang-2026-diffusion-semantic-uav-edge]] — Wang et al. 2026. UAV-assisted semantic edge computing; H-DDPG plus convex semantic-resource optimization, then diffusion-denoising DDPG for trajectory action generation (IEEE TWC).
 - [[zhang-2025-gsc-diffusion-semcom]] — Zhang et al. 2025. **Generative AI Semantic Communication (GSC)**: Swin Transformer encoder + **diffusion model** decoder for image transmission; +17.75% PSNR in AWGN vs DeepJSCC; MU-GSC multi-user extension (IEEE TCCN).
 - [[ye-2025-aigc-diffusion-contract]] — Ye et al. 2025. Edge AIGC services via **contract theory** + prompt engineering; generative diffusion model as the contract-item optimizer.
 - [[zhang-2024-gdmtd3-aerial-secure-cb]] — Zhang et al. 2024. UAV-swarm secure collaborative beamforming via **generative-diffusion-model-enhanced TD3** (GDMTD3).
@@ -317,6 +323,7 @@
 
 - [[peng-2022-cmop-uav-path-planning]] — Peng et al. 2022. **Lineage seed** — CMOP for UAV path planning + offloading; infeasibility-utilization CMOEA.
 - [[peng-2024-energy-time-uav-its]] — Peng et al. 2024. UAV-ITS energy + completion-time-difference; CMOEA/D-CDP + repair + service caching.
+- [[peng-2026-demand-aware-multiuav-mec]] — Demand-aware multi-area fleet allocation; joint deployment, association, bandwidth, and CPU allocation with constraint-guided solution reconstruction (IEEE TMC).
 - [[huang-2023-mu-aec-task-energy]] — Huang et al. 2023. Multi-UAV interdependent (DAG) tasks; makespan + energy balancing; CMOEA + local search.
 - [[huang-2025-cmop-dispersed-computing]] — Huang et al. 2025. Dispersed computing with task-redundancy reliability; dual-population CMOEA.
 - [[wu-2026-terrain-aware-uav-mec]] — Wu et al. 2026. Urban UAV-MEC with terrain-aware channel + B-spline trajectory; multi-tasking CMOEA.
@@ -437,6 +444,7 @@
 - [[video-transcoding-tradeoff]]
 - [[qoe-modeling-mec]]
 - [[service-caching-mec]]
+- [[semantic-content-reuse]]
 - [[network-slicing]]
 - [[traffic-aware-offloading]]
 - [[parallel-vs-serial-processing]]

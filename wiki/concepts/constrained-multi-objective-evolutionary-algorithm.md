@@ -9,8 +9,9 @@ related:
   - "[[multi-tasking-evolutionary-algorithm]]"
   - "[[local-search-evolutionary]]"
   - "[[peng-2022-cmop-uav-path-planning]]"
+  - "[[peng-2026-demand-aware-multiuav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-06
 ---
 
 # Constrained Multi-Objective Evolutionary Algorithm (CMOEA)
@@ -23,6 +24,7 @@ The wiki has an entire **lineage** of CMOEA variants built by the Peng/Huang gro
 
 - [[peng-2022-cmop-uav-path-planning]] — seed (path planning + offloading, infeasibility utilization).
 - [[peng-2024-energy-time-uav-its]] — UAV-ITS energy + completion-time difference.
+- [[peng-2026-demand-aware-multiuav-mec]] — demand-aware multi-area UAV-MEC fleet allocation with constraint-guided solution reconstruction.
 - [[huang-2023-mu-aec-task-energy]] — multi-UAV interdependent tasks (DAG awareness, [[local-search-evolutionary|local search]]).
 - [[huang-2025-cmop-dispersed-computing]] — dispersed computing reliability ([[dual-population-evolutionary-algorithm]]).
 - [[wu-2026-terrain-aware-uav-mec]] — terrain-aware urban MEC ([[multi-tasking-evolutionary-algorithm]]).

@@ -34,6 +34,7 @@ related:
   - "[[liu-2026-lyapunov-diffusion-uav-vehicular]]"
   - "[[shi-2026-aoi-active-ris-noma-agmec]]"
   - "[[chen-2026-cargo-uav-pickup-lae]]"
+  - "[[wang-2026-diffusion-semantic-uav-edge]]"
 created: 2026-05-29
 updated: 2026-07-06
 ---
@@ -42,7 +43,7 @@ updated: 2026-07-06
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
 
-The most frequently recurring author in the corpus, co-authoring 31 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, and surveys:
+The most frequently recurring author in the corpus, co-authoring 32 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -76,6 +77,7 @@ The most frequently recurring author in the corpus, co-authoring 31 sources span
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Lyapunov-guided diffusion actor DDPG for delayed-CSI UAV-assisted vehicular networks.
 - [[shi-2026-aoi-active-ris-noma-agmec]] - AoI-aware active-RIS and NOMA-assisted air-ground MEC via AADDPG.
 - [[chen-2026-cargo-uav-pickup-lae]] - cellular-connected cargo-UAV pickup with CACMO, combining D3QN trajectory learning, simulated annealing, and collision-aware refinement.
+- [[wang-2026-diffusion-semantic-uav-edge]] - UAV-assisted semantic edge computing with H-DDPG and diffusion-denoising DDPG trajectory control.
 
 ## Contributions to this wiki
 

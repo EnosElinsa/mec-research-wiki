@@ -7,10 +7,13 @@ related:
   - "[[anti-jamming-mec]]"
   - "[[over-the-air-computation]]"
   - "[[mobile-edge-computing]]"
+  - "[[semantic-content-reuse]]"
   - "[[sun-2024-mfris-semantic-antijamming]]"
   - "[[du-2024-yolo-semcom-digital-twin]]"
+  - "[[wang-2026-lifelong-semantic-content-reuse]]"
+  - "[[wang-2026-diffusion-semantic-uav-edge]]"
 created: 2026-05-31
-updated: 2026-06-02
+updated: 2026-07-06
 ---
 
 # Semantic Communication
@@ -25,3 +28,5 @@ Semantic transceivers bring **inherent robustness** and **data compression**, wh
 
 - [[sun-2024-mfris-semantic-antijamming]] pairs a semantic transceiver with a [[multi-functional-ris]] to maximize a **semantic computation rate** under jamming and imperfect CSI, subject to a **semantic-similarity requirement**. It positions itself against prior semantic-MEC work limited to single-antenna setups and prior RIS-MEC work using bit-level (non-semantic) transmission, motivating its multi-antenna MF-RIS-aided semantic MEC-IAGN under jamming.
 - [[du-2024-yolo-semcom-digital-twin]] applies semantic communication to [[digital-twin]] construction: a [[yolov7-object-detection|YOLOv7]] detector extracts only the semantically-relevant content (cropped objects + confidence + position) from UAV images, then allocates transmission power by per-object importance (a confidence rule and a diffusion-model-generated scheme), cutting transmitted data ~91% on its case study.
+- [[wang-2026-lifelong-semantic-content-reuse]] uses semantic request representations for [[semantic-content-reuse]] in UAV-assisted Metaverse rendering: cache hits, semantic reuse, and full computation are treated as distinct service modes.
+- [[wang-2026-diffusion-semantic-uav-edge]] formulates semantic extraction, transmission, and recovery as a UAV-assisted edge-computing optimization problem, with semantic processing rate as the objective.

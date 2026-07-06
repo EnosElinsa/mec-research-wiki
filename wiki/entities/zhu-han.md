@@ -11,15 +11,16 @@ related:
   - "[[zhang-2020-response-delay-uav-swarm]]"
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[tang-2021-cecls-hybrid-cloud-edge]]"
+  - "[[wang-2026-diffusion-semantic-uav-edge]]"
 created: 2026-05-29
-updated: 2026-06-03
+updated: 2026-07-06
 ---
 
 # Zhu Han
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 8 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, and the mobile-AIGC survey:
+Co-authored 9 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -29,6 +30,7 @@ Co-authored 8 sources in this wiki, spanning aerial MEC, satellite edge computin
 - [[zhang-2020-response-delay-uav-swarm]] — response-delay optimization for a MEC-enabled UAV swarm (stochastic geometry + queueing theory).
 - [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.
 - [[tang-2021-cecls-hybrid-cloud-edge]] — computation offloading in a hybrid cloud-and-edge LEO satellite network (CECLS); three-tier sum-energy minimization via binary-relaxation LP + distributed ADMM.
+- [[wang-2026-diffusion-semantic-uav-edge]] — diffusion-based trajectory and semantic resource optimization for UAV-assisted semantic edge computing.
 
 ## Contributions to this wiki
 

@@ -1,5 +1,19 @@
 # Research Log
 
+## [2026-07-06] Curated 5 semantic / SAGIN / demand-aware MEC sources
+
+Added five source pages and one concept page:
+
+- [[wang-2026-lifelong-semantic-content-reuse]] — Wang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3664868`. Semantic-aware content reuse for UAV-assisted Metaverse services; DC-ELLA combines lifelong multi-task learning with semantic / location-aware reuse decisions.
+- [[zhou-2021-delay-sagin-task-scheduling]] — Zhou et al. 2021, *IEEE TWC*, DOI `10.1109/TWC.2020.3029143`. Delay-oriented IoT task scheduling in space-air-ground integrated networks; DOTS uses risk-sensitive deep reinforcement learning over local, UAV, satellite, and cloud execution choices.
+- [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3629117`. Collaborative DNN inference in UAV-assisted MEC; DPDTS separates DNN partitioning, task-server matching, and TD3 UAV trajectory control.
+- [[peng-2026-demand-aware-multiuav-mec]] — Peng et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3697839`. Demand-aware multi-area multi-UAV MEC; cooperative segmented regional retrieval supplies Pareto solutions for energy-delay tradeoffs under dynamic area demand.
+- [[wang-2026-diffusion-semantic-uav-edge]] — Wang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3657387`. UAV-assisted semantic edge computing; H-DDPG and H-D3PG optimize semantic compression, offloading, and UAV trajectory under semantic-relevance constraints.
+
+New concept page: [[semantic-content-reuse]]. Updated concept backlinks for [[semantic-communication]], [[diffusion-model-as-optimizer]], [[collaborative-dl-inference]], [[dnn-model-partition]], [[constrained-multi-objective-evolutionary-algorithm]], and [[safe-reinforcement-learning]]. Updated recurring author entities where the parse supported the identity: [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[dusit-niyato]], [[zhu-han]], [[xuemin-shen]], and [[chao-dong]]. [[zexiong-wu]] remains an advisory roster omission for [[peng-2026-demand-aware-multiuav-mec]] because that parse gives the author name but no affiliation or biography to confirm same-person identity.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 265 curated raw references, and 80 genuinely new folders still uncurated after this pass. `python tools/wiki/corpus_counts.py` reported 277 sources, 277 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 38 advisory present-but-unlisted omissions; the new unresolved advisory omission is [[zexiong-wu]] for [[peng-2026-demand-aware-multiuav-mec]]. LLM Wiki health was OK; the previously used graph probes returned `{"ok":false,"error":"Not found"}` rather than node/edge counts.
+
 ## [2026-07-06] Curated 5 game / satellite / green-UAV sources
 
 Added five source pages and two concept pages:

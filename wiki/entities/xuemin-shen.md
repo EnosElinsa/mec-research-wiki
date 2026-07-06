@@ -15,6 +15,7 @@ related:
   - "[[dai-2024-graph-rm-survey-optimization]]"
   - "[[dai-2024-graph-rm-survey-learning]]"
   - "[[liu-2026-lyapunov-diffusion-uav-vehicular]]"
+  - "[[zhou-2021-delay-sagin-task-scheduling]]"
 created: 2026-05-31
 updated: 2026-07-06
 ---
@@ -23,7 +24,7 @@ updated: 2026-07-06
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Waterloo** (Waterloo, ON, Canada; email `sshen@uwaterloo.ca`) across his papers in this wiki.
 
-Co-authored 12 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, UAV-LEO and end-edge-cloud offloading games, the mobile-AIGC and generative-AI-ISAC threads, human-digital-twin edge deployment, two-timescale RAN-slicing / offloading, wireless-perception-guided edge AIGC, and the graph-based-resource-management two-part survey:
+Co-authored 13 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, SAGIN task scheduling, UAV-LEO and end-edge-cloud offloading games, the mobile-AIGC and generative-AI-ISAC threads, human-digital-twin edge deployment, two-timescale RAN-slicing / offloading, wireless-perception-guided edge AIGC, and the graph-based-resource-management two-part survey:
 
 - [[peng-2020-maddpg-uav-vehicular]] — MADDPG resource management in MEC- and UAV-assisted vehicular networks (with Haixia Peng).
 - [[duan-2023-moto-smallcell-offloading]] — MOTO mobility-aware online task offloading with load balancing in small-cell MEC.
@@ -38,6 +39,7 @@ Co-authored 12 sources in this wiki, spanning UAV-assisted vehicular MEC, terres
 - [[dai-2024-graph-rm-survey-learning]] — Part II (learning approaches / GNNs) of the same two-part survey.
 
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - delayed-CSI UAV-assisted vehicular networks solved with Lyapunov-guided diffusion actor DDPG.
+- [[zhou-2021-delay-sagin-task-scheduling]] - delay-oriented IoT task scheduling in SAGIN using deep risk-sensitive RL.
 
 ## Contributions to this wiki
 
