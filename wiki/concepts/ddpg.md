@@ -8,6 +8,7 @@ related:
   - "[[ddqn]]"
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[ye-2026-deeplsc-lae-isac]]"
+  - "[[cai-2026-llm-drl-secure-lae-data]]"
   - "[[ddpg-vs-jppo]]"
 created: 2026-05-29
 updated: 2026-07-07
@@ -24,4 +25,4 @@ An off-policy actor-critic algorithm for continuous control. Combines:
 
 Strengths: sample efficient (off-policy + replay), simple to tune for narrow continuous problems. Weaknesses: known instability (Q-overestimation, sensitive to hyperparameters); often replaced by TD3 or [[masac|SAC]] for harder problems.
 
-In the wiki, [[bao-2025-ddpg-video-offloading]] uses vanilla DDPG for joint offloading-ratio + transcoding-ratio + HAP-resource control — purely continuous, narrow scope, where DDPG fits well. [[ye-2026-deeplsc-lae-isac]] uses a DDPG backbone for continuous GBS beamforming and UAV-trajectory control, adding constrained noise exploration plus episode-level replay for LAE ISAC constraints. Compare with the hybrid-action [[j-ppo]] in [[liu-2026-jppo-en-convntm]] (see [[ddpg-vs-jppo]]).
+In the wiki, [[bao-2025-ddpg-video-offloading]] uses vanilla DDPG for joint offloading-ratio + transcoding-ratio + HAP-resource control — purely continuous, narrow scope, where DDPG fits well. [[ye-2026-deeplsc-lae-isac]] uses a DDPG backbone for continuous GBS beamforming and UAV-trajectory control, adding constrained noise exploration plus episode-level replay for LAE ISAC constraints. [[cai-2026-llm-drl-secure-lae-data]] uses DDPG as one baseline/backbone for LLM-enhanced secure data-collection control. Compare with the hybrid-action [[j-ppo]] in [[liu-2026-jppo-en-convntm]] (see [[ddpg-vs-jppo]]).

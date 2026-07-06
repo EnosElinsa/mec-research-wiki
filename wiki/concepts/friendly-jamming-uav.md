@@ -7,6 +7,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
+  - "[[cai-2026-llm-drl-secure-lae-data]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -20,5 +21,7 @@ The optimization variables are typically jamming power, jamming waveform, and **
 Used in [[benaya-2025-aerial-isac-haps]] alongside HAPS beamforming and ISAC-based eavesdropper localization. The UAV trajectory there is jointly optimized with the HAPS beamformer via alternating optimization.
 
 In [[wang-2026-secure-lae-uav-scheduling]], the same UAV fleet can switch between communication-UAV and jamming-UAV roles across slots, so friendly jamming becomes a scheduling and trajectory decision rather than a fixed helper assignment.
+
+[[cai-2026-llm-drl-secure-lae-data]] uses a dedicated jamming UAV alongside a data-collection UAV in low-altitude economy networking, with LLM-enhanced DRL balancing secrecy, AoI, and UAV energy.
 
 A friendly jammer is a pure helper, distinct from an *adversarial* jammer (which is a threat to be mitigated). Both share the math; only the labels differ.

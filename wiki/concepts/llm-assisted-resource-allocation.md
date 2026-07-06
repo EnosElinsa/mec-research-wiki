@@ -7,6 +7,8 @@ related:
   - "[[prompt-engineering]]"
   - "[[generative-ai-for-mec]]"
   - "[[ji-2026-llm-iov-uav-offloading]]"
+  - "[[cai-2026-llm-drl-secure-lae-data]]"
+  - "[[wang-2026-llm-qos-multiuav-resource]]"
 created: 2026-07-07
 updated: 2026-07-07
 ---
@@ -17,4 +19,6 @@ Use of a large language model as a structured decision helper inside a wireless/
 
 In [[ji-2026-llm-iov-uav-offloading]], the DRL policy first proposes resource-block and power allocation for multi-UAV-assisted IoV. An LP identifies failed or surplus tasks, then the LLM is prompted to reallocate communication resources for those long-tail cases. The final task proportions are solved again by LP. Reward decoupling keeps the DRL update tied to the original action, while KV caching and an MoE LLM reduce repeated prompt overhead at the BS.
 
-This is narrower than [[hybridrag-network-optimization]], which uses retrieval-augmented LLM agents to formulate low-carbon LAE optimization problems before a diffusion-enhanced SAC solver. Here the LLM sits inside the runtime resource-allocation loop.
+[[cai-2026-llm-drl-secure-lae-data]] uses the LLM earlier in the DRL pipeline as a state processor, reward designer, and simulator for secure LAE data collection. [[wang-2026-llm-qos-multiuav-resource]] uses an LLM teacher, network knowledge graph, relation-aware GAT, and Tree-of-Thoughts reasoning to produce expert policies that are distilled into MAPPO UAV students.
+
+This is narrower than [[hybridrag-network-optimization]], which uses retrieval-augmented LLM agents to formulate low-carbon LAE optimization problems before a diffusion-enhanced SAC solver. Here the LLM is part of the control/resource-allocation workflow rather than only an offline literature assistant.

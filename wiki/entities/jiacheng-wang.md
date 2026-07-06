@@ -15,15 +15,16 @@ related:
   - "[[wang-2024-wipe-gai]]"
   - "[[li-2025-omrp-cb-iot]]"
   - "[[he-2026-dt-sagimec-lae]]"
+  - "[[cai-2026-llm-drl-secure-lae-data]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Jiacheng Wang
 
 IEEE Member. Affiliated with the **College of Computing and Data Science, Nanyang Technological University**, Singapore (email `jiacheng.wang@ntu.edu.sg` / `jcwang_cq@foxmail.com`) — consistent across his papers in this wiki.
 
-Co-authored 12 sources in this wiki:
+Co-authored 13 sources in this wiki:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
@@ -37,6 +38,7 @@ Co-authored 12 sources in this wiki:
 - [[wang-2024-wipe-gai]] — wireless-perception-guided GAI (WiPe-GAI) for edge AIGC pricing via a diffusion model (first author).
 - [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT (OMRP + SoftPPO-LSTM).
 - [[he-2026-dt-sagimec-lae]] — DT-assisted SAGIMEC for low-altitude economy workloads.
+- [[cai-2026-llm-drl-secure-lae-data]] — LLM-enhanced DRL for secure low-altitude data collection.
 
 ## Contributions to this wiki
 

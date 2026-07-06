@@ -8,8 +8,11 @@ related:
   - "[[mobile-aigc-network]]"
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
+  - "[[llm-assisted-resource-allocation]]"
+  - "[[cai-2026-llm-drl-secure-lae-data]]"
+  - "[[wang-2026-llm-qos-multiuav-resource]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-07-07
 ---
 
 # Generative AI for MEC (GAI-MEC)
@@ -35,7 +38,7 @@ The application of **generative AI** — large language models (LLMs), diffusion
 
 ## In this wiki
 
-[[wang-2025-lae-network-survey]] surveys this thread under "GAI-driven Computing" and "GAI-driven MEC and Cloud-Edge-End Collaboration". The distinct but adjacent thread of *serving* generative AI as the edge workload — **mobile AIGC networks** — is surveyed by [[xu-2024-mobile-aigc-survey]] (see [[mobile-aigc-network]]).
+[[wang-2025-lae-network-survey]] surveys this thread under "GAI-driven Computing" and "GAI-driven MEC and Cloud-Edge-End Collaboration". The distinct but adjacent thread of *serving* generative AI as the edge workload — **mobile AIGC networks** — is surveyed by [[xu-2024-mobile-aigc-survey]] (see [[mobile-aigc-network]]). LLM-based corpus entries include [[cai-2026-llm-drl-secure-lae-data]], where the LLM helps design state/reward/simulation data for secure LAE DRL, and [[wang-2026-llm-qos-multiuav-resource]], where an LLM teacher generates QoS-aware policies for MAPPO students in multi-UAV edge computing.
 
 ## Open questions
 

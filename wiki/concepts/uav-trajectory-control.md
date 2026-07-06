@@ -18,6 +18,8 @@ related:
   - "[[wang-2025-ppo-uav-positioning-offloading]]"
   - "[[guo-2026-aot-uav-inspection-offloading]]"
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
+  - "[[liao-2026-aoi-ris-uav-usv-mec]]"
+  - "[[cai-2026-llm-drl-secure-lae-data]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -35,4 +37,4 @@ The objective is shaped by the [[equilibrium-efficiency-metric]] — coverage an
 
 The trajectory-control role changes with architecture. [[mohammadi-2026-star-ris-uav-mec-noma]] optimizes the UAV path jointly with STAR-RIS phase shifts, transmit powers, and task-bit allocation inside a BCD/SCA energy-minimization loop, while [[xiao-2025-star-ris-bidirectional-uav-mec]] optimizes the path for energy-efficient bidirectional STAR-RIS offloading. [[qin-2023-ris-uav-mec-ee]] shows the fixed-RIS version: the UAV trajectory shifts toward the building-mounted RIS when the reflected channel is optimized. [[wang-2026-secure-lae-uav-scheduling]] treats trajectory and velocity as secrecy-energy-efficiency variables because UAVs must decide when to communicate, jam, approach users, or suppress eavesdroppers. [[tong-2026-uneven-terrain-uav-mec]] treats 3D safe flight over uneven terrain as the first level of a hierarchical DRL controller, with task allocation triggered by the set of UEs currently covered. In the LAE ISAC pair [[ye-2026-deeplsc-lae-isac]] and [[ye-2026-meta-deepesc-lae-isac]], authorized UAV trajectories are continuous DRL actions coupled to GBS beamforming and constrained by mission completion, collision avoidance, average sensing SNR, and GBS transmit power. [[zhao-2026-hcdrl-ga-sagin-sar]] couples trajectory with SAGIN offloading and GA deployment for SAR under wind fields, while [[ji-2026-llm-iov-uav-offloading]] solves 3D vehicular-coverage trajectory planning through SOCP before resource scheduling and LP offloading.
 
-The same control surface also appears in placement- and inspection-specific forms: [[wang-2025-ppo-uav-positioning-offloading]] learns UAV placement with task splitting, [[guo-2026-aot-uav-inspection-offloading]] treats the inspection route as a Transformer-encoded TSP-like decision, and [[wu-2026-model-based-ppo-ris-uav-mec]] couples decentralized trajectories to RIS phase recommendations and offloading.
+The same control surface also appears in placement-, inspection-, maritime-, and secure-data-collection forms: [[wang-2025-ppo-uav-positioning-offloading]] learns UAV placement with task splitting, [[guo-2026-aot-uav-inspection-offloading]] treats the inspection route as a Transformer-encoded TSP-like decision, [[wu-2026-model-based-ppo-ris-uav-mec]] couples decentralized trajectories to RIS phase recommendations and offloading, [[liao-2026-aoi-ris-uav-usv-mec]] optimizes RUAV trajectories for AoI-energy tradeoffs in RIS-assisted UAV-USV MEC, and [[cai-2026-llm-drl-secure-lae-data]] coordinates a data-collection UAV with a jamming UAV for secure LAE updates.

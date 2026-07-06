@@ -17,7 +17,7 @@ related:
   - "[[su-2024-sensing-aided-isac-pls]]"
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-07
 ---
 
 # Joint Beamforming and Reflection Design for Secure RIS-ISAC Systems
@@ -64,5 +64,5 @@ A **physical-layer secure-ISAC + RIS** anchor (sensing/security, not MEC). It si
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems.pdf/full.md`
+- `raw/sources/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

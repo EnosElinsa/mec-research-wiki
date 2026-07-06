@@ -13,8 +13,9 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[gao-2024-service-experience-cache-uav]]"
+  - "[[wang-2026-llm-qos-multiuav-resource]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Fairness Metrics in MEC
@@ -39,6 +40,7 @@ The spatial equity index $f_n$ is a Jain-style index specialized to UAV visit co
 - [[peng-2025-drudm-cfg]] instead uses the [[theil-fairness-index|Theil coefficient]] over per-region service counts as a reward regularizer ($-\beta \bar{TL}(t)$), chosen because Theil decomposes into within- and between-group inequality — useful when dense and sparse post-disaster regions need different treatment.
 - [[he-2023-fairness-3d-multiuav-maddpg]] frames its energy objectives "based on fairness among UAVs" and links [[jains-fairness-index]]; fairness here is an inter-UAV equity premise on the trajectory/offloading derivation.
 - [[gao-2024-service-experience-cache-uav]] folds Jain's index over per-UE delay into a single [[service-experience-ratio]], coupling fairness with latency in one [[qoe-modeling-mec]] objective.
+- [[wang-2026-llm-qos-multiuav-resource]] combines delay with Jain-style fairness in a weighted delay-fairness objective for LLM-teacher / MAPPO-student multi-UAV resource allocation.
 - Energy-balancing work ([[energy-balancing-uav]]) treats fairness as equalizing depletion across UAVs rather than equalizing user-facing service — a related but distinct notion.
 
 ## Why this matters for cross-paper comparison

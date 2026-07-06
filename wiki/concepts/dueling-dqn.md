@@ -8,6 +8,7 @@ related:
   - "[[wu-2024-satellite-maritime-spectrum-sharing]]"
   - "[[pomdp]]"
   - "[[gao-2026-fmad3qn-uav-gd-association]]"
+  - "[[zhan-2026-gatd3qn-dependent-offloading]]"
 created: 2026-06-02
 updated: 2026-07-07
 ---
@@ -20,4 +21,4 @@ It is orthogonal to, and commonly combined with, [[ddqn|Double DQN]] (which deco
 
 In the corpus, the Dueling + Double DQN combination is the backbone of the **SCA-D3QN** spectrum-sharing agent in [[wu-2024-satellite-maritime-spectrum-sharing]], where the satellite cannot fully observe channel states (a [[pomdp]]) and the architecture is reported to mitigate action-value over-estimation and accelerate convergence while evaluating channel-allocation actions.
 
-[[gao-2026-fmad3qn-uav-gd-association]] uses the same value/advantage split inside a federated multi-agent DDQN controller for UAV 3D deployment, with a closed-form device-association subroutine supplying the reward signal.
+[[gao-2026-fmad3qn-uav-gd-association]] uses the same value/advantage split inside a federated multi-agent DDQN controller for UAV 3D deployment, with a closed-form device-association subroutine supplying the reward signal. [[zhan-2026-gatd3qn-dependent-offloading]] combines D3QN with graph-attention task-DAG embeddings for dependent-task offloading.

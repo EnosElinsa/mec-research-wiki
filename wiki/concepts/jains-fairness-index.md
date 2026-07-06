@@ -8,8 +8,9 @@ related:
   - "[[service-experience-ratio]]"
   - "[[qoe-modeling-mec]]"
   - "[[gao-2024-service-experience-cache-uav]]"
+  - "[[wang-2026-llm-qos-multiuav-resource]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Jain's Fairness Index
@@ -20,4 +21,4 @@ $$ J(x) = \frac{\left(\sum_i x_i\right)^2}{n \sum_i x_i^2} \in [1/n, 1] $$
 
 It equals 1 when all users receive identical allocation (perfectly fair) and drops toward $1/n$ as the allocation concentrates on a few users. It is scale-independent and population-size-independent.
 
-In the wiki, [[gao-2024-service-experience-cache-uav]] applies Jain's index to per-UE average **service delay** and divides it by the average delay to form the [[service-experience-ratio]] — coupling fairness with latency in one [[qoe-modeling-mec]] objective. It complements the corpus's other fairness measures, [[theil-fairness-index]] and [[spatial-equity-index]].
+In the wiki, [[gao-2024-service-experience-cache-uav]] applies Jain's index to per-UE average **service delay** and divides it by the average delay to form the [[service-experience-ratio]] — coupling fairness with latency in one [[qoe-modeling-mec]] objective. [[wang-2026-llm-qos-multiuav-resource]] uses Jain-style fairness inside a weighted delay-fairness objective for multi-UAV cooperative edge computing. It complements the corpus's other fairness measures, [[theil-fairness-index]] and [[spatial-equity-index]].

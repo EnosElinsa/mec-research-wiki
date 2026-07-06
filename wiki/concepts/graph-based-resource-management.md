@@ -10,8 +10,9 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[dai-2024-graph-rm-survey-optimization]]"
   - "[[dai-2024-graph-rm-survey-learning]]"
+  - "[[wang-2026-llm-qos-multiuav-resource]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-07
 ---
 
 # Graph-Based Resource Management
@@ -33,4 +34,4 @@ Per [[dai-2024-graph-rm-survey-optimization]], graph **optimization** offers ada
 
 ## Connections in the corpus
 
-The combinatorial side overlaps the corpus's recurring [[matching-theory-for-resource-allocation]] and [[gale-shapley-matching]] (bipartite/stable matching). The scenario chapters span [[mobile-edge-computing]] (edge caching and computing) and [[non-terrestrial-network]] resource allocation, tying graph-based resource management to the corpus's offloading and satellite/aerial threads.
+The combinatorial side overlaps the corpus's recurring [[matching-theory-for-resource-allocation]] and [[gale-shapley-matching]] (bipartite/stable matching). The scenario chapters span [[mobile-edge-computing]] (edge caching and computing) and [[non-terrestrial-network]] resource allocation, tying graph-based resource management to the corpus's offloading and satellite/aerial threads. [[wang-2026-llm-qos-multiuav-resource]] adds an LLM-teacher example where a network knowledge graph and relation-aware GAT feed QoS-aware resource-allocation policy generation.

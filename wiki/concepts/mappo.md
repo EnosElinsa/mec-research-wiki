@@ -11,6 +11,7 @@ related:
   - "[[wang-2026-blockchain-lae-fl-mappo]]"
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
   - "[[zhao-2026-mappo-jscc-aec]]"
+  - "[[wang-2026-llm-qos-multiuav-resource]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -26,3 +27,5 @@ In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association
 [[chen-2026-hc-mappo-vehicle-twin-migration]] uses MAPPO in the upper layer of a hierarchical controller for vehicle-twin migration and UAV routing, while deterministic lower-layer controllers enforce migration and path-planning feasibility.
 
 [[zhao-2026-mappo-jscc-aec]] uses MAPPO-JSCC for HAP-assisted collaborative aerial edge computing, embedding numerical sensing optimization plus SCA/Dinkelbach transmission-power solvers into a CTDE-style PPO multi-agent controller.
+
+[[wang-2026-llm-qos-multiuav-resource]] uses MAPPO as the UAV-side student policy after a cloud-side LLM teacher generates QoS-aware resource-allocation guidance.

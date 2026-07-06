@@ -1,5 +1,22 @@
 # Research Log
 
+## [2026-07-07] Curated 4 LLM / GAT / AoI UAV-MEC sources and reconciled 1 RIS-ISAC raw path
+
+Added four source pages:
+
+- [[zhan-2026-gatd3qn-dependent-offloading]] - Zhan et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3628608`. Joint UAV placement, UAV-GU association, and dependent-task DAG offloading in multi-UAV MEC; JSPO uses SCA/PDD for placement/association, and GAT-enhanced D3QN handles binary dependent-subtask offloading.
+- [[liao-2026-aoi-ris-uav-usv-mec]] - Liao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3611808`. AoI-aware RIS-assisted UAV-USV MEC for inland waterways; TUAV-mounted RIS, RUAV service durations, RIS phase shifts, TUAV altitude, RUAV trajectories, and Lyapunov plus enhanced WOA/AO optimization.
+- [[cai-2026-llm-drl-secure-lae-data]] - Cai et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3665241`. LLM-enhanced DRL for secure LAE data collection; the LLM acts as state processor, reward designer, and simulator for DDPG/TD3 control with a data-collection UAV and a jamming UAV.
+- [[wang-2026-llm-qos-multiuav-resource]] - Wang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3683128`. LLM teacher-student QoS-aware resource allocation for multi-UAV cooperative edge computing; NKG/R-GAT/LoRA/Tree-of-Thoughts teacher policies are distilled into MAPPO UAV students.
+
+Raw-reference reconciliation: [[chu-2024-secure-ris-isac]] now references the current `Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems` raw folder instead of the stale `.pdf/full.md` path. The source page already existed and matched DOI `10.1109/TVT.2023.3328192`, so no duplicate source page was created.
+
+Updated backlinks and track pages for [[interdependent-tasks-dag]], [[graph-neural-network]], [[dueling-dqn]], [[penalty-dual-decomposition]], [[task-offloading]], [[multi-uav-assisted-mec]], [[uav-trajectory-control]], [[age-of-information]], [[aoi-energy-tradeoff]], [[uav-usv-cooperative-mec]], [[uav-mounted-ris]], [[intelligent-reflecting-surface]], [[lyapunov-optimization]], [[whale-optimization-algorithm]], [[maritime-mec]], [[low-altitude-intelligent-network]], [[generative-ai-for-mec]], [[llm-assisted-resource-allocation]], [[prompt-engineering]], [[td3]], [[ddpg]], [[physical-layer-security]], [[friendly-jamming-uav]], [[uav-data-collection]], [[knowledge-distillation-for-drl]], [[mappo]], [[graph-based-resource-management]], [[task-migration]], [[jains-fairness-index]], [[fairness-metrics-in-mec]], and [[device-association]]. Updated parse-confirmed existing author rosters for [[dusit-niyato]] and [[jiacheng-wang]]. No new concept or entity pages were created.
+
+Metadata notes: DOI/venue/year fields for the four new source pages were verified through title-matched Crossref metadata because the local parses were incomplete or draft-like at top-level metadata. Technical claims and numeric findings are grounded in the local parses. [[chu-2024-secure-ris-isac]] had already been curated; only its raw-artifact path was corrected.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 310 curated raw references, and 35 genuinely new folders still uncurated after this pass, plus 12 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 319 sources, 303 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean before committing. `python tools/wiki/entity_roster_audit.py --json entity-roster-llm-gat-aoi-prelog.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki health was OK; `/graph` and `/api/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 UAV positioning / inspection / RIS / association / THz-SAG sources
 
 Added five source pages and four concept pages:

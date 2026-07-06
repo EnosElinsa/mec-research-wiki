@@ -8,6 +8,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[vehicle-twin-migration]]"
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
+  - "[[wang-2026-llm-qos-multiuav-resource]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -39,3 +40,5 @@ The mechanism of forwarding an in-flight task from one edge server to another, m
 [[zhang-2025-mcma-task-migration]] handles all three via a two-stage MA-DRL controller informed by Informer-based trajectory prediction.
 
 [[chen-2026-hc-mappo-vehicle-twin-migration]] specializes migration to [[vehicle-twin-migration]], where the state/service for a vehicle's digital twin follows high-mobility vehicles across RSUs and UAV edge servers.
+
+[[wang-2026-llm-qos-multiuav-resource]] treats task migration as an air-to-air fractional allocation among UAV edge servers, controlled together with access, trajectory, bandwidth, and compute decisions for delay-fairness optimization.

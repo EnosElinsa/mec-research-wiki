@@ -86,6 +86,7 @@
 
 - [[wang-2025-ppo-uav-positioning-offloading]] - Wang et al. 2025. PPO-based joint UAV positioning and partial task offloading in multi-UAV MEC; BS/UAV task splitting, access/backhaul links, latency minimization, and UAV-failure resilience (IEEE TMC).
 - [[guo-2026-aot-uav-inspection-offloading]] - Guo et al. 2026. AGI-oriented Transformer for UAV-assisted railway inspection; shared encoder with trajectory and offloading heads for hive/UAV/sensor execution decisions (IEEE TMC).
+- [[zhan-2026-gatd3qn-dependent-offloading]] - Zhan et al. 2026. Joint UAV placement, UAV-GU association, and dependent-task DAG offloading in multi-UAV MEC; JSPO plus GAT-enhanced D3QN (IEEE TMC).
 - [[teng-2026-gstrl-sequential-offloading]] - Teng et al. 2026. Graph-based spatiotemporal RL for sequential task offloading in multi-UAV MEC; heterogeneous task/UAV graph encoding plus masked PPO for order-constrained offloading decisions (IEEE TMC).
 - [[zhao-2026-heuristic-supervised-drl]] - Zhao et al. 2026. Heuristic-supervised DRL framework with TTSSA convergence analysis; PSO bridges upper-tier planning to MARL control in the UAV-MEC case study (IEEE TMC).
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
@@ -210,6 +211,8 @@
 ### Generative-AI MEC
 
 - [[wen-2026-hybridrag-low-carbon-lae]] - Wen et al. 2026. HybridRAG-formulated low-carbon LAE network optimization with R^2DSAC, a double-regularized diffusion-enhanced SAC solver (IEEE TMC).
+- [[cai-2026-llm-drl-secure-lae-data]] - Cai et al. 2026. LLM-enhanced DRL for secure LAE data collection; LLM state/reward/simulator support for DDPG/TD3 with a data-collection UAV and a jamming UAV (IEEE TMC).
+- [[wang-2026-llm-qos-multiuav-resource]] - Wang et al. 2026. LLM teacher-student QoS-aware resource allocation for multi-UAV cooperative edge computing; NKG/R-GAT/ToT teacher with MAPPO student distillation (IEEE TMC).
 - [[wang-2026-lifelong-semantic-content-reuse]] — Wang et al. 2026. UAV-assisted Metaverse semantic content reuse; semantic subject/object caching plus DC-ELLA lifelong policy transfer for changing semantic environments (IEEE TMC).
 - [[wang-2026-diffusion-semantic-uav-edge]] — Wang et al. 2026. UAV-assisted semantic edge computing; H-DDPG plus convex semantic-resource optimization, then diffusion-denoising DDPG for trajectory action generation (IEEE TWC).
 - [[zhang-2025-gsc-diffusion-semcom]] — Zhang et al. 2025. **Generative AI Semantic Communication (GSC)**: Swin Transformer encoder + **diffusion model** decoder for image transmission; +17.75% PSNR in AWGN vs DeepJSCC; MU-GSC multi-user extension (IEEE TCCN).
@@ -281,6 +284,7 @@
 - [[wang-2026-aerial-marine-msar]] — Wang et al. 2026. UAV+HAPS+MASS three-tier MEC for maritime search & rescue. *JCORA* (matching + convex + PGD).
 - [[li-2026-cdto-inland-waterways]] — Li et al. 2026. UAV-assisted inland-waterway edge offloading; USV D2D computation-sharing clusters, UAV cluster-head positioning, exact-potential-game CDTO, and graph-based MARL (IEEE T-ITS).
 - [[liao-2025-ris-uav-usv-resource-allocation]] — Liao et al. 2025. RIS-assisted UAV-USV cooperative MEC for inland waterways; bidirectional USV tasks with hard time windows, UAV routing, task-mode/arrival-time choice, hovering-coordinate, and RIS-phase optimization (IEEE TGCN).
+- [[liao-2026-aoi-ris-uav-usv-mec]] - Liao et al. 2026. AoI-aware RIS-assisted UAV-USV MEC; TUAV-mounted RIS, RUAV trajectory/service-duration control, and Lyapunov plus enhanced WOA/AO optimization (IEEE TMC).
 - [[lei-2024-hvmappo-maritime-sar]] — Lei et al. 2024. **Heterogeneous-vehicle maritime SAR** (observation UAVs + relay UAVs + ASV edge servers); joint trajectory + offloading + routing topology minimizing time/energy while maximizing relay **fault tolerance**; Dec-POMDP + **HVMAPPO** (MAPPO/CTDE + param-sharing + normalized GAE + Pop-Art) (IEEE TVT).
 - [[liu-2025-haps-uav-maritime-iot]] — Liu et al. 2025. HAP-UAV maritime IoT comm: HAP-as-backhaul, UAV multicast, vessel unicast.
 - [[wang-2025-double-edge-samin]] — Wang et al. 2025. Double-edge (UAV+LEO) offloading for space-air-marine networks; AO + layered decomposition.
