@@ -16,7 +16,7 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-07-07
 ---
 
 # Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning
@@ -57,5 +57,6 @@ Introduces **integrated sensing-computation-communication (ISCC)** as a named co
 
 ## Raw artifacts
 
+- `raw/sources/Integrated Sensing- Computation- and Communication for UAV-Assisted Federated Edge Learning/Integrated Sensing- Computation- and Communication for UAV-Assisted Federated Edge Learning.md`
 - `raw/sources/Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning/full.md`
-- Original PDF and extracted figures in the same folder.
+- Original PDF and extracted figures in the corresponding raw folders.

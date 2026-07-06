@@ -245,6 +245,7 @@
 - [[liu-2025-mad2rl-dnn-vec]] — Liu et al. 2025. **MAD2RL** — DNN partitioning + task offloading in VEC; Lyapunov + diffusion-model-based MARL + convex resource allocation (IEEE TMC).
 - [[huang-2024-fed-idcco-iov-caching]] — Huang et al. 2024. **Fed-IDCCO** — joint **data caching + computation offloading** in UAV-assisted IoV; DRL + **federated learning** (privacy + convergence); minimizes delay + maximizes cache hit ratio (IEEE TVT).
 - [[li-2025-energy-latency-uav-vec]] — Li et al. 2025. UAV-assisted VEC **federated-learning participant selection** and bandwidth/compute allocation; weighted energy-latency cost as an MDP solved by AB-DDQN (AdamW + BOA hyperparameter tuning) (IEEE TGCN).
+- [[li-2026-isac-vec-beamforming-deployment]] - Li et al. 2026. ISAC-enhanced UAV-assisted VEC; joint UAV deployment and beamforming via refraction-based sparrow search plus SCA/Taylor convexification, improving road-hotspot coverage and UAV energy (IEEE TWC).
 - [[spampinato-2025-uabs-v2x-3dqn-ilp]] — Spampinato et al. 2025. UABS trajectory (**3DQN**) + **ILP** RRM for V2X extended-sensing in urban scenario; SUMO mobility; coverage-limited + capacity-limited scenarios (IEEE TVT).
 - [[wang-2025-ctmig-task-migration-uav]] — Wang et al. 2025. **CTMiG / ILCTS** — joint task offloading + **migration** in multi-UAV MEC; PPO expert + **GAIL** online refinement; large-result delivery latency (IEEE TSC).
 - [[zhang-2025-mcma-task-migration]] — Zhang et al. 2025. Task migration with Informer trajectory prediction across edge servers. *MCMA*.
@@ -299,6 +300,8 @@
 
 - [[li-2023-adaptive-digital-twin-uav-iscc]] - Li et al. 2023. DT-enabled UAV-assisted ISCC; ATB-MAPPO with Beta-policy actors and attention critics for radar beampattern / energy tradeoff (IEEE TGCN).
 - [[tang-2025-cooperative-isac-lae]] - Tang et al. 2025. Cooperative ISAC for low-altitude economy; tensor-decomposition monostatic estimation, false-removing MST association, Pareto position fusion, and residual-weighted velocity estimation (IEEE TWC).
+- [[ye-2026-meta-deepesc-lae-isac]] - Ye et al. 2026. Meta-DeepESC for energy-efficient LAE ISAC; TD3-style constrained action selection, episodic replay, and meta-learning for GBS beamforming plus authorized-UAV trajectories (IEEE TMC).
+- [[ye-2026-deeplsc-lae-isac]] - Ye et al. 2026. DeepLSC LAE ISAC; DDPG-based joint GBS beamforming and UAV-trajectory control with constrained noise exploration, hierarchical replay, and symmetric experience augmentation (IEEE TWC).
 - [[zeng-2026-fmcw-isibc-lae]] — Zeng & Liang 2026. **FMCW-enabled integrated sensing, identification, and backscatter communication** for LAE; UAV-mounted BDs modulate identity symbols onto FMCW echoes, with SVD-based range/velocity/symbol estimation and CRLB analysis (IEEE TWC).
 
 - [[qin-2025-urllc-noma-uav-iscc]] — Qin et al. 2025. **NOMA-aided UAV ISCC** with URLLC: sensing + communication + computation; Lyapunov tail-constraint + **SAC-TPBD** DRL; comparable to SCA/SDR baselines with higher efficiency (IEEE TVT).
@@ -591,11 +594,13 @@
 - [[action-space-explosion-in-multi-uav-mec]]
 - [[adaptive-entropy-priority-replay]]
 - [[prioritized-experience-replay]]
+- [[episodic-experience-replay]]
 - [[safe-reinforcement-learning]]
 - [[hybrid-action-representation]]
 - [[dynamic-confidence-interval-clipping]]
 - [[knowledge-distillation-for-drl]]
 - [[heuristic-supervised-drl]]
+- [[meta-deep-reinforcement-learning]]
 - [[multi-objective-reinforcement-learning]]
 - [[multi-objective-mdp-vectorial-reward]]
 - [[contextual-momdp]]
@@ -661,6 +666,7 @@
 - [[binary-whale-optimization]]
 - [[whale-optimization-algorithm]]
 - [[salp-swarm-algorithm]]
+- [[sparrow-search-algorithm]]
 - [[ant-lion-optimizer]]
 - [[sum-of-ratios-optimization]]
 - [[self-adaptive-global-best-harmony-search]]

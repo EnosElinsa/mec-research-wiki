@@ -8,6 +8,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[zhang-2026-dwell-time-aerial-vec]]"
   - "[[li-2025-energy-latency-uav-vec]]"
+  - "[[li-2026-isac-vec-beamforming-deployment]]"
   - "[[vehicle-twin-migration]]"
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
 created: 2026-05-28
@@ -30,8 +31,9 @@ MEC where the user devices are vehicles — connected, semi-autonomous, or auton
 - **CTDE multi-agent control** — each server is an agent under [[ma-pomdp]] framing; centralized critic + decentralized actor.
 - **Aerial fallback tiers** — UAVs and [[high-altitude-platform-station|HAPS]] can cover sparse or overloaded roads, but high-speed vehicles introduce [[dwell-time-constrained-offloading]] as a feasibility constraint; see [[zhang-2026-dwell-time-aerial-vec]].
 - **Federated-learning participant control** — when vehicles train local models, the VEC system must select participants that can finish before leaving coverage and allocate UAV bandwidth / compute resources; see [[li-2025-energy-latency-uav-vec]].
+- **ISAC-aware UAV support** — when temporary road hot spots need both coverage and sensing, UAV deployment and beamforming can be optimized jointly; see [[li-2026-isac-vec-beamforming-deployment]].
 
-[[chen-2026-hc-mappo-vehicle-twin-migration]] adds [[vehicle-twin-migration]] as a vehicular-metaverse service-continuity problem: predicted RSU workload drives pre-migration, and UAVs act as mobile edge servers when terrestrial RSUs overload.
+[[chen-2026-hc-mappo-vehicle-twin-migration]] adds [[vehicle-twin-migration]] as a vehicular-metaverse service-continuity problem: predicted RSU workload drives pre-migration, and UAVs act as mobile edge servers when terrestrial RSUs overload. [[li-2026-isac-vec-beamforming-deployment]] adds the sensing side of UAV-assisted VEC by coupling deployment to communication capacity, radar mutual information / CRB-style sensing quality, and UAV energy.
 
 ## Open questions
 

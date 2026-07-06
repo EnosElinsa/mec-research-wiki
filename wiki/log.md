@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 3 LAE-ISAC / ISAC-VEC sources and reconciled 2 raw duplicates
+
+Added three source pages and three concept pages:
+
+- [[ye-2026-meta-deepesc-lae-isac]] — Ye et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3678893`. Meta-DeepESC for energy-efficient LAE ISAC; TD3-style constrained action selection, episodic replay, and meta-learning jointly optimize GBS beamforming and authorized-UAV trajectories under sensing, mission, collision, and power constraints.
+- [[ye-2026-deeplsc-lae-isac]] — Ye et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3583950`. DeepLSC for LAE ISAC communication sum-rate; DDPG-based beamforming/trajectory control with constrained noise exploration, hierarchical experience replay, and symmetric experience augmentation.
+- [[li-2026-isac-vec-beamforming-deployment]] — Li et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3694912`. ISAC-enhanced UAV-assisted VEC; refraction-based sparrow search optimizes UAV deployment, while SCA/Taylor convexification handles beamforming for road-hotspot coverage, sensing, and energy tradeoffs.
+
+New concept pages: [[episodic-experience-replay]], [[meta-deep-reinforcement-learning]], and [[sparrow-search-algorithm]]. Updated concept backlinks for [[integrated-sensing-and-communication]], [[low-altitude-intelligent-network]], [[uav-trajectory-control]], [[vehicular-mec]], [[ddpg]], [[td3]], [[prioritized-experience-replay]], [[alternating-optimization-sdr-sca]], [[weighted-kmeans-uav-deployment]], [[cramer-rao-bound]], and [[integrated-sensing-computation-communication]]. Updated [[swarm-metaheuristics-in-uav-mec]] for the sparrow-search roster entry. Updated parse-confirmed [[jie-xu]] roster with [[ye-2026-deeplsc-lae-isac]].
+
+Raw-reference reconciliation: [[tang-2024-iscc-uav-feel]] now also references the `Integrated Sensing- Computation- and Communication for UAV-Assisted Federated Edge Learning` raw folder, and [[nabi-2025-jour-hierarchical-aerial]] now also references the `Joint Offloading Decision- User Association- and Resource Allocation in Hierarchical Aerial Computing Collaboration of UAVs and HAP` raw folder. These titles matched already-curated pages, so no duplicate source pages were created.
+
+Metadata notes: [[ye-2026-deeplsc-lae-isac]] includes a parse DOI line. The local parses for [[ye-2026-meta-deepesc-lae-isac]] and [[li-2026-isac-vec-beamforming-deployment]] were silent on top-level DOI/venue/year, so DOI, venue, and year were verified through title-matched Crossref metadata. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 295 curated raw references, and 50 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 305 sources, 295 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 39 advisory present-but-unlisted omissions; the remaining [[jie-xu]] advisory is the explicitly documented Guangdong-University-of-Technology namesake in [[wang-2018-wpt-mec-joint-offloading]]. LLM Wiki health was OK; `/graph` and `/api/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 LAE / spatiotemporal-DRL / vehicle-twin sources
 
 Added five source pages and five concept pages:

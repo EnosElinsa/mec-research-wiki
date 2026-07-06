@@ -7,8 +7,9 @@ related:
   - "[[integrated-sensing-and-communication]]"
   - "[[federated-learning]]"
   - "[[alternating-optimization-sdr-sca]]"
+  - "[[ye-2026-deeplsc-lae-isac]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Integrated Sensing, Computation, and Communication (ISCC)

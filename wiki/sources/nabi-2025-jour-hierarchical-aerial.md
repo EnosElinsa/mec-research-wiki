@@ -18,7 +18,7 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[discrete-continuous-two-stage-decomposition]]"
 created: 2026-05-29
-updated: 2026-06-08
+updated: 2026-07-07
 ---
 
 # Joint Offloading Decision, User Association, and Resource Allocation in Hierarchical Aerial Computing
@@ -81,5 +81,6 @@ The **load-balancing** angle is a quieter contribution: per-UAV load enters the 
 
 ## Raw artifacts
 
+- `raw/sources/Joint Offloading Decision- User Association- and Resource Allocation in Hierarchical Aerial Computing Collaboration of UAVs and HAP/Joint Offloading Decision- User Association- and Resource Allocation in Hierarchical Aerial Computing Collaboration of UAVs and HAP.md`
 - `raw/sources/Joint Offloading Decision, User Association, and Resource Allocation in Hierarchical Aerial Computin/full.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Original PDF and extracted figures (`images/`) in the corresponding raw folders.

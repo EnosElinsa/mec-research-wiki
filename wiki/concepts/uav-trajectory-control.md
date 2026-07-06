@@ -10,6 +10,8 @@ related:
   - "[[xiao-2025-star-ris-bidirectional-uav-mec]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[tong-2026-uneven-terrain-uav-mec]]"
+  - "[[ye-2026-deeplsc-lae-isac]]"
+  - "[[ye-2026-meta-deepesc-lae-isac]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -25,4 +27,4 @@ The continuous-action portion of the [[multi-uav-assisted-mec]] decision vector:
 
 The objective is shaped by the [[equilibrium-efficiency-metric]] — coverage and fairness pull the UAV outward toward sparsely-visited regions, while the energy term and obstacle/inter-UAV penalties pull it back. Trajectories are sampled from a Gaussian policy head; see [[j-ppo]] for how this couples with the discrete decisions.
 
-The trajectory-control role changes with architecture. [[mohammadi-2026-star-ris-uav-mec-noma]] optimizes the UAV path jointly with STAR-RIS phase shifts, transmit powers, and task-bit allocation inside a BCD/SCA energy-minimization loop, while [[xiao-2025-star-ris-bidirectional-uav-mec]] optimizes the path for energy-efficient bidirectional STAR-RIS offloading. [[wang-2026-secure-lae-uav-scheduling]] treats trajectory and velocity as secrecy-energy-efficiency variables because UAVs must decide when to communicate, jam, approach users, or suppress eavesdroppers. [[tong-2026-uneven-terrain-uav-mec]] treats 3D safe flight over uneven terrain as the first level of a hierarchical DRL controller, with task allocation triggered by the set of UEs currently covered.
+The trajectory-control role changes with architecture. [[mohammadi-2026-star-ris-uav-mec-noma]] optimizes the UAV path jointly with STAR-RIS phase shifts, transmit powers, and task-bit allocation inside a BCD/SCA energy-minimization loop, while [[xiao-2025-star-ris-bidirectional-uav-mec]] optimizes the path for energy-efficient bidirectional STAR-RIS offloading. [[wang-2026-secure-lae-uav-scheduling]] treats trajectory and velocity as secrecy-energy-efficiency variables because UAVs must decide when to communicate, jam, approach users, or suppress eavesdroppers. [[tong-2026-uneven-terrain-uav-mec]] treats 3D safe flight over uneven terrain as the first level of a hierarchical DRL controller, with task allocation triggered by the set of UEs currently covered. In the LAE ISAC pair [[ye-2026-deeplsc-lae-isac]] and [[ye-2026-meta-deepesc-lae-isac]], authorized UAV trajectories are continuous DRL actions coupled to GBS beamforming and constrained by mission completion, collision avoidance, average sensing SNR, and GBS transmit power.

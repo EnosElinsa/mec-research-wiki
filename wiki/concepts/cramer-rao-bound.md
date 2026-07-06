@@ -6,8 +6,9 @@ related:
   - "[[integrated-sensing-and-communication]]"
   - "[[su-2024-sensing-aided-isac-pls]]"
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
+  - "[[li-2026-isac-vec-beamforming-deployment]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-07
 ---
 
 # Cramér-Rao Bound (CRB / CRLB)
@@ -23,5 +24,6 @@ A lower bound on the variance of any unbiased estimator of a deterministic param
 
 - [[su-2024-sensing-aided-isac-pls]] minimizes (via an FIM-determinant criterion) the CRB of the eavesdroppers'/targets' angle estimates while maximizing secrecy rate — the estimation accuracy directly shapes the secrecy-rate expression, so the CRB and the secrecy metric improve together over iterations.
 - [[zhu-2024-sensing-comm-doppler-uav-swarm]] minimizes the ground vehicles' **maximum Cramér-Rao lower bound (CRLB)** for (Doppler-based velocity + position) estimation under an SNR-loss constraint, trading sensing accuracy against communication quality.
+- [[li-2026-isac-vec-beamforming-deployment]] uses CRB-style sensing metrics inside an ISAC effectiveness function for UAV-assisted vehicular edge computing, where deployment and beamforming must balance road coverage, radar mutual information, and UAV energy.
 
 Distinct from outcome metrics like [[secrecy-outage-probability]]; the CRB bounds estimator variance, not an outage event.
