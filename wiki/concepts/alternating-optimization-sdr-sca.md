@@ -7,6 +7,8 @@ related:
   - "[[lyapunov-optimization]]"
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
+  - "[[xiao-2025-star-ris-bidirectional-uav-mec]]"
+  - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -24,4 +26,4 @@ AO converges to a stationary point but not necessarily the global optimum; in pr
 
 This stack is the **non-DRL** counterpoint to the j-PPO / DDPG / SAC backbone that dominates the wiki — useful when the problem has clean convex structure within each block.
 
-[[mohammadi-2026-star-ris-uav-mec-noma]] uses the same decomposition style without SDR as the headline: bit allocation, transmit power, STAR-RIS phase shifts, and UAV trajectory are separated into subproblems, then handled with SCA or closed-form MRT-style phase updates inside a BCD loop.
+[[mohammadi-2026-star-ris-uav-mec-noma]] uses the same decomposition style without SDR as the headline: bit allocation, transmit power, STAR-RIS phase shifts, and UAV trajectory are separated into subproblems, then handled with SCA or closed-form MRT-style phase updates inside a BCD loop. [[xiao-2025-star-ris-bidirectional-uav-mec]] uses Dinkelbach plus SCA inside BCD for STAR-RIS bidirectional offloading. [[wang-2026-secure-lae-uav-scheduling]] decomposes secrecy-energy-efficiency maximization into scheduling, power, and trajectory/velocity subproblems, using penalty updates, SCA, and Dinkelbach-driven iteration.

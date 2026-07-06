@@ -8,12 +8,14 @@ related:
   - "[[over-the-air-computation]]"
   - "[[mobile-edge-computing]]"
   - "[[semantic-content-reuse]]"
+  - "[[probabilistic-semantic-communication]]"
   - "[[sun-2024-mfris-semantic-antijamming]]"
   - "[[du-2024-yolo-semcom-digital-twin]]"
   - "[[wang-2026-lifelong-semantic-content-reuse]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
+  - "[[zhao-2025-probabilistic-semantic-sagin]]"
 created: 2026-05-31
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Semantic Communication
@@ -30,3 +32,4 @@ Semantic transceivers bring **inherent robustness** and **data compression**, wh
 - [[du-2024-yolo-semcom-digital-twin]] applies semantic communication to [[digital-twin]] construction: a [[yolov7-object-detection|YOLOv7]] detector extracts only the semantically-relevant content (cropped objects + confidence + position) from UAV images, then allocates transmission power by per-object importance (a confidence rule and a diffusion-model-generated scheme), cutting transmitted data ~91% on its case study.
 - [[wang-2026-lifelong-semantic-content-reuse]] uses semantic request representations for [[semantic-content-reuse]] in UAV-assisted Metaverse rendering: cache hits, semantic reuse, and full computation are treated as distinct service modes.
 - [[wang-2026-diffusion-semantic-uav-edge]] formulates semantic extraction, transmission, and recovery as a UAV-assisted edge-computing optimization problem, with semantic processing rate as the objective.
+- [[zhao-2025-probabilistic-semantic-sagin]] narrows semantic communication to [[probabilistic-semantic-communication]]: shared probabilistic graphs let the transmitter omit recoverable semantic relations, trading lower communication energy for added semantic-computation overhead in a SAGIN.

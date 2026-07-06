@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 low-altitude / semantic / green-AEC sources
+
+Added five source pages and two concept pages:
+
+- [[wang-2026-blockchain-lae-fl-mappo]] — Wang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3709198`. Blockchain-assisted low-altitude edge-intelligence network; UEs/TUAVs/SUAVs/BS four-layer offloading, caching, FL, PV-aware throttling, M/M/1 queueing, and blockchain-supported cache cooperation.
+- [[zhao-2025-probabilistic-semantic-sagin]] — Zhao et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2025.3569102`. SAGIN-enabled probabilistic semantic communication; satellite-UAV-GT relay model with shared probabilistic graphs and compression/computation energy tradeoff.
+- [[xiao-2025-star-ris-bidirectional-uav-mec]] — Xiao et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2025.3529252`. STAR-RIS-enhanced UAV-MEC with same-slot bidirectional offloading to BS-MEC and UAV-MEC servers; Dinkelbach/SCA BCD energy-efficiency maximization.
+- [[wang-2026-secure-lae-uav-scheduling]] — Wang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3680053`. Secure low-altitude aerial communications; UAVs dynamically switch between communication and artificial-noise jamming roles while optimizing scheduling, power, 3D trajectory, and velocity.
+- [[ma-2026-mean-field-green-aec]] — Ma et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3698303`. Green aerial edge computing for metaverse users; mean-field-game task allocation plus Lyapunov energy valuation across CE-UAVs and energy-harvesting EF-UAVs, with Raspberry Pi5/A100 hardware-in-the-loop validation.
+
+New concept pages: [[probabilistic-semantic-communication]] and [[mean-field-game]]. Updated concept backlinks for [[semantic-communication]], [[space-air-ground-integrated-network]], [[star-ris]], [[uav-mounted-ris]], [[task-offloading]], [[low-altitude-intelligent-network]], [[energy-harvesting-mec]], [[blockchain-for-fl-aggregation]], [[federated-learning]], [[mappo]], [[physical-layer-security]], [[friendly-jamming-uav]], [[lyapunov-optimization]], [[uav-trajectory-control]], [[alternating-optimization-sdr-sca]], and [[fractional-programming-dinkelbach]]. No author entity pages were created; parse-confirmed authors were not merged into existing author entities without a specific identity-confirmation need.
+
+Metadata notes: DOI/venue/year for [[wang-2026-blockchain-lae-fl-mappo]], [[zhao-2025-probabilistic-semantic-sagin]], and [[xiao-2025-star-ris-bidirectional-uav-mec]] were present in the parses. [[wang-2026-secure-lae-uav-scheduling]] and [[ma-2026-mean-field-green-aec]] had silent top-level parse metadata, so DOI/venue/year were verified through title-matched DOI metadata. Technical claims are grounded in the local parses; hardware evidence for [[ma-2026-mean-field-green-aec]] is recorded as hardware-in-the-loop emulation, not real UAV flight.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 280 curated raw references, and 65 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 292 sources, 284 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 38 advisory present-but-unlisted omissions, all outside the newly curated source authors. LLM Wiki health was OK; `/graph/current` returned `{"ok":false,"error":"Not found"}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 deployment / RIS / terrain MEC sources
 
 Added five source pages and three concept pages:

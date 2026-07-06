@@ -5,8 +5,10 @@ tags: [optimization, fractional-programming, theory]
 related:
   - "[[lyapunov-optimization]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
+  - "[[xiao-2025-star-ris-bidirectional-uav-mec]]"
+  - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Fractional Programming and Dinkelbach Transform
@@ -31,4 +33,4 @@ The EE objective in WPT-MEC, NOMA, and joint communication-computation problems 
 
 ## In this wiki
 
-[[zhu-2025-lycnn-drl-wpt-mec]] applies fractional programming to LSEM's EE objective before applying Lyapunov to the long-term constraints. The combination — fractional programming for the *objective* form, Lyapunov for the *time coupling* — is a recurring template in long-term EE-MEC papers.
+[[zhu-2025-lycnn-drl-wpt-mec]] applies fractional programming to LSEM's EE objective before applying Lyapunov to the long-term constraints. [[xiao-2025-star-ris-bidirectional-uav-mec]] uses Dinkelbach's algorithm to handle the completed-task-bits over energy objective in STAR-RIS-enabled UAV-MEC. [[wang-2026-secure-lae-uav-scheduling]] uses a Dinkelbach-driven trajectory/velocity subproblem for secrecy energy efficiency. The combination — fractional programming for the *objective* form, Lyapunov or SCA/AO for the *time and coupling constraints* — is a recurring template in long-term EE-MEC papers.

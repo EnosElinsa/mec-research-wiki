@@ -61,6 +61,7 @@
 - [[ning-2023-uav-mec-offloading-deployment]] — Ning et al. 2023. Dynamic UAV-MEC computation offloading and server deployment as coupled stochastic games; UEPSSL/UAVPSSL learning plus chess-like asynchronous update toward NE (IEEE TMC).
 - [[sun-2024-mvtora-postdisaster-vfc]] — Sun et al. 2024. Post-disaster aerial-terrestrial MEC + **vehicle fog computing**; game theory + convex + evolutionary (MVTORA).
 - [[chen-2022-qoe-game-end-edge-cloud]] — Chen et al. 2022. **QoE-aware decentralized end-edge-cloud offloading** as a **potential game** (MUTO-Game); self-interested user devices compete for channels + edge compute, maximizing sum QoE; proven NE existence + the distributed GDTO algorithm + a convergence bound and a **Price-of-Anarchy** worst-case guarantee (IEEE TMC).
+- [[ma-2026-mean-field-green-aec]] — Ma et al. 2026. Green aerial edge computing for metaverse users; [[mean-field-game]] task allocation + Lyapunov energy valuation across CE-UAVs and energy-harvesting EF-UAVs, with Raspberry Pi5/A100 hardware-in-the-loop validation (IEEE TMC).
 
 > [[chen-2024-ulse-game]] (UAV-LEO offloading as a potential game) is also game-theoretic; it is filed under **SAGIN / satellite offloading** below as its primary architectural home.
 > [[zhang-2026-uav-task-path-lu-its]] (multi-UAV low-altitude ITS task allocation as a potential game) is filed under **Architectural / spectrum / governance** as its primary low-altitude-economy home; [[jia-2026-ufsp-rail-inspection]] (imperfect-information stochastic potential game) is filed under **UAV-swarm collaborative computing**.
@@ -166,6 +167,7 @@
 - [[zhang-2023-three-tier-satellite-offloading]] — Zhang et al. 2023. **Satellite-based three-tier cloud-edge offloading**; remote ground UEs offload (data-partition **partial offloading**) to a LEO-edge server and further to a ground cloud; min system energy over **user association + power + task scheduling + fronthaul/backhaul bandwidth assignment**; NOMA fronthaul + quadratic-transform power + CVX bandwidth, in a joint iterative algorithm (IEEE TWC).
 - [[zhang-2024-qos-vne-sagoin]] — Zhang et al. 2024. **QoS-aware multi-domain virtual network embedding** over a three-layer **space-air-ground-ocean** integrated network (SAGOI-Net); K-means classifies VNRs into compute/bandwidth/delay QoS categories to switch the **RL agent's reward**; convolutional policy network for node mapping + k-shortest-path link mapping (IEEE TSC). *(SDN/NFV resource orchestration.)*
 - [[xie-2025-stin-delay-offloading]] — Xie et al. 2025. **LEO satellite-terrestrial** computation offloading + resource allocation that treats **system state delay** (stale observations / delayed actions) as a first-class modeling object: a **stochastic delay MDP** reduced to a standard MDP with an **augmented state**, solved by an augmented-experience **double DQN**, plus a multi-level feedback queue (RAMLFQ) for per-server CPU; MINLP energy minimization under latency (IEEE TMC).
+- [[zhao-2025-probabilistic-semantic-sagin]] — Zhao et al. 2025. Energy-efficient [[probabilistic-semantic-communication]] over SAGIN; satellite-UAV-GT relay model with shared probabilistic graphs, semantic compression ratio, satellite/UAV computation allocation, bandwidth, power, and UAV placement optimized for total communication+computation energy (IEEE TWC).
 - [[tang-2021-cecls-hybrid-cloud-edge]] — Tang et al. 2021. **Hybrid cloud-and-edge LEO satellite (CECLS)** network; **three-tier** (ground users / LEO-edge MEC / terrestrial cloud) sum-energy minimization with per-satellite **coverage-time** + **compute-capability** caps; binary nonconvex → **binary relaxation to an LP** → **distributed ADMM** + binary recovery (IEEE IoT-J).
 - [[moon-2024-ground-satellite-uam-scheduling]] — Moon & Chae 2024. **Cooperative ground-satellite downlink scheduling + power allocation** for **urban air mobility (UAM)** in a 6G NTN; offload high-interference UAMs to the satellite band, recast GS link association as a **minimum-cost max-flow** graph problem, then **SCA** power allocation; prediction-based, CSI-light scheduling (MINLP, IEEE JSAC). *(Communication-layer scheduling, not computation offloading.)*
 
@@ -281,6 +283,7 @@
 - [[mao-2025-irs-noma-fl-secrecy]] — Mao et al. 2025. **IRS-assisted** secrecy-rate maximization for **NOMA-based federated-learning** model aggregation; max-min secrecy rate over device power + IRS phase shift via **DDPG** (IEEE TCCN).
 - [[qin-2025-bcuav-masac]] — Qin et al. 2025. Blockchain-enabled secure UAV-MEC: Lyapunov + MASAC + DOA.
 - [[benaya-2025-aerial-isac-haps]] — Benaya et al. 2025. HAPS-mounted FD ISAC + friendly-jamming UAV + ground MEC; AO + SDR + SCA.
+- [[wang-2026-blockchain-lae-fl-mappo]] — Wang et al. 2026. Blockchain-assisted low-altitude edge-intelligence network; UEs/TUAVs/SUAVs/BS four-layer offloading+caching+FL stack, FL-MAPPO-BOCRAOA, PV-aware throttling, M/M/1 queueing, and blockchain-supported cache cooperation (IEEE TMC).
 - [[wang-2025-acbft-uav-consensus]] — Wang et al. 2025. **ACBFT** — PSO-ordered chain-based Byzantine fault-tolerant consensus for UAV ad hoc networks.
 - [[wang-2024-blockchain-uav-mec-dpos]] — Wang et al. 2024. **Blockchain-integrated** UAV-assisted MEC; improved **DPoS** consensus (UAV light nodes + reputation-voted ground full nodes) + two-stage **Stackelberg** game over trajectory and resource allocation, solved with SCA (IEEE TVT).
 
@@ -294,6 +297,7 @@
 - [[wang-2024-ttw-amd-localization]] — Wang et al. 2024. **Through-the-wall (TTW)** passive AMD detection + localization via CSI; reference-channel SSI cancellation + 2D matrix pencil ToF/PLCR estimation; hardware-validated (glass/brick walls: 0.964/0.952 detection accuracy, 1.65/2.05 m median error) (IEEE JSAC).
 - [[yao-2025-secure-isac-dual-eavesdropping]] — Yao et al. 2025. Secure UAV-ISAC against dual eavesdropping; AO + SCA + SDR for secrecy + sensing security.
 - [[chen-2024-three-party-hierarchical-game-pls]] — Chen et al. 2024. **Three-party hierarchical game** for PLS with dynamic trilateral coalitions (LUs / EVs / JAs); HCSF + DRL (IEEE TWC).
+- [[wang-2026-secure-lae-uav-scheduling]] — Wang et al. 2026. Secure low-altitude aerial communications; UAVs dynamically switch between communication and artificial-noise jamming roles while optimizing scheduling, power, 3D trajectory, and velocity for secrecy energy efficiency (IEEE TWC).
 - [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024. Secure UAV-**RIS**-MEC-IoT offloading against **aerial + ground eavesdroppers**; SOP over Nakagami-m + max-min **secure computation efficiency** via Dinkelbach + BCD + bisection (IEEE TCOMM).
 - [[su-2024-sensing-aided-isac-pls]] — Su et al. 2024. **Sensing-aided PLS** for ISAC: dual-functional BS estimates eavesdropper directions (CAML) then jointly minimizes CRB and maximizes AN-aided secrecy rate via AO + fractional programming (IEEE TWC).
 - [[wen-2024-iscc-edge-ai]] — Wen et al. 2024. **Task-oriented ISCC** for multi-device **edge-AI inference**: ISAC devices radar-sense multi-view data, quantize + offload features to an edge server running split inference; maximize **discriminant gain** (KL-divergence accuracy surrogate) over sensing/transmit power + comm time + quantization bits; non-convex but solved **optimally** by the **sum-of-ratios** method (IEEE TWC).
@@ -343,6 +347,7 @@
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
 - [[panahi-2026-uav-green-iot-offloading]] — Panahi & Panahi 2026. Cost-aware UAV-enabled green-IoT computation offloading; Q-learning region trajectory plus laser / renewable energy procurement and COF/WPT service-compensation accounting (IEEE TGCN).
 - [[mohammadi-2026-star-ris-uav-mec-noma]] — Mohammadi et al. 2026. STAR-RIS-assisted UAV-MEC with NOMA; weighted energy minimization over task-bit allocation, transmit power, STAR-RIS phases, and UAV trajectory via BCD/SCA/MRT-style updates (IEEE TGCN).
+- [[xiao-2025-star-ris-bidirectional-uav-mec]] — Xiao et al. 2025. STAR-RIS-enhanced UAV-MEC with same-slot bidirectional offloading to BS-MEC and UAV-MEC servers; EE maximization over scheduling, resource allocation, STAR-RIS beamforming, and trajectory via Dinkelbach/SCA BCD (IEEE TWC).
 - [[zhou-2018-uav-wireless-powered-mec]] — Zhou et al. 2018. **Computation-rate maximization** in UAV-enabled wireless-powered MEC; partial + binary offloading; two-/three-stage closed-form optimization (JSAC).
 - [[he-2024-backscatter-wpmec-cooperation]] — He et al. 2024. **Backscatter-assisted wireless-powered MEC with user cooperation** (source node + helper-relay + HAP-with-MEC); integrated **BackCom + active comm**; **user energy-efficiency** maximization via Dinkelbach fractional programming + convex transform to semi-closed-form solutions (IEEE TMC).
 - [[li-2024-irs-secure-wpmec]] — Li et al. 2024. **IRS-assisted secure wireless-powered MEC** with a passive eavesdropper; harvest-then-offload (TDMA) + partial offloading; **sum secure computation task bits** maximization over AP energy beamforming + IRS phase shifts (WPT + offload) + power + time + local frequency; non-convex → 3 subproblems via Taylor expansion + SDR + Lagrange-duality/KKT, iterative AO; >45% secure-bits gain at max AP power (IEEE TMC).
@@ -480,6 +485,7 @@
 - [[small-cell-mec]]
 - [[mobility-aware-offloading]]
 - [[semantic-communication]]
+- [[probabilistic-semantic-communication]]
 - [[task-oriented-communication]]
 - [[discriminant-gain]]
 - [[device-to-device-communication]]
@@ -604,6 +610,7 @@
 - [[two-timescale-optimization]]
 - [[fractional-programming-dinkelbach]]
 - [[stackelberg-game]]
+- [[mean-field-game]]
 - [[potential-game]]
 - [[stochastic-game]]
 - [[fictitious-self-play]]

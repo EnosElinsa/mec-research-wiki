@@ -8,8 +8,10 @@ related:
   - "[[hierarchical-aerial-mec]]"
   - "[[he-2026-dt-sagimec-lae]]"
   - "[[jia-2026-dro-lawn-trajectory]]"
+  - "[[wang-2026-blockchain-lae-fl-mappo]]"
+  - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-05-28
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Low-Altitude Intelligent Network (LAIN / Low-Altitude Economy)
@@ -27,7 +29,7 @@ Distinguishing characteristics vs general UAV networks:
 
 LAINs are the natural deployment substrate for [[multi-uav-assisted-mec|UAV-MEC]] in real-world urban environments. Spectrum sharing schemes like [[wang-2025-uav-swarm-stackelberg]] are foundational — without efficient spectrum coordination, UAV-MEC compute offloading becomes bandwidth-starved.
 
-Recent corpus entries use the low-altitude frame for both vertical integration and robust control: [[he-2026-dt-sagimec-lae]] adds a DT-assisted UAV/LEO/cloud SAGIMEC architecture for low-altitude economy workloads, while [[jia-2026-dro-lawn-trajectory]] treats uncertain task-size distributions in a UAV/HAP low-altitude wireless network.
+Recent corpus entries use the low-altitude frame for vertical integration, secure communication, and robust control: [[he-2026-dt-sagimec-lae]] adds a DT-assisted UAV/LEO/cloud SAGIMEC architecture for low-altitude economy workloads; [[wang-2026-blockchain-lae-fl-mappo]] models blockchain-assisted FL/MAPPO offloading and caching across UEs, task UAVs, service UAVs, and a BS; [[wang-2026-secure-lae-uav-scheduling]] studies secure LAE communications with UAVs switching between communication and jamming roles; and [[jia-2026-dro-lawn-trajectory]] treats uncertain task-size distributions in a UAV/HAP low-altitude wireless network.
 
 ## Open architectural questions
 

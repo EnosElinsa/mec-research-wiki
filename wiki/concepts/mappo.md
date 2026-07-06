@@ -8,12 +8,15 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[masac]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
+  - "[[wang-2026-blockchain-lae-fl-mappo]]"
 created: 2026-05-29
-updated: 2026-06-03
+updated: 2026-07-07
 ---
 
 # MAPPO (Multi-Agent PPO)
 
 The multi-agent extension of [[ppo|Proximal Policy Optimization]]: each agent runs a clipped-objective on-policy actor, typically with a **centralized critic** during training under [[centralized-training-decentralized-execution|CTDE]], so agents act on local observations at execution time. MAPPO inherits PPO's training stability (trust-region-style clipping) and is a common choice when on-policy stability is preferred over the sample efficiency of off-policy methods like [[masac]].
 
-In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association, resource-allocation, and UAV→HAP offloading POMDP in a hierarchical aerial computing system, with state normalization and action masking to speed training.
+In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association, resource-allocation, and UAV-to-HAP offloading POMDP in a hierarchical aerial computing system, with state normalization and action masking to speed training.
+
+[[wang-2026-blockchain-lae-fl-mappo]] uses an FL-MAPPO variant for low-altitude edge intelligence, coordinating offloading decisions, caching, and resource allocation across task UAVs and service UAVs under queueing, PV-energy, and blockchain-overhead terms.

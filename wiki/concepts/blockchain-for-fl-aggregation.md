@@ -7,8 +7,9 @@ related:
   - "[[zero-trust-architecture]]"
   - "[[ccvm-correction-voting]]"
   - "[[mao-2025-bcsa-frl]]"
+  - "[[wang-2026-blockchain-lae-fl-mappo]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Blockchain for Federated Learning Aggregation
@@ -34,3 +35,5 @@ Classical FL needs a central aggregator everyone trusts. ZT explicitly forbids t
 - Off-chain ML training, on-chain *votes* over hashes of model updates.
 - On-chain reputation scores fed back into per-round aggregation weights.
 - Time-bounded synchronization rounds aligned with [[leo-satellite-edge-computing|LEO]] coverage windows.
+
+[[wang-2026-blockchain-lae-fl-mappo]] uses blockchain as a trust/cooperation layer for SUAVs in a low-altitude FL-MAPPO offloading and caching network. Its BS still aggregates the FL global model, so it is a blockchain-assisted FL coordination pattern rather than a pure blockchain replacement for the central aggregator.

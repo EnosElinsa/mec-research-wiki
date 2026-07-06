@@ -8,8 +8,10 @@ related:
   - "[[lyapunov-optimization]]"
   - "[[maritime-mec]]"
   - "[[wang-2024-maritime-eh-jcora]]"
+  - "[[wang-2026-blockchain-lae-fl-mappo]]"
+  - "[[ma-2026-mean-field-green-aec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-07
 ---
 
 # Energy Harvesting MEC
@@ -18,4 +20,4 @@ MEC where the edge node (or device) is powered, fully or partly, by **harvested 
 
 The harvested energy is **uncertain and time-varying**, so EH-MEC designs typically pair an **energy budget / battery-level constraint** with a long-term performance objective and solve the temporal coupling with [[lyapunov-optimization]] (drift-plus-penalty), avoiding the need to predict future harvest.
 
-In the wiki, [[wang-2024-maritime-eh-jcora]] powers maritime information stations (intelligent buoys) with combined **solar + ocean-wave** harvesting and maximizes long-term throughput under queue-stability + energy constraints via Lyapunov optimization — a renewable EH instance for [[maritime-mec]] where grid access is infeasible at sea. Complements the RF/WPT energy track ([[hsu-2025-drl-hues-hap-noma]], [[zhu-2025-lycnn-drl-wpt-mec]], [[chen-2025-swipt-mec-sac]]).
+In the wiki, [[wang-2024-maritime-eh-jcora]] powers maritime information stations (intelligent buoys) with combined **solar + ocean-wave** harvesting and maximizes long-term throughput under queue-stability + energy constraints via Lyapunov optimization — a renewable EH instance for [[maritime-mec]] where grid access is infeasible at sea. [[wang-2026-blockchain-lae-fl-mappo]] adds PV-aware throttling for service UAVs in a low-altitude FL/MAPPO offloading-and-caching system. [[ma-2026-mean-field-green-aec]] treats energy harvesting as a population-level sustainability mechanism, with energy-focused UAVs replenishing a green aerial edge computing fleet. Complements the RF/WPT energy track ([[hsu-2025-drl-hues-hap-noma]], [[zhu-2025-lycnn-drl-wpt-mec]], [[chen-2025-swipt-mec-sac]]).
