@@ -3991,6 +3991,23 @@ Sources:
 - Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/full.md
 - YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction/72143137-933e-46b2-b1e8-aaf9d3713ec3_origin.pdf
 - YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction/full.md
+## [2026-07-07] curation pass: secure offloading, LAE privacy trajectory, and cooperative ISAC | 5 sources, 3 concepts
+
+Curated five raw sources from the uncurated backlog:
+
+- [[beishenalieva-2026-secrecy-aware-uav-path-planning]] — secrecy-aware UAV-ITS offloading with policy-gradient DRL, legitimate jamming, malicious aerial eavesdroppers/jammers, and PSO slot allocation.
+- [[wu-2026-secure-split-offloading-ci]] — secure UAV-assisted collaborative DNN inference with multi-exit DNNs, dual-UAV trajectory design, cooperative jamming, SCA, and discrete WOA.
+- [[wu-2025-security-aware-multiuav-service-placement]] — security-aware multi-UAV MEC deployment, offloading, service placement, and UAV-jammer power via OE-MATD3 plus closed-form device transmit power.
+- [[wu-2026-service-oriented-segmented-trajectory]] — low-altitude high-rise UAV-MEC trajectory design with VSRL-LKH, TRA/SOS-TRA, service segmentation, and smart-window trajectory privacy.
+- [[wang-2026-stbc-cooperative-isac]] — multi-BS cooperative ISAC with robust inter-BS nulling, space-time block codec echo separation, and SINR-weighted data fusion.
+
+Added three concept pages: [[multi-exit-dnn]], [[trajectory-privacy]], and [[space-time-block-codec]]. Updated backlinks for PSO, collaborative inference, DNN partitioning, friendly-jamming UAVs, PLS, MATD3, service caching, networked ISAC, ISAC, CRB, LAIN, trajectory control, offloading, UAV-ITS, PPO, WOA, AO/SCA, and the [[zhiyong-feng]] entity page.
+
+Process notes:
+
+- DOI/venue/year for parse-silent metadata were verified through title-matched Crossref/IEEE DOI records; source claims remain grounded in the parsed Markdown.
+- Local counts after the pass: 339 sources, 315 concepts, 73 entities, 345 raw folders.
+
 ## [2026-07-06] external batch delete | 22 source files
 
 Deleted 22 source files and 0 wiki pages.

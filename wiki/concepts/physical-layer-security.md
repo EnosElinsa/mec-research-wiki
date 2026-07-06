@@ -12,6 +12,9 @@ related:
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[wang-2026-secure-reliable-uav-mec]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
+  - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
+  - "[[wu-2026-secure-split-offloading-ci]]"
+  - "[[wu-2025-security-aware-multiuav-service-placement]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -35,3 +38,5 @@ PLS complements rather than replaces upper-layer crypto. It's particularly usefu
 [[wang-2026-secure-reliable-uav-mec]] applies the same artificial-noise idea inside a UAV-MEC offloading problem: multi-antenna users inject AN in the legitimate channel's null space while the UAV trajectory and offloading resources are optimized for secure energy efficiency under a secrecy-outage reliability constraint.
 
 [[cai-2026-llm-drl-secure-lae-data]] connects PLS to [[age-of-information]] and [[generative-ai-for-mec]]: an LLM-enhanced DRL controller coordinates a data-collection UAV and a jamming UAV to reduce freshness/energy cost while suppressing eavesdroppers.
+
+The 2025-2026 secure-offloading batch adds three UAV-specific PLS variants: [[beishenalieva-2026-secrecy-aware-uav-path-planning]] protects ITS offloading against malicious aerial eavesdroppers and jammers, [[wu-2026-secure-split-offloading-ci]] protects DNN intermediate feature data during split inference, and [[wu-2025-security-aware-multiuav-service-placement]] embeds secrecy-rate constraints into service-placement-aware multi-UAV MEC.

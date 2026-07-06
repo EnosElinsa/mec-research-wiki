@@ -93,6 +93,7 @@
 - [[zhao-2026-heuristic-supervised-drl]] - Zhao et al. 2026. Heuristic-supervised DRL framework with TTSSA convergence analysis; PSO bridges upper-tier planning to MARL control in the UAV-MEC case study (IEEE TMC).
 - [[chen-2026-qos-noma-multiuav]] - Chen et al. 2026. QoS-oriented NOMA multi-UAV MEC offloading with task priorities, Lagrange-dual constraint handling, and improved SAC for trajectories/association/offloading/resources (IEEE TWC).
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
+- [[wu-2026-secure-split-offloading-ci]] - Wu et al. 2026. Secure UAV-assisted collaborative DNN inference; multi-exit DNN, DNN partitioning, dual-UAV trajectories, cooperative jamming, SCA, and discrete WOA (IEEE TMC).
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Liu et al. 2026. UAV-assisted vehicular V2X with **delayed CSI feedback**; Lyapunov energy queue + diffusion-actor DDPG (**D3PG**) over V2V channel reuse, power control, and UAV altitude (IEEE TWC).
 - [[tong-2026-uneven-terrain-uav-mec]] — Tong et al. 2026. Uneven-terrain UAV-MEC with service coverage, partial UAV/BS task allocation, propulsion energy, and safe 3D flight; PH-DRL separates TD3 flight control from actor-critic task allocation (IEEE TMC).
@@ -201,6 +202,7 @@
 - [[wu-2025-gai-ris-resource-management]] — Wu et al. 2025. **GAI + distributional RL (DBRL)** for RIS-aided 6G resource management; CDL cascade channel estimation + GAN-modeled distributional Q-function; maximizes joint EE + QoSSR (IEEE TCCN).
 - [[wu-2025-iopo-irs-uav-thz-mec]] — Wu et al. 2025. **IRS-assisted** multi-UAV THz MEC; two-stage IOPO (order-preserving offloading + WOA phases).
 - [[shao-2024-drl-antijamming-mec]] — Shao et al. 2024. **Anti-jamming** UAV-MEC resource management; PER-MATD3 (hardware-validated).
+- [[beishenalieva-2026-secrecy-aware-uav-path-planning]] - Beishenalieva & Yoo 2026. Secrecy-aware UAV-ITS offloading against malicious aerial eavesdroppers/jammers; policy-gradient DRL path/power/mode control plus PSO slot allocation (IEEE T-ITS).
 - [[sun-2024-mfris-semantic-antijamming]] — Sun et al. 2024. **Multi-functional RIS** + **semantic** anti-jamming communication & computing for aerial-ground MEC; worst-case CSI; semantic-computation-rate max via monotonic optimization + DSOCP (+ GPI) (IEEE JSAC).
 - [[sun-2024-active-passive-ris-receiver]] — Sun et al. 2024. **Active-passive cascaded RIS** receiver architecture for anti-jamming; worst-case rate max under imperfect angular jammer CSI via UM-ZF (passive) + AMM/C-M-CCD (active) semi-closed-form solutions (IEEE TWC). *(Physical-layer RIS-receiver anchor, not MEC.)*
 - [[guo-2024-multiuav-proactive-eavesdropping]] — Guo et al. 2024. **Multi-UAV proactive eavesdropping** (legitimate surveillance): full-duplex UAVs jam multiple mobile suspicious links while planning trajectories; MDP decoupled into a closed-form **jamming-power solver** + per-UAV decentralized **RL moving policy** (IEEE TMC). *(Surveillance/PLS anchor, not MEC.)*
@@ -323,6 +325,7 @@
 - [[mao-2025-irs-noma-fl-secrecy]] — Mao et al. 2025. **IRS-assisted** secrecy-rate maximization for **NOMA-based federated-learning** model aggregation; max-min secrecy rate over device power + IRS phase shift via **DDPG** (IEEE TCCN).
 - [[qin-2025-bcuav-masac]] — Qin et al. 2025. Blockchain-enabled secure UAV-MEC: Lyapunov + MASAC + DOA.
 - [[benaya-2025-aerial-isac-haps]] — Benaya et al. 2025. HAPS-mounted FD ISAC + friendly-jamming UAV + ground MEC; AO + SDR + SCA.
+- [[wu-2025-security-aware-multiuav-service-placement]] - Wu et al. 2025. Security-aware multi-UAV MEC service placement and task offloading with a cooperative UAV jammer; OE-MATD3 plus closed-form device transmit power (IEEE TMC).
 - [[wang-2026-blockchain-lae-fl-mappo]] — Wang et al. 2026. Blockchain-assisted low-altitude edge-intelligence network; UEs/TUAVs/SUAVs/BS four-layer offloading+caching+FL stack, FL-MAPPO-BOCRAOA, PV-aware throttling, M/M/1 queueing, and blockchain-supported cache cooperation (IEEE TMC).
 - [[wang-2025-acbft-uav-consensus]] — Wang et al. 2025. **ACBFT** — PSO-ordered chain-based Byzantine fault-tolerant consensus for UAV ad hoc networks.
 - [[wang-2024-blockchain-uav-mec-dpos]] — Wang et al. 2024. **Blockchain-integrated** UAV-assisted MEC; improved **DPoS** consensus (UAV light nodes + reputation-voted ground full nodes) + two-stage **Stackelberg** game over trajectory and resource allocation, solved with SCA (IEEE TVT).
@@ -338,6 +341,7 @@
 - [[tang-2025-cooperative-isac-lae]] - Tang et al. 2025. Cooperative ISAC for low-altitude economy; tensor-decomposition monostatic estimation, false-removing MST association, Pareto position fusion, and residual-weighted velocity estimation (IEEE TWC).
 - [[ye-2026-mode-lae-isac]] - Ye et al. 2026. Multi-objective LAE ISAC; MODE combines DDPG with mixture-of-experts multi-task learning to tune the communication/sensing tradeoff across objective-preference weights (IEEE TMC).
 - [[zhao-2025-networked-isac-uav-handover]] - Zhao et al. 2025. Networked ISAC UAV tracking/handover for LAE; virtual sensing cells, MUSIC estimation, centralized EKF fusion, PBS handover, and VSC handover maintain multi-BS tracking (IEEE TWC).
+- [[wang-2026-stbc-cooperative-isac]] - Wang et al. 2026. Space-time block codec cooperative ISAC; multi-BS shared-resource UAV sensing with robust inter-BS nulling, STBC echo separation, and SINR-weighted fusion (IEEE TMC).
 - [[ye-2026-meta-deepesc-lae-isac]] - Ye et al. 2026. Meta-DeepESC for energy-efficient LAE ISAC; TD3-style constrained action selection, episodic replay, and meta-learning for GBS beamforming plus authorized-UAV trajectories (IEEE TMC).
 - [[ye-2026-deeplsc-lae-isac]] - Ye et al. 2026. DeepLSC LAE ISAC; DDPG-based joint GBS beamforming and UAV-trajectory control with constrained noise exploration, hierarchical replay, and symmetric experience augmentation (IEEE TWC).
 - [[zeng-2026-fmcw-isibc-lae]] — Zeng & Liang 2026. **FMCW-enabled integrated sensing, identification, and backscatter communication** for LAE; UAV-mounted BDs modulate identity symbols onto FMCW echoes, with SVD-based range/velocity/symbol estimation and CRLB analysis (IEEE TWC).
@@ -380,6 +384,7 @@
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
 - [[wang-2025-lae-network-survey]] — Wang et al. 2025. Survey: low-altitude economy network architecture, integrated technologies, and future directions.
 - [[jiang-2025-isac-lae-overview]] — Jiang et al. 2025. ISAC for LAE — IAGN architecture, MBCM channel model, stochastic-geometry analysis.
+- [[wu-2026-service-oriented-segmented-trajectory]] - Wu et al. 2026. Service-oriented segmented trajectories for high-rise low-altitude UAV-MEC; VSRL-LKH plus TRA/SOS-TRA for latency, energy, and smart-window trajectory privacy (IEEE TMC).
 - [[hsu-2025-drl-hues-hap-noma]] — Hsu et al. 2025. **HAP** transmission + RF energy harvesting in NOMA SAGINs; PPO-based DRL-HUES.
 - [[wu-2024-satellite-maritime-spectrum-sharing]] — Wu et al. 2024. **VDES satellite-maritime spectrum sharing** (VDE-SAT + VDE-TER co-frequency under ITU uplink/downlink interference constraints); satellite-centralized allocation maximizing combined throughput with task-priority weighting; partial observability → **POMDP** solved with **SCA-D3QN** (Double + Dueling DQN), offline-train/online-deploy (IEEE TVT). *(Satellite-maritime spectrum/comms, not MEC offloading.)*
 
@@ -457,7 +462,7 @@
 - [[boxiong-wang]] & [[hui-kang]] (Jilin University — [[geng-sun]] aerial-MEC cluster; 2 sources each).
 - [[yuben-qu]] & [[hao-sun]] (Nanjing Univ. of Aeronautics and Astronautics — UAV-swarm collaborative-inference cluster with [[chao-dong]]/[[qihui-wu]]; 2 sources each — [[qu-ecoei-uav-swarm]] + [[sun-2024-asap-uav-swarm]], identical `@nuaa.edu.cn` emails).
 - [[kezhi-wang]] (Northumbria Univ. — UAV-MEC trajectory/offloading group; 3 sources), [[xuemin-shen]] (Univ. of Waterloo — MEC resource management; 3 sources), [[yuguang-fang]] (City Univ. of Hong Kong — maritime MEC, [[bin-lin]] cluster; 2 sources), [[haixia-peng]] (Univ. of Waterloo → Xi'an Jiaotong Univ. — vehicular + maritime MEC; 2 sources, affiliation move documented in both parses).
-- [[liping-qian]] (Zhejiang Univ. of Technology — NOMA / multi-access marine MEC; 3 sources), [[minghui-dai]] (Univ. of Macau — marine multi-access offloading; 3 sources, `minghuidai@um.edu.mo`), [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications — UAV-swarm MEC + UAV-ISAC; 2 sources).
+- [[liping-qian]] (Zhejiang Univ. of Technology — NOMA / multi-access marine MEC; 3 sources), [[minghui-dai]] (Univ. of Macau — marine multi-access offloading; 3 sources, `minghuidai@um.edu.mo`), [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications — UAV-swarm MEC + UAV-ISAC + cooperative multi-BS ISAC; 3 sources).
 - [[shichao-li]] & [[hongbin-chen]] (Guilin Univ. of Electronic Technology — two-hop air-ground IoRT MEC, `@guet.edu.cn`-matched; 2 and 3 sources), [[mianxiong-dong]] (Muroran Inst. of Technology; 2 sources) & [[ning-zhang]] (Univ. of Windsor; 2 sources) — co-authors across the IoRT + robust-multi-UAV DRL offloading thread, [[victor-c-m-leung]] (Shenzhen MSU-BIT / Shenzhen Univ. / UBC, `vleung@ieee.org`; 9 sources in the [[geng-sun]]/[[dusit-niyato]] aerial-MEC cluster).
 - [[zhou-su]] (Xi'an Jiaotong Univ. — maritime/vehicular edge computing; 2 sources, corresponding author of [[zeng-2024-usv-fleet-collaborative-offloading]]), [[yanheng-liu]] (Jilin Univ. — [[geng-sun]] aerial/vehicular-MEC cluster; 2 sources).
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
@@ -595,6 +600,7 @@
 
 - [[uav-trajectory-control]]
 - [[compliance-aware-uav-trajectory]]
+- [[trajectory-privacy]]
 - [[bang-bang-control]]
 - [[uav-charging-scheduling]]
 - [[dynamic-uav-clustering]]
@@ -755,6 +761,7 @@
 
 - [[integrated-sensing-and-communication]]
 - [[networked-isac]]
+- [[space-time-block-codec]]
 - [[cramer-rao-bound]]
 - [[integrated-sensing-computation-communication]]
 - [[mmwave-radar-sensing]]
@@ -811,6 +818,7 @@
 ### Distributed inference
 
 - [[collaborative-dl-inference]]
+- [[multi-exit-dnn]]
 - [[dnn-model-partition]]
 - [[data-partition-parallel-inference]]
 - [[pipeline-parallel-inference]]

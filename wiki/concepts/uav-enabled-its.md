@@ -9,6 +9,7 @@ related:
   - "[[hou-2025-pbia-air-iscc-uav-its]]"
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[ji-2026-llm-iov-uav-offloading]]"
+  - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -21,4 +22,4 @@ Distinct from **vehicular MEC** ([[vehicular-mec]]) — vehicular MEC offloads t
 
 Key wiki source: [[peng-2024-energy-time-uav-its]], which adds the **completion-time-difference** objective (synchronize finish times for fusion quality) on top of standard energy minimization. [[ji-2026-llm-iov-uav-offloading]] is adjacent but vehicle-task-driven: UAVs provide 3D coverage and edge offloading support for dense IoV traffic, with LLM-assisted resource adjustment for long-tail failures.
 
-[[hou-2025-pbia-air-iscc-uav-its]] adds an Air-ISCC view: UAVs sense blocked or accident-affected road environments, communicate with IoTDs, and compute offloaded tasks under a PPO-based swarm policy.
+[[hou-2025-pbia-air-iscc-uav-its]] adds an Air-ISCC view: UAVs sense blocked or accident-affected road environments, communicate with IoTDs, and compute offloaded tasks under a PPO-based swarm policy. [[beishenalieva-2026-secrecy-aware-uav-path-planning]] adds the security view: UAVs act as mobile aggregators when RSUs fail or congest, while policy-gradient control and PSO slot scheduling protect ITS sensing uploads from malicious aerial eavesdroppers and jammers.

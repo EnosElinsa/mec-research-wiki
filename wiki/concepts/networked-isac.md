@@ -8,10 +8,11 @@ related:
   - "[[seamless-handover]]"
   - "[[zhao-2025-networked-isac-uav-handover]]"
   - "[[tang-2025-cooperative-isac-lae]]"
+  - "[[wang-2026-stbc-cooperative-isac]]"
 created: 2026-07-07
 updated: 2026-07-07
 ---
 
 # Networked ISAC
 
-An ISAC architecture where multiple base stations or access points cooperate for sensing and communication instead of treating each cell independently. In [[zhao-2025-networked-isac-uav-handover]], three neighboring BS sectors form a virtual sensing cell: one primary BS transmits and all three BSs receive echoes, then a centralized EKF fuses the estimates for UAV tracking. The concept is distinct from a single-BS ISAC link because sensing responsibility can be handed over across BSs or virtual sensing cells.
+An ISAC architecture where multiple base stations or access points cooperate for sensing and communication instead of treating each cell independently. In [[zhao-2025-networked-isac-uav-handover]], three neighboring BS sectors form a virtual sensing cell: one primary BS transmits and all three BSs receive echoes, then a centralized EKF fuses the estimates for UAV tracking. [[wang-2026-stbc-cooperative-isac]] handles a different networked-ISAC problem: neighboring BSs share the same time-frequency resources, suppress LoS inter-BS interference, decode space-time block coded echoes, and fuse target estimates by range-profile SINR. The concept is distinct from a single-BS ISAC link because sensing responsibility can be handed over across BSs or virtual sensing cells.

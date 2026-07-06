@@ -9,6 +9,7 @@ related:
   - "[[schulman-2017-ppo]]"
   - "[[wang-2025-ppo-uav-positioning-offloading]]"
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
+  - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -38,7 +39,7 @@ $$
 
 The vanilla form assumes a single action distribution. The work in [[liu-2026-jppo-en-convntm]] generalizes the probability ratio to a hybrid of continuous and discrete components — see [[j-ppo]].
 
-[[wang-2025-ppo-uav-positioning-offloading]] uses PPO for joint UAV positioning and partial task offloading in multi-UAV MEC, while [[wu-2026-model-based-ppo-ris-uav-mec]] embeds PPO in a decentralized model-based MARL loop with local dynamics rollouts for RIS-assisted urban UAV-MEC.
+[[wang-2025-ppo-uav-positioning-offloading]] uses PPO for joint UAV positioning and partial task offloading in multi-UAV MEC, while [[wu-2026-model-based-ppo-ris-uav-mec]] embeds PPO in a decentralized model-based MARL loop with local dynamics rollouts for RIS-assisted urban UAV-MEC. [[beishenalieva-2026-secrecy-aware-uav-path-planning]] uses PPO-style policy-gradient control for secrecy-aware UAV path, power, and mode decisions before PSO slot allocation.
 
 ## Reference implementation
 

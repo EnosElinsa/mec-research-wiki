@@ -28,6 +28,9 @@ related:
   - "[[feng-2026-prediction-service-migration]]"
   - "[[chen-2026-qos-noma-multiuav]]"
   - "[[gong-2026-safe-economic-lae-trajectory]]"
+  - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
+  - "[[wu-2026-secure-split-offloading-ci]]"
+  - "[[wu-2026-service-oriented-segmented-trajectory]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -47,4 +50,4 @@ The trajectory-control role changes with architecture. [[mohammadi-2026-star-ris
 
 The same control surface also appears in placement-, inspection-, maritime-, and secure-data-collection forms: [[wang-2025-ppo-uav-positioning-offloading]] learns UAV placement with task splitting, [[guo-2026-aot-uav-inspection-offloading]] treats the inspection route as a Transformer-encoded TSP-like decision, [[wu-2026-model-based-ppo-ris-uav-mec]] couples decentralized trajectories to RIS phase recommendations and offloading, [[liao-2026-aoi-ris-uav-usv-mec]] optimizes RUAV trajectories for AoI-energy tradeoffs in RIS-assisted UAV-USV MEC, and [[cai-2026-llm-drl-secure-lae-data]] coordinates a data-collection UAV with a jamming UAV for secure LAE updates.
 
-Newer trajectory-control variants add infrastructure, QoS, and compliance coupling: [[ye-2026-flight-speed-battery-swapping]] schedules flight speeds jointly with battery swaps and offloading, [[hu-2026-ertatd3-secure-caching]] learns UAV motion with secure vehicular caching, [[feng-2026-prediction-service-migration]] combines trajectory control with prediction-assisted service migration, [[chen-2026-qos-noma-multiuav]] jointly controls 3D trajectories and priority-aware NOMA offloading, and [[gong-2026-safe-economic-lae-trajectory]] treats urban safety and airspace compliance as first-class trajectory constraints.
+Newer trajectory-control variants add infrastructure, QoS, security, privacy, and compliance coupling: [[ye-2026-flight-speed-battery-swapping]] schedules flight speeds jointly with battery swaps and offloading, [[hu-2026-ertatd3-secure-caching]] learns UAV motion with secure vehicular caching, [[feng-2026-prediction-service-migration]] combines trajectory control with prediction-assisted service migration, [[chen-2026-qos-noma-multiuav]] jointly controls 3D trajectories and priority-aware NOMA offloading, [[gong-2026-safe-economic-lae-trajectory]] treats urban safety and airspace compliance as first-class trajectory constraints, [[beishenalieva-2026-secrecy-aware-uav-path-planning]] uses policy-gradient control for secrecy-aware ITS offloading, [[wu-2026-secure-split-offloading-ci]] couples dual-UAV trajectories to secure collaborative inference, and [[wu-2026-service-oriented-segmented-trajectory]] turns smart-window privacy into a trajectory-refinement constraint.

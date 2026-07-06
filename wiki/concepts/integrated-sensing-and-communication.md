@@ -15,6 +15,7 @@ related:
   - "[[networked-isac]]"
   - "[[zhao-2025-networked-isac-uav-handover]]"
   - "[[li-2026-isac-vec-beamforming-deployment]]"
+  - "[[wang-2026-stbc-cooperative-isac]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -33,3 +34,5 @@ ISAC complicates [[physical-layer-security]] because the sensing operation can l
 For a high-level survey of ISAC in the LAE context, see [[jiang-2025-isac-lae-overview]] and [[wang-2025-lae-network-survey]]. The corpus now also has LAE control instances: [[ye-2026-deeplsc-lae-isac]] uses DDPG to jointly control GBS beamforming and UAV trajectories for sum-rate under sensing constraints, while [[ye-2026-meta-deepesc-lae-isac]] shifts the objective to energy efficiency and adds meta-learning for flight-period adaptation. [[ye-2026-mode-lae-isac]] turns that LAE line into a multi-objective communication/sensing controller using [[mixture-of-experts-drl]], and [[zhao-2025-networked-isac-uav-handover]] moves from single-cell ISAC links to multi-BS [[networked-isac]] tracking and sensing-cell handover. In VEC, [[li-2026-isac-vec-beamforming-deployment]] uses ISAC metrics to jointly shape UAV deployment and beamforming for temporary road hot spots.
 
 [[huang-2026-offgrid-lae-imager]] adds a cooperative cellular-ISAC imaging view: multiple BSs use raw CSI to reconstruct sparse low-altitude aerial images and mitigate off-grid errors with physics-embedded learning. [[hou-2025-pbia-air-iscc-uav-its]] extends the same sensing/communication substrate into Air-ISCC, where UAV swarms also compute IoTD tasks in ITS scenarios.
+
+[[wang-2026-stbc-cooperative-isac]] adds the shared-resource physical-layer version: multi-BS cooperative ISAC uses robust inter-BS nulling, a [[space-time-block-codec]], and SINR-weighted data fusion to sense low-altitude UAVs near cell edges without allocating fully orthogonal resources.

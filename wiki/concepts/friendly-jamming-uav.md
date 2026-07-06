@@ -8,6 +8,9 @@ related:
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
+  - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
+  - "[[wu-2026-secure-split-offloading-ci]]"
+  - "[[wu-2025-security-aware-multiuav-service-placement]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -23,5 +26,7 @@ Used in [[benaya-2025-aerial-isac-haps]] alongside HAPS beamforming and ISAC-bas
 In [[wang-2026-secure-lae-uav-scheduling]], the same UAV fleet can switch between communication-UAV and jamming-UAV roles across slots, so friendly jamming becomes a scheduling and trajectory decision rather than a fixed helper assignment.
 
 [[cai-2026-llm-drl-secure-lae-data]] uses a dedicated jamming UAV alongside a data-collection UAV in low-altitude economy networking, with LLM-enhanced DRL balancing secrecy, AoI, and UAV energy.
+
+Newer secure-offloading entries reuse the same aerial helper role in different workloads: [[beishenalieva-2026-secrecy-aware-uav-path-planning]] protects ITS sensing/offloading data against malicious UAVs, [[wu-2026-secure-split-offloading-ci]] protects intermediate feature data in collaborative inference, and [[wu-2025-security-aware-multiuav-service-placement]] protects service-placement-aware computation offloading.
 
 A friendly jammer is a pure helper, distinct from an *adversarial* jammer (which is a threat to be mitigated). Both share the math; only the labels differ.
