@@ -10,6 +10,7 @@ related:
   - "[[collaborative-beamforming]]"
   - "[[sun-2024-imssa-uav-secure-cb]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
+  - "[[wang-2026-secure-reliable-uav-mec]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -29,3 +30,5 @@ In the wiki, [[benaya-2025-aerial-isac-haps]] combines two of these levers: HAPS
 PLS complements rather than replaces upper-layer crypto. It's particularly useful when key distribution is hard (post-disaster, ad-hoc swarms) or when key-management overhead is unacceptable. [[sun-2024-imssa-uav-secure-cb]] applies PLS through [[collaborative-beamforming]]: a UAV virtual antenna array steers a high-gain mainlobe to legitimate base stations and low-gain sidelobes elsewhere, maximizing the worst-case secrecy rate even when eavesdropper locations are imperfectly known or unknown.
 
 [[wang-2026-secure-lae-uav-scheduling]] applies PLS to low-altitude economy communications by letting UAVs dynamically switch between communication and artificial-noise jamming roles while jointly optimizing power, trajectory, and velocity for secrecy energy efficiency.
+
+[[wang-2026-secure-reliable-uav-mec]] applies the same artificial-noise idea inside a UAV-MEC offloading problem: multi-antenna users inject AN in the legitimate channel's null space while the UAV trajectory and offloading resources are optimized for secure energy efficiency under a secrecy-outage reliability constraint.

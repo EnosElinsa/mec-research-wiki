@@ -8,8 +8,10 @@ related:
   - "[[ppo]]"
   - "[[dynamic-constrained-multi-objective-optimization]]"
   - "[[song-2024-mol-aoi-energy]]"
+  - "[[contextual-momdp]]"
+  - "[[yang-2025-generalizable-pareto-offloading]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Multi-Objective Reinforcement Learning (MORL)
@@ -19,3 +21,5 @@ RL that optimizes a **vector** of objectives rather than a single scalar reward,
 Common scaffolding: define a [[multi-objective-mdp-vectorial-reward|multi-objective MDP]], decompose the preference space into weight vectors, train one policy per weight (often with [[ppo]] or value-based learners), and maintain a nondominated archive across them.
 
 In the wiki, [[song-2024-mol-aoi-energy]]'s **MOL-AET** is the anchor: it trains multi-objective PPO individuals over uniformly spread preference weights and then refines the Pareto set with [[evolutionary-reinforcement-learning|evolutionary operators]]. MORL is the learning-based counterpart to the evolutionary [[dynamic-constrained-multi-objective-optimization]] / CMOEA family used across the Peng/Huang lineage.
+
+[[yang-2025-generalizable-pareto-offloading]] adds the single-policy variant: it conditions a Discrete-SAC offloading policy on preference and MEC-system context, approximating the delay/energy Pareto frontier without training one policy per weight vector.

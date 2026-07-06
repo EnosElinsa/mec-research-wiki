@@ -6,8 +6,10 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[high-altitude-platform-station]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[erasure-coded-edge-storage]]"
+  - "[[huang-2026-erasure-coded-uav-storage]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Post-Disaster MEC
@@ -26,6 +28,7 @@ The MEC operating regime where ground infrastructure is partially or wholly dest
 - **Two-tier (UAV + HAPS)** — UAVs as low-altitude relays, HAPS as long-endurance umbrella. See [[hierarchical-aerial-mec]].
 - **Urgency-aware admission** — instead of FCFS, sort tasks by deadline / criticality before admitting to the UAV queue. See DRUDM in [[peng-2025-drudm-cfg]].
 - **Fairness regularizers** — explicit reward shaping to avoid UAV "camping" over the densest cluster. See [[theil-fairness-index]] and the corresponding regularizers in [[peng-2025-drudm-cfg]] and [[liu-2026-jppo-en-convntm]].
+- **Resilient edge storage** — UAVs can cache coded data blocks so users recover files even when only a subset of UAVs is reachable. See [[erasure-coded-edge-storage]] and [[huang-2026-erasure-coded-uav-storage]].
 
 ## Open questions
 

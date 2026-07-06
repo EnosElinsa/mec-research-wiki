@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 secure / storage / identification / Pareto-offloading sources
+
+Added five source pages and three concept pages:
+
+- [[wang-2026-secure-reliable-uav-mec]] — Wang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3629147`. Energy-efficient UAV-assisted MEC with secure and reliable data transmission; user-side artificial noise, secrecy-outage chance constraints, fixed-wing trajectory/resource allocation, and augmented-Lagrangian secure-energy-efficiency optimization.
+- [[li-2025-energy-latency-uav-vec]] — Li et al. 2025, *IEEE TGCN*, DOI `10.1109/TGCN.2024.3433457`. UAV-assisted vehicular edge computing for FL participant selection and bandwidth/compute allocation; AB-DDQN with AdamW and BOA hyperparameter tuning optimizes an energy-latency tradeoff.
+- [[huang-2026-erasure-coded-uav-storage]] — Huang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3594283`. Erasure-coded UAV edge storage for post-disaster data access; ME-HDRL combines CNN+ConvLSTM trajectory prediction, DDQN UAV placement agents, a PPO edge access agent, and action filtering.
+- [[zeng-2026-fmcw-isibc-lae]] — Zeng & Liang 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3650197`. FMCW-enabled integrated sensing, identification, and backscatter communication for LAE; UAV-mounted BDs carry identity symbols on FMCW echoes, with SVD-based estimation and CRLB analysis.
+- [[yang-2025-generalizable-pareto-offloading]] — Yang et al. 2025, *IEEE TSC*, DOI `10.1109/TSC.2025.3604371`. Generalizable Pareto-optimal MEC offloading; context-conditioned Discrete-SAC learns one delay/energy policy across preference vectors, edge-server counts, and CPU-frequency profiles.
+
+New concept pages: [[erasure-coded-edge-storage]], [[uav-backscatter-identification]], and [[contextual-momdp]]. Updated concept backlinks for [[physical-layer-security]], [[multi-objective-reinforcement-learning]], [[backscatter-communication]], [[post-disaster-mec]], [[energy-latency-tradeoff]], [[vehicular-mec]], and [[mmwave-radar-sensing]]. No author entity pages were created; parse-confirmed authors were not merged into existing author entities without a specific identity-confirmation need.
+
+Metadata notes: DOI/venue/year for [[li-2025-energy-latency-uav-vec]] were present in the parse. The local parses for [[wang-2026-secure-reliable-uav-mec]], [[huang-2026-erasure-coded-uav-storage]], [[zeng-2026-fmcw-isibc-lae]], and [[yang-2025-generalizable-pareto-offloading]] were silent on top-level DOI/venue/year, so those fields were verified through title-matched Crossref metadata. Technical claims are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 285 curated raw references, and 60 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 297 sources, 287 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 38 advisory present-but-unlisted omissions, all outside the newly curated source authors. LLM Wiki health was OK; `/graph/current` returned `{"ok":false,"error":"Not found"}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 low-altitude / semantic / green-AEC sources
 
 Added five source pages and two concept pages:

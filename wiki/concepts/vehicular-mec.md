@@ -7,8 +7,9 @@ related:
   - "[[task-migration]]"
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[zhang-2026-dwell-time-aerial-vec]]"
+  - "[[li-2025-energy-latency-uav-vec]]"
 created: 2026-05-28
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Vehicular MEC (V-MEC / VEC)
@@ -26,6 +27,7 @@ MEC where the user devices are vehicles — connected, semi-autonomous, or auton
 - **Trajectory prediction** — use historical traces to estimate future server-coverage transitions, allowing pre-emptive migration. See [[informer-trajectory-prediction]] in [[zhang-2025-mcma-task-migration]].
 - **CTDE multi-agent control** — each server is an agent under [[ma-pomdp]] framing; centralized critic + decentralized actor.
 - **Aerial fallback tiers** — UAVs and [[high-altitude-platform-station|HAPS]] can cover sparse or overloaded roads, but high-speed vehicles introduce [[dwell-time-constrained-offloading]] as a feasibility constraint; see [[zhang-2026-dwell-time-aerial-vec]].
+- **Federated-learning participant control** — when vehicles train local models, the VEC system must select participants that can finish before leaving coverage and allocate UAV bandwidth / compute resources; see [[li-2025-energy-latency-uav-vec]].
 
 ## Open questions
 

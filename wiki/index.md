@@ -49,6 +49,7 @@
 - [[gao-2024-service-experience-cache-uav]] — Gao & Zhai 2024. Fairness-aware cache-enabled UAV-MEC; **service-experience ratio** (Jain's index / delay); Dinkelbach + 4-stage AO.
 - [[zhao-2024-caching-service-placement-uav]] — Zhao et al. 2024. Joint content caching + service placement + offloading; QoE max via Gibbs sampling + matching.
 - [[chen-2024-dro-video-caching]] — Chen et al. 2024. **Distributionally robust** adaptive-bitrate video caching + transcoding + backhaul in UAV-MEC; ζ-structure-metric confidence set + convex DRO latency minimizer under an energy budget; real YouTube traces (IEEE TMC).
+- [[huang-2026-erasure-coded-uav-storage]] — Huang et al. 2026. **Erasure-coded UAV edge storage**; coded data/parity block placement + access routing in post-disaster UAV-enabled edge systems via CNN+ConvLSTM prediction and ME-HDRL (DDQN UAV agents + PPO edge agent) (IEEE TMC).
 - [[du-2023-maddpg-service-placement-agin]] — Du et al. 2023. **MADDPG** joint service placement + offloading in air-ground integrated MEC.
 
 ### Game-theoretic offloading & allocation
@@ -119,6 +120,7 @@
 - [[ji-2021-uav-mec-noma-oma-energy-min]] — Ji et al. 2021. UAV-MEC **weighted-sum energy minimization** (UAV + UDs) under **partial offloading** with OMA and NOMA; block alternating descent + SCA; OMA beats NOMA in this energy-min setting (IEEE IoT-J).
 - [[wang-2018-wpt-mec-joint-offloading]] — Wang et al. 2018. **Wireless-powered MEC**: joint energy beamforming + partial offloading + CPU freq + TDMA time allocation; minimizes AP energy; **local computing always beneficial** at optimum; semi-closed-form optimal solution (IEEE TWC).
 - [[xu-2021-secure-uav-mec-dual-uav]] — Xu et al. 2021. **Dual-UAV** secure MEC (server UAV + jammer UAV); TDMA and NOMA; **secure computing capacity** maximization; BCD + P-BCD; NOMA > TDMA for security (IEEE TCOMM).
+- [[wang-2026-secure-reliable-uav-mec]] — Wang et al. 2026. Energy-efficient UAV-assisted MEC with **secure and reliable data transmission**; user-side artificial noise, secrecy-outage chance constraint, fixed-wing trajectory/resource allocation, and augmented-Lagrangian secure-energy-efficiency optimization (IEEE TMC).
 - [[zhang-2019-uav-iot-comp-comm]] — Zhang et al. 2019. Joint computation + communication design for single-UAV MEC; Lagrangian duality + SCA.
 - [[yang-2019-sum-power-uav-mec]] — Yang et al. 2019. Multi-UAV-MEC **sum-power minimization** (UEs + UAV propulsion) over user association + power + compute-capacity + UAV location/altitude/beamwidth; compressive-sensing association + closed-form capacity + 1-D location search + fuzzy-c-means init (IEEE TWC).
 - [[yu-2020-uav-ec-collaborative-offloading]] — Yu et al. 2020. Collaborative UAV+edge-cloud offloading; SCA; beats UAV-only / EC-only.
@@ -237,6 +239,7 @@
 
 - [[liu-2025-mad2rl-dnn-vec]] — Liu et al. 2025. **MAD2RL** — DNN partitioning + task offloading in VEC; Lyapunov + diffusion-model-based MARL + convex resource allocation (IEEE TMC).
 - [[huang-2024-fed-idcco-iov-caching]] — Huang et al. 2024. **Fed-IDCCO** — joint **data caching + computation offloading** in UAV-assisted IoV; DRL + **federated learning** (privacy + convergence); minimizes delay + maximizes cache hit ratio (IEEE TVT).
+- [[li-2025-energy-latency-uav-vec]] — Li et al. 2025. UAV-assisted VEC **federated-learning participant selection** and bandwidth/compute allocation; weighted energy-latency cost as an MDP solved by AB-DDQN (AdamW + BOA hyperparameter tuning) (IEEE TGCN).
 - [[spampinato-2025-uabs-v2x-3dqn-ilp]] — Spampinato et al. 2025. UABS trajectory (**3DQN**) + **ILP** RRM for V2X extended-sensing in urban scenario; SUMO mobility; coverage-limited + capacity-limited scenarios (IEEE TVT).
 - [[wang-2025-ctmig-task-migration-uav]] — Wang et al. 2025. **CTMiG / ILCTS** — joint task offloading + **migration** in multi-UAV MEC; PPO expert + **GAIL** online refinement; large-result delivery latency (IEEE TSC).
 - [[zhang-2025-mcma-task-migration]] — Zhang et al. 2025. Task migration with Informer trajectory prediction across edge servers. *MCMA*.
@@ -291,6 +294,7 @@
 
 - [[li-2023-adaptive-digital-twin-uav-iscc]] - Li et al. 2023. DT-enabled UAV-assisted ISCC; ATB-MAPPO with Beta-policy actors and attention critics for radar beampattern / energy tradeoff (IEEE TGCN).
 - [[tang-2025-cooperative-isac-lae]] - Tang et al. 2025. Cooperative ISAC for low-altitude economy; tensor-decomposition monostatic estimation, false-removing MST association, Pareto position fusion, and residual-weighted velocity estimation (IEEE TWC).
+- [[zeng-2026-fmcw-isibc-lae]] — Zeng & Liang 2026. **FMCW-enabled integrated sensing, identification, and backscatter communication** for LAE; UAV-mounted BDs modulate identity symbols onto FMCW echoes, with SVD-based range/velocity/symbol estimation and CRLB analysis (IEEE TWC).
 
 - [[qin-2025-urllc-noma-uav-iscc]] — Qin et al. 2025. **NOMA-aided UAV ISCC** with URLLC: sensing + communication + computation; Lyapunov tail-constraint + **SAC-TPBD** DRL; comparable to SCA/SDR baselines with higher efficiency (IEEE TVT).
 - [[tang-2024-iscc-uav-feel]] — Tang et al. 2025. **ISCC** for UAV-assisted federated edge learning; deployment + sensing/compute/comm via AO (BBPO).
@@ -368,6 +372,7 @@
 - [[yang-2024-taco-human-digital-twin-edge]] — Yang et al. 2024. **Human digital twin** deployment at the edge under an end-edge-cloud framework; two-timescale accuracy-aware online optimization (**TACO**) jointly placing/updating virtual twins + task offloading + access selection; improved Lyapunov + piecewise McCormick envelopes + BCD (IEEE TMC).
 - [[shi-2023-two-timescale-migration-rerouting]] — Shi et al. 2023. **Service migration vs task rerouting** for MEC handovers; **two-timescale** online optimization — slow access-selection + migration/rerouting, fast computing/communication resource allocation — minimizing long-term average service delay; improved **Lyapunov** + randomized rounding (JASTO) + Lagrange-dual (OASTR), asymptotically optimal (IEEE TWC).
 - [[li-2024-smdrl-resource-constrained-mec]] — Li et al. 2024. **Computation offloading in resource-constrained multi-access MEC** where the shared wireless medium is **bandwidth-limited**; **Scheduled Multi-agent DRL (SMDRL)** learns message encoding + action selection + self-scheduling with a **TopK** broadcast limit, and a **virtual energy-deficit queue** turns a long-term per-device energy cap into a per-slot **QoE-maximization** MDP; near-optimal QoE under communication + energy constraints (IEEE TMC).
+- [[yang-2025-generalizable-pareto-offloading]] — Yang et al. 2025. **Generalizable Pareto-optimal MEC offloading**; context-conditioned Discrete-SAC learns one policy across delay/energy preference weights, edge-server counts, and CPU-frequency profiles (IEEE TSC).
 
 ### UAV communications & deployment foundations
 
@@ -439,6 +444,7 @@
 - [[computation-peer-offloading]]
 - [[computational-task-caching]]
 - [[coded-caching]]
+- [[erasure-coded-edge-storage]]
 - [[binary-vs-partial-offloading]]
 - [[dynamic-voltage-scaling]]
 - [[event-driven-vs-slot-driven-offloading]]
@@ -583,6 +589,7 @@
 - [[knowledge-distillation-for-drl]]
 - [[multi-objective-reinforcement-learning]]
 - [[multi-objective-mdp-vectorial-reward]]
+- [[contextual-momdp]]
 - [[evolutionary-reinforcement-learning]]
 - [[generative-diffusion-model]]
 - [[diffusion-model-as-optimizer]]
@@ -679,6 +686,7 @@
 - [[cramer-rao-bound]]
 - [[integrated-sensing-computation-communication]]
 - [[mmwave-radar-sensing]]
+- [[uav-backscatter-identification]]
 - [[yolov7-object-detection]]
 - [[spectrum-sensing-channel-selection]]
 - [[physical-layer-security]]
