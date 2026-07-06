@@ -14,15 +14,16 @@ related:
   - "[[wang-2024-wipe-gai]]"
   - "[[dai-2024-graph-rm-survey-optimization]]"
   - "[[dai-2024-graph-rm-survey-learning]]"
+  - "[[liu-2026-lyapunov-diffusion-uav-vehicular]]"
 created: 2026-05-31
-updated: 2026-06-03
+updated: 2026-07-06
 ---
 
 # Xuemin (Sherman) Shen
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Waterloo** (Waterloo, ON, Canada; email `sshen@uwaterloo.ca`) across his papers in this wiki.
 
-Co-authored 11 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, UAV-LEO and end-edge-cloud offloading games, the mobile-AIGC and generative-AI-ISAC threads, human-digital-twin edge deployment, two-timescale RAN-slicing / offloading, wireless-perception-guided edge AIGC, and the graph-based-resource-management two-part survey:
+Co-authored 12 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, UAV-LEO and end-edge-cloud offloading games, the mobile-AIGC and generative-AI-ISAC threads, human-digital-twin edge deployment, two-timescale RAN-slicing / offloading, wireless-perception-guided edge AIGC, and the graph-based-resource-management two-part survey:
 
 - [[peng-2020-maddpg-uav-vehicular]] — MADDPG resource management in MEC- and UAV-assisted vehicular networks (with Haixia Peng).
 - [[duan-2023-moto-smallcell-offloading]] — MOTO mobility-aware online task offloading with load balancing in small-cell MEC.
@@ -35,6 +36,8 @@ Co-authored 11 sources in this wiki, spanning UAV-assisted vehicular MEC, terres
 - [[wang-2024-wipe-gai]] — wireless-perception-guided GAI (WiPe-GAI) for edge AIGC pricing via a diffusion model (Niyato/Kang generative-AI cluster).
 - [[dai-2024-graph-rm-survey-optimization]] — Part I (optimization approaches) of the two-part graph-based-resource-management survey.
 - [[dai-2024-graph-rm-survey-learning]] — Part II (learning approaches / GNNs) of the same two-part survey.
+
+- [[liu-2026-lyapunov-diffusion-uav-vehicular]] - delayed-CSI UAV-assisted vehicular networks solved with Lyapunov-guided diffusion actor DDPG.
 
 ## Contributions to this wiki
 

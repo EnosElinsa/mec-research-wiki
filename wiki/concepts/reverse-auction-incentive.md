@@ -8,8 +8,9 @@ related:
   - "[[stackelberg-game]]"
   - "[[matching-theory-for-resource-allocation]]"
   - "[[zeng-2024-usv-fleet-collaborative-offloading]]"
+  - "[[xu-2026-prizty-uav-mec-auction]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-06
 ---
 
 # Reverse Auction Incentive
@@ -24,5 +25,6 @@ A **reverse auction** flips the usual auction roles: a single **buyer** (the tas
 ## In this wiki
 
 - [[zeng-2024-usv-fleet-collaborative-offloading]] uses a **first-price sealed reverse auction with a reserve price** to incentivize USV fleets to execute UAV tasks: the reserve price equals the UAV's valuation (guaranteeing the UAV's benefit), and the paper derives the **symmetric equilibrium bidding strategy** (with existence + uniqueness proofs) so that winning fleets maximize expected revenue.
+- [[xu-2026-prizty-uav-mec-auction]] uses a privacy-preserving reverse auction for UAV-assisted MEC: edge servers and UAVs bid to serve UE tasks, while UE locations are obfuscated before the feasible service sets, winner selection, and payments are computed.
 
 Sits alongside the corpus's other market/negotiation mechanisms — [[double-auction]] (multi-buyer multi-seller), [[stackelberg-game]] (leader-follower pricing), and [[matching-theory-for-resource-allocation]].

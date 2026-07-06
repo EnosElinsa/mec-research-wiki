@@ -1,5 +1,19 @@
 # Research Log
 
+## [2026-07-06] Curated 5 newly imported MEC sources
+
+Added five source pages and one tool entity:
+
+- [[liu-2026-lyapunov-diffusion-uav-vehicular]] — Liu et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3680987`. Lyapunov-guided diffusion actor DDPG (D3PG) for UAV-assisted vehicular networks with delayed CSI feedback; joint V2V channel reuse, V2U/V2V power control, UAV altitude, and long-term UAV energy.
+- [[xu-2026-prizty-uav-mec-auction]] — Xu et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3609202`. Prizty privacy-preserving reverse auction for UAV-assisted MEC offloading/resource allocation; UE location obfuscation + trajectory-aware feasible service sets + winner/payment selection.
+- [[li-2023-adaptive-digital-twin-uav-iscc]] — Li et al. 2023, *IEEE TGCN*, DOI `10.1109/TGCN.2023.3298039`. Adaptive digital twin for UAV-assisted ISCC; DT-aware CTDE with ATB-MAPPO (Beta-policy actors + attention critics) balancing radar beampattern and weighted energy.
+- [[shi-2026-aoi-active-ris-noma-agmec]] — Shi et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3686114`. AoI-aware active-RIS and NOMA-assisted air-ground MEC; joint UAV trajectory, active-RIS beamforming, and task offloading via AADDPG.
+- [[wei-2026-airfogsim-uav-vfc]] — Wei et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3641373`. AirFogSim lightweight modular simulator for UAV-integrated vehicular fog computing; added [[airfogsim]] as a tool entity.
+
+Metadata notes: DOI/venue/year for the two TWC papers came from parse DOI/date lines and Crossref DOI lookup. The privacy-auction, digital-twin, and AirFogSim pages had missing DOI/year/venue in the parses, so Crossref title/DOI lookup supplied publication metadata; all technical claims came from the local parses. Updated backlinks in [[diffusion-model-as-optimizer]], [[reverse-auction-incentive]], [[digital-twin]], [[age-of-information]], [[active-ris]], [[vehicle-fog-computing]], and recurring author entities [[dusit-niyato]], [[xuemin-shen]], and [[ning-zhang]].
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 250 curated raw references, and 95 genuinely new folders still uncurated after this five-source pass. `python tools/wiki/corpus_counts.py`, `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were run before commit; the file-level graph has no dangling links, no process-narration leaks outside this log, complete index coverage with zero duplicate primary listings, and zero frontmatter errors. LLM Wiki health was reachable with unauthenticated read access; the read-only graph API for `current` reported 655 nodes and 6098 edges.
+
 ## 2026-06-09 - Audit concept pages: batch 18 slice E
 
 - Audited these five concept pages only: [[binary-vs-partial-offloading]], [[binary-whale-optimization]], [[blockage-aware-channel-model]], [[blockchain-for-fl-aggregation]], and [[byzantine-fault-tolerant-consensus]]. Verified frontmatter shape, H1/title consistency, tags, related links, absence of self-references, dangling-link status, evergreen wording, and source-grounded claims against linked local wiki evidence and targeted raw parses where a source-specific claim needed grounding.
