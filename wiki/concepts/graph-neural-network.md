@@ -8,8 +8,10 @@ related:
   - "[[dai-2024-graph-rm-survey-learning]]"
   - "[[dai-2024-graph-rm-survey-optimization]]"
   - "[[li-2026-cdto-inland-waterways]]"
+  - "[[teng-2026-gstrl-sequential-offloading]]"
+  - "[[sequential-task-offloading]]"
 created: 2026-06-03
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Graph Neural Network (GNN)
@@ -31,4 +33,4 @@ The survey highlights two recurring designs: combining GNNs with **classical ite
 
 ## In the corpus
 
-This is the corpus's primary anchor for the GNN concept; it is introduced and reviewed in [[dai-2024-graph-rm-survey-learning]] (the learning half) and motivated by the scaling limits of graph optimization laid out in [[dai-2024-graph-rm-survey-optimization]]. [[li-2026-cdto-inland-waterways]] provides a task-offloading example where a topology-aware GNN represents D2D links among USVs for multi-agent offloading decisions.
+This is the corpus's primary anchor for the GNN concept; it is introduced and reviewed in [[dai-2024-graph-rm-survey-learning]] (the learning half) and motivated by the scaling limits of graph optimization laid out in [[dai-2024-graph-rm-survey-optimization]]. [[li-2026-cdto-inland-waterways]] provides a task-offloading example where a topology-aware GNN represents D2D links among USVs for multi-agent offloading decisions. [[teng-2026-gstrl-sequential-offloading]] uses a heterogeneous graph neural network to encode UAVs, requesting tasks, offloaded tasks, and dynamic U2U/task edges for [[sequential-task-offloading]].

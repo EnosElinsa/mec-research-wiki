@@ -6,8 +6,10 @@ related:
   - "[[task-offloading]]"
   - "[[vehicular-mec]]"
   - "[[zhang-2025-mcma-task-migration]]"
+  - "[[vehicle-twin-migration]]"
+  - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Task Migration in MEC
@@ -35,3 +37,5 @@ The mechanism of forwarding an in-flight task from one edge server to another, m
 - **Granularity:** whole task? task fragments? state-only?
 
 [[zhang-2025-mcma-task-migration]] handles all three via a two-stage MA-DRL controller informed by Informer-based trajectory prediction.
+
+[[chen-2026-hc-mappo-vehicle-twin-migration]] specializes migration to [[vehicle-twin-migration]], where the state/service for a vehicle's digital twin follows high-mobility vehicles across RSUs and UAV edge servers.

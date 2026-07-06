@@ -82,6 +82,8 @@
 
 ### Compute offloading & DRL
 
+- [[teng-2026-gstrl-sequential-offloading]] - Teng et al. 2026. Graph-based spatiotemporal RL for sequential task offloading in multi-UAV MEC; heterogeneous task/UAV graph encoding plus masked PPO for order-constrained offloading decisions (IEEE TMC).
+- [[zhao-2026-heuristic-supervised-drl]] - Zhao et al. 2026. Heuristic-supervised DRL framework with TTSSA convergence analysis; PSO bridges upper-tier planning to MARL control in the UAV-MEC case study (IEEE TMC).
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Liu et al. 2026. UAV-assisted vehicular V2X with **delayed CSI feedback**; Lyapunov energy queue + diffusion-actor DDPG (**D3PG**) over V2V channel reuse, power control, and UAV altitude (IEEE TWC).
@@ -195,6 +197,7 @@
 
 ### Generative-AI MEC
 
+- [[wen-2026-hybridrag-low-carbon-lae]] - Wen et al. 2026. HybridRAG-formulated low-carbon LAE network optimization with R^2DSAC, a double-regularized diffusion-enhanced SAC solver (IEEE TMC).
 - [[wang-2026-lifelong-semantic-content-reuse]] — Wang et al. 2026. UAV-assisted Metaverse semantic content reuse; semantic subject/object caching plus DC-ELLA lifelong policy transfer for changing semantic environments (IEEE TMC).
 - [[wang-2026-diffusion-semantic-uav-edge]] — Wang et al. 2026. UAV-assisted semantic edge computing; H-DDPG plus convex semantic-resource optimization, then diffusion-denoising DDPG for trajectory action generation (IEEE TWC).
 - [[zhang-2025-gsc-diffusion-semcom]] — Zhang et al. 2025. **Generative AI Semantic Communication (GSC)**: Swin Transformer encoder + **diffusion model** decoder for image transmission; +17.75% PSNR in AWGN vs DeepJSCC; MU-GSC multi-user extension (IEEE TCCN).
@@ -207,6 +210,7 @@
 
 ### Generative-AI / GAN for ISAC & channels
 
+- [[yang-2026-generative-radio-map-lae]] - Yang et al. 2026. CVCGAN-assisted generative radio map for LAE air-corridor channel estimation, with CNN integration over generated and estimated CSI (IEEE TMC).
 - [[faisal-2025-cgan-ris-isac-channel]] — Faisal et al. 2025. **Conditional GAN** for channel estimation in RIS-assisted ISAC.
 - [[zhang-2025-gan-td3-isac-active-ris]] — Zhang et al. 2025. **GAN-TD3** beamforming for ISAC with double active RISs.
 
@@ -234,6 +238,7 @@
 
 ### Vehicular MEC
 
+- [[chen-2026-hc-mappo-vehicle-twin-migration]] - Chen et al. 2026. Hierarchical-control MAPPO for vehicle-twin migration in UAV-assisted vehicular metaverses, using ACB-LSTM workload prediction and deterministic lower-layer migration mapping (IEEE TMC).
 - [[wei-2026-airfogsim-uav-vfc]] - Wei et al. 2026. **AirFogSim** lightweight modular simulator for UAV-integrated vehicular fog computing; traffic/UAV mobility, communication, computation, energy, security/privacy, blockchain, and scheduling modules (IEEE TMC).
 - [[qi-2026-drone-vehicle-mec-inspection]] - Qi et al. 2026. Cooperative drone-vehicle MEC for low-altitude inspection; GV-carried accompanying/detached drones, battery swapping, route planning, and detached-drone speed optimization minimize mission completion time (IEEE TMC).
 
@@ -437,7 +442,9 @@
 - [[mobile-edge-computing]]
 - [[edge-intelligence]]
 - [[task-offloading]]
+- [[sequential-task-offloading]]
 - [[task-migration]]
+- [[vehicle-twin-migration]]
 - [[service-migration]]
 - [[device-association]]
 - [[computation-to-communication-ratio]]
@@ -475,6 +482,7 @@
 - [[dwell-time-constrained-offloading]]
 - [[dispersed-computing]]
 - [[generative-ai-for-mec]]
+- [[hybridrag-network-optimization]]
 - [[aigc-service-provider]]
 - [[mobile-aigc-network]]
 - [[prompt-engineering]]
@@ -587,6 +595,7 @@
 - [[hybrid-action-representation]]
 - [[dynamic-confidence-interval-clipping]]
 - [[knowledge-distillation-for-drl]]
+- [[heuristic-supervised-drl]]
 - [[multi-objective-reinforcement-learning]]
 - [[multi-objective-mdp-vectorial-reward]]
 - [[contextual-momdp]]
@@ -675,6 +684,7 @@
 
 - [[blockage-aware-channel-model]]
 - [[air-to-ground-channel-model]]
+- [[radio-map-assisted-channel-estimation]]
 - [[terrain-aware-channel-model]]
 - [[first-order-radio-energy-model]]
 - [[stochastic-geometry-network-analysis]]

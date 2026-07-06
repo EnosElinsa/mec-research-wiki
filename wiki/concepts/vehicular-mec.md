@@ -8,6 +8,8 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[zhang-2026-dwell-time-aerial-vec]]"
   - "[[li-2025-energy-latency-uav-vec]]"
+  - "[[vehicle-twin-migration]]"
+  - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -28,6 +30,8 @@ MEC where the user devices are vehicles — connected, semi-autonomous, or auton
 - **CTDE multi-agent control** — each server is an agent under [[ma-pomdp]] framing; centralized critic + decentralized actor.
 - **Aerial fallback tiers** — UAVs and [[high-altitude-platform-station|HAPS]] can cover sparse or overloaded roads, but high-speed vehicles introduce [[dwell-time-constrained-offloading]] as a feasibility constraint; see [[zhang-2026-dwell-time-aerial-vec]].
 - **Federated-learning participant control** — when vehicles train local models, the VEC system must select participants that can finish before leaving coverage and allocate UAV bandwidth / compute resources; see [[li-2025-energy-latency-uav-vec]].
+
+[[chen-2026-hc-mappo-vehicle-twin-migration]] adds [[vehicle-twin-migration]] as a vehicular-metaverse service-continuity problem: predicted RSU workload drives pre-migration, and UAVs act as mobile edge servers when terrestrial RSUs overload.
 
 ## Open questions
 

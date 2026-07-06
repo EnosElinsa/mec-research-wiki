@@ -9,6 +9,7 @@ related:
   - "[[masac]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
   - "[[wang-2026-blockchain-lae-fl-mappo]]"
+  - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -20,3 +21,5 @@ The multi-agent extension of [[ppo|Proximal Policy Optimization]]: each agent ru
 In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association, resource-allocation, and UAV-to-HAP offloading POMDP in a hierarchical aerial computing system, with state normalization and action masking to speed training.
 
 [[wang-2026-blockchain-lae-fl-mappo]] uses an FL-MAPPO variant for low-altitude edge intelligence, coordinating offloading decisions, caching, and resource allocation across task UAVs and service UAVs under queueing, PV-energy, and blockchain-overhead terms.
+
+[[chen-2026-hc-mappo-vehicle-twin-migration]] uses MAPPO in the upper layer of a hierarchical controller for vehicle-twin migration and UAV routing, while deterministic lower-layer controllers enforce migration and path-planning feasibility.

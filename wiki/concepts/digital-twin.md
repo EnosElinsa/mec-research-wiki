@@ -11,8 +11,10 @@ related:
   - "[[li-2023-adaptive-digital-twin-uav-iscc]]"
   - "[[he-2026-dt-sagimec-lae]]"
   - "[[li-2025-dt-uav-swarm-resource-management]]"
+  - "[[vehicle-twin-migration]]"
+  - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
 created: 2026-06-02
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Digital Twin
@@ -24,6 +26,8 @@ A **digital twin (DT)** is a continuously-updated virtual replica of a physical 
 DT synchronization couples sensing, communication, and edge compute: raw observations are gathered at the edge, must be moved over constrained links, and are rendered/maintained as the virtual model. This motivates techniques that reduce or prioritize the transmitted data — e.g. [[semantic-communication]] (send meaning, not bits) and importance-aware resource allocation — and that decide *when* and *how accurately* to update the twin under latency/energy budgets.
 
 ## In this wiki
+
+- [[chen-2026-hc-mappo-vehicle-twin-migration]] treats [[vehicle-twin-migration]] as a vehicular-metaverse service-continuity problem, combining RSU workload prediction with UAV-assisted edge support.
 
 - [[du-2024-yolo-semcom-digital-twin]] builds a digital twin of an apple orchard from UAV imagery ([[uav-data-collection]]): a YOLOv7-based detector extracts only the semantic content of captured images, and transmission power is allocated by per-object importance, cutting communication cost while keeping critical content accurate.
 - [[yang-2024-taco-human-digital-twin-edge]] addresses **human digital twin** deployment at the edge, trading off update accuracy against cost on a two-timescale schedule.

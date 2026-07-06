@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 LAE / spatiotemporal-DRL / vehicle-twin sources
+
+Added five source pages and five concept pages:
+
+- [[yang-2026-generative-radio-map-lae]] — Yang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3665545`. CVCGAN-assisted generative radio map for LAE air-corridor channel estimation; grid-labeled CSI, pretrained estimator, label-MSE regularization, WGAN-GP stabilization, and CNN integration over generated/estimated CSI.
+- [[teng-2026-gstrl-sequential-offloading]] — Teng et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3635085`. Graph-based spatiotemporal RL for sequential task offloading in multi-UAV MEC; heterogeneous UAV/task graph encoding, LSTM temporal context, masked PPO, and linear task-chain constraints.
+- [[zhao-2026-heuristic-supervised-drl]] — Zhao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3681665`. Heuristic-supervised DRL with TTSSA convergence analysis; a PSO-MARL UAV-MEC case study links heuristic planning, supervised policy prediction, and DRL control.
+- [[chen-2026-hc-mappo-vehicle-twin-migration]] — Chen et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3674825`. Hierarchical-control MAPPO for vehicle-twin migration in UAV-assisted vehicular metaverses; ACB-LSTM workload prediction feeds upper-layer UAV/RSU selection and deterministic lower-layer migration mapping.
+- [[wen-2026-hybridrag-low-carbon-lae]] — Wen et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3637120`. HybridRAG-based LLM agents formulate low-carbon LAE network optimization; R^2DSAC uses double regularization and diffusion-enhanced SAC for rotary-wing UAV-MEC offloading/resource decisions.
+
+New concept pages: [[radio-map-assisted-channel-estimation]], [[sequential-task-offloading]], [[heuristic-supervised-drl]], [[vehicle-twin-migration]], and [[hybridrag-network-optimization]]. Updated concept backlinks for [[generative-adversarial-network]], [[low-altitude-intelligent-network]], [[task-offloading]], [[graph-neural-network]], [[particle-swarm-optimization]], [[two-timescale-optimization]], [[task-migration]], [[vehicular-mec]], [[digital-twin]], [[diffusion-model-as-optimizer]], [[soft-actor-critic]], and [[mappo]]. Updated parse-confirmed author rosters for [[jiawen-kang]], [[dusit-niyato]], and [[nei-kato]]. [[wei-zhang]] remains an advisory namesake: the Wei Zhang in [[yang-2026-generative-radio-map-lae]] is listed with UNSW, while the existing entity page tracks a Shandong University author cluster.
+
+Metadata notes: the local parses were silent on top-level DOI/venue/year, so DOI, year, and *IEEE Transactions on Mobile Computing* venue fields were verified through title-matched Crossref metadata. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 290 curated raw references, and 55 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 302 sources, 292 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 39 advisory present-but-unlisted omissions, including the unresolved Wei Zhang namesake. LLM Wiki health was OK; `/graph` and `/api/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 secure / storage / identification / Pareto-offloading sources
 
 Added five source pages and three concept pages:

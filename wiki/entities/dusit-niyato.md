@@ -36,51 +36,56 @@ related:
   - "[[chen-2026-cargo-uav-pickup-lae]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[he-2026-dt-sagimec-lae]]"
+  - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
+  - "[[wen-2026-hybridrag-low-carbon-lae]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Dusit Niyato
 
-IEEE Fellow. Affiliated with the **College of Computing and Data Science** (formerly the School of Computer Science and Engineering), **Nanyang Technological University**, Singapore — consistent across every paper he co-authors in this wiki.
+IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author in the corpus, co-authoring 33 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, and surveys:
+The most frequently recurring author in the corpus, co-authoring 35 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, and surveys:
 
-- [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
-- [[du-2023-maddpg-service-placement-agin]] — MADDPG joint service placement and task offloading in air-ground integrated networks.
-- [[jia-2025-dro-uav-hap-mec]] — distributionally robust optimization for aerial MEC via UAV-HAP cooperation.
-- [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
-- [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
-- [[ye-2025-aigc-diffusion-contract]] — AIGC services via generative diffusion + contract theory.
-- [[zhang-2024-gdmtd3-aerial-secure-cb]] — UAV-swarm secure collaborative beamforming via diffusion-enhanced TD3.
-- [[zhao-2022-matd3-multiuav-ec-offloading]] — MATD3 multi-UAV edge-computing offloading.
-- [[wang-2025-sac-tma-mec-dc]] — joint AAV MEC + data collection via SAC-TMA.
-- [[sun-2025-emoppo-vlh-aerial-cb]] — aerial collaborative beamforming to mobile users via EMOPPO-VLH.
-- [[li-2024-emodrl-ground-space-cb]] — distributed collaborative beamforming for ground-space communications via EMODRL.
-- [[du-2024-d2sac-aigc-asp-selection]] — diffusion-based RL (D2SAC) for edge AIGC service-provider selection.
-- [[du-2024-gdm-network-optimization-tutorial]] — tutorial on generative diffusion models in network optimization.
-- [[wang-gai-isac-physical-layer]] — generative AI for ISAC from the physical-layer perspective.
-- [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale joint resource-allocation / offloading / trajectory-control UAV-MEC (TJCCT).
-- [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.
-- [[huang-2025-dual-aav-maritime-secure-cb]] — dual AAV cluster-assisted maritime secure communications via collaborative beamforming.
-- [[yang-2024-taco-human-digital-twin-edge]] — two-timescale accuracy-aware online optimization for human-digital-twin deployment at the edge (TACO).
-- [[zheng-2024-recmop-uav-cb]] — reliable and energy-efficient UAV collaborative beamforming (RECMOP; IMOGSA).
-- [[liu-2024-hatrpo-ucb-cb]] — UAV collaborative beamforming rate-vs-energy MOP (UCBMOP) via heterogeneous-agent trust-region MADRL (HATRPO-UCB).
-- [[zhan-2020-completion-time-energy-uav-mec]] — completion-time vs energy Pareto optimization for a fixed-wing UAV-MEC server; path discretization + AO + SCA.
-- [[wang-2024-wipe-gai]] — wireless-perception-guided GAI (WiPe-GAI) for edge AIGC pricing via a diffusion model.
-- [[wang-2024-xl-mimo-tutorial]] — tutorial/survey on extremely large-scale MIMO (XL-MIMO) for 6G (near-field channel modeling + signal processing).
-- [[an-2024-multilayer-ris-hap-swipt]] — multi-layer refracting RIS-assisted receiver enabling SWIPT over long-distance HAP links (worst-case sum-rate, LogSumExp-dual + M-CCD).
-- [[huynh-2024-gai-physical-layer-survey]] — survey of generative AI for physical-layer communications (GANs/VAEs/normalizing-flows/diffusion/transformers across channel estimation, PLS, IRS, beamforming, JSCC).
-- [[du-2024-yolo-semcom-digital-twin]] — YOLO-based semantic communication with a diffusion-model-generated power allocation scheme for digital-twin (apple-orchard) construction.
-- [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT; overlap-based routing (OMRP) + SoftPPO-LSTM CB node selection.
-- [[pan-2025-uav-ris-energy-efficient-comm]] — cooperative UAV-mounted RISs for energy-efficient communications; joint BS beamforming + 3D UAV-RIS location + discrete phase shifts via INSGA-II-CDC.
-
+- [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
+- [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
+- [[jia-2025-dro-uav-hap-mec]] - distributionally robust optimization for aerial MEC via UAV-HAP cooperation.
+- [[sun-2024-mvtora-postdisaster-vfc]] - post-disaster aerial-terrestrial MEC + vehicle fog computing.
+- [[wang-2025-lae-network-survey]] - survey of low-altitude economy networks.
+- [[ye-2025-aigc-diffusion-contract]] - AIGC services via generative diffusion + contract theory.
+- [[zhang-2024-gdmtd3-aerial-secure-cb]] - UAV-swarm secure collaborative beamforming via diffusion-enhanced TD3.
+- [[zhao-2022-matd3-multiuav-ec-offloading]] - MATD3 multi-UAV edge-computing offloading.
+- [[wang-2025-sac-tma-mec-dc]] - joint AAV MEC + data collection via SAC-TMA.
+- [[sun-2025-emoppo-vlh-aerial-cb]] - aerial collaborative beamforming to mobile users via EMOPPO-VLH.
+- [[li-2024-emodrl-ground-space-cb]] - distributed collaborative beamforming for ground-space communications via EMODRL.
+- [[du-2024-d2sac-aigc-asp-selection]] - diffusion-based RL for edge AIGC service-provider selection.
+- [[du-2024-gdm-network-optimization-tutorial]] - tutorial on generative diffusion models in network optimization.
+- [[wang-gai-isac-physical-layer]] - generative AI for ISAC from the physical-layer perspective.
+- [[sun-2025-tjcct-twotimescale-uav-mec]] - two-timescale joint resource-allocation / offloading / trajectory-control UAV-MEC.
+- [[xu-2024-mobile-aigc-survey]] - survey of edge-cloud generative-AI / AIGC services in mobile networks.
+- [[huang-2025-dual-aav-maritime-secure-cb]] - dual AAV cluster-assisted maritime secure communications via collaborative beamforming.
+- [[yang-2024-taco-human-digital-twin-edge]] - two-timescale accuracy-aware online optimization for human-digital-twin deployment at the edge.
+- [[zheng-2024-recmop-uav-cb]] - reliable and energy-efficient UAV collaborative beamforming.
+- [[liu-2024-hatrpo-ucb-cb]] - heterogeneous-agent trust-region MADRL for collaborative beamforming.
+- [[zhan-2020-completion-time-energy-uav-mec]] - completion-time vs energy Pareto optimization for a fixed-wing UAV-MEC server.
+- [[wang-2024-wipe-gai]] - wireless-perception-guided GAI for edge AIGC pricing via a diffusion model.
+- [[wang-2024-xl-mimo-tutorial]] - tutorial/survey on extremely large-scale MIMO for 6G.
+- [[an-2024-multilayer-ris-hap-swipt]] - multi-layer refracting RIS-assisted receiver enabling SWIPT over long-distance HAP links.
+- [[huynh-2024-gai-physical-layer-survey]] - survey of generative AI for physical-layer communications.
+- [[du-2024-yolo-semcom-digital-twin]] - YOLO-based semantic communication for digital-twin construction.
+- [[li-2025-omrp-cb-iot]] - data-driven collaborative beamforming for static ground IoT.
+- [[pan-2025-uav-ris-energy-efficient-comm]] - cooperative UAV-mounted RISs for energy-efficient communications.
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Lyapunov-guided diffusion actor DDPG for delayed-CSI UAV-assisted vehicular networks.
 - [[shi-2026-aoi-active-ris-noma-agmec]] - AoI-aware active-RIS and NOMA-assisted air-ground MEC via AADDPG.
-- [[chen-2026-cargo-uav-pickup-lae]] - cellular-connected cargo-UAV pickup with CACMO, combining D3QN trajectory learning, simulated annealing, and collision-aware refinement.
+- [[chen-2026-cargo-uav-pickup-lae]] - cellular-connected cargo-UAV pickup with CACMO.
 - [[wang-2026-diffusion-semantic-uav-edge]] - UAV-assisted semantic edge computing with H-DDPG and diffusion-denoising DDPG trajectory control.
 - [[he-2026-dt-sagimec-lae]] - DT-assisted SAGIMEC for low-altitude economy workloads.
+- [[chen-2026-hc-mappo-vehicle-twin-migration]] - workload-prediction-assisted vehicle-twin migration and UAV routing via HC-MAPPO.
+- [[wen-2026-hybridrag-low-carbon-lae]] - HybridRAG-based LLM agents and R^2DSAC for low-carbon LAE MEC optimization.
 
 ## Contributions to this wiki
 
-- A cross-cutting collaborator who connects several clusters of the corpus: the Jilin-University/NTU aerial-MEC group (with [[geng-sun]]), the generative-AI-for-networks thread, and the NUAA aerial-computing group (with [[ziye-jia]], [[chao-dong]], [[zhu-han]]). His recurrence is a useful anchor for the generative-AI and DRL methodology pages.
+- Cross-cutting collaborator connecting the Jilin-University/NTU aerial-MEC group, the generative-AI-for-networks thread, and the NUAA aerial-computing group.
+- Anchor author for the corpus's diffusion / GAI optimization branch, including [[du-2024-gdm-network-optimization-tutorial]], [[ye-2025-aigc-diffusion-contract]], [[wang-2026-diffusion-semantic-uav-edge]], and [[wen-2026-hybridrag-low-carbon-lae]].
+- Recurring co-author in digital-twin and vehicular-metaverse entries, including [[yang-2024-taco-human-digital-twin-edge]], [[he-2026-dt-sagimec-lae]], and [[chen-2026-hc-mappo-vehicle-twin-migration]].
