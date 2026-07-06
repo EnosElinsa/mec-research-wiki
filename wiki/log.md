@@ -1,5 +1,19 @@
 # Research Log
 
+## [2026-07-06] Curated 5 game / satellite / green-UAV sources
+
+Added five source pages and two concept pages:
+
+- [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3667967`. Cooperative multi-UAV task allocation and collision-free path planning for low-altitude urban intelligent transportation systems; ILLA potential-game allocation plus CBMBA A-Star path search.
+- [[huang-2026-amappo-satellite-edge]] — Huang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3645456`. Cost-aware dependent-task offloading for UAV-assisted satellite edge computing; direct IoTD-to-LEO in spacious regions, UAV relay in obstructive regions, MATS DAG sequencing, and asynchronous GNN-augmented MAPPO.
+- [[panahi-2026-uav-green-iot-offloading]] — Panahi & Panahi 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3580453`. Cost-aware green-IoT UAV offloading with Q-learning region trajectory, laser / renewable energy procurement, and COF/WPT service-compensation accounting.
+- [[chen-2026-dart-hap-uav-mec]] — Chen et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3676417`. HAP-UAV-MEC with NOMA and WPT; DART combines Lyapunov decomposition, DDPG-attention trajectory/offloading, and convex resource allocation.
+- [[jia-2026-ufsp-rail-inspection]] — Jia et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3695610`. Multi-UAV rail-line inspection under imperfect information; stochastic potential game plus U-FSP belief-augmented Q-learning / policy averaging, with small-scale real-world deployment evidence.
+
+New concept pages: [[fictitious-self-play]] and [[energy-procurement-compensation]]. Updated [[ying-chen]] after the DART parse confirmed the same Beijing Information Science and Technology University identity. Metadata notes: DOI/venue/year for all five papers were verified with Crossref/DOI lookup where the parse was silent or incomplete; technical claims are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 260 curated raw references, and 85 genuinely new folders still uncurated after this pass. `python tools/wiki/corpus_counts.py` reported 272 sources, 276 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean; `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 37 advisory present-but-unlisted omissions. LLM Wiki API health was OK; graph probe reported 669 nodes and 6264 edges.
+
 ## [2026-07-06] Curated 5 low-altitude / UAV-MEC sources
 
 Added five source pages and two concept pages:

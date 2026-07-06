@@ -61,6 +61,7 @@
 - [[chen-2022-qoe-game-end-edge-cloud]] — Chen et al. 2022. **QoE-aware decentralized end-edge-cloud offloading** as a **potential game** (MUTO-Game); self-interested user devices compete for channels + edge compute, maximizing sum QoE; proven NE existence + the distributed GDTO algorithm + a convergence bound and a **Price-of-Anarchy** worst-case guarantee (IEEE TMC).
 
 > [[chen-2024-ulse-game]] (UAV-LEO offloading as a potential game) is also game-theoretic; it is filed under **SAGIN / satellite offloading** below as its primary architectural home.
+> [[zhang-2026-uav-task-path-lu-its]] (multi-UAV low-altitude ITS task allocation as a potential game) is filed under **Architectural / spectrum / governance** as its primary low-altitude-economy home; [[jia-2026-ufsp-rail-inspection]] (imperfect-information stochastic potential game) is filed under **UAV-swarm collaborative computing**.
 
 ### Multi-UAV cooperative computing & deployment
 
@@ -134,6 +135,7 @@
 
 - [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019. **First SAGIN computing-offloading** paper for remote IoT; UAV edge + satellite cloud; MDP + **actor-critic RL** offloading + heuristic VM allocation (IEEE JSAC).
 - [[liu-2024-sagin-spherical-sg-connectivity]] — Liu et al. 2024. **Spherical stochastic geometry** uplink path connectivity analysis for SAGIN; GUs + AVs on spherical surfaces; three connectivity metrics; first such model (IEEE JSAC).
+- [[huang-2026-amappo-satellite-edge]] — Huang et al. 2026. Cost-aware dependent-task offloading in UAV-assisted satellite edge computing; direct IoTD-to-LEO in spacious regions, UAV relay in obstructive regions, MATS DAG sequencing + asynchronous GNN-augmented MAPPO (IEEE TMC).
 - [[gao-2024-sagin-perception-offloading]] — Gao et al. 2024. **Perception-aided** SAGIN offloading (mmWave radar + YOLOv7 → DRL state); Lyapunov + DDPG + DQN + SGHS.
 - [[chen-2024-thoas-traffic-aware-sagin]] — Chen et al. 2024. **THOAS** — traffic-aware slicing-enabled SAGIN; probsparse-attention prediction + lightweight distilled PPO.
 - [[chen-2024-ulse-game]] — Chen et al. 2024. Multi-user UAV-LEO offloading as a **potential game** (LUTO-Game / JULTO distributed best-response).
@@ -174,6 +176,7 @@
 - [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
 - [[qu-ecoei-uav-swarm]] — Qu et al. **eCoEI** — elastic OODA-loop collaborative DL inference for UAV swarms, robust to node/A2A-link failure; proof-of-concept on Jetson devices (IEEE Communications Magazine; year not in parse).
 - [[li-2025-stochastic-game-uav-swarm]] — Li et al. 2025. Energy-efficient UAV-swarm MEC as five **stochastic games** with dynamic clustering; RLDC multi-agent Q-learning.
+- [[jia-2026-ufsp-rail-inspection]] — Jia et al. 2026. Multi-UAV rail-line inspection under imperfect information; stochastic potential game + U-FSP belief-augmented Q-learning / policy averaging, with small-scale real-world deployment evidence (IEEE T-ITS).
 - [[li-2024-rldc-uav-swarm-clustering]] — Li et al. 2024. **Conference precursor** of the above (IEEE WCNC 2024); six stochastic games + RLDC, no NE/convergence proof.
 - [[zhang-2020-response-delay-uav-swarm]] — Zhang et al. 2020. **Response-delay** optimization for a MEC-enabled UAV swarm (T-UAV + B-UAVs); **stochastic geometry** + **queueing theory** closed-form delay; **hardware-validated** (2 DJI M100 + 5G NR mmWave) (IEEE TVT).
 
@@ -206,6 +209,7 @@
 
 
 - [[nabi-2025-jour-hierarchical-aerial]] — Nabi & Moh 2025. *JOUR* — Gale-Shapley matching + ESAC for joint offloading, association, and resource allocation in UAV+HAP MEC.
+- [[chen-2026-dart-hap-uav-mec]] — Chen et al. 2026. HAP-UAV-MEC with NOMA and WPT; DART combines Lyapunov decomposition, DDPG-attention trajectory/offloading, and convex resource allocation (IEEE TMC).
 - [[bao-2025-ddpg-video-offloading]] — Bao et al. 2025. UAV+HAP video-analytics offloading with adaptive transcoding; DDPG over a QoE reward.
 - [[jia-2025-dro-uav-hap-mec]] — Jia et al. 2025. **Distributionally robust** UAV-HAP MEC under uncertain CSI; CVaR + primal decomposition + BWOA.
 - [[jia-2022-hierarchical-aerial-matching]] — Jia et al. 2022. **Matching game** + heuristic for HAP+UAV aerial computing serving IoT (early anchor).
@@ -302,6 +306,7 @@
 ### Architectural / spectrum / governance
 
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
+- [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026. Cooperative task allocation and collision-free path planning for multi-UAV low-altitude urban intelligent transportation systems; ILLA potential-game allocation + CBMBA A-Star path search (IEEE T-ITS).
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
 - [[wang-2025-lae-network-survey]] — Wang et al. 2025. Survey: low-altitude economy network architecture, integrated technologies, and future directions.
 - [[jiang-2025-isac-lae-overview]] — Jiang et al. 2025. ISAC for LAE — IAGN architecture, MBCM channel model, stochastic-geometry analysis.
@@ -320,6 +325,7 @@
 
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
+- [[panahi-2026-uav-green-iot-offloading]] — Panahi & Panahi 2026. Cost-aware UAV-enabled green-IoT computation offloading; Q-learning region trajectory plus laser / renewable energy procurement and COF/WPT service-compensation accounting (IEEE TGCN).
 - [[zhou-2018-uav-wireless-powered-mec]] — Zhou et al. 2018. **Computation-rate maximization** in UAV-enabled wireless-powered MEC; partial + binary offloading; two-/three-stage closed-form optimization (JSAC).
 - [[he-2024-backscatter-wpmec-cooperation]] — He et al. 2024. **Backscatter-assisted wireless-powered MEC with user cooperation** (source node + helper-relay + HAP-with-MEC); integrated **BackCom + active comm**; **user energy-efficiency** maximization via Dinkelbach fractional programming + convex transform to semi-closed-form solutions (IEEE TMC).
 - [[li-2024-irs-secure-wpmec]] — Li et al. 2024. **IRS-assisted secure wireless-powered MEC** with a passive eavesdropper; harvest-then-offload (TDMA) + partial offloading; **sum secure computation task bits** maximization over AP energy beamforming + IRS phase shifts (WPT + offload) + power + time + local frequency; non-convex → 3 subproblems via Taylor expansion + SDR + Lagrange-duality/KKT, iterative AO; >45% secure-bits gain at max AP power (IEEE TMC).
@@ -420,6 +426,7 @@
 - [[wireless-power-transfer]]
 - [[rf-energy-harvesting]]
 - [[energy-harvesting-mec]]
+- [[energy-procurement-compensation]]
 - [[backscatter-communication]]
 - [[simultaneous-wireless-information-and-power-transfer]]
 - [[noma]]
@@ -576,6 +583,7 @@
 - [[stackelberg-game]]
 - [[potential-game]]
 - [[stochastic-game]]
+- [[fictitious-self-play]]
 - [[bargaining-game]]
 - [[coalition-formation-game]]
 - [[nash-equilibrium]]
