@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 MODE / parallel caching / semantic IoV / networked ISAC / RIS-online sources
+
+Added five source pages and four concept pages:
+
+- [[ye-2026-mode-lae-isac]] - Ye et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3693366`. Multi-objective LAE ISAC with MODE, a DDPG plus mixture-of-experts multi-task controller for communication/sensing objective-preference tradeoffs over GBS beamforming and authorized-UAV trajectories.
+- [[fan-2026-parallel-caching-uav-mec]] - Fan et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3674329`. Multi-task parallel execution in UAV-assisted MEC; RLTL combines lower-layer DQN caching/offloading with upper-layer regret-minimization channel allocation.
+- [[liu-2025-multimodal-semantic-iov-jamming]] - Liu et al. 2025, *IEEE TMC*, DOI `10.1109/TMC.2025.3550965`. Multi-UAV-assisted IoV MEC under jamming with multi-modal semantic communication; SC-MA-TD3 jointly controls trajectories, user association, and channels.
+- [[zhao-2025-networked-isac-uav-handover]] - Zhao et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2025.3562396`. Networked ISAC UAV tracking and handover for LAE using virtual sensing cells, MUSIC estimation, centralized EKF fusion, PBS handover, and VSC handover.
+- [[sheng-2025-ris-online-uav-mec]] - Sheng et al. 2025, *IEEE TGCN*, DOI `10.1109/TGCN.2024.3503687`. RIS-empowered online UAV-MEC trajectory/resource allocation with Lyapunov/Dinkelbach/BCD/SCA under mobile users, random arrivals, queue stability, outage constraints, and finite UAV energy.
+
+New concept pages: [[mixture-of-experts-drl]], [[multi-modal-semantic-communication]], [[networked-isac]], and [[regret-minimization-learning]]. Updated backlinks for [[integrated-sensing-and-communication]], [[low-altitude-intelligent-network]], [[semantic-communication]], [[anti-jamming-mec]], [[multi-agent-td3]], [[parallel-vs-serial-processing]], [[service-caching-mec]], [[stochastic-game]], [[lyapunov-optimization]], [[intelligent-reflecting-surface]], and [[uav-trajectory-control]].
+
+Metadata notes: [[ye-2026-mode-lae-isac]] had DOI/venue evidence in the local parse. The parses for [[fan-2026-parallel-caching-uav-mec]], [[liu-2025-multimodal-semantic-iov-jamming]], [[zhao-2025-networked-isac-uav-handover]], and [[sheng-2025-ris-online-uav-mec]] were silent on top-level DOI/venue/year, so DOI, year, venue, volume, issue, and page fields where used were verified against title-matched Crossref/IEEE DOI records. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 320 curated raw references, 25 genuinely new folders still uncurated after this pass, and 12 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 329 sources, 308 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean before committing. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-batch-prelog.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki health was OK; `/graph` and `/api/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 hybrid UAV-MEC / LAE imaging / Air-ISCC / SAGIN / movable-antenna sources
 
 Added five source pages and one concept page:

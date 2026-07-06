@@ -14,6 +14,8 @@ related:
   - "[[wang-2026-lifelong-semantic-content-reuse]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[zhao-2025-probabilistic-semantic-sagin]]"
+  - "[[multi-modal-semantic-communication]]"
+  - "[[liu-2025-multimodal-semantic-iov-jamming]]"
 created: 2026-05-31
 updated: 2026-07-07
 ---
@@ -33,3 +35,4 @@ Semantic transceivers bring **inherent robustness** and **data compression**, wh
 - [[wang-2026-lifelong-semantic-content-reuse]] uses semantic request representations for [[semantic-content-reuse]] in UAV-assisted Metaverse rendering: cache hits, semantic reuse, and full computation are treated as distinct service modes.
 - [[wang-2026-diffusion-semantic-uav-edge]] formulates semantic extraction, transmission, and recovery as a UAV-assisted edge-computing optimization problem, with semantic processing rate as the objective.
 - [[zhao-2025-probabilistic-semantic-sagin]] narrows semantic communication to [[probabilistic-semantic-communication]]: shared probabilistic graphs let the transmitter omit recoverable semantic relations, trading lower communication energy for added semantic-computation overhead in a SAGIN.
+- [[liu-2025-multimodal-semantic-iov-jamming]] extends the line to [[multi-modal-semantic-communication]] in IoV, combining image and text semantics under jamming while UAV agents choose trajectories, user associations, and channels.

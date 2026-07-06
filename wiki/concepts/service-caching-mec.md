@@ -9,6 +9,7 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[gao-2024-service-experience-cache-uav]]"
   - "[[zhao-2024-caching-service-placement-uav]]"
+  - "[[fan-2026-parallel-caching-uav-mec]]"
   - "[[mao-2024-ntn-hierarchical-caching-cav]]"
 created: 2026-05-29
 updated: 2026-06-01
@@ -20,4 +21,4 @@ Pre-deploying the **service program** (executable, libraries, models) for popula
 
 Modeling it requires a binary indicator $\gamma_j \in \{0, 1\}$ for whether task $j$'s service is cached at the local edge. Cached: tiny retrieval cost; uncached: pull from cloud (extra bandwidth + latency). The cache decision itself is a separate, longer-timescale optimization problem (which services to cache); per-task offloading decisions take the cache state as given.
 
-In the wiki, [[peng-2024-energy-time-uav-its]] models the cached/cloud distinction in its UAV-ITS task formulation (the binary $\gamma_j$ indicator above). Service/content caching also appears in the cache-enabled UAV-MEC sources: [[gao-2024-service-experience-cache-uav]] (each UAV caches a subset of services, chosen by a priority-based placement heuristic) and [[zhao-2024-caching-service-placement-uav]] (joint content caching + service placement via Gibbs sampling), and at satellite scale in [[mao-2024-ntn-hierarchical-caching-cav]] (hierarchical content caching). This is distinct from caching the *pending task itself* — see [[computational-task-caching]].
+In the wiki, [[peng-2024-energy-time-uav-its]] models the cached/cloud distinction in its UAV-ITS task formulation (the binary $\gamma_j$ indicator above). Service/content caching also appears in the cache-enabled UAV-MEC sources: [[gao-2024-service-experience-cache-uav]] (each UAV caches a subset of services, chosen by a priority-based placement heuristic), [[zhao-2024-caching-service-placement-uav]] (joint content caching + service placement via Gibbs sampling), and [[fan-2026-parallel-caching-uav-mec]] (content caching tied to computation offloading and channel allocation under parallel execution), and at satellite scale in [[mao-2024-ntn-hierarchical-caching-cav]] (hierarchical content caching). This is distinct from caching the *pending task itself* — see [[computational-task-caching]].

@@ -6,8 +6,9 @@ related:
   - "[[dispersed-computing]]"
   - "[[mobile-edge-computing]]"
   - "[[huang-2025-cmop-dispersed-computing]]"
+  - "[[fan-2026-parallel-caching-uav-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Parallel vs Serial Processing in MEC
@@ -22,3 +23,5 @@ Why this matters for offloading optimization:
 [[huang-2025-cmop-dispersed-computing]] explicitly models both styles in the same problem; the queue position becomes part of the decision space.
 
 Most prior MEC sources in the wiki implicitly assume parallel processing everywhere. The serial model makes a real difference when the worker pool includes lightweight devices.
+
+[[fan-2026-parallel-caching-uav-mec]] uses the same distinction from a UAV-server angle: a UAV can overlap receiving task data, computing tasks, and returning results for different mobile devices, so caching/offloading/channel decisions should minimize service duration under parallel execution rather than under a serialized task pipeline.

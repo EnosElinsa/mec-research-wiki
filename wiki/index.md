@@ -48,6 +48,7 @@
 - [[zhao-2025-traj-offload-cache-migration]] — Zhao et al. 2025. Joint trajectory + offloading + migration + **computational-task caching**; Lyapunov + BCD + QCQP-SDR.
 - [[gao-2024-service-experience-cache-uav]] — Gao & Zhai 2024. Fairness-aware cache-enabled UAV-MEC; **service-experience ratio** (Jain's index / delay); Dinkelbach + 4-stage AO.
 - [[zhao-2024-caching-service-placement-uav]] — Zhao et al. 2024. Joint content caching + service placement + offloading; QoE max via Gibbs sampling + matching.
+- [[fan-2026-parallel-caching-uav-mec]] - Fan et al. 2026. Multi-task parallel UAV-MEC execution with content caching, computation offloading, and channel allocation; RLTL uses DQN for intra-UAV caching/offloading and regret-minimization learning for inter-UAV channel allocation (IEEE TMC).
 - [[chen-2024-dro-video-caching]] — Chen et al. 2024. **Distributionally robust** adaptive-bitrate video caching + transcoding + backhaul in UAV-MEC; ζ-structure-metric confidence set + convex DRO latency minimizer under an energy budget; real YouTube traces (IEEE TMC).
 - [[huang-2026-erasure-coded-uav-storage]] — Huang et al. 2026. **Erasure-coded UAV edge storage**; coded data/parity block placement + access routing in post-disaster UAV-enabled edge systems via CNN+ConvLSTM prediction and ME-HDRL (DDQN UAV agents + PPO edge agent) (IEEE TMC).
 - [[du-2023-maddpg-service-placement-agin]] — Du et al. 2023. **MADDPG** joint service placement + offloading in air-ground integrated MEC.
@@ -193,6 +194,7 @@
 
 - [[qin-2023-ris-uav-mec-ee]] - Qin et al. 2023. RIS-assisted UAV-MEC energy efficiency with NOMA; Dinkelbach + BCD/DC/SCA over task bits, power, RIS phase shifts, and UAV trajectory under imperfect CSI (IEEE TGCN).
 
+- [[sheng-2025-ris-online-uav-mec]] - Sheng et al. 2025. RIS-empowered online UAV-MEC trajectory/resource allocation with mobile users and random arrivals; Lyapunov/Dinkelbach/BCD/SCA handle queue stability, outage constraints, UAV trajectory, and RIS phases (IEEE TGCN).
 - [[chhea-2025-irs-uav-swipt-drl]] — Chhea et al. 2025. IRS-aided UAV **SWIPT** network; **DRL** with SINR-map reward maximizes average EE over trajectory + IRS phase shifts + transmit power + PS ratio (IEEE TVT).
 - [[wu-2025-gai-ris-resource-management]] — Wu et al. 2025. **GAI + distributional RL (DBRL)** for RIS-aided 6G resource management; CDL cascade channel estimation + GAN-modeled distributional Q-function; maximizes joint EE + QoSSR (IEEE TCCN).
 - [[wu-2025-iopo-irs-uav-thz-mec]] — Wu et al. 2025. **IRS-assisted** multi-UAV THz MEC; two-stage IOPO (order-preserving offloading + WOA phases).
@@ -264,6 +266,7 @@
 - [[wei-2026-airfogsim-uav-vfc]] - Wei et al. 2026. **AirFogSim** lightweight modular simulator for UAV-integrated vehicular fog computing; traffic/UAV mobility, communication, computation, energy, security/privacy, blockchain, and scheduling modules (IEEE TMC).
 - [[qi-2026-drone-vehicle-mec-inspection]] - Qi et al. 2026. Cooperative drone-vehicle MEC for low-altitude inspection; GV-carried accompanying/detached drones, battery swapping, route planning, and detached-drone speed optimization minimize mission completion time (IEEE TMC).
 
+- [[liu-2025-multimodal-semantic-iov-jamming]] - Liu et al. 2025. Multi-UAV-assisted IoV MEC under jamming with multi-modal semantic communication; SC-MA-TD3 jointly controls UAV trajectories, user association, and channel selection to reduce delay and preserve semantic accuracy (IEEE TMC).
 - [[liu-2025-mad2rl-dnn-vec]] — Liu et al. 2025. **MAD2RL** — DNN partitioning + task offloading in VEC; Lyapunov + diffusion-model-based MARL + convex resource allocation (IEEE TMC).
 - [[huang-2024-fed-idcco-iov-caching]] — Huang et al. 2024. **Fed-IDCCO** — joint **data caching + computation offloading** in UAV-assisted IoV; DRL + **federated learning** (privacy + convergence); minimizes delay + maximizes cache hit ratio (IEEE TVT).
 - [[li-2025-energy-latency-uav-vec]] — Li et al. 2025. UAV-assisted VEC **federated-learning participant selection** and bandwidth/compute allocation; weighted energy-latency cost as an MDP solved by AB-DDQN (AdamW + BOA hyperparameter tuning) (IEEE TGCN).
@@ -328,6 +331,8 @@
 
 - [[li-2023-adaptive-digital-twin-uav-iscc]] - Li et al. 2023. DT-enabled UAV-assisted ISCC; ATB-MAPPO with Beta-policy actors and attention critics for radar beampattern / energy tradeoff (IEEE TGCN).
 - [[tang-2025-cooperative-isac-lae]] - Tang et al. 2025. Cooperative ISAC for low-altitude economy; tensor-decomposition monostatic estimation, false-removing MST association, Pareto position fusion, and residual-weighted velocity estimation (IEEE TWC).
+- [[ye-2026-mode-lae-isac]] - Ye et al. 2026. Multi-objective LAE ISAC; MODE combines DDPG with mixture-of-experts multi-task learning to tune the communication/sensing tradeoff across objective-preference weights (IEEE TMC).
+- [[zhao-2025-networked-isac-uav-handover]] - Zhao et al. 2025. Networked ISAC UAV tracking/handover for LAE; virtual sensing cells, MUSIC estimation, centralized EKF fusion, PBS handover, and VSC handover maintain multi-BS tracking (IEEE TWC).
 - [[ye-2026-meta-deepesc-lae-isac]] - Ye et al. 2026. Meta-DeepESC for energy-efficient LAE ISAC; TD3-style constrained action selection, episodic replay, and meta-learning for GBS beamforming plus authorized-UAV trajectories (IEEE TMC).
 - [[ye-2026-deeplsc-lae-isac]] - Ye et al. 2026. DeepLSC LAE ISAC; DDPG-based joint GBS beamforming and UAV-trajectory control with constrained noise exploration, hierarchical replay, and symmetric experience augmentation (IEEE TWC).
 - [[zeng-2026-fmcw-isibc-lae]] — Zeng & Liang 2026. **FMCW-enabled integrated sensing, identification, and backscatter communication** for LAE; UAV-mounted BDs modulate identity symbols onto FMCW echoes, with SVD-based range/velocity/symbol estimation and CRLB analysis (IEEE TWC).
@@ -532,6 +537,7 @@
 - [[small-cell-mec]]
 - [[mobility-aware-offloading]]
 - [[semantic-communication]]
+- [[multi-modal-semantic-communication]]
 - [[probabilistic-semantic-communication]]
 - [[task-oriented-communication]]
 - [[discriminant-gain]]
@@ -621,6 +627,7 @@
 - [[centralized-training-decentralized-execution]]
 - [[communication-constrained-marl]]
 - [[model-based-marl]]
+- [[mixture-of-experts-drl]]
 - [[end-to-end-vs-decomposition-in-drl-mec]]
 - [[action-space-explosion-in-multi-uav-mec]]
 - [[adaptive-entropy-priority-replay]]
@@ -666,6 +673,7 @@
 - [[mean-field-game]]
 - [[potential-game]]
 - [[stochastic-game]]
+- [[regret-minimization-learning]]
 - [[fictitious-self-play]]
 - [[bargaining-game]]
 - [[coalition-formation-game]]
@@ -737,6 +745,7 @@
 ### Sensing & security
 
 - [[integrated-sensing-and-communication]]
+- [[networked-isac]]
 - [[cramer-rao-bound]]
 - [[integrated-sensing-computation-communication]]
 - [[mmwave-radar-sensing]]
