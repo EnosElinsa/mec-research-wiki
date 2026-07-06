@@ -5,8 +5,9 @@ tags: [near-field, xl-mimo, physical-layer, channel-modeling, 6g]
 related:
   - "[[extremely-large-scale-mimo]]"
   - "[[wang-2024-xl-mimo-tutorial]]"
+  - "[[bui-2025-noma-near-far-offloading]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-07
 ---
 
 # Near-Field Communications
@@ -19,4 +20,4 @@ Key consequences surveyed in [[wang-2024-xl-mimo-tutorial]]:
 - **Signal processing** needs near-field-specific schemes — e.g. polar-domain channel estimation and **near-field beam focusing** (focusing energy at a point rather than steering a far-field beam) — because far-field schemes mismatch the near-field channel.
 - New opportunities include near-field beam focusing and near-field wireless energy transfer.
 
-A physical-layer concept; it appears in the corpus as background for 6G PHY rather than as part of the MEC offloading core.
+A physical-layer concept that now also appears inside MEC offloading. [[bui-2025-noma-near-far-offloading]] uses near-field spherical-wave channel modeling for users inside the UAV array's Rayleigh distance, while far-field users keep the planar-wave model; the distinction affects NOMA offloading, transmit power, and UAV compute allocation.

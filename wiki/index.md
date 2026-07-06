@@ -92,6 +92,7 @@
 - [[teng-2026-gstrl-sequential-offloading]] - Teng et al. 2026. Graph-based spatiotemporal RL for sequential task offloading in multi-UAV MEC; heterogeneous task/UAV graph encoding plus masked PPO for order-constrained offloading decisions (IEEE TMC).
 - [[zhao-2026-heuristic-supervised-drl]] - Zhao et al. 2026. Heuristic-supervised DRL framework with TTSSA convergence analysis; PSO bridges upper-tier planning to MARL control in the UAV-MEC case study (IEEE TMC).
 - [[chen-2026-qos-noma-multiuav]] - Chen et al. 2026. QoS-oriented NOMA multi-UAV MEC offloading with task priorities, Lagrange-dual constraint handling, and improved SAC for trajectories/association/offloading/resources (IEEE TWC).
+- [[bui-2025-noma-near-far-offloading]] - Bui et al. 2025. UAV-aided NOMA MEC with near-field/far-field coexistence around large UAV arrays; alternating optimization over offloading decisions, transmit powers, and UAV computing allocation (IEEE TGCN).
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
 - [[wu-2026-secure-split-offloading-ci]] - Wu et al. 2026. Secure UAV-assisted collaborative DNN inference; multi-exit DNN, DNN partitioning, dual-UAV trajectories, cooperative jamming, SCA, and discrete WOA (IEEE TMC).
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
@@ -120,6 +121,7 @@
 - [[liu-2020-cooperative-uav-mec-power-iot]] — Liu et al. 2020. **Cooperative** UAV-enabled MEC for **power IoT** (UAVs help neighboring small-cells compute); long-term utility max as a **semi-Markov** process; two-phase centralized + Q-value-transfer distributed DRL (IEEE TVT).
 - [[wang-2024-hfrl-decentralized-navigation]] — Wang et al. 2024. Decentralized navigation for **heterogeneous** UAV-MEC; soft hierarchical DRL (SHDRLN, skill abstraction) + dual-end **federated RL** (DFRL) maximizing task-offloading energy efficiency (IEEE TMC).
 - [[zhou-2024-jdl-abs-postdisaster-rescue]] — Zhou et al. 2024. **Post-disaster** ABS computation offloading + communication assistance; min task-queuing-delay over ABS-GU association + offloading ratio + trajectory; **JDL** = Lyapunov + actor-critic DRL with a **model-based SCA critic** (IEEE TWC).
+- [[tang-2026-hg-maddpg-uav-rescue]] - Tang et al. 2026. Low-altitude UAV rescue with UAVs, ground embedded robots, and airships; HG-MADDPG combines Hungarian area assignment, Lyapunov queues, and generative-diffusion-enhanced MADDPG (IEEE TMC).
 - [[raivi-2024-jdaco-postdisaster-iot]] — Raivi & Moh 2024. **JDACO** — joint data aggregation + computation offloading for multi-UAV **post-disaster** IoT; two-tier LT-UAV/HT-UAV; minimize aggregation+offload energy/delay + max IoT coverage; **VD3QN** (dueling double DQN + value-decomposition network); +20% training-time / +11.4% data / +5.6% energy-eff / +11.2% mission-duration, up to 98% devices served (IEEE IoT-J).
 - [[sun-2024-ues-video-analytics-disaster]] — Sun et al. 2024. **Battery-aware** UAV-edge-server collaborative **video analytics** for **disaster rescue**; differential-evolution per-slot offloading + **DDQN** trajectory planning; doubles the smart-camera-network lifetime (IEEE TVT).
 - [[gao-2024-d3qn-uav-mec-mobile-gt]] — Gao et al. 2024. **3D** UAV-MEC for **mobile** ground terminals in a **post-disaster** urban scenario; collect→compute→deliver total-time minimization over UAV 3D trajectory + GT scheduling, with **obstacle avoidance** among buildings + **probabilistic-LoS** channel; MDP + **multi-step dueling DDQN (D3QN)**; 3D beats 2D, robust to GT mobility / height limits (IEEE TVT).
@@ -150,6 +152,7 @@
 - [[sun-2025-tjcct-twotimescale-uav-mec]] — Sun et al. 2025. **Two-timescale** UAV-MEC (TJCCT); MINLP system-utility max via short-timescale price-incentive resource allocation + matching offloading and long-timescale convex trajectory control; stability + complexity proved (IEEE TMC).
 - [[jeong-2018-uav-cloudlet-bit-allocation]] — Jeong et al. 2018. Early **UAV-mounted cloudlet** MEC; joint **bit allocation** (uplink/compute/downlink) + trajectory to minimize mobile energy under latency + UAV-energy budget; orthogonal vs **NOMA** access; **SCA** (IEEE TVT).
 - [[hu-2019-uav-relay-edge-computing]] — Hu et al. 2019. UAV as **MEC server + relay** simultaneously; minimize **weighted-sum energy** of UAV + UEs over computation scheduling + bandwidth allocation + trajectory; alternating optimization (closed-form Lagrange-dual + SCA) under **information-causality** constraints (IEEE TWC).
+- [[song-2026-thz-multiuav-mec]] - Song et al. 2026. THz multi-UAV relay MEC with direct or IoT-UAV-MEC offloading paths; PDD optimizes relay selection, UAV power/deployment, user-resource association, and M/M/s MEC queueing delay (IEEE TMC).
 - [[zhan-2020-completion-time-energy-uav-mec]] — Zhan et al. 2020. Single **fixed-wing** UAV-MEC server; joint offloading + resource allocation + trajectory + **completion time**, minimizing UAV **energy** and **completion time** separately and tracing their **Pareto** tradeoff; path discretization + AO + **SCA** (IEEE IoT-J).
 
 ### SAGIN / satellite offloading
@@ -157,6 +160,8 @@
 - [[tun-2025-thz-sag-mec-resource-allocation]] - Tun et al. 2025. THz-assisted MEC-enabled SAG networks; BCD over device offloading, THz sub-band/power control, UAV deployment, and UAV-to-UAV/LEO task forwarding (IEEE TMC).
 
 - [[chen-2026-pddqn-sagin-mec]] - Chen et al. 2026. MEC-enabled SAGIN with local/UAV/LEO partial offloading; P-DDQN couples device/satellite association with transmit power, task ratios, and UAV 3D trajectory under LEO coverage-time constraints (IEEE TWC).
+
+- [[diallo-2026-system-cost-uav-leo-offloading]] - Diallo et al. 2026. UAV-assisted LEO task offloading with task dropping cost, UAV trajectory, transmit power, and offloading/computing scheduling solved by a four-block classical decomposition (IEEE TGCN).
 
 - [[zhao-2026-hcdrl-ga-sagin-sar]] - Zhao et al. 2026. Multi-UAV SAR in SAGIN; HCDRL/HCSAC trajectory/offloading with CNN+GCN state encoding plus GA deployment search under NOAA-derived wind fields (IEEE TMC).
 
@@ -382,6 +387,7 @@
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
 - [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026. Cooperative task allocation and collision-free path planning for multi-UAV low-altitude urban intelligent transportation systems; ILLA potential-game allocation + CBMBA A-Star path search (IEEE T-ITS).
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
+- [[zhao-2026-temporal-spectrum-cartography]] - Zhao et al. 2026. Temporal spectrum cartography for LAE networks with sparse static/mobile sensing, RecMAE reconstruction, and multi-agent diffusion-policy UAV sensor placement (IEEE TMC).
 - [[wang-2025-lae-network-survey]] — Wang et al. 2025. Survey: low-altitude economy network architecture, integrated technologies, and future directions.
 - [[jiang-2025-isac-lae-overview]] — Jiang et al. 2025. ISAC for LAE — IAGN architecture, MBCM channel model, stochastic-geometry analysis.
 - [[wu-2026-service-oriented-segmented-trajectory]] - Wu et al. 2026. Service-oriented segmented trajectories for high-rise low-altitude UAV-MEC; VSRL-LKH plus TRA/SOS-TRA for latency, energy, and smart-window trajectory privacy (IEEE TMC).
@@ -569,6 +575,7 @@
 - [[hierarchical-aerial-mec]]
 - [[air-ground-integrated-network]]
 - [[low-altitude-intelligent-network]]
+- [[ground-embedded-robot]]
 - [[leo-satellite-edge-computing]]
 - [[leo-satellite-coverage-time]]
 - [[leo-handover-protocol]]
@@ -622,6 +629,7 @@
 - [[ddpg]]
 - [[td3]] · [[multi-agent-td3]]
 - [[maddpg]]
+- [[multi-agent-diffusion-policy]]
 - [[masac]]
 - [[soft-actor-critic]]
 - [[hierarchical-reinforcement-learning]]
@@ -768,6 +776,7 @@
 - [[uav-backscatter-identification]]
 - [[yolov7-object-detection]]
 - [[spectrum-sensing-channel-selection]]
+- [[temporal-spectrum-cartography]]
 - [[physical-layer-security]]
 - [[covert-communication]]
 - [[friendly-jamming-uav]]

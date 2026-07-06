@@ -8,6 +8,7 @@ related:
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
   - "[[hu-2026-latency-hybrid-uav-mec]]"
   - "[[chen-2026-qos-noma-multiuav]]"
+  - "[[bui-2025-noma-near-far-offloading]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -30,6 +31,8 @@ A multiple-access scheme where multiple users share the *same* time-frequency re
 [[hu-2026-latency-hybrid-uav-mec]] compares TDMA and NOMA in a wireless-powered hybrid UAV-GBS MEC system. In its latency-minimization experiments, NOMA completes the same task workload with fewer slots than the corresponding TDMA setting as user density grows.
 
 [[chen-2026-qos-noma-multiuav]] uses NOMA in a multi-UAV cooperative MEC system where users with different task priorities simultaneously offload over shared subchannels. The SIC-based transmission model is coupled to QoS utility, UAV association, 3D trajectories, offloading ratios, and UAV compute allocation.
+
+[[bui-2025-noma-near-far-offloading]] adds a near-field/far-field split: users inside the Rayleigh distance use spherical-wave channel modeling, while far-field users use plane-wave modeling. The offloading optimizer therefore couples NOMA SIC with near-field communications and UAV-MEC compute allocation.
 
 ## Caveats
 

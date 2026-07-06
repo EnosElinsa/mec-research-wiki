@@ -8,6 +8,7 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[hu-2019-pdd-uav-mec-offloading]]"
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
+  - "[[song-2026-thz-multiuav-mec]]"
 created: 2026-05-31
 updated: 2026-07-07
 ---
@@ -22,4 +23,4 @@ A solver framework for non-convex problems with **coupling (equality) constraint
 
 PDD converges to a KKT/stationary point of the original non-convex problem under mild conditions. It is a counterpart to the [[alternating-optimization-sdr-sca|AO+SDR+SCA]] pipeline — both attack non-convex coupled problems, but PDD specifically handles equality-constraint coupling and binary-to-equality conversion.
 
-In the wiki, [[hu-2019-pdd-uav-mec-offloading]] uses PDD (inner CCCP, outer multiplier/penalty update) to jointly optimize UAV trajectory, per-user offloading ratio, and binary user scheduling for min-max-delay UAV-MEC, plus a lower-complexity l0-norm variant. [[zhan-2026-gatd3qn-dependent-offloading]] uses penalty dual decomposition inside its JSPO placement/association stage before graph-attention D3QN handles dependent-task offloading.
+In the wiki, [[hu-2019-pdd-uav-mec-offloading]] uses PDD (inner CCCP, outer multiplier/penalty update) to jointly optimize UAV trajectory, per-user offloading ratio, and binary user scheduling for min-max-delay UAV-MEC, plus a lower-complexity l0-norm variant. [[zhan-2026-gatd3qn-dependent-offloading]] uses penalty dual decomposition inside its JSPO placement/association stage before graph-attention D3QN handles dependent-task offloading. [[song-2026-thz-multiuav-mec]] uses a PDD double loop for THz multi-UAV relay MEC, with relay selection, power control, UAV deployment, and user-resource association in the inner loop.

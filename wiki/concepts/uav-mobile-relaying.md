@@ -11,8 +11,9 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[hu-2019-uav-relay-edge-computing]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
+  - "[[song-2026-thz-multiuav-mec]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-07
 ---
 
 # UAV Mobile Relaying
@@ -29,3 +30,4 @@ A relaying technique in which the relay node is **mounted on a high-mobility UAV
 - [[zeng-2016-throughput-relaying]] is the foundational anchor: it maximizes end-to-end throughput over relay trajectory + source/relay power and derives the staircase water-filling power structure.
 - [[hu-2019-uav-relay-edge-computing]] carries the same information-causality + SCA machinery into **MEC**, letting one UAV be an edge server **and** a relay to an access point (a compute-offloading objective rather than throughput).
 - [[zhao-2019-uav-emergency-disasters]] uses **multihop UAV relaying** (AF/DF, optimized hovering positions) as one pillar of a post-disaster emergency-network framework.
+- [[song-2026-thz-multiuav-mec]] uses multiple UAVs as THz communication relays between IoT devices and MEC servers, with relay selection and UAV deployment optimized against MEC queueing delay.

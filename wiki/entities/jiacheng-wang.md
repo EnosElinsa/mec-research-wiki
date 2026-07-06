@@ -16,6 +16,8 @@ related:
   - "[[li-2025-omrp-cb-iot]]"
   - "[[he-2026-dt-sagimec-lae]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
+  - "[[tang-2026-hg-maddpg-uav-rescue]]"
+  - "[[zhao-2026-temporal-spectrum-cartography]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -24,7 +26,7 @@ updated: 2026-07-07
 
 IEEE Member. Affiliated with the **College of Computing and Data Science, Nanyang Technological University**, Singapore (email `jiacheng.wang@ntu.edu.sg` / `jcwang_cq@foxmail.com`) — consistent across his papers in this wiki.
 
-Co-authored 13 sources in this wiki:
+Co-authored 15 sources in this wiki:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
@@ -39,7 +41,9 @@ Co-authored 13 sources in this wiki:
 - [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT (OMRP + SoftPPO-LSTM).
 - [[he-2026-dt-sagimec-lae]] — DT-assisted SAGIMEC for low-altitude economy workloads.
 - [[cai-2026-llm-drl-secure-lae-data]] — LLM-enhanced DRL for secure low-altitude data collection.
+- [[tang-2026-hg-maddpg-uav-rescue]] — low-altitude UAV rescue with ground embedded robots and airship support via HG-MADDPG.
+- [[zhao-2026-temporal-spectrum-cartography]] — temporal spectrum cartography for low-altitude economy networks via RecMAE and a multi-agent diffusion policy.
 
 ## Contributions to this wiki
 
-- An NTU collaborator who appears across the Jilin-University/NTU aerial-MEC cluster with [[geng-sun]], [[jiahui-li]], and [[dusit-niyato]], contributing to the generative-AI/diffusion and low-altitude-economy threads.
+- An NTU collaborator who appears across the Jilin-University/NTU aerial-MEC cluster with [[geng-sun]], [[jiahui-li]], and [[dusit-niyato]], contributing to the generative-AI/diffusion, low-altitude-economy, rescue, and temporal-spectrum-cartography threads.

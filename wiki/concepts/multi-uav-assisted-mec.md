@@ -14,6 +14,8 @@ related:
   - "[[gao-2026-fmad3qn-uav-gd-association]]"
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
+  - "[[bui-2025-noma-near-far-offloading]]"
+  - "[[song-2026-thz-multiuav-mec]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -50,4 +52,4 @@ This is the regime that [[liu-2026-jppo-en-convntm]] specifically targets.
 
 [[li-2025-dt-uav-swarm-resource-management]] approaches the multi-UAV setting from task-driven swarm formation: a digital twin admits UAVs into a search-and-rescue swarm only after virtual resource scheduling and delay-bound checks indicate the task requirements can be met.
 
-Recent entries broaden the deployment/offloading axis. [[wang-2025-ppo-uav-positioning-offloading]] uses PPO to jointly position UAV MEC servers and split UE tasks between UAVs and a BS, while [[gao-2026-fmad3qn-uav-gd-association]] combines closed-form device association with federated dueling-DDQN 3D deployment under heterogeneous tasks and no-fly zones. [[zhan-2026-gatd3qn-dependent-offloading]] adds UAV placement plus dependent-task DAG offloading, and [[wang-2026-llm-qos-multiuav-resource]] adds LLM-teacher/MAPPO-student resource allocation with inter-UAV task migration and fairness.
+Recent entries broaden the deployment/offloading axis. [[wang-2025-ppo-uav-positioning-offloading]] uses PPO to jointly position UAV MEC servers and split UE tasks between UAVs and a BS, while [[gao-2026-fmad3qn-uav-gd-association]] combines closed-form device association with federated dueling-DDQN 3D deployment under heterogeneous tasks and no-fly zones. [[zhan-2026-gatd3qn-dependent-offloading]] adds UAV placement plus dependent-task DAG offloading, [[wang-2026-llm-qos-multiuav-resource]] adds LLM-teacher/MAPPO-student resource allocation with inter-UAV task migration and fairness, [[bui-2025-noma-near-far-offloading]] adds near-/far-field NOMA offloading around UAV-mounted arrays, and [[song-2026-thz-multiuav-mec]] uses multiple UAVs as THz communication relays for queue-aware MEC service delay.

@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 LEO / NOMA near-field / rescue / spectrum cartography / THz relay sources
+
+Added five source pages and three concept pages:
+
+- [[diallo-2026-system-cost-uav-leo-offloading]] - Diallo et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2026.3654247`. UAV-assisted LEO task offloading with task dropping cost, UAV trajectory, transmit power, and offloading/computing schedules solved through a four-block classical decomposition.
+- [[bui-2025-noma-near-far-offloading]] - Bui et al. 2025, *IEEE TGCN*, DOI `10.1109/TGCN.2024.3417697`. UAV-aided NOMA MEC with near-field/far-field coexistence, optimizing association/offloading, transmit powers, and UAV computing allocation for latency minimization.
+- [[tang-2026-hg-maddpg-uav-rescue]] - Tang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3594188`. Low-altitude UAV rescue with UAVs, ground embedded robots, and airship support; HG-MADDPG combines Hungarian assignment, Lyapunov energy queues, and diffusion-enhanced MADDPG.
+- [[zhao-2026-temporal-spectrum-cartography]] - Zhao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3647029`. Temporal spectrum cartography for LAE networks; RecMAE reconstructs sparse RF power maps and MADP plans mobile UAV sensor placement with a multi-agent diffusion policy.
+- [[song-2026-thz-multiuav-mec]] - Song et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3708383`. THz multi-UAV relay MEC with direct/relay offloading paths, molecular absorption/blockage modeling, M/M/s MEC queues, and PDD-based relay/resource/deployment optimization.
+
+New concept pages: [[ground-embedded-robot]], [[temporal-spectrum-cartography]], and [[multi-agent-diffusion-policy]]. Updated backlinks for [[task-offloading]], [[low-altitude-intelligent-network]], [[terahertz-communication]], [[maddpg]], [[generative-diffusion-model]], [[generative-ai-for-mec]], [[multi-uav-assisted-mec]], [[noma]], [[near-field-communications]], [[leo-satellite-edge-computing]], [[penalty-dual-decomposition]], [[queueing-theory]], [[uav-mobile-relaying]], [[space-air-ground-integrated-network]], [[uav-trajectory-control]], [[lyapunov-optimization]], and [[spectrum-sensing-channel-selection]]. Updated parse-confirmed author rosters for [[geng-sun]], [[dusit-niyato]], and [[jiacheng-wang]].
+
+Metadata notes: [[bui-2025-noma-near-far-offloading]], [[tang-2026-hg-maddpg-uav-rescue]], and [[zhao-2026-temporal-spectrum-cartography]] had DOI evidence in the local parses and were cross-checked against title-matched DOI metadata. [[diallo-2026-system-cost-uav-leo-offloading]] had a parse title typo ("Ofloading") and DOI/venue/page metadata were verified against title-matched Crossref/IEEE DOI metadata. [[song-2026-thz-multiuav-mec]] was parse-silent on top-level DOI, so DOI/venue/year were verified against title-matched Crossref/IEEE DOI metadata. Technical claims and numeric findings are grounded in the local parses; ambiguous extracted units were not over-claimed.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 335 curated raw references, 10 genuinely new folders still uncurated after this pass, and 12 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 344 sources, 318 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean before committing. `python tools/wiki/entity_roster_audit.py --json entity-roster-leo-noma-rescue-spectrum-thz.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki health was OK; `/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 battery / secure caching / service migration / QoS NOMA / LAE compliance sources
 
 Added five source pages and four concept pages:

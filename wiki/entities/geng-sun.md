@@ -23,15 +23,17 @@ related:
   - "[[li-2025-omrp-cb-iot]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
   - "[[he-2026-dt-sagimec-lae]]"
+  - "[[tang-2026-hg-maddpg-uav-rescue]]"
+  - "[[zhao-2026-temporal-spectrum-cartography]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Geng Sun
 
 IEEE Member. Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China); also affiliated with the **College of Computing and Data Science, Nanyang Technological University** (Singapore) in several papers.
 
-Co-authored 20 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, UAV-mounted-RIS communications, digital-twin SAGIMEC, and survey work in aerial/edge networks:
+Co-authored 22 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, UAV-mounted-RIS communications, digital-twin SAGIMEC, low-altitude rescue, temporal spectrum cartography, and survey work in aerial/edge networks:
 
 - [[sun-2021-temcmop-uav-cb]] — earliest UAV collaborative-beamforming entry; time + VAA-time + motion/hovering-energy multi-objective optimization (TEMCMOP) via the improved multi-objective ant lion optimizer (IMOALO) (lead author).
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing.
@@ -53,7 +55,9 @@ Co-authored 20 sources in this wiki, spanning vehicular, post-disaster, energy-e
 - [[li-2025-omrp-cb-iot]] — data-driven collaborative beamforming for static ground IoT; overlap-based routing (OMRP) + SoftPPO-LSTM node selection (corresponding author).
 - [[pan-2025-uav-ris-energy-efficient-comm]] — cooperative UAV-mounted RISs for energy-efficient communications; joint BS beamforming + 3D UAV-RIS location + discrete phase shifts via INSGA-II-CDC (corresponding author).
 - [[he-2026-dt-sagimec-lae]] — DT-assisted SAGIMEC for low-altitude economy workloads, combining Lyapunov online control, satellite-latency learning, and Stackelberg-game decision making.
+- [[tang-2026-hg-maddpg-uav-rescue]] — low-altitude UAV rescue with ground embedded robots and airship support via HG-MADDPG.
+- [[zhao-2026-temporal-spectrum-cartography]] — temporal spectrum cartography for low-altitude economy networks via RecMAE and a multi-agent diffusion policy.
 
 ## Contributions to this wiki
 
-- A recurring (co-)author in the Jilin-University / NTU aerial-MEC cluster, contributing across game-theoretic resource allocation, DRL/generative-AI for UAV systems, collaborative beamforming, and the low-altitude-economy survey thread. The tightly-collaborating co-author set around these papers now has confirmed entity pages: [[zemin-sun]], [[jiahui-li]] (Jilin University), [[boxiong-wang]], [[hui-kang]] (Jilin University), [[jiacheng-wang]], [[dusit-niyato]] (NTU), and [[qingqing-wu]] (Shanghai Jiao Tong University) — each affiliation-verified against the parses.
+- A recurring (co-)author in the Jilin-University / NTU aerial-MEC cluster, contributing across game-theoretic resource allocation, DRL/generative-AI for UAV systems, collaborative beamforming, low-altitude rescue, temporal spectrum cartography, and the low-altitude-economy survey thread. The tightly-collaborating co-author set around these papers now has confirmed entity pages: [[zemin-sun]], [[jiahui-li]] (Jilin University), [[boxiong-wang]], [[hui-kang]] (Jilin University), [[jiacheng-wang]], [[dusit-niyato]] (NTU), and [[qingqing-wu]] (Shanghai Jiao Tong University) — each affiliation-verified against the parses.

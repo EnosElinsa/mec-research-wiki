@@ -8,6 +8,7 @@ related:
   - "[[noma]]"
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
   - "[[tun-2025-thz-sag-mec-resource-allocation]]"
+  - "[[song-2026-thz-multiuav-mec]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -18,4 +19,4 @@ Wireless communication in the THz band (roughly 0.1–10 THz; the wiki's source 
 
 These properties motivate pairing THz with an [[intelligent-reflecting-surface]] to engineer reflected paths around blockages. In the wiki, [[wu-2025-iopo-irs-uav-thz-mec]] models THz UAV-MEC links with a path-loss + molecular-absorption channel and adds an IRS to restore spectral efficiency. Related to the [[blockage-aware-channel-model]] concern that recurs across aerial-MEC channel modeling.
 
-[[tun-2025-thz-sag-mec-resource-allocation]] uses THz for short-range device-to-UAV access in a MEC-enabled SAG network, with mmWave backhaul among UAVs and LEO satellites.
+[[tun-2025-thz-sag-mec-resource-allocation]] uses THz for short-range device-to-UAV access in a MEC-enabled SAG network, with mmWave backhaul among UAVs and LEO satellites. [[song-2026-thz-multiuav-mec]] uses THz links for direct IoT-MEC and IoT-UAV-MEC relay paths, adding molecular absorption, blockage probability, and MEC queueing delay to the relay/deployment/resource-allocation problem.
