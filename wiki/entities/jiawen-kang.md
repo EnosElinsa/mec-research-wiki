@@ -18,16 +18,17 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[yang-2024-taco-human-digital-twin-edge]]"
   - "[[wang-2024-wipe-gai]]"
+  - "[[qi-2026-drone-vehicle-mec-inspection]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-07-06
 ---
 
 # Jiawen Kang
 
 IEEE Senior Member. Affiliated with the **School of Automation, Guangdong University of Technology** (Guangzhou, China).
 
-Co-authored 15 sources in this wiki — the **CMOP-evolutionary UAV-MEC** lineage, the Geng Sun group's collaborative-beamforming work, generative-AI/diffusion methods, an air-ground MEC service-placement paper, a human-digital-twin edge-deployment paper, and a UAV-swarm collaborative-inference article:
+Co-authored 16 sources in this wiki — the **CMOP-evolutionary UAV-MEC** lineage, the Geng Sun group's collaborative-beamforming work, generative-AI/diffusion methods, an air-ground MEC service-placement paper, a human-digital-twin edge-deployment paper, a UAV-swarm collaborative-inference article, and cooperative drone-vehicle MEC:
 
 - [[peng-2022-cmop-uav-path-planning]] (lineage seed), [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]] — CMOP-evolutionary lineage.
 - [[sun-2025-emoppo-vlh-aerial-cb]], [[li-2024-emodrl-ground-space-cb]] — aerial / ground-space collaborative beamforming via evolutionary multi-objective RL.
@@ -40,6 +41,7 @@ Co-authored 15 sources in this wiki — the **CMOP-evolutionary UAV-MEC** lineag
 - [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.
 - [[yang-2024-taco-human-digital-twin-edge]] — two-timescale accuracy-aware online optimization for human-digital-twin deployment at the edge (TACO).
 - [[qu-ecoei-uav-swarm]] — eCoEI elastic collaborative edge intelligence architecture for UAV swarms.
+- [[qi-2026-drone-vehicle-mec-inspection]] - cooperative drone-vehicle MEC for low-altitude inspection with route planning, battery swapping, and detached-drone speed optimization.
 
 Email: kavinkang@gdut.edu.cn
 

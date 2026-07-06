@@ -1,5 +1,19 @@
 # Research Log
 
+## [2026-07-06] Curated 5 low-altitude / UAV-MEC sources
+
+Added five source pages and two concept pages:
+
+- [[chen-2026-cargo-uav-pickup-lae]] — Chen et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3647000`. Cellular-connected cargo-UAV pickup for LAE; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement under communication, energy, and time-window constraints.
+- [[huang-2026-coded-caching-uav-marine]] — Huang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3708365`. Coded caching-enabled D2D content delivery in UAV-assisted marine edge networks; OJC3D uses Lyapunov online optimization over UAV trajectory, caching placement, and request decisions.
+- [[zhou-2026-cpsfl-uav-foundation-models]] — Zhou et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3697889`. Communication-pipelined split federated LoRA fine-tuning for UAV foundation models; sequential downlink gradient transmission plus attention-based DRL split/resource decisions.
+- [[qi-2026-drone-vehicle-mec-inspection]] — Qi et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3698194`. Cooperative drone-vehicle MEC for low-altitude inspection; route planning, battery swapping, detached-drone in-flight processing, and speed optimization minimize mission completion time.
+- [[tang-2025-cooperative-isac-lae]] — Tang et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2025.3542399`. Cooperative ISAC for LAE; tensor-decomposition monostatic estimation plus MST association, Pareto position fusion, and residual-weighted velocity estimation.
+
+New concept pages: [[coded-caching]] and [[split-federated-learning]]. Updated existing author rosters for [[dusit-niyato]], [[jiawen-kang]], [[shengli-xie]], [[weifeng-zhong]], and [[xumin-huang]]. Metadata notes: DOI/venue/year for all five papers were verified with Crossref/DOI lookup where the parse was silent or incomplete; technical claims are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 255 curated raw references, and 90 genuinely new folders still uncurated after this pass. `python tools/wiki/corpus_counts.py` reported 267 sources, 274 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean; `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 37 advisory present-but-unlisted omissions. LLM Wiki API health was OK; graph probe reported 662 nodes and 6176 edges.
+
 ## [2026-07-06] Curated 5 newly imported MEC sources
 
 Added five source pages and one tool entity:
