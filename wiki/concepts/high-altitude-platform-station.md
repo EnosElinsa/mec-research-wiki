@@ -7,8 +7,10 @@ related:
   - "[[air-ground-integrated-network]]"
   - "[[hierarchical-aerial-mec]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[jia-2026-dro-lawn-trajectory]]"
+  - "[[zhang-2026-dwell-time-aerial-vec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-06
 ---
 
 # High-Altitude Platform Station (HAPS / HAS)
@@ -25,7 +27,7 @@ A quasi-stationary aerial node operating in the stratosphere (typically 17–22 
 - **Higher payload than UAVs.** Hosts much larger compute / battery resources than a battery-electric UAV.
 - **Lower latency than satellite.** Round-trip is millisecond-scale, not tens of milliseconds.
 
-This makes HAPS a natural **upper tier** in a hierarchical aerial MEC stack — UAVs cover dense pockets, HAPS provides the umbrella backstop. See [[hierarchical-aerial-mec]] and [[peng-2025-drudm-cfg]].
+This makes HAPS a natural **upper tier** in a hierarchical aerial MEC stack — UAVs cover dense pockets, HAPS provides the umbrella backstop. See [[hierarchical-aerial-mec]] and [[peng-2025-drudm-cfg]]. In [[jia-2026-dro-lawn-trajectory]], the HAP receives relayed tasks from UAVs under task-size uncertainty; in [[zhang-2026-dwell-time-aerial-vec]], the HAP is the broad-coverage fallback when vehicle-to-UAV dwell time is insufficient.
 
 ## Limitations
 

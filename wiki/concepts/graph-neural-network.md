@@ -7,8 +7,9 @@ related:
   - "[[drl-backbones-across-uav-mec-sources]]"
   - "[[dai-2024-graph-rm-survey-learning]]"
   - "[[dai-2024-graph-rm-survey-optimization]]"
+  - "[[li-2026-cdto-inland-waterways]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-06
 ---
 
 # Graph Neural Network (GNN)
@@ -30,4 +31,4 @@ The survey highlights two recurring designs: combining GNNs with **classical ite
 
 ## In the corpus
 
-This is the corpus's primary anchor for the GNN concept; it is introduced and reviewed in [[dai-2024-graph-rm-survey-learning]] (the learning half) and motivated by the scaling limits of graph optimization laid out in [[dai-2024-graph-rm-survey-optimization]].
+This is the corpus's primary anchor for the GNN concept; it is introduced and reviewed in [[dai-2024-graph-rm-survey-learning]] (the learning half) and motivated by the scaling limits of graph optimization laid out in [[dai-2024-graph-rm-survey-optimization]]. [[li-2026-cdto-inland-waterways]] provides a task-offloading example where a topology-aware GNN represents D2D links among USVs for multi-agent offloading decisions.

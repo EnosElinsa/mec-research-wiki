@@ -8,8 +8,9 @@ related:
   - "[[penalty-dual-decomposition]]"
   - "[[lyapunov-optimization]]"
   - "[[zeng-2024-usv-fleet-collaborative-offloading]]"
+  - "[[zhang-2026-dwell-time-aerial-vec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-06
 ---
 
 # Alternating Direction Method of Multipliers (ADMM)
@@ -24,5 +25,6 @@ A first-order optimization method that solves problems with **separable structur
 ## In this wiki
 
 - [[zeng-2024-usv-fleet-collaborative-offloading]] decomposes its energy-minimization problem via **Block Coordinate Descent** into two subproblems, each solved by an **ADMM improved with dynamic penalty coefficients**, exploiting ADMM's parallelism to cut complexity and guarantee convergence of the inner loop.
+- [[zhang-2026-dwell-time-aerial-vec]] uses an ADMM-style resource-allocation component inside a BCD solution for dwell-time-constrained aerial VEC.
 
 It complements the corpus's other decomposition/convex-pipeline tools — [[two-stage-decomposition]], [[alternating-optimization-sdr-sca]], and [[penalty-dual-decomposition]] — and is often paired with [[lyapunov-optimization]] as a per-slot solver.

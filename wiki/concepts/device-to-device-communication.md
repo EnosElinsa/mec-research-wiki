@@ -7,8 +7,9 @@ related:
   - "[[overlay-underlay-spectrum-access]]"
   - "[[stochastic-geometry-network-analysis]]"
   - "[[air-to-ground-channel-model]]"
+  - "[[li-2026-cdto-inland-waterways]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-06
 ---
 
 # Device-to-Device (D2D) Communication
@@ -20,3 +21,5 @@ A D2D pair is typically modeled as a transmitter and a receiver separated by a f
 ## In this wiki
 
 [[mozaffari-2016-uav-underlaid-d2d]] analyzes the coexistence of a UAV downlink base station with an **underlaid D2D** network sharing the same band. The UAV serves downlink users while the D2D pairs reuse the spectrum, so each suffers interference from the other; the paper derives coverage probability, sum-rate, and D2D outage via stochastic geometry, and shows the **optimal UAV altitude decreases as D2D density increases**. The aerial setting differs from classic terrestrial D2D coexistence because the UAV→ground channel is probabilistic-LoS ([[air-to-ground-channel-model]]) and the UAV's height and mobility are extra design dimensions.
+
+[[li-2026-cdto-inland-waterways]] uses D2D links differently: nearby USVs share computation through D2D offloading links, while UAVs act as cluster heads that reposition to cover the selected links.

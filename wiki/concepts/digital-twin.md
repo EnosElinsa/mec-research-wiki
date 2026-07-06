@@ -9,6 +9,8 @@ related:
   - "[[du-2024-yolo-semcom-digital-twin]]"
   - "[[yang-2024-taco-human-digital-twin-edge]]"
   - "[[li-2023-adaptive-digital-twin-uav-iscc]]"
+  - "[[he-2026-dt-sagimec-lae]]"
+  - "[[li-2025-dt-uav-swarm-resource-management]]"
 created: 2026-06-02
 updated: 2026-07-06
 ---
@@ -26,3 +28,5 @@ DT synchronization couples sensing, communication, and edge compute: raw observa
 - [[du-2024-yolo-semcom-digital-twin]] builds a digital twin of an apple orchard from UAV imagery ([[uav-data-collection]]): a YOLOv7-based detector extracts only the semantic content of captured images, and transmission power is allocated by per-object importance, cutting communication cost while keeping critical content accurate.
 - [[yang-2024-taco-human-digital-twin-edge]] addresses **human digital twin** deployment at the edge, trading off update accuracy against cost on a two-timescale schedule.
 - [[li-2023-adaptive-digital-twin-uav-iscc]] uses a DT layer to support CTDE multi-agent control in UAV-assisted ISCC, explicitly modeling DT estimation deviation rather than assuming a perfect virtual replica.
+- [[he-2026-dt-sagimec-lae]] uses a cloud-side DT layer to mirror ISDs, a UAV, and the LEO-satellite relay environment in a low-altitude SAGIMEC architecture.
+- [[li-2025-dt-uav-swarm-resource-management]] uses DTs for UAV-swarm task crowdsourcing and virtual traffic-flow scheduling, with [[stochastic-network-calculus]] providing pre-assessed delay bounds.

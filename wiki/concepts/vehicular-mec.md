@@ -6,8 +6,9 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[task-migration]]"
   - "[[zhang-2025-mcma-task-migration]]"
+  - "[[zhang-2026-dwell-time-aerial-vec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-06
 ---
 
 # Vehicular MEC (V-MEC / VEC)
@@ -24,6 +25,7 @@ MEC where the user devices are vehicles — connected, semi-autonomous, or auton
 - **[[task-migration]]** — when a server overloads, forward the queued tasks to a less-loaded peer. The challenge is anticipating the imbalance.
 - **Trajectory prediction** — use historical traces to estimate future server-coverage transitions, allowing pre-emptive migration. See [[informer-trajectory-prediction]] in [[zhang-2025-mcma-task-migration]].
 - **CTDE multi-agent control** — each server is an agent under [[ma-pomdp]] framing; centralized critic + decentralized actor.
+- **Aerial fallback tiers** — UAVs and [[high-altitude-platform-station|HAPS]] can cover sparse or overloaded roads, but high-speed vehicles introduce [[dwell-time-constrained-offloading]] as a feasibility constraint; see [[zhang-2026-dwell-time-aerial-vec]].
 
 ## Open questions
 

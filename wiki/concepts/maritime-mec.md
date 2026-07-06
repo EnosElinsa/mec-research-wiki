@@ -8,8 +8,9 @@ related:
   - "[[maritime-mec-architectures]]"
   - "[[wang-2026-aerial-marine-msar]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
+  - "[[li-2026-cdto-inland-waterways]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-06
 ---
 
 # Maritime MEC
@@ -24,5 +25,6 @@ The corpus has a substantial maritime track (sources tagged `maritime-mec`), spa
 
 - [[wang-2026-aerial-marine-msar]] — three-tier MEC (UAV + HAPS + MASS) for **maritime search and rescue (MSAR)**, joint task offloading + resource allocation via matching + convex.
 - [[liu-2025-haps-uav-maritime-iot]] — communication architecture (HAP-as-backhaul, UAV multicast, vessel unicast) without compute offloading.
+- [[li-2026-cdto-inland-waterways]] — UAV-assisted inland-waterway task offloading where USVs form D2D computation-sharing clusters under UAV cluster heads.
 
 The cross-source picture — tiering choices (three-tier aerial+surface+space vs two-edge air+space vs single mobile-edge platform), the classical-solver-heavy split, and the distinctive maritime constraints (known routes, backhaul scarcity, energy-as-headline-objective) — is mapped in [[maritime-mec-architectures]].

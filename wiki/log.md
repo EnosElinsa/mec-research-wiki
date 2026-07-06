@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-06] Curated 5 digital-twin / robust / aerial-VEC sources
+
+Added five source pages and two concept pages:
+
+- [[he-2026-dt-sagimec-lae]] — He et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3623636`. DT-assisted SAGIMEC for low-altitude economy; ISD/UAV/LEO/cloud architecture, Lyapunov per-slot control, satellite-latency learning, and Stackelberg-game decentralized decisions.
+- [[li-2025-dt-uav-swarm-resource-management]] — Li et al. 2025, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3531120`. Digital-twin-based task-driven UAV-swarm resource management for search and rescue; MADRL task crowdsourcing plus stochastic-network-calculus traffic-flow delay bounds.
+- [[li-2026-cdto-inland-waterways]] — Li et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3683451`. UAV-assisted inland-waterway edge offloading; USV D2D computation-sharing clusters, UAV cluster-head positioning, exact-potential-game CDTO, and graph-based MARL.
+- [[jia-2026-dro-lawn-trajectory]] — Jia et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3688525`. Distributionally robust task-size offloading and UAV-trajectory optimization in a UAV/HAP low-altitude wireless network; L1/L-infinity/Fortet-Mourier ambiguity sets plus Benders/SCA.
+- [[zhang-2026-dwell-time-aerial-vec]] — Zhang et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3692669`. Multi-layer aerial VEC with UAV/HAP service and a dwell-time feasibility constraint for high-speed vehicles; weighted latency+economic cost minimized via BCD/Lagrangian/ADMM-style allocation.
+
+New concept pages: [[stochastic-network-calculus]] and [[dwell-time-constrained-offloading]]. Updated concept backlinks for [[digital-twin]], [[distributionally-robust-optimization]], [[potential-game]], [[graph-neural-network]], [[device-to-device-communication]], [[vehicular-mec]], [[maritime-mec]], [[space-air-ground-integrated-network]], [[low-altitude-intelligent-network]], [[high-altitude-platform-station]], [[alternating-direction-method-of-multipliers]], [[lyapunov-optimization]], [[stackelberg-game]], and [[multi-uav-assisted-mec]]. Updated recurring author entities where the parse supported the identity: [[geng-sun]], [[zemin-sun]], [[jiacheng-wang]], [[dusit-niyato]], [[victor-c-m-leung]], [[ziye-jia]], [[qihui-wu]], and [[zhu-han]]. No new author entity pages were created for names not already confirmed in the wiki.
+
+Metadata notes: [[he-2026-dt-sagimec-lae]] includes a parse DOI and Crossref-confirmed TMC issue/page metadata. [[li-2025-dt-uav-swarm-resource-management]], [[li-2026-cdto-inland-waterways]], and [[zhang-2026-dwell-time-aerial-vec]] used Crossref title/DOI lookup where the parse was silent or incomplete. [[jia-2026-dro-lawn-trajectory]] used DOI/IEEE metadata lookup because the parse lacked venue/DOI lines. Technical claims on all five pages are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 270 curated raw references, and 75 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 282 sources, 279 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, and `python tools/wiki/frontmatter_audit.py` were clean. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 38 advisory present-but-unlisted omissions, all outside the newly curated author rosters. LLM Wiki health was OK; `/graph/current` returned `{"ok":false,"error":"Not found"}` rather than graph node/edge counts.
+
 ## [2026-07-06] Curated 5 semantic / SAGIN / demand-aware MEC sources
 
 Added five source pages and one concept page:

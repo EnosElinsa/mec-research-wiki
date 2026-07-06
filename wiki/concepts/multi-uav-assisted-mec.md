@@ -9,8 +9,9 @@ related:
   - "[[task-offloading]]"
   - "[[uav-charging-scheduling]]"
   - "[[liu-2026-jppo-en-convntm]]"
+  - "[[li-2025-dt-uav-swarm-resource-management]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-06
 ---
 
 # Multi-UAV-Assisted Mobile Edge Computing
@@ -42,3 +43,5 @@ In sparse / low-mobility regimes, a static deployment plus a one-shot offloading
 - fairness across the device population is no longer guaranteed by uniform coverage — see [[spatial-equity-index]]
 
 This is the regime that [[liu-2026-jppo-en-convntm]] specifically targets.
+
+[[li-2025-dt-uav-swarm-resource-management]] approaches the multi-UAV setting from task-driven swarm formation: a digital twin admits UAVs into a search-and-rescue swarm only after virtual resource scheduling and delay-bound checks indicate the task requirements can be met.

@@ -4,8 +4,9 @@ title: Stackelberg Game (Leader-Follower)
 tags: [game-theory, mechanism-design, pricing]
 related:
   - "[[wang-2025-uav-swarm-stackelberg]]"
+  - "[[he-2026-dt-sagimec-lae]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-06
 ---
 
 # Stackelberg Game (Leader-Follower)
@@ -30,5 +31,7 @@ Network operators or service providers naturally play leader: they set prices, a
 ## In this wiki
 
 [[wang-2025-uav-swarm-stackelberg]] is the canonical example: U2B base station as leader (sets price for spectrum access), U2U links as followers (bid power/duration). The Stackelberg layer composes with a [[matching-theory-for-resource-allocation|matching algorithm]] for the assignment side.
+
+[[he-2026-dt-sagimec-lae]] uses a Stackelberg-game decision layer inside an online decentralized optimizer for DT-assisted SAGIMEC resource management.
 
 Multi-leader Stackelberg variants (multiple competing operators) appear in some adjacent literature but aren't yet curated in this wiki.

@@ -5,8 +5,9 @@ tags: [optimization, queueing, online-control]
 related:
   - "[[qin-2025-bcuav-masac]]"
   - "[[lyapunov-guided-drl]]"
+  - "[[he-2026-dt-sagimec-lae]]"
 created: 2026-05-28
-updated: 2026-06-02
+updated: 2026-07-06
 ---
 
 # Lyapunov Optimization (drift-plus-penalty)
@@ -29,4 +30,4 @@ Standard guarantee: under mild conditions, time-averaged constraint violation is
 
 ## In this wiki
 
-[[qin-2025-bcuav-masac]] uses Lyapunov to split a long-term sensing-rate maximization with queue-delay and block-creation-delay caps into three per-slot subproblems (CVX + MASAC + DOA). The drift-plus-penalty template recurs across the corpus's online-control sources (e.g. [[dai-2024-uav-vehicular-offloading-lyapunov]], [[yang-2022-stochastic-uav-mec-lyapunov]], [[wang-2024-maritime-eh-jcora]], [[mao-2016-lodco-eh-mec-offloading]]).
+[[qin-2025-bcuav-masac]] uses Lyapunov to split a long-term sensing-rate maximization with queue-delay and block-creation-delay caps into three per-slot subproblems (CVX + MASAC + DOA). [[he-2026-dt-sagimec-lae]] uses the same online-control pattern to convert a long-term SAGIMEC satellite/offloading/resource/trajectory problem into per-slot decisions. The drift-plus-penalty template recurs across the corpus's online-control sources (e.g. [[dai-2024-uav-vehicular-offloading-lyapunov]], [[yang-2022-stochastic-uav-mec-lyapunov]], [[wang-2024-maritime-eh-jcora]], [[mao-2016-lodco-eh-mec-offloading]]).
