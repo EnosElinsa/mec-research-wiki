@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 hybrid UAV-MEC / LAE imaging / Air-ISCC / SAGIN / movable-antenna sources
+
+Added five source pages and one concept page:
+
+- [[hu-2026-latency-hybrid-uav-mec]] - Hu et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3667786`. Wireless-powered hybrid UAV-GBS MEC with TDMA/NOMA access; double-loop AO/bisection optimizes slot count, time scheduling, CPU frequency, transmit power, and 3D UAV trajectory for latency minimization.
+- [[huang-2026-offgrid-lae-imager]] - Huang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3603255`. Cooperative ISAC low-altitude wireless imaging; CS/PSF analysis and a physics-embedded DNN with OHEM reconstruct off-grid targets from CSI.
+- [[hou-2025-pbia-air-iscc-uav-its]] - Hou et al. 2025, *IEEE TGCN*, DOI `10.1109/TGCN.2024.3492028`. UAV-swarm Air-ISCC for intelligent transportation systems; PBIA/PPO jointly controls sensing time, power, service association, and computation allocation.
+- [[chen-2026-pddqn-sagin-mec]] - Chen et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3706356`. MEC-enabled SAGIN with local/UAV/LEO partial offloading; P-DDQN combines discrete association decisions with continuous transmit power, task ratios, and UAV trajectory control under LEO coverage-time constraints.
+- [[zeng-2026-movable-antenna-u2u-channel]] - Zeng et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3649584`. Movable-antenna-aided MIMO wideband UAV-to-UAV channel modeling for LAE; derives STF-CF/SD-PSD/PSDS expressions and optimizes antenna positions.
+
+New concept page: [[movable-antenna]]. Updated backlinks for WPT/NOMA/A2G channels, ISAC/ISCC, wireless perception, low-altitude intelligent networks, SAGIN/LEO edge computing, hybrid-action/P-DQN, UAV-enabled ITS, and device association. Updated parse-confirmed author rosters for [[dusit-niyato]] and [[victor-c-m-leung]].
+
+Metadata notes: [[huang-2026-offgrid-lae-imager]] and [[hou-2025-pbia-air-iscc-uav-its]] had DOI/date evidence in the local parses and were also title-matched against DOI metadata. [[hu-2026-latency-hybrid-uav-mec]], [[chen-2026-pddqn-sagin-mec]], and [[zeng-2026-movable-antenna-u2u-channel]] had parse-silent top-level DOI fields, so DOI/venue/year were verified against title-matched Crossref/IEEE DOI records. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 315 curated raw references, 30 genuinely new folders still uncurated after this pass, and 12 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 324 sources, 304 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean before committing. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-pass-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki health was OK; `/graph` and `/api/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 4 LLM / GAT / AoI UAV-MEC sources and reconciled 1 RIS-ISAC raw path
 
 Added four source pages:

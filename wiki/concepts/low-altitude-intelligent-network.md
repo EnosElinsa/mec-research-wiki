@@ -12,6 +12,8 @@ related:
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[yang-2026-generative-radio-map-lae]]"
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
+  - "[[huang-2026-offgrid-lae-imager]]"
+  - "[[zeng-2026-movable-antenna-u2u-channel]]"
   - "[[ye-2026-deeplsc-lae-isac]]"
   - "[[ye-2026-meta-deepesc-lae-isac]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
@@ -34,7 +36,7 @@ Distinguishing characteristics vs general UAV networks:
 
 LAINs are the natural deployment substrate for [[multi-uav-assisted-mec|UAV-MEC]] in real-world urban environments. Spectrum sharing schemes like [[wang-2025-uav-swarm-stackelberg]] are foundational — without efficient spectrum coordination, UAV-MEC compute offloading becomes bandwidth-starved.
 
-Recent corpus entries use the low-altitude frame for vertical integration, secure communication, robust control, channel estimation, low-carbon optimization, LLM-assisted control, and sensing-aware trajectory control: [[he-2026-dt-sagimec-lae]] adds a DT-assisted UAV/LEO/cloud SAGIMEC architecture for low-altitude economy workloads; [[wang-2026-blockchain-lae-fl-mappo]] models blockchain-assisted FL/MAPPO offloading and caching across UEs, task UAVs, service UAVs, and a BS; [[wang-2026-secure-lae-uav-scheduling]] studies secure LAE communications with UAVs switching between communication and jamming roles; [[jia-2026-dro-lawn-trajectory]] treats uncertain task-size distributions in a UAV/HAP low-altitude wireless network; [[yang-2026-generative-radio-map-lae]] exploits planned air corridors for radio-map-assisted CSI estimation; [[wen-2026-hybridrag-low-carbon-lae]] uses HybridRAG and diffusion-enhanced SAC for low-carbon LAE MEC formulation and control; [[cai-2026-llm-drl-secure-lae-data]] uses an LLM-enhanced DRL loop for secure LAE data collection; and the DeepLSC / Meta-DeepESC pair ([[ye-2026-deeplsc-lae-isac]], [[ye-2026-meta-deepesc-lae-isac]]) treats LAE ISAC as a flight-period DRL control problem over GBS beamforming plus UAV trajectories.
+Recent corpus entries use the low-altitude frame for vertical integration, secure communication, robust control, channel estimation, low-carbon optimization, LLM-assisted control, sensing-aware trajectory control, and physical-layer modeling: [[he-2026-dt-sagimec-lae]] adds a DT-assisted UAV/LEO/cloud SAGIMEC architecture for low-altitude economy workloads; [[wang-2026-blockchain-lae-fl-mappo]] models blockchain-assisted FL/MAPPO offloading and caching across UEs, task UAVs, service UAVs, and a BS; [[wang-2026-secure-lae-uav-scheduling]] studies secure LAE communications with UAVs switching between communication and jamming roles; [[jia-2026-dro-lawn-trajectory]] treats uncertain task-size distributions in a UAV/HAP low-altitude wireless network; [[yang-2026-generative-radio-map-lae]] exploits planned air corridors for radio-map-assisted CSI estimation; [[huang-2026-offgrid-lae-imager]] reconstructs sparse low-altitude aerial images from cooperative ISAC CSI; [[zeng-2026-movable-antenna-u2u-channel]] models movable-antenna UAV-to-UAV wideband channels; [[wen-2026-hybridrag-low-carbon-lae]] uses HybridRAG and diffusion-enhanced SAC for low-carbon LAE MEC formulation and control; [[cai-2026-llm-drl-secure-lae-data]] uses an LLM-enhanced DRL loop for secure LAE data collection; and the DeepLSC / Meta-DeepESC pair ([[ye-2026-deeplsc-lae-isac]], [[ye-2026-meta-deepesc-lae-isac]]) treats LAE ISAC as a flight-period DRL control problem over GBS beamforming plus UAV trajectories.
 
 ## Open architectural questions
 

@@ -11,15 +11,16 @@ related:
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[zhang-2023-three-tier-satellite-offloading]]"
   - "[[he-2026-dt-sagimec-lae]]"
+  - "[[chen-2026-pddqn-sagin-mec]]"
 created: 2026-05-31
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Victor C. M. Leung
 
 IEEE Life Fellow. Affiliated with the **Artificial Intelligence Research Institute, Shenzhen MSU-BIT University** and the **College of Computer Science and Software Engineering, Shenzhen University** (Shenzhen, China), and the **Department of Electrical and Computer Engineering, University of British Columbia** (Vancouver, Canada); email `vleung@ieee.org` (consistent across his sources).
 
-Co-authored 8 sources in this wiki, spanning the Jilin-University / NTU aerial-MEC and collaborative-beamforming cluster, the generative-AI survey thread, satellite three-tier offloading, and DT-assisted SAGIMEC:
+Co-authored 9 sources in this wiki, spanning the Jilin-University / NTU aerial-MEC and collaborative-beamforming cluster, the generative-AI survey thread, satellite three-tier offloading, DT-assisted SAGIMEC, and SAGIN hybrid-action offloading:
 
 - [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale UAV-assisted MEC (TJCCT).
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing (MVTORA).
@@ -29,7 +30,8 @@ Co-authored 8 sources in this wiki, spanning the Jilin-University / NTU aerial-M
 - [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.
 - [[zhang-2023-three-tier-satellite-offloading]] — partial computation offloading in a satellite-based three-tier cloud-edge integration network (with [[haijun-zhang]]).
 - [[he-2026-dt-sagimec-lae]] — DT-assisted SAGIMEC for low-altitude economy workloads.
+- [[chen-2026-pddqn-sagin-mec]] — P-DDQN hybrid-action offloading and resource allocation in MEC-enabled SAGINs.
 
 ## Contributions to this wiki
 
-A senior cross-cutting collaborator in the [[geng-sun]] / [[dusit-niyato]] aerial-MEC cluster, recurring across two-timescale and game-theoretic UAV-MEC, evolutionary-RL and salp-swarm collaborative beamforming, and the mobile-AIGC survey.
+A senior cross-cutting collaborator in the [[geng-sun]] / [[dusit-niyato]] aerial-MEC cluster, recurring across two-timescale and game-theoretic UAV-MEC, evolutionary-RL and salp-swarm collaborative beamforming, the mobile-AIGC survey, and satellite/SAGIN offloading.

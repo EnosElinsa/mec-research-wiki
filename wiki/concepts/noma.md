@@ -6,6 +6,7 @@ related:
   - "[[qin-2025-bcuav-masac]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
+  - "[[hu-2026-latency-hybrid-uav-mec]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -24,6 +25,8 @@ A multiple-access scheme where multiple users share the *same* time-frequency re
 [[qin-2025-bcuav-masac]] uses NOMA across devices within each UAV's cluster (orthogonal between UAVs). The transmission power $p_{j,k}(t)$ becomes a per-slot decision variable jointly optimized with UAV trajectories under the resulting interference structure.
 
 [[mohammadi-2026-star-ris-uav-mec-noma]] uses NOMA with SIC for simultaneous offloading through a UAV-mounted STAR-RIS toward UAV-MEC and BS-MEC execution. Its simulation reports NOMA lower total energy than OMA in that STAR-RIS architecture, contrasting with [[ji-2021-uav-mec-noma-oma-energy-min]], where OMA is lower-energy in a different UAV-MEC model.
+
+[[hu-2026-latency-hybrid-uav-mec]] compares TDMA and NOMA in a wireless-powered hybrid UAV-GBS MEC system. In its latency-minimization experiments, NOMA completes the same task workload with fewer slots than the corresponding TDMA setting as user density grows.
 
 ## Caveats
 

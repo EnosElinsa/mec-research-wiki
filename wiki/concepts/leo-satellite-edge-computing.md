@@ -5,10 +5,11 @@ tags: [leo-satellite, mec, 6g, ntn]
 related:
   - "[[mobile-edge-computing]]"
   - "[[task-offloading]]"
+  - "[[chen-2026-pddqn-sagin-mec]]"
   - "[[mao-2025-bcsa-frl]]"
   - "[[free-space-optical-isl]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-07-07
 ---
 
 # LEO Satellite Edge Computing
@@ -34,6 +35,7 @@ updated: 2026-06-01
 - Joint trajectory + offloading at terrestrial vs LEO vs cloud — but trajectories are *not* free here; they're orbital mechanics.
 - Coverage-time-aware FL aggregation — pick aggregator satellites that will still see participants when the round closes.
 - Offload to "satellite that has just left" so training continues without dropout — a unique LEO trick.
+- LEO-UAV cooperative MEC in remote regions, where a UAV handles flexible local access and LEO satellites add wide-area compute under coverage-time constraints, as in [[chen-2026-pddqn-sagin-mec]].
 
 ## Trust dimension
 

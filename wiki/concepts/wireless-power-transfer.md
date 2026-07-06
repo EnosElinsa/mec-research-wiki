@@ -5,8 +5,9 @@ tags: [wpt, energy-harvesting, mec]
 related:
   - "[[mobile-edge-computing]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
+  - "[[hu-2026-latency-hybrid-uav-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Wireless Power Transfer (WPT) for MEC
@@ -27,6 +28,8 @@ Total slot duration $T$ is split between:
 3. **Local compute** — happens for devices that chose local; uses the energy harvested in step 1.
 
 Joint optimization picks $\{\tau_0, \tau_1, \ldots, \tau_N, \mathbf x, \mathbf f, \mathbf p\}$ where $\mathbf x$ is the binary offloading vector, $\mathbf f$ is local CPU frequencies, $\mathbf p$ is transmit powers.
+
+[[hu-2026-latency-hybrid-uav-mec]] uses the UAV itself as the RF energy transmitter in a hybrid UAV-GBS MEC system: users harvest energy from the UAV while offloading latency-critical task bits for local, UAV-side, or GBS-side execution.
 
 ## Why "long-term" matters
 

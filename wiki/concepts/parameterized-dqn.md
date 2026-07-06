@@ -7,8 +7,9 @@ related:
   - "[[hybrid-action-decision-making]]"
   - "[[j-ppo]]"
   - "[[ma-2025-pdqn-vehicular-mec]]"
+  - "[[chen-2026-pddqn-sagin-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Parameterized DQN (P-DQN)
@@ -22,3 +23,5 @@ A DRL variant for **hybrid action spaces** — finitely many discrete options, e
 P-DQN sidesteps two clumsy alternatives: discretizing the continuous action (loses precision) or relaxing the discrete action to a softmax (loses integrality). It naturally fits offloading problems where the agent picks **which server** (discrete) and **how much transmit power** (continuous) — see [[ma-2025-pdqn-vehicular-mec]] for a vehicular-MEC instance.
 
 Compared with [[j-ppo]] (on-policy, stochastic, hybrid head), P-DQN is off-policy and value-based, so sample efficient via replay but more prone to Q-overestimation. Pick P-DQN when the discrete choice is small (≤10 options) and you want sample efficiency; pick j-PPO when you want stable on-policy updates.
+
+[[chen-2026-pddqn-sagin-mec]] uses a double-DQN variant, P-DDQN, for SAGIN MEC: the DDQN component selects discrete user/satellite actions and a DDPG-style component outputs the continuous parameters attached to those choices.
