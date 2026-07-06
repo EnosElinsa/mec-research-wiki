@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 UAV positioning / inspection / RIS / association / THz-SAG sources
+
+Added five source pages and four concept pages:
+
+- [[wang-2025-ppo-uav-positioning-offloading]] - Wang et al. 2025, *IEEE TMC*, DOI `10.1109/TMC.2025.3562806`. PPO-based joint UAV positioning and partial task offloading in multi-UAV MEC; BS/UAV task splitting, access/backhaul links, latency minimization, energy balance, and UAV-failure resilience.
+- [[guo-2026-aot-uav-inspection-offloading]] - Guo et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3636717`. AGI-oriented Transformer for UAV-assisted railway inspection; shared encoder with trajectory-planning and task-offloading heads for sensor/UAV/hive execution decisions.
+- [[wu-2026-model-based-ppo-ris-uav-mec]] - Wu et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3679344`. Decentralized model-based PPO for RIS-assisted urban multi-UAV MEC; k-hop local observations, RIS phase proposals, local dynamics models, and short-horizon branched rollouts.
+- [[gao-2026-fmad3qn-uav-gd-association]] - Gao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3656412`. Heterogeneous multi-UAV MEC with no-fly zones; closed-form UAV-GD association via Lagrangian duality and optimal transport, then federated multi-agent dueling DDQN for 3D deployment.
+- [[tun-2025-thz-sag-mec-resource-allocation]] - Tun et al. 2025, *IEEE TMC*, DOI `10.1109/TMC.2024.3516655`. THz-assisted MEC-enabled SAG networks; BCD decomposes device offloading, THz sub-band/power control, UAV deployment, and UAV-to-UAV/LEO task forwarding.
+
+New concept pages: [[transformer-encoder]], [[model-based-marl]], [[optimal-transport-theory]], and [[block-successive-upper-bound-minimization]]. Updated concept backlinks for [[ppo]], [[dueling-dqn]], [[terahertz-communication]], [[multi-uav-assisted-mec]], [[uav-trajectory-control]], [[device-association]], [[intelligent-reflecting-surface]], [[space-air-ground-integrated-network]], [[federated-reinforcement-learning]], and [[task-offloading]]. Updated parse-confirmed [[xuemin-shen]] roster with [[guo-2026-aot-uav-inspection-offloading]]. No other author entity pages were created or merged.
+
+Metadata notes: all five DOI/venue/year fields were verified through title-matched Crossref metadata because the parses were silent or incomplete at the top-level metadata fields. [[guo-2026-aot-uav-inspection-offloading]] also had the DOI visible in the parse. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 305 curated raw references, and 40 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 315 sources, 303 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py --json entity-roster-uav-positioning-inspection-ris-thz.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions; no new over-claim was introduced. LLM Wiki health was OK; `/graph` and `/api/graph` returned 404 rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 SAGIN / HAP / RIS / JSCC / IoV optimization sources
 
 Added five source pages and four concept pages:

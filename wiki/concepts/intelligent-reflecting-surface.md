@@ -11,6 +11,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[liao-2025-ris-uav-usv-resource-allocation]]"
+  - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---

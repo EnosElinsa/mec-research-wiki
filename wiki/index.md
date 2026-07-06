@@ -69,6 +69,8 @@
 
 ### Multi-UAV cooperative computing & deployment
 
+- [[gao-2026-fmad3qn-uav-gd-association]] - Gao et al. 2026. Dynamic heterogeneous multi-UAV MEC with no-fly zones; closed-form UAV-GD association via optimal transport + federated multi-agent dueling DDQN for 3D deployment (IEEE TMC).
+
 - [[wang-2025-maddpg-lc-dynamic-trajectory]] — Wang et al. 2025. **MADDPG-LC** — dynamic trajectory design for multi-UAV MEC with UAV **flight-dynamics** constraints; MADDPG + LQR tracking + CVXPY + blockchain security (IEEE TVT).
 - [[guo-2023-mccco-multiuav-5g-offloading]] — Guo et al. 2023. SDN-enhanced cooperative multi-UAV partial offloading with task interdependency (MCCCO).
 - [[wang-2019-todetas-deployment-scheduling]] — Wang et al. 2019. Two-layer UAV deployment (**differential evolution**) + task scheduling (greedy); ToDeTaS.
@@ -82,6 +84,8 @@
 
 ### Compute offloading & DRL
 
+- [[wang-2025-ppo-uav-positioning-offloading]] - Wang et al. 2025. PPO-based joint UAV positioning and partial task offloading in multi-UAV MEC; BS/UAV task splitting, access/backhaul links, latency minimization, and UAV-failure resilience (IEEE TMC).
+- [[guo-2026-aot-uav-inspection-offloading]] - Guo et al. 2026. AGI-oriented Transformer for UAV-assisted railway inspection; shared encoder with trajectory and offloading heads for hive/UAV/sensor execution decisions (IEEE TMC).
 - [[teng-2026-gstrl-sequential-offloading]] - Teng et al. 2026. Graph-based spatiotemporal RL for sequential task offloading in multi-UAV MEC; heterogeneous task/UAV graph encoding plus masked PPO for order-constrained offloading decisions (IEEE TMC).
 - [[zhao-2026-heuristic-supervised-drl]] - Zhao et al. 2026. Heuristic-supervised DRL framework with TTSSA convergence analysis; PSO bridges upper-tier planning to MARL control in the UAV-MEC case study (IEEE TMC).
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
@@ -144,6 +148,8 @@
 
 ### SAGIN / satellite offloading
 
+- [[tun-2025-thz-sag-mec-resource-allocation]] - Tun et al. 2025. THz-assisted MEC-enabled SAG networks; BCD over device offloading, THz sub-band/power control, UAV deployment, and UAV-to-UAV/LEO task forwarding (IEEE TMC).
+
 - [[zhao-2026-hcdrl-ga-sagin-sar]] - Zhao et al. 2026. Multi-UAV SAR in SAGIN; HCDRL/HCSAC trajectory/offloading with CNN+GCN state encoding plus GA deployment search under NOAA-derived wind fields (IEEE TMC).
 
 - [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019. **First SAGIN computing-offloading** paper for remote IoT; UAV edge + satellite cloud; MDP + **actor-critic RL** offloading + heuristic VM allocation (IEEE JSAC).
@@ -178,6 +184,8 @@
 - [[moon-2024-ground-satellite-uam-scheduling]] — Moon & Chae 2024. **Cooperative ground-satellite downlink scheduling + power allocation** for **urban air mobility (UAM)** in a 6G NTN; offload high-interference UAMs to the satellite band, recast GS link association as a **minimum-cost max-flow** graph problem, then **SCA** power allocation; prediction-based, CSI-light scheduling (MINLP, IEEE JSAC). *(Communication-layer scheduling, not computation offloading.)*
 
 ### IRS / THz / anti-jamming
+
+- [[wu-2026-model-based-ppo-ris-uav-mec]] - Wu et al. 2026. RIS-assisted urban multi-UAV MEC with decentralized model-based PPO; local k-hop observations, RIS phase proposals, and branched rollouts for trajectory/offloading control (IEEE TMC).
 
 - [[qin-2023-ris-uav-mec-ee]] - Qin et al. 2023. RIS-assisted UAV-MEC energy efficiency with NOMA; Dinkelbach + BCD/DC/SCA over task bits, power, RIS phase shifts, and UAV trajectory under imperfect CSI (IEEE TGCN).
 
@@ -409,7 +417,7 @@
 
 ### Authors
 
-- [[dusit-niyato]] (NTU) appears across 33 sources after the DT-assisted SAGIMEC entry; [[xuemin-shen]] (Waterloo) appears across 12 sources after the delayed-CSI vehicular paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[dusit-niyato]] (NTU) appears across 33 sources after the DT-assisted SAGIMEC entry; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -601,6 +609,7 @@
 - [[semi-markov-decision-process]]
 - [[centralized-training-decentralized-execution]]
 - [[communication-constrained-marl]]
+- [[model-based-marl]]
 - [[end-to-end-vs-decomposition-in-drl-mec]]
 - [[action-space-explosion-in-multi-uav-mec]]
 - [[adaptive-entropy-priority-replay]]
@@ -632,6 +641,7 @@
 - [[j-ppo-en-convntm]] — composite j-PPO + EN-ConvNTM framework page
 - [[convlstm]]
 - [[stn]]
+- [[transformer-encoder]]
 - [[informer-trajectory-prediction]]
 - [[probsparse-self-attention-prediction]]
 
@@ -653,6 +663,7 @@
 - [[prospect-theory]]
 - [[contract-theory]]
 - [[matching-theory-for-resource-allocation]]
+- [[optimal-transport-theory]]
 - [[gale-shapley-matching]]
 - [[overlay-underlay-spectrum-access]]
 - [[unicast-multicast-cooperation]]
@@ -673,6 +684,7 @@
 - [[second-order-cone-programming]]
 - [[linear-programming]]
 - [[alternating-optimization-sdr-sca]]
+- [[block-successive-upper-bound-minimization]]
 - [[monotonic-optimization]]
 - [[majorization-minimization]]
 - [[qcqp-sdr-probabilistic-mapping]]

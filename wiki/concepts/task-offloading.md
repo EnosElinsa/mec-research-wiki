@@ -15,6 +15,8 @@ related:
   - "[[sequential-task-offloading]]"
   - "[[teng-2026-gstrl-sequential-offloading]]"
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
+  - "[[tun-2025-thz-sag-mec-resource-allocation]]"
+  - "[[guo-2026-aot-uav-inspection-offloading]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---

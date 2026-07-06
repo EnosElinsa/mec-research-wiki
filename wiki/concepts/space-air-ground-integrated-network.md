@@ -11,6 +11,7 @@ related:
   - "[[he-2026-dt-sagimec-lae]]"
   - "[[zhao-2025-probabilistic-semantic-sagin]]"
   - "[[zhao-2026-hcdrl-ga-sagin-sar]]"
+  - "[[tun-2025-thz-sag-mec-resource-allocation]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---

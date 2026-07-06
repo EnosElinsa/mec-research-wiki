@@ -7,8 +7,9 @@ related:
   - "[[blockchain-for-fl-aggregation]]"
   - "[[fl-poisoning-attacks]]"
   - "[[mao-2025-bcsa-frl]]"
+  - "[[gao-2026-fmad3qn-uav-gd-association]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Federated Reinforcement Learning (FRL)

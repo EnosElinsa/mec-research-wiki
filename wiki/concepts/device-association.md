@@ -8,8 +8,9 @@ related:
   - "[[matching-theory-for-resource-allocation]]"
   - "[[uav-trajectory-control]]"
   - "[[chen-2023-aiot-device-association]]"
+  - "[[gao-2026-fmad3qn-uav-gd-association]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-07
 ---
 
 # Device Association
