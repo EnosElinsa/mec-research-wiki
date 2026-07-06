@@ -215,6 +215,8 @@
 ### UAV-swarm collaborative computing
 
 - [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
+- [[wang-2026-scalable-multiuav-analytics]] - Wang et al. 2026. Scalable collaborative multi-UAV video analytics; JDTSO centralized deployment/scheduling for small swarms and MAPDP distributed MAPPO+DAG partitioning for larger swarms (IEEE TGCN).
+- [[zhu-2026-hab-mappo-target-search]] - Zhu et al. 2026. HAB-MAPPO cooperative UAV target search; 3D continuous trajectory, laser charging, heuristic image offloading/resource allocation, two-level attention, Beta policy, and curriculum learning (IEEE TMC).
 - [[qu-ecoei-uav-swarm]] — Qu et al. **eCoEI** — elastic OODA-loop collaborative DL inference for UAV swarms, robust to node/A2A-link failure; proof-of-concept on Jetson devices (IEEE Communications Magazine; year not in parse).
 - [[li-2025-stochastic-game-uav-swarm]] — Li et al. 2025. Energy-efficient UAV-swarm MEC as five **stochastic games** with dynamic clustering; RLDC multi-agent Q-learning.
 - [[li-2025-dt-uav-swarm-resource-management]] — Li et al. 2025. Digital-twin-based task-driven UAV-swarm resource management for search and rescue; MADRL task crowdsourcing plus SNC traffic-flow delay bounds (IEEE T-ITS).
@@ -326,6 +328,7 @@
 ### Trust, security, and federated MEC
 
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
+- [[gong-2026-lp2-casku-uav-clusters]] - Gong et al. 2026. LP2-CASKU privacy-preserving authentication and session-key update for dynamic low-altitude UAV clusters; message aggregation, cross-cluster anonymity/unlinkability, and forward/backward secrecy (IEEE TMC).
 - [[mao-2025-bcsa-frl]] — Mao et al. 2025. Blockchain-enabled cold-start FRL for ZT LEO satellite networks. *BCSA-FRL* (CCVM + CSRA).
 - [[mao-2025-irs-noma-fl-secrecy]] — Mao et al. 2025. **IRS-assisted** secrecy-rate maximization for **NOMA-based federated-learning** model aggregation; max-min secrecy rate over device power + IRS phase shift via **DDPG** (IEEE TCCN).
 - [[qin-2025-bcuav-masac]] — Qin et al. 2025. Blockchain-enabled secure UAV-MEC: Lyapunov + MASAC + DOA.
@@ -338,6 +341,7 @@
 ### ISAC, sensing & physical-layer security
 
 - [[zhao-2026-mappo-jscc-aec]] - Zhao et al. 2026. HAP-assisted multi-UAV sensing-communication-computing; Lyapunov energy stability plus MAPPO-JSCC with embedded sensing, SCA, and Dinkelbach solvers (IEEE TWC).
+- [[zhou-2026-radar-energy-iscac]] - Zhou & Liu 2026. Multi-UAV ISCAC with HAP-side MEC processing; three-layer SCA/relaxation algorithm trades radar sensing data against total energy over scheduling, power, and UAV/HAP trajectories (IEEE TGCN).
 
 - [[huang-2026-offgrid-lae-imager]] - Huang et al. 2026. Cooperative cellular-ISAC low-altitude imaging; CS/PSF analysis plus physics-embedded DNN/OHEM off-grid reconstruction from CSI, reporting up to 97.55% detection rate in the parsed ablation (IEEE TWC).
 - [[hou-2025-pbia-air-iscc-uav-its]] - Hou et al. 2025. UAV-swarm Air-ISCC for ITS; PBIA/PPO jointly controls sensing time, power, service association, and compute allocation to balance success rate and UAV energy (IEEE TGCN).
@@ -405,6 +409,7 @@
 
 ### Energy efficiency & WPT
 
+- [[zhao-2026-adaptive-wdc-wet-lae]] - Zhao et al. 2026. Adaptive low-altitude WDC/WET service balancing; MA2HDRL learns reward preference for AoI/HoE tradeoff while coordinating UAV trajectories, WET slots, and WDC subslots (IEEE TMC).
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
 - [[panahi-2026-uav-green-iot-offloading]] — Panahi & Panahi 2026. Cost-aware UAV-enabled green-IoT computation offloading; Q-learning region trajectory plus laser / renewable energy procurement and COF/WPT service-compensation accounting (IEEE TGCN).
@@ -514,6 +519,7 @@
 - [[intra-swarm-task-delegation]]
 - [[anti-jamming-mec]]
 - [[wireless-power-transfer]]
+- [[adaptive-wdc-wet-service-balancing]]
 - [[rf-energy-harvesting]]
 - [[energy-harvesting-mec]]
 - [[energy-procurement-compensation]]
@@ -524,6 +530,7 @@
 - [[perception-aided-offloading]]
 - [[multi-source-data-fusion]]
 - [[video-analytics-offloading]]
+- [[scalable-uav-video-analytics]]
 - [[video-transcoding-tradeoff]]
 - [[qoe-modeling-mec]]
 - [[service-caching-mec]]
@@ -773,6 +780,7 @@
 - [[cramer-rao-bound]]
 - [[integrated-sensing-computation-communication]]
 - [[mmwave-radar-sensing]]
+- [[radar-sensing-energy-tradeoff]]
 - [[uav-backscatter-identification]]
 - [[yolov7-object-detection]]
 - [[spectrum-sensing-channel-selection]]
@@ -804,6 +812,7 @@
 - [[csra-cold-start-reputation-aggregation]]
 - [[fl-poisoning-attacks]]
 - [[privacy-sensitive-data-partitioning]]
+- [[uav-cluster-authentication]]
 - [[seamless-handover]]
 - [[adaptive-inter-layer-data-offloading]]
 
@@ -827,6 +836,7 @@
 ### Distributed inference
 
 - [[collaborative-dl-inference]]
+- [[attention-based-uav-target-search]]
 - [[multi-exit-dnn]]
 - [[dnn-model-partition]]
 - [[data-partition-parallel-inference]]

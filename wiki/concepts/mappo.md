@@ -12,6 +12,8 @@ related:
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
   - "[[zhao-2026-mappo-jscc-aec]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
+  - "[[wang-2026-scalable-multiuav-analytics]]"
+  - "[[zhu-2026-hab-mappo-target-search]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -29,3 +31,5 @@ In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association
 [[zhao-2026-mappo-jscc-aec]] uses MAPPO-JSCC for HAP-assisted collaborative aerial edge computing, embedding numerical sensing optimization plus SCA/Dinkelbach transmission-power solvers into a CTDE-style PPO multi-agent controller.
 
 [[wang-2026-llm-qos-multiuav-resource]] uses MAPPO as the UAV-side student policy after a cloud-side LLM teacher generates QoS-aware resource-allocation guidance.
+
+[[wang-2026-scalable-multiuav-analytics]] uses MAPPO inside MAPDP for distributed collaborative UAV video analytics at larger swarm scales, while [[zhu-2026-hab-mappo-target-search]] uses an attention-based MAPPO actor/critic with Beta-distribution actions and heuristic offloading for cooperative target search.

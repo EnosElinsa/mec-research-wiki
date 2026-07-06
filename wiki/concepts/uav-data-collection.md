@@ -8,6 +8,7 @@ related:
   - "[[age-of-information]]"
   - "[[task-offloading]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
+  - "[[zhao-2026-adaptive-wdc-wet-lae]]"
 created: 2026-05-31
 updated: 2026-07-07
 ---
@@ -23,3 +24,5 @@ These two missions are usually studied separately and often run on different UAV
 ## Relation to freshness
 
 When the collected data is delay-sensitive, data-collection objectives connect to [[age-of-information]]; in [[wang-2025-sac-tma-mec-dc]] the DC data is explicitly **freshness-insensitive**, so the objective is total volume rather than AoI. [[cai-2026-llm-drl-secure-lae-data]] studies the freshness-sensitive and security-sensitive case, coordinating a data-collection UAV with a jamming UAV under AoI, energy, and eavesdropping constraints.
+
+[[zhao-2026-adaptive-wdc-wet-lae]] adds the dual-service low-altitude version: UAVs collect fresh data from I-devices while also transferring RF energy to E-devices, with AoI and hungry-level-of-energy balanced by an adaptive reward preference rather than a fixed hand-tuned weight.

@@ -6,6 +6,7 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[hu-2026-latency-hybrid-uav-mec]]"
+  - "[[zhao-2026-adaptive-wdc-wet-lae]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -30,6 +31,8 @@ Total slot duration $T$ is split between:
 Joint optimization picks $\{\tau_0, \tau_1, \ldots, \tau_N, \mathbf x, \mathbf f, \mathbf p\}$ where $\mathbf x$ is the binary offloading vector, $\mathbf f$ is local CPU frequencies, $\mathbf p$ is transmit powers.
 
 [[hu-2026-latency-hybrid-uav-mec]] uses the UAV itself as the RF energy transmitter in a hybrid UAV-GBS MEC system: users harvest energy from the UAV while offloading latency-critical task bits for local, UAV-side, or GBS-side execution.
+
+[[zhao-2026-adaptive-wdc-wet-lae]] uses UAV WET as a service-balancing objective in a low-altitude IoT network. E-devices harvest RF energy under a nonlinear EH model, while I-devices require WDC freshness; the controller adapts the WDC/WET preference instead of fixing the scalarization weight.
 
 ## Why "long-term" matters
 

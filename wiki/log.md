@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 WDC / UAV analytics / cluster authentication / ISCAC / target-search sources
+
+Added five source pages and five concept pages:
+
+- [[zhao-2026-adaptive-wdc-wet-lae]] - Zhao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3664903`. Low-altitude multi-UAV wireless data collection and wireless energy transfer with adaptive AoI/HoE service balancing and MA2HDRL control.
+- [[wang-2026-scalable-multiuav-analytics]] - Wang et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3625726`. Scalable collaborative multi-UAV video analytics with DAG-aware centralized optimization and distributed MAPPO-based partitioning.
+- [[gong-2026-lp2-casku-uav-clusters]] - Gong et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3676757`. LP2-CASKU dynamic UAV-cluster authentication and session-key update for low-altitude economy networks.
+- [[zhou-2026-radar-energy-iscac]] - Zhou and Zhou 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3587751`. UAV/HAP ISCAC radar-data collection with sensing scheduling, transmit-power, and trajectory optimization under an energy tradeoff.
+- [[zhu-2026-hab-mappo-target-search]] - Zhu et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3614596`. Multi-UAV cooperative target search with charging, image offloading, and HAB-MAPPO two-level attention control.
+
+New concept pages: [[adaptive-wdc-wet-service-balancing]], [[scalable-uav-video-analytics]], [[uav-cluster-authentication]], [[radar-sensing-energy-tradeoff]], and [[attention-based-uav-target-search]]. Updated backlinks for [[uav-data-collection]], [[wireless-power-transfer]], [[age-of-information]], [[aoi-energy-tradeoff]], [[interdependent-tasks-dag]], [[dynamic-uav-clustering]], [[integrated-sensing-computation-communication]], [[collaborative-dl-inference]], [[multi-uav-assisted-mec]], [[uav-trajectory-control]], [[mappo]], [[video-analytics-offloading]], [[hierarchical-aerial-mec]], [[beta-policy-drl]], [[uav-charging-scheduling]], [[low-altitude-intelligent-network]], and [[deep-q-network]]. Updated parse-confirmed author rosters for [[victor-c-m-leung]] and [[dusit-niyato]].
+
+Metadata notes: [[zhu-2026-hab-mappo-target-search]] had DOI evidence in the local parse. [[zhao-2026-adaptive-wdc-wet-lae]], [[wang-2026-scalable-multiuav-analytics]], [[gong-2026-lp2-casku-uav-clusters]], and [[zhou-2026-radar-energy-iscac]] were parse-silent or incomplete on top-level DOI/venue/year metadata, so DOI, venue, year, volume, issue, and page fields where used were verified against title-matched Crossref/IEEE DOI records. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/corpus_counts.py` reported 349 sources, 323 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders before final audit. `python tools/wiki/curation_status.py --dupes` is expected to report 5 genuinely new folders still uncurated after this pass.
+
 ## [2026-07-07] Curated 5 LEO / NOMA near-field / rescue / spectrum cartography / THz relay sources
 
 Added five source pages and three concept pages:

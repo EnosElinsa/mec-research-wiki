@@ -9,6 +9,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[li-2026-uav-hap-ddqn-ppo-offloading]]"
   - "[[zhao-2026-mappo-jscc-aec]]"
+  - "[[zhou-2026-radar-energy-iscac]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -40,7 +41,7 @@ UAVs handle small / urgent tasks; HAPS handles large / non-urgent overflow. The 
 
 ## In this wiki
 
-[[peng-2025-drudm-cfg]] is the canonical example here — UAVs admit via DRUDM, overflow upward to a HAS via priority queue. Other hierarchical-aerial sources such as [[bi-2025-sg-mapg]] (SG-MAPG) and the low-altitude-economy survey [[wang-2025-lae-network-survey]] sit in this design space too. [[li-2026-uav-hap-ddqn-ppo-offloading]] adds a multi-UAV/HAP DDQN-PPO split where DDQN picks the offloading mode and PPO sets cooperative-UAV ratios. [[zhao-2026-mappo-jscc-aec]] adds the sensing side: UAVs collect sensing data and the HAP supports upper-tier computation under a MAPPO-JSCC controller.
+[[peng-2025-drudm-cfg]] is the canonical example here — UAVs admit via DRUDM, overflow upward to a HAS via priority queue. Other hierarchical-aerial sources such as [[bi-2025-sg-mapg]] (SG-MAPG) and the low-altitude-economy survey [[wang-2025-lae-network-survey]] sit in this design space too. [[li-2026-uav-hap-ddqn-ppo-offloading]] adds a multi-UAV/HAP DDQN-PPO split where DDQN picks the offloading mode and PPO sets cooperative-UAV ratios. [[zhao-2026-mappo-jscc-aec]] adds the sensing side: UAVs collect sensing data and the HAP supports upper-tier computation under a MAPPO-JSCC controller. [[zhou-2026-radar-energy-iscac]] is the classical-optimization counterpart, with UAV radar sensing plus HAP-side MEC processing under an energy/sensing-data tradeoff.
 
 ## Open question
 

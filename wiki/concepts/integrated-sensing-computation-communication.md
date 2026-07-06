@@ -10,6 +10,8 @@ related:
   - "[[hou-2025-pbia-air-iscc-uav-its]]"
   - "[[ye-2026-deeplsc-lae-isac]]"
   - "[[zhao-2026-mappo-jscc-aec]]"
+  - "[[zhou-2026-radar-energy-iscac]]"
+  - "[[radar-sensing-energy-tradeoff]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -23,3 +25,5 @@ In [[tang-2024-iscc-uav-feel]], ISCC resources (bandwidth, batch size, position)
 [[zhao-2026-mappo-jscc-aec]] adds a HAP-assisted multi-UAV aerial-edge version: sensing-device repeat times, NOMA/OMA uplink power, UAV trajectories, offloading, and communication resources are jointly optimized, with Lyapunov energy-stability control and MAPPO embedded with SCA/Dinkelbach sub-solvers.
 
 [[hou-2025-pbia-air-iscc-uav-its]] adds a UAV-swarm ITS version of over-the-air ISCC. UAVs sense traffic environments, communicate with IoTDs, and allocate computing resources, while a PPO-based PBIA policy controls time-slot scheduling, power, service association, and resource allocation.
+
+[[zhou-2026-radar-energy-iscac]] adds the radar-data / HAP-offloading variant: multiple UAVs collect radar sensing data, process part locally, and offload the rest to a HAP MEC server while jointly controlling sensing scheduling, transmit power, and UAV/HAP trajectories for a sensing-data versus energy tradeoff.
