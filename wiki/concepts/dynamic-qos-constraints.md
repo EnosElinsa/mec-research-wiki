@@ -7,8 +7,9 @@ related:
   - "[[dynamic-constrained-multi-objective-optimization]]"
   - "[[task-priority-in-mec]]"
   - "[[niazmand-2025-jopa-dnn-pruning-iiot]]"
+  - "[[chen-2026-qos-noma-multiuav]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-07
 ---
 
 # Dynamic QoS Constraints
@@ -17,4 +18,4 @@ QoS requirements (e.g. end-to-end **delay** and inference **accuracy**) that **c
 
 This breaks the common stationary-requirement assumption and forces the scheduler to **adapt online** — e.g. by switching among differently-pruned models, re-allocating compute, or changing offloading decisions per slot to track the moving requirement while bounding the **task-dropping rate**.
 
-In the wiki, [[niazmand-2025-jopa-dnn-pruning-iiot]] makes time-varying per-task delay and accuracy requirements first-class: an industrial washing machine's fault-detection task gets stricter accuracy as its mechanical condition degrades, and the SAC policy picks pruned-vs-full models to satisfy the moving bar with <1% dropping. Related to the time-evolving feasible region of [[dynamic-constrained-multi-objective-optimization]] and to [[task-priority-in-mec]].
+In the wiki, [[niazmand-2025-jopa-dnn-pruning-iiot]] makes time-varying per-task delay and accuracy requirements first-class: an industrial washing machine's fault-detection task gets stricter accuracy as its mechanical condition degrades, and the SAC policy picks pruned-vs-full models to satisfy the moving bar with <1% dropping. [[chen-2026-qos-noma-multiuav]] is a priority-aware variant: each task carries a delay threshold and priority level, and the system utility distinguishes high-priority deadline misses from low-priority degradation. Related to the time-evolving feasible region of [[dynamic-constrained-multi-objective-optimization]] and to [[task-priority-in-mec]].

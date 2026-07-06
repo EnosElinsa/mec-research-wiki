@@ -48,6 +48,7 @@
 - [[zhao-2025-traj-offload-cache-migration]] — Zhao et al. 2025. Joint trajectory + offloading + migration + **computational-task caching**; Lyapunov + BCD + QCQP-SDR.
 - [[gao-2024-service-experience-cache-uav]] — Gao & Zhai 2024. Fairness-aware cache-enabled UAV-MEC; **service-experience ratio** (Jain's index / delay); Dinkelbach + 4-stage AO.
 - [[zhao-2024-caching-service-placement-uav]] — Zhao et al. 2024. Joint content caching + service placement + offloading; QoE max via Gibbs sampling + matching.
+- [[ye-2026-flight-speed-battery-swapping]] - Ye et al. 2026. Flight-speed scheduling, battery swapping, and task offloading for UAV-enabled MEC inspection; virtual-node graph reformulation plus ATC large-scale heuristic (IEEE TMC).
 - [[fan-2026-parallel-caching-uav-mec]] - Fan et al. 2026. Multi-task parallel UAV-MEC execution with content caching, computation offloading, and channel allocation; RLTL uses DQN for intra-UAV caching/offloading and regret-minimization learning for inter-UAV channel allocation (IEEE TMC).
 - [[chen-2024-dro-video-caching]] — Chen et al. 2024. **Distributionally robust** adaptive-bitrate video caching + transcoding + backhaul in UAV-MEC; ζ-structure-metric confidence set + convex DRO latency minimizer under an energy budget; real YouTube traces (IEEE TMC).
 - [[huang-2026-erasure-coded-uav-storage]] — Huang et al. 2026. **Erasure-coded UAV edge storage**; coded data/parity block placement + access routing in post-disaster UAV-enabled edge systems via CNN+ConvLSTM prediction and ME-HDRL (DDQN UAV agents + PPO edge agent) (IEEE TMC).
@@ -90,6 +91,7 @@
 - [[zhan-2026-gatd3qn-dependent-offloading]] - Zhan et al. 2026. Joint UAV placement, UAV-GU association, and dependent-task DAG offloading in multi-UAV MEC; JSPO plus GAT-enhanced D3QN (IEEE TMC).
 - [[teng-2026-gstrl-sequential-offloading]] - Teng et al. 2026. Graph-based spatiotemporal RL for sequential task offloading in multi-UAV MEC; heterogeneous task/UAV graph encoding plus masked PPO for order-constrained offloading decisions (IEEE TMC).
 - [[zhao-2026-heuristic-supervised-drl]] - Zhao et al. 2026. Heuristic-supervised DRL framework with TTSSA convergence analysis; PSO bridges upper-tier planning to MARL control in the UAV-MEC case study (IEEE TMC).
+- [[chen-2026-qos-noma-multiuav]] - Chen et al. 2026. QoS-oriented NOMA multi-UAV MEC offloading with task priorities, Lagrange-dual constraint handling, and improved SAC for trajectories/association/offloading/resources (IEEE TWC).
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Liu et al. 2026. UAV-assisted vehicular V2X with **delayed CSI feedback**; Lyapunov energy queue + diffusion-actor DDPG (**D3PG**) over V2V channel reuse, power control, and UAV altitude (IEEE TWC).
@@ -215,6 +217,7 @@
 
 ### Generative-AI MEC
 
+- [[gong-2026-safe-economic-lae-trajectory]] - Gong et al. 2026. Hybrid SAC-LLM low-altitude UAV trajectory planning with obstacle avoidance, no-fly-zone/residential-zone compliance, landing, and energy constraints (IEEE TMC).
 - [[wen-2026-hybridrag-low-carbon-lae]] - Wen et al. 2026. HybridRAG-formulated low-carbon LAE network optimization with R^2DSAC, a double-regularized diffusion-enhanced SAC solver (IEEE TMC).
 - [[cai-2026-llm-drl-secure-lae-data]] - Cai et al. 2026. LLM-enhanced DRL for secure LAE data collection; LLM state/reward/simulator support for DDPG/TD3 with a data-collection UAV and a jamming UAV (IEEE TMC).
 - [[wang-2026-llm-qos-multiuav-resource]] - Wang et al. 2026. LLM teacher-student QoS-aware resource allocation for multi-UAV cooperative edge computing; NKG/R-GAT/ToT teacher with MAPPO student distillation (IEEE TMC).
@@ -262,6 +265,8 @@
 
 - [[ji-2026-llm-iov-uav-offloading]] - Ji et al. 2026. Multi-UAV-assisted IoV offloading; SOCP 3D trajectory, DRL+LLM resource scheduling, and LP task ratios for latency/energy/task-success tradeoffs (IEEE TMC).
 
+- [[hu-2026-ertatd3-secure-caching]] - Hu et al. 2026. UAV-assisted vehicular MEC with secure task-result caching and ERTATD3 twin-actor reward shaping over trajectory/offloading/resource/caching decisions (IEEE TMC).
+- [[feng-2026-prediction-service-migration]] - Feng et al. 2026. Prediction-assisted multi-UAV service migration and trajectory control for vehicular MEC; stacked LSTM + Lyapunov migration-cost control + MADDPG (IEEE TMC).
 - [[chen-2026-hc-mappo-vehicle-twin-migration]] - Chen et al. 2026. Hierarchical-control MAPPO for vehicle-twin migration in UAV-assisted vehicular metaverses, using ACB-LSTM workload prediction and deterministic lower-layer migration mapping (IEEE TMC).
 - [[wei-2026-airfogsim-uav-vfc]] - Wei et al. 2026. **AirFogSim** lightweight modular simulator for UAV-integrated vehicular fog computing; traffic/UAV mobility, communication, computation, energy, security/privacy, blockchain, and scheduling modules (IEEE TMC).
 - [[qi-2026-drone-vehicle-mec-inspection]] - Qi et al. 2026. Cooperative drone-vehicle MEC for low-altitude inspection; GV-carried accompanying/detached drones, battery swapping, route planning, and detached-drone speed optimization minimize mission completion time (IEEE TMC).
@@ -487,6 +492,7 @@
 - [[computation-to-communication-ratio]]
 - [[computation-peer-offloading]]
 - [[computational-task-caching]]
+- [[battery-swapping-uav-mec]]
 - [[coded-caching]]
 - [[erasure-coded-edge-storage]]
 - [[binary-vs-partial-offloading]]
@@ -510,6 +516,7 @@
 - [[video-transcoding-tradeoff]]
 - [[qoe-modeling-mec]]
 - [[service-caching-mec]]
+- [[secure-caching-uav-mec]]
 - [[semantic-content-reuse]]
 - [[network-slicing]]
 - [[traffic-aware-offloading]]
@@ -587,6 +594,7 @@
 ### UAV control & decisions
 
 - [[uav-trajectory-control]]
+- [[compliance-aware-uav-trajectory]]
 - [[bang-bang-control]]
 - [[uav-charging-scheduling]]
 - [[dynamic-uav-clustering]]
@@ -666,6 +674,7 @@
 ### Optimization techniques (classical & evolutionary)
 
 - [[lyapunov-optimization]]
+- [[analytical-target-cascading]]
 - [[markov-approximation]]
 - [[two-timescale-optimization]]
 - [[fractional-programming-dinkelbach]]

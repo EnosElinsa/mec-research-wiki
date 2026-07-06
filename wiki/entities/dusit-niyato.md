@@ -40,6 +40,7 @@ related:
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
   - "[[zeng-2026-movable-antenna-u2u-channel]]"
+  - "[[gong-2026-safe-economic-lae-trajectory]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -48,7 +49,7 @@ updated: 2026-07-07
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author in the corpus, co-authoring 37 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, channel modeling, and surveys:
+The most frequently recurring author in the corpus, co-authoring 38 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, channel modeling, compliance-aware trajectory planning, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -87,6 +88,7 @@ The most frequently recurring author in the corpus, co-authoring 37 sources span
 - [[wen-2026-hybridrag-low-carbon-lae]] - HybridRAG-based LLM agents and R^2DSAC for low-carbon LAE MEC optimization.
 - [[cai-2026-llm-drl-secure-lae-data]] - LLM-enhanced DRL for secure LAE data collection with AoI and energy objectives.
 - [[zeng-2026-movable-antenna-u2u-channel]] - movable-antenna-aided MIMO wideband UAV-to-UAV channel modeling for low-altitude economy networks.
+- [[gong-2026-safe-economic-lae-trajectory]] - hybrid SAC-LLM low-altitude UAV trajectory planning with obstacle avoidance, regulatory compliance, landing, and energy constraints.
 
 ## Contributions to this wiki
 
@@ -94,3 +96,4 @@ The most frequently recurring author in the corpus, co-authoring 37 sources span
 - Anchor author for the corpus's diffusion / GAI optimization branch, including [[du-2024-gdm-network-optimization-tutorial]], [[ye-2025-aigc-diffusion-contract]], [[wang-2026-diffusion-semantic-uav-edge]], [[wen-2026-hybridrag-low-carbon-lae]], and [[cai-2026-llm-drl-secure-lae-data]].
 - Recurring co-author in digital-twin and vehicular-metaverse entries, including [[yang-2024-taco-human-digital-twin-edge]], [[he-2026-dt-sagimec-lae]], and [[chen-2026-hc-mappo-vehicle-twin-migration]].
 - Connects the LAE control corpus to physical-layer channel modeling through [[zeng-2026-movable-antenna-u2u-channel]].
+- Extends the LLM-assisted LAE control thread to compliance-aware trajectory planning through [[gong-2026-safe-economic-lae-trajectory]].

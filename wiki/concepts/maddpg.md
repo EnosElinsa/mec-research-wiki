@@ -13,9 +13,10 @@ related:
   - "[[peng-2020-maddpg-uav-vehicular]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[du-2023-maddpg-service-placement-agin]]"
+  - "[[feng-2026-prediction-service-migration]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-31
-updated: 2026-06-03
+updated: 2026-07-07
 ---
 
 # Multi-Agent Deep Deterministic Policy Gradient (MADDPG)
@@ -34,6 +35,7 @@ The multi-agent extension of [[ddpg]]: each agent has its own deterministic acto
 - [[peng-2020-maddpg-uav-vehicular]] — MEC servers (eNodeB + UAV) as MADDPG agents for vehicle association + resource allocation.
 - [[he-2023-fairness-3d-multiuav-maddpg]] — fairness-among-UAVs 3D trajectory with MADDPG.
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG service placement + offloading in air-ground integrated MEC.
+- [[feng-2026-prediction-service-migration]] — MADDPG coordinates multi-UAV trajectory and service-migration decisions after LSTM prediction and Lyapunov cost control.
 
 ## Relation to siblings
 

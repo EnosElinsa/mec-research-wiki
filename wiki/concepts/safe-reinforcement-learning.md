@@ -6,8 +6,10 @@ related:
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[zhou-2021-delay-sagin-task-scheduling]]"
   - "[[collision-avoidance-mgi]]"
+  - "[[compliance-aware-uav-trajectory]]"
+  - "[[gong-2026-safe-economic-lae-trajectory]]"
 created: 2026-05-28
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Safe Reinforcement Learning
@@ -34,3 +36,5 @@ A family of RL formulations that enforce **constraints** (safety, fairness, reso
 [[zhang-2025-ssac-mgi-heterogeneous-uav]] uses the **Markov Game of Intervention** ([[collision-avoidance-mgi|MGI]]) — a **per-UAV** two-agent scheme in which a stochastic, reward-maximizing **Standard Agent** is paired with a deterministic **Safety Agent** plus a binary gating policy $\mathbf{g}(s)\in\{0,1\}$ that *overrides* the Standard Agent's action whenever an intervention triggers ($\tilde a = \mathbf{g}\cdot a^{\mathrm{safe}} + (1-\mathbf{g})\cdot a$). A per-intervention cost keeps overrides selective. This enforces collision/obstacle avoidance as an explicit constraint rather than a reward penalty, giving safety guarantees during and after training.
 
 [[zhou-2021-delay-sagin-task-scheduling]] uses a different safety pattern for SAGIN task scheduling: it keeps a separate risk Q-function for UAV energy-capacity violations and combines it with the delay-cost Q-function through an adaptive weight, so the learned scheduler searches for low delay without exceeding the energy budget.
+
+[[gong-2026-safe-economic-lae-trajectory]] uses LLM reasoning as a training-time intervention path for low-altitude trajectory safety and compliance. The final online SAC policy runs without LLM inference, but the training loop invokes LLM guidance near obstacles and constrained airspace to bias exploration toward [[compliance-aware-uav-trajectory]] behavior.

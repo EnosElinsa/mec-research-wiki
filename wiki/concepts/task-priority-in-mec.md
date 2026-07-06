@@ -6,8 +6,10 @@ related:
   - "[[task-offloading]]"
   - "[[hao-2025-priority-aware-task-driven-co]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[dynamic-qos-constraints]]"
+  - "[[chen-2026-qos-noma-multiuav]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Task Priority in MEC
@@ -35,6 +37,7 @@ A scheduler that treats all tasks equally — common in baseline MEC papers — 
 
 - [[hao-2025-priority-aware-task-driven-co]] uses the priority-utility-function formulation.
 - [[peng-2025-drudm-cfg]] uses a distance/resource/urgency weighted score (DRUDM) — urgency proxies for priority.
+- [[chen-2026-qos-noma-multiuav]] defines separate delay-utility behavior for high- and low-priority tasks in a NOMA-based multi-UAV MEC system, then maximizes average system utility through ISAC.
 - Most other curated sources implicitly assume uniform priority.
 
 ## Open question

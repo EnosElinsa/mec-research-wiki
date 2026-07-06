@@ -8,8 +8,9 @@ related:
   - "[[two-timescale-optimization]]"
   - "[[mobile-edge-computing]]"
   - "[[shi-2023-two-timescale-migration-rerouting]]"
+  - "[[feng-2026-prediction-service-migration]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-07
 ---
 
 # Service Migration in MEC
@@ -26,4 +27,4 @@ The recurring research question is **when to migrate vs reroute**: migration sui
 
 ## In this wiki
 
-[[shi-2023-two-timescale-migration-rerouting]] is the anchor: it jointly balances **service migration and task rerouting** for MEC handovers in a two-timescale online framework (slow: access selection + migration/rerouting; fast: computing/communication resource allocation), minimizing long-term average service delay via an improved [[mobile-edge-computing|MEC]] Lyapunov algorithm with randomized rounding and Lagrange-dual inner solvers.
+[[shi-2023-two-timescale-migration-rerouting]] is the anchor: it jointly balances **service migration and task rerouting** for MEC handovers in a two-timescale online framework (slow: access selection + migration/rerouting; fast: computing/communication resource allocation), minimizing long-term average service delay via an improved [[mobile-edge-computing|MEC]] Lyapunov algorithm with randomized rounding and Lagrange-dual inner solvers. [[feng-2026-prediction-service-migration]] moves the mechanism into multi-UAV vehicular MEC, where stacked-LSTM vehicle prediction, [[lyapunov-optimization]], and MADDPG coordinate when a service instance should migrate between UAV MEC servers.

@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 battery / secure caching / service migration / QoS NOMA / LAE compliance sources
+
+Added five source pages and four concept pages:
+
+- [[ye-2026-flight-speed-battery-swapping]] - Ye et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3601743`. Flight-speed scheduling, battery swapping, and offloading for UAV-enabled MEC patrol inspection; virtual-node graph reformulation and ATC heuristic.
+- [[hu-2026-ertatd3-secure-caching]] - Hu et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3709182`. UAV-assisted vehicular MEC with secure task-result caching and ERTATD3 twin-actor reward shaping over trajectory/offloading/resource/caching decisions.
+- [[feng-2026-prediction-service-migration]] - Feng et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3700894`. Prediction-assisted multi-UAV service migration and trajectory control for vehicular MEC using stacked LSTM, Lyapunov migration-cost control, and MADDPG.
+- [[chen-2026-qos-noma-multiuav]] - Chen et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3593884`. QoS-oriented NOMA multi-UAV MEC offloading with explicit task priorities, Lagrange-dual constraint handling, and improved SAC.
+- [[gong-2026-safe-economic-lae-trajectory]] - Gong et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3668209`. Hybrid SAC-LLM low-altitude UAV trajectory planning with obstacle avoidance, no-fly-zone/residential-zone compliance, landing, and energy constraints.
+
+New concept pages: [[battery-swapping-uav-mec]], [[analytical-target-cascading]], [[secure-caching-uav-mec]], and [[compliance-aware-uav-trajectory]]. Updated backlinks for [[task-offloading]], [[service-caching-mec]], [[uav-trajectory-control]], [[privacy-sensitive-data-partitioning]], [[vehicular-mec]], [[service-migration]], [[lyapunov-optimization]], [[maddpg]], [[noma]], [[task-priority-in-mec]], [[dynamic-qos-constraints]], [[soft-actor-critic]], [[td3]], [[safe-reinforcement-learning]], [[llm-assisted-resource-allocation]], [[generative-ai-for-mec]], and [[low-altitude-intelligent-network]]. Updated existing parse-confirmed author rosters for [[dusit-niyato]], [[jiawen-kang]], [[shengli-xie]], [[weifeng-zhong]], [[xumin-huang]], and [[tony-q-s-quek]]; no new author entities were created.
+
+Metadata notes: [[ye-2026-flight-speed-battery-swapping]] had DOI evidence in the local parse. The parses for [[hu-2026-ertatd3-secure-caching]], [[feng-2026-prediction-service-migration]], [[chen-2026-qos-noma-multiuav]], and [[gong-2026-safe-economic-lae-trajectory]] were silent or incomplete on top-level DOI/venue/year, so DOI/venue/year were verified against title-matched Crossref/IEEE DOI records. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 325 curated raw references, 20 genuinely new folders still uncurated after this pass, and 12 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 334 sources, 312 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean before committing. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-batch-postroster.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki health was OK; `/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 MODE / parallel caching / semantic IoV / networked ISAC / RIS-online sources
 
 Added five source pages and four concept pages:

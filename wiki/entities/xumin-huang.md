@@ -11,22 +11,23 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[xie-2026-uav-multisource-fusion]]"
   - "[[qi-2026-drone-vehicle-mec-inspection]]"
+  - "[[ye-2026-flight-speed-battery-swapping]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # Xumin Huang
 
 Affiliated with the **School of Automation, Guangdong University of Technology** (Guangzhou, China). Co-affiliated with the State Key Laboratory of Internet of Things for Smart City, University of Macau, on a number of papers.
 
-Co-authored or first-authored 8 sources in this wiki — all in the **CMOP-evolutionary UAV-MEC** lineage:
+Co-authored or first-authored 9 sources in this wiki, mainly in the **CMOP-evolutionary UAV-MEC** lineage plus battery-aware UAV-MEC inspection:
 
 - First author: [[huang-2023-mu-aec-task-energy]] (multi-UAV interdependent tasks), [[huang-2025-cmop-dispersed-computing]] (dispersed computing reliability).
-- Co-author: [[peng-2022-cmop-uav-path-planning]] (lineage seed), [[peng-2024-energy-time-uav-its]], [[peng-2026-demand-aware-multiuav-mec]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]], [[qi-2026-drone-vehicle-mec-inspection]].
+- Co-author: [[peng-2022-cmop-uav-path-planning]] (lineage seed), [[peng-2024-energy-time-uav-its]], [[peng-2026-demand-aware-multiuav-mec]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]], [[qi-2026-drone-vehicle-mec-inspection]], [[ye-2026-flight-speed-battery-swapping]].
 
 Email: huangxu_min@163.com
 
 ## Contributions to this wiki
 
-- One of the four central authors of the [[constrained-multi-objective-evolutionary-algorithm|CMOP-evolutionary]] lineage. Methodological footprint includes **dual-population** schemes ([[dual-population-evolutionary-algorithm]]), **repair-based** constraint handling, and applications to dispersed computing, ITS, DAG scheduling, and urban UAV-MEC.
+- One of the four central authors of the [[constrained-multi-objective-evolutionary-algorithm|CMOP-evolutionary]] lineage. Methodological footprint includes **dual-population** schemes ([[dual-population-evolutionary-algorithm]]), **repair-based** constraint handling, and applications to dispersed computing, ITS, DAG scheduling, urban UAV-MEC, and battery-aware inspection.

@@ -7,6 +7,7 @@ related:
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
   - "[[hu-2026-latency-hybrid-uav-mec]]"
+  - "[[chen-2026-qos-noma-multiuav]]"
 created: 2026-05-28
 updated: 2026-07-07
 ---
@@ -27,6 +28,8 @@ A multiple-access scheme where multiple users share the *same* time-frequency re
 [[mohammadi-2026-star-ris-uav-mec-noma]] uses NOMA with SIC for simultaneous offloading through a UAV-mounted STAR-RIS toward UAV-MEC and BS-MEC execution. Its simulation reports NOMA lower total energy than OMA in that STAR-RIS architecture, contrasting with [[ji-2021-uav-mec-noma-oma-energy-min]], where OMA is lower-energy in a different UAV-MEC model.
 
 [[hu-2026-latency-hybrid-uav-mec]] compares TDMA and NOMA in a wireless-powered hybrid UAV-GBS MEC system. In its latency-minimization experiments, NOMA completes the same task workload with fewer slots than the corresponding TDMA setting as user density grows.
+
+[[chen-2026-qos-noma-multiuav]] uses NOMA in a multi-UAV cooperative MEC system where users with different task priorities simultaneously offload over shared subchannels. The SIC-based transmission model is coupled to QoS utility, UAV association, 3D trajectories, offloading ratios, and UAV compute allocation.
 
 ## Caveats
 

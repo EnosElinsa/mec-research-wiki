@@ -21,6 +21,7 @@ related:
   - "[[qi-2026-drone-vehicle-mec-inspection]]"
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
+  - "[[ye-2026-flight-speed-battery-swapping]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
 created: 2026-05-29
 updated: 2026-07-07
@@ -30,7 +31,7 @@ updated: 2026-07-07
 
 IEEE Senior Member. Affiliated with the **School of Automation, Guangdong University of Technology** (Guangzhou, China). The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] repeat the same Guangdong University of Technology affiliation, confirming the same researcher identity across these corpus sources.
 
-Co-authored 18 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage, collaborative beamforming, generative-AI/diffusion methods, air-ground MEC service placement, human/vehicle digital-twin edge deployment, UAV-swarm collaborative inference, cooperative drone-vehicle MEC, and low-carbon LAE optimization:
+Co-authored 19 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage, collaborative beamforming, generative-AI/diffusion methods, air-ground MEC service placement, human/vehicle digital-twin edge deployment, UAV-swarm collaborative inference, cooperative drone-vehicle MEC, low-carbon LAE optimization, and battery-aware UAV-MEC inspection:
 
 - [[peng-2022-cmop-uav-path-planning]], [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]] - CMOP-evolutionary lineage.
 - [[sun-2025-emoppo-vlh-aerial-cb]], [[li-2024-emodrl-ground-space-cb]] - aerial / ground-space collaborative beamforming via evolutionary multi-objective RL.
@@ -46,6 +47,7 @@ Co-authored 18 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage
 - [[qi-2026-drone-vehicle-mec-inspection]] - cooperative drone-vehicle MEC for low-altitude inspection with route planning, battery swapping, and detached-drone speed optimization.
 - [[chen-2026-hc-mappo-vehicle-twin-migration]] - workload-prediction-assisted vehicle-twin migration and UAV routing via HC-MAPPO.
 - [[wen-2026-hybridrag-low-carbon-lae]] - HybridRAG-based LLM agents and R^2DSAC for low-carbon LAE MEC optimization.
+- [[ye-2026-flight-speed-battery-swapping]] - flight-speed scheduling, battery swapping, and offloading for UAV-enabled MEC patrol inspection.
 
 Email: kavinkang@gdut.edu.cn
 
@@ -54,3 +56,4 @@ Email: kavinkang@gdut.edu.cn
 - Recurring co-author in the [[constrained-multi-objective-evolutionary-algorithm|CMOP-evolutionary]] lineage.
 - Cross-cutting generative-AI / diffusion contributor spanning [[du-2024-d2sac-aigc-asp-selection]], [[du-2024-gdm-network-optimization-tutorial]], [[ye-2025-aigc-diffusion-contract]], [[wang-2024-wipe-gai]], and [[wen-2026-hybridrag-low-carbon-lae]].
 - Connects the digital-twin thread from [[yang-2024-taco-human-digital-twin-edge]] to [[chen-2026-hc-mappo-vehicle-twin-migration]].
+- Adds battery-aware UAV-MEC inspection through [[ye-2026-flight-speed-battery-swapping]].
