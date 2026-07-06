@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 deployment / RIS / terrain MEC sources
+
+Added five source pages and three concept pages:
+
+- [[ning-2023-uav-mec-offloading-deployment]] — Ning et al. 2023, *IEEE TMC*, DOI `10.1109/TMC.2021.3129785`. Dynamic UAV-MEC computation offloading and server deployment; UE offloading and UAV location selection are modeled as coupled stochastic games with probability-based learning and chess-like asynchronous updates.
+- [[gong-2023-edge-intelligence-its-survey]] — Gong et al. 2023, *IEEE T-ITS*, DOI `10.1109/TITS.2023.3275741`. Edge intelligence for intelligent transportation systems; end-edge-cloud architecture, seven-level EI taxonomy, enabling technologies, autonomous-driving/VEC/UAV/rail applications, platforms, datasets, and open challenges.
+- [[mohammadi-2026-star-ris-uav-mec-noma]] — Mohammadi et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2026.3694177`. STAR-RIS-assisted UAV-MEC with NOMA; weighted energy minimization over task-bit allocation, transmit power, STAR-RIS phase shifts, and UAV trajectory using BCD/SCA/MRT-style updates.
+- [[liao-2025-ris-uav-usv-resource-allocation]] — Liao et al. 2025, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3545458`. RIS-assisted UAV-USV cooperative MEC for inland waterways; bidirectional USV tasks with hard time windows, UAV route/arrival choices, hovering coordinates, and RIS phase design.
+- [[tong-2026-uneven-terrain-uav-mec]] — Tong et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3695882`. Uneven-terrain UAV-MEC with service coverage, partial UAV/BS task allocation, propulsion energy efficiency, and PH-DRL for safe 3D flight plus task-allocation control.
+
+New concept pages: [[edge-intelligence]], [[star-ris]], and [[uav-usv-cooperative-mec]]. Updated concept backlinks for [[task-offloading]], [[uav-trajectory-control]], [[stochastic-game]], [[noma]], [[uav-mounted-ris]], [[intelligent-reflecting-surface]], [[maritime-mec]], [[terrain-aware-channel-model]], [[hierarchical-reinforcement-learning]], [[differential-evolution]], and [[alternating-optimization-sdr-sca]]. No author entity pages were created; the parse-confirmed source authors were not merged into existing author entities.
+
+Metadata notes: DOI/venue/year for all five source pages were verified through title-matched DOI metadata where the parse was silent or incomplete. Technical claims are grounded in the local parses; figure-derived numeric comparisons are phrased as parse-reported results rather than independent measurements.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 275 curated raw references, and 70 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 287 sources, 282 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 38 advisory present-but-unlisted omissions, all outside the newly curated source authors. LLM Wiki health was OK; `/graph/current` returned `{"ok":false,"error":"Not found"}` rather than graph node/edge counts.
+
 ## [2026-07-06] Curated 5 digital-twin / robust / aerial-VEC sources
 
 Added five source pages and two concept pages:

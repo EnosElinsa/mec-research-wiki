@@ -6,8 +6,11 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[liu-2026-jppo-en-convntm]]"
+  - "[[ning-2023-uav-mec-offloading-deployment]]"
+  - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
+  - "[[tong-2026-uneven-terrain-uav-mec]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-07
 ---
 
 # Task Offloading
@@ -24,3 +27,5 @@ The decision of how much of a task an IoT device computes locally versus ships t
 Energy follows a cubic-frequency rule on both ends ($\eta f^3 T$ for the device, $\mu f_u^3 T$ for the UAV, plus $p_d T$ and $p_u T$ on the radio side).
 
 In [[liu-2026-jppo-en-convntm]] the offloading ratios are part of the discrete action vector $\mathbf{1}_n$ (quantized via the policy network), jointly optimized with UAV trajectories.
+
+Across the corpus, the same offloading decision appears in several forms. [[ning-2023-uav-mec-offloading-deployment]] uses a binary local-versus-UAV-server choice inside a stochastic-game deployment loop. [[mohammadi-2026-star-ris-uav-mec-noma]] splits task bits across local, UAV-MEC, and BS-MEC execution through a UAV-mounted STAR-RIS. [[tong-2026-uneven-terrain-uav-mec]] invokes a second-level actor-critic task-allocation policy only when serviceable UEs are covered by the UAV over uneven terrain.

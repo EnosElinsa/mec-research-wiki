@@ -7,8 +7,11 @@ related:
   - "[[drone-cell-3d-placement]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
+  - "[[star-ris]]"
+  - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
+  - "[[liao-2025-ris-uav-usv-resource-allocation]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-07
 ---
 
 # UAV-Mounted RIS
@@ -22,3 +25,5 @@ Design considerations that recur:
 - **Flight vs communication energy.** A UAV-RIS spends propulsion energy to hold or move its position in addition to any communication-side energy, so energy-efficiency objectives must account for both.
 
 In the wiki, [[pan-2025-uav-ris-energy-efficient-comm]] studies **cooperative multiple** UAV-RISs serving multiple ground users, jointly optimizing BS beamforming, UAV-RIS 3D locations, and discrete phase shifts under a multi-objective (rate/fairness/energy) formulation. It is related to but distinct from [[wu-2025-iopo-irs-uav-thz-mec]], which couples an IRS-UAV with THz MEC offloading rather than pure communication.
+
+The corpus also uses UAV-mounted RIS in MEC-specific roles. [[mohammadi-2026-star-ris-uav-mec-noma]] equips the UAV with a [[star-ris]] so transmitted and reflected paths can feed UAV-MEC and terrestrial MEC servers under NOMA. [[liao-2025-ris-uav-usv-resource-allocation]] mounts RIS elements on UAVs to assist blocked inland-waterway TBS-USV links in a [[maritime-mec]] setting.

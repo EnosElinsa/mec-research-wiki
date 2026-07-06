@@ -9,8 +9,9 @@ related:
   - "[[multi-agent-q-learning]]"
   - "[[ma-pomdp]]"
   - "[[li-2025-stochastic-game-uav-swarm]]"
+  - "[[ning-2023-uav-mec-offloading-deployment]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Stochastic Game (Markov Game)
@@ -18,3 +19,5 @@ updated: 2026-05-29
 A multi-state generalization of a repeated game: multiple players act in a shared environment with **state-transition probabilities**, so it is simultaneously a generalization of an MDP (to many agents) and of a one-shot game (to many states). Each agent has its own per-state reward and seeks a policy that is a best response to the others — the solution concept is a [[nash-equilibrium]] (often per stage / Markov-perfect).
 
 In the wiki, [[li-2025-stochastic-game-uav-swarm]] reformulates UAV-swarm energy/clustering/scheduling as **five interconnected stochastic games** (energy replenishment, application placement, trajectory, dynamic clustering, task delegation), proves NE existence via reduction to a multi-period stage game, and solves them with [[multi-agent-q-learning]]. Distinct from the leader-follower [[stackelberg-game]] and the single-controller multi-agent [[ma-pomdp]]; a [[potential-game]] is a special case with convergence guarantees.
+
+[[ning-2023-uav-mec-offloading-deployment]] uses stochastic games differently: it decomposes UAV-enabled MEC into a UE computation-offloading game and a UAV location-selection game, then uses probability-based learning plus a chess-like alternating update to seek pure-strategy Nash equilibria under dynamic task generation.

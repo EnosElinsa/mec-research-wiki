@@ -6,8 +6,9 @@ related:
   - "[[fractional-programming-dinkelbach]]"
   - "[[lyapunov-optimization]]"
   - "[[benaya-2025-aerial-isac-haps]]"
+  - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-07
 ---
 
 # Alternating Optimization with SDR and SCA
@@ -22,3 +23,5 @@ A classical recipe for solving non-convex MEC and ISAC problems with multiple co
 AO converges to a stationary point but not necessarily the global optimum; in practice it's robust enough for ISAC, beamforming, and trajectory problems. See [[benaya-2025-aerial-isac-haps]] for a four-block AO instance.
 
 This stack is the **non-DRL** counterpoint to the j-PPO / DDPG / SAC backbone that dominates the wiki — useful when the problem has clean convex structure within each block.
+
+[[mohammadi-2026-star-ris-uav-mec-noma]] uses the same decomposition style without SDR as the headline: bit allocation, transmit power, STAR-RIS phase shifts, and UAV trajectory are separated into subproblems, then handled with SCA or closed-form MRT-style phase updates inside a BCD loop.

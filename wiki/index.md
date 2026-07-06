@@ -32,6 +32,7 @@
 - [[dai-2024-graph-rm-survey-optimization]] — Dai et al. 2024. **Part I** of a two-part survey on **graph-based resource management** in wireless networks — the **graph-optimization** half (coloring / max-independent-set / max-flow / bipartite-stable matching) across cellular, D2D, multi-hop, multi-antenna, edge caching/computing, and NTN scenarios (IEEE TCCN).
 - [[dai-2024-graph-rm-survey-learning]] — Dai et al. 2024. **Part II** of the same survey — the **graph-learning** half: GNN model families applied to power control, spectrum management, beamforming design, task scheduling, and aerial coverage planning, plus the two-part survey's consolidated challenges + future directions (IEEE TCCN).
 - [[ullah-2026-mec-drl-ntn-survey]] — Ullah et al. 2026. Survey of **DRL for MEC-empowered non-terrestrial wireless networks (MeNT-WiNs)** — integrating MEC with AAVs, LEO/GEO satellites, and HAPs; reviews DRL fundamentals, the MeNT-WiN architecture + binary-vs-partial / task-call-graph offloading models, then DRL's role in satellite autonomy, AAV-swarm management, resource/spectrum/energy allocation, routing, and security, closing with complexity/real-time/scalability challenges (IEEE COMST).
+- [[gong-2023-edge-intelligence-its-survey]] — Gong et al. 2023. Survey of **edge intelligence in intelligent transportation systems**; end-edge-cloud EI architecture, seven-level EI taxonomy, data gathering/processing, autonomous-driving/VEC/UAV/rail applications, platforms, datasets, and open challenges (IEEE T-ITS).
 
 ### Foundational DRL methods
 
@@ -57,6 +58,7 @@
 - [[chen-2015-decentralized-offloading-game]] — Chen 2015. **Decentralized computation offloading game** for mobile cloud computing — potential game; Nash equilibrium existence + decentralized mechanism; ≤10% PoA over centralized optimum (IEEE TPDS).
 - [[chen-2016-multiuser-offloading-game-mec]] — Chen et al. 2016. **Multi-user computation offloading game** for mobile-edge cloud computing — NP-hard centrally; potential game + distributed NE algorithm; multi-channel interference + contention environments (IEEE/ACM ToN).
 - [[he-2019-euagame-user-allocation]] — He et al. 2019. **EUAGame** — edge user allocation as a potential game with a decentralized NE algorithm.
+- [[ning-2023-uav-mec-offloading-deployment]] — Ning et al. 2023. Dynamic UAV-MEC computation offloading and server deployment as coupled stochastic games; UEPSSL/UAVPSSL learning plus chess-like asynchronous update toward NE (IEEE TMC).
 - [[sun-2024-mvtora-postdisaster-vfc]] — Sun et al. 2024. Post-disaster aerial-terrestrial MEC + **vehicle fog computing**; game theory + convex + evolutionary (MVTORA).
 - [[chen-2022-qoe-game-end-edge-cloud]] — Chen et al. 2022. **QoE-aware decentralized end-edge-cloud offloading** as a **potential game** (MUTO-Game); self-interested user devices compete for channels + edge compute, maximizing sum QoE; proven NE existence + the distributed GDTO algorithm + a convergence bound and a **Price-of-Anarchy** worst-case guarantee (IEEE TMC).
 
@@ -81,6 +83,7 @@
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Liu et al. 2026. UAV-assisted vehicular V2X with **delayed CSI feedback**; Lyapunov energy queue + diffusion-actor DDPG (**D3PG**) over V2V channel reuse, power control, and UAV altitude (IEEE TWC).
+- [[tong-2026-uneven-terrain-uav-mec]] — Tong et al. 2026. Uneven-terrain UAV-MEC with service coverage, partial UAV/BS task allocation, propulsion energy, and safe 3D flight; PH-DRL separates TD3 flight control from actor-critic task allocation (IEEE TMC).
 
 - [[liu-2026-jppo-en-convntm]] — Liu et al. 2026. Multi-UAV path planning for MEC under high-density mobility. *j-PPO+EN-ConvNTM* (hybrid-action PPO + memory-augmented encoder).
 - [[hao-2025-priority-aware-task-driven-co]] — Hao et al. 2025. Task-driven priority-aware computation offloading via DRL.
@@ -250,6 +253,7 @@
 - [[qian-2024-marine-fl-dt-secrecy]] — Qian et al. 2024. **FL-assisted marine digital twin** with secrecy; USV NOMA model-upload to HAP + chaotic spread-spectrum broadcast; energy minimization; layered decomposition (IEEE IoT-J).
 - [[wang-2026-aerial-marine-msar]] — Wang et al. 2026. UAV+HAPS+MASS three-tier MEC for maritime search & rescue. *JCORA* (matching + convex + PGD).
 - [[li-2026-cdto-inland-waterways]] — Li et al. 2026. UAV-assisted inland-waterway edge offloading; USV D2D computation-sharing clusters, UAV cluster-head positioning, exact-potential-game CDTO, and graph-based MARL (IEEE T-ITS).
+- [[liao-2025-ris-uav-usv-resource-allocation]] — Liao et al. 2025. RIS-assisted UAV-USV cooperative MEC for inland waterways; bidirectional USV tasks with hard time windows, UAV routing, task-mode/arrival-time choice, hovering-coordinate, and RIS-phase optimization (IEEE TGCN).
 - [[lei-2024-hvmappo-maritime-sar]] — Lei et al. 2024. **Heterogeneous-vehicle maritime SAR** (observation UAVs + relay UAVs + ASV edge servers); joint trajectory + offloading + routing topology minimizing time/energy while maximizing relay **fault tolerance**; Dec-POMDP + **HVMAPPO** (MAPPO/CTDE + param-sharing + normalized GAE + Pop-Art) (IEEE TVT).
 - [[liu-2025-haps-uav-maritime-iot]] — Liu et al. 2025. HAP-UAV maritime IoT comm: HAP-as-backhaul, UAV multicast, vessel unicast.
 - [[wang-2025-double-edge-samin]] — Wang et al. 2025. Double-edge (UAV+LEO) offloading for space-air-marine networks; AO + layered decomposition.
@@ -338,6 +342,7 @@
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
 - [[panahi-2026-uav-green-iot-offloading]] — Panahi & Panahi 2026. Cost-aware UAV-enabled green-IoT computation offloading; Q-learning region trajectory plus laser / renewable energy procurement and COF/WPT service-compensation accounting (IEEE TGCN).
+- [[mohammadi-2026-star-ris-uav-mec-noma]] — Mohammadi et al. 2026. STAR-RIS-assisted UAV-MEC with NOMA; weighted energy minimization over task-bit allocation, transmit power, STAR-RIS phases, and UAV trajectory via BCD/SCA/MRT-style updates (IEEE TGCN).
 - [[zhou-2018-uav-wireless-powered-mec]] — Zhou et al. 2018. **Computation-rate maximization** in UAV-enabled wireless-powered MEC; partial + binary offloading; two-/three-stage closed-form optimization (JSAC).
 - [[he-2024-backscatter-wpmec-cooperation]] — He et al. 2024. **Backscatter-assisted wireless-powered MEC with user cooperation** (source node + helper-relay + HAP-with-MEC); integrated **BackCom + active comm**; **user energy-efficiency** maximization via Dinkelbach fractional programming + convex transform to semi-closed-form solutions (IEEE TMC).
 - [[li-2024-irs-secure-wpmec]] — Li et al. 2024. **IRS-assisted secure wireless-powered MEC** with a passive eavesdropper; harvest-then-offload (TDMA) + partial offloading; **sum secure computation task bits** maximization over AP energy beamforming + IRS phase shifts (WPT + offload) + power + time + local frequency; non-convex → 3 subproblems via Taylor expansion + SDR + Lagrange-duality/KKT, iterative AO; >45% secure-bits gain at max AP power (IEEE TMC).
@@ -420,6 +425,7 @@
 ### MEC fundamentals
 
 - [[mobile-edge-computing]]
+- [[edge-intelligence]]
 - [[task-offloading]]
 - [[task-migration]]
 - [[service-migration]]
@@ -507,12 +513,14 @@
 - [[drone-cell-3d-placement]]
 - [[geometric-disk-cover]]
 - [[maritime-mec]]
+- [[uav-usv-cooperative-mec]]
 - [[post-disaster-mec]]
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
 - [[uav-mounted-ris]]
+- [[star-ris]]
 - [[active-ris]]
 - [[multi-functional-ris]]
 - [[terahertz-communication]]
