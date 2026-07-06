@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 SAGIN / HAP / RIS / JSCC / IoV optimization sources
+
+Added five source pages and four concept pages:
+
+- [[zhao-2026-hcdrl-ga-sagin-sar]] — Zhao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3709181`. Multi-UAV search and rescue in SAGINs; HCDRL/HCSAC jointly handles trajectory and offloading with CNN+GCN state encoding, while GA searches UAV deployment under NOAA-derived wind fields.
+- [[li-2026-uav-hap-ddqn-ppo-offloading]] — Li et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3683404`. Multi-UAV and HAP cooperative offloading; DDQN selects single-UAV / multi-UAV / HAP mode and PPO assigns cooperative task ratios for latency-energy weighted system consumption.
+- [[qin-2023-ris-uav-mec-ee]] — Qin et al. 2023, *IEEE TGCN*, DOI `10.1109/TGCN.2023.3287604`. RIS-assisted UAV-MEC energy-efficiency optimization with NOMA and imperfect CSI; Dinkelbach plus BCD/DC/SCA optimize offloaded bits, power, RIS phase shifts, and UAV trajectory.
+- [[zhao-2026-mappo-jscc-aec]] — Zhao et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3590253`. HAP-assisted collaborative multi-UAV aerial edge computing; JSCC couples sensing repeat times, NOMA/OMA communication, local/U2U/U2H computation, Lyapunov stability, and MAPPO-JSCC with embedded convex sub-solvers.
+- [[ji-2026-llm-iov-uav-offloading]] — Ji et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3700664`. Multi-UAV-assisted IoV offloading; SOCP handles 3D trajectory, DRL+LLM schedules resource allocation, and LP computes task-offloading ratios for latency/energy/task-success tradeoffs.
+
+New concept pages: [[genetic-algorithm]], [[second-order-cone-programming]], [[linear-programming]], and [[llm-assisted-resource-allocation]]. Updated concept backlinks for [[space-air-ground-integrated-network]], [[uav-trajectory-control]], [[high-altitude-platform-station]], [[hierarchical-aerial-mec]], [[intelligent-reflecting-surface]], [[fractional-programming-dinkelbach]], [[integrated-sensing-computation-communication]], [[mappo]], [[vehicular-mec]], [[uav-enabled-its]], and [[energy-latency-tradeoff]]. No author entity pages were created or merged; [[haijun-zhang]] remains an advisory roster omission for [[li-2026-uav-hap-ddqn-ppo-offloading]] because the available parse/PDF text confirmed the name and IEEE Fellow status but did not expose the affiliation/email block needed for identity-safe roster merging.
+
+Metadata notes: the local parses were silent or incomplete on top-level DOI/venue/year, so DOI, year, and venue were verified through title-matched Crossref/IEEE metadata before writing the source pages. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results: `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 300 curated raw references, and 45 genuinely new folders still uncurated after this pass, plus 13 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/corpus_counts.py` reported 310 sources, 299 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py --json entity-roster-after-llm-iov.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions, with the new unresolved advisory being [[haijun-zhang]] for [[li-2026-uav-hap-ddqn-ppo-offloading]]. LLM Wiki health was OK; `/graph` and `/api/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 3 LAE-ISAC / ISAC-VEC sources and reconciled 2 raw duplicates
 
 Added three source pages and three concept pages:

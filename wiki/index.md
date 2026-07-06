@@ -144,6 +144,8 @@
 
 ### SAGIN / satellite offloading
 
+- [[zhao-2026-hcdrl-ga-sagin-sar]] - Zhao et al. 2026. Multi-UAV SAR in SAGIN; HCDRL/HCSAC trajectory/offloading with CNN+GCN state encoding plus GA deployment search under NOAA-derived wind fields (IEEE TMC).
+
 - [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019. **First SAGIN computing-offloading** paper for remote IoT; UAV edge + satellite cloud; MDP + **actor-critic RL** offloading + heuristic VM allocation (IEEE JSAC).
 - [[zhou-2021-delay-sagin-task-scheduling]] — Zhou et al. 2021. Delay-oriented IoT task scheduling in SAGIN; UAV collects tasks and schedules local / BS / LEO execution via deep risk-sensitive RL with separate delay-cost and energy-risk Q-functions (IEEE TWC).
 - [[liu-2024-sagin-spherical-sg-connectivity]] — Liu et al. 2024. **Spherical stochastic geometry** uplink path connectivity analysis for SAGIN; GUs + AVs on spherical surfaces; three connectivity metrics; first such model (IEEE JSAC).
@@ -176,6 +178,8 @@
 - [[moon-2024-ground-satellite-uam-scheduling]] — Moon & Chae 2024. **Cooperative ground-satellite downlink scheduling + power allocation** for **urban air mobility (UAM)** in a 6G NTN; offload high-interference UAMs to the satellite band, recast GS link association as a **minimum-cost max-flow** graph problem, then **SCA** power allocation; prediction-based, CSI-light scheduling (MINLP, IEEE JSAC). *(Communication-layer scheduling, not computation offloading.)*
 
 ### IRS / THz / anti-jamming
+
+- [[qin-2023-ris-uav-mec-ee]] - Qin et al. 2023. RIS-assisted UAV-MEC energy efficiency with NOMA; Dinkelbach + BCD/DC/SCA over task bits, power, RIS phase shifts, and UAV trajectory under imperfect CSI (IEEE TGCN).
 
 - [[chhea-2025-irs-uav-swipt-drl]] — Chhea et al. 2025. IRS-aided UAV **SWIPT** network; **DRL** with SINR-map reward maximizes average EE over trajectory + IRS phase shifts + transmit power + PS ratio (IEEE TVT).
 - [[wu-2025-gai-ris-resource-management]] — Wu et al. 2025. **GAI + distributional RL (DBRL)** for RIS-aided 6G resource management; CDL cascade channel estimation + GAN-modeled distributional Q-function; maximizes joint EE + QoSSR (IEEE TCCN).
@@ -226,6 +230,8 @@
 
 ### Hierarchical aerial MEC (UAV + HAP)
 
+- [[li-2026-uav-hap-ddqn-ppo-offloading]] - Li et al. 2026. Multi-UAV + HAP cooperative offloading; DDQN selects single-UAV/multi-UAV/HAP mode, PPO assigns cooperative ratios for energy-latency weighted consumption (IEEE TMC).
+
 
 - [[nabi-2025-jour-hierarchical-aerial]] — Nabi & Moh 2025. *JOUR* — Gale-Shapley matching + ESAC for joint offloading, association, and resource allocation in UAV+HAP MEC.
 - [[chen-2026-dart-hap-uav-mec]] — Chen et al. 2026. HAP-UAV-MEC with NOMA and WPT; DART combines Lyapunov decomposition, DDPG-attention trajectory/offloading, and convex resource allocation (IEEE TMC).
@@ -237,6 +243,8 @@
 - [[chen-2023-dotora-air-ground-online]] — Chen et al. 2023. HAP+UAV air-ground MEC; stochastic optimization + game theory (DGMS/TPA/DOTORA).
 
 ### Vehicular MEC
+
+- [[ji-2026-llm-iov-uav-offloading]] - Ji et al. 2026. Multi-UAV-assisted IoV offloading; SOCP 3D trajectory, DRL+LLM resource scheduling, and LP task ratios for latency/energy/task-success tradeoffs (IEEE TMC).
 
 - [[chen-2026-hc-mappo-vehicle-twin-migration]] - Chen et al. 2026. Hierarchical-control MAPPO for vehicle-twin migration in UAV-assisted vehicular metaverses, using ACB-LSTM workload prediction and deterministic lower-layer migration mapping (IEEE TMC).
 - [[wei-2026-airfogsim-uav-vfc]] - Wei et al. 2026. **AirFogSim** lightweight modular simulator for UAV-integrated vehicular fog computing; traffic/UAV mobility, communication, computation, energy, security/privacy, blockchain, and scheduling modules (IEEE TMC).
@@ -297,6 +305,8 @@
 - [[wang-2024-blockchain-uav-mec-dpos]] — Wang et al. 2024. **Blockchain-integrated** UAV-assisted MEC; improved **DPoS** consensus (UAV light nodes + reputation-voted ground full nodes) + two-stage **Stackelberg** game over trajectory and resource allocation, solved with SCA (IEEE TVT).
 
 ### ISAC, sensing & physical-layer security
+
+- [[zhao-2026-mappo-jscc-aec]] - Zhao et al. 2026. HAP-assisted multi-UAV sensing-communication-computing; Lyapunov energy stability plus MAPPO-JSCC with embedded sensing, SCA, and Dinkelbach solvers (IEEE TWC).
 
 - [[li-2023-adaptive-digital-twin-uav-iscc]] - Li et al. 2023. DT-enabled UAV-assisted ISCC; ATB-MAPPO with Beta-policy actors and attention critics for radar beampattern / energy tradeoff (IEEE TGCN).
 - [[tang-2025-cooperative-isac-lae]] - Tang et al. 2025. Cooperative ISAC for low-altitude economy; tensor-decomposition monostatic estimation, false-removing MST association, Pareto position fusion, and residual-weighted velocity estimation (IEEE TWC).
@@ -486,6 +496,7 @@
 - [[dispersed-computing]]
 - [[generative-ai-for-mec]]
 - [[hybridrag-network-optimization]]
+- [[llm-assisted-resource-allocation]]
 - [[aigc-service-provider]]
 - [[mobile-aigc-network]]
 - [[prompt-engineering]]
@@ -648,6 +659,7 @@
 - [[mixed-integer-nonlinear-programming]]
 - [[dynamic-constrained-multi-objective-optimization]]
 - [[constrained-multi-objective-evolutionary-algorithm]]
+- [[genetic-algorithm]]
 - [[non-dominated-sorting-genetic-algorithm]]
 - [[cmoea-d-cdp]]
 - [[constraint-violation-evaluation]]
@@ -658,6 +670,8 @@
 - [[local-search-evolutionary]]
 - [[two-stage-decomposition]]
 - [[penalty-dual-decomposition]]
+- [[second-order-cone-programming]]
+- [[linear-programming]]
 - [[alternating-optimization-sdr-sca]]
 - [[monotonic-optimization]]
 - [[majorization-minimization]]
