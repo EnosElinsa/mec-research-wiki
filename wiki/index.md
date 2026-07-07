@@ -353,6 +353,7 @@
 - [[tang-2025-cooperative-isac-lae]] - Tang et al. 2025. Cooperative ISAC for low-altitude economy; tensor-decomposition monostatic estimation, false-removing MST association, Pareto position fusion, and residual-weighted velocity estimation (IEEE TWC).
 - [[ye-2026-mode-lae-isac]] - Ye et al. 2026. Multi-objective LAE ISAC; MODE combines DDPG with mixture-of-experts multi-task learning to tune the communication/sensing tradeoff across objective-preference weights (IEEE TMC).
 - [[zhao-2025-networked-isac-uav-handover]] - Zhao et al. 2025. Networked ISAC UAV tracking/handover for LAE; virtual sensing cells, MUSIC estimation, centralized EKF fusion, PBS handover, and VSC handover maintain multi-BS tracking (IEEE TWC).
+- [[cao-2026-uav-self-tracking-ms-mm]] - Cao et al. 2026. GNSS-independent 3-D UAV self-tracking from non-cooperative anchors; EAIP minor-subspace updates, continuous MM position iteration, KF/MA smoothing, and per-dimension CRLB benchmarking (IEEE TWC).
 - [[wang-2026-stbc-cooperative-isac]] - Wang et al. 2026. Space-time block codec cooperative ISAC; multi-BS shared-resource UAV sensing with robust inter-BS nulling, STBC echo separation, and SINR-weighted fusion (IEEE TMC).
 - [[ye-2026-meta-deepesc-lae-isac]] - Ye et al. 2026. Meta-DeepESC for energy-efficient LAE ISAC; TD3-style constrained action selection, episodic replay, and meta-learning for GBS beamforming plus authorized-UAV trajectories (IEEE TMC).
 - [[ye-2026-deeplsc-lae-isac]] - Ye et al. 2026. DeepLSC LAE ISAC; DDPG-based joint GBS beamforming and UAV-trajectory control with constrained noise exploration, hierarchical replay, and symmetric experience augmentation (IEEE TWC).
@@ -372,6 +373,7 @@
 - [[zhu-2024-crb-active-ris-isac]] — Zhu et al. 2024. **Active-RIS-empowered ISAC** for an obstructed target; derives the **CRB** for target **DoA** estimation and minimizes it over BS precoding + active-RIS reflection beamforming under per-user SINR + BS/RIS power + RIS amplitude constraints; AO + SDR + **majorization-minimization**; >30 dB CRB reduction vs passive RIS (IEEE TWC). *(PHY active-RIS ISAC anchor, not MEC.)*
 - [[zhao-2018-caching-uav-ia-secure]] — Zhao et al. 2018. **Caching-UAV secure transmission** in hyper-dense small cells; **interference alignment** (SBS precoding) for single-antenna UAVs + idle SBSs repurposed as zero-forced **friendly jammers** against a passive eavesdropper; feasibility + secrecy analysis (IEEE TCOMM). *(Caching + interference-alignment PLS anchor, not MEC offloading.)*
 - [[zhu-2024-zdrl-uav-tracking]] — Zhu et al. 2024. **Collaborative-RL 3D UAV tracking**; one active + four passive UAVs localize a target via TDOA/TSWLS; joint power + trajectory design via **Z-function-decomposition RL** (distributional RL); up to 39.4% / 64.6% lower positioning error vs VD-RL / independent DRL (IEEE TMC). *(UAV localization + trajectory design, not MEC offloading.)*
+- [[zhu-2026-uav-localization-jamming]] - Zhu et al. 2026. 3-D UAV localization under jamming; BS switches GAN/TDOA positioning methods and passive-measurement subsets while mixture-Gaussian collaborative RL controls active-UAV power and trajectories (IEEE TMC). *(UAV localization security, not MEC offloading.)*
 - [[an-2024-multilayer-ris-hap-swipt]] — An et al. 2024. **Multi-layer refracting RIS-assisted receiver** enabling **SWIPT** over long-distance **HAP** links; worst-case sum-rate max under imperfect angular CSI + non-linear EH; scalable toolbox-free robust optimization (CSI discretization + **LogSumExp-dual** precoder + **M-CCD** RIS coefficients + closed-form PS/decoder) (IEEE TWC). *(PHY RIS-receiver / SWIPT anchor, not MEC offloading.)*
 - [[ma-2024-covert-mmwave-finite-blocklength]] — Ma et al. 2024. **Covert mmWave communication with finite blocklength** against **spatially random wardens** (Willies as a PPP); derives covertness-constraint + **average effective covert throughput (AECT)** expressions for **phased-array (PA)** and **linear frequency diverse array (LFDA)** beamforming via **stochastic geometry**, then jointly optimizes transmit power + blocklength; the best scheme (PA vs LFDA) depends on the receiver's direction (IEEE IoT-J). *(Covert-communication / PHY-security anchor, not MEC.)*
 
@@ -393,6 +395,7 @@
 ### Architectural / spectrum / governance
 
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
+- [[lee-2026-uav-delivery-time-energy]] - Lee & Chae 2026. UAV-enabled parcel pickup/drop-off with payload-weight, no-fly-zone, 3-D trajectory, and variable-slot optimization; SCA+PCCP exposes a completion-time vs propulsion-energy tradeoff (IEEE T-ITS).
 - [[deng-2026-uav-cpn-energy]] - Deng et al. 2026. UAV-enabled Computing Power Network; stochastic-geometry task-completion probability and altitude/power optimization under fuel and battery constraints (IEEE TMC).
 - [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026. Cooperative task allocation and collision-free path planning for multi-UAV low-altitude urban intelligent transportation systems; ILLA potential-game allocation + CBMBA A-Star path search (IEEE T-ITS).
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
@@ -448,6 +451,8 @@
 - [[zeng-2016-throughput-relaying]] — Zeng et al. 2016. **UAV mobile relaying** throughput maximization; joint relay trajectory + source/relay power; "staircase" water-filling power structure + SCA trajectory under **information-causality** (IEEE TCOMM). *(UAV mobile-relaying anchor, not MEC.)*
 - [[zhao-2019-uav-emergency-disasters]] — Zhao et al. 2019. **UAV-assisted emergency networks** in disasters (magazine framework): joint trajectory+scheduling with surviving BSs, multihop D2D coverage extension, and multihop UAV relaying (AF/DF) — IEEE Wireless Communications. *(Post-disaster comms framework, not a single MEC formulation.)*
 - [[bor-yaliniz-2016-3d-abs-placement]] — Bor-Yaliniz et al. 2016. First **3-D placement** of a drone-cell (aerial base station): jointly choose altitude + coverage location/size to maximize covered users; quadratically-constrained MINLP via bisection + interior-point solver (IEEE ICC). *(Aerial-base-station deployment anchor, not MEC.)*
+- [[li-2026-uav-bs-semantic-mfmaddpg-kde]] - Li et al. 2026. Semantic-communication UAV-BS 3-D deployment; MF-MADDPG-KDE models continuous neighboring actions and optimizes BLEU-derived semantic fidelity under SINR/interference constraints (IEEE TWC).
+- [[you-2019-rician-uav-data-harvesting]] - You & Zhang 2019. UAV-enabled WSN data harvesting under angle-dependent Rician fading; outage-aware effective fading power regression plus BCD/SCA scheduling and 3-D trajectory optimization (IEEE TWC).
 - [[jiang-2012-uav-heading-sdma]] — Jiang & Swindlehurst 2012. Multi-antenna fixed-wing UAV heading optimization for ground-to-air **SDMA** uplink; adaptive heading maximizes ergodic sum rate via prediction filter + line search; SDMA >> TDMA (IEEE JSAC). *(Multi-antenna UAV relay / heading-optimization anchor.)*
 - [[lyu-2017-spiral-mbs-placement]] — Lyu et al. 2017. **Minimum-count UAV-MBS placement** as the NP-hard **Geometric Disk Cover** problem; a polynomial-time **spiral** algorithm places base stations along the convex-hull perimeter of uncovered ground terminals and nudges inward; near core-sets-optimal on small instances, beats strip-based/K-means/random (IEEE COMML). *(Aerial-base-station deployment anchor, not MEC.)*
 - [[zeng-2016-uav-comm-opportunities-challenges]] — Zeng et al. 2016. **Magazine overview** of UAV-aided wireless communications: networking architecture, air-to-ground LoS channel characteristics, three use cases (ubiquitous coverage / relaying / data collection), and design challenges (CNPC links, dynamic topology, SWAP constraints, interference coordination) (IEEE Communications Magazine). *(Foundational UAV-comms overview, not MEC.)*
@@ -631,6 +636,7 @@
 - [[b-spline-trajectory]]
 - [[rotary-wing-propulsion-energy-model]]
 - [[fixed-wing-propulsion-energy-model]]
+- [[uav-delivery-pickup-dropoff]]
 - [[uav-mobile-relaying]]
 - [[successive-hover-and-fly-trajectory]]
 - [[information-causality-constraint]]
@@ -644,6 +650,7 @@
 - [[ddpg]]
 - [[td3]] · [[multi-agent-td3]]
 - [[maddpg]]
+- [[kernel-density-mean-field-marl]]
 - [[multi-agent-diffusion-policy]]
 - [[masac]]
 - [[soft-actor-critic]]
@@ -773,6 +780,7 @@
 
 - [[blockage-aware-channel-model]]
 - [[air-to-ground-channel-model]]
+- [[angle-dependent-rician-fading]]
 - [[radio-map-assisted-channel-estimation]]
 - [[movable-antenna]]
 - [[two-level-movable-antenna]]
@@ -787,6 +795,8 @@
 - [[networked-isac]]
 - [[space-time-block-codec]]
 - [[cramer-rao-bound]]
+- [[minor-subspace-tracking]]
+- [[uav-localization-under-jamming]]
 - [[integrated-sensing-computation-communication]]
 - [[mmwave-radar-sensing]]
 - [[radar-sensing-energy-tradeoff]]

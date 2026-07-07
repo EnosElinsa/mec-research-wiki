@@ -10,6 +10,7 @@ related:
   - "[[li-2025-energy-latency-uav-vec]]"
   - "[[yang-2025-generalizable-pareto-offloading]]"
   - "[[li-2026-uav-hap-ddqn-ppo-offloading]]"
+  - "[[lee-2026-uav-delivery-time-energy]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -23,3 +24,5 @@ In the wiki, [[shao-2024-drl-antijamming-mec]] uses exactly this cost (finding $
 [[li-2025-energy-latency-uav-vec]] uses the weighted-sum form for UAV-assisted vehicular FL participant selection and resource allocation. [[yang-2025-generalizable-pareto-offloading]] is the explicit contrast case: it keeps delay and energy as vector rewards and conditions the policy on the current preference weight.
 
 [[li-2026-uav-hap-ddqn-ppo-offloading]] uses the same scalarized shape in hierarchical aerial MEC: DDQN-PPO minimizes weighted system consumption from task-processing latency and energy utilization across single-UAV, multi-UAV, and HAP offloading modes.
+
+[[lee-2026-uav-delivery-time-energy]] is the logistics analogue rather than an MEC offloading paper: its weighted objective trades mission completion time against rotary-wing propulsion energy for parcel pickup/drop-off under payload and no-fly-zone constraints.

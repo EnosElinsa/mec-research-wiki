@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated 5 UAV localization / semantic deployment / Rician data-harvesting / delivery sources
+
+Added five source pages and five concept pages:
+
+- [[cao-2026-uav-self-tracking-ms-mm]] - Cao et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3686429`. GNSS-independent 3-D UAV self-tracking via EAIP minor-subspace updates, continuous MM position iteration, KF/MA smoothing, and CRLB benchmarking.
+- [[li-2026-uav-bs-semantic-mfmaddpg-kde]] - Li et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3641947`. Semantic-communication UAV-BS deployment using MF-MADDPG-KDE and a BLEU-derived reward under SINR/interference constraints.
+- [[you-2019-rician-uav-data-harvesting]] - You & Zhang 2019, *IEEE TWC*, DOI `10.1109/TWC.2019.2911939`. UAV-enabled WSN data harvesting under angle-dependent Rician fading with outage-aware effective-fading-power regression and BCD/SCA 3-D trajectory optimization.
+- [[lee-2026-uav-delivery-time-energy]] - Lee & Chae 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3628828`. UAV parcel pickup/drop-off under payload, no-fly-zone, variable-slot, and 3-D trajectory constraints, exposing the completion-time/propulsion-energy tradeoff.
+- [[zhu-2026-uav-localization-jamming]] - Zhu et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3628889`. UAV localization under jamming with GAN/TDOA mode selection, passive-measurement subset selection, and mixture-Gaussian collaborative RL.
+
+New concept pages: [[minor-subspace-tracking]], [[kernel-density-mean-field-marl]], [[angle-dependent-rician-fading]], [[uav-delivery-pickup-dropoff]], and [[uav-localization-under-jamming]]. Updated backlinks for [[majorization-minimization]], [[cramer-rao-bound]], [[semantic-communication]], [[maddpg]], [[mean-field-game]], [[drone-cell-3d-placement]], [[uav-data-collection]], [[air-to-ground-channel-model]], [[alternating-optimization-sdr-sca]], [[rotary-wing-propulsion-energy-model]], [[energy-latency-tradeoff]], [[distributional-reinforcement-learning]], [[value-decomposition-network]], [[anti-jamming-mec]], [[uav-trajectory-control]], and [[mixed-integer-nonlinear-programming]]. Updated parse-confirmed author rosters for [[qihui-wu]] and [[tony-q-s-quek]]; no new one-off author entities were created.
+
+Metadata notes: [[cao-2026-uav-self-tracking-ms-mm]] had DOI evidence in the local parse. The local parses for [[li-2026-uav-bs-semantic-mfmaddpg-kde]], [[you-2019-rician-uav-data-harvesting]], [[lee-2026-uav-delivery-time-energy]], and [[zhu-2026-uav-localization-jamming]] were silent or incomplete on top-level DOI/venue/year metadata, so DOI, venue, and year were verified against title-matched Crossref/IEEE DOI metadata. Technical claims and numeric findings are grounded in the local parses.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-batch1-final.json` reported 359 sources, 333 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 theses, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-batch1-final.json` reported 612 raw folders, 263 curated raw references, 349 genuinely new uncurated folders remaining, and 99 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean for this batch, with the link checker reporting no dangling links. `python tools/wiki/entity_roster_audit.py --json entity-roster-batch1-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 815 nodes and 7721 edges.
+
 ## [2026-07-07] Synthesized LLM-assisted MEC optimization control-plane pattern
 
 Added one methodology page and one finding page:

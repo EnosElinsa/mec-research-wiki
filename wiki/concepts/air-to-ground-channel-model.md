@@ -8,6 +8,8 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[al-hourani-2014-optimal-lap-altitude]]"
   - "[[hu-2026-latency-hybrid-uav-mec]]"
+  - "[[angle-dependent-rician-fading]]"
+  - "[[you-2019-rician-uav-data-harvesting]]"
 created: 2026-05-31
 updated: 2026-07-07
 ---
@@ -20,3 +22,4 @@ The **air-to-ground (ATG) channel model** describes propagation between an aeria
 
 - [[al-hourani-2014-optimal-lap-altitude]] is the foundational origin of this sigmoid-LoS-vs-elevation-angle model: it derives the closed-form LoS probability from ITU P.1410 statistical parameters and uses it to compute the LAP altitude maximizing ground coverage. This statistical sub-family is the most common ATG model across the corpus's aerial sources (cf. [[blockage-aware-channel-model]]'s three sub-families — statistical, radio-map, and geometric — where the [[terrain-aware-channel-model]] is the geometric variant).
 - [[hu-2026-latency-hybrid-uav-mec]] uses a probabilistic LoS/NLoS A2G channel inside a wireless-powered hybrid UAV-MEC latency problem, making UAV altitude part of both channel-quality and task-completion-latency control.
+- [[you-2019-rician-uav-data-harvesting]] uses [[angle-dependent-rician-fading]] rather than a LoS/NLoS probability mixture, making altitude control balance path loss against elevation-angle-dependent effective fading power under an outage constraint.

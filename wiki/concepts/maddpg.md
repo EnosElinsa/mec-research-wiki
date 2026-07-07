@@ -15,6 +15,8 @@ related:
   - "[[du-2023-maddpg-service-placement-agin]]"
   - "[[feng-2026-prediction-service-migration]]"
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
+  - "[[kernel-density-mean-field-marl]]"
+  - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-31
 updated: 2026-07-07
@@ -38,6 +40,7 @@ The multi-agent extension of [[ddpg]]: each agent has its own deterministic acto
 - [[du-2023-maddpg-service-placement-agin]] — MADDPG service placement + offloading in air-ground integrated MEC.
 - [[feng-2026-prediction-service-migration]] — MADDPG coordinates multi-UAV trajectory and service-migration decisions after LSTM prediction and Lyapunov cost control.
 - [[tang-2026-hg-maddpg-uav-rescue]] — HG-MADDPG combines Hungarian area assignment, Lyapunov queues, and a generative-diffusion-enhanced MADDPG actor for low-altitude UAV rescue.
+- [[li-2026-uav-bs-semantic-mfmaddpg-kde]] — MF-MADDPG-KDE uses mean-field MADDPG plus kernel-density action-distribution modeling for 3-D semantic UAV-BS deployment.
 
 ## Relation to siblings
 

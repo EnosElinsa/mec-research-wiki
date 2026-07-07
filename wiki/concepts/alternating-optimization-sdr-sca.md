@@ -11,6 +11,8 @@ related:
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[li-2026-isac-vec-beamforming-deployment]]"
   - "[[wu-2026-secure-split-offloading-ci]]"
+  - "[[you-2019-rician-uav-data-harvesting]]"
+  - "[[lee-2026-uav-delivery-time-energy]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -28,4 +30,4 @@ AO converges to a stationary point but not necessarily the global optimum; in pr
 
 This stack is the **non-DRL** counterpoint to the j-PPO / DDPG / SAC backbone that dominates the wiki — useful when the problem has clean convex structure within each block.
 
-[[mohammadi-2026-star-ris-uav-mec-noma]] uses the same decomposition style without SDR as the headline: bit allocation, transmit power, STAR-RIS phase shifts, and UAV trajectory are separated into subproblems, then handled with SCA or closed-form MRT-style phase updates inside a BCD loop. [[xiao-2025-star-ris-bidirectional-uav-mec]] uses Dinkelbach plus SCA inside BCD for STAR-RIS bidirectional offloading. [[wang-2026-secure-lae-uav-scheduling]] decomposes secrecy-energy-efficiency maximization into scheduling, power, and trajectory/velocity subproblems, using penalty updates, SCA, and Dinkelbach-driven iteration. [[li-2026-isac-vec-beamforming-deployment]] uses a similar block split for ISAC-enhanced VEC: swarm search handles UAV deployment, while SCA and first-order Taylor expansion handle beamforming. [[wu-2026-secure-split-offloading-ci]] uses AO with SCA trajectory subproblems and a discrete WOA subproblem for early-exit and DNN-partition choices.
+[[mohammadi-2026-star-ris-uav-mec-noma]] uses the same decomposition style without SDR as the headline: bit allocation, transmit power, STAR-RIS phase shifts, and UAV trajectory are separated into subproblems, then handled with SCA or closed-form MRT-style phase updates inside a BCD loop. [[xiao-2025-star-ris-bidirectional-uav-mec]] uses Dinkelbach plus SCA inside BCD for STAR-RIS bidirectional offloading. [[wang-2026-secure-lae-uav-scheduling]] decomposes secrecy-energy-efficiency maximization into scheduling, power, and trajectory/velocity subproblems, using penalty updates, SCA, and Dinkelbach-driven iteration. [[li-2026-isac-vec-beamforming-deployment]] uses a similar block split for ISAC-enhanced VEC: swarm search handles UAV deployment, while SCA and first-order Taylor expansion handle beamforming. [[wu-2026-secure-split-offloading-ci]] uses AO with SCA trajectory subproblems and a discrete WOA subproblem for early-exit and DNN-partition choices. [[you-2019-rician-uav-data-harvesting]] applies BCD/SCA to scheduling plus horizontal/vertical trajectory under outage-aware Rician fading, while [[lee-2026-uav-delivery-time-energy]] uses SCA and a penalty convex-concave procedure for pickup/drop-off delivery trajectory optimization.

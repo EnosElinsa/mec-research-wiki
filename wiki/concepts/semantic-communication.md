@@ -16,6 +16,8 @@ related:
   - "[[zhao-2025-probabilistic-semantic-sagin]]"
   - "[[multi-modal-semantic-communication]]"
   - "[[liu-2025-multimodal-semantic-iov-jamming]]"
+  - "[[kernel-density-mean-field-marl]]"
+  - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
 created: 2026-05-31
 updated: 2026-07-07
 ---
@@ -36,3 +38,4 @@ Semantic transceivers bring **inherent robustness** and **data compression**, wh
 - [[wang-2026-diffusion-semantic-uav-edge]] formulates semantic extraction, transmission, and recovery as a UAV-assisted edge-computing optimization problem, with semantic processing rate as the objective.
 - [[zhao-2025-probabilistic-semantic-sagin]] narrows semantic communication to [[probabilistic-semantic-communication]]: shared probabilistic graphs let the transmitter omit recoverable semantic relations, trading lower communication energy for added semantic-computation overhead in a SAGIN.
 - [[liu-2025-multimodal-semantic-iov-jamming]] extends the line to [[multi-modal-semantic-communication]] in IoV, combining image and text semantics under jamming while UAV agents choose trajectories, user associations, and channels.
+- [[li-2026-uav-bs-semantic-mfmaddpg-kde]] moves semantic communication into aerial-BS deployment: UAV-BSs are positioned to maximize BLEU-derived semantic fidelity, with [[kernel-density-mean-field-marl]] modeling continuous neighboring actions in a scalable mean-field MADDPG policy.
