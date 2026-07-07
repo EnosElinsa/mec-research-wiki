@@ -8,11 +8,113 @@ function Get-MecRelevanceMatch([string]$Text) {
   $normalized = $normalized -replace "[^a-z0-9+.-]+", " "
   $normalized = " $($normalized -replace '\s+', ' ') "
 
-  $excludePatterns = @(
-    "\bwireless power transfer\b"
+  $networkContextPatterns = @(
+    "\bmec\b",
+    "\bedge\b",
+    "\bcloud\b",
+    "\bfog\b",
+    "\bcomput(ing|ation)\b",
+    "\boffloading\b",
+    "\bcommunication(s)?\b",
+    "\bnetwork(s|ing)?\b",
+    "\bresource(s)?\b",
+    "\bservice(s)?\b",
+    "\bsensing\b",
+    "\bisac\b",
+    "\binternet of things\b",
+    "\biot\b",
+    "\biov\b",
+    "\bvehicular\b",
+    "\blow[- ]altitude\b",
+    "\blow[- ]altitude economy\b",
+    "\blae\b",
+    "\bsagin\b",
+    "\bntn\b",
+    "\bhap\b",
+    "\bsatellite\b",
+    "\bmaritime\b",
+    "\bmarine\b",
+    "\bair[- ]ground\b",
+    "\baerial[- ]terrestrial\b"
   )
 
-  foreach ($pattern in $excludePatterns) {
+  $optimizationContextPatterns = @(
+    "\boptimization\b",
+    "\ballocation\b",
+    "\bscheduling\b",
+    "\bdeployment\b",
+    "\bplacement\b",
+    "\bbeamforming\b",
+    "\btrajectory\b",
+    "\brouting\b",
+    "\bhandover\b",
+    "\bthroughput\b",
+    "\blatency\b",
+    "\bdelay\b",
+    "\bqos\b",
+    "\benergy efficiency\b",
+    "\bcost\b",
+    "\breliability\b"
+  )
+
+  $cvPatterns = @(
+    "\byolo\b",
+    "\bvision[- ]based\b",
+    "\bobject detection\b",
+    "\bvehicle detection\b",
+    "\bpavement crack\b",
+    "\bpavement distress\b",
+    "\broad detection\b",
+    "\brail fastener\b",
+    "\bcatenary support components detection\b",
+    "\baerial imagery\b",
+    "\bdetector\b",
+    "\bdetection with robustness\b"
+  )
+
+  $securityProtocolPatterns = @(
+    "\bauthentication\b",
+    "\bkey agreement\b",
+    "\bpuf[- ]based\b",
+    "\bphysical attacks\b",
+    "\battack(s)? on a uav system\b"
+  )
+
+  $pureControlPatterns = @(
+    "\bobstacle avoidance\b",
+    "\battitude(s)?\b",
+    "\bcable[- ]suspended load(s)?\b",
+    "\bconsensus control\b",
+    "\benclosing control\b",
+    "\bflocking\b",
+    "\bcollision avoidance\b",
+    "\bcoverage path planning\b",
+    "\bpickup[- ]drop[- ]off\b",
+    "\bpick[- ]up system(s)?\b",
+    "\bcargo pickup\b",
+    "\buav[- ]enabled delivery\b"
+  )
+
+  $pureHardwarePatterns = @(
+    "\bneural processing unit(s)?\b",
+    "\bnpu(s)?\b",
+    "\bsoft preemptive real[- ]time scheduling\b"
+  )
+
+  $generalWirelessPhyPatterns = @(
+    "\bbase station(s)?\b",
+    "\binterfering base stations\b",
+    "\bantenna array(s)?\b",
+    "\bwireless communication(s)?\b",
+    "\bbeam[- ]delay alignment\b",
+    "\bnear[- ]field\b",
+    "\bmimo\b",
+    "\bris\b",
+    "\birs\b",
+    "\bchannel\b"
+  )
+
+  foreach ($pattern in $pureHardwarePatterns) {
     if ($normalized -match $pattern) {
       return ""
     }
@@ -23,7 +125,7 @@ function Get-MecRelevanceMatch([string]$Text) {
     "\blow[- ]altitude economy\b",
     "\blow[- ]altitude economy networking\b",
     "\blow[- ]altitude economy networks\b",
-    "\bLAE\b".ToLowerInvariant(),
+    "\blae\b",
     "\bmobile edge computing\b",
     "\bmulti access edge computing\b",
     "\bmulti-access edge computing\b",
@@ -67,7 +169,54 @@ function Get-MecRelevanceMatch([string]$Text) {
     }
   }
 
-  return ""
+  $hasNetworkContext = $false
+  foreach ($pattern in $networkContextPatterns) {
+    if ($normalized -match $pattern) {
+      $hasNetworkContext = $true
+      break
+    }
+  }
+
+  $hasOptimizationContext = $false
+  foreach ($pattern in $optimizationContextPatterns) {
+    if ($normalized -match $pattern) {
+      $hasOptimizationContext = $true
+      break
+    }
+  }
+
+  foreach ($pattern in $securityProtocolPatterns) {
+    if ($normalized -match $pattern) {
+      return ""
+    }
+  }
+
+  foreach ($pattern in $cvPatterns) {
+    if ($normalized -match $pattern) {
+      if (-not ($hasNetworkContext -and $hasOptimizationContext)) {
+        return ""
+      }
+    }
+  }
+
+  foreach ($pattern in $pureControlPatterns) {
+    if ($normalized -match $pattern) {
+      if (-not ($hasNetworkContext -and $hasOptimizationContext)) {
+        return ""
+      }
+    }
+  }
+
+  $hasUavLowAltitudeOrVerticalContext = $normalized -match "\buav(s)?\b|\bunmanned aerial\b|\bdrone(s)?\b|\baerial\b|\blow[- ]altitude\b|\blae\b|\bsagin\b|\bntn\b|\bsatellite\b|\bhap\b|\biot\b|\binternet of things\b|\biov\b|\bvehicular\b|\bmaritime\b|\bmarine\b|\bair[- ]ground\b|\bspace[- ]air[- ]ground\b"
+  if (-not $hasUavLowAltitudeOrVerticalContext) {
+    foreach ($pattern in $generalWirelessPhyPatterns) {
+      if ($normalized -match $pattern) {
+        return ""
+      }
+    }
+  }
+
+  return "default-keep"
 }
 
 function Test-MecRelevant([string]$Text) {

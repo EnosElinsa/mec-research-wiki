@@ -74,7 +74,32 @@ $cases = @(
     Expected = $true
   },
   @{
-    Name = "skips pure trajectory planning"
+    Name = "keeps UAV communication trajectory optimization"
+    Text = "Energy-Efficient UAV Communication With Trajectory Optimization"
+    Expected = $true
+  },
+  @{
+    Name = "keeps UAV wireless power transfer"
+    Text = "UAV-Enabled Wireless Power Transfer: A Tutorial Overview"
+    Expected = $true
+  },
+  @{
+    Name = "keeps ISAC tracking with UAV context"
+    Text = "A Predictive UAV Framework for Tracking Fast-Moving Vehicles in Dynamic Environments Integrated Sensing and Communication"
+    Expected = $true
+  },
+  @{
+    Name = "keeps maritime network resource allocation"
+    Text = "An Online Double Auction Mechanism for Dynamic Resource Allocation in Maritime Networks; keywords = task scheduling"
+    Expected = $true
+  },
+  @{
+    Name = "keeps computing power networks with edge context"
+    Text = "Dynamically Segmented IRS-Assisted UAV Computing Power Networks: Towards System Delay and Energy Consumption Optimization; keywords = edge computing"
+    Expected = $true
+  },
+  @{
+    Name = "skips pure delivery trajectory planning"
     Text = "3D Trajectory and Pickup-Drop-Off Strategy for UAV-Enabled Delivery"
     Expected = $false
   },
@@ -89,24 +114,49 @@ $cases = @(
     Expected = $false
   },
   @{
-    Name = "skips pure ISAC tracking"
-    Text = "A Predictive UAV Framework for Tracking Fast-Moving Vehicles in Dynamic Environments Integrated Sensing and Communication"
+    Name = "skips pure YOLO detection"
+    Text = "YOLO-RAW: Advancing UAV Detection With Robustness to Adverse Weather Conditions"
     Expected = $false
   },
   @{
-    Name = "skips generic task scheduling"
-    Text = "An Online Double Auction Mechanism for Dynamic Resource Allocation in Maritime Networks; keywords = task scheduling"
+    Name = "skips pure pavement crack detection"
+    Text = "Hybrid CNN-Mamba Network and Air-Ground Platform for Pavement Crack Evaluation"
     Expected = $false
   },
   @{
-    Name = "skips wireless power transfer tutorial despite MEC keyword"
-    Text = "UAV-Enabled Wireless Power Transfer: A Tutorial Overview; keywords = wireless power transfer; mobile edge computing (MEC)"
+    Name = "skips pure road detection"
+    Text = "Efficient Road Detection and Tracking for Unmanned Aerial Vehicle"
     Expected = $false
   },
   @{
-    Name = "skips computing power networks without edge/offloading"
-    Text = "Dynamically Segmented IRS-Assisted UAV Computing Power Networks: Towards System Delay and Energy Consumption Optimization"
+    Name = "skips pure coverage path planning"
+    Text = "A Clustering-Based Coverage Path Planning Method for Autonomous Heterogeneous UAVs"
     Expected = $false
+  },
+  @{
+    Name = "skips physical attacks overview"
+    Text = "Physical Attacks on a UAV System: Overview and Emerging Methods"
+    Expected = $false
+  },
+  @{
+    Name = "skips pure obstacle avoidance control"
+    Text = "Memory-Based Deep Reinforcement Learning for Obstacle Avoidance in UAV With Limited Environment Knowledge"
+    Expected = $false
+  },
+  @{
+    Name = "skips pure payload transport review"
+    Text = "Multirotor UAVs Transporting Cable-Suspended Loads: A Literature Review"
+    Expected = $false
+  },
+  @{
+    Name = "skips general base-station PHY without UAV context"
+    Text = "Game-Theoretic Optimization of Multiple Interfering Base Stations Deployment"
+    Expected = $false
+  },
+  @{
+    Name = "keeps UAV-aided covert satellite communication"
+    Text = "Uncertain Location Transmitter and UAV-Aided Warden-Based LEO Satellite Covert Communication Systems"
+    Expected = $true
   },
   @{
     Name = "keeps if keywords provide MEC signal"

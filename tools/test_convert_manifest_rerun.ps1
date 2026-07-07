@@ -12,14 +12,14 @@ try {
   $manifestPath = Join-Path $tempRoot "manifest.csv"
 
   New-Item -ItemType Directory -Path $groupRoot, $outputRoot, $nonMecRoot | Out-Null
-  $pdfPath = Join-Path $groupRoot "001_Pure Trajectory Planning for UAV Delivery.pdf"
+  $pdfPath = Join-Path $groupRoot "001_YOLO-RAW Advancing UAV Detection With Robustness to Adverse Weather Conditions.pdf"
   Set-Content -LiteralPath $pdfPath -Value "fake pdf placeholder" -Encoding ASCII
 
   [pscustomobject]@{
     Timestamp = (Get-Date).ToString("s")
     Status = "skipped-not-mec"
     Group = "TITS"
-    Title = "Pure Trajectory Planning for UAV Delivery"
+    Title = "YOLO-RAW Advancing UAV Detection With Robustness to Adverse Weather Conditions"
     SourcePath = $pdfPath
     OutputDir = ""
     Message = "Already recorded as not MEC-related"

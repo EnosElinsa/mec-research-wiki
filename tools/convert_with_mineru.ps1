@@ -11,30 +11,19 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+. "$PSScriptRoot\source_naming.ps1"
 . "$PSScriptRoot\mec_relevance.ps1"
 
 function Normalize-Title([string]$Text) {
-  $name = [IO.Path]::GetFileNameWithoutExtension($Text)
-  $name = $name -replace "^[0-9]{1,4}[_\-\s]+", ""
-  return (($name.ToLowerInvariant()) -replace "[^a-z0-9]+", "")
+  return Get-NormalizedSourceKey $Text
 }
 
 function Get-SourceTitle([string]$FileName) {
-  return (([IO.Path]::GetFileNameWithoutExtension($FileName)) -replace "^[0-9]{1,4}[_\-\s]+", "").Trim()
+  return Get-SourceTitleFromName $FileName
 }
 
 function Get-SafeName([string]$Title) {
-  $safe = $Title.Trim()
-  $safe = $safe -replace '[<>:"/\\|?*]', "-"
-  $safe = $safe -replace "\s+", " "
-  $safe = $safe.Trim(" .")
-  if ($safe.Length -gt 180) {
-    $safe = $safe.Substring(0, 180).Trim(" .")
-  }
-  if ([string]::IsNullOrWhiteSpace($safe)) {
-    throw "Cannot derive a safe output name from title: $Title"
-  }
-  return $safe
+  return Get-SafeSourceName $Title
 }
 
 function Test-RateLimit([string]$Text) {
@@ -52,7 +41,7 @@ function Get-ExistingKeys([string]$Root) {
   $keys = @{}
   if (Test-Path -LiteralPath $Root) {
     Get-ChildItem -LiteralPath $Root -Directory | ForEach-Object {
-      $key = Normalize-Title $_.Name
+      $key = Get-OutputSourceKey $_.Name
       if (-not $keys.ContainsKey($key)) { $keys[$key] = @() }
       $keys[$key] += $_.FullName
     }
@@ -221,7 +210,10 @@ foreach ($row in $manifest) {
 
   $lastStatusBySource[$row.SourcePath] = $row.Status
   if ($row.Status -in @("success", "skipped-existing")) {
-    $completed[$row.SourcePath] = $true
+    $key = Get-OutputSourceKey $row.SourcePath
+    if ($existingKeys.ContainsKey($key)) {
+      $completed[$row.SourcePath] = $true
+    }
   }
 }
 
@@ -251,7 +243,7 @@ foreach ($pdf in $pdfs) {
   $group = Split-Path $pdf.DirectoryName -Leaf
   $title = Get-SourceTitle $pdf.Name
   $safeTitle = Get-SafeName $title
-  $key = Normalize-Title $pdf.Name
+  $key = Get-OutputSourceKey $pdf.Name
   if (-not $bibEntriesByDirectory.ContainsKey($pdf.DirectoryName)) {
     $bibEntriesByDirectory[$pdf.DirectoryName] = Get-BibEntriesByNumber $pdf.DirectoryName
   }
