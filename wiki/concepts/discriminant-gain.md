@@ -4,11 +4,13 @@ title: "Discriminant Gain"
 tags: [edge-ai, inference-accuracy, classification, metric, task-oriented-communication]
 related:
   - "[[wen-2024-iscc-edge-ai]]"
+  - "[[wen-2026-uav-edge-inference-iscc]]"
+  - "[[uav-assisted-edge-inference]]"
   - "[[task-oriented-communication]]"
   - "[[integrated-sensing-computation-communication]]"
   - "[[sum-of-ratios-optimization]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-07
 ---
 
 # Discriminant Gain
@@ -20,3 +22,5 @@ Discriminant gain matters because true inference accuracy is hard to optimize di
 ## In this wiki
 
 [[wen-2024-iscc-edge-ai]] adopts discriminant gain as the accuracy surrogate for its multi-device [[integrated-sensing-computation-communication|ISCC]] edge-inference system: it derives a closed-form expression linking sensing noise, quantization distortion, and communication capacity to the discriminant gain, then maximizes it via the [[sum-of-ratios-optimization|sum-of-ratios]] method. The paper validates that inference accuracy rises monotonically with discriminant gain for both SVM and MLP classifiers (with the caveat that accuracy saturates once class centroids are already far apart). It is a building block of the [[task-oriented-communication|task-oriented communication]] view, where the metric of interest is downstream task success rather than throughput.
+
+[[wen-2026-uav-edge-inference-iscc]] reuses the same surrogate in a UAV-relayed setting: the discriminant-gain constraint ties feature quality and inference accuracy to UAV trajectory, hovering, sensing, computation, and communication-resource decisions.

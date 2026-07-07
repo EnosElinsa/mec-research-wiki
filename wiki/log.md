@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-07] Curated final 5 UAV-swarm / ISCC / secure VEC / CPN / movable-antenna sources
+
+Added five source pages and five concept pages:
+
+- [[li-2026-tspf-forest-fire-uav-swarm]] - Li et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3599384`. Two-tier submodel partition for robust UAV-swarm forest-fire detection with graph-colored groups, intragroup backup, Dynamic Server Selection, and two-tier federated aggregation.
+- [[wen-2026-uav-edge-inference-iscc]] - Wen et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3669999`. UAV-assisted ISCC edge inference with Hamiltonian-cycle access ordering plus AO/SA trajectory/resource optimization under discriminant-gain accuracy constraints.
+- [[ren-2026-security-aware-vec-td3]] - Ren et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3709174`. Security-aware UAV-assisted vehicular edge computing with TD3-controlled UAV movement, offloading ratios, and VUE-UAV association under passive-eavesdropper secure-rate degradation.
+- [[deng-2026-uav-cpn-energy]] - Deng et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3655118`. UAV-enabled Computing Power Network analysis using stochastic geometry and altitude/power optimization under fuel and battery constraints.
+- [[lu-2026-uav-swarm-two-level-ma]] - Lu et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3689048`. Low-altitude UAV-swarm two-level movable-antenna communication with joint swarm placement, local antenna positioning, and receive beamforming.
+
+New concept pages: [[two-tier-submodel-partition]], [[uav-forest-fire-detection]], [[uav-assisted-edge-inference]], [[uav-enabled-computing-power-network]], and [[two-level-movable-antenna]]. Updated backlinks for [[integrated-sensing-computation-communication]], [[discriminant-gain]], [[vehicular-mec]], [[td3]], [[physical-layer-security]], [[task-redundancy-for-reliability]], [[federated-learning]], [[stochastic-geometry-network-analysis]], [[low-altitude-intelligent-network]], and [[movable-antenna]]. Updated parse-confirmed author rosters for [[yong-zeng]] and [[yuguang-fang]]; no one-off author entities were created.
+
+Metadata notes: [[wen-2026-uav-edge-inference-iscc]], [[deng-2026-uav-cpn-energy]], and [[lu-2026-uav-swarm-two-level-ma]] had DOI evidence in the local parses and were cross-checked against title-matched DOI metadata. [[li-2026-tspf-forest-fire-uav-swarm]] and [[ren-2026-security-aware-vec-td3]] were parse-silent on top-level DOI/venue/year metadata, so DOI, venue, year, volume/issue/pages where used were verified against title-matched Crossref/IEEE DOI records. Technical claims and numeric findings are grounded in the local parses; hardware feasibility language for [[li-2026-tspf-forest-fire-uav-swarm]] is kept separate from full hardware validation.
+
+Validation results: `python tools/wiki/corpus_counts.py` reported 354 sources, 328 concepts, 73 entities, 14 findings, 15 synthesis pages, 6 comparisons, 5 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 345 curated raw references, 0 genuinely new uncurated folders, and 12 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean before committing. `python tools/wiki/entity_roster_audit.py --json entity-roster-final-all-curated.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki health was OK; `/graph` returned `{"error":"Not found","ok":false}` rather than graph node/edge counts.
+
 ## [2026-07-07] Curated 5 WDC / UAV analytics / cluster authentication / ISCAC / target-search sources
 
 Added five source pages and five concept pages:

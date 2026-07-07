@@ -217,6 +217,7 @@
 - [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
 - [[wang-2026-scalable-multiuav-analytics]] - Wang et al. 2026. Scalable collaborative multi-UAV video analytics; JDTSO centralized deployment/scheduling for small swarms and MAPDP distributed MAPPO+DAG partitioning for larger swarms (IEEE TGCN).
 - [[zhu-2026-hab-mappo-target-search]] - Zhu et al. 2026. HAB-MAPPO cooperative UAV target search; 3D continuous trajectory, laser charging, heuristic image offloading/resource allocation, two-level attention, Beta policy, and curriculum learning (IEEE TMC).
+- [[li-2026-tspf-forest-fire-uav-swarm]] - Li et al. 2026. Two-tier submodel partition for robust UAV-swarm forest-fire detection; graph-colored groups, intragroup backup, dynamic server selection, and two-tier federated aggregation (IEEE TMC).
 - [[qu-ecoei-uav-swarm]] — Qu et al. **eCoEI** — elastic OODA-loop collaborative DL inference for UAV swarms, robust to node/A2A-link failure; proof-of-concept on Jetson devices (IEEE Communications Magazine; year not in parse).
 - [[li-2025-stochastic-game-uav-swarm]] — Li et al. 2025. Energy-efficient UAV-swarm MEC as five **stochastic games** with dynamic clustering; RLDC multi-agent Q-learning.
 - [[li-2025-dt-uav-swarm-resource-management]] — Li et al. 2025. Digital-twin-based task-driven UAV-swarm resource management for search and rescue; MADRL task crowdsourcing plus SNC traffic-flow delay bounds (IEEE T-ITS).
@@ -275,6 +276,7 @@
 - [[ji-2026-llm-iov-uav-offloading]] - Ji et al. 2026. Multi-UAV-assisted IoV offloading; SOCP 3D trajectory, DRL+LLM resource scheduling, and LP task ratios for latency/energy/task-success tradeoffs (IEEE TMC).
 
 - [[hu-2026-ertatd3-secure-caching]] - Hu et al. 2026. UAV-assisted vehicular MEC with secure task-result caching and ERTATD3 twin-actor reward shaping over trajectory/offloading/resource/caching decisions (IEEE TMC).
+- [[ren-2026-security-aware-vec-td3]] - Ren et al. 2026. UAV-assisted security-aware VEC against a passive eavesdropper; TD3 controls UAV movement, offloading ratios, and VUE-UAV association under secure-rate degradation (IEEE TMC).
 - [[feng-2026-prediction-service-migration]] - Feng et al. 2026. Prediction-assisted multi-UAV service migration and trajectory control for vehicular MEC; stacked LSTM + Lyapunov migration-cost control + MADDPG (IEEE TMC).
 - [[chen-2026-hc-mappo-vehicle-twin-migration]] - Chen et al. 2026. Hierarchical-control MAPPO for vehicle-twin migration in UAV-assisted vehicular metaverses, using ACB-LSTM workload prediction and deterministic lower-layer migration mapping (IEEE TMC).
 - [[wei-2026-airfogsim-uav-vfc]] - Wei et al. 2026. **AirFogSim** lightweight modular simulator for UAV-integrated vehicular fog computing; traffic/UAV mobility, communication, computation, energy, security/privacy, blockchain, and scheduling modules (IEEE TMC).
@@ -341,6 +343,7 @@
 ### ISAC, sensing & physical-layer security
 
 - [[zhao-2026-mappo-jscc-aec]] - Zhao et al. 2026. HAP-assisted multi-UAV sensing-communication-computing; Lyapunov energy stability plus MAPPO-JSCC with embedded sensing, SCA, and Dinkelbach solvers (IEEE TWC).
+- [[wen-2026-uav-edge-inference-iscc]] - Wen et al. 2026. UAV-assisted ISCC edge inference; Hamiltonian-cycle access ordering plus AO/SA trajectory/resource optimization under discriminant-gain accuracy constraints (IEEE TWC).
 - [[zhou-2026-radar-energy-iscac]] - Zhou & Liu 2026. Multi-UAV ISCAC with HAP-side MEC processing; three-layer SCA/relaxation algorithm trades radar sensing data against total energy over scheduling, power, and UAV/HAP trajectories (IEEE TGCN).
 
 - [[huang-2026-offgrid-lae-imager]] - Huang et al. 2026. Cooperative cellular-ISAC low-altitude imaging; CS/PSF analysis plus physics-embedded DNN/OHEM off-grid reconstruction from CSI, reporting up to 97.55% detection rate in the parsed ablation (IEEE TWC).
@@ -385,10 +388,12 @@
 - [[liu-2024-hatrpo-ucb-cb]] — Liu et al. 2024. UAV-enabled **collaborative beamforming** (UVAA → remote BSs); multi-objective UCBMOP (max transmission rate / min UAV energy) over positions + excitation weights; **heterogeneous-agent trust-region MADRL** (HATRPO-UCB) with observation enhancement + agent-specific global state + Beta-distribution policy (IEEE TMC).
 - [[li-2025-omrp-cb-iot]] — Li et al. 2025. **Collaborative beamforming for static ground IoT** (the corpus's only ground-IoT CB entry): a sensing-area-**overlap**-driven hierarchical clustering routing protocol (**OMRP**) feeds **SoftPPO-LSTM** CB-node selection for the long uplink to a remote BS; +17% network lifetime over benchmark routing, +8.3% CB throughput over benchmark algorithms, Raspberry Pi 4B deployment (IEEE IoT-J).
 - [[zeng-2026-movable-antenna-u2u-channel]] - Zeng et al. 2026. Movable-antenna-aided MIMO wideband UAV-to-UAV channel model for LAE; closed-form STF-CF/SD-PSD/PSDS plus gradient log-det antenna-position optimization (IEEE TWC). *(Channel-model anchor, not MEC offloading.)*
+- [[lu-2026-uav-swarm-two-level-ma]] - Lu et al. 2026. UAV-swarm two-level movable-antenna system for LAE uplink communication; jointly optimizes swarm placement, local antenna positions, and receive beamforming (IEEE TWC). *(Physical-layer LAE anchor, not MEC offloading.)*
 
 ### Architectural / spectrum / governance
 
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
+- [[deng-2026-uav-cpn-energy]] - Deng et al. 2026. UAV-enabled Computing Power Network; stochastic-geometry task-completion probability and altitude/power optimization under fuel and battery constraints (IEEE TMC).
 - [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026. Cooperative task allocation and collision-free path planning for multi-UAV low-altitude urban intelligent transportation systems; ILLA potential-game allocation + CBMBA A-Star path search (IEEE T-ITS).
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
 - [[zhao-2026-temporal-spectrum-cartography]] - Zhao et al. 2026. Temporal spectrum cartography for LAE networks with sparse static/mobile sensing, RecMAE reconstruction, and multi-agent diffusion-policy UAV sensor placement (IEEE TMC).
@@ -472,13 +477,13 @@
 - [[shuang-liang]] (Northeast Normal Univ. — aerial-MEC / LAE, [[geng-sun]] cluster), [[weifeng-zhong]] & [[shengli-xie]] (Guangdong Univ. of Technology — CMOP-evolutionary lineage), [[qiqi-xie]] (South China Agricultural Univ. — evolutionary UAV-MEC), [[nei-kato]] (Tohoku Univ.), [[jiadai-wang]], [[yijie-xun]], [[yangbo-liu]] (Northwestern Polytechnical Univ. — NTN cluster, [[bomin-mao]] group).
 - [[boxiong-wang]] & [[hui-kang]] (Jilin University — [[geng-sun]] aerial-MEC cluster; 2 sources each).
 - [[yuben-qu]] & [[hao-sun]] (Nanjing Univ. of Aeronautics and Astronautics — UAV-swarm collaborative-inference cluster with [[chao-dong]]/[[qihui-wu]]; 2 sources each — [[qu-ecoei-uav-swarm]] + [[sun-2024-asap-uav-swarm]], identical `@nuaa.edu.cn` emails).
-- [[kezhi-wang]] (Northumbria Univ. — UAV-MEC trajectory/offloading group; 3 sources), [[xuemin-shen]] (Univ. of Waterloo — MEC resource management; 3 sources), [[yuguang-fang]] (City Univ. of Hong Kong — maritime MEC, [[bin-lin]] cluster; 2 sources), [[haixia-peng]] (Univ. of Waterloo → Xi'an Jiaotong Univ. — vehicular + maritime MEC; 2 sources, affiliation move documented in both parses).
+- [[kezhi-wang]] (Northumbria Univ. — UAV-MEC trajectory/offloading group; 3 sources), [[xuemin-shen]] (Univ. of Waterloo — MEC resource management; 3 sources), [[yuguang-fang]] (City Univ. of Hong Kong — maritime MEC and UAV-enabled Computing Power Networks; 3 sources), [[haixia-peng]] (Univ. of Waterloo → Xi'an Jiaotong Univ. — vehicular + maritime MEC; 2 sources, affiliation move documented in both parses).
 - [[liping-qian]] (Zhejiang Univ. of Technology — NOMA / multi-access marine MEC; 3 sources), [[minghui-dai]] (Univ. of Macau — marine multi-access offloading; 3 sources, `minghuidai@um.edu.mo`), [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications — UAV-swarm MEC + UAV-ISAC + cooperative multi-BS ISAC; 3 sources).
 - [[shichao-li]] & [[hongbin-chen]] (Guilin Univ. of Electronic Technology — two-hop air-ground IoRT MEC, `@guet.edu.cn`-matched; 2 and 3 sources), [[mianxiong-dong]] (Muroran Inst. of Technology; 2 sources) & [[ning-zhang]] (Univ. of Windsor; 2 sources) — co-authors across the IoRT + robust-multi-UAV DRL offloading thread, [[victor-c-m-leung]] (Shenzhen MSU-BIT / Shenzhen Univ. / UBC, `vleung@ieee.org`; 9 sources in the [[geng-sun]]/[[dusit-niyato]] aerial-MEC cluster).
 - [[zhou-su]] (Xi'an Jiaotong Univ. — maritime/vehicular edge computing; 2 sources, corresponding author of [[zeng-2024-usv-fleet-collaborative-offloading]]), [[yanheng-liu]] (Jilin Univ. — [[geng-sun]] aerial/vehicular-MEC cluster; 2 sources).
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
 - [[dong-jun-han]] & [[christopher-brinton]] (Purdue University — non-terrestrial **federated-learning** offloading cluster with Mung Chiang / David J. Love / Seyyedali Hosseinalipour; 2 sources each — [[han-2024-ground-satellite-fl]] + [[han-2024-sagin-fl-handover]]).
-- [[yong-zeng]] (National University of Singapore — **UAV-communications / trajectory-optimization** foundations; 5 sources: [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], [[zeng-2019-uav-comm-tutorial-5g]], [[wu-2018-multiuav-minrate-trajectory]]).
+- [[yong-zeng]] (National University of Singapore — **UAV-communications / trajectory-optimization** foundations plus low-altitude [[movable-antenna]] design; 9 sources, including [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], [[zeng-2019-uav-comm-tutorial-5g]], [[wu-2018-multiuav-minrate-trajectory]], and [[lu-2026-uav-swarm-two-level-ma]]).
 - [[shuguang-cui]] (The Chinese University of Hong Kong, Shenzhen — physical-layer / edge-AI / surveys; 7 sources spanning the graph-based-resource-management two-part survey, XL-MIMO, generative-AI/ISAC physical-layer, ISCC edge-AI, and generative-diffusion network optimization).
 
 (Two recurring author names are deferred for human confirmation as genuine **namesakes**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so not merged; and the "Jingjing Wang" in [[yang-2020-loadbalance-multiuav-iot]] is at **Tsinghua University** (`chinaeephd@gmail.com`), distinct from the existing **Beihang** [[jingjing-wang]] entity (`drwangjj@buaa.edu.cn`) — not merged.)
@@ -520,6 +525,8 @@
 - [[anti-jamming-mec]]
 - [[wireless-power-transfer]]
 - [[adaptive-wdc-wet-service-balancing]]
+- [[uav-assisted-edge-inference]]
+- [[uav-enabled-computing-power-network]]
 - [[rf-energy-harvesting]]
 - [[energy-harvesting-mec]]
 - [[energy-procurement-compensation]]
@@ -531,6 +538,7 @@
 - [[multi-source-data-fusion]]
 - [[video-analytics-offloading]]
 - [[scalable-uav-video-analytics]]
+- [[uav-forest-fire-detection]]
 - [[video-transcoding-tradeoff]]
 - [[qoe-modeling-mec]]
 - [[service-caching-mec]]
@@ -767,6 +775,7 @@
 - [[air-to-ground-channel-model]]
 - [[radio-map-assisted-channel-estimation]]
 - [[movable-antenna]]
+- [[two-level-movable-antenna]]
 - [[terrain-aware-channel-model]]
 - [[first-order-radio-energy-model]]
 - [[stochastic-geometry-network-analysis]]
@@ -813,6 +822,7 @@
 - [[fl-poisoning-attacks]]
 - [[privacy-sensitive-data-partitioning]]
 - [[uav-cluster-authentication]]
+- [[two-tier-submodel-partition]]
 - [[seamless-handover]]
 - [[adaptive-inter-layer-data-offloading]]
 

@@ -15,6 +15,7 @@ related:
   - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
   - "[[wu-2026-secure-split-offloading-ci]]"
   - "[[wu-2025-security-aware-multiuav-service-placement]]"
+  - "[[ren-2026-security-aware-vec-td3]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -39,4 +40,4 @@ PLS complements rather than replaces upper-layer crypto. It's particularly usefu
 
 [[cai-2026-llm-drl-secure-lae-data]] connects PLS to [[age-of-information]] and [[generative-ai-for-mec]]: an LLM-enhanced DRL controller coordinates a data-collection UAV and a jamming UAV to reduce freshness/energy cost while suppressing eavesdroppers.
 
-The 2025-2026 secure-offloading batch adds three UAV-specific PLS variants: [[beishenalieva-2026-secrecy-aware-uav-path-planning]] protects ITS offloading against malicious aerial eavesdroppers and jammers, [[wu-2026-secure-split-offloading-ci]] protects DNN intermediate feature data during split inference, and [[wu-2025-security-aware-multiuav-service-placement]] embeds secrecy-rate constraints into service-placement-aware multi-UAV MEC.
+The corpus includes several UAV-specific PLS/offloading variants: [[beishenalieva-2026-secrecy-aware-uav-path-planning]] protects ITS offloading against malicious aerial eavesdroppers and jammers, [[wu-2026-secure-split-offloading-ci]] protects DNN intermediate feature data during split inference, [[wu-2025-security-aware-multiuav-service-placement]] embeds secrecy-rate constraints into service-placement-aware multi-UAV MEC, and [[ren-2026-security-aware-vec-td3]] degrades vehicular offloading rates when a passive eavesdropper drives the secure rate below threshold.

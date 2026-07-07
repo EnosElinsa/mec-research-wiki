@@ -11,6 +11,8 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[mao-2025-bcsa-frl]]"
   - "[[wang-2026-blockchain-lae-fl-mappo]]"
+  - "[[li-2026-tspf-forest-fire-uav-swarm]]"
+  - "[[two-tier-submodel-partition]]"
 created: 2026-05-29
 updated: 2026-07-07
 ---
@@ -22,3 +24,5 @@ A distributed machine-learning paradigm where many clients train a shared model 
 This is the base concept underlying the wiki's narrower [[federated-reinforcement-learning]] and [[blockchain-for-fl-aggregation]] pages. In the wiki, [[han-2024-sagin-fl-handover]] orchestrates FL across a SAGIN — satellites and UAVs act as both aggregators and compute units — adding [[adaptive-inter-layer-data-offloading]], satellite [[seamless-handover]], and a [[privacy-sensitive-data-partitioning]] constraint, with a proven convergence guarantee for non-convex losses. Complements [[mao-2025-bcsa-frl]]'s federated-RL-over-satellites approach.
 
 [[wang-2026-blockchain-lae-fl-mappo]] applies FL in a low-altitude UAV-MEC stack: service UAVs train local models, the BS aggregates the global model, and MAPPO uses the learned policy layer for offloading, caching, and resource allocation.
+
+[[li-2026-tspf-forest-fire-uav-swarm]] adds a robust UAV-swarm variant: [[two-tier-submodel-partition]] aggregates selected layers inside spatially dispersed UAV groups and then combines group submodels at swarm level, while intragroup backup keeps training data available after UAV destruction.

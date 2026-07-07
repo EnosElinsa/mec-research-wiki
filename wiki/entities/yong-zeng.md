@@ -11,15 +11,16 @@ related:
   - "[[xu-2018-uav-wpt-trajectory]]"
   - "[[lyu-2017-spiral-mbs-placement]]"
   - "[[zeng-2016-uav-comm-opportunities-challenges]]"
+  - "[[lu-2026-uav-swarm-two-level-ma]]"
 created: 2026-06-01
-updated: 2026-06-02
+updated: 2026-07-07
 ---
 
 # Yong Zeng
 
 A foundational author of the **UAV-communications** research line in this wiki. The parses list his affiliation as the **Department of Electrical and Computer Engineering, National University of Singapore** (Singapore) on the earlier works; he is widely associated with UAV trajectory optimization and energy-efficient UAV communication.
 
-Co-authored 8 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations:
+Co-authored 9 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
 
 - [[zeng-2016-throughput-relaying]] — throughput maximization for UAV-enabled **mobile relaying** (trajectory + power, staircase water-filling) (lead author).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — energy-efficient UAV communication + the first **fixed-wing propulsion-energy model** (bits/Joule) (lead author).
@@ -29,7 +30,8 @@ Co-authored 8 sources in this wiki — the corpus's UAV-communications / traject
 - [[xu-2018-uav-wpt-trajectory]] — UAV-enabled **wireless power transfer** trajectory design + energy optimization (sum-energy hovering vs max-min successive hover-and-fly / SCP) (co-author, with Jie Xu and Rui Zhang).
 - [[lyu-2017-spiral-mbs-placement]] — minimum-count UAV-MBS placement as the geometric disk cover problem, solved by a spiral algorithm (co-author, with Jiangbin Lyu, Rui Zhang, Teng Joon Lim).
 - [[zeng-2016-uav-comm-opportunities-challenges]] — the IEEE Communications Magazine overview of UAV-aided wireless communications (architecture, channel characteristics, three use cases, design challenges) (lead author, with Rui Zhang and Teng Joon Lim).
+- [[lu-2026-uav-swarm-two-level-ma]] — low-altitude UAV swarm communication with [[two-level-movable-antenna]] placement and receive beamforming (co-author, with Haiquan Lu, Shaodan Ma, Bin Li, Shi Jin, and Rui Zhang).
 
 ## Contributions to this wiki
 
-- The methodological anchor of the UAV-communications track: his propulsion-energy models ([[fixed-wing-propulsion-energy-model]], [[rotary-wing-propulsion-energy-model]]), SCA-based trajectory optimization, and mobile-relaying formulation recur throughout the corpus's energy-aware [[uav-trajectory-control]] and [[uav-mobile-relaying]] work. Frequently co-authoring with Rui Zhang (NUS) and Qingqing Wu.
+- The methodological anchor of the UAV-communications track: his propulsion-energy models ([[fixed-wing-propulsion-energy-model]], [[rotary-wing-propulsion-energy-model]]), SCA-based trajectory optimization, mobile-relaying formulation, and newer low-altitude [[movable-antenna]] design recur throughout the corpus's energy-aware [[uav-trajectory-control]], [[uav-mobile-relaying]], and physical-layer LAE work. Frequently co-authoring with Rui Zhang (NUS) and Qingqing Wu.
