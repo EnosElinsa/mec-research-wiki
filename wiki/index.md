@@ -870,6 +870,7 @@
 - [[ao-sdr-sca-convex-pipeline]] — the AO + SDR + SCA convex pipeline recurring across the ISAC/secure-beamforming sources
 - [[lyapunov-guided-drl]] — the Lyapunov drift-plus-penalty + per-slot DRL hybrid across 6 sources
 - [[discrete-continuous-two-stage-decomposition]] — the discrete-then-continuous (matching/metaheuristic/discrete-policy + convex/continuous-policy) solver protocol
+- [[llm-assisted-mec-optimization-control-plane]] — LLM formulation / teacher-policy / state-reward / long-tail repair roles around MEC optimizers
 
 ## Findings
 
@@ -887,6 +888,7 @@
 - [[acbft-throughput-increase]] — up to 96.2% consensus-throughput increase vs existing chaining protocols ([[wang-2025-acbft-uav-consensus]])
 - [[dcb-cuts-satellite-handover-frequency]] — ~30% fewer LEO handovers at similar uplink rate ([[li-2024-emodrl-ground-space-cb]])
 - [[no-true-end-to-end-drl-in-corpus]] — corpus-wide: every DRL work exploits problem structure; no true end-to-end model
+- [[llm-state-reward-secure-lae-data]] — LLM state/reward design cuts AoI and energy in secure LAE data collection ([[cai-2026-llm-drl-secure-lae-data]])
 
 ## Thesis
 

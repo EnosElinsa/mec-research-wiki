@@ -8,6 +8,7 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, low-altitude-economy, hybridrag, generative-ai, diffusion-model, soft-actor-critic, low-carbon-mec]
 related:
   - "[[hybridrag-network-optimization]]"
+  - "[[llm-assisted-mec-optimization-control-plane]]"
   - "[[low-altitude-intelligent-network]]"
   - "[[task-offloading]]"
   - "[[rotary-wing-propulsion-energy-model]]"
@@ -60,7 +61,7 @@ The paper notes that HybridRAG's hallucination and faithfulness metrics are not 
 
 ## Relation to the corpus
 
-This source extends [[generative-ai-for-mec]] from AIGC service provisioning and diffusion optimizers into LLM-agent-assisted optimization formulation. It gives the corpus a [[hybridrag-network-optimization]] concept and links low-carbon LAE design to [[diffusion-model-as-optimizer]], [[soft-actor-critic]], [[rotary-wing-propulsion-energy-model]], and [[task-offloading]].
+This source extends [[generative-ai-for-mec]] from AIGC service provisioning and diffusion optimizers into LLM-agent-assisted optimization formulation. It gives the corpus a [[hybridrag-network-optimization]] concept and links low-carbon LAE design to [[diffusion-model-as-optimizer]], [[soft-actor-critic]], [[rotary-wing-propulsion-energy-model]], and [[task-offloading]]. In [[llm-assisted-mec-optimization-control-plane]], it is the formulation-side counterpart to LLM-assisted DRL state/reward design, teacher-policy generation, and long-tail resource repair.
 
 ## Raw artifacts
 

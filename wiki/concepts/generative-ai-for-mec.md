@@ -9,8 +9,10 @@ related:
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
   - "[[llm-assisted-resource-allocation]]"
+  - "[[llm-assisted-mec-optimization-control-plane]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
+  - "[[wen-2026-hybridrag-low-carbon-lae]]"
   - "[[gong-2026-safe-economic-lae-trajectory]]"
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
   - "[[zhao-2026-temporal-spectrum-cartography]]"
@@ -41,7 +43,7 @@ The application of **generative AI** — large language models (LLMs), diffusion
 
 ## In this wiki
 
-[[wang-2025-lae-network-survey]] surveys this thread under "GAI-driven Computing" and "GAI-driven MEC and Cloud-Edge-End Collaboration". The distinct but adjacent thread of *serving* generative AI as the edge workload — **mobile AIGC networks** — is surveyed by [[xu-2024-mobile-aigc-survey]] (see [[mobile-aigc-network]]). LLM-based corpus entries include [[cai-2026-llm-drl-secure-lae-data]], where the LLM helps design state/reward/simulation data for secure LAE DRL, [[wang-2026-llm-qos-multiuav-resource]], where an LLM teacher generates QoS-aware policies for MAPPO students in multi-UAV edge computing, and [[gong-2026-safe-economic-lae-trajectory]], where LLM reasoning guides safety/compliance decisions during SAC training for low-altitude UAV trajectory planning. Diffusion-based control now includes [[tang-2026-hg-maddpg-uav-rescue]] for rescue task assignment/exploration and [[zhao-2026-temporal-spectrum-cartography]] for temporal spectrum-map reconstruction plus mobile sensor planning.
+[[wang-2025-lae-network-survey]] surveys this thread under "GAI-driven Computing" and "GAI-driven MEC and Cloud-Edge-End Collaboration". The distinct but adjacent thread of *serving* generative AI as the edge workload — **mobile AIGC networks** — is surveyed by [[xu-2024-mobile-aigc-survey]] (see [[mobile-aigc-network]]). LLM-based corpus entries include [[cai-2026-llm-drl-secure-lae-data]], where the LLM helps design state/reward/simulation data for secure LAE DRL, [[wang-2026-llm-qos-multiuav-resource]], where an LLM teacher generates QoS-aware policies for MAPPO students in multi-UAV edge computing, [[wen-2026-hybridrag-low-carbon-lae]], where HybridRAG agents formulate low-carbon LAE optimization problems, and [[gong-2026-safe-economic-lae-trajectory]], where LLM reasoning guides safety/compliance decisions during SAC training for low-altitude UAV trajectory planning. These roles are unified in [[llm-assisted-mec-optimization-control-plane]]. Diffusion-based control now includes [[tang-2026-hg-maddpg-uav-rescue]] for rescue task assignment/exploration and [[zhao-2026-temporal-spectrum-cartography]] for temporal spectrum-map reconstruction plus mobile sensor planning.
 
 ## Open questions
 

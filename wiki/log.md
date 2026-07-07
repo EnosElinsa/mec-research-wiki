@@ -1,5 +1,16 @@
 # Research Log
 
+## [2026-07-07] Synthesized LLM-assisted MEC optimization control-plane pattern
+
+Added one methodology page and one finding page:
+
+- [[llm-assisted-mec-optimization-control-plane]] - cross-source methodology for using LLMs as MEC optimization control-plane helpers: HybridRAG formulation ([[wen-2026-hybridrag-low-carbon-lae]]), LLM teacher policies with distillation ([[wang-2026-llm-qos-multiuav-resource]]), DRL state/reward/simulator design ([[cai-2026-llm-drl-secure-lae-data]]), and long-tail resource repair around DRL/LP checks ([[ji-2026-llm-iov-uav-offloading]]).
+- [[llm-state-reward-secure-lae-data]] - finding page for the parse-reported secure-LAE result in [[cai-2026-llm-drl-secure-lae-data]]: about 35% faster convergence, 89%-85% lower AoI versus manual TD3 across secrecy-threshold settings, 88.02% AoI reduction at idle-channel ratio 0.4, and lower objective values than state-only or reward-only LLM baselines.
+
+Connections refreshed: added backlinks from [[cai-2026-llm-drl-secure-lae-data]], [[wang-2026-llm-qos-multiuav-resource]], [[ji-2026-llm-iov-uav-offloading]], [[wen-2026-hybridrag-low-carbon-lae]], [[llm-assisted-resource-allocation]], [[generative-ai-for-mec]], [[hybridrag-network-optimization]], and [[knowledge-distillation-for-drl]]. Updated `wiki/index.md` and `wiki/overview.md` so the analytical layer now reports 15 findings and 6 methodology pages. No new entity page was created; candidate namesake/entity roster work is deferred to a separate parse-affiliation pass.
+
+Validation results: `python tools/wiki/corpus_counts.py` reported 354 sources, 328 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 theses, 2 reference pages, and 345 raw-source folders. `python tools/wiki/curation_status.py --dupes` reported 345 raw folders, 345 curated raw references, 0 genuinely new uncurated folders, and 12 referenced-name/no-matching-raw-folder advisories. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean. LLM Wiki health was OK; `/api/v1/projects/current/graph?limit=5000` reported 805 nodes and 7631 edges.
+
 ## [2026-07-07] Curated final 5 UAV-swarm / ISCC / secure VEC / CPN / movable-antenna sources
 
 Added five source pages and five concept pages:

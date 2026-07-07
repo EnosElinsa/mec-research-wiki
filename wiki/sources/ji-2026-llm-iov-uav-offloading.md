@@ -11,6 +11,7 @@ related:
   - "[[uav-enabled-its]]"
   - "[[uav-trajectory-control]]"
   - "[[llm-assisted-resource-allocation]]"
+  - "[[llm-assisted-mec-optimization-control-plane]]"
   - "[[second-order-cone-programming]]"
   - "[[linear-programming]]"
   - "[[two-stage-decomposition]]"
@@ -64,7 +65,7 @@ The framework is evaluated in simulation with Python, CVXPY/linprog, and an open
 
 ## Relation to the corpus
 
-This is a [[vehicular-mec]] / [[uav-enabled-its]] source that extends the vehicular track from DRL and Lyapunov offloading into LLM-aided scheduling. It complements [[li-2026-isac-vec-beamforming-deployment]], which uses UAV deployment and beamforming for ISAC-enhanced vehicular coverage, and [[dai-2024-uav-vehicular-offloading-lyapunov]], which uses Lyapunov plus Markov approximation for UAV-assisted VEC delay. Its reusable method vocabulary is captured by [[llm-assisted-resource-allocation]], [[second-order-cone-programming]], and [[linear-programming]].
+This is a [[vehicular-mec]] / [[uav-enabled-its]] source that extends the vehicular track from DRL and Lyapunov offloading into LLM-aided scheduling. It complements [[li-2026-isac-vec-beamforming-deployment]], which uses UAV deployment and beamforming for ISAC-enhanced vehicular coverage, and [[dai-2024-uav-vehicular-offloading-lyapunov]], which uses Lyapunov plus Markov approximation for UAV-assisted VEC delay. Its reusable method vocabulary is captured by [[llm-assisted-resource-allocation]], [[second-order-cone-programming]], [[linear-programming]], and the broader [[llm-assisted-mec-optimization-control-plane]] pattern.
 
 ## Raw artifacts
 

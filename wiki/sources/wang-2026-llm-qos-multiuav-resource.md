@@ -9,6 +9,7 @@ tags: [source, multi-uav-assisted-mec, llm, resource-allocation, knowledge-disti
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[llm-assisted-resource-allocation]]"
+  - "[[llm-assisted-mec-optimization-control-plane]]"
   - "[[knowledge-distillation-for-drl]]"
   - "[[mappo]]"
   - "[[graph-neural-network]]"
@@ -66,7 +67,7 @@ The conclusion emphasizes faster convergence, lower steady-state latency, improv
 
 ## Relation to the corpus
 
-This source extends [[llm-assisted-resource-allocation]] from LLM-backed runtime repair into teacher-student policy generation for [[multi-uav-assisted-mec]]. It connects LLM reasoning to [[knowledge-distillation-for-drl]], [[mappo]], [[graph-neural-network]], [[graph-based-resource-management]], [[task-migration]], and [[jains-fairness-index]]. It also gives the fairness hub a multi-UAV LLM-policy example where delay and fairness are optimized jointly.
+This source extends [[llm-assisted-resource-allocation]] from LLM-backed runtime repair into teacher-student policy generation for [[multi-uav-assisted-mec]]. It connects LLM reasoning to [[knowledge-distillation-for-drl]], [[mappo]], [[graph-neural-network]], [[graph-based-resource-management]], [[task-migration]], and [[jains-fairness-index]]. It is one of the teacher-policy instances of [[llm-assisted-mec-optimization-control-plane]], and gives the fairness hub a multi-UAV LLM-policy example where delay and fairness are optimized jointly.
 
 ## Raw artifacts
 

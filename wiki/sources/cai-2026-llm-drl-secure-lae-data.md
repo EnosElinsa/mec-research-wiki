@@ -10,6 +10,8 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[generative-ai-for-mec]]"
   - "[[llm-assisted-resource-allocation]]"
+  - "[[llm-assisted-mec-optimization-control-plane]]"
+  - "[[llm-state-reward-secure-lae-data]]"
   - "[[prompt-engineering]]"
   - "[[td3]]"
   - "[[ddpg]]"
@@ -67,7 +69,7 @@ The authors name LLM computational overhead and prompt-engineering dependence as
 
 ## Relation to the corpus
 
-This source expands [[generative-ai-for-mec]] from problem formulation and LLM-assisted scheduling into DRL state/reward/simulator design. It is security-oriented, linking [[low-altitude-intelligent-network]], [[physical-layer-security]], [[friendly-jamming-uav]], [[age-of-information]], and [[uav-data-collection]]. It complements [[ji-2026-llm-iov-uav-offloading]], where the LLM handles runtime long-tail resource reallocation, and [[wen-2026-hybridrag-low-carbon-lae]], where LLM agents formulate a low-carbon optimization problem before a solver handles control.
+This source expands [[generative-ai-for-mec]] from problem formulation and LLM-assisted scheduling into DRL state/reward/simulator design. It is security-oriented, linking [[low-altitude-intelligent-network]], [[physical-layer-security]], [[friendly-jamming-uav]], [[age-of-information]], and [[uav-data-collection]]. The reported state-reward improvement is summarized in [[llm-state-reward-secure-lae-data]], and the cross-source method role is captured by [[llm-assisted-mec-optimization-control-plane]]. It complements [[ji-2026-llm-iov-uav-offloading]], where the LLM handles runtime long-tail resource reallocation, and [[wen-2026-hybridrag-low-carbon-lae]], where LLM agents formulate a low-carbon optimization problem before a solver handles control.
 
 ## Raw artifacts
 
