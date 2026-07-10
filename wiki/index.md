@@ -58,6 +58,7 @@
 ### Game-theoretic offloading & allocation
 
 - [[xu-2026-prizty-uav-mec-auction]] - Xu et al. 2026. **Prizty** privacy-preserving reverse auction for UAV-assisted MEC task offloading/resource allocation; UE location obfuscation + trajectory-aware feasible service sets + winner/payment selection (IEEE TMC).
+- [[guo-2026-aoi-uav-mcs-contract]] - Guo et al. 2026. AoI-aware UAV-assisted mobile crowdsensing contracts; platform-UAV service-slot contract plus platform-user sensing/computation-cost contracts for freshness/cost control under incomplete information (IEEE TMC).
 
 - [[chen-2015-decentralized-offloading-game]] — Chen 2015. **Decentralized computation offloading game** for mobile cloud computing — potential game; Nash equilibrium existence + decentralized mechanism; ≤10% PoA over centralized optimum (IEEE TPDS).
 - [[chen-2016-multiuser-offloading-game-mec]] — Chen et al. 2016. **Multi-user computation offloading game** for mobile-edge cloud computing — NP-hard centrally; potential game + distributed NE algorithm; multi-channel interference + contention environments (IEEE/ACM ToN).
@@ -203,6 +204,7 @@
 
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
 - [[lin-2025-energy-effective-ris-multiuav-coverage]] - Lin et al. 2025. RIS-assisted multi-UAV coverage for fairness-aware ground terminals; K-DBSCAN deployment, throughput-variance filtering, and TDQN/DDQN/dueling-DQN trajectory control (IEEE TGCN).
+- [[liu-2026-spherical-t-ris-bs]] - Liu et al. 2026. Angle-insensitive spherical transmissive-RIS base station with omnidirectional feed; BCD/SCA co-optimizes sensor scheduling, powers, phase shifts, and UAV trajectories for data collection under CU-rate and UAV-energy constraints (IEEE TWC).
 
 - [[wu-2026-model-based-ppo-ris-uav-mec]] - Wu et al. 2026. RIS-assisted urban multi-UAV MEC with decentralized model-based PPO; local k-hop observations, RIS phase proposals, and branched rollouts for trajectory/offloading control (IEEE TMC).
 
@@ -332,6 +334,7 @@
 - [[lyu-2023-noma-marine-emergency-offloading]] — Lyu et al. 2023. **NOMA**-based UAV emergency communication for marine IoT; MINLP decomposed into quasi-convex/convex resource allocation + **coalition-game** offloading (CGTO) (IEEE IoT-J).
 - [[qi-2024-msar-minmax-latency]] — Qi et al. 2024. Multi-UAV maritime **search & rescue**; **min-max latency** over offloading + R-UAV deployment + S-UAV–target association; iterative linearization + SCA + Branch-and-Bound (IEEE TVT).
 - [[dai-2024-multiuav-marine-welfare]] — Dai et al. 2024. Multi-UAV multi-access marine MEC (UAVs + **ocean beacon stations**); maximizes **system revenue** (welfare − energy) via layered decomposition + **double-auction** OBS selection (IEEE TCOMM).
+- [[li-2026-online-maritime-double-auction]] - Li et al. 2026. Online double auction for maritime network resource allocation; OMDAM prices ship connectivity bids against ISP antenna/UAV capacity with social-welfare, deadline, coverage, and budget-balance constraints (IEEE T-ITS).
 - [[li-2023-secure-marine-iot-jamming]] — Li et al. 2023. **Secure** marine-IoT offloading: USVs upload to a **HAP** via NOMA then provide **cooperative jamming**; system-energy min via monotonic optimization (PAS) + cross-entropy (CASE) (IEEE TVT).
 - [[lu-2023-uav-relay-secure-maritime-mec]] — Lu et al. 2023. **UAV-relay-assisted secure maritime MEC** with a **flying eavesdropper**; a relay UAV amplify-and-forwards maritime-device tasks to a coastal edge server while a **coastal jammer** disrupts an eavesdropping UAV; **max-min secure computing capacity** over transmit power + time-slot + local-computation + UAV trajectory; non-convex → **BCD + SCA** (IEEE TCOMM).
 - [[zeng-2024-usv-fleet-collaborative-offloading]] — Zeng et al. 2024. UAVs offload tasks **to USV fleets**; first-price sealed **reverse auction** (reserve price) incentive + symmetric-equilibrium bidding, then BCD + improved **ADMM** energy minimization (IEEE TVT).
@@ -425,6 +428,7 @@
 - [[zang-2026-uav-ev-priority-cav-speed]] - Zang et al. 2026. UAV-assisted emergency-vehicle priority on expressways; rolling SROC uses dual-layer PSO to coordinate CAV speed under uncertain human lane changes (IEEE T-ITS).
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
 - [[zhao-2026-temporal-spectrum-cartography]] - Zhao et al. 2026. Temporal spectrum cartography for LAE networks with sparse static/mobile sensing, RecMAE reconstruction, and multi-agent diffusion-policy UAV sensor placement (IEEE TMC).
+- [[prabhath-not-in-parse-3d-space-spectrum-utilization]] - Prabhath & Jayaweera. Three-dimensional UAV cellular spectrum-utilization analysis with truncated-octahedron frequency reuse, blocking probability, and channel-shadowing sensitivity. *(Parsed metadata lacks DOI/venue/year.)*
 - [[wang-2025-lae-network-survey]] — Wang et al. 2025. Survey: low-altitude economy network architecture, integrated technologies, and future directions.
 - [[jiang-2025-isac-lae-overview]] — Jiang et al. 2025. ISAC for LAE — IAGN architecture, MBCM channel model, stochastic-geometry analysis.
 - [[wu-2026-service-oriented-segmented-trajectory]] - Wu et al. 2026. Service-oriented segmented trajectories for high-rise low-altitude UAV-MEC; VSRL-LKH plus TRA/SOS-TRA for latency, energy, and smart-window trajectory privacy (IEEE TMC).
@@ -443,6 +447,7 @@
 ### Energy efficiency & WPT
 
 - [[zhao-2026-adaptive-wdc-wet-lae]] - Zhao et al. 2026. Adaptive low-altitude WDC/WET service balancing; MA2HDRL learns reward preference for AoI/HoE tradeoff while coordinating UAV trajectories, WET slots, and WDC subslots (IEEE TMC).
+- [[shi-2025-aoi-energy-replenishment-multiuav]] - Shi et al. 2025. AoI-aware multi-UAV IoT data collection and wireless energy replenishment; Dec-POMDP with VDN/QMIX CTDE policies over flight, SN/CS association, and charging decisions (IEEE TGCN).
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
 - [[chen-2025-swipt-mec-sac]] — Chen et al. 2025. SWIPT-MEC with directional-antenna UAV; improved SAC (SAC-SK), bi-objective energy.
 - [[panahi-2026-uav-green-iot-offloading]] — Panahi & Panahi 2026. Cost-aware UAV-enabled green-IoT computation offloading; Q-learning region trajectory plus laser / renewable energy procurement and COF/WPT service-compensation accounting (IEEE TGCN).
@@ -502,6 +507,7 @@
 ### Authors
 
 - [[dusit-niyato]] (NTU) appears across 43 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 12 sources after the AoI-centric UAV-ISAC paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -515,7 +521,6 @@
 - **NCEPU aerial-edge cluster:** [[peng-qin]], [[yang-fu]] (North China Electric Power University); [[jingjing-wang]] (Beihang University) links the blockchain-UAV thread.
 - **South-China-Agricultural-University evolutionary UAV-MEC cluster:** [[zexiong-wu]] (with [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]]).
 - **Cross-cutting seniors:** [[chunxiao-jiang]] (Tsinghua), [[tony-q-s-quek]] (SUTD).
-- [[ying-chen]] (Beijing Information Sci. & Tech. Univ. — online + game-theoretic offloading), [[jie-xu]] (CUHK-Shenzhen — ISAC), [[fuhong-song]] (SWJTU → Guizhou Univ. of Finance & Economics — evolutionary MORL), [[yong-wang]] (Central South Univ. — constrained/evolutionary optimization), [[wei-zhang]] (Shandong Computer Science Center — task-priority offloading, [[hao-hao]] group).
 - [[shuang-liang]] (Northeast Normal Univ. — aerial-MEC / LAE, [[geng-sun]] cluster), [[weifeng-zhong]] & [[shengli-xie]] (Guangdong Univ. of Technology — CMOP-evolutionary lineage), [[qiqi-xie]] (South China Agricultural Univ. — evolutionary UAV-MEC), [[nei-kato]] (Tohoku Univ.), [[jiadai-wang]], [[yijie-xun]], [[yangbo-liu]] (Northwestern Polytechnical Univ. — NTN cluster, [[bomin-mao]] group).
 - [[boxiong-wang]] & [[hui-kang]] (Jilin University — [[geng-sun]] aerial-MEC cluster; 2 sources each).
 - [[yuben-qu]] & [[hao-sun]] (Nanjing Univ. of Aeronautics and Astronautics — UAV-swarm collaborative-inference cluster with [[chao-dong]]/[[qihui-wu]]; 2 sources each — [[qu-ecoei-uav-swarm]] + [[sun-2024-asap-uav-swarm]], identical `@nuaa.edu.cn` emails).
@@ -662,6 +667,7 @@
 - [[evolvable-route-expiration-time]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
+- [[spherical-transmissive-ris]]
 - [[uav-mounted-ris]]
 - [[tilt-aware-aerial-ris-control]]
 - [[star-ris]]
@@ -715,6 +721,7 @@
 - [[parameterized-dqn]]
 - [[multi-agent-q-learning]]
 - [[value-decomposition-network]]
+- [[qmix]]
 - [[ensemble-qmix]]
 - [[counterfactual-multi-agent-policy-gradient]]
 - [[distributional-reinforcement-learning]]
@@ -781,6 +788,7 @@
 - [[price-of-anarchy]]
 - [[prospect-theory]]
 - [[contract-theory]]
+- [[aoi-aware-contract-incentives]]
 - [[contract-theoretic-fl-incentives]]
 - [[matching-theory-for-resource-allocation]]
 - [[optimal-transport-theory]]
@@ -829,6 +837,7 @@
 - [[cross-entropy-method]]
 - [[generalized-assignment-problem]]
 - [[double-auction]]
+- [[online-maritime-double-auction]]
 - [[reverse-auction-incentive]]
 - [[alternating-direction-method-of-multipliers]]
 - [[queueing-theory]]
@@ -837,6 +846,7 @@
 
 - [[blockage-aware-channel-model]]
 - [[air-to-ground-channel-model]]
+- [[three-dimensional-frequency-reuse]]
 - [[angle-dependent-rician-fading]]
 - [[radio-map-assisted-channel-estimation]]
 - [[multi-modal-intelligent-channel-modeling]]
@@ -921,6 +931,7 @@
 - [[load-balancing-uav-mec]]
 - [[energy-latency-tradeoff]]
 - [[effective-energy-efficiency]]
+- [[spectrum-utilization-efficiency]]
 - [[age-of-information]]
 - [[dynamic-target-prioritization-metric]]
 - [[aoi-energy-tradeoff]]

@@ -6,14 +6,7 @@ year: 2024
 url: "https://doi.org/10.1109/JIOT.2023.3305711"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
 tags: [source, federated-learning, digital-twin, maritime-mec, noma, physical-layer-security, energy-minimization, hap]
-related:
-  - "[[energy-harvesting-mec]]"
-  - "[[blockchain-for-fl-aggregation]]"
-  - "[[simultaneous-wireless-information-and-power-transfer]]"
-  - "[[bin-lin]]"
-  - "[[yuan-wu]]"
-  - "[[li-2023-secure-marine-iot-jamming]]"
-  - "[[lyu-2023-noma-marine-emergency-offloading]]"
+related: ["[[energy-harvesting-mec]]", "[[blockchain-for-fl-aggregation]]", "[[simultaneous-wireless-information-and-power-transfer]]", "[[bin-lin]]", "[[li-2023-secure-marine-iot-jamming]]", "[[lyu-2023-noma-marine-emergency-offloading]]"]
 created: 2026-06-04
 updated: 2026-06-04
 ---
@@ -54,7 +47,7 @@ Single HAP topology (no multi-hop or satellite backhaul). Eavesdropper CSI assum
 
 ## Relation to the corpus
 
-Dalian Maritime University cluster (Bin Lin ([[bin-lin]])) + University of Macau cluster (Yuan Wu ([[yuan-wu]])). Combines **digital twin** construction, **federated learning**, and **physical layer security** in the maritime setting — extending the maritime MEC corpus ([[li-2023-secure-marine-iot-jamming]], [[lyu-2023-noma-marine-emergency-offloading]]) with FL + digital-twin objectives. The FL energy-minimization + accuracy joint optimization mirrors [[yang-2024-taco-human-digital-twin-edge]] (non-maritime) and the digital twin pattern in [[mou-2025-adm-dt-migration]].
+Dalian Maritime University cluster (Bin Lin ([[bin-lin]])) + University of Macau cluster (Yuan Wu (yuan-wu)). Combines **digital twin** construction, **federated learning**, and **physical layer security** in the maritime setting — extending the maritime MEC corpus ([[li-2023-secure-marine-iot-jamming]], [[lyu-2023-noma-marine-emergency-offloading]]) with FL + digital-twin objectives. The FL energy-minimization + accuracy joint optimization mirrors [[yang-2024-taco-human-digital-twin-edge]] (non-maritime) and the digital twin pattern in [[mou-2025-adm-dt-migration]].
 
 ## Raw artifacts
 

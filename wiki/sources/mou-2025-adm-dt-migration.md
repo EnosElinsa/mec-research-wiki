@@ -23,7 +23,7 @@ related:
   - "[[mixed-integer-nonlinear-programming]]"
   - "[[yang-2024-taco-human-digital-twin-edge]]"
   - "[[zhao-2025-traj-offload-cache-migration]]"
-  - "[[yuan-wu]]"
+  - "yuan-wu"
 created: 2026-06-03
 updated: 2026-06-08
 ---
@@ -31,7 +31,7 @@ updated: 2026-06-08
 # Adaptive Digital Twin Migration in Vehicular Edge Computing and Networks
 
 ## Citation
-Fangyi Mou, Jiong Lou, Zhiqing Tang, [[yuan-wu|Yuan Wu]], Weijia Jia, Yan Zhang, Wei Zhao, "Adaptive Digital Twin Migration in Vehicular Edge Computing and Networks," *IEEE Transactions on Vehicular Technology*, 2025. DOI: 10.1109/TVT.2024.3492349. (Received 29 Feb 2024; accepted 1 Nov 2024; date of publication 7 Nov 2024; date of current version 5 Mar 2025 → year 2025 per the date-of-current-version convention. Corresponding author: Zhiqing Tang. Beijing Normal University / BNU-HKBU UIC + Shanghai Jiao Tong University + University of Macau + University of Oslo.)
+Fangyi Mou, Jiong Lou, Zhiqing Tang, Yuan Wu, Weijia Jia, Yan Zhang, Wei Zhao, "Adaptive Digital Twin Migration in Vehicular Edge Computing and Networks," *IEEE Transactions on Vehicular Technology*, 2025. DOI: 10.1109/TVT.2024.3492349. (Received 29 Feb 2024; accepted 1 Nov 2024; date of publication 7 Nov 2024; date of current version 5 Mar 2025 → year 2025 per the date-of-current-version convention. Corresponding author: Zhiqing Tang. Beijing Normal University / BNU-HKBU UIC + Shanghai Jiao Tong University + University of Macau + University of Oslo.)
 
 ## TL;DR
 In Vehicular Edge Computing and Networks (VECONs), each moving vehicle is served by a [[digital-twin|digital twin (DT)]] hosted on a roadside-unit (RSU) server; as the vehicle moves, the DT must migrate between RSUs to keep latency low. This paper formulates **adaptive DT migration (ADM)** as a combinatorial optimization that minimizes total cost — communication latency + colocation cost + migration latency — under large-scale, complex DT communications, and solves it with an off-policy actor-critic RL agent bootstrapped by **expert demonstrations / warm-start policies**. On real-world Cologne vehicular-mobility traces, the reported reduction in total migration latency is about 39% on average over baseline algorithms.
@@ -69,7 +69,7 @@ Reported on real-world Cologne, Germany vehicular-mobility traces (small-scale 5
 - Future work named in the conclusion: integrate DT-based complex task scheduling and edge caching, and explore hybrid local-centralized / global-distributed decision strategies.
 
 ## Relation to the corpus
-This is a [[service-migration]] design in the [[vehicular-mec]] setting, distinct from the corpus's task-rerouting and offloading-migration work: it migrates the *[[digital-twin|digital twin]]* rather than a task or a service container, and its cost model is dominated by the three-way DT-communication structure. It complements [[yang-2024-taco-human-digital-twin-edge]] (human-digital-twin edge deployment trading accuracy vs cost) and [[zhao-2025-traj-offload-cache-migration]] (service migration vs task rerouting at the MEC edge). Its expert-warm-started actor-critic adds an [[expert-guided-warm-start-rl|imitation-bootstrapped]] data point to the corpus's [[drl-backbones-across-uav-mec-sources|DRL-backbone]] landscape — a contrast to the from-scratch on-policy and off-policy agents elsewhere. Shared authorship with the corpus via [[yuan-wu]].
+This is a [[service-migration]] design in the [[vehicular-mec]] setting, distinct from the corpus's task-rerouting and offloading-migration work: it migrates the *[[digital-twin|digital twin]]* rather than a task or a service container, and its cost model is dominated by the three-way DT-communication structure. It complements [[yang-2024-taco-human-digital-twin-edge]] (human-digital-twin edge deployment trading accuracy vs cost) and [[zhao-2025-traj-offload-cache-migration]] (service migration vs task rerouting at the MEC edge). Its expert-warm-started actor-critic adds an [[expert-guided-warm-start-rl|imitation-bootstrapped]] data point to the corpus's [[drl-backbones-across-uav-mec-sources|DRL-backbone]] landscape — a contrast to the from-scratch on-policy and off-policy agents elsewhere. Shared authorship with the corpus via yuan-wu.
 
 ## Raw artifacts
 - Parse: `raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/full.md`

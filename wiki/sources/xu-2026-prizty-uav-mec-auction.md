@@ -6,18 +6,7 @@ year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3609202"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, uav-mec, mobile-edge-computing, task-offloading, resource-allocation, reverse-auction-incentive, privacy, noma, uav-trajectory-control]
-related:
-  - "[[mobile-edge-computing]]"
-  - "[[task-offloading]]"
-  - "[[multi-uav-assisted-mec]]"
-  - "[[uav-trajectory-control]]"
-  - "[[reverse-auction-incentive]]"
-  - "[[noma]]"
-  - "[[privacy-sensitive-data-partitioning]]"
-  - "[[double-auction]]"
-  - "[[xu-2021-secure-uav-mec-dual-uav]]"
-  - "[[wang-2024-blockchain-uav-mec-dpos]]"
-  - "[[zhang-2024-uav-task-offloading-ddpg]]"
+related: ["[[mobile-edge-computing]]", "[[task-offloading]]", "[[multi-uav-assisted-mec]]", "[[uav-trajectory-control]]", "[[reverse-auction-incentive]]", "[[noma]]", "[[privacy-sensitive-data-partitioning]]", "[[xu-2021-secure-uav-mec-dual-uav]]", "[[wang-2024-blockchain-uav-mec-dpos]]", "[[zhang-2024-uav-task-offloading-ddpg]]"]
 created: 2026-07-06
 updated: 2026-07-10
 ---

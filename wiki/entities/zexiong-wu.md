@@ -24,4 +24,4 @@ Co-authored 4 sources in this wiki, all in the constrained multi-objective evolu
 
 ## Contributions to this wiki
 
-- A core member of the South-China-Agricultural-University evolutionary-computation UAV-MEC cluster with [[chaoda-peng]], [[xumin-huang]], and [[yuan-wu]], contributing constrained multi-objective optimization methods.
+- A core member of the South-China-Agricultural-University evolutionary-computation UAV-MEC cluster with [[chaoda-peng]], [[xumin-huang]], and yuan-wu, contributing constrained multi-objective optimization methods.

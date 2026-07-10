@@ -6,20 +6,7 @@ year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3676417"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, hierarchical-aerial-mec, hap, uav-mec, noma, wireless-power-transfer, lyapunov-optimization, ddpg, attention, fairness]
-related:
-  - "[[hierarchical-aerial-mec]]"
-  - "[[high-altitude-platform-station]]"
-  - "[[noma]]"
-  - "[[wireless-power-transfer]]"
-  - "[[lyapunov-optimization]]"
-  - "[[ddpg]]"
-  - "[[fairness-metrics-in-mec]]"
-  - "[[uav-trajectory-control]]"
-  - "[[chen-2023-dotora-air-ground-online]]"
-  - "[[jia-2025-dro-uav-hap-mec]]"
-  - "[[hsu-2025-drl-hues-hap-noma]]"
-  - "[[kang-2023-mappo-hierarchical-aerial]]"
-  - "[[ying-chen]]"
+related: ["[[hierarchical-aerial-mec]]", "[[high-altitude-platform-station]]", "[[noma]]", "[[wireless-power-transfer]]", "[[lyapunov-optimization]]", "[[ddpg]]", "[[fairness-metrics-in-mec]]", "[[uav-trajectory-control]]", "[[chen-2023-dotora-air-ground-online]]", "[[jia-2025-dro-uav-hap-mec]]", "[[hsu-2025-drl-hues-hap-noma]]", "[[kang-2023-mappo-hierarchical-aerial]]"]
 created: 2026-07-06
 updated: 2026-07-06
 ---
@@ -63,7 +50,7 @@ The evaluation is simulation-based. The paper models one UAV and one HAP; multi-
 
 ## Relation to the corpus
 
-This strengthens the [[hierarchical-aerial-mec]] track by combining UAV+HAP offloading with [[noma]], [[wireless-power-transfer]], fairness, and Lyapunov-guided DRL. It is closest architecturally to [[jia-2025-dro-uav-hap-mec]] and [[kang-2023-mappo-hierarchical-aerial]], but differs by using [[ddpg]]-attention under a Lyapunov decomposition rather than DRO or MAPPO. It also continues [[ying-chen]]'s online/game-theoretic air-ground MEC line from [[chen-2023-dotora-air-ground-online]], now in a HAP-UAV-MEC setting.
+This strengthens the [[hierarchical-aerial-mec]] track by combining UAV+HAP offloading with [[noma]], [[wireless-power-transfer]], fairness, and Lyapunov-guided DRL. It is closest architecturally to [[jia-2025-dro-uav-hap-mec]] and [[kang-2023-mappo-hierarchical-aerial]], but differs by using [[ddpg]]-attention under a Lyapunov decomposition rather than DRO or MAPPO. It also continues ying-chen's online/game-theoretic air-ground MEC line from [[chen-2023-dotora-air-ground-online]], now in a HAP-UAV-MEC setting.
 
 ## Raw artifacts
 

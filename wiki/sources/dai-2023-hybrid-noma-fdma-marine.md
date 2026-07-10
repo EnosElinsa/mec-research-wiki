@@ -18,7 +18,7 @@ related:
   - "[[li-2023-secure-marine-iot-jamming]]"
   - "[[lyu-2023-noma-marine-emergency-offloading]]"
   - "[[minghui-dai]]"
-  - "[[yuan-wu]]"
+  - "yuan-wu"
   - "[[liping-qian]]"
   - "[[bin-lin]]"
 created: 2026-06-01
@@ -62,7 +62,7 @@ Simulation-based. Future work (stated): study the **multi-USN NOMA grouping** sc
 
 ## Relation to the corpus
 
-A **maritime MEC** entry from the University-of-Macau group around [[minghui-dai]], [[yuan-wu]], and [[liping-qian]] (with [[bin-lin]]). It is **distinct from** the same lead author's [[dai-2023-hybrid-marine-mmwl]]: that paper (IEEE TCOMM) minimizes **max workloads latency (MMWL)** with FDMA-offshore + NOMA-aerial access, whereas this one (IEEE TNSE) minimizes **total energy** with **NOMA-underwater (USN→USV) + FDMA-aerial (USV→UAV)** access and adds an explicit **secrecy-provisioning** term against an eavesdropper. It complements the secure marine-IoT cooperative-jamming design [[li-2023-secure-marine-iot-jamming]] (shares [[bin-lin]]) and the multi-UAV marine welfare/auction design [[dai-2024-multiuav-marine-welfare]], and shares the NOMA + decomposition recipe with [[lyu-2023-noma-marine-emergency-offloading]]. Reinforces [[maritime-mec]], [[noma]], and [[physical-layer-security]].
+A **maritime MEC** entry from the University-of-Macau group around [[minghui-dai]], yuan-wu, and [[liping-qian]] (with [[bin-lin]]). It is **distinct from** the same lead author's [[dai-2023-hybrid-marine-mmwl]]: that paper (IEEE TCOMM) minimizes **max workloads latency (MMWL)** with FDMA-offshore + NOMA-aerial access, whereas this one (IEEE TNSE) minimizes **total energy** with **NOMA-underwater (USN→USV) + FDMA-aerial (USV→UAV)** access and adds an explicit **secrecy-provisioning** term against an eavesdropper. It complements the secure marine-IoT cooperative-jamming design [[li-2023-secure-marine-iot-jamming]] (shares [[bin-lin]]) and the multi-UAV marine welfare/auction design [[dai-2024-multiuav-marine-welfare]], and shares the NOMA + decomposition recipe with [[lyu-2023-noma-marine-emergency-offloading]]. Reinforces [[maritime-mec]], [[noma]], and [[physical-layer-security]].
 
 ## Raw artifacts
 

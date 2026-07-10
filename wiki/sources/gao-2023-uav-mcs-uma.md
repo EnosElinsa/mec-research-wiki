@@ -6,12 +6,7 @@ year: 2023
 url: "https://doi.org/10.1109/TMC.2022.3147871"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, mobile-crowd-sensing, uav-data-collection, multi-task-allocation, incentives, maddpg, calibration]
-related:
-  - "[[uav-assisted-mobile-crowd-sensing]]"
-  - "[[uav-data-collection]]"
-  - "[[maddpg]]"
-  - "[[semi-markov-decision-process]]"
-  - "[[edge-intelligence]]"
+related: ["[[uav-data-collection]]", "[[maddpg]]", "[[semi-markov-decision-process]]", "[[edge-intelligence]]"]
 created: 2026-07-10
 updated: 2026-07-10
 ---

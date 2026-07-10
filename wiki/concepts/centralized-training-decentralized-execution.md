@@ -11,6 +11,8 @@ related:
   - "[[ctde-multi-agent-drl-protocol]]"
   - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
   - "[[gao-2023-uav-mcs-uma]]"
+  - "[[qmix]]"
+  - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[ensemble-qmix]]"
   - "[[zhang-2026-ensemble-marl-uav-target-search]]"
 created: 2026-05-28
@@ -19,7 +21,7 @@ updated: 2026-07-11
 
 # Centralized Training, Decentralized Execution (CTDE)
 
-[[zhang-2026-ensemble-marl-uav-target-search]] adds the QMIX/value-decomposition form of CTDE to the curated corpus. Its [[ensemble-qmix]] controller trains centralized mixing networks but executes per-UAV majority-voted local actions.
+[[zhang-2026-ensemble-marl-uav-target-search]] adds the ensemble QMIX/value-decomposition form of CTDE to the curated corpus. Its [[ensemble-qmix]] controller trains centralized mixing networks but executes per-UAV majority-voted local actions. [[shi-2025-aoi-energy-replenishment-multiuav]] adds the direct [[qmix|QMIX]] and VDN comparison for rechargeable multi-UAV IoT data collection.
 
 A canonical paradigm for cooperative multi-agent DRL:
 

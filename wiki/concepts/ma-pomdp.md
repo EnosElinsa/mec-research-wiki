@@ -7,6 +7,7 @@ related:
   - "[[masac]]"
   - "[[peng-2025-drudm-cfg]]"
   - "[[qin-2025-bcuav-masac]]"
+  - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
   - "[[multi-domain-uav-anti-jamming]]"
 created: 2026-05-28
@@ -32,3 +33,5 @@ The natural multi-agent generalization of [[pomdp|POMDP]]: $N$ agents, each with
 ## In this wiki
 
 [[peng-2025-drudm-cfg]] explicitly casts post-disaster offloading as MA-POMDP; [[qin-2025-bcuav-masac]] does the same under the AGIN lens. [[chen-2026-maddpg-uav-swarm-antijamming]] uses the same framing for [[multi-domain-uav-anti-jamming]], where each UAV observes local channel/interference conditions while joint U2U/U2G reliability determines the reward. The single-agent [[pomdp]] page covers the simpler variant used by [[liu-2026-jppo-en-convntm]] (one centralized controller for all UAVs).
+
+[[shi-2025-aoi-energy-replenishment-multiuav]] uses a Dec-POMDP for multi-UAV AoI-aware data collection and energy replenishment, with each UAV making local flight, association, and charging decisions from partial observations while a shared freshness/energy objective couples the team.

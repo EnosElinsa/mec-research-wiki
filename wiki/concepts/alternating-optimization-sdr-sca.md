@@ -16,6 +16,7 @@ related:
   - "[[li-2026-control-based-uav-isac]]"
   - "[[cui-2026-aris-v2x-icac]]"
   - "[[hosseini-2026-aoi-covert-uav]]"
+  - "[[liu-2026-spherical-t-ris-bs]]"
 created: 2026-05-29
 updated: 2026-07-10
 ---

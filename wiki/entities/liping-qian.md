@@ -26,4 +26,4 @@ Co-authored 5 sources in this wiki, all on marine / multi-access / maritime edge
 
 ## Contributions to this wiki
 
-- A recurring contributor (NOMA, multi-access MEC, resource allocation) in the maritime-MEC track, frequently collaborating with [[yuan-wu]] (University of Macau) and [[bin-lin]] (Dalian Maritime University) — spanning the double-auction, hybrid FDMA/NOMA, USV cooperative-jamming, and NOMA-UAV-trajectory maritime designs.
+- A recurring contributor (NOMA, multi-access MEC, resource allocation) in the maritime-MEC track, frequently collaborating with yuan-wu (University of Macau) and [[bin-lin]] (Dalian Maritime University) — spanning the double-auction, hybrid FDMA/NOMA, USV cooperative-jamming, and NOMA-UAV-trajectory maritime designs.

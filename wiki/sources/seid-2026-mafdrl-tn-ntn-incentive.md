@@ -6,21 +6,7 @@ year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3608291"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, non-terrestrial-network, space-air-ground-integrated-network, task-offloading, hierarchical-aerial-mec, hierarchical-federated-drl, double-auction, federated-reinforcement-learning, centralized-training-decentralized-execution, maddpg, ddpg]
-related:
-  - "[[non-terrestrial-network]]"
-  - "[[space-air-ground-integrated-network]]"
-  - "[[hierarchical-aerial-mec]]"
-  - "[[task-offloading]]"
-  - "[[hierarchical-federated-drl]]"
-  - "[[federated-reinforcement-learning]]"
-  - "[[centralized-training-decentralized-execution]]"
-  - "[[double-auction]]"
-  - "[[maddpg]]"
-  - "[[ddpg]]"
-  - "[[high-altitude-platform-station]]"
-  - "[[leo-satellite-edge-computing]]"
-  - "[[zhao-2026-hcdrl-ga-sagin-sar]]"
-  - "[[han-2024-sagin-fl-handover]]"
+related: ["[[non-terrestrial-network]]", "[[space-air-ground-integrated-network]]", "[[hierarchical-aerial-mec]]", "[[task-offloading]]", "[[hierarchical-federated-drl]]", "[[federated-reinforcement-learning]]", "[[centralized-training-decentralized-execution]]", "[[maddpg]]", "[[ddpg]]", "[[high-altitude-platform-station]]", "[[leo-satellite-edge-computing]]", "[[zhao-2026-hcdrl-ga-sagin-sar]]", "[[han-2024-sagin-fl-handover]]"]
 created: 2026-07-10
 updated: 2026-07-10
 ---
@@ -67,7 +53,7 @@ LEO satellites are architectural participants but are omitted from the optimizat
 
 ## Relation to the corpus
 
-This source extends the [[space-air-ground-integrated-network]] and [[non-terrestrial-network]] offloading line with explicit incentive pricing. It is close to [[han-2024-sagin-fl-handover]] on FL over SAGIN and to [[zhao-2026-hcdrl-ga-sagin-sar]] on hierarchical aerial control, but its distinctive contribution is the combination of [[hierarchical-federated-drl]] with a [[double-auction]] resource/FL-service market.
+This source extends the [[space-air-ground-integrated-network]] and [[non-terrestrial-network]] offloading line with explicit incentive pricing. It is close to [[han-2024-sagin-fl-handover]] on FL over SAGIN and to [[zhao-2026-hcdrl-ga-sagin-sar]] on hierarchical aerial control, but its distinctive contribution is the combination of [[hierarchical-federated-drl]] with a double-auction resource/FL-service market.
 
 ## Raw artifacts
 

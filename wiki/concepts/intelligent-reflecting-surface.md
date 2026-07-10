@@ -8,6 +8,7 @@ related:
   - "[[csi-estimation-error]]"
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
   - "[[star-ris]]"
+  - "[[spherical-transmissive-ris]]"
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[liao-2025-ris-uav-usv-resource-allocation]]"
@@ -15,6 +16,7 @@ related:
   - "[[liao-2026-aoi-ris-uav-usv-mec]]"
   - "[[sheng-2025-ris-online-uav-mec]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
+  - "[[liu-2026-spherical-t-ris-bs]]"
 created: 2026-05-29
 updated: 2026-07-11
 ---
@@ -28,3 +30,5 @@ In the wiki, [[wu-2025-iopo-irs-uav-thz-mec]] mounts an IRS in a multi-UAV [[ter
 Recent corpus uses broaden the RIS family beyond reflecting-only surfaces. [[qin-2023-ris-uav-mec-ee]] is the fixed-building RIS UAV-MEC anchor: the RIS assists NOMA offloading to a UAV-mounted MEC server and must be jointly optimized with transmit power, task-bit allocation, and UAV trajectory. [[sheng-2025-ris-online-uav-mec]] adds the online-control variant, where a building-mounted RIS relays UAV-to-AP traffic while Lyapunov/Dinkelbach/BCD decisions handle random arrivals, mobile users, and outage constraints. [[mohammadi-2026-star-ris-uav-mec-noma]] uses [[star-ris]] for simultaneous transmission/reflection in UAV-MEC, while [[liao-2025-ris-uav-usv-resource-allocation]] and [[liao-2026-aoi-ris-uav-usv-mec]] use UAV-mounted RIS elements to restore blocked inland-waterway MEC links and support AoI-aware UAV-USV service.
 
 [[lin-2025-energy-effective-ris-multiuav-coverage]] adds a non-MEC coverage-control case: facade RIS panels assist multiple UAV mobile BSs, while [[triple-deep-q-network]] controls UAV trajectories and service scheduling under throughput-fairness screening.
+
+[[liu-2026-spherical-t-ris-bs]] adds [[spherical-transmissive-ris]] as a BS-architecture branch: one omnidirectional feed plus a spherical transmissive RIS replaces a conventional antenna array and reduces angle-sensitive gain loss for dynamic low-altitude communications.

@@ -24,4 +24,4 @@ Co-authored 4 sources in this wiki, all on marine edge computing:
 
 ## Contributions to this wiki
 
-- Lead author of the University of Macau marine multi-access offloading line, working with senior authors [[yuan-wu]] and [[liping-qian]] and maritime-cluster co-author [[bin-lin]].
+- Lead author of the University of Macau marine multi-access offloading line, working with senior authors yuan-wu and [[liping-qian]] and maritime-cluster co-author [[bin-lin]].

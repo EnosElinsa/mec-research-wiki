@@ -6,6 +6,8 @@ related:
   - "[[ppo]]"
   - "[[j-ppo]]"
   - "[[liu-2026-jppo-en-convntm]]"
+  - "[[ma-pomdp]]"
+  - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
 created: 2026-05-28
 updated: 2026-05-28
 ---

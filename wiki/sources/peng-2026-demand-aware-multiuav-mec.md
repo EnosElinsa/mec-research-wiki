@@ -6,17 +6,7 @@ year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3697839"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, uav-assisted-mec, multi-uav, smart-city, demand-aware-deployment, constrained-multi-objective-optimization, evolutionary-algorithm, pareto]
-related:
-  - "[[constrained-multi-objective-evolutionary-algorithm]]"
-  - "[[multi-uav-assisted-mec]]"
-  - "[[load-balancing-uav-mec]]"
-  - "[[constraint-violation-evaluation]]"
-  - "[[peng-2022-cmop-uav-path-planning]]"
-  - "[[peng-2024-energy-time-uav-its]]"
-  - "[[huang-2023-mu-aec-task-energy]]"
-  - "[[chaoda-peng]]"
-  - "[[xumin-huang]]"
-  - "[[yuan-wu]]"
+related: ["[[constrained-multi-objective-evolutionary-algorithm]]", "[[multi-uav-assisted-mec]]", "[[load-balancing-uav-mec]]", "[[constraint-violation-evaluation]]", "[[peng-2022-cmop-uav-path-planning]]", "[[peng-2024-energy-time-uav-its]]", "[[huang-2023-mu-aec-task-energy]]", "[[chaoda-peng]]", "[[xumin-huang]]"]
 created: 2026-07-06
 updated: 2026-07-06
 ---

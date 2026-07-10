@@ -64,7 +64,7 @@ Simulation-only (MATLAB). The authors defer joint allocation of caching, communi
 
 ## Relation to the corpus
 
-A **maritime MEC** entry distinctive for combining a **reverse-auction incentive** with an **ADMM/BCD energy-minimization** core, and for the **USV-fleet-as-helper** architecture (UAVs offload *to* USV fleets, rather than USVs offloading). It sits beside the University-of-Macau marine multi-access line — [[dai-2024-multiuav-marine-welfare]] (which uses a [[double-auction]] for OBS selection) and [[dai-2023-hybrid-marine-mmwl]] — sharing co-authors **Minghui Dai** ([[minghui-dai]]) and [[zhou-su|Zhou Su]], and the two-tier marine game work [[wang-2024-twotier-satellite-marine]]. Reinforces [[maritime-mec]], [[task-offloading]], and the [[two-stage-decomposition]]/[[alternating-direction-method-of-multipliers]] solver thread.
+A **maritime MEC** entry distinctive for combining a **reverse-auction incentive** with an **ADMM/BCD energy-minimization** core, and for the **USV-fleet-as-helper** architecture (UAVs offload *to* USV fleets, rather than USVs offloading). It sits beside the University-of-Macau marine multi-access line — [[dai-2024-multiuav-marine-welfare]] (which uses a double-auction for OBS selection) and [[dai-2023-hybrid-marine-mmwl]] — sharing co-authors **Minghui Dai** ([[minghui-dai]]) and [[zhou-su|Zhou Su]], and the two-tier marine game work [[wang-2024-twotier-satellite-marine]]. Reinforces [[maritime-mec]], [[task-offloading]], and the [[two-stage-decomposition]]/[[alternating-direction-method-of-multipliers]] solver thread.
 
 ## Raw artifacts
 

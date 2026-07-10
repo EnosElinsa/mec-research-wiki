@@ -18,7 +18,7 @@ related:
   - "[[b-spline-trajectory]]"
   - "[[chaoda-peng]]"
   - "[[xumin-huang]]"
-  - "[[yuan-wu]]"
+  - "yuan-wu"
   - "[[jiawen-kang]]"
 created: 2026-05-29
 updated: 2026-06-03
@@ -39,7 +39,7 @@ A four-year program by the Peng/Huang/Wu/Kang group across South China Agricultu
 | 2026 | [[xie-2026-uav-multisource-fusion]] | Qiqi Xie | Vehicular cooperative perception (dynamic CMOO) |
 | 2026 | [[wu-2026-terrain-aware-uav-mec]] | Zexiong Wu | Urban UAV-MEC with terrain-aware DEM channel |
 
-[[chaoda-peng]] and [[xumin-huang]] are the two recurring first/lead authors. [[yuan-wu]] is on all six papers. [[jiawen-kang]] is on four.
+[[chaoda-peng]] and [[xumin-huang]] are the two recurring first/lead authors. yuan-wu is on all six papers. [[jiawen-kang]] is on four.
 
 ## The shared template
 
