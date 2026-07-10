@@ -10,8 +10,10 @@ related:
   - "[[yang-2026-clustered-leo-adaptive-selection]]"
   - "[[clustered-leo-adaptive-selection]]"
   - "[[uav-enabled-computing-power-network]]"
+  - "[[chen-2026-air-ground-covert]]"
+  - "[[ambient-interference-aided-covertness]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Stochastic Geometry Network Analysis
@@ -25,5 +27,7 @@ In the wiki, [[jiang-2025-isac-lae-overview]] uses stochastic geometry to derive
 [[deng-2026-uav-cpn-energy]] applies the same analytical style to [[uav-enabled-computing-power-network|UAV-enabled Computing Power Networks]]: computing nodes are a PPP, and task-completion probability depends on whether at least one thinned node satisfies the communication and computation latency constraints under UAV energy limits.
 
 [[yang-2026-clustered-leo-adaptive-selection]] applies spherical stochastic geometry to a clustered LEO access layer. It models intra-cluster satellites, interfering satellites, and terrestrial users with point processes, then derives conditional coverage behavior for direct versus UAV-assisted cooperative transmission.
+
+[[chen-2026-air-ground-covert]] uses the framework on the security side: ground interferers are modeled as a homogeneous PPP, aggregate interference at the warden is approximated with a gamma distribution, and [[ambient-interference-aided-covertness]] becomes a measurable part of the air-to-ground covert-throughput analysis.
 
 A useful complement to per-task DRL/optimization papers: stochastic geometry tells you *whether the network can support the workload at all*, before per-task scheduling enters the picture.

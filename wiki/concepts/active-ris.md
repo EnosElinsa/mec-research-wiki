@@ -8,11 +8,15 @@ related:
   - "[[sun-2024-active-passive-ris-receiver]]"
   - "[[shi-2026-aoi-active-ris-noma-agmec]]"
   - "[[cui-2026-aris-v2x-icac]]"
+  - "[[aerial-active-ris-backhaul]]"
+  - "[[jeon-2026-ampli-flection-aerial-backhaul]]"
 created: 2026-05-31
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Active RIS
+
+[[jeon-2026-ampli-flection-aerial-backhaul]] uses [[aerial-active-ris-backhaul]] for full-3D UAV-BS backhaul, making active hardware power and dynamic noise part of the energy-efficiency calculation rather than treating RIS gain as free.
 
 A reconfigurable intelligent surface whose elements can adjust both the **phase and the amplitude** of incident signals, because each unit is backed by a power amplifier (e.g. tunnel diodes / active loads). Unlike a [[intelligent-reflecting-surface|passive RIS]] (phase-only, no amplification), an active RIS can amplify the desired signal and overcome the severe transmitter-RIS path-loss attenuation — at the cost of consuming power and injecting **dynamic noise**.
 

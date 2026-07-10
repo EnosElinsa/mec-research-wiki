@@ -14,8 +14,10 @@ related:
   - "[[liao-2026-aoi-ris-uav-usv-mec]]"
   - "[[li-2026-aerial-ris-trajectory-phase]]"
   - "[[tilt-aware-aerial-ris-control]]"
+  - "[[zhang-2026-air-ground-covert-jamming]]"
+  - "[[ris-assisted-directional-jamming]]"
 created: 2026-06-03
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # UAV-Mounted RIS
@@ -31,3 +33,5 @@ Design considerations that recur:
 In the wiki, [[pan-2025-uav-ris-energy-efficient-comm]] studies **cooperative multiple** UAV-RISs serving multiple ground users, jointly optimizing BS beamforming, UAV-RIS 3D locations, and discrete phase shifts under a multi-objective (rate/fairness/energy) formulation. It is related to but distinct from [[wu-2025-iopo-irs-uav-thz-mec]], which couples an IRS-UAV with THz MEC offloading rather than pure communication.
 
 The corpus also uses UAV-mounted RIS in MEC-specific roles. [[mohammadi-2026-star-ris-uav-mec-noma]] equips the UAV with a [[star-ris]] so transmitted and reflected paths can feed UAV-MEC and terrestrial MEC servers under NOMA. [[xiao-2025-star-ris-bidirectional-uav-mec]] mounts the STAR-RIS horizontally and uses its reflection/transmission paths for same-slot bidirectional offloading to BS-MEC and UAV-MEC servers. [[liao-2025-ris-uav-usv-resource-allocation]] mounts RIS elements on UAVs to assist blocked inland-waterway TBS-USV links in a [[maritime-mec]] setting, while [[liao-2026-aoi-ris-uav-usv-mec]] uses a RIS-carried tethered UAV with RUAV service decisions for AoI-aware UAV-USV MEC. [[li-2026-aerial-ris-trajectory-phase]] adds [[tilt-aware-aerial-ris-control]], where Euler-angle motion and orientation-dependent RIS gain become first-class communication variables.
+
+[[zhang-2026-air-ground-covert-jamming]] adds a security-oriented use: the UAV-mounted RIS assists decode-forward covert relay transmission while redirecting terrestrial jammer energy toward the warden rather than only improving the legitimate link.

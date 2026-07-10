@@ -13,8 +13,10 @@ related:
   - "[[wang-2026-blockchain-lae-fl-mappo]]"
   - "[[li-2026-tspf-forest-fire-uav-swarm]]"
   - "[[two-tier-submodel-partition]]"
+  - "[[aircomp-assisted-asynchronous-fl]]"
+  - "[[huang-2026-aircomp-uav-swarms-afl]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Federated Learning (FL)
@@ -26,3 +28,5 @@ This is the base concept underlying the wiki's narrower [[federated-reinforcemen
 [[wang-2026-blockchain-lae-fl-mappo]] applies FL in a low-altitude UAV-MEC stack: service UAVs train local models, the BS aggregates the global model, and MAPPO uses the learned policy layer for offloading, caching, and resource allocation.
 
 [[li-2026-tspf-forest-fire-uav-swarm]] adds a robust UAV-swarm variant: [[two-tier-submodel-partition]] aggregates selected layers inside spatially dispersed UAV groups and then combines group submodels at swarm level, while intragroup backup keeps training data available after UAV destruction.
+
+[[huang-2026-aircomp-uav-swarms-afl]] focuses on asynchronous FL rather than split/submodel partitioning. It uses communication UAVs as AirComp aggregators for sensing-UAV updates and applies layer-wise cosine-similarity filtering to reduce stale-model damage during UAV-swarm learning.

@@ -339,6 +339,7 @@
 ### Trust, security, and federated MEC
 
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
+- [[huang-2026-aircomp-uav-swarms-afl]] - Huang et al. 2026. AirComp-assisted asynchronous federated learning for UAV swarms; branch-and-bound/AO aggregation scheduling plus layer-wise staleness filtering for faster convergence (IEEE TWC).
 - [[gong-2026-lp2-casku-uav-clusters]] - Gong et al. 2026. LP2-CASKU privacy-preserving authentication and session-key update for dynamic low-altitude UAV clusters; message aggregation, cross-cluster anonymity/unlinkability, and forward/backward secrecy (IEEE TMC).
 - [[mao-2025-bcsa-frl]] — Mao et al. 2025. Blockchain-enabled cold-start FRL for ZT LEO satellite networks. *BCSA-FRL* (CCVM + CSRA).
 - [[mao-2025-irs-noma-fl-secrecy]] — Mao et al. 2025. **IRS-assisted** secrecy-rate maximization for **NOMA-based federated-learning** model aggregation; max-min secrecy rate over device power + IRS phase shift via **DDPG** (IEEE TCCN).
@@ -380,6 +381,8 @@
 - [[chen-2024-three-party-hierarchical-game-pls]] — Chen et al. 2024. **Three-party hierarchical game** for PLS with dynamic trilateral coalitions (LUs / EVs / JAs); HCSF + DRL (IEEE TWC).
 - [[wang-2026-secure-lae-uav-scheduling]] — Wang et al. 2026. Secure low-altitude aerial communications; UAVs dynamically switch between communication and artificial-noise jamming roles while optimizing scheduling, power, 3D trajectory, and velocity for secrecy energy efficiency (IEEE TWC).
 - [[hosseini-2026-aoi-covert-uav]] - Hosseini et al. 2026. UAV-assisted covert communication with AoI minimization, PD-NOMA public cover traffic, aerial Eve detection, and AO/SCA/SDR trajectory-beamforming design (IEEE TWC).
+- [[zhang-2026-air-ground-covert-jamming]] - Zhang et al. 2026. Air-ground cooperative covert transmission with UAV-mounted RIS directional jamming, SDR/Dinkelbach static optimization, and DDQN trajectory/user scheduling (IEEE TMC).
+- [[chen-2026-air-ground-covert]] - Chen et al. 2026. Air-to-ground covert communication under Willie-location uncertainty and PPP environmental interference; gamma interference approximation, covertness/reliability/covert-throughput analysis (IEEE TWC).
 - [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024. Secure UAV-**RIS**-MEC-IoT offloading against **aerial + ground eavesdroppers**; SOP over Nakagami-m + max-min **secure computation efficiency** via Dinkelbach + BCD + bisection (IEEE TCOMM).
 - [[su-2024-sensing-aided-isac-pls]] — Su et al. 2024. **Sensing-aided PLS** for ISAC: dual-functional BS estimates eavesdropper directions (CAML) then jointly minimizes CRB and maximizes AN-aided secrecy rate via AO + fractional programming (IEEE TWC).
 - [[wen-2024-iscc-edge-ai]] — Wen et al. 2024. **Task-oriented ISCC** for multi-device **edge-AI inference**: ISAC devices radar-sense multi-view data, quantize + offload features to an edge server running split inference; maximize **discriminant gain** (KL-divergence accuracy surrogate) over sensing/transmit power + comm time + quantization bits; non-convex but solved **optimally** by the **sum-of-ratios** method (IEEE TWC).
@@ -406,6 +409,7 @@
 - [[li-2025-omrp-cb-iot]] — Li et al. 2025. **Collaborative beamforming for static ground IoT** (the corpus's only ground-IoT CB entry): a sensing-area-**overlap**-driven hierarchical clustering routing protocol (**OMRP**) feeds **SoftPPO-LSTM** CB-node selection for the long uplink to a remote BS; +17% network lifetime over benchmark routing, +8.3% CB throughput over benchmark algorithms, Raspberry Pi 4B deployment (IEEE IoT-J).
 - [[zeng-2026-movable-antenna-u2u-channel]] - Zeng et al. 2026. Movable-antenna-aided MIMO wideband UAV-to-UAV channel model for LAE; closed-form STF-CF/SD-PSD/PSDS plus gradient log-det antenna-position optimization (IEEE TWC). *(Channel-model anchor, not MEC offloading.)*
 - [[lu-2026-uav-swarm-two-level-ma]] - Lu et al. 2026. UAV-swarm two-level movable-antenna system for LAE uplink communication; jointly optimizes swarm placement, local antenna positions, and receive beamforming (IEEE TWC). *(Physical-layer LAE anchor, not MEC offloading.)*
+- [[jeon-2026-ampli-flection-aerial-backhaul]] - Jeon & Chae 2026. Aerial active-RIS backhaul for UAV-BSs with full 3-D coverage; optimizes platform placement, array partitioning, phase, and amplification for energy efficiency (IEEE TWC).
 
 ### Architectural / spectrum / governance
 
@@ -592,6 +596,7 @@
 - [[prompt-engineering]]
 - [[distributed-foundation-models]]
 - [[over-the-air-computation]]
+- [[aircomp-assisted-asynchronous-fl]]
 - [[vehicle-fog-computing]]
 - [[edge-user-allocation]]
 - [[uav-data-collection]]
@@ -646,6 +651,7 @@
 - [[post-disaster-mec]]
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
+- [[aerial-active-ris-backhaul]]
 - [[stateless-geographic-fanet-routing]]
 - [[directional-fanet-link-maintenance]]
 - [[evolvable-route-expiration-time]]
@@ -854,6 +860,8 @@
 - [[temporal-spectrum-cartography]]
 - [[physical-layer-security]]
 - [[covert-communication]]
+- [[ris-assisted-directional-jamming]]
+- [[ambient-interference-aided-covertness]]
 - [[freshness-aware-covert-uav-communication]]
 - [[aoi-centric-uav-isac-beam-control]]
 - [[friendly-jamming-uav]]

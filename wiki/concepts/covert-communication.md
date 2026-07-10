@@ -10,10 +10,14 @@ related:
   - "[[ma-2024-covert-mmwave-finite-blocklength]]"
   - "[[hosseini-2026-aoi-covert-uav]]"
   - "[[freshness-aware-covert-uav-communication]]"
+  - "[[zhang-2026-air-ground-covert-jamming]]"
+  - "[[ris-assisted-directional-jamming]]"
+  - "[[chen-2026-air-ground-covert]]"
+  - "[[ambient-interference-aided-covertness]]"
   - "[[noma]]"
   - "[[age-of-information]]"
 created: 2026-06-03
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Covert Communication
@@ -30,3 +34,7 @@ Core ingredients that recur in covert-communication models:
 In the wiki, [[ma-2024-covert-mmwave-finite-blocklength]] studies covert **mmWave** communication with finite blocklength against spatially random wardens, deriving covertness constraints and the average effective covert throughput (AECT) for phased-array and linear frequency diverse array beamforming, then jointly optimizing transmit power and blocklength.
 
 [[hosseini-2026-aoi-covert-uav]] moves the same low-probability-of-detection idea into a UAV freshness setting. Its [[freshness-aware-covert-uav-communication]] model uses a public [[noma|PD-NOMA]] user as cover traffic while minimizing [[age-of-information]] for the covert user's updates under an aerial eavesdropper.
+
+[[zhang-2026-air-ground-covert-jamming]] adds [[ris-assisted-directional-jamming]]: a decode-and-forward UAV with an onboard RIS redirects a terrestrial friendly jammer's signal toward Willie while also relaying Alice's covert data. The design couples covertness, finite-blocklength relay decoding, RIS coefficients, and DDQN trajectory/user scheduling.
+
+[[chen-2026-air-ground-covert]] adds [[ambient-interference-aided-covertness]], where uncontrolled PPP-distributed ground interferers create the uncertainty that hides a UAV Alice from a location-uncertain Willie. Its tradeoff is not free: denser or stronger interference improves covertness while reducing Bob's connection probability.

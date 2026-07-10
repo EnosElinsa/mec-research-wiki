@@ -8,8 +8,10 @@ related:
   - "[[zheng-2026-active-search-low-altitude-uav]]"
   - "[[deng-2026-eret-fanet-routing]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
+  - "[[aerial-active-ris-backhaul]]"
+  - "[[jeon-2026-ampli-flection-aerial-backhaul]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Wireless Backhaul
@@ -20,6 +22,7 @@ Two flavors in the wiki:
 
 - **HAP-as-backhaul** — the HAPS provides high-bandwidth, line-of-sight backhaul for an underlying UAV layer. Used in [[liu-2025-haps-uav-maritime-iot]] explicitly.
 - **UAV-to-infrastructure backhaul** — the aerial access point must preserve a BS or upper-tier link while serving ground users. [[zheng-2026-active-search-low-altitude-uav]] makes this a search constraint by balancing BS-UAV and UAV-user objectives.
+- **Aerial active-RIS backhaul** - an airborne active RIS provides the relay-like backhaul path for UAV base stations while optimizing amplification, phase, platform placement, and array partitioning. [[jeon-2026-ampli-flection-aerial-backhaul]] is the corpus anchor for this [[aerial-active-ris-backhaul]] pattern.
 - **FANET swarm backhaul / forwarding** — multi-UAV networks need routing behavior that survives topology and traffic changes. [[deng-2026-eret-fanet-routing]] treats route-expiration time as an adaptive knob for moving between route reuse and content-centric discovery.
 - **Inter-RSU backhaul** — wired between RSUs, modeled in [[ma-2025-pdqn-vehicular-mec]] as a fixed, small per-hop transmission delay between adjacent RSUs (propagation-dominated, scaled by the number of road segments a relayed task crosses).
 

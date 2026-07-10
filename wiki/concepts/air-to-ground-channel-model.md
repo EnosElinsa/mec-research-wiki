@@ -14,8 +14,10 @@ related:
   - "[[hussain-2026-unet-uav-mmwave-pathloss]]"
   - "[[multi-modal-intelligent-channel-modeling]]"
   - "[[multi-scale-unet-pathloss-prediction]]"
+  - "[[chen-2026-air-ground-covert]]"
+  - "[[ambient-interference-aided-covertness]]"
 created: 2026-05-31
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Air-to-Ground Channel Model
@@ -28,3 +30,4 @@ The **air-to-ground (ATG) channel model** describes propagation between an aeria
 - [[hu-2026-latency-hybrid-uav-mec]] uses a probabilistic LoS/NLoS A2G channel inside a wireless-powered hybrid UAV-MEC latency problem, making UAV altitude part of both channel-quality and task-completion-latency control.
 - [[you-2019-rician-uav-data-harvesting]] uses [[angle-dependent-rician-fading]] rather than a LoS/NLoS probability mixture, making altitude control balance path loss against elevation-angle-dependent effective fading power under an outage constraint.
 - [[bai-2026-multimodal-uav-vehicle-channel]] and [[hussain-2026-unet-uav-mmwave-pathloss]] extend the channel-modeling side of the corpus: the former uses [[multi-modal-intelligent-channel-modeling]] with LiDAR-aided scatterer classes, while the latter uses [[multi-scale-unet-pathloss-prediction]] over geometry-derived LoS and building masks.
+- [[chen-2026-air-ground-covert]] uses the probabilistic LoS/NLoS air-to-ground channel inside a covert-communication model, where Bob's connection probability and Willie's detection behavior also depend on PPP-modeled environmental interference.

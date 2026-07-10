@@ -18,7 +18,7 @@ related:
   - "[[peng-2020-maddpg-uav-vehicular]]"
   - "[[ma-2025-pdqn-vehicular-mec]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-11
 ---
 
 # AirFogSim: A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing
@@ -68,5 +68,5 @@ This is the corpus's first simulator/tool source for UAV-integrated [[vehicle-fo
 
 ## Raw artifacts
 
-- `raw/sources/AirFogSim A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing/AirFogSim A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing.md`
+- `raw/sources/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

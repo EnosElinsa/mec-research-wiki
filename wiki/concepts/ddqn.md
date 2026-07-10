@@ -5,8 +5,9 @@ tags: [drl, q-learning, value-based]
 related:
   - "[[federated-reinforcement-learning]]"
   - "[[mao-2025-bcsa-frl]]"
+  - "[[zhang-2026-air-ground-covert-jamming]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-11
 ---
 
 # Double DQN (DDQN)
@@ -24,6 +25,8 @@ Compare to vanilla DQN, which uses $\arg\max_a Q_{\text{target}}$ — DDQN cuts 
 ## Why it appears in MEC papers
 
 The discrete-action subset of MEC offloading decisions (which satellite / which edge / which queue) is naturally Q-learning territory. DDQN is a low-variance, drop-in upgrade over DQN that adds little engineering cost. Used as the per-agent backbone in [[mao-2025-bcsa-frl]] for [[federated-reinforcement-learning|FRL]]-based offloading.
+
+[[zhang-2026-air-ground-covert-jamming]] uses DDQN outside the offloading setting: the learned controller schedules UAV trajectory movement and user service choices around a static RIS/jamming optimizer for covert transmission.
 
 ## Comparison with continuous-action methods
 

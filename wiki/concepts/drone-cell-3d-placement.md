@@ -12,8 +12,9 @@ related:
   - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
   - "[[zheng-2026-active-search-low-altitude-uav]]"
   - "[[equipotential-surface-uav-search]]"
+  - "[[aerial-active-ris-backhaul]]"
 created: 2026-06-01
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Drone-Cell 3-D Placement
@@ -27,3 +28,5 @@ The canonical formulation in this wiki is [[bor-yaliniz-2016-3d-abs-placement]],
 [[li-2026-uav-bs-semantic-mfmaddpg-kde]] adds the semantic-communication variant: UAV-BSs are still placed in 3-D, but the objective is BLEU-derived semantic fidelity under SINR and interference constraints rather than coverage count or bit throughput.
 
 [[zheng-2026-active-search-low-altitude-uav]] adds an online low-altitude variant where the UAV does not know user positions or the urban channel map in advance. Its [[equipotential-surface-uav-search]] method keeps the placement search tied to both access quality and BS backhaul, rather than solving an offline placement problem over known ground terminals.
+
+[[aerial-active-ris-backhaul]] is adjacent but not identical: the optimized aerial platform is an active RIS support for UAV-BS backhaul rather than the access drone-cell itself, so placement interacts with amplification power, phase control, and 3-D coverage of aerial receivers.
