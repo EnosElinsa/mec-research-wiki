@@ -18,6 +18,10 @@ related:
   - "[[wang-2026-stbc-cooperative-isac]]"
   - "[[li-2026-control-based-uav-isac]]"
   - "[[control-parameterized-uav-trajectory]]"
+  - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
+  - "[[rmaddpg-dda-uav-isac-control]]"
+  - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
+  - "[[dynamic-target-prioritization-metric]]"
 created: 2026-05-29
 updated: 2026-07-10
 ---
@@ -40,3 +44,5 @@ For a high-level survey of ISAC in the LAE context, see [[jiang-2025-isac-lae-ov
 [[wang-2026-stbc-cooperative-isac]] adds the shared-resource physical-layer version: multi-BS cooperative ISAC uses robust inter-BS nulling, a [[space-time-block-codec]], and SINR-weighted data fusion to sense low-altitude UAVs near cell edges without allocating fully orthogonal resources.
 
 [[li-2026-control-based-uav-isac]] adds a control-theoretic UAV-ISAC design: communication/sensing beamforming is optimized with SCA/SDR, while the UAV trajectory is represented through 3-DoF or 6-DoF dynamics and [[control-parameterized-uav-trajectory|control parameterization]] so planned sensing constraints remain meaningful for actual flight.
+
+Vehicular UAV-ISAC sources extend the same idea into moving-road targets. [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] uses [[rmaddpg-dda-uav-isac-control]] to adapt UAV motion, yaw, communication power, and ISAC transmit power for moving vehicles, while [[hazarika-2026-dynamo-uav-vehicle-tracking]] uses prediction, CRLB/FIM optimization, and [[dynamic-target-prioritization-metric|DTPM]] to decide which fast-moving vehicle should receive the next sensing update.

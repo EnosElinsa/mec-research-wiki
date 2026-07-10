@@ -9,8 +9,10 @@ related:
   - "[[li-2026-isac-vec-beamforming-deployment]]"
   - "[[wang-2026-stbc-cooperative-isac]]"
   - "[[cao-2026-uav-self-tracking-ms-mm]]"
+  - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
+  - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Cramér-Rao Bound (CRB / CRLB)
@@ -29,5 +31,7 @@ A lower bound on the variance of any unbiased estimator of a deterministic param
 - [[li-2026-isac-vec-beamforming-deployment]] uses CRB-style sensing metrics inside an ISAC effectiveness function for UAV-assisted vehicular edge computing, where deployment and beamforming must balance road coverage, radar mutual information, and UAV energy.
 - [[wang-2026-stbc-cooperative-isac]] derives and plots CRLB behavior for AoA estimation in multi-BS cooperative ISAC, using it to corroborate the observed angular-estimation RMSE trends.
 - [[cao-2026-uav-self-tracking-ms-mm]] derives per-dimension CRLBs for 3-D UAV self-tracking and compares the minor-subspace/MM/KF tracking pipeline against those lower bounds.
+- [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] uses a CRLB-derived sensing-quality term inside an effective-mutual-information reward for MARL-driven UAV-ISAC vehicular control.
+- [[hazarika-2026-dynamo-uav-vehicle-tracking]] uses FIM/CRLB sensing accuracy in the predictive UAV vehicle-tracking pipeline, then combines that with [[dynamic-target-prioritization-metric|DTPM]] and POMDP-MADDPG control.
 
 Distinct from outcome metrics like [[secrecy-outage-probability]]; the CRB bounds estimator variance, not an outage event.

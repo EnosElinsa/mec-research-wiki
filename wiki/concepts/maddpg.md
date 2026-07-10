@@ -17,9 +17,12 @@ related:
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
   - "[[kernel-density-mean-field-marl]]"
   - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
+  - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
+  - "[[rmaddpg-dda-uav-isac-control]]"
+  - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Multi-Agent Deep Deterministic Policy Gradient (MADDPG)
@@ -41,6 +44,8 @@ The multi-agent extension of [[ddpg]]: each agent has its own deterministic acto
 - [[feng-2026-prediction-service-migration]] — MADDPG coordinates multi-UAV trajectory and service-migration decisions after LSTM prediction and Lyapunov cost control.
 - [[tang-2026-hg-maddpg-uav-rescue]] — HG-MADDPG combines Hungarian area assignment, Lyapunov queues, and a generative-diffusion-enhanced MADDPG actor for low-altitude UAV rescue.
 - [[li-2026-uav-bs-semantic-mfmaddpg-kde]] — MF-MADDPG-KDE uses mean-field MADDPG plus kernel-density action-distribution modeling for 3-D semantic UAV-BS deployment.
+- [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] — [[rmaddpg-dda-uav-isac-control]] adds random-network-distillation novelty, parameter sharing, and dynamic data augmentation to MADDPG for UAV-enabled vehicular ISAC.
+- [[hazarika-2026-dynamo-uav-vehicle-tracking]] — POMDP-MADDPG controls predictive multi-UAV vehicle tracking after DynaMo prediction and [[dynamic-target-prioritization-metric|DTPM]] prioritization.
 
 ## Relation to siblings
 

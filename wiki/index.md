@@ -222,6 +222,7 @@
 - [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
 - [[wang-2026-scalable-multiuav-analytics]] - Wang et al. 2026. Scalable collaborative multi-UAV video analytics; JDTSO centralized deployment/scheduling for small swarms and MAPDP distributed MAPPO+DAG partitioning for larger swarms (IEEE TGCN).
 - [[zhu-2026-hab-mappo-target-search]] - Zhu et al. 2026. HAB-MAPPO cooperative UAV target search; 3D continuous trajectory, laser charging, heuristic image offloading/resource allocation, two-level attention, Beta policy, and curriculum learning (IEEE TMC).
+- [[li-2026-la4h-uav-active-tracking]] - Li, Zhou, and Wu 2026. LA4H expert-assisted anomaly-aware UAV active target tracking; cross-modal anomaly cognition, assistance decisions, and teacher-student distillation for occlusion and distractor recovery (IEEE TMC).
 - [[li-2026-tspf-forest-fire-uav-swarm]] - Li et al. 2026. Two-tier submodel partition for robust UAV-swarm forest-fire detection; graph-colored groups, intragroup backup, dynamic server selection, and two-tier federated aggregation (IEEE TMC).
 - [[qu-ecoei-uav-swarm]] — Qu et al. **eCoEI** — elastic OODA-loop collaborative DL inference for UAV swarms, robust to node/A2A-link failure; proof-of-concept on Jetson devices (IEEE Communications Magazine; year not in parse).
 - [[li-2025-stochastic-game-uav-swarm]] — Li et al. 2025. Energy-efficient UAV-swarm MEC as five **stochastic games** with dynamic clustering; RLDC multi-agent Q-learning.
@@ -348,6 +349,8 @@
 ### ISAC, sensing & physical-layer security
 
 - [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026. LSCR target handover for collaborative UAV relay tracking; Delaunay target graphs, TGR features, and Twin-GRCN similarity matching reach 92.1% accuracy with 0.063 KB transfer and a 20 KB model (IEEE T-ITS).
+- [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] - Wang et al. 2026. UAV-enabled vehicular ISAC with RMADDPG-DDA adaptive control over UAV motion/yaw, communication power, and ISAC transmit power; RND novelty, parameter sharing, and dynamic data augmentation improve served users and effective MI (IEEE TMC).
+- [[hazarika-2026-dynamo-uav-vehicle-tracking]] - Hazarika & Rahmati 2026. Predictive UAV tracking for fast-moving vehicles using DynaMo motion prediction, DTPM prioritization, CRLB/FIM optimization, and POMDP-MADDPG control (IEEE T-ITS).
 - [[li-2026-control-based-uav-isac]] - Li et al. 2026. Control-based UAV-ISAC beamforming and trajectory design; SCA/SDR beamforming plus 3-DoF/6-DoF control-parameterized trajectory optimization by SQP reduces actual-flight sensing violations and rate degradation (IEEE TWC).
 - [[zhao-2026-mappo-jscc-aec]] - Zhao et al. 2026. HAP-assisted multi-UAV sensing-communication-computing; Lyapunov energy stability plus MAPPO-JSCC with embedded sensing, SCA, and Dinkelbach solvers (IEEE TWC).
 - [[wen-2026-uav-edge-inference-iscc]] - Wen et al. 2026. UAV-assisted ISCC edge inference; Hamiltonian-cycle access ordering plus AO/SA trajectory/resource optimization under discriminant-gain accuracy constraints (IEEE TWC).
@@ -458,6 +461,7 @@
 - [[hussain-2026-unet-uav-mmwave-pathloss]] - Hussain 2026. Multi-scale U-Net pathloss prediction for UAV-assisted mmWave networks using log-distance, LoS-mask, and building-mask inputs plus vectorized LoS preprocessing (IEEE TWC).
 - [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026. AIM angle-of-radiation-aware UAV relay-chain deployment; joint 3-D position and heading search minimizes relay count under per-link RSS thresholds and maintains 100% success in the parsed terrain/RSS tests (IEEE TMC).
 - [[bujari-2018-stateless-fanet-routing]] - Bujari et al. 2018. Comparative study of stateless geographic FANET routing; progress, randomized, face/projection, hybrid, and restricted-flooding protocols are evaluated for delivery, path dilation, traffic, and scalability in 3-D UAV ad hoc networks (IEEE TMC).
+- [[song-2026-albpd-directional-fanet]] - Song et al. 2026. ALBP-D directional FANET link maintenance; breakage-probability prediction separates distance and angular failures, then adjusts beamwidth/range for longer UAV-to-UAV link lifetime (IEEE TWC).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
 - [[zeng-2016-throughput-relaying]] — Zeng et al. 2016. **UAV mobile relaying** throughput maximization; joint relay trajectory + source/relay power; "staircase" water-filling power structure + SCA trajectory under **information-causality** (IEEE TCOMM). *(UAV mobile-relaying anchor, not MEC.)*
 - [[zhao-2019-uav-emergency-disasters]] — Zhao et al. 2019. **UAV-assisted emergency networks** in disasters (magazine framework): joint trajectory+scheduling with surviving BSs, multihop D2D coverage extension, and multihop UAV relaying (AF/DF) — IEEE Wireless Communications. *(Post-disaster comms framework, not a single MEC formulation.)*
@@ -627,6 +631,7 @@
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
 - [[stateless-geographic-fanet-routing]]
+- [[directional-fanet-link-maintenance]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
 - [[uav-mounted-ris]]
@@ -664,6 +669,7 @@
 - [[ddpg]]
 - [[td3]] · [[multi-agent-td3]]
 - [[maddpg]]
+- [[rmaddpg-dda-uav-isac-control]]
 - [[kernel-density-mean-field-marl]]
 - [[multi-agent-diffusion-policy]]
 - [[masac]]
@@ -815,6 +821,7 @@
 - [[uav-localization-under-jamming]]
 - [[integrated-sensing-computation-communication]]
 - [[target-graph-representation]]
+- [[expert-assisted-anomaly-aware-tracking]]
 - [[mmwave-radar-sensing]]
 - [[radar-sensing-energy-tradeoff]]
 - [[uav-backscatter-identification]]
@@ -871,6 +878,7 @@
 - [[energy-latency-tradeoff]]
 - [[effective-energy-efficiency]]
 - [[age-of-information]]
+- [[dynamic-target-prioritization-metric]]
 - [[aoi-energy-tradeoff]]
 
 ### Distributed inference

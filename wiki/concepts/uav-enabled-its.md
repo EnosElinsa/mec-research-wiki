@@ -10,8 +10,11 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[ji-2026-llm-iov-uav-offloading]]"
   - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
+  - "[[li-2026-la4h-uav-active-tracking]]"
+  - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
+  - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # UAV-Enabled Intelligent Transportation Systems (ITS)
@@ -23,3 +26,5 @@ Distinct from **vehicular MEC** ([[vehicular-mec]]) — vehicular MEC offloads t
 Key wiki source: [[peng-2024-energy-time-uav-its]], which adds the **completion-time-difference** objective (synchronize finish times for fusion quality) on top of standard energy minimization. [[ji-2026-llm-iov-uav-offloading]] is adjacent but vehicle-task-driven: UAVs provide 3D coverage and edge offloading support for dense IoV traffic, with LLM-assisted resource adjustment for long-tail failures.
 
 [[hou-2025-pbia-air-iscc-uav-its]] adds an Air-ISCC view: UAVs sense blocked or accident-affected road environments, communicate with IoTDs, and compute offloaded tasks under a PPO-based swarm policy. [[beishenalieva-2026-secrecy-aware-uav-path-planning]] adds the security view: UAVs act as mobile aggregators when RSUs fail or congest, while policy-gradient control and PSO slot scheduling protect ITS sensing uploads from malicious aerial eavesdroppers and jammers.
+
+Adjacent tracking sources broaden the sensing side of the concept. [[li-2026-la4h-uav-active-tracking]] focuses on visual active target tracking under occlusion and distractor interference, [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] controls UAV-enabled vehicular ISAC with MARL, and [[hazarika-2026-dynamo-uav-vehicle-tracking]] prioritizes fast-moving vehicles using prediction uncertainty, link quality, and freshness rather than [[age-of-information]] alone.

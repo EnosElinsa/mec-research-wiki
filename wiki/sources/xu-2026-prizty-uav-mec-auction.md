@@ -19,7 +19,7 @@ related:
   - "[[wang-2024-blockchain-uav-mec-dpos]]"
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-10
 ---
 
 # A Privacy-Preserving Auction for Task Offloading and Resource Allocation in UAV-Assisted MEC
@@ -69,5 +69,6 @@ This page extends the market-mechanism side of the corpus. It is a UAV-MEC rever
 
 ## Raw artifacts
 
-- `raw/sources/A Privacy-Preserving Auction for Task Offloading and Resource Allocation in UAV-Assisted MEC/A Privacy-Preserving Auction for Task Offloading and Resource Allocation in UAV-Assisted MEC.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC.md`
+- Origin PDF: `raw/sources/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC.pdf`
+- Figures: `raw/sources/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC/images/`

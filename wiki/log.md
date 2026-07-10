@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-10] Curated UAV tracking, vehicular ISAC, and directional FANET maintenance
+
+Added four source pages and four concept pages, repaired one existing source-to-raw pointer, and updated two existing author rosters:
+
+- [[li-2026-la4h-uav-active-tracking]] - Li, Zhou, and Wu 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3666656`. LA4H expert-assisted anomaly-aware UAV active target tracking with cross-modal anomaly cognition, assistance decisions, and teacher-student distillation for occlusion/distractor recovery.
+- [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] - Wang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3591259`. UAV-enabled vehicular ISAC with RMADDPG-DDA, RND novelty, parameter sharing, dynamic data augmentation, and multi-objective sensing/communication/energy rewards.
+- [[hazarika-2026-dynamo-uav-vehicle-tracking]] - Hazarika and Rahmati 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3639545`. Predictive UAV fast-vehicle tracking with DynaMo, DTPM, CRLB/FIM optimization, and POMDP-MADDPG.
+- [[song-2026-albpd-directional-fanet]] - Song et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3627301`. ALBP-D directional FANET link maintenance via distance/angular breakage-probability prediction and beamwidth/range adjustment.
+- [[xu-2026-prizty-uav-mec-auction]] - corrected the raw artifact path to the underscore-named raw folder so curation status recognizes the parsed source.
+
+New concept pages: [[expert-assisted-anomaly-aware-tracking]], [[rmaddpg-dda-uav-isac-control]], [[dynamic-target-prioritization-metric]], and [[directional-fanet-link-maintenance]]. Updated backlinks for [[integrated-sensing-and-communication]], [[age-of-information]], [[stateless-geographic-fanet-routing]], [[cramer-rao-bound]], [[maddpg]], [[uav-enabled-its]], and [[expert-guided-warm-start-rl]]. Updated author rosters for [[qihui-wu]] and [[dusit-niyato]], then refreshed `wiki/index.md` and `wiki/overview.md`.
+
+Metadata notes: the local parses for the four new source pages are silent on DOI/venue/year, so DOI/venue/year metadata was verified against title-matched DOI records; technical claims and numeric findings are grounded in the local parses. [[hazarika-2026-dynamo-uav-vehicle-tracking]] reports conflicting DynaMo RMSE values between Table I and narrative text, so the source page records both instead of merging them. [[xu-2026-prizty-uav-mec-auction]] already had a source page; only its artifact pointer and curation date changed.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-current-2026-07-10-batch4-final.json` reported 372 sources, 346 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-current-2026-07-10-batch4-final.json` reported 612 raw folders, 278 curated raw references, 334 genuinely new uncurated folders remaining, and 97 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans` reported no dangling links; orphan reporting remains informational for raw-source mirrors and parse artifacts. `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean for this batch. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-2026-07-10-batch4-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 841 nodes and 7956 edges.
+
 ## [2026-07-10] Curated TN-NTN incentives and UAV channel-modeling foundations
 
 Added four source pages and four concept pages, and repaired one existing source-to-raw pointer:
