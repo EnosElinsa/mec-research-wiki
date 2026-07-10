@@ -8,8 +8,12 @@ related:
   - "[[fl-poisoning-attacks]]"
   - "[[mao-2025-bcsa-frl]]"
   - "[[gao-2026-fmad3qn-uav-gd-association]]"
+  - "[[huang-2025-fedx-ris-uav-trajectory]]"
+  - "[[seid-2026-mafdrl-tn-ntn-incentive]]"
+  - "[[fedx-training-acceleration]]"
+  - "[[hierarchical-federated-drl]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Federated Reinforcement Learning (FRL)
@@ -34,6 +38,8 @@ The classical recipe is FedAvg ([37] in [[mao-2025-bcsa-frl]]'s reference list �
 - **Reputation-weighted aggregation** — weights scaled by historical contribution quality.
 - **Decentralized aggregation** — no central server; consensus reached via [[blockchain-for-fl-aggregation]].
 - **Cold-start aggregation** — sharply down-weight recently-attacked participants and gradually recover them. See [[csra-cold-start-reputation-aggregation]].
+- **Thread-level aggregation for acceleration** - [[huang-2025-fedx-ris-uav-trajectory]] uses [[fedx-training-acceleration]] to aggregate SAC/PPO worker-thread models for faster RIS-assisted UAV trajectory training.
+- **Hierarchical aggregation over TN-NTN layers** - [[seid-2026-mafdrl-tn-ntn-incentive]] uses [[hierarchical-federated-drl]] so ED, UAV/UCH, and HAP agents share parameters upward while making local offloading and resource decisions.
 
 ## Threat model
 

@@ -23,7 +23,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[xuemin-shen]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-10
 ---
 
 # A Lyapunov-Guided Diffusion-Based Reinforcement Learning Approach for UAV-Assisted Vehicular Networks With Delayed CSI Feedback
@@ -77,5 +77,6 @@ This is the vehicular counterpart to the corpus's broader [[lyapunov-optimizatio
 
 ## Raw artifacts
 
-- `raw/sources/A Lyapunov-Guided Diffusion-Based Reinforcement Learning Approach for UAV-Assisted Vehicular Networks With Delayed CSI Feedback/A Lyapunov-Guided Diffusion-Based Reinforcement Learning Approach for UAV-Assisted Vehicular Networks With Delayed CSI Feedback.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md`
+- Origin PDF: `raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.pdf`
+- Figures: `raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/images/`

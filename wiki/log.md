@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-10] Curated TN-NTN incentives and UAV channel-modeling foundations
+
+Added four source pages and four concept pages, and repaired one existing source-to-raw pointer:
+
+- [[huang-2025-fedx-ris-uav-trajectory]] - Huang et al. 2025, *IEEE TMC*, DOI `10.1109/TMC.2025.3544903`. RIS-assisted UAV trajectory planning with the FedX acceleration framework, multi-threaded SAC rollouts, and federated aggregation across environment agents.
+- [[seid-2026-mafdrl-tn-ntn-incentive]] - Seid et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3608291`. Hierarchical MAFDRL resource allocation and incentive mechanism for 6G TN-NTN using HFL, MEC-side task-offloading control, CTDE training, and double-auction participation incentives.
+- [[bai-2026-multimodal-uav-vehicle-channel]] - Bai et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3630319`. Multi-modal intelligent channel model for 6G multi-UAV-to-multi-vehicle links, joining geometric stochastic modeling, sensing/environment modalities, and data-driven channel prediction.
+- [[hussain-2026-unet-uav-mmwave-pathloss]] - Hussain et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3670373`. Multi-scale feature extraction and fusion U-Net for UAV-assisted mmWave pathloss prediction, using elevation maps, building occupancy maps, and UAV/receiver geometry.
+- [[liu-2026-lyapunov-diffusion-uav-vehicular]] - corrected the raw artifact path to the underscore-named raw folder so curation status recognizes the parsed source.
+
+New concept pages: [[fedx-training-acceleration]], [[hierarchical-federated-drl]], [[multi-modal-intelligent-channel-modeling]], and [[multi-scale-unet-pathloss-prediction]]. Updated backlinks for [[federated-reinforcement-learning]], [[double-auction]], [[air-to-ground-channel-model]], and [[uav-trajectory-control]], then refreshed `wiki/index.md` and `wiki/overview.md`.
+
+Metadata notes: [[liu-2026-lyapunov-diffusion-uav-vehicular]] already had a source page; only its artifact pointer and curation date changed. DOI/venue/year metadata for the parse-silent entries were verified against title-matched Crossref records. The multi-modal channel parse includes DOI `10.1109/TWC.2025.3630319`; Crossref's issued year is 2026. The MAFDRL parse asserts secure MPC, but the source page records that the parse does not provide protocol, threat-model, overhead, or privacy-experiment detail.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-current-2026-07-10-batch3-after.json` reported 368 sources, 342 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-current-2026-07-10-batch3-after.json` reported 612 raw folders, 273 curated raw references, 339 genuinely new uncurated folders remaining, and 98 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans` reported no dangling links; orphan reporting remains informational for raw-source mirrors and parse artifacts. `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean for this batch. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-2026-07-10-batch3-after.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions.
+
 ## [2026-07-10] Curated 5 UAV relay / ARIS V2X / FANET routing / ISAC control sources
 
 Added five source pages and five concept pages:

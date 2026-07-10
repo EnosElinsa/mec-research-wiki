@@ -164,6 +164,7 @@
 - [[diallo-2026-system-cost-uav-leo-offloading]] - Diallo et al. 2026. UAV-assisted LEO task offloading with task dropping cost, UAV trajectory, transmit power, and offloading/computing scheduling solved by a four-block classical decomposition (IEEE TGCN).
 
 - [[zhao-2026-hcdrl-ga-sagin-sar]] - Zhao et al. 2026. Multi-UAV SAR in SAGIN; HCDRL/HCSAC trajectory/offloading with CNN+GCN state encoding plus GA deployment search under NOAA-derived wind fields (IEEE TMC).
+- [[seid-2026-mafdrl-tn-ntn-incentive]] - Seid et al. 2026. TN-NTN offloading/resource allocation with a hierarchical double auction and hierarchical federated MADDPG/DDPG control across EDs, UAVs, HAPs, and LEO-backed coverage (IEEE TMC).
 
 - [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019. **First SAGIN computing-offloading** paper for remote IoT; UAV edge + satellite cloud; MDP + **actor-critic RL** offloading + heuristic VM allocation (IEEE JSAC).
 - [[zhou-2021-delay-sagin-task-scheduling]] — Zhou et al. 2021. Delay-oriented IoT task scheduling in SAGIN; UAV collects tasks and schedules local / BS / LEO execution via deep risk-sensitive RL with separate delay-cost and energy-risk Q-functions (IEEE TWC).
@@ -201,6 +202,8 @@
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
 
 - [[wu-2026-model-based-ppo-ris-uav-mec]] - Wu et al. 2026. RIS-assisted urban multi-UAV MEC with decentralized model-based PPO; local k-hop observations, RIS phase proposals, and branched rollouts for trajectory/offloading control (IEEE TMC).
+
+- [[huang-2025-fedx-ris-uav-trajectory]] - Huang et al. 2025. RIS-assisted UAV communication trajectory planning with incomplete CSI, quadrotor propulsion, and FedX-accelerated SAC/PPO training (IEEE TMC).
 
 - [[qin-2023-ris-uav-mec-ee]] - Qin et al. 2023. RIS-assisted UAV-MEC energy efficiency with NOMA; Dinkelbach + BCD/DC/SCA over task bits, power, RIS phase shifts, and UAV trajectory under imperfect CSI (IEEE TGCN).
 
@@ -451,6 +454,8 @@
 
 ### UAV communications & deployment foundations
 
+- [[bai-2026-multimodal-uav-vehicle-channel]] - Bai et al. 2026. LiDAR-aided multi-modal intelligent channel model for multi-UAV-to-multi-vehicle links; MUMV-CSCI dataset, TTD/ATD density parameters, and TSF-CF/TSI/DPSD statistics (IEEE TWC).
+- [[hussain-2026-unet-uav-mmwave-pathloss]] - Hussain 2026. Multi-scale U-Net pathloss prediction for UAV-assisted mmWave networks using log-distance, LoS-mask, and building-mask inputs plus vectorized LoS preprocessing (IEEE TWC).
 - [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026. AIM angle-of-radiation-aware UAV relay-chain deployment; joint 3-D position and heading search minimizes relay count under per-link RSS thresholds and maintains 100% success in the parsed terrain/RSS tests (IEEE TMC).
 - [[bujari-2018-stateless-fanet-routing]] - Bujari et al. 2018. Comparative study of stateless geographic FANET routing; progress, randomized, face/projection, hybrid, and restricted-flooding protocols are evaluated for delivery, path dilation, traffic, and scalability in 3-D UAV ad hoc networks (IEEE TMC).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
@@ -791,6 +796,8 @@
 - [[air-to-ground-channel-model]]
 - [[angle-dependent-rician-fading]]
 - [[radio-map-assisted-channel-estimation]]
+- [[multi-modal-intelligent-channel-modeling]]
+- [[multi-scale-unet-pathloss-prediction]]
 - [[movable-antenna]]
 - [[two-level-movable-antenna]]
 - [[terrain-aware-channel-model]]
@@ -833,6 +840,8 @@
 - [[federated-learning]]
 - [[split-federated-learning]]
 - [[federated-reinforcement-learning]]
+- [[fedx-training-acceleration]]
+- [[hierarchical-federated-drl]]
 - [[decentralized-federated-learning]]
 - [[blockchain-for-fl-aggregation]]
 - [[byzantine-fault-tolerant-consensus]]
