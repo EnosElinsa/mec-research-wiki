@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-10] Curated active UAV search, FANET routing, clustered LEO access, and surface-air control
+
+Added four source pages and four concept pages, and repaired one existing source-to-raw pointer:
+
+- [[zheng-2026-active-search-low-altitude-uav]] - Zheng and Chen 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3689691`. Online low-altitude UAV sensing/communication search under unknown user locations and unknown blockage, with equipotential-surface search and local LoS channel estimation.
+- [[deng-2026-eret-fanet-routing]] - Deng et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3694704`. eRET adaptive FANET routing that evolves route expiration time so UAV swarms shift between host-centric route reuse and content-centric discovery.
+- [[yang-2026-clustered-leo-adaptive-selection]] - Yang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3660891`. Clustered LEO direct/cooperative communication with UAV assistance, spherical stochastic geometry, shadowed-Rician fading, and adaptive signal selection.
+- [[zhang-2026-fuzzy-observer-harbor-approach]] - Zhang et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3705994`. Surface-air harbor-approach guidance/control with an adaptive event-triggered fuzzy state observer for heterogeneous USV-UAV dynamics.
+- [[li-2023-adaptive-digital-twin-uav-iscc]] - corrected the raw artifact path to the underscore-named raw folder so curation status recognizes the parsed source.
+
+New concept pages: [[equipotential-surface-uav-search]], [[evolvable-route-expiration-time]], [[clustered-leo-adaptive-selection]], and [[event-triggered-fuzzy-state-observer]]. Updated backlinks for [[radio-map-assisted-channel-estimation]], [[drone-cell-3d-placement]], [[stateless-geographic-fanet-routing]], [[directional-fanet-link-maintenance]], [[uav-usv-cooperative-mec]], [[leo-satellite-edge-computing]], [[stochastic-geometry-network-analysis]], and [[wireless-backhaul]], then refreshed `wiki/index.md` and `wiki/overview.md`.
+
+Metadata notes: the active-search and eRET parses are silent on final DOI/venue headers, so bibliographic metadata was verified against title-matched IEEE Computer Society records. The clustered-LEO and harbor-approach parses contain DOI evidence in the local Markdown. Technical claims and numeric findings remain grounded in the local parsed Markdown; OCR/math corruption and simulation-only caveats are recorded on the source pages.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-current-2026-07-10-batch6-final.json` reported 381 sources, 355 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-current-2026-07-10-batch6-final.json` reported 612 raw folders, 288 curated raw references, 324 genuinely new uncurated folders remaining, and 96 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans` reported no dangling links; orphan reporting remains informational for raw-source mirrors and parse artifacts. `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean for this batch. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-2026-07-10-batch6-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 859 nodes and 8119 edges.
+
 ## [2026-07-10] Curated UAV anti-jamming, swarm autonomy, CAV coordination, crowd sensing, and visual coverage
 
 Added five source pages and five concept pages:

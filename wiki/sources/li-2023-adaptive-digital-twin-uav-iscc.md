@@ -24,7 +24,7 @@ related:
   - "[[kang-2023-mappo-hierarchical-aerial]]"
   - "[[ning-zhang]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-10
 ---
 
 # Adaptive Digital Twin for UAV-Assisted Integrated Sensing, Communication, and Computation Networks
@@ -75,5 +75,6 @@ This is the wiki's cleanest bridge between [[digital-twin]], [[integrated-sensin
 
 ## Raw artifacts
 
-- `raw/sources/Adaptive Digital Twin for UAV-Assisted Integrated Sensing- Communication- and Computation Networks/Adaptive Digital Twin for UAV-Assisted Integrated Sensing- Communication- and Computation Networks.md`
-- Original PDF and extracted figures (`images/`) in the same folder.
+- Parse: `raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.md`
+- Origin PDF: `raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.pdf`
+- Figures: `raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/images/`

@@ -10,8 +10,10 @@ related:
   - "[[cellular-connected-uav]]"
   - "[[bor-yaliniz-2016-3d-abs-placement]]"
   - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
+  - "[[zheng-2026-active-search-low-altitude-uav]]"
+  - "[[equipotential-surface-uav-search]]"
 created: 2026-06-01
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Drone-Cell 3-D Placement
@@ -23,3 +25,5 @@ What makes it genuinely 3-D, rather than a terrestrial-BS siting problem, is the
 The canonical formulation in this wiki is [[bor-yaliniz-2016-3d-abs-placement]], which casts revenue-maximizing 3-D placement as a quadratically-constrained [[mixed-integer-nonlinear-programming|MINLP]], introduces an altitude-to-coverage-radius variable solvable by 1-D bisection, and solves the residual with an interior-point solver. The underlying urban LoS-probability channel comes from [[al-hourani-2014-optimal-lap-altitude]] (see [[air-to-ground-channel-model]]). The problem differs from clustering-based multi-UAV siting like [[weighted-kmeans-uav-deployment]] (which partitions users among several UAVs) and from [[cellular-connected-uav]] (UAV as a *user* of the cellular network, not a base station).
 
 [[li-2026-uav-bs-semantic-mfmaddpg-kde]] adds the semantic-communication variant: UAV-BSs are still placed in 3-D, but the objective is BLEU-derived semantic fidelity under SINR and interference constraints rather than coverage count or bit throughput.
+
+[[zheng-2026-active-search-low-altitude-uav]] adds an online low-altitude variant where the UAV does not know user positions or the urban channel map in advance. Its [[equipotential-surface-uav-search]] method keeps the placement search tied to both access quality and BS backhaul, rather than solving an offline placement problem over known ground terminals.

@@ -170,6 +170,7 @@
 - [[cheng-2019-sagin-iot-offloading-rl]] — Cheng et al. 2019. **First SAGIN computing-offloading** paper for remote IoT; UAV edge + satellite cloud; MDP + **actor-critic RL** offloading + heuristic VM allocation (IEEE JSAC).
 - [[zhou-2021-delay-sagin-task-scheduling]] — Zhou et al. 2021. Delay-oriented IoT task scheduling in SAGIN; UAV collects tasks and schedules local / BS / LEO execution via deep risk-sensitive RL with separate delay-cost and energy-risk Q-functions (IEEE TWC).
 - [[liu-2024-sagin-spherical-sg-connectivity]] — Liu et al. 2024. **Spherical stochastic geometry** uplink path connectivity analysis for SAGIN; GUs + AVs on spherical surfaces; three connectivity metrics; first such model (IEEE JSAC).
+- [[yang-2026-clustered-leo-adaptive-selection]] - Yang et al. 2026. Clustered LEO direct/cooperative communication with a UAV relay, spherical stochastic geometry, shadowed-Rician fading, and adaptive signal selection (IEEE TWC).
 - [[huang-2026-amappo-satellite-edge]] — Huang et al. 2026. Cost-aware dependent-task offloading in UAV-assisted satellite edge computing; direct IoTD-to-LEO in spacious regions, UAV relay in obstructive regions, MATS DAG sequencing + asynchronous GNN-augmented MAPPO (IEEE TMC).
 - [[he-2026-dt-sagimec-lae]] — He et al. 2026. DT-assisted SAGIMEC for low-altitude economy; ISD/UAV/LEO/cloud architecture, Lyapunov per-slot control, satellite-latency learning, and Stackelberg-game decentralized decisions (IEEE TMC).
 - [[gao-2024-sagin-perception-offloading]] — Gao et al. 2024. **Perception-aided** SAGIN offloading (mmWave radar + YOLOv7 → DRL state); Lyapunov + DDPG + DQN + SGHS.
@@ -465,6 +466,9 @@
 - [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026. AIM angle-of-radiation-aware UAV relay-chain deployment; joint 3-D position and heading search minimizes relay count under per-link RSS thresholds and maintains 100% success in the parsed terrain/RSS tests (IEEE TMC).
 - [[bujari-2018-stateless-fanet-routing]] - Bujari et al. 2018. Comparative study of stateless geographic FANET routing; progress, randomized, face/projection, hybrid, and restricted-flooding protocols are evaluated for delivery, path dilation, traffic, and scalability in 3-D UAV ad hoc networks (IEEE TMC).
 - [[song-2026-albpd-directional-fanet]] - Song et al. 2026. ALBP-D directional FANET link maintenance; breakage-probability prediction separates distance and angular failures, then adjusts beamwidth/range for longer UAV-to-UAV link lifetime (IEEE TWC).
+- [[deng-2026-eret-fanet-routing]] - Deng et al. 2026. eRET adaptive FANET routing evolves route expiration time so UAV swarms shift between host-centric route reuse and content-centric discovery (IEEE TMC).
+- [[zheng-2026-active-search-low-altitude-uav]] - Zheng & Chen 2026. Active low-altitude UAV sensing/communication search under unknown user locations and unknown blockage; equipotential-surface search plus online LoS channel estimation (IEEE TMC).
+- [[zhang-2026-fuzzy-observer-harbor-approach]] - Zhang et al. 2026. Surface-air vehicle harbor-approach control with time-varying guidance and an adaptive event-triggered fuzzy state observer (IEEE T-ITS).
 - [[gao-2023-uav-mcs-uma]] - Gao et al. 2023. UMA UAV-assisted mobile crowd sensing; combines participant incentives, quality prediction, UAV coverage, sensor calibration, and MADDPG scheduling (IEEE TMC).
 - [[gong-2026-uav-3d-visual-coverage]] - Gong et al. 2026. Path-aware 3-D object visual coverage with a single UAV; viewpoint generation plus energy-aware B-spline trajectory optimization (IEEE TMC).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
@@ -618,6 +622,7 @@
 - [[low-altitude-intelligent-network]]
 - [[ground-embedded-robot]]
 - [[leo-satellite-edge-computing]]
+- [[clustered-leo-adaptive-selection]]
 - [[leo-satellite-coverage-time]]
 - [[leo-handover-protocol]]
 - [[walker-star-constellation]]
@@ -639,6 +644,7 @@
 - [[wireless-backhaul]]
 - [[stateless-geographic-fanet-routing]]
 - [[directional-fanet-link-maintenance]]
+- [[evolvable-route-expiration-time]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
 - [[uav-mounted-ris]]
@@ -651,6 +657,8 @@
 
 - [[uav-trajectory-control]]
 - [[control-parameterized-uav-trajectory]]
+- [[equipotential-surface-uav-search]]
+- [[event-triggered-fuzzy-state-observer]]
 - [[compliance-aware-uav-trajectory]]
 - [[trajectory-privacy]]
 - [[bang-bang-control]]

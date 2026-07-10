@@ -4,6 +4,8 @@ title: "Stateless Geographic FANET Routing"
 tags: [routing, fanet, uav-communications, geographic-routing]
 related:
   - "[[bujari-2018-stateless-fanet-routing]]"
+  - "[[deng-2026-eret-fanet-routing]]"
+  - "[[evolvable-route-expiration-time]]"
   - "[[song-2026-albpd-directional-fanet]]"
   - "[[directional-fanet-link-maintenance]]"
   - "[[uav-mobile-relaying]]"
@@ -19,3 +21,5 @@ Stateless geographic FANET routing forwards each packet using current node and d
 [[bujari-2018-stateless-fanet-routing]] compares deterministic progress, randomized progress, face/projection, hybrid, and restricted-flooding variants under a common simulation setup. Its main design lesson is a tradeoff: progress methods are scalable and short-path but can fail at local minima; face methods deliver more packets but can create long paths; hybrid methods often provide the most balanced delivery/path-dilation/scalability profile.
 
 [[song-2026-albpd-directional-fanet]] adds the lower-layer directional-link view. Even if forwarding is stateless, each hop can still fail when UAV motion breaks range or beam alignment, so [[directional-fanet-link-maintenance]] predicts those breakages and adjusts beamwidth/range before routing has to recover from a broken link.
+
+[[deng-2026-eret-fanet-routing]] adds a different adaptive-routing axis. Its [[evolvable-route-expiration-time]] mechanism does not choose geographic next hops; it changes how long route entries remain valid so the same FANET can behave more like host-centric routing in stable/heavy-load conditions and more like content-centric routing in fast-changing/high-sharing conditions.

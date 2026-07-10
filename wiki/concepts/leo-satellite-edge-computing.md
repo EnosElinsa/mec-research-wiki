@@ -5,12 +5,14 @@ tags: [leo-satellite, mec, 6g, ntn]
 related:
   - "[[mobile-edge-computing]]"
   - "[[task-offloading]]"
+  - "[[clustered-leo-adaptive-selection]]"
+  - "[[yang-2026-clustered-leo-adaptive-selection]]"
   - "[[chen-2026-pddqn-sagin-mec]]"
   - "[[diallo-2026-system-cost-uav-leo-offloading]]"
   - "[[mao-2025-bcsa-frl]]"
   - "[[free-space-optical-isl]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # LEO Satellite Edge Computing
@@ -37,6 +39,8 @@ updated: 2026-07-07
 - Coverage-time-aware FL aggregation — pick aggregator satellites that will still see participants when the round closes.
 - Offload to "satellite that has just left" so training continues without dropout — a unique LEO trick.
 - LEO-UAV cooperative MEC in remote regions, where a UAV handles flexible local access and LEO satellites add wide-area compute under coverage-time constraints, as in [[chen-2026-pddqn-sagin-mec]] and [[diallo-2026-system-cost-uav-leo-offloading]].
+
+[[yang-2026-clustered-leo-adaptive-selection]] is not an edge-computing paper, but it is useful access-layer context: [[clustered-leo-adaptive-selection]] analyzes when a terrestrial user should rely on direct clustered-LEO transmission or a UAV-assisted cooperative path before any task-offloading scheduler is considered.
 
 ## Trust dimension
 
