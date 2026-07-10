@@ -1,0 +1,73 @@
+---
+type: source
+title: "Aerial RIS-Enhanced Communications: Joint UAV Trajectory, Altitude Control, and Phase Shift Design"
+authors: ["Bin Li", "Dongdong Yang", "Lei Liu", "Dusit Niyato"]
+year: 2026
+url: "https://doi.org/10.1109/TWC.2025.3621306"
+venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+tags: [source, aerial-ris, uav-mounted-ris, uav-trajectory-control, soft-actor-critic, prioritized-experience-replay, beamforming, sum-rate-maximization]
+related:
+  - "[[tilt-aware-aerial-ris-control]]"
+  - "[[uav-mounted-ris]]"
+  - "[[uav-trajectory-control]]"
+  - "[[soft-actor-critic]]"
+  - "[[prioritized-experience-replay]]"
+  - "[[collaborative-beamforming]]"
+  - "[[intelligent-reflecting-surface]]"
+  - "[[pan-2025-uav-ris-energy-efficient-comm]]"
+  - "[[huang-2025-fedx-ris-uav-trajectory]]"
+  - "[[dusit-niyato]]"
+created: 2026-07-10
+updated: 2026-07-10
+---
+
+# Aerial RIS-Enhanced Communications: Joint UAV Trajectory, Altitude Control, and Phase Shift Design
+
+## Citation
+
+Li, B., Yang, D., Liu, L., & Niyato, D. (2026). *Aerial RIS-Enhanced Communications: Joint UAV Trajectory, Altitude Control, and Phase Shift Design*. **IEEE Transactions on Wireless Communications**, 25, 5830-5845. DOI: 10.1109/TWC.2025.3621306.
+
+## TL;DR
+
+Optimizes aerial RIS communication when the UAV-mounted RIS does not behave like a position-only reflector. The controller accounts for UAV motion, Euler-angle tilt, orientation-dependent RIS gain, and phase shifts; BS beamforming is handled separately by ZF plus water-filling, while SAC with prioritized experience replay learns the continuous RIS/UAV control policy.
+
+## Problem
+
+Existing aerial-RIS studies often optimize UAV trajectory and RIS phase shifts while treating RIS gain as if it were independent of UAV attitude. For a quadrotor carrying a RIS, acceleration and deceleration change the UAV's Euler angles, which changes incidence/reflection geometry and can misalign the reflected beam. The paper targets the resulting sum-rate loss under realistic aerial RIS motion and energy constraints.
+
+## System model
+
+- A multi-antenna BS serves $K$ single-antenna ground users through a UAV-mounted RIS; direct BS-user links may be unreliable or blocked.
+- The RIS has $N$ elements, grouped into sub-surfaces that share phase shifts.
+- Time is slotted over a finite flight horizon.
+- The UAV/ARIS state includes position, velocity, acceleration, Euler angles, energy, and achieved sum rate.
+- BS-ARIS and ARIS-user channels use Rician fading.
+- ARIS gain depends on incidence and reflection angles through an exponential-Lambertian radiation pattern.
+
+## Method
+
+The objective maximizes total sum rate over the flight horizon by jointly controlling UAV attitude/motion, RIS phase shifts, and BS beamforming under transmit-power, phase, Euler-angle, safety, flight-energy, region, speed, and acceleration constraints. The paper casts the sequential control part as an MDP. The action space includes Euler-angle variations and sub-surface RIS phase shifts; BS beamforming is computed outside the DRL policy using zero forcing and water-filling/bisection. The learning algorithm is SAC with automatic entropy-temperature tuning and prioritized experience replay.
+
+## Key findings
+
+- SAC-PER converges around 150K training steps in the parsed experiment, while PPO and vanilla SAC converge around 200K and DDPG performs poorly.
+- The RIS-elements experiment reports up to 14.4% higher sum rate for SAC-PER than PPO.
+- Among learning rates 0.0001, 0.001, and 0.01, the parsed experiment identifies 0.0001 as the best setting.
+- The default simulation uses ARIS initial position $(20,20,100)$ m, BS position $(100,100,10)$ m, a 150 m by 150 m area, $K=8$ users, $M=8$ BS antennas, $N=40$ RIS elements, $T=30$, $L=60$, maximum speed 15 m/s, and maximum acceleration 5 m/s^2.
+- More RIS elements, more BS antennas, and higher BS transmit power improve sum rate.
+- Larger energy budgets, tested at 8500, 9000, and 9500 J, allow more aggressive early motion and higher sum rate.
+- A multi-ARIS extension with $I=2$ converges around 400K steps and improves performance under a minimum inter-ARIS distance constraint.
+
+## Limitations / extraction notes
+
+The validation is simulation-only. The robustness discussion models trajectory uncertainty from inaccurate positioning or wind gusts with Gaussian perturbations. The local parse's title and framing emphasize altitude control, but the main system model also fixes altitude $H$; the source page therefore treats the grounded control variables conservatively as UAV attitude/motion, RIS phase shifts, and BS beamforming. Future work in the parse points to dynamic user mobility, imperfect CSI, and distributed multi-agent learning.
+
+## Relation to the corpus
+
+This source sharpens [[uav-mounted-ris]] from placement/phase-shift optimization into [[tilt-aware-aerial-ris-control]], where UAV attitude affects the RIS radiation gain. It complements [[pan-2025-uav-ris-energy-efficient-comm]], which optimizes multiple UAV-mounted RIS locations and phase shifts for energy-efficient communication, and [[huang-2025-fedx-ris-uav-trajectory]], which accelerates RIS-assisted trajectory learning. Its SAC-PER solver also extends the [[soft-actor-critic]] and [[prioritized-experience-replay]] branches beyond MEC offloading into aerial RIS control.
+
+## Raw artifacts
+
+- Parse: `raw/sources/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design.md`
+- Origin PDF: `raw/sources/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design.pdf`
+- Figures: `raw/sources/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design/images/`

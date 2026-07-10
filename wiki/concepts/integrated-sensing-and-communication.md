@@ -22,6 +22,8 @@ related:
   - "[[rmaddpg-dda-uav-isac-control]]"
   - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
   - "[[dynamic-target-prioritization-metric]]"
+  - "[[bai-2026-aoi-uav-isac]]"
+  - "[[aoi-centric-uav-isac-beam-control]]"
 created: 2026-05-29
 updated: 2026-07-10
 ---
@@ -45,4 +47,4 @@ For a high-level survey of ISAC in the LAE context, see [[jiang-2025-isac-lae-ov
 
 [[li-2026-control-based-uav-isac]] adds a control-theoretic UAV-ISAC design: communication/sensing beamforming is optimized with SCA/SDR, while the UAV trajectory is represented through 3-DoF or 6-DoF dynamics and [[control-parameterized-uav-trajectory|control parameterization]] so planned sensing constraints remain meaningful for actual flight.
 
-Vehicular UAV-ISAC sources extend the same idea into moving-road targets. [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] uses [[rmaddpg-dda-uav-isac-control]] to adapt UAV motion, yaw, communication power, and ISAC transmit power for moving vehicles, while [[hazarika-2026-dynamo-uav-vehicle-tracking]] uses prediction, CRLB/FIM optimization, and [[dynamic-target-prioritization-metric|DTPM]] to decide which fast-moving vehicle should receive the next sensing update.
+Vehicular UAV-ISAC sources extend the same idea into moving-road targets. [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] uses [[rmaddpg-dda-uav-isac-control]] to adapt UAV motion, yaw, communication power, and ISAC transmit power for moving vehicles, while [[hazarika-2026-dynamo-uav-vehicle-tracking]] uses prediction, CRLB/FIM optimization, and [[dynamic-target-prioritization-metric|DTPM]] to decide which fast-moving vehicle should receive the next sensing update. [[bai-2026-aoi-uav-isac]] makes update freshness the primary UAV-ISAC objective through [[aoi-centric-uav-isac-beam-control]], coupling SAC motion decisions, Kalman target prediction, and RZF communication beams.

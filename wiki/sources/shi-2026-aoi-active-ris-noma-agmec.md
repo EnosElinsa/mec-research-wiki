@@ -22,7 +22,7 @@ related:
   - "[[sun-2024-active-passive-ris-receiver]]"
   - "[[dusit-niyato]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-10
 ---
 
 # Age of Information (AoI)-Aware Joint Optimization for Active RIS and NOMA-Assisted AGMEC Networks
@@ -75,5 +75,5 @@ This source extends the wiki's [[age-of-information]] branch beyond the [[song-2
 
 ## Raw artifacts
 
-- `raw/sources/Age of Information -AoI--Aware Joint Optimization for Active RIS and NOMA-Assisted AGMEC Networks/Age of Information -AoI--Aware Joint Optimization for Active RIS and NOMA-Assisted AGMEC Networks.md`
+- `raw/sources/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

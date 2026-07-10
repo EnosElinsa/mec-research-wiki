@@ -13,8 +13,10 @@ related:
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
   - "[[chen-2026-qos-noma-multiuav]]"
   - "[[gong-2026-safe-economic-lae-trajectory]]"
+  - "[[li-2026-aerial-ris-trajectory-phase]]"
+  - "[[bai-2026-aoi-uav-isac]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Soft Actor-Critic (SAC)
@@ -37,4 +39,4 @@ so the optimal policy maximizes return **and** stays as stochastic as possible a
 
 [[wen-2026-hybridrag-low-carbon-lae]] uses double-regularized diffusion-enhanced SAC for low-carbon LAE MEC control.
 
-[[xiang-sac-mapless-robot-navigation]] uses single-agent SAC (with LSTM value/Q networks) for mapless robot navigation — a foundational continuous-control grounding for the SAC vocabulary. [[du-2024-d2sac-aigc-asp-selection]] hosts a diffusion-policy actor inside SAC (D2SAC) for discrete ASP selection. [[chen-2025-swipt-mec-sac]] uses an improved SAC (SAC-SK) for SWIPT-MEC. [[chen-2026-qos-noma-multiuav]] improves SAC with a perturbation term in the loss for constrained NOMA multi-UAV task offloading, and [[gong-2026-safe-economic-lae-trajectory]] uses SAC as the online policy after LLM-guided safety/compliance training. The cooperative-MEC multi-agent variant appears in [[qin-2025-bcuav-masac]] and [[you-2025-uncertain-maritime-hasac]] (see [[masac]]).
+[[xiang-sac-mapless-robot-navigation]] uses single-agent SAC (with LSTM value/Q networks) for mapless robot navigation — a foundational continuous-control grounding for the SAC vocabulary. [[du-2024-d2sac-aigc-asp-selection]] hosts a diffusion-policy actor inside SAC (D2SAC) for discrete ASP selection. [[chen-2025-swipt-mec-sac]] uses an improved SAC (SAC-SK) for SWIPT-MEC. [[chen-2026-qos-noma-multiuav]] improves SAC with a perturbation term in the loss for constrained NOMA multi-UAV task offloading, and [[gong-2026-safe-economic-lae-trajectory]] uses SAC as the online policy after LLM-guided safety/compliance training. [[li-2026-aerial-ris-trajectory-phase]] combines SAC with [[prioritized-experience-replay]] for tilt-aware aerial RIS control, while [[bai-2026-aoi-uav-isac]] uses SAC to choose UAV motion and beam-activation priorities for AoI-centric UAV-ISAC. The cooperative-MEC multi-agent variant appears in [[qin-2025-bcuav-masac]] and [[you-2025-uncertain-maritime-hasac]] (see [[masac]]).

@@ -1,5 +1,22 @@
 # Research Log
 
+## [2026-07-10] Curated aerial RIS, UAV fault detection, covert AoI, and UAV-ISAC freshness
+
+Added four source pages and four concept pages, repaired one existing source-to-raw pointer, and updated two existing author rosters:
+
+- [[li-2026-aerial-ris-trajectory-phase]] - Li et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3621306`. Aerial RIS-enhanced communication with tilt/Euler-angle-aware UAV-mounted RIS control, SAC-PER attitude/phase learning, and ZF/water-filling BS beamforming.
+- [[li-2026-aeroguard-uav-fault-detection]] - Li et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3653674`. AeroGuard real-time UAV fault detection with hybrid LSTM/ARX residual fusion, Z-score/SPRT testing, real UAV logs/outdoor flights, and Raspberry Pi latency measurements.
+- [[hosseini-2026-aoi-covert-uav]] - Hosseini et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3681697`. UAV-assisted covert communication with AoI minimization, PD-NOMA public cover traffic, aerial Eve detection, and AO/SCA/SDR trajectory-beamforming design.
+- [[bai-2026-aoi-uav-isac]] - Bai et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3709576`. AoI-centric UAV-enabled ISAC with SAC trajectory/beam activation, Kalman target prediction, and RZF communication beam synthesis.
+- [[shi-2026-aoi-active-ris-noma-agmec]] - corrected the raw artifact path to the underscore-named raw folder so curation status recognizes the parsed source.
+- [[dusit-niyato]] and [[zhu-han]] - updated exact-match rosters for the aerial-RIS and UAV-ISAC sources.
+
+New concept pages: [[tilt-aware-aerial-ris-control]], [[hybrid-uav-flight-data-fault-detection]], [[freshness-aware-covert-uav-communication]], and [[aoi-centric-uav-isac-beam-control]]. Updated backlinks for [[uav-mounted-ris]], [[soft-actor-critic]], [[prioritized-experience-replay]], [[noma]], [[age-of-information]], [[covert-communication]], [[integrated-sensing-and-communication]], [[uav-trajectory-control]], [[alternating-optimization-sdr-sca]], and [[edge-intelligence]], then refreshed `wiki/index.md` and `wiki/overview.md`.
+
+Metadata notes: the aerial-RIS, covert-AoI, and UAV-ISAC parses were silent or incomplete on final DOI/venue headers, so bibliographic metadata was verified against title-matched DOI records. The AeroGuard parse contains DOI/publication-date evidence and Crossref was used for venue/pages. Technical claims and numeric findings remain grounded in the local parsed Markdown. The Shi AoI/active-RIS/NOMA source already existed; only its raw artifact path and update date changed.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-current-2026-07-10-batch7-final.json` reported 385 sources, 359 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-current-2026-07-10-batch7-final.json` reported 612 raw folders, 293 curated raw references, 319 genuinely new uncurated folders remaining, and 95 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans --json linkcheck-current-2026-07-10-batch7-final.json` reported no dangling links; orphan reporting remains informational for raw-source mirrors and parse artifacts. `python tools/wiki/process_refs.py --json process-refs-current-2026-07-10-batch7-final.json`, `python tools/wiki/index_audit.py --json index-audit-current-2026-07-10-batch7-final.json`, `python tools/wiki/frontmatter_audit.py --json frontmatter-current-2026-07-10-batch7-final.json`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-2026-07-10-batch7-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 867 nodes and 8198 edges.
+
 ## [2026-07-10] Curated active UAV search, FANET routing, clustered LEO access, and surface-air control
 
 Added four source pages and four concept pages, and repaired one existing source-to-raw pointer:

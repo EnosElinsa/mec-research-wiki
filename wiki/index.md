@@ -354,6 +354,7 @@
 - [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026. LSCR target handover for collaborative UAV relay tracking; Delaunay target graphs, TGR features, and Twin-GRCN similarity matching reach 92.1% accuracy with 0.063 KB transfer and a 20 KB model (IEEE T-ITS).
 - [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] - Wang et al. 2026. UAV-enabled vehicular ISAC with RMADDPG-DDA adaptive control over UAV motion/yaw, communication power, and ISAC transmit power; RND novelty, parameter sharing, and dynamic data augmentation improve served users and effective MI (IEEE TMC).
 - [[hazarika-2026-dynamo-uav-vehicle-tracking]] - Hazarika & Rahmati 2026. Predictive UAV tracking for fast-moving vehicles using DynaMo motion prediction, DTPM prioritization, CRLB/FIM optimization, and POMDP-MADDPG control (IEEE T-ITS).
+- [[bai-2026-aoi-uav-isac]] - Bai et al. 2026. AoI-centric UAV-enabled ISAC with SAC trajectory/beam activation, Kalman target prediction, and RZF communication beam synthesis for freshness-aware target updates (IEEE TMC).
 - [[li-2026-control-based-uav-isac]] - Li et al. 2026. Control-based UAV-ISAC beamforming and trajectory design; SCA/SDR beamforming plus 3-DoF/6-DoF control-parameterized trajectory optimization by SQP reduces actual-flight sensing violations and rate degradation (IEEE TWC).
 - [[zhao-2026-mappo-jscc-aec]] - Zhao et al. 2026. HAP-assisted multi-UAV sensing-communication-computing; Lyapunov energy stability plus MAPPO-JSCC with embedded sensing, SCA, and Dinkelbach solvers (IEEE TWC).
 - [[wen-2026-uav-edge-inference-iscc]] - Wen et al. 2026. UAV-assisted ISCC edge inference; Hamiltonian-cycle access ordering plus AO/SA trajectory/resource optimization under discriminant-gain accuracy constraints (IEEE TWC).
@@ -378,6 +379,7 @@
 - [[yao-2025-secure-isac-dual-eavesdropping]] — Yao et al. 2025. Secure UAV-ISAC against dual eavesdropping; AO + SCA + SDR for secrecy + sensing security.
 - [[chen-2024-three-party-hierarchical-game-pls]] — Chen et al. 2024. **Three-party hierarchical game** for PLS with dynamic trilateral coalitions (LUs / EVs / JAs); HCSF + DRL (IEEE TWC).
 - [[wang-2026-secure-lae-uav-scheduling]] — Wang et al. 2026. Secure low-altitude aerial communications; UAVs dynamically switch between communication and artificial-noise jamming roles while optimizing scheduling, power, 3D trajectory, and velocity for secrecy energy efficiency (IEEE TWC).
+- [[hosseini-2026-aoi-covert-uav]] - Hosseini et al. 2026. UAV-assisted covert communication with AoI minimization, PD-NOMA public cover traffic, aerial Eve detection, and AO/SCA/SDR trajectory-beamforming design (IEEE TWC).
 - [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024. Secure UAV-**RIS**-MEC-IoT offloading against **aerial + ground eavesdroppers**; SOP over Nakagami-m + max-min **secure computation efficiency** via Dinkelbach + BCD + bisection (IEEE TCOMM).
 - [[su-2024-sensing-aided-isac-pls]] — Su et al. 2024. **Sensing-aided PLS** for ISAC: dual-functional BS estimates eavesdropper directions (CAML) then jointly minimizes CRB and maximizes AN-aided secrecy rate via AO + fractional programming (IEEE TWC).
 - [[wen-2024-iscc-edge-ai]] — Wen et al. 2024. **Task-oriented ISCC** for multi-device **edge-AI inference**: ISAC devices radar-sense multi-view data, quantize + offload features to an edge server running split inference; maximize **discriminant gain** (KL-divergence accuracy surrogate) over sensing/transmit power + comm time + quantization bits; non-convex but solved **optimally** by the **sum-of-ratios** method (IEEE TWC).
@@ -469,6 +471,8 @@
 - [[deng-2026-eret-fanet-routing]] - Deng et al. 2026. eRET adaptive FANET routing evolves route expiration time so UAV swarms shift between host-centric route reuse and content-centric discovery (IEEE TMC).
 - [[zheng-2026-active-search-low-altitude-uav]] - Zheng & Chen 2026. Active low-altitude UAV sensing/communication search under unknown user locations and unknown blockage; equipotential-surface search plus online LoS channel estimation (IEEE TMC).
 - [[zhang-2026-fuzzy-observer-harbor-approach]] - Zhang et al. 2026. Surface-air vehicle harbor-approach control with time-varying guidance and an adaptive event-triggered fuzzy state observer (IEEE T-ITS).
+- [[li-2026-aerial-ris-trajectory-phase]] - Li et al. 2026. Aerial RIS-enhanced communications with tilt-aware UAV-mounted RIS control; SAC-PER jointly controls Euler angles, RIS phase shifts, and trajectory/energy while ZF/water-filling handles BS beamforming (IEEE TWC).
+- [[li-2026-aeroguard-uav-fault-detection]] - Li et al. 2026. AeroGuard real-time UAV flight-data fault detection; residual-driven LSTM/ARX fusion plus Z-score/SPRT tests on attitude streams, with Raspberry Pi and real-flight evaluation (IEEE TMC).
 - [[gao-2023-uav-mcs-uma]] - Gao et al. 2023. UMA UAV-assisted mobile crowd sensing; combines participant incentives, quality prediction, UAV coverage, sensor calibration, and MADDPG scheduling (IEEE TMC).
 - [[gong-2026-uav-3d-visual-coverage]] - Gong et al. 2026. Path-aware 3-D object visual coverage with a single UAV; viewpoint generation plus energy-aware B-spline trajectory optimization (IEEE TMC).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
@@ -488,7 +492,7 @@
 
 ### Authors
 
-- [[dusit-niyato]] (NTU) appears across 37 sources after the movable-antenna U2U-channel paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[dusit-niyato]] (NTU) appears across 43 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 12 sources after the AoI-centric UAV-ISAC paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -648,6 +652,7 @@
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
 - [[uav-mounted-ris]]
+- [[tilt-aware-aerial-ris-control]]
 - [[star-ris]]
 - [[active-ris]]
 - [[multi-functional-ris]]
@@ -839,6 +844,7 @@
 - [[integrated-sensing-computation-communication]]
 - [[target-graph-representation]]
 - [[expert-assisted-anomaly-aware-tracking]]
+- [[hybrid-uav-flight-data-fault-detection]]
 - [[mmwave-radar-sensing]]
 - [[radar-sensing-energy-tradeoff]]
 - [[uav-backscatter-identification]]
@@ -848,6 +854,8 @@
 - [[temporal-spectrum-cartography]]
 - [[physical-layer-security]]
 - [[covert-communication]]
+- [[freshness-aware-covert-uav-communication]]
+- [[aoi-centric-uav-isac-beam-control]]
 - [[friendly-jamming-uav]]
 - [[cooperative-jamming]]
 - [[proactive-eavesdropping]]

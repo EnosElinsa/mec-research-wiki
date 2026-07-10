@@ -45,6 +45,7 @@ related:
   - "[[zhao-2026-temporal-spectrum-cartography]]"
   - "[[gong-2026-lp2-casku-uav-clusters]]"
   - "[[song-2026-albpd-directional-fanet]]"
+  - "[[li-2026-aerial-ris-trajectory-phase]]"
 created: 2026-05-29
 updated: 2026-07-10
 ---
@@ -53,7 +54,7 @@ updated: 2026-07-10
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author in the corpus, co-authoring 42 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET link maintenance, and surveys:
+The most frequently recurring author in the corpus, co-authoring 43 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET link maintenance, aerial RIS control, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -97,6 +98,7 @@ The most frequently recurring author in the corpus, co-authoring 42 sources span
 - [[zhao-2026-temporal-spectrum-cartography]] - temporal spectrum cartography for low-altitude economy networks via RecMAE and a multi-agent diffusion policy.
 - [[gong-2026-lp2-casku-uav-clusters]] - privacy-preserving authentication and session-key update for dynamic low-altitude UAV clusters.
 - [[song-2026-albpd-directional-fanet]] - ALBP-D directional FANET link maintenance through breakage-probability prediction.
+- [[li-2026-aerial-ris-trajectory-phase]] - tilt-aware aerial RIS communication with SAC-PER attitude/phase control and ZF/water-filling BS beamforming.
 
 ## Contributions to this wiki
 
@@ -107,3 +109,4 @@ The most frequently recurring author in the corpus, co-authoring 42 sources span
 - Extends the LLM-assisted LAE control thread to compliance-aware trajectory planning through [[gong-2026-safe-economic-lae-trajectory]].
 - Extends the LAE branch to rescue exploration, spectrum cartography, and dynamic-cluster security through [[tang-2026-hg-maddpg-uav-rescue]], [[zhao-2026-temporal-spectrum-cartography]], and [[gong-2026-lp2-casku-uav-clusters]].
 - Adds a directional-link-maintenance connection for UAV ad hoc networks through [[song-2026-albpd-directional-fanet]].
+- Adds a tilt-aware aerial-RIS control connection through [[li-2026-aerial-ris-trajectory-phase]].
