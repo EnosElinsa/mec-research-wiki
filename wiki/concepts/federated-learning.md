@@ -15,11 +15,15 @@ related:
   - "[[two-tier-submodel-partition]]"
   - "[[aircomp-assisted-asynchronous-fl]]"
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
+  - "[[contract-theoretic-fl-incentives]]"
+  - "[[zhao-2026-uav-fl-inspection-incentives]]"
 created: 2026-05-29
 updated: 2026-07-11
 ---
 
 # Federated Learning (FL)
+
+[[zhao-2026-uav-fl-inspection-incentives]] adds the incentive/client-selection side of UAV FL: [[contract-theoretic-fl-incentives]] build a candidate UAV pool and then select high-contribution clients for federated intelligent inspection under communication, sensing, computation, and battery costs.
 
 A distributed machine-learning paradigm where many clients train a shared model on their **local** data and send only model updates (not raw data) to an aggregator, which combines them — classically by **FedAvg** (data-size-weighted averaging) — into a global model. It preserves privacy and cuts data movement, but suffers from data heterogeneity (non-IID clients), stragglers, and communication bottlenecks.
 

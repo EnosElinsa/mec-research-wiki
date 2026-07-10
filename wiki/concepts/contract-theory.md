@@ -7,11 +7,15 @@ related:
   - "[[matching-theory-for-resource-allocation]]"
   - "[[generative-ai-for-mec]]"
   - "[[ye-2025-aigc-diffusion-contract]]"
+  - "[[contract-theoretic-fl-incentives]]"
+  - "[[zhao-2026-uav-fl-inspection-incentives]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-11
 ---
 
 # Contract Theory (Principal-Agent Incentive Mechanism)
+
+[[zhao-2026-uav-fl-inspection-incentives]] applies contract theory to UAV federated learning rather than AIGC service pricing. There, the contract mechanism builds a viable UAV-client candidate pool under private participation costs and battery constraints, before Bayesian optimization selects clients for incentive assignment.
 
 A mechanism-design framework for incentivizing self-interested agents under **information asymmetry**. A principal (e.g. an edge service provider) designs a menu of **contract items** — each bundling a resource/quality level with a price/reward — and agents (users) self-select the item matched to their private "type." Feasibility rests on two constraints:
 

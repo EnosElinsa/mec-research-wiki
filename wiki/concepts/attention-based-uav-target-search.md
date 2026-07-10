@@ -10,11 +10,15 @@ related:
   - "[[task-offloading]]"
   - "[[uav-trajectory-control]]"
   - "[[uav-charging-scheduling]]"
+  - "[[zhang-2026-ensemble-marl-uav-target-search]]"
+  - "[[ensemble-qmix]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Attention-Based UAV Target Search
+
+[[zhang-2026-ensemble-marl-uav-target-search]] is the non-offloading counterpart: it keeps the focus on heterogeneous fixed-wing/multirotor target search and adds [[ensemble-qmix]] for robust value-decomposition MARL decisions.
 
 A cooperative-search control pattern where UAVs use attention over neighboring agents and environment state to search with a dynamically sized swarm. [[zhu-2026-hab-mappo-target-search]] uses attention inside a MAPPO actor/critic architecture so a UAV can focus on relevant neighbor information, while the critic compresses variable agent features into a fixed-size representation for cross-scale transfer.
 

@@ -37,8 +37,10 @@ related:
   - "[[discrete-continuous-two-stage-decomposition]]"
   - "[[decomposition-beats-end-to-end-drl-in-mec]]"
   - "[[explicit-constraints-beat-reward-shaping-in-mec-drl]]"
+  - "[[zhang-2026-ensemble-marl-uav-target-search]]"
+  - "[[ensemble-qmix]]"
 created: 2026-05-29
-updated: 2026-06-03
+updated: 2026-07-11
 ---
 
 # DRL backbone choices across the UAV-MEC corpus
@@ -56,6 +58,7 @@ The goal is to make the design space legible: which backbone, which framing, whi
 | [[peng-2025-drudm-cfg]] | MA-DRL (paper-level abstract) | Multi (per-UAV) | [[ma-pomdp|MA-POMDP]] | Hybrid (DRUDM admission + continuous trajectory) | [[adaptive-entropy-priority-replay|AEP replay]] |
 | [[zhang-2025-ssac-mgi-heterogeneous-uav]] | SSAC (Shared SAC) | Multi (per-UAV) | MA-POMDP + safe-RL sub-game | Continuous trajectory + admission | [[collision-avoidance-mgi|MGI]] safety constraint |
 | [[bi-2025-sg-mapg]] | Multi-agent policy gradient (MAPG) | Multi-tier (BS / UAV / UE) | Stackelberg-MDP hybrid | Mixed (pricing + trajectory + admission) | [[stackelberg-game|Stackelberg]] equilibrium as convergence target |
+| [[zhang-2026-ensemble-marl-uav-target-search]] | [[ensemble-qmix\|E-QMIX]] | Multi (heterogeneous UAVs) | Cooperative target-search MDP | 3D search / motion decisions | Graph/CNN/DQN subnetworks selected by range, camera, and battery context |
 | [[zhang-2025-mcma-task-migration]] | MADDPG / MAPPO (compatible) | Multi (per-edge-server) | MA-POMDP with [[centralized-training-decentralized-execution|CTDE]] | Two-stage (discrete migration + continuous resource) | [[informer-trajectory-prediction|Informer]] forecast as state input |
 | [[zhu-2025-lycnn-drl-wpt-mec]] | CNN actor-critic | Single | Per-slot via Lyapunov + fractional programming | Binary offload + continuous resources | [[fractional-programming-dinkelbach|Fractional programming]] for EE objective |
 | [[hao-2025-priority-aware-task-driven-co]] | Hybrid actor (DDPG-style + Q-head) | Single | Event-driven MDP | Hybrid binary + continuous | Dependence-aware **latent space** for variable-size action sets |
@@ -97,7 +100,7 @@ A clear shift across the corpus:
   - Agents have *roles* worth learning separately (e.g. heterogeneous UAVs in [[zhang-2025-ssac-mgi-heterogeneous-uav]]).
 - **Federated single-agent** ([[mao-2025-bcsa-frl]]) — distinct from MA-DRL: each satellite runs its own MDP locally, then the *parameters* are aggregated across satellites. This is FRL, not MA-DRL.
 
-The corpus does include one **value-decomposition** source — [[raivi-2024-jdaco-postdisaster-iot]]'s VD3QN (VDN + dueling-double-DQN) for cooperative multi-UAV learning — but no **mean-field MARL** or **QMIX** papers, and none of the curated sources operate at the dense (~20+ agent) regime where value-decomposition's scaling advantage matters most. Worth noting if the corpus grows toward dense LAE deployments.
+The corpus now includes two **value-decomposition** branches: [[raivi-2024-jdaco-postdisaster-iot]]'s VD3QN (VDN + dueling-double-DQN) for cooperative multi-UAV learning and [[zhang-2026-ensemble-marl-uav-target-search]]'s [[ensemble-qmix|E-QMIX]], which keeps QMIX-style centralized value mixing but routes heterogeneous UAV observations through graph, CNN, or DQN subnetworks before mixing. The remaining gap is no longer "no QMIX"; it is the lack of **mean-field MARL** and the lack of dense (~20+ agent) value-decomposition stress tests where scaling advantage is the main claim.
 
 ## Memory and history handling
 

@@ -14,8 +14,9 @@ related:
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
   - "[[liao-2026-aoi-ris-uav-usv-mec]]"
   - "[[sheng-2025-ris-online-uav-mec]]"
+  - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Intelligent Reflecting Surface (IRS)
@@ -25,3 +26,5 @@ A planar surface of many passive reflecting elements, each able to impose a tuna
 In the wiki, [[wu-2025-iopo-irs-uav-thz-mec]] mounts an IRS in a multi-UAV [[terahertz-communication]] MEC system to counter THz blockage/path-loss, optimizing the IRS phases (stage 2) with the [[whale-optimization-algorithm]] given a fixed offloading decision. Removing the IRS or using random phases measurably lowers transmission speed and raises energy. Other corpus sources apply IRS/RIS to anti-jamming and secure beamforming — see [[sun-2024-active-passive-ris-receiver]] (cascaded active-passive RIS), [[sun-2024-mfris-semantic-antijamming]] ([[multi-functional-ris]]), [[michailidis-2024-secure-ris-uav-mec-iot]], [[mao-2025-irs-noma-fl-secrecy]], and [[zhang-2025-gan-td3-isac-active-ris]] (double-active-RIS ISAC).
 
 Recent corpus uses broaden the RIS family beyond reflecting-only surfaces. [[qin-2023-ris-uav-mec-ee]] is the fixed-building RIS UAV-MEC anchor: the RIS assists NOMA offloading to a UAV-mounted MEC server and must be jointly optimized with transmit power, task-bit allocation, and UAV trajectory. [[sheng-2025-ris-online-uav-mec]] adds the online-control variant, where a building-mounted RIS relays UAV-to-AP traffic while Lyapunov/Dinkelbach/BCD decisions handle random arrivals, mobile users, and outage constraints. [[mohammadi-2026-star-ris-uav-mec-noma]] uses [[star-ris]] for simultaneous transmission/reflection in UAV-MEC, while [[liao-2025-ris-uav-usv-resource-allocation]] and [[liao-2026-aoi-ris-uav-usv-mec]] use UAV-mounted RIS elements to restore blocked inland-waterway MEC links and support AoI-aware UAV-USV service.
+
+[[lin-2025-energy-effective-ris-multiuav-coverage]] adds a non-MEC coverage-control case: facade RIS panels assist multiple UAV mobile BSs, while [[triple-deep-q-network]] controls UAV trajectories and service scheduling under throughput-fairness screening.

@@ -15,11 +15,14 @@ related:
   - "[[wen-2026-uav-edge-inference-iscc]]"
   - "[[uav-assisted-edge-inference]]"
   - "[[cui-2026-aris-v2x-icac]]"
+  - "[[zhao-2026-uav-fl-inspection-incentives]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Integrated Sensing, Computation, and Communication (ISCC)
+
+[[zhao-2026-uav-fl-inspection-incentives]] uses a communication-sensing-computing integration frame for UAV federated intelligent inspection: sensing data quality, communication energy, computation energy, and incentive cost jointly determine which UAV clients should train.
 
 An extension of [[integrated-sensing-and-communication|ISAC]] that explicitly couples **computation** with sensing and communication, recognizing that on a resource-limited platform (e.g. a UAV) these three functions compete for the same bandwidth, energy, and time, and that platform placement affects all three.
 

@@ -14,11 +14,14 @@ related:
   - "[[uav-enabled-its]]"
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
   - "[[aircomp-assisted-asynchronous-fl]]"
+  - "[[zhang-2026-ensemble-marl-uav-target-search]]"
 created: 2026-07-10
 updated: 2026-07-11
 ---
 
 # Autonomous UAV Swarms
+
+[[zhang-2026-ensemble-marl-uav-target-search]] adds a heterogeneous-search angle: fixed-wing and multirotor UAVs operate at different altitude bands, and [[ensemble-qmix]] coordinates target search under partial observability, no-fly zones, and collision masks.
 
 The robotics and networking substrate underneath many UAV-MEC papers: multiple UAVs coordinate mission assignment, path planning, local collision avoidance, control, perception, localization, and communication so that the fleet behaves as a system rather than as independent aircraft.
 

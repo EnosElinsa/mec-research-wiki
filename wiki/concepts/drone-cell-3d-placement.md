@@ -13,6 +13,8 @@ related:
   - "[[zheng-2026-active-search-low-altitude-uav]]"
   - "[[equipotential-surface-uav-search]]"
   - "[[aerial-active-ris-backhaul]]"
+  - "[[chakareski-2019-uav-mmwave-hetnet-ee]]"
+  - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
 created: 2026-06-01
 updated: 2026-07-11
 ---
@@ -30,3 +32,5 @@ The canonical formulation in this wiki is [[bor-yaliniz-2016-3d-abs-placement]],
 [[zheng-2026-active-search-low-altitude-uav]] adds an online low-altitude variant where the UAV does not know user positions or the urban channel map in advance. Its [[equipotential-surface-uav-search]] method keeps the placement search tied to both access quality and BS backhaul, rather than solving an offline placement problem over known ground terminals.
 
 [[aerial-active-ris-backhaul]] is adjacent but not identical: the optimized aerial platform is an active RIS support for UAV-BS backhaul rather than the access drone-cell itself, so placement interacts with amplification power, phase control, and 3-D coverage of aerial receivers.
+
+[[chakareski-2019-uav-mmwave-hetnet-ee]] is an early energy-efficiency instance: the UAV tier coexists with a microwave macro BS and mmWave SBSs, and the UAV coverage radius/altitude is tied to maximum path loss before radio resources are allocated. [[lin-2025-energy-effective-ris-multiuav-coverage]] is a RIS-assisted communications-coverage variant, where [[k-dbscan-uav-deployment]] bounds each UAV's movement region before TDQN trajectory/service control.

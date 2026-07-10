@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-11] Curated near-field channel, RIS coverage, UAV-mmWave HetNet, ensemble MARL, and UAV FL incentives
+
+Added five source pages and five concept pages:
+
+- [[bai-adaptive-near-field-xl-mimo-multi-uav]] - Bai et al. Adaptive near-field channel modeling for 6G XL-MIMO UPA-to-multi-UAV cooperative communications, with selective near-field area pruning to retain spherical-wave accuracy while reducing channel-computation cost.
+- [[lin-2025-energy-effective-ris-multiuav-coverage]] - Lin et al. 2025, *IEEE TGCN*, DOI `10.1109/TGCN.2024.3424980`. RIS-assisted multi-UAV coverage with K-DBSCAN initial deployment, throughput-variance fairness screening, and TDQN/DDQN/dueling-DQN trajectory learning.
+- [[chakareski-2019-uav-mmwave-hetnet-ee]] - Chakareski 2019, *IEEE TGCN*, DOI `10.1109/TGCN.2019.2892141`. Energy-efficient UAV-assisted mmWave 5G heterogeneous cellular networking with UAV-BS placement/offloading and bandwidth/energy tradeoff analysis.
+- [[zhang-2026-ensemble-marl-uav-target-search]] - Zhang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3656917`. Ensemble MARL for heterogeneous UAV target search in 3-D, using E-QMIX to route graph/CNN/DQN subnetwork outputs into centralized value mixing.
+- [[zhao-2026-uav-fl-inspection-incentives]] - Zhao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3651590`. Contract-theoretic UAV-client assignment for federated intelligent inspection under communication-sensing-computing integration.
+
+New concept pages: [[selective-near-field-area]], [[k-dbscan-uav-deployment]], [[triple-deep-q-network]], [[ensemble-qmix]], and [[contract-theoretic-fl-incentives]]. Updated backlinks for near-field / XL-MIMO / THz, drone-cell deployment, RIS, DQN variants, fairness metrics, FL/contract theory/ISCC, and CTDE/value-decomposition target-search concepts, then refreshed [[drl-backbones-across-uav-mec-sources]], [[index]], and [[overview]].
+
+Metadata notes: Chakareski, Lin, Zhang, and Zhao metadata were verified against title-matched DOI/Crossref records. The Bai near-field channel parse and external title lookup did not expose reliable DOI/venue/year metadata, so those fields remain blank rather than guessed. Technical claims remain grounded in the local parsed Markdown; Bai and Lin source pages flag OCR/math corruption where it affects formula fidelity.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-current-2026-07-11-batch9-final.json` reported 394 sources, 368 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-current-2026-07-11-batch9-final.json` reported 612 raw folders, 303 curated raw references, 309 genuinely new uncurated folders remaining, and 94 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans --json linkcheck-current-2026-07-11-batch9-final.json` reported no dangling links; orphan reporting remains informational for raw-source mirrors and parse artifacts. `python tools/wiki/process_refs.py --json process-refs-current-2026-07-11-batch9-final.json`, `python tools/wiki/index_audit.py --json index-audit-current-2026-07-11-batch9-final.json`, `python tools/wiki/frontmatter_audit.py --json frontmatter-current-2026-07-11-batch9-final.json`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-2026-07-11-batch9-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 885 nodes and 8378 edges.
+
 ## [2026-07-11] Curated covert jamming, AirComp FL, AirFogSim pointer, and active-RIS backhaul
 
 Added four source pages and four concept pages, and repaired one existing source-to-raw pointer:

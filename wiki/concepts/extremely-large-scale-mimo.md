@@ -7,8 +7,10 @@ related:
   - "[[intelligent-reflecting-surface]]"
   - "[[terahertz-communication]]"
   - "[[wang-2024-xl-mimo-tutorial]]"
+  - "[[selective-near-field-area]]"
+  - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-11
 ---
 
 # Extremely Large-Scale MIMO (XL-MIMO)
@@ -24,3 +26,5 @@ A 6G physical-layer evolution of massive MIMO (mMIMO) that deploys a much larger
 - Larger aperture pushes users into the **near field**, so [[near-field-communications|spherical-wave]] models and near-field signal processing replace conventional far-field assumptions.
 
 It is studied alongside other 6G PHY enablers such as [[intelligent-reflecting-surface|RIS]] and [[terahertz-communication|THz]] communication, with applications in physical-layer security, [[integrated-sensing-and-communication|ISAC]], and IoT.
+
+[[bai-adaptive-near-field-xl-mimo-multi-uav]] adds a concrete UAV-channel-modeling instance: an XL-MIMO UPA at a ground station serves multiple UAVs, and [[selective-near-field-area]] limits where spherical-wave computation is required.

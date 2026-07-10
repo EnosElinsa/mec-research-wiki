@@ -8,11 +8,15 @@ related:
   - "[[ma-pomdp]]"
   - "[[raivi-2024-jdaco-postdisaster-iot]]"
   - "[[zhu-2026-uav-localization-jamming]]"
+  - "[[ensemble-qmix]]"
+  - "[[zhang-2026-ensemble-marl-uav-target-search]]"
 created: 2026-06-01
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Value Decomposition Network (VDN)
+
+[[zhang-2026-ensemble-marl-uav-target-search]] adds a QMIX branch: [[ensemble-qmix]] uses nonlinear monotonic value decomposition plus majority voting across independently trained networks for heterogeneous UAV-swarm target search.
 
 A cooperative multi-agent value-based method that learns a **joint** team action-value as the **sum of per-agent value functions**, so the centralized team objective can be trained while each agent still acts greedily on its own local value at execution (a [[centralized-training-decentralized-execution|CTDE]]-compatible factorization). It lets agents share experiences and learn coordinated behavior without a monolithic joint-action value table.
 

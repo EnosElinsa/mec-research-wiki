@@ -6,8 +6,10 @@ related:
   - "[[extremely-large-scale-mimo]]"
   - "[[wang-2024-xl-mimo-tutorial]]"
   - "[[bui-2025-noma-near-far-offloading]]"
+  - "[[selective-near-field-area]]"
+  - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
 created: 2026-06-02
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Near-Field Communications
@@ -21,3 +23,5 @@ Key consequences surveyed in [[wang-2024-xl-mimo-tutorial]]:
 - New opportunities include near-field beam focusing and near-field wireless energy transfer.
 
 A physical-layer concept that now also appears inside MEC offloading. [[bui-2025-noma-near-far-offloading]] uses near-field spherical-wave channel modeling for users inside the UAV array's Rayleigh distance, while far-field users keep the planar-wave model; the distinction affects NOMA offloading, transmit power, and UAV compute allocation.
+
+[[bai-adaptive-near-field-xl-mimo-multi-uav]] extends the channel-modeling side to XL-MIMO UPA-to-multi-UAV links at mmWave and low-THz frequencies. Its [[selective-near-field-area]] applies spherical-wave modeling only inside the region where near-field effects are material, trading accuracy against simulation complexity.

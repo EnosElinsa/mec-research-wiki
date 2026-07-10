@@ -202,6 +202,7 @@
 ### IRS / THz / anti-jamming
 
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
+- [[lin-2025-energy-effective-ris-multiuav-coverage]] - Lin et al. 2025. RIS-assisted multi-UAV coverage for fairness-aware ground terminals; K-DBSCAN deployment, throughput-variance filtering, and TDQN/DDQN/dueling-DQN trajectory control (IEEE TGCN).
 
 - [[wu-2026-model-based-ppo-ris-uav-mec]] - Wu et al. 2026. RIS-assisted urban multi-UAV MEC with decentralized model-based PPO; local k-hop observations, RIS phase proposals, and branched rollouts for trajectory/offloading control (IEEE TMC).
 
@@ -225,6 +226,7 @@
 - [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
 - [[wang-2026-scalable-multiuav-analytics]] - Wang et al. 2026. Scalable collaborative multi-UAV video analytics; JDTSO centralized deployment/scheduling for small swarms and MAPDP distributed MAPPO+DAG partitioning for larger swarms (IEEE TGCN).
 - [[zhu-2026-hab-mappo-target-search]] - Zhu et al. 2026. HAB-MAPPO cooperative UAV target search; 3D continuous trajectory, laser charging, heuristic image offloading/resource allocation, two-level attention, Beta policy, and curriculum learning (IEEE TMC).
+- [[zhang-2026-ensemble-marl-uav-target-search]] - Zhang et al. 2026. Ensemble MARL for heterogeneous UAV target search in 3D; E-QMIX switches among graph, CNN, and DQN subnetworks using distance/camera/battery cues (IEEE TMC).
 - [[li-2026-la4h-uav-active-tracking]] - Li, Zhou, and Wu 2026. LA4H expert-assisted anomaly-aware UAV active target tracking; cross-modal anomaly cognition, assistance decisions, and teacher-student distillation for occlusion and distractor recovery (IEEE TMC).
 - [[li-2026-tspf-forest-fire-uav-swarm]] - Li et al. 2026. Two-tier submodel partition for robust UAV-swarm forest-fire detection; graph-colored groups, intragroup backup, dynamic server selection, and two-tier federated aggregation (IEEE TMC).
 - [[qu-ecoei-uav-swarm]] — Qu et al. **eCoEI** — elastic OODA-loop collaborative DL inference for UAV swarms, robust to node/A2A-link failure; proof-of-concept on Jetson devices (IEEE Communications Magazine; year not in parse).
@@ -339,6 +341,7 @@
 ### Trust, security, and federated MEC
 
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
+- [[zhao-2026-uav-fl-inspection-incentives]] - Zhao et al. 2026. Contract-theoretic incentive assignment for UAV-client federated intelligent inspection under communication-sensing-computing integration; models data quality, sensing/computation costs, and FL participation utilities (IEEE TMC).
 - [[huang-2026-aircomp-uav-swarms-afl]] - Huang et al. 2026. AirComp-assisted asynchronous federated learning for UAV swarms; branch-and-bound/AO aggregation scheduling plus layer-wise staleness filtering for faster convergence (IEEE TWC).
 - [[gong-2026-lp2-casku-uav-clusters]] - Gong et al. 2026. LP2-CASKU privacy-preserving authentication and session-key update for dynamic low-altitude UAV clusters; message aggregation, cross-cluster anonymity/unlinkability, and forward/backward secrecy (IEEE TMC).
 - [[mao-2025-bcsa-frl]] — Mao et al. 2025. Blockchain-enabled cold-start FRL for ZT LEO satellite networks. *BCSA-FRL* (CCVM + CSRA).
@@ -407,9 +410,11 @@
 - [[zheng-2024-recmop-uav-cb]] — Zheng et al. 2024. **Reliable + energy-efficient** UAV collaborative beamforming (UVAA relay → remote BSs) in emergency communications; multi-objective RECMOP (max-min BS SNR / min-max AU SNR / min propulsion energy) over UAV locations + excitation weights; **improved multi-objective gravitational search algorithm** (IMOGSA) (IEEE TWC).
 - [[liu-2024-hatrpo-ucb-cb]] — Liu et al. 2024. UAV-enabled **collaborative beamforming** (UVAA → remote BSs); multi-objective UCBMOP (max transmission rate / min UAV energy) over positions + excitation weights; **heterogeneous-agent trust-region MADRL** (HATRPO-UCB) with observation enhancement + agent-specific global state + Beta-distribution policy (IEEE TMC).
 - [[li-2025-omrp-cb-iot]] — Li et al. 2025. **Collaborative beamforming for static ground IoT** (the corpus's only ground-IoT CB entry): a sensing-area-**overlap**-driven hierarchical clustering routing protocol (**OMRP**) feeds **SoftPPO-LSTM** CB-node selection for the long uplink to a remote BS; +17% network lifetime over benchmark routing, +8.3% CB throughput over benchmark algorithms, Raspberry Pi 4B deployment (IEEE IoT-J).
+- [[chakareski-2019-uav-mmwave-hetnet-ee]] - Chakareski 2019. Energy-efficient UAV-assisted millimeter-wave 5G heterogeneous cellular networking; optimizes UAV-BS placement/offloading and bandwidth/energy tradeoffs for mmWave small-cell support (IEEE TGCN).
 - [[zeng-2026-movable-antenna-u2u-channel]] - Zeng et al. 2026. Movable-antenna-aided MIMO wideband UAV-to-UAV channel model for LAE; closed-form STF-CF/SD-PSD/PSDS plus gradient log-det antenna-position optimization (IEEE TWC). *(Channel-model anchor, not MEC offloading.)*
 - [[lu-2026-uav-swarm-two-level-ma]] - Lu et al. 2026. UAV-swarm two-level movable-antenna system for LAE uplink communication; jointly optimizes swarm placement, local antenna positions, and receive beamforming (IEEE TWC). *(Physical-layer LAE anchor, not MEC offloading.)*
 - [[jeon-2026-ampli-flection-aerial-backhaul]] - Jeon & Chae 2026. Aerial active-RIS backhaul for UAV-BSs with full 3-D coverage; optimizes platform placement, array partitioning, phase, and amplification for energy efficiency (IEEE TWC).
+- [[bai-adaptive-near-field-xl-mimo-multi-uav]] - Bai et al. Adaptive near-field channel modeling for 6G XL-MIMO UPA-to-multi-UAV cooperative communications; selective near-field area pruning keeps spherical-wave accuracy while reducing channel-computation load. *(Parsed metadata lacks DOI/venue/year.)*
 
 ### Architectural / spectrum / governance
 
@@ -694,6 +699,7 @@
 - [[ddqn]]
 - [[dueling-dqn]]
 - [[deep-q-network]]
+- [[triple-deep-q-network]]
 - [[ddpg]]
 - [[td3]] · [[multi-agent-td3]]
 - [[maddpg]]
@@ -709,6 +715,7 @@
 - [[parameterized-dqn]]
 - [[multi-agent-q-learning]]
 - [[value-decomposition-network]]
+- [[ensemble-qmix]]
 - [[counterfactual-multi-agent-policy-gradient]]
 - [[distributional-reinforcement-learning]]
 - [[impala]]
@@ -774,6 +781,7 @@
 - [[price-of-anarchy]]
 - [[prospect-theory]]
 - [[contract-theory]]
+- [[contract-theoretic-fl-incentives]]
 - [[matching-theory-for-resource-allocation]]
 - [[optimal-transport-theory]]
 - [[gale-shapley-matching]]
@@ -813,6 +821,7 @@
 - [[particle-swarm-optimization]]
 - [[ant-colony-optimization]]
 - [[weighted-kmeans-uav-deployment]]
+- [[k-dbscan-uav-deployment]]
 - [[chance-constraint]]
 - [[conditional-value-at-risk]]
 - [[distributionally-robust-optimization]]
@@ -834,6 +843,7 @@
 - [[multi-scale-unet-pathloss-prediction]]
 - [[movable-antenna]]
 - [[two-level-movable-antenna]]
+- [[selective-near-field-area]]
 - [[terrain-aware-channel-model]]
 - [[first-order-radio-energy-model]]
 - [[stochastic-geometry-network-analysis]]

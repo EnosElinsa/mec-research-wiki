@@ -8,7 +8,7 @@ related:
   - "[[wen-2024-iscc-edge-ai]]"
   - "[[ye-2026-deeplsc-lae-isac]]"
 created: 2026-05-30
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Jie Xu
@@ -27,3 +27,5 @@ Co-author of four ISAC / edge-AI sources in this wiki:
 A recurring contributor on the **ISAC** thread, spanning the survey framing ([[meng-2024-uav-isac-overview]]), a concrete secure-beamforming design ([[yao-2025-secure-isac-dual-eavesdropping]]) that uses the [[ao-sdr-sca-convex-pipeline]], the task-oriented [[integrated-sensing-computation-communication|ISCC]] edge-AI inference design ([[wen-2024-iscc-edge-ai]]), and LAE ISAC DRL control ([[ye-2026-deeplsc-lae-isac]]). Co-authors with [[tony-q-s-quek]] and [[qingqing-wu]] across the UAV-ISAC works.
 
 Distinct from the **Guangdong University of Technology** "Jie Xu" (`jiexu@gdut.edu.cn`, School of Information Engineering) who appears on the UAV wireless-power-transfer / rotary-wing trajectory works [[xu-2018-uav-wpt-trajectory]] and [[zeng-2019-rotary-wing-energy-min]] with Yong Zeng and Rui Zhang — a surname+given-name collision, kept separate (those source pages carry the matching namesake note).
+
+Also distinct from the **University of Miami** "Jie Xu" in [[chakareski-2019-uav-mmwave-hetnet-ee]]: the parsed bio lists a UCLA Ph.D. and an Assistant Professor role in the Electrical and Computer Engineering Department, University of Miami, with interests in MEC, network ML, game theory, and network security. This is not enough to merge with the CUHK-Shenzhen ISAC entity.
