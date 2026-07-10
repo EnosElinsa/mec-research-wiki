@@ -198,6 +198,8 @@
 
 ### IRS / THz / anti-jamming
 
+- [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
+
 - [[wu-2026-model-based-ppo-ris-uav-mec]] - Wu et al. 2026. RIS-assisted urban multi-UAV MEC with decentralized model-based PPO; local k-hop observations, RIS phase proposals, and branched rollouts for trajectory/offloading control (IEEE TMC).
 
 - [[qin-2023-ris-uav-mec-ee]] - Qin et al. 2023. RIS-assisted UAV-MEC energy efficiency with NOMA; Dinkelbach + BCD/DC/SCA over task bits, power, RIS phase shifts, and UAV trajectory under imperfect CSI (IEEE TGCN).
@@ -342,6 +344,8 @@
 
 ### ISAC, sensing & physical-layer security
 
+- [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026. LSCR target handover for collaborative UAV relay tracking; Delaunay target graphs, TGR features, and Twin-GRCN similarity matching reach 92.1% accuracy with 0.063 KB transfer and a 20 KB model (IEEE T-ITS).
+- [[li-2026-control-based-uav-isac]] - Li et al. 2026. Control-based UAV-ISAC beamforming and trajectory design; SCA/SDR beamforming plus 3-DoF/6-DoF control-parameterized trajectory optimization by SQP reduces actual-flight sensing violations and rate degradation (IEEE TWC).
 - [[zhao-2026-mappo-jscc-aec]] - Zhao et al. 2026. HAP-assisted multi-UAV sensing-communication-computing; Lyapunov energy stability plus MAPPO-JSCC with embedded sensing, SCA, and Dinkelbach solvers (IEEE TWC).
 - [[wen-2026-uav-edge-inference-iscc]] - Wen et al. 2026. UAV-assisted ISCC edge inference; Hamiltonian-cycle access ordering plus AO/SA trajectory/resource optimization under discriminant-gain accuracy constraints (IEEE TWC).
 - [[zhou-2026-radar-energy-iscac]] - Zhou & Liu 2026. Multi-UAV ISCAC with HAP-side MEC processing; three-layer SCA/relaxation algorithm trades radar sensing data against total energy over scheduling, power, and UAV/HAP trajectories (IEEE TGCN).
@@ -447,6 +451,8 @@
 
 ### UAV communications & deployment foundations
 
+- [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026. AIM angle-of-radiation-aware UAV relay-chain deployment; joint 3-D position and heading search minimizes relay count under per-link RSS thresholds and maintains 100% success in the parsed terrain/RSS tests (IEEE TMC).
+- [[bujari-2018-stateless-fanet-routing]] - Bujari et al. 2018. Comparative study of stateless geographic FANET routing; progress, randomized, face/projection, hybrid, and restricted-flooding protocols are evaluated for delivery, path dilation, traffic, and scalability in 3-D UAV ad hoc networks (IEEE TMC).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
 - [[zeng-2016-throughput-relaying]] — Zeng et al. 2016. **UAV mobile relaying** throughput maximization; joint relay trajectory + source/relay power; "staircase" water-filling power structure + SCA trajectory under **information-causality** (IEEE TCOMM). *(UAV mobile-relaying anchor, not MEC.)*
 - [[zhao-2019-uav-emergency-disasters]] — Zhao et al. 2019. **UAV-assisted emergency networks** in disasters (magazine framework): joint trajectory+scheduling with surviving BSs, multihop D2D coverage extension, and multihop UAV relaying (AF/DF) — IEEE Wireless Communications. *(Post-disaster comms framework, not a single MEC formulation.)*
@@ -615,6 +621,7 @@
 - [[post-disaster-mec]]
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
+- [[stateless-geographic-fanet-routing]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
 - [[uav-mounted-ris]]
@@ -626,6 +633,7 @@
 ### UAV control & decisions
 
 - [[uav-trajectory-control]]
+- [[control-parameterized-uav-trajectory]]
 - [[compliance-aware-uav-trajectory]]
 - [[trajectory-privacy]]
 - [[bang-bang-control]]
@@ -638,6 +646,7 @@
 - [[fixed-wing-propulsion-energy-model]]
 - [[uav-delivery-pickup-dropoff]]
 - [[uav-mobile-relaying]]
+- [[angle-of-radiation-uav-relay]]
 - [[successive-hover-and-fly-trajectory]]
 - [[information-causality-constraint]]
 
@@ -798,6 +807,7 @@
 - [[minor-subspace-tracking]]
 - [[uav-localization-under-jamming]]
 - [[integrated-sensing-computation-communication]]
+- [[target-graph-representation]]
 - [[mmwave-radar-sensing]]
 - [[radar-sensing-energy-tradeoff]]
 - [[uav-backscatter-identification]]
@@ -850,6 +860,7 @@
 - [[energy-balancing-uav]]
 - [[load-balancing-uav-mec]]
 - [[energy-latency-tradeoff]]
+- [[effective-energy-efficiency]]
 - [[age-of-information]]
 - [[aoi-energy-tradeoff]]
 

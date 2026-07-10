@@ -12,8 +12,10 @@ related:
   - "[[hu-2019-uav-relay-edge-computing]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
   - "[[song-2026-thz-multiuav-mec]]"
+  - "[[huang-2026-aim-uav-relay-aor]]"
+  - "[[bujari-2018-stateless-fanet-routing]]"
 created: 2026-06-01
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # UAV Mobile Relaying
@@ -31,3 +33,5 @@ A relaying technique in which the relay node is **mounted on a high-mobility UAV
 - [[hu-2019-uav-relay-edge-computing]] carries the same information-causality + SCA machinery into **MEC**, letting one UAV be an edge server **and** a relay to an access point (a compute-offloading objective rather than throughput).
 - [[zhao-2019-uav-emergency-disasters]] uses **multihop UAV relaying** (AF/DF, optimized hovering positions) as one pillar of a post-disaster emergency-network framework.
 - [[song-2026-thz-multiuav-mec]] uses multiple UAVs as THz communication relays between IoT devices and MEC servers, with relay selection and UAV deployment optimized against MEC queueing delay.
+- [[huang-2026-aim-uav-relay-aor]] adds antenna-pattern-aware relay-chain deployment: each relay state includes both 3-D position and heading, and AIM minimizes relay count while satisfying per-link RSS thresholds.
+- [[bujari-2018-stateless-fanet-routing]] is the packet-routing complement: it compares stateless geographic forwarding protocols for FANETs where UAV nodes relay packets without maintaining end-to-end routes.

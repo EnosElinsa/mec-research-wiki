@@ -15,8 +15,9 @@ related:
   - "[[hu-2026-ertatd3-secure-caching]]"
   - "[[ren-2026-security-aware-vec-td3]]"
   - "[[feng-2026-prediction-service-migration]]"
+  - "[[cui-2026-aris-v2x-icac]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Vehicular MEC (V-MEC / VEC)
@@ -37,7 +38,7 @@ MEC where the user devices are vehicles — connected, semi-autonomous, or auton
 - **Federated-learning participant control** — when vehicles train local models, the VEC system must select participants that can finish before leaving coverage and allocate UAV bandwidth / compute resources; see [[li-2025-energy-latency-uav-vec]].
 - **ISAC-aware UAV support** — when temporary road hot spots need both coverage and sensing, UAV deployment and beamforming can be optimized jointly; see [[li-2026-isac-vec-beamforming-deployment]].
 
-[[chen-2026-hc-mappo-vehicle-twin-migration]] adds [[vehicle-twin-migration]] as a vehicular-metaverse service-continuity problem: predicted RSU workload drives pre-migration, and UAVs act as mobile edge servers when terrestrial RSUs overload. [[li-2026-isac-vec-beamforming-deployment]] adds the sensing side of UAV-assisted VEC by coupling deployment to communication capacity, radar mutual information / CRB-style sensing quality, and UAV energy. [[ji-2026-llm-iov-uav-offloading]] adds an LLM-assisted resource-scheduling variant for dense IoV: SOCP handles 3D UAV coverage, DRL and an LLM macro-scheduler allocate power/RBs, and LP sets task offloading ratios. [[hu-2026-ertatd3-secure-caching]] adds secure result caching for UAV-assisted vehicular tasks, [[ren-2026-security-aware-vec-td3]] adds TD3-controlled security-aware offloading against a passive eavesdropper, and [[feng-2026-prediction-service-migration]] uses stacked-LSTM vehicle prediction to reduce unnecessary multi-UAV service migrations.
+[[chen-2026-hc-mappo-vehicle-twin-migration]] adds [[vehicle-twin-migration]] as a vehicular-metaverse service-continuity problem: predicted RSU workload drives pre-migration, and UAVs act as mobile edge servers when terrestrial RSUs overload. [[li-2026-isac-vec-beamforming-deployment]] adds the sensing side of UAV-assisted VEC by coupling deployment to communication capacity, radar mutual information / CRB-style sensing quality, and UAV energy. [[cui-2026-aris-v2x-icac]] adds active-RIS-assisted V2X integrated communication and computation, optimizing vehicle associations, ARIS reflection, UAV/BS beamforming, offloading ratios, and compute allocation under an [[effective-energy-efficiency]] metric. [[ji-2026-llm-iov-uav-offloading]] adds an LLM-assisted resource-scheduling variant for dense IoV: SOCP handles 3D UAV coverage, DRL and an LLM macro-scheduler allocate power/RBs, and LP sets task offloading ratios. [[hu-2026-ertatd3-secure-caching]] adds secure result caching for UAV-assisted vehicular tasks, [[ren-2026-security-aware-vec-td3]] adds TD3-controlled security-aware offloading against a passive eavesdropper, and [[feng-2026-prediction-service-migration]] uses stacked-LSTM vehicle prediction to reduce unnecessary multi-UAV service migrations.
 
 ## Open questions
 

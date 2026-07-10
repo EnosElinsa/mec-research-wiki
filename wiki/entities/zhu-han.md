@@ -13,15 +13,16 @@ related:
   - "[[tang-2021-cecls-hybrid-cloud-edge]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[jia-2026-dro-lawn-trajectory]]"
+  - "[[li-2026-control-based-uav-isac]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-10
 ---
 
 # Zhu Han
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 10 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, and the mobile-AIGC survey:
+Co-authored 11 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -33,7 +34,8 @@ Co-authored 10 sources in this wiki, spanning aerial MEC, satellite edge computi
 - [[tang-2021-cecls-hybrid-cloud-edge]] — computation offloading in a hybrid cloud-and-edge LEO satellite network (CECLS); three-tier sum-energy minimization via binary-relaxation LP + distributed ADMM.
 - [[wang-2026-diffusion-semantic-uav-edge]] — diffusion-based trajectory and semantic resource optimization for UAV-assisted semantic edge computing.
 - [[jia-2026-dro-lawn-trajectory]] — distributionally robust computation offloading and trajectory optimization in low-altitude wireless networks.
+- [[li-2026-control-based-uav-isac]] - control-parameterized beamforming and trajectory design for UAV-enabled ISAC with 3-DoF and 6-DoF dynamics.
 
 ## Contributions to this wiki
 
-- A senior collaborator (game theory, optimization, and learning for wireless) who appears across the NUAA aerial-computing cluster with [[ziye-jia]], [[chao-dong]], and [[qihui-wu]], plus the 6G foundation-models and UAV-swarm response-delay threads.
+- A senior collaborator (game theory, optimization, and learning for wireless) who appears across the NUAA aerial-computing cluster with [[ziye-jia]], [[chao-dong]], and [[qihui-wu]], plus the 6G foundation-models, UAV-swarm response-delay, low-altitude wireless, semantic edge, and UAV-ISAC control threads.

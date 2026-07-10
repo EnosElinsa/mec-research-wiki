@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-10] Curated 5 UAV relay / ARIS V2X / FANET routing / ISAC control sources
+
+Added five source pages and five concept pages:
+
+- [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3630751`. Angle-of-radiation-aware UAV relay deployment with joint 3-D position and heading choices, AIM reachability search, and quantified relay/success-rate tradeoffs.
+- [[cui-2026-aris-v2x-icac]] - Cui et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3682488`. Active-RIS-aided multi-UAV V2X integrated communication and computation allocation with effective-energy-efficiency maximization, Dinkelbach reformulation, and BCD/ECCRA updates.
+- [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3677037`. LSCR collaborative UAV relay tracking using Delaunay-neighbor target graph representation, Twin-GRCN selection, and low-overhead relay handover.
+- [[bujari-2018-stateless-fanet-routing]] - Bujari, Palazzi, and Ronzani 2018, *IEEE TMC*, DOI `10.1109/TMC.2018.2811490`. Stateless geographic FANET routing comparison across progress, randomized, face, hybrid, and flooding families under 3-D mobility.
+- [[li-2026-control-based-uav-isac]] - Li et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3604344`. Control-based UAV-ISAC design coupling SCA/SDR beamforming with control-parameterized 3-DoF and 6-DoF trajectory optimization.
+
+New concept pages: [[angle-of-radiation-uav-relay]], [[effective-energy-efficiency]], [[target-graph-representation]], [[stateless-geographic-fanet-routing]], and [[control-parameterized-uav-trajectory]]. Updated backlinks for [[uav-mobile-relaying]], [[active-ris]], [[graph-neural-network]], [[integrated-sensing-and-communication]], [[uav-trajectory-control]], [[vehicular-mec]], [[fractional-programming-dinkelbach]], [[alternating-optimization-sdr-sca]], and [[integrated-sensing-computation-communication]]. Updated [[zhu-han]] with the control-based UAV-ISAC paper and refreshed `wiki/index.md` plus `wiki/overview.md` counts and cross-track summaries.
+
+Metadata notes: [[huang-2026-aim-uav-relay-aor]] and [[li-2026-control-based-uav-isac]] had DOI evidence in the local parses. The local parses for [[cui-2026-aris-v2x-icac]], [[he-2026-lscr-uav-relay-tracking]], and [[bujari-2018-stateless-fanet-routing]] were silent or incomplete on top-level DOI/venue/year metadata, so DOI, venue, year, volume/issue/pages where used were verified against title-matched Crossref/IEEE DOI metadata. Technical claims and numeric findings are grounded in the local parses. Extractor subagents were attempted for this pass but hit 429/stream-disconnect failures, so extraction and synthesis were completed locally from the parsed Markdown.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-batch2-final.json` reported 364 sources, 338 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 theses, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-batch2-final.json` reported 612 raw folders, 268 curated raw references, 344 genuinely new uncurated folders remaining, and 99 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean for this batch, with the link checker reporting no dangling links. `python tools/wiki/entity_roster_audit.py --json entity-roster-batch2-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was probed, but the local `127.0.0.1:19828` service was not reachable during this run.
+
 ## [2026-07-07] Curated 5 UAV localization / semantic deployment / Rician data-harvesting / delivery sources
 
 Added five source pages and five concept pages:

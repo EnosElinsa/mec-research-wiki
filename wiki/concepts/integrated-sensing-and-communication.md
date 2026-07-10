@@ -16,8 +16,10 @@ related:
   - "[[zhao-2025-networked-isac-uav-handover]]"
   - "[[li-2026-isac-vec-beamforming-deployment]]"
   - "[[wang-2026-stbc-cooperative-isac]]"
+  - "[[li-2026-control-based-uav-isac]]"
+  - "[[control-parameterized-uav-trajectory]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Integrated Sensing and Communication (ISAC)
@@ -36,3 +38,5 @@ For a high-level survey of ISAC in the LAE context, see [[jiang-2025-isac-lae-ov
 [[huang-2026-offgrid-lae-imager]] adds a cooperative cellular-ISAC imaging view: multiple BSs use raw CSI to reconstruct sparse low-altitude aerial images and mitigate off-grid errors with physics-embedded learning. [[hou-2025-pbia-air-iscc-uav-its]] extends the same sensing/communication substrate into Air-ISCC, where UAV swarms also compute IoTD tasks in ITS scenarios.
 
 [[wang-2026-stbc-cooperative-isac]] adds the shared-resource physical-layer version: multi-BS cooperative ISAC uses robust inter-BS nulling, a [[space-time-block-codec]], and SINR-weighted data fusion to sense low-altitude UAVs near cell edges without allocating fully orthogonal resources.
+
+[[li-2026-control-based-uav-isac]] adds a control-theoretic UAV-ISAC design: communication/sensing beamforming is optimized with SCA/SDR, while the UAV trajectory is represented through 3-DoF or 6-DoF dynamics and [[control-parameterized-uav-trajectory|control parameterization]] so planned sensing constraints remain meaningful for actual flight.

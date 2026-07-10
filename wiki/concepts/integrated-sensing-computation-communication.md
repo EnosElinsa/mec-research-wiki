@@ -14,8 +14,9 @@ related:
   - "[[radar-sensing-energy-tradeoff]]"
   - "[[wen-2026-uav-edge-inference-iscc]]"
   - "[[uav-assisted-edge-inference]]"
+  - "[[cui-2026-aris-v2x-icac]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Integrated Sensing, Computation, and Communication (ISCC)
@@ -31,3 +32,5 @@ In [[tang-2024-iscc-uav-feel]], ISCC resources (bandwidth, batch size, position)
 [[zhou-2026-radar-energy-iscac]] adds the radar-data / HAP-offloading variant: multiple UAVs collect radar sensing data, process part locally, and offload the rest to a HAP MEC server while jointly controlling sensing scheduling, transmit power, and UAV/HAP trajectories for a sensing-data versus energy tradeoff.
 
 [[wen-2026-uav-edge-inference-iscc]] adds a UAV-relayed edge-inference variant: distributed ground devices sense and extract features, a UAV visits them to collect quantized feature vectors, and an edge server completes classification. The paper keeps downstream task accuracy explicit through [[discriminant-gain]] while optimizing access order, hovering locations, sensing power, compute frequency, and transmission parameters.
+
+[[cui-2026-aris-v2x-icac]] is adjacent to this page's ISCC framing but does not include radar sensing: it integrates V2X communication and computation only, with ARIS/UAV resource allocation optimized under an [[effective-energy-efficiency]] metric.

@@ -9,8 +9,10 @@ related:
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[zhao-2026-mappo-jscc-aec]]"
+  - "[[cui-2026-aris-v2x-icac]]"
+  - "[[effective-energy-efficiency]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Fractional Programming and Dinkelbach Transform
@@ -37,4 +39,4 @@ The EE objective in WPT-MEC, NOMA, and joint communication-computation problems 
 
 [[zhu-2025-lycnn-drl-wpt-mec]] applies fractional programming to LSEM's EE objective before applying Lyapunov to the long-term constraints. [[xiao-2025-star-ris-bidirectional-uav-mec]] uses Dinkelbach's algorithm to handle the completed-task-bits over energy objective in STAR-RIS-enabled UAV-MEC. [[wang-2026-secure-lae-uav-scheduling]] uses a Dinkelbach-driven trajectory/velocity subproblem for secrecy energy efficiency. The combination — fractional programming for the *objective* form, Lyapunov or SCA/AO for the *time and coupling constraints* — is a recurring template in long-term EE-MEC papers.
 
-[[qin-2023-ris-uav-mec-ee]] uses Dinkelbach's method as the outer loop for RIS-assisted UAV-MEC energy efficiency. [[zhao-2026-mappo-jscc-aec]] uses Dinkelbach inside the U2H OMA power-control subproblem embedded in MAPPO-JSCC.
+[[qin-2023-ris-uav-mec-ee]] uses Dinkelbach's method as the outer loop for RIS-assisted UAV-MEC energy efficiency. [[zhao-2026-mappo-jscc-aec]] uses Dinkelbach inside the U2H OMA power-control subproblem embedded in MAPPO-JSCC. [[cui-2026-aris-v2x-icac]] uses Dinkelbach to optimize an [[effective-energy-efficiency]] objective that combines V2X communication utility, computation utility, and energy cost.

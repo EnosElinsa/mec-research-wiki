@@ -12,8 +12,10 @@ related:
   - "[[sequential-task-offloading]]"
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
+  - "[[he-2026-lscr-uav-relay-tracking]]"
+  - "[[target-graph-representation]]"
 created: 2026-06-03
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Graph Neural Network (GNN)
@@ -35,4 +37,4 @@ The survey highlights two recurring designs: combining GNNs with **classical ite
 
 ## In the corpus
 
-This is the corpus's primary anchor for the GNN concept; it is introduced and reviewed in [[dai-2024-graph-rm-survey-learning]] (the learning half) and motivated by the scaling limits of graph optimization laid out in [[dai-2024-graph-rm-survey-optimization]]. [[li-2026-cdto-inland-waterways]] provides a task-offloading example where a topology-aware GNN represents D2D links among USVs for multi-agent offloading decisions. [[teng-2026-gstrl-sequential-offloading]] uses a heterogeneous graph neural network to encode UAVs, requesting tasks, offloaded tasks, and dynamic U2U/task edges for [[sequential-task-offloading]]. [[zhan-2026-gatd3qn-dependent-offloading]] uses graph attention over task DAGs before D3QN offloading, while [[wang-2026-llm-qos-multiuav-resource]] uses relation-aware GAT inside an LLM teacher for QoS-aware multi-UAV resource allocation.
+This is the corpus's primary anchor for the GNN concept; it is introduced and reviewed in [[dai-2024-graph-rm-survey-learning]] (the learning half) and motivated by the scaling limits of graph optimization laid out in [[dai-2024-graph-rm-survey-optimization]]. [[li-2026-cdto-inland-waterways]] provides a task-offloading example where a topology-aware GNN represents D2D links among USVs for multi-agent offloading decisions. [[teng-2026-gstrl-sequential-offloading]] uses a heterogeneous graph neural network to encode UAVs, requesting tasks, offloaded tasks, and dynamic U2U/task edges for [[sequential-task-offloading]]. [[zhan-2026-gatd3qn-dependent-offloading]] uses graph attention over task DAGs before D3QN offloading, while [[wang-2026-llm-qos-multiuav-resource]] uses relation-aware GAT inside an LLM teacher for QoS-aware multi-UAV resource allocation. [[he-2026-lscr-uav-relay-tracking]] shows a sensing-side use: a lightweight GRCN extracts [[target-graph-representation]] features for multi-UAV target handover.
