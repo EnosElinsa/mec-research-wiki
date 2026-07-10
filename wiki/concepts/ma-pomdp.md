@@ -7,8 +7,10 @@ related:
   - "[[masac]]"
   - "[[peng-2025-drudm-cfg]]"
   - "[[qin-2025-bcuav-masac]]"
+  - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
+  - "[[multi-domain-uav-anti-jamming]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-10
 ---
 
 # MA-POMDP (Multi-Agent Partially Observable MDP)
@@ -29,4 +31,4 @@ The natural multi-agent generalization of [[pomdp|POMDP]]: $N$ agents, each with
 
 ## In this wiki
 
-[[peng-2025-drudm-cfg]] explicitly casts post-disaster offloading as MA-POMDP; [[qin-2025-bcuav-masac]] does the same under the AGIN lens. The single-agent [[pomdp]] page covers the simpler variant used by [[liu-2026-jppo-en-convntm]] (one centralized controller for all UAVs).
+[[peng-2025-drudm-cfg]] explicitly casts post-disaster offloading as MA-POMDP; [[qin-2025-bcuav-masac]] does the same under the AGIN lens. [[chen-2026-maddpg-uav-swarm-antijamming]] uses the same framing for [[multi-domain-uav-anti-jamming]], where each UAV observes local channel/interference conditions while joint U2U/U2G reliability determines the reward. The single-agent [[pomdp]] page covers the simpler variant used by [[liu-2026-jppo-en-convntm]] (one centralized controller for all UAVs).

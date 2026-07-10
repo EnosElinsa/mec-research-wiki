@@ -11,8 +11,11 @@ related:
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
   - "[[angle-dependent-rician-fading]]"
   - "[[you-2019-rician-uav-data-harvesting]]"
+  - "[[du-2025-autonomous-intelligent-uav-swarms]]"
+  - "[[gao-2023-uav-mcs-uma]]"
+  - "[[uav-assisted-mobile-crowd-sensing]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # UAV Data Collection
@@ -30,3 +33,5 @@ When the collected data is delay-sensitive, data-collection objectives connect t
 [[zhao-2026-adaptive-wdc-wet-lae]] adds the dual-service low-altitude version: UAVs collect fresh data from I-devices while also transferring RF energy to E-devices, with AoI and hungry-level-of-energy balanced by an adaptive reward preference rather than a fixed hand-tuned weight.
 
 [[you-2019-rician-uav-data-harvesting]] is the channel-model foundation case: a single UAV collects WSN data under outage-aware [[angle-dependent-rician-fading]], jointly optimizing scheduling, horizontal trajectory, and vertical trajectory through BCD/SCA.
+
+[[gao-2023-uav-mcs-uma]] broadens the collection model to [[uav-assisted-mobile-crowd-sensing]]: UAVs cover points of interest that human participants miss and calibrate participant sensors when trajectories intersect. [[du-2025-autonomous-intelligent-uav-swarms]] is a survey anchor for the swarm autonomy stack behind data collection, relaying, monitoring, and edge-computing applications.

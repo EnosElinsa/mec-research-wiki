@@ -20,6 +20,10 @@ related:
   - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
   - "[[rmaddpg-dda-uav-isac-control]]"
   - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
+  - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
+  - "[[gao-2023-uav-mcs-uma]]"
+  - "[[multi-domain-uav-anti-jamming]]"
+  - "[[uav-assisted-mobile-crowd-sensing]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-31
 updated: 2026-07-10
@@ -46,6 +50,8 @@ The multi-agent extension of [[ddpg]]: each agent has its own deterministic acto
 - [[li-2026-uav-bs-semantic-mfmaddpg-kde]] — MF-MADDPG-KDE uses mean-field MADDPG plus kernel-density action-distribution modeling for 3-D semantic UAV-BS deployment.
 - [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] — [[rmaddpg-dda-uav-isac-control]] adds random-network-distillation novelty, parameter sharing, and dynamic data augmentation to MADDPG for UAV-enabled vehicular ISAC.
 - [[hazarika-2026-dynamo-uav-vehicle-tracking]] — POMDP-MADDPG controls predictive multi-UAV vehicle tracking after DynaMo prediction and [[dynamic-target-prioritization-metric|DTPM]] prioritization.
+- [[chen-2026-maddpg-uav-swarm-antijamming]] — MADDPG coordinates UAV channel and power actions for [[multi-domain-uav-anti-jamming]] in urban ITS traffic monitoring.
+- [[gao-2023-uav-mcs-uma]] — MADDPG schedules UAV movement and calibration actions in [[uav-assisted-mobile-crowd-sensing]].
 
 ## Relation to siblings
 

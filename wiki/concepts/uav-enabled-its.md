@@ -13,6 +13,11 @@ related:
   - "[[li-2026-la4h-uav-active-tracking]]"
   - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
   - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
+  - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
+  - "[[du-2025-autonomous-intelligent-uav-swarms]]"
+  - "[[zang-2026-uav-ev-priority-cav-speed]]"
+  - "[[multi-domain-uav-anti-jamming]]"
+  - "[[speed-coordinated-robust-optimization-control]]"
 created: 2026-05-29
 updated: 2026-07-10
 ---
@@ -28,3 +33,5 @@ Key wiki source: [[peng-2024-energy-time-uav-its]], which adds the **completion-
 [[hou-2025-pbia-air-iscc-uav-its]] adds an Air-ISCC view: UAVs sense blocked or accident-affected road environments, communicate with IoTDs, and compute offloaded tasks under a PPO-based swarm policy. [[beishenalieva-2026-secrecy-aware-uav-path-planning]] adds the security view: UAVs act as mobile aggregators when RSUs fail or congest, while policy-gradient control and PSO slot scheduling protect ITS sensing uploads from malicious aerial eavesdroppers and jammers.
 
 Adjacent tracking sources broaden the sensing side of the concept. [[li-2026-la4h-uav-active-tracking]] focuses on visual active target tracking under occlusion and distractor interference, [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] controls UAV-enabled vehicular ISAC with MARL, and [[hazarika-2026-dynamo-uav-vehicle-tracking]] prioritizes fast-moving vehicles using prediction uncertainty, link quality, and freshness rather than [[age-of-information]] alone.
+
+The latest adjacent ITS additions split the role of the UAV even further. [[chen-2026-maddpg-uav-swarm-antijamming]] protects U2U/U2G traffic-monitoring links through [[multi-domain-uav-anti-jamming]], [[zang-2026-uav-ev-priority-cav-speed]] uses UAVs as sensing/relay infrastructure for emergency-vehicle CAV speed coordination, and [[du-2025-autonomous-intelligent-uav-swarms]] supplies the broader swarm-autonomy taxonomy behind such deployments.

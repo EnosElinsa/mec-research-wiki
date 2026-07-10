@@ -8,8 +8,10 @@ related:
   - "[[zeng-2019-rotary-wing-energy-min]]"
   - "[[li-2024-rldc-uav-swarm-clustering]]"
   - "[[lee-2026-uav-delivery-time-energy]]"
+  - "[[gong-2026-uav-3d-visual-coverage]]"
+  - "[[path-aware-3d-visual-coverage]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-10
 ---
 
 # Rotary-Wing UAV Propulsion Energy Model
@@ -22,4 +24,4 @@ where `P₀`, `P_i` are the blade-profile and induced power in hovering, `U_tip`
 
 Two properties drive UAV trajectory design: hovering power `P_h = P₀ + P_i` is **finite** (rotary-wing UAVs *can* hover, unlike fixed-wing UAVs whose power → ∞ at `V = 0`), and `P(V)` is **neither convex nor concave** — it first decreases then increases with `V`, so hovering is feasible but not the most power-conserving state.
 
-This model originates in [[zeng-2019-rotary-wing-energy-min]] (Zeng, Xu & Zhang, IEEE TWC 2019) and is reused as the propulsion-energy reference across the corpus's UAV-MEC energy formulations — e.g. [[li-2024-rldc-uav-swarm-clustering]] cites it for the leader/follower propulsion terms. It underpins energy-aware [[uav-trajectory-control]] and the [[energy-latency-tradeoff]] in aerial MEC. [[lee-2026-uav-delivery-time-energy]] adapts the same propulsion-energy logic to parcel delivery, where the carried payload weight changes induced power and thus changes the optimal pickup/drop-off order.
+This model originates in [[zeng-2019-rotary-wing-energy-min]] (Zeng, Xu & Zhang, IEEE TWC 2019) and is reused as the propulsion-energy reference across the corpus's UAV-MEC energy formulations — e.g. [[li-2024-rldc-uav-swarm-clustering]] cites it for the leader/follower propulsion terms. It underpins energy-aware [[uav-trajectory-control]] and the [[energy-latency-tradeoff]] in aerial MEC. [[lee-2026-uav-delivery-time-energy]] adapts the same propulsion-energy logic to parcel delivery, where the carried payload weight changes induced power and thus changes the optimal pickup/drop-off order. [[gong-2026-uav-3d-visual-coverage]] uses the same idea in non-MEC [[path-aware-3d-visual-coverage]], where distance-shortest routes can consume more energy than velocity/acceleration-aware paths.

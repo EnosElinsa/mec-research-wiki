@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-10] Curated UAV anti-jamming, swarm autonomy, CAV coordination, crowd sensing, and visual coverage
+
+Added five source pages and five concept pages:
+
+- [[chen-2026-maddpg-uav-swarm-antijamming]] - Chen et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3584216`. MADDPG-based multi-domain UAV-swarm anti-jamming for urban ITS traffic monitoring, with joint channel/power actions under fixed, swept, and random jamming.
+- [[du-2025-autonomous-intelligent-uav-swarms]] - Du et al. 2025, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3569500`. Survey of autonomous and intelligent UAV swarms across planning, coordination, task assignment, control, localization, perception, communication, and applications.
+- [[zang-2026-uav-ev-priority-cav-speed]] - Zang et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3651592`. UAV-assisted emergency-vehicle priority and CAV speed coordination through rolling speed-coordinated robust optimization control.
+- [[gao-2023-uav-mcs-uma]] - Gao et al. 2023, *IEEE TMC*, DOI `10.1109/TMC.2022.3147871`. UMA UAV-assisted mobile crowd sensing with participant incentives, quality prediction, UAV coverage, sensor calibration, and MADDPG scheduling.
+- [[gong-2026-uav-3d-visual-coverage]] - Gong et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3646339`. Path-aware 3-D object visual coverage with viewpoint generation, informed RRT*-SA routing, B-spline SE(3) smoothing, and propulsion-energy optimization.
+
+New concept pages: [[multi-domain-uav-anti-jamming]], [[autonomous-uav-swarms]], [[speed-coordinated-robust-optimization-control]], [[uav-assisted-mobile-crowd-sensing]], and [[path-aware-3d-visual-coverage]]. Updated backlinks for [[uav-enabled-its]], [[anti-jamming-mec]], [[uav-data-collection]], [[particle-swarm-optimization]], [[maddpg]], [[centralized-training-decentralized-execution]], [[ma-pomdp]], [[uav-trajectory-control]], [[b-spline-trajectory]], and [[rotary-wing-propulsion-energy-model]], then refreshed `wiki/index.md` and `wiki/overview.md`.
+
+Metadata notes: the local parses for the five new source pages are silent or incomplete on top-level venue/year/DOI metadata. Chen, Du, and Zang metadata came from local PDF metadata/first-page evidence; Gao and Gong metadata were verified through title-matched DOI records. Technical claims and numeric findings remain grounded in the local parsed Markdown, with OCR conflicts or malformed tables called out on the source pages.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-current-2026-07-10-batch5-final.json` reported 377 sources, 351 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-current-2026-07-10-batch5-final.json` reported 612 raw folders, 283 curated raw references, 329 genuinely new uncurated folders remaining, and 97 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans` reported no dangling links; orphan reporting remains informational for raw-source mirrors and parse artifacts. `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean for this batch. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-2026-07-10-batch5-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 851 nodes and 8045 edges.
+
 ## [2026-07-10] Curated UAV tracking, vehicular ISAC, and directional FANET maintenance
 
 Added four source pages and four concept pages, repaired one existing source-to-raw pointer, and updated two existing author rosters:
