@@ -15,6 +15,8 @@ related:
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[ensemble-qmix]]"
   - "[[zhang-2026-ensemble-marl-uav-target-search]]"
+  - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
+  - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
 created: 2026-05-28
 updated: 2026-07-11
 ---
@@ -44,7 +46,7 @@ A canonical paradigm for cooperative multi-agent DRL:
 
 ## In this wiki
 
-CTDE shows up explicitly in [[zhang-2025-mcma-task-migration]] (server-as-agent for vehicular MEC), [[peng-2025-drudm-cfg]] (UAV-as-agent for post-disaster MEC), and [[kang-2023-mappo-hierarchical-aerial]] (UAV-as-agent for hierarchical aerial MEC). It also appears in adjacent non-offloading control, including [[chen-2026-maddpg-uav-swarm-antijamming]] for jammed UAV-swarm communications and [[gao-2023-uav-mcs-uma]] for multi-UAV mobile-crowd-sensing coverage/calibration. Across these, the *backbone* differs (MAPPO / MADDPG / MASAC), but the training/execution split is shared. The engineering protocol is expanded in [[ctde-multi-agent-drl-protocol]].
+CTDE shows up explicitly in [[zhang-2025-mcma-task-migration]] (server-as-agent for vehicular MEC), [[peng-2025-drudm-cfg]] (UAV-as-agent for post-disaster MEC), and [[kang-2023-mappo-hierarchical-aerial]] (UAV-as-agent for hierarchical aerial MEC). It also appears in adjacent non-offloading control, including [[chen-2026-maddpg-uav-swarm-antijamming]] for jammed UAV-swarm communications, [[gao-2023-uav-mcs-uma]] for multi-UAV mobile-crowd-sensing coverage/calibration, [[wu-not-in-parse-aoi-sampling-buffering-routing]] for all-aerial AoI sampling/buffering/routing, and [[zhou-2026-a2g-madrl-air-ground-vcs]] for sequential UAV/UGV crowdsensing. Across these, the *backbone* differs (MAPPO / MADDPG / MASAC / value decomposition / sequential policy generation), but the training/execution split is shared. The engineering protocol is expanded in [[ctde-multi-agent-drl-protocol]].
 
 ## Limitation
 

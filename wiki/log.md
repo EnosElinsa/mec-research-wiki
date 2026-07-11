@@ -1,5 +1,21 @@
 # Research Log
 
+## [2026-07-11] Curated AoI/FANET, air-ground VCS, ISAC feature fusion, secure content, and UAV localization
+
+Added five source pages and four concept pages:
+
+- [[wu-not-in-parse-aoi-sampling-buffering-routing]] - Wu et al. AoI-aware all-aerial UAV swarm monitoring with AASBR and COMH-MAPPO, jointly learning sampling, buffer scheduling, and FANET routing under leader-follower partial observability.
+- [[zhou-2026-a2g-madrl-air-ground-vcs]] - Zhou et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3708370`. Air-ground vehicular crowdsensing with UAV-UGV pairs, sensing capability-aware AoI, latency-weighted data collection ratio, HVGCN interaction features, and dynamically ordered masked policy generation.
+- [[yan-not-in-parse-multibs-isac-uav-trajectory]] - Yan et al. Asynchronous UAV trajectory monitoring in cellular ISAC with single-BS LDFT/TO-CFO preprocessing, compressed-sensing multi-BS feature fusion, and SUKF trajectory tracking. *(Parsed metadata lacks DOI/venue/year.)*
+- [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] - Bayessa et al. UAV-enabled ISAC secure content delivery with CRLB/EKF eavesdropper localization and action-masked hierarchical DDQN over caching, association, deployment, and beamforming. *(Parsed metadata lacks DOI/venue/year.)*
+- [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] - Ebrahimi et al. Autonomous UAV trajectory learning for RSSI-based ground-object localization with initial scan, Q-learning waypoint selection, ATG path-loss/shadowing, and energy/time/path/waypoint constraints. *(Parsed metadata lacks DOI/venue/year.)*
+
+New concept pages: [[sequential-multi-agent-policy-generation]], [[multi-bs-feature-fusion-isac]], [[action-masked-hierarchical-drl]], and [[rss-based-uav-localization]]. Updated backlinks for AoI, UAV-assisted mobile crowd sensing, MAPPO, MA-POMDP, CTDE, FANET routing, GNN, NOMA, ISAC, networked ISAC, CRLB, DDQN, hierarchical RL, service/secure caching, PLS, UAV trajectory control, ATG channel modeling, and multi-source fusion, then refreshed [[index]] and [[overview]].
+
+Metadata notes: the Zhou VCS parse contains an accepted-for-publication IEEE TMC DOI banner, so DOI/year/venue are recorded from the local parse. The Wu, Yan, Bayessa, and Ebrahimi parses expose title/authors but not reliable publication year, venue, or DOI; those fields remain blank rather than inferred. Technical claims remain grounded in the local parsed Markdown; pages record OCR/table/equation caveats where the parse is visibly corrupted.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-current-2026-07-11-batch11-final.json` reported 404 sources, 378 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-current-2026-07-11-batch11-final.json` reported 612 raw folders, 313 curated raw references, 299 genuinely new uncurated folders remaining, and 94 referenced-name/no-matching-raw-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans --json linkcheck-current-2026-07-11-batch11-final.json` reported no dangling links; orphan reporting remains informational for raw-source mirrors and parse artifacts. `python tools/wiki/process_refs.py --json process-refs-current-2026-07-11-batch11-final.json`, `python tools/wiki/index_audit.py --json index-audit-current-2026-07-11-batch11-final.json`, `python tools/wiki/frontmatter_audit.py --json frontmatter-current-2026-07-11-batch11-final.json`, and `git diff --check` were clean. `python tools/wiki/entity_roster_audit.py --json entity-roster-current-2026-07-11-batch11-final.json` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 905 nodes and 8572 edges.
+
 ## [2026-07-11] Curated maritime auction, 3D spectrum, spherical T-RIS, and AoI incentive/energy sources
 
 Added five source pages and six concept pages:

@@ -7,8 +7,9 @@ related:
   - "[[privacy-sensitive-data-partitioning]]"
   - "[[vehicular-mec]]"
   - "[[hu-2026-ertatd3-secure-caching]]"
+  - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Secure Caching in UAV-MEC
@@ -16,3 +17,5 @@ updated: 2026-07-07
 Secure caching separates reusable edge-side task artifacts from privacy-sensitive user-specific results. General task outputs or intermediate components can be cached at the UAV edge server, while private final processing remains local to the vehicle or user device.
 
 In [[hu-2026-ertatd3-secure-caching]], this split is used for cache-enabled UAV-assisted [[vehicular-mec]]. General tasks can cache full results at the UAV. Private tasks cache only sectional intermediate results, then perform final personalized computation locally, connecting [[service-caching-mec]] to [[privacy-sensitive-data-partitioning]].
+
+[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] is not an MEC offloading paper, but it adds a neighboring secure UAV caching case: UAVs cache requested content and use ISAC sensing to localize eavesdroppers before secure-throughput-oriented delivery decisions.

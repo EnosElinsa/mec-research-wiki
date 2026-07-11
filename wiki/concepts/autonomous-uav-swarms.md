@@ -15,6 +15,7 @@ related:
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
   - "[[aircomp-assisted-asynchronous-fl]]"
   - "[[zhang-2026-ensemble-marl-uav-target-search]]"
+  - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
 created: 2026-07-10
 updated: 2026-07-11
 ---
@@ -22,6 +23,8 @@ updated: 2026-07-11
 # Autonomous UAV Swarms
 
 [[zhang-2026-ensemble-marl-uav-target-search]] adds a heterogeneous-search angle: fixed-wing and multirotor UAVs operate at different altitude bands, and [[ensemble-qmix]] coordinates target search under partial observability, no-fly zones, and collision masks.
+
+[[wu-not-in-parse-aoi-sampling-buffering-routing]] adds a fully airborne monitoring angle: follower UAVs sense, buffer, and relay updates to a leader UAV, so autonomy includes freshness-aware sampling and FANET routing rather than only motion planning or target search.
 
 The robotics and networking substrate underneath many UAV-MEC papers: multiple UAVs coordinate mission assignment, path planning, local collision avoidance, control, perception, localization, and communication so that the fleet behaves as a system rather than as independent aircraft.
 

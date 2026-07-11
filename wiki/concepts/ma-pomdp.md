@@ -10,8 +10,10 @@ related:
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
   - "[[multi-domain-uav-anti-jamming]]"
+  - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
+  - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
 created: 2026-05-28
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # MA-POMDP (Multi-Agent Partially Observable MDP)
@@ -35,3 +37,5 @@ The natural multi-agent generalization of [[pomdp|POMDP]]: $N$ agents, each with
 [[peng-2025-drudm-cfg]] explicitly casts post-disaster offloading as MA-POMDP; [[qin-2025-bcuav-masac]] does the same under the AGIN lens. [[chen-2026-maddpg-uav-swarm-antijamming]] uses the same framing for [[multi-domain-uav-anti-jamming]], where each UAV observes local channel/interference conditions while joint U2U/U2G reliability determines the reward. The single-agent [[pomdp]] page covers the simpler variant used by [[liu-2026-jppo-en-convntm]] (one centralized controller for all UAVs).
 
 [[shi-2025-aoi-energy-replenishment-multiuav]] uses a Dec-POMDP for multi-UAV AoI-aware data collection and energy replenishment, with each UAV making local flight, association, and charging decisions from partial observations while a shared freshness/energy objective couples the team.
+
+[[wu-not-in-parse-aoi-sampling-buffering-routing]] applies the same partial-observation logic inside a leader-follower UAV swarm, where each follower sees only local queue, neighbor, and freshness state. [[zhou-2026-a2g-madrl-air-ground-vcs]] adds a UAV/UGV/PoI crowdsensing version whose [[sequential-multi-agent-policy-generation]] layer makes the joint action order explicit.

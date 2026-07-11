@@ -17,6 +17,8 @@ related:
   - "[[chen-2026-air-ground-covert]]"
   - "[[ambient-interference-aided-covertness]]"
   - "[[prabhath-not-in-parse-3d-space-spectrum-utilization]]"
+  - "[[ebrahimi-not-in-parse-autonomous-uav-localization-rl]]"
+  - "[[rss-based-uav-localization]]"
 created: 2026-05-31
 updated: 2026-07-11
 ---
@@ -33,3 +35,4 @@ The **air-to-ground (ATG) channel model** describes propagation between an aeria
 - [[bai-2026-multimodal-uav-vehicle-channel]] and [[hussain-2026-unet-uav-mmwave-pathloss]] extend the channel-modeling side of the corpus: the former uses [[multi-modal-intelligent-channel-modeling]] with LiDAR-aided scatterer classes, while the latter uses [[multi-scale-unet-pathloss-prediction]] over geometry-derived LoS and building masks.
 - [[chen-2026-air-ground-covert]] uses the probabilistic LoS/NLoS air-to-ground channel inside a covert-communication model, where Bob's connection probability and Willie's detection behavior also depend on PPP-modeled environmental interference.
 - [[prabhath-not-in-parse-3d-space-spectrum-utilization]] is primarily UAV-to-UAV downlink analysis, but it provides a nearby 3-D aerial-channel benchmark across free-space, log-normal, and Nakagami-m propagation, with A2G/SAGIN extension identified as requiring adapted propagation assumptions.
+- [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] uses the ATG channel as a localization model: RSSI is converted to distance under elevation-angle-dependent path loss and shadowing, then [[rss-based-uav-localization]] chooses waypoints that improve multilateration geometry.

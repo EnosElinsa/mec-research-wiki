@@ -8,8 +8,10 @@ related:
   - "[[completion-time-difference]]"
   - "[[xie-2026-uav-multisource-fusion]]"
   - "[[peng-2024-energy-time-uav-its]]"
+  - "[[yan-not-in-parse-multibs-isac-uav-trajectory]]"
+  - "[[multi-bs-feature-fusion-isac]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-11
 ---
 
 # Multi-Source Data Fusion
@@ -20,3 +22,5 @@ Combining observations from multiple sensors / agents into a unified output that
 - **Temporal-aligned fusion** — agents observe overlapping data at multiple times; the control center aligns and combines. [[peng-2024-energy-time-uav-its]] highlights that **completion-time difference** between agents degrades fusion quality.
 
 Fusion has its own optimization shape: synchronization matters; latency matters more than throughput; missing one input degrades the output. Reward functions for fusion-aware MEC therefore include synchronization terms (e.g. variance of finish times) that pure-task-offloading rewards don't have.
+
+[[yan-not-in-parse-multibs-isac-uav-trajectory]] adds a cellular-ISAC sensing variant: [[multi-bs-feature-fusion-isac]] combines delay/Doppler feature vectors from multiple BSs before trajectory association, avoiding both raw coherent signal fusion and late data-only averaging.

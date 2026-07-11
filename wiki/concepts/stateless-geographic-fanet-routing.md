@@ -10,8 +10,9 @@ related:
   - "[[directional-fanet-link-maintenance]]"
   - "[[uav-mobile-relaying]]"
   - "[[wireless-backhaul]]"
+  - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Stateless Geographic FANET Routing
@@ -23,3 +24,5 @@ Stateless geographic FANET routing forwards each packet using current node and d
 [[song-2026-albpd-directional-fanet]] adds the lower-layer directional-link view. Even if forwarding is stateless, each hop can still fail when UAV motion breaks range or beam alignment, so [[directional-fanet-link-maintenance]] predicts those breakages and adjusts beamwidth/range before routing has to recover from a broken link.
 
 [[deng-2026-eret-fanet-routing]] adds a different adaptive-routing axis. Its [[evolvable-route-expiration-time]] mechanism does not choose geographic next hops; it changes how long route entries remain valid so the same FANET can behave more like host-centric routing in stable/heavy-load conditions and more like content-centric routing in fast-changing/high-sharing conditions.
+
+[[wu-not-in-parse-aoi-sampling-buffering-routing]] connects FANET routing to freshness control. Its follower UAVs choose sampling, packet-buffer decisions, and next-hop forwarding jointly, so a geographically plausible route is only useful when it keeps the packet age low at the leader UAV.

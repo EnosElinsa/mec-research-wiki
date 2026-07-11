@@ -10,8 +10,9 @@ related:
   - "[[chen-2026-qos-noma-multiuav]]"
   - "[[bui-2025-noma-near-far-offloading]]"
   - "[[hosseini-2026-aoi-covert-uav]]"
+  - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
 created: 2026-05-28
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # NOMA (Non-Orthogonal Multiple Access)
@@ -36,6 +37,8 @@ A multiple-access scheme where multiple users share the *same* time-frequency re
 [[bui-2025-noma-near-far-offloading]] adds a near-field/far-field split: users inside the Rayleigh distance use spherical-wave channel modeling, while far-field users use plane-wave modeling. The offloading optimizer therefore couples NOMA SIC with near-field communications and UAV-MEC compute allocation.
 
 [[hosseini-2026-aoi-covert-uav]] uses PD-NOMA outside the offloading track: the public user's signal supplies cover traffic for a covert user while the UAV minimizes [[age-of-information]] under an aerial eavesdropper's detection test.
+
+[[zhou-2026-a2g-madrl-air-ground-vcs]] uses NOMA as the communication substrate for air-ground vehicular crowdsensing. Channel assignment becomes part of the [[sequential-multi-agent-policy-generation]] action because UAVs and UGVs share channels while collecting PoI data.
 
 ## Caveats
 

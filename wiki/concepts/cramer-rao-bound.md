@@ -11,8 +11,9 @@ related:
   - "[[cao-2026-uav-self-tracking-ms-mm]]"
   - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
   - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
+  - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
 created: 2026-05-31
-updated: 2026-07-10
+updated: 2026-07-11
 ---
 
 # Cramér-Rao Bound (CRB / CRLB)
@@ -33,5 +34,6 @@ A lower bound on the variance of any unbiased estimator of a deterministic param
 - [[cao-2026-uav-self-tracking-ms-mm]] derives per-dimension CRLBs for 3-D UAV self-tracking and compares the minor-subspace/MM/KF tracking pipeline against those lower bounds.
 - [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] uses a CRLB-derived sensing-quality term inside an effective-mutual-information reward for MARL-driven UAV-ISAC vehicular control.
 - [[hazarika-2026-dynamo-uav-vehicle-tracking]] uses FIM/CRLB sensing accuracy in the predictive UAV vehicle-tracking pipeline, then combines that with [[dynamic-target-prioritization-metric|DTPM]] and POMDP-MADDPG control.
+- [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] uses CRLB/FIM together with EKF eavesdropper localization before secure-throughput control, so the estimation bound affects a content-delivery decision rather than only a tracking metric.
 
 Distinct from outcome metrics like [[secrecy-outage-probability]]; the CRB bounds estimator variance, not an outage event.

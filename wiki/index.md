@@ -229,6 +229,7 @@
 - [[wang-2026-scalable-multiuav-analytics]] - Wang et al. 2026. Scalable collaborative multi-UAV video analytics; JDTSO centralized deployment/scheduling for small swarms and MAPDP distributed MAPPO+DAG partitioning for larger swarms (IEEE TGCN).
 - [[zhu-2026-hab-mappo-target-search]] - Zhu et al. 2026. HAB-MAPPO cooperative UAV target search; 3D continuous trajectory, laser charging, heuristic image offloading/resource allocation, two-level attention, Beta policy, and curriculum learning (IEEE TMC).
 - [[zhang-2026-ensemble-marl-uav-target-search]] - Zhang et al. 2026. Ensemble MARL for heterogeneous UAV target search in 3D; E-QMIX switches among graph, CNN, and DQN subnetworks using distance/camera/battery cues (IEEE TMC).
+- [[wu-not-in-parse-aoi-sampling-buffering-routing]] - Wu et al. AoI-aware sampling, buffering, and routing for leader-follower UAV swarms; AASBR plus COMH-MAPPO jointly controls sensing, packet scheduling, and FANET next hops. *(Parsed metadata lacks DOI/venue/year.)*
 - [[li-2026-la4h-uav-active-tracking]] - Li, Zhou, and Wu 2026. LA4H expert-assisted anomaly-aware UAV active target tracking; cross-modal anomaly cognition, assistance decisions, and teacher-student distillation for occlusion and distractor recovery (IEEE TMC).
 - [[li-2026-tspf-forest-fire-uav-swarm]] - Li et al. 2026. Two-tier submodel partition for robust UAV-swarm forest-fire detection; graph-colored groups, intragroup backup, dynamic server selection, and two-tier federated aggregation (IEEE TMC).
 - [[qu-ecoei-uav-swarm]] — Qu et al. **eCoEI** — elastic OODA-loop collaborative DL inference for UAV swarms, robust to node/A2A-link failure; proof-of-concept on Jetson devices (IEEE Communications Magazine; year not in parse).
@@ -293,6 +294,7 @@
 - [[feng-2026-prediction-service-migration]] - Feng et al. 2026. Prediction-assisted multi-UAV service migration and trajectory control for vehicular MEC; stacked LSTM + Lyapunov migration-cost control + MADDPG (IEEE TMC).
 - [[chen-2026-hc-mappo-vehicle-twin-migration]] - Chen et al. 2026. Hierarchical-control MAPPO for vehicle-twin migration in UAV-assisted vehicular metaverses, using ACB-LSTM workload prediction and deterministic lower-layer migration mapping (IEEE TMC).
 - [[wei-2026-airfogsim-uav-vfc]] - Wei et al. 2026. **AirFogSim** lightweight modular simulator for UAV-integrated vehicular fog computing; traffic/UAV mobility, communication, computation, energy, security/privacy, blockchain, and scheduling modules (IEEE TMC).
+- [[zhou-2026-a2g-madrl-air-ground-vcs]] - Zhou et al. 2026. Air-ground vehicular crowdsensing with UAV-UGV pairs; A2G-MADRL combines HVGCN and dynamically ordered masked policy generation for sAoI, latency-weighted collection, and NOMA channel assignment (IEEE TMC).
 - [[qi-2026-drone-vehicle-mec-inspection]] - Qi et al. 2026. Cooperative drone-vehicle MEC for low-altitude inspection; GV-carried accompanying/detached drones, battery swapping, route planning, and detached-drone speed optimization minimize mission completion time (IEEE TMC).
 
 - [[liu-2025-multimodal-semantic-iov-jamming]] - Liu et al. 2025. Multi-UAV-assisted IoV MEC under jamming with multi-modal semantic communication; SC-MA-TD3 jointly controls UAV trajectories, user association, and channel selection to reduce delay and preserve semantic accuracy (IEEE TMC).
@@ -362,6 +364,8 @@
 - [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] - Wang et al. 2026. UAV-enabled vehicular ISAC with RMADDPG-DDA adaptive control over UAV motion/yaw, communication power, and ISAC transmit power; RND novelty, parameter sharing, and dynamic data augmentation improve served users and effective MI (IEEE TMC).
 - [[hazarika-2026-dynamo-uav-vehicle-tracking]] - Hazarika & Rahmati 2026. Predictive UAV tracking for fast-moving vehicles using DynaMo motion prediction, DTPM prioritization, CRLB/FIM optimization, and POMDP-MADDPG control (IEEE T-ITS).
 - [[bai-2026-aoi-uav-isac]] - Bai et al. 2026. AoI-centric UAV-enabled ISAC with SAC trajectory/beam activation, Kalman target prediction, and RZF communication beam synthesis for freshness-aware target updates (IEEE TMC).
+- [[yan-not-in-parse-multibs-isac-uav-trajectory]] - Yan et al. Asynchronous UAV trajectory monitoring in cellular ISAC; LDFT/TO-CFO preprocessing, compressed-sensing multi-BS feature fusion, and SUKF trajectory tracking. *(Parsed metadata lacks DOI/venue/year.)*
+- [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] - Bayessa et al. UAV-enabled ISAC secure content delivery; CRLB/EKF eavesdropper localization plus action-masked hierarchical DDQN over caching, association, deployment, and beamforming. *(Parsed metadata lacks DOI/venue/year.)*
 - [[li-2026-control-based-uav-isac]] - Li et al. 2026. Control-based UAV-ISAC beamforming and trajectory design; SCA/SDR beamforming plus 3-DoF/6-DoF control-parameterized trajectory optimization by SQP reduces actual-flight sensing violations and rate degradation (IEEE TWC).
 - [[zhao-2026-mappo-jscc-aec]] - Zhao et al. 2026. HAP-assisted multi-UAV sensing-communication-computing; Lyapunov energy stability plus MAPPO-JSCC with embedded sensing, SCA, and Dinkelbach solvers (IEEE TWC).
 - [[wen-2026-uav-edge-inference-iscc]] - Wen et al. 2026. UAV-assisted ISCC edge inference; Hamiltonian-cycle access ordering plus AO/SA trajectory/resource optimization under discriminant-gain accuracy constraints (IEEE TWC).
@@ -484,6 +488,7 @@
 - [[song-2026-albpd-directional-fanet]] - Song et al. 2026. ALBP-D directional FANET link maintenance; breakage-probability prediction separates distance and angular failures, then adjusts beamwidth/range for longer UAV-to-UAV link lifetime (IEEE TWC).
 - [[deng-2026-eret-fanet-routing]] - Deng et al. 2026. eRET adaptive FANET routing evolves route expiration time so UAV swarms shift between host-centric route reuse and content-centric discovery (IEEE TMC).
 - [[zheng-2026-active-search-low-altitude-uav]] - Zheng & Chen 2026. Active low-altitude UAV sensing/communication search under unknown user locations and unknown blockage; equipotential-surface search plus online LoS channel estimation (IEEE TMC).
+- [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] - Ebrahimi et al. Autonomous UAV trajectory for RSSI-based ground-object localization; Q-learning waypoint control reduces multilateration error under energy, path-length, waypoint, and time budgets. *(Parsed metadata lacks DOI/venue/year.)*
 - [[zhang-2026-fuzzy-observer-harbor-approach]] - Zhang et al. 2026. Surface-air vehicle harbor-approach control with time-varying guidance and an adaptive event-triggered fuzzy state observer (IEEE T-ITS).
 - [[li-2026-aerial-ris-trajectory-phase]] - Li et al. 2026. Aerial RIS-enhanced communications with tilt-aware UAV-mounted RIS control; SAC-PER jointly controls Euler angles, RIS phase shifts, and trajectory/energy while ZF/water-filling handles BS beamforming (IEEE TWC).
 - [[li-2026-aeroguard-uav-fault-detection]] - Li et al. 2026. AeroGuard real-time UAV flight-data fault detection; residual-driven LSTM/ARX fusion plus Z-score/SPRT tests on attitude streams, with Raspberry Pi and real-flight evaluation (IEEE TMC).
@@ -715,6 +720,7 @@
 - [[masac]]
 - [[soft-actor-critic]]
 - [[hierarchical-reinforcement-learning]]
+- [[action-masked-hierarchical-drl]]
 - [[mappo]]
 - [[heterogeneous-agent-rl]]
 - [[trust-region-policy-optimization]]
@@ -758,6 +764,7 @@
 - [[softppo-lstm]]
 - [[expert-guided-warm-start-rl]]
 - [[graph-neural-network]]
+- [[sequential-multi-agent-policy-generation]]
 
 ### Memory / encoders
 
@@ -865,6 +872,8 @@
 - [[networked-isac]]
 - [[space-time-block-codec]]
 - [[cramer-rao-bound]]
+- [[multi-bs-feature-fusion-isac]]
+- [[rss-based-uav-localization]]
 - [[minor-subspace-tracking]]
 - [[uav-localization-under-jamming]]
 - [[integrated-sensing-computation-communication]]

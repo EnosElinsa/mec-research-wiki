@@ -7,6 +7,8 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[zhang-2026-air-ground-covert-jamming]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
+  - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
+  - "[[action-masked-hierarchical-drl]]"
 created: 2026-05-28
 updated: 2026-07-11
 ---
@@ -30,6 +32,8 @@ The discrete-action subset of MEC offloading decisions (which satellite / which 
 [[zhang-2026-air-ground-covert-jamming]] uses DDQN outside the offloading setting: the learned controller schedules UAV trajectory movement and user service choices around a static RIS/jamming optimizer for covert transmission.
 
 [[lin-2025-energy-effective-ris-multiuav-coverage]] uses DDQN as one value-based baseline against [[triple-deep-q-network|TDQN]] for RIS-assisted multi-UAV coverage control.
+
+[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] uses DDQN in two timescales: standard DDQN for long-timescale content caching and attention-based DDQN with an action mask for short-timescale association, deployment, and beamforming decisions.
 
 ## Comparison with continuous-action methods
 
