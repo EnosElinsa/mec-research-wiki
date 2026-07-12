@@ -32,8 +32,11 @@ related:
   - "[[lu-2026-uav-swarm-two-level-ma]]"
   - "[[liu-2026-spherical-t-ris-bs]]"
   - "[[spherical-transmissive-ris]]"
+  - "[[belgiovine-not-in-parse-multidt-abs-deployment]]"
+  - "[[jiang-2026-bi-level-uav-delivery-safety]]"
+  - "[[target-level-of-safety]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Low-Altitude Intelligent Network (LAIN / Low-Altitude Economy)
@@ -56,6 +59,8 @@ Recent corpus entries use the low-altitude frame for vertical integration, secur
 The LAE sensing-control line also includes [[ye-2026-mode-lae-isac]], which uses [[mixture-of-experts-drl]] for multi-objective communication/sensing tradeoffs, [[zhao-2025-networked-isac-uav-handover]], which uses multi-BS [[networked-isac]] for unauthorized-UAV tracking and sensing-cell handover, [[zhao-2026-temporal-spectrum-cartography]], which reconstructs temporal RF power maps from sparse static/mobile sensing, and [[gong-2026-safe-economic-lae-trajectory]], which grounds [[compliance-aware-uav-trajectory]] planning under obstacles, no-fly zones, residential speed limits, landing, and energy constraints. The rescue/offloading side includes [[tang-2026-hg-maddpg-uav-rescue]], where UAVs coordinate with [[ground-embedded-robot|ground embedded robots]] and airship support for low-altitude post-disaster exploration. [[zhao-2026-adaptive-wdc-wet-lae]] adds adaptive WDC/WET service balancing for heterogeneous IoT devices, [[gong-2026-lp2-casku-uav-clusters]] adds authentication and session-key continuity for dynamic UAV clusters, [[deng-2026-uav-cpn-energy]] turns UAV relaying into computing-power-network service expansion, and [[lu-2026-uav-swarm-two-level-ma]] treats UAV swarm positions plus onboard arrays as a [[two-level-movable-antenna]] system.
 
 [[liu-2026-spherical-t-ris-bs]] adds a low-altitude infrastructure variant: a [[spherical-transmissive-ris]] base-station architecture is evaluated in a UAV data-collection scenario with uplink cellular users, where the surface geometry is meant to reduce angle-sensitive gain loss across 3-D aerial directions.
+
+[[belgiovine-not-in-parse-multidt-abs-deployment]] and [[jiang-2026-bi-level-uav-delivery-safety]] add planning infrastructure for LAE operations: the former uses multiple digital twins to place airborne base stations before mission deployment, while the latter enforces [[target-level-of-safety]] in heterogeneous UAV delivery scheduling and routing.
 
 ## Open architectural questions
 

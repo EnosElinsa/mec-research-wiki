@@ -13,8 +13,10 @@ related:
   - "[[li-2025-dt-uav-swarm-resource-management]]"
   - "[[vehicle-twin-migration]]"
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
+  - "[[multi-digital-twin-network-optimization]]"
+  - "[[belgiovine-not-in-parse-multidt-abs-deployment]]"
 created: 2026-06-02
-updated: 2026-07-07
+updated: 2026-07-11
 ---
 
 # Digital Twin
@@ -34,3 +36,4 @@ DT synchronization couples sensing, communication, and edge compute: raw observa
 - [[li-2023-adaptive-digital-twin-uav-iscc]] uses a DT layer to support CTDE multi-agent control in UAV-assisted ISCC, explicitly modeling DT estimation deviation rather than assuming a perfect virtual replica.
 - [[he-2026-dt-sagimec-lae]] uses a cloud-side DT layer to mirror ISDs, a UAV, and the LEO-satellite relay environment in a low-altitude SAGIMEC architecture.
 - [[li-2025-dt-uav-swarm-resource-management]] uses DTs for UAV-swarm task crowdsourcing and virtual traffic-flow scheduling, with [[stochastic-network-calculus]] providing pre-assessed delay bounds.
+- [[belgiovine-not-in-parse-multidt-abs-deployment]] uses [[multi-digital-twin-network-optimization]] for airborne base stations: one ray-tracing twin optimizes placement/orientation/power and another validates mobile-UE scenarios and feeds coverage drops back into recovery planning.

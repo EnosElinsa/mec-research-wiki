@@ -10,8 +10,9 @@ related:
   - "[[three-dimensional-frequency-reuse]]"
   - "[[spectrum-utilization-efficiency]]"
   - "[[prabhath-not-in-parse-3d-space-spectrum-utilization]]"
+  - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-11
 ---
 
 # Cellular-Connected UAV
@@ -29,3 +30,5 @@ Serving UAVs as users introduces issues that ground users do not raise:
 The tutorial uses this dichotomy to organize the UAV-communications design space; the concept anchors the "UAV as network user" thread distinct from the "UAV as edge server" thread that dominates the MEC corpus.
 
 [[prabhath-not-in-parse-3d-space-spectrum-utilization]] adds a 3-D aerial-cellular analysis case: UAV-gNB to UAV-UE downlink, [[three-dimensional-frequency-reuse]], and [[spectrum-utilization-efficiency]] under partially loaded channels and co-channel interference.
+
+[[mozaffari-not-in-parse-3d-drone-cellular-network]] combines cellular-connected drone-UEs with LAP drone-BSs and HAP backhaul in the same volumetric architecture, making the aerial user and aerial infrastructure roles part of one 3-D cellular-planning problem.

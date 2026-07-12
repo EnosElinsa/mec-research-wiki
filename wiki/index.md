@@ -427,14 +427,17 @@
 
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
 - [[lee-2026-uav-delivery-time-energy]] - Lee & Chae 2026. UAV-enabled parcel pickup/drop-off with payload-weight, no-fly-zone, 3-D trajectory, and variable-slot optimization; SCA+PCCP exposes a completion-time vs propulsion-energy tradeoff (IEEE T-ITS).
+- [[jiang-2026-bi-level-uav-delivery-safety]] - Jiang et al. 2026. Bi-level urban low-altitude UAV delivery with TC-NSGA-III assignment and RG-FMT* trajectory planning under target-level-of-safety risk constraints. *(DOI 10.1109/TITS.2026.3660878; venue not in parse.)*
 - [[deng-2026-uav-cpn-energy]] - Deng et al. 2026. UAV-enabled Computing Power Network; stochastic-geometry task-completion probability and altitude/power optimization under fuel and battery constraints (IEEE TMC).
 - [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026. Cooperative task allocation and collision-free path planning for multi-UAV low-altitude urban intelligent transportation systems; ILLA potential-game allocation + CBMBA A-Star path search (IEEE T-ITS).
 - [[zang-2026-uav-ev-priority-cav-speed]] - Zang et al. 2026. UAV-assisted emergency-vehicle priority on expressways; rolling SROC uses dual-layer PSO to coordinate CAV speed under uncertain human lane changes (IEEE T-ITS).
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
 - [[zhao-2026-temporal-spectrum-cartography]] - Zhao et al. 2026. Temporal spectrum cartography for LAE networks with sparse static/mobile sensing, RecMAE reconstruction, and multi-agent diffusion-policy UAV sensor placement (IEEE TMC).
+- [[wang-2026-bayesian-uav-spectrum-mapping]] - Wang et al. 2026. Bayesian 3-D spectrum mapping with 3DIG-RRT* information-driven UAV sampling and SBDL-GP recovery over a measured 117 m x 97 m radio map. *(DOI 10.1109/TWC.2026.3694148; venue not in parse.)*
 - [[prabhath-not-in-parse-3d-space-spectrum-utilization]] - Prabhath & Jayaweera. Three-dimensional UAV cellular spectrum-utilization analysis with truncated-octahedron frequency reuse, blocking probability, and channel-shadowing sensitivity. *(Parsed metadata lacks DOI/venue/year.)*
-- [[wang-2025-lae-network-survey]] — Wang et al. 2025. Survey: low-altitude economy network architecture, integrated technologies, and future directions.
-- [[jiang-2025-isac-lae-overview]] — Jiang et al. 2025. ISAC for LAE — IAGN architecture, MBCM channel model, stochastic-geometry analysis.
+- [[wang-2025-lae-network-survey]] – Wang et al. 2025. Survey: low-altitude economy network architecture, integrated technologies, and future directions.
+- [[belgiovine-not-in-parse-multidt-abs-deployment]] - Belgiovine et al. Multi-digital-twin airborne-BS deployment; Sionna optimizes ABS placement/orientation/power while AODT validates mobile-UE scenarios and coverage-drop recovery. *(Parsed metadata lacks DOI/venue/year.)*
+- [[jiang-2025-isac-lae-overview]] – Jiang et al. 2025. ISAC for LAE – IAGN architecture, MBCM channel model, stochastic-geometry analysis.
 - [[wu-2026-service-oriented-segmented-trajectory]] - Wu et al. 2026. Service-oriented segmented trajectories for high-rise low-altitude UAV-MEC; VSRL-LKH plus TRA/SOS-TRA for latency, energy, and smart-window trajectory privacy (IEEE TMC).
 - [[hsu-2025-drl-hues-hap-noma]] — Hsu et al. 2025. **HAP** transmission + RF energy harvesting in NOMA SAGINs; PPO-based DRL-HUES.
 - [[wu-2024-satellite-maritime-spectrum-sharing]] — Wu et al. 2024. **VDES satellite-maritime spectrum sharing** (VDE-SAT + VDE-TER co-frequency under ITU uplink/downlink interference constraints); satellite-centralized allocation maximizing combined throughput with task-priority weighting; partial observability → **POMDP** solved with **SCA-D3QN** (Double + Dueling DQN), offline-train/online-deploy (IEEE TVT). *(Satellite-maritime spectrum/comms, not MEC offloading.)*
@@ -489,6 +492,7 @@
 - [[deng-2026-eret-fanet-routing]] - Deng et al. 2026. eRET adaptive FANET routing evolves route expiration time so UAV swarms shift between host-centric route reuse and content-centric discovery (IEEE TMC).
 - [[zheng-2026-active-search-low-altitude-uav]] - Zheng & Chen 2026. Active low-altitude UAV sensing/communication search under unknown user locations and unknown blockage; equipotential-surface search plus online LoS channel estimation (IEEE TMC).
 - [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] - Ebrahimi et al. Autonomous UAV trajectory for RSSI-based ground-object localization; Q-learning waypoint control reduces multilateration error under energy, path-length, waypoint, and time budgets. *(Parsed metadata lacks DOI/venue/year.)*
+- [[heo-not-in-parse-blockage-aided-multiuav-interference]] - Heo et al. Building-blockage-aided multi-UAV interference coordination; SCA/PCCP/BCD trajectory-resource control keeps desired links LoS while pushing interfering links behind buildings. *(Parsed metadata lacks DOI/venue/year.)*
 - [[zhang-2026-fuzzy-observer-harbor-approach]] - Zhang et al. 2026. Surface-air vehicle harbor-approach control with time-varying guidance and an adaptive event-triggered fuzzy state observer (IEEE T-ITS).
 - [[li-2026-aerial-ris-trajectory-phase]] - Li et al. 2026. Aerial RIS-enhanced communications with tilt-aware UAV-mounted RIS control; SAC-PER jointly controls Euler angles, RIS phase shifts, and trajectory/energy while ZF/water-filling handles BS beamforming (IEEE TWC).
 - [[li-2026-aeroguard-uav-fault-detection]] - Li et al. 2026. AeroGuard real-time UAV flight-data fault detection; residual-driven LSTM/ARX fusion plus Z-score/SPRT tests on attitude streams, with Raspberry Pi and real-flight evaluation (IEEE TMC).
@@ -497,7 +501,8 @@
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
 - [[zeng-2016-throughput-relaying]] — Zeng et al. 2016. **UAV mobile relaying** throughput maximization; joint relay trajectory + source/relay power; "staircase" water-filling power structure + SCA trajectory under **information-causality** (IEEE TCOMM). *(UAV mobile-relaying anchor, not MEC.)*
 - [[zhao-2019-uav-emergency-disasters]] — Zhao et al. 2019. **UAV-assisted emergency networks** in disasters (magazine framework): joint trajectory+scheduling with surviving BSs, multihop D2D coverage extension, and multihop UAV relaying (AF/DF) — IEEE Wireless Communications. *(Post-disaster comms framework, not a single MEC formulation.)*
-- [[bor-yaliniz-2016-3d-abs-placement]] — Bor-Yaliniz et al. 2016. First **3-D placement** of a drone-cell (aerial base station): jointly choose altitude + coverage location/size to maximize covered users; quadratically-constrained MINLP via bisection + interior-point solver (IEEE ICC). *(Aerial-base-station deployment anchor, not MEC.)*
+- [[bor-yaliniz-2016-3d-abs-placement]] – Bor-Yaliniz et al. 2016. First **3-D placement** of a drone-cell (aerial base station): jointly choose altitude + coverage location/size to maximize covered users; quadratically-constrained MINLP via bisection + interior-point solver (IEEE ICC). *(Aerial-base-station deployment anchor, not MEC.)*
+- [[mozaffari-not-in-parse-3d-drone-cellular-network]] - Mozaffari et al. Foundational 3-D wireless cellular network with LAP drone-BSs, drone-UEs, HAP/FSO backhaul, truncated-octahedron frequency reuse, KDE demand modeling, and optimal-transport association. *(Parsed metadata lacks DOI/venue/year.)*
 - [[li-2026-uav-bs-semantic-mfmaddpg-kde]] - Li et al. 2026. Semantic-communication UAV-BS 3-D deployment; MF-MADDPG-KDE models continuous neighboring actions and optimizes BLEU-derived semantic fidelity under SINR/interference constraints (IEEE TWC).
 - [[you-2019-rician-uav-data-harvesting]] - You & Zhang 2019. UAV-enabled WSN data harvesting under angle-dependent Rician fading; outage-aware effective fading power regression plus BCD/SCA scheduling and 3-D trajectory optimization (IEEE TWC).
 - [[jiang-2012-uav-heading-sdma]] — Jiang & Swindlehurst 2012. Multi-antenna fixed-wing UAV heading optimization for ground-to-air **SDMA** uplink; adaptive heading maximizes ergodic sum rate via prediction filter + line search; SDMA >> TDMA (IEEE JSAC). *(Multi-antenna UAV relay / heading-optimization anchor.)*
@@ -522,7 +527,7 @@
 - **NUAA aerial-computing cluster:** [[ziye-jia]], [[chao-dong]], [[qihui-wu]] (NUAA), [[zhu-han]] (Univ of Houston / Kyung Hee), spanning HAP/UAV MEC, maritime AAV cooperation, and [[jia-2026-dro-lawn-trajectory]].
 - **Dalian-Maritime-University maritime cluster:** [[bin-lin]] (DMU), [[zhen-wang]] (DMU / Dalian Neusoft), [[qiang-ye]] (Univ of Calgary).
 - **NWPU non-terrestrial-network cluster:** [[bomin-mao]], [[hongzhi-guo]], [[jiajia-liu]] (Northwestern Polytechnical University).
-- **Virginia Tech (Wireless@VT) UAV-communications cluster:** [[mohammad-mozaffari]], [[walid-saad]] — foundational UAV-as-aerial-base-station + 3D-deployment works (2 sources each).
+- **Virginia Tech (Wireless@VT) UAV-communications cluster:** [[mohammad-mozaffari]], [[walid-saad]] – foundational UAV-as-aerial-base-station, 3-D deployment, and 3-D cellular-network works (5 sources each).
 - **NCEPU aerial-edge cluster:** [[peng-qin]], [[yang-fu]] (North China Electric Power University); [[jingjing-wang]] (Beihang University) links the blockchain-UAV thread.
 - **South-China-Agricultural-University evolutionary UAV-MEC cluster:** [[zexiong-wu]] (with [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]]).
 - **Cross-cutting seniors:** [[chunxiao-jiang]] (Tsinghua), [[tony-q-s-quek]] (SUTD).
@@ -630,6 +635,7 @@
 - [[discriminant-gain]]
 - [[device-to-device-communication]]
 - [[digital-twin]]
+- [[multi-digital-twin-network-optimization]]
 - [[stochastic-network-calculus]]
 - [[graph-based-resource-management]]
 - [[hot-spot-problem-iot]]
@@ -687,6 +693,7 @@
 - [[equipotential-surface-uav-search]]
 - [[event-triggered-fuzzy-state-observer]]
 - [[compliance-aware-uav-trajectory]]
+- [[target-level-of-safety]]
 - [[trajectory-privacy]]
 - [[bang-bang-control]]
 - [[uav-charging-scheduling]]
@@ -887,6 +894,7 @@
 - [[spectrum-sensing-channel-selection]]
 - [[multi-domain-uav-anti-jamming]]
 - [[temporal-spectrum-cartography]]
+- [[information-driven-uav-spectrum-mapping]]
 - [[physical-layer-security]]
 - [[covert-communication]]
 - [[ris-assisted-directional-jamming]]
@@ -900,6 +908,7 @@
 - [[secrecy-outage-probability]]
 - [[collaborative-beamforming]]
 - [[interference-alignment]]
+- [[building-blockage-aided-interference-coordination]]
 - [[wireless-perception]]
 - [[extremely-large-scale-mimo]]
 - [[near-field-communications]]

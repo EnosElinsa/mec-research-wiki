@@ -4,6 +4,8 @@ title: "Temporal Spectrum Cartography"
 tags: [low-altitude-economy, spectrum-sensing, radio-map, generative-ai]
 related:
   - "[[zhao-2026-temporal-spectrum-cartography]]"
+  - "[[wang-2026-bayesian-uav-spectrum-mapping]]"
+  - "[[information-driven-uav-spectrum-mapping]]"
   - "[[low-altitude-intelligent-network]]"
   - "[[spectrum-sensing-channel-selection]]"
   - "[[uav-trajectory-control]]"
@@ -17,3 +19,5 @@ updated: 2026-07-07
 Temporal spectrum cartography reconstructs a sequence of RF power or RSSI maps over space and time rather than a single static radio map. In [[zhao-2026-temporal-spectrum-cartography]], the map is represented as a temporal tensor over a 2D low-altitude grid, with sparse measurements from static sensors and mobile UAV sensors.
 
 The concept differs from ordinary [[spectrum-sensing-channel-selection]] because sensing is not only used to pick an idle channel at one time instant. The goal is to recover a time-varying spectrum field under sparse sensor coverage, then move UAV sensors to locations that reduce future reconstruction error.
+
+[[wang-2026-bayesian-uav-spectrum-mapping]] adds a 3-D unknown-environment counterpart through [[information-driven-uav-spectrum-mapping]]: the UAV follows a mutual-information-driven RRT* sampler, while SBDL-GP reconstructs the sparse radio environment map from the collected measurements.

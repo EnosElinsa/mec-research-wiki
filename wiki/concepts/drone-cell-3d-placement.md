@@ -15,6 +15,9 @@ related:
   - "[[aerial-active-ris-backhaul]]"
   - "[[chakareski-2019-uav-mmwave-hetnet-ee]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
+  - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
+  - "[[belgiovine-not-in-parse-multidt-abs-deployment]]"
+  - "[[multi-digital-twin-network-optimization]]"
 created: 2026-06-01
 updated: 2026-07-11
 ---
@@ -34,3 +37,5 @@ The canonical formulation in this wiki is [[bor-yaliniz-2016-3d-abs-placement]],
 [[aerial-active-ris-backhaul]] is adjacent but not identical: the optimized aerial platform is an active RIS support for UAV-BS backhaul rather than the access drone-cell itself, so placement interacts with amplification power, phase control, and 3-D coverage of aerial receivers.
 
 [[chakareski-2019-uav-mmwave-hetnet-ee]] is an early energy-efficiency instance: the UAV tier coexists with a microwave macro BS and mmWave SBSs, and the UAV coverage radius/altitude is tied to maximum path loss before radio resources are allocated. [[lin-2025-energy-effective-ris-multiuav-coverage]] is a RIS-assisted communications-coverage variant, where [[k-dbscan-uav-deployment]] bounds each UAV's movement region before TDQN trajectory/service control.
+
+[[mozaffari-not-in-parse-3d-drone-cellular-network]] moves from a single drone-cell to a fully 3-D cellular lattice: truncated-octahedron cells place LAP drone-BSs, HAP drones provide FSO backhaul, and [[optimal-transport-theory]] assigns drone-UEs by total latency. [[belgiovine-not-in-parse-multidt-abs-deployment]] adds the ray-tracing digital-twin variant, where [[multi-digital-twin-network-optimization]] validates airborne-base-station placements under mobile UEs before deployment.

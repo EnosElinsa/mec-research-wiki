@@ -7,8 +7,10 @@ related:
   - "[[space-air-ground-integrated-network]]"
   - "[[cellular-connected-uav]]"
   - "[[moon-2024-ground-satellite-uam-scheduling]]"
+  - "[[jiang-2026-bi-level-uav-delivery-safety]]"
+  - "[[target-level-of-safety]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-11
 ---
 
 # Urban Air Mobility (UAM)
@@ -22,3 +24,5 @@ These properties shape the communication problem around UAM:
 - **Interference geometry.** When a GS and two UAMs become geometrically aligned, inter-beam and inter-GS interference rise; offloading the high-interference UAMs to a satellite on a different band restores orthogonality for the remaining GS-served users.
 
 In the wiki, [[moon-2024-ground-satellite-uam-scheduling]] frames cooperative ground-satellite downlink scheduling and power allocation for UAM as a sum-rate-maximization problem (link association as a minimum-cost maximum-flow graph problem + SCA power allocation), positioning UAMs as the edge users of a satellite-ground NTN.
+
+[[jiang-2026-bi-level-uav-delivery-safety]] contributes the low-altitude logistics side of UAM: delivery routes and task assignments are accepted only when planned paths respect [[target-level-of-safety]] risk thresholds.

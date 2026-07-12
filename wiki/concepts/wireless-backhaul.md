@@ -10,6 +10,7 @@ related:
   - "[[liu-2025-haps-uav-maritime-iot]]"
   - "[[aerial-active-ris-backhaul]]"
   - "[[jeon-2026-ampli-flection-aerial-backhaul]]"
+  - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
 created: 2026-05-29
 updated: 2026-07-11
 ---
@@ -18,8 +19,9 @@ updated: 2026-07-11
 
 The high-capacity link that connects an access node (small cell, UAV base station, MEC server) to a higher-tier core or aggregator, **without** wired fiber. Critical for aerial and maritime deployments where running cable is impossible.
 
-Two flavors in the wiki:
+Recurring forms in the wiki:
 
+- **HAP / FSO backhaul for aerial cells** — the HAP tier provides line-of-sight backhaul to an underlying UAV access layer. [[mozaffari-not-in-parse-3d-drone-cellular-network]] uses HAP drones for FSO backhaul to LAP drone-BSs, while [[liu-2025-haps-uav-maritime-iot]] uses HAPS backhaul explicitly in the maritime-IoT setting.
 - **HAP-as-backhaul** — the HAPS provides high-bandwidth, line-of-sight backhaul for an underlying UAV layer. Used in [[liu-2025-haps-uav-maritime-iot]] explicitly.
 - **UAV-to-infrastructure backhaul** — the aerial access point must preserve a BS or upper-tier link while serving ground users. [[zheng-2026-active-search-low-altitude-uav]] makes this a search constraint by balancing BS-UAV and UAV-user objectives.
 - **Aerial active-RIS backhaul** - an airborne active RIS provides the relay-like backhaul path for UAV base stations while optimizing amplification, phase, platform placement, and array partitioning. [[jeon-2026-ampli-flection-aerial-backhaul]] is the corpus anchor for this [[aerial-active-ris-backhaul]] pattern.

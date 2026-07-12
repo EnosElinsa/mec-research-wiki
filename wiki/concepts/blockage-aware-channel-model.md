@@ -5,8 +5,10 @@ tags: [channel-model, blockage, urban, los-nlos]
 related:
   - "[[terrain-aware-channel-model]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
+  - "[[building-blockage-aided-interference-coordination]]"
+  - "[[heo-not-in-parse-blockage-aided-multiuav-interference]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-11
 ---
 
 # Blockage-Aware Channel Model
@@ -20,3 +22,5 @@ Three sub-families:
 - **Geometric** — use map data (3D building geometry, DEM elevation) to deterministically classify LoS/NLoS. The [[terrain-aware-channel-model]] in [[wu-2026-terrain-aware-uav-mec]] is a geometric variant that handles rough topography on top of buildings.
 
 Choice depends on what data is available. Terrain-aware geometric models are increasingly tractable thanks to public DEM datasets, and they avoid the bias of fixed statistical curves.
+
+[[heo-not-in-parse-blockage-aided-multiuav-interference]] adds a multi-UAV communication variant: cuboid buildings classify both desired and interference links as LoS/NLoS, and [[building-blockage-aided-interference-coordination]] deliberately uses NLoS interference links to improve spectral efficiency while keeping desired links LoS.

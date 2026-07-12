@@ -5,8 +5,9 @@ tags: [uav, heterogeneity, capability]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
+  - "[[jiang-2026-bi-level-uav-delivery-safety]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-07-11
 ---
 
 # Heterogeneous UAV Fleet
@@ -30,6 +31,8 @@ Most foundational UAV-MEC papers (e.g. [[liu-2026-jppo-en-convntm]]) assume a ho
 ## In this wiki
 
 [[zhang-2025-ssac-mgi-heterogeneous-uav]] is the source built explicitly around fleet heterogeneity. Its **SSAC** (Shared Soft Actor-Critic) architecture shares the policy networks across all UAVs and extracts *dimension-invariant* features, so UAVs that differ in service type and resource capacity learn a unified policy; alternatives include type-aware attention or capability-conditioned policy heads.
+
+[[jiang-2026-bi-level-uav-delivery-safety]] adds a logistics-control case: heterogeneous UAVs differ in delivery capacity and route feasibility, so task allocation and safety-constrained trajectory planning must be solved together instead of assuming interchangeable vehicles.
 
 ## Open questions
 
