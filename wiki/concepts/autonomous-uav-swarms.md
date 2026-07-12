@@ -4,6 +4,8 @@ title: "Autonomous UAV Swarms"
 tags: [uav, swarm, autonomy, planning, coordination]
 related:
   - "[[du-2025-autonomous-intelligent-uav-swarms]]"
+  - "[[javaid-2023-collaborative-uav-communication-control]]"
+  - "[[collaborative-uav-communication]]"
   - "[[uav-trajectory-control]]"
   - "[[b-spline-trajectory]]"
   - "[[particle-swarm-optimization]]"
@@ -17,7 +19,7 @@ related:
   - "[[zhang-2026-ensemble-marl-uav-target-search]]"
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
 created: 2026-07-10
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Autonomous UAV Swarms
@@ -27,6 +29,8 @@ updated: 2026-07-11
 [[wu-not-in-parse-aoi-sampling-buffering-routing]] adds a fully airborne monitoring angle: follower UAVs sense, buffer, and relay updates to a leader UAV, so autonomy includes freshness-aware sampling and FANET routing rather than only motion planning or target search.
 
 The robotics and networking substrate underneath many UAV-MEC papers: multiple UAVs coordinate mission assignment, path planning, local collision avoidance, control, perception, localization, and communication so that the fleet behaves as a system rather than as independent aircraft.
+
+[[javaid-2023-collaborative-uav-communication-control]] develops the communication/control side of this substrate. Its [[collaborative-uav-communication]] taxonomy connects UAV-to-UAV and infrastructure links to formation, localization, collision avoidance, shared sensing, offloading, and resource coordination.
 
 [[du-2025-autonomous-intelligent-uav-swarms]] is the corpus's broad survey anchor. It separates swarm autonomy into scheduling/coordination, global task assignment, local planning, trajectory generation, formation/exploration/tracking/monitoring behaviors, and the hardware/software stack that makes those behaviors deployable.
 

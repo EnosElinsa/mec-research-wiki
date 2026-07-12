@@ -23,8 +23,10 @@ related:
   - "[[belgiovine-not-in-parse-multidt-abs-deployment]]"
   - "[[heo-not-in-parse-blockage-aided-multiuav-interference]]"
   - "[[building-blockage-aided-interference-coordination]]"
+  - "[[zhang-2026-control-assisted-beam-tracking]]"
+  - "[[control-assisted-uav-beam-tracking]]"
 created: 2026-05-31
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Air-to-Ground Channel Model
@@ -41,3 +43,4 @@ The **air-to-ground (ATG) channel model** describes propagation between an aeria
 - [[prabhath-not-in-parse-3d-space-spectrum-utilization]] is primarily UAV-to-UAV downlink analysis, but it provides a nearby 3-D aerial-channel benchmark across free-space, log-normal, and Nakagami-m propagation, with A2G/SAGIN extension identified as requiring adapted propagation assumptions.
 - [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] uses the ATG channel as a localization model: RSSI is converted to distance under elevation-angle-dependent path loss and shadowing, then [[rss-based-uav-localization]] chooses waypoints that improve multilateration geometry.
 - [[wang-2026-bayesian-uav-spectrum-mapping]] and [[belgiovine-not-in-parse-multidt-abs-deployment]] move toward environment-specific channel knowledge: the former learns a 3-D REM from sparse UAV samples, while the latter uses ray-tracing digital twins for airborne-base-station placement. [[heo-not-in-parse-blockage-aided-multiuav-interference]] adds the urban blockage case, where LoS/NLoS status is optimized for both desired and interfering links.
+- [[zhang-2026-control-assisted-beam-tracking]] studies a LoS-dominant single-path mmWave link where propagation is not the main unknown; [[control-assisted-uav-beam-tracking]] instead predicts beam misalignment from UAV attitude, velocity, position, and waypoint-control state.

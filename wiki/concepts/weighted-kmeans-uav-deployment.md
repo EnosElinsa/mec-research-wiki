@@ -8,8 +8,10 @@ related:
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[li-2026-isac-vec-beamforming-deployment]]"
   - "[[k-dbscan-uav-deployment]]"
+  - "[[gao-2026-air-ground-instant-delivery]]"
+  - "[[cooperative-uav-taxi-delivery]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Weighted K-Means UAV Deployment
@@ -21,3 +23,5 @@ Used in [[jia-2025-dro-uav-hap-mec]] (WKD = Weighted K-means Deployment) as a tr
 A pragmatic alternative to game-theoretic deployment ([[wang-2025-uav-swarm-stackelberg]], [[bi-2025-sg-mapg]]) and to DRL-based trajectory control ([[liu-2026-jppo-en-convntm]]). Picks computational efficiency over optimality. [[li-2026-isac-vec-beamforming-deployment]] shows the opposite end of the deployment spectrum: UAV positions are optimized by a swarm search sub-solver because the VEC objective couples coverage, sensing quality, and UAV energy.
 
 [[k-dbscan-uav-deployment]] is the outlier-removal sibling used by [[lin-2025-energy-effective-ris-multiuav-coverage]]: it bounds UAV regions for faster DRL training but explicitly leaves sparse outlier GTs unserved.
+
+[[gao-2026-air-ground-instant-delivery]] uses a logistics variant: weighted K-Means++-style station placement clusters spatial gaps between parcel demand and taxi delivery capacity, so UAV infrastructure follows unmet demand rather than raw customer density.

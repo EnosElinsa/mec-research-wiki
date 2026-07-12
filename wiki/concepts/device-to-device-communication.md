@@ -10,6 +10,8 @@ related:
   - "[[li-2026-cdto-inland-waterways]]"
   - "[[zhang-not-in-parse-cellular-uav-to-x]]"
   - "[[uav-to-x-communication]]"
+  - "[[chen-2026-sdhfl-completion-time]]"
+  - "[[semi-decentralized-hybrid-federated-learning]]"
 created: 2026-06-02
 updated: 2026-07-12
 ---
@@ -27,3 +29,5 @@ A D2D pair is typically modeled as a transmitter and a receiver separated by a f
 [[li-2026-cdto-inland-waterways]] uses D2D links differently: nearby USVs share computation through D2D offloading links, while UAVs act as cluster heads that reposition to cover the selected links.
 
 [[zhang-not-in-parse-cellular-uav-to-x]] transfers the same direct-link principle to aerial users: low-SNR UAVs use underlaid U2U links to a high-SNR relay UAV, which later uploads cached sensing data over U2N.
+
+[[chen-2026-sdhfl-completion-time]] uses D2D links for a learning protocol rather than payload relaying: devices exchange local models until cluster-level consensus, after which a cluster head communicates with the UAV aggregator through [[semi-decentralized-hybrid-federated-learning]].

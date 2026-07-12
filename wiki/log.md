@@ -1,5 +1,23 @@
 # Research Log
 
+## [2026-07-12] Curated collaborative UAV communication, hybrid FL, beam tracking, delivery, and anti-UAV ISAC
+
+Added five source pages and five concept pages:
+
+- [[javaid-2023-collaborative-uav-communication-control]] - Javaid et al. 2023, *IEEE T-ITS*, DOI `10.1109/TITS.2023.3248841`. Survey of collaborative multi-UAV communication/control requirements, tasking, urban applications, use cases, and open problems.
+- [[chen-2026-sdhfl-completion-time]] - Chen et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3634664`. Semi-decentralized hybrid FL with D2D cluster consensus, asynchronous UAV aggregation, Lyapunov cluster selection, and joint mobility/resource optimization for completion time.
+- [[zhang-2026-control-assisted-beam-tracking]] - Zhang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3668082`. Control-assisted BS-UAV mmWave beam prediction using PID flight state, Bayesian DNN uncertainty, and kinematic position tracking, evaluated in Gazebo and with real F450 flight data.
+- [[gao-2026-air-ground-instant-delivery]] - Gao et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3634430`. Cooperative UAV-taxi instant delivery with delivery-gap station placement, demand-driven repositioning, courier-preference transfer, generalized assignment, and Shanghai trace evaluation.
+- [[zhang-2025-cooperative-anti-uav-isac]] - Zhang et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2024.3519351`. Multi-cell anti-UAV ISAC transceiver beamforming with centralized AO/SCA/Dinkelbach and primal-decomposition distributed solvers.
+
+New concept pages: [[collaborative-uav-communication]], [[semi-decentralized-hybrid-federated-learning]], [[control-assisted-uav-beam-tracking]], [[cooperative-uav-taxi-delivery]], and [[cooperative-isac-transceiver-beamforming]]. Updated reciprocal links for autonomous swarms, cellular-connected UAVs, D2D communication, federated learning, air-to-ground channels, UAV delivery, weighted K-means deployment, networked ISAC, integrated sensing/communication, and the AO/Dinkelbach solver family. No author entity was created or merged because no exact identity was already established for these authors.
+
+Metadata notes: the Javaid survey and both beamforming papers expose DOI or dated publication evidence in their parses; Crossref supplied or confirmed the full venue, volume, pages, and year. The SDHFL and cooperative-delivery parses contain no top-level publication metadata, so exact-title Crossref records supplied their 2026 TMC metadata. The shorter 2024 ICDE cooperative-delivery paper found in the references was kept distinct from the journal article. All technical claims and numerical results remain grounded in the local parses.
+
+Evidence caveats: the collaborative-UAV paper is a narrative survey with secondary numerical examples, not an original experiment. SDHFL contains conflicting noise-density values and opposite textual descriptions of one device-count trend. The beam-tracking paper validates embedded prediction with real F450 flight-state data but not an over-the-air mmWave radio. The delivery study combines real Shanghai traces with simulated mode-specific labels and counterfactual delivery assignments. The anti-UAV ISAC study is Monte Carlo simulation and reaches a KKT point; its lower distributed signaling is per subgradient iteration rather than a total-run guarantee.
+
+Validation results before commit: `python tools/wiki/corpus_counts.py --json counts-batch14-final-2026-07-12.json` reported 419 sources, 392 concepts, 73 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes --json status-batch14-final-2026-07-12.json` reported 415 path/title-matched curated folders, 197 genuinely new uncurated folders, 86 title-matched curated folders, and 93 stale referenced-name/no-matching-folder advisories; the nonzero exit is expected while uncurated folders remain. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/process_refs.py`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, and `git diff --check` were clean; index coverage was 936/936 catalogue-able pages and frontmatter coverage was 934 pages. `python tools/wiki/entity_roster_audit.py` reported 0 claimed-but-absent over-claims and 40 advisory present-but-unlisted omissions. LLM Wiki graph health was OK; `/api/v1/projects/current/graph?limit=5000` reported 934 nodes and 8840 edges.
+
 ## [2026-07-12] Curated mobility security, UAV-to-X, dynamic IRS, and adaptive traffic prediction
 
 Added five source pages and five concept pages:

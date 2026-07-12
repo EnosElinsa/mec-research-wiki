@@ -34,6 +34,7 @@
 - [[ullah-2026-mec-drl-ntn-survey]] — Ullah et al. 2026. Survey of **DRL for MEC-empowered non-terrestrial wireless networks (MeNT-WiNs)** — integrating MEC with AAVs, LEO/GEO satellites, and HAPs; reviews DRL fundamentals, the MeNT-WiN architecture + binary-vs-partial / task-call-graph offloading models, then DRL's role in satellite autonomy, AAV-swarm management, resource/spectrum/energy allocation, routing, and security, closing with complexity/real-time/scalability challenges (IEEE COMST).
 - [[gong-2023-edge-intelligence-its-survey]] — Gong et al. 2023. Survey of **edge intelligence in intelligent transportation systems**; end-edge-cloud EI architecture, seven-level EI taxonomy, data gathering/processing, autonomous-driving/VEC/UAV/rail applications, platforms, datasets, and open challenges (IEEE T-ITS).
 - [[du-2025-autonomous-intelligent-uav-swarms]] - Du et al. 2025. Survey of **autonomous and intelligent UAV swarms** across trajectory planning, task assignment, control, localization, perception, communication, and civil applications (IEEE T-ITS).
+- [[javaid-2023-collaborative-uav-communication-control]] - Javaid et al. 2023. Survey of collaborative multi-UAV communication and control requirements, tasking, urban applications, use cases, and open problems in cellular integration, FL, offloading, and energy efficiency (IEEE T-ITS).
 
 ### Foundational DRL methods
 
@@ -347,6 +348,7 @@
 
 ### Trust, security, and federated MEC
 
+- [[chen-2026-sdhfl-completion-time]] - Chen et al. 2026. UAV-assisted semi-decentralized hybrid FL with D2D cluster consensus, asynchronous UAV aggregation, Lyapunov cluster selection, and joint mobility/resource optimization for completion time (IEEE TMC).
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
 - [[zhao-2026-uav-fl-inspection-incentives]] - Zhao et al. 2026. Contract-theoretic incentive assignment for UAV-client federated intelligent inspection under communication-sensing-computing integration; models data quality, sensing/computation costs, and FL participation utilities (IEEE TMC).
 - [[huang-2026-aircomp-uav-swarms-afl]] - Huang et al. 2026. AirComp-assisted asynchronous federated learning for UAV swarms; branch-and-bound/AO aggregation scheduling plus layer-wise staleness filtering for faster convergence (IEEE TWC).
@@ -378,6 +380,7 @@
 
 - [[li-2023-adaptive-digital-twin-uav-iscc]] - Li et al. 2023. DT-enabled UAV-assisted ISCC; ATB-MAPPO with Beta-policy actors and attention critics for radar beampattern / energy tradeoff (IEEE TGCN).
 - [[tang-2025-cooperative-isac-lae]] - Tang et al. 2025. Cooperative ISAC for low-altitude economy; tensor-decomposition monostatic estimation, false-removing MST association, Pareto position fusion, and residual-weighted velocity estimation (IEEE TWC).
+- [[zhang-2025-cooperative-anti-uav-isac]] - Zhang et al. 2025. Multi-cell anti-UAV ISAC transceiver beamforming; centralized AO/SCA/Dinkelbach and primal-decomposition distributed solvers maximize sensing SCNR under user-SINR and BS-power constraints (IEEE TWC).
 - [[ye-2026-mode-lae-isac]] - Ye et al. 2026. Multi-objective LAE ISAC; MODE combines DDPG with mixture-of-experts multi-task learning to tune the communication/sensing tradeoff across objective-preference weights (IEEE TMC).
 - [[zhao-2025-networked-isac-uav-handover]] - Zhao et al. 2025. Networked ISAC UAV tracking/handover for LAE; virtual sensing cells, MUSIC estimation, centralized EKF fusion, PBS handover, and VSC handover maintain multi-BS tracking (IEEE TWC).
 - [[cao-2026-uav-self-tracking-ms-mm]] - Cao et al. 2026. GNSS-independent 3-D UAV self-tracking from non-cooperative anchors; EAIP minor-subspace updates, continuous MM position iteration, KF/MA smoothing, and per-dimension CRLB benchmarking (IEEE TWC).
@@ -432,6 +435,7 @@
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
 - [[lee-2026-uav-delivery-time-energy]] - Lee & Chae 2026. UAV-enabled parcel pickup/drop-off with payload-weight, no-fly-zone, 3-D trajectory, and variable-slot optimization; SCA+PCCP exposes a completion-time vs propulsion-energy tradeoff (IEEE T-ITS).
 - [[jiang-2026-bi-level-uav-delivery-safety]] - Jiang et al. 2026. Bi-level urban low-altitude UAV delivery with TC-NSGA-III assignment and RG-FMT* trajectory planning under target-level-of-safety risk constraints. *(DOI 10.1109/TITS.2026.3660878; venue not in parse.)*
+- [[gao-2026-air-ground-instant-delivery]] - Gao et al. 2026. Cooperative UAV-taxi instant delivery with delivery-gap station placement, demand-driven UAV repositioning, courier-preference transfer, and generalized parcel assignment on Shanghai traces (IEEE TMC).
 - [[deng-2026-uav-cpn-energy]] - Deng et al. 2026. UAV-enabled Computing Power Network; stochastic-geometry task-completion probability and altitude/power optimization under fuel and battery constraints (IEEE TMC).
 - [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026. Cooperative task allocation and collision-free path planning for multi-UAV low-altitude urban intelligent transportation systems; ILLA potential-game allocation + CBMBA A-Star path search (IEEE T-ITS).
 - [[zang-2026-uav-ev-priority-cav-speed]] - Zang et al. 2026. UAV-assisted emergency-vehicle priority on expressways; rolling SROC uses dual-layer PSO to coordinate CAV speed under uncertain human lane changes (IEEE T-ITS).
@@ -491,6 +495,7 @@
 - [[zhang-not-in-parse-cellular-uav-to-x]] - Zhang et al. Cellular UAV-to-X communication with cooperative UAV-to-network and UAV-to-UAV sense-and-send operation; ISASOA combines LP, branch-and-bound, and convex speed control. *(Parsed metadata lacks DOI/venue/year.)*
 - [[bai-2026-multimodal-uav-vehicle-channel]] - Bai et al. 2026. LiDAR-aided multi-modal intelligent channel model for multi-UAV-to-multi-vehicle links; MUMV-CSCI dataset, TTD/ATD density parameters, and TSF-CF/TSI/DPSD statistics (IEEE TWC).
 - [[hussain-2026-unet-uav-mmwave-pathloss]] - Hussain 2026. Multi-scale U-Net pathloss prediction for UAV-assisted mmWave networks using log-distance, LoS-mask, and building-mask inputs plus vectorized LoS preprocessing (IEEE TWC).
+- [[zhang-2026-control-assisted-beam-tracking]] - Zhang et al. 2026. Control-assisted BS-UAV mmWave beam prediction using PID flight state, a Bayesian DNN, and a kinematic estimator, evaluated in Gazebo and with real F450 flight data (IEEE TWC).
 - [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026. AIM angle-of-radiation-aware UAV relay-chain deployment; joint 3-D position and heading search minimizes relay count under per-link RSS thresholds and maintains 100% success in the parsed terrain/RSS tests (IEEE TMC).
 - [[bujari-2018-stateless-fanet-routing]] - Bujari et al. 2018. Comparative study of stateless geographic FANET routing; progress, randomized, face/projection, hybrid, and restricted-flooding protocols are evaluated for delivery, path dilation, traffic, and scalability in 3-D UAV ad hoc networks (IEEE TMC).
 - [[song-2026-albpd-directional-fanet]] - Song et al. 2026. ALBP-D directional FANET link maintenance; breakage-probability prediction separates distance and angular failures, then adjusts beamwidth/range for longer UAV-to-UAV link lifetime (IEEE TWC).
@@ -671,6 +676,8 @@
 - [[uav-enabled-its]]
 - [[autonomous-uav-swarms]]
 - [[cellular-connected-uav]]
+- [[collaborative-uav-communication]]
+- [[control-assisted-uav-beam-tracking]]
 - [[uav-to-x-communication]]
 - [[drone-cell-3d-placement]]
 - [[geometric-disk-cover]]
@@ -713,6 +720,7 @@
 - [[path-aware-3d-visual-coverage]]
 - [[fixed-wing-propulsion-energy-model]]
 - [[uav-delivery-pickup-dropoff]]
+- [[cooperative-uav-taxi-delivery]]
 - [[speed-coordinated-robust-optimization-control]]
 - [[uav-mobile-relaying]]
 - [[angle-of-radiation-uav-relay]]
@@ -885,6 +893,7 @@
 
 - [[integrated-sensing-and-communication]]
 - [[networked-isac]]
+- [[cooperative-isac-transceiver-beamforming]]
 - [[space-time-block-codec]]
 - [[cramer-rao-bound]]
 - [[multi-bs-feature-fusion-isac]]
@@ -927,6 +936,7 @@
 
 - [[zero-trust-architecture]]
 - [[federated-learning]]
+- [[semi-decentralized-hybrid-federated-learning]]
 - [[split-federated-learning]]
 - [[federated-reinforcement-learning]]
 - [[fedx-training-acceleration]]

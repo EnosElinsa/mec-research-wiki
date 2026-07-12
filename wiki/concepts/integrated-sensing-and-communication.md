@@ -28,8 +28,10 @@ related:
   - "[[multi-bs-feature-fusion-isac]]"
   - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
   - "[[action-masked-hierarchical-drl]]"
+  - "[[zhang-2025-cooperative-anti-uav-isac]]"
+  - "[[cooperative-isac-transceiver-beamforming]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Integrated Sensing and Communication (ISAC)
@@ -54,3 +56,5 @@ For a high-level survey of ISAC in the LAE context, see [[jiang-2025-isac-lae-ov
 Vehicular UAV-ISAC sources extend the same idea into moving-road targets. [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] uses [[rmaddpg-dda-uav-isac-control]] to adapt UAV motion, yaw, communication power, and ISAC transmit power for moving vehicles, while [[hazarika-2026-dynamo-uav-vehicle-tracking]] uses prediction, CRLB/FIM optimization, and [[dynamic-target-prioritization-metric|DTPM]] to decide which fast-moving vehicle should receive the next sensing update. [[bai-2026-aoi-uav-isac]] makes update freshness the primary UAV-ISAC objective through [[aoi-centric-uav-isac-beam-control]], coupling SAC motion decisions, Kalman target prediction, and RZF communication beams.
 
 Newer secure and networked entries widen the ISAC role. [[yan-not-in-parse-multibs-isac-uav-trajectory]] uses [[multi-bs-feature-fusion-isac]] to track UAV trajectories from asynchronous cellular-ISAC observations, while [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] uses ISAC sensing to localize UAV eavesdroppers before [[action-masked-hierarchical-drl]] controls caching, association, deployment, and beamforming for secure content delivery.
+
+[[zhang-2025-cooperative-anti-uav-isac]] uses [[cooperative-isac-transceiver-beamforming]] for multi-cell anti-UAV surveillance, optimizing sensing SCNR together with communication SINR and BS power while comparing centralized coordination with multiplier-exchanging distributed control.

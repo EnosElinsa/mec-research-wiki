@@ -17,8 +17,10 @@ related:
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
   - "[[contract-theoretic-fl-incentives]]"
   - "[[zhao-2026-uav-fl-inspection-incentives]]"
+  - "[[chen-2026-sdhfl-completion-time]]"
+  - "[[semi-decentralized-hybrid-federated-learning]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Federated Learning (FL)
@@ -34,3 +36,5 @@ This is the base concept underlying the wiki's narrower [[federated-reinforcemen
 [[li-2026-tspf-forest-fire-uav-swarm]] adds a robust UAV-swarm variant: [[two-tier-submodel-partition]] aggregates selected layers inside spatially dispersed UAV groups and then combines group submodels at swarm level, while intragroup backup keeps training data available after UAV destruction.
 
 [[huang-2026-aircomp-uav-swarms-afl]] focuses on asynchronous FL rather than split/submodel partitioning. It uses communication UAVs as AirComp aggregators for sensing-UAV updates and applies layer-wise cosine-similarity filtering to reduce stale-model damage during UAV-swarm learning.
+
+[[chen-2026-sdhfl-completion-time]] adds [[semi-decentralized-hybrid-federated-learning]]: devices reach D2D model consensus inside geographic clusters, while a UAV asynchronously aggregates selected cluster models and jointly controls mobility and communication resources for completion time.

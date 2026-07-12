@@ -13,6 +13,10 @@ related:
   - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
   - "[[zhang-not-in-parse-cellular-uav-to-x]]"
   - "[[uav-to-x-communication]]"
+  - "[[javaid-2023-collaborative-uav-communication-control]]"
+  - "[[collaborative-uav-communication]]"
+  - "[[zhang-2026-control-assisted-beam-tracking]]"
+  - "[[control-assisted-uav-beam-tracking]]"
 created: 2026-05-31
 updated: 2026-07-12
 ---
@@ -36,3 +40,5 @@ The tutorial uses this dichotomy to organize the UAV-communications design space
 [[mozaffari-not-in-parse-3d-drone-cellular-network]] combines cellular-connected drone-UEs with LAP drone-BSs and HAP backhaul in the same volumetric architecture, making the aerial user and aerial infrastructure roles part of one 3-D cellular-planning problem.
 
 [[zhang-not-in-parse-cellular-uav-to-x]] adds [[uav-to-x-communication]]: strong U2N aerial users upload directly, while weak U2N users forward through underlaid U2U links to relay UAVs.
+
+[[javaid-2023-collaborative-uav-communication-control]] surveys the broader [[collaborative-uav-communication]] stack. [[zhang-2026-control-assisted-beam-tracking]] provides a physical-layer instance in which a cellular BS uses UAV flight-control telemetry to keep a narrow mmWave beam aligned.

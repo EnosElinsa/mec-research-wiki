@@ -11,8 +11,10 @@ related:
   - "[[chen-2026-cargo-uav-pickup-lae]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
   - "[[target-level-of-safety]]"
+  - "[[gao-2026-air-ground-instant-delivery]]"
+  - "[[cooperative-uav-taxi-delivery]]"
 created: 2026-07-07
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # UAV Delivery Pickup/Drop-Off Optimization
@@ -22,5 +24,7 @@ UAV delivery pickup/drop-off optimization jointly chooses where and when a deliv
 In [[lee-2026-uav-delivery-time-energy]], the problem is formulated with no-fly-zone avoidance, weight restrictions, variable slot lengths, 3-D trajectories, and binary pickup/drop-off indicators. The solver uses SCA plus a penalty convex-concave procedure, and the reported tradeoff is explicit: energy minimization saves more than 20% energy at about 10% longer completion time.
 
 [[jiang-2026-bi-level-uav-delivery-safety]] adds the safety-constrained logistics variant: heterogeneous UAVs receive order assignments through TC-NSGA-III, while RG-FMT* plans delivery paths whose waypoint risk remains below [[target-level-of-safety|TLS]].
+
+[[gao-2026-air-ground-instant-delivery]] adds [[cooperative-uav-taxi-delivery]], where UAV station placement and repositioning fill the time-varying delivery capacity left by crowdsourced taxis, and parcel assignment combines learned courier preferences with generalized assignment.
 
 In this wiki the concept sits near [[chen-2026-cargo-uav-pickup-lae]] and [[compliance-aware-uav-trajectory]], but it is logistics/control infrastructure rather than MEC offloading.
