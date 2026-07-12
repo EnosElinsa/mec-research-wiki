@@ -18,8 +18,9 @@ related:
   - "[[hu-2019-pdd-uav-mec-offloading]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
+  - "[[kai-kit-wong]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # UAV-Assisted Relaying and Edge Computing: Scheduling and Trajectory Optimization

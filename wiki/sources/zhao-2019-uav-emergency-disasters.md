@@ -19,6 +19,7 @@ related:
   - "[[lyu-2023-noma-marine-emergency-offloading]]"
   - "[[tian-2026-joint-localization-communication]]"
   - "[[joint-localization-and-communication]]"
+  - "[[kai-kit-wong]]"
 created: 2026-06-01
 updated: 2026-07-13
 ---

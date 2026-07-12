@@ -15,8 +15,9 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[zhu-2024-crb-active-ris-isac]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
+  - "[[chan-byoung-chae]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Ampli-Flection for 6G: Active-RIS-Aided Aerial Backhaul With Full 3-D Coverage

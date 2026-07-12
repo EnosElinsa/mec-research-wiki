@@ -10,6 +10,7 @@ related:
   - "[[zhang-2026-distributed-jscc-uav-video]]"
   - "[[li-2016-energy-balanced-uav-relaying]]"
   - "[[energy-balanced-cooperative-uav-relaying]]"
+  - "[[guang-2026-hiswta-mcs]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -23,3 +24,5 @@ In the wiki, [[huang-2023-mu-aec-task-energy]] makes this an explicit CMOP objec
 Different from **load balancing** ([[load-balancing-uav-mec]]) — load balancing equalizes *current* compute load; energy balancing equalizes *cumulative* energy expended. They're correlated but not identical (a UAV with a more efficient chip can run higher load with less energy). [[nabi-2025-jour-hierarchical-aerial]] sits on the load-balancing side: it adds a per-UAV **load** term (computed cycles ÷ compute capacity, Eq. 25a) to its SAC reward — equalizing instantaneous load rather than cumulative energy.
 
 [[li-2016-energy-balanced-uav-relaying]] uses the min-max form for radio forwarding: it allocates decoded packets, rates, and powers so the most heavily drained relay is reduced. Its metric excludes propulsion energy, so it establishes packet-scheduling balance rather than whole-aircraft energy balance.
+
+[[guang-2026-hiswta-mcs]] addresses imbalance through a pipeline rather than one scalar min-max objective: energy-aware cluster-head selection, inter-head information routing, head replacement, and approximate Shapley task allocation are recomputed over sensing cycles. Its energy model likewise excludes propulsion, limiting the claim to communication and task-execution balance.

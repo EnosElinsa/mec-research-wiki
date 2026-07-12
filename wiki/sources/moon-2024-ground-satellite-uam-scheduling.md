@@ -25,8 +25,9 @@ related:
   - "[[mobility-aware-offloading]]"
   - "[[dai-2024-graph-rm-survey-optimization]]"
   - "[[wang-2024-satellite-terrestrial-computing]]"
+  - "[[chan-byoung-chae]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-13
 ---
 
 # Cooperative Ground-Satellite Scheduling and Power Allocation for Urban Air Mobility Networks

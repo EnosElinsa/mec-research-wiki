@@ -10,6 +10,7 @@ related:
   - "[[covert-communication]]"
   - "[[zhang-2026-air-ground-covert-jamming]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
+  - "[[zhu-2026-fas-uav-fbl]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
@@ -25,3 +26,5 @@ This matters for MEC offloading: using Shannon rates yields optimistic latency e
 In the wiki, [[wu-2024-urllc-uav-mec-latency]] is the corpus's first UAV-MEC study to drop the infinite-blocklength assumption: it derives a finite-blocklength offloading rate under **angle-dependent Rician fading**, approximates it logarithmically, and shows a significant latency gap versus a Shannon-based scheme — demonstrating that the accurate expression is necessary for the optimization.
 
 [[xie-2023-wireless-powered-short-packet-uav]] applies the same finite-blocklength rate penalty to WPT-powered IoT uploads, jointly allocating frame symbols, UAV hover location, and downlink charging power for communication-side energy efficiency.
+
+[[zhu-2026-fas-uav-fbl]] adds receiver-side spatial selection to short-packet UAV relaying. Its effective fluid-antenna diversity lowers the access-hop BLER, but per-port probing consumes channel uses and energy, so useful port count is constrained by the same finite blocklength it is intended to protect. A fixed-power first hop also creates an end-to-end error floor that access-hop diversity cannot remove.

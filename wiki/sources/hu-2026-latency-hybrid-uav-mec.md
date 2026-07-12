@@ -16,8 +16,9 @@ related:
   - "[[hu-2019-uav-relay-edge-computing]]"
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
+  - "[[kai-kit-wong]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Latency-Aware Computation Offloading in Hybrid UAV-Assisted MEC Systems: Time Scheduling and 3D Trajectory Design

@@ -16,8 +16,10 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[peng-2025-drudm-cfg]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
+  - "[[riheng-jia]]"
+  - "[[minglu-li]]"
 created: 2026-05-28
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled MEC

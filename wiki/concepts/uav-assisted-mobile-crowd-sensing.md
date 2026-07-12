@@ -15,13 +15,14 @@ related:
   - "[[semi-markov-decision-process]]"
   - "[[edge-intelligence]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
+  - "[[guang-2026-hiswta-mcs]]"
 created: 2026-07-10
 updated: 2026-07-13
 ---
 
 # UAV-Assisted Mobile Crowd Sensing
 
-A sensing architecture where human participants and UAVs jointly collect task data. Human participants provide opportunistic coverage through daily movement, while UAVs fill coverage holes and calibrate noisy participant sensors when they meet them.
+A mobile sensing architecture in which UAVs either assist human participants or act as the mobile sensing participants themselves. In the human-assisted form, people provide opportunistic coverage through daily movement while UAVs fill coverage holes and calibrate noisy participant sensors. In the UAV-only form, a mobile swarm senses, relays, and divides collection tasks through an aerial communication hierarchy.
 
 [[gao-2023-uav-mcs-uma]] uses this pattern in UMA. Participant-side allocation combines incentives, point-importance estimates, and semi-Markov participant-quality prediction. UAV-side scheduling is modeled as an MDP over UAV position, energy, participant positions, calibration timing, obstacles, and point completion, then trained with [[maddpg]].
 
@@ -31,4 +32,6 @@ A sensing architecture where human participants and UAVs jointly collect task da
 
 [[liu-2021-edivert-mobile-crowdsensing]] broadens the term from UAV assistance to sensing performed directly by unmanned vehicles. Its e-Divert controller coordinates data collection, obstacle avoidance, geographic fairness, and charging-station visits through CTDE actor-critic learning and [[ape-x-actor-learner-replay]].
 
-The concept broadens [[uav-data-collection]] beyond WSN/IoT data harvesting. The collected object is not only device data from fixed sensors; it can be human-carried sensor data whose quality changes by participant, time, incentives, and calibration history.
+[[guang-2026-hiswta-mcs]] also treats UAVs as the sensing participants themselves. HISWTA dynamically clusters heterogeneous UAVs, routes information among cluster heads, self-heals weak heads, and uses approximate Shapley values to distribute sensing tasks while controlling communication/task energy imbalance.
+
+The concept broadens [[uav-data-collection]] beyond WSN/IoT data harvesting. Depending on the source, the participants can be humans supported and calibrated by UAVs, or mobile UAVs that directly sense, relay, and execute assigned collection tasks.

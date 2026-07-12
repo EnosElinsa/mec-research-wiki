@@ -16,8 +16,9 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
+  - "[[kai-kit-wong]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Energy-Efficient STAR-RIS Enhanced UAV-Enabled MEC Networks With Bi-Directional Task Offloading

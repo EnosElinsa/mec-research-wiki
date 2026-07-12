@@ -8,8 +8,9 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[energy-latency-tradeoff]]"
   - "[[li-2025-omrp-cb-iot]]"
+  - "[[guang-2026-hiswta-mcs]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-13
 ---
 
 # First-Order Radio Energy Model (Heinzelman)
@@ -41,4 +42,4 @@ The relay break-even criterion in [[omrp-overlap-routing]] follows directly: rel
 - The d² / d⁴ boundary is a simplification; real propagation depends on terrain, frequency, and antenna height. For elevated nodes (UAVs), the [[air-to-ground-channel-model]] is more appropriate.
 
 ## Usage in the corpus
-This model underlies the inter-node energy calculations in [[omrp-overlap-routing]] and [[li-2025-omrp-cb-iot]] (which pairs it with a two-ray multipath model for the long IoT-to-BS uplink). The wiki's UAV-centric sources instead use propulsion-energy models for vehicle motion and dedicated air-to-ground channel models — the first-order radio model is specific to the terrestrial IoT / WSN setting.
+This model underlies the inter-node energy calculations in [[omrp-overlap-routing]] and [[li-2025-omrp-cb-iot]] (which pairs it with a two-ray multipath model for the long IoT-to-BS uplink). [[guang-2026-hiswta-mcs]] reuses it for member-to-head and inter-head communication in a mobile UAV sensing swarm. That reuse models radio traffic but still omits aircraft propulsion, so it should not be interpreted as whole-UAV mission energy.

@@ -561,6 +561,11 @@
 - [[li-2026-aeroguard-uav-fault-detection]] - Li et al. 2026. AeroGuard real-time UAV flight-data fault detection; residual-driven LSTM/ARX fusion plus Z-score/SPRT tests on attitude streams, with Raspberry Pi and real-flight evaluation (IEEE TMC).
 - [[gao-2023-uav-mcs-uma]] - Gao et al. 2023. UMA UAV-assisted mobile crowd sensing; combines participant incentives, quality prediction, UAV coverage, sensor calibration, and MADDPG scheduling (IEEE TMC).
 - [[gong-2026-uav-3d-visual-coverage]] - Gong et al. 2026. Path-aware 3-D object visual coverage with a single UAV; viewpoint generation plus energy-aware B-spline trajectory optimization (IEEE TMC).
+- [[zhu-2026-fas-uav-fbl]] - Zhu et al. 2026. Fluid-antenna-assisted finite-blocklength UAV relaying with correlated-port diversity, rural/urban BLER analysis, and probing-aware energy-efficiency optimization (IEEE TWC).
+- [[meng-2026-fullspace-star-ris-secure]] - Meng & Wu 2026. Full-space STAR-RIS UAV trajectory and role switching for robust secure NOMA uplink under colluding-eavesdropper CSI uncertainty (IEEE TGCN).
+- [[zhou-2026-gl-ahg-coverage-planning]] - Zhou et al. 2026. Game-learning weighted waypoint selection and alternating hierarchical genetic route optimization for energy-aware terrain coverage (IEEE TMC).
+- [[guang-2026-hiswta-mcs]] - Guang et al. 2026. Dynamic UAV clustering, inter-head information routing, fuzzy self-healing, and approximate Shapley task allocation for mobile crowdsensing (IEEE TMC).
+- [[ma-2026-game-ibs-deployment]] - Ma et al. 2026. Claimed exact-potential-game anti-UAV interference-base-station placement evaluated through exhaustive deployment search and SAC UAV path responses (IEEE TWC).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
 - [[zeng-2016-throughput-relaying]] — Zeng et al. 2016. **UAV mobile relaying** throughput maximization; joint relay trajectory + source/relay power; "staircase" water-filling power structure + SCA trajectory under **information-causality** (IEEE TCOMM). *(UAV mobile-relaying anchor, not MEC.)*
 - [[li-2016-energy-balanced-uav-relaying]] - Li et al. 2016. Energy-balanced cooperative UAV relaying; exact min-max scheduling and EPLA assign packets and modulation levels, with forwarding power derived from the selected rate and channel, without modeling propulsion energy (IEEE TMC).
@@ -586,6 +591,7 @@
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 - [[zehui-xiong]] (Queen's University Belfast - generative AI, semantic communication, physical-layer security, and low-altitude resource allocation; 11 sources spanning surveys, diffusion/GDM methods, and aerial/satellite control).
 - [[weijie-yuan]] (Southern University of Science and Technology - ISAC, OTFS, and low-altitude wireless networks; 3 sources), [[george-k-karagiannidis]] (Aristotle University of Thessaloniki - wireless communication and signal processing; 3 sources), [[yuanming-shi]] (ShanghaiTech University - edge AI, wireless optimization, and federated learning; 3 sources), and [[xingwang-li]] (Henan Polytechnic University - UAV/IRS wireless communications; 3 sources).
+- [[kai-kit-wong]] (University College London - wireless communications, fluid antennas, RIS, and UAV-MEC; 6 sources), [[chan-byoung-chae]] (Yonsei University - aerial communications and resource allocation; 3 sources), [[riheng-jia]] (Zhejiang Normal University - wireless/energy-harvesting networks and smart IoT; 2 sources), and [[minglu-li]] (Zhejiang Normal University / Shanghai Jiao Tong University - AIoT and network computing; 2 sources).
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -773,6 +779,7 @@
 - [[uav-mounted-ris]]
 - [[tilt-aware-aerial-ris-control]]
 - [[star-ris]]
+- [[full-space-star-ris-uav-trajectory]]
 - [[active-ris]]
 - [[decentralized-active-ris-uav-noma-control]]
 - [[multi-functional-ris]]
@@ -981,6 +988,7 @@
 - [[multi-modal-intelligent-channel-modeling]]
 - [[multi-scale-unet-pathloss-prediction]]
 - [[movable-antenna]]
+- [[fluid-antenna-system]]
 - [[two-level-movable-antenna]]
 - [[selective-near-field-area]]
 - [[terrain-aware-channel-model]]
@@ -1002,6 +1010,7 @@
 - [[dynamic-feature-filtering-vslam]]
 - [[minor-subspace-tracking]]
 - [[uav-localization-under-jamming]]
+- [[anti-uav-interference-base-station-deployment]]
 - [[integrated-sensing-computation-communication]]
 - [[target-graph-representation]]
 - [[expert-assisted-anomaly-aware-tracking]]
