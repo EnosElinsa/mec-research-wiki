@@ -16,8 +16,9 @@ related:
   - "[[wang-2026-stbc-cooperative-isac]]"
   - "[[tang-2025-cooperative-isac-lae]]"
   - "[[zhao-2025-networked-isac-uav-handover]]"
+  - "[[wang-2026-robust-anti-uav-isac]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Cooperative Beamforming Design for Anti-UAV ISAC Systems

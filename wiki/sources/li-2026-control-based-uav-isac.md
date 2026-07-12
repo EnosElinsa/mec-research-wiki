@@ -14,8 +14,9 @@ related:
   - "[[zhu-han]]"
   - "[[ye-2026-deeplsc-lae-isac]]"
   - "[[li-2026-isac-vec-beamforming-deployment]]"
+  - "[[wang-2026-robust-anti-uav-isac]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # A Control-Based Design of Beamforming and Trajectory for UAV-Enabled ISAC System

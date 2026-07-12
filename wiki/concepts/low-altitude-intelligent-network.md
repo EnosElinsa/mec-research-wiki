@@ -39,6 +39,8 @@ related:
   - "[[cooperative-uav-pursuit-evasion]]"
   - "[[dong-2026-digital-tides-provisioning]]"
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
+  - "[[lu-2026-icsn-beamforming]]"
+  - "[[integrated-communication-sensing-navigation]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -67,6 +69,8 @@ The LAE sensing-control line also includes [[ye-2026-mode-lae-isac]], which uses
 [[belgiovine-not-in-parse-multidt-abs-deployment]] and [[jiang-2026-bi-level-uav-delivery-safety]] add planning infrastructure for LAE operations: the former uses multiple digital twins to place airborne base stations before mission deployment, while the latter enforces [[target-level-of-safety]] in heterogeneous UAV delivery scheduling and routing.
 
 [[yang-2025-hcdrl-pursuit-evasion]] adds a counter-UAV control case through [[cooperative-uav-pursuit-evasion]]. Its low-altitude network provides the application frame, but the evaluated pursuit model assumes ideal communication and does not optimize radio resources.
+
+[[lu-2026-icsn-beamforming]] adds [[integrated-communication-sensing-navigation]] at the physical layer for airborne users and targets. Its navigation function distributes angular information; the model does not evaluate end-to-end navigation error or energy consumption.
 
 ## Open architectural questions
 

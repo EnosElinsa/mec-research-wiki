@@ -10,8 +10,10 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[yan-not-in-parse-multibs-isac-uav-trajectory]]"
   - "[[multi-bs-feature-fusion-isac]]"
+  - "[[wang-2025-cellular-uav-cooperative-detection]]"
+  - "[[ground-air-cooperative-isac-detection]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Multi-Source Data Fusion
@@ -24,3 +26,5 @@ Combining observations from multiple sensors / agents into a unified output that
 Fusion has its own optimization shape: synchronization matters; latency matters more than throughput; missing one input degrades the output. Reward functions for fusion-aware MEC therefore include synchronization terms (e.g. variance of finish times) that pure-task-offloading rewards don't have.
 
 [[yan-not-in-parse-multibs-isac-uav-trajectory]] adds a cellular-ISAC sensing variant: [[multi-bs-feature-fusion-isac]] combines delay/Doppler feature vectors from multiple BSs before trajectory association, avoiding both raw coherent signal fusion and late data-only averaging.
+
+[[wang-2025-cellular-uav-cooperative-detection]] instead performs [[ground-air-cooperative-isac-detection]]: a ground BS and one connected UAV independently estimate surrounding UAV states, associate them by normalized position/motion distance, and fuse the matched states with an extended Kalman filter before the next trajectory and beamforming update.

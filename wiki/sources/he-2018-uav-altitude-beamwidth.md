@@ -12,8 +12,9 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[al-hourani-2014-optimal-lap-altitude]]"
   - "[[mozaffari-2016-efficient-multi-uav-coverage]]"
+  - "[[yong-zeng]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # Joint Altitude and Beamwidth Optimization for UAV-Enabled Multiuser Communications

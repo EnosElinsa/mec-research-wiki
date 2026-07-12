@@ -15,8 +15,11 @@ related:
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
   - "[[meng-2024-uav-isac-overview]]"
   - "[[wang-gai-isac-physical-layer]]"
+  - "[[fan-liu]]"
+  - "[[christos-masouros]]"
+  - "[[lu-2026-icsn-beamforming]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-13
 ---
 
 # Sensing-Assisted Eavesdropper Estimation: An ISAC Breakthrough in Physical Layer Security
@@ -61,5 +64,5 @@ A **sensing-aided PLS** anchor for the wiki's ISAC/security thread, distinct fro
 
 ## Raw artifacts
 
-- `raw/sources/Sensing-Assisted_Eavesdropper_Estimation_An_ISAC_Breakthrough_in_Physical_Layer_Security/full.md`
+- `raw/sources/Sensing-Assisted_Eavesdropper_Estimation_An_ISAC_Breakthrough_in_Physical_Layer_Security/Sensing-Assisted_Eavesdropper_Estimation_An_ISAC_Breakthrough_in_Physical_Layer_Security.md`
 - Original PDF and extracted figures in the same folder.

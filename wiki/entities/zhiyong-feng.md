@@ -7,20 +7,22 @@ related:
   - "[[meng-2024-uav-isac-overview]]"
   - "[[wang-2026-stbc-cooperative-isac]]"
   - "[[li-not-in-parse-movable-antenna-pls]]"
+  - "[[wang-2025-cellular-uav-cooperative-detection]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Zhiyong Feng
 
 Professor at **Beijing University of Posts and Telecommunications (BUPT)** and director of the **Key Laboratory of Universal Wireless Communications, Ministry of Education** (Beijing, China; email `fengzy@bupt.edu.cn`) — consistent across her papers in this wiki. Research interests: wireless network architecture design and radio resource management.
 
-Co-authored 4 sources in this wiki:
+Co-authored 5 sources in this wiki:
 
 - [[zhang-2020-response-delay-uav-swarm]] — response-delay optimization for a MEC-enabled UAV swarm via stochastic geometry + queueing theory (corresponding author).
 - [[meng-2024-uav-isac-overview]] — overview of UAV-enabled integrated sensing and communication for 6G.
 - [[wang-2026-stbc-cooperative-isac]] — multi-BS cooperative ISAC with robust inter-BS nulling, space-time block coded echo separation, and SINR-weighted data fusion.
 - [[li-not-in-parse-movable-antenna-pls]] - movable-antenna micro-mobility versus UAV macro-mobility for air-to-ground physical-layer security.
+- [[wang-2025-cellular-uav-cooperative-detection]] - cooperative BS/UAV sensing-data fusion with trajectory and beamforming control.
 
 ## Contributions to this wiki
 

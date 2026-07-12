@@ -15,8 +15,9 @@ related:
   - "[[gao-2026-fmad3qn-uav-gd-association]]"
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[meng-2026-uav-isac-corrections]]"
+  - "[[spatially-separated-uav-isac-role-scheduling]]"
 created: 2026-06-02
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Device Association

@@ -12,8 +12,9 @@ related:
   - "[[space-time-block-codec]]"
   - "[[cramer-rao-bound]]"
   - "[[low-altitude-intelligent-network]]"
+  - "[[zhiyong-feng]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Space-Time Block Codec Based Cooperative Integrated Sensing and Communication System

@@ -13,8 +13,9 @@ related:
   - "[[seamless-handover]]"
   - "[[tang-2025-cooperative-isac-lae]]"
   - "[[huang-2026-offgrid-lae-imager]]"
+  - "[[fan-liu]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Networked ISAC-Based UAV Tracking and Handover Toward Low-Altitude Economy
@@ -56,5 +57,5 @@ This source complements cooperative LAE sensing entries such as [[tang-2025-coop
 
 ## Raw artifacts
 
-- `raw/sources/Networked ISAC-Based UAV Tracking and Handover Toward Low-Altitude Economy/Networked ISAC-Based UAV Tracking and Handover Toward Low-Altitude Economy.md`
+- `raw/sources/Networked_ISAC-Based_UAV_Tracking_and_Handover_Toward_Low-Altitude_Economy/Networked_ISAC-Based_UAV_Tracking_and_Handover_Toward_Low-Altitude_Economy.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

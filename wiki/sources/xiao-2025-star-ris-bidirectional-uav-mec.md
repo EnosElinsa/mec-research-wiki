@@ -17,6 +17,7 @@ related:
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
   - "[[kai-kit-wong]]"
+  - "[[kun-yang]]"
 created: 2026-07-07
 updated: 2026-07-13
 ---

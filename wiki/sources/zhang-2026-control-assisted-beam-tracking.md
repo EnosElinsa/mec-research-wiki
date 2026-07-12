@@ -13,8 +13,9 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[hussain-2026-unet-uav-mmwave-pathloss]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
+  - "[[christos-masouros]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Control-Assisted Beam Prediction and Tracking for UAV Millimeter Wave Communications

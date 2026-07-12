@@ -12,15 +12,19 @@ related:
   - "[[lyu-2017-spiral-mbs-placement]]"
   - "[[zeng-2016-uav-comm-opportunities-challenges]]"
   - "[[lu-2026-uav-swarm-two-level-ma]]"
+  - "[[jing-2024-isac-trajectory-localization]]"
+  - "[[he-2018-uav-altitude-beamwidth]]"
+  - "[[lyu-2018-uav-hotspot-offloading]]"
+  - "[[zhan-2018-uav-wsn-data-collection]]"
 created: 2026-06-01
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Yong Zeng
 
-A foundational author of the **UAV-communications** research line in this wiki. The parses list his affiliation as the **Department of Electrical and Computer Engineering, National University of Singapore** (Singapore) on the earlier works; he is widely associated with UAV trajectory optimization and energy-efficient UAV communication.
+A foundational author of the **UAV-communications** research line in this wiki. Earlier parses list the **Department of Electrical and Computer Engineering, National University of Singapore**; the 2024 UAV-ISAC parse records his current professorship at Southeast University's National Mobile Communications Research Laboratory and Purple Mountain Laboratories. He is widely associated with UAV trajectory optimization and energy-efficient UAV communication.
 
-Co-authored 9 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
+Co-authored 13 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
 
 - [[zeng-2016-throughput-relaying]] — throughput maximization for UAV-enabled **mobile relaying** (trajectory + power, staircase water-filling) (lead author).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — energy-efficient UAV communication + the first **fixed-wing propulsion-energy model** (bits/Joule) (lead author).
@@ -31,6 +35,10 @@ Co-authored 9 sources in this wiki — the corpus's UAV-communications / traject
 - [[lyu-2017-spiral-mbs-placement]] — minimum-count UAV-MBS placement as the geometric disk cover problem, solved by a spiral algorithm (co-author, with Jiangbin Lyu, Rui Zhang, Teng Joon Lim).
 - [[zeng-2016-uav-comm-opportunities-challenges]] — the IEEE Communications Magazine overview of UAV-aided wireless communications (architecture, channel characteristics, three use cases, design challenges) (lead author, with Rui Zhang and Teng Joon Lim).
 - [[lu-2026-uav-swarm-two-level-ma]] — low-altitude UAV swarm communication with [[two-level-movable-antenna]] placement and receive beamforming (co-author, with Haiquan Lu, Shaodan Ma, Bin Li, Shi Jin, and Rui Zhang).
+- [[jing-2024-isac-trajectory-localization]] — multi-stage UAV trajectory and bandwidth design for joint communication and target localization.
+- [[he-2018-uav-altitude-beamwidth]] — joint UAV altitude and antenna-beamwidth design for multiuser communication.
+- [[lyu-2018-uav-hotspot-offloading]] — cyclical UAV trajectory, spectrum sharing, and user partitioning for cellular hotspot offloading.
+- [[zhan-2018-uav-wsn-data-collection]] — wake-up scheduling and UAV trajectory optimization for energy-efficient sensor data collection.
 
 ## Contributions to this wiki
 

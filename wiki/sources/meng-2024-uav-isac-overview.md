@@ -13,8 +13,9 @@ related:
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
   - "[[tang-2024-iscc-uav-feel]]"
+  - "[[zhiyong-feng]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-13
 ---
 
 # UAV-Enabled Integrated Sensing and Communication: Opportunities and Challenges

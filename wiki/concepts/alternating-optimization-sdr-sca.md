@@ -29,6 +29,10 @@ related:
   - "[[fu-2026-uav-fl-user-grouping]]"
   - "[[mihertie-2026-aerial-irs-rsma-ee]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
+  - "[[zhang-2026-air-sea-isac-inspection]]"
+  - "[[wang-2026-robust-anti-uav-isac]]"
+  - "[[wang-2025-cellular-uav-cooperative-detection]]"
+  - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -53,5 +57,7 @@ This stack is the **non-DRL** counterpoint to the j-PPO / DDPG / SAC backbone th
 [[fan-2026-hap-uav-iort-oee]] adds a Dinkelbach/BCD/SCA stack for HAP-UAV IoRT energy efficiency. [[zhang-2022-uav-relay-substitution]] uses block coordinate ascent plus SCA, without SDR, to alternate relay trajectories and powers under overlapping UAV substitution.
 
 [[meng-2026-uav-isac-corrections]] supplies a cautionary SCA case: an omitted auxiliary-variable transformation and first-order logarithmic bound, rather than a claimed negative-definite Hessian, are what make the corrected periodic UAV-ISAC rate subproblem convex.
+
+Three cooperative sensing designs add distinct decompositions: [[zhang-2026-air-sea-isac-inspection]] alternates hover-point beamforming and current-aware USV motion after a discrete route initialization; [[wang-2026-robust-anti-uav-isac]] combines lifted beamformers, robust LMIs, penalty-SCA role assignment, and trajectory convexification; and [[wang-2025-cellular-uav-cooperative-detection]] alternates sensing/communication beamforming with UAV trajectory updates after ground-air state fusion.
 
 The same family covers four energy-efficiency designs with different inner blocks. [[huroon-2026-bd-ris-rsma-uav]] combines BCD/SCA with generalized Benders and Riemannian phase updates; [[fu-2026-uav-fl-user-grouping]] uses two SCA phases around fixed FL participation; [[mihertie-2026-aerial-irs-rsma-ee]] uses SCA plus semidefinite rank-one relaxation; and [[xie-2023-wireless-powered-short-packet-uav]] alternates SCA/fractional location, blocklength, and WPT-power updates without SDR.

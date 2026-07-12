@@ -19,6 +19,7 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
   - "[[kai-kit-wong]]"
+  - "[[kun-yang]]"
 created: 2026-06-01
 updated: 2026-07-13
 ---

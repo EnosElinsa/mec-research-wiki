@@ -14,8 +14,9 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[alternating-optimization-sdr-sca]]"
   - "[[zhiyong-feng]]"
+  - "[[qixun-zhang]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Can Movable Antenna-Enabled Micro-Mobility Replace UAV-Enabled Macro-Mobility? A Physical Layer Security Perspective

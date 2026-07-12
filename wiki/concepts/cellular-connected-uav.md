@@ -19,8 +19,10 @@ related:
   - "[[control-assisted-uav-beam-tracking]]"
   - "[[xu-2026-hecta-predictive-beamforming]]"
   - "[[historical-echo-predictive-beamforming]]"
+  - "[[wang-2025-cellular-uav-cooperative-detection]]"
+  - "[[ground-air-cooperative-isac-detection]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Cellular-Connected UAV
@@ -46,3 +48,5 @@ The tutorial uses this dichotomy to organize the UAV-communications design space
 [[javaid-2023-collaborative-uav-communication-control]] surveys the broader [[collaborative-uav-communication]] stack. [[zhang-2026-control-assisted-beam-tracking]] provides a physical-layer instance in which a cellular BS uses UAV flight-control telemetry to keep a narrow mmWave beam aligned.
 
 [[xu-2026-hecta-predictive-beamforming]] adds bidirectional BS-UAV beam prediction from historical ISAC echoes. Its [[historical-echo-predictive-beamforming]] explicitly accounts for UAV attitude rotating the onboard receive array, not only position-induced departure-angle changes at the BS.
+
+[[wang-2025-cellular-uav-cooperative-detection]] gives a connected UAV a sensing role: it and the serving BS independently estimate surrounding UAV states, then associate and fuse them through [[ground-air-cooperative-isac-detection]] before updating the connected UAV's trajectory and beamforming.

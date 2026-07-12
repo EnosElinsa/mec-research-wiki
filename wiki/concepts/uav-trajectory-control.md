@@ -94,6 +94,9 @@ related:
   - "[[zhang-2022-solar-charging-uav-iot]]"
   - "[[huroon-2026-bd-ris-rsma-uav]]"
   - "[[fu-2026-uav-fl-user-grouping]]"
+  - "[[wang-2026-robust-anti-uav-isac]]"
+  - "[[jing-2024-isac-trajectory-localization]]"
+  - "[[multi-stage-estimate-design-sense-trajectory]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -122,3 +125,5 @@ Newer trajectory-control variants add infrastructure, QoS, security, privacy, se
 Wireless powering and collection add four trajectory couplings: [[wang-2026-wutf-fair-communication]] trades fair coverage against tower access and propulsion energy; [[li-2023-energy-constrained-uav-data-collection]] chooses depot-returning hover tours under one battery budget; [[morshed-2026-active-ris-uav-noma-mappo]] couples motion to active-RIS gain/phase and NOMA power; and [[wang-2026-glint-aoi-wireless-powered-edge]] resolves UAV position/association before charging-time and update scheduling.
 
 [[zhang-2022-solar-charging-uav-iot]] adds a discrete charging-or-serving route over reachable destinations under solar harvesting, while [[huroon-2026-bd-ris-rsma-uav]] couples multi-UAV motion to a ground-mounted BD-RIS and RSMA. [[fu-2026-uav-fl-user-grouping]] uses trajectory and hover-time control to make grouped FL uploads energy-feasible.
+
+Sensing-first designs add another feedback loop. [[wang-2026-robust-anti-uav-isac]] moves a multi-UAV transmitter/receiver team under target-position uncertainty, while [[jing-2024-isac-trajectory-localization]] repeatedly estimates targets and replans through a [[multi-stage-estimate-design-sense-trajectory]].

@@ -15,8 +15,10 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
   - "[[zhu-han]]"
+  - "[[qixun-zhang]]"
+  - "[[zhiyong-feng]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Response Delay Optimization in Mobile Edge Computing Enabled UAV Swarm

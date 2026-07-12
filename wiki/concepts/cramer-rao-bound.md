@@ -12,8 +12,13 @@ related:
   - "[[wang-2026-rmaddpg-dda-uav-isac-vehicular]]"
   - "[[hazarika-2026-dynamo-uav-vehicle-tracking]]"
   - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
+  - "[[wang-2026-robust-anti-uav-isac]]"
+  - "[[jing-2024-isac-trajectory-localization]]"
+  - "[[lu-2026-icsn-beamforming]]"
+  - "[[crb-guided-angular-confidence-beamforming]]"
+  - "[[spatially-separated-uav-isac-role-scheduling]]"
 created: 2026-05-31
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Cramér-Rao Bound (CRB / CRLB)
@@ -35,5 +40,8 @@ A lower bound on the variance of any unbiased estimator of a deterministic param
 - [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] uses a CRLB-derived sensing-quality term inside an effective-mutual-information reward for MARL-driven UAV-ISAC vehicular control.
 - [[hazarika-2026-dynamo-uav-vehicle-tracking]] uses FIM/CRLB sensing accuracy in the predictive UAV vehicle-tracking pipeline, then combines that with [[dynamic-target-prioritization-metric|DTPM]] and POMDP-MADDPG control.
 - [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] uses CRLB/FIM together with EKF eavesdropper localization before secure-throughput control, so the estimation bound affects a content-delivery decision rather than only a tracking metric.
+- [[wang-2026-robust-anti-uav-isac]] minimizes a worst-case time-average cooperative position-CRB trace over an uncertain target box while assigning moving UAVs to transmit and receive roles.
+- [[jing-2024-isac-trajectory-localization]] uses target-position CRB as a trajectory-stage objective, then performs grid maximum-likelihood localization from accumulated ranges; the paper cautions that the CRB can be loose for this nonlinear coordinate estimator.
+- [[lu-2026-icsn-beamforming]] converts angular CRBs into confidence intervals that update narrow sensing/navigation mainlobes through [[crb-guided-angular-confidence-beamforming]].
 
 Distinct from outcome metrics like [[secrecy-outage-probability]]; the CRB bounds estimator variance, not an outage event.

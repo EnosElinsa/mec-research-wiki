@@ -12,8 +12,9 @@ related:
   - "[[drone-cell-3d-placement]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[lyu-2017-spiral-mbs-placement]]"
+  - "[[yong-zeng]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # UAV-Aided Offloading for Cellular Hotspot

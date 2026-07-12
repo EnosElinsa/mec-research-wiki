@@ -18,6 +18,8 @@ related:
   - "[[zhang-2022-solar-charging-uav-iot]]"
   - "[[huroon-2026-bd-ris-rsma-uav]]"
   - "[[fu-2026-uav-fl-user-grouping]]"
+  - "[[zhang-2026-air-sea-isac-inspection]]"
+  - "[[jing-2024-isac-trajectory-localization]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
@@ -39,3 +41,5 @@ This model originates in [[zeng-2019-rotary-wing-energy-min]] (Zeng, Xu & Zhang,
 [[wang-2026-wutf-fair-communication]] resolves slot energy into acceleration, steady flight, deceleration, hovering, and communication terms, then couples that demand to charging-tower proximity inside [[wireless-powered-uav-fair-service-control]].
 
 [[zhang-2022-solar-charging-uav-iot]] combines horizontal, vertical, and hover demand with solar/station charging; [[huroon-2026-bd-ris-rsma-uav]] counts hovering/flying power inside a BD-RIS/RSMA energy-efficiency ratio; and [[fu-2026-uav-fl-user-grouping]] finds that propulsion dominates its grouped UAV-FL energy budget.
+
+The model also drives sensing-oriented trajectory design. [[zhang-2026-air-sea-isac-inspection]] combines it with USV propulsion and inertial energy in a joint inspection objective, while [[jing-2024-isac-trajectory-localization]] spends a finite UAV energy budget across repeated communication, motion, and localization stages.
