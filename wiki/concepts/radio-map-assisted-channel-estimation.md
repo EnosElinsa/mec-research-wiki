@@ -12,8 +12,10 @@ related:
   - "[[conditional-gan]]"
   - "[[air-to-ground-channel-model]]"
   - "[[csi-estimation-error]]"
+  - "[[radio-map-aided-uav-path-planning]]"
+  - "[[cao-2026-radio-map-cargo-pickup]]"
 created: 2026-07-07
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Radio-Map-Assisted Channel Estimation
@@ -25,3 +27,5 @@ In [[yang-2026-generative-radio-map-lae]], the radio map is built for a low-alti
 [[zheng-2026-active-search-low-altitude-uav]] adds the online-search counterpart: the UAV does not begin with a complete radio map, so it uses local measurements while following an [[equipotential-surface-uav-search|equipotential search surface]] to estimate LoS channel behavior and maintain both user service and backhaul viability.
 
 [[wang-2026-bayesian-uav-spectrum-mapping]] is adjacent but inverts the direction of use: the UAV actively samples the field to construct the spectrum/radio map itself, rather than consuming an existing map as a channel-estimation prior.
+
+[[cao-2026-radio-map-cargo-pickup]] consumes an expected-SNR map for a different purpose: [[radio-map-aided-uav-path-planning]] thresholds the map into feasible cells and searches communication-safe cargo routes, without treating the map as a channel estimator.

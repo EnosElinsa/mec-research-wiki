@@ -13,8 +13,9 @@ related:
   - "[[uav-usv-cooperative-mec]]"
   - "[[liao-2025-ris-uav-usv-resource-allocation]]"
   - "[[liao-2026-aoi-ris-uav-usv-mec]]"
+  - "[[wang-2026-noma-marine-data-computation]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Maritime MEC
@@ -33,5 +34,6 @@ The corpus has a substantial maritime track (sources tagged `maritime-mec`), spa
 - [[li-2026-cdto-inland-waterways]] - UAV-assisted inland-waterway task offloading where USVs form D2D computation-sharing clusters under UAV cluster heads.
 - [[liao-2025-ris-uav-usv-resource-allocation]] - RIS-assisted [[uav-usv-cooperative-mec]] for inland waterways, with bidirectional USV tasks, hard time windows, UAV route selection, and RIS phase design.
 - [[liao-2026-aoi-ris-uav-usv-mec]] - AoI-aware RIS-assisted UAV-USV MEC, with a RIS-carried tethered UAV, RUAV trajectory/service-duration decisions, and average-AoI versus flight-energy optimization.
+- [[wang-2026-noma-marine-data-computation]] - NOMA sensing-data collection followed by UAV computation, with TD3 jointly controlling motion, device powers, and compute allocation.
 
 The cross-source picture - tiering choices (three-tier aerial+surface+space vs two-edge air+space vs single mobile-edge platform), the classical-solver-heavy split, and the distinctive maritime constraints (known routes, backhaul scarcity, energy-as-headline-objective) - is mapped in [[maritime-mec-architectures]].

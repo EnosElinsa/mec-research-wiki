@@ -16,6 +16,8 @@ related:
   - "[[chen-not-in-parse-uav-human-medical-delivery]]"
   - "[[cooperative-uav-human-courier-delivery]]"
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
+  - "[[cao-2026-radio-map-cargo-pickup]]"
+  - "[[radio-map-aided-uav-path-planning]]"
 created: 2026-07-07
 updated: 2026-07-13
 ---
@@ -32,4 +34,4 @@ In [[lee-2026-uav-delivery-time-energy]], the problem is formulated with no-fly-
 
 [[chen-not-in-parse-uav-human-medical-delivery]] adds [[cooperative-uav-human-courier-delivery]] for emergency medical pickup and delivery. It jointly assigns orders and routes a dedicated courier/UAV fleet under soft deadlines, type-specific capacities, and different consolidation rules.
 
-In this wiki the concept sits near [[chen-2026-cargo-uav-pickup-lae]] and [[compliance-aware-uav-trajectory]], but it is logistics/control infrastructure rather than MEC offloading.
+[[cao-2026-radio-map-cargo-pickup]] adds offline expected-SNR-map feasibility, all-pairs A* paths, PSO trip allocation, and payload-dependent speed selection. [[chen-2026-cargo-uav-pickup-lae]] instead learns communication-aware paths from local measurements and adds multi-UAV conflict resolution. In this wiki the concept remains logistics/control infrastructure rather than MEC offloading.

@@ -36,6 +36,7 @@ OFFENDING = [
     re.compile(r"\bcuration pass\b", re.I),
     re.compile(r"\bsynthesis pass\b", re.I),
     re.compile(r"\bin this pass\b", re.I),
+    re.compile(r"\bthis pass\b", re.I),
     re.compile(r"\bthe (?:next|previous|prior|last|earlier|first|second|third|2026)[\w\s-]*?pass\b", re.I),
     re.compile(r"\b(?:next|prior|previous|audit|follow-up) pass\b", re.I),
     re.compile(r"\bnewly (?:confirmed|added|curated|synthesized)\b", re.I),
@@ -57,6 +58,19 @@ OFFENDING = [
 ML_OK = re.compile(r"batch[\s-]?(?:size|128|256|512|64|32|1024|of \d)", re.I)
 
 
+def find_offending(line: str):
+    """Return the first process-narration match not covered by a domain exemption."""
+    for rx in OFFENDING:
+        match = rx.search(line)
+        if not match:
+            continue
+        segment = line[max(0, match.start() - 15) : match.end() + 15]
+        if ML_OK.search(segment):
+            continue
+        return match
+    return None
+
+
 def scan():
     results = {}
     for p in wikilib.md_files(wikilib.wiki_dir()):
@@ -64,15 +78,9 @@ def scan():
             continue
         hits = []
         for i, ln in enumerate(wikilib.read_text(p).splitlines(), 1):
-            for rx in OFFENDING:
-                m = rx.search(ln)
-                if not m:
-                    continue
-                seg = ln[max(0, m.start() - 15) : m.end() + 15]
-                if ML_OK.search(seg):
-                    continue
+            m = find_offending(ln)
+            if m:
                 hits.append((i, m.group(0), ln.strip()[:160]))
-                break
         if hits:
             results[os.path.relpath(p, wikilib.wiki_dir())] = hits
     return results

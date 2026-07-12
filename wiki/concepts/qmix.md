@@ -12,8 +12,9 @@ related:
   - "[[zhang-2026-ensemble-marl-uav-target-search]]"
   - "[[le-2026-asynchronous-uav-data-collection]]"
   - "[[asynchronous-qmix]]"
+  - "[[wang-2026-robust-multiuav-jtcra]]"
 created: 2026-07-11
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # QMIX
@@ -23,3 +24,5 @@ QMIX is a cooperative multi-agent value-decomposition method. It learns per-agen
 In this wiki, [[shi-2025-aoi-energy-replenishment-multiuav]] uses QMIX beside [[value-decomposition-network|VDN]] for AoI-aware multi-UAV data collection and energy replenishment. [[zhang-2026-ensemble-marl-uav-target-search]] builds the specialized [[ensemble-qmix]] variant, where multiple independently trained QMIX networks vote on actions for heterogeneous UAV target search.
 
 [[le-2026-asynchronous-uav-data-collection]] builds [[asynchronous-qmix]], preserving monotonic value mixing while allowing only the earliest-finishing UAV to choose a new action at each event-driven transition. Other agents continue actions whose durations have not elapsed.
+
+[[wang-2026-robust-multiuav-jtcra]] uses recurrent QMIX with shared trajectory-role and communication-role policies for A2G coverage reconfiguration after energy-driven UAV dropouts. Its matched MAPPO implementation is reported as more stable and higher-throughput in the evaluated setting.

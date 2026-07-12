@@ -20,8 +20,13 @@ related:
   - "[[dai-2023-hybrid-noma-fdma-marine]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
   - "[[lyu-2023-noma-marine-emergency-offloading]]"
+  - "[[wang-2026-noma-marine-data-computation]]"
+  - "[[qian-wang]]"
+  - "[[liping-qian]]"
+  - "[[bin-lin]]"
+  - "[[yuan-wu]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Joint Multi-Domain Resource Allocation and Trajectory Optimization in UAV-Assisted Maritime IoT Networks
@@ -61,7 +66,7 @@ The evaluation is simulation-based; CSI/locations are assumed available (USVs re
 
 ## Relation to the corpus
 
-A **maritime MEC** entry that pairs **uplink power-domain NOMA** offloading with a **DDPG-learned UAV trajectory** and a **closed-form Lagrangian** resource allocator — a clean instance of the [[two-stage-decomposition]] pattern (learn the hard combinatorial trajectory, solve the convex resource allocation analytically). It sits in the Dalian-Maritime-University / University-of-Macau maritime line with the energy-harvesting JCORA scheme [[wang-2024-maritime-eh-jcora]] and the hybrid NOMA/FDMA multi-access offloading [[dai-2023-hybrid-noma-fdma-marine]] (shared authors [[bin-lin]], yuan-wu, [[liping-qian]]), and complements the HAP-UAV maritime-IoT network [[liu-2025-haps-uav-maritime-iot]] and the NOMA marine emergency offloading [[lyu-2023-noma-marine-emergency-offloading]]. Its [[fixed-wing-propulsion-energy-model]] propulsion term and **partial (ratio) offloading** ground [[fixed-wing-propulsion-energy-model]] and [[binary-vs-partial-offloading]], while NOMA-SIC offloading grounds [[noma]].
+A **maritime MEC** entry that pairs **uplink power-domain NOMA** offloading with a **DDPG-learned UAV trajectory** and a **closed-form Lagrangian** resource allocator — a clean instance of the [[two-stage-decomposition]] pattern (learn the hard combinatorial trajectory, solve the convex resource allocation analytically). It sits in the Dalian-Maritime-University / University-of-Macau maritime line with the energy-harvesting JCORA scheme [[wang-2024-maritime-eh-jcora]] and the hybrid NOMA/FDMA multi-access offloading [[dai-2023-hybrid-noma-fdma-marine]]; across those neighboring sources it shares [[liping-qian]], [[bin-lin]], and [[yuan-wu]]. It shares [[qian-wang]] as well as those three authors with [[wang-2026-noma-marine-data-computation]], which keeps the NOMA energy objective but replaces mobile-USV partial offloading with mandatory fixed-sensor data collection, UAV computation, and TD3 joint control. This source also complements the HAP-UAV maritime-IoT network [[liu-2025-haps-uav-maritime-iot]] and NOMA marine emergency offloading [[lyu-2023-noma-marine-emergency-offloading]]. Its [[fixed-wing-propulsion-energy-model]] propulsion term and **partial (ratio) offloading** ground [[fixed-wing-propulsion-energy-model]] and [[binary-vs-partial-offloading]], while NOMA-SIC offloading grounds [[noma]].
 
 ## Raw artifacts
 

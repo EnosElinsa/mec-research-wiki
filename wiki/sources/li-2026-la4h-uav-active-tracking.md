@@ -15,8 +15,9 @@ related:
   - "[[attention-based-uav-target-search]]"
   - "[[zhu-2026-hab-mappo-target-search]]"
   - "[[zhu-2024-zdrl-uav-tracking]]"
+  - "[[fuhui-zhou]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # A Novel Expert-Assisted Anomaly-Aware Embodied Learning Framework for UAV Active Target Tracking

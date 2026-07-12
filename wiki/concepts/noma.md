@@ -15,6 +15,7 @@ related:
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[ahmed-2026-noma-irs-vehicular]]"
   - "[[fixed-point-irs-passive-beamforming]]"
+  - "[[wang-2026-noma-marine-data-computation]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -43,6 +44,8 @@ A multiple-access scheme where multiple users share the *same* time-frequency re
 [[hosseini-2026-aoi-covert-uav]] uses PD-NOMA outside the offloading track: the public user's signal supplies cover traffic for a covert user while the UAV minimizes [[age-of-information]] under an aerial eavesdropper's detection test.
 
 [[zhou-2026-a2g-madrl-air-ground-vcs]] uses NOMA as the communication substrate for air-ground vehicular crowdsensing. Channel assignment becomes part of the [[sequential-multi-agent-policy-generation]] action because UAVs and UGVs share channels while collecting PoI data.
+
+[[wang-2026-noma-marine-data-computation]] uses uplink NOMA for mandatory sensing-data collection before UAV-side computation. Its reported energy comparison favors NOMA over both FDMA and TDMA under the paper's fixed marine-sensor model, contrasting with corpus entries whose access and energy assumptions produce different orderings.
 
 ## Caveats
 

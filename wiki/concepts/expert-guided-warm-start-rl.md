@@ -8,8 +8,9 @@ related:
   - "[[mou-2025-adm-dt-migration]]"
   - "[[li-2026-la4h-uav-active-tracking]]"
   - "[[expert-assisted-anomaly-aware-tracking]]"
+  - "[[li-2026-secrecy-ee-uav-ris-iov]]"
 created: 2026-06-03
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Expert-Guided Warm-Start RL
@@ -25,3 +26,5 @@ In environments where useful states are rarely visited by a randomly-initialized
 [[mou-2025-adm-dt-migration]] applies this pattern to adaptive digital-twin migration in vehicular edge networks: it saves a Greedy heuristic's trajectories as the expert, pre-trains an off-policy actor-critic agent on them, and decays the demonstration proportion over training. The reported final-reward ordering ADM > DRL-PT (pre-training only) > DRL (from scratch) > Greedy isolates the contribution of both the pre-training and the warm-start schedule. Because the expert is a heuristic, the warm-start's floor is bounded by that heuristic's quality. It is a sample-efficiency lever orthogonal to the choice of [[drl-backbones-across-uav-mec-sources|DRL backbone]].
 
 [[li-2026-la4h-uav-active-tracking]] is adjacent but not identical: [[expert-assisted-anomaly-aware-tracking]] treats expert help as an online recovery action during UAV active tracking, while still using teacher-student distillation to make the policy deployable.
+
+[[li-2026-secrecy-ee-uav-ris-iov]] uses a looser heuristic-guided variant: a firefly optimizer generates high-quality UAV-coordinate samples that seed a DDPG replay buffer. It does not imitate a demonstrated policy, but it applies the same warm-start principle of replacing uninformative early exploration with structured prior experience.

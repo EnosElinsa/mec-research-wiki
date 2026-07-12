@@ -19,6 +19,8 @@ related:
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
   - "[[xu-2021-secure-uav-mec-dual-uav]]"
   - "[[zhaolong-ning]]"
+  - "[[secrecy-energy-efficiency]]"
+  - "[[li-2026-secrecy-ee-uav-ris-iov]]"
 created: 2026-07-07
 updated: 2026-07-13
 ---
@@ -64,7 +66,7 @@ This is a secure communications paper, not a computation-offloading MEC paper. I
 
 ## Relation to the corpus
 
-This source extends the [[physical-layer-security]] and [[friendly-jamming-uav]] track into low-altitude-economy secure communication. It differs from [[xu-2021-secure-uav-mec-dual-uav]], which studies secure UAV-MEC computation with a server UAV and jammer UAV, because Wang et al. focus on communication secrecy energy efficiency and allow UAV roles to switch dynamically. It is also adjacent to [[guo-2024-multiuav-proactive-eavesdropping]] and [[yao-2025-secure-isac-dual-eavesdropping]] as another multi-UAV security optimization with explicit trajectory and jamming decisions.
+This source extends the [[physical-layer-security]] and [[friendly-jamming-uav]] track into low-altitude-economy secure communication. It differs from [[xu-2021-secure-uav-mec-dual-uav]], which studies secure UAV-MEC computation with a server UAV and jammer UAV, because Wang et al. focus on communication [[secrecy-energy-efficiency]] and allow UAV roles to switch dynamically. [[li-2026-secrecy-ee-uav-ris-iov]] optimizes the same metric under a different threat and energy boundary: one untrusted relay, vehicle-generated jamming, UAV-RIS assistance, and communication power without UAV propulsion. This source is also adjacent to [[guo-2024-multiuav-proactive-eavesdropping]] and [[yao-2025-secure-isac-dual-eavesdropping]] as another multi-UAV security optimization with explicit trajectory and jamming decisions.
 
 ## Raw artifacts
 

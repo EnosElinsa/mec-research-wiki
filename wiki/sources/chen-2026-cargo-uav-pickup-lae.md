@@ -17,8 +17,10 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[gao-2024-d3qn-uav-mec-mobile-gt]]"
   - "[[dusit-niyato]]"
+  - "[[cao-2026-radio-map-cargo-pickup]]"
+  - "[[radio-map-aided-uav-path-planning]]"
 created: 2026-07-06
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Cargo UAVs Pick-Up Systems for Low-Altitude Economy With Communication Quality, Battery Energy, and Time Window Constraints
@@ -66,7 +68,7 @@ The authors state that the paper does not address 3D trajectory optimization. Th
 
 ## Relation to the corpus
 
-This source extends the [[low-altitude-intelligent-network]] thread from network architecture into cargo-UAV logistics. It is closest to the [[cellular-connected-uav]] side of the UAV literature because the UAV is an aerial cellular user that must maintain GBS connectivity, rather than an aerial MEC server serving ground devices. The D3QN component reinforces [[dueling-dqn]] as a trajectory-control backbone, while the collision-aware multi-UAV refinement connects to the broader [[uav-trajectory-control]] vocabulary. Co-author [[dusit-niyato]] links it to the wiki's recurring aerial resource-management and generative-AI cluster.
+This source extends the [[low-altitude-intelligent-network]] thread from network architecture into cargo-UAV logistics. It is closest to the [[cellular-connected-uav]] side of the UAV literature because the UAV is an aerial cellular user that must maintain GBS connectivity, rather than an aerial MEC server serving ground devices. The D3QN component reinforces [[dueling-dqn]] as a trajectory-control backbone, while the collision-aware multi-UAV refinement connects to the broader [[uav-trajectory-control]] vocabulary. [[cao-2026-radio-map-cargo-pickup]] provides the complementary offline [[radio-map-aided-uav-path-planning]] design for one UAV, using A* paths, PSO allocation, and payload-aware speeds instead of local-measurement learning and multi-UAV conflict resolution. Co-author [[dusit-niyato]] links this paper to the wiki's recurring aerial resource-management and generative-AI cluster.
 
 ## Raw artifacts
 

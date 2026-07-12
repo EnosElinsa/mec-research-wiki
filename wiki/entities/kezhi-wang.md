@@ -8,7 +8,7 @@ related:
   - "[[wang-2019-todetas-deployment-scheduling]]"
   - "[[yang-2019-sum-power-uav-mec]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # Kezhi Wang
@@ -24,4 +24,4 @@ Co-authored 4 sources in this wiki, all on UAV-assisted MEC trajectory/offloadin
 
 ## Contributions to this wiki
 
-- Anchors the **Northumbria-University UAV-MEC group**, recurring with co-authors Liang Wang, Cunhua Pan, Wei Xu, and Nauman Aslam (Northumbria / Queen Mary University of London / Southeast University), and with Lajos Hanzo (University of Southampton) on the MADDPG trajectory paper. These tightly-collaborating co-authors are noted here rather than given separate entity pages this pass.
+- Anchors the **Northumbria-University UAV-MEC group**, recurring with co-authors Liang Wang, Cunhua Pan, Wei Xu, and Nauman Aslam (Northumbria / Queen Mary University of London / Southeast University), and with Lajos Hanzo (University of Southampton) on the MADDPG trajectory paper. The individual source pages retain the specific co-author relationships without separate entity pages for every collaborator.

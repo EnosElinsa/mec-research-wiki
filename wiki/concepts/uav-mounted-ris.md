@@ -20,6 +20,9 @@ related:
   - "[[ris-assisted-directional-jamming]]"
   - "[[mihertie-2026-aerial-irs-rsma-ee]]"
   - "[[rate-splitting-multiple-access]]"
+  - "[[peng-2023-dual-domain-eh-ris]]"
+  - "[[dual-domain-ris-energy-harvesting]]"
+  - "[[li-2026-secrecy-ee-uav-ris-iov]]"
 created: 2026-06-03
 updated: 2026-07-13
 ---
@@ -43,3 +46,5 @@ The corpus also uses UAV-mounted RIS in MEC-specific roles. [[mohammadi-2026-sta
 [[morshed-2026-active-ris-uav-noma-mappo]] mounts an active RIS on the UAV and splits joint control across BS, platform, and surface agents. This [[decentralized-active-ris-uav-noma-control]] case explicitly counts static RIS power and dynamic amplifier power rather than treating the surface as passive or energetically free.
 
 [[mihertie-2026-aerial-irs-rsma-ee]] mounts a passive continuous-phase IRS on one UAV and couples its deployment point to [[rate-splitting-multiple-access]] precoders and common-rate allocation. Its communication-side metric excludes propulsion and battery energy.
+
+Two energy/security variants use the surface differently. [[peng-2023-dual-domain-eh-ris]] lets unscheduled elements harvest during information transmission through [[dual-domain-ris-energy-harvesting]], while [[li-2026-secrecy-ee-uav-ris-iov]] uses separate two-hop phase matrices to protect mobile vehicular traffic from an untrusted forwarding relay.

@@ -21,6 +21,7 @@ related:
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[hu-2026-segmented-irs-cpn]]"
+  - "[[wang-2026-robust-multiuav-jtcra]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -46,3 +47,5 @@ In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association
 [[ning-2025-channel-aware-irs-uav]] uses shared-actor MAPPO for joint UAV movement and [[dynamic-irs-user-association]], with SCA handling transmit power after the multi-agent communication decisions.
 
 [[wang-2026-wutf-fair-communication]] randomizes the actor-update order and lets later updates use preceding actors' newest policies for wireless-powered fair-service trajectories. [[morshed-2026-active-ris-uav-noma-mappo]] uses a different decomposition: BS, UAV, and active-RIS actors control NOMA power, movement, and element gain/phase under one shared critic and reward.
+
+[[wang-2026-robust-multiuav-jtcra]] applies MAPPO to service continuity under modeled UAV energy depletion. It separates trajectory and communication roles, shares parameters within each role, and compares the on-policy controller directly with a [[qmix|QMIX]] implementation of the same JTCRA framework.

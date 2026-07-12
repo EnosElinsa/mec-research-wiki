@@ -16,8 +16,9 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
+  - "[[fuhui-zhou]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Computation Rate Maximization in UAV-Enabled Wireless-Powered Mobile-Edge Computing Systems

@@ -13,15 +13,17 @@ related:
   - "[[qi-2024-msar-minmax-latency]]"
   - "[[li-2023-secure-marine-iot-jamming]]"
   - "[[qian-2022-uav-maritime-iot-noma]]"
+  - "[[qian-2024-marine-fl-dt-secrecy]]"
+  - "[[wang-2026-noma-marine-data-computation]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Bin Lin
 
 IEEE Senior Member. Affiliated with the **Information Science and Technology College, Dalian Maritime University** (Dalian, China; email `binlin@dlmu.edu.cn`) — consistent across his papers in this wiki, where he is frequently the corresponding author.
 
-Co-authored 10 sources in this wiki, all in the maritime/space-air-marine edge-computing line:
+Co-authored 12 sources in this wiki, all in the maritime/space-air-marine edge-computing line:
 
 - [[wang-2024-twotier-satellite-marine]] — two-tier task offloading for satellite-assisted marine networks (Stackelberg–Bargaining game).
 - [[wang-2025-double-edge-samin]] — double-edge-assisted offloading for space-air-marine integrated networks.
@@ -33,6 +35,8 @@ Co-authored 10 sources in this wiki, all in the maritime/space-air-marine edge-c
 - [[qi-2024-msar-minmax-latency]] — multi-UAV maritime search-and-rescue min-max-latency offloading (S-UAV/R-UAV; linearization + SCA + BnB).
 - [[li-2023-secure-marine-iot-jamming]] — secure marine-IoT offloading via USV cooperative jamming over a HAP uplink (NOMA + monotonic optimization).
 - [[qian-2022-uav-maritime-iot-noma]] — NOMA-based UAV-assisted maritime IoT MEC; total-energy minimization via DDPG UAV trajectory + Lagrangian closed-form multi-domain resource allocation.
+- [[qian-2024-marine-fl-dt-secrecy]] - FL-assisted marine digital twins with NOMA model uploads and secrecy-aware HAP broadcasting.
+- [[wang-2026-noma-marine-data-computation]] - NOMA sensing-data collection and UAV computation under TD3 trajectory/power/compute control.
 
 ## Contributions to this wiki
 

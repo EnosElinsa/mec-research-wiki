@@ -14,8 +14,9 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
+  - "[[fuhui-zhou]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-13
 ---
 
 # Resource Allocation and Trajectory Design for MISO UAV-Assisted MEC Networks

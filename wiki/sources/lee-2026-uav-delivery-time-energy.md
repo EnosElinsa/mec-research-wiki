@@ -15,8 +15,9 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[compliance-aware-uav-trajectory]]"
   - "[[chen-2026-cargo-uav-pickup-lae]]"
+  - "[[cao-2026-radio-map-cargo-pickup]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # 3D Trajectory and Pickup/Drop-Off Strategy for UAV-Enabled Delivery: Trade-Off Between Time and Energy Minimization
@@ -56,7 +57,7 @@ Unlike UAV communication systems, parcel delivery requires the UAV to physically
 
 ## Relation to the corpus
 
-This is a low-altitude logistics source adjacent to MEC rather than an offloading source. It complements [[chen-2026-cargo-uav-pickup-lae]], which handles cellular-connected cargo-UAV pickup with learning and simulated annealing. Here the key contribution is optimization-grounded [[uav-delivery-pickup-dropoff]] under payload-weight, [[rotary-wing-propulsion-energy-model]], [[uav-trajectory-control]], [[energy-latency-tradeoff]], and no-fly-zone constraints.
+This is a low-altitude logistics source adjacent to MEC rather than an offloading source. It complements [[chen-2026-cargo-uav-pickup-lae]], which handles cellular-connected cargo-UAV pickup with learning and simulated annealing, and [[cao-2026-radio-map-cargo-pickup]], which uses an expected-SNR map, A* paths, PSO allocation, and payload-aware speed control. Here the key contribution is optimization-grounded [[uav-delivery-pickup-dropoff]] under payload-weight, [[rotary-wing-propulsion-energy-model]], [[uav-trajectory-control]], [[energy-latency-tradeoff]], and no-fly-zone constraints.
 
 ## Raw artifacts
 
