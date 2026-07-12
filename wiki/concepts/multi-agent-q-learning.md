@@ -8,8 +8,9 @@ related:
   - "[[ddqn]]"
   - "[[li-2025-stochastic-game-uav-swarm]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
+  - "[[zhou-2026-multiscale-dt-uav-delivery]]"
 created: 2026-05-29
-updated: 2026-06-03
+updated: 2026-07-13
 ---
 
 # Multi-Agent Q-Learning

@@ -7,8 +7,9 @@ related:
   - "[[particle-swarm-optimization]]"
   - "[[differential-evolution]]"
   - "[[li-2023-secure-marine-iot-jamming]]"
+  - "[[li-2026-directional-modulation-irs-uav]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-13
 ---
 
 # Cross-Entropy Method

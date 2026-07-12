@@ -16,8 +16,9 @@ related:
   - "[[target-graph-representation]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[sequential-multi-agent-policy-generation]]"
+  - "[[zhou-2026-multiscale-dt-uav-delivery]]"
 created: 2026-06-03
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Graph Neural Network (GNN)

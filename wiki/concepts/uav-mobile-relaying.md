@@ -20,8 +20,9 @@ related:
   - "[[uav-substitution-relaying]]"
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
+  - "[[zhang-2026-distributed-jscc-uav-video]]"
 created: 2026-06-01
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # UAV Mobile Relaying

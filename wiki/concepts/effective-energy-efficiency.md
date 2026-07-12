@@ -11,8 +11,9 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[overall-energy-efficiency]]"
   - "[[fan-2026-hap-uav-iort-oee]]"
+  - "[[dong-2026-digital-tides-provisioning]]"
 created: 2026-07-10
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Effective Energy Efficiency
@@ -24,3 +25,5 @@ The metric is handled with [[fractional-programming-dinkelbach]] inside a BCD re
 [[zhang-2026-air-ground-covert-jamming]] uses an effective-energy-efficiency ratio on the covert communication side, coupling effective covert throughput with UAV/relay/jamming energy terms. That use is related by objective form, but it is not the same integrated communication-computation utility used in [[cui-2026-aris-v2x-icac]].
 
 [[overall-energy-efficiency]] is another related but distinct ratio: [[fan-2026-hap-uav-iort-oee]] divides bottleneck two-hop IoRT data by UAV and HAP energy, without the communication-computation utility terms used here.
+
+[[dong-2026-digital-tides-provisioning]] uses the same label for another distinct reliability-aware metric: period-average served-workload-per-GBS-energy is multiplied by a polynomial penalty on worst expansion-phase outage. The shared idea is to prevent a nominal energy ratio from rewarding a system that saves energy by dropping important service.

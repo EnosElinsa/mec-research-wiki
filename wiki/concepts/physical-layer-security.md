@@ -25,8 +25,9 @@ related:
   - "[[micro-macro-mobility-security]]"
   - "[[he-not-in-parse-cipc-covert-uav]]"
   - "[[channel-inversion-power-control]]"
+  - "[[li-2026-directional-modulation-irs-uav]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Physical Layer Security (PLS)

@@ -15,8 +15,9 @@ related:
   - "[[cooperative-uav-taxi-delivery]]"
   - "[[chen-not-in-parse-uav-human-medical-delivery]]"
   - "[[cooperative-uav-human-courier-delivery]]"
+  - "[[zhou-2026-multiscale-dt-uav-delivery]]"
 created: 2026-07-07
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # UAV Delivery Pickup/Drop-Off Optimization

@@ -79,8 +79,9 @@ related:
   - "[[zhang-2026-omnidirectional-monitoring-deployment]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
+  - "[[zhang-2026-distance-attention-uav-navigation]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # UAV Trajectory Control

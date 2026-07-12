@@ -28,8 +28,10 @@ related:
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[zhou-2026-multiscale-dt-uav-delivery]]"
+  - "[[zhang-2026-distance-attention-uav-navigation]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Centralized Training, Decentralized Execution (CTDE)

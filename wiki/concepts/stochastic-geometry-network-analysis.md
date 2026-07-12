@@ -12,8 +12,9 @@ related:
   - "[[uav-enabled-computing-power-network]]"
   - "[[chen-2026-air-ground-covert]]"
   - "[[ambient-interference-aided-covertness]]"
+  - "[[dong-2026-digital-tides-provisioning]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Stochastic Geometry Network Analysis

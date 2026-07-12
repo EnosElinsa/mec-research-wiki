@@ -18,8 +18,9 @@ related:
   - "[[liu-2025-multimodal-semantic-iov-jamming]]"
   - "[[kernel-density-mean-field-marl]]"
   - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
+  - "[[zhang-2026-distributed-jscc-uav-video]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Semantic Communication

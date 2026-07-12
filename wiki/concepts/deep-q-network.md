@@ -10,8 +10,9 @@ related:
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
   - "[[triple-deep-q-network]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
+  - "[[zhang-2026-distributed-jscc-uav-video]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Deep Q-Network (DQN)

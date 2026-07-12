@@ -25,8 +25,9 @@ related:
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
+  - "[[zhang-2026-distance-attention-uav-navigation]]"
 created: 2026-07-10
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Autonomous UAV Swarms

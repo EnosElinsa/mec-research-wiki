@@ -37,8 +37,10 @@ related:
   - "[[target-level-of-safety]]"
   - "[[yang-2025-hcdrl-pursuit-evasion]]"
   - "[[cooperative-uav-pursuit-evasion]]"
+  - "[[dong-2026-digital-tides-provisioning]]"
+  - "[[zhou-2026-multiscale-dt-uav-delivery]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Low-Altitude Intelligent Network (LAIN / Low-Altitude Economy)

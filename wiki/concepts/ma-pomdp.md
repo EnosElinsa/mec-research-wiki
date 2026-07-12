@@ -16,8 +16,9 @@ related:
   - "[[asynchronous-qmix]]"
   - "[[wang-2026-wutf-fair-communication]]"
   - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[zhang-2026-distance-attention-uav-navigation]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # MA-POMDP (Multi-Agent Partially Observable MDP)

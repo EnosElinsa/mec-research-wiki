@@ -7,8 +7,9 @@ related:
   - "[[load-balancing-uav-mec]]"
   - "[[huang-2023-mu-aec-task-energy]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
+  - "[[zhang-2026-distributed-jscc-uav-video]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # Energy Balancing Across UAVs

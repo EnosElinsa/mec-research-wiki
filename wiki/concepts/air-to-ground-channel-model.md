@@ -25,8 +25,10 @@ related:
   - "[[building-blockage-aided-interference-coordination]]"
   - "[[zhang-2026-control-assisted-beam-tracking]]"
   - "[[control-assisted-uav-beam-tracking]]"
+  - "[[li-2026-directional-modulation-irs-uav]]"
+  - "[[zhang-2026-distributed-jscc-uav-video]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Air-to-Ground Channel Model

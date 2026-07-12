@@ -5,8 +5,9 @@ tags: [edge-computing, latency, 5g, 6g]
 related:
   - "[[multi-uav-assisted-mec]]"
   - "[[task-offloading]]"
+  - "[[dong-2026-digital-tides-provisioning]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-13
 ---
 
 # Mobile Edge Computing (MEC)

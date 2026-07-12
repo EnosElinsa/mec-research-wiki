@@ -8,8 +8,9 @@ related:
   - "[[bui-2025-noma-near-far-offloading]]"
   - "[[selective-near-field-area]]"
   - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
+  - "[[li-2026-directional-modulation-irs-uav]]"
 created: 2026-06-02
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Near-Field Communications

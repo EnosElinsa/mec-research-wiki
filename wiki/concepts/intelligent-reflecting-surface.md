@@ -19,8 +19,9 @@ related:
   - "[[liu-2026-spherical-t-ris-bs]]"
   - "[[ning-2025-channel-aware-irs-uav]]"
   - "[[dynamic-irs-user-association]]"
+  - "[[li-2026-directional-modulation-irs-uav]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Intelligent Reflecting Surface (IRS)

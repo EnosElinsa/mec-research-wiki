@@ -27,8 +27,9 @@ related:
   - "[[multi-domain-uav-anti-jamming]]"
   - "uav-assisted-mobile-crowd-sensing"
   - "[[ctde-actor-critic-backbones-in-mec]]"
+  - "[[zhang-2026-distance-attention-uav-navigation]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Multi-Agent Deep Deterministic Policy Gradient (MADDPG)
