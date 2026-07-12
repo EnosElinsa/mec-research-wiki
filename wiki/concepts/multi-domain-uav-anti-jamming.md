@@ -13,6 +13,7 @@ related:
   - "[[gauss-markov-mobility-model]]"
   - "[[yang-2026-embodied-antijamming-uav]]"
   - "[[embodied-anti-jamming-resource-allocation]]"
+  - "[[tang-2026-gat-antijamming]]"
 created: 2026-07-10
 updated: 2026-07-13
 ---
@@ -26,3 +27,5 @@ The key modeling step is to cast jammed UAV-swarm communication as a partially o
 This concept is adjacent to [[anti-jamming-mec]]. The MEC variant protects offloading and computation service quality; the UAV-swarm ITS variant protects communication reliability and traffic-monitoring data flow. Both share [[spectrum-sensing-channel-selection]], but their optimization surfaces differ.
 
 [[yang-2026-embodied-antijamming-uav]] adds a value-based branch: each U2U link uses transferred/prioritized DDQN experiences to select a reused sub-band and power, with the physical perception-decision-action loop captured by [[embodied-anti-jamming-resource-allocation]].
+
+[[tang-2026-gat-antijamming]] adds [[hierarchical-graph-anti-jamming-control]]: a frozen GAT supplies beamformers inside each outer transition, while adversarial MADDPG moves UAVs and changes jammer powers. The layers differ by control role, but the paper does not specify distinct update periods.

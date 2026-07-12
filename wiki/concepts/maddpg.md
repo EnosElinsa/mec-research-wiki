@@ -4,6 +4,8 @@ title: "Multi-Agent Deep Deterministic Policy Gradient (MADDPG)"
 tags: [drl, multi-agent, actor-critic, ctde, deterministic-policy]
 related:
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
+  - "[[liao-2026-semantic-twinning-tracking]]"
+  - "[[tang-2026-gat-antijamming]]"
   - "[[dual-network-sequential-aoi-control]]"
   - "[[ddpg]]"
   - "[[multi-agent-td3]]"

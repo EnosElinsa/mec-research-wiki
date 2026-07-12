@@ -4,6 +4,7 @@ title: "Space-Air-Ground Integrated Network (SAGIN)"
 tags: [sagin, satellite, hap, uav, 6g, architecture]
 related:
   - "[[high-altitude-platform-station]]"
+  - "[[liao-2026-semantic-twinning-tracking]]"
   - "[[leo-satellite-edge-computing]]"
   - "[[low-altitude-intelligent-network]]"
   - "[[hsu-2025-drl-hues-hap-noma]]"
@@ -15,7 +16,7 @@ related:
   - "[[chen-2026-pddqn-sagin-mec]]"
   - "[[diallo-2026-system-cost-uav-leo-offloading]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Space-Air-Ground Integrated Network (SAGIN)

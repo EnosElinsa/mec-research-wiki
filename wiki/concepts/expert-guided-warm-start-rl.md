@@ -9,6 +9,7 @@ related:
   - "[[li-2026-la4h-uav-active-tracking]]"
   - "[[expert-assisted-anomaly-aware-tracking]]"
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
+  - "[[chen-2026-hammurabi-cooperation]]"
 created: 2026-06-03
 updated: 2026-07-13
 ---
@@ -28,3 +29,5 @@ In environments where useful states are rarely visited by a randomly-initialized
 [[li-2026-la4h-uav-active-tracking]] is adjacent but not identical: [[expert-assisted-anomaly-aware-tracking]] treats expert help as an online recovery action during UAV active tracking, while still using teacher-student distillation to make the policy deployable.
 
 [[li-2026-secrecy-ee-uav-ris-iov]] uses a looser heuristic-guided variant: a firefly optimizer generates high-quality UAV-coordinate samples that seed a DDPG replay buffer. It does not imitate a demonstrated policy, but it applies the same warm-start principle of replacing uninformative early exploration with structured prior experience.
+
+[[chen-2026-hammurabi-cooperation]] exposes a second risk: demonstrations transfer social behavior as well as useful actions. Its [[pretrained-policy-cooperation-shaping]] diagnoses rule policies as relatively cooperative or defect-oriented before selecting inequality-aversion reward shaping for fine-tuning.

@@ -18,6 +18,7 @@ related:
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[zhang-2022-solar-charging-uav-iot]]"
+  - "[[chen-2026-hammurabi-cooperation]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -37,3 +38,5 @@ In the wiki, [[gao-2024-service-experience-cache-uav]] applies Jain's index to p
 [[he-2026-memdrl-uav-navigation]] applies the index to cumulative PoI visit counts, so geographically neglected sensing locations lower the same fairness score even when total collected data is high.
 
 [[zhang-2022-solar-charging-uav-iot]] applies the index to cumulative per-terminal service counts inside a reward that also accounts for transmitted data, net energy, and battery depletion.
+
+[[chen-2026-hammurabi-cooperation]] applies Jain fairness to cumulative PoI coverage in a multi-UAV area-coverage task. Its inequality-aversion policy improves fairness over several baselines but remains below the more cooperative F-First demonstrations, showing that better coverage/energy efficiency need not dominate every fairness comparator.

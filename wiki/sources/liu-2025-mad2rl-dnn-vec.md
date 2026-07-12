@@ -8,6 +8,7 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, vehicular-mec, dnn-model-partition, task-offloading, lyapunov-optimization, diffusion-model, multi-agent-drl, resource-allocation]
 related:
   - "[[vehicular-mec]]"
+  - "[[dusit-niyato]]"
   - "[[dnn-model-partition]]"
   - "[[lyapunov-optimization]]"
   - "[[maddpg]]"
@@ -15,7 +16,7 @@ related:
   - "[[diffusion-model-as-optimizer]]"
   - "[[bai-2024-delay-aware-cooperative-edge-cloud]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # DNN Partitioning, Task Offloading, and Resource Allocation in Dynamic Vehicular Networks: A Lyapunov-Guided Diffusion-Based Reinforcement Learning Approach

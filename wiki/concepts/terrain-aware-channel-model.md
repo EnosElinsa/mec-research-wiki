@@ -7,8 +7,9 @@ related:
   - "[[csi-estimation-error]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[tong-2026-uneven-terrain-uav-mec]]"
+  - "[[xie-2026-geoagg-hsac]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Terrain-Aware Channel Model
@@ -30,3 +31,5 @@ Distinct from:
 The terrain-aware model is a deterministic-geometric channel model — distinct from the statistical LoS-probability models used across most aerial-MEC sources in the corpus (see [[blockage-aware-channel-model]]). It also makes UAV destination selection a natural decision variable, since "where to land" depends on the *exact* blocked-region geometry around each candidate destination.
 
 [[tong-2026-uneven-terrain-uav-mec]] is a related but not identical terrain-aware entry: it uses real elevation data, safe-altitude constraints, and an elevation-angle probabilistic LoS model to drive hierarchical DRL over uneven terrain, rather than constructing the blocked-region geometry used by [[wu-2026-terrain-aware-uav-mec]].
+
+[[xie-2026-geoagg-hsac]] combines a reconstructed mountain map with ray-traced LoS labels and measured air-to-ground gains. Its [[terrain-occlusion-aware-graph-state-aggregation]] learns from those link-state patterns, so the channel representation becomes both a simulator input and a policy-state abstraction.

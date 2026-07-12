@@ -12,8 +12,9 @@ related:
   - "[[stochastic-geometry-network-analysis]]"
   - "[[uav-mobile-relaying]]"
   - "[[space-air-ground-integrated-network]]"
+  - "[[qinyu-zhang]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Adaptive Selecting in Clustered LEO Systems: Direct or Cooperative Communication?

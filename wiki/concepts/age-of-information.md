@@ -25,8 +25,9 @@ related:
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
+  - "[[liao-2026-semantic-twinning-tracking]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Age of Information (AoI)
@@ -38,3 +39,5 @@ In a UAV data-collection setting, a device's AoI resets when the UAV collects it
 [[hazarika-2026-dynamo-uav-vehicle-tracking]] shows the limit of using AoI alone for fast vehicle tracking: the [[dynamic-target-prioritization-metric]] keeps elapsed update time but adds trajectory deviation, prediction uncertainty, SINR, and distance-aware quality. AoI remains the corpus's freshness-oriented complement to delay-based [[qoe-modeling-mec]], and it tightly couples to [[uav-trajectory-control]].
 
 [[wang-2026-glint-aoi-wireless-powered-edge]] adds a nonlinear energy-harvesting constraint to the freshness loop. Its [[dual-network-sequential-aoi-control]] first resolves multi-UAV mobility and sensor association, then schedules WPT duration and sensor updates from the resulting coverage and battery state.
+
+[[liao-2026-semantic-twinning-tracking]] uses AoI to evaluate satellite acquisition of UAV state under packet loss and inference. Its semantic-twinning layer frequently samples variables that can reconstruct others and sparsely samples reconstructed variables for validation, so freshness is coupled to inferability rather than update age alone.

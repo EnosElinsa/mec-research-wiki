@@ -21,6 +21,7 @@ related:
   - "[[li-2024-robust-bmappo-multiuav-mec]]"
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
+  - "[[parameter-sharing-marl]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

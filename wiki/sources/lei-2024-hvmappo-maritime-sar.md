@@ -18,8 +18,10 @@ related:
   - "[[heterogeneous-uav-fleet]]"
   - "[[qi-2024-msar-minmax-latency]]"
   - "[[wang-2026-aerial-marine-msar]]"
+  - "[[shaohua-wu]]"
+  - "[[qinyu-zhang]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # Joint Trajectory and Communication Optimization for Heterogeneous Vehicles in Maritime SAR: Multi-Agent Reinforcement Learning

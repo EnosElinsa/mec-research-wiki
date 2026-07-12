@@ -16,8 +16,10 @@ related:
   - "[[uav-data-collection]]"
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
+  - "[[shaohua-wu]]"
+  - "[[qinyu-zhang]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # AoI-Aware Joint Sampling-Buffering-Routing Optimization for Autonomous UAV Swarms via a MARL Approach

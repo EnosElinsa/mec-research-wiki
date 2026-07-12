@@ -4,6 +4,7 @@ title: "Nash Equilibrium"
 tags: [game-theory, equilibrium, solution-concept]
 related:
   - "[[potential-game]]"
+  - "[[tang-2026-gat-antijamming]]"
   - "[[stochastic-game]]"
   - "[[stackelberg-game]]"
   - "[[multi-agent-q-learning]]"

@@ -18,6 +18,7 @@ related:
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
+  - "[[liao-2026-semantic-twinning-tracking]]"
 created: 2026-06-02
 updated: 2026-07-13
 ---
@@ -41,3 +42,4 @@ DT synchronization couples sensing, communication, and edge compute: raw observa
 - [[li-2025-dt-uav-swarm-resource-management]] uses DTs for UAV-swarm task crowdsourcing and virtual traffic-flow scheduling, with [[stochastic-network-calculus]] providing pre-assessed delay bounds.
 - [[belgiovine-not-in-parse-multidt-abs-deployment]] uses [[multi-digital-twin-network-optimization]] for airborne base stations: one ray-tracing twin optimizes placement/orientation/power and another validates mobile-UE scenarios and feeds coverage drops back into recovery planning.
 - [[zhou-2026-multiscale-dt-uav-delivery]] uses a [[terminal-edge-multiscale-digital-twin]] for parcel delivery: edge UAVs run macro assignment twins while terminal UAVs run micro path/energy/collision-control twins.
+- [[liao-2026-semantic-twinning-tracking]] uses [[goal-oriented-semantic-twinning]] to select task-critical state, infer stale variables, and maintain satellite-UAV tracking control without synchronizing a full-fidelity twin every cycle.

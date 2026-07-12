@@ -19,6 +19,7 @@ related:
   - "[[kernel-density-mean-field-marl]]"
   - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
   - "[[zhang-2026-distributed-jscc-uav-video]]"
+  - "[[liao-2026-semantic-twinning-tracking]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
@@ -40,3 +41,4 @@ Semantic transceivers bring **inherent robustness** and **data compression**, wh
 - [[zhao-2025-probabilistic-semantic-sagin]] narrows semantic communication to [[probabilistic-semantic-communication]]: shared probabilistic graphs let the transmitter omit recoverable semantic relations, trading lower communication energy for added semantic-computation overhead in a SAGIN.
 - [[liu-2025-multimodal-semantic-iov-jamming]] extends the line to [[multi-modal-semantic-communication]] in IoV, combining image and text semantics under jamming while UAV agents choose trajectories, user associations, and channels.
 - [[li-2026-uav-bs-semantic-mfmaddpg-kde]] moves semantic communication into aerial-BS deployment: UAV-BSs are positioned to maximize BLEU-derived semantic fidelity, with [[kernel-density-mean-field-marl]] modeling continuous neighboring actions in a scalable mean-field MADDPG policy.
+- [[liao-2026-semantic-twinning-tracking]] applies semantic selection to twin state rather than a media payload: [[goal-oriented-semantic-twinning]] frequently samples variables used to infer others, reconstructs omitted or stale state, and sparsely resamples reconstructed variables for validation.

@@ -9,8 +9,9 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[hybrid-action-beats-pure-drl]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[xie-2026-geoagg-hsac]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Hybrid Continuous–Discrete Action Decision-Making
@@ -32,3 +33,5 @@ Most off-the-shelf DRL algorithms target one side or the other:
 The cleanest empirical fix in [[liu-2026-jppo-en-convntm]] is [[j-ppo]]: keep a unified actor-critic, but split the probability ratio between the two action types and weight them with $c_3$. See [[hybrid-action-beats-pure-drl]].
 
 [[chen-2026-pddqn-sagin-mec]] adds a SAGIN instance: discrete scheduling/satellite-association actions are paired with continuous offloading-ratio and transmit-power parameters, handled by a P-DDQN design that combines DDQN and DDPG.
+
+[[xie-2026-geoagg-hsac]] uses separate SAC heads: Gaussian sampling for UAV velocity and transmit power, and Gumbel-Softmax sampling for user association. Separate entropy temperatures adapt exploration for the continuous and discrete parts.

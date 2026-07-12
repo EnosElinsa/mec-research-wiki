@@ -18,6 +18,9 @@ related:
   - "[[jia-2026-hierarchical-uav-swarms]]"
   - "[[zhang-2025-gsc-diffusion-semcom]]"
   - "[[tian-2026-joint-localization-communication]]"
+  - "[[xie-2026-geoagg-hsac]]"
+  - "[[tang-2026-gat-antijamming]]"
+  - "[[chen-2026-hammurabi-cooperation]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -26,7 +29,7 @@ updated: 2026-07-13
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 15 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, emergency localization/communication, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
+Co-authored 18 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, emergency localization/communication, mountainous ILAC, anti-jamming control, cooperative MARL, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -43,6 +46,9 @@ Co-authored 15 sources in this wiki, spanning aerial MEC, satellite edge computi
 - [[jia-2026-hierarchical-uav-swarms]] - hierarchical head/tail UAV-swarm deployment, collection trajectories, and multi-objective power control.
 - [[zhang-2025-gsc-diffusion-semcom]] - generative semantic successive refinement for wireless image transmission.
 - [[tian-2026-joint-localization-communication]] - AOA-guided emergency localization and cooperative communication with one UAV and one rescuer.
+- [[xie-2026-geoagg-hsac]] - terrain-occlusion-aware graph aggregation for mountainous UAV localization and communication.
+- [[tang-2026-gat-antijamming]] - hierarchical GAT beamforming and MADDPG deployment against jammers.
+- [[chen-2026-hammurabi-cooperation]] - game-diagnosed cooperation shaping for pretrained multi-UAV policies.
 
 ## Contributions to this wiki
 

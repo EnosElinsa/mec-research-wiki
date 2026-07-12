@@ -17,6 +17,9 @@ related:
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[sequential-multi-agent-policy-generation]]"
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
+  - "[[xie-2026-geoagg-hsac]]"
+  - "[[liao-2026-semantic-twinning-tracking]]"
+  - "[[tang-2026-gat-antijamming]]"
 created: 2026-06-03
 updated: 2026-07-13
 ---
@@ -41,3 +44,5 @@ The survey highlights two recurring designs: combining GNNs with **classical ite
 ## In the corpus
 
 This is the corpus's primary anchor for the GNN concept; it is introduced and reviewed in [[dai-2024-graph-rm-survey-learning]] (the learning half) and motivated by the scaling limits of graph optimization laid out in [[dai-2024-graph-rm-survey-optimization]]. [[li-2026-cdto-inland-waterways]] provides a task-offloading example where a topology-aware GNN represents D2D links among USVs for multi-agent offloading decisions. [[teng-2026-gstrl-sequential-offloading]] uses a heterogeneous graph neural network to encode UAVs, requesting tasks, offloaded tasks, and dynamic U2U/task edges for [[sequential-task-offloading]]. [[zhan-2026-gatd3qn-dependent-offloading]] uses graph attention over task DAGs before D3QN offloading, while [[wang-2026-llm-qos-multiuav-resource]] uses relation-aware GAT inside an LLM teacher for QoS-aware multi-UAV resource allocation. [[he-2026-lscr-uav-relay-tracking]] shows a sensing-side use: a lightweight GRCN extracts [[target-graph-representation]] features for multi-UAV target handover. [[zhou-2026-a2g-madrl-air-ground-vcs]] adds an air-ground VCS use: HVGCN encodes UAV, UGV, and PoI interactions before [[sequential-multi-agent-policy-generation]] assigns routes and NOMA channels.
+
+Three physical-state uses broaden the graph role. [[xie-2026-geoagg-hsac]] contrastively aggregates terrain-occlusion-equivalent network states, [[liao-2026-semantic-twinning-tracking]] predicts missing SINR from a UAV electromagnetic graph, and [[tang-2026-gat-antijamming]] maps desired/interfering/jamming channels directly to beamformers.

@@ -21,8 +21,9 @@ related:
   - "[[qin-2025-matd3-noma-queue-sagin]]"
   - "[[zhang-2024-mhspo-satellite-peer-offloading]]"
   - "[[cheng-2025-dos-satellite-edge-computing]]"
+  - "[[qi-qi]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Online Computation Offloading for Collaborative Space/Aerial-Aided Edge Computing Toward 6G System

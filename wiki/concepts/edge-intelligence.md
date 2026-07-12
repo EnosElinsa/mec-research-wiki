@@ -12,8 +12,10 @@ related:
   - "[[hybrid-uav-flight-data-fault-detection]]"
   - "[[li-2026-dff-slam]]"
   - "[[dynamic-feature-filtering-vslam]]"
+  - "[[liao-2026-semantic-twinning-tracking]]"
+  - "[[cheng-2026-cnn-mamba-cracks]]"
 created: 2026-07-07
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Edge Intelligence
@@ -25,3 +27,5 @@ In [[gong-2023-edge-intelligence-its-survey]], edge intelligence is the organizi
 [[li-2026-aeroguard-uav-fault-detection]] adds an onboard-safety instance: [[hybrid-uav-flight-data-fault-detection]] fuses LSTM and ARX predictions and runs lightweight residual tests within Raspberry Pi-class latency budgets.
 
 [[li-2026-dff-slam]] adds onboard visual localization: [[dynamic-feature-filtering-vslam]] combines YOLOv3, optical flow, and epipolar filtering on a Jetson Xavier NX, retaining 16 FPS in the reported UAV-platform runtime test.
+
+[[liao-2026-semantic-twinning-tracking]] places state inference, fusion, control, and incremental MARL updates on LEO satellite edge modules. [[cheng-2026-cnn-mamba-cracks]] instead emphasizes local perception deployment: its wavelet-Mamba crack segmenter is converted to ONNX/Triton and evaluated on a Jetson AGX Orin, although the proposed UAV/vehicle acquisition platform is not tested quantitatively.

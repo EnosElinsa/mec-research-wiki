@@ -4,6 +4,7 @@ title: "Soft Actor-Critic (SAC)"
 tags: [drl, actor-critic, off-policy, maximum-entropy, continuous-action]
 related:
   - "[[masac]]"
+  - "[[xie-2026-geoagg-hsac]]"
   - "[[ddpg]]"
   - "[[td3]]"
   - "[[ppo]]"
@@ -17,7 +18,7 @@ related:
   - "[[bai-2026-aoi-uav-isac]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Soft Actor-Critic (SAC)

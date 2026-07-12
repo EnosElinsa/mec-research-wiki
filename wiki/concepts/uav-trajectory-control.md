@@ -4,6 +4,8 @@ title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
   - "[[multi-uav-assisted-mec]]"
+  - "[[xie-2026-geoagg-hsac]]"
+  - "[[tang-2026-gat-antijamming]]"
   - "[[uav-charging-scheduling]]"
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
