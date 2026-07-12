@@ -4,8 +4,10 @@ title: Overlay vs Underlay Spectrum Access
 tags: [cognitive-radio, spectrum-sharing, wireless]
 related:
   - "[[wang-2025-uav-swarm-stackelberg]]"
+  - "[[zhang-not-in-parse-cellular-uav-to-x]]"
+  - "[[uav-to-x-communication]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-12
 ---
 
 # Overlay vs Underlay Spectrum Access
@@ -21,6 +23,8 @@ Two canonical modes for cognitive-radio spectrum sharing between **primary users
 | Sensing requirement | Strict — must detect PU activity reliably | Lax — just respect a power cap |
 
 **Hybrid overlay-underlay** combines both: opportunistically use idle slots overlay-style; fall back to underlay during PU activity. Used by [[wang-2025-uav-swarm-stackelberg]] for U2U-on-U2B spectrum sharing.
+
+[[zhang-not-in-parse-cellular-uav-to-x]] uses a cellular-UAV variant: U2N traffic is the direct network path, while U2U relay links reuse U2N and cellular-user subchannels as underlay, coupling all three interference classes.
 
 ## Why this matters for UAV swarms
 

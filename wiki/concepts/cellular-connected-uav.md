@@ -11,8 +11,10 @@ related:
   - "[[spectrum-utilization-efficiency]]"
   - "[[prabhath-not-in-parse-3d-space-spectrum-utilization]]"
   - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
+  - "[[zhang-not-in-parse-cellular-uav-to-x]]"
+  - "[[uav-to-x-communication]]"
 created: 2026-05-31
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Cellular-Connected UAV
@@ -32,3 +34,5 @@ The tutorial uses this dichotomy to organize the UAV-communications design space
 [[prabhath-not-in-parse-3d-space-spectrum-utilization]] adds a 3-D aerial-cellular analysis case: UAV-gNB to UAV-UE downlink, [[three-dimensional-frequency-reuse]], and [[spectrum-utilization-efficiency]] under partially loaded channels and co-channel interference.
 
 [[mozaffari-not-in-parse-3d-drone-cellular-network]] combines cellular-connected drone-UEs with LAP drone-BSs and HAP backhaul in the same volumetric architecture, making the aerial user and aerial infrastructure roles part of one 3-D cellular-planning problem.
+
+[[zhang-not-in-parse-cellular-uav-to-x]] adds [[uav-to-x-communication]]: strong U2N aerial users upload directly, while weak U2N users forward through underlaid U2U links to relay UAVs.

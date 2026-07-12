@@ -16,8 +16,10 @@ related:
   - "[[ambient-interference-aided-covertness]]"
   - "[[noma]]"
   - "[[age-of-information]]"
+  - "[[he-not-in-parse-cipc-covert-uav]]"
+  - "[[channel-inversion-power-control]]"
 created: 2026-06-03
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Covert Communication
@@ -38,3 +40,5 @@ In the wiki, [[ma-2024-covert-mmwave-finite-blocklength]] studies covert **mmWav
 [[zhang-2026-air-ground-covert-jamming]] adds [[ris-assisted-directional-jamming]]: a decode-and-forward UAV with an onboard RIS redirects a terrestrial friendly jammer's signal toward Willie while also relaying Alice's covert data. The design couples covertness, finite-blocklength relay decoding, RIS coefficients, and DDQN trajectory/user scheduling.
 
 [[chen-2026-air-ground-covert]] adds [[ambient-interference-aided-covertness]], where uncontrolled PPP-distributed ground interferers create the uncertainty that hides a UAV Alice from a location-uncertain Willie. Its tradeoff is not free: denser or stronger interference improves covertness while reducing Bob's connection probability.
+
+[[he-not-in-parse-cipc-covert-uav]] uses a confidential user's strong signal as cover for multiple NOMA covert users. Truncated [[channel-inversion-power-control]] stabilizes the target power at the UAV receiver while coupling connection, secrecy-outage, and detection-error behavior.

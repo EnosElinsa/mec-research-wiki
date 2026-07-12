@@ -100,6 +100,7 @@
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Liu et al. 2026. UAV-assisted vehicular V2X with **delayed CSI feedback**; Lyapunov energy queue + diffusion-actor DDPG (**D3PG**) over V2V channel reuse, power control, and UAV altitude (IEEE TWC).
 - [[tong-2026-uneven-terrain-uav-mec]] — Tong et al. 2026. Uneven-terrain UAV-MEC with service coverage, partial UAV/BS task allocation, propulsion energy, and safe 3D flight; PH-DRL separates TD3 flight control from actor-critic task allocation (IEEE TMC).
+- [[ma-not-in-parse-reinforced-traffic-prediction]] - Ma et al. Cell-level mobile traffic prediction with FFT feature characterization and value-based reinforced meta-learning that adapts the DNN structure, with transfer tests and a numerical UAV-offloading case study. *(Parsed metadata lacks DOI/venue/year.)*
 
 - [[liu-2026-jppo-en-convntm]] — Liu et al. 2026. Multi-UAV path planning for MEC under high-density mobility. *j-PPO+EN-ConvNTM* (hybrid-action PPO + memory-augmented encoder).
 - [[hao-2025-priority-aware-task-driven-co]] — Hao et al. 2025. Task-driven priority-aware computation offloading via DRL.
@@ -205,6 +206,7 @@
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
 - [[lin-2025-energy-effective-ris-multiuav-coverage]] - Lin et al. 2025. RIS-assisted multi-UAV coverage for fairness-aware ground terminals; K-DBSCAN deployment, throughput-variance filtering, and TDQN/DDQN/dueling-DQN trajectory control (IEEE TGCN).
 - [[liu-2026-spherical-t-ris-bs]] - Liu et al. 2026. Angle-insensitive spherical transmissive-RIS base station with omnidirectional feed; BCD/SCA co-optimizes sensor scheduling, powers, phase shifts, and UAV trajectories for data collection under CU-rate and UAV-energy constraints (IEEE TWC).
+- [[ning-2025-channel-aware-irs-uav]] - Ning et al. 2025. Channel-aware multi-IRS/multi-UAV NOMA communication with geometric blockage judgment, dynamic partitioned IRS-user association, MAPPO trajectory control, and SCA power allocation. *(DOI/venue not in parse.)*
 
 - [[wu-2026-model-based-ppo-ris-uav-mec]] - Wu et al. 2026. RIS-assisted urban multi-UAV MEC with decentralized model-based PPO; local k-hop observations, RIS phase proposals, and branched rollouts for trajectory/offloading control (IEEE TMC).
 
@@ -393,6 +395,8 @@
 - [[hosseini-2026-aoi-covert-uav]] - Hosseini et al. 2026. UAV-assisted covert communication with AoI minimization, PD-NOMA public cover traffic, aerial Eve detection, and AO/SCA/SDR trajectory-beamforming design (IEEE TWC).
 - [[zhang-2026-air-ground-covert-jamming]] - Zhang et al. 2026. Air-ground cooperative covert transmission with UAV-mounted RIS directional jamming, SDR/Dinkelbach static optimization, and DDQN trajectory/user scheduling (IEEE TMC).
 - [[chen-2026-air-ground-covert]] - Chen et al. 2026. Air-to-ground covert communication under Willie-location uncertainty and PPP environmental interference; gamma interference approximation, covertness/reliability/covert-throughput analysis (IEEE TWC).
+- [[li-not-in-parse-movable-antenna-pls]] - Li et al. Physical-layer-security comparison of movable-antenna micro-mobility and UAV macro-mobility; projected-gradient/AdaGrad position control is benchmarked against AO/SCA UAV trajectory optimization. *(Parsed metadata lacks DOI/venue/year.)*
+- [[he-not-in-parse-cipc-covert-uav]] - He et al. Multi-user secret and covert UAV communication using Bob's confidential signal as NOMA cover and truncated channel-inversion power control; analytical rotary-wing and AO/SCA fixed-wing designs. *(Parsed metadata lacks DOI/venue/year.)*
 - [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024. Secure UAV-**RIS**-MEC-IoT offloading against **aerial + ground eavesdroppers**; SOP over Nakagami-m + max-min **secure computation efficiency** via Dinkelbach + BCD + bisection (IEEE TCOMM).
 - [[su-2024-sensing-aided-isac-pls]] — Su et al. 2024. **Sensing-aided PLS** for ISAC: dual-functional BS estimates eavesdropper directions (CAML) then jointly minimizes CRB and maximizes AN-aided secrecy rate via AO + fractional programming (IEEE TWC).
 - [[wen-2024-iscc-edge-ai]] — Wen et al. 2024. **Task-oriented ISCC** for multi-device **edge-AI inference**: ISAC devices radar-sense multi-view data, quantize + offload features to an edge server running split inference; maximize **discriminant gain** (KL-divergence accuracy surrogate) over sensing/transmit power + comm time + quantization bits; non-convex but solved **optimally** by the **sum-of-ratios** method (IEEE TWC).
@@ -484,6 +488,7 @@
 
 ### UAV communications & deployment foundations
 
+- [[zhang-not-in-parse-cellular-uav-to-x]] - Zhang et al. Cellular UAV-to-X communication with cooperative UAV-to-network and UAV-to-UAV sense-and-send operation; ISASOA combines LP, branch-and-bound, and convex speed control. *(Parsed metadata lacks DOI/venue/year.)*
 - [[bai-2026-multimodal-uav-vehicle-channel]] - Bai et al. 2026. LiDAR-aided multi-modal intelligent channel model for multi-UAV-to-multi-vehicle links; MUMV-CSCI dataset, TTD/ATD density parameters, and TSF-CF/TSI/DPSD statistics (IEEE TWC).
 - [[hussain-2026-unet-uav-mmwave-pathloss]] - Hussain 2026. Multi-scale U-Net pathloss prediction for UAV-assisted mmWave networks using log-distance, LoS-mask, and building-mask inputs plus vectorized LoS preprocessing (IEEE TWC).
 - [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026. AIM angle-of-radiation-aware UAV relay-chain deployment; joint 3-D position and heading search minimizes relay count under per-link RSS thresholds and maintains 100% success in the parsed terrain/RSS tests (IEEE TMC).
@@ -535,7 +540,7 @@
 - [[boxiong-wang]] & [[hui-kang]] (Jilin University — [[geng-sun]] aerial-MEC cluster; 2 sources each).
 - [[yuben-qu]] & [[hao-sun]] (Nanjing Univ. of Aeronautics and Astronautics — UAV-swarm collaborative-inference cluster with [[chao-dong]]/[[qihui-wu]]; 2 sources each — [[qu-ecoei-uav-swarm]] + [[sun-2024-asap-uav-swarm]], identical `@nuaa.edu.cn` emails).
 - [[kezhi-wang]] (Northumbria Univ. — UAV-MEC trajectory/offloading group; 3 sources), [[xuemin-shen]] (Univ. of Waterloo — MEC resource management; 3 sources), [[yuguang-fang]] (City Univ. of Hong Kong — maritime MEC and UAV-enabled Computing Power Networks; 3 sources), [[haixia-peng]] (Univ. of Waterloo → Xi'an Jiaotong Univ. — vehicular + maritime MEC; 2 sources, affiliation move documented in both parses).
-- [[liping-qian]] (Zhejiang Univ. of Technology — NOMA / multi-access marine MEC; 3 sources), [[minghui-dai]] (Univ. of Macau — marine multi-access offloading; 3 sources, `minghuidai@um.edu.mo`), [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications — UAV-swarm MEC + UAV-ISAC + cooperative multi-BS ISAC; 3 sources).
+- [[liping-qian]] (Zhejiang Univ. of Technology — NOMA / multi-access marine MEC; 3 sources), [[minghui-dai]] (Univ. of Macau — marine multi-access offloading; 3 sources, `minghuidai@um.edu.mo`), [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications — UAV-swarm MEC, UAV-ISAC, cooperative multi-BS ISAC, and movable-antenna PLS; 4 sources).
 - [[shichao-li]] & [[hongbin-chen]] (Guilin Univ. of Electronic Technology — two-hop air-ground IoRT MEC, `@guet.edu.cn`-matched; 2 and 3 sources), [[mianxiong-dong]] (Muroran Inst. of Technology; 2 sources) & [[ning-zhang]] (Univ. of Windsor; 2 sources) — co-authors across the IoRT + robust-multi-UAV DRL offloading thread, [[victor-c-m-leung]] (Shenzhen MSU-BIT / Shenzhen Univ. / UBC, `vleung@ieee.org`; 9 sources in the [[geng-sun]]/[[dusit-niyato]] aerial-MEC cluster).
 - [[zhou-su]] (Xi'an Jiaotong Univ. — maritime/vehicular edge computing; 2 sources, corresponding author of [[zeng-2024-usv-fleet-collaborative-offloading]]), [[yanheng-liu]] (Jilin Univ. — [[geng-sun]] aerial/vehicular-MEC cluster; 2 sources).
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
@@ -543,7 +548,7 @@
 - [[yong-zeng]] (National University of Singapore — **UAV-communications / trajectory-optimization** foundations plus low-altitude [[movable-antenna]] design; 9 sources, including [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], [[zeng-2019-uav-comm-tutorial-5g]], [[wu-2018-multiuav-minrate-trajectory]], and [[lu-2026-uav-swarm-two-level-ma]]).
 - [[shuguang-cui]] (The Chinese University of Hong Kong, Shenzhen — physical-layer / edge-AI / surveys; 7 sources spanning the graph-based-resource-management two-part survey, XL-MIMO, generative-AI/ISAC physical-layer, ISCC edge-AI, and generative-diffusion network optimization).
 
-(Two recurring author names are deferred for human confirmation as genuine **namesakes**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so not merged; and the "Jingjing Wang" in [[yang-2020-loadbalance-multiuav-iot]] is at **Tsinghua University** (`chinaeephd@gmail.com`), distinct from the existing **Beihang** [[jingjing-wang]] entity (`drwangjj@buaa.edu.cn`) — not merged.)
+(One recurring author name remains deferred for human confirmation as genuine **namesakes**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so not merged. The Tsinghua-era "Jingjing Wang" in [[yang-2020-loadbalance-multiuav-iot]] is the same [[jingjing-wang]] now at Beihang: both biographies report the 2014 Dalian B.S., 2019 Tsinghua Ph.D., 2017-2018 Southampton visit, and collaboration with [[chunxiao-jiang]].)
 
 > Deferred affiliation move: "Chau Yuen" recurs in [[jia-2022-hierarchical-aerial-matching]] (Singapore Univ. of Technology and Design, `yuenchau@sutd.edu.sg`) and [[sun-2025-tjcct-twotimescale-uav-mec]] (Nanyang Technological Univ., `chau.yuen@ntu.edu.sg`). Same name, different listed institution/email (a plausible affiliation move rather than a namesake), so no entity page was minted pending human confirmation.
 
@@ -603,6 +608,7 @@
 - [[semantic-content-reuse]]
 - [[network-slicing]]
 - [[traffic-aware-offloading]]
+- [[cell-level-mobile-traffic-prediction]]
 - [[parallel-vs-serial-processing]]
 - [[virtual-machine-multiplexing]]
 - [[task-redundancy-for-reliability]]
@@ -665,6 +671,7 @@
 - [[uav-enabled-its]]
 - [[autonomous-uav-swarms]]
 - [[cellular-connected-uav]]
+- [[uav-to-x-communication]]
 - [[drone-cell-3d-placement]]
 - [[geometric-disk-cover]]
 - [[maritime-mec]]
@@ -678,6 +685,7 @@
 - [[evolvable-route-expiration-time]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
+- [[dynamic-irs-user-association]]
 - [[spherical-transmissive-ris]]
 - [[uav-mounted-ris]]
 - [[tilt-aware-aerial-ris-control]]
@@ -896,7 +904,9 @@
 - [[temporal-spectrum-cartography]]
 - [[information-driven-uav-spectrum-mapping]]
 - [[physical-layer-security]]
+- [[micro-macro-mobility-security]]
 - [[covert-communication]]
+- [[channel-inversion-power-control]]
 - [[ris-assisted-directional-jamming]]
 - [[ambient-interference-aided-covertness]]
 - [[freshness-aware-covert-uav-communication]]

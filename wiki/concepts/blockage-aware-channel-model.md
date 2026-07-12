@@ -7,8 +7,10 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[building-blockage-aided-interference-coordination]]"
   - "[[heo-not-in-parse-blockage-aided-multiuav-interference]]"
+  - "[[ning-2025-channel-aware-irs-uav]]"
+  - "[[dynamic-irs-user-association]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Blockage-Aware Channel Model
@@ -24,3 +26,5 @@ Three sub-families:
 Choice depends on what data is available. Terrain-aware geometric models are increasingly tractable thanks to public DEM datasets, and they avoid the bias of fixed statistical curves.
 
 [[heo-not-in-parse-blockage-aided-multiuav-interference]] adds a multi-UAV communication variant: cuboid buildings classify both desired and interference links as LoS/NLoS, and [[building-blockage-aided-interference-coordination]] deliberately uses NLoS interference links to improve spectral efficiency while keeping desired links LoS.
+
+[[ning-2025-channel-aware-irs-uav]] uses geometric blockage state to trigger reflected support and change [[dynamic-irs-user-association]] jointly with UAV motion.

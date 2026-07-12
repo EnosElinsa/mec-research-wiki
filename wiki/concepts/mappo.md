@@ -15,8 +15,9 @@ related:
   - "[[wang-2026-scalable-multiuav-analytics]]"
   - "[[zhu-2026-hab-mappo-target-search]]"
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
+  - "[[ning-2025-channel-aware-irs-uav]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # MAPPO (Multi-Agent PPO)
@@ -36,3 +37,5 @@ In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association
 [[wang-2026-scalable-multiuav-analytics]] uses MAPPO inside MAPDP for distributed collaborative UAV video analytics at larger swarm scales, while [[zhu-2026-hab-mappo-target-search]] uses an attention-based MAPPO actor/critic with Beta-distribution actions and heuristic offloading for cooperative target search.
 
 [[wu-not-in-parse-aoi-sampling-buffering-routing]] uses COMH-MAPPO for all-aerial AoI control, giving separate policy heads to sampling, buffer scheduling, and FANET next-hop routing while keeping CTDE-style training.
+
+[[ning-2025-channel-aware-irs-uav]] uses shared-actor MAPPO for joint UAV movement and [[dynamic-irs-user-association]], with SCA handling transmit power after the multi-agent communication decisions.

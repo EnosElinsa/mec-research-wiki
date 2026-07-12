@@ -17,8 +17,10 @@ related:
   - "[[sheng-2025-ris-online-uav-mec]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
   - "[[liu-2026-spherical-t-ris-bs]]"
+  - "[[ning-2025-channel-aware-irs-uav]]"
+  - "[[dynamic-irs-user-association]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Intelligent Reflecting Surface (IRS)
@@ -32,3 +34,5 @@ Recent corpus uses broaden the RIS family beyond reflecting-only surfaces. [[qin
 [[lin-2025-energy-effective-ris-multiuav-coverage]] adds a non-MEC coverage-control case: facade RIS panels assist multiple UAV mobile BSs, while [[triple-deep-q-network]] controls UAV trajectories and service scheduling under throughput-fairness screening.
 
 [[liu-2026-spherical-t-ris-bs]] adds [[spherical-transmissive-ris]] as a BS-architecture branch: one omnidirectional feed plus a spherical transmissive RIS replaces a conventional antenna array and reduces angle-sensitive gain loss for dynamic low-altitude communications.
+
+[[ning-2025-channel-aware-irs-uav]] adds [[dynamic-irs-user-association]] for multi-UAV communication: facade IRS elements can be partitioned among users, and MAPPO changes association as UAV positions and blockage states evolve.

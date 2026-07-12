@@ -18,7 +18,7 @@ related:
   - "[[gao-2024-d3qn-uav-mec-mobile-gt]]"
   - "[[dusit-niyato]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-12
 ---
 
 # Cargo UAVs Pick-Up Systems for Low-Altitude Economy With Communication Quality, Battery Energy, and Time Window Constraints
@@ -70,5 +70,5 @@ This source extends the [[low-altitude-intelligent-network]] thread from network
 
 ## Raw artifacts
 
-- `raw/sources/Cargo UAVs Pick-Up Systems for Low-Altitude Economy With Communication Quality- Battery Energy- and Time Window Constraints/Cargo UAVs Pick-Up Systems for Low-Altitude Economy With Communication Quality- Battery Energy- and Time Window Constraints.md`
+- `raw/sources/Cargo_UAVs_Pick-Up_Systems_for_Low-Altitude_Economy_With_Communication_Quality_Battery_Energy_and_Time_Window_Constraints/Cargo_UAVs_Pick-Up_Systems_for_Low-Altitude_Economy_With_Communication_Quality_Battery_Energy_and_Time_Window_Constraints.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

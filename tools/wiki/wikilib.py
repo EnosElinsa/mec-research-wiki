@@ -86,7 +86,8 @@ def md_files(root: str | None = None):
 
 
 def read_text(path: str) -> str:
-    return open(path, encoding="utf-8", errors="replace").read()
+    with open(path, encoding="utf-8", errors="replace") as handle:
+        return handle.read()
 
 
 def page_slugs(root: str | None = None) -> set[str]:

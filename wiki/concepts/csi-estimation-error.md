@@ -7,8 +7,10 @@ related:
   - "[[chance-constraint]]"
   - "[[terrain-aware-channel-model]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
+  - "[[he-not-in-parse-cipc-covert-uav]]"
+  - "[[channel-inversion-power-control]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-12
 ---
 
 # CSI Estimation Error
@@ -22,3 +24,5 @@ Most MEC papers in the wiki **assume perfect CSI** to keep the optimization trac
 - **Geometric model from terrain** — replace statistical CSI with a deterministic blockage prediction from DEM data. [[wu-2026-terrain-aware-uav-mec]] / [[terrain-aware-channel-model]].
 
 DRL implicitly handles CSI noise by training on noisy environments, but provides no formal guarantees and risks distribution shift at deployment.
+
+[[he-not-in-parse-cipc-covert-uav]] gives an analytical power-control example: Alice-Bob estimation error can make [[channel-inversion-power-control]] overcompensate, improving some legitimate connection metrics while strengthening the adversary and worsening secrecy/covertness.
