@@ -28,6 +28,8 @@ related:
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
   - "[[fu-2026-dubins-uav-data-collection]]"
   - "[[releasing-collecting-recycling-uav-framework]]"
+  - "[[jia-2026-hierarchical-uav-swarms]]"
+  - "[[hierarchical-uav-swarm]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---

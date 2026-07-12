@@ -10,8 +10,10 @@ related:
   - "[[huang-2026-erasure-coded-uav-storage]]"
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
+  - "[[pham-2026-vnf-control-loop]]"
+  - "[[routing-vnf-scaling-control-loop]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Post-Disaster MEC

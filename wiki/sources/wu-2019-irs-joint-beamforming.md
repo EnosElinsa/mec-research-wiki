@@ -12,8 +12,10 @@ related:
   - "[[an-2024-multilayer-ris-hap-swipt]]"
   - "[[chu-2024-secure-ris-isac]]"
   - "[[zhu-2024-crb-active-ris-isac]]"
+  - "[[ahmed-2026-noma-irs-vehicular]]"
+  - "[[fixed-point-irs-passive-beamforming]]"
 created: 2026-06-04
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming

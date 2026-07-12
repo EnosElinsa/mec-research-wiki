@@ -11,8 +11,10 @@ related:
   - "[[yang-2025-generalizable-pareto-offloading]]"
   - "[[li-2026-uav-hap-ddqn-ppo-offloading]]"
   - "[[lee-2026-uav-delivery-time-energy]]"
+  - "[[jia-2026-hierarchical-uav-swarms]]"
+  - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Energy-Latency Tradeoff

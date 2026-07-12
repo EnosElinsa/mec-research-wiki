@@ -7,8 +7,10 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[tun-2025-thz-sag-mec-resource-allocation]]"
   - "[[heo-not-in-parse-blockage-aided-multiuav-interference]]"
+  - "[[pham-2026-vnf-control-loop]]"
+  - "[[routing-vnf-scaling-control-loop]]"
 created: 2026-07-07
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Block Successive Upper-Bound Minimization

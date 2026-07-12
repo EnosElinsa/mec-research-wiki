@@ -18,8 +18,9 @@ related:
   - "[[guo-2024-multiuav-proactive-eavesdropping]]"
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
   - "[[xu-2021-secure-uav-mec-dual-uav]]"
+  - "[[zhaolong-ning]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Energy-Efficient Secure Aerial Communications for Low-Altitude Economy: Joint UAV Scheduling and Trajectory Optimization

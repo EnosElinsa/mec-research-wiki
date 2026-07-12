@@ -16,8 +16,9 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[maddpg]]"
   - "[[device-association]]"
+  - "[[zhaolong-ning]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Decentralized Learning-Driven AoI Optimization in UAV-Assisted Wireless Powered Edge Networks

@@ -20,6 +20,9 @@ related:
   - "[[ning-2025-channel-aware-irs-uav]]"
   - "[[dynamic-irs-user-association]]"
   - "[[li-2026-directional-modulation-irs-uav]]"
+  - "[[ahmed-2026-noma-irs-vehicular]]"
+  - "[[fixed-point-irs-passive-beamforming]]"
+  - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

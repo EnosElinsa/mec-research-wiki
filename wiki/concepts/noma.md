@@ -13,8 +13,10 @@ related:
   - "[[bui-2025-noma-near-far-offloading]]"
   - "[[hosseini-2026-aoi-covert-uav]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
+  - "[[ahmed-2026-noma-irs-vehicular]]"
+  - "[[fixed-point-irs-passive-beamforming]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # NOMA (Non-Orthogonal Multiple Access)

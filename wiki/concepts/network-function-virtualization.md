@@ -7,8 +7,10 @@ related:
   - "[[network-slicing]]"
   - "[[space-air-ground-integrated-network]]"
   - "[[zhang-2025-vnf-sgin-dql]]"
+  - "[[pham-2026-vnf-control-loop]]"
+  - "[[routing-vnf-scaling-control-loop]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-13
 ---
 
 # Network Function Virtualization (NFV)
@@ -17,4 +19,4 @@ Decoupling network functions (e.g. intrusion detection, network address translat
 
 NFV is the substrate for [[service-function-chaining]] (ordering VNFs into an end-to-end chain) and is closely related to [[network-slicing]] (carving rentable virtual resource slices). In integrated satellite-ground / [[space-air-ground-integrated-network|SAGIN]] settings, VNFs may run on satellites (global coverage, scarce compute) or ground nodes (rich compute, limited coverage), and satellite movement forces **VNF migration** decisions over time.
 
-In the wiki, [[zhang-2025-vnf-sgin-dql]] builds an SDN/NFV-based 6G satellite-ground integrated network and learns dynamic VNF selection + chaining policies via deep Q-learning to maximize long-term network profit.
+In the wiki, [[zhang-2025-vnf-sgin-dql]] builds an SDN/NFV-based 6G satellite-ground integrated network and learns dynamic VNF selection + chaining policies via deep Q-learning to maximize long-term network profit. [[pham-2026-vnf-control-loop]] adds a UAV-aided emergency case where fast distributed routing feeds an event-triggered, slower VNF replication and placement optimizer through a [[routing-vnf-scaling-control-loop]].

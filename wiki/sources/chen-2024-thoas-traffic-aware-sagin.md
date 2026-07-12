@@ -28,8 +28,9 @@ related:
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
   - "[[zhang-2025-mcma-task-migration]]"
+  - "[[zhaolong-ning]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-13
 authors:
   - Zheyi Chen
   - Junjie Zhang

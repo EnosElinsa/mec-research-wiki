@@ -18,8 +18,10 @@ related:
   - "[[wang-2026-aerial-marine-msar]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
   - "[[discrete-continuous-two-stage-decomposition]]"
+  - "[[jia-2026-hierarchical-uav-swarms]]"
+  - "[[hierarchical-uav-swarm]]"
 created: 2026-05-29
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs and HAPs

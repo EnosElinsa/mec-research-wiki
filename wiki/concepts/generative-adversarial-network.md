@@ -10,8 +10,10 @@ related:
   - "[[generative-diffusion-model]]"
   - "[[generative-ai-for-mec]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
+  - "[[wang-2023-differentiated-uav-services]]"
+  - "[[multi-agent-imitation-learning]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Generative Adversarial Network (GAN)

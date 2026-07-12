@@ -16,8 +16,10 @@ related:
   - "[[task-migration]]"
   - "[[chen-2024-thoas-traffic-aware-sagin]]"
   - "[[niazmand-2025-jopa-dnn-pruning-iiot]]"
+  - "[[pham-2026-vnf-control-loop]]"
+  - "[[routing-vnf-scaling-control-loop]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Learning-Assisted Dynamic VNF Selection and Chaining for 6G Satellite-Ground Integrated Networks

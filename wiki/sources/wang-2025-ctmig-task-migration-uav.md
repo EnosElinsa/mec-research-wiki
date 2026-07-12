@@ -11,8 +11,10 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[mou-2025-adm-dt-migration]]"
   - "[[shi-2023-two-timescale-migration-rerouting]]"
+  - "[[wang-2023-differentiated-uav-services]]"
+  - "[[multi-agent-imitation-learning]]"
 created: 2026-06-04
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Joint Task Offloading and Migration Optimization in UAV-Enabled Dynamic MEC Networks

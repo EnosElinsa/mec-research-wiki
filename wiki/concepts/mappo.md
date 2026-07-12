@@ -20,8 +20,9 @@ related:
   - "[[wireless-powered-uav-fair-service-control]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[decentralized-active-ris-uav-noma-control]]"
+  - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # MAPPO (Multi-Agent PPO)

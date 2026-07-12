@@ -16,8 +16,10 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[alternating-optimization-sdr-sca]]"
   - "[[ning-2023-madrl-uav-trajectory-differentiated-services]]"
+  - "[[zhaolong-ning]]"
+  - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Channel-Aware User Association and Trajectory Design for Multi-IRS Assisted Multi-UAV Communications

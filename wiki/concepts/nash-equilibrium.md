@@ -12,6 +12,8 @@ related:
   - "[[li-2025-stochastic-game-uav-swarm]]"
   - "[[li-2026-jscfg-uav-grouping]]"
   - "[[joint-switch-coalition-formation-game]]"
+  - "[[wang-2023-differentiated-uav-services]]"
+  - "[[differentiated-uav-service-market]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

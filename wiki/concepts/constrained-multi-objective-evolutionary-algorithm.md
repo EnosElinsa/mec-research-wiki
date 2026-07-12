@@ -10,8 +10,9 @@ related:
   - "[[local-search-evolutionary]]"
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[peng-2026-demand-aware-multiuav-mec]]"
+  - "[[jia-2026-hierarchical-uav-swarms]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-13
 ---
 
 # Constrained Multi-Objective Evolutionary Algorithm (CMOEA)

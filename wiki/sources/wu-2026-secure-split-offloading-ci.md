@@ -15,8 +15,9 @@ related:
   - "[[whale-optimization-algorithm]]"
   - "[[alternating-optimization-sdr-sca]]"
   - "[[uav-trajectory-control]]"
+  - "[[zhaolong-ning]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Secure Split Offloading and Trajectory Design for UAV-Assisted Multi-Exit Collaborative DNN Inference

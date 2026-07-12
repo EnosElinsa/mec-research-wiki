@@ -14,8 +14,9 @@ related:
   - "[[potential-game]]"
   - "[[wang-2019-todetas-deployment-scheduling]]"
   - "[[pervez-2024-acm-multiuav-mec]]"
+  - "[[zhaolong-ning]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Dynamic Computation Offloading and Server Deployment for UAV-Enabled Multi-Access Edge Computing

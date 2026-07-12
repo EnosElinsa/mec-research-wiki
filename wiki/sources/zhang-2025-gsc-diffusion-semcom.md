@@ -12,8 +12,9 @@ related:
   - "[[task-oriented-communication]]"
   - "[[liang-2025-gai-semcom-survey]]"
   - "[[zhu-han]]"
+  - "[[zhu-han]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # Semantic Successive Refinement: A Generative AI-Aided Semantic Communication Framework

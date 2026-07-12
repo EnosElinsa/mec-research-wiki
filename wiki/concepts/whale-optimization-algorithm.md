@@ -10,8 +10,9 @@ related:
   - "[[swarm-metaheuristics-in-uav-mec]]"
   - "[[liao-2026-aoi-ris-uav-usv-mec]]"
   - "[[wu-2026-secure-split-offloading-ci]]"
+  - "[[jia-2026-hierarchical-uav-swarms]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Whale Optimization Algorithm (WOA)

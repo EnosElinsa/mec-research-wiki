@@ -13,8 +13,9 @@ related:
   - "[[task-offloading]]"
   - "[[uav-mobile-relaying]]"
   - "[[yuguang-fang]]"
+  - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # UAV-Enabled Computing Power Networks: Design and Performance Analysis Under Energy Constraints

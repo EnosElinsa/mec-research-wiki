@@ -19,8 +19,10 @@ related:
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
   - "[[wang-2026-scalable-multiuav-analytics]]"
   - "[[zhu-2026-hab-mappo-target-search]]"
+  - "[[wang-2023-differentiated-uav-services]]"
+  - "[[differentiated-uav-service-market]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Multi-UAV-Assisted Mobile Edge Computing

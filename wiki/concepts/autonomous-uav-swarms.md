@@ -30,6 +30,8 @@ related:
   - "[[joint-switch-coalition-formation-game]]"
   - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
   - "[[multi-modal-uav-coverage-backhaul-control]]"
+  - "[[jia-2026-hierarchical-uav-swarms]]"
+  - "[[hierarchical-uav-swarm]]"
 created: 2026-07-10
 updated: 2026-07-13
 ---

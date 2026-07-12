@@ -22,8 +22,11 @@ related:
   - "[[fan-2026-hap-uav-iort-oee]]"
   - "[[zhang-2022-uav-relay-substitution]]"
   - "[[meng-2026-uav-isac-corrections]]"
+  - "[[ahmed-2026-noma-irs-vehicular]]"
+  - "[[fixed-point-irs-passive-beamforming]]"
+  - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Alternating Optimization with SDR and SCA

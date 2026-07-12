@@ -61,6 +61,7 @@
 
 - [[xu-2026-prizty-uav-mec-auction]] - Xu et al. 2026. **Prizty** privacy-preserving reverse auction for UAV-assisted MEC task offloading/resource allocation; UE location obfuscation + trajectory-aware feasible service sets + winner/payment selection (IEEE TMC).
 - [[guo-2026-aoi-uav-mcs-contract]] - Guo et al. 2026. AoI-aware UAV-assisted mobile crowdsensing contracts; platform-UAV service-slot contract plus platform-user sensing/computation-cost contracts for freshness/cost control under incomplete information (IEEE TMC).
+- [[wang-2023-differentiated-uav-services]] - Wang et al. 2023. Multi-agent imitation learning for a competitive UAV service market; full-information expert demonstrations, opponent modeling, and decentralized quantity/fleet control under substitutable demand (IEEE TMC).
 
 - [[chen-2015-decentralized-offloading-game]] — Chen 2015. **Decentralized computation offloading game** for mobile cloud computing — potential game; Nash equilibrium existence + decentralized mechanism; ≤10% PoA over centralized optimum (IEEE TPDS).
 - [[chen-2016-multiuser-offloading-game-mec]] — Chen et al. 2016. **Multi-user computation offloading game** for mobile-edge cloud computing — NP-hard centrally; potential game + distributed NE algorithm; multi-channel interference + contention environments (IEEE/ACM ToN).
@@ -75,6 +76,7 @@
 
 ### Multi-UAV cooperative computing & deployment
 
+- [[jia-2026-hierarchical-uav-swarms]] - Jia et al. 2026. Head/tail hierarchical UAV swarms for two-hop data collection; K-means/Voronoi predeployment and INS-WOA Pareto optimization of routes, user/UAV power, energy, and delay (IEEE TWC).
 - [[zhou-2026-multiscale-dt-uav-delivery]] - Zhou et al. 2026. Terminal-edge multiscale digital twins for UAV parcel delivery; graph-matching macro twins assign parcel clusters, while cooperative-reinforcement-learning micro twins plan energy- and collision-aware paths (IEEE TMC).
 - [[zhao-2026-dt-ddqn-bisd-deployment]] - Zhao et al. 2026. Digital-twin-driven multi-UAV IoT deployment with balanced mission division, 3-D transfer and fixed-altitude collection DDQNs, online obstacle synchronization, safety halts, and policy refresh (IEEE TWC).
 - [[gao-2026-fmad3qn-uav-gd-association]] - Gao et al. 2026. Dynamic heterogeneous multi-UAV MEC with no-fly zones; closed-form UAV-GD association via optimal transport + federated multi-agent dueling DDQN for 3D deployment (IEEE TMC).
@@ -209,6 +211,8 @@
 
 - [[morshed-2026-active-ris-uav-noma-mappo]] - Morshed et al. 2026. Active-RIS-aided UAV-NOMA communication with MAPPO actors for BS power allocation, UAV motion, and RIS gain/phase under a shared rate/energy/fairness/outage reward (IEEE TGCN).
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
+- [[hu-2026-segmented-irs-cpn]] - Hu et al. 2026. Dynamically segmented IRS-assisted UAV computing-power network; MAPPO trajectory control plus phase alignment, association, compute allocation, and SCA-based IRS-row matching for delay/energy optimization (IEEE TMC).
+- [[ahmed-2026-noma-irs-vehicular]] - Ahmed et al. 2026. Passive-IRS/NOMA UAV-to-vehicle sum-capacity optimization via projected fixed-point phase updates and alternating convex UAV power allocation (IEEE T-ITS).
 - [[lin-2025-energy-effective-ris-multiuav-coverage]] - Lin et al. 2025. RIS-assisted multi-UAV coverage for fairness-aware ground terminals; K-DBSCAN deployment, throughput-variance filtering, and TDQN/DDQN/dueling-DQN trajectory control (IEEE TGCN).
 - [[liu-2026-spherical-t-ris-bs]] - Liu et al. 2026. Angle-insensitive spherical transmissive-RIS base station with omnidirectional feed; BCD/SCA co-optimizes sensor scheduling, powers, phase shifts, and UAV trajectories for data collection under CU-rate and UAV-energy constraints (IEEE TWC).
 - [[ning-2025-channel-aware-irs-uav]] - Ning et al. 2025. Channel-aware multi-IRS/multi-UAV NOMA communication with geometric blockage judgment, dynamic partitioned IRS-user association, MAPPO trajectory control, and SCA power allocation. *(DOI/venue not in parse.)*
@@ -448,6 +452,7 @@
 - [[jiang-2026-bi-level-uav-delivery-safety]] - Jiang et al. 2026. Bi-level urban low-altitude UAV delivery with TC-NSGA-III assignment and RG-FMT* trajectory planning under target-level-of-safety risk constraints. *(DOI 10.1109/TITS.2026.3660878; venue not in parse.)*
 - [[gao-2026-air-ground-instant-delivery]] - Gao et al. 2026. Cooperative UAV-taxi instant delivery with delivery-gap station placement, demand-driven UAV repositioning, courier-preference transfer, and generalized parcel assignment on Shanghai traces (IEEE TMC).
 - [[deng-2026-uav-cpn-energy]] - Deng et al. 2026. UAV-enabled Computing Power Network; stochastic-geometry task-completion probability and altitude/power optimization under fuel and battery constraints (IEEE TMC).
+- [[pham-2026-vnf-control-loop]] - Pham & Nguyen 2026. UAV-aided emergency-network VNF orchestration; slot-level MADDPG multipath routing feeds event-triggered BSUM VNF replication and placement (IEEE TMC).
 - [[zhang-2026-uav-task-path-lu-its]] — Zhang et al. 2026. Cooperative task allocation and collision-free path planning for multi-UAV low-altitude urban intelligent transportation systems; ILLA potential-game allocation + CBMBA A-Star path search (IEEE T-ITS).
 - [[zang-2026-uav-ev-priority-cav-speed]] - Zang et al. 2026. UAV-assisted emergency-vehicle priority on expressways; rolling SROC uses dual-layer PSO to coordinate CAV speed under uncertain human lane changes (IEEE T-ITS).
 - [[wang-2025-uav-swarm-stackelberg]] — Wang et al. 2025. Stackelberg-game spectrum sharing for U2U/U2B in UAV swarms.
@@ -556,7 +561,7 @@
 
 ### Authors
 
-- [[dusit-niyato]] (NTU) appears across 43 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 12 sources after the AoI-centric UAV-ISAC paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[dusit-niyato]] (NTU) appears across 44 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 14 sources after the hierarchical UAV-swarm paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
@@ -564,7 +569,7 @@
 - [[hao-hao]] — first author of the two priority-aware offloading sources ([[hao-2024-clp-multiuav-priority-offloading]], [[hao-2025-priority-aware-task-driven-co]]).
 - [[geng-sun]] — recurring (co-)author across 20 Jilin-University / NTU aerial-MEC sources, including collaborative beamforming, low-altitude-economy surveying, and [[he-2026-dt-sagimec-lae]].
 - **Jilin-University / NTU aerial-MEC cluster:** [[zemin-sun]], [[jiahui-li]] (Jilin University), [[jiacheng-wang]], [[dusit-niyato]] (NTU), [[victor-c-m-leung]], and [[qingqing-wu]] (Shanghai Jiao Tong University).
-- **NUAA aerial-computing cluster:** [[ziye-jia]], [[chao-dong]], [[qihui-wu]] (NUAA), [[zhu-han]] (Univ of Houston / Kyung Hee), spanning HAP/UAV MEC, maritime AAV cooperation, and [[jia-2026-dro-lawn-trajectory]].
+- **NUAA aerial-computing cluster:** [[ziye-jia]], [[chao-dong]], [[qihui-wu]] (NUAA), [[zhu-han]] (Univ of Houston / Kyung Hee), spanning HAP/UAV MEC, maritime AAV cooperation, [[jia-2026-dro-lawn-trajectory]], and [[jia-2026-hierarchical-uav-swarms]].
 - **Dalian-Maritime-University maritime cluster:** [[bin-lin]] (DMU), [[zhen-wang]] (DMU / Dalian Neusoft), [[qiang-ye]] (Univ of Calgary).
 - **NWPU non-terrestrial-network cluster:** [[bomin-mao]], [[hongzhi-guo]], [[jiajia-liu]] (Northwestern Polytechnical University).
 - **Virginia Tech (Wireless@VT) UAV-communications cluster:** [[mohammad-mozaffari]], [[walid-saad]] – foundational UAV-as-aerial-base-station, 3-D deployment, and 3-D cellular-network works (5 sources each).
@@ -572,6 +577,7 @@
 - **South-China-Agricultural-University evolutionary UAV-MEC cluster:** [[zexiong-wu]] (with [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]]).
 - **Cross-cutting seniors:** [[chunxiao-jiang]] (Tsinghua), [[tony-q-s-quek]] (SUTD).
 - [[chi-harold-liu]] (Beijing Institute of Technology - mobile crowdsensing and distributed multi-UAV DRL; 3 sources).
+- [[zhaolong-ning]] (Chongqing University of Posts and Telecommunications - differentiated UAV services, multi-UAV MEC, IRS-assisted communication, computing-power networks, and secure/age-aware low-altitude control; 9 sources).
 - [[shuang-liang]] (Northeast Normal Univ. — aerial-MEC / LAE, [[geng-sun]] cluster), [[weifeng-zhong]] & [[shengli-xie]] (Guangdong Univ. of Technology — CMOP-evolutionary lineage), [[qiqi-xie]] (South China Agricultural Univ. — evolutionary UAV-MEC), [[nei-kato]] (Tohoku Univ.), [[jiadai-wang]], [[yijie-xun]], [[yangbo-liu]] (Northwestern Polytechnical Univ. — NTN cluster, [[bomin-mao]] group).
 - [[boxiong-wang]] & [[hui-kang]] (Jilin University — [[geng-sun]] aerial-MEC cluster; 2 sources each).
 - [[yuben-qu]] & [[hao-sun]] (Nanjing Univ. of Aeronautics and Astronautics — UAV-swarm collaborative-inference cluster with [[chao-dong]]/[[qihui-wu]]; 2 sources each — [[qu-ecoei-uav-swarm]] + [[sun-2024-asap-uav-swarm]], identical `@nuaa.edu.cn` emails).
@@ -690,8 +696,10 @@
 ### Aerial / network architectures
 
 - [[multi-uav-assisted-mec]]
+- [[differentiated-uav-service-market]]
 - [[high-density-mobile-device-scenarios]]
 - [[heterogeneous-uav-fleet]]
+- [[hierarchical-uav-swarm]]
 - [[releasing-collecting-recycling-uav-framework]]
 - [[high-altitude-platform-station]]
 - [[hierarchical-aerial-mec]]
@@ -721,6 +729,7 @@
 - [[uav-usv-cooperative-mec]]
 - [[post-disaster-mec]]
 - [[persistent-emergency-uav-swarm-service]]
+- [[routing-vnf-scaling-control-loop]]
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
 - [[aerial-active-ris-backhaul]]
@@ -811,6 +820,7 @@
 - [[markov-reward-process]]
 - [[semi-markov-decision-process]]
 - [[centralized-training-decentralized-execution]]
+- [[multi-agent-imitation-learning]]
 - [[communication-constrained-marl]]
 - [[model-based-marl]]
 - [[mixture-of-experts-drl]]
@@ -896,6 +906,7 @@
 - [[second-order-cone-programming]]
 - [[linear-programming]]
 - [[alternating-optimization-sdr-sca]]
+- [[fixed-point-irs-passive-beamforming]]
 - [[block-successive-upper-bound-minimization]]
 - [[monotonic-optimization]]
 - [[majorization-minimization]]

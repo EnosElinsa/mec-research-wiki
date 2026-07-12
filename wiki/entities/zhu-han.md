@@ -15,15 +15,17 @@ related:
   - "[[jia-2026-dro-lawn-trajectory]]"
   - "[[li-2026-control-based-uav-isac]]"
   - "[[bai-2026-aoi-uav-isac]]"
+  - "[[jia-2026-hierarchical-uav-swarms]]"
+  - "[[zhang-2025-gsc-diffusion-semcom]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Zhu Han
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 12 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
+Co-authored 14 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -37,7 +39,9 @@ Co-authored 12 sources in this wiki, spanning aerial MEC, satellite edge computi
 - [[jia-2026-dro-lawn-trajectory]] — distributionally robust computation offloading and trajectory optimization in low-altitude wireless networks.
 - [[li-2026-control-based-uav-isac]] - control-parameterized beamforming and trajectory design for UAV-enabled ISAC with 3-DoF and 6-DoF dynamics.
 - [[bai-2026-aoi-uav-isac]] - AoI-centric UAV-enabled ISAC with SAC motion/beam activation, Kalman target prediction, and RZF communication beams.
+- [[jia-2026-hierarchical-uav-swarms]] - hierarchical head/tail UAV-swarm deployment, collection trajectories, and multi-objective power control.
+- [[zhang-2025-gsc-diffusion-semcom]] - generative semantic successive refinement for wireless image transmission.
 
 ## Contributions to this wiki
 
-- A senior collaborator (game theory, optimization, and learning for wireless) who appears across the NUAA aerial-computing cluster with [[ziye-jia]], [[chao-dong]], and [[qihui-wu]], plus the 6G foundation-models, UAV-swarm response-delay, low-altitude wireless, semantic edge, and UAV-ISAC control/freshness threads.
+- A senior collaborator (game theory, optimization, and learning for wireless) who appears across the NUAA aerial-computing cluster with [[ziye-jia]], [[chao-dong]], and [[qihui-wu]], plus the 6G foundation-models, hierarchical-swarm control, response-delay, low-altitude wireless, semantic-edge, and UAV-ISAC threads.

@@ -19,8 +19,11 @@ related:
   - "[[peng-2020-maddpg-uav-vehicular]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[bi-2025-sg-mapg]]"
+  - "[[zhaolong-ning]]"
+  - "[[wang-2023-differentiated-uav-services]]"
+  - "[[differentiated-uav-service-market]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Multi-Agent Deep Reinforcement Learning Based UAV Trajectory Optimization for Differentiated Services
