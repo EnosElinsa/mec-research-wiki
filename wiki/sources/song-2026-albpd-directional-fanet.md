@@ -13,8 +13,9 @@ related:
   - "[[wireless-backhaul]]"
   - "[[air-to-ground-channel-model]]"
   - "[[bujari-2018-stateless-fanet-routing]]"
+  - "[[george-k-karagiannidis]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # A Robust Link Maintenance Algorithm for Directional UAV Networks Based on Breakage Probability Prediction

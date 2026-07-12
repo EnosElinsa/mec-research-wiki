@@ -10,6 +10,8 @@ related:
   - "[[releasing-collecting-recycling-uav-framework]]"
   - "[[li-2026-jscfg-uav-grouping]]"
   - "[[joint-switch-coalition-formation-game]]"
+  - "[[zhang-2019-fast-uav-deployment]]"
+  - "[[fast-heterogeneous-uav-deployment]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -39,6 +41,8 @@ Most foundational UAV-MEC papers (e.g. [[liu-2026-jppo-en-convntm]]) assume a ho
 [[jiang-2026-bi-level-uav-delivery-safety]] adds a logistics-control case: heterogeneous UAVs differ in delivery capacity and route feasibility, so task allocation and safety-constrained trajectory planning must be solved together instead of assuming interchangeable vehicles.
 
 [[fu-2026-dubins-uav-data-collection]] makes heterogeneity architectural: a fast carrier releases and recovers slower communication UAVs. [[li-2026-jscfg-uav-grouping]] instead groups functional UAV types around ordered mission requirements through a [[joint-switch-coalition-formation-game]].
+
+[[zhang-2019-fast-uav-deployment]] adds coverage-service heterogeneity: speed, operating altitude, radius, and origin determine how quickly a given fleet can cover a target area. Its exact and approximation results show that heterogeneity affects not only assignment quality but also performance bounds and tractability.
 
 ## Open questions
 

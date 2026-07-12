@@ -15,6 +15,7 @@ related:
   - "[[li-2026-aerial-ris-trajectory-phase]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[ahmed-2026-noma-irs-vehicular]]"
+  - "[[xingwang-li]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

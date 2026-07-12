@@ -13,8 +13,9 @@ related:
   - "[[task-oriented-communication]]"
   - "[[uav-trajectory-control]]"
   - "[[alternating-optimization-sdr-sca]]"
+  - "[[yuanming-shi]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # UAV-Assisted Edge Inference With Integrated Sensing, Communication, and Computation

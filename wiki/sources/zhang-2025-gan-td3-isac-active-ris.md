@@ -15,8 +15,9 @@ related:
   - "[[faisal-2025-cgan-ris-isac-channel]]"
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
+  - "[[george-k-karagiannidis]]"
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Generative-Adversarial-Network-Enhanced DRL for ISAC With Double Active RISs

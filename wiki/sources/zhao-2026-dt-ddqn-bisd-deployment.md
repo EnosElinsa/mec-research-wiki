@@ -15,8 +15,9 @@ related:
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
   - "[[blockage-aware-channel-model]]"
+  - "[[weijie-yuan]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Deployment Design for Multi-UAV-Assisted IoT Networks: A Digital Twin-Driven Deep Reinforcement Learning Approach

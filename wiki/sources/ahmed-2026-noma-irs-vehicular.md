@@ -15,6 +15,7 @@ related:
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[ning-2025-channel-aware-irs-uav]]"
   - "[[cui-2026-aris-v2x-icac]]"
+  - "[[xingwang-li]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

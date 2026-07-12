@@ -19,6 +19,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[cao-2026-radio-map-cargo-pickup]]"
   - "[[radio-map-aided-uav-path-planning]]"
+  - "[[weijie-yuan]]"
 created: 2026-07-06
 updated: 2026-07-13
 ---

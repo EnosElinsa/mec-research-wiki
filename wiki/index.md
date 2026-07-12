@@ -264,6 +264,7 @@
 - [[wang-2026-llm-qos-multiuav-resource]] - Wang et al. 2026. LLM teacher-student QoS-aware resource allocation for multi-UAV cooperative edge computing; NKG/R-GAT/ToT teacher with MAPPO student distillation (IEEE TMC).
 - [[wang-2026-lifelong-semantic-content-reuse]] — Wang et al. 2026. UAV-assisted Metaverse semantic content reuse; semantic subject/object caching plus DC-ELLA lifelong policy transfer for changing semantic environments (IEEE TMC).
 - [[wang-2026-diffusion-semantic-uav-edge]] — Wang et al. 2026. UAV-assisted semantic edge computing; H-DDPG plus convex semantic-resource optimization, then diffusion-denoising DDPG for trajectory action generation (IEEE TWC).
+- [[niu-2026-falcon-semantic]] - Niu et al. 2026. FALCON multimodal semantic communication; KANet/shared-prompt alignment, channel-aware Sparsemax token selection, and range-null diffusion signal recovery (IEEE TMC).
 - [[zhang-2025-gsc-diffusion-semcom]] — Zhang et al. 2025. **Generative AI Semantic Communication (GSC)**: Swin Transformer encoder + **diffusion model** decoder for image transmission; +17.75% PSNR in AWGN vs DeepJSCC; MU-GSC multi-user extension (IEEE TCCN).
 - [[ye-2025-aigc-diffusion-contract]] — Ye et al. 2025. Edge AIGC services via **contract theory** + prompt engineering; generative diffusion model as the contract-item optimizer.
 - [[zhang-2024-gdmtd3-aerial-secure-cb]] — Zhang et al. 2024. UAV-swarm secure collaborative beamforming via **generative-diffusion-model-enhanced TD3** (GDMTD3).
@@ -368,6 +369,7 @@
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
 - [[zhao-2026-uav-fl-inspection-incentives]] - Zhao et al. 2026. Contract-theoretic incentive assignment for UAV-client federated intelligent inspection under communication-sensing-computing integration; models data quality, sensing/computation costs, and FL participation utilities (IEEE TMC).
 - [[huang-2026-aircomp-uav-swarms-afl]] - Huang et al. 2026. AirComp-assisted asynchronous federated learning for UAV swarms; branch-and-bound/AO aggregation scheduling plus layer-wise staleness filtering for faster convergence (IEEE TWC).
+- [[qian-2026-federated-bandit-aircomp]] - Qian et al. 2026. Event-triggered federated LinUCB over UAV-aided AirComp; BCD-ADMM controls power, receive normalization, and UAV trajectory under channel-noise-aware regret analysis (IEEE TMC).
 - [[gong-2026-lp2-casku-uav-clusters]] - Gong et al. 2026. LP2-CASKU privacy-preserving authentication and session-key update for dynamic low-altitude UAV clusters; message aggregation, cross-cluster anonymity/unlinkability, and forward/backward secrecy (IEEE TMC).
 - [[mao-2025-bcsa-frl]] — Mao et al. 2025. Blockchain-enabled cold-start FRL for ZT LEO satellite networks. *BCSA-FRL* (CCVM + CSRA).
 - [[mao-2025-irs-noma-fl-secrecy]] — Mao et al. 2025. **IRS-assisted** secrecy-rate maximization for **NOMA-based federated-learning** model aggregation; max-min secrecy rate over device power + IRS phase shift via **DDPG** (IEEE TCCN).
@@ -524,6 +526,9 @@
 
 ### UAV communications & deployment foundations
 
+- [[liu-2026-uav-hsr-jitter]] - Liu et al. 2026. Gaussian-random-walk UAV jitter analysis for CA/DA high-speed-rail mmWave links, with outage/rate expressions and codebook-aware adaptive beamwidth (IEEE T-ITS).
+- [[zhang-2019-fast-uav-deployment]] - Zhang & Duan 2019. Fast heterogeneous-UAV coverage deployment under min-max and min-sum travel delay, with exact, FPTAS, bounded-greedy, and pseudo-polynomial algorithms (IEEE TMC).
+- [[zhu-2026-fixed-wing-fd-af-wind]] - Zhu et al. 2026. Constant-wind fixed-wing full-duplex AF relaying; wind-triangle case analysis jointly selects air speed and flight time, then derives pitch/crab compensation (IEEE TGCN).
 - [[wang-2026-robust-multiuav-jtcra]] - Wang et al. 2026. Energy-depletion-aware A2G service continuity; parameter-shared MAPPO/QMIX jointly control multi-UAV trajectories, power, and bandwidth under a Jain-fairness requirement (IEEE TWC).
 - [[liu-2020-distributed-uav-coverage-navigation]] - Liu et al. 2020. Distributed actor-critic navigation for long-term multi-UAV communication coverage, Jain geographic fairness, movement-energy efficiency, and peer-connectivity constraints (IEEE TMC).
 - [[fu-2026-dubins-uav-data-collection]] - Fu et al. 2026. Carrier/subordinate heterogeneous-UAV data collection with release, obstacle-aware Dubins tours, and synchronized airborne recovery (IEEE T-ITS).
@@ -580,6 +585,7 @@
 - [[dusit-niyato]] (NTU) appears across 44 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 15 sources after the air-ground emergency localization paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 - [[zehui-xiong]] (Queen's University Belfast - generative AI, semantic communication, physical-layer security, and low-altitude resource allocation; 11 sources spanning surveys, diffusion/GDM methods, and aerial/satellite control).
+- [[weijie-yuan]] (Southern University of Science and Technology - ISAC, OTFS, and low-altitude wireless networks; 3 sources), [[george-k-karagiannidis]] (Aristotle University of Thessaloniki - wireless communication and signal processing; 3 sources), [[yuanming-shi]] (ShanghaiTech University - edge AI, wireless optimization, and federated learning; 3 sources), and [[xingwang-li]] (Henan Polytechnic University - UAV/IRS wireless communications; 3 sources).
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -756,6 +762,7 @@
 - [[stateless-geographic-fanet-routing]]
 - [[uav-assisted-vanet-routing]]
 - [[directional-fanet-link-maintenance]]
+- [[jitter-aware-uav-beamwidth-control]]
 - [[evolvable-route-expiration-time]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
@@ -774,6 +781,7 @@
 ### UAV control & decisions
 
 - [[uav-trajectory-control]]
+- [[fast-heterogeneous-uav-deployment]]
 - [[multi-modal-uav-coverage-backhaul-control]]
 - [[distance-attention-uav-navigation]]
 - [[memory-augmented-multi-uav-navigation]]
@@ -1032,6 +1040,7 @@
 
 - [[zero-trust-architecture]]
 - [[federated-learning]]
+- [[federated-linear-bandit-learning]]
 - [[semi-decentralized-hybrid-federated-learning]]
 - [[split-federated-learning]]
 - [[federated-reinforcement-learning]]

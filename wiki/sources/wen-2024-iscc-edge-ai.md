@@ -18,8 +18,9 @@ related:
   - "[[tang-2024-iscc-uav-feel]]"
   - "[[isac-sensing-in-aerial-mec]]"
   - "[[jie-xu]]"
+  - "[[yuanming-shi]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Task-Oriented Sensing, Computation, and Communication Integration for Multi-Device Edge AI
