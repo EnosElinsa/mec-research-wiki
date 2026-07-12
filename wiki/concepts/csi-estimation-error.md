@@ -9,6 +9,8 @@ related:
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[he-not-in-parse-cipc-covert-uav]]"
   - "[[channel-inversion-power-control]]"
+  - "[[xu-2026-hecta-predictive-beamforming]]"
+  - "[[historical-echo-predictive-beamforming]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---
@@ -26,3 +28,5 @@ Most MEC papers in the wiki **assume perfect CSI** to keep the optimization trac
 DRL implicitly handles CSI noise by training on noisy environments, but provides no formal guarantees and risks distribution shift at deployment.
 
 [[he-not-in-parse-cipc-covert-uav]] gives an analytical power-control example: Alice-Bob estimation error can make [[channel-inversion-power-control]] overcompensate, improving some legitimate connection metrics while strengthening the adversary and worsening secrecy/covertness.
+
+[[xu-2026-hecta-predictive-beamforming]] sidesteps an explicit intermediate CSI estimate: [[historical-echo-predictive-beamforming]] maps echo history directly to the next bidirectional beam pair. This removes one estimation interface but does not by itself establish robustness to deployment channels outside the synthetic training distribution.

@@ -16,6 +16,10 @@ related:
   - "[[zhu-2026-hab-mappo-target-search]]"
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
   - "[[ning-2025-channel-aware-irs-uav]]"
+  - "[[wang-2026-wutf-fair-communication]]"
+  - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[morshed-2026-active-ris-uav-noma-mappo]]"
+  - "[[decentralized-active-ris-uav-noma-control]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---
@@ -39,3 +43,5 @@ In [[kang-2023-mappo-hierarchical-aerial]] MAPPO solves the joint GD-association
 [[wu-not-in-parse-aoi-sampling-buffering-routing]] uses COMH-MAPPO for all-aerial AoI control, giving separate policy heads to sampling, buffer scheduling, and FANET next-hop routing while keeping CTDE-style training.
 
 [[ning-2025-channel-aware-irs-uav]] uses shared-actor MAPPO for joint UAV movement and [[dynamic-irs-user-association]], with SCA handling transmit power after the multi-agent communication decisions.
+
+[[wang-2026-wutf-fair-communication]] randomizes the actor-update order and lets later updates use preceding actors' newest policies for wireless-powered fair-service trajectories. [[morshed-2026-active-ris-uav-noma-mappo]] uses a different decomposition: BS, UAV, and active-RIS actors control NOMA power, movement, and element gain/phase under one shared critic and reward.

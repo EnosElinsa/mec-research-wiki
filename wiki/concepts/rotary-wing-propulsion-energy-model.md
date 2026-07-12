@@ -11,6 +11,8 @@ related:
   - "[[gong-2026-uav-3d-visual-coverage]]"
   - "[[path-aware-3d-visual-coverage]]"
   - "[[hua-2026-ddrl-content-delivery]]"
+  - "[[wang-2026-wutf-fair-communication]]"
+  - "[[wireless-powered-uav-fair-service-control]]"
 created: 2026-05-31
 updated: 2026-07-12
 ---
@@ -28,3 +30,5 @@ Two properties drive UAV trajectory design: hovering power `P_h = P₀ + P_i` is
 This model originates in [[zeng-2019-rotary-wing-energy-min]] (Zeng, Xu & Zhang, IEEE TWC 2019) and is reused as the propulsion-energy reference across the corpus's UAV-MEC energy formulations — e.g. [[li-2024-rldc-uav-swarm-clustering]] cites it for the leader/follower propulsion terms. It underpins energy-aware [[uav-trajectory-control]] and the [[energy-latency-tradeoff]] in aerial MEC. [[lee-2026-uav-delivery-time-energy]] adapts the same propulsion-energy logic to parcel delivery, where the carried payload weight changes induced power and thus changes the optimal pickup/drop-off order. [[gong-2026-uav-3d-visual-coverage]] uses the same idea in non-MEC [[path-aware-3d-visual-coverage]], where distance-shortest routes can consume more energy than velocity/acceleration-aware paths.
 
 [[hua-2026-ddrl-content-delivery]] uses the same three-term rotary-wing power form to turn served users per consumed energy into an intrinsic reward alongside content-acquisition delay and cache-hit performance.
+
+[[wang-2026-wutf-fair-communication]] resolves slot energy into acceleration, steady flight, deceleration, hovering, and communication terms, then couples that demand to charging-tower proximity inside [[wireless-powered-uav-fair-service-control]].

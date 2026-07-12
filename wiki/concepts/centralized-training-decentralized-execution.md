@@ -21,6 +21,12 @@ related:
   - "[[cooperative-uav-pursuit-evasion]]"
   - "[[le-2026-asynchronous-uav-data-collection]]"
   - "[[asynchronous-qmix]]"
+  - "[[wang-2026-wutf-fair-communication]]"
+  - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[morshed-2026-active-ris-uav-noma-mappo]]"
+  - "[[decentralized-active-ris-uav-noma-control]]"
+  - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
+  - "[[dual-network-sequential-aoi-control]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---
@@ -53,6 +59,8 @@ A canonical paradigm for cooperative multi-agent DRL:
 CTDE shows up explicitly in [[zhang-2025-mcma-task-migration]] (server-as-agent for vehicular MEC), [[peng-2025-drudm-cfg]] (UAV-as-agent for post-disaster MEC), and [[kang-2023-mappo-hierarchical-aerial]] (UAV-as-agent for hierarchical aerial MEC). It also appears in adjacent non-offloading control, including [[chen-2026-maddpg-uav-swarm-antijamming]] for jammed UAV-swarm communications, [[gao-2023-uav-mcs-uma]] for multi-UAV mobile-crowd-sensing coverage/calibration, [[wu-not-in-parse-aoi-sampling-buffering-routing]] for all-aerial AoI sampling/buffering/routing, and [[zhou-2026-a2g-madrl-air-ground-vcs]] for sequential UAV/UGV crowdsensing. Across these, the *backbone* differs (MAPPO / MADDPG / MASAC / value decomposition / sequential policy generation), but the training/execution split is shared. The engineering protocol is expanded in [[ctde-multi-agent-drl-protocol]].
 
 [[yang-2025-hcdrl-pursuit-evasion]] uses centralized lower-layer critics for continuous counter-UAV maneuver learning. [[le-2026-asynchronous-uav-data-collection]] uses the value-decomposition branch through [[asynchronous-qmix]], retaining global-state mixing during training while agents select actions at unequal local completion times.
+
+Three wireless-powered/active-surface cases illustrate different CTDE factorizations. [[wang-2026-wutf-fair-communication]] gives one speed/yaw actor per UAV with a global critic; [[morshed-2026-active-ris-uav-noma-mappo]] assigns actors to the BS, UAV, and active RIS; [[wang-2026-glint-aoi-wireless-powered-edge]] uses two sequential actors per UAV and a monotonic value mixer.
 
 ## Limitation
 

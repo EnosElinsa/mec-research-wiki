@@ -20,6 +20,10 @@ related:
   - "[[le-2026-asynchronous-uav-data-collection]]"
   - "[[asynchronous-qmix]]"
   - "uav-assisted-mobile-crowd-sensing"
+  - "[[li-2023-energy-constrained-uav-data-collection]]"
+  - "[[energy-constrained-uav-data-collection-orienteering]]"
+  - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
+  - "[[dual-network-sequential-aoi-control]]"
 created: 2026-05-31
 updated: 2026-07-12
 ---
@@ -45,3 +49,5 @@ When the collected data is delay-sensitive, data-collection objectives connect t
 [[gao-2023-uav-mcs-uma]] broadens the collection model to uav-assisted-mobile-crowd-sensing: UAVs cover points of interest that human participants miss and calibrate participant sensors when trajectories intersect. [[du-2025-autonomous-intelligent-uav-swarms]] is a survey anchor for the swarm autonomy stack behind data collection, relaying, monitoring, and edge-computing applications.
 
 [[fan-2026-hap-uav-iort-oee]] adds a moving HAP aggregation tier and optimizes [[overall-energy-efficiency]] across both collection hops. [[le-2026-asynchronous-uav-data-collection]] instead studies stochastic remote sensing with unequal action durations and limited inter-UAV communication, using [[asynchronous-qmix]] for event-driven trajectory decisions and local convex bandwidth allocation at hover points.
+
+[[li-2023-energy-constrained-uav-data-collection]] treats collection as [[energy-constrained-uav-data-collection-orienteering]] over depot-returning hover tours, distinguishing full/partial collection and non-overlap guarantees from overlap heuristics. [[wang-2026-glint-aoi-wireless-powered-edge]] adds the wireless-powered freshness case, where multiple UAVs first move and associate sensors, then allocate charging time and update transmissions through [[dual-network-sequential-aoi-control]].

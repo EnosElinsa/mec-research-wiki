@@ -205,6 +205,7 @@
 
 ### IRS / THz / anti-jamming
 
+- [[morshed-2026-active-ris-uav-noma-mappo]] - Morshed et al. 2026. Active-RIS-aided UAV-NOMA communication with MAPPO actors for BS power allocation, UAV motion, and RIS gain/phase under a shared rate/energy/fairness/outage reward (IEEE TGCN).
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
 - [[lin-2025-energy-effective-ris-multiuav-coverage]] - Lin et al. 2025. RIS-assisted multi-UAV coverage for fairness-aware ground terminals; K-DBSCAN deployment, throughput-variance filtering, and TDQN/DDQN/dueling-DQN trajectory control (IEEE TGCN).
 - [[liu-2026-spherical-t-ris-bs]] - Liu et al. 2026. Angle-insensitive spherical transmissive-RIS base station with omnidirectional feed; BCD/SCA co-optimizes sensor scheduling, powers, phase shifts, and UAV trajectories for data collection under CU-rate and UAV-energy constraints (IEEE TWC).
@@ -365,6 +366,7 @@
 
 ### ISAC, sensing & physical-layer security
 
+- [[xu-2026-hecta-predictive-beamforming]] - Xu et al. 2026. HECTA-Net predicts BS transmit and UAV receive beams directly from historical matched-filtered ISAC echoes through CNN, dilated causal TCN, and temporal attention (IEEE TWC).
 - [[meng-2026-uav-isac-corrections]] - Meng et al. 2026. One-page correction to periodic UAV-ISAC throughput optimization; removes a duplicated association factor and supplies the omitted auxiliary-variable/Taylor transformation that makes the corrected subproblems convex (IEEE TWC).
 - [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026. LSCR target handover for collaborative UAV relay tracking; Delaunay target graphs, TGR features, and Twin-GRCN similarity matching reach 92.1% accuracy with 0.063 KB transfer and a 20 KB model (IEEE T-ITS).
 - [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] - Wang et al. 2026. UAV-enabled vehicular ISAC with RMADDPG-DDA adaptive control over UAV motion/yaw, communication power, and ISAC transmit power; RND novelty, parameter sharing, and dynamic data augmentation improve served users and effective MI (IEEE TMC).
@@ -463,6 +465,8 @@
 
 ### Energy efficiency & WPT
 
+- [[wang-2026-wutf-fair-communication]] - Wang et al. 2026. Wireless-powered multi-UAV fair communication; WUTF combines CNN-GRU actors, a centralized critic, and sequential PPO-style updates for trajectory, Jain fairness, and propulsion/communication efficiency (IEEE TMC).
+- [[wang-2026-glint-aoi-wireless-powered-edge]] - Wang et al. 2026. Wireless-powered multi-UAV AoI control; GLINT sequentially resolves 3-D mobility/association and WPT-time/transmission scheduling through local critics plus monotonic value mixing (IEEE TMC).
 - [[wu-2026-parallel-cooperative-charging]] - Wu et al. 2026. Shared-cost RF charging across provider stations and unequal-power parallel facilities; CSAU combines uniform-machine approximation with greedy set cover and derives a gamma(ln n + 1) bound (IEEE TMC).
 - [[zhao-2026-adaptive-wdc-wet-lae]] - Zhao et al. 2026. Adaptive low-altitude WDC/WET service balancing; MA2HDRL learns reward preference for AoI/HoE tradeoff while coordinating UAV trajectories, WET slots, and WDC subslots (IEEE TMC).
 - [[shi-2025-aoi-energy-replenishment-multiuav]] - Shi et al. 2025. AoI-aware multi-UAV IoT data collection and wireless energy replenishment; Dec-POMDP with VDN/QMIX CTDE policies over flight, SN/CS association, and charging decisions (IEEE TGCN).
@@ -495,6 +499,7 @@
 
 ### UAV communications & deployment foundations
 
+- [[li-2023-energy-constrained-uav-data-collection]] - Li et al. 2023. Energy-constrained UAV collection as a depot-returning full/partial orienteering problem, with an ILP, no-overlap approximation algorithms, and overlap-aware marginal-gain heuristics (IEEE TMC).
 - [[liu-2026-usp-nfrp-emergency-communication]] - Liu et al. 2026. Persistent emergency UAV swarm service with periodic replacement paths, dynamic tree backhaul repair, and max-min ant-system planning to minimize required fleet size (IEEE TGCN).
 - [[li-2026-dff-slam]] - Li et al. 2026. DFF-SLAM combines YOLOv3, multiscale optical flow, and epipolar filtering for GPS-suppressed UAV positioning, with TUM RGB-D accuracy tests and 16-FPS Jetson Xavier NX platform execution (IEEE TMC).
 - [[fan-2026-hap-uav-iort-oee]] - Fan et al. 2026. HAP-UAV IoRT collection with overall energy efficiency, joint aerial trajectories, HAP selection, UAV power, bandwidth allocation, meteorological fading, and Dinkelbach/BCD/SCA optimization (IEEE TMC).
@@ -710,6 +715,7 @@
 - [[tilt-aware-aerial-ris-control]]
 - [[star-ris]]
 - [[active-ris]]
+- [[decentralized-active-ris-uav-noma-control]]
 - [[multi-functional-ris]]
 - [[terahertz-communication]]
 
@@ -724,6 +730,7 @@
 - [[trajectory-privacy]]
 - [[bang-bang-control]]
 - [[uav-charging-scheduling]]
+- [[wireless-powered-uav-fair-service-control]]
 - [[parallel-cooperative-uav-charging]]
 - [[dynamic-uav-clustering]]
 - [[gauss-markov-mobility-model]]
@@ -741,6 +748,7 @@
 - [[uav-substitution-relaying]]
 - [[angle-of-radiation-uav-relay]]
 - [[successive-hover-and-fly-trajectory]]
+- [[energy-constrained-uav-data-collection-orienteering]]
 - [[information-causality-constraint]]
 
 ### DRL backbones
@@ -805,6 +813,7 @@
 - [[expert-guided-warm-start-rl]]
 - [[graph-neural-network]]
 - [[sequential-multi-agent-policy-generation]]
+- [[dual-network-sequential-aoi-control]]
 
 ### Memory / encoders
 
@@ -923,6 +932,7 @@
 - [[expert-assisted-anomaly-aware-tracking]]
 - [[hybrid-uav-flight-data-fault-detection]]
 - [[mmwave-radar-sensing]]
+- [[historical-echo-predictive-beamforming]]
 - [[radar-sensing-energy-tradeoff]]
 - [[uav-backscatter-identification]]
 - [[yolov7-object-detection]]

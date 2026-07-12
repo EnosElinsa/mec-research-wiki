@@ -66,6 +66,14 @@ related:
   - "[[meng-2026-uav-isac-corrections]]"
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
+  - "[[wang-2026-wutf-fair-communication]]"
+  - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[li-2023-energy-constrained-uav-data-collection]]"
+  - "[[energy-constrained-uav-data-collection-orienteering]]"
+  - "[[morshed-2026-active-ris-uav-noma-mappo]]"
+  - "[[decentralized-active-ris-uav-noma-control]]"
+  - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
+  - "[[dual-network-sequential-aoi-control]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---
@@ -90,3 +98,5 @@ Newer trajectory-control variants add infrastructure, QoS, security, privacy, se
 [[hua-2026-ddrl-content-delivery]] adds [[uav-content-caching]] to the mobility coupling: a route changes user access delay, energy use, and the BS backhaul cost of a cache miss, while a CNN-GRU PPO policy controls movement alongside transmission behavior.
 
 [[meng-2026-uav-isac-corrections]] repairs the convexified trajectory/rate block in periodic UAV-ISAC, while [[liu-2026-usp-nfrp-emergency-communication]] turns trajectories into closed replacement loops for [[persistent-emergency-uav-swarm-service]] under fixed-wing return-energy constraints.
+
+Wireless powering and collection add four trajectory couplings: [[wang-2026-wutf-fair-communication]] trades fair coverage against tower access and propulsion energy; [[li-2023-energy-constrained-uav-data-collection]] chooses depot-returning hover tours under one battery budget; [[morshed-2026-active-ris-uav-noma-mappo]] couples motion to active-RIS gain/phase and NOMA power; and [[wang-2026-glint-aoi-wireless-powered-edge]] resolves UAV position/association before charging-time and update scheduling.

@@ -3,6 +3,8 @@ type: concept
 title: "Multi-Agent Deep Deterministic Policy Gradient (MADDPG)"
 tags: [drl, multi-agent, actor-critic, ctde, deterministic-policy]
 related:
+  - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
+  - "[[dual-network-sequential-aoi-control]]"
   - "[[ddpg]]"
   - "[[multi-agent-td3]]"
   - "[[centralized-training-decentralized-execution]]"
@@ -26,7 +28,7 @@ related:
   - "uav-assisted-mobile-crowd-sensing"
   - "[[ctde-actor-critic-backbones-in-mec]]"
 created: 2026-05-31
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # Multi-Agent Deep Deterministic Policy Gradient (MADDPG)
@@ -56,3 +58,5 @@ The multi-agent extension of [[ddpg]]: each agent has its own deterministic acto
 ## Relation to siblings
 
 Compared with [[multi-agent-td3|MATD3]] (adds clipped double-Q + delayed updates + target smoothing to curb overestimation) and [[masac|MASAC]] (stochastic, max-entropy), MADDPG is the simplest/earliest of the CTDE actor-critic family and remains a common baseline.
+
+[[wang-2026-glint-aoi-wireless-powered-edge]] builds [[dual-network-sequential-aoi-control]] from the MADDPG training pattern, then compares it with centralized MODDPG and the paper's other named baselines. GLINT replaces one monolithic action stage with ordered position/association and charging/transmission stages plus value mixing.

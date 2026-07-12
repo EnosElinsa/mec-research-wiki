@@ -3,6 +3,8 @@ type: concept
 title: NOMA (Non-Orthogonal Multiple Access)
 tags: [wireless, multiple-access, spectrum]
 related:
+  - "[[morshed-2026-active-ris-uav-noma-mappo]]"
+  - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[qin-2025-bcuav-masac]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
@@ -12,7 +14,7 @@ related:
   - "[[hosseini-2026-aoi-covert-uav]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
 created: 2026-05-28
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # NOMA (Non-Orthogonal Multiple Access)
@@ -41,6 +43,8 @@ A multiple-access scheme where multiple users share the *same* time-frequency re
 [[zhou-2026-a2g-madrl-air-ground-vcs]] uses NOMA as the communication substrate for air-ground vehicular crowdsensing. Channel assignment becomes part of the [[sequential-multi-agent-policy-generation]] action because UAVs and UGVs share channels while collecting PoI data.
 
 ## Caveats
+
+[[morshed-2026-active-ris-uav-noma-mappo]] makes pair-level NOMA power coefficients the BS agent's action inside [[decentralized-active-ris-uav-noma-control]], while the UAV and active-RIS agents alter the propagation geometry and reflected path.
 
 - NOMA's SIC ordering assumes accurate channel estimation; in mobile UAV scenarios this is a non-trivial assumption.
 - SIC error propagation can dominate at high user counts.

@@ -9,8 +9,12 @@ related:
   - "[[qoe-modeling-mec]]"
   - "[[gao-2024-service-experience-cache-uav]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
+  - "[[wang-2026-wutf-fair-communication]]"
+  - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[morshed-2026-active-ris-uav-noma-mappo]]"
+  - "[[decentralized-active-ris-uav-noma-control]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # Jain's Fairness Index
@@ -22,3 +26,5 @@ $$ J(x) = \frac{\left(\sum_i x_i\right)^2}{n \sum_i x_i^2} \in [1/n, 1] $$
 It equals 1 when all users receive identical allocation (perfectly fair) and drops toward $1/n$ as the allocation concentrates on a few users. It is scale-independent and population-size-independent.
 
 In the wiki, [[gao-2024-service-experience-cache-uav]] applies Jain's index to per-UE average **service delay** and divides it by the average delay to form the [[service-experience-ratio]] — coupling fairness with latency in one [[qoe-modeling-mec]] objective. [[wang-2026-llm-qos-multiuav-resource]] uses Jain-style fairness inside a weighted delay-fairness objective for multi-UAV cooperative edge computing. It complements the corpus's other fairness measures, [[theil-fairness-index]] and [[spatial-equity-index]].
+
+[[wang-2026-wutf-fair-communication]] applies the index to accumulated per-user throughput inside both its formal throughput-fairness-energy objective and learned reward. [[morshed-2026-active-ris-uav-noma-mappo]] instead includes Jain fairness in a shared MAPPO reward for active-RIS UAV-NOMA control alongside rate, energy efficiency, and outage.

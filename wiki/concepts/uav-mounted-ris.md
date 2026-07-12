@@ -3,6 +3,8 @@ type: concept
 title: "UAV-Mounted RIS"
 tags: [intelligent-reflecting-surface, uav, aerial, deployment, 6g]
 related:
+  - "[[morshed-2026-active-ris-uav-noma-mappo]]"
+  - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[intelligent-reflecting-surface]]"
   - "[[drone-cell-3d-placement]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
@@ -17,7 +19,7 @@ related:
   - "[[zhang-2026-air-ground-covert-jamming]]"
   - "[[ris-assisted-directional-jamming]]"
 created: 2026-06-03
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # UAV-Mounted RIS
@@ -35,3 +37,5 @@ In the wiki, [[pan-2025-uav-ris-energy-efficient-comm]] studies **cooperative mu
 The corpus also uses UAV-mounted RIS in MEC-specific roles. [[mohammadi-2026-star-ris-uav-mec-noma]] equips the UAV with a [[star-ris]] so transmitted and reflected paths can feed UAV-MEC and terrestrial MEC servers under NOMA. [[xiao-2025-star-ris-bidirectional-uav-mec]] mounts the STAR-RIS horizontally and uses its reflection/transmission paths for same-slot bidirectional offloading to BS-MEC and UAV-MEC servers. [[liao-2025-ris-uav-usv-resource-allocation]] mounts RIS elements on UAVs to assist blocked inland-waterway TBS-USV links in a [[maritime-mec]] setting, while [[liao-2026-aoi-ris-uav-usv-mec]] uses a RIS-carried tethered UAV with RUAV service decisions for AoI-aware UAV-USV MEC. [[li-2026-aerial-ris-trajectory-phase]] adds [[tilt-aware-aerial-ris-control]], where Euler-angle motion and orientation-dependent RIS gain become first-class communication variables.
 
 [[zhang-2026-air-ground-covert-jamming]] adds a security-oriented use: the UAV-mounted RIS assists decode-forward covert relay transmission while redirecting terrestrial jammer energy toward the warden rather than only improving the legitimate link.
+
+[[morshed-2026-active-ris-uav-noma-mappo]] mounts an active RIS on the UAV and splits joint control across BS, platform, and surface agents. This [[decentralized-active-ris-uav-noma-control]] case explicitly counts static RIS power and dynamic amplifier power rather than treating the surface as passive or energetically free.

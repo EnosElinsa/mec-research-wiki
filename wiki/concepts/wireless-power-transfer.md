@@ -10,6 +10,10 @@ related:
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[wu-2026-parallel-cooperative-charging]]"
   - "[[parallel-cooperative-uav-charging]]"
+  - "[[wang-2026-wutf-fair-communication]]"
+  - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
+  - "[[dual-network-sequential-aoi-control]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---
@@ -40,6 +44,8 @@ Joint optimization picks $\{\tau_0, \tau_1, \ldots, \tau_N, \mathbf x, \mathbf f
 [[shi-2025-aoi-energy-replenishment-multiuav]] uses UAV-to-sensor wireless energy transfer as the first stage of each fresh-data-collection slot: a UAV charges an associated sensor node, the node uses that harvested energy to upload an update, and the UAV later recharges at a fixed charging station.
 
 [[wu-2026-parallel-cooperative-charging]] uses RF transfer in the opposite direction: provider-operated facilities recharge UAV batteries. The contribution is [[parallel-cooperative-uav-charging]] across shared-cost station groups and parallel facility queues rather than harvest/offload time allocation.
+
+Two trajectory-control cases expose opposite WPT directions. [[wang-2026-wutf-fair-communication]] lets ground towers replenish UAV base stations while [[wireless-powered-uav-fair-service-control]] balances user fairness against flight energy. [[wang-2026-glint-aoi-wireless-powered-edge]] instead lets UAVs charge sensor batteries before fresh-data upload, with [[dual-network-sequential-aoi-control]] separating mobility/association from charging and transmission scheduling.
 
 ## Why "long-term" matters
 

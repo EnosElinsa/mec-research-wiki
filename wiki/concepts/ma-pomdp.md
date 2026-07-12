@@ -14,6 +14,8 @@ related:
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[le-2026-asynchronous-uav-data-collection]]"
   - "[[asynchronous-qmix]]"
+  - "[[wang-2026-wutf-fair-communication]]"
+  - "[[wireless-powered-uav-fair-service-control]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---
@@ -43,3 +45,5 @@ The natural multi-agent generalization of [[pomdp|POMDP]]: $N$ agents, each with
 [[wu-not-in-parse-aoi-sampling-buffering-routing]] applies the same partial-observation logic inside a leader-follower UAV swarm, where each follower sees only local queue, neighbor, and freshness state. [[zhou-2026-a2g-madrl-air-ground-vcs]] adds a UAV/UGV/PoI crowdsensing version whose [[sequential-multi-agent-policy-generation]] layer makes the joint action order explicit.
 
 [[le-2026-asynchronous-uav-data-collection]] adds a Dec-POSMDP extension: partial observation remains, but action durations vary and decision epochs are agent-specific. [[asynchronous-qmix]] handles the resulting event-driven value decomposition without collapsing it back to a synchronized Dec-POMDP.
+
+[[wang-2026-wutf-fair-communication]] uses the synchronous MA-POMDP form for [[wireless-powered-uav-fair-service-control]]: each actor observes all users and charging towers but omits other UAV positions and batteries, while the training critic receives the global state.

@@ -31,6 +31,8 @@ related:
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
   - "[[cooperative-isac-transceiver-beamforming]]"
   - "[[meng-2026-uav-isac-corrections]]"
+  - "[[xu-2026-hecta-predictive-beamforming]]"
+  - "[[historical-echo-predictive-beamforming]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---
@@ -61,3 +63,5 @@ Newer secure and networked entries widen the ISAC role. [[yan-not-in-parse-multi
 [[zhang-2025-cooperative-anti-uav-isac]] uses [[cooperative-isac-transceiver-beamforming]] for multi-cell anti-UAV surveillance, optimizing sensing SCNR together with communication SINR and BS power while comparing centralized coordination with multiplier-exchanging distributed control.
 
 [[meng-2026-uav-isac-corrections]] documents a formulation-level correction for periodic UAV-ISAC: it removes a duplicated association factor, replaces an unsupported Hessian claim with an auxiliary-variable/Taylor transformation, and confirms that the resulting rate subproblems are convex.
+
+[[xu-2026-hecta-predictive-beamforming]] adds a communication-centric ISAC use: historical matched-filtered echoes are fed directly to [[historical-echo-predictive-beamforming|HECTA-Net]] to predict the next BS transmit and UAV receive beams, without first estimating a kinematic state or explicit CSI.
