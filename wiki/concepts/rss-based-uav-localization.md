@@ -9,8 +9,10 @@ related:
   - "[[uav-localization-under-jamming]]"
   - "[[zhu-2026-uav-localization-jamming]]"
   - "[[cao-2026-uav-self-tracking-ms-mm]]"
+  - "[[li-2026-dff-slam]]"
+  - "[[dynamic-feature-filtering-vslam]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # RSS-Based UAV Localization
@@ -20,3 +22,5 @@ RSS-based UAV localization uses a UAV as a mobile aerial anchor. Ground objects 
 [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] adds the trajectory-control layer. The UAV first scans the region to discover objects, then uses Q-learning to choose waypoint cells that reduce average localization error under energy, path-length, time, or waypoint-count budgets. The localization error depends on the geometry of collected RSSI measurements, so motion planning and [[air-to-ground-channel-model|ATG channel modeling]] are inseparable.
 
 This is distinct from [[uav-localization-under-jamming]], where the UAV itself is the target being localized under attack. RSS-based UAV localization is about using the UAV to localize ground objects.
+
+[[li-2026-dff-slam]] provides a second contrast: [[dynamic-feature-filtering-vslam]] estimates the camera-carrying UAV's own pose from visual features in a GPS-suppressed dynamic scene, rather than converting radio measurements into ground-object ranges.

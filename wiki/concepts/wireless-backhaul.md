@@ -11,8 +11,10 @@ related:
   - "[[aerial-active-ris-backhaul]]"
   - "[[jeon-2026-ampli-flection-aerial-backhaul]]"
   - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
+  - "[[hua-2026-ddrl-content-delivery]]"
+  - "[[uav-content-caching]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Wireless Backhaul
@@ -27,5 +29,6 @@ Recurring forms in the wiki:
 - **Aerial active-RIS backhaul** - an airborne active RIS provides the relay-like backhaul path for UAV base stations while optimizing amplification, phase, platform placement, and array partitioning. [[jeon-2026-ampli-flection-aerial-backhaul]] is the corpus anchor for this [[aerial-active-ris-backhaul]] pattern.
 - **FANET swarm backhaul / forwarding** — multi-UAV networks need routing behavior that survives topology and traffic changes. [[deng-2026-eret-fanet-routing]] treats route-expiration time as an adaptive knob for moving between route reuse and content-centric discovery.
 - **Inter-RSU backhaul** — wired between RSUs, modeled in [[ma-2025-pdqn-vehicular-mec]] as a fixed, small per-hop transmission delay between adjacent RSUs (propagation-dominated, scaled by the number of road segments a relayed task crosses).
+- **Cache-miss backhaul** - [[hua-2026-ddrl-content-delivery]] makes the BS-UAV retrieval link part of end-to-end acquisition delay: [[uav-content-caching]] avoids this hop on a hit, while a miss couples cache replacement to UAV position and backhaul rate.
 
 A backhaul link's capacity is *upper-tier* infrastructure. It rarely appears as a decision variable, but its value as a constraint shapes the offloading topology — overloaded backhaul forces more local processing.

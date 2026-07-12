@@ -21,6 +21,7 @@ related:
   - "[[cooperative-isac-transceiver-beamforming]]"
   - "[[fan-2026-hap-uav-iort-oee]]"
   - "[[zhang-2022-uav-relay-substitution]]"
+  - "[[meng-2026-uav-isac-corrections]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---
@@ -43,3 +44,5 @@ This stack is the **non-DRL** counterpoint to the j-PPO / DDPG / SAC backbone th
 [[mohammadi-2026-star-ris-uav-mec-noma]] uses the same decomposition style without SDR as the headline: bit allocation, transmit power, STAR-RIS phase shifts, and UAV trajectory are separated into subproblems, then handled with SCA or closed-form MRT-style phase updates inside a BCD loop. [[xiao-2025-star-ris-bidirectional-uav-mec]] uses Dinkelbach plus SCA inside BCD for STAR-RIS bidirectional offloading. [[wang-2026-secure-lae-uav-scheduling]] decomposes secrecy-energy-efficiency maximization into scheduling, power, and trajectory/velocity subproblems, using penalty updates, SCA, and Dinkelbach-driven iteration. [[li-2026-isac-vec-beamforming-deployment]] uses a similar block split for ISAC-enhanced VEC: swarm search handles UAV deployment, while SCA and first-order Taylor expansion handle beamforming. [[li-2026-control-based-uav-isac]] keeps the SCA/SDR beamforming block but replaces waypoint-only trajectory optimization with control-parameterized 3-DoF/6-DoF UAV dynamics. [[hosseini-2026-aoi-covert-uav]] applies the same AO family to covert AoI: LP handles AoI, SCA handles trajectory, and SDR/SCA handles beamforming. [[cui-2026-aris-v2x-icac]] uses BCD plus first-order Taylor convexification for ARIS-aided V2X communication/computation. [[wu-2026-secure-split-offloading-ci]] uses AO with SCA trajectory subproblems and a discrete WOA subproblem for early-exit and DNN-partition choices. [[you-2019-rician-uav-data-harvesting]] applies BCD/SCA to scheduling plus horizontal/vertical trajectory under outage-aware Rician fading, while [[lee-2026-uav-delivery-time-energy]] uses SCA and a penalty convex-concave procedure for pickup/drop-off delivery trajectory optimization.
 
 [[fan-2026-hap-uav-iort-oee]] adds a Dinkelbach/BCD/SCA stack for HAP-UAV IoRT energy efficiency. [[zhang-2022-uav-relay-substitution]] uses block coordinate ascent plus SCA, without SDR, to alternate relay trajectories and powers under overlapping UAV substitution.
+
+[[meng-2026-uav-isac-corrections]] supplies a cautionary SCA case: an omitted auxiliary-variable transformation and first-order logarithmic bound, rather than a claimed negative-definite Hessian, are what make the corrected periodic UAV-ISAC rate subproblem convex.

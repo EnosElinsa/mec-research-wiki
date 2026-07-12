@@ -10,8 +10,10 @@ related:
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[li-2026-aeroguard-uav-fault-detection]]"
   - "[[hybrid-uav-flight-data-fault-detection]]"
+  - "[[li-2026-dff-slam]]"
+  - "[[dynamic-feature-filtering-vslam]]"
 created: 2026-07-07
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # Edge Intelligence
@@ -21,3 +23,5 @@ Edge intelligence places AI training, inference, and decision services across th
 In [[gong-2023-edge-intelligence-its-survey]], edge intelligence is the organizing concept for intelligent transportation systems: vehicles, cameras, traffic infrastructure, UAVs, and rail systems generate edge data, while RSUs, APs, micro data centers, and cloud centers split AI workloads according to latency, privacy, energy, and model-complexity requirements. The concept overlaps with [[vehicular-mec]], [[uav-enabled-its]], and the edge-cloud AI service framing in [[xu-2024-mobile-aigc-survey]].
 
 [[li-2026-aeroguard-uav-fault-detection]] adds an onboard-safety instance: [[hybrid-uav-flight-data-fault-detection]] fuses LSTM and ARX predictions and runs lightweight residual tests within Raspberry Pi-class latency budgets.
+
+[[li-2026-dff-slam]] adds onboard visual localization: [[dynamic-feature-filtering-vslam]] combines YOLOv3, optical flow, and epipolar filtering on a Jetson Xavier NX, retaining 16 FPS in the reported UAV-platform runtime test.

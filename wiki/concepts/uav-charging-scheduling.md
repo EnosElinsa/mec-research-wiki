@@ -9,8 +9,10 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[zhu-2026-hab-mappo-target-search]]"
+  - "[[wu-2026-parallel-cooperative-charging]]"
+  - "[[parallel-cooperative-uav-charging]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # UAV Charging Scheduling
@@ -32,3 +34,5 @@ In [[liu-2026-jppo-en-convntm]] this is the discrete-action component handled by
 [[shi-2025-aoi-energy-replenishment-multiuav]] applies the same scheduling tension to AoI-aware IoT data collection: a UAV either keeps serving sensor nodes or switches into a charging-station mode, and value-decomposition MARL learns when the AoI benefit of continued service no longer outweighs battery risk.
 
 [[zhu-2026-hab-mappo-target-search]] uses the same scheduling idea in a laser-charged target-search setting: during the offloading subslot, each UAV either searches or charges, and the learned charging policy extends search time relative to a fixed-threshold charging baseline in the reported simulations.
+
+[[wu-2026-parallel-cooperative-charging]] shifts the scheduling layer from per-slot mission control to charging infrastructure. Its [[parallel-cooperative-uav-charging]] model forms shared-cost station groups and assigns each group across unequal-power parallel facilities.

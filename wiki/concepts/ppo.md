@@ -10,8 +10,9 @@ related:
   - "[[wang-2025-ppo-uav-positioning-offloading]]"
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
   - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
+  - "[[hua-2026-ddrl-content-delivery]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # PPO (Proximal Policy Optimization)
@@ -40,6 +41,8 @@ $$
 The vanilla form assumes a single action distribution. The work in [[liu-2026-jppo-en-convntm]] generalizes the probability ratio to a hybrid of continuous and discrete components — see [[j-ppo]].
 
 [[wang-2025-ppo-uav-positioning-offloading]] uses PPO for joint UAV positioning and partial task offloading in multi-UAV MEC, while [[wu-2026-model-based-ppo-ris-uav-mec]] embeds PPO in a decentralized model-based MARL loop with local dynamics rollouts for RIS-assisted urban UAV-MEC. [[beishenalieva-2026-secrecy-aware-uav-path-planning]] uses PPO-style policy-gradient control for secrecy-aware UAV path, power, and mode decisions before PSO slot allocation.
+
+[[hua-2026-ddrl-content-delivery]] uses clipped PPO in a CNN-GRU dual-phase loop: online UAV movement and transmission decisions populate a buffer, while offline GAE-based updates retrain and redistribute the policy for multi-BS content delivery.
 
 ## Reference implementation
 

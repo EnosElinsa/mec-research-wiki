@@ -47,6 +47,7 @@
 
 ### Joint trajectory / caching / migration
 
+- [[hua-2026-ddrl-content-delivery]] - Hua et al. 2026. Multi-BS UAV content delivery with CNN-GRU clipped PPO for movement/transmission decisions and PSO-tuned cache replacement over popularity, size, and request frequency (IEEE TWC).
 - [[zhao-2025-traj-offload-cache-migration]] — Zhao et al. 2025. Joint trajectory + offloading + migration + **computational-task caching**; Lyapunov + BCD + QCQP-SDR.
 - [[gao-2024-service-experience-cache-uav]] — Gao & Zhai 2024. Fairness-aware cache-enabled UAV-MEC; **service-experience ratio** (Jain's index / delay); Dinkelbach + 4-stage AO.
 - [[zhao-2024-caching-service-placement-uav]] — Zhao et al. 2024. Joint content caching + service placement + offloading; QoE max via Gibbs sampling + matching.
@@ -364,6 +365,7 @@
 
 ### ISAC, sensing & physical-layer security
 
+- [[meng-2026-uav-isac-corrections]] - Meng et al. 2026. One-page correction to periodic UAV-ISAC throughput optimization; removes a duplicated association factor and supplies the omitted auxiliary-variable/Taylor transformation that makes the corrected subproblems convex (IEEE TWC).
 - [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026. LSCR target handover for collaborative UAV relay tracking; Delaunay target graphs, TGR features, and Twin-GRCN similarity matching reach 92.1% accuracy with 0.063 KB transfer and a 20 KB model (IEEE T-ITS).
 - [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] - Wang et al. 2026. UAV-enabled vehicular ISAC with RMADDPG-DDA adaptive control over UAV motion/yaw, communication power, and ISAC transmit power; RND novelty, parameter sharing, and dynamic data augmentation improve served users and effective MI (IEEE TMC).
 - [[hazarika-2026-dynamo-uav-vehicle-tracking]] - Hazarika & Rahmati 2026. Predictive UAV tracking for fast-moving vehicles using DynaMo motion prediction, DTPM prioritization, CRLB/FIM optimization, and POMDP-MADDPG control (IEEE T-ITS).
@@ -461,6 +463,7 @@
 
 ### Energy efficiency & WPT
 
+- [[wu-2026-parallel-cooperative-charging]] - Wu et al. 2026. Shared-cost RF charging across provider stations and unequal-power parallel facilities; CSAU combines uniform-machine approximation with greedy set cover and derives a gamma(ln n + 1) bound (IEEE TMC).
 - [[zhao-2026-adaptive-wdc-wet-lae]] - Zhao et al. 2026. Adaptive low-altitude WDC/WET service balancing; MA2HDRL learns reward preference for AoI/HoE tradeoff while coordinating UAV trajectories, WET slots, and WDC subslots (IEEE TMC).
 - [[shi-2025-aoi-energy-replenishment-multiuav]] - Shi et al. 2025. AoI-aware multi-UAV IoT data collection and wireless energy replenishment; Dec-POMDP with VDN/QMIX CTDE policies over flight, SN/CS association, and charging decisions (IEEE TGCN).
 - [[zhu-2025-lycnn-drl-wpt-mec]] — Zhu et al. 2025. Lyapunov-guided DRL for WPT-MEC.
@@ -492,6 +495,8 @@
 
 ### UAV communications & deployment foundations
 
+- [[liu-2026-usp-nfrp-emergency-communication]] - Liu et al. 2026. Persistent emergency UAV swarm service with periodic replacement paths, dynamic tree backhaul repair, and max-min ant-system planning to minimize required fleet size (IEEE TGCN).
+- [[li-2026-dff-slam]] - Li et al. 2026. DFF-SLAM combines YOLOv3, multiscale optical flow, and epipolar filtering for GPS-suppressed UAV positioning, with TUM RGB-D accuracy tests and 16-FPS Jetson Xavier NX platform execution (IEEE TMC).
 - [[fan-2026-hap-uav-iort-oee]] - Fan et al. 2026. HAP-UAV IoRT collection with overall energy efficiency, joint aerial trajectories, HAP selection, UAV power, bandwidth allocation, meteorological fading, and Dinkelbach/BCD/SCA optimization (IEEE TMC).
 - [[chen-not-in-parse-uav-human-medical-delivery]] - Chen et al. Cooperative emergency medical pickup-delivery scheduling with UAVs and human couriers; an attention-based cooperative DRL policy uses type-specific decoders, feasibility masks, and a vehicle coordinator. *(Parsed metadata lacks DOI/venue/year.)*
 - [[yang-2025-hcdrl-pursuit-evasion]] - Yang et al. 2025. Hierarchical cooperative DRL for multi-UAV pursuit-evasion; a meta-policy selects five encirclement subtasks and CTDE lower policies control collision-aware maneuvers (IEEE GC Wkshps).
@@ -585,6 +590,7 @@
 - [[computation-to-communication-ratio]]
 - [[computation-peer-offloading]]
 - [[computational-task-caching]]
+- [[uav-content-caching]]
 - [[battery-swapping-uav-mec]]
 - [[coded-caching]]
 - [[erasure-coded-edge-storage]]
@@ -689,6 +695,7 @@
 - [[maritime-mec]]
 - [[uav-usv-cooperative-mec]]
 - [[post-disaster-mec]]
+- [[persistent-emergency-uav-swarm-service]]
 - [[three-tier-cloud-edge-end]]
 - [[wireless-backhaul]]
 - [[aerial-active-ris-backhaul]]
@@ -717,6 +724,7 @@
 - [[trajectory-privacy]]
 - [[bang-bang-control]]
 - [[uav-charging-scheduling]]
+- [[parallel-cooperative-uav-charging]]
 - [[dynamic-uav-clustering]]
 - [[gauss-markov-mobility-model]]
 - [[hybrid-action-decision-making]]
@@ -907,6 +915,7 @@
 - [[cramer-rao-bound]]
 - [[multi-bs-feature-fusion-isac]]
 - [[rss-based-uav-localization]]
+- [[dynamic-feature-filtering-vslam]]
 - [[minor-subspace-tracking]]
 - [[uav-localization-under-jamming]]
 - [[integrated-sensing-computation-communication]]

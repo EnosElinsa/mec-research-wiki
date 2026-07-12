@@ -7,8 +7,10 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[energy-latency-tradeoff]]"
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
+  - "[[liu-2026-usp-nfrp-emergency-communication]]"
+  - "[[persistent-emergency-uav-swarm-service]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-12
 ---
 
 # Fixed-Wing UAV Propulsion Energy Model
@@ -22,3 +24,5 @@ where the first term is **parasitic drag** (grows with speed²), the second is *
 The defining property versus the [[rotary-wing-propulsion-energy-model]]: fixed-wing propulsion power **diverges as `V → 0`** — a fixed-wing UAV **cannot hover**, so energy-efficient designs must keep it moving (e.g., orbiting a ground terminal). Fixed-wing UAVs typically carry larger payloads and fly faster than rotary-wing counterparts.
 
 This model originates in [[zeng-2017-energy-efficient-uav-trajectory]] (Zeng & Zhang, IEEE TWC 2017), which the authors state is the first to relate UAV propulsion energy to **both velocity and acceleration** (prior models used speed only). It underpins energy-efficient (bits/Joule) [[uav-trajectory-control]] and the [[energy-latency-tradeoff]] in aerial communications. The companion model for hovering-capable UAVs is the [[rotary-wing-propulsion-energy-model]] from [[zeng-2019-rotary-wing-energy-min]].
+
+[[liu-2026-usp-nfrp-emergency-communication]] applies the fixed-wing endurance logic to [[persistent-emergency-uav-swarm-service]]: aircraft fly at constant speed, approximate hovering with small circles, and must retain enough energy to return to the charging station before another UAV takes over.

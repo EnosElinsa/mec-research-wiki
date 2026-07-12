@@ -18,6 +18,8 @@ related:
   - "[[uav-to-x-communication]]"
   - "[[zhang-2022-uav-relay-substitution]]"
   - "[[uav-substitution-relaying]]"
+  - "[[liu-2026-usp-nfrp-emergency-communication]]"
+  - "[[persistent-emergency-uav-swarm-service]]"
 created: 2026-06-01
 updated: 2026-07-12
 ---
@@ -41,3 +43,4 @@ A relaying technique in which the relay node is **mounted on a high-mobility UAV
 - [[bujari-2018-stateless-fanet-routing]] is the packet-routing complement: it compares stateless geographic forwarding protocols for FANETs where UAV nodes relay packets without maintaining end-to-end routes.
 - [[zhang-not-in-parse-cellular-uav-to-x]] uses high-SNR UAVs as opportunistic relays for low-SNR sensing UAVs; the relay caches U2U data and uploads it over U2N, while speed rather than path geometry is optimized.
 - [[zhang-2022-uav-relay-substitution]] adds [[uav-substitution-relaying]] for service durations longer than one relay's flight endurance. HUS rotates relays sequentially, while SEUS overlaps receive/forward periods and co-optimizes trajectories and powers against inter-relay interference.
+- [[liu-2026-usp-nfrp-emergency-communication]] expands endurance-aware relaying into [[persistent-emergency-uav-swarm-service]]: periodic replacement paths rotate UAVs through access and relay roles while a dynamically repaired tree preserves multi-hop station connectivity.

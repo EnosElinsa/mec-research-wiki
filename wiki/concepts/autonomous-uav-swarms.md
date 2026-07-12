@@ -20,6 +20,10 @@ related:
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
   - "[[yang-2025-hcdrl-pursuit-evasion]]"
   - "[[cooperative-uav-pursuit-evasion]]"
+  - "[[li-2026-dff-slam]]"
+  - "[[dynamic-feature-filtering-vslam]]"
+  - "[[liu-2026-usp-nfrp-emergency-communication]]"
+  - "[[persistent-emergency-uav-swarm-service]]"
 created: 2026-07-10
 updated: 2026-07-12
 ---
@@ -41,3 +45,7 @@ For the MEC wiki, the concept is useful because later papers often import only o
 [[huang-2026-aircomp-uav-swarms-afl]] adds a learning-coordination angle: sensing UAVs and communication UAVs form an asynchronous federated-learning swarm where [[aircomp-assisted-asynchronous-fl]] reduces uplink aggregation latency while staleness-aware weighting protects the global model.
 
 [[yang-2025-hcdrl-pursuit-evasion]] adds adversarial swarm control through [[cooperative-uav-pursuit-evasion]], where pursuers learn when to switch formation subtasks and how to execute continuous collision-aware maneuvers around an evading UAV.
+
+[[li-2026-dff-slam]] supplies a GPS-suppressed positioning component for that autonomy stack: [[dynamic-feature-filtering-vslam]] removes moving-scene features before onboard pose estimation, although the paper evaluates one UAV rather than swarm-level coordination.
+
+[[liu-2026-usp-nfrp-emergency-communication]] adds endurance-aware mission coordination through [[persistent-emergency-uav-swarm-service]], where periodic replacement paths and dynamic tree repair keep access and relay tasks continuously staffed.

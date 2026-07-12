@@ -8,8 +8,10 @@ related:
   - "[[hu-2026-latency-hybrid-uav-mec]]"
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
+  - "[[wu-2026-parallel-cooperative-charging]]"
+  - "[[parallel-cooperative-uav-charging]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # Wireless Power Transfer (WPT) for MEC
@@ -36,6 +38,8 @@ Joint optimization picks $\{\tau_0, \tau_1, \ldots, \tau_N, \mathbf x, \mathbf f
 [[zhao-2026-adaptive-wdc-wet-lae]] uses UAV WET as a service-balancing objective in a low-altitude IoT network. E-devices harvest RF energy under a nonlinear EH model, while I-devices require WDC freshness; the controller adapts the WDC/WET preference instead of fixing the scalarization weight.
 
 [[shi-2025-aoi-energy-replenishment-multiuav]] uses UAV-to-sensor wireless energy transfer as the first stage of each fresh-data-collection slot: a UAV charges an associated sensor node, the node uses that harvested energy to upload an update, and the UAV later recharges at a fixed charging station.
+
+[[wu-2026-parallel-cooperative-charging]] uses RF transfer in the opposite direction: provider-operated facilities recharge UAV batteries. The contribution is [[parallel-cooperative-uav-charging]] across shared-cost station groups and parallel facility queues rather than harvest/offload time allocation.
 
 ## Why "long-term" matters
 

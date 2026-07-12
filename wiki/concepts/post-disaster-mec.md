@@ -8,8 +8,10 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[erasure-coded-edge-storage]]"
   - "[[huang-2026-erasure-coded-uav-storage]]"
+  - "[[liu-2026-usp-nfrp-emergency-communication]]"
+  - "[[persistent-emergency-uav-swarm-service]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # Post-Disaster MEC
@@ -29,6 +31,7 @@ The MEC operating regime where ground infrastructure is partially or wholly dest
 - **Urgency-aware admission** — instead of FCFS, sort tasks by deadline / criticality before admitting to the UAV queue. See DRUDM in [[peng-2025-drudm-cfg]].
 - **Fairness regularizers** — explicit reward shaping to avoid UAV "camping" over the densest cluster. See [[theil-fairness-index]] and the corresponding regularizers in [[peng-2025-drudm-cfg]] and [[liu-2026-jppo-en-convntm]].
 - **Resilient edge storage** — UAVs can cache coded data blocks so users recover files even when only a subset of UAVs is reachable. See [[erasure-coded-edge-storage]] and [[huang-2026-erasure-coded-uav-storage]].
+- **Persistent rotating backhaul** - [[liu-2026-usp-nfrp-emergency-communication]] uses [[persistent-emergency-uav-swarm-service]] to rotate fixed-wing aircraft through access/relay tasks while repairing the aerial tree topology during replacements.
 
 ## Open questions
 

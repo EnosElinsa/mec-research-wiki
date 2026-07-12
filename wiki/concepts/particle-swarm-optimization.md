@@ -13,8 +13,10 @@ related:
   - "[[heuristic-supervised-drl]]"
   - "[[whale-optimization-algorithm]]"
   - "[[swarm-metaheuristics-in-uav-mec]]"
+  - "[[hua-2026-ddrl-content-delivery]]"
+  - "[[uav-content-caching]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # Particle Swarm Optimization (PSO)
@@ -24,3 +26,5 @@ A population-based metaheuristic in which candidate solutions ("particles") move
 [[zhao-2026-heuristic-supervised-drl]] uses PSO as the upper-tier trajectory planner in a [[heuristic-supervised-drl]] loop, with a supervised bridge predicting candidate plan quality before MARL execution. [[beishenalieva-2026-secrecy-aware-uav-path-planning]] uses PSO as the lower-tier slot scheduler after a policy-gradient UAV controller chooses secure mobility and power actions. [[zang-2026-uav-ev-priority-cav-speed]] uses a dual-layer PSO for [[speed-coordinated-robust-optimization-control]], with the inner layer searching worst-case human lane-change timing and the outer layer choosing CAV speed-control decisions.
 
 In this wiki PSO appears as: the chain-ordering optimizer in [[wang-2025-acbft-uav-consensus]]; an **improved PSO (IPSO)** for offloading decisions in [[zhang-2024-uav-task-offloading-ddpg]]; and **adaptive PSO (APSO)** as one ingredient of the integrated framework in [[albakhrani-2025-moalf-uav-mec]]. It sits alongside other metaheuristics like the [[whale-optimization-algorithm]] and [[multi-verse-optimizer]].
+
+[[hua-2026-ddrl-content-delivery]] uses PSO at a different control layer: particles tune the popularity, object-size, and request-frequency weights of a [[uav-content-caching]] replacement score, while PPO handles UAV movement and transmission decisions.

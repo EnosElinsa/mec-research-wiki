@@ -6,8 +6,10 @@ related:
   - "[[mao-2024-ntn-hierarchical-caching-cav]]"
   - "[[particle-swarm-optimization]]"
   - "[[swarm-metaheuristics-in-uav-mec]]"
+  - "[[liu-2026-usp-nfrp-emergency-communication]]"
+  - "[[persistent-emergency-uav-swarm-service]]"
 created: 2026-05-29
-updated: 2026-06-03
+updated: 2026-07-12
 ---
 
 # Ant Colony Optimization (ACO)
@@ -15,3 +17,5 @@ updated: 2026-06-03
 A swarm-intelligence metaheuristic inspired by ants depositing pheromone along paths: good (short/low-cost) paths accumulate more pheromone and are reinforced, biasing the colony toward high-quality solutions over time. ACO is well suited to combinatorial problems with a graph/path structure (routing, selection, assignment).
 
 In [[mao-2024-ntn-hierarchical-caching-cav]], a **Delay-Motivated ACO (DM-ACO)** selects which LEO satellites should cache content so as to minimize system propagation delay (avoiding the duplication/interference of caching on every satellite). ACO belongs to the same swarm-metaheuristic family as [[particle-swarm-optimization]].
+
+[[liu-2026-usp-nfrp-emergency-communication]] uses a max-min ant system for [[persistent-emergency-uav-swarm-service]]. Pheromones distinguish fixed and non-fixed relay roles, interval change supplies the heuristic value, and each candidate move is screened by dynamic-tree connectivity logic.

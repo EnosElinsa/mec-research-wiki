@@ -30,6 +30,7 @@ related:
   - "[[action-masked-hierarchical-drl]]"
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
   - "[[cooperative-isac-transceiver-beamforming]]"
+  - "[[meng-2026-uav-isac-corrections]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---
@@ -58,3 +59,5 @@ Vehicular UAV-ISAC sources extend the same idea into moving-road targets. [[wang
 Newer secure and networked entries widen the ISAC role. [[yan-not-in-parse-multibs-isac-uav-trajectory]] uses [[multi-bs-feature-fusion-isac]] to track UAV trajectories from asynchronous cellular-ISAC observations, while [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] uses ISAC sensing to localize UAV eavesdroppers before [[action-masked-hierarchical-drl]] controls caching, association, deployment, and beamforming for secure content delivery.
 
 [[zhang-2025-cooperative-anti-uav-isac]] uses [[cooperative-isac-transceiver-beamforming]] for multi-cell anti-UAV surveillance, optimizing sensing SCNR together with communication SINR and BS power while comparing centralized coordination with multiplier-exchanging distributed control.
+
+[[meng-2026-uav-isac-corrections]] documents a formulation-level correction for periodic UAV-ISAC: it removes a duplicated association factor, replaces an unsupported Hessian claim with an auxiliary-variable/Taylor transformation, and confirms that the resulting rate subproblems are convex.

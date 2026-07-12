@@ -11,15 +11,16 @@ related:
   - "[[li-2024-airground-vec-offloading]]"
   - "[[feng-2026-prediction-service-migration]]"
   - "[[zhu-2026-uav-localization-jamming]]"
+  - "[[li-2026-dff-slam]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # Tony Q. S. Quek
 
 IEEE Fellow. Affiliated with the **Information Systems Technology and Design (ISTD) Pillar, Singapore University of Technology and Design (SUTD)** (Singapore; email `tonyquek@sutd.edu.sg`); some papers also list Yonsei University / Kyung Hee University. Consistent identity across his papers in this wiki.
 
-Co-authored 8 sources in this wiki:
+Co-authored 9 sources in this wiki:
 
 - [[liu-2025-haps-uav-maritime-iot]] — HAP-UAV-assisted maritime IoT communication network.
 - [[yao-2025-secure-isac-dual-eavesdropping]] — UAV-enabled secure ISAC against dual eavesdropping threats.
@@ -29,7 +30,8 @@ Co-authored 8 sources in this wiki:
 - [[li-2024-airground-vec-offloading]] — joint computation offloading + multidimensional resource allocation in an air-ground integrated VEC network (HAP + UAVs + RSU; JCESRA).
 - [[feng-2026-prediction-service-migration]] - prediction-assisted multi-UAV service migration and trajectory control for MEC-empowered vehicular networks.
 - [[zhu-2026-uav-localization-jamming]] — 3-D UAV localization under jamming via GAN/TDOA mode selection and mixture-Gaussian collaborative RL.
+- [[li-2026-dff-slam]] - dynamic-feature-filtered visual SLAM for UAV positioning in GPS-suppressed IoT environments.
 
 ## Contributions to this wiki
 
-- A senior collaborator (edge computing, ISAC, wireless networks) recurring across the maritime-IoT, secure-ISAC, UAV-caching, satellite-edge-computing, marine multi-access, air-ground vehicular-MEC, prediction-assisted service-migration, and UAV localization/security threads of the corpus.
+- A senior collaborator (edge computing, ISAC, wireless networks) recurring across the maritime-IoT, secure-ISAC, UAV-caching, satellite-edge-computing, marine multi-access, air-ground vehicular-MEC, prediction-assisted service-migration, and radio/visual UAV localization threads of the corpus.
