@@ -209,6 +209,8 @@
 
 ### IRS / THz / anti-jamming
 
+- [[huroon-2026-bd-ris-rsma-uav]] - Huroon et al. 2026. Ground-mounted group-connected BD-RIS with cluster assignment and intra-group RSMA; augmented GBD plus BCD/SCA/RCG jointly optimize precoders, rates, trajectories, and non-diagonal scattering matrices (IEEE TWC).
+- [[mihertie-2026-aerial-irs-rsma-ee]] - Mihertie et al. 2026. Communication-side energy-efficiency maximization for a UAV-mounted passive IRS MISO downlink with RSMA, aggregate hardware distortion, BCD/SCA, and sequential rank-one relaxation (IEEE TGCN).
 - [[morshed-2026-active-ris-uav-noma-mappo]] - Morshed et al. 2026. Active-RIS-aided UAV-NOMA communication with MAPPO actors for BS power allocation, UAV motion, and RIS gain/phase under a shared rate/energy/fairness/outage reward (IEEE TGCN).
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
 - [[hu-2026-segmented-irs-cpn]] - Hu et al. 2026. Dynamically segmented IRS-assisted UAV computing-power network; MAPPO trajectory control plus phase alignment, association, compute allocation, and SCA-based IRS-row matching for delay/energy optimization (IEEE TMC).
@@ -360,6 +362,7 @@
 
 ### Trust, security, and federated MEC
 
+- [[fu-2026-uav-fl-user-grouping]] - Fu et al. 2026. DBSCAN client grouping and two-phase SCA jointly control FL participation, data volume, UE power, UAV hover time, and trajectory under an expected-global-loss bound (IEEE TGCN).
 - [[chen-2026-sdhfl-completion-time]] - Chen et al. 2026. UAV-assisted semi-decentralized hybrid FL with D2D cluster consensus, asynchronous UAV aggregation, Lyapunov cluster selection, and joint mobility/resource optimization for completion time (IEEE TMC).
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
 - [[zhao-2026-uav-fl-inspection-incentives]] - Zhao et al. 2026. Contract-theoretic incentive assignment for UAV-client federated intelligent inspection under communication-sensing-computing integration; models data quality, sensing/computation costs, and FL participation utilities (IEEE TMC).
@@ -478,6 +481,8 @@
 
 ### Energy efficiency & WPT
 
+- [[zhang-2022-solar-charging-uav-iot]] - Zhang et al. 2022. Action-confined Q-learning and SARSA route one solar-powered UAV among charging stations and serving points under battery, downlink-data, and Jain-fairness rewards (IEEE TMC).
+- [[xie-2023-wireless-powered-short-packet-uav]] - Xie et al. 2023. Static UAV hybrid access point with downlink WPT and TDMA finite-blocklength uploads; alternating SCA/fractional updates solve a continuous relaxation before heuristic integer-symbol rounding (IEEE TGCN).
 - [[liu-2021-edivert-mobile-crowdsensing]] - Liu et al. 2021. e-Divert energy-efficient unmanned-vehicle crowdsensing with charging stations, CNN/LSTM CTDE control, Ape-X actors, and distributed prioritized replay (IEEE TMC).
 - [[he-2026-memdrl-uav-navigation]] - He et al. 2026. MEMDRL multi-UAV navigation for cooperative sensing and upload; MATD3 combines BeBold exploration, ConvLSTM histories, and multi-agent prioritized replay on Shenzhen and Beijing map layouts (IEEE TMC).
 - [[dong-2026-digital-tides-provisioning]] - Dong et al. 2026. Fluid-dynamic logistics-UAV workload modeling and information-flux-triggered activation of sleeping ground MEC infrastructure under setup latency (IEEE TMC).
@@ -566,6 +571,7 @@
 
 ### Authors
 
+- [[zheng-chang]] (UESTC / University of Jyväskylä - UAV communications, edge computing, ISAC, and green communications; 5 sources).
 - [[dusit-niyato]] (NTU) appears across 44 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 15 sources after the air-ground emergency localization paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 - [[zehui-xiong]] (Queen's University Belfast - generative AI, semantic communication, physical-layer security, and low-altitude resource allocation; 11 sources spanning surveys, diffusion/GDM methods, and aerial/satellite control).
@@ -746,6 +752,8 @@
 - [[evolvable-route-expiration-time]]
 - [[fault-tolerant-relay-network]]
 - [[intelligent-reflecting-surface]]
+- [[beyond-diagonal-ris]]
+- [[rate-splitting-multiple-access]]
 - [[dynamic-irs-user-association]]
 - [[spherical-transmissive-ris]]
 - [[uav-mounted-ris]]

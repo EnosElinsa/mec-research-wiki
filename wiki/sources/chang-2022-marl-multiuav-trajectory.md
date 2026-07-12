@@ -13,8 +13,9 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
+  - "[[zheng-chang]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-13
 ---
 
 # Trajectory Design and Resource Allocation for Multi-UAV Networks: Deep Reinforcement Learning Approaches

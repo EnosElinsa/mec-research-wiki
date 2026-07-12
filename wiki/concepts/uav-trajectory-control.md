@@ -89,6 +89,9 @@ related:
   - "[[tian-2026-joint-localization-communication]]"
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[memory-augmented-multi-uav-navigation]]"
+  - "[[zhang-2022-solar-charging-uav-iot]]"
+  - "[[huroon-2026-bd-ris-rsma-uav]]"
+  - "[[fu-2026-uav-fl-user-grouping]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -115,3 +118,5 @@ Newer trajectory-control variants add infrastructure, QoS, security, privacy, se
 [[meng-2026-uav-isac-corrections]] repairs the convexified trajectory/rate block in periodic UAV-ISAC, while [[liu-2026-usp-nfrp-emergency-communication]] turns trajectories into closed replacement loops for [[persistent-emergency-uav-swarm-service]] under fixed-wing return-energy constraints.
 
 Wireless powering and collection add four trajectory couplings: [[wang-2026-wutf-fair-communication]] trades fair coverage against tower access and propulsion energy; [[li-2023-energy-constrained-uav-data-collection]] chooses depot-returning hover tours under one battery budget; [[morshed-2026-active-ris-uav-noma-mappo]] couples motion to active-RIS gain/phase and NOMA power; and [[wang-2026-glint-aoi-wireless-powered-edge]] resolves UAV position/association before charging-time and update scheduling.
+
+[[zhang-2022-solar-charging-uav-iot]] adds a discrete charging-or-serving route over reachable destinations under solar harvesting, while [[huroon-2026-bd-ris-rsma-uav]] couples multi-UAV motion to a ground-mounted BD-RIS and RSMA. [[fu-2026-uav-fl-user-grouping]] uses trajectory and hover-time control to make grouped FL uploads energy-feasible.

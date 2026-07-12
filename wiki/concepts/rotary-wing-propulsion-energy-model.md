@@ -15,6 +15,9 @@ related:
   - "[[wireless-powered-uav-fair-service-control]]"
   - "[[tian-2026-joint-localization-communication]]"
   - "[[he-2026-memdrl-uav-navigation]]"
+  - "[[zhang-2022-solar-charging-uav-iot]]"
+  - "[[huroon-2026-bd-ris-rsma-uav]]"
+  - "[[fu-2026-uav-fl-user-grouping]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
@@ -34,3 +37,5 @@ This model originates in [[zeng-2019-rotary-wing-energy-min]] (Zeng, Xu & Zhang,
 [[hua-2026-ddrl-content-delivery]] uses the same three-term rotary-wing power form to turn served users per consumed energy into an intrinsic reward alongside content-acquisition delay and cache-hit performance.
 
 [[wang-2026-wutf-fair-communication]] resolves slot energy into acceleration, steady flight, deceleration, hovering, and communication terms, then couples that demand to charging-tower proximity inside [[wireless-powered-uav-fair-service-control]].
+
+[[zhang-2022-solar-charging-uav-iot]] combines horizontal, vertical, and hover demand with solar/station charging; [[huroon-2026-bd-ris-rsma-uav]] counts hovering/flying power inside a BD-RIS/RSMA energy-efficiency ratio; and [[fu-2026-uav-fl-user-grouping]] finds that propulsion dominates its grouped UAV-FL energy budget.

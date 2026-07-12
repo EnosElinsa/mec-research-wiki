@@ -18,8 +18,10 @@ related:
   - "[[tilt-aware-aerial-ris-control]]"
   - "[[zhang-2026-air-ground-covert-jamming]]"
   - "[[ris-assisted-directional-jamming]]"
+  - "[[mihertie-2026-aerial-irs-rsma-ee]]"
+  - "[[rate-splitting-multiple-access]]"
 created: 2026-06-03
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # UAV-Mounted RIS
@@ -39,3 +41,5 @@ The corpus also uses UAV-mounted RIS in MEC-specific roles. [[mohammadi-2026-sta
 [[zhang-2026-air-ground-covert-jamming]] adds a security-oriented use: the UAV-mounted RIS assists decode-forward covert relay transmission while redirecting terrestrial jammer energy toward the warden rather than only improving the legitimate link.
 
 [[morshed-2026-active-ris-uav-noma-mappo]] mounts an active RIS on the UAV and splits joint control across BS, platform, and surface agents. This [[decentralized-active-ris-uav-noma-control]] case explicitly counts static RIS power and dynamic amplifier power rather than treating the surface as passive or energetically free.
+
+[[mihertie-2026-aerial-irs-rsma-ee]] mounts a passive continuous-phase IRS on one UAV and couples its deployment point to [[rate-splitting-multiple-access]] precoders and common-rate allocation. Its communication-side metric excludes propulsion and battery energy.

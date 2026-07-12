@@ -12,6 +12,7 @@ related:
   - "[[wu-2026-parallel-cooperative-charging]]"
   - "[[parallel-cooperative-uav-charging]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
+  - "[[zhang-2022-solar-charging-uav-iot]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -37,3 +38,5 @@ In [[liu-2026-jppo-en-convntm]] this is the discrete-action component handled by
 [[zhu-2026-hab-mappo-target-search]] uses the same scheduling idea in a laser-charged target-search setting: during the offloading subslot, each UAV either searches or charges, and the learned charging policy extends search time relative to a fixed-threshold charging baseline in the reported simulations.
 
 [[wu-2026-parallel-cooperative-charging]] shifts the scheduling layer from per-slot mission control to charging infrastructure. Its [[parallel-cooperative-uav-charging]] model forms shared-cost station groups and assigns each group across unequal-power parallel facilities.
+
+[[zhang-2022-solar-charging-uav-iot]] chooses between reachable charging stations and serving points while tracking solar harvest, flight/hover energy, residual battery, downlink data, and cumulative service fairness.

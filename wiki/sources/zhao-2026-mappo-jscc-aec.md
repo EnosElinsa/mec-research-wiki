@@ -16,8 +16,9 @@ related:
   - "[[fractional-programming-dinkelbach]]"
   - "[[ctde-multi-agent-drl-protocol]]"
   - "[[tang-2024-iscc-uav-feel]]"
+  - "[[zheng-chang]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Joint Optimization of Sensing, Communication, and Computing for Collaborative Multi-UAV Edge Computing System

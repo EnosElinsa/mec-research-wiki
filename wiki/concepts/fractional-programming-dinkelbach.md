@@ -17,8 +17,10 @@ related:
   - "[[fan-2026-hap-uav-iort-oee]]"
   - "[[overall-energy-efficiency]]"
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
+  - "[[huroon-2026-bd-ris-rsma-uav]]"
+  - "[[xie-2023-wireless-powered-short-packet-uav]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Fractional Programming and Dinkelbach Transform
@@ -52,3 +54,5 @@ The EE objective in WPT-MEC, NOMA, and joint communication-computation problems 
 [[zhang-2025-cooperative-anti-uav-isac]] uses Dinkelbach iteration on a sensing SCNR objective inside alternating [[cooperative-isac-transceiver-beamforming]], rather than on an energy-efficiency ratio.
 
 [[fan-2026-hap-uav-iort-oee]] uses Dinkelbach as the outer loop for [[overall-energy-efficiency]], with an inner block-coordinate/SCA loop over HAP/UAV paths, HAP selection, UAV power, and IoRT bandwidth.
+
+[[huroon-2026-bd-ris-rsma-uav]] uses the Shen-Yu quadratic transform variant for a BD-RIS/RSMA rate-per-power objective. [[xie-2023-wireless-powered-short-packet-uav]] uses Dinkelbach-style subtractive updates inside its blocklength and WPT-power subproblems.

@@ -23,6 +23,9 @@ related:
   - "[[ahmed-2026-noma-irs-vehicular]]"
   - "[[fixed-point-irs-passive-beamforming]]"
   - "[[hu-2026-segmented-irs-cpn]]"
+  - "[[beyond-diagonal-ris]]"
+  - "[[huroon-2026-bd-ris-rsma-uav]]"
+  - "[[mihertie-2026-aerial-irs-rsma-ee]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -40,3 +43,5 @@ Recent corpus uses broaden the RIS family beyond reflecting-only surfaces. [[qin
 [[liu-2026-spherical-t-ris-bs]] adds [[spherical-transmissive-ris]] as a BS-architecture branch: one omnidirectional feed plus a spherical transmissive RIS replaces a conventional antenna array and reduces angle-sensitive gain loss for dynamic low-altitude communications.
 
 [[ning-2025-channel-aware-irs-uav]] adds [[dynamic-irs-user-association]] for multi-UAV communication: facade IRS elements can be partitioned among users, and MAPPO changes association as UAV positions and blockage states evolve.
+
+[[huroon-2026-bd-ris-rsma-uav]] extends the surface model to [[beyond-diagonal-ris|group-connected BD-RIS]], where coupled cells form non-diagonal scattering blocks assigned to UAV groups. [[mihertie-2026-aerial-irs-rsma-ee]] instead keeps a conventional passive diagonal surface on the UAV and jointly optimizes it with [[rate-splitting-multiple-access]].

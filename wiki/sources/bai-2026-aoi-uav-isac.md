@@ -18,8 +18,9 @@ related:
   - "[[ye-2026-deeplsc-lae-isac]]"
   - "[[networked-isac]]"
   - "[[zhu-han]]"
+  - "[[zheng-chang]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Age of Information Minimization in UAV-Enabled Integrated Sensing and Communication Systems

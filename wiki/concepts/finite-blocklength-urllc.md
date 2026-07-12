@@ -9,8 +9,9 @@ related:
   - "[[wu-2024-urllc-uav-mec-latency]]"
   - "[[covert-communication]]"
   - "[[zhang-2026-air-ground-covert-jamming]]"
+  - "[[xie-2023-wireless-powered-short-packet-uav]]"
 created: 2026-05-31
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Finite-Blocklength URLLC
@@ -22,3 +23,5 @@ This matters for MEC offloading: using Shannon rates yields optimistic latency e
 [[zhang-2026-air-ground-covert-jamming]] uses finite-blocklength decoding on a covert relay link, where decoding reliability and covert throughput are coupled with jammer redirection, RIS phase design, and UAV trajectory/user scheduling.
 
 In the wiki, [[wu-2024-urllc-uav-mec-latency]] is the corpus's first UAV-MEC study to drop the infinite-blocklength assumption: it derives a finite-blocklength offloading rate under **angle-dependent Rician fading**, approximates it logarithmically, and shows a significant latency gap versus a Shannon-based scheme — demonstrating that the accurate expression is necessary for the optimization.
+
+[[xie-2023-wireless-powered-short-packet-uav]] applies the same finite-blocklength rate penalty to WPT-powered IoT uploads, jointly allocating frame symbols, UAV hover location, and downlink charging power for communication-side energy efficiency.

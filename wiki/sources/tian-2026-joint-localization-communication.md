@@ -16,6 +16,7 @@ related:
   - "[[integrated-sensing-and-communication]]"
   - "[[collaborative-beamforming]]"
   - "[[zhu-han]]"
+  - "[[zheng-chang]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
 created: 2026-07-13
 updated: 2026-07-13

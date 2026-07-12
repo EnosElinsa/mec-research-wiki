@@ -14,8 +14,9 @@ related:
   - "[[wireless-powered-uav-fair-service-control]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
+  - "[[xie-2023-wireless-powered-short-packet-uav]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Wireless Power Transfer (WPT) for MEC
@@ -46,6 +47,8 @@ Joint optimization picks $\{\tau_0, \tau_1, \ldots, \tau_N, \mathbf x, \mathbf f
 [[wu-2026-parallel-cooperative-charging]] uses RF transfer in the opposite direction: provider-operated facilities recharge UAV batteries. The contribution is [[parallel-cooperative-uav-charging]] across shared-cost station groups and parallel facility queues rather than harvest/offload time allocation.
 
 Two trajectory-control cases expose opposite WPT directions. [[wang-2026-wutf-fair-communication]] lets ground towers replenish UAV base stations while [[wireless-powered-uav-fair-service-control]] balances user fairness against flight energy. [[wang-2026-glint-aoi-wireless-powered-edge]] instead lets UAVs charge sensor batteries before fresh-data upload, with [[dual-network-sequential-aoi-control]] separating mobility/association from charging and transmission scheduling.
+
+[[xie-2023-wireless-powered-short-packet-uav]] uses a static UAV hybrid access point: downlink WPT powers the devices, then TDMA [[finite-blocklength-urllc|finite-blocklength]] uploads return data to the UAV within the same frame.
 
 ## Why "long-term" matters
 

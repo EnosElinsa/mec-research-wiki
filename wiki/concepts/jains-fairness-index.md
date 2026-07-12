@@ -17,6 +17,7 @@ related:
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[he-2026-memdrl-uav-navigation]]"
+  - "[[zhang-2022-solar-charging-uav-iot]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -34,3 +35,5 @@ In the wiki, [[gao-2024-service-experience-cache-uav]] applies Jain's index to p
 [[wang-2026-wutf-fair-communication]] applies the index to accumulated per-user throughput inside both its formal throughput-fairness-energy objective and learned reward. [[morshed-2026-active-ris-uav-noma-mappo]] instead includes Jain fairness in a shared MAPPO reward for active-RIS UAV-NOMA control alongside rate, energy efficiency, and outage.
 
 [[he-2026-memdrl-uav-navigation]] applies the index to cumulative PoI visit counts, so geographically neglected sensing locations lower the same fairness score even when total collected data is high.
+
+[[zhang-2022-solar-charging-uav-iot]] applies the index to cumulative per-terminal service counts inside a reward that also accounts for transmitted data, net energy, and battery depletion.
