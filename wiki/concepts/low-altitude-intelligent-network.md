@@ -35,8 +35,10 @@ related:
   - "[[belgiovine-not-in-parse-multidt-abs-deployment]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
   - "[[target-level-of-safety]]"
+  - "[[yang-2025-hcdrl-pursuit-evasion]]"
+  - "[[cooperative-uav-pursuit-evasion]]"
 created: 2026-05-28
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Low-Altitude Intelligent Network (LAIN / Low-Altitude Economy)
@@ -61,6 +63,8 @@ The LAE sensing-control line also includes [[ye-2026-mode-lae-isac]], which uses
 [[liu-2026-spherical-t-ris-bs]] adds a low-altitude infrastructure variant: a [[spherical-transmissive-ris]] base-station architecture is evaluated in a UAV data-collection scenario with uplink cellular users, where the surface geometry is meant to reduce angle-sensitive gain loss across 3-D aerial directions.
 
 [[belgiovine-not-in-parse-multidt-abs-deployment]] and [[jiang-2026-bi-level-uav-delivery-safety]] add planning infrastructure for LAE operations: the former uses multiple digital twins to place airborne base stations before mission deployment, while the latter enforces [[target-level-of-safety]] in heterogeneous UAV delivery scheduling and routing.
+
+[[yang-2025-hcdrl-pursuit-evasion]] adds a counter-UAV control case through [[cooperative-uav-pursuit-evasion]]. Its low-altitude network provides the application frame, but the evaluated pursuit model assumes ideal communication and does not optimize radio resources.
 
 ## Open architectural questions
 

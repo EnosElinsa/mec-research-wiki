@@ -9,8 +9,10 @@ related:
   - "[[tong-2026-uneven-terrain-uav-mec]]"
   - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
   - "[[action-masked-hierarchical-drl]]"
+  - "[[yang-2025-hcdrl-pursuit-evasion]]"
+  - "[[cooperative-uav-pursuit-evasion]]"
 created: 2026-05-31
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Hierarchical Reinforcement Learning (HRL)
@@ -22,3 +24,5 @@ In the wiki, [[wang-2024-hfrl-decentralized-navigation]] proposes the **soft hie
 [[tong-2026-uneven-terrain-uav-mec]] uses a different hierarchy: PH-DRL separates first-level 3D UAV flight control from second-level task-allocation ratio decisions, with the offloading level invoked according to the currently covered UE set. That hierarchy is architectural and decision-factorized rather than an options/skills abstraction.
 
 [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] adds a multi-timescale wireless-control hierarchy: long-timescale caching and short-timescale association/deployment/beamforming are solved by DDQN variants, with [[action-masked-hierarchical-drl]] used to remove infeasible short-timescale choices.
+
+[[yang-2025-hcdrl-pursuit-evasion]] uses a task hierarchy for [[cooperative-uav-pursuit-evasion]]: an upper Q-network dynamically selects Approach, Expand, Surround, Enclose, or Capture, while lower CTDE actors generate continuous accelerations. This hierarchy controls subtask timing rather than resource timescales or reusable navigation skills.

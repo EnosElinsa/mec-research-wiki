@@ -15,9 +15,13 @@ related:
   - "[[you-2019-rician-uav-data-harvesting]]"
   - "[[du-2025-autonomous-intelligent-uav-swarms]]"
   - "[[gao-2023-uav-mcs-uma]]"
+  - "[[fan-2026-hap-uav-iort-oee]]"
+  - "[[overall-energy-efficiency]]"
+  - "[[le-2026-asynchronous-uav-data-collection]]"
+  - "[[asynchronous-qmix]]"
   - "uav-assisted-mobile-crowd-sensing"
 created: 2026-05-31
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # UAV Data Collection
@@ -39,3 +43,5 @@ When the collected data is delay-sensitive, data-collection objectives connect t
 [[you-2019-rician-uav-data-harvesting]] is the channel-model foundation case: a single UAV collects WSN data under outage-aware [[angle-dependent-rician-fading]], jointly optimizing scheduling, horizontal trajectory, and vertical trajectory through BCD/SCA.
 
 [[gao-2023-uav-mcs-uma]] broadens the collection model to uav-assisted-mobile-crowd-sensing: UAVs cover points of interest that human participants miss and calibrate participant sensors when trajectories intersect. [[du-2025-autonomous-intelligent-uav-swarms]] is a survey anchor for the swarm autonomy stack behind data collection, relaying, monitoring, and edge-computing applications.
+
+[[fan-2026-hap-uav-iort-oee]] adds a moving HAP aggregation tier and optimizes [[overall-energy-efficiency]] across both collection hops. [[le-2026-asynchronous-uav-data-collection]] instead studies stochastic remote sensing with unequal action durations and limited inter-UAV communication, using [[asynchronous-qmix]] for event-driven trajectory decisions and local convex bandwidth allocation at hover points.

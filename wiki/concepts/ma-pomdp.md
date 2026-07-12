@@ -12,8 +12,10 @@ related:
   - "[[multi-domain-uav-anti-jamming]]"
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
+  - "[[le-2026-asynchronous-uav-data-collection]]"
+  - "[[asynchronous-qmix]]"
 created: 2026-05-28
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # MA-POMDP (Multi-Agent Partially Observable MDP)
@@ -39,3 +41,5 @@ The natural multi-agent generalization of [[pomdp|POMDP]]: $N$ agents, each with
 [[shi-2025-aoi-energy-replenishment-multiuav]] uses a Dec-POMDP for multi-UAV AoI-aware data collection and energy replenishment, with each UAV making local flight, association, and charging decisions from partial observations while a shared freshness/energy objective couples the team.
 
 [[wu-not-in-parse-aoi-sampling-buffering-routing]] applies the same partial-observation logic inside a leader-follower UAV swarm, where each follower sees only local queue, neighbor, and freshness state. [[zhou-2026-a2g-madrl-air-ground-vcs]] adds a UAV/UGV/PoI crowdsensing version whose [[sequential-multi-agent-policy-generation]] layer makes the joint action order explicit.
+
+[[le-2026-asynchronous-uav-data-collection]] adds a Dec-POSMDP extension: partial observation remains, but action durations vary and decision epochs are agent-specific. [[asynchronous-qmix]] handles the resulting event-driven value decomposition without collapsing it back to a synchronized Dec-POMDP.

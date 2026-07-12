@@ -16,6 +16,8 @@ related:
   - "[[bujari-2018-stateless-fanet-routing]]"
   - "[[zhang-not-in-parse-cellular-uav-to-x]]"
   - "[[uav-to-x-communication]]"
+  - "[[zhang-2022-uav-relay-substitution]]"
+  - "[[uav-substitution-relaying]]"
 created: 2026-06-01
 updated: 2026-07-12
 ---
@@ -38,3 +40,4 @@ A relaying technique in which the relay node is **mounted on a high-mobility UAV
 - [[huang-2026-aim-uav-relay-aor]] adds antenna-pattern-aware relay-chain deployment: each relay state includes both 3-D position and heading, and AIM minimizes relay count while satisfying per-link RSS thresholds.
 - [[bujari-2018-stateless-fanet-routing]] is the packet-routing complement: it compares stateless geographic forwarding protocols for FANETs where UAV nodes relay packets without maintaining end-to-end routes.
 - [[zhang-not-in-parse-cellular-uav-to-x]] uses high-SNR UAVs as opportunistic relays for low-SNR sensing UAVs; the relay caches U2U data and uploads it over U2N, while speed rather than path geometry is optimized.
+- [[zhang-2022-uav-relay-substitution]] adds [[uav-substitution-relaying]] for service durations longer than one relay's flight endurance. HUS rotates relays sequentially, while SEUS overlaps receive/forward periods and co-optimizes trajectories and powers against inter-relay interference.

@@ -492,6 +492,11 @@
 
 ### UAV communications & deployment foundations
 
+- [[fan-2026-hap-uav-iort-oee]] - Fan et al. 2026. HAP-UAV IoRT collection with overall energy efficiency, joint aerial trajectories, HAP selection, UAV power, bandwidth allocation, meteorological fading, and Dinkelbach/BCD/SCA optimization (IEEE TMC).
+- [[chen-not-in-parse-uav-human-medical-delivery]] - Chen et al. Cooperative emergency medical pickup-delivery scheduling with UAVs and human couriers; an attention-based cooperative DRL policy uses type-specific decoders, feasibility masks, and a vehicle coordinator. *(Parsed metadata lacks DOI/venue/year.)*
+- [[yang-2025-hcdrl-pursuit-evasion]] - Yang et al. 2025. Hierarchical cooperative DRL for multi-UAV pursuit-evasion; a meta-policy selects five encirclement subtasks and CTDE lower policies control collision-aware maneuvers (IEEE GC Wkshps).
+- [[zhang-2022-uav-relay-substitution]] - Zhang et al. 2022. HUS/SEUS UAV substitution relaying extends service beyond one relay's flight duration and co-optimizes relay trajectories and source/relay powers (IEEE TGCN).
+- [[le-2026-asynchronous-uav-data-collection]] - Le et al. 2026. Asynchronous-QMIX remote data collection with Dec-POSMDP event timing, range-limited map exchange, recurrent value decomposition, and local imperfect-CSI bandwidth optimization (IEEE TWC).
 - [[zhang-not-in-parse-cellular-uav-to-x]] - Zhang et al. Cellular UAV-to-X communication with cooperative UAV-to-network and UAV-to-UAV sense-and-send operation; ISASOA combines LP, branch-and-bound, and convex speed control. *(Parsed metadata lacks DOI/venue/year.)*
 - [[bai-2026-multimodal-uav-vehicle-channel]] - Bai et al. 2026. LiDAR-aided multi-modal intelligent channel model for multi-UAV-to-multi-vehicle links; MUMV-CSCI dataset, TTD/ATD density parameters, and TSF-CF/TSI/DPSD statistics (IEEE TWC).
 - [[hussain-2026-unet-uav-mmwave-pathloss]] - Hussain 2026. Multi-scale U-Net pathloss prediction for UAV-assisted mmWave networks using log-distance, LoS-mask, and building-mask inputs plus vectorized LoS preprocessing (IEEE TWC).
@@ -721,8 +726,11 @@
 - [[fixed-wing-propulsion-energy-model]]
 - [[uav-delivery-pickup-dropoff]]
 - [[cooperative-uav-taxi-delivery]]
+- [[cooperative-uav-human-courier-delivery]]
+- [[cooperative-uav-pursuit-evasion]]
 - [[speed-coordinated-robust-optimization-control]]
 - [[uav-mobile-relaying]]
+- [[uav-substitution-relaying]]
 - [[angle-of-radiation-uav-relay]]
 - [[successive-hover-and-fly-trajectory]]
 - [[information-causality-constraint]]
@@ -751,6 +759,7 @@
 - [[multi-agent-q-learning]]
 - [[value-decomposition-network]]
 - [[qmix]]
+- [[asynchronous-qmix]]
 - [[ensemble-qmix]]
 - [[counterfactual-multi-agent-policy-gradient]]
 - [[distributional-reinforcement-learning]]
@@ -969,6 +978,7 @@
 - [[load-balancing-uav-mec]]
 - [[energy-latency-tradeoff]]
 - [[effective-energy-efficiency]]
+- [[overall-energy-efficiency]]
 - [[spectrum-utilization-efficiency]]
 - [[age-of-information]]
 - [[dynamic-target-prioritization-metric]]

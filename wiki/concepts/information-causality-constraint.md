@@ -8,8 +8,11 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[zeng-2016-throughput-relaying]]"
   - "[[hu-2019-uav-relay-edge-computing]]"
+  - "[[fan-2026-hap-uav-iort-oee]]"
+  - "[[zhang-2022-uav-relay-substitution]]"
+  - "[[uav-substitution-relaying]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-12
 ---
 
 # Information-Causality Constraint
@@ -24,3 +27,5 @@ For a [[uav-mobile-relaying|UAV mobile relay]] operating in FDD, data received f
 
 - [[zeng-2016-throughput-relaying]] — introduces the constraint for UAV mobile relaying and derives its staircase water-filling consequence.
 - [[hu-2019-uav-relay-edge-computing]] — carries the information-causality constraint into a UAV relay + MEC-server offloading problem (forward only already-received task bits).
+- [[fan-2026-hap-uav-iort-oee]] — applies cumulative causality to IoRT-UAV-HAP collection while jointly optimizing both aerial tiers and a data-per-energy ratio.
+- [[zhang-2022-uav-relay-substitution]] — schedules each half-duplex relay's receive phase before its forward phase; its HUS/SEUS service rotation is a structured two-hop-flow counterpart to the general buffered-relay constraint.

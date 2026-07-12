@@ -13,6 +13,8 @@ related:
   - "[[target-level-of-safety]]"
   - "[[gao-2026-air-ground-instant-delivery]]"
   - "[[cooperative-uav-taxi-delivery]]"
+  - "[[chen-not-in-parse-uav-human-medical-delivery]]"
+  - "[[cooperative-uav-human-courier-delivery]]"
 created: 2026-07-07
 updated: 2026-07-12
 ---
@@ -26,5 +28,7 @@ In [[lee-2026-uav-delivery-time-energy]], the problem is formulated with no-fly-
 [[jiang-2026-bi-level-uav-delivery-safety]] adds the safety-constrained logistics variant: heterogeneous UAVs receive order assignments through TC-NSGA-III, while RG-FMT* plans delivery paths whose waypoint risk remains below [[target-level-of-safety|TLS]].
 
 [[gao-2026-air-ground-instant-delivery]] adds [[cooperative-uav-taxi-delivery]], where UAV station placement and repositioning fill the time-varying delivery capacity left by crowdsourced taxis, and parcel assignment combines learned courier preferences with generalized assignment.
+
+[[chen-not-in-parse-uav-human-medical-delivery]] adds [[cooperative-uav-human-courier-delivery]] for emergency medical pickup and delivery. It jointly assigns orders and routes a dedicated courier/UAV fleet under soft deadlines, type-specific capacities, and different consolidation rules.
 
 In this wiki the concept sits near [[chen-2026-cargo-uav-pickup-lae]] and [[compliance-aware-uav-trajectory]], but it is logistics/control infrastructure rather than MEC offloading.

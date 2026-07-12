@@ -14,6 +14,8 @@ related:
   - "[[zhang-2026-air-ground-covert-jamming]]"
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
   - "[[cooperative-isac-transceiver-beamforming]]"
+  - "[[fan-2026-hap-uav-iort-oee]]"
+  - "[[overall-energy-efficiency]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---
@@ -47,3 +49,5 @@ The EE objective in WPT-MEC, NOMA, and joint communication-computation problems 
 [[zhang-2026-air-ground-covert-jamming]] applies Dinkelbach-style fractional programming on the communication-security side, embedding the ratio optimization inside a static RIS/jamming design that is later coupled to DDQN trajectory and user scheduling.
 
 [[zhang-2025-cooperative-anti-uav-isac]] uses Dinkelbach iteration on a sensing SCNR objective inside alternating [[cooperative-isac-transceiver-beamforming]], rather than on an energy-efficiency ratio.
+
+[[fan-2026-hap-uav-iort-oee]] uses Dinkelbach as the outer loop for [[overall-energy-efficiency]], with an inner block-coordinate/SCA loop over HAP/UAV paths, HAP selection, UAV power, and IoRT bandwidth.

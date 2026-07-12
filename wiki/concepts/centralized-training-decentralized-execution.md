@@ -17,8 +17,12 @@ related:
   - "[[zhang-2026-ensemble-marl-uav-target-search]]"
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
+  - "[[yang-2025-hcdrl-pursuit-evasion]]"
+  - "[[cooperative-uav-pursuit-evasion]]"
+  - "[[le-2026-asynchronous-uav-data-collection]]"
+  - "[[asynchronous-qmix]]"
 created: 2026-05-28
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Centralized Training, Decentralized Execution (CTDE)
@@ -47,6 +51,8 @@ A canonical paradigm for cooperative multi-agent DRL:
 ## In this wiki
 
 CTDE shows up explicitly in [[zhang-2025-mcma-task-migration]] (server-as-agent for vehicular MEC), [[peng-2025-drudm-cfg]] (UAV-as-agent for post-disaster MEC), and [[kang-2023-mappo-hierarchical-aerial]] (UAV-as-agent for hierarchical aerial MEC). It also appears in adjacent non-offloading control, including [[chen-2026-maddpg-uav-swarm-antijamming]] for jammed UAV-swarm communications, [[gao-2023-uav-mcs-uma]] for multi-UAV mobile-crowd-sensing coverage/calibration, [[wu-not-in-parse-aoi-sampling-buffering-routing]] for all-aerial AoI sampling/buffering/routing, and [[zhou-2026-a2g-madrl-air-ground-vcs]] for sequential UAV/UGV crowdsensing. Across these, the *backbone* differs (MAPPO / MADDPG / MASAC / value decomposition / sequential policy generation), but the training/execution split is shared. The engineering protocol is expanded in [[ctde-multi-agent-drl-protocol]].
+
+[[yang-2025-hcdrl-pursuit-evasion]] uses centralized lower-layer critics for continuous counter-UAV maneuver learning. [[le-2026-asynchronous-uav-data-collection]] uses the value-decomposition branch through [[asynchronous-qmix]], retaining global-state mixing during training while agents select actions at unequal local completion times.
 
 ## Limitation
 

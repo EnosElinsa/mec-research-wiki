@@ -18,6 +18,8 @@ related:
   - "[[aircomp-assisted-asynchronous-fl]]"
   - "[[zhang-2026-ensemble-marl-uav-target-search]]"
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
+  - "[[yang-2025-hcdrl-pursuit-evasion]]"
+  - "[[cooperative-uav-pursuit-evasion]]"
 created: 2026-07-10
 updated: 2026-07-12
 ---
@@ -37,3 +39,5 @@ The robotics and networking substrate underneath many UAV-MEC papers: multiple U
 For the MEC wiki, the concept is useful because later papers often import only one piece of the autonomy stack. A UAV-MEC source may optimize [[uav-trajectory-control]], use [[b-spline-trajectory]] parameterization, call a [[particle-swarm-optimization]] planner, or assume cellular-connected control links without restating the swarm-autonomy assumptions. This page keeps that background discoverable without merging every autonomy paper into the offloading taxonomy.
 
 [[huang-2026-aircomp-uav-swarms-afl]] adds a learning-coordination angle: sensing UAVs and communication UAVs form an asynchronous federated-learning swarm where [[aircomp-assisted-asynchronous-fl]] reduces uplink aggregation latency while staleness-aware weighting protects the global model.
+
+[[yang-2025-hcdrl-pursuit-evasion]] adds adversarial swarm control through [[cooperative-uav-pursuit-evasion]], where pursuers learn when to switch formation subtasks and how to execute continuous collision-aware maneuvers around an evading UAV.
