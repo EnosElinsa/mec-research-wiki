@@ -9,8 +9,10 @@ related:
   - "[[equilibrium-efficiency-metric]]"
   - "[[chen-2024-ulse-game]]"
   - "[[li-2026-cdto-inland-waterways]]"
+  - "[[li-2026-jscfg-uav-grouping]]"
+  - "[[joint-switch-coalition-formation-game]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-13
 ---
 
 # Potential Game

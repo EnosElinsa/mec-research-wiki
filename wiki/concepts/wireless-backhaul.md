@@ -13,8 +13,11 @@ related:
   - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
   - "[[hua-2026-ddrl-content-delivery]]"
   - "[[uav-content-caching]]"
+  - "[[liu-2020-distributed-uav-coverage-navigation]]"
+  - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
+  - "[[multi-modal-uav-coverage-backhaul-control]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Wireless Backhaul
@@ -30,5 +33,7 @@ Recurring forms in the wiki:
 - **FANET swarm backhaul / forwarding** — multi-UAV networks need routing behavior that survives topology and traffic changes. [[deng-2026-eret-fanet-routing]] treats route-expiration time as an adaptive knob for moving between route reuse and content-centric discovery.
 - **Inter-RSU backhaul** — wired between RSUs, modeled in [[ma-2025-pdqn-vehicular-mec]] as a fixed, small per-hop transmission delay between adjacent RSUs (propagation-dominated, scaled by the number of road segments a relayed task crosses).
 - **Cache-miss backhaul** - [[hua-2026-ddrl-content-delivery]] makes the BS-UAV retrieval link part of end-to-end acquisition delay: [[uav-content-caching]] avoids this hop on a hit, while a miss couples cache replacement to UAV position and backhaul rate.
+
+[[wang-2026-multimodal-uav-coverage-backhaul]] turns backhaul into a dynamic UAV role: access points switch among cluster exploration, local user service, and minimum-spanning-tree bridge formation through [[multi-modal-uav-coverage-backhaul-control]]. [[liu-2020-distributed-uav-coverage-navigation]] instead treats peer connectivity as a constraint while UAVs optimize long-term access coverage and movement energy.
 
 A backhaul link's capacity is *upper-tier* infrastructure. It rarely appears as a decision variable, but its value as a constraint shapes the offloading topology — overloaded backhaul forces more local processing.

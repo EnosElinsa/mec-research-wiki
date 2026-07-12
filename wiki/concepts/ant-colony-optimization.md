@@ -8,8 +8,9 @@ related:
   - "[[swarm-metaheuristics-in-uav-mec]]"
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
+  - "[[fu-2026-dubins-uav-data-collection]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Ant Colony Optimization (ACO)

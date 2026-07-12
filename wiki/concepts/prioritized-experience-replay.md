@@ -9,8 +9,10 @@ related:
   - "[[episodic-experience-replay]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[li-2026-aerial-ris-trajectory-phase]]"
+  - "[[liu-2021-edivert-mobile-crowdsensing]]"
+  - "[[ape-x-actor-learner-replay]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Prioritized Experience Replay (PER)
@@ -24,5 +26,7 @@ Mechanics:
 - Importance-sampling weights $w_i = (1/(N \cdot P(i)))^\beta$ correct the bias.
 
 Used in [[nabi-2025-jour-hierarchical-aerial]]'s ESAC algorithm to accelerate the SAC backbone and in [[li-2026-aerial-ris-trajectory-phase]]'s SAC-PER controller for aerial RIS attitude/phase control. Related to but distinct from the **adaptive entropy + priority** scheme in [[adaptive-entropy-priority-replay]] used by [[peng-2025-drudm-cfg]], which combines PER with an entropy-aware exploration term. Also contrast [[episodic-experience-replay]], where the replay unit is a complete episode set rather than an individual transition, as in the LAE ISAC controllers [[ye-2026-deeplsc-lae-isac]] and [[ye-2026-meta-deepesc-lae-isac]].
+
+[[liu-2021-edivert-mobile-crowdsensing]] embeds PER inside [[ape-x-actor-learner-replay]]: multiple asynchronous actors generate local transitions, one learner samples global per-vehicle priority buffers, and refreshed parameters return to the actors.
 
 PER is essentially free for off-policy methods (DDPG, SAC, DQN); not useful for on-policy methods like PPO that don't reuse old transitions.

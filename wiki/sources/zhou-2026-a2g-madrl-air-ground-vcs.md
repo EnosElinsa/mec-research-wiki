@@ -17,8 +17,9 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[guo-2026-aoi-uav-mcs-contract]]"
   - "[[gao-2023-uav-mcs-uma]]"
+  - "[[chi-harold-liu]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # AoI and Latency-Aware Air-Ground Vehicular Crowdsensing by Sequential Multi-Agent Deep Reinforcement Learning

@@ -27,6 +27,7 @@ related:
   - "[[control-assisted-uav-beam-tracking]]"
   - "[[li-2026-directional-modulation-irs-uav]]"
   - "[[zhang-2026-distributed-jscc-uav-video]]"
+  - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---

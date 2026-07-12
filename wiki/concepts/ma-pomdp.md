@@ -17,6 +17,8 @@ related:
   - "[[wang-2026-wutf-fair-communication]]"
   - "[[wireless-powered-uav-fair-service-control]]"
   - "[[zhang-2026-distance-attention-uav-navigation]]"
+  - "[[liu-2020-distributed-uav-coverage-navigation]]"
+  - "[[liu-2021-edivert-mobile-crowdsensing]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

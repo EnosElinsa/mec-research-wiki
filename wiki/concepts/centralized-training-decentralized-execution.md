@@ -30,6 +30,9 @@ related:
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
   - "[[zhang-2026-distance-attention-uav-navigation]]"
+  - "[[liu-2020-distributed-uav-coverage-navigation]]"
+  - "[[liu-2021-edivert-mobile-crowdsensing]]"
+  - "[[ape-x-actor-learner-replay]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

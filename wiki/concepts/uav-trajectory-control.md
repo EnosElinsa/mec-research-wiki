@@ -80,6 +80,12 @@ related:
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
   - "[[zhang-2026-distance-attention-uav-navigation]]"
+  - "[[liu-2020-distributed-uav-coverage-navigation]]"
+  - "[[liu-2021-edivert-mobile-crowdsensing]]"
+  - "[[fu-2026-dubins-uav-data-collection]]"
+  - "[[releasing-collecting-recycling-uav-framework]]"
+  - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
+  - "[[multi-modal-uav-coverage-backhaul-control]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

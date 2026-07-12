@@ -232,6 +232,7 @@
 
 ### UAV-swarm collaborative computing
 
+- [[li-2026-jscfg-uav-grouping]] - Li, Xia, and Zhang 2026. Joint-switch coalition formation for dynamic heterogeneous-UAV mission grouping under ordered type requirements, overlapping coalitions, and predicted link persistence (IEEE TMC).
 - [[zhang-2026-distance-attention-uav-navigation]] - Zhang et al. 2026. Distance-attention augmented CTDE reinforcement learning for cooperative 3-D UAV navigation in dense urban environments, with historical-feature-flow critics and explicit collision, timeout, and energy evaluation (IEEE TMC).
 - [[zhang-2026-dt-aircomp-cluster-formation]] - Zhang et al. 2026. Digital-twin-empowered UAV-swarm cluster formation for AirComp, jointly optimizing UAV-group association, receiver scaling, device power, and collision-safe trajectories with BCD, SCA, and Dinkelbach iteration (IEEE TWC).
 - [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
@@ -471,6 +472,7 @@
 
 ### Energy efficiency & WPT
 
+- [[liu-2021-edivert-mobile-crowdsensing]] - Liu et al. 2021. e-Divert energy-efficient unmanned-vehicle crowdsensing with charging stations, CNN/LSTM CTDE control, Ape-X actors, and distributed prioritized replay (IEEE TMC).
 - [[dong-2026-digital-tides-provisioning]] - Dong et al. 2026. Fluid-dynamic logistics-UAV workload modeling and information-flux-triggered activation of sleeping ground MEC infrastructure under setup latency (IEEE TMC).
 - [[wang-2026-wutf-fair-communication]] - Wang et al. 2026. Wireless-powered multi-UAV fair communication; WUTF combines CNN-GRU actors, a centralized critic, and sequential PPO-style updates for trajectory, Jain fairness, and propulsion/communication efficiency (IEEE TMC).
 - [[wang-2026-glint-aoi-wireless-powered-edge]] - Wang et al. 2026. Wireless-powered multi-UAV AoI control; GLINT sequentially resolves 3-D mobility/association and WPT-time/transmission scheduling through local critics plus monotonic value mixing (IEEE TMC).
@@ -506,6 +508,9 @@
 
 ### UAV communications & deployment foundations
 
+- [[liu-2020-distributed-uav-coverage-navigation]] - Liu et al. 2020. Distributed actor-critic navigation for long-term multi-UAV communication coverage, Jain geographic fairness, movement-energy efficiency, and peer-connectivity constraints (IEEE TMC).
+- [[fu-2026-dubins-uav-data-collection]] - Fu et al. 2026. Carrier/subordinate heterogeneous-UAV data collection with release, obstacle-aware Dubins tours, and synchronized airborne recovery (IEEE T-ITS).
+- [[wang-2026-multimodal-uav-coverage-backhaul]] - Wang, Farooq, and Chen 2026. Distributed multi-modal UAV access control that switches among cluster exploration, local service, and minimum-spanning-tree bridge roles for coverage and resilient backhaul (IEEE TMC).
 - [[zhang-2026-distributed-jscc-uav-video]] - Zhang et al. 2026. Distributed video DeepJSCC for UAV networks; lightweight onboard encoders, receiver-side decoding, and DQN-controlled direct or amplify-and-forward relay transmission trade video quality against network lifetime (IEEE TMC).
 - [[vitale-2026-density-aware-4d-trajectory]] - Vitale et al. 2026. Density-aware urban UAV traffic planning with reverse-time cube/slot reservations and distributed robust MPC under probabilistic separation and arrival-time QoS constraints (IEEE T-ITS).
 - [[zhang-2026-omnidirectional-monitoring-deployment]] - Zhang et al. 2026. Joint UAV and fixed-camera deployment for continuous omnidirectional monitoring, with strategy-space reduction, obstacle-aware path planning, approximation guarantees, simulation, and a ten-UAV field test (IEEE TMC).
@@ -566,6 +571,7 @@
 - **NCEPU aerial-edge cluster:** [[peng-qin]], [[yang-fu]] (North China Electric Power University); [[jingjing-wang]] (Beihang University) links the blockchain-UAV thread.
 - **South-China-Agricultural-University evolutionary UAV-MEC cluster:** [[zexiong-wu]] (with [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]]).
 - **Cross-cutting seniors:** [[chunxiao-jiang]] (Tsinghua), [[tony-q-s-quek]] (SUTD).
+- [[chi-harold-liu]] (Beijing Institute of Technology - mobile crowdsensing and distributed multi-UAV DRL; 3 sources).
 - [[shuang-liang]] (Northeast Normal Univ. — aerial-MEC / LAE, [[geng-sun]] cluster), [[weifeng-zhong]] & [[shengli-xie]] (Guangdong Univ. of Technology — CMOP-evolutionary lineage), [[qiqi-xie]] (South China Agricultural Univ. — evolutionary UAV-MEC), [[nei-kato]] (Tohoku Univ.), [[jiadai-wang]], [[yijie-xun]], [[yangbo-liu]] (Northwestern Polytechnical Univ. — NTN cluster, [[bomin-mao]] group).
 - [[boxiong-wang]] & [[hui-kang]] (Jilin University — [[geng-sun]] aerial-MEC cluster; 2 sources each).
 - [[yuben-qu]] & [[hao-sun]] (Nanjing Univ. of Aeronautics and Astronautics — UAV-swarm collaborative-inference cluster with [[chao-dong]]/[[qihui-wu]]; 2 sources each — [[qu-ecoei-uav-swarm]] + [[sun-2024-asap-uav-swarm]], identical `@nuaa.edu.cn` emails).
@@ -686,6 +692,7 @@
 - [[multi-uav-assisted-mec]]
 - [[high-density-mobile-device-scenarios]]
 - [[heterogeneous-uav-fleet]]
+- [[releasing-collecting-recycling-uav-framework]]
 - [[high-altitude-platform-station]]
 - [[hierarchical-aerial-mec]]
 - [[air-ground-integrated-network]]
@@ -735,6 +742,7 @@
 ### UAV control & decisions
 
 - [[uav-trajectory-control]]
+- [[multi-modal-uav-coverage-backhaul-control]]
 - [[distance-attention-uav-navigation]]
 - [[reservation-based-density-aware-4d-uav-planning]]
 - [[aircomp-aware-uav-device-cluster-formation]]
@@ -810,6 +818,7 @@
 - [[action-space-explosion-in-multi-uav-mec]]
 - [[adaptive-entropy-priority-replay]]
 - [[prioritized-experience-replay]]
+- [[ape-x-actor-learner-replay]]
 - [[episodic-experience-replay]]
 - [[safe-reinforcement-learning]]
 - [[hybrid-action-representation]]
@@ -858,6 +867,7 @@
 - [[fictitious-self-play]]
 - [[bargaining-game]]
 - [[coalition-formation-game]]
+- [[joint-switch-coalition-formation-game]]
 - [[nash-equilibrium]]
 - [[price-of-anarchy]]
 - [[prospect-theory]]

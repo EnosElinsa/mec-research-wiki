@@ -14,8 +14,10 @@ related:
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[liu-2020-distributed-uav-coverage-navigation]]"
+  - "[[liu-2021-edivert-mobile-crowdsensing]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Jain's Fairness Index

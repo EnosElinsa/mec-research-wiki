@@ -11,8 +11,9 @@ related:
   - "[[zhu-2026-hab-mappo-target-search]]"
   - "[[wu-2026-parallel-cooperative-charging]]"
   - "[[parallel-cooperative-uav-charging]]"
+  - "[[liu-2021-edivert-mobile-crowdsensing]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # UAV Charging Scheduling

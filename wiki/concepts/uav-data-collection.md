@@ -26,8 +26,10 @@ related:
   - "[[dual-network-sequential-aoi-control]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
+  - "[[fu-2026-dubins-uav-data-collection]]"
+  - "[[releasing-collecting-recycling-uav-framework]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # UAV Data Collection
@@ -53,3 +55,5 @@ When the collected data is delay-sensitive, data-collection objectives connect t
 [[fan-2026-hap-uav-iort-oee]] adds a moving HAP aggregation tier and optimizes [[overall-energy-efficiency]] across both collection hops. [[le-2026-asynchronous-uav-data-collection]] instead studies stochastic remote sensing with unequal action durations and limited inter-UAV communication, using [[asynchronous-qmix]] for event-driven trajectory decisions and local convex bandwidth allocation at hover points.
 
 [[li-2023-energy-constrained-uav-data-collection]] treats collection as [[energy-constrained-uav-data-collection-orienteering]] over depot-returning hover tours, distinguishing full/partial collection and non-overlap guarantees from overlap heuristics. [[wang-2026-glint-aoi-wireless-powered-edge]] adds the wireless-powered freshness case, where multiple UAVs first move and associate sensors, then allocate charging time and update transmissions through [[dual-network-sequential-aoi-control]].
+
+[[fu-2026-dubins-uav-data-collection]] adds a carrier/subordinate architecture through the [[releasing-collecting-recycling-uav-framework]]: a transport UAV releases communication UAVs for obstacle-aware collection tours and later synchronizes airborne recovery.

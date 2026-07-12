@@ -10,8 +10,9 @@ related:
   - "[[ye-2026-deeplsc-lae-isac]]"
   - "[[cai-2026-llm-drl-secure-lae-data]]"
   - "[[ddpg-vs-jppo]]"
+  - "[[liu-2020-distributed-uav-coverage-navigation]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Deep Deterministic Policy Gradient (DDPG)

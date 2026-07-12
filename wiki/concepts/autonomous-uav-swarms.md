@@ -26,6 +26,10 @@ related:
   - "[[persistent-emergency-uav-swarm-service]]"
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
   - "[[zhang-2026-distance-attention-uav-navigation]]"
+  - "[[li-2026-jscfg-uav-grouping]]"
+  - "[[joint-switch-coalition-formation-game]]"
+  - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
+  - "[[multi-modal-uav-coverage-backhaul-control]]"
 created: 2026-07-10
 updated: 2026-07-13
 ---
