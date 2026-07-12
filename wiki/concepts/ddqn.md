@@ -9,8 +9,9 @@ related:
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
   - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
   - "[[action-masked-hierarchical-drl]]"
+  - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
 created: 2026-05-28
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Double DQN (DDQN)

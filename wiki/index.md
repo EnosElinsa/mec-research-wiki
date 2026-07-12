@@ -75,6 +75,7 @@
 
 ### Multi-UAV cooperative computing & deployment
 
+- [[zhao-2026-dt-ddqn-bisd-deployment]] - Zhao et al. 2026. Digital-twin-driven multi-UAV IoT deployment with balanced mission division, 3-D transfer and fixed-altitude collection DDQNs, online obstacle synchronization, safety halts, and policy refresh (IEEE TWC).
 - [[gao-2026-fmad3qn-uav-gd-association]] - Gao et al. 2026. Dynamic heterogeneous multi-UAV MEC with no-fly zones; closed-form UAV-GD association via optimal transport + federated multi-agent dueling DDQN for 3D deployment (IEEE TMC).
 
 - [[wang-2025-maddpg-lc-dynamic-trajectory]] — Wang et al. 2025. **MADDPG-LC** — dynamic trajectory design for multi-UAV MEC with UAV **flight-dynamics** constraints; MADDPG + LQR tracking + CVXPY + blockchain security (IEEE TVT).
@@ -230,6 +231,7 @@
 
 ### UAV-swarm collaborative computing
 
+- [[zhang-2026-dt-aircomp-cluster-formation]] - Zhang et al. 2026. Digital-twin-empowered UAV-swarm cluster formation for AirComp, jointly optimizing UAV-group association, receiver scaling, device power, and collision-safe trajectories with BCD, SCA, and Dinkelbach iteration (IEEE TWC).
 - [[sun-2024-asap-uav-swarm]] — Sun et al. 2024. **ASAP** — in-swarm collaborative DL inference (model + data partition, pipeline-parallel); hardware-validated.
 - [[wang-2026-scalable-multiuav-analytics]] - Wang et al. 2026. Scalable collaborative multi-UAV video analytics; JDTSO centralized deployment/scheduling for small swarms and MAPDP distributed MAPPO+DAG partitioning for larger swarms (IEEE TGCN).
 - [[zhu-2026-hab-mappo-target-search]] - Zhu et al. 2026. HAB-MAPPO cooperative UAV target search; 3D continuous trajectory, laser charging, heuristic image offloading/resource allocation, two-level attention, Beta policy, and curriculum learning (IEEE TMC).
@@ -366,6 +368,7 @@
 
 ### ISAC, sensing & physical-layer security
 
+- [[qin-2023-symmetry-augmented-uav-isac]] - Qin et al. 2023. Multi-UAV ISAC association, trajectory, and sensing/communication power control via SAC with permutation-equivariant replay augmentation, plus a CTDE MASAC alternative (IEEE TWC).
 - [[xu-2026-hecta-predictive-beamforming]] - Xu et al. 2026. HECTA-Net predicts BS transmit and UAV receive beams directly from historical matched-filtered ISAC echoes through CNN, dilated causal TCN, and temporal attention (IEEE TWC).
 - [[meng-2026-uav-isac-corrections]] - Meng et al. 2026. One-page correction to periodic UAV-ISAC throughput optimization; removes a duplicated association factor and supplies the omitted auxiliary-variable/Taylor transformation that makes the corrected subproblems convex (IEEE TWC).
 - [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026. LSCR target handover for collaborative UAV relay tracking; Delaunay target graphs, TGR features, and Twin-GRCN similarity matching reach 92.1% accuracy with 0.063 KB transfer and a 20 KB model (IEEE T-ITS).
@@ -499,6 +502,8 @@
 
 ### UAV communications & deployment foundations
 
+- [[vitale-2026-density-aware-4d-trajectory]] - Vitale et al. 2026. Density-aware urban UAV traffic planning with reverse-time cube/slot reservations and distributed robust MPC under probabilistic separation and arrival-time QoS constraints (IEEE T-ITS).
+- [[zhang-2026-omnidirectional-monitoring-deployment]] - Zhang et al. 2026. Joint UAV and fixed-camera deployment for continuous omnidirectional monitoring, with strategy-space reduction, obstacle-aware path planning, approximation guarantees, simulation, and a ten-UAV field test (IEEE TMC).
 - [[li-2023-energy-constrained-uav-data-collection]] - Li et al. 2023. Energy-constrained UAV collection as a depot-returning full/partial orienteering problem, with an ILP, no-overlap approximation algorithms, and overlap-aware marginal-gain heuristics (IEEE TMC).
 - [[liu-2026-usp-nfrp-emergency-communication]] - Liu et al. 2026. Persistent emergency UAV swarm service with periodic replacement paths, dynamic tree backhaul repair, and max-min ant-system planning to minimize required fleet size (IEEE TGCN).
 - [[li-2026-dff-slam]] - Li et al. 2026. DFF-SLAM combines YOLOv3, multiscale optical flow, and epipolar filtering for GPS-suppressed UAV positioning, with TUM RGB-D accuracy tests and 16-FPS Jetson Xavier NX platform execution (IEEE TMC).
@@ -722,6 +727,8 @@
 ### UAV control & decisions
 
 - [[uav-trajectory-control]]
+- [[reservation-based-density-aware-4d-uav-planning]]
+- [[aircomp-aware-uav-device-cluster-formation]]
 - [[control-parameterized-uav-trajectory]]
 - [[equipotential-surface-uav-search]]
 - [[event-triggered-fuzzy-state-observer]]
@@ -754,6 +761,8 @@
 ### DRL backbones
 
 - [[ppo]] · [[j-ppo]]
+- [[permutation-equivariant-replay-augmentation]]
+- [[digital-twin-assisted-online-drl-policy-refresh]]
 - [[ddqn]]
 - [[dueling-dqn]]
 - [[deep-q-network]]
@@ -918,6 +927,7 @@
 ### Sensing & security
 
 - [[integrated-sensing-and-communication]]
+- [[continuous-omnidirectional-monitoring]]
 - [[networked-isac]]
 - [[cooperative-isac-transceiver-beamforming]]
 - [[space-time-block-codec]]

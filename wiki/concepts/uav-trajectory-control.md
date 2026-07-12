@@ -74,6 +74,11 @@ related:
   - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
+  - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[vitale-2026-density-aware-4d-trajectory]]"
+  - "[[zhang-2026-omnidirectional-monitoring-deployment]]"
+  - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
+  - "[[zhang-2026-dt-aircomp-cluster-formation]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---

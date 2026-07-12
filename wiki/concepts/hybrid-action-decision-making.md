@@ -8,8 +8,9 @@ related:
   - "[[chen-2026-pddqn-sagin-mec]]"
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[hybrid-action-beats-pure-drl]]"
+  - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # Hybrid Continuous–Discrete Action Decision-Making

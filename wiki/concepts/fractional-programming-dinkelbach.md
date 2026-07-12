@@ -16,6 +16,7 @@ related:
   - "[[cooperative-isac-transceiver-beamforming]]"
   - "[[fan-2026-hap-uav-iort-oee]]"
   - "[[overall-energy-efficiency]]"
+  - "[[zhang-2026-dt-aircomp-cluster-formation]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---

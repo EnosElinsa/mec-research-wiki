@@ -9,8 +9,9 @@ related:
   - "[[gao-2024-sagin-perception-offloading]]"
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
   - "[[triple-deep-q-network]]"
+  - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Deep Q-Network (DQN)

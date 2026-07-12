@@ -24,6 +24,8 @@ related:
   - "[[energy-constrained-uav-data-collection-orienteering]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
+  - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
+  - "[[zhang-2026-dt-aircomp-cluster-formation]]"
 created: 2026-05-31
 updated: 2026-07-12
 ---

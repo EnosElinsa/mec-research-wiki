@@ -8,8 +8,9 @@ related:
   - "[[b-spline-trajectory]]"
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[energy-latency-tradeoff]]"
+  - "[[zhang-2026-omnidirectional-monitoring-deployment]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # Path-Aware 3-D Visual Coverage

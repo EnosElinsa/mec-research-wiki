@@ -24,6 +24,7 @@ related:
   - "[[aoi-centric-uav-isac-beam-control]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
+  - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---

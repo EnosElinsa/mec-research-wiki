@@ -24,6 +24,7 @@ related:
   - "[[dynamic-feature-filtering-vslam]]"
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
+  - "[[zhang-2026-dt-aircomp-cluster-formation]]"
 created: 2026-07-10
 updated: 2026-07-12
 ---

@@ -9,6 +9,7 @@ related:
   - "[[heo-not-in-parse-blockage-aided-multiuav-interference]]"
   - "[[ning-2025-channel-aware-irs-uav]]"
   - "[[dynamic-irs-user-association]]"
+  - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---

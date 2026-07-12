@@ -6,8 +6,9 @@ related:
   - "[[distributionally-robust-optimization]]"
   - "[[conditional-value-at-risk]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
+  - "[[vitale-2026-density-aware-4d-trajectory]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-12
 ---
 
 # Chance Constraint

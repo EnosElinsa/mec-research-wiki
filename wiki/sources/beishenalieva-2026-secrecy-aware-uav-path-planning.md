@@ -15,7 +15,7 @@ related:
   - "[[task-offloading]]"
   - "[[task-priority-in-mec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # Secrecy-Aware UAV Path Planning and Offloading Strategy Optimization Using Deep Reinforcement Learning and Particle Swarm Optimization
@@ -60,5 +60,5 @@ This source connects [[uav-enabled-its]], [[physical-layer-security]], [[friendl
 
 ## Raw artifacts
 
-- `raw/sources/Secrecy-Aware UAV Path Planning and Offloading Strategy Optimization Using Deep Reinforcement Learning and Particle Swarm Optimization/Secrecy-Aware UAV Path Planning and Offloading Strategy Optimization Using Deep Reinforcement Learning and Particle Swarm Optimization.md`
+- `raw/sources/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

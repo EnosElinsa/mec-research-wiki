@@ -13,6 +13,7 @@ related:
   - "[[wireless-powered-uav-fair-service-control]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[decentralized-active-ris-uav-noma-control]]"
+  - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---

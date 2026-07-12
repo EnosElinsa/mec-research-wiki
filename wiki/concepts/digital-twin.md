@@ -15,8 +15,10 @@ related:
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
   - "[[multi-digital-twin-network-optimization]]"
   - "[[belgiovine-not-in-parse-multidt-abs-deployment]]"
+  - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
+  - "[[zhang-2026-dt-aircomp-cluster-formation]]"
 created: 2026-06-02
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Digital Twin

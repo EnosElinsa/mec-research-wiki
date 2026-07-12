@@ -16,7 +16,7 @@ related:
   - "[[sun-2024-asap-uav-swarm]]"
   - "[[niazmand-2025-jopa-dnn-pruning-iiot]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-12
 ---
 
 # Deep Reinforcement Learning-Based Task Offloading With Collaborative Inference in UAV-Assisted Mobile Edge Computing Networks
@@ -61,5 +61,5 @@ This source connects [[collaborative-dl-inference]] with mainstream UAV-MEC [[ta
 
 ## Raw artifacts
 
-- `raw/sources/Deep Reinforcement Learning-Based Task Offloading With Collaborative Inference in UAV-Assisted Mobile Edge Computing Networks/Deep Reinforcement Learning-Based Task Offloading With Collaborative Inference in UAV-Assisted Mobile Edge Computing Networks.md`
+- `raw/sources/Deep_Reinforcement_Learning-Based_Task_Offloading_With_Collaborative_Inference_in_UAV-Assisted_Mobile_Edge_Computing_Networks/Deep_Reinforcement_Learning-Based_Task_Offloading_With_Collaborative_Inference_in_UAV-Assisted_Mobile_Edge_Computing_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

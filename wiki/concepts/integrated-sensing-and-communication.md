@@ -33,6 +33,7 @@ related:
   - "[[meng-2026-uav-isac-corrections]]"
   - "[[xu-2026-hecta-predictive-beamforming]]"
   - "[[historical-echo-predictive-beamforming]]"
+  - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-29
 updated: 2026-07-12
 ---

@@ -17,7 +17,7 @@ related:
   - "[[chen-2024-ulse-game]]"
   - "[[zhang-2024-coma-satellite-offloading]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-12
 ---
 
 # System Cost Optimization-Based Task Offloading for UAV-Assisted LEO Satellite Networks
@@ -67,5 +67,5 @@ This source extends the wiki's [[leo-satellite-edge-computing]] and [[space-air-
 
 ## Raw artifacts
 
-- `raw/sources/System Cost Optimization-Based Task Offloading for UAV-Assisted LEO Satellite Networks/System Cost Optimization-Based Task Offloading for UAV-Assisted LEO Satellite Networks.md`
+- `raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

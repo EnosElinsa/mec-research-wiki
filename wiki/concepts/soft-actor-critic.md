@@ -15,8 +15,9 @@ related:
   - "[[gong-2026-safe-economic-lae-trajectory]]"
   - "[[li-2026-aerial-ris-trajectory-phase]]"
   - "[[bai-2026-aoi-uav-isac]]"
+  - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-31
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # Soft Actor-Critic (SAC)

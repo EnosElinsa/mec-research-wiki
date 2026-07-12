@@ -11,8 +11,9 @@ related:
   - "[[gong-2026-safe-economic-lae-trajectory]]"
   - "[[target-level-of-safety]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
+  - "[[vitale-2026-density-aware-4d-trajectory]]"
 created: 2026-07-07
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Compliance-Aware UAV Trajectory Planning

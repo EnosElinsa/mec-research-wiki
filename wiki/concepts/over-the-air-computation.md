@@ -9,8 +9,9 @@ related:
   - "[[federated-learning]]"
   - "[[aircomp-assisted-asynchronous-fl]]"
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
+  - "[[zhang-2026-dt-aircomp-cluster-formation]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Over-the-Air Computation (AirComp)

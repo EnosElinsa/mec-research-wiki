@@ -56,6 +56,39 @@ class CurationStatusTests(unittest.TestCase):
             self.assertEqual(uncurated, [])
             self.assertEqual(orphan_refs, ["Cargo UAVs Pick-Up Systems"])
 
+    def test_classify_tolerates_repeated_character_ocr_omission_in_title(self):
+        curated_title = (
+            "Deep Reinforcement Learning-Based Task Offloading With Collaborative "
+            "Inference in UAV-Assisted Mobile Edge Computing Networks"
+        )
+        raw_title = curated_title.replace("Offloading", "Ofloading")
+        folder_name = "OCR_Title_Variant"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            raw = pathlib.Path(tmp) / "raw"
+            folder = raw / folder_name
+            folder.mkdir(parents=True)
+            (folder / f"{folder_name}.md").write_text(
+                f"# {raw_title}\n", encoding="utf-8"
+            )
+
+            with (
+                mock.patch.object(wikilib, "raw_sources_dir", return_value=str(raw)),
+                mock.patch.object(wikilib, "referenced_raw_folders", return_value=set()),
+                mock.patch.object(
+                    wikilib,
+                    "curated_title_keys",
+                    return_value={
+                        wikilib.title_match_key(curated_title):
+                        "zhai-2026-collaborative-inference-uav-mec"
+                    },
+                ),
+            ):
+                _, curated, uncurated, _ = curation_status.classify()
+
+            self.assertEqual(curated, [folder_name])
+            self.assertEqual(uncurated, [])
+
     def test_duplicate_detection_reads_title_named_markdown(self):
         text = "# Same Paper\n\nIdentical parse body.\n"
         with tempfile.TemporaryDirectory() as tmp:

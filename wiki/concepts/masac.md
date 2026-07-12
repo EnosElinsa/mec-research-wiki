@@ -5,8 +5,9 @@ tags: [drl, multi-agent, off-policy]
 related:
   - "[[qin-2025-bcuav-masac]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
+  - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-28
-updated: 2026-06-03
+updated: 2026-07-12
 ---
 
 # MASAC (Multi-Agent Soft Actor-Critic)

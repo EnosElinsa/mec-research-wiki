@@ -7,8 +7,9 @@ related:
   - "[[weighted-kmeans-uav-deployment]]"
   - "[[mixed-integer-nonlinear-programming]]"
   - "[[lyu-2017-spiral-mbs-placement]]"
+  - "[[zhang-2026-omnidirectional-monitoring-deployment]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-12
 ---
 
 # Geometric Disk Cover (GDC)

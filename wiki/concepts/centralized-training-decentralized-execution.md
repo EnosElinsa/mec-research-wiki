@@ -27,6 +27,7 @@ related:
   - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
+  - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-28
 updated: 2026-07-12
 ---

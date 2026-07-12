@@ -13,7 +13,7 @@ related:
   - "[[task-offloading]]"
   - "[[alternating-direction-method-of-multipliers]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-12
 ---
 
 # Dwell-Time-Constrained Joint Task Offloading and Resource Allocation for Multi-Layer Aerial Vehicular Edge Computing Networks
@@ -57,5 +57,5 @@ This page extends [[vehicular-mec]] and the air-ground VEC line beyond static se
 
 ## Raw artifacts
 
-- `raw/sources/Dwell-Time-Constrained Joint Task Offloading and Resource Allocation for Multi-Layer Aerial Vehicular Edge Computing Networks/Dwell-Time-Constrained Joint Task Offloading and Resource Allocation for Multi-Layer Aerial Vehicular Edge Computing Networks.md`
+- `raw/sources/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

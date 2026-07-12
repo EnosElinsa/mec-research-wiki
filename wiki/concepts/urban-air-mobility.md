@@ -9,8 +9,9 @@ related:
   - "[[moon-2024-ground-satellite-uam-scheduling]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
   - "[[target-level-of-safety]]"
+  - "[[vitale-2026-density-aware-4d-trajectory]]"
 created: 2026-06-03
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Urban Air Mobility (UAM)

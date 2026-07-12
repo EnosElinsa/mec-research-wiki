@@ -14,7 +14,7 @@ related:
   - "[[task-offloading]]"
   - "[[vehicular-mec]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-12
 ---
 
 # Distributed Game-Based Joint Task Offloading Over UAV-Assisted Inland Waterways Edge Networks
@@ -59,5 +59,5 @@ This is a bridge between [[maritime-mec]] and ITS-oriented [[vehicular-mec]]: th
 
 ## Raw artifacts
 
-- `raw/sources/Distributed Game-Based Joint Task Offloading Over UAV-Assisted Inland Waterways Edge Networks/Distributed Game-Based Joint Task Offloading Over UAV-Assisted Inland Waterways Edge Networks.md`
+- `raw/sources/Distributed_Game-Based_Joint_Task_Offloading_Over_UAV-Assisted_Inland_Waterways_Edge_Networks/Distributed_Game-Based_Joint_Task_Offloading_Over_UAV-Assisted_Inland_Waterways_Edge_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

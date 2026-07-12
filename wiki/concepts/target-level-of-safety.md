@@ -8,8 +8,9 @@ related:
   - "[[uav-delivery-pickup-dropoff]]"
   - "[[safe-reinforcement-learning]]"
   - "[[explicit-constraints-beat-reward-shaping-in-mec-drl]]"
+  - "[[vitale-2026-density-aware-4d-trajectory]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-12
 ---
 
 # Target Level of Safety

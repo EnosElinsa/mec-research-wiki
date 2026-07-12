@@ -58,6 +58,21 @@ def _raw_title(folder: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+def _repeated_character_ocr_variant(left: str, right: str) -> bool:
+    """Return true when one title key drops one character from a doubled pair."""
+    if abs(len(left) - len(right)) != 1:
+        return False
+    longer, shorter = (left, right) if len(left) > len(right) else (right, left)
+    for index, char in enumerate(longer):
+        if longer[:index] + longer[index + 1 :] != shorter:
+            continue
+        return (
+            (index > 0 and longer[index - 1] == char)
+            or (index + 1 < len(longer) and longer[index + 1] == char)
+        )
+    return False
+
+
 def _title_matches(raw: list[str], referenced: set[str]) -> dict[str, str]:
     curated_titles = wikilib.curated_title_keys()
     matches = {}
@@ -67,6 +82,14 @@ def _title_matches(raw: list[str], referenced: set[str]) -> dict[str, str]:
         key = wikilib.title_match_key(_raw_title(folder))
         if key and key in curated_titles:
             matches[folder] = curated_titles[key]
+            continue
+        ocr_matches = [
+            slug
+            for curated_key, slug in curated_titles.items()
+            if _repeated_character_ocr_variant(key, curated_key)
+        ]
+        if key and len(ocr_matches) == 1:
+            matches[folder] = ocr_matches[0]
     return matches
 
 
