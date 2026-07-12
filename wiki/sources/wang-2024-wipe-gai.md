@@ -21,8 +21,9 @@ related:
   - "[[dusit-niyato]]"
   - "[[jiawen-kang]]"
   - "[[xuemin-shen]]"
+  - "[[zehui-xiong]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # A Unified Framework for Guiding Generative AI With Wireless Perception in Resource Constrained Mobile Edge Networks

@@ -14,6 +14,8 @@ related:
   - "[[jains-fairness-index]]"
   - "[[wireless-backhaul]]"
   - "[[chi-harold-liu]]"
+  - "[[he-2026-memdrl-uav-navigation]]"
+  - "[[memory-augmented-multi-uav-navigation]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

@@ -16,8 +16,9 @@ related:
   - "[[qoe-modeling-mec]]"
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[peng-2025-drudm-cfg]]"
+  - "[[zehui-xiong]]"
 created: 2026-05-31
-updated: 2026-06-08
+updated: 2026-07-13
 ---
 
 # Diffusion-Based Reinforcement Learning for Edge-Enabled AI-Generated Content Services

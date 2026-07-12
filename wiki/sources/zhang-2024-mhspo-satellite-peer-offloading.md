@@ -19,8 +19,9 @@ related:
   - "[[zhang-2024-coma-satellite-offloading]]"
   - "[[han-2024-ground-satellite-fl]]"
   - "[[mao-2024-fso-leo-hierarchical-routing]]"
+  - "[[zehui-xiong]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Energy-Efficient Computation Peer Offloading in Satellite Edge Computing Networks

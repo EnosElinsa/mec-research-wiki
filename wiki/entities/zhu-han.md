@@ -17,6 +17,7 @@ related:
   - "[[bai-2026-aoi-uav-isac]]"
   - "[[jia-2026-hierarchical-uav-swarms]]"
   - "[[zhang-2025-gsc-diffusion-semcom]]"
+  - "[[tian-2026-joint-localization-communication]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -25,7 +26,7 @@ updated: 2026-07-13
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 14 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
+Co-authored 15 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, emergency localization/communication, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -41,6 +42,7 @@ Co-authored 14 sources in this wiki, spanning aerial MEC, satellite edge computi
 - [[bai-2026-aoi-uav-isac]] - AoI-centric UAV-enabled ISAC with SAC motion/beam activation, Kalman target prediction, and RZF communication beams.
 - [[jia-2026-hierarchical-uav-swarms]] - hierarchical head/tail UAV-swarm deployment, collection trajectories, and multi-objective power control.
 - [[zhang-2025-gsc-diffusion-semcom]] - generative semantic successive refinement for wireless image transmission.
+- [[tian-2026-joint-localization-communication]] - AOA-guided emergency localization and cooperative communication with one UAV and one rescuer.
 
 ## Contributions to this wiki
 

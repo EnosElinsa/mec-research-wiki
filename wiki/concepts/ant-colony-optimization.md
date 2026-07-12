@@ -9,6 +9,8 @@ related:
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
   - "[[fu-2026-dubins-uav-data-collection]]"
+  - "[[fatemidokht-2021-vru-vanet-routing]]"
+  - "[[uav-assisted-vanet-routing]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -20,3 +22,5 @@ A swarm-intelligence metaheuristic inspired by ants depositing pheromone along p
 In [[mao-2024-ntn-hierarchical-caching-cav]], a **Delay-Motivated ACO (DM-ACO)** selects which LEO satellites should cache content so as to minimize system propagation delay (avoiding the duplication/interference of caching on every satellite). ACO belongs to the same swarm-metaheuristic family as [[particle-swarm-optimization]].
 
 [[liu-2026-usp-nfrp-emergency-communication]] uses a max-min ant system for [[persistent-emergency-uav-swarm-service]]. Pheromones distinguish fixed and non-fixed relay roles, interval change supplies the heuristic value, and each candidate move is screened by dynamic-tree connectivity logic.
+
+[[fatemidokht-2021-vru-vanet-routing]] uses ACO inside the aerial fallback of [[uav-assisted-vanet-routing]]. Request-Ant/Reply-Ant discovery builds candidate UAV paths, and the source chooses the path with the strongest geometry-derived pheromone value.

@@ -13,8 +13,10 @@ related:
   - "[[hua-2026-ddrl-content-delivery]]"
   - "[[wang-2026-wutf-fair-communication]]"
   - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[tian-2026-joint-localization-communication]]"
+  - "[[he-2026-memdrl-uav-navigation]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Rotary-Wing UAV Propulsion Energy Model

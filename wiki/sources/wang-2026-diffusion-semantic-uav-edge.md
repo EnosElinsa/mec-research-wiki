@@ -17,8 +17,9 @@ related:
   - "[[zheng-2024-semcom-sec-offloading]]"
   - "[[dusit-niyato]]"
   - "[[zhu-han]]"
+  - "[[zehui-xiong]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-13
 ---
 
 # Diffusion-Based Trajectory and Semantic Resource Optimization in UAV-Assisted Edge Computing

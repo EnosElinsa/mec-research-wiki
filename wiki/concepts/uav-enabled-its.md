@@ -18,8 +18,10 @@ related:
   - "[[zang-2026-uav-ev-priority-cav-speed]]"
   - "[[multi-domain-uav-anti-jamming]]"
   - "[[speed-coordinated-robust-optimization-control]]"
+  - "[[fatemidokht-2021-vru-vanet-routing]]"
+  - "[[uav-assisted-vanet-routing]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # UAV-Enabled Intelligent Transportation Systems (ITS)
@@ -35,3 +37,5 @@ Key wiki source: [[peng-2024-energy-time-uav-its]], which adds the **completion-
 Adjacent tracking sources broaden the sensing side of the concept. [[li-2026-la4h-uav-active-tracking]] focuses on visual active target tracking under occlusion and distractor interference, [[wang-2026-rmaddpg-dda-uav-isac-vehicular]] controls UAV-enabled vehicular ISAC with MARL, and [[hazarika-2026-dynamo-uav-vehicle-tracking]] prioritizes fast-moving vehicles using prediction uncertainty, link quality, and freshness rather than [[age-of-information]] alone.
 
 The latest adjacent ITS additions split the role of the UAV even further. [[chen-2026-maddpg-uav-swarm-antijamming]] protects U2U/U2G traffic-monitoring links through [[multi-domain-uav-anti-jamming]], [[zang-2026-uav-ev-priority-cav-speed]] uses UAVs as sensing/relay infrastructure for emergency-vehicle CAV speed coordination, and [[du-2025-autonomous-intelligent-uav-swarms]] supplies the broader swarm-autonomy taxonomy behind such deployments.
+
+[[fatemidokht-2021-vru-vanet-routing]] adds [[uav-assisted-vanet-routing]]: aerial observers estimate road density/connectivity and aggregate vehicle trust, while an ACO-based FANET path takes over when urban ground forwarding is disconnected.

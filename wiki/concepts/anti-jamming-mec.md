@@ -13,8 +13,10 @@ related:
   - "[[zhu-2026-uav-localization-jamming]]"
   - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
   - "[[multi-domain-uav-anti-jamming]]"
+  - "[[yang-2026-embodied-antijamming-uav]]"
+  - "[[embodied-anti-jamming-resource-allocation]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Anti-Jamming MEC
@@ -22,3 +24,5 @@ updated: 2026-07-10
 Resource management and communication design for MEC systems whose wireless links are under **malicious jamming**. The jammer (possibly a hostile UAV) emits interference to disrupt the UAV→user links; the system must sense jammed channels, avoid them, and re-allocate compute/communication resources to keep latency and energy acceptable.
 
 Crucially distinct from the wiki's [[friendly-jamming-uav]] concept: there, jamming is used **defensively** (a cooperative UAV jams an eavesdropper). Here jamming is the **threat** to be detected and evaded. In the wiki, [[shao-2024-drl-antijamming-mec]] is the anchor — it senses jammed subchannels ([[spectrum-sensing-channel-selection]]) and uses [[multi-agent-td3|PER-MATD3]] to jointly tune CPU frequency, bandwidth, and channel selection under imperfect CSI ([[csi-estimation-error]]). [[liu-2025-multimodal-semantic-iov-jamming]] adds the IoV semantic variant, where jamming disrupts image/text semantic links and the UAVs jointly adjust trajectory, association, and channel selection. [[chen-2026-maddpg-uav-swarm-antijamming]] is adjacent rather than MEC: the protected service is UAV-swarm ITS communication, and [[multi-domain-uav-anti-jamming]] spans channel choice, transmit power, hopping overhead, and U2U/U2G reliability. [[zhu-2026-uav-localization-jamming]] is also adjacent rather than MEC: the jammer disrupts UAV localization measurements, so the BS switches GAN/TDOA positioning modes and controls sensing UAV trajectories. Related to the broader [[physical-layer-security]] theme.
+
+[[yang-2026-embodied-antijamming-uav]] is another communication-only adjacent case. Its [[embodied-anti-jamming-resource-allocation]] controller uses value-based DDQN, prioritized replay, and transferred experiences to select U2U spectrum reuse and power under jamming; no MEC execution variables are present.

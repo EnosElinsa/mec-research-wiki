@@ -15,8 +15,10 @@ related:
   - "[[spectrum-sensing-channel-selection]]"
   - "[[anti-jamming-mec]]"
   - "[[gauss-markov-mobility-model]]"
+  - "[[yang-2026-embodied-antijamming-uav]]"
+  - "[[embodied-anti-jamming-resource-allocation]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # A Robust Multi-Domain Adaptive Anti-Jamming Communication System for a UAV Swarm in Urban ITS Traffic Monitoring via Multi-Agent Deep Deterministic Policy Gradient

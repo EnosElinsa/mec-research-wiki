@@ -13,8 +13,9 @@ related:
   - "[[xuemin-shen]]"
   - "[[huynh-2024-gai-physical-layer-survey]]"
   - "[[liang-2025-gai-semcom-survey]]"
+  - "[[zehui-xiong]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # Generative AI for Secure Physical Layer Communications: A Survey

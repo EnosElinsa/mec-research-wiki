@@ -24,8 +24,9 @@ related:
   - "[[du-2024-d2sac-aigc-asp-selection]]"
   - "[[wang-gai-isac-physical-layer]]"
   - "[[du-2024-distributed-foundation-models-6g]]"
+  - "[[zehui-xiong]]"
 created: 2026-05-31
-updated: 2026-06-08
+updated: 2026-07-13
 ---
 
 # Enhancing Deep Reinforcement Learning: A Tutorial on Generative Diffusion Models in Network Optimization

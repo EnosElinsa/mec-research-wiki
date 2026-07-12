@@ -33,6 +33,8 @@ related:
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[ape-x-actor-learner-replay]]"
+  - "[[he-2026-memdrl-uav-navigation]]"
+  - "[[memory-augmented-multi-uav-navigation]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

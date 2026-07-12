@@ -86,6 +86,9 @@ related:
   - "[[releasing-collecting-recycling-uav-framework]]"
   - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
   - "[[multi-modal-uav-coverage-backhaul-control]]"
+  - "[[tian-2026-joint-localization-communication]]"
+  - "[[he-2026-memdrl-uav-navigation]]"
+  - "[[memory-augmented-multi-uav-navigation]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

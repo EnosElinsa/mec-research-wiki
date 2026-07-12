@@ -20,8 +20,11 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
+  - "[[zehui-xiong]]"
+  - "[[yang-2026-embodied-antijamming-uav]]"
+  - "[[embodied-anti-jamming-resource-allocation]]"
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-07-13
 authors: [Ziling Shao, Helin Yang, Liang Xiao, Wei Su, Yifan Chen, Zehui Xiong]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3432491

@@ -18,8 +18,10 @@ related:
   - "[[hu-2019-uav-relay-edge-computing]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
   - "[[yong-zeng]]"
+  - "[[li-2016-energy-balanced-uav-relaying]]"
+  - "[[energy-balanced-cooperative-uav-relaying]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # Throughput Maximization for UAV-Enabled Mobile Relaying Systems

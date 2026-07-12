@@ -10,8 +10,10 @@ related:
   - "[[zhao-2026-temporal-spectrum-cartography]]"
   - "[[information-driven-uav-spectrum-mapping]]"
   - "[[wang-2026-bayesian-uav-spectrum-mapping]]"
+  - "[[yang-2026-embodied-antijamming-uav]]"
+  - "[[embodied-anti-jamming-resource-allocation]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Spectrum Sensing & Channel Selection

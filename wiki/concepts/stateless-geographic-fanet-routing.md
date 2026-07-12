@@ -11,8 +11,10 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[wireless-backhaul]]"
   - "[[wu-not-in-parse-aoi-sampling-buffering-routing]]"
+  - "[[fatemidokht-2021-vru-vanet-routing]]"
+  - "[[uav-assisted-vanet-routing]]"
 created: 2026-07-10
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Stateless Geographic FANET Routing
@@ -26,3 +28,5 @@ Stateless geographic FANET routing forwards each packet using current node and d
 [[deng-2026-eret-fanet-routing]] adds a different adaptive-routing axis. Its [[evolvable-route-expiration-time]] mechanism does not choose geographic next hops; it changes how long route entries remain valid so the same FANET can behave more like host-centric routing in stable/heavy-load conditions and more like content-centric routing in fast-changing/high-sharing conditions.
 
 [[wu-not-in-parse-aoi-sampling-buffering-routing]] connects FANET routing to freshness control. Its follower UAVs choose sampling, packet-buffer decisions, and next-hop forwarding jointly, so a geographically plausible route is only useful when it keeps the packet age low at the leader UAV.
+
+[[fatemidokht-2021-vru-vanet-routing]] provides a stateful contrast: its UAV fallback discovers and stores end-to-end paths with ACO, while a separate vehicle/UAV component scores urban road segments from density, connectivity, and trust.

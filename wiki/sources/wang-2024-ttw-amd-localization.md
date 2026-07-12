@@ -10,8 +10,9 @@ related:
   - "[[integrated-sensing-computation-communication]]"
   - "[[dusit-niyato]]"
   - "[[cramer-rao-bound]]"
+  - "[[zehui-xiong]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # Through the Wall Detection and Localization of Autonomous Mobile Device in Indoor Scenario

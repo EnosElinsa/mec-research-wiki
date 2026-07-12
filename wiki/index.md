@@ -230,6 +230,7 @@
 - [[shao-2024-drl-antijamming-mec]] — Shao et al. 2024. **Anti-jamming** UAV-MEC resource management; PER-MATD3 (hardware-validated).
 - [[beishenalieva-2026-secrecy-aware-uav-path-planning]] - Beishenalieva & Yoo 2026. Secrecy-aware UAV-ITS offloading against malicious aerial eavesdroppers/jammers; policy-gradient DRL path/power/mode control plus PSO slot allocation (IEEE T-ITS).
 - [[chen-2026-maddpg-uav-swarm-antijamming]] - Chen et al. 2026. MADDPG-based multi-domain anti-jamming for UAV-swarm ITS monitoring; joint channel/power actions protect U2U payloads and U2G capacity under fixed, swept, and random jamming (IEEE T-ITS).
+- [[yang-2026-embodied-antijamming-uav]] - Yang et al. 2026. Embodied anti-jamming resource allocation for U2U/U2I spectrum reuse; decentralized DDQN agents use prioritized and transferred experience for sub-band/power control under swept jamming, with Raspberry Pi/USRP channel validation (IEEE TWC).
 - [[sun-2024-mfris-semantic-antijamming]] — Sun et al. 2024. **Multi-functional RIS** + **semantic** anti-jamming communication & computing for aerial-ground MEC; worst-case CSI; semantic-computation-rate max via monotonic optimization + DSOCP (+ GPI) (IEEE JSAC).
 - [[sun-2024-active-passive-ris-receiver]] — Sun et al. 2024. **Active-passive cascaded RIS** receiver architecture for anti-jamming; worst-case rate max under imperfect angular jammer CSI via UM-ZF (passive) + AMM/C-M-CCD (active) semi-closed-form solutions (IEEE TWC). *(Physical-layer RIS-receiver anchor, not MEC.)*
 - [[guo-2024-multiuav-proactive-eavesdropping]] — Guo et al. 2024. **Multi-UAV proactive eavesdropping** (legitimate surveillance): full-duplex UAVs jam multiple mobile suspicious links while planning trajectories; MDP decoupled into a closed-form **jamming-power solver** + per-UAV decentralized **RL moving policy** (IEEE TMC). *(Surveillance/PLS anchor, not MEC.)*
@@ -478,6 +479,7 @@
 ### Energy efficiency & WPT
 
 - [[liu-2021-edivert-mobile-crowdsensing]] - Liu et al. 2021. e-Divert energy-efficient unmanned-vehicle crowdsensing with charging stations, CNN/LSTM CTDE control, Ape-X actors, and distributed prioritized replay (IEEE TMC).
+- [[he-2026-memdrl-uav-navigation]] - He et al. 2026. MEMDRL multi-UAV navigation for cooperative sensing and upload; MATD3 combines BeBold exploration, ConvLSTM histories, and multi-agent prioritized replay on Shenzhen and Beijing map layouts (IEEE TMC).
 - [[dong-2026-digital-tides-provisioning]] - Dong et al. 2026. Fluid-dynamic logistics-UAV workload modeling and information-flux-triggered activation of sleeping ground MEC infrastructure under setup latency (IEEE TMC).
 - [[wang-2026-wutf-fair-communication]] - Wang et al. 2026. Wireless-powered multi-UAV fair communication; WUTF combines CNN-GRU actors, a centralized critic, and sequential PPO-style updates for trajectory, Jain fairness, and propulsion/communication efficiency (IEEE TMC).
 - [[wang-2026-glint-aoi-wireless-powered-edge]] - Wang et al. 2026. Wireless-powered multi-UAV AoI control; GLINT sequentially resolves 3-D mobility/association and WPT-time/transmission scheduling through local critics plus monotonic value mixing (IEEE TMC).
@@ -533,6 +535,7 @@
 - [[zhang-2026-control-assisted-beam-tracking]] - Zhang et al. 2026. Control-assisted BS-UAV mmWave beam prediction using PID flight state, a Bayesian DNN, and a kinematic estimator, evaluated in Gazebo and with real F450 flight data (IEEE TWC).
 - [[huang-2026-aim-uav-relay-aor]] - Huang et al. 2026. AIM angle-of-radiation-aware UAV relay-chain deployment; joint 3-D position and heading search minimizes relay count under per-link RSS thresholds and maintains 100% success in the parsed terrain/RSS tests (IEEE TMC).
 - [[bujari-2018-stateless-fanet-routing]] - Bujari et al. 2018. Comparative study of stateless geographic FANET routing; progress, randomized, face/projection, hybrid, and restricted-flooding protocols are evaluated for delivery, path dilation, traffic, and scalability in 3-D UAV ad hoc networks (IEEE TMC).
+- [[fatemidokht-2021-vru-vanet-routing]] - Fatemidokht et al. 2021. Trust-filtered vehicle/UAV routing for urban VANETs; road-network paths use UAV connectivity estimates, while an ant-colony aerial fallback handles sparse connectivity (IEEE T-ITS).
 - [[song-2026-albpd-directional-fanet]] - Song et al. 2026. ALBP-D directional FANET link maintenance; breakage-probability prediction separates distance and angular failures, then adjusts beamwidth/range for longer UAV-to-UAV link lifetime (IEEE TWC).
 - [[deng-2026-eret-fanet-routing]] - Deng et al. 2026. eRET adaptive FANET routing evolves route expiration time so UAV swarms shift between host-centric route reuse and content-centric discovery (IEEE TMC).
 - [[zheng-2026-active-search-low-altitude-uav]] - Zheng & Chen 2026. Active low-altitude UAV sensing/communication search under unknown user locations and unknown blockage; equipotential-surface search plus online LoS channel estimation (IEEE TMC).
@@ -545,7 +548,9 @@
 - [[gong-2026-uav-3d-visual-coverage]] - Gong et al. 2026. Path-aware 3-D object visual coverage with a single UAV; viewpoint generation plus energy-aware B-spline trajectory optimization (IEEE TMC).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — Zeng & Zhang 2017. **Energy-efficient UAV communication** via trajectory optimization; first **fixed-wing propulsion-energy model** (speed + acceleration) + bits/Joule energy-efficiency; circular + generally-constrained SCA trajectories (IEEE TWC). *(UAV-communications anchor, not MEC.)*
 - [[zeng-2016-throughput-relaying]] — Zeng et al. 2016. **UAV mobile relaying** throughput maximization; joint relay trajectory + source/relay power; "staircase" water-filling power structure + SCA trajectory under **information-causality** (IEEE TCOMM). *(UAV mobile-relaying anchor, not MEC.)*
+- [[li-2016-energy-balanced-uav-relaying]] - Li et al. 2016. Energy-balanced cooperative UAV relaying; exact min-max scheduling and EPLA assign packets and modulation levels, with forwarding power derived from the selected rate and channel, without modeling propulsion energy (IEEE TMC).
 - [[zhao-2019-uav-emergency-disasters]] — Zhao et al. 2019. **UAV-assisted emergency networks** in disasters (magazine framework): joint trajectory+scheduling with surviving BSs, multihop D2D coverage extension, and multihop UAV relaying (AF/DF) — IEEE Wireless Communications. *(Post-disaster comms framework, not a single MEC formulation.)*
+- [[tian-2026-joint-localization-communication]] - Tian et al. 2026. Air-ground emergency-network localization and communication; AOA/ESPRIT localization feeds CoMP beamforming and DDQN control of UAV movement, time, and power (IEEE TWC).
 - [[bor-yaliniz-2016-3d-abs-placement]] – Bor-Yaliniz et al. 2016. First **3-D placement** of a drone-cell (aerial base station): jointly choose altitude + coverage location/size to maximize covered users; quadratically-constrained MINLP via bisection + interior-point solver (IEEE ICC). *(Aerial-base-station deployment anchor, not MEC.)*
 - [[mozaffari-not-in-parse-3d-drone-cellular-network]] - Mozaffari et al. Foundational 3-D wireless cellular network with LAP drone-BSs, drone-UEs, HAP/FSO backhaul, truncated-octahedron frequency reuse, KDE demand modeling, and optimal-transport association. *(Parsed metadata lacks DOI/venue/year.)*
 - [[li-2026-uav-bs-semantic-mfmaddpg-kde]] - Li et al. 2026. Semantic-communication UAV-BS 3-D deployment; MF-MADDPG-KDE models continuous neighboring actions and optimizes BLEU-derived semantic fidelity under SINR/interference constraints (IEEE TWC).
@@ -561,8 +566,9 @@
 
 ### Authors
 
-- [[dusit-niyato]] (NTU) appears across 44 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 14 sources after the hierarchical UAV-swarm paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[dusit-niyato]] (NTU) appears across 44 sources after the aerial-RIS trajectory/phase-control paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 15 sources after the air-ground emergency localization paper; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
+- [[zehui-xiong]] (Queen's University Belfast - generative AI, semantic communication, physical-layer security, and low-altitude resource allocation; 11 sources spanning surveys, diffusion/GDM methods, and aerial/satellite control).
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -629,6 +635,7 @@
 - [[priority-based-delay-utility]]
 - [[intra-swarm-task-delegation]]
 - [[anti-jamming-mec]]
+- [[embodied-anti-jamming-resource-allocation]]
 - [[wireless-power-transfer]]
 - [[adaptive-wdc-wet-service-balancing]]
 - [[uav-assisted-edge-inference]]
@@ -734,6 +741,7 @@
 - [[wireless-backhaul]]
 - [[aerial-active-ris-backhaul]]
 - [[stateless-geographic-fanet-routing]]
+- [[uav-assisted-vanet-routing]]
 - [[directional-fanet-link-maintenance]]
 - [[evolvable-route-expiration-time]]
 - [[fault-tolerant-relay-network]]
@@ -753,6 +761,7 @@
 - [[uav-trajectory-control]]
 - [[multi-modal-uav-coverage-backhaul-control]]
 - [[distance-attention-uav-navigation]]
+- [[memory-augmented-multi-uav-navigation]]
 - [[reservation-based-density-aware-4d-uav-planning]]
 - [[aircomp-aware-uav-device-cluster-formation]]
 - [[control-parameterized-uav-trajectory]]
@@ -778,6 +787,7 @@
 - [[cooperative-uav-pursuit-evasion]]
 - [[speed-coordinated-robust-optimization-control]]
 - [[uav-mobile-relaying]]
+- [[energy-balanced-cooperative-uav-relaying]]
 - [[uav-substitution-relaying]]
 - [[angle-of-radiation-uav-relay]]
 - [[successive-hover-and-fly-trajectory]]
@@ -957,6 +967,7 @@
 ### Sensing & security
 
 - [[integrated-sensing-and-communication]]
+- [[joint-localization-and-communication]]
 - [[continuous-omnidirectional-monitoring]]
 - [[networked-isac]]
 - [[cooperative-isac-transceiver-beamforming]]

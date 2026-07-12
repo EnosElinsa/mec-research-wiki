@@ -13,8 +13,10 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[wireless-backhaul]]"
   - "[[autonomous-uav-swarms]]"
+  - "[[fatemidokht-2021-vru-vanet-routing]]"
+  - "[[uav-assisted-vanet-routing]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # Adaptive Routing for Flying Ad Hoc Network using Evolvable Route Expiration Time

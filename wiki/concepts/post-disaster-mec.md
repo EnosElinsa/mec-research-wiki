@@ -12,6 +12,8 @@ related:
   - "[[persistent-emergency-uav-swarm-service]]"
   - "[[pham-2026-vnf-control-loop]]"
   - "[[routing-vnf-scaling-control-loop]]"
+  - "[[tian-2026-joint-localization-communication]]"
+  - "[[joint-localization-and-communication]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

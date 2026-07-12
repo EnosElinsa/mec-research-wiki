@@ -11,8 +11,10 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[wireless-backhaul]]"
   - "[[zeng-2016-uav-comm-opportunities-challenges]]"
+  - "[[fatemidokht-2021-vru-vanet-routing]]"
+  - "[[uav-assisted-vanet-routing]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # A Comparison of Stateless Position-based Packet Routing Algorithms for FANETs

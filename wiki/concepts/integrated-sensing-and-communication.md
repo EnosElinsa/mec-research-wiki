@@ -34,8 +34,10 @@ related:
   - "[[xu-2026-hecta-predictive-beamforming]]"
   - "[[historical-echo-predictive-beamforming]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[tian-2026-joint-localization-communication]]"
+  - "[[joint-localization-and-communication]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Integrated Sensing and Communication (ISAC)

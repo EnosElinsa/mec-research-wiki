@@ -17,8 +17,10 @@ related:
   - "[[zhou-2024-jdl-abs-postdisaster-rescue]]"
   - "[[raivi-2024-jdaco-postdisaster-iot]]"
   - "[[lyu-2023-noma-marine-emergency-offloading]]"
+  - "[[tian-2026-joint-localization-communication]]"
+  - "[[joint-localization-and-communication]]"
 created: 2026-06-01
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # UAV-Assisted Emergency Networks in Disasters

@@ -21,6 +21,9 @@ related:
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
   - "[[zhang-2026-distributed-jscc-uav-video]]"
+  - "[[fatemidokht-2021-vru-vanet-routing]]"
+  - "[[li-2016-energy-balanced-uav-relaying]]"
+  - "[[energy-balanced-cooperative-uav-relaying]]"
 created: 2026-06-01
 updated: 2026-07-13
 ---
@@ -45,3 +48,5 @@ A relaying technique in which the relay node is **mounted on a high-mobility UAV
 - [[zhang-not-in-parse-cellular-uav-to-x]] uses high-SNR UAVs as opportunistic relays for low-SNR sensing UAVs; the relay caches U2U data and uploads it over U2N, while speed rather than path geometry is optimized.
 - [[zhang-2022-uav-relay-substitution]] adds [[uav-substitution-relaying]] for service durations longer than one relay's flight endurance. HUS rotates relays sequentially, while SEUS overlaps receive/forward periods and co-optimizes trajectories and powers against inter-relay interference.
 - [[liu-2026-usp-nfrp-emergency-communication]] expands endurance-aware relaying into [[persistent-emergency-uav-swarm-service]]: periodic replacement paths rotate UAVs through access and relay roles while a dynamically repaired tree preserves multi-hop station connectivity.
+- [[li-2016-energy-balanced-uav-relaying]] fixes the flight geometry and instead balances decoded-packet assignments, modulation, and forwarding power across cooperative relays under BER and TDMA constraints.
+- [[fatemidokht-2021-vru-vanet-routing]] uses UAV relaying as an urban VANET fallback: aerial ACO routes carry packets when road-segment forwarding becomes disconnected.

@@ -22,8 +22,9 @@ related:
   - "[[wang-gai-isac-physical-layer]]"
   - "[[du-2024-distributed-foundation-models-6g]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
+  - "[[zehui-xiong]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-13
 ---
 
 # Unleashing the Power of Edge-Cloud Generative AI in Mobile Networks: A Survey of AIGC Services

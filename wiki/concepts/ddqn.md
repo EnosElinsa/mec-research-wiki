@@ -10,8 +10,10 @@ related:
   - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
   - "[[action-masked-hierarchical-drl]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
+  - "[[yang-2026-embodied-antijamming-uav]]"
+  - "[[tian-2026-joint-localization-communication]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Double DQN (DDQN)
@@ -35,6 +37,8 @@ The discrete-action subset of MEC offloading decisions (which satellite / which 
 [[lin-2025-energy-effective-ris-multiuav-coverage]] uses DDQN as one value-based baseline against [[triple-deep-q-network|TDQN]] for RIS-assisted multi-UAV coverage control.
 
 [[bayessa-not-in-parse-uav-isac-secure-content-hdrl]] uses DDQN in two timescales: standard DDQN for long-timescale content caching and attention-based DDQN with an action mask for short-timescale association, deployment, and beamforming decisions.
+
+Two communication-side uses broaden the discrete-control surface. [[yang-2026-embodied-antijamming-uav]] selects U2U spectrum reuse and power with prioritized/transfer replay, while [[tian-2026-joint-localization-communication]] selects UAV movement, movement time, and radio powers around an AOA-localization and beamforming pipeline.
 
 ## Comparison with continuous-action methods
 

@@ -7,8 +7,10 @@ related:
   - "[[leo-satellite-edge-computing]]"
   - "[[qin-2025-bcuav-masac]]"
   - "[[mao-2025-bcsa-frl]]"
+  - "[[li-2016-energy-balanced-uav-relaying]]"
+  - "[[tian-2026-joint-localization-communication]]"
 created: 2026-05-28
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Air-Ground Integrated Network (AGIN)
