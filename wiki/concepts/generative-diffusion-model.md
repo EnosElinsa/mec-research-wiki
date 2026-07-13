@@ -3,6 +3,8 @@ type: concept
 title: "Generative Diffusion Model (GDM)"
 tags: [generative-ai, diffusion, decision-generation]
 related:
+  - "[[wu-2026-sensing-error-uav-scheduling]]"
+  - "[[diffusion-augmented-madrl-replay]]"
   - "[[generative-ai-for-mec]]"
   - "[[diffusion-model-as-optimizer]]"
   - "[[prompt-engineering]]"
@@ -13,10 +15,12 @@ related:
   - "[[multi-agent-diffusion-policy]]"
   - "[[niu-2026-falcon-semantic]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Generative Diffusion Model (GDM)
+
+[[wu-2026-sensing-error-uav-scheduling]] uses diffusion for replay augmentation rather than action generation: a model learns complete transition tuples and mixes synthetic error-bearing samples with real experience through [[diffusion-augmented-madrl-replay]].
 
 A generative model that learns to reverse a gradual noising process: a **forward** chain adds Gaussian noise to data over K steps, and a learned **reverse** (denoising) chain reconstructs samples from noise. Beyond generating media (images, audio), GDMs can generate **decisions** — conditioning the reverse chain on an environment/state vector to emit an action or design directly.
 

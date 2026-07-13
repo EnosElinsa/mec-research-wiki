@@ -3,6 +3,7 @@ type: concept
 title: "Physical Layer Security (PLS)"
 tags: [security, secrecy-rate, eavesdropper, beamforming, jamming]
 related:
+  - "[[zhang-2019-secure-uav-trajectory-power]]"
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[li-2026-credit-aware-uav-irs-secrecy]]"
@@ -45,6 +46,8 @@ updated: 2026-07-14
 ---
 
 # Physical Layer Security (PLS)
+
+[[zhang-2019-secure-uav-trajectory-power]] jointly shapes the UAV path and legitimate-transmitter power under a known fixed eavesdropper location: the UAV controls power in U2G, while the ground node controls power in G2U. Its [[u2g-g2u-secrecy-asymmetry]] distinguishes whether motion changes both secrecy-rate links or only the legitimate link.
 
 [[zhai-2026-uav-ma-secrecy]] adds joint macro/micro mobility: a UAV trajectory and onboard movable elements shape legitimate and uncertain eavesdropping links while scheduling and beamforming maximize worst-user average secrecy rate.
 

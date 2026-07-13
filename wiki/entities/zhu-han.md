@@ -3,6 +3,7 @@ type: entity
 title: Zhu Han
 tags: [author, researcher, ieee-fellow, game-theory, drl]
 related:
+  - "[[lin-2026-layered-semantic-uav-aggregation]]"
   - "[[du-2024-distributed-foundation-models-6g]]"
   - "[[jia-2022-hierarchical-aerial-matching]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
@@ -31,7 +32,7 @@ updated: 2026-07-14
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 20 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, emergency localization/communication, mountainous ILAC, anti-jamming control, cooperative and quantum MARL, location privacy, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
+Co-authored 21 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, emergency localization/communication, mountainous ILAC, anti-jamming control, cooperative and quantum MARL, location privacy, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -53,6 +54,7 @@ Co-authored 20 sources in this wiki, spanning aerial MEC, satellite edge computi
 - [[chen-2026-hammurabi-cooperation]] - game-diagnosed cooperation shaping for pretrained multi-UAV policies.
 - [[kim-2026-qmarl-sagin-access]] - quantum-MARL access scheduling for CubeSat/HALE-UAV SAGINs.
 - [[chen-2026-aris-location-privacy]] - virtual-partitioned active-RIS communication and source-UAV location privacy.
+- [[lin-2026-layered-semantic-uav-aggregation]] - layered image-semantic aggregation with UAV hovering-position and signal-processing coordination.
 
 ## Contributions to this wiki
 

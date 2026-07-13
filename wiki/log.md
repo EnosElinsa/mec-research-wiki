@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-14] Curated directional UAV secrecy, critical-period FL, layered semantic aggregation, sensing-error-aware ISAC, and active-RIS short packets
+
+Added five source pages and nine reusable concepts:
+
+- [[zhang-2019-secure-uav-trajectory-power]] - Zhang et al. 2019, *IEEE TWC* 18(2), 1376-1389, DOI `10.1109/TWC.2019.2892461`. [[u2g-g2u-secrecy-asymmetry]] distinguishes U2G motion that changes both secrecy links from G2U motion that changes only the legitimate link under the fixed ground-eavesdropper model.
+- [[li-2026-clp-uav-hpfl]] - Li et al. 2026, *IEEE TMC* 25(5), 6740-6754, DOI `10.1109/TMC.2025.3639671`. [[critical-learning-period]], [[federated-kl-divergence-norm]], and [[federated-drift-norm]] drive adaptive participation, UAV revisits, and aggregation timing in hierarchical personalized FL.
+- [[lin-2026-layered-semantic-uav-aggregation]] - Lin et al. 2026, *IEEE TWC* 25, 4799-4815, DOI `10.1109/TWC.2025.3614182`. [[layered-semantic-communication]] and [[semantic-reference-signal-matching]] separate a frozen image codec from geometry-adaptive signal processing and horizontal hovering-point control.
+- [[wu-2026-sensing-error-uav-scheduling]] - Wu et al. 2026, *IEEE TWC* 25, 9782-9798, DOI `10.1109/TWC.2025.3638787`. [[sensing-error-aware-communication-rate]], [[diffusion-augmented-madrl-replay]], and [[adaptive-td-isac-sensing-period]] separate localization-aware rate modeling, synthetic transition replay, and integer sensing-frequency control.
+- [[huyen-2026-short-packet-aris-noma]] - Huyen et al. 2026, *IEEE TMC* 25(4), 5364-5376, DOI `10.1109/TMC.2025.3628880`. The paper combines existing [[active-ris]], [[uav-mounted-ris]], [[finite-blocklength-urllc]], [[noma]], and [[imperfect-sic-residual-interference]] vocabulary rather than adding a paper-shaped concept.
+
+The existing [[zhu-han]] roster was extended to 21 sources from exact University of Houston/Kyung Hee University affiliation evidence. Qingqing Wu's NUS-era record remains subject to the entity page's human-confirmation rule; Guangchi Zhang, Miao Cui, Rui Zhang, Wenjun Xu, and Ping Zhang have recurrence evidence but were not promoted without sufficient affiliation-backed continuity across current source pages. The Zhi Zhang record was treated as a possible namesake and not merged.
+
+Metadata notes: all five supplied PDFs provide final IEEE journal headers, DOI, volume, and page ranges. The four 2026 records have 2025 online-publication/copyright chronology but use the final 2026 issue year. The title-named Markdown parses omit parts of the PDF headers, so bibliographic fields were pinned from the local origin PDFs.
+
+Evidence caveats: the secrecy paper assumes one known fixed eavesdropper, fixed altitude, simplified LoS/fading channels, and proves monotonic convergence only to a suboptimal/approximate design; the FL paper is simulation-only, optimizes a flight-energy/staleness surrogate, omits communication energy from its final objective, and contains device-selection, battery, and target-update inconsistencies; the semantic paper assumes perfect dual-side CSI, fixed grouping and altitude, static horizontal hovering, and reports CIFAR-10 simulation with no airborne deadline validation; the ISAC paper uses a circular-error/uniform-angle model, gives DQN continuous actions without a stated representation, and defines no physical-consistency filter for generated replay tuples; the active-RIS paper assumes perfect CSI/phase/Doppler control, uses Gamma and Q-function approximations, optimizes only the NOMA power split, and contains unresolved `290%`-improvement, diversity-rounding, and baseline-accounting ambiguities.
+
+Three low-concurrency extraction agents grounded the five papers, two disjoint workers drafted source pages, and one worker drafted concept pages. Independent read-only review replaced a near-duplicate trajectory-security concept with the direction-specific [[u2g-g2u-secrecy-asymmetry]], corrected G2U transmit-power ownership and an unsupported local-optimum claim, generalized the UAV-mounted-RIS definition to active implementations, and broadened the ISAC umbrella to include time- and frequency-division integration.
+
+Validation reports **579 sources / 588 concepts / 159 entities / 612 raw folders** and **32 genuinely new sources** remaining. Wikilinks are clean; process narration is absent outside this log; the index covers all **1,378** catalogue-able pages exactly once; all **1,376** frontmatter blocks validate; entity rosters have zero overclaims (29 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated secure mobile relaying, IRS-UAV ISAC, credit-aware MARL, maritime jamming, and short-packet NOMA
 
 Added five source pages, nine reusable concepts, and nine recurring-author entities:

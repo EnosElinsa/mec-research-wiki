@@ -3,6 +3,7 @@ type: concept
 title: "Active RIS"
 tags: [communication, beamforming, metasurface, anti-jamming]
 related:
+  - "[[huyen-2026-short-packet-aris-noma]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[intelligent-reflecting-surface]]"
@@ -18,6 +19,8 @@ updated: 2026-07-14
 ---
 
 # Active RIS
+
+[[huyen-2026-short-packet-aris-noma]] analyzes a UAV-mounted active RIS for two-user short-packet NOMA. It includes amplification noise, finite-blocklength BLER and rate expressions, imperfect SIC, and a one-dimensional NOMA power-split search; altitude and active gain are sensitivity sweeps rather than jointly optimized variables.
 
 [[jeon-2026-ampli-flection-aerial-backhaul]] uses [[aerial-active-ris-backhaul]] for full-3D UAV-BS backhaul, making active hardware power and dynamic noise part of the energy-efficiency calculation rather than treating RIS gain as free.
 

@@ -3,6 +3,7 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[zhang-2019-secure-uav-trajectory-power]]"
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[li-2026-credit-aware-uav-irs-secrecy]]"
@@ -138,6 +139,8 @@ updated: 2026-07-14
 ---
 
 # UAV Trajectory Control
+
+[[zhang-2019-secure-uav-trajectory-power]] treats motion as a physical-layer secrecy control: block coordinate descent alternates a closed-form power update with SCA-based trajectory optimization, yielding monotonic objective improvement to a local design rather than a global optimum.
 
 [[wang-2026-mat-target-tracking]] controls planar velocity changes to improve target-localization geometry while limiting obstacle risk and flight distance.
 

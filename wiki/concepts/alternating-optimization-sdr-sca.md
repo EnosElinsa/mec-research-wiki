@@ -3,6 +3,8 @@ type: concept
 title: "Alternating Optimization with SDR and SCA"
 tags: [optimization, alternating-optimization, sdr, sca, non-convex, classical-solver]
 related:
+  - "[[zhang-2019-secure-uav-trajectory-power]]"
+  - "[[lin-2026-layered-semantic-uav-aggregation]]"
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[feng-2026-secure-short-packet-noma-relay]]"
@@ -52,6 +54,8 @@ updated: 2026-07-14
 ---
 
 # Alternating Optimization with SDR and SCA
+
+[[zhang-2019-secure-uav-trajectory-power]] alternates power control with SCA trajectory updates for secrecy-rate maximization, while [[lin-2026-layered-semantic-uav-aggregation]] uses BCD and SCA to coordinate a hovering point with semantic signal scaling. Neither source uses SDR; both belong here through the AO/SCA branch of the method family.
 
 A classical recipe for solving non-convex MEC and ISAC problems with multiple coupled blocks (e.g. transmit beamforming, receive beamforming, trajectory, power). The recipe:
 

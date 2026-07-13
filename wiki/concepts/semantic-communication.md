@@ -3,6 +3,8 @@ type: concept
 title: "Semantic Communication"
 tags: [6g, semantic, source-channel-coding, data-compression, physical-layer]
 related:
+  - "[[lin-2026-layered-semantic-uav-aggregation]]"
+  - "[[layered-semantic-communication]]"
   - "[[multi-functional-ris]]"
   - "[[anti-jamming-mec]]"
   - "[[over-the-air-computation]]"
@@ -21,10 +23,12 @@ related:
   - "[[zhang-2026-distributed-jscc-uav-video]]"
   - "[[liao-2026-semantic-twinning-tracking]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Semantic Communication
+
+[[lin-2026-layered-semantic-uav-aggregation]] separates a frozen image semantic codec from geometry-adaptive transmit/receive processing and UAV hovering control. Its [[layered-semantic-communication]] design uses [[semantic-reference-signal-matching]] to preserve the decoder input learned at fixed geometry while adapting to changed positions and Rician fading.
 
 A 6G transmission paradigm that — unlike Shannon (bit) communication, which transmits the full bit sequence of a source — transmits only the **key (semantic) information**, discarding irrelevant content without task-level performance degradation. It has been demonstrated for text, speech, and image sources, typically via deep-learning-based joint source-channel coding, and is reported to improve spectral efficiency, energy efficiency, and transmission reliability.
 

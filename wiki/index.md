@@ -231,6 +231,7 @@
 - [[huroon-2026-bd-ris-rsma-uav]] - Huroon et al. 2026. Ground-mounted group-connected BD-RIS with cluster assignment and intra-group RSMA; augmented GBD plus BCD/SCA/RCG jointly optimize precoders, rates, trajectories, and non-diagonal scattering matrices (IEEE TWC).
 - [[mihertie-2026-aerial-irs-rsma-ee]] - Mihertie et al. 2026. Communication-side energy-efficiency maximization for a UAV-mounted passive IRS MISO downlink with RSMA, aggregate hardware distortion, BCD/SCA, and sequential rank-one relaxation (IEEE TGCN).
 - [[morshed-2026-active-ris-uav-noma-mappo]] - Morshed et al. 2026. Active-RIS-aided UAV-NOMA communication with MAPPO actors for BS power allocation, UAV motion, and RIS gain/phase under a shared rate/energy/fairness/outage reward (IEEE TGCN).
+- [[huyen-2026-short-packet-aris-noma]] - Huyen et al. 2026. Finite-blocklength BLER and achievable-rate analysis for two-user NOMA through a UAV-mounted active RIS under imperfect SIC, plus one-dimensional power-split optimization (IEEE TMC).
 - [[cui-2026-aris-v2x-icac]] - Cui et al. 2026. Active-RIS-aided multi-UAV V2X integrated communication/computation; ECCRA maximizes effective energy efficiency over ARIS association/beamforming, UAV/BS beamforming, vehicle scheduling, offloading ratios, and compute allocation (IEEE TMC).
 - [[hu-2026-segmented-irs-cpn]] - Hu et al. 2026. Dynamically segmented IRS-assisted UAV computing-power network; MAPPO trajectory control plus phase alignment, association, compute allocation, and SCA-based IRS-row matching for delay/energy optimization (IEEE TMC).
 - [[ahmed-2026-noma-irs-vehicular]] - Ahmed et al. 2026. Passive-IRS/NOMA UAV-to-vehicle sum-capacity optimization via projected fixed-point phase updates and alternating convex UAV power allocation (IEEE T-ITS).
@@ -283,6 +284,7 @@
 - [[wang-2026-llm-qos-multiuav-resource]] - Wang et al. 2026. LLM teacher-student QoS-aware resource allocation for multi-UAV cooperative edge computing; NKG/R-GAT/ToT teacher with MAPPO student distillation (IEEE TMC).
 - [[wang-2026-lifelong-semantic-content-reuse]] — Wang et al. 2026. UAV-assisted Metaverse semantic content reuse; semantic subject/object caching plus DC-ELLA lifelong policy transfer for changing semantic environments (IEEE TMC).
 - [[wang-2026-diffusion-semantic-uav-edge]] — Wang et al. 2026. UAV-assisted semantic edge computing; H-DDPG plus convex semantic-resource optimization, then diffusion-denoising DDPG for trajectory action generation (IEEE TWC).
+- [[lin-2026-layered-semantic-uav-aggregation]] - Lin et al. 2026. Frozen image-semantic codec with learned or optimization-based signal/hover-position adaptation for OFDM-NOMA UAV aggregation (IEEE TWC).
 - [[niu-2026-falcon-semantic]] - Niu et al. 2026. FALCON multimodal semantic communication; KANet/shared-prompt alignment, channel-aware Sparsemax token selection, and range-null diffusion signal recovery (IEEE TMC).
 - [[zhang-2025-gsc-diffusion-semcom]] — Zhang et al. 2025. **Generative AI Semantic Communication (GSC)**: Swin Transformer encoder + **diffusion model** decoder for image transmission; +17.75% PSNR in AWGN vs DeepJSCC; MU-GSC multi-user extension (IEEE TCCN).
 - [[ye-2025-aigc-diffusion-contract]] — Ye et al. 2025. Edge AIGC services via **contract theory** + prompt engineering; generative diffusion model as the contract-item optimizer.
@@ -386,6 +388,7 @@
 - [[ron-2026-federated-a3c-uav-energy]] - Ron and Lee 2026. Hierarchical federated A3C for UAV-relayed FR3 networks; ground users jointly select powers, UAV hover positions, bandwidth fractions, and associations for compute/transmit energy and round-trip service reliability (IEEE TGCN).
 
 - [[fu-2026-uav-fl-user-grouping]] - Fu et al. 2026. DBSCAN client grouping and two-phase SCA jointly control FL participation, data volume, UE power, UAV hover time, and trajectory under an expected-global-loss bound (IEEE TGCN).
+- [[li-2026-clp-uav-hpfl]] - Li et al. 2026. Critical-learning-period-aware hierarchical personalized FL with parameter-divergence and data-drift detectors plus SAC-controlled UAV visits and aggregation periods (IEEE TMC).
 - [[chen-2026-sdhfl-completion-time]] - Chen et al. 2026. UAV-assisted semi-decentralized hybrid FL with D2D cluster consensus, asynchronous UAV aggregation, Lyapunov cluster selection, and joint mobility/resource optimization for completion time (IEEE TMC).
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
 - [[zhao-2026-uav-fl-inspection-incentives]] - Zhao et al. 2026. Contract-theoretic incentive assignment for UAV-client federated intelligent inspection under communication-sensing-computing integration; models data quality, sensing/computation costs, and FL participation utilities (IEEE TMC).
@@ -418,6 +421,7 @@
 - [[cheng-2026-cnn-mamba-cracks]] - Cheng et al. 2026. WTCMamba pavement-crack segmentation combines CNN features, Haar-wavelet guidance, and Mamba selective state-space blocks; an LMC-Belloch/Triton scan is benchmarked on Jetson, separately from the proposed air-ground acquisition platform (IEEE T-ITS).
 - [[li-2026-directional-modulation-irs-uav]] - Li et al. 2026. IRS-assisted UAV directional modulation with discrete phase shifts; VT, CE-VT, and BCD-VT jointly design symbol-level digital weights, UAV position, and IRS phases to preserve the legitimate constellation while disrupting an eavesdropper (IEEE TGCN).
 - [[qin-2023-symmetry-augmented-uav-isac]] - Qin et al. 2023. Multi-UAV ISAC association, trajectory, and sensing/communication power control via SAC with permutation-equivariant replay augmentation, plus a CTDE MASAC alternative (IEEE TWC).
+- [[wu-2026-sensing-error-uav-scheduling]] - Wu et al. 2026. Sensing-error-aware multi-UAV ISAC scheduling with an error-averaged communication rate, diffusion-augmented MADQN replay, and adaptive sensing periods (IEEE TWC).
 - [[xu-2026-hecta-predictive-beamforming]] - Xu et al. 2026. HECTA-Net predicts BS transmit and UAV receive beams directly from historical matched-filtered ISAC echoes through CNN, dilated causal TCN, and temporal attention (IEEE TWC).
 - [[meng-2026-uav-isac-corrections]] - Meng et al. 2026. One-page correction to periodic UAV-ISAC throughput optimization; removes a duplicated association factor and supplies the omitted auxiliary-variable/Taylor transformation that makes the corrected subproblems convex (IEEE TWC).
 - [[he-2026-lscr-uav-relay-tracking]] - He et al. 2026. LSCR target handover for collaborative UAV relay tracking; Delaunay target graphs, TGR features, and Twin-GRCN similarity matching reach 92.1% accuracy with 0.063 KB transfer and a 20 KB model (IEEE T-ITS).
@@ -593,6 +597,7 @@
 - [[chen-not-in-parse-uav-human-medical-delivery]] - Chen et al. Cooperative emergency medical pickup-delivery scheduling with UAVs and human couriers; an attention-based cooperative DRL policy uses type-specific decoders, feasibility masks, and a vehicle coordinator. *(Parsed metadata lacks DOI/venue/year.)*
 - [[yang-2025-hcdrl-pursuit-evasion]] - Yang et al. 2025. Hierarchical cooperative DRL for multi-UAV pursuit-evasion; a meta-policy selects five encirclement subtasks and CTDE lower policies control collision-aware maneuvers (IEEE GC Wkshps).
 - [[zhang-2022-uav-relay-substitution]] - Zhang et al. 2022. HUS/SEUS UAV substitution relaying extends service beyond one relay's flight duration and co-optimizes relay trajectories and source/relay powers (IEEE TGCN).
+- [[zhang-2019-secure-uav-trajectory-power]] - Zhang et al. 2019. Joint trajectory and temporal power control for average secrecy-rate maximization in UAV-to-ground and ground-to-UAV links (IEEE TWC).
 - [[le-2026-asynchronous-uav-data-collection]] - Le et al. 2026. Asynchronous-QMIX remote data collection with Dec-POSMDP event timing, range-limited map exchange, recurrent value decomposition, and local imperfect-CSI bandwidth optimization (IEEE TWC).
 - [[zhang-not-in-parse-cellular-uav-to-x]] - Zhang et al. Cellular UAV-to-X communication with cooperative UAV-to-network and UAV-to-UAV sense-and-send operation; ISASOA combines LP, branch-and-bound, and convex speed control. *(Parsed metadata lacks DOI/venue/year.)*
 - [[bai-2026-multimodal-uav-vehicle-channel]] - Bai et al. 2026. LiDAR-aided multi-modal intelligent channel model for multi-UAV-to-multi-vehicle links; MUMV-CSCI dataset, TTD/ATD density parameters, and TSF-CF/TSI/DPSD statistics (IEEE TWC).
@@ -842,6 +847,8 @@
 - [[uav-assisted-mobile-crowd-sensing]]
 - [[dynamic-qos-constraints]]
 - [[finite-blocklength-urllc]]
+- [[layered-semantic-communication]]
+- [[semantic-reference-signal-matching]]
 - [[network-function-virtualization]]
 - [[virtual-network-embedding]]
 - [[service-function-chaining]]
@@ -1042,6 +1049,7 @@
 - [[contextual-momdp]]
 - [[evolutionary-reinforcement-learning]]
 - [[generative-diffusion-model]]
+- [[diffusion-augmented-madrl-replay]]
 - [[diffusion-model-as-optimizer]]
 - [[generative-adversarial-network]]
 - [[variational-autoencoder]]
@@ -1196,6 +1204,8 @@
 - [[dual-objective-multi-uav-isac]]
 
 - [[integrated-sensing-and-communication]]
+- [[sensing-error-aware-communication-rate]]
+- [[adaptive-td-isac-sensing-period]]
 - [[integrated-sensing-communication-power-transfer]]
 - [[sensing-feasible-uav-reachability]]
 - [[closed-form-irs-phase-alignment]]
@@ -1235,6 +1245,7 @@
 - [[temporal-spectrum-cartography]]
 - [[information-driven-uav-spectrum-mapping]]
 - [[physical-layer-security]]
+- [[u2g-g2u-secrecy-asymmetry]]
 - [[directional-modulation]]
 - [[micro-macro-mobility-security]]
 - [[covert-communication]]
@@ -1259,6 +1270,9 @@
 
 - [[zero-trust-architecture]]
 - [[federated-learning]]
+- [[critical-learning-period]]
+- [[federated-kl-divergence-norm]]
+- [[federated-drift-norm]]
 - [[federated-linear-bandit-learning]]
 - [[semi-decentralized-hybrid-federated-learning]]
 - [[split-federated-learning]]

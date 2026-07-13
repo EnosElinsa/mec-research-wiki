@@ -3,6 +3,7 @@ type: concept
 title: "Finite-Blocklength URLLC"
 tags: [urllc, finite-blocklength, short-packet, reliability, latency, channel-model]
 related:
+  - "[[huyen-2026-short-packet-aris-noma]]"
   - "[[feng-2026-secure-short-packet-noma-relay]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[csi-estimation-error]]"
@@ -18,6 +19,8 @@ updated: 2026-07-14
 ---
 
 # Finite-Blocklength URLLC
+
+[[huyen-2026-short-packet-aris-noma]] derives average BLER and achievable-rate expressions for a two-user active-RIS NOMA link with imperfect SIC. The derivation relies on a Gamma approximation for the cascaded channel and a piecewise-linear Q-function approximation, so its later "exact" expressions remain conditional on those modeling approximations.
 
 **Ultra-reliable low-latency communication (URLLC)** sends very **short packets** (e.g. 20–32 bytes), so the transmission blocklength and channel-code length are **finite** and the decoding-error probability cannot be ignored. As a result the **Shannon capacity formula** — which assumes infinite blocklength — overstates the achievable rate, and the finite-blocklength rate (a function of SNR, blocklength, and target decoding-error probability) must be used instead.
 

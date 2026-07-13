@@ -3,6 +3,7 @@ type: concept
 title: "Soft Actor-Critic (SAC)"
 tags: [drl, actor-critic, off-policy, maximum-entropy, continuous-action]
 related:
+  - "[[li-2026-clp-uav-hpfl]]"
   - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[masac]]"
@@ -25,6 +26,8 @@ updated: 2026-07-14
 ---
 
 # Soft Actor-Critic (SAC)
+
+[[li-2026-clp-uav-hpfl]] uses SAC at the central server to choose active UAVs, UAV positions, and local/global aggregation periods from battery and cluster-drift state. Its reward is based on a flight-energy and gradient-staleness surrogate rather than model accuracy directly.
 
 An off-policy, **maximum-entropy** actor-critic algorithm for (originally continuous) control. It augments the standard reward objective with a policy-entropy bonus
 

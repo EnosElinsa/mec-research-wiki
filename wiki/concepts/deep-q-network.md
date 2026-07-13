@@ -3,6 +3,7 @@ type: concept
 title: "Deep Q-Network (DQN)"
 tags: [drl, value-based, discrete-action, off-policy, replay-buffer]
 related:
+  - "[[wu-2026-sensing-error-uav-scheduling]]"
   - "[[wang-2023-drl-irs-uav-trajectory]]"
   - "[[ddqn]]"
   - "[[parameterized-dqn]]"
@@ -14,10 +15,12 @@ related:
   - "[[zhang-2026-distributed-jscc-uav-video]]"
   - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Deep Q-Network (DQN)
+
+[[wu-2026-sensing-error-uav-scheduling]] uses a multi-agent DQN backbone for UAV position, association, and bandwidth decisions, but describes those action components as continuous without specifying discretization or a hybrid-action parameterization. That unresolved mismatch is a concrete instance of DQN's discrete-action limitation.
 
 The foundational value-based DRL algorithm: a deep neural network approximates the action-value function $Q(s,a)$, trained with TD targets bootstrapped from a periodically-synced target network and sampled from an experience replay buffer. Action selection is greedy / ε-greedy over the discrete action set.
 

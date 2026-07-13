@@ -3,6 +3,7 @@ type: concept
 title: UAV Data Collection
 tags: [uav, data-collection, iot, data-sink, aerial-communications]
 related:
+  - "[[lin-2026-layered-semantic-uav-aggregation]]"
   - "[[qi-2026-ocma-ddqn-data-collection]]"
   - "[[huang-2026-slim-eiv-uav-fleet]]"
   - "[[lu-2026-aoi-trajectory-channel]]"
@@ -46,6 +47,8 @@ updated: 2026-07-14
 ---
 
 # UAV Data Collection
+
+[[lin-2026-layered-semantic-uav-aggregation]] adds image-semantic aggregation at a hovering UAV base station. Unlike route- and freshness-oriented collection, it fixes the user grouping and optimizes semantic signal processing plus a static horizontal hovering point for reconstruction quality.
 
 A UAV mission pattern where the aircraft acts as a flying **data sink**, flying to (or hovering over) ground IoT devices to collect their sensed data directly over LoS links — reducing device transmit power and preventing data overflow in hard-to-reach areas. It is the **data-gathering** counterpart to UAV-assisted **computation offloading** ([[task-offloading]]): the former maximizes collected data volume, the latter minimizes compute latency/energy.
 

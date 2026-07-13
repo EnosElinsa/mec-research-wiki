@@ -3,6 +3,8 @@ type: concept
 title: NOMA (Non-Orthogonal Multiple Access)
 tags: [wireless, multiple-access, spectrum]
 related:
+  - "[[lin-2026-layered-semantic-uav-aggregation]]"
+  - "[[huyen-2026-short-packet-aris-noma]]"
   - "[[feng-2026-secure-short-packet-noma-relay]]"
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
@@ -24,6 +26,8 @@ updated: 2026-07-14
 ---
 
 # NOMA (Non-Orthogonal Multiple Access)
+
+[[lin-2026-layered-semantic-uav-aggregation]] applies OFDM-NOMA to simultaneous image-semantic uploads whose superposed features are jointly decoded at the UAV. [[huyen-2026-short-packet-aris-noma]] instead studies two-user power-domain NOMA through a UAV-mounted active RIS under finite blocklength and imperfect SIC.
 
 A multiple-access scheme where multiple users share the *same* time-frequency resource, separated in the **power domain**. Receivers use successive interference cancellation (SIC) to peel off users in order of channel quality.
 

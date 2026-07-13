@@ -3,6 +3,7 @@ type: concept
 title: "Integrated Sensing and Communication (ISAC)"
 tags: [isac, dual-function, beamforming, 6g]
 related:
+  - "[[wu-2026-sensing-error-uav-scheduling]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[zhu-2025-green-isac-q-learning]]"
   - "[[huang-2026-star-ris-nearfield-isac]]"
@@ -67,7 +68,9 @@ updated: 2026-07-14
 
 # Integrated Sensing and Communication (ISAC)
 
-A 6G design pattern in which the **same RF hardware and waveform** simultaneously serves communication users and senses targets via radar-style echo processing. The motivation is dual: cut hardware cost in half by sharing front ends, and extract sensing information (target position, velocity, RCS) from signals that are already in the air for communication.
+[[wu-2026-sensing-error-uav-scheduling]] studies time-division multi-UAV ISAC when localization error perturbs communication beam alignment. It combines a [[sensing-error-aware-communication-rate]] with [[adaptive-td-isac-sensing-period]] control instead of assuming sensed user positions are exact.
+
+A 6G design pattern that coordinates sensing and communication on shared infrastructure and radio resources. Some systems use the **same RF hardware and waveform** simultaneously for both functions; others integrate them through time-division or frequency-division scheduling. The common goal is to reuse hardware, spectrum, observations, or control decisions while balancing communication service against sensing quality.
 
 Two competing design philosophies appear in the wiki:
 

@@ -3,6 +3,7 @@ type: concept
 title: "UAV-Mounted RIS"
 tags: [intelligent-reflecting-surface, uav, aerial, deployment, 6g]
 related:
+  - "[[huyen-2026-short-packet-aris-noma]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[li-2026-credit-aware-uav-irs-secrecy]]"
   - "[[zhao-2026-uav-irs-data-collection]]"
@@ -39,7 +40,9 @@ updated: 2026-07-14
 
 # UAV-Mounted RIS
 
-A deployment in which a [[intelligent-reflecting-surface|reconfigurable intelligent surface (RIS)]] is carried by an uncrewed aerial vehicle rather than fixed to a building facade. The RIS itself is a passive, low-cost array that reflects incident signals with element-wise phase shifts; mounting it on a UAV adds **3D mobility and opportunistic deployment**, letting the surface be repositioned to establish a favorable reflected path (e.g. when the direct BS-to-user link is blocked) faster and more controllably than a fixed surface or a tethered balloon.
+[[huyen-2026-short-packet-aris-noma]] adds the active-surface short-packet case: a UAV follows a prescribed circular path while the active RIS relays a blocked BS-to-user NOMA link, with perfect CSI and coherent phase alignment assumed throughout.
+
+A deployment in which a [[intelligent-reflecting-surface|reconfigurable intelligent surface (RIS)]] is carried by an uncrewed aerial vehicle rather than fixed to a building facade. Passive implementations reflect incident signals with element-wise phase shifts and little communication-side power, while [[active-ris|active implementations]] also amplify signals, consume power, and inject amplification noise. Mounting either type on a UAV adds **3D mobility and opportunistic deployment**, letting the surface be repositioned to establish a favorable reflected path (e.g. when the direct BS-to-user link is blocked) faster and more controllably than a fixed surface or a tethered balloon.
 
 Design considerations that recur:
 

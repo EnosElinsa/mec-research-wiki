@@ -3,6 +3,7 @@ type: concept
 title: "Federated Learning (FL)"
 tags: [distributed-ml, privacy, aggregation, fedavg]
 related:
+  - "[[li-2026-clp-uav-hpfl]]"
   - "[[ron-2026-federated-a3c-uav-energy]]"
   - "[[federated-reinforcement-learning]]"
   - "[[seamless-handover]]"
@@ -28,6 +29,8 @@ updated: 2026-07-14
 ---
 
 # Federated Learning (FL)
+
+[[li-2026-clp-uav-hpfl]] adds critical-period-aware hierarchical personalized FL: [[federated-kl-divergence-norm]] and [[federated-drift-norm]] detect rounds where model or data-distribution change warrants more selective participation and more frequent UAV visits.
 
 [[zhao-2026-uav-fl-inspection-incentives]] adds the incentive/client-selection side of UAV FL: [[contract-theoretic-fl-incentives]] build a candidate UAV pool and then select high-contribution clients for federated intelligent inspection under communication, sensing, computation, and battery costs.
 
