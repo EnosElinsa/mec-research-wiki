@@ -339,6 +339,7 @@
 - [[chen-2026-hc-mappo-vehicle-twin-migration]] - Chen et al. 2026. Hierarchical-control MAPPO for vehicle-twin migration in UAV-assisted vehicular metaverses, using ACB-LSTM workload prediction and deterministic lower-layer migration mapping (IEEE TMC).
 - [[wei-2026-airfogsim-uav-vfc]] - Wei et al. 2026. **AirFogSim** lightweight modular simulator for UAV-integrated vehicular fog computing; traffic/UAV mobility, communication, computation, energy, security/privacy, blockchain, and scheduling modules (IEEE TMC).
 - [[zhou-2026-a2g-madrl-air-ground-vcs]] - Zhou et al. 2026. Air-ground vehicular crowdsensing with UAV-UGV pairs; A2G-MADRL combines HVGCN and dynamically ordered masked policy generation for sAoI, latency-weighted collection, and NOMA channel assignment (IEEE TMC).
+- [[zhao-2026-uav-carrier-vcs]] - Zhao et al. 2026. Carrier-enabled UAV-UGV vehicular crowdsensing; HADRL-VCS combines attentive memory-integrated information exchange with mutual policy-divergence exploration (IEEE TMC).
 - [[qi-2026-drone-vehicle-mec-inspection]] - Qi et al. 2026. Cooperative drone-vehicle MEC for low-altitude inspection; GV-carried accompanying/detached drones, battery swapping, route planning, and detached-drone speed optimization minimize mission completion time (IEEE TMC).
 
 - [[liu-2025-multimodal-semantic-iov-jamming]] - Liu et al. 2025. Multi-UAV-assisted IoV MEC under jamming with multi-modal semantic communication; SC-MA-TD3 jointly controls UAV trajectories, user association, and channel selection to reduce delay and preserve semantic accuracy (IEEE TMC).
@@ -360,6 +361,7 @@
 
 ### Maritime MEC
 
+- [[yao-2026-secure-maritime-sutn]] - Yao et al. 2026. Robust coordinated beamforming and UAV trajectory design for secure maritime satellite-UAV-terrestrial coexistence under norm-bounded CSI errors (IEEE TWC).
 - [[wang-2026-noma-marine-data-computation]] - Wang et al. 2026. NOMA marine sensing-data collection followed by UAV computation; min-max-normalized TD3 jointly controls trajectory, device power, and aerial compute allocation (IEEE TGCN).
 - [[huang-2026-coded-caching-uav-marine]] - Huang et al. 2026. Coded caching-enabled D2D content delivery in UAV-assisted marine edge networks; UAV/buoy/AUV acoustic-RF architecture with OJC3D Lyapunov online trajectory/caching/request optimization (IEEE TMC).
 - [[qian-2024-marine-fl-dt-secrecy]] — Qian et al. 2024. **FL-assisted marine digital twin** with secrecy; USV NOMA model-upload to HAP + chaotic spread-spectrum broadcast; energy minimization; layered decomposition (IEEE IoT-J).
@@ -556,6 +558,8 @@
 - [[peng-2023-dual-domain-eh-ris]] - Peng & Wang 2023. UAV-mounted RIS combines time splitting with element-level reflection/harvesting; SD3 controls harvesting time, power, scheduling, and phases under QoS constraints (IEEE TWC).
 - [[zhang-2022-solar-charging-uav-iot]] - Zhang et al. 2022. Action-confined Q-learning and SARSA route one solar-powered UAV among charging stations and serving points under battery, downlink-data, and Jain-fairness rewards (IEEE TMC).
 - [[xie-2023-wireless-powered-short-packet-uav]] - Xie et al. 2023. Static UAV hybrid access point with downlink WPT and TDMA finite-blocklength uploads; alternating SCA/fractional updates solve a continuous relaxation before heuristic integer-symbol rounding (IEEE TGCN).
+- [[lin-2026-uav-wpucn-time-allocation]] - Lin et al. 2026. Hybrid HAP/UAV energy delivery and convex phase-time allocation for soil-attenuated wireless-powered underground data collection (IEEE TGCN).
+- [[xie-2021-uav-wpt-tutorial]] - Xie et al. 2021. Tutorial on UAV-enabled WPT, WPCNs, and wireless-powered MEC through multi-location hovering, hover-and-fly, and time-quantized trajectory design (IEEE TGCN).
 - [[liu-2021-edivert-mobile-crowdsensing]] - Liu et al. 2021. e-Divert energy-efficient unmanned-vehicle crowdsensing with charging stations, CNN/LSTM CTDE control, Ape-X actors, and distributed prioritized replay (IEEE TMC).
 - [[he-2026-memdrl-uav-navigation]] - He et al. 2026. MEMDRL multi-UAV navigation for cooperative sensing and upload; MATD3 combines BeBold exploration, ConvLSTM histories, and multi-agent prioritized replay on Shenzhen and Beijing map layouts (IEEE TMC).
 - [[dong-2026-digital-tides-provisioning]] - Dong et al. 2026. Fluid-dynamic logistics-UAV workload modeling and information-flux-triggered activation of sleeping ground MEC infrastructure under setup latency (IEEE TMC).
@@ -655,6 +659,7 @@
 - [[zeng-2016-uav-comm-opportunities-challenges]] — Zeng et al. 2016. **Magazine overview** of UAV-aided wireless communications: networking architecture, air-to-ground LoS channel characteristics, three use cases (ubiquitous coverage / relaying / data collection), and design challenges (CNPC links, dynamic topology, SWAP constraints, interference coordination) (IEEE Communications Magazine). *(Foundational UAV-comms overview, not MEC.)*
 - [[zhan-2011-uav-relay-heading-optimization]] — Zhan et al. 2011. **Earliest UAV-comms source** — multi-UAV relays connect ground APs to a BTS on the uplink; defines the **ergodic normalized transmission rate (ENTR)**, approximates it as a **sinusoid** in UAV heading → closed-form optimal heading, plus an adaptive **handoff** algorithm + new-relay deployment for the mobile topology (IEEE TAES). *(UAV mobile-relaying / heading-control anchor, not MEC.)*
 - [[mozaffari-2016-uav-underlaid-d2d]] — Mozaffari et al. 2016. UAV downlink base station **coexisting with an underlaid D2D network**; **stochastic-geometry** coverage / sum-rate analysis for static + mobile UAV; optimal altitude (decreasing in D2D density), **disk-covering** minimum stop-points for full coverage, and the **coverage-vs-delay / D2D-outage** tradeoff (IEEE TWC). *(Aerial-base-station + D2D coexistence anchor, not MEC.)*
+- [[azari-2020-uav-to-uav-cellular]] - Azari et al. 2020. Stochastic-geometry analysis of direct U2U pairs sharing cellular uplink spectrum, comparing concurrent reuse with orthogonal bandwidth partition and fractional power control (IEEE TWC).
 - [[mozaffari-2019-drone-antenna-array]] — Mozaffari et al. 2019. **Drone-based antenna array** that beam-steers by **physically repositioning** the drones; minimum-**service-time** design = transmission time (perturbation-theory drone-spacing directivity max) + control time (**bang-bang** closed-form minimum control time under wind/gravity); +32% spectral efficiency vs fixed uniform array (IEEE TCOMM). *(UAV-communications / aerial-beamforming anchor, not MEC.)*
 
 - [[zhao-2026-uav-irs-data-collection]] - Zhao et al. 2026. Transmission-prioritized UAV-mounted IRS sensor collection with CJ-BS element-count search, SCA hover placement, and GA visit ordering (IEEE TGCN).
@@ -810,6 +815,18 @@
 
 ## Concepts
 
+- [[wireless-powered-underground-communication-network]] - above-ground RF energy delivery and underground-to-air data return under soil attenuation.
+- [[underground-air-soil-wireless-channel]] - air propagation, interface refraction, and lossy-soil attenuation governed by depth and soil composition.
+- [[csi-free-multiantenna-wireless-energy-transfer]] - multi-antenna WET without instantaneous receiver-channel acquisition.
+- [[wireless-powered-communication-network]] - harvest-then-transmit communication with coupled WPT and uplink resource allocation.
+- [[multi-location-hovering]] - speed-relaxed UAV service represented by optimized hover points and dwell times.
+- [[computation-causality-constraint]] - cumulative execution and result-return limits imposed by prior task arrivals and completed computation.
+- [[norm-bounded-csi-robust-optimization]] - worst-case design over deterministic channel-error balls.
+- [[s-procedure-for-csi-uncertainty]] - conversion of quadratic bounded-CSI implications into finite LMIs.
+- [[uav-to-uav-communication]] - direct aerial links for coordination, payload exchange, or relaying.
+- [[fractional-power-control]] - capped partial path-loss compensation for uplink interference control.
+- [[attentive-memory-integrated-information-exchange]] - attention over link-qualified messages and actions combined with persistent multi-agent memory.
+- [[mutual-policy-divergence-exploration]] - inter-agent and temporal policy-divergence objectives for heterogeneous MARL exploration.
 - [[integrated-periodic-sensing-and-communication]] - communication-continuous ISAC with prescribed per-frame target sensing frequency and optimized sensing-slot placement.
 - [[multidimensional-contract-matching]] - contract screening followed by preference matching under heterogeneous service-provider costs.
 - [[spatial-temporal-graph-attention-traffic-clustering]] - device grouping from physical proximity and directional traffic distributions.

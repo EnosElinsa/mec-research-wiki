@@ -8,8 +8,9 @@ related:
   - "[[device-to-device-communication]]"
   - "[[overlay-underlay-spectrum-access]]"
   - "[[uav-mobile-relaying]]"
+  - "[[uav-to-uav-communication]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # UAV-to-X Communication

@@ -6,19 +6,21 @@ related:
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
+  - "[[zhao-2026-uav-carrier-vcs]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Chi Harold Liu
 
 Professor and Vice Dean in the School of Computer Science and Technology at Beijing Institute of Technology. The parsed biographies record a 2006 B.Eng. from Tsinghua University and a 2010 Ph.D. from Imperial College London. The 2026 air-ground crowdsensing parse identifies him as an IEEE Fellow; the older parsed papers predate that designation.
 
-Co-authored 3 sources in this wiki:
+Co-authored 4 sources in this wiki:
 
 - [[liu-2020-distributed-uav-coverage-navigation]] - distributed actor-critic navigation for fair, energy-aware long-term UAV communication coverage.
 - [[liu-2021-edivert-mobile-crowdsensing]] - e-Divert unmanned-vehicle crowdsensing with charging stations, Ape-X replay, CNN/LSTM features, and distributed execution.
 - [[zhou-2026-a2g-madrl-air-ground-vcs]] - sequential multi-agent DRL for AoI- and latency-aware UAV-UGV vehicular crowdsensing.
+- [[zhao-2026-uav-carrier-vcs]] - carrier-enabled UAV-UGV crowdsensing with attentive memory exchange and policy-divergence exploration.
 
 ## Contributions to this wiki
 

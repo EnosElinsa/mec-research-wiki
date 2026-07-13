@@ -9,8 +9,9 @@ related:
   - "[[xu-2018-uav-wpt-trajectory]]"
   - "[[zhang-2026-air-sea-isac-inspection]]"
   - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
+  - "[[xie-2021-uav-wpt-tutorial]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Successive Hover-and-Fly Trajectory
@@ -21,3 +22,4 @@ A structured UAV-trajectory primitive for problems whose **speed-unconstrained**
 
 - [[xu-2018-uav-wpt-trajectory]] introduces the successive hover-and-fly trajectory for UAV-enabled [[wireless-power-transfer|WPT]] max-min (min-energy) energy delivery. It is proved optimal for $K=2$ energy receivers and asymptotically optimal for $K>2$ as the charging duration grows large (the flying-time overhead becomes negligible). An SCP-based algorithm, initialized by this trajectory, refines it to a locally optimal solution. The structure generalizes to other UAV [[uav-trajectory-control|trajectory-design]] problems where serving distributed ground nodes reduces to visiting a discrete set of good hovering spots.
 - [[zhang-2026-air-sea-isac-inspection]] adapts the structure to maritime inspection: hover neighborhoods, visit order, dwell times, and a coupled USV route are selected through a [[bi-traveling-salesman-problem-with-neighborhoods|Bi-TSPN]] approximation. The paper explicitly treats its hover-and-fly structure as a practical decomposition rather than an energy-optimal trajectory.
+- [[xie-2021-uav-wpt-tutorial]] organizes single-UAV WPT, multi-UAV WPT, WPCN, and simplified wireless-powered MEC designs around the speed-relaxed [[multi-location-hovering]] upper bound, flight-feasible hover-and-fly construction, and time-quantized local refinement.
