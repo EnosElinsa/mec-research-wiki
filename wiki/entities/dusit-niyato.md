@@ -62,6 +62,7 @@ related:
   - "[[jin-2026-jitter-aware-uav-comp]]"
   - "[[feng-2026-aerial-ris-secure]]"
   - "[[li-2026-full-duplex-noma-uav-relay]]"
+  - "[[huang-2026-star-ris-nearfield-isac]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---
@@ -70,7 +71,7 @@ updated: 2026-07-14
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author roster in the wiki currently links 59 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, and surveys:
+The most frequently recurring author roster in the wiki currently links 60 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -133,6 +134,7 @@ The most frequently recurring author roster in the wiki currently links 59 sourc
 - [[jin-2026-jitter-aware-uav-comp]] - jitter-aware channel analysis and prediction for multi-UAV CoMP transmission.
 - [[feng-2026-aerial-ris-secure]] - conformal-symplectic and attention-enhanced aerial-RIS secure control.
 - [[li-2026-full-duplex-noma-uav-relay]] - robust full-duplex NOMA UAV relaying under stochastic position error.
+- [[huang-2026-star-ris-nearfield-isac]] - near-field air-ground ISAC with a semi-passive STAR-RIS.
 
 ## Contributions to this wiki
 

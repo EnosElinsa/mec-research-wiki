@@ -11,8 +11,9 @@ related:
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
   - "[[zhu-2026-fixed-wing-fd-af-wind]]"
+  - "[[kim-2026-scale-reconfigurable-marl]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Fixed-Wing UAV Propulsion Energy Model

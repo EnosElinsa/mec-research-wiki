@@ -15,8 +15,9 @@ related:
   - "[[ppo]]"
   - "[[han-2024-sagin-fl-handover]]"
   - "[[walker-star-constellation]]"
+  - "[[soohyun-park]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-14
 ---
 
 # Handover Protocol Learning for LEO Satellite Networks: Access Delay and Collision Minimization

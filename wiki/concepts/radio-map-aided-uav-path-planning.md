@@ -11,8 +11,9 @@ related:
   - "[[cao-2026-radio-map-cargo-pickup]]"
   - "[[guo-2026-event-triggered-sinr-navigation]]"
   - "[[uncertainty-triggered-radio-map-update]]"
+  - "[[chakraborty-2026-skyscale-rti-deployment]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Radio-Map-Aided UAV Path Planning

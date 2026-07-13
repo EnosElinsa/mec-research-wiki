@@ -3,6 +3,7 @@ type: concept
 title: Wireless Power Transfer (WPT) for MEC
 tags: [wpt, energy-harvesting, mec]
 related:
+  - "[[kamatchi-2025-slipt-uav-fso]]"
   - "[[guo-2026-uav-wsn-completion-time]]"
   - "[[mobile-edge-computing]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"

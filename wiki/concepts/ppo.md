@@ -16,8 +16,9 @@ related:
   - "[[ammar-2026-oran-maritime-slicing]]"
   - "[[wang-2026-mat-target-tracking]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[xu-2026-mrlmn-llm-multihop]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # PPO (Proximal Policy Optimization)

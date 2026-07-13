@@ -6,8 +6,9 @@ related:
   - "[[guo-2026-event-triggered-sinr-navigation]]"
   - "[[radio-map-aided-uav-path-planning]]"
   - "[[information-driven-uav-spectrum-mapping]]"
+  - "[[chakraborty-2026-skyscale-rti-deployment]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Uncertainty-Triggered Radio-Map Update

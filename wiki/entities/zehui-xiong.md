@@ -15,6 +15,7 @@ related:
   - "[[zhao-2025-gai-pls-survey]]"
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
   - "[[chen-2026-pointrl-uav-isac]]"
+  - "[[huang-2026-star-ris-nearfield-isac]]"
 created: 2026-07-13
 updated: 2026-07-14
 ---
@@ -23,7 +24,7 @@ updated: 2026-07-14
 
 IEEE Senior Member and Full Professor in the School of Electronics, Electrical Engineering and Computer Science at **Queen's University Belfast**. He received a Ph.D. from Nanyang Technological University and previously worked at Singapore University of Technology and Design and NTU, with visiting appointments at Princeton University and the University of Waterloo. The rare full name and biography's explicit institution history connect the source records below across his affiliation change.
 
-Co-authored 12 sources in this wiki across aerial anti-jamming, edge intelligence, mobile AIGC, generative network optimization, semantic communication, physical-layer security, localization, satellite offloading, digital twins, and UAV-ISAC:
+Co-authored 13 sources in this wiki across aerial anti-jamming, edge intelligence, mobile AIGC, generative network optimization, semantic communication, physical-layer security, localization, satellite offloading, digital twins, and UAV-ISAC:
 
 - [[yang-2026-embodied-antijamming-uav]] - embodied DDQN spectrum/power control under low-altitude jamming.
 - [[du-2024-d2sac-aigc-asp-selection]] - diffusion-assisted service-provider selection for mobile AIGC.
@@ -37,6 +38,7 @@ Co-authored 12 sources in this wiki across aerial anti-jamming, edge intelligenc
 - [[zhao-2025-gai-pls-survey]] - generative AI for physical-layer security survey.
 - [[zhou-2026-multiscale-dt-uav-delivery]] - multiscale digital twins for cooperative UAV delivery.
 - [[chen-2026-pointrl-uav-isac]] - radar-point-cloud-driven UAV-to-vehicle sensing and communication control.
+- [[huang-2026-star-ris-nearfield-isac]] - near-field air-ground ISAC with a semi-passive STAR-RIS.
 
 ## Contributions to this wiki
 

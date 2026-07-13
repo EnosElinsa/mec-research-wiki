@@ -14,6 +14,7 @@ related:
   - "[[full-space-star-ris-uav-trajectory]]"
   - "[[meng-2026-star-ris-uav-energy]]"
   - "[[uav-energy-supplied-star-ris-noma]]"
+  - "[[huang-2026-star-ris-nearfield-isac]]"
 created: 2026-07-07
 updated: 2026-07-14
 ---

@@ -16,8 +16,10 @@ related:
   - "[[cramer-rao-bound]]"
   - "[[li-2026-control-based-uav-isac]]"
   - "[[cui-2026-aris-v2x-icac]]"
+  - "[[xinlei-chen]]"
+  - "[[radar-mutual-information-rate]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-14
 ---
 
 # A Novel Integrated Sensing and Communication Scheme in UAVs-Enabled Vehicular Networks With MARL-Driven Adaptive Control

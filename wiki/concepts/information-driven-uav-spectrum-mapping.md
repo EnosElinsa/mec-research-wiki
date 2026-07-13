@@ -8,8 +8,9 @@ related:
   - "[[radio-map-assisted-channel-estimation]]"
   - "[[spectrum-sensing-channel-selection]]"
   - "[[uav-trajectory-control]]"
+  - "[[chakraborty-2026-skyscale-rti-deployment]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Information-Driven UAV Spectrum Mapping

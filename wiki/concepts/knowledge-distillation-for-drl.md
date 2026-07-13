@@ -7,8 +7,9 @@ related:
   - "[[chen-2024-thoas-traffic-aware-sagin]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
   - "[[llm-assisted-mec-optimization-control-plane]]"
+  - "[[xu-2026-mrlmn-llm-multihop]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Knowledge Distillation for DRL (Policy Distillation)

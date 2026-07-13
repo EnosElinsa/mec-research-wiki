@@ -17,6 +17,8 @@ related:
   - "[[diallo-2026-system-cost-uav-leo-offloading]]"
   - "[[tan-2025-sagin-outage-altitude]]"
   - "[[kim-2026-qmarl-sagin-access]]"
+  - "[[kim-2026-scale-reconfigurable-marl]]"
+  - "[[kamatchi-2025-slipt-uav-fso]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---

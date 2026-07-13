@@ -14,6 +14,7 @@ related:
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[krishna-m-2026-multiuav-nbiot]]"
   - "[[kim-2026-qmarl-sagin-access]]"
+  - "[[kim-2026-scale-reconfigurable-marl]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---

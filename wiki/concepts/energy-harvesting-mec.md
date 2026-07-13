@@ -3,6 +3,7 @@ type: concept
 title: "Energy Harvesting MEC"
 tags: [energy-harvesting, sustainability, maritime, green-energy, lyapunov]
 related:
+  - "[[kamatchi-2025-slipt-uav-fso]]"
   - "[[rf-energy-harvesting]]"
   - "[[wireless-power-transfer]]"
   - "[[lyapunov-optimization]]"

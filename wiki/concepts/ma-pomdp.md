@@ -3,6 +3,7 @@ type: concept
 title: MA-POMDP (Multi-Agent Partially Observable MDP)
 tags: [drl, multi-agent, theory]
 related:
+  - "[[kim-2026-scale-reconfigurable-marl]]"
   - "[[pomdp]]"
   - "[[masac]]"
   - "[[peng-2025-drudm-cfg]]"
