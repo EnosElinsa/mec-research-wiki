@@ -14,6 +14,7 @@ related:
   - "[[deep-q-network]]"
   - "[[cheng-2019-sagin-iot-offloading-rl]]"
   - "[[huang-2026-amappo-satellite-edge]]"
+  - "[[zhang-2021-safe-dqn-emergency]]"
   - "[[xuemin-shen]]"
   - "[[nan-cheng]]"
 created: 2026-07-06

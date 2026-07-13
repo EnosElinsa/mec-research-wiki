@@ -1,5 +1,23 @@
 # Research Log
 
+## [2026-07-14] Curated safe emergency control, statistical relaying, multi-UAV ISAC beamforming, rotatable cell-free arrays, and full-duplex covert ISAC
+
+Added five source pages, four reusable concepts, and three recurring-author entities:
+
+- [[zhang-2021-safe-dqn-emergency]] - Zhang et al. 2021, *IEEE TGCN* 5(3), 1236-1247, DOI `10.1109/TGCN.2021.3068333`. A Lyapunov-filtered Safe-DQN controls emergency-UAV motion under a conservative user-energy surrogate and one-step obstacle filtering.
+- [[chai-2026-random-position-relay-deployment]] - Chai et al. 2026, *IEEE TGCN* 10, 921-932, DOI `10.1109/TGCN.2025.3602956`. [[statistical-user-position-uav-deployment]] separates density-aware relay placement from exact-coordinate association and load repair.
+- [[wang-2026-multiuav-transceiver-beamforming]] - Wang et al. 2026, *IEEE TGCN* 10, 652-666, DOI `10.1109/TGCN.2025.3594962`. Receive-eigenvector updates, Dinkelbach/SDR transmit design, and SCA trajectory refinement jointly improve modeled multi-UAV ISAC sensing SINR.
+- [[wang-2026-6dara-cellfree]] - Wang et al. 2026, *IEEE TWC* 25, 13181-13198, DOI `10.1109/TWC.2026.3668103`. [[six-dimensional-aerial-rotatable-antenna-array]] and [[team-mmse-receive-combining]] split frame-level geometry/association from slot-level distributed reception.
+- [[wang-2026-fd-covert-isac]] - Wang et al. 2026, *IEEE TWC* 25, 3675-3687, DOI `10.1109/TWC.2025.3605370`. [[full-duplex-receiver-jamming]] augments sensing-assisted cover traffic while exposing a residual-self-interference trade-off.
+
+Exact-name, affiliation, and coauthor continuity established [[tiankui-zhang]] across four UAV-MEC, safe-control, and logistics sources; [[rong-chai]] across three satellite/UAV resource-allocation sources; and [[qianbin-chen]] across four satellite-aerial, secure-content, and multi-UAV edge-control sources. Existing rosters were extended to 65 sources for [[dusit-niyato]], eight for [[yuanwei-liu]], seven for [[arumugam-nallanathan]], six for [[zhiyong-feng]], and three for [[yongming-huang]].
+
+Evidence caveats: Safe-DQN's exact Lyapunov statement applies to an expected surrogate cost before neural approximation and does not establish sample-path safety, convergence, continuous-segment collision avoidance, or a global trajectory optimum. The statistical-relay DQN/greedy loop has no feasibility or optimality theorem, its association routine still assumes realized coordinates, and its summed relay time is not established as parallel wall-clock completion time. Multi-UAV beamforming has an exact fixed-block receive solution but an internally inconsistent SDR-tightness/randomization narrative and only local alternating trajectory/transmit updates. The 6D-array source proves an exact-potential association game and fixed-geometry team-MMSE result, not social optimality or constrained MARL guarantees. The covert-ISAC detector and conservative covertness bound are model-specific; the AO/SDR/SCA loop does not prove a global or original-problem stationary solution, and all five evaluations are simulation-only.
+
+Three low-concurrency extraction agents grounded the five papers, with bounded drafting assistance followed by an independent read-only review. Review confirmed bibliographic metadata and guarantee scope, corrected two CQUPT tags, required explicit relation-to-corpus sections on all source pages, and aligned the overview's safe-control summary with its heading. Reciprocal source, concept, and entity links were synchronized, and every touched typed page carries the current update date.
+
+Validation reports **594 sources / 613 concepts / 170 entities / 612 raw folders** and **17 genuinely new sources** remaining. Wikilinks are clean; process narration is absent outside this log; the index covers all **1,429** catalogue-able pages exactly once; all **1,427** frontmatter blocks validate; entity rosters have zero overclaims (20 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint is unreachable, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated periodic UAV-ISAC, federated contract matching, asynchronous traffic control, multimodal beam control, and RLNC multicasting
 
 Added five source pages, nine reusable concepts, and two recurring-author entities:

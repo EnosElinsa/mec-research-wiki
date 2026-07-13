@@ -3,12 +3,14 @@ type: concept
 title: "Sensing-Signal-Assisted Covertness"
 tags: [security, covert-communication, isac, beamforming]
 related:
+  - "[[wang-2026-fd-covert-isac]]"
+  - "[[full-duplex-receiver-jamming]]"
   - "[[deng-2025-covert-isac-trajectory]]"
   - "[[covert-communication]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[ambient-interference-aided-covertness]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Sensing-Signal-Assisted Covertness

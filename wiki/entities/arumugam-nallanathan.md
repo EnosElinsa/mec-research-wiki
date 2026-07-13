@@ -3,6 +3,7 @@ type: entity
 title: "Arumugam Nallanathan"
 tags: [author, researcher, ieee-fellow, wireless-communications, queen-mary-university-of-london]
 related:
+  - "[[zhang-2021-safe-dqn-emergency]]"
   - "[[deng-2025-covert-isac-trajectory]]"
   - "[[lu-2023-uav-relay-secure-maritime-mec]]"
   - "[[wang-2022-cat-rat-fmec-trajectory]]"
@@ -10,14 +11,14 @@ related:
   - "[[zhang-2026-dwell-time-aerial-vec]]"
   - "[[cui-2020-marl-uav-resource-allocation]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Arumugam Nallanathan
 
 IEEE Fellow and Professor of Wireless Communications at Queen Mary University of London, where the current source biography identifies him as head of the Communication Systems Research Group.
 
-Co-authored 6 sources in this wiki:
+Co-authored 7 sources in this wiki:
 
 - [[deng-2025-covert-isac-trajectory]] - covert UAV-ISAC beam and trajectory control.
 - [[lu-2023-uav-relay-secure-maritime-mec]] - secure maritime MEC with a UAV relay.
@@ -25,6 +26,7 @@ Co-authored 6 sources in this wiki:
 - [[xu-2026-prizty-uav-mec-auction]] - auction-based UAV-MEC resource allocation.
 - [[zhang-2026-dwell-time-aerial-vec]] - dwell-time-aware aerial vehicular edge computing.
 - [[cui-2020-marl-uav-resource-allocation]] - decentralized tabular learning for UAV user, subchannel, and power selection.
+- [[zhang-2021-safe-dqn-emergency]] - Safe-DQN trajectory control under user-energy constraints.
 
 ## Contributions to this wiki
 

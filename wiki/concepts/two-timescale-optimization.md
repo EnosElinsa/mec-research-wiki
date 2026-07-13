@@ -3,6 +3,7 @@ type: concept
 title: Two-Timescale Optimization
 tags: [optimization, online-control, resource-allocation]
 related:
+  - "[[wang-2026-6dara-cellfree]]"
   - "[[sun-2025-tjcct-twotimescale-uav-mec]]"
   - "[[zhao-2026-heuristic-supervised-drl]]"
   - "[[heuristic-supervised-drl]]"
@@ -10,7 +11,7 @@ related:
   - "[[matching-theory-for-resource-allocation]]"
   - "[[tian-2026-coded-cache-repair]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Two-Timescale Optimization

@@ -3,6 +3,7 @@ type: concept
 title: "Cooperative ISAC Transceiver Beamforming"
 tags: [isac, cooperative-sensing, beamforming, scnr, distributed-optimization]
 related:
+  - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[networked-isac]]"
@@ -11,7 +12,7 @@ related:
   - "[[wang-2026-robust-anti-uav-isac]]"
   - "[[spatially-separated-uav-isac-role-scheduling]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Cooperative ISAC Transceiver Beamforming

@@ -18,8 +18,9 @@ related:
   - "[[task-offloading]]"
   - "[[jains-fairness-index]]"
   - "[[fairness-metrics-in-mec]]"
+  - "[[qianbin-chen]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Large Language Model-based QoS-aware Resource Allocation for Multi-UAV Cooperative Edge Computing Networks

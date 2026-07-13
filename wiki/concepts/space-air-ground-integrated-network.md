@@ -3,6 +3,7 @@ type: concept
 title: "Space-Air-Ground Integrated Network (SAGIN)"
 tags: [sagin, satellite, hap, uav, 6g, architecture]
 related:
+  - "[[chai-2026-random-position-relay-deployment]]"
   - "[[high-altitude-platform-station]]"
   - "[[liao-2026-semantic-twinning-tracking]]"
   - "[[leo-satellite-edge-computing]]"

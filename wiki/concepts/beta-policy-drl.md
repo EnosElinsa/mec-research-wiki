@@ -3,13 +3,14 @@ type: concept
 title: "Beta-Policy DRL"
 tags: [drl, policy-gradient, bounded-action, exploration]
 related:
+  - "[[wang-2026-6dara-cellfree]]"
   - "[[mappo]]"
   - "[[ppo]]"
   - "[[hybrid-action-representation]]"
   - "[[li-2024-robust-bmappo-multiuav-mec]]"
   - "[[zhu-2026-hab-mappo-target-search]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Beta-Policy DRL

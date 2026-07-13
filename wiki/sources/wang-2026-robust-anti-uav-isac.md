@@ -17,9 +17,10 @@ related:
   - "[[xiaojie-wang]]"
   - "[[lei-guo]]"
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
+  - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[li-2026-control-based-uav-isac]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # ISAC Enabled Anti-UAV: Joint Beamforming and Trajectory Design for Multi-UAVs

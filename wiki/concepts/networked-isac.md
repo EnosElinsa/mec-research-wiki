@@ -3,6 +3,7 @@ type: concept
 title: "Networked ISAC"
 tags: [isac, sensing, cooperation, handover]
 related:
+  - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[low-altitude-intelligent-network]]"
   - "[[seamless-handover]]"
@@ -18,7 +19,7 @@ related:
   - "[[wang-2026-robust-anti-uav-isac]]"
   - "[[spatially-separated-uav-isac-role-scheduling]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Networked ISAC

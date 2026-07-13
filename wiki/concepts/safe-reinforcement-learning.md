@@ -3,6 +3,7 @@ type: concept
 title: Safe Reinforcement Learning
 tags: [drl, safety, constraints]
 related:
+  - "[[zhang-2021-safe-dqn-emergency]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[zhou-2021-delay-sagin-task-scheduling]]"
   - "[[collision-avoidance-mgi]]"

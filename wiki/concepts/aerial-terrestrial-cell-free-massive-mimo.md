@@ -3,11 +3,13 @@ type: concept
 title: "Aerial-Terrestrial Cell-Free Massive MIMO"
 tags: [cell-free-massive-mimo, aerial-network, flying-access-point, user-centric]
 related:
+  - "[[wang-2026-6dara-cellfree]]"
+  - "[[six-dimensional-aerial-rotatable-antenna-array]]"
   - "[[shah-2026-cellfree-mimo-fap-control]]"
   - "[[device-association]]"
   - "[[csi-estimation-error]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Aerial-Terrestrial Cell-Free Massive MIMO

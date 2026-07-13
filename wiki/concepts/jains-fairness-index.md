@@ -3,6 +3,7 @@ type: concept
 title: "Jain's Fairness Index"
 tags: [metrics, fairness, qoe]
 related:
+  - "[[wang-2026-6dara-cellfree]]"
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[theil-fairness-index]]"
   - "[[spatial-equity-index]]"
@@ -24,7 +25,7 @@ related:
   - "[[su-2026-three-tier-uav-capacity]]"
   - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Jain's Fairness Index

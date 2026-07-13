@@ -3,6 +3,7 @@ type: concept
 title: "Potential Game"
 tags: [game-theory, equilibrium, distributed-optimization]
 related:
+  - "[[wang-2026-6dara-cellfree]]"
   - "[[du-2026-hierarchical-coalition-deployment]]"
   - "[[nash-equilibrium]]"
   - "[[stackelberg-game]]"

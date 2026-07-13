@@ -15,8 +15,9 @@ related:
   - "[[xingwang-li]]"
   - "[[derrick-wing-kwan-ng]]"
   - "[[arumugam-nallanathan]]"
+  - "[[wang-2026-fd-covert-isac]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Joint Beamforming and UAV Trajectory Optimization for Covert Communications in ISAC Networks

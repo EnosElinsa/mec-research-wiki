@@ -17,8 +17,10 @@ related:
   - "[[physical-layer-security]]"
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
   - "[[bai-2026-aoi-uav-isac]]"
+  - "[[rong-chai]]"
+  - "[[qianbin-chen]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Attention-Based Hierarchical-DRL With Mask for Multi-Timescale Caching, Association, and Secure Content Delivery in UAV-Enabled ISAC Networks

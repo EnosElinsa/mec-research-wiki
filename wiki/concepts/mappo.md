@@ -3,6 +3,7 @@ type: concept
 title: "MAPPO (Multi-Agent PPO)"
 tags: [drl, multi-agent, on-policy]
 related:
+  - "[[wang-2026-6dara-cellfree]]"
   - "[[kang-2023-mappo-hierarchical-aerial]]"
   - "[[ppo]]"
   - "[[centralized-training-decentralized-execution]]"
@@ -23,7 +24,7 @@ related:
   - "[[hu-2026-segmented-irs-cpn]]"
   - "[[wang-2026-robust-multiuav-jtcra]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # MAPPO (Multi-Agent PPO)

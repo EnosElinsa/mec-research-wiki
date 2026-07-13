@@ -3,6 +3,8 @@ type: concept
 title: "Deep Q-Network (DQN)"
 tags: [drl, value-based, discrete-action, off-policy, replay-buffer]
 related:
+  - "[[zhang-2021-safe-dqn-emergency]]"
+  - "[[chai-2026-random-position-relay-deployment]]"
   - "[[wu-2026-sensing-error-uav-scheduling]]"
   - "[[wang-2023-drl-irs-uav-trajectory]]"
   - "[[ddqn]]"

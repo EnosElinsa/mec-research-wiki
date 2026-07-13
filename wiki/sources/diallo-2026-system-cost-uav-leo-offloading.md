@@ -16,8 +16,10 @@ related:
   - "[[linear-programming]]"
   - "[[chen-2024-ulse-game]]"
   - "[[zhang-2024-coma-satellite-offloading]]"
+  - "[[rong-chai]]"
+  - "[[qianbin-chen]]"
 created: 2026-07-07
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # System Cost Optimization-Based Task Offloading for UAV-Assisted LEO Satellite Networks

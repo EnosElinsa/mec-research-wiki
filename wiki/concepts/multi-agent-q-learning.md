@@ -3,6 +3,7 @@ type: concept
 title: "Multi-Agent Q-Learning"
 tags: [drl, multi-agent, value-based, game-theory]
 related:
+  - "[[chai-2026-random-position-relay-deployment]]"
   - "[[nash-equilibrium]]"
   - "[[stochastic-game]]"
   - "[[ddqn]]"
