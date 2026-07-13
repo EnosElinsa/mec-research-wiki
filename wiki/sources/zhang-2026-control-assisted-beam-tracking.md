@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2026.3668082"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, uav-communication, mmwave, beam-tracking, flight-control, bayesian-learning, hardware-evidence]
 related:
+  - "[[yongming-huang]]"
   - "[[control-assisted-uav-beam-tracking]]"
   - "[[cellular-connected-uav]]"
   - "[[air-to-ground-channel-model]]"
@@ -15,7 +16,7 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[christos-masouros]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Control-Assisted Beam Prediction and Tracking for UAV Millimeter Wave Communications

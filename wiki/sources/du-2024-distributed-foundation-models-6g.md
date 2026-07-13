@@ -7,6 +7,7 @@ url: ""
 venue: "IEEE Wireless Communications"
 tags: [source, foundation-models, 6g, multi-modal-learning, distributed-training, federated-learning, edge-computing]
 related:
+  - "[[jun-du]]"
   - "[[mobile-edge-computing]]"
   - "[[federated-learning]]"
   - "[[pipeline-parallel-inference]]"
@@ -16,7 +17,7 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
 created: 2026-05-29
-updated: 2026-06-08
+updated: 2026-07-14
 ---
 
 # Distributed Foundation Models for Multi-Modal Learning in 6G Wireless Networks

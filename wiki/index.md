@@ -176,6 +176,7 @@
 
 ### SAGIN / satellite offloading
 
+- [[kim-2026-qmarl-sagin-access]] - Kim et al. 2026. Quantum-circuit multi-agent scheduling coordinates CubeSats and HALE-UAVs for differentiated ground-station access and residual-energy preservation (IEEE TMC).
 - [[liao-2026-semantic-twinning-tracking]] - Liao et al. 2026. Goal-oriented semantic twinning for satellite-UAV collaborative target tracking; significance-triggered updates, causal graph learning, and EWC-regularized MADDPG control freshness and tracking quality under constrained links (IEEE TMC).
 - [[tun-2025-thz-sag-mec-resource-allocation]] - Tun et al. 2025. THz-assisted MEC-enabled SAG networks; BCD over device offloading, THz sub-band/power control, UAV deployment, and UAV-to-UAV/LEO task forwarding (IEEE TMC).
 
@@ -220,6 +221,7 @@
 
 ### IRS / THz / anti-jamming
 
+- [[yin-2026-uav-antijamming-nfsp]] - Yin et al. 2026. Neural fictitious self-play, LSTM history, and dueling double Q-learning adapt a communicating UAV against an unobserved learning jammer (IEEE TMC).
 - [[xie-2026-uav-irs-eppo]] - Xie et al. 2026. Urban UAV-carried IRS control with EPPO, neural episodic state abstraction, mogrifier LSTM, and closed-form LoS phase alignment (IEEE TMC).
 
 
@@ -401,6 +403,7 @@
 
 ### ISAC, sensing & physical-layer security
 
+- [[chen-2026-aris-location-privacy]] - Chen et al. 2026. A virtual-partitioned active RIS splits elements and power between legitimate-UAV sum rate and artificial-noise interference against malicious RSS localization (IEEE TWC).
 - [[chen-2026-pointrl-uav-isac]] - Chen et al. 2026. Point-cloud DQN jointly selects UAV motion and communication power from vehicle radar returns, balancing communication, radar capacity, and minimum-user performance (IEEE TMC).
 - [[bai-2026-passive-uav-detection]] - Bai et al. 2026. Ambient-DTMB channel estimation and a compact temporal network detect UAV presence and classify four motion states in physical outdoor experiments (IEEE TWC).
 - [[zhang-2026-polarfix-uav-mmwave]] - Zhang et al. 2026. Passive polarization conversion and programmable transmissive beamforming improve orientation-sensitive COTS 802.11ad links in a ground-motion prototype (IEEE TMC).
@@ -473,6 +476,7 @@
 
 ### Collaborative beamforming & aerial communications
 
+- [[fang-2026-cellfree-uav-predictive-beamforming]] - Fang et al. 2026. Ground-AP EKF tracking, covariance-intersection fusion, and PCRB-guided pilots support predictive cell-free UAV beams and resource allocation (IEEE TWC).
 - [[ren-2026-distributed-uav-los]] - Ren et al. 2026. Finite Matérn hard-core base stations and the 3GPP urban UAV LoS model yield outage/capacity comparisons for best, nearest, and LoS-conditioned association (IEEE TGCN).
 - [[krishna-m-2026-multiuav-nbiot]] - Krishna M. and Balasubramanya 2026. Stationary UAV relays combine NB-IoT, Zadoff-Chu code-domain NOMA, and dynamic longest-load-first grouping (IEEE TMC).
 - [[sun-2021-temcmop-uav-cb]] — Sun et al. 2021. **Earliest CB entry** — UAVs form a virtual antenna array to communicate with remote BSs; multi-objective **TEMCMOP** (transmission time / VAA-performing time / motion+hovering energy) over positions + speeds + excitation weights + BS-serving order; NP-hard, energy-optimal-speed reformulation + **improved multi-objective ant lion optimizer (IMOALO)** with chaos-OBL init + hybrid update (IEEE JSAC).
@@ -528,6 +532,7 @@
 
 ### Energy efficiency & WPT
 
+- [[chen-2026-laser-powered-multiuav-qoe]] - Chen and Jiang 2026. Laser-powered UAV access points combine rematching, placement, and redundant power/backhaul reallocation to maximize QoE-qualified users (IEEE TMC).
 - [[peng-2023-dual-domain-eh-ris]] - Peng & Wang 2023. UAV-mounted RIS combines time splitting with element-level reflection/harvesting; SD3 controls harvesting time, power, scheduling, and phases under QoS constraints (IEEE TWC).
 - [[zhang-2022-solar-charging-uav-iot]] - Zhang et al. 2022. Action-confined Q-learning and SARSA route one solar-powered UAV among charging stations and serving points under battery, downlink-data, and Jain-fairness rewards (IEEE TMC).
 - [[xie-2023-wireless-powered-short-packet-uav]] - Xie et al. 2023. Static UAV hybrid access point with downlink WPT and TDMA finite-blocklength uploads; alternating SCA/fractional updates solve a continuous relaxation before heuristic integer-symbol rounding (IEEE TGCN).
@@ -674,7 +679,8 @@
 - [[zhu-xiao]] (Hunan University - vehicular edge offloading and channel-based passive UAV detection; 2 sources).
 
 - [[zheng-chang]] (UESTC / University of Jyväskylä - UAV communications, edge computing, ISAC, and green communications; 7 sources).
-- [[dusit-niyato]] (NTU) appears across 57 sources spanning aerial networking, edge intelligence, security, and optimization; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 18 sources after the GeoAgg-HSAC, graph anti-jamming, and Hammurabi papers; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[dusit-niyato]] (NTU) appears across 57 sources spanning aerial networking, edge intelligence, security, and optimization; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 20 sources after the quantum-SAGIN and active-RIS location-privacy papers; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[shi-jin]] (Southeast University - low-altitude ISAC, movable arrays, and anti-jamming; 4 sources), [[yongming-huang]] (Southeast University / Purple Mountain Laboratories - predictive UAV beam tracking; 2 sources), and [[jun-du]] (Tsinghua University - distributed 6G learning and location privacy; 2 sources).
 - [[qi-qi]] (BUPT - satellite/aerial edge computing and multi-UAV cooperation; 2 sources), [[shaohua-wu]] (Harbin Institute of Technology, Shenzhen - satellite-UAV semantic communication and maritime/satellite networking; 3 sources), and [[qinyu-zhang]] (Harbin Institute of Technology, Shenzhen - satellite, maritime, and non-terrestrial communications; 4 sources).
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 - [[zehui-xiong]] (Queen's University Belfast - generative AI, semantic communication, physical-layer security, and low-altitude resource allocation; 12 sources spanning surveys, diffusion/GDM methods, and aerial/satellite control).
@@ -745,6 +751,7 @@
 - [[computation-to-communication-ratio]]
 - [[computation-peer-offloading]]
 - [[computational-task-caching]]
+- [[redundant-resource-reallocation]]
 - [[uav-content-caching]]
 - [[battery-swapping-uav-mec]]
 - [[coded-caching]]
@@ -759,6 +766,7 @@
 - [[anti-jamming-mec]]
 - [[embodied-anti-jamming-resource-allocation]]
 - [[wireless-power-transfer]]
+- [[laser-power-transfer]]
 - [[adaptive-wdc-wet-service-balancing]]
 - [[uav-assisted-edge-inference]]
 - [[uav-enabled-computing-power-network]]
@@ -941,6 +949,8 @@
 
 ### DRL backbones
 
+- [[quantum-marl-sagin-access]]
+- [[implicit-opponent-modeling]]
 - [[ikpp-action-reconstruction]]
 
 - [[deep-echo-state-network-reinforcement-learning]]
@@ -1035,6 +1045,7 @@
 
 ### Optimization techniques (classical & evolutionary)
 
+- [[gale-shapley-rematching]]
 - [[conditional-judgment-binary-search]]
 - [[two-layer-successive-programming]]
 - [[non-overlapping-coverage-gain-greedy]]
@@ -1121,6 +1132,9 @@
 
 ### Channel modeling
 
+- [[cell-free-uav-predictive-beamforming]]
+- [[covariance-intersection-state-fusion]]
+- [[pcrb-guided-pilot-length-optimization]]
 - [[blockage-aware-channel-model]]
 - [[air-to-ground-channel-model]]
 - [[three-dimensional-frequency-reuse]]
@@ -1146,6 +1160,7 @@
 
 ### Sensing & security
 
+- [[virtual-partitioned-active-ris-location-privacy]]
 - [[bistatic-sar-resolution-fairness]]
 - [[radar-estimation-rate]]
 

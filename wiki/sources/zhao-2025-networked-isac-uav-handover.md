@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2025.3562396"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, low-altitude-economy, isac, uav-tracking, handover, networked-isac]
 related:
+  - "[[shi-jin]]"
   - "[[networked-isac]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[low-altitude-intelligent-network]]"
@@ -15,7 +16,7 @@ related:
   - "[[huang-2026-offgrid-lae-imager]]"
   - "[[fan-liu]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Networked ISAC-Based UAV Tracking and Handover Toward Low-Altitude Economy

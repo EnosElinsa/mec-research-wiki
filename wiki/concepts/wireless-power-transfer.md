@@ -16,8 +16,9 @@ related:
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
+  - "[[chen-2026-laser-powered-multiuav-qoe]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Wireless Power Transfer (WPT) for MEC
@@ -54,3 +55,5 @@ Two trajectory-control cases expose opposite WPT directions. [[wang-2026-wutf-fa
 ## Why "long-term" matters
 
 A naive per-slot greedy ignores the energy queue: if you spend the harvest immediately, you starve future-slot tasks that need the buffered energy. The right framing is **long-term energy efficiency** under queue stability — see [[lyapunov-optimization]] and [[zhu-2025-lycnn-drl-wpt-mec]].
+
+[[chen-2026-laser-powered-multiuav-qoe]] adds [[laser-power-transfer]], where ground optical stations charge hovering UAV access points and harvested energy is coupled to association, placement, and QoE allocation.

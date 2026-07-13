@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2025.3603255"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), 25, 2026"
 tags: [source, low-altitude-economy, integrated-sensing-and-communication, wireless-perception, compressed-sensing, wireless-imaging, physics-embedded-learning]
 related:
+  - "[[shi-jin]]"
   - "[[low-altitude-intelligent-network]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[wireless-perception]]"
@@ -15,7 +16,7 @@ related:
   - "[[jiang-2025-isac-lae-overview]]"
   - "[[yang-2026-generative-radio-map-lae]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Learned Off-Grid Imager for Low-Altitude Economy With Cooperative ISAC Network

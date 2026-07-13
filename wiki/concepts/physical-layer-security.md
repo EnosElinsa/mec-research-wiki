@@ -33,8 +33,9 @@ related:
   - "[[meng-2026-fullspace-star-ris-secure]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[zhai-2026-uav-ma-secrecy]]"
+  - "[[chen-2026-aris-location-privacy]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Physical Layer Security (PLS)
@@ -70,3 +71,5 @@ The covert-communication branch tightens the adversary model from eavesdropping 
 The corpus includes several UAV-specific PLS/offloading variants: [[beishenalieva-2026-secrecy-aware-uav-path-planning]] protects ITS offloading against malicious aerial eavesdroppers and jammers, [[wu-2026-secure-split-offloading-ci]] protects DNN intermediate feature data during split inference, [[wu-2025-security-aware-multiuav-service-placement]] embeds secrecy-rate constraints into service-placement-aware multi-UAV MEC, and [[ren-2026-security-aware-vec-td3]] degrades vehicular offloading rates when a passive eavesdropper drives the secure rate below threshold.
 
 Two physical-mobility and power-control variants broaden this thread. [[li-not-in-parse-movable-antenna-pls]] compares local antenna repositioning with whole-UAV trajectory control through [[micro-macro-mobility-security]], while [[he-not-in-parse-cipc-covert-uav]] uses [[channel-inversion-power-control]] so a confidential signal also covers multiple covert users.
+
+[[chen-2026-aris-location-privacy]] protects a different secret: active-RIS artificial noise raises malicious receivers' source-position error while preserving legitimate sum rate, without claiming message-secrecy capacity.

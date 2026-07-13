@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2026.3689048"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 16463-16479, 2026"
 tags: [source, low-altitude-economy, movable-antenna, uav-swarm, near-field-communications, mimo]
 related:
+  - "[[shi-jin]]"
   - "[[two-level-movable-antenna]]"
   - "[[movable-antenna]]"
   - "[[low-altitude-intelligent-network]]"
@@ -16,7 +17,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[yong-zeng]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Wireless Communication for Low-Altitude Economy With UAV Swarm Enabled Two-Level Movable Antenna System

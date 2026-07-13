@@ -7,8 +7,9 @@ related:
   - "[[video-transcoding-tradeoff]]"
   - "[[equilibrium-efficiency-metric]]"
   - "[[bao-2025-ddpg-video-offloading]]"
+  - "[[chen-2026-laser-powered-multiuav-qoe]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-14
 ---
 
 # QoE Modeling in MEC
@@ -20,3 +21,5 @@ updated: 2026-06-01
 Why this matters as a reward signal: pure-delay rewards push the policy to over-compress; pure-quality rewards push it to never offload. The QoE form forces a Pareto-aware policy.
 
 Compare with the [[equilibrium-efficiency-metric]] used in [[liu-2026-jppo-en-convntm]], which also encodes a multi-criteria tradeoff (data-collection × fairness / energy) — both are "scalar QoE proxies" tuned to the workload's specific concerns.
+
+[[chen-2026-laser-powered-multiuav-qoe]] converts minimum rate and continual-delay MOS requirements into per-user qualification thresholds, then uses [[redundant-resource-reallocation]] to maximize how many users meet them.

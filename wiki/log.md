@@ -1,5 +1,24 @@
 # Research Log
 
+## [2026-07-14] Curated predictive cell-free UAVs, opponent-model anti-jamming, laser-powered QoE, quantum SAGIN access, and RIS location privacy
+
+Added five source pages, nine reusable concepts, and three recurring-author entities:
+
+- [[fang-2026-cellfree-uav-predictive-beamforming]] - Fang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3695091`. [[cell-free-uav-predictive-beamforming]], [[covariance-intersection-state-fusion]], and [[pcrb-guided-pilot-length-optimization]] connect distributed state tracking to pilot, association, and power control.
+- [[yin-2026-uav-antijamming-nfsp]] - Yin et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3678748`. Neural fictitious self-play, LSTM history, and dueling double Q-learning provide [[implicit-opponent-modeling]] against an adaptive mobile jammer.
+- [[chen-2026-laser-powered-multiuav-qoe]] - Chen and Jiang 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3610026`. [[laser-power-transfer]], [[gale-shapley-rematching]], and [[redundant-resource-reallocation]] couple UAV placement and matching to rate/delay QoE qualification.
+- [[kim-2026-qmarl-sagin-access]] - Kim et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3599683`. [[quantum-marl-sagin-access]] represents 16 binary CubeSat/HALE-UAV decisions with 16 simulated qubits and a centralized-critic multi-agent learner.
+- [[chen-2026-aris-location-privacy]] - Chen et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3655342`. [[virtual-partitioned-active-ris-location-privacy]] assigns elements and power to legitimate communication and artificial-noise RSS-localization interference.
+
+Matching biographies and affiliations established [[shi-jin]] across four Southeast University low-altitude sensing/communication papers, [[yongming-huang]] across two Southeast University/Purple Mountain Laboratories predictive-beam papers, and [[jun-du]] across two Tsinghua heterogeneous-network papers. Existing Zhu Han, Tony Q. S. Quek, and Chunxiao Jiang rosters were extended to 20, 13, and 8 sources. Chao Fang, Wei Zhang, Zhe Wang, and Jun Li names were not merged because the live corpus contains confirmed or plausible namesakes.
+
+Metadata notes: final fields absent from the parses were verified from the embedded IEEE PDF headers and exact DOI records. The five records are TWC 25, 18039-18056 (2026); TMC early access, 1-14 (2026); TMC 25(2), 2676-2690 (2026); TMC 25(1), 1200-1218 (2026); and TWC 25, 11270-11285 (2026), respectively.
+
+Evidence caveats: predictive beamforming relies on EKF/PCRB approximations and simulated fronthaul; anti-jamming uses one grid-constrained UAV/jammer pair; laser alignment, weather, blockage, and safety are assumed away; QMARL uses ideal TorchQuantum emulation rather than quantum hardware; and active-RIS location privacy assumes quasi-static geometry, channel feedback, and ideal integrated noise generation. None is an end-to-end field deployment.
+
+Three low-concurrency extraction agents handled predictive beamforming, anti-jamming, and laser-powered QoE; the quantum and RIS papers were extracted locally. Independent review clarified that larger malicious-localization RMSE is the privacy gain and replaced an unsupported photovoltaic-receiver description with the paper's optical collector. Validation reports **549 sources / 530 concepts / 134 entities / 612 raw folders** and **62 genuinely new sources** remaining. Wikilinks, process narration, index coverage across all **1,265** catalogue-able pages, **1,263** frontmatter blocks, entity overclaims, all 12 wiki-tool unit tests, secret-like assignments in changed wiki files, and `git diff --check` are clean. The optional local LLM Wiki health endpoint is unreachable, so file-grounded CLI audits remain authoritative.
+
+
 ## [2026-07-14] Curated passive UAV sensing, urban LoS analysis, NB-IoT relaying, radar-point-cloud ISAC, and polarization control
 
 Added five source pages, eight reusable concepts, and one recurring-author entity:

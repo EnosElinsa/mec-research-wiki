@@ -21,15 +21,17 @@ related:
   - "[[xie-2026-geoagg-hsac]]"
   - "[[tang-2026-gat-antijamming]]"
   - "[[chen-2026-hammurabi-cooperation]]"
+  - "[[kim-2026-qmarl-sagin-access]]"
+  - "[[chen-2026-aris-location-privacy]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Zhu Han
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Houston** (Houston, TX, USA), and also with the **Department of Computer Science and Engineering, Kyung Hee University** (Seoul, South Korea) — consistent across his papers in this wiki.
 
-Co-authored 18 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, emergency localization/communication, mountainous ILAC, anti-jamming control, cooperative MARL, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
+Co-authored 20 sources in this wiki, spanning aerial MEC, satellite edge computing, maritime cooperation, 6G foundation models, UAV-swarm response delay, semantic edge computing, DRO for low-altitude wireless networks, UAV-ISAC control, emergency localization/communication, mountainous ILAC, anti-jamming control, cooperative and quantum MARL, location privacy, AoI-centric UAV-ISAC, and the mobile-AIGC survey:
 
 - [[du-2024-distributed-foundation-models-6g]] — distributed foundation models for multi-modal learning in 6G.
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs.
@@ -49,7 +51,9 @@ Co-authored 18 sources in this wiki, spanning aerial MEC, satellite edge computi
 - [[xie-2026-geoagg-hsac]] - terrain-occlusion-aware graph aggregation for mountainous UAV localization and communication.
 - [[tang-2026-gat-antijamming]] - hierarchical GAT beamforming and MADDPG deployment against jammers.
 - [[chen-2026-hammurabi-cooperation]] - game-diagnosed cooperation shaping for pretrained multi-UAV policies.
+- [[kim-2026-qmarl-sagin-access]] - quantum-MARL access scheduling for CubeSat/HALE-UAV SAGINs.
+- [[chen-2026-aris-location-privacy]] - virtual-partitioned active-RIS communication and source-UAV location privacy.
 
 ## Contributions to this wiki
 
-- A senior collaborator (game theory, optimization, and learning for wireless) who appears across the NUAA aerial-computing cluster with [[ziye-jia]], [[chao-dong]], and [[qihui-wu]], plus the 6G foundation-models, hierarchical-swarm control, response-delay, low-altitude wireless, semantic-edge, and UAV-ISAC threads.
+- A senior collaborator (game theory, optimization, and learning for wireless) who appears across the NUAA aerial-computing cluster with [[ziye-jia]], [[chao-dong]], and [[qihui-wu]], plus the 6G foundation-models, hierarchical-swarm control, response-delay, low-altitude wireless, semantic-edge, quantum-access, location-privacy, and UAV-ISAC threads.

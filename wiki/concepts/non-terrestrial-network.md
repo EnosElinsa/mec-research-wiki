@@ -13,6 +13,7 @@ related:
   - "[[prabhath-not-in-parse-3d-space-spectrum-utilization]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[krishna-m-2026-multiuav-nbiot]]"
+  - "[[kim-2026-qmarl-sagin-access]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---
@@ -28,3 +29,5 @@ In [[mao-2024-ntn-hierarchical-caching-cav]], an NTN of LEO satellites and UAVs 
 [[morshed-2026-active-ris-uav-noma-mappo]] studies a compact terrestrial/non-terrestrial instance: a serving BS and interfering BS communicate with mobile NOMA users through one UAV-mounted active RIS, with subsystem-specific actors coordinated by [[decentralized-active-ris-uav-noma-control]].
 
 [[krishna-m-2026-multiuav-nbiot]] uses stationary decode-and-forward UAVs as an aerial access layer for NB-IoT devices that cannot reach the terrestrial base station directly.
+
+[[kim-2026-qmarl-sagin-access]] schedules CubeSats and HALE-UAVs jointly, using a quantum-circuit policy representation to balance access utility and residual energy.

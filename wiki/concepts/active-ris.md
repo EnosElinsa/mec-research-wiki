@@ -12,8 +12,9 @@ related:
   - "[[cui-2026-aris-v2x-icac]]"
   - "[[aerial-active-ris-backhaul]]"
   - "[[jeon-2026-ampli-flection-aerial-backhaul]]"
+  - "[[chen-2026-aris-location-privacy]]"
 created: 2026-05-31
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Active RIS
@@ -25,3 +26,5 @@ A reconfigurable intelligent surface whose elements can adjust both the **phase 
 In the wiki, [[sun-2024-active-passive-ris-receiver]] cascades a passive RIS layer with an active RIS layer at the user side to build a low-cost large-scale receive array for anti-jamming, exploiting the active layer's amplitude control to concentrate receive power on the Rx antennas while the passive layer nulls jammers. [[shi-2026-aoi-active-ris-noma-agmec]] uses active RIS on the infrastructure side to improve NOMA-assisted air-ground MEC offloading freshness, jointly optimizing active-RIS beamforming with UAV trajectory and task offloading. [[cui-2026-aris-v2x-icac]] extends active RIS into V2X integrated communication and computation, where ARIS phase/amplitude control is optimized with UAV/BS beamforming, vehicle associations, offloading ratios, and computation resources.
 
 [[morshed-2026-active-ris-uav-noma-mappo]] adds [[decentralized-active-ris-uav-noma-control]]: a RIS actor learns element gains/phases while separate BS and UAV actors choose NOMA power and motion under a shared MAPPO critic and energy/fairness reward.
+
+[[chen-2026-aris-location-privacy]] adds [[virtual-partitioned-active-ris-location-privacy]]: an integrated noise generator and virtual element partitions split amplification between legitimate communication and interference against malicious RSS localization.
