@@ -3,6 +3,8 @@ type: concept
 title: Fairness Metrics in MEC
 tags: [fairness, metric, evaluation, mec, synthesis]
 related:
+  - "[[li-2026-noma-uav-relay-planning]]"
+  - "[[zhou-2026-jrc-multiuav-resource]]"
   - "[[jains-fairness-index]]"
   - "[[theil-fairness-index]]"
   - "[[spatial-equity-index]]"
@@ -16,7 +18,7 @@ related:
   - "[[wang-2026-llm-qos-multiuav-resource]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Fairness Metrics in MEC

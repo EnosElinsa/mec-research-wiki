@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-13] Curated ISAC-SAGIN interference, NOMA relaying, covert ISAC, heterogeneous sensor collection, and multi-UAV JRC
+
+Added five source pages, seven concept pages, and six recurring-author entities:
+
+- [[yao-2026-transformer-mean-field-isac-sagin]] - Yao et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3707527`. Transformer-encoded mean-field actor-critic control couples satellite beamforming with multi-UAV trajectories, communication/sensing beams, association, and sensing roles through a post-decision Stackelberg state.
+- [[li-2026-noma-uav-relay-planning]] - Li et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2026.3673110`. AO/SDR/SCA jointly designs beamforming, NOMA powers, relay gain, and a 3-D amplify-forward UAV trajectory for max-min accumulated user rate.
+- [[deng-2025-covert-isac-trajectory]] - Deng et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2024.3503726`. ISAC sensing beams provide cover for information transmission while BCD alternates SDR beamforming and SCA trajectory updates against multiple wardens.
+- [[liu-2026-heterogeneous-sensor-satisfaction]] - Liu et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3694771`. ELGHEOA and a dual power update optimize static UAV deployment, association, and power for delay-, energy-, and dual-sensitive sensors.
+- [[zhou-2026-jrc-multiuav-resource]] - Zhou et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3635277`. Smooth worst-user/worst-target optimization combines association, power allocation, and spectral-clustering-initialized monotone Gibbs deployment.
+
+New reusable vocabulary is [[transformer-encoded-mean-field-reinforcement-learning]], [[post-decision-state-stackelberg-actor-critic]], [[imperfect-sic-residual-interference]], [[noma-af-uav-relaying]], [[sensing-signal-assisted-covertness]], [[enhanced-human-evolutionary-optimization]], and [[spectral-clustering-monotone-gibbs-deployment]]. Exact recurring bylines and source biographies established [[derrick-wing-kwan-ng]], [[arumugam-nallanathan]], [[yanping-liu]], [[xuming-fang]], [[zhongxiang-wei]], and [[qingjiang-shi]]. The [[tony-q-s-quek]], [[xingwang-li]], [[fuhong-song]], and [[rongqing-zhang]] rosters were extended with reciprocal source links.
+
+Metadata notes: the first two parses omit final journal metadata, so their year, venue, and DOI were verified through exact-title Crossref records. The other three parses print their DOIs; exact-title publication records supplied the final issue year where the DOI year differs. Technical claims and numerical findings remain grounded in the local Markdown parses.
+
+Evidence caveats: all five studies are simulation-only. The ISAC-SAGIN paper has reward/rate, figure/prose, scaling, and centralization/privacy inconsistencies and proves no Stackelberg convergence. The NOMA relay method freezes small-scale fading inside trajectory updates and provides no global or rank-recovery guarantee. The covert-ISAC setup assumes known static geometry and mixes dBW/dBm in one power description. The heterogeneous-sensor model optimizes static placement and contains a damaged threshold unit and unclear threshold explanation. The JRC formulation has exponential association complexity, a suboptimal Gibbs deployment block, and inconsistent objective-direction prose.
+
+Two low-concurrency extraction workers completed the first, second, and fifth paper reports; the fifth worker's page write was lost when the run was interrupted, so it was reconstructed from the completed report and re-audited locally. The toolkit ratchet adds a tested `make_batches.py --batch N` selector so one explicit allowlist can be printed without discarding the full JSON plan, and closes input/output handles cleanly. The maintained suite now contains 12 passing tests.
+
+Validation before commit: `corpus_counts.py` reported 499 sources, 465 concepts, 105 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw folders. `curation_status.py --dupes` reported 500 path/title-matched folders and 112 genuinely new uncurated sources; its nonzero exit is expected while the backlog remains. `linkcheck.py --orphans`, `process_refs.py`, `index_audit.py`, `frontmatter_audit.py`, `entity_roster_audit.py`, all 12 toolkit tests, and `git diff --check` were clean: index coverage was 1121/1121, frontmatter coverage was 1119 pages, and the entity audit found 0 claimed-but-absent over-claims with 29 advisory present-but-unlisted matches. The optional LLM Wiki health endpoint returned HTTP `502`, so no live graph counts were available.
+
 ## [2026-07-13] Curated multi-UAV ISAC, federated A3C, aerial IRS analysis, event-triggered radio maps, and cellular-UAV interference
 
 Added five source pages, four concept pages, and five author entities:

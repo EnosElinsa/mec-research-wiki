@@ -3,6 +3,7 @@ type: concept
 title: "Covert Communication"
 tags: [security, physical-layer-security, stochastic-geometry, detection]
 related:
+  - "[[deng-2025-covert-isac-trajectory]]"
   - "[[physical-layer-security]]"
   - "[[finite-blocklength-urllc]]"
   - "[[stochastic-geometry-network-analysis]]"
@@ -19,7 +20,7 @@ related:
   - "[[he-not-in-parse-cipc-covert-uav]]"
   - "[[channel-inversion-power-control]]"
 created: 2026-06-03
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Covert Communication

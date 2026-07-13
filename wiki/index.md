@@ -76,6 +76,8 @@
 
 ### Multi-UAV cooperative computing & deployment
 
+- [[liu-2026-heterogeneous-sensor-satisfaction]] - Liu et al. 2026. Static multi-UAV data-collection deployment, sensor association, and transmit-power allocation for delay-, energy-, and dual-sensitive sensor utilities using ELGHEOA (IEEE TWC).
+
 - [[chen-2026-hammurabi-cooperation]] - Chen et al. 2026. Hammurabi diagnoses self-interested pre-trained UAV policies, then fine-tunes parameter-shared policies with public-goods-style incentives and inequity aversion (IEEE TPDS).
 - [[jia-2026-hierarchical-uav-swarms]] - Jia et al. 2026. Head/tail hierarchical UAV swarms for two-hop data collection; K-means/Voronoi predeployment and INS-WOA Pareto optimization of routes, user/UAV power, energy, and delay (IEEE TWC).
 - [[zhou-2026-multiscale-dt-uav-delivery]] - Zhou et al. 2026. Terminal-edge multiscale digital twins for UAV parcel delivery; graph-matching macro twins assign parcel clusters, while cooperative-reinforcement-learning micro twins plan energy- and collision-aware paths (IEEE TMC).
@@ -137,6 +139,8 @@
 - [[gao-2024-d3qn-uav-mec-mobile-gt]] — Gao et al. 2024. **3D** UAV-MEC for **mobile** ground terminals in a **post-disaster** urban scenario; collect→compute→deliver total-time minimization over UAV 3D trajectory + GT scheduling, with **obstacle avoidance** among buildings + **probabilistic-LoS** channel; MDP + **multi-step dueling DDQN (D3QN)**; 3D beats 2D, robust to GT mobility / height limits (IEEE TVT).
 
 ### Classical / convex / optimization-based UAV-MEC
+
+- [[li-2026-noma-uav-relay-planning]] - Li et al. 2026. Max-min user-rate design for a two-hop NOMA amplify-forward UAV relay through AO, SDR/SCA, power control, beamforming, and 3-D trajectory planning (IEEE TGCN).
 
 - [[zhan-2018-uav-wsn-data-collection]] — Zhan et al. 2018. UAV **data collection** in WSN; joint wake-up schedule + trajectory to minimize max SN energy; general fading + outage constraint; SCA (IEEE WCL).
 - [[li-2020-energy-efficient-uav-mec-admm]] — Li et al. 2020. UAV-mounted cloudlet **energy efficiency** (compute-bits/energy ratio) maximization; Dinkelbach + SCA + **ADMM** distributed decomposition; Gaussian KDE for user-mobility prediction (IEEE TVT).
@@ -390,6 +394,9 @@
 ### ISAC, sensing & physical-layer security
 
 - [[guo-2026-dual-objective-multiuav-isac]] - Guo et al. 2026. Multi-UAV trajectories, powers, user associations, and target associations optimized as a communication-sum-rate versus sensing-CRB Pareto front by archive-guided MOEA/D with adaptive PSO/GA updates (IEEE TWC).
+- [[yao-2026-transformer-mean-field-isac-sagin]] - Yao et al. 2026. Transformer-encoded mean-field actor-critic control of cross-tier interference, UAV roles, beamforming, association, and trajectories in an ISAC-SAGIN Stackelberg formulation (IEEE TWC).
+- [[deng-2025-covert-isac-trajectory]] - Deng et al. 2025. UAV-ISAC sensing waveforms mask covert information transmission while BCD alternates SDR beamforming and SCA trajectory updates (IEEE TWC).
+- [[zhou-2026-jrc-multiuav-resource]] - Zhou et al. 2026. Worst-user-rate versus worst-target-SPEB JRC design with joint association, power, and spectral-clustering/Gibbs multi-UAV deployment (IEEE TWC).
 
 - [[cheng-2026-cnn-mamba-cracks]] - Cheng et al. 2026. WTCMamba pavement-crack segmentation combines CNN features, Haar-wavelet guidance, and Mamba selective state-space blocks; an LMC-Belloch/Triton scan is benchmarked on Jetson, separately from the proposed air-ground acquisition platform (IEEE T-ITS).
 - [[li-2026-directional-modulation-irs-uav]] - Li et al. 2026. IRS-assisted UAV directional modulation with discrete phase shifts; VT, CE-VT, and BCD-VT jointly design symbol-level digital weights, UAV position, and IRS phases to preserve the legitimate constellation while disrupting an eavesdropper (IEEE TGCN).
@@ -613,9 +620,10 @@
 - [[qi-qi]] (BUPT - satellite/aerial edge computing and multi-UAV cooperation; 2 sources), [[shaohua-wu]] (Harbin Institute of Technology, Shenzhen - satellite-UAV semantic communication and maritime/satellite networking; 3 sources), and [[qinyu-zhang]] (Harbin Institute of Technology, Shenzhen - satellite, maritime, and non-terrestrial communications; 4 sources).
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 - [[zehui-xiong]] (Queen's University Belfast - generative AI, semantic communication, physical-layer security, and low-altitude resource allocation; 11 sources spanning surveys, diffusion/GDM methods, and aerial/satellite control).
-- [[weijie-yuan]] (Southern University of Science and Technology - ISAC, OTFS, and low-altitude wireless networks; 3 sources), [[george-k-karagiannidis]] (Aristotle University of Thessaloniki - wireless communication and signal processing; 3 sources), [[yuanming-shi]] (ShanghaiTech University - edge AI, wireless optimization, and federated learning; 3 sources), and [[xingwang-li]] (Henan Polytechnic University - UAV/IRS wireless communications; 3 sources).
+- [[weijie-yuan]] (Southern University of Science and Technology - ISAC, OTFS, and low-altitude wireless networks; 3 sources), [[george-k-karagiannidis]] (Aristotle University of Thessaloniki - wireless communication and signal processing; 3 sources), [[yuanming-shi]] (ShanghaiTech University - edge AI, wireless optimization, and federated learning; 3 sources), and [[xingwang-li]] (Henan Polytechnic University - UAV/IRS wireless communications; 4 sources).
 - [[kai-kit-wong]] (University College London - wireless communications, fluid antennas, RIS, and UAV-MEC; 6 sources), [[chan-byoung-chae]] (Yonsei University - aerial communications and resource allocation; 3 sources), [[riheng-jia]] (Zhejiang Normal University - wireless/energy-harvesting networks and smart IoT; 2 sources), and [[minglu-li]] (Zhejiang Normal University / Shanghai Jiao Tong University - AIoT and network computing; 2 sources).
 - [[qixun-zhang]] (BUPT - UAV-swarm MEC, physical-layer mobility, and cooperative ISAC detection; 3 sources), [[kun-yang]] (Nanjing University / University of Essex - UAV-MEC and cooperative sensing; 4 sources), [[fan-liu]] (SUSTech to Southeast University - ISAC sensing, localization, and tracking; 3 sources), and [[christos-masouros]] (University College London - ISAC and control-assisted beamforming; 3 sources).
+- [[derrick-wing-kwan-ng]] (wireless communications, RIS, UAV edge systems, and covert ISAC; 5 sources), [[arumugam-nallanathan]] (Queen Mary University of London - aerial edge and wireless security; 5 sources), [[yanping-liu]] (heterogeneous UAV data collection and AoI-energy optimization; 2 sources), [[xuming-fang]] (multi-UAV resource management; 2 sources), [[zhongxiang-wei]] (JRC and secure aerial-RIS systems; 2 sources), and [[qingjiang-shi]] (wireless optimization and aerial ISAC; 2 sources).
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -799,6 +807,8 @@
 - [[intelligent-reflecting-surface]]
 - [[beyond-diagonal-ris]]
 - [[rate-splitting-multiple-access]]
+- [[noma-af-uav-relaying]]
+- [[imperfect-sic-residual-interference]]
 - [[dynamic-irs-user-association]]
 - [[spherical-transmissive-ris]]
 - [[uav-mounted-ris]]
@@ -932,6 +942,7 @@
 - [[convlstm]]
 - [[stn]]
 - [[transformer-encoder]]
+- [[transformer-encoded-mean-field-reinforcement-learning]]
 - [[wavelet-guided-mamba-crack-segmentation]]
 - [[informer-trajectory-prediction]]
 - [[probsparse-self-attention-prediction]]
@@ -945,6 +956,7 @@
 - [[fractional-programming-dinkelbach]]
 - [[stackelberg-game]]
 - [[mean-field-game]]
+- [[post-decision-state-stackelberg-actor-critic]]
 - [[potential-game]]
 - [[stochastic-game]]
 - [[regret-minimization-learning]]
@@ -975,6 +987,7 @@
 - [[multi-tasking-evolutionary-algorithm]]
 - [[differential-evolution]]
 - [[local-search-evolutionary]]
+- [[enhanced-human-evolutionary-optimization]]
 - [[two-stage-decomposition]]
 - [[penalty-dual-decomposition]]
 - [[second-order-cone-programming]]
@@ -999,6 +1012,7 @@
 - [[ant-colony-optimization]]
 - [[weighted-kmeans-uav-deployment]]
 - [[k-dbscan-uav-deployment]]
+- [[spectral-clustering-monotone-gibbs-deployment]]
 - [[chance-constraint]]
 - [[conditional-value-at-risk]]
 - [[distributionally-robust-optimization]]
@@ -1037,6 +1051,7 @@
 - [[dual-objective-multi-uav-isac]]
 
 - [[integrated-sensing-and-communication]]
+- [[sensing-signal-assisted-covertness]]
 - [[joint-localization-and-communication]]
 - [[continuous-omnidirectional-monitoring]]
 - [[networked-isac]]

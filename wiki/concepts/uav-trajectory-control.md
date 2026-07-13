@@ -3,6 +3,9 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[yao-2026-transformer-mean-field-isac-sagin]]"
+  - "[[li-2026-noma-uav-relay-planning]]"
+  - "[[deng-2025-covert-isac-trajectory]]"
   - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[challita-2019-cellular-uav-interference-drl]]"
   - "[[multi-uav-assisted-mec]]"

@@ -27,7 +27,7 @@ session.
 | `wikilib.py` | Shared library: repo paths, md enumeration, Obsidian-faithful wikilink parsing, raw/sources reference parsing (`# REFERENCES` block extraction, IEEE entry parsing, title normalization, stable `surname-year-slug` keys, venue allow-list classifier, folder→curated-slug map). Imported by the others; not run directly. | — |
 | `linkcheck.py` | Wikilink integrity (zero-dangling check), Obsidian resolution rules. Exit 1 if any dangling link. | `--orphans`, `--json` |
 | `curation_status.py` | Reconcile `raw/sources/` vs curated pages by raw-artifact path with normalized-title and conservative repeated-character OCR fallbacks for stale paths; list uncurated folders; detect duplicate MinerU ingests (identical/near) across both `full.md` and title-named parses. Exit 1 if genuinely-new papers remain. | `--dupes`, `--near-ratio`, `--json` |
-| `make_batches.py` | Split the genuinely-new papers (or an explicit list) into context-window-sized batches for a multi-invocation run. | `--size` (required), `--input`, `--json` |
+| `make_batches.py` | Split the genuinely-new papers (or an explicit list) into context-window-sized batches for a multi-invocation run; optionally print only one numbered allowlist while preserving the complete JSON plan. | `--size` (required), `--input`, `--batch`, `--json` |
 | `corpus_counts.py` | Exact page counts per wiki type + `raw/sources` count + log.md size, for reconciling `overview.md`/`index.md`; can refresh the three inventory counts in the overview Snapshot. | `--json`, `--update-overview` |
 | `process_refs.py` | Find curation process-narration (batch/pass labels, "this pass", "this/same batch", dated-run references, "paper #N" ingest-order, forward-looking "future/subsequent/later sources should land here / be tagged" placement) leaked into any page except `log.md`. A paper's own "future work" section is evergreen domain content and is NOT flagged. Exit 1 if any found. | `--json` |
 | `index_audit.py` | Reconcile the wiki page inventory against `index.md`: report pages that exist on disk but are not catalogued, and pages catalogued under more than one *primary bullet* (true duplicate listings). A primary listing is the leading wikilink of a list item; a slug merely re-mentioned inside another bullet's prose (entity roster, finding/methodology citing its source, deliberate `>` cross-ref) is reported informationally, not as a duplicate. Exit 1 if any coverage gap or duplicate primary listing. | `--ignore`, `--json` |
@@ -46,7 +46,7 @@ session.
 ```sh
 # Before a curation run: what is new, and how should it be batched?
 python tools/wiki/curation_status.py --dupes --json status.json
-python tools/wiki/make_batches.py --size 7 --json batches.json
+python tools/wiki/make_batches.py --size 7 --batch 1 --json batches.json
 
 # After any edit: gate the commit on a clean graph + evergreen wording.
 python tools/wiki/linkcheck.py

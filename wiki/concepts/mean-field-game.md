@@ -3,6 +3,7 @@ type: concept
 title: "Mean Field Game"
 tags: [game-theory, multi-agent, optimization, uav-mec, energy-harvesting]
 related:
+  - "[[yao-2026-transformer-mean-field-isac-sagin]]"
   - "[[stochastic-game]]"
   - "[[nash-equilibrium]]"
   - "[[lyapunov-optimization]]"
@@ -13,7 +14,7 @@ related:
   - "[[kernel-density-mean-field-marl]]"
   - "[[li-2026-uav-bs-semantic-mfmaddpg-kde]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Mean Field Game

@@ -3,6 +3,7 @@ type: concept
 title: Cramér-Rao Bound (CRB / CRLB)
 tags: [sensing, estimation-theory, isac, metric]
 related:
+  - "[[zhou-2026-jrc-multiuav-resource]]"
   - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[su-2024-sensing-aided-isac-pls]]"

@@ -3,10 +3,11 @@ type: concept
 title: Stackelberg Game (Leader-Follower)
 tags: [game-theory, mechanism-design, pricing]
 related:
+  - "[[yao-2026-transformer-mean-field-isac-sagin]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[he-2026-dt-sagimec-lae]]"
 created: 2026-05-28
-updated: 2026-07-06
+updated: 2026-07-13
 ---
 
 # Stackelberg Game (Leader-Follower)

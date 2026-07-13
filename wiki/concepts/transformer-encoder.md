@@ -3,12 +3,13 @@ type: concept
 title: "Transformer Encoder"
 tags: [deep-learning, attention, encoder, trajectory-planning]
 related:
+  - "[[yao-2026-transformer-mean-field-isac-sagin]]"
   - "[[guo-2026-aot-uav-inspection-offloading]]"
   - "[[graph-neural-network]]"
   - "[[probsparse-self-attention-prediction]]"
   - "[[knowledge-distillation-for-drl]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Transformer Encoder
