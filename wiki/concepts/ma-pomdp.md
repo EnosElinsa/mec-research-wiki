@@ -21,11 +21,17 @@ related:
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[memory-augmented-multi-uav-navigation]]"
+  - "[[wang-2026-mat-target-tracking]]"
+  - "[[tian-2026-coded-cache-repair]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
 
 # MA-POMDP (Multi-Agent Partially Observable MDP)
+
+[[wang-2026-mat-target-tracking]] uses centralized Transformer context and sequentially conditioned UAV actions for partially observed target tracking; this differs from communication-free decentralized execution.
+
+[[tian-2026-coded-cache-repair]] formulates fast requester/repair pairing and trajectory actions as a cooperative Dec-POMDP beneath slower centralized coding and cache-placement decisions.
 
 The natural multi-agent generalization of [[pomdp|POMDP]]: $N$ agents, each with its own observation $o_n^i$ and action $a_n^i$, share a global state $s_n$ that none of them sees fully. The global transition depends on the joint action $\mathbf a_n = (a_n^1, \ldots, a_n^N)$.
 

@@ -13,6 +13,7 @@ related:
   - "[[uav-to-x-communication]]"
   - "[[chen-2026-sdhfl-completion-time]]"
   - "[[semi-decentralized-hybrid-federated-learning]]"
+  - "[[dong-2026-radio-map-d2d-relay]]"
 created: 2026-06-02
 updated: 2026-07-13
 ---
@@ -32,3 +33,5 @@ A D2D pair is typically modeled as a transmitter and a receiver separated by a f
 [[zhang-not-in-parse-cellular-uav-to-x]] transfers the same direct-link principle to aerial users: low-SNR UAVs use underlaid U2U links to a high-SNR relay UAV, which later uploads cached sensing data over U2N.
 
 [[chen-2026-sdhfl-completion-time]] uses D2D links for a learning protocol rather than payload relaying: devices exchange local models until cluster-level consensus, after which a cluster head communicates with the UAV aggregator through [[semi-decentralized-hybrid-federated-learning]].
+
+[[dong-2026-radio-map-d2d-relay]] forms terrain-aware ground D2D subnetworks and selects one gateway per component, reducing the number of direct multi-band UAV links.

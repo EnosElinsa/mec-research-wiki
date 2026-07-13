@@ -8,8 +8,9 @@ related:
   - "[[heuristic-supervised-drl]]"
   - "[[uav-trajectory-control]]"
   - "[[matching-theory-for-resource-allocation]]"
+  - "[[tian-2026-coded-cache-repair]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Two-Timescale Optimization
@@ -26,3 +27,5 @@ A decomposition that splits a coupled control problem into decisions that operat
 [[zhao-2026-heuristic-supervised-drl]] uses a two-timescale stochastic-approximation view for [[heuristic-supervised-drl]]: the supervised bridge updates on the fast timescale while the DRL/MARL policy evolves on the slow timescale.
 
 [[sun-2025-tjcct-twotimescale-uav-mec]] (TJCCT) is the anchor: in the **short timescale** it runs a price-incentive model for on-demand computing-resource allocation plus a [[matching-theory-for-resource-allocation|matching]]-mechanism for computation offloading, and in the **long timescale** it runs a convex-optimization method for [[uav-trajectory-control|UAV trajectory control]] — with stability and polynomial complexity proved for the combined scheme. Contrast with the single-timescale [[lyapunov-optimization|drift-plus-penalty]] online approaches elsewhere in the corpus.
+
+[[tian-2026-coded-cache-repair]] reverses the common mobility/resource split: coding and cache placement are slow decisions, while matching and UAV trajectory actions react on the fast timescale.

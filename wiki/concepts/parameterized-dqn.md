@@ -8,8 +8,9 @@ related:
   - "[[j-ppo]]"
   - "[[ma-2025-pdqn-vehicular-mec]]"
   - "[[chen-2026-pddqn-sagin-mec]]"
+  - "[[tian-2026-coded-cache-repair]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Parameterized DQN (P-DQN)
@@ -25,3 +26,5 @@ P-DQN sidesteps two clumsy alternatives: discretizing the continuous action (los
 Compared with [[j-ppo]] (on-policy, stochastic, hybrid head), P-DQN is off-policy and value-based, so sample efficient via replay but more prone to Q-overestimation. Pick P-DQN when the discrete choice is small (≤10 options) and you want sample efficiency; pick j-PPO when you want stable on-policy updates.
 
 [[chen-2026-pddqn-sagin-mec]] uses a double-DQN variant, P-DDQN, for SAGIN MEC: the DDQN component selects discrete user/satellite actions and a DDPG-style component outputs the continuous parameters attached to those choices.
+
+[[tian-2026-coded-cache-repair]] uses hierarchical multi-agent P-DQN at two timescales: slow code/cache choices and fast requester/repair matching with continuous UAV movement.

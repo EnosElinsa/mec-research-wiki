@@ -11,6 +11,7 @@ related:
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
   - "[[xie-2026-geoagg-hsac]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
+  - "[[tian-2026-coded-cache-repair]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -36,3 +37,5 @@ The cleanest empirical fix in [[liu-2026-jppo-en-convntm]] is [[j-ppo]]: keep a 
 [[chen-2026-pddqn-sagin-mec]] adds a SAGIN instance: discrete scheduling/satellite-association actions are paired with continuous offloading-ratio and transmit-power parameters, handled by a P-DDQN design that combines DDQN and DDPG.
 
 [[xie-2026-geoagg-hsac]] uses separate SAC heads: Gaussian sampling for UAV velocity and transmit power, and Gumbel-Softmax sampling for user association. Separate entropy temperatures adapt exploration for the continuous and discrete parts.
+
+[[tian-2026-coded-cache-repair]] uses P-DQN to attach continuous speed/heading parameters to discrete matching and coding/cache actions.

@@ -17,11 +17,14 @@ related:
   - "[[joint-switch-coalition-formation-game]]"
   - "[[wang-2023-differentiated-uav-services]]"
   - "[[differentiated-uav-service-market]]"
+  - "[[cui-2020-marl-uav-resource-allocation]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
 
 # Nash Equilibrium
+
+[[cui-2020-marl-uav-resource-allocation]] defines Nash equilibrium for its UAV resource-allocation game, but its independent-learning convergence argument does not establish convergence of the coupled learners to that equilibrium.
 
 The central solution concept of non-cooperative game theory: a strategy profile in which **no player can improve its own payoff by unilaterally deviating**, given the others' strategies. Every player is simultaneously playing a best response. A pure-strategy NE need not exist in general, but special structures guarantee it — e.g. [[potential-game|potential games]] (via the finite improvement property) and the multi-period stage games underlying many [[stochastic-game|stochastic games]].
 

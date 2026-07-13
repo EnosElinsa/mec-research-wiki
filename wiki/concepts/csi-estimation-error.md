@@ -12,6 +12,7 @@ related:
   - "[[channel-inversion-power-control]]"
   - "[[xu-2026-hecta-predictive-beamforming]]"
   - "[[historical-echo-predictive-beamforming]]"
+  - "[[jin-2026-jitter-aware-uav-comp]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -31,3 +32,5 @@ DRL implicitly handles CSI noise by training on noisy environments, but provides
 [[he-not-in-parse-cipc-covert-uav]] gives an analytical power-control example: Alice-Bob estimation error can make [[channel-inversion-power-control]] overcompensate, improving some legitimate connection metrics while strengthening the adversary and worsening secrecy/covertness.
 
 [[xu-2026-hecta-predictive-beamforming]] sidesteps an explicit intermediate CSI estimate: [[historical-echo-predictive-beamforming]] maps echo history directly to the next bidirectional beam pair. This removes one estimation interface but does not by itself establish robustness to deployment channels outside the synthetic training distribution.
+
+[[jin-2026-jitter-aware-uav-comp]] models attitude jitter as symbol-to-symbol channel aging and trains J-LSTM to predict next-symbol CSI for CoMP precoding from synthetic attitude/channel sequences.

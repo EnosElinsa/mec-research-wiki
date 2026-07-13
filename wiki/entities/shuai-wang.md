@@ -5,6 +5,7 @@ tags: [author, researcher, ieee-senior-member, satellite-communications, beijing
 related:
   - "[[fan-2026-directional-neighbor-discovery]]"
   - "[[song-2026-albpd-directional-fanet]]"
+  - "[[jin-2026-jitter-aware-uav-comp]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---
@@ -15,6 +16,7 @@ IEEE Senior Member and chair professor at Beijing Institute of Technology's Scho
 
 - [[fan-2026-directional-neighbor-discovery]] - radio-power and delay optimization for directional discovery.
 - [[song-2026-albpd-directional-fanet]] - distance/angle link-breakage prediction for directional FANETs.
+- [[jin-2026-jitter-aware-uav-comp]] - attitude-jitter channel analysis and LSTM prediction for multi-UAV CoMP.
 
 ## Contributions to this wiki
 

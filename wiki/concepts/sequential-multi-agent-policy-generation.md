@@ -11,8 +11,9 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[wang-2026-wutf-fair-communication]]"
   - "[[wireless-powered-uav-fair-service-control]]"
+  - "[[wang-2026-mat-target-tracking]]"
 created: 2026-07-11
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Sequential Multi-Agent Policy Generation
@@ -24,3 +25,5 @@ In [[zhou-2026-a2g-madrl-air-ground-vcs]], DOMPG uses this idea for air-ground v
 The pattern is especially useful when the joint action space is large and sparse. It keeps the action representation factorized like a multi-agent policy, but avoids the strongest independence assumption of simultaneous decentralized actions.
 
 [[wang-2026-wutf-fair-communication]] uses a related but distinct training-time sequence: it randomizes the UAV actor-update order and lets each update incorporate preceding actors' newest policies. The executed actions remain decentralized and simultaneous; the sequence coordinates policy improvement rather than constructing one joint action at inference.
+
+[[wang-2026-mat-target-tracking]] instead uses a masked autoregressive decoder that conditions each UAV action on earlier actions in the same joint decision.

@@ -14,11 +14,14 @@ related:
   - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
   - "[[hua-2026-ddrl-content-delivery]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
+  - "[[wang-2026-mat-target-tracking]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
 
 # PPO (Proximal Policy Optimization)
+
+[[wang-2026-mat-target-tracking]] trains its autoregressive Multi-Agent Transformer with a clipped PPO objective and multi-agent advantage decomposition.
 
 Schulman et al.'s on-policy actor-critic algorithm that constrains each update to remain "proximal" to the previous policy via a clipped surrogate objective (origin paper curated as [[schulman-2017-ppo]]). Standard form:
 

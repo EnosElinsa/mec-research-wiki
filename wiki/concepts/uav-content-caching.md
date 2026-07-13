@@ -10,8 +10,9 @@ related:
   - "[[secure-caching-uav-mec]]"
   - "[[service-caching-mec]]"
   - "[[coded-caching]]"
+  - "[[tian-2026-coded-cache-repair]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # UAV Content Caching
@@ -21,6 +22,8 @@ UAV content caching stores popular files on an aerial platform so user requests 
 In [[hua-2026-ddrl-content-delivery]], each cache-enabled UAV serves users across three base-station regions. A hit is delivered directly; a miss adds UAV-BS retrieval delay. A PSO-tuned replacement score combines content popularity, object-size ratio, and request frequency, while PPO jointly controls movement and transmission behavior under cache and energy limits.
 
 This concept is distinct from [[service-caching-mec]], which places executable service programs, and from computational-task caching, which reuses computation inputs or outputs. It is also broader than [[secure-caching-uav-mec]], where cache placement is coupled to adversarial or confidentiality constraints, and different from [[coded-caching]], which coordinates encoded fragments and multicast opportunities across nodes.
+
+[[tian-2026-coded-cache-repair]] is the coded, multi-UAV counterpart: it optimizes fragment placement and repair together with requester matching and motion.
 
 ## Design questions
 

@@ -24,6 +24,7 @@ related:
   - "[[fatemidokht-2021-vru-vanet-routing]]"
   - "[[li-2016-energy-balanced-uav-relaying]]"
   - "[[energy-balanced-cooperative-uav-relaying]]"
+  - "[[dong-2026-radio-map-d2d-relay]]"
 created: 2026-06-01
 updated: 2026-07-13
 ---
@@ -50,3 +51,4 @@ A relaying technique in which the relay node is **mounted on a high-mobility UAV
 - [[liu-2026-usp-nfrp-emergency-communication]] expands endurance-aware relaying into [[persistent-emergency-uav-swarm-service]]: periodic replacement paths rotate UAVs through access and relay roles while a dynamically repaired tree preserves multi-hop station connectivity.
 - [[li-2016-energy-balanced-uav-relaying]] fixes the flight geometry and instead balances decoded-packet assignments, modulation, and forwarding power across cooperative relays under BER and TDMA constraints.
 - [[fatemidokht-2021-vru-vanet-routing]] uses UAV relaying as an urban VANET fallback: aerial ACO routes carry packets when road-segment forwarding becomes disconnected.
+- [[dong-2026-radio-map-d2d-relay]] deploys static multi-band UAV relays between terrain-shaped D2D subnetworks using radio-map-weighted assignment and grid updates.

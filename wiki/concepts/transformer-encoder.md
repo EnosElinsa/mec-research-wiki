@@ -9,6 +9,7 @@ related:
   - "[[probsparse-self-attention-prediction]]"
   - "[[knowledge-distillation-for-drl]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[wang-2026-mat-target-tracking]]"
 created: 2026-07-07
 updated: 2026-07-13
 ---
@@ -20,3 +21,5 @@ A stack of self-attention and feed-forward blocks that maps an input sequence in
 In [[guo-2026-aot-uav-inspection-offloading]], the AGI-oriented Transformer uses one shared encoder for two different inputs: sensor-cluster locations for [[uav-trajectory-control]] and task features for [[task-offloading]]. The encoded representation is sent to task-specific MLP heads, keeping the model lighter than separate full encoder-decoder Transformers for each decision problem.
 
 This is related to the broader attention/graph-learning family in the corpus: [[probsparse-self-attention-prediction]] uses sparse attention for traffic prediction, while [[graph-neural-network]] pages capture relational encoders when the natural structure is a graph rather than a sequence.
+
+[[wang-2026-mat-target-tracking]] pairs an encoder over all UAV observations with a masked autoregressive decoder for sequential joint-action generation.

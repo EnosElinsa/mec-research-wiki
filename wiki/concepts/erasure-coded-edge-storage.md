@@ -7,8 +7,9 @@ related:
   - "[[service-caching-mec]]"
   - "[[post-disaster-mec]]"
   - "[[huang-2026-erasure-coded-uav-storage]]"
+  - "[[tian-2026-coded-cache-repair]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Erasure-Coded Edge Storage
@@ -18,3 +19,5 @@ Erasure-coded edge storage splits a file into data blocks plus parity blocks so 
 The design question is not just "where should the file be cached?" It also includes how many data/parity blocks to generate, which mobile nodes should store each block, and how users should retrieve enough blocks under changing connectivity. In [[huang-2026-erasure-coded-uav-storage]], this becomes a storage-cost-vs-access-delay problem for a post-disaster UAV edge system, solved with trajectory prediction plus hierarchical RL.
 
 This concept is adjacent to [[coded-caching]] and [[service-caching-mec]], but the failure/recovery semantics are different: coded caching usually exploits multicast or cache-hit structure, while erasure-coded storage is about reconstructability from partial block availability.
+
+[[tian-2026-coded-cache-repair]] explicitly couples reconstructability to [[regenerating-codes|MSR/MBR repair]], so a replacement UAV can recover a lost fragment from surviving caches rather than reconstructing the whole file.

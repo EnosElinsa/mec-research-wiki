@@ -13,11 +13,12 @@ related:
   - "[[multi-agent-q-learning]]"
   - "[[centralized-training-decentralized-execution]]"
   - "[[air-to-ground-channel-model]]"
+  - "[[tdoa-based-uav-localization]]"
   - "[[chang-2022-marl-multiuav-trajectory]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
 created: 2026-06-02
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Collaborative Reinforcement Learning Based Unmanned Aerial Vehicle (UAV) Trajectory Design for 3D UAV Tracking

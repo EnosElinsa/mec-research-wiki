@@ -58,6 +58,8 @@ related:
   - "[[fan-2026-directional-neighbor-discovery]]"
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[dong-2026-radio-map-d2d-relay]]"
+  - "[[jin-2026-jitter-aware-uav-comp]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -66,7 +68,7 @@ updated: 2026-07-13
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author roster in the wiki currently links 55 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, and surveys:
+The most frequently recurring author roster in the wiki currently links 57 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -125,6 +127,8 @@ The most frequently recurring author roster in the wiki currently links 55 sourc
 - [[ning-2026-uav-isac-secure-beamforming]] - robust UAV-ISAC sensing, jamming, trajectory, and secure beamforming.
 
 - [[huang-2026-uav-friendly-jamming-transsac]] - transformer-enhanced SAC for satellite-maritime friendly jamming.
+- [[dong-2026-radio-map-d2d-relay]] - terrain-derived multi-frequency radio maps for UAV bridging of ground D2D subnetworks.
+- [[jin-2026-jitter-aware-uav-comp]] - jitter-aware channel analysis and prediction for multi-UAV CoMP transmission.
 
 ## Contributions to this wiki
 

@@ -5,11 +5,14 @@ tags: [matching, optimization, assignment, mechanism-design]
 related:
   - "[[stackelberg-game]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
+  - "[[cui-2020-marl-uav-resource-allocation]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-13
 ---
 
 # Matching Theory for Resource Allocation
+
+[[cui-2020-marl-uav-resource-allocation]] uses complete-information Gale-Shapley matching as a reduced two-UAV benchmark. It outperforms independent learning in that comparison but requires information unavailable to the decentralized learner.
 
 Mathematical framework (Gale–Shapley, Roth–Sotomayor) for pairing agents from two disjoint sets — typically buyers/sellers, students/schools, users/resources — under each side's preferences over the other.
 

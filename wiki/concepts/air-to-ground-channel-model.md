@@ -33,11 +33,16 @@ related:
   - "[[zhai-2026-uav-ma-secrecy]]"
   - "[[wan-2026-movable-antenna-multiuav-mimo]]"
   - "[[ren-2026-movable-antenna-uav-trajectory]]"
+  - "[[cui-2020-marl-uav-resource-allocation]]"
+  - "[[dong-2026-radio-map-d2d-relay]]"
+  - "[[jin-2026-jitter-aware-uav-comp]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
 
 # Air-to-Ground Channel Model
+
+Recent corpus additions span three different uses: [[cui-2020-marl-uav-resource-allocation]] learns discrete allocation under probabilistic-LoS interference, [[dong-2026-radio-map-d2d-relay]] builds terrain-specific multi-frequency rate maps, and [[jin-2026-jitter-aware-uav-comp]] derives temporal channel correlation under attitude jitter.
 
 Three movable-array sources use LoS/free-space A2G links while changing different spatial variables: [[zhai-2026-uav-ma-secrecy]] controls secrecy through trajectory and element motion, [[wan-2026-movable-antenna-multiuav-mimo]] controls multi-UAV uplink geometry, and [[ren-2026-movable-antenna-uav-trajectory]] carries array state through cellular path planning.
 

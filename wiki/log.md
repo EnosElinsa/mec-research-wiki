@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-13] Curated coded UAV caching, independent MARL, swarm tracking, radio-map relaying, and jitter-aware CoMP
+
+Added five source pages, six reusable concepts, and two recurring-author entities:
+
+- [[tian-2026-coded-cache-repair]] - Tian et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3587959`. MDS/MSR/MBR caching and repair are coupled with hierarchical two-timescale multi-agent P-DQN for placement, matching, and UAV motion.
+- [[cui-2020-marl-uav-resource-allocation]] - Cui et al. 2020, *IEEE TWC*, DOI `10.1109/TWC.2019.2935201`. Independent tabular Q-learners choose a user, subchannel, and power level in a non-cooperative stochastic game.
+- [[wang-2026-mat-target-tracking]] - Wang et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2026.3679479`. TDOA localization, Hungarian formation assignment, and an autoregressive Multi-Agent Transformer coordinate UAV-swarm target tracking.
+- [[dong-2026-radio-map-d2d-relay]] - Dong et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3600610`. Longley-Rice terrain maps drive D2D subnetworks, gateway selection, and rate-weighted multi-frequency UAV-relay deployment.
+- [[jin-2026-jitter-aware-uav-comp]] - Jin et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3588241`. Analytical jitter-channel correlation and J-LSTM next-symbol CSI prediction support distributed multi-UAV CoMP.
+
+New vocabulary is [[regenerating-codes]], [[multi-agent-transformer]], [[tdoa-based-uav-localization]], [[geometric-dilution-of-precision]], [[multi-frequency-radio-map-uav-relaying]], and [[jitter-aware-lstm-channel-compensation]]. Matching BUPT affiliations and ORCIDs established [[li-wang]] and [[lianming-xu]] across three sources each. Existing Zheng Chang, Yuanwei Liu, Arumugam Nallanathan, Dusit Niyato, Jiacheng Wang, Shuai Wang, and Gaofeng Pan rosters were extended.
+
+Metadata notes: the coded-cache parse reports July/December 2025 early-access dates, while its exact DOI record places the final article in TWC volume 25 (2026), pages 931-947. Exact-title DOI records supplied or confirmed the other final records: TWC 19(2), 729-743 (2020); T-ITS 27, 6647-6663 (2026); TWC 25, 2970-2983 (2026); and TWC 25, 978-993 (2026).
+
+Evidence caveats: all five evaluations are simulation-only. The coded-cache objective maximizes success probability rather than jointly optimizing the evaluated cost, and the method has no global guarantee. Independent Q-learning does not prove convergence of the coupled game to a Nash equilibrium. MAT tracks one target with planar actions and does not always attain the best GDOP despite its strongest mean position errors. The radio maps are model-generated from terrain and the UAV placement is heuristic. J-LSTM is trained on synthetic channels, while its perfect-future-correlation AR comparator is not operationally realistic.
+
+Three low-concurrency workers extracted the coded-cache, independent-MARL, and MAT papers; the radio-map and jitter-aware CoMP papers were extracted locally. Independent review corrected five stale author-count labels in the index and added the missing reciprocal [[ma-pomdp]] link for the coded-cache Dec-POMDP formulation.
+
+Validation: `corpus_counts.py` reports **529 sources / 497 concepts / 125 entities / 612 raw folders**. `curation_status.py --dupes` leaves **82 genuinely new sources** for later curation. `linkcheck.py --orphans` reports zero dangling links; `process_refs.py` finds zero hits; `index_audit.py` covers all **1,203** catalogue-able pages exactly once; `frontmatter_audit.py` validates all **1,201** frontmatter pages; and `entity_roster_audit.py` reports zero overclaims (31 possible omissions remain advisory namesake/legacy cases). All 12 wiki-tool unit tests and `git diff --check` pass. The local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain the authoritative verification.
+
 ## [2026-07-13] Curated meta-learned UAV scheduling, three-tier capacity, and movable-antenna control
 
 Added five source pages, three reusable method concepts, and two recurring-author entities:

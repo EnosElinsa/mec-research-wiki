@@ -15,6 +15,8 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[collaborative-beamforming]]"
+  - "[[li-wang]]"
+  - "[[lianming-xu]]"
   - "[[zhu-han]]"
   - "[[zheng-chang]]"
   - "[[zhao-2019-uav-emergency-disasters]]"

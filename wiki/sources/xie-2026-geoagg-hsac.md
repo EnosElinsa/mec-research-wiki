@@ -14,6 +14,8 @@ related:
   - "[[hybrid-action-decision-making]]"
   - "[[soft-actor-critic]]"
   - "[[uav-trajectory-control]]"
+  - "[[li-wang]]"
+  - "[[lianming-xu]]"
   - "[[zheng-chang]]"
   - "[[zhu-han]]"
 created: 2026-07-13

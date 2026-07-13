@@ -121,11 +121,14 @@ related:
   - "[[betalo-2026-meta-uav-scheduling]]"
   - "[[zhai-2026-uav-ma-secrecy]]"
   - "[[ren-2026-movable-antenna-uav-trajectory]]"
+  - "[[wang-2026-mat-target-tracking]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
 
 # UAV Trajectory Control
+
+[[wang-2026-mat-target-tracking]] controls planar velocity changes to improve target-localization geometry while limiting obstacle risk and flight distance.
 
 [[betalo-2026-meta-uav-scheduling]] learns multi-UAV movement jointly with sensor assignment and resources. [[zhai-2026-uav-ma-secrecy]] alternates trajectory with secure beamforming and movable elements, while [[ren-2026-movable-antenna-uav-trajectory]] minimizes mission time through communication-feasible grid search with carried antenna state.
 

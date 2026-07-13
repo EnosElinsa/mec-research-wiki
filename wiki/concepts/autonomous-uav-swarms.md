@@ -32,11 +32,14 @@ related:
   - "[[multi-modal-uav-coverage-backhaul-control]]"
   - "[[jia-2026-hierarchical-uav-swarms]]"
   - "[[hierarchical-uav-swarm]]"
+  - "[[wang-2026-mat-target-tracking]]"
 created: 2026-07-10
 updated: 2026-07-13
 ---
 
 # Autonomous UAV Swarms
+
+[[wang-2026-mat-target-tracking]] coordinates a sensing swarm around one moving target using TDOA localization, virtual formation points, Hungarian assignment, and autoregressive Transformer actions.
 
 [[zhang-2026-ensemble-marl-uav-target-search]] adds a heterogeneous-search angle: fixed-wing and multirotor UAVs operate at different altitude bands, and [[ensemble-qmix]] coordinates target search under partial observability, no-fly zones, and collision masks.
 

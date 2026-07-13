@@ -5,6 +5,7 @@ tags: [author, researcher, ieee-senior-member, communications-theory, beijing-in
 related:
   - "[[fan-2026-directional-neighbor-discovery]]"
   - "[[song-2026-albpd-directional-fanet]]"
+  - "[[jin-2026-jitter-aware-uav-comp]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---
@@ -15,6 +16,7 @@ IEEE Senior Member and professor at Beijing Institute of Technology. Matching de
 
 - [[fan-2026-directional-neighbor-discovery]] - power-delay-efficient directional neighbor discovery.
 - [[song-2026-albpd-directional-fanet]] - directional FANET link-breakage analysis and maintenance.
+- [[jin-2026-jitter-aware-uav-comp]] - analytical and learned compensation for UAV-jitter-induced CSI aging.
 
 ## Contributions to this wiki
 

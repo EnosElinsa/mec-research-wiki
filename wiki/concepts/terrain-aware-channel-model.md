@@ -8,6 +8,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[tong-2026-uneven-terrain-uav-mec]]"
   - "[[xie-2026-geoagg-hsac]]"
+  - "[[dong-2026-radio-map-d2d-relay]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -33,3 +34,5 @@ The terrain-aware model is a deterministic-geometric channel model — distinct 
 [[tong-2026-uneven-terrain-uav-mec]] is a related but not identical terrain-aware entry: it uses real elevation data, safe-altitude constraints, and an elevation-angle probabilistic LoS model to drive hierarchical DRL over uneven terrain, rather than constructing the blocked-region geometry used by [[wu-2026-terrain-aware-uav-mec]].
 
 [[xie-2026-geoagg-hsac]] combines a reconstructed mountain map with ray-traced LoS labels and measured air-to-ground gains. Its [[terrain-occlusion-aware-graph-state-aggregation]] learns from those link-state patterns, so the channel representation becomes both a simulator input and a policy-state abstraction.
+
+[[dong-2026-radio-map-d2d-relay]] uses GMTED2010/OpenStreetMap terrain with Longley-Rice propagation to generate multi-frequency rate maps; these are model-generated maps, not field measurements.
