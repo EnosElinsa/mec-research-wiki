@@ -3,6 +3,7 @@ type: concept
 title: "Directional FANET Link Maintenance"
 tags: [fanet, uav-communications, directional-antenna, link-maintenance, mmwave]
 related:
+  - "[[fan-2026-directional-neighbor-discovery]]"
   - "[[song-2026-albpd-directional-fanet]]"
   - "[[deng-2026-eret-fanet-routing]]"
   - "[[evolvable-route-expiration-time]]"

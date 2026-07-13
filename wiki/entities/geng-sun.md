@@ -25,15 +25,16 @@ related:
   - "[[he-2026-dt-sagimec-lae]]"
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
   - "[[zhao-2026-temporal-spectrum-cartography]]"
+  - "[[xie-2026-uav-irs-eppo]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Geng Sun
 
 IEEE Member. Affiliated with the **College of Computer Science and Technology** and the **Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University** (Changchun, China); also affiliated with the **College of Computing and Data Science, Nanyang Technological University** (Singapore) in several papers.
 
-Co-authored 22 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, UAV-mounted-RIS communications, digital-twin SAGIMEC, low-altitude rescue, temporal spectrum cartography, and survey work in aerial/edge networks:
+Co-authored 23 sources in this wiki, spanning vehicular, post-disaster, energy-efficient, secure-communication, data-collection, collaborative-beamforming, two-timescale aerial-MEC, federated-navigation, maritime secure communications, UAV-mounted-RIS communications, digital-twin SAGIMEC, low-altitude rescue, temporal spectrum cartography, and survey work in aerial/edge networks:
 
 - [[sun-2021-temcmop-uav-cb]] — earliest UAV collaborative-beamforming entry; time + VAA-time + motion/hovering-energy multi-objective optimization (TEMCMOP) via the improved multi-objective ant lion optimizer (IMOALO) (lead author).
 - [[sun-2023-bargain-match-vec]] — bargaining + matching for vehicular edge computing.
@@ -57,6 +58,8 @@ Co-authored 22 sources in this wiki, spanning vehicular, post-disaster, energy-e
 - [[he-2026-dt-sagimec-lae]] — DT-assisted SAGIMEC for low-altitude economy workloads, combining Lyapunov online control, satellite-latency learning, and Stackelberg-game decision making.
 - [[tang-2026-hg-maddpg-uav-rescue]] — low-altitude UAV rescue with ground embedded robots and airship support via HG-MADDPG.
 - [[zhao-2026-temporal-spectrum-cartography]] — temporal spectrum cartography for low-altitude economy networks via RecMAE and a multi-agent diffusion policy.
+
+- [[xie-2026-uav-irs-eppo]] - enhanced PPO trajectory control for an urban UAV-carried IRS.
 
 ## Contributions to this wiki
 

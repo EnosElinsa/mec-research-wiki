@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2023.3303232"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, integrated-sensing-computation-communication, integrated-sensing-and-communication, task-oriented-communication, discriminant-gain, sum-of-ratios-optimization, edge-ai, split-inference]
 related:
+  - "[[guangxu-zhu]]"
   - "[[integrated-sensing-computation-communication]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[task-oriented-communication]]"

@@ -3,6 +3,7 @@ type: concept
 title: "CSI Estimation Error"
 tags: [channel-state-information, robust, uncertainty, communication]
 related:
+  - "[[shah-2026-cellfree-mimo-fap-control]]"
   - "[[distributionally-robust-optimization]]"
   - "[[chance-constraint]]"
   - "[[terrain-aware-channel-model]]"
@@ -12,7 +13,7 @@ related:
   - "[[xu-2026-hecta-predictive-beamforming]]"
   - "[[historical-echo-predictive-beamforming]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # CSI Estimation Error

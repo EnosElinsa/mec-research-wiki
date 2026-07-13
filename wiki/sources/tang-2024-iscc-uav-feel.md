@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2024.3523381"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, isac, federated-edge-learning, uav, resource-allocation, alternating-optimization, integrated-sensing-computation-communication]
 related:
+  - "[[guangxu-zhu]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[integrated-sensing-computation-communication]]"
   - "[[federated-learning]]"
@@ -16,7 +17,7 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning

@@ -7,20 +7,22 @@ related:
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
   - "[[wen-2024-iscc-edge-ai]]"
   - "[[ye-2026-deeplsc-lae-isac]]"
+  - "[[lyu-2023-isac-maneuver-beamforming]]"
 created: 2026-05-30
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Jie Xu
 
-IEEE Fellow. Affiliated with the **School of Science and Engineering (SSE), The Chinese University of Hong Kong, Shenzhen** — and, in the secure-ISAC / LAE-ISAC papers, the **Shenzhen Future Network of Intelligence Institute** and the **Guangdong Provincial Key Laboratory of Future Networks of Intelligence**. The four sources all place Jie Xu at CUHK-Shenzhen (SSE / FNii) within the integrated-sensing-and-communication research area, supporting a single identity (a common name, disambiguated by the consistent CUHK-Shenzhen + ISAC affiliation).
+IEEE Fellow. Affiliated with the **School of Science and Engineering (SSE), The Chinese University of Hong Kong, Shenzhen** — and, in the secure-ISAC / LAE-ISAC papers, the **Shenzhen Future Network of Intelligence Institute** and the **Guangdong Provincial Key Laboratory of Future Networks of Intelligence**. The five sources all place Jie Xu at CUHK-Shenzhen (SSE / FNii) within the integrated-sensing-and-communication research area, supporting a single identity (a common name, disambiguated by the consistent CUHK-Shenzhen + ISAC affiliation).
 
-Co-author of four ISAC / edge-AI sources in this wiki:
+Co-author of five ISAC / edge-AI sources in this wiki:
 
 - [[meng-2024-uav-isac-overview]] — overview of UAV-enabled ISAC for 6G (motion control, resource allocation, sensing-communication synergy).
 - [[yao-2025-secure-isac-dual-eavesdropping]] — secure UAV-ISAC against dual eavesdropping; joint beamforming + trajectory design.
 - [[wen-2024-iscc-edge-ai]] — task-oriented integrated sensing, computation, and communication (ISCC) for multi-device edge-AI inference; discriminant-gain maximization via the sum-of-ratios method.
 - [[ye-2026-deeplsc-lae-isac]] — LAE ISAC with DDPG-based joint GBS beamforming and authorized-UAV trajectory control under sensing and flight constraints.
+- [[lyu-2023-isac-maneuver-beamforming]] - joint UAV maneuver, communication beamforming, and sensing illumination.
 
 ## Contributions to this wiki
 

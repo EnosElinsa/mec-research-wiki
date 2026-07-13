@@ -3,6 +3,7 @@ type: concept
 title: "Nash Equilibrium"
 tags: [game-theory, equilibrium, solution-concept]
 related:
+  - "[[du-2026-hierarchical-coalition-deployment]]"
   - "[[challita-2019-cellular-uav-interference-drl]]"
   - "[[potential-game]]"
   - "[[tang-2026-gat-antijamming]]"

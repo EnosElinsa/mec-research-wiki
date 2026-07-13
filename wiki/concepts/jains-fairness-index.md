@@ -3,6 +3,7 @@ type: concept
 title: "Jain's Fairness Index"
 tags: [metrics, fairness, qoe]
 related:
+  - "[[xie-2026-uav-irs-eppo]]"
   - "[[theil-fairness-index]]"
   - "[[spatial-equity-index]]"
   - "[[service-experience-ratio]]"

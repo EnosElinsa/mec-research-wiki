@@ -7,6 +7,10 @@ url: "https://doi.org/10.1109/TWC.2025.3627301"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, fanet, uav-communications, directional-antenna, mmwave, link-maintenance, breakage-prediction]
 related:
+  - "[[zhe-song]]"
+  - "[[xuanhe-yang]]"
+  - "[[shuai-wang]]"
+  - "[[gaofeng-pan]]"
   - "[[directional-fanet-link-maintenance]]"
   - "[[stateless-geographic-fanet-routing]]"
   - "[[uav-mobile-relaying]]"

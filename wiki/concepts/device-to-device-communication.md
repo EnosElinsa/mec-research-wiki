@@ -3,6 +3,7 @@ type: concept
 title: "Device-to-Device (D2D) Communication"
 tags: [cellular, spectrum-sharing, interference-management, stochastic-geometry, physical-layer]
 related:
+  - "[[du-2026-hierarchical-coalition-deployment]]"
   - "[[mozaffari-2016-uav-underlaid-d2d]]"
   - "[[overlay-underlay-spectrum-access]]"
   - "[[stochastic-geometry-network-analysis]]"
@@ -13,7 +14,7 @@ related:
   - "[[chen-2026-sdhfl-completion-time]]"
   - "[[semi-decentralized-hybrid-federated-learning]]"
 created: 2026-06-02
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Device-to-Device (D2D) Communication

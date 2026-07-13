@@ -3,6 +3,7 @@ type: concept
 title: "Genetic Algorithm"
 tags: [optimization, evolutionary, metaheuristic, deployment]
 related:
+  - "[[shah-2026-cellfree-mimo-fap-control]]"
   - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[non-dominated-sorting-genetic-algorithm]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"

@@ -3,6 +3,7 @@ type: concept
 title: Coalition Formation Game
 tags: [game-theory, coalition, cooperative-game, physical-layer-security]
 related:
+  - "[[du-2026-hierarchical-coalition-deployment]]"
   - "[[chen-2024-three-party-hierarchical-game-pls]]"
   - "[[stackelberg-game]]"
   - "[[nash-equilibrium]]"

@@ -3,6 +3,7 @@ type: concept
 title: "Potential Game"
 tags: [game-theory, equilibrium, distributed-optimization]
 related:
+  - "[[du-2026-hierarchical-coalition-deployment]]"
   - "[[nash-equilibrium]]"
   - "[[stackelberg-game]]"
   - "[[stochastic-game]]"

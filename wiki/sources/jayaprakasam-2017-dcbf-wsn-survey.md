@@ -7,10 +7,11 @@ url: "https://doi.org/10.1109/COMST.2017.2720690"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
 tags: [source, beamforming, wireless-sensor-network, survey, collaborative-beamforming, synchronization]
 related:
+  - "[[chee-yen-leow]]"
   - "[[collaborative-beamforming]]"
   - "[[air-to-ground-channel-model]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-13
 ---
 
 # Distributed and Collaborative Beamforming in Wireless Sensor Networks: Classifications, Trends, and Research Directions

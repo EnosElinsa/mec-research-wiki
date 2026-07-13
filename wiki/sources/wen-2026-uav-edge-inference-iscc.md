@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2026.3669999"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 13336-13350, 2026"
 tags: [source, uav, edge-inference, iscc, task-oriented-communication, trajectory-optimization]
 related:
+  - "[[guangxu-zhu]]"
   - "[[uav-assisted-edge-inference]]"
   - "[[integrated-sensing-computation-communication]]"
   - "[[discriminant-gain]]"

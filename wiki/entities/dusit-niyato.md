@@ -54,6 +54,8 @@ related:
   - "[[liu-2025-mad2rl-dnn-vec]]"
   - "[[wang-2024-ttw-amd-localization]]"
   - "[[zhao-2025-gai-pls-survey]]"
+  - "[[fan-2026-directional-neighbor-discovery]]"
+  - "[[xie-2026-uav-irs-eppo]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -62,7 +64,7 @@ updated: 2026-07-13
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author roster in the wiki currently links 51 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET link maintenance, aerial RIS control, anti-jamming control, and surveys:
+The most frequently recurring author roster in the wiki currently links 53 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, anti-jamming control, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -105,7 +107,7 @@ The most frequently recurring author roster in the wiki currently links 51 sourc
 - [[tang-2026-hg-maddpg-uav-rescue]] - low-altitude UAV rescue with ground embedded robots and airship support via HG-MADDPG.
 - [[zhao-2026-temporal-spectrum-cartography]] - temporal spectrum cartography for low-altitude economy networks via RecMAE and a multi-agent diffusion policy.
 - [[gong-2026-lp2-casku-uav-clusters]] - privacy-preserving authentication and session-key update for dynamic low-altitude UAV clusters.
-- [[song-2026-albpd-directional-fanet]] - ALBP-D directional FANET link maintenance through breakage-probability prediction.
+- [[song-2026-albpd-directional-fanet]] - ALBP-D directional FANET discovery and link maintenance through breakage-probability prediction.
 - [[li-2026-aerial-ris-trajectory-phase]] - tilt-aware aerial RIS communication with SAC-PER attitude/phase control and ZF/water-filling BS beamforming.
 - [[fan-2026-hap-uav-iort-oee]] - HAP-UAV IoRT data collection with joint aerial trajectories, HAP selection, radio resources, and overall energy efficiency.
 - [[tang-2026-gat-antijamming]] - graph-attention beamforming and adversarial UAV deployment under jamming.
@@ -115,6 +117,8 @@ The most frequently recurring author roster in the wiki currently links 51 sourc
 - [[liu-2025-mad2rl-dnn-vec]] - Lyapunov-guided diffusion reinforcement learning for vehicular DNN partitioning and offloading.
 - [[wang-2024-ttw-amd-localization]] - through-the-wall detection and localization of autonomous mobile devices.
 - [[zhao-2025-gai-pls-survey]] - survey of generative AI for secure physical-layer communications.
+- [[fan-2026-directional-neighbor-discovery]] - directional neighbor discovery with power-delay optimization for UAV networks.
+- [[xie-2026-uav-irs-eppo]] - enhanced PPO trajectory control for an urban UAV-carried IRS.
 
 ## Contributions to this wiki
 
@@ -128,4 +132,5 @@ The most frequently recurring author roster in the wiki currently links 51 sourc
 - Adds a tilt-aware aerial-RIS control connection through [[li-2026-aerial-ris-trajectory-phase]].
 - Connects HAP-UAV cooperation to IoRT data collection and whole-chain energy efficiency through [[fan-2026-hap-uav-iort-oee]].
 - Adds hierarchical graph/MADDPG anti-jamming control through [[tang-2026-gat-antijamming]].
+- Adds directional UAV neighbor discovery and urban UAV-carried IRS control through [[fan-2026-directional-neighbor-discovery]] and [[xie-2026-uav-irs-eppo]].
 - Reconciles six exact-name earlier source matches spanning UAV-MEC, semantic communication, SAGIN, vehicular inference, through-wall sensing, and physical-layer security.

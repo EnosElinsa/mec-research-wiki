@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TMC.2025.3647000"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, low-altitude-intelligent-network, cellular-connected-uav, uav-trajectory-control, dueling-dqn, logistics, collision-avoidance]
 related:
+  - "[[guangxu-zhu]]"
   - "[[low-altitude-intelligent-network]]"
   - "[[cellular-connected-uav]]"
   - "[[uav-trajectory-control]]"

@@ -3,6 +3,7 @@ type: concept
 title: "Blockage-Aware Channel Model"
 tags: [channel-model, blockage, urban, los-nlos]
 related:
+  - "[[xie-2026-uav-irs-eppo]]"
   - "[[terrain-aware-channel-model]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[building-blockage-aided-interference-coordination]]"
@@ -11,7 +12,7 @@ related:
   - "[[dynamic-irs-user-association]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Blockage-Aware Channel Model

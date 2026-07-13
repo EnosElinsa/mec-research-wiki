@@ -3,6 +3,7 @@ type: concept
 title: "Rotary-Wing UAV Propulsion Energy Model"
 tags: [uav, energy-model, propulsion, trajectory-optimization]
 related:
+  - "[[xie-2026-uav-irs-eppo]]"
   - "[[uav-trajectory-control]]"
   - "[[energy-latency-tradeoff]]"
   - "[[zeng-2019-rotary-wing-energy-min]]"

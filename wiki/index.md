@@ -59,6 +59,8 @@
 
 ### Game-theoretic offloading & allocation
 
+- [[du-2026-hierarchical-coalition-deployment]] - Du et al. 2026. Nested ground-user coalition formation and potential-game UAV placement for shared-data acquisition over D2D links (IEEE TGCN).
+
 - [[xu-2026-prizty-uav-mec-auction]] - Xu et al. 2026. **Prizty** privacy-preserving reverse auction for UAV-assisted MEC task offloading/resource allocation; UE location obfuscation + trajectory-aware feasible service sets + winner/payment selection (IEEE TMC).
 - [[guo-2026-aoi-uav-mcs-contract]] - Guo et al. 2026. AoI-aware UAV-assisted mobile crowdsensing contracts; platform-UAV service-slot contract plus platform-user sensing/computation-cost contracts for freshness/cost control under incomplete information (IEEE TMC).
 - [[wang-2023-differentiated-uav-services]] - Wang et al. 2023. Multi-agent imitation learning for a competitive UAV service market; full-information expert demonstrations, opponent modeling, and decentralized quantity/fleet control under substitutable demand (IEEE TMC).
@@ -140,6 +142,8 @@
 
 ### Classical / convex / optimization-based UAV-MEC
 
+- [[shah-2026-cellfree-mimo-fap-control]] - Shah et al. 2026. APG trajectory/power control, GA association, and DBSCAN pilot-conflict repair for aerial user-centric cell-free massive MIMO (IEEE TWC).
+
 - [[li-2026-noma-uav-relay-planning]] - Li et al. 2026. Max-min user-rate design for a two-hop NOMA amplify-forward UAV relay through AO, SDR/SCA, power control, beamforming, and 3-D trajectory planning (IEEE TGCN).
 
 - [[zhan-2018-uav-wsn-data-collection]] — Zhan et al. 2018. UAV **data collection** in WSN; joint wake-up schedule + trajectory to minimize max SN energy; general fading + outage constraint; SCA (IEEE WCL).
@@ -214,6 +218,9 @@
 - [[moon-2024-ground-satellite-uam-scheduling]] — Moon & Chae 2024. **Cooperative ground-satellite downlink scheduling + power allocation** for **urban air mobility (UAM)** in a 6G NTN; offload high-interference UAMs to the satellite band, recast GS link association as a **minimum-cost max-flow** graph problem, then **SCA** power allocation; prediction-based, CSI-light scheduling (MINLP, IEEE JSAC). *(Communication-layer scheduling, not computation offloading.)*
 
 ### IRS / THz / anti-jamming
+
+- [[xie-2026-uav-irs-eppo]] - Xie et al. 2026. Urban UAV-carried IRS control with EPPO, neural episodic state abstraction, mogrifier LSTM, and closed-form LoS phase alignment (IEEE TMC).
+
 
 - [[mahmoud-2021-uav-irs-iot-analysis]] - Mahmoud et al. 2021. Analytical UAV-mounted IRS link for one beyond-horizon IoT user; SNR bounds/distribution, SER, ergodic capacity, and outage expose ideal N-squared array scaling and elevation-dependent placement effects (IEEE TGCN).
 
@@ -393,6 +400,8 @@
 
 ### ISAC, sensing & physical-layer security
 
+- [[lyu-2023-isac-maneuver-beamforming]] - Lyu et al. 2023. Sensing-feasible placement/reachability plus alternating SCA/SDR UAV maneuver and transmit-beam design (IEEE TWC).
+
 - [[guo-2026-dual-objective-multiuav-isac]] - Guo et al. 2026. Multi-UAV trajectories, powers, user associations, and target associations optimized as a communication-sum-rate versus sensing-CRB Pareto front by archive-guided MOEA/D with adaptive PSO/GA updates (IEEE TWC).
 - [[yao-2026-transformer-mean-field-isac-sagin]] - Yao et al. 2026. Transformer-encoded mean-field actor-critic control of cross-tier interference, UAV roles, beamforming, association, and trajectories in an ISAC-SAGIN Stackelberg formulation (IEEE TWC).
 - [[deng-2025-covert-isac-trajectory]] - Deng et al. 2025. UAV-ISAC sensing waveforms mask covert information transmission while BCD alternates SDR beamforming and SCA trajectory updates (IEEE TWC).
@@ -476,6 +485,8 @@
 - [[bai-adaptive-near-field-xl-mimo-multi-uav]] - Bai et al. Adaptive near-field channel modeling for 6G XL-MIMO UPA-to-multi-UAV cooperative communications; selective near-field area pruning keeps spherical-wave accuracy while reducing channel-computation load. *(Parsed metadata lacks DOI/venue/year.)*
 
 ### Architectural / spectrum / governance
+
+- [[fan-2026-directional-neighbor-discovery]] - Fan et al. 2026. Synchronous/asynchronous directional FANET neighbor discovery optimized by power-delay surrogates, GP, and CCP with chamber validation (IEEE TMC).
 
 - [[guo-2026-event-triggered-sinr-navigation]] - Guo et al. 2026. UT-Grid refreshes local/global SINR maps when MC-dropout uncertainty crosses a threshold, while Top-1 MoE-D3QN plans a cellular-UAV path under outage, update-traffic, and inference-cost tradeoffs (IEEE TMC).
 
@@ -624,6 +635,7 @@
 - [[kai-kit-wong]] (University College London - wireless communications, fluid antennas, RIS, and UAV-MEC; 6 sources), [[chan-byoung-chae]] (Yonsei University - aerial communications and resource allocation; 3 sources), [[riheng-jia]] (Zhejiang Normal University - wireless/energy-harvesting networks and smart IoT; 2 sources), and [[minglu-li]] (Zhejiang Normal University / Shanghai Jiao Tong University - AIoT and network computing; 2 sources).
 - [[qixun-zhang]] (BUPT - UAV-swarm MEC, physical-layer mobility, and cooperative ISAC detection; 3 sources), [[kun-yang]] (Nanjing University / University of Essex - UAV-MEC and cooperative sensing; 4 sources), [[fan-liu]] (SUSTech to Southeast University - ISAC sensing, localization, and tracking; 3 sources), and [[christos-masouros]] (University College London - ISAC and control-assisted beamforming; 3 sources).
 - [[derrick-wing-kwan-ng]] (wireless communications, RIS, UAV edge systems, and covert ISAC; 5 sources), [[arumugam-nallanathan]] (Queen Mary University of London - aerial edge and wireless security; 5 sources), [[yanping-liu]] (heterogeneous UAV data collection and AoI-energy optimization; 2 sources), [[xuming-fang]] (multi-UAV resource management; 2 sources), [[zhongxiang-wei]] (JRC and secure aerial-RIS systems; 2 sources), and [[qingjiang-shi]] (wireless optimization and aerial ISAC; 2 sources).
+- [[guangxu-zhu]] (Shenzhen Research Institute of Big Data - ISAC and edge AI; 6 sources), [[zhe-song]], [[xuanhe-yang]], [[shuai-wang]], and [[gaofeng-pan]] (Beijing Institute of Technology - directional UAV discovery/link maintenance; 2 sources each), and [[chee-yen-leow]] (Universiti Teknologi Malaysia - UAV protocols and collaborative beamforming; 2 sources).
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -759,6 +771,10 @@
 - [[omrp-overlap-routing]]
 
 ### Aerial / network architectures
+
+- [[aerial-terrestrial-cell-free-massive-mimo]]
+- [[directional-neighbor-discovery]]
+- [[interference-aware-dbscan-pilot-assignment]]
 
 - [[multi-uav-assisted-mec]]
 - [[differentiated-uav-service-market]]
@@ -943,6 +959,8 @@
 - [[stn]]
 - [[transformer-encoder]]
 - [[transformer-encoded-mean-field-reinforcement-learning]]
+- [[neural-episodic-control-with-state-abstraction]]
+- [[mogrifier-lstm-policy]]
 - [[wavelet-guided-mamba-crack-segmentation]]
 - [[informer-trajectory-prediction]]
 - [[probsparse-self-attention-prediction]]
@@ -979,6 +997,8 @@
 - [[dynamic-constrained-multi-objective-optimization]]
 - [[constrained-multi-objective-evolutionary-algorithm]]
 - [[genetic-algorithm]]
+- [[data-similarity-aware-coalition-formation]]
+- [[partial-space-adaptive-play]]
 - [[non-dominated-sorting-genetic-algorithm]]
 - [[cmoea-d-cdp]]
 - [[constraint-violation-evaluation]]
@@ -993,6 +1013,7 @@
 - [[second-order-cone-programming]]
 - [[linear-programming]]
 - [[alternating-optimization-sdr-sca]]
+- [[accelerated-proximal-gradient-trajectory-power-control]]
 - [[fixed-point-irs-passive-beamforming]]
 - [[block-successive-upper-bound-minimization]]
 - [[monotonic-optimization]]
@@ -1051,6 +1072,8 @@
 - [[dual-objective-multi-uav-isac]]
 
 - [[integrated-sensing-and-communication]]
+- [[sensing-feasible-uav-reachability]]
+- [[closed-form-irs-phase-alignment]]
 - [[sensing-signal-assisted-covertness]]
 - [[joint-localization-and-communication]]
 - [[continuous-omnidirectional-monitoring]]
@@ -1127,6 +1150,8 @@
 - [[adaptive-inter-layer-data-offloading]]
 
 ### Metrics & fairness
+
+- [[power-delay-product]]
 
 - [[fairness-metrics-in-mec]] — hub tying together the corpus's fairness measures (Jain / spatial-equity / Theil / service-experience / energy-balancing).
 - [[equilibrium-efficiency-metric]]
