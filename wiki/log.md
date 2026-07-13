@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-13] Curated UAV-IRS collection, wireless-powered WSN flight, ISAC SAR, AoI-aware ISCC, and IKPP vehicular control
+
+Added five source pages, six concept pages, and three recurring-author entities:
+
+- [[zhao-2026-uav-irs-data-collection]] - Zhao et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2026.3654945`. Transmission-prioritized UAV-mounted IRS data collection jointly selects active elements, hover positions, and sensor visit order.
+- [[guo-2026-uav-wsn-completion-time]] - Guo et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2026.3654603`. Energy-based clustering, GA/B-spline path design, and velocity control minimize wireless-powered WSN completion time during flight.
+- [[lv-2026-isac-sar-tlsp]] - Lv et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3687228`. Two-layer SQP/Bayesian optimization controls bistatic UAV-ISAC SAR energy, mission duration, resolution, and cross-target fairness.
+- [[liu-2025-aoi-iscc-five-stage]] - Liu et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2025.3539108`. A five-stage alternating solver trades radar-estimation-rate sensing volume against same-slot AoI under UAV energy constraints.
+- [[wang-2026-ikpp-vehicular-uav]] - Wang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3595138`. IKPP combines PPO motion/power/carrier scores with load-constrained nearest-UAV association and action reconstruction for vehicular uplinks.
+
+New reusable vocabulary is [[conditional-judgment-binary-search]], [[fly-while-communication]], [[two-layer-successive-programming]], [[bistatic-sar-resolution-fairness]], [[radar-estimation-rate]], and [[ikpp-action-reconstruction]]. Matching bylines and biographies established [[rongke-liu]], [[xiaotian-zhou]], and [[haixia-zhang]]; the Hongbin Chen and Shichao Li rosters were extended. The common names Xin Liu and Jing Wang remain unmerged because the current corpus evidence does not establish identity across their other bylines.
+
+Metadata notes: exact-title Crossref records supplied the parse-silent venue and final publication fields for all five papers. The first paper's parse independently prints its DOI and 2026 publication dates, while the other four omit their publication headers. The resulting records are TGCN vol. 10 (2026), pp. 1854-1866 and 1829-1840; TWC vol. 25 (2026), pp. 16915-16930 and 2150-2166; and TWC 24(5) (2025), pp. 4440-4453.
+
+Evidence caveats: the UAV-IRS work is simulation-only, inconsistently describes five versus four sensors, contains a damaged parameter table, and proves only its scalar element-count block under imported unimodality. The wireless-powered WSN framework is heuristic, omits takeoff/acceleration and realistic harvesting/channel effects, and has mismatched equation references in its claimed convex velocity block. The SAR study has no global guarantee and pads convergence curves after termination. The ISCC paper models AoI as same-slot processing/transmission time and overstates alternating/SCA optimality. IKPP uses penalty rather than hard constraints; its "improved k-means" does not update centroids, and its millisecond real-time claim excludes training and system overhead.
+
+Two low-concurrency extraction workers covered the first two papers while the remaining three were extracted locally. An independent grounding review corrected the slotwise EE objective, exact-one-target scheduling, radar-estimation-rate formula scope, and two IRS mechanism wordings. The maintained `make_batches.py --batch 1` selector produced the explicit allowlist; no new recurring tooling need arose beyond the stable tested toolkit.
+
+Validation before commit: `corpus_counts.py` reported 509 sources, 482 concepts, 114 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw folders. `curation_status.py --dupes` reported 510 path/title-matched folders and 102 genuinely new uncurated sources; its nonzero exit is expected while the backlog remains. `linkcheck.py --orphans`, `process_refs.py`, `index_audit.py`, `frontmatter_audit.py`, `entity_roster_audit.py`, all 12 toolkit tests, and `git diff --check` were clean: index coverage was 1157/1157, frontmatter coverage was 1155 pages, and the entity audit found 0 claimed-but-absent over-claims with 29 advisory present-but-unlisted matches. The optional LLM Wiki health endpoint returned HTTP `502`, so no live graph counts were available.
+
 ## [2026-07-13] Curated UAV-ISAC maneuvering, directional discovery, urban aerial IRS, hierarchical coalitions, and cell-free FAP control
 
 Added five source pages, eleven concept pages, and six recurring-author entities:

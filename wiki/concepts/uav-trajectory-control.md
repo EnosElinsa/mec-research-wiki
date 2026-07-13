@@ -3,6 +3,10 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[guo-2026-uav-wsn-completion-time]]"
+  - "[[lv-2026-isac-sar-tlsp]]"
+  - "[[liu-2025-aoi-iscc-five-stage]]"
+  - "[[wang-2026-ikpp-vehicular-uav]]"
   - "[[lyu-2023-isac-maneuver-beamforming]]"
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[shah-2026-cellfree-mimo-fap-control]]"

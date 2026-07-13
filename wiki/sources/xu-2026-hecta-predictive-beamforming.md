@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TWC.2026.3664980"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, isac, uav, predictive-beamforming, deep-learning, temporal-attention, mmwave]
 related:
+  - "[[xiaotian-zhou]]"
+  - "[[haixia-zhang]]"
   - "[[historical-echo-predictive-beamforming]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[control-assisted-uav-beam-tracking]]"
@@ -14,7 +16,7 @@ related:
   - "[[mmwave-radar-sensing]]"
   - "[[cellular-connected-uav]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Deep Learning-Based Predictive Bidirectional Beamforming in ISAC-Enabled UAV Networks

@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TVT.2024.3405642"
 venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
 tags: [source, leo-satellite-edge-computing, computation-offloading, multi-agent-q-learning, counterfactual-multi-agent-policy-gradient, centralized-training-decentralized-execution, non-terrestrial-network]
 related:
+  - "[[rongke-liu]]"
   - "[[counterfactual-multi-agent-policy-gradient]]"
   - "[[leo-satellite-edge-computing]]"
   - "[[centralized-training-decentralized-execution]]"
@@ -19,7 +20,7 @@ related:
   - "[[qin-2025-matd3-noma-queue-sagin]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Collaborative Task Offloading Optimization for Satellite Mobile Edge Computing Using Multi-Agent Deep Reinforcement Learning

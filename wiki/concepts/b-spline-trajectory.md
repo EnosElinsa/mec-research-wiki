@@ -3,13 +3,14 @@ type: concept
 title: "B-Spline Trajectory"
 tags: [trajectory, spline, path-planning, uav]
 related:
+  - "[[guo-2026-uav-wsn-completion-time]]"
   - "[[uav-trajectory-control]]"
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[gong-2026-uav-3d-visual-coverage]]"
   - "[[path-aware-3d-visual-coverage]]"
 created: 2026-05-29
-updated: 2026-07-10
+updated: 2026-07-13
 ---
 
 # B-Spline Trajectory

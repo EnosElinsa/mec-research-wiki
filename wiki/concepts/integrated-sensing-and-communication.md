@@ -3,6 +3,7 @@ type: concept
 title: "Integrated Sensing and Communication (ISAC)"
 tags: [isac, dual-function, beamforming, 6g]
 related:
+  - "[[lv-2026-isac-sar-tlsp]]"
   - "[[lyu-2023-isac-maneuver-beamforming]]"
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"
   - "[[deng-2025-covert-isac-trajectory]]"

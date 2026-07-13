@@ -3,6 +3,8 @@ type: concept
 title: UAV Data Collection
 tags: [uav, data-collection, iot, data-sink, aerial-communications]
 related:
+  - "[[zhao-2026-uav-irs-data-collection]]"
+  - "[[guo-2026-uav-wsn-completion-time]]"
   - "[[wang-2025-sac-tma-mec-dc]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[age-of-information]]"

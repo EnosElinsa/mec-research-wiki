@@ -3,6 +3,7 @@ type: concept
 title: "Age of Information (AoI)"
 tags: [metrics, freshness, data-collection, iot]
 related:
+  - "[[liu-2025-aoi-iscc-five-stage]]"
   - "[[aoi-energy-tradeoff]]"
   - "[[qoe-modeling-mec]]"
   - "[[uav-trajectory-control]]"

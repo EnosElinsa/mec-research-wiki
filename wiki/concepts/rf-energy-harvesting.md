@@ -3,13 +3,14 @@ type: concept
 title: "RF Energy Harvesting"
 tags: [energy-harvesting, wireless-power, hap, sustainability]
 related:
+  - "[[guo-2026-uav-wsn-completion-time]]"
   - "[[wireless-power-transfer]]"
   - "[[hsu-2025-drl-hues-hap-noma]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # RF Energy Harvesting

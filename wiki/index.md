@@ -620,6 +620,12 @@
 - [[mozaffari-2016-uav-underlaid-d2d]] — Mozaffari et al. 2016. UAV downlink base station **coexisting with an underlaid D2D network**; **stochastic-geometry** coverage / sum-rate analysis for static + mobile UAV; optimal altitude (decreasing in D2D density), **disk-covering** minimum stop-points for full coverage, and the **coverage-vs-delay / D2D-outage** tradeoff (IEEE TWC). *(Aerial-base-station + D2D coexistence anchor, not MEC.)*
 - [[mozaffari-2019-drone-antenna-array]] — Mozaffari et al. 2019. **Drone-based antenna array** that beam-steers by **physically repositioning** the drones; minimum-**service-time** design = transmission time (perturbation-theory drone-spacing directivity max) + control time (**bang-bang** closed-form minimum control time under wind/gravity); +32% spectral efficiency vs fixed uniform array (IEEE TCOMM). *(UAV-communications / aerial-beamforming anchor, not MEC.)*
 
+- [[zhao-2026-uav-irs-data-collection]] - Zhao et al. 2026. Transmission-prioritized UAV-mounted IRS sensor collection with CJ-BS element-count search, SCA hover placement, and GA visit ordering (IEEE TGCN).
+- [[guo-2026-uav-wsn-completion-time]] - Guo et al. 2026. Wireless-powered WSN completion-time minimization with energy-based clustering, GA/B-spline path design, and fly-while-communication velocity control (IEEE TGCN).
+- [[lv-2026-isac-sar-tlsp]] - Lv et al. 2026. Bistatic UAV-ISAC SAR mission optimization using inner SQP and outer constrained Bayesian optimization for energy, resolution, and resolution fairness (IEEE TWC).
+- [[liu-2025-aoi-iscc-five-stage]] - Liu et al. 2025. Energy-constrained UAV ISCC with radar-estimation-rate/AoI tradeoffs and five-stage alternating scheduling, sensing, power, CPU, and motion control (IEEE TWC).
+- [[wang-2026-ikpp-vehicular-uav]] - Wang et al. 2026. IKPP control for multi-UAV vehicular uplinks, combining PPO motion/power/carrier scores with load-constrained nearest-UAV association and action reconstruction (IEEE TWC).
+
 ## Entities
 
 ### Authors
@@ -627,7 +633,7 @@
 - [[xiang-cheng]] (Peking University - aerial channel modeling, UAV/vehicle simulation, and multi-UAV ISAC; 4 sources), [[rongqing-zhang]] (HKUST Guangzhou - intelligent transportation and aerial networks; 2 sources), [[jung-ryun-lee]] (Chung-Ang University - learning-based UAV/IRS energy control; 2 sources), [[octavia-a-dobre]] (Memorial University - RIS/ISAC channel analysis and generation; 2 sources), and [[halim-yanikomeroglu]] (Carleton University - aerial placement and UAV-mounted IRS communications; 2 sources).
 
 - [[zheng-chang]] (UESTC / University of Jyväskylä - UAV communications, edge computing, ISAC, and green communications; 6 sources).
-- [[dusit-niyato]] (NTU) appears across 51 sources after reconciling six exact-name source matches and adding the graph-driven anti-jamming paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 18 sources after the GeoAgg-HSAC, graph anti-jamming, and Hammurabi papers; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
+- [[dusit-niyato]] (NTU) appears across 53 sources spanning aerial networking, edge intelligence, security, and optimization; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 18 sources after the GeoAgg-HSAC, graph anti-jamming, and Hammurabi papers; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
 - [[qi-qi]] (BUPT - satellite/aerial edge computing and multi-UAV cooperation; 2 sources), [[shaohua-wu]] (Harbin Institute of Technology, Shenzhen - satellite-UAV semantic communication and maritime/satellite networking; 3 sources), and [[qinyu-zhang]] (Harbin Institute of Technology, Shenzhen - satellite, maritime, and non-terrestrial communications; 4 sources).
 - [[fuhong-song]], [[jie-xu]], [[wei-zhang]], [[ying-chen]], and [[yong-wang]] - indexed author pages with cross-source MEC, UAV-communications, and optimization rosters; see the individual pages for source-specific affiliations and namesake notes.
 - [[zehui-xiong]] (Queen's University Belfast - generative AI, semantic communication, physical-layer security, and low-altitude resource allocation; 11 sources spanning surveys, diffusion/GDM methods, and aerial/satellite control).
@@ -636,6 +642,7 @@
 - [[qixun-zhang]] (BUPT - UAV-swarm MEC, physical-layer mobility, and cooperative ISAC detection; 3 sources), [[kun-yang]] (Nanjing University / University of Essex - UAV-MEC and cooperative sensing; 4 sources), [[fan-liu]] (SUSTech to Southeast University - ISAC sensing, localization, and tracking; 3 sources), and [[christos-masouros]] (University College London - ISAC and control-assisted beamforming; 3 sources).
 - [[derrick-wing-kwan-ng]] (wireless communications, RIS, UAV edge systems, and covert ISAC; 5 sources), [[arumugam-nallanathan]] (Queen Mary University of London - aerial edge and wireless security; 5 sources), [[yanping-liu]] (heterogeneous UAV data collection and AoI-energy optimization; 2 sources), [[xuming-fang]] (multi-UAV resource management; 2 sources), [[zhongxiang-wei]] (JRC and secure aerial-RIS systems; 2 sources), and [[qingjiang-shi]] (wireless optimization and aerial ISAC; 2 sources).
 - [[guangxu-zhu]] (Shenzhen Research Institute of Big Data - ISAC and edge AI; 6 sources), [[zhe-song]], [[xuanhe-yang]], [[shuai-wang]], and [[gaofeng-pan]] (Beijing Institute of Technology - directional UAV discovery/link maintenance; 2 sources each), and [[chee-yen-leow]] (Universiti Teknologi Malaysia - UAV protocols and collaborative beamforming; 2 sources).
+- [[rongke-liu]] (Beihang University - satellite offloading, UAV-swarm sensing/communication, and bistatic UAV-ISAC SAR; 3 sources), [[xiaotian-zhou]] (Shandong University - aerial vehicular control and predictive beamforming; 2 sources), and [[haixia-zhang]] (Shandong University - UAV computing-power networks, predictive beamforming, and vehicular resource control; 3 sources).
 
 - [[lihan-liu]], [[hongrui-miao]], [[chunhui-qu]], [[zhuwei-wang]], [[haijun-zhang]], [[zhidu-li]] — co-authors of [[liu-2026-jppo-en-convntm]].
 - [[chaoda-peng]], [[xumin-huang]], [[yuan-wu]], [[jiawen-kang]] — recurring co-authors across the [[cmop-evolutionary-uav-mec-lineage|CMOP-evolutionary UAV-MEC lineage]] (4–6 sources each).
@@ -657,7 +664,7 @@
 - [[kezhi-wang]] (Northumbria Univ. — UAV-MEC trajectory/offloading group; 3 sources), [[xuemin-shen]] (Univ. of Waterloo — MEC resource management; 3 sources), [[yuguang-fang]] (City Univ. of Hong Kong — maritime MEC and UAV-enabled Computing Power Networks; 3 sources), [[haixia-peng]] (Univ. of Waterloo → Xi'an Jiaotong Univ. — vehicular + maritime MEC; 2 sources, affiliation move documented in both parses).
 - [[liping-qian]] (Zhejiang Univ. of Technology — NOMA / multi-access marine MEC; 7 sources), [[qian-wang]] (Zhejiang Univ. of Technology - marine-IoT energy/security resource allocation; 3 sources), [[minghui-dai]] (Univ. of Macau — marine multi-access offloading; 3 sources, `minghuidai@um.edu.mo`), [[zhiyong-feng]] (Beijing Univ. of Posts and Telecommunications — UAV-swarm MEC, UAV-ISAC, cooperative multi-BS ISAC, and movable-antenna PLS; 5 sources).
 - [[fuhui-zhou]] (Nanjing Univ. of Aeronautics and Astronautics - wireless-powered MEC, UAV optimization, embodied tracking, and physical-layer security; 4 sources).
-- [[shichao-li]] & [[hongbin-chen]] (Guilin Univ. of Electronic Technology — two-hop air-ground IoRT MEC, `@guet.edu.cn`-matched; 2 and 3 sources), [[mianxiong-dong]] (Muroran Inst. of Technology; 2 sources) & [[ning-zhang]] (Univ. of Windsor; 2 sources) — co-authors across the IoRT + robust-multi-UAV DRL offloading thread, [[victor-c-m-leung]] (Shenzhen MSU-BIT / Shenzhen Univ. / UBC, `vleung@ieee.org`; 11 sources across aerial-MEC, SAGIN, WDC/WET, and secure IoV).
+- [[shichao-li]] & [[hongbin-chen]] (Guilin Univ. of Electronic Technology — air-ground IoRT MEC, VEC, SAGIN, and UAV-IRS data collection; 4 and 5 sources), [[mianxiong-dong]] (Muroran Inst. of Technology; 2 sources) & [[ning-zhang]] (Univ. of Windsor; 2 sources) — co-authors across the IoRT + robust-multi-UAV DRL offloading thread, [[victor-c-m-leung]] (Shenzhen MSU-BIT / Shenzhen Univ. / UBC, `vleung@ieee.org`; 11 sources across aerial-MEC, SAGIN, WDC/WET, and secure IoV).
 - [[zhou-su]] (Xi'an Jiaotong Univ. — maritime/vehicular edge computing; 2 sources, corresponding author of [[zeng-2024-usv-fleet-collaborative-offloading]]), [[yanheng-liu]] (Jilin Univ. — [[geng-sun]] aerial/vehicular-MEC cluster; 2 sources).
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
 - [[dong-jun-han]] & [[christopher-brinton]] (Purdue University — non-terrestrial **federated-learning** offloading cluster with Mung Chiang / David J. Love / Seyyedali Hosseinalipour; 2 sources each — [[han-2024-ground-satellite-fl]] + [[han-2024-sagin-fl-handover]]).
@@ -838,6 +845,8 @@
 
 ### UAV control & decisions
 
+- [[fly-while-communication]]
+
 - [[uncertainty-triggered-radio-map-update]]
 
 - [[uav-trajectory-control]]
@@ -879,6 +888,8 @@
 - [[information-causality-constraint]]
 
 ### DRL backbones
+
+- [[ikpp-action-reconstruction]]
 
 - [[deep-echo-state-network-reinforcement-learning]]
 - [[hierarchical-federated-a3c]]
@@ -966,6 +977,9 @@
 - [[probsparse-self-attention-prediction]]
 
 ### Optimization techniques (classical & evolutionary)
+
+- [[conditional-judgment-binary-search]]
+- [[two-layer-successive-programming]]
 
 - [[lyapunov-optimization]]
 - [[analytical-target-cascading]]
@@ -1068,6 +1082,9 @@
 - [[csi-estimation-error]]
 
 ### Sensing & security
+
+- [[bistatic-sar-resolution-fairness]]
+- [[radar-estimation-rate]]
 
 - [[dual-objective-multi-uav-isac]]
 

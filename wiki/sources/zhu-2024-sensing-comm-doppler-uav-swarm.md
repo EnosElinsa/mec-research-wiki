@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TVT.2023.3315868"
 venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
 tags: [source, integrated-sensing-and-communication, uav-swarm, vehicular-mec, cramer-rao-bound, differential-evolution, doppler]
 related:
+  - "[[rongke-liu]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[cramer-rao-bound]]"
   - "[[differential-evolution]]"
@@ -16,7 +17,7 @@ related:
   - "[[meng-2024-uav-isac-overview]]"
   - "[[jiang-2025-isac-lae-overview]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Sensing-Communication Co-Design for UAV Swarm-Assisted Vehicular Network in Perspective of Doppler

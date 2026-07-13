@@ -3,6 +3,8 @@ type: concept
 title: "Genetic Algorithm"
 tags: [optimization, evolutionary, metaheuristic, deployment]
 related:
+  - "[[zhao-2026-uav-irs-data-collection]]"
+  - "[[guo-2026-uav-wsn-completion-time]]"
   - "[[shah-2026-cellfree-mimo-fap-control]]"
   - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[non-dominated-sorting-genetic-algorithm]]"

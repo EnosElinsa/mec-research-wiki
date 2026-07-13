@@ -3,6 +3,7 @@ type: concept
 title: PPO (Proximal Policy Optimization)
 tags: [drl, policy-gradient, on-policy]
 related:
+  - "[[wang-2026-ikpp-vehicular-uav]]"
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[j-ppo]]"
   - "[[gae]]"

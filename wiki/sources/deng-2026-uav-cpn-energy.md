@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TMC.2026.3655118"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 7, pp. 9563-9577, Jul. 2026"
 tags: [source, computing-power-network, uav, stochastic-geometry, energy-constraints, task-offloading]
 related:
+  - "[[haixia-zhang]]"
   - "[[uav-enabled-computing-power-network]]"
   - "[[stochastic-geometry-network-analysis]]"
   - "[[low-altitude-intelligent-network]]"
