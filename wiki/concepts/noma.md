@@ -3,6 +3,7 @@ type: concept
 title: NOMA (Non-Orthogonal Multiple Access)
 tags: [wireless, multiple-access, spectrum]
 related:
+  - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
   - "[[decentralized-active-ris-uav-noma-control]]"
   - "[[qin-2025-bcuav-masac]]"
@@ -18,7 +19,7 @@ related:
   - "[[wang-2026-noma-marine-data-computation]]"
   - "[[su-2026-three-tier-uav-capacity]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # NOMA (Non-Orthogonal Multiple Access)

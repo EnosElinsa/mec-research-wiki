@@ -3,6 +3,7 @@ type: concept
 title: "Intelligent Reflecting Surface (IRS)"
 tags: [communication, channel, beamforming, metasurface]
 related:
+  - "[[li-2021-robust-ris-uav-secrecy]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[wang-2023-drl-irs-uav-trajectory]]"
   - "[[mahmoud-2021-uav-irs-iot-analysis]]"

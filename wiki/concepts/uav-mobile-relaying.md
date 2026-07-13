@@ -3,6 +3,7 @@ type: concept
 title: "UAV Mobile Relaying"
 tags: [uav-communications, relaying, trajectory-optimization, cooperative-communication]
 related:
+  - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[uav-trajectory-control]]"
   - "[[information-causality-constraint]]"
   - "[[alternating-optimization-sdr-sca]]"

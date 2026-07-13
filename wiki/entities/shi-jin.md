@@ -7,6 +7,7 @@ related:
   - "[[lu-2026-uav-swarm-two-level-ma]]"
   - "[[zhao-2025-networked-isac-uav-handover]]"
   - "[[yin-2026-uav-antijamming-nfsp]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---
@@ -15,12 +16,13 @@ updated: 2026-07-14
 
 IEEE Fellow and faculty member of the National Mobile Communications Research Laboratory at **Southeast University**. He received degrees from Guilin University of Electronic Technology, Nanjing University of Posts and Telecommunications, and Southeast University, and was a research fellow at University College London. The full biography and `jinshi@seu.edu.cn` affiliation evidence connect the records below.
 
-Co-authored four sources in this wiki:
+Co-authored five sources in this wiki:
 
 - [[huang-2026-offgrid-lae-imager]] - cooperative-ISAC low-altitude wireless imaging.
 - [[lu-2026-uav-swarm-two-level-ma]] - two-level movable antennas for UAV-swarm communication.
 - [[zhao-2025-networked-isac-uav-handover]] - networked-ISAC UAV tracking and handover.
 - [[yin-2026-uav-antijamming-nfsp]] - opponent-modeling pursuit-evasion anti-jamming control.
+- [[qi-2026-ocma-ddqn-data-collection]] - interruption-aware cooperative multi-UAV data collection.
 
 ## Contributions to this wiki
 

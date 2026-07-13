@@ -3,6 +3,8 @@ type: concept
 title: "Rotary-Wing UAV Propulsion Energy Model"
 tags: [uav, energy-model, propulsion, trajectory-optimization]
 related:
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
+  - "[[huang-2026-slim-eiv-uav-fleet]]"
   - "[[wang-2023-drl-irs-uav-trajectory]]"
   - "[[zhao-2026-uav-irs-data-collection]]"
   - "[[guo-2026-uav-wsn-completion-time]]"
@@ -30,7 +32,7 @@ related:
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Rotary-Wing UAV Propulsion Energy Model

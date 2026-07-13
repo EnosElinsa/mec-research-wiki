@@ -13,8 +13,9 @@ related:
   - "[[li-2026-jscfg-uav-grouping]]"
   - "[[joint-switch-coalition-formation-game]]"
   - "[[ma-2026-game-ibs-deployment]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Potential Game

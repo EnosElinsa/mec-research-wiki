@@ -12,8 +12,9 @@ related:
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[yang-2026-embodied-antijamming-uav]]"
   - "[[tian-2026-joint-localization-communication]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Double DQN (DDQN)

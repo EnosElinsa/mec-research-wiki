@@ -16,10 +16,12 @@ related:
   - "[[sun-2024-mfris-semantic-antijamming]]"
   - "[[zheng-2024-semcom-sec-offloading]]"
   - "[[dusit-niyato]]"
+  - "[[daosen-zhai]]"
+  - "[[ruonan-zhang]]"
   - "[[zhu-han]]"
   - "[[zehui-xiong]]"
 created: 2026-07-06
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Diffusion-Based Trajectory and Semantic Resource Optimization in UAV-Assisted Edge Computing

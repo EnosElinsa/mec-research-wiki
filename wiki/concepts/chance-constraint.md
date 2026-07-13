@@ -7,8 +7,10 @@ related:
   - "[[conditional-value-at-risk]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[vitale-2026-density-aware-4d-trajectory]]"
+  - "[[li-2026-full-duplex-noma-uav-relay]]"
+  - "[[bernstein-safe-approximation]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Chance Constraint
@@ -22,3 +24,5 @@ Chance constraints are typically non-convex even when $g$ is linear. Three workh
 - **Distributionally robust** — replace by $\sup_{\mathbb{P} \in \mathcal{P}} \Pr_\mathbb{P}(g > 0) \leq \epsilon$. See [[distributionally-robust-optimization]].
 
 Used in [[jia-2025-dro-uav-hap-mec]] for the latency requirement under uncertain CSI. The DRO + CVaR combination reformulates it into a tractable mixed-integer second-order cone program (MISOCP).
+
+[[li-2026-full-duplex-noma-uav-relay]] instead uses a [[bernstein-safe-approximation]] for Gaussian UAV-position errors. The resulting deterministic constraints are sufficient and potentially conservative rather than equivalent to the original probability constraints.

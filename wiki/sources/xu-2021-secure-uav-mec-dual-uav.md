@@ -12,8 +12,9 @@ related:
   - "[[task-offloading]]"
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
   - "[[yuanwei-liu]]"
+  - "[[meixia-tao]]"
 created: 2026-06-04
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Joint Resource and Trajectory Optimization for Security in UAV-Assisted MEC Systems

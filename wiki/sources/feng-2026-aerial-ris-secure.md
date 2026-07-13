@@ -21,6 +21,7 @@ related:
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
   - "[[yuanwei-liu]]"
   - "[[dusit-niyato]]"
+  - "[[marco-di-renzo]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

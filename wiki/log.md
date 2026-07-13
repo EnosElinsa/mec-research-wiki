@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-14] Curated green swarm ISAC, robust NOMA relaying, RIS secrecy, interruption-aware collection, and EIV fleet sizing
+
+Added five source pages, eleven reusable concepts, and five recurring-author entities:
+
+- [[zhu-2025-green-isac-q-learning]] - Zhu et al. 2025, *IEEE TGCN*, DOI `10.1109/TGCN.2024.3487995`. [[improved-fast-base-station-selection]] supplies low-CRLB UAV-anchor subsets, and [[crlb-initialized-q-table]] injects their sensing geometry into independent tabular resource allocation.
+- [[li-2026-full-duplex-noma-uav-relay]] - Li et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3634617`. [[full-duplex-noma-uav-relay]], [[bernstein-safe-approximation]], and [[robust-uav-position-power-optimization]] couple pipelined relaying with stochastic position reliability.
+- [[li-2021-robust-ris-uav-secrecy]] - Li et al. 2021, *IEEE TWC*, DOI `10.1109/TWC.2021.3073746`. [[robust-ris-assisted-uav-secrecy]] jointly controls trajectory, power, and separate uplink/downlink RIS phases under bounded eavesdropper CSI error.
+- [[qi-2026-ocma-ddqn-data-collection]] - Qi et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2026.3695901`. [[opportunistic-cooperative-multi-uav-ddqn]], [[experience-value-circles]], and [[lstm-interruption-compensation]] combine potential-game cooperation with short-outage prediction.
+- [[huang-2026-slim-eiv-uav-fleet]] - Huang et al. 2026, *IEEE TMC* early access, DOI `10.1109/TMC.2026.3690854`. [[edge-intelligent-vehicle]] and [[joint-eiv-placement-uav-fleet-sizing]] connect air-ground logistics, edge processing, and deadline-constrained fleet procurement.
+
+Exact-name, affiliation, biography, and coauthor continuity established [[qian-zhu]], [[daosen-zhai]], [[ruonan-zhang]], [[marco-di-renzo]], and [[meixia-tao]] across two sources each. Existing [[rongke-liu]], [[dusit-niyato]], [[fuhui-zhou]], and [[shi-jin]] rosters were extended to four, 59, seven, and five sources. Common names such as Yan Zhang and Lei Liu were not merged without sufficient backing affiliation evidence, and single-source SLIM+ authors were not promoted from references-only recurrence.
+
+Metadata notes: embedded IEEE PDF headers supplied fields omitted from several Markdown parses. The final records are TGCN 9(3), 1354-1367 (2025); TWC 25, 7955-7969 (2026); TWC 20(10), 6402-6417 (2021); and TGCN 10, 3086-3101 (2026). SLIM+ is an accepted TMC author version with DOI and 2026 copyright but no final volume, issue, or journal page range; its manuscript pages 1-16 and embedded `PP/99` placeholders were not promoted as final pagination.
+
+Evidence caveats: the green-ISAC study counts only transmit energy, uses a two-state independent tabular learner with a nonstandard monotone update, and compares its headline gain against random actions; the full-duplex relay assumes perfect self-interference cancellation/SIC, static operation, known isotropic Gaussian location error, and a conservative local BCD/SCA design; the RIS study assumes one fixed-altitude UAV, one user, one eavesdropper, continuous phases, perfect legitimate CSI, and simulation-only SDR/SCA/randomization; the cooperative collector uses grid motion, static within-episode jammers, FLOP-estimated hardware latency, and at most four UAVs while scaling task load, and its parse contains base-station-count, jammer-distance, and action-order inconsistencies; SLIM+ assumes static known tasks on a linear route, homogeneous pre-deployed EIVs with zero setup time, independent segments, discrete speed search, and an approximate inner scheduler, so it does not establish a global optimum or field deployment.
+
+Three low-concurrency extraction agents grounded the papers, and two disjoint workers drafted the source pages. An independent read-only review removed an incorrect link from SLIM+ to the narrower airborne-server [[multi-uav-assisted-mec]] concept and reframed it around ground-EIV [[mobile-edge-computing]] plus UAV data collection.
+
+Validation reports **564 sources / 555 concepts / 145 entities / 612 raw folders** and **47 genuinely new sources** remaining. Wikilinks are clean; process narration is absent outside this log; the index covers all **1,316** catalogue-able pages exactly once; all **1,314** frontmatter blocks validate; entity rosters have zero overclaims (33 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated collision avoidance, robust aerial RIS, priority FANET access, STAR-RIS energy supply, and UAV-powered D2D
 
 Added five source pages, eight reusable concepts, and one recurring-author entity:
