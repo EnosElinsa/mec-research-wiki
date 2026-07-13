@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TWC.2025.3621306"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, aerial-ris, uav-mounted-ris, uav-trajectory-control, soft-actor-critic, prioritized-experience-replay, beamforming, sum-rate-maximization]
 related:
+  - "[[liu-2026-passive-6dma]]"
+  - "[[passive-six-dimensional-movable-antenna]]"
   - "[[tilt-aware-aerial-ris-control]]"
   - "[[uav-mounted-ris]]"
   - "[[uav-trajectory-control]]"
@@ -18,7 +20,7 @@ related:
   - "[[huang-2025-fedx-ris-uav-trajectory]]"
   - "[[dusit-niyato]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-14
 ---
 
 # Aerial RIS-Enhanced Communications: Joint UAV Trajectory, Altitude Control, and Phase Shift Design

@@ -3,6 +3,8 @@ type: concept
 title: "Tilt-Aware Aerial RIS Control"
 tags: [uav-mounted-ris, intelligent-reflecting-surface, uav-trajectory-control, beamforming]
 related:
+  - "[[liu-2026-passive-6dma]]"
+  - "[[angle-dependent-irs-effective-aperture]]"
   - "[[li-2026-aerial-ris-trajectory-phase]]"
   - "[[uav-mounted-ris]]"
   - "[[intelligent-reflecting-surface]]"
@@ -10,7 +12,7 @@ related:
   - "[[soft-actor-critic]]"
   - "[[prioritized-experience-replay]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-14
 ---
 
 # Tilt-Aware Aerial RIS Control

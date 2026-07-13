@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TWC.2026.3668103"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 13181-13198"
 tags: [source, cell-free-mimo, aerial-access-point, rotatable-antenna-array, two-timescale-optimization, team-mmse, potential-game, mappo]
 related:
+  - "[[liu-2026-passive-6dma]]"
+  - "[[passive-six-dimensional-movable-antenna]]"
   - "[[six-dimensional-aerial-rotatable-antenna-array]]"
   - "[[team-mmse-receive-combining]]"
   - "[[aerial-terrestrial-cell-free-massive-mimo]]"

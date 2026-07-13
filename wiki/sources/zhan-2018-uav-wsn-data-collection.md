@@ -7,13 +7,14 @@ url: "https://doi.org/10.1109/LWC.2017.2776922"
 venue: "IEEE Wireless Communications Letters (IEEE WCL)"
 tags: [source, uav-data-collection, wireless-sensor-network, trajectory-optimization, energy-minimization, successive-convex-approximation]
 related:
+  - "[[cheng-zhan]]"
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
   - "[[yong-zeng]]"
   - "[[mozaffari-2017-uav-iot-energy-efficient]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
 created: 2026-06-04
-updated: 2026-06-09
+updated: 2026-07-14
 ---
 
 # Energy-Efficient Data Collection in UAV Enabled Wireless Sensor Network

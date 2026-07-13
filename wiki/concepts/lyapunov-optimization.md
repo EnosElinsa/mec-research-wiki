@@ -3,6 +3,7 @@ type: concept
 title: Lyapunov Optimization (drift-plus-penalty)
 tags: [optimization, queueing, online-control]
 related:
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
   - "[[qin-2025-bcuav-masac]]"
   - "[[lyapunov-guided-drl]]"
   - "[[he-2026-dt-sagimec-lae]]"
@@ -12,7 +13,7 @@ related:
   - "[[feng-2026-prediction-service-migration]]"
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Lyapunov Optimization (drift-plus-penalty)

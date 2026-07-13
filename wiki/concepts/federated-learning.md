@@ -3,6 +3,9 @@ type: concept
 title: "Federated Learning (FL)"
 tags: [distributed-ml, privacy, aggregation, fedavg]
 related:
+  - "[[zhong-2026-hierarchical-ota-fl]]"
+  - "[[hierarchical-over-the-air-federated-learning]]"
+  - "[[gradient-correlation-aware-aggregation-mse]]"
   - "[[lim-2021-uav-iov-contract-matching]]"
   - "[[li-2026-clp-uav-hpfl]]"
   - "[[ron-2026-federated-a3c-uav-energy]]"

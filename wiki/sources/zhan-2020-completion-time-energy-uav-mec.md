@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/JIOT.2020.2993260"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
 tags: [source, uav-trajectory-control, computation-offloading, energy-latency-tradeoff, fixed-wing-propulsion-energy-model, alternating-optimization-sdr-sca, information-causality-constraint]
 related:
+  - "[[cheng-zhan]]"
+  - "[[han-hu]]"
   - "[[task-offloading]]"
   - "[[binary-vs-partial-offloading]]"
   - "[[fixed-wing-propulsion-energy-model]]"
@@ -20,7 +22,7 @@ related:
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
   - "[[dusit-niyato]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-14
 ---
 
 # Completion Time and Energy Optimization in the UAV-Enabled Mobile-Edge Computing System

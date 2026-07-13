@@ -3,6 +3,8 @@ type: concept
 title: "Finite-Blocklength URLLC"
 tags: [urllc, finite-blocklength, short-packet, reliability, latency, channel-model]
 related:
+  - "[[wang-2026-covert-cognitive-radio]]"
+  - "[[primary-signal-assisted-covertness]]"
   - "[[huyen-2026-short-packet-aris-noma]]"
   - "[[feng-2026-secure-short-packet-noma-relay]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"

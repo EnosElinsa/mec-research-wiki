@@ -3,6 +3,7 @@ type: concept
 title: "Cooperative Jamming"
 tags: [security, jamming, physical-layer-security, secrecy]
 related:
+  - "[[primary-signal-assisted-covertness]]"
   - "[[wang-2026-fd-covert-isac]]"
   - "[[full-duplex-receiver-jamming]]"
   - "[[huang-2026-intelligent-jamming-maritime]]"

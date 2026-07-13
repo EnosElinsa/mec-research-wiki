@@ -3,11 +3,12 @@ type: concept
 title: "Weighted Minimum Mean-Square Error"
 tags: [optimization, beamforming, mimo, sum-rate, block-coordinate-descent]
 related:
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
   - "[[wan-2026-movable-antenna-multiuav-mimo]]"
   - "[[movable-antenna]]"
   - "[[two-level-movable-antenna]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Weighted Minimum Mean-Square Error

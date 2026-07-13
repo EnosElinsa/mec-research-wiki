@@ -3,6 +3,8 @@ type: concept
 title: "Six-Dimensional Aerial Rotatable Antenna Array"
 tags: [aerial-access-point, rotatable-antenna, cell-free-mimo, geometry-control]
 related:
+  - "[[liu-2026-passive-6dma]]"
+  - "[[passive-six-dimensional-movable-antenna]]"
   - "[[aerial-terrestrial-cell-free-massive-mimo]]"
   - "[[movable-antenna]]"
   - "[[team-mmse-receive-combining]]"

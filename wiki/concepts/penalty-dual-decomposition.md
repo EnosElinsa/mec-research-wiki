@@ -3,6 +3,7 @@ type: concept
 title: "Penalty Dual Decomposition (PDD)"
 tags: [optimization, non-convex, augmented-lagrangian, mixed-integer, classical-solver]
 related:
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[alternating-optimization-sdr-sca]]"
   - "[[mixed-integer-nonlinear-programming]]"
@@ -11,7 +12,7 @@ related:
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[song-2026-thz-multiuav-mec]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Penalty Dual Decomposition (PDD)

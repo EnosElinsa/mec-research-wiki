@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TMC.2023.3311484"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, proactive-eavesdropping, uav-trajectory-control, physical-layer-security, multi-agent-reinforcement-learning, friendly-jamming-uav]
 related:
+  - "[[lin-2026-fc-ris-surveillance]]"
+  - "[[wireless-information-surveillance]]"
   - "[[proactive-eavesdropping]]"
   - "[[uav-trajectory-control]]"
   - "[[physical-layer-security]]"
@@ -16,7 +18,7 @@ related:
   - "[[pomdp]]"
   - "[[shao-2024-drl-antijamming-mec]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-14
 ---
 
 # Joint Optimization of Trajectory and Jamming Power for Multiple UAV-Aided Proactive Eavesdropping

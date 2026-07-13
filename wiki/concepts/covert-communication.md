@@ -3,6 +3,9 @@ type: concept
 title: "Covert Communication"
 tags: [security, physical-layer-security, stochastic-geometry, detection]
 related:
+  - "[[wang-2026-covert-cognitive-radio]]"
+  - "[[primary-signal-assisted-covertness]]"
+  - "[[cooperative-cognitive-radio]]"
   - "[[wang-2026-fd-covert-isac]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[deng-2025-covert-isac-trajectory]]"

@@ -3,6 +3,9 @@ type: concept
 title: "Over-the-Air Computation (AirComp)"
 tags: [edge-inference, federated-learning, beamforming, signal-processing]
 related:
+  - "[[zhong-2026-hierarchical-ota-fl]]"
+  - "[[hierarchical-over-the-air-federated-learning]]"
+  - "[[gradient-correlation-aware-aggregation-mse]]"
   - "[[fu-2025-otae-inference-lae-batching]]"
   - "[[du-2024-distributed-foundation-models-6g]]"
   - "[[collaborative-dl-inference]]"
@@ -13,7 +16,7 @@ related:
   - "[[qian-2026-federated-bandit-aircomp]]"
   - "[[federated-linear-bandit-learning]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Over-the-Air Computation (AirComp)

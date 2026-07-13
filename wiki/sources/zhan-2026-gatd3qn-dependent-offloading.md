@@ -7,6 +7,10 @@ url: "https://doi.org/10.1109/TMC.2025.3628608"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 4, Apr. 2026"
 tags: [source, multi-uav-assisted-mec, dependent-task-offloading, graph-neural-network, dueling-dqn, penalty-dual-decomposition]
 related:
+  - "[[cheng-zhan]]"
+  - "[[kaifeng-song]]"
+  - "[[rongfei-fan]]"
+  - "[[han-hu]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[interdependent-tasks-dag]]"
   - "[[task-offloading]]"
@@ -15,7 +19,7 @@ related:
   - "[[penalty-dual-decomposition]]"
   - "[[device-association]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Joint UAV Placement and Dependent Task Offloading in Multi-UAV MEC Networks: A Graph Attention Enhanced DRL Approach

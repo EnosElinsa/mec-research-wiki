@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TWC.2025.3605370"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 3675-3687"
 tags: [source, covert-communication, isac, full-duplex-jamming, location-uncertainty, beamforming, uav-trajectory]
 related:
+  - "[[wang-2026-covert-cognitive-radio]]"
+  - "[[qunshu-wang]]"
   - "[[full-duplex-receiver-jamming]]"
   - "[[covert-communication]]"
   - "[[integrated-sensing-and-communication]]"

@@ -3,6 +3,8 @@ type: concept
 title: "Air-to-Ground Channel Model"
 tags: [channel-model, los-nlos, propagation, uav, coverage]
 related:
+  - "[[wang-2026-covert-cognitive-radio]]"
+  - "[[lin-2026-fc-ris-surveillance]]"
   - "[[zeng-2018-uav-multicasting-completion-time]]"
   - "[[mahmoud-2021-uav-irs-iot-analysis]]"
   - "[[blockage-aware-channel-model]]"

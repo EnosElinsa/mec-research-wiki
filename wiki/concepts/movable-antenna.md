@@ -3,6 +3,8 @@ type: concept
 title: "Movable Antenna"
 tags: [antenna, mimo, channel-modeling, low-altitude-economy]
 related:
+  - "[[liu-2026-passive-6dma]]"
+  - "[[passive-six-dimensional-movable-antenna]]"
   - "[[zeng-2026-movable-antenna-u2u-channel]]"
   - "[[lu-2026-uav-swarm-two-level-ma]]"
   - "[[two-level-movable-antenna]]"
@@ -16,7 +18,7 @@ related:
   - "[[wan-2026-movable-antenna-multiuav-mimo]]"
   - "[[ren-2026-movable-antenna-uav-trajectory]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Movable Antenna

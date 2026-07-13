@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2021.3073746"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 20, no. 10, pp. 6402-6417"
 tags: [source, uav-communications, intelligent-reflecting-surface, physical-layer-security, robust-optimization, imperfect-csi, trajectory-control]
 related:
+  - "[[xiaojun-yuan]]"
   - "[[robust-ris-assisted-uav-secrecy]]"
   - "[[intelligent-reflecting-surface]]"
   - "[[physical-layer-security]]"

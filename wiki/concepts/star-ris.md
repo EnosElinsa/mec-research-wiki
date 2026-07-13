@@ -3,6 +3,7 @@ type: concept
 title: "STAR-RIS"
 tags: [ris, metasurface, uav, noma, mec]
 related:
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
   - "[[intelligent-reflecting-surface]]"
   - "[[uav-mounted-ris]]"
   - "[[noma]]"

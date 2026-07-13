@@ -3,6 +3,7 @@ type: concept
 title: Gauss-Markov Mobility Model
 tags: [mobility, simulation, iot]
 related:
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
   - "[[jin-2026-skyndn-incentivizer]]"
   - "[[wang-2026-spatiotemporal-leo-channel-prediction]]"
   - "[[wu-2026-sensing-error-uav-scheduling]]"

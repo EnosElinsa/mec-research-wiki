@@ -3,6 +3,9 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[wang-2026-covert-cognitive-radio]]"
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
+  - "[[zhong-2026-hierarchical-ota-fl]]"
   - "[[zhang-2021-safe-dqn-emergency]]"
   - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[wang-2026-fd-covert-isac]]"

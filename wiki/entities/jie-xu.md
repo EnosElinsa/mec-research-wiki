@@ -3,6 +3,7 @@ type: entity
 title: Jie Xu
 tags: [author, researcher, ieee-fellow, isac]
 related:
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
   - "[[min-2026-sparse-bistatic-nearfield-isac]]"
   - "[[xu-2018-uav-wpt-trajectory]]"
   - "[[zeng-2019-rotary-wing-energy-min]]"
@@ -20,7 +21,7 @@ updated: 2026-07-14
 
 IEEE Fellow. Affiliated with the **School of Science and Engineering (SSE), The Chinese University of Hong Kong, Shenzhen** and, in the secure-ISAC / LAE-ISAC papers, the **Shenzhen Future Network of Intelligence Institute** and the **Guangdong Provincial Key Laboratory of Future Networks of Intelligence**. Earlier papers place him at the **School of Information Engineering, Guangdong University of Technology**. The biographies across these affiliations repeat his USTC degrees, NUS research fellowship, and SUTD postdoctoral appointment, establishing the same identity.
 
-Co-author of nine wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
+Co-author of ten wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
 
 - [[xu-2018-uav-wpt-trajectory]] - UAV-enabled wireless power transfer with trajectory and max-min energy optimization.
 - [[zeng-2019-rotary-wing-energy-min]] - rotary-wing UAV propulsion modeling and energy-minimizing communication trajectories.
@@ -31,6 +32,7 @@ Co-author of nine wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in 
 - [[ye-2026-deeplsc-lae-isac]] — LAE ISAC with DDPG-based joint GBS beamforming and authorized-UAV trajectory control under sensing and flight constraints.
 - [[lyu-2023-isac-maneuver-beamforming]] - joint UAV maneuver, communication beamforming, and sensing illumination.
 - [[min-2026-sparse-bistatic-nearfield-isac]] - sparse XL-MIMO bi-static near-field sensing and communication for low-altitude UAV swarms.
+- [[zhan-2026-star-ris-aerial-monitoring]] - stochastic STAR-RIS-assisted aerial monitoring and dissemination.
 
 ## Contributions to this wiki
 

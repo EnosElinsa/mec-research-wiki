@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2022.3142365"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, uav-mec, lyapunov-optimization, online-algorithm, trajectory-optimization, stochastic-optimization, user-mobility]
 related:
+  - "[[ying-jun-angela-zhang]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[lyapunov-optimization]]"
   - "[[uav-trajectory-control]]"
@@ -15,7 +16,7 @@ related:
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-14
 ---
 
 # Online Trajectory and Resource Optimization for Stochastic UAV-Enabled MEC Systems

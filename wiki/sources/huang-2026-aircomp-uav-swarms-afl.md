@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TWC.2026.3693868"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, federated-learning, over-the-air-computation, uav-swarm, asynchronous-federated-learning, model-staleness, beamforming, edge-intelligence]
 related:
+  - "[[zhong-2026-hierarchical-ota-fl]]"
+  - "[[hierarchical-over-the-air-federated-learning]]"
   - "[[aircomp-assisted-asynchronous-fl]]"
   - "[[over-the-air-computation]]"
   - "[[federated-learning]]"
@@ -16,7 +18,7 @@ related:
   - "[[zhou-2026-cpsfl-uav-foundation-models]]"
   - "[[two-tier-submodel-partition]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # AirComp-Assisted Asynchronous Federated Learning for UAV Swarms: A Self-Adaptive Aggregation Scheme to Tackle Model Staleness

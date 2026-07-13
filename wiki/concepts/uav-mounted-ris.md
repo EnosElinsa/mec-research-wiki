@@ -3,6 +3,10 @@ type: concept
 title: "UAV-Mounted RIS"
 tags: [intelligent-reflecting-surface, uav, aerial, deployment, 6g]
 related:
+  - "[[lin-2026-fc-ris-surveillance]]"
+  - "[[liu-2026-passive-6dma]]"
+  - "[[fully-connected-ris]]"
+  - "[[passive-six-dimensional-movable-antenna]]"
   - "[[wang-2026-spatiotemporal-leo-channel-prediction]]"
   - "[[huyen-2026-short-packet-aris-noma]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"

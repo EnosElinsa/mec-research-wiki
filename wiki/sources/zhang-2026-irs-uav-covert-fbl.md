@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TGCN.2025.3585891"
 venue: "IEEE Transactions on Green Communications and Networking (TGCN)"
 tags: [source, covert-communication, finite-blocklength, intelligent-reflecting-surface, trajectory-optimization]
 related:
+  - "[[wang-2026-covert-cognitive-radio]]"
   - "[[covert-communication]]"
   - "[[finite-blocklength-urllc]]"
   - "[[intelligent-reflecting-surface]]"
@@ -15,7 +16,7 @@ related:
   - "[[penalty-dual-decomposition]]"
   - "[[deng-2025-covert-isac-trajectory]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Joint Trajectory and Beamforming Optimization for IRS-Assisted Multi-Antenna UAV Covert Communications With a Finite Blocklength
