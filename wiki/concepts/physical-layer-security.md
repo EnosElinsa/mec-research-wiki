@@ -32,11 +32,14 @@ related:
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
   - "[[meng-2026-fullspace-star-ris-secure]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[zhai-2026-uav-ma-secrecy]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
 
 # Physical Layer Security (PLS)
+
+[[zhai-2026-uav-ma-secrecy]] adds joint macro/micro mobility: a UAV trajectory and onboard movable elements shape legitimate and uncertain eavesdropping links while scheduling and beamforming maximize worst-user average secrecy rate.
 
 A family of secrecy techniques that exploit physical-layer properties — channel randomness, beamforming, artificial noise — to keep messages unreadable by eavesdroppers, **without** relying on cryptographic keys. The canonical metric is **secrecy rate** = legitimate-receiver rate − eavesdropper rate (clipped at 0).
 

@@ -16,6 +16,7 @@ related:
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
   - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
   - "[[multi-modal-uav-coverage-backhaul-control]]"
+  - "[[su-2026-three-tier-uav-capacity]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -37,3 +38,5 @@ Recurring forms in the wiki:
 [[wang-2026-multimodal-uav-coverage-backhaul]] turns backhaul into a dynamic UAV role: access points switch among cluster exploration, local user service, and minimum-spanning-tree bridge formation through [[multi-modal-uav-coverage-backhaul-control]]. [[liu-2020-distributed-uav-coverage-navigation]] instead treats peer connectivity as a constraint while UAVs optimize long-term access coverage and movement energy.
 
 A backhaul link's capacity is *upper-tier* infrastructure. It rarely appears as a decision variable, but its value as a constraint shapes the offloading topology — overloaded backhaul forces more local processing.
+
+[[su-2026-three-tier-uav-capacity]] makes UAV-to-BS SDMA backhaul an explicit end-to-end bottleneck and bounds the error of a mean-interference capacity approximation under transmit/receive pointing jitter.

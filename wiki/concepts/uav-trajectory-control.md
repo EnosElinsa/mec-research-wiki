@@ -118,11 +118,16 @@ related:
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
+  - "[[betalo-2026-meta-uav-scheduling]]"
+  - "[[zhai-2026-uav-ma-secrecy]]"
+  - "[[ren-2026-movable-antenna-uav-trajectory]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
 
 # UAV Trajectory Control
+
+[[betalo-2026-meta-uav-scheduling]] learns multi-UAV movement jointly with sensor assignment and resources. [[zhai-2026-uav-ma-secrecy]] alternates trajectory with secure beamforming and movable elements, while [[ren-2026-movable-antenna-uav-trajectory]] minimizes mission time through communication-feasible grid search with carried antenna state.
 
 The continuous-action portion of the [[multi-uav-assisted-mec]] decision vector: choosing the per-step displacement of each UAV. In [[liu-2026-jppo-en-convntm]] the controller assumes:
 

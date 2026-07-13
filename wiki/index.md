@@ -638,6 +638,12 @@
 - [[zhang-2026-msialns-air-ground-inspection]] - Zhang et al. 2026. Adaptive large-neighborhood search for multi-vehicle/multi-UAV inspection with node conflicts and cross-vehicle recovery (IEEE T-ITS).
 - [[ammar-2026-oran-maritime-slicing]] - Ammar et al. 2026. A2C/PPO control of O-RAN maritime slicing, VNF deployment, radio/compute resources, and UAV trajectories (IEEE TMC).
 
+- [[betalo-2026-meta-uav-scheduling]] - Betalo et al. 2026. MW-MAD3PG combines MAML-style adaptation, multi-agent deterministic control, and Jain-fairness shaping for UAV-assisted ITS sensor assignment and resources (IEEE TMC).
+- [[zhai-2026-uav-ma-secrecy]] - Zhai and Luo 2026. Joint scheduling, beamforming, UAV trajectory, and movable-element positioning for max-min secrecy under bounded eavesdropper-location uncertainty (IEEE TWC).
+- [[su-2026-three-tier-uav-capacity]] - Su et al. 2026. NOMA access, multihop UAV relay allocation, and jitter-aware SDMA backhaul capacity for a three-tier emergency wireless network (IEEE TGCN).
+- [[wan-2026-movable-antenna-multiuav-mimo]] - Wan et al. 2026. WMMSE and hierarchical group-sparse position selection for macro/micro movable-antenna multi-UAV uplink MIMO (IEEE TWC).
+- [[ren-2026-movable-antenna-uav-trajectory]] - Ren et al. 2026. Selective uniform-cost search jointly plans a cellular UAV path, serving BS, MMSE receiver, and onboard movable-array positions (IEEE TWC).
+
 ## Entities
 
 ### Authors
@@ -680,6 +686,7 @@
 - [[shichao-li]] & [[hongbin-chen]] (Guilin Univ. of Electronic Technology — air-ground IoRT MEC, VEC, SAGIN, and UAV-IRS data collection; 4 and 5 sources), [[mianxiong-dong]] (Muroran Inst. of Technology; 2 sources) & [[ning-zhang]] (Univ. of Windsor; 2 sources) — co-authors across the IoRT + robust-multi-UAV DRL offloading thread, [[victor-c-m-leung]] (Shenzhen MSU-BIT / Shenzhen Univ. / UBC, `vleung@ieee.org`; 12 sources across aerial-MEC, SAGIN, WDC/WET, and secure IoV).
 - [[zhou-su]] (Xi'an Jiaotong Univ. — maritime/vehicular edge computing; 2 sources, corresponding author of [[zeng-2024-usv-fleet-collaborative-offloading]]), [[yanheng-liu]] (Jilin Univ. — [[geng-sun]] aerial/vehicular-MEC cluster; 2 sources).
 - [[jiawei-huang]] and [[aimin-wang]] (Jilin University - maritime physical-layer security through collaborative beamforming and learning-based friendly jamming; 2 sources each), and [[basem-shihada]] (KAUST - energy-aware UAV communication and O-RAN maritime slicing; 2 sources).
+- [[qiuming-zhu]] (NUAA - aerial channel reconstruction and movable-antenna multi-UAV MIMO; 2 sources) and [[yuanwei-liu]] (wireless security, aerial collaborative beamforming, cooperative ISAC, and movable antennas; 4 sources).
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
 - [[dong-jun-han]] & [[christopher-brinton]] (Purdue University — non-terrestrial **federated-learning** offloading cluster with Mung Chiang / David J. Love / Seyyedali Hosseinalipour; 2 sources each — [[han-2024-ground-satellite-fl]] + [[han-2024-sagin-fl-handover]]).
 - [[yong-zeng]] (Southeast University / Purple Mountain Laboratories; earlier National University of Singapore — **UAV-communications / trajectory-optimization** foundations plus low-altitude [[movable-antenna]] and ISAC-localization design; 13 sources, including [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], [[zeng-2019-uav-comm-tutorial-5g]], [[wu-2018-multiuav-minrate-trajectory]], [[lu-2026-uav-swarm-two-level-ma]], and [[jing-2024-isac-trajectory-localization]]).
@@ -1230,6 +1237,9 @@
 - [[sensing-assisted-predictive-beamforming]] - echo-assisted prediction, state refinement, and reliability-aware beam control.
 - [[open-radio-access-network]] - disaggregated, virtualized RAN architecture with open interfaces and intelligent controllers.
 - [[advantage-actor-critic]] - synchronous on-policy actor-critic learning with advantage estimates.
+- [[mw-mad3pg]] - MAML-enhanced fairness-aware multi-agent deterministic policy gradient for UAV-assisted sensor scheduling.
+- [[weighted-minimum-mean-square-error]] - sum-rate/WMMSE equivalence used for alternating multi-user beamforming and geometry optimization.
+- [[selective-uniform-cost-search]] - lower-bound-prioritized grid search with retained communication and movable-array state.
 
 ## Methodology
 

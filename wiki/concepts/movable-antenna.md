@@ -12,8 +12,11 @@ related:
   - "[[mozaffari-2019-drone-antenna-array]]"
   - "[[li-not-in-parse-movable-antenna-pls]]"
   - "[[micro-macro-mobility-security]]"
+  - "[[zhai-2026-uav-ma-secrecy]]"
+  - "[[wan-2026-movable-antenna-multiuav-mimo]]"
+  - "[[ren-2026-movable-antenna-uav-trajectory]]"
 created: 2026-07-07
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Movable Antenna
@@ -25,3 +28,5 @@ In [[zeng-2026-movable-antenna-u2u-channel]], movable antennas are applied to UA
 [[lu-2026-uav-swarm-two-level-ma]] extends the idea into [[two-level-movable-antenna]] design: UAV positions form a swarm-level movable array, while each UAV also carries locally movable elements. Together these sources connect reconfigurable physical-layer hardware to [[low-altitude-intelligent-network]], [[extremely-large-scale-mimo]], and [[near-field-communications]], while remaining distinct from drone-swarm virtual arrays such as [[mozaffari-2019-drone-antenna-array]].
 
 [[li-not-in-parse-movable-antenna-pls]] applies movable elements to [[physical-layer-security]] and compares their local spatial control against whole-UAV trajectory changes through [[micro-macro-mobility-security]].
+
+Three joint-control designs extend that baseline. [[zhai-2026-uav-ma-secrecy]] combines antenna motion with UAV trajectory and secure beamforming, [[wan-2026-movable-antenna-multiuav-mimo]] uses WMMSE plus sparse position dictionaries for multi-UAV uplink MIMO, and [[ren-2026-movable-antenna-uav-trajectory]] carries antenna state through cellular-UAV grid-path search.

@@ -24,6 +24,7 @@ related:
   - "[[guo-2026-event-triggered-sinr-navigation]]"
   - "[[challita-2019-cellular-uav-interference-drl]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
+  - "[[ren-2026-movable-antenna-uav-trajectory]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
@@ -55,3 +56,5 @@ The tutorial uses this dichotomy to organize the UAV-communications design space
 [[wang-2025-cellular-uav-cooperative-detection]] gives a connected UAV a sensing role: it and the serving BS independently estimate surrounding UAV states, then associate and fuse them through [[ground-air-cooperative-isac-detection]] before updating the connected UAV's trajectory and beamforming.
 
 Two navigation entries focus directly on aerial-user interference. [[challita-2019-cellular-uav-interference-drl]] jointly learns path, serving cell, and power with deep reservoir memory, while [[guo-2026-event-triggered-sinr-navigation]] plans from grid SINR maps and updates those maps only when predictive uncertainty justifies the traffic.
+
+[[ren-2026-movable-antenna-uav-trajectory]] adds mechanically reconfigurable reception: a cellular UAV jointly plans its grid path, serving BS, MMSE combiner, and local antenna positions to minimize mission time using a Jensen lower bound on expected SINR as the feasibility condition.

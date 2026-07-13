@@ -21,6 +21,7 @@ related:
   - "[[fatemidokht-2021-vru-vanet-routing]]"
   - "[[uav-assisted-vanet-routing]]"
   - "[[samir-2021-uav-cell-free-coverage]]"
+  - "[[betalo-2026-meta-uav-scheduling]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -40,3 +41,5 @@ Adjacent tracking sources broaden the sensing side of the concept. [[li-2026-la4
 The latest adjacent ITS additions split the role of the UAV even further. [[chen-2026-maddpg-uav-swarm-antijamming]] protects U2U/U2G traffic-monitoring links through [[multi-domain-uav-anti-jamming]], [[zang-2026-uav-ev-priority-cav-speed]] uses UAVs as sensing/relay infrastructure for emergency-vehicle CAV speed coordination, and [[du-2025-autonomous-intelligent-uav-swarms]] supplies the broader swarm-autonomy taxonomy behind such deployments.
 
 [[fatemidokht-2021-vru-vanet-routing]] adds [[uav-assisted-vanet-routing]]: aerial observers estimate road density/connectivity and aggregate vehicle trust, while an ACO-based FANET path takes over when urban ground forwarding is disconnected.
+
+[[betalo-2026-meta-uav-scheduling]] adds UAV-assisted traffic-sensor collection: meta-learned multi-agent policies jointly control movement, sensor assignment, power, and scheduling under fairness, QoS, and energy constraints.

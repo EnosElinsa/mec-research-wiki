@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-13] Curated meta-learned UAV scheduling, three-tier capacity, and movable-antenna control
+
+Added five source pages, three reusable method concepts, and two recurring-author entities:
+
+- [[betalo-2026-meta-uav-scheduling]] - Betalo et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3696005`. [[mw-mad3pg]] combines MAML-style adaptation, deterministic multi-agent control, and Jain-fairness shaping for UAV-assisted ITS sensor assignment and resources.
+- [[zhai-2026-uav-ma-secrecy]] - Zhai and Luo 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3651300`. BCD/SCA jointly controls scheduling, beamforming, trajectory, and movable elements under bounded eavesdropper-location uncertainty.
+- [[su-2026-three-tier-uav-capacity]] - Su et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2026.3685249`. PPP/NOMA access, multihop UAV relay allocation, and jitter-aware SDMA backhaul form an end-to-end emergency-network capacity bottleneck.
+- [[wan-2026-movable-antenna-multiuav-mimo]] - Wan et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3672791`. [[weighted-minimum-mean-square-error]] and hierarchical sparse recovery select macro UAV positions and micro antenna positions for uplink MIMO.
+- [[ren-2026-movable-antenna-uav-trajectory]] - Ren et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3687538`. [[selective-uniform-cost-search]] plans a cellular UAV path while carrying serving-BS and movable-array state under a lower bound on expected SINR.
+
+Matching ORCIDs and affiliations established [[qiuming-zhu]] across spectrum mapping and movable-antenna MIMO, and [[yuanwei-liu]] across four secure-communications, ISAC, and movable-antenna sources. The existing [[chunxiao-jiang]] roster was extended to seven sources.
+
+Metadata notes: the secrecy, three-tier-capacity, macro/micro-MIMO, and cellular-trajectory parses omit final publication headers, so exact-title Crossref records supplied their final year, venue, volume, pages, and DOI. The meta-learning parse supplies its accepted-manuscript DOI and venue; Crossref confirms 2026 and pages 1-18 without a final volume.
+
+Evidence caveats: all five evaluations are simulation-only. MW-MAD3PG has naming, channel, altitude, security-integration, and training-time inconsistencies in the parse. The secrecy design approximates angular uncertainty and reaches a local solution. The three-tier paper's stated 20% gain is inconsistent with the extracted plot levels. The multi-UAV MIMO method discretizes continuous positions and proves only transformed-objective convergence. The cellular path planner uses a Jensen lower bound on expected SINR, local antenna updates, grid discretization, and pruning.
+
+Three low-concurrency workers extracted the first three papers; the two movable-antenna communication papers were extracted locally. Independent review corrected the full MW-MAD3PG expansion and distinguished expected SINR from its Jensen lower-bound feasibility surrogate.
+
+Validation: `corpus_counts.py` reports **524 sources / 491 concepts / 123 entities / 612 raw folders**. `curation_status.py --dupes` leaves **87 genuinely new sources** for later curation. `linkcheck.py --orphans` reports zero dangling links; `process_refs.py` finds zero hits; `index_audit.py` covers all **1,190** catalogue-able pages exactly once; `frontmatter_audit.py` validates all **1,188** frontmatter pages; and `entity_roster_audit.py` reports zero overclaims (29 possible omissions remain advisory namesake/legacy cases). All 12 wiki-tool unit tests and `git diff --check` pass. The local LLM Wiki health endpoint remains unavailable with HTTP **502**, so file-grounded CLI audits are the authoritative verification.
+
 ## [2026-07-13] Curated vehicular UAV coverage, maritime jamming and slicing, predictive tracking, and collaborative inspection
 
 Added five source pages, six reusable concepts, and three recurring-author entities:

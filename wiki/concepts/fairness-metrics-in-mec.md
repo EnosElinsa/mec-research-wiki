@@ -17,6 +17,8 @@ related:
   - "[[gao-2024-service-experience-cache-uav]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
+  - "[[betalo-2026-meta-uav-scheduling]]"
+  - "[[su-2026-three-tier-uav-capacity]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -45,6 +47,7 @@ The spatial equity index $f_n$ is a Jain-style index specialized to UAV visit co
 - [[gao-2024-service-experience-cache-uav]] folds Jain's index over per-UE delay into a single [[service-experience-ratio]], coupling fairness with latency in one [[qoe-modeling-mec]] objective.
 - [[wang-2026-llm-qos-multiuav-resource]] combines delay with Jain-style fairness in a weighted delay-fairness objective for LLM-teacher / MAPPO-student multi-UAV resource allocation.
 - Energy-balancing work ([[energy-balancing-uav]]) treats fairness as equalizing depletion across UAVs rather than equalizing user-facing service — a related but distinct notion.
+- [[betalo-2026-meta-uav-scheduling]] shapes rewards from Jain-index service deviation, while [[su-2026-three-tier-uav-capacity]] contrasts throughput maximization with a concave demand-normalized satisfaction utility and evaluates both with Jain's index.
 
 [[lin-2025-energy-effective-ris-multiuav-coverage]] uses throughput variance as a service-fairness diagnostic in RIS-assisted UAV communications; its fair-screening rule prevents repeatedly serving only high-channel-gain GTs.
 

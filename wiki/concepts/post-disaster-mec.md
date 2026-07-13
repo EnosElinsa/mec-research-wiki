@@ -14,6 +14,7 @@ related:
   - "[[routing-vnf-scaling-control-loop]]"
   - "[[tian-2026-joint-localization-communication]]"
   - "[[joint-localization-and-communication]]"
+  - "[[su-2026-three-tier-uav-capacity]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -36,6 +37,7 @@ The MEC operating regime where ground infrastructure is partially or wholly dest
 - **Fairness regularizers** — explicit reward shaping to avoid UAV "camping" over the densest cluster. See [[theil-fairness-index]] and the corresponding regularizers in [[peng-2025-drudm-cfg]] and [[liu-2026-jppo-en-convntm]].
 - **Resilient edge storage** — UAVs can cache coded data blocks so users recover files even when only a subset of UAVs is reachable. See [[erasure-coded-edge-storage]] and [[huang-2026-erasure-coded-uav-storage]].
 - **Persistent rotating backhaul** - [[liu-2026-usp-nfrp-emergency-communication]] uses [[persistent-emergency-uav-swarm-service]] to rotate fixed-wing aircraft through access/relay tasks while repairing the aerial tree topology during replacements.
+- **Three-tier capacity provisioning** - [[su-2026-three-tier-uav-capacity]] couples NOMA device access, multihop UAV relaying, and UAV-to-BS backhaul through an end-to-end minimum-capacity objective.
 
 ## Open questions
 

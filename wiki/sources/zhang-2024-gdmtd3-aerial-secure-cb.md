@@ -18,8 +18,9 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
+  - "[[yuanwei-liu]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # Multi-Objective Aerial Collaborative Secure Communication Optimization via Generative Diffusion Model-Enabled Deep Reinforcement Learning

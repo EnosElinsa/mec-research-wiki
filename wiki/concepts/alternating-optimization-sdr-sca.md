@@ -40,6 +40,7 @@ related:
   - "[[wang-2025-cellular-uav-cooperative-detection]]"
   - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
+  - "[[zhai-2026-uav-ma-secrecy]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -56,6 +57,8 @@ A classical recipe for solving non-convex MEC and ISAC problems with multiple co
 AO converges to a stationary point but not necessarily the global optimum; in practice it's robust enough for ISAC, beamforming, and trajectory problems. See [[benaya-2025-aerial-isac-haps]] for a four-block AO instance.
 
 This stack is the **non-DRL** counterpoint to the j-PPO / DDPG / SAC backbone that dominates the wiki — useful when the problem has clean convex structure within each block.
+
+[[zhai-2026-uav-ma-secrecy]] uses the family without SDR: a BCD loop alternates relaxed scheduling with SCA beamforming, trajectory, and movable-element position updates under approximate bounded-location secrecy robustness.
 
 [[zhang-2025-cooperative-anti-uav-isac]] alternates closed-form receive beamforming with SCA/Dinkelbach transmit updates for [[cooperative-isac-transceiver-beamforming]]. Its distributed counterpart uses primal decomposition to preserve the same modeled KKT target without collecting global CSI centrally.
 

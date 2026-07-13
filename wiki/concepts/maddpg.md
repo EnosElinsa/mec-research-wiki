@@ -33,6 +33,8 @@ related:
   - "[[zhang-2026-distance-attention-uav-navigation]]"
   - "[[pham-2026-vnf-control-loop]]"
   - "[[routing-vnf-scaling-control-loop]]"
+  - "[[betalo-2026-meta-uav-scheduling]]"
+  - "[[mw-mad3pg]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
@@ -64,5 +66,7 @@ The multi-agent extension of [[ddpg]]: each agent has its own deterministic acto
 ## Relation to siblings
 
 Compared with [[multi-agent-td3|MATD3]] (adds clipped double-Q + delayed updates + target smoothing to curb overestimation) and [[masac|MASAC]] (stochastic, max-entropy), MADDPG is the simplest/earliest of the CTDE actor-critic family and remains a common baseline.
+
+[[betalo-2026-meta-uav-scheduling]] extends this family through [[mw-mad3pg]], adding MAML-style task adaptation and Jain-index reward shaping for UAV-assisted sensor assignment, movement, and resource scheduling.
 
 [[wang-2026-glint-aoi-wireless-powered-edge]] builds [[dual-network-sequential-aoi-control]] from the MADDPG training pattern, then compares it with centralized MODDPG and the paper's other named baselines. GLINT replaces one monolithic action stage with ordered position/association and charging/transmission stages plus value mixing.

@@ -30,11 +30,16 @@ related:
   - "[[zhang-2026-distributed-jscc-uav-video]]"
   - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
   - "[[samir-2021-uav-cell-free-coverage]]"
+  - "[[zhai-2026-uav-ma-secrecy]]"
+  - "[[wan-2026-movable-antenna-multiuav-mimo]]"
+  - "[[ren-2026-movable-antenna-uav-trajectory]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
 
 # Air-to-Ground Channel Model
+
+Three movable-array sources use LoS/free-space A2G links while changing different spatial variables: [[zhai-2026-uav-ma-secrecy]] controls secrecy through trajectory and element motion, [[wan-2026-movable-antenna-multiuav-mimo]] controls multi-UAV uplink geometry, and [[ren-2026-movable-antenna-uav-trajectory]] carries array state through cellular path planning.
 
 The **air-to-ground (ATG) channel model** describes propagation between an aerial platform (UAV / LAP / HAP) and ground receivers. The dominant formulation treats received signals as a probabilistic mixture of **LoS** and **NLoS** groups: the mean pathloss is the free-space pathloss plus a group-dependent **excessive pathloss**, weighted by the probability of each group. The **LoS probability** is commonly approximated as a sigmoid (S-curve) of the **elevation angle**, parameterized by the urban environment (built-up ratio, building density, building-height distribution).
 

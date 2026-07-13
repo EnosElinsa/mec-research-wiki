@@ -13,6 +13,7 @@ related:
   - "[[chen-2026-air-ground-covert]]"
   - "[[ambient-interference-aided-covertness]]"
   - "[[dong-2026-digital-tides-provisioning]]"
+  - "[[su-2026-three-tier-uav-capacity]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -32,3 +33,5 @@ In the wiki, [[jiang-2025-isac-lae-overview]] uses stochastic geometry to derive
 [[chen-2026-air-ground-covert]] uses the framework on the security side: ground interferers are modeled as a homogeneous PPP, aggregate interference at the warden is approximated with a gamma distribution, and [[ambient-interference-aided-covertness]] becomes a measurable part of the air-to-ground covert-throughput analysis.
 
 A useful complement to per-task DRL/optimization papers: stochastic geometry tells you *whether the network can support the workload at all*, before per-task scheduling enters the picture.
+
+[[su-2026-three-tier-uav-capacity]] uses PPP order statistics and interference Laplace transforms to derive NOMA access coverage and ergodic capacity before combining access with relay and backhaul bottlenecks.

@@ -15,8 +15,9 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[blockage-aware-channel-model]]"
   - "[[qihui-wu]]"
+  - "[[qiuming-zhu]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Bayesian Learning-Based Spectrum Mapping With UAV Path Dynamic Optimization Under 3-D Unknown Environments

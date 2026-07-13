@@ -16,6 +16,7 @@ related:
   - "[[ahmed-2026-noma-irs-vehicular]]"
   - "[[fixed-point-irs-passive-beamforming]]"
   - "[[wang-2026-noma-marine-data-computation]]"
+  - "[[su-2026-three-tier-uav-capacity]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---
@@ -46,6 +47,8 @@ A multiple-access scheme where multiple users share the *same* time-frequency re
 [[zhou-2026-a2g-madrl-air-ground-vcs]] uses NOMA as the communication substrate for air-ground vehicular crowdsensing. Channel assignment becomes part of the [[sequential-multi-agent-policy-generation]] action because UAVs and UGVs share channels while collecting PoI data.
 
 [[wang-2026-noma-marine-data-computation]] uses uplink NOMA for mandatory sensing-data collection before UAV-side computation. Its reported energy comparison favors NOMA over both FDMA and TDMA under the paper's fixed marine-sensor model, contrasting with corpus entries whose access and energy assumptions produce different orderings.
+
+[[su-2026-three-tier-uav-capacity]] analyzes PPP-distributed device access to hovering UAVs under perfect, worst-case, and indicator-based imperfect SIC, then makes that access capacity one bottleneck in a three-tier emergency network.
 
 ## Caveats
 
