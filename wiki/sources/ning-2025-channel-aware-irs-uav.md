@@ -17,6 +17,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[ning-2023-madrl-uav-trajectory-differentiated-services]]"
   - "[[zhaolong-ning]]"
+  - "[[xiaojie-wang]]"
   - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-07-12
 updated: 2026-07-13

@@ -3,6 +3,7 @@ type: concept
 title: "Finite-Blocklength URLLC"
 tags: [urllc, finite-blocklength, short-packet, reliability, latency, channel-model]
 related:
+  - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[csi-estimation-error]]"
   - "[[energy-latency-tradeoff]]"
   - "[[task-offloading]]"

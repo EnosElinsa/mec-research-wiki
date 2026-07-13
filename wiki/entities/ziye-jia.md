@@ -3,6 +3,7 @@ type: entity
 title: Ziye Jia
 tags: [author, researcher, aerial-networks, nuaa]
 related:
+  - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[jia-2022-hierarchical-aerial-matching]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[you-2025-uncertain-maritime-hasac]]"
@@ -16,7 +17,9 @@ updated: 2026-07-13
 
 IEEE Member. Consistently affiliated with the **College of Electronic and Information Engineering, Nanjing University of Aeronautics and Astronautics (NUAA)**, Nanjing, China (email `jiaziye@nuaa.edu.cn`). Selected papers also list the **National Mobile Communications Research Laboratory, Southeast University**; the hierarchical-swarm paper lists NUAA only.
 
-Co-authored 5 sources in this wiki, leading four of them:
+Co-authored 6 sources in this wiki, leading four of them:
+
+- [[lu-2026-aoi-trajectory-channel]] - AoI-proxy trajectory and channel control for multi-UAV IoT collection under jamming.
 
 - [[jia-2022-hierarchical-aerial-matching]] — hierarchical aerial computing via cooperation of HAPs and UAVs (matching game theory).
 - [[jia-2025-dro-uav-hap-mec]] — distributionally robust optimization for aerial MEC via UAV-HAP cooperation.

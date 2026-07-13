@@ -16,6 +16,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[uav-trajectory-control]]"
   - "[[zhaolong-ning]]"
+  - "[[lei-guo]]"
 created: 2026-07-07
 updated: 2026-07-13
 ---

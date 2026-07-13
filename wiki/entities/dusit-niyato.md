@@ -3,6 +3,7 @@ type: entity
 title: Dusit Niyato
 tags: [author, researcher, ieee-fellow, generative-ai, drl]
 related:
+  - "[[ning-2026-uav-isac-secure-beamforming]]"
   - "[[chen-2025-swipt-mec-sac]]"
   - "[[du-2023-maddpg-service-placement-agin]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
@@ -64,7 +65,7 @@ updated: 2026-07-13
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author roster in the wiki currently links 53 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, anti-jamming control, and surveys:
+The most frequently recurring author roster in the wiki currently links 54 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -119,6 +120,8 @@ The most frequently recurring author roster in the wiki currently links 53 sourc
 - [[zhao-2025-gai-pls-survey]] - survey of generative AI for secure physical-layer communications.
 - [[fan-2026-directional-neighbor-discovery]] - directional neighbor discovery with power-delay optimization for UAV networks.
 - [[xie-2026-uav-irs-eppo]] - enhanced PPO trajectory control for an urban UAV-carried IRS.
+
+- [[ning-2026-uav-isac-secure-beamforming]] - robust UAV-ISAC sensing, jamming, trajectory, and secure beamforming.
 
 ## Contributions to this wiki
 

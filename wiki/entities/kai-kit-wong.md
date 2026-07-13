@@ -3,6 +3,7 @@ type: entity
 title: "Kai-Kit Wong"
 tags: [author, researcher, ieee-fellow, wireless-communications, university-college-london]
 related:
+  - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[zhu-2026-fas-uav-fbl]]"
   - "[[xiao-2025-star-ris-bidirectional-uav-mec]]"
   - "[[an-2024-multilayer-ris-hap-swipt]]"
@@ -17,7 +18,9 @@ updated: 2026-07-13
 
 IEEE Fellow and Chair Professor of Wireless Communications at University College London. The source biographies identify degrees from the Hong Kong University of Science and Technology and research spanning 5G-and-beyond wireless systems, fluid antennas, RIS, physical-layer security, wireless power transfer, mobile computing, and related communication technologies.
 
-Co-authored 6 sources in this wiki:
+Co-authored 7 sources in this wiki:
+
+- [[lu-2026-aoi-trajectory-channel]] - freshness-aware multi-UAV trajectory and channel selection under jamming.
 
 - [[zhu-2026-fas-uav-fbl]] - fluid-antenna diversity and overhead in finite-blocklength UAV relaying.
 - [[xiao-2025-star-ris-bidirectional-uav-mec]] - STAR-RIS bidirectional task offloading to UAV and terrestrial MEC servers.

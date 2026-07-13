@@ -3,6 +3,7 @@ type: concept
 title: "Cooperative Jamming"
 tags: [security, jamming, physical-layer-security, secrecy]
 related:
+  - "[[wen-2026-cooperative-jamming-uav]]"
   - "[[physical-layer-security]]"
   - "[[friendly-jamming-uav]]"
   - "[[ris-assisted-directional-jamming]]"

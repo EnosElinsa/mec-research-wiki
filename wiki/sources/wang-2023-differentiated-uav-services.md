@@ -16,6 +16,8 @@ related:
   - "[[maddpg]]"
   - "[[fairness-metrics-in-mec]]"
   - "[[zhaolong-ning]]"
+  - "[[xiaojie-wang]]"
+  - "[[lei-guo]]"
   - "[[ning-2023-madrl-uav-trajectory-differentiated-services]]"
   - "[[wang-2025-ctmig-task-migration-uav]]"
 created: 2026-07-13

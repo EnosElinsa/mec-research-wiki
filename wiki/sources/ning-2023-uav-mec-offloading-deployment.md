@@ -15,6 +15,8 @@ related:
   - "[[wang-2019-todetas-deployment-scheduling]]"
   - "[[pervez-2024-acm-multiuav-mec]]"
   - "[[zhaolong-ning]]"
+  - "[[xiaojie-wang]]"
+  - "[[lei-guo]]"
 created: 2026-07-07
 updated: 2026-07-13
 ---

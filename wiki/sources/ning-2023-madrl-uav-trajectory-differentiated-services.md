@@ -20,6 +20,8 @@ related:
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[bi-2025-sg-mapg]]"
   - "[[zhaolong-ning]]"
+  - "[[xiaojie-wang]]"
+  - "[[lei-guo]]"
   - "[[wang-2023-differentiated-uav-services]]"
   - "[[differentiated-uav-service-market]]"
 created: 2026-06-02

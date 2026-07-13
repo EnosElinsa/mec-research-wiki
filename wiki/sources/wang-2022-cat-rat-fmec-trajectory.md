@@ -16,8 +16,10 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
+  - "[[cunhua-pan]]"
+  - "[[nauman-aslam]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Deep Reinforcement Learning Based Dynamic Trajectory Control for UAV-Assisted Mobile Edge Computing

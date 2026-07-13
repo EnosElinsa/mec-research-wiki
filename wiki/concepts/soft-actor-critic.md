@@ -3,6 +3,7 @@ type: concept
 title: "Soft Actor-Critic (SAC)"
 tags: [drl, actor-critic, off-policy, maximum-entropy, continuous-action]
 related:
+  - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[masac]]"
   - "[[xie-2026-geoagg-hsac]]"
   - "[[ddpg]]"

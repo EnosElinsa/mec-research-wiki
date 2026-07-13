@@ -13,6 +13,9 @@ related:
   - "[[cooperative-isac-transceiver-beamforming]]"
   - "[[alternating-optimization-sdr-sca]]"
   - "[[uav-trajectory-control]]"
+  - "[[zhaolong-ning]]"
+  - "[[xiaojie-wang]]"
+  - "[[lei-guo]]"
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
   - "[[li-2026-control-based-uav-isac]]"
 created: 2026-07-13

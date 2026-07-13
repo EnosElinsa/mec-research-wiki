@@ -19,6 +19,8 @@ related:
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
   - "[[xu-2021-secure-uav-mec-dual-uav]]"
   - "[[zhaolong-ning]]"
+  - "[[xiaojie-wang]]"
+  - "[[lei-guo]]"
   - "[[secrecy-energy-efficiency]]"
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
 created: 2026-07-07

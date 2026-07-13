@@ -3,6 +3,7 @@ type: entity
 title: Kezhi Wang
 tags: [author, researcher, ieee-senior-member, uav-mec, drl]
 related:
+  - "[[wang-2023-drl-irs-uav-trajectory]]"
   - "[[wang-2022-cat-rat-fmec-trajectory]]"
   - "[[wang-2021-maddpg-multiuav-trajectory]]"
   - "[[wang-2019-todetas-deployment-scheduling]]"
@@ -15,7 +16,9 @@ updated: 2026-07-13
 
 IEEE Senior Member. Affiliated with the **Department of Computer and Information Sciences, Northumbria University** (Newcastle upon Tyne, U.K.; email `kezhi.wang@northumbria.ac.uk`) across the UAV-MEC papers in this wiki; he is frequently the corresponding author. (Per his in-parse bio: B.E./M.E. from Chongqing University, Ph.D. from the University of Warwick, formerly at the University of Essex.)
 
-Co-authored 4 sources in this wiki, all on UAV-assisted MEC trajectory/offloading/resource allocation:
+Co-authored 5 sources in this wiki across UAV-assisted MEC trajectory/offloading and IRS-assisted aerial communication:
+
+- [[wang-2023-drl-irs-uav-trajectory]] - DQN/DDPG UAV trajectory control with deterministic IRS selection and phase alignment.
 
 - [[wang-2022-cat-rat-fmec-trajectory]] — flying-MEC trajectory control via CAT (BCD convex) + RAT (twin-DQN + PER) (corresponding author).
 - [[wang-2021-maddpg-multiuav-trajectory]] — MADDPG multi-UAV trajectory planning for dual-fairness + energy (corresponding author).

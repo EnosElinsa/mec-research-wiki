@@ -3,6 +3,8 @@ type: concept
 title: Centralized Training, Decentralized Execution (CTDE)
 tags: [drl, multi-agent, training-paradigm]
 related:
+  - "[[lu-2026-aoi-trajectory-channel]]"
+  - "[[wen-2026-cooperative-jamming-uav]]"
   - "[[ma-pomdp]]"
   - "[[masac]]"
   - "[[zhang-2025-mcma-task-migration]]"

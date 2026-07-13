@@ -15,8 +15,10 @@ related:
   - "[[jains-fairness-index]]"
   - "[[wang-2022-cat-rat-fmec-trajectory]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
+  - "[[cunhua-pan]]"
+  - "[[nauman-aslam]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Multi-Agent Deep Reinforcement Learning-Based Trajectory Planning for Multi-UAV Assisted Mobile Edge Computing

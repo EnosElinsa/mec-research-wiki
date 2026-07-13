@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-13] Curated AoI channel control, finite-blocklength covert IRS, secure UAV-ISAC, DRL IRS trajectories, and cooperative jamming
+
+Added five source pages and four recurring-author entities while reusing the existing concept vocabulary:
+
+- [[lu-2026-aoi-trajectory-channel]] - Lu et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3658601`. SAC-style multi-agent trajectory/channel control minimizes a transmission-duration freshness proxy under same-channel UAV and jammer interference.
+- [[zhang-2026-irs-uav-covert-fbl]] - Zhang et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3585891`. BCD-SDR and lower-complexity PDDGP jointly control finite-blocklength covert UAV beamforming, IRS phases, and trajectory.
+- [[ning-2026-uav-isac-secure-beamforming]] - Ning et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3681639`. A triple-layer penalty-SCA/SCA/SDR framework senses and jams eavesdroppers while scheduling users and optimizing a 3-D path.
+- [[wang-2023-drl-irs-uav-trajectory]] - Wang et al. 2023, *IEEE TMC*, DOI `10.1109/TMC.2022.3200998`. DQN/DDPG controls UAV motion while nearest-IRS selection and closed-form phase alignment serve a moving UE.
+- [[wen-2026-cooperative-jamming-uav]] - Wen et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3590170`. MADDPG coordinates relay/jammer trajectories and powers against a mobile aerial eavesdropper under perfect or imperfect CSI.
+
+Matching recurring bylines and biographies established [[xiaojie-wang]], [[lei-guo]], [[cunhua-pan]], and [[nauman-aslam]]. Existing Qihui Wu, Ziye Jia, Fuhui Zhou, Kai-Kit Wong, Zhaolong Ning, Dusit Niyato, and Kezhi Wang rosters were extended. Yan Zhang remains unpromoted because the common name spans records whose identity was not re-audited here; the covert-paper Wei Zhang is explicitly distinct from the existing [[wei-zhang]] entity.
+
+Metadata notes: the AoI and secure-ISAC parses print their DOIs and publication years; exact-title records supplied final volumes/pages. The covert-IRS, DRL-IRS, and cooperative-jamming parses omit final publication headers, so exact-title Crossref/IEEE records supplied their year, venue, DOI, volume, and pages.
+
+Evidence caveats: the first paper evaluates `remaining upload / rate` rather than a full AoI recursion, underspecifies channel switching, and calls globally shared observations decentralized. The covert-IRS design uses a conservative Pinsker/KL covertness bound, SDR recovery, and LoS-only offline trajectory optimization. The secure-ISAC design proves bounded objective convergence, not global optimality, and builds a conservative uncertainty set from CRBs. The DRL-IRS paper learns only trajectory while selecting the nearest IRS and solving phases analytically, with no explicit terminal battery constraint. The cooperative-jamming parse has role/reward inconsistencies and missing equation regions. All five evaluations are simulation-only.
+
+Three low-concurrency extraction workers covered the first, second, and fifth papers while the third and fourth were extracted locally. The maintained `make_batches.py --batch 1` selector produced the explicit allowlist; no new recurring tooling need arose beyond the stable toolkit.
+
+Validation: `corpus_counts.py` reports **514 sources / 482 concepts / 118 entities / 612 raw folders**. `curation_status.py --dupes` leaves **97 genuinely new sources** for later batches. `linkcheck.py --orphans` reports zero dangling links; `process_refs.py` finds zero hits; `index_audit.py` covers all **1,166** catalogue-able pages exactly once; `frontmatter_audit.py` validates all **1,164** frontmatter pages; and `entity_roster_audit.py` reports zero overclaims (its 29 possible omissions remain informational, including the intentionally separate Wei Zhang namesake). All 12 wiki-tool unit tests and `git diff --check` pass. The local LLM Wiki health endpoint remains unavailable with HTTP **502**, so file-grounded CLI audits are the authoritative verification for this batch.
+
 ## [2026-07-13] Curated UAV-IRS collection, wireless-powered WSN flight, ISAC SAR, AoI-aware ISCC, and IKPP vehicular control
 
 Added five source pages, six concept pages, and three recurring-author entities:

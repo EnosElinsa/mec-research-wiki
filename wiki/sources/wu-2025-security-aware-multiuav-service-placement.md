@@ -15,8 +15,9 @@ related:
   - "[[cooperative-jamming]]"
   - "[[multi-agent-td3]]"
   - "[[centralized-training-decentralized-execution]]"
+  - "[[lei-guo]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Security-Aware Designs of Multi-UAV Deployment, Task Offloading and Service Placement in Edge Computing Networks

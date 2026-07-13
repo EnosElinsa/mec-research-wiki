@@ -3,6 +3,7 @@ type: concept
 title: "Covert Communication"
 tags: [security, physical-layer-security, stochastic-geometry, detection]
 related:
+  - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[deng-2025-covert-isac-trajectory]]"
   - "[[physical-layer-security]]"
   - "[[finite-blocklength-urllc]]"

@@ -3,6 +3,11 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[lu-2026-aoi-trajectory-channel]]"
+  - "[[zhang-2026-irs-uav-covert-fbl]]"
+  - "[[ning-2026-uav-isac-secure-beamforming]]"
+  - "[[wang-2023-drl-irs-uav-trajectory]]"
+  - "[[wen-2026-cooperative-jamming-uav]]"
   - "[[guo-2026-uav-wsn-completion-time]]"
   - "[[lv-2026-isac-sar-tlsp]]"
   - "[[liu-2025-aoi-iscc-five-stage]]"

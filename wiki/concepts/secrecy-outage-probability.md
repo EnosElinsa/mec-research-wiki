@@ -3,6 +3,7 @@ type: concept
 title: "Secrecy Outage Probability"
 tags: [security, metric, physical-layer-security, fading, secrecy]
 related:
+  - "[[wen-2026-cooperative-jamming-uav]]"
   - "[[physical-layer-security]]"
   - "[[secure-computation-efficiency]]"
   - "[[csi-estimation-error]]"

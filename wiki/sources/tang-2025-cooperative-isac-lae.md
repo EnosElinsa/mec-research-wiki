@@ -15,8 +15,9 @@ related:
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
   - "[[su-2024-sensing-aided-isac-pls]]"
   - "[[zhu-2024-crb-active-ris-isac]]"
+  - "[[cunhua-pan]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-13
 ---
 
 # Cooperative ISAC-Empowered Low-Altitude Economy

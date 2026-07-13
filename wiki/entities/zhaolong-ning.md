@@ -3,6 +3,8 @@ type: entity
 title: "Zhaolong Ning"
 tags: [author, researcher, ieee-senior-member, mobile-edge-computing, multi-uav, cqupt]
 related:
+  - "[[ning-2026-uav-isac-secure-beamforming]]"
+  - "[[wang-2026-robust-anti-uav-isac]]"
   - "[[wang-2023-differentiated-uav-services]]"
   - "[[ning-2023-madrl-uav-trajectory-differentiated-services]]"
   - "[[ning-2023-uav-mec-offloading-deployment]]"
@@ -20,7 +22,10 @@ updated: 2026-07-13
 
 IEEE Senior Member. Full professor in the College of Communication and Information Engineering at **Chongqing University of Posts and Telecommunications (CQUPT)**. He received a Ph.D. from Northeastern University in 2014 and was a research fellow at Kyushu University in 2013-2014. Matching degree, affiliation, email, and recurring-coauthor evidence ties the source records below to the same researcher.
 
-Co-authored 9 sources in this wiki across differentiated UAV services, multi-UAV MEC, traffic-aware SAGIN control, IRS-assisted communication, wireless-powered edge control, secure LAE scheduling, and collaborative inference:
+Co-authored 11 sources in this wiki across differentiated UAV services, multi-UAV MEC, traffic-aware SAGIN control, IRS-assisted communication, wireless-powered edge control, secure LAE scheduling, collaborative inference, and UAV-ISAC security:
+
+- [[ning-2026-uav-isac-secure-beamforming]] - robust UAV-ISAC sensing, jamming, trajectory, and secure beamforming.
+- [[wang-2026-robust-anti-uav-isac]] - cooperative multi-UAV anti-UAV sensing, tracking, and robust beamforming.
 
 - [[wang-2023-differentiated-uav-services]] - multi-agent imitation learning for competitive UAV service quantity, price, and deployment.
 - [[ning-2023-madrl-uav-trajectory-differentiated-services]] - distributed multi-UAV trajectory control for competing service providers.

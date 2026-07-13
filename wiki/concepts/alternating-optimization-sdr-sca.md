@@ -3,6 +3,8 @@ type: concept
 title: "Alternating Optimization with SDR and SCA"
 tags: [optimization, alternating-optimization, sdr, sca, non-convex, classical-solver]
 related:
+  - "[[zhang-2026-irs-uav-covert-fbl]]"
+  - "[[ning-2026-uav-isac-secure-beamforming]]"
   - "[[liu-2025-aoi-iscc-five-stage]]"
   - "[[lyu-2023-isac-maneuver-beamforming]]"
   - "[[li-2026-noma-uav-relay-planning]]"

@@ -16,8 +16,9 @@ related:
   - "[[drone-cell-3d-placement]]"
   - "[[guo-2023-mccco-multiuav-5g-offloading]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
+  - "[[cunhua-pan]]"
 created: 2026-06-01
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Energy Efficient Resource Allocation in UAV-Enabled Mobile Edge Computing Networks

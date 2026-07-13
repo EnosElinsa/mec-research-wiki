@@ -3,6 +3,7 @@ type: entity
 title: Fuhui Zhou
 tags: [author, researcher, ieee-senior-member, uav-mec, physical-layer-security]
 related:
+  - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[li-2026-la4h-uav-active-tracking]]"
@@ -15,7 +16,9 @@ updated: 2026-07-13
 
 IEEE Senior Member. Full Professor with the **College of Artificial Intelligence, Nanjing University of Aeronautics and Astronautics**, and affiliated with its Key Laboratory of Dynamic Cognitive System of Electromagnetic Spectrum Space; email `zhoufuhui@ieee.org`. Matching biographies across the sources identify the same researcher, with the 2018 paper reflecting an earlier career stage.
 
-Co-authored 4 sources in this wiki across wireless-powered MEC, UAV resource optimization, embodied tracking, and secure vehicular communication:
+Co-authored 5 sources in this wiki across wireless-powered MEC, UAV resource optimization, embodied tracking, secure vehicular communication, and freshness-aware UAV collection:
+
+- [[lu-2026-aoi-trajectory-channel]] - AoI-proxy trajectory and channel control for multi-UAV IoT collection under jamming.
 
 - [[zhou-2018-uav-wireless-powered-mec]] - foundational UAV-enabled wireless-powered MEC with partial/binary offloading and computation-rate maximization.
 - [[liu-2022-miso-uav-mec-trajectory]] - MISO UAV-MEC energy minimization through beamforming, compute control, power allocation, and trajectory design.
