@@ -16,12 +16,14 @@ related:
   - "[[salp-swarm-algorithm]]"
   - "[[secrecy-outage-probability]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
+  - "[[jiawei-huang]]"
+  - "[[aimin-wang]]"
   - "[[sun-2024-imssa-uav-secure-cb]]"
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[li-2023-secure-marine-iot-jamming]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # Dual AAV Cluster-Assisted Maritime Physical-Layer Secure Communications via Collaborative Beamforming

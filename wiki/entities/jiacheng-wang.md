@@ -19,15 +19,16 @@ related:
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
   - "[[zhao-2026-temporal-spectrum-cartography]]"
   - "[[xie-2026-uav-irs-eppo]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Jiacheng Wang
 
 IEEE Member. Affiliated with the **College of Computing and Data Science, Nanyang Technological University**, Singapore (email `jiacheng.wang@ntu.edu.sg` / `jcwang_cq@foxmail.com`) — consistent across his papers in this wiki.
 
-Co-authored 16 sources in this wiki:
+Co-authored 17 sources in this wiki:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
@@ -46,6 +47,8 @@ Co-authored 16 sources in this wiki:
 - [[zhao-2026-temporal-spectrum-cartography]] — temporal spectrum cartography for low-altitude economy networks via RecMAE and a multi-agent diffusion policy.
 
 - [[xie-2026-uav-irs-eppo]] - urban UAV-carried IRS trajectory control with enhanced PPO.
+
+- [[huang-2026-uav-friendly-jamming-transsac]] - transformer-enhanced SAC for satellite-maritime friendly jamming.
 
 ## Contributions to this wiki
 

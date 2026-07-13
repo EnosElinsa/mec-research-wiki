@@ -31,6 +31,7 @@ related:
   - "[[secrecy-energy-efficiency]]"
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
   - "[[meng-2026-fullspace-star-ris-secure]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

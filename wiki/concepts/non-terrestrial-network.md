@@ -11,8 +11,9 @@ related:
   - "[[service-caching-mec]]"
   - "[[three-dimensional-frequency-reuse]]"
   - "[[prabhath-not-in-parse-3d-space-spectrum-utilization]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Non-Terrestrial Network (NTN)

@@ -10,6 +10,7 @@ related:
   - "[[hybrid-action-beats-pure-drl]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
   - "[[xie-2026-geoagg-hsac]]"
+  - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

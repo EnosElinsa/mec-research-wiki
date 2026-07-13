@@ -52,6 +52,7 @@ related:
   - "[[ground-air-cooperative-isac-detection]]"
   - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[dual-objective-multi-uav-isac]]"
+  - "[[jiang-2026-sensing-assisted-uav-tracking]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

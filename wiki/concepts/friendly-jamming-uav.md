@@ -11,8 +11,9 @@ related:
   - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
   - "[[wu-2026-secure-split-offloading-ci]]"
   - "[[wu-2025-security-aware-multiuav-service-placement]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Friendly-Jamming UAV

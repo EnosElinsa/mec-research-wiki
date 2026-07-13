@@ -14,6 +14,8 @@ related:
   - "[[liao-2025-ris-uav-usv-resource-allocation]]"
   - "[[liao-2026-aoi-ris-uav-usv-mec]]"
   - "[[wang-2026-noma-marine-data-computation]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

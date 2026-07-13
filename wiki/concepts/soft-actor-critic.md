@@ -18,6 +18,7 @@ related:
   - "[[li-2026-aerial-ris-trajectory-phase]]"
   - "[[bai-2026-aoi-uav-isac]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---

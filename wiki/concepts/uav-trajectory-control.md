@@ -114,6 +114,10 @@ related:
   - "[[wang-2026-robust-anti-uav-isac]]"
   - "[[jing-2024-isac-trajectory-localization]]"
   - "[[multi-stage-estimate-design-sense-trajectory]]"
+  - "[[samir-2021-uav-cell-free-coverage]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[jiang-2026-sensing-assisted-uav-tracking]]"
+  - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

@@ -9,6 +9,7 @@ related:
   - "[[zhang-2025-vnf-sgin-dql]]"
   - "[[pham-2026-vnf-control-loop]]"
   - "[[routing-vnf-scaling-control-loop]]"
+  - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---

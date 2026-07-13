@@ -9,8 +9,9 @@ related:
   - "[[csi-estimation-error]]"
   - "[[mmwave-radar-sensing]]"
   - "[[cellular-connected-uav]]"
+  - "[[jiang-2026-sensing-assisted-uav-tracking]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Historical-Echo Predictive Beamforming

@@ -13,6 +13,7 @@ related:
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
   - "[[beishenalieva-2026-secrecy-aware-uav-path-planning]]"
   - "[[hua-2026-ddrl-content-delivery]]"
+  - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

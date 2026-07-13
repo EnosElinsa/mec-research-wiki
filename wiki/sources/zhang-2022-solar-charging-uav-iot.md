@@ -15,6 +15,7 @@ related:
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
+  - "[[basem-shihada]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

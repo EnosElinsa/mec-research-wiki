@@ -7,8 +7,9 @@ related:
   - "[[traffic-aware-offloading]]"
   - "[[hierarchical-aerial-mec]]"
   - "[[chen-2024-thoas-traffic-aware-sagin]]"
+  - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-13
 ---
 
 # Network Slicing

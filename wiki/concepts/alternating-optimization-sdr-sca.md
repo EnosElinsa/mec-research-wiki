@@ -39,6 +39,7 @@ related:
   - "[[wang-2026-robust-anti-uav-isac]]"
   - "[[wang-2025-cellular-uav-cooperative-detection]]"
   - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
+  - "[[jiang-2026-sensing-assisted-uav-tracking]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

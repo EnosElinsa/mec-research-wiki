@@ -23,6 +23,7 @@ related:
   - "[[ground-air-cooperative-isac-detection]]"
   - "[[guo-2026-event-triggered-sinr-navigation]]"
   - "[[challita-2019-cellular-uav-interference-drl]]"
+  - "[[jiang-2026-sensing-assisted-uav-tracking]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---

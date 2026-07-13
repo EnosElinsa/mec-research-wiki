@@ -1,5 +1,27 @@
 # Research Log
 
+## [2026-07-13] Curated vehicular UAV coverage, maritime jamming and slicing, predictive tracking, and collaborative inspection
+
+Added five source pages, six reusable concepts, and three recurring-author entities:
+
+- [[samir-2021-uav-cell-free-coverage]] - Samir et al. 2021, *IEEE TMC*, DOI `10.1109/TMC.2020.2991326`. Centralized DDPG dispatches energy-constrained UAV base stations along an infrastructure-unavailable highway.
+- [[huang-2026-uav-friendly-jamming-transsac]] - Huang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3631861`. Transformer-enhanced SAC and [[multi-armed-bandit-objective-weighting]] control UAV jamming for a satellite-maritime link.
+- [[jiang-2026-sensing-assisted-uav-tracking]] - Jiang et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3696638`. EKF tracking, outage approximations, bisection, AO, and SCA couple sensing time, beam reliability, and controlled UAV position.
+- [[zhang-2026-msialns-air-ground-inspection]] - Zhang et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3647141`. [[adaptive-large-neighborhood-search]] handles bi-layer node conflicts, multi-task sorties, and cross-vehicle UAV recovery.
+- [[ammar-2026-oran-maritime-slicing]] - Ammar et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3626785`. [[advantage-actor-critic]] and PPO jointly control [[open-radio-access-network|O-RAN]] slicing, VNF deployment, resources, and UAV trajectories.
+
+The new concept layer also adds [[vehicle-uav-collaborative-inspection]] and [[sensing-assisted-predictive-beamforming]]. Stable Jilin coauthor/biography evidence established [[jiawei-huang]] and [[aimin-wang]] across two maritime-security sources; matching KAUST affiliation and ORCID established [[basem-shihada]] across solar-aware UAV communication and O-RAN maritime slicing. Existing Geng Sun, Jiahui Li, Jiacheng Wang, Dusit Niyato, Victor C. M. Leung, Qingqing Wu, and Derrick Wing Kwan Ng rosters were extended.
+
+Metadata notes: the friendly-jamming parse supplies DOI and current-version year but omits the journal name; the inspection parse supplies its DOI; the vehicular-coverage, predictive-tracking, and maritime-slicing parses omit final publication records. Exact-title Crossref records supplied or confirmed all five final venues, years, volumes, issues, and pages.
+
+Evidence caveats: the vehicular study uses simulation, orthogonalized interference-free links, a damaged optimization display, and “cell-free” in the infrastructure-unavailable sense rather than cell-free massive MIMO. TransSAC is transformer-enhanced SAC rather than a generative solution model; its ideal secrecy comparator is not a global optimum, and the main curves are figure-only. Predictive tracking assumes small state errors, one fixed-altitude UAV, and local/approximated solvers; its advantage disappears outside the prediction-MSE-dominant case. M-SIALNS uses Solomon-derived synthetic benchmarks and modeled inspection cases rather than field trials. The O-RAN study is simulation-only, coarsely discretizes mixed actions, and obtains local/stationary policy guarantees rather than global optimality.
+
+Independent review corrected the inspection benchmark identifier to `R1_6_1-U500-R150-(8:80)`, removed TransSAC from vectorial/Pareto MORL concepts because it uses dynamic linear scalarization, removed the non-MEC vehicular-coverage paper from [[vehicular-mec]], distinguished motion-model prediction from echo-assisted EKF refinement, and removed an SFC link because the O-RAN paper deploys individual VNFs without modeling an ordered function chain.
+
+Three low-concurrency workers extracted the vehicular-coverage, friendly-jamming, and predictive-tracking papers; the inspection and maritime-slicing papers were extracted locally. The maintained batch selector supplied the explicit five-paper allowlist, and the existing toolkit covered all recurring checks without new reusable logic.
+
+Validation: `corpus_counts.py` reports **519 sources / 488 concepts / 121 entities / 612 raw folders**. `curation_status.py --dupes` leaves **92 genuinely new sources** for later batches. `linkcheck.py --orphans` reports zero dangling links; `process_refs.py` finds zero hits; `index_audit.py` covers all **1,180** catalogue-able pages exactly once; `frontmatter_audit.py` validates all **1,178** frontmatter pages; and `entity_roster_audit.py` reports zero overclaims (29 possible omissions remain advisory namesake/legacy cases). All 12 wiki-tool unit tests and `git diff --check` pass. The local LLM Wiki health endpoint remains unavailable with HTTP **502**, so file-grounded CLI audits are the authoritative verification for this batch.
+
 ## [2026-07-13] Curated AoI channel control, finite-blocklength covert IRS, secure UAV-ISAC, DRL IRS trajectories, and cooperative jamming
 
 Added five source pages and four recurring-author entities while reusing the existing concept vocabulary:

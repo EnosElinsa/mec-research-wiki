@@ -12,6 +12,7 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[zhao-2026-hcdrl-ga-sagin-sar]]"
   - "[[zhou-2026-gl-ahg-coverage-planning]]"
+  - "[[zhang-2026-msialns-air-ground-inspection]]"
 created: 2026-07-07
 updated: 2026-07-13
 ---

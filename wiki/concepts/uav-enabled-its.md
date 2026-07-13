@@ -20,6 +20,7 @@ related:
   - "[[speed-coordinated-robust-optimization-control]]"
   - "[[fatemidokht-2021-vru-vanet-routing]]"
   - "[[uav-assisted-vanet-routing]]"
+  - "[[samir-2021-uav-cell-free-coverage]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

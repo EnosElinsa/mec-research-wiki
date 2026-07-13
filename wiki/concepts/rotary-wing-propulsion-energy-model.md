@@ -26,6 +26,9 @@ related:
   - "[[fu-2026-uav-fl-user-grouping]]"
   - "[[zhang-2026-air-sea-isac-inspection]]"
   - "[[jing-2024-isac-trajectory-localization]]"
+  - "[[samir-2021-uav-cell-free-coverage]]"
+  - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
