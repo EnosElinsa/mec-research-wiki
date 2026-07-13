@@ -3,6 +3,11 @@ type: concept
 title: "Physical Layer Security (PLS)"
 tags: [security, secrecy-rate, eavesdropper, beamforming, jamming]
 related:
+  - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
+  - "[[li-2026-credit-aware-uav-irs-secrecy]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
+  - "[[feng-2026-secure-short-packet-noma-relay]]"
   - "[[li-2021-robust-ris-uav-secrecy]]"
   - "[[ning-2026-uav-isac-secure-beamforming]]"
   - "[[wen-2026-cooperative-jamming-uav]]"

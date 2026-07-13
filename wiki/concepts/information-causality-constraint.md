@@ -3,6 +3,7 @@ type: concept
 title: "Information-Causality Constraint"
 tags: [relaying, buffering, optimization-constraint, uav-communications]
 related:
+  - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[uav-mobile-relaying]]"
   - "[[uav-trajectory-control]]"
   - "[[alternating-optimization-sdr-sca]]"
@@ -12,7 +13,7 @@ related:
   - "[[zhang-2022-uav-relay-substitution]]"
   - "[[uav-substitution-relaying]]"
 created: 2026-06-01
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Information-Causality Constraint

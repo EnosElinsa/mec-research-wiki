@@ -21,8 +21,9 @@ related:
   - "[[qin-2025-urllc-noma-uav-iscc]]"
   - "[[sun-2024-active-passive-ris-receiver]]"
   - "[[dusit-niyato]]"
+  - "[[huabing-lu]]"
 created: 2026-07-06
-updated: 2026-07-10
+updated: 2026-07-14
 ---
 
 # Age of Information (AoI)-Aware Joint Optimization for Active RIS and NOMA-Assisted AGMEC Networks

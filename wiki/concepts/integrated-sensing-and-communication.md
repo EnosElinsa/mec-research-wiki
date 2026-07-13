@@ -3,6 +3,7 @@ type: concept
 title: "Integrated Sensing and Communication (ISAC)"
 tags: [isac, dual-function, beamforming, 6g]
 related:
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[zhu-2025-green-isac-q-learning]]"
   - "[[huang-2026-star-ris-nearfield-isac]]"
   - "[[ning-2026-uav-isac-secure-beamforming]]"

@@ -7,13 +7,14 @@ url: "https://doi.org/10.1109/TVT.2024.3485182"
 venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
 tags: [source, uav-mec, multi-uav-assisted-mec, trajectory-optimization, flight-dynamics, maddpg, blockchain, resource-allocation]
 related:
+  - "[[haijun-zhang]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[uav-trajectory-control]]"
   - "[[centralized-training-decentralized-execution]]"
   - "[[blockchain-for-fl-aggregation]]"
   - "[[maddpg]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Dynamic Trajectory Design for Multi-UAV-Assisted Mobile Edge Computing

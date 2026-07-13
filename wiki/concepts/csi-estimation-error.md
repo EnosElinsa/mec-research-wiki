@@ -3,6 +3,7 @@ type: concept
 title: "CSI Estimation Error"
 tags: [channel-state-information, robust, uncertainty, communication]
 related:
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[shah-2026-cellfree-mimo-fap-control]]"
   - "[[distributionally-robust-optimization]]"
   - "[[chance-constraint]]"
@@ -15,7 +16,7 @@ related:
   - "[[jin-2026-jitter-aware-uav-comp]]"
   - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # CSI Estimation Error

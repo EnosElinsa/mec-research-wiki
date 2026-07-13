@@ -20,15 +20,16 @@ related:
   - "[[li-2025-omrp-cb-iot]]"
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Jiahui Li
 
 IEEE Member (Student Member on earlier papers). Affiliated with the **College of Computer Science and Technology, Jilin University** (Changchun, China; email `lijiahui0803@foxmail.com` / `lijiahui@jlu.edu.cn`); some papers also list the **Pillar of Engineering Systems and Design, Singapore University of Technology and Design**. Consistent identity across his papers in this wiki, often a corresponding author for the Jilin-University group.
 
-Co-authored 17 sources in this wiki:
+Co-authored 18 sources in this wiki:
 
 - [[sun-2021-temcmop-uav-cb]] — earliest UAV collaborative-beamforming entry; time + VAA-time + energy multi-objective optimization (TEMCMOP) via IMOALO.
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
@@ -49,6 +50,7 @@ Co-authored 17 sources in this wiki:
 - [[xie-2026-uav-irs-eppo]] - urban UAV-carried IRS trajectory control with enhanced PPO.
 
 - [[huang-2026-uav-friendly-jamming-transsac]] - transformer-enhanced SAC for satellite-maritime friendly jamming.
+- [[huang-2026-intelligent-jamming-maritime]] - secure and energy-aware maritime UAV jamming with SAC-CVAE.
 
 ## Contributions to this wiki
 

@@ -3,6 +3,7 @@ type: concept
 title: "Fixed-Wing UAV Propulsion Energy Model"
 tags: [uav, energy-model, propulsion, trajectory-optimization, fixed-wing]
 related:
+  - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[wen-2026-cooperative-jamming-uav]]"
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[uav-trajectory-control]]"

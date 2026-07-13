@@ -16,8 +16,10 @@ related:
   - "[[hybrid-action-decision-making]]"
   - "[[centralized-training-decentralized-execution]]"
   - "[[haijun-zhang]]"
+  - "[[xulong-li]]"
+  - "[[wei-huangfu]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Deep Reinforcement Learning Based Resource Allocation and Trajectory Planning in Integrated Sensing and Communications UAV Network

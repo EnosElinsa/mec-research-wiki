@@ -22,8 +22,9 @@ related:
   - "[[liu-2025-mad2rl-dnn-vec]]"
   - "[[dusit-niyato]]"
   - "[[xuemin-shen]]"
+  - "[[xianbin-wang]]"
 created: 2026-07-06
-updated: 2026-07-10
+updated: 2026-07-14
 ---
 
 # A Lyapunov-Guided Diffusion-Based Reinforcement Learning Approach for UAV-Assisted Vehicular Networks With Delayed CSI Feedback

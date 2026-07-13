@@ -21,8 +21,9 @@ related:
   - "[[zhang-2025-three-tier-maritime-offloading]]"
   - "[[you-2017-meco-resource-allocation]]"
   - "[[wang-2016-partial-offloading-dvs]]"
+  - "[[jiahao-huo]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-14
 ---
 
 # Partial Computation Offloading in Satellite-Based Three-Tier Cloud-Edge Integration Networks

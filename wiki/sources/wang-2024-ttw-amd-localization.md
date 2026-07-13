@@ -7,12 +7,13 @@ url: "https://doi.org/10.1109/JSAC.2023.3322819"
 venue: "IEEE Journal on Selected Areas in Communications (IEEE JSAC)"
 tags: [source, indoor-localization, channel-state-information, through-the-wall, passive-sensing, isac, smart-warehouse]
 related:
+  - "[[jiacheng-wang]]"
   - "[[integrated-sensing-computation-communication]]"
   - "[[dusit-niyato]]"
   - "[[cramer-rao-bound]]"
   - "[[zehui-xiong]]"
 created: 2026-06-04
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Through the Wall Detection and Localization of Autonomous Mobile Device in Indoor Scenario

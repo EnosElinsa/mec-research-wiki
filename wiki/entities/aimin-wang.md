@@ -5,18 +5,20 @@ tags: [author, researcher, jilin-university, maritime-security]
 related:
   - "[[huang-2025-dual-aav-maritime-secure-cb]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Aimin Wang
 
 Professor at **Jilin University**. The matching name, Jilin biography, and stable Jiawei Huang / Geng Sun / Jiahui Li / Jiacheng Wang / Dusit Niyato coauthor cluster establish the same identity across both sources.
 
-Co-authored two sources in this wiki:
+Co-authored three sources in this wiki:
 
 - [[huang-2025-dual-aav-maritime-secure-cb]] - dual-AAV-cluster maritime secure communication through collaborative beamforming.
 - [[huang-2026-uav-friendly-jamming-transsac]] - transformer-enhanced SAC for satellite-maritime friendly jamming.
+- [[huang-2026-intelligent-jamming-maritime]] - advantage-conditioned CVAE/SAC control for secure maritime UAV jamming.
 
 ## Contributions to this wiki
 

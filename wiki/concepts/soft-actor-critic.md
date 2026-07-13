@@ -3,6 +3,7 @@ type: concept
 title: "Soft Actor-Critic (SAC)"
 tags: [drl, actor-critic, off-policy, maximum-entropy, continuous-action]
 related:
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[masac]]"
   - "[[xie-2026-geoagg-hsac]]"
@@ -20,7 +21,7 @@ related:
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Soft Actor-Critic (SAC)

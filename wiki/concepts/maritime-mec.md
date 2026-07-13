@@ -3,6 +3,7 @@ type: concept
 title: "Maritime MEC"
 tags: [maritime, mec, msar, hap, mass, ocean]
 related:
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[hierarchical-aerial-mec]]"
   - "[[high-altitude-platform-station]]"
   - "[[maritime-mec-architectures]]"
@@ -17,7 +18,7 @@ related:
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Maritime MEC

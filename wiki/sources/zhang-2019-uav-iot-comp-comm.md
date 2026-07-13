@@ -14,8 +14,11 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
+  - "[[lin-xiao]]"
+  - "[[yu-xu]]"
+  - "[[dingcheng-yang]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-14
 ---
 
 # Joint Computation and Communication Design for UAV-Assisted Mobile Edge Computing in IoT

@@ -3,6 +3,10 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
+  - "[[li-2026-credit-aware-uav-irs-secrecy]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[dang-2026-uav-fl-energy]]"
   - "[[v-2026-pb-papp-survivor-detection]]"

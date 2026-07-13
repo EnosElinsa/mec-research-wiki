@@ -3,11 +3,12 @@ type: concept
 title: "Closed-Form IRS Phase Alignment"
 tags: [intelligent-reflecting-surface, phase-shift, action-space-reduction, beamforming]
 related:
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[uav-mounted-ris]]"
   - "[[fixed-point-irs-passive-beamforming]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Closed-Form IRS Phase Alignment

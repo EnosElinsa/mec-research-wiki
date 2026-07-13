@@ -3,6 +3,7 @@ type: concept
 title: "Robust RIS-Assisted UAV Secrecy"
 tags: [uav-communications, ris, physical-layer-security, imperfect-csi, robust-optimization]
 related:
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[li-2021-robust-ris-uav-secrecy]]"
   - "[[intelligent-reflecting-surface]]"
   - "[[physical-layer-security]]"

@@ -3,6 +3,7 @@ type: concept
 title: "Multi-Objective Reinforcement Learning (MORL)"
 tags: [drl, multi-objective, pareto]
 related:
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[multi-objective-mdp-vectorial-reward]]"
   - "[[evolutionary-reinforcement-learning]]"
   - "[[ppo]]"
@@ -11,7 +12,7 @@ related:
   - "[[contextual-momdp]]"
   - "[[yang-2025-generalizable-pareto-offloading]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Multi-Objective Reinforcement Learning (MORL)

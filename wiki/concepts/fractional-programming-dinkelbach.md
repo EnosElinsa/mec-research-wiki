@@ -3,6 +3,8 @@ type: concept
 title: Fractional Programming and Dinkelbach Transform
 tags: [optimization, fractional-programming, theory]
 related:
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
+  - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[lyapunov-optimization]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[xiao-2025-star-ris-bidirectional-uav-mec]]"
@@ -24,7 +26,7 @@ related:
   - "[[lu-2026-icsn-beamforming]]"
   - "[[crb-guided-angular-confidence-beamforming]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Fractional Programming and Dinkelbach Transform

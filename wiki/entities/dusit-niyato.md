@@ -63,6 +63,7 @@ related:
   - "[[feng-2026-aerial-ris-secure]]"
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[huang-2026-star-ris-nearfield-isac]]"
+  - "[[feng-2026-secure-short-packet-noma-relay]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---
@@ -135,6 +136,7 @@ The most frequently recurring author roster in the wiki currently links 60 sourc
 - [[feng-2026-aerial-ris-secure]] - conformal-symplectic and attention-enhanced aerial-RIS secure control.
 - [[li-2026-full-duplex-noma-uav-relay]] - robust full-duplex NOMA UAV relaying under stochastic position error.
 - [[huang-2026-star-ris-nearfield-isac]] - near-field air-ground ISAC with a semi-passive STAR-RIS.
+- [[feng-2026-secure-short-packet-noma-relay]] - finite-blocklength secure NOMA delivery through a multi-antenna UAV relay.
 
 ## Contributions to this wiki
 

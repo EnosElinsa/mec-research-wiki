@@ -3,6 +3,8 @@ type: concept
 title: "UAV Mobile Relaying"
 tags: [uav-communications, relaying, trajectory-optimization, cooperative-communication]
 related:
+  - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
+  - "[[feng-2026-secure-short-packet-noma-relay]]"
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[xu-2026-mrlmn-llm-multihop]]"
   - "[[uav-trajectory-control]]"

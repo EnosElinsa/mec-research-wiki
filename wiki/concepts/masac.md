@@ -3,11 +3,12 @@ type: concept
 title: MASAC (Multi-Agent Soft Actor-Critic)
 tags: [drl, multi-agent, off-policy]
 related:
+  - "[[li-2026-credit-aware-uav-irs-secrecy]]"
   - "[[qin-2025-bcuav-masac]]"
   - "[[ctde-actor-critic-backbones-in-mec]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # MASAC (Multi-Agent Soft Actor-Critic)

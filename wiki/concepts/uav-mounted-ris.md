@@ -3,6 +3,8 @@ type: concept
 title: "UAV-Mounted RIS"
 tags: [intelligent-reflecting-surface, uav, aerial, deployment, 6g]
 related:
+  - "[[guo-2026-irs-uav-isac-secrecy]]"
+  - "[[li-2026-credit-aware-uav-irs-secrecy]]"
   - "[[zhao-2026-uav-irs-data-collection]]"
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"

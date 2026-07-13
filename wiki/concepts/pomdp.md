@@ -3,13 +3,14 @@ type: concept
 title: POMDP (Partially Observable MDP)
 tags: [drl, theory]
 related:
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[ppo]]"
   - "[[j-ppo]]"
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[ma-pomdp]]"
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-07-14
 ---
 
 # POMDP (Partially Observable Markov Decision Process)

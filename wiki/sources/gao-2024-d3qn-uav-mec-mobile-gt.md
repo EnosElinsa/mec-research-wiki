@@ -18,8 +18,9 @@ related:
   - "[[gauss-markov-mobility-model]]"
   - "[[van-hasselt-2016-double-dqn]]"
   - "[[zhan-2020-completion-time-energy-uav-mec]]"
+  - "[[dingcheng-yang]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-14
 ---
 
 # UAV-Assisted MEC System With Mobile Ground Terminals: DRL-Based Joint Terminal Scheduling and UAV 3D Trajectory Design

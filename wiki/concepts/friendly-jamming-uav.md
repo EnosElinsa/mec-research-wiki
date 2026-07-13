@@ -3,6 +3,7 @@ type: concept
 title: "Friendly-Jamming UAV"
 tags: [security, jamming, uav, secrecy, pls]
 related:
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[physical-layer-security]]"
   - "[[uav-trajectory-control]]"
   - "[[benaya-2025-aerial-isac-haps]]"
@@ -13,7 +14,7 @@ related:
   - "[[wu-2025-security-aware-multiuav-service-placement]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Friendly-Jamming UAV

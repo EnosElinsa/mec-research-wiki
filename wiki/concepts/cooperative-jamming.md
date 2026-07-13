@@ -3,6 +3,7 @@ type: concept
 title: "Cooperative Jamming"
 tags: [security, jamming, physical-layer-security, secrecy]
 related:
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[wen-2026-cooperative-jamming-uav]]"
   - "[[physical-layer-security]]"
   - "[[friendly-jamming-uav]]"
@@ -11,7 +12,7 @@ related:
   - "[[noma]]"
   - "[[li-2023-secure-marine-iot-jamming]]"
 created: 2026-05-31
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Cooperative Jamming

@@ -21,15 +21,17 @@ related:
   - "[[xie-2026-uav-irs-eppo]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[jin-2026-jitter-aware-uav-comp]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
+  - "[[wang-2024-ttw-amd-localization]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Jiacheng Wang
 
 IEEE Member. Affiliated with the **College of Computing and Data Science, Nanyang Technological University**, Singapore (email `jiacheng.wang@ntu.edu.sg` / `jcwang_cq@foxmail.com`) — consistent across his papers in this wiki.
 
-Co-authored 18 sources in this wiki:
+Co-authored 20 sources in this wiki:
 
 - [[chen-2025-swipt-mec-sac]] — energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[wang-2025-lae-network-survey]] — survey of low-altitude economy networks.
@@ -51,6 +53,8 @@ Co-authored 18 sources in this wiki:
 
 - [[huang-2026-uav-friendly-jamming-transsac]] - transformer-enhanced SAC for satellite-maritime friendly jamming.
 - [[jin-2026-jitter-aware-uav-comp]] - jitter-aware channel prediction for distributed UAV CoMP transmission.
+- [[huang-2026-intelligent-jamming-maritime]] - advantage-conditioned generative control for maritime friendly jamming.
+- [[wang-2024-ttw-amd-localization]] - through-the-wall sensing and localization of autonomous mobile devices.
 
 ## Contributions to this wiki
 

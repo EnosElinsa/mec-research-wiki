@@ -22,8 +22,9 @@ related:
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[parameter-sharing-marl]]"
+  - "[[xianbin-wang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Enhancing A2G Robustness in Energy-Constrained Multi-UAV Networks: MADRL for Trajectory Control and Resource Allocation

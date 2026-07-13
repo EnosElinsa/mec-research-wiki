@@ -3,13 +3,14 @@ type: concept
 title: "Secrecy Energy Efficiency"
 tags: [security, energy-efficiency, secrecy-rate, physical-layer-security, fractional-programming]
 related:
+  - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[physical-layer-security]]"
   - "[[fractional-programming-dinkelbach]]"
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[wang-2026-secure-reliable-uav-mec]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Secrecy Energy Efficiency

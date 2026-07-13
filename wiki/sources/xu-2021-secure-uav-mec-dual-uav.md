@@ -13,6 +13,8 @@ related:
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
   - "[[yuanwei-liu]]"
   - "[[meixia-tao]]"
+  - "[[yu-xu]]"
+  - "[[dingcheng-yang]]"
 created: 2026-06-04
 updated: 2026-07-14
 ---

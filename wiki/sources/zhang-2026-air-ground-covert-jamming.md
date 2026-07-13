@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TMC.2026.3673234"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, covert-communication, physical-layer-security, cooperative-jamming, uav-mounted-ris, uav-mobile-relaying, finite-blocklength-urllc, ddqn, energy-efficiency]
 related:
+  - "[[weijie-yuan]]"
   - "[[ris-assisted-directional-jamming]]"
   - "[[covert-communication]]"
   - "[[cooperative-jamming]]"
@@ -21,7 +22,7 @@ related:
   - "[[ma-2024-covert-mmwave-finite-blocklength]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Air-Ground Cooperative Covert Transmission: A Jamming Dynamic Management and Security Enhancement Approach

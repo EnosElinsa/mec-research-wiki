@@ -18,8 +18,9 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[chen-2026-cargo-uav-pickup-lae]]"
   - "[[lee-2026-uav-delivery-time-energy]]"
+  - "[[dingcheng-yang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Energy Minimization in UAV-Enabled Cargo Pickup Systems: A Radio Map-Aided Hierarchical Optimization Framework

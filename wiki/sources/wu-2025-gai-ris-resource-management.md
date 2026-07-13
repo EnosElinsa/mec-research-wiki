@@ -7,12 +7,13 @@ url: "https://doi.org/10.1109/TCCN.2024.3519384"
 venue: "IEEE Transactions on Cognitive Communications and Networking (IEEE TCCN)"
 tags: [source, ris, resource-management, generative-ai, distributional-reinforcement-learning, channel-estimation, 6g, energy-efficiency]
 related:
+  - "[[haijun-zhang]]"
   - "[[active-ris]]"
   - "[[generative-diffusion-model]]"
   - "[[distributional-reinforcement-learning]]"
   - "[[graph-based-resource-management]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # GAI-Based Resource Management in RIS-Aided Next-Generation Network and Communication

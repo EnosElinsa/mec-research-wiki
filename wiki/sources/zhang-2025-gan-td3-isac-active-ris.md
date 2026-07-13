@@ -16,8 +16,9 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
   - "[[george-k-karagiannidis]]"
+  - "[[chengwen-xing]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Generative-Adversarial-Network-Enhanced DRL for ISAC With Double Active RISs
