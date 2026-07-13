@@ -21,8 +21,10 @@ related:
   - "[[chen-2026-sdhfl-completion-time]]"
   - "[[semi-decentralized-hybrid-federated-learning]]"
   - "[[fu-2026-uav-fl-user-grouping]]"
+  - "[[dang-2026-uav-fl-energy]]"
+  - "[[v-2026-pb-papp-survivor-detection]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Federated Learning (FL)
@@ -42,3 +44,5 @@ This is the base concept underlying the wiki's narrower [[federated-reinforcemen
 [[chen-2026-sdhfl-completion-time]] adds [[semi-decentralized-hybrid-federated-learning]]: devices reach D2D model consensus inside geographic clusters, while a UAV asynchronously aggregates selected cluster models and jointly controls mobility and communication resources for completion time.
 
 [[fu-2026-uav-fl-user-grouping]] groups interfering clients with DBSCAN, links participation/data volume to an expected-global-loss bound, and jointly controls UAV trajectory, hover time, UE power, and local data for energy-efficient synchronous aggregation.
+
+[[dang-2026-uav-fl-energy]] instead keeps simultaneous inter-user interference explicit while jointly controlling local training resources and rotary-wing placement under a return-energy constraint. [[v-2026-pb-papp-survivor-detection]] uses simple coefficient averaging in a hierarchical disaster-search architecture; its [[tree-structured-weight-synthesis]] is narrower than general FL and is paired with prediction-guided routing.

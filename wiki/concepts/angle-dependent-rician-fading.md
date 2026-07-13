@@ -7,8 +7,9 @@ related:
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
   - "[[you-2019-rician-uav-data-harvesting]]"
+  - "[[yu-2026-ris-uav-iab-outage]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Angle-Dependent Rician Fading

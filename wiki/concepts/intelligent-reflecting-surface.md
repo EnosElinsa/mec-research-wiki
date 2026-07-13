@@ -29,8 +29,9 @@ related:
   - "[[beyond-diagonal-ris]]"
   - "[[huroon-2026-bd-ris-rsma-uav]]"
   - "[[mihertie-2026-aerial-irs-rsma-ee]]"
+  - "[[yu-2026-ris-uav-iab-outage]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Intelligent Reflecting Surface (IRS)

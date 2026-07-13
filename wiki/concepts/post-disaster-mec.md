@@ -15,8 +15,9 @@ related:
   - "[[tian-2026-joint-localization-communication]]"
   - "[[joint-localization-and-communication]]"
   - "[[su-2026-three-tier-uav-capacity]]"
+  - "[[v-2026-pb-papp-survivor-detection]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Post-Disaster MEC
@@ -38,6 +39,7 @@ The MEC operating regime where ground infrastructure is partially or wholly dest
 - **Resilient edge storage** — UAVs can cache coded data blocks so users recover files even when only a subset of UAVs is reachable. See [[erasure-coded-edge-storage]] and [[huang-2026-erasure-coded-uav-storage]].
 - **Persistent rotating backhaul** - [[liu-2026-usp-nfrp-emergency-communication]] uses [[persistent-emergency-uav-swarm-service]] to rotate fixed-wing aircraft through access/relay tasks while repairing the aerial tree topology during replacements.
 - **Three-tier capacity provisioning** - [[su-2026-three-tier-uav-capacity]] couples NOMA device access, multihop UAV relaying, and UAV-to-BS backhaul through an end-to-end minimum-capacity objective.
+- **Prediction-guided survivor search** - [[v-2026-pb-papp-survivor-detection]] iterates local observations, potential-survivor prediction, [[prediction-based-priority-aware-path-planning]], and model-weight aggregation across a simulated three-tier UAV search architecture.
 
 ## Open questions
 

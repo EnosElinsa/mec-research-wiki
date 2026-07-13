@@ -42,8 +42,9 @@ related:
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
   - "[[zhai-2026-uav-ma-secrecy]]"
   - "[[ding-2026-optimization-driven-spectrum-sharing]]"
+  - "[[yu-2026-ris-uav-iab-outage]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Alternating Optimization with SDR and SCA

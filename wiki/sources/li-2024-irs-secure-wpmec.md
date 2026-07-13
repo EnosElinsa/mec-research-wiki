@@ -20,8 +20,9 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
   - "[[mao-2025-irs-noma-fl-secrecy]]"
+  - "[[yonghui-li]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-14
 ---
 
 # Intelligent Reflecting Surface Assisted Secure Computation of Wireless Powered MEC System

@@ -4,6 +4,8 @@ title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
   - "[[lu-2026-aoi-trajectory-channel]]"
+  - "[[dang-2026-uav-fl-energy]]"
+  - "[[v-2026-pb-papp-survivor-detection]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[ning-2026-uav-isac-secure-beamforming]]"
   - "[[wang-2023-drl-irs-uav-trajectory]]"
@@ -127,7 +129,7 @@ related:
   - "[[ding-2026-optimization-driven-spectrum-sharing]]"
   - "[[xia-2026-ubt-emergency-response]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # UAV Trajectory Control

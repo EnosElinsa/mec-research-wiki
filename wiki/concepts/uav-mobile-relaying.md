@@ -26,8 +26,9 @@ related:
   - "[[energy-balanced-cooperative-uav-relaying]]"
   - "[[dong-2026-radio-map-d2d-relay]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[tan-2025-sagin-outage-altitude]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # UAV Mobile Relaying

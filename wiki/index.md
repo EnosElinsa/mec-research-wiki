@@ -654,12 +654,18 @@
 - [[samir-2022-aoi-altitude-scheduling]] - Samir et al. 2022. Online PPO alternates two-hop status scheduling and UAV altitude movement to minimize weighted AoI (IEEE TMC).
 - [[ding-2026-optimization-driven-spectrum-sharing]] - Ding et al. 2026. Robust SCA/CVX targets guide hybrid DQN-DDPG resource and trajectory control over licensed/unlicensed bands under uncertain jamming (IEEE TMC).
 - [[xia-2026-ubt-emergency-response]] - Xia et al. 2026. Learned taxi availability and non-overlapping coverage-gain bus selection coordinate UAV-bus-taxi emergency response (IEEE T-ITS).
+- [[dang-2026-uav-fl-energy]] - Dang et al. 2026. Alternating inner approximations jointly control simultaneous FL uploads, local resources, and rotary-wing 3-D placement under mixed A2G propagation and return energy (IEEE TGCN).
+- [[kanani-2026-haps-uav-isac]] - Kanani et al. 2026. GA and NSGA-II optimize target-echo power and worst-user SINR in a HAPS-processed multi-UAV ISAC architecture (IEEE TWC).
+- [[yu-2026-ris-uav-iab-outage]] - Yu et al. 2026. SCA/SDR alternates UAV heights and rooftop-RIS phases to match access and backhaul rates in urban IAB (IEEE TWC).
+- [[tan-2025-sagin-outage-altitude]] - Tan et al. 2025. Energy- and SNR-outage analysis selects altitude for a solar-powered ground-UAV-satellite relay and compares relayed/direct capacity (IEEE TWC).
+- [[v-2026-pb-papp-survivor-detection]] - V et al. 2026. Logistic PSL prediction, priority-aware routing, and hierarchical model averaging guide simulated multi-UAV survivor search (IEEE TMC).
 
 ## Entities
 
 ### Authors
 
-- [[xiang-cheng]] (Peking University - aerial channel modeling, UAV/vehicle simulation, and multi-UAV ISAC; 4 sources), [[rongqing-zhang]] (HKUST Guangzhou - intelligent transportation and aerial networks; 2 sources), [[jung-ryun-lee]] (Chung-Ang University - learning-based UAV/IRS energy control; 2 sources), [[octavia-a-dobre]] (Memorial University - RIS/ISAC channel analysis and generation; 2 sources), and [[halim-yanikomeroglu]] (Carleton University - aerial placement and UAV-mounted IRS communications; 2 sources).
+- [[xiang-cheng]] (Peking University - aerial channel modeling, UAV/vehicle simulation, and multi-UAV ISAC; 4 sources), [[rongqing-zhang]] (HKUST Guangzhou - intelligent transportation and aerial networks; 2 sources), [[jung-ryun-lee]] (Chung-Ang University - learning-based UAV/IRS energy control; 2 sources), [[octavia-a-dobre]] (Memorial University - RIS/ISAC channel analysis and generation; 2 sources), and [[halim-yanikomeroglu]] (Carleton University - aerial placement, UAV-mounted IRS communications, and HAPS-UAV ISAC; 3 sources).
+- [[yonghui-li]] (University of Sydney - intelligent surfaces, secure wireless-powered MEC, and aerial IAB backhaul; 2 sources).
 
 - [[zheng-chang]] (UESTC / University of Jyväskylä - UAV communications, edge computing, ISAC, and green communications; 7 sources).
 - [[dusit-niyato]] (NTU) appears across 57 sources spanning aerial networking, edge intelligence, security, and optimization; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 18 sources after the GeoAgg-HSAC, graph anti-jamming, and Hammurabi papers; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
@@ -1268,6 +1274,13 @@
 - [[mw-mad3pg]] - MAML-enhanced fairness-aware multi-agent deterministic policy gradient for UAV-assisted sensor scheduling.
 - [[weighted-minimum-mean-square-error]] - sum-rate/WMMSE equivalence used for alternating multi-user beamforming and geometry optimization.
 - [[selective-uniform-cost-search]] - lower-bound-prioritized grid search with retained communication and movable-array state.
+- [[simultaneous-interference-uav-federated-learning]] - UAV-FL resource control that keeps same-resource inter-user interference and rotary-wing return energy explicit.
+- [[haps-uav-isac-resource-allocation]] - HAPS-processed multi-UAV sensing/communication trade-offs optimized with GA and NSGA-II.
+- [[integrated-access-and-backhaul]] - shared wireless access/backhaul architecture whose end-to-end service is limited by the weaker segment.
+- [[access-backhaul-rate-matching]] - anti-accumulation reliability condition coupling relay access rates to finite backhaul capacity.
+- [[outage-aware-sagin-uav-altitude]] - ground-UAV-satellite altitude selection under energy- and SNR-outage conditions.
+- [[prediction-based-priority-aware-path-planning]] - survivor-likelihood-guided Clarke-Wright routing for disaster-search UAVs.
+- [[tree-structured-weight-synthesis]] - centralized averaging of hierarchical UAV logistic-regression models for PSL prediction.
 
 ## Methodology
 

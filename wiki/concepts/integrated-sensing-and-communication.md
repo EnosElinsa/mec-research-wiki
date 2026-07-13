@@ -4,6 +4,7 @@ title: "Integrated Sensing and Communication (ISAC)"
 tags: [isac, dual-function, beamforming, 6g]
 related:
   - "[[ning-2026-uav-isac-secure-beamforming]]"
+  - "[[kanani-2026-haps-uav-isac]]"
   - "[[lv-2026-isac-sar-tlsp]]"
   - "[[lyu-2023-isac-maneuver-beamforming]]"
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"
@@ -55,7 +56,7 @@ related:
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
   - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Integrated Sensing and Communication (ISAC)
@@ -90,3 +91,5 @@ Newer secure and networked entries widen the ISAC role. [[yan-not-in-parse-multi
 [[meng-2026-uav-isac-corrections]] documents a formulation-level correction for periodic UAV-ISAC: it removes a duplicated association factor, replaces an unsupported Hessian claim with an auxiliary-variable/Taylor transformation, and confirms that the resulting rate subproblems are convex.
 
 [[xu-2026-hecta-predictive-beamforming]] adds a communication-centric ISAC use: historical matched-filtered echoes are fed directly to [[historical-echo-predictive-beamforming|HECTA-Net]] to predict the next BS transmit and UAV receive beams, without first estimating a kinematic state or explicit CSI.
+
+[[kanani-2026-haps-uav-isac]] adds [[haps-uav-isac-resource-allocation]]: HAPS processes a two-slot multi-UAV architecture while NSGA-II preserves separate target-echo and minimum-user-SINR objectives on a Pareto front.

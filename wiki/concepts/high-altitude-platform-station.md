@@ -13,8 +13,9 @@ related:
   - "[[zhao-2026-mappo-jscc-aec]]"
   - "[[fan-2026-hap-uav-iort-oee]]"
   - "[[overall-energy-efficiency]]"
+  - "[[kanani-2026-haps-uav-isac]]"
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # High-Altitude Platform Station (HAPS / HAS)
@@ -34,6 +35,8 @@ A quasi-stationary aerial node operating in the stratosphere (typically 17–22 
 This makes HAPS a natural **upper tier** in a hierarchical aerial MEC stack — UAVs cover dense pockets, HAPS provides the umbrella backstop. See [[hierarchical-aerial-mec]] and [[peng-2025-drudm-cfg]]. In [[jia-2026-dro-lawn-trajectory]], the HAP receives relayed tasks from UAVs under task-size uncertainty; in [[zhang-2026-dwell-time-aerial-vec]], the HAP is the broad-coverage fallback when vehicle-to-UAV dwell time is insufficient. [[li-2026-uav-hap-ddqn-ppo-offloading]] uses the HAP as the high-compute destination in a DDQN-PPO offloading policy, while [[zhao-2026-mappo-jscc-aec]] uses the HAP as both aerial base station and edge-computing tier for multi-UAV sensing-data processing.
 
 [[fan-2026-hap-uav-iort-oee]] uses moving HAPs as the aggregation tier for two-hop IoRT collection. Its [[overall-energy-efficiency]] objective jointly prices HAP propulsion, UAV propulsion/transmission, relayed data, weather-impaired links, HAP selection, and both aerial trajectories.
+
+[[kanani-2026-haps-uav-isac]] uses HAPS as a centralized processor for multi-UAV ISAC and exposes the echo-power versus worst-user-SINR trade-off through GA and NSGA-II.
 
 ## Limitations
 

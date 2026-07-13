@@ -38,8 +38,10 @@ related:
   - "[[jin-2026-jitter-aware-uav-comp]]"
   - "[[lu-2026-multiuav-iscpt]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[dang-2026-uav-fl-energy]]"
+  - "[[tan-2025-sagin-outage-altitude]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Air-to-Ground Channel Model

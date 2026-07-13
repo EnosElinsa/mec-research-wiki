@@ -7,8 +7,9 @@ related:
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
+  - "[[kanani-2026-haps-uav-isac]]"
 created: 2026-06-03
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Non-Dominated Sorting Genetic Algorithms (NSGA-II / NSGA-III)
@@ -20,3 +21,5 @@ Because the base algorithm assumes continuous, real-valued genes, applying it to
 In the wiki, [[pan-2025-uav-ris-energy-efficient-comm]] builds **INSGA-II-CDC**, an improved NSGA-II augmented with continuous, discrete, and complex solution-processing mechanisms, so a single run can jointly handle UAV-RIS 3D locations (continuous), discrete RIS phase shifts, and the complex-valued BS beamforming vector while returning a Pareto set across its three objectives (max-min rate, max total rate, min energy).
 
 [[jiang-2026-bi-level-uav-delivery-safety]] uses a task-collaborative NSGA-III variant (TC-NSGA-III) for UAV delivery allocation, returning tradeoffs across delivery-time cost, total ground risk, and workload balance before the lower-level RG-FMT* path planner enforces [[target-level-of-safety]].
+
+[[kanani-2026-haps-uav-isac]] uses NSGA-II to retain target-echo-power and worst-user-SINR trade-offs that a weighted-sum GA or PPO reward can miss on non-convex parts of the Pareto front.

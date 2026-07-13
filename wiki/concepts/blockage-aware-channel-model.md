@@ -11,8 +11,9 @@ related:
   - "[[ning-2025-channel-aware-irs-uav]]"
   - "[[dynamic-irs-user-association]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
+  - "[[yu-2026-ris-uav-iab-outage]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Blockage-Aware Channel Model

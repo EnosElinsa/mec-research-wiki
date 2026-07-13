@@ -1,5 +1,23 @@
 # Research Log
 
+## [2026-07-14] Curated UAV federated learning, HAPS-UAV ISAC, aerial IAB, SAGIN outage, and survivor search
+
+Added five source pages, seven reusable concepts, and one recurring-author entity:
+
+- [[dang-2026-uav-fl-energy]] - Dang et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3599309`. [[simultaneous-interference-uav-federated-learning]] jointly controls same-resource model uploads, local training resources, and rotary-wing 3-D placement under mixed LoS/NLoS A2G propagation and a return-energy constraint.
+- [[kanani-2026-haps-uav-isac]] - Kanani et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3608619`. [[haps-uav-isac-resource-allocation]] uses GA and NSGA-II to trade target-echo power against worst-user SINR with HAPS processing.
+- [[yu-2026-ris-uav-iab-outage]] - Yu et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3630746`. [[integrated-access-and-backhaul]] couples a rooftop RIS backhaul with UAV access, while [[access-backhaul-rate-matching]] prevents relay accumulation.
+- [[tan-2025-sagin-outage-altitude]] - Tan et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2024.3503060`. [[outage-aware-sagin-uav-altitude]] combines solar/battery energy outage, link SNR outage, and relayed/direct transmission-capacity comparison.
+- [[v-2026-pb-papp-survivor-detection]] - V et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3649563`. [[prediction-based-priority-aware-path-planning]] and [[tree-structured-weight-synthesis]] couple PSL prediction, lightweight routing, and hierarchical model aggregation.
+
+Matching biographies across two University of Sydney papers established [[yonghui-li]]; the existing Halim Yanikomeroglu and Nei Kato rosters were extended. The Lei Guo on the IAB paper is a CQUPT professor and remains separate from the existing Northeastern University `lei-guo` entity.
+
+Metadata notes: the parses omit final publication headers, so exact-title Crossref records supplied final fields. The sources resolve respectively to TGCN 10, 829-843 (2026); TWC 25, 4098-4112 (2026); TWC 25, 7350-7364 (2026); TWC 24(2), 940-954 (2025); and TMC 25(6), 8655-8666 (2026).
+
+Evidence caveats: all five studies are analytical or simulation-based. The FL optimizer is centralized/offline and local-stationary; the HAPS-UAV ISAC model assumes LoS, perfect CSI, and clean echo separation; the IAB design fixes scheduling/bandwidth and uses an aggressive `lambda/10` RIS spacing; the SAGIN source uses idealized energy/channel models and defines fairness as a GAS/direct capacity comparison; PB-PAPP uses synthetic grids, static survivors, simplified collision handling, and more memory than its baselines. Two initial extraction agents failed with provider `403 insufficient balance`; one serialized replacement completed the IAB extraction, and the other four papers were grounded locally.
+
+Validation: `corpus_counts.py` reports **539 sources / 513 concepts / 130 entities / 612 raw folders**. `curation_status.py --dupes` leaves **72 genuinely new sources** for later curation. `linkcheck.py --orphans` reports zero dangling links; `process_refs.py` finds zero hits; `index_audit.py` covers all **1,234** catalogue-able pages exactly once; `frontmatter_audit.py` validates all **1,232** frontmatter pages; and `entity_roster_audit.py` reports zero overclaims (32 possible omissions remain advisory namesake/legacy cases, including the intentionally separate Lei Guo). All 12 wiki-tool unit tests and `git diff --check` pass. Independent review corrected the OMA comparison: ideal OMA has the lowest plotted UE energy under perfect interference cancellation, while the proposed simultaneous method remains close and beats the restricted-variable benchmarks. The local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain the authoritative verification.
+
 ## [2026-07-13] Curated aerial ISCPT, graph-RL coverage, AoI altitude control, spectrum sharing, and multimodal emergency response
 
 Added five source pages, nine reusable concepts, and four recurring-author entities:

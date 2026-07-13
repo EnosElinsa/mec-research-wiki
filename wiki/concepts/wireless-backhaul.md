@@ -17,8 +17,9 @@ related:
   - "[[wang-2026-multimodal-uav-coverage-backhaul]]"
   - "[[multi-modal-uav-coverage-backhaul-control]]"
   - "[[su-2026-three-tier-uav-capacity]]"
+  - "[[yu-2026-ris-uav-iab-outage]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Wireless Backhaul
@@ -40,3 +41,5 @@ Recurring forms in the wiki:
 A backhaul link's capacity is *upper-tier* infrastructure. It rarely appears as a decision variable, but its value as a constraint shapes the offloading topology — overloaded backhaul forces more local processing.
 
 [[su-2026-three-tier-uav-capacity]] makes UAV-to-BS SDMA backhaul an explicit end-to-end bottleneck and bounds the error of a mean-interference capacity approximation under transmit/receive pointing jitter.
+
+[[yu-2026-ris-uav-iab-outage]] makes the access/backhaul coupling explicit through [[integrated-access-and-backhaul]]: a rooftop RIS reinforces donor-to-UAV backhaul while UAV altitude controls access reliability and [[access-backhaul-rate-matching]] prevents relay accumulation.
