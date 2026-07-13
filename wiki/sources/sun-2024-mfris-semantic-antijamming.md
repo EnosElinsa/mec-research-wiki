@@ -16,8 +16,9 @@ related:
   - "[[csi-estimation-error]]"
   - "[[mixed-integer-nonlinear-programming]]"
   - "[[shao-2024-drl-antijamming-mec]]"
+  - "[[naofal-al-dhahir]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-13
 ---
 
 # Multi-Functional RIS-Assisted Semantic Anti-Jamming Communication and Computing in Integrated Aerial-Ground Networks

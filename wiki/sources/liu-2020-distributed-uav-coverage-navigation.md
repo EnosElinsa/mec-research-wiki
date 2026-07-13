@@ -16,6 +16,7 @@ related:
   - "[[chi-harold-liu]]"
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[memory-augmented-multi-uav-navigation]]"
+  - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

@@ -36,6 +36,7 @@ related:
   - "[[li-2016-energy-balanced-uav-relaying]]"
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[memory-augmented-multi-uav-navigation]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---

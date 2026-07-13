@@ -12,6 +12,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
+  - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

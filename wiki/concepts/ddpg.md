@@ -13,6 +13,7 @@ related:
   - "[[ddpg-vs-jppo]]"
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
   - "[[samir-2021-uav-cell-free-coverage]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

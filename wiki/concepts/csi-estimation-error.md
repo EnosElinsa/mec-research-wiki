@@ -13,6 +13,7 @@ related:
   - "[[xu-2026-hecta-predictive-beamforming]]"
   - "[[historical-echo-predictive-beamforming]]"
   - "[[jin-2026-jitter-aware-uav-comp]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

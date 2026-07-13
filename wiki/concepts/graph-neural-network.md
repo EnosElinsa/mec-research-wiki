@@ -20,6 +20,8 @@ related:
   - "[[xie-2026-geoagg-hsac]]"
   - "[[liao-2026-semantic-twinning-tracking]]"
   - "[[tang-2026-gat-antijamming]]"
+  - "[[lu-2026-multiuav-iscpt]]"
+  - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-06-03
 updated: 2026-07-13
 ---

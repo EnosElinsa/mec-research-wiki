@@ -33,6 +33,7 @@ related:
   - "[[jia-2026-hierarchical-uav-swarms]]"
   - "[[hierarchical-uav-swarm]]"
   - "[[wang-2026-mat-target-tracking]]"
+  - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-07-10
 updated: 2026-07-13
 ---

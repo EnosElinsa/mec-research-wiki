@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-13] Curated aerial ISCPT, graph-RL coverage, AoI altitude control, spectrum sharing, and multimodal emergency response
+
+Added five source pages, nine reusable concepts, and four recurring-author entities:
+
+- [[lu-2026-multiuav-iscpt]] - Lu et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3683050`. [[cascading-residual-graph-attention-network|CRGAT]] generates static 3-D multi-UAV deployment and power for worst-user communication, sensing, and harvested-energy objectives.
+- [[ye-2023-graph-uav-coverage]] - Ye et al. 2023, *IEEE TMC*, DOI `10.1109/TMC.2022.3146881`. [[graph-attention-fanet|FANET graph attention]], GRU memory, and [[maximum-entropy-deep-q-learning]] coordinate locally observing UAVs for coverage, fairness, and movement energy.
+- [[samir-2022-aoi-altitude-scheduling]] - Samir et al. 2022, *IEEE TMC*, DOI `10.1109/TMC.2020.3042925`. PPO alternates latest-packet relay scheduling and vertical movement through [[aoi-aware-uav-altitude-scheduling]].
+- [[ding-2026-optimization-driven-spectrum-sharing]] - Ding et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3673261`. [[optimization-driven-drl]] injects robust SCA/CVX actions and targets into hybrid DQN-DDPG control of [[licensed-unlicensed-spectrum-sharing]].
+- [[xia-2026-ubt-emergency-response]] - Xia et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3626994`. [[uav-bus-taxi-emergency-response]] uses learned taxi availability/travel time and [[non-overlapping-coverage-gain-greedy]] bus selection.
+
+The new concept layer also adds [[integrated-sensing-communication-power-transfer]]. Matching biographies and affiliations established [[ke-xiong]], [[pingyi-fan]], [[khaled-ben-letaief]], and [[naofal-al-dhahir]] across recurring bylines. Existing Derrick Wing Kwan Ng, Fuhui Zhou, Qihui Wu, and Kai-Kit Wong rosters were extended. The Chao Yan on the emergency-transport paper is a NUAA civil-aviation Ph.D. student and remains separate from the same-name NUAA automation associate professor in [[zhang-2026-distance-attention-uav-navigation]].
+
+Metadata notes: exact-title records supplied publication fields absent from the parses. The ISCPT paper is a 2026 TMC early-access article, pages 1-16. The graph-navigation paper is TMC 22(7), 4056-4069 (2023). The AoI paper's DOI was issued in 2020, but its final record is TMC 21(7), 2493-2505 (2022). The spectrum-sharing paper is TMC 25(8), 13382-13398 (2026), and the emergency-transport paper is T-ITS 27(1), 692-708 (2026).
+
+Evidence caveats: the ISCPT, graph-navigation, AoI, and spectrum-sharing studies are simulation-only; the emergency study uses real Shenzhen vehicle/congestion traces but models rather than field-tests UAV/taxi execution. ISCPT optimizes static placement and requires separate training per preference vector. Graph-RL uses geometric connectivity and a local reward without a global guarantee. AoI control fixes horizontal position and forbids simultaneous movement/transmission. Optimization-driven DRL relies on expensive offline solver targets and local convex approximations. The emergency design assumes known bus trajectories, full taxi compliance, rooftop landing, reliable connectivity, and simplified grid/energy models.
+
+Three low-concurrency workers extracted the ISCPT, graph-navigation, and AoI papers; the anti-jamming and emergency-transport papers were extracted locally. Independent review corrected the AoI paper from its 2020 early-access record to the final 2022 issue, added the reciprocal PyTorch 1.4.0 link, and repaired stale Fuhui Zhou count prose.
+
+Validation: `corpus_counts.py` reports **534 sources / 506 concepts / 129 entities / 612 raw folders**. `curation_status.py --dupes` leaves **77 genuinely new sources** for later curation. `linkcheck.py --orphans` reports zero dangling links; `process_refs.py` finds zero hits; `index_audit.py` covers all **1,221** catalogue-able pages exactly once; `frontmatter_audit.py` validates all **1,219** frontmatter pages; and `entity_roster_audit.py` reports zero overclaims (31 possible omissions remain advisory namesake/legacy cases). All 12 wiki-tool unit tests and `git diff --check` pass. The local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain the authoritative verification.
+
 ## [2026-07-13] Curated coded UAV caching, independent MARL, swarm tracking, radio-map relaying, and jitter-aware CoMP
 
 Added five source pages, six reusable concepts, and two recurring-author entities:

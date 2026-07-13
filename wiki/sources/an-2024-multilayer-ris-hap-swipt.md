@@ -19,6 +19,7 @@ related:
   - "[[sun-2024-active-passive-ris-receiver]]"
   - "[[hsu-2025-drl-hues-hap-noma]]"
   - "[[kai-kit-wong]]"
+  - "[[naofal-al-dhahir]]"
 created: 2026-06-02
 updated: 2026-07-13
 ---

@@ -36,6 +36,8 @@ related:
   - "[[cui-2020-marl-uav-resource-allocation]]"
   - "[[dong-2026-radio-map-d2d-relay]]"
   - "[[jin-2026-jitter-aware-uav-comp]]"
+  - "[[lu-2026-multiuav-iscpt]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---

@@ -9,8 +9,9 @@ related:
   - "[[generalized-assignment-problem]]"
   - "[[cooperative-uav-human-courier-delivery]]"
   - "[[chen-not-in-parse-uav-human-medical-delivery]]"
+  - "[[xia-2026-ubt-emergency-response]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Cooperative UAV-Taxi Delivery

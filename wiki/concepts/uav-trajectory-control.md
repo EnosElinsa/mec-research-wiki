@@ -122,6 +122,10 @@ related:
   - "[[zhai-2026-uav-ma-secrecy]]"
   - "[[ren-2026-movable-antenna-uav-trajectory]]"
   - "[[wang-2026-mat-target-tracking]]"
+  - "[[ye-2023-graph-uav-coverage]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
+  - "[[xia-2026-ubt-emergency-response]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

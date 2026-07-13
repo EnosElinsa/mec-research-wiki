@@ -25,6 +25,7 @@ related:
   - "[[li-2016-energy-balanced-uav-relaying]]"
   - "[[energy-balanced-cooperative-uav-relaying]]"
   - "[[dong-2026-radio-map-d2d-relay]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
 created: 2026-06-01
 updated: 2026-07-13
 ---

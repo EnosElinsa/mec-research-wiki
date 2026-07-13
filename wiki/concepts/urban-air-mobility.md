@@ -10,8 +10,9 @@ related:
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
   - "[[target-level-of-safety]]"
   - "[[vitale-2026-density-aware-4d-trajectory]]"
+  - "[[xia-2026-ubt-emergency-response]]"
 created: 2026-06-03
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Urban Air Mobility (UAM)

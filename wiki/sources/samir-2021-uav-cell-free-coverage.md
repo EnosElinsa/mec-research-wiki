@@ -15,6 +15,7 @@ related:
   - "[[ebrahimi-not-in-parse-autonomous-uav-localization-rl]]"
   - "[[mozaffari-2016-efficient-multi-uav-coverage]]"
   - "[[peng-2020-maddpg-uav-vehicular]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

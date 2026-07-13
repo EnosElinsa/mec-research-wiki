@@ -14,6 +14,7 @@ related:
   - "[[huynh-2024-gai-physical-layer-survey]]"
   - "[[liang-2025-gai-semcom-survey]]"
   - "[[zehui-xiong]]"
+  - "[[khaled-ben-letaief]]"
 created: 2026-06-04
 updated: 2026-07-13
 ---

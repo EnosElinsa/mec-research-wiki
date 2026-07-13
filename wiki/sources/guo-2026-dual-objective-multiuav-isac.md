@@ -17,6 +17,7 @@ related:
   - "[[non-dominated-sorting-genetic-algorithm]]"
   - "[[rongqing-zhang]]"
   - "[[xiang-cheng]]"
+  - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

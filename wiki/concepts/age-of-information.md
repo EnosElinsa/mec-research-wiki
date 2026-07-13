@@ -28,6 +28,7 @@ related:
   - "[[dual-network-sequential-aoi-control]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[liao-2026-semantic-twinning-tracking]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

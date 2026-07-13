@@ -10,6 +10,7 @@ related:
   - "[[hu-2019-uav-relay-edge-computing]]"
   - "[[hu-2026-latency-hybrid-uav-mec]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---
@@ -18,7 +19,7 @@ updated: 2026-07-13
 
 IEEE Fellow and Chair Professor of Wireless Communications at University College London. The source biographies identify degrees from the Hong Kong University of Science and Technology and research spanning 5G-and-beyond wireless systems, fluid antennas, RIS, physical-layer security, wireless power transfer, mobile computing, and related communication technologies.
 
-Co-authored 7 sources in this wiki:
+Co-authored 8 sources in this wiki:
 
 - [[lu-2026-aoi-trajectory-channel]] - freshness-aware multi-UAV trajectory and channel selection under jamming.
 
@@ -28,6 +29,7 @@ Co-authored 7 sources in this wiki:
 - [[hu-2019-uav-relay-edge-computing]] - joint UAV relaying, edge execution, scheduling, and trajectory control.
 - [[hu-2026-latency-hybrid-uav-mec]] - latency-aware wireless-powered hybrid UAV-GBS MEC.
 - [[zhao-2019-uav-emergency-disasters]] - UAV communication, D2D coverage, and multihop relaying for disaster networks.
+- [[ding-2026-optimization-driven-spectrum-sharing]] - licensed/unlicensed UAV resource control under uncertain jamming.
 
 ## Contributions to this wiki
 

@@ -14,8 +14,9 @@ related:
   - "[[service-caching-mec]]"
   - "[[wang-2025-lae-network-survey]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
+  - "[[khaled-ben-letaief]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-13
 ---
 
 # A Survey on Mobile Edge Computing: The Communication Perspective

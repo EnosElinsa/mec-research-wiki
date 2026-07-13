@@ -15,6 +15,7 @@ related:
   - "[[hua-2026-ddrl-content-delivery]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
   - "[[wang-2026-mat-target-tracking]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

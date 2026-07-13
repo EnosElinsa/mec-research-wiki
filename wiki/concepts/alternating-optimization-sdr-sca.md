@@ -41,6 +41,7 @@ related:
   - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
   - "[[zhai-2026-uav-ma-secrecy]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

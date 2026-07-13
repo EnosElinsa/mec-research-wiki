@@ -18,8 +18,9 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[wang-2024-maritime-eh-jcora]]"
   - "[[mao-2017-mec-survey-communication]]"
+  - "[[khaled-ben-letaief]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-13
 ---
 
 # Dynamic Computation Offloading for Mobile-Edge Computing With Energy Harvesting Devices

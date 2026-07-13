@@ -17,8 +17,10 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[li-2026-isac-vec-beamforming-deployment]]"
   - "[[dai-2024-uav-vehicular-offloading-lyapunov]]"
+  - "[[pingyi-fan]]"
+  - "[[khaled-ben-letaief]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-13
 ---
 
 # Joint Optimization of Trajectory Control, Resource Allocation, and Task Offloading for Multi-UAV-Assisted IoV

@@ -12,6 +12,7 @@ related:
   - "[[triple-deep-q-network]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[zhang-2026-distributed-jscc-uav-video]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

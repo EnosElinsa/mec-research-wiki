@@ -8,8 +8,9 @@ related:
   - "[[three-tier-cloud-edge-end]]"
   - "[[vehicular-mec]]"
   - "[[post-disaster-mec]]"
+  - "[[xia-2026-ubt-emergency-response]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-13
 ---
 
 # Vehicle Fog Computing (VFC)

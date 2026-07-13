@@ -22,6 +22,7 @@ related:
   - "[[chen-2026-hammurabi-cooperation]]"
   - "[[betalo-2026-meta-uav-scheduling]]"
   - "[[su-2026-three-tier-uav-capacity]]"
+  - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

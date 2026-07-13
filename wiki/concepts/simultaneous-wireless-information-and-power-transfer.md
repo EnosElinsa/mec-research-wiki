@@ -11,6 +11,7 @@ related:
   - "[[chen-2025-swipt-mec-sac]]"
   - "[[dual-domain-ris-energy-harvesting]]"
   - "[[peng-2023-dual-domain-eh-ris]]"
+  - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-06-02
 updated: 2026-07-13
 ---

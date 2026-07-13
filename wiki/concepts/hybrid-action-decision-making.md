@@ -12,6 +12,8 @@ related:
   - "[[xie-2026-geoagg-hsac]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
   - "[[tian-2026-coded-cache-repair]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

@@ -16,8 +16,9 @@ related:
   - "[[wang-gai-isac-physical-layer]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
   - "[[mahboob-2024-ai-ntn-survey]]"
+  - "[[khaled-ben-letaief]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # A Tutorial on Extremely Large-Scale MIMO for 6G: Fundamentals, Signal Processing, and Applications

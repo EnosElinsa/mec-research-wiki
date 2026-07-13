@@ -9,6 +9,7 @@ related:
   - "[[sun-2024-mfris-semantic-antijamming]]"
   - "[[zhao-2024-caching-service-placement-uav]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
+  - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---
@@ -17,7 +18,7 @@ updated: 2026-07-13
 
 IEEE Fellow and wireless-communications researcher. The current source biography reports degrees from HKUST and the University of British Columbia and a current Scientia Associate Professor appointment.
 
-Co-authored 6 sources in this wiki:
+Co-authored 7 sources in this wiki:
 
 - [[deng-2025-covert-isac-trajectory]] - covert UAV-ISAC beamforming and trajectory optimization.
 - [[chen-2026-sdhfl-completion-time]] - completion-time-aware semi-decentralized hierarchical federated learning.
@@ -26,6 +27,7 @@ Co-authored 6 sources in this wiki:
 - [[zhao-2024-caching-service-placement-uav]] - UAV caching, service placement, and offloading.
 
 - [[jiang-2026-sensing-assisted-uav-tracking]] - sensing-assisted predictive beamforming and outage-aware UAV tracking.
+- [[lu-2026-multiuav-iscpt]] - graph-driven deployment and power control for multi-UAV ISCPT.
 
 ## Contributions to this wiki
 

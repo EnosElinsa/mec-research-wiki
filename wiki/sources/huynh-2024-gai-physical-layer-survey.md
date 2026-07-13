@@ -19,8 +19,9 @@ related:
   - "[[wang-gai-isac-physical-layer]]"
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
+  - "[[khaled-ben-letaief]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-13
 ---
 
 # Generative AI for Physical Layer Communications: A Survey

@@ -14,6 +14,7 @@ related:
   - "[[yang-2026-embodied-antijamming-uav]]"
   - "[[embodied-anti-jamming-resource-allocation]]"
   - "[[tang-2026-gat-antijamming]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-07-10
 updated: 2026-07-13
 ---

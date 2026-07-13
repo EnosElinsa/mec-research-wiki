@@ -9,6 +9,7 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
+  - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---

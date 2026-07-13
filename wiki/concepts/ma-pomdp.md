@@ -23,6 +23,7 @@ related:
   - "[[memory-augmented-multi-uav-navigation]]"
   - "[[wang-2026-mat-target-tracking]]"
   - "[[tian-2026-coded-cache-repair]]"
+  - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-05-28
 updated: 2026-07-13
 ---

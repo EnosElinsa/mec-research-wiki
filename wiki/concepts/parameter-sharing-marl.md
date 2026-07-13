@@ -7,6 +7,7 @@ related:
   - "[[wang-2026-robust-multiuav-jtcra]]"
   - "[[centralized-training-decentralized-execution]]"
   - "[[pretrained-policy-cooperation-shaping]]"
+  - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---

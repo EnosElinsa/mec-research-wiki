@@ -16,8 +16,12 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
+  - "[[ke-xiong]]"
+  - "[[pingyi-fan]]"
+  - "[[khaled-ben-letaief]]"
+  - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-13
 ---
 
 # UAV-Assisted Wireless Powered Cooperative Mobile Edge Computing: Joint Offloading, CPU Control, and Trajectory Optimization

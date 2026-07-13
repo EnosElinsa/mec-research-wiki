@@ -15,6 +15,7 @@ related:
   - "[[li-2026-la4h-uav-active-tracking]]"
   - "[[wang-2026-bayesian-uav-spectrum-mapping]]"
   - "[[jia-2026-hierarchical-uav-swarms]]"
+  - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -23,7 +24,7 @@ updated: 2026-07-13
 
 IEEE Fellow. Affiliated with the **College of Electronic and Information Engineering, Nanjing University of Aeronautics and Astronautics (NUAA)**, Nanjing, China (also associated with the Key Laboratory of Dynamic Cognitive System of Electromagnetic Spectrum Space at NUAA) — consistent across his papers in this wiki.
 
-Co-authored 12 sources in this wiki, spanning aerial/UAV-HAP edge computing, swarm computing, UAV sensing/localization, spectrum mapping, and freshness-aware multi-UAV IoT collection:
+Co-authored 13 sources in this wiki, spanning aerial/UAV-HAP edge computing, swarm computing, UAV sensing/localization, spectrum mapping, freshness-aware multi-UAV IoT collection, and anti-jamming spectrum sharing:
 
 - [[lu-2026-aoi-trajectory-channel]] - AoI-proxy trajectory and channel control for multi-UAV IoT collection under jamming.
 
@@ -38,6 +39,7 @@ Co-authored 12 sources in this wiki, spanning aerial/UAV-HAP edge computing, swa
 - [[li-2026-la4h-uav-active-tracking]] — expert-assisted anomaly-aware UAV active target tracking under occlusion and distractor interference.
 - [[wang-2026-bayesian-uav-spectrum-mapping]] - Bayesian 3-D spectrum mapping with information-driven UAV sampling, SBDL-GP reconstruction, and measured REM validation.
 - [[jia-2026-hierarchical-uav-swarms]] - hierarchical head/tail UAV-swarm deployment, collection trajectories, and multi-objective power control.
+- [[ding-2026-optimization-driven-spectrum-sharing]] - optimization-driven licensed/unlicensed UAV spectrum control under uncertain jamming.
 
 ## Contributions to this wiki
 

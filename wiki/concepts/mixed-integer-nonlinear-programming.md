@@ -10,6 +10,7 @@ related:
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
   - "[[lee-2026-uav-delivery-time-energy]]"
   - "[[huroon-2026-bd-ris-rsma-uav]]"
+  - "[[samir-2022-aoi-altitude-scheduling]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
