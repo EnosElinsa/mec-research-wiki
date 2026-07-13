@@ -24,8 +24,9 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[li-2024-rldc-uav-swarm-clustering]]"
   - "[[yong-zeng]]"
+  - "[[jie-xu]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-14
 ---
 
 # Energy Minimization for Wireless Communication With Rotary-Wing UAV
@@ -62,7 +63,7 @@ UAV-enabled wireless communication is limited by the UAV's **on-board energy**, 
 Single rotary-wing UAV at fixed altitude (altitude optimization left as future work); the propulsion model is derived for a specific rotary-wing regime (generalization to more general power models noted as non-trivial); homogeneous-LoS-probability approximation used to keep the rate constraint tractable; simulation/numerical validation (no hardware).
 
 ## Relation to the corpus
-This is the **origin paper for the rotary-wing propulsion-energy model** (`P₀`, `P_i`, blade-profile/induced/parasite terms) that recurs across the corpus's UAV-MEC energy formulations — including [[li-2024-rldc-uav-swarm-clustering]] (which cites it as its propulsion reference [10]) and the SCA/AO trajectory pipeline of [[liu-2022-miso-uav-mec-trajectory]] and [[zhang-2019-uav-iot-comp-comm]]. Methodologically it anchors the [[alternating-optimization-sdr-sca]] / TSPN convex-optimization track. By the same authors (Yong Zeng, Rui Zhang) as the foundational tutorial [[zeng-2019-uav-comm-tutorial-5g]], and a sibling of the [[uav-data-collection]] / [[uav-trajectory-control]] design space. It is one of the corpus's earliest foundational anchors (2019). Note: **Jie Xu** here is at Guangdong University of Technology / Southeast University and is a distinct person from the CUHK-Shenzhen ISAC [[jie-xu]] entity — no entity link is made.
+This is the **origin paper for the rotary-wing propulsion-energy model** (`P₀`, `P_i`, blade-profile/induced/parasite terms) that recurs across the corpus's UAV-MEC energy formulations — including [[li-2024-rldc-uav-swarm-clustering]] (which cites it as its propulsion reference [10]) and the SCA/AO trajectory pipeline of [[liu-2022-miso-uav-mec-trajectory]] and [[zhang-2019-uav-iot-comp-comm]]. Methodologically it anchors the [[alternating-optimization-sdr-sca]] / TSPN convex-optimization track. By Yong Zeng, [[jie-xu]], and Rui Zhang, it is a sibling of the foundational tutorial [[zeng-2019-uav-comm-tutorial-5g]] and the [[uav-data-collection]] / [[uav-trajectory-control]] design space. Matching education and career biographies connect Jie Xu's Guangdong University of Technology affiliation here to his later CUHK-Shenzhen ISAC work.
 
 ## Raw artifacts
 - `raw/sources/Energy_Minimization_for_Wireless_Communication_With_Rotary-Wing_UAV/full.md`

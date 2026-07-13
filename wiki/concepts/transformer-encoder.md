@@ -3,6 +3,7 @@ type: concept
 title: "Transformer Encoder"
 tags: [deep-learning, attention, encoder, trajectory-planning]
 related:
+  - "[[wang-2026-spatiotemporal-leo-channel-prediction]]"
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"
   - "[[guo-2026-aot-uav-inspection-offloading]]"
   - "[[graph-neural-network]]"
@@ -11,10 +12,12 @@ related:
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[wang-2026-mat-target-tracking]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Transformer Encoder
+
+[[wang-2026-spatiotemporal-leo-channel-prediction]] tokenizes antenna-time channel coefficients and combines global and local attention before causal decoding. [[masked-csi-reconstruction-pretraining]] initializes the predictor under missing historical snapshots, while [[dft-beamspace-channel-compression]] limits attention cost.
 
 A stack of self-attention and feed-forward blocks that maps an input sequence into contextual token representations without an autoregressive decoder. In wireless/MEC optimization, encoder-only Transformers are attractive when the input is a set or sequence of locations, tasks, users, channels, or demands and the downstream decision can be handled by a smaller output head.
 

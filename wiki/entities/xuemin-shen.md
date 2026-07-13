@@ -3,6 +3,10 @@ type: entity
 title: Xuemin (Sherman) Shen
 tags: [author, researcher, ieee-fellow, mec, vehicular-networks]
 related:
+  - "[[lyu-2026-situation-aware-uav-isac]]"
+  - "[[cheng-2019-sagin-iot-offloading-rl]]"
+  - "[[li-2020-energy-efficient-uav-mec-admm]]"
+  - "[[zhao-2025-gai-pls-survey]]"
   - "[[peng-2020-maddpg-uav-vehicular]]"
   - "[[duan-2023-moto-smallcell-offloading]]"
   - "[[xu-2024-mobile-aigc-survey]]"
@@ -18,15 +22,19 @@ related:
   - "[[zhou-2021-delay-sagin-task-scheduling]]"
   - "[[guo-2026-aot-uav-inspection-offloading]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Xuemin (Sherman) Shen
 
 IEEE Fellow. Affiliated with the **Department of Electrical and Computer Engineering, University of Waterloo** (Waterloo, ON, Canada; email `sshen@uwaterloo.ca`) across his papers in this wiki.
 
-Co-authored 14 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, SAGIN task scheduling, UAV-LEO and end-edge-cloud offloading games, UAV-assisted railway inspection, the mobile-AIGC and generative-AI-ISAC threads, human-digital-twin edge deployment, two-timescale RAN-slicing / offloading, wireless-perception-guided edge AIGC, and the graph-based-resource-management two-part survey:
+Co-authored 18 sources in this wiki, spanning UAV-assisted vehicular MEC, terrestrial small-cell MEC, SAGIN offloading and task scheduling, UAV-LEO and end-edge-cloud offloading games, UAV-assisted railway inspection, mobile AIGC and physical-layer security, human-digital-twin edge deployment, RAN slicing, graph-based resource management, and situation-aware UAV-ISAC control:
 
+- [[lyu-2026-situation-aware-uav-isac]] - situation-aware hybrid sensing with UAV position and angle control for mobile-target ISAC.
+- [[cheng-2019-sagin-iot-offloading-rl]] - learning-based space/aerial computing offloading for IoT applications.
+- [[li-2020-energy-efficient-uav-mec-admm]] - energy-efficient UAV-MEC resource allocation and trajectory optimization.
+- [[zhao-2025-gai-pls-survey]] - survey of generative AI for secure physical-layer communications.
 - [[peng-2020-maddpg-uav-vehicular]] — MADDPG resource management in MEC- and UAV-assisted vehicular networks (with Haixia Peng).
 - [[duan-2023-moto-smallcell-offloading]] — MOTO mobility-aware online task offloading with load balancing in small-cell MEC.
 - [[xu-2024-mobile-aigc-survey]] — survey of edge-cloud generative-AI / AIGC services in mobile networks.

@@ -15,8 +15,9 @@ related:
   - "[[cheng-2019-sagin-iot-offloading-rl]]"
   - "[[huang-2026-amappo-satellite-edge]]"
   - "[[xuemin-shen]]"
+  - "[[nan-cheng]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-14
 ---
 
 # Deep Reinforcement Learning for Delay-Oriented IoT Task Scheduling in SAGIN

@@ -3,6 +3,7 @@ type: concept
 title: "Autonomous UAV Swarms"
 tags: [uav, swarm, autonomy, planning, coordination]
 related:
+  - "[[jin-2026-skyndn-incentivizer]]"
   - "[[du-2025-autonomous-intelligent-uav-swarms]]"
   - "[[javaid-2023-collaborative-uav-communication-control]]"
   - "[[collaborative-uav-communication]]"
@@ -42,6 +43,8 @@ updated: 2026-07-14
 ---
 
 # Autonomous UAV Swarms
+
+[[jin-2026-skyndn-incentivizer]] addresses cooperation at the content-sharing layer: [[uav-named-data-networking]] lets mobile UAV caches answer named requests, while a broker-mediated auction or learned allocation policy discourages energy-saving refusal to share.
 
 [[wang-2026-mat-target-tracking]] coordinates a sensing swarm around one moving target using TDOA localization, virtual formation points, Hungarian assignment, and autoregressive Transformer actions.
 

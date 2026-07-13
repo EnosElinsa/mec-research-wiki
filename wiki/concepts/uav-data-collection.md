@@ -3,6 +3,7 @@ type: concept
 title: UAV Data Collection
 tags: [uav, data-collection, iot, data-sink, aerial-communications]
 related:
+  - "[[guo-2026-spatiotemporal-information-quality-ugrnet]]"
   - "[[lin-2026-layered-semantic-uav-aggregation]]"
   - "[[qi-2026-ocma-ddqn-data-collection]]"
   - "[[huang-2026-slim-eiv-uav-fleet]]"
@@ -47,6 +48,8 @@ updated: 2026-07-14
 ---
 
 # UAV Data Collection
+
+[[guo-2026-spatiotemporal-information-quality-ugrnet]] shifts collection quality from volume alone to [[spatiotemporal-information-quality]]: greater task completion improves Wasserstein spatial-distribution matching but increases queue load and delay-violation risk.
 
 [[lin-2026-layered-semantic-uav-aggregation]] adds image-semantic aggregation at a hovering UAV base station. Unlike route- and freshness-oriented collection, it fixes the user grouping and optimizes semantic signal processing plus a static horizontal hovering point for reconstruction quality.
 

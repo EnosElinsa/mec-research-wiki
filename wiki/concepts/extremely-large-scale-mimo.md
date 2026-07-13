@@ -3,6 +3,8 @@ type: concept
 title: "Extremely Large-Scale MIMO (XL-MIMO)"
 tags: [xl-mimo, mimo, 6g, physical-layer, near-field]
 related:
+  - "[[min-2026-sparse-bistatic-nearfield-isac]]"
+  - "[[sparse-xl-mimo]]"
   - "[[near-field-communications]]"
   - "[[intelligent-reflecting-surface]]"
   - "[[terahertz-communication]]"
@@ -10,10 +12,12 @@ related:
   - "[[selective-near-field-area]]"
   - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
 created: 2026-06-02
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Extremely Large-Scale MIMO (XL-MIMO)
+
+[[min-2026-sparse-bistatic-nearfield-isac]] adds [[sparse-xl-mimo]]: deliberately enlarged element spacing increases aperture and coarray degrees of freedom with fewer physical elements, but introduces grating lobes and calibration/model-sensitivity risks.
 
 A 6G physical-layer evolution of massive MIMO (mMIMO) that deploys a much larger number of antennas and a substantially larger array aperture in a compact space, to gain spectral efficiency and spatial degrees of freedom. Two mainstream realizations: a **discrete** aperture packing thousands of antennas at sub-half-wavelength spacing, and a **continuous aperture (CAP)** that approximates an infinite number of infinitesimal antennas via metamaterials.
 

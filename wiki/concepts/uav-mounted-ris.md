@@ -3,6 +3,7 @@ type: concept
 title: "UAV-Mounted RIS"
 tags: [intelligent-reflecting-surface, uav, aerial, deployment, 6g]
 related:
+  - "[[wang-2026-spatiotemporal-leo-channel-prediction]]"
   - "[[huyen-2026-short-packet-aris-noma]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[li-2026-credit-aware-uav-irs-secrecy]]"
@@ -39,6 +40,8 @@ updated: 2026-07-14
 ---
 
 # UAV-Mounted RIS
+
+[[wang-2026-spatiotemporal-leo-channel-prediction]] treats the UAV-RIS as a mobile channel component rather than an optimized surface: simulated satellite, UAV, and user motion generate direct and reflected MIMO histories for partial-CSI prediction.
 
 [[huyen-2026-short-packet-aris-noma]] adds the active-surface short-packet case: a UAV follows a prescribed circular path while the active RIS relays a blocked BS-to-user NOMA link, with perfect CSI and coherent phase alignment assumed throughout.
 

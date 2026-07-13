@@ -11,8 +11,10 @@ related:
   - "[[alternating-direction-method-of-multipliers]]"
   - "[[task-offloading]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
+  - "[[nan-cheng]]"
+  - "[[xuemin-shen]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Energy-Efficient UAV-Assisted Mobile Edge Computing: Resource Allocation and Trajectory Optimization

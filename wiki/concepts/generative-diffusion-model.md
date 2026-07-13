@@ -3,6 +3,7 @@ type: concept
 title: "Generative Diffusion Model (GDM)"
 tags: [generative-ai, diffusion, decision-generation]
 related:
+  - "[[jin-2026-skyndn-incentivizer]]"
   - "[[wu-2026-sensing-error-uav-scheduling]]"
   - "[[diffusion-augmented-madrl-replay]]"
   - "[[generative-ai-for-mec]]"
@@ -19,6 +20,8 @@ updated: 2026-07-14
 ---
 
 # Generative Diffusion Model (GDM)
+
+[[jin-2026-skyndn-incentivizer]] uses reverse diffusion as the actor that generates many-to-many UAV content allocations, with critic feedback during training and the paper's stated execution design.
 
 [[wu-2026-sensing-error-uav-scheduling]] uses diffusion for replay augmentation rather than action generation: a model learns complete transition tuples and mixes synthetic error-bearing samples with real experience through [[diffusion-augmented-madrl-replay]].
 

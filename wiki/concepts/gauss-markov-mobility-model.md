@@ -3,6 +3,8 @@ type: concept
 title: Gauss-Markov Mobility Model
 tags: [mobility, simulation, iot]
 related:
+  - "[[jin-2026-skyndn-incentivizer]]"
+  - "[[wang-2026-spatiotemporal-leo-channel-prediction]]"
   - "[[wu-2026-sensing-error-uav-scheduling]]"
   - "[[high-density-mobile-device-scenarios]]"
   - "[[liu-2026-jppo-en-convntm]]"
@@ -11,6 +13,8 @@ updated: 2026-07-14
 ---
 
 # Gauss-Markov (GM) Mobility Model
+
+[[jin-2026-skyndn-incentivizer]] uses a 3-D Gauss-Markov process for UAV speed, direction, and pitch in its dynamic auction environment. [[wang-2026-spatiotemporal-leo-channel-prediction]] uses Gauss-Markov ground-user motion inside a simulator-generated LEO/UAV-RIS channel dataset rather than as a decision model.
 
 A stochastic mobility model where each device's speed and direction are smoothed first-order Markov chains driven by Gaussian noise:
 

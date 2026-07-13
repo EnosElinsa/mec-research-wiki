@@ -3,6 +3,7 @@ type: concept
 title: "Joint Localization and Communication"
 tags: [localization, communication, aoa, cooperative-beamforming, emergency-network, cross-function-optimization]
 related:
+  - "[[min-2026-sparse-bistatic-nearfield-isac]]"
   - "[[tian-2026-joint-localization-communication]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[collaborative-beamforming]]"
@@ -15,10 +16,12 @@ related:
   - "[[lu-2026-icsn-beamforming]]"
   - "[[integrated-communication-sensing-navigation]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Joint Localization and Communication
+
+[[min-2026-sparse-bistatic-nearfield-isac]] reuses one precoded OFDM waveform for downlink service and target localization. The localization pipeline estimates delay, bistatic AoD/AoA, near-field range, and 3-D position; it does not optimize a feedback control or resource-allocation loop.
 
 Joint localization and communication closes a feedback loop between position estimation and data delivery. Better measurement geometry improves the user estimate, a better estimate sharpens directional beamforming, and the communication/energy outcome can then guide the next sensing geometry or platform position.
 

@@ -3,16 +3,20 @@ type: concept
 title: "Queueing Theory"
 tags: [analysis, delay, performance-modeling, mec]
 related:
+  - "[[guo-2026-spatiotemporal-information-quality-ugrnet]]"
+  - "[[martingale-delay-violation-bound]]"
   - "[[stochastic-geometry-network-analysis]]"
   - "[[lyapunov-optimization]]"
   - "[[age-of-information]]"
   - "[[zhang-2020-response-delay-uav-swarm]]"
   - "[[song-2026-thz-multiuav-mec]]"
 created: 2026-05-31
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Queueing Theory
+
+[[guo-2026-spatiotemporal-information-quality-ugrnet]] models robot-to-robot, robot-to-UAV, and UAV-to-center forwarding as heterogeneous tandem queues. Its [[martingale-delay-violation-bound]] gives an analytical upper bound under stationarity, stability, and independence assumptions rather than an empirical worst-case guarantee.
 
 **Queueing theory** models systems where jobs (tasks, packets) arrive, wait in a queue, and are served by one or more servers, yielding closed-form expressions for waiting time, queue length, and end-to-end delay as functions of arrival rate, service rate, and scheduling discipline. In MEC it is the natural tool for analyzing **response/computation delay** at edge servers, especially when combined with a spatial model of where the offloading nodes are.
 

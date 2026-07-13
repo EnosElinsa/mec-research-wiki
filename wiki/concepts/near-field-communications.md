@@ -3,6 +3,7 @@ type: concept
 title: "Near-Field Communications"
 tags: [near-field, xl-mimo, physical-layer, channel-modeling, 6g]
 related:
+  - "[[min-2026-sparse-bistatic-nearfield-isac]]"
   - "[[extremely-large-scale-mimo]]"
   - "[[wang-2024-xl-mimo-tutorial]]"
   - "[[bui-2025-noma-near-far-offloading]]"
@@ -15,6 +16,8 @@ updated: 2026-07-14
 ---
 
 # Near-Field Communications
+
+[[min-2026-sparse-bistatic-nearfield-isac]] uses spherical-wave angle-range coupling as sensing information. Its [[fourth-order-bistatic-virtual-array]] cancels quadratic near-field phase during angle estimation, then recovers transmitter range separately for 3-D localization.
 
 The communication regime that arises when the array aperture is large enough (as in [[extremely-large-scale-mimo|XL-MIMO]]) that users fall within the array's near field, so the wavefront across the array is **spherical** rather than planar. This invalidates the far-field planar-wave assumption used in conventional massive MIMO and changes channel modeling, performance analysis, beamforming, and applications.
 

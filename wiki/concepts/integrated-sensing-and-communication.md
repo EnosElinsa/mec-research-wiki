@@ -3,6 +3,8 @@ type: concept
 title: "Integrated Sensing and Communication (ISAC)"
 tags: [isac, dual-function, beamforming, 6g]
 related:
+  - "[[lyu-2026-situation-aware-uav-isac]]"
+  - "[[min-2026-sparse-bistatic-nearfield-isac]]"
   - "[[wu-2026-sensing-error-uav-scheduling]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[zhu-2025-green-isac-q-learning]]"
@@ -67,6 +69,8 @@ updated: 2026-07-14
 ---
 
 # Integrated Sensing and Communication (ISAC)
+
+[[lyu-2026-situation-aware-uav-isac]] adds [[situation-aware-hybrid-isac-sensing]], combining periodic multi-target sensing in one relay phase with rate-triggered UAV sensing in the next. [[min-2026-sparse-bistatic-nearfield-isac]] instead shares an OFDM waveform between downlink communication and bi-static near-field localization through sparse arrays.
 
 [[wu-2026-sensing-error-uav-scheduling]] studies time-division multi-UAV ISAC when localization error perturbs communication beam alignment. It combines a [[sensing-error-aware-communication-rate]] with [[adaptive-td-isac-sensing-period]] control instead of assuming sensed user positions are exact.
 

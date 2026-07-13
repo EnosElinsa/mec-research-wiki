@@ -3,6 +3,7 @@ type: entity
 title: "Zehui Xiong"
 tags: [author, researcher, ieee-senior-member, wireless-networks, edge-intelligence, semantic-communication, generative-ai, queens-university-belfast]
 related:
+  - "[[jin-2026-skyndn-incentivizer]]"
   - "[[yang-2026-embodied-antijamming-uav]]"
   - "[[du-2024-d2sac-aigc-asp-selection]]"
   - "[[du-2024-gdm-network-optimization-tutorial]]"
@@ -24,8 +25,9 @@ updated: 2026-07-14
 
 IEEE Senior Member and Full Professor in the School of Electronics, Electrical Engineering and Computer Science at **Queen's University Belfast**. He received a Ph.D. from Nanyang Technological University and previously worked at Singapore University of Technology and Design and NTU, with visiting appointments at Princeton University and the University of Waterloo. The rare full name and biography's explicit institution history connect the source records below across his affiliation change.
 
-Co-authored 13 sources in this wiki across aerial anti-jamming, edge intelligence, mobile AIGC, generative network optimization, semantic communication, physical-layer security, localization, satellite offloading, digital twins, and UAV-ISAC:
+Co-authored 14 sources in this wiki across aerial anti-jamming, edge intelligence, mobile AIGC, generative network optimization, semantic communication, physical-layer security, localization, satellite offloading, digital twins, UAV-ISAC, and UAV content incentives:
 
+- [[jin-2026-skyndn-incentivizer]] - auction- and diffusion-based incentives for content sharing in UAV named-data networks.
 - [[yang-2026-embodied-antijamming-uav]] - embodied DDQN spectrum/power control under low-altitude jamming.
 - [[du-2024-d2sac-aigc-asp-selection]] - diffusion-assisted service-provider selection for mobile AIGC.
 - [[du-2024-gdm-network-optimization-tutorial]] - tutorial on generative diffusion models for network optimization.

@@ -19,8 +19,9 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[liu-2020-wpt-cooperative-uav-mec]]"
   - "[[yong-zeng]]"
+  - "[[jie-xu]]"
 created: 2026-06-01
-updated: 2026-06-09
+updated: 2026-07-14
 ---
 
 # UAV-Enabled Wireless Power Transfer: Trajectory Design and Energy Optimization
@@ -67,7 +68,7 @@ Conventional WPT deploys fixed energy transmitters, which require ultra-dense de
 
 A **foundational UAV-WPT trajectory-optimization** anchor, and the WPT-only precursor to the corpus's WPT-MEC line — it predates and underpins [[zhou-2018-uav-wireless-powered-mec]] (computation-rate maximization) and [[liu-2020-wpt-cooperative-uav-mec]] (idle-SD cooperative WPT-MEC), which add a compute/offloading layer on top of the energy-delivery problem this paper isolates. By [[yong-zeng]] and Rui Zhang (with Jie Xu), it shares the convex-optimization / SCA(SCP) trajectory-design methodology and authorship of the UAV-communications foundations [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2016-throughput-relaying]], and [[zeng-2019-rotary-wing-energy-min]]. Its **near-far / max-min energy fairness** framing connects to the corpus's [[fairness-metrics-in-mec]] hub, and the **successive hover-and-fly** structure ([[successive-hover-and-fly-trajectory]]) recurs as a UAV-trajectory primitive.
 
-> Author note: the first author **Jie Xu** here is affiliated with the **School of Information Engineering, Guangdong University of Technology** (Guangzhou) — distinct from the [[jie-xu]] entity in this wiki (CUHK-Shenzhen, ISAC). They are treated as separate identities pending confirmation, so no entity link is embedded for this Jie Xu.
+The first author [[jie-xu]] was then affiliated with the School of Information Engineering, Guangdong University of Technology; matching education and career biographies connect this paper to his later CUHK-Shenzhen ISAC work.
 
 ## Raw artifacts
 

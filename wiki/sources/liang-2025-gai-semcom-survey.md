@@ -11,10 +11,11 @@ related:
   - "[[task-oriented-communication]]"
   - "[[mobile-aigc-network]]"
   - "[[dusit-niyato]]"
+  - "[[jiawen-kang]]"
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Generative AI-Driven Semantic Communication Networks: Architecture, Technologies, and Applications

@@ -3,6 +3,7 @@ type: concept
 title: "Diffusion Model as Optimizer"
 tags: [generative-ai, diffusion, optimization, decision-generation]
 related:
+  - "[[jin-2026-skyndn-incentivizer]]"
   - "[[generative-diffusion-model]]"
   - "[[contract-theory]]"
   - "[[ddpg]]"
@@ -13,10 +14,12 @@ related:
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Diffusion Model as Optimizer
+
+[[jin-2026-skyndn-incentivizer]] uses a diffusion actor with twin critics to denoise a continuous consumer-producer allocation matrix. Infeasible allocations receive a constraint-count penalty, so the learned policy is an empirical optimizer and does not inherit the analytical auction's economic-property claims.
 
 Using a [[generative-diffusion-model]] as a **solver/decision generator** for non-convex optimization problems that must be re-solved repeatedly (as costs, types, or environment parameters change). A conditional reverse-diffusion policy maps the problem's environment vector to a near-optimal decision in one inference pass; it is trained DRL-style — against value critics (often double-Q to curb overestimation), with a replay buffer and soft target updates — so it learns to *generate* good solutions rather than search for them each time.
 

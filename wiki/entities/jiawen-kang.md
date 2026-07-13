@@ -3,6 +3,10 @@ type: entity
 title: Jiawen Kang
 tags: [author, researcher, ieee-senior, cmop-evolutionary-lineage]
 related:
+  - "[[guo-2026-spatiotemporal-information-quality-ugrnet]]"
+  - "[[liang-2025-gai-semcom-survey]]"
+  - "[[wang-2024-ttw-amd-localization]]"
+  - "[[zhao-2025-gai-pls-survey]]"
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[huang-2023-mu-aec-task-energy]]"
@@ -24,14 +28,14 @@ related:
   - "[[ye-2026-flight-speed-battery-swapping]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Jiawen Kang
 
 IEEE Senior Member. Affiliated with the **School of Automation, Guangdong University of Technology** (Guangzhou, China). The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] repeat the same Guangdong University of Technology affiliation, confirming the same researcher identity across these corpus sources.
 
-Co-authored 19 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage, collaborative beamforming, generative-AI/diffusion methods, air-ground MEC service placement, human/vehicle digital-twin edge deployment, UAV-swarm collaborative inference, cooperative drone-vehicle MEC, low-carbon LAE optimization, and battery-aware UAV-MEC inspection:
+Co-authored 23 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage, collaborative beamforming, generative-AI/diffusion methods, semantic communication, physical-layer security, localization, air-ground MEC service placement, digital twins, UAV-swarm collaborative inference, cooperative drone-vehicle MEC, low-carbon LAE optimization, and UAV-ground-robot information quality:
 
 - [[peng-2022-cmop-uav-path-planning]], [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]] - CMOP-evolutionary lineage.
 - [[sun-2025-emoppo-vlh-aerial-cb]], [[li-2024-emodrl-ground-space-cb]] - aerial / ground-space collaborative beamforming via evolutionary multi-objective RL.
@@ -42,12 +46,16 @@ Co-authored 19 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage
 - [[wang-2024-wipe-gai]] - wireless-perception-guided GAI for edge AIGC pricing via a diffusion model.
 - [[ye-2025-aigc-diffusion-contract]] - generative-diffusion + contract theory for prompt-engineering/edge AIGC service optimization.
 - [[xu-2024-mobile-aigc-survey]] - survey of edge-cloud generative-AI / AIGC services in mobile networks.
+- [[liang-2025-gai-semcom-survey]] - survey of generative-AI-driven semantic communication networks.
+- [[zhao-2025-gai-pls-survey]] - survey of generative AI for secure physical-layer communications.
+- [[wang-2024-ttw-amd-localization]] - through-wall passive detection and localization of autonomous mobile devices.
 - [[yang-2024-taco-human-digital-twin-edge]] - two-timescale accuracy-aware online optimization for human-digital-twin deployment at the edge.
 - [[qu-ecoei-uav-swarm]] - eCoEI elastic collaborative edge intelligence architecture for UAV swarms.
 - [[qi-2026-drone-vehicle-mec-inspection]] - cooperative drone-vehicle MEC for low-altitude inspection with route planning, battery swapping, and detached-drone speed optimization.
 - [[chen-2026-hc-mappo-vehicle-twin-migration]] - workload-prediction-assisted vehicle-twin migration and UAV routing via HC-MAPPO.
 - [[wen-2026-hybridrag-low-carbon-lae]] - HybridRAG-based LLM agents and R^2DSAC for low-carbon LAE MEC optimization.
 - [[ye-2026-flight-speed-battery-swapping]] - flight-speed scheduling, battery swapping, and offloading for UAV-enabled MEC patrol inspection.
+- [[guo-2026-spatiotemporal-information-quality-ugrnet]] - martingale/Wasserstein information-quality analysis for heterogeneous UAV-ground-robot networks.
 
 Email: kavinkang@gdut.edu.cn
 

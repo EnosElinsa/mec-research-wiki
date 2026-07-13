@@ -1,5 +1,23 @@
 # Research Log
 
+## [2026-07-14] Curated situation-aware ISAC, UAV-NDN incentives, sparse near-field sensing, channel prediction, and robot-network information quality
+
+Added five source pages, twelve reusable concepts, and six recurring-author entities:
+
+- [[lyu-2026-situation-aware-uav-isac]] - Lyu et al. 2026, *IEEE TWC* 25, 12197-12213, DOI `10.1109/TWC.2026.3661956`. [[situation-aware-hybrid-isac-sensing]] switches between periodic sensing and communication-rate-triggered sensing while coordinating UAV position and angle control.
+- [[jin-2026-skyndn-incentivizer]] - Jin et al. 2026, *IEEE TMC* 25(3), 4013-4030, DOI `10.1109/TMC.2025.3622224`. [[uav-named-data-networking]] is paired with [[iterative-double-auction-incentive]] and a separate diffusion-RL allocator for content-sharing incentives.
+- [[min-2026-sparse-bistatic-nearfield-isac]] - Min et al. 2026, *IEEE TWC* 25, 18562-18578, DOI `10.1109/TWC.2026.3702759`. [[sparse-xl-mimo]], [[fourth-order-bistatic-virtual-array]], and [[symmetric-double-nested-array]] support angle/range estimation for low-altitude UAV swarms.
+- [[wang-2026-spatiotemporal-leo-channel-prediction]] - Wang et al. 2026, *IEEE TWC* 25, 7252-7267, DOI `10.1109/TWC.2025.3630206`. [[spatiotemporal-attention-channel-prediction]], [[masked-csi-reconstruction-pretraining]], [[dft-beamspace-channel-compression]], and [[partial-csi-outage-patterns]] organize the predictor's global/local attention and pretraining pipeline.
+- [[guo-2026-spatiotemporal-information-quality-ugrnet]] - Guo et al. 2026, *IEEE TMC* 25(6), 8002-8015, DOI `10.1109/TMC.2025.3646651`. [[martingale-delay-violation-bound]] and [[spatiotemporal-information-quality]] combine temporal delay risk with Wasserstein spatial mismatch in UAV-assisted ground-robot networks.
+
+Created recurring-author pages for [[ling-lyu]], [[yanpeng-dai]], [[nan-cheng]], [[weidang-lu]], [[suzhi-bi]], and [[carla-fabiana-chiasserini]]. Affiliation- and biography-backed review also merged Jie Xu's three Guangdong University of Technology-era wireless-power/UAV-energy papers into [[jie-xu]], expanded [[nan-cheng]] to six confirmed sources while leaving the `ji-2026` match unresolved, expanded [[jiawen-kang]] to 23 sources, and expanded [[xuemin-shen]] to 18 sources. Reciprocal source links and prose rosters were synchronized.
+
+Evidence caveats: the situation-aware ISAC paper's overall MINLP method is suboptimal, with a global rank-one result only for its Phase-II subproblem; its evaluation is simulation-only and the parse contains a broken `P0` expression plus baseline/figure inconsistencies. SkyNDN's analytical auction guarantees depend on strict utility/cost assumptions and do not transfer to the separate diffusion-RL allocator; the design assumes a trusted broker and omits malicious behavior and an NDN testbed. The sparse XL-MIMO work does not jointly optimize the system, relies on known array poses/symbols, has high noise sensitivity and computational cost, and reports simulation without 3D RMSE. The channel predictor uses simulator-generated data, has ambiguous masking semantics, applies lossy DFT truncation, and reports Jetson latency estimates rather than measurements; its rate example removes RIS and multiuser effects. The robot-network paper derives a bound under strong independence/stationarity assumptions but does not provide the claimed optimization solver, physical UAV/robot experiments, or a path variable in the evaluated completion-ratio sweeps.
+
+Three low-concurrency extraction agents grounded the five papers. Independent read-only review found no metadata or source-claim blocker, then corrected the Jie Xu identity split and the Nan Cheng, Jiawen Kang, and Xuemin Shen roster omissions before commit.
+
+Validation reports **584 sources / 600 concepts / 165 entities / 612 raw folders** and **27 genuinely new sources** remaining. Wikilinks are clean; process narration is absent outside this log; the index covers all **1,401** catalogue-able pages exactly once; all **1,399** frontmatter blocks validate; entity rosters have zero overclaims (23 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated directional UAV secrecy, critical-period FL, layered semantic aggregation, sensing-error-aware ISAC, and active-RIS short packets
 
 Added five source pages and nine reusable concepts:

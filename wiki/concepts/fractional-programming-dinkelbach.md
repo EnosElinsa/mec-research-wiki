@@ -3,6 +3,7 @@ type: concept
 title: Fractional Programming and Dinkelbach Transform
 tags: [optimization, fractional-programming, theory]
 related:
+  - "[[lyu-2026-situation-aware-uav-isac]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[lyapunov-optimization]]"
@@ -30,6 +31,8 @@ updated: 2026-07-14
 ---
 
 # Fractional Programming and Dinkelbach Transform
+
+[[lyu-2026-situation-aware-uav-isac]] applies a golden-section/Dinkelbach outer loop to Phase-I rate-per-power optimization and a Shen-Yu quadratic transform to Phase-II sum-of-ratios control. Rank penalties and SCA make the overall MINLP solution suboptimal despite a rank-one recovery result for one Phase-II subproblem.
 
 A family of techniques for optimizing ratios of two functions — common in EE-style objectives like
 

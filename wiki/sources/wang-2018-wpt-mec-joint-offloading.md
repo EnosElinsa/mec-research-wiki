@@ -12,8 +12,9 @@ related:
   - "[[task-offloading]]"
   - "[[binary-vs-partial-offloading]]"
   - "[[mao-2016-lodco-eh-mec-offloading]]"
+  - "[[jie-xu]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Joint Offloading and Computing Optimization in Wireless Powered Mobile-Edge Computing Systems

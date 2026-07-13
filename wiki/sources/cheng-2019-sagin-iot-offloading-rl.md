@@ -9,11 +9,12 @@ tags: [source, sagin, iot, task-offloading, reinforcement-learning, edge-computi
 related:
   - "[[task-offloading]]"
   - "[[xuemin-shen]]"
+  - "[[nan-cheng]]"
   - "[[ullah-2026-mec-drl-ntn-survey]]"
   - "[[liu-2023-sagecn-online-offloading]]"
   - "[[three-tier-cloud-edge-end]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Space/Aerial-Assisted Computing Offloading for IoT Applications: A Learning-Based Approach

@@ -3,6 +3,8 @@ type: concept
 title: "Double Auction"
 tags: [game-theory, auction, market-mechanism, resource-allocation]
 related:
+  - "[[jin-2026-skyndn-incentivizer]]"
+  - "[[iterative-double-auction-incentive]]"
   - "[[bargaining-game]]"
   - "[[matching-theory-for-resource-allocation]]"
   - "[[stackelberg-game]]"
@@ -12,10 +14,12 @@ related:
   - "[[dai-2024-multiuav-marine-welfare]]"
   - "[[seid-2026-mafdrl-tn-ntn-incentive]]"
 created: 2026-05-31
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Double Auction
+
+[[jin-2026-skyndn-incentivizer]] uses an [[iterative-double-auction-incentive]] to trade cached content between UAV consumers and producers through a virtual broker. Its KKT-aligned bid/ask updates are distinct from the paper's learned diffusion allocation policy, which has no auction truthfulness or feasibility theorem.
 
 A **double auction** is a market mechanism with multiple buyers **and** multiple sellers who submit bids and asks; a controller matches them and sets transaction prices. Unlike a single-sided auction (one seller, many buyers), both sides are strategic, and the design must respect **individual rationality** (buyers never pay above their valuation; sellers never accept below their cost) while clearing many-to-many supply-demand.
 
