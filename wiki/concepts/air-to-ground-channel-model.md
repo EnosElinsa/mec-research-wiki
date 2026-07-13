@@ -40,6 +40,9 @@ related:
   - "[[samir-2022-aoi-altitude-scheduling]]"
   - "[[dang-2026-uav-fl-energy]]"
   - "[[tan-2025-sagin-outage-altitude]]"
+  - "[[zhang-2026-polarfix-uav-mmwave]]"
+  - "[[ren-2026-distributed-uav-los]]"
+  - "[[krishna-m-2026-multiuav-nbiot]]"
 created: 2026-05-31
 updated: 2026-07-14
 ---
@@ -63,3 +66,4 @@ The **air-to-ground (ATG) channel model** describes propagation between an aeria
 - [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] uses the ATG channel as a localization model: RSSI is converted to distance under elevation-angle-dependent path loss and shadowing, then [[rss-based-uav-localization]] chooses waypoints that improve multilateration geometry.
 - [[wang-2026-bayesian-uav-spectrum-mapping]] and [[belgiovine-not-in-parse-multidt-abs-deployment]] move toward environment-specific channel knowledge: the former learns a 3-D REM from sparse UAV samples, while the latter uses ray-tracing digital twins for airborne-base-station placement. [[heo-not-in-parse-blockage-aided-multiuav-interference]] adds the urban blockage case, where LoS/NLoS status is optimized for both desired and interfering links.
 - [[zhang-2026-control-assisted-beam-tracking]] studies a LoS-dominant single-path mmWave link where propagation is not the main unknown; [[control-assisted-uav-beam-tracking]] instead predicts beam misalignment from UAV attitude, velocity, position, and waypoint-control state.
+- [[ren-2026-distributed-uav-los]] uses the distance-, height-, and deployment-dependent [[3gpp-uav-los-probability-model]] with spatially distributed urban base stations. [[krishna-m-2026-multiuav-nbiot]] instead evaluates fixed-altitude relay links through standardized tapped-delay-line and terrestrial EPA/ETU channel profiles.

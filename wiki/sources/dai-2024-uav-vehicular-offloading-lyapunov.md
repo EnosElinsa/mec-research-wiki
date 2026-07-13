@@ -16,8 +16,9 @@ related:
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
   - "[[sun-2023-bargain-match-vec]]"
   - "[[ma-2025-pdqn-vehicular-mec]]"
+  - "[[zhu-xiao]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-14
 ---
 
 # UAV-Assisted Task Offloading in Vehicular Edge Computing Networks

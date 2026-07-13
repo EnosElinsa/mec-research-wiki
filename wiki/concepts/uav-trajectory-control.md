@@ -6,6 +6,7 @@ related:
   - "[[lu-2026-aoi-trajectory-channel]]"
   - "[[dang-2026-uav-fl-energy]]"
   - "[[v-2026-pb-papp-survivor-detection]]"
+  - "[[chen-2026-pointrl-uav-isac]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
   - "[[ning-2026-uav-isac-secure-beamforming]]"
   - "[[wang-2023-drl-irs-uav-trajectory]]"

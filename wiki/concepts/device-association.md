@@ -22,8 +22,9 @@ related:
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[meng-2026-uav-isac-corrections]]"
   - "[[spatially-separated-uav-isac-role-scheduling]]"
+  - "[[ren-2026-distributed-uav-los]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Device Association
@@ -37,3 +38,5 @@ In the wiki, [[chen-2023-aiot-device-association]] makes device association a fi
 [[meng-2026-uav-isac-corrections]] shows why association indicators must be tracked carefully inside convexified rate expressions: a duplicated `alpha_k[n]` factor caused one UAV-ISAC subproblem to be mislabeled non-convex until the rate definition was repaired.
 
 [[wang-2026-glint-aoi-wireless-powered-edge]] places association between two learned stages: actor 1 selects UAV positions, path-loss preference matching assigns candidate sensors, and actor 2 schedules WPT time and transmissions. The matcher keeps binary contention outside the mobility actor; the evaluated actor chooses among 11 discrete movement actions.
+
+[[ren-2026-distributed-uav-los]] analyzes association without edge computation, comparing best, nearest, and LoS/NLoS-conditioned base-station selection for distributed urban aerial users.

@@ -8,8 +8,9 @@ related:
   - "[[huang-2026-offgrid-lae-imager]]"
   - "[[wang-2024-wipe-gai]]"
   - "[[wang-gai-isac-physical-layer]]"
+  - "[[bai-2026-passive-uav-detection]]"
 created: 2026-06-02
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Wireless Perception
@@ -21,3 +22,5 @@ In [[wang-2024-wipe-gai]], wireless perception is used to **guide generative AI*
 Wireless perception is closely related to the sensing half of [[integrated-sensing-and-communication|ISAC]]; the generative-AI-from-physical-layer-signals view also appears in [[wang-gai-isac-physical-layer]].
 
 [[huang-2026-offgrid-lae-imager]] applies the idea to low-altitude surveillance: raw CSI from cooperative ISAC base stations is converted into sparse aerial images, with physics-embedded learning used to correct off-grid target positions.
+
+[[bai-2026-passive-uav-detection]] adds [[csi-based-passive-uav-detection]] using ambient DTMB signals: estimated channel impulse responses support UAV-presence and motion-state classification without a cooperative transmitter or payload.

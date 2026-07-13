@@ -1,5 +1,23 @@
 # Research Log
 
+## [2026-07-14] Curated passive UAV sensing, urban LoS analysis, NB-IoT relaying, radar-point-cloud ISAC, and polarization control
+
+Added five source pages, eight reusable concepts, and one recurring-author entity:
+
+- [[bai-2026-passive-uav-detection]] - Bai et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3676229`. [[csi-based-passive-uav-detection]] estimates DTMB channel responses and combines multi-scale/local and multi-period temporal features for physical outdoor UAV presence and motion-state classification.
+- [[ren-2026-distributed-uav-los]] - Ren et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3635206`. [[3gpp-uav-los-probability-model]] and [[matern-hard-core-bs-deployment]] support finite-region outage and capacity analysis for urban aerial users under several BS-selection rules.
+- [[krishna-m-2026-multiuav-nbiot]] - Krishna M. and Balasubramanya 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3673845`. [[narrowband-iot]], [[code-domain-noma]], and [[longest-transmission-time-first-uav-grouping]] reduce relay-pool completion time and device energy under heterogeneous traffic.
+- [[chen-2026-pointrl-uav-isac]] - Chen et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3679741`. [[radar-point-cloud-driven-uav-isac]] maps measured vehicle point-cloud features into segmented UAV-motion and power actions with a DQN-style controller.
+- [[zhang-2026-polarfix-uav-mmwave]] - Zhang et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3668716`. [[polarization-matched-uav-mmwave-metasurface]] combines passive linear-to-circular conversion with programmable transmissive beam steering for COTS 802.11ad links.
+
+Matching Hunan University affiliation and Xidian/Bedfordshire biography evidence established [[zhu-xiao]] across vehicular offloading and passive wireless sensing. Existing [[zehui-xiong]] and [[tony-q-s-quek]] rosters were extended with PointRL. Common or one-off names were not promoted, and the USTC Jian Yang on the urban-LoS paper remains separate from an existing same-name author in the raw corpus.
+
+Metadata notes: exact-title Crossref records supplied final or early-access fields absent from the parses. The five records are TWC 25, 14351-14366 (2026); TGCN 10, 1478-1494 (2026); TMC early access, 1-16 (2026); TMC early access, 1-15 (2026); and TMC 25(8), 11804-11820 (2026), respectively.
+
+Evidence caveats: passive detection uses real signals but offline workstation inference and does not localize or track; the urban-LoS study omits small-scale fading and analytical interference; the NB-IoT grouping is heuristic and simulation-only; PointRL uses field-captured radar inputs but numerically evaluates the communication/controller loop; and PolarFix emulates UAV motion on the ground, tests only LoS links up to 2 m/s, and estimates rather than demonstrates its high-speed limit.
+
+Three low-concurrency extraction agents handled the passive-detection, urban-LoS, and NB-IoT papers; PointRL and PolarFix were extracted locally. Independent review corrected the ANRM expansion, softened an overstatement of polarization rotation invariance, and repaired a strict runtime bound. Validation reports **544 sources / 521 concepts / 131 entities / 612 raw folders** and **67 genuinely new sources** remaining. Wikilinks, process narration, index coverage across all **1,248** catalogue-able pages, **1,246** frontmatter blocks, entity overclaims, all 12 wiki-tool unit tests, secret-like assignments in changed wiki files, and `git diff --check` are clean.
+
 ## [2026-07-14] Curated UAV federated learning, HAPS-UAV ISAC, aerial IAB, SAGIN outage, and survivor search
 
 Added five source pages, seven reusable concepts, and one recurring-author entity:

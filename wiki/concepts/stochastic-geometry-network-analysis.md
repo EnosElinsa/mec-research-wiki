@@ -14,8 +14,9 @@ related:
   - "[[ambient-interference-aided-covertness]]"
   - "[[dong-2026-digital-tides-provisioning]]"
   - "[[su-2026-three-tier-uav-capacity]]"
+  - "[[ren-2026-distributed-uav-los]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Stochastic Geometry Network Analysis
@@ -35,3 +36,5 @@ In the wiki, [[jiang-2025-isac-lae-overview]] uses stochastic geometry to derive
 A useful complement to per-task DRL/optimization papers: stochastic geometry tells you *whether the network can support the workload at all*, before per-task scheduling enters the picture.
 
 [[su-2026-three-tier-uav-capacity]] uses PPP order statistics and interference Laplace transforms to derive NOMA access coverage and ergodic capacity before combining access with relay and backhaul bottlenecks.
+
+[[ren-2026-distributed-uav-los]] replaces independent Poisson base stations with [[matern-hard-core-bs-deployment]], preserving a minimum terrestrial-site separation while deriving finite-region aerial-user outage and capacity.

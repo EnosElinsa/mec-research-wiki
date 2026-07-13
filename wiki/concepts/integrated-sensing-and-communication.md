@@ -5,6 +5,7 @@ tags: [isac, dual-function, beamforming, 6g]
 related:
   - "[[ning-2026-uav-isac-secure-beamforming]]"
   - "[[kanani-2026-haps-uav-isac]]"
+  - "[[chen-2026-pointrl-uav-isac]]"
   - "[[lv-2026-isac-sar-tlsp]]"
   - "[[lyu-2023-isac-maneuver-beamforming]]"
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"
@@ -93,3 +94,5 @@ Newer secure and networked entries widen the ISAC role. [[yan-not-in-parse-multi
 [[xu-2026-hecta-predictive-beamforming]] adds a communication-centric ISAC use: historical matched-filtered echoes are fed directly to [[historical-echo-predictive-beamforming|HECTA-Net]] to predict the next BS transmit and UAV receive beams, without first estimating a kinematic state or explicit CSI.
 
 [[kanani-2026-haps-uav-isac]] adds [[haps-uav-isac-resource-allocation]]: HAPS processes a two-slot multi-UAV architecture while NSGA-II preserves separate target-echo and minimum-user-SINR objectives on a Pareto front.
+
+[[chen-2026-pointrl-uav-isac]] adds [[radar-point-cloud-driven-uav-isac]]: 3-D vehicle-shape returns feed a branched DQN controller for horizontal trajectory, power, radar capacity, and U2V fairness.

@@ -14,15 +14,16 @@ related:
   - "[[li-2026-dff-slam]]"
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"
+  - "[[chen-2026-pointrl-uav-isac]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Tony Q. S. Quek
 
 IEEE Fellow. Affiliated with the **Information Systems Technology and Design (ISTD) Pillar, Singapore University of Technology and Design (SUTD)** (Singapore; email `tonyquek@sutd.edu.sg`); some papers also list Yonsei University / Kyung Hee University. Consistent identity across his papers in this wiki.
 
-Co-authored 11 sources in this wiki:
+Co-authored 12 sources in this wiki:
 
 - [[liu-2025-haps-uav-maritime-iot]] — HAP-UAV-assisted maritime IoT communication network.
 - [[yao-2025-secure-isac-dual-eavesdropping]] — UAV-enabled secure ISAC against dual eavesdropping threats.
@@ -36,7 +37,8 @@ Co-authored 11 sources in this wiki:
 - [[zhou-2026-multiscale-dt-uav-delivery]] - terminal-edge multiscale digital twins for cooperative UAV parcel delivery.
 
 - [[yao-2026-transformer-mean-field-isac-sagin]] - transformer-enabled mean-field interference management in ISAC-SAGINs.
+- [[chen-2026-pointrl-uav-isac]] - radar-point-cloud-driven UAV-to-vehicle sensing and communication control.
 
 ## Contributions to this wiki
 
-- A senior collaborator (edge computing, ISAC, wireless networks) recurring across maritime-IoT, secure-ISAC, UAV-caching, satellite-edge-computing, marine multi-access, air-ground vehicular-MEC, prediction-assisted service migration, radio/visual UAV localization, and multiscale digital-twin delivery threads.
+- A senior collaborator (edge computing, ISAC, wireless networks) recurring across maritime-IoT, secure-ISAC, UAV-caching, satellite-edge-computing, marine multi-access, air-ground vehicular-MEC, prediction-assisted service migration, radio/visual UAV localization, multiscale digital-twin delivery, and radar-guided U2V control threads.

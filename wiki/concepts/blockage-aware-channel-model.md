@@ -12,6 +12,8 @@ related:
   - "[[dynamic-irs-user-association]]"
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[yu-2026-ris-uav-iab-outage]]"
+  - "[[zhang-2026-polarfix-uav-mmwave]]"
+  - "[[ren-2026-distributed-uav-los]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---
@@ -31,3 +33,5 @@ Choice depends on what data is available. Terrain-aware geometric models are inc
 [[heo-not-in-parse-blockage-aided-multiuav-interference]] adds a multi-UAV communication variant: cuboid buildings classify both desired and interference links as LoS/NLoS, and [[building-blockage-aided-interference-coordination]] deliberately uses NLoS interference links to improve spectral efficiency while keeping desired links LoS.
 
 [[ning-2025-channel-aware-irs-uav]] uses geometric blockage state to trigger reflected support and change [[dynamic-irs-user-association]] jointly with UAV motion.
+
+[[ren-2026-distributed-uav-los]] uses the statistical [[3gpp-uav-los-probability-model]] to condition serving-distance, outage, and capacity analysis across urban macrocell and microcell aerial links.
