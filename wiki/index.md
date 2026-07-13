@@ -211,6 +211,8 @@
 
 ### IRS / THz / anti-jamming
 
+- [[mahmoud-2021-uav-irs-iot-analysis]] - Mahmoud et al. 2021. Analytical UAV-mounted IRS link for one beyond-horizon IoT user; SNR bounds/distribution, SER, ergodic capacity, and outage expose ideal N-squared array scaling and elevation-dependent placement effects (IEEE TGCN).
+
 - [[tang-2026-gat-antijamming]] - Tang et al. 2026. Hierarchical anti-jamming UAV control with GAT-based inner-loop beamforming and two-agent MADDPG outer-loop deployment/jammer-power adaptation (IEEE TWC).
 - [[huroon-2026-bd-ris-rsma-uav]] - Huroon et al. 2026. Ground-mounted group-connected BD-RIS with cluster assignment and intra-group RSMA; augmented GBD plus BCD/SCA/RCG jointly optimize precoders, rates, trajectories, and non-diagonal scattering matrices (IEEE TWC).
 - [[mihertie-2026-aerial-irs-rsma-ee]] - Mihertie et al. 2026. Communication-side energy-efficiency maximization for a UAV-mounted passive IRS MISO downlink with RSMA, aggregate hardware distortion, BCD/SCA, and sequential rank-one relaxation (IEEE TGCN).
@@ -367,6 +369,8 @@
 
 ### Trust, security, and federated MEC
 
+- [[ron-2026-federated-a3c-uav-energy]] - Ron and Lee 2026. Hierarchical federated A3C for UAV-relayed FR3 networks; ground users jointly select powers, UAV hover positions, bandwidth fractions, and associations for compute/transmit energy and round-trip service reliability (IEEE TGCN).
+
 - [[fu-2026-uav-fl-user-grouping]] - Fu et al. 2026. DBSCAN client grouping and two-phase SCA jointly control FL participation, data volume, UE power, UAV hover time, and trajectory under an expected-global-loss bound (IEEE TGCN).
 - [[chen-2026-sdhfl-completion-time]] - Chen et al. 2026. UAV-assisted semi-decentralized hybrid FL with D2D cluster consensus, asynchronous UAV aggregation, Lyapunov cluster selection, and joint mobility/resource optimization for completion time (IEEE TMC).
 - [[zhou-2026-cpsfl-uav-foundation-models]] - Zhou et al. 2026. Communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks; sequential downlink gradient transmission plus attention-based DRL split/resource decisions (IEEE TMC).
@@ -384,6 +388,8 @@
 - [[wang-2024-blockchain-uav-mec-dpos]] — Wang et al. 2024. **Blockchain-integrated** UAV-assisted MEC; improved **DPoS** consensus (UAV light nodes + reputation-voted ground full nodes) + two-stage **Stackelberg** game over trajectory and resource allocation, solved with SCA (IEEE TVT).
 
 ### ISAC, sensing & physical-layer security
+
+- [[guo-2026-dual-objective-multiuav-isac]] - Guo et al. 2026. Multi-UAV trajectories, powers, user associations, and target associations optimized as a communication-sum-rate versus sensing-CRB Pareto front by archive-guided MOEA/D with adaptive PSO/GA updates (IEEE TWC).
 
 - [[cheng-2026-cnn-mamba-cracks]] - Cheng et al. 2026. WTCMamba pavement-crack segmentation combines CNN features, Haar-wavelet guidance, and Mamba selective state-space blocks; an LMC-Belloch/Triton scan is benchmarked on Jetson, separately from the proposed air-ground acquisition platform (IEEE T-ITS).
 - [[li-2026-directional-modulation-irs-uav]] - Li et al. 2026. IRS-assisted UAV directional modulation with discrete phase shifts; VT, CE-VT, and BCD-VT jointly design symbol-level digital weights, UAV position, and IRS phases to preserve the legitimate constellation while disrupting an eavesdropper (IEEE TGCN).
@@ -464,6 +470,8 @@
 
 ### Architectural / spectrum / governance
 
+- [[guo-2026-event-triggered-sinr-navigation]] - Guo et al. 2026. UT-Grid refreshes local/global SINR maps when MC-dropout uncertainty crosses a threshold, while Top-1 MoE-D3QN plans a cellular-UAV path under outage, update-traffic, and inference-cost tradeoffs (IEEE TMC).
+
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
 - [[cao-2026-radio-map-cargo-pickup]] - Cao et al. 2026. Radio-map-aided cargo pickup; expected-SNR-grid A* paths feed PSO trip allocation and payload-dependent speed selection for propulsion-energy minimization (IEEE T-ITS).
 - [[lee-2026-uav-delivery-time-energy]] - Lee & Chae 2026. UAV-enabled parcel pickup/drop-off with payload-weight, no-fly-zone, 3-D trajectory, and variable-slot optimization; SCA+PCCP exposes a completion-time vs propulsion-energy tradeoff (IEEE T-ITS).
@@ -535,6 +543,8 @@
 
 ### UAV communications & deployment foundations
 
+- [[challita-2019-cellular-uav-interference-drl]] - Challita et al. 2019. Distributed deep echo-state-network RL jointly controls cellular-UAV grid paths, serving cells, and powers in a dynamic noncooperative game; its SPNE result is conditional on training convergence (IEEE TWC).
+
 - [[xie-2026-geoagg-hsac]] - Xie et al. 2026. Mountainous integrated localization and communication with terrain-occlusion-aware graph aggregation and hybrid SAC control of UAV trajectories, user association, and resource allocation (IEEE TWC).
 - [[liu-2026-uav-hsr-jitter]] - Liu et al. 2026. Gaussian-random-walk UAV jitter analysis for CA/DA high-speed-rail mmWave links, with outage/rate expressions and codebook-aware adaptive beamwidth (IEEE T-ITS).
 - [[zhang-2019-fast-uav-deployment]] - Zhang & Duan 2019. Fast heterogeneous-UAV coverage deployment under min-max and min-sum travel delay, with exact, FPTAS, bounded-greedy, and pseudo-polynomial algorithms (IEEE TMC).
@@ -595,6 +605,8 @@
 ## Entities
 
 ### Authors
+
+- [[xiang-cheng]] (Peking University - aerial channel modeling, UAV/vehicle simulation, and multi-UAV ISAC; 4 sources), [[rongqing-zhang]] (HKUST Guangzhou - intelligent transportation and aerial networks; 2 sources), [[jung-ryun-lee]] (Chung-Ang University - learning-based UAV/IRS energy control; 2 sources), [[octavia-a-dobre]] (Memorial University - RIS/ISAC channel analysis and generation; 2 sources), and [[halim-yanikomeroglu]] (Carleton University - aerial placement and UAV-mounted IRS communications; 2 sources).
 
 - [[zheng-chang]] (UESTC / University of Jyväskylä - UAV communications, edge computing, ISAC, and green communications; 6 sources).
 - [[dusit-niyato]] (NTU) appears across 51 sources after reconciling six exact-name source matches and adding the graph-driven anti-jamming paper; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 18 sources after the GeoAgg-HSAC, graph anti-jamming, and Hammurabi papers; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
@@ -800,6 +812,8 @@
 
 ### UAV control & decisions
 
+- [[uncertainty-triggered-radio-map-update]]
+
 - [[uav-trajectory-control]]
 - [[fast-heterogeneous-uav-deployment]]
 - [[multi-modal-uav-coverage-backhaul-control]]
@@ -839,6 +853,9 @@
 - [[information-causality-constraint]]
 
 ### DRL backbones
+
+- [[deep-echo-state-network-reinforcement-learning]]
+- [[hierarchical-federated-a3c]]
 
 - [[ppo]] · [[j-ppo]]
 - [[permutation-equivariant-replay-augmentation]]
@@ -1016,6 +1033,8 @@
 - [[csi-estimation-error]]
 
 ### Sensing & security
+
+- [[dual-objective-multi-uav-isac]]
 
 - [[integrated-sensing-and-communication]]
 - [[joint-localization-and-communication]]

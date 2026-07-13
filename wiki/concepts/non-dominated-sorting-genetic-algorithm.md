@@ -3,11 +3,12 @@ type: concept
 title: "Non-Dominated Sorting Genetic Algorithms (NSGA-II / NSGA-III)"
 tags: [evolutionary, multi-objective, pareto, classical-solver]
 related:
+  - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
 created: 2026-06-03
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Non-Dominated Sorting Genetic Algorithms (NSGA-II / NSGA-III)

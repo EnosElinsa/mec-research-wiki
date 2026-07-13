@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-13] Curated multi-UAV ISAC, federated A3C, aerial IRS analysis, event-triggered radio maps, and cellular-UAV interference
+
+Added five source pages, four concept pages, and five author entities:
+
+- [[guo-2026-dual-objective-multiuav-isac]] - Guo et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3641375`. SC-DO-MUOA jointly evolves multi-UAV trajectories, powers, user associations, and target associations into a communication-sum-rate versus sensing-CRB Pareto archive.
+- [[ron-2026-federated-a3c-uav-energy]] - Ron and Lee 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3601729`. Ground-user A3C agents control power, UAV hover position, bandwidth, and relay association while UAV and terrestrial tiers aggregate actor/critic models.
+- [[mahmoud-2021-uav-irs-iot-analysis]] - Mahmoud et al. 2021, *IEEE TGCN*, DOI `10.1109/TGCN.2021.3068739`. An analytical static UAV-mounted IRS model derives SNR, error-rate, capacity, and outage behavior for a blocked single-user IoT link.
+- [[guo-2026-event-triggered-sinr-navigation]] - Guo et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2026.3667780`. UT-Grid uses MC-dropout uncertainty to trigger local/global SINR-map refreshes, and Top-1 MoE-D3QN plans under traffic and active-compute constraints.
+- [[challita-2019-cellular-uav-interference-drl]] - Challita et al. 2019, *IEEE TWC*, DOI `10.1109/TWC.2019.2900035`. Distributed deep echo-state-network RL jointly selects cellular-UAV paths, serving cells, and powers in a dynamic noncooperative game.
+
+New concept pages are [[dual-objective-multi-uav-isac]], [[hierarchical-federated-a3c]], [[uncertainty-triggered-radio-map-update]], and [[deep-echo-state-network-reinforcement-learning]]. Existing ISAC, CRB, evolutionary optimization, federated learning, radio-map planning, mixture-of-experts, RIS, cellular-UAV, trajectory, association, and channel-model pages were extended rather than duplicated. Exact-name, biography/affiliation, and publication-metadata evidence established [[xiang-cheng]] across four sources and [[rongqing-zhang]], [[jung-ryun-lee]], [[octavia-a-dobre]], and [[halim-yanikomeroglu]] across two each. [[walid-saad]] was reconciled to eight sources, including two older omitted Mozaffari entries and the new cellular-UAV interference paper.
+
+Metadata notes: the local parses print titles and authors but omit final DOI/venue/year fields. Exact-title Crossref records supplied the journal metadata used above; technical claims and numbers remain grounded in the complete local Markdown parses. Five attempted per-paper extractor agents all failed before producing reports because the configured provider returned HTTP 403 `INSUFFICIENT_BALANCE`, so the complete extraction and cross-paper review were performed locally rather than leaving the pass incomplete.
+
+Evidence caveats: all five sources are analytical or simulation studies rather than end-to-end deployments. The ISAC solver is approximate and has a 33/338 s parse conflict; the federated-A3C reward, objective wording, action quantization, and A100 complexity estimate need qualification; the IRS analysis assumes perfect CSI and ideal phases; the event-triggered planner reports desktop rather than embedded latency and confuses absolute success with relative retention in its conclusion; and the deep-ESN equilibrium result is conditional on learning convergence.
+
+Toolkit ratchet: `corpus_counts.py` now provides a tested `--update-overview` option that refreshes source, concept, and author/tool entity counts in the overview Snapshot without rewriting its long descriptive lines by hand. The maintained test suite now contains 10 passing tests.
+
+Validation before commit: `python tools/wiki/process_refs.py` reported 0 affected files. `python tools/wiki/corpus_counts.py --update-overview` reported 494 sources, 458 concepts, 99 entities, 15 findings, 15 synthesis pages, 6 comparisons, 6 methodology pages, 5 queries, 3 thesis pages, 2 reference pages, and 612 raw-source folders. `python tools/wiki/curation_status.py --dupes` reported 495 path/title-matched curated folders and 117 genuinely new uncurated folders; its nonzero exit is expected while the backlog remains. `python tools/wiki/linkcheck.py --orphans`, `python tools/wiki/index_audit.py`, `python tools/wiki/frontmatter_audit.py`, `python tools/wiki/entity_roster_audit.py`, the complete toolkit unit-test suite, and `git diff --check` were clean after correcting one dangling game-theory link; index coverage was 1103/1103 catalogue-able pages, frontmatter coverage was 1101 pages, and the entity audit reported 0 claimed-but-absent over-claims with 29 advisory present-but-unlisted omissions. The LLM Wiki health and graph endpoints returned HTTP `502`, so no live node/edge counts were available.
+
 ## [2026-07-13] Curated air-sea ISAC, anti-UAV roles, ground-air detection, target localization, and ICSN beams
 
 Added five source pages, six concept pages, and four author entities:

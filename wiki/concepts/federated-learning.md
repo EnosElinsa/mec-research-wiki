@@ -3,6 +3,7 @@ type: concept
 title: "Federated Learning (FL)"
 tags: [distributed-ml, privacy, aggregation, fedavg]
 related:
+  - "[[ron-2026-federated-a3c-uav-energy]]"
   - "[[federated-reinforcement-learning]]"
   - "[[seamless-handover]]"
   - "[[adaptive-inter-layer-data-offloading]]"

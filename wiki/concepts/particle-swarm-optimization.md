@@ -3,6 +3,7 @@ type: concept
 title: "Particle Swarm Optimization (PSO)"
 tags: [optimization, swarm-intelligence, metaheuristic]
 related:
+  - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[wang-2025-acbft-uav-consensus]]"
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[albakhrani-2025-moalf-uav-mec]]"
@@ -16,7 +17,7 @@ related:
   - "[[hua-2026-ddrl-content-delivery]]"
   - "[[uav-content-caching]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Particle Swarm Optimization (PSO)

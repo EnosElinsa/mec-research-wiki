@@ -12,6 +12,8 @@ related:
   - "[[seid-2026-mafdrl-tn-ntn-incentive]]"
   - "[[fedx-training-acceleration]]"
   - "[[hierarchical-federated-drl]]"
+  - "[[hierarchical-federated-a3c]]"
+  - "[[ron-2026-federated-a3c-uav-energy]]"
 created: 2026-05-28
 updated: 2026-07-10
 ---
@@ -40,6 +42,7 @@ The classical recipe is FedAvg ([37] in [[mao-2025-bcsa-frl]]'s reference list â
 - **Cold-start aggregation** â€” sharply down-weight recently-attacked participants and gradually recover them. See [[csra-cold-start-reputation-aggregation]].
 - **Thread-level aggregation for acceleration** - [[huang-2025-fedx-ris-uav-trajectory]] uses [[fedx-training-acceleration]] to aggregate SAC/PPO worker-thread models for faster RIS-assisted UAV trajectory training.
 - **Hierarchical aggregation over TN-NTN layers** - [[seid-2026-mafdrl-tn-ntn-incentive]] uses [[hierarchical-federated-drl]] so ED, UAV/UCH, and HAP agents share parameters upward while making local offloading and resource decisions.
+- **Two-level UAV-relay aggregation** - [[ron-2026-federated-a3c-uav-energy]] uses [[hierarchical-federated-a3c]] so ground-user actor/critic models are averaged at UAVs and then at a terrestrial base station.
 
 ## Threat model
 

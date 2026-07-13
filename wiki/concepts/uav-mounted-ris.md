@@ -23,6 +23,7 @@ related:
   - "[[peng-2023-dual-domain-eh-ris]]"
   - "[[dual-domain-ris-energy-harvesting]]"
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
+  - "[[mahmoud-2021-uav-irs-iot-analysis]]"
 created: 2026-06-03
 updated: 2026-07-13
 ---
@@ -38,6 +39,8 @@ Design considerations that recur:
 - **Flight vs communication energy.** A UAV-RIS spends propulsion energy to hold or move its position in addition to any communication-side energy, so energy-efficiency objectives must account for both.
 
 In the wiki, [[pan-2025-uav-ris-energy-efficient-comm]] studies **cooperative multiple** UAV-RISs serving multiple ground users, jointly optimizing BS beamforming, UAV-RIS 3D locations, and discrete phase shifts under a multi-objective (rate/fairness/energy) formulation. It is related to but distinct from [[wu-2025-iopo-irs-uav-thz-mec]], which couples an IRS-UAV with THz MEC offloading rather than pure communication.
+
+[[mahmoud-2021-uav-irs-iot-analysis]] is the analytical single-link anchor: it derives error, capacity, and outage behavior for an ideally phase-aligned static UAV-mounted IRS and exposes quadratic average-SNR scaling with element count under its assumptions.
 
 The corpus also uses UAV-mounted RIS in MEC-specific roles. [[mohammadi-2026-star-ris-uav-mec-noma]] equips the UAV with a [[star-ris]] so transmitted and reflected paths can feed UAV-MEC and terrestrial MEC servers under NOMA. [[xiao-2025-star-ris-bidirectional-uav-mec]] mounts the STAR-RIS horizontally and uses its reflection/transmission paths for same-slot bidirectional offloading to BS-MEC and UAV-MEC servers. [[liao-2025-ris-uav-usv-resource-allocation]] mounts RIS elements on UAVs to assist blocked inland-waterway TBS-USV links in a [[maritime-mec]] setting, while [[liao-2026-aoi-ris-uav-usv-mec]] uses a RIS-carried tethered UAV with RUAV service decisions for AoI-aware UAV-USV MEC. [[li-2026-aerial-ris-trajectory-phase]] adds [[tilt-aware-aerial-ris-control]], where Euler-angle motion and orientation-dependent RIS gain become first-class communication variables.
 

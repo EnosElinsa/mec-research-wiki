@@ -44,6 +44,8 @@ related:
   - "[[integrated-communication-sensing-navigation]]"
   - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
   - "[[ground-air-cooperative-isac-detection]]"
+  - "[[guo-2026-dual-objective-multiuav-isac]]"
+  - "[[dual-objective-multi-uav-isac]]"
 created: 2026-05-29
 updated: 2026-07-13
 ---
@@ -62,6 +64,8 @@ ISAC complicates [[physical-layer-security]] because the sensing operation can l
 For a high-level survey of ISAC in the LAE context, see [[jiang-2025-isac-lae-overview]] and [[wang-2025-lae-network-survey]]. The corpus now also has LAE control instances: [[ye-2026-deeplsc-lae-isac]] uses DDPG to jointly control GBS beamforming and UAV trajectories for sum-rate under sensing constraints, while [[ye-2026-meta-deepesc-lae-isac]] shifts the objective to energy efficiency and adds meta-learning for flight-period adaptation. [[ye-2026-mode-lae-isac]] turns that LAE line into a multi-objective communication/sensing controller using [[mixture-of-experts-drl]], and [[zhao-2025-networked-isac-uav-handover]] moves from single-cell ISAC links to multi-BS [[networked-isac]] tracking and sensing-cell handover. In VEC, [[li-2026-isac-vec-beamforming-deployment]] uses ISAC metrics to jointly shape UAV deployment and beamforming for temporary road hot spots.
 
 The aerial and maritime cases expose several other forms of coupling. [[zhang-2026-air-sea-isac-inspection]] jointly routes a UAV and USV under sensing, communication, and propulsion constraints; [[wang-2026-robust-anti-uav-isac]] schedules spatially separated transmit/receive roles under target-position uncertainty; [[wang-2025-cellular-uav-cooperative-detection]] fuses ground and airborne estimates; and [[jing-2024-isac-trajectory-localization]] repeatedly updates the UAV path as accumulated range estimates improve. [[lu-2026-icsn-beamforming]] extends the label to [[integrated-communication-sensing-navigation]], although its navigation output is angular information rather than an end-to-end navigation-error model.
+
+[[guo-2026-dual-objective-multiuav-isac]] adds explicit [[dual-objective-multi-uav-isac]] optimization: communication sum rate and target-location CRB remain separate objectives while trajectories, powers, and user/target associations are evolved into a Pareto archive.
 
 [[huang-2026-offgrid-lae-imager]] adds a cooperative cellular-ISAC imaging view: multiple BSs use raw CSI to reconstruct sparse low-altitude aerial images and mitigate off-grid errors with physics-embedded learning. [[hou-2025-pbia-air-iscc-uav-its]] extends the same sensing/communication substrate into Air-ISCC, where UAV swarms also compute IoTD tasks in ITS scenarios.
 

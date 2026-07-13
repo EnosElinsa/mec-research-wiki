@@ -3,6 +3,7 @@ type: concept
 title: "Constrained Multi-Objective Evolutionary Algorithm (CMOEA)"
 tags: [evolutionary, multi-objective, constrained-optimization, pareto, classical-solver]
 related:
+  - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[cmoea-d-cdp]]"
   - "[[infeasible-individual-utilization]]"
   - "[[dual-population-evolutionary-algorithm]]"

@@ -3,6 +3,7 @@ type: concept
 title: "Dueling DQN"
 tags: [drl, q-learning, value-based]
 related:
+  - "[[guo-2026-event-triggered-sinr-navigation]]"
   - "[[deep-q-network]]"
   - "[[ddqn]]"
   - "[[wu-2024-satellite-maritime-spectrum-sharing]]"
@@ -11,7 +12,7 @@ related:
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
 created: 2026-06-02
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Dueling DQN

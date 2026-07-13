@@ -21,6 +21,8 @@ related:
   - "[[historical-echo-predictive-beamforming]]"
   - "[[wang-2025-cellular-uav-cooperative-detection]]"
   - "[[ground-air-cooperative-isac-detection]]"
+  - "[[guo-2026-event-triggered-sinr-navigation]]"
+  - "[[challita-2019-cellular-uav-interference-drl]]"
 created: 2026-05-31
 updated: 2026-07-13
 ---
@@ -50,3 +52,5 @@ The tutorial uses this dichotomy to organize the UAV-communications design space
 [[xu-2026-hecta-predictive-beamforming]] adds bidirectional BS-UAV beam prediction from historical ISAC echoes. Its [[historical-echo-predictive-beamforming]] explicitly accounts for UAV attitude rotating the onboard receive array, not only position-induced departure-angle changes at the BS.
 
 [[wang-2025-cellular-uav-cooperative-detection]] gives a connected UAV a sensing role: it and the serving BS independently estimate surrounding UAV states, then associate and fuse them through [[ground-air-cooperative-isac-detection]] before updating the connected UAV's trajectory and beamforming.
+
+Two navigation entries focus directly on aerial-user interference. [[challita-2019-cellular-uav-interference-drl]] jointly learns path, serving cell, and power with deep reservoir memory, while [[guo-2026-event-triggered-sinr-navigation]] plans from grid SINR maps and updates those maps only when predictive uncertainty justifies the traffic.

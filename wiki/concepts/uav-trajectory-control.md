@@ -3,6 +3,8 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[guo-2026-dual-objective-multiuav-isac]]"
+  - "[[challita-2019-cellular-uav-interference-drl]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[xie-2026-geoagg-hsac]]"
   - "[[tang-2026-gat-antijamming]]"

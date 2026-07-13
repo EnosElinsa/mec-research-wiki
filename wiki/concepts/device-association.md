@@ -3,6 +3,7 @@ type: concept
 title: "Device Association"
 tags: [resource-allocation, mec, aerial-mec, matching]
 related:
+  - "[[ron-2026-federated-a3c-uav-energy]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[dual-network-sequential-aoi-control]]"
   - "[[task-offloading]]"

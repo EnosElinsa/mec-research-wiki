@@ -3,6 +3,7 @@ type: concept
 title: "Energy-Latency Tradeoff"
 tags: [metrics, objective, scalarization, mec]
 related:
+  - "[[ron-2026-federated-a3c-uav-energy]]"
   - "[[aoi-energy-tradeoff]]"
   - "[[energy-balancing-uav]]"
   - "[[qoe-modeling-mec]]"
