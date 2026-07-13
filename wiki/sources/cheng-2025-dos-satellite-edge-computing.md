@@ -27,8 +27,11 @@ related:
   - "[[zhai-2023-fedleo-decentralized-fl]]"
   - "[[wang-2025-double-edge-samin]]"
   - "[[zhang-2025-three-tier-maritime-offloading]]"
+  - "[[gang-feng]]"
+  - "[[shuang-qin]]"
+  - "[[wei-2026-runs-uav-network-slicing]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-14
 ---
 
 # Energy-Constrained Satellite Edge Computing for Satellite-Terrestrial Integrated Networks

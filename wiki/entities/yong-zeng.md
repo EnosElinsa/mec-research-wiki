@@ -16,15 +16,16 @@ related:
   - "[[he-2018-uav-altitude-beamwidth]]"
   - "[[lyu-2018-uav-hotspot-offloading]]"
   - "[[zhan-2018-uav-wsn-data-collection]]"
+  - "[[jiang-2026-ray-antenna-array]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Yong Zeng
 
 A foundational author of the **UAV-communications** research line in this wiki. Earlier parses list the **Department of Electrical and Computer Engineering, National University of Singapore**; the 2024 UAV-ISAC parse records his current professorship at Southeast University's National Mobile Communications Research Laboratory and Purple Mountain Laboratories. He is widely associated with UAV trajectory optimization and energy-efficient UAV communication.
 
-Co-authored 13 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
+Co-authored 14 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
 
 - [[zeng-2016-throughput-relaying]] — throughput maximization for UAV-enabled **mobile relaying** (trajectory + power, staircase water-filling) (lead author).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — energy-efficient UAV communication + the first **fixed-wing propulsion-energy model** (bits/Joule) (lead author).
@@ -39,6 +40,7 @@ Co-authored 13 sources in this wiki — the corpus's UAV-communications / trajec
 - [[he-2018-uav-altitude-beamwidth]] — joint UAV altitude and antenna-beamwidth design for multiuser communication.
 - [[lyu-2018-uav-hotspot-offloading]] — cyclical UAV trajectory, spectrum sharing, and user partitioning for cellular hotspot offloading.
 - [[zhan-2018-uav-wsn-data-collection]] — wake-up scheduling and UAV trajectory optimization for energy-efficient sensor data collection.
+- [[jiang-2026-ray-antenna-array]] — low-cost radial-array architecture with uniform angular resolution for low-altitude UAV-swarm ISAC.
 
 ## Contributions to this wiki
 

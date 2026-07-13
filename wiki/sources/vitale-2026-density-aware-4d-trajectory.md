@@ -13,8 +13,11 @@ related:
   - "[[chance-constraint]]"
   - "[[target-level-of-safety]]"
   - "[[compliance-aware-uav-trajectory]]"
+  - "[[charalambos-menelaou]]"
+  - "[[stelios-timotheou]]"
+  - "[[theocharides-2026-uav-traffic-estimation]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Density-Aware 4-D Trajectory Planning for Urban Air Traffic With Different QoS Levels

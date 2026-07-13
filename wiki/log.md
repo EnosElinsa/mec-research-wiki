@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-14] Curated RIS-UAV energy control, robust slicing, predictive routing, ray-array ISAC, and UAV traffic estimation
+
+Added five source pages, six reusable concepts, and five recurring-author entities:
+
+- [[alsenwi-2026-ris-uav-energy-efficiency]] - Alsenwi et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3573948`. [[cloud-trained-edge-executed-drl]] separates actor-critic training from BS-side online control of a UAV-mounted RIS, quantized phases, and precoding.
+- [[wei-2026-runs-uav-network-slicing]] - Wei et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3667217`. [[robust-uav-network-slicing]] combines worst-case demand/location bounds, Gaussian-CSI chance constraints, closed-form altitude elimination, augmented-Lagrangian block updates, and knapsack rounding.
+- [[li-2026-radio-map-predictive-routing]] - Li and Chen 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3641394`. [[radio-map-assisted-predictive-routing]] uses a [[dynamic-space-time-graph-with-virtual-edges]] to couple interference-bottleneck paths with hop timing and power over known moving-node trajectories.
+- [[jiang-2026-ray-antenna-array]] - Jiang and Zeng 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3643458`. [[ray-antenna-array]] replaces per-element phase shifting with radially oriented subarrays and switch-selected ray outputs for wide-angle UAV-swarm OFDM ISAC.
+- [[theocharides-2026-uav-traffic-estimation]] - Theocharides et al. 2026, *IEEE T-ITS*, DOI `10.1109/TITS.2025.3648943`. [[gaussian-process-moving-horizon-traffic-estimation]] turns sparse UAV traffic observations into uncertainty-weighted virtual measurements and constrained regional-state estimates.
+
+Matching biographies and affiliations established [[gang-feng]] and [[shuang-qin]] across the UESTC satellite-edge and UAV-slicing papers, [[junting-chen]] across two CUHK-Shenzhen radio-map papers, and [[charalambos-menelaou]] and [[stelios-timotheou]] across two KIOS/University-of-Cyprus transportation papers. The existing [[yong-zeng]] roster was extended to 14 sources. Common or one-off names, including Wei Jiang, Bowen Li, and Haoyu Jiang, were not merged without sufficient identity evidence.
+
+Metadata notes: embedded IEEE PDF records and exact-title DOI records supply final fields omitted from several Markdown parses. The five final records are TGCN 10, 160-171 (2026); TWC 25, 12770-12786 (2026); TWC 25, 9955-9970 (2026); TWC 25, 9200-9213 (2026); and T-ITS 27(4), 4715-4730 (2026). The ray-array paper appeared online on 19 December 2025, but its final volume is 2026; the traffic-estimation publisher title corrects the parse's repeated `Trafic` OCR error.
+
+Evidence caveats: the RIS-UAV controller omits movement propulsion and does not operationalize its chance constraint; RUNs establishes stationary conditions for a relaxed problem and contains an unresolved `6 Mbps` versus `0.07%` robustness arithmetic conflict; predictive routing assumes known trajectories/maps, perfect Doppler compensation, and cache-and-pass forwarding; the ray array is analytical/simulated with no fabricated prototype and only a one-dimensional angular model; and traffic estimation uses synthetic macroscopic measurements, predetermined routes, manually tuned GP parameters, and a non-identical IPOPT comparison. None is an end-to-end field deployment.
+
+Three low-concurrency extraction agents grounded the five papers, and two disjoint workers drafted the source pages. Independent review removed an unsupported A2C relation and an unrelated method link, clarified the 13 dB routing comparator, added three reverse source links, and refreshed the exhaustive ISAC and energy-efficiency track counts.
+
+Validation reports **554 sources / 536 concepts / 139 entities / 612 raw folders** and **57 genuinely new sources** remaining. Wikilinks are clean; process narration is absent outside this log; the index covers all **1,281** catalogue-able pages exactly once; **1,279** frontmatter blocks validate; entity rosters have zero overclaims (33 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated predictive cell-free UAVs, opponent-model anti-jamming, laser-powered QoE, quantum SAGIN access, and RIS location privacy
 
 Added five source pages, nine reusable concepts, and three recurring-author entities:

@@ -56,6 +56,8 @@ related:
   - "[[dual-objective-multi-uav-isac]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
   - "[[lu-2026-multiuav-iscpt]]"
+  - "[[jiang-2026-ray-antenna-array]]"
+  - "[[ray-antenna-array]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---
@@ -96,3 +98,5 @@ Newer secure and networked entries widen the ISAC role. [[yan-not-in-parse-multi
 [[kanani-2026-haps-uav-isac]] adds [[haps-uav-isac-resource-allocation]]: HAPS processes a two-slot multi-UAV architecture while NSGA-II preserves separate target-echo and minimum-user-SINR objectives on a Pareto front.
 
 [[chen-2026-pointrl-uav-isac]] adds [[radar-point-cloud-driven-uav-isac]]: 3-D vehicle-shape returns feed a branched DQN controller for horizontal trajectory, power, radar capacity, and U2V fairness.
+
+[[jiang-2026-ray-antenna-array]] adds the receiver-hardware view through a [[ray-antenna-array]]: radially oriented subarrays and switch-based ray selection provide direction-independent angular resolution under stated assumptions, followed by MUSIC, zero forcing, and delay-Doppler processing for OFDM UAV-swarm ISAC.

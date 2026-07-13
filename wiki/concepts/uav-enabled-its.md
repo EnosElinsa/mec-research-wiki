@@ -22,8 +22,10 @@ related:
   - "[[uav-assisted-vanet-routing]]"
   - "[[samir-2021-uav-cell-free-coverage]]"
   - "[[betalo-2026-meta-uav-scheduling]]"
+  - "[[theocharides-2026-uav-traffic-estimation]]"
+  - "[[gaussian-process-moving-horizon-traffic-estimation]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # UAV-Enabled Intelligent Transportation Systems (ITS)
@@ -43,3 +45,5 @@ The latest adjacent ITS additions split the role of the UAV even further. [[chen
 [[fatemidokht-2021-vru-vanet-routing]] adds [[uav-assisted-vanet-routing]]: aerial observers estimate road density/connectivity and aggregate vehicle trust, while an ACO-based FANET path takes over when urban ground forwarding is disconnected.
 
 [[betalo-2026-meta-uav-scheduling]] adds UAV-assisted traffic-sensor collection: meta-learned multi-agent policies jointly control movement, sensor assignment, power, and scheduling under fairness, QoS, and energy constraints.
+
+[[theocharides-2026-uav-traffic-estimation]] adds regional road-state inference rather than communication control. Its [[gaussian-process-moving-horizon-traffic-estimation]] fills sparse UAV observations with uncertainty-weighted virtual measurements and estimates regional and intended-destination densities under macroscopic traffic constraints.

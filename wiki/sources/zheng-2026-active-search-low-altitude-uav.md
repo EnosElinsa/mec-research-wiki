@@ -15,8 +15,10 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[wireless-backhaul]]"
   - "[[integrated-sensing-and-communication]]"
+  - "[[junting-chen]]"
+  - "[[li-2026-radio-map-predictive-routing]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-14
 ---
 
 # Active Search for Low-altitude UAV Sensing and Communication for Users at Unknown Locations

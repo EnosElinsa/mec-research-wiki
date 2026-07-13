@@ -669,6 +669,11 @@
 - [[yu-2026-ris-uav-iab-outage]] - Yu et al. 2026. SCA/SDR alternates UAV heights and rooftop-RIS phases to match access and backhaul rates in urban IAB (IEEE TWC).
 - [[tan-2025-sagin-outage-altitude]] - Tan et al. 2025. Energy- and SNR-outage analysis selects altitude for a solar-powered ground-UAV-satellite relay and compares relayed/direct capacity (IEEE TWC).
 - [[v-2026-pb-papp-survivor-detection]] - V et al. 2026. Logistic PSL prediction, priority-aware routing, and hierarchical model averaging guide simulated multi-UAV survivor search (IEEE TMC).
+- [[alsenwi-2026-ris-uav-energy-efficiency]] - Alsenwi et al. 2026. Cloud-trained, edge-executed actor-critic control jointly selects a UAV-mounted RIS position, quantized phases, and BS precoding for mmWave energy efficiency and rate reliability (IEEE TGCN).
+- [[wei-2026-runs-uav-network-slicing]] - Wei et al. 2026. RUNs combines robust reformulation, closed-form altitude elimination, augmented Lagrangian, block-coordinate updates, and knapsack rounding for uncertain UAV network slicing (IEEE TWC).
+- [[li-2026-radio-map-predictive-routing]] - Li and Chen 2026. Radio maps and moving-node trajectories parameterize interference-bottleneck routing, hop timing, and power over a dynamic space-time graph (IEEE TWC).
+- [[jiang-2026-ray-antenna-array]] - Jiang and Zeng 2026. A switch-selected radial antenna array provides direction-independent angular resolution under stated assumptions for OFDM UAV-swarm ISAC (IEEE TWC).
+- [[theocharides-2026-uav-traffic-estimation]] - Theocharides et al. 2026. Gaussian-process virtual measurements and successive-convexification moving-horizon estimation recover regional road-traffic states from sparse UAV sensing (IEEE T-ITS).
 
 ## Entities
 
@@ -677,6 +682,7 @@
 - [[xiang-cheng]] (Peking University - aerial channel modeling, UAV/vehicle simulation, and multi-UAV ISAC; 4 sources), [[rongqing-zhang]] (HKUST Guangzhou - intelligent transportation and aerial networks; 2 sources), [[jung-ryun-lee]] (Chung-Ang University - learning-based UAV/IRS energy control; 2 sources), [[octavia-a-dobre]] (Memorial University - RIS/ISAC channel analysis and generation; 2 sources), and [[halim-yanikomeroglu]] (Carleton University - aerial placement, UAV-mounted IRS communications, and HAPS-UAV ISAC; 3 sources).
 - [[yonghui-li]] (University of Sydney - intelligent surfaces, secure wireless-powered MEC, and aerial IAB backhaul; 2 sources).
 - [[zhu-xiao]] (Hunan University - vehicular edge offloading and channel-based passive UAV detection; 2 sources).
+- [[gang-feng]] and [[shuang-qin]] (UESTC - satellite-edge resource management and robust UAV network slicing; 2 sources each), [[junting-chen]] (CUHK-Shenzhen - radio-map search and predictive routing; 2 sources), and [[charalambos-menelaou]] and [[stelios-timotheou]] (KIOS/University of Cyprus - urban UAV traffic planning and UAV-sensed road-state estimation; 2 sources each).
 
 - [[zheng-chang]] (UESTC / University of Jyväskylä - UAV communications, edge computing, ISAC, and green communications; 7 sources).
 - [[dusit-niyato]] (NTU) appears across 57 sources spanning aerial networking, edge intelligence, security, and optimization; [[zhu-han]] (Univ. of Houston / Kyung Hee) appears across 20 sources after the quantum-SAGIN and active-RIS location-privacy papers; [[xuemin-shen]] (Waterloo) appears across 14 sources after the AoT UAV-inspection paper; [[ning-zhang]] (Windsor) appears across 4 sources after the adaptive digital-twin UAV-ISCC paper.
@@ -720,7 +726,7 @@
 - [[ke-xiong]] (Beijing Jiaotong University - wireless-powered aerial computing and ISCPT; 2 sources), [[pingyi-fan]] (Tsinghua University - aerial/vehicular optimization; 3 sources), [[khaled-ben-letaief]] (HKUST - MEC, physical-layer AI, XL-MIMO, and aerial systems; 8 sources), and [[naofal-al-dhahir]] (UT Dallas - robust RIS and anti-jamming wireless systems; 3 sources).
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
 - [[dong-jun-han]] & [[christopher-brinton]] (Purdue University — non-terrestrial **federated-learning** offloading cluster with Mung Chiang / David J. Love / Seyyedali Hosseinalipour; 2 sources each — [[han-2024-ground-satellite-fl]] + [[han-2024-sagin-fl-handover]]).
-- [[yong-zeng]] (Southeast University / Purple Mountain Laboratories; earlier National University of Singapore — **UAV-communications / trajectory-optimization** foundations plus low-altitude [[movable-antenna]] and ISAC-localization design; 13 sources, including [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], [[zeng-2019-uav-comm-tutorial-5g]], [[wu-2018-multiuav-minrate-trajectory]], [[lu-2026-uav-swarm-two-level-ma]], and [[jing-2024-isac-trajectory-localization]]).
+- [[yong-zeng]] (Southeast University / Purple Mountain Laboratories; earlier National University of Singapore — **UAV-communications / trajectory-optimization** foundations plus low-altitude [[movable-antenna]], ISAC-localization, and ray-array design; 14 sources, including [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2019-rotary-wing-energy-min]], [[zeng-2019-uav-comm-tutorial-5g]], [[wu-2018-multiuav-minrate-trajectory]], [[lu-2026-uav-swarm-two-level-ma]], [[jing-2024-isac-trajectory-localization]], and [[jiang-2026-ray-antenna-array]]).
 - [[shuguang-cui]] (The Chinese University of Hong Kong, Shenzhen — physical-layer / edge-AI / surveys; 7 sources spanning the graph-based-resource-management two-part survey, XL-MIMO, generative-AI/ISAC physical-layer, ISCC edge-AI, and generative-diffusion network optimization).
 
 (One recurring author name remains deferred for human confirmation as genuine **namesakes**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so not merged. The Tsinghua-era "Jingjing Wang" in [[yang-2020-loadbalance-multiuav-iot]] is the same [[jingjing-wang]] now at Beihang: both biographies report the 2014 Dalian B.S., 2019 Tsinghua Ph.D., 2017-2018 Southampton visit, and collaboration with [[chunxiao-jiang]].)
@@ -1310,6 +1316,12 @@
 - [[outage-aware-sagin-uav-altitude]] - ground-UAV-satellite altitude selection under energy- and SNR-outage conditions.
 - [[prediction-based-priority-aware-path-planning]] - survivor-likelihood-guided Clarke-Wright routing for disaster-search UAVs.
 - [[tree-structured-weight-synthesis]] - centralized averaging of hierarchical UAV logistic-regression models for PSL prediction.
+- [[cloud-trained-edge-executed-drl]] - central policy training and refresh with latency-sensitive inference at an edge controller.
+- [[robust-uav-network-slicing]] - aerial slice deployment and radio allocation under bounded demand/location uncertainty and Gaussian CSI error.
+- [[radio-map-assisted-predictive-routing]] - data-route, hop-time, and power planning from future radio-map statistics along known trajectories.
+- [[dynamic-space-time-graph-with-virtual-edges]] - fixed-depth forwarding graph whose same-node edges encode zero-cost caching or waiting.
+- [[ray-antenna-array]] - radially oriented directly combined subarrays selected through a limited-RF-chain switch network.
+- [[gaussian-process-moving-horizon-traffic-estimation]] - uncertainty-weighted virtual road-traffic measurements inside constrained moving-horizon estimation.
 
 ## Methodology
 
