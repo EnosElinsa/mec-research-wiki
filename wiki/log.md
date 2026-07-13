@@ -1,5 +1,25 @@
 # Research Log
 
+## [2026-07-14] Curated collision avoidance, robust aerial RIS, priority FANET access, STAR-RIS energy supply, and UAV-powered D2D
+
+Added five source pages, eight reusable concepts, and one recurring-author entity:
+
+- [[hsu-2022-collision-avoidance-trajectory]] - Hsu and Gau 2022, *IEEE TMC*, DOI `10.1109/TMC.2020.3003639`. [[convex-tsp-uav-data-collection]] plans routes through heterogeneous communication disks, while [[distributed-tabular-q-learning-uav-collision-avoidance]] provides local simulated encounter control.
+- [[feng-2026-aerial-ris-secure]] - Feng et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2026.3670412`. [[phase-aware-relativistic-adaptive-descent]] and [[environment-state-interactive-attention]] coordinate aerial-RIS phases and position under phase, CSI, and GPS errors.
+- [[ge-2026-ra-spma-fanet-mac]] - Ge et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3617981`. [[statistical-priority-based-multiple-access]] combines contention-opportunity statistics, dynamic thresholds, and adaptive backoff for differentiated FANET traffic.
+- [[meng-2026-star-ris-uav-energy]] - Meng et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3615641`. [[uav-energy-supplied-star-ris-noma]] couples UAV RF energy delivery with STAR-RIS-assisted uplink NOMA sum-rate optimization.
+- [[wang-2018-uav-powered-d2d]] - Wang et al. 2018, *IEEE TGCN*, DOI `10.1109/TGCN.2017.2767203`. [[harvest-transmit-store-scheduling]] and the [[energy-causality-constraint]] organize D2D transmission under UAV wireless power transfer.
+
+Matching education and Army Engineering University affiliation progression established [[haichao-wang]] across three sources. Existing [[yuanwei-liu]] and [[dusit-niyato]] rosters were extended to seven and 58 sources. Yun Lin and Guoru Ding were not merged with exact-name records that lacked sufficient affiliation or biography evidence; one-off and common names were not promoted.
+
+Metadata notes: embedded IEEE PDF records supplied final fields omitted from the Markdown parses. The five records are TMC 21(1), 306-320 (2022); TWC 25, 13560-13574 (2026); TGCN 10, 1171-1183 (2026); TWC 25, 4966-4981 (2026); and TGCN 2(1), 14-24 (2018), respectively.
+
+Evidence caveats: the collision controller is simulation-only, represents at most two obstacles, and falls back to altitude separation for denser encounters; the aerial-RIS paper contains an unresolved prose/equation inconsistency in the CSI-error parameter direction, uses a shaped secrecy-sum-rate-minus-penalties reward rather than literal secrecy energy efficiency, and does not prove its global-equilibrium wording; RA-SPMA contains unresolved 2-bit-versus-eight-level priority and 2-Mbps-versus-higher-offered-load inconsistencies, while prioritization can reduce lower-priority delivery; the STAR-RIS study fixes the UAV route/altitude, assumes full CSI in its main model, and uses a Dinkelbach-labelled update that resembles a quadratic transform; the D2D study fixes the UAV, uses a linear harvesting model, and applies a suboptimal DC/golden-section search. All five are analytical or simulation studies rather than end-to-end field deployments.
+
+Three low-concurrency extraction agents grounded the papers, two disjoint workers drafted the source pages, and an independent read-only reviewer checked the completed batch. Review corrected the STAR-RIS objective from energy efficiency to sum-rate, corrected downlink to uplink, qualified the Haichao Wang biography progression, and added two reciprocal links.
+
+Validation reports **559 sources / 544 concepts / 140 entities / 612 raw folders** and **52 genuinely new sources** remaining. Wikilinks are clean; process narration is absent outside this log; the index covers all **1,295** catalogue-able pages exactly once; all **1,293** frontmatter blocks validate; entity rosters have zero overclaims (33 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated RIS-UAV energy control, robust slicing, predictive routing, ray-array ISAC, and UAV traffic estimation
 
 Added five source pages, six reusable concepts, and five recurring-author entities:

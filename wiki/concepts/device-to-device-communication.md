@@ -14,8 +14,10 @@ related:
   - "[[chen-2026-sdhfl-completion-time]]"
   - "[[semi-decentralized-hybrid-federated-learning]]"
   - "[[dong-2026-radio-map-d2d-relay]]"
+  - "[[wang-2018-uav-powered-d2d]]"
+  - "[[harvest-transmit-store-scheduling]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Device-to-Device (D2D) Communication
@@ -35,3 +37,5 @@ A D2D pair is typically modeled as a transmitter and a receiver separated by a f
 [[chen-2026-sdhfl-completion-time]] uses D2D links for a learning protocol rather than payload relaying: devices exchange local models until cluster-level consensus, after which a cluster head communicates with the UAV aggregator through [[semi-decentralized-hybrid-federated-learning]].
 
 [[dong-2026-radio-map-d2d-relay]] forms terrain-aware ground D2D subnetworks and selects one gateway per component, reducing the number of direct multi-band UAV links.
+
+[[wang-2018-uav-powered-d2d]] adds wireless energy supply: a fixed UAV charges mutually interfering D2D transmitters, and [[harvest-transmit-store-scheduling]] determines a common harvest-first/transmit-later switch and per-pair powers.

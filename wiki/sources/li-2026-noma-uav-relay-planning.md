@@ -15,8 +15,9 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[fairness-metrics-in-mec]]"
   - "[[zeng-2016-throughput-relaying]]"
+  - "[[haichao-wang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Joint Beamforming, Power Control, and Trajectory Planning for NOMA-Based UAV Relaying System

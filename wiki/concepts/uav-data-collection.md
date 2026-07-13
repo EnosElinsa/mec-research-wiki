@@ -37,8 +37,10 @@ related:
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[memory-augmented-multi-uav-navigation]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[convex-tsp-uav-data-collection]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # UAV Data Collection
@@ -58,6 +60,8 @@ When the collected data is delay-sensitive, data-collection objectives connect t
 [[shi-2025-aoi-energy-replenishment-multiuav]] adds the rechargeable-IoT version: UAVs wirelessly charge sensor nodes, collect fresh updates, offload to the BS, and recharge at fixed charging stations, with VDN/QMIX deciding local multi-UAV actions. [[liu-2026-spherical-t-ris-bs]] uses UAV data collection as the application benchmark for a spherical transmissive-RIS base station.
 
 [[you-2019-rician-uav-data-harvesting]] is the channel-model foundation case: a single UAV collects WSN data under outage-aware [[angle-dependent-rician-fading]], jointly optimizing scheduling, horizontal trajectory, and vertical trajectory through BCD/SCA.
+
+[[hsu-2022-collision-avoidance-trajectory]] adds cargo-return collection with heterogeneous device neighborhoods. [[convex-tsp-uav-data-collection]] orders visits and refines contact points, while a separate tabular learner handles nearby UAVs online.
 
 [[gao-2023-uav-mcs-uma]] broadens the collection model to uav-assisted-mobile-crowd-sensing: UAVs cover points of interest that human participants miss and calibrate participant sensors when trajectories intersect. [[du-2025-autonomous-intelligent-uav-swarms]] is a survey anchor for the swarm autonomy stack behind data collection, relaying, monitoring, and edge-computing applications.
 

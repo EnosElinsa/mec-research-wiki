@@ -17,6 +17,11 @@ related:
   - "[[dual-network-sequential-aoi-control]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[chen-2026-laser-powered-multiuav-qoe]]"
+  - "[[meng-2026-star-ris-uav-energy]]"
+  - "[[uav-energy-supplied-star-ris-noma]]"
+  - "[[wang-2018-uav-powered-d2d]]"
+  - "[[harvest-transmit-store-scheduling]]"
+  - "[[energy-causality-constraint]]"
 created: 2026-05-28
 updated: 2026-07-14
 ---
@@ -36,6 +41,8 @@ Total slot duration $T$ is split between:
 
 1. **WPT duration $\tau_0$** — power station broadcasts; devices harvest.
 2. **Per-device offloading window** $\tau_i$ — only for devices that chose to offload this slot.
+
+The same energy-delivery logic also appears outside MEC. [[meng-2026-star-ris-uav-energy]] charges users and a fixed STAR-RIS before uplink NOMA, while [[wang-2018-uav-powered-d2d]] derives [[harvest-transmit-store-scheduling]] for cochannel D2D pairs under a cumulative [[energy-causality-constraint]].
 3. **Local compute** — happens for devices that chose local; uses the energy harvested in step 1.
 
 Joint optimization picks $\{\tau_0, \tau_1, \ldots, \tau_N, \mathbf x, \mathbf f, \mathbf p\}$ where $\mathbf x$ is the binary offloading vector, $\mathbf f$ is local CPU frequencies, $\mathbf p$ is transmit powers.

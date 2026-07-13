@@ -34,8 +34,11 @@ related:
   - "[[hierarchical-uav-swarm]]"
   - "[[wang-2026-mat-target-tracking]]"
   - "[[ye-2023-graph-uav-coverage]]"
+  - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[ge-2026-ra-spma-fanet-mac]]"
+  - "[[statistical-priority-based-multiple-access]]"
 created: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Autonomous UAV Swarms

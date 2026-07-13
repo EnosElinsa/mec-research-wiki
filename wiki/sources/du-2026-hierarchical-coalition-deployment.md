@@ -13,8 +13,9 @@ related:
   - "[[potential-game]]"
   - "[[nash-equilibrium]]"
   - "[[device-to-device-communication]]"
+  - "[[haichao-wang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Joint Optimization of UAV Deployment and Ground Users Clustering in Air-Ground Networks: A Hierarchical Coalition-Formation Game Approach
