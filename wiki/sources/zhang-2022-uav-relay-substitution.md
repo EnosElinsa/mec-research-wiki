@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TGCN.2021.3108147"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN)"
 tags: [source, uav, relaying, substitution, trajectory-optimization, power-control, sca]
 related:
+  - "[[qingqing-wu]]"
   - "[[uav-substitution-relaying]]"
   - "[[uav-mobile-relaying]]"
   - "[[information-causality-constraint]]"
@@ -15,7 +16,7 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[angle-of-radiation-uav-relay]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Cooperative UAV Enabled Relaying Systems: Joint Trajectory and Transmit Power Optimization

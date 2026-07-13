@@ -3,6 +3,12 @@ type: entity
 title: Qingqing Wu
 tags: [author, researcher, ieee-senior-member, uav-communications, isac]
 related:
+  - "[[meng-2023-uav-ipsac-throughput]]"
+  - "[[zeng-2019-uav-comm-tutorial-5g]]"
+  - "[[wu-2018-multiuav-minrate-trajectory]]"
+  - "[[wu-2019-irs-joint-beamforming]]"
+  - "[[zhang-2019-secure-uav-trajectory-power]]"
+  - "[[zhang-2022-uav-relay-substitution]]"
   - "[[meng-2024-uav-isac-overview]]"
   - "[[sun-2024-mvtora-postdisaster-vfc]]"
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
@@ -17,15 +23,21 @@ related:
   - "[[meng-2026-uav-isac-corrections]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Qingqing Wu
 
-IEEE Senior Member. Affiliated with the **Department of Electronic Engineering, Shanghai Jiao Tong University** (Shanghai, China; email `qingqingwu@sjtu.edu.cn`) — consistent across these papers in this wiki.
+IEEE Senior Member currently affiliated with the **Department of Electronic Engineering, Shanghai Jiao Tong University** (email `qingqingwu@sjtu.edu.cn`). Matching education, research topic, and coauthor biographies connect his earlier National University of Singapore and University of Macau records to the current SJTU identity.
 
-Co-authored 13 sources in this wiki, spanning UAV ISAC, aerial MEC, collaborative beamforming, URLLC-based UAV-MEC, two-timescale UAV-MEC, UAV-mounted-RIS communications, UAV-swarm virtual antenna arrays, and predictive beam tracking:
+Co-authored 19 sources in this wiki, spanning UAV communications and ISAC, IRS beamforming, aerial MEC, collaborative beamforming, URLLC-based UAV-MEC, two-timescale UAV-MEC, UAV-mounted-RIS communications, UAV-swarm virtual antenna arrays, secrecy, relaying, and predictive beam tracking:
 
+- [[meng-2023-uav-ipsac-throughput]] - periodic sensing, user association, beamforming, and trajectory optimization for UAV-ISAC.
+- [[zeng-2019-uav-comm-tutorial-5g]] - tutorial on UAV communications for 5G and beyond.
+- [[wu-2018-multiuav-minrate-trajectory]] - multi-UAV trajectory, user scheduling, and power control for max-min downlink rate.
+- [[wu-2019-irs-joint-beamforming]] - foundational active/passive beamforming design for intelligent reflecting surfaces.
+- [[zhang-2019-secure-uav-trajectory-power]] - secrecy-rate maximization through UAV trajectory and transmit-power control.
+- [[zhang-2022-uav-relay-substitution]] - endurance-extending relay-UAV substitution with trajectory and power optimization.
 - [[meng-2024-uav-isac-overview]] — overview of UAV-enabled integrated sensing and communication.
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing.
 - [[zhang-2024-gdmtd3-aerial-secure-cb]] — UAV-swarm secure collaborative beamforming via diffusion-enhanced TD3.
@@ -38,8 +50,6 @@ Co-authored 13 sources in this wiki, spanning UAV ISAC, aerial MEC, collaborativ
 - [[liu-2024-hatrpo-ucb-cb]] — UAV collaborative beamforming rate-vs-energy MOP (UCBMOP) via heterogeneous-agent trust-region MADRL (HATRPO-UCB; SJTU-email-matched).
 - [[pan-2025-uav-ris-energy-efficient-comm]] — cooperative UAV-mounted RISs for energy-efficient communications; joint BS beamforming + 3D UAV-RIS location + discrete phase shifts via INSGA-II-CDC (SJTU-email-matched).
 - [[meng-2026-uav-isac-corrections]] - correction to periodic UAV-ISAC throughput optimization. The correction omits affiliations, but its explicit relationship to the original article and that article's parsed author biography establish the same NUS-to-University-of-Macau career identity recorded here.
-
-> Note: a "Qingqing Wu" also appears in two **earlier** papers but listed at the **National University of Singapore** (`elewuqq@nus.edu.sg`), not SJTU — the 2019 tutorial [[zeng-2019-uav-comm-tutorial-5g]] and the 2018 multi-UAV min-rate paper [[wu-2018-multiuav-minrate-trajectory]] (both first-authored by him at NUS). These are plausibly the same researcher at an earlier career stage, but the affiliation/email differ, so those two sources are **not** added to this SJTU roster pending human confirmation.
 
 - [[jiang-2026-sensing-assisted-uav-tracking]] - sensing-assisted predictive beamforming and outage-aware UAV tracking.
 

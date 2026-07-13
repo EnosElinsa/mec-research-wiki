@@ -3,6 +3,10 @@ type: concept
 title: UAV Trajectory Control
 tags: [uav, control, path-planning]
 related:
+  - "[[meng-2023-uav-ipsac-throughput]]"
+  - "[[chen-2026-traffic-aware-asynchronous-control]]"
+  - "[[yin-2026-m2llm-trajectory-beamforming]]"
+  - "[[zeng-2018-uav-multicasting-completion-time]]"
   - "[[zhang-2019-secure-uav-trajectory-power]]"
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[guo-2026-irs-uav-isac-secrecy]]"

@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2019.2892461"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, uav-communications, physical-layer-security, secrecy-rate, trajectory-optimization, power-control, block-coordinate-descent, successive-convex-approximation]
 related:
+  - "[[qingqing-wu]]"
   - "[[u2g-g2u-secrecy-asymmetry]]"
   - "[[physical-layer-security]]"
   - "[[uav-trajectory-control]]"

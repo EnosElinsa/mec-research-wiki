@@ -3,6 +3,7 @@ type: concept
 title: "Device-to-Device (D2D) Communication"
 tags: [cellular, spectrum-sharing, interference-management, stochastic-geometry, physical-layer]
 related:
+  - "[[zeng-2018-uav-multicasting-completion-time]]"
   - "[[du-2026-hierarchical-coalition-deployment]]"
   - "[[mozaffari-2016-uav-underlaid-d2d]]"
   - "[[overlay-underlay-spectrum-access]]"

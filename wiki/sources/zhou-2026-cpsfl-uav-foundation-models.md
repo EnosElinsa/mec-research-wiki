@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TMC.2026.3697889"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, split-federated-learning, federated-learning, distributed-foundation-models, resource-allocation, deep-reinforcement-learning, uav-trajectory-control, lora]
 related:
+  - "[[wei-yang-bryan-lim]]"
+  - "[[lim-2021-uav-iov-contract-matching]]"
   - "[[split-federated-learning]]"
   - "[[federated-learning]]"
   - "[[distributed-foundation-models]]"
@@ -17,7 +19,7 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-14
 ---
 
 # Communication-Pipelined Split Federated Learning for Foundation Model Fine-Tuning in UAV Networks

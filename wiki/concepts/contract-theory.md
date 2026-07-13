@@ -3,6 +3,8 @@ type: concept
 title: "Contract Theory (Principal-Agent Incentive Mechanism)"
 tags: [game-theory, incentive-mechanism, information-asymmetry, mechanism-design]
 related:
+  - "[[lim-2021-uav-iov-contract-matching]]"
+  - "[[multidimensional-contract-matching]]"
   - "[[stackelberg-game]]"
   - "[[matching-theory-for-resource-allocation]]"
   - "[[generative-ai-for-mec]]"
@@ -12,7 +14,7 @@ related:
   - "[[contract-theoretic-fl-incentives]]"
   - "[[zhao-2026-uav-fl-inspection-incentives]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Contract Theory (Principal-Agent Incentive Mechanism)

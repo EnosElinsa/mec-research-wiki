@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TWC.2026.3657894"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, multi-uav, air-to-ground, network-robustness, trajectory-control, resource-allocation, mappo, qmix, fairness]
 related:
+  - "[[chen-2026-traffic-aware-asynchronous-control]]"
+  - "[[yin-2026-m2llm-trajectory-beamforming]]"
   - "[[air-to-ground-channel-model]]"
   - "[[gauss-markov-mobility-model]]"
   - "[[jains-fairness-index]]"

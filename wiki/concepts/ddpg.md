@@ -3,6 +3,7 @@ type: concept
 title: "Deep Deterministic Policy Gradient (DDPG)"
 tags: [drl, actor-critic, continuous-action, off-policy, replay-buffer]
 related:
+  - "[[yin-2026-m2llm-trajectory-beamforming]]"
   - "[[wang-2023-drl-irs-uav-trajectory]]"
   - "[[ppo]]"
   - "[[masac]]"
@@ -15,7 +16,7 @@ related:
   - "[[samir-2021-uav-cell-free-coverage]]"
   - "[[ding-2026-optimization-driven-spectrum-sharing]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Deep Deterministic Policy Gradient (DDPG)

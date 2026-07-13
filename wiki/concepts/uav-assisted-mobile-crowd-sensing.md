@@ -3,6 +3,7 @@ type: concept
 title: "UAV-Assisted Mobile Crowd Sensing"
 tags: [uav, mobile-crowd-sensing, data-collection, incentives, calibration]
 related:
+  - "[[lim-2021-uav-iov-contract-matching]]"
   - "[[gao-2023-uav-mcs-uma]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[guo-2026-aoi-uav-mcs-contract]]"
@@ -17,7 +18,7 @@ related:
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[guang-2026-hiswta-mcs]]"
 created: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # UAV-Assisted Mobile Crowd Sensing

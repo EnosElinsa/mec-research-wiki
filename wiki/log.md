@@ -1,5 +1,23 @@
 # Research Log
 
+## [2026-07-14] Curated periodic UAV-ISAC, federated contract matching, asynchronous traffic control, multimodal beam control, and RLNC multicasting
+
+Added five source pages, nine reusable concepts, and two recurring-author entities:
+
+- [[meng-2023-uav-ipsac-throughput]] - Meng et al. 2023, *IEEE TWC* 22(1), 671-687, DOI `10.1109/TWC.2022.3197623`. [[integrated-periodic-sensing-and-communication]] schedules each target once per frame while jointly controlling user/target selection, beamforming, and UAV trajectory; [[meng-2026-uav-isac-corrections]] supplies the repaired convexification steps.
+- [[lim-2021-uav-iov-contract-matching]] - Lim et al. 2021, *IEEE T-ITS* 22(8), 5140-5154, DOI `10.1109/TITS.2021.3056341`. [[multidimensional-contract-matching]] screens UAV service providers by heterogeneous costs before stable UAV-subregion assignment.
+- [[chen-2026-traffic-aware-asynchronous-control]] - Chen et al. 2026, *IEEE TMC* 25(7), 9816-9832, DOI `10.1109/TMC.2026.3656507`. [[spatial-temporal-graph-attention-traffic-clustering]] feeds directional demand clusters to [[traffic-aware-asynchronous-uav-control]] over flight, collection, relay, and delivery modes.
+- [[yin-2026-m2llm-trajectory-beamforming]] - Yin et al. 2026, *IEEE TWC* 25, 3643-3657, DOI `10.1109/TWC.2025.3605277`. [[m2llm-state-representation-for-drl]] and [[prediction-driven-joint-trajectory-beamforming]] separate multimodal user-motion prediction from centralized continuous control.
+- [[zeng-2018-uav-multicasting-completion-time]] - Zeng et al. 2018, *IEEE TWC* 17(4), 2233-2246, DOI `10.1109/TWC.2018.2790401`. [[random-linear-network-coding-multicast]], [[minimum-connection-time-trajectory]], and [[virtual-base-station-waypoint-design]] connect packet-recovery reliability to disk-cover waypoints and fixed-path LP speed allocation.
+
+Created [[kaitao-meng]] from the exact original/overview/correction UAV-ISAC lineage and [[wei-yang-bryan-lim]] from his distinctive full-name recurrence across contract-matching and split-FL sources. Affiliation-backed review also reconciled [[qingqing-wu]] across his NUS, University of Macau, and SJTU career stages, expanding that roster to 19 sources. Existing rosters were extended to 64 sources for [[dusit-niyato]], 24 for [[jiawen-kang]], 17 for [[yong-zeng]], 15 for [[zehui-xiong]], four for [[xianbin-wang]], and three for [[xuming-fang]].
+
+Evidence caveats: the periodic-ISAC solver is not globally optimal, its symmetry theorem excludes endpoint constraints, and the original article's two faulty convexification statements must be read through the correction note. The contract paper evaluates economic screening/matching rather than FL accuracy, reduces four costs to a marginal type plus compensation, and does not guarantee full individual rationality for every type. The asynchronous traffic controller is a simulation-only GNN/GRU/PPO heuristic using real flow patterns with synthetic coordinates and no formal convergence or clustering-accuracy guarantee. The M2LLM controller uses AirSim-only data, an unmodeled UAV-BS observation link, fixed association, and a variable-size action surface not solved by its fixed-size input state. The multicast paper first uses an exact conservative binomial lower bound and then an unbounded Gaussian approximation; its piecewise-linear theorem applies only to the reduced connection-duration problem, while VBS placement, route ordering, and radius selection remain heuristic.
+
+Three low-concurrency extraction agents grounded the five parses. Independent read-only review confirmed all metadata and found no concept duplication, then restricted the RLNC reliability guarantee to the exact binomial stage, removed an unsupported dedicated-channel assumption, reconciled author counts, and completed reciprocal links. Exact-title Crossref records supplied bibliographic fields absent from four parses and expanded the DOI-only metadata of the fifth.
+
+Validation reports **589 sources / 609 concepts / 167 entities / 612 raw folders** and **22 genuinely new sources** remaining. Wikilinks are clean; process narration is absent outside this log; the index covers all **1,417** catalogue-able pages exactly once; all **1,415** frontmatter blocks validate; entity rosters have zero overclaims (20 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated situation-aware ISAC, UAV-NDN incentives, sparse near-field sensing, channel prediction, and robot-network information quality
 
 Added five source pages, twelve reusable concepts, and six recurring-author entities:

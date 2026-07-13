@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/JPROC.2019.2952892"
 venue: "Proceedings of the IEEE"
 tags: [source, survey, uav-communications, cellular-connected-uav, trajectory-optimization, channel-model, 5g]
 related:
+  - "[[qingqing-wu]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[cellular-connected-uav]]"
   - "[[uav-trajectory-control]]"
@@ -16,7 +17,7 @@ related:
   - "[[mao-2017-mec-survey-communication]]"
   - "[[yong-zeng]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-14
 ---
 
 # Accessing From the Sky: A Tutorial on UAV Communications for 5G and Beyond

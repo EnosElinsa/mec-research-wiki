@@ -3,6 +3,8 @@ type: concept
 title: "Graph Neural Network (GNN)"
 tags: [graph-neural-network, machine-learning, resource-allocation, graph-theory, scalability]
 related:
+  - "[[chen-2026-traffic-aware-asynchronous-control]]"
+  - "[[spatial-temporal-graph-attention-traffic-clustering]]"
   - "[[graph-based-resource-management]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
   - "[[dai-2024-graph-rm-survey-learning]]"
@@ -23,7 +25,7 @@ related:
   - "[[lu-2026-multiuav-iscpt]]"
   - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-06-03
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Graph Neural Network (GNN)

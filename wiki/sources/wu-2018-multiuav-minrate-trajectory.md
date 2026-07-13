@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2017.2789293"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, multi-uav-assisted-mec, aerial-base-station, trajectory-design, power-control, user-scheduling, min-rate-fairness, block-coordinate-descent]
 related:
+  - "[[qingqing-wu]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[uav-trajectory-control]]"
   - "[[alternating-optimization-sdr-sca]]"
@@ -17,7 +18,7 @@ related:
   - "[[chang-2022-marl-multiuav-trajectory]]"
   - "[[hu-2019-pdd-uav-mec-offloading]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-14
 ---
 
 # Joint Trajectory and Communication Design for Multi-UAV Enabled Wireless Networks

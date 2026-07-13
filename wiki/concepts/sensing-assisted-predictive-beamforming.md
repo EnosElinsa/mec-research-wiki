@@ -3,13 +3,15 @@ type: concept
 title: "Sensing-Assisted Predictive Beamforming"
 tags: [isac, predictive-beamforming, tracking, outage]
 related:
+  - "[[yin-2026-m2llm-trajectory-beamforming]]"
+  - "[[prediction-driven-joint-trajectory-beamforming]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[control-assisted-uav-beam-tracking]]"
   - "[[historical-echo-predictive-beamforming]]"
   - "[[cellular-connected-uav]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Sensing-Assisted Predictive Beamforming

@@ -3,6 +3,7 @@ type: entity
 title: Yong Zeng
 tags: [author, researcher, uav-communications, trajectory-optimization]
 related:
+  - "[[zeng-2018-uav-multicasting-completion-time]]"
   - "[[min-2026-sparse-bistatic-nearfield-isac]]"
   - "[[zeng-2016-throughput-relaying]]"
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
@@ -27,7 +28,7 @@ updated: 2026-07-14
 
 A foundational author of the **UAV-communications** research line in this wiki. Earlier parses list the **Department of Electrical and Computer Engineering, National University of Singapore**; the 2024 UAV-ISAC parse records his current professorship at Southeast University's National Mobile Communications Research Laboratory and Purple Mountain Laboratories. He is widely associated with UAV trajectory optimization and energy-efficient UAV communication.
 
-Co-authored 16 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
+Co-authored 17 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
 
 - [[zeng-2016-throughput-relaying]] — throughput maximization for UAV-enabled **mobile relaying** (trajectory + power, staircase water-filling) (lead author).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — energy-efficient UAV communication + the first **fixed-wing propulsion-energy model** (bits/Joule) (lead author).
@@ -45,6 +46,7 @@ Co-authored 16 sources in this wiki — the corpus's UAV-communications / trajec
 - [[jiang-2026-ray-antenna-array]] — low-cost radial-array architecture with uniform angular resolution for low-altitude UAV-swarm ISAC.
 - [[xiao-2020-secrecy-energy-efficiency-relaying]] - fixed-wing collect-store-forward relaying optimized for secrecy energy efficiency.
 - [[min-2026-sparse-bistatic-nearfield-isac]] - sparse XL-MIMO bi-static near-field ISAC and fourth-order virtual-array localization for UAV swarms.
+- [[zeng-2018-uav-multicasting-completion-time]] - RLNC multicast completion-time minimization with virtual-base-station waypoint design.
 
 ## Contributions to this wiki
 

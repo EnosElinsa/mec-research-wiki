@@ -3,6 +3,8 @@ type: concept
 title: Matching Theory for Resource Allocation
 tags: [matching, optimization, assignment, mechanism-design]
 related:
+  - "[[lim-2021-uav-iov-contract-matching]]"
+  - "[[multidimensional-contract-matching]]"
   - "[[stackelberg-game]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[cui-2020-marl-uav-resource-allocation]]"

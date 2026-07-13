@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/MWC.131.2200442"
 venue: "IEEE Wireless Communications"
 tags: [source, overview, isac, uav, integrated-sensing-and-communication, beamforming, trajectory-design, 6g]
 related:
+  - "[[kaitao-meng]]"
+  - "[[meng-2023-uav-ipsac-throughput]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[uav-trajectory-control]]"
   - "[[jiang-2025-isac-lae-overview]]"

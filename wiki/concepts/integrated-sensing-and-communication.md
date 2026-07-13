@@ -3,6 +3,8 @@ type: concept
 title: "Integrated Sensing and Communication (ISAC)"
 tags: [isac, dual-function, beamforming, 6g]
 related:
+  - "[[meng-2023-uav-ipsac-throughput]]"
+  - "[[integrated-periodic-sensing-and-communication]]"
   - "[[lyu-2026-situation-aware-uav-isac]]"
   - "[[min-2026-sparse-bistatic-nearfield-isac]]"
   - "[[wu-2026-sensing-error-uav-scheduling]]"

@@ -3,6 +3,7 @@ type: concept
 title: "Federated Learning (FL)"
 tags: [distributed-ml, privacy, aggregation, fedavg]
 related:
+  - "[[lim-2021-uav-iov-contract-matching]]"
   - "[[li-2026-clp-uav-hpfl]]"
   - "[[ron-2026-federated-a3c-uav-energy]]"
   - "[[federated-reinforcement-learning]]"

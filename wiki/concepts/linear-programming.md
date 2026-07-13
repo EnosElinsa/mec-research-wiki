@@ -3,12 +3,14 @@ type: concept
 title: "Linear Programming"
 tags: [optimization, convex-optimization, resource-allocation]
 related:
+  - "[[zeng-2018-uav-multicasting-completion-time]]"
+  - "[[minimum-connection-time-trajectory]]"
   - "[[second-order-cone-programming]]"
   - "[[two-stage-decomposition]]"
   - "[[generalized-assignment-problem]]"
   - "[[ji-2026-llm-iov-uav-offloading]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Linear Programming

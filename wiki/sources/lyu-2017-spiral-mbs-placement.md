@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/LCOMM.2016.2633248"
 venue: "IEEE Communications Letters (IEEE COMML)"
 tags: [source, cellular-connected-uav, drone-cell-3d-placement, geometric-disk-cover, air-to-ground-channel-model, uav-communications]
 related:
+  - "[[zeng-2018-uav-multicasting-completion-time]]"
+  - "[[virtual-base-station-waypoint-design]]"
   - "[[drone-cell-3d-placement]]"
   - "[[geometric-disk-cover]]"
   - "[[cellular-connected-uav]]"
@@ -16,7 +18,7 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[mozaffari-2017-uav-iot-energy-efficient]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-14
 ---
 
 # Placement Optimization of UAV-Mounted Mobile Base Stations

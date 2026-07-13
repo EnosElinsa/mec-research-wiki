@@ -3,6 +3,7 @@ type: concept
 title: "Integrated Sensing, Computation, and Communication (ISCC)"
 tags: [isac, edge-computing, resource-allocation, federated-learning]
 related:
+  - "[[yin-2026-m2llm-trajectory-beamforming]]"
   - "[[liu-2025-aoi-iscc-five-stage]]"
   - "[[tang-2024-iscc-uav-feel]]"
   - "[[integrated-sensing-and-communication]]"
@@ -18,7 +19,7 @@ related:
   - "[[cui-2026-aris-v2x-icac]]"
   - "[[zhao-2026-uav-fl-inspection-incentives]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Integrated Sensing, Computation, and Communication (ISCC)

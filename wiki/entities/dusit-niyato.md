@@ -3,6 +3,7 @@ type: entity
 title: Dusit Niyato
 tags: [author, researcher, ieee-fellow, generative-ai, drl]
 related:
+  - "[[lim-2021-uav-iov-contract-matching]]"
   - "[[jin-2026-skyndn-incentivizer]]"
   - "[[guo-2026-spatiotemporal-information-quality-ugrnet]]"
   - "[[ning-2026-uav-isac-secure-beamforming]]"
@@ -74,7 +75,7 @@ updated: 2026-07-14
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author roster in the wiki currently links 62 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, content incentives, robotic-network information quality, and surveys:
+The most frequently recurring author roster in the wiki currently links 64 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, federated-learning incentives, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, content incentives, robotic-network information quality, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -141,6 +142,7 @@ The most frequently recurring author roster in the wiki currently links 62 sourc
 - [[feng-2026-secure-short-packet-noma-relay]] - finite-blocklength secure NOMA delivery through a multi-antenna UAV relay.
 - [[jin-2026-skyndn-incentivizer]] - double-auction and diffusion-policy incentives for content sharing in UAV named-data networks.
 - [[guo-2026-spatiotemporal-information-quality-ugrnet]] - martingale delay bounds and spatial-completeness optimization for UAV-ground-robot networks.
+- [[lim-2021-uav-iov-contract-matching]] - contract screening and matching for UAV-assisted federated IoV learning.
 
 ## Contributions to this wiki
 

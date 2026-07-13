@@ -3,6 +3,7 @@ type: concept
 title: "Device Association"
 tags: [resource-allocation, mec, aerial-mec, matching]
 related:
+  - "[[meng-2023-uav-ipsac-throughput]]"
   - "[[wang-2026-ikpp-vehicular-uav]]"
   - "[[shah-2026-cellfree-mimo-fap-control]]"
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"

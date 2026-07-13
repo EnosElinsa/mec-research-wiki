@@ -3,11 +3,13 @@ type: concept
 title: "Gale-Shapley Matching"
 tags: [matching, association, stable-matching, classical-algorithm]
 related:
+  - "[[lim-2021-uav-iov-contract-matching]]"
+  - "[[multidimensional-contract-matching]]"
   - "[[matching-theory-for-resource-allocation]]"
   - "[[two-stage-decomposition]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-14
 ---
 
 # Gale-Shapley Matching

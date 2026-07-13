@@ -7,13 +7,15 @@ url: "https://doi.org/10.1109/TWC.2025.3634306"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, correction, uav, isac, periodic-sensing, convex-optimization, trajectory-optimization]
 related:
+  - "[[meng-2023-uav-ipsac-throughput]]"
+  - "[[kaitao-meng]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[uav-trajectory-control]]"
   - "[[device-association]]"
   - "[[alternating-optimization-sdr-sca]]"
   - "[[qingqing-wu]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Corrections to "Throughput Maximization for UAV-Enabled Integrated Periodic Sensing and Communication"
@@ -48,7 +50,7 @@ The note depends on definitions and constraints numbered in the original article
 
 ## Relation to the corpus
 
-This correction is a useful warning for [[alternating-optimization-sdr-sca]] pipelines: convexity must follow from the actual transformed variables and bounds, not an unsupported Hessian claim. It also preserves the coupling among [[device-association]], beamforming, and [[uav-trajectory-control]] inside periodic [[integrated-sensing-and-communication|UAV-ISAC]].
+This correction repairs [[meng-2023-uav-ipsac-throughput]] and is a useful warning for [[alternating-optimization-sdr-sca]] pipelines: convexity must follow from the actual transformed variables and bounds, not an unsupported Hessian claim. It also preserves the coupling among [[device-association]], beamforming, and [[uav-trajectory-control]] inside periodic [[integrated-sensing-and-communication|UAV-ISAC]].
 
 ## Raw artifacts
 

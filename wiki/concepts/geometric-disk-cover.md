@@ -3,6 +3,8 @@ type: concept
 title: "Geometric Disk Cover (GDC)"
 tags: [coverage, deployment, np-hard, optimization, aerial-base-station]
 related:
+  - "[[zeng-2018-uav-multicasting-completion-time]]"
+  - "[[virtual-base-station-waypoint-design]]"
   - "[[drone-cell-3d-placement]]"
   - "[[weighted-kmeans-uav-deployment]]"
   - "[[mixed-integer-nonlinear-programming]]"
