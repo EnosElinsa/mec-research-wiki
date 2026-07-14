@@ -1,5 +1,18 @@
 # Research Log
 
+## [2026-07-14] Curated beam-delay-aligned cell-free UAV coverage and vertical-network CoMP
+
+Added the final two uncurated source pages, eight reusable concepts, and three recurring-author entities:
+
+- [[hong-2026-beam-delay-alignment]] - Hong et al. 2026, *IEEE TWC* 25, 3106-3120, DOI `10.1109/TWC.2025.3601587`. [[beam-delay-alignment-transmission]], [[semi-synchronized-path-set]], [[wideband-asynchronous-cell-free-massive-mimo]], and [[dual-purpose-time-delay-network]] organize path timing, delay-compatible clique selection, ground-AP cell-free architecture, and analog delay-hardware reuse.
+- [[shi-2026-vhetnet-comp-coverage]] - Shi et al. 2026, *IEEE TWC* 25, 9391-9405, DOI `10.1109/TWC.2025.3644244`. [[coordinated-multipoint-transmission]], [[same-tier-three-site-comp]], [[two-regime-aerial-user-association]], and [[poisson-delaunay-comp-clustering]] organize same-layer cooperation, altitude-dependent association, and tractable stochastic-geometry clustering.
+
+Evidence caveats: the beam-delay design assumes known path directions, delays, and large-scale statistics, uses simulation without a synchronization-hardware prototype, and gives a global result only for power allocation after path sets, beams, and delays are fixed. Its GCN/greedy routine has no maximum-clique or globally optimal SSP guarantee, hardware loss/quantization/calibration are omitted, and the printed fronthaul expression still contains a user-count term. The vertical-network analysis excludes mixed ABS-TBS serving triads after one scenario reports them uncommon; its Gamma signal laws are approximations, the two-root association proposition assumes a strictly U-shaped function, and its deficit-weighted K-means deployment has no global network-coverage guarantee. Both papers use 2026 final volume years after 2025 online publication.
+
+Repeated biographies, affiliations, and coauthor continuity established [[chunguo-li]], [[dongming-wang]], and [[xiaohu-you]] across three sources each. Xiaohu You's supplied biographies disagree by one year on the doctorate date, so the entity page preserves the identity but does not normalize that detail. Single-source authors in both papers were not promoted.
+
+The integrated corpus contains **611 sources / 656 concepts / 188 entities / 612 raw folders**, with all **612 raw folders** matched and **0 uncurated sources**. Independent review corrected Chunguo Li's IEEE membership status and completed the three new entity schemas. Wikilinks and process narration are clean; the index covers all **1,507** catalogue-able pages exactly once; all **1,505** typed frontmatter blocks validate; entity rosters have zero overclaims (20 advisory omissions/namesakes remain); all 12 wiki-tool unit tests pass; and `git diff --check` is clean. The optional local LLM Wiki health endpoint returns HTTP **502**, so file-grounded CLI audits remain authoritative.
+
 ## [2026-07-14] Curated ISAC trajectory monitoring, AoI Transformer routing, deadline collection, energy-constrained delivery, and unpredictable anti-jamming motion
 
 Added five source pages, thirteen reusable concepts, and eight recurring-author entities:

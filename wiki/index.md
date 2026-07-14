@@ -730,6 +730,8 @@
 - [[samir-2020-time-constrained-data-collection]] - Samir et al. 2020. Hard-deadline IoT admission with joint UAV trajectory and spectrum allocation through BRB and scalable SCA (IEEE TWC).
 - [[chang-2026-data-offloading-energy-constraints]] - Chang et al. 2026. Many-to-one IoT pickup/delivery routing with battery-station insertion and iterative completion-time minimization (IEEE TGCN).
 - [[hua-2026-unpredictable-uav-trajectory]] - Hua et al. 2026. Navigation/stochastic heading-control decomposition evaluated through one-step Kalman prediction error for anti-jamming UAV data collection (IEEE T-ITS).
+- [[hong-2026-beam-delay-alignment]] - Hong et al. 2026. Wideband ground-AP cell-free downlink with beam-delay alignment, semi-synchronized path sets, GCN clique proposals, and reused true-time-delay hardware (IEEE TWC).
+- [[shi-2026-vhetnet-comp-coverage]] - Shi et al. 2026. Same-tier three-site CoMP coverage analysis and deficit-weighted ABS placement in a vertical terrestrial-aerial heterogeneous network (IEEE TWC).
 
 ## Entities
 
@@ -746,6 +748,9 @@
 
 ### Authors
 
+- [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
+- [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
+- [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.
 - [[shaoqiang-yan]] - single- and multi-BS ISAC UAV trajectory monitoring.
 - [[hongliang-luo]] - Tsinghua researcher across single-BS monitoring, multi-BS fusion, and sensing-cell handover.
 - [[ping-yang]] - Rocket Force University researcher in ISAC UAV trajectory monitoring.
@@ -828,6 +833,14 @@
 
 ## Concepts
 
+- [[beam-delay-alignment-transmission]] - path-aware beamforming plus transmission delays that align useful multipath arrivals.
+- [[semi-synchronized-path-set]] - AP-local delay-compatible user-path clique under a cyclic-prefix tolerance.
+- [[wideband-asynchronous-cell-free-massive-mimo]] - distributed AP service when propagation/multipath delay exceeds CP tolerance.
+- [[dual-purpose-time-delay-network]] - analog delay hardware reused for beam-split calibration and symbol synchronization.
+- [[coordinated-multipoint-transmission]] - multiple coordinated sites jointly serving a user.
+- [[same-tier-three-site-comp]] - three aerial or three terrestrial sites cooperate while mixed serving triads are excluded.
+- [[two-regime-aerial-user-association]] - parameter-dependent altitude regimes balancing terrestrial LoS and aerial-site proximity.
+- [[poisson-delaunay-comp-clustering]] - Delaunay-triangle cooperation groups for point-process CoMP analysis.
 - [[uav-trajectory-monitoring]] - discovery, association, state estimation, and prediction for maintaining target-UAV trajectory histories.
 - [[phase-rotated-dft-motion-parameter-estimation]] - coarse spectral estimation refined by bounded phase rotation.
 - [[position-gated-velocity-nearest-neighbor-association]] - covariance position gating followed by velocity-difference track selection.

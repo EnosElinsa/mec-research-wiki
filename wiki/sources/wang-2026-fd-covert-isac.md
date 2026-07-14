@@ -18,6 +18,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[deng-2025-covert-isac-trajectory]]"
   - "[[dusit-niyato]]"
+  - "[[chunguo-li]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

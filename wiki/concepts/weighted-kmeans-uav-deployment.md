@@ -10,8 +10,9 @@ related:
   - "[[k-dbscan-uav-deployment]]"
   - "[[gao-2026-air-ground-instant-delivery]]"
   - "[[cooperative-uav-taxi-delivery]]"
+  - "[[shi-2026-vhetnet-comp-coverage]]"
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Weighted K-Means UAV Deployment
@@ -25,3 +26,5 @@ A pragmatic alternative to game-theoretic deployment ([[wang-2025-uav-swarm-stac
 [[k-dbscan-uav-deployment]] is the outlier-removal sibling used by [[lin-2025-energy-effective-ris-multiuav-coverage]]: it bounds UAV regions for faster DRL training but explicitly leaves sparse outlier GTs unserved.
 
 [[gao-2026-air-ground-instant-delivery]] uses a logistics variant: weighted K-Means++-style station placement clusters spatial gaps between parcel demand and taxi delivery capacity, so UAV infrastructure follows unmet demand rather than raw customer density.
+
+[[shi-2026-vhetnet-comp-coverage]] uses physical coverage-deficit weights instead: each sample is weighted by the shortfall from a terrestrial SIR target, and its assignment/centroid updates also include a path-loss and Nakagami-fading kernel. The paper reports monotonic improvement of that surrogate, not global optimality for network coverage.

@@ -15,6 +15,7 @@ related:
   - "[[hussain-2026-unet-uav-mmwave-pathloss]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[christos-masouros]]"
+  - "[[xiaohu-you]]"
 created: 2026-07-12
 updated: 2026-07-14
 ---
