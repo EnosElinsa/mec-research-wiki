@@ -15,6 +15,8 @@ related:
   - "[[tang-2025-cooperative-isac-lae]]"
   - "[[huang-2026-offgrid-lae-imager]]"
   - "[[fan-liu]]"
+  - "[[hongliang-luo]]"
+  - "[[feifei-gao]]"
 created: 2026-07-07
 updated: 2026-07-14
 ---

@@ -725,6 +725,11 @@
 - [[li-2026-credit-aware-uav-irs-secrecy]] - Li et al. 2026. Exact Shapley credit and primal-dual constraints extend MASAC for cooperative multi-UAV-IRS secrecy control (IEEE TWC).
 - [[huang-2026-intelligent-jamming-maritime]] - Huang et al. 2026. Advantage-conditioned SAC-CVAE and LSTM eavesdropper prediction coordinate relay/jammer UAVs for secure energy-aware maritime communication (IEEE TMC accepted version).
 - [[feng-2026-secure-short-packet-noma-relay]] - Feng et al. 2026. Dual-phase spatially suppressed artificial noise, finite-blocklength NOMA allocation, and hovering relay placement maximize weighted effective secrecy rate (IEEE TWC).
+- [[yan-2026-uav-trajectory-monitoring]] - Yan et al. 2026. Single-BS ISAC trajectory monitoring with PRDFT motion estimation, position/velocity association, and IMMUKF prediction (IEEE TWC).
+- [[zhu-2023-aoi-transformer-trajectory]] - Zhu et al. 2023. AoI-minimal clustered IoT collection using Transformer cluster ordering and weighted A-star hover-point selection (IEEE TWC).
+- [[samir-2020-time-constrained-data-collection]] - Samir et al. 2020. Hard-deadline IoT admission with joint UAV trajectory and spectrum allocation through BRB and scalable SCA (IEEE TWC).
+- [[chang-2026-data-offloading-energy-constraints]] - Chang et al. 2026. Many-to-one IoT pickup/delivery routing with battery-station insertion and iterative completion-time minimization (IEEE TGCN).
+- [[hua-2026-unpredictable-uav-trajectory]] - Hua et al. 2026. Navigation/stochastic heading-control decomposition evaluated through one-step Kalman prediction error for anti-jamming UAV data collection (IEEE T-ITS).
 
 ## Entities
 
@@ -741,6 +746,14 @@
 
 ### Authors
 
+- [[shaoqiang-yan]] - single- and multi-BS ISAC UAV trajectory monitoring.
+- [[hongliang-luo]] - Tsinghua researcher across single-BS monitoring, multi-BS fusion, and sensing-cell handover.
+- [[ping-yang]] - Rocket Force University researcher in ISAC UAV trajectory monitoring.
+- [[feifei-gao]] - Tsinghua IEEE Fellow across UAV monitoring and networked-ISAC tracking.
+- [[moataz-samir]] - UAV collection, vehicular coverage, and AoI scheduling.
+- [[sanaa-sharafeddine]] - UAV communications, data collection, coverage, freshness, and localization.
+- [[chadi-assi]] - Concordia researcher across UAV collection, coverage, AoI, and localization.
+- [[ali-ghrayeb]] - UAV data collection, vehicular coverage, and freshness control.
 - [[ling-lyu]] - Dalian Maritime University / Xidian University; graph resource management and situation-aware UAV-ISAC control.
 - [[yanpeng-dai]] - Dalian Maritime University / Xidian University; graph resource management and UAV sensing/control.
 - [[nan-cheng]] - Xidian University; non-terrestrial networking, graph resource management, and UAV-ISAC.
@@ -815,6 +828,19 @@
 
 ## Concepts
 
+- [[uav-trajectory-monitoring]] - discovery, association, state estimation, and prediction for maintaining target-UAV trajectory histories.
+- [[phase-rotated-dft-motion-parameter-estimation]] - coarse spectral estimation refined by bounded phase rotation.
+- [[position-gated-velocity-nearest-neighbor-association]] - covariance position gating followed by velocity-difference track selection.
+- [[transformer-weighted-a-star-trajectory-planning]] - learned service-group ordering followed by layered hover-point search.
+- [[generalized-traveling-salesman-problem]] - one-representative-per-group combinatorial routing.
+- [[hovering-disk-data-collection]] - selecting service points within SNR-feasible cluster disks.
+- [[deadline-constrained-uav-data-collection]] - complete-upload admission within device-specific generation/deadline windows.
+- [[branch-reduce-and-bound]] - globally bounded partition/reduction search for small monotonic formulations.
+- [[many-to-one-pickup-and-delivery]] - grouped pickups that must precede designated delivery nodes.
+- [[dynamic-programming-battery-station-insertion]] - optimal replenishment-stop insertion for a fixed service order.
+- [[mixed-integer-linear-programming]] - linear optimization with binary or integer decision variables.
+- [[unpredictable-uav-trajectory-control]] - stochastic motion designed to raise observer prediction difficulty while preserving mission progress.
+- [[navigation-stochastic-control-decomposition]] - bounded split between mission-directed and random motion inputs.
 - [[wireless-powered-underground-communication-network]] - above-ground RF energy delivery and underground-to-air data return under soil attenuation.
 - [[underground-air-soil-wireless-channel]] - air propagation, interface refraction, and lossy-soil attenuation governed by depth and soil composition.
 - [[csi-free-multiantenna-wireless-energy-transfer]] - multi-antenna WET without instantaneous receiver-channel acquisition.

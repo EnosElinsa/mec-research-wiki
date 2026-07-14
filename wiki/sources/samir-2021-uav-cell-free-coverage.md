@@ -16,8 +16,12 @@ related:
   - "[[mozaffari-2016-efficient-multi-uav-coverage]]"
   - "[[peng-2020-maddpg-uav-vehicular]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[moataz-samir]]"
+  - "[[sanaa-sharafeddine]]"
+  - "[[chadi-assi]]"
+  - "[[ali-ghrayeb]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Leveraging UAVs for Coverage in Cell-Free Vehicular Networks: A Deep Reinforcement Learning Approach

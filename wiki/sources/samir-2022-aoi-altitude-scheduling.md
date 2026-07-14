@@ -16,8 +16,12 @@ related:
   - "[[hybrid-action-decision-making]]"
   - "[[mixed-integer-nonlinear-programming]]"
   - "[[samir-2021-uav-cell-free-coverage]]"
+  - "[[moataz-samir]]"
+  - "[[sanaa-sharafeddine]]"
+  - "[[chadi-assi]]"
+  - "[[ali-ghrayeb]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Online Altitude Control and Scheduling Policy for Minimizing AoI in UAV-Assisted IoT Wireless Networks

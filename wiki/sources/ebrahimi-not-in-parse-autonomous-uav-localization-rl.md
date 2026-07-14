@@ -16,8 +16,10 @@ related:
   - "[[zhu-2026-uav-localization-jamming]]"
   - "[[cao-2026-uav-self-tracking-ms-mm]]"
   - "[[zhu-2024-zdrl-uav-tracking]]"
+  - "[[sanaa-sharafeddine]]"
+  - "[[chadi-assi]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Autonomous UAV Trajectory for Localizing Ground Objects: A Reinforcement Learning Approach

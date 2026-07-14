@@ -16,8 +16,12 @@ related:
   - "[[zhao-2025-networked-isac-uav-handover]]"
   - "[[wang-2026-stbc-cooperative-isac]]"
   - "[[tang-2025-cooperative-isac-lae]]"
+  - "[[shaoqiang-yan]]"
+  - "[[hongliang-luo]]"
+  - "[[ping-yang]]"
+  - "[[feifei-gao]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-14
 ---
 
 # Asynchronous UAV Trajectory Monitoring With Multi-BS Feature Fusion in Cellular ISAC
