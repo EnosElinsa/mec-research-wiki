@@ -168,6 +168,10 @@ def raw_folders() -> list[str]:
 
 _LINK = re.compile(r"\[\[([^\]]+)\]\]")
 _FENCE_OPEN = re.compile(r"^ {0,3}(`{3,}|~{3,})([^\r\n]*)$")
+_BLOCKQUOTE_PREFIX = re.compile(r"^ {0,3}>[ \t]?")
+_LIST_PREFIX = re.compile(
+    r"^( {0,3})([-+*]|\d{1,9}[.)])([ \t]+)(.*)$"
+)
 
 
 def _line_ending(line: str) -> str:
@@ -180,34 +184,152 @@ def _line_ending(line: str) -> str:
     return ""
 
 
+def _advance_columns(value: str, start: int = 0) -> int:
+    column = start
+    for character in value:
+        if character == "\t":
+            column += 4 - column % 4
+        else:
+            column += 1
+    return column
+
+
+def _strip_indent_columns(value: str, required: int) -> str | None:
+    """Remove at least ``required`` Markdown indentation columns."""
+    column = 0
+    cursor = 0
+    while cursor < len(value) and column < required:
+        character = value[cursor]
+        if character == " ":
+            next_column = column + 1
+        elif character == "\t":
+            next_column = column + 4 - column % 4
+        else:
+            return None
+        cursor += 1
+        if next_column > required:
+            return " " * (next_column - required) + value[cursor:]
+        column = next_column
+    if column < required:
+        return None
+    return value[cursor:]
+
+
+def _strip_container_sequence(
+    content: str, containers: list[tuple[str, int]]
+) -> str | None:
+    candidate = content
+    for kind, width in containers:
+        if kind == "quote":
+            prefix = _BLOCKQUOTE_PREFIX.match(candidate)
+            if not prefix:
+                return None
+            candidate = candidate[prefix.end():]
+            continue
+        candidate = _strip_indent_columns(candidate, width)
+        if candidate is None:
+            return None
+    return candidate
+
+
+def _active_container_prefixes(
+    containers: list[tuple[str, int]],
+) -> list[list[tuple[str, int]]]:
+    prefixes = [containers]
+    for index in range(len(containers) - 1, -1, -1):
+        if containers[index][0] != "list":
+            continue
+        prefix = containers[:index + 1]
+        if prefix not in prefixes:
+            prefixes.append(prefix)
+    return prefixes
+
+
+def _fence_candidate(
+    content: str, active_containers: list[tuple[str, int]]
+) -> tuple[list[tuple[str, int]], str]:
+    containers: list[tuple[str, int]] = []
+    candidate = content
+    if active_containers:
+        if not content.strip():
+            containers = list(active_containers)
+            candidate = ""
+        else:
+            for prefix in _active_container_prefixes(active_containers):
+                continuation = _strip_container_sequence(content, prefix)
+                if continuation is not None:
+                    containers = list(prefix)
+                    candidate = continuation
+                    break
+
+    while True:
+        quote_prefix = _BLOCKQUOTE_PREFIX.match(candidate)
+        if quote_prefix:
+            containers.append(("quote", 0))
+            candidate = candidate[quote_prefix.end():]
+            continue
+        list_prefix = _LIST_PREFIX.match(candidate)
+        if list_prefix:
+            indentation, marker, spacing, candidate = list_prefix.groups()
+            containers.append(
+                ("list", _advance_columns(indentation + marker + spacing))
+            )
+            continue
+        break
+
+    if any(kind == "list" for kind, _ in containers):
+        active_containers[:] = containers
+    else:
+        active_containers.clear()
+    return containers, candidate
+
+
 def _strip_fenced_code(text: str) -> str:
-    """Remove CommonMark-style backtick and tilde fenced code blocks."""
+    """Remove fenced code, including blockquote/list-container fences."""
     rendered: list[str] = []
+    active_containers: list[tuple[str, int]] = []
     fence_character: str | None = None
     fence_length = 0
+    fence_containers: list[tuple[str, int]] = []
     for line in text.splitlines(keepends=True):
         content = line.rstrip("\r\n")
-        if fence_character is None:
-            opening = _FENCE_OPEN.match(content)
-            if opening:
-                marker, info = opening.groups()
-                # CommonMark forbids backticks in a backtick fence's info text.
-                if marker[0] != "`" or "`" not in info:
-                    fence_character = marker[0]
-                    fence_length = len(marker)
-                    rendered.append(_line_ending(line))
-                    continue
-            rendered.append(line)
-            continue
+        while True:
+            if fence_character is None:
+                containers, candidate = _fence_candidate(
+                    content, active_containers
+                )
+                opening = _FENCE_OPEN.match(candidate)
+                if opening:
+                    marker, info = opening.groups()
+                    # CommonMark forbids backticks in a backtick fence's info text.
+                    if marker[0] != "`" or "`" not in info:
+                        fence_character = marker[0]
+                        fence_length = len(marker)
+                        fence_containers = list(containers)
+                        rendered.append(_line_ending(line))
+                        break
+                rendered.append(line)
+                break
 
-        closing = re.fullmatch(
-            rf" {{0,3}}{re.escape(fence_character)}{{{fence_length},}}[ \t]*",
-            content,
-        )
-        rendered.append(_line_ending(line))
-        if closing:
-            fence_character = None
-            fence_length = 0
+            if not content.strip():
+                rendered.append(_line_ending(line))
+                break
+            candidate = _strip_container_sequence(content, fence_containers)
+            if candidate is None:
+                fence_character = None
+                fence_length = 0
+                fence_containers = []
+                continue
+            closing = re.fullmatch(
+                rf" {{0,3}}{re.escape(fence_character)}{{{fence_length},}}[ \t]*",
+                candidate,
+            )
+            rendered.append(_line_ending(line))
+            if closing:
+                fence_character = None
+                fence_length = 0
+                fence_containers = []
+            break
     return "".join(rendered)
 
 

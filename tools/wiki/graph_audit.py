@@ -14,6 +14,7 @@ import json
 import os
 import re
 import sys
+import tempfile
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Iterable
@@ -47,6 +48,7 @@ _METRIC_KEYS = (
     "weak_member_count",
     "bridge_edge_count",
 )
+_INTEGER_METRIC_KEYS = frozenset(_METRIC_KEYS) - {"local_cohesion"}
 _SEMANTIC_KEYS = frozenset(
     {"graph", "cohort", "local_cohesion", "external_degrees"}
 )
@@ -71,11 +73,18 @@ def _utc_timestamp(value: str | None = None) -> str:
 
 def _valid_timestamp(value: str) -> str:
     if not isinstance(value, str) or not value:
-        raise GraphAuditError("timestamp must be a non-empty ISO-8601 string")
+        raise GraphAuditError("timestamp must be an offset-aware UTC ISO-8601 string")
     try:
-        datetime.fromisoformat(value.replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError as exc:
-        raise GraphAuditError("timestamp must be a non-empty ISO-8601 string") from exc
+        raise GraphAuditError(
+            "timestamp must be an offset-aware UTC ISO-8601 string"
+        ) from exc
+    if (
+        parsed.tzinfo is None
+        or parsed.utcoffset() != timezone.utc.utcoffset(parsed)
+    ):
+        raise GraphAuditError("timestamp must be an offset-aware UTC ISO-8601 string")
     return value
 
 
@@ -562,6 +571,14 @@ def _validate_graph(
 ) -> dict:
     if not isinstance(graph, dict):
         raise GraphAuditError("graph must be an object")
+    metrics = graph.get("metrics")
+    if not isinstance(metrics, dict) or set(metrics) != set(_METRIC_KEYS):
+        raise GraphAuditError("graph metric fields mismatch")
+    for field in _INTEGER_METRIC_KEYS:
+        if type(metrics[field]) is not int:
+            raise GraphAuditError(f"integer metric must be an exact int: {field}")
+    if type(metrics["local_cohesion"]) is not float:
+        raise GraphAuditError("local_cohesion metric must be a float")
     edges = _validated_induced_edges(graph.get("induced_edges"), members)
     external = graph.get("external_degrees")
     if not isinstance(external, dict) or set(external) != set(members):
@@ -573,6 +590,51 @@ def _validate_graph(
         for member in members
     ):
         raise GraphAuditError("external degrees must be non-negative integers")
+    internal = graph.get("internal_degrees")
+    if not isinstance(internal, dict) or set(internal) != set(members):
+        raise GraphAuditError("internal degree coverage mismatch")
+    if any(
+        type(internal[member]) is not int or internal[member] < 0
+        for member in members
+    ):
+        raise GraphAuditError("internal degrees must be exact non-negative integers")
+    components = graph.get("components")
+    if not isinstance(components, list) or any(
+        not isinstance(component, dict)
+        or set(component) != {"id", "size", "members"}
+        or type(component["id"]) is not int
+        or component["id"] < 1
+        or type(component["size"]) is not int
+        or component["size"] < 1
+        or not isinstance(component["members"], list)
+        or any(not isinstance(member, str) for member in component["members"])
+        for component in components
+    ):
+        raise GraphAuditError(
+            "components must use exact integer identifiers and sizes"
+        )
+    weak_members = graph.get("weak_members")
+    weak_fields = {
+        "slug",
+        "type",
+        "internal_degree",
+        "external_degree",
+        "component_id",
+    }
+    if not isinstance(weak_members, list) or any(
+        not isinstance(row, dict)
+        or set(row) != weak_fields
+        or not isinstance(row["slug"], str)
+        or not isinstance(row["type"], str)
+        or type(row["internal_degree"]) is not int
+        or row["internal_degree"] < 0
+        or type(row["external_degree"]) is not int
+        or row["external_degree"] < 0
+        or type(row["component_id"]) is not int
+        or row["component_id"] < 1
+        for row in weak_members
+    ):
+        raise GraphAuditError("weak members must use exact integer graph fields")
     expected = _graph_from_edges(
         members, edges, external, member_types, weak_degree
     )
@@ -880,14 +942,90 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _output_path(value: str) -> Path:
+def _win32_alias_path(value: str) -> str:
+    """Normalize Win32-equivalent spellings before collision checks."""
+    normalized = value.replace("/", "\\")
+    folded = normalized.casefold()
+    if folded.startswith("\\\\?\\unc\\"):
+        normalized = "\\\\" + normalized[8:]
+    elif folded.startswith(("\\\\?\\", "\\\\.\\")):
+        normalized = normalized[4:]
+
+    drive, tail = os.path.splitdrive(normalized)
+    components = tail.split("\\")
+    components = [
+        component
+        if component in {"", ".", ".."}
+        else component.rstrip(" .")
+        for component in components
+    ]
+    return drive + "\\".join(components)
+
+
+def _path_key(path: Path) -> str:
+    """Canonical comparison key for path aliases, including Windows case."""
+    resolved = os.fspath(path.resolve(strict=False))
+    if os.name == "nt":
+        resolved = _win32_alias_path(resolved)
+    return os.path.normcase(os.path.normpath(resolved))
+
+
+def _reject_alternate_stream(path: Path, role: str) -> None:
+    if os.name != "nt":
+        return
+    normalized = _win32_alias_path(os.fspath(path))
+    _, tail = os.path.splitdrive(normalized)
+    if ":" in tail:
+        raise GraphAuditError(
+            f"path collision risk: alternate data streams are not supported "
+            f"for {role}: {path}"
+        )
+
+
+def _resolved_path(value: str, root: str, role: str) -> Path:
     path = Path(value)
-    return path if path.is_absolute() else Path(wikilib.scratch_dir()) / path
+    if path.is_absolute():
+        candidate = path.resolve(strict=False)
+    else:
+        root_path = Path(root).resolve(strict=False)
+        candidate = (root_path / path).resolve(strict=False)
+        root_key = _path_key(root_path)
+        candidate_key = _path_key(candidate)
+        try:
+            confined = os.path.commonpath((root_key, candidate_key)) == root_key
+        except ValueError:
+            confined = False
+        if not confined:
+            raise GraphAuditError(
+                f"relative {role} path escapes {root_path}: {value}"
+            )
+    _reject_alternate_stream(candidate, role)
+    return candidate
+
+
+def _output_path(value: str) -> Path:
+    return _resolved_path(value, wikilib.scratch_dir(ensure=False), "output")
 
 
 def _input_path(value: str) -> Path:
-    path = Path(value)
-    return path if path.is_absolute() else Path(wikilib.repo_root()) / path
+    return _resolved_path(value, wikilib.repo_root(), "input")
+
+
+def _reject_path_collisions(named_paths: list[tuple[str, Path]]) -> None:
+    seen: list[tuple[str, str, Path]] = []
+    for name, path in named_paths:
+        key = _path_key(path)
+        for prior_key, prior_name, prior_path in seen:
+            same_existing_file = False
+            try:
+                same_existing_file = os.path.samefile(prior_path, path)
+            except OSError:
+                pass
+            if key == prior_key or same_existing_file:
+                raise GraphAuditError(
+                    f"path collision: {prior_name} and {name} resolve to {path}"
+                )
+        seen.append((key, name, path))
 
 
 def _read_json(path: Path) -> dict:
@@ -900,9 +1038,23 @@ def _read_json(path: Path) -> dict:
 
 def _write_json(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="\n") as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
-        handle.write("\n")
+    descriptor, temporary = tempfile.mkstemp(
+        prefix=f".{path.name}.", suffix=".tmp", dir=path.parent
+    )
+    try:
+        handle = os.fdopen(descriptor, "w", encoding="utf-8", newline="\n")
+        descriptor = -1
+        with handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+        if os.path.exists(temporary):
+            os.unlink(temporary)
 
 
 def _metrics_line(
@@ -941,6 +1093,12 @@ def main(argv: list[str] | None = None) -> int:
                 raise GraphAuditError(
                     "observed UI pages and cohesion must be provided together"
                 )
+            json_output = _output_path(args.json)
+            ledger_output = _output_path(args.ledger) if args.ledger else None
+            output_paths = [("--json", json_output)]
+            if ledger_output is not None:
+                output_paths.append(("--ledger", ledger_output))
+            _reject_path_collisions(output_paths)
             snapshot = build_snapshot(
                 wikilib.wiki_page_index(),
                 created=args.created,
@@ -951,9 +1109,9 @@ def main(argv: list[str] | None = None) -> int:
                 observed_ui_cohesion=args.observed_ui_cohesion,
             )
             ledger = build_coverage_ledger(snapshot) if args.ledger else None
-            _write_json(_output_path(args.json), snapshot)
-            if args.ledger:
-                _write_json(_output_path(args.ledger), ledger)
+            _write_json(json_output, snapshot)
+            if ledger_output is not None:
+                _write_json(ledger_output, ledger)
             print(
                 _metrics_line(
                     "SNAPSHOT",
@@ -964,6 +1122,15 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         baseline_input = _input_path(args.baseline)
+        json_output = _output_path(args.json)
+        ledger_path = _input_path(args.ledger) if args.ledger else None
+        compare_paths = [
+            ("--baseline", baseline_input),
+            ("--json", json_output),
+        ]
+        if ledger_path is not None:
+            compare_paths.append(("--ledger", ledger_path))
+        _reject_path_collisions(compare_paths)
         baseline = _read_json(baseline_input)
         comparison = build_comparison(
             baseline,
@@ -971,13 +1138,11 @@ def main(argv: list[str] | None = None) -> int:
             baseline_path=args.baseline,
         )
         refreshed_ledger = None
-        ledger_path = None
-        if args.ledger:
-            ledger_path = _input_path(args.ledger)
+        if ledger_path is not None:
             refreshed_ledger = refresh_coverage_ledger(
                 _read_json(ledger_path), comparison
             )
-        _write_json(_output_path(args.json), comparison)
+        _write_json(json_output, comparison)
         if ledger_path is not None:
             _write_json(ledger_path, refreshed_ledger)
         print(

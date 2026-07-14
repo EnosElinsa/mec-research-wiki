@@ -74,7 +74,10 @@ external degree).
 Relative snapshot/comparison output and snapshot-ledger paths are written under
 `.curation-out/`. For `compare`, relative `--baseline` and `--ledger` inputs are
 resolved from the repository root; the refreshed ledger is written back to the
-same path. A `report_type: coverage-ledger` file stores `baseline_label`,
+same path. Relative paths cannot escape those roots; absolute paths remain
+explicitly allowed. All command paths must resolve to distinct files, and JSON
+updates use an atomic sibling-file replacement. A coverage ledger
+(`report_type: coverage-ledger`) stores `baseline_label`,
 `baseline_member_hash`, and sorted `entries`. Each entry preserves its editorial
 `theme`, `status`, `evidence_paths`, `candidate_relationships`, `accepted_links`,
 and `deferral_reason` while refresh updates `post_batch_component` and
