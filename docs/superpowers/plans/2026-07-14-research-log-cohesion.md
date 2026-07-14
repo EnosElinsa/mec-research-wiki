@@ -1500,12 +1500,20 @@ python tools/wiki/graph_audit.py compare `
   --baseline .curation-out/research-log-2026-07-14-baseline.json `
   --json research-log-theme-1-after.json `
   --ledger .curation-out/research-log-2026-07-14-ledger.json
+$before = Get-Content -LiteralPath .curation-out/research-log-theme-1-before.json -Raw -Encoding utf8 | ConvertFrom-Json
+$after = Get-Content -LiteralPath .curation-out/research-log-theme-1-after.json -Raw -Encoding utf8 | ConvertFrom-Json
+$batchEdgeDelta = [int]$after.graph.metrics.induced_edge_count - [int]$before.graph.metrics.induced_edge_count
+$batchComponentDelta = [int]$after.graph.metrics.component_count - [int]$before.graph.metrics.component_count
+$batchWeakMemberDelta = [int]$after.graph.metrics.weak_member_count - [int]$before.graph.metrics.weak_member_count
+if ($batchEdgeDelta -lt 18) { throw "theme 1 added only $batchEdgeDelta internal edges; require at least 18" }
+if ($batchComponentDelta -ge 0) { throw "theme 1 component delta is $batchComponentDelta; require at most -1" }
+"theme 1 batch deltas: edges=$batchEdgeDelta components=$batchComponentDelta weak_members=$batchWeakMemberDelta"
 ```
 
 Require:
 
 - no removed frozen edge;
-- at least 18 added frozen edges;
+- at least 18 cumulative added frozen edges;
 - at least one component reduction;
 - `two-regime-aerial-user-association` and `statistical-user-position-uav-deployment` both reach internal degree at least 2;
 - every `added_edges` pair has an accepted evidence-matrix row.
@@ -1744,6 +1752,14 @@ python tools/wiki/graph_audit.py compare `
   --baseline .curation-out/research-log-2026-07-14-baseline.json `
   --json research-log-theme-2-after.json `
   --ledger .curation-out/research-log-2026-07-14-ledger.json
+$before = Get-Content -LiteralPath .curation-out/research-log-theme-2-before.json -Raw -Encoding utf8 | ConvertFrom-Json
+$after = Get-Content -LiteralPath .curation-out/research-log-theme-2-after.json -Raw -Encoding utf8 | ConvertFrom-Json
+$batchEdgeDelta = [int]$after.graph.metrics.induced_edge_count - [int]$before.graph.metrics.induced_edge_count
+$batchComponentDelta = [int]$after.graph.metrics.component_count - [int]$before.graph.metrics.component_count
+$batchWeakMemberDelta = [int]$after.graph.metrics.weak_member_count - [int]$before.graph.metrics.weak_member_count
+if ($batchEdgeDelta -lt 18) { throw "theme 2 added only $batchEdgeDelta internal edges; require at least 18" }
+if ($batchComponentDelta -ge 0) { throw "theme 2 component delta is $batchComponentDelta; require at most -1" }
+"theme 2 batch deltas: edges=$batchEdgeDelta components=$batchComponentDelta weak_members=$batchWeakMemberDelta"
 ```
 
 Require no removed edge, at least 36 cumulative added internal edges, at least one additional component merge in this batch, `mixed-integer-linear-programming` at degree at least 2, and an accepted matrix row for every added pair.
@@ -1966,6 +1982,14 @@ python tools/wiki/graph_audit.py compare `
   --baseline .curation-out/research-log-2026-07-14-baseline.json `
   --json research-log-theme-3-after.json `
   --ledger .curation-out/research-log-2026-07-14-ledger.json
+$before = Get-Content -LiteralPath .curation-out/research-log-theme-3-before.json -Raw -Encoding utf8 | ConvertFrom-Json
+$after = Get-Content -LiteralPath .curation-out/research-log-theme-3-after.json -Raw -Encoding utf8 | ConvertFrom-Json
+$batchEdgeDelta = [int]$after.graph.metrics.induced_edge_count - [int]$before.graph.metrics.induced_edge_count
+$batchComponentDelta = [int]$after.graph.metrics.component_count - [int]$before.graph.metrics.component_count
+$batchWeakMemberDelta = [int]$after.graph.metrics.weak_member_count - [int]$before.graph.metrics.weak_member_count
+if ($batchEdgeDelta -lt 18) { throw "theme 3 added only $batchEdgeDelta internal edges; require at least 18" }
+if ($batchComponentDelta -ge 0) { throw "theme 3 component delta is $batchComponentDelta; require at most -1" }
+"theme 3 batch deltas: edges=$batchEdgeDelta components=$batchComponentDelta weak_members=$batchWeakMemberDelta"
 ```
 
 Require no removed edge, at least 54 cumulative added internal edges, at least one component merge in this batch, both prioritized degree-one pages promoted above degree one, and accepted evidence for every added pair.
@@ -2196,6 +2220,14 @@ python tools/wiki/graph_audit.py compare `
   --baseline .curation-out/research-log-2026-07-14-baseline.json `
   --json research-log-theme-4-after.json `
   --ledger .curation-out/research-log-2026-07-14-ledger.json
+$before = Get-Content -LiteralPath .curation-out/research-log-theme-4-before.json -Raw -Encoding utf8 | ConvertFrom-Json
+$after = Get-Content -LiteralPath .curation-out/research-log-theme-4-after.json -Raw -Encoding utf8 | ConvertFrom-Json
+$batchEdgeDelta = [int]$after.graph.metrics.induced_edge_count - [int]$before.graph.metrics.induced_edge_count
+$batchComponentDelta = [int]$after.graph.metrics.component_count - [int]$before.graph.metrics.component_count
+$batchWeakMemberDelta = [int]$after.graph.metrics.weak_member_count - [int]$before.graph.metrics.weak_member_count
+if ($batchEdgeDelta -lt 18) { throw "theme 4 added only $batchEdgeDelta internal edges; require at least 18" }
+if ($batchComponentDelta -ge 0) { throw "theme 4 component delta is $batchComponentDelta; require at most -1" }
+"theme 4 batch deltas: edges=$batchEdgeDelta components=$batchComponentDelta weak_members=$batchWeakMemberDelta"
 ```
 
 Require no removed edge, at least 72 cumulative added internal edges, at least one component merge in this batch, all three prioritized degree-one pages promoted, and accepted evidence for every added pair.
@@ -2428,6 +2460,14 @@ python tools/wiki/graph_audit.py compare `
   --baseline .curation-out/research-log-2026-07-14-baseline.json `
   --json research-log-theme-5-after.json `
   --ledger .curation-out/research-log-2026-07-14-ledger.json
+$before = Get-Content -LiteralPath .curation-out/research-log-theme-5-before.json -Raw -Encoding utf8 | ConvertFrom-Json
+$after = Get-Content -LiteralPath .curation-out/research-log-theme-5-after.json -Raw -Encoding utf8 | ConvertFrom-Json
+$batchEdgeDelta = [int]$after.graph.metrics.induced_edge_count - [int]$before.graph.metrics.induced_edge_count
+$batchComponentDelta = [int]$after.graph.metrics.component_count - [int]$before.graph.metrics.component_count
+$batchWeakMemberDelta = [int]$after.graph.metrics.weak_member_count - [int]$before.graph.metrics.weak_member_count
+if ($batchEdgeDelta -lt 18) { throw "theme 5 added only $batchEdgeDelta internal edges; require at least 18" }
+if ($batchComponentDelta -ge 0) { throw "theme 5 component delta is $batchComponentDelta; require at most -1" }
+"theme 5 batch deltas: edges=$batchEdgeDelta components=$batchComponentDelta weak_members=$batchWeakMemberDelta"
 ```
 
 Require no removed edge, at least 90 cumulative added internal edges, at least one component merge, both prioritized degree-one pages promoted, and an accepted evidence row for every added pair.
@@ -2471,7 +2511,7 @@ Expected: exact Task 7 scope, scratch/unrelated paths untouched, all SHA views e
 **Files:**
 
 - Read and patch: `.curation-out/research-log-2026-07-14-ledger.json`
-- Read: `.curation-out/research-log-theme-5-after.json`
+- Generate at the beginning of every loop, do not stage: `.curation-out/research-log-residual-current.json`
 - Generate per loop, do not stage: `.curation-out/research-log-residual-N-evidence.md`, where `N` is the next positive integer
 - Generate per loop, do not stage: `.curation-out/research-log-residual-N-after.json`
 - Modify per loop: only the exact frozen-member pages accepted by that loop's evidence matrix
@@ -2486,20 +2526,31 @@ This task is deliberately data-dependent: exact residual page paths come from th
 Run:
 
 ```powershell
+python tools/wiki/graph_audit.py compare `
+  --baseline .curation-out/research-log-2026-07-14-baseline.json `
+  --json research-log-residual-current.json `
+  --ledger .curation-out/research-log-2026-07-14-ledger.json
+if ($LASTEXITCODE -ne 0) { throw "fresh residual graph comparison failed" }
 $ledger = Get-Content -LiteralPath .curation-out/research-log-2026-07-14-ledger.json -Raw -Encoding utf8 | ConvertFrom-Json
-$report = Get-Content -LiteralPath .curation-out/research-log-theme-5-after.json -Raw -Encoding utf8 | ConvertFrom-Json
+$report = Get-Content -LiteralPath .curation-out/research-log-residual-current.json -Raw -Encoding utf8 | ConvertFrom-Json
 $degree = @{}
 foreach ($property in $report.graph.internal_degrees.PSObject.Properties) {
     $degree[$property.Name] = [int]$property.Value
 }
+$currentComponent = @{}
+foreach ($component in $report.graph.components) {
+    foreach ($slug in $component.members) {
+        $currentComponent[$slug] = [int]$component.id
+    }
+}
 $pending = @($ledger.entries | Where-Object status -eq 'pending')
-$weakPending = @($pending | Where-Object { $degree[$_.slug] -le 1 } | Sort-Object @{Expression={$degree[$_.slug]}}, baseline_component, slug)
-$fragmentedPending = @($pending | Sort-Object baseline_component, @{Expression={$degree[$_.slug]}}, slug)
+$weakPending = @($pending | Where-Object { $degree[$_.slug] -le 1 } | Sort-Object @{Expression={$degree[$_.slug]}}, @{Expression={$currentComponent[$_.slug]}}, slug)
+$fragmentedPending = @($pending | Sort-Object @{Expression={$currentComponent[$_.slug]}}, @{Expression={$degree[$_.slug]}}, slug)
 "pending=$($pending.Count) weak_pending=$($weakPending.Count)"
-$weakPending | Select-Object -First 30 slug, type, baseline_component, baseline_internal_degree
+$weakPending | Select-Object -First 30 slug, type, @{Name='current_component'; Expression={$currentComponent[$_.slug]}}, @{Name='current_internal_degree'; Expression={$degree[$_.slug]}}
 ```
 
-Expected: deterministic unresolved and weak-first queues. Do not treat the first 30 rows as an automatic batch.
+Expected: every iteration regenerates the current comparison and refreshes ledger degrees/components before selection; the queues are deterministic, current-component-aware, and weak-first. Do not treat the first 30 rows as an automatic batch.
 
 - [ ] **Step 2: Select one evidence-coherent residual batch**
 
