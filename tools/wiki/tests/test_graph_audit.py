@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import contextlib
 import io
+import inspect
 import json
 import pathlib
 import sys
@@ -116,6 +117,18 @@ class GraphAuditTests(unittest.TestCase):
 
     def test_wiki_edges_are_wiki_only_and_simple(self):
         pages = self._pages()
+        self.assertIs(
+            inspect.signature(graph_audit.select_created_members)
+            .parameters["exclusions"]
+            .default,
+            inspect.Parameter.empty,
+        )
+        self.assertIs(
+            inspect.signature(graph_audit.graph_payload)
+            .parameters["weak_degree"]
+            .default,
+            inspect.Parameter.empty,
+        )
 
         self.assertEqual(
             wikilib.wiki_undirected_edges(
@@ -162,7 +175,7 @@ class GraphAuditTests(unittest.TestCase):
         )
         self.assertNotIn("weak_rows", snapshot["graph"])
         self.assertNotIn("pages", snapshot["graph"]["metrics"])
-        graph_audit.validate_snapshot(snapshot)
+        graph_audit.validate_snapshot(payload=snapshot)
 
     def test_comparison_freezes_members_and_reports_deltas(self):
         baseline = self._snapshot()
@@ -266,7 +279,9 @@ class GraphAuditTests(unittest.TestCase):
             baseline, self._pages(), baseline_path="baseline.json"
         )
 
-        refreshed = graph_audit.refresh_coverage_ledger(ledger, comparison)
+        refreshed = graph_audit.refresh_coverage_ledger(
+            ledger, comparison=comparison
+        )
         rows = {row["slug"]: row for row in refreshed["entries"]}
 
         self.assertEqual(rows["d"]["post_batch_component"], 2)

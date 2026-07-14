@@ -177,7 +177,7 @@ def cohort_hash(members: Iterable[str]) -> str:
 def select_created_members(
     pages: dict[str, str],
     created: str,
-    exclusions: set[str] | frozenset[str] | Iterable[str] = DEFAULT_EXCLUSIONS,
+    exclusions: set[str] | frozenset[str] | Iterable[str],
 ) -> list[str]:
     """Select non-administrative wiki pages with an exact created date."""
     created = _valid_date(created)
@@ -354,7 +354,7 @@ def _partition_edges(
 def graph_payload(
     members: Iterable[str],
     all_edges: Iterable[tuple[str, str] | list[str]],
-    weak_degree: int = 1,
+    weak_degree: int,
 ) -> dict:
     """Compute the induced graph from a pre-resolved wiki edge set."""
     weak_degree = _valid_weak_degree(weak_degree)
@@ -591,15 +591,15 @@ def _validate_graph(
 
 
 def validate_snapshot(
-    snapshot: dict,
+    payload: dict,
 ) -> dict:
     """Validate a stored snapshot without consulting mutable graph edges."""
-    if not isinstance(snapshot, dict):
+    if not isinstance(payload, dict):
         raise GraphAuditError("snapshot must be an object")
-    _validate_report_metadata(snapshot, "snapshot")
-    members, member_types, _, weak_degree = _validate_context(snapshot)
-    _validate_graph(snapshot.get("graph"), members, member_types, weak_degree)
-    return snapshot
+    _validate_report_metadata(payload, "snapshot")
+    members, member_types, _, weak_degree = _validate_context(payload)
+    _validate_graph(payload.get("graph"), members, member_types, weak_degree)
+    return payload
 
 
 def build_comparison(
@@ -809,16 +809,16 @@ def _validate_coverage_ledger(ledger: dict) -> list[str]:
     return slugs
 
 
-def refresh_coverage_ledger(ledger: dict, report: dict) -> dict:
+def refresh_coverage_ledger(ledger: dict, comparison: dict) -> dict:
     """Refresh graph-derived ledger fields while preserving editorial work."""
     ledger_slugs = _validate_coverage_ledger(ledger)
-    members, graph = _validated_report_graph(report)
-    report_cohort = report["cohort"]
-    if ledger["baseline_member_hash"] != report_cohort["member_hash"]:
+    members, graph = _validated_report_graph(comparison)
+    comparison_cohort = comparison["cohort"]
+    if ledger["baseline_member_hash"] != comparison_cohort["member_hash"]:
         raise GraphAuditError("coverage ledger cohort hash mismatch")
     if ledger_slugs != members:
         raise GraphAuditError("coverage ledger member list mismatch")
-    report_types = report_cohort["member_types"]
+    report_types = comparison_cohort["member_types"]
     for entry in ledger["entries"]:
         if entry["type"] != report_types[entry["slug"]]:
             raise GraphAuditError("coverage ledger member type mismatch")
