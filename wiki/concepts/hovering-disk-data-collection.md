@@ -7,6 +7,7 @@ related:
   - "[[uav-data-collection]]"
   - "[[generalized-traveling-salesman-problem]]"
   - "[[air-to-ground-channel-model]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

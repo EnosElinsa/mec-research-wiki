@@ -12,8 +12,9 @@ related:
   - "[[joint-switch-coalition-formation-game]]"
   - "[[zhang-2019-fast-uav-deployment]]"
   - "[[fast-heterogeneous-uav-deployment]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Heterogeneous UAV Fleet

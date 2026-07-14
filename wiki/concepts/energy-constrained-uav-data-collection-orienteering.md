@@ -6,8 +6,9 @@ related:
   - "[[li-2023-energy-constrained-uav-data-collection]]"
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Energy-Constrained UAV Data-Collection Orienteering

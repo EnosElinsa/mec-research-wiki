@@ -8,6 +8,7 @@ related:
   - "[[uav-data-collection]]"
   - "[[queueing-theory]]"
   - "[[stochastic-network-calculus]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

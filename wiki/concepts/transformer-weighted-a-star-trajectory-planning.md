@@ -7,6 +7,10 @@ related:
   - "[[generalized-traveling-salesman-problem]]"
   - "[[hovering-disk-data-collection]]"
   - "[[transformer-encoder]]"
+  - "[[deadline-constrained-uav-data-collection]]"
+  - "[[branch-reduce-and-bound]]"
+  - "[[mixed-integer-linear-programming]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

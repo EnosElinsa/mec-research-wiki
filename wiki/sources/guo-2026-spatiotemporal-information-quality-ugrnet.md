@@ -14,6 +14,7 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[uav-data-collection]]"
   - "[[post-disaster-mec]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
   - "[[jiawen-kang]]"
   - "[[dusit-niyato]]"
   - "[[weidang-lu]]"

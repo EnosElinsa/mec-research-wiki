@@ -7,6 +7,9 @@ related:
   - "[[hidden-state-sharing-marl]]"
   - "[[sequential-multi-agent-policy-generation]]"
   - "[[uav-assisted-mobile-crowd-sensing]]"
+  - "[[lstm-interruption-compensation]]"
+  - "[[opportunistic-cooperative-multi-uav-ddqn]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

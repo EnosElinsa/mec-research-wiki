@@ -8,6 +8,9 @@ related:
   - "[[potential-game]]"
   - "[[experience-value-circles]]"
   - "[[lstm-interruption-compensation]]"
+  - "[[mixed-integer-linear-programming]]"
+  - "[[attentive-memory-integrated-information-exchange]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

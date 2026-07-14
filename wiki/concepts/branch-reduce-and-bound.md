@@ -6,6 +6,10 @@ related:
   - "[[samir-2020-time-constrained-data-collection]]"
   - "[[monotonic-optimization]]"
   - "[[mixed-integer-nonlinear-programming]]"
+  - "[[transformer-weighted-a-star-trajectory-planning]]"
+  - "[[mixed-integer-linear-programming]]"
+  - "[[dynamic-programming-battery-station-insertion]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

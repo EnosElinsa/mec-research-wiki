@@ -6,6 +6,10 @@ related:
   - "[[chang-2026-data-offloading-energy-constraints]]"
   - "[[uav-data-collection]]"
   - "[[dynamic-programming-battery-station-insertion]]"
+  - "[[generalized-traveling-salesman-problem]]"
+  - "[[samir-2020-time-constrained-data-collection]]"
+  - "[[deadline-constrained-uav-data-collection]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

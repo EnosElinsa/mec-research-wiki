@@ -6,6 +6,8 @@ related:
   - "[[qi-2026-ocma-ddqn-data-collection]]"
   - "[[opportunistic-cooperative-multi-uav-ddqn]]"
   - "[[experience-value-circles]]"
+  - "[[attentive-memory-integrated-information-exchange]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

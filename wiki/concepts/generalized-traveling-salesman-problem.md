@@ -6,6 +6,10 @@ related:
   - "[[zhu-2023-aoi-transformer-trajectory]]"
   - "[[hovering-disk-data-collection]]"
   - "[[transformer-weighted-a-star-trajectory-planning]]"
+  - "[[deadline-constrained-uav-data-collection]]"
+  - "[[many-to-one-pickup-and-delivery]]"
+  - "[[samir-2020-time-constrained-data-collection]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
   - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
 created: 2026-07-14
 updated: 2026-07-14

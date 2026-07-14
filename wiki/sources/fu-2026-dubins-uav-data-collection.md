@@ -12,8 +12,9 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[heterogeneous-uav-fleet]]"
   - "[[ant-colony-optimization]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Dubins Path Planning of Heterogeneous UAV Collaborative Data Collection for IoT Network

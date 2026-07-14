@@ -10,8 +10,9 @@ related:
   - "[[energy-constrained-uav-data-collection-orienteering]]"
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-14
 ---
 
 # Data Collection Maximization in IoT-Sensor Networks via an Energy-Constrained UAV

@@ -29,8 +29,9 @@ related:
   - "[[zhao-2026-dt-ddqn-bisd-deployment]]"
   - "[[liao-2026-semantic-twinning-tracking]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Age of Information (AoI)

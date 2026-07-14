@@ -18,6 +18,8 @@ related:
   - "[[ppo]]"
   - "[[gae]]"
   - "[[jains-fairness-index]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[chi-harold-liu]]"

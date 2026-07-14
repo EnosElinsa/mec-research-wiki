@@ -6,6 +6,10 @@ related:
   - "[[chang-2026-data-offloading-energy-constraints]]"
   - "[[linear-programming]]"
   - "[[mixed-integer-nonlinear-programming]]"
+  - "[[transformer-weighted-a-star-trajectory-planning]]"
+  - "[[branch-reduce-and-bound]]"
+  - "[[opportunistic-cooperative-multi-uav-ddqn]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

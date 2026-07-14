@@ -7,6 +7,12 @@ related:
   - "[[uav-data-collection]]"
   - "[[age-of-information]]"
   - "[[branch-reduce-and-bound]]"
+  - "[[transformer-weighted-a-star-trajectory-planning]]"
+  - "[[generalized-traveling-salesman-problem]]"
+  - "[[chang-2026-data-offloading-energy-constraints]]"
+  - "[[many-to-one-pickup-and-delivery]]"
+  - "[[dynamic-programming-battery-station-insertion]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

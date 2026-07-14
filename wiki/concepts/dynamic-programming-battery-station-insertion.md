@@ -6,6 +6,10 @@ related:
   - "[[chang-2026-data-offloading-energy-constraints]]"
   - "[[battery-swapping-uav-mec]]"
   - "[[many-to-one-pickup-and-delivery]]"
+  - "[[samir-2020-time-constrained-data-collection]]"
+  - "[[deadline-constrained-uav-data-collection]]"
+  - "[[branch-reduce-and-bound]]"
+  - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---
