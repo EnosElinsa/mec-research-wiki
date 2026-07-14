@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-14] Synthesized mobility, asynchrony, and geometry in aerial coverage
+
+Added [[mobility-asynchrony-and-geometry-in-aerial-coverage]] as a reader path across [[hong-2026-beam-delay-alignment]], [[fang-2026-cellfree-uav-predictive-beamforming]], [[chen-2026-traffic-aware-asynchronous-control]], [[shi-2026-vhetnet-comp-coverage]], [[ren-2026-distributed-uav-los]], [[wang-2026-6dara-cellfree]], [[jiang-2026-ray-antenna-array]], and [[chai-2026-random-position-relay-deployment]]. The synthesis separates mobility-state prediction from traffic-conditioned control, scheduling asynchrony from propagation/multipath delay, and deployment/channel/association/CoMP geometry from antenna and array geometry. It also keeps ground-AP-to-UAV, aerial-AP-to-ground, relay, and UAV-swarm ISAC systems distinct and does not rank their incompatible coverage probability, outage, spectral-efficiency, sum-rate, throughput, transmission-time, or angular-coverage metrics.
+
+Twenty-one reciprocal frozen-core relationships were accepted with pair-specific evidence and caveats; three reserve links were rejected as redundant or generic. Against the frozen 286-member baseline, induced edges changed from **341 to 362 (+21)**, components from **47 to 45 (-2)**, and weak members from **87 to 85 (-2)**, with zero removed edges. [[two-regime-aerial-user-association]] increased from internal degree 1 to 5, and [[statistical-user-position-uav-deployment]] from 1 to 3. The reviewed ledger set contains 15 linked and 5 derived members, with no pending status among those 20 pages.
+
+Commit scope is limited to the new synthesis, reciprocal navigation on the eight source pages and fourteen accepted concept pages, and the durable index/overview/log reader paths. Scratch evidence, graph reports, and the coverage ledger remain outside version control; the unrelated existing [[drl-backbones-across-uav-mec-sources]] work is excluded.
+
 ## [2026-07-14] Curated beam-delay-aligned cell-free UAV coverage and vertical-network CoMP
 
 Added the final two uncurated source pages, eight reusable concepts, and three recurring-author entities:

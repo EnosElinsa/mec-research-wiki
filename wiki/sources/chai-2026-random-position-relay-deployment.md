@@ -15,6 +15,8 @@ related:
   - "[[physical-layer-security]]"
   - "[[noma]]"
   - "[[space-air-ground-integrated-network]]"
+  - "[[shi-2026-vhetnet-comp-coverage]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
   - "[[rong-chai]]"
   - "[[qianbin-chen]]"
 created: 2026-07-14

@@ -7,6 +7,9 @@ related:
   - "[[wideband-asynchronous-cell-free-massive-mimo]]"
   - "[[semi-synchronized-path-set]]"
   - "[[dual-purpose-time-delay-network]]"
+  - "[[cell-free-uav-predictive-beamforming]]"
+  - "[[fang-2026-cellfree-uav-predictive-beamforming]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

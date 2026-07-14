@@ -6,6 +6,9 @@ related:
   - "[[shi-2026-vhetnet-comp-coverage]]"
   - "[[stochastic-geometry-network-analysis]]"
   - "[[same-tier-three-site-comp]]"
+  - "[[coordinated-multipoint-transmission]]"
+  - "[[two-regime-aerial-user-association]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

@@ -17,7 +17,11 @@ related:
   - "[[air-ground-integrated-network]]"
   - "[[jin-2026-jitter-aware-uav-comp]]"
   - "[[ren-2026-distributed-uav-los]]"
+  - "[[hong-2026-beam-delay-alignment]]"
+  - "[[fang-2026-cellfree-uav-predictive-beamforming]]"
+  - "[[chai-2026-random-position-relay-deployment]]"
   - "[[bor-yaliniz-2016-3d-abs-placement]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

@@ -7,6 +7,10 @@ related:
   - "[[aerial-terrestrial-cell-free-massive-mimo]]"
   - "[[six-dimensional-aerial-rotatable-antenna-array]]"
   - "[[wang-2026-6dara-cellfree]]"
+  - "[[wideband-asynchronous-cell-free-massive-mimo]]"
+  - "[[cell-free-uav-predictive-beamforming]]"
+  - "[[hong-2026-beam-delay-alignment]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

@@ -9,6 +9,9 @@ related:
   - "[[movable-antenna]]"
   - "[[team-mmse-receive-combining]]"
   - "[[wang-2026-6dara-cellfree]]"
+  - "[[wideband-asynchronous-cell-free-massive-mimo]]"
+  - "[[cell-free-uav-predictive-beamforming]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

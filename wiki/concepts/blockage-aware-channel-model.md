@@ -14,6 +14,7 @@ related:
   - "[[yu-2026-ris-uav-iab-outage]]"
   - "[[zhang-2026-polarfix-uav-mmwave]]"
   - "[[ren-2026-distributed-uav-los]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-05-29
 updated: 2026-07-14
 ---

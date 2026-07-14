@@ -14,6 +14,7 @@ related:
   - "[[graph-neural-network]]"
   - "[[uav-trajectory-control]]"
   - "[[wang-2026-robust-multiuav-jtcra]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

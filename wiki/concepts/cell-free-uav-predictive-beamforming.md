@@ -2,7 +2,15 @@
 type: concept
 title: "Cell-Free UAV Predictive Beamforming"
 tags: [cell-free-massive-mimo, uav-tracking, predictive-beamforming, channel-prediction]
-related: ["[[fang-2026-cellfree-uav-predictive-beamforming]]", "[[covariance-intersection-state-fusion]]", "[[pcrb-guided-pilot-length-optimization]]"]
+related:
+  - "[[fang-2026-cellfree-uav-predictive-beamforming]]"
+  - "[[covariance-intersection-state-fusion]]"
+  - "[[pcrb-guided-pilot-length-optimization]]"
+  - "[[beam-delay-alignment-transmission]]"
+  - "[[six-dimensional-aerial-rotatable-antenna-array]]"
+  - "[[team-mmse-receive-combining]]"
+  - "[[statistical-user-position-uav-deployment]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

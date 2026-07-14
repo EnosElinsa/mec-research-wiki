@@ -6,6 +6,9 @@ related:
   - "[[shi-2026-vhetnet-comp-coverage]]"
   - "[[coordinated-multipoint-transmission]]"
   - "[[poisson-delaunay-comp-clustering]]"
+  - "[[two-regime-aerial-user-association]]"
+  - "[[wideband-asynchronous-cell-free-massive-mimo]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

@@ -15,6 +15,7 @@ related:
   - "[[autonomous-uav-swarms]]"
   - "[[jing-2024-isac-trajectory-localization]]"
   - "[[lu-2026-uav-swarm-two-level-ma]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

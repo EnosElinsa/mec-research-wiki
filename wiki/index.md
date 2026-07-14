@@ -1600,6 +1600,7 @@
 - [[blockchain-on-edge-trust-layer]] — Which layer the blockchain defends (consensus / aggregation / audit) across the 3 blockchain-on-edge sources.
 - [[safety-and-robustness-mechanisms-in-mec]] — Safe-RL / DRO / bounded-robust / structural-side-step mechanisms compared by threat, guarantee, and cost.
 - [[collaborative-beamforming-in-aerial-mec]] — Target / objectives / solver split across the 5 collaborative-beamforming sources.
+- [[mobility-asynchrony-and-geometry-in-aerial-coverage]] — Mobility prediction, timing/path-delay asynchrony, cooperation scope, and geometry mapped without conflating coverage metrics.
 - [[hardware-validation-and-sim-to-real-in-mec]] — What "hardware-validated" means across the few non-simulation sources, and the sim-to-real challenges they name.
 
 ## References

@@ -8,6 +8,7 @@ related:
   - "[[extremely-large-scale-mimo]]"
   - "[[mmwave-radar-sensing]]"
   - "[[two-level-movable-antenna]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

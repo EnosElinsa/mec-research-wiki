@@ -14,6 +14,7 @@ related:
   - "[[blockage-aware-channel-model]]"
   - "[[stochastic-geometry-network-analysis]]"
   - "[[device-association]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

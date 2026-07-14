@@ -46,6 +46,7 @@ related:
   - "[[zhang-2026-polarfix-uav-mmwave]]"
   - "[[ren-2026-distributed-uav-los]]"
   - "[[krishna-m-2026-multiuav-nbiot]]"
+  - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-05-31
 updated: 2026-07-14
 ---
