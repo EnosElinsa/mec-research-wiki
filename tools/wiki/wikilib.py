@@ -96,6 +96,69 @@ def page_slugs(root: str | None = None) -> set[str]:
     return {os.path.splitext(os.path.basename(p))[0] for p in md_files(root)}
 
 
+def wiki_page_index(root: str | None = None) -> dict[str, str]:
+    """Index wiki Markdown pages by their Obsidian-resolvable basename.
+
+    ``root`` is the wiki tree itself (default: :func:`wiki_dir`), rather than
+    the whole repository.  Obsidian basename resolution is ambiguous when two
+    pages share a name, so graph consumers fail closed instead of guessing.
+    """
+    wiki_root = os.path.abspath(root or wiki_dir())
+    index: dict[str, str] = {}
+    duplicates: set[str] = set()
+    pattern = os.path.join(wiki_root, "**", "*.md")
+    for path in sorted(glob.glob(pattern, recursive=True)):
+        slug = os.path.splitext(os.path.basename(path))[0]
+        if slug in index:
+            duplicates.add(slug)
+        else:
+            index[slug] = os.path.abspath(path)
+    if duplicates:
+        names = ", ".join(sorted(duplicates))
+        raise ValueError(f"duplicate wiki page basename(s): {names}")
+    return index
+
+
+def wikilink_basename(target: str) -> str:
+    """Return the basename used for unique wiki-page link resolution."""
+    normalized = target.strip().replace("\\", "/").rstrip("/")
+    basename = normalized.rsplit("/", 1)[-1]
+    if basename.lower().endswith(".md"):
+        basename = basename[:-3]
+    return basename
+
+
+def wiki_undirected_edges(
+    pages: dict[str, str] | None = None,
+    *,
+    excluded: set[str] | frozenset[str] | None = None,
+) -> set[tuple[str, str]]:
+    """Resolve wiki links as a simple undirected graph.
+
+    Only targets in the unique wiki-page index are resolvable.  Excluded
+    administrative pages, unresolved links, self-links, repeats, and reciprocal
+    mentions do not create graph edges.
+    """
+    pages = pages if pages is not None else wiki_page_index()
+    excluded_slugs = set(excluded or ())
+    edges: set[tuple[str, str]] = set()
+    for source, path in sorted(pages.items()):
+        if source in excluded_slugs:
+            continue
+        for target in iter_wikilinks(read_text(path)):
+            resolved = wikilink_basename(target)
+            if (
+                not resolved
+                or resolved == source
+                or resolved in excluded_slugs
+                or resolved not in pages
+            ):
+                continue
+            edge = tuple(sorted((source, resolved)))
+            edges.add(edge)
+    return edges
+
+
 def raw_folders() -> list[str]:
     raw = raw_sources_dir()
     return sorted(d for d in os.listdir(raw) if os.path.isdir(os.path.join(raw, d)))
@@ -103,15 +166,91 @@ def raw_folders() -> list[str]:
 
 # --- wikilink parsing (Obsidian-faithful) ----------------------------------
 
-_CODE_SPAN = re.compile(r"`[^`]*`")
 _LINK = re.compile(r"\[\[([^\]]+)\]\]")
+_FENCE_OPEN = re.compile(r"^ {0,3}(`{3,}|~{3,})([^\r\n]*)$")
+
+
+def _line_ending(line: str) -> str:
+    if line.endswith("\r\n"):
+        return "\r\n"
+    if line.endswith("\n"):
+        return "\n"
+    if line.endswith("\r"):
+        return "\r"
+    return ""
+
+
+def _strip_fenced_code(text: str) -> str:
+    """Remove CommonMark-style backtick and tilde fenced code blocks."""
+    rendered: list[str] = []
+    fence_character: str | None = None
+    fence_length = 0
+    for line in text.splitlines(keepends=True):
+        content = line.rstrip("\r\n")
+        if fence_character is None:
+            opening = _FENCE_OPEN.match(content)
+            if opening:
+                marker, info = opening.groups()
+                # CommonMark forbids backticks in a backtick fence's info text.
+                if marker[0] != "`" or "`" not in info:
+                    fence_character = marker[0]
+                    fence_length = len(marker)
+                    rendered.append(_line_ending(line))
+                    continue
+            rendered.append(line)
+            continue
+
+        closing = re.fullmatch(
+            rf" {{0,3}}{re.escape(fence_character)}{{{fence_length},}}[ \t]*",
+            content,
+        )
+        rendered.append(_line_ending(line))
+        if closing:
+            fence_character = None
+            fence_length = 0
+    return "".join(rendered)
+
+
+def _strip_inline_code(text: str) -> str:
+    """Remove Markdown code spans delimited by equal backtick runs."""
+    rendered: list[str] = []
+    cursor = 0
+    while cursor < len(text):
+        if text[cursor] != "`":
+            rendered.append(text[cursor])
+            cursor += 1
+            continue
+        delimiter_end = cursor
+        while delimiter_end < len(text) and text[delimiter_end] == "`":
+            delimiter_end += 1
+        delimiter = text[cursor:delimiter_end]
+        closing = -1
+        search = delimiter_end
+        while search < len(text):
+            run_start = text.find("`", search)
+            if run_start < 0:
+                break
+            run_end = run_start
+            while run_end < len(text) and text[run_end] == "`":
+                run_end += 1
+            if run_end - run_start == len(delimiter):
+                closing = run_start
+                break
+            search = run_end
+        if closing < 0:
+            rendered.append(delimiter)
+            cursor = delimiter_end
+            continue
+        cursor = closing + len(delimiter)
+    return "".join(rendered)
 
 
 def iter_wikilinks(text: str):
     """Yield resolved link targets from ``text``, mirroring Obsidian:
-    inline code spans are stripped, ``\\|`` table-escapes handled, and the
-    alias / heading suffix removed so only the target basename remains."""
-    stripped = _CODE_SPAN.sub("", text)
+    fenced code blocks and inline code spans are stripped, ``\\|`` table-escapes
+    handled, and the alias / heading suffix removed so only the target basename
+    remains."""
+    stripped = _strip_inline_code(_strip_fenced_code(text))
     for raw in _LINK.findall(stripped):
         raw = raw.replace("\\|", "|")
         target = raw.split("|")[0].split("#")[0].strip().rstrip("\\").strip()

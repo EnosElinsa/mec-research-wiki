@@ -26,6 +26,7 @@ session.
 |---|---|---|
 | `wikilib.py` | Shared library: repo paths, md enumeration, Obsidian-faithful wikilink parsing, raw/sources reference parsing (`# REFERENCES` block extraction, IEEE entry parsing, title normalization, stable `surname-year-slug` keys, venue allow-list classifier, folder→curated-slug map). Imported by the others; not run directly. | — |
 | `linkcheck.py` | Wikilink integrity (zero-dangling check), Obsidian resolution rules. Exit 1 if any dangling link. | `--orphans`, `--json` |
+| `graph_audit.py` | Freeze an exact-created-date wiki cohort, audit its simple undirected induced graph, create/refresh an editorial coverage ledger, and compare later graph state without admitting new pages into the cohort. Exit 0 for every structurally valid snapshot/comparison (including regressions); exit 2 for malformed reports, ambiguous basenames, missing frozen members, or invalid arguments. | `snapshot --created --label --weak-degree --exclude --observed-ui-pages --observed-ui-cohesion --json --ledger`; `compare --baseline --json --ledger` |
 | `curation_status.py` | Reconcile `raw/sources/` vs curated pages by raw-artifact path with normalized-title and conservative repeated-character OCR fallbacks for stale paths; list uncurated folders; detect duplicate MinerU ingests (identical/near) across both `full.md` and title-named parses. Exit 1 if genuinely-new papers remain. | `--dupes`, `--near-ratio`, `--json` |
 | `make_batches.py` | Split the genuinely-new papers (or an explicit list) into context-window-sized batches for a multi-invocation run; optionally print only one numbered allowlist while preserving the complete JSON plan. | `--size` (required), `--input`, `--batch`, `--json` |
 | `corpus_counts.py` | Exact page counts per wiki type + `raw/sources` count + log.md size, for reconciling `overview.md`/`index.md`; can refresh the three inventory counts in the overview Snapshot. | `--json`, `--update-overview` |
@@ -40,6 +41,49 @@ session.
 
 `--json PATH` writes the machine-readable report; a relative PATH lands in
 `.curation-out/` (the scratch dir) automatically.
+
+## Frozen-cohort graph audits
+
+`graph_audit.py snapshot` resolves only Markdown pages under `wiki/`, requires
+unique page basenames, removes the administrative `index`, `log`, and
+`overview` pages (plus any repeated `--exclude SLUG` values), and collapses
+repeated, reciprocal, and self links into a simple undirected graph. The report
+also ignores wikilink examples inside backtick or tilde fenced code blocks and
+single- or multi-backtick inline code. A snapshot stores `report_type:
+snapshot`, `generated_at_utc`, `label`, `graph_semantics`, parameters, and the
+separate `external_observation`. Its cohort contains `selector`, sorted
+`members`, directory-derived `member_types`, `member_count`,
+`member_hash_algorithm: sha256-canonical-json`, and `member_hash`. Graph metrics
+are `induced_edge_count`, `possible_edge_count`, `local_cohesion`,
+`component_count`, `largest_component_size`, `isolate_count`,
+`weak_member_count`, and `bridge_edge_count`; graph details contain internal and
+external degrees, canonical induced/bridge edges, deterministic components,
+isolates, and `weak_members` rows whose degree field is `internal_degree`.
+
+Local cohesion is strictly the frozen cohort's induced density:
+`induced_edge_count / (member_count * (member_count - 1) / 2)`. Optional LLM Wiki UI page and
+cohesion readings are stored as `external_observation` with source `LLM Wiki
+UI`; they are never inputs to this formula. A `report_type: comparison` report
+validates the baseline, reuses its immutable member array, exclusions, and weak
+threshold, and stores the current graph plus baseline metrics and a nested
+`comparison` object containing metric/degree deltas and added/removed edges.
+Pages created after the snapshot, including pages with the same `created` date,
+remain outside induced metrics (a link to one can only affect a frozen member's
+external degree).
+
+Relative snapshot/comparison output and snapshot-ledger paths are written under
+`.curation-out/`. For `compare`, relative `--baseline` and `--ledger` inputs are
+resolved from the repository root; the refreshed ledger is written back to the
+same path. A `report_type: coverage-ledger` file stores `baseline_label`,
+`baseline_member_hash`, and sorted `entries`. Each entry preserves its editorial
+`theme`, `status`, `evidence_paths`, `candidate_relationships`, `accepted_links`,
+and `deferral_reason` while refresh updates `post_batch_component` and
+`post_batch_internal_degree`.
+
+```sh
+python tools/wiki/graph_audit.py snapshot --created 2026-07-14 --label "Research Log core" --weak-degree 1 --observed-ui-pages 323 --observed-ui-cohesion 0.03 --json research-log-2026-07-14-baseline.json --ledger research-log-2026-07-14-ledger.json
+python tools/wiki/graph_audit.py compare --baseline .curation-out/research-log-2026-07-14-baseline.json --json research-log-2026-07-14-after.json --ledger .curation-out/research-log-2026-07-14-ledger.json
+```
 
 ## Typical flows
 
