@@ -7,8 +7,11 @@ related:
   - "[[samir-2021-uav-cell-free-coverage]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
   - "[[ebrahimi-not-in-parse-autonomous-uav-localization-rl]]"
+  - "[[ali-ghrayeb]]"
+  - "[[moataz-samir]]"
+  - "[[sanaa-sharafeddine]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Chadi Assi
@@ -21,3 +24,11 @@ Co-authored 4 sources in this wiki:
 - [[samir-2021-uav-cell-free-coverage]] - DRL-based vehicular coverage.
 - [[samir-2022-aoi-altitude-scheduling]] - AoI-aware UAV altitude control.
 - [[ebrahimi-not-in-parse-autonomous-uav-localization-rl]] - RSS-based object localization.
+
+## Verified coauthor links
+
+The [[samir-2020-time-constrained-data-collection]] byline directly establishes coauthorship with:
+
+- [[ali-ghrayeb]]
+- [[moataz-samir]]
+- [[sanaa-sharafeddine]]

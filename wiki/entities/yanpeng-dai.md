@@ -6,8 +6,10 @@ related:
   - "[[lyu-2026-situation-aware-uav-isac]]"
   - "[[dai-2024-graph-rm-survey-optimization]]"
   - "[[dai-2024-graph-rm-survey-learning]]"
+  - "[[ling-lyu]]"
+  - "[[nan-cheng]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Yanpeng Dai
@@ -23,3 +25,10 @@ Co-authored three sources in this wiki:
 ## Contributions to this wiki
 
 - Bridges graph-based resource-management surveys with deterministic sensing, communication, and control design for industrial UAV links.
+
+## Verified coauthor links
+
+The [[lyu-2026-situation-aware-uav-isac]] byline directly establishes coauthorship with:
+
+- [[ling-lyu]]
+- [[nan-cheng]]

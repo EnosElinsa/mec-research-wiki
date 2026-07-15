@@ -5,8 +5,9 @@ tags: [author, researcher, northwestern-polytechnical-university, uav-communicat
 related:
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
+  - "[[ruonan-zhang]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Daosen Zhai
@@ -21,3 +22,7 @@ Authored corpus sources:
 ## Contributions to this wiki
 
 Connects robust physical-layer aerial relaying with learning-based semantic edge communication and UAV trajectory control.
+
+## Verified coauthor links
+
+The [[li-2026-full-duplex-noma-uav-relay]] byline directly establishes coauthorship with [[ruonan-zhang]].

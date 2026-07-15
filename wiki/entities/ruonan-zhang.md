@@ -5,8 +5,9 @@ tags: [author, researcher, northwestern-polytechnical-university, wireless-chann
 related:
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
+  - "[[daosen-zhai]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Ruonan Zhang
@@ -21,3 +22,7 @@ Authored corpus sources:
 ## Contributions to this wiki
 
 Links aerial-channel and network-architecture expertise to robust relaying and semantic edge optimization.
+
+## Verified coauthor links
+
+The [[li-2026-full-duplex-noma-uav-relay]] byline directly establishes coauthorship with [[daosen-zhai]].

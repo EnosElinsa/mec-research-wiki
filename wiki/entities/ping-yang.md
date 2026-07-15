@@ -5,8 +5,11 @@ tags: [author, researcher, isac, rocket-force-university]
 related:
   - "[[yan-2026-uav-trajectory-monitoring]]"
   - "[[yan-not-in-parse-multibs-isac-uav-trajectory]]"
+  - "[[feifei-gao]]"
+  - "[[hongliang-luo]]"
+  - "[[shaoqiang-yan]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Ping Yang
@@ -19,3 +22,11 @@ Co-authored 2 sources in this wiki:
 - [[yan-not-in-parse-multibs-isac-uav-trajectory]] - asynchronous multi-BS UAV trajectory monitoring.
 
 Because the name is common, future records should join this entity only with matching affiliation, email, biography, or the Yan-Luo-Gao coauthor network.
+
+## Verified coauthor links
+
+The [[yan-2026-uav-trajectory-monitoring]] byline and Rocket Force University biography directly establish coauthorship with:
+
+- [[feifei-gao]]
+- [[hongliang-luo]]
+- [[shaoqiang-yan]]

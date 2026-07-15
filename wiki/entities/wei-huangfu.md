@@ -5,8 +5,10 @@ tags: [author, researcher, ustb, wireless-networks]
 related:
   - "[[li-2026-credit-aware-uav-irs-secrecy]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[jiahao-huo]]"
+  - "[[xulong-li]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Wei Huangfu
@@ -21,3 +23,10 @@ Co-authored two sources in this wiki:
 ## Contributions to this wiki
 
 Links aerial ISAC control with cooperative secure UAV-IRS optimization.
+
+## Verified coauthor links
+
+The [[li-2026-credit-aware-uav-irs-secrecy]] byline directly establishes coauthorship with:
+
+- [[jiahao-huo]]
+- [[xulong-li]]

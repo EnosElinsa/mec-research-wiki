@@ -6,8 +6,11 @@ related:
   - "[[yan-2026-uav-trajectory-monitoring]]"
   - "[[yan-not-in-parse-multibs-isac-uav-trajectory]]"
   - "[[zhao-2025-networked-isac-uav-handover]]"
+  - "[[feifei-gao]]"
+  - "[[ping-yang]]"
+  - "[[shaoqiang-yan]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Hongliang Luo
@@ -19,3 +22,11 @@ Co-authored 3 sources in this wiki:
 - [[yan-2026-uav-trajectory-monitoring]] - single-BS motion estimation, association, and tracking.
 - [[yan-not-in-parse-multibs-isac-uav-trajectory]] - asynchronous multi-BS feature fusion.
 - [[zhao-2025-networked-isac-uav-handover]] - networked sensing coverage and UAV tracking handover.
+
+## Verified coauthor links
+
+The [[yan-2026-uav-trajectory-monitoring]] byline directly establishes coauthorship with:
+
+- [[feifei-gao]]
+- [[ping-yang]]
+- [[shaoqiang-yan]]

@@ -5,8 +5,10 @@ tags: [author, researcher, nanchang-university, wireless-resource-management]
 related:
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
+  - "[[dingcheng-yang]]"
+  - "[[yu-xu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Lin Xiao
@@ -21,3 +23,10 @@ Co-authored two sources in this wiki:
 ## Contributions to this wiki
 
 Connects UAV relay/resource optimization to computation-and-communication design for aerial MEC.
+
+## Verified coauthor links
+
+The [[xiao-2020-secrecy-energy-efficiency-relaying]] byline directly establishes coauthorship with:
+
+- [[dingcheng-yang]]
+- [[yu-xu]]

@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-15] Connected parse-verified coauthor clusters
+
+Connected 23 degree-one author entities through seven exact shared bylines: [[samir-2020-time-constrained-data-collection]], [[zhan-2026-star-ris-aerial-monitoring]], [[yan-2026-uav-trajectory-monitoring]], [[xiao-2020-secrecy-energy-efficiency-relaying]], [[lyu-2026-situation-aware-uav-isac]], [[li-2026-credit-aware-uav-irs-secrecy]], and [[li-2026-full-duplex-noma-uav-relay]]. Each entity page retains its existing source roster and prose, adds reciprocal links only to the selected coauthors named by the shared parse, and records that source as the roster's direct evidence. The raw bylines and available biographies also preserve the existing identity guards, including the `Chadi M. Assi` normalization and Ping Yang's Rocket Force University affiliation.
+
+The evidence review accepted exactly **28** within-cluster coauthor pairs and rejected every cross-cluster pair and all out-of-scope byline neighbors from this cohort. No analytical page was warranted for a literal author-roster fact, so `wiki/index.md` and `wiki/overview.md` remain unchanged. All 23 reviewed ledger rows are `linked` with nonempty evidence paths and exact accepted links; the evidence matrix, comparison reports, and ledger remain scratch artifacts.
+
+Against the preceding residual state, the frozen 286-member graph changed from **440 to 468 edges (+28)** and from **75 to 52 weak members (-23)**, while components remained **31** and removed edges remained **0**. Cumulatively from the 341-edge baseline, the graph now has **468 edges (+127)**, **31 components (-16)**, and **52 weak members (-35)**. The four-person groups rose from degree 1 to 4, the three-person groups to 3, and the two-person group to 2. Repository validation reports all **612** raw folders curated, no dangling links, no process-reference leaks, complete **1,512/1,512** index coverage, zero frontmatter errors, zero entity-roster overclaims, all 20 wiki-tool tests passing, and a clean whitespace check.
+
 ## [2026-07-14] Connected aerial observation control roles
 
 Added [[aerial-observation-control-covertness-surveillance-and-monitoring]] as a reader path across the seven primary covertness/surveillance/monitoring sources, the two supporting trajectory-monitoring and maritime-jamming sources, and the associated observation mechanisms. The synthesis identifies observer, observed party, controller, desired outcome, detector, metric, horizon, and evidence scope before comparing activity hiding, authorized interception, camera observation, and echo-based tracking.

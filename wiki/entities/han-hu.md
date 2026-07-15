@@ -6,8 +6,11 @@ related:
   - "[[zhan-2020-completion-time-energy-uav-mec]]"
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[zhan-2026-star-ris-aerial-monitoring]]"
+  - "[[cheng-zhan]]"
+  - "[[kaifeng-song]]"
+  - "[[rongfei-fan]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Han Hu
@@ -21,3 +24,11 @@ Professor at Beijing Institute of Technology. Matching USTC degrees, BIT appoint
 ## Contributions to this wiki
 
 Connects multimedia networking and edge intelligence across UAV-MEC and aerial-monitoring systems.
+
+## Verified coauthor links
+
+The [[zhan-2026-star-ris-aerial-monitoring]] byline directly establishes coauthorship with:
+
+- [[cheng-zhan]]
+- [[kaifeng-song]]
+- [[rongfei-fan]]

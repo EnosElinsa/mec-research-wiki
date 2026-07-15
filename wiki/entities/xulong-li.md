@@ -5,8 +5,10 @@ tags: [author, researcher, ustb, multi-agent-reinforcement-learning]
 related:
   - "[[li-2026-credit-aware-uav-irs-secrecy]]"
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
+  - "[[jiahao-huo]]"
+  - "[[wei-huangfu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Xulong Li
@@ -21,3 +23,10 @@ Co-authored two sources in this wiki:
 ## Contributions to this wiki
 
 Connects multi-agent credit assignment and constrained cooperation to aerial ISAC control.
+
+## Verified coauthor links
+
+The [[li-2026-credit-aware-uav-irs-secrecy]] byline directly establishes coauthorship with:
+
+- [[jiahao-huo]]
+- [[wei-huangfu]]

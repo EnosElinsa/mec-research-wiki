@@ -9,8 +9,10 @@ related:
   - "[[zhou-2021-delay-sagin-task-scheduling]]"
   - "[[dai-2024-graph-rm-survey-optimization]]"
   - "[[dai-2024-graph-rm-survey-learning]]"
+  - "[[ling-lyu]]"
+  - "[[yanpeng-dai]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Nan Cheng
@@ -29,3 +31,10 @@ Co-authored six affiliation-confirmed sources in this wiki:
 ## Contributions to this wiki
 
 - Connects early SAGIN and UAV-MEC resource management to graph-based wireless optimization and UAV-assisted industrial sensing/control.
+
+## Verified coauthor links
+
+The [[lyu-2026-situation-aware-uav-isac]] byline directly establishes coauthorship with:
+
+- [[ling-lyu]]
+- [[yanpeng-dai]]

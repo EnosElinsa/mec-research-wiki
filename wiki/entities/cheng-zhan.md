@@ -7,8 +7,11 @@ related:
   - "[[zhan-2020-completion-time-energy-uav-mec]]"
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[zhan-2026-star-ris-aerial-monitoring]]"
+  - "[[han-hu]]"
+  - "[[kaifeng-song]]"
+  - "[[rongfei-fan]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Cheng Zhan
@@ -23,3 +26,11 @@ Professor at Southwest University. Matching USTC degrees, Southwest University a
 ## Contributions to this wiki
 
 Connects classical UAV data collection and MEC optimization to learned placement/offloading and stochastic aerial monitoring.
+
+## Verified coauthor links
+
+The [[zhan-2026-star-ris-aerial-monitoring]] byline directly establishes coauthorship with:
+
+- [[han-hu]]
+- [[kaifeng-song]]
+- [[rongfei-fan]]

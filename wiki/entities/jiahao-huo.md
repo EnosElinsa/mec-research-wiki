@@ -5,8 +5,10 @@ tags: [author, researcher, ustb, uav-secure-communication]
 related:
   - "[[li-2026-credit-aware-uav-irs-secrecy]]"
   - "[[zhang-2023-three-tier-satellite-offloading]]"
+  - "[[wei-huangfu]]"
+  - "[[xulong-li]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Jiahao Huo
@@ -21,3 +23,10 @@ Co-authored two sources in this wiki:
 ## Contributions to this wiki
 
 Connects secure UAV communication with satellite-edge computation offloading.
+
+## Verified coauthor links
+
+The [[li-2026-credit-aware-uav-irs-secrecy]] byline directly establishes coauthorship with:
+
+- [[wei-huangfu]]
+- [[xulong-li]]

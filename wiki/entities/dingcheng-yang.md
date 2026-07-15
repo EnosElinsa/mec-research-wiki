@@ -8,8 +8,10 @@ related:
   - "[[xu-2021-secure-uav-mec-dual-uav]]"
   - "[[gao-2024-d3qn-uav-mec-mobile-gt]]"
   - "[[cao-2026-radio-map-cargo-pickup]]"
+  - "[[lin-xiao]]"
+  - "[[yu-xu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-15
 ---
 
 # Dingcheng Yang
@@ -27,3 +29,10 @@ Co-authored five sources in this wiki:
 ## Contributions to this wiki
 
 Connects secure aerial relaying, MEC resource allocation, DRL trajectory control, and radio-map-aided logistics.
+
+## Verified coauthor links
+
+The [[xiao-2020-secrecy-energy-efficiency-relaying]] byline directly establishes coauthorship with:
+
+- [[lin-xiao]]
+- [[yu-xu]]
