@@ -5,8 +5,9 @@ tags: [author, researcher, wireless-networks, network-slicing]
 related:
   - "[[cheng-2025-dos-satellite-edge-computing]]"
   - "[[wei-2026-runs-uav-network-slicing]]"
+  - "[[shuang-qin]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Gang Feng
@@ -21,3 +22,7 @@ Co-authored 2 sources in this wiki:
 ## Contributions to this wiki
 
 - Connects the corpus's satellite-edge resource-management line to robust [[network-slicing]] and lightweight structured optimization for UAV-assisted wireless networks.
+
+## Verified coauthor links
+
+The [[wei-2026-runs-uav-network-slicing]] byline directly establishes coauthorship with [[shuang-qin]].

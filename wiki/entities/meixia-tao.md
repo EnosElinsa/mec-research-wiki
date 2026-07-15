@@ -5,8 +5,10 @@ tags: [author, researcher, ieee-fellow, shanghai-jiao-tong-university, edge-comp
 related:
   - "[[li-2021-robust-ris-uav-secrecy]]"
   - "[[xu-2021-secure-uav-mec-dual-uav]]"
+  - "[[marco-di-renzo]]"
+  - "[[xiaojun-yuan]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Meixia Tao
@@ -21,3 +23,10 @@ Authored corpus sources:
 ## Contributions to this wiki
 
 Links physical-layer RIS secrecy with secure aerial edge computing and communication-resource optimization.
+
+## Verified coauthor links
+
+The [[li-2021-robust-ris-uav-secrecy]] byline directly establishes coauthorship with:
+
+- [[marco-di-renzo]]
+- [[xiaojun-yuan]]

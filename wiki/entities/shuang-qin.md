@@ -5,8 +5,9 @@ tags: [author, researcher, wireless-networks, green-communications]
 related:
   - "[[cheng-2025-dos-satellite-edge-computing]]"
   - "[[wei-2026-runs-uav-network-slicing]]"
+  - "[[gang-feng]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Shuang Qin
@@ -21,3 +22,7 @@ Co-authored 2 sources in this wiki:
 ## Contributions to this wiki
 
 - Links energy-aware non-terrestrial resource management with [[robust-uav-network-slicing]] and uncertainty-aware wireless optimization.
+
+## Verified coauthor links
+
+The [[wei-2026-runs-uav-network-slicing]] byline directly establishes coauthorship with [[gang-feng]].

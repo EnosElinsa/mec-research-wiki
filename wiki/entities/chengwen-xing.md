@@ -6,8 +6,9 @@ related:
   - "[[wang-2026-covert-cognitive-radio]]"
   - "[[feng-2026-secure-short-packet-noma-relay]]"
   - "[[zhang-2025-gan-td3-isac-active-ris]]"
+  - "[[huabing-lu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Chengwen Xing
@@ -23,3 +24,7 @@ Co-authored three sources in this wiki:
 ## Contributions to this wiki
 
 Links finite-blocklength physical-layer security to generative-learning-assisted RIS-ISAC control.
+
+## Verified coauthor links
+
+The [[feng-2026-secure-short-packet-noma-relay]] byline directly establishes coauthorship with [[huabing-lu]].

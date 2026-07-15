@@ -6,8 +6,10 @@ related:
   - "[[hong-2026-beam-delay-alignment]]"
   - "[[qi-2026-ocma-ddqn-data-collection]]"
   - "[[wang-2026-fd-covert-isac]]"
+  - "[[dongming-wang]]"
+  - "[[xiaohu-you]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Chunguo Li
@@ -23,3 +25,10 @@ Co-authored 3 sources in this wiki:
 ## Contributions to this wiki
 
 Connects wideband cell-free transmission to robust aerial data collection and covert ISAC, spanning distributed MIMO, trajectory learning, and physical-layer security.
+
+## Verified coauthor links
+
+The [[hong-2026-beam-delay-alignment]] byline directly establishes coauthorship with:
+
+- [[dongming-wang]]
+- [[xiaohu-you]]

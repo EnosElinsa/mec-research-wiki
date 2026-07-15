@@ -5,8 +5,9 @@ tags: [author, researcher, intelligent-transportation, control]
 related:
   - "[[vitale-2026-density-aware-4d-trajectory]]"
   - "[[theocharides-2026-uav-traffic-estimation]]"
+  - "[[charalambos-menelaou]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Stelios Timotheou
@@ -21,3 +22,7 @@ Co-authored 2 sources in this wiki:
 ## Contributions to this wiki
 
 - Bridges urban air-traffic planning and road-network estimation through model-based control, uncertainty handling, and real-time optimization.
+
+## Verified coauthor links
+
+The [[theocharides-2026-uav-traffic-estimation]] byline directly establishes coauthorship with [[charalambos-menelaou]].

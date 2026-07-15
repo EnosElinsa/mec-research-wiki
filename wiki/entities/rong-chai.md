@@ -6,8 +6,9 @@ related:
   - "[[chai-2026-random-position-relay-deployment]]"
   - "[[diallo-2026-system-cost-uav-leo-offloading]]"
   - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
+  - "[[qianbin-chen]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Rong Chai
@@ -21,3 +22,7 @@ Professor at Chongqing University of Posts and Telecommunications. Repeated Qian
 ## Contributions to this wiki
 
 Connects communication-only satellite relaying with satellite edge offloading and secure ISAC content delivery.
+
+## Verified coauthor links
+
+The [[chai-2026-random-position-relay-deployment]] byline directly establishes coauthorship with [[qianbin-chen]].

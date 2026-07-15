@@ -5,8 +5,10 @@ tags: [author, researcher, ieee-fellow, ris, wireless-communications]
 related:
   - "[[li-2021-robust-ris-uav-secrecy]]"
   - "[[feng-2026-aerial-ris-secure]]"
+  - "[[meixia-tao]]"
+  - "[[xiaojun-yuan]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Marco Di Renzo
@@ -21,3 +23,10 @@ Authored corpus sources:
 ## Contributions to this wiki
 
 Connects classical robust RIS beamforming and trajectory optimization to learned aerial-RIS control under phase, channel, and positioning errors.
+
+## Verified coauthor links
+
+The [[li-2021-robust-ris-uav-secrecy]] byline directly establishes coauthorship with:
+
+- [[meixia-tao]]
+- [[xiaojun-yuan]]

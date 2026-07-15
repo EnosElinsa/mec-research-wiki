@@ -7,8 +7,9 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[xu-2021-secure-uav-mec-dual-uav]]"
   - "[[cao-2026-radio-map-cargo-pickup]]"
+  - "[[dingcheng-yang]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Tiankui Zhang
@@ -23,3 +24,7 @@ Professor at Beijing University of Posts and Telecommunications. Matching full n
 ## Contributions to this wiki
 
 Connects classical UAV-MEC optimization to learned safe trajectory control and radio-map-aided logistics.
+
+## Verified coauthor links
+
+The [[cao-2026-radio-map-cargo-pickup]] byline directly establishes coauthorship with [[dingcheng-yang]].

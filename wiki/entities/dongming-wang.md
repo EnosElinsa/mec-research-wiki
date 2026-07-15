@@ -6,8 +6,10 @@ related:
   - "[[hong-2026-beam-delay-alignment]]"
   - "[[tang-2025-cooperative-isac-lae]]"
   - "[[wang-2026-6dara-cellfree]]"
+  - "[[chunguo-li]]"
+  - "[[xiaohu-you]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Dongming Wang
@@ -23,3 +25,10 @@ Co-authored 3 sources in this wiki:
 ## Contributions to this wiki
 
 Connects terrestrial distributed-MIMO service for UAV users with cooperative low-altitude ISAC and aerial-array cell-free control.
+
+## Verified coauthor links
+
+The [[hong-2026-beam-delay-alignment]] byline directly establishes coauthorship with:
+
+- [[chunguo-li]]
+- [[xiaohu-you]]

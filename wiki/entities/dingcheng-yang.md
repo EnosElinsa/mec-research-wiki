@@ -10,8 +10,9 @@ related:
   - "[[cao-2026-radio-map-cargo-pickup]]"
   - "[[lin-xiao]]"
   - "[[yu-xu]]"
+  - "[[tiankui-zhang]]"
 created: 2026-07-14
-updated: 2026-07-15
+updated: 2026-07-16
 ---
 
 # Dingcheng Yang
@@ -36,3 +37,5 @@ The [[xiao-2020-secrecy-energy-efficiency-relaying]] byline directly establishes
 
 - [[lin-xiao]]
 - [[yu-xu]]
+
+The [[cao-2026-radio-map-cargo-pickup]] byline directly establishes coauthorship with [[tiankui-zhang]].

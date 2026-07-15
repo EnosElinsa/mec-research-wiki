@@ -7,8 +7,9 @@ related:
   - "[[diallo-2026-system-cost-uav-leo-offloading]]"
   - "[[bayessa-not-in-parse-uav-isac-secure-content-hdrl]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
+  - "[[rong-chai]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Qianbin Chen
@@ -23,3 +24,7 @@ Professor at Chongqing University of Posts and Telecommunications. Matching affi
 ## Contributions to this wiki
 
 Connects satellite-UAV communication, secure ISAC services, and multi-UAV edge-computing orchestration.
+
+## Verified coauthor links
+
+The [[chai-2026-random-position-relay-deployment]] byline directly establishes coauthorship with [[rong-chai]].
