@@ -1,5 +1,15 @@
 # Research Log
 
+## [2026-07-16] Closed the final Research Log pending tail
+
+Reviewed the final 12 pending rows: six residual mechanism concepts, five author entities, and the component-3 `suzhi-bi` identity row. All 12 exact source-recorded Raw parses were live, and all 32 cited Raw locators were reopened as text-bearing lines.
+
+The selected 12-row induced graph has no internal edge. Its 20 frozen boundary edges terminate at already-linked or derived pages, or are endpoint-frontmatter-only; nine have reciprocal body prose, six are one-way body links, and five are frontmatter-only at the endpoints. The accepted pending-to-pending union is therefore empty, so no row was forced to `linked` through an already resolved neighbor.
+
+All 12 rows moved from `pending` to `deferred` with empty `candidate_relationships` and `accepted_links`, canonical evidence, exact row-specific Raw paths, and concrete resolved-neighbor/body-direction reasons. Linked rows remain **249**, pending rows fell **12 -> 0**, deferred rows increased **13 -> 25**, and derived rows remain 12. The 286-row coverage ledger now has no pending entry.
+
+The frozen 286-member graph remains at **480 edges**, **30 components**, and **42 weak members**; the pre/post graph objects are identical and batch-specific added/removed edge counts are zero. Every wiki page, `wiki/index.md`, `wiki/overview.md`, and the user-owned DRL synthesis edit remain unchanged. The canonical evidence, after-comparison report, and refreshed zero-pending ledger remain ignored scratch artifacts.
+
 ## [2026-07-16] Resolved the remaining component-1 RIS security and relay stars
 
 Reviewed 20 pending component-1 pages across secure short-packet NOMA relaying, robust RIS/UAV secrecy, learned aerial-RIS control, secrecy-energy-efficient collect/store/forward relaying, passive 6D UAV-RIS geometry, and four explicit deferral cases. Seven source-star Raw parses plus the exact full-duplex-relay and predictive-beamforming parses used by the deferred rows were live; all 71 cited Raw locators were reopened as text-bearing lines.
