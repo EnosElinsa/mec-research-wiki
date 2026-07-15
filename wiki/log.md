@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-16] Validated existing aerial energy-replenishment edges
+
+Reviewed 20 pending frozen pages as one evidence-only aerial energy-replenishment cohort: RF WPT/WPCN and harvest-store causality around [[xie-2021-uav-wpt-tutorial]], [[lin-2026-uav-wpucn-time-allocation]], and [[wang-2018-uav-powered-d2d]]; laser-powered multi-UAV QoE allocation around [[chen-2026-laser-powered-multiuav-qoe]]; and optical SLIPT over a ground-to-UAV FSO link around [[kamatchi-2025-slipt-uav-fso]]. All five current source-recorded parse paths were live, including the Kamatchi page's unlabeled Raw-artifact parse bullet.
+
+The read-only evidence review accepted **21** already-present within-scope frozen edges. Each accepted relation is a same-parse source/mechanism link, a same-parse mechanism/mechanism link with pair-specific body rationale, the exact Haichao Wang byline/biography identity, or Lin's explicit citation and WPUCN specialization of the Xie tutorial. Cross-modality source pairs, generic energy-harvesting taxonomy links, a cumulative energy-causality link to the SLIPT model, and three raw-supported current edges whose endpoint bodies lack pair-specific rationale remained outside the accepted set. No wiki edge or analytical page was added, so the selected pages, `wiki/index.md`, and `wiki/overview.md` remain unchanged.
+
+All 20 reviewed ledger rows moved from `pending` to `linked`, with nonempty current-parse evidence paths and accepted existing neighbors; none was deferred, leaving **143** pending rows for later residual loops. The frozen 286-member graph remained at **480 edges**, **30 components**, and **42 weak members**, with zero added or removed edge, so the edge, component, and weak-member thresholds continue to pass. The numbered evidence matrix, after-comparison report, and refreshed ledger remain scratch artifacts.
+
 ## [2026-07-16] Connected current-parse coauthor groups
 
 Connected 17 frozen author entities through eight exact shared bylines: [[chai-2026-random-position-relay-deployment]], [[theocharides-2026-uav-traffic-estimation]], [[hong-2026-beam-delay-alignment]], [[feng-2026-secure-short-packet-noma-relay]], [[li-2021-robust-ris-uav-secrecy]], [[zhong-2026-hierarchical-ota-fl]], [[wei-2026-runs-uav-network-slicing]], and [[cao-2026-radio-map-cargo-pickup]]. Every accepted relation is present in a current parse at the exact path recorded by its source page, and the biographies or affiliations preserve the represented author identities. The evidence review accepted exactly **12** within-byline coauthor pairs and rejected every cross-group pair, out-of-scope byline neighbor, and alternative whose source page records a missing `full.md` path.
