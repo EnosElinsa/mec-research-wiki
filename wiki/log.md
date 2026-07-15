@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-16] Resolved the remaining small-component ledger rows
+
+Reviewed 23 pending frozen pages across credit-aware constrained MARL, Gaussian-process traffic estimation, robust UAV slicing, spatiotemporal information quality, asynchronous traffic clustering, cloud-trained edge-executed DRL, FANET multiple access, HAPS-UAV ISAC, SAGIN altitude control, polarization-matched mmWave, directional secrecy, and multi-UAV beamforming. All 12 source-recorded Raw parse paths were live, and every cited locator was reopened as a text-bearing line.
+
+The evidence review accepted **11** already-present pending-to-pending edges with reciprocal body rationale and exact Raw support, resolving 19 rows as `linked`. Thirteen edges to previously resolved rows remained outside the accepted set because using them would require reopening those rows to preserve reciprocal ledger arrays. Four rows were explicitly `deferred`: `martingale-delay-violation-bound` and `spatial-temporal-graph-attention-traffic-clustering` have only already-derived usable neighbors, `weidang-lu` additionally lacks reciprocal body rationale, and `wang-2026-multiuav-transceiver-beamforming` is the frozen cohort's sole isolate. No wiki page, graph edge, index, or overview was added.
+
+The ledger moved from **102** to **79** pending rows, with linked rows increasing **167 → 186** and deferred rows **5 → 9**; derived rows remain 12. The frozen 286-member graph remains at **480 edges**, **30 components**, and **42 weak members**, with zero pre/post added or removed edge. The canonical evidence matrix, after-comparison report, and refreshed ledger remain ignored scratch artifacts.
+
 ## [2026-07-16] Resolved eight complete small-component mechanism stars
 
 Reviewed 25 pending frozen pages as one evidence-only cohort: SKYSCALE radio-tomographic mapping and rank/trajectory planning; cellular U2U fractional power control; DTMB-CSI passive UAV detection; virtual-partitioned active-RIS privacy; EIV placement and UAV fleet sizing; UAV Named Data Networking auctions; layered semantic communication; and norm-bounded CSI robust optimization. All eight source-recorded Raw parse paths were live and were opened at the exact paths recorded by their source pages.
