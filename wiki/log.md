@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-16] Resolved component-2/3 ISAC mechanism stars
+
+Reviewed 25 pending frozen pages across two complete components: sensing-error-aware TD-ISAC scheduling and green UAV-ISAC Q-learning (component 2), plus PointRL radar-point-cloud control, near-field STAR-RIS ISAC, UAV-energy-supplied STAR-RIS-NOMA, and sparse bistatic near-field ISAC (component 3). All eight exact source-recorded Raw parses were live; 50 cited Raw locators were reopened as nonblank text-bearing lines.
+
+The evidence review accepted **21** already-present frozen-core edges with pair-specific current-body rationale and exact Raw support. Thirteen current edges remained outside the accepted set: five frontmatter-only concept adjacencies and eight source-comparison/navigation links. The accepted/rejected sets exhaust all 34 induced edges whose endpoints are both selected, with 42 symmetric accepted adjacency entries. `suzhi-bi` remains pending outside this cohort; no deferral was assigned to a selected row.
+
+All 25 reviewed ledger rows moved from `pending` to `linked`, with canonical evidence plus exact group Raw paths and symmetric `candidate_relationships`/`accepted_links`. Linked rows increased **208 -> 233** and pending rows fell **57 -> 32**, while derived rows remain 12 and deferred rows remain 9. The frozen 286-member graph remains at **480 edges**, **30 components**, and **42 weak members**; the pre/post graph objects are identical and added/removed edge counts are zero. `wiki/index.md`, `wiki/overview.md`, all selected pages, `suzhi-bi`, and the user-owned DRL synthesis edit remain unchanged. The canonical evidence, after-comparison report, and refreshed ledger remain ignored scratch artifacts.
+
 ## [2026-07-16] Resolved component-1 learning and channel-prediction stars
 
 Reviewed 22 pending frozen pages across five source-centered stars: quantum-emulated and scale-reconfigurable MARL for aerial access, LLM-guided task-grouped multi-hop MARL, M2LLM state representation with prediction-driven trajectory/beamforming, and spatiotemporal UAV-RIS/LEO channel prediction. All five exact source-recorded Raw parses were live, and all 53 cited Raw locators were reopened as text-bearing lines. The cohort has no overlap with residual batch 6.
