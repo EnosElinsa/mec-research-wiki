@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-16] Resolved component-1 learning and channel-prediction stars
+
+Reviewed 22 pending frozen pages across five source-centered stars: quantum-emulated and scale-reconfigurable MARL for aerial access, LLM-guided task-grouped multi-hop MARL, M2LLM state representation with prediction-driven trajectory/beamforming, and spatiotemporal UAV-RIS/LEO channel prediction. All five exact source-recorded Raw parses were live, and all 53 cited Raw locators were reopened as text-bearing lines. The cohort has no overlap with residual batch 6.
+
+The evidence review accepted **24** already-present frozen-core edges with pair-specific current-body rationale and exact Raw support. The accepted union covers source-to-mechanism and source-to-author stars plus three mechanism-to-mechanism links in the channel-prediction pipeline. Seven current edges remained excluded: one source-to-source comparison and six frontmatter-only concept adjacencies. These 24 accepted and seven rejected pairs exhaust all 31 current induced edges whose endpoints are both selected. No wiki page, graph edge, index, overview, or deferral was added.
+
+All 22 reviewed rows moved from `pending` to `linked`, with symmetric `candidate_relationships` and `accepted_links`; linked rows increased **186 -> 208** and pending rows fell **79 -> 57**, while derived rows remain 12 and deferred rows remain 9. The frozen 286-member graph remains at **480 edges**, **30 components**, and **42 weak members**; the pre/post graph objects are identical, so the batch added and removed zero edges. The canonical evidence matrix, after-comparison report, and refreshed ledger remain ignored scratch artifacts.
+
 ## [2026-07-16] Resolved the remaining small-component ledger rows
 
 Reviewed 23 pending frozen pages across credit-aware constrained MARL, Gaussian-process traffic estimation, robust UAV slicing, spatiotemporal information quality, asynchronous traffic clustering, cloud-trained edge-executed DRL, FANET multiple access, HAPS-UAV ISAC, SAGIN altitude control, polarization-matched mmWave, directional secrecy, and multi-UAV beamforming. All 12 source-recorded Raw parse paths were live, and every cited locator was reopened as a text-bearing line.
