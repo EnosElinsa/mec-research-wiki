@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TMC.2026.3651589"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, federated-linear-bandit, linucb, over-the-air-computation, uav-trajectory-control, admm, regret]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
   - "[[federated-linear-bandit-learning]]"
   - "[[over-the-air-computation]]"
   - "[[federated-learning]]"
@@ -14,7 +15,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[yuanming-shi]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Federated Linear Bandit Learning via UAV Aided Over-the-Air Computation
@@ -59,6 +60,8 @@ The model assumes accurate CSI, tight synchronization, error-free downlink, fixe
 ## Relation to the corpus
 
 This source separates federated online decision learning from gradient-based [[federated-learning]]. Unlike [[aircomp-assisted-asynchronous-fl]], clients aggregate bandit sufficient statistics on event-triggered rounds, and communication noise enters a regret bound rather than a model-convergence metric.
+
+[[aerial-federated-aggregation-design-space]] therefore treats this as an event-triggered AirComp design with a regret guarantee, not as another accuracy- or training-loss result.
 
 ## Raw artifacts
 

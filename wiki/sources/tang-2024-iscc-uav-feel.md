@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2024.3523381"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, isac, federated-edge-learning, uav, resource-allocation, alternating-optimization, integrated-sensing-computation-communication]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
   - "[[guangxu-zhu]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[integrated-sensing-computation-communication]]"
@@ -17,7 +18,7 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning
@@ -56,8 +57,9 @@ Simulation-based; sensing modeled for human motion recognition. The parse does n
 
 Introduces **integrated sensing-computation-communication (ISCC)** as a named concept and ties the ISAC and federated-learning threads together: it shares FEEL/federation with [[zhai-2023-fedleo-decentralized-fl]] and [[han-2024-sagin-fl-handover]], and the sensing-aware UAV-deployment angle with the ISAC overview [[meng-2024-uav-isac-overview]]. Methodologically it joins the alternating-optimization family ([[wang-2025-double-edge-samin]], [[benaya-2025-aerial-isac-haps]]). Reinforces [[integrated-sensing-and-communication]] and [[federated-learning]].
 
+[[aerial-federated-aggregation-design-space]] treats successful sensing as an upstream participation condition: the FEEL loss bound depends on sensing probability, while deployment, bandwidth, and batch size control total training time.
+
 ## Raw artifacts
 
-- `raw/sources/Integrated Sensing- Computation- and Communication for UAV-Assisted Federated Edge Learning/Integrated Sensing- Computation- and Communication for UAV-Assisted Federated Edge Learning.md`
-- `raw/sources/Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning/full.md`
+- `raw/sources/Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning/Integrated_Sensing_Computation_and_Communication_for_UAV-Assisted_Federated_Edge_Learning.md`
 - Original PDF and extracted figures in the corresponding raw folders.

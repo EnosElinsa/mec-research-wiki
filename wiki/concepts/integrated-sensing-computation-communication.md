@@ -3,6 +3,7 @@ type: concept
 title: "Integrated Sensing, Computation, and Communication (ISCC)"
 tags: [isac, edge-computing, resource-allocation, federated-learning]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
   - "[[yin-2026-m2llm-trajectory-beamforming]]"
   - "[[liu-2025-aoi-iscc-five-stage]]"
   - "[[tang-2024-iscc-uav-feel]]"
@@ -29,6 +30,8 @@ updated: 2026-07-14
 An extension of [[integrated-sensing-and-communication|ISAC]] that explicitly couples **computation** with sensing and communication, recognizing that on a resource-limited platform (e.g. a UAV) these three functions compete for the same bandwidth, energy, and time, and that platform placement affects all three.
 
 In [[tang-2024-iscc-uav-feel]], ISCC resources (bandwidth, batch size, position) are jointly optimized with UAV deployment to minimize federated-edge-learning training time: the paper links sensing elevation angle to data-sample quality, bounds training loss via successful sensing probability, and solves the mixed-integer non-convex problem by alternating optimization (the BBPO scheme). ISCC ties the ISAC and [[federated-learning]] threads together.
+
+[[aerial-federated-aggregation-design-space]] uses this case to show sensing-conditioned participation: sensing success determines which UAVs contribute before communication and aggregation resources are allocated.
 
 [[zhao-2026-mappo-jscc-aec]] adds a HAP-assisted multi-UAV aerial-edge version: sensing-device repeat times, NOMA/OMA uplink power, UAV trajectories, offloading, and communication resources are jointly optimized, with Lyapunov energy-stability control and MAPPO embedded with SCA/Dinkelbach sub-solvers.
 

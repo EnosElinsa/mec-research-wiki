@@ -7,6 +7,12 @@ url: "https://doi.org/10.1109/TGCN.2025.3599309"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN), vol. 10, pp. 829-843"
 tags: [source, federated-learning, uav, energy-efficiency, air-to-ground, alternating-optimization]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
+  - "[[zhong-2026-hierarchical-ota-fl]]"
+  - "[[li-2026-clp-uav-hpfl]]"
+  - "[[hierarchical-over-the-air-federated-learning]]"
+  - "[[gradient-correlation-aware-aggregation-mse]]"
+  - "[[critical-learning-period]]"
   - "[[simultaneous-interference-uav-federated-learning]]"
   - "[[federated-learning]]"
   - "[[air-to-ground-channel-model]]"
@@ -49,6 +55,8 @@ Evidence is simulation-only. The optimization is centralized and offline, assume
 ## Relation to the corpus
 
 This source extends [[federated-learning]] with a communication layer that keeps inter-user interference, realistic [[air-to-ground-channel-model|LoS/NLoS A2G propagation]], and rotary-wing movement energy in the same optimization. It complements learning-based UAV-FL controllers by using deterministic inner approximations and explicit deadline and return-energy constraints.
+
+In [[aerial-federated-aggregation-design-space]], [[zhong-2026-hierarchical-ota-fl]] and [[hierarchical-over-the-air-federated-learning]] provide the direct physical-layer contrast: their superposition computes analog partial gradients, whereas this paper decodes simultaneous user uploads under interference. Its UE-energy objective is distinct from [[gradient-correlation-aware-aggregation-mse]] and its learning-stationarity bridge. [[li-2026-clp-uav-hpfl]] and [[critical-learning-period]] add a second contrast, between this offline constraint-driven placement/resource design and learning-state-triggered visits and aggregation periods.
 
 ## Raw artifacts
 

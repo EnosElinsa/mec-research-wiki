@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TMC.2026.3697889"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, split-federated-learning, federated-learning, distributed-foundation-models, resource-allocation, deep-reinforcement-learning, uav-trajectory-control, lora]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
   - "[[wei-yang-bryan-lim]]"
   - "[[lim-2021-uav-iov-contract-matching]]"
   - "[[split-federated-learning]]"
@@ -69,7 +70,9 @@ The paper states that convergence analysis under transmission failures is left f
 
 This paper turns the wiki's [[distributed-foundation-models]] overview into a concrete UAV-network training protocol. It is a more specific instance of [[federated-learning]] because it combines federated aggregation with model partitioning; the reusable vocabulary is captured in [[split-federated-learning]]. Its trajectory-aware DRL controller also connects the foundation-model track back to [[uav-trajectory-control]] and wireless resource allocation.
 
+[[aerial-federated-aggregation-design-space]] locates CPSFL on the split and intra-round-asynchronous branch, where sequential downlink gradient transmission and pipeline latency—not analog aggregation MSE—define the communication bottleneck.
+
 ## Raw artifacts
 
-- `raw/sources/Communication-Pipelined Split Federated Learning for Foundation Model Fine-Tuning in UAV Networks/Communication-Pipelined Split Federated Learning for Foundation Model Fine-Tuning in UAV Networks.md`
+- `raw/sources/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

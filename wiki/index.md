@@ -1586,6 +1586,7 @@
 
 ## Synthesis
 
+- [[aerial-federated-aggregation-design-space]] — Synchronous, asynchronous, hierarchical, event-triggered, interference-limited, and split aggregation compared by learning and physical-layer assumptions.
 - [[design-recipe-multi-uav-mec]] — 10-step recipe for DRL-controlled UAV-MEC.
 - [[drl-backbones-across-uav-mec-sources]] — Cross-corpus DRL-backbone analysis.
 - [[maddpg-vs-masac-in-mec]] — When entropy beats determinism in cooperative MEC.

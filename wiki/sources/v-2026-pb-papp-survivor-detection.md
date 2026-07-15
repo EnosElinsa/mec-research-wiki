@@ -7,6 +7,8 @@ url: "https://doi.org/10.1109/TMC.2025.3649563"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 6, pp. 8655-8666"
 tags: [source, disaster-response, survivor-detection, uav-path-planning, edge-intelligence, distributed-learning]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
+  - "[[zhong-2026-hierarchical-ota-fl]]"
   - "[[prediction-based-priority-aware-path-planning]]"
   - "[[tree-structured-weight-synthesis]]"
   - "[[post-disaster-mec]]"
@@ -52,6 +54,8 @@ Evaluation uses synthetic Pygame grids rather than a disaster deployment. PB-PAP
 ## Relation to the corpus
 
 This source adds prediction-guided search to [[post-disaster-mec]] and complements SAGIN search-and-rescue papers that optimize offloading and flight control. Its edge contribution is the tight iteration between local observations, lightweight prediction, route reprioritization, and model aggregation rather than a communication-resource optimizer.
+
+Within [[aerial-federated-aggregation-design-space]], [[zhong-2026-hierarchical-ota-fl]] supplies a mechanism-level contrast: PB-PAPP centrally averages complete logistic-regression coefficients and feeds them back into prediction-guided routing, while Zhong controls trajectory to improve analog partial-gradient aggregation.
 
 ## Raw artifacts
 

@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2025.3635287"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 8066-8082"
 tags: [source, federated-learning, over-the-air-computation, hierarchical-aggregation, uav-trajectory, aggregation-mse]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
   - "[[federated-learning]]"
   - "[[over-the-air-computation]]"
   - "[[uav-trajectory-control]]"
@@ -14,6 +15,13 @@ related:
   - "[[hierarchical-over-the-air-federated-learning]]"
   - "[[gradient-correlation-aware-aggregation-mse]]"
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
+  - "[[dang-2026-uav-fl-energy]]"
+  - "[[li-2026-clp-uav-hpfl]]"
+  - "[[simultaneous-interference-uav-federated-learning]]"
+  - "[[critical-learning-period]]"
+  - "[[federated-drift-norm]]"
+  - "[[federated-kl-divergence-norm]]"
+  - "[[v-2026-pb-papp-survivor-detection]]"
   - "[[xiaojun-yuan]]"
   - "[[ying-jun-angela-zhang]]"
 created: 2026-07-14
@@ -66,6 +74,8 @@ The model assumes fixed altitude, free-space LoS links, slotwise invariant CSI, 
 ## Relation to the corpus
 
 This source extends [[federated-learning]] and [[over-the-air-computation]] with two-level aggregation along a controlled UAV path. Compared with [[huang-2026-aircomp-uav-swarms-afl]], it centers on partial gradient aggregation by one mobile parameter server and a tunable global-update frequency. Its theorem-backed [[gradient-correlation-aware-aggregation-mse]] provides the communication-learning bridge, while [[uav-trajectory-control]] supplies spatial grouping opportunities.
+
+Within [[aerial-federated-aggregation-design-space]], this source anchors synchronous analog gradient aggregation. [[dang-2026-uav-fl-energy]] shares simultaneous uplink and geometric control but treats superposition as inter-user interference in separately decoded rates; [[li-2026-clp-uav-hpfl]] instead uses digital device-UAV-server aggregation and changes visits and aggregation periods from learning-state signals. Accordingly, Zhong's tunable frequency is compared with [[critical-learning-period]] scheduling without implying that its AO solver optimizes that frequency. Its same-round cross-device correlation is also kept distinct from the temporal [[federated-drift-norm]] and parameter-distribution [[federated-kl-divergence-norm]]. Finally, [[v-2026-pb-papp-survivor-detection]] supplies the opposite aggregation-mobility loop: centrally averaged classifier weights guide routing, whereas here trajectory improves analog aggregation.
 
 ## Raw artifacts
 

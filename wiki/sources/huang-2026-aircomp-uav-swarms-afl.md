@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TWC.2026.3693868"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
 tags: [source, federated-learning, over-the-air-computation, uav-swarm, asynchronous-federated-learning, model-staleness, beamforming, edge-intelligence]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
   - "[[zhong-2026-hierarchical-ota-fl]]"
   - "[[hierarchical-over-the-air-federated-learning]]"
   - "[[aircomp-assisted-asynchronous-fl]]"
@@ -63,6 +64,8 @@ The conclusion does not state an explicit future-work item. Scope limitations vi
 ## Relation to the corpus
 
 This source concretizes the [[over-the-air-computation]] and [[federated-learning]] link that [[du-2024-distributed-foundation-models-6g]] describes at survey level. It also complements [[zhou-2026-cpsfl-uav-foundation-models]]: both accelerate UAV-network training under communication bottlenecks, but Zhou et al. pipeline split-FL gradients, while this paper uses AirComp-assisted asynchronous FL and layer-wise staleness filtering.
+
+[[aerial-federated-aggregation-design-space]] places this design on the asynchronous branch: trajectories are external inputs, AirComp distortion constrains which sensing UAVs can upload, and the learning-side evidence for layer filtering remains simulation-based.
 
 ## Raw artifacts
 

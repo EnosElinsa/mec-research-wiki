@@ -7,6 +7,11 @@ url: "https://doi.org/10.1109/TMC.2025.3639671"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, uav-networks, hierarchical-federated-learning, personalized-federated-learning, critical-learning-period, data-drift, soft-actor-critic, energy-efficiency]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
+  - "[[zhong-2026-hierarchical-ota-fl]]"
+  - "[[dang-2026-uav-fl-energy]]"
+  - "[[hierarchical-over-the-air-federated-learning]]"
+  - "[[simultaneous-interference-uav-federated-learning]]"
   - "[[critical-learning-period]]"
   - "[[federated-kl-divergence-norm]]"
   - "[[federated-drift-norm]]"
@@ -70,6 +75,8 @@ Several displayed expressions are internally inconsistent: energy consumption an
 ## Relation to the corpus
 
 This source connects [[federated-learning]] resource management to [[critical-learning-period]] detection rather than treating all rounds uniformly. [[federated-kl-divergence-norm]] targets local-global parameter separation, while [[federated-drift-norm]] targets temporal distribution shift; together they drive UAV participation and revisit intensity. Its use of [[uav-trajectory-control]] is scheduling-oriented: SAC selects active UAVs and positions across training sequences, rather than continuously optimizing radio trajectories or transmit power.
+
+[[aerial-federated-aggregation-design-space]] contrasts this digital device-UAV-server hierarchy with [[zhong-2026-hierarchical-ota-fl]] and [[hierarchical-over-the-air-federated-learning]], whose partial analog gradients are grouped along one UAV trajectory. It also separates the paper's OFDMA links from the explicit same-resource interference in [[dang-2026-uav-fl-energy]] and [[simultaneous-interference-uav-federated-learning]]. These are topology, access, and control-timing comparisons; their MSE, energy, drift, and accuracy quantities are not placed on one scale.
 
 ## Raw artifacts
 

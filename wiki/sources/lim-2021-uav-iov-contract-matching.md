@@ -7,6 +7,7 @@ url: "https://doi.org/10.1109/TITS.2021.3056341"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS), vol. 22, no. 8, pp. 5140-5154"
 tags: [source, federated-learning, uav, internet-of-vehicles, contract-theory, matching, incentive-mechanism]
 related:
+  - "[[aerial-federated-aggregation-design-space]]"
   - "[[multidimensional-contract-matching]]"
   - "[[contract-theoretic-fl-incentives]]"
   - "[[federated-learning]]"
@@ -60,6 +61,8 @@ The work evaluates the mechanism rather than an FL task: it provides no dataset,
 ## Relation to the corpus
 
 This extends [[contract-theoretic-fl-incentives]] with an explicit contract-plus-matching pipeline. Unlike [[zhao-2026-uav-fl-inspection-incentives]], it evaluates economic assignment behavior rather than federated training performance. [[zhou-2026-cpsfl-uav-foundation-models]] later represents a communication-centered UAV FL line co-authored by [[wei-yang-bryan-lim]].
+
+[[aerial-federated-aggregation-design-space]] uses this source only as an adjacent ex-ante participation control: contracts and stable matching decide which UAV gathers data before training, without transferring those economic guarantees to aggregation or learning performance.
 
 ## Raw artifacts
 
