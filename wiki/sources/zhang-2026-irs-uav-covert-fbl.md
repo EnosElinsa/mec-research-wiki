@@ -15,6 +15,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[penalty-dual-decomposition]]"
   - "[[deng-2025-covert-isac-trajectory]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-13
 updated: 2026-07-14
 ---
@@ -55,6 +56,8 @@ One Bob, one Willie, one IRS, fixed altitude/duration, known terminal positions,
 ## Relation to the corpus
 
 [[deng-2025-covert-isac-trajectory]] uses sensing signals as cover, while this source couples [[finite-blocklength-urllc]] with an IRS and active/passive beamforming. [[ma-2024-covert-mmwave-finite-blocklength]] is the finite-blocklength covert anchor without trajectory/IRS coupling.
+
+Its finite-blocklength Willie test belongs to the activity-hiding branch of [[aerial-observation-control-covertness-surveillance-and-monitoring]]. The DEP/KL constraint does not measure authorized monitoring success, camera coverage, secrecy rate, or track-estimation error.
 
 ## Raw artifacts
 

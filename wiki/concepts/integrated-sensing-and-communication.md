@@ -5,6 +5,7 @@ tags: [isac, dual-function, beamforming, 6g]
 related:
   - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[wang-2026-fd-covert-isac]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[meng-2023-uav-ipsac-throughput]]"
   - "[[integrated-periodic-sensing-and-communication]]"
   - "[[lyu-2026-situation-aware-uav-isac]]"

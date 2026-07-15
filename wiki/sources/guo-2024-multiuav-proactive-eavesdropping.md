@@ -17,6 +17,7 @@ related:
   - "[[ma-pomdp]]"
   - "[[pomdp]]"
   - "[[shao-2024-drl-antijamming-mec]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-06-01
 updated: 2026-07-14
 ---
@@ -62,7 +63,9 @@ Suspicious users are assumed unaware of being monitored (no countermeasures). Th
 
 A **proactive-eavesdropping / surveillance** entry (physical-layer-security-adjacent, not MEC). It contributes the new [[proactive-eavesdropping]] concept and connects to the wiki's UAV-jamming threads — [[friendly-jamming-uav]] and [[cooperative-jamming]] — though here jamming serves *legitimate surveillance* rather than protecting a friendly link. Its decompose-then-RL structure (closed-form power solver + learned trajectory) echoes the hybrid solver pattern seen across the DRL track, and its decentralized multi-agent MDP framing links to [[ma-pomdp]] / [[pomdp]]. (Surveillance/PLS anchor, not a computation-offloading paper.)
 
+The authorized interception role—and its distinction from activity hiding, camera observation, and trajectory-state tracking—is positioned in [[aerial-observation-control-covertness-surveillance-and-monitoring]].
+
 ## Raw artifacts
 
-- `raw/sources/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping/full.md`
+- Parse: `raw/sources/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

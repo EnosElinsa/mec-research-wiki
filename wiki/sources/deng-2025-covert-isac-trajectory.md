@@ -16,6 +16,7 @@ related:
   - "[[derrick-wing-kwan-ng]]"
   - "[[arumugam-nallanathan]]"
   - "[[wang-2026-fd-covert-isac]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-13
 updated: 2026-07-14
 ---
@@ -54,6 +55,8 @@ Evidence is simulation-only. The model assumes fixed altitude, static terminals 
 ## Relation to the corpus
 
 Unlike [[ambient-interference-aided-covertness]], this paper deliberately shapes the ISAC sensing signal as the masking baseline. It is also a direct [[alternating-optimization-sdr-sca]] instance coupling physical-layer covariance design with [[uav-trajectory-control]].
+
+The wardens' received-power decision, the target-directed sensing-gain constraint, and the resulting covert-rate objective occupy the activity-hiding branch of [[aerial-observation-control-covertness-surveillance-and-monitoring]]; they should not be read as authorized interception or trajectory-tracking metrics.
 
 ## Raw artifacts
 

@@ -7,6 +7,7 @@ related:
   - "[[wang-2026-fd-covert-isac]]"
   - "[[full-duplex-receiver-jamming]]"
   - "[[huang-2026-intelligent-jamming-maritime]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[wen-2026-cooperative-jamming-uav]]"
   - "[[physical-layer-security]]"
   - "[[friendly-jamming-uav]]"
@@ -26,3 +27,5 @@ updated: 2026-07-14
 
 - [[li-2023-secure-marine-iot-jamming]] schedules **USVs** to first set up a high-quality NOMA uplink to a HAP and then reuse them as **cooperative jammers** against an eavesdropper during HAP offloading, jointly optimizing each USV's jamming power with positions, uploading duration, workload, and HAP transmit power to minimize energy. It is the multi-helper, ground-vehicle counterpart of the aerial [[friendly-jamming-uav]] used in [[benaya-2025-aerial-isac-haps]]; both serve [[physical-layer-security]].
 - [[zhang-2026-air-ground-covert-jamming]] adds [[ris-assisted-directional-jamming]]: a terrestrial jammer does not need a direct favorable path to Willie because a UAV-mounted RIS redirects the jamming signal. This makes the jamming role part of a covert relay/RIS/trajectory design rather than a fixed helper-node placement assumption.
+
+The observer determines what jamming accomplishes: it may protect a payload, hide transmission activity, or help authorized interception. [[aerial-observation-control-covertness-surveillance-and-monitoring]] keeps those outcomes and metrics separate.

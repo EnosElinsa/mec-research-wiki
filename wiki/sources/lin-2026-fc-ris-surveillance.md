@@ -17,6 +17,11 @@ related:
   - "[[two-timescale-optimization]]"
   - "[[air-to-ground-channel-model]]"
   - "[[guo-2024-multiuav-proactive-eavesdropping]]"
+  - "[[wang-2026-covert-cognitive-radio]]"
+  - "[[wang-2026-fd-covert-isac]]"
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
+  - "[[yan-2026-uav-trajectory-monitoring]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[derrick-wing-kwan-ng]]"
 created: 2026-07-14
 updated: 2026-07-14
@@ -61,6 +66,8 @@ The analysis assumes a passive monitor, blocked direct source-monitor link, co-l
 ## Relation to the corpus
 
 This source specializes [[beyond-diagonal-ris]] for [[wireless-information-surveillance]], using passive channel shaping rather than the proactive jamming in [[guo-2024-multiuav-proactive-eavesdropping]]. It connects [[physical-layer-security]] to a partial-sub-link-CSI antenna-selection design: the threshold directly controls the performance-overhead trade-off, while long-term aerial placement follows the corpus's [[two-timescale-optimization]] pattern.
+
+The legitimate monitor's desired decode event differs from the wardens' activity tests in [[wang-2026-covert-cognitive-radio]] and [[wang-2026-fd-covert-isac]]. It also differs from camera observation in [[zhan-2026-star-ris-aerial-monitoring]] and echo-based trajectory tracking in [[yan-2026-uav-trajectory-monitoring]]. The shared aerial channel-control surface and the incompatible observer outcomes are separated in [[aerial-observation-control-covertness-surveillance-and-monitoring]].
 
 ## Raw artifacts
 

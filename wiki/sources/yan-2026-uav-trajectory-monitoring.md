@@ -14,6 +14,11 @@ related:
   - "[[mmwave-radar-sensing]]"
   - "[[yan-not-in-parse-multibs-isac-uav-trajectory]]"
   - "[[zhao-2025-networked-isac-uav-handover]]"
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
+  - "[[lin-2026-fc-ris-surveillance]]"
+  - "[[wang-2026-fd-covert-isac]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[shaoqiang-yan]]"
   - "[[hongliang-luo]]"
   - "[[ping-yang]]"
@@ -66,6 +71,8 @@ The evaluation is simulation-only and the paper provides no theorem guaranteeing
 ## Relation to the corpus
 
 This paper is the single-BS counterpart to [[yan-not-in-parse-multibs-isac-uav-trajectory]], which fuses asynchronous delay and Doppler features from multiple BSs and uses sequential UKF tracking. It also complements [[zhao-2025-networked-isac-uav-handover]], where cooperative BSs manage sensing coverage and handover. Unlike [[uav-trajectory-control]] sources that optimize the sensing UAV's own path, this paper estimates and maintains the trajectories of non-cooperative target UAVs. Its 30 GHz OFDM pipeline is adjacent to [[mmwave-radar-sensing]], while remaining distinct from the narrower FMCW examples on that concept page.
+
+The tracked object and output differ from camera-service monitoring in [[zhan-2026-star-ris-aerial-monitoring]], authorized suspicious-payload decoding in [[lin-2026-fc-ris-surveillance]], and Willie's activity detection in [[wang-2026-fd-covert-isac]]. [[huang-2026-intelligent-jamming-maritime]] predicts an unobserved Eve position for a secrecy controller, whereas this source measures, associates, and filters non-cooperative tracks. See [[aerial-observation-control-covertness-surveillance-and-monitoring]].
 
 ## Raw artifacts
 

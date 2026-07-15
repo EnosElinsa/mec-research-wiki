@@ -25,6 +25,11 @@ related:
   - "[[weijie-yuan]]"
   - "[[xianbin-wang]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[wang-2026-covert-cognitive-radio]]"
+  - "[[wang-2026-fd-covert-isac]]"
+  - "[[full-duplex-receiver-jamming]]"
+  - "[[yan-2026-uav-trajectory-monitoring]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---
@@ -81,6 +86,8 @@ The NP-hardness discussion discretizes power for a nonlinear knapsack analogy bu
 ## Relation to the corpus
 
 This source combines [[friendly-jamming-uav]], [[physical-layer-security]], and maritime mobility with learned partial-observation control. [[huang-2026-uav-friendly-jamming-transsac]] shares the lead Jilin/NTU research cluster and SAC-based maritime jamming, while [[huang-2025-dual-aav-maritime-secure-cb]] uses collaborative beamforming rather than an advantage-conditioned generative policy. [[sun-2024-imssa-uav-secure-cb]] is adjacent on uncertain eavesdropper security, and [[li-2023-secure-marine-iot-jamming]] provides a marine cooperative-jamming comparator.
+
+The separate Bob jammer suppresses Eve's payload rate, unlike the activity-hiding interference in [[wang-2026-covert-cognitive-radio]] and the receiver-generated [[full-duplex-receiver-jamming]] in [[wang-2026-fd-covert-isac]]. Its LSTM supplies a predicted controller input; [[yan-2026-uav-trajectory-monitoring]] instead produces measured, associated trajectory outputs. These observer and mechanism boundaries are mapped in [[aerial-observation-control-covertness-surveillance-and-monitoring]].
 
 ## Raw artifacts
 

@@ -14,6 +14,12 @@ related:
   - "[[gauss-markov-mobility-model]]"
   - "[[uav-trajectory-control]]"
   - "[[alternating-optimization-sdr-sca]]"
+  - "[[lin-2026-fc-ris-surveillance]]"
+  - "[[wireless-information-surveillance]]"
+  - "[[yan-2026-uav-trajectory-monitoring]]"
+  - "[[uav-trajectory-monitoring]]"
+  - "[[fully-connected-ris]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[jie-xu]]"
   - "[[cheng-zhan]]"
   - "[[kaifeng-song]]"
@@ -70,6 +76,8 @@ The study assumes reliable CSI, fixed UAV altitude, known Gauss-Markov target dy
 ## Relation to the corpus
 
 This source connects [[star-ris]] with online [[uav-trajectory-control]] under a long-term energy constraint. Its communication block combines [[weighted-minimum-mean-square-error]] and [[penalty-dual-decomposition]], while its trajectory block occupies the SCA branch of [[alternating-optimization-sdr-sca]] rather than using SDR. The stochastic control layer complements other UAV/RIS optimization pages by coupling target monitoring geometry to a virtual propulsion-energy queue.
+
+Here monitoring means panoramic-camera capture plus video delivery. [[lin-2026-fc-ris-surveillance]] and [[wireless-information-surveillance]] instead concern authorized decoding of suspicious radio content, while [[yan-2026-uav-trajectory-monitoring]] and [[uav-trajectory-monitoring]] estimate and maintain non-cooperative target tracks from echoes. The ideal non-diagonal [[fully-connected-ris]] used by Lin is also architecturally distinct from this paper's transmitting/reflecting surface. See [[aerial-observation-control-covertness-surveillance-and-monitoring]].
 
 ## Raw artifacts
 

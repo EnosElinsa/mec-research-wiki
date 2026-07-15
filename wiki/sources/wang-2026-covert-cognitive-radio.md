@@ -16,7 +16,10 @@ related:
   - "[[cooperative-cognitive-radio]]"
   - "[[primary-signal-assisted-covertness]]"
   - "[[wang-2026-fd-covert-isac]]"
+  - "[[lin-2026-fc-ris-surveillance]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[qunshu-wang]]"
   - "[[chengwen-xing]]"
   - "[[dusit-niyato]]"
@@ -61,6 +64,8 @@ The model assumes fixed UAV altitude, known fixed warden locations, single-anten
 ## Relation to the corpus
 
 This source joins [[covert-communication]] and [[cooperative-cognitive-radio]]: unlike dedicated jamming, [[primary-signal-assisted-covertness]] reuses a signal that also serves the primary link. [[wang-2026-fd-covert-isac]] instead combines a sensing waveform with full-duplex receiver jamming, while [[zhang-2026-irs-uav-covert-fbl]] couples finite-blocklength covertness to active/passive beamforming. All three use alternating local optimization, but only this paper couples covert throughput to a primary relay-QoS constraint.
+
+Its observation objective is the reverse of [[lin-2026-fc-ris-surveillance]]: the primary waveform should make unauthorized activity detection harder, whereas Lin's aerial surface should make authorized suspicious-signal decoding easier. [[huang-2026-intelligent-jamming-maritime]] also controls interference against an adversarial observer, but its separate jammer suppresses Eve's payload rate rather than hiding whether a transmission exists. These role boundaries are mapped in [[aerial-observation-control-covertness-surveillance-and-monitoring]].
 
 ## Raw artifacts
 

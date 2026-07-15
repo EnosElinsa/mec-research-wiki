@@ -4,6 +4,7 @@ title: "STAR-RIS"
 tags: [ris, metasurface, uav, noma, mec]
 related:
   - "[[zhan-2026-star-ris-aerial-monitoring]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[intelligent-reflecting-surface]]"
   - "[[uav-mounted-ris]]"
   - "[[noma]]"
@@ -31,3 +32,5 @@ In [[mohammadi-2026-star-ris-uav-mec-noma]], a UAV carries both an MEC server an
 [[meng-2026-fullspace-star-ris-secure]] removes the usual fixed-half-space assumption. Its UAV can cross the STAR-RIS plane, so a binary side variable switches reflection/transmission roles while trajectory and robust secrecy coefficients are optimized together. This mobility-dependent role change is captured by [[full-space-star-ris-uav-trajectory]].
 
 [[meng-2026-star-ris-uav-energy]] instead fixes the STAR-RIS and UAV route, using [[uav-energy-supplied-star-ris-noma]] to charge the surface and users before uplink NOMA. Its alternating resource allocator jointly controls energy/information time, user powers, and transmission/reflection coefficients.
+
+In [[zhan-2026-star-ris-aerial-monitoring]], transmission/reflection control delivers camera-captured content rather than intercepting a suspicious radio payload. That observation role is separated in [[aerial-observation-control-covertness-surveillance-and-monitoring]].

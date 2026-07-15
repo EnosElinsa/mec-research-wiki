@@ -7,6 +7,8 @@ related:
   - "[[beyond-diagonal-ris]]"
   - "[[uav-mounted-ris]]"
   - "[[wireless-information-surveillance]]"
+  - "[[zhan-2026-star-ris-aerial-monitoring]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---
@@ -16,3 +18,5 @@ updated: 2026-07-14
 A [[beyond-diagonal-ris]] architecture in which every surface element can be electrically coupled to every other element. Its scattering matrix is non-diagonal and, in ideal passive models, constrained by symmetry and unitarity; this provides richer transformations than independently phased diagonal elements at higher circuit and control complexity.
 
 [[lin-2026-fc-ris-surveillance]] mounts an ideal fully connected RIS on a UAV and configures it once after receive-antenna selection. The cited global channel-gain result is scoped to the selected antenna and ideal symmetric-unitary model, not to the complete placement and surveillance problem.
+
+[[zhan-2026-star-ris-aerial-monitoring]] instead uses a diagonal transmitting/reflecting surface to deliver camera-captured content to users on both sides. The hardware and observation-output contrast is mapped in [[aerial-observation-control-covertness-surveillance-and-monitoring]].

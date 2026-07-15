@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-14] Connected aerial observation control roles
+
+Added [[aerial-observation-control-covertness-surveillance-and-monitoring]] as a reader path across the seven primary covertness/surveillance/monitoring sources, the two supporting trajectory-monitoring and maritime-jamming sources, and the associated observation mechanisms. The synthesis identifies observer, observed party, controller, desired outcome, detector, metric, horizon, and evidence scope before comparing activity hiding, authorized interception, camera observation, and echo-based tracking.
+
+Raw review accepted **20** mechanism-specific reciprocal relationships and rejected **6** tempting direct edges. The accepted set connects covertness to legitimate surveillance through opposite observer outcomes; separates FC-RIS interception from STAR-RIS video delivery; bridges camera monitoring to measured trajectory tracking; contrasts full-duplex receiver jamming with a separate maritime jammer; and treats LSTM imputation, PRDFT measurement, and WGVDNN association as complementary stages without transferring accuracy. The rejected set keeps monitoring success probability out of physical/tracking metrics, keeps Wang-FD's echo-SINR constraint separate from PRDFT, declines a broad primary-mask/maritime-jammer edge, and rejects threshold-selection or cognitive-radio vocabulary overlap without a shared mechanism.
+
+Against the frozen 286-member pre-theme state, the induced graph changed from **420 to 440 edges (+20)**, components from **35 to 31 (-4)**, and weak members from **77 to 75 (-2)**, with zero removed edges. Cumulatively from the 341-edge baseline, the graph has **440 edges (+99)**, **31 components (-16)**, and **75 weak members (-12)**. [[full-duplex-receiver-jamming]] and [[lstm-eavesdropper-trajectory-prediction]] both rose from internal degree **1 to 4**. The durable scope is the new synthesis, the bounded [[isac-sensing-in-aerial-mec]] refresh, the allowed source/concept pages, and shared navigation; raw evidence, graph reports, and the coverage ledger remain scratch artifacts.
+
 ## [2026-07-14] Compared UAV trajectory safety and robustness guarantee scopes
 
 Added [[uav-trajectory-safety-guarantee-ladder]] as a reader path across the eight primary trajectory/robustness sources, the three supporting anti-jamming or chance-constraint sources, and fourteen mechanism concepts. The comparison separates protected object, hazard, enforcement locus, persistence, proof scope, and evaluation evidence; it does not rank simulator success, expected-cost bounds, ambiguity-set robustness, chance constraints, unpredictability, or service continuity as one safety metric.

@@ -6,6 +6,7 @@ related:
   - "[[wang-2026-covert-cognitive-radio]]"
   - "[[lin-2026-fc-ris-surveillance]]"
   - "[[wireless-information-surveillance]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[chai-2026-random-position-relay-deployment]]"
   - "[[zhang-2019-secure-uav-trajectory-power]]"
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"

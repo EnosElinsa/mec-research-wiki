@@ -17,6 +17,10 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[uav-trajectory-control]]"
   - "[[deng-2025-covert-isac-trajectory]]"
+  - "[[lin-2026-fc-ris-surveillance]]"
+  - "[[yan-2026-uav-trajectory-monitoring]]"
+  - "[[huang-2026-intelligent-jamming-maritime]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[dusit-niyato]]"
   - "[[chunguo-li]]"
 created: 2026-07-14
@@ -50,6 +54,8 @@ One receiver, one warden, one target, fixed altitude, infinite-channel-use radio
 ## Relation to the corpus
 
 Where [[deng-2025-covert-isac-trajectory]] uses an ISAC sensing waveform as cover for aerial information transmission, this source also lets the legitimate receiver generate randomized [[full-duplex-receiver-jamming]]. It therefore connects [[sensing-signal-assisted-covertness]] and [[cooperative-jamming]], while making the resulting covertness-rate trade-off depend on residual self-interference.
+
+Its observer roles contrast with [[lin-2026-fc-ris-surveillance]], where the legitimate station seeks to decode a suspicious signal. Its echo-SINR constraint also stops short of the motion-estimation and association pipeline in [[yan-2026-uav-trajectory-monitoring]]. [[huang-2026-intelligent-jamming-maritime]] uses a separate friendly jammer against Eve's payload decoder rather than Bob's full-duplex activity-detector mask. These distinctions are organized in [[aerial-observation-control-covertness-surveillance-and-monitoring]].
 
 ## Raw artifacts
 

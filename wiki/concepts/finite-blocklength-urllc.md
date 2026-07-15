@@ -16,6 +16,7 @@ related:
   - "[[zhang-2026-air-ground-covert-jamming]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[zhu-2026-fas-uav-fbl]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-05-31
 updated: 2026-07-14
 ---
@@ -35,3 +36,5 @@ In the wiki, [[wu-2024-urllc-uav-mec-latency]] is the corpus's first UAV-MEC stu
 [[xie-2023-wireless-powered-short-packet-uav]] applies the same finite-blocklength rate penalty to WPT-powered IoT uploads, jointly allocating frame symbols, UAV hover location, and downlink charging power for communication-side energy efficiency.
 
 [[zhu-2026-fas-uav-fbl]] adds receiver-side spatial selection to short-packet UAV relaying. Its effective fluid-antenna diversity lowers the access-hop BLER, but per-port probing consumes channel uses and energy, so useful port count is constrained by the same finite blocklength it is intended to protect. A fixed-power first hop also creates an end-to-end error floor that access-hop diversity cannot remove.
+
+Finite blocklength also changes both Bob's coding penalty and Willie's observation budget in covert designs; [[aerial-observation-control-covertness-surveillance-and-monitoring]] keeps that rate/detection tradeoff distinct from surveillance and tracking metrics.

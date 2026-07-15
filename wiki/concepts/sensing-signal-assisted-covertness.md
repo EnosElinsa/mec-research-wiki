@@ -9,6 +9,7 @@ related:
   - "[[covert-communication]]"
   - "[[integrated-sensing-and-communication]]"
   - "[[ambient-interference-aided-covertness]]"
+  - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-13
 updated: 2026-07-14
 ---
@@ -20,3 +21,5 @@ An ISAC transmitter can use its legitimate sensing waveform as the received-powe
 This differs from relying on uncontrollable ambient interference: sensing beamforming, communication beamforming, and platform position can all change the masking ratio. The same coupling also creates a tradeoff because stronger sensing cover may consume power or move the UAV away from the communication-favorable geometry.
 
 The concept does not by itself guarantee undetectability. Its evidence depends on the detector, channel/location knowledge, prior assumptions, and uncertainty model used to derive the detection-error bound.
+
+Its observer role and metric boundaries relative to authorized interception and physical or kinematic monitoring are summarized in [[aerial-observation-control-covertness-surveillance-and-monitoring]].
