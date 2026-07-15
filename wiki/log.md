@@ -1,5 +1,15 @@
 # Research Log
 
+## [2026-07-16] Resolved the remaining component-1 RIS security and relay stars
+
+Reviewed 20 pending component-1 pages across secure short-packet NOMA relaying, robust RIS/UAV secrecy, learned aerial-RIS control, secrecy-energy-efficient collect/store/forward relaying, passive 6D UAV-RIS geometry, and four explicit deferral cases. Seven source-star Raw parses plus the exact full-duplex-relay and predictive-beamforming parses used by the deferred rows were live; all 71 cited Raw locators were reopened as text-bearing lines.
+
+The evidence review accepted **16** already-present frozen-core edges with pair-specific endpoint-body rationale and exact Raw support. Six current selected edges remained excluded: three endpoint-frontmatter-only adjacencies and three source-to-source comparison links. The accepted/rejected sets exhaust all 22 selected induced edges, and the accepted union is represented by 32 symmetric adjacency entries.
+
+Sixteen rows moved from `pending` to `linked`. Four moved from `pending` to `deferred`: `huyen-2026-short-packet-aris-noma` has only a rejected source comparison; `full-duplex-noma-uav-relay` and `robust-uav-position-power-optimization` share only a frontmatter-only selected edge while their body-supported source is already deferred; and `pcrb-guided-pilot-length-optimization` has only already-linked neighbors. Linked rows increased **233 -> 249**, pending rows fell **32 -> 12**, and deferred rows increased **9 -> 13**; derived rows remain 12.
+
+The frozen 286-member graph remains at **480 edges**, **30 components**, and **42 weak members**; the pre/post graph objects are identical and batch-specific added/removed edge counts are zero. The final 12 residual rows remain pending. `wiki/index.md`, `wiki/overview.md`, all selected source/concept pages, and the user-owned DRL synthesis edit remain unchanged. The canonical evidence, after-comparison report, and refreshed ledger remain ignored scratch artifacts.
+
 ## [2026-07-16] Resolved component-2/3 ISAC mechanism stars
 
 Reviewed 25 pending frozen pages across two complete components: sensing-error-aware TD-ISAC scheduling and green UAV-ISAC Q-learning (component 2), plus PointRL radar-point-cloud control, near-field STAR-RIS ISAC, UAV-energy-supplied STAR-RIS-NOMA, and sparse bistatic near-field ISAC (component 3). All eight exact source-recorded Raw parses were live; 50 cited Raw locators were reopened as nonblank text-bearing lines.
