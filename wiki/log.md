@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-16] Resolved eight complete small-component mechanism stars
+
+Reviewed 25 pending frozen pages as one evidence-only cohort: SKYSCALE radio-tomographic mapping and rank/trajectory planning; cellular U2U fractional power control; DTMB-CSI passive UAV detection; virtual-partitioned active-RIS privacy; EIV placement and UAV fleet sizing; UAV Named Data Networking auctions; layered semantic communication; and norm-bounded CSI robust optimization. All eight source-recorded Raw parse paths were live and were opened at the exact paths recorded by their source pages.
+
+The evidence review accepted **22** already-present frozen-core edges, represented symmetrically in the selected ledger rows. The three current frontmatter-only pairs (`rank-saturation-rem-updates` to `segment-coverage-uav-trajectory`, `edge-intelligent-vehicle` to `joint-eiv-placement-uav-fleet-sizing`, and `norm-bounded-csi-robust-optimization` to `s-procedure-for-csi-uncertainty`) remain outside the accepted set because neither endpoint body states pair-specific rationale. Cross-group and generic taxonomy links were also rejected. No wiki page, graph edge, index, or overview was added.
+
+All 25 reviewed ledger rows moved from `pending` to `linked`, with nonempty canonical-evidence and exact-current-parse paths; none was deferred, leaving **102** pending rows. The frozen 286-member graph remains at **480 edges**, **30 components**, and **42 weak members**, with zero pre/post added or removed edge, so all local thresholds continue to pass. The numbered evidence matrix, after-comparison report, and refreshed ledger remain ignored scratch artifacts.
+
 ## [2026-07-16] Resolved existing UAV network service-delivery edges
 
 Reviewed 16 pending frozen pages as one evidence-only service-delivery cohort: RIS/UAV integrated access-backhaul reliability, multi-UAV NB-IoT code-domain NOMA and load grouping, radio-map predictive routing over a dynamic space-time graph, and RLNC multicast completion-time design. All four current source-recorded parse paths were live and were opened at the exact paths recorded by their source pages.
