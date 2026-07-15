@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-16] Resolved existing UAV network service-delivery edges
+
+Reviewed 16 pending frozen pages as one evidence-only service-delivery cohort: RIS/UAV integrated access-backhaul reliability, multi-UAV NB-IoT code-domain NOMA and load grouping, radio-map predictive routing over a dynamic space-time graph, and RLNC multicast completion-time design. All four current source-recorded parse paths were live and were opened at the exact paths recorded by their source pages.
+
+The read-only evidence review accepted **13** already-present frozen-core edges: source-to-mechanism links, the exact Yonghui Li byline identity, the Krishna NB-IoT/LTTF/code-domain mechanism links, the Junting Chen byline and radio-map graph links, and the three Zeng multicast mechanism links. Four frontmatter-only current edges (`access-backhaul-rate-matching` to `integrated-access-and-backhaul`, `code-domain-noma` to `narrowband-iot`, and the two minimum-connection-time concept adjacencies) remained outside the accepted set because their endpoint bodies did not state pair-specific rationale. Cross-group and generic taxonomy links were also rejected. No wiki page or graph edge was added; `wiki/index.md` and `wiki/overview.md` remain unchanged.
+
+All 16 reviewed ledger rows moved from `pending` to `linked`, with nonempty current-parse evidence paths and accepted existing neighbors; none was deferred, leaving **127** pending rows. The frozen 286-member graph remains at **480 edges**, **30 components**, and **42 weak members**, with zero pre/post added or removed edge, so all thresholds continue to pass. The numbered evidence matrix, after-comparison report, and refreshed coverage ledger remain scratch artifacts.
+
 ## [2026-07-16] Validated existing aerial energy-replenishment edges
 
 Reviewed 20 pending frozen pages as one evidence-only aerial energy-replenishment cohort: RF WPT/WPCN and harvest-store causality around [[xie-2021-uav-wpt-tutorial]], [[lin-2026-uav-wpucn-time-allocation]], and [[wang-2018-uav-powered-d2d]]; laser-powered multi-UAV QoE allocation around [[chen-2026-laser-powered-multiuav-qoe]]; and optical SLIPT over a ground-to-UAV FSO link around [[kamatchi-2025-slipt-uav-fso]]. All five current source-recorded parse paths were live, including the Kamatchi page's unlabeled Raw-artifact parse bullet.
