@@ -9,6 +9,9 @@ tags: [source, uav-data-collection, anti-jamming, trajectory-optimization, unpre
 related:
   - "[[unpredictable-uav-trajectory-control]]"
   - "[[navigation-stochastic-control-decomposition]]"
+  - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
   - "[[anti-jamming-mec]]"
@@ -68,6 +71,10 @@ Validation is simulation-only, with no flight test, measured channel trace, adap
 ## Relation to the corpus
 
 This source adds motion unpredictability to [[uav-data-collection]] and sits adjacent to the corpus's [[anti-jamming-mec]] work, but it does not optimize computation tasks or resources. [[yin-2026-uav-antijamming-nfsp]] instead treats hidden jammer state and recurrent opponent modeling, while [[tang-2026-gat-antijamming]] combines trajectory/deployment decisions with adversarial learning and beamforming. [[you-2019-rician-uav-data-harvesting]] shares Rician-channel collection and trajectory design without deliberate stochastic unpredictability.
+
+## Comparison boundary
+
+Compared with [[hsu-2022-collision-avoidance-trajectory]], this controller adds a stochastic heading term rather than a local collision-avoidance lookup; compared with [[qi-2026-ocma-ddqn-data-collection]], it models mobile pursuers instead of episode-static jammers. The Gaussian term remains unbounded in the parsed formulation, so neither comparison transfers a collision or security guarantee. See [[uav-trajectory-safety-guarantee-ladder]].
 
 ## Raw artifacts
 

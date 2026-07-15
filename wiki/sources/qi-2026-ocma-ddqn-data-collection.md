@@ -18,6 +18,11 @@ related:
   - "[[chang-2026-data-offloading-energy-constraints]]"
   - "[[zhao-2026-uav-carrier-vcs]]"
   - "[[constraint-regimes-in-uav-data-collection]]"
+  - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[hua-2026-unpredictable-uav-trajectory]]"
+  - "[[yin-2026-uav-antijamming-nfsp]]"
+  - "[[connectivity-preserving-uav-behavioral-loss]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[fuhui-zhou]]"
   - "[[shi-jin]]"
   - "[[chunguo-li]]"
@@ -73,6 +78,10 @@ The parse also contains unresolved inconsistencies: the scenario describes eight
 ## Relation to the corpus
 
 This source combines [[uav-data-collection]], [[uav-trajectory-control]], and [[ddqn]] with an explicit game-theoretic price for cooperation. Its distinctive contribution is not generic multi-agent learning, but distance-conditioned sharing plus confidence-filtered short-outage prediction. The propulsion accounting follows [[rotary-wing-propulsion-energy-model]]. Recurring authors [[fuhui-zhou]] and [[shi-jin]] connect it to the corpus's broader UAV optimization and intelligent-wireless work.
+
+## Comparison boundary
+
+The short-outage predictor and grid collision reset are simulation mechanisms, not a topology or sample-path shield. They contrast with Hsu's local tabular avoidance ([[hsu-2022-collision-avoidance-trajectory]]), Hua's mobile-pursuer stochastic motion ([[hua-2026-unpredictable-uav-trajectory]]), Yin's adaptive-opponent model ([[yin-2026-uav-antijamming-nfsp]]), and the disconnection-triggered behavioral loss in [[connectivity-preserving-uav-behavioral-loss]]. See [[uav-trajectory-safety-guarantee-ladder]].
 
 ## Raw artifacts
 

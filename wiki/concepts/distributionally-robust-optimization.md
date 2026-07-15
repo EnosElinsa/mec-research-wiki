@@ -8,8 +8,9 @@ related:
   - "[[csi-estimation-error]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[jia-2026-dro-lawn-trajectory]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-14
 ---
 
 # Distributionally Robust Optimization (DRO)

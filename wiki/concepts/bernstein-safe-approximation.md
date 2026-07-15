@@ -6,6 +6,9 @@ related:
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[chance-constraint]]"
   - "[[robust-uav-position-power-optimization]]"
+  - "[[zhang-2021-safe-dqn-emergency]]"
+  - "[[distributed-tabular-q-learning-uav-collision-avoidance]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

@@ -7,6 +7,8 @@ related:
   - "[[uav-data-collection]]"
   - "[[uav-trajectory-control]]"
   - "[[bi-traveling-salesman-problem-with-neighborhoods]]"
+  - "[[navigation-stochastic-control-decomposition]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

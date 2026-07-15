@@ -8,6 +8,12 @@ venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN), vo
 tags: [source, emergency-communication, safe-reinforcement-learning, deep-q-network, uav-trajectory, user-energy]
 related:
   - "[[safe-reinforcement-learning]]"
+  - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[distributed-tabular-q-learning-uav-collision-avoidance]]"
+  - "[[navigation-stochastic-control-decomposition]]"
+  - "[[connectivity-preserving-uav-behavioral-loss]]"
+  - "[[bernstein-safe-approximation]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[deep-q-network]]"
   - "[[uav-trajectory-control]]"
   - "[[zhou-2021-delay-sagin-task-scheduling]]"
@@ -47,6 +53,10 @@ Simulation only; one UAV, fixed users, equal data, fixed power, constant nominal
 ## Relation to the corpus
 
 This source complements [[zhou-2021-delay-sagin-task-scheduling]] by applying [[safe-reinforcement-learning]] to aerial motion rather than task scheduling. It is also a useful boundary case for [[uav-trajectory-control]]: the Lyapunov filter constrains an expected learned cost, while geometric obstacle handling remains a separate one-step action filter.
+
+## Comparison boundary
+
+The comparison with [[hsu-2022-collision-avoidance-trajectory]] and [[distributed-tabular-q-learning-uav-collision-avoidance]] is an enforcement-locus contrast: this source filters a next point and an expected surrogate, whereas Hsu's table changes heading from local sensing. [[navigation-stochastic-control-decomposition]] and [[connectivity-preserving-uav-behavioral-loss]] address different control layers, and [[bernstein-safe-approximation]] supplies a probabilistic Gaussian rate construction rather than a collision or sample-path guarantee. See [[uav-trajectory-safety-guarantee-ladder]].
 
 ## Raw artifacts
 

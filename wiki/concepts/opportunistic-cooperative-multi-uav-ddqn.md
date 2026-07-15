@@ -11,6 +11,9 @@ related:
   - "[[mixed-integer-linear-programming]]"
   - "[[attentive-memory-integrated-information-exchange]]"
   - "[[constraint-regimes-in-uav-data-collection]]"
+  - "[[distributed-tabular-q-learning-uav-collision-avoidance]]"
+  - "[[connectivity-preserving-uav-behavioral-loss]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

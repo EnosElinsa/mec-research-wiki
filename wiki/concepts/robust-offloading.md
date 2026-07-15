@@ -7,8 +7,9 @@ related:
   - "[[distributionally-robust-optimization]]"
   - "[[chance-constraint]]"
   - "[[li-2024-robust-bmappo-multiuav-mec]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-14
 ---
 
 # Robust Offloading

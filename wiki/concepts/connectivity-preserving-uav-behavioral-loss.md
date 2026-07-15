@@ -8,6 +8,11 @@ related:
   - "[[task-oriented-grouped-uav-marl]]"
   - "[[llm-guided-marl-policy-distillation]]"
   - "[[collaborative-uav-communication]]"
+  - "[[zhang-2021-safe-dqn-emergency]]"
+  - "[[distributed-tabular-q-learning-uav-collision-avoidance]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
+  - "[[opportunistic-cooperative-multi-uav-ddqn]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

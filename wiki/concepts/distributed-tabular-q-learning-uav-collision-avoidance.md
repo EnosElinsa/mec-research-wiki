@@ -4,6 +4,11 @@ title: "Distributed Tabular Q-Learning for UAV Collision Avoidance"
 tags: [q-learning, collision-avoidance, decentralized-control, uav]
 related:
   - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[zhang-2021-safe-dqn-emergency]]"
+  - "[[opportunistic-cooperative-multi-uav-ddqn]]"
+  - "[[connectivity-preserving-uav-behavioral-loss]]"
+  - "[[bernstein-safe-approximation]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[safe-reinforcement-learning]]"
   - "[[uav-trajectory-control]]"
   - "[[autonomous-uav-swarms]]"

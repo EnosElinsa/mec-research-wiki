@@ -7,6 +7,10 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[navigation-stochastic-control-decomposition]]"
   - "[[anti-jamming-mec]]"
+  - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[yin-2026-uav-antijamming-nfsp]]"
+  - "[[implicit-opponent-modeling]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

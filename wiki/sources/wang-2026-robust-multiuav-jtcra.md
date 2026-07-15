@@ -13,6 +13,7 @@ related:
   - "[[gauss-markov-mobility-model]]"
   - "[[jains-fairness-index]]"
   - "[[uav-trajectory-control]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[ma-pomdp]]"
   - "[[centralized-training-decentralized-execution]]"
@@ -77,6 +78,10 @@ Validation is simulation-only and depends on modeled energy depletion, threshold
 ## Relation to the corpus
 
 This is an A2G communication-control source rather than an MEC offloading design. It complements [[wang-2026-wutf-fair-communication]], which also couples energy-aware multi-UAV trajectories with fairness, and [[shi-2025-aoi-energy-replenishment-multiuav]], which uses QMIX under UAV energy dynamics. Its robustness mechanism differs from uncertainty-aware [[li-2024-robust-bmappo-multiuav-mec]]: here robustness means service reconfiguration after modeled UAV dropout. It also contrasts with [[liu-2026-usp-nfrp-emergency-communication]], where replacement UAVs sustain service instead of permanently shrinking the active fleet.
+
+## Comparison boundary
+
+The protected object here is service continuity and fairness after energy depletion, not geometric collision safety or uncertainty-set robustness. The distinction is explicit in [[uav-trajectory-safety-guarantee-ladder]].
 
 ## Raw artifacts
 

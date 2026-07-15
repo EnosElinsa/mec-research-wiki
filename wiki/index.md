@@ -1583,6 +1583,7 @@
 - [[bcsa-frl-vs-bc-uav-masac]] — Blockchain-on-edge: BCSA-FRL vs BC-UAV-MASAC
 - [[game-theoretic-offloading-formulations]] — potential vs Stackelberg vs bargaining vs matching
 - [[ctde-actor-critic-backbones-in-mec]] — CTDE multi-agent backbones: MADDPG vs MATD3 vs MASAC vs MAPPO vs value-based
+- [[uav-trajectory-safety-guarantee-ladder]] — Protected objects, enforcement loci, persistence, and evidence boundaries across UAV trajectory safety and robustness mechanisms.
 
 ## Synthesis
 

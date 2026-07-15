@@ -8,6 +8,7 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, low-altitude-wireless-network, distributionally-robust-optimization, uav-hap, task-offloading, trajectory-optimization, benders-decomposition, successive-convex-approximation]
 related:
   - "[[distributionally-robust-optimization]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[robust-offloading]]"
   - "[[low-altitude-intelligent-network]]"
   - "[[high-altitude-platform-station]]"
@@ -18,7 +19,7 @@ related:
   - "[[qihui-wu]]"
   - "[[zhu-han]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-14
 ---
 
 # Distributionally Robust Computation Offloading and Trajectory Optimization in Low-Altitude Wireless Networks
@@ -62,7 +63,11 @@ The conclusion proposes extending the model to adaptive task segmentation and re
 
 This is a second DRO anchor for the HAP/UAV low-altitude line after [[jia-2025-dro-uav-hap-mec]], but the uncertainty object changes from CSI-error moments to **task-size distributions**, and the control surface expands to UAV trajectory. It links [[distributionally-robust-optimization]], [[robust-offloading]], [[uav-trajectory-control]], and [[high-altitude-platform-station]] into the low-altitude wireless-network track.
 
+## Comparison boundary
+
+The ladder treats this as distributional robustness of expected computation delay over declared ambiguity sets, not as a collision or flight-safety certificate. See [[uav-trajectory-safety-guarantee-ladder]] for the boundary against bounded-error and intervention-based mechanisms.
+
 ## Raw artifacts
 
-- `raw/sources/Distributionally Robust Computation Offloading and Trajectory Optimization in Low-Altitude Wireless Networks/Distributionally Robust Computation Offloading and Trajectory Optimization in Low-Altitude Wireless Networks.md`
+- `raw/sources/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

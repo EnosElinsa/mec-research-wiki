@@ -6,8 +6,9 @@ related:
   - "[[safe-reinforcement-learning]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[explicit-constraints-beat-reward-shaping-in-mec-drl]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-05-28
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Markov Game of Intervention (MGI) for Collision Avoidance

@@ -9,6 +9,7 @@ tags: [source, uav-relay, full-duplex, noma, chance-constraint, robust-optimizat
 related:
   - "[[full-duplex-noma-uav-relay]]"
   - "[[bernstein-safe-approximation]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[robust-uav-position-power-optimization]]"
   - "[[noma]]"
   - "[[chance-constraint]]"
@@ -63,6 +64,10 @@ The Bernstein reformulation is sufficient but conservative, and one reported cha
 ## Relation to the corpus
 
 This source combines [[noma]] and [[uav-mobile-relaying]] with probabilistic deployment robustness. It complements learning-based aerial optimization such as [[wang-2026-diffusion-semantic-uav-edge]] by using explicit Gaussian uncertainty and safe convex approximations rather than a learned control policy.
+
+## Comparison boundary
+
+Its Bernstein construction is a sufficient chance-constraint approximation for static relay rate and ordering under Gaussian position error. It does not establish moving-trajectory or collision safety; the comparison ladder keeps that protected-object boundary explicit in [[uav-trajectory-safety-guarantee-ladder]].
 
 ## Raw artifacts
 

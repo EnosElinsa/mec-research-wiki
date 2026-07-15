@@ -8,6 +8,9 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC), pp. 1-14"
 tags: [source, uav-anti-jamming, pursuit-evasion, opponent-modeling, fictitious-self-play, recurrent-q-learning]
 related:
   - "[[implicit-opponent-modeling]]"
+  - "[[unpredictable-uav-trajectory-control]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[fictitious-self-play]]"
   - "[[stochastic-game]]"
   - "[[ddqn]]"
@@ -54,6 +57,10 @@ The evidence is simulation-only: one UAV, one jammer, fixed altitude, grid motio
 ## Relation to the corpus
 
 This is a communication/data-collection anti-jamming source, not MEC task execution. It complements [[cooperative-uav-pursuit-evasion]] geometrically but studies adversarial radio adaptation rather than cooperative physical capture.
+
+## Comparison boundary
+
+Relative to [[unpredictable-uav-trajectory-control]], this paper hides jammer state and adapts from recurrent history rather than recomputing a current-geometry randomized heading term slot by slot. Relative to [[qi-2026-ocma-ddqn-data-collection]], it models an adaptive mobile opponent rather than an episode-static jammer. Both remain simulation-scoped anti-jamming evidence; see [[uav-trajectory-safety-guarantee-ladder]].
 
 ## Raw artifacts
 

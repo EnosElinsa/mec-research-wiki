@@ -9,6 +9,12 @@ tags: [source, uav-trajectory-control, uav-data-collection, collision-avoidance,
 related:
   - "[[convex-tsp-uav-data-collection]]"
   - "[[distributed-tabular-q-learning-uav-collision-avoidance]]"
+  - "[[zhang-2021-safe-dqn-emergency]]"
+  - "[[hua-2026-unpredictable-uav-trajectory]]"
+  - "[[unpredictable-uav-trajectory-control]]"
+  - "[[navigation-stochastic-control-decomposition]]"
+  - "[[qi-2026-ocma-ddqn-data-collection]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[uav-trajectory-control]]"
   - "[[uav-data-collection]]"
   - "[[autonomous-uav-swarms]]"
@@ -61,6 +67,10 @@ The tabular state represents no more than two obstacles and handles denser encou
 ## Relation to the corpus
 
 This source combines [[uav-data-collection]] route design with local [[uav-trajectory-control]] during multi-UAV encounters. It complements [[zhan-2018-uav-wsn-data-collection]], but adds heterogeneous communication neighborhoods, fixed distinct route endpoints, and a decentralized collision-avoidance layer.
+
+## Comparison boundary
+
+Its local tabular heading lookup is empirically distinct from Zhang's expected-cost/next-point filter ([[zhang-2021-safe-dqn-emergency]]), Hua's deliberate stochastic motion ([[hua-2026-unpredictable-uav-trajectory]]), and Qi's opportunistic DDQN exchange ([[qi-2026-ocma-ddqn-data-collection]]). [[unpredictable-uav-trajectory-control]] and [[navigation-stochastic-control-decomposition]] preserve a mission component while modifying motion, but this paper's simulator success is not a formal collision guarantee. See [[uav-trajectory-safety-guarantee-ladder]].
 
 ## Raw artifacts
 

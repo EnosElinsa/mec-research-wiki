@@ -15,9 +15,11 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[li-2024-robust-bmappo-multiuav-mec]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
+  - "[[jia-2026-dro-lawn-trajectory]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Explicit constraint-handling mechanisms beat reward shaping in MEC DRL
@@ -32,14 +34,16 @@ When a MEC DRL problem carries a constraint that must actually hold — a hard p
 - [[zhang-2025-ssac-mgi-heterogeneous-uav]] via [[collision-avoidance-mgi]] — the corpus's one hard, per-state safety mechanism. A separate Safety Agent with a binary gating policy **overrides** the reward-maximizing agent, giving safety **during and after training** — explicitly *because* a reward penalty only discourages violations on average and a reward-shaped agent still takes unsafe actions while exploring.
 - [[lyapunov-guided-drl]] — six sources ([[qin-2025-bcuav-masac]], [[zhu-2025-lycnn-drl-wpt-mec]], and four others) independently use [[lyapunov-optimization|Lyapunov drift-plus-penalty]] virtual queues to carry long-term feasibility, leaving the DRL agent to optimize only the per-slot residual. The virtual queue — not the reward — carries the time-average guarantee, with the $V$ weight as a tunable optimality–violation knob set *outside* the policy.
 - [[drl-backbones-across-uav-mec-sources]] — distills the cross-source recommendation explicitly: "use Lyapunov for long-term constraints, not reward shaping," and "reserve safe-RL machinery for hard constraints."
-- [[li-2024-robust-bmappo-multiuav-mec]] and [[jia-2025-dro-uav-hap-mec]] — extend the same logic to *uncertainty*: a robust reformulation (bounded-error Beta-policy MAPPO) and a DRO + CVaR reformulation handle CSI/task uncertainty through an explicit mechanism rather than hoping training averages it out.
+- [[li-2024-robust-bmappo-multiuav-mec]], [[jia-2025-dro-uav-hap-mec]], and [[jia-2026-dro-lawn-trajectory]] — extend the same logic to *uncertainty*: bounded-error Beta-policy MAPPO handles CSI/task-complexity errors, Jia-2025 uses a moment-based DRO + CVaR reformulation for CSI-error distributions, and Jia-2026 uses L1/L-infinity/Fortet-Mourier ambiguity sets for task-size distributions and trajectory/offloading decisions. These are explicit uncertainty mechanisms, not one shared flight-safety guarantee.
 
 ## Status
+
+The trajectory-specific scope and non-transfer boundaries are collected in [[uav-trajectory-safety-guarantee-ladder]].
 
 `supported` — by a dedicated cross-family synthesis and convergent evidence across the safety, long-term-constraint, and robustness threads. Not yet `settled` because:
 
 1. **The comparison is structural, not head-to-head.** The corpus argues the mechanism's superiority from its guarantee, but **no curated source runs the same problem with an explicit mechanism vs a tuned reward penalty** and reports the gap. [[lyapunov-guided-drl]] notes there is no $V$-sweep-vs-reward-penalty-weight-sweep benchmark on one instance.
-2. **Single-source anchors for the strongest claims.** Hard per-state safety rests on one source ([[zhang-2025-ssac-mgi-heterogeneous-uav]]); distributional robustness on one ([[jia-2025-dro-uav-hap-mec]]). The pattern is broad but the individual mechanisms are thinly replicated.
+2. **Single-source anchors for the strongest claims.** Hard per-state safety still rests on one source ([[zhang-2025-ssac-mgi-heterogeneous-uav]]), while distributional robustness now has two distinct anchors ([[jia-2025-dro-uav-hap-mec]] for CSI-error moments and [[jia-2026-dro-lawn-trajectory]] for task-size distributions). The pattern is broad, but each mechanism remains thinly replicated within its uncertainty type.
 3. **Mechanisms cost complexity.** Each adds architecture (a second agent + gate, virtual-queue bookkeeping, a reformulation and its solver). A sufficiently well-tuned reward penalty on a benign problem might close enough of the gap to make the extra machinery not worth it — untested in the corpus.
 
 ## What would refute this

@@ -16,10 +16,11 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[peng-2025-drudm-cfg]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[riheng-jia]]"
   - "[[minglu-li]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-07-14
 ---
 
 # Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled MEC
@@ -75,6 +76,10 @@ Objectives (multiplexed via reward):
 - Same UAV-trajectory + multi-agent DRL family as [[liu-2026-jppo-en-convntm]] and [[peng-2025-drudm-cfg]]. The novel ingredient is **heterogeneity** + **safety as an explicit Markov-game constraint**.
 - Composes with [[hierarchical-aerial-mec]] — heterogeneous UAVs at the lower tier can specialize, with HAPS as the catch-all.
 
+## Comparison boundary
+
+The Safety Agent's binary gate is a persistent intervention mechanism under the paper's sensing and intervention model, not an unconditional collision certificate for every neural policy or environment. The guarantee boundary is recorded in [[uav-trajectory-safety-guarantee-ladder]].
+
 ## Raw artifacts
 
-- `raw/sources/Safe_and_Energy-Efficient_Trajectory_Planning_for_Heterogeneous_Multi-UAV_Enabled_Mobile_Edge_Computing/full.md`
+- `raw/sources/Safe_and_Energy-Efficient_Trajectory_Planning_for_Heterogeneous_Multi-UAV_Enabled_Mobile_Edge_Computing/Safe_and_Energy-Efficient_Trajectory_Planning_for_Heterogeneous_Multi-UAV_Enabled_Mobile_Edge_Computing.md`

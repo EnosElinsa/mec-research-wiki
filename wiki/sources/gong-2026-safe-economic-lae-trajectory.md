@@ -9,13 +9,14 @@ tags: [source, low-altitude-economy, uav-trajectory-control, safe-reinforcement-
 related:
   - "[[low-altitude-intelligent-network]]"
   - "[[compliance-aware-uav-trajectory]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
   - "[[uav-trajectory-control]]"
   - "[[safe-reinforcement-learning]]"
   - "[[soft-actor-critic]]"
   - "[[llm-assisted-resource-allocation]]"
   - "[[generative-ai-for-mec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-14
 ---
 
 # Safe and Economical UAV Trajectory Planning in Low-Altitude Airspace A Hybrid DRL-LLM Algorithm With Compliance Awareness
@@ -57,7 +58,11 @@ The parse concludes that the method jointly considers obstacle avoidance, regula
 
 This source extends [[low-altitude-intelligent-network]] and [[uav-trajectory-control]] with [[compliance-aware-uav-trajectory]]. It is related to [[cai-2026-llm-drl-secure-lae-data]] and [[wang-2026-llm-qos-multiuav-resource]] as another LLM-assisted control source, but its design is different: LLM reasoning is a training-time safety/compliance guide and is removed from the online loop.
 
+## Comparison boundary
+
+Its near-zero collision and regulation-violation rates are tested-simulator evidence. Because the LLM is removed online, the training-time guide is not a persistent shield like the intervention gate discussed in [[collision-avoidance-mgi]]; the distinction is summarized in [[uav-trajectory-safety-guarantee-ladder]].
+
 ## Raw artifacts
 
-- `raw/sources/Safe and Economical UAV Trajectory Planning in Low-Altitude Airspace A Hybrid DRL-LLM Algorithm With Compliance Awareness/Safe and Economical UAV Trajectory Planning in Low-Altitude Airspace A Hybrid DRL-LLM Algorithm With Compliance Awareness.md`
+- `raw/sources/Safe_and_Economical_UAV_Trajectory_Planning_in_Low-Altitude_Airspace_A_Hybrid_DRL-LLM_Algorithm_With_Compliance_Awareness/Safe_and_Economical_UAV_Trajectory_Planning_in_Low-Altitude_Airspace_A_Hybrid_DRL-LLM_Algorithm_With_Compliance_Awareness.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

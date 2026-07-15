@@ -6,6 +6,11 @@ related:
   - "[[hua-2026-unpredictable-uav-trajectory]]"
   - "[[unpredictable-uav-trajectory-control]]"
   - "[[control-parameterized-uav-trajectory]]"
+  - "[[zhang-2021-safe-dqn-emergency]]"
+  - "[[hsu-2022-collision-avoidance-trajectory]]"
+  - "[[convex-tsp-uav-data-collection]]"
+  - "[[implicit-opponent-modeling]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-07-14
 updated: 2026-07-14
 ---

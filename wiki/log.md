@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-14] Compared UAV trajectory safety and robustness guarantee scopes
+
+Added [[uav-trajectory-safety-guarantee-ladder]] as a reader path across the eight primary trajectory/robustness sources, the three supporting anti-jamming or chance-constraint sources, and fourteen mechanism concepts. The comparison separates protected object, hazard, enforcement locus, persistence, proof scope, and evaluation evidence; it does not rank simulator success, expected-cost bounds, ambiguity-set robustness, chance constraints, unpredictability, or service continuity as one safety metric.
+
+Raw review accepted **20** mechanism-specific reciprocal relationships and rejected **3** tempting direct edges. The accepted set contrasts expected-cost and next-point filtering with local tabular avoidance; planned routes with stochastic heading decomposition; decentralized Q control with opportunistic exchange and connectivity shaping; adaptive versus episode-static jamming; and Bernstein chance constraints with learned surrogate or reward-shaped control. The rejected set keeps distinct hazards and control surfaces separate: Zhang-2021 versus Hua-2026, Zhang-2021 versus multi-hop emergency networking, and static full-duplex relay chance constraints versus moving emergency trajectory control.
+
+Against the frozen 286-member baseline, the induced graph changed from **400 to 420 edges (+20)**, components from **38 to 35 (-3)**, and weak members from **81 to 77 (-4)**, with zero removed edges. Cumulatively from the 341-edge baseline, the graph has **420 edges (+79)**, **35 components (-12)**, and **77 weak members (-10)**. [[zhang-2021-safe-dqn-emergency]] rose to internal degree **6**, [[distributed-tabular-q-learning-uav-collision-avoidance]] to **5**, and [[implicit-opponent-modeling]] to **3**. The durable scope is the ladder, two analysis pages, the eleven allowed source pages, fourteen allowed concept pages, and `index.md`, `overview.md`, and this log; raw evidence, graph reports, and the coverage ledger remain scratch artifacts.
+
 ## [2026-07-14] Mapped the aerial federated aggregation design space
 
 Added [[aerial-federated-aggregation-design-space]] as a reader path across [[zhong-2026-hierarchical-ota-fl]], [[huang-2026-aircomp-uav-swarms-afl]], [[qian-2026-federated-bandit-aircomp]], [[dang-2026-uav-fl-energy]], [[li-2026-clp-uav-hpfl]], [[zhou-2026-cpsfl-uav-foundation-models]], and [[tang-2024-iscc-uav-feel]]. The synthesis separates the learned object, aggregation topology, synchronization and participation rule, physical-layer semantics, mobility-control surface, objective, and guarantee scope. It does not numerically compare accuracy, regret, UE energy, training time, aggregation MSE, or pipeline latency.

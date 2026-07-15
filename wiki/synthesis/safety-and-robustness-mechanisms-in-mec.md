@@ -21,8 +21,10 @@ related:
   - "[[lyapunov-guided-drl]]"
   - "[[drl-vs-evolutionary-vs-classical-solvers]]"
   - "[[explicit-constraints-beat-reward-shaping-in-mec-drl]]"
+  - "[[jia-2026-dro-lawn-trajectory]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-06-02
-updated: 2026-06-04
+updated: 2026-07-14
 ---
 
 # Safety and robustness mechanisms across the MEC corpus
@@ -39,6 +41,7 @@ A useful first cut is **what kind of threat** each source hardens against:
 
 | Source | Threat | Mechanism | Solver family | Guarantee |
 |---|---|---|---|---|
+| [[jia-2026-dro-lawn-trajectory]] | Unknown task-size distribution | [[distributionally-robust-optimization|DRO]] ambiguity sets with Benders decomposition and SCA | Classical (mixed-integer decomposition) | Worst expected delay over declared task-size ambiguity sets (not flight safety) |
 | [[zhang-2025-ssac-mgi-heterogeneous-uav]] | UAV-UAV / obstacle collision (hard, per-state) | [[collision-avoidance-mgi\|MGI]] — asymmetric Safety-Agent intervention + gating | Safe DRL | Safety during *and* after training (not reward-shaped) |
 | [[jia-2025-dro-uav-hap-mec]] | Unknown CSI-error *distribution* | [[distributionally-robust-optimization\|DRO]] + [[conditional-value-at-risk\|CVaR]] over a moment-based ambiguity set | Classical (MISOCP + decomposition) | Worst-case-over-distribution feasibility (provable) |
 | [[li-2024-robust-bmappo-multiuav-mec]] | Bounded CSI **and** task-complexity error | Robust reformulation + bounded-support [[beta-policy-drl\|Beta-policy]] MAPPO | DRL (CTDE) | Robust to bounded errors (no distributional guarantee) |
@@ -55,7 +58,7 @@ A useful first cut is **what kind of threat** each source hardens against:
 
 ### 2. Distributionally robust optimization — for unknown-distribution uncertainty
 
-[[jia-2025-dro-uav-hap-mec]] is the corpus's only [[distributionally-robust-optimization|DRO]] source. It assumes you know the **mean and variance** of the CSI-estimation error but *not* its distribution, builds a moment-based ambiguity set, and optimizes the worst case over that set — converting a per-task latency [[chance-constraint|chance constraint]] into a [[conditional-value-at-risk|CVaR]] form that becomes a deterministic SOCP. This is the strongest guarantee in the corpus: provable feasibility against any distribution consistent with the observed moments, with no training and no representative environment needed (a cold-start advantage). The price is **conservatism** — the parse confirms the robust design spends more energy than the perfect-CSI case because servers reserve extra compute to absorb disturbances (the exact margin is `not in parse`) — and the moment-based set is looser than a Wasserstein set would be.
+The corpus now has two [[distributionally-robust-optimization|DRO]] anchors with different uncertainty objects. [[jia-2025-dro-uav-hap-mec]] assumes the **mean and variance** of CSI-estimation error but not its distribution, builds a moment-based ambiguity set, and converts a latency [[chance-constraint|chance constraint]] into [[conditional-value-at-risk|CVaR]] and a deterministic SOCP. [[jia-2026-dro-lawn-trajectory]] instead builds L1, L-infinity, and Fortet-Mourier ambiguity sets around task-size distributions and optimizes worst expected computation delay jointly with offloading and UAV trajectory. Both are robust only over their declared distributional sets; neither is a geometric collision or sample-path flight-safety guarantee. The price remains **conservatism** and classical-solver cost.
 
 ### 3. Bounded-uncertainty robust design — the middle ground
 
@@ -78,5 +81,7 @@ The cheapest "robustness" is to design the stochasticity away. [[wang-2026-aeria
 
 - **No head-to-head on the same instance.** DRO vs DRL-adaptation vs structural side-step are never compared on one channel-uncertainty benchmark — exactly the open question tracked in [[query-when-does-dro-beat-drl-for-csi-uncertainty]].
 - **Hard-safety is a single source.** Only [[zhang-2025-ssac-mgi-heterogeneous-uav]] enforces a hard per-state safety constraint; energy-depletion safety, no-fly-zone safety, and collision safety under a *learned* (not gated) shield are all uncovered.
-- **DRO is a single source and a single uncertainty type.** Only CSI error is treated distributionally; task-arrival, task-complexity, and demand uncertainty are handled (if at all) by bounded reformulation or learned adaptation, never by DRO.
+- **DRO has two anchors but distinct uncertainty types.** [[jia-2025-dro-uav-hap-mec]] treats CSI-error moments, while [[jia-2026-dro-lawn-trajectory]] treats task-size distributions; task-arrival and demand uncertainty remain uncovered, and neither anchor supplies geometric flight safety.
 - **No source combines hard-safety and distributional robustness.** A controller that is simultaneously collision-safe (MGI-style) and CSI-distribution-robust (DRO-style) does not exist in the corpus — an open design point.
+
+[[uav-trajectory-safety-guarantee-ladder]] expands this reading to trajectory hazards, intervention persistence, anti-jamming unpredictability, and service continuity without transferring guarantees across those protected objects.

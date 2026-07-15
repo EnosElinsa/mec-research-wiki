@@ -16,8 +16,9 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
   - "[[safety-and-robustness-mechanisms-in-mec]]"
+  - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-05-31
-updated: 2026-06-02
+updated: 2026-07-14
 ---
 
 # Robust Computation Offloading and Trajectory Optimization for Multi-UAV-Assisted MEC: A Multiagent DRL Approach
@@ -60,7 +61,11 @@ Simulation-based; comparative magnitudes are read from bar/line figures (indicat
 
 A **robust multi-agent UAV-MEC** entry whose novelty is jointly handling communication **and** computation uncertainty, and its **Beta-policy** twist on [[mappo]] (which it shares with the hierarchical-aerial [[kang-2023-mappo-hierarchical-aerial]]). It sits with the multi-agent UAV-MEC family — [[zhao-2022-matd3-multiuav-ec-offloading]], [[seid-2021-madrl-multiuav-iot-edge]], [[chang-2022-marl-multiuav-trajectory]] — and its CSI-uncertainty robustness complements the distributionally-robust [[jia-2025-dro-uav-hap-mec]] and terrain-aware [[wu-2026-terrain-aware-uav-mec]] approaches to channel uncertainty. Introduces the [[beta-policy-drl]] and [[robust-offloading]] concepts.
 
+## Comparison boundary
+
+Its bounded CSI/task-complexity robustness does not become a trajectory collision guarantee merely because collision penalties appear in the learned objective. This scope boundary is preserved in [[uav-trajectory-safety-guarantee-ladder]].
+
 ## Raw artifacts
 
-- `raw/sources/Robust_Computation_Offloading_and_Trajectory_Optimization_for_Multi-UAV-Assisted_MEC_A_Multiagent_DRL_Approach/full.md`
+- `raw/sources/Robust_Computation_Offloading_and_Trajectory_Optimization_for_Multi-UAV-Assisted_MEC_A_Multiagent_DRL_Approach/Robust_Computation_Offloading_and_Trajectory_Optimization_for_Multi-UAV-Assisted_MEC_A_Multiagent_DRL_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.
